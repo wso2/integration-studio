@@ -149,6 +149,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	 * {@link ModelObject} source editor.
 	 */
 	private EsbObjectSourceEditor sourceEditor;
+	
+	/**
+	 * {@link ModelObject} form editor.
+	 */
+	private ESBFormEditor formEditor;
     
 	/**
 	 * Name of the directory which holds temporary files.
@@ -181,6 +186,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	private boolean sourceDirty;
 	
 	public static EsbMultiPageEditor currentEditor;
+	
+	private ArtifactType artifactType;
 	
 	private double zoom = 1.0;
 	private String fileName;
@@ -243,7 +250,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 											deserializeStatus.getExecption(),
 											deserializeStatus);
 								}
-
 							} catch (Exception e) {
 								log.error(
 										"Error while generating diagram from source",
@@ -442,6 +448,73 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         setPageText(index, "Properties");
     }
     
+    private void createPageForm(ArtifactType artifactType) {
+		  IEditorInput editorInput = getEditorInput();
+		  ESBFormEditor simpleFormEditor = new ESBFormEditor(artifactType);
+		  formEditor = simpleFormEditor;
+		try {
+			  IEditorInput formEditorInput = getEditorInput();
+	            if (editorInput instanceof FileEditorInput) {
+	            	IFile file = ((FileEditorInput) editorInput).getFile();
+	            	fileName = file.getName();
+	            	final Deserializer deserializer = Deserializer.getInstance(); 
+	            	InputStream inputStream = null;
+					try {
+						inputStream = file.getContents();
+						final String source = new Scanner(inputStream).useDelimiter("\\A").next();					
+		            	editorInput = new EsbEditorInput(null,file,artifactType.getLiteral());
+//		            	Display.getDefault().asyncExec(new Runnable() {
+//							@Override
+//							public void run() {
+								ESBDebuggerUtil.setPageCreateOperationActivated(true);
+								try {
+									DeserializeStatus deserializeStatus = deserializer
+											.isValidSynapseConfig(source);
+									if (deserializeStatus.isValid()) {
+										deserializer.updateDesign(source,
+												simpleFormEditor, artifactType);
+										Display.getDefault().asyncExec(
+												new Runnable() {
+													@Override
+													public void run() {
+														doSave(new NullProgressMonitor());
+													}
+												});
+									} else {
+										setActivePage(SOURCE_VIEW_PAGE_INDEX);
+										sourceEditor.getDocument().set(source);
+										printHandleDesignViewActivatedEventErrorMessageSimple(
+												deserializeStatus.getExecption(),
+												deserializeStatus);
+									}
+								} catch (Exception e) {
+									log.error(
+											"Error while generating diagram from source",
+										e);
+							} finally {
+								ESBDebuggerUtil.setPageCreateOperationActivated(false);
+							}
+//						}
+//					});
+					inputStream.close();
+				} catch (CoreException e1) {
+					log.error("Error while generating diagram from source", e1);
+				} catch (Exception e) {
+					log.error("Error while generating diagram from source", e);
+				}
+				setTitle(file.getName());
+			}
+			addPage(DESIGN_VIEW_PAGE_INDEX, simpleFormEditor, editorInput);
+			setPageText(DESIGN_VIEW_PAGE_INDEX, "Local Entry Form"); //$NON-NLS-1$
+		} catch (PartInitException e) {
+			// TODO Auto-generated catch block
+		}
+
+		// TODO Auto-generated method stub
+
+	}
+
+    
 	/**
 	 * Utility method for obtaining a reference to a temporary file with the
 	 * given extension.
@@ -514,10 +587,26 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
      EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();	
         switch (server.getType()) {
-		case COMPLEX_ENDPOINT:			
+		case COMPLEX_ENDPOINT:
 			break;
 		case LOCAL_ENTRY:
+			artifactType = ArtifactType.LOCAL_ENTRY;
 			createPageForm(server.getType());
+		case MESSAGE_PROCESSOR :
+			createPageForm(server.getType());
+		case MESSAGE_STORE :
+			createPageForm(server.getType());
+		case TASK :
+			createPageForm(server.getType());
+		case TEMPLATE_ENDPOINT_DEFAULT :
+			createPageForm(server.getType());
+		case TEMPLATE_ENDPOINT_ADDRESS:
+			createPageForm(server.getType());
+		case TEMPLATE_ENDPOINT_WSDL :
+			createPageForm(server.getType());
+		case TEMPLATE_ENDPOINT_HTTP :
+			createPageForm(server.getType());
+			
 		default:
 			createPage1();
 			break;
@@ -532,23 +621,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         //createPage2();
     }
     
-	private void createPageForm(ArtifactType artifactType) {
-		  IEditorInput editorInput = getEditorInput();
-		  ESBFormEditor simpleFormEditor = new ESBFormEditor(artifactType);
-		 
-		try {
-			addPage(DESIGN_VIEW_PAGE_INDEX, simpleFormEditor, editorInput);
-			 setPageText(DESIGN_VIEW_PAGE_INDEX, "Local Entry Form"); //$NON-NLS-1$
-		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	/**
 	 * This is used to track the active viewer. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -584,7 +656,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			}
 			
 			try {
-				handleDesignViewActivatedEvent();
+				if (artifactType == ArtifactType.LOCAL_ENTRY) {
+					handleFormViewActivatedEvent();
+				} else {
+					handleDesignViewActivatedEvent();
+				}
 				Display.getCurrent().asyncExec(new Runnable() {
 
 					@Override
@@ -655,6 +731,32 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			if (xmlSource != null && sourceDirty) {
 				if (!xmlSource.trim().isEmpty()) {
 					rebuildModelObject(xmlSource);
+				}
+			}
+		}
+		
+	}
+	
+	/**
+	 * Performs necessary house-keeping tasks whenever the form view is
+	 * activated.
+	 * @throws Exception
+	 */
+	private void handleFormViewActivatedEvent() throws Exception {
+
+		if (sourceEditor != null) {
+			String xmlSource = sourceEditor.getDocument().get();
+			if (xmlSource != null && sourceDirty) {
+				if (!xmlSource.trim().isEmpty()) {
+					Deserializer.getInstance().updateDesign(xmlSource, formEditor, artifactType);
+					final EsbMultiPageEditor tempEditor = this;
+					Display.getDefault().asyncExec(new Runnable() {
+						public void run() {
+							IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+							page.activate(tempEditor);
+
+						}
+					});
 				}
 			}
 		}
@@ -748,14 +850,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     
     
 	private IFile updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
+		IFile xmlFile = null;
+		if (artifactType == ArtifactType.LOCAL_ENTRY) {
+			
+		} else {
 		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();
-		IFile xmlFile = null;
-		if (server.getType() == ArtifactType.LOCAL_ENTRY) {
-			xmlFile = ((EsbEditorInput) getEditor(2).getEditorInput()).getXmlResource();
-		} else {
+		
 		xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
-		}
 		String source = EsbModelTransformer.instance.designToSource(server);
 		if (source == null) {
 			log.warn("Could not get the source");
@@ -766,6 +868,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			xmlFile.setContents(is, true, true, monitor);
 		} else {
 			xmlFile.create(is, true, monitor);
+		}
 		}
 		return xmlFile;
 	}
@@ -841,7 +944,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		    	final Deserializer deserializer = Deserializer.getInstance(); 				
 		    	DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(xmlSource);
 				if (deserializeStatus.isValid()) {
+					if (artifactType == ArtifactType.LOCAL_ENTRY) {
+						handleFormViewActivatedEvent();
+					} else {
 					handleDesignViewActivatedEvent();
+					}
 				} else {
 					IEditorInput editorInput = getEditorInput();
 					IFile file = ((FileEditorInput) editorInput).getFile();

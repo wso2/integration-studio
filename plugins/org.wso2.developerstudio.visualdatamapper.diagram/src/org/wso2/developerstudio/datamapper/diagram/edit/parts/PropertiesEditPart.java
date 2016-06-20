@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -21,6 +22,7 @@ import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.PropertiesCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.PropertiesItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.impl.PropertiesImpl;
 
 /**
  * @generated NOT
@@ -88,7 +90,9 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new PropertiesFigure();
+		String name = ((PropertiesImpl) ((View) getModel()).getElement()).getName();
+		String scope = ((PropertiesImpl) ((View) getModel()).getElement()).getScope();
+		return primaryShape = new PropertiesFigure(scope, name);
 	}
 
 	/**
@@ -188,8 +192,11 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 
 	public class PropertiesFigure extends OperatorRectangle {
 
-		public PropertiesFigure() {
+		public PropertiesFigure(String scope,String name) {
 			super("Properties");
+			if (StringUtils.isNotEmpty(scope)&&StringUtils.isNotEmpty(name)) {
+				super.changeOperatorHeader("Properties : \"" + scope + "\\" + name + "\"");
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -208,5 +215,9 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getPropertiesFigure() {
+		return (OperatorRectangle)primaryShape;
+	}
 
 }

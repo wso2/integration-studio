@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.mediators.Value;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
@@ -79,6 +80,12 @@ public class BeanMediatorDeserializer extends
 			break;
 		}
 		return mediatorModel;
+	}
+
+	@Override
+	public BeanMediator createNode(FormEditor part, BeanMediatorExt object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

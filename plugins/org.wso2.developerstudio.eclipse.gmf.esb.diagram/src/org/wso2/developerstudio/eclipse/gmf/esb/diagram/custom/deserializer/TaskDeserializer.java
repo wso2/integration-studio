@@ -21,6 +21,7 @@ import javax.xml.namespace.QName;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
@@ -84,6 +85,12 @@ public class TaskDeserializer extends AbstractEsbNodeDeserializer<TaskDescriptio
 		}
 
 		return taskModel;
+	}
+
+	@Override
+	public Task createNode(FormEditor part, TaskDescription object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

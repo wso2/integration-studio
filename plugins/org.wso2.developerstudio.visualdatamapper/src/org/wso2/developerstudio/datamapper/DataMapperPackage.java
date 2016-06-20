@@ -681,13 +681,49 @@ public interface DataMapperPackage extends EPackage {
 	int CUSTOM_FUNCTION__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Function Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_FUNCTION__FUNCTION_NAME = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Function Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_FUNCTION__FUNCTION_DEFINITION = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Output Connector Tag</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_FUNCTION__OUTPUT_CONNECTOR_TAG = OPERATOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Input Connector Tag</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_FUNCTION__INPUT_CONNECTOR_TAG = OPERATOR_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Custom Function</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_FUNCTION_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int CUSTOM_FUNCTION_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.PropertiesImpl <em>Properties</em>}' class.
@@ -763,13 +799,40 @@ public interface DataMapperPackage extends EPackage {
 	int PROPERTIES__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTIES__TYPE = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTIES__NAME = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Scope</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTIES__SCOPE = OPERATOR_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Properties</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTIES_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int PROPERTIES_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.CompareImpl <em>Compare</em>}' class.
@@ -845,13 +908,22 @@ public interface DataMapperPackage extends EPackage {
 	int COMPARE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Comparison Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARE__COMPARISON_OPERATOR = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Compare</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPARE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int COMPARE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.StringToNumberImpl <em>String To Number</em>}' class.
@@ -3702,6 +3774,16 @@ public interface DataMapperPackage extends EPackage {
 	int PROPERTY_KEY_VALUE_PAIR_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.ComparisonOperatorType
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getComparisonOperatorType()
+	 * @generated
+	 */
+	int COMPARISON_OPERATOR_TYPE = 50;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3709,7 +3791,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 50;
+    int SCHEMA_DATA_TYPE = 51;
 
     /**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.DataMapperOperatorType <em>Operator Type</em>}' enum.
@@ -3719,7 +3801,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperOperatorType()
 	 * @generated
 	 */
-	int DATA_MAPPER_OPERATOR_TYPE = 51;
+	int DATA_MAPPER_OPERATOR_TYPE = 52;
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -3792,6 +3874,50 @@ public interface DataMapperPackage extends EPackage {
 	EClass getCustomFunction();
 
 				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.CustomFunction#getFunctionName <em>Function Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Function Name</em>'.
+	 * @see org.wso2.developerstudio.datamapper.CustomFunction#getFunctionName()
+	 * @see #getCustomFunction()
+	 * @generated
+	 */
+	EAttribute getCustomFunction_FunctionName();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.CustomFunction#getFunctionDefinition <em>Function Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Function Definition</em>'.
+	 * @see org.wso2.developerstudio.datamapper.CustomFunction#getFunctionDefinition()
+	 * @see #getCustomFunction()
+	 * @generated
+	 */
+	EAttribute getCustomFunction_FunctionDefinition();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.CustomFunction#getOutputConnectorTag <em>Output Connector Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Output Connector Tag</em>'.
+	 * @see org.wso2.developerstudio.datamapper.CustomFunction#getOutputConnectorTag()
+	 * @see #getCustomFunction()
+	 * @generated
+	 */
+	EAttribute getCustomFunction_OutputConnectorTag();
+
+				/**
+	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.datamapper.CustomFunction#getInputConnectorTag <em>Input Connector Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Input Connector Tag</em>'.
+	 * @see org.wso2.developerstudio.datamapper.CustomFunction#getInputConnectorTag()
+	 * @see #getCustomFunction()
+	 * @generated
+	 */
+	EAttribute getCustomFunction_InputConnectorTag();
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Properties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3802,6 +3928,39 @@ public interface DataMapperPackage extends EPackage {
 	EClass getProperties();
 
 				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Properties#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Properties#getType()
+	 * @see #getProperties()
+	 * @generated
+	 */
+	EAttribute getProperties_Type();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Properties#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Properties#getName()
+	 * @see #getProperties()
+	 * @generated
+	 */
+	EAttribute getProperties_Name();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Properties#getScope <em>Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Scope</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Properties#getScope()
+	 * @see #getProperties()
+	 * @generated
+	 */
+	EAttribute getProperties_Scope();
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Compare <em>Compare</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3810,6 +3969,17 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCompare();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Compare#getComparisonOperator <em>Comparison Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Comparison Operator</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Compare#getComparisonOperator()
+	 * @see #getCompare()
+	 * @generated
+	 */
+	EAttribute getCompare_ComparisonOperator();
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.StringToNumber <em>String To Number</em>}'.
@@ -4893,6 +5063,16 @@ public interface DataMapperPackage extends EPackage {
 	EAttribute getPropertyKeyValuePair_Value();
 
 	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Comparison Operator Type</em>'.
+	 * @see org.wso2.developerstudio.datamapper.ComparisonOperatorType
+	 * @generated
+	 */
+	EEnum getComparisonOperatorType();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5005,6 +5185,38 @@ public interface DataMapperPackage extends EPackage {
 		EClass CUSTOM_FUNCTION = eINSTANCE.getCustomFunction();
 
 		/**
+		 * The meta object literal for the '<em><b>Function Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_FUNCTION__FUNCTION_NAME = eINSTANCE.getCustomFunction_FunctionName();
+
+		/**
+		 * The meta object literal for the '<em><b>Function Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_FUNCTION__FUNCTION_DEFINITION = eINSTANCE.getCustomFunction_FunctionDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Connector Tag</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_FUNCTION__OUTPUT_CONNECTOR_TAG = eINSTANCE.getCustomFunction_OutputConnectorTag();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Connector Tag</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_FUNCTION__INPUT_CONNECTOR_TAG = eINSTANCE.getCustomFunction_InputConnectorTag();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.PropertiesImpl <em>Properties</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5015,6 +5227,30 @@ public interface DataMapperPackage extends EPackage {
 		EClass PROPERTIES = eINSTANCE.getProperties();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTIES__TYPE = eINSTANCE.getProperties_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTIES__NAME = eINSTANCE.getProperties_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Scope</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTIES__SCOPE = eINSTANCE.getProperties_Scope();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.CompareImpl <em>Compare</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5023,6 +5259,14 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass COMPARE = eINSTANCE.getCompare();
+
+		/**
+		 * The meta object literal for the '<em><b>Comparison Operator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPARE__COMPARISON_OPERATOR = eINSTANCE.getCompare_ComparisonOperator();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.StringToNumberImpl <em>String To Number</em>}' class.
@@ -5921,6 +6165,16 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROPERTY_KEY_VALUE_PAIR__VALUE = eINSTANCE.getPropertyKeyValuePair_Value();
+
+								/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.ComparisonOperatorType
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getComparisonOperatorType()
+		 * @generated
+		 */
+		EEnum COMPARISON_OPERATOR_TYPE = eINSTANCE.getComparisonOperatorType();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.

@@ -4,6 +4,7 @@ import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator;
@@ -156,6 +157,12 @@ public class EntitlementMediatorDeserializer extends AbstractEsbNodeDeserializer
 		}
 		
 		return visualEntitlementMediator;
+	}
+
+	@Override
+	public EntitlementMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

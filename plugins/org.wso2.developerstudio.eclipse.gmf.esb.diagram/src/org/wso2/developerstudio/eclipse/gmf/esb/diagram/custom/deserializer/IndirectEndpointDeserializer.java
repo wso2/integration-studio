@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
@@ -36,6 +37,12 @@ public class IndirectEndpointDeserializer extends
 		executeSetValueCommand(NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,KeyType.STATIC);
 
 		return endPoint;
+	}
+
+	@Override
+	public NamedEndpoint createNode(FormEditor part, IndirectEndpoint object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

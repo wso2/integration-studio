@@ -21,6 +21,7 @@ import java.util.Map;
 import org.apache.synapse.endpoints.ResolvingEndpoint;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint;
@@ -50,5 +51,11 @@ AbstractEsbNodeDeserializer<ResolvingEndpoint, NamedEndpoint>{
 		executeSetValueCommand(NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,KeyType.DYNAMIC);
 
 		return endPoint;
+	}
+
+	@Override
+	public NamedEndpoint createNode(FormEditor part, ResolvingEndpoint object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

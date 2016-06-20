@@ -41,6 +41,7 @@ import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.ElementImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorRightConnectorImpl;
+import org.wso2.developerstudio.datamapper.impl.PropertiesImpl;
 import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 
 /**
@@ -165,7 +166,7 @@ public class DataMapperDiagramModel {
 	}
 
 	private static boolean isSourceOperator(OperatorImpl operator) {
-		if (operator instanceof ConstantImpl) {
+		if (operator instanceof ConstantImpl || operator instanceof PropertiesImpl) {
 			return true;
 		}
 		return false;
@@ -184,7 +185,6 @@ public class DataMapperDiagramModel {
 		} else {
 			throw new IllegalArgumentException("Invalid Output root element found");
 		}
-
 	}
 
 	private void updateExecutionSequence() throws DataMapperException {
@@ -320,6 +320,23 @@ public class DataMapperDiagramModel {
 										variableIndex, index);
 								addVariableTypeToMap(tempVar.getName(),
 										(SchemaDataType) operator.getProperty(TransformerConstants.CONSTANT_TYPE_TAG));
+								variablesArray.add(tempVar);
+								operatorElement.getPortVariableIndex().add(variableIndex);
+								outputAdjList.get(operator.getIndex()).add(variableIndex);
+								if (operationElement.isVisited()) {
+									inputAdjList.get(operationElement.getIndex()).add(variableIndex);
+								}
+								visitedConnectorVariableMap.put(rightConnector, tempVar);
+							} else if (DataMapperOperatorType.PROPERTIES.equals(operator.getOperatorType())) {
+								int variableIndex = variablesArray.size();
+								DMVariable tempVar = new DMVariable(
+										"{" + TransformerConstants.PROPERTIES_PREFIX + "."
+												+ operator.getProperty(TransformerConstants.PROPERTY_SCOPE_TAG) + "."
+												+ operator.getProperty(TransformerConstants.PROPERTY_NAME_TAG) + "}",
+										getUniqueDirectId(operatorElement, indexOfConnector),
+										DMVariableType.INTERMEDIATE, SchemaDataType.INT, variableIndex, index);
+								addVariableTypeToMap(tempVar.getName(),
+										(SchemaDataType) operator.getProperty(TransformerConstants.PROPERTY_TYPE_TAG));
 								variablesArray.add(tempVar);
 								operatorElement.getPortVariableIndex().add(variableIndex);
 								outputAdjList.get(operator.getIndex()).add(variableIndex);

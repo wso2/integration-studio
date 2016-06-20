@@ -6,6 +6,7 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -162,6 +163,12 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
 				}
 			}
 		}
+		return null;
+	}
+
+	@Override
+	public DataMapperMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

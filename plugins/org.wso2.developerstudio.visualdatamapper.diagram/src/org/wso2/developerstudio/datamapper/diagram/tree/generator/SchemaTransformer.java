@@ -1093,18 +1093,18 @@ public class SchemaTransformer implements ISchemaTransformer {
 	/**
 	 * Gets the schema content from the model
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public String getSchemaContentFromModel(TreeNodeImpl treeNodeModel, File writeToFile) {
 
 		JSONObject root = new JSONObject();
-		JSONObject propertiesObject = new JSONObject();
+		Map propertiesObject = new LinkedHashMap<>();
 		JSONArray arrayItems = new JSONArray();
-		JSONObject itemsObject = new JSONObject();
-		JSONObject attributesObject = new JSONObject();
+		Map itemsObject = new LinkedHashMap<>();
+		Map attributesObject = new LinkedHashMap<>();
 		JSONArray namespaceArray = new JSONArray();
 		JSONArray elementIdentifiersArray = new JSONArray();
-		JSONObject valueObject = new JSONObject();
+		Map valueObject = new LinkedHashMap<>();	
 		if (namespaceList.size() > 0 || elementIdentifierList.size() > 0) {
 			namespaceList.clear();
 			elementIdentifierList.clear();
@@ -1251,9 +1251,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param schemaArrayItemsID
 	 * @param schemaArrayItemsType
 	 */
-	@SuppressWarnings("unchecked")
-	private void processChildrenOfRootArray(TreeNodeImpl treeNodeModel, JSONObject root, JSONObject propertiesObject,
-			JSONObject itemsObject, String schemaArrayItemsID, String schemaArrayItemsType) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void processChildrenOfRootArray(TreeNodeImpl treeNodeModel, JSONObject root, Map propertiesObject,
+			Map itemsObject, String schemaArrayItemsID, String schemaArrayItemsType) {
 		if (schemaArrayItemsType.equals(JSON_SCHEMA_OBJECT)) {
 			itemsObject.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 			insertIDandTypeforItemsBlock(itemsObject, schemaArrayItemsID, schemaArrayItemsType);
@@ -1274,8 +1274,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param schemaArrayItemsID
 	 * @param schemaArrayItemsType
 	 */
-	@SuppressWarnings("unchecked")
-	private void insertIDandTypeforItemsBlock(JSONObject itemsObject, String schemaArrayItemsID,
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void insertIDandTypeforItemsBlock(Map itemsObject, String schemaArrayItemsID,
 			String schemaArrayItemsType) {
 		if (schemaArrayItemsID != null) {
 			itemsObject.put(JSON_SCHEMA_ID, schemaArrayItemsID.replace("\\", ""));
@@ -1340,8 +1340,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param parent
 	 * @param root
 	 */
-	@SuppressWarnings("unchecked")
-	private void recursiveSchemaGenerator(TreeNodeImpl treeNodeModel, JSONObject parent, JSONObject root) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void recursiveSchemaGenerator(TreeNodeImpl treeNodeModel, Map parent, JSONObject root) {
 		if (treeNodeModel != null) {
 			EList<Element> elemList = treeNodeModel.getElement();
 			EList<TreeNode> nodeList = treeNodeModel.getNode();
@@ -1365,10 +1365,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 				String arrayValueBlockType = getPropertyKeyValuePairforTreeNode(node,
 						JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE);
 				if (schemaType != null && schemaType.equals(JSON_SCHEMA_OBJECT)) {
-					JSONObject nodeObject = new JSONObject();
-					JSONObject propertiesObject = new JSONObject();
-					JSONObject attributeObject = new JSONObject();
-					JSONObject valueObject = new JSONObject();
+					
+					Map nodeObject = new LinkedHashMap<>();
+					Map propertiesObject = new LinkedHashMap<>();
+					Map attributeObject = new LinkedHashMap<>();
+					Map valueObject = new LinkedHashMap<>();
+					
 					// Check if there are attributes in the child nodes of an
 					// object when creating the tree by hand
 					addedObjectHasAttributes = checkForAttributes(node);
@@ -1461,12 +1463,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 					}
 
 				} else if (schemaType != null && schemaType.equals(JSON_SCHEMA_ARRAY)) {
-					JSONObject arrayObject = new JSONObject();
-					JSONObject itemsObject = new JSONObject();
+			
+					Map arrayObject = new LinkedHashMap<>();
+					Map itemsObject = new LinkedHashMap<>();
 					JSONArray arrayItemsObject = new JSONArray();
-					JSONObject attributeObject = new JSONObject();
-					JSONObject itemProperties = new JSONObject();
-					JSONObject valueObject = new JSONObject();
+					Map attributeObject = new LinkedHashMap<>();
+					Map itemProperties = new LinkedHashMap<>();
+					Map valueObject = new LinkedHashMap<>();
+
 					// Check if there are attributes in the child nodes of the
 					// array when creating the tree by hand
 					addedObjectHasAttributes = checkForAttributes(node);
@@ -1620,11 +1624,11 @@ public class SchemaTransformer implements ISchemaTransformer {
 							JSON_SCHEMA_FIELD_ELEMENT_IDENTIFIERS_URL);
 					// Adds attributes
 					if (hasAttributes) {
-						JSONObject elemObject = null;
+						Map elemObject = null;
 						// If the attribute is an element identifier then set
 						// the id and type
 						if (objectAddedAttributeID != null && objectAddedAttributeType != null) {
-							elemObject = new JSONObject();
+							elemObject = new LinkedHashMap<>();
 							elemObject.put(JSON_SCHEMA_ID, objectAddedAttributeID);
 							elemObject.put(JSON_SCHEMA_TYPE, objectAddedAttributeType);
 							elemObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
@@ -1669,14 +1673,14 @@ public class SchemaTransformer implements ISchemaTransformer {
 							}
 							// Removes the @prefix
 							String nodeName = node.getName().substring(1);
-							if (((JSONObject) parent.get(JSON_SCHEMA_ATTRIBUTES)) != null) {
-								((JSONObject) parent.get(JSON_SCHEMA_ATTRIBUTES)).put(nodeName, elemObject);
+							if ((parent.get(JSON_SCHEMA_ATTRIBUTES)) != null) {
+								((HashMap) parent.get(JSON_SCHEMA_ATTRIBUTES)).put(nodeName, elemObject);
 							} else {
 								parent.put(nodeName, elemObject);
 							}
 						}
 					} else {
-						JSONObject elemObject = createElementObject(schemaID);
+						Map elemObject = createElementObject(schemaID);
 						elemObject.put(JSON_SCHEMA_TYPE, schemaType);
 						elemObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						// ignore attributes comes with property iteration
@@ -1733,7 +1737,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 				String schemaType = getPropertyKeyValuePairforElements(elem, JSON_SCHEMA_TYPE);
 				String schemaID = getPropertyKeyValuePairforElements(elem, JSON_SCHEMA_ID);
 				if (schemaType != null) {
-					JSONObject elemObject = createElementObject(schemaID);
+					Map elemObject = createElementObject(schemaID);
 					elemObject.put(JSON_SCHEMA_TYPE, schemaType);
 					parent.put(elem.getName(), elemObject);
 				}
@@ -1747,9 +1751,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param schemaID
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	private JSONObject createElementObject(String schemaID) {
-		JSONObject elemObject = new JSONObject();
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private Map createElementObject(String schemaID) {
+		Map elemObject = new LinkedHashMap<>();
 		if (schemaID != null) {
 			elemObject.put(JSON_SCHEMA_ID, schemaID.replace("\\", ""));
 		} else {
@@ -1764,7 +1768,8 @@ public class SchemaTransformer implements ISchemaTransformer {
 	 * @param node
 	 * @param nodeObject
 	 */
-	private void insetIDAndTypeForJsonObject(TreeNode node, JSONObject nodeObject) {
+	@SuppressWarnings("rawtypes")
+	private void insetIDAndTypeForJsonObject(TreeNode node, Map nodeObject) {
 		String schemaType = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_TYPE);
 		String schemaID = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_ID);
 		insertIDandTypeforItemsBlock(nodeObject, schemaID, schemaType);
@@ -1884,12 +1889,12 @@ public class SchemaTransformer implements ISchemaTransformer {
 	/**
 	 * Inserts required array
 	 * 
-	 * @param parent
+	 * @param itemsObject
 	 * @param node
 	 * @param isItems
 	 */
-	@SuppressWarnings({ "unchecked" })
-	private void insertRequiredArray(JSONObject parent, TreeNode node, boolean isItems) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private void insertRequiredArray(Map parent, TreeNode node, boolean isItems) {
 		String requiredString = null;
 		JSONArray requiredArray = new JSONArray();
 		String schemaRequired = getPropertyKeyValuePairforTreeNode(node, JSON_SCHEMA_REQUIRED);

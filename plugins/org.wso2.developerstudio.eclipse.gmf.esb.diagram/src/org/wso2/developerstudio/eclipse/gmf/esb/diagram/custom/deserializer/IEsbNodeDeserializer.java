@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 
@@ -24,6 +25,7 @@ public interface IEsbNodeDeserializer<T,R extends EsbNode> {
 	
 	void setDiagramEditor(EsbDiagramEditor diagramEditor);
 	R createNode(IGraphicalEditPart part, T object);
+	R createNode(FormEditor part, T object);
 	public boolean isReversed();
 	public void setReversed(boolean reversed);
 

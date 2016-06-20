@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
@@ -89,6 +90,12 @@ public class PayloadFactoryMediatorDeserializer extends AbstractEsbNodeDeseriali
 		executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__ARGS, arguments);
 			
 		return visualPayloadFactoryMediator;
+	}
+
+	@Override
+	public PayloadFactoryMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

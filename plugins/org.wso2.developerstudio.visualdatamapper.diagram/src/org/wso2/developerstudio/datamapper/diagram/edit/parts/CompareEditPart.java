@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -18,9 +19,12 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.datamapper.ComparisonOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.CompareCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.CompareItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.impl.CompareImpl;
+import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 
 /**
  * @generated NOT
@@ -41,6 +45,8 @@ public class CompareEditPart extends AbstractOperatorEditPart {
 	 * @generated
 	 */
 	protected IFigure primaryShape;
+
+	private ComparisonOperatorType comparisonOperator;
 
 	/**
 	 * @generated
@@ -88,7 +94,8 @@ public class CompareEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new CompareFigure();
+		comparisonOperator = ((CompareImpl) ((View) getModel()).getElement()).getComparisonOperator();
+		return primaryShape = new CompareFigure(comparisonOperator.getLiteral());
 	}
 
 	/**
@@ -188,8 +195,14 @@ public class CompareEditPart extends AbstractOperatorEditPart {
 
 	public class CompareFigure extends OperatorRectangle {
 
-		public CompareFigure() {
+		private String figureHeaderLabel;
+
+		public CompareFigure(String comparisonOperator) {
 			super("Compare");
+			if (StringUtils.isNotEmpty(comparisonOperator)) {
+				this.figureHeaderLabel = "Compare : \"" + comparisonOperator + "\"";
+				super.changeOperatorHeader(figureHeaderLabel);
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -208,4 +221,8 @@ public class CompareEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getCompareFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 }

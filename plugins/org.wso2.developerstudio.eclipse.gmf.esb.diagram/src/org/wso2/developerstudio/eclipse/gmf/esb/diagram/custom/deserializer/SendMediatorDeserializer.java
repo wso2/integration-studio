@@ -24,6 +24,7 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 //import org.wso2.developerstudio.eclipse.gmf.esb.AddressingEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -106,6 +107,12 @@ public class SendMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 		executeSetValueCommand(SEND_MEDIATOR__BUILD_MESSAGE_BEFORE_SENDING, sendMediator.isBuildMessage());
 		
 		return visualSendMediator;
+	}
+
+	@Override
+	public SendMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

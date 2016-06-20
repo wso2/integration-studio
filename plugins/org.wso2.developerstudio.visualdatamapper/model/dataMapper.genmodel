@@ -6,6 +6,16 @@
   <foreignModel>dataMapper.ecore</foreignModel>
   <genPackages prefix="DataMapper" basePackage="org.wso2.developerstudio" disposableProviderFactory="true"
       ecorePackage="dataMapper.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dataMapper.ecore#//ComparisonOperatorType">
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//ComparisonOperatorType/EQUAL_VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//ComparisonOperatorType/EQUAL_VALUE_TYPE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//ComparisonOperatorType/NOT_EQUAL_VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//ComparisonOperatorType/NOT_EQUAL_VALUE_TYPE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//ComparisonOperatorType/GREATER_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//ComparisonOperatorType/GREATER_OR_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//ComparisonOperatorType/LOWER_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//ComparisonOperatorType/LOWER_OR_EQUAL"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="dataMapper.ecore#//SchemaDataType">
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/ARRAY"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/BOOLEAN"/>
@@ -55,6 +65,17 @@
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STARTS_WITH"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STRING_LENGTH"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/SUBSTRING"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/COMPARE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CUSTOM_FUNCTION"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/MATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/MAX"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/MIN"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/PROPERTIES"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/REPLACE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STRING_TO_BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STRING_TO_NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/TRIM"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/TYPE_CONVERSION_OPERATION"/>
     </genEnums>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
     <genClasses ecoreClass="dataMapper.ecore#//Trim"/>
@@ -62,9 +83,20 @@
     <genClasses ecoreClass="dataMapper.ecore#//Match"/>
     <genClasses ecoreClass="dataMapper.ecore#//Min"/>
     <genClasses ecoreClass="dataMapper.ecore#//Max"/>
-    <genClasses ecoreClass="dataMapper.ecore#//CustomFunction"/>
-    <genClasses ecoreClass="dataMapper.ecore#//Properties"/>
-    <genClasses ecoreClass="dataMapper.ecore#//Compare"/>
+    <genClasses ecoreClass="dataMapper.ecore#//CustomFunction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//CustomFunction/functionName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//CustomFunction/functionDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//CustomFunction/outputConnectorTag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//CustomFunction/InputConnectorTag"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Properties">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Properties/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Properties/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Properties/scope"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Compare">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Compare/comparisonOperator"/>
+    </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//StringToNumber"/>
     <genClasses ecoreClass="dataMapper.ecore#//StringToBoolean"/>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperRoot">

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
+
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
@@ -26,12 +26,18 @@ import org.eclipse.ui.forms.editor.*;
 import org.eclipse.ui.forms.events.*;
 import org.eclipse.ui.forms.widgets.*;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
+
 /**
  * 
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
 public class LocalEntryFormPage extends FormPage {
+	
+	private String localEntryName;
+	private String localEntryValue;
+	private String localEntryType;
+	
 	/**
 	 * @param id
 	 * @param title
@@ -42,10 +48,11 @@ public class LocalEntryFormPage extends FormPage {
 	public LocalEntryFormPage(FormEditor editor) {
 		super(editor, "localEntryForm", Messages.getString("LocalEntryFormPage.label"));
 	}
+
 	protected void createFormContent(IManagedForm managedForm) {
 		ScrolledForm form = managedForm.getForm();
 		FormToolkit toolkit = managedForm.getToolkit();
-		form.setText(Messages.getString("FreeFormPage.sectionTitle1")); //$NON-NLS-1$
+		form.setText(Messages.getString("Page.heading")); //$NON-NLS-1$
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 		
 		ColumnLayout layout = new ColumnLayout();
@@ -65,7 +72,7 @@ public class LocalEntryFormPage extends FormPage {
 		basicSectionClient.setLayout(new TableWrapLayout());
 		
 		toolkit.createLabel(basicSectionClient, "Local Entry Name");
-		Text localEntryName = toolkit.createText(basicSectionClient, "");
+		Text localEntryName = toolkit.createText(basicSectionClient, getLocalEntryName());
 		localEntryName.setBackground(new Color(null, 229,236,253));
 		localEntryName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		  
@@ -97,7 +104,7 @@ public class LocalEntryFormPage extends FormPage {
 		  
 	 	section.setClient(basicSectionClient);
 	}
-	
+
 	private void createInlinedTextEntry(final ScrolledForm form, FormToolkit toolkit) {
 		Section section = createSection(form, toolkit, Messages.getString("LocalEntryFormPage.section.textEntry"));
 		
@@ -105,7 +112,7 @@ public class LocalEntryFormPage extends FormPage {
 		client.setLayout(new TableWrapLayout());
 		
 		toolkit.createLabel(client, "Value Literal");
-		Text localEntryTextValue = toolkit.createText(client, "");
+		Text localEntryTextValue = toolkit.createText(client, getLocalEntryValue());
 		localEntryTextValue.setBackground(new Color(null, 229,236,253));
 		localEntryTextValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
@@ -162,5 +169,29 @@ public class LocalEntryFormPage extends FormPage {
 		
 		return section;
 	}
+	
+	public synchronized String getLocalEntryName() {
+		return localEntryName;
+	}
 
+	public synchronized void setLocalEntryName(String localEntryName) {
+		this.localEntryName = localEntryName;
+	}
+
+	public synchronized String getLocalEntryValue() {
+		return localEntryValue;
+	}
+
+	public synchronized void setLocalEntryValue(String localEntryValue) {
+		this.localEntryValue = localEntryValue;
+	}
+
+	public synchronized String getLocalEntryType() {
+		return localEntryType;
+	}
+
+	public synchronized void setLocalEntryType(String localEntryType) {
+		this.localEntryType = localEntryType;
+	}
+	
 }

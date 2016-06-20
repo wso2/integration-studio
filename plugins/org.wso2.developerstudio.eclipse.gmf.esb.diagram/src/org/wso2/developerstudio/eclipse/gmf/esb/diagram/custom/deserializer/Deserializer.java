@@ -66,6 +66,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.LocalEntryFormPage;
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
@@ -200,8 +201,18 @@ public class Deserializer {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void updateDesign(String source, ESBFormEditor formEditor) throws Exception {
-		
+	public void updateDesign(String source, ESBFormEditor formEditor, ArtifactType artifactType) throws Exception {
+		Map<String, Object> artifacts = getArtifacts(source);	
+		for (Map.Entry<String, Object> artifact : artifacts.entrySet()) {
+			@SuppressWarnings("rawtypes")
+			IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance()
+					.getDeserializer(artifact.getValue());
+			AbstractEsbNodeDeserializer.refreshEditPartMap();
+			if (deserializer != null) {
+				EsbNode node = deserializer.createNode(formEditor,artifact.getValue());
+			}
+		}
+
 	}
 	
 	/**

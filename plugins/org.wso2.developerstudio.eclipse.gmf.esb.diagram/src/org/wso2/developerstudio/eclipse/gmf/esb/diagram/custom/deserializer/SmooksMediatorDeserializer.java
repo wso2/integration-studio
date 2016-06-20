@@ -20,6 +20,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.carbon.mediator.transform.SmooksMediator.TYPES;
 import org.wso2.developerstudio.eclipse.gmf.esb.ExpressionAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputMethod;
@@ -80,6 +81,12 @@ public class SmooksMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 		executeSetValueCommand(visualSmooksMediator.getConfigurationKey(),REGISTRY_KEY_PROPERTY__KEY_VALUE, smooksMediator.getConfigKey());
 		
 		return visualSmooksMediator;
+	}
+
+	@Override
+	public SmooksMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

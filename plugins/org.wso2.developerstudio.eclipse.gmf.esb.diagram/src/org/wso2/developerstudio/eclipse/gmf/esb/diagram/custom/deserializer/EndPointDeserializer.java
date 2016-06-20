@@ -25,6 +25,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
@@ -77,6 +78,12 @@ public class EndPointDeserializer extends AbstractEsbNodeDeserializer<EndpointWr
 		}
 		
 		return endpointDiagram;
+	}
+
+	@Override
+	public EndpointDiagram createNode(FormEditor part, EndpointWrapper object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

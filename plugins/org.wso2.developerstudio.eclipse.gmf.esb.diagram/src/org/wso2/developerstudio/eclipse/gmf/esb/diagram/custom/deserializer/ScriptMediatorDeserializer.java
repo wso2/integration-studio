@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -81,5 +82,11 @@ public class ScriptMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 		  executeSetValueCommand(EsbPackage.Literals.SCRIPT_MEDIATOR__MEDIATE_FUNCTION, scriptMediator.getFunction());
 		}
 		return visualScriptMediator;
+	}
+
+	@Override
+	public ScriptMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

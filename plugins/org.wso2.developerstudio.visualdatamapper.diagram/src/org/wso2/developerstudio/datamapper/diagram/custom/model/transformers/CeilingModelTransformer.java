@@ -18,7 +18,6 @@ package org.wso2.developerstudio.datamapper.diagram.custom.model.transformers;
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.IModelTransformer;
-import org.wso2.developerstudio.datamapper.impl.AddImpl;
 import org.wso2.developerstudio.datamapper.impl.CeliImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 

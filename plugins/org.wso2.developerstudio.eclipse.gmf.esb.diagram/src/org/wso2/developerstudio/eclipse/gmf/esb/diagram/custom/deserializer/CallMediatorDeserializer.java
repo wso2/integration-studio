@@ -15,6 +15,7 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
@@ -81,6 +82,12 @@ public class CallMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 			endPointType = CallMediatorEndpointType.XPATH;
 		}
 		return endPointType;
+	}
+
+	@Override
+	public CallMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

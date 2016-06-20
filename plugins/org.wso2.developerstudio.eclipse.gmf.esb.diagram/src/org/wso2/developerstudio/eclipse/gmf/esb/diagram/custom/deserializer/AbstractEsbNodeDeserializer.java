@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.synapse.Mediator;
+import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -50,6 +51,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.ConnectorImpl;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
@@ -60,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry;
 import org.wso2.developerstudio.eclipse.gmf.esb.LogCategory;
 //import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -1111,5 +1114,11 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 		executeSetValueCommand(visualElement,ESB_ELEMENT__DESCRIPTION, mediator.getShortDescription());
 		executeAddAllCommand(visualElement.getCommentsList(), ((AbstractMediator)mediator).getCommentsList());
 	}
+	
+	public EsbNode createNode(FormEditor part, Entry object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

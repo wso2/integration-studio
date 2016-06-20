@@ -62,6 +62,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIHandlerProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
@@ -256,6 +257,12 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 		}
 		
 		return synapseAPI;
+	}
+
+	@Override
+	public SynapseAPI createNode(FormEditor part, API object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

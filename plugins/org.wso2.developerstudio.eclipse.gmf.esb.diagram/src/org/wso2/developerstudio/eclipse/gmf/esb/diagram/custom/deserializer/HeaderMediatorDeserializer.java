@@ -9,6 +9,7 @@ import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
@@ -133,6 +134,12 @@ public class HeaderMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 			executeSetValueCommand(HEADER_MEDIATOR__VALUE_TYPE, HeaderValueType.INLINE);
 		}
 		return visualHeaderMediator;
+	}
+
+	@Override
+	public HeaderMediator createNode(FormEditor part, AbstractMediator object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

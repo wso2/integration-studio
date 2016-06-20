@@ -45,6 +45,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewObjectAct
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.CompareConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.ConfigureCustomFunctionAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConstantConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.DisableNullableAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.EditArrayAction;
@@ -68,6 +69,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
@@ -162,6 +164,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(ANDEditPart.class, new ANDConfigureAction(part));
 		contextActions.put(OREditPart.class, new ORConfigureAction(part));
 		contextActions.put(CompareEditPart.class, new CompareConfigureAction(part));
+		contextActions.put(CustomFunctionEditPart.class, new ConfigureCustomFunctionAction(part));
 		//contextActions.put(IfElseEditPart.class, new IfElseConfigureAction(part));
 		contextActions.put(StartsWithEditPart.class, new StartsWithConfigureAction(part));
 		contextActions.put(EndsWithEditPart.class, new EndsWithConfigureAction(part));

@@ -27,9 +27,11 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.DMOperatorTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
@@ -71,7 +73,27 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		initializeAlgorithmFields();
 		List<MappingOperation> mappingOperationList = populateOperationListFromModel(model);
 		String mainFunction = generateMainFunction(mappingOperationList, model);
-		return mainFunction;
+		String customFunctions = generateCustomFunctions(model);
+		return mainFunction+customFunctions;
+	}
+
+	private String generateCustomFunctions(DataMapperDiagramModel model) {
+		StringBuilder functionBuilder = new StringBuilder();
+		for (DMOperation operation : model.getOperationsList()) {
+			if(DataMapperOperatorType.CUSTOM_FUNCTION.equals(operation.getOperatorType())){
+				functionBuilder.append("function "+addFunctionDefinition(operation));
+			}
+			functionBuilder.append("\n");
+		}
+		return functionBuilder.toString();
+	}
+
+	private String addFunctionDefinition(DMOperation operation) {
+		StringBuilder functionBuilder = new StringBuilder();
+		functionBuilder.append(operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME));
+		String functionDefinition = (String) operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_DEFINITION);
+		functionBuilder.append(functionDefinition.substring(functionDefinition.indexOf("(")));
+		return functionBuilder.toString();
 	}
 
 	private void initializeAlgorithmFields() {

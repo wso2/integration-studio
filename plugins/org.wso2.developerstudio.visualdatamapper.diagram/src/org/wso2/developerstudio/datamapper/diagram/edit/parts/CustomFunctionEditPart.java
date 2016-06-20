@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -21,6 +22,7 @@ import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.CustomFunctionCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.CustomFunctionItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.impl.CustomFunctionImpl;
 
 /**
  * @generated NOT
@@ -41,6 +43,8 @@ public class CustomFunctionEditPart extends AbstractOperatorEditPart {
 	 * @generated
 	 */
 	protected IFigure primaryShape;
+
+	private String functionName;
 
 	/**
 	 * @generated
@@ -88,7 +92,8 @@ public class CustomFunctionEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new CustomFunctionFigure();
+		functionName = ((CustomFunctionImpl) ((View) getModel()).getElement()).getFunctionName();
+		return primaryShape = new CustomFunctionFigure(functionName);
 	}
 
 	/**
@@ -188,8 +193,11 @@ public class CustomFunctionEditPart extends AbstractOperatorEditPart {
 
 	public class CustomFunctionFigure extends OperatorRectangle {
 
-		public CustomFunctionFigure() {
+		public CustomFunctionFigure(String functionName) {
 			super("CustomFunction");
+			if (StringUtils.isNotEmpty(functionName)) {
+				super.changeOperatorHeader(functionName);
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -208,5 +216,9 @@ public class CustomFunctionEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getCustomFunctionFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 
 }

@@ -26,8 +26,13 @@ public class CustomOperatorModelTransformer implements IModelTransformer {
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
 		if (operator instanceof CustomFunctionImpl) {
+			CustomFunctionImpl customOperator = (CustomFunctionImpl) operator;
 			DMOperation customFunctionOperatorModel = new DMOperation(DataMapperOperatorType.CUSTOM_FUNCTION,
 					operator.toString(), index);
+			customFunctionOperatorModel.addProperty(TransformerConstants.CUSTOM_FUNCTION_NAME,
+					customOperator.getFunctionName());
+			customFunctionOperatorModel.addProperty(TransformerConstants.CUSTOM_FUNCTION_DEFINITION,
+					customOperator.getFunctionDefinition());
 			return customFunctionOperatorModel;
 		}
 		throw new IllegalArgumentException("CustomFunctionImpl operator expected. Found : " + operator.toString());

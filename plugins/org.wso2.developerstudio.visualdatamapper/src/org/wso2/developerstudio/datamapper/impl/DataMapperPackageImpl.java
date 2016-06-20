@@ -568,6 +568,42 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCustomFunction_FunctionName() {
+		return (EAttribute)customFunctionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCustomFunction_FunctionDefinition() {
+		return (EAttribute)customFunctionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCustomFunction_OutputConnectorTag() {
+		return (EAttribute)customFunctionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCustomFunction_InputConnectorTag() {
+		return (EAttribute)customFunctionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProperties() {
 		return propertiesEClass;
 	}
@@ -1576,6 +1612,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		maxEClass = createEClass(MAX);
 
 		customFunctionEClass = createEClass(CUSTOM_FUNCTION);
+		createEAttribute(customFunctionEClass, CUSTOM_FUNCTION__FUNCTION_NAME);
+		createEAttribute(customFunctionEClass, CUSTOM_FUNCTION__FUNCTION_DEFINITION);
+		createEAttribute(customFunctionEClass, CUSTOM_FUNCTION__OUTPUT_CONNECTOR_TAG);
+		createEAttribute(customFunctionEClass, CUSTOM_FUNCTION__INPUT_CONNECTOR_TAG);
 
 		propertiesEClass = createEClass(PROPERTIES);
 
@@ -1811,6 +1851,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(maxEClass, Max.class, "Max", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(customFunctionEClass, CustomFunction.class, "CustomFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCustomFunction_FunctionName(), ecorePackage.getEString(), "functionName", "customFunction", 0, 1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomFunction_FunctionDefinition(), ecorePackage.getEString(), "functionDefinition", "customFunction($in1,$in2){ \\n // do something \\n return ($in1 + $in2);\\n}", 0, 1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomFunction_OutputConnectorTag(), ecorePackage.getEString(), "outputConnectorTag", "Result", 0, 1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomFunction_InputConnectorTag(), ecorePackage.getEString(), "InputConnectorTag", "In", 0, -1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertiesEClass, Properties.class, "Properties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

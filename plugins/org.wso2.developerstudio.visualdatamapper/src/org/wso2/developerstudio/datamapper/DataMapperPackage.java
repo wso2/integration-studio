@@ -681,13 +681,49 @@ public interface DataMapperPackage extends EPackage {
 	int CUSTOM_FUNCTION__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Function Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_FUNCTION__FUNCTION_NAME = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Function Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_FUNCTION__FUNCTION_DEFINITION = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Output Connector Tag</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_FUNCTION__OUTPUT_CONNECTOR_TAG = OPERATOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Input Connector Tag</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_FUNCTION__INPUT_CONNECTOR_TAG = OPERATOR_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Custom Function</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_FUNCTION_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int CUSTOM_FUNCTION_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.PropertiesImpl <em>Properties</em>}' class.
@@ -3811,6 +3847,50 @@ public interface DataMapperPackage extends EPackage {
 	EClass getCustomFunction();
 
 				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.CustomFunction#getFunctionName <em>Function Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Function Name</em>'.
+	 * @see org.wso2.developerstudio.datamapper.CustomFunction#getFunctionName()
+	 * @see #getCustomFunction()
+	 * @generated
+	 */
+	EAttribute getCustomFunction_FunctionName();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.CustomFunction#getFunctionDefinition <em>Function Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Function Definition</em>'.
+	 * @see org.wso2.developerstudio.datamapper.CustomFunction#getFunctionDefinition()
+	 * @see #getCustomFunction()
+	 * @generated
+	 */
+	EAttribute getCustomFunction_FunctionDefinition();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.CustomFunction#getOutputConnectorTag <em>Output Connector Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Output Connector Tag</em>'.
+	 * @see org.wso2.developerstudio.datamapper.CustomFunction#getOutputConnectorTag()
+	 * @see #getCustomFunction()
+	 * @generated
+	 */
+	EAttribute getCustomFunction_OutputConnectorTag();
+
+				/**
+	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.datamapper.CustomFunction#getInputConnectorTag <em>Input Connector Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Input Connector Tag</em>'.
+	 * @see org.wso2.developerstudio.datamapper.CustomFunction#getInputConnectorTag()
+	 * @see #getCustomFunction()
+	 * @generated
+	 */
+	EAttribute getCustomFunction_InputConnectorTag();
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Properties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5043,6 +5123,38 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CUSTOM_FUNCTION = eINSTANCE.getCustomFunction();
+
+		/**
+		 * The meta object literal for the '<em><b>Function Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_FUNCTION__FUNCTION_NAME = eINSTANCE.getCustomFunction_FunctionName();
+
+		/**
+		 * The meta object literal for the '<em><b>Function Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_FUNCTION__FUNCTION_DEFINITION = eINSTANCE.getCustomFunction_FunctionDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Connector Tag</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_FUNCTION__OUTPUT_CONNECTOR_TAG = eINSTANCE.getCustomFunction_OutputConnectorTag();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Connector Tag</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_FUNCTION__INPUT_CONNECTOR_TAG = eINSTANCE.getCustomFunction_InputConnectorTag();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.PropertiesImpl <em>Properties</em>}' class.

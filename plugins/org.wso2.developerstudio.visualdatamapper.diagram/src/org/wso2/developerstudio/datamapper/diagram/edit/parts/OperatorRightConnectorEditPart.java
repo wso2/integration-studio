@@ -33,6 +33,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonRe
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
+import org.wso2.developerstudio.datamapper.impl.PropertiesImpl;
 
 /**
  * @generated NOT
@@ -226,7 +227,22 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 					return true;
 				}
 			}
-		} else {
+		} else if (operator instanceof PropertiesImpl) {
+			PropertiesImpl propertyImpl = (PropertiesImpl) operator;
+			if (propertyImpl.getType() != null) {
+				if (figure != null) {
+					connectorLabel = new Label(outputLabel + " [" + propertyImpl.getType().getLiteral() + "] ");
+					figure.add(connectorLabel);
+					return true;
+				}
+			} else {
+				if (figure != null) {
+					connectorLabel = new Label(outputLabel + " " + getPossibleOutputVariableTypes(operator) + " ");
+					figure.add(connectorLabel);
+					return true;
+				}
+			}
+		}else {
 			if (figure != null) {
 				connectorLabel = new Label(outputLabel + " " + getPossibleOutputVariableTypes(operator) + " ");
 				figure.add(connectorLabel);
@@ -333,6 +349,14 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 		if (figure != null) {
 			figure.remove(connectorLabel);
 			connectorLabel = new Label("Const :" + " [" + constantType.getLiteral() + "] ");
+			figure.add(connectorLabel);
+		}
+	}
+	
+	public void setPropertyTypeInConnector(SchemaDataType constantType) {
+		if (figure != null) {
+			figure.remove(connectorLabel);
+			connectorLabel = new Label("Value :" + " [" + constantType.getLiteral() + "] ");
 			figure.add(connectorLabel);
 		}
 	}

@@ -89,7 +89,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//CustomFunction/outputConnectorTag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//CustomFunction/InputConnectorTag"/>
     </genClasses>
-    <genClasses ecoreClass="dataMapper.ecore#//Properties"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Properties">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Properties/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Properties/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Properties/scope"/>
+    </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Compare">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Compare/comparisonOperator"/>
     </genClasses>

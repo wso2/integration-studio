@@ -80,8 +80,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 	private String generateCustomFunctions(DataMapperDiagramModel model) {
 		StringBuilder functionBuilder = new StringBuilder();
 		for (DMOperation operation : model.getOperationsList()) {
-			if(DataMapperOperatorType.CUSTOM_FUNCTION.equals(operation.getOperatorType())){
-				functionBuilder.append("function "+addFunctionDefinition(operation));
+			if (DataMapperOperatorType.CUSTOM_FUNCTION.equals(operation.getOperatorType())) {
+				functionBuilder.append(JS_FUNCTION_NAME + " " + addFunctionDefinition(operation));
 			}
 			functionBuilder.append("\n");
 		}
@@ -500,7 +500,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		if (outputVariables.size() > 1) {
 			operationBuilder.append("[ ");
 		} else if (outputVariables.size() == 1) {
-			if (DataMapperOperatorType.CONSTANT.equals(mappingOperation.getOperation().getOperatorType())
+			if ((DataMapperOperatorType.PROPERTIES.equals(mappingOperation.getOperation().getOperatorType())
+					|| DataMapperOperatorType.CONSTANT.equals(mappingOperation.getOperation().getOperatorType()))
 					&& DMVariableType.INTERMEDIATE.equals(outputVariables.get(0).getType())) {
 				return "";
 			}

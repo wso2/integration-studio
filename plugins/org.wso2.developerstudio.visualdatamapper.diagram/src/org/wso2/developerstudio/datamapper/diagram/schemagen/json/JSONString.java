@@ -1,5 +1,3 @@
-package org.wso2.developerstudio.json;
-
 /*
  * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
@@ -16,6 +14,7 @@ package org.wso2.developerstudio.json;
  * limitations under the License.
  */
 
+package org.wso2.developerstudio.datamapper.diagram.schemagen.json;
 
 /**
  * The <code>JSONString</code> interface allows a <code>toJSONString()</code>

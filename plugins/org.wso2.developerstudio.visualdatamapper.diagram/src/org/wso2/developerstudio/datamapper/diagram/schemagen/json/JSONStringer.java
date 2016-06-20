@@ -1,5 +1,3 @@
-package org.wso2.developerstudio.json;
-
 /*
  * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
@@ -16,6 +14,7 @@ package org.wso2.developerstudio.json;
  * limitations under the License.
  */
 
+package org.wso2.developerstudio.datamapper.diagram.schemagen.json;
 
 import java.io.StringWriter;
 
@@ -47,7 +46,7 @@ import java.io.StringWriter;
  * <p>
  * This can sometimes be easier than using a JSONObject to build a string.
  * @author JSON.org
- * @version 2015-12-09
+ * @version 2008-09-18
  */
 public class JSONStringer extends JSONWriter {
     /**

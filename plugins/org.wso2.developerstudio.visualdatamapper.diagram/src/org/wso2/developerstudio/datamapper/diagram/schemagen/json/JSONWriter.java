@@ -1,8 +1,3 @@
-package org.wso2.developerstudio.json;
-
-import java.io.IOException;
-import java.io.Writer;
-
 /*
  * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
@@ -18,6 +13,12 @@ import java.io.Writer;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package org.wso2.developerstudio.datamapper.diagram.schemagen.json;
+
+
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * JSONWriter provides a quick and convenient way of producing JSON text.
@@ -46,7 +47,7 @@ import java.io.Writer;
  * <p>
  * This can sometimes be easier than using a JSONObject to build a string.
  * @author JSON.org
- * @version 2015-12-09
+ * @version 2011-11-24
  */
 public class JSONWriter {
     private static final int maxdepth = 200;

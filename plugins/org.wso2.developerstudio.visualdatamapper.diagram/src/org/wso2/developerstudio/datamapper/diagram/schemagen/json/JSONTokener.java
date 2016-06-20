@@ -1,12 +1,3 @@
-package org.wso2.developerstudio.json;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringReader;
-
 /*
  * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
@@ -22,6 +13,16 @@ import java.io.StringReader;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package org.wso2.developerstudio.datamapper.diagram.schemagen.json;
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
 
 /**
  * A JSONTokener takes a source string and extracts characters and tokens from
@@ -270,11 +271,7 @@ public class JSONTokener {
                     sb.append('\r');
                     break;
                 case 'u':
-                    try {
-                        sb.append((char)Integer.parseInt(this.next(4), 16));
-                    } catch (NumberFormatException e) {
-                        throw this.syntaxError("Illegal escape.", e);
-                    }
+                    sb.append((char)Integer.parseInt(this.next(4), 16));
                     break;
                 case '"':
                 case '\'':
@@ -429,16 +426,6 @@ public class JSONTokener {
         return new JSONException(message + this.toString());
     }
 
-    /**
-     * Make a JSONException to signal a syntax error.
-     *
-     * @param message The error message.
-     * @param causedBy The throwable that caused the error.
-     * @return  A JSONException object, suitable for throwing
-     */
-    public JSONException syntaxError(String message, Throwable causedBy) {
-        return new JSONException(message + this.toString(), causedBy);
-    }
 
     /**
      * Make a printable string of this JSONTokener.

@@ -327,5 +327,4 @@ Import-Package: com.fasterxml.jackson.annotation;version="2.7.2",
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.part,
  org.wso2.developerstudio.eclipse.registry.core;version="[4.1.0,4.2.0)",
- org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[4.1.0,4.2.0)",
- org.wso2.developerstudio.json
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[4.1.0,4.2.0)"

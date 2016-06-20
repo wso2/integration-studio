@@ -1,5 +1,3 @@
-package org.wso2.developerstudio.json;
-
 /*
  * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
@@ -16,15 +14,18 @@ package org.wso2.developerstudio.json;
  * limitations under the License.
  */
 
+package org.wso2.developerstudio.datamapper.diagram.schemagen.json;
+
+
 /**
  * The JSONException is thrown by the JSON.org classes when things are amiss.
  *
  * @author JSON.org
- * @version 2015-12-09
+ * @version 2014-05-03
  */
 public class JSONException extends RuntimeException {
-    /** Serialization ID */
     private static final long serialVersionUID = 0;
+    private Throwable cause;
 
     /**
      * Constructs a JSONException with an explanatory message.
@@ -32,30 +33,28 @@ public class JSONException extends RuntimeException {
      * @param message
      *            Detail about the reason for the exception.
      */
-    public JSONException(final String message) {
+    public JSONException(String message) {
         super(message);
     }
 
     /**
-     * Constructs a JSONException with an explanatory message and cause.
-     * 
-     * @param message
-     *            Detail about the reason for the exception.
-     * @param cause
-     *            The cause.
+     * Constructs a new JSONException with the specified cause.
+     * @param cause The cause.
      */
-    public JSONException(final String message, final Throwable cause) {
-        super(message, cause);
+    public JSONException(Throwable cause) {
+        super(cause.getMessage());
+        this.cause = cause;
     }
 
     /**
-     * Constructs a new JSONException with the specified cause.
-     * 
-     * @param cause
-     *            The cause.
+     * Returns the cause of this exception or null if the cause is nonexistent
+     * or unknown.
+     *
+     * @return the cause of this exception or null if the cause is nonexistent
+     *          or unknown.
      */
-    public JSONException(final Throwable cause) {
-        super(cause.getMessage(), cause);
+    @Override
+    public Throwable getCause() {
+        return this.cause;
     }
-
 }

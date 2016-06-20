@@ -36,9 +36,10 @@ import org.apache.axiom.om.OMNode;
 import org.apache.axiom.om.OMText;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.io.FileUtils;
-import org.wso2.developerstudio.json.JSONException;
-import org.wso2.developerstudio.json.JSONObject;
-import org.wso2.developerstudio.json.XML;
+import org.wso2.developerstudio.datamapper.diagram.schemagen.json.JSONException;
+import org.wso2.developerstudio.datamapper.diagram.schemagen.json.JSONObject;
+import org.wso2.developerstudio.datamapper.diagram.schemagen.json.XML;
+
 
 public class SchemaGeneratorForXML extends SchemaGeneratorForJSON implements ISchemaGenerator {
 	private static final String TEMP_AVRO_GEN_LOCATION = "tempXSDGenLocation";

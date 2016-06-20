@@ -1,5 +1,3 @@
-package org.wso2.developerstudio.json;
-
 /*
  * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
@@ -16,11 +14,14 @@ package org.wso2.developerstudio.json;
  * limitations under the License.
  */
 
+package org.wso2.developerstudio.datamapper.diagram.schemagen.json;
+
+
 /**
  * The XMLTokener extends the JSONTokener to provide additional methods
  * for the parsing of XML texts.
  * @author JSON.org
- * @version 2015-12-09
+ * @version 2014-05-03
  */
 public class XMLTokener extends JSONTokener {
 

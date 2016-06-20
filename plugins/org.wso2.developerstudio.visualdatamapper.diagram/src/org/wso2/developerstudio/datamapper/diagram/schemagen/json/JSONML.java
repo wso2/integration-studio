@@ -1,5 +1,3 @@
-package org.wso2.developerstudio.json;
-
 /*
  * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
@@ -16,6 +14,8 @@ package org.wso2.developerstudio.json;
  * limitations under the License.
  */
 
+package org.wso2.developerstudio.datamapper.diagram.schemagen.json;
+
 
 import java.util.Iterator;
 
@@ -26,7 +26,7 @@ import java.util.Iterator;
  * the JsonML transform.
  *
  * @author JSON.org
- * @version 2016-01-30
+ * @version 2014-05-03
  */
 public class JSONML {
 
@@ -167,7 +167,7 @@ public class JSONML {
                             if (!(token instanceof String)) {
                                 throw x.syntaxError("Missing value");
                             }
-                            newjo.accumulate(attribute, JSONObject.stringToValue((String)token));
+                            newjo.accumulate(attribute, XML.stringToValue((String)token));
                             token = null;
                         } else {
                             newjo.accumulate(attribute, "");
@@ -220,7 +220,7 @@ public class JSONML {
             } else {
                 if (ja != null) {
                     ja.put(token instanceof String
-                        ? JSONObject.stringToValue((String)token)
+                        ? XML.stringToValue((String)token)
                         : token);
                 }
             }

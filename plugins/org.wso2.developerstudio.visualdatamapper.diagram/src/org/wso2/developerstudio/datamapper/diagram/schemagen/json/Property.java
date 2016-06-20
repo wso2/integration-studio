@@ -1,5 +1,3 @@
-package org.wso2.developerstudio.json;
-
 /*
  * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
@@ -15,6 +13,8 @@ package org.wso2.developerstudio.json;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package org.wso2.developerstudio.datamapper.diagram.schemagen.json;
 
 import java.util.Enumeration;
 import java.util.Iterator;

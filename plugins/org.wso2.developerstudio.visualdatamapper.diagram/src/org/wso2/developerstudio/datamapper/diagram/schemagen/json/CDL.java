@@ -1,5 +1,3 @@
-package org.wso2.developerstudio.json;
-
 /*
  * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
@@ -16,6 +14,7 @@ package org.wso2.developerstudio.json;
  * limitations under the License.
  */
 
+package org.wso2.developerstudio.datamapper.diagram.schemagen.json;
 
 /**
  * This provides static methods to convert comma delimited text into a
@@ -34,7 +33,7 @@ package org.wso2.developerstudio.json;
  * The names for the elements in the JSONObjects can be taken from the names
  * in the first row.
  * @author JSON.org
- * @version 2016-05-01
+ * @version 2015-05-01
  */
 public class CDL {
 
@@ -62,12 +61,7 @@ public class CDL {
             for (;;) {
                 c = x.next();
                 if (c == q) {
-                    //Handle escaped double-quote
-                    if(x.next() != '\"')
-                    {
-                        x.back();
-                        break;
-                    }
+                    break;
                 }
                 if (c == 0 || c == '\n' || c == '\r') {
                     throw x.syntaxError("Missing close quote '" + q + "'.");

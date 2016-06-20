@@ -15,7 +15,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/jackson-mapper-asl-1.9.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-core-asl-1.9.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/avro-1.7.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/json-20090211.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/opencsv-2.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/rhino-1.7R4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>

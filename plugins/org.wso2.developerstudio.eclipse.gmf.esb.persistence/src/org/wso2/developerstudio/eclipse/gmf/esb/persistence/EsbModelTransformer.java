@@ -18,6 +18,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.persistence;
 import java.io.File;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.ui.forms.editor.FormPage;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.DefaultEsbModelExporter;
 
@@ -41,6 +43,8 @@ public interface EsbModelTransformer {
 	void export(Resource resource, File destination) throws Exception;
 	
 	String designToSource(EsbServer serverModel) throws Exception;
+	
+	String designToSource(FormPage serverModel, ArtifactType artifactType) throws Exception;
 	
 	EsbServer sourceToDesign(String source,EsbServer esbServer) throws Exception;
 }

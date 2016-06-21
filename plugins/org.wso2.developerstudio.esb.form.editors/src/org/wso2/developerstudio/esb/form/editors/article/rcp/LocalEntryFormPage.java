@@ -34,9 +34,13 @@ import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
  */
 public class LocalEntryFormPage extends FormPage {
 	
-	private String localEntryName;
-	private String localEntryValue;
-	private String localEntryType;
+	public static final String SOURCE_URL_ENTRY = "Source URL Entry";
+	public static final String IN_LINED_XML_ENTRY = "In-lined XML Entry";
+	public static final String IN_LINED_TEXT_ENTRY = "In-lined Text Entry";
+	private Text localEntryNameTxt;
+	private Combo localEntryTypeCombo;
+	private Text localEntryTextValue;
+	private Label localEntryValueLbl;
 	
 	/**
 	 * @param id
@@ -72,17 +76,18 @@ public class LocalEntryFormPage extends FormPage {
 		basicSectionClient.setLayout(new TableWrapLayout());
 		
 		toolkit.createLabel(basicSectionClient, "Local Entry Name");
-		Text localEntryName = toolkit.createText(basicSectionClient, getLocalEntryName());
-		localEntryName.setBackground(new Color(null, 229,236,253));
-		localEntryName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		localEntryNameTxt = toolkit.createText(basicSectionClient, "");
+		localEntryNameTxt.setBackground(new Color(null, 229,236,253));
+		localEntryNameTxt.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		  
 		 
 		toolkit.createLabel(basicSectionClient, "Local Entry Type");
-		Combo localEntryType = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		localEntryType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] items = {"In-lined Text Entry", "In-lined XML Entry", "Source URL Entry"};
-		localEntryType.setItems(items);
-		localEntryType.addSelectionListener(new SelectionAdapter() {
+		localEntryTypeCombo = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		localEntryTypeCombo.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] items = {IN_LINED_TEXT_ENTRY, IN_LINED_XML_ENTRY, SOURCE_URL_ENTRY};
+		localEntryTypeCombo.setItems(items);
+		
+		localEntryTypeCombo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
@@ -92,65 +97,40 @@ public class LocalEntryFormPage extends FormPage {
 					selectedSection=null;
 				}
 
-				if (localEntryType.getText().equals("In-lined Text Entry")) {
-					createInlinedTextEntry(form,toolkit);					
-				} else if (localEntryType.getText().equals("In-lined XML Entry")) {
-					createInlinedXmlEntry(form,toolkit);
-				} else if (localEntryType.getText().equals("Source URL Entry")) {
-					createSourceUrlEntry(form,toolkit);
+				if (localEntryTypeCombo.getText().equals(IN_LINED_TEXT_ENTRY)) {
+					createInlinedTextEntry(localEntryValueLbl,localEntryTextValue);
+				} else if (localEntryTypeCombo.getText().equals(IN_LINED_XML_ENTRY)) {
+					createInlinedXmlEntry(localEntryValueLbl,localEntryTextValue);
+				} else if (localEntryTypeCombo.getText().equals(SOURCE_URL_ENTRY)) {
+					createSourceUrlEntry(localEntryValueLbl,localEntryTextValue);
 				}
 			}
 		});
-		  
+		
+		localEntryValueLbl = toolkit.createLabel(basicSectionClient, IN_LINED_TEXT_ENTRY);
+		localEntryTextValue = toolkit.createText(basicSectionClient, "");
+		localEntryTextValue.setBackground(new Color(null, 229,236,253));
+		localEntryTextValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+	  
 	 	section.setClient(basicSectionClient);
 	}
 
-	private void createInlinedTextEntry(final ScrolledForm form, FormToolkit toolkit) {
-		Section section = createSection(form, toolkit, Messages.getString("LocalEntryFormPage.section.textEntry"));
+	private void createInlinedTextEntry(final Label label, Text textBox) {
 		
-		Composite client = toolkit.createComposite(section);
-		client.setLayout(new TableWrapLayout());
-		
-		toolkit.createLabel(client, "Value Literal");
-		Text localEntryTextValue = toolkit.createText(client, getLocalEntryValue());
-		localEntryTextValue.setBackground(new Color(null, 229,236,253));
-		localEntryTextValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		section.setClient(client);
-		
-		selectedSection = section;
+		label.setText(IN_LINED_TEXT_ENTRY);
+		textBox.setText("");
 	}
 	
-	private void createInlinedXmlEntry(final ScrolledForm form, FormToolkit toolkit) {
-		Section section = createSection(form, toolkit, Messages.getString("LocalEntryFormPage.section.xmlEntry"));
+	private void createInlinedXmlEntry(final Label label, Text textBox) {
 		
-		Composite client = toolkit.createComposite(section);
-		client.setLayout(new TableWrapLayout());
-
-		toolkit.createLabel(client, "Value XML");
-		Text localEntryXmlValue = toolkit.createText(client, "");
-		localEntryXmlValue.setBackground(new Color(null, 229,236,253));
-		localEntryXmlValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		section.setClient(client);
-		
-		selectedSection = section;
+		label.setText(IN_LINED_XML_ENTRY);
+		textBox.setText("");
 	}
 	
-	private void createSourceUrlEntry(final ScrolledForm form, FormToolkit toolkit) {
-		Section section = createSection(form, toolkit, Messages.getString("LocalEntryFormPage.section.urlEntry"));
-
-		Composite client = toolkit.createComposite(section);
-		client.setLayout(new TableWrapLayout());
+	private void createSourceUrlEntry(final Label label, Text textBox) {
 		
-		toolkit.createLabel(client, "Value URL");
-		Text localEntryUrlValue = toolkit.createText(client, "");
-		localEntryUrlValue.setBackground(new Color(null, 229,236,253));
-		localEntryUrlValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		section.setClient(client);
-		
-		selectedSection = section;
+		label.setText(SOURCE_URL_ENTRY);
+		textBox.setText("");
 	}
 	
 	private Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {
@@ -170,28 +150,36 @@ public class LocalEntryFormPage extends FormPage {
 		return section;
 	}
 	
-	public synchronized String getLocalEntryName() {
-		return localEntryName;
+	public Text getLocalEntryNameTxt() {
+		return localEntryNameTxt;
 	}
 
-	public synchronized void setLocalEntryName(String localEntryName) {
-		this.localEntryName = localEntryName;
+	public void setLocalEntryNameTxt(Text localEntryNameTxt) {
+		this.localEntryNameTxt = localEntryNameTxt;
+	}
+	
+	public Combo getLocalEntryTypeCombo() {
+		return localEntryTypeCombo;
 	}
 
-	public synchronized String getLocalEntryValue() {
-		return localEntryValue;
+	public void setLocalEntryTypeCombo(Combo localEntryTypeCombo) {
+		this.localEntryTypeCombo = localEntryTypeCombo;
 	}
 
-	public synchronized void setLocalEntryValue(String localEntryValue) {
-		this.localEntryValue = localEntryValue;
+	public Text getLocalEntryTextValue() {
+		return localEntryTextValue;
 	}
 
-	public synchronized String getLocalEntryType() {
-		return localEntryType;
+	public void setLocalEntryTextValue(Text localEntryTextValue) {
+		this.localEntryTextValue = localEntryTextValue;
 	}
 
-	public synchronized void setLocalEntryType(String localEntryType) {
-		this.localEntryType = localEntryType;
+	public Section getSelectedSection() {
+		return selectedSection;
+	}
+
+	public void setSelectedSection(Section selectedSection) {
+		this.selectedSection = selectedSection;
 	}
 	
 }

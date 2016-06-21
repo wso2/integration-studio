@@ -34,8 +34,7 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 
 	@Override
 	public LocalEntry createNode(IGraphicalEditPart part, Entry entry) {
-		LocalEntry localEntry = (LocalEntry) DeserializerUtils.createNode(part,
-				EsbElementTypes.LocalEntry_3663);
+		LocalEntry localEntry = (LocalEntry) DeserializerUtils.createNode(part, EsbElementTypes.LocalEntry_3663);
 		setElementToEdit(localEntry);
 
 		executeSetValueCommand(LOCAL_ENTRY__ENTRY_NAME, entry.getKey());
@@ -46,36 +45,51 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 		} else if (entry.getType() == INLINE_XML) {
 			executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.XML);
 			executeSetValueCommand(LOCAL_ENTRY__VALUE_XML, entry.getValue().toString());
-		} else if (entry.getType() == INLINE_TEXT){
+		} else if (entry.getType() == INLINE_TEXT) {
 			executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.LITERAL);
 			executeSetValueCommand(LOCAL_ENTRY__VALUE_LITERAL, entry.getValue().toString());
-		} else{
+		} else {
 			/* REMOTE_ENTRY? nothing to do */
 		}
 
 		return localEntry;
 	}
-	
+
 	@Override
 	public LocalEntry createNode(FormEditor formEditor, Entry object) {
 		ESBFormEditor LocalEntryFormEditor = (ESBFormEditor) formEditor;
 		FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
 		if (formPage instanceof LocalEntryFormPage) {
 			LocalEntryFormPage localEntryPage = (LocalEntryFormPage) formPage;
-			localEntryPage.setLocalEntryName(object.getKey());
-			if (object.getType() == URL_SRC) {
-				localEntryPage.setLocalEntryType("URL");
+			if (localEntryPage.getLocalEntryNameTxt() != null) {
+				localEntryPage.getLocalEntryNameTxt().setText(object.getKey());
 			}
 			if (object.getType() == INLINE_TEXT) {
-				localEntryPage.setLocalEntryType("TEXT");
+				if (localEntryPage.getLocalEntryTypeCombo() != null) {
+					localEntryPage.getLocalEntryTypeCombo().select(0);
+					if (localEntryPage.getLocalEntryTextValue() != null) {
+						localEntryPage.getLocalEntryTextValue().setText(object.getValue().toString());
+					}
+				}
 			}
 			if (object.getType() == INLINE_XML) {
-				localEntryPage.setLocalEntryType("XML");
+				if (localEntryPage.getLocalEntryTypeCombo() != null) {
+					localEntryPage.getLocalEntryTypeCombo().select(1);
+					if (localEntryPage.getLocalEntryTextValue() != null) {
+						localEntryPage.getLocalEntryTextValue().setText(object.getValue().toString());
+					}
+				}
 			}
-			localEntryPage.setLocalEntryValue(object.getValue().toString());
+			if (object.getType() == URL_SRC) {
+				if (localEntryPage.getLocalEntryTypeCombo() != null) {
+					localEntryPage.getLocalEntryTypeCombo().select(2);
+					if (localEntryPage.getLocalEntryTextValue() != null) {
+						localEntryPage.getLocalEntryTextValue().setText(object.getValue().toString());
+					}
+				}
+			}
 		}
 		return (LocalEntry) super.createNode(formEditor, object);
 	}
 
-	
 }

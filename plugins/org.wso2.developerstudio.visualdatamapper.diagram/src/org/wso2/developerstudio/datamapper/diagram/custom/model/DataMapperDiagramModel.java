@@ -331,8 +331,8 @@ public class DataMapperDiagramModel {
 								int variableIndex = variablesArray.size();
 								DMVariable tempVar = new DMVariable(
 										"{" + TransformerConstants.PROPERTIES_PREFIX + "."
-												+ operator.getProperty(TransformerConstants.PROPERTY_SCOPE_TAG) + "."
-												+ operator.getProperty(TransformerConstants.PROPERTY_NAME_TAG) + "}",
+												+ operator.getProperty(TransformerConstants.PROPERTY_SCOPE_TAG) + "['"
+												+ operator.getProperty(TransformerConstants.PROPERTY_NAME_TAG) + "']}",
 										getUniqueDirectId(operatorElement, indexOfConnector),
 										DMVariableType.INTERMEDIATE, SchemaDataType.INT, variableIndex, index);
 								addVariableTypeToMap(tempVar.getName(),

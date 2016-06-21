@@ -192,6 +192,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	private String fileName;
 	private String validationMessage;
 	boolean initialPageLoad;
+	boolean isFormEditor;
 
 	/**
 	 * Creates a multi-page editor
@@ -434,6 +435,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				fileName = file.getName();
 				final Deserializer deserializer = Deserializer.getInstance();
 				InputStream inputStream = null;
+				isFormEditor = true;
 
 				try {
 					inputStream = file.getContents();
@@ -555,7 +557,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		case COMPLEX_ENDPOINT:
 			break;
 		case LOCAL_ENTRY:
-			artifactType = ArtifactType.LOCAL_ENTRY;
+			isFormEditor = true;
 			createPageForm(server.getType());
 		case MESSAGE_PROCESSOR:
 			createPageForm(server.getType());
@@ -625,7 +627,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			}
 
 			try {
-				if (artifactType == ArtifactType.LOCAL_ENTRY) {
+				if (isFormEditor) {
 					sourceDirty = true;
 					handleFormViewActivatedEvent();
 				} else {
@@ -826,9 +828,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	private IFile updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
 		IFile xmlFile = null;
 		String source = null;
-		if (artifactType == ArtifactType.LOCAL_ENTRY) {
+		if (isFormEditor) {
 			FormPage localEntryFormPage = formEditor.getFormPageForArtifact(artifactType);
-			source = EsbModelTransformer.instance.designToSource(localEntryFormPage, artifactType);
+			source = EsbModelTransformer.instance.formToSource(localEntryFormPage, artifactType);
 
 		} else {
 			EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
@@ -923,7 +925,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				final Deserializer deserializer = Deserializer.getInstance();
 				DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(xmlSource);
 				if (deserializeStatus.isValid()) {
-					if (artifactType == ArtifactType.LOCAL_ENTRY) {
+					if (isFormEditor) {
 						sourceDirty = true;
 						handleFormViewActivatedEvent();
 					} else {

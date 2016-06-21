@@ -344,13 +344,11 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
         return inboundEndpoint;
     }
     
-    public String designToSource(FormPage formPage, ArtifactType artifactType ) throws Exception {
+    public String formToSource(FormPage formPage, ArtifactType artifactType ) throws Exception {
     	SynapseXMLConfigurationSerializer serializer = new SynapseXMLConfigurationSerializer();
 		SequenceMediatorSerializer sequenceSerializer = new SequenceMediatorSerializer();
 		OMElement configOM = null;
 		if (artifactType == ArtifactType.LOCAL_ENTRY) {
-//			org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry localEntry = new 
-//			localEntry.set
 			configOM = EntrySerializer.serializeEntry(
 					transformLocalEntry(formPage), null);
 		}

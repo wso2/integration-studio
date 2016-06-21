@@ -44,7 +44,7 @@ public interface EsbModelTransformer {
 	
 	String designToSource(EsbServer serverModel) throws Exception;
 	
-	String formToSource(FormPage serverModel, ArtifactType artifactType) throws Exception;
+	String formToSource(FormPage formPage, ArtifactType artifactType) throws Exception;
 	
 	EsbServer sourceToDesign(String source,EsbServer esbServer) throws Exception;
 }

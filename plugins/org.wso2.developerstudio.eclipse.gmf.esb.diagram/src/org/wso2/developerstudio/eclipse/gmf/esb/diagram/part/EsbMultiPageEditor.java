@@ -186,7 +186,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	public static EsbMultiPageEditor currentEditor;
 
-	private ArtifactType artifactType;
+	private ArtifactType currArtifactType;
 
 	private double zoom = 1.0;
 	private String fileName;
@@ -428,7 +428,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	private void createPageForm(final ArtifactType artifactType) {
 		IEditorInput editorInput = getEditorInput();
-		formEditor =  new ESBFormEditor(artifactType);
+		formEditor = new ESBFormEditor(artifactType);
 		try {
 			if (editorInput instanceof FileEditorInput) {
 				IFile file = ((FileEditorInput) editorInput).getFile();
@@ -436,7 +436,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				final Deserializer deserializer = Deserializer.getInstance();
 				InputStream inputStream = null;
 				isFormEditor = true;
-
+				currArtifactType = artifactType;
 				try {
 					inputStream = file.getContents();
 					final String source = new Scanner(inputStream).useDelimiter("\\A").next();
@@ -672,8 +672,16 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		}
 		case SOURCE_VIEW_PAGE_INDEX: {
 			try {
-				updateSequenceDetails();
-				handleSourceViewActivatedEvent();
+				if (isFormEditor) {
+					if (currArtifactType != null) {
+					sourceEditor.update(formEditor.getFormPageForArtifact(currArtifactType), currArtifactType);
+					sourceDirty = false;
+					firePropertyChange(PROP_DIRTY);
+					}
+				} else {
+					updateSequenceDetails();
+					handleSourceViewActivatedEvent();
+				}
 			} catch (Exception e) {
 				log.error("Cannot update source view", e);
 				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
@@ -721,7 +729,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			if (xmlSource != null && sourceDirty) {// source dirty is comming as
 													// false
 				if (!xmlSource.trim().isEmpty()) {
-					Deserializer.getInstance().updateDesign(xmlSource, formEditor, artifactType);
+					Deserializer.getInstance().updateDesign(xmlSource, formEditor, currArtifactType);
 					final EsbMultiPageEditor tempEditor = this;
 					Display.getDefault().asyncExec(new Runnable() {
 						public void run() {
@@ -829,8 +837,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		IFile xmlFile = null;
 		String source = null;
 		if (isFormEditor) {
-			FormPage localEntryFormPage = formEditor.getFormPageForArtifact(artifactType);
-			source = EsbModelTransformer.instance.formToSource(localEntryFormPage, artifactType);
+			FormPage localEntryFormPage = formEditor.getFormPageForArtifact(currArtifactType);
+			source = EsbModelTransformer.instance.formToSource(localEntryFormPage, currArtifactType);
 
 		} else {
 			EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();

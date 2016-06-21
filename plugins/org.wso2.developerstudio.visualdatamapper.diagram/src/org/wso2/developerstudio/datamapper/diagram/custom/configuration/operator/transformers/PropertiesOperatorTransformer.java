@@ -38,8 +38,8 @@ public class PropertiesOperatorTransformer extends AbstractDMOperatorTransformer
 			DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			operationBuilder.append(PROPERTIES_PREFIX+"." + operator.getProperty(PROPERTY_SCOPE_TAG) + "."
-					+ operator.getProperty(PROPERTY_NAME_TAG));
+			operationBuilder.append(PROPERTIES_PREFIX+"." + operator.getProperty(PROPERTY_SCOPE_TAG) + "['"
+					+ operator.getProperty(PROPERTY_NAME_TAG)+"']");
 			operationBuilder.append(";");
 
 		} else {

@@ -24,35 +24,35 @@ import org.apache.synapse.config.Entry;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.ui.forms.editor.FormPage;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.LocalEntryFormPage;
 
 /**
  * Synapse local-entry transformer class
  */
-public class LocalEntryTransformer extends AbstractEsbNodeTransformer{
+public class LocalEntryTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+		// nothing to do
+
+	}
+
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+		// nothing to do
+
+	}
+
+	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
 			throws TransformerException {
 		// nothing to do
-		
+
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// nothing to do
-		
-	}
-
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		// nothing to do
-		
-	}
-	
-	public Entry createEntry(LocalEntry visualLocalEntry) throws Exception{
+	public Entry createEntry(LocalEntry visualLocalEntry) throws Exception {
 		Entry localEntry = new Entry(visualLocalEntry.getEntryName());
 		switch (visualLocalEntry.getLocalEntryType()) {
 		case LITERAL: {
@@ -71,6 +71,33 @@ public class LocalEntryTransformer extends AbstractEsbNodeTransformer{
 			break;
 		}
 		}
+		return localEntry;
+	}
+
+	public Entry createEntry(FormPage visualLocalEntry) throws Exception {
+		Entry localEntry = null;
+		if (visualLocalEntry instanceof LocalEntryFormPage) {
+
+			LocalEntryFormPage localEntryFormPage = (LocalEntryFormPage) visualLocalEntry;
+			if (localEntryFormPage.getLocalEntryNameTxt() != null) {
+				String localEntryName = localEntryFormPage.getLocalEntryNameTxt().getText();
+				int localEntryType = localEntryFormPage.getLocalEntryTypeCombo().getSelectionIndex();
+				String localEntryValue = localEntryFormPage.getLocalEntryTextValue().getText();
+
+				localEntry = new Entry(localEntryName);
+				if (localEntryType == 0) {
+					localEntry.setType(Entry.INLINE_TEXT);
+					localEntry.setValue(localEntryValue);
+				} else if (localEntryType == 1) {
+					localEntry.setType(Entry.INLINE_XML);
+					localEntry.setValue(localEntryValue);
+				} else if (localEntryType == 2) {
+					localEntry.setType(Entry.URL_SRC);
+					localEntry.setValue(localEntryValue);
+				}
+			}
+		}
+
 		return localEntry;
 	}
 

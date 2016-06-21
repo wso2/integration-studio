@@ -41,6 +41,7 @@ import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNamespace;
 import org.apache.axis2.util.XMLPrettyPrinter;
+import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.config.xml.EntrySerializer;
 import org.apache.synapse.config.xml.MediatorSerializerFinder;
@@ -60,8 +61,10 @@ import org.apache.xml.serialize.XMLSerializer;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.ui.forms.editor.FormPage;
 import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.DefaultEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
@@ -255,6 +258,12 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		return transformer.createEntry(visualLocalEntry);
 	}	
 	
+	private org.apache.synapse.config.Entry transformLocalEntry(
+			FormPage localEntryFormPage ) throws Exception {	
+		LocalEntryTransformer transformer=new LocalEntryTransformer();
+		return transformer.createEntry(localEntryFormPage);
+	}
+	
 	private org.apache.synapse.task.TaskDescription transformTask(Task visualTask){
 		TaskTransformer transformer= new TaskTransformer();
 		return transformer.create(visualTask);
@@ -333,6 +342,22 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
         transformer.transform(info, visualInboundEndpoint);
         org.apache.synapse.inbound.InboundEndpoint inboundEndpoint = configuration.getInboundEndpoint(visualInboundEndpoint.getName());
         return inboundEndpoint;
+    }
+    
+    public String designToSource(FormPage formPage, ArtifactType artifactType ) throws Exception {
+    	SynapseXMLConfigurationSerializer serializer = new SynapseXMLConfigurationSerializer();
+		SequenceMediatorSerializer sequenceSerializer = new SequenceMediatorSerializer();
+		OMElement configOM = null;
+		if (artifactType == ArtifactType.LOCAL_ENTRY) {
+//			org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry localEntry = new 
+//			localEntry.set
+			configOM = EntrySerializer.serializeEntry(
+					transformLocalEntry(formPage), null);
+		}
+		sourceXML = format(configOM.toString());
+		sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
+		return sourceXML;
+    	
     }
 
 	public String designToSource(EsbServer serverModel) throws Exception {

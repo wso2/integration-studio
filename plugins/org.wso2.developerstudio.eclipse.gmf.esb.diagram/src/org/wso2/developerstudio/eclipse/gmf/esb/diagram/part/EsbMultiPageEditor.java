@@ -94,6 +94,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
+import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.ide.IGotoMarker;
@@ -424,42 +425,48 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		setPageText(index, "Properties");
 	}
 
-	private void createPageForm(ArtifactType artifactType) {
+	private void createPageForm(final ArtifactType artifactType) {
 		IEditorInput editorInput = getEditorInput();
-		ESBFormEditor simpleFormEditor = new ESBFormEditor(artifactType);
-		formEditor = simpleFormEditor;
+		formEditor =  new ESBFormEditor(artifactType);
 		try {
 			if (editorInput instanceof FileEditorInput) {
 				IFile file = ((FileEditorInput) editorInput).getFile();
 				fileName = file.getName();
 				final Deserializer deserializer = Deserializer.getInstance();
 				InputStream inputStream = null;
+
 				try {
 					inputStream = file.getContents();
 					final String source = new Scanner(inputStream).useDelimiter("\\A").next();
 					editorInput = new EsbEditorInput(null, file, artifactType.getLiteral());
-					ESBDebuggerUtil.setPageCreateOperationActivated(true);
-					try {
-						DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
-						if (deserializeStatus.isValid()) {
-							deserializer.updateDesign(source, simpleFormEditor, artifactType);
-							Display.getDefault().asyncExec(new Runnable() {
-								@Override
-								public void run() {
-									doSave(new NullProgressMonitor());
+					Display.getDefault().asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							ESBDebuggerUtil.setPageCreateOperationActivated(true);
+							try {
+								DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
+								if (deserializeStatus.isValid()) {
+									deserializer.updateDesign(source, formEditor, artifactType);
+									Display.getDefault().asyncExec(new Runnable() {
+										@Override
+										public void run() {
+											doSave(new NullProgressMonitor());
+										}
+									});
+								} else {
+									setActivePage(SOURCE_VIEW_PAGE_INDEX);
+									sourceEditor.getDocument().set(source);
+									printHandleDesignViewActivatedEventErrorMessageSimple(
+											deserializeStatus.getExecption(), deserializeStatus);
 								}
-							});
-						} else {
-							setActivePage(SOURCE_VIEW_PAGE_INDEX);
-							sourceEditor.getDocument().set(source);
-							printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),
-									deserializeStatus);
+
+							} catch (Exception e) {
+								log.error("Error while generating diagram from source", e);
+							} finally {
+								ESBDebuggerUtil.setPageCreateOperationActivated(false);
+							}
 						}
-					} catch (Exception e) {
-						log.error("Error while generating diagram from source", e);
-					} finally {
-						ESBDebuggerUtil.setPageCreateOperationActivated(false);
-					}
+					});
 					inputStream.close();
 				} catch (CoreException e1) {
 					log.error("Error while generating diagram from source", e1);
@@ -468,7 +475,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				}
 				setTitle(file.getName());
 			}
-			addPage(DESIGN_VIEW_PAGE_INDEX, simpleFormEditor, editorInput);
+			addPage(DESIGN_VIEW_PAGE_INDEX, formEditor, editorInput);
 			setPageText(DESIGN_VIEW_PAGE_INDEX, "Local Entry Form"); //$NON-NLS-1$
 		} catch (PartInitException e) {
 		}
@@ -709,7 +716,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 		if (sourceEditor != null) {
 			String xmlSource = sourceEditor.getDocument().get();
-			if (xmlSource != null && sourceDirty) {//source dirty is comming as false
+			if (xmlSource != null && sourceDirty) {// source dirty is comming as
+													// false
 				if (!xmlSource.trim().isEmpty()) {
 					Deserializer.getInstance().updateDesign(xmlSource, formEditor, artifactType);
 					final EsbMultiPageEditor tempEditor = this;
@@ -817,25 +825,28 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	private IFile updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
 		IFile xmlFile = null;
+		String source = null;
 		if (artifactType == ArtifactType.LOCAL_ENTRY) {
+			FormPage localEntryFormPage = formEditor.getFormPageForArtifact(artifactType);
+			source = EsbModelTransformer.instance.designToSource(localEntryFormPage, artifactType);
 
 		} else {
 			EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 			EsbServer server = diagram.getServer();
-
-			xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
-			String source = EsbModelTransformer.instance.designToSource(server);
-			if (source == null) {
-				log.warn("Could not get the source");
-				return null;
-			}
-			InputStream is = new ByteArrayInputStream(source.getBytes());
-			if (xmlFile.exists()) {
-				xmlFile.setContents(is, true, true, monitor);
-			} else {
-				xmlFile.create(is, true, monitor);
-			}
+			source = EsbModelTransformer.instance.designToSource(server);
 		}
+		xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
+		if (source == null) {
+			log.warn("Could not get the source");
+			return null;
+		}
+		InputStream is = new ByteArrayInputStream(source.getBytes());
+		if (xmlFile.exists()) {
+			xmlFile.setContents(is, true, true, monitor);
+		} else {
+			xmlFile.create(is, true, monitor);
+		}
+
 		return xmlFile;
 	}
 

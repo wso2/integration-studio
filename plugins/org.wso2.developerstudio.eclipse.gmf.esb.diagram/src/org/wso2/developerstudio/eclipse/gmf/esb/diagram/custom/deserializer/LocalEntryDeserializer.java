@@ -76,7 +76,11 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 				if (localEntryPage.getLocalEntryTypeCombo() != null) {
 					localEntryPage.getLocalEntryTypeCombo().select(1);
 					if (localEntryPage.getLocalEntryTextValue() != null) {
+						if (object.getValue().toString() != null) {
 						localEntryPage.getLocalEntryTextValue().setText(object.getValue().toString());
+						} else {
+							localEntryPage.getLocalEntryTextValue().setText("value/>");
+						}
 					}
 				}
 			}
@@ -84,7 +88,11 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 				if (localEntryPage.getLocalEntryTypeCombo() != null) {
 					localEntryPage.getLocalEntryTypeCombo().select(2);
 					if (localEntryPage.getLocalEntryTextValue() != null) {
+						if (object.getValue().toString() != null) {
 						localEntryPage.getLocalEntryTextValue().setText(object.getValue().toString());
+						} else {
+							localEntryPage.getLocalEntryTextValue().setText("file:/path/to/sample");
+						}
 					}
 				}
 			}

@@ -90,10 +90,10 @@ public class LocalEntryTransformer extends AbstractEsbNodeTransformer {
 					localEntry.setValue(localEntryValue);
 				} else if (localEntryType == 1) {
 					localEntry.setType(Entry.INLINE_XML);
-					localEntry.setValue(localEntryValue);
+					localEntry.setValue(AXIOMUtil.stringToOM(localEntryValue));
 				} else if (localEntryType == 2) {
 					localEntry.setType(Entry.URL_SRC);
-					localEntry.setValue(localEntryValue);
+					localEntry.setSrc(new URL(localEntryValue));
 				}
 			}
 		}

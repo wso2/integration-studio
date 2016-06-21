@@ -428,7 +428,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	private void createPageForm(final ArtifactType artifactType) {
 		IEditorInput editorInput = getEditorInput();
+		removePage(DESIGN_VIEW_PAGE_INDEX);
 		formEditor = new ESBFormEditor(artifactType);
+		isFormEditor = true;
 		try {
 			if (editorInput instanceof FileEditorInput) {
 				IFile file = ((FileEditorInput) editorInput).getFile();
@@ -448,7 +450,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 							try {
 								DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
 								if (deserializeStatus.isValid()) {
-									deserializer.updateDesign(source, formEditor, artifactType);
+									deserializer.updateDesign(source, formEditor, currArtifactType);
 									Display.getDefault().asyncExec(new Runnable() {
 										@Override
 										public void run() {
@@ -478,7 +480,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				setTitle(file.getName());
 			}
 			addPage(DESIGN_VIEW_PAGE_INDEX, formEditor, editorInput);
-			setPageText(DESIGN_VIEW_PAGE_INDEX, "Local Entry Form"); //$NON-NLS-1$
+			setPageText(DESIGN_VIEW_PAGE_INDEX, "Form"); //$NON-NLS-1$
 		} catch (PartInitException e) {
 		}
 	}
@@ -557,28 +559,19 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		case COMPLEX_ENDPOINT:
 			break;
 		case LOCAL_ENTRY:
-			isFormEditor = true;
-			createPageForm(server.getType());
 		case MESSAGE_PROCESSOR:
-			createPageForm(server.getType());
 		case MESSAGE_STORE:
-			createPageForm(server.getType());
 		case TASK:
-			createPageForm(server.getType());
 		case TEMPLATE_ENDPOINT_DEFAULT:
-			createPageForm(server.getType());
 		case TEMPLATE_ENDPOINT_ADDRESS:
-			createPageForm(server.getType());
 		case TEMPLATE_ENDPOINT_WSDL:
-			createPageForm(server.getType());
 		case TEMPLATE_ENDPOINT_HTTP:
 			createPageForm(server.getType());
-
+			break;
 		default:
-			createPage1();
 			break;
 		}
-
+		createPage1();
 		EditorUtils.setLockmode(graphicalEditor, true);
 		// IFile file = ((IFileEditorInput)getEditorInput()).getFile();
 		/*

@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.part;
 
-
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
 
 import java.io.ByteArrayInputStream;
@@ -139,22 +138,21 @@ import org.xml.sax.SAXException;
  * <li>page 1 source view
  * </ul>
  */
-public class EsbMultiPageEditor extends MultiPageEditorPart implements
-        IGotoMarker,IDiagramWorkbenchPart{
+public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMarker, IDiagramWorkbenchPart {
 
-    /** Our all new graphical editor */
-    private EsbDiagramEditor graphicalEditor;
+	/** Our all new graphical editor */
+	private EsbDiagramEditor graphicalEditor;
 
 	/**
 	 * {@link ModelObject} source editor.
 	 */
 	private EsbObjectSourceEditor sourceEditor;
-	
+
 	/**
 	 * {@link ModelObject} form editor.
 	 */
 	private ESBFormEditor formEditor;
-    
+
 	/**
 	 * Name of the directory which holds temporary files.
 	 */
@@ -169,157 +167,144 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	 * Source view page index.
 	 */
 	private static final int SOURCE_VIEW_PAGE_INDEX = 1;
-	
+
 	/**
 	 * Properties view page index.
 	 */
 	private static final int PROPERTY_VIEW_PAGE_INDEX = 2;
-	
+
 	/**
 	 * Used to hold temporary files.
 	 */
 	private Set<IFile> tempFiles = new HashSet<IFile>();
-	
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
-	/*source editor dirty state*/
+
+	/* source editor dirty state */
 	private boolean sourceDirty;
-	
+
 	public static EsbMultiPageEditor currentEditor;
-	
+
 	private ArtifactType artifactType;
-	
+
 	private double zoom = 1.0;
 	private String fileName;
 	private String validationMessage;
 	boolean initialPageLoad;
 
 	/**
-     * Creates a multi-page editor
-     */
-    public EsbMultiPageEditor() {
-        super();
-        IWorkbench workbench = PlatformUI.getWorkbench();
-        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();   
-    }
- 
+	 * Creates a multi-page editor
+	 */
+	public EsbMultiPageEditor() {
+		super();
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+	}
 
-    /**
-     * Creates page 0 of the multi-page editor,
-     * which contains a out graphical diagram
-     */
-    void createPage0() {
-        try {
-        	GMFPluginDetails.setiUpdateGMFPlugin(new UpdateGMFPlugin());
-        	currentEditor=this;
-            graphicalEditor = new EsbDiagramEditor(this);            
-            IEditorInput editorInput = getEditorInput();
-            if (editorInput instanceof FileEditorInput) {
-            	IFile file = ((FileEditorInput) editorInput).getFile();
-            	fileName = file.getName();
-            	final Deserializer deserializer = Deserializer.getInstance(); 
-            	InputStream inputStream = null;
+	/**
+	 * Creates page 0 of the multi-page editor, which contains a out graphical
+	 * diagram
+	 */
+	void createPage0() {
+		try {
+			GMFPluginDetails.setiUpdateGMFPlugin(new UpdateGMFPlugin());
+			currentEditor = this;
+			graphicalEditor = new EsbDiagramEditor(this);
+			IEditorInput editorInput = getEditorInput();
+			if (editorInput instanceof FileEditorInput) {
+				IFile file = ((FileEditorInput) editorInput).getFile();
+				fileName = file.getName();
+				final Deserializer deserializer = Deserializer.getInstance();
+				InputStream inputStream = null;
 				try {
 					inputStream = file.getContents();
-					final String source = new Scanner(inputStream).useDelimiter("\\A").next();					
+					final String source = new Scanner(inputStream).useDelimiter("\\A").next();
 					ArtifactType artifactType = deserializer.getArtifactType(source);
-	            	editorInput = new EsbEditorInput(null,file,artifactType.getLiteral());
-            		
+					editorInput = new EsbEditorInput(null, file, artifactType.getLiteral());
+
 					Display.getDefault().asyncExec(new Runnable() {
 						@Override
 						public void run() {
-							ESBDebuggerUtil
-							.setPageCreateOperationActivated(true);
+							ESBDebuggerUtil.setPageCreateOperationActivated(true);
 							try {
-								DeserializeStatus deserializeStatus = deserializer
-										.isValidSynapseConfig(source);
+								DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
 								if (deserializeStatus.isValid()) {
-									deserializer.updateDesign(source,
-											graphicalEditor);
-									Display.getDefault().asyncExec(
-											new Runnable() {
-												@Override
-												public void run() {
-													doSave(new NullProgressMonitor());
-												}
-											});
+									deserializer.updateDesign(source, graphicalEditor);
+									Display.getDefault().asyncExec(new Runnable() {
+										@Override
+										public void run() {
+											doSave(new NullProgressMonitor());
+										}
+									});
 								} else {
 									setActivePage(SOURCE_VIEW_PAGE_INDEX);
 									sourceEditor.getDocument().set(source);
 									printHandleDesignViewActivatedEventErrorMessageSimple(
-											deserializeStatus.getExecption(),
-											deserializeStatus);
+											deserializeStatus.getExecption(), deserializeStatus);
 								}
 							} catch (Exception e) {
-								log.error(
-										"Error while generating diagram from source",
-										e);
+								log.error("Error while generating diagram from source", e);
 							} finally {
-								ESBDebuggerUtil
-										.setPageCreateOperationActivated(false);
+								ESBDebuggerUtil.setPageCreateOperationActivated(false);
 							}
 						}
 					});
-	            	inputStream.close();
+					inputStream.close();
 				} catch (CoreException e1) {
 					log.error("Error while generating diagram from source", e1);
 				} catch (Exception e) {
 					log.error("Error while generating diagram from source", e);
 				}
-            	setTitle(file.getName());            	
-            }            
-            addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, editorInput);
-            setPageText(DESIGN_VIEW_PAGE_INDEX, "Design"); //$NON-NLS-1$
+				setTitle(file.getName());
+			}
+			addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, editorInput);
+			setPageText(DESIGN_VIEW_PAGE_INDEX, "Design"); //$NON-NLS-1$
 
-        } catch (PartInitException e) {
-            ErrorDialog
-                    .openError(
-                            getSite().getShell(),
-                            "ErrorCreatingNestedEditor", null, e.getStatus());
-        }
-        
-        /*
-         * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints' methods should not exist inside EsbPaletteFactory class. 
-         * Creating new instance of 'EsbPaletteFactory' must be avoided.
-         */
-        EsbPaletteFactory esbPaletteFactory=new EsbPaletteFactory();
-        esbPaletteFactory.addDefinedSequences(getEditor(0));
-        esbPaletteFactory.addDefinedEndpoints(getEditor(0));
-        
-        //esbPaletteFactory.addCloudConnectors(getEditor(0));
-        
-        
-        EsbEditorInput input = (EsbEditorInput) getEditor(0).getEditorInput();
+		} catch (PartInitException e) {
+			ErrorDialog.openError(getSite().getShell(), "ErrorCreatingNestedEditor", null, e.getStatus());
+		}
+
+		/*
+		 * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints'
+		 * methods should not exist inside EsbPaletteFactory class. Creating new
+		 * instance of 'EsbPaletteFactory' must be avoided.
+		 */
+		EsbPaletteFactory esbPaletteFactory = new EsbPaletteFactory();
+		esbPaletteFactory.addDefinedSequences(getEditor(0));
+		esbPaletteFactory.addDefinedEndpoints(getEditor(0));
+
+		// esbPaletteFactory.addCloudConnectors(getEditor(0));
+
+		EsbEditorInput input = (EsbEditorInput) getEditor(0).getEditorInput();
 		IFile file = input.getXmlResource();
 		IProject activeProject = file.getProject();
- 
-	 if(CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
-		String connectorDirectory=activeProject.getLocation().toOSString()+File.separator+"cloudConnectors";
-		try {			
-			File directory=new File(connectorDirectory);
-			if(directory.isDirectory()){
-				File[] children=directory.listFiles();
-			    for(int i=0;i<children.length;++i){
-			    	if(children[i].isDirectory()){
-			    		esbPaletteFactory.addCloudConnectorOperations(getEditor(0), children[i].getName());
-			    	}
-			    }
+
+		if (CloudConnectorDirectoryTraverser.getInstance().validate(activeProject)) {
+			String connectorDirectory = activeProject.getLocation().toOSString() + File.separator + "cloudConnectors";
+			try {
+				File directory = new File(connectorDirectory);
+				if (directory.isDirectory()) {
+					File[] children = directory.listFiles();
+					for (int i = 0; i < children.length; ++i) {
+						if (children[i].isDirectory()) {
+							esbPaletteFactory.addCloudConnectorOperations(getEditor(0), children[i].getName());
+						}
+					}
+				}
+			} catch (Exception e1) {
+				MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+						"Developer studio Error", "Error while loading the Connectors" + e1.getMessage());
 			}
-		} catch (Exception e1) {
-		 MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Developer studio Error",
-				 "Error while loading the Connectors"+e1.getMessage());
-		} 
-   }
-        
-        
-       
-        
-		String pathName=activeProject.getLocation().toOSString()+File.separator+"resources";
-/*		File resources=new File(pathName);
-			resources.mkdir();
-			File cloudConnectorConfig=new File(pathName+File.separator+"cloudConnector.properties");
-			cloudConnectorConfig.createNewFile();*/
-			
+		}
+
+		String pathName = activeProject.getLocation().toOSString() + File.separator + "resources";
+		/*
+		 * File resources=new File(pathName); resources.mkdir(); File
+		 * cloudConnectorConfig=new
+		 * File(pathName+File.separator+"cloudConnector.properties");
+		 * cloudConnectorConfig.createNewFile();
+		 */
+
 		Properties prop = new Properties();
 		FileInputStream inStream = null;
 		File cloudConFile = new File(pathName, "cloudConnector.properties");
@@ -336,27 +321,26 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					try {
 						inStream.close();
 					} catch (IOException e) {
-						log.error(
-								"Error occurred while tying to close the file stream",
-								e);
+						log.error("Error occurred while tying to close the file stream", e);
 					}
 				}
 			}
 		}
-		
-		String localEntryConfigs=prop.getProperty("LOCAL_ENTRY_CONFIGS");
-		if(localEntryConfigs!=null){
-			String[] configs=localEntryConfigs.split(",");
-	        
-	        for(int i=0;i<configs.length;++i){
-	        	if(!"".equals(configs[i])){
-	        		//esbPaletteFactory.addCloudConnectorOperations(getEditor(0), configs[i].split("-")[0],configs[i].split("-")[1]);
-	        	}
-	        }
+
+		String localEntryConfigs = prop.getProperty("LOCAL_ENTRY_CONFIGS");
+		if (localEntryConfigs != null) {
+			String[] configs = localEntryConfigs.split(",");
+
+			for (int i = 0; i < configs.length; ++i) {
+				if (!"".equals(configs[i])) {
+					// esbPaletteFactory.addCloudConnectorOperations(getEditor(0),
+					// configs[i].split("-")[0],configs[i].split("-")[1]);
+				}
+			}
 		}
-        esbPaletteFactory.updateToolPaletteItems(graphicalEditor);
-        
-        EditorUtils.setLockmode(graphicalEditor, false);
+		esbPaletteFactory.updateToolPaletteItems(graphicalEditor);
+
+		EditorUtils.setLockmode(graphicalEditor, false);
 
 		// change editor title when a file rename occurs
 		getEditor(0).addPropertyListener(new IPropertyListener() {
@@ -369,133 +353,113 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				setTitle(fileName);
 			}
 		});
-    }
-    
-    
-   
-    /**
-     * Creates page 1 of the multi-page editor,
-     * which allows you to edit the xml.
-     */
-    void createPage1() {   
-    	
+	}
+
+	/**
+	 * Creates page 1 of the multi-page editor, which allows you to edit the
+	 * xml.
+	 */
+	void createPage1() {
+
 		try {
-			sourceEditor = new EsbObjectSourceEditor(
-					getTemporaryFile("xml"));
-			addPage(SOURCE_VIEW_PAGE_INDEX,
-					sourceEditor.getEditor(),
-					sourceEditor.getInput());
-			setPageText(SOURCE_VIEW_PAGE_INDEX,	"Source");
-			
-			sourceEditor.getDocument().addDocumentListener(new IDocumentListener() {  
-			    
-	            public void documentAboutToBeChanged(final DocumentEvent event) {  
-	                // nothing to do
-	            }  
-	   
-	            public void documentChanged(final DocumentEvent event) {  
-	            	sourceDirty=true;
-	            	firePropertyChange(PROP_DIRTY);
-	            }  
-	        });  
+			sourceEditor = new EsbObjectSourceEditor(getTemporaryFile("xml"));
+			addPage(SOURCE_VIEW_PAGE_INDEX, sourceEditor.getEditor(), sourceEditor.getInput());
+			setPageText(SOURCE_VIEW_PAGE_INDEX, "Source");
+
+			sourceEditor.getDocument().addDocumentListener(new IDocumentListener() {
+
+				public void documentAboutToBeChanged(final DocumentEvent event) {
+					// nothing to do
+				}
+
+				public void documentChanged(final DocumentEvent event) {
+					sourceDirty = true;
+					firePropertyChange(PROP_DIRTY);
+				}
+			});
 
 			// Initialize source editor.
-			//updateSourceEditor();
+			// updateSourceEditor();
 		} catch (Exception ex) {
-			log.error("Error while initializing source viewer control.",ex);
-		}	
-		
-    }
-    
-  /*  private void createModel(IEditorInput editorInput) throws PartInitException{
-		URI resourceURI = EditUIUtil.getURI(getEditorInput());
-		Resource resource = null;
-		
-		EsbResourceFactoryImpl fac = new EsbResourceFactoryImpl();
-		resource = fac.createResource(resourceURI);
-		
-		graphicalEditor = new EsbDiagramEditor();
-		graphicalEditor.setDocumentProvider(editorInput);
-		TransactionalEditingDomain  t=graphicalEditor.getEditingDomain();
-		t.getResourceSet().getResources().add(resource);
-		try {
-			// Load the resource through the editing domain.
-			//
-			resource = graphicalEditor.getEditingDomain().getResourceSet().getResource(resourceURI, true);
+			log.error("Error while initializing source viewer control.", ex);
 		}
-		catch (Exception e) {
-			resource = graphicalEditor.getEditingDomain().getResourceSet().getResource(resourceURI, false);
-		}
-    }*/
 
-    /**
-     * Creates page 2 of the multi-page editor,
-     * which shows the sorted text.
-     */
-    void createPage2() {
-        Composite composite = new Composite(getContainer(), SWT.NONE);
-        GridLayout layout = new GridLayout();
-        composite.setLayout(layout);
-        layout.numColumns = 2;
+	}
 
-        //Label demoLabel = new Label(composite, SWT.NONE);
-        GridData gd = new GridData(GridData.BEGINNING);
-        gd.horizontalSpan = 2;
-        //demoLabel.setLayoutData(gd);
-        //demoLabel.setText("ChangeFont");
+	/*
+	 * private void createModel(IEditorInput editorInput) throws
+	 * PartInitException{ URI resourceURI = EditUIUtil.getURI(getEditorInput());
+	 * Resource resource = null;
+	 * 
+	 * EsbResourceFactoryImpl fac = new EsbResourceFactoryImpl(); resource =
+	 * fac.createResource(resourceURI);
+	 * 
+	 * graphicalEditor = new EsbDiagramEditor();
+	 * graphicalEditor.setDocumentProvider(editorInput);
+	 * TransactionalEditingDomain t=graphicalEditor.getEditingDomain();
+	 * t.getResourceSet().getResources().add(resource); try { // Load the
+	 * resource through the editing domain. // resource =
+	 * graphicalEditor.getEditingDomain().getResourceSet().getResource(
+	 * resourceURI, true); } catch (Exception e) { resource =
+	 * graphicalEditor.getEditingDomain().getResourceSet().getResource(
+	 * resourceURI, false); } }
+	 */
 
-        int index = addPage(composite);
-        setPageText(index, "Properties");
-    }
-    
-    private void createPageForm(ArtifactType artifactType) {
-		  IEditorInput editorInput = getEditorInput();
-		  ESBFormEditor simpleFormEditor = new ESBFormEditor(artifactType);
-		  formEditor = simpleFormEditor;
+	/**
+	 * Creates page 2 of the multi-page editor, which shows the sorted text.
+	 */
+	void createPage2() {
+		Composite composite = new Composite(getContainer(), SWT.NONE);
+		GridLayout layout = new GridLayout();
+		composite.setLayout(layout);
+		layout.numColumns = 2;
+
+		// Label demoLabel = new Label(composite, SWT.NONE);
+		GridData gd = new GridData(GridData.BEGINNING);
+		gd.horizontalSpan = 2;
+		// demoLabel.setLayoutData(gd);
+		// demoLabel.setText("ChangeFont");
+
+		int index = addPage(composite);
+		setPageText(index, "Properties");
+	}
+
+	private void createPageForm(ArtifactType artifactType) {
+		IEditorInput editorInput = getEditorInput();
+		ESBFormEditor simpleFormEditor = new ESBFormEditor(artifactType);
+		formEditor = simpleFormEditor;
 		try {
-			  IEditorInput formEditorInput = getEditorInput();
-	            if (editorInput instanceof FileEditorInput) {
-	            	IFile file = ((FileEditorInput) editorInput).getFile();
-	            	fileName = file.getName();
-	            	final Deserializer deserializer = Deserializer.getInstance(); 
-	            	InputStream inputStream = null;
+			if (editorInput instanceof FileEditorInput) {
+				IFile file = ((FileEditorInput) editorInput).getFile();
+				fileName = file.getName();
+				final Deserializer deserializer = Deserializer.getInstance();
+				InputStream inputStream = null;
+				try {
+					inputStream = file.getContents();
+					final String source = new Scanner(inputStream).useDelimiter("\\A").next();
+					editorInput = new EsbEditorInput(null, file, artifactType.getLiteral());
+					ESBDebuggerUtil.setPageCreateOperationActivated(true);
 					try {
-						inputStream = file.getContents();
-						final String source = new Scanner(inputStream).useDelimiter("\\A").next();					
-		            	editorInput = new EsbEditorInput(null,file,artifactType.getLiteral());
-//		            	Display.getDefault().asyncExec(new Runnable() {
-//							@Override
-//							public void run() {
-								ESBDebuggerUtil.setPageCreateOperationActivated(true);
-								try {
-									DeserializeStatus deserializeStatus = deserializer
-											.isValidSynapseConfig(source);
-									if (deserializeStatus.isValid()) {
-										deserializer.updateDesign(source,
-												simpleFormEditor, artifactType);
-										Display.getDefault().asyncExec(
-												new Runnable() {
-													@Override
-													public void run() {
-														doSave(new NullProgressMonitor());
-													}
-												});
-									} else {
-										setActivePage(SOURCE_VIEW_PAGE_INDEX);
-										sourceEditor.getDocument().set(source);
-										printHandleDesignViewActivatedEventErrorMessageSimple(
-												deserializeStatus.getExecption(),
-												deserializeStatus);
-									}
-								} catch (Exception e) {
-									log.error(
-											"Error while generating diagram from source",
-										e);
-							} finally {
-								ESBDebuggerUtil.setPageCreateOperationActivated(false);
-							}
-//						}
-//					});
+						DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
+						if (deserializeStatus.isValid()) {
+							deserializer.updateDesign(source, simpleFormEditor, artifactType);
+							Display.getDefault().asyncExec(new Runnable() {
+								@Override
+								public void run() {
+									doSave(new NullProgressMonitor());
+								}
+							});
+						} else {
+							setActivePage(SOURCE_VIEW_PAGE_INDEX);
+							sourceEditor.getDocument().set(source);
+							printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),
+									deserializeStatus);
+						}
+					} catch (Exception e) {
+						log.error("Error while generating diagram from source", e);
+					} finally {
+						ESBDebuggerUtil.setPageCreateOperationActivated(false);
+					}
 					inputStream.close();
 				} catch (CoreException e1) {
 					log.error("Error while generating diagram from source", e1);
@@ -507,14 +471,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			addPage(DESIGN_VIEW_PAGE_INDEX, simpleFormEditor, editorInput);
 			setPageText(DESIGN_VIEW_PAGE_INDEX, "Local Entry Form"); //$NON-NLS-1$
 		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
 		}
-
-		// TODO Auto-generated method stub
-
 	}
 
-    
 	/**
 	 * Utility method for obtaining a reference to a temporary file with the
 	 * given extension.
@@ -527,8 +486,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	 *             if a temporary file cannot be created.
 	 */
 	private IFile getTemporaryFile(String extension) throws Exception {
-		String fileName = String.format("%s.%s", UUID.randomUUID().toString(),
-				extension);
+		String fileName = String.format("%s.%s", UUID.randomUUID().toString(), extension);
 		IFile tempFile = getTemporaryDirectory().getFile(fileName);
 		if (!tempFile.exists()) {
 			tempFile.create(new ByteArrayInputStream(new byte[0]), true, null);
@@ -549,87 +507,90 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	 */
 	private IFolder getTemporaryDirectory() throws Exception {
 		IEditorInput editorInput = getEditorInput();
-		if (editorInput instanceof IFileEditorInput || editorInput instanceof FileStoreEditorInput || editorInput instanceof EsbEditorInput) {
-			
+		if (editorInput instanceof IFileEditorInput || editorInput instanceof FileStoreEditorInput
+				|| editorInput instanceof EsbEditorInput) {
+
 			IProject tempProject = ResourcesPlugin.getWorkspace().getRoot().getProject(".tmp");
-			
-			if (!tempProject.exists()){
+
+			if (!tempProject.exists()) {
 				tempProject.create(new NullProgressMonitor());
 			}
-			
-			if (!tempProject.isOpen()){
+
+			if (!tempProject.isOpen()) {
 				tempProject.open(new NullProgressMonitor());
 			}
-			
+
 			if (!tempProject.isHidden()) {
 				tempProject.setHidden(true);
 			}
 
 			IFolder folder = tempProject.getFolder(TEMPORARY_RESOURCES_DIRECTORY);
-			
+
 			if (!folder.exists()) {
 				folder.create(true, true, new NullProgressMonitor());
 			}
-			
+
 			return folder;
 		} else {
-			throw new Exception(
-					"Unable to create temporary resources directory.");
+			throw new Exception("Unable to create temporary resources directory.");
 		}
 	}
 
-    /**
-     * Creates the pages of the multi-page editor.
-     */
-    protected void createPages() {
-    initialPageLoad = true;
-	 createPage0();
-     EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
-		EsbServer server = diagram.getServer();	
-        switch (server.getType()) {
+	/**
+	 * Creates the pages of the multi-page editor.
+	 */
+	protected void createPages() {
+		initialPageLoad = true;
+		createPage0();
+		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
+		EsbServer server = diagram.getServer();
+		switch (server.getType()) {
 		case COMPLEX_ENDPOINT:
 			break;
 		case LOCAL_ENTRY:
 			artifactType = ArtifactType.LOCAL_ENTRY;
 			createPageForm(server.getType());
-		case MESSAGE_PROCESSOR :
+		case MESSAGE_PROCESSOR:
 			createPageForm(server.getType());
-		case MESSAGE_STORE :
+		case MESSAGE_STORE:
 			createPageForm(server.getType());
-		case TASK :
+		case TASK:
 			createPageForm(server.getType());
-		case TEMPLATE_ENDPOINT_DEFAULT :
+		case TEMPLATE_ENDPOINT_DEFAULT:
 			createPageForm(server.getType());
 		case TEMPLATE_ENDPOINT_ADDRESS:
 			createPageForm(server.getType());
-		case TEMPLATE_ENDPOINT_WSDL :
+		case TEMPLATE_ENDPOINT_WSDL:
 			createPageForm(server.getType());
-		case TEMPLATE_ENDPOINT_HTTP :
+		case TEMPLATE_ENDPOINT_HTTP:
 			createPageForm(server.getType());
-			
+
 		default:
 			createPage1();
 			break;
 		}
- 
-     EditorUtils.setLockmode(graphicalEditor, true);
-		//IFile file = ((IFileEditorInput)getEditorInput()).getFile();
-/*        ElementDuplicator endPointDuplicator = new ElementDuplicator(file.getProject(),getGraphicalEditor());        
-          endPointDuplicator.updateAssociatedDiagrams(this);*/
-     EditorUtils.setLockmode(graphicalEditor, false);
- 
-        //createPage2();
-    }
-    
+
+		EditorUtils.setLockmode(graphicalEditor, true);
+		// IFile file = ((IFileEditorInput)getEditorInput()).getFile();
+		/*
+		 * ElementDuplicator endPointDuplicator = new
+		 * ElementDuplicator(file.getProject(),getGraphicalEditor());
+		 * endPointDuplicator.updateAssociatedDiagrams(this);
+		 */
+		EditorUtils.setLockmode(graphicalEditor, false);
+
+		// createPage2();
+	}
+
 	/**
 	 * This is used to track the active viewer. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 */
-	
-	protected void pageChange(int pageIndex) {		
-		super.pageChange(pageIndex);	
-    	//Fixing TOOLS-2958
-    	setContextClassLoader();
+
+	protected void pageChange(int pageIndex) {
+		super.pageChange(pageIndex);
+		// Fixing TOOLS-2958
+		setContextClassLoader();
 
 		// I do not understand why this is necessary (emf generated code).
 		// if (contentOutlinePage != null) {
@@ -642,55 +603,54 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			ESBDebuggerUtil.setPageChangeOperationActivated(true);
 			MediatorFactoryUtils.registerFactories();
 			String source = sourceEditor.getDocument().get();
-			
-			final Deserializer deserializer = Deserializer.getInstance(); 	
+
+			final Deserializer deserializer = Deserializer.getInstance();
 			if (!source.isEmpty()) {
 				DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
 				if (!deserializeStatus.isValid()) {
 					setActivePage(SOURCE_VIEW_PAGE_INDEX);
-	     			sourceEditor.getDocument().set(source);
+					sourceEditor.getDocument().set(source);
 					firePropertyChange(PROP_DIRTY);
-					printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),deserializeStatus); 
+					printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),
+							deserializeStatus);
 					return;
 				}
 			}
-			
+
 			try {
 				if (artifactType == ArtifactType.LOCAL_ENTRY) {
+					sourceDirty = true;
 					handleFormViewActivatedEvent();
 				} else {
 					handleDesignViewActivatedEvent();
+					Display.getCurrent().asyncExec(new Runnable() {
+
+						@Override
+						public void run() {
+							EditorUtils.setLockmode(graphicalEditor, true);
+							// save on initial page load, but not in other cases
+							if (initialPageLoad && isDirty()) {
+								getEditor(0).doSave(new NullProgressMonitor());
+								firePropertyChange(PROP_DIRTY);
+								initialPageLoad = false;
+							}
+
+							EditorUtils.setLockmode(graphicalEditor, false);
+							try {
+								EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
+								EsbServer server = diagram.getServer();
+								IEditorInput editorInput = getEditorInput();
+								ESBDebuggerUtil.addDesignViewDebugPoints(server, editorInput);
+							} catch (ESBDebuggerException e) {
+								log.error("Error while adding debug points to design view when page loading : "
+										+ e.getMessage(), e);
+							}
+						}
+					});
 				}
-				Display.getCurrent().asyncExec(new Runnable() {
-
-					@Override
-					public void run() {
-						EditorUtils.setLockmode(graphicalEditor, true);
-						//save on initial page load, but not in other cases
-						if (initialPageLoad && isDirty()) {
-							getEditor(0).doSave(new NullProgressMonitor());
-							firePropertyChange(PROP_DIRTY);
-							initialPageLoad = false;
-						}
-
-						EditorUtils.setLockmode(graphicalEditor, false);
-						try {
-							EsbDiagram diagram = (EsbDiagram) graphicalEditor
-									.getDiagram().getElement();
-							EsbServer server = diagram.getServer();
-							IEditorInput editorInput = getEditorInput();
-							ESBDebuggerUtil.addDesignViewDebugPoints(server,
-									editorInput);
-						} catch (ESBDebuggerException e) {
-							log.error(
-									"Error while adding debug points to design view when page loading : "
-											+ e.getMessage(), e);
-						}
-					}
-				});
 			} catch (Exception e) {
 				setActivePage(SOURCE_VIEW_PAGE_INDEX);
-				
+
 				sourceEditor.getDocument().set(source);
 				printHandleDesignViewActivatedEventErrorMessage(e);
 			} finally {
@@ -698,30 +658,32 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				firePropertyChange(PROP_DIRTY);
 				ESBDebuggerUtil.setPageChangeOperationActivated(false);
 			}
-		
+
 			break;
 		}
-		case SOURCE_VIEW_PAGE_INDEX: {			
+		case SOURCE_VIEW_PAGE_INDEX: {
 			try {
-				updateSequenceDetails(); 
+				updateSequenceDetails();
 				handleSourceViewActivatedEvent();
 			} catch (Exception e) {
 				log.error("Cannot update source view", e);
 				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
 				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
 				setActivePage(DESIGN_VIEW_PAGE_INDEX);
-                ErrorDialog.openError(getActiveEditor().getSite().getShell(), "Error",
-                        "Cannot update source view. The following error(s) have been detected."
-                                + " Please see the error log for more details ", editorStatus);
-            }
+				ErrorDialog.openError(getActiveEditor().getSite().getShell(), "Error",
+						"Cannot update source view. The following error(s) have been detected."
+								+ " Please see the error log for more details ",
+						editorStatus);
+			}
 			break;
 		}
 		}
 	}
-	
+
 	/**
 	 * Performs necessary house-keeping tasks whenever the design view is
 	 * activated.
+	 * 
 	 * @throws Exception
 	 */
 	private void handleDesignViewActivatedEvent() throws Exception {
@@ -734,19 +696,20 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				}
 			}
 		}
-		
+
 	}
-	
+
 	/**
 	 * Performs necessary house-keeping tasks whenever the form view is
 	 * activated.
+	 * 
 	 * @throws Exception
 	 */
 	private void handleFormViewActivatedEvent() throws Exception {
 
 		if (sourceEditor != null) {
 			String xmlSource = sourceEditor.getDocument().get();
-			if (xmlSource != null && sourceDirty) {
+			if (xmlSource != null && sourceDirty) {//source dirty is comming as false
 				if (!xmlSource.trim().isEmpty()) {
 					Deserializer.getInstance().updateDesign(xmlSource, formEditor, artifactType);
 					final EsbMultiPageEditor tempEditor = this;
@@ -760,24 +723,27 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				}
 			}
 		}
-		
+
 	}
 
 	/**
-	 * Error dialog is generated by this method when HandleDesignViewActivatedEvent method throws an Exception.
+	 * Error dialog is generated by this method when
+	 * HandleDesignViewActivatedEvent method throws an Exception.
 	 */
 	private void printHandleDesignViewActivatedEventErrorMessage(Exception e) {
 		sourceDirty = true;
 		// if rebuild fails editor should be marked as dirty
 		log.error("Error while generating diagram from source", e);
 		String errorMsgHeader = "Error occurred while building design view."
-				+ " Any changes you made in the source view will be discarded." + " Please see the log for more details.";
+				+ " Any changes you made in the source view will be discarded."
+				+ " Please see the log for more details.";
 		String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
 		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 	}
-	
-	private void printHandleDesignViewActivatedEventErrorMessageSimple(Exception e, DeserializeStatus deserializeStatus) {
+
+	private void printHandleDesignViewActivatedEventErrorMessageSimple(Exception e,
+			DeserializeStatus deserializeStatus) {
 		String topStackTrace = e.getStackTrace()[0].toString();
 		String errorMsgHeader = fileName + " has some syntax errors";
 		if (topStackTrace.contains("MediatorFactoryFinder.getMediator")) {
@@ -801,8 +767,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				try {
 					new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(true, true,
 							new IRunnableWithProgress() {
-								public void run(IProgressMonitor monitor) throws InvocationTargetException,
-										InterruptedException {
+								public void run(IProgressMonitor monitor)
+										throws InvocationTargetException, InterruptedException {
 									monitor.beginTask("Generating Error Report", 100);
 									monitor.worked(IProgressMonitor.UNKNOWN);
 									validationMessage = Deserializer.getInstance().validate(element, element);
@@ -813,8 +779,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				} catch (InvocationTargetException | InterruptedException exception) {
 					log.error("Error while validating synapse syntax", exception);
 				}
-				MessageDialog
-						.openInformation(Display.getCurrent().getActiveShell(), "Error Details", validationMessage);
+				MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Error Details",
+						validationMessage);
 
 			} catch (IOException | ParserConfigurationException | XMLStreamException exception) {
 				MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Error Details",
@@ -829,53 +795,52 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	/**
 	 * Performs necessary house-keeping tasks whenever the source view is
 	 * activated.
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 */
 	private void handleSourceViewActivatedEvent() throws Exception {
-//		if (null == contentOutlinePage) {
-//			// Need to sync the soure editor explicitly.
-		
-			updateSourceEditor();
-//		}
+		// if (null == contentOutlinePage) {
+		// // Need to sync the soure editor explicitly.
+
+		updateSourceEditor();
+		// }
 	}
 
-    private void updateSourceEditor() throws Exception {
-    	EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
-		EsbServer server = diagram.getServer();	
-	
-		sourceEditor.update(server);		
-		sourceDirty=false;
+	private void updateSourceEditor() throws Exception {
+		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
+		EsbServer server = diagram.getServer();
+
+		sourceEditor.update(server);
+		sourceDirty = false;
 		firePropertyChange(PROP_DIRTY);
 	}
-    
-    
+
 	private IFile updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
 		IFile xmlFile = null;
 		if (artifactType == ArtifactType.LOCAL_ENTRY) {
-			
+
 		} else {
-		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
-		EsbServer server = diagram.getServer();
-		
-		xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
-		String source = EsbModelTransformer.instance.designToSource(server);
-		if (source == null) {
-			log.warn("Could not get the source");
-			return null;
-		}
-		InputStream is = new ByteArrayInputStream(source.getBytes());
-		if (xmlFile.exists()) {
-			xmlFile.setContents(is, true, true, monitor);
-		} else {
-			xmlFile.create(is, true, monitor);
-		}
+			EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
+			EsbServer server = diagram.getServer();
+
+			xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
+			String source = EsbModelTransformer.instance.designToSource(server);
+			if (source == null) {
+				log.warn("Could not get the source");
+				return null;
+			}
+			InputStream is = new ByteArrayInputStream(source.getBytes());
+			if (xmlFile.exists()) {
+				xmlFile.setContents(is, true, true, monitor);
+			} else {
+				xmlFile.create(is, true, monitor);
+			}
 		}
 		return xmlFile;
 	}
-	
-		
+
 	private void updateAssociatedDiagrams() {
-		
+
 		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();
 		switch (server.getType()) {
@@ -885,85 +850,90 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				EsbEditorInput input = (EsbEditorInput) this.getEditorInput();
 				IFile file = input.getXmlResource();
 
-				IEditorReference editorReferences[] = PlatformUI.getWorkbench()
-						.getActiveWorkbenchWindow().getActivePage().getEditorReferences();
+				IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+						.getActivePage().getEditorReferences();
 				for (int i = 0; i < editorReferences.length; i++) {
 					IEditorPart editor = editorReferences[i].getEditor(false);
-					if ((editor instanceof EsbMultiPageEditor)&&(!editor.equals(this))) {
-						
-						
-						
-						//IFile openedFile = ((IFileEditorInput)editor.getEditorInput()).getFile();
-/*				        ElementDuplicator endPointDuplicator = new ElementDuplicator(openedFile.getProject(),((EsbMultiPageEditor)editor).getGraphicalEditor());        
-				        endPointDuplicator.updateAssociatedDiagrams((EsbMultiPageEditor)editor);*/
-						
-						
-/*						Map registry = ((EsbMultiPageEditor) editor).getDiagramEditPart()
-								.getViewer().getEditPartRegistry();
+					if ((editor instanceof EsbMultiPageEditor) && (!editor.equals(this))) {
 
-						
-						Collection<Object> values=new ArrayList<Object>();
-						values.addAll(registry.values());
-						
-						for (int j = 0; j < values.size(); ++j) {
-							EditPart element = (EditPart) values.toArray()[j];
-							if (element instanceof SequenceEditPart) {
-								String key = ((Sequence) ((Node) element.getModel()).getElement())
-										.getName();
-								String name = ((Sequences) child).getName();
-								if (key.equals(name)) {
-									EndPointDuplicator endPointDuplicator = new EndPointDuplicator(file.getProject(),
-											((EsbMultiPageEditor) editor).graphicalEditor);
-									GraphicalEditPart rootCompartment = EditorUtils
-											.getSequenceAndEndpointCompartmentEditPart(element);
-									endPointDuplicator.duplicateEndPoints(rootCompartment,
-											((Sequences) child).getName());
-								}
-							}
-						}*/
+						// IFile openedFile =
+						// ((IFileEditorInput)editor.getEditorInput()).getFile();
+						/*
+						 * ElementDuplicator endPointDuplicator = new
+						 * ElementDuplicator(openedFile.getProject(),((
+						 * EsbMultiPageEditor)editor).getGraphicalEditor());
+						 * endPointDuplicator.updateAssociatedDiagrams((
+						 * EsbMultiPageEditor)editor);
+						 */
+
+						/*
+						 * Map registry = ((EsbMultiPageEditor)
+						 * editor).getDiagramEditPart()
+						 * .getViewer().getEditPartRegistry();
+						 * 
+						 * 
+						 * Collection<Object> values=new ArrayList<Object>();
+						 * values.addAll(registry.values());
+						 * 
+						 * for (int j = 0; j < values.size(); ++j) { EditPart
+						 * element = (EditPart) values.toArray()[j]; if (element
+						 * instanceof SequenceEditPart) { String key =
+						 * ((Sequence) ((Node) element.getModel()).getElement())
+						 * .getName(); String name = ((Sequences)
+						 * child).getName(); if (key.equals(name)) {
+						 * EndPointDuplicator endPointDuplicator = new
+						 * EndPointDuplicator(file.getProject(),
+						 * ((EsbMultiPageEditor) editor).graphicalEditor);
+						 * GraphicalEditPart rootCompartment = EditorUtils
+						 * .getSequenceAndEndpointCompartmentEditPart(element);
+						 * endPointDuplicator.duplicateEndPoints(
+						 * rootCompartment, ((Sequences) child).getName()); } }
+						 * }
+						 */
 					}
 				}
 			}
 			break;
 		}
 	}
-    
 
 	/**
-     * Saves the multi-page editor's document.
-     */
-    public void doSave(final IProgressMonitor monitor) {
-    	ESBDebuggerUtil.updateModifiedDebugPoints();
-    	ESBDebuggerUtil.setPageSaveOperationActivated(true);
-    	//Fixing TOOLS-2958
-    	setContextClassLoader();
-    	boolean isSaveAllow=true;
+	 * Saves the multi-page editor's document.
+	 */
+	public void doSave(final IProgressMonitor monitor) {
+		ESBDebuggerUtil.updateModifiedDebugPoints();
+		ESBDebuggerUtil.setPageSaveOperationActivated(true);
+		// Fixing TOOLS-2958
+		setContextClassLoader();
+		boolean isSaveAllow = true;
 		if (getActivePage() == SOURCE_VIEW_PAGE_INDEX) {
 			try {
 				String xmlSource = sourceEditor.getDocument().get();
-		    	final Deserializer deserializer = Deserializer.getInstance(); 				
-		    	DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(xmlSource);
+				final Deserializer deserializer = Deserializer.getInstance();
+				DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(xmlSource);
 				if (deserializeStatus.isValid()) {
 					if (artifactType == ArtifactType.LOCAL_ENTRY) {
+						sourceDirty = true;
 						handleFormViewActivatedEvent();
 					} else {
-					handleDesignViewActivatedEvent();
+						handleDesignViewActivatedEvent();
 					}
 				} else {
 					IEditorInput editorInput = getEditorInput();
 					IFile file = ((FileEditorInput) editorInput).getFile();
-					
-					printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),deserializeStatus); 
+
+					printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),
+							deserializeStatus);
 					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Error in Configuration",
 							"There are errors in source configuration, Save anyway?")) {
-					saveForcefully(xmlSource, file, monitor);
+						saveForcefully(xmlSource, file, monitor);
 						sourceDirty = false;
 						firePropertyChange(PROP_DIRTY);
 					}
 					return;
 				}
 			} catch (Exception e) {
-				isSaveAllow=false;
+				isSaveAllow = false;
 				printHandleDesignViewActivatedEventErrorMessage(e);
 			} finally {
 				AbstractEsbNodeDeserializer.cleanupData();
@@ -976,33 +946,27 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 
 		getEditor(0).doSave(monitor);
 		EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
-		// Since Complex endpoint type editors dose not have assiociated xml file do not need to call this.
+		// Since Complex endpoint type editors dose not have assiociated xml
+		// file do not need to call this.
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
 				try {
 					IFile updateAssociatedXMLFile = updateAssociatedXMLFile(monitor);
-					IEventBroker iEventBroker = EsbEditorEvent
-							.getiEventBroker();
+					IEventBroker iEventBroker = EsbEditorEvent.getiEventBroker();
 					if (iEventBroker != null) {
 
-						iEventBroker.send(
-								EsbEditorEvent.EVENT_TOPIC_SAVE_EDITORS,
-								updateAssociatedXMLFile.getLocation()
-										.toOSString());
+						iEventBroker.send(EsbEditorEvent.EVENT_TOPIC_SAVE_EDITORS,
+								updateAssociatedXMLFile.getLocation().toOSString());
 					}
 				} catch (Exception e) {
 					sourceDirty = true;
 					log.error("Error while saving the diagram", e);
 					String errorMsgHeader = "Save failed. Following error(s) have been detected."
 							+ " Please see the error log for more details.";
-					String simpleMessage = ExceptionMessageMapper
-							.getNonTechnicalMessage(e.getMessage());
-					IStatus editorStatus = new Status(IStatus.ERROR,
-							Activator.PLUGIN_ID, simpleMessage);
-					ErrorDialog.openError(
-							Display.getCurrent().getActiveShell(), "Error",
-							errorMsgHeader, editorStatus);
+					String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+					ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 				}
 				// }
 
@@ -1020,9 +984,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				EditorUtils.setLockmode(graphicalEditor, false);
 			}
 		});
-    }
-		
-    
+	}
 
 	public boolean isDirty() {
 		if (getEditor(0) instanceof EsbDiagramEditor) {
@@ -1031,13 +993,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		return super.isDirty();
 	}
 
-    /**
-     * Saves the multi-page editor's document as another file.
-     * Also updates the text for page 0's tab, and updates this multi-page editor's input
-     * to correspond to the nested editor's.
-     */
-    public void doSaveAs() {
-    	if(getActivePage()==SOURCE_VIEW_PAGE_INDEX){
+	/**
+	 * Saves the multi-page editor's document as another file. Also updates the
+	 * text for page 0's tab, and updates this multi-page editor's input to
+	 * correspond to the nested editor's.
+	 */
+	public void doSaveAs() {
+		if (getActivePage() == SOURCE_VIEW_PAGE_INDEX) {
 			try {
 				handleDesignViewActivatedEvent();
 			} catch (Exception e) {
@@ -1047,64 +1009,61 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				firePropertyChange(PROP_DIRTY);
 			}
 		}
-    	sourceDirty=false;
-        IEditorPart editor = getEditor(0);
-        editor.doSaveAs();
-        setPageText(0, editor.getTitle());
-        setInput(editor.getEditorInput());
-    }
+		sourceDirty = false;
+		IEditorPart editor = getEditor(0);
+		editor.doSaveAs();
+		setPageText(0, editor.getTitle());
+		setInput(editor.getEditorInput());
+	}
 
-    /**
-     * The <code>MultiPageEditorExample</code> implementation of this method
-     * checks that the input is an instance of <code>IFileEditorInput</code>.
-     */
-    public void init(IEditorSite site, IEditorInput editorInput)
-            throws PartInitException {    	
-    	
-    	/*setSite(site);
-		setInputWithNotify(editorInput);
-		setPartName(editorInput.getName());*/
-    	
-        if (!(editorInput instanceof IFileEditorInput || editorInput instanceof IEsbEditorInput))
-            throw new PartInitException("InvalidInput"); //$NON-NLS-1$     
-        
-       // createModel(editorInput);
-       super.init(site, editorInput);
-       String name = editorInput.getName();
-       setTitle(name);
-    }    
-    
+	/**
+	 * The <code>MultiPageEditorExample</code> implementation of this method
+	 * checks that the input is an instance of <code>IFileEditorInput</code>.
+	 */
+	public void init(IEditorSite site, IEditorInput editorInput) throws PartInitException {
 
-    /* (non-Javadoc)
-     * Method declared on IEditorPart.
-     */
-    public boolean isSaveAsAllowed() {
-        return true;
-    }
+		/*
+		 * setSite(site); setInputWithNotify(editorInput);
+		 * setPartName(editorInput.getName());
+		 */
 
+		if (!(editorInput instanceof IFileEditorInput || editorInput instanceof IEsbEditorInput))
+			throw new PartInitException("InvalidInput"); //$NON-NLS-1$
 
-    /* (non-Javadoc)
-     * @see org.eclipse.ui.ide.IGotoMarker
-     */
-    public void gotoMarker(IMarker marker) {
-        setActivePage(DESIGN_VIEW_PAGE_INDEX);
-        IDE.gotoMarker(graphicalEditor, marker);
-    }
-    
-    
-    private void updateSequenceDetails() throws Exception{
+		// createModel(editorInput);
+		super.init(site, editorInput);
+		String name = editorInput.getName();
+		setTitle(name);
+	}
+
+	/*
+	 * (non-Javadoc) Method declared on IEditorPart.
+	 */
+	public boolean isSaveAsAllowed() {
+		return true;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.ui.ide.IGotoMarker
+	 */
+	public void gotoMarker(IMarker marker) {
+		setActivePage(DESIGN_VIEW_PAGE_INDEX);
+		IDE.gotoMarker(graphicalEditor, marker);
+	}
+
+	private void updateSequenceDetails() throws Exception {
 
 		IEditorPart editorPart = null;
 		IProject activeProject = null;
-		IEditorReference editorReferences[] = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage()
+		IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getEditorReferences();
 		for (int i = 0; i < editorReferences.length; i++) {
 			IEditorPart editor = editorReferences[i].getEditor(false);
 
 			if (editor != null) {
-				editorPart = editor.getSite().getWorkbenchWindow()
-						.getActivePage().getActiveEditor();
+				editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
 			}
 
 			if (editorPart != null) {
@@ -1120,94 +1079,85 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			}
 
 		}
-		
-		List<Sequence> childNodes = new ArrayList<Sequence>();		
-		
-		for (int i = 0; i < graphicalEditor.getDiagramEditPart().getViewer()
-				.getEditPartRegistry().size(); ++i) {
 
-			EditPart element = (EditPart) graphicalEditor.getDiagramEditPart()
-					.getViewer().getEditPartRegistry().values().toArray()[i];
+		List<Sequence> childNodes = new ArrayList<Sequence>();
+
+		for (int i = 0; i < graphicalEditor.getDiagramEditPart().getViewer().getEditPartRegistry().size(); ++i) {
+
+			EditPart element = (EditPart) graphicalEditor.getDiagramEditPart().getViewer().getEditPartRegistry()
+					.values().toArray()[i];
 			if (element instanceof SequenceEditPart) {
-				if (((NodeImpl) ((SequenceEditPart) element).getModel())
-						.getElement() instanceof Sequence) {
-					childNodes
-							.add((Sequence) ((NodeImpl) ((SequenceEditPart) element)
-									.getModel()).getElement());
+				if (((NodeImpl) ((SequenceEditPart) element).getModel()).getElement() instanceof Sequence) {
+					childNodes.add((Sequence) ((NodeImpl) ((SequenceEditPart) element).getModel()).getElement());
 				}
 			}
-		}		
-		
-		for (Sequence childNode : childNodes) {
-				String name = childNode.getName();
-				IPath location = new Path(SEQUENCE_RESOURCE_DIR + "/" + "sequence_"
-						+ name + ".esb_diagram");
-				IFile file = activeProject.getFile(location);
-
-				ResourceSet resourceSet = new ResourceSetImpl();
-				Resource resource = null;
-
-				File f = new File(file.getLocationURI().getPath());
-				URI uri = URI.createFileURI(f.getAbsolutePath());
-
-				if (!f.exists()) {
-
-				} else {
-
-					resource = resourceSet.getResource(uri, true);
-
-					EsbDiagram s = (EsbDiagram) ((org.eclipse.gmf.runtime.notation.impl.DiagramImpl) resource
-							.getContents().get(0)).getElement();
-					EList<EsbElement> children = s.getServer().getChildren();
-					for (EsbElement esbElement : children) {
-						if (esbElement instanceof Sequences){
-							Sequences sequence = (Sequences) esbElement;
-							EsbLink incomingLink = sequence.getOutputConnector().getOutgoingLink();
-							SequenceInfo.sequenceMap.put(name, incomingLink);
-						}
-					}
-//					if (s.getSequence().getInput().getOutgoingLink() != null) {
-//						EsbLink incomingLink = s.getSequence().getInput()
-//								.getOutgoingLink();
-//						SequenceInfo.sequenceMap.put(name, incomingLink);
-//					}
-				}
 		}
-    }
-    
-    /**
-     * @throws Exception
-     */
-    
-	void rebuildModelObject(final String xml) throws Exception {
-		/*try {
-			Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-			ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(activeShell);
-			progressMonitorDialog.setOpenOnRun(true);
-			progressMonitorDialog.run(true, true, new IRunnableWithProgress() {
 
-				@Override
-				public void run(IProgressMonitor monitor) throws InvocationTargetException,
-						InterruptedException {
-					try {
-						monitor.setTaskName("Generating diagram from source");
-						Deserializer.getInstance().updateDesign(xml, graphicalEditor);
-						sourceDirty=false;
-					} catch (Exception e) {
-						new InvocationTargetException(e);
+		for (Sequence childNode : childNodes) {
+			String name = childNode.getName();
+			IPath location = new Path(SEQUENCE_RESOURCE_DIR + "/" + "sequence_" + name + ".esb_diagram");
+			IFile file = activeProject.getFile(location);
+
+			ResourceSet resourceSet = new ResourceSetImpl();
+			Resource resource = null;
+
+			File f = new File(file.getLocationURI().getPath());
+			URI uri = URI.createFileURI(f.getAbsolutePath());
+
+			if (!f.exists()) {
+
+			} else {
+
+				resource = resourceSet.getResource(uri, true);
+
+				EsbDiagram s = (EsbDiagram) ((org.eclipse.gmf.runtime.notation.impl.DiagramImpl) resource.getContents()
+						.get(0)).getElement();
+				EList<EsbElement> children = s.getServer().getChildren();
+				for (EsbElement esbElement : children) {
+					if (esbElement instanceof Sequences) {
+						Sequences sequence = (Sequences) esbElement;
+						EsbLink incomingLink = sequence.getOutputConnector().getOutgoingLink();
+						SequenceInfo.sequenceMap.put(name, incomingLink);
 					}
 				}
-			
-			});
-			
-		} catch (InvocationTargetException e) {
-			log.error("Error while generating diagram from source",e.getTargetException());
-		} catch (InterruptedException e) {
-			log.warn("The operation was canceled by the user", e);
-		} finally{
-			firePropertyChange(PROP_DIRTY);
-		}*/
-		
+				// if (s.getSequence().getInput().getOutgoingLink() != null) {
+				// EsbLink incomingLink = s.getSequence().getInput()
+				// .getOutgoingLink();
+				// SequenceInfo.sequenceMap.put(name, incomingLink);
+				// }
+			}
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+
+	void rebuildModelObject(final String xml) throws Exception {
+		/*
+		 * try { Shell activeShell =
+		 * PlatformUI.getWorkbench().getDisplay().getActiveShell();
+		 * ProgressMonitorDialog progressMonitorDialog = new
+		 * ProgressMonitorDialog(activeShell);
+		 * progressMonitorDialog.setOpenOnRun(true);
+		 * progressMonitorDialog.run(true, true, new IRunnableWithProgress() {
+		 * 
+		 * @Override public void run(IProgressMonitor monitor) throws
+		 * InvocationTargetException, InterruptedException { try {
+		 * monitor.setTaskName("Generating diagram from source");
+		 * Deserializer.getInstance().updateDesign(xml, graphicalEditor);
+		 * sourceDirty=false; } catch (Exception e) { new
+		 * InvocationTargetException(e); } }
+		 * 
+		 * });
+		 * 
+		 * } catch (InvocationTargetException e) { log.error(
+		 * "Error while generating diagram from source",e.getTargetException());
+		 * } catch (InterruptedException e) { log.warn(
+		 * "The operation was canceled by the user", e); } finally{
+		 * firePropertyChange(PROP_DIRTY); }
+		 */
+
 		Deserializer.getInstance().updateDesign(xml, graphicalEditor);
 
 		final EsbMultiPageEditor tempEditor = this;
@@ -1219,10 +1169,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			}
 		});
 	}
-	
-	// There is a class loading issue in Mac OS with Java 7u55 and later updates.
-	// Root cause for this issue is returning null value for Thread.currentThread().getContextClassLoader().
-	// This method will set the ContextClassLoader for current thread if ContextClassLoader has not been set. See
+
+	// There is a class loading issue in Mac OS with Java 7u55 and later
+	// updates.
+	// Root cause for this issue is returning null value for
+	// Thread.currentThread().getContextClassLoader().
+	// This method will set the ContextClassLoader for current thread if
+	// ContextClassLoader has not been set. See
 	// https://wso2.org/jira/browse/TOOLS-2958 for more details.
 	private void setContextClassLoader() {
 		Thread thread = Thread.currentThread();
@@ -1231,57 +1184,57 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			thread.setContextClassLoader(LogMediator.class.getClassLoader());
 		}
 	}
-	
+
 	public IDiagramGraphicalViewer getDiagramGraphicalViewer() {
 		return graphicalEditor.getDiagramGraphicalViewer();
 	}
-	
+
 	public IDiagramEditDomain getDiagramEditDomain() {
 		return graphicalEditor.getDiagramEditDomain();
 	}
-	
+
 	public Diagram getDiagram() {
 		return graphicalEditor.getDiagram();
 	}
-	
+
 	public DiagramEditPart getDiagramEditPart() {
 		return graphicalEditor.getDiagramEditPart();
 	}
-    
+
 	public EsbDiagramEditor getGraphicalEditor() {
 		return graphicalEditor;
 	}
-	
+
 	public void focusToolbar() {
 		graphicalEditor.focusToolBar();
 	}
-	
-    public double getZoom() {
+
+	public double getZoom() {
 		return zoom;
 	}
-    
+
 	public void setZoom(double zoom) {
 		this.zoom = zoom;
 	}
-	
-	//20150929
+
+	// 20150929
 	private void saveForcefully(String source, IFile xmlFile, IProgressMonitor monitor) {
-		
+
 		InputStream is = new ByteArrayInputStream(source.getBytes());
 		try {
 			if (xmlFile.exists()) {
 				xmlFile.setContents(is, true, true, monitor);
 			} else {
 				xmlFile.create(is, true, monitor);
-			} 
-		} catch (CoreException e) {
-				log.error("Error occurred while saving " + e.getMessage()); 
 			}
+		} catch (CoreException e) {
+			log.error("Error occurred while saving " + e.getMessage());
+		}
 		try {
 			is.close();
 		} catch (IOException e) {
-			log.error("Error occurred while saving " + e.getMessage()); 
+			log.error("Error occurred while saving " + e.getMessage());
 		}
 	}
-	
+
 }

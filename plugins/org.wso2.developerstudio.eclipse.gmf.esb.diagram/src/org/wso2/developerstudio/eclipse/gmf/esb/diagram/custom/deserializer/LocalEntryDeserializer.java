@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import org.apache.synapse.config.Entry;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.eclipse.ui.forms.editor.FormPage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry;
 import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType;
@@ -58,7 +59,7 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 	@Override
 	public LocalEntry createNode(FormEditor formEditor, Entry object) {
 		ESBFormEditor LocalEntryFormEditor = (ESBFormEditor) formEditor;
-		Object formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
+		FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
 		if (formPage instanceof LocalEntryFormPage) {
 			LocalEntryFormPage localEntryPage = (LocalEntryFormPage) formPage;
 			localEntryPage.setLocalEntryName(object.getKey());

@@ -17,12 +17,12 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
@@ -39,6 +39,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpo
 public class ESBFormEditor extends FormEditor {
 
 	ArtifactType artifactType;
+	FormPage currFormPage = null;
 
 	public ESBFormEditor(ArtifactType artifactType) {
 		this.artifactType = artifactType;
@@ -63,37 +64,42 @@ public class ESBFormEditor extends FormEditor {
 	 */
 	protected void addPages() {
 		try {
-				if (artifactType == ArtifactType.LOCAL_ENTRY) {
-					addPage(new LocalEntryFormPage(this));	
-				}else if (artifactType == ArtifactType.MESSAGE_PROCESSOR) {
-					addPage(new MessageProcessorFormPage(this));
-				}else if (artifactType == ArtifactType.MESSAGE_STORE){
-					addPage(new MessageStoreFormPage(this));		
-				}else if (artifactType == ArtifactType.TASK){
-					addPage(new ScheduledTaskFormPage(this));		
-				}else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_DEFAULT) {
-					addPage(new DefaultEndpointFormPage(this));		
-				}else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_ADDRESS){
-					addPage(new AddressEndpointFormPage(this));		
-				}else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_WSDL){
-					addPage(new WsdlEndpointFormPage(this));		
-				}else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_HTTP){
-					addPage(new HttpEndpointFormPage(this));	
-				}
-
+			if (currFormPage == null) {
+				assignCurrPage();
+			}
+			addPage(currFormPage);
 		} catch (PartInitException e) {
 			//
 		}
 	}
-	
-	public Object getFormPageForArtifact(ArtifactType artifactType){
+
+	private void assignCurrPage() {
 		if (artifactType == ArtifactType.LOCAL_ENTRY) {
-			return new LocalEntryFormPage(this);
+			currFormPage = new LocalEntryFormPage(this);
+		} else if (artifactType == ArtifactType.MESSAGE_PROCESSOR) {
+			currFormPage = new MessageProcessorFormPage(this);
+		} else if (artifactType == ArtifactType.MESSAGE_STORE) {
+			currFormPage = new MessageStoreFormPage(this);
+		} else if (artifactType == ArtifactType.TASK) {
+			currFormPage = new ScheduledTaskFormPage(this);
+		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_DEFAULT) {
+			currFormPage = new DefaultEndpointFormPage(this);
+		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_ADDRESS) {
+			currFormPage = new AddressEndpointFormPage(this);
+		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_WSDL) {
+			currFormPage = new WsdlEndpointFormPage(this);
+		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_HTTP) {
+			currFormPage = new HttpEndpointFormPage(this);
 		}
-		return artifactType; 
-		
 	}
-	
+
+	public FormPage getFormPageForArtifact(ArtifactType artifactType) {
+		if (currFormPage == null) {
+			assignCurrPage();
+		}
+		return currFormPage;
+
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -102,17 +108,15 @@ public class ESBFormEditor extends FormEditor {
 	 * IProgressMonitor)
 	 */
 	public void doSave(IProgressMonitor monitor) {
-		/*if (p == null) {
-			return;
-		}
-		updateState(getEditorInput());
-		validateState(getEditorInput());
-		performSave(false, monitor);*/
+		/*
+		 * if (p == null) { return; } updateState(getEditorInput());
+		 * validateState(getEditorInput()); performSave(false, monitor);
+		 */
 	}
 
 	private void performSave(boolean b, IProgressMonitor monitor) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/*

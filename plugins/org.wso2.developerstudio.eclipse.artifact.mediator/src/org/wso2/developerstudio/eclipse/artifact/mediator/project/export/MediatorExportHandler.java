@@ -41,8 +41,8 @@ import org.wso2.developerstudio.eclipse.platform.core.manifest.BundleManifest;
 import org.wso2.developerstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
 import org.wso2.developerstudio.eclipse.utils.archive.ArchiveManipulator;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.eclipse.artifact.mediator.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.*;
-import org.wso2.developerstudio.eclipse.maven.Activator;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 public class MediatorExportHandler extends ProjectArtifactHandler {

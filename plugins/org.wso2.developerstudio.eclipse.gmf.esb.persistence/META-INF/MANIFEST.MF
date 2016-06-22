@@ -22,7 +22,7 @@ Require-Bundle: org.wso2.developerstudio.eclipse.gmf.esb,
  org.eclipse.ui.workbench,
  org.eclipse.gmf.runtime.notation;bundle-version="1.8.0",
  org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="5.0.0",
- org.wso2.developerstudio.eclipse.kernel.libraries
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)"
 Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom,
  org.wso2.developerstudio.eclipse.gmf.esb.persistence
 Import-Package: org.apache.xml.serialize;version="2.9.0",
@@ -36,6 +36,6 @@ Import-Package: org.apache.xml.serialize;version="2.9.0",
  org.mozilla.javascript,
  org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.interfaces,
- org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,4.2.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,4.2.0)",
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.esb.form.editors.article.rcp

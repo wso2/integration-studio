@@ -196,10 +196,10 @@ public class DMOperatorTransformerFactory {
 			return new CeilOperatorTransformer();
 		case FLOOR:
 			return new FloorOperatorTransformer();
-//		case MAX:
-//			return new MaxOperatorTransformer();
-//		case MIN:
-//			return new MinOperatorTransformer();
+		case MAX:
+			return new MaxOperatorTransformer();
+		case MIN:
+			return new MinOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Arithmatic operator type found for tranform in DMOperatorTransformerFactory : " + type);

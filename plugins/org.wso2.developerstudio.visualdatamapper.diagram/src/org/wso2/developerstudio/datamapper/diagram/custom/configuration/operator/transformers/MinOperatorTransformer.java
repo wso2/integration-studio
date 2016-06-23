@@ -30,7 +30,7 @@ import static org.wso2.developerstudio.datamapper.diagram.custom.model.transform
 import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_SUBTRACT_SIGN;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Subtract
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Min
  * operation
  */
 public class MinOperatorTransformer extends AbstractDMOperatorTransformer {
@@ -41,9 +41,22 @@ public class MinOperatorTransformer extends AbstractDMOperatorTransformer {
 			DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-
-			operationBuilder.append(";");
-
+			@SuppressWarnings("unchecked")
+			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
+			/* Add Initializer */
+			operationBuilder.append("Math.min(");
+			if (inputVariables.size() > 0) {
+				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true));
+				for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
+					operationBuilder.append("," + ScriptGenerationUtil
+							.getPrettyVariableNameInForOperation(inputVariables.get(variableIndex), variableTypeMap,
+									tempParentForLoopBeanStack, true));
+				}
+			} else {
+				operationBuilder.append("0");
+			}
+			operationBuilder.append(");");
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}

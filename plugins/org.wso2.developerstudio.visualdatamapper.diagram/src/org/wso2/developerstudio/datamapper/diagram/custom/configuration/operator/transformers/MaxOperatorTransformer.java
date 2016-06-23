@@ -26,13 +26,9 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADD_SIGN;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_SUBTRACT_SIGN;
-
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Max
- * operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for Max operation
  */
 public class MaxOperatorTransformer extends AbstractDMOperatorTransformer {
 
@@ -47,12 +43,11 @@ public class MaxOperatorTransformer extends AbstractDMOperatorTransformer {
 			/* Add Initializer */
 			operationBuilder.append("Math.max(");
 			if (inputVariables.size() > 0) {
-				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true));
+				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+						variableTypeMap, parentForLoopBeanStack, true));
 				for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
-					operationBuilder.append("," + ScriptGenerationUtil
-							.getPrettyVariableNameInForOperation(inputVariables.get(variableIndex), variableTypeMap,
-									tempParentForLoopBeanStack, true));
+					operationBuilder.append("," + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							inputVariables.get(variableIndex), variableTypeMap, tempParentForLoopBeanStack, true));
 				}
 			} else {
 				operationBuilder.append("0");

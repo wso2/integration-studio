@@ -168,8 +168,8 @@ public class DMOperatorTransformerFactory {
 			return new TrimOperatorTransformer();
 //		case REPLACE:
 //			return new ReplaceOperatorTransformer();
-//		case MATCH:
-//			return new MatchOperatorTransformer();
+		case MATCH:
+			return new MatchOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown String operator type found for tranform in DMOperatorTransformerFactory : " + type);

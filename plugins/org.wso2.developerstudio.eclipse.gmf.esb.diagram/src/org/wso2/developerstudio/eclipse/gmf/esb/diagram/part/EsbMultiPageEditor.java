@@ -557,24 +557,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		case COMPLEX_ENDPOINT:
 			break;
 		case LOCAL_ENTRY:
+		case MESSAGE_PROCESSOR:
+		case MESSAGE_STORE:
+		case TASK:
+		case TEMPLATE_ENDPOINT_DEFAULT:
+		case TEMPLATE_ENDPOINT_ADDRESS:
+		case TEMPLATE_ENDPOINT_WSDL:
+		case TEMPLATE_ENDPOINT_HTTP:
 			isFormEditor = true;
 			createPageForm(server.getType());
-		case MESSAGE_PROCESSOR:
-			createPageForm(server.getType());
-		case MESSAGE_STORE:
-			createPageForm(server.getType());
-		case TASK:
-			createPageForm(server.getType());
-		case TEMPLATE_ENDPOINT_DEFAULT:
-			createPageForm(server.getType());
-		case TEMPLATE_ENDPOINT_ADDRESS:
-			createPageForm(server.getType());
-		case TEMPLATE_ENDPOINT_WSDL:
-			createPageForm(server.getType());
-		case TEMPLATE_ENDPOINT_HTTP:
-			createPageForm(server.getType());
-
-		default:
 			createPage1();
 			break;
 		}

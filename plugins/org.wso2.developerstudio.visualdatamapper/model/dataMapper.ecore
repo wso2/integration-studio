@@ -4,8 +4,16 @@
     nsPrefix="datamapper">
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="Trim" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Replace" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Match" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Replace" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="{$Target}"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="replaceString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="{$ReplaceWith}"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Match" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="{$Pattern}"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Min" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Max" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomFunction" eSuperTypes="#//Operator">

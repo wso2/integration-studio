@@ -25,8 +25,12 @@ public class SubstringModelTransformer implements IModelTransformer {
 
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
+		SubstringImpl substringModel = (SubstringImpl) operator;
 		if (operator instanceof SubstringImpl) {
-			DMOperation substringOperatorModel = new DMOperation(DataMapperOperatorType.SUBSTRING, operator.toString(), index);
+			DMOperation substringOperatorModel = new DMOperation(DataMapperOperatorType.SUBSTRING, operator.toString(),
+					index);
+			substringOperatorModel.addProperty(TransformerConstants.START_INDEX, substringModel.getStartIndex());
+			substringOperatorModel.addProperty(TransformerConstants.LENGTH_TAG, substringModel.getEndIndex());
 			return substringOperatorModel;
 		}
 		throw new IllegalArgumentException("SubstringImpl operator expected. Found : " + operator.toString());

@@ -41,7 +41,7 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int START_INDEX_EDEFAULT = 0;
+	protected static final String START_INDEX_EDEFAULT = "{$StartIndex}";
 	/**
 	 * The cached value of the '{@link #getStartIndex() <em>Start Index</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,7 +50,7 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	 * @generated
 	 * @ordered
 	 */
-	protected int startIndex = START_INDEX_EDEFAULT;
+	protected String startIndex = START_INDEX_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getEndIndex() <em>End Index</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -59,7 +59,7 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int END_INDEX_EDEFAULT = 0;
+	protected static final String END_INDEX_EDEFAULT = "{$Length}";
 	/**
 	 * The cached value of the '{@link #getEndIndex() <em>End Index</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	 * @generated
 	 * @ordered
 	 */
-	protected int endIndex = END_INDEX_EDEFAULT;
+	protected String endIndex = END_INDEX_EDEFAULT;
 	/**
 	 * The default value of the '{@link #isGetPatternFromInput() <em>Get Pattern From Input</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -129,7 +129,7 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getStartIndex() {
+	public String getStartIndex() {
 		return startIndex;
 	}
 
@@ -138,8 +138,8 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStartIndex(int newStartIndex) {
-		int oldStartIndex = startIndex;
+	public void setStartIndex(String newStartIndex) {
+		String oldStartIndex = startIndex;
 		startIndex = newStartIndex;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.SUBSTRING__START_INDEX, oldStartIndex, startIndex));
@@ -150,7 +150,7 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getEndIndex() {
+	public String getEndIndex() {
 		return endIndex;
 	}
 
@@ -159,8 +159,8 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEndIndex(int newEndIndex) {
-		int oldEndIndex = endIndex;
+	public void setEndIndex(String newEndIndex) {
+		String oldEndIndex = endIndex;
 		endIndex = newEndIndex;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.SUBSTRING__END_INDEX, oldEndIndex, endIndex));
@@ -214,10 +214,10 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DataMapperPackage.SUBSTRING__START_INDEX:
-				setStartIndex((Integer)newValue);
+				setStartIndex((String)newValue);
 				return;
 			case DataMapperPackage.SUBSTRING__END_INDEX:
-				setEndIndex((Integer)newValue);
+				setEndIndex((String)newValue);
 				return;
 			case DataMapperPackage.SUBSTRING__GET_PATTERN_FROM_INPUT:
 				setGetPatternFromInput((Boolean)newValue);
@@ -256,9 +256,9 @@ public class SubstringImpl extends OperatorImpl implements Substring {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case DataMapperPackage.SUBSTRING__START_INDEX:
-				return startIndex != START_INDEX_EDEFAULT;
+				return START_INDEX_EDEFAULT == null ? startIndex != null : !START_INDEX_EDEFAULT.equals(startIndex);
 			case DataMapperPackage.SUBSTRING__END_INDEX:
-				return endIndex != END_INDEX_EDEFAULT;
+				return END_INDEX_EDEFAULT == null ? endIndex != null : !END_INDEX_EDEFAULT.equals(endIndex);
 			case DataMapperPackage.SUBSTRING__GET_PATTERN_FROM_INPUT:
 				return getPatternFromInput != GET_PATTERN_FROM_INPUT_EDEFAULT;
 		}

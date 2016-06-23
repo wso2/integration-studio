@@ -62,7 +62,7 @@ public class CustomFunctionImpl extends OperatorImpl implements CustomFunction {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String FUNCTION_DEFINITION_EDEFAULT = "customFunction(in1,in2){ return (in1 + in2);};";
+	protected static final String FUNCTION_DEFINITION_EDEFAULT = "function(in1,in2){ return (in1 + in2);};";
 	/**
 	 * The cached value of the '{@link #getFunctionDefinition() <em>Function Definition</em>}' attribute.
 	 * <!-- begin-user-doc -->

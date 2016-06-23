@@ -41,6 +41,8 @@ public class TransformerConstants {
     public static final String PROPERTY_TYPE_TAG = "propertyValueType";
     public static final String PROPERTIES_PREFIX = "DM_PROPERTIES";
 	public static final String PATTERN_TAG = "Pattern";
+	public static final String START_INDEX = "StartIndex";
+	public static final String LENGTH_TAG = "lengthTag";
 
     
 }

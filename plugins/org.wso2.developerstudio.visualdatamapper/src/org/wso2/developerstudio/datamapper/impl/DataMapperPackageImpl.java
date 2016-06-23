@@ -1882,7 +1882,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		initEClass(customFunctionEClass, CustomFunction.class, "CustomFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomFunction_FunctionName(), ecorePackage.getEString(), "functionName", "customFunction", 0, 1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCustomFunction_FunctionDefinition(), ecorePackage.getEString(), "functionDefinition", "customFunction(in1,in2){ return (in1 + in2);};", 0, 1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomFunction_FunctionDefinition(), ecorePackage.getEString(), "functionDefinition", "function(in1,in2){ return (in1 + in2);};", 0, 1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCustomFunction_OutputConnectorTag(), ecorePackage.getEString(), "outputConnectorTag", "Result", 0, 1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCustomFunction_InputConnectorTag(), ecorePackage.getEString(), "InputConnectorTag", "In", 0, -1, CustomFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1906,16 +1906,16 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(stringLengthEClass, StringLength.class, "StringLength", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(startsWithEClass, StartsWith.class, "StartsWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStartsWith_Pattern(), ecorePackage.getEString(), "pattern", "/default", 0, 1, StartsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStartsWith_Pattern(), ecorePackage.getEString(), "pattern", "{$Pattern}", 0, 1, StartsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStartsWith_GetPatternFromInput(), ecorePackage.getEBoolean(), "getPatternFromInput", "true", 0, 1, StartsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(endsWithEClass, EndsWith.class, "EndsWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEndsWith_Pattern(), ecorePackage.getEString(), "pattern", "/default", 0, 1, EndsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEndsWith_Pattern(), ecorePackage.getEString(), "pattern", "{$Pattern}", 0, 1, EndsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEndsWith_GetPatternFromInput(), ecorePackage.getEBoolean(), "getPatternFromInput", "true", 0, 1, EndsWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(substringEClass, Substring.class, "Substring", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSubstring_StartIndex(), ecorePackage.getEInt(), "startIndex", "0", 0, 1, Substring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSubstring_EndIndex(), ecorePackage.getEInt(), "endIndex", "0", 0, 1, Substring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubstring_StartIndex(), ecorePackage.getEString(), "startIndex", "{$StartIndex}", 0, 1, Substring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubstring_EndIndex(), ecorePackage.getEString(), "endIndex", "{$Length}", 0, 1, Substring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSubstring_GetPatternFromInput(), ecorePackage.getEBoolean(), "getPatternFromInput", "true", 0, 1, Substring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ifElseEClass, IfElse.class, "IfElse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

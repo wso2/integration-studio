@@ -25,7 +25,7 @@ public interface Substring extends Operator {
 
 	/**
 	 * Returns the value of the '<em><b>Start Index</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
+	 * The default value is <code>"{$StartIndex}"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Start Index</em>' attribute isn't clear,
@@ -33,12 +33,12 @@ public interface Substring extends Operator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Start Index</em>' attribute.
-	 * @see #setStartIndex(int)
+	 * @see #setStartIndex(String)
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getSubstring_StartIndex()
-	 * @model default="0"
+	 * @model default="{$StartIndex}"
 	 * @generated
 	 */
-	int getStartIndex();
+	String getStartIndex();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.Substring#getStartIndex <em>Start Index</em>}' attribute.
@@ -48,11 +48,11 @@ public interface Substring extends Operator {
 	 * @see #getStartIndex()
 	 * @generated
 	 */
-	void setStartIndex(int value);
+	void setStartIndex(String value);
 
 	/**
 	 * Returns the value of the '<em><b>End Index</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
+	 * The default value is <code>"{$Length}"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>End Index</em>' attribute isn't clear,
@@ -60,12 +60,12 @@ public interface Substring extends Operator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>End Index</em>' attribute.
-	 * @see #setEndIndex(int)
+	 * @see #setEndIndex(String)
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getSubstring_EndIndex()
-	 * @model default="0"
+	 * @model default="{$Length}"
 	 * @generated
 	 */
-	int getEndIndex();
+	String getEndIndex();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.Substring#getEndIndex <em>End Index</em>}' attribute.
@@ -75,7 +75,7 @@ public interface Substring extends Operator {
 	 * @see #getEndIndex()
 	 * @generated
 	 */
-	void setEndIndex(int value);
+	void setEndIndex(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Get Pattern From Input</b></em>' attribute.

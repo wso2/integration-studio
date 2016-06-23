@@ -25,8 +25,10 @@ public class MatchModelTransformer implements IModelTransformer {
 
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
+		MatchImpl matchModel = (MatchImpl) operator;
 		if (operator instanceof MatchImpl) {
 			DMOperation matchOperatorModel = new DMOperation(DataMapperOperatorType.MATCH, operator.toString(), index);
+			matchOperatorModel.addProperty(TransformerConstants.PATTERN_TAG, matchModel.getPattern());
 			return matchOperatorModel;
 		}
 		throw new IllegalArgumentException("MatchImpl operator expected. Found : " + operator.toString());

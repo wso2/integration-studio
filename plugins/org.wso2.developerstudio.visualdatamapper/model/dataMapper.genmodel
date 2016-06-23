@@ -79,8 +79,13 @@
     </genEnums>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
     <genClasses ecoreClass="dataMapper.ecore#//Trim"/>
-    <genClasses ecoreClass="dataMapper.ecore#//Replace"/>
-    <genClasses ecoreClass="dataMapper.ecore#//Match"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Replace">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Replace/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Replace/replaceString"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Match">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Match/pattern"/>
+    </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Min"/>
     <genClasses ecoreClass="dataMapper.ecore#//Max"/>
     <genClasses ecoreClass="dataMapper.ecore#//CustomFunction">

@@ -353,13 +353,31 @@ public interface DataMapperPackage extends EPackage {
 	int REPLACE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Target</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE__TARGET = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Replace String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE__REPLACE_STRING = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Replace</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPLACE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int REPLACE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.MatchImpl <em>Match</em>}' class.
@@ -435,13 +453,22 @@ public interface DataMapperPackage extends EPackage {
 	int MATCH__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATCH__PATTERN = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Match</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MATCH_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int MATCH_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.MinImpl <em>Min</em>}' class.
@@ -3834,6 +3861,28 @@ public interface DataMapperPackage extends EPackage {
 	EClass getReplace();
 
 				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Replace#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Replace#getTarget()
+	 * @see #getReplace()
+	 * @generated
+	 */
+	EAttribute getReplace_Target();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Replace#getReplaceString <em>Replace String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Replace String</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Replace#getReplaceString()
+	 * @see #getReplace()
+	 * @generated
+	 */
+	EAttribute getReplace_ReplaceString();
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Match <em>Match</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3842,6 +3891,17 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMatch();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Match#getPattern <em>Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pattern</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Match#getPattern()
+	 * @see #getMatch()
+	 * @generated
+	 */
+	EAttribute getMatch_Pattern();
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Min <em>Min</em>}'.
@@ -5145,6 +5205,22 @@ public interface DataMapperPackage extends EPackage {
 		EClass REPLACE = eINSTANCE.getReplace();
 
 		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPLACE__TARGET = eINSTANCE.getReplace_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Replace String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPLACE__REPLACE_STRING = eINSTANCE.getReplace_ReplaceString();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.MatchImpl <em>Match</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5153,6 +5229,14 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MATCH = eINSTANCE.getMatch();
+
+		/**
+		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MATCH__PATTERN = eINSTANCE.getMatch_Pattern();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.MinImpl <em>Min</em>}' class.

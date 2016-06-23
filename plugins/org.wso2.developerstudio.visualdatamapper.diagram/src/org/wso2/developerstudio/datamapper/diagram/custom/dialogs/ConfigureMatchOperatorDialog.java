@@ -33,22 +33,22 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.EndsWith;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
+import org.wso2.developerstudio.datamapper.Match;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MatchEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
-import org.wso2.developerstudio.datamapper.impl.EndsWithImpl;
+import org.wso2.developerstudio.datamapper.impl.MatchImpl;
 
-public class ConfigureEndsWithOperatorDialog extends AbstractConfigureOperatorDialog {
+public class ConfigureMatchOperatorDialog extends AbstractConfigureOperatorDialog {
 
-	private TransactionalEditingDomain editingDomain;
-	private EndsWith endsWithImpl;
 	private String pattern;
+	private TransactionalEditingDomain editingDomain;
+	private MatchImpl matchImpl;
 	private EditPart editPart;
 
-	public ConfigureEndsWithOperatorDialog(Shell parentShell, EndsWith selectedObj,
-			TransactionalEditingDomain editingDomain, EditPart selectedEP) {
+	public ConfigureMatchOperatorDialog(Shell parentShell, Match selectedObj, TransactionalEditingDomain editingDomain,
+			EditPart selectedEP) {
 		super(parentShell);
-		this.endsWithImpl = (EndsWith) selectedObj;
+		this.matchImpl = (MatchImpl) selectedObj;
 		this.editingDomain = editingDomain;
 		this.editPart = selectedEP;
 	}
@@ -56,14 +56,14 @@ public class ConfigureEndsWithOperatorDialog extends AbstractConfigureOperatorDi
 	@Override
 	public void create() {
 		super.create();
-		setTitle("Configure Ends With Operator");
-		setMessage("Set ends with operator properties", IMessageProvider.INFORMATION);
+		setTitle("Configure Match Operator");
+		setMessage("Set match operator properties", IMessageProvider.INFORMATION);
 	}
 
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		// Set title.
-		newShell.setText("Configure Ends With Operator");
+		newShell.setText("Configure Match Operator");
 	}
 
 	protected Control createDialogArea(Composite parent) {
@@ -73,13 +73,13 @@ public class ConfigureEndsWithOperatorDialog extends AbstractConfigureOperatorDi
 		GridLayout layout = new GridLayout(2, false);
 		container.setLayout(layout);
 
-		Label concatDelimiterLabel = new Label(container, SWT.NULL);
-		concatDelimiterLabel.setText("String Pattern : ");
+		Label matchDelimiterLabel = new Label(container, SWT.NULL);
+		matchDelimiterLabel.setText("String Pattern : ");
 
 		final Text patternText = new Text(container, SWT.BORDER);
 		patternText.setLayoutData(dataPropertyConfigText);
-		if (endsWithImpl.getPattern() != null) {
-			patternText.setText(endsWithImpl.getPattern());
+		if (matchImpl.getPattern() != null) {
+			patternText.setText(matchImpl.getPattern());
 		} else {
 			patternText.setText("{$Pattern}");
 		}
@@ -128,16 +128,15 @@ public class ConfigureEndsWithOperatorDialog extends AbstractConfigureOperatorDi
 	}
 
 	protected void okPressed() {
-
 		if (!StringUtils.isEmpty(pattern)) {
-			EndsWithImpl endsWithOperatorInstance = (EndsWithImpl) endsWithImpl;
-			SetCommand setCmnd = new SetCommand(editingDomain, endsWithOperatorInstance,
-					DataMapperPackage.Literals.ENDS_WITH__PATTERN, pattern);
+			MatchImpl matchOperatorInstance = (MatchImpl) matchImpl;
+			SetCommand setCmnd = new SetCommand(editingDomain, matchOperatorInstance,
+					DataMapperPackage.Literals.MATCH__PATTERN, pattern);
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);
 			}
-			((OperatorRectangle) ((EndsWithEditPart) editPart).getEndsWithFigure())
-					.changeOperatorHeader("EndsWith : \"" + pattern + "\"");
+			((OperatorRectangle) ((MatchEditPart) editPart).getMatchFigure())
+					.changeOperatorHeader("Match : \"" + pattern + "\"");
 		}
 		super.okPressed();
 	}

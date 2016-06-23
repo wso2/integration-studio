@@ -24,14 +24,12 @@ import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLev
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_SUBTRACT_SIGN;
-
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Subtract
- * operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for Replace operation
  */
 public class ReplaceOperatorTransformer extends AbstractDMOperatorTransformer {
 
@@ -41,8 +39,39 @@ public class ReplaceOperatorTransformer extends AbstractDMOperatorTransformer {
 			DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+			@SuppressWarnings("unchecked")
+			String replaceFromCustomInput = (String) operator.getProperty(TransformerConstants.TARGET_TAG);
+			String replaceToCustomInput = (String) operator.getProperty(TransformerConstants.REPLACE_WITH_TAG);
+			String replaceFromValue, replaceToValue;
 
-			operationBuilder.append(";");
+			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
+			if (inputVariables.size() > 0) {
+				operationBuilder
+						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, parentForLoopBeanStack, true) + ").replace(");
+			}
+
+			if (replaceFromCustomInput.startsWith("{$") && inputVariables.size() > 1) {
+				replaceFromValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
+						variableTypeMap, tempParentForLoopBeanStack, true);
+				if (replaceToCustomInput.startsWith("{$") && inputVariables.size() > 2) {
+					replaceToValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
+							variableTypeMap, tempParentForLoopBeanStack, true);
+				} else {
+					replaceToValue = "\"" + replaceToCustomInput + "\"";
+				}
+
+			} else {
+				replaceFromValue = "\"" + replaceFromCustomInput + "\"";
+				if (replaceToCustomInput.startsWith("{$") && inputVariables.size() > 1) {
+					replaceToValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
+							variableTypeMap, tempParentForLoopBeanStack, true);
+				} else {
+					replaceToValue = "\"" + replaceToCustomInput + "\"";
+				}
+			}
+
+			operationBuilder.append(replaceFromValue + "," + replaceToValue + ");");
 
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);

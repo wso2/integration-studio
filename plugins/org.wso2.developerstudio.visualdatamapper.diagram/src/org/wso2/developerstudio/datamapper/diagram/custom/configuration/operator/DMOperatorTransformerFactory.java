@@ -166,10 +166,10 @@ public class DMOperatorTransformerFactory {
 			return new EndsWithOperatorTransformer();
 		case TRIM:
 			return new TrimOperatorTransformer();
-//		case REPLACE:
-//			return new ReplaceOperatorTransformer();
-//		case MATCH:
-//			return new MatchOperatorTransformer();
+		case REPLACE:
+			return new ReplaceOperatorTransformer();
+		case MATCH:
+			return new MatchOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown String operator type found for tranform in DMOperatorTransformerFactory : " + type);
@@ -196,10 +196,10 @@ public class DMOperatorTransformerFactory {
 			return new CeilOperatorTransformer();
 		case FLOOR:
 			return new FloorOperatorTransformer();
-//		case MAX:
-//			return new MaxOperatorTransformer();
-//		case MIN:
-//			return new MinOperatorTransformer();
+		case MAX:
+			return new MaxOperatorTransformer();
+		case MIN:
+			return new MinOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Arithmatic operator type found for tranform in DMOperatorTransformerFactory : " + type);

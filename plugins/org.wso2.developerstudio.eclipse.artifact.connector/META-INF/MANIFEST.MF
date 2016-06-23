@@ -17,3 +17,4 @@ Import-Package: org.wso2.developerstudio.eclipse.distribution.project.export;ver
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.utils.project;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,5.0.0)"
+Export-Package: org.wso2.developerstudio.eclipse.artifact.connector.ui.wizard

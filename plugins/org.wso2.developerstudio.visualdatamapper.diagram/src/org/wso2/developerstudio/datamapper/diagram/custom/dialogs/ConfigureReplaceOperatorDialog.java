@@ -120,7 +120,7 @@ public class ConfigureReplaceOperatorDialog extends AbstractConfigureOperatorDia
 		replaceText.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {
 				try {
-					target = new String(replaceText.getText());
+					replaceWith = new String(replaceText.getText());
 					if (!(StringUtils.isEmpty(target) && StringUtils.isEmpty(replaceWith))) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();

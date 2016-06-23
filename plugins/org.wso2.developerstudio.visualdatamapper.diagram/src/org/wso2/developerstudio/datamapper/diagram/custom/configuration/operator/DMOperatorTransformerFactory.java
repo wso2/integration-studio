@@ -166,8 +166,8 @@ public class DMOperatorTransformerFactory {
 			return new EndsWithOperatorTransformer();
 		case TRIM:
 			return new TrimOperatorTransformer();
-//		case REPLACE:
-//			return new ReplaceOperatorTransformer();
+		case REPLACE:
+			return new ReplaceOperatorTransformer();
 		case MATCH:
 			return new MatchOperatorTransformer();
 		default:

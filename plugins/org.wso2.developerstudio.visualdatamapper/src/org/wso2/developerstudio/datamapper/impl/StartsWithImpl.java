@@ -40,7 +40,7 @@ public class StartsWithImpl extends OperatorImpl implements StartsWith {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PATTERN_EDEFAULT = "/default";
+	protected static final String PATTERN_EDEFAULT = "{$Pattern}";
 	/**
 	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -153,15 +153,19 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 		boolean isEnabled = false;
 		Button okButton = getButton(IDialogConstants.OK_ID);
 		if (!StringUtils.isEmpty(length) && !StringUtils.isEmpty(startIndex)) {
-			try {
-				Integer.parseInt(startIndex);
-			} catch (NumberFormatException e) {
-				throw new IllegalArgumentException("Start index should be a integer. Found :" + startIndex);
+			if (!startIndex.startsWith("{")) {
+				try {
+					Integer.parseInt(startIndex);
+				} catch (NumberFormatException e) {
+					throw new IllegalArgumentException("Start index should be a integer. Found :" + startIndex);
+				}
 			}
-			try {
-				Integer.parseInt(length);
-			} catch (NumberFormatException e) {
-				throw new IllegalArgumentException("End index should be a integer. Found :" + length);
+			if (!length.startsWith("{")) {
+				try {
+					Integer.parseInt(length);
+				} catch (NumberFormatException e) {
+					throw new IllegalArgumentException("End index should be a integer. Found :" + length);
+				}
 			}
 			isEnabled = true;
 		} else {
@@ -175,9 +179,8 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 	protected void okPressed() {
 		SubstringImpl substringOperatorInstance = (SubstringImpl) substringImpl;
 		if (!StringUtils.isEmpty(startIndex)) {
-			Integer startIndexVal = Integer.parseInt(startIndex);
 			SetCommand setCmnd = new SetCommand(editingDomain, substringOperatorInstance,
-					DataMapperPackage.Literals.SUBSTRING__START_INDEX, startIndexVal);
+					DataMapperPackage.Literals.SUBSTRING__START_INDEX, startIndex);
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);
 			}
@@ -185,9 +188,8 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 					"Substring :(start index : " + startIndex + ", length : " + substringImpl.getEndIndex() + ")");
 		}
 		if (!StringUtils.isEmpty(length)) {
-			Integer endIndexVal = Integer.parseInt(length);
 			SetCommand setCmnd = new SetCommand(editingDomain, substringOperatorInstance,
-					DataMapperPackage.Literals.SUBSTRING__END_INDEX, endIndexVal);
+					DataMapperPackage.Literals.SUBSTRING__END_INDEX, length);
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);
 			}

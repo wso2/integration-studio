@@ -91,8 +91,8 @@ public class SubstringEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		int startIndex = ((SubstringImpl) ((View) getModel()).getElement()).getStartIndex();
-		int endIndex = ((SubstringImpl) ((View) getModel()).getElement()).getEndIndex();
+		String startIndex = ((SubstringImpl) ((View) getModel()).getElement()).getStartIndex();
+		String endIndex = ((SubstringImpl) ((View) getModel()).getElement()).getEndIndex();
 		return primaryShape = new SubstringFigure(startIndex, endIndex);
 	}
 
@@ -198,9 +198,9 @@ public class SubstringEditPart extends AbstractOperatorEditPart {
 			this.setBackgroundColor(THIS_BACK);
 		}
 
-		public SubstringFigure(int startIndex, int length) {
+		public SubstringFigure(String startIndex, String endIndex) {
 			super("Substring");
-			String figureHeaderLabel = "Substring : (start index :" + startIndex + " , length : " + length + " )";
+			String figureHeaderLabel = "Substring : (start index :" + startIndex + " , length : " + endIndex + " )";
 			super.changeOperatorHeader(figureHeaderLabel);
 			this.setBackgroundColor(THIS_BACK);
 		}

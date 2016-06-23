@@ -5,10 +5,10 @@ Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.messagestore;sing
 Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.messagestore.Activator
 Bundle-Vendor: WSO2 Inc
-Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.core;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.platform.ui;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="5.0.0"
+Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="5.0.0",
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,5.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,

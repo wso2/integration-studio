@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	private static final String JSON_EVAL = "json-eval";
+	private static final String JSON_EVAL = "json-eval(";
 	private static final String INVALID_SUBJECT = "Invalid subject.";
 
 	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
@@ -135,22 +135,10 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer 
 
 	private SynapsePath getParamExpression(NamespacedProperty namespacedExpression, String xpathValue)
 			throws JaxenException {
-		int length = xpathValue.length();
-		if (length >= 9) {
-			// If the length of the expression is greater than 9, then check if
-			// it contains json-eval and use SynapseJsonPath
-			if (JSON_EVAL.equals(xpathValue.substring(0, 9))) {
-				SynapseJsonPath paramExpression = new SynapseJsonPath(
-						xpathValue.substring(10, xpathValue.length() - 1));
-				return addNamespaceToParam(namespacedExpression, paramExpression);
-			} else {
-				// If the length is greater than 9 and it doesn't contain the
-				// json-eval use SynapseXPath
-				SynapseXPath paramExpression = new SynapseXPath(xpathValue);
-				return addNamespaceToParam(namespacedExpression, paramExpression);
-			}
+		if (xpathValue.startsWith(JSON_EVAL)) {
+			SynapseJsonPath paramExpression = new SynapseJsonPath(xpathValue.substring(10, xpathValue.length() - 1));
+			return addNamespaceToParam(namespacedExpression, paramExpression);
 		} else {
-			// If the length is smaller than 9 then use SynapseXPath
 			SynapseXPath paramExpression = new SynapseXPath(xpathValue);
 			return addNamespaceToParam(namespacedExpression, paramExpression);
 		}

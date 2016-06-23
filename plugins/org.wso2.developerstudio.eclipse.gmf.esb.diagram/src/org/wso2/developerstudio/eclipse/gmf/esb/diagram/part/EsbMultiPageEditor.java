@@ -202,6 +202,25 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 	}
+	
+	private void setArtifactType(){
+		IEditorInput editorInput = getEditorInput();
+		if (editorInput instanceof FileEditorInput) {
+			IFile file = ((FileEditorInput) editorInput).getFile();
+			fileName = file.getName();
+			final Deserializer deserializer = Deserializer.getInstance();
+			InputStream inputStream = null;
+			try {
+				inputStream = file.getContents();
+				final String source = new Scanner(inputStream).useDelimiter("\\A").next();
+				currArtifactType = deserializer.getArtifactType(source);
+			} catch (CoreException e) {
+				log.error("Error in retrieving the artifact type for editor generation",e);
+			} catch (Exception e) {
+				log.error("Error in retrieving the artifact type for editor generation",e);
+			}
+			}
+		}
 
 	/**
 	 * Creates page 0 of the multi-page editor, which contains a out graphical
@@ -428,7 +447,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	private void createPageForm(final ArtifactType artifactType) {
 		IEditorInput editorInput = getEditorInput();
-		removePage(DESIGN_VIEW_PAGE_INDEX);
 		formEditor = new ESBFormEditor(artifactType);
 		isFormEditor = true;
 		try {
@@ -551,11 +569,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	 * Creates the pages of the multi-page editor.
 	 */
 	protected void createPages() {
+		setArtifactType();
 		initialPageLoad = true;
 		createPage0();
-		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
-		EsbServer server = diagram.getServer();
-		switch (server.getType()) {
+		switch (currArtifactType) {
 		case COMPLEX_ENDPOINT:
 			break;
 		case LOCAL_ENTRY:
@@ -566,7 +583,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		case TEMPLATE_ENDPOINT_ADDRESS:
 		case TEMPLATE_ENDPOINT_WSDL:
 		case TEMPLATE_ENDPOINT_HTTP:
-			createPageForm(server.getType());
+			createPageForm(currArtifactType);
 			break;
 		default:
 			break;

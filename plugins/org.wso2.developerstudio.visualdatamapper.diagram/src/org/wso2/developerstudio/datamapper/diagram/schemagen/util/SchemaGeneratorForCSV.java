@@ -16,11 +16,8 @@
 
 package org.wso2.developerstudio.datamapper.diagram.schemagen.util;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

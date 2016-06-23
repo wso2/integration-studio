@@ -428,7 +428,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	private void createPageForm(final ArtifactType artifactType) {
 		IEditorInput editorInput = getEditorInput();
-		removePage(DESIGN_VIEW_PAGE_INDEX);
 		formEditor = new ESBFormEditor(artifactType);
 		isFormEditor = true;
 		try {
@@ -555,7 +554,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		createPage0();
 		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();
-/*		switch (server.getType()) {
+		switch (server.getType()) {
 		case COMPLEX_ENDPOINT:
 			break;
 		case LOCAL_ENTRY:
@@ -570,7 +569,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			break;
 		default:
 			break;
-		}*/
+		}
 		createPage1();
 		EditorUtils.setLockmode(graphicalEditor, true);
 		// IFile file = ((IFileEditorInput)getEditorInput()).getFile();

@@ -72,10 +72,22 @@ public class StartsWithImpl extends OperatorImpl implements StartsWith {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected StartsWithImpl() {
 		super();
+		setDefaultInputConnectors(2);
+		setDefaultOutputConnectors(1);
+		setInputSizeFixed(true);
+		setOutputSizeFixed(true);
+		getInputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getOutputVariableTypes().put(0, new ArrayList<SchemaDataType>());
+		getInputVariableTypes().get(0).add(SchemaDataType.STRING);
+		getOutputVariableTypes().get(0).add(SchemaDataType.BOOLEAN);
+		setOperatorType(DataMapperOperatorType.STARTS_WITH);
+		getInputLabelList().add(VALUE_TAG);
+		getInputLabelList().add(PATTERN_TAG);
+		getOutputLabelList().add(RESULT_TAG);
 	}
 
 	/**

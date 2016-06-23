@@ -25,10 +25,14 @@ public class EndsWithModelTransformer implements IModelTransformer {
 
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
+		EndsWithImpl endsWithModel = (EndsWithImpl) operator;
 		if (operator instanceof EndsWithImpl) {
-			DMOperation endsWithOperatorModel = new DMOperation(DataMapperOperatorType.ENDS_WITH, operator.toString(), index);
+			DMOperation endsWithOperatorModel = new DMOperation(DataMapperOperatorType.ENDS_WITH, operator.toString(),
+					index);
+			endsWithOperatorModel.addProperty(TransformerConstants.PATTERN_TAG, endsWithModel.getPattern());
 			return endsWithOperatorModel;
 		}
+
 		throw new IllegalArgumentException("EndsWithImpl operator expected. Found : " + operator.toString());
 	}
 

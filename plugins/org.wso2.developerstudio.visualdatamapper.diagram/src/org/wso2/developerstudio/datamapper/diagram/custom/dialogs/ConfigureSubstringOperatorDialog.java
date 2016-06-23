@@ -112,7 +112,7 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 		});
 
 		Label endIndexLabel = new Label(container, SWT.NULL);
-		endIndexLabel.setText("End Index : ");
+		endIndexLabel.setText("Length : ");
 
 		final Text endIndexText = new Text(container, SWT.BORDER);
 		endIndexText.setLayoutData(dataPropertyConfigText);

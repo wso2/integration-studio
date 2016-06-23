@@ -30,10 +30,10 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.developerstudio.datamapper.Add;
-import org.wso2.developerstudio.datamapper.diagram.custom.dialogs.ConfigureAddOperatorDialog;
+import org.wso2.developerstudio.datamapper.Min;
+import org.wso2.developerstudio.datamapper.diagram.custom.dialogs.ConfigureMinOperatorDialog;
 
-public class AddConfigureAction extends AbstractActionHandler {
+public class MinConfigureAction extends AbstractActionHandler {
 
 	CompoundCommand resultCommand;
 
@@ -43,11 +43,11 @@ public class AddConfigureAction extends AbstractActionHandler {
 	 * @param part
 	 *            a {@link IWorkbenchPart} instance.
 	 */
-	public AddConfigureAction(IWorkbenchPart part) {
+	public MinConfigureAction(IWorkbenchPart part) {
 		super(part);
-		setId(Messages.AddConfigureAction_ActionId);
-		setText(Messages.AddConfigureAction_ActionText);
-		setToolTipText(Messages.AddConfigureAction_ToolTip);
+		setId("configure-min-operator-action-id");
+		setText("Configure Min Operator");
+		setToolTipText("Configure Min Operator Attributes");
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
@@ -61,10 +61,10 @@ public class AddConfigureAction extends AbstractActionHandler {
 	protected void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Dialog configureAddDialog = new ConfigureAddOperatorDialog(Display.getDefault().getActiveShell(),
-				(Add) selectedObj, getEditingDomain());
-		configureAddDialog.create();
-		configureAddDialog.open();
+		Dialog configureMinDialog = new ConfigureMinOperatorDialog(Display.getDefault().getActiveShell(),
+				(Min) selectedObj, getEditingDomain());
+		configureMinDialog.create();
+		configureMinDialog.open();
 	}
 
 	protected EditPart getSelectedEditPart() {

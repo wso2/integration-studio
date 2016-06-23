@@ -25,8 +25,11 @@ public class StartsWithModelTransformer implements IModelTransformer {
 
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
+		StartsWithImpl startsWithModel = (StartsWithImpl) operator;
 		if (operator instanceof StartsWithImpl) {
-			DMOperation startsWithOperatorModel = new DMOperation(DataMapperOperatorType.STARTS_WITH, operator.toString(), index);
+			DMOperation startsWithOperatorModel = new DMOperation(DataMapperOperatorType.STARTS_WITH,
+					operator.toString(), index);
+			startsWithOperatorModel.addProperty(TransformerConstants.PATTERN_TAG, startsWithModel.getPattern());
 			return startsWithOperatorModel;
 		}
 		throw new IllegalArgumentException("StartsWithImpl operator expected. Found : " + operator.toString());

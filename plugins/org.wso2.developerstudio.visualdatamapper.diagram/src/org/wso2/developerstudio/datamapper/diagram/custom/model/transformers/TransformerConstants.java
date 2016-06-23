@@ -43,6 +43,8 @@ public class TransformerConstants {
 	public static final String PATTERN_TAG = "Pattern";
 	public static final String START_INDEX = "StartIndex";
 	public static final String LENGTH_TAG = "lengthTag";
+	public static final String TARGET_TAG = "Target";
+	public static final String REPLACE_WITH_TAG = "ReplaceWith";
 
     
 }

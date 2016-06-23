@@ -532,8 +532,35 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getReplace_Target() {
+		return (EAttribute)replaceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getReplace_ReplaceString() {
+		return (EAttribute)replaceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMatch() {
 		return matchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMatch_Pattern() {
+		return (EAttribute)matchEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1631,8 +1658,11 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		trimEClass = createEClass(TRIM);
 
 		replaceEClass = createEClass(REPLACE);
+		createEAttribute(replaceEClass, REPLACE__TARGET);
+		createEAttribute(replaceEClass, REPLACE__REPLACE_STRING);
 
 		matchEClass = createEClass(MATCH);
+		createEAttribute(matchEClass, MATCH__PATTERN);
 
 		minEClass = createEClass(MIN);
 
@@ -1873,8 +1903,11 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(trimEClass, Trim.class, "Trim", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(replaceEClass, Replace.class, "Replace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReplace_Target(), ecorePackage.getEString(), "target", "{$Target}", 0, 1, Replace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReplace_ReplaceString(), ecorePackage.getEString(), "replaceString", "{$ReplaceWith}", 0, 1, Replace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(matchEClass, Match.class, "Match", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMatch_Pattern(), ecorePackage.getEString(), "pattern", "{$Pattern}", 0, 1, Match.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(minEClass, Min.class, "Min", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

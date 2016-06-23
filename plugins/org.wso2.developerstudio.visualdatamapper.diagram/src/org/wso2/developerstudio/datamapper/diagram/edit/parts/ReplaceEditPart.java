@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -21,6 +22,8 @@ import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.ReplaceCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.ReplaceItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.impl.MatchImpl;
+import org.wso2.developerstudio.datamapper.impl.ReplaceImpl;
 
 /**
  * @generated NOT
@@ -88,7 +91,9 @@ public class ReplaceEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new ReplaceFigure();
+		String target = ((ReplaceImpl) ((View) getModel()).getElement()).getTarget();
+		String replaceWith = ((ReplaceImpl) ((View) getModel()).getElement()).getReplaceString();
+		return primaryShape = new ReplaceFigure(target,replaceWith);
 	}
 
 	/**
@@ -188,8 +193,11 @@ public class ReplaceEditPart extends AbstractOperatorEditPart {
 
 	public class ReplaceFigure extends OperatorRectangle {
 
-		public ReplaceFigure() {
+		public ReplaceFigure(String target, String replaceWith) {
 			super("Replace");
+			if (StringUtils.isNotEmpty(target)) {
+				super.changeOperatorHeader("Replace : (Target:\"" + target + "\",Replace With:\"" + replaceWith + "\"");
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -208,5 +216,9 @@ public class ReplaceEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getReplaceFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 
 }

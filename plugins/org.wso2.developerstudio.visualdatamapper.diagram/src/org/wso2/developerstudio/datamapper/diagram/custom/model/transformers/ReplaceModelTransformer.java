@@ -25,9 +25,12 @@ public class ReplaceModelTransformer implements IModelTransformer {
 
 	@Override
 	public DMOperation transform(OperatorImpl operator, int index) {
+		ReplaceImpl replaceModel = (ReplaceImpl) operator;
 		if (operator instanceof ReplaceImpl) {
 			DMOperation replaceOperatorModel = new DMOperation(DataMapperOperatorType.REPLACE, operator.toString(),
 					index);
+			replaceOperatorModel.addProperty(TransformerConstants.TARGET_TAG, replaceModel.getTarget());
+			replaceOperatorModel.addProperty(TransformerConstants.REPLACE_WITH_TAG, replaceModel.getReplaceString());
 			return replaceOperatorModel;
 		}
 		throw new IllegalArgumentException("ReplaceImpl operator expected. Found : " + operator.toString());

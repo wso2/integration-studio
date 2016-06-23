@@ -81,7 +81,7 @@ public class ConfigureStartsWithOperatorDialog extends AbstractConfigureOperator
 		if (startsWithImpl.getPattern() != null) {
 			patternText.setText(startsWithImpl.getPattern());
 		} else {
-			patternText.setText("/default");
+			patternText.setText("{$Pattern}");
 		}
 		pattern = patternText.getText();
 
@@ -129,8 +129,8 @@ public class ConfigureStartsWithOperatorDialog extends AbstractConfigureOperator
 
 	protected void okPressed() {
 		if (!StringUtils.isEmpty(pattern)) {
-			StartsWithImpl concatOperatorInstance = (StartsWithImpl) startsWithImpl;
-			SetCommand setCmnd = new SetCommand(editingDomain, concatOperatorInstance,
+			StartsWithImpl startsWithOperatorInstance = (StartsWithImpl) startsWithImpl;
+			SetCommand setCmnd = new SetCommand(editingDomain, startsWithOperatorInstance,
 					DataMapperPackage.Literals.STARTS_WITH__PATTERN, pattern);
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);

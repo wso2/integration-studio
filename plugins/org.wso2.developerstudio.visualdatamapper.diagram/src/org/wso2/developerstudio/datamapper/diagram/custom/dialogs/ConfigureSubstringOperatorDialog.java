@@ -153,14 +153,14 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 		boolean isEnabled = false;
 		Button okButton = getButton(IDialogConstants.OK_ID);
 		if (!StringUtils.isEmpty(length) && !StringUtils.isEmpty(startIndex)) {
-			if (!startIndex.startsWith("{")) {
+			if (!startIndex.startsWith("{$")) {
 				try {
 					Integer.parseInt(startIndex);
 				} catch (NumberFormatException e) {
 					throw new IllegalArgumentException("Start index should be a integer. Found :" + startIndex);
 				}
 			}
-			if (!length.startsWith("{")) {
+			if (!length.startsWith("{$")) {
 				try {
 					Integer.parseInt(length);
 				} catch (NumberFormatException e) {

@@ -447,6 +447,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	private void createPageForm(final ArtifactType artifactType) {
 		IEditorInput editorInput = getEditorInput();
+		currentEditor = this;
 		formEditor = new ESBFormEditor(artifactType);
 		isFormEditor = true;
 		try {
@@ -571,7 +572,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	protected void createPages() {
 		setArtifactType();
 		initialPageLoad = true;
-		createPage0();
 		switch (currArtifactType) {
 		case COMPLEX_ENDPOINT:
 			break;
@@ -588,7 +588,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		default:
 			break;
 		}
+		if (!isFormEditor) {
+			createPage0();
+		}
 		createPage1();
+	if (graphicalEditor != null) {
 		EditorUtils.setLockmode(graphicalEditor, true);
 		// IFile file = ((IFileEditorInput)getEditorInput()).getFile();
 		/*
@@ -597,6 +601,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		 * endPointDuplicator.updateAssociatedDiagrams(this);
 		 */
 		EditorUtils.setLockmode(graphicalEditor, false);
+	}
 
 		// createPage2();
 	}
@@ -976,7 +981,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		}
 
 		getEditor(0).doSave(monitor);
-		EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
 		// Since Complex endpoint type editors dose not have assiociated xml
 		// file do not need to call this.
 		Display.getDefault().asyncExec(new Runnable() {
@@ -1000,25 +1004,29 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 				}
 				// }
+				if (!isFormEditor) {
+					EditorUtils.setLockmode(graphicalEditor, true);
 
-				EditorUtils.setLockmode(graphicalEditor, true);
-
-				// IFile file = ((IFileEditorInput)getEditorInput()).getFile();
-				/*
-				 * ElementDuplicator endPointDuplicator = new
-				 * ElementDuplicator(file.getProject(),getGraphicalEditor());
-				 * endPointDuplicator.updateAssociatedDiagrams(this);
-				 */
-				updateAssociatedDiagrams();
-				getEditor(0).doSave(monitor);
-				ESBDebuggerUtil.setPageSaveOperationActivated(false);
-				EditorUtils.setLockmode(graphicalEditor, false);
+					// IFile file =
+					// ((IFileEditorInput)getEditorInput()).getFile();
+					/*
+					 * ElementDuplicator endPointDuplicator = new
+					 * ElementDuplicator(file.getProject(),getGraphicalEditor())
+					 * ; endPointDuplicator.updateAssociatedDiagrams(this);
+					 */
+					updateAssociatedDiagrams();
+					getEditor(0).doSave(monitor);
+					ESBDebuggerUtil.setPageSaveOperationActivated(false);
+					EditorUtils.setLockmode(graphicalEditor, false);
+				}
 			}
 		});
 	}
 
 	public boolean isDirty() {
 		if (getEditor(0) instanceof EsbDiagramEditor) {
+			return getEditor(0).isDirty() || sourceDirty;
+		} else if (getEditor(0) instanceof ESBFormEditor) {
 			return getEditor(0).isDirty() || sourceDirty;
 		}
 		return super.isDirty();
@@ -1217,27 +1225,50 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	}
 
 	public IDiagramGraphicalViewer getDiagramGraphicalViewer() {
+		if (graphicalEditor != null) {
 		return graphicalEditor.getDiagramGraphicalViewer();
+		} else {
+			return null;
+		}
 	}
 
 	public IDiagramEditDomain getDiagramEditDomain() {
-		return graphicalEditor.getDiagramEditDomain();
+		if (graphicalEditor != null) {
+			return graphicalEditor.getDiagramEditDomain();
+		} else {
+			return null;
+		}
 	}
 
 	public Diagram getDiagram() {
-		return graphicalEditor.getDiagram();
+		if (graphicalEditor != null) {
+			return graphicalEditor.getDiagram();
+		} else {
+			return null;
+		}
 	}
 
 	public DiagramEditPart getDiagramEditPart() {
-		return graphicalEditor.getDiagramEditPart();
+		if (graphicalEditor != null) {
+			return graphicalEditor.getDiagramEditPart();
+		} else {
+			return null;
+		}
+		
 	}
 
 	public EsbDiagramEditor getGraphicalEditor() {
-		return graphicalEditor;
+		if (graphicalEditor != null) {
+			return graphicalEditor;
+		} else {
+			return null;
+		}
 	}
 
 	public void focusToolbar() {
-		graphicalEditor.focusToolBar();
+		if (graphicalEditor != null) {
+			graphicalEditor.focusToolBar();
+		} 
 	}
 
 	public double getZoom() {

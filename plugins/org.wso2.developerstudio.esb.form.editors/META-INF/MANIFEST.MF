@@ -16,4 +16,5 @@ Import-Package: org.eclipse.core.resources,
  org.eclipse.ui.forms.events,
  org.eclipse.ui.forms.widgets
 Export-Package: org.wso2.developerstudio.esb.form.editors.article.rcp,
- org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors
+ org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors,
+ org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores

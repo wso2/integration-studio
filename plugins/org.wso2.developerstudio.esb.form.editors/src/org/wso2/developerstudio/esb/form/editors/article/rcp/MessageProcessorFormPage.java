@@ -139,13 +139,13 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// Create message stores
-				if (processorType.getText().equals("Message Sampling Processor")) {
+				if (processorType.getSelectionIndex() == 0) {
 					currentMessageProcessor = processorMap.get(messageSamplingProcessor);
-				} else if (processorType.getText().equals("Scheduled Message Forwarding Processor")) {
+				} else if (processorType.getSelectionIndex() == 1) {
 					currentMessageProcessor = processorMap.get(scheduledMessageForwardingProcessor);
-				} else if (processorType.getText().equals("Scheduled Failover Message Forwarding Processor")) {
+				} else if (processorType.getSelectionIndex() == 2) {
 					currentMessageProcessor = processorMap.get(scheduledFailoverMessageForwardingProcessor);;
-				} else if (processorType.getText().equals("Custom Message Processor")) {
+				} else if (processorType.getSelectionIndex() == 3) {
 					currentMessageProcessor = processorMap.get(customProcessor);
 				}
 				
@@ -205,6 +205,8 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 			
 			index ++;
 		}
+		
+		
 		
 	}
 	

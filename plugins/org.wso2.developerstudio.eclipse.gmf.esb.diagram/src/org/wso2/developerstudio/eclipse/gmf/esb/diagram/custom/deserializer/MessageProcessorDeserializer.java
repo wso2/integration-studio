@@ -557,8 +557,8 @@ public class MessageProcessorDeserializer
 
 	@Override
 	public org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor createNode(FormEditor formEditor, MessageProcessor processor) {
-		ESBFormEditor MessageProcessorFormEditor = (ESBFormEditor) formEditor;
-		AbstractEsbFormPage formPage = (AbstractEsbFormPage) MessageProcessorFormEditor.getFormPageForArtifact(ArtifactType.MESSAGE_PROCESSOR);
+		ESBFormEditor messageProcessorFormEditor = (ESBFormEditor) formEditor;
+		MessageProcessorFormPage messageProcessorPage = (MessageProcessorFormPage) messageProcessorFormEditor.getFormPageForArtifact(ArtifactType.MESSAGE_PROCESSOR);
 		org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor messageProcessor = EsbFactoryImpl.eINSTANCE.createMessageProcessor();
 		
 		messageProcessor.setProcessorName(processor.getName());
@@ -566,13 +566,12 @@ public class MessageProcessorDeserializer
 		messageProcessor.setMessageStore(processor.getMessageStoreName());
 		
 		
-		formPage.setEsbNode(messageProcessor);
+		messageProcessorPage.setEsbNode(messageProcessor);
 		
 		
-		MessageProcessorFormPage messageProcessorPage = (MessageProcessorFormPage)formPage;
 		DummyMessageProcessor dummyMessageProcessor = (DummyMessageProcessor) processor;
 			
-		messageProcessorPage.processorName.setText((dummyMessageProcessor.getName()));
+		messageProcessorPage.processorName.setText(dummyMessageProcessor.getName());
 		messageProcessorPage.storeName.setText(dummyMessageProcessor.getMessageStoreName());
 			
 

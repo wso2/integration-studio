@@ -46,8 +46,8 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
 
 	private boolean setConfigurationKey(
 			org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) {
-		if (carbonDataMapperMediator.getConfigurationKey() != null) {
-			Value keyValue = carbonDataMapperMediator.getConfigurationKey();
+		if (carbonDataMapperMediator.getMappingConfigurationKey() != null) {
+			Value keyValue = carbonDataMapperMediator.getMappingConfigurationKey();
 			if (keyValue.getKeyValue() != null && !keyValue.getKeyValue().equals("")) {
 				RegistryKeyProperty regKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 				regKey.setKeyValue(keyValue.getKeyValue());

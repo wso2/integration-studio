@@ -102,7 +102,7 @@ public class DataMapperMediatorTransformer extends AbstractEsbNodeTransformer {
 			configKey = new Value(key);
 		}
 		if (configKey != null) {
-			carbonDataMapperMediator.setConfigurationKey(configKey);
+			carbonDataMapperMediator.setMappingConfigurationKey(configKey);
 		}
 		if ((key == null || key.equals("")) && configKey == null) {
 			displayUserMessage("Data Mapper Mediator Configuration is empty, "

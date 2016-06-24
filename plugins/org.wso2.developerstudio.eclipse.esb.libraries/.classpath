@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper_4.6.1.SNAPSHOT.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/libphonenumber_7.4.2.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/axiom_1.2.11.wso2v11.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/com.google.guava_15.0.0.jar"/>
@@ -93,7 +94,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.4.10.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam.config_4.4.10.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.cache_4.4.10.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper-4.2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.event_4.4.10.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.fastXSLT_4.4.10.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.publishevent_4.4.10.jar"/>

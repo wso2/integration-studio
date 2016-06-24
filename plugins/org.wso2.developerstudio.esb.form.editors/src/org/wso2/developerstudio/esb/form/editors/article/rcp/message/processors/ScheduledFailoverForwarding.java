@@ -188,25 +188,25 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
     @Override
 	public void showParameterSectionFields() {
 		parameterSection.setVisible(true);
-		
+		parameterSection.setExpanded(true);
 	}
 
 	@Override
 	public void showMiscSectionFields() {
 		miscSection.setVisible(true);
-		
+		miscSection.setExpanded(true);
 	}
 
 	@Override
 	public void hideParameterSectionFields() {
 		parameterSection.setVisible(false);
-		
+		parameterSection.setExpanded(false);
 	}
 
 	@Override
 	public void hideMiscSectionFields() {
 		miscSection.setVisible(false);
-		
+		miscSection.setExpanded(false);
 	}
 
 

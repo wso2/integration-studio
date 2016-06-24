@@ -21,13 +21,18 @@ import javax.xml.namespace.QName;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskTriggerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ScheduledTaskFormPage;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.task.TaskDescription;
@@ -88,9 +93,44 @@ public class TaskDeserializer extends AbstractEsbNodeDeserializer<TaskDescriptio
 	}
 
 	@Override
-	public Task createNode(FormEditor part, TaskDescription object) {
-		// TODO Auto-generated method stub
+	public Task createNode(FormEditor formEditor, TaskDescription task) {
+		ESBFormEditor scheduledTaskFormEditor = (ESBFormEditor) formEditor;
+		ScheduledTaskFormPage scheduledTaskPage = (ScheduledTaskFormPage) scheduledTaskFormEditor.getFormPageForArtifact(ArtifactType.TASK);
+		org.wso2.developerstudio.eclipse.gmf.esb.Task scheduledTask = EsbFactoryImpl.eINSTANCE.createTask();
+		
+		scheduledTask.setTaskName(task.getName());
+		scheduledTask.setDescription(task.getTaskDescription());
+		
+		scheduledTaskPage.setEsbNode(scheduledTask);
+		
+		setTextValue(scheduledTaskPage.taskName, task.getName());
+		setTextValue(scheduledTaskPage.taskGroup, task.getTaskGroup());
+		
+		setTextValue(scheduledTaskPage.pinnedServers, task.getPinnedServers());
+		
+		setTextValue(scheduledTaskPage.taskImpl, task.getTaskImplClassName());
+		setTextValue(scheduledTaskPage.taskImplProp, task.getProperties().toString());
+		
+		if (task.getCronExpression() != null) {
+			scheduledTaskPage.triggerType.select(1);
+			
+			setTextValue(scheduledTaskPage.cron, task.getCronExpression());
+		} else {
+			scheduledTaskPage.triggerType.select(0);
+			
+			setTextValue(scheduledTaskPage.count, task.getCount());
+			setTextValue(scheduledTaskPage.interval, task.getInterval());
+		}
+		
+		scheduledTaskPage.refershTaskSettings();
+		
 		return null;
+	}
+	
+	private void setTextValue(Text textField, Object value) {
+		if (value != null) {
+			textField.setText(value.toString());
+		}
 	}
 
 }

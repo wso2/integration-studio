@@ -23,6 +23,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.IManagedForm;
@@ -42,7 +43,26 @@ import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
-public class ScheduledTaskFormPage extends FormPage {
+public class ScheduledTaskFormPage extends AbstractEsbFormPage {
+	
+	public Text taskName;
+	public Text taskGroup;
+	
+	public Text pinnedServers;
+	
+	public Text taskImpl;
+	public Text taskImplProp;
+	
+	public Combo triggerType;
+	public Text count;
+	public Text interval;
+	public Text cron;
+	
+	private Label countLbl;
+	private Label intervalLbl;
+	private Label cronLbl;
+	
+	
 	/**
 	 * @param id
 	 * @param title
@@ -88,12 +108,12 @@ public class ScheduledTaskFormPage extends FormPage {
 		basicSectionClient.setLayout(new TableWrapLayout());
 		
 		toolkit.createLabel(basicSectionClient, "Task Name");
-		Text taskName = toolkit.createText(basicSectionClient, "");
+		taskName = toolkit.createText(basicSectionClient, "");
 		taskName.setBackground(new Color(null, 229,236,253));
 		taskName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(basicSectionClient, "Task Group");
-		Text taskGroup = toolkit.createText(basicSectionClient, "synapse.simple.quartz");
+		taskGroup = toolkit.createText(basicSectionClient, "synapse.simple.quartz");
 		taskGroup.setBackground(new Color(null, 229,236,253));
 		taskGroup.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
@@ -122,7 +142,7 @@ public class ScheduledTaskFormPage extends FormPage {
 		miscSectionClient.setLayout(new TableWrapLayout());
 		
 		toolkit.createLabel(miscSectionClient, "Pinned Servers");
-		Text pinnedServers = toolkit.createText(miscSectionClient, "");
+		pinnedServers = toolkit.createText(miscSectionClient, "");
 		pinnedServers.setBackground(new Color(null, 229,236,253));
 		pinnedServers.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
@@ -149,12 +169,12 @@ public class ScheduledTaskFormPage extends FormPage {
 		implSectionClient.setLayout(new TableWrapLayout());
 		
 		toolkit.createLabel(implSectionClient, "Task Implementation");
-		Text taskImpl = toolkit.createText(implSectionClient, "org.apache.synapse.startup.tasks.MessageInjector");
+		taskImpl = toolkit.createText(implSectionClient, "org.apache.synapse.startup.tasks.MessageInjector");
 		taskImpl.setBackground(new Color(null, 229,236,253));
 //		taskImpl.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(implSectionClient, "Task Implementation Properties");
-		Text taskImplProp = toolkit.createText(implSectionClient, "");
+		taskImplProp = toolkit.createText(implSectionClient, "");
 		taskImplProp.setBackground(new Color(null, 229,236,253));
 //		taskImplProp.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 
@@ -182,7 +202,7 @@ public class ScheduledTaskFormPage extends FormPage {
 		triggerSectionClient.setLayout(new TableWrapLayout());
 		
 		toolkit.createLabel(triggerSectionClient, "Task Type");
-		Combo triggerType = new Combo(triggerSectionClient, SWT.DROP_DOWN);
+		triggerType = new Combo(triggerSectionClient, SWT.DROP_DOWN);
 		triggerType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 //		triggerType.setBackground(new Color(null, 229,236,253));
 		String[] triggerTypes = {"Simple", "Cron"};
@@ -190,28 +210,48 @@ public class ScheduledTaskFormPage extends FormPage {
 		triggerType.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				super.widgetSelected(e);
+				refershTaskSettings();
 			}
 		});
 		
-		toolkit.createLabel(triggerSectionClient, "Count");
-		Text count = toolkit.createText(triggerSectionClient, "1");
+		countLbl = toolkit.createLabel(triggerSectionClient, "Count");
+		count = toolkit.createText(triggerSectionClient, "1");
 		count.setBackground(new Color(null, 229,236,253));
 //		count.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
-		toolkit.createLabel(triggerSectionClient, "Interval");
-		Text interval = toolkit.createText(triggerSectionClient, "1");
+		intervalLbl = toolkit.createLabel(triggerSectionClient, "Interval");
+		interval = toolkit.createText(triggerSectionClient, "1");
 		interval.setBackground(new Color(null, 229,236,253));
 //		interval.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
-		toolkit.createLabel(triggerSectionClient, "Cron");
-		Text cron = toolkit.createText(triggerSectionClient, "");
+		cronLbl = toolkit.createLabel(triggerSectionClient, "Cron");
+		cron = toolkit.createText(triggerSectionClient, "");
 		cron.setBackground(new Color(null, 229,236,253));
 		cron.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 
 		
 		triggerSection.setClient(triggerSectionClient);		
+	}
+	
+	public void refershTaskSettings() {
+		if (triggerType.getSelectionIndex() == 0) {
+			count.setVisible(true);
+			interval.setVisible(true);
+			countLbl.setVisible(true);
+			intervalLbl.setVisible(true);
+			
+			cron.setVisible(false);
+			cronLbl.setVisible(false);
+			
+		} else if (triggerType.getSelectionIndex() == 1) {
+			cron.setVisible(true);
+			cronLbl.setVisible(true);
+			
+			count.setVisible(false);
+			interval.setVisible(false);
+			countLbl.setVisible(false);
+			intervalLbl.setVisible(false);
+		}
 	}
 
 }

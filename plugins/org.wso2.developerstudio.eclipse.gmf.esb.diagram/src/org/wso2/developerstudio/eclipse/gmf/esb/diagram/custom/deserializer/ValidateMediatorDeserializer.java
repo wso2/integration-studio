@@ -29,7 +29,6 @@ import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.resolver.ResourceMap;
-import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -65,7 +64,7 @@ public class ValidateMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 		
 		if(validateMediator.getSource() != null){
 			
-			SynapseXPath xpath  = validateMediator.getSource();
+			SynapsePath xpath  = validateMediator.getSource();
 			
 			NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 			

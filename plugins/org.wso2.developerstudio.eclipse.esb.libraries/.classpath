@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/libphonenumber_7.4.2.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/axiom_1.2.11.wso2v11.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/com.google.guava_15.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations_2.6.1.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-core_2.6.1.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-databind_2.6.1.wso2v3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/json-schema-validator-all_2.2.6.wso2v1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v3-SNAPSHOT.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v3.jar"/>

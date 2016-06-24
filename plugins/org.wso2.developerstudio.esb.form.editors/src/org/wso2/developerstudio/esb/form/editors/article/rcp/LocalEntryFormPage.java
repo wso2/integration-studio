@@ -124,13 +124,13 @@ public class LocalEntryFormPage extends FormPage {
 	private void createInlinedXmlEntry(final Label label, Text textBox) {
 		
 		label.setText(IN_LINED_XML_ENTRY);
-		textBox.setText("");
+		textBox.setText("<value/>");
 	}
 	
 	private void createSourceUrlEntry(final Label label, Text textBox) {
 		
 		label.setText(SOURCE_URL_ENTRY);
-		textBox.setText("");
+		textBox.setText("file:/path/to/sample");
 	}
 	
 	private Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {

@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -21,6 +22,7 @@ import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.MatchCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.MatchItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.impl.MatchImpl;
 
 /**
  * @generated NOT
@@ -88,7 +90,8 @@ public class MatchEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new MatchFigure();
+		String pattern = ((MatchImpl) ((View) getModel()).getElement()).getPattern();
+		return primaryShape = new MatchFigure(pattern);
 	}
 
 	/**
@@ -188,8 +191,11 @@ public class MatchEditPart extends AbstractOperatorEditPart {
 
 	public class MatchFigure extends OperatorRectangle {
 
-		public MatchFigure() {
+		public MatchFigure(String pattern) {
 			super("Match");
+			if (StringUtils.isNotEmpty(pattern)) {
+				super.changeOperatorHeader("Match : \"" + pattern + "\"");
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -208,5 +214,9 @@ public class MatchEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getMatchFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 
 }

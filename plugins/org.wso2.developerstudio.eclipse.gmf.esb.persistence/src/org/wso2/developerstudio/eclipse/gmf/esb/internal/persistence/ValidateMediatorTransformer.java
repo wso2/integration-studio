@@ -19,10 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.resolver.ResourceMap;
+import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
@@ -43,6 +45,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class ValidateMediatorTransformer  extends AbstractEsbNodeTransformer {
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private static final String JSON_EVAL = "json-eval(";
 	
 	public void transform(TransformationInfo information, EsbNode subject)
 			throws TransformerException {
@@ -86,16 +89,15 @@ public class ValidateMediatorTransformer  extends AbstractEsbNodeTransformer {
 		org.apache.synapse.mediators.builtin.ValidateMediator validateMediator = new org.apache.synapse.mediators.builtin.ValidateMediator();
 		setCommonProperties(validateMediator, visualValidateMediator);
 		
-		NamespacedProperty sourceXPath = visualValidateMediator
+		
+		NamespacedProperty sourcePath = visualValidateMediator
 				.getSourceXpath();
-		if (sourceXPath.getPropertyValue() != null
-				&& !sourceXPath.getPropertyValue().equals("")) {
-			SynapseXPath synapseXPath = new SynapseXPath(sourceXPath
-							.getPropertyValue());
-			for (Entry<String, String> entry : sourceXPath.getNamespaces().entrySet()) {
-				synapseXPath.addNamespace(entry.getKey(), entry.getValue());
-			}
-			validateMediator.setSource(synapseXPath);
+		String sourceValue = sourcePath.getPropertyValue();
+		
+		if (sourceValue != null
+				&& !sourceValue.equals("")) {
+			SynapsePath paramExpression = getParamExpression(sourcePath, sourceValue);
+			validateMediator.setSource(paramExpression);
 		}
 
 		List<Value> valueList = new ArrayList<Value>();
@@ -172,5 +174,40 @@ public class ValidateMediatorTransformer  extends AbstractEsbNodeTransformer {
 		
 		
 		return validateMediator;
+	}
+	
+	/**
+	 * Gets the param expression based on json and xpath
+	 * 
+	 * @param namespacedExpression
+	 * @param xpathValue
+	 * @return
+	 * @throws JaxenException
+	 */
+
+	private SynapsePath getParamExpression(NamespacedProperty sourcePath, String sourceValue)
+			throws JaxenException {
+		if (sourceValue.startsWith(JSON_EVAL)) {
+			SynapseJsonPath paramExpression = new SynapseJsonPath(sourceValue.substring(10, sourceValue.length() - 1));
+			return addNamespaceToParam(sourcePath, paramExpression);
+		} else {
+			SynapseXPath paramExpression = new SynapseXPath(sourceValue);
+			return addNamespaceToParam(sourcePath, paramExpression);
+		}
+	}
+
+	/**
+	 * Adds the namespace to param
+	 * 
+	 * @param namespacedExpression
+	 * @param paramExpression
+	 * @throws JaxenException
+	 */
+	private SynapsePath addNamespaceToParam(NamespacedProperty sourcePath, SynapsePath paramExpression)
+			throws JaxenException {
+		for (Entry<String, String> entry : sourcePath.getNamespaces().entrySet()) {
+			paramExpression.addNamespace(entry.getKey(), entry.getValue());
+		}
+		return paramExpression;
 	}
 }

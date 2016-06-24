@@ -22,7 +22,6 @@ import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.StartsWithCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.StartsWithItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.impl.EndsWithImpl;
 import org.wso2.developerstudio.datamapper.impl.StartsWithImpl;
 
 /**

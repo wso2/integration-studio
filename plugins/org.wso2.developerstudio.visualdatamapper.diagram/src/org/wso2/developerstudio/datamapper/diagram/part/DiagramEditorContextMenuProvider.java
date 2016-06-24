@@ -58,9 +58,13 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAct
 import org.wso2.developerstudio.datamapper.diagram.custom.action.IfElseConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.MatchConfigureAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.MaxConfigureAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.MinConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.MultiplyConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ORConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.PropertiesConfigureAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.ReplaceConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SetPrecisionConfigureAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SplitManyAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.StartsWithConfigureAction;
@@ -74,11 +78,15 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.CustomFunctionEdit
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MatchEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MaxEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.MinEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.MultiplyEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OREditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.PropertiesEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ReplaceEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SetPrecisionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
@@ -174,6 +182,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(MultiplyEditPart.class, new MultiplyConfigureAction(part));
 		contextActions.put(SetPrecisionEditPart.class, new SetPrecisionConfigureAction(part));
 		contextActions.put(PropertiesEditPart.class, new PropertiesConfigureAction(part));
+		contextActions.put(MinEditPart.class, new MinConfigureAction(part));
+		contextActions.put(MaxEditPart.class, new MaxConfigureAction(part));
+		contextActions.put(MatchEditPart.class, new MatchConfigureAction(part));
+		contextActions.put(ReplaceEditPart.class, new ReplaceConfigureAction(part));
 
 		// Initialize new root record context sensitive actions.
 		addNewRootElementContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();

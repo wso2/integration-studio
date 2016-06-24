@@ -16,9 +16,9 @@
 
 package org.wso2.developerstudio.eclipse.artifact.mediator.template;
 
+import org.wso2.developerstudio.eclipse.artifact.mediator.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.maven.Activator;
 
 public class CustomMediatorClassTemplate {
 

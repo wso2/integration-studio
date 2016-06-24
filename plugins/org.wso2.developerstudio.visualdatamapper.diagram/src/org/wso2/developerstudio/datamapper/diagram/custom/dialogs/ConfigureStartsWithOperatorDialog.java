@@ -15,12 +15,7 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.dialogs;
 
-import java.util.ArrayList;
-
 import org.apache.commons.lang.StringUtils;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
@@ -37,22 +32,16 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.StartsWith;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StartsWithEditPart;
-import org.wso2.developerstudio.datamapper.impl.AddImpl;
-import org.wso2.developerstudio.datamapper.impl.EndsWithImpl;
 import org.wso2.developerstudio.datamapper.impl.StartsWithImpl;
 
 public class ConfigureStartsWithOperatorDialog extends AbstractConfigureOperatorDialog {
 
 	private String pattern;
 	private TransactionalEditingDomain editingDomain;
-	private ArrayList<OperatorLeftConnector> caseOutputConnectors = new ArrayList<OperatorLeftConnector>();
 	private StartsWithImpl startsWithImpl;
 	private EditPart editPart;
 
@@ -92,7 +81,7 @@ public class ConfigureStartsWithOperatorDialog extends AbstractConfigureOperator
 		if (startsWithImpl.getPattern() != null) {
 			patternText.setText(startsWithImpl.getPattern());
 		} else {
-			patternText.setText("/default");
+			patternText.setText("{$Pattern}");
 		}
 		pattern = patternText.getText();
 
@@ -140,8 +129,8 @@ public class ConfigureStartsWithOperatorDialog extends AbstractConfigureOperator
 
 	protected void okPressed() {
 		if (!StringUtils.isEmpty(pattern)) {
-			StartsWithImpl concatOperatorInstance = (StartsWithImpl) startsWithImpl;
-			SetCommand setCmnd = new SetCommand(editingDomain, concatOperatorInstance,
+			StartsWithImpl startsWithOperatorInstance = (StartsWithImpl) startsWithImpl;
+			SetCommand setCmnd = new SetCommand(editingDomain, startsWithOperatorInstance,
 					DataMapperPackage.Literals.STARTS_WITH__PATTERN, pattern);
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);

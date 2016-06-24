@@ -61,10 +61,10 @@ public class AddConfigureAction extends AbstractActionHandler {
 	protected void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Dialog configureConstantDialog = new ConfigureAddOperatorDialog(Display.getDefault().getActiveShell(),
+		Dialog configureAddDialog = new ConfigureAddOperatorDialog(Display.getDefault().getActiveShell(),
 				(Add) selectedObj, getEditingDomain());
-		configureConstantDialog.create();
-		configureConstantDialog.open();
+		configureAddDialog.create();
+		configureAddDialog.open();
 	}
 
 	protected EditPart getSelectedEditPart() {

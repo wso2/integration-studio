@@ -15,8 +15,6 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.dialogs;
 
-import java.util.ArrayList;
-
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -36,7 +34,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.EndsWith;
-import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
 import org.wso2.developerstudio.datamapper.impl.EndsWithImpl;
@@ -46,7 +43,6 @@ public class ConfigureEndsWithOperatorDialog extends AbstractConfigureOperatorDi
 	private TransactionalEditingDomain editingDomain;
 	private EndsWith endsWithImpl;
 	private String pattern;
-	private ArrayList<OperatorLeftConnector> caseOutputConnectors = new ArrayList<OperatorLeftConnector>();
 	private EditPart editPart;
 
 	public ConfigureEndsWithOperatorDialog(Shell parentShell, EndsWith selectedObj,
@@ -85,7 +81,7 @@ public class ConfigureEndsWithOperatorDialog extends AbstractConfigureOperatorDi
 		if (endsWithImpl.getPattern() != null) {
 			patternText.setText(endsWithImpl.getPattern());
 		} else {
-			patternText.setText("/default");
+			patternText.setText("{$Pattern}");
 		}
 		pattern = patternText.getText();
 
@@ -134,8 +130,8 @@ public class ConfigureEndsWithOperatorDialog extends AbstractConfigureOperatorDi
 	protected void okPressed() {
 
 		if (!StringUtils.isEmpty(pattern)) {
-			EndsWithImpl concatOperatorInstance = (EndsWithImpl) endsWithImpl;
-			SetCommand setCmnd = new SetCommand(editingDomain, concatOperatorInstance,
+			EndsWithImpl endsWithOperatorInstance = (EndsWithImpl) endsWithImpl;
+			SetCommand setCmnd = new SetCommand(editingDomain, endsWithOperatorInstance,
 					DataMapperPackage.Literals.ENDS_WITH__PATTERN, pattern);
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);

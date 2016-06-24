@@ -186,7 +186,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	public static EsbMultiPageEditor currentEditor;
 
-	private ArtifactType artifactType;
+	private ArtifactType currArtifactType;
 
 	private double zoom = 1.0;
 	private String fileName;
@@ -202,6 +202,25 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 	}
+	
+	private void setArtifactType(){
+		IEditorInput editorInput = getEditorInput();
+		if (editorInput instanceof FileEditorInput) {
+			IFile file = ((FileEditorInput) editorInput).getFile();
+			fileName = file.getName();
+			final Deserializer deserializer = Deserializer.getInstance();
+			InputStream inputStream = null;
+			try {
+				inputStream = file.getContents();
+				final String source = new Scanner(inputStream).useDelimiter("\\A").next();
+				currArtifactType = deserializer.getArtifactType(source);
+			} catch (CoreException e) {
+				log.error("Error in retrieving the artifact type for editor generation",e);
+			} catch (Exception e) {
+				log.error("Error in retrieving the artifact type for editor generation",e);
+			}
+			}
+		}
 
 	/**
 	 * Creates page 0 of the multi-page editor, which contains a out graphical
@@ -428,7 +447,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	private void createPageForm(final ArtifactType artifactType) {
 		IEditorInput editorInput = getEditorInput();
-		formEditor =  new ESBFormEditor(artifactType);
+		currentEditor = this;
+		formEditor = new ESBFormEditor(artifactType);
+		isFormEditor = true;
 		try {
 			if (editorInput instanceof FileEditorInput) {
 				IFile file = ((FileEditorInput) editorInput).getFile();
@@ -436,7 +457,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				final Deserializer deserializer = Deserializer.getInstance();
 				InputStream inputStream = null;
 				isFormEditor = true;
-
+				currArtifactType = artifactType;
 				try {
 					inputStream = file.getContents();
 					final String source = new Scanner(inputStream).useDelimiter("\\A").next();
@@ -448,7 +469,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 							try {
 								DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source);
 								if (deserializeStatus.isValid()) {
-									deserializer.updateDesign(source, formEditor, artifactType);
+									deserializer.updateDesign(source, formEditor, currArtifactType);
 									Display.getDefault().asyncExec(new Runnable() {
 										@Override
 										public void run() {
@@ -478,7 +499,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				setTitle(file.getName());
 			}
 			addPage(DESIGN_VIEW_PAGE_INDEX, formEditor, editorInput);
-			setPageText(DESIGN_VIEW_PAGE_INDEX, "Local Entry Form"); //$NON-NLS-1$
+			setPageText(DESIGN_VIEW_PAGE_INDEX, "Form"); //$NON-NLS-1$
 		} catch (PartInitException e) {
 		}
 	}
@@ -549,11 +570,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	 * Creates the pages of the multi-page editor.
 	 */
 	protected void createPages() {
+		setArtifactType();
 		initialPageLoad = true;
-		createPage0();
-		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
-		EsbServer server = diagram.getServer();
-		switch (server.getType()) {
+		switch (currArtifactType) {
 		case COMPLEX_ENDPOINT:
 			break;
 		case LOCAL_ENTRY:
@@ -564,12 +583,16 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		case TEMPLATE_ENDPOINT_ADDRESS:
 		case TEMPLATE_ENDPOINT_WSDL:
 		case TEMPLATE_ENDPOINT_HTTP:
-			isFormEditor = true;
-			createPageForm(server.getType());
-			createPage1();
+			createPageForm(currArtifactType);
+			break;
+		default:
 			break;
 		}
-
+		if (!isFormEditor) {
+			createPage0();
+		}
+		createPage1();
+	if (graphicalEditor != null) {
 		EditorUtils.setLockmode(graphicalEditor, true);
 		// IFile file = ((IFileEditorInput)getEditorInput()).getFile();
 		/*
@@ -578,6 +601,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		 * endPointDuplicator.updateAssociatedDiagrams(this);
 		 */
 		EditorUtils.setLockmode(graphicalEditor, false);
+	}
 
 		// createPage2();
 	}
@@ -663,8 +687,16 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		}
 		case SOURCE_VIEW_PAGE_INDEX: {
 			try {
-				updateSequenceDetails();
-				handleSourceViewActivatedEvent();
+				if (isFormEditor) {
+					if (currArtifactType != null) {
+					sourceEditor.update(formEditor.getFormPageForArtifact(currArtifactType), currArtifactType);
+					sourceDirty = false;
+					firePropertyChange(PROP_DIRTY);
+					}
+				} else {
+					updateSequenceDetails();
+					handleSourceViewActivatedEvent();
+				}
 			} catch (Exception e) {
 				log.error("Cannot update source view", e);
 				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
@@ -712,7 +744,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			if (xmlSource != null && sourceDirty) {// source dirty is comming as
 													// false
 				if (!xmlSource.trim().isEmpty()) {
-					Deserializer.getInstance().updateDesign(xmlSource, formEditor, artifactType);
+					Deserializer.getInstance().updateDesign(xmlSource, formEditor, currArtifactType);
 					final EsbMultiPageEditor tempEditor = this;
 					Display.getDefault().asyncExec(new Runnable() {
 						public void run() {
@@ -820,8 +852,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		IFile xmlFile = null;
 		String source = null;
 		if (isFormEditor) {
-			FormPage localEntryFormPage = formEditor.getFormPageForArtifact(artifactType);
-			source = EsbModelTransformer.instance.formToSource(localEntryFormPage, artifactType);
+			FormPage localEntryFormPage = formEditor.getFormPageForArtifact(currArtifactType);
+			source = EsbModelTransformer.instance.formToSource(localEntryFormPage, currArtifactType);
 
 		} else {
 			EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
@@ -949,7 +981,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		}
 
 		getEditor(0).doSave(monitor);
-		EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
 		// Since Complex endpoint type editors dose not have assiociated xml
 		// file do not need to call this.
 		Display.getDefault().asyncExec(new Runnable() {
@@ -973,25 +1004,29 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 				}
 				// }
+				if (!isFormEditor) {
+					EditorUtils.setLockmode(graphicalEditor, true);
 
-				EditorUtils.setLockmode(graphicalEditor, true);
-
-				// IFile file = ((IFileEditorInput)getEditorInput()).getFile();
-				/*
-				 * ElementDuplicator endPointDuplicator = new
-				 * ElementDuplicator(file.getProject(),getGraphicalEditor());
-				 * endPointDuplicator.updateAssociatedDiagrams(this);
-				 */
-				updateAssociatedDiagrams();
-				getEditor(0).doSave(monitor);
-				ESBDebuggerUtil.setPageSaveOperationActivated(false);
-				EditorUtils.setLockmode(graphicalEditor, false);
+					// IFile file =
+					// ((IFileEditorInput)getEditorInput()).getFile();
+					/*
+					 * ElementDuplicator endPointDuplicator = new
+					 * ElementDuplicator(file.getProject(),getGraphicalEditor())
+					 * ; endPointDuplicator.updateAssociatedDiagrams(this);
+					 */
+					updateAssociatedDiagrams();
+					getEditor(0).doSave(monitor);
+					ESBDebuggerUtil.setPageSaveOperationActivated(false);
+					EditorUtils.setLockmode(graphicalEditor, false);
+				}
 			}
 		});
 	}
 
 	public boolean isDirty() {
 		if (getEditor(0) instanceof EsbDiagramEditor) {
+			return getEditor(0).isDirty() || sourceDirty;
+		} else if (getEditor(0) instanceof ESBFormEditor) {
 			return getEditor(0).isDirty() || sourceDirty;
 		}
 		return super.isDirty();
@@ -1190,27 +1225,50 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	}
 
 	public IDiagramGraphicalViewer getDiagramGraphicalViewer() {
+		if (graphicalEditor != null) {
 		return graphicalEditor.getDiagramGraphicalViewer();
+		} else {
+			return null;
+		}
 	}
 
 	public IDiagramEditDomain getDiagramEditDomain() {
-		return graphicalEditor.getDiagramEditDomain();
+		if (graphicalEditor != null) {
+			return graphicalEditor.getDiagramEditDomain();
+		} else {
+			return null;
+		}
 	}
 
 	public Diagram getDiagram() {
-		return graphicalEditor.getDiagram();
+		if (graphicalEditor != null) {
+			return graphicalEditor.getDiagram();
+		} else {
+			return null;
+		}
 	}
 
 	public DiagramEditPart getDiagramEditPart() {
-		return graphicalEditor.getDiagramEditPart();
+		if (graphicalEditor != null) {
+			return graphicalEditor.getDiagramEditPart();
+		} else {
+			return null;
+		}
+		
 	}
 
 	public EsbDiagramEditor getGraphicalEditor() {
-		return graphicalEditor;
+		if (graphicalEditor != null) {
+			return graphicalEditor;
+		} else {
+			return null;
+		}
 	}
 
 	public void focusToolbar() {
-		graphicalEditor.focusToolBar();
+		if (graphicalEditor != null) {
+			graphicalEditor.focusToolBar();
+		} 
 	}
 
 	public double getZoom() {

@@ -24,7 +24,7 @@ public interface EndsWith extends Operator {
 
 	/**
 	 * Returns the value of the '<em><b>Pattern</b></em>' attribute.
-	 * The default value is <code>"/default"</code>.
+	 * The default value is <code>"{$Pattern}"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Pattern</em>' attribute isn't clear,
@@ -34,7 +34,7 @@ public interface EndsWith extends Operator {
 	 * @return the value of the '<em>Pattern</em>' attribute.
 	 * @see #setPattern(String)
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getEndsWith_Pattern()
-	 * @model default="/default"
+	 * @model default="{$Pattern}"
 	 * @generated
 	 */
 	String getPattern();

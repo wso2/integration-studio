@@ -408,5 +408,17 @@
      </provider>
   </extension>
   
+  <extension
+      point="org.eclipse.ui.newWizards">
+         <wizard name="ESB Solution Project"
+                       category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation/org.wso2.developerstudio.eclipse.message.mediation.project.types"
+                       class="org.wso2.developerstudio.eclipse.esb.project.ui.wizard.ESBSolutionProjectCreationWizard"
+                       id="org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject"
+                       wizardManifest="project_wizard_esb_solution.xml"
+                       icon="icons/esb-project-12.png"
+                       project="true">
+                       <description>ESB Solution Project</description>
+         </wizard>
+   </extension>
   
 </plugin>

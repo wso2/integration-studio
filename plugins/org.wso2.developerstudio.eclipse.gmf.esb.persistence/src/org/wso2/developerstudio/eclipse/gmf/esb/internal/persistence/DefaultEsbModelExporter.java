@@ -345,15 +345,15 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
     }
     
     public String formToSource(FormPage formPage, ArtifactType artifactType ) throws Exception {
-    	SynapseXMLConfigurationSerializer serializer = new SynapseXMLConfigurationSerializer();
-		SequenceMediatorSerializer sequenceSerializer = new SequenceMediatorSerializer();
 		OMElement configOM = null;
 		if (artifactType == ArtifactType.LOCAL_ENTRY) {
 			configOM = EntrySerializer.serializeEntry(
 					transformLocalEntry(formPage), null);
 		}
-		sourceXML = format(configOM.toString());
-		sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
+		if (configOM != null) {
+			sourceXML = format(configOM.toString());
+			sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
+		}
 		return sourceXML;
     	
     }

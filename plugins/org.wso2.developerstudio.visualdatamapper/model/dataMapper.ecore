@@ -4,15 +4,23 @@
     nsPrefix="datamapper">
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="Trim" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Replace" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Match" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Replace" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="{$Target}"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="replaceString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="{$ReplaceWith}"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Match" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="{$Pattern}"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Min" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Max" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomFunction" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="customFunction"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="customFunction(in1,in2){ return (in1 + in2);};"/>
+        defaultValueLiteral="function(in1,in2){ return (in1 + in2);};"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputConnectorTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="Result"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="InputConnectorTag" upperBound="-1"
@@ -53,21 +61,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="StringLength" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="StartsWith" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="/default"/>
+        defaultValueLiteral="{$Pattern}"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="getPatternFromInput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EndsWith" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="/default"/>
+        defaultValueLiteral="{$Pattern}"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="getPatternFromInput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Substring" eSuperTypes="#//Operator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="{$StartIndex}"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="{$Length}"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="getPatternFromInput" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
   </eClassifiers>

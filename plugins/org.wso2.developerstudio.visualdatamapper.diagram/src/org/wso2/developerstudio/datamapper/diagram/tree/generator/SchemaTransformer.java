@@ -1123,8 +1123,10 @@ public class SchemaTransformer implements ISchemaTransformer {
 			root.put(JSON_SCHEMA_TITLE, treeNodeModel.getName());
 			insetIDAndTypeForJsonObject(treeNodeModel, root);
 			String schemaType = getPropertyKeyValuePairforTreeNode(treeNodeModel, JSON_SCHEMA_TYPE);
+			if(TRUE.equals(getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel, JSON_SCHEMA_NULLABLE))){
 			root.put(JSON_SCHEMA_NULLABLE,
 					getPropertyKeyValuePairforTreeNodeImpls(treeNodeModel, JSON_SCHEMA_NULLABLE));
+			}
 			if (schemaType.equals(JSON_SCHEMA_OBJECT)) {
 				root.put(JSON_SCHEMA_PROPERTIES, propertiesObject);
 			} else if (schemaType.equals(JSON_SCHEMA_ARRAY)) {
@@ -1396,7 +1398,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 							valueObject.put(JSON_SCHEMA_TYPE, objectValueBlockType);
 							nodeObject.put(JSON_SCHEMA_VALUE, valueObject);
 						}
-						if (nullableValue != null) {
+						if (TRUE.equals(nullableValue)) {
 							nodeObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						}
 						// If an object doesn't contain properties, then avoid
@@ -1504,7 +1506,7 @@ public class SchemaTransformer implements ISchemaTransformer {
 						if (itemProperties.size() > 0) {
 							arrayItemsObject.add(itemProperties);
 						}
-						if (nullableValue != null) {
+						if (TRUE.equals(nullableValue)) {
 							arrayObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
 						}
 						arrayObject.put(JSON_SCHEMA_ITEMS, arrayItemsObject);
@@ -1631,11 +1633,15 @@ public class SchemaTransformer implements ISchemaTransformer {
 							elemObject = new LinkedHashMap<>();
 							elemObject.put(JSON_SCHEMA_ID, objectAddedAttributeID);
 							elemObject.put(JSON_SCHEMA_TYPE, objectAddedAttributeType);
+							if(TRUE.equals(nullableValue)){
 							elemObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
+							}
 						} else {
 							elemObject = createElementObject(schemaID);
 							elemObject.put(JSON_SCHEMA_TYPE, schemaType);
+					        if(TRUE.equals(nullableValue)){
 							elemObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
+					        }
 						}
 
 						// ignore other elements comes from attribute iteration
@@ -1682,7 +1688,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 					} else {
 						Map elemObject = createElementObject(schemaID);
 						elemObject.put(JSON_SCHEMA_TYPE, schemaType);
+						if(TRUE.equals(nullableValue)){
 						elemObject.put(JSON_SCHEMA_NULLABLE, nullableValue);
+						}
 						// ignore attributes comes with property iteration
 						if (!name.startsWith(PREFIX)) {
 							// Check if there are namespaces in the fields when

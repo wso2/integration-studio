@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	 <projectOptions title="ESB Solution Project Creation Wizard "
+ 				 description="Provide a name for your new ESB Solution project">
+ 	<option id="esb.solution" default="true">Create New ESB Solution Project</option>
+ </projectOptions>
+ <projectOptionSettings>
+ 	<settings optionId="esb.solution"
+ 			  		title="ESB Solution Project"
+ 			  		description="Create a new ESB Solution project to create all the required projects"
+ 			  		error="Please give a name to create the ESB Solution project ">
+ 		<data modelProperty="project.name"
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.esb.project.controller.ESBSolutionProjectFieldController">Project Name</data>
+ 		
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ </projectOptionSettings>
+</wizard>

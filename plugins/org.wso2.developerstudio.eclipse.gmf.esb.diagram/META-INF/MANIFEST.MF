@@ -93,4 +93,6 @@ Import-Package: org.eclipse.core.filesystem,
  org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.registry.core.utils;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.usermgt.remote;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.esb.form.editors.article.rcp
+ org.wso2.developerstudio.esb.form.editors.article.rcp,
+ org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors,
+ org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores

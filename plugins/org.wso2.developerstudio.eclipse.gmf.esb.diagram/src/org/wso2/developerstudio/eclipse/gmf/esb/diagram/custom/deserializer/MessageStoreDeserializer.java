@@ -25,14 +25,21 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.message.store.MessageStore;
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageStore;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageStoreFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.*;
 
 /**
  * Deserializes a message-store configuration to a graphical message-Store object
@@ -54,6 +61,8 @@ public class MessageStoreDeserializer
 	private static final String JAVA_NAMING_PROVIDER_URL = "java.naming.provider.url";
 	private static final String JAVA_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
 	
+	private static final String STORE_WSO2MB_QUEUE_CONNECTION_FACTORY = "connectionfactory.QueueConnectionFactory";
+	
 	private static final String STORE_RABBITMQ_VIRTUAL_HOST = "store.rabbitmq.virtual.host";
 	private static final String STORE_RABBITMQ_PASSWORD = "store.rabbitmq.password";
 	private static final String STORE_RABBITMQ_USERNAME = "store.rabbitmq.username";
@@ -72,10 +81,14 @@ public class MessageStoreDeserializer
 	// Fixing TOOLS-2026.
 	private static final String JMS_MS_FQN_Old = "org.wso2.carbon.message.store.persistence.jms.JMSMessageStore";	
 	private static final String IN_MEMORY_MS_FQN_Old = "org.apache.synapse.message.store.InMemoryMessageStore";
-	private static final String JMS_MS_FQN = "org.apache.synapse.message.store.impl.jms.JmsStore";	
+	
 	private static final String IN_MEMORY_MS_FQN = "org.apache.synapse.message.store.impl.memory.InMemoryStore";
+	private static final String JMS_MS_FQN = "org.apache.synapse.message.store.impl.jms.JmsStore";	
+	private static final String WSO2MB = "wso2mb";
 	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
 	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
+	private static final String customStore = "customStore";
+	
 
 	@Override
 	public org.wso2.developerstudio.eclipse.gmf.esb.MessageStore createNode(
@@ -319,8 +332,126 @@ public class MessageStoreDeserializer
 	}
 
 	@Override
-	public org.wso2.developerstudio.eclipse.gmf.esb.MessageStore createNode(FormEditor part, MessageStore object) {
-		// TODO Auto-generated method stub
+	public org.wso2.developerstudio.eclipse.gmf.esb.MessageStore createNode(FormEditor formEditor, MessageStore store) {
+		ESBFormEditor messageStoreFormEditor = (ESBFormEditor) formEditor;
+		MessageStoreFormPage messageStorePage = (MessageStoreFormPage) messageStoreFormEditor.getFormPageForArtifact(ArtifactType.MESSAGE_STORE);
+		org.wso2.developerstudio.eclipse.gmf.esb.MessageStore messageStore = EsbFactoryImpl.eINSTANCE.createMessageStore();
+		
+		messageStore.setStoreName(store.getName());
+		messageStore.setDescription(store.getDescription());
+		
+		messageStorePage.setEsbNode(messageStore);
+		
+		if (store instanceof InMemoryStore) {
+			messageStorePage.storeType.select(0);
+			messageStorePage.storeName.setText(store.getName());
+			messageStorePage.guaranteedDeliveryEnable.select(1);
+		} else {
+		
+			DummyMessageStore dummyMessageStore = (DummyMessageStore) store;
+			
+			messageStorePage.storeName.setText(dummyMessageStore.getName());
+			
+			if(dummyMessageStore.getParameters().get(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE) != null && dummyMessageStore.getParameters().get(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE).toString().equalsIgnoreCase("true")) {
+				messageStorePage.guaranteedDeliveryEnable.select(0);
+				setTextValue(messageStorePage.failoverMessageStore, dummyMessageStore.getParameters().get(STORE_FAILOVER_MESSAGE_STORE_NAME));
+			} else {
+				messageStorePage.guaranteedDeliveryEnable.select(1);
+			}
+			
+			
+			
+			if(dummyMessageStore.getClassName().equalsIgnoreCase(IN_MEMORY_MS_FQN)) {
+				messageStorePage.storeType.select(0);
+				
+				InMemory inMemoryStore = (InMemory)messageStorePage.getStoreImpl(IN_MEMORY_MS_FQN);
+				
+			} else if(dummyMessageStore.getClassName().equalsIgnoreCase(JMS_MS_FQN)) {
+				messageStorePage.storeType.select(1);
+				
+				JMS jmsStore = (JMS)messageStorePage.getStoreImpl(JMS_MS_FQN);
+				
+				setTextValue(jmsStore.jms_initCtxFactory, store.getParameters().get(JAVA_NAMING_FACTORY_INITIAL));
+				setTextValue(jmsStore.jms_providerUrl, store.getParameters().get(JAVA_NAMING_PROVIDER_URL));
+				setTextValue(jmsStore.jms_jndiQueueName, store.getParameters().get(STORE_JMS_DESTINATION));
+				setTextValue(jmsStore.jms_connectionFactory, store.getParameters().get(STORE_JMS_CONNECTION_FACTORY));
+				setTextValue(jmsStore.jms_username, store.getParameters().get(STORE_JMS_USERNAME));
+				setTextValue(jmsStore.jms_password, store.getParameters().get(STORE_JMS_PASSWORD));
+				
+				if(store.getParameters().get(STORE_JMS_JMS_SPEC_VERSION) != null && store.getParameters().get(STORE_JMS_JMS_SPEC_VERSION).toString().equalsIgnoreCase("1.0")) {
+					jmsStore.jms_apiVersion.select(1);
+				} else {
+					jmsStore.jms_apiVersion.select(0);
+				}
+				
+				
+			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(WSO2MB)) {
+				messageStorePage.storeType.select(2);
+				
+				WSO2MB wso2mbStore = (WSO2MB)messageStorePage.getStoreImpl(WSO2MB);
+				
+				setTextValue(wso2mbStore.wso2mb_initCtxFactory, store.getParameters().get(JAVA_NAMING_FACTORY_INITIAL));
+				setTextValue(wso2mbStore.wso2mb_QueueConnFactory, store.getParameters().get(STORE_WSO2MB_QUEUE_CONNECTION_FACTORY));
+				setTextValue(wso2mbStore.wso2mb_jndiQueueName, store.getParameters().get(STORE_JMS_DESTINATION));
+				
+				if(store.getParameters().get(STORE_JMS_JMS_SPEC_VERSION) != null && store.getParameters().get(STORE_JMS_JMS_SPEC_VERSION).toString().equalsIgnoreCase("1.0")) {
+					wso2mbStore.wso2mb_apiVersion.select(1);
+				} else {
+					wso2mbStore.wso2mb_apiVersion.select(0);
+				}
+				
+			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(RABBITMQ_MS_FQN)) {
+				messageStorePage.storeType.select(3);
+				
+				RabbitMQ rabbitMQStore = (RabbitMQ)messageStorePage.getStoreImpl(RABBITMQ_MS_FQN);
+				
+				setTextValue(rabbitMQStore.rabbitMQ_hostname, store.getParameters().get(STORE_RABBITMQ_HOST_NAME));
+				setTextValue(rabbitMQStore.rabbitMQ_port, store.getParameters().get(STORE_RABBITMQ_HOST_PORT));
+				setTextValue(rabbitMQStore.rabbitMQ_queueName, store.getParameters().get(STORE_RABBITMQ_QUEUE_NAME));
+				setTextValue(rabbitMQStore.rabbitMQ_exchangeName, store.getParameters().get(STORE_RABBITMQ_EXCHANGE_NAME));
+				setTextValue(rabbitMQStore.rabbitMQ_routingKey, store.getParameters().get(STORE_RABBITMQ_ROUTE_KEY));
+				setTextValue(rabbitMQStore.rabbitMQ_username, store.getParameters().get(STORE_RABBITMQ_USERNAME));
+				setTextValue(rabbitMQStore.rabbitMQ_password, store.getParameters().get(STORE_RABBITMQ_PASSWORD));
+				setTextValue(rabbitMQStore.rabbitMQ_virtualhost, store.getParameters().get(STORE_RABBITMQ_VIRTUAL_HOST));
+				
+			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(JDBC_MS_FQN)) {
+				messageStorePage.storeType.select(4);
+				
+				JDBC jdbcStore = (JDBC)messageStorePage.getStoreImpl(JDBC_MS_FQN);
+				
+				setTextValue(jdbcStore.jdbc_dbTable, store.getParameters().get(STORE_JDBC_TABLE));
+				setTextValue(jdbcStore.jdbc_driver, store.getParameters().get(STORE_JDBC_TABLE));
+				setTextValue(jdbcStore.jdbc_url, store.getParameters().get(STORE_JDBC_TABLE));
+				setTextValue(jdbcStore.jdbc_username, store.getParameters().get(STORE_JDBC_TABLE));
+				setTextValue(jdbcStore.jdbc_password, store.getParameters().get(STORE_JDBC_TABLE));
+				setTextValue(jdbcStore.jdbc_DsName, store.getParameters().get(STORE_JDBC_TABLE));
+				
+				jdbcStore.jdbc_connectionInfo.select(0);
+				
+				
+			} else {
+				messageStorePage.storeType.select(5);
+				
+				CustomStore customStoreImpl = (CustomStore)messageStorePage.getStoreImpl(customStore);
+				
+				setTextValue(customStoreImpl.custom_providerClass, dummyMessageStore.getClassName());
+				
+				//setTextValue(customStoreImpl.custom_parameters, store.getParameters().get(STORE_JDBC_TABLE));
+				
+				
+			}
+		}
+		
+		
+		// Refresh settings of the message processor
+		messageStorePage.refreshStoreSettings();
+		
 		return null;
+	}
+	
+	private void setTextValue(Text textField, Object value) {
+		if (value != null) {
+			textField.setText(value.toString());
+		}
 	}
 }

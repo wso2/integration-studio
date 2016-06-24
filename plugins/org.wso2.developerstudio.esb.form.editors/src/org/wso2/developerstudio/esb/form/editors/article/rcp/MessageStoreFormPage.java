@@ -18,6 +18,10 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javax.swing.JMenu;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -39,28 +43,50 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.IMessageProcessor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.*;
 /**
  * 
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
-public class MessageStoreFormPage extends FormPage {
+public class MessageStoreFormPage extends AbstractEsbFormPage {
 	/**
 	 * @param id
 	 * @param title
 	 */
 	
 	private String[] messageStoreTypes = {"In-Memory Message Store", "JMS Message Store", "WSO2 MB Message Store", "RabbitMQ Message Store", "JDBC Message Store", "Custom Message Store"};
-	private MessageStore currentMessageStore = null;
-	private ArrayList<Section> sectionsList = new ArrayList<Section>();
+	private IMessageStore currentMessageStore = null;
+//	private ArrayList<Section> sectionsList = new ArrayList<Section>();
+	
+	public Text storeName;
+	public Combo storeType;
+	
+	ScrolledForm form ;
+	FormToolkit toolkit;
+	
+	private static final String IN_MEMORY_MS_FQN = "org.apache.synapse.message.store.impl.memory.InMemoryStore";
+	private static final String JMS_MS_FQN = "org.apache.synapse.message.store.impl.jms.JmsStore";	
+	private static final String WSO2MB = "wso2mb";
+	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
+	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
+	private static final String customStore = "customStore";
+	
+	Section guaranteedDeliverySection;
+	
+	public Combo guaranteedDeliveryEnable;
+	public Text failoverMessageStore;
+	
+	Map<String, IMessageStore> storeMap;
 	
 	public MessageStoreFormPage(FormEditor editor) {
 		super(editor, "messageStoreForm", Messages.getString("MessageStorePage.sectionMainTitle"));
 	}
 
 	protected void createFormContent(IManagedForm managedForm) {
-		ScrolledForm form = managedForm.getForm();
-		FormToolkit toolkit = managedForm.getToolkit();
+		form = managedForm.getForm();
+		toolkit = managedForm.getToolkit();
 		form.setText(Messages.getString("MessageStorePage.sectionMainTitle")); 
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 
@@ -69,10 +95,21 @@ public class MessageStoreFormPage extends FormPage {
 		layout.rightMargin = 10;
 		layout.maxNumColumns = 2;
 		form.getBody().setLayout(layout);
-
-		// Only show basic
-		createFormBasicSection(form, toolkit);
 		
+		storeMap = new LinkedHashMap<>();
+		
+		storeMap.put(IN_MEMORY_MS_FQN, new InMemory(form, toolkit));
+		storeMap.put(JMS_MS_FQN, new JMS(form, toolkit));
+		storeMap.put(WSO2MB, new WSO2MB(form, toolkit));
+		storeMap.put(RABBITMQ_MS_FQN, new RabbitMQ(form, toolkit));
+		storeMap.put(JDBC_MS_FQN, new JDBC(form, toolkit));
+		storeMap.put(customStore, new CustomStore(form, toolkit));
+
+
+		createFormBasicSection(form, toolkit);
+		createFormConnectionSection(form, toolkit);
+		createFormGuaranteedDeliverySection(form, toolkit);
+		createFormParameterSection(form, toolkit);
 	}
 	
 	private void createFormBasicSection(final ScrolledForm form, FormToolkit toolkit) {
@@ -92,13 +129,15 @@ public class MessageStoreFormPage extends FormPage {
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
 		basicSectionClient.setLayout(new TableWrapLayout());
 		
+		basicSection.setClient(basicSectionClient);
+		
 		toolkit.createLabel(basicSectionClient, "Message Store Name");
-		Text storeName = toolkit.createText(basicSectionClient, "");
+		storeName = toolkit.createText(basicSectionClient, "");
 		storeName.setBackground(new Color(null, 229,236,253));
 		storeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(basicSectionClient, "Message Store Type");
-		Combo storeType = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		storeType = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		storeType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] triggerTypes = messageStoreTypes;
 		storeType.setItems(triggerTypes);
@@ -106,76 +145,53 @@ public class MessageStoreFormPage extends FormPage {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// Create message stores
-				if (storeType.getText().equals("In-Memory Message Store")) {
-					currentMessageStore = new InMemory();
-				} else if (storeType.getText().equals("JMS Message Store")) {
-					currentMessageStore = new JMS();
-				} else if (storeType.getText().equals("WSO2 MB Message Store")) {
-					currentMessageStore = new WSO2MB();
-				} else if (storeType.getText().equals("RabbitMQ Message Store")) {
-					currentMessageStore = new RabbitMQ();
-				} else if (storeType.getText().equals("JDBC Message Store")) {
-					currentMessageStore = new JDBC();
-				} else if (storeType.getText().equals("Custom Message Store")) {
-					currentMessageStore = new CustomStore();
+				if (storeType.getSelectionIndex() == 0) {
+					currentMessageStore = storeMap.get(IN_MEMORY_MS_FQN);
+				} else if (storeType.getSelectionIndex() == 1) {
+					currentMessageStore = storeMap.get(JMS_MS_FQN);
+				} else if (storeType.getSelectionIndex() == 2) {
+					currentMessageStore = storeMap.get(WSO2MB);
+				} else if (storeType.getSelectionIndex() == 3) {
+					currentMessageStore = storeMap.get(RABBITMQ_MS_FQN);
+				} else if (storeType.getSelectionIndex() == 4) {
+					currentMessageStore = storeMap.get(JDBC_MS_FQN);
+				} else if (storeType.getSelectionIndex() == 5) {
+					currentMessageStore = storeMap.get(customStore);
 				}
 				
-				if (currentMessageStore != null) {
-					
-					// dispose and clear sections, if already existing
-					for (Section sec:sectionsList) {
-						sec.dispose();
-					}
-					sectionsList.clear();
-					
-
-					// if identified message store, show the rest
-					createFormConnectionSection(form, toolkit);
-					createFormGuaranteedDeliverySection(form, toolkit);
-					createFormParameterSection(form, toolkit);
-					
-				}
+				refreshStoreSettings();
+				
 			}
 		});
 		
-		basicSection.setClient(basicSectionClient);
+		
 		
 	}
 	
 	
 	private void createFormConnectionSection(final ScrolledForm form, FormToolkit toolkit) {
+		
+		for (IMessageStore aStore : storeMap.values()) {
+			aStore.createConnectionSectionFields();
+		}
 
-		
-		if(!currentMessageStore.hasConnection()) return;
-		
-		 /* Connection Section */ 
-		Section connSection = this.createSection(form, toolkit, Messages.getString("MessageStorePage.section.conn"));
-		
-		Composite connSectionClient = toolkit.createComposite(connSection);
-		connSectionClient.setLayout(new TableWrapLayout());
-		
-		
-		currentMessageStore.createConnectionSectionFields(form, toolkit, connSectionClient);
-		
-		connSection.setClient(connSectionClient);
-		
-		sectionsList.add(connSection);
-		
 	}
 	
 	
 	private void createFormGuaranteedDeliverySection(final ScrolledForm form, FormToolkit toolkit) {
 		
-		if(!currentMessageStore.hasGuaranteedDelivery()) return;
 		
 		/* Guaranteed Delivery Section */ 
-		Section guaranteedDeliverySection = this.createSection(form, toolkit, Messages.getString("MessageStorePage.section.guaranteedDelivery"));
+		guaranteedDeliverySection = this.createSection(form, toolkit, Messages.getString("MessageStorePage.section.guaranteedDelivery"));
 		
 		Composite guaranteedDeliverySectionClient = toolkit.createComposite(guaranteedDeliverySection);
 		guaranteedDeliverySectionClient.setLayout(new TableWrapLayout());
 		
+		guaranteedDeliverySection.setClient(guaranteedDeliverySectionClient);
+		guaranteedDeliverySection.setExpanded(false);
+		
 		toolkit.createLabel(guaranteedDeliverySectionClient, "Enable Producer Guaranteed Delivery");
-		Combo guaranteedDeliveryEnable = new Combo(guaranteedDeliverySectionClient, SWT.DROP_DOWN);
+		guaranteedDeliveryEnable = new Combo(guaranteedDeliverySectionClient, SWT.DROP_DOWN);
 		guaranteedDeliveryEnable.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states = {"True", "False"};
 		guaranteedDeliveryEnable.setItems(states);
@@ -189,30 +205,21 @@ public class MessageStoreFormPage extends FormPage {
 		
 		
 		toolkit.createLabel(guaranteedDeliverySectionClient, "Failover Message Store");
-		Text failoverMessageStore = toolkit.createText(guaranteedDeliverySectionClient, "");
+		failoverMessageStore = toolkit.createText(guaranteedDeliverySectionClient, "");
 		failoverMessageStore.setBackground(new Color(null, 229,236,253));
 		failoverMessageStore.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 
 		
-		guaranteedDeliverySection.setClient(guaranteedDeliverySectionClient);
-		sectionsList.add(guaranteedDeliverySection);
+		
 	}
 	
 	
 	private void createFormParameterSection(final ScrolledForm form, FormToolkit toolkit) {
 		
-		if(!currentMessageStore.hasParameters()) return;
+		for (IMessageStore aStore : storeMap.values()) {
+			aStore.createParameterSectionFields();
+		}
 		
-		/* Trigger Information */ 
-		Section parameterSection = this.createSection(form, toolkit, Messages.getString("MessageStorePage.section.parameter"));
-		
-		Composite parameterSectionClient = toolkit.createComposite(parameterSection);
-		parameterSectionClient.setLayout(new TableWrapLayout());
-
-		currentMessageStore.createParameterSectionFields(form, toolkit, parameterSectionClient);
-		
-		parameterSection.setClient(parameterSectionClient);
-		sectionsList.add(parameterSection);
 	}
 	
 	private Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {
@@ -231,338 +238,43 @@ public class MessageStoreFormPage extends FormPage {
 		
 		return section;
 	}
-
-}
-
-
-
-
-interface MessageStore {
 	
-	public void createConnectionSectionFields(final ScrolledForm form, FormToolkit toolkit, Composite sectionClient);
-	public void createParameterSectionFields(final ScrolledForm form, FormToolkit toolkit, Composite sectionClient);
-	
-	public boolean hasGuaranteedDelivery();
-	public boolean hasParameters();
-	public boolean hasConnection();
-}
-
-class InMemory implements MessageStore {
-
-	@Override
-	public void createConnectionSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {}
-
-	@Override
-	public void createParameterSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {}
-
-	@Override
-	public boolean hasGuaranteedDelivery() {
-		return false;
+	public IMessageStore getStoreImpl(String storeClass) {
+		return storeMap.get(storeClass);
 	}
 
-	@Override
-	public boolean hasParameters() {
-		return false;
-	}
-
-	@Override
-	public boolean hasConnection() {
-		return false;
-	}
-	
-	
-}
-
-class JMS implements MessageStore {
-
-	@Override
-	public void createConnectionSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		toolkit.createLabel(sectionClient, "Initial Context Factory");
-		Text jms_initCtxFactory = toolkit.createText(sectionClient, "");
-		jms_initCtxFactory.setBackground(new Color(null, 229,236,253));
-		jms_initCtxFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+	public void refreshStoreSettings() {
+		int selectedIndex = storeType.getSelectionIndex();
 		
-		toolkit.createLabel(sectionClient, "Provider URL");
-		Text jms_providerUrl = toolkit.createText(sectionClient, "");
-		jms_providerUrl.setBackground(new Color(null, 229,236,253));
-		jms_providerUrl.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		int index = 0;
 		
-	}
-
-	@Override
-	public void createParameterSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		toolkit.createLabel(sectionClient, "JNDI Queue Name");
-		Text jms_jndiQueueName = toolkit.createText(sectionClient, "");
-		jms_jndiQueueName.setBackground(new Color(null, 229,236,253));
-		jms_jndiQueueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		boolean guaranteedDeliveryFlag = false;
 		
-		toolkit.createLabel(sectionClient, "Connection Factory");
-		Text jms_connectionFactory = toolkit.createText(sectionClient, "");
-		jms_connectionFactory.setBackground(new Color(null, 229,236,253));
-		jms_connectionFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "Username");
-		Text jms_username = toolkit.createText(sectionClient, "");
-		jms_username.setBackground(new Color(null, 229,236,253));
-		jms_username.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "Password");
-		Text jms_password = toolkit.createText(sectionClient, "");
-		jms_password.setBackground(new Color(null, 229,236,253));
-		jms_password.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "JMS API Specification Version");
-		Combo jms_apiVersion = new Combo(sectionClient, SWT.DROP_DOWN);
-		jms_apiVersion.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] versions = {"1.1", "1.0"};
-		jms_apiVersion.setItems(versions);
-		
-	}
-
-	@Override
-	public boolean hasGuaranteedDelivery() {
-		return true;
-	}
-
-	@Override
-	public boolean hasParameters() {
-		return true;
-	}
-
-	@Override
-	public boolean hasConnection() {
-		return true;
-	}
-	
-}
-
-class WSO2MB implements MessageStore {
-
-	@Override
-	public void createConnectionSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		toolkit.createLabel(sectionClient, "Initial Context Factory");
-		Text wso2mb_initCtxFactory = toolkit.createText(sectionClient, "");
-		wso2mb_initCtxFactory.setBackground(new Color(null, 229,236,253));
-		wso2mb_initCtxFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "Queue Connection Factory");
-		Text wso2mb_QueueConnFactory = toolkit.createText(sectionClient, "");
-		wso2mb_QueueConnFactory.setBackground(new Color(null, 229,236,253));
-		wso2mb_QueueConnFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-	}
-
-	@Override
-	public void createParameterSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		toolkit.createLabel(sectionClient, "JNDI Queue Name");
-		Text wso2mb_jndiQueueName = toolkit.createText(sectionClient, "");
-		wso2mb_jndiQueueName.setBackground(new Color(null, 229,236,253));
-		wso2mb_jndiQueueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "JMS API Specification Version");
-		Combo wso2mb_apiVersion = new Combo(sectionClient, SWT.DROP_DOWN);
-		wso2mb_apiVersion.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] versions = {"1.1", "1.0"};
-		wso2mb_apiVersion.setItems(versions);
-		
-	}
-
-	@Override
-	public boolean hasGuaranteedDelivery() {
-		return true;
-	}
-
-	@Override
-	public boolean hasParameters() {
-		return true;
-	}
-
-	@Override
-	public boolean hasConnection() {
-		return true;
-	}
-	
-}
-
-
-
-class RabbitMQ implements MessageStore {
-
-	@Override
-	public void createConnectionSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		toolkit.createLabel(sectionClient, "Rabbit MQ Server Hostname");
-		Text rabbitMQ_hostname = toolkit.createText(sectionClient, "");
-		rabbitMQ_hostname.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_hostname.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "Rabbit MQ Server Port");
-		Text rabbitMQ_port = toolkit.createText(sectionClient, "");
-		rabbitMQ_port.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_port.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-	}
-
-	@Override
-	public void createParameterSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		toolkit.createLabel(sectionClient, "RabbitMQ Queue Name");
-		Text rabbitMQ_queueName = toolkit.createText(sectionClient, "");
-		rabbitMQ_queueName.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_queueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "RabbitMQ Exchange Name");
-		Text rabbitMQ_exchangeName = toolkit.createText(sectionClient, "");
-		rabbitMQ_exchangeName.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_exchangeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "Routing Key");
-		Text rabbitMQ_routingKey = toolkit.createText(sectionClient, "");
-		rabbitMQ_routingKey.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_routingKey.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "RabbitMQ Username");
-		Text rabbitMQ_username = toolkit.createText(sectionClient, "");
-		rabbitMQ_username.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_username.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "RabbitMQ Password");
-		Text rabbitMQ_password = toolkit.createText(sectionClient, "");
-		rabbitMQ_password.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_password.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "Virtual Host");
-		Text rabbitMQ_virtualhost = toolkit.createText(sectionClient, "");
-		rabbitMQ_virtualhost.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_virtualhost.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-	}
-
-	@Override
-	public boolean hasGuaranteedDelivery() {
-		return true;
-	}
-
-	@Override
-	public boolean hasParameters() {
-		return true;
-	}
-
-	@Override
-	public boolean hasConnection() {
-		return true;
-	}
-	
-}
-
-class JDBC implements MessageStore {
-
-	@Override
-	public void createConnectionSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		toolkit.createLabel(sectionClient, "JDBC Database Table");
-		Text jdbc_dbTable = toolkit.createText(sectionClient, "");
-		jdbc_dbTable.setBackground(new Color(null, 229,236,253));
-		jdbc_dbTable.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(sectionClient, "JDBC Conection Information");
-		Combo jdbc_connectionInfo = new Combo(sectionClient, SWT.DROP_DOWN);
-		jdbc_connectionInfo.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] jdbcTypes = {"JDBC_POOL", "JDBC_CARBON_DATASOURCE"};
-		jdbc_connectionInfo.setItems(jdbcTypes);
-		jdbc_connectionInfo.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				super.widgetSelected(e);
+		for (IMessageStore aStore: storeMap.values()) {
+			if (index == selectedIndex) {
+				aStore.showParametersSection();
+				aStore.showConnectionSection();
+				
+				if(aStore.hasGuaranteedDelivery() && !guaranteedDeliveryFlag) {
+					this.guaranteedDeliverySection.setVisible(true);
+					guaranteedDeliveryFlag = true;
+				}
+				
+			} else {
+				aStore.hideParametersSection();
+				aStore.hideConnectionSection();
+				
+				if(aStore.hasGuaranteedDelivery() && !guaranteedDeliveryFlag) {
+					this.guaranteedDeliverySection.setVisible(false);
+				}
 			}
-		});
+			
+			
+			index ++;
+		}
 		
 		
-		
-			//-- if connection info is JDBC_POOL
-			toolkit.createLabel(sectionClient, "JDBC Driver");
-			Text jdbc_driver = toolkit.createText(sectionClient, "");
-			jdbc_driver.setBackground(new Color(null, 229,236,253));
-			jdbc_driver.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-			
-			toolkit.createLabel(sectionClient, "JDBC URL");
-			Text jdbc_url = toolkit.createText(sectionClient, "");
-			jdbc_url.setBackground(new Color(null, 229,236,253));
-			jdbc_url.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-			
-			toolkit.createLabel(sectionClient, "JDBC Username");
-			Text jdbc_username = toolkit.createText(sectionClient, "");
-			jdbc_username.setBackground(new Color(null, 229,236,253));
-			jdbc_username.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-			
-			toolkit.createLabel(sectionClient, "JDBC Password");
-			Text jdbc_password = toolkit.createText(sectionClient, "");
-			jdbc_password.setBackground(new Color(null, 229,236,253));
-			jdbc_password.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-			
-			
-			//-- if connection info is JDBC_CARBON_DATASOURCE
-			toolkit.createLabel(sectionClient, "JDBC Datasource Name");
-			Text jdbc_DsName = toolkit.createText(sectionClient, "");
-			jdbc_DsName.setBackground(new Color(null, 229,236,253));
-			jdbc_DsName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 	}
 
-	@Override
-	public void createParameterSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public boolean hasGuaranteedDelivery() {
-		return true;
-	}
-
-	@Override
-	public boolean hasParameters() {
-		return false;
-	}
-
-	@Override
-	public boolean hasConnection() {
-		return true;
-	}
-	
 }
-
-class CustomStore implements MessageStore {
-
-	@Override
-	public void createConnectionSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		toolkit.createLabel(sectionClient, "Provider Class");
-		Text custom_providerClass = toolkit.createText(sectionClient, "");
-		custom_providerClass.setBackground(new Color(null, 229,236,253));
-		custom_providerClass.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-	}
-
-	@Override
-	public void createParameterSectionFields(ScrolledForm form, FormToolkit toolkit, Composite sectionClient) {
-		toolkit.createLabel(sectionClient, "Message Store Parameters");
-		Text custom_parameters = toolkit.createText(sectionClient, "");
-		custom_parameters.setBackground(new Color(null, 229,236,253));
-		custom_parameters.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-	}
-	
-	@Override
-	public boolean hasGuaranteedDelivery() {
-		return false;
-	}
-
-	@Override
-	public boolean hasParameters() {
-		return true;
-	}
-
-	@Override
-	public boolean hasConnection() {
-		return true;
-	}
-	
-}
-
-

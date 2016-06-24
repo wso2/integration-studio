@@ -5,15 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
-
-import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
@@ -22,54 +20,48 @@ import org.apache.axiom.om.OMNamespace;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.SynapseConstants;
-import org.apache.synapse.mediators.Value;
-import org.apache.synapse.mediators.template.InvokeMediator;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.LogLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.extensions.CustomPaletteToolTransferDropTargetListener;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.factory.ConnectionFileCreator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.factory.LocalEntryFileCreator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramImageUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 //import org.wso2.developerstudio.eclipse.artifact.localentry.model.LocalEntryModel;
@@ -102,6 +94,7 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 	private static String operationName = "init";
 	
 	private CloudConnectorOperation operation;
+	private String cloudConnectorAuthenticationInfo;
 	
 	private TableEditor paramTypeEditor;
 	private TableEditor paramNameEditor;
@@ -122,10 +115,12 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
-	public CloudConnectorInitialConfigurationDialog(Shell parent,CloudConnectorOperation operation,Collection<String> parameters) {
+	public CloudConnectorInitialConfigurationDialog(Shell parent,CloudConnectorOperation operation,Collection<String> parameters, String cloudConnectorAuthenticationInfo) {
 		super(parent);
 		this.parameters=parameters;
 		this.operation=operation;
+		this.cloudConnectorAuthenticationInfo = cloudConnectorAuthenticationInfo;
+		setTitleImage(DiagramImageUtils.getInstance().getImageDescriptor("connectorInit.png").createImage());
 		//parent.setText("Connector Configuration.");
 	}	
 	
@@ -149,24 +144,18 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 	protected Control createDialogArea(Composite parent) {
 		Composite area = (Composite) super.createDialogArea(parent);
 		Composite container = new Composite(area, SWT.NONE);
-		/*FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);*/
-		container.setLayoutData(new GridData(GridData.FILL_BOTH));
-
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 3;
+		gridLayout.verticalSpacing = 20;	
+		container.setLayout(gridLayout);
 		configurationNameLabel = new Label(container, SWT.NONE);
 		{
 			configurationNameLabel.setText("Name: ");
-			/*FormData logCategoryLabelLayoutData = new FormData(80,SWT.DEFAULT);
-			logCategoryLabelLayoutData.top = new FormAttachment(0, 10);
-			logCategoryLabelLayoutData.left = new FormAttachment(0);
-			configurationNameLabel.setLayoutData(logCategoryLabelLayoutData);*/
 			configurationNameLabel.setBounds(10, 10, 50, 25);
 		}
 			
 		// Text box for add new parameter.
-		nameText = new Text(container, SWT.NONE);
+		nameText = new Text(container, SWT.BORDER);
 		{
 			/*FormData logCategoryLabelLayoutData = new FormData(160,SWT.DEFAULT);
 			logCategoryLabelLayoutData.top = new FormAttachment(
@@ -174,7 +163,11 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 			logCategoryLabelLayoutData.left = new FormAttachment(
 					configurationNameLabel, 5);
 			nameText.setLayoutData(logCategoryLabelLayoutData);*/
-			nameText.setBounds(65, 10, 250, 25);
+			nameText.setBounds(65, 10, 100, 25);
+			GridData gridDataNameText2 = new GridData();
+			gridDataNameText2.horizontalAlignment = SWT.FILL;
+			gridDataNameText2.grabExcessHorizontalSpace = true;
+			nameText.setLayoutData(gridDataNameText2);
 		}
 		nameText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
@@ -195,6 +188,21 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 			}
 		});
 		
+		Link link = new Link(container, SWT.NONE);
+		if (cloudConnectorAuthenticationInfo != null && !cloudConnectorAuthenticationInfo.isEmpty()) {
+			link.setText("<a href=\"" + cloudConnectorAuthenticationInfo + "\">How to get Authentication info..</a>");
+		}
+		link.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				try {
+					// Open default external browser
+					PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(e.text));
+				} catch (PartInitException | MalformedURLException ex) {
+					log.error("Error while opening URL : " + e.text, ex);
+				}
+			}
+		});
+		link.setSize(180, 10);
 		
 /*		saveOptionLabel = new Label(container, SWT.NONE);
 		{
@@ -222,6 +230,15 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 		paramTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION
 				| SWT.HIDE_SELECTION);
 		paramTable.setBounds(10, 50, 600, 200);
+		
+		GridData gridData3 = new GridData();
+		gridData3.horizontalSpan = 3;
+		gridData3.horizontalAlignment = SWT.FILL;
+		gridData3.grabExcessHorizontalSpace = true;
+		gridData3.verticalAlignment = SWT.FILL;
+		gridData3.grabExcessVerticalSpace = true;
+		paramTable.setLayoutData(gridData3);
+		
 
 		TableColumn nameColumn = new TableColumn(paramTable, SWT.LEFT);
 		TableColumn valueColumn = new TableColumn(paramTable, SWT.LEFT);
@@ -277,6 +294,13 @@ public class CloudConnectorInitialConfigurationDialog extends TitleAreaDialog {
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("Connector Configuration");
+	}
+	
+	@Override
+	public void create() {
+		super.create();
+		setTitle("Enter authentication details");
+		setMessage("Please provide required parameters to authenticate user", IMessageProvider.INFORMATION);
 	}
 	
 	/**

@@ -65,14 +65,16 @@ public class CloudConnectorNewConfigPropertyDescriptor extends PropertyDescripto
 				
 				
 				Collection<String> cloudConnectorConfigurationParameters = null;
+				String cloudConnectorAuthenticationInfo = null;
 				try {
 					cloudConnectorConfigurationParameters = getCloudConnectorDirectoryTraverser(operation.getCloudConnectorName()).getCloudConnectorConfigurationParameters();
+					cloudConnectorAuthenticationInfo = getCloudConnectorDirectoryTraverser(operation.getCloudConnectorName()).getCloudConnectorAuthenticationInfo();
 				} catch (Exception e) {
 					log.error("Error while reading parameters", e);
 				}
 				
 				if (cloudConnectorConfigurationParameters != null && cloudConnectorConfigurationParameters.size() > 0) {
-					CloudConnectorInitialConfigurationDialog cloudConnectorConfigureDialog = new CloudConnectorInitialConfigurationDialog(shell,operation,cloudConnectorConfigurationParameters);
+					CloudConnectorInitialConfigurationDialog cloudConnectorConfigureDialog = new CloudConnectorInitialConfigurationDialog(shell,operation,cloudConnectorConfigurationParameters,cloudConnectorAuthenticationInfo);
 					cloudConnectorConfigureDialog.setDroppedCloudConnector(operation.getCloudConnectorName());
 					cloudConnectorConfigureDialog.setDroppedCloudConnectorComponentName(getCloudConnectorDirectoryTraverser(operation.getCloudConnectorName()).getCloudConnectorName());
 					cloudConnectorConfigureDialog.setBlockOnOpen(true);

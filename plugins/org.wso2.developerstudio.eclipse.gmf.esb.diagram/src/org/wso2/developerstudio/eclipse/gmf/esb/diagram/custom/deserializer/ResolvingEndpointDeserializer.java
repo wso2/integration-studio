@@ -53,9 +53,4 @@ AbstractEsbNodeDeserializer<ResolvingEndpoint, NamedEndpoint>{
 		return endPoint;
 	}
 
-	@Override
-	public NamedEndpoint createNode(FormEditor part, ResolvingEndpoint object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

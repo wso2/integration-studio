@@ -24,10 +24,5 @@ public class DBLookupMediatorDeserializer extends AbstractDBMediatorDeserializer
 		return visualDBLookupMediator;
 	}
 
-	@Override
-	public AbstractSqlExecutorMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

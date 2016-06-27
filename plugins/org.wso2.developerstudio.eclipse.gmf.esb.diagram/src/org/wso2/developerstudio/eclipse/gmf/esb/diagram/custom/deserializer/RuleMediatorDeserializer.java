@@ -198,10 +198,5 @@ public class RuleMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 		return mediatorModel;
 	}
 
-	@Override
-	public RuleMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

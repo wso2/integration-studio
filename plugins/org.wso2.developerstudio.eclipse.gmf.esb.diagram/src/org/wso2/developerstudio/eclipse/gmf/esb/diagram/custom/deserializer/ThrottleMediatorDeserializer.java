@@ -258,10 +258,4 @@ public class ThrottleMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 	}
 
 
-	@Override
-	public ThrottleMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

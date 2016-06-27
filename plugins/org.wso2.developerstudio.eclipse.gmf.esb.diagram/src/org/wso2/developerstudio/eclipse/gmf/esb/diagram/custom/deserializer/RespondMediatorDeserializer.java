@@ -39,10 +39,5 @@ AbstractEsbNodeDeserializer<AbstractMediator, RespondMediator> {
 		return visualRespondMediator;
 	}
 
-	@Override
-	public RespondMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

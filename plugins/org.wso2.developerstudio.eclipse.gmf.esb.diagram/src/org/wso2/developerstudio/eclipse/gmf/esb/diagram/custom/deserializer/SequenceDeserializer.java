@@ -251,10 +251,5 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
 		
 	}
 
-	@Override
-	public EsbNode createNode(FormEditor part, SequenceMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

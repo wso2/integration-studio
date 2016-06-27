@@ -186,10 +186,5 @@ public class PropertyMediatorDeserializer extends
 		return VisualPropertyMediator;
 	}
 
-	@Override
-	public PropertyMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

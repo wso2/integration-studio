@@ -166,10 +166,5 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
 		return null;
 	}
 
-	@Override
-	public DataMapperMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

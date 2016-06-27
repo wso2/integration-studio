@@ -545,10 +545,4 @@ public class MessageProcessorDeserializer
 		return messageProcessor;
 	}
 
-	@Override
-	public org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor createNode(FormEditor part,
-			MessageProcessor object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

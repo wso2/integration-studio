@@ -38,10 +38,5 @@ public class SpringMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 		return visualSpringMediator;
 	}
 
-	@Override
-	public SpringMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

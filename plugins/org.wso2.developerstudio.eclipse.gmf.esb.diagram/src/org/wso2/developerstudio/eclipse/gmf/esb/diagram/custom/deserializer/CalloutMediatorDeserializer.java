@@ -89,9 +89,4 @@ public class CalloutMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 		return visualCalloutMediator;
 	}
 
-	@Override
-	public CalloutMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

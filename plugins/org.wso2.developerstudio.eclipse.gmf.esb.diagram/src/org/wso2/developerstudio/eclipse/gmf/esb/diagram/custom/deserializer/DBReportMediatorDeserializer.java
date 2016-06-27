@@ -25,9 +25,8 @@ public class DBReportMediatorDeserializer extends AbstractDBMediatorDeserializer
 	}
 
 	@Override
-	public AbstractSqlExecutorMediator createNode(FormEditor part, AbstractMediator object) {
+	public void createNode(FormEditor part, AbstractMediator object) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

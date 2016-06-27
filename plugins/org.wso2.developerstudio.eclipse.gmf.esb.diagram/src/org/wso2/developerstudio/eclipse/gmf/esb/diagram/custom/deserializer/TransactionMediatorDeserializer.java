@@ -39,9 +39,4 @@ public class TransactionMediatorDeserializer extends AbstractEsbNodeDeserializer
 		return visualTransactionMediator;
 	}
 
-	@Override
-	public TransactionMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

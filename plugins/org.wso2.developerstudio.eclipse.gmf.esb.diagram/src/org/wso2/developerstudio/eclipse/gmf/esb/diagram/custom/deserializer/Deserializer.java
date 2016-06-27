@@ -209,7 +209,7 @@ public class Deserializer {
 					.getDeserializer(artifact.getValue());
 			AbstractEsbNodeDeserializer.refreshEditPartMap();
 			if (deserializer != null) {
-				EsbNode node = deserializer.createNode(formEditor,artifact.getValue());
+				deserializer.createNode(formEditor,artifact.getValue());
 			}
 		}
 

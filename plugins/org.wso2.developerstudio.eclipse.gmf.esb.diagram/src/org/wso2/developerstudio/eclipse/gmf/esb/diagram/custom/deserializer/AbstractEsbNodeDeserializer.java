@@ -31,6 +31,7 @@ import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.task.TaskDescription;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.EList;
@@ -1114,11 +1115,12 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 		executeSetValueCommand(visualElement,ESB_ELEMENT__DESCRIPTION, mediator.getShortDescription());
 		executeAddAllCommand(visualElement.getCommentsList(), ((AbstractMediator)mediator).getCommentsList());
 	}
-	
-	public EsbNode createNode(FormEditor part, Entry object) {
+
+	public void createNode(FormEditor formEditor, T task) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
+	
 
 	
 }

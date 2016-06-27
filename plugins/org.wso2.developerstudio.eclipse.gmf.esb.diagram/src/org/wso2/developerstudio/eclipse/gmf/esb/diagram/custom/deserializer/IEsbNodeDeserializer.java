@@ -25,7 +25,7 @@ public interface IEsbNodeDeserializer<T,R extends EsbNode> {
 	
 	void setDiagramEditor(EsbDiagramEditor diagramEditor);
 	R createNode(IGraphicalEditPart part, T object);
-	R createNode(FormEditor part, T object);
+	void createNode(FormEditor part, T object);
 	public boolean isReversed();
 	public void setReversed(boolean reversed);
 

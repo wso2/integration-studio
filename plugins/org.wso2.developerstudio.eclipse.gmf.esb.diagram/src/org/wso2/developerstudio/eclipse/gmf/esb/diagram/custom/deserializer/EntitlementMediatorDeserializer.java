@@ -159,10 +159,5 @@ public class EntitlementMediatorDeserializer extends AbstractEsbNodeDeserializer
 		return visualEntitlementMediator;
 	}
 
-	@Override
-	public EntitlementMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

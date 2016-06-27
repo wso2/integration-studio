@@ -82,10 +82,5 @@ public class BeanMediatorDeserializer extends
 		return mediatorModel;
 	}
 
-	@Override
-	public BeanMediator createNode(FormEditor part, BeanMediatorExt object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -27,10 +27,5 @@ public class StoreMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 		return visualStoreMediator;
 	}
 
-	@Override
-	public StoreMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -130,10 +130,5 @@ public class FaultMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 		return visualFaultMediator;
 	}
 
-	@Override
-	public FaultMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

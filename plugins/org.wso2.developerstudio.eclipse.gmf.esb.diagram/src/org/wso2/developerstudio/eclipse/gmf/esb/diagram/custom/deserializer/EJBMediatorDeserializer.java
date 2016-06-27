@@ -96,10 +96,5 @@ public class EJBMediatorDeserializer extends
 		return mediatorModel;
 	}
 
-	@Override
-	public EJBMediator createNode(FormEditor part, EJBMediatorExt object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

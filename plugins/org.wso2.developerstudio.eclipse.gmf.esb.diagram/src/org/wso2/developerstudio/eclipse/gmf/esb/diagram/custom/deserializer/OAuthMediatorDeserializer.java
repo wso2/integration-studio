@@ -35,10 +35,5 @@ public class OAuthMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 		return visualOauthMediator;
 	}
 
-	@Override
-	public OAuthMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

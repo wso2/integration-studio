@@ -259,10 +259,5 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 		return synapseAPI;
 	}
 
-	@Override
-	public SynapseAPI createNode(FormEditor part, API object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

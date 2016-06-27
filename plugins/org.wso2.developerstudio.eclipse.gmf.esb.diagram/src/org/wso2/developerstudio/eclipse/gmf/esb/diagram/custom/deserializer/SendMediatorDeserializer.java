@@ -109,10 +109,5 @@ public class SendMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 		return visualSendMediator;
 	}
 
-	@Override
-	public SendMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }

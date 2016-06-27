@@ -687,10 +687,4 @@ public class InboundEndpointDeserializer extends
 
     }
 
-	@Override
-	public org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint createNode(FormEditor part,
-			InboundEndpoint object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -111,10 +111,5 @@ public class RouterMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 		return routerModel;
 	}
 
-	@Override
-	public RouterMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

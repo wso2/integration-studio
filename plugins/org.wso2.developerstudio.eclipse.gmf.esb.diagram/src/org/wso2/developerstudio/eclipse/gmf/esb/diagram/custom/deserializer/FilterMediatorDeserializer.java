@@ -94,10 +94,5 @@ public class FilterMediatorDeserializer extends
 
 	}
 
-	@Override
-	public FilterMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -80,10 +80,5 @@ public class EndPointDeserializer extends AbstractEsbNodeDeserializer<EndpointWr
 		return endpointDiagram;
 	}
 
-	@Override
-	public EndpointDiagram createNode(FormEditor part, EndpointWrapper object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -85,10 +85,5 @@ public class ConditionalRouterMediatorDeserializer extends
 		return mediatorModel;
 	}
 
-	@Override
-	public ConditionalRouterMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

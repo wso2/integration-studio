@@ -38,10 +38,5 @@ public class DropMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstra
 		return visualDropMediator;
 	}
 
-	@Override
-	public DropMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

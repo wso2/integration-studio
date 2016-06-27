@@ -83,10 +83,5 @@ public class SmooksMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 		return visualSmooksMediator;
 	}
 
-	@Override
-	public SmooksMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

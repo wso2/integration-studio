@@ -71,10 +71,5 @@ public class FailoverEndpointDeserializer extends AbstractComplexEndPointDeseria
 		return endPoint;
 	}
 
-	@Override
-	public ParentEndPoint createNode(FormEditor part, AbstractEndpoint object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

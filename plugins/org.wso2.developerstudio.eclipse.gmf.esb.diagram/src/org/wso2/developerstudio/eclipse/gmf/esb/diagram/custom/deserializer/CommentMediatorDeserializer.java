@@ -37,10 +37,5 @@ public class CommentMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 		return visualCommentMediator;
 	}
 
-	@Override
-	public CommentMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

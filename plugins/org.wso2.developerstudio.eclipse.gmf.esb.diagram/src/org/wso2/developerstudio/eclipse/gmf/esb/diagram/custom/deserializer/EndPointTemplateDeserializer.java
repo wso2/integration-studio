@@ -101,10 +101,5 @@ public class EndPointTemplateDeserializer extends AbstractEsbNodeDeserializer<or
 		return templateModel;
 	}
 
-	@Override
-	public Template createNode(FormEditor part, org.apache.synapse.endpoints.Template object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

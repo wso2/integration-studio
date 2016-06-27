@@ -63,10 +63,5 @@ public class ForEachMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 		return mediatorModel;
 	}
 
-	@Override
-	public ForEachMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

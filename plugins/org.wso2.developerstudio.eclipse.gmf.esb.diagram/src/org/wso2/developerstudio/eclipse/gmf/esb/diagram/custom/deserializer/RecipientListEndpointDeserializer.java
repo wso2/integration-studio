@@ -96,10 +96,5 @@ public class RecipientListEndpointDeserializer extends AbstractComplexEndPointDe
 		return model;
 	}
 
-	@Override
-	public ParentEndPoint createNode(FormEditor part, AbstractEndpoint object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

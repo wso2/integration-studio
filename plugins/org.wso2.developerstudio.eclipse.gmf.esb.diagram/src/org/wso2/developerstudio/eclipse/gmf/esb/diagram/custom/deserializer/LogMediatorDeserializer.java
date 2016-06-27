@@ -147,12 +147,4 @@ public class LogMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstrac
 		return visualLog;
 	}
 
-	@Override
-	public LogMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-  
-	
 }

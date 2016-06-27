@@ -194,10 +194,5 @@ public class XSLTMediatorDeserializer extends
 		return VisualXsltMediator;
 	}
 
-	@Override
-	public XSLTMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

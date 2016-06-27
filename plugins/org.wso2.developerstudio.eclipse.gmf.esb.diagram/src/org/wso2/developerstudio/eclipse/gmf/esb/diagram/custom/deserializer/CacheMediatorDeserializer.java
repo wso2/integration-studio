@@ -166,10 +166,5 @@ public class CacheMediatorDeserializer extends
 		return mediatorModel;
 	}
 
-	@Override
-	public CacheMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -56,9 +56,4 @@ public class EnqueueMediatorDeserializer extends
 		return visualEnqueueMediator;
 	}
 
-	@Override
-	public EnqueueMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

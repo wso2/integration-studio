@@ -183,9 +183,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	/* source editor dirty state */
 	private boolean sourceDirty;
-
 	public static EsbMultiPageEditor currentEditor;
-
 	private ArtifactType currArtifactType;
 
 	private double zoom = 1.0;

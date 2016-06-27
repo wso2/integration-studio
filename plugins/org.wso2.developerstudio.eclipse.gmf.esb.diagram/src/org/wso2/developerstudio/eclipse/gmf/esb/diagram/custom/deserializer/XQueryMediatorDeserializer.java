@@ -229,10 +229,5 @@ public class XQueryMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 	    return VisualXqueryMediator;
     }
 
-	@Override
-	public XQueryMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

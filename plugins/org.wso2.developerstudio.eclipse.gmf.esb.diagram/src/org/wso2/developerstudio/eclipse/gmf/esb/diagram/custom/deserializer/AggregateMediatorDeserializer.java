@@ -217,9 +217,8 @@ public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<A
 	}
 
 	@Override
-	public AggregateMediator createNode(FormEditor part, AbstractMediator object) {
+	public void createNode(FormEditor part, AbstractMediator object) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	

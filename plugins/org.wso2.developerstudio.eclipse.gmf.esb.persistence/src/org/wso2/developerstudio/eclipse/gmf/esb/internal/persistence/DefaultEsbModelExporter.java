@@ -264,6 +264,11 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		return transformer.createEntry(localEntryFormPage);
 	}
 	
+	private org.apache.synapse.task.TaskDescription transformTask(FormPage scheduledTaskFormPage) throws Exception{
+		TaskTransformer transformer= new TaskTransformer();
+		return transformer.createTask(scheduledTaskFormPage);
+	}
+	
 	private org.apache.synapse.task.TaskDescription transformTask(Task visualTask){
 		TaskTransformer transformer= new TaskTransformer();
 		return transformer.create(visualTask);
@@ -349,6 +354,10 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		if (artifactType == ArtifactType.LOCAL_ENTRY) {
 			configOM = EntrySerializer.serializeEntry(
 					transformLocalEntry(formPage), null);
+		} else if (artifactType == ArtifactType.TASK){
+			String TASK_EXTENSION_NS = "http://ws.apache.org/ns/synapse";
+			OMNamespace TASK_OM_NAMESPACE = OMAbstractFactory.getOMFactory().createOMNamespace(TASK_EXTENSION_NS, "");
+			configOM = TaskDescriptionSerializer.serializeTaskDescription(TASK_OM_NAMESPACE, transformTask(formPage));
 		}
 		if (configOM != null) {
 			sourceXML = format(configOM.toString());

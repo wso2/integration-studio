@@ -223,10 +223,5 @@ public class CloneMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 		return visualClone;
 	}
 
-	@Override
-	public CloneMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

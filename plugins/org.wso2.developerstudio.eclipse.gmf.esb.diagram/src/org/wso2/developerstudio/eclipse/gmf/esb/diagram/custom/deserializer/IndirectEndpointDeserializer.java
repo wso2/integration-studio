@@ -39,10 +39,5 @@ public class IndirectEndpointDeserializer extends
 		return endPoint;
 	}
 
-	@Override
-	public NamedEndpoint createNode(FormEditor part, IndirectEndpoint object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

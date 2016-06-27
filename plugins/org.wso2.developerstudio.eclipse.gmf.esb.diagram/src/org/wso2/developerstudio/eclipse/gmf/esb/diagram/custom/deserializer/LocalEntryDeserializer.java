@@ -56,7 +56,7 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 	}
 
 	@Override
-	public LocalEntry createNode(FormEditor formEditor, Entry object) {
+	public void createNode(FormEditor formEditor, Entry object) {
 		ESBFormEditor LocalEntryFormEditor = (ESBFormEditor) formEditor;
 		FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
 		if (formPage instanceof LocalEntryFormPage) {
@@ -97,7 +97,6 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 				}
 			}
 		}
-		return (LocalEntry) super.createNode(formEditor, object);
 	}
 
 }

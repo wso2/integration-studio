@@ -81,10 +81,5 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
 		return templateModel;
 	}
 
-	@Override
-	public Template createNode(FormEditor part, TemplateMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

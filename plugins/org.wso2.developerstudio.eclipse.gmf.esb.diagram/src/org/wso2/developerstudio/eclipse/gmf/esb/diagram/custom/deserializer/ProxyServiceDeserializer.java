@@ -303,11 +303,6 @@ public class ProxyServiceDeserializer extends AbstractEsbNodeDeserializer<ProxyS
 		return proxy;
 	}
 
-	@Override
-	public org.wso2.developerstudio.eclipse.gmf.esb.ProxyService createNode(FormEditor part, ProxyService object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 

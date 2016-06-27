@@ -318,9 +318,4 @@ public class MessageStoreDeserializer
 		return messageStore;
 	}
 
-	@Override
-	public org.wso2.developerstudio.eclipse.gmf.esb.MessageStore createNode(FormEditor part, MessageStore object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

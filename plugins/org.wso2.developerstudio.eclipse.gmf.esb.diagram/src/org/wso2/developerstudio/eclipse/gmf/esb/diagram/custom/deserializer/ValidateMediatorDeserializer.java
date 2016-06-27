@@ -184,10 +184,5 @@ public class ValidateMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 		return VisualValidateMediator;
 	}
 
-	@Override
-	public ValidateMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

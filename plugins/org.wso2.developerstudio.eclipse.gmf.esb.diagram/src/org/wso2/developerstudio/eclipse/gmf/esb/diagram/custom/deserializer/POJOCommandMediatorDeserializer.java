@@ -130,11 +130,6 @@ public class POJOCommandMediatorDeserializer extends AbstractEsbNodeDeserializer
             m.getMessageSetterProperties().containsKey(propName);
     }
 
-	@Override
-	public CommandMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }

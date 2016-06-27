@@ -136,12 +136,5 @@ public class HeaderMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 		return visualHeaderMediator;
 	}
 
-	@Override
-	public HeaderMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 
 }

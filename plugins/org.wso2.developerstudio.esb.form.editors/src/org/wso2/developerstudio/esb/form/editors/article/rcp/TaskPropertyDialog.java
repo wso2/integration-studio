@@ -1,29 +1,9 @@
-/*
- * Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
@@ -55,11 +35,9 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.ScheduledTaskFormPa
 
 public class TaskPropertyDialog extends Dialog{
 	
-	private TransactionalEditingDomain editingDomain;
-	private Task task;
+//	private Task task;
 	private boolean defaultESBtask;
 	private ScheduledTaskFormPage taskFormPage;
-	
 	/**
 	 * Table for add/edit/remove parameters.
 	 */
@@ -85,23 +63,10 @@ public class TaskPropertyDialog extends Dialog{
 	 */
 	private CompoundCommand resultCommand;
 	
-
-	public TaskPropertyDialog(Shell parentShell,
-			Task task,
-			TransactionalEditingDomain editingDomain) {
+	public TaskPropertyDialog(Shell parentShell, String taskImpel) {
 		super(parentShell);
-		this.editingDomain = editingDomain;
-		this.task = task;
-		defaultESBtask = (task.getTaskImplementation().equals("org.apache.synapse.startup.tasks.MessageInjector"));
-		initializeDefaultMessageInjectorTask();
-	}
-	
-	public TaskPropertyDialog(Shell parentShell, ScheduledTaskFormPage scheduledTaskFormPage) {
-		super(parentShell);
-		this.taskFormPage = scheduledTaskFormPage;
-		defaultESBtask = (scheduledTaskFormPage.getTaskImpl().getText().equals("org.apache.synapse.startup.tasks.MessageInjector"));
+		defaultESBtask = (taskImpel.equals("org.apache.synapse.startup.tasks.MessageInjector"));
 //		initializeDefaultMessageInjectorTask();
-		
 	}
 
 	protected void configureShell(Shell newShell) {
@@ -192,9 +157,9 @@ public class TaskPropertyDialog extends Dialog{
 		propertyTable.addListener(SWT.Selection, tblPropertiesListener);
 
 		// Populate Properties.
-		for (TaskProperty property : task.getTaskProperties()) {
+	/*	for (TaskProperty property : task.getTaskProperties()) {//awanthika, null here
 			bindPram(property);
-		}
+		}*/
 
 		setupTableEditor(propertyTable);
 
@@ -214,8 +179,6 @@ public class TaskPropertyDialog extends Dialog{
 		if (!paramNames.contains(propertyName)) {
 			TaskProperty p1 = EsbFactory.eINSTANCE.createTaskProperty();
 			p1.setPropertyName(propertyName);
-			AddCommand addCmd = new AddCommand(editingDomain, task, EsbPackage.Literals.TASK__TASK_PROPERTIES, p1);
-			getResultCommand().append(addCmd);
 		}
 	}
 	
@@ -238,36 +201,15 @@ public class TaskPropertyDialog extends Dialog{
 					param.setPropertyType(TaskPropertyType.XML);
 				}
 
-				AddCommand addCmd = new AddCommand(
-						editingDomain,
-						task,
-						EsbPackage.Literals.TASK__TASK_PROPERTIES,
-						param);
-				getResultCommand().append(addCmd);
 
 			} else {
 
 				if (!param.getPropertyName().equals(item.getText(0))) {
 
-					SetCommand setCmd = new SetCommand(
-							editingDomain,
-							param,
-							EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_NAME,
-							item.getText(0));
-
-					getResultCommand().append(setCmd);
 				}
 				
-				
 				if (!param.getPropertyType().toString().equals(item.getText(1))) {
-					
 					TaskPropertyType propertyType = item.getText(1).equals(TaskPropertyType.LITERAL.toString())?TaskPropertyType.LITERAL:TaskPropertyType.XML;
-					SetCommand setCmdValueType = new SetCommand(
-							editingDomain,
-							param,
-							EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_TYPE,
-							propertyType);
-					getResultCommand().append(setCmdValueType);
 				}
 
 				if (defaultESBtask) {
@@ -288,38 +230,25 @@ public class TaskPropertyDialog extends Dialog{
 			}
 		}
 
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		}
 		finalizeDefaultMessageInjecttorTask();
-
 		super.okPressed();
 
 	}
 	
 	protected void cancelPressed() {
 		finalizeDefaultMessageInjecttorTask();
-
 		super.cancelPressed();
 	}
 
 	private void appendPropertyValueCommand(String value, TaskProperty param) {
-		SetCommand setCmd = new SetCommand(
-				editingDomain,
-				param,
-				EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_VALUE,
-				value);
-		getResultCommand().append(setCmd);
 	}
 
 	private TableItem bindPram(TaskProperty param) {
 		TableItem item = new TableItem(propertyTable, SWT.NONE);
-	
 		item.setText(new String[] { param.getPropertyName(),
 									param.getPropertyType().getLiteral(),
 									param.getPropertyValue()
 								  });
-		
 		item.setData(param);
 		return item;
 	}
@@ -333,12 +262,6 @@ public class TaskPropertyDialog extends Dialog{
 
 	private void removeTaskProperty(TaskProperty param) {
 		if (param.eContainer() != null) {
-			RemoveCommand removeCmd = new RemoveCommand(
-					editingDomain,
-					task,
-					EsbPackage.Literals.TASK__TASK_PROPERTIES,
-					param);
-			getResultCommand().append(removeCmd);
 		}
 	}
 	
@@ -475,16 +398,13 @@ public class TaskPropertyDialog extends Dialog{
 		resultCommand = null;
 		if (defaultESBtask){
 			//remove parameters which has empty property values
-			for (TaskProperty param : task.getTaskProperties()) {
+			/*for (TaskProperty param : task.getTaskProperties()) {
 				if (param.getPropertyValue() == null){
 					removeTaskProperty(param);
 				}
-			}
+			}*/
 		}
 		
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		}
 	}
 	
 }

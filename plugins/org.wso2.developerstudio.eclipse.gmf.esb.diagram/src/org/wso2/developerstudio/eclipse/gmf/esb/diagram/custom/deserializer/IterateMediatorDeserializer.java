@@ -89,10 +89,5 @@ public class IterateMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 		return mediatorModel;
 	}
 
-	@Override
-	public IterateMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -92,10 +92,5 @@ public class PayloadFactoryMediatorDeserializer extends AbstractEsbNodeDeseriali
 		return visualPayloadFactoryMediator;
 	}
 
-	@Override
-	public PayloadFactoryMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

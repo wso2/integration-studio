@@ -52,10 +52,5 @@ public class BAMMediatorDeserializer extends
 		return mediatorModel;
 	}
 
-	@Override
-	public BAMMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

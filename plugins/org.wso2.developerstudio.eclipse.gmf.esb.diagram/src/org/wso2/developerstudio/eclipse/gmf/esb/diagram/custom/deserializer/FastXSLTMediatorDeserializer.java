@@ -106,10 +106,5 @@ public class FastXSLTMediatorDeserializer extends
 		return visualFastXSLTMediator;
 	}
 
-	@Override
-	public FastXSLTMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

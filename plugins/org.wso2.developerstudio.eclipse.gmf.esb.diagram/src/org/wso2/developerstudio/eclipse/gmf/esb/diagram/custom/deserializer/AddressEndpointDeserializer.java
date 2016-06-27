@@ -48,9 +48,8 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer{
 	}
 
 	@Override
-	public AbstractEndPoint createNode(FormEditor part, AbstractEndpoint object) {
+	public void createNode(FormEditor part, AbstractEndpoint object) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }

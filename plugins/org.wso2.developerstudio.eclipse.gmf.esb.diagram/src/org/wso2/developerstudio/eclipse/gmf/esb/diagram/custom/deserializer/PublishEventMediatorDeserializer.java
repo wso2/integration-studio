@@ -181,10 +181,5 @@ public class PublishEventMediatorDeserializer extends
 		return mediatorModel;
 	}
 
-	@Override
-	public PublishEventMediator createNode(FormEditor part, AbstractMediator object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

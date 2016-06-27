@@ -22,14 +22,20 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.eclipse.ui.forms.editor.FormPage;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry;
 import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskTriggerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ScheduledTaskFormPage;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
+import org.apache.synapse.config.Entry;
 import org.apache.synapse.task.TaskDescription;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
@@ -88,9 +94,32 @@ public class TaskDeserializer extends AbstractEsbNodeDeserializer<TaskDescriptio
 	}
 
 	@Override
-	public Task createNode(FormEditor part, TaskDescription object) {
-		// TODO Auto-generated method stub
-		return null;
+	public void createNode(FormEditor formEditor, TaskDescription task) {
+		ESBFormEditor LocalEntryFormEditor = (ESBFormEditor) formEditor;
+		FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.TASK);
+		if (formPage instanceof ScheduledTaskFormPage) {
+			ScheduledTaskFormPage taskFormPage = (ScheduledTaskFormPage) formPage;
+			if (taskFormPage.getTaskName() != null) {
+				taskFormPage.getTaskName().setText(task.getName());
+			}
+			if (taskFormPage.getTaskImpl() != null) {
+				taskFormPage.getTaskImpl().setText(task.getTaskImplClassName());
+			}
+			if (taskFormPage.getTaskGroup() != null) {
+				taskFormPage.getTaskGroup().setText(task.getTaskGroup());
+			}
+			if (taskFormPage.getPinnedServers() != null) {
+				taskFormPage.getPinnedServers().setText(DeserializerUtils.join(task.getPinnedServers(), ","));
+			}
+			if (taskFormPage.getCron() != null) {
+				taskFormPage.getTriggerType().select(1);
+				taskFormPage.getCron().setText(task.getCronExpression());
+			} else {
+				taskFormPage.getTriggerType().select(0);
+				taskFormPage.getCount().setText(String.valueOf(task.getCount()));
+				taskFormPage.getInterval().setText(String.valueOf(task.getInterval()));
+			}
+		}
 	}
 
 }

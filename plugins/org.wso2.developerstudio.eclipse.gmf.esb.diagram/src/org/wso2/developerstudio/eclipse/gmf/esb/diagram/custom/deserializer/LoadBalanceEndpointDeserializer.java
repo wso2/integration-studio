@@ -120,10 +120,5 @@ public class LoadBalanceEndpointDeserializer extends AbstractComplexEndPointDese
 		return visualEndPoint;
 	}
 
-	@Override
-	public ParentEndPoint createNode(FormEditor part, AbstractEndpoint object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

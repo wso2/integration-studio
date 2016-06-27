@@ -23,3 +23,4 @@ Export-Package: org.wso2.developerstudio.eclipse.webui.core.composite;version="4
  org.wso2.developerstudio.eclipse.webui.core.editor;version="4.2.0",
  org.wso2.developerstudio.eclipse.webui.core.exception;version="4.2.0",
  org.wso2.developerstudio.eclipse.webui.core.util;version="4.2.0"
+Import-Package: org.wso2.developerstudio.eclipse.platform.ui.utils

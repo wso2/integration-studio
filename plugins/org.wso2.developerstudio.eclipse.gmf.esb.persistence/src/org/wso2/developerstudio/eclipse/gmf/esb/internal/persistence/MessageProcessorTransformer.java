@@ -16,28 +16,50 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
+import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.xml.MessageProcessorSerializer;
+import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.ui.forms.editor.FormPage;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.LocalEntryFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.CustomProcessor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.Sampling;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.ScheduledFailoverForwarding;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.ScheduledForwarding;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
  * {@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor} model
  * objects into corresponding synapse artifact(s).
  */
-public class MessageProcessorTransformer {
+public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
+	
+	private static final String messageSamplingProcessor = "org.apache.synapse.message.processor.impl.sampler.SamplingProcessor";
+	private static final String scheduledMessageForwardingProcessor = "org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor";
+	private static final String scheduledFailoverMessageForwardingProcessor = "org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor";
+	private static final String customProcessor = "customProcessor";
 
 	public static OMElement createMessageProcessor(MessageProcessor model) throws Exception {
 		Map<String, Object> parameters = new HashMap<String, Object>();
@@ -226,5 +248,172 @@ public class MessageProcessorTransformer {
 		}
 			
 		return messageProcessorElement;
+	}
+	
+	public OMElement createMessageProcessor(FormPage visualForm) {
+		
+		org.apache.synapse.message.processor.MessageProcessor messageProcessor = null;
+		OMElement configXml = null;
+		Map<String, Object> parameterMap = new HashMap<>();
+		
+		if (visualForm instanceof MessageProcessorFormPage) {
+			
+			MessageProcessorFormPage messageProcessorFormPage = (MessageProcessorFormPage) visualForm;
+			
+			if (messageProcessorFormPage.processorName.getText().length() > 0){
+
+				
+				
+				int processorIndex = messageProcessorFormPage.processorType.getSelectionIndex();
+				
+				switch (processorIndex) {
+					case 0:
+					{
+						// messageSamplingProcessor
+						messageProcessor = new org.apache.synapse.message.processor.impl.sampler.SamplingProcessor();
+						Sampling sampling = (Sampling)messageProcessorFormPage.getProcessorImpl(messageSamplingProcessor);
+						
+						parameterMap.put("sequence", sampling.sampling_sequence.getText());
+						parameterMap.put("interval", sampling.sampling_interval.getText());
+						parameterMap.put("concurrency", sampling.sampling_concurrency.getText());
+						parameterMap.put("quartz.conf", sampling.sampling_quartzConfigFilePath.getText());
+						parameterMap.put("cronExpression", sampling.sampling_cronExpression.getText());
+						
+						if (sampling.sampling_state.getSelectionIndex() == 0) {
+							parameterMap.put("is.active", "true");
+						} else {
+							parameterMap.put("is.active", "false");
+						}
+						
+						break;
+					}
+					case 1:
+					{
+						// scheduledMessageForwardingProcessor
+						messageProcessor = new org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor();
+						ScheduledForwarding forwarder = (ScheduledForwarding)messageProcessorFormPage.getProcessorImpl(scheduledMessageForwardingProcessor);
+
+						messageProcessor.setTargetEndpoint(forwarder.forwarding_endpoint.getText());
+						
+						parameterMap.put("interval", forwarder.forwarding_interval.getText());
+						parameterMap.put("client.retry.interval", forwarder.forwarding_retryInterval.getText());
+						parameterMap.put("non.retry.status.codes", forwarder.forwarding_nonRetryHttpCodes.getText().split(","));
+						parameterMap.put("max.delivery.attempts", forwarder.forwarding_maxDeliveryAttempts.getText());
+						parameterMap.put("axis2.repo", forwarder.forwarding_axis2ClientRepo.getText());
+						parameterMap.put("axis2.config", forwarder.forwarding_axis2Config.getText());
+						parameterMap.put("message.processor.reply.sequence", forwarder.forwarding_replySequence.getText());
+						parameterMap.put("message.processor.fault.sequence", forwarder.forwarding_faultSequence.getText());
+						parameterMap.put("message.processor.deactivate.sequence", forwarder.forwarding_deactiveSequence.getText());
+						parameterMap.put("quartz.conf", forwarder.forwarding_quartzConfigFilePath.getText());
+						parameterMap.put("cronExpression", forwarder.forwarding_cronExpression.getText());
+						parameterMap.put("member.count", forwarder.forwarding_taskCount.getText());
+						
+						if (forwarder.forwarding_state.getSelectionIndex() == 0) {
+							parameterMap.put("is.active", "true");
+						} else {
+							parameterMap.put("is.active", "false");
+						}
+						
+						if (forwarder.forwarding_dropMessageAfterMaxDeliveryAttempts.getSelectionIndex() == 0) {
+							parameterMap.put("max.delivery.drop", "Enabled");
+						} else {
+							parameterMap.put("max.delivery.drop", "Disabled");
+						}
+						
+						
+						break;
+					}
+					case 2:
+					{
+						// scheduledFailoverMessageForwardingProcessor
+						messageProcessor = new org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor();
+						ScheduledFailoverForwarding failover = (ScheduledFailoverForwarding)messageProcessorFormPage.getProcessorImpl(scheduledFailoverMessageForwardingProcessor);
+						
+						parameterMap.put("store.failover.message.store.name", failover.failover_store.getText());
+						parameterMap.put("interval", failover.failover_interval.getText());
+						parameterMap.put("client.retry.interval", failover.failover_retryInterval.getText());
+						parameterMap.put("max.delivery.attempts", failover.failover_maxDeliveryAttempts.getText());
+						parameterMap.put("message.processor.fault.sequence", failover.failover_faultSequence.getText());
+						parameterMap.put("message.processor.deactivate.sequence", failover.failover_deactiveSequence.getText());
+						parameterMap.put("quartz.conf", failover.failover_quartzConfigFilePath.getText());
+						parameterMap.put("cronExpression", failover.failover_cronExpression.getText());
+						parameterMap.put("member.count", failover.failover_taskCount.getText());
+						
+						if (failover.failover_state.getSelectionIndex() == 0) {
+							parameterMap.put("is.active", "true");
+						} else {
+							parameterMap.put("is.active", "false");
+						}
+						
+						if (failover.failover_dropMessageAfterMaxDeliveryAttempts.getSelectionIndex() == 0) {
+							parameterMap.put("max.delivery.drop", "Enabled");
+						} else {
+							parameterMap.put("max.delivery.drop", "Disabled");
+						}
+						
+						break;
+					}
+					default:
+					{
+						// customProcessor - use forwarder temporary
+												
+						messageProcessor = new org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor();
+						
+						// TODO: Add parameters
+						
+
+						
+						break;
+					}
+				
+				}
+				
+				messageProcessor.setParameters(parameterMap);
+				
+				messageProcessor.setName(messageProcessorFormPage.processorName.getText());
+				messageProcessor.setMessageStoreName(messageProcessorFormPage.storeName.getText());
+				
+				
+				configXml = MessageProcessorSerializer.serializeMessageProcessor(null, messageProcessor);
+				
+				// Change for custom processor
+				if (processorIndex == 3) {
+					OMAttribute classAttr = configXml.getAttribute(new QName("class"));
+					CustomProcessor custom = (CustomProcessor) messageProcessorFormPage.getProcessorImpl(customProcessor);
+
+					String className = custom.custom_providerClass.getText();
+					
+					if (classAttr != null) {
+						classAttr.setAttributeValue(className);
+					} else {
+						configXml.addAttribute("class", className, null);
+					}
+				}
+				
+			}
+			
+		}
+		
+		return configXml;
+	}
+
+	@Override
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
+			throws TransformerException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+			throws TransformerException {
+		// TODO Auto-generated method stub
+		
 	}
 }

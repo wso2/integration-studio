@@ -50,6 +50,7 @@
         <module>org.wso2.developerstudio.eclipse.bpel.connector</module>
         <module>org.wso2.developerstudio.eclipse.bpel.core</module>
         <module>org.wso2.developerstudio.humantaskeditor</module>
+        <module>org.wso2.developerstudio.bpmn.extensions</module>
     </modules>
     <build>
         <plugins>

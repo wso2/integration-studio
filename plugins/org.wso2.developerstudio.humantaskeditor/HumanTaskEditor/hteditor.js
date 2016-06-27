@@ -320,10 +320,16 @@ function generateUI(status) {
         $('#page-content-wrapper').tabs("option", "active", selectedindex);
         handleTabChange();
         bindToggleEvent();
+        
 
     }
 }
 
+function bindSuggestion(taskName,availableTags){
+    $( "#"+taskName+"wrapper .expression" ).autocomplete({
+      source: availableTags
+    });
+}
 /*
  * Signature: toTitleCase(str) {...}
  * 
@@ -492,6 +498,7 @@ function generateTaskDiv(taskNode, caller) {
     // sync rendering values into input mapping table
     var inputNodes = taskNode.getElementsByTagName("metadata")[0]
         .getElementsByTagName("inputs")[0].childNodes;
+    var inputTags = [];    
     $("#" + taskDivName + " #inputmappingTable")
         .html('<thead> <th >Element Name</th><th>Display Name</th><th>Presentation Parameters</th><th>Type</th><th>Action</th></thead>');
 
@@ -506,6 +513,8 @@ function generateTaskDiv(taskNode, caller) {
                     mapping = '<tr id="inputmapping' + mappingNo + '"><td><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value=""/></td><td><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value=""/></td><td><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
                 $("#" + taskDivName + " #inputmappingTable").append(mapping);
                 $('#' + taskDivName + ' #taskInputMappingType' + mappingNo).val(inputNodes[i].getAttribute("type"));
+                //bind suggestion event
+                inputTags.push("htd:getInput(\""+taskName+"Request\"):/tns:"+inputNodes[i].getAttribute("id"));
                 // bind delete event
                 $('#' + taskDivName + ' .inputDeleteButton')
                     .off()
@@ -671,6 +680,7 @@ function generateTaskDiv(taskNode, caller) {
         $('#' + taskDivName + ' #taskPropertiesSection').collapse('show');
     }
     $('#' + taskDivName + ' #' + caller).collapse('show');
+    bindSuggestion(taskName,inputTags);
     //syncwsdlFields syncWSDLFields(taskNode);
 }
 
@@ -686,6 +696,7 @@ function generateText(taskNode) {
     taskDivName = taskName + "wrapper";
     // fill general details
     taskNode.setAttribute("name", $('#' + taskDivName + " #taskName").val().replace(/ /g, ''));
+    createImportNodes(taskName);
     if(taskNode.getElementsByTagName("documentation")[0].hasChildNodes())
     taskNode.getElementsByTagName("documentation")[0].childNodes[0].nodeValue = $(
         '#' + taskDivName + " #taskDocumentation").val(); //else create node and add
@@ -841,6 +852,27 @@ function getArgumentName(nameValue) {
         return "None";
     }
 }
+
+function createImportNodes(taskName){
+    importNodes = xmlDom.getElementsByTagName("import");
+    for (i = 0; i < importNodes.length; i++) {
+       xmlDom.getElementsByTagName("humanInteractions")[0].removeChild(importNodes[i]);
+    }
+    newTaskImport = xmlDom.createElementNS(
+            "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
+            "htd:import");
+    newTaskImport.setAttribute("location",taskName+"Task.wsdl");
+    newTaskImport.setAttribute("namespace",xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("xmlns:tns"));
+    newTaskImport.setAttribute("importType","http://schemas.xmlsoap.org/wsdl/");
+    xmlDom.getElementsByTagName("humanInteractions")[0].appendChild(newTaskImport);
+    newCBTaskImport = xmlDom.createElementNS(
+            "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
+            "htd:import");
+    newCBTaskImport.setAttribute("location",taskName+"TaskCallBack.wsdl");
+    newCBTaskImport.setAttribute("namespace",xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("xmlns:tns"));
+    newCBTaskImport.setAttribute("importType","http://schemas.xmlsoap.org/wsdl/");
+    xmlDom.getElementsByTagName("humanInteractions")[0].appendChild(newCBTaskImport);
+ }
 
 function setMetaRendering(taskNode) {
     //copynode to wso2metadata

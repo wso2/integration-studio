@@ -10,6 +10,10 @@ body {
     font-size: 100%;
 }
 
+ul.ui-autocomplete.ui-menu {
+  z-index: 1000;
+}
+
 hr {
   -moz-border-bottom-colors: none;
   -moz-border-image: none;

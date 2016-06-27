@@ -116,6 +116,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Clone} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CloneItemProvider cloneItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Clone}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCloneAdapter() {
+		if (cloneItemProvider == null) {
+			cloneItemProvider = new CloneItemProvider(this);
+		}
+
+		return cloneItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Replace} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1320,6 +1343,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	public void dispose() {
 		if (dataMapperNodeItemProvider != null) dataMapperNodeItemProvider.dispose();
 		if (trimItemProvider != null) trimItemProvider.dispose();
+		if (cloneItemProvider != null) cloneItemProvider.dispose();
 		if (replaceItemProvider != null) replaceItemProvider.dispose();
 		if (matchItemProvider != null) matchItemProvider.dispose();
 		if (minItemProvider != null) minItemProvider.dispose();

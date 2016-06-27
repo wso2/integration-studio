@@ -93,7 +93,7 @@ public class ReplaceEditPart extends AbstractOperatorEditPart {
 	protected IFigure createNodeShape() {
 		String target = ((ReplaceImpl) ((View) getModel()).getElement()).getTarget();
 		String replaceWith = ((ReplaceImpl) ((View) getModel()).getElement()).getReplaceString();
-		return primaryShape = new ReplaceFigure(target,replaceWith);
+		return primaryShape = new ReplaceFigure(target, replaceWith);
 	}
 
 	/**

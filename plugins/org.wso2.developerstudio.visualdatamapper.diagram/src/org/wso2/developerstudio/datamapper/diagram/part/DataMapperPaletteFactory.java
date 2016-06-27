@@ -115,6 +115,7 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createCompare33CreationTool());
 		paletteContainer.add(createStringToNumber34CreationTool());
 		paletteContainer.add(createStringToBoolean35CreationTool());
+		paletteContainer.add(createClone36CreationTool());
 		return paletteContainer;
 	}
 
@@ -125,6 +126,7 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createCustomFunction31CreationTool());
 		paletteContainer.add(createProperties32CreationTool());
 		paletteContainer.add(createCompare33CreationTool());
+		paletteContainer.add(createClone36CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -207,7 +209,7 @@ public class DataMapperPaletteFactory {
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
-	
+
 	private PaletteEntry createDataMapperTypeConversionGroup() {
 		PaletteDrawer paletteContainer = new PaletteDrawer("Type Conversion");
 
@@ -528,8 +530,8 @@ public class DataMapperPaletteFactory {
 	* @generated NOT
 	*/
 	private ToolEntry createTrim26CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.Trim26CreationTool_title,
-				Messages.Trim26CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Trim_2029));
+		NodeToolEntry entry = new NodeToolEntry(Messages.Trim26CreationTool_title, Messages.Trim26CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.Trim_2029));
 		entry.setId("createTrim26CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Trim_2029));
 		entry.setLargeIcon(entry.getSmallIcon());
@@ -552,8 +554,8 @@ public class DataMapperPaletteFactory {
 	* @generated NOT
 	*/
 	private ToolEntry createMatch28CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.Match28CreationTool_title,
-				Messages.Match28CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Match_2031));
+		NodeToolEntry entry = new NodeToolEntry(Messages.Match28CreationTool_title, Messages.Match28CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.Match_2031));
 		entry.setId("createMatch28CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Match_2031));
 		entry.setLargeIcon(entry.getSmallIcon());
@@ -564,8 +566,8 @@ public class DataMapperPaletteFactory {
 	* @generated NOT
 	*/
 	private ToolEntry createMin29CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.Min29CreationTool_title,
-				Messages.Min29CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Min_2032));
+		NodeToolEntry entry = new NodeToolEntry(Messages.Min29CreationTool_title, Messages.Min29CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.Min_2032));
 		entry.setId("createMin29CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Min_2032));
 		entry.setLargeIcon(entry.getSmallIcon());
@@ -576,8 +578,8 @@ public class DataMapperPaletteFactory {
 	* @generated NOT
 	*/
 	private ToolEntry createMax30CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.Max30CreationTool_title,
-				Messages.Max30CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Max_2033));
+		NodeToolEntry entry = new NodeToolEntry(Messages.Max30CreationTool_title, Messages.Max30CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.Max_2033));
 		entry.setId("createMax30CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Max_2033));
 		entry.setLargeIcon(entry.getSmallIcon());
@@ -644,6 +646,18 @@ public class DataMapperPaletteFactory {
 				Collections.singletonList(DataMapperElementTypes.StringToBoolean_2038));
 		entry.setId("createStringToBoolean35CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.StringToBoolean_2038));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createClone36CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Clone36CreationTool_title,
+				Messages.Clone36CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Clone_2039));
+		entry.setId("createClone36CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Clone_2039));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

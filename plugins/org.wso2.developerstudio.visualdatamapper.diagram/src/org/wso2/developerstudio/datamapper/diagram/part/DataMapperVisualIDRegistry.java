@@ -12,6 +12,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
@@ -278,6 +279,9 @@ public class DataMapperVisualIDRegistry {
 			if (DataMapperPackage.eINSTANCE.getStringToBoolean().isSuperTypeOf(domainElement.eClass())) {
 				return StringToBooleanEditPart.VISUAL_ID;
 			}
+			if (DataMapperPackage.eINSTANCE.getClone().isSuperTypeOf(domainElement.eClass())) {
+				return CloneEditPart.VISUAL_ID;
+			}
 			break;
 		case InputEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(domainElement.eClass())) {
@@ -455,6 +459,11 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case StringToBooleanEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case CloneEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
 				return OperatorBasicContainerEditPart.VISUAL_ID;
 			}
@@ -671,6 +680,9 @@ public class DataMapperVisualIDRegistry {
 			if (StringToBooleanEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (CloneEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case InputEditPart.VISUAL_ID:
 			if (TreeNodeEditPart.VISUAL_ID == nodeVisualID) {
@@ -848,6 +860,11 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case StringToBooleanEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case CloneEditPart.VISUAL_ID:
 			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}

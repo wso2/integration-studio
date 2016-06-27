@@ -132,6 +132,9 @@ public class DataMapperEditPartFactory implements EditPartFactory {
 			case StringToBooleanEditPart.VISUAL_ID:
 				return new StringToBooleanEditPart(view);
 
+			case CloneEditPart.VISUAL_ID:
+				return new CloneEditPart(view);
+
 			case TreeNodeEditPart.VISUAL_ID:
 				return new TreeNodeEditPart(view);
 

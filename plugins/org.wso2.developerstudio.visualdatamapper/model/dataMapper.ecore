@@ -4,6 +4,7 @@
     nsPrefix="datamapper">
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="Trim" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Clone" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Replace" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="{$Target}"/>

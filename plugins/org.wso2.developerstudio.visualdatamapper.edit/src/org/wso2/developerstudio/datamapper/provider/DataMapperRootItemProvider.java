@@ -170,6 +170,11 @@ public class DataMapperRootItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createClone()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
 				 DataMapperFactory.eINSTANCE.createReplace()));
 
 		newChildDescriptors.add

@@ -242,7 +242,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 					return true;
 				}
 			}
-		}else {
+		} else {
 			if (figure != null) {
 				connectorLabel = new Label(outputLabel + " " + getPossibleOutputVariableTypes(operator) + " ");
 				figure.add(connectorLabel);
@@ -352,7 +352,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 			figure.add(connectorLabel);
 		}
 	}
-	
+
 	public void setPropertyTypeInConnector(SchemaDataType constantType) {
 		if (figure != null) {
 			figure.remove(connectorLabel);

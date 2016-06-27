@@ -18,6 +18,7 @@ import org.eclipse.ui.navigator.ICommonLabelProvider;
 import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
 import org.wso2.developerstudio.datamapper.Celi;
+import org.wso2.developerstudio.datamapper.Clone;
 import org.wso2.developerstudio.datamapper.Compare;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
@@ -52,6 +53,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
@@ -280,6 +282,9 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return getImage(
 					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?StringToBoolean", //$NON-NLS-1$
 					DataMapperElementTypes.StringToBoolean_2038);
+		case CloneEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Clone", //$NON-NLS-1$
+					DataMapperElementTypes.Clone_2039);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", //$NON-NLS-1$
 					DataMapperElementTypes.TreeNode_3002);
@@ -457,6 +462,8 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return getStringToNumber_2037Text(view);
 		case StringToBooleanEditPart.VISUAL_ID:
 			return getStringToBoolean_2038Text(view);
+		case CloneEditPart.VISUAL_ID:
+			return getClone_2039Text(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002Text(view);
 		case TreeNode2EditPart.VISUAL_ID:
@@ -900,7 +907,7 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 	private String getCustomFunction_2034Text(View view) {
 		CustomFunction domainModelElement = (CustomFunction) view.getElement();
 		if (domainModelElement != null) {
-			return String.valueOf(domainModelElement.isSerialized());
+			return domainModelElement.getFunctionName();
 		} else {
 			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2034); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
@@ -913,7 +920,7 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 	private String getProperties_2035Text(View view) {
 		Properties domainModelElement = (Properties) view.getElement();
 		if (domainModelElement != null) {
-			return String.valueOf(domainModelElement.isSerialized());
+			return domainModelElement.getName();
 		} else {
 			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2035); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
@@ -955,6 +962,19 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return String.valueOf(domainModelElement.isSerialized());
 		} else {
 			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2038); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getClone_2039Text(View view) {
+		Clone domainModelElement = (Clone) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2039); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

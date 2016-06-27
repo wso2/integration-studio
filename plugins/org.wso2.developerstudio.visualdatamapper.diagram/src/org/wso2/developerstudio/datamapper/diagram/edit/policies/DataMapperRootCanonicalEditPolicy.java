@@ -35,6 +35,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
@@ -188,6 +189,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case CompareEditPart.VISUAL_ID:
 		case StringToNumberEditPart.VISUAL_ID:
 		case StringToBooleanEditPart.VISUAL_ID:
+		case CloneEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -582,6 +584,13 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case StringToBooleanEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(DataMapperDiagramUpdater.getStringToBoolean_2038ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case CloneEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(DataMapperDiagramUpdater.getClone_2039ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

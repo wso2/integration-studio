@@ -144,7 +144,7 @@ public class DataMapperDiagramModel {
 				return Boolean.parseBoolean(propertyKeyValuePair.getValue());
 			}
 		}
-		return false;
+		throw new IllegalArgumentException("Type field not found in treeNode");
 	}
 
 	private boolean isCurrentTreeNodeALeafNode(TreeNodeImpl currentTreeNode) {

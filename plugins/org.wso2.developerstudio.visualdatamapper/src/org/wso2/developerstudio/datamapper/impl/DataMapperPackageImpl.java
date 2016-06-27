@@ -2137,11 +2137,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.MIN);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.PROPERTIES);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.REPLACE);
-		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.TRIM);
-		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.TYPE_CONVERSION_OPERATION);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STRING_TO_BOOLEAN);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STRING_TO_NUMBER);
-		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.INSTANTIATE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.TRIM);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.TYPE_CONVERSION_OPERATION);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -27,9 +27,11 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.DMOperatorTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DMOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
@@ -41,8 +43,10 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationU
 public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingConfigGenerator {
 
 	private static final String ROOT_TAG = "root";
+	private static final int FIRST_ELEMENT_INDEX = 0;
+
 	private static final String SCHEMA_ATTRIBUTE_PREFIX = "@";
-	protected static final int VARIABLE_TYPE_INDEX = 0;
+	private static final int VARIABLE_TYPE_INDEX = 0;
 
 	/**
 	 * 
@@ -68,7 +72,28 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 	public String generateMappingConfig(DataMapperDiagramModel model) throws DataMapperException {
 		initializeAlgorithmFields();
 		List<MappingOperation> mappingOperationList = populateOperationListFromModel(model);
-		return generateMainFunction(mappingOperationList, model) + generateCustomFunctions(model);
+		String mainFunction = generateMainFunction(mappingOperationList, model);
+		String customFunctions = generateCustomFunctions(model);
+		return mainFunction+customFunctions;
+	}
+
+	private String generateCustomFunctions(DataMapperDiagramModel model) {
+		StringBuilder functionBuilder = new StringBuilder();
+		for (DMOperation operation : model.getOperationsList()) {
+			if (DataMapperOperatorType.CUSTOM_FUNCTION.equals(operation.getOperatorType())) {
+				functionBuilder.append(operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME) + " = " + addFunctionDefinition(operation));
+			}
+			functionBuilder.append("\n");
+		}
+		return functionBuilder.toString();
+	}
+
+	private String addFunctionDefinition(DMOperation operation) {
+		StringBuilder functionBuilder = new StringBuilder();
+		functionBuilder.append("function");
+		String functionDefinition = (String) operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_DEFINITION);
+		functionBuilder.append(functionDefinition.substring(functionDefinition.indexOf("(")));
+		return functionBuilder.toString();
 	}
 
 	private void initializeAlgorithmFields() {
@@ -105,13 +130,11 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 			List<Integer> operationForLoopBeansList = new ArrayList<>();
 			List<String> operationElementsParentList = new ArrayList<>();
 			if (inputVariables.isEmpty()) {
-				// Add 0 to operationForLoopBeanList when operation not have input variables
 				operationForLoopBeansList.add(0);
 			} else {
 				for (DMVariable dmVariable : inputVariables) {
 					String mostChildVariableName = "";
 					int mostChildVariableIndex = -1;
-					// getting most child variable index
 					if (DMVariableType.INTERMEDIATE.equals(dmVariable.getType())
 							|| DMVariableType.OUTPUT.equals(dmVariable.getType())) {
 						List<DMVariable> variableArray = model.getVariablesArray();
@@ -137,7 +160,6 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 						boolean firstIteration = true;
 						for (String nextName : variableNameArray) {
 							if (!firstIteration) {
-								//remove "." from variable name
 								parentVariableName = variableName.substring(0, variableName.length() - 1);
 							}
 							variableName += nextName;
@@ -295,7 +317,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		return forLoopBeanIndex;
 	}
 
-	protected int getMostChildAssociatedVariableIndex(ArrayList<Integer> inputVariableIndexList,
+	private int getMostChildAssociatedVariableIndex(ArrayList<Integer> inputVariableIndexList,
 			List<DMVariable> variableList) {
 		String mostChildVariableName = "";
 		int mostChildVariableIndex = -1;

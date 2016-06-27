@@ -45,6 +45,7 @@ import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.config.xml.EntrySerializer;
 import org.apache.synapse.config.xml.MediatorSerializerFinder;
+import org.apache.synapse.config.xml.MessageProcessorSerializer;
 import org.apache.synapse.config.xml.ProxyServiceSerializer;
 import org.apache.synapse.config.xml.SequenceMediatorSerializer;
 import org.apache.synapse.config.xml.SynapseXMLConfigurationSerializer;
@@ -274,6 +275,11 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		return transformer.create(visualTask);
 	}
 	
+	private OMElement transformMessageProcessor(FormPage messageProcessorFormPage) {
+		MessageProcessorTransformer transformer = new MessageProcessorTransformer();
+		return transformer.createMessageProcessor(messageProcessorFormPage);
+	}
+	
 	private org.apache.synapse.rest.API transformAPI(SynapseAPI visualAPI) throws Exception{		
 		TransformationInfo info = new TransformationInfo();
 		info.getTransformedMediators().clear();
@@ -358,6 +364,8 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 			String TASK_EXTENSION_NS = "http://ws.apache.org/ns/synapse";
 			OMNamespace TASK_OM_NAMESPACE = OMAbstractFactory.getOMFactory().createOMNamespace(TASK_EXTENSION_NS, "");
 			configOM = TaskDescriptionSerializer.serializeTaskDescription(TASK_OM_NAMESPACE, transformTask(formPage));
+		} else if (artifactType == ArtifactType.MESSAGE_PROCESSOR) {
+			configOM = transformMessageProcessor(formPage);
 		}
 		if (configOM != null) {
 			sourceXML = format(configOM.toString());

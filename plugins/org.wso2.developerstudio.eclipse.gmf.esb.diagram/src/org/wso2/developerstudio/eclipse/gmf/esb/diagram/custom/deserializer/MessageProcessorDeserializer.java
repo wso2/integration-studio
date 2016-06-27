@@ -59,6 +59,7 @@ public class MessageProcessorDeserializer
 	private static final String scheduledFailoverMessageForwardingProcessor = "org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor";
 	private static final String customProcessor = "customProcessor";
 
+	@Deprecated
 	@Override
 	public org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor createNode(IGraphicalEditPart part, MessageProcessor processor) {
 		org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor messageProcessor = (org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor) DeserializerUtils

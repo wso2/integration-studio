@@ -66,8 +66,8 @@ public class PropertyMediatorItemProvider
 						
 		if (property.getPropertyAction().equals(PropertyAction.SET)) {
 			addValueTypePropertyDescriptor(object);
+			addPropertyDataTypePropertyDescriptor(object);
 			if (property.getValueType().equals(PropertyValueType.LITERAL)) {
-				addPropertyDataTypePropertyDescriptor(object);
 				switch (property.getPropertyDataType()) {
 					case OM: {
 						addOMPropertyDescriptor(object);
@@ -91,6 +91,15 @@ public class PropertyMediatorItemProvider
 				}
 			} else {
 				addValueExpressionPropertyDescriptor(object);
+				switch (property.getPropertyDataType()) {
+					case STRING: {
+						addValueStringPatternPropertyDescriptor(object);
+						addValueStringCapturingGroupPropertyDescriptor(object);
+						break;
+					}
+					default:
+						break;
+				}
 				/*if (property.getPropertyDataType() == PropertyDataType.STRING) {
 					addValueStringPatternPropertyDescriptor(object);
 					addValueStringCapturingGroupPropertyDescriptor(object);

@@ -98,10 +98,10 @@ public class TaskTransformer {
 		taskDescription.setTaskImplClassName(formTaskPage.getTaskImpl().getText());
 
 		if (formTaskPage.getTriggerType().getSelectionIndex() == 0) {
-			if (formTaskPage.getCount() != null) {
+			if (formTaskPage.getCount() != null && formTaskPage.getCount().getText() != "") {
 				taskDescription.setCount(Integer.parseInt(formTaskPage.getCount().getText()));
-			}
-			if (formTaskPage.getInterval() != null) {
+			} 
+			if (formTaskPage.getInterval() != null && formTaskPage.getInterval().getText() != "") {
 				taskDescription.setInterval(Integer.parseInt(formTaskPage.getInterval().getText()));
 			}
 		} else {

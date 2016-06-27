@@ -20,13 +20,16 @@ import java.util.Map;
 import java.util.Stack;
 
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Substring
- * operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for Substring operation
  */
 public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer {
 
@@ -35,7 +38,45 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
 			DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
-		// TODO: Write method body
+		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+			@SuppressWarnings("unchecked")
+			String startIndex = (String) operator.getProperty(TransformerConstants.START_INDEX);
+			String length = (String) operator.getProperty(TransformerConstants.LENGTH_TAG);
+			String startValue, lengthValue;
+
+			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
+			if (inputVariables.size() > 0) {
+				operationBuilder
+						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, parentForLoopBeanStack, true) + ").substring(");
+			}
+
+			if (startIndex.startsWith("{$") && inputVariables.size() > 1) {
+				startValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
+						variableTypeMap, tempParentForLoopBeanStack, true);
+				if (length.startsWith("{$") && inputVariables.size() > 2) {
+					lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
+							variableTypeMap, tempParentForLoopBeanStack, true);
+				} else {
+					lengthValue = length;
+				}
+
+			} else {
+				startValue = startIndex;
+				if (length.startsWith("{$") && inputVariables.size() > 1) {
+					lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
+							variableTypeMap, tempParentForLoopBeanStack, true);
+				} else {
+					lengthValue = length;
+				}
+			}
+
+			operationBuilder.append(startValue + "," + startValue + "+" + lengthValue + ")");
+			operationBuilder.append(";");
+
+		} else {
+			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
+		}
 		return operationBuilder.toString();
 	}
 

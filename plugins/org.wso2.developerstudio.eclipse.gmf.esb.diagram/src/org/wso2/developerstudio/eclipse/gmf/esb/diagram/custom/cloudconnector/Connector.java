@@ -28,7 +28,16 @@ public class Connector extends AbstractXMLDoc{
 
 	private List<Dependency> componentDependencies=new ArrayList<Dependency>();
 	private String connectorName = null;
+	private String authenticationInfo = null;
 	
+	public String getAuthenticationInfo() {
+		return authenticationInfo;
+	}
+
+	public void setAuthenticationInfo(String authenticationInfo) {
+		this.authenticationInfo = authenticationInfo;
+	}
+
 	public String getConnectorName() {
 		return connectorName;
 	}
@@ -54,6 +63,10 @@ public class Connector extends AbstractXMLDoc{
 			for (OMElement omElement2 : artifactElements) {				
 				Dependency artifactDependency=new Dependency(omElement2.getAttributeValue(new QName("component"))); 
 				componentDependencies.add(artifactDependency);
+			}
+			List<OMElement> authenticationInfo = getChildElements(omElement, "authenticationInfo");
+			if(!authenticationInfo.isEmpty()){
+				setAuthenticationInfo(authenticationInfo.get(0).getText());
 			}
         }
 		

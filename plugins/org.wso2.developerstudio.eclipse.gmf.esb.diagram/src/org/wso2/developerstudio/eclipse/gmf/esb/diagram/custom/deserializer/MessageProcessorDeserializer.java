@@ -26,6 +26,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.message.processor.MessageProcessor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
@@ -33,7 +34,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProcessorState;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.*;
+
+import org.eclipse.swt.widgets.Text;
 
 /**
  * Deserializes a message-processor configuration to a graphical message
@@ -44,14 +52,15 @@ public class MessageProcessorDeserializer
 		AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor> {
 
 	// Fixing TOOLS-2026.
-	private static final String scheduledMessageForwardingProcessorOld = "org.apache.synapse.message.processors.forward.ScheduledMessageForwardingProcessor";
-	private static final String messageSamplingProcessorOld = "org.apache.synapse.message.processors.sampler.SamplingProcessor";
+//	private static final String scheduledMessageForwardingProcessorOld = "org.apache.synapse.message.processors.forward.ScheduledMessageForwardingProcessor";
+//	private static final String messageSamplingProcessorOld = "org.apache.synapse.message.processors.sampler.SamplingProcessor";
 	private static final String scheduledMessageForwardingProcessor = "org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor";
 	private static final String messageSamplingProcessor = "org.apache.synapse.message.processor.impl.sampler.SamplingProcessor";
+	private static final String scheduledFailoverMessageForwardingProcessor = "org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor";
+	private static final String customProcessor = "customProcessor";
 
 	@Override
-	public org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor createNode(
-			IGraphicalEditPart part, MessageProcessor processor) {
+	public org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor createNode(IGraphicalEditPart part, MessageProcessor processor) {
 		org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor messageProcessor = (org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor) DeserializerUtils
 				.createNode(part, EsbElementTypes.MessageProcessor_3701);
 		setElementToEdit(messageProcessor);
@@ -427,8 +436,9 @@ public class MessageProcessorDeserializer
 					
 				} else if (dummyMessageProcessor.getClassName().equals(
 						messageSamplingProcessor)
-						|| dummyMessageProcessor.getClassName().equals(
-								messageSamplingProcessorOld)) {
+//						|| dummyMessageProcessor.getClassName().equals(
+//								messageSamplingProcessorOld)
+						) {
 					// Message Sampling Processor
 					executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_TYPE,
 							MessageProcessorType.MSG_SAMPLING);
@@ -545,4 +555,133 @@ public class MessageProcessorDeserializer
 		return messageProcessor;
 	}
 
+	@Override
+	public void createNode(FormEditor formEditor, MessageProcessor processor) {
+		ESBFormEditor messageProcessorFormEditor = (ESBFormEditor) formEditor;
+		MessageProcessorFormPage messageProcessorPage = (MessageProcessorFormPage) messageProcessorFormEditor.getFormPageForArtifact(ArtifactType.MESSAGE_PROCESSOR);
+		org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor messageProcessor = EsbFactoryImpl.eINSTANCE.createMessageProcessor();
+		
+		messageProcessor.setProcessorName(processor.getName());
+		messageProcessor.setDescription(processor.getDescription());
+		messageProcessor.setMessageStore(processor.getMessageStoreName());
+		
+		
+		messageProcessorPage.setEsbNode(messageProcessor);
+		
+		
+		DummyMessageProcessor dummyMessageProcessor = (DummyMessageProcessor) processor;
+			
+		messageProcessorPage.processorName.setText(dummyMessageProcessor.getName());
+		messageProcessorPage.storeName.setText(dummyMessageProcessor.getMessageStoreName());
+			
+
+			if(dummyMessageProcessor.getClassName().equalsIgnoreCase(messageSamplingProcessor)) {
+				messageProcessorPage.processorType.select(0);
+				
+				
+				Sampling sampling = (Sampling)messageProcessorPage.getProcessorImpl(messageSamplingProcessor);
+				
+				setTextValue(sampling.sampling_sequence, processor.getParameters().get("sequence"));
+				setTextValue(sampling.sampling_interval, processor.getParameters().get("interval"));
+				setTextValue(sampling.sampling_concurrency, processor.getParameters().get("concurrency"));
+				setTextValue(sampling.sampling_quartzConfigFilePath, processor.getParameters().get("quartz.conf"));
+				setTextValue(sampling.sampling_cronExpression, processor.getParameters().get("cronExpression"));
+				
+				// non-textbox items
+				if (processor.getParameters().get("is.active") != null && processor.getParameters().get("is.active").toString().equalsIgnoreCase("true")){
+					sampling.sampling_state.select(0);
+				} else {
+					sampling.sampling_state.select(1);
+				}
+				
+				
+			} else if(dummyMessageProcessor.getClassName().equalsIgnoreCase(scheduledMessageForwardingProcessor)) {
+				messageProcessorPage.processorType.select(1);
+				
+				ScheduledForwarding forwarder = (ScheduledForwarding)messageProcessorPage.getProcessorImpl(scheduledMessageForwardingProcessor);
+
+				setTextValue(forwarder.forwarding_endpoint, processor.getTargetEndpoint());
+				setTextValue(forwarder.forwarding_interval, processor.getParameters().get("interval"));
+				setTextValue(forwarder.forwarding_retryInterval, processor.getParameters().get("client.retry.interval"));
+				setTextValue(forwarder.forwarding_nonRetryHttpCodes, processor.getParameters().get("non.retry.status.codes"));
+				setTextValue(forwarder.forwarding_maxDeliveryAttempts,processor.getParameters().get("max.delivery.attempts"));
+				setTextValue(forwarder.forwarding_axis2ClientRepo, processor.getParameters().get("axis2.repo"));
+				setTextValue(forwarder.forwarding_axis2Config, processor.getParameters().get("axis2.config"));
+				setTextValue(forwarder.forwarding_replySequence, processor.getParameters().get("message.processor.reply.sequence"));
+				setTextValue(forwarder.forwarding_faultSequence, processor.getParameters().get("message.processor.fault.sequence"));
+				setTextValue(forwarder.forwarding_deactiveSequence, processor.getParameters().get("message.processor.deactivate.sequence"));
+				setTextValue(forwarder.forwarding_quartzConfigFilePath, processor.getParameters().get("quartz.conf"));
+				setTextValue(forwarder.forwarding_cronExpression, processor.getParameters().get("cronExpression"));
+				setTextValue(forwarder.forwarding_taskCount, processor.getParameters().get("member.count"));
+				
+				// non-textbox items
+				if (processor.getParameters().get("is.active") != null &&  processor.getParameters().get("is.active").toString().equalsIgnoreCase("true")){
+					forwarder.forwarding_state.select(0);
+				} else {
+					forwarder.forwarding_state.select(1);
+				}
+				
+				if(processor.getParameters().get("max.delivery.drop") != null && processor.getParameters().get("max.delivery.drop").toString().equalsIgnoreCase("Enabled")){
+					forwarder.forwarding_dropMessageAfterMaxDeliveryAttempts.select(0);
+				} else {
+					forwarder.forwarding_dropMessageAfterMaxDeliveryAttempts.select(1);
+				}
+				
+				
+			} else if(dummyMessageProcessor.getClassName().equalsIgnoreCase(scheduledFailoverMessageForwardingProcessor)) {
+				messageProcessorPage.processorType.select(2);
+				
+				ScheduledFailoverForwarding failover = (ScheduledFailoverForwarding)messageProcessorPage.getProcessorImpl(scheduledFailoverMessageForwardingProcessor);
+				
+				setTextValue(failover.failover_store, processor.getParameters().get("store.failover.message.store.name"));
+				setTextValue(failover.failover_interval, processor.getParameters().get("interval"));
+				setTextValue(failover.failover_retryInterval, processor.getParameters().get("client.retry.interval"));
+				setTextValue(failover.failover_maxDeliveryAttempts,processor.getParameters().get("max.delivery.attempts"));
+				setTextValue(failover.failover_faultSequence, processor.getParameters().get("message.processor.fault.sequence"));
+				setTextValue(failover.failover_deactiveSequence, processor.getParameters().get("message.processor.deactivate.sequence"));
+				setTextValue(failover.failover_quartzConfigFilePath, processor.getParameters().get("quartz.conf"));
+				setTextValue(failover.failover_cronExpression, processor.getParameters().get("cronExpression"));
+				setTextValue(failover.failover_taskCount, processor.getParameters().get("member.count"));
+				
+				// non-textbox items
+				if (processor.getParameters().get("is.active") != null &&processor.getParameters().get("is.active").toString().equalsIgnoreCase("true")){
+					failover.failover_state.select(0);
+				} else {
+					failover.failover_state.select(1);
+				}
+				
+				
+				failover.failover_dropMessageAfterMaxDeliveryAttempts.setText((String) processor.getParameters().get("max.delivery.drop"));
+				
+				if(processor.getParameters().get("max.delivery.drop") != null && processor.getParameters().get("max.delivery.drop").toString().equalsIgnoreCase("Enabled")){
+					failover.failover_dropMessageAfterMaxDeliveryAttempts.select(0);
+				} else {
+					failover.failover_dropMessageAfterMaxDeliveryAttempts.select(1);
+				}
+				
+				
+			} else {
+				messageProcessorPage.processorType.select(3);
+				
+				CustomProcessor custom = (CustomProcessor)messageProcessorPage.getProcessorImpl(customProcessor);
+
+				custom.custom_providerClass.setText((String) dummyMessageProcessor.getClassName());
+				
+				// TODO : Change parameter
+				custom.custom_customParameters.setText((String) processor.getParameters().toString());
+				
+			}
+			
+			// Refresh settings of the message processor
+			messageProcessorPage.refreshProcessorSettings();
+			
+			
+	}
+	
+	private void setTextValue(Text textField, Object value) {
+		if (value != null) {
+			textField.setText(value.toString());
+		}
+	}
+	
 }

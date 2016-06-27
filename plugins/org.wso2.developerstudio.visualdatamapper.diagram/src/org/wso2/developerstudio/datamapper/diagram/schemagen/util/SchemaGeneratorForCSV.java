@@ -52,7 +52,7 @@ public class SchemaGeneratorForCSV extends AbstractSchemaGenerator implements IS
 	 * @return
 	 * @throws IOException
 	 */
-	public static List<Map<String, String>> readObjectsFromCsv(String content) throws IOException {
+	public List<Map<String, String>> readObjectsFromCsv(String content) throws IOException {
 		CsvMapper mapper = new CsvMapper();
 		CsvSchema schema = CsvSchema.emptySchema().withHeader();
 		MappingIterator<Map<String, String>> it = mapper.readerFor(Map.class).with(schema).readValues(content);
@@ -65,7 +65,7 @@ public class SchemaGeneratorForCSV extends AbstractSchemaGenerator implements IS
 	 * @return
 	 * @throws IOException
 	 */
-	public static String writeAsJson(List<Map<String, String>> data) throws IOException {
+	public String writeAsJson(List<Map<String, String>> data) throws IOException {
 		String value = null;
 		ObjectMapper mapper = new ObjectMapper();
 		if(data != null){

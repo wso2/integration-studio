@@ -24,14 +24,12 @@ import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLev
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_SUBTRACT_SIGN;
-
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Subtract
- * operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for Match operation
  */
 public class MatchOperatorTransformer extends AbstractDMOperatorTransformer {
 
@@ -41,8 +39,24 @@ public class MatchOperatorTransformer extends AbstractDMOperatorTransformer {
 			DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+			@SuppressWarnings("unchecked")
+			String customInput = (String) operator.getProperty(TransformerConstants.PATTERN_TAG);
+			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
+			if (inputVariables.size() > 0) {
+				operationBuilder
+						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, parentForLoopBeanStack, true) + ").match(");
+			}
+			if (customInput != null) {
+				if (inputVariables.size() == 2 && customInput.startsWith("{$")) {
+					operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true));
+				} else {
+					operationBuilder.append(customInput);
+				}
+			}
 
-			operationBuilder.append(";");
+			operationBuilder.append(")!= null ? true : false;");
 
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);

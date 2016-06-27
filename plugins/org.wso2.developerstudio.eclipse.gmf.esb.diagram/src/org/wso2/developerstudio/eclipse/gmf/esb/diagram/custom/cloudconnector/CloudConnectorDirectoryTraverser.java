@@ -284,6 +284,15 @@ public class CloudConnectorDirectoryTraverser {
 		return connector.getConnectorName();
 	}
 	
+	public String getCloudConnectorAuthenticationInfo(){
+		try {
+			deserializeConnectorXML();
+		} catch (Exception e) {
+			 log.error("Error while deserializing the connector", e);
+		}
+		return connector.getAuthenticationInfo();
+	}
+	
 	public String getConfigurationFileLocation(Map<String, String> artifactsMap) throws Exception{
 		return rootDirectory+File.separator+artifactsMap.get("init")+File.separator+initFileName;
 	}

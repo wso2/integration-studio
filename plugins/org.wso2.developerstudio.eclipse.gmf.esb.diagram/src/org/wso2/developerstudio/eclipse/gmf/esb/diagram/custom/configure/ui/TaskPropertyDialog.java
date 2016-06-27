@@ -52,7 +52,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ScheduledTaskFormPage;
-
+//deprecated
 public class TaskPropertyDialog extends Dialog{
 	
 	private TransactionalEditingDomain editingDomain;

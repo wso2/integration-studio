@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.IManagedForm;
@@ -57,7 +58,15 @@ public class ScheduledTaskFormPage extends FormPage {
 	private Text interval;
 	private Text cron;
 	private Combo triggerType;
-
+	private Label countLbl;
+	private Label cronLbl;
+	private Label intervalLbl;
+	
+	
+	/**
+	 * @param id
+	 * @param title
+	 */
 	public ScheduledTaskFormPage(FormEditor editor) {
 		super(editor, "scheduledTaskForm", Messages.getString("ScheduledTaskPage.sectionMainTitle"));
 	}
@@ -161,10 +170,6 @@ public class ScheduledTaskFormPage extends FormPage {
 		taskImpl = toolkit.createText(implSectionClient, "org.apache.synapse.startup.tasks.MessageInjector");
 		taskImpl.setBackground(new Color(null, 229, 236, 253));
 		// taskImpl.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-
-		toolkit.createLabel(implSectionClient, "Task Implementation Properties");
-		/*taskImplProp = toolkit.createText(implSectionClient, "");
-		taskImplProp.setBackground(new Color(null, 229, 236, 253));*/
 		
 		Button taskImplButton = toolkit.createButton(implSectionClient, "Task Implementation Properties", SWT.PUSH);
 		taskImplButton.addSelectionListener(new SelectionListener() {
@@ -218,25 +223,26 @@ public class ScheduledTaskFormPage extends FormPage {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (triggerType.getSelectionIndex() == 0) {
-					toolkit.createLabel(triggerSectionClient, "Count");
-					count = toolkit.createText(triggerSectionClient, "");
+					countLbl = toolkit.createLabel(triggerSectionClient, "Count");
+					count = toolkit.createText(triggerSectionClient, "1");
 					count.setBackground(new Color(null, 229, 236, 253));
 
-					toolkit.createLabel(triggerSectionClient, "Interval");
-					interval = toolkit.createText(triggerSectionClient, "");
+					intervalLbl = toolkit.createLabel(triggerSectionClient, "Interval");
+					interval = toolkit.createText(triggerSectionClient, "1");
 					interval.setBackground(new Color(null, 229, 236, 253));
-					triggerSectionClient.getShell().pack();
+					refershTaskSettings();
 				} else {
-					toolkit.createLabel(triggerSectionClient, "Cron");
+					cronLbl = toolkit.createLabel(triggerSectionClient, "Cron");
 					cron = toolkit.createText(triggerSectionClient, "");
 					cron.setBackground(new Color(null, 229, 236, 253));
 					cron.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-					triggerSectionClient.getShell().pack();
+					refershTaskSettings();
 				}
 				super.widgetSelected(e);
+				refershTaskSettings();
 			}
 		});
-
+		
 		triggerSection.setClient(triggerSectionClient);
 	}
 
@@ -310,6 +316,26 @@ public class ScheduledTaskFormPage extends FormPage {
 
 	public void setTriggerType(Combo triggerType) {
 		this.triggerType = triggerType;
+	}
+	
+	public void refershTaskSettings() {
+		if (triggerType.getSelectionIndex() == 0) {
+			count.setVisible(true);
+			interval.setVisible(true);
+			countLbl.setVisible(true);
+			intervalLbl.setVisible(true);
+			
+			cron.setVisible(false);
+			cronLbl.setVisible(false);
+			
+		} else if (triggerType.getSelectionIndex() == 1) {
+			cron.setVisible(true);
+			cronLbl.setVisible(true);
+			count.setVisible(false);
+			interval.setVisible(false);
+			countLbl.setVisible(false);
+			intervalLbl.setVisible(false);
+		}
 	}
 
 }

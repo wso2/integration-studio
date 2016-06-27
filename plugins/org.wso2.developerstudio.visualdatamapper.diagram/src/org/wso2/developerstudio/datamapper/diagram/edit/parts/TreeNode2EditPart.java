@@ -830,7 +830,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				} else {
 					nodeLabel.setIcon(attributeImg.getImage());
 				}
-			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
+			} else if (JSON_SCHEMA_ARRAY.equals(type)) {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
@@ -856,7 +856,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				} else {
 					nodeLabel.setIcon(arrayImg.getImage());
 				}
-			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
+			} else if (JSON_SCHEMA_OBJECT.equals(type)) {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
@@ -1036,7 +1036,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
 				newName = newName + "  : [" + type.toUpperCase() + "]";
 				nodeLabel.setIcon(attributeImg.getImage());
-			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
+			} else if (JSON_SCHEMA_ARRAY.equals(type)) {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
@@ -1058,7 +1058,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 					}
 				}
 				nodeLabel.setIcon(arrayImg.getImage());
-			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
+			} else if (JSON_SCHEMA_OBJECT.equals(type)) {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
@@ -1167,7 +1167,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				} else {
 					nodeLabel.setIcon(attributeImg.getImage());
 				}
-			} else if (type != null && type.equals(JSON_SCHEMA_ARRAY)) {
+			} else if (JSON_SCHEMA_ARRAY.equals(type)) {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {
@@ -1193,7 +1193,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				} else {
 					nodeLabel.setIcon(arrayImg.getImage());
 				}
-			} else if (type != null && type.equals(JSON_SCHEMA_OBJECT)) {
+			} else if (JSON_SCHEMA_OBJECT.equals(type)) {
 				String value = getNodeValue(type);
 				// If an element has values then display it with the name
 				if (StringUtils.isNotEmpty(value)) {

@@ -1,6 +1,5 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -20,19 +19,18 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.PropertiesCanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.PropertiesItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.impl.PropertiesImpl;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.CloneCanonicalEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.CloneItemSemanticEditPolicy;
 
 /**
  * @generated NOT
  */
-public class PropertiesEditPart extends AbstractOperatorEditPart {
+public class CloneEditPart extends AbstractOperatorEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 2035;
+	public static final int VISUAL_ID = 2039;
 
 	/**
 	 * @generated
@@ -47,7 +45,7 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 	/**
 	 * @generated
 	 */
-	public PropertiesEditPart(View view) {
+	public CloneEditPart(View view) {
 		super(view);
 	}
 
@@ -56,8 +54,8 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new PropertiesItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new PropertiesCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new CloneItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new CloneCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 	}
 
@@ -90,9 +88,7 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		String name = ((PropertiesImpl) ((View) getModel()).getElement()).getName();
-		String scope = ((PropertiesImpl) ((View) getModel()).getElement()).getScope();
-		return primaryShape = new PropertiesFigure(scope, name);
+		return primaryShape = new CloneFigure();
 	}
 
 	/**
@@ -190,13 +186,10 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 		}
 	}
 
-	public class PropertiesFigure extends OperatorRectangle {
+	public class CloneFigure extends OperatorRectangle {
 
-		public PropertiesFigure(String scope, String name) {
-			super("Properties");
-			if (StringUtils.isNotEmpty(scope) && StringUtils.isNotEmpty(name)) {
-				super.changeOperatorHeader("Properties : \"" + scope + "\\" + name + "\"");
-			}
+		public CloneFigure() {
+			super("Cline");
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -205,19 +198,15 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 		}
 
 		public String getNodeName() {
-			return "Properties";
+			return "Clone";
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Properties Operation");
+			return new Label("Clone Operation");
 		}
 
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
-
-	public OperatorRectangle getPropertiesFigure() {
-		return (OperatorRectangle) primaryShape;
-	}
 
 }

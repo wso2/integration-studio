@@ -344,6 +344,12 @@
           xsi:type="gmfgraph:Rectangle"
           name="StringToBooleanFigure"/>
     </descriptors>
+    <descriptors
+        name="CloneFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="CloneFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -503,6 +509,9 @@
   <nodes
       name="StringToBoolean"
       figure="StringToBooleanFigure"/>
+  <nodes
+      name="Clone"
+      figure="CloneFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>

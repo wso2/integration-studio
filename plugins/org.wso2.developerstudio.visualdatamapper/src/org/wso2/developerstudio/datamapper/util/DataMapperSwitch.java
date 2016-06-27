@@ -79,6 +79,14 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DataMapperPackage.CLONE: {
+				Clone clone = (Clone)theEObject;
+				T result = caseClone(clone);
+				if (result == null) result = caseOperator(clone);
+				if (result == null) result = caseDataMapperNode(clone);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DataMapperPackage.REPLACE: {
 				Replace replace = (Replace)theEObject;
 				T result = caseReplace(replace);
@@ -467,6 +475,21 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTrim(Trim object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Clone</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Clone</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClone(Clone object) {
 		return null;
 	}
 

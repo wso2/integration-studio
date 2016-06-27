@@ -18,6 +18,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
@@ -318,6 +319,12 @@ public class DataMapperElementTypes {
 			"org.wso2.developerstudio.visualdatamapper.diagram.StringToBoolean_2038"); //$NON-NLS-1$
 
 	/**
+	* @generated
+	*/
+	public static final IElementType Clone_2039 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.Clone_2039"); //$NON-NLS-1$
+
+	/**
 	 * @generated
 	 */
 	public static final IElementType TreeNode_3002 = getElementType(
@@ -525,6 +532,8 @@ public class DataMapperElementTypes {
 
 			elements.put(StringToBoolean_2038, DataMapperPackage.eINSTANCE.getStringToBoolean());
 
+			elements.put(Clone_2039, DataMapperPackage.eINSTANCE.getClone());
+
 			elements.put(TreeNode_3002, DataMapperPackage.eINSTANCE.getTreeNode());
 
 			elements.put(Element_3007, DataMapperPackage.eINSTANCE.getElement());
@@ -610,6 +619,7 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Compare_2036);
 			KNOWN_ELEMENT_TYPES.add(StringToNumber_2037);
 			KNOWN_ELEMENT_TYPES.add(StringToBoolean_2038);
+			KNOWN_ELEMENT_TYPES.add(Clone_2039);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(Element_3007);
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
@@ -709,6 +719,8 @@ public class DataMapperElementTypes {
 			return StringToNumber_2037;
 		case StringToBooleanEditPart.VISUAL_ID:
 			return StringToBoolean_2038;
+		case CloneEditPart.VISUAL_ID:
+			return Clone_2039;
 		case TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case ElementEditPart.VISUAL_ID:

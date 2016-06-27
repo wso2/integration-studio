@@ -91,6 +91,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		switch (eClass.getClassifierID()) {
 			case DataMapperPackage.DATA_MAPPER_NODE: return createDataMapperNode();
 			case DataMapperPackage.TRIM: return createTrim();
+			case DataMapperPackage.CLONE: return createClone();
 			case DataMapperPackage.REPLACE: return createReplace();
 			case DataMapperPackage.MATCH: return createMatch();
 			case DataMapperPackage.MIN: return createMin();
@@ -202,6 +203,17 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		TrimImpl trim = new TrimImpl();
 		trim.setBasicContainer(createOperatorBasicContainer());
 		return trim;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Clone createClone() {
+		CloneImpl clone = new CloneImpl();
+		clone.setBasicContainer(createOperatorBasicContainer());
+		return clone;
 	}
 
 				/**

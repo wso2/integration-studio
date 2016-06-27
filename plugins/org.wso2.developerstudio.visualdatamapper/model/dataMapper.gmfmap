@@ -787,6 +787,24 @@
       </children>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//Clone"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.35"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Clone"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
+    </ownedChild>
+  </nodes>
   <links>
     <domainMetaElement
         href="dataMapper.ecore#//DataMapperLink"/>

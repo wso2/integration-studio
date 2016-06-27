@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
 import org.wso2.developerstudio.datamapper.Celi;
+import org.wso2.developerstudio.datamapper.Clone;
 import org.wso2.developerstudio.datamapper.Compare;
 import org.wso2.developerstudio.datamapper.ComparisonOperatorType;
 import org.wso2.developerstudio.datamapper.Concat;
@@ -81,6 +82,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass trimEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cloneEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -516,6 +524,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EClass getTrim() {
 		return trimEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getClone() {
+		return cloneEClass;
 	}
 
 	/**
@@ -1657,6 +1674,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		trimEClass = createEClass(TRIM);
 
+		cloneEClass = createEClass(CLONE);
+
 		replaceEClass = createEClass(REPLACE);
 		createEAttribute(replaceEClass, REPLACE__TARGET);
 		createEAttribute(replaceEClass, REPLACE__REPLACE_STRING);
@@ -1860,6 +1879,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		// Add supertypes to classes
 		trimEClass.getESuperTypes().add(this.getOperator());
+		cloneEClass.getESuperTypes().add(this.getOperator());
 		replaceEClass.getESuperTypes().add(this.getOperator());
 		matchEClass.getESuperTypes().add(this.getOperator());
 		minEClass.getESuperTypes().add(this.getOperator());
@@ -1901,6 +1921,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(trimEClass, Trim.class, "Trim", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(cloneEClass, Clone.class, "Clone", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(replaceEClass, Replace.class, "Replace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReplace_Target(), ecorePackage.getEString(), "target", "{$Target}", 0, 1, Replace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

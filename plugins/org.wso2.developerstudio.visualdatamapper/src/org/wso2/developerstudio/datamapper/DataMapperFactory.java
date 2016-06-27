@@ -40,6 +40,15 @@ public interface DataMapperFactory extends EFactory {
 	Trim createTrim();
 
 	/**
+	 * Returns a new object of class '<em>Clone</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Clone</em>'.
+	 * @generated
+	 */
+	Clone createClone();
+
+	/**
 	 * Returns a new object of class '<em>Replace</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

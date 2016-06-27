@@ -15,6 +15,7 @@ import org.eclipse.gmf.tooling.runtime.update.DiagramUpdater;
 import org.wso2.developerstudio.datamapper.AbsoluteValue;
 import org.wso2.developerstudio.datamapper.Add;
 import org.wso2.developerstudio.datamapper.Celi;
+import org.wso2.developerstudio.datamapper.Clone;
 import org.wso2.developerstudio.datamapper.Compare;
 import org.wso2.developerstudio.datamapper.Concat;
 import org.wso2.developerstudio.datamapper.Constant;
@@ -62,6 +63,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ANDEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AbsoluteValueEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.AddEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CeliEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.CloneEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CompareEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart;
@@ -197,6 +199,8 @@ public class DataMapperDiagramUpdater {
 			return getStringToNumber_2037SemanticChildren(view);
 		case StringToBooleanEditPart.VISUAL_ID:
 			return getStringToBoolean_2038SemanticChildren(view);
+		case CloneEditPart.VISUAL_ID:
+			return getClone_2039SemanticChildren(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002SemanticChildren(view);
 		case ElementEditPart.VISUAL_ID:
@@ -378,6 +382,10 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 			if (visualID == StringToBooleanEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == CloneEditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -1075,6 +1083,25 @@ public class DataMapperDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getClone_2039SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Clone modelElement = (Clone) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<DataMapperNodeDescriptor> getTreeNode_3002SemanticChildren(View view) {
@@ -1409,6 +1436,8 @@ public class DataMapperDiagramUpdater {
 			return getStringToNumber_2037ContainedLinks(view);
 		case StringToBooleanEditPart.VISUAL_ID:
 			return getStringToBoolean_2038ContainedLinks(view);
+		case CloneEditPart.VISUAL_ID:
+			return getClone_2039ContainedLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002ContainedLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1522,6 +1551,8 @@ public class DataMapperDiagramUpdater {
 			return getStringToNumber_2037IncomingLinks(view);
 		case StringToBooleanEditPart.VISUAL_ID:
 			return getStringToBoolean_2038IncomingLinks(view);
+		case CloneEditPart.VISUAL_ID:
+			return getClone_2039IncomingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002IncomingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1635,6 +1666,8 @@ public class DataMapperDiagramUpdater {
 			return getStringToNumber_2037OutgoingLinks(view);
 		case StringToBooleanEditPart.VISUAL_ID:
 			return getStringToBoolean_2038OutgoingLinks(view);
+		case CloneEditPart.VISUAL_ID:
+			return getClone_2039OutgoingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002OutgoingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1927,6 +1960,13 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getStringToBoolean_2038ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getClone_2039ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -2300,6 +2340,13 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getStringToBoolean_2038IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getClone_2039IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -2679,6 +2726,13 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getStringToBoolean_2038OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getClone_2039OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 

@@ -367,6 +367,14 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * @ordered
 	 */
 	REPLACE(35, "REPLACE", "REPLACE",STRING_OPERATION), /**
+	 * The '<em><b>TRIM</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TRIM_VALUE
+	 * @generated NOT
+	 * @ordered NOT
+	 */
+	TRIM(38, "TRIM", "TRIM",STRING_OPERATION), /**
 	 * The '<em><b>TYPE CONVERSION OPERATION</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -391,14 +399,14 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * @ordered NOT
 	 */
 	STRING_TO_NUMBER(37, "STRING_TO_NUMBER", "STRING_TO_NUMBER",TYPE_CONVERSION_OPERATION), /**
-	 * The '<em><b>TRIM</b></em>' literal object.
+	 * The '<em><b>INSTANTIATE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #TRIM_VALUE
+	 * @see #INSTANTIATE_VALUE
 	 * @generated NOT
-	 * @ordered NOT
+	 * @ordered
 	 */
-	TRIM(38, "TRIM", "TRIM",STRING_OPERATION);
+	INSTANTIATE(40, "INSTANTIATE", "INSTANTIATE",COMMON_OPERATION);
 
 	/**
 	 * The '<em><b>OPERATOR</b></em>' literal value.
@@ -971,6 +979,36 @@ public enum DataMapperOperatorType implements Enumerator {
 	public static final int REPLACE_VALUE = 35;
 
 	/**
+	 * The '<em><b>TRIM</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TRIM</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TRIM
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TRIM_VALUE = 38;
+
+	/**
+	 * The '<em><b>TYPE CONVERSION OPERATION</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TYPE CONVERSION OPERATION</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TYPE_CONVERSION_OPERATION
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TYPE_CONVERSION_OPERATION_VALUE = 39;
+
+	/**
 	 * The '<em><b>STRING TO BOOLEAN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -1001,34 +1039,19 @@ public enum DataMapperOperatorType implements Enumerator {
 	public static final int STRING_TO_NUMBER_VALUE = 37;
 
 	/**
-	 * The '<em><b>TRIM</b></em>' literal value.
+	 * The '<em><b>INSTANTIATE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>TRIM</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>INSTANTIATE</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TRIM
+	 * @see #INSTANTIATE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TRIM_VALUE = 38;
-
-	/**
-	 * The '<em><b>TYPE CONVERSION OPERATION</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>TYPE CONVERSION OPERATION</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #TYPE_CONVERSION_OPERATION
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int TYPE_CONVERSION_OPERATION_VALUE = 39;
+	public static final int INSTANTIATE_VALUE = 40;
 
 	/**
 	 * An array of all the '<em><b>Operator Type</b></em>' enumerators.
@@ -1076,10 +1099,11 @@ public enum DataMapperOperatorType implements Enumerator {
 			MIN,
 			PROPERTIES,
 			REPLACE,
-			STRING_TO_BOOLEAN,
-			STRING_TO_NUMBER,
 			TRIM,
 			TYPE_CONVERSION_OPERATION,
+			STRING_TO_BOOLEAN,
+			STRING_TO_NUMBER,
+			INSTANTIATE,
 		};
 
 	/**
@@ -1172,10 +1196,11 @@ public enum DataMapperOperatorType implements Enumerator {
 			case MIN_VALUE: return MIN;
 			case PROPERTIES_VALUE: return PROPERTIES;
 			case REPLACE_VALUE: return REPLACE;
-			case STRING_TO_BOOLEAN_VALUE: return STRING_TO_BOOLEAN;
-			case STRING_TO_NUMBER_VALUE: return STRING_TO_NUMBER;
 			case TRIM_VALUE: return TRIM;
 			case TYPE_CONVERSION_OPERATION_VALUE: return TYPE_CONVERSION_OPERATION;
+			case STRING_TO_BOOLEAN_VALUE: return STRING_TO_BOOLEAN;
+			case STRING_TO_NUMBER_VALUE: return STRING_TO_NUMBER;
+			case INSTANTIATE_VALUE: return INSTANTIATE;
 		}
 		return null;
 	}

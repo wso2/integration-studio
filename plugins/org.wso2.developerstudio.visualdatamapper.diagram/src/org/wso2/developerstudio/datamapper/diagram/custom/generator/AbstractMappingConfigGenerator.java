@@ -20,10 +20,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
@@ -35,6 +37,7 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 
 	protected static final String JS_FUNCTION_NAME = "function";
 	private static final String OUTPUT_VARIABLE_NAME = "OUTPUT";
+	protected static final int FIRST_ELEMENT_INDEX = 0;
 
 	protected List<MappingOperation> populateOperationListFromModel(DataMapperDiagramModel model) {
 		ArrayList<MappingOperation> mappingOperationList = new ArrayList<>();
@@ -44,7 +47,6 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 		for (Integer operationIndex : executionSeq) {
 			List<DMVariable> inputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.INPUT);
 			List<DMVariable> outputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.OUTPUT);
-			;
 			DMOperation operation = model.getOperationsList().get(operationIndex);
 			if (!outputVariables.isEmpty()) {
 				mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation));
@@ -72,6 +74,26 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 		}
 
 		return nonOutputMappingOperationList;
+	}
+	
+	protected String generateCustomFunctions(DataMapperDiagramModel model) {
+		StringBuilder functionBuilder = new StringBuilder();
+		for (DMOperation operation : model.getOperationsList()) {
+			if (DataMapperOperatorType.CUSTOM_FUNCTION.equals(operation.getOperatorType())) {
+				functionBuilder.append("\n");
+				functionBuilder.append(operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME) + " = "
+						+ addFunctionDefinition(operation));
+			}
+		}
+		return functionBuilder.toString();
+	}
+
+	protected String addFunctionDefinition(DMOperation operation) {
+		StringBuilder functionBuilder = new StringBuilder();
+		functionBuilder.append("function");
+		String functionDefinition = (String) operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_DEFINITION);
+		functionBuilder.append(functionDefinition.substring(functionDefinition.indexOf("(")));
+		return functionBuilder.toString();
 	}
 
 	protected String getMainFunctionDefinition(String inRoot, String outRoot, String outputVariableRootName) {

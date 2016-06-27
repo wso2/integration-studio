@@ -63,6 +63,15 @@
 		</wizard>
    </extension>
    
+    <extension
+        point="org.eclipse.ui.perspectiveExtensions">
+        <perspectiveExtension targetID="*">
+        <newWizardShortcut
+         id="org.wso2.developerstudio.eclipse.artifact.newesbproject">
+        </newWizardShortcut>
+        </perspectiveExtension>
+    </extension>
+    
 	<extension point="org.eclipse.ui.newWizards">
          <wizard name="Add Connector to workspace"
 			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions/org.wso2.developerstudio.eclipse.extensions.project.types"

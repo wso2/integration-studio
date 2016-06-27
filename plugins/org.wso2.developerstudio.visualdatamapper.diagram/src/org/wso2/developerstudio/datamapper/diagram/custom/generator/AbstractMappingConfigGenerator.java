@@ -16,6 +16,8 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
@@ -32,10 +34,13 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationU
 public abstract class AbstractMappingConfigGenerator implements MappingConfigGenerator {
 
 	protected static final String JS_FUNCTION_NAME = "function";
+	private static final String OUTPUT_VARIABLE_NAME = "OUTPUT";
 
 	protected List<MappingOperation> populateOperationListFromModel(DataMapperDiagramModel model) {
 		ArrayList<MappingOperation> mappingOperationList = new ArrayList<>();
 		List<Integer> executionSeq = model.getExecutionSequence();
+		ArrayList<MappingOperation> outputMappingOperationList = new ArrayList<>();
+		ArrayList<MappingOperation> nonOutputMappingOperationList = new ArrayList<>();
 		for (Integer operationIndex : executionSeq) {
 			List<DMVariable> inputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.INPUT);
 			List<DMVariable> outputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.OUTPUT);
@@ -45,7 +50,28 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 				mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation));
 			}
 		}
-		return mappingOperationList;
+        
+		for (MappingOperation mappingOperation : mappingOperationList){
+			List<DMVariable> outputList = mappingOperation.getOutputVariables();
+			if (outputList.size()==1 && OUTPUT_VARIABLE_NAME.equals(outputList.get(0).getType().name())){
+				outputMappingOperationList.add(mappingOperation);
+			}
+			else {
+				nonOutputMappingOperationList.add(mappingOperation);
+			}
+		}
+		Collections.sort(outputMappingOperationList, new Comparator<MappingOperation>() {
+			@Override
+			public int compare(MappingOperation mappingOperation1, MappingOperation mappingOperation2)
+			{
+				return mappingOperation2.getOutputVariables().get(0).getIndex()-mappingOperation1.getOutputVariables().get(0).getIndex();
+			}
+		});
+		for (MappingOperation mappingOperation : outputMappingOperationList) {
+			nonOutputMappingOperationList.add(mappingOperation);
+		}
+
+		return nonOutputMappingOperationList;
 	}
 
 	protected String getMainFunctionDefinition(String inRoot, String outRoot, String outputVariableRootName) {

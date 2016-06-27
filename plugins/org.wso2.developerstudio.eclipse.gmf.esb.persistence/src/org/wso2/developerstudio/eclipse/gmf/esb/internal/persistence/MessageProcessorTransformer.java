@@ -61,6 +61,7 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 	private static final String scheduledFailoverMessageForwardingProcessor = "org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor";
 	private static final String customProcessor = "customProcessor";
 
+	@Deprecated
 	public static OMElement createMessageProcessor(MessageProcessor model) throws Exception {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		String className = null;
@@ -252,17 +253,16 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 	
 	public OMElement createMessageProcessor(FormPage visualForm) {
 		
-		org.apache.synapse.message.processor.MessageProcessor messageProcessor = null;
+		org.apache.synapse.message.processor.MessageProcessor messageProcessor = new org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor();
 		OMElement configXml = null;
 		Map<String, Object> parameterMap = new HashMap<>();
+		String className = "";
 		
 		if (visualForm instanceof MessageProcessorFormPage) {
 			
 			MessageProcessorFormPage messageProcessorFormPage = (MessageProcessorFormPage) visualForm;
 			
 			if (messageProcessorFormPage.processorName.getText().length() > 0){
-
-				
 				
 				int processorIndex = messageProcessorFormPage.processorType.getSelectionIndex();
 				
@@ -270,6 +270,7 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 					case 0:
 					{
 						// messageSamplingProcessor
+						className = messageSamplingProcessor;
 						messageProcessor = new org.apache.synapse.message.processor.impl.sampler.SamplingProcessor();
 						Sampling sampling = (Sampling)messageProcessorFormPage.getProcessorImpl(messageSamplingProcessor);
 						
@@ -290,7 +291,7 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 					case 1:
 					{
 						// scheduledMessageForwardingProcessor
-						messageProcessor = new org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor();
+						className = scheduledMessageForwardingProcessor;
 						ScheduledForwarding forwarder = (ScheduledForwarding)messageProcessorFormPage.getProcessorImpl(scheduledMessageForwardingProcessor);
 
 						messageProcessor.setTargetEndpoint(forwarder.forwarding_endpoint.getText());
@@ -326,7 +327,7 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 					case 2:
 					{
 						// scheduledFailoverMessageForwardingProcessor
-						messageProcessor = new org.apache.synapse.message.processor.impl.failover.FailoverScheduledMessageForwardingProcessor();
+						className = scheduledFailoverMessageForwardingProcessor;
 						ScheduledFailoverForwarding failover = (ScheduledFailoverForwarding)messageProcessorFormPage.getProcessorImpl(scheduledFailoverMessageForwardingProcessor);
 						
 						parameterMap.put("store.failover.message.store.name", failover.failover_store.getText());
@@ -355,12 +356,12 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 					}
 					default:
 					{
-						// customProcessor - use forwarder temporary
-												
-						messageProcessor = new org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor();
+						// customProcessor
+						CustomProcessor custom = (CustomProcessor)messageProcessorFormPage.getProcessorImpl(customProcessor);
+						
+						className = custom.custom_providerClass.getText();
 						
 						// TODO: Add parameters
-						
 
 						
 						break;
@@ -373,21 +374,13 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 				messageProcessor.setName(messageProcessorFormPage.processorName.getText());
 				messageProcessor.setMessageStoreName(messageProcessorFormPage.storeName.getText());
 				
-				
 				configXml = MessageProcessorSerializer.serializeMessageProcessor(null, messageProcessor);
 				
-				// Change for custom processor
-				if (processorIndex == 3) {
-					OMAttribute classAttr = configXml.getAttribute(new QName("class"));
-					CustomProcessor custom = (CustomProcessor) messageProcessorFormPage.getProcessorImpl(customProcessor);
-
-					String className = custom.custom_providerClass.getText();
-					
-					if (classAttr != null) {
-						classAttr.setAttributeValue(className);
-					} else {
-						configXml.addAttribute("class", className, null);
-					}
+				OMAttribute classAttr = configXml.getAttribute(new QName("class"));
+				if (classAttr != null) {
+					classAttr.setAttributeValue(className);
+				} else {
+					configXml.addAttribute("class", className, null);
 				}
 				
 			}

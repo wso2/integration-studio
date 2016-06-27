@@ -32,7 +32,6 @@ public class DMVariable {
     private SchemaDataType schemaVariableType;
     private int parentVariableOrOperationIndex;
     private int mostChildVariableIndex;
-    private boolean nullable;
 
     public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index) {
         this.name = name;
@@ -126,12 +125,4 @@ public class DMVariable {
     public void setMostChildVariableIndex(int mostChildVariableIndex) {
         this.mostChildVariableIndex = mostChildVariableIndex;
     }
-
-	public boolean isNullable() {
-		return nullable;
-	}
-
-	public void setNullable(boolean nullable) {
-		this.nullable = nullable;
-	}
 }

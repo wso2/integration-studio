@@ -577,6 +577,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		case MESSAGE_PROCESSOR:
 		case MESSAGE_STORE:
 		case TASK:
+		case ENDPOINT:
 		case TEMPLATE_ENDPOINT_DEFAULT:
 		case TEMPLATE_ENDPOINT_ADDRESS:
 		case TEMPLATE_ENDPOINT_WSDL:

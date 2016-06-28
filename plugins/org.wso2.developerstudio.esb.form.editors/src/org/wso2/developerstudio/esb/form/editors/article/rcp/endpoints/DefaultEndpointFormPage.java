@@ -39,10 +39,8 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
  * Preferences - Java - Code Generation - Code and Comments
  */
 public class DefaultEndpointFormPage extends FormPage {
-	/**
-	 * @param id
-	 * @param title
-	 */
+	
+	RealEndpointUtils endpointUtils = new RealEndpointUtils();
 	
 	public DefaultEndpointFormPage(FormEditor editor) {
 		super(editor, "defaultEndpointForm", Messages.getString("DefaultEndpointPage.sectionMainTitle"));
@@ -69,7 +67,7 @@ public class DefaultEndpointFormPage extends FormPage {
 	
 	private void createFormBasicSection(final ScrolledForm form, FormToolkit toolkit) {
 		/* Basic Section */
-		Section basicSection = RealEndpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
+		Section basicSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
 		
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
 		basicSectionClient.setLayout(new TableWrapLayout());
@@ -98,14 +96,14 @@ public class DefaultEndpointFormPage extends FormPage {
 	
 	private void createFormQosSection(final ScrolledForm form, FormToolkit toolkit) {
 		
-		RealEndpointUtils.createFormQosSection(form, toolkit);
+		endpointUtils.createFormQosSection(form, toolkit);
 		
 	}
 	
 	private void createFormMiscSection(final ScrolledForm form, FormToolkit toolkit) {
 
 		 /* Misc Section */ 
-		Section miscSection = RealEndpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+		Section miscSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
 		
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
 		miscSectionClient.setLayout(new TableWrapLayout());
@@ -134,9 +132,12 @@ public class DefaultEndpointFormPage extends FormPage {
 	
 	private void createFormErrorHandlingSection(final ScrolledForm form, FormToolkit toolkit) {
 		
-		RealEndpointUtils.createFormErrorHandlingSection(form, toolkit);
+		endpointUtils.createFormErrorHandlingSection(form, toolkit);
 
 	}
-	
 
+	public RealEndpointUtils getEndpointUtils() {
+		return endpointUtils;
+	}
+	
 }

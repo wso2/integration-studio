@@ -85,6 +85,7 @@ public class MessageStoreTransformer {
 	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
 	private static final String customStore = "customStore";
 	
+	@Deprecated
 	public static OMElement createMessageStore(MessageStore model){
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		String className = null;
@@ -336,11 +337,9 @@ public class MessageStoreTransformer {
 					parameterMap.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE, formPage.guaranteedDeliveryEnable.getText().toLowerCase());
 					parameterMap.put(STORE_FAILOVER_MESSAGE_STORE_NAME, formPage.failoverMessageStore.getText());
 				}
-				
-				
+
 				messageStore.setName(formPage.storeName.getText());
 				messageStore.setParameters(parameterMap);
-				
 				
 				configXml = MessageStoreSerializer.serializeMessageStore(null, messageStore);
 				OMAttribute classAttr = configXml.getAttribute(new QName("class"));
@@ -356,14 +355,9 @@ public class MessageStoreTransformer {
 				}
 
 				
-				
-				
 			}
 			
 		}
-		
-		
-		
 		
 		return configXml;
 	}

@@ -39,11 +39,19 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
  * Preferences - Java - Code Generation - Code and Comments
  */
 public class AddressEndpointFormPage extends FormPage {
-	/**
-	 * @param id
-	 * @param title
-	 */
-	
+
+	RealEndpointUtils endpointUtils = new RealEndpointUtils();
+
+	public Combo addressEP_Format;
+	public Combo endpointTrace;
+	public Combo endpointStatistics;
+	public Text addressEP_URI;
+
+	public Text addressEP_Properties;
+	public Combo addressEP_Optimize;
+	public Text addressEP_Description;
+
+
 	public AddressEndpointFormPage(FormEditor editor) {
 		super(editor, "addressEndpointForm", Messages.getString("AddressEndpointPage.sectionMainTitle"));
 	}
@@ -69,31 +77,31 @@ public class AddressEndpointFormPage extends FormPage {
 	
 	private void createFormBasicSection(final ScrolledForm form, FormToolkit toolkit) {
 		/* Basic Section */
-		Section basicSection = RealEndpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
+		Section basicSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
 		
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
 		basicSectionClient.setLayout(new TableWrapLayout());
 		
 		toolkit.createLabel(basicSectionClient, "Format");
-		Combo addressEP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		addressEP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		addressEP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
 		addressEP_Format.setItems(formats);
 		
 		toolkit.createLabel(basicSectionClient, "Trace Enabled");
-		Combo endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] tracingStates = {"True", "False"};
 		endpointTrace.setItems(tracingStates);
 		
 		toolkit.createLabel(basicSectionClient, "Statistics Enabled");
-		Combo endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] statisticsStates = {"True", "False"};
 		endpointStatistics.setItems(statisticsStates);
 		
 		toolkit.createLabel(basicSectionClient, "URI");
-		Text addressEP_URI = toolkit.createText(basicSectionClient, "");
+		addressEP_URI = toolkit.createText(basicSectionClient, "");
 		addressEP_URI.setBackground(new Color(null, 229,236,253));
 		addressEP_URI.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
@@ -104,32 +112,32 @@ public class AddressEndpointFormPage extends FormPage {
 	
 	private void createFormQosSection(final ScrolledForm form, FormToolkit toolkit) {
 		
-		RealEndpointUtils.createFormQosSection(form, toolkit);
+		endpointUtils.createFormQosSection(form, toolkit);
 		
 	}
 	
 	private void createFormMiscSection(final ScrolledForm form, FormToolkit toolkit) {
 
 		 /* Misc Section */ 
-		Section miscSection = RealEndpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+		Section miscSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
 		
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
 		miscSectionClient.setLayout(new TableWrapLayout());
 		
 		
 		toolkit.createLabel(miscSectionClient, "Properties");
-		Text addressEP_Properties = toolkit.createText(miscSectionClient, "");
+		addressEP_Properties = toolkit.createText(miscSectionClient, "");
 		addressEP_Properties.setBackground(new Color(null, 229,236,253));
 		addressEP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(miscSectionClient, "Optimize");
-		Combo addressEP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
+		addressEP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
 		addressEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "MTOM", "SWA"};
 		addressEP_Optimize.setItems(formats);
 		
 		toolkit.createLabel(miscSectionClient, "Description");
-		Text addressEP_Description = toolkit.createText(miscSectionClient, "");
+		addressEP_Description = toolkit.createText(miscSectionClient, "");
 		addressEP_Description.setBackground(new Color(null, 229,236,253));
 		addressEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
@@ -140,9 +148,12 @@ public class AddressEndpointFormPage extends FormPage {
 	
 	private void createFormErrorHandlingSection(final ScrolledForm form, FormToolkit toolkit) {
 		
-		RealEndpointUtils.createFormErrorHandlingSection(form, toolkit);
+		endpointUtils.createFormErrorHandlingSection(form, toolkit);
 
 	}
-	
+
+	public RealEndpointUtils getEndpointUtils() {
+		return endpointUtils;
+	}
 
 }

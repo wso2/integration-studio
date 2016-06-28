@@ -10,6 +10,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.commands.ANDCreateComman
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.AbsoluteValueCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.AddCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.CeliCreateCommand;
+import org.wso2.developerstudio.datamapper.diagram.edit.commands.CloneCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.CompareCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConcatCreateCommand;
 import org.wso2.developerstudio.datamapper.diagram.edit.commands.ConstantCreateCommand;
@@ -167,6 +168,9 @@ public class DataMapperRootItemSemanticEditPolicy extends DataMapperBaseItemSema
 		}
 		if (DataMapperElementTypes.StringToBoolean_2038 == req.getElementType()) {
 			return getGEFWrapper(new StringToBooleanCreateCommand(req));
+		}
+		if (DataMapperElementTypes.Clone_2039 == req.getElementType()) {
+			return getGEFWrapper(new CloneCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

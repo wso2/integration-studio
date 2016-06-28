@@ -831,10 +831,10 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 				</person>
 				the item type is string
 				*/
-				else{
+				else {
 					String itemsType = getItemsType();
-					if(StringUtils.isNotEmpty(itemsType)){
-						if(!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)){
+					if (StringUtils.isNotEmpty(itemsType)) {
+						if (!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)) {
 							newName = newName + "  : [" + itemsType.toUpperCase() + "]";
 						}
 					}
@@ -1034,10 +1034,10 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 				</person>
 				the item type is string
 				*/
-				else{
+				else {
 					String itemsType = getItemsType();
-					if(StringUtils.isNotEmpty(itemsType)){
-						if(!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)){
+					if (StringUtils.isNotEmpty(itemsType)) {
+						if (!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)) {
 							newName = newName + "  : [" + itemsType.toUpperCase() + "]";
 						}
 					}
@@ -1164,10 +1164,10 @@ public class TreeNode3EditPart extends AbstractBorderedShapeEditPart {
 				</person>
 				the item type is string
 				*/
-				else{
+				else {
 					String itemsType = getItemsType();
-					if(StringUtils.isNotEmpty(itemsType)){
-						if(!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)){
+					if (StringUtils.isNotEmpty(itemsType)) {
+						if (!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)) {
 							newName = newName + "  : [" + itemsType.toUpperCase() + "]";
 						}
 					}

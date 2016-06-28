@@ -79,6 +79,7 @@
     </genEnums>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
     <genClasses ecoreClass="dataMapper.ecore#//Trim"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Clone"/>
     <genClasses ecoreClass="dataMapper.ecore#//Replace">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Replace/target"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Replace/replaceString"/>

@@ -333,7 +333,7 @@
         childNodes="//@diagram/@childNodes.9 //@diagram/@childNodes.12"
         graphicalNodeEditPolicyClassName="OperatorBasicContainerGraphicalNodeEditPolicy"
         createCommandClassName="OperatorBasicContainerCreateCommand"
-        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4 //@diagram/@topLevelNodes.5 //@diagram/@topLevelNodes.6 //@diagram/@topLevelNodes.7 //@diagram/@topLevelNodes.8 //@diagram/@topLevelNodes.9 //@diagram/@topLevelNodes.10 //@diagram/@topLevelNodes.11 //@diagram/@topLevelNodes.12 //@diagram/@topLevelNodes.13 //@diagram/@topLevelNodes.14 //@diagram/@topLevelNodes.15 //@diagram/@topLevelNodes.16 //@diagram/@topLevelNodes.17 //@diagram/@topLevelNodes.18 //@diagram/@topLevelNodes.19 //@diagram/@topLevelNodes.20 //@diagram/@topLevelNodes.21 //@diagram/@topLevelNodes.22 //@diagram/@topLevelNodes.23 //@diagram/@topLevelNodes.24 //@diagram/@topLevelNodes.25 //@diagram/@topLevelNodes.26 //@diagram/@topLevelNodes.27 //@diagram/@topLevelNodes.28 //@diagram/@topLevelNodes.29 //@diagram/@topLevelNodes.30 //@diagram/@topLevelNodes.31 //@diagram/@topLevelNodes.32 //@diagram/@topLevelNodes.33 //@diagram/@topLevelNodes.34 //@diagram/@topLevelNodes.35">
+        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4 //@diagram/@topLevelNodes.5 //@diagram/@topLevelNodes.6 //@diagram/@topLevelNodes.7 //@diagram/@topLevelNodes.8 //@diagram/@topLevelNodes.9 //@diagram/@topLevelNodes.10 //@diagram/@topLevelNodes.11 //@diagram/@topLevelNodes.12 //@diagram/@topLevelNodes.13 //@diagram/@topLevelNodes.14 //@diagram/@topLevelNodes.15 //@diagram/@topLevelNodes.16 //@diagram/@topLevelNodes.17 //@diagram/@topLevelNodes.18 //@diagram/@topLevelNodes.19 //@diagram/@topLevelNodes.20 //@diagram/@topLevelNodes.21 //@diagram/@topLevelNodes.22 //@diagram/@topLevelNodes.23 //@diagram/@topLevelNodes.24 //@diagram/@topLevelNodes.25 //@diagram/@topLevelNodes.26 //@diagram/@topLevelNodes.27 //@diagram/@topLevelNodes.28 //@diagram/@topLevelNodes.29 //@diagram/@topLevelNodes.30 //@diagram/@topLevelNodes.31 //@diagram/@topLevelNodes.32 //@diagram/@topLevelNodes.33 //@diagram/@topLevelNodes.34 //@diagram/@topLevelNodes.35 //@diagram/@topLevelNodes.36">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -1428,6 +1428,31 @@
             href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
+    <topLevelNodes
+        visualID="2039"
+        editPartClassName="CloneEditPart"
+        itemSemanticEditPolicyClassName="CloneItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="CloneCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.8"
+        graphicalNodeEditPolicyClassName="CloneGraphicalNodeEditPolicy"
+        createCommandClassName="CloneCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="CloneEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//datamapper/Clone"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
     <links
         visualID="4001"
         editPartClassName="DataMapperLinkEditPart"
@@ -1635,6 +1660,11 @@
             title="StringToBoolean"
             description="Create new StringToBoolean"
             genNodes="//@diagram/@topLevelNodes.35"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Clone"
+            description="Create new Clone"
+            genNodes="//@diagram/@topLevelNodes.36"/>
       </groups>
     </palette>
     <preferencePages
@@ -1948,6 +1978,12 @@
     <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.35"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.36"
+        child="//@diagram/@childNodes.8"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.36"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@links.0"

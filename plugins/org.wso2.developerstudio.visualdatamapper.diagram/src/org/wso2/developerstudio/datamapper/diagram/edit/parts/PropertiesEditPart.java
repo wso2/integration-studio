@@ -192,9 +192,9 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 
 	public class PropertiesFigure extends OperatorRectangle {
 
-		public PropertiesFigure(String scope,String name) {
+		public PropertiesFigure(String scope, String name) {
 			super("Properties");
-			if (StringUtils.isNotEmpty(scope)&&StringUtils.isNotEmpty(name)) {
+			if (StringUtils.isNotEmpty(scope) && StringUtils.isNotEmpty(name)) {
 				super.changeOperatorHeader("Properties : \"" + scope + "\\" + name + "\"");
 			}
 			this.setBackgroundColor(THIS_BACK);
@@ -217,7 +217,7 @@ public class PropertiesEditPart extends AbstractOperatorEditPart {
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
 
 	public OperatorRectangle getPropertiesFigure() {
-		return (OperatorRectangle)primaryShape;
+		return (OperatorRectangle) primaryShape;
 	}
 
 }

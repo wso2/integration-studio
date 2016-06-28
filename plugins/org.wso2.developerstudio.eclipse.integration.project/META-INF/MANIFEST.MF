@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.wso2.developerstudio.eclipse.utils;bundle-version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,5.0.0)",
  org.eclipse.m2e.maven.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axiom.om;version="1.2.11.wso2v10",
  org.wso2.developerstudio.eclipse.distribution.project.export;version="[4.1.0,5.0.0)",

@@ -280,6 +280,11 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		return transformer.createMessageProcessor(messageProcessorFormPage);
 	}
 	
+	private OMElement transformMessageStore(FormPage messageProcessorFormPage) {
+		MessageStoreTransformer transformer = new MessageStoreTransformer();
+		return transformer.createMessageStore(messageProcessorFormPage);
+	}
+	
 	private org.apache.synapse.rest.API transformAPI(SynapseAPI visualAPI) throws Exception{		
 		TransformationInfo info = new TransformationInfo();
 		info.getTransformedMediators().clear();
@@ -366,6 +371,8 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 			configOM = TaskDescriptionSerializer.serializeTaskDescription(TASK_OM_NAMESPACE, transformTask(formPage));
 		} else if (artifactType == ArtifactType.MESSAGE_PROCESSOR) {
 			configOM = transformMessageProcessor(formPage);
+		} else if (artifactType == ArtifactType.MESSAGE_STORE) {
+			configOM = transformMessageStore(formPage);
 		}
 		if (configOM != null) {
 			sourceXML = format(configOM.toString());

@@ -72,10 +72,11 @@
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/MIN"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/PROPERTIES"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/REPLACE"/>
-      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STRING_TO_BOOLEAN"/>
-      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STRING_TO_NUMBER"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/TRIM"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/TYPE_CONVERSION_OPERATION"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STRING_TO_BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STRING_TO_NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/INSTANTIATE"/>
     </genEnums>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
     <genClasses ecoreClass="dataMapper.ecore#//Trim"/>

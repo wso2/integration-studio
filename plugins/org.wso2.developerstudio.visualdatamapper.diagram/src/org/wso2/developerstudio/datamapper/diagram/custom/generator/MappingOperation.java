@@ -26,37 +26,48 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
  */
 public class MappingOperation {
 
-    private List<DMVariable> inputVariables;
-    private List<DMVariable> outputVariables;
-    private DMOperation operation;
+	private List<DMVariable> inputVariables;
+	private List<DMVariable> outputVariables;
+	private DMOperation operation;
+	private int index;
 
-    public MappingOperation(List<DMVariable> inputVariables, List<DMVariable> outputVariables, DMOperation operation) {
-        this.inputVariables = inputVariables;
-        this.outputVariables = outputVariables;
-        this.operation = operation;
-    }
+	public MappingOperation(List<DMVariable> inputVariables, List<DMVariable> outputVariables, DMOperation operation,
+			int index) {
+		this.inputVariables = inputVariables;
+		this.outputVariables = outputVariables;
+		this.operation = operation;
+		this.index = index;
+	}
 
-    public List<DMVariable> getInputVariables() {
-        return inputVariables;
-    }
+	public List<DMVariable> getInputVariables() {
+		return inputVariables;
+	}
 
-    public void setInputVariables(List<DMVariable> inputVariables) {
-        this.inputVariables = inputVariables;
-    }
+	public void setInputVariables(List<DMVariable> inputVariables) {
+		this.inputVariables = inputVariables;
+	}
 
-    public List<DMVariable> getOutputVariables() {
-        return outputVariables;
-    }
+	public List<DMVariable> getOutputVariables() {
+		return outputVariables;
+	}
 
-    public void setOutputVariables(List<DMVariable> outputVariables) {
-        this.outputVariables = outputVariables;
-    }
+	public void setOutputVariables(List<DMVariable> outputVariables) {
+		this.outputVariables = outputVariables;
+	}
 
-    public DMOperation getOperation() {
-        return operation;
-    }
+	public DMOperation getOperation() {
+		return operation;
+	}
 
-    public void setOperation(DMOperation operation) {
-        this.operation = operation;
-    }
+	public void setOperation(DMOperation operation) {
+		this.operation = operation;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
 }

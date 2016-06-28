@@ -20,10 +20,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DataMapperDiagramModel;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
@@ -47,36 +49,63 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 			;
 			DMOperation operation = model.getOperationsList().get(operationIndex);
 			if (!outputVariables.isEmpty()) {
-				mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation));
+				mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation, 0));
 			}
 		}
-        
-		for (MappingOperation mappingOperation : mappingOperationList){
+
+		for (MappingOperation mappingOperation : mappingOperationList) {
 			List<DMVariable> outputList = mappingOperation.getOutputVariables();
-			if (outputList.size()==1 && OUTPUT_VARIABLE_NAME.equals(outputList.get(0).getType().name())){
+			if (outputList.size() == 1 && OUTPUT_VARIABLE_NAME.equals(outputList.get(0).getType().name())) {
 				outputMappingOperationList.add(mappingOperation);
-			}
-			else {
+			} else {
 				nonOutputMappingOperationList.add(mappingOperation);
 			}
 		}
 		Collections.sort(outputMappingOperationList, new Comparator<MappingOperation>() {
 			@Override
-			public int compare(MappingOperation mappingOperation1, MappingOperation mappingOperation2)
-			{
-				return mappingOperation2.getOutputVariables().get(0).getIndex()-mappingOperation1.getOutputVariables().get(0).getIndex();
+			public int compare(MappingOperation mappingOperation1, MappingOperation mappingOperation2) {
+				return mappingOperation1.getOutputVariables().get(0).getIndex()
+						- mappingOperation2.getOutputVariables().get(0).getIndex();
 			}
 		});
 		for (MappingOperation mappingOperation : outputMappingOperationList) {
 			nonOutputMappingOperationList.add(mappingOperation);
 		}
-
+		updateMappingOperationIndexes(nonOutputMappingOperationList);
 		return nonOutputMappingOperationList;
+	}
+
+	private void updateMappingOperationIndexes(ArrayList<MappingOperation> nonOutputMappingOperationList) {
+		int index = 0;
+		for (MappingOperation mappingOperation : nonOutputMappingOperationList) {
+			mappingOperation.setIndex(index);
+			index++;
+		}
+	}
+
+	protected String generateCustomFunctions(DataMapperDiagramModel model) {
+		StringBuilder functionBuilder = new StringBuilder();
+		for (DMOperation operation : model.getOperationsList()) {
+			if (DataMapperOperatorType.CUSTOM_FUNCTION.equals(operation.getOperatorType())) {
+				functionBuilder.append("\n");
+				functionBuilder.append(operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME) + " = "
+						+ addFunctionDefinition(operation));
+			}
+		}
+		return functionBuilder.toString();
+	}
+
+	protected String addFunctionDefinition(DMOperation operation) {
+		StringBuilder functionBuilder = new StringBuilder();
+		functionBuilder.append("function");
+		String functionDefinition = (String) operation.getProperty(TransformerConstants.CUSTOM_FUNCTION_DEFINITION);
+		functionBuilder.append(functionDefinition.substring(functionDefinition.indexOf("(")));
+		return functionBuilder.toString();
 	}
 
 	protected String getMainFunctionDefinition(String inRoot, String outRoot, String outputVariableRootName) {
 		StringBuilder mainFunctionBuilder = new StringBuilder();
-		mainFunctionBuilder.append("map_S_"+ScriptGenerationUtil.removeInvalidCharaters(inRoot));
+		mainFunctionBuilder.append("map_S_" + ScriptGenerationUtil.removeInvalidCharaters(inRoot));
 		mainFunctionBuilder.append("_S_");
 		mainFunctionBuilder.append(ScriptGenerationUtil.removeInvalidCharaters(outRoot) + " = " + JS_FUNCTION_NAME);
 		mainFunctionBuilder.append("()");

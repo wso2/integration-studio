@@ -40,6 +40,10 @@
     <eLiterals name="TEMPLATE_ENDPOINT_DEFAULT" value="16" literal="TEMPLATE_ENDPOINT_DEFAULT"/>
     <eLiterals name="TEMPLATE_ENDPOINT_HTTP" value="17" literal="TEMPLATE_ENDPOINT_HTTP"/>
     <eLiterals name="TEMPLATE_SEQUENCE" value="18" literal="TEMPLATE_SEQUENCE"/>
+    <eLiterals name="ENDPOINT_ADDRESS" value="19" literal="ENDPOINT_ADDRESS"/>
+    <eLiterals name="ENDPOINT_DEFAULT" value="20" literal="ENDPOINT_DEFAULT"/>
+    <eLiterals name="ENDPOINT_HTTP" value="21" literal="ENDPOINT_HTTP"/>
+    <eLiterals name="ENDPOINT_WSDL" value="22" literal="ENDPOINT_WSDL"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mediator" abstract="true" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Reverse" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"

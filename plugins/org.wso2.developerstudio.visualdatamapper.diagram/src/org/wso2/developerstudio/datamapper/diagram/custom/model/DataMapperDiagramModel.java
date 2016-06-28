@@ -16,11 +16,13 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
@@ -33,7 +35,9 @@ import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
+import org.wso2.developerstudio.datamapper.diagram.custom.generator.OperatorName;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.ModelTransformerFactory;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
@@ -50,6 +54,7 @@ import org.wso2.developerstudio.datamapper.impl.TreeNodeImpl;
 public class DataMapperDiagramModel {
 
 	private static final String TYPE = "type";
+	private static final String ITEM_TYPE = "items_type";
 	private static final String NAMESPACE_SEPERATOR = ":";
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private List<DMVariable> variablesArray = new ArrayList<>();
@@ -483,7 +488,7 @@ public class DataMapperDiagramModel {
 					throw new IllegalArgumentException("Illegal element level detected : element level- "
 							+ currentTreeNode.getLevel() + " , parents level- " + parentVariableStack.size());
 				}
-				int index = variablesArray.size();
+				int variableIndex = variablesArray.size();
 				String variableName = getVariableName(DMVariableType.OUTPUT, parentVariableStack,
 						currentTreeNode.getName());
 				int parentVariableIndex = -1;
@@ -492,10 +497,39 @@ public class DataMapperDiagramModel {
 					parentVariableIndex = parent.getIndex();
 				}
 				SchemaDataType variableType = getSchemaDataType(getTreeNodeType(currentTreeNode));
+				if (SchemaDataType.OBJECT.equals(variableType)) {
+					int operationIndex = operationsList.size();
+					DMOperation instantiateOperator =new DMOperation(DataMapperOperatorType.INSTANTIATE,
+							"INSTANTATIATE_" + operationIndex, operationIndex);
+					instantiateOperator.addProperty(TransformerConstants.VARIABLE_TYPE, variableType);
+					operationsList.add(instantiateOperator);
+					outputAdjList.add(new ArrayList<Integer>());
+					outputAdjList.get(operationsList.size() - 1).add(variableIndex);
+					inputAdjList.add(new ArrayList<Integer>());
+				} else if(SchemaDataType.ARRAY.equals(variableType)){
+					int operationIndex = operationsList.size();
+					DMOperation instantiateOperator =new DMOperation(DataMapperOperatorType.INSTANTIATE,
+							"INSTANTATIATE_" + operationIndex, operationIndex);
+					instantiateOperator.addProperty(TransformerConstants.VARIABLE_TYPE, variableType);
+					operationsList.add(instantiateOperator);
+					outputAdjList.add(new ArrayList<Integer>());
+					outputAdjList.get(operationsList.size() - 1).add(variableIndex);
+					inputAdjList.add(new ArrayList<Integer>());
+					if(getTreeNodeArrayItemType(currentTreeNode).equalsIgnoreCase(SchemaDataType.OBJECT.getLiteral())){
+						operationIndex = operationsList.size();
+						DMOperation instantiateObjectOperator =new DMOperation(DataMapperOperatorType.INSTANTIATE,
+								"INSTANTATIATE_" + operationIndex, operationIndex);
+						instantiateObjectOperator.addProperty(TransformerConstants.VARIABLE_TYPE, SchemaDataType.OBJECT);
+						operationsList.add(instantiateObjectOperator);
+						outputAdjList.add(new ArrayList<Integer>());
+						outputAdjList.get(operationsList.size() - 1).add(variableIndex);
+						inputAdjList.add(new ArrayList<Integer>());
+					}
+				}
 				variablesArray.add(new DMVariable(variableName, currentNode.toString(), DMVariableType.OUTPUT,
-						variableType, index, parentVariableIndex));
-				outputVariablesArray.add(index);
-				currentTreeNode.setIndex(index);
+						variableType, variableIndex, parentVariableIndex));
+				outputVariablesArray.add(variableIndex);
+				currentTreeNode.setIndex(variableIndex);
 				addVariableTypeToMap(variableName, variableType);
 				if (currentTreeNode.getLevel() == parentVariableStack.size()) {
 					parentVariableStack.pop();
@@ -508,7 +542,9 @@ public class DataMapperDiagramModel {
 					}
 					parentVariableStack.push(currentTreeNode);
 				}
-				nodeStack.addAll(((TreeNodeImpl) currentNode).getNode());
+				EList<TreeNode> nodeList = ((TreeNodeImpl) currentNode).getNode();
+				ECollections.reverse(nodeList);
+				nodeStack.addAll(nodeList);
 			}
 		}
 	}
@@ -521,6 +557,16 @@ public class DataMapperDiagramModel {
 			}
 		}
 		throw new IllegalArgumentException("Type field not found in treeNode");
+	}
+	
+	private String getTreeNodeArrayItemType(TreeNodeImpl currentTreeNode) {
+		EList<PropertyKeyValuePair> propertyList = currentTreeNode.getProperties();
+		for (PropertyKeyValuePair propertyKeyValuePair : propertyList) {
+			if (ITEM_TYPE.equals(propertyKeyValuePair.getKey())) {
+				return propertyKeyValuePair.getValue();
+			}
+		}
+		throw new IllegalArgumentException("Item Type field not found in treeNode");
 	}
 
 	private SchemaDataType getSchemaDataType(String type) {

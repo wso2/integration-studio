@@ -271,10 +271,11 @@
     <eLiterals name="MIN" value="33"/>
     <eLiterals name="PROPERTIES" value="34"/>
     <eLiterals name="REPLACE" value="35"/>
-    <eLiterals name="STRING_TO_BOOLEAN" value="36"/>
-    <eLiterals name="STRING_TO_NUMBER" value="37" literal="STRING_TO_NUMBER"/>
     <eLiterals name="TRIM" value="38"/>
     <eLiterals name="TYPE_CONVERSION_OPERATION" value="39"/>
+    <eLiterals name="STRING_TO_BOOLEAN" value="36"/>
+    <eLiterals name="STRING_TO_NUMBER" value="37"/>
+    <eLiterals name="INSTANTIATE" value="40"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Celi" eSuperTypes="#//Operator"/>

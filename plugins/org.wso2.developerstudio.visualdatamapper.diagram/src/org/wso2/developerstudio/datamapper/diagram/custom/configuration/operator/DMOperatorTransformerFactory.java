@@ -29,6 +29,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.EndsWithOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.FloorOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.IfElseOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.InstantiateOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MatchOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MaxOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MinOperatorTransformer;
@@ -132,6 +133,8 @@ public class DMOperatorTransformerFactory {
 		switch (type) {
 		case DIRECT:
 			return new DirectOperatorTransformer();
+		case INSTANTIATE:
+			return new InstantiateOperatorTransformer();
 		case CONSTANT:
 			return new ConstantOperatorTransformer();
 		case COMPARE:

@@ -45,6 +45,7 @@ public class TransformerConstants {
 	public static final String LENGTH_TAG = "lengthTag";
 	public static final String TARGET_TAG = "Target";
 	public static final String REPLACE_WITH_TAG = "ReplaceWith";
+	public static final String VARIABLE_TYPE = "VARIABLE_TYPE";
 
     
 }

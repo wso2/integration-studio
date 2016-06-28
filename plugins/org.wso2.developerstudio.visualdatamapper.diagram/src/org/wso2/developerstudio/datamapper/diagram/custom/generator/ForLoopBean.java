@@ -16,6 +16,8 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -108,6 +110,7 @@ public class ForLoopBean {
 	}
 
 	public List<Integer> getOperationList() {
+		Collections.sort(operationList);
 		return operationList;
 	}
 

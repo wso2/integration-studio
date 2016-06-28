@@ -195,7 +195,7 @@ public class ScheduledTaskFormPage extends FormPage {
 		implSection.setClient(implSectionClient);
 	}
 
-	private void createFormTriggerSection(final ScrolledForm form, FormToolkit toolkit) {
+	private void createFormTriggerSection(final ScrolledForm form, final FormToolkit toolkit) {
 		/* Trigger Information */
 		Section triggerSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
 		triggerSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
@@ -210,7 +210,7 @@ public class ScheduledTaskFormPage extends FormPage {
 		triggerSection.setText(Messages.getString("ScheduledTaskPage.section.trigger"));
 		// triggerSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
 
-		Composite triggerSectionClient = toolkit.createComposite(triggerSection);
+		final Composite triggerSectionClient = toolkit.createComposite(triggerSection);
 		triggerSectionClient.setLayout(new TableWrapLayout());
 
 		toolkit.createLabel(triggerSectionClient, "Task Type");

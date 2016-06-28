@@ -120,10 +120,10 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		return functionBuilder.toString();
 	}
 
+	@SuppressWarnings("unchecked")
 	private String getJSCommandsForOperations(List<MappingOperation> mappingOperationList, DataMapperDiagramModel model)
 			throws DataMapperException {
 		Map<String, List<SchemaDataType>> variableMap = model.getVariableTypeMap();
-		int mappingOperationIndex = 0;
 		StringBuilder functionBuilder = new StringBuilder();
 		ArrayList<MappingOperation> unassignedMappingOperations = new ArrayList<>();
 		int unassignedOperationCount = 0;

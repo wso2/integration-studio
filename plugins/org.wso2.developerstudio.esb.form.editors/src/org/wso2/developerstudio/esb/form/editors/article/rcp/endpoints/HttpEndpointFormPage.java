@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,74 +38,70 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
-public class HttpEndpointFormPage extends FormPage {
+public class HttpEndpointFormPage implements IEndpoint {
 
-	RealEndpointUtils endpointUtils = new RealEndpointUtils();
+	EndpointUtils endpointUtils = new EndpointUtils();
 	
-	public HttpEndpointFormPage(FormEditor editor) {
-		super(editor, "httpEndpointForm", Messages.getString("HttpEndpointPage.sectionMainTitle"));
+	public Combo endpointTrace;
+	public Combo endpointStatistics;
+	public Text httpEP_UriTemplate;
+	public Text httpEP_Method;
+
+	public Text httpEP_Properties;
+	public Text httpEP_Description;
+	
+	
+	ScrolledForm form;
+    FormToolkit toolkit;
+    
+    Section basicSection;
+    Section miscSection;
+	
+	public HttpEndpointFormPage(ScrolledForm form, FormToolkit toolkit) {
+		this.form = form;
+    	this.toolkit = toolkit;
 	}
 
-	protected void createFormContent(IManagedForm managedForm) {
-		ScrolledForm form = managedForm.getForm();
-		FormToolkit toolkit = managedForm.getToolkit();
-		form.setText(Messages.getString("HttpEndpointPage.sectionMainTitle")); 
-		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
-
-		ColumnLayout layout = new ColumnLayout();
-		layout.leftMargin = 10;
-		layout.rightMargin = 10;
-		layout.maxNumColumns = 2;
-		form.getBody().setLayout(layout);
-
-		createFormBasicSection(form, toolkit);
-		createFormQosSection(form, toolkit);
-		createFormMiscSection(form, toolkit);
-		createFormErrorHandlingSection(form, toolkit);
-		
-	}
-	
-	private void createFormBasicSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormBasicSection() {
 		/* Basic Section */
 		Section basicSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
 		
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
 		basicSectionClient.setLayout(new TableWrapLayout());
 		
+		basicSection.setClient(basicSectionClient);
+		
 		toolkit.createLabel(basicSectionClient, "Trace Enabled");
-		Combo endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] tracingStates = {"True", "False"};
 		endpointTrace.setItems(tracingStates);
 		
 		toolkit.createLabel(basicSectionClient, "Statistics Enabled");
-		Combo endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] statisticsStates = {"True", "False"};
 		endpointStatistics.setItems(statisticsStates);
 		
 		toolkit.createLabel(basicSectionClient, "URI Template");
-		Text httpEP_UriTemplate = toolkit.createText(basicSectionClient, "");
+		httpEP_UriTemplate = toolkit.createText(basicSectionClient, "");
 		httpEP_UriTemplate.setBackground(new Color(null, 229,236,253));
 		httpEP_UriTemplate.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(basicSectionClient, "HTTP Method");
-		Text httpEP_Method = toolkit.createText(basicSectionClient, "");
+		httpEP_Method = toolkit.createText(basicSectionClient, "");
 		httpEP_Method.setBackground(new Color(null, 229,236,253));
 		httpEP_Method.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
-		
-		basicSection.setClient(basicSectionClient);
-		
 	}
 	
-	private void createFormQosSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormQosSection() {
 		
 		endpointUtils.createFormQosSection(form, toolkit);
 		
 	}
 	
-	private void createFormMiscSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormMiscSection() {
 
 		 /* Misc Section */ 
 		Section miscSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
@@ -113,29 +109,28 @@ public class HttpEndpointFormPage extends FormPage {
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
 		miscSectionClient.setLayout(new TableWrapLayout());
 		
+		miscSection.setClient(miscSectionClient);
 		
 		toolkit.createLabel(miscSectionClient, "Properties");
-		Text httpEP_Properties = toolkit.createText(miscSectionClient, "");
+		httpEP_Properties = toolkit.createText(miscSectionClient, "");
 		httpEP_Properties.setBackground(new Color(null, 229,236,253));
 		httpEP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(miscSectionClient, "Description");
-		Text httpEP_Description = toolkit.createText(miscSectionClient, "");
+		httpEP_Description = toolkit.createText(miscSectionClient, "");
 		httpEP_Description.setBackground(new Color(null, 229,236,253));
 		httpEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		miscSection.setClient(miscSectionClient);
 		
 	}
 	
 	
-	private void createFormErrorHandlingSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormErrorHandlingSection() {
 		
 		endpointUtils.createFormErrorHandlingSection(form, toolkit);
 
 	}
 
-	public RealEndpointUtils getEndpointUtils() {
+	public EndpointUtils getEndpointUtils() {
 		return endpointUtils;
 	}
 	

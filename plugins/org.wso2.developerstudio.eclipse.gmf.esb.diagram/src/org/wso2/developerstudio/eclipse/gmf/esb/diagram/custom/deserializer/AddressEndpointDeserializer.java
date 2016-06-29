@@ -30,25 +30,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagr
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
-	
-	public AbstractEndPoint createNode(IGraphicalEditPart part,AbstractEndpoint object) {
-		Assert.isTrue(object instanceof org.apache.synapse.endpoints.AddressEndpoint, "Unsupported endpoint passed in for deserialization at "+ this.getClass());
-		
-		org.apache.synapse.endpoints.AddressEndpoint addressEndpoint = (org.apache.synapse.endpoints.AddressEndpoint)object;
-		IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart ||
-				part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.AddressEndPoint_3646
-				: EsbElementTypes.AddressEndPoint_3610;
+
+	public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) {
+		Assert.isTrue(object instanceof org.apache.synapse.endpoints.AddressEndpoint,
+				"Unsupported endpoint passed in for deserialization at " + this.getClass());
+
+		org.apache.synapse.endpoints.AddressEndpoint addressEndpoint = (org.apache.synapse.endpoints.AddressEndpoint) object;
+		IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
+				|| part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.AddressEndPoint_3646
+						: EsbElementTypes.AddressEndPoint_3610;
 		AbstractEndPoint endPoint = (AbstractEndPoint) DeserializerUtils.createNode(part, endpointType);
 		setElementToEdit(endPoint);
-		deserializeEndpoint(addressEndpoint,endPoint);
-		
+		deserializeEndpoint(addressEndpoint, endPoint);
+
 		executeSetValueCommand(ADDRESS_END_POINT__URI, addressEndpoint.getDefinition().getAddress());
-		
+
 		return endPoint;
 	}
 
@@ -56,20 +57,17 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
 	public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
 
 		ESBFormEditor addressEPFormEditor = (ESBFormEditor) formEditor;
-		AddressEndpointFormPage endpointPage = (AddressEndpointFormPage) addressEPFormEditor.getFormPageForArtifact(ArtifactType.ENDPOINT);
-		
+		EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor
+				.getFormPageForArtifact(ArtifactType.ENDPOINT);
+
 		if (endpointObject instanceof AddressEndpoint) {
-			
+
 			AddressEndpoint addressEndpoint = (AddressEndpoint) endpointObject;
+
 			
-			endpointPage.addressEP_Format.setText("");
-			
-			
-			
+
 		}
-		
-		
-		
+
 	}
-	
+
 }

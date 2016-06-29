@@ -35,7 +35,7 @@ import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
-public class RealEndpointUtils {
+public class EndpointUtils {
 	
 	public Combo endpointReliableMessaging;
 	public Combo endpointSecurity;

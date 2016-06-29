@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,9 +38,9 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
-public class AddressEndpointFormPage extends FormPage {
+public class AddressEndpointFormPage implements IEndpoint {
 
-	RealEndpointUtils endpointUtils = new RealEndpointUtils();
+	EndpointUtils endpointUtils = new EndpointUtils();
 
 	public Combo addressEP_Format;
 	public Combo endpointTrace;
@@ -50,37 +50,27 @@ public class AddressEndpointFormPage extends FormPage {
 	public Text addressEP_Properties;
 	public Combo addressEP_Optimize;
 	public Text addressEP_Description;
-
-
-	public AddressEndpointFormPage(FormEditor editor) {
-		super(editor, "addressEndpointForm", Messages.getString("AddressEndpointPage.sectionMainTitle"));
-	}
-
-	protected void createFormContent(IManagedForm managedForm) {
-		ScrolledForm form = managedForm.getForm();
-		FormToolkit toolkit = managedForm.getToolkit();
-		form.setText(Messages.getString("AddressEndpointPage.sectionMainTitle")); 
-		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
-
-		ColumnLayout layout = new ColumnLayout();
-		layout.leftMargin = 10;
-		layout.rightMargin = 10;
-		layout.maxNumColumns = 2;
-		form.getBody().setLayout(layout);
-
-		createFormBasicSection(form, toolkit);
-		createFormQosSection(form, toolkit);
-		createFormMiscSection(form, toolkit);
-		createFormErrorHandlingSection(form, toolkit);
-		
-	}
 	
-	private void createFormBasicSection(final ScrolledForm form, FormToolkit toolkit) {
+	ScrolledForm form;
+    FormToolkit toolkit;
+    
+    Section basicSection;
+    Section miscSection;
+
+	public AddressEndpointFormPage(ScrolledForm form, FormToolkit toolkit) {
+		this.form = form;
+    	this.toolkit = toolkit;
+	}
+
+	public void createFormBasicSection() {
 		/* Basic Section */
-		Section basicSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
+		basicSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
 		
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
 		basicSectionClient.setLayout(new TableWrapLayout());
+		basicSection.setClient(basicSectionClient);
+		
+		basicSection.setVisible(false);
 		
 		toolkit.createLabel(basicSectionClient, "Format");
 		addressEP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
@@ -105,25 +95,24 @@ public class AddressEndpointFormPage extends FormPage {
 		addressEP_URI.setBackground(new Color(null, 229,236,253));
 		addressEP_URI.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
-		
-		basicSection.setClient(basicSectionClient);
-		
 	}
 	
-	private void createFormQosSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormQosSection() {
 		
 		endpointUtils.createFormQosSection(form, toolkit);
 		
 	}
 	
-	private void createFormMiscSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormMiscSection() {
 
 		 /* Misc Section */ 
-		Section miscSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+		miscSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
 		
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
 		miscSectionClient.setLayout(new TableWrapLayout());
+		miscSection.setClient(miscSectionClient);
 		
+		miscSection.setVisible(false);
 		
 		toolkit.createLabel(miscSectionClient, "Properties");
 		addressEP_Properties = toolkit.createText(miscSectionClient, "");
@@ -141,18 +130,16 @@ public class AddressEndpointFormPage extends FormPage {
 		addressEP_Description.setBackground(new Color(null, 229,236,253));
 		addressEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
-		miscSection.setClient(miscSectionClient);
-		
 	}
 	
 	
-	private void createFormErrorHandlingSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormErrorHandlingSection() {
 		
 		endpointUtils.createFormErrorHandlingSection(form, toolkit);
 
 	}
 
-	public RealEndpointUtils getEndpointUtils() {
+	public EndpointUtils getEndpointUtils() {
 		return endpointUtils;
 	}
 

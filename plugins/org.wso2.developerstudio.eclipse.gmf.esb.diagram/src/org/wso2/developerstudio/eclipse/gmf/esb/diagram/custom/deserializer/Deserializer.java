@@ -264,7 +264,22 @@ public class Deserializer {
 				}
 			}			
 		} else if("endpoint".equals(localName)){
-			artifactType=ArtifactType.ENDPOINT;
+			/*Iterator children = element.getChildElements();
+			if (children.hasNext()){
+				OMElement child1 = (OMElement) children.next();
+				String child1LocalName = child1.getLocalName();
+
+				if("address".equals(child1LocalName)) {
+					artifactType=ArtifactType.ENDPOINT_ADDRESS;
+				} else if("default".equals(child1LocalName)) {
+					artifactType=ArtifactType.ENDPOINT_DEFAULT;
+				} else if("http".equals(child1LocalName)) {
+					artifactType=ArtifactType.ENDPOINT_HTTP;
+				} else if("wsdl".equals(child1LocalName)) {
+					artifactType=ArtifactType.ENDPOINT_WSDL;
+				}
+			}	*/
+			artifactType = ArtifactType.ENDPOINT;
 		} else if("messageStore".equals(localName)){
 			artifactType=ArtifactType.MESSAGE_STORE;
 		} else if("messageProcessor".equals(localName)){
@@ -338,6 +353,10 @@ public class Deserializer {
 			artifacts.put(api.getName(), api);
 			break;
 		case ENDPOINT:
+//		case ENDPOINT_ADDRESS:
+//		case ENDPOINT_DEFAULT:
+//		case ENDPOINT_HTTP:
+//		case ENDPOINT_WSDL:
 			Endpoint endpoint = EndpointFactory.getEndpointFromElement(element, false, properties);
 			EndpointWrapper wrapper = new EndpointWrapper(endpoint,endpoint.getName());
 			artifacts.put(wrapper.getName(), wrapper);

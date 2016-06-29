@@ -62,7 +62,58 @@
 			<description>ESB Config Project</description>
 		</wizard>
    </extension>
+  
+  <!-- Adding property tester for adding the item to the right click menu based on the resource type-->
+  <extension
+    point="org.eclipse.core.expressions.propertyTesters">
+       <propertyTester
+         class="org.wso2.developerstudio.eclipse.esb.project.propertytesters.ResourceTester"
+         id="ResourceTester"
+         namespace="org.wso2.developerstudio.eclipse.esb.project.propertytesters"
+         properties="checkResourceType"
+         type="org.eclipse.core.resources.IResource">
+       </propertyTester>
+  </extension>
+  
+ <!-- Adding handler to open the ESB config project wizard-->
+  <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="developerstudio.commands.new.esbConfigProject"
+            class="org.wso2.developerstudio.eclipse.esb.project.keyhandlers.ESBProjectKeyHandler">
+      </handler>
+ </extension>
+ 
+  <!-- Adding menus extension-->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:common.new.menu?after=new">
+            <command
+                  commandId="developerstudio.commands.new.esbConfigProject"
+                  label="ESB Config Project">
+                  <!-- Adding visibleWhen to visible the item only when clicking on the project explorer-->
+                  <visibleWhen
+                     checkEnabled="false">
+                     <with
+                       variable="activeMenuSelection">
+                      <iterate>
+                        <adapt
+                          type="org.eclipse.core.resources.IResource">
+                         <test
+                            property="org.wso2.developerstudio.eclipse.esb.project.propertytesters.checkResourceType"
+                            value="true" 
+                            forcePluginActivation="true">          
+                         </test>
+                       </adapt>
+                      </iterate>
+                     </with>
+                  </visibleWhen>
+            </command>
+      </menuContribution>
+   </extension>
    
+    <!-- Adding perspectiveExtensions to add the item to File-New menu -->
     <extension
         point="org.eclipse.ui.perspectiveExtensions">
         <perspectiveExtension targetID="*">

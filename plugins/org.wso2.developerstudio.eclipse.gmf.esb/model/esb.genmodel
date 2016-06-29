@@ -27,6 +27,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/TEMPLATE_ENDPOINT_DEFAULT"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/TEMPLATE_ENDPOINT_HTTP"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/TEMPLATE_SEQUENCE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_ADDRESS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_DEFAULT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_HTTP"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/ENDPOINT_WSDL"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CallMediatorEndpointType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallMediatorEndpointType/INLINE"/>

@@ -35,32 +35,48 @@ import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
-public class RealEndpointUtils {
+public class EndpointUtils {
 	
-	public static void createFormQosSection(final ScrolledForm form, FormToolkit toolkit) {
+	public Combo endpointReliableMessaging;
+	public Combo endpointSecurity;
+	public Combo endpointAddressing;
+	
+	
+	public Text endpointSuspendErrorCodes;
+	public Text endpointSuspendInitialDuration;
+	public Text endpointSuspendMaxDuration;
+	public Text endpointSuspendProgressFactor;
+
+	public Text endpointRetryErrorCodes;
+	public Text endpointRetryCount;
+	public Text endpointRetryDelay;
+
+	public Text endpointTimeoutDuration;
+	public Combo endpointTimeoutAction;
+	
+	
+	public void createFormQosSection(final ScrolledForm form, FormToolkit toolkit) {
 		
 		/* QOS Information */ 
-		Section qosSection = RealEndpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.qos"));
+		Section qosSection = createSection(form, toolkit, Messages.getString("EndpointPage.section.qos"));
 		
 		Composite qosSectionClient = toolkit.createComposite(qosSection);
 		qosSectionClient.setLayout(new TableWrapLayout());
 		
-		
-
 		toolkit.createLabel(qosSectionClient, "Reliable Messaging Enabled");
-		Combo endpointReliableMessaging = new Combo(qosSectionClient, SWT.DROP_DOWN);
+		endpointReliableMessaging = new Combo(qosSectionClient, SWT.DROP_DOWN);
 		endpointReliableMessaging.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states = {"True", "False"};
 		endpointReliableMessaging.setItems(states);
 		
 		toolkit.createLabel(qosSectionClient, "Security Enabled");
-		Combo endpointSecurity = new Combo(qosSectionClient, SWT.DROP_DOWN);
+		endpointSecurity = new Combo(qosSectionClient, SWT.DROP_DOWN);
 		endpointSecurity.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states1 = {"True", "False"};
 		endpointSecurity.setItems(states1);
 		
 		toolkit.createLabel(qosSectionClient, "Addressing Enabled");
-		Combo endpointAddressing = new Combo(qosSectionClient, SWT.DROP_DOWN);
+		endpointAddressing = new Combo(qosSectionClient, SWT.DROP_DOWN);
 		endpointAddressing.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states2 = {"True", "False"};
 		endpointAddressing.setItems(states2);
@@ -68,7 +84,7 @@ public class RealEndpointUtils {
 		qosSection.setClient(qosSectionClient);
 	}
 
-	public static void createFormErrorHandlingSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormErrorHandlingSection(final ScrolledForm form, FormToolkit toolkit) {
 		/* Error handling */
 		Section errorHandlingSection = createSection(form, toolkit, Messages.getString("EndpointPage.section.errorHandling"));
 		
@@ -79,22 +95,22 @@ public class RealEndpointUtils {
 		toolkit.createLabel(errorHandlingSectionClient, "Endpoint Suspend State");
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Suspend Error Codes");
-		Text endpointSuspendErrorCodes = toolkit.createText(errorHandlingSectionClient, "");
+		endpointSuspendErrorCodes = toolkit.createText(errorHandlingSectionClient, "");
 		endpointSuspendErrorCodes.setBackground(new Color(null, 229,236,253));
 		endpointSuspendErrorCodes.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Suspend Initial Duration");
-		Text endpointSuspendInitialDuration = toolkit.createText(errorHandlingSectionClient, "");
+		endpointSuspendInitialDuration = toolkit.createText(errorHandlingSectionClient, "");
 		endpointSuspendInitialDuration.setBackground(new Color(null, 229,236,253));
 		endpointSuspendInitialDuration.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Suspend Maximum Duration");
-		Text endpointSuspendMaxDuration = toolkit.createText(errorHandlingSectionClient, "");
+		endpointSuspendMaxDuration = toolkit.createText(errorHandlingSectionClient, "");
 		endpointSuspendMaxDuration.setBackground(new Color(null, 229,236,253));
 		endpointSuspendMaxDuration.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Suspend Progression Factor");
-		Text endpointSuspendProgressFactor = toolkit.createText(errorHandlingSectionClient, "");
+		endpointSuspendProgressFactor = toolkit.createText(errorHandlingSectionClient, "");
 		endpointSuspendProgressFactor.setBackground(new Color(null, 229,236,253));
 		endpointSuspendProgressFactor.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
@@ -104,17 +120,17 @@ public class RealEndpointUtils {
 		toolkit.createLabel(errorHandlingSectionClient, "Endpoint Timeout State");
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Retry Error Codes");
-		Text endpointRetryErrorCodes = toolkit.createText(errorHandlingSectionClient, "");
+		endpointRetryErrorCodes = toolkit.createText(errorHandlingSectionClient, "");
 		endpointRetryErrorCodes.setBackground(new Color(null, 229,236,253));
 		endpointRetryErrorCodes.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Retry Count");
-		Text endpointRetryCount = toolkit.createText(errorHandlingSectionClient, "");
+		endpointRetryCount = toolkit.createText(errorHandlingSectionClient, "");
 		endpointRetryCount.setBackground(new Color(null, 229,236,253));
 		endpointRetryCount.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Retry Delay");
-		Text endpointRetryDelay = toolkit.createText(errorHandlingSectionClient, "");
+		endpointRetryDelay = toolkit.createText(errorHandlingSectionClient, "");
 		endpointRetryDelay.setBackground(new Color(null, 229,236,253));
 		endpointRetryDelay.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
@@ -125,12 +141,12 @@ public class RealEndpointUtils {
 		toolkit.createLabel(errorHandlingSectionClient, "Timeout");
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Timeout Duration");
-		Text endpointTimeoutDuration = toolkit.createText(errorHandlingSectionClient, "");
+		endpointTimeoutDuration = toolkit.createText(errorHandlingSectionClient, "");
 		endpointTimeoutDuration.setBackground(new Color(null, 229,236,253));
 		endpointTimeoutDuration.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Timeout Action");
-		Combo endpointTimeoutAction = new Combo(errorHandlingSectionClient, SWT.DROP_DOWN);
+		endpointTimeoutAction = new Combo(errorHandlingSectionClient, SWT.DROP_DOWN);
 		endpointTimeoutAction.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] timeoutActions = {"Never", "Discard", "Fault"};
 		endpointTimeoutAction.setItems(timeoutActions);
@@ -138,7 +154,7 @@ public class RealEndpointUtils {
 		errorHandlingSection.setClient(errorHandlingSectionClient);
 	}
 
-	public static Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {
+	public Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {
 		
 		Section section = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
 		section.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
@@ -155,7 +171,7 @@ public class RealEndpointUtils {
 		return section;
 	}
 	
-	public static void addSeparator(final ScrolledForm form, FormToolkit toolkit, Composite client) {
+	public void addSeparator(final ScrolledForm form, FormToolkit toolkit, Composite client) {
 		Label padBefore = toolkit.createLabel(client, null);
 		TableWrapData padData = new TableWrapData();
 		padData.maxWidth = 0;

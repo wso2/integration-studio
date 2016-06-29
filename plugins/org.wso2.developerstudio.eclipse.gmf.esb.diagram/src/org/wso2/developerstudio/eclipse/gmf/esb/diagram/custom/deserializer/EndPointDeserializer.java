@@ -26,9 +26,14 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.ui.forms.editor.FormEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 /**
@@ -36,6 +41,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
  */
 public class EndPointDeserializer extends AbstractEsbNodeDeserializer<EndpointWrapper, EndpointDiagram> {
 
+	@Deprecated
 	@SuppressWarnings("unchecked")
 	@Override
 	public EndpointDiagram createNode(IGraphicalEditPart part, EndpointWrapper endpointWrapper) {
@@ -80,5 +86,29 @@ public class EndPointDeserializer extends AbstractEsbNodeDeserializer<EndpointWr
 		return endpointDiagram;
 	}
 
+	@Override
+	public void createNode(FormEditor formEditor, EndpointWrapper endpointWrapper) {
+		
+		ESBFormEditor endpointFormEditor = (ESBFormEditor) formEditor;
+		EndpointFormPage endpointPage = (EndpointFormPage) endpointFormEditor.getFormPageForArtifact(ArtifactType.ENDPOINT);
+
+		if (endpointPage instanceof EndpointFormPage) {
+			System.out.println();
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+	}
+
+	
+	
+	
+	
 
 }

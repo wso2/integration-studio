@@ -22783,6 +22783,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.TEMPLATE_ENDPOINT_DEFAULT);
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.TEMPLATE_ENDPOINT_HTTP);
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.TEMPLATE_SEQUENCE);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.ENDPOINT_ADDRESS);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.ENDPOINT_DEFAULT);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.ENDPOINT_HTTP);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.ENDPOINT_WSDL);
 
 		initEEnum(callMediatorEndpointTypeEEnum, CallMediatorEndpointType.class, "CallMediatorEndpointType");
 		addEEnumLiteral(callMediatorEndpointTypeEEnum, CallMediatorEndpointType.INLINE);

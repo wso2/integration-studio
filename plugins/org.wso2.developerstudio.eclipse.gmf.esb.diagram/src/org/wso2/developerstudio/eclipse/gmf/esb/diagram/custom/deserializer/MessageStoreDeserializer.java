@@ -89,7 +89,7 @@ public class MessageStoreDeserializer
 	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
 	private static final String customStore = "customStore";
 	
-
+	@Deprecated
 	@Override
 	public org.wso2.developerstudio.eclipse.gmf.esb.MessageStore createNode(
 			IGraphicalEditPart part, MessageStore store) {

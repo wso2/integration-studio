@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,56 +38,50 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
-public class DefaultEndpointFormPage extends FormPage {
-	/**
-	 * @param id
-	 * @param title
-	 */
+public class DefaultEndpointFormPage implements IEndpoint {
 	
-	public DefaultEndpointFormPage(FormEditor editor) {
-		super(editor, "defaultEndpointForm", Messages.getString("DefaultEndpointPage.sectionMainTitle"));
+	EndpointUtils endpointUtils = new EndpointUtils();
+	
+	public Combo defaultEP_Format;
+	public Combo endpointTrace;
+	public Combo endpointStatistics;
+
+	public Text defaultEP_Properties;
+	public Combo defaultEP_Optimize;
+	public Text defaultEP_Description;
+	
+	ScrolledForm form;
+    FormToolkit toolkit;
+    
+    Section basicSection;
+    Section miscSection;
+
+	public DefaultEndpointFormPage(ScrolledForm form, FormToolkit toolkit) {
+		this.form = form;
+    	this.toolkit = toolkit;
 	}
 
-	protected void createFormContent(IManagedForm managedForm) {
-		ScrolledForm form = managedForm.getForm();
-		FormToolkit toolkit = managedForm.getToolkit();
-		form.setText(Messages.getString("DefaultEndpointPage.sectionMainTitle")); 
-		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
-
-		ColumnLayout layout = new ColumnLayout();
-		layout.leftMargin = 10;
-		layout.rightMargin = 10;
-		layout.maxNumColumns = 2;
-		form.getBody().setLayout(layout);
-
-		createFormBasicSection(form, toolkit);
-		createFormQosSection(form, toolkit);
-		createFormMiscSection(form, toolkit);
-		createFormErrorHandlingSection(form, toolkit);
-		
-	}
-	
-	private void createFormBasicSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormBasicSection() {
 		/* Basic Section */
-		Section basicSection = RealEndpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
+		Section basicSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
 		
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
 		basicSectionClient.setLayout(new TableWrapLayout());
 		
 		toolkit.createLabel(basicSectionClient, "Format");
-		Combo defaultEP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		defaultEP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		defaultEP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
 		defaultEP_Format.setItems(formats);
 		
 		toolkit.createLabel(basicSectionClient, "Trace Enabled");
-		Combo endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] tracingStates = {"True", "False"};
 		endpointTrace.setItems(tracingStates);
 		
 		toolkit.createLabel(basicSectionClient, "Statistics Enabled");
-		Combo endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] statisticsStates = {"True", "False"};
 		endpointStatistics.setItems(statisticsStates);
@@ -96,34 +90,34 @@ public class DefaultEndpointFormPage extends FormPage {
 		
 	}
 	
-	private void createFormQosSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormQosSection() {
 		
-		RealEndpointUtils.createFormQosSection(form, toolkit);
+		endpointUtils.createFormQosSection(form, toolkit);
 		
 	}
 	
-	private void createFormMiscSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormMiscSection() {
 
 		 /* Misc Section */ 
-		Section miscSection = RealEndpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+		Section miscSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
 		
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
 		miscSectionClient.setLayout(new TableWrapLayout());
 		
 		
 		toolkit.createLabel(miscSectionClient, "Properties");
-		Text defaultEP_Properties = toolkit.createText(miscSectionClient, "");
+		defaultEP_Properties = toolkit.createText(miscSectionClient, "");
 		defaultEP_Properties.setBackground(new Color(null, 229,236,253));
 		defaultEP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(miscSectionClient, "Optimize");
-		Combo defaultEP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
+		defaultEP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
 		defaultEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "MTOM", "SWA"};
 		defaultEP_Optimize.setItems(formats);
 		
 		toolkit.createLabel(miscSectionClient, "Description");
-		Text defaultEP_Description = toolkit.createText(miscSectionClient, "");
+		defaultEP_Description = toolkit.createText(miscSectionClient, "");
 		defaultEP_Description.setBackground(new Color(null, 229,236,253));
 		defaultEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
@@ -132,11 +126,14 @@ public class DefaultEndpointFormPage extends FormPage {
 	}
 	
 	
-	private void createFormErrorHandlingSection(final ScrolledForm form, FormToolkit toolkit) {
+	public void createFormErrorHandlingSection() {
 		
-		RealEndpointUtils.createFormErrorHandlingSection(form, toolkit);
+		endpointUtils.createFormErrorHandlingSection(form, toolkit);
 
 	}
-	
 
+	public EndpointUtils getEndpointUtils() {
+		return endpointUtils;
+	}
+	
 }

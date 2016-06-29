@@ -145,7 +145,39 @@ public enum ArtifactType implements Enumerator {
 	TEMPLATE_ENDPOINT_WSDL(15, "TEMPLATE_ENDPOINT_WSDL", "TEMPLATE_ENDPOINT_WSDL"),
 	TEMPLATE_ENDPOINT_DEFAULT(16, "TEMPLATE_ENDPOINT_DEFAULT", "TEMPLATE_ENDPOINT_DEFAULT"),
 	TEMPLATE_ENDPOINT_HTTP(17, "TEMPLATE_ENDPOINT_HTTP", "TEMPLATE_ENDPOINT_HTTP"),
-	TEMPLATE_SEQUENCE(18, "TEMPLATE_SEQUENCE", "TEMPLATE_SEQUENCE");
+	TEMPLATE_SEQUENCE(18, "TEMPLATE_SEQUENCE", "TEMPLATE_SEQUENCE"), /**
+	 * The '<em><b>ENDPOINT ADDRESS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT_ADDRESS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENDPOINT_ADDRESS(19, "ENDPOINT_ADDRESS", "ENDPOINT_ADDRESS"), /**
+	 * The '<em><b>ENDPOINT DEFAULT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT_DEFAULT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENDPOINT_DEFAULT(20, "ENDPOINT_DEFAULT", "ENDPOINT_DEFAULT"), /**
+	 * The '<em><b>ENDPOINT HTTP</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT_HTTP_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENDPOINT_HTTP(21, "ENDPOINT_HTTP", "ENDPOINT_HTTP"), /**
+	 * The '<em><b>ENDPOINT WSDL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT_WSDL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENDPOINT_WSDL(22, "ENDPOINT_WSDL", "ENDPOINT_WSDL");
 
 	/**
 	 * The '<em><b>SYNAPSE CONFIG</b></em>' literal value.
@@ -433,6 +465,66 @@ public enum ArtifactType implements Enumerator {
 	public static final int TEMPLATE_SEQUENCE_VALUE = 18;
 
 				/**
+	 * The '<em><b>ENDPOINT ADDRESS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ENDPOINT ADDRESS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT_ADDRESS
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENDPOINT_ADDRESS_VALUE = 19;
+
+				/**
+	 * The '<em><b>ENDPOINT DEFAULT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ENDPOINT DEFAULT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT_DEFAULT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENDPOINT_DEFAULT_VALUE = 20;
+
+				/**
+	 * The '<em><b>ENDPOINT HTTP</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ENDPOINT HTTP</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT_HTTP
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENDPOINT_HTTP_VALUE = 21;
+
+				/**
+	 * The '<em><b>ENDPOINT WSDL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ENDPOINT WSDL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ENDPOINT_WSDL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENDPOINT_WSDL_VALUE = 22;
+
+				/**
 	 * An array of all the '<em><b>Artifact Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -459,6 +551,10 @@ public enum ArtifactType implements Enumerator {
 			TEMPLATE_ENDPOINT_DEFAULT,
 			TEMPLATE_ENDPOINT_HTTP,
 			TEMPLATE_SEQUENCE,
+			ENDPOINT_ADDRESS,
+			ENDPOINT_DEFAULT,
+			ENDPOINT_HTTP,
+			ENDPOINT_WSDL,
 		};
 
 	/**
@@ -534,6 +630,10 @@ public enum ArtifactType implements Enumerator {
 			case TEMPLATE_ENDPOINT_DEFAULT_VALUE: return TEMPLATE_ENDPOINT_DEFAULT;
 			case TEMPLATE_ENDPOINT_HTTP_VALUE: return TEMPLATE_ENDPOINT_HTTP;
 			case TEMPLATE_SEQUENCE_VALUE: return TEMPLATE_SEQUENCE;
+			case ENDPOINT_ADDRESS_VALUE: return ENDPOINT_ADDRESS;
+			case ENDPOINT_DEFAULT_VALUE: return ENDPOINT_DEFAULT;
+			case ENDPOINT_HTTP_VALUE: return ENDPOINT_HTTP;
+			case ENDPOINT_WSDL_VALUE: return ENDPOINT_WSDL;
 		}
 		return null;
 	}

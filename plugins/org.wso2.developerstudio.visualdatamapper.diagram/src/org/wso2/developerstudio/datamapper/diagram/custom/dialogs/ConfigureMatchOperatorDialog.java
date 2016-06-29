@@ -15,6 +15,10 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.dialogs;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -40,6 +44,11 @@ import org.wso2.developerstudio.datamapper.impl.MatchImpl;
 
 public class ConfigureMatchOperatorDialog extends AbstractConfigureOperatorDialog {
 
+	public static final String NASHORN = "nashorn";
+	public static final String RHINO = "rhino";
+	public static final String JAVA_VERSION = "java.version";
+	public static final String JAVA_VERSION_7 = "1.7";
+	public static final String JAVA_VERSION_6 = "1.6";
 	private String pattern;
 	private TransactionalEditingDomain editingDomain;
 	private MatchImpl matchImpl;
@@ -129,6 +138,7 @@ public class ConfigureMatchOperatorDialog extends AbstractConfigureOperatorDialo
 
 	protected void okPressed() {
 		if (!StringUtils.isEmpty(pattern)) {
+			pattern = validateRegex(pattern);
 			MatchImpl matchOperatorInstance = (MatchImpl) matchImpl;
 			SetCommand setCmnd = new SetCommand(editingDomain, matchOperatorInstance,
 					DataMapperPackage.Literals.MATCH__PATTERN, pattern);
@@ -139,6 +149,24 @@ public class ConfigureMatchOperatorDialog extends AbstractConfigureOperatorDialo
 					.changeOperatorHeader("Match : \"" + pattern + "\"");
 		}
 		super.okPressed();
+	}
+
+	private String validateRegex(String input) {
+		String output = input;
+		String scriptExecutorType = NASHORN;
+		String javaVersion = System.getProperty(JAVA_VERSION);
+		if (javaVersion.startsWith(JAVA_VERSION_7) || javaVersion.startsWith(JAVA_VERSION_6)) {
+			scriptExecutorType = RHINO;
+		}
+		ScriptEngine engine = new ScriptEngineManager().getEngineByName(scriptExecutorType);
+		try {
+			engine.eval("function myFunction(input) {\n" + "var sampleString = \"acbdacfac\";\n" + "\n"
+					+ "   return sampleString.match(input);\n" + "}\n");
+			engine.eval("myFunction(" + input + ");");
+		} catch (ScriptException e) {
+			output = "\"" + input + "\"";
+		}
+		return output;
 	}
 
 }

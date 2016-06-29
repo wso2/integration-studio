@@ -545,6 +545,7 @@ public class DataMapperDiagramModel {
 				EList<TreeNode> nodeList = ((TreeNodeImpl) currentNode).getNode();
 				ECollections.reverse(nodeList);
 				nodeStack.addAll(nodeList);
+				ECollections.reverse(nodeList);
 			}
 		}
 	}

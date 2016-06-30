@@ -187,7 +187,7 @@ public class CeliEditPart extends AbstractOperatorEditPart {
 	public class CeliFigure extends OperatorRectangle {
 
 		public CeliFigure() {
-			super("Celi");
+			super("Ceiling");
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -196,11 +196,11 @@ public class CeliEditPart extends AbstractOperatorEditPart {
 		}
 
 		public String getNodeName() {
-			return "Celi";
+			return "Ceiling";
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Celi Operation");
+			return new Label("Ceiling Operation");
 		}
 
 	}

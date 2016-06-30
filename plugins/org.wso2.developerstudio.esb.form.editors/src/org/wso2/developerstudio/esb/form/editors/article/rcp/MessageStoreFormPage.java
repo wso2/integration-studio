@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,8 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import javax.swing.JMenu;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -33,7 +30,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
 import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.widgets.ColumnLayout;
@@ -43,8 +39,13 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.IMessageProcessor;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.*;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.CustomStore;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.IMessageStore;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.InMemory;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JDBC;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JMS;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.RabbitMQ;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.WSO2MB;
 /**
  * 
  * To change the template for this generated type comment go to Window -

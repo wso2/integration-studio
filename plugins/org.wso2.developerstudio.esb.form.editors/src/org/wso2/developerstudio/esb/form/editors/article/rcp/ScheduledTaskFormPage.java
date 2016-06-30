@@ -16,6 +16,8 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
+import java.util.List;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -40,12 +42,13 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 
 /**
  * 
- * To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Generation - Code and Comments
+ * To change the template for this generated type comment go to Window - Preferences - Java - Code Generation - Code and
+ * Comments
  */
 public class ScheduledTaskFormPage extends FormPage {
 
@@ -61,8 +64,8 @@ public class ScheduledTaskFormPage extends FormPage {
 	private Label countLbl;
 	private Label cronLbl;
 	private Label intervalLbl;
-	
-	
+	private List<TaskProperty> taskPropertyList;
+
 	/**
 	 * @param id
 	 * @param title
@@ -170,25 +173,28 @@ public class ScheduledTaskFormPage extends FormPage {
 		taskImpl = toolkit.createText(implSectionClient, "org.apache.synapse.startup.tasks.MessageInjector");
 		taskImpl.setBackground(new Color(null, 229, 236, 253));
 		// taskImpl.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
+
 		Button taskImplButton = toolkit.createButton(implSectionClient, "Task Implementation Properties", SWT.PUSH);
 		taskImplButton.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				Shell shell = Display.getDefault().getActiveShell();
- 				TaskPropertyDialog taskPropDialog = new TaskPropertyDialog(shell, getTaskImpl().getText());
+				TaskPropertyDialog taskPropDialog = new TaskPropertyDialog(shell, getTaskImpl().getText(),
+						getTaskPropertyList());
 				taskPropDialog.setBlockOnOpen(true);
 				taskPropDialog.open();
-				
+				taskPropertyList = taskPropDialog.getTaskPropertyList();
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
+		setTaskPropertyList(taskPropertyList);
+
 		// taskImplProp.setLayoutData(new
 		// TableWrapData(TableWrapData.FILL_GRAB));
 
@@ -242,7 +248,7 @@ public class ScheduledTaskFormPage extends FormPage {
 				refershTaskSettings();
 			}
 		});
-		
+
 		triggerSection.setClient(triggerSectionClient);
 	}
 
@@ -309,7 +315,7 @@ public class ScheduledTaskFormPage extends FormPage {
 	public void setCron(Text cron) {
 		this.cron = cron;
 	}
-	
+
 	public Combo getTriggerType() {
 		return triggerType;
 	}
@@ -317,17 +323,17 @@ public class ScheduledTaskFormPage extends FormPage {
 	public void setTriggerType(Combo triggerType) {
 		this.triggerType = triggerType;
 	}
-	
+
 	public void refershTaskSettings() {
 		if (triggerType.getSelectionIndex() == 0) {
 			count.setVisible(true);
 			interval.setVisible(true);
 			countLbl.setVisible(true);
 			intervalLbl.setVisible(true);
-			
+
 			cron.setVisible(false);
 			cronLbl.setVisible(false);
-			
+
 		} else if (triggerType.getSelectionIndex() == 1) {
 			cron.setVisible(true);
 			cronLbl.setVisible(true);
@@ -336,6 +342,15 @@ public class ScheduledTaskFormPage extends FormPage {
 			countLbl.setVisible(false);
 			intervalLbl.setVisible(false);
 		}
+	}
+
+	public void setTaskPropertyList(List<TaskProperty> taskPropertyList) {
+		this.taskPropertyList = taskPropertyList;
+
+	}
+
+	public List<TaskProperty> getTaskPropertyList() {
+		return taskPropertyList;
 	}
 
 }

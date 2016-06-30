@@ -1,8 +1,25 @@
+/*
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
@@ -27,17 +44,15 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.ScheduledTaskFormPage;
 
-public class TaskPropertyDialog extends Dialog{
-	
-//	private Task task;
+public class TaskPropertyDialog extends Dialog {
+
 	private boolean defaultESBtask;
-	private ScheduledTaskFormPage taskFormPage;
+	private static final String LITERAL = "LITERAL";
+	private List<TaskProperty> taskPropertyList = new ArrayList<TaskProperty>();
+	private boolean newButtonSelected = false;
 	/**
 	 * Table for add/edit/remove parameters.
 	 */
@@ -57,23 +72,31 @@ public class TaskPropertyDialog extends Dialog{
 	/**
 	 * Button for remove parameter.
 	 */
-	private Button removePropertyButton;	
+	private Button removePropertyButton;
 	/**
 	 * Command for recording user operations.
 	 */
 	private CompoundCommand resultCommand;
-	
-	public TaskPropertyDialog(Shell parentShell, String taskImpel) {
+
+	private String[] properties = { "format", "message", "soapAction", "to", "proxyName", "sequenceName", "injectTo" };
+
+	public TaskPropertyDialog(Shell parentShell, String taskImpel, List<TaskProperty> list) {
 		super(parentShell);
+		// When updating an existing property, then get the property list
+		if (list != null) {
+			taskPropertyList = list;
+		} else {
+			// When adding properties initially, create a new list
+			list = new ArrayList<TaskProperty>();
+		}
 		defaultESBtask = (taskImpel.equals("org.apache.synapse.startup.tasks.MessageInjector"));
-//		initializeDefaultMessageInjectorTask();
 	}
 
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("Task Properties");
 	}
-	
+
 	protected Control createDialogArea(Composite parent) {
 		Composite container = (Composite) super.createDialogArea(parent);
 		FormLayout mainLayout = new FormLayout();
@@ -90,22 +113,21 @@ public class TaskPropertyDialog extends Dialog{
 
 		newPropertyButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				TableItem item = bindPram(EsbFactory.eINSTANCE
-						.createTaskProperty());
+				TableItem item = bindPram(EsbFactory.eINSTANCE.createTaskProperty());
 				propertyTable.select(propertyTable.indexOf(item));
 			}
 		});
-		newPropertyButton.setEnabled(!defaultESBtask);
+
+		// Enable new button
+		enableNewButton();
 
 		// Button for remove Property.
 		removePropertyButton = new Button(container, SWT.NONE);
 		removePropertyButton.setText("Remove");
 		FormData removeTaskPropertyButtonLayoutData = new FormData();
-		removeTaskPropertyButtonLayoutData.top = new FormAttachment(
-				newPropertyButton, 5);
+		removeTaskPropertyButtonLayoutData.top = new FormAttachment(newPropertyButton, 5);
 		removeTaskPropertyButtonLayoutData.right = new FormAttachment(100);
-		removeTaskPropertyButtonLayoutData.left = new FormAttachment(
-				newPropertyButton, 0, SWT.LEFT);
+		removeTaskPropertyButtonLayoutData.left = new FormAttachment(newPropertyButton, 0, SWT.LEFT);
 		removePropertyButton.setLayoutData(removeTaskPropertyButtonLayoutData);
 
 		removePropertyButton.addListener(SWT.Selection, new Listener() {
@@ -125,13 +147,12 @@ public class TaskPropertyDialog extends Dialog{
 		});
 
 		// Table for show the parameters.
-		propertyTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION
-				| SWT.HIDE_SELECTION);
+		propertyTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
 
 		TableColumn nameColumn = new TableColumn(propertyTable, SWT.LEFT);
 		TableColumn typeColumn = new TableColumn(propertyTable, SWT.LEFT);
 		TableColumn valueColumn = new TableColumn(propertyTable, SWT.LEFT);
-		
+
 		nameColumn.setText("Parameter Name");
 		nameColumn.setWidth(150);
 		valueColumn.setText("Value/Expression");
@@ -156,10 +177,20 @@ public class TaskPropertyDialog extends Dialog{
 
 		propertyTable.addListener(SWT.Selection, tblPropertiesListener);
 
-		// Populate Properties.
-	/*	for (TaskProperty property : task.getTaskProperties()) {//awanthika, null here
-			bindPram(property);
-		}*/
+			// When updating an existing property
+		if (taskPropertyList.size() > 0) {
+			if (getMissingProperties() != null) {
+				taskPropertyList.addAll(getMissingProperties());
+			}
+			for (TaskProperty property : taskPropertyList) {
+				bindPram(property);
+			}
+		} else {
+			// when adding properties for the first time
+			for (int i = 0; i < properties.length; i++) {
+				bindPram(properties[i]);
+			}
+		}
 
 		setupTableEditor(propertyTable);
 
@@ -174,21 +205,72 @@ public class TaskPropertyDialog extends Dialog{
 
 	}
 
-	private void addDefaultProperty(List<String> paramNames, String propertyName) {
-		
-		if (!paramNames.contains(propertyName)) {
-			TaskProperty p1 = EsbFactory.eINSTANCE.createTaskProperty();
-			p1.setPropertyName(propertyName);
+	/**
+	 * Get missing required properties
+	 */
+	private List<TaskProperty> getMissingProperties() {
+		List<TaskProperty> newList = new ArrayList<TaskProperty>();
+		for (String prop : properties) {
+			boolean isAvailable = false;
+			for (TaskProperty property : taskPropertyList) {
+				if (prop.equals(property.getPropertyName())) {
+					isAvailable = true;
+					break;
+				}
+			}
+			if (!isAvailable) {
+				TaskProperty tskProperty = createProperty(prop);
+				newList.add(tskProperty);
+			}
+		}
+		return newList;
+	}
+
+	/**
+	 * Creates a new property
+	 * 
+	 * @param name
+	 * @return
+	 */
+	private TaskProperty createProperty(String name) {
+		TaskProperty newPrp = EsbFactory.eINSTANCE.createTaskProperty();
+		newPrp.setPropertyName(name);
+		newPrp.setPropertyType(TaskPropertyType.LITERAL);
+		newPrp.setPropertyValue(null);
+		return newPrp;
+	}
+
+	/**
+	 * Enable and disable the New button based on the property values
+	 */
+	private void enableNewButton() {
+		if (taskPropertyList.size() > 0) {
+			String[] checkProperties = new String[taskPropertyList.size()];
+			for (int i = 0; i < taskPropertyList.size(); i++) {
+				checkProperties[i] = String.valueOf(taskPropertyList.get(i).getPropertyName());
+			}
+			Arrays.sort(checkProperties);
+			Arrays.sort(properties);
+			if (!Arrays.equals(checkProperties, properties)) {
+				// Enable New button if required properties are missing
+				newPropertyButton.setEnabled(true);
+				newButtonSelected = true;
+			} else {
+				newPropertyButton.setEnabled(false);
+			}
+		} else {
+			// Disable the button when adding properties for the first time
+			newPropertyButton.setEnabled(false);
 		}
 	}
-	
-	protected void okPressed() {
-		
-		for (TableItem item : propertyTable.getItems()) {
-			
-			TaskProperty param = (TaskProperty) item.getData();
-			if (param.eContainer() == null) {
 
+	protected void okPressed() {
+
+		for (TableItem item : propertyTable.getItems()) {
+			TaskProperty param = null;
+
+			if (item.getData() == null) {
+				param = EsbFactory.eINSTANCE.createTaskProperty();
 				param.setPropertyName(item.getText(0));
 
 				if (item.getText(1).equals(TaskPropertyType.LITERAL.toString())) {
@@ -200,59 +282,68 @@ public class TaskPropertyDialog extends Dialog{
 					param.setPropertyValue(item.getText(2));
 					param.setPropertyType(TaskPropertyType.XML);
 				}
-
-
 			} else {
+				param = (TaskProperty) item.getData();
+				param.setPropertyName(item.getText(0));
 
-				if (!param.getPropertyName().equals(item.getText(0))) {
-
+				if (item.getText(1).equals(TaskPropertyType.LITERAL.toString())) {
+					param.setPropertyValue(item.getText(2));
+					param.setPropertyType(TaskPropertyType.LITERAL);
 				}
-				
-				if (!param.getPropertyType().toString().equals(item.getText(1))) {
-					TaskPropertyType propertyType = item.getText(1).equals(TaskPropertyType.LITERAL.toString())?TaskPropertyType.LITERAL:TaskPropertyType.XML;
-				}
 
-				if (defaultESBtask) {
-					if (param.getPropertyValue() != null) {
-						if (!param.getPropertyValue().equals(item.getText(2))) {
-							appendPropertyValueCommand(item.getText(2), param);
-						}
-					} else {
-						if (!item.getText(2).isEmpty()) {
-							appendPropertyValueCommand(item.getText(2), param);
-						}
-					}
-				} else {
-					if (!param.getPropertyValue().equals(item.getText(2))) {
-						appendPropertyValueCommand(item.getText(2), param);
-					}
+				if (item.getText(1).equals(TaskPropertyType.XML.toString())) {
+					param.setPropertyValue(item.getText(2));
+					param.setPropertyType(TaskPropertyType.XML);
 				}
 			}
+
+			for (TaskProperty propertyItem : taskPropertyList) {
+				// When updating the existing properties, remove the old
+				// property
+				if (propertyItem.getPropertyName().equals(param.getPropertyName())) {
+					taskPropertyList.remove(propertyItem);
+					break;
+				}
+			}
+
+			taskPropertyList.add(param);
 		}
 
+		setTaskPropertyList(taskPropertyList);
 		finalizeDefaultMessageInjecttorTask();
 		super.okPressed();
 
 	}
-	
+
+	public void setTaskPropertyList(List<TaskProperty> taskPropertyList) {
+		this.taskPropertyList = taskPropertyList;
+
+	}
+
+	public List<TaskProperty> getTaskPropertyList() {
+		return taskPropertyList;
+	}
+
 	protected void cancelPressed() {
 		finalizeDefaultMessageInjecttorTask();
 		super.cancelPressed();
 	}
 
-	private void appendPropertyValueCommand(String value, TaskProperty param) {
+	private TableItem bindPram(String value) {
+		TableItem item = new TableItem(propertyTable, SWT.NONE);
+		item.setText(new String[] { value, LITERAL, null });
+		return item;
 	}
 
 	private TableItem bindPram(TaskProperty param) {
 		TableItem item = new TableItem(propertyTable, SWT.NONE);
-		item.setText(new String[] { param.getPropertyName(),
-									param.getPropertyType().getLiteral(),
-									param.getPropertyValue()
-								  });
+
+		item.setText(new String[] { param.getPropertyName(), param.getPropertyType().getLiteral(),
+				param.getPropertyValue() });
 		item.setData(param);
 		return item;
 	}
-	
+
 	private void unbindParam(int itemIndex) {
 		TableItem item = propertyTable.getItem(itemIndex);
 		TaskProperty param = (TaskProperty) item.getData();
@@ -261,11 +352,16 @@ public class TaskPropertyDialog extends Dialog{
 	}
 
 	private void removeTaskProperty(TaskProperty param) {
-		if (param.eContainer() != null) {
+		if (param != null) {
+			for (TaskProperty propertyItem : taskPropertyList) {
+				if (propertyItem.getPropertyName().equals(param.getPropertyName())) {
+					taskPropertyList.remove(propertyItem);
+					break;
+				}
+			}
 		}
 	}
-	
-	
+
 	private void setupTableEditor(final Table table) {
 		final TableEditor cellEditor = new TableEditor(table);
 		cellEditor.grabHorizontal = true;
@@ -299,8 +395,11 @@ public class TaskPropertyDialog extends Dialog{
 
 				// Setup a new editor control.
 				if (-1 != selectedColumn) {
-					if (selectedColumn == 0 && defaultESBtask){
-						return;  // for default message-injector-task don't allow to edit the property names
+					// for default message-injector-task don't allow
+					// to edit the property names
+					if (selectedColumn == 0 && !newButtonSelected) {
+						return; // for default message-injector-task don't allow
+								// to edit the property names
 					}
 					Text editorControl = new Text(table, SWT.NONE);
 					final int editorControlColumn = selectedColumn;
@@ -318,8 +417,7 @@ public class TaskPropertyDialog extends Dialog{
 			}
 
 			/**
-			 * Dispose cell editor control at mouse down (otherwise the control
-			 * keep showing).
+			 * Dispose cell editor control at mouse down (otherwise the control keep showing).
 			 */
 			public void mouseDown(MouseEvent e) {
 				Control oldEditorControl = cellEditor.getEditor();
@@ -328,10 +426,9 @@ public class TaskPropertyDialog extends Dialog{
 			}
 		});
 	}
-	
+
 	private void editItem(final TableItem item) {
-		propertyTypeEditor = initTableEditor(propertyTypeEditor,
-				item.getParent());
+		propertyTypeEditor = initTableEditor(propertyTypeEditor, item.getParent());
 		cmbPropertyType = new Combo(item.getParent(), SWT.READ_ONLY);
 		cmbPropertyType.setItems(new String[] { TaskPropertyType.LITERAL.toString(), TaskPropertyType.XML.toString() });
 		cmbPropertyType.setText(item.getText(1));
@@ -344,7 +441,7 @@ public class TaskPropertyDialog extends Dialog{
 			}
 		});
 	}
-	
+
 	private TableEditor initTableEditor(TableEditor editor, Table table) {
 		if (null != editor) {
 			Control lastCtrl = editor.getEditor();
@@ -357,54 +454,14 @@ public class TaskPropertyDialog extends Dialog{
 		editor.grabHorizontal = true;
 		return editor;
 	}
-	
-	private CompoundCommand getResultCommand() {
-		if (null == resultCommand) {
-			resultCommand = new CompoundCommand();
-		}
-		return resultCommand;
-	}
-	
-	private void initializeDefaultMessageInjectorTask() {
-		
-/*		if (defaultESBtask) {
-			List<String> defaultParams = new ArrayList<String>(Arrays.asList("format","message", "soapAction", "to", "proxyName", "sequenceName", "injectTo"));
-			
-			//remove additional parameters which are not default params
-			for (TaskProperty param : task.getTaskProperties()) {
-				if (!defaultParams.contains(param.getPropertyName())){
-					removeTaskProperty(param);
-				}
-			}
-			
-			//add default parameters
-			List<String> paramNames = new ArrayList<String>();
-			for (TaskProperty param : task.getTaskProperties()) {
-				paramNames.add(param.getPropertyName());
-			}
-			for (String paramName : defaultParams){
-				addDefaultProperty(paramNames, paramName);
-			}
-			
-			if (getResultCommand().canExecute()) {
-				editingDomain.getCommandStack().execute(getResultCommand());
-			}
-			resultCommand = null;
-		}*/
-	}
-	
+
 	private void finalizeDefaultMessageInjecttorTask() {
-		
+
 		resultCommand = null;
-		if (defaultESBtask){
-			//remove parameters which has empty property values
-			/*for (TaskProperty param : task.getTaskProperties()) {
-				if (param.getPropertyValue() == null){
-					removeTaskProperty(param);
-				}
-			}*/
+		if (defaultESBtask) {
+
 		}
-		
+
 	}
-	
+
 }

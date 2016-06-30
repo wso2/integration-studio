@@ -117,24 +117,33 @@ public class TaskTransformer {
 			List<String> servers = Arrays.asList(pinnedServer);
 			taskDescription.setPinnedServers(servers);
 		}
+		
 
-		/*
-		 * if (visualTask.getTaskProperties() != null) { for (TaskProperty
-		 * taskProperty : visualTask.getTaskProperties()) { OMElement source =
-		 * null; if (StringUtils.isNotEmpty(taskProperty.getPropertyName()) &&
-		 * StringUtils.isNotEmpty(taskProperty.getPropertyValue())) { try {
-		 * source = AXIOMUtil.stringToOM("<property xmlns:task=\"" +
-		 * "http://www.wso2.org/products/wso2commons/tasks\"/>");
-		 * 
-		 * if (taskProperty.getPropertyType().equals(TaskPropertyType.LITERAL))
-		 * { source.addAttribute("name", taskProperty.getPropertyName(), null);
-		 * source.addAttribute("value", taskProperty.getPropertyValue(), null);
-		 * } else { source.addAttribute("name", taskProperty.getPropertyName(),
-		 * null); OMElement child =
-		 * AXIOMUtil.stringToOM(taskProperty.getPropertyValue() .trim());
-		 * source.addChild(child); } } catch (XMLStreamException e) {
-		 * e.printStackTrace(); } taskDescription.setXmlProperty(source); } } }
-		 */
+		if(formTaskPage.getTaskPropertyList() != null){
+			for (TaskProperty taskProperty : formTaskPage.getTaskPropertyList()) {
+				OMElement source = null;
+				if (StringUtils.isNotEmpty(taskProperty.getPropertyName())
+						&& StringUtils.isNotEmpty(taskProperty.getPropertyValue())) {
+					try {
+						source = AXIOMUtil.stringToOM(
+								"<property xmlns:task=\"" + "http://www.wso2.org/products/wso2commons/tasks\"/>");
+
+						if (taskProperty.getPropertyType().equals(TaskPropertyType.LITERAL)) {
+							source.addAttribute("name", taskProperty.getPropertyName(), null);
+							source.addAttribute("value", taskProperty.getPropertyValue(), null);
+						} else {
+							source.addAttribute("name", taskProperty.getPropertyName(), null);
+							OMElement child = AXIOMUtil.stringToOM(taskProperty.getPropertyValue().trim());
+							source.addChild(child);
+						}
+					} catch (XMLStreamException e) {
+						e.printStackTrace();
+					}
+					taskDescription.setXmlProperty(source);
+				}
+			}
+		}
+		
 		return taskDescription;
 	}
 }

@@ -27,6 +27,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
@@ -83,15 +84,23 @@ public class ESBFormEditor extends FormEditor {
 		} else if (artifactType == ArtifactType.TASK) {
 			currFormPage = new ScheduledTaskFormPage(this);
 		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_DEFAULT) {
-			currFormPage = new EndpointFormPage(this);
+			currFormPage = new DefaultEndpointFormPage(this);
 		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_ADDRESS) {
-			currFormPage = new EndpointFormPage(this);
+			currFormPage = new AddressEndpointFormPage(this);
 		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_WSDL) {
-			currFormPage = new EndpointFormPage(this);
+			currFormPage = new WsdlEndpointFormPage(this);
 		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_HTTP) {
-			currFormPage = new EndpointFormPage(this);
-		} else if (artifactType == ArtifactType.ENDPOINT) {
-			currFormPage = new EndpointFormPage(this);
+			currFormPage = new HttpEndpointFormPage(this);
+//		} else if (artifactType == ArtifactType.ENDPOINT) {
+//			currFormPage = new EndpointFormPage(this);
+		} else if (artifactType == ArtifactType.ENDPOINT_ADDRESS) {
+			currFormPage = new AddressEndpointFormPage(this);
+		}else if (artifactType == ArtifactType.ENDPOINT_DEFAULT) {
+			currFormPage = new DefaultEndpointFormPage(this);
+		}else if (artifactType == ArtifactType.ENDPOINT_HTTP) {
+			currFormPage = new HttpEndpointFormPage(this);
+		}else if (artifactType == ArtifactType.ENDPOINT_WSDL) {
+			currFormPage = new WsdlEndpointFormPage(this);
 		}
 	}
 

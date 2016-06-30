@@ -35,7 +35,7 @@ import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
-public class EndpointUtils {
+public class EndpointCommons {
 	
 	public Combo endpointReliableMessaging;
 	public Combo endpointSecurity;
@@ -93,6 +93,7 @@ public class EndpointUtils {
 		
 		/* Endpoint Suspend State */
 		toolkit.createLabel(errorHandlingSectionClient, "Endpoint Suspend State");
+		toolkit.createLabel(errorHandlingSectionClient, null);
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Suspend Error Codes");
 		endpointSuspendErrorCodes = toolkit.createText(errorHandlingSectionClient, "");
@@ -118,6 +119,7 @@ public class EndpointUtils {
 		
 		/* Endpoint Timeout State */
 		toolkit.createLabel(errorHandlingSectionClient, "Endpoint Timeout State");
+		toolkit.createLabel(errorHandlingSectionClient, null);
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Retry Error Codes");
 		endpointRetryErrorCodes = toolkit.createText(errorHandlingSectionClient, "");
@@ -139,6 +141,7 @@ public class EndpointUtils {
 		
 		/* Endpoint Timeout */
 		toolkit.createLabel(errorHandlingSectionClient, "Timeout");
+		toolkit.createLabel(errorHandlingSectionClient, null);
 		
 		toolkit.createLabel(errorHandlingSectionClient, "Timeout Duration");
 		endpointTimeoutDuration = toolkit.createText(errorHandlingSectionClient, "");

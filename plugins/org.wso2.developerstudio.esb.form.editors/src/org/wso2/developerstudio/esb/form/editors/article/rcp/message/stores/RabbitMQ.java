@@ -96,7 +96,7 @@ public class RabbitMQ implements IMessageStore {
 		rabbitMQ_password.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(paramSectionClient, "Virtual Host");
-		Text rabbitMQ_virtualhost = toolkit.createText(paramSectionClient, "");
+		rabbitMQ_virtualhost = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_virtualhost.setBackground(new Color(null, 229,236,253));
 		rabbitMQ_virtualhost.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		

@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.namespace.QName;
@@ -41,19 +42,18 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.WSO2
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 
 public class MessageStoreTransformer {
-	
+
 	private static final String STORE_JMS_CACHE_CONNECTION = "store.jms.cache.connection";
 	private static final String STORE_JMS_JMS_SPEC_VERSION = "store.jms.JMSSpecVersion";
 	private static final String STORE_JMS_PASSWORD = "store.jms.password";
 	private static final String STORE_JMS_USERNAME = "store.jms.username";
 	private static final String STORE_JMS_CONNECTION_FACTORY = "store.jms.connection.factory";
 	private static final String STORE_JMS_DESTINATION = "store.jms.destination";
-	
+
 	private static final String JAVA_NAMING_PROVIDER_URL = "java.naming.provider.url";
 	private static final String JAVA_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
-	
+
 	private static final String STORE_WSO2MB_QUEUE_CONNECTION_FACTORY = "connectionfactory.QueueConnectionFactory";
-	
 
 	private static final String STORE_RABBITMQ_VIRTUAL_HOST = "store.rabbitmq.virtual.host";
 	private static final String STORE_RABBITMQ_PASSWORD = "store.rabbitmq.password";
@@ -63,7 +63,7 @@ public class MessageStoreTransformer {
 	private static final String STORE_RABBITMQ_QUEUE_NAME = "store.rabbitmq.queue.name";
 	private static final String STORE_RABBITMQ_HOST_PORT = "store.rabbitmq.host.port";
 	private static final String STORE_RABBITMQ_HOST_NAME = "store.rabbitmq.host.name";
-	
+
 	private static final String STORE_JDBC_DS_NAME = "store.jdbc.dsName";
 	private static final String STORE_JDBC_PASSWORD = "store.jdbc.password";
 	private static final String STORE_JDBC_USERNAME = "store.jdbc.username";
@@ -71,22 +71,22 @@ public class MessageStoreTransformer {
 	private static final String STORE_JDBC_DRIVER = "store.jdbc.driver";
 	private static final String STORE_JDBC_TABLE = "store.jdbc.table";
 
-//	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
-//	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
-	
+	// private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
+	// private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
+
 	private static final String STORE_FAILOVER_MESSAGE_STORE_NAME = "store.failover.message.store.name";
 	private static final String STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE = "store.producer.guaranteed.delivery.enable";
-	
+
 	// Message Store types
 	private static final String IN_MEMORY_MS_FQN = "org.apache.synapse.message.store.impl.memory.InMemoryStore";
-	private static final String JMS_MS_FQN = "org.apache.synapse.message.store.impl.jms.JmsStore";	
+	private static final String JMS_MS_FQN = "org.apache.synapse.message.store.impl.jms.JmsStore";
 	private static final String WSO2MB = "wso2mb";
 	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
 	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
 	private static final String customStore = "customStore";
-	
+
 	@Deprecated
-	public static OMElement createMessageStore(MessageStore model){
+	public static OMElement createMessageStore(MessageStore model) {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		String className = null;
 
@@ -97,16 +97,14 @@ public class MessageStoreTransformer {
 			className = model.getProviderClass();
 			EList<MessageStoreParameter> parameters2 = model.getParameters();
 			for (MessageStoreParameter param : parameters2) {
-				if (!StringUtils.isBlank(param.getParameterName())
-						&& !StringUtils.isBlank(param.getParameterValue())) {
+				if (!StringUtils.isBlank(param.getParameterName()) && !StringUtils.isBlank(param.getParameterValue())) {
 					parameters.put(param.getParameterName(), param.getParameterValue());
 				}
 			}
 		} else if (model.getStoreType() == MessageStoreType.JMS) {
 			className = "org.apache.synapse.message.store.impl.jms.JmsStore";
 			if (!StringUtils.isBlank(model.getInitialContextFactory())) {
-				parameters.put("java.naming.factory.initial",
-						model.getInitialContextFactory());
+				parameters.put("java.naming.factory.initial", model.getInitialContextFactory());
 			}
 			if (!StringUtils.isBlank(model.getProviderURL())) {
 				parameters.put("java.naming.provider.url", model.getProviderURL());
@@ -115,8 +113,7 @@ public class MessageStoreTransformer {
 				parameters.put("store.jms.destination", model.getJndiQueueName());
 			}
 			if (!StringUtils.isBlank(model.getConnectionFactory())) {
-				parameters.put("store.jms.connection.factory",
-						model.getConnectionFactory());
+				parameters.put("store.jms.connection.factory", model.getConnectionFactory());
 			}
 			if (!StringUtils.isBlank(model.getUserName())) {
 				parameters.put("store.jms.username", model.getUserName());
@@ -124,26 +121,24 @@ public class MessageStoreTransformer {
 			if (!StringUtils.isBlank(model.getPassword())) {
 				parameters.put("store.jms.password", model.getPassword());
 			}
-			
+
 			parameters.put("store.jms.JMSSpecVersion", model.getJmsSpecVersion().getLiteral());
-			parameters.put("store.jms.cache.connection",
-					((Boolean) model.isEnableCaching()).toString());
-			
+			parameters.put("store.jms.cache.connection", ((Boolean) model.isEnableCaching()).toString());
+
 			if (StringUtils.isNotBlank(model.getFailoverMessageStore())) {
 				parameters.put(STORE_FAILOVER_MESSAGE_STORE_NAME, model.getFailoverMessageStore());
 			}
-			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE, ((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
+			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE,
+					((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
 
 			/*
-			 * Any additional parameters not listed above will handle here
-			 * Fixing TOOLS-2286
+			 * Any additional parameters not listed above will handle here Fixing TOOLS-2286
 			 */
 			EList<MessageStoreParameter> additionalParameters = model.getParameters();
 			for (MessageStoreParameter additionalParameter : additionalParameters) {
 				if (!StringUtils.isBlank(additionalParameter.getParameterName())
 						&& !StringUtils.isBlank(additionalParameter.getParameterValue())) {
-					parameters.put(additionalParameter.getParameterName(),
-							additionalParameter.getParameterValue());
+					parameters.put(additionalParameter.getParameterName(), additionalParameter.getParameterValue());
 				}
 			}
 		} else if (model.getStoreType() == MessageStoreType.RABBITMQ) {
@@ -175,7 +170,8 @@ public class MessageStoreTransformer {
 			if (StringUtils.isNotBlank(model.getFailoverMessageStore())) {
 				parameters.put(STORE_FAILOVER_MESSAGE_STORE_NAME, model.getFailoverMessageStore());
 			}
-			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE, ((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
+			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE,
+					((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
 		} else if (model.getStoreType() == MessageStoreType.JDBC) {
 			className = JDBC_MS_FQN;
 			if (StringUtils.isNotBlank(model.getJdbcDatabaseTable())) {
@@ -184,7 +180,8 @@ public class MessageStoreTransformer {
 			if (StringUtils.isNotBlank(model.getFailoverMessageStore())) {
 				parameters.put(STORE_FAILOVER_MESSAGE_STORE_NAME, model.getFailoverMessageStore());
 			}
-			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE, ((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
+			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE,
+					((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
 			// Switch between connection pool and datasource
 			String jdbcConnectionInformation = model.getJdbcConnectionInformation().toString();
 			if (StringUtils.isNotBlank(jdbcConnectionInformation)) {
@@ -201,19 +198,18 @@ public class MessageStoreTransformer {
 					if (StringUtils.isNotBlank(model.getJdbcPassword())) {
 						parameters.put(STORE_JDBC_PASSWORD, model.getJdbcPassword());
 					}
-				} else if (JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE.toString().equals(
-						jdbcConnectionInformation)) {
+				} else if (JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE.toString()
+						.equals(jdbcConnectionInformation)) {
 					if (StringUtils.isNotBlank(model.getJdbcDatasourceName())) {
 						parameters.put(STORE_JDBC_DS_NAME, model.getJdbcDatasourceName());
 					}
 				}
 			}
 		}
-		
+
 		messageStore.setParameters(parameters);
 
-		OMElement messageStoreElement = MessageStoreSerializer.serializeMessageStore(null,
-				messageStore);
+		OMElement messageStoreElement = MessageStoreSerializer.serializeMessageStore(null, messageStore);
 		OMAttribute classAttr = messageStoreElement.getAttribute(new QName("class"));
 		if (classAttr != null) {
 			classAttr.setAttributeValue(className);
@@ -221,8 +217,8 @@ public class MessageStoreTransformer {
 			messageStoreElement.addAttribute("class", className, null);
 		} else {
 			/*
-			 *  Class attribute is optional for In-Memory Store. If class attribute is 
-			 *  not defined it will be considered as an In-Memory Store. 
+			 * Class attribute is optional for In-Memory Store. If class attribute is not defined it will be considered
+			 * as an In-Memory Store.
 			 */
 		}
 
@@ -231,116 +227,119 @@ public class MessageStoreTransformer {
 	}
 
 	public OMElement createMessageStore(FormPage visualForm) {
-		
+
 		org.apache.synapse.message.store.MessageStore messageStore = new org.apache.synapse.message.store.impl.memory.InMemoryStore();
-		
+
 		OMElement configXml = null;
 		Map<String, Object> parameterMap = new HashMap<>();
 		String className = "";
-		
+
 		if (visualForm instanceof MessageStoreFormPage) {
-			
+
 			MessageStoreFormPage formPage = (MessageStoreFormPage) visualForm;
-			
+
 			if (formPage.storeName.getText().length() > 0) {
-				
+
 				int storeIndex = formPage.storeType.getSelectionIndex();
-				
+
 				switch (storeIndex) {
-					case 0:
-					{
-						// In-Memory store
-						className = IN_MEMORY_MS_FQN;
-						
-						break;
-					}
-					case 1:
-					{
-						// JMS Store
-						className = JMS_MS_FQN;
-						JMS jmsStore = (JMS)formPage.getStoreImpl(JMS_MS_FQN);
-						
-						parameterMap.put(JAVA_NAMING_FACTORY_INITIAL, jmsStore.jms_initCtxFactory.getText());
-						parameterMap.put(JAVA_NAMING_PROVIDER_URL, jmsStore.jms_providerUrl.getText());
-						
-						parameterMap.put(STORE_JMS_DESTINATION, jmsStore.jms_jndiQueueName.getText());
-						parameterMap.put(STORE_JMS_CONNECTION_FACTORY, jmsStore.jms_connectionFactory.getText());
-						parameterMap.put(STORE_JMS_USERNAME, jmsStore.jms_username.getText());
-						parameterMap.put(STORE_JMS_PASSWORD, jmsStore.jms_password.getText());
-						
-						parameterMap.put(STORE_JMS_JMS_SPEC_VERSION, jmsStore.jms_apiVersion.getText());
-						
-						break;
-					}
-					case 2:
-					{
-						// WSO2 MB Store
-						className = WSO2MB;
-						WSO2MB wso2mbStore = (WSO2MB)formPage.getStoreImpl(WSO2MB);
-						
-						parameterMap.put(JAVA_NAMING_FACTORY_INITIAL, wso2mbStore.wso2mb_initCtxFactory.getText());
-						parameterMap.put(STORE_WSO2MB_QUEUE_CONNECTION_FACTORY, wso2mbStore.wso2mb_QueueConnFactory.getText());
-						
-						parameterMap.put(STORE_JMS_DESTINATION, wso2mbStore.wso2mb_jndiQueueName.getText());
-						
-						parameterMap.put(STORE_JMS_JMS_SPEC_VERSION, wso2mbStore.wso2mb_apiVersion.getText());
-						
-						break;
-					}
-					case 3:
-					{
-						// Rabbit-MQ Store
-						className = RABBITMQ_MS_FQN;
-						RabbitMQ rabbitMQStore = (RabbitMQ)formPage.getStoreImpl(RABBITMQ_MS_FQN);
-						
-						parameterMap.put(STORE_RABBITMQ_HOST_NAME, rabbitMQStore.rabbitMQ_hostname.getText());
-						parameterMap.put(STORE_RABBITMQ_HOST_PORT, rabbitMQStore.rabbitMQ_port.getText());
-						parameterMap.put(STORE_RABBITMQ_QUEUE_NAME, rabbitMQStore.rabbitMQ_queueName.getText());
-						parameterMap.put(STORE_RABBITMQ_EXCHANGE_NAME, rabbitMQStore.rabbitMQ_exchangeName.getText());
-						parameterMap.put(STORE_RABBITMQ_ROUTE_KEY, rabbitMQStore.rabbitMQ_routingKey.getText());
-						parameterMap.put(STORE_RABBITMQ_USERNAME, rabbitMQStore.rabbitMQ_username.getText());
-						parameterMap.put(STORE_RABBITMQ_PASSWORD, rabbitMQStore.rabbitMQ_password.getText());
-						parameterMap.put(STORE_RABBITMQ_VIRTUAL_HOST, rabbitMQStore.rabbitMQ_virtualhost.getText());
-						
-						
-						break;
-					}
-					case 4:
-					{
-						// JDBC Store
-						className = JDBC_MS_FQN;
-						JDBC jdbcStore = (JDBC)formPage.getStoreImpl(JDBC_MS_FQN);
-						
-						parameterMap.put(STORE_JDBC_TABLE, jdbcStore.jdbc_dbTable.getText());
-						parameterMap.put(STORE_JDBC_DRIVER, jdbcStore.jdbc_driver.getText());
-						parameterMap.put(STORE_JDBC_CONNECTION_URL, jdbcStore.jdbc_url.getText());
-						parameterMap.put(STORE_JDBC_USERNAME, jdbcStore.jdbc_username.getText());
-						parameterMap.put(STORE_JDBC_PASSWORD, jdbcStore.jdbc_password.getText());
-						parameterMap.put(STORE_JDBC_DS_NAME, jdbcStore.jdbc_DsName.getText());
-						
-						
-						break;
-					}
-	
-					default:
-					{
-						// Custom Store
-						CustomStore customStoreImpl = (CustomStore)formPage.getStoreImpl(customStore);
-						
-						className = customStoreImpl.custom_providerClass.getText();
-						
-						break;
-					}
+				case 0: {
+					// In-Memory store
+					className = IN_MEMORY_MS_FQN;
+
+					break;
 				}
-				
+				case 1: {
+					// JMS Store
+					className = JMS_MS_FQN;
+					JMS jmsStore = (JMS) formPage.getStoreImpl(JMS_MS_FQN);
+
+					parameterMap.put(JAVA_NAMING_FACTORY_INITIAL, jmsStore.jms_initCtxFactory.getText());
+					parameterMap.put(JAVA_NAMING_PROVIDER_URL, jmsStore.jms_providerUrl.getText());
+
+					parameterMap.put(STORE_JMS_DESTINATION, jmsStore.jms_jndiQueueName.getText());
+					parameterMap.put(STORE_JMS_CONNECTION_FACTORY, jmsStore.jms_connectionFactory.getText());
+					parameterMap.put(STORE_JMS_USERNAME, jmsStore.jms_username.getText());
+					parameterMap.put(STORE_JMS_PASSWORD, jmsStore.jms_password.getText());
+
+					parameterMap.put(STORE_JMS_JMS_SPEC_VERSION, jmsStore.jms_apiVersion.getText());
+
+					break;
+				}
+				case 2: {
+					// WSO2 MB Store
+					className = WSO2MB;
+					WSO2MB wso2mbStore = (WSO2MB) formPage.getStoreImpl(WSO2MB);
+
+					parameterMap.put(JAVA_NAMING_FACTORY_INITIAL, wso2mbStore.wso2mb_initCtxFactory.getText());
+					parameterMap.put(STORE_WSO2MB_QUEUE_CONNECTION_FACTORY,
+							wso2mbStore.wso2mb_QueueConnFactory.getText());
+
+					parameterMap.put(STORE_JMS_DESTINATION, wso2mbStore.wso2mb_jndiQueueName.getText());
+
+					parameterMap.put(STORE_JMS_JMS_SPEC_VERSION, wso2mbStore.wso2mb_apiVersion.getText());
+
+					break;
+				}
+				case 3: {
+					// Rabbit-MQ Store
+					className = RABBITMQ_MS_FQN;
+					RabbitMQ rabbitMQStore = (RabbitMQ) formPage.getStoreImpl(RABBITMQ_MS_FQN);
+
+					parameterMap.put(STORE_RABBITMQ_HOST_NAME, rabbitMQStore.rabbitMQ_hostname.getText());
+					parameterMap.put(STORE_RABBITMQ_HOST_PORT, rabbitMQStore.rabbitMQ_port.getText());
+					parameterMap.put(STORE_RABBITMQ_QUEUE_NAME, rabbitMQStore.rabbitMQ_queueName.getText());
+					parameterMap.put(STORE_RABBITMQ_EXCHANGE_NAME, rabbitMQStore.rabbitMQ_exchangeName.getText());
+					parameterMap.put(STORE_RABBITMQ_ROUTE_KEY, rabbitMQStore.rabbitMQ_routingKey.getText());
+					parameterMap.put(STORE_RABBITMQ_USERNAME, rabbitMQStore.rabbitMQ_username.getText());
+					parameterMap.put(STORE_RABBITMQ_PASSWORD, rabbitMQStore.rabbitMQ_password.getText());
+					parameterMap.put(STORE_RABBITMQ_VIRTUAL_HOST, rabbitMQStore.rabbitMQ_virtualhost.getText());
+
+					break;
+				}
+				case 4: {
+					// JDBC Store
+					className = JDBC_MS_FQN;
+					JDBC jdbcStore = (JDBC) formPage.getStoreImpl(JDBC_MS_FQN);
+
+					parameterMap.put(STORE_JDBC_TABLE, jdbcStore.jdbc_dbTable.getText());
+					parameterMap.put(STORE_JDBC_DRIVER, jdbcStore.jdbc_driver.getText());
+					parameterMap.put(STORE_JDBC_CONNECTION_URL, jdbcStore.jdbc_url.getText());
+					parameterMap.put(STORE_JDBC_USERNAME, jdbcStore.jdbc_username.getText());
+					parameterMap.put(STORE_JDBC_PASSWORD, jdbcStore.jdbc_password.getText());
+					parameterMap.put(STORE_JDBC_DS_NAME, jdbcStore.jdbc_DsName.getText());
+
+					break;
+				}
+
+				default: {
+					// Custom Store
+					CustomStore customStoreImpl = (CustomStore) formPage.getStoreImpl(customStore);
+
+					className = customStoreImpl.custom_providerClass.getText();
+					List<MessageStoreParameter> parameters = customStoreImpl.messageStoreParameterList;
+					if (parameters != null) {
+						for (MessageStoreParameter param : parameters) {
+							if (!StringUtils.isBlank(param.getParameterName())
+									&& !StringUtils.isBlank(param.getParameterValue())) {
+								parameterMap.put(param.getParameterName(), param.getParameterValue());
+							}
+						}
+					}
+
+					break;
+				}
+				}
+
 				if (storeIndex == 1 || storeIndex == 2 || storeIndex == 3 || storeIndex == 4) {
-					parameterMap.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE, formPage.guaranteedDeliveryEnable.getText().toLowerCase());
+					parameterMap.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE,
+							formPage.guaranteedDeliveryEnable.getText().toLowerCase());
 					parameterMap.put(STORE_FAILOVER_MESSAGE_STORE_NAME, formPage.failoverMessageStore.getText());
 				}
 
 				messageStore.setName(formPage.storeName.getText());
 				messageStore.setParameters(parameterMap);
-				
+
 				configXml = MessageStoreSerializer.serializeMessageStore(null, messageStore);
 				OMAttribute classAttr = configXml.getAttribute(new QName("class"));
 				if (classAttr != null) {
@@ -349,16 +348,15 @@ public class MessageStoreTransformer {
 					configXml.addAttribute("class", className, null);
 				} else {
 					/*
-					 *  Class attribute is optional for In-Memory Store. If class attribute is 
-					 *  not defined it will be considered as an In-Memory Store. 
+					 * Class attribute is optional for In-Memory Store. If class attribute is not defined it will be
+					 * considered as an In-Memory Store.
 					 */
 				}
 
-				
 			}
-			
+
 		}
-		
+
 		return configXml;
 	}
 

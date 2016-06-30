@@ -1,6 +1,5 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,14 +8,12 @@ import javax.xml.stream.XMLStreamException;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.config.Entry;
 import org.apache.synapse.task.TaskDescription;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.LocalEntryFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ScheduledTaskFormPage;
 
 public class TaskTransformer {
@@ -88,7 +85,7 @@ public class TaskTransformer {
 			formTaskPage = (ScheduledTaskFormPage) formTask;
 		}
 		org.apache.synapse.task.TaskDescription taskDescription = new TaskDescription();
-		if (formTaskPage.getTaskName() != null) {
+		if (StringUtils.isNotEmpty(formTaskPage.getTaskName().getText())) {
 			taskDescription.setName(formTaskPage.getTaskName().getText());
 		} else {
 			taskDescription.setName("Default");
@@ -98,20 +95,24 @@ public class TaskTransformer {
 		taskDescription.setTaskImplClassName(formTaskPage.getTaskImpl().getText());
 
 		if (formTaskPage.getTriggerType().getSelectionIndex() == 0) {
-			if (formTaskPage.getCount() != null && formTaskPage.getCount().getText() != "") {
+			if(StringUtils.isNotEmpty(formTaskPage.getCount().getText())){
 				taskDescription.setCount(Integer.parseInt(formTaskPage.getCount().getText()));
+				taskDescription.setCronExpression(null);
 			} 
-			if (formTaskPage.getInterval() != null && formTaskPage.getInterval().getText() != "") {
+			if (StringUtils.isNotEmpty(formTaskPage.getInterval().getText())) {
 				taskDescription.setInterval(Integer.parseInt(formTaskPage.getInterval().getText()));
+				taskDescription.setCronExpression(null);
 			}
-		} else {
-			if (formTaskPage.getCron() != null) {
+		} else if(formTaskPage.getTriggerType().getSelectionIndex() == 1) {
+			if (StringUtils.isNotEmpty(formTaskPage.getCron().getText())) {
 				taskDescription.setCronExpression(formTaskPage.getCron().getText());
+				taskDescription.setCount(0);
+				taskDescription.setInterval(1);
 			}
 		}
 
 		String pinnedServers = formTaskPage.getPinnedServers().getText();
-		if (pinnedServers != null && !pinnedServers.equals("")) {
+		if (StringUtils.isNotEmpty(pinnedServers)) {
 			pinnedServers = pinnedServers.replace(',', ' ');
 			String[] pinnedServer = pinnedServers.split("\\s");
 			List<String> servers = Arrays.asList(pinnedServer);

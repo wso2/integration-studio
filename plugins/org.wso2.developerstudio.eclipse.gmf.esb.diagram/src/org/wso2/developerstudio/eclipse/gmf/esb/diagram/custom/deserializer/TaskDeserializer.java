@@ -100,25 +100,28 @@ public class TaskDeserializer extends AbstractEsbNodeDeserializer<TaskDescriptio
 		FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.TASK);
 		if (formPage instanceof ScheduledTaskFormPage) {
 			ScheduledTaskFormPage taskFormPage = (ScheduledTaskFormPage) formPage;
-			if (taskFormPage.getTaskName() != null) {
+			if (task.getName() != null) {
 				taskFormPage.getTaskName().setText(task.getName());
 			}
-			if (taskFormPage.getTaskImpl() != null) {
+			if (task.getTaskImplClassName() != null) {
 				taskFormPage.getTaskImpl().setText(task.getTaskImplClassName());
 			}
-			if (taskFormPage.getTaskGroup() != null) {
+			if (task.getTaskGroup() != null) {
 				taskFormPage.getTaskGroup().setText(task.getTaskGroup());
 			}
-			if (taskFormPage.getPinnedServers() != null) {
+			if (task.getPinnedServers() != null) {
 				if (task.getPinnedServers().size() > 0) {
 					taskFormPage.getPinnedServers().setText(DeserializerUtils.join(task.getPinnedServers(), ","));
 				}
 			}
-			if (taskFormPage.getCron() != null) {
+			
+			if (task.getCronExpression()!= null) {
 				taskFormPage.getTriggerType().select(1);
 				taskFormPage.getCron().setText(task.getCronExpression());
-			} else {
+				taskFormPage.setCheckCron(true);
+			} else if(String.valueOf(task.getCount()) != null || String.valueOf(task.getInterval()) != null){
 				taskFormPage.getTriggerType().select(0);
+				taskFormPage.setCheckSimple(true);
 				if (taskFormPage.getCount() != null) {
 					taskFormPage.getCount().setText(String.valueOf(task.getCount()));
 				}
@@ -126,8 +129,8 @@ public class TaskDeserializer extends AbstractEsbNodeDeserializer<TaskDescriptio
 					taskFormPage.getInterval().setText(String.valueOf(task.getInterval()));
 				}
 			}
+			
 
-			// if(taskFormPage.getTaskPropertyList() != null && !taskFormPage.getTaskPropertyList().isEmpty()){
 			if (!task.getXmlProperties().isEmpty()) {
 				List<TaskProperty> existingProperties = taskFormPage.getTaskPropertyList();
 				List<TaskProperty> newlyAddedProperties = new ArrayList<TaskProperty>();

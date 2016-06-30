@@ -201,6 +201,9 @@ public class TaskDeserializer extends AbstractEsbNodeDeserializer<TaskDescriptio
 					newlyAddedProperties.addAll(existingProperties);
 				}
 				taskFormPage.setTaskPropertyList(newlyAddedProperties);
+			}else{
+				//When removing all properties from the source view then clear the list
+				taskFormPage.setTaskPropertyList(null);
 			}
 		}
 	}

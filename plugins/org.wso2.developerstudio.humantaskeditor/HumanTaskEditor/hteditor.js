@@ -62,7 +62,11 @@ function createFile(currentTaskName, state, taskNode) { //createFile
     var outputElements = $('#' + currentTaskName + 'wrapper #outputmappingTable tr');
     $.get('resources/template.wsdl', function(data) {
        try {
-            wsdlDom = marshalEditorTextContent(data);
+            if (typeof data === "string"){
+               wsdlDom = marshalEditorTextContent(data);
+            }else {
+               wsdlDom = data; 
+            }
             generateInputWSDL(wsdlDom, xmlDom, currentTaskName);
             saveWSDL(wsdlDom, currentTaskName + "Task"); 
 
@@ -74,7 +78,11 @@ function createFile(currentTaskName, state, taskNode) { //createFile
     // Create Task Callback WSDL
     $.get('resources/template.wsdl', function(data) {
         try {
-             wsdlCBDom = marshalEditorTextContent(data);
+            if (typeof data === "string"){
+               wsdlCBDom = marshalEditorTextContent(data);
+            }else {
+               wsdlCBDom = data; 
+            }
             generateOutputWSDL(wsdlCBDom, xmlDom, currentTaskName,serviceURL,operationName,serviceName,outputElements);
             saveWSDL(wsdlCBDom, currentTaskName + "TaskCallBack");
             // generateUI();
@@ -85,10 +93,14 @@ function createFile(currentTaskName, state, taskNode) { //createFile
     });
     $.get('resources/templatehtconfig.ht', function(data) {
         try {
-            htconfigDom = marshalEditorTextContent(data);
+            if (typeof data === "string"){
+               htconfigDom = marshalEditorTextContent(data);
+            }else {
+               htconfigDom = data; 
+            }
             generateHTConfig(htconfigDom, xmlDom, currentTaskName);
             saveHTConfig(htconfigDom);
-            if(state != "generateText"){
+            if(state != "generateText" && state != "initial"){
                 generateUI();
             }
             if(state == "initial"){
@@ -117,12 +129,16 @@ function readCBWSDL(currentTaskName) { //createFile
  * 
  */
 function addTask() { //createFile
-    $.get('resources/templatetask.ht', function(data) {
+    $.get('resources/template.ht', function(data) {
         try {
-            taskPartDom = marshalEditorTextContent(data);
-            tasks = xmlDom.getElementsByTagName("tasks")[0];
+            if (typeof data === "string"){
+               taskPartDom = marshalEditorTextContent(data);
+            }else {
+               taskPartDom = data; 
+            }
+            tasks = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","tasks")[0];
             i = parseInt($('#nooftasks').val());
-            nodes = Array.prototype.slice.call(xmlDom.getElementsByTagName("task"), 0);
+            nodes = Array.prototype.slice.call(xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","task"), 0);
             taskExists = false;
             nodes.forEach(function(taskNode) {
                 if(taskNode.getAttribute("name") == ("newTask" + i)){
@@ -130,8 +146,8 @@ function addTask() { //createFile
                 }
             });
             createFile("newTask" + i,"");
-            taskPartDom.getElementsByTagName("task")[0].setAttribute("name", "newTask" + i);
-            xmlDom.getElementsByTagName("tasks")[0].appendChild(xmlDom.importNode(taskPartDom.getElementsByTagName("task")[0], true));
+            taskPartDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","task")[0].setAttribute("name", "newTask" + i);
+            xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","tasks")[0].appendChild(xmlDom.importNode(taskPartDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","task")[0], true));
             IDESaveContent(new XMLSerializer().serializeToString((xmlDom)));
             //generateUI();
             //addEvent("tabChange","page-content-wrapper ",xmlDom);
@@ -152,7 +168,7 @@ function addInitalTask() { //createFile
         try {
             xmlDom = marshalEditorTextContent(data);
             IDESaveContent(data);
-            tasksList = xmlDom.getElementsByTagName("task");
+            tasksList = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","task");
             nodes = Array.prototype.slice.call(tasksList, 0);
             $("#page-content-wrapper #tabNames li").remove();
             $('#nooftasks').val(0);
@@ -250,7 +266,7 @@ function loadModelWithText() {
  */
 function generateTasks() {
     // Generate Menu Items
-    tasksList = xmlDom.getElementsByTagName("task");
+    tasksList = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","task");
     nodes = Array.prototype.slice.call(tasksList, 0);
     nodes.forEach(function(taskNode) {
         generateText(taskNode);
@@ -263,7 +279,7 @@ function generateTasks() {
  * This method deletes an existing task.
  */
 function deleteTask(taskNode) { //createFile
-    if(taskNode.parentNode.getElementsByTagName("task").length!=1){
+    if(taskNode.parentNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","task").length!=1){
         confirmInput = confirm("Do you really want to delete " + taskNode.getAttribute("name") + " ? ");
         if (confirmInput == true) {
             taskNode.parentNode.removeChild(taskNode); 
@@ -290,7 +306,7 @@ function generateUI(status) {
         $('body').hide();
     } else {
         $('body').show();
-        tasksList = xmlDom.getElementsByTagName("task");
+        tasksList = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","task");
         nodes = Array.prototype.slice.call(tasksList, 0);
         $("#page-content-wrapper #tabNames li").remove();
         $('#nooftasks').val(0);
@@ -320,8 +336,6 @@ function generateUI(status) {
         $('#page-content-wrapper').tabs("option", "active", selectedindex);
         handleTabChange();
         bindToggleEvent();
-        
-
     }
 }
 
@@ -397,8 +411,8 @@ function generateTaskDiv(taskNode, caller) {
         .click(
             function(e) {
                 // create DOM node for new input
-                var inputNode = taskNode.getElementsByTagName("metadata")[0]
-                    .getElementsByTagName("inputs")[0];
+                var inputNode = taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0]
+                    .getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","inputs")[0];
                 var newInputElement = xmlDom.createElementNS(
                     "http://wso2.org/ht/schema/renderings/",
                     "wso2:element");
@@ -440,8 +454,8 @@ function generateTaskDiv(taskNode, caller) {
             function(el) {
                 try {
                     // create dom node
-                    var outputNode = taskNode.getElementsByTagName("metadata")[0]
-                        .getElementsByTagName("outputs")[0];
+                    var outputNode = taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0]
+                        .getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","outputs")[0];
                     var newOutputElement = xmlDom.createElementNS(
                         "http://wso2.org/ht/schema/renderings/",
                         "wso2:element");
@@ -496,8 +510,8 @@ function generateTaskDiv(taskNode, caller) {
             });
 
     // sync rendering values into input mapping table
-    var inputNodes = taskNode.getElementsByTagName("metadata")[0]
-        .getElementsByTagName("inputs")[0].childNodes;
+    var inputNodes = taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0]
+        .getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","inputs")[0].childNodes;
     var inputTags = [];    
     $("#" + taskDivName + " #inputmappingTable")
         .html('<thead> <th >Element Name</th><th>Display Name</th><th>Presentation Parameters</th><th>Type</th><th>Action</th></thead>');
@@ -507,8 +521,8 @@ function generateTaskDiv(taskNode, caller) {
             try {
                 var mappingNo = parseInt($(
                     '#' + taskDivName + " #taskMappingNo").val());
-                if ((inputNodes[i].getElementsByTagName("label")[0].childNodes.length != 0) && (inputNodes[i].getElementsByTagName("value")[0].childNodes.length != 0))
-                    mapping = '<tr id="inputmapping' + mappingNo + '"><td><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue + '"/></td><td><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value="' + inputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue.replace(/\$/g, '') + '"/></td><td><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></input></label></td></tr>';
+                if ((inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0].childNodes.length != 0) && (inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0].childNodes.length != 0))
+                    mapping = '<tr id="inputmapping' + mappingNo + '"><td><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value="' + inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0].childNodes[0].nodeValue + '"/></td><td><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value="' + inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0].childNodes[0].nodeValue.replace(/\$/g, '') + '"/></td><td><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></input></label></td></tr>';
                 else
                     mapping = '<tr id="inputmapping' + mappingNo + '"><td><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute("id") + '"/></td><td><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value=""/></td><td><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value=""/></td><td><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
                 $("#" + taskDivName + " #inputmappingTable").append(mapping);
@@ -530,8 +544,8 @@ function generateTaskDiv(taskNode, caller) {
                                 for (j = 0; j < inputNodes.length; j++) {
                                     if (inputNodes[j].nodeName != "#text") {
                                         if (parseInt(deleteId) === deleteNodeId) {
-                                            taskNode.getElementsByTagName("metadata")[0]
-                                                .getElementsByTagName("inputs")[0]
+                                            taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0]
+                                                .getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","inputs")[0]
                                                 .removeChild(inputNodes[j]);
                                             break;
                                         }
@@ -554,8 +568,8 @@ function generateTaskDiv(taskNode, caller) {
     }
 
     // sync output rendering values into output mapping table
-    var outputNodes = taskNode.getElementsByTagName("metadata")[0]
-        .getElementsByTagName("outputs")[0].childNodes;
+    var outputNodes = taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0]
+        .getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","outputs")[0].childNodes;
     $("#" + taskDivName + " #outputmappingTable")
         .html('<thead><th>Element Name</th><th>Display Name</th><th>Value</th><th>Type</th><th>Default Values</th><th>Action</th></thead>');
     for (i = 0; i < outputNodes.length; i++) {
@@ -563,8 +577,8 @@ function generateTaskDiv(taskNode, caller) {
             try {
                 var outputmappingNo = parseInt($(
                     '#' + taskDivName + " #taskOutputMappingNo").val());
-                if ((outputNodes[i].getElementsByTagName("label")[0].childNodes.length != 0) && (outputNodes[i].getElementsByTagName("value")[0].childNodes.length != 0))
-                    outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="' + outputNodes[i].getAttribute("id") + '"></td><td><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue + '"></td><td><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue + '"></td><td><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagName("default")[0].childNodes[0].nodeValue + '"></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
+                if ((outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0].childNodes.length != 0) && (outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0].childNodes.length != 0))
+                    outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="' + outputNodes[i].getAttribute("id") + '"></td><td><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0].childNodes[0].nodeValue + '"></td><td><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0].childNodes[0].nodeValue + '"></td><td><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","default")[0].childNodes[0].nodeValue + '"></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
                 else
                     outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="' + outputNodes[i].getAttribute("id") + '"></td><td><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value=""></td><td><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value=""></td><td><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value=""></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
                 $("#" + taskDivName + " #outputmappingTable").append(
@@ -585,8 +599,8 @@ function generateTaskDiv(taskNode, caller) {
                                 for (j = 0; j < outputNodes.length; j++) {
                                     if (outputNodes[j].nodeName != "#text") {
                                         if (parseInt(deleteId) === deleteNodeId) {
-                                            taskNode.getElementsByTagName("metadata")[0]
-                                                .getElementsByTagName("outputs")[0]
+                                            taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0]
+                                                .getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","outputs")[0]
                                                 .removeChild(outputNodes[j]);
                                             break;
                                         }
@@ -610,48 +624,48 @@ function generateTaskDiv(taskNode, caller) {
     }
     //handleError($('#' +taskDivName + ' #taskCallbackServiceName').val());
     // sync other fields
-    if (taskNode.getElementsByTagName("documentation").length != 0 && taskNode.getElementsByTagName("documentation")[0].hasChildNodes()) {
+    if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","documentation").length != 0 && taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","documentation")[0].hasChildNodes()) {
         $('#' + taskDivName + " #taskDocumentation")
             .val(
-                taskNode.getElementsByTagName("documentation")[0].childNodes[0].nodeValue.trim());
+                taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","documentation")[0].childNodes[0].nodeValue.trim());
     }
-    if (taskNode.getElementsByTagName("priority").length != 0 && taskNode.getElementsByTagName("priority")[0].hasChildNodes()) {
+    if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","priority").length != 0 && taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","priority")[0].hasChildNodes()) {
         $('#' + taskDivName + " #taskPriority")
             .val(
-                taskNode.getElementsByTagName("priority")[0].childNodes[0].nodeValue.trim());
+                taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","priority")[0].childNodes[0].nodeValue.trim());
     }
-    if (taskNode.getElementsByTagName("interface").length != 0 && !taskNode.getElementsByTagName("interface")[0].hasChildNodes()) {
+    if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","interface").length != 0 && !taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","interface")[0].hasChildNodes()) {
         $('#' + taskDivName + " #taskOperation").val(
-            taskNode.getElementsByTagName("interface")[0].getAttribute(
+            taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","interface")[0].getAttribute(
                 "operation").trim());
     }
     // service URL mapping
-    if(taskNode.getElementsByTagName("interface")[0].getAttribute(
+    if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","interface")[0].getAttribute(
             "responseOperation").trim() != "")
     $('#' + taskDivName + " #taskCallbackOperationName").val(
-        taskNode.getElementsByTagName("interface")[0].getAttribute(
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","interface")[0].getAttribute(
             "responseOperation").trim());
-    if (taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("name").length != 0 && taskNode.getElementsByTagName("presentationElements")[0]
-            .getElementsByTagName("name")[0].hasChildNodes()) {
+    if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","name").length != 0 && taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+            .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","name")[0].hasChildNodes()) {
         $('#' + taskDivName + " #presentationElementDisplayName").val(
-            taskNode.getElementsByTagName("presentationElements")[0]
-            .getElementsByTagName("name")[0].childNodes[0].nodeValue.trim());
+            taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+            .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","name")[0].childNodes[0].nodeValue.trim());
     }
-    if (taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("subject").length != 0 && taskNode.getElementsByTagName("presentationElements")[0]
-            .getElementsByTagName("subject")[0].hasChildNodes()) {
+    if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","subject").length != 0 && taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+            .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","subject")[0].hasChildNodes()) {
         $('#' + taskDivName + " #presentationElementDisplaySubject").val(
-            taskNode.getElementsByTagName("presentationElements")[0]
-            .getElementsByTagName("subject")[0].childNodes[0].nodeValue.trim());
+            taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+            .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","subject")[0].childNodes[0].nodeValue.trim());
     }
-    if (taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("description").length != 0 && taskNode.getElementsByTagName("presentationElements")[0]
-                .getElementsByTagName("description")[0].hasChildNodes()) {
+    if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","description").length != 0 && taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+                .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","description")[0].hasChildNodes()) {
         $('#' + taskDivName + " #presentationElementDescription")
             .val(
-                taskNode.getElementsByTagName("presentationElements")[0]
-                .getElementsByTagName("description")[0].childNodes[0].nodeValue.trim());
+                taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+                .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","description")[0].childNodes[0].nodeValue.trim());
     }
     
     try {
@@ -697,57 +711,57 @@ function generateText(taskNode) {
     // fill general details
     taskNode.setAttribute("name", $('#' + taskDivName + " #taskName").val().replace(/ /g, ''));
     createImportNodes(taskName);
-    if(taskNode.getElementsByTagName("documentation")[0].hasChildNodes())
-    taskNode.getElementsByTagName("documentation")[0].childNodes[0].nodeValue = $(
+    if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","documentation")[0].hasChildNodes())
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","documentation")[0].childNodes[0].nodeValue = $(
         '#' + taskDivName + " #taskDocumentation").val(); //else create node and add
     else
-        taskNode.getElementsByTagName("documentation")[0].appendChild(xmlDom.createTextNode($(
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","documentation")[0].appendChild(xmlDom.createTextNode($(
         '#' + taskDivName + " #taskDocumentation").val()));
-    if(taskNode.getElementsByTagName("priority")[0].hasChildNodes())
-    taskNode.getElementsByTagName("priority")[0].childNodes[0].nodeValue = $(
+    if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","priority")[0].hasChildNodes())
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","priority")[0].childNodes[0].nodeValue = $(
         '#' + taskDivName + " #taskPriority").val();
     else
-        taskNode.getElementsByTagName("priority")[0].appendChild(xmlDom.createTextNode($(
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","priority")[0].appendChild(xmlDom.createTextNode($(
         '#' + taskDivName + " #taskPriority").val()));
-    if(taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("name")[0].hasChildNodes())
-    taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("name")[0].childNodes[0].nodeValue = $(
+    if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","name")[0].hasChildNodes())
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","name")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDisplayName").val();
     else
-        taskNode.getElementsByTagName("presentationElements")[0].getElementsByTagName("name")[0].appendChild(xmlDom.createTextNode($(
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","name")[0].appendChild(xmlDom.createTextNode($(
         '#' + taskDivName + " #presentationElementDisplayName").val()));    
-    if(taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("subject")[0].hasChildNodes())    
-    taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("subject")[0].childNodes[0].nodeValue = $(
+    if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","subject")[0].hasChildNodes())    
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","subject")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDisplaySubject").val();
     else
-        taskNode.getElementsByTagName("presentationElements")[0].getElementsByTagName("subject")[0].appendChild(xmlDom.createTextNode($(
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","subject")[0].appendChild(xmlDom.createTextNode($(
         '#' + taskDivName + " #presentationElementDisplaySubject").val()));    
-    if(taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("description")[0].hasChildNodes())    
-    taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("description")[0].childNodes[0].nodeValue = $(
+    if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","description")[0].hasChildNodes())    
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","description")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #presentationElementDescription").val();
     else
-        taskNode.getElementsByTagName("presentationElements")[0].getElementsByTagName("description")[0].appendChild(xmlDom.createTextNode($(
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","description")[0].appendChild(xmlDom.createTextNode($(
         '#' + taskDivName + " #presentationElementDescription").val()));    
-    taskNode.getElementsByTagName("interface")[0].setAttribute("operation", $(
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","interface")[0].setAttribute("operation", $(
         '#' + taskDivName + " #taskOperation").val());
-    taskNode.getElementsByTagName("interface")[0].setAttribute(
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","interface")[0].setAttribute(
         "responseOperation", $(
             '#' + taskDivName + " #taskCallbackOperationName").val())
-    taskNode.getElementsByTagName("interface")[0].setAttribute("portType", "tns:" +
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","interface")[0].setAttribute("portType", "tns:" +
         taskName + "PT");
-    taskNode.getElementsByTagName("interface")[0].setAttribute(
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","interface")[0].setAttribute(
             "responsePortType", "tns:" + taskName + "CBPT")
         // fill input mappings
     inputmappingNo = parseInt($('#' + taskDivName + " #taskMappingNo").val());
-    inputNodes = taskNode.getElementsByTagName("metadata")[0]
-        .getElementsByTagName("inputs")[0].childNodes;
+    inputNodes = taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0]
+        .getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","inputs")[0].childNodes;
     inputmapping = 0;
-    presentationParametersa = taskNode.getElementsByTagName("presentationElements")[0].getElementsByTagName("presentationParameters")[0];
+    presentationParametersa = taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationParameters")[0];
     while (presentationParametersa.firstChild) {
                     presentationParametersa.removeChild(presentationParametersa.firstChild);
     }
@@ -755,19 +769,19 @@ function generateText(taskNode) {
         if (inputNodes[i].nodeName != '#text') {
             inputNodes[i].setAttribute("id", $(
                 '#' + taskDivName + " #taskInputMappingElementName" + inputmapping).val());
-            if (inputNodes[i].getElementsByTagName("label")[0].childNodes.length != 0)
-                inputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue = $(
+            if (inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0].childNodes.length != 0)
+                inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskInputMappingDisplayName" + inputmapping).val();
             else
-                addTextNode(inputNodes[i].getElementsByTagName("label")[0], xmlDom, $('#' + taskDivName + " #taskInputMappingDisplayName" + inputmapping).val());
+                addTextNode(inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0], xmlDom, $('#' + taskDivName + " #taskInputMappingDisplayName" + inputmapping).val());
             inputNodes[i].setAttribute("type", $(
                 '#' + taskDivName + " #taskInputMappingType" + inputmapping).val());
-            if (inputNodes[i].getElementsByTagName("value")[0].childNodes.length != 0)
-                inputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue = '$' + $(
+            if (inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0].childNodes.length != 0)
+                inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0].childNodes[0].nodeValue = '$' + $(
                     '#' + taskDivName + " #taskInputMappingOrder" + inputmapping).val() + '$';
             else
-                addTextNode(inputNodes[i].getElementsByTagName("value")[0], xmlDom, $('#' + taskDivName + " #taskInputMappingOrder" + inputmapping).val());
-                addPresentationParameter(xmlDom,taskNode,taskName,inputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue,inputNodes[i].getAttribute("type"));
+                addTextNode(inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0], xmlDom, $('#' + taskDivName + " #taskInputMappingOrder" + inputmapping).val());
+                addPresentationParameter(xmlDom,taskNode,taskName,inputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0].childNodes[0].nodeValue,inputNodes[i].getAttribute("type"));
              
             inputmapping++;
         }
@@ -776,35 +790,35 @@ function generateText(taskNode) {
     // fill output mappings
     outputmappingNo = parseInt($('#' + taskDivName + " #taskOutputMappingNo")
         .val());
-    outputNodes = taskNode.getElementsByTagName("metadata")[0]
-        .getElementsByTagName("outputs")[0].childNodes;
+    outputNodes = taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0]
+        .getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","outputs")[0].childNodes;
     outputmapping = 0;
     for (i = 0; i < outputNodes.length; i++) {
         if (outputNodes[i].nodeName != '#text') {
             outputNodes[i].setAttribute("id", $(
                 '#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val());
-            if (outputNodes[i].getElementsByTagName("label")[0].childNodes.length != 0)
-                outputNodes[i].getElementsByTagName("label")[0].childNodes[0].nodeValue = $(
+            if (outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0].childNodes.length != 0)
+                outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskOutputMappingDisplayName" + outputmapping).val();
             else
-                addTextNode(outputNodes[i].getElementsByTagName("label")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingDisplayName" + outputmapping).val());
+                addTextNode(outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","label")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingDisplayName" + outputmapping).val());
             outputNodes[i].setAttribute("type", $(
                 '#' + taskDivName + " #taskOutputMappingType" + outputmapping).val());
-            if (outputNodes[i].getElementsByTagName("value")[0].childNodes.length != 0)
-                outputNodes[i].getElementsByTagName("value")[0].childNodes[0].nodeValue = $(
+            if (outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0].childNodes.length != 0)
+                outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val();
             else
-                addTextNode(outputNodes[i].getElementsByTagName("value")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val());
-            if (outputNodes[i].getElementsByTagName("xpath")[0].childNodes.length != 0)
-                outputNodes[i].getElementsByTagName("xpath")[0].childNodes[0].nodeValue = "/tns:" + taskName + "CBData/tns:" + $(
+                addTextNode(outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","value")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val());
+            if (outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","xpath")[0].childNodes.length != 0)
+                outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","xpath")[0].childNodes[0].nodeValue = "/tns:" + taskName + "CBData/tns:" + $(
                     '#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val();
             else
-                addTextNode(outputNodes[i].getElementsByTagName("xpath")[0], xmlDom, "/tns:" + taskName + "CBData/tns:" + $('#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val());
-            if (outputNodes[i].getElementsByTagName("default")[0].childNodes.length != 0)
-                outputNodes[i].getElementsByTagName("default")[0].childNodes[0].nodeValue = $(
+                addTextNode(outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","xpath")[0], xmlDom, "/tns:" + taskName + "CBData/tns:" + $('#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val());
+            if (outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","default")[0].childNodes.length != 0)
+                outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","default")[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskOutputMappingDefaultValues" + outputmapping).val();
             else
-                addTextNode(outputNodes[i].getElementsByTagName("default")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingDefaultValues" + outputmapping).val());
+                addTextNode(outputNodes[i].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","default")[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingDefaultValues" + outputmapping).val());
             outputmapping++;
         }
     }
@@ -825,11 +839,11 @@ function generateText(taskNode) {
     marshalPeopleAssignment(taskNode,"taskStakeholders");
 
     //Remove people assignments with no argument or argument value none
-    var peopleAssignmentsList = taskNode.getElementsByTagName("peopleAssignments")[0].childNodes;
+    var peopleAssignmentsList = taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].childNodes;
     for (i = 0; i < peopleAssignmentsList.length; i++) {
         if (peopleAssignmentsList[i].nodeName != "#text") {
-            if (peopleAssignmentsList[i].getElementsByTagName("argument").length != 0 && peopleAssignmentsList[i].getElementsByTagName("argument")[0].getAttribute("name") == "None") {
-                taskNode.getElementsByTagName("peopleAssignments")[0].removeChild(peopleAssignmentsList[i]);
+            if (peopleAssignmentsList[i].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument").length != 0 && peopleAssignmentsList[i].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument")[0].getAttribute("name") == "None") {
+                taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].removeChild(peopleAssignmentsList[i]);
             }
         }
     }
@@ -854,43 +868,43 @@ function getArgumentName(nameValue) {
 }
 
 function createImportNodes(taskName){
-    importNodes = xmlDom.getElementsByTagName("import");
+    importNodes = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","import");
     for (i = 0; i < importNodes.length; i++) {
-       xmlDom.getElementsByTagName("humanInteractions")[0].removeChild(importNodes[i]);
+       xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","humanInteractions")[0].removeChild(importNodes[i]);
     }
     newTaskImport = xmlDom.createElementNS(
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:import");
     newTaskImport.setAttribute("location",taskName+"Task.wsdl");
-    newTaskImport.setAttribute("namespace",xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("xmlns:tns"));
+    newTaskImport.setAttribute("namespace",xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","humanInteractions")[0].getAttribute("xmlns:tns"));
     newTaskImport.setAttribute("importType","http://schemas.xmlsoap.org/wsdl/");
-    xmlDom.getElementsByTagName("humanInteractions")[0].appendChild(newTaskImport);
+    xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","humanInteractions")[0].appendChild(newTaskImport);
     newCBTaskImport = xmlDom.createElementNS(
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:import");
     newCBTaskImport.setAttribute("location",taskName+"TaskCallBack.wsdl");
-    newCBTaskImport.setAttribute("namespace",xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("xmlns:tns"));
+    newCBTaskImport.setAttribute("namespace",xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","humanInteractions")[0].getAttribute("xmlns:tns"));
     newCBTaskImport.setAttribute("importType","http://schemas.xmlsoap.org/wsdl/");
-    xmlDom.getElementsByTagName("humanInteractions")[0].appendChild(newCBTaskImport);
+    xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","humanInteractions")[0].appendChild(newCBTaskImport);
  }
 
 function setMetaRendering(taskNode) {
     //copynode to wso2metadata
-    if(taskNode.getElementsByTagName("renderings")[0].getElementsByTagName("rendering")[0].getElementsByTagName("inputs").length !=0 ){ //check for type=wso2:input
-        taskNode.getElementsByTagName("renderings")[0].getElementsByTagName("rendering")[0].removeChild(taskNode.getElementsByTagName("renderings")[0].getElementsByTagName("inputs")[0]);
+    if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","rendering")[0].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","inputs").length !=0 ){ //check for type=wso2:input
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","rendering")[0].removeChild(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","inputs")[0]);
     }
-    if(taskNode.getElementsByTagName("renderings")[0].getElementsByTagName("rendering")[1].getElementsByTagName("outputs").length !=0 ){ //check for type=wso2:output
-        taskNode.getElementsByTagName("renderings")[0].getElementsByTagName("rendering")[1].removeChild(taskNode.getElementsByTagName("renderings")[0].getElementsByTagName("outputs")[0]);
+    if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","rendering")[1].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","outputs").length !=0 ){ //check for type=wso2:output
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","rendering")[1].removeChild(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","outputs")[0]);
     }
-    taskNode.getElementsByTagName("renderings")[0].getElementsByTagName("rendering")[0].appendChild(xmlDom.importNode(taskNode.getElementsByTagName("metadata")[0].getElementsByTagName("inputs")[0], true));
-    taskNode.getElementsByTagName("renderings")[0].getElementsByTagName("rendering")[1].appendChild(xmlDom.importNode(taskNode.getElementsByTagName("metadata")[0].getElementsByTagName("outputs")[0], true));
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","rendering")[0].appendChild(xmlDom.importNode(taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","inputs")[0], true));
+    taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","rendering")[1].appendChild(xmlDom.importNode(taskNode.getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","metadata")[0].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","outputs")[0], true));
     //remove orgentitynodes from renderings
-    var inputNodes = taskNode.getElementsByTagName("renderings")[0]
-        .getElementsByTagName("inputs")[0].childNodes;
+    var inputNodes = taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0]
+        .getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","inputs")[0].childNodes;
     for (i = 0; i < inputNodes.length; i++) {
         if (inputNodes[i].nodeName != "#text") {
             if(inputNodes[i].getAttribute("type") == "htt:tOrganizationalEntity"){
-                taskNode.getElementsByTagName("renderings")[0].getElementsByTagName("inputs")[0].removeChild(inputNodes[i]);
+                taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","renderings")[0].getElementsByTagNameNS("http://wso2.org/ht/schema/renderings/","inputs")[0].removeChild(inputNodes[i]);
             }
         }
     }
@@ -908,7 +922,7 @@ function marshalEditorTextContent(textContent) {
         var parser = new DOMParser();
         var root = parser.parseFromString(textContent, "text/xml");
     } catch (err) {
-        handleError("Marshalling Error \n" + err);
+        handleError("Marshalling Error \n" + err.message);
     }
     return root;
 }
@@ -921,11 +935,11 @@ function syncWSDLFields(taskName){
         handleError("Error Reading WSDL");
     }
     if (typeof wsdlRead != 'undefined' || wsdlRead != 'undefined') {
-        if(wsdlRead.getElementsByTagName("definitions").length!=0){
-            if(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location")!='undefined')
-            $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("address")[0].getAttribute("location"));
-            if(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name")!='undefined')
-            $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagName("definitions")[0].getElementsByTagName("service")[0].getAttribute("name"));
+        if(wsdlRead.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions").length!=0){
+            if(wsdlRead.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0].getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/soap/","address")[0].getAttribute("location")!='undefined')
+            $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0].getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/soap/","address")[0].getAttribute("location"));
+            if(wsdlRead.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0].getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","service")[0].getAttribute("name")!='undefined')
+            $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0].getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","service")[0].getAttribute("name"));
         }else{
             createFile(taskName,"initial");
         }
@@ -950,8 +964,8 @@ function loadFileContent() {
  */
 function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
     try {
-        if(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(assignmentName).length != 0)
-        taskNode.getElementsByTagName("peopleAssignments")[0].removeChild(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(assignmentName)[0]);
+        if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",assignmentName).length != 0)
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].removeChild(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",assignmentName)[0]);
         var newAssignmentNode = xmlDom.createElementNS(
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:" + assignmentName);
@@ -967,7 +981,7 @@ function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);
         newAssignmentNode.appendChild(newFrom);
-        taskNode.getElementsByTagName("peopleAssignments")[0].appendChild(newAssignmentNode);
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].appendChild(newAssignmentNode);
     } catch (err) {
         handleError(err);
     }
@@ -981,8 +995,8 @@ function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
  */
 function addExpressionNode(taskNode, xmlDom, assignmentName) {
     try {
-        if(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(assignmentName).length != 0)
-        taskNode.getElementsByTagName("peopleAssignments")[0].removeChild(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(assignmentName)[0]);
+        if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",assignmentName).length != 0)
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].removeChild(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",assignmentName)[0]);
         var newAssignmentNode = xmlDom.createElementNS(
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:" + assignmentName);
@@ -992,7 +1006,7 @@ function addExpressionNode(taskNode, xmlDom, assignmentName) {
         newFromText = xmlDom.createTextNode("regionalClerksExpression");
         newFrom.appendChild(newFromText);
         newAssignmentNode.appendChild(newFrom);
-        taskNode.getElementsByTagName("peopleAssignments")[0].appendChild(newAssignmentNode);
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].appendChild(newAssignmentNode);
     } catch (err) {
         handleError(err);
     }
@@ -1021,7 +1035,7 @@ function addGeneralNode(taskNode, xmlDom, nodeName) {
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);
         newAssignmentNode.appendChild(newFrom);
-        taskNode.getElementsByTagName("peopleAssignments")[0].appendChild(newAssignmentNode);
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].appendChild(newAssignmentNode);
     } catch (err) {
         handleError(err);
     }
@@ -1049,17 +1063,17 @@ $('.sectionHeader').click(function() {
 function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
-    /*if(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(peopleAssignmentName).length != 0 &&
+    /*if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName).length != 0 &&
         $('#' + taskDivName + " input[name = " + peopleAssignmentName + "" + taskDivName + "]:checked").val() == "na"){
-        emptyNode(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(peopleAssignmentName)[0]);
+        emptyNode(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]);
     }*/ // 
-    if (taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName).length != 0 && taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName)[0]
-        .getElementsByTagName("argument").length != 0 && $('#' + taskDivName + " input[name = " + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Role"){
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName)[0]
-        .getElementsByTagName("argument")[0]
+    if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName).length != 0 && taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument").length != 0 && $('#' + taskDivName + " input[name = " + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Role"){
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument")[0]
         .setAttribute(
             "name",
             getArgumentName($(
@@ -1069,9 +1083,9 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
         if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Role" || 
             $('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Literal") {
             addPeopleAssignementNode(taskNode, xmlDom, peopleAssignmentName);
-            taskNode.getElementsByTagName("peopleAssignments")[0]
-                .getElementsByTagName(peopleAssignmentName)[0]
-                .getElementsByTagName("argument")[0]
+            taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+                .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+                .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument")[0]
                 .setAttribute(
                     "name",
                     getArgumentName($(
@@ -1082,79 +1096,79 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
         } 
     }
 
-    if(taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName).length != 0 && taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName)[0]
-        .getElementsByTagName("argument").length != 0 ){
+    if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName).length != 0 && taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument").length != 0 ){
     if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Role"){
         if($('#' + taskDivName + " #" + peopleAssignmentName + "Role").val().trim() != ""){
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName)[0]
-        .getElementsByTagName("argument")[0].childNodes[0].nodeValue = $(
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #" + peopleAssignmentName + "Role").val();
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName)[0]
-        .getElementsByTagName("from")[0].setAttribute("logicalPeopleGroup", $(
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","from")[0].setAttribute("logicalPeopleGroup", $(
             '#' + taskDivName + " #" + peopleAssignmentName + "RoleLogicalGroup").val());
         }
         else{
-            taskNode.getElementsByTagName("peopleAssignments")[0].removeChild(taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName)[0]);
+            taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].removeChild(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]);
         }
     }
     }
     if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Expression")
         if($('#' + taskDivName + " #"+peopleAssignmentName+ "Expression").val().trim() != ""){
-        taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName)[0]
-        .getElementsByTagName("from")[0].childNodes[0].nodeValue = $(
+        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","from")[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #"+peopleAssignmentName+ "Expression").val();
         }
         else{
-            taskNode.getElementsByTagName("peopleAssignments")[0].removeChild(taskNode.getElementsByTagName("peopleAssignments")[0]
-        .getElementsByTagName(peopleAssignmentName)[0]);
+            taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].removeChild(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]);
         }
     if ($('#' + taskDivName + " input[name="+peopleAssignmentName+ "" + taskDivName + "]:checked").val() == peopleAssignmentName+ "Literal") {
-        // taskNode.removeChild(taskNode.getElementsByTagName("peopleAssignments")[0]);
-        createNewLiteral(xmlDom, taskNode.getElementsByTagName("peopleAssignments")[0]
-            .getElementsByTagName(peopleAssignmentName)[0]
-            .getElementsByTagName("from")[0], $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val().trim(),$('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val().trim());
+        // taskNode.removeChild(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]);
+        createNewLiteral(xmlDom, taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+            .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+            .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","from")[0], $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val().trim(),$('#' + taskDivName + " #"+peopleAssignmentName+"LiteralGroups").val().trim());
     }
 }
 
 function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
-    if (taskNode.getElementsByTagName("peopleAssignments")[0]
-            .getElementsByTagName(peopleAssignmentName).length != 0) { //&& TaskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName("potentialOwners").getElementsByTagName("argument").length!=0
-            if (taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(peopleAssignmentName)[0].getElementsByTagName("argument").length != 0) {
-                ownerType = toTitleCase(taskNode.getElementsByTagName("peopleAssignments")[0]
-                    .getElementsByTagName(peopleAssignmentName)[0]
-                    .getElementsByTagName("argument")[0].getAttribute("name"));
+    if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+            .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName).length != 0) { //&& TaskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","potentialOwners").getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument").length!=0
+            if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument").length != 0) {
+                ownerType = toTitleCase(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+                    .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+                    .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument")[0].getAttribute("name"));
                 $('#' + taskDivName + " input[name="+peopleAssignmentName+""+ taskDivName + "][value="+peopleAssignmentName+"" + ownerType + "]").prop("checked", true);
-                if(taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName(peopleAssignmentName)[0]
-                        .getElementsByTagName("argument")[0].childNodes.length != 0)
+                if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument")[0].childNodes.length != 0)
                 $('#' + taskDivName + " #"+peopleAssignmentName+"" + ownerType)
                     .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName(peopleAssignmentName)[0]
-                        .getElementsByTagName("argument")[0].childNodes[0].nodeValue.trim());
+                        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","argument")[0].childNodes[0].nodeValue.trim());
                 if(ownerType == "Role"){ //removeexpression
                     $('#' + taskDivName + " #" + peopleAssignmentName + "" + ownerType + "LogicalGroup").val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName(peopleAssignmentName)[0]
-                        .getElementsByTagName("from")[0].getAttribute("logicalPeopleGroup"))
+                        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","from")[0].getAttribute("logicalPeopleGroup"))
                 }    
             } else {
-                if(taskNode.getElementsByTagName("peopleAssignments")[0].getElementsByTagName(peopleAssignmentName)[0].getElementsByTagName("literal").length != 0){
+                if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","literal").length != 0){
                     $('#' + taskDivName + " input[name="+peopleAssignmentName+"" + taskDivName + "][value="+peopleAssignmentName+"Literal]").prop("checked", true);
-                    usersList = taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName(peopleAssignmentName)[0]
-                        .getElementsByTagName("user");
-                    groupsList = taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName(peopleAssignmentName)[0]
-                        .getElementsByTagName("group");
+                    usersList = taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803","user");
+                    groupsList = taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803","group");
                     for (var t = 0; t < usersList.length; t++) {
                         if(usersList[t].childNodes.length!=0){
                             if($('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val().trim() == "") $('#' + taskDivName + " #"+peopleAssignmentName+"LiteralUsers").val(usersList[t].childNodes[0].nodeValue);
@@ -1170,14 +1184,14 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
                 }
                 else{ // for expression
                     $('#' + taskDivName + " input[name="+peopleAssignmentName+""+ taskDivName + "][value="+peopleAssignmentName+"Expression]").prop("checked", true);
-                if(taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName(peopleAssignmentName)[0]
-                        .getElementsByTagName("from")[0].childNodes.length != 0)
+                if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","from")[0].childNodes.length != 0)
                 $('#' + taskDivName + " #"+peopleAssignmentName+"Expression")
                     .val(
-                        taskNode.getElementsByTagName("peopleAssignments")[0]
-                        .getElementsByTagName(peopleAssignmentName)[0]
-                        .getElementsByTagName("from")[0].childNodes[0].nodeValue.trim());
+                        taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]
+                        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","from")[0].childNodes[0].nodeValue.trim());
                 }
             }
         } else {
@@ -1270,8 +1284,8 @@ function addPresentationParameter(xmlDom, taskNode, taskName , name, type) { //s
     //if(name.indexOf("$")==0 && name.lastIndexOf("$")==(name.length-1)){ //uncomment this for $ validation
     if(type != "htt:tOrganizationalEntity"){
     name = name.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
-    parent = taskNode.getElementsByTagName("presentationElements")[0]
-        .getElementsByTagName("presentationParameters")[0];
+    parent = taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationElements")[0]
+        .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","presentationParameters")[0];
     newPresentationParameter = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
         "htd:presentationParameter"); 
     newPresentationParameter.setAttribute("name",name);   
@@ -1286,7 +1300,7 @@ function addPresentationParameter(xmlDom, taskNode, taskName , name, type) { //s
 
 function removeUnwantedArtifacts() {
     var taskNames = ["removeWSDL"];
-    tasksList = xmlDom.getElementsByTagName("task");
+    tasksList = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","task");
     nodes = Array.prototype.slice.call(tasksList, 0);
     nodes.forEach(function(taskNode) {
         taskNames.push(taskNode.getAttribute("name"));

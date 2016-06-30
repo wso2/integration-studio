@@ -58,11 +58,10 @@ function generateHTConfig(configDom, xmlDom, currentTask) {
     serviceName = $('#' + currentTaskName + ' #taskCallbackServiceName').val();
     portName = currentTask + "Port";
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
-    wsdlHTDeploymentConfig = configDom.getElementsByTagName("HTDeploymentConfig")[0];
-
-    tasksList = xmlDom.getElementsByTagName("task");
-    targetnamespace = xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("targetNamespace");
-    configDom.getElementsByTagName("HTDeploymentConfig")[0].setAttribute("xmlns:task",targetnamespace);
+    wsdlHTDeploymentConfig = configDom.getElementsByTagNameNS("http://wso2.org/ht/schema/deployment/config","HTDeploymentConfig")[0];
+    tasksList = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","task");
+    targetnamespace = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","humanInteractions")[0].getAttribute("targetNamespace");
+    configDom.getElementsByTagNameNS("http://wso2.org/ht/schema/deployment/config","HTDeploymentConfig")[0].setAttribute("xmlns:task",targetnamespace);
     for(l=0;l<tasksList.length;l++){
 
         var taskName = tasksList[l].getAttribute("name");
@@ -108,12 +107,12 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     serviceName = currentTask+"Service";
     portName = currentTask + "Port";
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
-    targetnamespace = xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("targetNamespace");
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("xmlns:tns",targetnamespace);
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("targetNamespace",targetnamespace);
+    targetnamespace = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","humanInteractions")[0].getAttribute("targetNamespace");
+    wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0].setAttribute("xmlns:tns",targetnamespace);
+    wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0].setAttribute("targetNamespace",targetnamespace);
     // get Definitions node and Schema node from dummy wsdl dom
-    wsdlSchema = wsdlDom.getElementsByTagName("schema")[0];
-    wsdlDefinitions = wsdlDom.getElementsByTagName("definitions")[0];
+    wsdlSchema = wsdlDom.getElementsByTagNameNS("http://www.w3.org/2001/XMLSchema","schema")[0];
+    wsdlDefinitions = wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0];
     wsdlSchema.setAttribute("targetNamespace",targetnamespace);
     //alert("Inside generate Input "+currentTask+" : "+ $('#' + currentTask + 'wrapper #taskCallbackServiceName').val());
     // create Data type elements
@@ -243,17 +242,17 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask,serviceURL,operationNam
     outputElements = $('#' + currentTaskName + ' #outputmappingTable tr');*/
     portName = currentTask + "CBPort";
     // get Definitions
-    wsdlSchema = wsdlDom.getElementsByTagName("schema")[0];
-    wsdlDefinitions = wsdlDom.getElementsByTagName("definitions")[0];
+    wsdlSchema = wsdlDom.getElementsByTagNameNS("http://www.w3.org/2001/XMLSchema","schema")[0];
+    wsdlDefinitions = wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0];
     // create types(data)
     newComplexType = wsdlDom.createElementNS(
         xsdNameSpace, "xsd:complexType");
     newComplexType.setAttribute("name", currentTask + "CBDataType"); // Data
     // type
     // Name
-    targetnamespace = xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("targetNamespace");
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("xmlns:tns",targetnamespace);
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("targetNamespace",targetnamespace);
+    targetnamespace = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","humanInteractions")[0].getAttribute("targetNamespace");
+    wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0].setAttribute("xmlns:tns",targetnamespace);
+    wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/","definitions")[0].setAttribute("targetNamespace",targetnamespace);
     wsdlSchema.setAttribute("targetNamespace",targetnamespace);
 
     newSequence = wsdlDom.createElementNS(xsdNameSpace,

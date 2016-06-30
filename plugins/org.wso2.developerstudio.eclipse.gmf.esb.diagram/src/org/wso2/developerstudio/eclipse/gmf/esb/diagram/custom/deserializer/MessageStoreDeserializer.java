@@ -16,7 +16,34 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__CONNECTION_FACTORY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__ENABLE_CACHING;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__FAILOVER_MESSAGE_STORE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_DATABASE_TABLE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_DATASOURCE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_DRIVER;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_PASSWORD;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_URL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_USER;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JMS_SPEC_VERSION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JNDI_QUEUE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__PASSWORD;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__PROVIDER_CLASS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__PROVIDER_URL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_PASSWORD;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_USER_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__ROUTING_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__STORE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__STORE_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__USER_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__VIRTUAL_HOST;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,15 +62,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
-import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageStore;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageStoreFormPage;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.*;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.CustomStore;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.InMemory;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JDBC;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JMS;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.RabbitMQ;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.WSO2MB;
 
 /**
  * Deserializes a message-store configuration to a graphical message-Store object
@@ -470,11 +499,11 @@ public class MessageStoreDeserializer
 							if (StringUtils.isNotEmpty(value)) {
 								// Add the property to removed list
 								removedProperties.add(prop);
-								MessageStoreParameter newPrp = createProperty(name);
+								/*MessageStoreParameter newPrp = createProperty(name);
 								if (!newlyAddedProperties.contains(newPrp)) {
 									// Add to the new properties list
 									newProperties.add(newPrp);
-								}
+								}*/
 							}
 						}
 					}

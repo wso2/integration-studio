@@ -16,8 +16,33 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__CRON_EXPRESSION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__DEACTIVATE_SEQUENCE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__DROP_MESSAGE_AFTER_MAXIMUM_DELIVERY_ATTEMPTS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__ENDPOINT_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FORWARDING_INTERVAL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_STORE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_STATE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__RETRY_INTERVAL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_INTERVAL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SEQUENCE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SOURCE_MESSAGE_STORE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__TARGET_MESSAGE_STORE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__TASK_COUNT;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -25,6 +50,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.message.processor.MessageProcessor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState;
@@ -38,9 +64,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.*;
-
-import org.eclipse.swt.widgets.Text;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.CustomProcessor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.Sampling;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.ScheduledFailoverForwarding;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.ScheduledForwarding;
 
 /**
  * Deserializes a message-processor configuration to a graphical message
@@ -667,8 +694,72 @@ public class MessageProcessorDeserializer
 
 				custom.custom_providerClass.setText((String) dummyMessageProcessor.getClassName());
 				
-				// TODO : Change parameter
-				custom.custom_customParameters.setText((String) processor.getParameters().toString());
+				if (!dummyMessageProcessor.getParameters().entrySet().isEmpty()) {
+					List<MessageProcessorParameter> existingProperties = custom.messageProcessorParameterList;
+					List<MessageProcessorParameter> newlyAddedProperties = new ArrayList<MessageProcessorParameter>();
+					List<MessageProcessorParameter> removedProperties = new ArrayList<MessageProcessorParameter>();
+					List<MessageProcessorParameter> newProperties = new ArrayList<MessageProcessorParameter>();
+
+					for (Entry<String, Object> param : dummyMessageProcessor.getParameters().entrySet()) {
+						MessageProcessorParameter parameter = EsbFactory.eINSTANCE.createMessageProcessorParameter();
+						parameter.setParameterName(param.getKey());
+						parameter.setParameterValue(param.getValue().toString());
+
+						if (existingProperties != null) {
+							for (MessageProcessorParameter propertyItem : existingProperties) {
+								// When updating the existing properties from source view, then remove the property
+								// from old list and add to new list
+								if (propertyItem.getParameterName().equals(param.getKey())) {
+									existingProperties.remove(propertyItem);
+									newlyAddedProperties.add(parameter);
+									break;
+								}
+							}
+						}
+						// When adding a new property from source then add it to the new list
+						if (!newlyAddedProperties.contains(parameter)) {
+							newlyAddedProperties.add(parameter);
+						}
+					}
+
+					// If old properties contain any property values, then remove the value and add the property to the
+					// new
+					// list, DEVTOOLESB-505
+					if (existingProperties != null) {
+						for (MessageProcessorParameter prop : existingProperties) {
+							String value = prop.getParameterName();
+							String name = prop.getParameterName();
+							if (StringUtils.isNotEmpty(value)) {
+								// Add the property to removed list
+								removedProperties.add(prop);
+								/*MessageProcessorParameter newPrp = createProperty(name);
+								if (!newlyAddedProperties.contains(newPrp)) {
+									// Add to the new properties list
+									newProperties.add(newPrp);
+								}*/
+							}
+						}
+					}
+					// First remove the removed properties from existing properties
+					if (removedProperties.size() > 0) {
+						existingProperties.removeAll(removedProperties);
+					}
+					// Adds the new properties
+					if (newProperties.size() > 0) {
+						newlyAddedProperties.addAll(newProperties);
+					}
+					// Adds the existing old properties (which didn't get updated)
+					// to the new list
+					if (existingProperties != null) {
+						newlyAddedProperties.addAll(existingProperties);
+					}
+					custom.messageProcessorParameterList = newlyAddedProperties;
+				}else{
+					//When removing all properties from the source view then clear the list
+					custom.messageProcessorParameterList = null;
+				}
+				
+				
 				
 			}
 			
@@ -676,6 +767,19 @@ public class MessageProcessorDeserializer
 			messageProcessorPage.refreshProcessorSettings();
 			
 			
+	}
+	
+	/**
+	 * Creates a new property
+	 * 
+	 * @param name
+	 * @return
+	 */
+	private MessageProcessorParameter createProperty(String name) {
+		MessageProcessorParameter newPrp = EsbFactory.eINSTANCE.createMessageProcessorParameter();
+		newPrp.setParameterName(name);
+		newPrp.setParameterValue(null);
+		return newPrp;
 	}
 	
 	private void setTextValue(Text textField, Object value) {

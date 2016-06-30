@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +24,7 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.xml.MessageProcessorSerializer;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -42,7 +39,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.LocalEntryFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.CustomProcessor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.Sampling;
@@ -360,9 +356,15 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 						CustomProcessor custom = (CustomProcessor)messageProcessorFormPage.getProcessorImpl(customProcessor);
 						
 						className = custom.custom_providerClass.getText();
-						
-						// TODO: Add parameters
-
+						List<MessageProcessorParameter> parameters = custom.messageProcessorParameterList;
+						if (parameters != null) {
+							for (MessageProcessorParameter param : parameters) {
+								if (!StringUtils.isBlank(param.getParameterName())
+										&& !StringUtils.isBlank(param.getParameterValue())) {
+									parameterMap.put(param.getParameterName(), param.getParameterValue());
+								}
+							}
+						}
 						
 						break;
 					}

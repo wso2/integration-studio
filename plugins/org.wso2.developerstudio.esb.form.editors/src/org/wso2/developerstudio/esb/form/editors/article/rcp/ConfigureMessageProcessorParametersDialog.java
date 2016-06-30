@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
+package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
-import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.RemoveCommand;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
@@ -45,20 +42,10 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
 
 public class ConfigureMessageProcessorParametersDialog extends Dialog {
 
-	/**
-	 * MessageProcessor model
-	 */
-	private MessageProcessor messageProcessor;
-	/**
-	 * Editing domain
-	 */
-	private TransactionalEditingDomain editingDomain;
 	/**
 	 * title label.
 	 */
@@ -79,21 +66,24 @@ public class ConfigureMessageProcessorParametersDialog extends Dialog {
 	 * Button for deleting an existing Parameter.
 	 */
 	private Button removeParameterButton;
-	/**
-	 * Command for recording user operations.
-	 */
-	private CompoundCommand resultCommand;
+	
 	/**
 	 * Table editor
 	 */
 	private TableEditor parameterEditor;
 
-	public ConfigureMessageProcessorParametersDialog(Shell parentShell,
-			MessageProcessor messageProcessor) {
+	private List<MessageProcessorParameter> messageProcessorParamList = new ArrayList<MessageProcessorParameter>();
+
+	public ConfigureMessageProcessorParametersDialog(Shell parentShell, List<MessageProcessorParameter> list) {
 		super(parentShell);
-		setShellStyle(getShellStyle() | SWT.RESIZE); 
-		this.messageProcessor = messageProcessor;
-		this.editingDomain = TransactionUtil.getEditingDomain(messageProcessor);
+		setShellStyle(getShellStyle() | SWT.RESIZE);
+		// When updating an existing property, then get the property list
+		if (list != null) {
+			messageProcessorParamList = list;
+		} else {
+			// When adding properties initially, create a new list
+			list = new ArrayList<MessageProcessorParameter>();
+		}
 	}
 
 	protected Control createDialogArea(Composite parent) {
@@ -116,15 +106,13 @@ public class ConfigureMessageProcessorParametersDialog extends Dialog {
 		{
 			newParameterButton.setText("New...");
 			FormData newMessageProcessorParameterButtonLayoutData = new FormData(80, SWT.DEFAULT);
-			newMessageProcessorParameterButtonLayoutData.top = new FormAttachment(parameterLabel,
-					10);
+			newMessageProcessorParameterButtonLayoutData.top = new FormAttachment(parameterLabel, 10);
 			newMessageProcessorParameterButtonLayoutData.right = new FormAttachment(100);
 			newParameterButton.setLayoutData(newMessageProcessorParameterButtonLayoutData);
 
 			newParameterButton.addListener(SWT.Selection, new Listener() {
 				public void handleEvent(Event event) {
-					TableItem item = bindParameter(EsbFactory.eINSTANCE
-							.createMessageProcessorParameter());
+					TableItem item = bindPram(EsbFactory.eINSTANCE.createMessageProcessorParameter());
 					item.setText(0, "param" + parametersTable.getItemCount());
 					item.setText(1, "value");
 					parametersTable.select(parametersTable.indexOf(item));
@@ -136,18 +124,16 @@ public class ConfigureMessageProcessorParametersDialog extends Dialog {
 		{
 			removeParameterButton.setText("Remove");
 			FormData removeMessageProcessorParameterButtonLayoutData = new FormData();
-			removeMessageProcessorParameterButtonLayoutData.top = new FormAttachment(
-					newParameterButton, 5);
+			removeMessageProcessorParameterButtonLayoutData.top = new FormAttachment(newParameterButton, 5);
 			removeMessageProcessorParameterButtonLayoutData.right = new FormAttachment(100);
-			removeMessageProcessorParameterButtonLayoutData.left = new FormAttachment(
-					newParameterButton, 0, SWT.LEFT);
+			removeMessageProcessorParameterButtonLayoutData.left = new FormAttachment(newParameterButton, 0, SWT.LEFT);
 			removeParameterButton.setLayoutData(removeMessageProcessorParameterButtonLayoutData);
 
 			removeParameterButton.addListener(SWT.Selection, new Listener() {
 				public void handleEvent(Event event) {
 					int selectedIndex = parametersTable.getSelectionIndex();
 					if (-1 != selectedIndex) {
-						unbindParameter(selectedIndex);
+						unbindParam(selectedIndex);
 
 						// Select the next available candidate for deletion.
 						if (selectedIndex < parametersTable.getItemCount()) {
@@ -187,9 +173,14 @@ public class ConfigureMessageProcessorParametersDialog extends Dialog {
 
 			parametersTable.addListener(SWT.Selection, tblPropertiesListener);
 
-			// Populate template.
-			for (MessageProcessorParameter parameter : messageProcessor.getParameters()) {
-				bindParameter(parameter);
+			// When updating an existing property
+			if (messageProcessorParamList.size() > 0) {
+				for (MessageProcessorParameter property : messageProcessorParamList) {
+					bindPram(property);
+				}
+			} else {
+				// when adding properties for the first time
+				bindPram();
 			}
 
 			// In-line editing of parameters.
@@ -207,22 +198,35 @@ public class ConfigureMessageProcessorParametersDialog extends Dialog {
 		return container;
 	}
 
-	private TableItem bindParameter(MessageProcessorParameter parameter) {
+	private TableItem bindPram(MessageProcessorParameter param) {
 		TableItem item = new TableItem(parametersTable, SWT.NONE);
-		item.setText(new String[] { parameter.getParameterName(), parameter.getParameterValue() });
-		item.setData(parameter);
+		item.setText(new String[] { param.getParameterName(), param.getParameterValue() });
+		item.setData(param);
 		return item;
 	}
 
-	private void unbindParameter(int itemIndex) {
+	private TableItem bindPram() {
+		TableItem item = new TableItem(parametersTable, SWT.NONE);
+		item.setText(new String[] { null, null });
+		return item;
+	}
+
+	private void unbindParam(int itemIndex) {
 		TableItem item = parametersTable.getItem(itemIndex);
-		MessageProcessorParameter parameter = (MessageProcessorParameter) item.getData();
-		if (null != parameter.eContainer()) {
-			RemoveCommand removeCmd = new RemoveCommand(editingDomain, messageProcessor,
-					EsbPackage.Literals.MESSAGE_PROCESSOR__PARAMETERS, parameter);
-			getResultCommand().append(removeCmd);
-		}
+		MessageProcessorParameter param = (MessageProcessorParameter) item.getData();
+		removeTaskProperty(param);
 		parametersTable.remove(parametersTable.indexOf(item));
+	}
+
+	private void removeTaskProperty(MessageProcessorParameter param) {
+		if (param != null) {
+			for (MessageProcessorParameter propertyItem : messageProcessorParamList) {
+				if (propertyItem.getParameterName().equals(param.getParameterName())) {
+					messageProcessorParamList.remove(propertyItem);
+					break;
+				}
+			}
+		}
 	}
 
 	private void editItem(final TableItem item) {
@@ -300,8 +304,7 @@ public class ConfigureMessageProcessorParametersDialog extends Dialog {
 			}
 
 			/**
-			 * Dispose cell editor control at mouse down (otherwise the control
-			 * keep showing).
+			 * Dispose cell editor control at mouse down (otherwise the control keep showing).
 			 */
 			public void mouseDown(MouseEvent e) {
 				Control oldEditorControl = cellEditor.getEditor();
@@ -312,46 +315,48 @@ public class ConfigureMessageProcessorParametersDialog extends Dialog {
 	}
 
 	protected void okPressed() {
+
 		// parameters.
 		for (TableItem item : parametersTable.getItems()) {
-			MessageProcessorParameter parameter = (MessageProcessorParameter) item.getData();
 
-			// If the parameter is a new one, add it to the model.
-			if (null == parameter.eContainer()) {
-				// Update the parameter name with the latest data from table
-				// row.
+			MessageProcessorParameter parameter = null;
+
+			if (item.getData() == null) {
+				parameter = EsbFactory.eINSTANCE.createMessageProcessorParameter();
 				parameter.setParameterName(item.getText(0));
 				parameter.setParameterValue(item.getText(1));
 
-				// Record the add operation.
-				AddCommand addCmd = new AddCommand(editingDomain, messageProcessor,
-						EsbPackage.Literals.MESSAGE_PROCESSOR__PARAMETERS, parameter);
-				getResultCommand().append(addCmd);
 			} else {
-				// If the parameter name needs to be updated.
-				if (!parameter.getParameterName().equals(item.getText(0))) {
-					SetCommand setCmd = new SetCommand(editingDomain, parameter,
-							EsbPackage.Literals.MESSAGE_PROCESSOR_PARAMETER__PARAMETER_NAME,
-							item.getText(0));
-					getResultCommand().append(setCmd);
-				}
+				parameter = (MessageProcessorParameter) item.getData();
+				parameter.setParameterName(item.getText(0));
+				parameter.setParameterValue(item.getText(1));
 
-				if (!parameter.getParameterValue().equals(item.getText(1))) {
-					SetCommand setCmd = new SetCommand(editingDomain, parameter,
-							EsbPackage.Literals.MESSAGE_PROCESSOR_PARAMETER__PARAMETER_VALUE,
-							item.getText(1));
-					getResultCommand().append(setCmd);
+			}
+
+			for (MessageProcessorParameter propertyItem : messageProcessorParamList) {
+				// When updating the existing properties, remove the old
+				// property
+				if (propertyItem.getParameterName().equals(parameter.getParameterName())) {
+					messageProcessorParamList.remove(propertyItem);
+					break;
 				}
 			}
+			messageProcessorParamList.add(parameter);
 		}
-
-		// Apply changes.
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		}
-
+		setMessageProcessorPropertyList(messageProcessorParamList);
 		super.okPressed();
 	}
+	
+
+	public void setMessageProcessorPropertyList(List<MessageProcessorParameter> messageProcessorParamList) {
+		this.messageProcessorParamList = messageProcessorParamList;
+
+	}
+
+	public List<MessageProcessorParameter> getMessageProcessorPropertyList() {
+		return messageProcessorParamList;
+	}
+
 
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
@@ -360,13 +365,6 @@ public class ConfigureMessageProcessorParametersDialog extends Dialog {
 
 	protected Point getInitialSize() {
 		return new Point(450, 317);
-	}
-
-	private CompoundCommand getResultCommand() {
-		if (null == resultCommand) {
-			resultCommand = new CompoundCommand();
-		}
-		return resultCommand;
 	}
 
 }

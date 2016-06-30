@@ -26,6 +26,7 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.MessageStoreSerializer;
+import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
@@ -34,12 +35,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageStoreFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.CustomStore;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.InMemory;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JDBC;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JMS;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.RabbitMQ;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.WSO2MB;
-import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 
 public class MessageStoreTransformer {
 

@@ -16,8 +16,16 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors;
 
+import java.util.List;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
@@ -27,11 +35,14 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ConfigureMessageProcessorParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class CustomProcessor implements IMessageProcessor {
     public Text custom_providerClass;
-    public Text custom_customParameters;
+    public Button custom_customParameters;
+    public List<MessageProcessorParameter> messageProcessorParameterList;
     
     ScrolledForm form;
     FormToolkit toolkit;
@@ -76,10 +87,27 @@ public class CustomProcessor implements IMessageProcessor {
 		
 		parameterSection.setVisible(false);
 
-        toolkit.createLabel(parameterSectionClient, "Custom Parameters");
-        custom_customParameters = toolkit.createText(parameterSectionClient, "");
+        custom_customParameters = toolkit.createButton(parameterSectionClient, "Custom Parameters", SWT.PUSH);
         custom_customParameters.setBackground(new Color(null, 229,236,253));
-        custom_customParameters.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        custom_customParameters.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Shell shell = Display.getDefault().getActiveShell();
+				ConfigureMessageProcessorParametersDialog paramDialog = new ConfigureMessageProcessorParametersDialog(shell,messageProcessorParameterList);
+				paramDialog.setBlockOnOpen(true);
+				paramDialog.open();
+				messageProcessorParameterList = paramDialog.getMessageProcessorPropertyList();
+				
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+ 	
 
         
     }

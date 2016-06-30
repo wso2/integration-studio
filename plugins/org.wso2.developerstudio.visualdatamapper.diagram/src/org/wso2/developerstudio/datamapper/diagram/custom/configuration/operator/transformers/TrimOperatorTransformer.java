@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.JS_TO_STRING;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -44,7 +46,7 @@ public class TrimOperatorTransformer extends AbstractDMOperatorTransformer {
 				operationBuilder.append("");
 			} else {
 				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-						variableTypeMap, tempParentForLoopBeanStack, true) + ".trim()");
+						variableTypeMap, tempParentForLoopBeanStack, true) + JS_TO_STRING + ".trim()");
 			}
 			operationBuilder.append(";");
 

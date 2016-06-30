@@ -17,6 +17,7 @@ package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operato
 
 import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_ADDITIVE;
 import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.CONSTANT_STRING_LENGTH;
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.JS_TO_STRING;
 
 import java.util.List;
 import java.util.Map;
@@ -30,8 +31,8 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for
- * StringLength operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for StringLength operation
  */
 public class StringLengthOperatorTransformer extends AbstractDMOperatorTransformer {
 
@@ -45,9 +46,10 @@ public class StringLengthOperatorTransformer extends AbstractDMOperatorTransform
 				/* Default value is 0 */
 				operationBuilder.append(CONSTANT_ADDITIVE);
 			} else {
-				operationBuilder
-						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-								variableTypeMap, parentForLoopBeanStack, true) + ")" + CONSTANT_STRING_LENGTH);
+				operationBuilder.append("("
+						+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, parentForLoopBeanStack, true)
+						+ ")" + JS_TO_STRING + CONSTANT_STRING_LENGTH);
 			}
 
 			operationBuilder.append(";");

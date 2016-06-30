@@ -109,10 +109,9 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             }
 
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_ALERT)) { // ("alert","title","message")
-            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID,(String)parameters[2]);
+            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, (String) parameters[2]);
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    (String) parameters[1],
-                    null, editorStatus);
+                    (String) parameters[1], null, editorStatus);
             return null;
         } else {
             return null;

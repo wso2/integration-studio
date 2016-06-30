@@ -49,9 +49,9 @@ public class HumanTaskWizardPage extends WizardPage {
     private Text containerText;
 
     private Text fileText;
-    
+
     private Text taskText;
-    
+
     private Text tnsText;
 
     private ISelection selection;
@@ -114,7 +114,7 @@ public class HumanTaskWizardPage extends WizardPage {
         });
         label = new Label(container, SWT.NULL);
         label.setText("&Task Name:");
-        
+
         taskText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 2;
@@ -125,10 +125,10 @@ public class HumanTaskWizardPage extends WizardPage {
                 dialogChanged();
             }
         });
-        
+
         label = new Label(container, SWT.NULL);
         label.setText("&Target Namespace:");
-        
+
         tnsText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 2;
@@ -139,7 +139,7 @@ public class HumanTaskWizardPage extends WizardPage {
                 dialogChanged();
             }
         });
-        
+
         initialize();
         dialogChanged();
         setControl(container);
@@ -193,11 +193,11 @@ public class HumanTaskWizardPage extends WizardPage {
         IResource container = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(getContainerName()));
 
         String fileName = getFileName();
-        
+
         String taskName = getTaskName();
-        
+
         String tnsName = getTNSName();
-        
+
         if (taskName.trim().isEmpty()) {
             updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_BE_EMPTY_MESSAGE);
             return;
@@ -210,14 +210,14 @@ public class HumanTaskWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_SPECIFIED_MESSAGE);
             return;
         }
-        if (fileName.split("\\.").length!= 0 && fileName.split("\\.")[0].length()==0) {
+        if (fileName.split("\\.").length != 0 && fileName.split("\\.")[0].length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
         }
         if (fileName.replace('\\', '/').indexOf('/', 1) > 0) {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
-        }        
+        }
         if (getContainerName().length() == 0) {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
             return;
@@ -253,11 +253,11 @@ public class HumanTaskWizardPage extends WizardPage {
     public String getFileName() {
         return fileText.getText();
     }
-    
+
     public String getTaskName() {
         return taskText.getText();
     }
-    
+
     public String getTNSName() {
         return tnsText.getText();
     }

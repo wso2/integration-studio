@@ -34,6 +34,7 @@ public class HumanTaskUIEditor extends AbstractWebBasedEditor {
 
     private static final String WEB_APP_PATH = "HumanTaskEditor";
     private static final String WEB_APP_INDEX_PATH = "HumanTaskEditor/index.html";
+
     public HumanTaskUIEditor() {
         super();
     }
@@ -62,12 +63,12 @@ public class HumanTaskUIEditor extends AbstractWebBasedEditor {
             URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
             URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
             resolvedWebAppFolder = new File(resolvedFolderURI);
-            resolvedWebAppIndex = new File(resolvedWebAppFolder,"index.html");
+            resolvedWebAppIndex = new File(resolvedWebAppFolder, "index.html");
             return resolvedWebAppIndex.getAbsolutePath();
         } catch (IOException | URISyntaxException ex) {
             throw new WebUIException("Error while resolving the file path of web app.", ex);
         }
-       
+
     }
 
 }

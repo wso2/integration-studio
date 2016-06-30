@@ -55,6 +55,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
     private HumanTaskUIEditor humanTaskUIEditor;
 
     private EditorContentFunction editorContentFunction;
+
     /**
      * Creates a humantask editor.
      */
@@ -62,7 +63,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
         super();
         editorContentFunction = new EditorContentFunction();
         ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
-        
+
     }
 
     /**

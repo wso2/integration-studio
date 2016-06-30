@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.JS_TO_STRING;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -49,14 +51,14 @@ public class StartsWithOperatorTransformer extends AbstractDMOperatorTransformer
 			}
 			if (inputMethod != null) {
 				if (inputVariables.size() == 2 && inputMethod.startsWith("{$")) {
-					operationBuilder.append(".startsWith(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+					operationBuilder.append(JS_TO_STRING + ".startsWith(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
 				} else {
 					operationBuilder
-							.append(".startsWith(\"" + operator.getProperty(TransformerConstants.PATTERN_TAG) + "\")");
+							.append(JS_TO_STRING + ".startsWith(\"" + operator.getProperty(TransformerConstants.PATTERN_TAG) + "\")");
 				}
 			} else {
-				operationBuilder.append(".startsWith(\"\")");
+				operationBuilder.append(JS_TO_STRING + ".startsWith(\"\")");
 			}
 
 			operationBuilder.append(";");

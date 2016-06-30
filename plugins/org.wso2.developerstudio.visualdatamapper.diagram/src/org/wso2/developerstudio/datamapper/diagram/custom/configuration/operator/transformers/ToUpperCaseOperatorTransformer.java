@@ -15,6 +15,8 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
+import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.JS_TO_STRING;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -40,14 +42,14 @@ public class ToUpperCaseOperatorTransformer extends AbstractDMOperatorTransforme
         StringBuilder operationBuilder = new StringBuilder();
         if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {
-                operationBuilder.append(inputVariables.get(0).getName() + ".toUpperCase();");
+                operationBuilder.append(inputVariables.get(0).getName() + JS_TO_STRING + ".toUpperCase();");
             } else {
                 operationBuilder.append("'';");
             }
         } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
             if (inputVariables.size() >= 1) {
                 operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-                        variableTypeMap, parentForLoopBeanStack, true) + ".toUpperCase();");
+                        variableTypeMap, parentForLoopBeanStack, true) + JS_TO_STRING + ".toUpperCase();");
             } else {
                 operationBuilder.append("'';");
             }

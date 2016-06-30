@@ -36,7 +36,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors.*;

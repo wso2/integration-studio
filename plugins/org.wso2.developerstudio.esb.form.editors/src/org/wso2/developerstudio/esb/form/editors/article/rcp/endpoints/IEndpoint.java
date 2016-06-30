@@ -8,6 +8,6 @@ public interface IEndpoint {
 	public void createFormMiscSection();
 	public void createFormErrorHandlingSection();
 	
-	public EndpointUtils getEndpointUtils();
+	public EndpointCommons getEndpointCommons();
 
 }

@@ -24,24 +24,17 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.eclipse.ui.forms.editor.FormPage;
-import org.eclipse.ui.forms.widgets.ColumnLayout;
-import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
-import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 /**
  * 
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
-public class HttpEndpointFormPage implements IEndpoint {
+public class HttpEndpointFormPage extends EndpointFormPage {
 
-	EndpointUtils endpointUtils = new EndpointUtils();
-	
 	public Combo endpointTrace;
 	public Combo endpointStatistics;
 	public Text httpEP_UriTemplate;
@@ -50,21 +43,23 @@ public class HttpEndpointFormPage implements IEndpoint {
 	public Text httpEP_Properties;
 	public Text httpEP_Description;
 	
-	
-	ScrolledForm form;
-    FormToolkit toolkit;
-    
     Section basicSection;
     Section miscSection;
 	
-	public HttpEndpointFormPage(ScrolledForm form, FormToolkit toolkit) {
-		this.form = form;
-    	this.toolkit = toolkit;
+    public HttpEndpointFormPage(FormEditor editor) {
+		super(editor);
+	}
+
+	protected void createFormContent(IManagedForm managedForm) {
+
+		super.createFormContent(managedForm);
+		
+		form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
 	}
 
 	public void createFormBasicSection() {
 		/* Basic Section */
-		Section basicSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
+		basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
 		
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
 		basicSectionClient.setLayout(new TableWrapLayout());
@@ -97,14 +92,14 @@ public class HttpEndpointFormPage implements IEndpoint {
 	
 	public void createFormQosSection() {
 		
-		endpointUtils.createFormQosSection(form, toolkit);
+		endpointCommons.createFormQosSection(form, toolkit);
 		
 	}
 	
 	public void createFormMiscSection() {
 
 		 /* Misc Section */ 
-		Section miscSection = endpointUtils.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+		miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
 		
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
 		miscSectionClient.setLayout(new TableWrapLayout());
@@ -126,12 +121,12 @@ public class HttpEndpointFormPage implements IEndpoint {
 	
 	public void createFormErrorHandlingSection() {
 		
-		endpointUtils.createFormErrorHandlingSection(form, toolkit);
+		endpointCommons.createFormErrorHandlingSection(form, toolkit);
 
 	}
 
-	public EndpointUtils getEndpointUtils() {
-		return endpointUtils;
+	public EndpointCommons getEndpointCommons() {
+		return endpointCommons;
 	}
 	
 }

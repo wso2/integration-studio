@@ -23,9 +23,12 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.aspects.statistics.StatisticsConfigurable;
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.endpoints.AbstractEndpoint;
+import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.mediators.MediatorProperty;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointMessageFormat;
@@ -37,11 +40,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointCommons;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeserializer<AbstractEndpoint, AbstractEndPoint>{
 
+	@Deprecated
 	protected <T extends AbstractEndpoint> void deserializeEndpoint(T endpoint,AbstractEndPoint visualEndpoint){	
 		String suspendErrorCodes=null;
 		String retryErrorCodes=null;
@@ -196,9 +203,63 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 		return regkey;
 	}
 	
-	public EsbNode createNode(FormEditor part, Entry object) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public void createNode(FormEditor formEditor, AbstractEndpoint object) {
+		ESBFormEditor endpointFormEditor = (ESBFormEditor) formEditor;
+		EndpointFormPage endpointPage = (EndpointFormPage) endpointFormEditor.getFormPageForArtifact(ArtifactType.ENDPOINT);
+		
+		EndpointCommons endpointCommons = endpointPage.getEndpointCommons();
+		
+		EndpointDefinition definition = object.getDefinition();
+		
+		// Setting QOS
+		if (definition.isReliableMessagingOn()) endpointCommons.endpointReliableMessaging.select(0);
+		else endpointCommons.endpointReliableMessaging.select(1);
+		
+		if (definition.isSecurityOn()) endpointCommons.endpointSecurity.select(0);
+		else endpointCommons.endpointSecurity.select(1);
+		
+		if (definition.isAddressingOn()) endpointCommons.endpointAddressing.select(0);
+		else endpointCommons.endpointAddressing.select(1);
+		
+		// TODO further processing on QoS
+		
+		// Error Handling - Endpoint Suspension
+		setTextValue(endpointCommons.endpointSuspendErrorCodes, definition.getSuspendErrorCodes().toString()
+				.replace("[", "").replace("]", "").replace(", ", ","));
+		
+		setTextValue(endpointCommons.endpointSuspendInitialDuration, definition.getInitialSuspendDuration());
+		
+		setTextValue(endpointCommons.endpointSuspendMaxDuration, definition.getSuspendMaximumDuration());
+		
+		setTextValue(endpointCommons.endpointSuspendProgressFactor, definition.getSuspendProgressionFactor());
+		
+		// Error Handling - Endpoint Retry
+		setTextValue(endpointCommons.endpointRetryErrorCodes, definition.getRetryEnableErrorCodes().toString()
+				.replace("[", "").replace("]", "").replace(", ", ","));
+		
+		setTextValue(endpointCommons.endpointRetryCount, definition.getRetriesOnTimeoutBeforeSuspend());
+		
+		setTextValue(endpointCommons.endpointRetryDelay, definition.getRetryDurationOnTimeout());
+		
+		
+		// Error Handling - Endpoint Timeout
+		setTextValue(endpointCommons.endpointTimeoutDuration, definition.getTimeoutDuration());
+		
+		if (definition.getTimeoutAction() == 100) {
+			endpointCommons.endpointTimeoutAction.select(0);
+		} else if (definition.getTimeoutAction() == 101) {
+			endpointCommons.endpointTimeoutAction.select(1);
+		} else if (definition.getTimeoutAction() == 102) {
+			endpointCommons.endpointTimeoutAction.select(2);
+		}
+		
+	}
+	
+	protected void setTextValue(Text textField, Object value) {
+		if (value != null) {
+			textField.setText(value.toString());
+		}
 	}
 	
 }

@@ -21,19 +21,25 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.HTTP_
 
 import org.apache.axis2.Constants;
 import org.apache.synapse.endpoints.AbstractEndpoint;
+import org.apache.synapse.endpoints.HTTPEndpoint;
 import org.apache.synapse.rest.RESTConstants;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.HttpMethodType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
 
 public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer{
 
+	@Deprecated
 	public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) {
 		Assert.isTrue(object instanceof org.apache.synapse.endpoints.HTTPEndpoint, "Unsupported endpoint passed in for deserialization at "+ this.getClass());
 		
@@ -72,8 +78,34 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer{
 	}
 
 	@Override
-	public void createNode(FormEditor part, AbstractEndpoint object) {
-		// TODO Auto-generated method stub
+	public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
+		ESBFormEditor addressEPFormEditor = (ESBFormEditor) formEditor;
+		EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor.getFormPageForArtifact(ArtifactType.ENDPOINT);
+
+		HTTPEndpoint endpoint = (HTTPEndpoint) endpointObject;
+		
+		HttpEndpointFormPage httpEndpointPage = (HttpEndpointFormPage)endpointPage;
+		
+//		setTextValue(httpEndpointPage.httpEP_Properties, endpoint.getDefinition().get);
+		setTextValue(httpEndpointPage.httpEP_Description, endpoint.getDescription());
+		setTextValue(httpEndpointPage.httpEP_UriTemplate, endpoint.getUriTemplate());
+		setTextValue(httpEndpointPage.httpEP_Method, endpoint.getHttpMethod());
+		
+		
+		if (endpoint.getDefinition().isTracingEnabled()) {
+			httpEndpointPage.endpointTrace.select(0);
+		} else {
+			httpEndpointPage.endpointTrace.select(1);
+		}
+		
+		if (endpoint.getDefinition().isStatisticsEnable()) {
+			httpEndpointPage.endpointStatistics.select(0);
+		} else {
+			httpEndpointPage.endpointStatistics.select(1);
+		}
+		
+		
+		super.createNode(formEditor, endpointObject);
 	}
 
 }

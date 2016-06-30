@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 
+import org.apache.synapse.endpoints.AddressEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -32,7 +33,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageProcessorFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointCommons;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
@@ -89,26 +92,13 @@ public class EndPointDeserializer extends AbstractEsbNodeDeserializer<EndpointWr
 	@Override
 	public void createNode(FormEditor formEditor, EndpointWrapper endpointWrapper) {
 		
-		ESBFormEditor endpointFormEditor = (ESBFormEditor) formEditor;
-		EndpointFormPage endpointPage = (EndpointFormPage) endpointFormEditor.getFormPageForArtifact(ArtifactType.ENDPOINT);
-
-		if (endpointPage instanceof EndpointFormPage) {
-			System.out.println();
-			
-			
-			
-			
-			
+		Endpoint endpoint = endpointWrapper.getEndpoint();
+		
+		if (endpoint != null) {
+			IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
+			deserializer.createNode(formEditor, endpoint);
 		}
 		
-		
-		
-		
 	}
-
-	
-	
-	
-	
 
 }

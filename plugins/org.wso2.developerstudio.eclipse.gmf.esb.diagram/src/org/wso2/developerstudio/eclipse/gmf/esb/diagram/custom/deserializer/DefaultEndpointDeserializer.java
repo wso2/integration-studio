@@ -17,17 +17,23 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import org.apache.synapse.endpoints.AbstractEndpoint;
+import org.apache.synapse.endpoints.DefaultEndpoint;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 
 public class DefaultEndpointDeserializer extends AbstractEndpointDeserializer{
 
+	@Deprecated
 	public AbstractEndPoint createNode(IGraphicalEditPart part,AbstractEndpoint object) {
 		
 		Assert.isTrue(object instanceof org.apache.synapse.endpoints.DefaultEndpoint, "Unsupported endpoint passed in for deserialization at "+ this.getClass());
@@ -44,8 +50,52 @@ public class DefaultEndpointDeserializer extends AbstractEndpointDeserializer{
 	}
 
 	@Override
-	public void createNode(FormEditor part, AbstractEndpoint object) {
-		// TODO Auto-generated method stub
+	public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
+		ESBFormEditor addressEPFormEditor = (ESBFormEditor) formEditor;
+		EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor.getFormPageForArtifact(ArtifactType.ENDPOINT);
+
+		DefaultEndpoint endpoint = (DefaultEndpoint) endpointObject;
+		
+		DefaultEndpointFormPage defaultEndpointPage = (DefaultEndpointFormPage)endpointPage;
+		
+//		setTextValue(addressEndpointPage.defaultEP_Properties, endpoint.getDefinition().get);
+		setTextValue(defaultEndpointPage.defaultEP_Description, endpoint.getDescription());
+		
+		if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap11")) {
+			defaultEndpointPage.defaultEP_Format.select(1);
+		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap12")) {
+			defaultEndpointPage.defaultEP_Format.select(2);
+		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("pox")) {
+			defaultEndpointPage.defaultEP_Format.select(3);
+		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("get")) {
+			defaultEndpointPage.defaultEP_Format.select(4);
+		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("rest")) {
+			defaultEndpointPage.defaultEP_Format.select(5);
+		}else {
+			defaultEndpointPage.defaultEP_Format.select(0);
+		}
+		
+		if (endpoint.getDefinition().isTracingEnabled()) {
+			defaultEndpointPage.endpointTrace.select(0);
+		} else {
+			defaultEndpointPage.endpointTrace.select(1);
+		}
+		
+		if (endpoint.getDefinition().isStatisticsEnable()) {
+			defaultEndpointPage.endpointStatistics.select(0);
+		} else {
+			defaultEndpointPage.endpointStatistics.select(1);
+		}
+		
+		if (endpoint.getDefinition().isUseMTOM()) {
+			defaultEndpointPage.defaultEP_Optimize.select(1);
+		} else if (endpoint.getDefinition().isUseSwa()) {
+			defaultEndpointPage.defaultEP_Optimize.select(2);
+		} else {
+			defaultEndpointPage.defaultEP_Optimize.select(0);
+		}
+		
+		super.createNode(formEditor, endpointObject);
 	}
 
 }

@@ -18,6 +18,20 @@
    </license>
 
    <plugin
+         id="org.eclipse.zest.core"
+         download-size="0"
+         install-size="0"
+         version="1.5.201.201508170204"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.zest.layouts"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.201508170204"
+         unpack="false"/>
+
+   <plugin
          id="org.jboss.tools.smooks.core"
          version="1.2.0.v20110215-1231-H25-GA"
          unpack="false"/>

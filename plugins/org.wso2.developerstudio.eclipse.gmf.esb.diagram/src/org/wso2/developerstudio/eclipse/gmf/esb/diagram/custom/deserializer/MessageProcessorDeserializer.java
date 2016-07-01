@@ -687,6 +687,13 @@ public class MessageProcessorDeserializer
 				}
 				keySet.remove("max.delivery.drop");
 				
+				if (keySet.size() > 0) {
+					List<MessageProcessorParameter> existingProperties = forwarder.messageProcessorParameterList;
+					forwarder.messageProcessorParameterList = (getMessageProcessorProperties(keySet,parameters,existingProperties));
+				}else{
+					//When removing all properties from the source view then clear the list
+					forwarder.messageProcessorParameterList = null;
+				}
 				
 			} else if(dummyMessageProcessor.getClassName().equalsIgnoreCase(scheduledFailoverMessageForwardingProcessor)) {
 				messageProcessorPage.processorType.select(2);
@@ -734,6 +741,14 @@ public class MessageProcessorDeserializer
 					failover.failover_dropMessageAfterMaxDeliveryAttempts.select(1);
 				}
 				keySet.remove("max.delivery.drop");
+				
+				if (keySet.size() > 0) {
+					List<MessageProcessorParameter> existingProperties = failover.messageProcessorParameterList;
+					failover.messageProcessorParameterList = (getMessageProcessorProperties(keySet,parameters,existingProperties));
+				}else{
+					//When removing all properties from the source view then clear the list
+					failover.messageProcessorParameterList = null;
+				}
 				
 				
 			} else {

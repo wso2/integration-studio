@@ -361,6 +361,15 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 							parameterMap.put("max.delivery.drop", "Disabled");
 						}
 						
+						List<MessageProcessorParameter> parameters = forwarder.messageProcessorParameterList;
+						if (parameters != null) {
+							for (MessageProcessorParameter param : parameters) {
+								if (!StringUtils.isBlank(param.getParameterName())
+										&& !StringUtils.isBlank(param.getParameterValue())) {
+									parameterMap.put(param.getParameterName(), param.getParameterValue());
+								}
+							}
+						}
 						
 						break;
 					}
@@ -407,6 +416,16 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 							parameterMap.put("max.delivery.drop", "Enabled");
 						} else {
 							parameterMap.put("max.delivery.drop", "Disabled");
+						}
+						
+						List<MessageProcessorParameter> parameters = failover.messageProcessorParameterList;
+						if (parameters != null) {
+							for (MessageProcessorParameter param : parameters) {
+								if (!StringUtils.isBlank(param.getParameterName())
+										&& !StringUtils.isBlank(param.getParameterValue())) {
+									parameterMap.put(param.getParameterName(), param.getParameterValue());
+								}
+							}
 						}
 						
 						break;

@@ -16,11 +16,18 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors;
 
+import java.util.List;
+
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
@@ -30,6 +37,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ConfigureMessageProcessorParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class ScheduledForwarding implements IMessageProcessor {
@@ -48,7 +57,8 @@ public class ScheduledForwarding implements IMessageProcessor {
     public Text forwarding_quartzConfigFilePath;
     public Text forwarding_cronExpression;
     public Text forwarding_taskCount;
-//    public Text forwarding_customParameters;
+    public Button forwarding_customParameters;
+    public List<MessageProcessorParameter> messageProcessorParameterList;
     
     private ScrolledForm form;
     private FormToolkit toolkit;
@@ -170,13 +180,28 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_taskCount.setBackground(new Color(null, 229,236,253));
         forwarding_taskCount.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 
-//        addSeparator(form, toolkit, sectionClient);
-//
-//        toolkit.createLabel(sectionClient, "Custom Parameters");
-//        forwarding_customParameters = toolkit.createText(sectionClient, "");
-//        forwarding_customParameters.setBackground(new Color(null, 229,236,253));
-//        forwarding_customParameters.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-
+       addSeparator(form, toolkit, parameterSectionClient);
+       
+       forwarding_customParameters = toolkit.createButton(parameterSectionClient, "Add Custom Parameters",SWT.PUSH);
+       forwarding_customParameters.setBackground(new Color(null, 229,236,253));
+       forwarding_customParameters.addSelectionListener(new SelectionListener() {
+			
+    			@Override
+    			public void widgetSelected(SelectionEvent e) {
+    				Shell shell = Display.getDefault().getActiveShell();
+    				ConfigureMessageProcessorParametersDialog paramDialog = new ConfigureMessageProcessorParametersDialog(shell,messageProcessorParameterList);
+    				paramDialog.setBlockOnOpen(true);
+    				paramDialog.open();
+    				messageProcessorParameterList = paramDialog.getMessageProcessorPropertyList();
+    			}
+    			
+    			@Override
+    			public void widgetDefaultSelected(SelectionEvent e) {
+    				// TODO Auto-generated method stub
+    				
+    			}
+    		});
+     	
     }
 
     @Override

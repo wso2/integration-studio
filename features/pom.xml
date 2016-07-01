@@ -31,6 +31,7 @@
 		<module>org.wso2.developerstudio.eclipse.esb.feature</module>
 		<module>org.wso2.developerstudio.eclipse.esb.dependencies.feature</module>
 		<module>org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature</module>
+               <module>org.wso2.developerstudio.eclipse.smooks.feature</module>
 	</modules>
 	<distributionManagement>
 		<repository>

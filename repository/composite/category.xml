@@ -72,9 +72,9 @@
       <category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>
    </feature>
    
-   <!-- Smooks Editor Feature -->
-   <feature id="org.smooks.edi.editor-feature" version="0.0.0">
-	<category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>
-   </feature>
+ <!-- Smooks Editor Feature -->
+ <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.esb.feature.category"/>
+ </feature>
 
 </site>

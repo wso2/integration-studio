@@ -17,11 +17,18 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors;
 
 
+import java.util.List;
+
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
@@ -31,6 +38,8 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.ConfigureMessageProcessorParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 
@@ -41,7 +50,8 @@ public class Sampling implements IMessageProcessor {
     public Text sampling_concurrency;
     public Text sampling_quartzConfigFilePath;
     public Text sampling_cronExpression;
-//    public Text sampling_customParameters;
+    public Button sampling_customParameters;
+    public List<MessageProcessorParameter> messageProcessorParameterList;
     
     ScrolledForm form;
     FormToolkit toolkit;
@@ -118,14 +128,29 @@ public class Sampling implements IMessageProcessor {
         sampling_cronExpression.setBackground(new Color(null, 229,236,253));
         sampling_cronExpression.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 
-//        addSeparator(form, toolkit, sectionClient);
-//
-//        toolkit.createLabel(sectionClient, "Custom Parameters");
-//        sampling_customParameters = toolkit.createText(sectionClient, "");
-//        sampling_customParameters.setBackground(new Color(null, 229,236,253));
-//        sampling_customParameters.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-        
-        
+        addSeparator(form, toolkit, parameterSectionClient);
+
+        sampling_customParameters = toolkit.createButton(parameterSectionClient, "Add Custom Parameters",SWT.PUSH);
+        sampling_customParameters.setBackground(new Color(null, 229,236,253));
+        sampling_customParameters.addSelectionListener(new SelectionListener() {
+			
+     			@Override
+     			public void widgetSelected(SelectionEvent e) {
+     				Shell shell = Display.getDefault().getActiveShell();
+     				ConfigureMessageProcessorParametersDialog paramDialog = new ConfigureMessageProcessorParametersDialog(shell,messageProcessorParameterList);
+     				paramDialog.setBlockOnOpen(true);
+     				paramDialog.open();
+     				messageProcessorParameterList = paramDialog.getMessageProcessorPropertyList();
+     			}
+     			
+     			@Override
+     			public void widgetDefaultSelected(SelectionEvent e) {
+     				// TODO Auto-generated method stub
+     				
+     			}
+     		});
+      	
+             
     }
 
     @Override

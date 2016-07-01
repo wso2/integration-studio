@@ -87,7 +87,7 @@ public class CustomProcessor implements IMessageProcessor {
 		
 		parameterSection.setVisible(false);
 
-        custom_customParameters = toolkit.createButton(parameterSectionClient, "Custom Parameters", SWT.PUSH);
+        custom_customParameters = toolkit.createButton(parameterSectionClient, " Add Custom Parameters", SWT.PUSH);
         custom_customParameters.setBackground(new Color(null, 229,236,253));
         custom_customParameters.addSelectionListener(new SelectionListener() {
 			
@@ -107,8 +107,6 @@ public class CustomProcessor implements IMessageProcessor {
 				
 			}
 		});
- 	
-
         
     }
 

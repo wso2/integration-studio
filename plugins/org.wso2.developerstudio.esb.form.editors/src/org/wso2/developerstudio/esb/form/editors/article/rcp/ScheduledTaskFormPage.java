@@ -22,6 +22,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -35,19 +37,16 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
 import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.widgets.TableWrapData;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 
 /**
  * 
- * To change the template for this generated type comment go to Window - Preferences - Java - Code Generation - Code and
- * Comments
+ * To change the template for this generated type comment go to Window -
+ * Preferences - Java - Code Generation - Code and Comments
  */
 public class ScheduledTaskFormPage extends FormPage {
 
@@ -64,6 +63,7 @@ public class ScheduledTaskFormPage extends FormPage {
 	private Label cronLbl;
 	private Label intervalLbl;
 	private List<TaskProperty> taskPropertyList;
+	Section triggerSection ;
 
 	/**
 	 * @param id
@@ -79,12 +79,19 @@ public class ScheduledTaskFormPage extends FormPage {
 		form.setText(Messages.getString("ScheduledTaskPage.sectionMainTitle"));
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 
-		ColumnLayout layout = new ColumnLayout();
-		layout.leftMargin = 10;
-		layout.rightMargin = 10;
-		layout.maxNumColumns = 2;
+		GridLayout layout = new GridLayout();
+		layout.marginLeft = 20;
+		layout.marginRight = 20;
+		layout.marginTop = 10;
+		layout.numColumns = 6;
+		layout.makeColumnsEqualWidth = true;
+		
 		form.getBody().setLayout(layout);
-
+		GridData formGridData = new GridData();
+		formGridData.horizontalSpan = 6;
+		formGridData.grabExcessHorizontalSpace = true;
+		form.setLayoutData(formGridData);
+		
 		createFormBasicSection(form, toolkit);
 		createFormMiscSection(form, toolkit);
 		createFormImplSection(form, toolkit);
@@ -98,27 +105,40 @@ public class ScheduledTaskFormPage extends FormPage {
 		basicSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
 		basicSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
 		toolkit.createCompositeSeparator(basicSection);
-
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
 		basicSection.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
 				form.reflow(false);
 			}
 		});
+		basicSection.setLayoutData(samplegridData);
 		basicSection.setText(Messages.getString("ScheduledTaskPage.section.basic"));
 		// section.setLayoutData(new TableWrapData(TableWrapData.FILL));
 
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
-		basicSectionClient.setLayout(new TableWrapLayout());
+		basicSectionClient.setLayout(new GridLayout());
 
 		toolkit.createLabel(basicSectionClient, "Task Name");
 		taskName = toolkit.createText(basicSectionClient, "");
 		taskName.setBackground(new Color(null, 229, 236, 253));
-		taskName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		taskName.setSize(8000, 10);
+		GridData taskNameGridData = new GridData();
+		taskNameGridData.horizontalSpan = 3;
+		taskNameGridData.horizontalAlignment = GridData.FILL;
+		taskNameGridData.grabExcessHorizontalSpace = true;
+		taskName.setLayoutData(taskNameGridData);
 
 		toolkit.createLabel(basicSectionClient, "Task Group");
 		taskGroup = toolkit.createText(basicSectionClient, "synapse.simple.quartz");
 		taskGroup.setBackground(new Color(null, 229, 236, 253));
-		taskGroup.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData taskGroupGridData = new GridData();
+		taskGroupGridData.horizontalSpan = 3;
+		taskGroupGridData.horizontalAlignment = GridData.FILL;
+		taskGroupGridData.grabExcessHorizontalSpace = true;
+		taskGroup.setLayoutData(taskGroupGridData);
 
 		basicSection.setClient(basicSectionClient);
 
@@ -130,7 +150,11 @@ public class ScheduledTaskFormPage extends FormPage {
 		miscSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
 		miscSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
 		toolkit.createCompositeSeparator(miscSection);
-
+		GridData miscSectionGridData = new GridData();
+		miscSectionGridData.horizontalSpan = 3;
+		miscSectionGridData.horizontalAlignment = GridData.FILL;
+		miscSectionGridData.grabExcessHorizontalSpace = true;
+		miscSection.setLayoutData(miscSectionGridData);
 		miscSection.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
 				form.reflow(false);
@@ -140,12 +164,16 @@ public class ScheduledTaskFormPage extends FormPage {
 		// miscSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
 
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
-		miscSectionClient.setLayout(new TableWrapLayout());
+		miscSectionClient.setLayout(new GridLayout());
 
 		toolkit.createLabel(miscSectionClient, "Pinned Servers");
+		GridData taskGroupGridData = new GridData();
+		taskGroupGridData.horizontalSpan = 3;
+		taskGroupGridData.horizontalAlignment = GridData.FILL;
+		taskGroupGridData.grabExcessHorizontalSpace = true;
 		pinnedServers = toolkit.createText(miscSectionClient, "");
 		pinnedServers.setBackground(new Color(null, 229, 236, 253));
-		pinnedServers.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		pinnedServers.setLayoutData(taskGroupGridData);
 
 		miscSection.setClient(miscSectionClient);
 	}
@@ -156,7 +184,11 @@ public class ScheduledTaskFormPage extends FormPage {
 		implSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
 		implSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
 		toolkit.createCompositeSeparator(implSection);
-
+		GridData taskGroupGridData = new GridData();
+		taskGroupGridData.horizontalSpan = 3;
+		taskGroupGridData.horizontalAlignment = GridData.FILL;
+		taskGroupGridData.grabExcessHorizontalSpace = true;
+		implSection.setLayoutData(taskGroupGridData);
 		implSection.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
 				form.reflow(false);
@@ -166,10 +198,15 @@ public class ScheduledTaskFormPage extends FormPage {
 		// implSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
 
 		Composite implSectionClient = toolkit.createComposite(implSection);
-		implSectionClient.setLayout(new TableWrapLayout());
+		implSectionClient.setLayout(new GridLayout());
 
 		toolkit.createLabel(implSectionClient, "Task Implementation");
+		GridData taskImplGridData = new GridData();
+		taskImplGridData.horizontalSpan = 3;
+		taskImplGridData.horizontalAlignment = GridData.FILL;
+		taskImplGridData.grabExcessHorizontalSpace = true;
 		taskImpl = toolkit.createText(implSectionClient, "org.apache.synapse.startup.tasks.MessageInjector");
+		taskImpl.setLayoutData(taskImplGridData);
 		taskImpl.setBackground(new Color(null, 229, 236, 253));
 		// taskImpl.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 
@@ -194,52 +231,68 @@ public class ScheduledTaskFormPage extends FormPage {
 
 		setTaskPropertyList(taskPropertyList);
 
-		// taskImplProp.setLayoutData(new
-		// TableWrapData(TableWrapData.FILL_GRAB));
-
 		implSection.setClient(implSectionClient);
 	}
 
 	private void createFormTriggerSection(final ScrolledForm form, final FormToolkit toolkit) {
 		/* Trigger Information */
-		Section triggerSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
+		triggerSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
 		triggerSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
 		triggerSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
 		toolkit.createCompositeSeparator(triggerSection);
-
+		GridData taskImplGridData = new GridData();
+		taskImplGridData.horizontalSpan = 3;
+		taskImplGridData.horizontalAlignment = GridData.FILL;
+		taskImplGridData.grabExcessHorizontalSpace = true;
 		triggerSection.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
 				form.reflow(false);
 			}
 		});
+		triggerSection.setLayoutData(taskImplGridData);
 		triggerSection.setText(Messages.getString("ScheduledTaskPage.section.trigger"));
 		// triggerSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
 
 		final Composite triggerSectionClient = toolkit.createComposite(triggerSection);
-		triggerSectionClient.setLayout(new TableWrapLayout());
+		triggerSectionClient.setLayout(new GridLayout());
 
 		toolkit.createLabel(triggerSectionClient, "Trigger Type");
 		triggerType = new Combo(triggerSectionClient, SWT.READ_ONLY);
-		triggerType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		triggerType.setLayoutData(new GridData(GridData.FILL_BOTH));
 		// triggerType.setBackground(new Color(null, 229,236,253));
 		String[] triggerTypes = { "Simple", "Cron" };
 		triggerType.setItems(triggerTypes);
 
 		cronLbl = toolkit.createLabel(triggerSectionClient, "Cron");
+		cronLbl.setLayoutData(new GridData(GridData.FILL_BOTH));
 		cron = toolkit.createText(triggerSectionClient, "");
 		cron.setBackground(new Color(null, 229, 236, 253));
-		cron.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData cronLabelGridData = new GridData();
+		cronLabelGridData.horizontalSpan = 3;
+		cronLabelGridData.horizontalAlignment = GridData.FILL;
+		cronLabelGridData.grabExcessHorizontalSpace = true;
+		cron.setLayoutData(cronLabelGridData);
 		disableCronFields();
 
 		countLbl = toolkit.createLabel(triggerSectionClient, "Count");
+		countLbl.setLayoutData(new GridData(GridData.FILL_BOTH));
 		count = toolkit.createText(triggerSectionClient, "1");
 		count.setBackground(new Color(null, 229, 236, 253));
-		count.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData countLabelGridData = new GridData();
+		countLabelGridData.horizontalSpan = 3;
+		countLabelGridData.horizontalAlignment = GridData.FILL;
+		countLabelGridData.grabExcessHorizontalSpace = true;
+		count.setLayoutData(countLabelGridData);
 
 		intervalLbl = toolkit.createLabel(triggerSectionClient, "Interval");
+		intervalLbl.setLayoutData(new GridData(GridData.FILL_BOTH));
 		interval = toolkit.createText(triggerSectionClient, "0");
 		interval.setBackground(new Color(null, 229, 236, 253));
-		interval.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData intervalGridData = new GridData();
+		intervalGridData.horizontalSpan = 3;
+		intervalGridData.horizontalAlignment = GridData.FILL;
+		intervalGridData.grabExcessHorizontalSpace = true;
+		interval.setLayoutData(intervalGridData);
 		enableSimpleFields();
 
 		triggerType.addSelectionListener(new SelectionListener() {
@@ -247,8 +300,8 @@ public class ScheduledTaskFormPage extends FormPage {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (triggerType.getSelectionIndex() == 0) {
-					disableCronFields();
 					enableSimpleFields();
+					disableCronFields();
 				} else if (triggerType.getSelectionIndex() == 1) {
 					enableCronFields();
 					disableSimpleFields();
@@ -360,11 +413,18 @@ public class ScheduledTaskFormPage extends FormPage {
 	}
 
 	/**
-	 * Enable cron fields when opening the form editor if it contains cron values
+	 * Enable cron fields when opening the form editor if it contains cron
+	 * values
 	 */
 	private void enableCronFields() {
+		GridData gd = (GridData) cron.getLayoutData();
+		gd.exclude = false;
+		GridData gdlbl = (GridData) cronLbl.getLayoutData();
+		gdlbl.exclude = false;
 		cron.setVisible(true);
 		cronLbl.setVisible(true);
+		triggerSection.setExpanded(false);
+		triggerSection.setExpanded(true);
 	}
 
 	/**
@@ -380,13 +440,24 @@ public class ScheduledTaskFormPage extends FormPage {
 	}
 
 	/**
-	 * Enable simple fields when opening the form editor if it contains simple values
+	 * Enable simple fields when opening the form editor if it contains simple
+	 * values
 	 */
 	private void enableSimpleFields() {
+		GridData gd = (GridData) count.getLayoutData();
+		gd.exclude = false;
+		GridData gdlbl = (GridData) countLbl.getLayoutData();
+		gdlbl.exclude = false;
+		GridData gdEvent = (GridData) interval.getLayoutData();
+		gdEvent.exclude = false;
+		GridData gdeventlbl = (GridData) intervalLbl.getLayoutData();
+		gdeventlbl.exclude = false;
 		countLbl.setVisible(true);
 		count.setVisible(true);
 		intervalLbl.setVisible(true);
 		interval.setVisible(true);
+		triggerSection.setExpanded(false);
+		triggerSection.setExpanded(true);
 	}
 
 	private void disableSimpleFields() {
@@ -394,11 +465,27 @@ public class ScheduledTaskFormPage extends FormPage {
 		count.setVisible(false);
 		intervalLbl.setVisible(false);
 		interval.setVisible(false);
+		GridData gd = (GridData) count.getLayoutData();
+		gd.exclude = true;
+		GridData gdlbl = (GridData) countLbl.getLayoutData();
+		gdlbl.exclude = true;
+		GridData gdEvent = (GridData) interval.getLayoutData();
+		gdEvent.exclude = true;
+		GridData gdeventlbl = (GridData) intervalLbl.getLayoutData();
+		gdeventlbl.exclude = true;
+		triggerSection.setExpanded(false);
+		triggerSection.setExpanded(true);
 	}
 
 	private void disableCronFields() {
 		cron.setVisible(false);
 		cronLbl.setVisible(false);
+		GridData gd = (GridData) cron.getLayoutData();
+		gd.exclude = true;
+		GridData gdlbl = (GridData) cronLbl.getLayoutData();
+		gdlbl.exclude = true;
+		triggerSection.setExpanded(false);
+		triggerSection.setExpanded(true);
 	}
 
 }

@@ -119,10 +119,10 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                         }
                     } else
                         throw new Exception("Unable to create the human task archive file.");
-                } catch (IOException e) {
-                    throw new Exception("Unable to create the human task archive file.");
                 } finally {
-                    FileManagementUtil.deleteDirectories(tempFolder);
+                    if (tempFolder != null) {
+                        FileManagementUtil.deleteDirectories(tempFolder);
+                    }
                 }
             }
         }

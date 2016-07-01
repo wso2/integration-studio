@@ -191,10 +191,14 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
                     HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
         } finally {
             try {
-                stream.close();
-                wsdlStream.close();
-                htconfigStream.close();
-                orgSchemaStream.close();
+                if (stream != null)
+                    stream.close();
+                if (wsdlStream != null)
+                    wsdlStream.close();
+                if (htconfigStream != null)
+                    htconfigStream.close();
+                if (orgSchemaStream != null)
+                    orgSchemaStream.close();
             } catch (IOException e) {
                 logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
                 IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());

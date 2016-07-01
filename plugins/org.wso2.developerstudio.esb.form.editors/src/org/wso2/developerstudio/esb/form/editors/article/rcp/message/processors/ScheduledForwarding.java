@@ -16,8 +16,10 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -37,12 +39,17 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
+import org.wso2.developerstudio.esb.form.editors.article.providers.RegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ConfigureMessageProcessorParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class ScheduledForwarding implements IMessageProcessor {
     public Text forwarding_endpoint;
+    public Button forwarding_add_endpoint;
     public Combo forwarding_state;
     public Text forwarding_interval;
     public Text forwarding_retryInterval;
@@ -52,13 +59,20 @@ public class ScheduledForwarding implements IMessageProcessor {
     public Text forwarding_axis2ClientRepo;
     public Text forwarding_axis2Config;
     public Text forwarding_replySequence;
+    public Button forwarding_add_replySequence;
     public Text forwarding_faultSequence;
+    public Button forwarding_add_faultSequence;
     public Text forwarding_deactiveSequence;
+    public Button forwarding_add_deactiveSequence;
     public Text forwarding_quartzConfigFilePath;
     public Text forwarding_cronExpression;
     public Text forwarding_taskCount;
     public Button forwarding_customParameters;
     public List<MessageProcessorParameter> messageProcessorParameterList;
+    String endpointKey;
+    String replySequenceKey;
+    String faultSequenceKey;
+    String deactiveSequenceKey;
     
     private ScrolledForm form;
     private FormToolkit toolkit;
@@ -86,6 +100,31 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_endpoint = toolkit.createText(miscSectionClient, "");
         forwarding_endpoint.setBackground(new Color(null, 229,236,253));
         forwarding_endpoint.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        
+        forwarding_add_endpoint = toolkit.createButton(miscSectionClient, "Add an Endpoint Key", SWT.PUSH);
+        forwarding_add_endpoint.setBackground(new Color(null, 229,236,253));
+        forwarding_add_endpoint.addSelectionListener(new SelectionListener() {
+			
+ 			@Override
+ 			public void widgetSelected(SelectionEvent e) {
+ 				Shell shell = Display.getDefault().getActiveShell();
+ 				RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+ 				RegistryKeyPropertyEditorDialog dialog =
+ 				                                         new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
+ 				                                                                             registryKeyProperty, new ArrayList<NamedEntityDescriptor>(),forwarding_endpoint.getText()); 
+ 				int open = dialog.open();
+ 				if (open == Window.OK) {
+ 					endpointKey = registryKeyProperty.getKeyValue();
+ 					forwarding_endpoint.setText(endpointKey);
+ 				}
+ 			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
     }
 
@@ -151,17 +190,92 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_replySequence = toolkit.createText(parameterSectionClient, "");
         forwarding_replySequence.setBackground(new Color(null, 229,236,253));
         forwarding_replySequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        
+        forwarding_add_replySequence = toolkit.createButton(parameterSectionClient, "Add a Reply Sequence Key", SWT.PUSH);
+        forwarding_add_replySequence.setBackground(new Color(null, 229,236,253));
+        forwarding_add_replySequence.addSelectionListener(new SelectionListener() {
+			
+ 			@Override
+ 			public void widgetSelected(SelectionEvent e) {
+ 				Shell shell = Display.getDefault().getActiveShell();
+ 				RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+ 				RegistryKeyPropertyEditorDialog dialog =
+ 				                                         new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
+ 				                                                                             registryKeyProperty, new ArrayList<NamedEntityDescriptor>(),forwarding_replySequence.getText()); 
+ 				int open = dialog.open();
+ 				if (open == Window.OK) {
+ 					replySequenceKey = registryKeyProperty.getKeyValue();
+ 					forwarding_replySequence.setText(replySequenceKey);
+ 				}
+ 			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
 
         toolkit.createLabel(parameterSectionClient, "Fault Sequence Name");
         forwarding_faultSequence = toolkit.createText(parameterSectionClient, "");
         forwarding_faultSequence.setBackground(new Color(null, 229,236,253));
         forwarding_faultSequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        
+        forwarding_add_faultSequence = toolkit.createButton(parameterSectionClient, "Add a Fault Sequence Key", SWT.PUSH);
+        forwarding_add_faultSequence.setBackground(new Color(null, 229,236,253));
+        forwarding_add_faultSequence.addSelectionListener(new SelectionListener() {
+			
+ 			@Override
+ 			public void widgetSelected(SelectionEvent e) {
+ 				Shell shell = Display.getDefault().getActiveShell();
+ 				RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+ 				RegistryKeyPropertyEditorDialog dialog =
+ 				                                         new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
+ 				                                                                             registryKeyProperty, new ArrayList<NamedEntityDescriptor>(),forwarding_faultSequence.getText()); 
+ 				int open = dialog.open();
+ 				if (open == Window.OK) {
+ 					faultSequenceKey = registryKeyProperty.getKeyValue();
+ 					forwarding_faultSequence.setText(faultSequenceKey);
+ 				}
+ 			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         toolkit.createLabel(parameterSectionClient, "Deactivate Sequence Name");
         forwarding_deactiveSequence = toolkit.createText(parameterSectionClient, "");
         forwarding_deactiveSequence.setBackground(new Color(null, 229,236,253));
         forwarding_deactiveSequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        
+        forwarding_add_deactiveSequence = toolkit.createButton(parameterSectionClient, "Add a Deactive Sequence Key", SWT.PUSH);
+        forwarding_add_deactiveSequence.setBackground(new Color(null, 229,236,253));
+        forwarding_add_deactiveSequence.addSelectionListener(new SelectionListener() {
+			
+ 			@Override
+ 			public void widgetSelected(SelectionEvent e) {
+ 				Shell shell = Display.getDefault().getActiveShell();
+ 				RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+ 				RegistryKeyPropertyEditorDialog dialog =
+ 				                                         new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
+ 				                                                                             registryKeyProperty, new ArrayList<NamedEntityDescriptor>(),forwarding_deactiveSequence.getText()); 
+ 				int open = dialog.open();
+ 				if (open == Window.OK) {
+ 					deactiveSequenceKey = registryKeyProperty.getKeyValue();
+ 					forwarding_deactiveSequence.setText(deactiveSequenceKey);
+ 				}
+ 			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         addSeparator(form, toolkit, parameterSectionClient);
 

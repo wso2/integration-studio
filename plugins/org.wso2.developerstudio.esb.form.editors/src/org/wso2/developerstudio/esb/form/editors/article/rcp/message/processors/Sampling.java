@@ -99,15 +99,14 @@ public class Sampling implements IMessageProcessor {
  			@Override
  			public void widgetSelected(SelectionEvent e) {
  				Shell shell = Display.getDefault().getActiveShell();
- 				String value = sampling_sequence.getText();
  				RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
  				RegistryKeyPropertyEditorDialog dialog =
  				                                         new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
- 				                                                                             registryKeyProperty, new ArrayList<NamedEntityDescriptor>(),value); 
+ 				                                                                             registryKeyProperty, new ArrayList<NamedEntityDescriptor>(), sampling_sequence.getText()); 
  				int open = dialog.open();
  				if (open == Window.OK) {
- 					String keyValue = registryKeyProperty.getKeyValue();
- 					sampling_sequence.setText(keyValue);
+ 				    sequenceKey = registryKeyProperty.getKeyValue();
+ 					sampling_sequence.setText(sequenceKey);
  				}
  			}
 

@@ -16,8 +16,10 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -37,7 +39,11 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
+import org.wso2.developerstudio.esb.form.editors.article.providers.RegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ConfigureMessageProcessorParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
@@ -50,12 +56,16 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
     public Text failover_maxDeliveryAttempts;
     public Combo failover_dropMessageAfterMaxDeliveryAttempts;
     public Text failover_faultSequence;
+    public Button failover_add_faultSequence;
     public Text failover_deactiveSequence;
+    public Button failover_add_deactiveSequence;
     public Text failover_quartzConfigFilePath;
     public Text failover_cronExpression;
     public Text failover_taskCount;
     public Button failover_customParameters;
     public List<MessageProcessorParameter> messageProcessorParameterList;
+    public String faultSequenceKey;
+    public String deactiveSequenceKey;
     
     ScrolledForm form;
     FormToolkit toolkit;
@@ -134,11 +144,62 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
         failover_faultSequence = toolkit.createText(parameterSectionClient, "");
         failover_faultSequence.setBackground(new Color(null, 229,236,253));
         failover_faultSequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        
+        failover_add_faultSequence = toolkit.createButton(parameterSectionClient, "Add a Fault Sequence Key", SWT.PUSH);
+        failover_add_faultSequence.setBackground(new Color(null, 229,236,253));
+        failover_add_faultSequence.addSelectionListener(new SelectionListener() {
+			
+ 			@Override
+ 			public void widgetSelected(SelectionEvent e) {
+ 				Shell shell = Display.getDefault().getActiveShell();
+ 				RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+ 				RegistryKeyPropertyEditorDialog dialog =
+ 				                                         new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
+ 				                                                                             registryKeyProperty, new ArrayList<NamedEntityDescriptor>(),failover_faultSequence.getText()); 
+ 				int open = dialog.open();
+ 				if (open == Window.OK) {
+ 					faultSequenceKey = registryKeyProperty.getKeyValue();
+ 					failover_faultSequence.setText(faultSequenceKey);
+ 				}
+ 			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
+
 
         toolkit.createLabel(parameterSectionClient, "Deactivate Sequence Name");
         failover_deactiveSequence = toolkit.createText(parameterSectionClient, "");
         failover_deactiveSequence.setBackground(new Color(null, 229,236,253));
         failover_deactiveSequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        
+        failover_add_deactiveSequence = toolkit.createButton(parameterSectionClient, "Add a Deactive Sequence Key", SWT.PUSH);
+        failover_add_deactiveSequence.setBackground(new Color(null, 229,236,253));
+        failover_add_deactiveSequence.addSelectionListener(new SelectionListener() {
+			
+ 			@Override
+ 			public void widgetSelected(SelectionEvent e) {
+ 				Shell shell = Display.getDefault().getActiveShell();
+ 				RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+ 				RegistryKeyPropertyEditorDialog dialog =
+ 				                                         new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
+ 				                                                                             registryKeyProperty, new ArrayList<NamedEntityDescriptor>(),failover_deactiveSequence.getText()); 
+ 				int open = dialog.open();
+ 				if (open == Window.OK) {
+ 					deactiveSequenceKey = registryKeyProperty.getKeyValue();
+ 					failover_deactiveSequence.setText(deactiveSequenceKey);
+ 				}
+ 			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
 
         addSeparator(form, toolkit, parameterSectionClient);
 

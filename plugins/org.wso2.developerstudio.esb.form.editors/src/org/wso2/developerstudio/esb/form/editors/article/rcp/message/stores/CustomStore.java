@@ -35,7 +35,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.ConfigureMessageStoreParametersDialog;
+import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureMessageStoreParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 

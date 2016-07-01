@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.developerstudio.esb.form.editors.article.rcp;
+package org.wso2.developerstudio.esb.form.editors.article.providers;
 
 import java.util.ArrayList;
 import java.util.Arrays;

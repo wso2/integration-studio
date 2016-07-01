@@ -17,8 +17,10 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -38,13 +40,18 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
+import org.wso2.developerstudio.esb.form.editors.article.providers.RegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ConfigureMessageProcessorParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 
 public class Sampling implements IMessageProcessor {
     public Text sampling_sequence;
+    public Button sampling_add_sequence;
     public Combo sampling_state;
     public Text sampling_interval;
     public Text sampling_concurrency;
@@ -52,6 +59,7 @@ public class Sampling implements IMessageProcessor {
     public Text sampling_cronExpression;
     public Button sampling_customParameters;
     public List<MessageProcessorParameter> messageProcessorParameterList;
+    public String sequenceKey;
     
     ScrolledForm form;
     FormToolkit toolkit;
@@ -83,6 +91,32 @@ public class Sampling implements IMessageProcessor {
         sampling_sequence = toolkit.createText(miscSectionClient, "");
         sampling_sequence.setBackground(new Color(null, 229,236,253));
         sampling_sequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        
+        sampling_add_sequence = toolkit.createButton(miscSectionClient, "Add a Sequence Key", SWT.PUSH);
+        sampling_add_sequence.setBackground(new Color(null, 229,236,253));
+        sampling_add_sequence.addSelectionListener(new SelectionListener() {
+			
+ 			@Override
+ 			public void widgetSelected(SelectionEvent e) {
+ 				Shell shell = Display.getDefault().getActiveShell();
+ 				String value = sampling_sequence.getText();
+ 				RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+ 				RegistryKeyPropertyEditorDialog dialog =
+ 				                                         new RegistryKeyPropertyEditorDialog(shell, SWT.NULL,
+ 				                                                                             registryKeyProperty, new ArrayList<NamedEntityDescriptor>(),value); 
+ 				int open = dialog.open();
+ 				if (open == Window.OK) {
+ 					String keyValue = registryKeyProperty.getKeyValue();
+ 					sampling_sequence.setText(keyValue);
+ 				}
+ 			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
         
 
     }

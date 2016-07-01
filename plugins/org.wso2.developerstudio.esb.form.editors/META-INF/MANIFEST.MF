@@ -7,14 +7,37 @@ Bundle-Activator: org.wso2.developerstudio.esb.forgm.editors.article.FormArticle
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.wso2.developerstudio.eclipse.gmf.esb
+ org.wso2.developerstudio.eclipse.gmf.esb,
+ org.eclipse.m2e.maven.runtime,
+ org.wso2.developerstudio.eclipse.maven
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Import-Package: org.eclipse.core.resources,
+Import-Package: org.apache.commons.lang,
+ org.eclipse.core.filesystem,
+ org.eclipse.core.resources,
  org.eclipse.ui.forms,
  org.eclipse.ui.forms.editor,
  org.eclipse.ui.forms.events,
- org.eclipse.ui.forms.widgets
+ org.eclipse.ui.forms.widgets,
+ org.eclipse.ui.ide,
+ org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="4.1.0",
+ org.wso2.developerstudio.eclipse.capp.core.model;version="4.1.0",
+ org.wso2.developerstudio.eclipse.esb.core,
+ org.wso2.developerstudio.eclipse.esb.core.interfaces,
+ org.wso2.developerstudio.eclipse.esb.core.utils,
+ org.wso2.developerstudio.eclipse.general.project.artifact;version="4.1.0",
+ org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="4.1.0",
+ org.wso2.developerstudio.eclipse.general.project.dialogs;version="4.1.0",
+ org.wso2.developerstudio.eclipse.general.project.utils;version="4.1.0",
+ org.wso2.developerstudio.eclipse.logging.core;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.interfaces;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.templates;version="4.1.0",
+ org.wso2.developerstudio.eclipse.platform.core.utils;version="4.1.0",
+ org.wso2.developerstudio.eclipse.registry.core;version="4.1.0",
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="4.1.0",
+ org.wso2.developerstudio.eclipse.registry.core.utils;version="4.1.0",
+ org.wso2.developerstudio.eclipse.utils.data;version="4.1.0",
+ org.wso2.developerstudio.eclipse.utils.file;version="4.1.0"
 Export-Package: org.wso2.developerstudio.esb.form.editors.article.rcp,
  org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints,
  org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors,

@@ -605,14 +605,22 @@ public class MessageProcessorDeserializer
 			if(dummyMessageProcessor.getClassName().equalsIgnoreCase(messageSamplingProcessor)) {
 				messageProcessorPage.processorType.select(0);
 				
+				Map<String, Object> parameters = dummyMessageProcessor
+						.getParameters();
+				Set<String> keySet = parameters.keySet();
 				
 				Sampling sampling = (Sampling)messageProcessorPage.getProcessorImpl(messageSamplingProcessor);
 				
 				setTextValue(sampling.sampling_sequence, processor.getParameters().get("sequence"));
+				keySet.remove("sequence");
 				setTextValue(sampling.sampling_interval, processor.getParameters().get("interval"));
+				keySet.remove("interval");
 				setTextValue(sampling.sampling_concurrency, processor.getParameters().get("concurrency"));
+				keySet.remove("concurrency");
 				setTextValue(sampling.sampling_quartzConfigFilePath, processor.getParameters().get("quartz.conf"));
+				keySet.remove("quartz.conf");
 				setTextValue(sampling.sampling_cronExpression, processor.getParameters().get("cronExpression"));
+				keySet.remove("cronExpression");
 				
 				// non-textbox items
 				if (processor.getParameters().get("is.active") != null && processor.getParameters().get("is.active").toString().equalsIgnoreCase("true")){
@@ -620,26 +628,49 @@ public class MessageProcessorDeserializer
 				} else {
 					sampling.sampling_state.select(1);
 				}
+				keySet.remove("is.active");
 				
+				if (keySet.size() > 0) {
+					List<MessageProcessorParameter> existingProperties = sampling.messageProcessorParameterList;
+					sampling.messageProcessorParameterList = (getMessageProcessorProperties(keySet,parameters,existingProperties));
+				}else{
+					//When removing all properties from the source view then clear the list
+					sampling.messageProcessorParameterList = null;
+				}
 				
 			} else if(dummyMessageProcessor.getClassName().equalsIgnoreCase(scheduledMessageForwardingProcessor)) {
 				messageProcessorPage.processorType.select(1);
+				Map<String, Object> parameters = dummyMessageProcessor
+						.getParameters();
+				Set<String> keySet = parameters.keySet();
 				
 				ScheduledForwarding forwarder = (ScheduledForwarding)messageProcessorPage.getProcessorImpl(scheduledMessageForwardingProcessor);
 
 				setTextValue(forwarder.forwarding_endpoint, processor.getTargetEndpoint());
 				setTextValue(forwarder.forwarding_interval, processor.getParameters().get("interval"));
+				keySet.remove("interval");
 				setTextValue(forwarder.forwarding_retryInterval, processor.getParameters().get("client.retry.interval"));
+				keySet.remove("client.retry.interval");
 				setTextValue(forwarder.forwarding_nonRetryHttpCodes, processor.getParameters().get("non.retry.status.codes"));
+				keySet.remove("non.retry.status.codes");
 				setTextValue(forwarder.forwarding_maxDeliveryAttempts,processor.getParameters().get("max.delivery.attempts"));
+				keySet.remove("max.delivery.attempts");
 				setTextValue(forwarder.forwarding_axis2ClientRepo, processor.getParameters().get("axis2.repo"));
+				keySet.remove("axis2.repo");
 				setTextValue(forwarder.forwarding_axis2Config, processor.getParameters().get("axis2.config"));
+				keySet.remove("axis2.config");
 				setTextValue(forwarder.forwarding_replySequence, processor.getParameters().get("message.processor.reply.sequence"));
+				keySet.remove("message.processor.reply.sequence");
 				setTextValue(forwarder.forwarding_faultSequence, processor.getParameters().get("message.processor.fault.sequence"));
+				keySet.remove("message.processor.fault.sequence");
 				setTextValue(forwarder.forwarding_deactiveSequence, processor.getParameters().get("message.processor.deactivate.sequence"));
+				keySet.remove("message.processor.deactivate.sequence");
 				setTextValue(forwarder.forwarding_quartzConfigFilePath, processor.getParameters().get("quartz.conf"));
+				keySet.remove("quartz.conf");
 				setTextValue(forwarder.forwarding_cronExpression, processor.getParameters().get("cronExpression"));
+				keySet.remove("cronExpression");
 				setTextValue(forwarder.forwarding_taskCount, processor.getParameters().get("member.count"));
+				keySet.remove("member.count");
 				
 				// non-textbox items
 				if (processor.getParameters().get("is.active") != null &&  processor.getParameters().get("is.active").toString().equalsIgnoreCase("true")){
@@ -647,28 +678,44 @@ public class MessageProcessorDeserializer
 				} else {
 					forwarder.forwarding_state.select(1);
 				}
+				keySet.remove("is.active");
 				
 				if(processor.getParameters().get("max.delivery.drop") != null && processor.getParameters().get("max.delivery.drop").toString().equalsIgnoreCase("Enabled")){
 					forwarder.forwarding_dropMessageAfterMaxDeliveryAttempts.select(0);
 				} else {
 					forwarder.forwarding_dropMessageAfterMaxDeliveryAttempts.select(1);
 				}
+				keySet.remove("max.delivery.drop");
 				
 				
 			} else if(dummyMessageProcessor.getClassName().equalsIgnoreCase(scheduledFailoverMessageForwardingProcessor)) {
 				messageProcessorPage.processorType.select(2);
 				
+				Map<String, Object> parameters = dummyMessageProcessor
+						.getParameters();
+				Set<String> keySet = parameters.keySet();
+				
+				
 				ScheduledFailoverForwarding failover = (ScheduledFailoverForwarding)messageProcessorPage.getProcessorImpl(scheduledFailoverMessageForwardingProcessor);
 				
 				setTextValue(failover.failover_store, processor.getParameters().get("store.failover.message.store.name"));
+				keySet.remove("store.failover.message.store.name");
 				setTextValue(failover.failover_interval, processor.getParameters().get("interval"));
+				keySet.remove("interval");
 				setTextValue(failover.failover_retryInterval, processor.getParameters().get("client.retry.interval"));
+				keySet.remove("client.retry.interval");
 				setTextValue(failover.failover_maxDeliveryAttempts,processor.getParameters().get("max.delivery.attempts"));
+				keySet.remove("max.delivery.attempts");
 				setTextValue(failover.failover_faultSequence, processor.getParameters().get("message.processor.fault.sequence"));
+				keySet.remove("message.processor.fault.sequence");
 				setTextValue(failover.failover_deactiveSequence, processor.getParameters().get("message.processor.deactivate.sequence"));
+				keySet.remove("message.processor.deactivate.sequence");
 				setTextValue(failover.failover_quartzConfigFilePath, processor.getParameters().get("quartz.conf"));
+				keySet.remove("quartz.conf");
 				setTextValue(failover.failover_cronExpression, processor.getParameters().get("cronExpression"));
+				keySet.remove("cronExpression");
 				setTextValue(failover.failover_taskCount, processor.getParameters().get("member.count"));
+				keySet.remove("member.count");
 				
 				// non-textbox items
 				if (processor.getParameters().get("is.active") != null &&processor.getParameters().get("is.active").toString().equalsIgnoreCase("true")){
@@ -676,6 +723,7 @@ public class MessageProcessorDeserializer
 				} else {
 					failover.failover_state.select(1);
 				}
+				keySet.remove("is.active");
 				
 				
 				failover.failover_dropMessageAfterMaxDeliveryAttempts.setText((String) processor.getParameters().get("max.delivery.drop"));
@@ -685,10 +733,15 @@ public class MessageProcessorDeserializer
 				} else {
 					failover.failover_dropMessageAfterMaxDeliveryAttempts.select(1);
 				}
+				keySet.remove("max.delivery.drop");
 				
 				
 			} else {
 				messageProcessorPage.processorType.select(3);
+				
+				Map<String, Object> parameters = dummyMessageProcessor
+						.getParameters();
+				Set<String> keySet = parameters.keySet();
 				
 				CustomProcessor custom = (CustomProcessor)messageProcessorPage.getProcessorImpl(customProcessor);
 
@@ -696,70 +749,11 @@ public class MessageProcessorDeserializer
 				
 				if (!dummyMessageProcessor.getParameters().entrySet().isEmpty()) {
 					List<MessageProcessorParameter> existingProperties = custom.messageProcessorParameterList;
-					List<MessageProcessorParameter> newlyAddedProperties = new ArrayList<MessageProcessorParameter>();
-					List<MessageProcessorParameter> removedProperties = new ArrayList<MessageProcessorParameter>();
-					List<MessageProcessorParameter> newProperties = new ArrayList<MessageProcessorParameter>();
-
-					for (Entry<String, Object> param : dummyMessageProcessor.getParameters().entrySet()) {
-						MessageProcessorParameter parameter = EsbFactory.eINSTANCE.createMessageProcessorParameter();
-						parameter.setParameterName(param.getKey());
-						parameter.setParameterValue(param.getValue().toString());
-
-						if (existingProperties != null) {
-							for (MessageProcessorParameter propertyItem : existingProperties) {
-								// When updating the existing properties from source view, then remove the property
-								// from old list and add to new list
-								if (propertyItem.getParameterName().equals(param.getKey())) {
-									existingProperties.remove(propertyItem);
-									newlyAddedProperties.add(parameter);
-									break;
-								}
-							}
-						}
-						// When adding a new property from source then add it to the new list
-						if (!newlyAddedProperties.contains(parameter)) {
-							newlyAddedProperties.add(parameter);
-						}
-					}
-
-					// If old properties contain any property values, then remove the value and add the property to the
-					// new
-					// list, DEVTOOLESB-505
-					if (existingProperties != null) {
-						for (MessageProcessorParameter prop : existingProperties) {
-							String value = prop.getParameterName();
-							String name = prop.getParameterName();
-							if (StringUtils.isNotEmpty(value)) {
-								// Add the property to removed list
-								removedProperties.add(prop);
-								/*MessageProcessorParameter newPrp = createProperty(name);
-								if (!newlyAddedProperties.contains(newPrp)) {
-									// Add to the new properties list
-									newProperties.add(newPrp);
-								}*/
-							}
-						}
-					}
-					// First remove the removed properties from existing properties
-					if (removedProperties.size() > 0) {
-						existingProperties.removeAll(removedProperties);
-					}
-					// Adds the new properties
-					if (newProperties.size() > 0) {
-						newlyAddedProperties.addAll(newProperties);
-					}
-					// Adds the existing old properties (which didn't get updated)
-					// to the new list
-					if (existingProperties != null) {
-						newlyAddedProperties.addAll(existingProperties);
-					}
-					custom.messageProcessorParameterList = newlyAddedProperties;
+					custom.messageProcessorParameterList = getMessageProcessorProperties(keySet,parameters, existingProperties);
 				}else{
 					//When removing all properties from the source view then clear the list
 					custom.messageProcessorParameterList = null;
 				}
-				
-				
 				
 			}
 			
@@ -767,6 +761,75 @@ public class MessageProcessorDeserializer
 			messageProcessorPage.refreshProcessorSettings();
 			
 			
+	}
+
+
+	/**
+	 * Sets the properties
+	 * @param dummyMessageProcessor
+	 * @param existingProperties2
+	 */
+	private List<MessageProcessorParameter> getMessageProcessorProperties(Set<String> keySet,Map<String, Object> parameters, List<MessageProcessorParameter> existingProperties) {
+		
+		List<MessageProcessorParameter> newlyAddedProperties = new ArrayList<MessageProcessorParameter>();
+		List<MessageProcessorParameter> removedProperties = new ArrayList<MessageProcessorParameter>();
+		List<MessageProcessorParameter> newProperties = new ArrayList<MessageProcessorParameter>();
+
+		for (String param : keySet) {
+			MessageProcessorParameter parameter = EsbFactory.eINSTANCE.createMessageProcessorParameter();
+			parameter.setParameterName(param);
+			parameter.setParameterValue(parameters.get(param).toString());
+
+			if (existingProperties != null) {
+				for (MessageProcessorParameter propertyItem : existingProperties) {
+					// When updating the existing properties from source view, then remove the property
+					// from old list and add to new list
+					if (propertyItem.getParameterName().equals(param)) {
+						existingProperties.remove(propertyItem);
+						newlyAddedProperties.add(parameter);
+						break;
+					}
+				}
+			}
+			// When adding a new property from source then add it to the new list
+			if (!newlyAddedProperties.contains(parameter)) {
+				newlyAddedProperties.add(parameter);
+			}
+		}
+
+		// If old properties contain any property values, then remove the value and add the property to the
+		// new
+		// list, DEVTOOLESB-505
+		if (existingProperties != null) {
+			for (MessageProcessorParameter prop : existingProperties) {
+				String value = prop.getParameterName();
+				String name = prop.getParameterName();
+				if (StringUtils.isNotEmpty(value)) {
+					// Add the property to removed list
+					removedProperties.add(prop);
+					/*MessageProcessorParameter newPrp = createProperty(name);
+					if (!newlyAddedProperties.contains(newPrp)) {
+						// Add to the new properties list
+						newProperties.add(newPrp);
+					}*/
+				}
+			}
+		}
+		// First remove the removed properties from existing properties
+		if (removedProperties.size() > 0) {
+			existingProperties.removeAll(removedProperties);
+		}
+		// Adds the new properties
+		if (newProperties.size() > 0) {
+			newlyAddedProperties.addAll(newProperties);
+		}
+		// Adds the existing old properties (which didn't get updated)
+		// to the new list
+		if (existingProperties != null) {
+			newlyAddedProperties.addAll(existingProperties);
+		}
+		return newlyAddedProperties;
+		
 	}
 	
 	/**

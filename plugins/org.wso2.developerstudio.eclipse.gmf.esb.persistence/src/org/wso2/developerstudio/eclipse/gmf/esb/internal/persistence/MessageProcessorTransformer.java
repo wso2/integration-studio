@@ -270,16 +270,35 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 						messageProcessor = new org.apache.synapse.message.processor.impl.sampler.SamplingProcessor();
 						Sampling sampling = (Sampling)messageProcessorFormPage.getProcessorImpl(messageSamplingProcessor);
 						
-						parameterMap.put("sequence", sampling.sampling_sequence.getText());
+						if(StringUtils.isNotEmpty(sampling.sampling_sequence.getText())){
+							parameterMap.put("sequence", sampling.sampling_sequence.getText());
+						}
+						if(StringUtils.isNotEmpty(sampling.sampling_interval.getText())){
 						parameterMap.put("interval", sampling.sampling_interval.getText());
+						}
+						if(StringUtils.isNotEmpty(sampling.sampling_concurrency.getText())){
 						parameterMap.put("concurrency", sampling.sampling_concurrency.getText());
+						}
+						if(StringUtils.isNotEmpty(sampling.sampling_quartzConfigFilePath.getText())){
 						parameterMap.put("quartz.conf", sampling.sampling_quartzConfigFilePath.getText());
+						}
+						if(StringUtils.isNotEmpty(sampling.sampling_cronExpression.getText())){
 						parameterMap.put("cronExpression", sampling.sampling_cronExpression.getText());
+						}
 						
 						if (sampling.sampling_state.getSelectionIndex() == 0) {
 							parameterMap.put("is.active", "true");
 						} else {
 							parameterMap.put("is.active", "false");
+						}
+						List<MessageProcessorParameter> parameters = sampling.messageProcessorParameterList;
+						if (parameters != null) {
+							for (MessageProcessorParameter param : parameters) {
+								if (!StringUtils.isBlank(param.getParameterName())
+										&& !StringUtils.isBlank(param.getParameterValue())) {
+									parameterMap.put(param.getParameterName(), param.getParameterValue());
+								}
+							}
 						}
 						
 						break;
@@ -290,20 +309,45 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 						className = scheduledMessageForwardingProcessor;
 						ScheduledForwarding forwarder = (ScheduledForwarding)messageProcessorFormPage.getProcessorImpl(scheduledMessageForwardingProcessor);
 
+						if(StringUtils.isNotEmpty(forwarder.forwarding_endpoint.getText())){
 						messageProcessor.setTargetEndpoint(forwarder.forwarding_endpoint.getText());
-						
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_interval.getText())){
 						parameterMap.put("interval", forwarder.forwarding_interval.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_retryInterval.getText())){
 						parameterMap.put("client.retry.interval", forwarder.forwarding_retryInterval.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_nonRetryHttpCodes.getText())){
 						parameterMap.put("non.retry.status.codes", forwarder.forwarding_nonRetryHttpCodes.getText().split(","));
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_maxDeliveryAttempts.getText())){
 						parameterMap.put("max.delivery.attempts", forwarder.forwarding_maxDeliveryAttempts.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_axis2ClientRepo.getText())){
 						parameterMap.put("axis2.repo", forwarder.forwarding_axis2ClientRepo.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_axis2Config.getText())){
 						parameterMap.put("axis2.config", forwarder.forwarding_axis2Config.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_replySequence.getText())){
 						parameterMap.put("message.processor.reply.sequence", forwarder.forwarding_replySequence.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_faultSequence.getText())){
 						parameterMap.put("message.processor.fault.sequence", forwarder.forwarding_faultSequence.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_deactiveSequence.getText())){
 						parameterMap.put("message.processor.deactivate.sequence", forwarder.forwarding_deactiveSequence.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_quartzConfigFilePath.getText())){
 						parameterMap.put("quartz.conf", forwarder.forwarding_quartzConfigFilePath.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_cronExpression.getText())){
 						parameterMap.put("cronExpression", forwarder.forwarding_cronExpression.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_taskCount.getText())){
 						parameterMap.put("member.count", forwarder.forwarding_taskCount.getText());
+						}
 						
 						if (forwarder.forwarding_state.getSelectionIndex() == 0) {
 							parameterMap.put("is.active", "true");
@@ -325,16 +369,33 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 						// scheduledFailoverMessageForwardingProcessor
 						className = scheduledFailoverMessageForwardingProcessor;
 						ScheduledFailoverForwarding failover = (ScheduledFailoverForwarding)messageProcessorFormPage.getProcessorImpl(scheduledFailoverMessageForwardingProcessor);
-						
+						if(StringUtils.isNotEmpty(failover.failover_store.getText())){
 						parameterMap.put("store.failover.message.store.name", failover.failover_store.getText());
+						}
+						if(StringUtils.isNotEmpty(failover.failover_interval.getText())){
 						parameterMap.put("interval", failover.failover_interval.getText());
+						}
+						if(StringUtils.isNotEmpty(failover.failover_retryInterval.getText())){
 						parameterMap.put("client.retry.interval", failover.failover_retryInterval.getText());
+						}
+						if(StringUtils.isNotEmpty(failover.failover_maxDeliveryAttempts.getText())){
 						parameterMap.put("max.delivery.attempts", failover.failover_maxDeliveryAttempts.getText());
+						}
+						if(StringUtils.isNotEmpty(failover.failover_faultSequence.getText())){
 						parameterMap.put("message.processor.fault.sequence", failover.failover_faultSequence.getText());
+						}
+						if(StringUtils.isNotEmpty(failover.failover_deactiveSequence.getText())){
 						parameterMap.put("message.processor.deactivate.sequence", failover.failover_deactiveSequence.getText());
+						}
+						if(StringUtils.isNotEmpty(failover.failover_quartzConfigFilePath.getText())){
 						parameterMap.put("quartz.conf", failover.failover_quartzConfigFilePath.getText());
+						}
+						if(StringUtils.isNotEmpty(failover.failover_cronExpression.getText())){
 						parameterMap.put("cronExpression", failover.failover_cronExpression.getText());
+						}
+						if(StringUtils.isNotEmpty(failover.failover_taskCount.getText())){
 						parameterMap.put("member.count", failover.failover_taskCount.getText());
+						}
 						
 						if (failover.failover_state.getSelectionIndex() == 0) {
 							parameterMap.put("is.active", "true");

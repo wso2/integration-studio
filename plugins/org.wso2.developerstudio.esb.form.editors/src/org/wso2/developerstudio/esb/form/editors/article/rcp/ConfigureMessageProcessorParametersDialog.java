@@ -178,10 +178,7 @@ public class ConfigureMessageProcessorParametersDialog extends Dialog {
 				for (MessageProcessorParameter property : messageProcessorParamList) {
 					bindPram(property);
 				}
-			} else {
-				// when adding properties for the first time
-				bindPram();
-			}
+			} 
 
 			// In-line editing of parameters.
 			setupTableEditor(parametersTable);

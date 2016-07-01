@@ -84,7 +84,7 @@ public class CustomStore implements IMessageStore {
 		
     	parameterSection.setVisible(false);
  		
-   		custom_parameters = toolkit.createButton(paramSectionClient, "Message Store Parameters",SWT.PUSH);
+   		custom_parameters = toolkit.createButton(paramSectionClient, " Add Message Store Parameters",SWT.PUSH);
  		custom_parameters.setBackground(new Color(null, 229,236,253));
  		custom_parameters.addSelectionListener(new SelectionListener() {
 			

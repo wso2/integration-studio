@@ -64,26 +64,28 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		
         AspectConfiguration aspectConfiguration = new AspectConfiguration(endpointFormPage.getEndpointName().getText());
         synapseEPDef.configure(aspectConfiguration);
-        if (endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
+        if (endpointFormPage.getEndpointStatistics() != null && endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
             aspectConfiguration.enableStatistics();
         } else {
             aspectConfiguration.disableStatistics();
         }
 
-        if (endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
+        if (endpointFormPage.getEndpointTrace() != null && endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
             synapseEPDef.getAspectConfiguration().enableTracing();
         } else {
             synapseEPDef.getAspectConfiguration().disableTracing();
         }
-		
-		String suspendErrorCodes= endpointCommons.getEndpointSuspendErrorCodes().getText();
-		if(suspendErrorCodes!=null && !"".equals(suspendErrorCodes)){
-			String [] suspendErrorCodesList=suspendErrorCodes.split("\\,");
-			List<String> suspendCodes = Arrays.asList(suspendErrorCodesList); 
-			for(String code:suspendCodes){
-				synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
+		if (endpointCommons.getEndpointSuspendErrorCodes() != null) {
+			String suspendErrorCodes = endpointCommons.getEndpointSuspendErrorCodes().getText();
+			if (suspendErrorCodes != null && !"".equals(suspendErrorCodes)) {
+				String[] suspendErrorCodesList = suspendErrorCodes.split("\\,");
+				List<String> suspendCodes = Arrays.asList(suspendErrorCodesList);
+				for (String code : suspendCodes) {
+					synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
+				}
 			}
 		}
+		
 		if (endpointCommons.getEndpointSuspendInitialDuration() != null
 				&& StringUtils.isNumeric(endpointCommons.getEndpointSuspendInitialDuration().getText()) 
 				&& endpointCommons.getEndpointSuspendInitialDuration().getText() != ""

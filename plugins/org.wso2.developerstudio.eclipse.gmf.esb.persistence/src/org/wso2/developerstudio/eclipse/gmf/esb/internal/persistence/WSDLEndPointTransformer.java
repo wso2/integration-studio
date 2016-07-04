@@ -104,7 +104,7 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		return synapseWSDLEP;
 	}	
 
-	public WSDLEndpoint create(WsdlEndpointFormPage wsdlEndpointFormPage, EndpointFormPage endpointCommonFormPage){
+	public WSDLEndpoint create(WsdlEndpointFormPage wsdlEndpointFormPage){
 		WSDLEndpoint synapseWSDLEP = new WSDLEndpoint();
 		synapseWSDLEP.setWsdlURI(wsdlEndpointFormPage.getWsdlEP_WsdlUri().getText());
 		synapseWSDLEP.setServiceName(wsdlEndpointFormPage.getWsdlEP_Service().getText());
@@ -112,7 +112,7 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		if(StringUtils.isNotBlank(wsdlEndpointFormPage.getEndpointName().getText())){
 			synapseWSDLEP.setName(wsdlEndpointFormPage.getEndpointName().getText());
 		}		
-		createtAdvanceOptions(endpointCommonFormPage,synapseWSDLEP);		
+		createtAdvanceOptions(wsdlEndpointFormPage, synapseWSDLEP);		
 		return synapseWSDLEP;
 	}	
 

@@ -259,7 +259,7 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 			FormPage endpointFormPage ) throws Exception {		
 		if((FormPage) endpointFormPage instanceof WsdlEndpointFormPage){
 			WSDLEndPointTransformer transformer= new WSDLEndPointTransformer();
-			return transformer.create((WsdlEndpointFormPage) endpointFormPage, (EndpointFormPage) endpointFormPage);
+			return transformer.create((WsdlEndpointFormPage) endpointFormPage);
 		}else{
 			return null;
 		}		

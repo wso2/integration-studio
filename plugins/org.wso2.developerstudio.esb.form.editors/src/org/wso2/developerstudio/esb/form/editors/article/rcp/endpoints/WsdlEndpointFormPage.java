@@ -17,16 +17,25 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
+import java.util.List;
+
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
+import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 /**
  * 
@@ -37,6 +46,15 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 	private Text wsdlEP_WsdlUri;
 	private Text wsdlEP_Service;
 	private Text wsdlEP_Port;
+
+	public Combo wsdlEP_Format;
+	public Combo endpointTrace;
+	public Combo endpointStatistics;
+	
+	public Button wsdlEP_Properties;
+	public Combo wsdlEP_Optimize;
+	public Text wsdlEP_Description;
+	public List<EndPointProperty> endpointPropertyList;
 
     Section basicSection;
     Section miscSection;
@@ -175,6 +193,26 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		wsdlEP_Port = toolkit.createText(miscSectionClient, "");
 		wsdlEP_Port.setBackground(new Color(null, 229,236,253));
 		wsdlEP_Port.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		wsdlEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
+		wsdlEP_Properties.setBackground(new Color(null, 229,236,253));
+		wsdlEP_Properties.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Shell shell = Display.getDefault().getActiveShell();
+				ConfigureEndPointPropertiesDialog paramDialog = new ConfigureEndPointPropertiesDialog(shell,endpointPropertyList);
+				paramDialog.setBlockOnOpen(true);
+				paramDialog.open();
+				endpointPropertyList = paramDialog.getEndpointPropertyList();		
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 	}
 	

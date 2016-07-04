@@ -17,16 +17,25 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
+import java.util.List;
+
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
+import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 /**
  * 
@@ -40,8 +49,9 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 	public Text httpEP_UriTemplate;
 	public Text httpEP_Method;
 
-	public Text httpEP_Properties;
+	public Button httpEP_Properties;
 	public Text httpEP_Description;
+	public List<EndPointProperty> endpointPropertyList;
 	
     Section basicSection;
     Section miscSection;
@@ -105,16 +115,32 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		miscSectionClient.setLayout(new TableWrapLayout());
 		
 		miscSection.setClient(miscSectionClient);
-		
-		toolkit.createLabel(miscSectionClient, "Properties");
-		httpEP_Properties = toolkit.createText(miscSectionClient, "");
-		httpEP_Properties.setBackground(new Color(null, 229,236,253));
-		httpEP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
+	
 		toolkit.createLabel(miscSectionClient, "Description");
 		httpEP_Description = toolkit.createText(miscSectionClient, "");
 		httpEP_Description.setBackground(new Color(null, 229,236,253));
 		httpEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		httpEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
+		httpEP_Properties.setBackground(new Color(null, 229,236,253));
+		httpEP_Properties.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Shell shell = Display.getDefault().getActiveShell();
+				ConfigureEndPointPropertiesDialog paramDialog = new ConfigureEndPointPropertiesDialog(shell,endpointPropertyList);
+				paramDialog.setBlockOnOpen(true);
+				paramDialog.open();
+				endpointPropertyList = paramDialog.getEndpointPropertyList();		
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		
 	}
 	

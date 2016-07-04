@@ -17,16 +17,25 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
+import java.util.List;
+
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
+import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 /**
  * 
@@ -39,9 +48,11 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 	public Combo endpointTrace;
 	public Combo endpointStatistics;
 
-	public Text defaultEP_Properties;
+	public Button defaultEP_Properties;
 	public Combo defaultEP_Optimize;
 	public Text defaultEP_Description;
+	
+	public List<EndPointProperty> endpointPropertyList;
 	
     Section basicSection;
     Section miscSection;
@@ -99,12 +110,7 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 		
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
 		miscSectionClient.setLayout(new TableWrapLayout());
-		
-		
-		toolkit.createLabel(miscSectionClient, "Properties");
-		defaultEP_Properties = toolkit.createText(miscSectionClient, "");
-		defaultEP_Properties.setBackground(new Color(null, 229,236,253));
-		defaultEP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+	
 		
 		toolkit.createLabel(miscSectionClient, "Optimize");
 		defaultEP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
@@ -116,6 +122,26 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 		defaultEP_Description = toolkit.createText(miscSectionClient, "");
 		defaultEP_Description.setBackground(new Color(null, 229,236,253));
 		defaultEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		defaultEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
+		defaultEP_Properties.setBackground(new Color(null, 229,236,253));
+		defaultEP_Properties.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Shell shell = Display.getDefault().getActiveShell();
+				ConfigureEndPointPropertiesDialog paramDialog = new ConfigureEndPointPropertiesDialog(shell,endpointPropertyList);
+				paramDialog.setBlockOnOpen(true);
+				paramDialog.open();
+				endpointPropertyList = paramDialog.getEndpointPropertyList();		
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		miscSection.setClient(miscSectionClient);
 		

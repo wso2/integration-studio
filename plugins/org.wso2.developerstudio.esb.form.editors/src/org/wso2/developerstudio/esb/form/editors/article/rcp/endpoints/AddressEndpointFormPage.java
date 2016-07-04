@@ -17,16 +17,25 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
+import java.util.List;
+
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
+import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 /**
  * 
@@ -40,10 +49,11 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 	public Combo endpointStatistics;
 	public Text addressEP_URI;
 
-	public Text addressEP_Properties;
+	public Button addressEP_Properties;
 	public Combo addressEP_Optimize;
 	public Text addressEP_Description;
 	
+	public List<EndPointProperty> endpointPropertyList;
     Section basicSection;
     Section miscSection;
     
@@ -107,12 +117,6 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		miscSectionClient.setLayout(new TableWrapLayout());
 		miscSection.setClient(miscSectionClient);
 		
-		
-		toolkit.createLabel(miscSectionClient, "Properties");
-		addressEP_Properties = toolkit.createText(miscSectionClient, "");
-		addressEP_Properties.setBackground(new Color(null, 229,236,253));
-		addressEP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
 		toolkit.createLabel(miscSectionClient, "Optimize");
 		addressEP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
 		addressEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -123,6 +127,26 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		addressEP_Description = toolkit.createText(miscSectionClient, "");
 		addressEP_Description.setBackground(new Color(null, 229,236,253));
 		addressEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		addressEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
+		addressEP_Properties.setBackground(new Color(null, 229,236,253));
+		addressEP_Properties.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Shell shell = Display.getDefault().getActiveShell();
+				ConfigureEndPointPropertiesDialog paramDialog = new ConfigureEndPointPropertiesDialog(shell,endpointPropertyList);
+				paramDialog.setBlockOnOpen(true);
+				paramDialog.open();
+				endpointPropertyList = paramDialog.getEndpointPropertyList();		
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 	}
 	

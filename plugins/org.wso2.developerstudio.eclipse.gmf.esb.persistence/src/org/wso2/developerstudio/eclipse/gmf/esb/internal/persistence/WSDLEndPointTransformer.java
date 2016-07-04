@@ -32,6 +32,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 
 public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 
@@ -102,6 +104,19 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		return synapseWSDLEP;
 	}	
 
+	public WSDLEndpoint create(WsdlEndpointFormPage wsdlEndpointFormPage, EndpointFormPage endpointCommonFormPage){
+		WSDLEndpoint synapseWSDLEP = new WSDLEndpoint();
+		synapseWSDLEP.setWsdlURI(wsdlEndpointFormPage.getWsdlEP_WsdlUri().getText());
+		synapseWSDLEP.setServiceName(wsdlEndpointFormPage.getWsdlEP_Service().getText());
+		synapseWSDLEP.setPortName(wsdlEndpointFormPage.getWsdlEP_Port().getText());		
+		if(StringUtils.isNotBlank(wsdlEndpointFormPage.getEndpointName().getText())){
+			synapseWSDLEP.setName(wsdlEndpointFormPage.getEndpointName().getText());
+		}		
+		createtAdvanceOptions(endpointCommonFormPage,synapseWSDLEP);		
+		return synapseWSDLEP;
+	}	
+
+	
 	public void transformWithinSequence(TransformationInfo information,
 			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		

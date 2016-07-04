@@ -855,8 +855,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		IFile xmlFile = null;
 		String source = null;
 		if (isFormEditor) {
-			FormPage localEntryFormPage = formEditor.getFormPageForArtifact(currArtifactType);
-			source = EsbModelTransformer.instance.formToSource(localEntryFormPage, currArtifactType);
+			FormPage formEditorPage = formEditor.getFormPageForArtifact(currArtifactType);
+			source = EsbModelTransformer.instance.formToSource(formEditorPage, currArtifactType);
 
 		} else {
 			EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();

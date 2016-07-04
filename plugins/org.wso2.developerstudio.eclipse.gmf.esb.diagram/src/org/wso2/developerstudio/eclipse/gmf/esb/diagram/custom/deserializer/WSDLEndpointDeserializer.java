@@ -63,48 +63,52 @@ public class WSDLEndpointDeserializer extends AbstractEndpointDeserializer{
 		WSDLEndpoint endpoint = (WSDLEndpoint) endpointObject;
 		
 		WsdlEndpointFormPage wsdlEndpointPage = (WsdlEndpointFormPage)endpointPage;
-		
+		if (wsdlEndpointPage.getEndpointName() != null && !wsdlEndpointPage.getEndpointName().getText().isEmpty()) {
+			endpoint.setName(wsdlEndpointPage.getEndpointName().getText());
+		}
 //		setTextValue(wsdlEndpointPage.wsdlEP_Properties, endpoint.getDefinition().get);
-		setTextValue(wsdlEndpointPage.wsdlEP_WsdlUri, endpoint.getWsdlURI());
-		setTextValue(wsdlEndpointPage.wsdlEP_Service, endpoint.getServiceName());
-		setTextValue(wsdlEndpointPage.wsdlEP_Port, endpoint.getPortName());
-		setTextValue(wsdlEndpointPage.wsdlEP_Description, endpoint.getDescription());
-		
-		if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap11")) {
-			wsdlEndpointPage.wsdlEP_Format.select(1);
+		setTextValue(wsdlEndpointPage.getWsdlEP_WsdlUri(), endpoint.getWsdlURI());
+		setTextValue(wsdlEndpointPage.getWsdlEP_Service(), endpoint.getServiceName());
+		setTextValue(wsdlEndpointPage.getWsdlEP_Port(), endpoint.getPortName());
+		setTextValue(wsdlEndpointPage.getEP_Description(), endpoint.getDescription());
+		if (endpoint.getDefinition().getFormat() != null) {
+		if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap11")) {//"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"
+			wsdlEndpointPage.getEP_Format().select(1);
 		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap12")) {
-			wsdlEndpointPage.wsdlEP_Format.select(2);
+			wsdlEndpointPage.getEP_Format().select(2);
 		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("pox")) {
-			wsdlEndpointPage.wsdlEP_Format.select(3);
+			wsdlEndpointPage.getEP_Format().select(3);
 		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("get")) {
-			wsdlEndpointPage.wsdlEP_Format.select(4);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("rest")) {
-			wsdlEndpointPage.wsdlEP_Format.select(5);
+			wsdlEndpointPage.getEP_Format().select(4);
+		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("reset")) {
+			wsdlEndpointPage.getEP_Format().select(5);
 		}else {
-			wsdlEndpointPage.wsdlEP_Format.select(0);
+			wsdlEndpointPage.getEP_Format().select(0);
+		}
 		}
 		
 		if (endpoint.getDefinition().isTracingEnabled()) {
-			wsdlEndpointPage.endpointTrace.select(0);
+			wsdlEndpointPage.getEndpointTrace().select(0);
 		} else {
-			wsdlEndpointPage.endpointTrace.select(1);
+			wsdlEndpointPage.getEndpointTrace().select(1);
 		}
 		
 		if (endpoint.getDefinition().isStatisticsEnable()) {
-			wsdlEndpointPage.endpointStatistics.select(0);
+			wsdlEndpointPage.getEndpointStatistics().select(0);
 		} else {
-			wsdlEndpointPage.endpointStatistics.select(1);
+			wsdlEndpointPage.getEndpointStatistics().select(1);
 		}
 		
 		if (endpoint.getDefinition().isUseMTOM()) {
-			wsdlEndpointPage.wsdlEP_Optimize.select(1);
+			wsdlEndpointPage.getEP_Optimize().select(1);
 		} else if (endpoint.getDefinition().isUseSwa()) {
-			wsdlEndpointPage.wsdlEP_Optimize.select(2);
+			wsdlEndpointPage.getEP_Optimize().select(2);
 		} else {
-			wsdlEndpointPage.wsdlEP_Optimize.select(0);
+			wsdlEndpointPage.getEP_Optimize().select(0);
 		}
 		
 		super.createNode(formEditor, endpointObject);
 	}
+	
 
 }

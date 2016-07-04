@@ -17,18 +17,14 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
-import org.eclipse.ui.forms.widgets.TableWrapData;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 /**
@@ -42,7 +38,73 @@ public abstract class EndpointFormPage extends FormPage {
 	
 	protected ScrolledForm form;
     protected FormToolkit toolkit;
+    protected Text endpointName;
 
+    protected Combo endpointTrace;
+    protected Combo endpointStatistics;
+	
+    protected Text eP_Properties;
+    protected Combo eP_Optimize;
+    protected Text eP_Description;
+
+    protected Combo eP_Format;
+	
+	 
+	public Text getEndpointName() {
+		return endpointName;
+	}
+
+	public void setEndpointName(Text endpointName) {
+		this.endpointName = endpointName;
+	}
+		
+	public Combo getEP_Format() {
+		return eP_Format;
+	}
+
+	public void setEP_Format(Combo wsdlEP_Format) {
+		this.eP_Format = wsdlEP_Format;
+	}
+
+	public Combo getEndpointTrace() {
+		return endpointTrace;
+	}
+
+	public void setEndpointTrace(Combo endpointTrace) {
+		this.endpointTrace = endpointTrace;
+	}
+
+	public Combo getEndpointStatistics() {
+		return endpointStatistics;
+	}
+
+	public void setEndpointStatistics(Combo endpointStatistics) {
+		this.endpointStatistics = endpointStatistics;
+	}
+
+	public Text getEP_Properties() {
+		return eP_Properties;
+	}
+
+	public void setEP_Properties(Text wsdlEP_Properties) {
+		this.eP_Properties = wsdlEP_Properties;
+	}
+
+	public Combo getEP_Optimize() {
+		return eP_Optimize;
+	}
+
+	public void setEP_Optimize(Combo wsdlEP_Optimize) {
+		this.eP_Optimize = wsdlEP_Optimize;
+	}
+
+	public Text getEP_Description() {
+		return eP_Description;
+	}
+
+	public void setEP_Description(Text wsdlEP_Description) {
+		this.eP_Description = wsdlEP_Description;
+	}
 
 	public EndpointFormPage(FormEditor editor) {
 		super(editor, "endpointForm", Messages.getString("EndpointPage.sectionMainTitle"));

@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.endpoints.AbstractEndpoint;
@@ -46,9 +47,139 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointWestOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointCommons;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 
 public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransformer{
 
+	protected void createtAdvanceOptions(EndpointFormPage endpointFormPage,AbstractEndpoint endpoint) {
+		EndpointDefinition synapseEPDef = new EndpointDefinition();
+		EndpointCommons endpointCommons =  endpointFormPage.getEndpointCommons();
+		synapseEPDef.setFormat(endpointFormPage.getEP_Format().getText());
+		if(endpointFormPage.getEP_Optimize().getSelectionIndex() == 1){
+			synapseEPDef.setUseMTOM(true);
+		}else if(endpointFormPage.getEP_Optimize().getSelectionIndex() == 2){
+			synapseEPDef.setUseSwa(true);
+		}
+		
+        AspectConfiguration aspectConfiguration = new AspectConfiguration(endpointFormPage.getEndpointName().getText());
+        synapseEPDef.configure(aspectConfiguration);
+        if (endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
+            aspectConfiguration.enableStatistics();
+        } else {
+            aspectConfiguration.disableStatistics();
+        }
+
+        if (endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
+            synapseEPDef.getAspectConfiguration().enableTracing();
+        } else {
+            synapseEPDef.getAspectConfiguration().disableTracing();
+        }
+		
+		String suspendErrorCodes= endpointCommons.getEndpointSuspendErrorCodes().getText();
+		if(suspendErrorCodes!=null && !"".equals(suspendErrorCodes)){
+			String [] suspendErrorCodesList=suspendErrorCodes.split("\\,");
+			List<String> suspendCodes = Arrays.asList(suspendErrorCodesList); 
+			for(String code:suspendCodes){
+				synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
+			}
+		}
+		if (endpointCommons.getEndpointSuspendInitialDuration() != null
+				&& StringUtils.isNumeric(endpointCommons.getEndpointSuspendInitialDuration().getText()) 
+				&& endpointCommons.getEndpointSuspendInitialDuration().getText() != ""
+				&& !endpointCommons.getEndpointSuspendInitialDuration().getText().isEmpty()) {
+			synapseEPDef.setInitialSuspendDuration(
+					Long.parseLong(endpointCommons.getEndpointSuspendInitialDuration().getText().trim()));
+		}
+		if (endpointCommons.getEndpointSuspendMaxDuration() != null
+				&& StringUtils.isNumeric(endpointCommons.getEndpointSuspendMaxDuration().getText())
+				&& endpointCommons.getEndpointSuspendMaxDuration().getText() != ""
+				&& !endpointCommons.getEndpointSuspendMaxDuration().getText().isEmpty()) {
+			synapseEPDef.setSuspendMaximumDuration(
+					Long.parseLong(endpointCommons.getEndpointSuspendMaxDuration().getText().trim()));
+		}
+		if (endpointCommons.getEndpointSuspendProgressFactor() != null
+				&& StringUtils.isNumeric(endpointCommons.getEndpointSuspendProgressFactor().getText()) 
+				&& endpointCommons.getEndpointSuspendProgressFactor().getText() != ""
+				&& ! endpointCommons.getEndpointSuspendProgressFactor().getText().isEmpty()) {
+			synapseEPDef.setSuspendProgressionFactor(
+					Float.parseFloat((endpointCommons.getEndpointSuspendProgressFactor().getText().trim())));
+		}
+				
+		String retryErrorCodes= endpointCommons.getEndpointRetryErrorCodes().getText();
+		if(retryErrorCodes != null && !"".equals(retryErrorCodes)){
+			String [] retryCodesList=retryErrorCodes.split("\\,");
+			List<String> retryCodes = Arrays.asList(retryCodesList); 
+			for(String code:retryCodes){
+				synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
+			}
+		}
+		if (StringUtils.isNumeric(endpointCommons.getEndpointRetryCount().getText())
+				&& endpointCommons.getEndpointRetryCount().getText() != ""
+				&& !endpointCommons.getEndpointRetryCount().getText().isEmpty()) {
+		synapseEPDef.setRetriesOnTimeoutBeforeSuspend(Integer.parseInt(endpointCommons.getEndpointRetryCount().getText().trim()));
+		}
+		if (StringUtils.isNumeric(endpointCommons.getEndpointRetryDelay().getText())
+				&& endpointCommons.getEndpointRetryDelay().getText() != "" 
+				&& !endpointCommons.getEndpointRetryDelay().getText().isEmpty()) {
+		synapseEPDef.setRetryDurationOnTimeout(Integer.parseInt(endpointCommons.getEndpointRetryDelay().getText().trim()));
+		}
+
+		synapseEPDef.setTimeoutAction(endpointCommons.getEndpointTimeoutAction().getSelectionIndex());
+		if (StringUtils.isNumeric(endpointCommons.getEndpointTimeoutDuration().getText())
+				&& endpointCommons.getEndpointTimeoutDuration().getText() != ""
+				&& !endpointCommons.getEndpointTimeoutDuration().getText().isEmpty()) {
+		synapseEPDef.setTimeoutDuration(Long.parseLong(endpointCommons.getEndpointTimeoutDuration().getText().trim()));
+		}
+		
+		if (endpointCommons.getEndpointAddressing().getSelectionIndex() == 0) {
+			synapseEPDef.setAddressingOn(true); //TODO implement these parameters
+			synapseEPDef.setUseSeparateListener(true);
+			synapseEPDef
+					.setAddressingVersion("final");
+		}
+		if (endpointCommons.getEndpointReliableMessaging().getSelectionIndex() == 0) {
+			synapseEPDef.setReliableMessagingOn(true);
+			String keyValue = "";
+			if(keyValue != null && !keyValue.isEmpty()){
+//				synapseEPDef.setWsRMPolicyKey(visualEndPoint.getReliableMessagingPolicy().getKeyValue());
+			}
+		} else {
+			synapseEPDef.setReliableMessagingOn(false);
+		}
+
+		if (endpointCommons.getEndpointSecurity().getSelectionIndex() == 0) {
+			/*synapseEPDef.setSecurityOn(true);
+			if (visualEndPoint.getSecurityPolicy() != null) {
+				String policyValue = visualEndPoint.getSecurityPolicy().getKeyValue();
+				if(policyValue != null && !policyValue.isEmpty()){
+					synapseEPDef.setWsSecPolicyKey(policyValue);
+				}
+			}
+			
+			if (visualEndPoint.getInboundPolicy() != null) {
+				String inboundPolicyValue = visualEndPoint.getInboundPolicy().getKeyValue();
+				if(inboundPolicyValue != null && !inboundPolicyValue.isEmpty()){
+					synapseEPDef.setInboundWsSecPolicyKey(inboundPolicyValue);
+				}
+			}
+			
+			if (visualEndPoint.getOutboundPolicy() != null) {
+				String outboundPolicyValue = visualEndPoint.getOutboundPolicy().getKeyValue();
+				if(outboundPolicyValue !=null && !outboundPolicyValue.isEmpty()){
+					synapseEPDef.setOutboundWsSecPolicyKey(outboundPolicyValue);
+				}
+			}*/
+		}
+		
+//		saveProperties(visualEndPoint, endpoint);
+		if(endpointFormPage.getEP_Properties() != null) {
+				endpoint.setDescription(endpointFormPage.getContentDescription());
+		}
+		endpoint.setDefinition(synapseEPDef);
+
+	}
+	
 	protected void createAdvanceOptions(AbstractEndPoint visualEndPoint,AbstractEndpoint endpoint) {
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 		

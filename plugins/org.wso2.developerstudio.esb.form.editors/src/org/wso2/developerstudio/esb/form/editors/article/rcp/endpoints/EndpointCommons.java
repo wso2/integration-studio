@@ -38,6 +38,102 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 public class EndpointCommons {
 	
 	public Combo endpointReliableMessaging;
+	public Combo getEndpointReliableMessaging() {
+		return endpointReliableMessaging;
+	}
+
+	public void setEndpointReliableMessaging(Combo endpointReliableMessaging) {
+		this.endpointReliableMessaging = endpointReliableMessaging;
+	}
+
+	public Combo getEndpointSecurity() {
+		return endpointSecurity;
+	}
+
+	public void setEndpointSecurity(Combo endpointSecurity) {
+		this.endpointSecurity = endpointSecurity;
+	}
+
+	public Combo getEndpointAddressing() {
+		return endpointAddressing;
+	}
+
+	public void setEndpointAddressing(Combo endpointAddressing) {
+		this.endpointAddressing = endpointAddressing;
+	}
+
+	public Text getEndpointSuspendErrorCodes() {
+		return endpointSuspendErrorCodes;
+	}
+
+	public void setEndpointSuspendErrorCodes(Text endpointSuspendErrorCodes) {
+		this.endpointSuspendErrorCodes = endpointSuspendErrorCodes;
+	}
+
+	public Text getEndpointSuspendInitialDuration() {
+		return endpointSuspendInitialDuration;
+	}
+
+	public void setEndpointSuspendInitialDuration(Text endpointSuspendInitialDuration) {
+		this.endpointSuspendInitialDuration = endpointSuspendInitialDuration;
+	}
+
+	public Text getEndpointSuspendMaxDuration() {
+		return endpointSuspendMaxDuration;
+	}
+
+	public void setEndpointSuspendMaxDuration(Text endpointSuspendMaxDuration) {
+		this.endpointSuspendMaxDuration = endpointSuspendMaxDuration;
+	}
+
+	public Text getEndpointSuspendProgressFactor() {
+		return endpointSuspendProgressFactor;
+	}
+
+	public void setEndpointSuspendProgressFactor(Text endpointSuspendProgressFactor) {
+		this.endpointSuspendProgressFactor = endpointSuspendProgressFactor;
+	}
+
+	public Text getEndpointRetryErrorCodes() {
+		return endpointRetryErrorCodes;
+	}
+
+	public void setEndpointRetryErrorCodes(Text endpointRetryErrorCodes) {
+		this.endpointRetryErrorCodes = endpointRetryErrorCodes;
+	}
+
+	public Text getEndpointRetryCount() {
+		return endpointRetryCount;
+	}
+
+	public void setEndpointRetryCount(Text endpointRetryCount) {
+		this.endpointRetryCount = endpointRetryCount;
+	}
+
+	public Text getEndpointRetryDelay() {
+		return endpointRetryDelay;
+	}
+
+	public void setEndpointRetryDelay(Text endpointRetryDelay) {
+		this.endpointRetryDelay = endpointRetryDelay;
+	}
+
+	public Text getEndpointTimeoutDuration() {
+		return endpointTimeoutDuration;
+	}
+
+	public void setEndpointTimeoutDuration(Text endpointTimeoutDuration) {
+		this.endpointTimeoutDuration = endpointTimeoutDuration;
+	}
+
+	public Combo getEndpointTimeoutAction() {
+		return endpointTimeoutAction;
+	}
+
+	public void setEndpointTimeoutAction(Combo endpointTimeoutAction) {
+		this.endpointTimeoutAction = endpointTimeoutAction;
+	}
+
 	public Combo endpointSecurity;
 	public Combo endpointAddressing;
 	
@@ -188,5 +284,15 @@ public class EndpointCommons {
 		separator.setLayoutData(separatorData);
 		Label padAfter = toolkit.createLabel(client, null);
 		padAfter.setLayoutData(padData);
+	}
+	
+	public String getTimeOutActionValue() {
+		if (getEndpointTimeoutAction().getSelectionIndex() == 0) {
+			return "Never";
+		} else if (getEndpointTimeoutAction().getSelectionIndex() == 1) {
+			return "Discard";
+		} else {
+			return "Fault";
+		}
 	}
 }

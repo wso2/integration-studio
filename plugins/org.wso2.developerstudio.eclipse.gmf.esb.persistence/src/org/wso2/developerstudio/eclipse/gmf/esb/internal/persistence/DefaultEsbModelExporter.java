@@ -90,6 +90,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomAPISerializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -253,6 +255,16 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		}		
 	}
 	
+	private org.apache.synapse.endpoints.Endpoint transformEndpoint(
+			FormPage endpointFormPage ) throws Exception {		
+		if((FormPage) endpointFormPage instanceof WsdlEndpointFormPage){
+			WSDLEndPointTransformer transformer= new WSDLEndPointTransformer();
+			return transformer.create((WsdlEndpointFormPage) endpointFormPage, (EndpointFormPage) endpointFormPage);
+		}else{
+			return null;
+		}		
+	}
+	
 	private org.apache.synapse.config.Entry transformLocalEntry(
 			LocalEntry visualLocalEntry ) throws Exception {	
 		LocalEntryTransformer transformer=new LocalEntryTransformer();
@@ -373,6 +385,12 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 			configOM = transformMessageProcessor(formPage);
 		} else if (artifactType == ArtifactType.MESSAGE_STORE) {
 			configOM = transformMessageStore(formPage);
+		} else if (formPage instanceof EndpointFormPage) {
+			Endpoint transformEndpoint = transformEndpoint(formPage);
+			if(transformEndpoint!=null){
+				configOM = EndpointSerializer
+				.getElementFromEndpoint(transformEndpoint);
+			}
 		}
 		if (configOM != null) {
 			sourceXML = format(configOM.toString());

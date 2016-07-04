@@ -34,21 +34,55 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
  * Preferences - Java - Code Generation - Code and Comments
  */
 public class WsdlEndpointFormPage extends EndpointFormPage {
-
-	public Combo wsdlEP_Format;
-	public Combo endpointTrace;
-	public Combo endpointStatistics;
-	
-	public Text wsdlEP_Properties;
-	public Combo wsdlEP_Optimize;
-	public Text wsdlEP_Description;
-	public Text wsdlEP_WsdlUri;
-	public Text wsdlEP_Service;
-	public Text wsdlEP_Port;
+	private Text wsdlEP_WsdlUri;
+	private Text wsdlEP_Service;
+	private Text wsdlEP_Port;
 
     Section basicSection;
     Section miscSection;
 	
+	
+
+	public Text getWsdlEP_WsdlUri() {
+		return wsdlEP_WsdlUri;
+	}
+
+	public void setWsdlEP_WsdlUri(Text wsdlEP_WsdlUri) {
+		this.wsdlEP_WsdlUri = wsdlEP_WsdlUri;
+	}
+
+	public Text getWsdlEP_Service() {
+		return wsdlEP_Service;
+	}
+
+	public void setWsdlEP_Service(Text wsdlEP_Service) {
+		this.wsdlEP_Service = wsdlEP_Service;
+	}
+
+	public Text getWsdlEP_Port() {
+		return wsdlEP_Port;
+	}
+
+	public void setWsdlEP_Port(Text wsdlEP_Port) {
+		this.wsdlEP_Port = wsdlEP_Port;
+	}
+
+	public Section getBasicSection() {
+		return basicSection;
+	}
+
+	public void setBasicSection(Section basicSection) {
+		this.basicSection = basicSection;
+	}
+
+	public Section getMiscSection() {
+		return miscSection;
+	}
+
+	public void setMiscSection(Section miscSection) {
+		this.miscSection = miscSection;
+	}
+
     public WsdlEndpointFormPage(FormEditor editor) {
 		super(editor);
 	}
@@ -69,11 +103,16 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		
 		basicSection.setClient(basicSectionClient);
 		
+		toolkit.createLabel(basicSectionClient, "Name");
+		endpointName = toolkit.createText(basicSectionClient, "");
+		endpointName.setBackground(new Color(null, 229,236,253));
+		endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
 		toolkit.createLabel(basicSectionClient, "Format");
-		wsdlEP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		wsdlEP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		eP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		eP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
-		wsdlEP_Format.setItems(formats);
+		eP_Format.setItems(formats);
 		
 		toolkit.createLabel(basicSectionClient, "Trace Enabled");
 		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
@@ -106,20 +145,21 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		miscSection.setClient(miscSectionClient);
 		
 		toolkit.createLabel(miscSectionClient, "Properties");
-		wsdlEP_Properties = toolkit.createText(miscSectionClient, "");
-		wsdlEP_Properties.setBackground(new Color(null, 229,236,253));
-		wsdlEP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		eP_Properties = toolkit.createText(miscSectionClient, "");
+		eP_Properties.setBackground(new Color(null, 229,236,253));
+		eP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(miscSectionClient, "Optimize");
-		wsdlEP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
-		wsdlEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		eP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
+		eP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "MTOM", "SWA"};
-		wsdlEP_Optimize.setItems(formats);
+	
+		eP_Optimize.setItems(formats);
 		
 		toolkit.createLabel(miscSectionClient, "Description");
-		wsdlEP_Description = toolkit.createText(miscSectionClient, "");
-		wsdlEP_Description.setBackground(new Color(null, 229,236,253));
-		wsdlEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		eP_Description = toolkit.createText(miscSectionClient, "");
+		eP_Description.setBackground(new Color(null, 229,236,253));
+		eP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		
 		toolkit.createLabel(miscSectionClient, "WSDL URI");
 		wsdlEP_WsdlUri = toolkit.createText(miscSectionClient, "");

@@ -39,5 +39,6 @@ Import-Package: org.apache.xml.serialize;version="2.9.0",
  org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.esb.form.editors.article.rcp,
+ org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints,
  org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors,
  org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores

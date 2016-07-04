@@ -226,6 +226,9 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			if(!StringUtils.isBlank(messageStoreModel.getJmsPassword())){
 				parameters.put("store.jms.password", messageStoreModel.getJmsPassword());
 			}
+			if(!StringUtils.isBlank(messageStoreModel.getJmsCacheConnection())){
+				parameters.put("store.jms.cache.connection", messageStoreModel.getJmsCacheConnection());
+			}
 			if(!StringUtils.isBlank(messageStoreModel.getJmsApiVersion())){
 				parameters.put("store.jms.JMSSpecVersion", messageStoreModel.getJmsApiVersion());
 			}			
@@ -235,8 +238,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			if(!StringUtils.isBlank(messageStoreModel.getJmsFailoverMessageStore())){
 				parameters.put("store.failover.message.store.name", messageStoreModel.getJmsFailoverMessageStore());
 			}
-			
-			parameters.put("store.jms.cache.connection", ((Boolean)messageStoreModel.getJmsEnableCaching()).toString());
+		
 			parameters.put("store.jms.ConsumerReceiveTimeOut", ((Integer)messageStoreModel.getJmsTimeout()).toString());
 
 		} else if (messageStoreModel.getMessageStoreType() == MessageStoreType.RABBITMQ) {

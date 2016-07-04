@@ -62,6 +62,7 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String jmsConnectionFactory;
 	private String jmsContextFactory;
 	private String jmsPassword;
+	private String jmsCacheConnection;
 	private String jmsProviderUrl;
 	private String jmsQueueName;
 	private boolean jmsEnableCaching;
@@ -265,6 +266,14 @@ public class MessageStoreModel extends ProjectDataModel  {
 	public void setJmsPassword(String jmsPassword) {
 		this.jmsPassword = jmsPassword;
 	}
+	
+	public String getJmsCacheConnection() {
+		return jmsCacheConnection;
+	}
+
+	public void setJmsCacheConnection(String jmsCacheConnection) {
+		this.jmsCacheConnection = jmsCacheConnection;
+	}
 
 	public String getJmsProviderUrl() {
 		return jmsProviderUrl;
@@ -395,6 +404,8 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getJmsTimeout();
 		} else if (key.equals(Constants.FIELD_JMS_USER_NAME)) {
 			value = getJmsUsername();
+		} else if (key.equals(Constants.FIELD_JMS_CACHE_CONNECTION)) {
+			value = getJmsCacheConnection();
 		} else if (key.equals(Constants.FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
 			value = getJmsEnableCaching();
 		} else if (key.equals(Constants.FIELD_JMS_FAILOVER_MESSAGE_STORE)) {
@@ -487,7 +498,9 @@ public class MessageStoreModel extends ProjectDataModel  {
 			}
 		} else if (key.equals(Constants.FIELD_JMS_USER_NAME)) {
 			setJmsUsername(data.toString());
-		} 
+		} else if (key.equals(Constants.FIELD_JMS_CACHE_CONNECTION)) {
+		    setJmsCacheConnection(data.toString());
+		}
 		
 		 else if (key.equals(Constants.FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
 				setJmsEnableProducerGuaranteedDelivery(data.toString());

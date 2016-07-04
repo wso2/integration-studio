@@ -45,6 +45,9 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">User Name</data>
 			<data modelProperty="jms.password" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Password</data>
+			<data modelProperty="jms.cache-connection" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.CacheConnectionList">Cache Connection</data>	
 			<data modelProperty="jms.api-version" type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
 				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.SpecVersionList">JMS API specification Version</data>

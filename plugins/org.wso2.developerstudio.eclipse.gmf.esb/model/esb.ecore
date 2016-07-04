@@ -2640,6 +2640,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionFactory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="userName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheConnection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="jmsSpecVersion" eType="#//JMSSpecVersion"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enableCaching" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="providerClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

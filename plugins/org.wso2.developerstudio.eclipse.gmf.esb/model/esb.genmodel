@@ -2159,6 +2159,7 @@
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/userName"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Password"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/cacheConnection"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="JMS API specification Version"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/jmsSpecVersion"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Enable Connection caching"

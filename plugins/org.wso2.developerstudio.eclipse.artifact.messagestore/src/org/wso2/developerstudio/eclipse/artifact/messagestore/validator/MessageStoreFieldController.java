@@ -128,6 +128,7 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			updateFields.add(FIELD_JMS_CONNECTION_FACTORY);
 			updateFields.add(FIELD_JMS_USER_NAME);
 			updateFields.add(FIELD_JMS_PASSWORD);
+			updateFields.add(FIELD_JMS_CACHE_CONNECTION);
 			updateFields.add(FIELD_JMS_API_VERSION);
 			updateFields.add(FIELD_JMS_QUEUE_NAME);
 			updateFields.add(FIELD_JMS_ENABLE_CACHING);

@@ -34,6 +34,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getConnectionFactory <em>Connection Factory</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getUserName <em>User Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isCacheConnection <em>Cache Connection</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableCaching <em>Enable Caching</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider Class</em>}</li>
@@ -272,6 +273,32 @@ public interface MessageStore extends EsbElement {
 	 * @generated
 	 */
 	void setPassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Cache Connection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cache Connection</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cache Connection</em>' attribute.
+	 * @see #setCacheConnection(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_CacheConnection()
+	 * @model
+	 * @generated
+	 */
+	boolean isCacheConnection();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isCacheConnection <em>Cache Connection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cache Connection</em>' attribute.
+	 * @see #isCacheConnection()
+	 * @generated
+	 */
+	void setCacheConnection(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Jms Spec Version</b></em>' attribute.

@@ -9531,7 +9531,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_JmsSpecVersion() {
+	public EAttribute getMessageStore_CacheConnection() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -9540,7 +9540,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_EnableCaching() {
+	public EAttribute getMessageStore_JmsSpecVersion() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -9549,7 +9549,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_ProviderClass() {
+	public EAttribute getMessageStore_EnableCaching() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -9558,7 +9558,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_RabbitMQServerHostName() {
+	public EAttribute getMessageStore_ProviderClass() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -9567,7 +9567,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_RabbitMQServerHostPort() {
+	public EAttribute getMessageStore_RabbitMQServerHostName() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -9576,7 +9576,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_RabbitMQQueueName() {
+	public EAttribute getMessageStore_RabbitMQServerHostPort() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -9585,7 +9585,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_RabbitMQExchangeName() {
+	public EAttribute getMessageStore_RabbitMQQueueName() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -9594,7 +9594,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_RoutingKey() {
+	public EAttribute getMessageStore_RabbitMQExchangeName() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -9603,7 +9603,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_RabbitMQUserName() {
+	public EAttribute getMessageStore_RoutingKey() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -9612,7 +9612,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_RabbitMQPassword() {
+	public EAttribute getMessageStore_RabbitMQUserName() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -9621,7 +9621,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_VirtualHost() {
+	public EAttribute getMessageStore_RabbitMQPassword() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(18);
 	}
 
@@ -9630,7 +9630,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_JdbcDatabaseTable() {
+	public EAttribute getMessageStore_VirtualHost() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(19);
 	}
 
@@ -9639,7 +9639,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_JdbcConnectionInformation() {
+	public EAttribute getMessageStore_JdbcDatabaseTable() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(20);
 	}
 
@@ -9648,7 +9648,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_JdbcDriver() {
+	public EAttribute getMessageStore_JdbcConnectionInformation() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(21);
 	}
 
@@ -9657,7 +9657,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_JdbcURL() {
+	public EAttribute getMessageStore_JdbcDriver() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(22);
 	}
 
@@ -9666,7 +9666,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_JdbcUser() {
+	public EAttribute getMessageStore_JdbcURL() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(23);
 	}
 
@@ -9675,7 +9675,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_JdbcPassword() {
+	public EAttribute getMessageStore_JdbcUser() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(24);
 	}
 
@@ -9684,7 +9684,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_JdbcDatasourceName() {
+	public EAttribute getMessageStore_JdbcPassword() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(25);
 	}
 
@@ -9693,8 +9693,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMessageStore_JdbcDatasourceName() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getMessageStore_Parameters() {
-		return (EReference)messageStoreEClass.getEStructuralFeatures().get(26);
+		return (EReference)messageStoreEClass.getEStructuralFeatures().get(27);
 	}
 
 	/**
@@ -9703,7 +9712,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getMessageStore_EnableProducerGuaranteedDelivery() {
-		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(27);
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(28);
 	}
 
 	/**
@@ -9712,7 +9721,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getMessageStore_FailoverMessageStore() {
-		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(28);
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(29);
 	}
 
 	/**
@@ -20091,6 +20100,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__CONNECTION_FACTORY);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__USER_NAME);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__PASSWORD);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__CACHE_CONNECTION);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__JMS_SPEC_VERSION);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__ENABLE_CACHING);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__PROVIDER_CLASS);
@@ -22454,6 +22464,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageStore_ConnectionFactory(), ecorePackage.getEString(), "connectionFactory", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_UserName(), ecorePackage.getEString(), "userName", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_Password(), ecorePackage.getEString(), "password", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_CacheConnection(), ecorePackage.getEBoolean(), "cacheConnection", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_JmsSpecVersion(), this.getJMSSpecVersion(), "jmsSpecVersion", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_EnableCaching(), ecorePackage.getEBoolean(), "enableCaching", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_ProviderClass(), ecorePackage.getEString(), "providerClass", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

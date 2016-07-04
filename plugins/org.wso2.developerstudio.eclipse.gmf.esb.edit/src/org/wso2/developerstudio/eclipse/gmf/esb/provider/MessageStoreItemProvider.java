@@ -306,6 +306,28 @@ public class MessageStoreItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Cache Connection feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCacheConnectionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_cacheConnection_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_cacheConnection_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__CACHE_CONNECTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Jms Spec Version feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -842,6 +864,7 @@ public class MessageStoreItemProvider
 			case EsbPackage.MESSAGE_STORE__CONNECTION_FACTORY:
 			case EsbPackage.MESSAGE_STORE__USER_NAME:
 			case EsbPackage.MESSAGE_STORE__PASSWORD:
+			case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
 			case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
 			case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:

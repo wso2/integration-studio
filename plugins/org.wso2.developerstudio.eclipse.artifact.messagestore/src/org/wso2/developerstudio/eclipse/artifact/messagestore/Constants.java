@@ -32,6 +32,7 @@ public class Constants extends NLS {
 	public static String FIELD_JMS_CONNECTION_FACTORY;
 	public static String FIELD_JMS_CONTEXT_FACTORY;
 	public static String FIELD_JMS_PASSWORD;
+	public static String FIELD_JMS_CACHE_CONNECTION;
 	public static String FIELD_JMS_PROVIDER_URL;
 	public static String FIELD_JMS_QUEUE_NAME;
 	public static String FIELD_JMS_ENABLE_CACHING;

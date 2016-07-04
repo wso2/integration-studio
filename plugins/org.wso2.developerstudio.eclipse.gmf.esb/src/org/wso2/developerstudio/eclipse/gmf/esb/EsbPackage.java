@@ -21684,13 +21684,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_STORE__PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Cache Connection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__CACHE_CONNECTION = ESB_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Jms Spec Version</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__JMS_SPEC_VERSION = ESB_ELEMENT_FEATURE_COUNT + 8;
+	int MESSAGE_STORE__JMS_SPEC_VERSION = ESB_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Enable Caching</b></em>' attribute.
@@ -21699,7 +21708,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__ENABLE_CACHING = ESB_ELEMENT_FEATURE_COUNT + 9;
+	int MESSAGE_STORE__ENABLE_CACHING = ESB_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Provider Class</b></em>' attribute.
@@ -21708,7 +21717,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PROVIDER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 10;
+	int MESSAGE_STORE__PROVIDER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Rabbit MQ Server Host Name</b></em>' attribute.
@@ -21717,7 +21726,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME = ESB_ELEMENT_FEATURE_COUNT + 11;
+	int MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME = ESB_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Rabbit MQ Server Host Port</b></em>' attribute.
@@ -21726,7 +21735,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT = ESB_ELEMENT_FEATURE_COUNT + 12;
+	int MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT = ESB_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Rabbit MQ Queue Name</b></em>' attribute.
@@ -21735,7 +21744,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME = ESB_ELEMENT_FEATURE_COUNT + 13;
+	int MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME = ESB_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Rabbit MQ Exchange Name</b></em>' attribute.
@@ -21744,7 +21753,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME = ESB_ELEMENT_FEATURE_COUNT + 14;
+	int MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME = ESB_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Routing Key</b></em>' attribute.
@@ -21753,7 +21762,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__ROUTING_KEY = ESB_ELEMENT_FEATURE_COUNT + 15;
+	int MESSAGE_STORE__ROUTING_KEY = ESB_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Rabbit MQ User Name</b></em>' attribute.
@@ -21762,7 +21771,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__RABBIT_MQ_USER_NAME = ESB_ELEMENT_FEATURE_COUNT + 16;
+	int MESSAGE_STORE__RABBIT_MQ_USER_NAME = ESB_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Rabbit MQ Password</b></em>' attribute.
@@ -21771,7 +21780,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__RABBIT_MQ_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 17;
+	int MESSAGE_STORE__RABBIT_MQ_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Virtual Host</b></em>' attribute.
@@ -21780,7 +21789,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__VIRTUAL_HOST = ESB_ELEMENT_FEATURE_COUNT + 18;
+	int MESSAGE_STORE__VIRTUAL_HOST = ESB_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Jdbc Database Table</b></em>' attribute.
@@ -21789,7 +21798,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__JDBC_DATABASE_TABLE = ESB_ELEMENT_FEATURE_COUNT + 19;
+	int MESSAGE_STORE__JDBC_DATABASE_TABLE = ESB_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The feature id for the '<em><b>Jdbc Connection Information</b></em>' attribute.
@@ -21798,7 +21807,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__JDBC_CONNECTION_INFORMATION = ESB_ELEMENT_FEATURE_COUNT + 20;
+	int MESSAGE_STORE__JDBC_CONNECTION_INFORMATION = ESB_ELEMENT_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Jdbc Driver</b></em>' attribute.
@@ -21807,7 +21816,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__JDBC_DRIVER = ESB_ELEMENT_FEATURE_COUNT + 21;
+	int MESSAGE_STORE__JDBC_DRIVER = ESB_ELEMENT_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Jdbc URL</b></em>' attribute.
@@ -21816,7 +21825,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__JDBC_URL = ESB_ELEMENT_FEATURE_COUNT + 22;
+	int MESSAGE_STORE__JDBC_URL = ESB_ELEMENT_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Jdbc User</b></em>' attribute.
@@ -21825,7 +21834,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__JDBC_USER = ESB_ELEMENT_FEATURE_COUNT + 23;
+	int MESSAGE_STORE__JDBC_USER = ESB_ELEMENT_FEATURE_COUNT + 24;
 
 	/**
 	 * The feature id for the '<em><b>Jdbc Password</b></em>' attribute.
@@ -21834,7 +21843,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__JDBC_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 24;
+	int MESSAGE_STORE__JDBC_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 25;
 
 	/**
 	 * The feature id for the '<em><b>Jdbc Datasource Name</b></em>' attribute.
@@ -21843,7 +21852,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__JDBC_DATASOURCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 25;
+	int MESSAGE_STORE__JDBC_DATASOURCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 26;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -21852,7 +21861,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 26;
+	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 27;
 
 	/**
 	 * The feature id for the '<em><b>Enable Producer Guaranteed Delivery</b></em>' attribute.
@@ -21861,7 +21870,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY = ESB_ELEMENT_FEATURE_COUNT + 27;
+	int MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY = ESB_ELEMENT_FEATURE_COUNT + 28;
 
 	/**
 	 * The feature id for the '<em><b>Failover Message Store</b></em>' attribute.
@@ -21870,7 +21879,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__FAILOVER_MESSAGE_STORE = ESB_ELEMENT_FEATURE_COUNT + 28;
+	int MESSAGE_STORE__FAILOVER_MESSAGE_STORE = ESB_ELEMENT_FEATURE_COUNT + 29;
 
 	/**
 	 * The number of structural features of the '<em>Message Store</em>' class.
@@ -21879,7 +21888,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 29;
+	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 30;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.
@@ -32635,6 +32644,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getMessageStore_Password();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isCacheConnection <em>Cache Connection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cache Connection</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isCacheConnection()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_CacheConnection();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJmsSpecVersion <em>Jms Spec Version</em>}'.
@@ -48584,6 +48604,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute MESSAGE_STORE__PASSWORD = eINSTANCE.getMessageStore_Password();
+
+		/**
+		 * The meta object literal for the '<em><b>Cache Connection</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__CACHE_CONNECTION = eINSTANCE.getMessageStore_CacheConnection();
 
 		/**
 		 * The meta object literal for the '<em><b>Jms Spec Version</b></em>' attribute feature.

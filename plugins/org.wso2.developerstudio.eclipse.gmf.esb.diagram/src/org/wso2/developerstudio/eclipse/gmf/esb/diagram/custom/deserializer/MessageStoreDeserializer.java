@@ -44,6 +44,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSA
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__STORE_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__USER_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__VIRTUAL_HOST;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__CACHE_CONNECTION;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -177,9 +178,9 @@ public class MessageStoreDeserializer
 							Object value = params.get(STORE_JMS_CACHE_CONNECTION);
 							if (value != null) {
 								if ("true".equals(value)) {
-									executeSetValueCommand(MESSAGE_STORE__ENABLE_CACHING, true);
+									executeSetValueCommand(MESSAGE_STORE__CACHE_CONNECTION, true);
 								} else if ("false".equals(value)) {
-									executeSetValueCommand(MESSAGE_STORE__ENABLE_CACHING, false);
+									executeSetValueCommand(MESSAGE_STORE__CACHE_CONNECTION, false);
 								}
 							}
 						} else if (param.getKey().equals(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE)) {
@@ -400,6 +401,13 @@ public class MessageStoreDeserializer
 				setTextValue(jmsStore.jms_connectionFactory, store.getParameters().get(STORE_JMS_CONNECTION_FACTORY));
 				setTextValue(jmsStore.jms_username, store.getParameters().get(STORE_JMS_USERNAME));
 				setTextValue(jmsStore.jms_password, store.getParameters().get(STORE_JMS_PASSWORD));
+				
+				if (store.getParameters().get(STORE_JMS_CACHE_CONNECTION) != null
+						&& store.getParameters().get(STORE_JMS_CACHE_CONNECTION).toString().equalsIgnoreCase("false")) {
+					jmsStore.jms_cacheConnection.select(0);
+				} else {
+					jmsStore.jms_cacheConnection.select(1);
+				}
 
 				if (store.getParameters().get(STORE_JMS_JMS_SPEC_VERSION) != null
 						&& store.getParameters().get(STORE_JMS_JMS_SPEC_VERSION).toString().equalsIgnoreCase("1.0")) {

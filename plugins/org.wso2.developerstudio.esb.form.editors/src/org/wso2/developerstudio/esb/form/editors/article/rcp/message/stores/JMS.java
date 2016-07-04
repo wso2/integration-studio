@@ -39,6 +39,7 @@ public class JMS implements IMessageStore {
 	public Text jms_connectionFactory;
 	public Text jms_username;
 	public Text jms_password;
+	public Combo jms_cacheConnection;
 	public Combo jms_apiVersion;	
 	
 	ScrolledForm form;
@@ -106,6 +107,13 @@ public class JMS implements IMessageStore {
 		jms_password = toolkit.createText(paramSectionClient, "");
 		jms_password.setBackground(new Color(null, 229,236,253));
 		jms_password.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		toolkit.createLabel(paramSectionClient, "Cache Connection");
+		jms_cacheConnection = new Combo(paramSectionClient, SWT.DROP_DOWN);
+		jms_cacheConnection.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] values = {"false", "true"};
+		jms_cacheConnection.setItems(values);
+		jms_cacheConnection.select(0);
 		
 		toolkit.createLabel(paramSectionClient, "JMS API Specification Version");
 		jms_apiVersion = new Combo(paramSectionClient, SWT.DROP_DOWN);

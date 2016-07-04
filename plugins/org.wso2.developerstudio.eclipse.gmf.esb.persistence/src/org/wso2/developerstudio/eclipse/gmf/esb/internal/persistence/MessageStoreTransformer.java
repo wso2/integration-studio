@@ -260,6 +260,7 @@ public class MessageStoreTransformer {
 					parameterMap.put(STORE_JMS_CONNECTION_FACTORY, jmsStore.jms_connectionFactory.getText());
 					parameterMap.put(STORE_JMS_USERNAME, jmsStore.jms_username.getText());
 					parameterMap.put(STORE_JMS_PASSWORD, jmsStore.jms_password.getText());
+					parameterMap.put(STORE_JMS_CACHE_CONNECTION, jmsStore.jms_cacheConnection.getText());
 
 					parameterMap.put(STORE_JMS_JMS_SPEC_VERSION, jmsStore.jms_apiVersion.getText());
 

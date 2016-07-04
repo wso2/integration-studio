@@ -53,6 +53,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getConnectionFactory <em>Connection Factory</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getUserName <em>User Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isCacheConnection <em>Cache Connection</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableCaching <em>Enable Caching</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getProviderClass <em>Provider Class</em>}</li>
@@ -238,6 +239,26 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * @ordered
 	 */
 	protected String password = PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isCacheConnection() <em>Cache Connection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCacheConnection()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CACHE_CONNECTION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCacheConnection() <em>Cache Connection</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCacheConnection()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean cacheConnection = CACHE_CONNECTION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getJmsSpecVersion() <em>Jms Spec Version</em>}' attribute.
@@ -841,6 +862,27 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isCacheConnection() {
+		return cacheConnection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCacheConnection(boolean newCacheConnection) {
+		boolean oldCacheConnection = cacheConnection;
+		cacheConnection = newCacheConnection;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__CACHE_CONNECTION, oldCacheConnection, cacheConnection));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JMSSpecVersion getJmsSpecVersion() {
 		return jmsSpecVersion;
 	}
@@ -1306,6 +1348,8 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return getUserName();
 			case EsbPackage.MESSAGE_STORE__PASSWORD:
 				return getPassword();
+			case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
+				return isCacheConnection();
 			case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
 				return getJmsSpecVersion();
 			case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
@@ -1384,6 +1428,9 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return;
 			case EsbPackage.MESSAGE_STORE__PASSWORD:
 				setPassword((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
+				setCacheConnection((Boolean)newValue);
 				return;
 			case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
 				setJmsSpecVersion((JMSSpecVersion)newValue);
@@ -1485,6 +1532,9 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 			case EsbPackage.MESSAGE_STORE__PASSWORD:
 				setPassword(PASSWORD_EDEFAULT);
 				return;
+			case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
+				setCacheConnection(CACHE_CONNECTION_EDEFAULT);
+				return;
 			case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
 				setJmsSpecVersion(JMS_SPEC_VERSION_EDEFAULT);
 				return;
@@ -1576,6 +1626,8 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return USER_NAME_EDEFAULT == null ? userName != null : !USER_NAME_EDEFAULT.equals(userName);
 			case EsbPackage.MESSAGE_STORE__PASSWORD:
 				return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
+			case EsbPackage.MESSAGE_STORE__CACHE_CONNECTION:
+				return cacheConnection != CACHE_CONNECTION_EDEFAULT;
 			case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
 				return jmsSpecVersion != JMS_SPEC_VERSION_EDEFAULT;
 			case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
@@ -1648,6 +1700,8 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 		result.append(userName);
 		result.append(", password: ");
 		result.append(password);
+		result.append(", cacheConnection: ");
+		result.append(cacheConnection);
 		result.append(", jmsSpecVersion: ");
 		result.append(jmsSpecVersion);
 		result.append(", enableCaching: ");

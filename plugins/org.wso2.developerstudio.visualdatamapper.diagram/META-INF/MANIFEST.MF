@@ -224,8 +224,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.gmf.esb,
  org.eclipse.equinox.registry,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="5.0.0",
- org.eclipse.papyrus.infra.gmfdiag.css;bundle-version="1.1.4"
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="5.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.fasterxml.jackson.annotation;version="2.7.2",

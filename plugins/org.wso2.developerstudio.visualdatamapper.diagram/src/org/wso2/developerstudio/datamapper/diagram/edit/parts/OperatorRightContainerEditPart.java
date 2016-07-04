@@ -26,9 +26,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
-import org.eclipse.papyrus.infra.gmfdiag.css.CSSShapeImpl;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
@@ -84,8 +85,8 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
-				if (getParent().getParent().getModel() instanceof CSSShapeImpl) {
-					CSSShapeImpl model = (CSSShapeImpl) getParent().getParent().getModel();
+				if (getParent().getParent().getModel() instanceof Node) {
+					Node model = (Node) getParent().getParent().getModel();
 					OperatorImpl operator = (OperatorImpl) model.getElement();
 					int numberOfOutputs = operator.getDefaultOutputConnectors();
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())

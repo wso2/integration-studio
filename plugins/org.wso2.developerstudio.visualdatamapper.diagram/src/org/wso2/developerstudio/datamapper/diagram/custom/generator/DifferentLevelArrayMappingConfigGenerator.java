@@ -139,7 +139,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				List<DMVariable> inputVariables = mappingOperation.getInputVariables();
 				List<DMVariable> outputVariables = mappingOperation.getOutputVariables();
 				List<Integer> operationForLoopBeansList = new ArrayList<>();
-				List<String> operationElementsParentList = new ArrayList<>();
+				List<String> operationLastArrayElementsParentList = new ArrayList<>();
 				if (inputVariables.isEmpty()) {
 					// Add 0 to operationForLoopBeanList when operation not have
 					// input variables
@@ -217,7 +217,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 							}
 							// add parent Element of the variable to
 							// operationElementsParentList
-							operationElementsParentList.add(parentVariableName);
+							// Only array elements need to be checked whether
+							// from the same parent or not
+							operationLastArrayElementsParentList.add(parentArrayVariable);
 						}
 					}
 				}
@@ -226,7 +228,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				// in
 				// one branch.
 				int indexOfMostInnerForLoopBean = -1;
-				if (isValidOperationWithInputVariables(operationElementsParentList)) {
+				if (isValidOperationWithInputVariables(operationLastArrayElementsParentList)) {
 					indexOfMostInnerForLoopBean = getMostInnerForLoopBeanFromList(operationForLoopBeansList);
 				}
 				for (DMVariable outputVariable : outputVariables) {

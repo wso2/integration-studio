@@ -29,6 +29,7 @@ import java.util.Map;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.xml.SynapsePath;
+import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.task.TaskDescription;
@@ -1117,6 +1118,11 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 	}
 
 	public void createNode(FormEditor formEditor, T task) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deserializeEndpoint(FormEditor formEditor, AbstractEndpoint object) {
 		// TODO Auto-generated method stub
 		
 	}

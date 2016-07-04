@@ -67,6 +67,7 @@ public class WSDLEndpointDeserializer extends AbstractEndpointDeserializer {
 		WsdlEndpointFormPage wsdlEndpointPage = (WsdlEndpointFormPage) endpointPage;
 		// setTextValue(wsdlEndpointPage.wsdlEP_Properties,
 		// endpoint.getDefinition().get);
+		deserializeEndpoint(formEditor, endpointObject);
 		setTextValue(wsdlEndpointPage.getWsdlEP_WsdlUri(), endpoint.getWsdlURI());
 		setTextValue(wsdlEndpointPage.getWsdlEP_Service(), endpoint.getServiceName());
 		setTextValue(wsdlEndpointPage.getWsdlEP_Port(), endpoint.getPortName());

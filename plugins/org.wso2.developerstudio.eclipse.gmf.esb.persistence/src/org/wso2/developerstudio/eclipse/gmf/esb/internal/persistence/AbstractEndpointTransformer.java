@@ -52,7 +52,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointF
 
 public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransformer {
 
-	protected void createtAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) {
+	protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) {
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 		EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
 		synapseEPDef.setFormat(endpointFormPage.getEP_Format().getText());

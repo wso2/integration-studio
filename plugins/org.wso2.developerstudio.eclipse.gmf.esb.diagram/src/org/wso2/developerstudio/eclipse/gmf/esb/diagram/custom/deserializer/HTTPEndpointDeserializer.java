@@ -85,24 +85,10 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer{
 		HTTPEndpoint endpoint = (HTTPEndpoint) endpointObject;
 		
 		HttpEndpointFormPage httpEndpointPage = (HttpEndpointFormPage)endpointPage;
-		
+		deserializeEndpoint(formEditor,endpointObject);
 //		setTextValue(httpEndpointPage.httpEP_Properties, endpoint.getDefinition().get);
-		setTextValue(httpEndpointPage.httpEP_Description, endpoint.getDescription());
+		setTextValue(httpEndpointPage.getEP_Description(), endpoint.getDescription());
 		setTextValue(httpEndpointPage.httpEP_UriTemplate, endpoint.getUriTemplate());
-		setTextValue(httpEndpointPage.httpEP_Method, endpoint.getHttpMethod());
-		
-		
-		if (endpoint.getDefinition().isTracingEnabled()) {
-			httpEndpointPage.endpointTrace.select(0);
-		} else {
-			httpEndpointPage.endpointTrace.select(1);
-		}
-		
-		if (endpoint.getDefinition().isStatisticsEnable()) {
-			httpEndpointPage.endpointStatistics.select(0);
-		} else {
-			httpEndpointPage.endpointStatistics.select(1);
-		}
 		
 		
 		super.createNode(formEditor, endpointObject);

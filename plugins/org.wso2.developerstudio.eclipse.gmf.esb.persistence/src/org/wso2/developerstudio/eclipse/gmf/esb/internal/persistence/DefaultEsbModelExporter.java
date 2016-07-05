@@ -91,7 +91,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Cust
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -264,6 +266,12 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		} else if ((FormPage) endpointFormPage instanceof AddressEndpointFormPage) {
 			AddressEndPointTransformer transformer = new AddressEndPointTransformer();
 			return transformer.create((AddressEndpointFormPage) endpointFormPage);
+		} else if ((FormPage) endpointFormPage instanceof HttpEndpointFormPage) {
+			HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
+			return transformer.create((HttpEndpointFormPage) endpointFormPage);
+		} else if ((FormPage) endpointFormPage instanceof DefaultEndpointFormPage) {
+			DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
+			return transformer.create((DefaultEndpointFormPage) endpointFormPage);
 		} else {
 			return null;
 		}	

@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -42,30 +43,32 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void transform(TransformationInfo info, EsbNode subject)
-			throws TransformerException {
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
 		DefaultEndPoint visualEP = (DefaultEndPoint) subject;
 		DefaultEndpoint synapseEP = create(visualEP, visualEP.getEndPointName());
 		setEndpointToSendCallOrProxy(info, visualEP, synapseEP);
-		
-		
-		if(!info.isEndPointFound){
-			info.isEndPointFound=true;
-			info.firstEndPoint=visualEP;
+
+		if (!info.isEndPointFound) {
+			info.isEndPointFound = true;
+			info.firstEndPoint = visualEP;
 		}
-		
-		if(visualEP.getOutputConnector()!=null){
-			if(visualEP.getOutputConnector().getOutgoingLink() !=null){
-			InputConnector nextInputConnector=visualEP.getOutputConnector().getOutgoingLink().getTarget();
-			if((!(nextInputConnector instanceof SequenceInputConnector))||
-					((((Sequence)nextInputConnector.eContainer()).getOutputConnector().get(0).getOutgoingLink()!=null)&&(!(((Sequence)nextInputConnector.eContainer()).getOutputConnector().get(0).getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))){
-			info.setParentSequence(info.getOriginOutSequence());
-			info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
-			}else if(visualEP.getInputConnector().getIncomingLinks().get(0).getSource().eContainer() instanceof Sequence){
-				info.setParentSequence(info.getCurrentReferredSequence());
-			}
+
+		if (visualEP.getOutputConnector() != null) {
+			if (visualEP.getOutputConnector().getOutgoingLink() != null) {
+				InputConnector nextInputConnector = visualEP.getOutputConnector().getOutgoingLink().getTarget();
+				if ((!(nextInputConnector instanceof SequenceInputConnector))
+						|| ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+								.getOutgoingLink() != null)
+								&& (!(((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+										.getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
+					info.setParentSequence(info.getOriginOutSequence());
+					info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+				} else if (visualEP.getInputConnector().getIncomingLinks().get(0).getSource()
+						.eContainer() instanceof Sequence) {
+					info.setParentSequence(info.getCurrentReferredSequence());
+				}
 			}
 		}
 
@@ -85,28 +88,36 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 		doTransform(info, visualEP.getOutputConnector());
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 		Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
 		DefaultEndPoint visualEP = (DefaultEndPoint) subject;
-		Endpoint endPoint=(Endpoint)create(visualEP, visualEP.getEndPointName());
+		Endpoint endPoint = (Endpoint) create(visualEP, visualEP.getEndPointName());
 		endPoints.add(endPoint);
 
 		// Transform endpoint output data flow.
-		transformEndpointOutflow(info);		
+		transformEndpointOutflow(info);
 	}
-	
-	public DefaultEndpoint create(DefaultEndPoint visualEndPoint, String name){ 		
+
+	public DefaultEndpoint create(DefaultEndPoint visualEndPoint, String name) {
 		DefaultEndpoint synapseEP = new DefaultEndpoint();
 		if (StringUtils.isNotBlank(name)) {
 			synapseEP.setName(name);
 		}
-		createAdvanceOptions(visualEndPoint,synapseEP);
-		return synapseEP;		
+		createAdvanceOptions(visualEndPoint, synapseEP);
+		return synapseEP;
 	}
-	
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+
+	public DefaultEndpoint create(DefaultEndpointFormPage defaultEndpointFormPage) {
+		DefaultEndpoint synapseEP = new DefaultEndpoint();
+		if (StringUtils.isNotBlank(defaultEndpointFormPage.getEndpointName().getText())) {
+			synapseEP.setName(defaultEndpointFormPage.getEndpointName().getText());
+		}
+		createAdvanceOptions(defaultEndpointFormPage, synapseEP);
+		return synapseEP;
+	}
+
+	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+			throws TransformerException {
 		Assert.isTrue(subject instanceof DefaultEndPoint, "Invalid subject");
 		DefaultEndPoint visualEndPoint = (DefaultEndPoint) subject;
 		Endpoint synapseEP = create(visualEndPoint, visualEndPoint.getEndPointName());

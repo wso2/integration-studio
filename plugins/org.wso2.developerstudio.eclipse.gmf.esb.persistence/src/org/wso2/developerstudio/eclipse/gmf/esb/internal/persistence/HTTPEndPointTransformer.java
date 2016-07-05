@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
 
 import com.damnhandy.uri.template.UriTemplate;
 
@@ -44,54 +45,59 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 		HTTPEndpoint visualEndPoint = (HTTPEndpoint) subject;
 		Endpoint synapseEP = create(visualEndPoint, visualEndPoint.getEndPointName());
 		setEndpointToSendCallOrProxy(information, visualEndPoint, synapseEP);
-		
+
 		if (!information.isEndPointFound) {
 			information.isEndPointFound = true;
 			information.firstEndPoint = visualEndPoint;
 		}
 
-		if(visualEndPoint.getOutputConnector()!=null){
-			if(visualEndPoint.getOutputConnector().getOutgoingLink() !=null){
-			InputConnector nextInputConnector=visualEndPoint.getOutputConnector().getOutgoingLink().getTarget();
-			if((!(nextInputConnector instanceof SequenceInputConnector))||
-					((((Sequence)nextInputConnector.eContainer()).getOutputConnector().get(0).getOutgoingLink()!=null)&&(!(((Sequence)nextInputConnector.eContainer()).getOutputConnector().get(0).getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))){
-				information.setParentSequence(information.getOriginOutSequence());
-				information.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
-			}else if((visualEndPoint.getInputConnector().getIncomingLinks().get(0).getSource().eContainer() instanceof Sequence)){
-				information.setParentSequence(information.getCurrentReferredSequence());
+		if (visualEndPoint.getOutputConnector() != null) {
+			if (visualEndPoint.getOutputConnector().getOutgoingLink() != null) {
+				InputConnector nextInputConnector = visualEndPoint.getOutputConnector().getOutgoingLink().getTarget();
+				if ((!(nextInputConnector instanceof SequenceInputConnector))
+						|| ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+								.getOutgoingLink() != null)
+								&& (!(((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+										.getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
+					information.setParentSequence(information.getOriginOutSequence());
+					information.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+				} else if ((visualEndPoint.getInputConnector().getIncomingLinks().get(0).getSource()
+						.eContainer() instanceof Sequence)) {
+					information.setParentSequence(information.getCurrentReferredSequence());
+				}
 			}
-			}
-		}		
+		}
 
 		List<EsbNode> transformedMediators = information.getTransformedMediators();
-		if (visualEndPoint.getOutputConnector() != null	&& visualEndPoint.getOutputConnector().getOutgoingLink() != null) {
-			EsbNode nextElement = (EsbNode) visualEndPoint.getOutputConnector().getOutgoingLink().getTarget().eContainer();
+		if (visualEndPoint.getOutputConnector() != null
+				&& visualEndPoint.getOutputConnector().getOutgoingLink() != null) {
+			EsbNode nextElement = (EsbNode) visualEndPoint.getOutputConnector().getOutgoingLink().getTarget()
+					.eContainer();
 			if (transformedMediators.contains(nextElement)) {
 				return;
 			}
 			transformedMediators.add(nextElement);
 		}
 
-		
 		// Transform endpoint output data flow.
 		doTransform(information, visualEndPoint.getOutputConnector());
 
 	}
-	
-	public org.apache.synapse.endpoints.HTTPEndpoint create(HTTPEndpoint visualEndPoint,String name){ 
-		HTTPEndpoint httpEndPoint = visualEndPoint;	
+
+	public org.apache.synapse.endpoints.HTTPEndpoint create(HTTPEndpoint visualEndPoint, String name) {
+		HTTPEndpoint httpEndPoint = visualEndPoint;
 		org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
-		
-		if(StringUtils.isNotBlank(name)){
+
+		if (StringUtils.isNotBlank(name)) {
 			synapseHttpEP.setName(name);
 		}
-		
-		createAdvanceOptions(httpEndPoint,synapseHttpEP);
-		if (httpEndPoint.getURITemplate() != null ) {
+
+		createAdvanceOptions(httpEndPoint, synapseHttpEP);
+		if (httpEndPoint.getURITemplate() != null) {
 			UriTemplate template = UriTemplate.fromTemplate(httpEndPoint.getURITemplate());
 			synapseHttpEP.setUriTemplate(template);
 		}
-		
+
 		switch (visualEndPoint.getHttpMethod()) {
 		case GET:
 			synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_GET.toLowerCase());
@@ -118,27 +124,59 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 			break;
 		}
 		return synapseHttpEP;
-	} 
+	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
+	public org.apache.synapse.endpoints.HTTPEndpoint create(HttpEndpointFormPage httpFormPage) {
+		org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
+
+		if (StringUtils.isNotBlank(httpFormPage.getEndpointName().getText())) {
+			synapseHttpEP.setName(httpFormPage.getEndpointName().getText());
+		}
+		if (httpFormPage.httpEP_UriTemplate.getText() != null) {
+			UriTemplate template = UriTemplate.fromTemplate(httpFormPage.httpEP_UriTemplate.getText());
+			synapseHttpEP.setUriTemplate(template);
+		}
+		createAdvanceOptions(httpFormPage, synapseHttpEP);
+		if (httpFormPage.httpEP_Method.getSelectionIndex() != 0) {
+			if (httpFormPage.httpEP_Method.getSelectionIndex() != 1) {
+				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_GET.toLowerCase());
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 2) {
+				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_POST.toLowerCase());
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 3) {
+				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_PUT.toLowerCase());
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 4) {
+				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_DELETE.toLowerCase());
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 5) {
+				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_HEAD.toLowerCase());
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 6) {
+				synapseHttpEP.setHttpMethod(RESTConstants.METHOD_OPTIONS.toLowerCase());
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 7) {
+				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_PATCH.toLowerCase());
+			}
+
+		} else {
+		}
+		return synapseHttpEP;
+	}
+
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
 		Assert.isTrue(subject instanceof HTTPEndpoint, "Invalid subject");
-		HTTPEndpoint httpEndPoint = (HTTPEndpoint) subject;	
+		HTTPEndpoint httpEndPoint = (HTTPEndpoint) subject;
 		org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
-		
-		createAdvanceOptions(httpEndPoint,synapseHttpEP);
+
+		createAdvanceOptions(httpEndPoint, synapseHttpEP);
 		UriTemplate template = UriTemplate.fromTemplate(httpEndPoint.getURITemplate());
 		synapseHttpEP.setUriTemplate(template);
-		
+
 		Endpoint endPoint = (Endpoint) synapseHttpEP;
 		endPoints.add(endPoint);
 
 		transformEndpointOutflow(info);
 	}
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws TransformerException {
+	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+			throws TransformerException {
 
 		Assert.isTrue(subject instanceof HTTPEndpoint, "Invalid subject");
 		HTTPEndpoint visualEndPoint = (HTTPEndpoint) subject;

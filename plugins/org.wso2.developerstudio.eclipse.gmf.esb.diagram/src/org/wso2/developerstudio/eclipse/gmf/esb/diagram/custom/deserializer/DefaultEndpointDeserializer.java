@@ -57,43 +57,8 @@ public class DefaultEndpointDeserializer extends AbstractEndpointDeserializer{
 		DefaultEndpoint endpoint = (DefaultEndpoint) endpointObject;
 		
 		DefaultEndpointFormPage defaultEndpointPage = (DefaultEndpointFormPage)endpointPage;
-		
-//		setTextValue(addressEndpointPage.defaultEP_Properties, endpoint.getDefinition().get);
+		deserializeEndpoint(formEditor,endpointObject);
 		setTextValue(defaultEndpointPage.defaultEP_Description, endpoint.getDescription());
-		
-		if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap11")) {
-			defaultEndpointPage.defaultEP_Format.select(1);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap12")) {
-			defaultEndpointPage.defaultEP_Format.select(2);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("pox")) {
-			defaultEndpointPage.defaultEP_Format.select(3);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("get")) {
-			defaultEndpointPage.defaultEP_Format.select(4);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("rest")) {
-			defaultEndpointPage.defaultEP_Format.select(5);
-		}else {
-			defaultEndpointPage.defaultEP_Format.select(0);
-		}
-		
-		if (endpoint.getDefinition().isTracingEnabled()) {
-			defaultEndpointPage.endpointTrace.select(0);
-		} else {
-			defaultEndpointPage.endpointTrace.select(1);
-		}
-		
-		if (endpoint.getDefinition().isStatisticsEnable()) {
-			defaultEndpointPage.endpointStatistics.select(0);
-		} else {
-			defaultEndpointPage.endpointStatistics.select(1);
-		}
-		
-		if (endpoint.getDefinition().isUseMTOM()) {
-			defaultEndpointPage.defaultEP_Optimize.select(1);
-		} else if (endpoint.getDefinition().isUseSwa()) {
-			defaultEndpointPage.defaultEP_Optimize.select(2);
-		} else {
-			defaultEndpointPage.defaultEP_Optimize.select(0);
-		}
 		
 		super.createNode(formEditor, endpointObject);
 	}

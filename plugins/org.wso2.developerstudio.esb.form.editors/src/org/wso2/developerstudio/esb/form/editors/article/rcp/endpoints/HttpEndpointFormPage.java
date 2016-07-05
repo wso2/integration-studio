@@ -46,13 +46,10 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
  */
 public class HttpEndpointFormPage extends EndpointFormPage {
 
-	public Combo endpointTrace;
-	public Combo endpointStatistics;
 	public Text httpEP_UriTemplate;
-	public Text httpEP_Method;
-
+	public Combo httpEP_Method;
 	public Button httpEP_Properties;
-	public Text httpEP_Description;
+
 	public List<EndPointProperty> endpointPropertyList;
 	
     Section basicSection;
@@ -96,7 +93,9 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		httpEP_UriTemplate.setLayoutData(httpEPUriGridData);
 		
 		toolkit.createLabel(miscSectionClient, "HTTP Method");
-		httpEP_Method = toolkit.createText(miscSectionClient, "");
+		httpEP_Method = new Combo (miscSectionClient, SWT.DROP_DOWN);
+		String[] httpMethods = {"LEAVE_AS_IS", "GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH"};
+		httpEP_Method.setItems(httpMethods);
 		httpEP_Method.setBackground(new Color(null, 229,236,253));
 		//httpEP_Method.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		GridData httpEPMethodGridData = new GridData();
@@ -106,14 +105,14 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		httpEP_Method.setLayoutData(httpEPMethodGridData);
 	
 		toolkit.createLabel(miscSectionClient, "Description");
-		httpEP_Description = toolkit.createText(miscSectionClient, "");
-		httpEP_Description.setBackground(new Color(null, 229,236,253));
+		eP_Description = toolkit.createText(miscSectionClient, "");
+		eP_Description.setBackground(new Color(null, 229,236,253));
 		//httpEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		GridData httpEPDescriptionGridData = new GridData();
 		httpEPDescriptionGridData.horizontalSpan = 3;
 		httpEPDescriptionGridData.horizontalAlignment = GridData.FILL;
 		httpEPDescriptionGridData.grabExcessHorizontalSpace = true;
-		httpEP_Description.setLayoutData(httpEPDescriptionGridData);
+		eP_Description.setLayoutData(httpEPDescriptionGridData);
 		
 		httpEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
 		httpEP_Properties.setBackground(new Color(null, 229,236,253));

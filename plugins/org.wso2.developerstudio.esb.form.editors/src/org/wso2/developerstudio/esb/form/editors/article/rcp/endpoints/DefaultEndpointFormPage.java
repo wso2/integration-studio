@@ -30,12 +30,9 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.widgets.TableWrapData;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
@@ -46,13 +43,8 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
  */
 public class DefaultEndpointFormPage extends EndpointFormPage {
 	
-	public Combo defaultEP_Format;
-	public Combo endpointTrace;
-	public Combo endpointStatistics;
 
 	public Button defaultEP_Properties;
-	public Combo defaultEP_Optimize;
-	public Text defaultEP_Description;
 	
 	public List<EndPointProperty> endpointPropertyList;
 	
@@ -92,25 +84,25 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 	
 		
 		toolkit.createLabel(miscSectionClient, "Optimize");
-		defaultEP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
+		eP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
 		//defaultEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "MTOM", "SWA"};
-		defaultEP_Optimize.setItems(formats);
+		eP_Optimize.setItems(formats);
 		GridData defaultEPOptimizeGridData = new GridData();
 		defaultEPOptimizeGridData.horizontalSpan = 3;
 		defaultEPOptimizeGridData.horizontalAlignment = GridData.FILL;
 		defaultEPOptimizeGridData.grabExcessHorizontalSpace = true;
-		defaultEP_Optimize.setLayoutData(defaultEPOptimizeGridData);
+		eP_Optimize.setLayoutData(defaultEPOptimizeGridData);
 		
 		toolkit.createLabel(miscSectionClient, "Description");
-		defaultEP_Description = toolkit.createText(miscSectionClient, "");
-		defaultEP_Description.setBackground(new Color(null, 229,236,253));
+		eP_Description = toolkit.createText(miscSectionClient, "");
+		eP_Description.setBackground(new Color(null, 229,236,253));
 		//defaultEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		GridData defaultEPDescriptionGridData = new GridData();
 		defaultEPDescriptionGridData.horizontalSpan = 3;
 		defaultEPDescriptionGridData.horizontalAlignment = GridData.FILL;
 		defaultEPDescriptionGridData.grabExcessHorizontalSpace = true;
-		defaultEP_Description.setLayoutData(defaultEPDescriptionGridData);
+		eP_Description.setLayoutData(defaultEPDescriptionGridData);
 		
 		defaultEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
 		defaultEP_Properties.setBackground(new Color(null, 229,236,253));

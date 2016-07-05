@@ -118,7 +118,7 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
 		if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
 			synapseAddEP.setName(formPage.getEndpointName().getText());
 		}
-		createtAdvanceOptions(formPage, synapseAddEP);
+		createAdvanceOptions(formPage, synapseAddEP);
 		synapseAddEP.getDefinition().setAddress(formPage.getAddressEP_URI().getText());
 
 		return synapseAddEP;

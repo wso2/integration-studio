@@ -66,7 +66,7 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 
 		super.createFormContent(managedForm);
 		
-		form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
+		form.setText(Messages.getString("HttpEndpointPage.sectionMainTitle"));
 	}
 
 	public void createFormBasicSection() {

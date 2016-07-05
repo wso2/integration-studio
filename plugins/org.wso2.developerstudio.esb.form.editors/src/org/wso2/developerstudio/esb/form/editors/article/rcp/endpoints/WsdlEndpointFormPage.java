@@ -109,7 +109,7 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		
 		super.createFormContent(managedForm);
 		
-		form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
+		form.setText(Messages.getString("WsdlEndpointPage.sectionMainTitle"));
 	}
 
 	public void createFormBasicSection() {

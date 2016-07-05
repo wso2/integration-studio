@@ -65,7 +65,7 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		
 		super.createFormContent(managedForm);
 		
-		form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
+		form.setText(Messages.getString("AddressEndpointPage.sectionMainTitle"));
 	}
 
 

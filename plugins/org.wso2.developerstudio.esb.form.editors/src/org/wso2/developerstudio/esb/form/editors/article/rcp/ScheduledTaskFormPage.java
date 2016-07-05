@@ -49,7 +49,7 @@ import org.wso2.developerstudio.esb.form.editors.article.providers.TaskPropertyD
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
-public class ScheduledTaskFormPage extends FormPage {
+public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 
 	private Text taskName;
 	private Text taskGroup;

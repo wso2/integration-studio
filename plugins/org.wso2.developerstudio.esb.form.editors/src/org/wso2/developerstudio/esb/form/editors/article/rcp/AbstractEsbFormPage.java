@@ -16,15 +16,21 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
+import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.esb.form.editors.Activator;
 
 public abstract class AbstractEsbFormPage extends FormPage {
 
 	protected EsbNode esbNode;
-	
-	
+	private boolean isSave;
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
 	public AbstractEsbFormPage(FormEditor editor, String id, String title) {
 		super(editor, id, title);
@@ -36,6 +42,32 @@ public abstract class AbstractEsbFormPage extends FormPage {
 
 	public void setEsbNode(EsbNode esbNode) {
 		this.esbNode = esbNode;
+	}
+	
+	public void doPageSave(){
+		try {
+			setSave(false);
+			((ESBFormEditor)getEditor()).setDirty(false);
+			updateDirtyState();
+			((FileEditorInput) getEditorInput()).getFile().getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		 } catch (Exception e) {
+			log.error("Cannot save the content", e);
+		}
+	}
+	
+	public void updateDirtyState() {
+		ESBFormEditor editor = (ESBFormEditor)getEditor();
+		editor.setDirty(isSave());
+		firePropertyChange(PROP_DIRTY);
+		editor.editorDirtyStateChanged();	    
+    }
+	
+	public void setSave(boolean isSave) {
+		this.isSave = isSave;
+	}
+
+	public boolean isSave() {
+		return isSave;
 	}
 
 }

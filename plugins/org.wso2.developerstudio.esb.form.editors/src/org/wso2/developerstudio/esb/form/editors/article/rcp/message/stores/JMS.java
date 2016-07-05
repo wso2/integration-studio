@@ -17,6 +17,8 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -29,6 +31,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class JMS implements IMessageStore {
@@ -44,13 +47,15 @@ public class JMS implements IMessageStore {
 	
 	ScrolledForm form;
 	FormToolkit toolkit;
+	AbstractEsbFormPage esbFormPage;
 	
 	Section connSection;
     Section parameterSection; 
 	
-	public JMS(ScrolledForm form, FormToolkit toolkit) {
+	public JMS(ScrolledForm form, FormToolkit toolkit, AbstractEsbFormPage esbFormPage) {
 		this.form = form;
 		this.toolkit = toolkit;
+		this.esbFormPage = esbFormPage;
 	}
 
 	@Override
@@ -114,6 +119,13 @@ public class JMS implements IMessageStore {
 		String[] values = {"false", "true"};
 		jms_cacheConnection.setItems(values);
 		jms_cacheConnection.select(0);
+		jms_cacheConnection.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "JMS API Specification Version");
 		jms_apiVersion = new Combo(paramSectionClient, SWT.DROP_DOWN);

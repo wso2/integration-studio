@@ -15,7 +15,9 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
@@ -30,6 +32,7 @@ public class MappingOperation {
 	private List<DMVariable> outputVariables;
 	private DMOperation operation;
 	private int index;
+	private Set<String> optionalElementList;
 
 	public MappingOperation(List<DMVariable> inputVariables, List<DMVariable> outputVariables, DMOperation operation,
 			int index) {
@@ -37,6 +40,7 @@ public class MappingOperation {
 		this.outputVariables = outputVariables;
 		this.operation = operation;
 		this.index = index;
+		this.optionalElementList = new HashSet<>();
 	}
 
 	public List<DMVariable> getInputVariables() {
@@ -69,5 +73,13 @@ public class MappingOperation {
 
 	public void setIndex(int index) {
 		this.index = index;
+	}
+
+	public Set<String> getOptionalElementList() {
+		return optionalElementList;
+	}
+
+	public void setOptionalElementList(Set<String> optionalElementList) {
+		this.optionalElementList = optionalElementList;
 	}
 }

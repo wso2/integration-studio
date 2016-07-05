@@ -406,7 +406,7 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INSTANTIATE(40, "INSTANTIATE", "INSTANTIATE",COMMON_OPERATION);
+	INSTANTIATE(40, "INSTANTIATE", "INSTANTIATE");
 
 	/**
 	 * The '<em><b>OPERATOR</b></em>' literal value.

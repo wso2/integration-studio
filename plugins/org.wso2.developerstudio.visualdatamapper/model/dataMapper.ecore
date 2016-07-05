@@ -28,8 +28,6 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="In"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Properties" eSuperTypes="#//Operator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SchemaDataType"
-        defaultValueLiteral="STRING"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="default_name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scope" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

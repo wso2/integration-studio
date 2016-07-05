@@ -35,7 +35,6 @@ public class PropertiesModelTransformer implements IModelTransformer {
 					operator.toString(), index);
 			propertiesOperatorModel.addProperty(PROPERTY_NAME_TAG, propertyOperator.getName());
 			propertiesOperatorModel.addProperty(PROPERTY_SCOPE_TAG, propertyOperator.getScope());
-			propertiesOperatorModel.addProperty(PROPERTY_TYPE_TAG, propertyOperator.getType());
 			return propertiesOperatorModel;
 		}
 		throw new IllegalArgumentException("PropertiesImpl operator expected. Found : " + operator.toString());

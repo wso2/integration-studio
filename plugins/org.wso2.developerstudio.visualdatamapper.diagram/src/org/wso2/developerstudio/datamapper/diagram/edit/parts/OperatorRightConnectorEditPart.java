@@ -191,8 +191,8 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	/**
 	 * Creates figure for this edit part.
 	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
+	 * Body of this method does not depend on settings in generation model so
+	 * you may safely remove <i>generated</i> tag and modify it.
 	 * 
 	 * @generated NOT
 	 */
@@ -217,21 +217,6 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 			if (constantImpl.getType() != null && constantImpl.getConstantValue() != null) {
 				if (figure != null) {
 					connectorLabel = new Label(outputLabel + " [" + constantImpl.getType().getLiteral() + "] ");
-					figure.add(connectorLabel);
-					return true;
-				}
-			} else {
-				if (figure != null) {
-					connectorLabel = new Label(outputLabel + " " + getPossibleOutputVariableTypes(operator) + " ");
-					figure.add(connectorLabel);
-					return true;
-				}
-			}
-		} else if (operator instanceof PropertiesImpl) {
-			PropertiesImpl propertyImpl = (PropertiesImpl) operator;
-			if (propertyImpl.getType() != null) {
-				if (figure != null) {
-					connectorLabel = new Label(outputLabel + " [" + propertyImpl.getType().getLiteral() + "] ");
 					figure.add(connectorLabel);
 					return true;
 				}
@@ -285,9 +270,11 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
+	 * Default implementation treats passed figure as content pane. Respects
+	 * layout one may have set for generated figure.
+	 * 
+	 * @param nodeShape
+	 *            instance of generated figure class
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {

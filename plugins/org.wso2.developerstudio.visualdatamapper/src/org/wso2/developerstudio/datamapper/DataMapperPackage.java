@@ -908,22 +908,13 @@ public interface DataMapperPackage extends EPackage {
 	int PROPERTIES__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTIES__TYPE = OPERATOR_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTIES__NAME = OPERATOR_FEATURE_COUNT + 1;
+	int PROPERTIES__NAME = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scope</b></em>' attribute.
@@ -932,7 +923,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTIES__SCOPE = OPERATOR_FEATURE_COUNT + 2;
+	int PROPERTIES__SCOPE = OPERATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Properties</em>' class.
@@ -941,7 +932,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTIES_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 3;
+	int PROPERTIES_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.CompareImpl <em>Compare</em>}' class.
@@ -4080,17 +4071,6 @@ public interface DataMapperPackage extends EPackage {
 	EClass getProperties();
 
 				/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Properties#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Properties#getType()
-	 * @see #getProperties()
-	 * @generated
-	 */
-	EAttribute getProperties_Type();
-
-				/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Properties#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5411,14 +5391,6 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PROPERTIES = eINSTANCE.getProperties();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROPERTIES__TYPE = eINSTANCE.getProperties_Type();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

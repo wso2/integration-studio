@@ -83,6 +83,13 @@ public class LocalEntryFormPage extends AbstractEsbFormPage {
 		localEntryNameTxt = toolkit.createText(basicSectionClient, "");
 		localEntryNameTxt.setBackground(new Color(null, 229,236,253));
 		localEntryNameTxt.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		localEntryNameTxt.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		  
 		 
 		toolkit.createLabel(basicSectionClient, "Local Entry Type");
@@ -108,6 +115,8 @@ public class LocalEntryFormPage extends AbstractEsbFormPage {
 				} else if (localEntryTypeCombo.getText().equals(SOURCE_URL_ENTRY)) {
 					createSourceUrlEntry(localEntryValueLbl,localEntryTextValue);
 				}
+				setSave(true);
+				updateDirtyState();
 			}
 		});
 		

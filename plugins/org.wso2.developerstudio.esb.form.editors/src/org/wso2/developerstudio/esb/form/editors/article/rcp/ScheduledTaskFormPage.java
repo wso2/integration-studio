@@ -19,6 +19,8 @@ package org.wso2.developerstudio.esb.form.editors.article.rcp;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -131,6 +133,13 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 		taskNameGridData.horizontalAlignment = GridData.FILL;
 		taskNameGridData.grabExcessHorizontalSpace = true;
 		taskName.setLayoutData(taskNameGridData);
+		taskName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 
 		toolkit.createLabel(basicSectionClient, "Task Group");
 		taskGroup = toolkit.createText(basicSectionClient, "synapse.simple.quartz");
@@ -140,6 +149,13 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 		taskGroupGridData.horizontalAlignment = GridData.FILL;
 		taskGroupGridData.grabExcessHorizontalSpace = true;
 		taskGroup.setLayoutData(taskGroupGridData);
+		taskGroup.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 
 		basicSection.setClient(basicSectionClient);
 
@@ -175,6 +191,13 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 		pinnedServers = toolkit.createText(miscSectionClient, "");
 		pinnedServers.setBackground(new Color(null, 229, 236, 253));
 		pinnedServers.setLayoutData(taskGroupGridData);
+		pinnedServers.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 
 		miscSection.setClient(miscSectionClient);
 	}
@@ -209,6 +232,13 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 		taskImpl = toolkit.createText(implSectionClient, "org.apache.synapse.startup.tasks.MessageInjector");
 		taskImpl.setLayoutData(taskImplGridData);
 		taskImpl.setBackground(new Color(null, 229, 236, 253));
+		taskImpl.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		// taskImpl.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 
 		Button taskImplButton = toolkit.createButton(implSectionClient, "Task Implementation Properties", SWT.PUSH);
@@ -221,6 +251,8 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 				taskPropDialog.setBlockOnOpen(true);
 				taskPropDialog.open();
 				taskPropertyList = taskPropDialog.getTaskPropertyList();
+				setSave(true);
+				updateDirtyState();
 			}
 
 			@Override
@@ -273,6 +305,13 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 		cronLabelGridData.horizontalAlignment = GridData.FILL;
 		cronLabelGridData.grabExcessHorizontalSpace = true;
 		cron.setLayoutData(cronLabelGridData);
+		cron.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		disableCronFields();
 
 		countLbl = toolkit.createLabel(triggerSectionClient, "Count");
@@ -284,6 +323,13 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 		countLabelGridData.horizontalAlignment = GridData.FILL;
 		countLabelGridData.grabExcessHorizontalSpace = true;
 		count.setLayoutData(countLabelGridData);
+		count.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 
 		intervalLbl = toolkit.createLabel(triggerSectionClient, "Interval");
 		intervalLbl.setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -294,6 +340,13 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 		intervalGridData.horizontalAlignment = GridData.FILL;
 		intervalGridData.grabExcessHorizontalSpace = true;
 		interval.setLayoutData(intervalGridData);
+		interval.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		enableSimpleFields();
 
 		triggerType.addSelectionListener(new SelectionListener() {
@@ -307,6 +360,8 @@ public class ScheduledTaskFormPage extends AbstractEsbFormPage {
 					enableCronFields();
 					disableSimpleFields();
 				}
+				setSave(true);
+				updateDirtyState();
 			}
 
 			@Override

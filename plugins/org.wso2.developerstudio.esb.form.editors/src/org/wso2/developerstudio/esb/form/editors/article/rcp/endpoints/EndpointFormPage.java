@@ -147,8 +147,8 @@ public abstract class EndpointFormPage extends FormPage {
 		form.getBody().setLayout(layout);*/
 		
 		createFormBasicSection();
-		createFormQosSection();
 		createFormMiscSection();
+		createFormQosSection();
 		createFormErrorHandlingSection();
 	}
 	

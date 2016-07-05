@@ -186,10 +186,8 @@ public class EndpointCommons {
 	public void createFormQosSection(final ScrolledForm form, FormToolkit toolkit) {
 		
 		/* QOS Information */ 
-		
-		qosSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
-		qosSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
-		qosSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
+		qosSection = createSection(form, toolkit, Messages.getString("EndpointPage.section.qos"));
+		qosSection.setExpanded(false);
 		toolkit.createCompositeSeparator(qosSection);
 		GridData taskImplGridData = new GridData();
 		taskImplGridData.horizontalSpan = 3;
@@ -201,7 +199,6 @@ public class EndpointCommons {
 			}
 		});
 		qosSection.setLayoutData(taskImplGridData);
-		qosSection.setText(Messages.getString("EndpointPage.section.qos"));
 		// triggerSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
 
 		final Composite qosSectionClient = toolkit.createComposite(qosSection);
@@ -531,7 +528,7 @@ public class EndpointCommons {
 		/* Error handling */
 		
 		Section errorHandlingSection = createSection(form, toolkit, Messages.getString("EndpointPage.section.errorHandling"));
-		
+		errorHandlingSection.setExpanded(false);
 		GridData errorSectionGridData = new GridData();
 		errorSectionGridData.horizontalSpan = 3;
 		errorSectionGridData.horizontalAlignment = GridData.FILL;

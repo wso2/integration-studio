@@ -90,6 +90,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomAPISerializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 import org.xml.sax.InputSource;
@@ -257,12 +258,15 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 	
 	private org.apache.synapse.endpoints.Endpoint transformEndpoint(
 			FormPage endpointFormPage ) throws Exception {		
-		if((FormPage) endpointFormPage instanceof WsdlEndpointFormPage){
-			WSDLEndPointTransformer transformer= new WSDLEndPointTransformer();
+		if ((FormPage) endpointFormPage instanceof WsdlEndpointFormPage) {
+			WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
 			return transformer.create((WsdlEndpointFormPage) endpointFormPage);
-		}else{
+		} else if ((FormPage) endpointFormPage instanceof AddressEndpointFormPage) {
+			AddressEndPointTransformer transformer = new AddressEndPointTransformer();
+			return transformer.create((AddressEndpointFormPage) endpointFormPage);
+		} else {
 			return null;
-		}		
+		}	
 	}
 	
 	private org.apache.synapse.config.Entry transformLocalEntry(

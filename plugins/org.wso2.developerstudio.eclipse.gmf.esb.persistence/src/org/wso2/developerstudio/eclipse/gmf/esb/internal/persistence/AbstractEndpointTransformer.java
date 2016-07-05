@@ -56,6 +56,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 		EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
 		synapseEPDef.setFormat(endpointFormPage.getEP_Format().getText());
+		
 		if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 1) {
 			synapseEPDef.setUseMTOM(true);
 		} else if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 2) {

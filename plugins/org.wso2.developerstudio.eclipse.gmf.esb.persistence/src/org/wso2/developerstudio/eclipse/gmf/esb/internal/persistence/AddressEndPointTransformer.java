@@ -32,6 +32,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming {@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint}
@@ -107,6 +109,17 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
 		}
 		createAdvanceOptions(addressEndPoint, synapseAddEP);
 		synapseAddEP.getDefinition().setAddress(addressEndPoint.getURI());
+
+		return synapseAddEP;
+	}
+	
+	public AddressEndpoint create(AddressEndpointFormPage formPage) {
+		AddressEndpoint synapseAddEP = new AddressEndpoint();
+		if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
+			synapseAddEP.setName(formPage.getEndpointName().getText());
+		}
+		createtAdvanceOptions(formPage, synapseAddEP);
+		synapseAddEP.getDefinition().setAddress(formPage.getAddressEP_URI().getText());
 
 		return synapseAddEP;
 	}

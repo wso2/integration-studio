@@ -61,48 +61,11 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
 
 		AddressEndpoint endpoint = (AddressEndpoint) endpointObject;
 		
-		AddressEndpointFormPage addressEndpointPage = (AddressEndpointFormPage)endpointPage;
+		AddressEndpointFormPage addressEndpointPage = (AddressEndpointFormPage) endpointPage;
 		
-		setTextValue(addressEndpointPage.addressEP_URI, endpoint.getDefinition().getAddress());
-//		setTextValue(addressEndpointPage.addressEP_Properties, endpoint.getDefinition().get);
-		setTextValue(addressEndpointPage.addressEP_Description, endpoint.getDescription());
-		
-		if (endpoint.getDefinition().getFormat() == null) {
-			addressEndpointPage.addressEP_Format.select(0);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap11")) {
-			addressEndpointPage.addressEP_Format.select(1);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap12")) {
-			addressEndpointPage.addressEP_Format.select(2);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("pox")) {
-			addressEndpointPage.addressEP_Format.select(3);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("get")) {
-			addressEndpointPage.addressEP_Format.select(4);
-		} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("rest")) {
-			addressEndpointPage.addressEP_Format.select(5);
-		}else {
-			addressEndpointPage.addressEP_Format.select(0);
-		}
-		
-		if (endpoint.getDefinition().isTracingEnabled()) {
-			addressEndpointPage.endpointTrace.select(0);
-		} else {
-			addressEndpointPage.endpointTrace.select(1);
-		}
-		
-		if (endpoint.getDefinition().isStatisticsEnable()) {
-			addressEndpointPage.endpointStatistics.select(0);
-		} else {
-			addressEndpointPage.endpointStatistics.select(1);
-		}
-		
-		if (endpoint.getDefinition().isUseMTOM()) {
-			addressEndpointPage.addressEP_Optimize.select(1);
-		} else if (endpoint.getDefinition().isUseSwa()) {
-			addressEndpointPage.addressEP_Optimize.select(2);
-		} else {
-			addressEndpointPage.addressEP_Optimize.select(0);
-		}
-		
+		setTextValue(addressEndpointPage.getAddressEP_URI(), endpoint.getDefinition().getAddress());
+		setTextValue(addressEndpointPage.getEP_Description(), endpoint.getDescription());
+		deserializeEndpoint(addressEPFormEditor, endpointObject);
 		super.createNode(formEditor, endpointObject);
 	}
 	

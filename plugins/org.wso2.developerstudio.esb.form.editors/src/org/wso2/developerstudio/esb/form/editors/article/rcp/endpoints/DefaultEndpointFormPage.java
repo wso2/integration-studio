@@ -83,7 +83,7 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 		miscSection.setClient(miscSectionClient);*/
 	
 		
-		toolkit.createLabel(miscSectionClient, "Optimize");
+		toolkit.createLabel(miscSectionClient, "Optimize :");
 		eP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
 		//defaultEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "MTOM", "SWA"};
@@ -94,7 +94,7 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 		defaultEPOptimizeGridData.grabExcessHorizontalSpace = true;
 		eP_Optimize.setLayoutData(defaultEPOptimizeGridData);
 		
-		toolkit.createLabel(miscSectionClient, "Description");
+		toolkit.createLabel(miscSectionClient, "Description :");
 		eP_Description = toolkit.createText(miscSectionClient, "");
 		eP_Description.setBackground(new Color(null, 229,236,253));
 		//defaultEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -104,6 +104,7 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 		defaultEPDescriptionGridData.grabExcessHorizontalSpace = true;
 		eP_Description.setLayoutData(defaultEPDescriptionGridData);
 		
+		toolkit.createLabel(miscSectionClient, "Properties :");
 		defaultEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
 		defaultEP_Properties.setBackground(new Color(null, 229,236,253));
 		defaultEP_Properties.addSelectionListener(new SelectionListener() {

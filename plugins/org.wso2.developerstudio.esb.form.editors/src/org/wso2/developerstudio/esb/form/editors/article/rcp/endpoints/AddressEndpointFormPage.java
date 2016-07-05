@@ -82,7 +82,7 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 	public void createFormMiscSection() {
 
 		/* Misc Section */
-	   miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+	    miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
        
 		GridData miscSectionGridData = new GridData();
 		miscSectionGridData.horizontalSpan = 3;
@@ -95,7 +95,7 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		miscSectionClient.setLayout(new GridLayout());
 		miscSection.setClient(miscSectionClient);	
 			
-		toolkit.createLabel(miscSectionClient, "URI");
+		toolkit.createLabel(miscSectionClient, "URI :");
 		addressEP_URI = toolkit.createText(miscSectionClient, "");
 		addressEP_URI.setBackground(new Color(null, 229,236,253));
 		//addressEP_URI.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -105,7 +105,7 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		addressEPUriGridData.grabExcessHorizontalSpace = true;
 		addressEP_URI.setLayoutData(addressEPUriGridData);
 
-		toolkit.createLabel(miscSectionClient, "Optimize");
+		toolkit.createLabel(miscSectionClient, "Optimize :");
 		eP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
 		//addressEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "MTOM", "SWA"};
@@ -116,7 +116,7 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		addressEPOptimizeGridData.grabExcessHorizontalSpace = true;
 		eP_Optimize.setLayoutData(addressEPOptimizeGridData);
 		
-		toolkit.createLabel(miscSectionClient, "Description");
+		toolkit.createLabel(miscSectionClient, "Description :");
 		eP_Description = toolkit.createText(miscSectionClient, "");
 		eP_Description.setBackground(new Color(null, 229,236,253));
 		//addressEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -126,15 +126,15 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		addressEPDescriptionGridData.grabExcessHorizontalSpace = true;
 		eP_Description.setLayoutData(addressEPDescriptionGridData);
 		
-		toolkit.createLabel(miscSectionClient, "Properties");
-		eP_Properties = toolkit.createText(miscSectionClient, "");
+		toolkit.createLabel(miscSectionClient, "Properties :");
+		/*eP_Properties = toolkit.createText(miscSectionClient, "");
 		eP_Properties.setBackground(new Color(null, 229,236,253));
 		//eP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		GridData epPropertiesGridData = new GridData();
 		epPropertiesGridData.horizontalSpan = 3;
 		epPropertiesGridData.horizontalAlignment = GridData.FILL;
 		epPropertiesGridData.grabExcessHorizontalSpace = true;
-		eP_Properties.setLayoutData(epPropertiesGridData);
+		eP_Properties.setLayoutData(epPropertiesGridData);*/
 		
 		addressEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
 		addressEP_Properties.setBackground(new Color(null, 229, 236, 253));

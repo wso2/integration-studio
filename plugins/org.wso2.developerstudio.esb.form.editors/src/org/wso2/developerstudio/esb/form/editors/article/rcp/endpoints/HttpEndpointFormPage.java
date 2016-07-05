@@ -82,7 +82,7 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		miscSectionClient.setLayout(new GridLayout());
 		miscSection.setClient(miscSectionClient);	
 		
-		toolkit.createLabel(miscSectionClient, "URI Template");
+		toolkit.createLabel(miscSectionClient, "URI Template :");
 		httpEP_UriTemplate = toolkit.createText(miscSectionClient, "");
 		httpEP_UriTemplate.setBackground(new Color(null, 229,236,253));
 		//httpEP_UriTemplate.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -92,7 +92,7 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		httpEPUriGridData.grabExcessHorizontalSpace = true;
 		httpEP_UriTemplate.setLayoutData(httpEPUriGridData);
 		
-		toolkit.createLabel(miscSectionClient, "HTTP Method");
+		toolkit.createLabel(miscSectionClient, "HTTP Method :");
 		httpEP_Method = new Combo (miscSectionClient, SWT.DROP_DOWN);
 		String[] httpMethods = {"LEAVE_AS_IS", "GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH"};
 		httpEP_Method.setItems(httpMethods);
@@ -104,7 +104,7 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		httpEPMethodGridData.grabExcessHorizontalSpace = true;
 		httpEP_Method.setLayoutData(httpEPMethodGridData);
 	
-		toolkit.createLabel(miscSectionClient, "Description");
+		toolkit.createLabel(miscSectionClient, "Description :");
 		eP_Description = toolkit.createText(miscSectionClient, "");
 		eP_Description.setBackground(new Color(null, 229,236,253));
 		//httpEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -114,6 +114,7 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		httpEPDescriptionGridData.grabExcessHorizontalSpace = true;
 		eP_Description.setLayoutData(httpEPDescriptionGridData);
 		
+		toolkit.createLabel(miscSectionClient, "Properties :");
 		httpEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
 		httpEP_Properties.setBackground(new Color(null, 229,236,253));
 		httpEP_Properties.addSelectionListener(new SelectionListener() {

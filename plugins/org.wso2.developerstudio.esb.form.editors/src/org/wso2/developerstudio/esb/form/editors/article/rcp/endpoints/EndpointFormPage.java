@@ -173,7 +173,7 @@ public abstract class EndpointFormPage extends FormPage {
 		basicSectionClient.setLayout(new TableWrapLayout());
 		basicSection.setClient(basicSectionClient);*/
 		
-		toolkit.createLabel(basicSectionClient, "Name");
+		toolkit.createLabel(basicSectionClient, "Name :");
 		endpointName = toolkit.createText(basicSectionClient, "");
 		endpointName.setBackground(new Color(null, 229,236,253));
 		//endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -183,7 +183,7 @@ public abstract class EndpointFormPage extends FormPage {
 		endpointNameGridData.grabExcessHorizontalSpace = true;
 		endpointName.setLayoutData(endpointNameGridData);
 		
-		toolkit.createLabel(basicSectionClient, "Format");
+		toolkit.createLabel(basicSectionClient, "Format :");
 		eP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		//eP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
@@ -194,7 +194,7 @@ public abstract class EndpointFormPage extends FormPage {
 		endpointFormatGridData.grabExcessHorizontalSpace = true;
 		eP_Format.setLayoutData(endpointFormatGridData);
 		
-		toolkit.createLabel(basicSectionClient, "Trace Enabled");
+		toolkit.createLabel(basicSectionClient, "Trace Enabled :");
 		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		//endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] tracingStates = {"True", "False"};
@@ -205,7 +205,7 @@ public abstract class EndpointFormPage extends FormPage {
 		endpointTraceGridData.grabExcessHorizontalSpace = true;
 		endpointTrace.setLayoutData(endpointTraceGridData);
 		
-		toolkit.createLabel(basicSectionClient, "Statistics Enabled");
+		toolkit.createLabel(basicSectionClient, "Statistics Enabled :");
 		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		//endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] statisticsStates = {"True", "False"};

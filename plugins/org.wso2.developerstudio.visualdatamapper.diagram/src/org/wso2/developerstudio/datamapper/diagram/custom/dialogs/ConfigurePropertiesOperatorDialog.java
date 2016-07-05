@@ -47,7 +47,6 @@ import org.wso2.developerstudio.datamapper.impl.PropertiesImpl;
 
 public class ConfigurePropertiesOperatorDialog extends AbstractConfigureOperatorDialog {
 
-	private String type;
 	private String scope;
 	PropertiesImpl property = null;
 	private TransactionalEditingDomain editingDomain;
@@ -83,36 +82,6 @@ public class ConfigurePropertiesOperatorDialog extends AbstractConfigureOperator
 		GridLayout layout = new GridLayout(2, false);
 		container.setLayout(layout);
 
-		Label propertiesTypeLabel = new Label(container, SWT.NULL);
-		propertiesTypeLabel.setText("Property Type : ");
-		final Combo propertiesTypeDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
-		propertiesTypeDropDown.setLayoutData(dataPropertyConfigText);
-		propertiesTypeDropDown.add("STRING");
-		propertiesTypeDropDown.add("NUMBER");
-		propertiesTypeDropDown.add("BOOLEAN");
-		if (property.getType() != null) {
-			propertiesTypeDropDown.setText(property.getType().getLiteral());
-		} else {
-			propertiesTypeDropDown.setText("STRING");
-		}
-		type = new String(propertiesTypeDropDown.getText());
-		propertiesTypeDropDown.addListener(SWT.Modify, new Listener() {
-
-			public void handleEvent(Event event) {
-				try {
-					type = new String(propertiesTypeDropDown.getText());
-					if (!(StringUtils.isEmpty(type) && StringUtils.isEmpty(scope) && StringUtils.isEmpty(name))) {
-						getButton(IDialogConstants.OK_ID).setEnabled(true);
-						validate();
-					} else {
-						getButton(IDialogConstants.OK_ID).setEnabled(false);
-					}
-				} catch (Exception e) {
-					getButton(IDialogConstants.OK_ID).setEnabled(false);
-				}
-			}
-		});
-
 		Label propertyScopeLabel = new Label(container, SWT.NULL);
 		propertyScopeLabel.setText("Property Scope : ");
 
@@ -128,7 +97,7 @@ public class ConfigurePropertiesOperatorDialog extends AbstractConfigureOperator
 			public void handleEvent(Event event) {
 				try {
 					scope = new String(propertyScope.getText());
-					if (!(StringUtils.isEmpty(type) && StringUtils.isEmpty(scope) && StringUtils.isEmpty(name))) {
+					if (!(StringUtils.isEmpty(scope) && StringUtils.isEmpty(name))) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();
 					} else {
@@ -155,7 +124,7 @@ public class ConfigurePropertiesOperatorDialog extends AbstractConfigureOperator
 			public void handleEvent(Event event) {
 				try {
 					name = new String(propertyName.getText());
-					if (!(StringUtils.isEmpty(type) && StringUtils.isEmpty(scope) && StringUtils.isEmpty(name))) {
+					if (!(StringUtils.isEmpty(scope) && StringUtils.isEmpty(name))) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();
 					} else {
@@ -185,7 +154,7 @@ public class ConfigurePropertiesOperatorDialog extends AbstractConfigureOperator
 	private void validate() {
 		boolean isEnabled = false;
 		Button okButton = getButton(IDialogConstants.OK_ID);
-		if (StringUtils.isNotEmpty(scope) && StringUtils.isNotEmpty(type) && StringUtils.isNotEmpty(name)) {
+		if (StringUtils.isNotEmpty(scope) && StringUtils.isNotEmpty(name)) {
 			isEnabled = true;
 		}
 		if (okButton != null) {
@@ -214,32 +183,7 @@ public class ConfigurePropertiesOperatorDialog extends AbstractConfigureOperator
 						.changeOperatorHeader("Properties : \"" + scope + "\\" + property.getName() + "\"");
 			}
 		}
-		
-		if (StringUtils.isNotEmpty(type)) {
-			SchemaDataType propertyType = SchemaDataType.get(type.toUpperCase());
-			if (propertyType != null) {
-				SetCommand setCmnd = new SetCommand(editingDomain, constantOperatorInstance,
-						DataMapperPackage.Literals.PROPERTIES__TYPE, propertyType);
-				if (setCmnd.canExecute()) {
-					editingDomain.getCommandStack().execute(setCmnd);
 
-					@SuppressWarnings("unchecked")
-					List<EditPart> childContainers = ((OperatorBasicContainerEditPart) ((PropertiesEditPart) editPart)
-							.getChildren().get(0)).getChildren();
-					for (EditPart editPart : childContainers) {
-						if (editPart instanceof OperatorRightContainerEditPart) {
-							OperatorRightConnectorEditPart rightConnector = (OperatorRightConnectorEditPart) ((OperatorRightContainerEditPart) editPart)
-									.getChildren().get(0);
-							((OperatorRightConnectorEditPart) rightConnector).setPropertyTypeInConnector(propertyType);
-						}
-					}
-				}
-			} else {
-				throw new IllegalArgumentException("Unknown type found : " + type);
-			}
-
-		}
-		 
 		super.okPressed();
 	}
 

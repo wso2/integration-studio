@@ -45,33 +45,10 @@ public class PropertiesItemProvider extends OperatorItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTypePropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addScopePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Properties_type_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Properties_type_feature", "_UI_Properties_type"),
-				 DataMapperPackage.Literals.PROPERTIES__TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -156,7 +133,6 @@ public class PropertiesItemProvider extends OperatorItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Properties.class)) {
-			case DataMapperPackage.PROPERTIES__TYPE:
 			case DataMapperPackage.PROPERTIES__NAME:
 			case DataMapperPackage.PROPERTIES__SCOPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

@@ -20,7 +20,6 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.datamapper.impl.PropertiesImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.PropertiesImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.PropertiesImpl#getScope <em>Scope</em>}</li>
  * </ul>
@@ -28,24 +27,6 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
  * @generated
  */
 public class PropertiesImpl extends OperatorImpl implements Properties {
-	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final SchemaDataType TYPE_EDEFAULT = SchemaDataType.STRING;
-	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
-	protected SchemaDataType type = TYPE_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -118,27 +99,6 @@ public class PropertiesImpl extends OperatorImpl implements Properties {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SchemaDataType getType() {
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setType(SchemaDataType newType) {
-		SchemaDataType oldType = type;
-		type = newType == null ? TYPE_EDEFAULT : newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.PROPERTIES__TYPE, oldType, type));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getName() {
 		return name;
 	}
@@ -184,8 +144,6 @@ public class PropertiesImpl extends OperatorImpl implements Properties {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DataMapperPackage.PROPERTIES__TYPE:
-				return getType();
 			case DataMapperPackage.PROPERTIES__NAME:
 				return getName();
 			case DataMapperPackage.PROPERTIES__SCOPE:
@@ -202,9 +160,6 @@ public class PropertiesImpl extends OperatorImpl implements Properties {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DataMapperPackage.PROPERTIES__TYPE:
-				setType((SchemaDataType)newValue);
-				return;
 			case DataMapperPackage.PROPERTIES__NAME:
 				setName((String)newValue);
 				return;
@@ -223,9 +178,6 @@ public class PropertiesImpl extends OperatorImpl implements Properties {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DataMapperPackage.PROPERTIES__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
 			case DataMapperPackage.PROPERTIES__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -244,8 +196,6 @@ public class PropertiesImpl extends OperatorImpl implements Properties {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DataMapperPackage.PROPERTIES__TYPE:
-				return type != TYPE_EDEFAULT;
 			case DataMapperPackage.PROPERTIES__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case DataMapperPackage.PROPERTIES__SCOPE:
@@ -264,9 +214,7 @@ public class PropertiesImpl extends OperatorImpl implements Properties {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (type: ");
-		result.append(type);
-		result.append(", name: ");
+		result.append(" (name: ");
 		result.append(name);
 		result.append(", scope: ");
 		result.append(scope);

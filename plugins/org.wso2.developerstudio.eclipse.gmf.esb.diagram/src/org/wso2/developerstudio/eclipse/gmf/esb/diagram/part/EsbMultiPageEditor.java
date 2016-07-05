@@ -577,7 +577,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		case MESSAGE_PROCESSOR:
 		case MESSAGE_STORE:
 		case TASK:
-		case ENDPOINT:
+			/*case ENDPOINT:
 		case TEMPLATE_ENDPOINT_DEFAULT:
 		case TEMPLATE_ENDPOINT_ADDRESS:
 		case TEMPLATE_ENDPOINT_WSDL:
@@ -585,7 +585,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		case ENDPOINT_ADDRESS:
 		case ENDPOINT_DEFAULT:
 		case ENDPOINT_HTTP:
-		case ENDPOINT_WSDL:
+		case ENDPOINT_WSDL:*/
 			createPageForm(currArtifactType);
 			break;
 		default:

@@ -205,7 +205,7 @@ public class EndpointCommons {
 		qosSectionClient.setLayout(new GridLayout());
 		
 		
-		toolkit.createLabel(qosSectionClient, "Reliable Messaging Enabled");
+		toolkit.createLabel(qosSectionClient, "Reliable Messaging Enabled :");
 		endpointReliableMessaging = new Combo(qosSectionClient, SWT.DROP_DOWN);
 		//endpointReliableMessaging.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states = {"True", "False"};
@@ -267,7 +267,7 @@ public class EndpointCommons {
 		disableRMfields();
 		
 	    
-		toolkit.createLabel(qosSectionClient, "Addressing Enabled");
+		toolkit.createLabel(qosSectionClient, "Addressing Enabled :");
 		endpointAddressing = new Combo(qosSectionClient, SWT.DROP_DOWN);
 		//endpointAddressing.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states2 = {"True", "False"};
@@ -289,7 +289,7 @@ public class EndpointCommons {
 			}
 		});
 		
-		endpointVersionLabel = toolkit.createLabel(qosSectionClient, "Addressing Version");
+		endpointVersionLabel = toolkit.createLabel(qosSectionClient, "Addressing Version :");
 		endpointVersionLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
 		endpointVersion = new Combo(qosSectionClient, SWT.DROP_DOWN);
 		//endpointVersion.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -301,7 +301,7 @@ public class EndpointCommons {
 		endpointVersionGridData.grabExcessHorizontalSpace = true;
 		endpointVersion.setLayoutData(endpointVersionGridData);
 		
-		endpointSeparateListnerLabel = toolkit.createLabel(qosSectionClient, "Addressing Separate Listener");
+		endpointSeparateListnerLabel = toolkit.createLabel(qosSectionClient, "Addressing Separate Listener :");
 		endpointSeparateListnerLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
 		endpointSeparateListner = new Combo(qosSectionClient, SWT.DROP_DOWN);
 		//endpointSeparateListner.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -315,7 +315,7 @@ public class EndpointCommons {
 		
 		disabeAddressingFields();
 		
-		toolkit.createLabel(qosSectionClient, "Security Enabled");
+		toolkit.createLabel(qosSectionClient, "Security Enabled :");
 		endpointSecurity = new Combo(qosSectionClient, SWT.DROP_DOWN);
 		//endpointSecurity.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] states1 = {"True", "False"};
@@ -545,7 +545,7 @@ public class EndpointCommons {
 		toolkit.createLabel(errorHandlingSectionClient, "Endpoint Suspend State");
 		toolkit.createLabel(errorHandlingSectionClient, null);
 		
-		toolkit.createLabel(errorHandlingSectionClient, "Suspend Error Codes");
+		toolkit.createLabel(errorHandlingSectionClient, "Suspend Error Codes :");
 		endpointSuspendErrorCodes = toolkit.createText(errorHandlingSectionClient, "");
 		endpointSuspendErrorCodes.setBackground(new Color(null, 229,236,253));
 		//endpointSuspendErrorCodes.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -555,7 +555,7 @@ public class EndpointCommons {
 		endpointSuspendCodesGridData.grabExcessHorizontalSpace = true;
 		endpointSuspendErrorCodes.setLayoutData(endpointSuspendCodesGridData);
 		
-		toolkit.createLabel(errorHandlingSectionClient, "Suspend Initial Duration");
+		toolkit.createLabel(errorHandlingSectionClient, "Suspend Initial Duration :");
 		endpointSuspendInitialDuration = toolkit.createText(errorHandlingSectionClient, "");
 		endpointSuspendInitialDuration.setBackground(new Color(null, 229,236,253));
 		//endpointSuspendInitialDuration.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -566,7 +566,7 @@ public class EndpointCommons {
 		endpointSuspendInitialDuration.setLayoutData(endpointSuspendInitialDurationGridData);
 		
 		
-		toolkit.createLabel(errorHandlingSectionClient, "Suspend Maximum Duration");
+		toolkit.createLabel(errorHandlingSectionClient, "Suspend Maximum Duration :");
 		endpointSuspendMaxDuration = toolkit.createText(errorHandlingSectionClient, "");
 		endpointSuspendMaxDuration.setBackground(new Color(null, 229,236,253));
 		//endpointSuspendMaxDuration.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -576,7 +576,7 @@ public class EndpointCommons {
 		endpointSuspendMaxDurationGridData.grabExcessHorizontalSpace = true;
 		endpointSuspendMaxDuration.setLayoutData(endpointSuspendMaxDurationGridData);
 		
-		toolkit.createLabel(errorHandlingSectionClient, "Suspend Progression Factor");
+		toolkit.createLabel(errorHandlingSectionClient, "Suspend Progression Factor :");
 		endpointSuspendProgressFactor = toolkit.createText(errorHandlingSectionClient, "");
 		endpointSuspendProgressFactor.setBackground(new Color(null, 229,236,253));
 		//endpointSuspendProgressFactor.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -592,7 +592,7 @@ public class EndpointCommons {
 		toolkit.createLabel(errorHandlingSectionClient, "Endpoint Timeout State");
 		toolkit.createLabel(errorHandlingSectionClient, null);
 		
-		toolkit.createLabel(errorHandlingSectionClient, "Retry Error Codes");
+		toolkit.createLabel(errorHandlingSectionClient, "Retry Error Codes :");
 		endpointRetryErrorCodes = toolkit.createText(errorHandlingSectionClient, "");
 		endpointRetryErrorCodes.setBackground(new Color(null, 229,236,253));
 		//endpointRetryErrorCodes.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -602,7 +602,7 @@ public class EndpointCommons {
 		endpointEntryCodesGridData.grabExcessHorizontalSpace = true;
 		endpointRetryErrorCodes.setLayoutData(endpointEntryCodesGridData);
 		
-		toolkit.createLabel(errorHandlingSectionClient, "Retry Count");
+		toolkit.createLabel(errorHandlingSectionClient, "Retry Count :");
 		endpointRetryCount = toolkit.createText(errorHandlingSectionClient, "");
 		endpointRetryCount.setBackground(new Color(null, 229,236,253));
 		//endpointRetryCount.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -612,7 +612,7 @@ public class EndpointCommons {
 		endpointRetryCountGridData.grabExcessHorizontalSpace = true;
 		endpointRetryCount.setLayoutData(endpointRetryCountGridData);
 		
-		toolkit.createLabel(errorHandlingSectionClient, "Retry Delay");
+		toolkit.createLabel(errorHandlingSectionClient, "Retry Delay :");
 		endpointRetryDelay = toolkit.createText(errorHandlingSectionClient, "");
 		endpointRetryDelay.setBackground(new Color(null, 229,236,253));
 		//endpointRetryDelay.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -629,7 +629,7 @@ public class EndpointCommons {
 		toolkit.createLabel(errorHandlingSectionClient, "Timeout");
 		toolkit.createLabel(errorHandlingSectionClient, null);
 		
-		toolkit.createLabel(errorHandlingSectionClient, "Timeout Duration");
+		toolkit.createLabel(errorHandlingSectionClient, "Timeout Duration :");
 		endpointTimeoutDuration = toolkit.createText(errorHandlingSectionClient, "");
 		endpointTimeoutDuration.setBackground(new Color(null, 229,236,253));
 		//endpointTimeoutDuration.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -640,7 +640,7 @@ public class EndpointCommons {
 		endpointTimeoutDuration.setLayoutData(endpointTimeoutDurationGridData);
 		
 		
-		toolkit.createLabel(errorHandlingSectionClient, "Timeout Action");
+		toolkit.createLabel(errorHandlingSectionClient, "Timeout Action :");
 		endpointTimeoutAction = new Combo(errorHandlingSectionClient, SWT.DROP_DOWN);
 		//endpointTimeoutAction.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] timeoutActions = {"Never", "Discard", "Fault"};

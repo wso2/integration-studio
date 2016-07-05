@@ -86,17 +86,11 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 		form.setText(Messages.getString("MessageProcessorPage.sectionMainTitle")); 
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 
-		GridLayout layout = new GridLayout();
-		layout.marginLeft = 20;
-		layout.marginRight = 20;
-		layout.marginTop = 10;
-		layout.numColumns = 6;
-		layout.makeColumnsEqualWidth = true;
-		form.setLayout(layout);
-		GridData formGridData = new GridData();
-		formGridData.horizontalSpan = 6;
-		formGridData.grabExcessHorizontalSpace = true;
-		form.setLayoutData(formGridData);
+		ColumnLayout layout = new ColumnLayout();
+		layout.leftMargin = 10;
+		layout.rightMargin = 10;
+		layout.maxNumColumns = 2;
+		form.getBody().setLayout(layout);
 		
 		processorMap = new LinkedHashMap<String, IMessageProcessor>();
 		

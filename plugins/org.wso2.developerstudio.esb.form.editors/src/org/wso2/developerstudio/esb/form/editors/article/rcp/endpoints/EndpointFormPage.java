@@ -17,7 +17,10 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
@@ -25,6 +28,9 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
+import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.ui.forms.widgets.TableWrapData;
+import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 /**
@@ -48,6 +54,7 @@ public abstract class EndpointFormPage extends FormPage {
     protected Text eP_Description;
 
     protected Combo eP_Format;
+    Section basicSection;
 	
 	 
 	public Text getEndpointName() {
@@ -132,7 +139,38 @@ public abstract class EndpointFormPage extends FormPage {
 	
 	
 	
-	public void createFormBasicSection() {}
+	public void createFormBasicSection() {
+		/* Basic Section */
+		basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
+		
+		Composite basicSectionClient = toolkit.createComposite(basicSection);
+		basicSectionClient.setLayout(new TableWrapLayout());
+		
+		basicSection.setClient(basicSectionClient);
+		
+		toolkit.createLabel(basicSectionClient, "Name");
+		endpointName = toolkit.createText(basicSectionClient, "");
+		endpointName.setBackground(new Color(null, 229,236,253));
+		endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		toolkit.createLabel(basicSectionClient, "Format");
+		eP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		eP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
+		eP_Format.setItems(formats);
+		
+		toolkit.createLabel(basicSectionClient, "Trace Enabled");
+		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] tracingStates = {"True", "False"};
+		endpointTrace.setItems(tracingStates);
+		
+		toolkit.createLabel(basicSectionClient, "Statistics Enabled");
+		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] statisticsStates = {"True", "False"};
+		endpointStatistics.setItems(statisticsStates);
+	}
 	
 	public void createFormQosSection() {}
 	

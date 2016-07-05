@@ -73,45 +73,6 @@ public class WSDLEndpointDeserializer extends AbstractEndpointDeserializer {
 		setTextValue(wsdlEndpointPage.getWsdlEP_Port(), endpoint.getPortName());
 		setTextValue(wsdlEndpointPage.getEndpointName(), endpoint.getName());
 		setTextValue(wsdlEndpointPage.getEP_Description(), endpoint.getDescription());
-		if (endpoint.getDefinition().getFormat() != null) {
-			if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap11")) {
-				wsdlEndpointPage.getEP_Format().select(1);
-			} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("soap12")) {
-				wsdlEndpointPage.getEP_Format().select(2);
-			} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("pox")) {
-				wsdlEndpointPage.getEP_Format().select(3);
-			} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("get")) {
-				wsdlEndpointPage.getEP_Format().select(4);
-			} else if (endpoint.getDefinition().getFormat().equalsIgnoreCase("reset")) {
-				wsdlEndpointPage.getEP_Format().select(5);
-			} else {
-				wsdlEndpointPage.getEP_Format().select(0);
-			}
-		}
-		if (wsdlEndpointPage.getEndpointTrace() != null) {
-			if (endpoint.getDefinition().isTracingEnabled()) {
-				wsdlEndpointPage.getEndpointTrace().select(0);
-			} else {
-				wsdlEndpointPage.getEndpointTrace().select(1);
-			}
-		}
-		if (wsdlEndpointPage.getEndpointStatistics() != null) {
-			if (endpoint.getDefinition().isStatisticsEnable()) {
-				wsdlEndpointPage.getEndpointStatistics().select(0);
-			} else {
-				wsdlEndpointPage.getEndpointStatistics().select(1);
-			}
-		}
-
-		if (wsdlEndpointPage.getEP_Optimize() != null) {
-			if (endpoint.getDefinition().isUseMTOM()) {
-				wsdlEndpointPage.getEP_Optimize().select(1);
-			} else if (endpoint.getDefinition().isUseSwa()) {
-				wsdlEndpointPage.getEP_Optimize().select(2);
-			} else {
-				wsdlEndpointPage.getEP_Optimize().select(0);
-			}
-		}
 
 		super.createNode(formEditor, endpointObject);
 	}

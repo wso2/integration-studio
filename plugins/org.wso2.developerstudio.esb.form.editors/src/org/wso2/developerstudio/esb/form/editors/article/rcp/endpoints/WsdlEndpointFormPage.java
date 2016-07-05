@@ -112,8 +112,8 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
 	}
 
-	public void createFormBasicSection() {
-		/* Basic Section */
+/*	public void createFormBasicSection() {
+		 Basic Section 
 		basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
 		
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
@@ -144,7 +144,7 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		String[] statisticsStates = {"True", "False"};
 		endpointStatistics.setItems(statisticsStates);
 		
-	}
+	}*/
 	
 	public void createFormQosSection() {
 		

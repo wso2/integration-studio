@@ -67,15 +67,19 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		if (endpointFormPage.getEndpointStatistics() != null
 				&& endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
 			aspectConfiguration.enableStatistics();
+//			synapseEPDef.enableStatistics();
 		} else {
 			aspectConfiguration.disableStatistics();
+//			synapseEPDef.disableStatistics();
 		}
 
 		if (endpointFormPage.getEndpointTrace() != null
 				&& endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
 			synapseEPDef.getAspectConfiguration().enableTracing();
+			synapseEPDef.enableTracing();
 		} else {
 			synapseEPDef.getAspectConfiguration().disableTracing();
+			synapseEPDef.disableTracing();
 		}
 		
 		if (endpointCommons.getEndpointSuspendErrorCodes() != null) {

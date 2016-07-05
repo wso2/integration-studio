@@ -64,24 +64,18 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 
 		AspectConfiguration aspectConfiguration = new AspectConfiguration(endpointFormPage.getEndpointName().getText());
 		synapseEPDef.configure(aspectConfiguration);
-		if (endpointFormPage.getEndpointStatistics() != null
-				&& endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
+		if (endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
 			aspectConfiguration.enableStatistics();
-//			synapseEPDef.enableStatistics();
 		} else {
 			aspectConfiguration.disableStatistics();
-//			synapseEPDef.disableStatistics();
 		}
 
-		if (endpointFormPage.getEndpointTrace() != null
-				&& endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
+		if (endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
 			synapseEPDef.getAspectConfiguration().enableTracing();
-			synapseEPDef.enableTracing();
 		} else {
 			synapseEPDef.getAspectConfiguration().disableTracing();
-			synapseEPDef.disableTracing();
 		}
-		
+
 		if (endpointCommons.getEndpointSuspendErrorCodes() != null) {
 			String suspendErrorCodes = endpointCommons.getEndpointSuspendErrorCodes().getText();
 			if (suspendErrorCodes != null && !"".equals(suspendErrorCodes)) {
@@ -135,11 +129,20 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 			synapseEPDef.setRetryDurationOnTimeout(
 					Integer.parseInt(endpointCommons.getEndpointRetryDelay().getText().trim()));
 		}
-
-		synapseEPDef.setTimeoutAction(endpointCommons.getEndpointTimeoutAction().getSelectionIndex());
+		if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() != 0) {
+			if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() == 1) {
+				synapseEPDef.setTimeoutAction(101);
+			} else {// endpointCommons.getEndpointTimeoutAction().getSelectionIndex()
+					// = 2
+				synapseEPDef.setTimeoutAction(102);
+			}
+		} else {
+			synapseEPDef.setTimeoutAction(100);
+		}
 		if (StringUtils.isNumeric(endpointCommons.getEndpointTimeoutDuration().getText())
 				&& endpointCommons.getEndpointTimeoutDuration().getText() != ""
-				&& !endpointCommons.getEndpointTimeoutDuration().getText().isEmpty()) {
+				&& !endpointCommons.getEndpointTimeoutDuration().getText().isEmpty()
+				&& endpointCommons.getEndpointTimeoutDuration().getText() != "0") {
 			synapseEPDef
 					.setTimeoutDuration(Long.parseLong(endpointCommons.getEndpointTimeoutDuration().getText().trim()));
 		}
@@ -183,8 +186,8 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		}
 
 		// saveProperties(visualEndPoint, endpoint);
-		if (endpointFormPage.getEP_Properties() != null) {
-			endpoint.setDescription(endpointFormPage.getContentDescription());
+		if (StringUtils.isNotEmpty(endpointFormPage.getEP_Description().getText())) {
+			endpoint.setDescription(endpointFormPage.getEP_Description().getText());
 		}
 		endpoint.setDefinition(synapseEPDef);
 

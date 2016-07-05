@@ -232,13 +232,11 @@ public abstract class AbstractEndpointDeserializer
 				endpointPage.getEndpointStatistics().select(1);
 			}
 		}
-		if (endpointPage.getEndpointTrace() != null) {
-			// Fixing TOOLS-2652
-			if (definition.isTracingEnabled()) {
-				endpointPage.getEndpointTrace().select(0);// true
-			} else {
-				endpointPage.getEndpointTrace().select(1);// false
-			}
+		// Fixing TOOLS-2652
+		if (definition.isTracingEnabled()) {
+			endpointPage.getEndpointTrace().select(0);// true
+		} else {
+			endpointPage.getEndpointTrace().select(1);// false
 		}
 		// String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX",
 		// "GET", "REST"};

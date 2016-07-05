@@ -111,40 +111,6 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		
 		form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
 	}
-
-/*	public void createFormBasicSection() {
-		 Basic Section 
-		basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
-		
-		Composite basicSectionClient = toolkit.createComposite(basicSection);
-		basicSectionClient.setLayout(new TableWrapLayout());
-		
-		basicSection.setClient(basicSectionClient);
-		
-		toolkit.createLabel(basicSectionClient, "Name");
-		endpointName = toolkit.createText(basicSectionClient, "");
-		endpointName.setBackground(new Color(null, 229,236,253));
-		endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(basicSectionClient, "Format");
-		eP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		eP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
-		eP_Format.setItems(formats);
-		
-		toolkit.createLabel(basicSectionClient, "Trace Enabled");
-		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] tracingStates = {"True", "False"};
-		endpointTrace.setItems(tracingStates);
-		
-		toolkit.createLabel(basicSectionClient, "Statistics Enabled");
-		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] statisticsStates = {"True", "False"};
-		endpointStatistics.setItems(statisticsStates);
-		
-	}*/
 	
 	public void createFormQosSection() {
 		

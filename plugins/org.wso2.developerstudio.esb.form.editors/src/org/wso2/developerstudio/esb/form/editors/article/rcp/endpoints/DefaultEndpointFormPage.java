@@ -23,6 +23,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -69,29 +71,59 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 	}
 
 	public void createFormBasicSection() {
+		
 		/* Basic Section */
 		basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
 		
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		basicSection.setLayoutData(samplegridData);
+		// section.setLayoutData(new TableWrapData(TableWrapData.FILL));
+
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
+		basicSectionClient.setLayout(new GridLayout());
+		basicSection.setClient(basicSectionClient);
+				
+		/*Composite basicSectionClient = toolkit.createComposite(basicSection);
 		basicSectionClient.setLayout(new TableWrapLayout());
+		basicSection.setClient(basicSectionClient);*/
+			
 		
 		toolkit.createLabel(basicSectionClient, "Format");
 		defaultEP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		defaultEP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//defaultEP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
 		defaultEP_Format.setItems(formats);
+		GridData defaultEPFormatGridData = new GridData();
+		defaultEPFormatGridData.horizontalSpan = 3;
+		defaultEPFormatGridData.horizontalAlignment = GridData.FILL;
+		defaultEPFormatGridData.grabExcessHorizontalSpace = true;
+		defaultEP_Format.setLayoutData(defaultEPFormatGridData);
 		
 		toolkit.createLabel(basicSectionClient, "Trace Enabled");
 		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] tracingStates = {"True", "False"};
 		endpointTrace.setItems(tracingStates);
+		GridData endpointTraceGridData = new GridData();
+		endpointTraceGridData.horizontalSpan = 3;
+		endpointTraceGridData.horizontalAlignment = GridData.FILL;
+		endpointTraceGridData.grabExcessHorizontalSpace = true;
+		endpointTrace.setLayoutData(defaultEPFormatGridData);
 		
 		toolkit.createLabel(basicSectionClient, "Statistics Enabled");
 		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] statisticsStates = {"True", "False"};
 		endpointStatistics.setItems(statisticsStates);
+		GridData endpointStatisticsGridData = new GridData();
+		endpointStatisticsGridData.horizontalSpan = 3;
+		endpointStatisticsGridData.horizontalAlignment = GridData.FILL;
+		endpointStatisticsGridData.grabExcessHorizontalSpace = true;
+		endpointStatistics.setLayoutData(endpointStatisticsGridData);
+		
 		
 		basicSection.setClient(basicSectionClient);
 		
@@ -108,20 +140,42 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 		 /* Misc Section */ 
 		miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
 		
+		GridData miscSectionGridData = new GridData();
+		miscSectionGridData.horizontalSpan = 3;
+		miscSectionGridData.horizontalAlignment = GridData.FILL;
+		miscSectionGridData.grabExcessHorizontalSpace = true;
+		miscSection.setLayoutData(miscSectionGridData);
+		// miscSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
+
+		Composite miscSectionClient = toolkit.createComposite(miscSection);
+		miscSectionClient.setLayout(new GridLayout());
+		miscSection.setClient(miscSectionClient);	
+		/*
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
 		miscSectionClient.setLayout(new TableWrapLayout());
+		miscSection.setClient(miscSectionClient);*/
 	
 		
 		toolkit.createLabel(miscSectionClient, "Optimize");
 		defaultEP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
-		defaultEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//defaultEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "MTOM", "SWA"};
 		defaultEP_Optimize.setItems(formats);
+		GridData defaultEPOptimizeGridData = new GridData();
+		defaultEPOptimizeGridData.horizontalSpan = 3;
+		defaultEPOptimizeGridData.horizontalAlignment = GridData.FILL;
+		defaultEPOptimizeGridData.grabExcessHorizontalSpace = true;
+		defaultEP_Optimize.setLayoutData(defaultEPOptimizeGridData);
 		
 		toolkit.createLabel(miscSectionClient, "Description");
 		defaultEP_Description = toolkit.createText(miscSectionClient, "");
 		defaultEP_Description.setBackground(new Color(null, 229,236,253));
-		defaultEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//defaultEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData defaultEPDescriptionGridData = new GridData();
+		defaultEPDescriptionGridData.horizontalSpan = 3;
+		defaultEPDescriptionGridData.horizontalAlignment = GridData.FILL;
+		defaultEPDescriptionGridData.grabExcessHorizontalSpace = true;
+		defaultEP_Description.setLayoutData(defaultEPDescriptionGridData);
 		
 		defaultEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
 		defaultEP_Properties.setBackground(new Color(null, 229,236,253));

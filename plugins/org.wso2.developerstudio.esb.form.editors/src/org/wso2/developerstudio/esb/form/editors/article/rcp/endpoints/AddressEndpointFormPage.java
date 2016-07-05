@@ -22,6 +22,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -31,8 +33,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.widgets.TableWrapData;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
@@ -75,39 +75,67 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 	protected void createFormContent(IManagedForm managedForm) {
 
 		super.createFormContent(managedForm);
-
-		form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
+		form.setText(Messages.getString("AddressEndpointPage.sectionMainTitle"));
 	}
-
-	public void createFormQosSection() {
-		endpointCommons.createFormQosSection(form, toolkit);
-	}
+	
 
 	public void createFormMiscSection() {
 
 		/* Misc Section */
-		miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+	   miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+       
+		GridData miscSectionGridData = new GridData();
+		miscSectionGridData.horizontalSpan = 3;
+		miscSectionGridData.horizontalAlignment = GridData.FILL;
+		miscSectionGridData.grabExcessHorizontalSpace = true;
+		miscSection.setLayoutData(miscSectionGridData);
+		// miscSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
 
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
-		miscSectionClient.setLayout(new TableWrapLayout());
-		miscSection.setClient(miscSectionClient);
-
+		miscSectionClient.setLayout(new GridLayout());
+		miscSection.setClient(miscSectionClient);	
+			
 		toolkit.createLabel(miscSectionClient, "URI");
 		addressEP_URI = toolkit.createText(miscSectionClient, "");
-		addressEP_URI.setBackground(new Color(null, 229, 236, 253));
-		addressEP_URI.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		addressEP_URI.setBackground(new Color(null, 229,236,253));
+		//addressEP_URI.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData addressEPUriGridData = new GridData();
+		addressEPUriGridData.horizontalSpan = 3;
+		addressEPUriGridData.horizontalAlignment = GridData.FILL;
+		addressEPUriGridData.grabExcessHorizontalSpace = true;
+		addressEP_URI.setLayoutData(addressEPUriGridData);
 
 		toolkit.createLabel(miscSectionClient, "Optimize");
 		eP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
-		eP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] formats = { "LEAVE_AS_IS", "MTOM", "SWA" };
+		//addressEP_Optimize.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] formats = {"LEAVE_AS_IS", "MTOM", "SWA"};
 		eP_Optimize.setItems(formats);
-
+		GridData addressEPOptimizeGridData = new GridData();
+		addressEPOptimizeGridData.horizontalSpan = 3;
+		addressEPOptimizeGridData.horizontalAlignment = GridData.FILL;
+		addressEPOptimizeGridData.grabExcessHorizontalSpace = true;
+		eP_Optimize.setLayoutData(addressEPOptimizeGridData);
+		
 		toolkit.createLabel(miscSectionClient, "Description");
 		eP_Description = toolkit.createText(miscSectionClient, "");
-		eP_Description.setBackground(new Color(null, 229, 236, 253));
-		eP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-
+		eP_Description.setBackground(new Color(null, 229,236,253));
+		//addressEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData addressEPDescriptionGridData = new GridData();
+		addressEPDescriptionGridData.horizontalSpan = 3;
+		addressEPDescriptionGridData.horizontalAlignment = GridData.FILL;
+		addressEPDescriptionGridData.grabExcessHorizontalSpace = true;
+		eP_Description.setLayoutData(addressEPDescriptionGridData);
+		
+		toolkit.createLabel(miscSectionClient, "Properties");
+		eP_Properties = toolkit.createText(miscSectionClient, "");
+		eP_Properties.setBackground(new Color(null, 229,236,253));
+		//eP_Properties.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData epPropertiesGridData = new GridData();
+		epPropertiesGridData.horizontalSpan = 3;
+		epPropertiesGridData.horizontalAlignment = GridData.FILL;
+		epPropertiesGridData.grabExcessHorizontalSpace = true;
+		eP_Properties.setLayoutData(epPropertiesGridData);
+		
 		addressEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
 		addressEP_Properties.setBackground(new Color(null, 229, 236, 253));
 		addressEP_Properties.addSelectionListener(new SelectionListener() {
@@ -130,11 +158,13 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		});
 
 	}
+	
+	public void createFormQosSection() {
+		endpointCommons.createFormQosSection(form, toolkit);
+	}
 
 	public void createFormErrorHandlingSection() {
-
 		endpointCommons.createFormErrorHandlingSection(form, toolkit);
-
 	}
 
 }

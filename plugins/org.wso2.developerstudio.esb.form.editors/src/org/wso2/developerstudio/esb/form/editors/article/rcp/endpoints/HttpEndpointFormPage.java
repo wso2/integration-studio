@@ -23,6 +23,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -64,62 +66,54 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 
 		super.createFormContent(managedForm);
 		
-		form.setText(Messages.getString("EndpointPage.sectionMainTitle"));
+		form.setText(Messages.getString("HttpEndpointPage.sectionMainTitle"));
 	}
 
-	public void createFormBasicSection() {
-		/* Basic Section */
-		basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
-		
-		Composite basicSectionClient = toolkit.createComposite(basicSection);
-		basicSectionClient.setLayout(new TableWrapLayout());
-		
-		basicSection.setClient(basicSectionClient);
-		
-		toolkit.createLabel(basicSectionClient, "Trace Enabled");
-		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] tracingStates = {"True", "False"};
-		endpointTrace.setItems(tracingStates);
-		
-		toolkit.createLabel(basicSectionClient, "Statistics Enabled");
-		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		String[] statisticsStates = {"True", "False"};
-		endpointStatistics.setItems(statisticsStates);
-		
-		toolkit.createLabel(basicSectionClient, "URI Template");
-		httpEP_UriTemplate = toolkit.createText(basicSectionClient, "");
-		httpEP_UriTemplate.setBackground(new Color(null, 229,236,253));
-		httpEP_UriTemplate.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-		toolkit.createLabel(basicSectionClient, "HTTP Method");
-		httpEP_Method = toolkit.createText(basicSectionClient, "");
-		httpEP_Method.setBackground(new Color(null, 229,236,253));
-		httpEP_Method.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
-		
-	}
-	
-	public void createFormQosSection() {
-		
-		endpointCommons.createFormQosSection(form, toolkit);
-		
-	}
-	
 	public void createFormMiscSection() {
 
 		 /* Misc Section */ 
-		miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
+	    miscSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.misc"));
 		
+		GridData miscSectionGridData = new GridData();
+		miscSectionGridData.horizontalSpan = 3;
+		miscSectionGridData.horizontalAlignment = GridData.FILL;
+		miscSectionGridData.grabExcessHorizontalSpace = true;
+		miscSection.setLayoutData(miscSectionGridData);
+		// miscSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
+
 		Composite miscSectionClient = toolkit.createComposite(miscSection);
-		miscSectionClient.setLayout(new TableWrapLayout());
+		miscSectionClient.setLayout(new GridLayout());
+		miscSection.setClient(miscSectionClient);	
 		
-		miscSection.setClient(miscSectionClient);
+		toolkit.createLabel(miscSectionClient, "URI Template");
+		httpEP_UriTemplate = toolkit.createText(miscSectionClient, "");
+		httpEP_UriTemplate.setBackground(new Color(null, 229,236,253));
+		//httpEP_UriTemplate.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData httpEPUriGridData = new GridData();
+		httpEPUriGridData.horizontalSpan = 3;
+		httpEPUriGridData.horizontalAlignment = GridData.FILL;
+		httpEPUriGridData.grabExcessHorizontalSpace = true;
+		httpEP_UriTemplate.setLayoutData(httpEPUriGridData);
+		
+		toolkit.createLabel(miscSectionClient, "HTTP Method");
+		httpEP_Method = toolkit.createText(miscSectionClient, "");
+		httpEP_Method.setBackground(new Color(null, 229,236,253));
+		//httpEP_Method.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData httpEPMethodGridData = new GridData();
+		httpEPMethodGridData.horizontalSpan = 3;
+		httpEPMethodGridData.horizontalAlignment = GridData.FILL;
+		httpEPMethodGridData.grabExcessHorizontalSpace = true;
+		httpEP_Method.setLayoutData(httpEPMethodGridData);
 	
 		toolkit.createLabel(miscSectionClient, "Description");
 		httpEP_Description = toolkit.createText(miscSectionClient, "");
 		httpEP_Description.setBackground(new Color(null, 229,236,253));
-		httpEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//httpEP_Description.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData httpEPDescriptionGridData = new GridData();
+		httpEPDescriptionGridData.horizontalSpan = 3;
+		httpEPDescriptionGridData.horizontalAlignment = GridData.FILL;
+		httpEPDescriptionGridData.grabExcessHorizontalSpace = true;
+		httpEP_Description.setLayoutData(httpEPDescriptionGridData);
 		
 		httpEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
 		httpEP_Properties.setBackground(new Color(null, 229,236,253));
@@ -144,11 +138,12 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		
 	}
 	
+	public void createFormQosSection() {
+		endpointCommons.createFormQosSection(form, toolkit);
+	}
 	
 	public void createFormErrorHandlingSection() {
-		
 		endpointCommons.createFormErrorHandlingSection(form, toolkit);
-
 	}
 
 	public EndpointCommons getEndpointCommons() {

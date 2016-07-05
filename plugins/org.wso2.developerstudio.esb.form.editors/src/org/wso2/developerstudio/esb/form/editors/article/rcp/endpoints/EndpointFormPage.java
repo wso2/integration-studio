@@ -19,13 +19,14 @@ package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
-import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
@@ -124,12 +125,26 @@ public abstract class EndpointFormPage extends FormPage {
 		toolkit = managedForm.getToolkit();
 		form.setText(Messages.getString("EndpointPage.sectionMainTitle")); 
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
-
-		ColumnLayout layout = new ColumnLayout();
+		
+		GridLayout layout = new GridLayout();
+		layout.marginLeft = 20;
+		layout.marginRight = 20;
+		layout.marginTop = 10;
+		layout.numColumns = 1;
+		layout.makeColumnsEqualWidth = true;
+		
+		form.getBody().setLayout(layout);
+		GridData formGridData = new GridData();
+		formGridData.horizontalSpan = 6;
+		formGridData.grabExcessHorizontalSpace = true;
+		form.setLayoutData(formGridData);
+		
+		
+		/*ColumnLayout layout = new ColumnLayout();
 		layout.leftMargin = 10;
 		layout.rightMargin = 10;
 		layout.maxNumColumns = 2;
-		form.getBody().setLayout(layout);
+		form.getBody().setLayout(layout);*/
 		
 		createFormBasicSection();
 		createFormQosSection();
@@ -142,39 +157,68 @@ public abstract class EndpointFormPage extends FormPage {
 	public void createFormBasicSection() {
 		/* Basic Section */
 		basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
-		
+			
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		basicSection.setLayoutData(samplegridData);
+		// section.setLayoutData(new TableWrapData(TableWrapData.FILL));
+
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
-		basicSectionClient.setLayout(new TableWrapLayout());
-		
+		basicSectionClient.setLayout(new GridLayout());
 		basicSection.setClient(basicSectionClient);
+					
+		/*Composite basicSectionClient = toolkit.createComposite(basicSection);
+		basicSectionClient.setLayout(new TableWrapLayout());
+		basicSection.setClient(basicSectionClient);*/
 		
 		toolkit.createLabel(basicSectionClient, "Name");
 		endpointName = toolkit.createText(basicSectionClient, "");
 		endpointName.setBackground(new Color(null, 229,236,253));
-		endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData endpointNameGridData = new GridData();
+		endpointNameGridData.horizontalSpan = 3;
+		endpointNameGridData.horizontalAlignment = GridData.FILL;
+		endpointNameGridData.grabExcessHorizontalSpace = true;
+		endpointName.setLayoutData(endpointNameGridData);
 		
 		toolkit.createLabel(basicSectionClient, "Format");
 		eP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		eP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//eP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] formats = {"LEAVE_AS_IS", "SOAP 1.1", "SOAP 1.2", "POX", "GET", "REST"};
 		eP_Format.setItems(formats);
+		GridData endpointFormatGridData = new GridData();
+		endpointFormatGridData.horizontalSpan = 3;
+		endpointFormatGridData.horizontalAlignment = GridData.FILL;
+		endpointFormatGridData.grabExcessHorizontalSpace = true;
+		eP_Format.setLayoutData(endpointFormatGridData);
 		
 		toolkit.createLabel(basicSectionClient, "Trace Enabled");
 		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] tracingStates = {"True", "False"};
 		endpointTrace.setItems(tracingStates);
+		GridData endpointTraceGridData = new GridData();
+		endpointTraceGridData.horizontalSpan = 3;
+		endpointTraceGridData.horizontalAlignment = GridData.FILL;
+		endpointTraceGridData.grabExcessHorizontalSpace = true;
+		endpointTrace.setLayoutData(endpointTraceGridData);
 		
 		toolkit.createLabel(basicSectionClient, "Statistics Enabled");
 		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		//endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] statisticsStates = {"True", "False"};
 		endpointStatistics.setItems(statisticsStates);
+		GridData endpointStatisticsGridData = new GridData();
+		endpointStatisticsGridData.horizontalSpan = 3;
+		endpointStatisticsGridData.horizontalAlignment = GridData.FILL;
+		endpointStatisticsGridData.grabExcessHorizontalSpace = true;
+		endpointStatistics.setLayoutData(endpointStatisticsGridData);
 	}
+	public void createFormMiscSection() {}
 	
 	public void createFormQosSection() {}
-	
-	public void createFormMiscSection() {}
 	
 	public void createFormErrorHandlingSection(){}
 	

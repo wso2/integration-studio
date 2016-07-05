@@ -3,9 +3,9 @@ package org.wso2.developerstudio.humantaskeditor;
 public class HumantaskEditorConstants {
 
     public static final String JS_CUSTOMFUNC_GET_WSDL = "getwsdl";
-    
+
     public static final String JS_CUSTOMFUNC_REMOVE_WSDL = "removewsdl";
-    
+
     public static final String JS_CUSTOMFUNC_ALERT = "alert";
 
     public static final String JS_CUSTOMFUNC_GETTEXT = "gettext";
@@ -27,13 +27,13 @@ public class HumantaskEditorConstants {
     public static final String ERROR_CREATING_CORRESPONDING_WSDL_FILE = "Error creating corresponding WSDL file";
 
     public static final String ERROR_CREATING_CORRESPONDING_ZIP_FILE = "Error creating corresponding ZIP file";
-    
+
     public static final String ERROR_COPYING_FILES = "Error copying files to artifact";
 
     public static final String ERROR_FINDING_CORRESPONDING_WSDL_FILE = "Error finding corresponding WSDL file";
 
     public static final String ERROR_DELETING_CORRESPONDING_WSDL_FILE = "Error deleting corresponding WSDL file";
-    
+
     public static final String UNDEFINED_LITERAL = "undefined";
 
     public static final String ERROR_INVALID_INPUT_MUST_BE_IFILE_EDITOR_INPUT = "Invalid input: Must be IFileEditorInput";
@@ -43,7 +43,7 @@ public class HumantaskEditorConstants {
     public static final String ERROR_CREATING_UI_EDITOR = "Error creating GUI editor";
 
     public static final String GUI_EDITOR_NAME = "Design";
-    
+
     public static final String SOURCE_EDITOR_NAME = "Source";
 
     public static final String CREATE_HUMAN_TASK_FILE_MESSAGE = "Create human task file";
@@ -55,7 +55,7 @@ public class HumantaskEditorConstants {
     public static final String DUMMY_HTCONFIG_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/templatehtconfig.ht";
 
     public static final String DUMMY_WSDL_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/template.wsdl";
-    
+
     public static final String DUMMY_ORG_SCHEMA_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/organizationalentityschema.xsd";
 
     public static final String DUMMY_HT_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/template.ht";
@@ -83,19 +83,19 @@ public class HumantaskEditorConstants {
     public static final String FILE_NAME_MUST_BE_VALID_MESSAGE = "File name must be valid";
 
     public static final String FILE_NAME_MUST_BE_SPECIFIED_MESSAGE = "File name must be specified";
-    
+
     public static final String FILE_NAME_MUST_BE_VALID = "Enter a valid file Name";
 
     public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "File container must be specified";
 
     public static final String TASK_NAME_CANNOT_HAVE_SPACES_MESSAGE = "Task name should'nt have spaces";
-    
+
     public static final String TASK_NAME_CANNOT_BE_EMPTY_MESSAGE = "Task name cannot be empty";
-    
+
     public static final String TARGET_NAME_SPACE_CANNOT_BE_EMPTY_MESSAGE = "Target namespace cannot be empty";
-    
+
     public static final String ENTER_A_VALID_FILENAME = "Enter a valid file name";
-    
+
     public static final String WIZARD_PAGE_TEXT = "Human Task Artifact";
 
     public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "This wizard creates a humantask artifact project";
@@ -115,23 +115,23 @@ public class HumantaskEditorConstants {
     public static final String FILE_WIZARD_PAGE_TITLE = "Human Task File";
 
     public static final String BROWSE_BUTTON_TEXT = "Browse...";
-    
+
     public static final String EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT = "Exception occured in transforming XML to text";
-    
+
     public static final String EXCEPTION_OCCURED_IN_TRANSFORM_CONFIG = "Exception occured in transform config";
-    
+
     public static final String EXCEPTION_OCCURED_IN_FILE_IO = "Exception occured in file IO";
-    
+
     public static final String EXCEPTION_OCCURED_IN_PARSING_XML = "Exception occured in parsing XML";
-    
+
     public static final String QUALIFIED_TASK_NODE_NAME = "htd:task";
-    
+
     public static final String XMLNS_TNS = "xmlns:tns";
-    
+
     public static final String TARGET_NAMESPACE = "targetNamespace";
-    
+
     public static final String QUALIFIED_HUMAN_INTERACTIONS_NODE_NAME = "htd:humanInteractions";
-    
+
     public static final String XML_INDENT_YES = "yes";
 
     public static final String XML_OUTPUT_METHOD = "xml";
@@ -141,13 +141,13 @@ public class HumantaskEditorConstants {
     public static final String CALLBACK_TASK_WSDL_SUFFIX = "TaskCallBack.wsdl";
 
     public static final String TASK_WSDL_SUFFIX = "Task.wsdl";
-    
+
     public static final String HUMAN_TASK_PROJECT_WIZARD_TITLE = "Human Task Project Wizard";
-    
+
     public static final String HUMAN_TASK_FILE_WIZARD_TITLE = "Human Task File Wizard";
-    
+
     public static final String HUMAN_TASK_EXPORT_WIZARD_TITLE = "Export Human Task Artifact";
-    
+
     public static final String ORGANIZATIONAL_ENTITY_SCHEMA_FILE = "organizationalentityschema.xsd";
- 
+
 }

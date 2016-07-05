@@ -22,16 +22,15 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 
-
-public class ExportProjectAction implements IActionDelegate{
+public class ExportProjectAction implements IActionDelegate {
     IStructuredSelection selection;
-    
+
     public void run(IAction action) {
         if (selection != null) {
             HumanTaskExportWizard wizard = new HumanTaskExportWizard();
             wizard.init(PlatformUI.getWorkbench(), selection);
-            WizardDialog exportWizardDialog = new WizardDialog(PlatformUI.getWorkbench()
-                    .getActiveWorkbenchWindow().getShell(), wizard);
+            WizardDialog exportWizardDialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                    .getShell(), wizard);
             exportWizardDialog.open();
         }
     }
@@ -40,7 +39,7 @@ public class ExportProjectAction implements IActionDelegate{
         if (selection instanceof IStructuredSelection) {
             this.selection = (IStructuredSelection) selection;
         }
-      
+
     }
 
 }

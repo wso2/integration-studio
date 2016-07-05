@@ -45,8 +45,10 @@ public class FileManagementUtil {
                 dstPath.mkdir();
             }
             String files[] = srcPath.list();
-            for (int i = 0; i < files.length; i++) {
-                copyDirectory(new File(srcPath, files[i]), new File(dstPath, files[i]), filesToBeCopied);
+            if (files != null) {
+                for (int i = 0; i < files.length; i++) {
+                    copyDirectory(new File(srcPath, files[i]), new File(dstPath, files[i]), filesToBeCopied);
+                }
             }
         } else {
             if (!filesToBeCopied.contains(srcPath.getAbsolutePath()))
@@ -63,8 +65,10 @@ public class FileManagementUtil {
         List fileList = new ArrayList();
         if (srcPath.isDirectory()) {
             String files[] = srcPath.list();
-            for (int i = 0; i < files.length; i++) {
-                fileList.addAll(getAllFilesPresentInFolder(new File(srcPath, files[i])));
+            if (files != null) {
+                for (int i = 0; i < files.length; i++) {
+                    fileList.addAll(getAllFilesPresentInFolder(new File(srcPath, files[i])));
+                }
             }
         } else {
             fileList.add(srcPath.getAbsolutePath());
@@ -75,11 +79,13 @@ public class FileManagementUtil {
     public static void removeEmptyDirectories(File srcPath) {
         if (srcPath.isDirectory()) {
             String files[] = srcPath.list();
-            for (int i = 0; i < files.length; i++) {
-                removeEmptyDirectories(new File(srcPath, files[i]));
-            }
-            if (srcPath.list().length == 0) {
-                srcPath.delete();
+            if (files != null) {
+                for (int i = 0; i < files.length; i++) {
+                    removeEmptyDirectories(new File(srcPath, files[i]));
+                }
+                if (files.length == 0) {
+                    srcPath.delete();
+                }
             }
         }
     }
@@ -90,11 +96,7 @@ public class FileManagementUtil {
         try {
             fileWriter = new FileOutputStream(destZipFile);
             zip = new ZipOutputStream(fileWriter);
-        } catch (FileNotFoundException e) {
-            logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_CORRESPONDING_ZIP_FILE, e);
-        }
-        addFolderContentsToZip(srcFolder, zip);
-        try {
+            addFolderContentsToZip(srcFolder, zip);
             zip.flush();
             zip.close();
         } catch (IOException ex) {
@@ -137,9 +139,11 @@ public class FileManagementUtil {
         File folder = new File(srcFolder);
         String fileListe[] = folder.list();
         int i = 0;
-        while (i < fileListe.length) {
-            addToZip("", srcFolder + File.separator + fileListe[i], zip);
-            i++;
+        if (fileListe != null) {
+            while (i < fileListe.length) {
+                addToZip("", srcFolder + File.separator + fileListe[i], zip);
+                i++;
+            }
         }
     }
 
@@ -147,7 +151,7 @@ public class FileManagementUtil {
         File folder = new File(srcFolder);
         String fileListe[] = folder.list();
         int i = 0;
-        while (true) {
+        while (i < fileListe.length) {
             String newPath = folder.getName();
             if (!path.equalsIgnoreCase("")) {
                 newPath = path + File.separator + newPath;
@@ -176,8 +180,10 @@ public class FileManagementUtil {
             logger.log(Level.FINE, HumantaskEditorConstants.ERROR_COPYING_FILES, e);
         } finally {
             try {
-                fos.close();
-                is.close();
+                if (fos != null) {
+                    fos.close();
+                    is.close();
+                }
             } catch (IOException e) {
                 logger.log(Level.FINE, HumantaskEditorConstants.ERROR_COPYING_FILES, e);
             }
@@ -197,10 +203,12 @@ public class FileManagementUtil {
     public static boolean deleteDir(File dir) {
         if (dir.isDirectory()) {
             String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                boolean success = deleteDir(new File(dir, children[i]));
-                if (!success) {
-                    return false;
+            if (children != null) {
+                for (int i = 0; i < children.length; i++) {
+                    boolean success = deleteDir(new File(dir, children[i]));
+                    if (!success) {
+                        return false;
+                    }
                 }
             }
         }
@@ -209,11 +217,13 @@ public class FileManagementUtil {
 
     public static void deleteDirectories(File dir) {
         File[] children = dir.listFiles();
-        for (int i = 0; i < children.length; i++) {
-            if (children[i].list() != null && children[i].list().length > 0) {
-                deleteDirectories(children[i]);
-            } else {
-                children[i].delete();
+        if (children != null) {
+            for (int i = 0; i < children.length; i++) {
+                if (children[i].list() != null && children[i].list().length > 0) {
+                    deleteDirectories(children[i]);
+                } else {
+                    children[i].delete();
+                }
             }
         }
         dir.delete();
@@ -262,10 +272,11 @@ public class FileManagementUtil {
             if (!dstDir.exists()) {
                 dstDir.mkdirs();
             }
-
             String[] children = srcDir.list();
-            for (int i = 0; i < children.length; i++) {
-                copyDirectory(new File(srcDir, children[i]), new File(dstDir, children[i]));
+            if (children != null) {
+                for (int i = 0; i < children.length; i++) {
+                    copyDirectory(new File(srcDir, children[i]), new File(dstDir, children[i]));
+                }
             }
         } else {
             copy(srcDir, dstDir);
@@ -383,13 +394,15 @@ public class FileManagementUtil {
         File srcDir = new File(sourceDir);
         if (srcDir.exists()) {
             File[] listOfFilesAndDirs = srcDir.listFiles();
-            for (int i = 0; i < listOfFilesAndDirs.length; i++) {
-                Path pathInstance = new Path(listOfFilesAndDirs[i].getAbsolutePath());
-                if (listOfFilesAndDirs[i].getAbsolutePath() != null
-                        && new File(listOfFilesAndDirs[i].getAbsolutePath()).isDirectory()) {
-                    IPath pathWithOutLastSegment = pathInstance.removeLastSegments(1);
-                    if (pathWithOutLastSegment != null && pathWithOutLastSegment.toOSString().equals(sourceDir)) {
-                        resultList.add(pathInstance);
+            if (listOfFilesAndDirs != null) {
+                for (int i = 0; i < listOfFilesAndDirs.length; i++) {
+                    Path pathInstance = new Path(listOfFilesAndDirs[i].getAbsolutePath());
+                    if (listOfFilesAndDirs[i].getAbsolutePath() != null
+                            && new File(listOfFilesAndDirs[i].getAbsolutePath()).isDirectory()) {
+                        IPath pathWithOutLastSegment = pathInstance.removeLastSegments(1);
+                        if (pathWithOutLastSegment != null && pathWithOutLastSegment.toOSString().equals(sourceDir)) {
+                            resultList.add(pathInstance);
+                        }
                     }
                 }
             }

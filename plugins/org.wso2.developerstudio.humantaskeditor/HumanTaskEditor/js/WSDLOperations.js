@@ -58,36 +58,35 @@ function generateHTConfig(configDom, xmlDom, currentTask) {
     serviceName = $('#' + currentTaskName + ' #taskCallbackServiceName').val();
     portName = currentTask + "Port";
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
-    wsdlHTDeploymentConfig = configDom.getElementsByTagName("HTDeploymentConfig")[0];
-
-    tasksList = xmlDom.getElementsByTagName("task");
-    targetnamespace = xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("targetNamespace");
-    configDom.getElementsByTagName("HTDeploymentConfig")[0].setAttribute("xmlns:task",targetnamespace);
-    for(l=0;l<tasksList.length;l++){
+    wsdlHTDeploymentConfig = configDom.getElementsByTagNameNS("http://wso2.org/ht/schema/deployment/config", "HTDeploymentConfig")[0];
+    tasksList = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "task");
+    targetnamespace = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "humanInteractions")[0].getAttribute("targetNamespace");
+    configDom.getElementsByTagNameNS("http://wso2.org/ht/schema/deployment/config", "HTDeploymentConfig")[0].setAttribute("xmlns:task", targetnamespace);
+    for (l = 0; l < tasksList.length; l++) {
 
         var taskName = tasksList[l].getAttribute("name");
         var divTaskName = taskName + "wrapper";
         newTask = configDom.createElementNS(hicNameSpace,
             "hic:task"); // scheme.appendchild()
-        newTask.setAttribute("name", "task:"+taskName);
+        newTask.setAttribute("name", "task:" + taskName);
         newPublish = configDom.createElementNS(hicNameSpace,
             "hic:publish");
         newPublishService = configDom.createElementNS(hicNameSpace,
             "hic:service");
-        newPublishService.setAttribute("name","task:"+taskName+"Service");
-        newPublishService.setAttribute("port",taskName + "Port"); 
+        newPublishService.setAttribute("name", "task:" + taskName + "Service");
+        newPublishService.setAttribute("port", taskName + "Port");
         newPublish.appendChild(newPublishService);
         newCallback = configDom.createElementNS(hicNameSpace,
             "hic:callback");
         newCallbackService = configDom.createElementNS(hicNameSpace,
             "hic:service");
-        newCallbackService.setAttribute("name","task:"+$('#' + divTaskName + ' #taskCallbackServiceName').val());
-        newCallbackService.setAttribute("port",taskName + "CBPort"); 
+        newCallbackService.setAttribute("name", "task:" + $('#' + divTaskName + ' #taskCallbackServiceName').val());
+        newCallbackService.setAttribute("port", taskName + "CBPort");
         newCallback.appendChild(newCallbackService);
         newTask.appendChild(newPublish);
         newTask.appendChild(newCallback);
         wsdlHTDeploymentConfig.appendChild(newTask);
-  }
+    }
 }
 
 /*
@@ -102,19 +101,19 @@ function generateHTConfig(configDom, xmlDom, currentTask) {
 function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     currentTaskName = currentTask + "wrapper";
     // Get internal parameters
-    serviceURL = "http://localhost:9763/services/"+currentTask+"Service";
+    serviceURL = "http://localhost:9763/services/" + currentTask + "Service";
     operationName = $('#' + currentTaskName + ' #taskOperation')
         .val();
-    serviceName = currentTask+"Service";
+    serviceName = currentTask + "Service";
     portName = currentTask + "Port";
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
-    targetnamespace = xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("targetNamespace");
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("xmlns:tns",targetnamespace);
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("targetNamespace",targetnamespace);
+    targetnamespace = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "humanInteractions")[0].getAttribute("targetNamespace");
+    wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "definitions")[0].setAttribute("xmlns:tns", targetnamespace);
+    wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "definitions")[0].setAttribute("targetNamespace", targetnamespace);
     // get Definitions node and Schema node from dummy wsdl dom
-    wsdlSchema = wsdlDom.getElementsByTagName("schema")[0];
-    wsdlDefinitions = wsdlDom.getElementsByTagName("definitions")[0];
-    wsdlSchema.setAttribute("targetNamespace",targetnamespace);
+    wsdlSchema = wsdlDom.getElementsByTagNameNS("http://www.w3.org/2001/XMLSchema", "schema")[0];
+    wsdlDefinitions = wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "definitions")[0];
+    wsdlSchema.setAttribute("targetNamespace", targetnamespace);
     //alert("Inside generate Input "+currentTask+" : "+ $('#' + currentTask + 'wrapper #taskCallbackServiceName').val());
     // create Data type elements
     newComplexType = wsdlDom.createElementNS(
@@ -169,7 +168,7 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     newOperation.setAttribute("name", operationName); // Interface Operation
     newInput = wsdlDom.createElementNS(wsdlNameSpace,
         "wsdl:input");
-    newInput.setAttribute("message","tns:"+ newMessage.getAttribute("name")); // message
+    newInput.setAttribute("message", "tns:" + newMessage.getAttribute("name")); // message
     // binding
     newOperation.appendChild(newInput);
     newPortType.appendChild(newOperation);
@@ -213,7 +212,7 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     newPort = wsdlDom.createElementNS(wsdlNameSpace,
         "wsdl:port");
     newPort.setAttribute("name", portName); // part element
-    newPort.setAttribute("binding","tns:" + newBinding.getAttribute("name")); // tns:complextypename
+    newPort.setAttribute("binding", "tns:" + newBinding.getAttribute("name")); // tns:complextypename
     newAddress = wsdlDom.createElementNS(
         soapNameSpace, "soap:address");
     newAddress.setAttribute("location", serviceURL); // Service URL
@@ -232,7 +231,7 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
  * current task name(currentTaskName) should be provided.
  * 
  */
-function generateOutputWSDL(wsdlDom, xmlDom, currentTask,serviceURL,operationName,serviceName,outputElements) {
+function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationName, serviceName, outputElements) {
     currentTaskName = currentTask + "wrapper";
     /*serviceURL = $('#' + currentTaskName + ' #taskCallbackServiceURL').val();
     operationName = $('#' + currentTaskName + ' #taskCallbackOperationName')
@@ -243,18 +242,18 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask,serviceURL,operationNam
     outputElements = $('#' + currentTaskName + ' #outputmappingTable tr');*/
     portName = currentTask + "CBPort";
     // get Definitions
-    wsdlSchema = wsdlDom.getElementsByTagName("schema")[0];
-    wsdlDefinitions = wsdlDom.getElementsByTagName("definitions")[0];
+    wsdlSchema = wsdlDom.getElementsByTagNameNS("http://www.w3.org/2001/XMLSchema", "schema")[0];
+    wsdlDefinitions = wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "definitions")[0];
     // create types(data)
     newComplexType = wsdlDom.createElementNS(
         xsdNameSpace, "xsd:complexType");
     newComplexType.setAttribute("name", currentTask + "CBDataType"); // Data
     // type
     // Name
-    targetnamespace = xmlDom.getElementsByTagName("humanInteractions")[0].getAttribute("targetNamespace");
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("xmlns:tns",targetnamespace);
-    wsdlDom.getElementsByTagName("definitions")[0].setAttribute("targetNamespace",targetnamespace);
-    wsdlSchema.setAttribute("targetNamespace",targetnamespace);
+    targetnamespace = xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "humanInteractions")[0].getAttribute("targetNamespace");
+    wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "definitions")[0].setAttribute("xmlns:tns", targetnamespace);
+    wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "definitions")[0].setAttribute("targetNamespace", targetnamespace);
+    wsdlSchema.setAttribute("targetNamespace", targetnamespace);
 
     newSequence = wsdlDom.createElementNS(xsdNameSpace,
         "xsd:sequence");
@@ -309,7 +308,7 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask,serviceURL,operationNam
     newOperation.setAttribute("name", operationName); // Interface Operation
     newInput = wsdlDom.createElementNS(wsdlNameSpace,
         "wsdl:input");
-    newInput.setAttribute("message", "tns:"+newMessage.getAttribute("name")); // message
+    newInput.setAttribute("message", "tns:" + newMessage.getAttribute("name")); // message
     // binding
     newOperation.appendChild(newInput);
     newPortType.appendChild(newOperation);
@@ -351,7 +350,7 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask,serviceURL,operationNam
     newPort = wsdlDom.createElementNS(wsdlNameSpace,
         "wsdl:port");
     newPort.setAttribute("name", portName); // part element
-    newPort.setAttribute("binding","tns:"+ newBinding.getAttribute("name")); // tns:complextypename
+    newPort.setAttribute("binding", "tns:" + newBinding.getAttribute("name")); // tns:complextypename
     newAddress = wsdlDom.createElementNS(
         soapNameSpace, "soap:address");
     newAddress.setAttribute("location", serviceURL); // Service URL

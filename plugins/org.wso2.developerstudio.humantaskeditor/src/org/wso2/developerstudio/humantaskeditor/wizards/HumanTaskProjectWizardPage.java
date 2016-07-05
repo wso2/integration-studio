@@ -40,7 +40,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     private Text fileText;
 
     private Text taskText;
-    
+
     private Text tnsText;
 
     private ISelection selection;
@@ -105,7 +105,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
                 dialogChanged();
             }
         });
-        
+
         label = new Label(container, SWT.NULL);
         label.setText("&Target Namespace :");
 
@@ -220,9 +220,9 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     public String getTaskName() {
         return taskText.getText();
     }
-    
+
     public String getTNSName() {
         return tnsText.getText();
     }
-    
+
 }

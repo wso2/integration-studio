@@ -17,8 +17,9 @@ package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,16 +39,26 @@ public class ForLoopBean {
 	private int parentIndex;
 	private List<String> arrayVariableListToInstantiate;
 	private List<String> objectVariableListToInstantiate;
-	private boolean nullable;
+	private Set<String> nullableVarialesList;
 
-	public ForLoopBean(String iterativeName, String variableName, boolean nullable) {
+	public ForLoopBean(String iterativeName, String variableName) {
 		nestedForLoopList = new ArrayList<>();
 		operationList = new ArrayList<>();
 		arrayVariableListToInstantiate = new ArrayList<>();
 		objectVariableListToInstantiate = new ArrayList<>();
+		nullableVarialesList = new HashSet<>();
 		this.iterativeName = getValidIterateName(iterativeName);
 		this.variableName = variableName;
-		this.nullable = nullable;
+	}
+
+	public ForLoopBean(String iterativeName, String variableName, Set<String> nullableVariableList) {
+		nestedForLoopList = new ArrayList<>();
+		operationList = new ArrayList<>();
+		arrayVariableListToInstantiate = new ArrayList<>();
+		objectVariableListToInstantiate = new ArrayList<>();
+		this.nullableVarialesList = nullableVariableList;
+		this.iterativeName = getValidIterateName(iterativeName);
+		this.variableName = variableName;
 	}
 
 	/**
@@ -126,11 +137,11 @@ public class ForLoopBean {
 		this.parentIndex = parentIndex;
 	}
 
-	public boolean isNullable() {
-		return nullable;
+	public Set<String> getNullableVarialesList() {
+		return nullableVarialesList;
 	}
 
-	public void setNullable(boolean nullable) {
-		this.nullable = nullable;
+	public void setNullableVarialesList(Set<String> nullableVarialesList) {
+		this.nullableVarialesList = nullableVarialesList;
 	}
 }

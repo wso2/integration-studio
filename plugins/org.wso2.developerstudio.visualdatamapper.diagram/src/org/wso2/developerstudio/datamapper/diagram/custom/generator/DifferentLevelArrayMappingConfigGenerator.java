@@ -17,8 +17,10 @@ package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 import org.apache.commons.lang.StringUtils;
@@ -102,7 +104,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		outputArrayVariableForLoopMap = new HashMap<>();
 		outputObjectVariableForLoopMap = new HashMap<>();
 		forLoopBeanList = new ArrayList<>();
-		rootBean = new ForLoopBean(ROOT_TAG, ROOT_TAG, false);
+		rootBean = new ForLoopBean(ROOT_TAG, ROOT_TAG);
 		rootBean.setParentIndex(-1);
 		getForLoopBeanList().add(rootBean);
 		getForLoopBeanMap().put(ROOT_TAG, 0);
@@ -140,6 +142,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				List<DMVariable> outputVariables = mappingOperation.getOutputVariables();
 				List<Integer> operationForLoopBeansList = new ArrayList<>();
 				List<String> operationLastArrayElementsParentList = new ArrayList<>();
+				Set<String> operationNullableVariableList = new HashSet<>();
 				if (inputVariables.isEmpty()) {
 					// Add 0 to operationForLoopBeanList when operation not have
 					// input variables
@@ -172,6 +175,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 							String parentVariableName = "";
 							String parentArrayVariable = "";
 							boolean firstIteration = true;
+							Set<String> nullableVariableList = new HashSet<>();
 							for (String nextName : variableNameArray) {
 								if (!firstIteration) {
 									// remove "." from variable name
@@ -184,8 +188,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 									if (SchemaDataType.ARRAY.equals(variableType)) {
 										if (forLoopBeanNotExist(variableName)) {
 											int indexOfForLoopBean = addForLoopInToMap(variableName, new ForLoopBean(
-													"i_" + nextName, variableName,
-													variableMap.get(variableName).contains(SchemaDataType.NULL)));
+													"i_" + nextName, variableName, nullableVariableList));
+											nullableVariableList = new HashSet<>();
 											addForLoopBeanIndexToParent(variableName, indexOfForLoopBean,
 													parentArrayVariable);
 											parentArrayVariable = variableName;
@@ -195,7 +199,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 									} else if (ScriptGenerationUtil.isVariableTypePrimitive(variableType)) {
 										// leaf variable element
 									} else if (SchemaDataType.OBJECT.equals(variableType)) {
-										// record variable element
+										if (variableMap.get(variableName).contains(SchemaDataType.NULL)) {
+											nullableVariableList.add(variableName);
+										}
 									} else {
 										throw new DataMapperException(
 												"Unsupported schemaDataType in WSO2 Data Mapper found : "
@@ -207,6 +213,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 								variableName += ".";
 								firstIteration = false;
 							}
+							operationNullableVariableList.addAll(nullableVariableList);
 							// add most parent array for
 							// operationForLoopBeansList
 							if (StringUtils.isEmpty(parentArrayVariable)) {
@@ -258,6 +265,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 					getForLoopBeanList().get(indexOfMostInnerForLoopBean).getOperationList()
 							.add(mappingOperation.getIndex());
 				}
+				mappingOperation.setOptionalElementList(operationNullableVariableList);
 			}
 			if (unassignedOperationCount == unassignedMappingOperations.size()) {
 				assignUnresolvableOperationsToRoot(unassignedMappingOperations);
@@ -305,15 +313,6 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 							unassignedMappingOperations.add(mappingOperation);
 							operationAddedToUnassignedOperations = true;
 							break;
-							// int indexOfForLoopBean =
-							// addForLoopInToMap(variableName, new
-							// ForLoopBean("i_" + nextName,
-							// variableName,
-							// variableMap.get(variableName).contains(SchemaDataType.NULL)));
-							// addForLoopBeanIndexToParent(variableName,
-							// indexOfForLoopBean,
-							// getForLoopBeanList().get(previousForLoopIndex).getVariableName());
-							// targetForLoopIndex = indexOfForLoopBean;
 						} else {
 							outputArrayVariableForLoopMap.put(variableName, targetForLoopIndex);
 							getForLoopBeanList().get(targetForLoopIndex).getArrayVariableListToInstantiate()
@@ -408,8 +407,31 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		Stack<ForLoopBean> forLoopBeanParentStack = getParentForLoopBeanStack(forLoopBean);
 		Stack<ForLoopBean> tempForLoopBeanParentStack = new Stack<ForLoopBean>();
 		tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();
-
+		boolean ifLoopCreated = false;
 		if (!ROOT_TAG.equals(forLoopBean.getVariableName())) {
+			// adding optional object element checks
+			if (forLoopBean.getNullableVarialesList() != null && !forLoopBean.getNullableVarialesList().isEmpty()) {
+				boolean firstElement = true;
+				for (String optionalVariable : forLoopBean.getNullableVarialesList()) {
+					if (!isOptionalVariableCheckedBefore(optionalVariable,
+							getForLoopBeanList().get(forLoopBean.getParentIndex()))) {
+						ifLoopCreated = true;
+						if (!firstElement) {
+							functionBuilder.append(" && ");
+							firstElement = false;
+						} else {
+							functionBuilder.append("if( ");
+						}
+						functionBuilder.append("(!" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+								new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
+								map, tempForLoopBeanParentStack, false) + ") ");
+					}
+				}
+				if (ifLoopCreated) {
+					functionBuilder.append("){");
+					functionBuilder.append("\n");
+				}
+			}
 			String forLoopVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 					new DMVariable(forLoopBean.getVariableName(), "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
 					map, tempForLoopBeanParentStack, false);
@@ -434,6 +456,10 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 			functionBuilder.append("\n");
 			functionBuilder.append("}");
 			functionBuilder.append("\n");
+			if (ifLoopCreated) {
+				functionBuilder.append("}");
+				functionBuilder.append("\n");
+			}
 		}
 		return functionBuilder.toString();
 	}
@@ -455,6 +481,29 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		Stack<ForLoopBean> forLoopBeanParentStack = getParentForLoopBeanStack(forLoopBean);
 		Stack<ForLoopBean> tempForLoopBeanParentStack = new Stack<ForLoopBean>();
 		tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();
+		boolean ifLoopCreated = false;
+		if (mappingOperation.getOptionalElementList() != null && !mappingOperation.getOptionalElementList().isEmpty()) {
+			boolean firstElement = true;
+			for (String optionalVariable : mappingOperation.getOptionalElementList()) {
+				if (!isOptionalVariableCheckedBefore(optionalVariable, forLoopBean)) {
+					ifLoopCreated = true;
+					if (!firstElement) {
+						operationBuilder.append(" && ");
+						firstElement = false;
+					} else {
+						operationBuilder.append("if( ");
+					}
+					operationBuilder.append("(!" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1), map,
+							tempForLoopBeanParentStack, false) + ") ");
+				}
+			}
+			if (ifLoopCreated) {
+				operationBuilder.append("){");
+				operationBuilder.append("\n");
+			}
+		}
+
 		int numOfOutputVariables = outputVariables.size();
 		for (int variableIndex = 0; variableIndex < numOfOutputVariables; variableIndex++) {
 			String prettyVariableName = null;
@@ -485,7 +534,29 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				DifferentLevelArrayMappingConfigGenerator.class, mappingOperation.getInputVariables(), map,
 				forLoopBeanParentStack, mappingOperation.getOperation()));
 		operationBuilder.append("\n");
+		if (ifLoopCreated) {
+			operationBuilder.append("}");
+			operationBuilder.append("\n");
+		}
 		return operationBuilder.toString();
+	}
+
+	private boolean isOptionalVariableCheckedBefore(String optionalVariable, ForLoopBean forLoopBean) {
+		if (!"root".equals(forLoopBean.getVariableName())) {
+			if (!forLoopBean.getNullableVarialesList().isEmpty()
+					&& forLoopBean.getNullableVarialesList().contains(optionalVariable)) {
+				return true;
+			} else {
+				if (forLoopBean.getParentIndex() > 0 && getForLoopBeanList().size() > forLoopBean.getParentIndex()) {
+					return isOptionalVariableCheckedBefore(optionalVariable,
+							getForLoopBeanList().get(forLoopBean.getParentIndex()));
+				} else {
+					return false;
+				}
+			}
+		} else {
+			return false;
+		}
 	}
 
 	private Stack<ForLoopBean> getParentForLoopBeanStack(ForLoopBean forLoopBean) {

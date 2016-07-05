@@ -38,7 +38,8 @@ public class ScriptGenerationUtil {
 	public static final String VALID_VARIABLE_NAME_REGEX = "^[a-zA-Z][a-zA-Z_$0-9]*$";
 
 	public static String getPrettyVariableNameInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map,
-			Stack<ForLoopBean> parentForLoopBeanStack, boolean isOperationVariable) {
+			Stack<ForLoopBean> parentForLoopBeanStackTemp, boolean isOperationVariable) {
+		Stack<ForLoopBean> parentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStackTemp.clone();
 		// put index values for array type variables
 		String prettyVariableName = "";
 		String variableName = "";
@@ -115,12 +116,17 @@ public class ScriptGenerationUtil {
 				if (map.containsKey(variableName)) {
 					variableType = map.get(variableName).get(VARIABLE_TYPE_INDEX);
 					if (SchemaDataType.ARRAY.equals(variableType)) {
+						String iterateName = "";
+						if (parentVariableBottomUpStack.isEmpty()) {
+							iterateName = "0";
+						} else {
+							iterateName = parentVariableBottomUpStack.pop().getIterativeName();
+						}
 						if (nextName.contains("Record")) {
 							prettyVariableName += getValidNextName(nextName.substring(0, nextName.indexOf("Record")))
-									+ "[" + parentVariableBottomUpStack.pop().getIterativeName() + "]";
+									+ "[" + iterateName + "]";
 						} else {
-							prettyVariableName += getValidNextName(nextName) + "["
-									+ parentVariableBottomUpStack.pop().getIterativeName() + "]";
+							prettyVariableName += getValidNextName(nextName) + "[" + iterateName + "]";
 						}
 					} else if (nextName.startsWith("@") && isPerviousVariableTypePrimitive) {
 						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));

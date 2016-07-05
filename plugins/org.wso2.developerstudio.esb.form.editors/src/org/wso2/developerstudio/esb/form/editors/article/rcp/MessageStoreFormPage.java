@@ -24,6 +24,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
@@ -91,11 +93,17 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		form.setText(Messages.getString("MessageStorePage.sectionMainTitle")); 
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 
-		ColumnLayout layout = new ColumnLayout();
-		layout.leftMargin = 10;
-		layout.rightMargin = 10;
-		layout.maxNumColumns = 2;
-		form.getBody().setLayout(layout);
+		GridLayout layout = new GridLayout();
+		layout.marginLeft = 20;
+		layout.marginRight = 20;
+		layout.marginTop = 10;
+		layout.numColumns = 6;
+		layout.makeColumnsEqualWidth = true;
+		form.setLayout(layout);
+		GridData formGridData = new GridData();
+		formGridData.horizontalSpan = 6;
+		formGridData.grabExcessHorizontalSpace = true;
+		form.setLayoutData(formGridData);
 		
 		storeMap = new LinkedHashMap<>();
 		
@@ -119,7 +127,11 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		basicSection.setActiveToggleColor(toolkit.getHyperlinkGroup().getActiveForeground());
 		basicSection.setToggleColor(toolkit.getColors().getColor(FormColors.SEPARATOR));
 		toolkit.createCompositeSeparator(basicSection);
-		
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		basicSection.setLayoutData(samplegridData);
 		basicSection.addExpansionListener(new ExpansionAdapter() {
 			public void expansionStateChanged(ExpansionEvent e) {
 				form.reflow(false);
@@ -128,18 +140,26 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		basicSection.setText(Messages.getString("MessageStorePage.section.basic"));
 		
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
-		basicSectionClient.setLayout(new TableWrapLayout());
+		basicSectionClient.setLayout(new GridLayout());
 		
 		basicSection.setClient(basicSectionClient);
 		
 		toolkit.createLabel(basicSectionClient, "Message Store Name");
 		storeName = toolkit.createText(basicSectionClient, "");
 		storeName.setBackground(new Color(null, 229,236,253));
-		storeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData storeNameData = new GridData();
+		storeNameData.horizontalSpan = 3;
+		storeNameData.horizontalAlignment = SWT.FILL;
+		storeNameData.grabExcessHorizontalSpace = true;
+		storeName.setLayoutData(storeNameData);
 		
 		toolkit.createLabel(basicSectionClient, "Message Store Type");
 		storeType = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		storeType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData storeTypeData = new GridData();
+		storeTypeData.horizontalSpan = 3;
+		storeTypeData.horizontalAlignment = SWT.FILL;
+		storeTypeData.grabExcessHorizontalSpace = true;
+		storeType.setLayoutData(storeTypeData);
 		String[] triggerTypes = messageStoreTypes;
 		storeType.setItems(triggerTypes);
 		storeType.addSelectionListener(new SelectionAdapter() {
@@ -184,16 +204,24 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		
 		/* Guaranteed Delivery Section */ 
 		guaranteedDeliverySection = this.createSection(form, toolkit, Messages.getString("MessageStorePage.section.guaranteedDelivery"));
-		
+		GridData guaranteedDeliverySectionData = new GridData();
+		guaranteedDeliverySectionData.horizontalSpan = 3;
+		guaranteedDeliverySectionData.horizontalAlignment = SWT.FILL;
+		guaranteedDeliverySectionData.grabExcessHorizontalSpace = true;
 		Composite guaranteedDeliverySectionClient = toolkit.createComposite(guaranteedDeliverySection);
-		guaranteedDeliverySectionClient.setLayout(new TableWrapLayout());
+		guaranteedDeliverySectionClient.setLayoutData(guaranteedDeliverySectionData);
+		guaranteedDeliverySectionClient.setLayout(new GridLayout());
 		
 		guaranteedDeliverySection.setClient(guaranteedDeliverySectionClient);
 		guaranteedDeliverySection.setExpanded(false);
 		
 		toolkit.createLabel(guaranteedDeliverySectionClient, "Enable Producer Guaranteed Delivery");
 		guaranteedDeliveryEnable = new Combo(guaranteedDeliverySectionClient, SWT.DROP_DOWN);
-		guaranteedDeliveryEnable.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData guaranteedDeliveryEnableData = new GridData();
+		guaranteedDeliveryEnableData.horizontalSpan = 3;
+		guaranteedDeliveryEnableData.horizontalAlignment = SWT.FILL;
+		guaranteedDeliveryEnableData.grabExcessHorizontalSpace = true;
+		guaranteedDeliveryEnable.setLayoutData(guaranteedDeliveryEnableData);
 		String[] states = {"True", "False"};
 		guaranteedDeliveryEnable.setItems(states);
 		guaranteedDeliveryEnable.addSelectionListener(new SelectionAdapter() {
@@ -207,8 +235,12 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		
 		toolkit.createLabel(guaranteedDeliverySectionClient, "Failover Message Store");
 		failoverMessageStore = toolkit.createText(guaranteedDeliverySectionClient, "");
+		GridData failoverMessageStoreData = new GridData();
+		failoverMessageStoreData.horizontalSpan = 3;
+		failoverMessageStoreData.horizontalAlignment = SWT.FILL;
+		failoverMessageStoreData.grabExcessHorizontalSpace = true;
 		failoverMessageStore.setBackground(new Color(null, 229,236,253));
-		failoverMessageStore.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		failoverMessageStore.setLayoutData(failoverMessageStoreData);
 
 		
 		

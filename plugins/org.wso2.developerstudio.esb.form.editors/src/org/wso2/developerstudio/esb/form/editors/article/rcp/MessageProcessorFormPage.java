@@ -25,6 +25,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
@@ -84,11 +86,17 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 		form.setText(Messages.getString("MessageProcessorPage.sectionMainTitle")); 
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 
-		ColumnLayout layout = new ColumnLayout();
-		layout.leftMargin = 10;
-		layout.rightMargin = 10;
-		layout.maxNumColumns = 2;
-		form.getBody().setLayout(layout);
+		GridLayout layout = new GridLayout();
+		layout.marginLeft = 20;
+		layout.marginRight = 20;
+		layout.marginTop = 10;
+		layout.numColumns = 6;
+		layout.makeColumnsEqualWidth = true;
+		form.setLayout(layout);
+		GridData formGridData = new GridData();
+		formGridData.horizontalSpan = 6;
+		formGridData.grabExcessHorizontalSpace = true;
+		form.setLayoutData(formGridData);
 		
 		processorMap = new LinkedHashMap<String, IMessageProcessor>();
 		

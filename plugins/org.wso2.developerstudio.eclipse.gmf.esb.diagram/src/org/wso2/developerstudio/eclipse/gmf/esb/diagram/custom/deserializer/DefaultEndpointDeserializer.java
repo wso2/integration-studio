@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.DefaultEndpoint;
 import org.eclipse.core.runtime.Assert;
@@ -31,35 +32,39 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 
-public class DefaultEndpointDeserializer extends AbstractEndpointDeserializer{
+public class DefaultEndpointDeserializer extends AbstractEndpointDeserializer {
 
 	@Deprecated
-	public AbstractEndPoint createNode(IGraphicalEditPart part,AbstractEndpoint object) {
-		
-		Assert.isTrue(object instanceof org.apache.synapse.endpoints.DefaultEndpoint, "Unsupported endpoint passed in for deserialization at "+ this.getClass());
-		
-		org.apache.synapse.endpoints.DefaultEndpoint dafaultEndpoint = (org.apache.synapse.endpoints.DefaultEndpoint)object;
-		
-		IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart ||
-				part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.DefaultEndPoint_3643
-				: EsbElementTypes.DefaultEndPoint_3609;
+	public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) {
+
+		Assert.isTrue(object instanceof org.apache.synapse.endpoints.DefaultEndpoint,
+				"Unsupported endpoint passed in for deserialization at " + this.getClass());
+
+		org.apache.synapse.endpoints.DefaultEndpoint dafaultEndpoint = (org.apache.synapse.endpoints.DefaultEndpoint) object;
+
+		IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
+				|| part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.DefaultEndPoint_3643
+						: EsbElementTypes.DefaultEndPoint_3609;
 		AbstractEndPoint endPoint = (AbstractEndPoint) DeserializerUtils.createNode(part, endpointType);
 		setElementToEdit(endPoint);
-		deserializeEndpoint(dafaultEndpoint,endPoint);
+		deserializeEndpoint(dafaultEndpoint, endPoint);
 		return endPoint;
 	}
 
 	@Override
 	public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
 		ESBFormEditor addressEPFormEditor = (ESBFormEditor) formEditor;
-		EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor.getFormPageForArtifact(ArtifactType.ENDPOINT);
+		EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor
+				.getFormPageForArtifact(ArtifactType.ENDPOINT);
 
 		DefaultEndpoint endpoint = (DefaultEndpoint) endpointObject;
-		
-		DefaultEndpointFormPage defaultEndpointPage = (DefaultEndpointFormPage)endpointPage;
-		deserializeEndpoint(formEditor,endpointObject);
-		setTextValue(defaultEndpointPage.defaultEP_Description, endpoint.getDescription());
-		
+
+		DefaultEndpointFormPage defaultEndpointPage = (DefaultEndpointFormPage) endpointPage;
+		deserializeEndpoint(formEditor, endpointObject);
+		if (StringUtils.isNotEmpty(defaultEndpointPage.getEP_Description().getText())) {
+			setTextValue(defaultEndpointPage.getEP_Description(), endpoint.getDescription());
+		}
+
 		super.createNode(formEditor, endpointObject);
 	}
 

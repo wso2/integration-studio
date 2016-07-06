@@ -744,7 +744,7 @@ public class MessageProcessorDeserializer
 				
 				if (keySet.size() > 0) {
 					List<MessageProcessorParameter> existingProperties = failover.messageProcessorParameterList;
-					failover.messageProcessorParameterList = (getMessageProcessorProperties(keySet,parameters,existingProperties));
+					failover.messageProcessorParameterList = getMessageProcessorProperties(keySet,parameters,existingProperties);
 				}else{
 					//When removing all properties from the source view then clear the list
 					failover.messageProcessorParameterList = null;

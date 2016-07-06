@@ -21,7 +21,6 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.mediators.builtin.SendMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
@@ -33,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
 
 
 
@@ -130,5 +130,31 @@ public class TemplateEndPointTransformer extends AbstractEndpointTransformer{
             	setEndpointToSendOrCallMediator(sequence, synapseEP);
  
         }
+        
+        public org.apache.synapse.endpoints.TemplateEndpoint create(TemplateEndPointFormPage tempFormPage) {
+        	org.apache.synapse.endpoints.TemplateEndpoint synapseTemplateEP = new org.apache.synapse.endpoints.TemplateEndpoint();
+
+    		if (StringUtils.isNotEmpty(tempFormPage.getName())) {
+    			synapseTemplateEP.setName(tempFormPage.getName());
+    		}
+    		
+    		createAdvanceOptions(tempFormPage, synapseTemplateEP);
+    		
+    		if(tempFormPage.templateParameterList != null && tempFormPage.templateParameterList.size()>0){
+    		for(TemplateEndpointParameter parameter:tempFormPage.templateParameterList){
+             	if (StringUtils.isNotEmpty(parameter.getParameterName()) && StringUtils.isNotEmpty(parameter.getParameterValue())) {
+             		synapseTemplateEP.addParameter(parameter.getParameterName(), parameter.getParameterValue());
+             	}                      
+             }
+    		}
+    		
+    		synapseTemplateEP.setTemplate(tempFormPage.getTempEP_TargetTemp().getText());
+    		synapseTemplateEP.setDescription(tempFormPage.getTempEP_Description().getText());
+    		
+    		return synapseTemplateEP;
+    		
+        }
+
+	
  
 }

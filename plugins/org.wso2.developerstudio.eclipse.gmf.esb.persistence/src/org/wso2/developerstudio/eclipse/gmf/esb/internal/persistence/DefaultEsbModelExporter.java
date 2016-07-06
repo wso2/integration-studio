@@ -94,6 +94,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEn
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -272,7 +273,11 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		} else if ((FormPage) endpointFormPage instanceof DefaultEndpointFormPage) {
 			DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
 			return transformer.create((DefaultEndpointFormPage) endpointFormPage);
-		} else {
+		}else if ((FormPage) endpointFormPage instanceof TemplateEndPointFormPage) {
+			TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
+			return transformer.create((TemplateEndPointFormPage) endpointFormPage);
+		}
+		else {
 			return null;
 		}	
 	}

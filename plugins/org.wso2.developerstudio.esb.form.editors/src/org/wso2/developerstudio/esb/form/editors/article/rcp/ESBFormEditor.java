@@ -30,6 +30,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointF
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.AddressEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.TemplateEndPointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 
 /**
@@ -102,6 +103,8 @@ public class ESBFormEditor extends FormEditor {
 			currFormPage = new HttpEndpointFormPage(this);
 		}else if (artifactType == ArtifactType.ENDPOINT_WSDL) {
 			currFormPage = new WsdlEndpointFormPage(this);
+		}else if(artifactType == ArtifactType.TEMPLATE_ENDPOINT){
+			currFormPage = new TemplateEndPointFormPage(this);
 		}
 	}
 

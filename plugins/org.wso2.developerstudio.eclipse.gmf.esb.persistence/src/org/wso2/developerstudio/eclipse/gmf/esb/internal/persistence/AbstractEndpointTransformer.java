@@ -52,7 +52,10 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointF
 
 public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransformer {
 
+	@SuppressWarnings("deprecation")
 	protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) {
+		
+		final String FINAL = "final";
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 		EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
 		synapseEPDef.setFormat(endpointFormPage.getEP_Format().getText());
@@ -149,41 +152,41 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		}
 
 		if (endpointCommons.getEndpointAddressing().getSelectionIndex() == 0) {
-			synapseEPDef.setAddressingOn(true); // TODO implement these
-												// parameters
-			synapseEPDef.setUseSeparateListener(true);
-			synapseEPDef.setAddressingVersion("final");
+			synapseEPDef.setAddressingOn(true); 
+			synapseEPDef.setUseSeparateListener(Boolean.valueOf(endpointCommons.getEndpointSeparateListner().getText().toString()));
+			String version = endpointCommons.getEndpointVersion().getText();
+			if(StringUtils.isNotEmpty(version)){
+			synapseEPDef.setAddressingVersion(( version == FINAL)? "final" : "submission");
+			}
 		}
+		
+		
 		if (endpointCommons.getEndpointReliableMessaging().getSelectionIndex() == 0) {
 			synapseEPDef.setReliableMessagingOn(true);
-			String keyValue = "";
-			if (keyValue != null && !keyValue.isEmpty()) {
-				// synapseEPDef.setWsRMPolicyKey(visualEndPoint.getReliableMessagingPolicy().getKeyValue());
+			String keyValue = endpointCommons.getEndpointReliableMessagingPolicyKey().getText();
+			if (StringUtils.isNotEmpty(keyValue)) {
+				synapseEPDef.setWsRMPolicyKey(keyValue);
 			}
-		} else {
-			synapseEPDef.setReliableMessagingOn(false);
-		}
+		} 
+	
 
 		if (endpointCommons.getEndpointSecurity().getSelectionIndex() == 0) {
-			/*
-			 * synapseEPDef.setSecurityOn(true); if
-			 * (visualEndPoint.getSecurityPolicy() != null) { String policyValue
-			 * = visualEndPoint.getSecurityPolicy().getKeyValue();
-			 * if(policyValue != null && !policyValue.isEmpty()){
-			 * synapseEPDef.setWsSecPolicyKey(policyValue); } }
-			 * 
-			 * if (visualEndPoint.getInboundPolicy() != null) { String
-			 * inboundPolicyValue =
-			 * visualEndPoint.getInboundPolicy().getKeyValue();
-			 * if(inboundPolicyValue != null && !inboundPolicyValue.isEmpty()){
-			 * synapseEPDef.setInboundWsSecPolicyKey(inboundPolicyValue); } }
-			 * 
-			 * if (visualEndPoint.getOutboundPolicy() != null) { String
-			 * outboundPolicyValue =
-			 * visualEndPoint.getOutboundPolicy().getKeyValue();
-			 * if(outboundPolicyValue !=null && !outboundPolicyValue.isEmpty()){
-			 * synapseEPDef.setOutboundWsSecPolicyKey(outboundPolicyValue); } }
-			 */
+			synapseEPDef.setSecurityOn(true);
+			
+				if (StringUtils.isNotEmpty(endpointCommons.getEndpointWSPolicyKey().getText())) {
+					String policyValue = endpointCommons.getEndpointWSPolicyKey().getText();
+					synapseEPDef.setWsSecPolicyKey(policyValue);
+					}
+
+				if (StringUtils.isNotEmpty(endpointCommons.getEndpointSecurityInboundPolicyKey().getText())) {
+					String inboundPolicyValue = endpointCommons.getEndpointSecurityInboundPolicyKey().getText();
+					synapseEPDef.setInboundWsSecPolicyKey(inboundPolicyValue);
+				}
+
+				if (StringUtils.isNotEmpty(endpointCommons.getEndpointSecurityOutboundPolicyKey().getText())) {
+					String outboundPolicyValue = endpointCommons.getEndpointSecurityOutboundPolicyKey().getText();
+					synapseEPDef.setOutboundWsSecPolicyKey(outboundPolicyValue);
+				}
 		}
 
 		// saveProperties(visualEndPoint, endpoint);

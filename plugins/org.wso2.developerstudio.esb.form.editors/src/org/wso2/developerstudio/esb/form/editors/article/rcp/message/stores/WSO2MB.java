@@ -17,6 +17,8 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -29,6 +31,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class WSO2MB implements IMessageStore {
@@ -38,15 +41,17 @@ public class WSO2MB implements IMessageStore {
 	public Text wso2mb_jndiQueueName;
 	public Combo wso2mb_apiVersion;
 	
+	private AbstractEsbFormPage esbFormPage;
 	ScrolledForm form;
 	FormToolkit toolkit;
 	
 	Section connSection;
     Section parameterSection;
 
-	public WSO2MB(ScrolledForm form, FormToolkit toolkit) {
+	public WSO2MB(ScrolledForm form, FormToolkit toolkit, AbstractEsbFormPage esbFormPage) {
 		this.form = form;
 		this.toolkit = toolkit;
+		this.esbFormPage = esbFormPage;
 	}
 
 	@Override
@@ -64,11 +69,25 @@ public class WSO2MB implements IMessageStore {
 		wso2mb_initCtxFactory = toolkit.createText(connSectionClient, "");
 		wso2mb_initCtxFactory.setBackground(new Color(null, 229,236,253));
 		wso2mb_initCtxFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		wso2mb_initCtxFactory.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(connSectionClient, "Queue Connection Factory");
 		wso2mb_QueueConnFactory = toolkit.createText(connSectionClient, "");
 		wso2mb_QueueConnFactory.setBackground(new Color(null, 229,236,253));
 		wso2mb_QueueConnFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		wso2mb_QueueConnFactory.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 	}
 
@@ -87,12 +106,26 @@ public class WSO2MB implements IMessageStore {
 		wso2mb_jndiQueueName = toolkit.createText(paramSectionClient, "");
 		wso2mb_jndiQueueName.setBackground(new Color(null, 229,236,253));
 		wso2mb_jndiQueueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		wso2mb_jndiQueueName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "JMS API Specification Version");
 		wso2mb_apiVersion = new Combo(paramSectionClient, SWT.DROP_DOWN);
 		wso2mb_apiVersion.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] versions = {"1.1", "1.0"};
 		wso2mb_apiVersion.setItems(versions);
+		wso2mb_apiVersion.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 	}
 

@@ -17,6 +17,8 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.Color;
@@ -25,14 +27,16 @@ import org.eclipse.ui.forms.*;
 import org.eclipse.ui.forms.editor.*;
 import org.eclipse.ui.forms.events.*;
 import org.eclipse.ui.forms.widgets.*;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
+import org.eclipse.ui.part.FileEditorInput;
 
 /**
  * 
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
-public class LocalEntryFormPage extends FormPage {
+public class LocalEntryFormPage extends AbstractEsbFormPage {
 	
 	public static final String SOURCE_URL_ENTRY = "Source URL Entry";
 	public static final String IN_LINED_XML_ENTRY = "In-lined XML Entry";
@@ -79,6 +83,13 @@ public class LocalEntryFormPage extends FormPage {
 		localEntryNameTxt = toolkit.createText(basicSectionClient, "");
 		localEntryNameTxt.setBackground(new Color(null, 229,236,253));
 		localEntryNameTxt.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		localEntryNameTxt.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		  
 		 
 		toolkit.createLabel(basicSectionClient, "Local Entry Type");
@@ -104,6 +115,8 @@ public class LocalEntryFormPage extends FormPage {
 				} else if (localEntryTypeCombo.getText().equals(SOURCE_URL_ENTRY)) {
 					createSourceUrlEntry(localEntryValueLbl,localEntryTextValue);
 				}
+				setSave(true);
+				updateDirtyState();
 			}
 		});
 		
@@ -111,8 +124,20 @@ public class LocalEntryFormPage extends FormPage {
 		localEntryTextValue = toolkit.createText(basicSectionClient, "");
 		localEntryTextValue.setBackground(new Color(null, 229,236,253));
 		localEntryTextValue.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		localEntryTextValue.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 	  
 	 	section.setClient(basicSectionClient);
+	}
+	
+	@Override
+	public boolean isDirty() {
+		return super.isDirty();
 	}
 
 	private void createInlinedTextEntry(final Label label, Text textBox) {

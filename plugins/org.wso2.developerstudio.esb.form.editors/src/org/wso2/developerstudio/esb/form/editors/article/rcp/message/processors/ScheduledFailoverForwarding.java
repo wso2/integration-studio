@@ -21,6 +21,9 @@ import java.util.List;
 
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -45,6 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureMessageProcessorParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 import org.wso2.developerstudio.esb.form.editors.article.providers.RegistryKeyPropertyEditorDialog;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class ScheduledFailoverForwarding implements IMessageProcessor {
@@ -67,15 +71,18 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
     public String faultSequenceKey;
     public String deactiveSequenceKey;
     
+    private AbstractEsbFormPage esbFormPage;
+    
     ScrolledForm form;
     FormToolkit toolkit;
     
     Section miscSection;
     Section parameterSection;
     
-    public ScheduledFailoverForwarding(ScrolledForm form, FormToolkit toolkit) {
+    public ScheduledFailoverForwarding(ScrolledForm form, FormToolkit toolkit, AbstractEsbFormPage esbFormPage) {
     	this.form = form;
     	this.toolkit = toolkit;
+    	this.esbFormPage = esbFormPage;
     }
 
     @Override
@@ -94,6 +101,13 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
         failover_store = toolkit.createText(miscSectionClient, "");
         failover_store.setBackground(new Color(null, 229,236,253));
         failover_store.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        failover_store.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         
         
@@ -116,27 +130,62 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
         failover_state.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
         String[] states = {"Active", "Deactive"};
         failover_state.setItems(states);
+        failover_state.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Forwarding Interval");
         failover_interval = toolkit.createText(parameterSectionClient, "");
         failover_interval.setBackground(new Color(null, 229,236,253));
         failover_interval.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        failover_interval.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Retry Interval");
         failover_retryInterval = toolkit.createText(parameterSectionClient, "");
         failover_retryInterval.setBackground(new Color(null, 229,236,253));
         failover_retryInterval.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        failover_retryInterval.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Max Delivery Attempts");
         failover_maxDeliveryAttempts = toolkit.createText(parameterSectionClient, "");
         failover_maxDeliveryAttempts.setBackground(new Color(null, 229,236,253));
         failover_maxDeliveryAttempts.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        failover_maxDeliveryAttempts.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Drop Message After Maximum Delivery Attempts");
         failover_dropMessageAfterMaxDeliveryAttempts = new Combo(parameterSectionClient, SWT.DROP_DOWN);
         failover_dropMessageAfterMaxDeliveryAttempts.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
         String[] dropConditions = {"Enabled", "Disabled"};
         failover_dropMessageAfterMaxDeliveryAttempts.setItems(dropConditions);
+        failover_dropMessageAfterMaxDeliveryAttempts.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         addSeparator(form, toolkit, parameterSectionClient);
 
@@ -144,6 +193,13 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
         failover_faultSequence = toolkit.createText(parameterSectionClient, "");
         failover_faultSequence.setBackground(new Color(null, 229,236,253));
         failover_faultSequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        failover_faultSequence.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
         
         failover_add_faultSequence = toolkit.createButton(parameterSectionClient, "Add a Fault Sequence Key", SWT.PUSH);
         failover_add_faultSequence.setBackground(new Color(null, 229,236,253));
@@ -161,6 +217,8 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
  					faultSequenceKey = registryKeyProperty.getKeyValue();
  					failover_faultSequence.setText(faultSequenceKey);
  				}
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
  			}
 
 			@Override
@@ -175,6 +233,13 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
         failover_deactiveSequence = toolkit.createText(parameterSectionClient, "");
         failover_deactiveSequence.setBackground(new Color(null, 229,236,253));
         failover_deactiveSequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        failover_deactiveSequence.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
         
         failover_add_deactiveSequence = toolkit.createButton(parameterSectionClient, "Add a Deactive Sequence Key", SWT.PUSH);
         failover_add_deactiveSequence.setBackground(new Color(null, 229,236,253));
@@ -192,6 +257,8 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
  					deactiveSequenceKey = registryKeyProperty.getKeyValue();
  					failover_deactiveSequence.setText(deactiveSequenceKey);
  				}
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
  			}
 
 			@Override
@@ -207,16 +274,37 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
         failover_quartzConfigFilePath = toolkit.createText(parameterSectionClient, "");
         failover_quartzConfigFilePath.setBackground(new Color(null, 229,236,253));
         failover_quartzConfigFilePath.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        failover_quartzConfigFilePath.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Cron Expression");
         failover_cronExpression = toolkit.createText(parameterSectionClient, "");
         failover_cronExpression.setBackground(new Color(null, 229,236,253));
         failover_cronExpression.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        failover_cronExpression.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Task Count");
         failover_taskCount = toolkit.createText(parameterSectionClient, "");
         failover_taskCount.setBackground(new Color(null, 229,236,253));
         failover_taskCount.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        failover_taskCount.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
         
         addSeparator(form, toolkit, parameterSectionClient);
 
@@ -231,6 +319,8 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
      				paramDialog.setBlockOnOpen(true);
      				paramDialog.open();
      				messageProcessorParameterList = paramDialog.getMessageProcessorPropertyList();
+    				esbFormPage.setSave(true);
+    				esbFormPage.updateDirtyState();
      			}
      			
      			@Override

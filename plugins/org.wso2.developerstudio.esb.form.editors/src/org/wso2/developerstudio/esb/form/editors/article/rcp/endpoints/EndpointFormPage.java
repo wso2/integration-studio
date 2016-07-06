@@ -33,13 +33,14 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 /**
  * 
  * To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Generation - Code and Comments
  */
-public abstract class EndpointFormPage extends FormPage {
+public abstract class EndpointFormPage extends AbstractEsbFormPage {
 
 	protected EndpointCommons endpointCommons;
 	

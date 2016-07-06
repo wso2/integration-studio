@@ -9,7 +9,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.gmf.esb,
  org.eclipse.m2e.maven.runtime,
- org.wso2.developerstudio.eclipse.maven
+ org.wso2.developerstudio.eclipse.maven,
+ org.eclipse.ui.workbench
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.commons.lang,
@@ -20,6 +21,7 @@ Import-Package: org.apache.commons.lang,
  org.eclipse.ui.forms.events,
  org.eclipse.ui.forms.widgets,
  org.eclipse.ui.ide,
+ org.eclipse.ui.part,
  org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="4.1.0",
  org.wso2.developerstudio.eclipse.capp.core.model;version="4.1.0",
  org.wso2.developerstudio.eclipse.esb.core,

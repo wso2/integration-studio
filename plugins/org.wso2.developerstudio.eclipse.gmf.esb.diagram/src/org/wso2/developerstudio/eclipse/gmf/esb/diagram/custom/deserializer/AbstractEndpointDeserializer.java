@@ -210,6 +210,7 @@ public abstract class AbstractEndpointDeserializer
 		return regkey;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void deserializeEndpoint(FormEditor formEditor, AbstractEndpoint object) {
 		ESBFormEditor endpointFormEditor = (ESBFormEditor) formEditor;
@@ -266,29 +267,51 @@ public abstract class AbstractEndpointDeserializer
 			}
 		}
 
-		// Setting QOS
-		if (endpointCommons.getEndpointReliableMessaging() != null) {
-			if (definition.isReliableMessagingOn()) {
-				endpointCommons.getEndpointReliableMessaging().select(0);
-			} else {
-				endpointCommons.getEndpointReliableMessaging().select(1);
-			}
+		// Setting QOS		
+		if (definition.isReliableMessagingOn()) {
+			endpointCommons.getEndpointReliableMessaging().select(0);
+			endpointCommons.setRMFields(true);
+			endpointCommons.getEndpointReliableMessagingPolicyKey().setText(definition.getWsRMPolicyKey());
+		} else {
+			endpointCommons.getEndpointReliableMessaging().select(1);
 		}
-		if (endpointCommons.getEndpointSecurity() != null) {
-			if (definition.isSecurityOn()) {
-				endpointCommons.getEndpointSecurity().select(0);
-			} else {
-				endpointCommons.getEndpointSecurity().select(1);
+		
+		if (definition.isSecurityOn()) {
+			endpointCommons.getEndpointSecurity().select(0);
+			String wsSecPolicyKey = definition.getWsSecPolicyKey();
+			if(StringUtils.isNotEmpty(wsSecPolicyKey)){
+				endpointCommons.setWSFields(true);
+				endpointCommons.getEndpointWSPolicyKey().setText(wsSecPolicyKey);
 			}
+			String inboundPolicyKey = definition.getInboundWsSecPolicyKey();
+			String outboundPolicyKey = definition.getOutboundWsSecPolicyKey();
+			if(StringUtils.isNotEmpty(inboundPolicyKey) || StringUtils.isNotEmpty(outboundPolicyKey)){
+				endpointCommons.setInoutFields(true);
+				endpointCommons.getEndpointSecurityInboundPolicyKey().setText(inboundPolicyKey);
+				endpointCommons.getEndpointSecurityOutboundPolicyKey().setText(outboundPolicyKey);
+			}
+		} else {
+			endpointCommons.getEndpointSecurity().select(1);
 		}
 
-		if (endpointCommons.getEndpointAddressing() != null) {
-			if (definition.isAddressingOn()) {
-				endpointCommons.getEndpointAddressing().select(0);
-			} else {
-				endpointCommons.getEndpointAddressing().select(1);
+
+		if (definition.isAddressingOn()) {
+			endpointCommons.getEndpointAddressing().select(0);	
+			endpointCommons.setAddressingFields(true);
+			if("final".equals(definition.getAddressingVersion())){
+				endpointCommons.getEndpointVersion().select(0);	
+			}else if("submission".equals(definition.getAddressingVersion())){
+				endpointCommons.getEndpointVersion().select(1);
 			}
+			if(definition.isUseSeparateListener()){
+				endpointCommons.getEndpointSeparateListner().select(0);
+			}else{
+				endpointCommons.getEndpointSeparateListner().select(1);
+			}
+		} else {
+			endpointCommons.getEndpointAddressing().select(1);
 		}
+
 
 		// TODO further processing on QoS
 

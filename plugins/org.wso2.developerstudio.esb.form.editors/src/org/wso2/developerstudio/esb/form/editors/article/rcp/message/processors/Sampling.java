@@ -22,6 +22,9 @@ import java.util.List;
 
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -46,6 +49,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureMessageProcessorParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 import org.wso2.developerstudio.esb.form.editors.article.providers.RegistryKeyPropertyEditorDialog;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 
@@ -61,6 +65,8 @@ public class Sampling implements IMessageProcessor {
     public List<MessageProcessorParameter> messageProcessorParameterList;
     public String sequenceKey;
     
+    private AbstractEsbFormPage esbFormPage;
+    
     ScrolledForm form;
     FormToolkit toolkit;
     
@@ -69,9 +75,10 @@ public class Sampling implements IMessageProcessor {
     
     
 
-    public Sampling(ScrolledForm form, FormToolkit toolkit) {
+    public Sampling(ScrolledForm form, FormToolkit toolkit, AbstractEsbFormPage esbFormPage) {
     	this.form = form;
     	this.toolkit = toolkit;
+    	this.esbFormPage = esbFormPage;
     	
 	}
 
@@ -91,6 +98,13 @@ public class Sampling implements IMessageProcessor {
         sampling_sequence = toolkit.createText(miscSectionClient, "");
         sampling_sequence.setBackground(new Color(null, 229,236,253));
         sampling_sequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        sampling_sequence.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
         
         sampling_add_sequence = toolkit.createButton(miscSectionClient, "Add a Sequence Key", SWT.PUSH);
         sampling_add_sequence.setBackground(new Color(null, 229,236,253));
@@ -108,6 +122,8 @@ public class Sampling implements IMessageProcessor {
  				    sequenceKey = registryKeyProperty.getKeyValue();
  					sampling_sequence.setText(sequenceKey);
  				}
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
  			}
 
 			@Override
@@ -138,16 +154,36 @@ public class Sampling implements IMessageProcessor {
         sampling_state.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
         String[] states = {"Active", "Deactive"};
         sampling_state.setItems(states);
+        sampling_state.addSelectionListener(new SelectionAdapter() {
+        	public void widgetSelected(SelectionEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+        	}
+        });
 
         toolkit.createLabel(parameterSectionClient, "Sampling Interval");
         sampling_interval = toolkit.createText(parameterSectionClient, "");
         sampling_interval.setBackground(new Color(null, 229,236,253));
         sampling_interval.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        sampling_interval.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Sampling Concurrency");
         sampling_concurrency = toolkit.createText(parameterSectionClient, "");
         sampling_concurrency.setBackground(new Color(null, 229,236,253));
         sampling_concurrency.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        sampling_concurrency.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         addSeparator(form, toolkit, parameterSectionClient);
 
@@ -155,11 +191,25 @@ public class Sampling implements IMessageProcessor {
         sampling_quartzConfigFilePath = toolkit.createText(parameterSectionClient, "");
         sampling_quartzConfigFilePath.setBackground(new Color(null, 229,236,253));
         sampling_quartzConfigFilePath.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        sampling_quartzConfigFilePath.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Cron Expression");
         sampling_cronExpression = toolkit.createText(parameterSectionClient, "");
         sampling_cronExpression.setBackground(new Color(null, 229,236,253));
         sampling_cronExpression.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        sampling_cronExpression.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         addSeparator(form, toolkit, parameterSectionClient);
 
@@ -174,6 +224,8 @@ public class Sampling implements IMessageProcessor {
      				paramDialog.setBlockOnOpen(true);
      				paramDialog.open();
      				messageProcessorParameterList = paramDialog.getMessageProcessorPropertyList();
+    				esbFormPage.setSave(true);
+    				esbFormPage.updateDirtyState();
      			}
      			
      			@Override

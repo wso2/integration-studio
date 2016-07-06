@@ -22,6 +22,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
@@ -86,25 +88,19 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 		form.setText(Messages.getString("MessageProcessorPage.sectionMainTitle")); 
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 
-		GridLayout layout = new GridLayout();
-		layout.marginLeft = 20;
-		layout.marginRight = 20;
-		layout.marginTop = 10;
-		layout.numColumns = 6;
-		layout.makeColumnsEqualWidth = true;
-		form.setLayout(layout);
-		GridData formGridData = new GridData();
-		formGridData.horizontalSpan = 6;
-		formGridData.grabExcessHorizontalSpace = true;
-		form.setLayoutData(formGridData);
+		ColumnLayout layout = new ColumnLayout();
+		layout.leftMargin = 10;
+		layout.rightMargin = 10;
+		layout.maxNumColumns = 2;
+		form.getBody().setLayout(layout);
 		
 		processorMap = new LinkedHashMap<String, IMessageProcessor>();
 		
 		
-		processorMap.put(messageSamplingProcessor, new Sampling(form, toolkit));
-		processorMap.put(scheduledMessageForwardingProcessor, new ScheduledForwarding(form, toolkit));
-		processorMap.put(scheduledFailoverMessageForwardingProcessor, new ScheduledFailoverForwarding(form, toolkit));
-		processorMap.put(customProcessor, new CustomProcessor(form, toolkit));
+		processorMap.put(messageSamplingProcessor, new Sampling(form, toolkit, this));
+		processorMap.put(scheduledMessageForwardingProcessor, new ScheduledForwarding(form, toolkit, this));
+		processorMap.put(scheduledFailoverMessageForwardingProcessor, new ScheduledFailoverForwarding(form, toolkit, this));
+		processorMap.put(customProcessor, new CustomProcessor(form, toolkit, this));
 		
 
 		createFormBasicSection(form, toolkit);
@@ -136,6 +132,13 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 		processorName = toolkit.createText(basicSectionClient, "");
 		processorName.setBackground(new Color(null, 229,236,253));
 		processorName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		processorName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 
 
 		toolkit.createLabel(basicSectionClient, "Message Processor Type");
@@ -158,6 +161,8 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 				}
 				
 				refreshProcessorSettings();
+				setSave(true);
+				updateDirtyState();
 			}
 		});
 		
@@ -166,6 +171,13 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 		storeName = toolkit.createText(basicSectionClient, "");
 		storeName.setBackground(new Color(null, 229,236,253));
 		storeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		storeName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		
 	}
 	

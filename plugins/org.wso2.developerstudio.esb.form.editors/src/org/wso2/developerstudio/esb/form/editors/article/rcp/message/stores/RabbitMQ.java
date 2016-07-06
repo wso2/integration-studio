@@ -16,6 +16,8 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores;
 
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
@@ -27,6 +29,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class RabbitMQ implements IMessageStore {
@@ -40,15 +43,18 @@ public class RabbitMQ implements IMessageStore {
 	public Text rabbitMQ_password;
 	public Text rabbitMQ_virtualhost;
 	
+	private AbstractEsbFormPage esbFormPage;
+	
 	ScrolledForm form;
 	FormToolkit toolkit;
 	
 	Section connSection;
     Section parameterSection; 
 
-	public RabbitMQ(ScrolledForm form, FormToolkit toolkit) {
+	public RabbitMQ(ScrolledForm form, FormToolkit toolkit, AbstractEsbFormPage esbFormPage) {
 		this.form = form;
 		this.toolkit = toolkit;
+		this.esbFormPage = esbFormPage;
 	}
 
 	@Override
@@ -66,11 +72,25 @@ public class RabbitMQ implements IMessageStore {
 		rabbitMQ_hostname = toolkit.createText(connSectionClient, "");
 		rabbitMQ_hostname.setBackground(new Color(null, 229,236,253));
 		rabbitMQ_hostname.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		rabbitMQ_hostname.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(connSectionClient, "Rabbit MQ Server Port");
 		rabbitMQ_port = toolkit.createText(connSectionClient, "");
 		rabbitMQ_port.setBackground(new Color(null, 229,236,253));
 		rabbitMQ_port.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		rabbitMQ_port.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 	}
 
@@ -90,31 +110,73 @@ public class RabbitMQ implements IMessageStore {
 		rabbitMQ_queueName = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_queueName.setBackground(new Color(null, 229,236,253));
 		rabbitMQ_queueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		rabbitMQ_queueName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "RabbitMQ Exchange Name");
 		rabbitMQ_exchangeName = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_exchangeName.setBackground(new Color(null, 229,236,253));
 		rabbitMQ_exchangeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		rabbitMQ_exchangeName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "Routing Key");
 		rabbitMQ_routingKey = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_routingKey.setBackground(new Color(null, 229,236,253));
 		rabbitMQ_routingKey.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		rabbitMQ_routingKey.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "RabbitMQ Username");
 		rabbitMQ_username = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_username.setBackground(new Color(null, 229,236,253));
 		rabbitMQ_username.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		rabbitMQ_username.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "RabbitMQ Password");
 		rabbitMQ_password = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_password.setBackground(new Color(null, 229,236,253));
 		rabbitMQ_password.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		rabbitMQ_password.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "Virtual Host");
 		rabbitMQ_virtualhost = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_virtualhost.setBackground(new Color(null, 229,236,253));
 		rabbitMQ_virtualhost.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		rabbitMQ_virtualhost.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 	}
 

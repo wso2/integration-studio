@@ -40,7 +40,8 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpo
 public class ESBFormEditor extends FormEditor {
 
 	ArtifactType artifactType;
-	FormPage currFormPage = null;
+	AbstractEsbFormPage currFormPage = null;
+	private  boolean isDirty;
 
 	public ESBFormEditor(ArtifactType artifactType) {
 		this.artifactType = artifactType;
@@ -125,6 +126,7 @@ public class ESBFormEditor extends FormEditor {
 		 * if (p == null) { return; } updateState(getEditorInput());
 		 * validateState(getEditorInput()); performSave(false, monitor);
 		 */
+		currFormPage.doPageSave();
 	}
 
 	private void performSave(boolean b, IProgressMonitor monitor) {
@@ -155,5 +157,19 @@ public class ESBFormEditor extends FormEditor {
 	 */
 	public boolean isSaveAsAllowed() {
 		return false;
+	}
+	
+	public  void updateDirtyState() {
+		isDirty = currFormPage.isDirty();
+		firePropertyChange(PROP_DIRTY);
+		editorDirtyStateChanged();	    
+    }
+	
+	public boolean isDirty() {
+		return isDirty;
+	} 
+
+	public void setDirty(boolean isDirty) {
+		this.isDirty = isDirty;
 	}
 }

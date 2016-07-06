@@ -55,7 +55,6 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 	@SuppressWarnings("deprecation")
 	protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) {
 
-		final String FINAL = "final";
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 		EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
 		/**LEAVE_AS_IS,
@@ -202,7 +201,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 						Boolean.valueOf(endpointCommons.getEndpointSeparateListner().getText().toString()));
 				String version = endpointCommons.getEndpointVersion().getText();
 				if (StringUtils.isNotEmpty(version)) {
-					synapseEPDef.setAddressingVersion((version == FINAL) ? "final" : "submission");
+					synapseEPDef.setAddressingVersion((version.equals("final")) ? "final" : "submission");
 				}
 			}
 		}
@@ -377,7 +376,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 			endpoint.addProperty(mediatorProperty);
 		}
 	}
-
+	
 	/**
 	 * transform Endpoint Output flow
 	 * 

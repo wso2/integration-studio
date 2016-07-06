@@ -132,7 +132,7 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 		if (StringUtils.isNotBlank(httpFormPage.getEndpointName().getText())) {
 			synapseHttpEP.setName(httpFormPage.getEndpointName().getText());
 		}
-		if (httpFormPage.httpEP_UriTemplate.getText() != null) {
+		if (StringUtils.isNotEmpty(httpFormPage.httpEP_UriTemplate.getText())) {
 			UriTemplate template = UriTemplate.fromTemplate(httpFormPage.httpEP_UriTemplate.getText());
 			synapseHttpEP.setUriTemplate(template);
 		}

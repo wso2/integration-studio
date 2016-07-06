@@ -21,10 +21,14 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.WSDLEndpoint;
+import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
@@ -32,7 +36,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpointFormPage;
 
 public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
@@ -112,7 +115,11 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		if(StringUtils.isNotBlank(wsdlEndpointFormPage.getEndpointName().getText())){
 			synapseWSDLEP.setName(wsdlEndpointFormPage.getEndpointName().getText());
 		}		
-		createAdvanceOptions(wsdlEndpointFormPage, synapseWSDLEP);		
+		createAdvanceOptions(wsdlEndpointFormPage, synapseWSDLEP);	
+		
+		if(wsdlEndpointFormPage.endpointPropertyList != null && wsdlEndpointFormPage.endpointPropertyList.size()>0){
+			saveProperties(wsdlEndpointFormPage,synapseWSDLEP);
+		}
 		return synapseWSDLEP;
 	}	
 
@@ -124,6 +131,41 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		WSDLEndPoint visualEndPoint = (WSDLEndPoint) subject;
 		Endpoint synapseEP = create(visualEndPoint, visualEndPoint.getEndPointName());
 		setEndpointToSendOrCallMediator(sequence, synapseEP);
+	}
+	
+
+	/**
+	 * Save endpoint properties
+	 * 
+	 * @param model
+	 * @param endpoint
+	 */
+	protected void saveProperties(WsdlEndpointFormPage endpointFormPage, org.apache.synapse.endpoints.WSDLEndpoint synapseHttpEP) {
+		
+		for(EndPointProperty property : endpointFormPage.endpointPropertyList){
+			MediatorProperty mediatorProperty = new MediatorProperty();
+			mediatorProperty.setName(property.getName());
+
+			if (property.getValueType().toString().equals("EXPRESSION")) {
+				SynapseXPath XPath = null;
+				try {
+					XPath = new SynapseXPath(property.getValueExpression().getPropertyValue());
+					for (int i = 0; i < property.getValueExpression().getNamespaces().keySet().size(); ++i) {
+						String prefix = (String) property.getValueExpression().getNamespaces().keySet().toArray()[i];
+						String namespaceUri = property.getValueExpression().getNamespaces().get(prefix);
+						XPath.addNamespace(prefix, namespaceUri);
+					}
+					mediatorProperty.setExpression(XPath);
+				} catch (JaxenException e) {
+					log.error("Error while persisting Endpoint properties", e);
+				}
+			} else if (property.getValueType().toString().equals("LITERAL")) {
+				mediatorProperty.setValue(property.getValue());
+			}
+
+			mediatorProperty.setScope(property.getScope().toString().toLowerCase());
+			synapseHttpEP.addProperty(mediatorProperty);
+		}
 	}
 
 }

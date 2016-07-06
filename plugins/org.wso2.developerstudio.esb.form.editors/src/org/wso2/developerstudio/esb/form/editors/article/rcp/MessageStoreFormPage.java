@@ -101,12 +101,12 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		
 		storeMap = new LinkedHashMap<>();
 		
-		storeMap.put(IN_MEMORY_MS_FQN, new InMemory(form, toolkit));
+		storeMap.put(IN_MEMORY_MS_FQN, new InMemory(form, toolkit, this));
 		storeMap.put(JMS_MS_FQN, new JMS(form, toolkit, this));
-		storeMap.put(WSO2MB, new WSO2MB(form, toolkit));
-		storeMap.put(RABBITMQ_MS_FQN, new RabbitMQ(form, toolkit));
-		storeMap.put(JDBC_MS_FQN, new JDBC(form, toolkit));
-		storeMap.put(customStore, new CustomStore(form, toolkit));
+		storeMap.put(WSO2MB, new WSO2MB(form, toolkit, this));
+		storeMap.put(RABBITMQ_MS_FQN, new RabbitMQ(form, toolkit, this));
+		storeMap.put(JDBC_MS_FQN, new JDBC(form, toolkit, this));
+		storeMap.put(customStore, new CustomStore(form, toolkit, this));
 
 
 		createFormBasicSection(form, toolkit);

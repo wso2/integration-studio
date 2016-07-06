@@ -73,11 +73,25 @@ public class JMS implements IMessageStore {
 		jms_initCtxFactory = toolkit.createText(connSectionClient, "");
 		jms_initCtxFactory.setBackground(new Color(null, 229,236,253));
 		jms_initCtxFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		jms_initCtxFactory.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(connSectionClient, "Provider URL");
 		jms_providerUrl = toolkit.createText(connSectionClient, "");
 		jms_providerUrl.setBackground(new Color(null, 229,236,253));
 		jms_providerUrl.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		jms_providerUrl.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 	}
 
@@ -97,21 +111,49 @@ public class JMS implements IMessageStore {
 		jms_jndiQueueName = toolkit.createText(paramSectionClient, "");
 		jms_jndiQueueName.setBackground(new Color(null, 229,236,253));
 		jms_jndiQueueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		jms_jndiQueueName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "Connection Factory");
 		jms_connectionFactory = toolkit.createText(paramSectionClient, "");
 		jms_connectionFactory.setBackground(new Color(null, 229,236,253));
 		jms_connectionFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		jms_connectionFactory.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "Username");
 		jms_username = toolkit.createText(paramSectionClient, "");
 		jms_username.setBackground(new Color(null, 229,236,253));
 		jms_username.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		jms_username.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "Password");
 		jms_password = toolkit.createText(paramSectionClient, "");
 		jms_password.setBackground(new Color(null, 229,236,253));
 		jms_password.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		jms_password.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(paramSectionClient, "Cache Connection");
 		jms_cacheConnection = new Combo(paramSectionClient, SWT.DROP_DOWN);
@@ -132,6 +174,13 @@ public class JMS implements IMessageStore {
 		jms_apiVersion.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] versions = {"1.1", "1.0"};
 		jms_apiVersion.setItems(versions);
+		jms_apiVersion.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 	}
 

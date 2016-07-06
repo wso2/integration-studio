@@ -17,6 +17,8 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
@@ -31,6 +33,7 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class JDBC implements IMessageStore {
@@ -42,6 +45,7 @@ public class JDBC implements IMessageStore {
 	public Text jdbc_username;
 	public Text jdbc_password;
 	public Text jdbc_DsName;
+	private AbstractEsbFormPage esbFormPage;
 	
 	ScrolledForm form;
 	FormToolkit toolkit;
@@ -49,9 +53,10 @@ public class JDBC implements IMessageStore {
 	Section connSection;
     Section parameterSection; 
 	
-	public JDBC(ScrolledForm form, FormToolkit toolkit) {
+	public JDBC(ScrolledForm form, FormToolkit toolkit, AbstractEsbFormPage esbFormPage) {
 		this.form = form;
 		this.toolkit = toolkit;
+		this.esbFormPage = esbFormPage;
 	}
 
 	@Override
@@ -69,6 +74,13 @@ public class JDBC implements IMessageStore {
 		jdbc_dbTable = toolkit.createText(connSectionClient, "");
 		jdbc_dbTable.setBackground(new Color(null, 229,236,253));
 		jdbc_dbTable.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		jdbc_dbTable.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(connSectionClient, "JDBC Conection Information");
 		jdbc_connectionInfo = new Combo(connSectionClient, SWT.DROP_DOWN);
@@ -78,8 +90,9 @@ public class JDBC implements IMessageStore {
 		jdbc_connectionInfo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
 				super.widgetSelected(e);
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 		});
 		
@@ -90,21 +103,49 @@ public class JDBC implements IMessageStore {
 			jdbc_driver = toolkit.createText(connSectionClient, "");
 			jdbc_driver.setBackground(new Color(null, 229,236,253));
 			jdbc_driver.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+			jdbc_driver.addModifyListener(new ModifyListener() {
+				@Override
+				public void modifyText(ModifyEvent e) {
+					esbFormPage.setSave(true);
+					esbFormPage.updateDirtyState();
+				}
+			});
 			
 			toolkit.createLabel(connSectionClient, "JDBC URL");
 			jdbc_url = toolkit.createText(connSectionClient, "");
 			jdbc_url.setBackground(new Color(null, 229,236,253));
 			jdbc_url.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+			jdbc_url.addModifyListener(new ModifyListener() {
+				@Override
+				public void modifyText(ModifyEvent e) {
+					esbFormPage.setSave(true);
+					esbFormPage.updateDirtyState();
+				}
+			});
 			
 			toolkit.createLabel(connSectionClient, "JDBC Username");
 			jdbc_username = toolkit.createText(connSectionClient, "");
 			jdbc_username.setBackground(new Color(null, 229,236,253));
 			jdbc_username.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+			jdbc_username.addModifyListener(new ModifyListener() {
+				@Override
+				public void modifyText(ModifyEvent e) {
+					esbFormPage.setSave(true);
+					esbFormPage.updateDirtyState();
+				}
+			});
 			
 			toolkit.createLabel(connSectionClient, "JDBC Password");
 			jdbc_password = toolkit.createText(connSectionClient, "");
 			jdbc_password.setBackground(new Color(null, 229,236,253));
 			jdbc_password.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+			jdbc_password.addModifyListener(new ModifyListener() {
+				@Override
+				public void modifyText(ModifyEvent e) {
+					esbFormPage.setSave(true);
+					esbFormPage.updateDirtyState();
+				}
+			});
 			
 			
 			//-- if connection info is JDBC_CARBON_DATASOURCE
@@ -112,6 +153,13 @@ public class JDBC implements IMessageStore {
 			jdbc_DsName = toolkit.createText(connSectionClient, "");
 			jdbc_DsName.setBackground(new Color(null, 229,236,253));
 			jdbc_DsName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+			jdbc_DsName.addModifyListener(new ModifyListener() {
+				@Override
+				public void modifyText(ModifyEvent e) {
+					esbFormPage.setSave(true);
+					esbFormPage.updateDirtyState();
+				}
+			});
 		
 	}
 

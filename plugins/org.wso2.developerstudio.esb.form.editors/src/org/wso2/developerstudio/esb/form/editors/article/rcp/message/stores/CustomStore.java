@@ -19,6 +19,8 @@ package org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -36,6 +38,7 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureMessageStoreParametersDialog;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 
@@ -45,15 +48,17 @@ public class CustomStore implements IMessageStore {
 	public Button custom_parameters;
 	public List<MessageStoreParameter> messageStoreParameterList;
 	
+	private AbstractEsbFormPage esbFormPage;
 	ScrolledForm form;
 	FormToolkit toolkit;
 	
 	Section connSection;
     Section parameterSection;
 	
-	public CustomStore(ScrolledForm form, FormToolkit toolkit) {
+	public CustomStore(ScrolledForm form, FormToolkit toolkit, AbstractEsbFormPage esbFormPage) {
 		this.form = form;
 		this.toolkit = toolkit;
+		this.esbFormPage = esbFormPage;
 	}
 
 	@Override
@@ -71,6 +76,13 @@ public class CustomStore implements IMessageStore {
  		custom_providerClass = toolkit.createText(connSectionClient, "");
  		custom_providerClass.setBackground(new Color(null, 229,236,253));
  		custom_providerClass.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+ 		custom_providerClass.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
  	}
  
  	@Override
@@ -95,7 +107,8 @@ public class CustomStore implements IMessageStore {
 				paramDialog.setBlockOnOpen(true);
 				paramDialog.open();
 				messageStoreParameterList = paramDialog.getMessageStorePropertyList();
-				
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 			
 			@Override

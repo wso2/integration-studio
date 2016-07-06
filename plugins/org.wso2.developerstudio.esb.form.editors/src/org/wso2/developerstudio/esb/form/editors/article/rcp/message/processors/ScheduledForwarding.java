@@ -21,6 +21,9 @@ import java.util.List;
 
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -45,6 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureMessageProcessorParametersDialog;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 import org.wso2.developerstudio.esb.form.editors.article.providers.RegistryKeyPropertyEditorDialog;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class ScheduledForwarding implements IMessageProcessor {
@@ -74,15 +78,18 @@ public class ScheduledForwarding implements IMessageProcessor {
     String faultSequenceKey;
     String deactiveSequenceKey;
     
+    private AbstractEsbFormPage esbFormPage;
+    
     private ScrolledForm form;
     private FormToolkit toolkit;
     
     Section miscSection;
     Section parameterSection;
 
-    public ScheduledForwarding(ScrolledForm form, FormToolkit toolkit) {
+    public ScheduledForwarding(ScrolledForm form, FormToolkit toolkit, AbstractEsbFormPage esbFormPage) {
     	this.form = form;
     	this.toolkit = toolkit;
+    	this.esbFormPage = esbFormPage;
 	}
 
     @Override
@@ -100,6 +107,13 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_endpoint = toolkit.createText(miscSectionClient, "");
         forwarding_endpoint.setBackground(new Color(null, 229,236,253));
         forwarding_endpoint.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_endpoint.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
         
         forwarding_add_endpoint = toolkit.createButton(miscSectionClient, "Add an Endpoint Key", SWT.PUSH);
         forwarding_add_endpoint.setBackground(new Color(null, 229,236,253));
@@ -117,6 +131,8 @@ public class ScheduledForwarding implements IMessageProcessor {
  					endpointKey = registryKeyProperty.getKeyValue();
  					forwarding_endpoint.setText(endpointKey);
  				}
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
  			}
 
 			@Override
@@ -144,32 +160,74 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_state.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
         String[] states = {"Active", "Deactive"};
         forwarding_state.setItems(states);
+		forwarding_state.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Forwarding Interval");
         forwarding_interval = toolkit.createText(parameterSectionClient, "");
         forwarding_interval.setBackground(new Color(null, 229,236,253));
         forwarding_interval.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_interval.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Retry Interval");
         forwarding_retryInterval = toolkit.createText(parameterSectionClient, "");
         forwarding_retryInterval.setBackground(new Color(null, 229,236,253));
         forwarding_retryInterval.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_retryInterval.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Non Retry Http Status Codes (eg - 304, 305)");
         forwarding_nonRetryHttpCodes = toolkit.createText(parameterSectionClient, "");
         forwarding_nonRetryHttpCodes.setBackground(new Color(null, 229,236,253));
         forwarding_nonRetryHttpCodes.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_nonRetryHttpCodes.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Max Delivery Attempts");
         forwarding_maxDeliveryAttempts = toolkit.createText(parameterSectionClient, "");
         forwarding_maxDeliveryAttempts.setBackground(new Color(null, 229,236,253));
         forwarding_maxDeliveryAttempts.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_maxDeliveryAttempts.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Drop Message After Maximum Delivery Attempts");
         forwarding_dropMessageAfterMaxDeliveryAttempts = new Combo(parameterSectionClient, SWT.DROP_DOWN);
         forwarding_dropMessageAfterMaxDeliveryAttempts.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
         String[] dropConditions = {"Enabled", "Disabled"};
         forwarding_dropMessageAfterMaxDeliveryAttempts.setItems(dropConditions);
+        forwarding_dropMessageAfterMaxDeliveryAttempts.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         addSeparator(form, toolkit, parameterSectionClient);
 
@@ -177,12 +235,26 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_axis2ClientRepo = toolkit.createText(parameterSectionClient, "");
         forwarding_axis2ClientRepo.setBackground(new Color(null, 229,236,253));
         forwarding_axis2ClientRepo.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_axis2ClientRepo.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 
         toolkit.createLabel(parameterSectionClient, "Axis2 Configuration");
         forwarding_axis2Config = toolkit.createText(parameterSectionClient, "");
         forwarding_axis2Config.setBackground(new Color(null, 229,236,253));
         forwarding_axis2Config.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_axis2Config.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         addSeparator(form, toolkit, parameterSectionClient);
 
@@ -190,6 +262,13 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_replySequence = toolkit.createText(parameterSectionClient, "");
         forwarding_replySequence.setBackground(new Color(null, 229,236,253));
         forwarding_replySequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_replySequence.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
         
         forwarding_add_replySequence = toolkit.createButton(parameterSectionClient, "Add a Reply Sequence Key", SWT.PUSH);
         forwarding_add_replySequence.setBackground(new Color(null, 229,236,253));
@@ -207,6 +286,8 @@ public class ScheduledForwarding implements IMessageProcessor {
  					replySequenceKey = registryKeyProperty.getKeyValue();
  					forwarding_replySequence.setText(replySequenceKey);
  				}
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
  			}
 
 			@Override
@@ -221,6 +302,13 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_faultSequence = toolkit.createText(parameterSectionClient, "");
         forwarding_faultSequence.setBackground(new Color(null, 229,236,253));
         forwarding_faultSequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_faultSequence.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
         
         forwarding_add_faultSequence = toolkit.createButton(parameterSectionClient, "Add a Fault Sequence Key", SWT.PUSH);
         forwarding_add_faultSequence.setBackground(new Color(null, 229,236,253));
@@ -238,6 +326,8 @@ public class ScheduledForwarding implements IMessageProcessor {
  					faultSequenceKey = registryKeyProperty.getKeyValue();
  					forwarding_faultSequence.setText(faultSequenceKey);
  				}
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
  			}
 
 			@Override
@@ -251,6 +341,13 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_deactiveSequence = toolkit.createText(parameterSectionClient, "");
         forwarding_deactiveSequence.setBackground(new Color(null, 229,236,253));
         forwarding_deactiveSequence.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_deactiveSequence.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
         
         forwarding_add_deactiveSequence = toolkit.createButton(parameterSectionClient, "Add a Deactive Sequence Key", SWT.PUSH);
         forwarding_add_deactiveSequence.setBackground(new Color(null, 229,236,253));
@@ -268,6 +365,8 @@ public class ScheduledForwarding implements IMessageProcessor {
  					deactiveSequenceKey = registryKeyProperty.getKeyValue();
  					forwarding_deactiveSequence.setText(deactiveSequenceKey);
  				}
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
  			}
 
 			@Override
@@ -283,16 +382,37 @@ public class ScheduledForwarding implements IMessageProcessor {
         forwarding_quartzConfigFilePath = toolkit.createText(parameterSectionClient, "");
         forwarding_quartzConfigFilePath.setBackground(new Color(null, 229,236,253));
         forwarding_quartzConfigFilePath.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_quartzConfigFilePath.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Cron Expression");
         forwarding_cronExpression = toolkit.createText(parameterSectionClient, "");
         forwarding_cronExpression.setBackground(new Color(null, 229,236,253));
         forwarding_cronExpression.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_cronExpression.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         toolkit.createLabel(parameterSectionClient, "Task Count");
         forwarding_taskCount = toolkit.createText(parameterSectionClient, "");
         forwarding_taskCount.setBackground(new Color(null, 229,236,253));
         forwarding_taskCount.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_taskCount.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
        addSeparator(form, toolkit, parameterSectionClient);
        
@@ -307,6 +427,8 @@ public class ScheduledForwarding implements IMessageProcessor {
     				paramDialog.setBlockOnOpen(true);
     				paramDialog.open();
     				messageProcessorParameterList = paramDialog.getMessageProcessorPropertyList();
+    				esbFormPage.setSave(true);
+    				esbFormPage.updateDirtyState();
     			}
     			
     			@Override

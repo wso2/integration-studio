@@ -19,6 +19,8 @@ package org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -37,6 +39,7 @@ import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureMessageProcessorParametersDialog;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class CustomProcessor implements IMessageProcessor {
@@ -44,15 +47,17 @@ public class CustomProcessor implements IMessageProcessor {
     public Button custom_customParameters;
     public List<MessageProcessorParameter> messageProcessorParameterList;
     
+    private AbstractEsbFormPage esbFormPage;
     ScrolledForm form;
     FormToolkit toolkit;
     
     Section miscSection;
     Section parameterSection;
     
-	public CustomProcessor(ScrolledForm form, FormToolkit toolkit) {
+	public CustomProcessor(ScrolledForm form, FormToolkit toolkit, AbstractEsbFormPage esbFormPage) {
 		this.form = form;
 		this.toolkit = toolkit;	
+		this.esbFormPage = esbFormPage;
 	}
 
     @Override
@@ -71,6 +76,13 @@ public class CustomProcessor implements IMessageProcessor {
         custom_providerClass = toolkit.createText(miscSectionClient, "");
         custom_providerClass.setBackground(new Color(null, 229,236,253));
         custom_providerClass.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        custom_providerClass.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
         
         
         
@@ -98,7 +110,8 @@ public class CustomProcessor implements IMessageProcessor {
 				paramDialog.setBlockOnOpen(true);
 				paramDialog.open();
 				messageProcessorParameterList = paramDialog.getMessageProcessorPropertyList();
-				
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 			
 			@Override

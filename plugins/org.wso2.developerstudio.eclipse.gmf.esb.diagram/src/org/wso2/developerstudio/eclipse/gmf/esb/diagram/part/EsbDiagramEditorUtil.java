@@ -172,7 +172,9 @@ public class EsbDiagramEditorUtil {
 	}
 
 	/**
-	 * This method should be called within a workspace modify operation since it creates resources.
+	 * This method should be called within a workspace modify operation since it
+	 * creates resources.
+	 * 
 	 * @generated
 	 */
 	public static Resource createDiagram(URI diagramURI, URI modelURI, IProgressMonitor progressMonitor) {
@@ -220,7 +222,9 @@ public class EsbDiagramEditorUtil {
 	}
 
 	/**
-	 * This method should be called within a workspace modify operation since it creates resources.
+	 * This method should be called within a workspace modify operation since it
+	 * creates resources.
+	 * 
 	 * @generated NOT
 	 */
 	public static Resource createResource(TransactionalEditingDomain editingDomain, IProgressMonitor progressMonitor,
@@ -228,10 +232,10 @@ public class EsbDiagramEditorUtil {
 		progressMonitor.beginTask(Messages.EsbDiagramEditorUtil_CreateDiagramProgressTask, 3);
 		final String name = fileName.replaceAll(".xml$", "");
 		String prefix = "resources/" + name;
-		final Resource diagramResource = editingDomain.getResourceSet().createResource(
-				URI.createURI(prefix.concat(".esb_diagram")));
-		final Resource modelResource = editingDomain.getResourceSet().createResource(
-				URI.createURI(prefix.concat(".esb")));
+		final Resource diagramResource = editingDomain.getResourceSet()
+				.createResource(URI.createURI(prefix.concat(".esb_diagram")));
+		final Resource modelResource = editingDomain.getResourceSet()
+				.createResource(URI.createURI(prefix.concat(".esb")));
 		editingDomain.getResourceSet().getResources().add(diagramResource);
 		editingDomain.getResourceSet().getResources().add(modelResource);
 		AbstractTransactionalCommand command = new AbstractTransactionalCommand(editingDomain,
@@ -257,40 +261,34 @@ public class EsbDiagramEditorUtil {
 					EStructuralFeature target = esbServer.eClass().getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(proxyServices));
 					esbServer.setType(ArtifactType.PROXY);
-				} else if (ArtifactType.ENDPOINT.getLiteral().equals(type)) {
+				} else if (ArtifactType.ENDPOINT.getLiteral().equals(type)// reverting end point form editors, this needs to be reviewed when it is introduced back
+						|| ArtifactType.ENDPOINT_ADDRESS.getLiteral().equals(type)
+						|| ArtifactType.ENDPOINT_HTTP.getLiteral().equals(type)
+						|| ArtifactType.ENDPOINT_WSDL.getLiteral().equals(type)
+						|| ArtifactType.ENDPOINT_DEFAULT.getLiteral().equals(type)) {
 					EndpointDiagram endpoints = EsbFactory.eINSTANCE.createEndpointDiagram();
-					/*					if (specificType != null) {
-					 switch ((Integer) specificType) {
-					 case 0:
-					 endpoints.setChild(EsbFactory.eINSTANCE.createDefaultEndPoint());
-					 break;
-					 case 1:
-					 endpoints.setChild(EsbFactory.eINSTANCE.createAddressEndPoint());
-					 break;
-					 case 2:
-					 endpoints.setChild(EsbFactory.eINSTANCE.createWSDLEndPoint());
-					 break;
-					 case 3:
-					 endpoints.setChild(EsbFactory.eINSTANCE.createLoadBalanceEndPoint());
-					 break;
-					 case 4:
-					 endpoints.setChild(EsbFactory.eINSTANCE.createFailoverEndPoint());
-					 break;
-					 case 5:
-					 endpoints.setChild(EsbFactory.eINSTANCE.createRecipientListEndPoint());
-					 break;
-					 case 6:
-					 endpoints.setChild(EsbFactory.eINSTANCE.createTemplateEndpoint());
-					 break;
-					 case 7:
-					 endpoints.setChild(EsbFactory.eINSTANCE.createHTTPEndpoint());
-					 break;
-					 default:
-					 break;
-					 }
-					 } else {
-					 endpoints.setChild(EsbFactory.eINSTANCE.createDefaultEndPoint());
-					 }*/
+					/*
+					 * if (specificType != null) { switch ((Integer)
+					 * specificType) { case 0:
+					 * endpoints.setChild(EsbFactory.eINSTANCE.
+					 * createDefaultEndPoint()); break; case 1:
+					 * endpoints.setChild(EsbFactory.eINSTANCE.
+					 * createAddressEndPoint()); break; case 2:
+					 * endpoints.setChild(EsbFactory.eINSTANCE.
+					 * createWSDLEndPoint()); break; case 3:
+					 * endpoints.setChild(EsbFactory.eINSTANCE.
+					 * createLoadBalanceEndPoint()); break; case 4:
+					 * endpoints.setChild(EsbFactory.eINSTANCE.
+					 * createFailoverEndPoint()); break; case 5:
+					 * endpoints.setChild(EsbFactory.eINSTANCE.
+					 * createRecipientListEndPoint()); break; case 6:
+					 * endpoints.setChild(EsbFactory.eINSTANCE.
+					 * createTemplateEndpoint()); break; case 7:
+					 * endpoints.setChild(EsbFactory.eINSTANCE.
+					 * createHTTPEndpoint()); break; default: break; } } else {
+					 * endpoints.setChild(EsbFactory.eINSTANCE.
+					 * createDefaultEndPoint()); }
+					 */
 					endpoints.setName(fileName);
 					EStructuralFeature target = esbServer.eClass().getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(endpoints));
@@ -427,9 +425,9 @@ public class EsbDiagramEditorUtil {
 	}
 
 	/**
-	 * Create a new instance of domain element associated with canvas.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Create a new instance of domain element associated with canvas. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static EsbDiagram createInitialModel() {
@@ -437,9 +435,9 @@ public class EsbDiagramEditorUtil {
 	}
 
 	/**
-	 * Store model element in the resource.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Store model element in the resource. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static void attachModelToResource(EsbDiagram model, Resource resource) {
@@ -461,8 +459,8 @@ public class EsbDiagramEditorUtil {
 		}
 
 		if (!editParts.isEmpty()) {
-			diagramPart.getDiagramGraphicalViewer().reveal(
-					firstPrimary != null ? firstPrimary : (EditPart) editParts.get(0));
+			diagramPart.getDiagramGraphicalViewer()
+					.reveal(firstPrimary != null ? firstPrimary : (EditPart) editParts.get(0));
 		}
 	}
 
@@ -485,7 +483,8 @@ public class EsbDiagramEditorUtil {
 		String elementID = EMFCoreUtil.getProxyID(element);
 		@SuppressWarnings("unchecked")
 		List<EditPart> associatedParts = viewer.findEditPartsForElement(elementID, IGraphicalEditPart.class);
-		// perform the possible hierarchy disjoint -> take the top-most parts only
+		// perform the possible hierarchy disjoint -> take the top-most parts
+		// only
 		for (EditPart nextPart : associatedParts) {
 			EditPart parentPart = nextPart.getParent();
 			while (parentPart != null && !associatedParts.contains(parentPart)) {
@@ -563,12 +562,16 @@ public class EsbDiagramEditorUtil {
 		public final Map<EObject, View> getElement2ViewMap() {
 			if (element2ViewMap == null) {
 				element2ViewMap = new HashMap<EObject, View>();
-				// map possible notation elements to itself as these can't be found by view.getElement()
+				// map possible notation elements to itself as these can't be
+				// found by view.getElement()
 				for (EObject element : elementSet) {
 					if (element instanceof View) {
 						View view = (View) element;
 						if (view.getDiagram() == scope.getDiagram()) {
-							element2ViewMap.put(element, view); // take only those that part of our diagram
+							element2ViewMap.put(element, view); // take only
+																// those that
+																// part of our
+																// diagram
 						}
 					}
 				}
@@ -606,6 +609,6 @@ public class EsbDiagramEditorUtil {
 			}
 			return complete;
 		}
-	} //LazyElement2ViewMap	
+	} // LazyElement2ViewMap
 
 }

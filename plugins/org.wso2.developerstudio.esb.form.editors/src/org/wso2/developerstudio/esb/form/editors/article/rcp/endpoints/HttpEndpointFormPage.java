@@ -65,6 +65,59 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		
 		form.setText(Messages.getString("HttpEndpointPage.sectionMainTitle"));
 	}
+	
+	@Override
+	public void createFormBasicSection() {
+		/* Basic Section */
+		basicSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.basic"));
+			
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		basicSection.setLayoutData(samplegridData);
+		// section.setLayoutData(new TableWrapData(TableWrapData.FILL));
+
+		Composite basicSectionClient = toolkit.createComposite(basicSection);
+		basicSectionClient.setLayout(new GridLayout());
+		basicSection.setClient(basicSectionClient);
+					
+		/*Composite basicSectionClient = toolkit.createComposite(basicSection);
+		basicSectionClient.setLayout(new TableWrapLayout());
+		basicSection.setClient(basicSectionClient);*/
+		
+		toolkit.createLabel(basicSectionClient, "Name :");
+		endpointName = toolkit.createText(basicSectionClient, "");
+		endpointName.setBackground(new Color(null, 229,236,253));
+		//endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData endpointNameGridData = new GridData();
+		endpointNameGridData.horizontalSpan = 3;
+		endpointNameGridData.horizontalAlignment = GridData.FILL;
+		endpointNameGridData.grabExcessHorizontalSpace = true;
+		endpointName.setLayoutData(endpointNameGridData);
+		
+		toolkit.createLabel(basicSectionClient, "Trace Enabled :");
+		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		//endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] tracingStates = {"True", "False"};
+		endpointTrace.setItems(tracingStates);
+		GridData endpointTraceGridData = new GridData();
+		endpointTraceGridData.horizontalSpan = 3;
+		endpointTraceGridData.horizontalAlignment = GridData.FILL;
+		endpointTraceGridData.grabExcessHorizontalSpace = true;
+		endpointTrace.setLayoutData(endpointTraceGridData);
+		
+		toolkit.createLabel(basicSectionClient, "Statistics Enabled :");
+		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		//endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] statisticsStates = {"True", "False"};
+		endpointStatistics.setItems(statisticsStates);
+		GridData endpointStatisticsGridData = new GridData();
+		endpointStatisticsGridData.horizontalSpan = 3;
+		endpointStatisticsGridData.horizontalAlignment = GridData.FILL;
+		endpointStatisticsGridData.grabExcessHorizontalSpace = true;
+		endpointStatistics.setLayoutData(endpointStatisticsGridData);
+	}
 
 	public void createFormMiscSection() {
 

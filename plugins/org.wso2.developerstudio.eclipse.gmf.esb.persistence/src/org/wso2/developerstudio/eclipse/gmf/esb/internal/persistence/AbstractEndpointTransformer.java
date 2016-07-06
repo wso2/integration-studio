@@ -58,7 +58,28 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		final String FINAL = "final";
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 		EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
-		synapseEPDef.setFormat(endpointFormPage.getEP_Format().getText());
+		/**LEAVE_AS_IS,
+			SOAP_11,
+			SOAP_12,
+			POX,
+			GET,
+			REST,**/
+		if (endpointFormPage.getEP_Format() != null) {
+			if (endpointFormPage.getEP_Format().getSelectionIndex() == 1) {
+				synapseEPDef.setFormat("SOAP_11");
+			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 2) {
+				synapseEPDef.setFormat("SOAP_12");
+			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 3) {
+				synapseEPDef.setFormat("POX");
+			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 4) {
+				synapseEPDef.setFormat("GET");
+			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 5) {
+				synapseEPDef.setFormat("REST");
+			} else {
+				synapseEPDef.setFormat("LEAVE_AS_IS");
+			}
+		}
+		
 
 		if (endpointFormPage.getEP_Optimize() != null) {
 			if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 1) {

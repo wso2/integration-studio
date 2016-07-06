@@ -403,10 +403,10 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #INSTANTIATE_VALUE
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	INSTANTIATE(40, "INSTANTIATE", "INSTANTIATE");
+	INSTANTIATE(40, "INSTANTIATE", "INSTANTIATE",COMMON_OPERATION);
 
 	/**
 	 * The '<em><b>OPERATOR</b></em>' literal value.

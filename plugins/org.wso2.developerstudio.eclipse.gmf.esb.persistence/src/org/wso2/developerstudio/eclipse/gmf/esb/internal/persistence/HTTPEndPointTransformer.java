@@ -138,19 +138,19 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 		}
 		createAdvanceOptions(httpFormPage, synapseHttpEP);
 		if (httpFormPage.httpEP_Method.getSelectionIndex() != 0) {
-			if (httpFormPage.httpEP_Method.getSelectionIndex() != 1) {
+			if (httpFormPage.httpEP_Method.getSelectionIndex() == 1) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_GET.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 2) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 2) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_POST.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 3) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 3) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_PUT.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 4) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 4) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_DELETE.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 5) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 5) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_HEAD.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 6) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 6) {
 				synapseHttpEP.setHttpMethod(RESTConstants.METHOD_OPTIONS.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 7) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 7) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_PATCH.toLowerCase());
 			}
 

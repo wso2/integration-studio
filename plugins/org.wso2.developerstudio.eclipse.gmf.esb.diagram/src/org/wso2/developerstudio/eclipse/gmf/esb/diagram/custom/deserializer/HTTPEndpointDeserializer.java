@@ -89,7 +89,26 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer{
 //		setTextValue(httpEndpointPage.httpEP_Properties, endpoint.getDefinition().get);
 		setTextValue(httpEndpointPage.getEP_Description(), endpoint.getDescription());
 		setTextValue(httpEndpointPage.httpEP_UriTemplate, endpoint.getUriTemplate());
-		
+		String httpMethod = endpoint.getHttpMethod();
+        if (httpMethod != null) {//{"LEAVE_AS_IS", "GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH"};
+            if (httpMethod.equalsIgnoreCase(Constants.Configuration.HTTP_METHOD_POST)) {
+            	httpEndpointPage.httpEP_Method.select(2);
+            } else if (httpMethod.equalsIgnoreCase(Constants.Configuration.HTTP_METHOD_GET)) {
+            	httpEndpointPage.httpEP_Method.select(1);
+            } else if (httpMethod.equalsIgnoreCase(Constants.Configuration.HTTP_METHOD_PUT)) {
+            	httpEndpointPage.httpEP_Method.select(3);
+            } else if (httpMethod.equalsIgnoreCase(Constants.Configuration.HTTP_METHOD_DELETE)) {
+            	httpEndpointPage.httpEP_Method.select(4);
+            } else if (httpMethod.equalsIgnoreCase(Constants.Configuration.HTTP_METHOD_HEAD)) {
+            	httpEndpointPage.httpEP_Method.select(5);
+            } else if (httpMethod.equalsIgnoreCase(Constants.Configuration.HTTP_METHOD_PATCH)) {
+            	httpEndpointPage.httpEP_Method.select(7);
+            } else if (httpMethod.equalsIgnoreCase(RESTConstants.METHOD_OPTIONS)) {
+            	httpEndpointPage.httpEP_Method.select(6);
+            }
+        } else{
+        	httpEndpointPage.httpEP_Method.select(0);
+        }	
 		
 		super.createNode(formEditor, endpointObject);
 	}

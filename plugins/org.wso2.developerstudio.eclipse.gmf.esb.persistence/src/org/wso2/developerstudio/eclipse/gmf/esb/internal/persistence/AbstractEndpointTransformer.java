@@ -66,15 +66,15 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 			REST,**/
 		if (endpointFormPage.getEP_Format() != null) {
 			if (endpointFormPage.getEP_Format().getSelectionIndex() == 1) {
-				synapseEPDef.setFormat("SOAP_11");
+				synapseEPDef.setFormat("soap11");
 			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 2) {
-				synapseEPDef.setFormat("SOAP_12");
+				synapseEPDef.setFormat("soap12");
 			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 3) {
-				synapseEPDef.setFormat("POX");
+				synapseEPDef.setFormat("pox");
 			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 4) {
-				synapseEPDef.setFormat("GET");
+				synapseEPDef.setFormat("get");
 			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 5) {
-				synapseEPDef.setFormat("REST");
+				synapseEPDef.setFormat("rest");
 			} else {
 				synapseEPDef.setFormat("LEAVE_AS_IS");
 			}

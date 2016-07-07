@@ -24,26 +24,37 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.xml.stream.XMLStreamException;
-
+import org.apache.axiom.om.OMAbstractFactory;
+import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.util.AXIOMUtil;
+import org.apache.commons.collections.IteratorUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.config.SynapseConfigurationBuilder;
+import org.apache.synapse.config.xml.ProxyServiceFactory;
+import org.apache.synapse.config.xml.SequenceMediatorFactory;
+import org.apache.synapse.config.xml.TemplateMediatorFactory;
+import org.apache.synapse.config.xml.endpoints.EndpointFactory;
+import org.apache.synapse.config.xml.endpoints.TemplateEndpointFactory;
+import org.apache.synapse.config.xml.endpoints.TemplateFactory;
+import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.Template;
 import org.apache.synapse.inbound.InboundEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
+import org.apache.synapse.message.processor.MessageProcessor;
+import org.apache.synapse.message.store.MessageStore;
 import org.apache.synapse.rest.API;
+import org.apache.synapse.task.TaskDescription;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.ecore.xml.type.internal.QName;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -54,6 +65,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -66,27 +78,6 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
-import org.wso2.developerstudio.esb.form.editors.article.rcp.LocalEntryFormPage;
-import org.apache.axiom.om.OMAbstractFactory;
-import org.apache.axiom.om.OMAttribute;
-import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.util.AXIOMUtil;
-import org.apache.commons.collections.IteratorUtils;
-import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
-import org.apache.synapse.config.xml.ProxyServiceFactory;
-import org.apache.synapse.config.xml.rest.APIFactory;
-import org.apache.synapse.config.xml.MessageProcessorFactory;
-import org.apache.synapse.config.xml.SequenceMediatorFactory;
-import org.apache.synapse.config.xml.TemplateMediatorFactory;
-import org.apache.synapse.config.xml.endpoints.EndpointFactory;
-import org.apache.synapse.config.xml.endpoints.TemplateEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.TemplateFactory;
-import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
-import org.apache.synapse.task.TaskDescription;
-import org.apache.synapse.task.TaskDescriptionFactory;
-import org.apache.synapse.config.xml.MessageStoreFactory;
-import org.apache.synapse.message.processor.MessageProcessor;
-import org.apache.synapse.message.store.MessageStore;
 
 /**
  * Synapse model de-serialize base class
@@ -264,22 +255,28 @@ public class Deserializer {
 				}
 			}			
 		} else if("endpoint".equals(localName)){
-			Iterator children = element.getChildElements();
-			if (children.hasNext()){
-				OMElement child1 = (OMElement) children.next();
-				String child1LocalName = child1.getLocalName();
+			
+			String templateAtr = element.getAttributeValue(new javax.xml.namespace.QName("template"));
+			if(StringUtils.isNotEmpty(templateAtr)){
+				 artifactType = ArtifactType.TEMPLATE_ENDPOINT;
+			}else{
+				Iterator children = element.getChildElements();
+				if (children.hasNext()){
+					OMElement child1 = (OMElement) children.next();
+					String child1LocalName = child1.getLocalName();
 
-				if("address".equals(child1LocalName)) {
-					artifactType=ArtifactType.ENDPOINT_ADDRESS;
-				} else if("default".equals(child1LocalName)) {
-					artifactType=ArtifactType.ENDPOINT_DEFAULT;
-				} else if("http".equals(child1LocalName)) {
-					artifactType=ArtifactType.ENDPOINT_HTTP;
-				} else if("wsdl".equals(child1LocalName)) {
-					artifactType=ArtifactType.ENDPOINT_WSDL;
+					if("address".equals(child1LocalName)) {
+						artifactType=ArtifactType.ENDPOINT_ADDRESS;
+					} else if("default".equals(child1LocalName)) {
+						artifactType=ArtifactType.ENDPOINT_DEFAULT;
+					} else if("http".equals(child1LocalName)) {
+						artifactType=ArtifactType.ENDPOINT_HTTP;
+					} else if("wsdl".equals(child1LocalName)) {
+						artifactType=ArtifactType.ENDPOINT_WSDL;
+					}
 				}
 			}
-//			artifactType = ArtifactType.ENDPOINT;
+	    	
 		} else if("messageStore".equals(localName)){
 			artifactType=ArtifactType.MESSAGE_STORE;
 		} else if("messageProcessor".equals(localName)){
@@ -357,6 +354,7 @@ public class Deserializer {
 		case ENDPOINT_DEFAULT:
 		case ENDPOINT_HTTP:
 		case ENDPOINT_WSDL:
+		case TEMPLATE_ENDPOINT:
 			Endpoint endpoint = EndpointFactory.getEndpointFromElement(element, false, properties);
 			EndpointWrapper wrapper = new EndpointWrapper(endpoint,endpoint.getName());
 			artifacts.put(wrapper.getName(), wrapper);
@@ -377,7 +375,7 @@ public class Deserializer {
 			TemplateMediator templateMediator = (TemplateMediator) templateMediatorFactory
 					.createMediator(element, properties);
 			artifacts.put(templateMediator.getName(), templateMediator);
-			break;				
+			break;		
 		case TEMPLATE_ENDPOINT_ADDRESS:
 			createEndpointTemplate(element, properties, artifacts);
 			break;			

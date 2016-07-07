@@ -54,30 +54,59 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 
 	@SuppressWarnings("deprecation")
 	protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) {
-		
-		final String FINAL = "final";
+
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 		EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
-		synapseEPDef.setFormat(endpointFormPage.getEP_Format().getText());
+		/**LEAVE_AS_IS,
+			SOAP_11,
+			SOAP_12,
+			POX,
+			GET,
+			REST,**/
+		if (endpointFormPage.getEP_Format() != null) {
+			if (endpointFormPage.getEP_Format().getSelectionIndex() == 1) {
+				synapseEPDef.setFormat("soap11");
+			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 2) {
+				synapseEPDef.setFormat("soap12");
+			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 3) {
+				synapseEPDef.setFormat("pox");
+			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 4) {
+				synapseEPDef.setFormat("get");
+			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 5) {
+				synapseEPDef.setFormat("rest");
+			} else {
+				synapseEPDef.setFormat("LEAVE_AS_IS");
+			}
+		}
 		
-		if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 1) {
-			synapseEPDef.setUseMTOM(true);
-		} else if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 2) {
-			synapseEPDef.setUseSwa(true);
+
+		if (endpointFormPage.getEP_Optimize() != null) {
+			if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 1) {
+				synapseEPDef.setUseMTOM(true);
+			} else if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 2) {
+				synapseEPDef.setUseSwa(true);
+			}
 		}
 
-		AspectConfiguration aspectConfiguration = new AspectConfiguration(endpointFormPage.getEndpointName().getText());
-		synapseEPDef.configure(aspectConfiguration);
-		if (endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
-			aspectConfiguration.enableStatistics();
-		} else {
-			aspectConfiguration.disableStatistics();
+		if (endpointFormPage.getEndpointName() != null) {
+			AspectConfiguration aspectConfiguration = new AspectConfiguration(
+					endpointFormPage.getEndpointName().getText());
+			synapseEPDef.configure(aspectConfiguration);
+			if (endpointFormPage.getEndpointStatistics() != null) {
+				if (endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
+					aspectConfiguration.enableStatistics();
+				} else {
+					aspectConfiguration.disableStatistics();
+				}
+			}
 		}
 
-		if (endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
-			synapseEPDef.getAspectConfiguration().enableTracing();
-		} else {
-			synapseEPDef.getAspectConfiguration().disableTracing();
+		if (endpointFormPage.getEndpointTrace() != null) {
+			if (endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
+				synapseEPDef.getAspectConfiguration().enableTracing();
+			} else {
+				synapseEPDef.getAspectConfiguration().disableTracing();
+			}
 		}
 
 		if (endpointCommons.getEndpointSuspendErrorCodes() != null) {
@@ -113,70 +142,88 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 					Float.parseFloat((endpointCommons.getEndpointSuspendProgressFactor().getText().trim())));
 		}
 
-		String retryErrorCodes = endpointCommons.getEndpointRetryErrorCodes().getText();
-		if (retryErrorCodes != null && !"".equals(retryErrorCodes) && !retryErrorCodes.isEmpty()) {
-			String[] retryCodesList = retryErrorCodes.split("\\,");
-			List<String> retryCodes = Arrays.asList(retryCodesList);
-			for (String code : retryCodes) {
-				synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
+		if (endpointCommons.getEndpointRetryErrorCodes() != null) {
+			String retryErrorCodes = endpointCommons.getEndpointRetryErrorCodes().getText();
+			if (retryErrorCodes != null && !"".equals(retryErrorCodes) && !retryErrorCodes.isEmpty()) {
+				String[] retryCodesList = retryErrorCodes.split("\\,");
+				List<String> retryCodes = Arrays.asList(retryCodesList);
+				for (String code : retryCodes) {
+					synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
+				}
 			}
-		}
-		if (StringUtils.isNumeric(endpointCommons.getEndpointRetryCount().getText())
-				&& endpointCommons.getEndpointRetryCount().getText() != ""
-				&& !endpointCommons.getEndpointRetryCount().getText().isEmpty()) {
-			synapseEPDef.setRetriesOnTimeoutBeforeSuspend(
-					Integer.parseInt(endpointCommons.getEndpointRetryCount().getText().trim()));
-		}
-		if (StringUtils.isNumeric(endpointCommons.getEndpointRetryDelay().getText())
-				&& endpointCommons.getEndpointRetryDelay().getText() != ""
-				&& !endpointCommons.getEndpointRetryDelay().getText().isEmpty()) {
-			synapseEPDef.setRetryDurationOnTimeout(
-					Integer.parseInt(endpointCommons.getEndpointRetryDelay().getText().trim()));
-		}
-		if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() != 0) {
-			if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() == 1) {
-				synapseEPDef.setTimeoutAction(101);
-			} else {// endpointCommons.getEndpointTimeoutAction().getSelectionIndex()
-					// = 2
-				synapseEPDef.setTimeoutAction(102);
-			}
-		} else {
-			synapseEPDef.setTimeoutAction(100);
-		}
-		if (StringUtils.isNumeric(endpointCommons.getEndpointTimeoutDuration().getText())
-				&& endpointCommons.getEndpointTimeoutDuration().getText() != ""
-				&& !endpointCommons.getEndpointTimeoutDuration().getText().isEmpty()
-				&& endpointCommons.getEndpointTimeoutDuration().getText() != "0") {
-			synapseEPDef
-					.setTimeoutDuration(Long.parseLong(endpointCommons.getEndpointTimeoutDuration().getText().trim()));
 		}
 
-		if (endpointCommons.getEndpointAddressing().getSelectionIndex() == 0) {
-			synapseEPDef.setAddressingOn(true); 
-			synapseEPDef.setUseSeparateListener(Boolean.valueOf(endpointCommons.getEndpointSeparateListner().getText().toString()));
-			String version = endpointCommons.getEndpointVersion().getText();
-			if(StringUtils.isNotEmpty(version)){
-			synapseEPDef.setAddressingVersion(( version == FINAL)? "final" : "submission");
+		if (endpointCommons.getEndpointRetryCount() != null) {
+			if (StringUtils.isNumeric(endpointCommons.getEndpointRetryCount().getText())
+					&& endpointCommons.getEndpointRetryCount().getText() != ""
+					&& !endpointCommons.getEndpointRetryCount().getText().isEmpty()) {
+				synapseEPDef.setRetriesOnTimeoutBeforeSuspend(
+						Integer.parseInt(endpointCommons.getEndpointRetryCount().getText().trim()));
 			}
 		}
-		
-		
-		if (endpointCommons.getEndpointReliableMessaging().getSelectionIndex() == 0) {
-			synapseEPDef.setReliableMessagingOn(true);
-			String keyValue = endpointCommons.getEndpointReliableMessagingPolicyKey().getText();
-			if (StringUtils.isNotEmpty(keyValue)) {
-				synapseEPDef.setWsRMPolicyKey(keyValue);
-			}
-		} 
-	
 
-		if (endpointCommons.getEndpointSecurity().getSelectionIndex() == 0) {
-			synapseEPDef.setSecurityOn(true);
-			
+		if (endpointCommons.getEndpointRetryDelay() != null) {
+			if (StringUtils.isNumeric(endpointCommons.getEndpointRetryDelay().getText())
+					&& endpointCommons.getEndpointRetryDelay().getText() != ""
+					&& !endpointCommons.getEndpointRetryDelay().getText().isEmpty()) {
+				synapseEPDef.setRetryDurationOnTimeout(
+						Integer.parseInt(endpointCommons.getEndpointRetryDelay().getText().trim()));
+			}
+		}
+
+		if (endpointCommons.getEndpointTimeoutAction() != null) {
+			if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() != 0) {
+				if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() == 1) {
+					synapseEPDef.setTimeoutAction(101);
+				} else {// endpointCommons.getEndpointTimeoutAction().getSelectionIndex()
+						// = 2
+					synapseEPDef.setTimeoutAction(102);
+				}
+			} else {
+				synapseEPDef.setTimeoutAction(100);
+			}
+		}
+
+		if (endpointCommons.getEndpointTimeoutDuration() != null) {
+			if (StringUtils.isNumeric(endpointCommons.getEndpointTimeoutDuration().getText())
+					&& endpointCommons.getEndpointTimeoutDuration().getText() != ""
+					&& !endpointCommons.getEndpointTimeoutDuration().getText().isEmpty()
+					&& endpointCommons.getEndpointTimeoutDuration().getText() != "0") {
+				synapseEPDef.setTimeoutDuration(
+						Long.parseLong(endpointCommons.getEndpointTimeoutDuration().getText().trim()));
+			}
+		}
+
+		if (endpointCommons.getEndpointAddressing() != null) {
+			if (endpointCommons.getEndpointAddressing().getSelectionIndex() == 0) {
+				synapseEPDef.setAddressingOn(true);
+				synapseEPDef.setUseSeparateListener(
+						Boolean.valueOf(endpointCommons.getEndpointSeparateListner().getText().toString()));
+				String version = endpointCommons.getEndpointVersion().getText();
+				if (StringUtils.isNotEmpty(version)) {
+					synapseEPDef.setAddressingVersion((version.equals("final")) ? "final" : "submission");
+				}
+			}
+		}
+
+		if (endpointCommons.getEndpointReliableMessaging() != null) {
+			if (endpointCommons.getEndpointReliableMessaging().getSelectionIndex() == 0) {
+				synapseEPDef.setReliableMessagingOn(true);
+				String keyValue = endpointCommons.getEndpointReliableMessagingPolicyKey().getText();
+				if (StringUtils.isNotEmpty(keyValue)) {
+					synapseEPDef.setWsRMPolicyKey(keyValue);
+				}
+			}
+		}
+
+		if (endpointCommons.getEndpointSecurity() != null) {
+			if (endpointCommons.getEndpointSecurity().getSelectionIndex() == 0) {
+				synapseEPDef.setSecurityOn(true);
+
 				if (StringUtils.isNotEmpty(endpointCommons.getEndpointWSPolicyKey().getText())) {
 					String policyValue = endpointCommons.getEndpointWSPolicyKey().getText();
 					synapseEPDef.setWsSecPolicyKey(policyValue);
-					}
+				}
 
 				if (StringUtils.isNotEmpty(endpointCommons.getEndpointSecurityInboundPolicyKey().getText())) {
 					String inboundPolicyValue = endpointCommons.getEndpointSecurityInboundPolicyKey().getText();
@@ -187,11 +234,13 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 					String outboundPolicyValue = endpointCommons.getEndpointSecurityOutboundPolicyKey().getText();
 					synapseEPDef.setOutboundWsSecPolicyKey(outboundPolicyValue);
 				}
+			}
 		}
 
-		// saveProperties(visualEndPoint, endpoint);
-		if (StringUtils.isNotEmpty(endpointFormPage.getEP_Description().getText())) {
-			endpoint.setDescription(endpointFormPage.getEP_Description().getText());
+		if (endpointFormPage.getEP_Description() != null) {
+			if (StringUtils.isNotEmpty(endpointFormPage.getEP_Description().getText())) {
+				endpoint.setDescription(endpointFormPage.getEP_Description().getText());
+			}
 		}
 		endpoint.setDefinition(synapseEPDef);
 
@@ -327,7 +376,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 			endpoint.addProperty(mediatorProperty);
 		}
 	}
-
+	
 	/**
 	 * transform Endpoint Output flow
 	 * 

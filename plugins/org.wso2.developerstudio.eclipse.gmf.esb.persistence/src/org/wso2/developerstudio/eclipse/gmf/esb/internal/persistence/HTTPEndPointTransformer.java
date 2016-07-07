@@ -21,11 +21,15 @@ import java.util.List;
 import org.apache.axis2.Constants;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.rest.RESTConstants;
+import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
@@ -132,32 +136,72 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 		if (StringUtils.isNotBlank(httpFormPage.getEndpointName().getText())) {
 			synapseHttpEP.setName(httpFormPage.getEndpointName().getText());
 		}
-		if (httpFormPage.httpEP_UriTemplate.getText() != null) {
+		if (StringUtils.isNotEmpty(httpFormPage.httpEP_UriTemplate.getText())) {
 			UriTemplate template = UriTemplate.fromTemplate(httpFormPage.httpEP_UriTemplate.getText());
 			synapseHttpEP.setUriTemplate(template);
 		}
 		createAdvanceOptions(httpFormPage, synapseHttpEP);
 		if (httpFormPage.httpEP_Method.getSelectionIndex() != 0) {
-			if (httpFormPage.httpEP_Method.getSelectionIndex() != 1) {
+			if (httpFormPage.httpEP_Method.getSelectionIndex() == 1) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_GET.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 2) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 2) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_POST.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 3) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 3) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_PUT.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 4) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 4) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_DELETE.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 5) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 5) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_HEAD.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 6) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 6) {
 				synapseHttpEP.setHttpMethod(RESTConstants.METHOD_OPTIONS.toLowerCase());
-			} else if (httpFormPage.httpEP_Method.getSelectionIndex() != 7) {
+			} else if (httpFormPage.httpEP_Method.getSelectionIndex() == 7) {
 				synapseHttpEP.setHttpMethod(Constants.Configuration.HTTP_METHOD_PATCH.toLowerCase());
 			}
 
 		} else {
 		}
+		if(httpFormPage.endpointPropertyList != null && httpFormPage.endpointPropertyList.size()>0){
+		saveProperties(httpFormPage,synapseHttpEP);
+		}
+	
 		return synapseHttpEP;
 	}
+	
+	
+	/**
+	 * Save endpoint properties
+	 * 
+	 * @param model
+	 * @param endpoint
+	 */
+	protected void saveProperties(HttpEndpointFormPage endpointFormPage, org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP) {
+		
+		for(EndPointProperty property : endpointFormPage.endpointPropertyList){
+			MediatorProperty mediatorProperty = new MediatorProperty();
+			mediatorProperty.setName(property.getName());
+
+			if (property.getValueType().toString().equals("EXPRESSION")) {
+				SynapseXPath XPath = null;
+				try {
+					XPath = new SynapseXPath(property.getValueExpression().getPropertyValue());
+					for (int i = 0; i < property.getValueExpression().getNamespaces().keySet().size(); ++i) {
+						String prefix = (String) property.getValueExpression().getNamespaces().keySet().toArray()[i];
+						String namespaceUri = property.getValueExpression().getNamespaces().get(prefix);
+						XPath.addNamespace(prefix, namespaceUri);
+					}
+					mediatorProperty.setExpression(XPath);
+				} catch (JaxenException e) {
+					log.error("Error while persisting Endpoint properties", e);
+				}
+			} else if (property.getValueType().toString().equals("LITERAL")) {
+				mediatorProperty.setValue(property.getValue());
+			}
+
+			mediatorProperty.setScope(property.getScope().toString().toLowerCase());
+			synapseHttpEP.addProperty(mediatorProperty);
+		}
+	}
+
 
 	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 

@@ -82,6 +82,8 @@ public class OpenEditorUtil {
     public static void removeBreakpointHitStatus() {
         if (previousHitPoint != null) {
             previousHitPoint.setBreakpointHitStatus(false);
+            //Fixing DEVTOOLESB-261
+            previousHitPoint.setSelected(EditPart.SELECTED);
             previousHitPoint.setSelected(EditPart.SELECTED_NONE);
         }
     }

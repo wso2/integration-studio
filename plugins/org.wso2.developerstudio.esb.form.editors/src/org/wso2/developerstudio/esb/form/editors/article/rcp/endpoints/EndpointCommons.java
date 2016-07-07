@@ -273,6 +273,7 @@ public class EndpointCommons {
 					enableRMfields();
 				} else {
 					disableRMfields();
+					endpointReliableMessagingPolicyKey.setText("");
 				}
 			}
 		});
@@ -396,6 +397,10 @@ public class EndpointCommons {
 					disableWSFields();
 					disableInOutFields();
 					disablePolicyFields();
+					endpointWSPolicyKey.setText("");
+					endpointSecurityInboundPolicyKey.setText("");
+					endpointSecurityOutboundPolicyKey.setText("");
+					
 
 				}
 			}

@@ -20,6 +20,9 @@ package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -34,8 +37,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.widgets.TableWrapData;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointProperty;
 import org.wso2.developerstudio.esb.form.editors.article.providers.ConfigureEndPointPropertiesDialog;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
@@ -96,6 +97,14 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		endpointNameGridData.grabExcessHorizontalSpace = true;
 		endpointName.setLayoutData(endpointNameGridData);
 		
+		endpointName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+		
 		toolkit.createLabel(basicSectionClient, "Trace Enabled :");
 		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		//endpointTrace.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -107,6 +116,13 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		endpointTraceGridData.grabExcessHorizontalSpace = true;
 		endpointTrace.setLayoutData(endpointTraceGridData);
 		
+		endpointTrace.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+		
 		toolkit.createLabel(basicSectionClient, "Statistics Enabled :");
 		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		//endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -117,6 +133,13 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		endpointStatisticsGridData.horizontalAlignment = GridData.FILL;
 		endpointStatisticsGridData.grabExcessHorizontalSpace = true;
 		endpointStatistics.setLayoutData(endpointStatisticsGridData);
+		
+		endpointStatistics.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 	}
 
 	public void createFormMiscSection() {
@@ -145,6 +168,14 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		httpEPUriGridData.grabExcessHorizontalSpace = true;
 		httpEP_UriTemplate.setLayoutData(httpEPUriGridData);
 		
+		httpEP_UriTemplate.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+		
 		toolkit.createLabel(miscSectionClient, "HTTP Method :");
 		httpEP_Method = new Combo (miscSectionClient, SWT.DROP_DOWN);
 		String[] httpMethods = {"LEAVE_AS_IS", "GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH"};
@@ -156,6 +187,13 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		httpEPMethodGridData.horizontalAlignment = GridData.FILL;
 		httpEPMethodGridData.grabExcessHorizontalSpace = true;
 		httpEP_Method.setLayoutData(httpEPMethodGridData);
+		
+		httpEP_Method.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 	
 		toolkit.createLabel(miscSectionClient, "Description :");
 		eP_Description = toolkit.createText(miscSectionClient, "");
@@ -166,6 +204,14 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 		httpEPDescriptionGridData.horizontalAlignment = GridData.FILL;
 		httpEPDescriptionGridData.grabExcessHorizontalSpace = true;
 		eP_Description.setLayoutData(httpEPDescriptionGridData);
+		
+		eP_Description.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(miscSectionClient, "Properties :");
 		httpEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
@@ -179,6 +225,8 @@ public class HttpEndpointFormPage extends EndpointFormPage {
 				paramDialog.setBlockOnOpen(true);
 				paramDialog.open();
 				endpointPropertyList = paramDialog.getEndpointPropertyList();		
+				setSave(true);
+				updateDirtyState();
 			}
 			
 			@Override

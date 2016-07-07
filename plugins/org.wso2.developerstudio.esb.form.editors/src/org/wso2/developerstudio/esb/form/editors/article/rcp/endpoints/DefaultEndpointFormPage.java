@@ -20,6 +20,9 @@ package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -94,6 +97,13 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 		defaultEPOptimizeGridData.grabExcessHorizontalSpace = true;
 		eP_Optimize.setLayoutData(defaultEPOptimizeGridData);
 		
+		eP_Optimize.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+		
 		toolkit.createLabel(miscSectionClient, "Description :");
 		eP_Description = toolkit.createText(miscSectionClient, "");
 		eP_Description.setBackground(new Color(null, 229,236,253));
@@ -103,6 +113,15 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 		defaultEPDescriptionGridData.horizontalAlignment = GridData.FILL;
 		defaultEPDescriptionGridData.grabExcessHorizontalSpace = true;
 		eP_Description.setLayoutData(defaultEPDescriptionGridData);
+		
+		eP_Description.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+		
 		
 		toolkit.createLabel(miscSectionClient, "Properties :");
 		defaultEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
@@ -115,7 +134,10 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
 				ConfigureEndPointPropertiesDialog paramDialog = new ConfigureEndPointPropertiesDialog(shell,endpointPropertyList);
 				paramDialog.setBlockOnOpen(true);
 				paramDialog.open();
-				endpointPropertyList = paramDialog.getEndpointPropertyList();		
+				endpointPropertyList = paramDialog.getEndpointPropertyList();	
+				
+				setSave(true);
+				updateDirtyState();
 			}
 			
 			@Override

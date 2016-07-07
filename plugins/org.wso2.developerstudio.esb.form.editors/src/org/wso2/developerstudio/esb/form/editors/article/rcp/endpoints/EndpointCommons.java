@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -43,11 +45,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.esb.form.editors.article.providers.NamedEntityDescriptor;
 import org.wso2.developerstudio.esb.form.editors.article.providers.RegistryKeyPropertyEditorDialog;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
 public class EndpointCommons {
 
 	public Combo endpointReliableMessaging;
+	
+	private AbstractEsbFormPage esbFormPage;
+
+	public EndpointCommons(EndpointFormPage esbFormPage) {
+		this.esbFormPage = esbFormPage;
+	}
 
 	public Combo getEndpointReliableMessaging() {
 		return endpointReliableMessaging;
@@ -275,6 +284,9 @@ public class EndpointCommons {
 					disableRMfields();
 					endpointReliableMessagingPolicyKey.setText("");
 				}
+				
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 		});
 
@@ -294,6 +306,15 @@ public class EndpointCommons {
 		rmLabelGridData.horizontalAlignment = GridData.FILL;
 		rmLabelGridData.grabExcessHorizontalSpace = true;
 		endpointReliableMessagingPolicyKey.setLayoutData(rmLabelGridData);
+		
+		endpointReliableMessagingPolicyKey.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
+        
 
 		endpointReliableMessagingKey = toolkit.createButton(qosSectionClient, "Add Reliable Messaging Policy Key",
 				SWT.PUSH);
@@ -313,6 +334,9 @@ public class EndpointCommons {
 					rmPolicyKey = registryKeyProperty.getKeyValue();
 					endpointReliableMessagingPolicyKey.setText(rmPolicyKey);
 				}
+				
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 
 			@Override
@@ -344,6 +368,9 @@ public class EndpointCommons {
 				} else {
 					disabeAddressingFields();
 				}
+				
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 		});
 
@@ -359,6 +386,13 @@ public class EndpointCommons {
 		endpointVersionGridData.horizontalAlignment = GridData.FILL;
 		endpointVersionGridData.grabExcessHorizontalSpace = true;
 		endpointVersion.setLayoutData(endpointVersionGridData);
+		
+		endpointVersion.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 		endpointSeparateListnerLabel = toolkit.createLabel(qosSectionClient, "Addressing Separate Listener :");
 		endpointSeparateListnerLabel.setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -372,6 +406,13 @@ public class EndpointCommons {
 		endpointSeparateListenerGridData.horizontalAlignment = GridData.FILL;
 		endpointSeparateListenerGridData.grabExcessHorizontalSpace = true;
 		endpointSeparateListner.setLayoutData(endpointSeparateListenerGridData);
+		
+		endpointSeparateListner.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 		disabeAddressingFields();
 
@@ -400,9 +441,9 @@ public class EndpointCommons {
 					endpointWSPolicyKey.setText("");
 					endpointSecurityInboundPolicyKey.setText("");
 					endpointSecurityOutboundPolicyKey.setText("");
-					
-
 				}
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 		});
 
@@ -422,6 +463,9 @@ public class EndpointCommons {
 					enablePolicyFields();
 					disableInOutFields();
 				}
+				
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 
 			@Override
@@ -442,6 +486,14 @@ public class EndpointCommons {
 		endpointWSPolicyKeyGridData.horizontalAlignment = GridData.FILL;
 		endpointWSPolicyKeyGridData.grabExcessHorizontalSpace = true;
 		endpointWSPolicyKey.setLayoutData(endpointWSPolicyKeyGridData);
+		
+		endpointWSPolicyKey.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 		endpointPolicyKey = toolkit.createButton(qosSectionClient, "Add Policy Key", SWT.PUSH);
 		endpointPolicyKey.setBackground(new Color(null, 229, 236, 253));
@@ -461,6 +513,9 @@ public class EndpointCommons {
 					endpointSecurityOutboundPolicyKey.setText("");
 					endpointSecurityInboundPolicyKey.setText("");
 				}
+				
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 
 			@Override
@@ -487,6 +542,14 @@ public class EndpointCommons {
 		endpointInboundPolicyKeyGridData.horizontalAlignment = GridData.FILL;
 		endpointInboundPolicyKeyGridData.grabExcessHorizontalSpace = true;
 		endpointSecurityInboundPolicyKey.setLayoutData(endpointInboundPolicyKeyGridData);
+		
+		endpointSecurityInboundPolicyKey.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 		endpointInboundPolicyKey = toolkit.createButton(qosSectionClient, "Add Inbound Policy Key", SWT.PUSH);
 		endpointInboundPolicyKey.setBackground(new Color(null, 229, 236, 253));
@@ -506,6 +569,9 @@ public class EndpointCommons {
 					endpointSecurityInboundPolicyKey.setText(inboundPolicyKey);
 					endpointWSPolicyKey.setText("");
 				}
+				
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 
 			@Override
@@ -530,6 +596,15 @@ public class EndpointCommons {
 		endpointOutboundPolicyKeyGridData.horizontalAlignment = GridData.FILL;
 		endpointOutboundPolicyKeyGridData.grabExcessHorizontalSpace = true;
 		endpointSecurityOutboundPolicyKey.setLayoutData(endpointOutboundPolicyKeyGridData);
+		
+		endpointSecurityOutboundPolicyKey.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
+
 
 		endpointOutboundPolicyKey = toolkit.createButton(qosSectionClient, "Add Outbound Policy Key", SWT.PUSH);
 		endpointOutboundPolicyKey.setBackground(new Color(null, 229, 236, 253));
@@ -549,6 +624,8 @@ public class EndpointCommons {
 					endpointSecurityOutboundPolicyKey.setText(outboundPolicyKey);
 					endpointWSPolicyKey.setText("");
 				}
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
 			}
 
 			@Override
@@ -787,6 +864,15 @@ public class EndpointCommons {
 		endpointSuspendCodesGridData.horizontalAlignment = GridData.FILL;
 		endpointSuspendCodesGridData.grabExcessHorizontalSpace = true;
 		endpointSuspendErrorCodes.setLayoutData(endpointSuspendCodesGridData);
+		
+		endpointSuspendErrorCodes.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
+
 
 		toolkit.createLabel(errorHandlingSectionClient, "Suspend Initial Duration :");
 		endpointSuspendInitialDuration = toolkit.createText(errorHandlingSectionClient, "");
@@ -798,6 +884,14 @@ public class EndpointCommons {
 		endpointSuspendInitialDurationGridData.horizontalAlignment = GridData.FILL;
 		endpointSuspendInitialDurationGridData.grabExcessHorizontalSpace = true;
 		endpointSuspendInitialDuration.setLayoutData(endpointSuspendInitialDurationGridData);
+		
+		endpointSuspendInitialDuration.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 		toolkit.createLabel(errorHandlingSectionClient, "Suspend Maximum Duration :");
 		endpointSuspendMaxDuration = toolkit.createText(errorHandlingSectionClient, "");
@@ -809,6 +903,15 @@ public class EndpointCommons {
 		endpointSuspendMaxDurationGridData.horizontalAlignment = GridData.FILL;
 		endpointSuspendMaxDurationGridData.grabExcessHorizontalSpace = true;
 		endpointSuspendMaxDuration.setLayoutData(endpointSuspendMaxDurationGridData);
+		
+		endpointSuspendMaxDuration.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
+
 
 		toolkit.createLabel(errorHandlingSectionClient, "Suspend Progression Factor :");
 		endpointSuspendProgressFactor = toolkit.createText(errorHandlingSectionClient, "");
@@ -820,6 +923,14 @@ public class EndpointCommons {
 		endpointSuspendProgressFactorGridData.horizontalAlignment = GridData.FILL;
 		endpointSuspendProgressFactorGridData.grabExcessHorizontalSpace = true;
 		endpointSuspendProgressFactor.setLayoutData(endpointSuspendProgressFactorGridData);
+		
+		endpointSuspendProgressFactor.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 		addSeparator(form, toolkit, errorHandlingSectionClient);
 
@@ -837,6 +948,15 @@ public class EndpointCommons {
 		endpointEntryCodesGridData.horizontalAlignment = GridData.FILL;
 		endpointEntryCodesGridData.grabExcessHorizontalSpace = true;
 		endpointRetryErrorCodes.setLayoutData(endpointEntryCodesGridData);
+		
+		endpointRetryErrorCodes.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
+
 
 		toolkit.createLabel(errorHandlingSectionClient, "Retry Count :");
 		endpointRetryCount = toolkit.createText(errorHandlingSectionClient, "");
@@ -848,6 +968,14 @@ public class EndpointCommons {
 		endpointRetryCountGridData.horizontalAlignment = GridData.FILL;
 		endpointRetryCountGridData.grabExcessHorizontalSpace = true;
 		endpointRetryCount.setLayoutData(endpointRetryCountGridData);
+		
+		endpointRetryCount.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 		toolkit.createLabel(errorHandlingSectionClient, "Retry Delay :");
 		endpointRetryDelay = toolkit.createText(errorHandlingSectionClient, "");
@@ -859,6 +987,14 @@ public class EndpointCommons {
 		endpointRetryDelayGridData.horizontalAlignment = GridData.FILL;
 		endpointRetryDelayGridData.grabExcessHorizontalSpace = true;
 		endpointRetryDelay.setLayoutData(endpointRetryDelayGridData);
+		
+		endpointRetryDelay.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 		addSeparator(form, toolkit, errorHandlingSectionClient);
 
@@ -876,6 +1012,14 @@ public class EndpointCommons {
 		endpointTimeoutDurationGridData.horizontalAlignment = GridData.FILL;
 		endpointTimeoutDurationGridData.grabExcessHorizontalSpace = true;
 		endpointTimeoutDuration.setLayoutData(endpointTimeoutDurationGridData);
+		
+		endpointTimeoutDuration.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
 		toolkit.createLabel(errorHandlingSectionClient, "Timeout Action :");
 		endpointTimeoutAction = new Combo(errorHandlingSectionClient, SWT.DROP_DOWN);
@@ -889,10 +1033,17 @@ public class EndpointCommons {
 		endpointTimeoutActionGridData.horizontalAlignment = GridData.FILL;
 		endpointTimeoutActionGridData.grabExcessHorizontalSpace = true;
 		endpointTimeoutDuration.setLayoutData(endpointTimeoutActionGridData);
-
+		
+		endpointTimeoutDuration.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 		errorHandlingSection.setClient(errorHandlingSectionClient);
 	}
 
+	@SuppressWarnings("deprecation")
 	public Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {
 
 		Section section = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);

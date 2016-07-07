@@ -25,6 +25,8 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -159,6 +161,8 @@ public class TemplateEndPointFormPage extends EndpointFormPage {
 				if (!tempEP_AvaiableTemp.getText().equals(DEFAULT_VALUE)) {
 					tempEP_TargetTemp.setText(tempEP_AvaiableTemp.getText());
 				}
+				setSave(true);
+				updateDirtyState();
 			}
 
 		});
@@ -173,6 +177,14 @@ public class TemplateEndPointFormPage extends EndpointFormPage {
 		templateEPTargetListGridData.horizontalAlignment = GridData.FILL;
 		templateEPTargetListGridData.grabExcessHorizontalSpace = true;
 		tempEP_TargetTemp.setLayoutData(templateEPTargetListGridData);
+		
+		tempEP_TargetTemp.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 
 		toolkit.createLabel(miscSectionClient, "Description :");
 		tempEP_Description = toolkit.createText(miscSectionClient, "");
@@ -183,6 +195,14 @@ public class TemplateEndPointFormPage extends EndpointFormPage {
 		templateEPDescriptionGridData.horizontalAlignment = GridData.FILL;
 		templateEPDescriptionGridData.grabExcessHorizontalSpace = true;
 		tempEP_Description.setLayoutData(templateEPDescriptionGridData);
+		
+		tempEP_Description.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 
 		toolkit.createLabel(miscSectionClient, "Parameters :");
 		templateEP_Parameters = toolkit.createButton(miscSectionClient, "Add Parameters", SWT.PUSH);
@@ -199,6 +219,9 @@ public class TemplateEndPointFormPage extends EndpointFormPage {
 				templateParameterList = paramDialog.getTemplateParameterList();
 				name = paramDialog.getName();
 				uri = paramDialog.getURI();
+				
+				setSave(true);
+				updateDirtyState();
 			}
 
 			@Override

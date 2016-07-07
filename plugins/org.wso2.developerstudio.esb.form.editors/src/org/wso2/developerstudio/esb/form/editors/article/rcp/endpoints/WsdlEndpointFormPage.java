@@ -20,6 +20,9 @@ package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -139,6 +142,15 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		epOptimizeGridData.grabExcessHorizontalSpace = true;
 		eP_Optimize.setLayoutData(epOptimizeGridData);
 		
+		eP_Optimize.addSelectionListener(new SelectionAdapter() {
+
+			public void widgetSelected(SelectionEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+
+		});
+		
 		toolkit.createLabel(miscSectionClient, "Description :");
 		eP_Description = toolkit.createText(miscSectionClient, "");
 		eP_Description.setBackground(new Color(null, 229,236,253));
@@ -148,6 +160,15 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		epDescriptionGridData.horizontalAlignment = GridData.FILL;
 		epDescriptionGridData.grabExcessHorizontalSpace = true;
 		eP_Description.setLayoutData(epDescriptionGridData);
+		
+		eP_Description.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
 		
 		toolkit.createLabel(miscSectionClient, "WSDL URI :");
 		wsdlEP_WsdlUri = toolkit.createText(miscSectionClient, "");
@@ -159,6 +180,14 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		wsdlEPWsdlUriGridData.grabExcessHorizontalSpace = true;
 		wsdlEP_WsdlUri.setLayoutData(wsdlEPWsdlUriGridData);
 		
+		wsdlEP_WsdlUri.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+		
 		toolkit.createLabel(miscSectionClient, "Service :");
 		wsdlEP_Service = toolkit.createText(miscSectionClient, "");
 		wsdlEP_Service.setBackground(new Color(null, 229,236,253));
@@ -169,6 +198,14 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		wsdlEPServiceGridData.grabExcessHorizontalSpace = true;
 		wsdlEP_Service.setLayoutData(wsdlEPServiceGridData);
 		
+		wsdlEP_Service.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+		
 		toolkit.createLabel(miscSectionClient, "Port :");
 		wsdlEP_Port = toolkit.createText(miscSectionClient, "");
 		wsdlEP_Port.setBackground(new Color(null, 229,236,253));
@@ -178,6 +215,14 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		wsdlEPPortGridData.horizontalAlignment = GridData.FILL;
 		wsdlEPPortGridData.grabExcessHorizontalSpace = true;
 		wsdlEP_Port.setLayoutData(wsdlEPPortGridData);
+		
+		wsdlEP_Port.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(miscSectionClient, "Properties :");
 		wsdlEP_Properties = toolkit.createButton(miscSectionClient, "Add Properties", SWT.PUSH);
@@ -190,7 +235,10 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 				ConfigureEndPointPropertiesDialog paramDialog = new ConfigureEndPointPropertiesDialog(shell,endpointPropertyList);
 				paramDialog.setBlockOnOpen(true);
 				paramDialog.open();
-				endpointPropertyList = paramDialog.getEndpointPropertyList();		
+				endpointPropertyList = paramDialog.getEndpointPropertyList();	
+				
+				setSave(true);
+				updateDirtyState();
 			}
 			
 			@Override

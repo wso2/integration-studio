@@ -40,6 +40,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS;
@@ -65,7 +66,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
@@ -163,6 +163,9 @@ public class InboundEndpointDeserializer extends
         } else if (InboundEndpointConstants.FEED.equals(object.getProtocol())) {
             executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.FEED);
             updateParameters(object, InboundEndpointType.FEED);
+        }else if (InboundEndpointConstants.WSO2MB.equals(object.getProtocol())) {
+            executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.WSO2MB);
+            updateParameters(object, InboundEndpointType.WSO2MB);
         }
 
         // Creating Sequence mediator graphically
@@ -421,6 +424,82 @@ public class InboundEndpointDeserializer extends
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, JMSCacheLevel.TWO);
                         } else if (paramEntry.getValue().equals("3")) {
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, JMSCacheLevel.THREE);
+                        }
+                    }else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION, false);
+                        }
+                    }
+                }
+            }
+        } else if (InboundEndpointType.WSO2MB.equals(inboundEndpointType)) {
+            for (WSO2MBInboundEndpointParameter parameterType : WSO2MBInboundEndpointParameter.values()) {
+                if (parameterType.isMatchedWithParameterName(paramEntry.getKey())) {
+                    if (parameterType.canHoldKeyValue()) {
+                        if (ParameterKeyValueType.VALUE.equals(type)) {
+                            executeSetValueCommand(parameterType.getEAttributeValue(), paramEntry.getValue());
+                        } else if (ParameterKeyValueType.KEY.equals(type)) {
+                            executeSetValueCommand(parameterType.getEAttributeValue(), KEY_TYPE_PARAMETER_PREFIX
+                                    + paramEntry.getValue());
+                        } else {
+                            throw new UnsupportedOperationException("Operation for ParameterKeyValueType " + type
+                                    + " is not supported");
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.SEQUENTIAL)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__SEQUENTIAL, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__SEQUENTIAL, false);
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.COORDINATION)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, false);
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_CONNECTION_FACTORY_TYPE)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TOPIC)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE,
+                                    JMSConnectionFactoryType.TOPIC);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE,
+                                    JMSConnectionFactoryType.QUEUE);
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_SESSION_TRANSACTED)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED, false);
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_SESSION_ACKNOWLEDGEMENT)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.AUTO_ACKNOWLEDGE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT,
+                                    JMSSessionAcknowledgement.AUTO_ACKNOWLEDGE);
+                        } else if (paramEntry.getValue().equals(InboundEndpointConstants.CLIENT_ACKNOWLEDGE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT,
+                                    JMSSessionAcknowledgement.CLIENT_ACKNOWLEDGE);
+                        } else if (paramEntry.getValue().equals(InboundEndpointConstants.DUPS_OK_ACKNOWLEDGE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT,
+                                    JMSSessionAcknowledgement.DUPS_OK_ACKNOWLEDGE);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT,
+                                    JMSSessionAcknowledgement.SESSION_TRANSACTED);
+                        }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_CACHE_LEVEL)) {
+                        if (paramEntry.getValue().equals("1")) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, JMSCacheLevel.ONE);
+                        } else if (paramEntry.getValue().equals("2")) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, JMSCacheLevel.TWO);
+                        } else if (paramEntry.getValue().equals("3")) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, JMSCacheLevel.THREE);
+                        }
+                    }else if (paramEntry.getKey().equals(InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION, true);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION, false);
                         }
                     }
                 }

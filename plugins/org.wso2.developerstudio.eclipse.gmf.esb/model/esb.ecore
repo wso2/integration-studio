@@ -2855,6 +2855,7 @@
         defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFileURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wso2mbConnectionUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSContentType"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFileNamePattern"
@@ -2868,6 +2869,12 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSReconnectTimeout"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSSharedSubscription"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSSubscriptionName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSPinnedServers"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSActionAfterProcess"
         eType="#//VFSAction"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSMoveAfterProcess"
@@ -3145,6 +3152,7 @@
     <eLiterals name="mqtt" value="8" literal="MQTT"/>
     <eLiterals name="rabbitmq" value="9" literal="RABBITMQ"/>
     <eLiterals name="feed" value="10" literal="Feed"/>
+    <eLiterals name="wso2mb" value="11" literal="WSO2 MB"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InboundEndpointBehaviourType">
     <eLiterals name="pollingInboundEndpoint"/>

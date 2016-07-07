@@ -133,6 +133,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSContentTypePropertyPropertyDescriptor(object);
 			addTransportJMSReplyDestinationPropertyDescriptor(object);
 			addTransportJMSPubSubNoLocalPropertyDescriptor(object);
+			addTransportJMSSharedSubscriptionPropertyDescriptor(object);
+			addTransportJMSPinnedServersPropertyDescriptor(object);
 			break;
 		case CUSTOM:
 			addClassPropertyDescriptor(object);
@@ -283,6 +285,30 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportFeedURLPropertyDescriptor(object);
 			addTransportFeedTypePropertyDescriptor(object);
 			break;
+		case WSO2MB:
+			addIntervalPropertyDescriptor(object);
+			addSequentialPropertyDescriptor(object);
+			addCoordinationPropertyDescriptor(object);			
+			addJavaNamingFactoryInitialPropertyDescriptor(object);
+			addWso2mbConnectionUrlPropertyDescriptor(object);
+			addTransportJMSConnectionFactoryTypePropertyDescriptor(object);
+			addTransportJMSDestinationPropertyDescriptor(object);
+			addTransportJMSSessionTransactedPropertyDescriptor(object);
+			addTransportJMSSessionAcknowledgementPropertyDescriptor(object);
+			addTransportJMSCacheLevelPropertyDescriptor(object);	
+			addTransportJMSJMSSpecVersionPropertyDescriptor(object);
+			addTransportJMSSubscriptionDurablePropertyDescriptor(object);
+			addTransportJMSDurableSubscriberClientIDPropertyDescriptor(object);
+			addTransportJMSDurableSubscriberNamePropertyDescriptor(object);
+			addTransportJMSMessageSelectorPropertyDescriptor(object);
+			addTransportJMSReceiveTimeoutPropertyDescriptor(object);
+			addTransportJMSContentTypePropertyDescriptor(object);
+			addTransportJMSContentTypePropertyPropertyDescriptor(object);
+			addTransportJMSReplyDestinationPropertyDescriptor(object);
+			addTransportJMSPubSubNoLocalPropertyDescriptor(object);
+			addTransportJMSSharedSubscriptionPropertyDescriptor(object);
+			addTransportJMSSubscriptionNamePropertyDescriptor(object);
+			addTransportJMSPinnedServersPropertyDescriptor(object);	
 		default:
 			break;
 		}
@@ -293,7 +319,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -2488,6 +2514,29 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Wso2mb Connection Url feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWso2mbConnectionUrlPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wso2mbConnectionUrl_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wso2mbConnectionUrl_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+	
+
+	/**
 	 * This adds a property descriptor for the Transport VFS Content Type
 	 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -2602,6 +2651,72 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 						"_UI_InboundEndpoint_transportVFSReconnectTimeout_feature", "_UI_InboundEndpoint_type"),
 				EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport JMS Shared Subscription feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportJMSSharedSubscriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSSharedSubscription_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSSharedSubscription_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport JMS Subscription Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportJMSSubscriptionNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSSubscriptionName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSSubscriptionName_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport JMS Pinned Servers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportJMSPinnedServersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSPinnedServers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSPinnedServers_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
 	}
 
 	/**
@@ -3708,6 +3823,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
 			case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
+			case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
@@ -3715,6 +3831,9 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:

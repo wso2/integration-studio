@@ -658,6 +658,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/mqtt"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/rabbitmq"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/feed"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/wso2mb"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//InboundEndpointBehaviourType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointBehaviourType/pollingInboundEndpoint"/>
@@ -2320,6 +2321,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sequential"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/coordination"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wso2mbConnectionUrl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSContentType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileNamePattern"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileProcessInterval"/>
@@ -2327,6 +2329,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSLocking"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMaxRetryCount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSReconnectTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSSharedSubscription"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSSubscriptionName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSPinnedServers"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSActionAfterProcess"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveAfterProcess"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSActionAfterErrors"/>

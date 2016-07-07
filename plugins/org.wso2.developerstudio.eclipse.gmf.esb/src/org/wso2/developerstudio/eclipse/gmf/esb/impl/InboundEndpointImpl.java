@@ -85,6 +85,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSequential <em>Sequential</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isCoordination <em>Coordination</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileURI <em>Transport VFS File URI</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSContentType <em>Transport VFS Content Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}</li>
@@ -92,6 +93,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSLocking <em>Transport VFS Locking</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}</li>
@@ -627,6 +631,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String transportVFSFileURI = TRANSPORT_VFS_FILE_URI_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getWso2mbConnectionUrl() <em>Wso2mb Connection Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWso2mbConnectionUrl()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WSO2MB_CONNECTION_URL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWso2mbConnectionUrl() <em>Wso2mb Connection Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWso2mbConnectionUrl()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wso2mbConnectionUrl = WSO2MB_CONNECTION_URL_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getTransportVFSContentType() <em>Transport VFS Content Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -765,6 +789,66 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String transportVFSReconnectTimeout = TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportJMSSharedSubscription() <em>Transport JMS Shared Subscription</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportJMSSharedSubscription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_JMS_SHARED_SUBSCRIPTION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTransportJMSSharedSubscription() <em>Transport JMS Shared Subscription</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportJMSSharedSubscription()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportJMSSharedSubscription = TRANSPORT_JMS_SHARED_SUBSCRIPTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSSubscriptionName() <em>Transport JMS Subscription Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSSubscriptionName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSSubscriptionName() <em>Transport JMS Subscription Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSSubscriptionName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSSubscriptionName = TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSPinnedServers() <em>Transport JMS Pinned Servers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSPinnedServers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSPinnedServers() <em>Transport JMS Pinned Servers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSPinnedServers()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSPinnedServers = TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTransportVFSActionAfterProcess() <em>Transport VFS Action After Process</em>}' attribute.
@@ -5887,6 +5971,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getWso2mbConnectionUrl() {
+		return wso2mbConnectionUrl;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWso2mbConnectionUrl(String newWso2mbConnectionUrl) {
+		String oldWso2mbConnectionUrl = wso2mbConnectionUrl;
+		wso2mbConnectionUrl = newWso2mbConnectionUrl;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL, oldWso2mbConnectionUrl, wso2mbConnectionUrl));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getTransportVFSContentType() {
 		return transportVFSContentType;
 	}
@@ -6027,6 +6132,69 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		transportVFSReconnectTimeout = newTransportVFSReconnectTimeout;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT, oldTransportVFSReconnectTimeout, transportVFSReconnectTimeout));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportJMSSharedSubscription() {
+		return transportJMSSharedSubscription;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSSharedSubscription(boolean newTransportJMSSharedSubscription) {
+		boolean oldTransportJMSSharedSubscription = transportJMSSharedSubscription;
+		transportJMSSharedSubscription = newTransportJMSSharedSubscription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION, oldTransportJMSSharedSubscription, transportJMSSharedSubscription));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSSubscriptionName() {
+		return transportJMSSubscriptionName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSSubscriptionName(String newTransportJMSSubscriptionName) {
+		String oldTransportJMSSubscriptionName = transportJMSSubscriptionName;
+		transportJMSSubscriptionName = newTransportJMSSubscriptionName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME, oldTransportJMSSubscriptionName, transportJMSSubscriptionName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSPinnedServers() {
+		return transportJMSPinnedServers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSPinnedServers(String newTransportJMSPinnedServers) {
+		String oldTransportJMSPinnedServers = transportJMSPinnedServers;
+		transportJMSPinnedServers = newTransportJMSPinnedServers;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS, oldTransportJMSPinnedServers, transportJMSPinnedServers));
 	}
 
 	/**
@@ -7260,6 +7428,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return isCoordination();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
 				return getTransportVFSFileURI();
+			case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
+				return getWso2mbConnectionUrl();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
 				return getTransportVFSContentType();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
@@ -7274,6 +7444,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportVFSMaxRetryCount();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
 				return getTransportVFSReconnectTimeout();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
+				return isTransportJMSSharedSubscription();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
+				return getTransportJMSSubscriptionName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
+				return getTransportJMSPinnedServers();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
 				return getTransportVFSActionAfterProcess();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
@@ -7631,6 +7807,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
 				setTransportVFSFileURI((String)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
+				setWso2mbConnectionUrl((String)newValue);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
 				setTransportVFSContentType((String)newValue);
 				return;
@@ -7651,6 +7830,15 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
 				setTransportVFSReconnectTimeout((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
+				setTransportJMSSharedSubscription((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
+				setTransportJMSSubscriptionName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
+				setTransportJMSPinnedServers((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
 				setTransportVFSActionAfterProcess((VFSAction)newValue);
@@ -8148,6 +8336,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
 				setTransportVFSFileURI(TRANSPORT_VFS_FILE_URI_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
+				setWso2mbConnectionUrl(WSO2MB_CONNECTION_URL_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
 				setTransportVFSContentType(TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT);
 				return;
@@ -8168,6 +8359,15 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
 				setTransportVFSReconnectTimeout(TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
+				setTransportJMSSharedSubscription(TRANSPORT_JMS_SHARED_SUBSCRIPTION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
+				setTransportJMSSubscriptionName(TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
+				setTransportJMSPinnedServers(TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
 				setTransportVFSActionAfterProcess(TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT);
@@ -8642,6 +8842,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return coordination != COORDINATION_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
 				return TRANSPORT_VFS_FILE_URI_EDEFAULT == null ? transportVFSFileURI != null : !TRANSPORT_VFS_FILE_URI_EDEFAULT.equals(transportVFSFileURI);
+			case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
+				return WSO2MB_CONNECTION_URL_EDEFAULT == null ? wso2mbConnectionUrl != null : !WSO2MB_CONNECTION_URL_EDEFAULT.equals(wso2mbConnectionUrl);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
 				return TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT == null ? transportVFSContentType != null : !TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT.equals(transportVFSContentType);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
@@ -8656,6 +8858,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT == null ? transportVFSMaxRetryCount != null : !TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT.equals(transportVFSMaxRetryCount);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
 				return TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT == null ? transportVFSReconnectTimeout != null : !TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT.equals(transportVFSReconnectTimeout);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
+				return transportJMSSharedSubscription != TRANSPORT_JMS_SHARED_SUBSCRIPTION_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
+				return TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT == null ? transportJMSSubscriptionName != null : !TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT.equals(transportJMSSubscriptionName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
+				return TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT == null ? transportJMSPinnedServers != null : !TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT.equals(transportJMSPinnedServers);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
 				return transportVFSActionAfterProcess != TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
@@ -8982,6 +9190,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(coordination);
 		result.append(", transportVFSFileURI: ");
 		result.append(transportVFSFileURI);
+		result.append(", wso2mbConnectionUrl: ");
+		result.append(wso2mbConnectionUrl);
 		result.append(", transportVFSContentType: ");
 		result.append(transportVFSContentType);
 		result.append(", transportVFSFileNamePattern: ");
@@ -8996,6 +9206,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportVFSMaxRetryCount);
 		result.append(", transportVFSReconnectTimeout: ");
 		result.append(transportVFSReconnectTimeout);
+		result.append(", transportJMSSharedSubscription: ");
+		result.append(transportJMSSharedSubscription);
+		result.append(", transportJMSSubscriptionName: ");
+		result.append(transportJMSSubscriptionName);
+		result.append(", transportJMSPinnedServers: ");
+		result.append(transportJMSPinnedServers);
 		result.append(", transportVFSActionAfterProcess: ");
 		result.append(transportVFSActionAfterProcess);
 		result.append(", transportVFSMoveAfterProcess: ");

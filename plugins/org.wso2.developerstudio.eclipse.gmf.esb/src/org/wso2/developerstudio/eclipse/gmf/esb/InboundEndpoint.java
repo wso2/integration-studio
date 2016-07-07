@@ -49,6 +49,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isSequential <em>Sequential</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isCoordination <em>Coordination</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileURI <em>Transport VFS File URI</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSContentType <em>Transport VFS Content Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}</li>
@@ -56,6 +57,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSLocking <em>Transport VFS Locking</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}</li>
@@ -3023,6 +3027,32 @@ public interface InboundEndpoint extends EsbElement {
 	void setTransportVFSFileURI(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Wso2mb Connection Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wso2mb Connection Url</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wso2mb Connection Url</em>' attribute.
+	 * @see #setWso2mbConnectionUrl(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Wso2mbConnectionUrl()
+	 * @model
+	 * @generated
+	 */
+	String getWso2mbConnectionUrl();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wso2mb Connection Url</em>' attribute.
+	 * @see #getWso2mbConnectionUrl()
+	 * @generated
+	 */
+	void setWso2mbConnectionUrl(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Transport VFS Content Type</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
@@ -3212,6 +3242,85 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportVFSReconnectTimeout(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Shared Subscription</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Shared Subscription</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Shared Subscription</em>' attribute.
+	 * @see #setTransportJMSSharedSubscription(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSharedSubscription()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isTransportJMSSharedSubscription();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Shared Subscription</em>' attribute.
+	 * @see #isTransportJMSSharedSubscription()
+	 * @generated
+	 */
+	void setTransportJMSSharedSubscription(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Subscription Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Subscription Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Subscription Name</em>' attribute.
+	 * @see #setTransportJMSSubscriptionName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSSubscriptionName()
+	 * @model
+	 * @generated
+	 */
+	String getTransportJMSSubscriptionName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Subscription Name</em>' attribute.
+	 * @see #getTransportJMSSubscriptionName()
+	 * @generated
+	 */
+	void setTransportJMSSubscriptionName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Pinned Servers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Pinned Servers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Pinned Servers</em>' attribute.
+	 * @see #setTransportJMSPinnedServers(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPinnedServers()
+	 * @model
+	 * @generated
+	 */
+	String getTransportJMSPinnedServers();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Pinned Servers</em>' attribute.
+	 * @see #getTransportJMSPinnedServers()
+	 * @generated
+	 */
+	void setTransportJMSPinnedServers(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Transport VFS Action After Process</b></em>' attribute.

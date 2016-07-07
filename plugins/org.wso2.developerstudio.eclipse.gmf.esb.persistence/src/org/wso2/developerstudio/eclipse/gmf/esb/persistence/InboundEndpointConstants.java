@@ -13,6 +13,7 @@ public class InboundEndpointConstants {
 	public static final String MQTT = "mqtt";
 	public static final String RABBITMQ = "rabbitmq";
 	public static final String FEED = "feed";
+	public static final String WSO2MB ="wso2mb";
 
 	public static final String TRUE = "true";
 	public static final String FALSE = "false";
@@ -91,6 +92,11 @@ public class InboundEndpointConstants {
 	public static final String JMS_MESSAGE_SELECTOR = "transport.jms.MessageSelector";
 	public static final String JMS_RECIEVE_TIMEOUT = "transport.jms.ReceiveTimeout";
 	public static final String JMS_CONTENT_TYPE = "transport.jms.ContentType";
+	public static final String JMS_SHARED_SUBSCRIPTION ="transport.jms.SharedSubscription";
+	public static final String INBOUND_ENDPOINT_PINNED_SERVERS="pinnedServers";
+	public static final String JMS_SUBSCRIPTION_NAME = "transport.jms.SubscriptionName";
+
+	public static final String WSO2_MB_CONNECTION_URL ="wso2mb.connection.url";
 	
 	public static final String JMS_REPLY_DESTINATION = "transport.jms.ReplyDestination";
 	public static final String JMS_PUB_SUB_NO_LOCAL = "transport.jms.PubSubNoLocal";

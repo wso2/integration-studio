@@ -398,6 +398,117 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONTENT_TYPE_PROPERTY,
                         visualInboundEndpoint.getTransportJMSContentTypeProperty());
             }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
+    				.isTransportJMSSharedSubscription()))) {
+            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION,
+                          String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()));
+    		}
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
+    				.getTransportJMSPinnedServers()))) {
+            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
+                         visualInboundEndpoint.getTransportJMSPinnedServers());
+    		}
+            
+            break;
+        case WSO2MB:
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INTERVAL,
+                        visualInboundEndpoint.getInterval());
+            }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SEQUENTIAL,
+                        String.valueOf(visualInboundEndpoint.isSequential()));
+            }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.COORDINATION,
+                        String.valueOf(visualInboundEndpoint.isCoordination()));
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSMessageSelector())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_MESSAGE_SELECTOR,
+                        visualInboundEndpoint.getTransportJMSMessageSelector());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSDestination())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_DESTINATION,
+                        visualInboundEndpoint.getTransportJMSDestination());
+            }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSCacheLevel().getLiteral()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CACHE_LEVEL, visualInboundEndpoint
+                        .getTransportJMSCacheLevel().getLiteral());
+            }    
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getJavaNamingFactoryInitial())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_JAVA_NAMING_FACTORY_INITIAL,
+                        visualInboundEndpoint.getJavaNamingFactoryInitial());
+            }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSSessionAcknowledgement()
+                    .getLiteral()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SESSION_ACKNOWLEDGEMENT,
+                        visualInboundEndpoint.getTransportJMSSessionAcknowledgement().getLiteral());
+            }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isTransportJMSSessionTransacted()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SESSION_TRANSACTED,
+                        String.valueOf(visualInboundEndpoint.isTransportJMSSessionTransacted()));
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSSubscriptionDurable())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SUBSCRIPTION_DURABLE,
+                        visualInboundEndpoint.getTransportJMSSubscriptionDurable());
+            }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSConnectionFactoryType()
+                    .getLiteral()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONNECTION_FACTORY_TYPE,
+                        visualInboundEndpoint.getTransportJMSConnectionFactoryType().getLiteral());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSJMSSpecVersion())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_JMS_SPEC_VERSION,
+                        visualInboundEndpoint.getTransportJMSJMSSpecVersion());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSDurableSubscriberClientID())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_DURABLE_SUBSCRIBER_CLIENT_ID,
+                        visualInboundEndpoint.getTransportJMSDurableSubscriberClientID());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSReceiveTimeout())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RECIEVE_TIMEOUT,
+                        visualInboundEndpoint.getTransportJMSReceiveTimeout());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSContentType())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONTENT_TYPE,
+                        visualInboundEndpoint.getTransportJMSContentType());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSReplyDestination())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_REPLY_DESTINATION,
+                        visualInboundEndpoint.getTransportJMSReplyDestination());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSPubSubNoLocal())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_PUB_SUB_NO_LOCAL,
+                        visualInboundEndpoint.getTransportJMSPubSubNoLocal());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSDurableSubscriberName())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_DURABLE_SUBSCRIBER_NAME,
+                        visualInboundEndpoint.getTransportJMSDurableSubscriberName());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSContentTypeProperty())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONTENT_TYPE_PROPERTY,
+                        visualInboundEndpoint.getTransportJMSContentTypeProperty());
+            }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
+    				.isTransportJMSSharedSubscription()))) {
+            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION,
+                          String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()));
+    		}
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
+    				.getTransportJMSPinnedServers()))) {
+            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
+                         visualInboundEndpoint.getTransportJMSPinnedServers());
+    		}
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
+    				.getWso2mbConnectionUrl()))) {
+            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSO2_MB_CONNECTION_URL,
+                         visualInboundEndpoint.getWso2mbConnectionUrl());
+    		}
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
+    				.getTransportJMSSubscriptionName()))) {
+            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SUBSCRIPTION_NAME,
+                         visualInboundEndpoint.getTransportJMSSubscriptionName());
+    		}
             break;
         case CUSTOM:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {

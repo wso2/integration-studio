@@ -38,6 +38,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -81,11 +83,14 @@ public enum JMSInboundEndpointParameter {
                     INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE, false),
     JMS_SESSION_TRANSACTED_TYPE(InboundEndpointConstants.JMS_SESSION_TRANSACTED,
                     INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED, false),
+    JMS_SHARED_SUBSCRIPTION(InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION,
+    		INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION, false),
     JMS_SESSION_ACKNOWLEDGEMENT_TYPE(InboundEndpointConstants.JMS_SESSION_ACKNOWLEDGEMENT,
                     INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT, false),
     JMS_CACHE_LEVEL_TYPE(InboundEndpointConstants.JMS_CACHE_LEVEL, INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, false),
     JMS_CONTENT_TYPE_PROPERTY_TYPE(InboundEndpointConstants.JMS_CONTENT_TYPE_PROPERTY, 
-            INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY,true);
+            INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY,true),
+	INBOUND_ENDPOINT_PINNED_SERVERS(InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS,true);
     
     private final String name;
     private final EAttribute eAttributeValue;

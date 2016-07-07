@@ -27,7 +27,7 @@ public class InboundEndpointCreationTypes extends AbstractListDataProvider {
 	@Override
 	public List<ListData> getListData(String modelProperty, ProjectDataModel model) {
 		List<ListData> epTypeList = new ArrayList<ListData>();
-		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeHTTP,
+	    epTypeList.add(createListData(InboundEndpointArtifactProperties.typeHTTP,
 				InboundEndpointArtifactProperties.typeHTTP));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeFile,
 				InboundEndpointArtifactProperties.typeFile));
@@ -49,6 +49,8 @@ public class InboundEndpointCreationTypes extends AbstractListDataProvider {
 				InboundEndpointArtifactProperties.typeRabbitMq));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeFeed,
 				InboundEndpointArtifactProperties.typeFeed));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeWSO2MB,
+				InboundEndpointArtifactProperties.typeWSO2MB));
 		return epTypeList;
 	}
 

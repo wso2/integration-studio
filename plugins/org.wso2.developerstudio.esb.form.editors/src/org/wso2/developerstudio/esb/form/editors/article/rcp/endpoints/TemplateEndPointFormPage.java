@@ -244,7 +244,6 @@ public class TemplateEndPointFormPage extends EndpointFormPage {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject activeProject : projects) {
 			if (activeProject != null) {
-				// FIXME: scan whole workspace
 				try {
 					if (activeProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
 						ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();

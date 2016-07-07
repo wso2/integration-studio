@@ -66,12 +66,14 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 	private static final String RABBITMQ_SERVER_PORT = "rabbitmq.server.port";
 	private static final String RABBITMQ_SERVER_HOST_NAME = "rabbitmq.server.host.name";
 	private static final String RABBITMQ_CONNECTION_FACTORY = "rabbitmq.connection.factory";
+	private static final String WSO2_MB_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
 	private static final String RABBITMQ = "rabbitmq";
 	private static final String INTERVAL = "interval";
 	private static final String TOPICS = "topics";
 	private static final String KAFKA_GROUP_ID = "group.id";
 	private static final String ZOOKEEPER_CONNECT = "zookeeper.connect";
 	private static final String KAFKA = "kafka";
+	private static final String WSO2MB="wso2mb";
 	private static final String XML_EXTENSION = ".xml";
 	private static final String SRC_FOLDER ="src";
 	private static final String MAIN_FOLDER="main";
@@ -246,6 +248,9 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 					inboundEndpoint.addParameter(RABBITMQ_SERVER_PASSWORD, "guest");
 					inboundEndpoint.addParameter(RABBITMQ_QUEUE_NAME, "queue_name");
 					inboundEndpoint.addParameter(RABBITMQ_EXCHANGE_NAME, "excahnge_name");
+				}
+				if(ieModel.getProtocol().equals(WSO2MB)){
+					inboundEndpoint.addParameter(WSO2_MB_NAMING_FACTORY_INITIAL,"org.wso2.andes.jndi.PropertiesFileInitialContextFactory");
 				}
 			}
 			

@@ -39,6 +39,7 @@ public class ScriptGenerationUtil {
 
 	public static String getPrettyVariableNameInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map,
 			Stack<ForLoopBean> parentForLoopBeanStackTemp, boolean isOperationVariable) {
+		@SuppressWarnings("unchecked")
 		Stack<ForLoopBean> parentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStackTemp.clone();
 		// put index values for array type variables
 		String prettyVariableName = "";
@@ -54,7 +55,7 @@ public class ScriptGenerationUtil {
 			} else {
 				if (parentForLoopBeanStack.size() > 0) {
 					prettyVariableName = variable.getName() + "[";
-					prettyVariableName += (getForLoopIteratorNames(parentForLoopBeanStack)) + "]";
+					prettyVariableName += (getAccumulatedIterativeVariableString(parentForLoopBeanStack)) + "]";
 				} else {
 					prettyVariableName = variable.getName() + "[0]";
 				}
@@ -203,7 +204,7 @@ public class ScriptGenerationUtil {
 	private static String getAccumulatedIterativeVariableString(Stack<ForLoopBean> parentForLoopBeanStack) {
 		String accumulatedIterativeVariableString = "";
 		while (parentForLoopBeanStack.size() > 0) {
-			accumulatedIterativeVariableString += parentForLoopBeanStack.pop().getIterativeName();
+			accumulatedIterativeVariableString += "parseInt(" + parentForLoopBeanStack.pop().getIterativeName() + ")";
 			if (parentForLoopBeanStack.size() > 0) {
 				accumulatedIterativeVariableString += "+";
 			}
@@ -239,18 +240,6 @@ public class ScriptGenerationUtil {
 			reversedParentForLoopBeanStack.push(tempForLoopBean.pop());
 		}
 		return reversedParentForLoopBeanStack;
-	}
-
-	private static String getForLoopIteratorNames(Stack<ForLoopBean> parentForLoopBeanStack) {
-		int stackSize = parentForLoopBeanStack.size();
-		String iterateNameList = "";
-		for (int i = 0; i < stackSize; i++) {
-			iterateNameList += parentForLoopBeanStack.pop().getIterativeName();
-			if (i < stackSize - 1) {
-				iterateNameList += "+";
-			}
-		}
-		return iterateNameList;
 	}
 
 	public static boolean isVariableTypePrimitive(SchemaDataType variableType) {

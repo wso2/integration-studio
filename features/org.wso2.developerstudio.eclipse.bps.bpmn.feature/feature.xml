@@ -140,4 +140,11 @@
          version="5.18.0.201508100929"
          unpack="false"/>
 
+   <plugin
+         id="org.wso2.developerstudio.bpmn.extensions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

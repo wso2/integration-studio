@@ -1231,7 +1231,15 @@ function bindChangeEvents() { //put all the listeners here
         makeDirty();
         //generateTasks();
     });
+
+/*    $('#fontSize').on("change mousemove",function() {
+        //alert(this.value);
+        //generateTasks();
+    });*/
+
 }
+
+
 
 function createNewLiteral(xmlDom, parent, text, grouptext) {
     while (parent.firstChild) {

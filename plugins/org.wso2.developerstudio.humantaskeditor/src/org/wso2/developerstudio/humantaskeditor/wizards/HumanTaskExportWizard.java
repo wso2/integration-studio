@@ -30,6 +30,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskExportWizard extends Wizard implements IExportWizard {
@@ -69,6 +70,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
     public void init(IWorkbench arg0, IStructuredSelection arg1) {
         this.selection = arg1;
         setWindowTitle(HumantaskEditorConstants.HUMAN_TASK_EXPORT_WIZARD_TITLE);
+        PlatformUI.getWorkbench().getHelpSystem().displayHelp("hteditor");
         setHelpAvailable(true);
     }
 

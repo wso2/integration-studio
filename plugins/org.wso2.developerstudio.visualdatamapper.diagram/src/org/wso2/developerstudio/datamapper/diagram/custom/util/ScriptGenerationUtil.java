@@ -204,6 +204,7 @@ public class ScriptGenerationUtil {
 	private static String getAccumulatedIterativeVariableString(Stack<ForLoopBean> parentForLoopBeanStack) {
 		String accumulatedIterativeVariableString = "";
 		while (parentForLoopBeanStack.size() > 0) {
+			// if we didn't use parseInt the addition will be a string addition
 			accumulatedIterativeVariableString += "parseInt(" + parentForLoopBeanStack.pop().getIterativeName() + ")";
 			if (parentForLoopBeanStack.size() > 0) {
 				accumulatedIterativeVariableString += "+";

@@ -46,13 +46,8 @@ public class CompareOperatorTransformer extends AbstractDMOperatorTransformer {
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
-			if (inputVariables.size() == 0) {
-				operationBuilder.append("false");
-			} else if (inputVariables.size() == 1) {
-				operationBuilder
-						.append("( " + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-								variableTypeMap, tempParentForLoopBeanStack, true))
-						.append(" " + operatorLiteral + "\"undefined\" )");
+			if (inputVariables.size() <= 1) {
+				throw new IllegalArgumentException("Compare operator should have two inputs to get the result.");
 			}
 
 			if (inputVariables.size() == 2) {
@@ -62,9 +57,7 @@ public class CompareOperatorTransformer extends AbstractDMOperatorTransformer {
 						.append(" " + operatorLiteral + " " + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 								inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + " )");
 			}
-
 			operationBuilder.append(";");
-
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}

@@ -17,17 +17,26 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.forms.IManagedForm;
@@ -40,7 +49,12 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
+import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
+import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
+import org.wso2.developerstudio.esb.form.editors.Activator;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.CustomStore;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.IMessageStore;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.InMemory;
@@ -59,7 +73,10 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 	 * @param title
 	 */
 	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
 	private String[] messageStoreTypes = {"In-Memory Message Store", "JMS Message Store", "WSO2 MB Message Store", "RabbitMQ Message Store", "JDBC Message Store", "Custom Message Store"};
+	@SuppressWarnings("unused")
 	private IMessageStore currentMessageStore = null;
 //	private ArrayList<Section> sectionsList = new ArrayList<Section>();
 	
@@ -79,7 +96,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 	Section guaranteedDeliverySection;
 	
 	public Combo guaranteedDeliveryEnable;
-	public Text failoverMessageStore;
+	public Combo failoverMessageStore;
 	
 	Map<String, IMessageStore> storeMap;
 	
@@ -115,6 +132,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		createFormParameterSection(form, toolkit);
 	}
 	
+	@SuppressWarnings("deprecation")
 	private void createFormBasicSection(final ScrolledForm form, FormToolkit toolkit) {
 		/* Basic Section */
 		Section basicSection = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);
@@ -138,6 +156,14 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		storeName = toolkit.createText(basicSectionClient, "");
 		storeName.setBackground(new Color(null, 229,236,253));
 		storeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		
+		storeName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(basicSectionClient, "Message Store Type");
 		storeType = new Combo(basicSectionClient, SWT.DROP_DOWN);
@@ -163,6 +189,8 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 				}
 				
 				refreshStoreSettings();
+				setSave(true);
+				updateDirtyState();
 				
 			}
 		});
@@ -201,23 +229,75 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		guaranteedDeliveryEnable.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
+				setSave(true);
+				updateDirtyState();
 				super.widgetSelected(e);
 			}
 		});
 		
 		
 		toolkit.createLabel(guaranteedDeliverySectionClient, "Failover Message Store");
-		failoverMessageStore = toolkit.createText(guaranteedDeliverySectionClient, "");
-
-		failoverMessageStore.setBackground(new Color(null, 229,236,253));
+		failoverMessageStore = new Combo(guaranteedDeliverySectionClient, SWT.DROP_DOWN);
+		ArrayList<String> availableMSList = getAvailableMessageStores();
+		String[] list = new String[availableMSList.size()];
+		list = availableMSList.toArray(list);
+		failoverMessageStore.setItems(list);
 		failoverMessageStore.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		failoverMessageStore.addSelectionListener(new SelectionAdapter() {
+
+			public void widgetSelected(SelectionEvent e) {	
+				setSave(true);
+				updateDirtyState();
+			}
+
+		});
 
 		
 		
 	}
 	
-	
+	/**
+	 * Get the available message Stores
+	 * @return
+	 */
+	private ArrayList<String> getAvailableMessageStores() {
+
+		ArrayList<String> availableMS = new ArrayList<String>();
+		File projectPath = null;
+		Shell shell = Display.getDefault().getActiveShell();
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+		for (IProject activeProject : projects) {
+			if (activeProject != null) {
+				try {
+					
+					if (activeProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
+						ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
+						projectPath = activeProject.getLocation().toFile();
+						try {
+							esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml").getLocation().toFile());
+							List<ESBArtifact> allESBArtifacts = esbProjectArtifact.getAllESBArtifacts();
+							for (ESBArtifact esbArtifact : allESBArtifacts) {
+								if ("synapse/message-store".equals(esbArtifact.getType())) {
+									File artifact = new File(projectPath, esbArtifact.getFile());
+									availableMS.add(artifact.getName().replaceAll("[.]xml$", ""));
+								} 
+							}
+						} catch (Exception e) {
+							log.error("Error occured while scanning the project for artifacts", e);
+							ErrorDialog.openError(shell, "Error occured while scanning the project for artifacts",
+									e.getMessage(), null);
+						}
+					}
+				} catch (CoreException e) {
+					log.error("Error occured while scanning the project", e);
+					ErrorDialog.openError(shell, "Error occured while scanning the project", e.getMessage(), null);
+				}
+			}
+		}
+		return availableMS;
+	}
+
+
 	private void createFormParameterSection(final ScrolledForm form, FormToolkit toolkit) {
 		
 		for (IMessageStore aStore : storeMap.values()) {
@@ -226,6 +306,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	private Section createSection(final ScrolledForm form, FormToolkit toolkit, final String heading) {
 		
 		Section section = toolkit.createSection(form.getBody(), Section.TWISTIE | Section.EXPANDED);

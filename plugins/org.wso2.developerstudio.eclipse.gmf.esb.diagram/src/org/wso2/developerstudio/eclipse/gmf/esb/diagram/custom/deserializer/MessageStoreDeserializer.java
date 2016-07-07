@@ -47,6 +47,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSA
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__CACHE_CONNECTION;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -379,8 +380,9 @@ public class MessageStoreDeserializer
 					&& dummyMessageStore.getParameters().get(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE).toString()
 							.equalsIgnoreCase("true")) {
 				messageStorePage.guaranteedDeliveryEnable.select(0);
-				setTextValue(messageStorePage.failoverMessageStore,
-						dummyMessageStore.getParameters().get(STORE_FAILOVER_MESSAGE_STORE_NAME));
+				if(dummyMessageStore.getParameters().get(STORE_FAILOVER_MESSAGE_STORE_NAME) != null){
+					messageStorePage.failoverMessageStore.setText(dummyMessageStore.getParameters().get(STORE_FAILOVER_MESSAGE_STORE_NAME).toString());
+				}
 			} else {
 				messageStorePage.guaranteedDeliveryEnable.select(1);
 			}

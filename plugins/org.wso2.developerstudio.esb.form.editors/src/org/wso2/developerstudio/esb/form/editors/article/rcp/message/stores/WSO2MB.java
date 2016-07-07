@@ -69,6 +69,7 @@ public class WSO2MB implements IMessageStore {
 		wso2mb_initCtxFactory = toolkit.createText(connSectionClient, "");
 		wso2mb_initCtxFactory.setBackground(new Color(null, 229,236,253));
 		wso2mb_initCtxFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		wso2mb_initCtxFactory.setText("org.wso2.andes.jndi.PropertiesFileInitialContextFactory");
 		wso2mb_initCtxFactory.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {

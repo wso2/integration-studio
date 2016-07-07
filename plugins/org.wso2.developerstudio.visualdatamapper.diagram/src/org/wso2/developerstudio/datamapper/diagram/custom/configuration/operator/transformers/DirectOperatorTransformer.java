@@ -28,32 +28,34 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for direct
- * operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for direct operation
  */
 public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 
-    @Override
-    public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-            DMOperation operator) {
-        StringBuilder operationBuilder = new StringBuilder();
-        if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
-            if (inputVariables.size() >= 1) {
-                operationBuilder.append(inputVariables.get(0).getName() + ";");
-            } else {
-                operationBuilder.append("'';");
-            }
-        } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-            if (inputVariables.size() >= 1) {
-                operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-                        variableTypeMap, parentForLoopBeanStack, true) + ";");
-            } else {
-                operationBuilder.append("'';");
-            }
-        } else {
-            throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
-        }
-        return operationBuilder.toString();
-    }
+	@Override
+	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+		StringBuilder operationBuilder = new StringBuilder();
+		operationBuilder
+				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
+			if (inputVariables.size() >= 1) {
+				operationBuilder.append(inputVariables.get(0).getName() + ";");
+			} else {
+				operationBuilder.append("'';");
+			}
+		} else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+			if (inputVariables.size() >= 1) {
+				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+						variableTypeMap, parentForLoopBeanStack, true) + ";");
+			} else {
+				operationBuilder.append("'';");
+			}
+		} else {
+			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
+		}
+		return operationBuilder.toString();
+	}
 }

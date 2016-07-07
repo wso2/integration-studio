@@ -82,7 +82,7 @@ public class SameLevelRecordMappingConfigGenerator extends AbstractMappingConfig
 				.getDMOperatorTransformer(mappingOperation.getOperation().getOperatorType());
 		operationBuilder
 				.append(operatorTransformer.generateScriptForOperation(SameLevelRecordMappingConfigGenerator.class,
-						mappingOperation.getInputVariables(), map, null, mappingOperation.getOperation()));
+						mappingOperation.getInputVariables(), null, map, null, mappingOperation.getOperation()));
 		operationBuilder.append("\n");
 		return operationBuilder.toString();
 	}

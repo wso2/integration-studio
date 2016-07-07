@@ -37,12 +37,14 @@ public class StartsWithOperatorTransformer extends AbstractDMOperatorTransformer
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-			DMOperation operator) {
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
+		operationBuilder
+				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			@SuppressWarnings("unchecked")
 			String inputMethod = (String) operator.getProperty(TransformerConstants.PATTERN_TAG);
+			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 0) {
 				operationBuilder
@@ -51,11 +53,12 @@ public class StartsWithOperatorTransformer extends AbstractDMOperatorTransformer
 			}
 			if (inputMethod != null) {
 				if (inputVariables.size() == 2 && inputMethod.startsWith("{$")) {
-					operationBuilder.append(JS_TO_STRING + ".startsWith(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+					operationBuilder.append(
+							JS_TO_STRING + ".startsWith(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+									inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
 				} else {
-					operationBuilder
-							.append(JS_TO_STRING + ".startsWith(\"" + operator.getProperty(TransformerConstants.PATTERN_TAG) + "\")");
+					operationBuilder.append(JS_TO_STRING + ".startsWith(\""
+							+ operator.getProperty(TransformerConstants.PATTERN_TAG) + "\")");
 				}
 			} else {
 				operationBuilder.append(JS_TO_STRING + ".startsWith(\"\")");

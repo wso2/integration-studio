@@ -46,7 +46,6 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 		for (Integer operationIndex : executionSeq) {
 			List<DMVariable> inputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.INPUT);
 			List<DMVariable> outputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.OUTPUT);
-			;
 			DMOperation operation = model.getOperationsList().get(operationIndex);
 			if (!outputVariables.isEmpty()) {
 				mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation, 0));
@@ -138,7 +137,11 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 		}
 		List<DMVariable> variableList = new ArrayList<>();
 		for (Integer variableIndex : variableReferenceList) {
-			variableList.add(model.getVariablesArray().get(variableIndex));
+			if (variableIndex >= 0) {
+				variableList.add(model.getVariablesArray().get(variableIndex));
+			} else{
+				variableList.add(null);
+			}
 		}
 		return variableList;
 	}

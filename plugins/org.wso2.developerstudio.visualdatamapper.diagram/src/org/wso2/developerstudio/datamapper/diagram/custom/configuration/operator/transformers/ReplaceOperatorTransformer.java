@@ -37,20 +37,23 @@ public class ReplaceOperatorTransformer extends AbstractDMOperatorTransformer {
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-			DMOperation operator) {
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
+		operationBuilder
+				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			@SuppressWarnings("unchecked")
 			String replaceFromCustomInput = (String) operator.getProperty(TransformerConstants.TARGET_TAG);
 			String replaceToCustomInput = (String) operator.getProperty(TransformerConstants.REPLACE_WITH_TAG);
 			String replaceFromValue, replaceToValue;
-
+			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 0) {
 				operationBuilder
-						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-								variableTypeMap, parentForLoopBeanStack, true) + ")" + JS_TO_STRING + ".replace(");
+						.append("("
+								+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+										variableTypeMap, parentForLoopBeanStack, true)
+								+ ")" + JS_TO_STRING + ".replace(");
 			}
 
 			if (replaceFromCustomInput.startsWith("{$") && inputVariables.size() > 1) {

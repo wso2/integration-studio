@@ -77,5 +77,13 @@ public interface DataMapperLink extends EObject {
 	 * @generated
 	 */
 	void setOutNode(OutNode value);
+	
+	public int getInputIndex();
+
+	public void setInputIndex(int inputIndex);
+
+	public int getOutputIndex();
+
+	public void setOutputIndex(int outputIndex);
 
 } // DataMapperLink

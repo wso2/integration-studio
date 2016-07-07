@@ -36,21 +36,23 @@ public class CustomFunctionOperatorTransformer extends AbstractDMOperatorTransfo
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-			DMOperation operator) {
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
+		operationBuilder
+				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
 		List<String> variableList = new ArrayList<>();
-		 @SuppressWarnings("unchecked")
-         Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
+		@SuppressWarnings("unchecked")
+		Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 		for (DMVariable inputVariable : inputVariables) {
 			variableList.add(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariable, variableTypeMap,
 					tempParentForLoopBeanStack, true));
 		}
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			operationBuilder.append(operator.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME)+"(");
+			operationBuilder.append(operator.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME) + "(");
 			for (int i = 0; i < variableList.size(); i++) {
 				operationBuilder.append(variableList.get(i));
-				if(i<variableList.size()-1){
+				if (i < variableList.size() - 1) {
 					operationBuilder.append(",");
 				}
 			}

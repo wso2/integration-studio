@@ -37,9 +37,11 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-			DMOperation operator) {
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
+		operationBuilder
+				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			String startIndex = (String) operator.getProperty(TransformerConstants.START_INDEX);
@@ -49,8 +51,10 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 0) {
 				operationBuilder
-						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-								variableTypeMap, parentForLoopBeanStack, true) + ")" + JS_TO_STRING + ".substring(");
+						.append("("
+								+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+										variableTypeMap, parentForLoopBeanStack, true)
+								+ ")" + JS_TO_STRING + ".substring(");
 			}
 
 			if (startIndex.startsWith("{$") && inputVariables.size() > 1) {

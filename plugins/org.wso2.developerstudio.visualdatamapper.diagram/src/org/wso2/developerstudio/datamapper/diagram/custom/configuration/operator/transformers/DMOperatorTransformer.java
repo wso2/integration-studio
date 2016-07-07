@@ -25,22 +25,24 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 
 /**
- * This interface should be implemented by data mapper operations transformers to generate JS for the coresponding
- * operation
+ * This interface should be implemented by data mapping operations transformers
+ * to generate JS for the corresponding operation
  *
  */
 public interface DMOperatorTransformer {
 
-    /**
-     * This method generates the JS segment to execute the operation on inputs
-     * 
-     * @param generator
-     * @param inputVariables
-     * @param operator
-     * @return script for operation
-     */
-    String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-            DMOperation operator);
+	/**
+	 * This method generates the JS segment to execute the operation on inputs
+	 * 
+	 * @param inputVariables
+	 * @param outputVariables
+	 * @param operator
+	 * @param generator
+	 * 
+	 * @return script for operation
+	 */
+	String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator);
 
 }

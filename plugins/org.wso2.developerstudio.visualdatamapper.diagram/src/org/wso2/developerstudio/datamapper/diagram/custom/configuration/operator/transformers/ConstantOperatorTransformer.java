@@ -29,29 +29,31 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.*;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for constant
- * operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for constant operation
  */
 public class ConstantOperatorTransformer extends AbstractDMOperatorTransformer {
 
-    @Override
-    public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-            Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-            DMOperation operator) {
-        StringBuilder operationBuilder = new StringBuilder();
-        String constantValue = (String) operator.getProperty(CONSTANT_VALUE_TAG);
-        if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
-            operationBuilder.append("'" + constantValue + "';");
-        } else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+	@Override
+	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+		StringBuilder operationBuilder = new StringBuilder();
+		operationBuilder
+				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		String constantValue = (String) operator.getProperty(CONSTANT_VALUE_TAG);
+		if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
+			operationBuilder.append("'" + constantValue + "';");
+		} else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (SchemaDataType.STRING.equals(operator.getProperty(CONSTANT_TYPE_TAG))) {
 				operationBuilder.append("'" + constantValue + "';");
 			} else {
 				operationBuilder.append(constantValue + ";");
 			}
-        } else {
-            throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
-        }
-        return operationBuilder.toString();
-    }
+		} else {
+			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
+		}
+		return operationBuilder.toString();
+	}
 
 }

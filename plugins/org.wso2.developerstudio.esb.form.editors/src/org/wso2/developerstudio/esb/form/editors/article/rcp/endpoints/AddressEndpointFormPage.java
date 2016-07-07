@@ -19,6 +19,9 @@ package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -104,6 +107,14 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		addressEPUriGridData.horizontalAlignment = GridData.FILL;
 		addressEPUriGridData.grabExcessHorizontalSpace = true;
 		addressEP_URI.setLayoutData(addressEPUriGridData);
+		
+		addressEP_URI.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 
 		toolkit.createLabel(miscSectionClient, "Optimize :");
 		eP_Optimize = new Combo(miscSectionClient, SWT.DROP_DOWN);
@@ -116,6 +127,13 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		addressEPOptimizeGridData.grabExcessHorizontalSpace = true;
 		eP_Optimize.setLayoutData(addressEPOptimizeGridData);
 		
+		eP_Optimize.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+		
 		toolkit.createLabel(miscSectionClient, "Description :");
 		eP_Description = toolkit.createText(miscSectionClient, "");
 		eP_Description.setBackground(new Color(null, 229,236,253));
@@ -125,6 +143,14 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 		addressEPDescriptionGridData.horizontalAlignment = GridData.FILL;
 		addressEPDescriptionGridData.grabExcessHorizontalSpace = true;
 		eP_Description.setLayoutData(addressEPDescriptionGridData);
+		
+		eP_Description.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(miscSectionClient, "Properties :");
 		/*eP_Properties = toolkit.createText(miscSectionClient, "");
@@ -148,6 +174,9 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 				paramDialog.setBlockOnOpen(true);
 				paramDialog.open();
 				endpointPropertyList = paramDialog.getEndpointPropertyList();
+				
+				setSave(true);
+				updateDirtyState();
 			}
 
 			@Override

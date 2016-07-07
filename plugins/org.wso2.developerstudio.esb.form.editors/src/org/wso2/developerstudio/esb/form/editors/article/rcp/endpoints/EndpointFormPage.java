@@ -18,6 +18,10 @@
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -26,12 +30,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
-import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.widgets.TableWrapData;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
@@ -118,7 +119,7 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 	public EndpointFormPage(FormEditor editor) {
 		super(editor, "endpointForm", Messages.getString("EndpointPage.sectionMainTitle"));
 		
-		endpointCommons = new EndpointCommons();
+		endpointCommons = new EndpointCommons(this);
 	}
 
 	protected void createFormContent(IManagedForm managedForm) {
@@ -184,6 +185,15 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 		endpointNameGridData.grabExcessHorizontalSpace = true;
 		endpointName.setLayoutData(endpointNameGridData);
 		
+		endpointName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		
 		toolkit.createLabel(basicSectionClient, "Format :");
 		eP_Format = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		//eP_Format.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -194,6 +204,14 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 		endpointFormatGridData.horizontalAlignment = GridData.FILL;
 		endpointFormatGridData.grabExcessHorizontalSpace = true;
 		eP_Format.setLayoutData(endpointFormatGridData);
+		
+		eP_Format.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 		
 		toolkit.createLabel(basicSectionClient, "Trace Enabled :");
 		endpointTrace = new Combo(basicSectionClient, SWT.DROP_DOWN);
@@ -206,6 +224,14 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 		endpointTraceGridData.grabExcessHorizontalSpace = true;
 		endpointTrace.setLayoutData(endpointTraceGridData);
 		
+		endpointTrace.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+		
 		toolkit.createLabel(basicSectionClient, "Statistics Enabled :");
 		endpointStatistics = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		//endpointStatistics.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -216,6 +242,14 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 		endpointStatisticsGridData.horizontalAlignment = GridData.FILL;
 		endpointStatisticsGridData.grabExcessHorizontalSpace = true;
 		endpointStatistics.setLayoutData(endpointStatisticsGridData);
+		
+		endpointStatistics.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setSave(true);
+				updateDirtyState();
+			}
+		});
 	}
 	public void createFormMiscSection() {}
 	

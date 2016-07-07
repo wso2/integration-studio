@@ -47,6 +47,7 @@ public class TransformerConstants {
 	public static final String REPLACE_WITH_TAG = "ReplaceWith";
 	public static final String VARIABLE_TYPE = "VARIABLE_TYPE";
 	public static final String JS_TO_STRING = ".toString()";
+	public static final String GET_OPERATOR_INDEX = "getOperationIndex";
 
     
 }

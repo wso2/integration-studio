@@ -128,9 +128,23 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		Map<String, List<SchemaDataType>> variableMap = model.getVariableTypeMap();
 		StringBuilder functionBuilder = new StringBuilder();
 		ArrayList<MappingOperation> unassignedMappingOperations = new ArrayList<>();
-		int unassignedOperationCount = 0;
 		List<MappingOperation> mappingOperationListTemp = (List<MappingOperation>) ((ArrayList<MappingOperation>) mappingOperationList)
 				.clone();
+		mappingOperationListTemp = configureForLoopsWithMappingOperations(model, variableMap, functionBuilder,
+				unassignedMappingOperations, mappingOperationListTemp);
+		// All operations are now assign to ForLoopBean map. Transform
+		// forLoopBean map for JS script.
+		functionBuilder
+				.append(transformForLoopBeansToJS(getRootBean(), mappingOperationList, model.getVariableTypeMap()));
+		return functionBuilder.toString();
+	}
+
+	@SuppressWarnings("unchecked")
+	private List<MappingOperation> configureForLoopsWithMappingOperations(DataMapperDiagramModel model,
+			Map<String, List<SchemaDataType>> variableMap, StringBuilder functionBuilder,
+			ArrayList<MappingOperation> unassignedMappingOperations, List<MappingOperation> mappingOperationListTemp)
+			throws DataMapperException {
+		int unassignedOperationCount;
 		do {
 			unassignedOperationCount = unassignedMappingOperations.size();
 			if (unassignedOperationCount > 0) {
@@ -277,11 +291,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				assignUnresolvableOperationsToRoot(unassignedMappingOperations);
 			}
 		} while (!unassignedMappingOperations.isEmpty());
-		// All operations are now assign to ForLoopBean map. Transform
-		// forLoopBean map for JS script.
-		functionBuilder
-				.append(transformForLoopBeansToJS(getRootBean(), mappingOperationList, model.getVariableTypeMap()));
-		return functionBuilder.toString();
+		return mappingOperationListTemp;
 	}
 
 	private void assignUnresolvableOperationsToRoot(List<MappingOperation> unassignedMappingOperations) {

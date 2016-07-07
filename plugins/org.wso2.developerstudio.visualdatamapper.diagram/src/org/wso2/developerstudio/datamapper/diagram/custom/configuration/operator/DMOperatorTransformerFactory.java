@@ -28,6 +28,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.DivideOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.EndsWithOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.FloorOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.GetOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.IfElseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.InstantiateOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MatchOperatorTransformer;
@@ -143,6 +144,8 @@ public class DMOperatorTransformerFactory {
 			return new CustomFunctionOperatorTransformer();
 		case PROPERTIES:
 			return new PropertiesOperatorTransformer();
+		case GET:
+			return new GetOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Common operator type found for tranform in DMOperatorTransformerFactory : " + type);

@@ -15,12 +15,51 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+
+import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
- * This class implements interface {@link DMOperatorTransformer} and common methods used in Data Mapper Transformers
+ * This class implements interface {@link DMOperatorTransformer} and common
+ * methods used in Data Mapper Transformers
  *
  */
 public abstract class AbstractDMOperatorTransformer implements DMOperatorTransformer {
 
-    
+	protected String appendOutputVariable(DMOperation operation, List<DMVariable> outputVariables,
+			Map<String, List<SchemaDataType>> map, Stack<ForLoopBean> tempForLoopBeanParentStack) {
+		StringBuilder operationBuilder = new StringBuilder();
+		int numOfOutputVariables = outputVariables.size();
+		for (int variableIndex = 0; variableIndex < numOfOutputVariables; variableIndex++) {
+			String prettyVariableName = null;
+			// Instantiate operation does not need to have the ELEMVAL tag
+			if (operation.getOperatorType().equals(DataMapperOperatorType.INSTANTIATE)) {
+				prettyVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, false);
+				if (SchemaDataType.ARRAY.equals(operation.getProperty(TransformerConstants.VARIABLE_TYPE))) {
+					prettyVariableName = prettyVariableName.substring(0, prettyVariableName.lastIndexOf('['));
+				}
+			} else {
+				prettyVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, true);
+			}
+			operationBuilder.append(prettyVariableName);
+			if (variableIndex < (numOfOutputVariables - 1)) {
+				operationBuilder.append(",");
+			} else if (numOfOutputVariables > 1) {
+				operationBuilder.append(" ] ");
+			}
+		}
+		operationBuilder.append(" = ");
+		return operationBuilder.toString();
+	}
+
 }

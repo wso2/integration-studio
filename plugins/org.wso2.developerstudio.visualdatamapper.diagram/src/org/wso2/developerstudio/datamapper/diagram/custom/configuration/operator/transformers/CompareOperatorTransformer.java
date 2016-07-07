@@ -37,10 +37,12 @@ public class CompareOperatorTransformer extends AbstractDMOperatorTransformer {
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-			DMOperation operator) {
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
-		Object operatorLiteral = ((ComparisonOperatorType)operator.getProperty(COMPARISON_OPERATOR_TYPE)).getLiteral();
+		operationBuilder
+				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		String operatorLiteral = ((ComparisonOperatorType) operator.getProperty(COMPARISON_OPERATOR_TYPE)).getLiteral();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
@@ -57,7 +59,7 @@ public class CompareOperatorTransformer extends AbstractDMOperatorTransformer {
 				operationBuilder
 						.append("( " + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true))
-						.append(" " + operatorLiteral +" "+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+						.append(" " + operatorLiteral + " " + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 								inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + " )");
 			}
 

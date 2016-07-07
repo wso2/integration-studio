@@ -26,21 +26,20 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for Subtract
- * operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for Subtract operation
  */
 public class ContainsOperatorTransformer extends AbstractDMOperatorTransformer {
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-			DMOperation operator) {
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
+		operationBuilder
+				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-
-
 			operationBuilder.append(";");
-
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}

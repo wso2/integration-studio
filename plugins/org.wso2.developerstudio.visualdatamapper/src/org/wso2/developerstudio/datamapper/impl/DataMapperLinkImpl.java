@@ -29,6 +29,17 @@ import org.wso2.developerstudio.datamapper.OutNode;
  * @generated
  */
 public class DataMapperLinkImpl extends EObjectImpl implements DataMapperLink {
+	
+	/**
+	 * Holds the index of the position in the input list of element connected to
+	 */
+	private int inputIndex;
+
+	/**
+	 * Holds the index of the position in the output list of element connecting from
+	 */
+	private int outputIndex;
+	
 	/**
 	 * The cached value of the '{@link #getInNode() <em>In Node</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -276,6 +287,22 @@ public class DataMapperLinkImpl extends EObjectImpl implements DataMapperLink {
 				return getOutNode() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	public int getInputIndex() {
+		return inputIndex;
+	}
+
+	public void setInputIndex(int inputIndex) {
+		this.inputIndex = inputIndex;
+	}
+
+	public int getOutputIndex() {
+		return outputIndex;
+	}
+
+	public void setOutputIndex(int outputIndex) {
+		this.outputIndex = outputIndex;
 	}
 
 } //DataMapperLinkImpl

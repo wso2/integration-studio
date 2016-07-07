@@ -34,9 +34,11 @@ public class InstantiateOperatorTransformer extends AbstractDMOperatorTransforme
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
-			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
-			DMOperation operator) {
+			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
+		operationBuilder
+				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (SchemaDataType.ARRAY.equals(operator.getProperty(TransformerConstants.VARIABLE_TYPE))) {
 				operationBuilder.append(" [];");

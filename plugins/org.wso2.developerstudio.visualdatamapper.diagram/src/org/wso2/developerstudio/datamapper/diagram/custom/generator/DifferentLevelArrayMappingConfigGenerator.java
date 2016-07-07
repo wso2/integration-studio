@@ -504,35 +504,12 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 			}
 		}
 
-		int numOfOutputVariables = outputVariables.size();
-		for (int variableIndex = 0; variableIndex < numOfOutputVariables; variableIndex++) {
-			String prettyVariableName = null;
-			// Instantiate operation does not need to have the ELEMVAL tag
-			if (mappingOperation.getOperation().getOperatorType().equals(DataMapperOperatorType.INSTANTIATE)) {
-				prettyVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, false);
-				if (SchemaDataType.ARRAY
-						.equals(mappingOperation.getOperation().getProperty(TransformerConstants.VARIABLE_TYPE))) {
-					prettyVariableName = prettyVariableName.substring(0, prettyVariableName.lastIndexOf('['));
-				}
-			} else {
-				prettyVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, true);
-			}
-			operationBuilder.append(prettyVariableName);
-			if (variableIndex < (numOfOutputVariables - 1)) {
-				operationBuilder.append(",");
-			} else if (numOfOutputVariables > 1) {
-				operationBuilder.append(" ] ");
-			}
-		}
-		operationBuilder.append(" = ");
 		DMOperatorTransformer operatorTransformer = DMOperatorTransformerFactory
 				.getDMOperatorTransformer(mappingOperation.getOperation().getOperatorType());
 
 		operationBuilder.append(operatorTransformer.generateScriptForOperation(
-				DifferentLevelArrayMappingConfigGenerator.class, mappingOperation.getInputVariables(), map,
-				forLoopBeanParentStack, mappingOperation.getOperation()));
+				DifferentLevelArrayMappingConfigGenerator.class, mappingOperation.getInputVariables(),
+				mappingOperation.getOutputVariables(), map, forLoopBeanParentStack, mappingOperation.getOperation()));
 		operationBuilder.append("\n");
 		if (ifLoopCreated) {
 			operationBuilder.append("}");

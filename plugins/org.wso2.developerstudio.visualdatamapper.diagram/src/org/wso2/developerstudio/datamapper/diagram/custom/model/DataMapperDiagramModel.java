@@ -238,6 +238,9 @@ public class DataMapperDiagramModel {
 	private boolean operationIsExecutable(Integer index) {
 		ArrayList<Integer> inputVariables = inputAdjList.get(index);
 		for (Integer inputVariableIndex : inputVariables) {
+			if (inputVariableIndex < 0) {
+				continue;
+			}
 			if (getResolvedVariableArray().indexOf(inputVariableIndex) < 0
 					&& getResolvedOutputVariableArray().indexOf(inputVariableIndex) < 0) {
 				return false;

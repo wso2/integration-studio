@@ -37,25 +37,36 @@ public class IfElseOperatorTransformer extends AbstractDMOperatorTransformer {
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
-			if (inputVariables.size() == 3) {
+			if (inputVariables.get(0) == null) {
+				throw new IllegalArgumentException("If Else operator should have a condition specified");
+			}
+			if (inputVariables.size() >= 2) {
+				operationBuilder.append(
+						appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
 				operationBuilder
 						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true) + ")");
-				operationBuilder
-						.append("?(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
-								variableTypeMap, tempParentForLoopBeanStack, true) + ")");
-				operationBuilder
-						.append(":(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
-								variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+				if (inputVariables.get(1) != null) {
+					operationBuilder.append("?(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+				} else {
+					operationBuilder.append("?(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							outputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+				}
+				if (inputVariables.size() > 2 && inputVariables.get(2) != null) {
+					operationBuilder.append(":(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							inputVariables.get(2), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+				} else {
+					operationBuilder.append(":(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							outputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+				}
 				operationBuilder.append(";");
-
+			} else{
+				throw new IllegalArgumentException("If Else operator should have at least one branch.");
 			}
-
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}

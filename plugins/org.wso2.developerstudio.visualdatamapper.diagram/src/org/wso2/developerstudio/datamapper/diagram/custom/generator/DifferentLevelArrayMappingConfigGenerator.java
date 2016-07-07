@@ -149,84 +149,90 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 					// operationForLoopBeansList.add(0);
 				} else {
 					for (DMVariable dmVariable : inputVariables) {
-						String mostChildVariableName = "";
-						int mostChildVariableIndex = -1;
-						// getting most child variable index
-						if (DMVariableType.INTERMEDIATE.equals(dmVariable.getType())
-								|| DMVariableType.OUTPUT.equals(dmVariable.getType())) {
-							List<DMVariable> variableArray = model.getVariablesArray();
-							mostChildVariableIndex = getMostChildAssociatedVariableIndex(
-									model.getInputAdjList().get(dmVariable.getparentVariableOrOperationIndex()),
-									variableArray);
-							if (mostChildVariableIndex >= 0) {
-								mostChildVariableName = variableArray.get(mostChildVariableIndex).getName();
-							} else {
-								mostChildVariableIndex = model.getInputVariablesArray().get(0);
-								mostChildVariableName = model.getVariablesArray().get(mostChildVariableIndex).getName();
-							}
-							dmVariable.setMostChildVariableIndex(mostChildVariableIndex);
-						} else {
-							mostChildVariableName = dmVariable.getName();
-							mostChildVariableIndex = dmVariable.getIndex();
-						}
-						if (mostChildVariableIndex >= 0) {
-							String[] variableNameArray = mostChildVariableName.split("\\.");
-							String variableName = "";
-							String parentVariableName = "";
-							String parentArrayVariable = "";
-							boolean firstIteration = true;
-							Set<String> nullableVariableList = new HashSet<>();
-							for (String nextName : variableNameArray) {
-								if (!firstIteration) {
-									// remove "." from variable name
-									parentVariableName = variableName.substring(0, variableName.length() - 1);
+						if (dmVariable != null) {
+							String mostChildVariableName = "";
+							int mostChildVariableIndex = -1;
+							// getting most child variable index
+							if (DMVariableType.INTERMEDIATE.equals(dmVariable.getType())
+									|| DMVariableType.OUTPUT.equals(dmVariable.getType())) {
+								List<DMVariable> variableArray = model.getVariablesArray();
+								mostChildVariableIndex = getMostChildAssociatedVariableIndex(
+										model.getInputAdjList().get(dmVariable.getparentVariableOrOperationIndex()),
+										variableArray);
+								if (mostChildVariableIndex >= 0) {
+									mostChildVariableName = variableArray.get(mostChildVariableIndex).getName();
+								} else {
+									mostChildVariableIndex = model.getInputVariablesArray().get(0);
+									mostChildVariableName = model.getVariablesArray().get(mostChildVariableIndex)
+											.getName();
 								}
-								variableName += nextName;
-								if (variableMap.containsKey(variableName)) {
-									SchemaDataType variableType = variableMap.get(variableName)
-											.get(VARIABLE_TYPE_INDEX);
-									if (SchemaDataType.ARRAY.equals(variableType)) {
-										if (forLoopBeanNotExist(variableName)) {
-											int indexOfForLoopBean = addForLoopInToMap(variableName, new ForLoopBean(
-													"i_" + nextName, variableName, nullableVariableList));
-											nullableVariableList = new HashSet<>();
-											addForLoopBeanIndexToParent(variableName, indexOfForLoopBean,
-													parentArrayVariable);
-											parentArrayVariable = variableName;
+								dmVariable.setMostChildVariableIndex(mostChildVariableIndex);
+							} else {
+								mostChildVariableName = dmVariable.getName();
+								mostChildVariableIndex = dmVariable.getIndex();
+							}
+							if (mostChildVariableIndex >= 0) {
+								String[] variableNameArray = mostChildVariableName.split("\\.");
+								String variableName = "";
+								String parentVariableName = "";
+								String parentArrayVariable = "";
+								boolean firstIteration = true;
+								Set<String> nullableVariableList = new HashSet<>();
+								for (String nextName : variableNameArray) {
+									if (!firstIteration) {
+										// remove "." from variable name
+										parentVariableName = variableName.substring(0, variableName.length() - 1);
+									}
+									variableName += nextName;
+									if (variableMap.containsKey(variableName)) {
+										SchemaDataType variableType = variableMap.get(variableName)
+												.get(VARIABLE_TYPE_INDEX);
+										if (SchemaDataType.ARRAY.equals(variableType)) {
+											if (forLoopBeanNotExist(variableName)) {
+												int indexOfForLoopBean = addForLoopInToMap(variableName,
+														new ForLoopBean("i_" + nextName, variableName,
+																nullableVariableList));
+												nullableVariableList = new HashSet<>();
+												addForLoopBeanIndexToParent(variableName, indexOfForLoopBean,
+														parentArrayVariable);
+												parentArrayVariable = variableName;
+											} else {
+												parentArrayVariable = variableName;
+											}
+										} else if (ScriptGenerationUtil.isVariableTypePrimitive(variableType)) {
+											// leaf variable element
+										} else if (SchemaDataType.OBJECT.equals(variableType)) {
+											if (variableMap.get(variableName).contains(SchemaDataType.NULL)) {
+												nullableVariableList.add(variableName);
+											}
 										} else {
-											parentArrayVariable = variableName;
-										}
-									} else if (ScriptGenerationUtil.isVariableTypePrimitive(variableType)) {
-										// leaf variable element
-									} else if (SchemaDataType.OBJECT.equals(variableType)) {
-										if (variableMap.get(variableName).contains(SchemaDataType.NULL)) {
-											nullableVariableList.add(variableName);
+											throw new DataMapperException(
+													"Unsupported schemaDataType in WSO2 Data Mapper found : "
+															+ variableType);
 										}
 									} else {
-										throw new DataMapperException(
-												"Unsupported schemaDataType in WSO2 Data Mapper found : "
-														+ variableType);
+										throw new IllegalArgumentException(
+												"Unknown variable name found : " + variableName);
 									}
-								} else {
-									throw new IllegalArgumentException("Unknown variable name found : " + variableName);
+									variableName += ".";
+									firstIteration = false;
 								}
-								variableName += ".";
-								firstIteration = false;
+								operationNullableVariableList.addAll(nullableVariableList);
+								// add most parent array for
+								// operationForLoopBeansList
+								if (StringUtils.isEmpty(parentArrayVariable)) {
+									// root bean value
+									operationForLoopBeansList.add(0);
+								} else {
+									operationForLoopBeansList.add(getForLoopBeanMap().get(parentArrayVariable));
+								}
+								// add parent Element of the variable to
+								// operationElementsParentList
+								// Only array elements need to be checked
+								// whether
+								// from the same parent or not
+								operationLastArrayElementsParentList.add(parentArrayVariable);
 							}
-							operationNullableVariableList.addAll(nullableVariableList);
-							// add most parent array for
-							// operationForLoopBeansList
-							if (StringUtils.isEmpty(parentArrayVariable)) {
-								// root bean value
-								operationForLoopBeansList.add(0);
-							} else {
-								operationForLoopBeansList.add(getForLoopBeanMap().get(parentArrayVariable));
-							}
-							// add parent Element of the variable to
-							// operationElementsParentList
-							// Only array elements need to be checked whether
-							// from the same parent or not
-							operationLastArrayElementsParentList.add(parentArrayVariable);
 						}
 					}
 				}

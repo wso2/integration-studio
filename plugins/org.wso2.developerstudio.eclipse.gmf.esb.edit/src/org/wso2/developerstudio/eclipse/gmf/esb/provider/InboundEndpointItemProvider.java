@@ -285,7 +285,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportFeedURLPropertyDescriptor(object);
 			addTransportFeedTypePropertyDescriptor(object);
 			break;
-		case WSO2MB:
+		case WSO2_MB:
 			addIntervalPropertyDescriptor(object);
 			addSequentialPropertyDescriptor(object);
 			addCoordinationPropertyDescriptor(object);			

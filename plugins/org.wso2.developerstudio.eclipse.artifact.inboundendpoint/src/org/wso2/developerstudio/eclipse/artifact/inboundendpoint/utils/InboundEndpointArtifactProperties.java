@@ -33,7 +33,7 @@ public final class InboundEndpointArtifactProperties extends NLS {
 	public static String typeMQTT;
 	public static String typeRabbitMq;	
 	public static String typeFeed;
-	public static String typeWSO2MB;
+	public static String typeWSO2_MB;
 
 	// project wizard page properties
 	public static String wizardOptionNewIE;

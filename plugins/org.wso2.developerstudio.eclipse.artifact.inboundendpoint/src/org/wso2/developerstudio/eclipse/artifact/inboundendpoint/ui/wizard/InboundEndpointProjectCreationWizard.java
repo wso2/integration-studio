@@ -73,7 +73,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 	private static final String KAFKA_GROUP_ID = "group.id";
 	private static final String ZOOKEEPER_CONNECT = "zookeeper.connect";
 	private static final String KAFKA = "kafka";
-	private static final String WSO2MB="wso2mb";
+	private static final String WSO2MB="wso2_mb";
 	private static final String XML_EXTENSION = ".xml";
 	private static final String SRC_FOLDER ="src";
 	private static final String MAIN_FOLDER="main";

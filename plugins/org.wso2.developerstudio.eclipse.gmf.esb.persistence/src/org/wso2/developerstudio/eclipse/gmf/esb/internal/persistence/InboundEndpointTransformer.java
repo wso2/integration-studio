@@ -150,7 +150,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 
             }
         } else if (StringUtils.isNotBlank(visualInboundEndpoint.getType().getName())) {
-            inboundEndpoint.setProtocol(visualInboundEndpoint.getType().getName());
+                inboundEndpoint.setProtocol(visualInboundEndpoint.getType().getName());
+
         }
 
         switch (visualInboundEndpoint.getType()) {
@@ -403,14 +404,14 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION,
                           String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()));
     		}
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
-    				.getTransportJMSPinnedServers()))) {
+            if (StringUtils.isNotBlank(visualInboundEndpoint
+    				.getTransportJMSPinnedServers())) {
             	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
                          visualInboundEndpoint.getTransportJMSPinnedServers());
     		}
             
             break;
-        case WSO2MB:
+        case WSO2_MB:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INTERVAL,
                         visualInboundEndpoint.getInterval());
@@ -494,18 +495,18 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION,
                           String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()));
     		}
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
-    				.getTransportJMSPinnedServers()))) {
+            if (StringUtils.isNotBlank(visualInboundEndpoint
+    				.getTransportJMSPinnedServers())) {
             	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
                          visualInboundEndpoint.getTransportJMSPinnedServers());
     		}
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
-    				.getWso2mbConnectionUrl()))) {
+            if (StringUtils.isNotBlank(visualInboundEndpoint
+    				.getWso2mbConnectionUrl())) {
             	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSO2_MB_CONNECTION_URL,
                          visualInboundEndpoint.getWso2mbConnectionUrl());
     		}
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
-    				.getTransportJMSSubscriptionName()))) {
+            if (StringUtils.isNotBlank(visualInboundEndpoint
+    				.getTransportJMSSubscriptionName())) {
             	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SUBSCRIPTION_NAME,
                          visualInboundEndpoint.getTransportJMSSubscriptionName());
     		}

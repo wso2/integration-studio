@@ -3152,7 +3152,7 @@
     <eLiterals name="mqtt" value="8" literal="MQTT"/>
     <eLiterals name="rabbitmq" value="9" literal="RABBITMQ"/>
     <eLiterals name="feed" value="10" literal="Feed"/>
-    <eLiterals name="wso2mb" value="11" literal="WSO2 MB"/>
+    <eLiterals name="wso2_mb" value="11" literal="WSO2_MB"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InboundEndpointBehaviourType">
     <eLiterals name="pollingInboundEndpoint"/>

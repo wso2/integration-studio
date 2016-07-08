@@ -49,8 +49,8 @@ public class InboundEndpointCreationTypes extends AbstractListDataProvider {
 				InboundEndpointArtifactProperties.typeRabbitMq));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeFeed,
 				InboundEndpointArtifactProperties.typeFeed));
-		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeWSO2MB,
-				InboundEndpointArtifactProperties.typeWSO2MB));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeWSO2_MB,
+				InboundEndpointArtifactProperties.typeWSO2_MB));
 		return epTypeList;
 	}
 

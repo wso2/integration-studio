@@ -46,15 +46,12 @@ public class GetOperatorTransformer extends AbstractDMOperatorTransformer {
 				throw new IllegalArgumentException("Get Operation input variables number can not be 0");
 			} else {
 				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-						variableTypeMap, parentForLoopBeanStack, true) + "[" + arrayIndex + "];");
+						variableTypeMap, parentForLoopBeanStack, true) + "[" + arrayIndex + "]");
 			}
-
 			operationBuilder.append(";");
-
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}
 		return operationBuilder.toString();
 	}
-
 }

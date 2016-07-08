@@ -464,8 +464,6 @@ public class DataMapperElementTypes {
 
 			elements.put(Output_2003, DataMapperPackage.eINSTANCE.getOutput());
 
-			elements.put(Equal_2005, DataMapperPackage.eINSTANCE.getEqual());
-
 			elements.put(Subtract_2013, DataMapperPackage.eINSTANCE.getSubtract());
 
 			elements.put(Concat_2006, DataMapperPackage.eINSTANCE.getConcat());
@@ -477,8 +475,6 @@ public class DataMapperElementTypes {
 			elements.put(Constant_2008, DataMapperPackage.eINSTANCE.getConstant());
 
 			elements.put(LowerCase_2009, DataMapperPackage.eINSTANCE.getLowerCase());
-
-			elements.put(Contains_2010, DataMapperPackage.eINSTANCE.getContains());
 
 			elements.put(UpperCase_2011, DataMapperPackage.eINSTANCE.getUpperCase());
 
@@ -531,8 +527,6 @@ public class DataMapperElementTypes {
 			elements.put(StringToNumber_2037, DataMapperPackage.eINSTANCE.getStringToNumber());
 
 			elements.put(StringToBoolean_2038, DataMapperPackage.eINSTANCE.getStringToBoolean());
-
-			elements.put(Clone_2039, DataMapperPackage.eINSTANCE.getClone());
 
 			elements.put(TreeNode_3002, DataMapperPackage.eINSTANCE.getTreeNode());
 

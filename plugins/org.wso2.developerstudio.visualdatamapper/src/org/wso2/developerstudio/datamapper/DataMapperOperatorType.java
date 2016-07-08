@@ -99,16 +99,6 @@ public enum DataMapperOperatorType implements Enumerator {
 	CONSTANT(5, "CONSTANT", "CONSTANT",COMMON_OPERATION),
 
 	/**
-	 * The '<em><b>EQUALS</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #EQUALS_VALUE
-	 * @generated NOT
-	 * @ordered
-	 */
-	EQUALS(6, "EQUALS", "EQUALS",COMMON_OPERATION),
-
-	/**
 	 * The '<em><b>CONCAT</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -147,16 +137,6 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * @ordered
 	 */
 	LOWERCASE(10, "LOWERCASE", "LOWERCASE",STRING_OPERATION),
-
-	/**
-	 * The '<em><b>CONTAINS</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CONTAINS_VALUE
-	 * @generated NOT
-	 * @ordered
-	 */
-	CONTAINS(11, "CONTAINS", "CONTAINS",STRING_OPERATION),
 
 	/**
 	 * The '<em><b>ADD</b></em>' literal object.
@@ -537,21 +517,6 @@ public enum DataMapperOperatorType implements Enumerator {
 	public static final int CONSTANT_VALUE = 5;
 
 	/**
-	 * The '<em><b>EQUALS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>EQUALS</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #EQUALS
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int EQUALS_VALUE = 6;
-
-	/**
 	 * The '<em><b>CONCAT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -610,21 +575,6 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * @ordered
 	 */
 	public static final int LOWERCASE_VALUE = 10;
-
-	/**
-	 * The '<em><b>CONTAINS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CONTAINS</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #CONTAINS
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CONTAINS_VALUE = 11;
 
 	/**
 	 * The '<em><b>ADD</b></em>' literal value.
@@ -1092,12 +1042,10 @@ public enum DataMapperOperatorType implements Enumerator {
 			BOOLEAN_OPERATION,
 			CONDITIONAL_OPERATION,
 			CONSTANT,
-			EQUALS,
 			CONCAT,
 			SPLIT,
 			UPPERCASE,
 			LOWERCASE,
-			CONTAINS,
 			ADD,
 			SUBTRACT,
 			MULTIPLY,
@@ -1191,12 +1139,10 @@ public enum DataMapperOperatorType implements Enumerator {
 			case BOOLEAN_OPERATION_VALUE: return BOOLEAN_OPERATION;
 			case CONDITIONAL_OPERATION_VALUE: return CONDITIONAL_OPERATION;
 			case CONSTANT_VALUE: return CONSTANT;
-			case EQUALS_VALUE: return EQUALS;
 			case CONCAT_VALUE: return CONCAT;
 			case SPLIT_VALUE: return SPLIT;
 			case UPPERCASE_VALUE: return UPPERCASE;
 			case LOWERCASE_VALUE: return LOWERCASE;
-			case CONTAINS_VALUE: return CONTAINS;
 			case ADD_VALUE: return ADD;
 			case SUBTRACT_VALUE: return SUBTRACT;
 			case MULTIPLY_VALUE: return MULTIPLY;

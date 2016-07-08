@@ -40,15 +40,6 @@ public interface DataMapperFactory extends EFactory {
 	Trim createTrim();
 
 	/**
-	 * Returns a new object of class '<em>Clone</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Clone</em>'.
-	 * @generated
-	 */
-	Clone createClone();
-
-	/**
 	 * Returns a new object of class '<em>Replace</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -355,15 +346,6 @@ public interface DataMapperFactory extends EFactory {
 	AbsoluteValue createAbsoluteValue();
 
 	/**
-	 * Returns a new object of class '<em>Equal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Equal</em>'.
-	 * @generated
-	 */
-	Equal createEqual();
-
-	/**
 	 * Returns a new object of class '<em>Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -452,15 +434,6 @@ public interface DataMapperFactory extends EFactory {
 	 * @generated
 	 */
 	Celi createCeli();
-
-	/**
-	 * Returns a new object of class '<em>Contains</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Contains</em>'.
-	 * @generated
-	 */
-	Contains createContains();
 
 	/**
 	 * Returns a new object of class '<em>Upper Case</em>'.

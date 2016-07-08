@@ -308,4 +308,9 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+	
+	@Override
+    public boolean isSelectable() {
+        return false;
+    }
 }

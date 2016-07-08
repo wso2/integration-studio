@@ -66,8 +66,13 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			if(jms){
 				CommonFieldValidator.validateRequiredField(value, "Java Naming Factory initial cannot be empty");
 			}
+		}else if(key.equals(FIELD_MB_CONTEXT_FACTORY)){
 			if(mb){
 				CommonFieldValidator.validateRequiredField(value, "Java Naming Factory initial cannot be empty");
+			}
+		}else if(key.equals(FIELD_MB_CONNECTION_FACTORY)){
+			if(mb){
+				CommonFieldValidator.validateRequiredField(value, "Queue Connection Factory cannot be empty");
 			}
 		} else if (key.equals(FIELD_JMS_PROVIDER_URL)) {
 			if (jms) {
@@ -151,6 +156,7 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			updateFields.add(FIELD_MB_QUEUE_NAME);
 			updateFields.add(FIELD_MB_ENABLE_PRODUCER_GUARANTEED_DELIVERY);
 			updateFields.add(FIELD_MB_FAILOVER_MESSAGE_STORE);
+			updateFields.add(FIELD_MB_CACHE_CONNECTION);
 
 			
 			updateFields.add(FIELD_RABBITMQ_SERVER_HOST_NAME);

@@ -63,7 +63,7 @@
 			<data modelProperty="mb.context-factory" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Initial Context Factory*</data>
 			<data modelProperty="mb.connection-factory" type="string"
-				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Connection factory</data>
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Queue Connection factory*</data>
 		    <data modelProperty="mb.queue-name" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">JNDI Queue Name</data>
 			<data modelProperty="mb.api-version" type="list"
@@ -75,6 +75,9 @@
             <data modelProperty="mb.failover.message.store" type="list"
                 fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
                 controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.AvailableMessageStoreList">Failover Message Store</data>
+            <data modelProperty="mb.cache-connection" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.CacheConnectionList">Cache Connection</data>	
       		<!-- MB : end -->		
 			
 			<!-- Custom : begin -->

@@ -40,6 +40,7 @@ public class WSO2MB implements IMessageStore {
 	public Text wso2mb_QueueConnFactory;
 	public Text wso2mb_jndiQueueName;
 	public Combo wso2mb_apiVersion;
+	public Combo mb_cacheConnection;
 	
 	private AbstractEsbFormPage esbFormPage;
 	ScrolledForm form;
@@ -127,6 +128,21 @@ public class WSO2MB implements IMessageStore {
 				esbFormPage.updateDirtyState();
 			}
 		});
+		
+		toolkit.createLabel(paramSectionClient, "Cache Connection");
+		mb_cacheConnection = new Combo(paramSectionClient, SWT.DROP_DOWN);
+		mb_cacheConnection.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		String[] values = {"false", "true"};
+		mb_cacheConnection.setItems(values);
+		mb_cacheConnection.select(0);
+		mb_cacheConnection.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
+		
 		
 	}
 

@@ -90,8 +90,6 @@ public class MessageStoreDeserializer
 	private static final String STORE_JMS_CONNECTION_FACTORY = "store.jms.connection.factory";
 	private static final String STORE_JMS_DESTINATION = "store.jms.destination";
 
-	private static final String IS_MB_STORE = "is.mb.store";
-
 	private static final String STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE = "store.producer.guaranteed.delivery.enable";
 	private static final String STORE_FAILOVER_MESSAGE_STORE_NAME = "store.failover.message.store.name";
 
@@ -395,8 +393,7 @@ public class MessageStoreDeserializer
 				messageStorePage.guaranteedDeliveryEnable.select(1);
 			}
 
-			if (dummyMessageStore.getParameters().get(IS_MB_STORE) != null) {
-				if (dummyMessageStore.getParameters().get(IS_MB_STORE).equals("true")) {
+			if (dummyMessageStore.getParameters().get(STORE_WSO2MB_QUEUE_CONNECTION_FACTORY) != null) {
 					// This is a MB store
 					messageStorePage.storeType.select(2);
 
@@ -414,7 +411,13 @@ public class MessageStoreDeserializer
 					} else {
 						wso2mbStore.wso2mb_apiVersion.select(0);
 					}
-				}
+					
+					if (store.getParameters().get(STORE_JMS_CACHE_CONNECTION) != null
+							&& store.getParameters().get(STORE_JMS_CACHE_CONNECTION).toString().equalsIgnoreCase("false")) {
+						wso2mbStore.mb_cacheConnection.select(0);
+					} else {
+						wso2mbStore.mb_cacheConnection.select(1);
+					}
 			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(IN_MEMORY_MS_FQN)) {
 				messageStorePage.storeType.select(0);
 

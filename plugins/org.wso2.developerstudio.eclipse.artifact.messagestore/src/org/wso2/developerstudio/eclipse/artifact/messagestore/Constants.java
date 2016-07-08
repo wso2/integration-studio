@@ -70,6 +70,7 @@ public class Constants extends NLS {
 	public static String FIELD_MB_QUEUE_NAME;
 	public static String FIELD_MB_ENABLE_PRODUCER_GUARANTEED_DELIVERY;
 	public static String FIELD_MB_FAILOVER_MESSAGE_STORE;
+	public static String FIELD_MB_CACHE_CONNECTION;
 	public static String TXT_CUSTOM;
 	public static String TXT_IN_MEMORY;
 	public static String TXT_JMS;

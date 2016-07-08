@@ -242,26 +242,27 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			parameters.put("store.jms.ConsumerReceiveTimeOut", ((Integer)messageStoreModel.getJmsTimeout()).toString());
 		} else if(messageStoreModel.getMessageStoreType()==MessageStoreType.WSO2_MB){
 					className = "org.apache.synapse.message.store.impl.jms.JmsStore";
-					if(!StringUtils.isBlank(messageStoreModel.getJmsContextFactory())){
-						parameters.put("java.naming.factory.initial", messageStoreModel.getJmsContextFactory());
+					if(!StringUtils.isBlank(messageStoreModel.getMbContextFactory())){
+						parameters.put("java.naming.factory.initial", messageStoreModel.getMbContextFactory());
 					}
-					if(!StringUtils.isBlank(messageStoreModel.getJmsQueueName())){
-						parameters.put("store.jms.destination", messageStoreModel.getJmsQueueName());
+					if(!StringUtils.isBlank(messageStoreModel.getMbConnectionFactory())){
+						parameters.put("connectionfactory.QueueConnectionFactory", messageStoreModel.getMbConnectionFactory());
 					}
-					if(!StringUtils.isBlank(messageStoreModel.getJmsConnectionFactory())){
-						parameters.put("store.jms.connection.factory", messageStoreModel.getJmsConnectionFactory());
-					}
-					if(!StringUtils.isBlank(messageStoreModel.getJmsApiVersion())){
-						parameters.put("store.jms.JMSSpecVersion", messageStoreModel.getJmsApiVersion());
+					if(!StringUtils.isBlank(messageStoreModel.getMbApiVersion())){
+						parameters.put("store.jms.JMSSpecVersion", messageStoreModel.getMbApiVersion());
 					}			
-					if(!StringUtils.isBlank(messageStoreModel.getJmsEnableProducerGuaranteedDelivery())){
-						parameters.put("store.producer.guaranteed.delivery.enable", messageStoreModel.getJmsEnableProducerGuaranteedDelivery());
-					}			
-					if(!StringUtils.isBlank(messageStoreModel.getJmsFailoverMessageStore())){
-						parameters.put("store.failover.message.store.name", messageStoreModel.getJmsFailoverMessageStore());
+					if(!StringUtils.isBlank(messageStoreModel.getMbEnableProducerGuaranteedDelivery())){
+						parameters.put("store.producer.guaranteed.delivery.enable", messageStoreModel.getMbEnableProducerGuaranteedDelivery());
+					}	
+					if(!StringUtils.isBlank(messageStoreModel.getMbQueueName())){
+						parameters.put("store.jms.destination", messageStoreModel.getMbQueueName());
 					}
-					//Stating this is a MB store
-					parameters.put("is.mb.store", "true");
+					if(!StringUtils.isBlank(messageStoreModel.getMbFailoverMessageStore())){
+						parameters.put("store.failover.message.store.name", messageStoreModel.getMbFailoverMessageStore());
+					}
+					if(!StringUtils.isBlank(messageStoreModel.getMbCacheConnection())){
+						parameters.put("store.jms.cache.connection", messageStoreModel.getMbCacheConnection());
+					}
 				} else if (messageStoreModel.getMessageStoreType() == MessageStoreType.RABBITMQ) {
 			className = RABBITMQ_MS_FQN;
 			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQServerHostName())) {

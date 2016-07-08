@@ -69,7 +69,7 @@ public class JMS implements IMessageStore {
 		
 		connSection.setVisible(false);
 		
-		toolkit.createLabel(connSectionClient, "Initial Context Factory");
+		toolkit.createLabel(connSectionClient, "Initial Context Factory *");
 		jms_initCtxFactory = toolkit.createText(connSectionClient, "");
 		jms_initCtxFactory.setBackground(new Color(null, 229,236,253));
 		jms_initCtxFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -81,7 +81,7 @@ public class JMS implements IMessageStore {
 			}
 		});
 		
-		toolkit.createLabel(connSectionClient, "Provider URL");
+		toolkit.createLabel(connSectionClient, "Provider URL *");
 		jms_providerUrl = toolkit.createText(connSectionClient, "");
 		jms_providerUrl.setBackground(new Color(null, 229,236,253));
 		jms_providerUrl.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));

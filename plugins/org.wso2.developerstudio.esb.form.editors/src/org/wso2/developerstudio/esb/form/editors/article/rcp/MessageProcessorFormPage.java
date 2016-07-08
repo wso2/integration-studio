@@ -128,7 +128,7 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 		
 		basicSection.setClient(basicSectionClient);
 		
-		toolkit.createLabel(basicSectionClient, "Message Processor Name");
+		toolkit.createLabel(basicSectionClient, "Message Processor Name *");
 		processorName = toolkit.createText(basicSectionClient, "");
 		processorName.setBackground(new Color(null, 229,236,253));
 		processorName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -141,7 +141,7 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 		});
 
 
-		toolkit.createLabel(basicSectionClient, "Message Processor Type");
+		toolkit.createLabel(basicSectionClient, "Message Processor Type *");
 		processorType = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		processorType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] triggerTypes = messageProcessorTypes;
@@ -167,7 +167,7 @@ public class MessageProcessorFormPage extends AbstractEsbFormPage {
 		});
 		
 		
-		toolkit.createLabel(basicSectionClient, "Message Store Name");
+		toolkit.createLabel(basicSectionClient, "Message Store Name *");
 		storeName = toolkit.createText(basicSectionClient, "");
 		storeName.setBackground(new Color(null, 229,236,253));
 		storeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));

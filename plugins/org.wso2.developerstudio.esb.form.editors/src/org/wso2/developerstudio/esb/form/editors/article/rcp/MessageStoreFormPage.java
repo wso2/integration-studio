@@ -152,7 +152,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		
 		basicSection.setClient(basicSectionClient);
 		
-		toolkit.createLabel(basicSectionClient, "Message Store Name");
+		toolkit.createLabel(basicSectionClient, "Message Store Name *");
 		storeName = toolkit.createText(basicSectionClient, "");
 		storeName.setBackground(new Color(null, 229,236,253));
 		storeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -165,7 +165,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 			}
 		});
 		
-		toolkit.createLabel(basicSectionClient, "Message Store Type");
+		toolkit.createLabel(basicSectionClient, "Message Store Type *");
 		storeType = new Combo(basicSectionClient, SWT.DROP_DOWN);
 		storeType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] triggerTypes = messageStoreTypes;

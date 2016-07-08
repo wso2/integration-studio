@@ -296,110 +296,9 @@ public class DataMapperDiagramModel {
 				// current element is an operator
 				int index = operationsList.size();
 				OperatorImpl operatorElement = (OperatorImpl) currentElement;
-
 				// check for split to introduce atomic operations
 				if (operatorElement instanceof SplitImpl) {
-					int numberOfSplitOutputs = getOutputConnectorSize(operatorElement);
-					// creating split operator
-					DMOperation operator = ModelTransformerFactory
-							.getModelTransformer(operatorElement.getOperatorType()).transform(operatorElement, index);
-					operationsList.add(operator);
-					graphOperationElements.add(operatorElement);
-					((OperatorImpl) currentElement).setIndex(index);
-					outputAdjList.add(new ArrayList<Integer>());
-					inputAdjList.add(new ArrayList<Integer>());
-
-					// populate inputAdjList
-					List<DataMapperLink> inlinks = getInLinksOfOperator(operatorElement);
-					populateInputAdjList(tempNodeArray, operatorElement, operator, inlinks);
-
-					// Create new intermediate variable for output of the split
-					// operation. This is the input variable for get operations
-					String variablePrefix = operator.getOperatorType() + "_" + operator.getIndex() + "_" + 0;
-					int splitOutputVariableIndex = variablesArray.size();
-					DMVariable tempVar = new DMVariable(variablePrefix, getUniqueDirectId(operatorElement, 0),
-							DMVariableType.INTERMEDIATE, SchemaDataType.STRING, splitOutputVariableIndex, index);
-					addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
-					variablesArray.add(tempVar);
-					// set created output variable in the outputAdjList
-					outputAdjList.get(operator.getIndex()).add(splitOutputVariableIndex);
-
-					// Create get operations for each split outputs
-					for (int splitOutIndex = 0; splitOutIndex < numberOfSplitOutputs; splitOutIndex++) {
-						int splitGetOperationIndex = operationsList.size();
-						DMOperation getOperator = new DMOperation(DataMapperOperatorType.GET,
-								operatorElement.toString() + "GET" + splitGetOperationIndex, splitGetOperationIndex);
-						getOperator.getProperties().put(TransformerConstants.GET_OPERATOR_INDEX, splitOutIndex);
-						operationsList.add(getOperator);
-						outputAdjList.add(new ArrayList<Integer>());
-						inputAdjList.add(new ArrayList<Integer>());
-						// set split output variable to get inputAdjList
-						inputAdjList.get(splitGetOperationIndex).add(splitOutputVariableIndex);
-						// populate outputAdjList
-						List<DataMapperLink> outlinks = getOutLinksOfOperator(operatorElement, splitOutIndex);
-						// This visitedConnectorVariableMap contains the created
-						// intermediate variables
-						Map<OperatorRightConnectorImpl, DMVariable> visitedConnectorVariableMap = new HashMap<>();
-						for (DataMapperLink dataMapperLink : outlinks) {
-							EObject linkedElement = getLinkedElement(dataMapperLink);
-							if (linkedElement instanceof TreeNodeImpl) {
-								// outgoing link goes to an output variable
-								OperatorRightConnectorImpl rightConnector = getRightConnectorFromDMLink(dataMapperLink);
-								int variableIndex = ((TreeNodeImpl) linkedElement).getIndex();
-								outputAdjList.get(splitGetOperationIndex).add(variableIndex);
-								operatorElement.getPortVariableIndex().add(variableIndex);
-								visitedConnectorVariableMap.put(rightConnector, variablesArray.get(variableIndex));
-							} else if (linkedElement instanceof OperatorImpl) {
-								// outgoing link goes to an operator
-								OperatorImpl linkedOperationElement = (OperatorImpl) linkedElement;
-								// add to tempNodeArray if not marked
-								if (!linkedOperationElement.isMarked()) {
-									tempNodeArray.add(linkedElement);
-									linkedOperationElement.setMarked(true);
-								}
-								OperatorRightConnectorImpl rightConnector = getRightConnectorFromDMLink(dataMapperLink);
-								if (visitedConnectorVariableMap.containsKey(rightConnector)) {
-									int variableIndex = visitedConnectorVariableMap.get(rightConnector).getIndex();
-									// Check whether this linked element is
-									// already
-									// visited before
-									if (linkedOperationElement.isVisited()) {
-										if (inputAdjList.get(linkedOperationElement.getIndex()).size() <= dataMapperLink
-												.getInputIndex()) {
-											populateArrayListUpToAIndex(
-													inputAdjList.get(linkedOperationElement.getIndex()),
-													dataMapperLink.getInputIndex());
-										}
-										inputAdjList.get(linkedOperationElement.getIndex())
-												.set(dataMapperLink.getInputIndex(), variableIndex);
-									}
-								} else {
-									String getOutVariablePrefix = getOperator.getOperatorType() + "_"
-											+ operator.getIndex() + "_" + splitOutIndex;
-									int getOutVariableIndex = variablesArray.size();
-									DMVariable tempOutVariable = new DMVariable(getOutVariablePrefix,
-											getUniqueDirectId(operatorElement, splitOutIndex),
-											DMVariableType.INTERMEDIATE, SchemaDataType.STRING, getOutVariableIndex,
-											splitGetOperationIndex);
-									addVariableTypeToMap(tempOutVariable.getName(), SchemaDataType.STRING);
-									variablesArray.add(tempOutVariable);
-									operatorElement.getPortVariableIndex().add(getOutVariableIndex);
-									//get only have one output
-									outputAdjList.get(getOperator.getIndex()).add(getOutVariableIndex);
-									if (linkedOperationElement.isVisited()) {
-										if (inputAdjList.get(linkedOperationElement.getIndex()).size() <= dataMapperLink
-												.getInputIndex()) {
-											populateArrayListUpToAIndex(
-													inputAdjList.get(linkedOperationElement.getIndex()),
-													dataMapperLink.getInputIndex());
-										}
-										inputAdjList.get(linkedOperationElement.getIndex())
-												.set(dataMapperLink.getInputIndex(), getOutVariableIndex);
-									}
-								}
-							}
-						}
-					}
+					configureAdjListsForSplitOperation(tempNodeArray, currentElement, index, operatorElement);
 				} else {
 					DMOperation operator = ModelTransformerFactory
 							.getModelTransformer(operatorElement.getOperatorType()).transform(operatorElement, index);
@@ -416,6 +315,111 @@ public class DataMapperDiagramModel {
 					populateInputAdjList(tempNodeArray, operatorElement, operator, inlinks);
 				}
 				operatorElement.setVisited(true);
+			}
+		}
+	}
+
+	private void configureAdjListsForSplitOperation(List<EObject> tempNodeArray, EObject currentElement, int index,
+			OperatorImpl operatorElement) {
+		int numberOfSplitOutputs = getOutputConnectorSize(operatorElement);
+		// creating split operator
+		DMOperation operator = ModelTransformerFactory
+				.getModelTransformer(operatorElement.getOperatorType()).transform(operatorElement, index);
+		operationsList.add(operator);
+		graphOperationElements.add(operatorElement);
+		((OperatorImpl) currentElement).setIndex(index);
+		outputAdjList.add(new ArrayList<Integer>());
+		inputAdjList.add(new ArrayList<Integer>());
+
+		// populate inputAdjList
+		List<DataMapperLink> inlinks = getInLinksOfOperator(operatorElement);
+		populateInputAdjList(tempNodeArray, operatorElement, operator, inlinks);
+
+		// Create new intermediate variable for output of the split
+		// operation. This is the input variable for get operations
+		String variablePrefix = operator.getOperatorType() + "_" + operator.getIndex() + "_" + 0;
+		int splitOutputVariableIndex = variablesArray.size();
+		DMVariable tempVar = new DMVariable(variablePrefix, getUniqueDirectId(operatorElement, 0),
+				DMVariableType.INTERMEDIATE, SchemaDataType.STRING, splitOutputVariableIndex, index);
+		addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
+		variablesArray.add(tempVar);
+		// set created output variable in the outputAdjList
+		outputAdjList.get(operator.getIndex()).add(splitOutputVariableIndex);
+
+		// Create get operations for each split outputs
+		for (int splitOutIndex = 0; splitOutIndex < numberOfSplitOutputs; splitOutIndex++) {
+			int splitGetOperationIndex = operationsList.size();
+			DMOperation getOperator = new DMOperation(DataMapperOperatorType.GET,
+					operatorElement.toString() + "GET" + splitGetOperationIndex, splitGetOperationIndex);
+			getOperator.getProperties().put(TransformerConstants.GET_OPERATOR_INDEX, splitOutIndex);
+			operationsList.add(getOperator);
+			outputAdjList.add(new ArrayList<Integer>());
+			inputAdjList.add(new ArrayList<Integer>());
+			// set split output variable to get inputAdjList
+			inputAdjList.get(splitGetOperationIndex).add(splitOutputVariableIndex);
+			// populate outputAdjList
+			List<DataMapperLink> outlinks = getOutLinksOfOperator(operatorElement, splitOutIndex);
+			// This visitedConnectorVariableMap contains the created
+			// intermediate variables
+			Map<OperatorRightConnectorImpl, DMVariable> visitedConnectorVariableMap = new HashMap<>();
+			for (DataMapperLink dataMapperLink : outlinks) {
+				EObject linkedElement = getLinkedElement(dataMapperLink);
+				if (linkedElement instanceof TreeNodeImpl) {
+					// outgoing link goes to an output variable
+					OperatorRightConnectorImpl rightConnector = getRightConnectorFromDMLink(dataMapperLink);
+					int variableIndex = ((TreeNodeImpl) linkedElement).getIndex();
+					outputAdjList.get(splitGetOperationIndex).add(variableIndex);
+					operatorElement.getPortVariableIndex().add(variableIndex);
+					visitedConnectorVariableMap.put(rightConnector, variablesArray.get(variableIndex));
+				} else if (linkedElement instanceof OperatorImpl) {
+					// outgoing link goes to an operator
+					OperatorImpl linkedOperationElement = (OperatorImpl) linkedElement;
+					// add to tempNodeArray if not marked
+					if (!linkedOperationElement.isMarked()) {
+						tempNodeArray.add(linkedElement);
+						linkedOperationElement.setMarked(true);
+					}
+					OperatorRightConnectorImpl rightConnector = getRightConnectorFromDMLink(dataMapperLink);
+					if (visitedConnectorVariableMap.containsKey(rightConnector)) {
+						int variableIndex = visitedConnectorVariableMap.get(rightConnector).getIndex();
+						// Check whether this linked element is
+						// already
+						// visited before
+						if (linkedOperationElement.isVisited()) {
+							if (inputAdjList.get(linkedOperationElement.getIndex()).size() <= dataMapperLink
+									.getInputIndex()) {
+								populateArrayListUpToAIndex(
+										inputAdjList.get(linkedOperationElement.getIndex()),
+										dataMapperLink.getInputIndex());
+							}
+							inputAdjList.get(linkedOperationElement.getIndex())
+									.set(dataMapperLink.getInputIndex(), variableIndex);
+						}
+					} else {
+						String getOutVariablePrefix = getOperator.getOperatorType() + "_"
+								+ operator.getIndex() + "_" + splitOutIndex;
+						int getOutVariableIndex = variablesArray.size();
+						DMVariable tempOutVariable = new DMVariable(getOutVariablePrefix,
+								getUniqueDirectId(operatorElement, splitOutIndex),
+								DMVariableType.INTERMEDIATE, SchemaDataType.STRING, getOutVariableIndex,
+								splitGetOperationIndex);
+						addVariableTypeToMap(tempOutVariable.getName(), SchemaDataType.STRING);
+						variablesArray.add(tempOutVariable);
+						operatorElement.getPortVariableIndex().add(getOutVariableIndex);
+						//get only have one output
+						outputAdjList.get(getOperator.getIndex()).add(getOutVariableIndex);
+						if (linkedOperationElement.isVisited()) {
+							if (inputAdjList.get(linkedOperationElement.getIndex()).size() <= dataMapperLink
+									.getInputIndex()) {
+								populateArrayListUpToAIndex(
+										inputAdjList.get(linkedOperationElement.getIndex()),
+										dataMapperLink.getInputIndex());
+							}
+							inputAdjList.get(linkedOperationElement.getIndex())
+									.set(dataMapperLink.getInputIndex(), getOutVariableIndex);
+						}
+					}
+				}
 			}
 		}
 	}
@@ -475,59 +479,11 @@ public class DataMapperDiagramModel {
 				} else {
 					// If current operator is a constant operator
 					if (DataMapperOperatorType.CONSTANT.equals(operator.getOperatorType())) {
-						int variableIndex = variablesArray.size();
-						DMVariable tempVar = new DMVariable(
-								"{" + operator.getProperty(TransformerConstants.CONSTANT_VALUE_TAG) + "}",
-								getUniqueDirectId(operatorElement, dataMapperLink.getOutputIndex()),
-								DMVariableType.INTERMEDIATE,
-								(SchemaDataType) operator.getProperty(TransformerConstants.CONSTANT_TYPE_TAG),
-								variableIndex, index);
-						addVariableTypeToMap(tempVar.getName(),
-								(SchemaDataType) operator.getProperty(TransformerConstants.CONSTANT_TYPE_TAG));
-						variablesArray.add(tempVar);
-						operatorElement.getPortVariableIndex().add(variableIndex);
-						if (outputAdjList.get(operator.getIndex()).size() <= dataMapperLink.getOutputIndex()) {
-							populateArrayListUpToAIndex(outputAdjList.get(operator.getIndex()),
-									dataMapperLink.getOutputIndex());
-						}
-						outputAdjList.get(operator.getIndex()).set(dataMapperLink.getOutputIndex(), variableIndex);
-						if (linkedOperationElement.isVisited()) {
-							if (inputAdjList.get(linkedOperationElement.getIndex()).size() <= dataMapperLink
-									.getInputIndex()) {
-								populateArrayListUpToAIndex(inputAdjList.get(linkedOperationElement.getIndex()),
-										dataMapperLink.getInputIndex());
-							}
-							inputAdjList.get(linkedOperationElement.getIndex()).set(dataMapperLink.getInputIndex(),
-									variableIndex);
-						}
-						visitedConnectorVariableMap.put(rightConnector, tempVar);
+						configureOutAdjListForConstantOperator(index, operatorElement, operator,
+								visitedConnectorVariableMap, dataMapperLink, linkedOperationElement, rightConnector);
 					} else if (DataMapperOperatorType.PROPERTIES.equals(operator.getOperatorType())) {
-						int variableIndex = variablesArray.size();
-						DMVariable tempVar = new DMVariable(
-								"{" + TransformerConstants.PROPERTIES_PREFIX + "."
-										+ operator.getProperty(TransformerConstants.PROPERTY_SCOPE_TAG) + "['"
-										+ operator.getProperty(TransformerConstants.PROPERTY_NAME_TAG) + "']}",
-								getUniqueDirectId(operatorElement, dataMapperLink.getOutputIndex()),
-								DMVariableType.INTERMEDIATE, SchemaDataType.INT, variableIndex, index);
-						addVariableTypeToMap(tempVar.getName(),
-								(SchemaDataType) operator.getProperty(TransformerConstants.PROPERTY_TYPE_TAG));
-						variablesArray.add(tempVar);
-						operatorElement.getPortVariableIndex().add(variableIndex);
-						if (outputAdjList.get(operator.getIndex()).size() <= dataMapperLink.getOutputIndex()) {
-							populateArrayListUpToAIndex(outputAdjList.get(operator.getIndex()),
-									dataMapperLink.getOutputIndex());
-						}
-						outputAdjList.get(operator.getIndex()).set(dataMapperLink.getOutputIndex(), variableIndex);
-						if (linkedOperationElement.isVisited()) {
-							if (inputAdjList.get(linkedOperationElement.getIndex()).size() <= dataMapperLink
-									.getInputIndex()) {
-								populateArrayListUpToAIndex(inputAdjList.get(linkedOperationElement.getIndex()),
-										dataMapperLink.getInputIndex());
-							}
-							inputAdjList.get(linkedOperationElement.getIndex()).set(dataMapperLink.getInputIndex(),
-									variableIndex);
-						}
-						visitedConnectorVariableMap.put(rightConnector, tempVar);
+						configureOutAdjListForPropertiesOperator(index, operatorElement, operator,
+								visitedConnectorVariableMap, dataMapperLink, linkedOperationElement, rightConnector);
 					} else {
 						String variablePrefix = operator.getOperatorType() + "_" + operator.getIndex() + "_"
 								+ dataMapperLink.getOutputIndex();
@@ -559,6 +515,68 @@ public class DataMapperDiagramModel {
 				}
 			}
 		}
+	}
+
+	private void configureOutAdjListForPropertiesOperator(int index, OperatorImpl operatorElement, DMOperation operator,
+			Map<OperatorRightConnectorImpl, DMVariable> visitedConnectorVariableMap, DataMapperLink dataMapperLink,
+			OperatorImpl linkedOperationElement, OperatorRightConnectorImpl rightConnector) {
+		int variableIndex = variablesArray.size();
+		DMVariable tempVar = new DMVariable(
+				"{" + TransformerConstants.PROPERTIES_PREFIX + "."
+						+ operator.getProperty(TransformerConstants.PROPERTY_SCOPE_TAG) + "['"
+						+ operator.getProperty(TransformerConstants.PROPERTY_NAME_TAG) + "']}",
+				getUniqueDirectId(operatorElement, dataMapperLink.getOutputIndex()),
+				DMVariableType.INTERMEDIATE, SchemaDataType.INT, variableIndex, index);
+		addVariableTypeToMap(tempVar.getName(),
+				(SchemaDataType) operator.getProperty(TransformerConstants.PROPERTY_TYPE_TAG));
+		variablesArray.add(tempVar);
+		operatorElement.getPortVariableIndex().add(variableIndex);
+		if (outputAdjList.get(operator.getIndex()).size() <= dataMapperLink.getOutputIndex()) {
+			populateArrayListUpToAIndex(outputAdjList.get(operator.getIndex()),
+					dataMapperLink.getOutputIndex());
+		}
+		outputAdjList.get(operator.getIndex()).set(dataMapperLink.getOutputIndex(), variableIndex);
+		if (linkedOperationElement.isVisited()) {
+			if (inputAdjList.get(linkedOperationElement.getIndex()).size() <= dataMapperLink
+					.getInputIndex()) {
+				populateArrayListUpToAIndex(inputAdjList.get(linkedOperationElement.getIndex()),
+						dataMapperLink.getInputIndex());
+			}
+			inputAdjList.get(linkedOperationElement.getIndex()).set(dataMapperLink.getInputIndex(),
+					variableIndex);
+		}
+		visitedConnectorVariableMap.put(rightConnector, tempVar);
+	}
+
+	private void configureOutAdjListForConstantOperator(int index, OperatorImpl operatorElement, DMOperation operator,
+			Map<OperatorRightConnectorImpl, DMVariable> visitedConnectorVariableMap, DataMapperLink dataMapperLink,
+			OperatorImpl linkedOperationElement, OperatorRightConnectorImpl rightConnector) {
+		int variableIndex = variablesArray.size();
+		DMVariable tempVar = new DMVariable(
+				"{" + operator.getProperty(TransformerConstants.CONSTANT_VALUE_TAG) + "}",
+				getUniqueDirectId(operatorElement, dataMapperLink.getOutputIndex()),
+				DMVariableType.INTERMEDIATE,
+				(SchemaDataType) operator.getProperty(TransformerConstants.CONSTANT_TYPE_TAG),
+				variableIndex, index);
+		addVariableTypeToMap(tempVar.getName(),
+				(SchemaDataType) operator.getProperty(TransformerConstants.CONSTANT_TYPE_TAG));
+		variablesArray.add(tempVar);
+		operatorElement.getPortVariableIndex().add(variableIndex);
+		if (outputAdjList.get(operator.getIndex()).size() <= dataMapperLink.getOutputIndex()) {
+			populateArrayListUpToAIndex(outputAdjList.get(operator.getIndex()),
+					dataMapperLink.getOutputIndex());
+		}
+		outputAdjList.get(operator.getIndex()).set(dataMapperLink.getOutputIndex(), variableIndex);
+		if (linkedOperationElement.isVisited()) {
+			if (inputAdjList.get(linkedOperationElement.getIndex()).size() <= dataMapperLink
+					.getInputIndex()) {
+				populateArrayListUpToAIndex(inputAdjList.get(linkedOperationElement.getIndex()),
+						dataMapperLink.getInputIndex());
+			}
+			inputAdjList.get(linkedOperationElement.getIndex()).set(dataMapperLink.getInputIndex(),
+					variableIndex);
+		}
+		visitedConnectorVariableMap.put(rightConnector, tempVar);
 	}
 
 	private void populateInputAdjList(List<EObject> tempNodeArray, OperatorImpl operatorElement, DMOperation operator,

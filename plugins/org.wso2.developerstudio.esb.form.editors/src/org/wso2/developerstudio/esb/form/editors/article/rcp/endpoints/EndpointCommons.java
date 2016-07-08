@@ -245,18 +245,13 @@ public class EndpointCommons {
 	public void createFormQosSection(final ScrolledForm form, FormToolkit toolkit) {
 
 		/* QOS Information */
-		qosSection = createSection(form, toolkit, Messages.getString("EndpointPage.section.qos"));
+		qosSection = createSection(form, toolkit,
+				Messages.getString("EndpointPage.section.qos"));
 		qosSection.setExpanded(false);
-		toolkit.createCompositeSeparator(qosSection);
 		GridData taskImplGridData = new GridData();
 		taskImplGridData.horizontalSpan = 3;
 		taskImplGridData.horizontalAlignment = GridData.FILL;
 		taskImplGridData.grabExcessHorizontalSpace = true;
-		qosSection.addExpansionListener(new ExpansionAdapter() {
-			public void expansionStateChanged(ExpansionEvent e) {
-				form.reflow(false);
-			}
-		});
 		qosSection.setLayoutData(taskImplGridData);
 		// triggerSection.setLayoutData(new TableWrapData(TableWrapData.FILL));
 
@@ -652,8 +647,7 @@ public class EndpointCommons {
 		// rmPolicy.setVisible(false);
 		endpointReliableMessagingKey.setVisible(false);
 		endpointReliableMessagingPolicyKey.setVisible(false);
-		qosSection.setExpanded(false);
-		qosSection.setExpanded(true);
+		enbaleVisualizingAdditionalQOSFields();
 	}
 
 	private void enableRMfields() {
@@ -668,8 +662,7 @@ public class EndpointCommons {
 		// rmPolicy.setVisible(true);
 		endpointReliableMessagingKey.setVisible(true);
 		endpointReliableMessagingPolicyKey.setVisible(true);
-		qosSection.setExpanded(false);
-		qosSection.setExpanded(true);
+		enbaleVisualizingAdditionalQOSFields();
 	}
 
 	public void setRMFields(boolean check) {
@@ -691,8 +684,7 @@ public class EndpointCommons {
 		endpointVersion.setVisible(false);
 		endpointSeparateListnerLabel.setVisible(false);
 		endpointSeparateListner.setVisible(false);
-		qosSection.setExpanded(false);
-		qosSection.setExpanded(true);
+		enbaleVisualizingAdditionalQOSFields();
 	}
 
 	private void enableAddressingFields() {
@@ -708,8 +700,7 @@ public class EndpointCommons {
 		endpointVersion.setVisible(true);
 		endpointSeparateListnerLabel.setVisible(true);
 		endpointSeparateListner.setVisible(true);
-		qosSection.setExpanded(false);
-		qosSection.setExpanded(true);
+		enbaleVisualizingAdditionalQOSFields();
 	}
 
 	public void setAddressingFields(boolean check) {
@@ -723,16 +714,14 @@ public class EndpointCommons {
 		GridData chkBtn = (GridData) endpointInboundAndOutboundCheckBox.getLayoutData();
 		chkBtn.exclude = false;
 		endpointInboundAndOutboundCheckBox.setVisible(true);
-		qosSection.setExpanded(false);
-		qosSection.setExpanded(true);
+		enbaleVisualizingAdditionalQOSFields();
 	}
 
 	public void disableWSFields() {
 		GridData chkBtn = (GridData) endpointInboundAndOutboundCheckBox.getLayoutData();
 		chkBtn.exclude = true;
 		endpointInboundAndOutboundCheckBox.setVisible(false);
-		qosSection.setExpanded(false);
-		qosSection.setExpanded(true);
+		enbaleVisualizingAdditionalQOSFields();
 	}
 
 	public void setWSFields(boolean check) {
@@ -760,8 +749,7 @@ public class EndpointCommons {
 		policyBtn.exclude = false;
 		endpointPolicyKey.setVisible(true);
 		endpointWSPolicyKey.setVisible(true);
-		qosSection.setExpanded(false);
-		qosSection.setExpanded(true);
+		enbaleVisualizingAdditionalQOSFields();
 	}
 
 	public void disablePolicyFields() {
@@ -771,8 +759,7 @@ public class EndpointCommons {
 		policyBtn.exclude = true;
 		endpointPolicyKey.setVisible(false);
 		endpointWSPolicyKey.setVisible(false);
-		qosSection.setExpanded(false);
-		qosSection.setExpanded(true);
+		enbaleVisualizingAdditionalQOSFields();
 	}
 
 	public void disableInOutFields() {
@@ -798,8 +785,14 @@ public class EndpointCommons {
 		// endpointOutboundPolicyLabel.setVisible(false);
 		endpointOutboundPolicyKey.setVisible(false);
 		endpointSecurityOutboundPolicyKey.setVisible(false);
+		enbaleVisualizingAdditionalQOSFields();
+	}
+
+	private void enbaleVisualizingAdditionalQOSFields() {
+		if (qosSection.isExpanded() == true) {
 		qosSection.setExpanded(false);
 		qosSection.setExpanded(true);
+		}
 	}
 
 	public void enablebleInOutFields() {
@@ -825,8 +818,7 @@ public class EndpointCommons {
 		// endpointOutboundPolicyLabel.setVisible(true);
 		endpointOutboundPolicyKey.setVisible(true);
 		endpointSecurityOutboundPolicyKey.setVisible(true);
-		qosSection.setExpanded(false);
-		qosSection.setExpanded(true);
+		enbaleVisualizingAdditionalQOSFields();
 	}
 
 	public void createFormErrorHandlingSection(final ScrolledForm form, FormToolkit toolkit) {

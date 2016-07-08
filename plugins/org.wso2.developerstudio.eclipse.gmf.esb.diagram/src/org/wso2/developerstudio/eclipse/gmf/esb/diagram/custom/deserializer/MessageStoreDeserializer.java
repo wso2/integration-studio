@@ -77,7 +77,8 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.Rabb
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.WSO2MB;
 
 /**
- * Deserializes a message-store configuration to a graphical message-Store object
+ * Deserializes a message-store configuration to a graphical message-Store
+ * object
  */
 public class MessageStoreDeserializer
 		extends AbstractEsbNodeDeserializer<MessageStore, org.wso2.developerstudio.eclipse.gmf.esb.MessageStore> {
@@ -88,6 +89,8 @@ public class MessageStoreDeserializer
 	private static final String STORE_JMS_USERNAME = "store.jms.username";
 	private static final String STORE_JMS_CONNECTION_FACTORY = "store.jms.connection.factory";
 	private static final String STORE_JMS_DESTINATION = "store.jms.destination";
+
+	private static final String IS_MB_STORE = "is.mb.store";
 
 	private static final String STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE = "store.producer.guaranteed.delivery.enable";
 	private static final String STORE_FAILOVER_MESSAGE_STORE_NAME = "store.failover.message.store.name";
@@ -200,14 +203,18 @@ public class MessageStoreDeserializer
 							}
 						}
 						/*
-						 * else if (param.getKey().equals("store.jms.ConsumerReceiveTimeOut")) { Object value =
-						 * params.get("store.jms.ConsumerReceiveTimeOut"); if (value != null) { if
-						 * (StringUtils.isNumeric(value.toString())) { executeSetValueCommand(MESSAGE_STORE__TIMEOUT,
-						 * new Long(value.toString())); } } }
+						 * else if (param.getKey().equals(
+						 * "store.jms.ConsumerReceiveTimeOut")) { Object value =
+						 * params.get("store.jms.ConsumerReceiveTimeOut"); if
+						 * (value != null) { if
+						 * (StringUtils.isNumeric(value.toString())) {
+						 * executeSetValueCommand(MESSAGE_STORE__TIMEOUT, new
+						 * Long(value.toString())); } } }
 						 */
 						else {
 							/*
-							 * Any additional parameters not listed above will handle here Fixing TOOLS-2286
+							 * Any additional parameters not listed above will
+							 * handle here Fixing TOOLS-2286
 							 */
 							if (StringUtils.isNotBlank(param.getKey()) && param.getValue() != null
 									&& StringUtils.isNotBlank(param.getValue().toString())) {
@@ -380,14 +387,35 @@ public class MessageStoreDeserializer
 					&& dummyMessageStore.getParameters().get(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE).toString()
 							.equalsIgnoreCase("true")) {
 				messageStorePage.guaranteedDeliveryEnable.select(0);
-				if(dummyMessageStore.getParameters().get(STORE_FAILOVER_MESSAGE_STORE_NAME) != null){
-					messageStorePage.failoverMessageStore.setText(dummyMessageStore.getParameters().get(STORE_FAILOVER_MESSAGE_STORE_NAME).toString());
+				if (dummyMessageStore.getParameters().get(STORE_FAILOVER_MESSAGE_STORE_NAME) != null) {
+					messageStorePage.failoverMessageStore.setText(
+							dummyMessageStore.getParameters().get(STORE_FAILOVER_MESSAGE_STORE_NAME).toString());
 				}
 			} else {
 				messageStorePage.guaranteedDeliveryEnable.select(1);
 			}
 
-			if (dummyMessageStore.getClassName().equalsIgnoreCase(IN_MEMORY_MS_FQN)) {
+			if (dummyMessageStore.getParameters().get(IS_MB_STORE) != null) {
+				if (dummyMessageStore.getParameters().get(IS_MB_STORE).equals("true")) {
+					// This is a MB store
+					messageStorePage.storeType.select(2);
+
+					WSO2MB wso2mbStore = (WSO2MB) messageStorePage.getStoreImpl(WSO2MB);
+
+					setTextValue(wso2mbStore.wso2mb_initCtxFactory,
+							store.getParameters().get(JAVA_NAMING_FACTORY_INITIAL));
+					setTextValue(wso2mbStore.wso2mb_QueueConnFactory,
+							store.getParameters().get(STORE_WSO2MB_QUEUE_CONNECTION_FACTORY));
+					setTextValue(wso2mbStore.wso2mb_jndiQueueName, store.getParameters().get(STORE_JMS_DESTINATION));
+
+					if (store.getParameters().get(STORE_JMS_JMS_SPEC_VERSION) != null && store.getParameters()
+							.get(STORE_JMS_JMS_SPEC_VERSION).toString().equalsIgnoreCase("1.0")) {
+						wso2mbStore.wso2mb_apiVersion.select(1);
+					} else {
+						wso2mbStore.wso2mb_apiVersion.select(0);
+					}
+				}
+			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(IN_MEMORY_MS_FQN)) {
 				messageStorePage.storeType.select(0);
 
 				InMemory inMemoryStore = (InMemory) messageStorePage.getStoreImpl(IN_MEMORY_MS_FQN);
@@ -403,7 +431,7 @@ public class MessageStoreDeserializer
 				setTextValue(jmsStore.jms_connectionFactory, store.getParameters().get(STORE_JMS_CONNECTION_FACTORY));
 				setTextValue(jmsStore.jms_username, store.getParameters().get(STORE_JMS_USERNAME));
 				setTextValue(jmsStore.jms_password, store.getParameters().get(STORE_JMS_PASSWORD));
-				
+
 				if (store.getParameters().get(STORE_JMS_CACHE_CONNECTION) != null
 						&& store.getParameters().get(STORE_JMS_CACHE_CONNECTION).toString().equalsIgnoreCase("false")) {
 					jmsStore.jms_cacheConnection.select(0);
@@ -417,24 +445,6 @@ public class MessageStoreDeserializer
 				} else {
 					jmsStore.jms_apiVersion.select(0);
 				}
-
-			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(WSO2MB)) {
-				messageStorePage.storeType.select(2);
-
-				WSO2MB wso2mbStore = (WSO2MB) messageStorePage.getStoreImpl(WSO2MB);
-
-				setTextValue(wso2mbStore.wso2mb_initCtxFactory, store.getParameters().get(JAVA_NAMING_FACTORY_INITIAL));
-				setTextValue(wso2mbStore.wso2mb_QueueConnFactory,
-						store.getParameters().get(STORE_WSO2MB_QUEUE_CONNECTION_FACTORY));
-				setTextValue(wso2mbStore.wso2mb_jndiQueueName, store.getParameters().get(STORE_JMS_DESTINATION));
-
-				if (store.getParameters().get(STORE_JMS_JMS_SPEC_VERSION) != null
-						&& store.getParameters().get(STORE_JMS_JMS_SPEC_VERSION).toString().equalsIgnoreCase("1.0")) {
-					wso2mbStore.wso2mb_apiVersion.select(1);
-				} else {
-					wso2mbStore.wso2mb_apiVersion.select(0);
-				}
-
 			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(RABBITMQ_MS_FQN)) {
 				messageStorePage.storeType.select(3);
 
@@ -484,7 +494,8 @@ public class MessageStoreDeserializer
 
 						if (existingProperties != null) {
 							for (MessageStoreParameter propertyItem : existingProperties) {
-								// When updating the existing properties from source view, then remove the property
+								// When updating the existing properties from
+								// source view, then remove the property
 								// from old list and add to new list
 								if (propertyItem.getParameterName().equals(param.getKey())) {
 									existingProperties.remove(propertyItem);
@@ -493,13 +504,15 @@ public class MessageStoreDeserializer
 								}
 							}
 						}
-						// When adding a new property from source then add it to the new list
+						// When adding a new property from source then add it to
+						// the new list
 						if (!newlyAddedProperties.contains(parameter)) {
 							newlyAddedProperties.add(parameter);
 						}
 					}
 
-					// If old properties contain any property values, then remove the value and add the property to the
+					// If old properties contain any property values, then
+					// remove the value and add the property to the
 					// new
 					// list, DEVTOOLESB-505
 					if (existingProperties != null) {
@@ -509,15 +522,18 @@ public class MessageStoreDeserializer
 							if (StringUtils.isNotEmpty(value)) {
 								// Add the property to removed list
 								removedProperties.add(prop);
-								/*MessageStoreParameter newPrp = createProperty(name);
-								if (!newlyAddedProperties.contains(newPrp)) {
-									// Add to the new properties list
-									newProperties.add(newPrp);
-								}*/
+								/*
+								 * MessageStoreParameter newPrp =
+								 * createProperty(name); if
+								 * (!newlyAddedProperties.contains(newPrp)) { //
+								 * Add to the new properties list
+								 * newProperties.add(newPrp); }
+								 */
 							}
 						}
 					}
-					// First remove the removed properties from existing properties
+					// First remove the removed properties from existing
+					// properties
 					if (removedProperties.size() > 0) {
 						existingProperties.removeAll(removedProperties);
 					}
@@ -525,14 +541,16 @@ public class MessageStoreDeserializer
 					if (newProperties.size() > 0) {
 						newlyAddedProperties.addAll(newProperties);
 					}
-					// Adds the existing old properties (which didn't get updated)
+					// Adds the existing old properties (which didn't get
+					// updated)
 					// to the new list
 					if (existingProperties != null) {
 						newlyAddedProperties.addAll(existingProperties);
 					}
 					customStoreImpl.messageStoreParameterList = newlyAddedProperties;
-				}else{
-					//When removing all properties from the source view then clear the list
+				} else {
+					// When removing all properties from the source view then
+					// clear the list
 					customStoreImpl.messageStoreParameterList = null;
 				}
 			}

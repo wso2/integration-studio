@@ -36,6 +36,7 @@ public class MessageStoreTypeList extends AbstractListDataProvider {
 		list.add(createListData(Constants.TXT_CUSTOM, MessageStoreType.CUSTOM));
 		list.add(createListData(Constants.TXT_RABBITMQ, MessageStoreType.RABBITMQ));
 		list.add(createListData(Constants.TXT_JDBC, MessageStoreType.JDBC));
+		list.add(createListData(Constants.TXT_MB,MessageStoreType.WSO2_MB));
 		return list;
 	}
 	
@@ -48,7 +49,8 @@ public class MessageStoreTypeList extends AbstractListDataProvider {
 		JMS,
 		CUSTOM,
 		RABBITMQ,
-		JDBC
+		JDBC,
+		WSO2_MB
 	}
 
 }

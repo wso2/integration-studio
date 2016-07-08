@@ -91,7 +91,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		switch (eClass.getClassifierID()) {
 			case DataMapperPackage.DATA_MAPPER_NODE: return createDataMapperNode();
 			case DataMapperPackage.TRIM: return createTrim();
-			case DataMapperPackage.CLONE: return createClone();
 			case DataMapperPackage.REPLACE: return createReplace();
 			case DataMapperPackage.MATCH: return createMatch();
 			case DataMapperPackage.MIN: return createMin();
@@ -126,7 +125,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.DATA_MAPPER_LINK: return createDataMapperLink();
 			case DataMapperPackage.CONCAT: return createConcat();
 			case DataMapperPackage.ABSOLUTE_VALUE: return createAbsoluteValue();
-			case DataMapperPackage.EQUAL: return createEqual();
 			case DataMapperPackage.CONSTANT: return createConstant();
 			case DataMapperPackage.ADD: return createAdd();
 			case DataMapperPackage.DIVIDE: return createDivide();
@@ -137,7 +135,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.SPLIT: return createSplit();
 			case DataMapperPackage.LOWER_CASE: return createLowerCase();
 			case DataMapperPackage.CELI: return createCeli();
-			case DataMapperPackage.CONTAINS: return createContains();
 			case DataMapperPackage.UPPER_CASE: return createUpperCase();
 			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: return createPropertyKeyValuePair();
 			default:
@@ -203,17 +200,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		TrimImpl trim = new TrimImpl();
 		trim.setBasicContainer(createOperatorBasicContainer());
 		return trim;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public Clone createClone() {
-		CloneImpl clone = new CloneImpl();
-		clone.setBasicContainer(createOperatorBasicContainer());
-		return clone;
 	}
 
 				/**
@@ -598,17 +584,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public Equal createEqual() {
-		EqualImpl equal = new EqualImpl();
-		equal.setBasicContainer(createOperatorBasicContainer());
-		return equal;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
 	public Constant createConstant() {
 		ConstantImpl constant = new ConstantImpl();
 		constant.setBasicContainer(createOperatorBasicContainer());
@@ -712,17 +687,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		CeliImpl celi = new CeliImpl();
 		celi.setBasicContainer(createOperatorBasicContainer());
 		return celi;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public Contains createContains() {
-		ContainsImpl contains = new ContainsImpl();
-		contains.setBasicContainer(createOperatorBasicContainer());
-		return contains;
 	}
 
 	/**

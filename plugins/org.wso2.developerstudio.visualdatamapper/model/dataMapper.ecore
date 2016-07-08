@@ -4,7 +4,6 @@
     nsPrefix="datamapper">
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="Trim" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Clone" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Replace" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="{$Target}"/>
@@ -191,7 +190,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="delimiter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbsoluteValue" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constantValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SchemaDataType"
@@ -239,12 +237,10 @@
     <eLiterals name="BOOLEAN_OPERATION" value="3"/>
     <eLiterals name="CONDITIONAL_OPERATION" value="4"/>
     <eLiterals name="CONSTANT" value="5"/>
-    <eLiterals name="EQUALS" value="6"/>
     <eLiterals name="CONCAT" value="7"/>
     <eLiterals name="SPLIT" value="8"/>
     <eLiterals name="UPPERCASE" value="9"/>
     <eLiterals name="LOWERCASE" value="10"/>
-    <eLiterals name="CONTAINS" value="11"/>
     <eLiterals name="ADD" value="12"/>
     <eLiterals name="SUBTRACT" value="13"/>
     <eLiterals name="MULTIPLY" value="14"/>
@@ -278,7 +274,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Celi" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="UpperCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyKeyValuePair">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

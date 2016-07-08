@@ -83,7 +83,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperRoot()
 	 * @generated
 	 */
-	int DATA_MAPPER_ROOT = 12;
+	int DATA_MAPPER_ROOT = 11;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.InputImpl <em>Input</em>}' class.
@@ -93,7 +93,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getInput()
 	 * @generated
 	 */
-	int INPUT = 20;
+	int INPUT = 19;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.NOTImpl <em>NOT</em>}' class.
@@ -103,7 +103,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getNOT()
 	 * @generated
 	 */
-	int NOT = 21;
+	int NOT = 20;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.OutputImpl <em>Output</em>}' class.
@@ -113,7 +113,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOutput()
 	 * @generated
 	 */
-	int OUTPUT = 22;
+	int OUTPUT = 21;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl <em>Operator</em>}' class.
@@ -123,7 +123,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOperator()
 	 * @generated
 	 */
-	int OPERATOR = 23;
+	int OPERATOR = 22;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -280,88 +280,6 @@ public interface DataMapperPackage extends EPackage {
 	int TRIM_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.CloneImpl <em>Clone</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.wso2.developerstudio.datamapper.impl.CloneImpl
-	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getClone()
-	 * @generated
-	 */
-	int CLONE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLONE__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
-
-	/**
-	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLONE__SERIALIZED = OPERATOR__SERIALIZED;
-
-	/**
-	 * The feature id for the '<em><b>Default Input Connectors</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLONE__DEFAULT_INPUT_CONNECTORS = OPERATOR__DEFAULT_INPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Default Output Connectors</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLONE__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLONE__INPUT_SIZE_FIXED = OPERATOR__INPUT_SIZE_FIXED;
-
-	/**
-	 * The feature id for the '<em><b>Output Size Fixed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLONE__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
-
-	/**
-	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLONE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
-
-	/**
-	 * The number of structural features of the '<em>Clone</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLONE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.ReplaceImpl <em>Replace</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -369,7 +287,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getReplace()
 	 * @generated
 	 */
-	int REPLACE = 3;
+	int REPLACE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -469,7 +387,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getMatch()
 	 * @generated
 	 */
-	int MATCH = 4;
+	int MATCH = 3;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -560,7 +478,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getMin()
 	 * @generated
 	 */
-	int MIN = 5;
+	int MIN = 4;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -642,7 +560,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getMax()
 	 * @generated
 	 */
-	int MAX = 6;
+	int MAX = 5;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -724,7 +642,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getCustomFunction()
 	 * @generated
 	 */
-	int CUSTOM_FUNCTION = 7;
+	int CUSTOM_FUNCTION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -842,7 +760,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getProperties()
 	 * @generated
 	 */
-	int PROPERTIES = 8;
+	int PROPERTIES = 7;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -942,7 +860,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getCompare()
 	 * @generated
 	 */
-	int COMPARE = 9;
+	int COMPARE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1033,7 +951,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getStringToNumber()
 	 * @generated
 	 */
-	int STRING_TO_NUMBER = 10;
+	int STRING_TO_NUMBER = 9;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1115,7 +1033,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getStringToBoolean()
 	 * @generated
 	 */
-	int STRING_TO_BOOLEAN = 11;
+	int STRING_TO_BOOLEAN = 10;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1233,7 +1151,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getStringLength()
 	 * @generated
 	 */
-	int STRING_LENGTH = 13;
+	int STRING_LENGTH = 12;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1315,7 +1233,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getStartsWith()
 	 * @generated
 	 */
-	int STARTS_WITH = 14;
+	int STARTS_WITH = 13;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1415,7 +1333,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getEndsWith()
 	 * @generated
 	 */
-	int ENDS_WITH = 15;
+	int ENDS_WITH = 14;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1515,7 +1433,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSubstring()
 	 * @generated
 	 */
-	int SUBSTRING = 16;
+	int SUBSTRING = 15;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1624,7 +1542,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getIfElse()
 	 * @generated
 	 */
-	int IF_ELSE = 17;
+	int IF_ELSE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1724,7 +1642,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAND()
 	 * @generated
 	 */
-	int AND = 18;
+	int AND = 17;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1806,7 +1724,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOR()
 	 * @generated
 	 */
-	int OR = 19;
+	int OR = 18;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -1996,7 +1914,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOperatorBasicContainer()
 	 * @generated
 	 */
-	int OPERATOR_BASIC_CONTAINER = 24;
+	int OPERATOR_BASIC_CONTAINER = 23;
 
 	/**
 	 * The feature id for the '<em><b>Left Container</b></em>' containment reference.
@@ -2033,7 +1951,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOperatorLeftContainer()
 	 * @generated
 	 */
-	int OPERATOR_LEFT_CONTAINER = 25;
+	int OPERATOR_LEFT_CONTAINER = 24;
 
 	/**
 	 * The feature id for the '<em><b>Left Connectors</b></em>' containment reference list.
@@ -2061,7 +1979,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOperatorLeftConnector()
 	 * @generated
 	 */
-	int OPERATOR_LEFT_CONNECTOR = 26;
+	int OPERATOR_LEFT_CONNECTOR = 25;
 
 	/**
 	 * The feature id for the '<em><b>In Node</b></em>' containment reference.
@@ -2089,7 +2007,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOperatorRightContainer()
 	 * @generated
 	 */
-	int OPERATOR_RIGHT_CONTAINER = 27;
+	int OPERATOR_RIGHT_CONTAINER = 26;
 
 	/**
 	 * The feature id for the '<em><b>Right Connectors</b></em>' containment reference list.
@@ -2117,7 +2035,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOperatorRightConnector()
 	 * @generated
 	 */
-	int OPERATOR_RIGHT_CONNECTOR = 28;
+	int OPERATOR_RIGHT_CONNECTOR = 27;
 
 	/**
 	 * The feature id for the '<em><b>Out Node</b></em>' containment reference.
@@ -2145,7 +2063,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getElement()
 	 * @generated
 	 */
-	int ELEMENT = 29;
+	int ELEMENT = 28;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2236,7 +2154,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getTreeNode()
 	 * @generated
 	 */
-	int TREE_NODE = 30;
+	int TREE_NODE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2355,7 +2273,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSubtract()
 	 * @generated
 	 */
-	int SUBTRACT = 31;
+	int SUBTRACT = 30;
 
 				/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -2437,7 +2355,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getInNode()
 	 * @generated
 	 */
-	int IN_NODE = 32;
+	int IN_NODE = 31;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Link</b></em>' reference list.
@@ -2474,7 +2392,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getOutNode()
 	 * @generated
 	 */
-	int OUT_NODE = 33;
+	int OUT_NODE = 32;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference list.
@@ -2512,7 +2430,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperLink()
 	 * @generated
 	 */
-	int DATA_MAPPER_LINK = 34;
+	int DATA_MAPPER_LINK = 33;
 
 	/**
 	 * The feature id for the '<em><b>In Node</b></em>' reference.
@@ -2550,7 +2468,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 35;
+	int CONCAT = 34;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -2642,7 +2560,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAbsoluteValue()
 	 * @generated
 	 */
-	int ABSOLUTE_VALUE = 36;
+	int ABSOLUTE_VALUE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -2717,88 +2635,6 @@ public interface DataMapperPackage extends EPackage {
 	int ABSOLUTE_VALUE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.EqualImpl <em>Equal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.wso2.developerstudio.datamapper.impl.EqualImpl
-	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getEqual()
-	 * @generated
-	 */
-	int EQUAL = 37;
-
-	/**
-	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
-
-	/**
-	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__SERIALIZED = OPERATOR__SERIALIZED;
-
-	/**
-	 * The feature id for the '<em><b>Default Input Connectors</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__DEFAULT_INPUT_CONNECTORS = OPERATOR__DEFAULT_INPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Default Output Connectors</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__INPUT_SIZE_FIXED = OPERATOR__INPUT_SIZE_FIXED;
-
-	/**
-	 * The feature id for the '<em><b>Output Size Fixed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
-
-	/**
-	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
-
-	/**
-	 * The number of structural features of the '<em>Equal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.ConstantImpl <em>Constant</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2806,7 +2642,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getConstant()
 	 * @generated
 	 */
-	int CONSTANT = 38;
+	int CONSTANT = 36;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -2906,7 +2742,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getAdd()
 	 * @generated
 	 */
-	int ADD = 39;
+	int ADD = 37;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -2988,7 +2824,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDivide()
 	 * @generated
 	 */
-	int DIVIDE = 40;
+	int DIVIDE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -3070,7 +2906,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getFloor()
 	 * @generated
 	 */
-	int FLOOR = 41;
+	int FLOOR = 39;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -3152,7 +2988,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getRound()
 	 * @generated
 	 */
-	int ROUND = 42;
+	int ROUND = 40;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -3234,7 +3070,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getMultiply()
 	 * @generated
 	 */
-	int MULTIPLY = 43;
+	int MULTIPLY = 41;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -3316,7 +3152,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSetPrecision()
 	 * @generated
 	 */
-	int SET_PRECISION = 44;
+	int SET_PRECISION = 42;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -3407,7 +3243,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSplit()
 	 * @generated
 	 */
-	int SPLIT = 45;
+	int SPLIT = 43;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -3516,7 +3352,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getLowerCase()
 	 * @generated
 	 */
-	int LOWER_CASE = 46;
+	int LOWER_CASE = 44;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -3598,7 +3434,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getCeli()
 	 * @generated
 	 */
-	int CELI = 47;
+	int CELI = 45;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -3673,88 +3509,6 @@ public interface DataMapperPackage extends EPackage {
 	int CELI_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.ContainsImpl <em>Contains</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.wso2.developerstudio.datamapper.impl.ContainsImpl
-	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getContains()
-	 * @generated
-	 */
-	int CONTAINS = 48;
-
-	/**
-	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
-
-	/**
-	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS__SERIALIZED = OPERATOR__SERIALIZED;
-
-	/**
-	 * The feature id for the '<em><b>Default Input Connectors</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS__DEFAULT_INPUT_CONNECTORS = OPERATOR__DEFAULT_INPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Default Output Connectors</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
-
-	/**
-	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS__INPUT_SIZE_FIXED = OPERATOR__INPUT_SIZE_FIXED;
-
-	/**
-	 * The feature id for the '<em><b>Output Size Fixed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
-
-	/**
-	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
-
-	/**
-	 * The number of structural features of the '<em>Contains</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINS_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.UpperCaseImpl <em>Upper Case</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3762,7 +3516,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getUpperCase()
 	 * @generated
 	 */
-	int UPPER_CASE = 49;
+	int UPPER_CASE = 46;
 
 	/**
 	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
@@ -3844,7 +3598,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getPropertyKeyValuePair()
 	 * @generated
 	 */
-	int PROPERTY_KEY_VALUE_PAIR = 50;
+	int PROPERTY_KEY_VALUE_PAIR = 47;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -3881,7 +3635,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getComparisonOperatorType()
 	 * @generated
 	 */
-	int COMPARISON_OPERATOR_TYPE = 51;
+	int COMPARISON_OPERATOR_TYPE = 48;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.
@@ -3891,7 +3645,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 52;
+    int SCHEMA_DATA_TYPE = 49;
 
     /**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.DataMapperOperatorType <em>Operator Type</em>}' enum.
@@ -3901,7 +3655,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperOperatorType()
 	 * @generated
 	 */
-	int DATA_MAPPER_OPERATOR_TYPE = 53;
+	int DATA_MAPPER_OPERATOR_TYPE = 50;
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -3922,16 +3676,6 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTrim();
-
-				/**
-	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Clone <em>Clone</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Clone</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Clone
-	 * @generated
-	 */
-	EClass getClone();
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Replace <em>Replace</em>}'.
@@ -4967,16 +4711,6 @@ public interface DataMapperPackage extends EPackage {
 	EClass getAbsoluteValue();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Equal <em>Equal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Equal</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Equal
-	 * @generated
-	 */
-	EClass getEqual();
-
-	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Constant <em>Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5143,16 +4877,6 @@ public interface DataMapperPackage extends EPackage {
 	EClass getCeli();
 
 	/**
-	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.Contains <em>Contains</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Contains</em>'.
-	 * @see org.wso2.developerstudio.datamapper.Contains
-	 * @generated
-	 */
-	EClass getContains();
-
-	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.UpperCase <em>Upper Case</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5265,16 +4989,6 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TRIM = eINSTANCE.getTrim();
-
-		/**
-		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.CloneImpl <em>Clone</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.wso2.developerstudio.datamapper.impl.CloneImpl
-		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getClone()
-		 * @generated
-		 */
-		EClass CLONE = eINSTANCE.getClone();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.ReplaceImpl <em>Replace</em>}' class.
@@ -6121,16 +5835,6 @@ public interface DataMapperPackage extends EPackage {
 		EClass ABSOLUTE_VALUE = eINSTANCE.getAbsoluteValue();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.EqualImpl <em>Equal</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.wso2.developerstudio.datamapper.impl.EqualImpl
-		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getEqual()
-		 * @generated
-		 */
-		EClass EQUAL = eINSTANCE.getEqual();
-
-		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.ConstantImpl <em>Constant</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6277,16 +5981,6 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CELI = eINSTANCE.getCeli();
-
-								/**
-		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.ContainsImpl <em>Contains</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.wso2.developerstudio.datamapper.impl.ContainsImpl
-		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getContains()
-		 * @generated
-		 */
-		EClass CONTAINS = eINSTANCE.getContains();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.UpperCaseImpl <em>Upper Case</em>}' class.

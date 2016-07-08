@@ -79,14 +79,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DataMapperPackage.CLONE: {
-				Clone clone = (Clone)theEObject;
-				T result = caseClone(clone);
-				if (result == null) result = caseOperator(clone);
-				if (result == null) result = caseDataMapperNode(clone);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case DataMapperPackage.REPLACE: {
 				Replace replace = (Replace)theEObject;
 				T result = caseReplace(replace);
@@ -334,14 +326,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DataMapperPackage.EQUAL: {
-				Equal equal = (Equal)theEObject;
-				T result = caseEqual(equal);
-				if (result == null) result = caseOperator(equal);
-				if (result == null) result = caseDataMapperNode(equal);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case DataMapperPackage.CONSTANT: {
 				Constant constant = (Constant)theEObject;
 				T result = caseConstant(constant);
@@ -422,14 +406,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DataMapperPackage.CONTAINS: {
-				Contains contains = (Contains)theEObject;
-				T result = caseContains(contains);
-				if (result == null) result = caseOperator(contains);
-				if (result == null) result = caseDataMapperNode(contains);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case DataMapperPackage.UPPER_CASE: {
 				UpperCase upperCase = (UpperCase)theEObject;
 				T result = caseUpperCase(upperCase);
@@ -475,21 +451,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTrim(Trim object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Clone</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Clone</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseClone(Clone object) {
 		return null;
 	}
 
@@ -1004,21 +965,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Equal</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Equal</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEqual(Equal object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Constant</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1165,21 +1111,6 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCeli(Celi object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Contains</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Contains</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseContains(Contains object) {
 		return null;
 	}
 

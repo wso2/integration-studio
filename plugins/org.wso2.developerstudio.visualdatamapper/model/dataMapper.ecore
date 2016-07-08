@@ -274,6 +274,7 @@
     <eLiterals name="STRING_TO_BOOLEAN" value="36"/>
     <eLiterals name="STRING_TO_NUMBER" value="37"/>
     <eLiterals name="INSTANTIATE" value="40"/>
+    <eLiterals name="GET" value="41" literal="GET"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Celi" eSuperTypes="#//Operator"/>

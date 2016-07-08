@@ -15,49 +15,42 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers;
 
-import static org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants.COMPARISON_OPERATOR_TYPE;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-import org.wso2.developerstudio.datamapper.ComparisonOperatorType;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.transformers.TransformerConstants;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract
- * class and generate script for Compare operation
+ * class and generate script for Get operation
  */
-public class CompareOperatorTransformer extends AbstractDMOperatorTransformer {
+public class GetOperatorTransformer extends AbstractDMOperatorTransformer {
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+		int arrayIndex = (int) operator.getProperty(TransformerConstants.GET_OPERATOR_INDEX);
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder
 				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
-		String operatorLiteral = ((ComparisonOperatorType) operator.getProperty(COMPARISON_OPERATOR_TYPE)).getLiteral();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			@SuppressWarnings("unchecked")
-			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
-			if (inputVariables.size() <= 1) {
-				throw new IllegalArgumentException("Compare operator should have two inputs to get the result.");
+			if (inputVariables.size() == 0) {
+				throw new IllegalArgumentException("Get Operation input variables number can not be 0");
+			} else {
+				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+						variableTypeMap, parentForLoopBeanStack, true) + "[" + arrayIndex + "];");
 			}
 
-			if (inputVariables.size() == 2) {
-				operationBuilder
-						.append("( " + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-								variableTypeMap, parentForLoopBeanStack, true))
-						.append(" " + operatorLiteral + " " + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-								inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + " )");
-			}
 			operationBuilder.append(";");
+
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}

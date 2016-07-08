@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.EditPart;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.SWT;
@@ -40,6 +41,8 @@ import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.Split;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart;
 import org.wso2.developerstudio.datamapper.impl.SplitImpl;
 
 public class ConfigureSplitOperatorDialog extends AbstractConfigureOperatorDialog {
@@ -48,13 +51,15 @@ public class ConfigureSplitOperatorDialog extends AbstractConfigureOperatorDialo
     private String delimiter;
     private TransactionalEditingDomain editingDomain;
     SplitImpl splitImpl = null;
+    private EditPart editPart;
     private ArrayList<OperatorRightConnector> caseOutputConnectors = new ArrayList<OperatorRightConnector>();
 
     public ConfigureSplitOperatorDialog(Shell parentShell, Split splitOperator,
-            TransactionalEditingDomain editingDomain) {
+            TransactionalEditingDomain editingDomain, EditPart selectedEP) {
         super(parentShell);
         this.splitImpl = (SplitImpl) splitOperator;
         this.editingDomain = editingDomain;
+        this.editPart=selectedEP;
     }
 
     @Override
@@ -171,6 +176,8 @@ public class ConfigureSplitOperatorDialog extends AbstractConfigureOperatorDialo
             if (setCmnd.canExecute()) {
                 editingDomain.getCommandStack().execute(setCmnd);
             }
+        	((OperatorRectangle)((SplitEditPart)editPart).getSplitFigure()).changeOperatorHeader("Split : \""+delimiter+"\"");
+    		
         }
         int number = Integer.parseInt(outputCount)
                 - splitImpl.getBasicContainer().getRightContainer().getRightConnectors().size();
@@ -183,10 +190,8 @@ public class ConfigureSplitOperatorDialog extends AbstractConfigureOperatorDialo
                 if (addCmd.canExecute()) {
                     editingDomain.getCommandStack().execute(addCmd);
                 }
-
             }
         } else if (number < 0) {
-
             for (int i = 0; i < Math.abs(number); i++) {
                 EList<OperatorRightConnector> listOfRightConnectors = splitImpl.getBasicContainer()
                         .getRightContainer().getRightConnectors();

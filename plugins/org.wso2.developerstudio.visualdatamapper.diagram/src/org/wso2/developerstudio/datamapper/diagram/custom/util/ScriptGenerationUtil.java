@@ -70,22 +70,11 @@ public class ScriptGenerationUtil {
 				if (map.containsKey(variableName)) {
 					variableType = map.get(variableName).get(VARIABLE_TYPE_INDEX);
 					if (SchemaDataType.ARRAY.equals(variableType)) {
-						if (nextName.contains("Record")) {
-							if (parentForLoopBeanStack.size() > 0) {
-								prettyVariableName += getValidNextName(
-										nextName.substring(0, nextName.indexOf("Record"))) + "["
-										+ getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
-							} else {
-								prettyVariableName += getValidNextName(
-										nextName.substring(0, nextName.indexOf("Record"))) + "[0]";
-							}
+						if (parentForLoopBeanStack.size() > 0) {
+							prettyVariableName += getValidNextName(nextName) + "["
+									+ getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
 						} else {
-							if (parentForLoopBeanStack.size() > 0) {
-								prettyVariableName += getValidNextName(nextName) + "["
-										+ getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
-							} else {
-								prettyVariableName += getValidNextName(nextName) + "[0]";
-							}
+							prettyVariableName += getValidNextName(nextName) + "[0]";
 						}
 					} else if (nextName.startsWith("@") && isPerviousVariableTypePrimitive) {
 						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));
@@ -123,12 +112,7 @@ public class ScriptGenerationUtil {
 						} else {
 							iterateName = parentVariableBottomUpStack.pop().getIterativeName();
 						}
-						if (nextName.contains("Record")) {
-							prettyVariableName += getValidNextName(nextName.substring(0, nextName.indexOf("Record")))
-									+ "[" + iterateName + "]";
-						} else {
-							prettyVariableName += getValidNextName(nextName) + "[" + iterateName + "]";
-						}
+						prettyVariableName += getValidNextName(nextName) + "[" + iterateName + "]";
 					} else if (nextName.startsWith("@") && isPerviousVariableTypePrimitive) {
 						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));
 					} else if (nextName.startsWith("@")) {

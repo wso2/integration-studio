@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -19,6 +20,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
+import org.wso2.developerstudio.datamapper.impl.SplitImpl;
 
 /**
  * @generated NOT
@@ -43,6 +45,8 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 	private int sizeX = 40;
 
 	private int sizeY = 20;
+
+	private String splitDelimiter;
 
 	/**
 	 * @generated
@@ -92,7 +96,8 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new SplitFigure();
+		splitDelimiter = ((SplitImpl) ((View) getModel()).getElement()).getDelimiter();
+		return primaryShape = new SplitFigure(splitDelimiter);
 	}
 
 	/**
@@ -190,8 +195,11 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 
 	public class SplitFigure extends OperatorRectangle {
 
-		public SplitFigure() {
+		public SplitFigure(String splitValue) {
 			super("Split");
+			if (StringUtils.isNotEmpty(splitValue)) {
+				super.changeOperatorHeader("Split : \"" + splitValue + "\"");
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -210,5 +218,9 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getSplitFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 
 }

@@ -66,7 +66,7 @@ public class WSO2MB implements IMessageStore {
 		
 		connSection.setVisible(false);
 		
-		toolkit.createLabel(connSectionClient, "Initial Context Factory");
+		toolkit.createLabel(connSectionClient, "Initial Context Factory *");
 		wso2mb_initCtxFactory = toolkit.createText(connSectionClient, "");
 		wso2mb_initCtxFactory.setBackground(new Color(null, 229,236,253));
 		wso2mb_initCtxFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -79,7 +79,7 @@ public class WSO2MB implements IMessageStore {
 			}
 		});
 		
-		toolkit.createLabel(connSectionClient, "Queue Connection Factory");
+		toolkit.createLabel(connSectionClient, "Queue Connection Factory *");
 		wso2mb_QueueConnFactory = toolkit.createText(connSectionClient, "");
 		wso2mb_QueueConnFactory.setBackground(new Color(null, 229,236,253));
 		wso2mb_QueueConnFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));

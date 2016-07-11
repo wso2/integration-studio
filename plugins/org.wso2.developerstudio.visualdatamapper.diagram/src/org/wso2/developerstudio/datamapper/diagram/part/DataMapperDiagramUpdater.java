@@ -29,6 +29,7 @@ import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.EndsWith;
 import org.wso2.developerstudio.datamapper.Equal;
 import org.wso2.developerstudio.datamapper.Floor;
+import org.wso2.developerstudio.datamapper.GlobalVariable;
 import org.wso2.developerstudio.datamapper.IfElse;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
@@ -56,6 +57,7 @@ import org.wso2.developerstudio.datamapper.StringToBoolean;
 import org.wso2.developerstudio.datamapper.StringToNumber;
 import org.wso2.developerstudio.datamapper.Substring;
 import org.wso2.developerstudio.datamapper.Subtract;
+import org.wso2.developerstudio.datamapper.ToString;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.Trim;
 import org.wso2.developerstudio.datamapper.UpperCase;
@@ -76,6 +78,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.GlobalVariableEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
@@ -108,6 +111,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToBooleanEdi
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToNumberEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ToStringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -201,6 +205,10 @@ public class DataMapperDiagramUpdater {
 			return getStringToBoolean_2038SemanticChildren(view);
 		case CloneEditPart.VISUAL_ID:
 			return getClone_2039SemanticChildren(view);
+		case ToStringEditPart.VISUAL_ID:
+			return getToString_2040SemanticChildren(view);
+		case GlobalVariableEditPart.VISUAL_ID:
+			return getGlobalVariable_2041SemanticChildren(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002SemanticChildren(view);
 		case ElementEditPart.VISUAL_ID:
@@ -386,6 +394,14 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 			if (visualID == CloneEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == ToStringEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == GlobalVariableEditPart.VISUAL_ID) {
 				result.add(new DataMapperNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -1102,6 +1118,44 @@ public class DataMapperDiagramUpdater {
 	}
 
 	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getToString_2040SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		ToString modelElement = (ToString) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperNodeDescriptor> getGlobalVariable_2041SemanticChildren(View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		GlobalVariable modelElement = (GlobalVariable) view.getElement();
+		LinkedList<DataMapperNodeDescriptor> result = new LinkedList<DataMapperNodeDescriptor>();
+		{
+			OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = DataMapperVisualIDRegistry.getNodeVisualID(view, childElement);
+			if (visualID == OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new DataMapperNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
 	 * @generated
 	 */
 	public static List<DataMapperNodeDescriptor> getTreeNode_3002SemanticChildren(View view) {
@@ -1438,6 +1492,10 @@ public class DataMapperDiagramUpdater {
 			return getStringToBoolean_2038ContainedLinks(view);
 		case CloneEditPart.VISUAL_ID:
 			return getClone_2039ContainedLinks(view);
+		case ToStringEditPart.VISUAL_ID:
+			return getToString_2040ContainedLinks(view);
+		case GlobalVariableEditPart.VISUAL_ID:
+			return getGlobalVariable_2041ContainedLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002ContainedLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1553,6 +1611,10 @@ public class DataMapperDiagramUpdater {
 			return getStringToBoolean_2038IncomingLinks(view);
 		case CloneEditPart.VISUAL_ID:
 			return getClone_2039IncomingLinks(view);
+		case ToStringEditPart.VISUAL_ID:
+			return getToString_2040IncomingLinks(view);
+		case GlobalVariableEditPart.VISUAL_ID:
+			return getGlobalVariable_2041IncomingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002IncomingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1668,6 +1730,10 @@ public class DataMapperDiagramUpdater {
 			return getStringToBoolean_2038OutgoingLinks(view);
 		case CloneEditPart.VISUAL_ID:
 			return getClone_2039OutgoingLinks(view);
+		case ToStringEditPart.VISUAL_ID:
+			return getToString_2040OutgoingLinks(view);
+		case GlobalVariableEditPart.VISUAL_ID:
+			return getGlobalVariable_2041OutgoingLinks(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002OutgoingLinks(view);
 		case ElementEditPart.VISUAL_ID:
@@ -1967,6 +2033,20 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getClone_2039ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getToString_2040ContainedLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getGlobalVariable_2041ContainedLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -2347,6 +2427,20 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getClone_2039IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getToString_2040IncomingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getGlobalVariable_2041IncomingLinks(View view) {
 		return Collections.emptyList();
 	}
 
@@ -2733,6 +2827,20 @@ public class DataMapperDiagramUpdater {
 	* @generated
 	*/
 	public static List<DataMapperLinkDescriptor> getClone_2039OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getToString_2040OutgoingLinks(View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	* @generated
+	*/
+	public static List<DataMapperLinkDescriptor> getGlobalVariable_2041OutgoingLinks(View view) {
 		return Collections.emptyList();
 	}
 

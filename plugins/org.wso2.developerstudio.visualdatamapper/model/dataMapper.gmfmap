@@ -805,6 +805,42 @@
       </children>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//ToString"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.36"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#ToString"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//GlobalVariable"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.37"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#GlobalVariable"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
+    </ownedChild>
+  </nodes>
   <links>
     <domainMetaElement
         href="dataMapper.ecore#//DataMapperLink"/>

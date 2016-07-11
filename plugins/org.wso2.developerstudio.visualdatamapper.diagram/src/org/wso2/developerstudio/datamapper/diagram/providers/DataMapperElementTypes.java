@@ -31,6 +31,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.GlobalVariableEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
@@ -63,6 +64,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToBooleanEdi
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToNumberEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ToStringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -325,6 +327,18 @@ public class DataMapperElementTypes {
 			"org.wso2.developerstudio.visualdatamapper.diagram.Clone_2039"); //$NON-NLS-1$
 
 	/**
+	* @generated
+	*/
+	public static final IElementType ToString_2040 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.ToString_2040"); //$NON-NLS-1$
+
+	/**
+	* @generated
+	*/
+	public static final IElementType GlobalVariable_2041 = getElementType(
+			"org.wso2.developerstudio.visualdatamapper.diagram.GlobalVariable_2041"); //$NON-NLS-1$
+
+	/**
 	 * @generated
 	 */
 	public static final IElementType TreeNode_3002 = getElementType(
@@ -464,6 +478,8 @@ public class DataMapperElementTypes {
 
 			elements.put(Output_2003, DataMapperPackage.eINSTANCE.getOutput());
 
+			elements.put(Equal_2005, DataMapperPackage.eINSTANCE.getEqual());
+
 			elements.put(Subtract_2013, DataMapperPackage.eINSTANCE.getSubtract());
 
 			elements.put(Concat_2006, DataMapperPackage.eINSTANCE.getConcat());
@@ -475,6 +491,8 @@ public class DataMapperElementTypes {
 			elements.put(Constant_2008, DataMapperPackage.eINSTANCE.getConstant());
 
 			elements.put(LowerCase_2009, DataMapperPackage.eINSTANCE.getLowerCase());
+
+			elements.put(Contains_2010, DataMapperPackage.eINSTANCE.getContains());
 
 			elements.put(UpperCase_2011, DataMapperPackage.eINSTANCE.getUpperCase());
 
@@ -527,6 +545,12 @@ public class DataMapperElementTypes {
 			elements.put(StringToNumber_2037, DataMapperPackage.eINSTANCE.getStringToNumber());
 
 			elements.put(StringToBoolean_2038, DataMapperPackage.eINSTANCE.getStringToBoolean());
+
+			elements.put(Clone_2039, DataMapperPackage.eINSTANCE.getClone());
+
+			elements.put(ToString_2040, DataMapperPackage.eINSTANCE.getToString());
+
+			elements.put(GlobalVariable_2041, DataMapperPackage.eINSTANCE.getGlobalVariable());
 
 			elements.put(TreeNode_3002, DataMapperPackage.eINSTANCE.getTreeNode());
 
@@ -614,6 +638,8 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(StringToNumber_2037);
 			KNOWN_ELEMENT_TYPES.add(StringToBoolean_2038);
 			KNOWN_ELEMENT_TYPES.add(Clone_2039);
+			KNOWN_ELEMENT_TYPES.add(ToString_2040);
+			KNOWN_ELEMENT_TYPES.add(GlobalVariable_2041);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(Element_3007);
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
@@ -715,6 +741,10 @@ public class DataMapperElementTypes {
 			return StringToBoolean_2038;
 		case CloneEditPart.VISUAL_ID:
 			return Clone_2039;
+		case ToStringEditPart.VISUAL_ID:
+			return ToString_2040;
+		case GlobalVariableEditPart.VISUAL_ID:
+			return GlobalVariable_2041;
 		case TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case ElementEditPart.VISUAL_ID:

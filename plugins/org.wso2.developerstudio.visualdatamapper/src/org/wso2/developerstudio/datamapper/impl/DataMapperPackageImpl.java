@@ -29,6 +29,7 @@ import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.EndsWith;
 import org.wso2.developerstudio.datamapper.Equal;
 import org.wso2.developerstudio.datamapper.Floor;
+import org.wso2.developerstudio.datamapper.GlobalVariable;
 import org.wso2.developerstudio.datamapper.IfElse;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.Input;
@@ -58,6 +59,7 @@ import org.wso2.developerstudio.datamapper.StringToBoolean;
 import org.wso2.developerstudio.datamapper.StringToNumber;
 import org.wso2.developerstudio.datamapper.Substring;
 import org.wso2.developerstudio.datamapper.Subtract;
+import org.wso2.developerstudio.datamapper.ToString;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.Trim;
 import org.wso2.developerstudio.datamapper.UpperCase;
@@ -425,6 +427,20 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass containsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass toStringEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass globalVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1611,6 +1627,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getToString() {
+		return toStringEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGlobalVariable() {
+		return globalVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComparisonOperatorType() {
 		return comparisonOperatorTypeEEnum;
 	}
@@ -1834,6 +1868,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		containsEClass = createEClass(CONTAINS);
 
+		toStringEClass = createEClass(TO_STRING);
+
+		globalVariableEClass = createEClass(GLOBAL_VARIABLE);
+
 		// Create enums
 		comparisonOperatorTypeEEnum = createEEnum(COMPARISON_OPERATOR_TYPE);
 		schemaDataTypeEEnum = createEEnum(SCHEMA_DATA_TYPE);
@@ -1906,6 +1944,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		celiEClass.getESuperTypes().add(this.getOperator());
 		upperCaseEClass.getESuperTypes().add(this.getOperator());
 		containsEClass.getESuperTypes().add(this.getOperator());
+		toStringEClass.getESuperTypes().add(this.getOperator());
+		globalVariableEClass.getESuperTypes().add(this.getOperator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2080,6 +2120,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEAttribute(getPropertyKeyValuePair_Value(), ecorePackage.getEString(), "value", "", 1, 1, PropertyKeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(toStringEClass, ToString.class, "ToString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(globalVariableEClass, GlobalVariable.class, "GlobalVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(comparisonOperatorTypeEEnum, ComparisonOperatorType.class, "ComparisonOperatorType");

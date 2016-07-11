@@ -3874,6 +3874,170 @@ public interface DataMapperPackage extends EPackage {
 	int CONTAINS_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.ToStringImpl <em>To String</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.ToStringImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getToString()
+	 * @generated
+	 */
+	int TO_STRING = 51;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_STRING__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_STRING__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The feature id for the '<em><b>Default Input Connectors</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_STRING__DEFAULT_INPUT_CONNECTORS = OPERATOR__DEFAULT_INPUT_CONNECTORS;
+
+	/**
+	 * The feature id for the '<em><b>Default Output Connectors</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_STRING__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
+
+	/**
+	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_STRING__INPUT_SIZE_FIXED = OPERATOR__INPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Output Size Fixed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_STRING__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_STRING__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
+	 * The number of structural features of the '<em>To String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_STRING_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.GlobalVariableImpl <em>Global Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.datamapper.impl.GlobalVariableImpl
+	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getGlobalVariable()
+	 * @generated
+	 */
+	int GLOBAL_VARIABLE = 52;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
+	 * The feature id for the '<em><b>Default Input Connectors</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE__DEFAULT_INPUT_CONNECTORS = OPERATOR__DEFAULT_INPUT_CONNECTORS;
+
+	/**
+	 * The feature id for the '<em><b>Default Output Connectors</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE__DEFAULT_OUTPUT_CONNECTORS = OPERATOR__DEFAULT_OUTPUT_CONNECTORS;
+
+	/**
+	 * The feature id for the '<em><b>Input Size Fixed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE__INPUT_SIZE_FIXED = OPERATOR__INPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Output Size Fixed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE__OUTPUT_SIZE_FIXED = OPERATOR__OUTPUT_SIZE_FIXED;
+
+	/**
+	 * The feature id for the '<em><b>Operator Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Global Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3881,7 +4045,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getComparisonOperatorType()
 	 * @generated
 	 */
-	int COMPARISON_OPERATOR_TYPE = 51;
+	int COMPARISON_OPERATOR_TYPE = 53;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.SchemaDataType <em>Schema Data Type</em>}' enum.
@@ -3891,7 +4055,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 52;
+    int SCHEMA_DATA_TYPE = 54;
 
     /**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.DataMapperOperatorType <em>Operator Type</em>}' enum.
@@ -3901,7 +4065,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getDataMapperOperatorType()
 	 * @generated
 	 */
-	int DATA_MAPPER_OPERATOR_TYPE = 53;
+	int DATA_MAPPER_OPERATOR_TYPE = 55;
 
 				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.DataMapperNode <em>Node</em>}'.
@@ -5195,6 +5359,26 @@ public interface DataMapperPackage extends EPackage {
 	EClass getContains();
 
 	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.ToString <em>To String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>To String</em>'.
+	 * @see org.wso2.developerstudio.datamapper.ToString
+	 * @generated
+	 */
+	EClass getToString();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.GlobalVariable <em>Global Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Global Variable</em>'.
+	 * @see org.wso2.developerstudio.datamapper.GlobalVariable
+	 * @generated
+	 */
+	EClass getGlobalVariable();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6323,6 +6507,26 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONTAINS = eINSTANCE.getContains();
+
+								/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.ToStringImpl <em>To String</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.ToStringImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getToString()
+		 * @generated
+		 */
+		EClass TO_STRING = eINSTANCE.getToString();
+
+								/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.GlobalVariableImpl <em>Global Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.datamapper.impl.GlobalVariableImpl
+		 * @see org.wso2.developerstudio.datamapper.impl.DataMapperPackageImpl#getGlobalVariable()
+		 * @generated
+		 */
+		EClass GLOBAL_VARIABLE = eINSTANCE.getGlobalVariable();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.

@@ -285,4 +285,6 @@
         defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ToString" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalVariable" eSuperTypes="#//Operator"/>
 </ecore:EPackage>

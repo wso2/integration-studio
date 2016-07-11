@@ -3,10 +3,8 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
-import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
-import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -14,74 +12,56 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.OperatorBasicContainerCanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.OperatorBasicContainerItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
+import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.ToStringCanonicalEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.edit.policies.ToStringItemSemanticEditPolicy;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
+public class ToStringEditPart extends AbstractOperatorEditPart {
 
 	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 3012;
+	* @generated
+	*/
+	public static final int VISUAL_ID = 2040;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure contentPane;
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected IFigure primaryShape;
 
 	/**
-	 * @generated
-	 */
-	public OperatorBasicContainerEditPart(View view) {
+	* @generated
+	*/
+	public ToStringEditPart(View view) {
 		super(view);
 	}
 
 	/**
-	 * @generated NOT
-	 */
-	@Override
-	public boolean canAttachNote() {
-		return false;
-	}
-
-	/**
-	 * @generated NOT
-	 */
+	* @generated NOT
+	*/
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new OperatorBasicContainerItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new OperatorBasicContainerCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ToStringItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new ToStringCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected LayoutEditPolicy createLayoutEditPolicy() {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
@@ -105,35 +85,35 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated NOT
-	 */
+	* @generated NOT
+	*/
 	protected IFigure createNodeShape() {
-		return primaryShape = new OperatorBasicFigure();
+		return primaryShape = new ToStringFigure();
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public RectangleFigure getPrimaryShape() {
 		return (RectangleFigure) primaryShape;
 	}
 
 	/**
-	 * @generated NOT
-	 */
+	* @generated
+	*/
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(20, 20);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
 	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated
-	 */
+	* Creates figure for this edit part.
+	* 
+	* Body of this method does not depend on settings in generation model
+	* so you may safely remove <i>generated</i> tag and modify it.
+	* 
+	* @generated
+	*/
 	protected NodeFigure createNodeFigure() {
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
@@ -144,11 +124,11 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
-	 * @generated
-	 */
+	* Default implementation treats passed figure as content pane.
+	* Respects layout one may have set for generated figure.
+	* @param nodeShape instance of generated figure class
+	* @generated
+	*/
 	protected IFigure setupContentPane(IFigure nodeShape) {
 		if (nodeShape.getLayoutManager() == null) {
 			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
@@ -159,8 +139,8 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	public IFigure getContentPane() {
 		if (contentPane != null) {
 			return contentPane;
@@ -169,8 +149,8 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setForegroundColor(Color color) {
 		if (primaryShape != null) {
 			primaryShape.setForegroundColor(color);
@@ -178,8 +158,8 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setBackgroundColor(Color color) {
 		if (primaryShape != null) {
 			primaryShape.setBackgroundColor(color);
@@ -187,8 +167,8 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setLineWidth(int width) {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineWidth(width);
@@ -196,26 +176,19 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
-	 */
+	* @generated
+	*/
 	protected void setLineType(int style) {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+	
+	public class ToStringFigure extends OperatorRectangle {
 
-	public class OperatorBasicFigure extends RoundedRectangle {
-
-		public OperatorBasicFigure() {
-
-			ConstrainedToolbarLayout layoutThis = new ConstrainedToolbarLayout();
-			layoutThis.setStretchMinorAxis(true);
-			layoutThis.setStretchMajorAxis(true);
-			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
-			layoutThis.setSpacing(0);
-			layoutThis.setVertical(false);
-			this.setLayoutManager(layoutThis);
-
+		public ToStringFigure() {
+			super("ToString");
+			this.setBackgroundColor(THIS_BACK);
 		}
 
 		public String getIconPath() {
@@ -223,18 +196,15 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 		}
 
 		public String getNodeName() {
-			return "OperatorBasicContainer";
+			return "ToString";
 		}
 
 		public IFigure getToolTip() {
-			return new Label("OperatorBasicContainer");
+			return new Label("ToString Operation");
 		}
 
 	}
 
-	@Override
-	public boolean isSelectable() {
-		return false;
-	}
+	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
 
 }

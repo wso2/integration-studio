@@ -282,10 +282,10 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 		}
 
 	}
-	
+
 	@Override
-    public boolean isSelectable() {
-        return false;
-    }
+	public boolean isSelectable() {
+		return false;
+	}
 
 }

@@ -29,6 +29,7 @@ import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.EndsWith;
 import org.wso2.developerstudio.datamapper.Equal;
 import org.wso2.developerstudio.datamapper.Floor;
+import org.wso2.developerstudio.datamapper.GlobalVariable;
 import org.wso2.developerstudio.datamapper.IfElse;
 import org.wso2.developerstudio.datamapper.LowerCase;
 import org.wso2.developerstudio.datamapper.Match;
@@ -46,6 +47,7 @@ import org.wso2.developerstudio.datamapper.StringToBoolean;
 import org.wso2.developerstudio.datamapper.StringToNumber;
 import org.wso2.developerstudio.datamapper.Substring;
 import org.wso2.developerstudio.datamapper.Subtract;
+import org.wso2.developerstudio.datamapper.ToString;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.Trim;
 import org.wso2.developerstudio.datamapper.UpperCase;
@@ -67,6 +69,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementNameEditPar
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.GlobalVariableEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
@@ -99,6 +102,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToBooleanEdi
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToNumberEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ToStringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -285,6 +289,13 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 		case CloneEditPart.VISUAL_ID:
 			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Clone", //$NON-NLS-1$
 					DataMapperElementTypes.Clone_2039);
+		case ToStringEditPart.VISUAL_ID:
+			return getImage("Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?ToString", //$NON-NLS-1$
+					DataMapperElementTypes.ToString_2040);
+		case GlobalVariableEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?GlobalVariable", //$NON-NLS-1$
+					DataMapperElementTypes.GlobalVariable_2041);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getImage("Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", //$NON-NLS-1$
 					DataMapperElementTypes.TreeNode_3002);
@@ -464,6 +475,10 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return getStringToBoolean_2038Text(view);
 		case CloneEditPart.VISUAL_ID:
 			return getClone_2039Text(view);
+		case ToStringEditPart.VISUAL_ID:
+			return getToString_2040Text(view);
+		case GlobalVariableEditPart.VISUAL_ID:
+			return getGlobalVariable_2041Text(view);
 		case TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002Text(view);
 		case TreeNode2EditPart.VISUAL_ID:
@@ -975,6 +990,32 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 			return String.valueOf(domainModelElement.isSerialized());
 		} else {
 			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2039); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getToString_2040Text(View view) {
+		ToString domainModelElement = (ToString) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2040); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	* @generated
+	*/
+	private String getGlobalVariable_2041Text(View view) {
+		GlobalVariable domainModelElement = (GlobalVariable) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2041); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

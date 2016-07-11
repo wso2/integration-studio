@@ -270,6 +270,14 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createContainsAdapter();
 			}
 			@Override
+			public Adapter caseToString(ToString object) {
+				return createToStringAdapter();
+			}
+			@Override
+			public Adapter caseGlobalVariable(GlobalVariable object) {
+				return createGlobalVariableAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -1000,6 +1008,34 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createContainsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.ToString <em>To String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.ToString
+	 * @generated
+	 */
+	public Adapter createToStringAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.GlobalVariable <em>Global Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.GlobalVariable
+	 * @generated
+	 */
+	public Adapter createGlobalVariableAdapter() {
 		return null;
 	}
 

@@ -350,6 +350,18 @@
           xsi:type="gmfgraph:Rectangle"
           name="CloneFigure"/>
     </descriptors>
+    <descriptors
+        name="ToStringFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="ToStringFigure"/>
+    </descriptors>
+    <descriptors
+        name="GlobalVariableFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="GlobalVariableFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -512,6 +524,12 @@
   <nodes
       name="Clone"
       figure="CloneFigure"/>
+  <nodes
+      name="ToString"
+      figure="ToStringFigure"/>
+  <nodes
+      name="GlobalVariable"
+      figure="GlobalVariableFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>

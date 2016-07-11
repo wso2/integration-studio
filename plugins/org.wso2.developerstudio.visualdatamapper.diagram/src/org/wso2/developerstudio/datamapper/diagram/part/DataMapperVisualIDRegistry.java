@@ -26,6 +26,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementNameEditPar
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.FloorEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.GlobalVariableEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.IfElseEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
@@ -58,6 +59,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToBooleanEdi
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.StringToNumberEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubtractEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.ToStringEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -177,6 +179,9 @@ public class DataMapperVisualIDRegistry {
 			if (DataMapperPackage.eINSTANCE.getOutput().isSuperTypeOf(domainElement.eClass())) {
 				return OutputEditPart.VISUAL_ID;
 			}
+			if (DataMapperPackage.eINSTANCE.getEqual().isSuperTypeOf(domainElement.eClass())) {
+				return EqualEditPart.VISUAL_ID;
+			}
 			if (DataMapperPackage.eINSTANCE.getSubtract().isSuperTypeOf(domainElement.eClass())) {
 				return SubtractEditPart.VISUAL_ID;
 			}
@@ -194,6 +199,9 @@ public class DataMapperVisualIDRegistry {
 			}
 			if (DataMapperPackage.eINSTANCE.getLowerCase().isSuperTypeOf(domainElement.eClass())) {
 				return LowerCaseEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getContains().isSuperTypeOf(domainElement.eClass())) {
+				return ContainsEditPart.VISUAL_ID;
 			}
 			if (DataMapperPackage.eINSTANCE.getUpperCase().isSuperTypeOf(domainElement.eClass())) {
 				return UpperCaseEditPart.VISUAL_ID;
@@ -272,6 +280,15 @@ public class DataMapperVisualIDRegistry {
 			}
 			if (DataMapperPackage.eINSTANCE.getStringToBoolean().isSuperTypeOf(domainElement.eClass())) {
 				return StringToBooleanEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getClone().isSuperTypeOf(domainElement.eClass())) {
+				return CloneEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getToString().isSuperTypeOf(domainElement.eClass())) {
+				return ToStringEditPart.VISUAL_ID;
+			}
+			if (DataMapperPackage.eINSTANCE.getGlobalVariable().isSuperTypeOf(domainElement.eClass())) {
+				return GlobalVariableEditPart.VISUAL_ID;
 			}
 			break;
 		case InputEditPart.VISUAL_ID:
@@ -455,6 +472,16 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case CloneEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case ToStringEditPart.VISUAL_ID:
+			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
+				return OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case GlobalVariableEditPart.VISUAL_ID:
 			if (DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(domainElement.eClass())) {
 				return OperatorBasicContainerEditPart.VISUAL_ID;
 			}
@@ -674,6 +701,12 @@ public class DataMapperVisualIDRegistry {
 			if (CloneEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (ToStringEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (GlobalVariableEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case InputEditPart.VISUAL_ID:
 			if (TreeNodeEditPart.VISUAL_ID == nodeVisualID) {
@@ -856,6 +889,16 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case CloneEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case ToStringEditPart.VISUAL_ID:
+			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case GlobalVariableEditPart.VISUAL_ID:
 			if (OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}

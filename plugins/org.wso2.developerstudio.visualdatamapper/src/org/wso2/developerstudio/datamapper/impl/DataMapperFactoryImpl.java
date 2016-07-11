@@ -140,6 +140,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.UPPER_CASE: return createUpperCase();
 			case DataMapperPackage.PROPERTY_KEY_VALUE_PAIR: return createPropertyKeyValuePair();
 			case DataMapperPackage.CONTAINS: return createContains();
+			case DataMapperPackage.TO_STRING: return createToString();
+			case DataMapperPackage.GLOBAL_VARIABLE: return createGlobalVariable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -741,6 +743,28 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public Contains createContains() {
 		ContainsImpl contains = new ContainsImpl();
 		return contains;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public ToString createToString() {
+		ToStringImpl toString = new ToStringImpl();
+		toString.setBasicContainer(createOperatorBasicContainer());
+		return toString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public GlobalVariable createGlobalVariable() {
+		GlobalVariableImpl globalVariable = new GlobalVariableImpl();
+		globalVariable.setBasicContainer(createOperatorBasicContainer());
+		return globalVariable;
 	}
 
 	/**

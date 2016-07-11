@@ -481,6 +481,24 @@ public interface DataMapperFactory extends EFactory {
 	Contains createContains();
 
 	/**
+	 * Returns a new object of class '<em>To String</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>To String</em>'.
+	 * @generated
+	 */
+	ToString createToString();
+
+	/**
+	 * Returns a new object of class '<em>Global Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Global Variable</em>'.
+	 * @generated
+	 */
+	GlobalVariable createGlobalVariable();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -1243,6 +1243,52 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.ToString} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ToStringItemProvider toStringItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.ToString}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createToStringAdapter() {
+		if (toStringItemProvider == null) {
+			toStringItemProvider = new ToStringItemProvider(this);
+		}
+
+		return toStringItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.GlobalVariable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GlobalVariableItemProvider globalVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.GlobalVariable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGlobalVariableAdapter() {
+		if (globalVariableItemProvider == null) {
+			globalVariableItemProvider = new GlobalVariableItemProvider(this);
+		}
+
+		return globalVariableItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1392,6 +1438,8 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (upperCaseItemProvider != null) upperCaseItemProvider.dispose();
 		if (propertyKeyValuePairItemProvider != null) propertyKeyValuePairItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
+		if (toStringItemProvider != null) toStringItemProvider.dispose();
+		if (globalVariableItemProvider != null) globalVariableItemProvider.dispose();
 	}
 
 }

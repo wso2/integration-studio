@@ -229,5 +229,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//PropertyKeyValuePair/value"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
+    <genClasses ecoreClass="dataMapper.ecore#//ToString"/>
+    <genClasses ecoreClass="dataMapper.ecore#//GlobalVariable"/>
   </genPackages>
 </genmodel:GenModel>

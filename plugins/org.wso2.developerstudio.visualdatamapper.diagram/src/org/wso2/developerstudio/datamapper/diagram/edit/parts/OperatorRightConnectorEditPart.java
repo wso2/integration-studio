@@ -347,10 +347,10 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 			figure.add(connectorLabel);
 		}
 	}
-	
+
 	@Override
-    public boolean isSelectable() {
-        return false;
-    }
+	public boolean isSelectable() {
+		return false;
+	}
 
 }

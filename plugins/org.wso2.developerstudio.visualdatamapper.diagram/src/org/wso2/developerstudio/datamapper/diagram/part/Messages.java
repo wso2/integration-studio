@@ -606,6 +606,26 @@ public class Messages extends NLS {
 	public static String Clone36CreationTool_desc;
 
 	/**
+	* @generated
+	*/
+	public static String ToString37CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String ToString37CreationTool_desc;
+
+	/**
+	* @generated
+	*/
+	public static String GlobalVariable38CreationTool_title;
+
+	/**
+	* @generated
+	*/
+	public static String GlobalVariable38CreationTool_desc;
+
+	/**
 	 * @generated
 	 */
 	public static String CommandName_OpenDiagram;

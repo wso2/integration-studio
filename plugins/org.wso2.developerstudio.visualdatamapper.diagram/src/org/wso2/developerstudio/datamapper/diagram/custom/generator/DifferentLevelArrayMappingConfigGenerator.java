@@ -449,7 +449,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 						} else {
 							functionBuilder.append("if( ");
 						}
-						functionBuilder.append("(!" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+						functionBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 								new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
 								map, tempForLoopBeanParentStack, false) + ") ");
 					}
@@ -520,7 +520,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 					} else {
 						operationBuilder.append("if( ");
 					}
-					operationBuilder.append("(!" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+					operationBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1), map,
 							tempForLoopBeanParentStack, false) + ") ");
 				}

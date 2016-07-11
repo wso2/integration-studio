@@ -32,6 +32,8 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolE
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.tooling.runtime.part.DefaultLinkToolEntry;
+import org.eclipse.gmf.tooling.runtime.part.DefaultNodeToolEntry;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart;
@@ -78,10 +80,12 @@ public class DataMapperPaletteFactory {
 		PaletteGroup paletteContainer = new PaletteGroup(Messages.DataMapper1Group_title);
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
+		paletteContainer.add(createEqual2CreationTool());
 		paletteContainer.add(createConcat3CreationTool());
 		paletteContainer.add(createSplit4CreationTool());
 		paletteContainer.add(createConstant5CreationTool());
 		paletteContainer.add(createLowerCase6CreationTool());
+		paletteContainer.add(createContains7CreationTool());
 		paletteContainer.add(createUpperCase8CreationTool());
 		paletteContainer.add(createAdd9CreationTool());
 		paletteContainer.add(createSubtract10CreationTool());
@@ -110,6 +114,9 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createCompare33CreationTool());
 		paletteContainer.add(createStringToNumber34CreationTool());
 		paletteContainer.add(createStringToBoolean35CreationTool());
+		paletteContainer.add(createClone36CreationTool());
+		paletteContainer.add(createToString37CreationTool());
+		paletteContainer.add(createGlobalVariable38CreationTool());
 		return paletteContainer;
 	}
 
@@ -120,6 +127,7 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createCustomFunction31CreationTool());
 		paletteContainer.add(createProperties32CreationTool());
 		paletteContainer.add(createCompare33CreationTool());
+		paletteContainer.add(createGlobalVariable38CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -208,6 +216,7 @@ public class DataMapperPaletteFactory {
 		paletteContainer.setId("createDataMapperTypeConversionGroup"); //$NON-NLS-1$
 		paletteContainer.add(createStringToNumber34CreationTool());
 		paletteContainer.add(createStringToBoolean35CreationTool());
+		paletteContainer.add(createToString37CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -224,7 +233,19 @@ public class DataMapperPaletteFactory {
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
-	
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createEqual2CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Equal2CreationTool_title,
+				Messages.Equal2CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Equal_2005));
+		entry.setId("createEqual2CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Equal_2005));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
 	/**
 	 * @generated NOT
 	 */
@@ -269,6 +290,18 @@ public class DataMapperPaletteFactory {
 				Messages.LowerCase6CreationTool_desc, Collections.singletonList(DataMapperElementTypes.LowerCase_2009));
 		entry.setId("createLowerCase6CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.LowerCase_2009));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createContains7CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Contains7CreationTool_title,
+				Messages.Contains7CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Contains_2010));
+		entry.setId("createContains7CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Contains_2010));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -614,6 +647,43 @@ public class DataMapperPaletteFactory {
 				Collections.singletonList(DataMapperElementTypes.StringToBoolean_2038));
 		entry.setId("createStringToBoolean35CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.StringToBoolean_2038));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createClone36CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.Clone36CreationTool_title,
+				Messages.Clone36CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Clone_2039));
+		entry.setId("createClone36CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Clone_2039));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createToString37CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.ToString37CreationTool_title,
+				Messages.ToString37CreationTool_desc, Collections.singletonList(DataMapperElementTypes.ToString_2040));
+		entry.setId("createToString37CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.ToString_2040));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	* @generated
+	*/
+	private ToolEntry createGlobalVariable38CreationTool() {
+		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.GlobalVariable38CreationTool_title,
+				Messages.GlobalVariable38CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.GlobalVariable_2041));
+		entry.setId("createGlobalVariable38CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.GlobalVariable_2041));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

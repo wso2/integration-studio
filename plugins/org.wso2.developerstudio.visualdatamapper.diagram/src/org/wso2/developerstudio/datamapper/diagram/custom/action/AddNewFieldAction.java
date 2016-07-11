@@ -89,7 +89,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 				new Class[] { IRegistryFile.class });
 		objectDialog.create();
 		objectDialog.setTitle(DIALOG_TITLE);
-		objectDialog.setVisibility(DIALOG_TITLE);
+		objectDialog.setVisibility(DIALOG_TITLE,false);
 		objectDialog.setType(DIALOG_TITLE);
 		objectDialog.open();
 

@@ -34,6 +34,7 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.common.core.util.StringUtil;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -48,6 +49,8 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -80,6 +83,7 @@ public class EditArrayAction extends AbstractActionHandler {
 	private static final String STRING = "string";
 	private static final String FALSE = "false";
 	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
+	private static final String JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT ="arrayInterrelatedElement";
 
 	private String title = null;
 	private String schemaType = null;
@@ -100,6 +104,8 @@ public class EditArrayAction extends AbstractActionHandler {
 	private static final String NAMESPACE_URL = "url";
 	private static final String TRUE = "true";
 	boolean hasIdentifier = false;
+	private String interrelatedElement = null;
+	private boolean isOutputEditPart = false;
 
 	public EditArrayAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -175,9 +181,30 @@ public class EditArrayAction extends AbstractActionHandler {
 				isNullable = false;
 			}
 
+			//Check if the edit part is an output edit part
+			isOutputEditPart  = checkContainer(selectedEP);
+			if(isOutputEditPart){
+				interrelatedElement = setProperties(selectedNode, JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT);
+			}
 			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace, value,
-					identifierType, identifierValue, identifierURL, isNullable);
+					identifierType, identifierValue, identifierURL, isNullable,interrelatedElement,isOutputEditPart);
 
+		}
+	}
+
+	/**
+	 * check if the conatiner is an output edit part
+	 * 
+	 * @param selectedEP
+	 * @return
+	 */
+	private boolean checkContainer(EditPart selectedEP) {
+		if (selectedEP.getParent() instanceof OutputEditPart) {
+			return true;
+		} else if (selectedEP.getParent() instanceof InputEditPart) {
+			return false;
+		} else {
+			return checkContainer(selectedEP.getParent());
 		}
 	}
 
@@ -360,20 +387,21 @@ public class EditArrayAction extends AbstractActionHandler {
 	 *            required
 	 * @param schemaValue
 	 *            schema value
+	 * @param isOutputEditPart2 
 	 * @param insNullable2
 	 * @param identifierValue2
 	 * @param identifierType2
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
 			String required, String schemaValue, String namespaces, String value, String identifierType,
-			String identifierValue, String identifierURL, boolean isNullable) {
+			String identifierValue, String identifierURL, boolean isNullable, String interrelatedElement, boolean isOutputEditPart) {
 		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, value, identifierType,
-				identifierValue, identifierURL, isNullable);
+				identifierValue, identifierURL, isNullable,interrelatedElement,isOutputEditPart);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {
@@ -409,6 +437,10 @@ public class EditArrayAction extends AbstractActionHandler {
 			if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
 				String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
 				valueMap.put(JSON_SCHEMA_ARRAY_NAMESPACES, namespacesValue);
+			}
+			//Sets the interrupted element
+			if(StringUtils.isNotEmpty(editTypeDialog.getInterrelatedElement())){
+				valueMap.put(JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT, editTypeDialog.getInterrelatedElement());
 			}
 
 			// Sets the values for items field which is used for serializing the

@@ -54,6 +54,7 @@ public class AddNewObjectDialog extends Dialog {
 	private Button checkBoxForIdentifiers;
 	private Button btnNamespaces;
 	private Button checkBoxForNullables;
+	private Text textInterrelatedElement;
 	
 
 	private Label lblTitleLabel;
@@ -69,6 +70,7 @@ public class AddNewObjectDialog extends Dialog {
 	private Label lblIdentifierValue;
 	private Label lblIdentifierURL;
 	private Label lblNullables;
+	private Label lblInterrelatedElement;
 	
 
 	private String title;
@@ -82,6 +84,7 @@ public class AddNewObjectDialog extends Dialog {
 	private String identifierValue;
 	private String identifierURL;
 	private boolean isNullable = false;
+	private String interrelatedElement;
 
 	private String[] DATA_TYPES = { "string", "number", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
 			"map", "union" };
@@ -117,6 +120,7 @@ public class AddNewObjectDialog extends Dialog {
 	private static final String NEW_ELEMENT_ID = "NewElement";
 	private static final String NEW_ATTRIBUTE_ID = "NewAttribute";
 	private static final String LABEL_NULLABLE = "Is Nullable";
+	private static final String LABEL_INTERRELATED_ELEMENT = "Interrelated Input Element :";
 	
 	private static final String ARRAY = "array";
 	private static final String OBJECT = "object";
@@ -158,8 +162,9 @@ public class AddNewObjectDialog extends Dialog {
 	 * Sets the visibility
 	 * 
 	 * @param title
+	 * @param isOutputEditPart 
 	 */
-	public void setVisibility(String title) {
+	public void setVisibility(String title, boolean isOutputEditPart) {
 		getShell().setText(title);
 		// Sets the visibility based on the type
 		if (title.equals(DIALOG_TITLE_ROOT)) {
@@ -181,9 +186,10 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
+			lblInterrelatedElement.setVisible(false);
+			textInterrelatedElement.setVisible(false);
 		}
-		if (title.equals(DIALOG_TITLE_OBJECT) || title.equals(DIALOG_TITLE_ARRAY) || title.equals(DIALOG_TITLE_FIELD)
-				|| title.equals(DIALOG_TITLE_ATTRIBUTE)) {
+		if (title.equals(DIALOG_TITLE_OBJECT)) {
 			lblSchemaValue.setVisible(false);
 			textSchemaValue.setVisible(false);
 			lblNamespaces.setVisible(true);
@@ -202,6 +208,35 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
+			lblInterrelatedElement.setVisible(false);
+			textInterrelatedElement.setVisible(false);
+		}if(title.equals(DIALOG_TITLE_ARRAY)){
+			lblSchemaValue.setVisible(false);
+			textSchemaValue.setVisible(false);
+			lblNamespaces.setVisible(true);
+			textNamespaces.setVisible(true);
+			checkBoxForValue.setVisible(true);
+			lblCheckBoxForValue.setVisible(true);
+			lblValue.setVisible(false);
+			comboValue.setVisible(false);
+			checkBoxForIdentifiers.setVisible(true);
+			lblCheckBoxForIdentifiers.setVisible(true);
+			lblIdentifierType.setVisible(false);
+			lblIdentifierValue.setVisible(false);
+			textIdentifierType.setVisible(false);
+			textIdentifierValue.setVisible(false);
+			lblIdentifierURL.setVisible(false);
+			textIdentifierURL.setVisible(false);
+			checkBoxForNullables.setVisible(true);
+			lblNullables.setVisible(true);
+			if(isOutputEditPart){
+				lblInterrelatedElement.setVisible(true);
+				textInterrelatedElement.setVisible(true);	
+			}else{
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);	
+			}
+				
 		} if (title.equals(DIALOG_TITLE_FIELD)) {
 			lblRequired.setVisible(false);
 			textRequired.setVisible(false);
@@ -219,6 +254,8 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
+			lblInterrelatedElement.setVisible(false);
+			textInterrelatedElement.setVisible(false);
 		}if(title.equals(DIALOG_TITLE_ATTRIBUTE)){
 			lblRequired.setVisible(false);
 			textRequired.setVisible(false);
@@ -236,6 +273,8 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
+			lblInterrelatedElement.setVisible(false);
+			textInterrelatedElement.setVisible(false);
 		}
 	}
 	
@@ -292,10 +331,11 @@ public class AddNewObjectDialog extends Dialog {
 	 *            required
 	 * @param schemaValue
 	 *            schemaValue
+	 * @param isOutputEditPart 
 	 * @param identifierValue2 
 	 * @param identifierType2 
 	 */
-	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue, String identifierURL, boolean nullValue) {
+	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue, String identifierURL, boolean nullValue, String interrelatedElement, boolean isOutputEditPart) {
 		if (StringUtils.isNotEmpty(title)) {
 			textTitle.setText(title);
 		}
@@ -325,6 +365,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "array":
 				comboSchemaType.select(0);
@@ -350,6 +392,16 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				if(isOutputEditPart){
+					lblInterrelatedElement.setVisible(true);
+					textInterrelatedElement.setVisible(true);
+					if(StringUtils.isNotEmpty(interrelatedElement)){
+						textInterrelatedElement.setText(interrelatedElement);
+					}
+				}else{
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
+				}
 				break;
 			case "string":
 				comboSchemaType.select(0);
@@ -375,6 +427,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "number":
 				comboSchemaType.select(1);
@@ -402,6 +456,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "boolean":
 				comboSchemaType.select(2);
@@ -427,6 +483,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "bytes":
 				comboSchemaType.select(3);
@@ -452,6 +510,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "double":
 				comboSchemaType.select(4);
@@ -477,6 +537,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "enum":
 				comboSchemaType.select(5);
@@ -502,6 +564,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "fixed":
 				comboSchemaType.select(6);
@@ -527,6 +591,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "float":
 				comboSchemaType.select(7);
@@ -552,6 +618,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "long":
 				comboSchemaType.select(8);
@@ -577,6 +645,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "map":
 				comboSchemaType.select(9);
@@ -602,6 +672,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			case "union":
 				comboSchemaType.select(10);
@@ -627,6 +699,8 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
+				lblInterrelatedElement.setVisible(false);
+				textInterrelatedElement.setVisible(false);
 				break;
 			default:
 				break;
@@ -713,7 +787,6 @@ public class AddNewObjectDialog extends Dialog {
 			lblNullables.setVisible(true);
 			checkBoxForNullables.setSelection(false);
 		}
-		
 	}
 
 	/**
@@ -856,7 +929,7 @@ public class AddNewObjectDialog extends Dialog {
 		lblSchemaValue.setText(LABEL_SCHEMA_VALUE);
 
 		textSchemaValue = new Text(compositeType, SWT.BORDER);
-		textSchemaValue.setText("http://json-schema.org/draft-04/wso2-data-mapper-v5.0.0/schema#");
+		textSchemaValue.setText("http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#");
 		textSchemaValue.setEditable(false);
 
 		textSchemaValue.addModifyListener(new ModifyListener() {
@@ -866,6 +939,19 @@ public class AddNewObjectDialog extends Dialog {
 		});
 
 		textSchemaValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
+		
+		lblInterrelatedElement = new Label(compositeType, SWT.NONE);
+		lblInterrelatedElement.setText(LABEL_INTERRELATED_ELEMENT);
+		
+		textInterrelatedElement = new Text(compositeType, SWT.BORDER);
+		
+		textInterrelatedElement.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+
+			}
+		});
+		
+		textInterrelatedElement.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 		
 		checkBoxForIdentifiers = new Button(compositeType,SWT.CHECK);
 		lblCheckBoxForIdentifiers = new Label(compositeType, SWT.NONE);
@@ -1046,7 +1132,13 @@ public class AddNewObjectDialog extends Dialog {
 		setIdentifierValue(textIdentifierValue.getText());
 		setIdentifierURL(textIdentifierURL.getText());
 		setNullable(isNullable);
+		setInterrelatedElement(textInterrelatedElement.getText());
 		super.okPressed();
+	}
+
+	
+	public void setInterrelatedElement(String interrelatedElement) {
+		this.interrelatedElement = interrelatedElement;
 	}
 
 	public void setTitleValue(String title) {
@@ -1093,6 +1185,10 @@ public class AddNewObjectDialog extends Dialog {
 	}
 	public void setIdentifierURL(String identifierURL){
 		this.identifierURL = identifierURL;
+	}
+	
+	public String getInterrelatedElement() {
+		return interrelatedElement;
 	}
 	public String getTitle() {
 		return title;

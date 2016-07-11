@@ -42,10 +42,12 @@
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/BOOLEAN_OPERATION"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CONDITIONAL_OPERATION"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CONSTANT"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/EQUALS"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CONCAT"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/SPLIT"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/UPPERCASE"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/LOWERCASE"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/CONTAINS"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/ADD"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/SUBTRACT"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/MULTIPLY"/>
@@ -79,6 +81,7 @@
     </genEnums>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
     <genClasses ecoreClass="dataMapper.ecore#//Trim"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Clone"/>
     <genClasses ecoreClass="dataMapper.ecore#//Replace">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Replace/target"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Replace/replaceString"/>
@@ -200,6 +203,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Concat/delimiter"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//AbsoluteValue"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
     <genClasses ecoreClass="dataMapper.ecore#//Constant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Constant/constantValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Constant/type"/>
@@ -224,5 +228,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//PropertyKeyValuePair/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//PropertyKeyValuePair/value"/>
     </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
+    <genClasses ecoreClass="dataMapper.ecore#//ToString"/>
+    <genClasses ecoreClass="dataMapper.ecore#//GlobalVariable"/>
   </genPackages>
 </genmodel:GenModel>

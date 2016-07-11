@@ -272,15 +272,23 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 
 				// find the most inner for loop bean to assign this operation
 				if (indexOfMostInnerForLoopBean >= 0) {
-					// Instantiate operation of array type variables should go
-					// to
-					// parent
-					// for loop bean
+					/*
+					 * Instantiate operation of array type variables should go
+					 * to parent for loop bean
+					 */
 					if (DataMapperOperatorType.INSTANTIATE.equals(mappingOperation.getOperation().getOperatorType())
 							&& SchemaDataType.ARRAY.equals(
 									mappingOperation.getOperation().getProperty(TransformerConstants.VARIABLE_TYPE))) {
 						indexOfMostInnerForLoopBean = getForLoopBeanList().get(indexOfMostInnerForLoopBean)
 								.getParentIndex();
+					}
+					if (indexOfMostInnerForLoopBean < 0) {
+						/*
+						 * When one to array mapping occurs for loop index of
+						 * array instantiate operation goes to -1. It also
+						 * should be in root for loop.
+						 */
+						indexOfMostInnerForLoopBean = 0;
 					}
 					getForLoopBeanList().get(indexOfMostInnerForLoopBean).getOperationList()
 							.add(mappingOperation.getIndex());
@@ -374,6 +382,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 	 * @return
 	 */
 	private int getParentForLoopBeanIndex(int targetRootForLoopIndex, int mostChildForLoopBean) {
+		if (targetRootForLoopIndex == mostChildForLoopBean) {
+			return mostChildForLoopBean;
+		}
 		if (mostChildForLoopBean >= 0) {
 			ForLoopBean childForLoopBean = getForLoopBeanList().get(mostChildForLoopBean);
 			int forLoopBeanIndex = mostChildForLoopBean;

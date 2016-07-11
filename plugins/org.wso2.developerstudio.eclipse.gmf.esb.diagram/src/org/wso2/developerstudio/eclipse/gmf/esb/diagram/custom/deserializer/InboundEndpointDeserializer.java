@@ -164,8 +164,8 @@ public class InboundEndpointDeserializer extends
             executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.FEED);
             updateParameters(object, InboundEndpointType.FEED);
         }else if (InboundEndpointConstants.WSO2MB.equals(object.getProtocol())) {
-            executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.WSO2MB);
-            updateParameters(object, InboundEndpointType.WSO2MB);
+            executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.WSO2_MB);
+            updateParameters(object, InboundEndpointType.WSO2_MB);
         }
 
         // Creating Sequence mediator graphically
@@ -434,7 +434,7 @@ public class InboundEndpointDeserializer extends
                     }
                 }
             }
-        } else if (InboundEndpointType.WSO2MB.equals(inboundEndpointType)) {
+        } else if (InboundEndpointType.WSO2_MB.equals(inboundEndpointType)) {
             for (WSO2MBInboundEndpointParameter parameterType : WSO2MBInboundEndpointParameter.values()) {
                 if (parameterType.isMatchedWithParameterName(paramEntry.getKey())) {
                     if (parameterType.canHoldKeyValue()) {

@@ -13,7 +13,7 @@ public class InboundEndpointConstants {
 	public static final String MQTT = "mqtt";
 	public static final String RABBITMQ = "rabbitmq";
 	public static final String FEED = "feed";
-	public static final String WSO2MB ="wso2mb";
+	public static final String WSO2MB ="wso2_mb";
 
 	public static final String TRUE = "true";
 	public static final String FALSE = "false";

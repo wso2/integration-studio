@@ -23469,7 +23469,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.MQTT);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.RABBITMQ);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.FEED);
-		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.WSO2MB);
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.WSO2_MB);
 
 		initEEnum(inboundEndpointBehaviourTypeEEnum, InboundEndpointBehaviourType.class, "InboundEndpointBehaviourType");
 		addEEnumLiteral(inboundEndpointBehaviourTypeEEnum, InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT);

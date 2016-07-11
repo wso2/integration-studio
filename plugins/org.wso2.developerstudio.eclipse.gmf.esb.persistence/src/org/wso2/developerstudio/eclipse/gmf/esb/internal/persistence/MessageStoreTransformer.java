@@ -48,7 +48,7 @@ public class MessageStoreTransformer {
 	private static final String STORE_JMS_USERNAME = "store.jms.username";
 	private static final String STORE_JMS_CONNECTION_FACTORY = "store.jms.connection.factory";
 	private static final String STORE_JMS_DESTINATION = "store.jms.destination";
-
+	
 	private static final String JAVA_NAMING_PROVIDER_URL = "java.naming.provider.url";
 	private static final String JAVA_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
 
@@ -268,7 +268,7 @@ public class MessageStoreTransformer {
 				}
 				case 2: {
 					// WSO2 MB Store
-					className = WSO2MB;
+					className = JMS_MS_FQN;
 					WSO2MB wso2mbStore = (WSO2MB) formPage.getStoreImpl(WSO2MB);
 
 					parameterMap.put(JAVA_NAMING_FACTORY_INITIAL, wso2mbStore.wso2mb_initCtxFactory.getText());
@@ -278,7 +278,8 @@ public class MessageStoreTransformer {
 					parameterMap.put(STORE_JMS_DESTINATION, wso2mbStore.wso2mb_jndiQueueName.getText());
 
 					parameterMap.put(STORE_JMS_JMS_SPEC_VERSION, wso2mbStore.wso2mb_apiVersion.getText());
-
+					parameterMap.put(STORE_JMS_CACHE_CONNECTION, wso2mbStore.mb_cacheConnection.getText());
+					
 					break;
 				}
 				case 3: {

@@ -43,6 +43,7 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 		boolean custom = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.CUSTOM;
 		boolean rabbitmq = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RABBITMQ;
 		boolean jdbc = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.JDBC;
+		boolean mb = ((MessageStoreModel)model).getMessageStoreType() == MessageStoreType.WSO2_MB;
 
 		boolean isCarbonDataSource = false;
 		// Decide connection information type only if JDBC
@@ -60,6 +61,18 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 		} else if (key.equals(FIELD_JMS_CONTEXT_FACTORY)) {
 			if(jms){
 				CommonFieldValidator.validateRequiredField(value,"JMS context factory cannot be empty");
+			}
+		}else if(key.equals(FIELD_JMS_NAMING_FACTORY_INITIAL)){
+			if(jms){
+				CommonFieldValidator.validateRequiredField(value, "Java Naming Factory initial cannot be empty");
+			}
+		}else if(key.equals(FIELD_MB_CONTEXT_FACTORY)){
+			if(mb){
+				CommonFieldValidator.validateRequiredField(value, "Java Naming Factory initial cannot be empty");
+			}
+		}else if(key.equals(FIELD_MB_CONNECTION_FACTORY)){
+			if(mb){
+				CommonFieldValidator.validateRequiredField(value, "Queue Connection Factory cannot be empty");
 			}
 		} else if (key.equals(FIELD_JMS_PROVIDER_URL)) {
 			if (jms) {
@@ -135,6 +148,16 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			updateFields.add(FIELD_JMS_TIMEOUT);			
 			updateFields.add(FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY);
 			updateFields.add(FIELD_JMS_FAILOVER_MESSAGE_STORE);
+		
+			
+			updateFields.add(FIELD_MB_API_VERSION);
+			updateFields.add(FIELD_MB_CONNECTION_FACTORY);
+			updateFields.add(FIELD_MB_CONTEXT_FACTORY);
+			updateFields.add(FIELD_MB_QUEUE_NAME);
+			updateFields.add(FIELD_MB_ENABLE_PRODUCER_GUARANTEED_DELIVERY);
+			updateFields.add(FIELD_MB_FAILOVER_MESSAGE_STORE);
+			updateFields.add(FIELD_MB_CACHE_CONNECTION);
+
 			
 			updateFields.add(FIELD_RABBITMQ_SERVER_HOST_NAME);
 			updateFields.add(FIELD_RABBITMQ_SERVER_HOST_PORT);
@@ -177,6 +200,8 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 		} else if (modelProperty.startsWith(TXT_RABBITMQ_FIELD_PREFIX)) {
 			// Checks if message store type is RabbitMQ
 			visibleField = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RABBITMQ;
+		} else if(modelProperty.startsWith(TXT_MB_FIELD_PREFIX)){
+			visibleField = ((MessageStoreModel)model).getMessageStoreType() == MessageStoreType.WSO2_MB;
 		} else if (modelProperty.startsWith(TXT_JDBC_FIELD_PREFIX)) {
 			// Checks if message store type is JDBC
 			if (((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.JDBC) {

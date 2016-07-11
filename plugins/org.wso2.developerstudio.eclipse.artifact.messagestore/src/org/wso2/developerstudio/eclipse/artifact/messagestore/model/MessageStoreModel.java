@@ -98,9 +98,19 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String jdbcEnableProducerGuaranteedDelivery;
 	private String jdbcFailoverMessageStore;
 
+	public String mbApiVersion;
+	public String mbConnectionFactory;
+	public String mbContextFactory;
+	public String mbEnableProducerGuaranteedDelivery;
+	public String mbFailoverMessageStore;
+	private String mbCacheConnection;
+	private String mbQueueName;
+	
+
 	public MessageStoreModel() {
 		availableStoreslist = new ArrayList<OMElement>();
 		selectedStoresList = new ArrayList<OMElement>();
+		mbContextFactory= "org.wso2.andes.jndi.PropertiesFileInitialContextFactory";
 	}
 
 	public String getJdbcDatabaseTable() {
@@ -238,25 +248,49 @@ public class MessageStoreModel extends ProjectDataModel  {
 	public String getJmsApiVersion() {
 		return jmsApiVersion;
 	}
+	
+	public String getMbApiVersion() {
+		return mbApiVersion;
+	}
 
 	public void setJmsApiVersion(String jmsApiVersion) {
 		this.jmsApiVersion = jmsApiVersion;
+	}
+	
+	public void setMbApiVersion(String mbApiVersion) {
+		this.mbApiVersion = mbApiVersion;
 	}
 
 	public String getJmsConnectionFactory() {
 		return jmsConnectionFactory;
 	}
+	
+	public String getMbConnectionFactory() {
+		return mbConnectionFactory;
+	}
 
 	public void setJmsConnectionFactory(String jmsConnectionFactory) {
 		this.jmsConnectionFactory = jmsConnectionFactory;
+	}
+	
+	public void setMbConnectionFactory(String mbConnectionFactory) {
+		this.mbConnectionFactory = mbConnectionFactory;
 	}
 
 	public String getJmsContextFactory() {
 		return jmsContextFactory;
 	}
+	
+	public String getMbContextFactory() {
+		return mbContextFactory;
+	}
 
 	public void setJmsContextFactory(String jmsContextFactory) {
 		this.jmsContextFactory = jmsContextFactory;
+	}
+	
+	public void setMbContextFactory(String mbContextFactory) {
+		this.mbContextFactory = mbContextFactory;
 	}
 
 	public String getJmsPassword() {
@@ -274,6 +308,14 @@ public class MessageStoreModel extends ProjectDataModel  {
 	public void setJmsCacheConnection(String jmsCacheConnection) {
 		this.jmsCacheConnection = jmsCacheConnection;
 	}
+	
+	public String getMbCacheConnection() {
+		return mbCacheConnection;
+	}
+
+	public void setMbCacheConnection(String mbCacheConnection) {
+		this.mbCacheConnection = mbCacheConnection;
+	}
 
 	public String getJmsProviderUrl() {
 		return jmsProviderUrl;
@@ -286,9 +328,17 @@ public class MessageStoreModel extends ProjectDataModel  {
 	public String getJmsQueueName() {
 		return jmsQueueName;
 	}
-
+	
 	public void setJmsQueueName(String jmsQueueName) {
 		this.jmsQueueName = jmsQueueName;
+	}
+	
+	public String getMbQueueName() {
+		return mbQueueName;
+	}
+	
+	public void setMbQueueName(String mbQueueName) {
+		this.mbQueueName = mbQueueName;
 	}
 
 	public boolean getJmsEnableCaching() {
@@ -334,17 +384,33 @@ public class MessageStoreModel extends ProjectDataModel  {
 	public String getJmsEnableProducerGuaranteedDelivery() {
 		return jmsEnableProducerGuaranteedDelivery;
 	}
+	
+	public String getMbEnableProducerGuaranteedDelivery() {
+		return mbEnableProducerGuaranteedDelivery;
+	}
 
 	public void setJmsEnableProducerGuaranteedDelivery(String jmsEnableProducerGuaranteedDelivery) {
 		this.jmsEnableProducerGuaranteedDelivery = jmsEnableProducerGuaranteedDelivery;
+	}
+	
+	public void setMbEnableProducerGuaranteedDelivery(String mbEnableProducerGuaranteedDelivery) {
+		this.mbEnableProducerGuaranteedDelivery = mbEnableProducerGuaranteedDelivery;
 	}
 
 	public String getJmsFailoverMessageStore() {
 		return jmsFailoverMessageStore;
 	}
+	
+	public String getMbFailoverMessageStore() {
+		return mbFailoverMessageStore;
+	}
 
 	public void setJmsFailoverMessageStore(String jmsFailoverMessageStore) {
 		this.jmsFailoverMessageStore = jmsFailoverMessageStore;
+	}
+	
+	public void setMbFailoverMessageStore(String mbFailoverMessageStore) {
+		this.mbFailoverMessageStore = mbFailoverMessageStore;
 	}
 
 	public String getRabbitMQEnableProducerGuaranteedDelivery() {
@@ -388,16 +454,24 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getCustomProviderClass();
 		} else if (key.equals(Constants.FIELD_JMS_API_VERSION)) {
 			value = getJmsApiVersion();
+		}else if (key.equals(Constants.FIELD_MB_API_VERSION)) {
+			value = getMbApiVersion();
 		} else if (key.equals(Constants.FIELD_JMS_CONNECTION_FACTORY)) {
 			value = getJmsConnectionFactory();
-		} else if (key.equals(Constants.FIELD_JMS_CONTEXT_FACTORY)) {
+		} else if (key.equals(Constants.FIELD_MB_CONNECTION_FACTORY)) {
+			value = getMbConnectionFactory();
+    	}else if (key.equals(Constants.FIELD_JMS_CONTEXT_FACTORY)) {
 			value = getJmsContextFactory();
+    	}else if (key.equals(Constants.FIELD_MB_CONTEXT_FACTORY)) {
+			value = getMbContextFactory();
 		} else if (key.equals(Constants.FIELD_JMS_PASSWORD)) {
 			value = getJmsPassword();
 		} else if (key.equals(Constants.FIELD_JMS_PROVIDER_URL)) {
 			value = getJmsProviderUrl();
 		} else if (key.equals(Constants.FIELD_JMS_QUEUE_NAME)) {
 			value = getJmsQueueName();
+		} else if (key.equals(Constants.FIELD_MB_QUEUE_NAME)) {
+			value = getMbQueueName();
 		} else if (key.equals(Constants.FIELD_JMS_ENABLE_CACHING)) {
 			value = getJmsEnableCaching();
 		} else if (key.equals(Constants.FIELD_JMS_TIMEOUT)) {
@@ -406,10 +480,16 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getJmsUsername();
 		} else if (key.equals(Constants.FIELD_JMS_CACHE_CONNECTION)) {
 			value = getJmsCacheConnection();
+		} else if (key.equals(Constants.FIELD_MB_CACHE_CONNECTION)) {
+			value = getMbCacheConnection();
 		} else if (key.equals(Constants.FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
-			value = getJmsEnableCaching();
-		} else if (key.equals(Constants.FIELD_JMS_FAILOVER_MESSAGE_STORE)) {
-			value = getJmsTimeout();
+			value = getJmsEnableProducerGuaranteedDelivery();
+		} else if (key.equals(Constants.FIELD_MB_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+			value = getMbEnableProducerGuaranteedDelivery();
+    	}else if (key.equals(Constants.FIELD_JMS_FAILOVER_MESSAGE_STORE)) {
+			value = getJmsFailoverMessageStore();
+    	}else if (key.equals(Constants.FIELD_MB_FAILOVER_MESSAGE_STORE)) {
+			value = getMbFailoverMessageStore();
 		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_NAME)) {
 			value = getRabbitMQServerHostName();
 		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_PORT)) {
@@ -476,14 +556,24 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setCustomProviderClass(data.toString());
 		} else if (key.equals(Constants.FIELD_JMS_CONNECTION_FACTORY)) {
 			setJmsConnectionFactory(data.toString());
+		} else if (key.equals(Constants.FIELD_JMS_API_VERSION)) {
+			setJmsApiVersion(data.toString());
+		} else if (key.equals(Constants.FIELD_MB_API_VERSION)) {
+			setMbApiVersion(data.toString());
+		} else if (key.equals(Constants.FIELD_MB_CONNECTION_FACTORY)) {
+			setMbConnectionFactory(data.toString());
 		} else if (key.equals(Constants.FIELD_JMS_CONTEXT_FACTORY)) {
 			setJmsContextFactory(data.toString());
+		} else if (key.equals(Constants.FIELD_MB_CONTEXT_FACTORY)) {
+			setMbContextFactory(data.toString());
 		} else if (key.equals(Constants.FIELD_JMS_PASSWORD)) {
 			setJmsPassword(data.toString());
 		} else if (key.equals(Constants.FIELD_JMS_PROVIDER_URL)) {
 			setJmsProviderUrl(data.toString());
 		} else if (key.equals(Constants.FIELD_JMS_QUEUE_NAME)) {
 			setJmsQueueName(data.toString());
+		}else if (key.equals(Constants.FIELD_MB_QUEUE_NAME)) {
+			setMbQueueName(data.toString());
 		} else if (key.equals(Constants.FIELD_JMS_ENABLE_CACHING)) {
 			try {
 				setJmsEnableCaching(Boolean.parseBoolean(data.toString()));
@@ -500,16 +590,17 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setJmsUsername(data.toString());
 		} else if (key.equals(Constants.FIELD_JMS_CACHE_CONNECTION)) {
 		    setJmsCacheConnection(data.toString());
-		}
-		
-		 else if (key.equals(Constants.FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+		} else if (key.equals(Constants.FIELD_MB_CACHE_CONNECTION)) {
+		    setMbCacheConnection(data.toString());
+		} else if (key.equals(Constants.FIELD_JMS_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
 				setJmsEnableProducerGuaranteedDelivery(data.toString());
-			}
-		 else if (key.equals(Constants.FIELD_JMS_FAILOVER_MESSAGE_STORE)) {
+		} else if (key.equals(Constants.FIELD_MB_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+			setMbEnableProducerGuaranteedDelivery(data.toString());
+		} else if (key.equals(Constants.FIELD_JMS_FAILOVER_MESSAGE_STORE)) {
 				setJmsFailoverMessageStore(data.toString());
-			}
-		
-		else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_NAME)) {
+		} else if (key.equals(Constants.FIELD_MB_FAILOVER_MESSAGE_STORE)) {
+			setMbFailoverMessageStore(data.toString());
+	    } else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_NAME)) {
 			setRabbitMQServerHostName(data.toString());
 		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_PORT)) {
 			setRabbitMQServerHostPort(data.toString());

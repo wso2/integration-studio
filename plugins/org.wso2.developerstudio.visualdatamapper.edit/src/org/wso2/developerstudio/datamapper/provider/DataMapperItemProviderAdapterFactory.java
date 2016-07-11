@@ -116,6 +116,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Clone} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CloneItemProvider cloneItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Clone}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCloneAdapter() {
+		if (cloneItemProvider == null) {
+			cloneItemProvider = new CloneItemProvider(this);
+		}
+
+		return cloneItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Replace} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -898,6 +921,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Equal} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EqualItemProvider equalItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Equal}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEqualAdapter() {
+		if (equalItemProvider == null) {
+			equalItemProvider = new EqualItemProvider(this);
+		}
+
+		return equalItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Constant} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1174,6 +1220,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.datamapper.Contains} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContainsItemProvider containsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.datamapper.Contains}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContainsAdapter() {
+		if (containsItemProvider == null) {
+			containsItemProvider = new ContainsItemProvider(this);
+		}
+
+		return containsItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1274,6 +1343,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	public void dispose() {
 		if (dataMapperNodeItemProvider != null) dataMapperNodeItemProvider.dispose();
 		if (trimItemProvider != null) trimItemProvider.dispose();
+		if (cloneItemProvider != null) cloneItemProvider.dispose();
 		if (replaceItemProvider != null) replaceItemProvider.dispose();
 		if (matchItemProvider != null) matchItemProvider.dispose();
 		if (minItemProvider != null) minItemProvider.dispose();
@@ -1308,6 +1378,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (dataMapperLinkItemProvider != null) dataMapperLinkItemProvider.dispose();
 		if (concatItemProvider != null) concatItemProvider.dispose();
 		if (absoluteValueItemProvider != null) absoluteValueItemProvider.dispose();
+		if (equalItemProvider != null) equalItemProvider.dispose();
 		if (constantItemProvider != null) constantItemProvider.dispose();
 		if (addItemProvider != null) addItemProvider.dispose();
 		if (divideItemProvider != null) divideItemProvider.dispose();
@@ -1320,6 +1391,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (celiItemProvider != null) celiItemProvider.dispose();
 		if (upperCaseItemProvider != null) upperCaseItemProvider.dispose();
 		if (propertyKeyValuePairItemProvider != null) propertyKeyValuePairItemProvider.dispose();
+		if (containsItemProvider != null) containsItemProvider.dispose();
 	}
 
 }

@@ -88,6 +88,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass cloneEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass replaceEClass = null;
 
 	/**
@@ -326,6 +333,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass equalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass constantEClass = null;
 
 	/**
@@ -404,6 +418,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass propertyKeyValuePairEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass containsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -503,6 +524,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EClass getTrim() {
 		return trimEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getClone() {
+		return cloneEClass;
 	}
 
 	/**
@@ -1383,6 +1413,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEqual() {
+		return equalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConstant() {
 		return constantEClass;
 	}
@@ -1563,6 +1602,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getContains() {
+		return containsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComparisonOperatorType() {
 		return comparisonOperatorTypeEEnum;
 	}
@@ -1616,6 +1664,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		dataMapperNodeEClass = createEClass(DATA_MAPPER_NODE);
 
 		trimEClass = createEClass(TRIM);
+
+		cloneEClass = createEClass(CLONE);
 
 		replaceEClass = createEClass(REPLACE);
 		createEAttribute(replaceEClass, REPLACE__TARGET);
@@ -1748,6 +1798,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		absoluteValueEClass = createEClass(ABSOLUTE_VALUE);
 
+		equalEClass = createEClass(EQUAL);
+
 		constantEClass = createEClass(CONSTANT);
 		createEAttribute(constantEClass, CONSTANT__CONSTANT_VALUE);
 		createEAttribute(constantEClass, CONSTANT__TYPE);
@@ -1779,6 +1831,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		propertyKeyValuePairEClass = createEClass(PROPERTY_KEY_VALUE_PAIR);
 		createEAttribute(propertyKeyValuePairEClass, PROPERTY_KEY_VALUE_PAIR__KEY);
 		createEAttribute(propertyKeyValuePairEClass, PROPERTY_KEY_VALUE_PAIR__VALUE);
+
+		containsEClass = createEClass(CONTAINS);
 
 		// Create enums
 		comparisonOperatorTypeEEnum = createEEnum(COMPARISON_OPERATOR_TYPE);
@@ -1815,6 +1869,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		// Add supertypes to classes
 		trimEClass.getESuperTypes().add(this.getOperator());
+		cloneEClass.getESuperTypes().add(this.getOperator());
 		replaceEClass.getESuperTypes().add(this.getOperator());
 		matchEClass.getESuperTypes().add(this.getOperator());
 		minEClass.getESuperTypes().add(this.getOperator());
@@ -1838,6 +1893,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		subtractEClass.getESuperTypes().add(this.getOperator());
 		concatEClass.getESuperTypes().add(this.getOperator());
 		absoluteValueEClass.getESuperTypes().add(this.getOperator());
+		equalEClass.getESuperTypes().add(this.getOperator());
 		constantEClass.getESuperTypes().add(this.getOperator());
 		addEClass.getESuperTypes().add(this.getOperator());
 		divideEClass.getESuperTypes().add(this.getOperator());
@@ -1849,11 +1905,14 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		lowerCaseEClass.getESuperTypes().add(this.getOperator());
 		celiEClass.getESuperTypes().add(this.getOperator());
 		upperCaseEClass.getESuperTypes().add(this.getOperator());
+		containsEClass.getESuperTypes().add(this.getOperator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(trimEClass, Trim.class, "Trim", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(cloneEClass, Clone.class, "Clone", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(replaceEClass, Replace.class, "Replace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReplace_Target(), ecorePackage.getEString(), "target", "{$Target}", 0, 1, Replace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1986,6 +2045,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		initEClass(absoluteValueEClass, AbsoluteValue.class, "AbsoluteValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(equalEClass, Equal.class, "Equal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConstant_ConstantValue(), ecorePackage.getEString(), "constantValue", null, 0, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConstant_Type(), this.getSchemaDataType(), "type", "STRING", 0, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2017,6 +2078,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(propertyKeyValuePairEClass, PropertyKeyValuePair.class, "PropertyKeyValuePair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertyKeyValuePair_Key(), ecorePackage.getEString(), "key", null, 1, 1, PropertyKeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyKeyValuePair_Value(), ecorePackage.getEString(), "value", "", 1, 1, PropertyKeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(comparisonOperatorTypeEEnum, ComparisonOperatorType.class, "ComparisonOperatorType");
@@ -2055,10 +2118,12 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.BOOLEAN_OPERATION);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CONDITIONAL_OPERATION);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CONSTANT);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.EQUALS);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CONCAT);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.SPLIT);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.UPPERCASE);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.LOWERCASE);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.CONTAINS);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.ADD);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.SUBTRACT);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.MULTIPLY);

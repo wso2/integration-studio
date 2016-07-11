@@ -74,6 +74,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createTrimAdapter();
 			}
 			@Override
+			public Adapter caseClone(Clone object) {
+				return createCloneAdapter();
+			}
+			@Override
 			public Adapter caseReplace(Replace object) {
 				return createReplaceAdapter();
 			}
@@ -210,6 +214,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createAbsoluteValueAdapter();
 			}
 			@Override
+			public Adapter caseEqual(Equal object) {
+				return createEqualAdapter();
+			}
+			@Override
 			public Adapter caseConstant(Constant object) {
 				return createConstantAdapter();
 			}
@@ -258,6 +266,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createPropertyKeyValuePairAdapter();
 			}
 			@Override
+			public Adapter caseContains(Contains object) {
+				return createContainsAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -302,6 +314,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTrimAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Clone <em>Clone</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Clone
+	 * @generated
+	 */
+	public Adapter createCloneAdapter() {
 		return null;
 	}
 
@@ -782,6 +808,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Equal <em>Equal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Equal
+	 * @generated
+	 */
+	public Adapter createEqualAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Constant <em>Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -946,6 +986,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPropertyKeyValuePairAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.datamapper.Contains <em>Contains</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.datamapper.Contains
+	 * @generated
+	 */
+	public Adapter createContainsAdapter() {
 		return null;
 	}
 

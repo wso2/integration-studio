@@ -38,7 +38,7 @@ import com.google.gson.JsonPrimitive;
 public class SchemaBuilder {
 
 	private static final String HTTP_WSO2JSONSCHEMA_ORG = "http://wso2jsonschema.org";
-	private static final String HTTP_JSON_SCHEMA_ORG_DRAFT_04_SCHEMA = "http://json-schema.org/draft-04/schema#";
+	private static final String HTTP_JSON_SCHEMA_ORG_DRAFT_04_SCHEMA = "http://json-schema.org/draft-04/wso2-data-mapper-v5.0.0/schema#";
 	private static final String ARRAY = "array";
 	private static final String OBJECT = "object";
 	private static final String ID = "id";

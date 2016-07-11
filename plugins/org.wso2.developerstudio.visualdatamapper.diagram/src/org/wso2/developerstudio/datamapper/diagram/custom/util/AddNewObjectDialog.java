@@ -856,7 +856,8 @@ public class AddNewObjectDialog extends Dialog {
 		lblSchemaValue.setText(LABEL_SCHEMA_VALUE);
 
 		textSchemaValue = new Text(compositeType, SWT.BORDER);
-		textSchemaValue.setText("");
+		textSchemaValue.setText("http://json-schema.org/draft-04/wso2-data-mapper-v5.0.0/schema#");
+		textSchemaValue.setEditable(false);
 
 		textSchemaValue.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {

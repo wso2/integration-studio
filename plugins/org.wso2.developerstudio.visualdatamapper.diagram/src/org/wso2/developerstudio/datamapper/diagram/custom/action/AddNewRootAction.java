@@ -106,7 +106,7 @@ public class AddNewRootAction extends AbstractActionHandler {
 						new Class[] { IRegistryFile.class });
 				rootElementDialog.create();
 				rootElementDialog.setTitle(DIALOG_TITLE);
-				rootElementDialog.setVisibility(DIALOG_TITLE);
+				rootElementDialog.setVisibility(DIALOG_TITLE,false);
 				rootElementDialog.setType(DIALOG_TITLE);
 				rootElementDialog.open();
 

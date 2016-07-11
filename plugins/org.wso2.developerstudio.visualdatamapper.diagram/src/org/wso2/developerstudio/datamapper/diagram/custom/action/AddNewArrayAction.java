@@ -71,6 +71,7 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS = "arrayElementIdentifiers";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL = "arrayElementIdentifiersURL";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL_VALUE = "arrayElementIdentifiersURLValue";
+	private static final String JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT ="arrayInterrelatedElement";
 	private static final String JSON_SCHEMA_ADDED_PROPERTIES_ID = "added_properties_id";
 	private static final String HAS_PROPERTIES = "hasProperties";
 	private static final String PREFIX = "@";
@@ -80,6 +81,8 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String TRUE = "true";
 	private static final String FALSE = "false";
+	private boolean isOutputEditPart = false;
+
 
 	public AddNewArrayAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -90,15 +93,17 @@ public class AddNewArrayAction extends AbstractActionHandler {
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
-
+	
 	@Override
 	protected void doRun(IProgressMonitor progressMonitor) {
 		selectedEP = getSelectedEditPart();
 		AddNewObjectDialog objectDialog = new AddNewObjectDialog(Display.getCurrent().getActiveShell(),
 				new Class[] { IRegistryFile.class });
+		//Check if the edit part is an output edit part
+		isOutputEditPart  = checkContainer(selectedEP);
 		objectDialog.create();
 		objectDialog.setTitle(DIALOG_TITLE);
-		objectDialog.setVisibility(DIALOG_TITLE);
+		objectDialog.setVisibility(DIALOG_TITLE,isOutputEditPart);
 		objectDialog.setType(DIALOG_TITLE);
 		objectDialog.open();
 
@@ -163,7 +168,12 @@ public class AddNewArrayAction extends AbstractActionHandler {
 					String fullName = objectDialog.getIdentifierType() + "=" + objectDialog.getIdentifierValue();
 					treeNodeNew.setName(objectDialog.getTitle()+","+fullName);
 				}
-			
+			    //Sets the interrelated element
+				if(StringUtils.isNotEmpty(objectDialog.getInterrelatedElement())){
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT,
+							objectDialog.getInterrelatedElement());
+				}
+				
 				//Sets the values for items field which is used for serializing the array
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/0");
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, objectDialog.getValue());
@@ -278,6 +288,23 @@ public class AddNewArrayAction extends AbstractActionHandler {
 
 	}
 	
+
+	/**
+	 * check if the conatiner is an output edit part
+	 * 
+	 * @param selectedEP
+	 * @return
+	 */
+	private boolean checkContainer(EditPart selectedEP) {
+		if (selectedEP.getParent() instanceof OutputEditPart) {
+			return true;
+		} else if (selectedEP.getParent() instanceof InputEditPart) {
+			return false;
+		} else {
+			return checkContainer(selectedEP.getParent());
+		}
+	}
+
 	/**
 	 * Creates namespace array for identifiers
 	 * @param identifierType

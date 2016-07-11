@@ -412,7 +412,7 @@ public class EditObjectAction extends AbstractActionHandler {
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, value, identifierType,
-				identifierValue, identifierURL, isNullable);
+				identifierValue, identifierURL, isNullable,null,false);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {

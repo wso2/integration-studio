@@ -261,18 +261,6 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		endpoint.setDefinition(synapseEPDef);
 
 	}
-	
-	public boolean isStringLong(String value)
-	{
-	    try
-	    {
-	        Integer.parseInt(value);
-	        return true;
-	    } catch (NumberFormatException ex)
-	    {
-	        throw new NumberFormatException("Input is invalid,the value should be an interger");       
-	    }
-	}
 
 	@SuppressWarnings("deprecation")
 	protected void createAdvanceOptions(AbstractEndPoint visualEndPoint, AbstractEndpoint endpoint) {

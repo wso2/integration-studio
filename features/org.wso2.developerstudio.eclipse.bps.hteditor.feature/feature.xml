@@ -34,12 +34,12 @@
       %license
    </license>
 
-   <plugin
+   <!--plugin
          id="tomcat"
          download-size="0"
          install-size="0"
          version="7.0.59.wso2v3"
-         unpack="false"/>
+         unpack="false"/-->
          
    <plugin
          id="org.wso2.developerstudio.humantaskeditor"

@@ -38,18 +38,21 @@ public class NOTOperatorTransformer extends AbstractDMOperatorTransformer {
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() == 0) {
 				/* Default value is true */
 				operationBuilder.append(CONSTANT_TRUE);
 			} else {
-				operationBuilder
-						.append(CONSTANT_NOT_OPERATOR + "(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-								inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true) + ")");
+				operationBuilder.append(CONSTANT_NOT_OPERATOR + "("
+						+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+								outputArrayVariableForLoop)
+						+ ")");
 			}
 
 			operationBuilder.append(";");

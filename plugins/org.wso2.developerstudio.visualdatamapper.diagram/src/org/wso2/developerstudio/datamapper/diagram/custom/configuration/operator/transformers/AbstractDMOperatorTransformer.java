@@ -35,7 +35,8 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationU
 public abstract class AbstractDMOperatorTransformer implements DMOperatorTransformer {
 
 	protected String appendOutputVariable(DMOperation operation, List<DMVariable> outputVariables,
-			Map<String, List<SchemaDataType>> map, Stack<ForLoopBean> tempForLoopBeanParentStack) {
+			Map<String, List<SchemaDataType>> map, Stack<ForLoopBean> tempForLoopBeanParentStack,
+			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
 		int numOfOutputVariables = outputVariables.size();
 		for (int variableIndex = 0; variableIndex < numOfOutputVariables; variableIndex++) {
@@ -43,13 +44,15 @@ public abstract class AbstractDMOperatorTransformer implements DMOperatorTransfo
 			// Instantiate operation does not need to have the ELEMVAL tag
 			if (operation.getOperatorType().equals(DataMapperOperatorType.INSTANTIATE)) {
 				prettyVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, false);
+						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, false, forLoopBeanList,
+						outputArrayVariableForLoop);
 				if (SchemaDataType.ARRAY.equals(operation.getProperty(TransformerConstants.VARIABLE_TYPE))) {
 					prettyVariableName = prettyVariableName.substring(0, prettyVariableName.lastIndexOf('['));
 				}
 			} else {
 				prettyVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, true);
+						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, true, forLoopBeanList,
+						outputArrayVariableForLoop);
 			}
 			operationBuilder.append(prettyVariableName);
 			if (variableIndex < (numOfOutputVariables - 1)) {

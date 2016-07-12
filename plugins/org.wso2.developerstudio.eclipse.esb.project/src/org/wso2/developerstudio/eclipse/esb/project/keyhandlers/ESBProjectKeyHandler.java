@@ -35,7 +35,9 @@ public class ESBProjectKeyHandler extends AbstractHandler {
 	protected final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
 	private static final String NEW_ESB_CONFIG_PROJECT_COMMAND = "developerstudio.commands.new.esbConfigProject";
+	private static final String NEW_ESB_SOLUTION_PROJECT_COMMAND ="developerstudio.commands.new.esbSolutionProject";
 	private static final String ESB_CONFIG_WIZARD = "org.wso2.developerstudio.eclipse.artifact.newesbproject";
+	private static final String ESB_SOLUTION_WIZARD="org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject";
 	private static final String ERROR_MESSAGE = "Cannot open wizard, core exception";
 	 
 		@Override
@@ -43,6 +45,8 @@ public class ESBProjectKeyHandler extends AbstractHandler {
 			//If the command id is equal then open the ESB config project wizard
 			if (NEW_ESB_CONFIG_PROJECT_COMMAND.equals(event.getCommand().getId())) {
 				openWizard(ESB_CONFIG_WIZARD);
+			}if(NEW_ESB_SOLUTION_PROJECT_COMMAND.equals(event.getCommand().getId())){
+				openWizard(ESB_SOLUTION_WIZARD);
 			}
 			return null;
 		}

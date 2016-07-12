@@ -29,22 +29,26 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 
 /**
- * This class extended from the {@link AbstractDMOperatorTransformer} abstract class and generate script for AbsoluteValue
- * operation
+ * This class extended from the {@link AbstractDMOperatorTransformer} abstract
+ * class and generate script for AbsoluteValue operation
  */
 public class AbsoluteValueOperatorTransformer extends AbstractDMOperatorTransformer {
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() == 0) {
 				operationBuilder.append(CONSTANT_ADDITIVE);
 			} else {
 				operationBuilder.append("Math.abs(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true) + ")");
+						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+						outputArrayVariableForLoop) + ")");
 			}
 			operationBuilder.append(";");
 		} else {

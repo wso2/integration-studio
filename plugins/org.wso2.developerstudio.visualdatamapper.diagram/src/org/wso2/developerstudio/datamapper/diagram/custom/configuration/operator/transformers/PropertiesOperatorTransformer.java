@@ -35,15 +35,15 @@ public class PropertiesOperatorTransformer extends AbstractDMOperatorTransformer
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			operationBuilder.append(PROPERTIES_PREFIX + "." + operator.getProperty(PROPERTY_SCOPE_TAG) + "['"
 					+ operator.getProperty(PROPERTY_NAME_TAG) + "']");
 			operationBuilder.append(";");
-
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}

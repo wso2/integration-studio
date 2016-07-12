@@ -35,10 +35,11 @@ public class MaxOperatorTransformer extends AbstractDMOperatorTransformer {
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
@@ -46,10 +47,11 @@ public class MaxOperatorTransformer extends AbstractDMOperatorTransformer {
 			operationBuilder.append("Math.max(");
 			if (inputVariables.size() > 0) {
 				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-						variableTypeMap, parentForLoopBeanStack, true));
+						variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop));
 				for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
 					operationBuilder.append("," + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-							inputVariables.get(variableIndex), variableTypeMap, tempParentForLoopBeanStack, true));
+							inputVariables.get(variableIndex), variableTypeMap, tempParentForLoopBeanStack, true,
+							forLoopBeanList, outputArrayVariableForLoop));
 				}
 			} else {
 				operationBuilder.append("0");

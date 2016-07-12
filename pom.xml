@@ -14,7 +14,8 @@
 ~ See the License for the specific language governing permissions and
 ~ limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>wso2-developerstudio-bps-toolkit</artifactId>
@@ -71,7 +72,7 @@
         <!--wso2.tomcat.version>7.0.59.wso2v3</wso2.tomcat.version-->
     </properties>
     <repositories>
-       <repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -91,16 +92,6 @@
             <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
             <layout>default</layout>
         </repository>
-	<repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Maven-Central-Repo</id>
-            <url>http://repo1.maven.org/maven/</url>
-            <layout>default</layout>
-        </repository>
         <repository>
             <releases>
                 <enabled>true</enabled>
@@ -117,18 +108,9 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>DevS-Kernel-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/releases/</url>
-            <layout>p2</layout>
-        </repository>
-	<repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>DevS-Platform-p2-releases-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/platform-bundles/releases/</url>
+            <id>DevS-Deps-Luna-p2-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/eclipse/mars/p2/
+            </url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -137,8 +119,42 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
+            <id>DevS-Kernel-p2-releases-Repository</id>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/releases/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Platform-p2-releases-Repository</id>
+            <url>
+                http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/platform-bundles/releases/4.1.0-201606031446/
+            </url>
+            <layout>p2</layout>
+        </repository>
+        <!--repository>
+                <releases>
+                    <enabled>true</enabled>
+                    <updatePolicy>daily</updatePolicy>
+                    <checksumPolicy>ignore</checksumPolicy>
+                </releases>
+                <id>DevS-Kernel-p2-updates-Repository</id>
+                <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/updates/</url>
+                <layout>p2</layout>
+            </repository-->
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
             <id>Additional-Tools-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/additional-tools/releases/p2/</url>
+            <url>
+                http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/additional-tools/releases/p2/
+            </url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -161,7 +177,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
         </repository>
-        <repository>
+        <!--repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -170,7 +186,7 @@
             <id>WSO2-p2-Repository</id>
             <url>http://product-dist.wso2.com/p2/carbon/releases/wilkes/</url>
             <layout>p2</layout>
-        </repository>
+        </repository-->
         <repository>
             <snapshots>
                 <enabled>true</enabled>
@@ -189,12 +205,12 @@
             <url>http://download.java.net/maven/2/</url>
             <layout>default</layout>
         </pluginRepository>
-        <pluginRepository>
+        <!--pluginRepository>
             <id>repository.org.eclipse.bpel</id>
             <name>eclipse bpel Repository for Maven</name>
             <url>http://download.eclipse.org/bpel/site/</url>
             <layout>default</layout>
-        </pluginRepository>
+        </pluginRepository-->
         <pluginRepository>
             <id>wso2-maven2-repository</id>
             <url>http://dist.wso2.org/maven2</url>

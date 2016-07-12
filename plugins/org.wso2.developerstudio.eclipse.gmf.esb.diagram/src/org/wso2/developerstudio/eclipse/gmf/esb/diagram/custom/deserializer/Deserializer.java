@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.axiom.om.OMAbstractFactory;
+import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.collections.IteratorUtils;
@@ -256,8 +257,8 @@ public class Deserializer {
 			}			
 		} else if("endpoint".equals(localName)){
 			
-			String templateAtr = element.getAttributeValue(new javax.xml.namespace.QName("template"));
-			if(StringUtils.isNotEmpty(templateAtr)){
+			OMAttribute templateAtr = element.getAttribute(new javax.xml.namespace.QName("template"));
+			if(templateAtr != null){
 				 artifactType = ArtifactType.TEMPLATE_ENDPOINT;
 			}else{
 				Iterator children = element.getChildElements();

@@ -29,11 +29,11 @@
     <packaging>pom</packaging>
     <name>WSO2 BPS Tooling Plugins</name>
     <modules>
-        <module>org.eclipse.bpel.help</module>
+        <!--module>org.eclipse.bpel.help</module-->
         <module>org.eclipse.bpel.apache.ode.deploy.model</module>
         <module>org.eclipse.bpel.apache.ode.deploy.ui</module>
-        <module>org.eclipse.bpel.apache.ode.runtime</module>
-        <module>org.eclipse.bpel.cheatsheet</module>
+        <!--module>org.eclipse.bpel.apache.ode.runtime</module-->
+        <!--module>org.eclipse.bpel.cheatsheet</module-->
         <module>org.eclipse.bpel.common.model</module>
         <module>org.eclipse.bpel.common.ui</module>
         <module>org.eclipse.bpel.common.wsdl</module>

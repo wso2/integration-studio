@@ -155,6 +155,8 @@ public class SchemaKeyEditorDialog extends Dialog {
 	private static final String SELECT_CONNECTOR = Messages.SchemaKeyEditorDialog_SelectConnector;
 	private static final String SELECT_CONNECTOR_OPERATION =
 	                                                       Messages.SchemaKeyEditorDialog_SelectConnectorOperation;
+	private static final String REASON_FILE_TYPE_MISMATCH = Messages.SchemaKeyEditorDialog_ReasonRegistryBrowser_IncompatibleFileTypes;
+	private static final String ERROR_WORKSPACE_IMPORT = Messages.SchemaKeyEditorDialog_ErrorWorkspaceImport;
 
 	public SchemaKeyEditorDialog(Shell parent, EditPart selectedEP, IWorkbenchPart workbenchPart,
 	                             String schemaType) {
@@ -520,6 +522,8 @@ public class SchemaKeyEditorDialog extends Dialog {
 				                                                       .split(File.separator);
 				String resourceFile = retrieveWorkSpaceFileLoc(getFileName[getFileName.length - 1]);
 
+				boolean isCompatible = checkFileExtensionAgainstTheSchemaType(fileType);
+				if(isCompatible){
 				String schema = schemaGeneratorHelper.getSchemaContent(fileType, resourceFile);
 				String schemaFilePath = null;
 				try {
@@ -533,6 +537,10 @@ public class SchemaKeyEditorDialog extends Dialog {
 					saveInputOutputSchema(schemaFilePath);
 				}
 
+				}else{
+					String selectedType = FileType.values()[schemaTypeCombo.getSelectionIndex()].toString().toLowerCase();
+					displayUserError(REASON_FILE_TYPE_MISMATCH + " " + selectedType,ERROR_WORKSPACE_IMPORT);
+				}
 			} else {
 				return;
 			}
@@ -620,7 +628,8 @@ public class SchemaKeyEditorDialog extends Dialog {
 			String mediaType = "xml"; // TODO need to replace this with the
 			                          // above commented out line when the new
 			                          // kernel version is available
-			FileType fileType = extractFileTypeFromRegistryResource(mediaType);
+			//FileType fileType = extractFileTypeFromRegistryResource(mediaType);
+			FileType fileType = extractFileTypeFromFileExtension(selectedPathData.getPath());
 
 			String fileName = FILE_NAME_VALUE + "." + fileType.toString().toLowerCase();
 			File outputDirectory = new File(tempOutput);
@@ -636,6 +645,8 @@ public class SchemaKeyEditorDialog extends Dialog {
 			                                                                        (IRegistryData) selectedPathData,
 			                                                                        outputFile);
 
+			boolean isCompatible = checkFileExtensionAgainstTheSchemaType(fileType);
+			if(isCompatible){
 			String schema =
 			              schemaGeneratorHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()],
 			                                                     outputFile.getAbsolutePath());
@@ -646,6 +657,10 @@ public class SchemaKeyEditorDialog extends Dialog {
 				setSelectedPath(schemaFilePath);
 				saveInputOutputSchema(schemaFilePath);
 			}
+		}else{
+			String selectedType = FileType.values()[schemaTypeCombo.getSelectionIndex()].toString().toLowerCase();
+			displayUserError(REASON_FILE_TYPE_MISMATCH + " " + selectedType,ERROR_REGISTRY_BROWSER);
+		}
 
 		} catch (Exception e) {
 			log.error(ERROR_REGISTRY_BROWSER, e);
@@ -654,6 +669,14 @@ public class SchemaKeyEditorDialog extends Dialog {
 		} finally {
 			show();
 		}
+	}
+
+	private boolean checkFileExtensionAgainstTheSchemaType(FileType fileType) {
+		String selectedType = FileType.values()[schemaTypeCombo.getSelectionIndex()].toString();
+	    if(selectedType.equals(fileType.toString())){
+	    	return true;
+	    }
+		return false;	
 	}
 
 	private void displayUserError(String reason, String message) {
@@ -714,6 +737,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 			if (filePath == null) {
 				return;
 			}
+		
 			String schema =
 			              schemaGeneratorHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()],
 			                                                     filePath);

@@ -75,6 +75,8 @@ public class Messages extends NLS {
 	public static String SchemaKeyEditorDialog_RegistryBrowser;
 	public static String SchemaKeyEditorDialog_ResourceKey;
 	public static String SchemaKeyEditorDialog_SchemaKeyEditorDialogMessage;
+	public static String SchemaKeyEditorDialog_ReasonRegistryBrowser_IncompatibleFileTypes;
+	public static String SchemaKeyEditorDialog_ErrorWorkspaceImport;
 	public static String SchemaKeyEditorDialog_SelectRegistryResource;
 	public static String SchemaKeyEditorDialog_WorkspaceElementProviders;
 	public static String SetPrecisionConfigureAction_ActionId0;

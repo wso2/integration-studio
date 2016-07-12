@@ -79,6 +79,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		DistributionProjectWizard distributionProjectWizard = new DistributionProjectWizard();
 		DistributionProjectModel distributionModel = new DistributionProjectModel();
 		try {
+			esbSolutionProjectModel.setProjectName(projectName + "CompositeProject");
 			distributionModel.setProjectName(projectName + "CompositeProject");
 			distributionModel.setGroupId(esbSolutionProjectModel.getGroupId());
 			distributionModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());

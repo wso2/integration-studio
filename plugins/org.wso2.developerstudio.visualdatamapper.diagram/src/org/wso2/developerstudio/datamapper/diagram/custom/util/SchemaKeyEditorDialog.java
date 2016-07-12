@@ -580,7 +580,9 @@ public class SchemaKeyEditorDialog extends Dialog {
 			return FileType.JSONSCHEMA;
 		} else if (selectedPath.endsWith(".csv")){
 			return FileType.CSV;
-	    }else {
+	    } else if(selectedPath.endsWith(".json")){
+	    	return FileType.JSON;
+	    } else {
 			return null;
 		}
 	}

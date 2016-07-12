@@ -152,6 +152,16 @@
             <layout>p2</layout>
         </repository>
         <repository>
+            <id>Activiti</id>
+            <name>Alfresco Repository</name>
+            <url>https://maven.alfresco.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+        </repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>

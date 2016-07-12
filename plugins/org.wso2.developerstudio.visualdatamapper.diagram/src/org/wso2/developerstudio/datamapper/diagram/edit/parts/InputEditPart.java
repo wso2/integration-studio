@@ -88,7 +88,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private static final int X = 150;
+	private static final int X = 100;
 
 	private static final int Y = 200;
 	TreeNode inputRootTreeNode;
@@ -446,7 +446,6 @@ public class InputEditPart extends ShapeNodeEditPart {
 			DataMapperRootEditPart rep = (DataMapperRootEditPart) iep.getParent();
 			DataMapperRoot rootDiagram = (DataMapperRoot) ((DiagramImpl) rep.getModel()).getElement();
 			inputRootTreeNode = rootDiagram.getInput().getTreeNode().get(0);
-			reposition();
 		}
 	}
 

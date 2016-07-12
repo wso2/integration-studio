@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2012-2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.wso2.developerstudio.eclipse.artifact.endpoint.refactor;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,31 +31,33 @@ import org.eclipse.text.edits.MultiTextEdit;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.utils.file.EnhancedBufferedReader;
+import org.wso2.developerstudio.eclipse.utils.file.model.LineData;
 
 public class MavenConfigurationFileDeleteChange extends TextFileChange {
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private MultiTextEdit multiEdit;
 	private IFile pomFile;
-	private Dependency deletingArtifactDependency;
+	private List<Dependency> deletingDependencies;
 
-
-	public MavenConfigurationFileDeleteChange(String name, IFile file, Dependency deletingArtifactDependency) {
+	public MavenConfigurationFileDeleteChange(String name, IFile file, List<Dependency> deletingDependencies) {
 		super(name, file);
 		pomFile = file;
-		this.deletingArtifactDependency=deletingArtifactDependency;
+		this.deletingDependencies = deletingDependencies;
 		addTextEdits();
 	}
-	
-	private void addTextEdits() {
 
+	private void addTextEdits() {
 		multiEdit = new MultiTextEdit();
 		setEdit(multiEdit);
-
 		setSaveMode(FORCE_SAVE);
-
 		if (pomFile.exists()) {
-			identifyDepenencyEntry();
+			for (Iterator<Dependency> iterator = deletingDependencies.iterator(); iterator.hasNext();) {
+				Dependency dependency = (Dependency) iterator.next();
+				identifyDepenencyEntry(dependency);
+			}
 		}
 	}
 	
@@ -65,9 +66,9 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 		return  suffix.concat(dep.getGroupId().concat("_._").concat(dep.getArtifactId()));
 	}
 
-	private void identifyDepenencyEntry() {
+	private void identifyDepenencyEntry(Dependency dependencyForTheProject ) {
 		FileReader fileReader = null;
-		BufferedReader reader = null;
+		EnhancedBufferedReader reader = null;
 		try {
 			int fullIndex = 0;
 			int startIndex = 0;
@@ -84,21 +85,19 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 			boolean isDependencies = false;
 			boolean isDependency = false;
 			List<String> dependencyEntry = new ArrayList<String>();
+			List<String> dependencyEntryLineEndings = new ArrayList<String>();
 			// boolean isGroupId=false;
 			boolean isGroupMatch = false;
 			boolean isArtifactMatch = false;
 			boolean isVersionMatch = false;
-			Dependency dependencyForTheProject = deletingArtifactDependency;
 			String artifactProperty = getArtifactInfoAsString(dependencyForTheProject);
-			
 
 			fileReader = new FileReader(pomFile.getLocation().toFile());
-			reader = new BufferedReader(fileReader);
+			reader = new EnhancedBufferedReader(fileReader);
 
-			String line = reader.readLine();
-
-			while (line != null) {
-
+			LineData lineData = reader.readLineData();
+			while (!lineData.isEmpty()) {
+				String line = lineData.getLine();
 				if (line.contains(artifactProperty)) {
 					String patternstr = "^(.)*(\\s)*(<){1}" + artifactProperty + "(>){1}(.)*(>)$";
 					Pattern pattern = Pattern.compile(patternstr);
@@ -110,15 +109,12 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 						addEdit(new DeleteEdit(start, line.trim().length()));
 					}
 				}
-					
 				if (!isDependencies && line.contains(dependenciesStart)) {
 					isDependencies = true;
 				}
-
 				if (isDependencies && line.contains(dependenciesEnd)) {
 					isDependencies = false;
 				}
-
 				if (isDependencies) {
 					if (line.contains(dependencyStart)) {
 						isDependency = true;
@@ -127,9 +123,9 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 						startIndex = fullIndex + dependencyEntryindex;
 						if (dependencyEntryindex != -1) {
 							dependencyEntry.add(line.substring(dependencyEntryindex));
+							dependencyEntryLineEndings.add(lineData.getLineSeperator());
 						}
 					}
-
 					if (isDependency) {
 						if (line.contains(groupIdStart) && line.contains(groupIdEnd)) {
 							if (line.contains(dependencyForTheProject.getGroupId())) {
@@ -141,14 +137,15 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 									isGroupMatch = true;
 									if (!dependencyEntry.contains(line)) {
 										dependencyEntry.add(line);
+										dependencyEntryLineEndings.add(lineData.getLineSeperator());
 									}
 								} else {
 									isGroupMatch = false;
 									dependencyEntry.clear();
+									dependencyEntryLineEndings.clear();
 								}
 							}
 						}
-
 						if (isGroupMatch && line.contains(artifactIdStart) &&
 						    line.contains(artifactIdEnd)) {
 							if (line.contains(dependencyForTheProject.getArtifactId())) {
@@ -169,7 +166,6 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 								}
 							}
 						}
-
 						if (isGroupMatch && isArtifactMatch && line.contains(versionStart) &&
 						    line.contains(versionEnd)) {
 							if (line.contains(dependencyForTheProject.getVersion())) {
@@ -188,7 +184,6 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 								}
 							}
 						}
-
 						if (isGroupMatch && isArtifactMatch && isVersionMatch) {
 							if (line.contains(dependencyEnd)) {
 								int end = line.indexOf(dependencyEnd) + dependencyEnd.length();
@@ -196,13 +191,7 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 								if (!dependencyEntry.contains(finalEntry)) {
 									dependencyEntry.add(finalEntry);
 								}
-
-								int length = 0;
-								for (String string : dependencyEntry) {
-									length += RefactorUtils.charsOnTheLine(string);
-								}
-
-								addEdit(new DeleteEdit(startIndex, length));
+								addEdit(new DeleteEdit(startIndex, (fullIndex + end) - startIndex));
 
 								dependencyEntry.clear();
 								break;
@@ -212,17 +201,12 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
 								}
 							}
 						}
-
 					}
-
 				}
-				fullIndex += RefactorUtils.charsOnTheLine(line);
-				line = reader.readLine();
+				fullIndex += lineData.getFullLineLength();
+				lineData = reader.readLineData();
 			}
-			
-			
-			
-			
+
 		} catch (Exception e) {
 			log.error("Error occurred while trying to generate the Refactoring for the project", e);
 		}finally{
@@ -241,7 +225,5 @@ public class MavenConfigurationFileDeleteChange extends TextFileChange {
             	log.error("Error occurred while trying to close the file stream.", e);
             }
 		}
-
 	}
-
 }

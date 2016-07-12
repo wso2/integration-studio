@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2012-2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.wso2.developerstudio.eclipse.esb.project.refactoring.delete;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -31,85 +32,77 @@ import org.eclipse.ltk.core.refactoring.CompositeChange;
 import org.eclipse.ltk.core.refactoring.RefactoringStatus;
 import org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext;
 import org.eclipse.ltk.core.refactoring.participants.DeleteParticipant;
+import org.eclipse.ltk.core.refactoring.participants.ISharableParticipant;
+import org.eclipse.ltk.core.refactoring.participants.RefactoringArguments;
+import org.wso2.developerstudio.eclipse.esb.project.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant {
-	
-	
-	private static final String UPDATE_ESB_META_DATA_MODEL_STATUS_MESSAGE = "Update ESB meta-data model";
-	private static final String ARTIFACT_XML_FILE = "artifact.xml";
-	private static final String ESB_APRTIFACT_DELETE_CHANGE_OBJECT_NAME = "ESB Artifact Delete";
-	private static final String UPDATE_ARTIFACT_XML_CHANGE_OBJECT_NAME = "Update arifact.xml";
-	private IFile originalFile;
-	private static int numOfFiles;
-	private static int currentFileNum;
-	private static Map<IProject, List<IFile>> changeFileList;
-	private static List<IProject> projectList;
+public class ESBArtifactMetaDataDeleteParticipant extends DeleteParticipant implements ISharableParticipant {
+
+	private static final String COMPOSITE_MESSAGE = "Update arifact.xml of ESB projects.";
+	private static final String PRE_MESSAGE = "Update ESB meta-data model";
+	private static final String PARTICIPANT_NAME = "ESBArtifactDelete";
+	private static final String ARTIFACT_XML = "artifact.xml";
+
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
+	protected List<IFile> listOfFilesToBeRemoved;
 
 	@Override
-	public RefactoringStatus checkConditions(IProgressMonitor progressMonitor,
-			CheckConditionsContext context) throws OperationCanceledException {
-		return RefactoringStatus
-				.createInfoStatus(UPDATE_ESB_META_DATA_MODEL_STATUS_MESSAGE);
+	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
+			throws OperationCanceledException {
+		return RefactoringStatus.createInfoStatus(PRE_MESSAGE);
 	}
 
 	@Override
-	public Change createChange(IProgressMonitor progressMonitor)
-			throws CoreException, OperationCanceledException {
-		CompositeChange emptychange = new CompositeChange(
-				ESB_APRTIFACT_DELETE_CHANGE_OBJECT_NAME);
-		currentFileNum++;
-		if (numOfFiles == currentFileNum) {
-			CompositeChange change = new CompositeChange(
-					UPDATE_ARTIFACT_XML_CHANGE_OBJECT_NAME);
-			for (IProject project : projectList) {
-				List<IFile> fileList = changeFileList.get(project);
-				change.add(new ESBMetaDataFileDeleteChange(project.getName(),
-						project.getFile(ARTIFACT_XML_FILE), fileList));
+	public Change createChange(IProgressMonitor arg0) throws CoreException, OperationCanceledException {
+
+		Map<IProject, List<IFile>> artifactsByProject = new HashMap<IProject, List<IFile>>();
+		for (IFile artifact : listOfFilesToBeRemoved) {
+			if (!artifactsByProject.containsKey(artifact.getProject())) {
+				artifactsByProject.put(artifact.getProject(), new ArrayList<IFile>());
 			}
-			resetStaticVariables();
+			artifactsByProject.get(artifact.getProject()).add(artifact);
+		}
+
+		if (!artifactsByProject.isEmpty()) {
+			CompositeChange change = new CompositeChange(COMPOSITE_MESSAGE);
+			Iterator<Entry<IProject, List<IFile>>> iterator = artifactsByProject.entrySet().iterator();
+			while (iterator.hasNext()) {
+				Entry<IProject, List<IFile>> next = iterator.next();
+				change.add(new ESBMetaDataFileDeleteChange(next.getKey().getName(), next.getKey().getFile(ARTIFACT_XML),
+						next.getValue()));
+			}
 			return change;
 		}
-		return emptychange;
-	}
-
-	private void resetStaticVariables() {
-		changeFileList.clear();
-		projectList.clear();
-		numOfFiles = 0;
-		currentFileNum = 0;
+		return null;
 	}
 
 	@Override
 	public String getName() {
-		return "ESBArtifactDelete";
+		return PARTICIPANT_NAME;
 	}
 
 	@Override
-	protected boolean initialize(Object file) {
-		if (file instanceof IFile) {
-			numOfFiles++;
-			originalFile = (IFile) file;
-			if (numOfFiles == 1) {
-				List<IFile> fileList = new ArrayList<>();
-				projectList = new ArrayList<>();
-				changeFileList = new HashMap<IProject, List<IFile>>();
-				fileList.add(originalFile);
-				projectList.add(originalFile.getProject());
-				changeFileList.put(originalFile.getProject(), fileList);
-			} else {
-				if (changeFileList.containsKey(originalFile.getProject())) {
-					changeFileList.get(originalFile.getProject()).add(
-							originalFile);
-				} else {
-					List<IFile> fileList = new ArrayList<>();
-					fileList.add(originalFile);
-					projectList.add(originalFile.getProject());
-					changeFileList.put(originalFile.getProject(), fileList);
-				}
+	protected boolean initialize(Object artifact) {
+		if (artifact instanceof IFile) {
+			if (listOfFilesToBeRemoved == null) {
+				listOfFilesToBeRemoved = new ArrayList<IFile>();
 			}
+			listOfFilesToBeRemoved.add((IFile) artifact);
 			return true;
 		}
 		return false;
 	}
 
+	@Override
+	public void addElement(Object artifact, RefactoringArguments arguments) {
+		if (artifact instanceof IFile) {
+			if (listOfFilesToBeRemoved == null) {
+				listOfFilesToBeRemoved = new ArrayList<IFile>();
+			}
+			listOfFilesToBeRemoved.add((IFile) artifact);
+		}
+	}
 }

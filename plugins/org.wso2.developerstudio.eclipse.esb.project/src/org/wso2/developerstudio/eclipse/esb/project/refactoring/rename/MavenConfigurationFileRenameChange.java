@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2015-2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,10 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.wso2.developerstudio.eclipse.esb.project.refactoring.rename;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -32,8 +30,11 @@ import org.eclipse.text.edits.ReplaceEdit;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.utils.file.EnhancedBufferedReader;
+import org.wso2.developerstudio.eclipse.utils.file.model.LineData;
 
 public class MavenConfigurationFileRenameChange extends TextFileChange {
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private IFile pomFile;
@@ -44,11 +45,10 @@ public class MavenConfigurationFileRenameChange extends TextFileChange {
 	Dependency dependency;
 	MultiTextEdit multiEdit;
 
-	public MavenConfigurationFileRenameChange(String name, IFile file, String previousName,
-	                                    IProject refactoringProject, String newName,Dependency dependency) {
+	public MavenConfigurationFileRenameChange(String name, IFile file, String previousName, IProject refactoringProject,
+			String newName, Dependency dependency) {
 		super(name, file);
 		pomFile = file;
-
 		this.previousName = previousName;
 		this.refactoringProject = refactoringProject;
 		this.newName = newName;
@@ -57,17 +57,15 @@ public class MavenConfigurationFileRenameChange extends TextFileChange {
 	}
 
 	private void addTextEdits() {
-
 		multiEdit = new MultiTextEdit();
 		setEdit(multiEdit);
-
 		setSaveMode(FORCE_SAVE);
-
+		
 		if (refactoringProject.isOpen()) {
 
 			try {
-				if (pomFile.exists() &&
-				    refactoringProject.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
+				if (pomFile.exists() && refactoringProject
+						.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 					dependencyReplacement();
 				}
 			} catch (CoreException e) {
@@ -79,33 +77,28 @@ public class MavenConfigurationFileRenameChange extends TextFileChange {
 		}
 	}
 
-	private int charsOnTheLine(String line) {
-		// Here we need to add one to represent the newline character
-		return line.length()+1;
-	}
-	
 	private String getArtifactInfoAsString(Dependency dep) {
-		String suffix= "";
-		return  suffix.concat(dep.getGroupId().concat("_._").concat(dep.getArtifactId()));
+		String suffix = "";
+		return suffix.concat(dep.getGroupId().concat("_._").concat(dep.getArtifactId()));
 	}
+
 	private void dependencyReplacement() throws IOException {
 		int fullIndex = 0;
-
 		FileReader fileReader = new FileReader(pomFile.getLocation().toFile());
-		BufferedReader reader = new BufferedReader(fileReader);
+		EnhancedBufferedReader reader = new EnhancedBufferedReader(fileReader);
 		String dependenciesStart = "<dependencies>";
 		String dependenciesEnd = "</dependencies>";
 		boolean isDependencies = false;
 		String case1String = "<artifactId>";
 		String case2String = "</artifactId>";
 		String artifactId = previousName;
-		String line = reader.readLine();
 		String artifactProperty = getArtifactInfoAsString(dependency);
 		dependency.setArtifactId(newName);
 		String newartifactProperty = getArtifactInfoAsString(dependency);
-		
-		while (line != null) {
-			
+
+		LineData lineData = reader.readLineData();
+		while (!lineData.isEmpty()) {
+			String line = lineData.getLine();
 			if (line.contains(artifactProperty)) {
 				String patternstr = "^(.)*(\\s)*(<){1}" + artifactProperty + "(>){1}(.)*(>)$";
 				Pattern pattern = Pattern.compile(patternstr);
@@ -133,17 +126,16 @@ public class MavenConfigurationFileRenameChange extends TextFileChange {
 			}
 
 			if (isDependencies && line.contains(artifactId)) {
-				if (line.contains(case1String) ||
-				    (previousLine.contains(case1String) && !previousLine.contains(case2String))) {
+				if (line.contains(case1String)
+						|| (previousLine.contains(case1String) && !previousLine.contains(case2String))) {
 					int case1LineIndex = line.indexOf(artifactId);
-					addEdit(new ReplaceEdit(fullIndex + case1LineIndex, artifactId.length(),
-					                        newName));
+					addEdit(new ReplaceEdit(fullIndex + case1LineIndex, artifactId.length(), newName));
 					break;
 				}
 			}
-			fullIndex += charsOnTheLine(line);
+			fullIndex += lineData.getFullLineLength();
 			previousLine = line;
-			line = reader.readLine();
+			lineData = reader.readLineData();
 		}
 		fileReader.close();
 		reader.close();

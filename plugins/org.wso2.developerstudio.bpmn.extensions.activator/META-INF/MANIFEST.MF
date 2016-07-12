@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Extentions
-Bundle-SymbolicName: org.wso2.developerstudio.bpmn.extensions;singleton:=true
+Bundle-SymbolicName: org.wso2.developerstudio.bpmn.extensions.activator;singleton:=true
 Bundle-Version: 3.6.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.bpmn.extensions.Activator
 Bundle-Vendor: WSO2
@@ -19,5 +19,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.common.ui;bundle-version="1.1.500",
  org.eclipse.ui.workbench
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ActivationPolicy: lazy
 Import-Package: org.osgi.framework
+Bundle-ClassPath: .

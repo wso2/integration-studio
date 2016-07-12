@@ -141,7 +141,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.wso2.developerstudio.bpmn.extensions"
+         id="org.wso2.developerstudio.bpmn.extensions.activator"
          download-size="0"
          install-size="0"
          version="0.0.0"

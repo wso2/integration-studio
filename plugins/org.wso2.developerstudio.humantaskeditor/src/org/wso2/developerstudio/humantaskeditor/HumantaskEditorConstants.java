@@ -149,5 +149,7 @@ public class HumantaskEditorConstants {
     public static final String HUMAN_TASK_EXPORT_WIZARD_TITLE = "Export Human Task Artifact";
 
     public static final String ORGANIZATIONAL_ENTITY_SCHEMA_FILE = "organizationalentityschema.xsd";
-
+    
+    public static final String HTEDITOR_HELP_NAME = "hteditor";
+    
 }

@@ -428,7 +428,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.selection = selection;
-        PlatformUI.getWorkbench().getHelpSystem().displayHelp("hteditor");
+        PlatformUI.getWorkbench().getHelpSystem().displayHelp(HumantaskEditorConstants.HTEDITOR_HELP_NAME);
         setHelpAvailable(true);
     }
 

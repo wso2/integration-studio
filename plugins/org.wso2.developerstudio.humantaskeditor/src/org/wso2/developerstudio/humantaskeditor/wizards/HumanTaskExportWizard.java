@@ -70,7 +70,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
     public void init(IWorkbench arg0, IStructuredSelection arg1) {
         this.selection = arg1;
         setWindowTitle(HumantaskEditorConstants.HUMAN_TASK_EXPORT_WIZARD_TITLE);
-        PlatformUI.getWorkbench().getHelpSystem().displayHelp("hteditor");
+        PlatformUI.getWorkbench().getHelpSystem().displayHelp(HumantaskEditorConstants.HTEDITOR_HELP_NAME);
         setHelpAvailable(true);
     }
 

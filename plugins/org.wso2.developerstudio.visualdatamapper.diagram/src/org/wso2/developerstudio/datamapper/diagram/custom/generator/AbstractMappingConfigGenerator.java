@@ -41,15 +41,18 @@ public abstract class AbstractMappingConfigGenerator implements MappingConfigGen
 	protected List<MappingOperation> populateOperationListFromModel(DataMapperDiagramModel model) {
 		ArrayList<MappingOperation> mappingOperationList = new ArrayList<>();
 		List<Integer> executionSeq = model.getExecutionSequence();
-		ArrayList<MappingOperation> outputMappingOperationList = new ArrayList<>();
-		ArrayList<MappingOperation> nonOutputMappingOperationList = new ArrayList<>();
 		for (Integer operationIndex : executionSeq) {
 			List<DMVariable> inputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.INPUT);
 			List<DMVariable> outputVariables = getVariablesFromModel(model, operationIndex, DMVariableType.OUTPUT);
 			DMOperation operation = model.getOperationsList().get(operationIndex);
 			mappingOperationList.add(new MappingOperation(inputVariables, outputVariables, operation, 0));
 		}
+		return sortMappingOperationList(mappingOperationList);
+	}
 
+	protected List<MappingOperation> sortMappingOperationList(List<MappingOperation> mappingOperationList) {
+		ArrayList<MappingOperation> outputMappingOperationList = new ArrayList<>();
+		ArrayList<MappingOperation> nonOutputMappingOperationList = new ArrayList<>();
 		for (MappingOperation mappingOperation : mappingOperationList) {
 			List<DMVariable> outputList = mappingOperation.getOutputVariables();
 			if (outputList.size() == 1 && OUTPUT_VARIABLE_NAME.equals(outputList.get(0).getType().name())) {

@@ -35,7 +35,8 @@ public class IfElseOperatorTransformer extends AbstractDMOperatorTransformer {
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
@@ -44,27 +45,32 @@ public class IfElseOperatorTransformer extends AbstractDMOperatorTransformer {
 				throw new IllegalArgumentException("If Else operator should have a condition specified");
 			}
 			if (inputVariables.size() >= 2) {
-				operationBuilder.append(
-						appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+				operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap,
+						parentForLoopBeanStack, forLoopBeanList, outputArrayVariableForLoop));
 				operationBuilder
 						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-								variableTypeMap, parentForLoopBeanStack, true) + ")");
+								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+								outputArrayVariableForLoop) + ")");
 				if (inputVariables.get(1) != null) {
 					operationBuilder.append("?(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+							outputArrayVariableForLoop) + ")");
 				} else {
 					operationBuilder.append("?(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-							outputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+							outputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+							outputArrayVariableForLoop) + ")");
 				}
 				if (inputVariables.size() > 2 && inputVariables.get(2) != null) {
 					operationBuilder.append(":(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-							inputVariables.get(2), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+							inputVariables.get(2), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+							outputArrayVariableForLoop) + ")");
 				} else {
 					operationBuilder.append(":(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-							outputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+							outputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+							outputArrayVariableForLoop) + ")");
 				}
 				operationBuilder.append(";");
-			} else{
+			} else {
 				throw new IllegalArgumentException("If Else operator should have at least one branch.");
 			}
 		} else {

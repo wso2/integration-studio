@@ -35,10 +35,11 @@ public class StringToNumberOperatorTransformer extends AbstractDMOperatorTransfo
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
@@ -46,7 +47,8 @@ public class StringToNumberOperatorTransformer extends AbstractDMOperatorTransfo
 				operationBuilder.append("NAN");
 			} else {
 				operationBuilder.append("Number(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						inputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+						inputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+						outputArrayVariableForLoop) + ")");
 			}
 
 			operationBuilder.append(";");

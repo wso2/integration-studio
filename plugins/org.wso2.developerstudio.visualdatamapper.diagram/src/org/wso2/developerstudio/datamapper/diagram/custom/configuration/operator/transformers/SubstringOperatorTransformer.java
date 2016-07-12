@@ -38,10 +38,11 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			String startIndex = (String) operator.getProperty(TransformerConstants.START_INDEX);
@@ -51,18 +52,18 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 0) {
 				operationBuilder
-						.append("("
-								+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-										variableTypeMap, parentForLoopBeanStack, true)
-								+ ")" + JS_TO_STRING + ".substring(");
+						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+								outputArrayVariableForLoop) + ")" + JS_TO_STRING + ".substring(");
 			}
 
 			if (startIndex.startsWith("{$") && inputVariables.size() > 1) {
 				startValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
-						variableTypeMap, tempParentForLoopBeanStack, true);
+						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop);
 				if (length.startsWith("{$") && inputVariables.size() > 2) {
 					lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
-							variableTypeMap, tempParentForLoopBeanStack, true);
+							variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+							outputArrayVariableForLoop);
 				} else {
 					lengthValue = length;
 				}
@@ -71,7 +72,7 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 				startValue = startIndex;
 				if (length.startsWith("{$") && inputVariables.size() > 1) {
 					lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
-							variableTypeMap, tempParentForLoopBeanStack, true);
+							variableTypeMap, tempParentForLoopBeanStack, true, null, null);
 				} else {
 					lengthValue = length;
 				}

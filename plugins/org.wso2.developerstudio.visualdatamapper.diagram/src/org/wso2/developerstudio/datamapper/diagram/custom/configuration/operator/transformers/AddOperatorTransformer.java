@@ -38,10 +38,11 @@ public class AddOperatorTransformer extends AbstractDMOperatorTransformer {
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
@@ -49,11 +50,12 @@ public class AddOperatorTransformer extends AbstractDMOperatorTransformer {
 			operationBuilder.append(CONSTANT_ADDITIVE);
 			if (inputVariables.size() > 0) {
 				operationBuilder.append(CONSTANT_ADD_SIGN + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true));
+						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+						outputArrayVariableForLoop));
 				for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
 					operationBuilder.append(CONSTANT_ADD_SIGN + ScriptGenerationUtil
 							.getPrettyVariableNameInForOperation(inputVariables.get(variableIndex), variableTypeMap,
-									tempParentForLoopBeanStack, true));
+									tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop));
 				}
 			}
 			operationBuilder.append(";");

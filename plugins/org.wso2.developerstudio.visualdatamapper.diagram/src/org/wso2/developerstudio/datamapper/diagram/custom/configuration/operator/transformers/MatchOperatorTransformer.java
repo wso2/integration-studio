@@ -38,25 +38,26 @@ public class MatchOperatorTransformer extends AbstractDMOperatorTransformer {
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			String customInput = (String) operator.getProperty(TransformerConstants.PATTERN_TAG);
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 0) {
 				operationBuilder
-						.append("("
-								+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-										variableTypeMap, parentForLoopBeanStack, true)
-								+ ")" + JS_TO_STRING + ".match(");
+						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+								outputArrayVariableForLoop) + ")" + JS_TO_STRING + ".match(");
 			}
 			if (customInput != null) {
 				if (inputVariables.size() == 2 && customInput.startsWith("{$")) {
 					operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true));
+							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+							outputArrayVariableForLoop));
 				} else {
 					operationBuilder.append(customInput);
 				}

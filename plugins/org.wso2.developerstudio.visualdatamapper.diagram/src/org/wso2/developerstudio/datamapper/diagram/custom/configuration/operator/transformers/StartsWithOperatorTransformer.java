@@ -38,10 +38,11 @@ public class StartsWithOperatorTransformer extends AbstractDMOperatorTransformer
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			String inputMethod = (String) operator.getProperty(TransformerConstants.PATTERN_TAG);
 			@SuppressWarnings("unchecked")
@@ -49,13 +50,16 @@ public class StartsWithOperatorTransformer extends AbstractDMOperatorTransformer
 			if (inputVariables.size() > 0) {
 				operationBuilder
 						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-								variableTypeMap, parentForLoopBeanStack, true) + ")");
+								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+								outputArrayVariableForLoop) + ")");
 			}
 			if (inputMethod != null) {
 				if (inputVariables.size() == 2 && inputMethod.startsWith("{$")) {
-					operationBuilder.append(
-							JS_TO_STRING + ".startsWith(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-									inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true) + ")");
+					operationBuilder.append(JS_TO_STRING + ".startsWith("
+							+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
+									variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+									outputArrayVariableForLoop)
+							+ ")");
 				} else {
 					operationBuilder.append(JS_TO_STRING + ".startsWith(\""
 							+ operator.getProperty(TransformerConstants.PATTERN_TAG) + "\")");

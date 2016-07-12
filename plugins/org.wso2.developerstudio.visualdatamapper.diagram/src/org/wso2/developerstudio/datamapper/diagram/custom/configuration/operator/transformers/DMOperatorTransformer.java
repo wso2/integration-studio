@@ -37,12 +37,14 @@ public interface DMOperatorTransformer {
 	 * @param inputVariables
 	 * @param outputVariables
 	 * @param operator
+	 * @param forLoopBeanList
+	 * @param outputArrayVariableForLoop
 	 * @param generator
 	 * 
 	 * @return script for operation
 	 */
 	String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator);
-
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop);
 }

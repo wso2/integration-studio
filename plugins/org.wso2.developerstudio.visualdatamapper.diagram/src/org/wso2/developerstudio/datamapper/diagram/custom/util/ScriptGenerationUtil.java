@@ -15,6 +15,7 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,7 +39,8 @@ public class ScriptGenerationUtil {
 	public static final String VALID_VARIABLE_NAME_REGEX = "^[a-zA-Z][a-zA-Z_$0-9]*$";
 
 	public static String getPrettyVariableNameInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map,
-			Stack<ForLoopBean> parentForLoopBeanStackTemp, boolean isOperationVariable) {
+			Stack<ForLoopBean> parentForLoopBeanStackTemp, boolean isOperationVariable,
+			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop) {
 		@SuppressWarnings("unchecked")
 		Stack<ForLoopBean> parentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStackTemp.clone();
 		// put index values for array type variables
@@ -70,12 +72,55 @@ public class ScriptGenerationUtil {
 				if (map.containsKey(variableName)) {
 					variableType = map.get(variableName).get(VARIABLE_TYPE_INDEX);
 					if (SchemaDataType.ARRAY.equals(variableType)) {
-						if (parentForLoopBeanStack.size() > 0) {
-							prettyVariableName += getValidNextName(nextName) + "["
-									+ getAccumulatedIterativeVariableString(parentForLoopBeanStack) + "]";
-						} else {
-							prettyVariableName += getValidNextName(nextName) + "[0]";
+						if (!outputArrayVariableForLoop.containsKey(variableName)) {
+							throw new IllegalArgumentException("Unknown variable name found : " + variableName);
 						}
+						int forLoopIndex = outputArrayVariableForLoop.get(variableName);
+						ForLoopBean tempForLoop = forLoopBeanList.get(forLoopIndex);
+						String iterateName = getForLoopIterateName(tempForLoop, forLoopBeanList, true);
+						if (iterateName.isEmpty()) {
+							iterateName = "0";
+						}
+						prettyVariableName += getValidNextName(nextName) + "[" + iterateName + "]";
+					} else if (nextName.startsWith("@") && isPerviousVariableTypePrimitive) {
+						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));
+					} else if (nextName.startsWith("@")) {
+						prettyVariableName += getValidNextName(nextName.replaceFirst("@", "attr_"));
+					} else {
+						prettyVariableName += getValidNextName(nextName);
+					}
+					if (SchemaDataType.DOUBLE.equals(variableType) || SchemaDataType.INT.equals(variableType)
+							|| SchemaDataType.BOOLEAN.equals(variableType)
+							|| SchemaDataType.STRING.equals(variableType)) {
+						isPerviousVariableTypePrimitive = true;
+					} else {
+						isPerviousVariableTypePrimitive = false;
+					}
+				} else {
+					throw new IllegalArgumentException(
+							"Unregistered Variable name found : " + variableName + " in - [" + map.keySet() + "]");
+				}
+				variableName += ".";
+			}
+			prettyVariableName = prettyVariableName.substring(1);
+		} else if (DMVariableType.OUTPUT.equals(variable.getType())) {
+			String[] variableNameArray = variable.getName().split("\\.");
+			boolean isPerviousVariableTypePrimitive = false;
+			for (String nextName : variableNameArray) {
+				variableName += nextName;
+				if (map.containsKey(variableName)) {
+					variableType = map.get(variableName).get(VARIABLE_TYPE_INDEX);
+					if (SchemaDataType.ARRAY.equals(variableType)) {
+						if (!outputArrayVariableForLoop.containsKey(variableName)) {
+							throw new IllegalArgumentException("Unknown variable name found : " + variableName);
+						}
+						int forLoopIndex = outputArrayVariableForLoop.get(variableName);
+						ForLoopBean tempForLoop = forLoopBeanList.get(forLoopIndex);
+						String iterateName = getForLoopIterateName(tempForLoop, forLoopBeanList, true);
+						if (iterateName.isEmpty()) {
+							iterateName = "0";
+						}
+						prettyVariableName += getValidNextName(nextName) + "[" + iterateName + "]";
 					} else if (nextName.startsWith("@") && isPerviousVariableTypePrimitive) {
 						prettyVariableName += "ATTR" + getValidNextName(nextName.replaceFirst("@", "attr_"));
 					} else if (nextName.startsWith("@")) {
@@ -233,5 +278,37 @@ public class ScriptGenerationUtil {
 			return true;
 		}
 		return false;
+	}
+
+	public static String instantiateForLoopCountVariables(ForLoopBean forLoopBean, List<ForLoopBean> forLoopBeanList) {
+		StringBuilder operationBuilder = new StringBuilder();
+		if (forLoopBean.getParentIndex() == -1) {
+			operationBuilder.append("// Instantiating for loop iterating variables for outputs" + "\n");
+		} else {
+			operationBuilder
+					.append("var " + getForLoopIterateName(forLoopBean, forLoopBeanList, true) + " = 0;" + "\n");
+		}
+		List<Integer> nestedForLoopList = forLoopBean.getNestedForLoopList();
+		for (Iterator<Integer> iterator = nestedForLoopList.iterator(); iterator.hasNext();) {
+			Integer index = (Integer) iterator.next();
+			ForLoopBean tempForLoopBean = forLoopBeanList.get(index);
+			operationBuilder.append(instantiateForLoopCountVariables(tempForLoopBean, forLoopBeanList));
+		}
+		return operationBuilder.toString();
+	}
+
+	public static String getForLoopIterateName(ForLoopBean tempForLoopBean, List<ForLoopBean> forLoopBeanList,
+			Boolean calledFromOutSide) {
+		StringBuilder operationBuilder = new StringBuilder();
+		if (tempForLoopBean.getParentIndex() == -1) {
+			return operationBuilder.toString();
+		}
+		// Iterative name should only contain "count" in the front
+		if (calledFromOutSide) {
+			operationBuilder.append("count");
+		}
+		operationBuilder.append("_" + tempForLoopBean.getIterativeName()
+				+ getForLoopIterateName(forLoopBeanList.get(tempForLoopBean.getParentIndex()), forLoopBeanList, false));
+		return operationBuilder.toString();
 	}
 }

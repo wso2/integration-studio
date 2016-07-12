@@ -36,17 +36,19 @@ public class GetOperatorTransformer extends AbstractDMOperatorTransformer {
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		int arrayIndex = (int) operator.getProperty(TransformerConstants.GET_OPERATOR_INDEX);
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() == 0) {
 				throw new IllegalArgumentException("Get Operation input variables number can not be 0");
 			} else {
 				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-						variableTypeMap, parentForLoopBeanStack, true) + "[" + arrayIndex + "]");
+						variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop)
+						+ "[" + arrayIndex + "]");
 			}
 			operationBuilder.append(";");
 		} else {

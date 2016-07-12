@@ -38,18 +38,20 @@ public class SetPrecisionOperatorTransformer extends AbstractDMOperatorTransform
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator) {
+			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop) {
 		int numOfDecimals = (int) operator.getProperty(NUM_OF_DECIMALS_TAG);
 		StringBuilder operationBuilder = new StringBuilder();
-		operationBuilder
-				.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack));
+		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() == 0) {
 				operationBuilder.append(CONSTANT_ADDITIVE);
 			} else {
 				operationBuilder
 						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-								variableTypeMap, parentForLoopBeanStack, true) + ")");
+								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+								outputArrayVariableForLoop) + ")");
 				operationBuilder.append(".toFixed(" + numOfDecimals + ")");
 			}
 			operationBuilder.append(";");

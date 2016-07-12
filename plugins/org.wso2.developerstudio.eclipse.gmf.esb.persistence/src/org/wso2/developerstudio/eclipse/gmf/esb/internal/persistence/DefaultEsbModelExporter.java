@@ -438,6 +438,7 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 				}
 				break;
 			case ENDPOINT:
+			case COMPLEX_ENDPOINT:
 				if (child instanceof EndpointDiagram) {
 					Endpoint transformEndpoint = transformEndpoint((EndpointDiagram) child);
 					if(transformEndpoint!=null){

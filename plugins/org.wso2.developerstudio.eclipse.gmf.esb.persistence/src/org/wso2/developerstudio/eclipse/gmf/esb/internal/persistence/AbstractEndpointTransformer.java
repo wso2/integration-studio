@@ -53,7 +53,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointF
 public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransformer {
 
 	@SuppressWarnings("deprecation")
-	protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) {
+	protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) throws NumberFormatException {
 
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 		EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
@@ -111,35 +111,47 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 
 		if (endpointCommons.getEndpointSuspendErrorCodes() != null) {
 			String suspendErrorCodes = endpointCommons.getEndpointSuspendErrorCodes().getText();
-			if (suspendErrorCodes != null && !"".equals(suspendErrorCodes)) {
+			if (StringUtils.isNotEmpty(suspendErrorCodes)) {
 				String[] suspendErrorCodesList = suspendErrorCodes.split("\\,");
 				List<String> suspendCodes = Arrays.asList(suspendErrorCodesList);
 				for (String code : suspendCodes) {
-					synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
+					try {
+						synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
+					} catch (NumberFormatException ex) {
+						throw new NumberFormatException("Input is invalid,the value should be an interger");
+					}
 				}
 			}
 		}
+		
 
-		if (endpointCommons.getEndpointSuspendInitialDuration() != null
-				&& StringUtils.isNumeric(endpointCommons.getEndpointSuspendInitialDuration().getText())
-				&& endpointCommons.getEndpointSuspendInitialDuration().getText() != ""
-				&& !endpointCommons.getEndpointSuspendInitialDuration().getText().isEmpty()) {
-			synapseEPDef.setInitialSuspendDuration(
-					Long.parseLong(endpointCommons.getEndpointSuspendInitialDuration().getText().trim()));
+		if (endpointCommons.getEndpointSuspendInitialDuration() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendInitialDuration().getText())){
+			try {
+				synapseEPDef.setInitialSuspendDuration(
+						Long.parseLong(endpointCommons.getEndpointSuspendInitialDuration().getText().trim()));
+			} catch (NumberFormatException ex) {
+				throw new NumberFormatException("Input is invalid,the value should be a long");
+			}
 		}
-		if (endpointCommons.getEndpointSuspendMaxDuration() != null
-				&& StringUtils.isNumeric(endpointCommons.getEndpointSuspendMaxDuration().getText())
-				&& endpointCommons.getEndpointSuspendMaxDuration().getText() != ""
-				&& !endpointCommons.getEndpointSuspendMaxDuration().getText().isEmpty()) {
-			synapseEPDef.setSuspendMaximumDuration(
-					Long.parseLong(endpointCommons.getEndpointSuspendMaxDuration().getText().trim()));
+	
+		if (endpointCommons.getEndpointSuspendMaxDuration() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendMaxDuration().getText())){
+			try {
+				synapseEPDef.setSuspendMaximumDuration(
+						Long.parseLong(endpointCommons.getEndpointSuspendMaxDuration().getText().trim()));
+			} catch (NumberFormatException ex) {
+				throw new NumberFormatException("Input is invalid,the value should be a long");
+			}
+			
 		}
-		if (endpointCommons.getEndpointSuspendProgressFactor() != null
-				&& StringUtils.isNumeric(endpointCommons.getEndpointSuspendProgressFactor().getText())
-				&& endpointCommons.getEndpointSuspendProgressFactor().getText() != ""
-				&& !endpointCommons.getEndpointSuspendProgressFactor().getText().isEmpty()) {
-			synapseEPDef.setSuspendProgressionFactor(
-					Float.parseFloat((endpointCommons.getEndpointSuspendProgressFactor().getText().trim())));
+		
+		if(endpointCommons.getEndpointSuspendProgressFactor() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendProgressFactor().getText())){
+			try {
+				synapseEPDef.setSuspendProgressionFactor(
+						Float.parseFloat((endpointCommons.getEndpointSuspendProgressFactor().getText().trim())));
+			} catch (NumberFormatException ex) {
+				throw new NumberFormatException("Input is invalid,the value should be a float");
+			}
+			
 		}
 
 		if (endpointCommons.getEndpointRetryErrorCodes() != null) {
@@ -148,26 +160,31 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 				String[] retryCodesList = retryErrorCodes.split("\\,");
 				List<String> retryCodes = Arrays.asList(retryCodesList);
 				for (String code : retryCodes) {
-					synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
+					try {
+						synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
+					} catch (NumberFormatException ex) {
+						throw new NumberFormatException("Input is invalid,the value should be a float");
+					}
+				
 				}
 			}
 		}
 
-		if (endpointCommons.getEndpointRetryCount() != null) {
-			if (StringUtils.isNumeric(endpointCommons.getEndpointRetryCount().getText())
-					&& endpointCommons.getEndpointRetryCount().getText() != ""
-					&& !endpointCommons.getEndpointRetryCount().getText().isEmpty()) {
+		if (endpointCommons.getEndpointRetryCount() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointRetryCount().getText())) {
+			try {
 				synapseEPDef.setRetriesOnTimeoutBeforeSuspend(
 						Integer.parseInt(endpointCommons.getEndpointRetryCount().getText().trim()));
-			}
+			} catch (NumberFormatException ex) {
+				throw new NumberFormatException("Input is invalid,the value should be a float");
+			}		
 		}
 
-		if (endpointCommons.getEndpointRetryDelay() != null) {
-			if (StringUtils.isNumeric(endpointCommons.getEndpointRetryDelay().getText())
-					&& endpointCommons.getEndpointRetryDelay().getText() != ""
-					&& !endpointCommons.getEndpointRetryDelay().getText().isEmpty()) {
+		if (endpointCommons.getEndpointRetryDelay() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointRetryDelay().getText())) {
+			try {
 				synapseEPDef.setRetryDurationOnTimeout(
 						Integer.parseInt(endpointCommons.getEndpointRetryDelay().getText().trim()));
+			} catch (NumberFormatException ex) {
+				throw new NumberFormatException("Input is invalid,the value should be a float");
 			}
 		}
 
@@ -184,13 +201,12 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 			}
 		}
 
-		if (endpointCommons.getEndpointTimeoutDuration() != null) {
-			if (StringUtils.isNumeric(endpointCommons.getEndpointTimeoutDuration().getText())
-					&& endpointCommons.getEndpointTimeoutDuration().getText() != ""
-					&& !endpointCommons.getEndpointTimeoutDuration().getText().isEmpty()
-					&& endpointCommons.getEndpointTimeoutDuration().getText() != "0") {
+		if (endpointCommons.getEndpointTimeoutDuration() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointTimeoutDuration().getText())) {
+			try {
 				synapseEPDef.setTimeoutDuration(
 						Long.parseLong(endpointCommons.getEndpointTimeoutDuration().getText().trim()));
+			} catch (NumberFormatException ex) {
+				throw new NumberFormatException("Input is invalid,the value should be a float");
 			}
 		}
 

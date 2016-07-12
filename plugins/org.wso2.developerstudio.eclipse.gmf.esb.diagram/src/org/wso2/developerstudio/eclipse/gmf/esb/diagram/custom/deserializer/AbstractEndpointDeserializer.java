@@ -313,8 +313,6 @@ public abstract class AbstractEndpointDeserializer
 		}
 
 
-		// TODO further processing on QoS
-
 		// Error Handling - Endpoint Suspension
 		setTextValue(endpointCommons.getEndpointSuspendErrorCodes(),
 				definition.getSuspendErrorCodes().toString().replace("[", "").replace("]", "").replace(", ", ","));
@@ -327,12 +325,12 @@ public abstract class AbstractEndpointDeserializer
 
 		// Error Handling - Endpoint Retry
 		setTextValue(endpointCommons.getEndpointRetryErrorCodes(),
-				definition.getRetryEnableErrorCodes().toString().replace("[", "").replace("]", "").replace(", ", ","));
+				definition.getTimeoutErrorCodes().toString().replace("[", "").replace("]", "").replace(", ", ","));
 
 		setTextValue(endpointCommons.getEndpointRetryCount(), definition.getRetriesOnTimeoutBeforeSuspend());
 
 		setTextValue(endpointCommons.getEndpointRetryDelay(), definition.getRetryDurationOnTimeout());
-
+		
 		// Error Handling - Endpoint Timeout
 		setTextValue(endpointCommons.getEndpointTimeoutDuration(), definition.getTimeoutDuration());
 

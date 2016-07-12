@@ -701,6 +701,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					updateSequenceDetails();
 					handleSourceViewActivatedEvent();
 				}
+			}catch (NumberFormatException nfe){
+				log.error("Cannot update source view", nfe);
+				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage("Invalid input value, the value should be a number");
+				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+				setActivePage(DESIGN_VIEW_PAGE_INDEX);
+				ErrorDialog.openError(getActiveEditor().getSite().getShell(), "Error",
+						"Cannot update source view. The following error(s) have been detected."
+								+ " Please see the error log for more details ",
+						editorStatus);
 			} catch (Exception e) {
 				log.error("Cannot update source view", e);
 				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
@@ -998,6 +1007,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 						iEventBroker.send(EsbEditorEvent.EVENT_TOPIC_SAVE_EDITORS,
 								updateAssociatedXMLFile.getLocation().toOSString());
 					}
+				} catch (NumberFormatException nfe){
+					sourceDirty = true;
+					log.error("Error while saving the diagram", nfe);
+					String errorMsgHeader = "Save failed. Following error(s) have been detected."
+							+ " Please see the error log for more details.";
+					String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage("Invalid input value, the value should be a number");
+					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+					ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 				} catch (Exception e) {
 					sourceDirty = true;
 					log.error("Error while saving the diagram", e);

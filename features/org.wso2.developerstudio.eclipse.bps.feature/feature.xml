@@ -17,184 +17,185 @@
   under the License.
    -->
 <feature
-      id="org.wso2.developerstudio.eclipse.bps.feature"
-      label="WSO2 BPS Tooling BPEL Feature"
-      version="3.6.0.qualifier"
-      provider-name="%providerName">
+        id="org.wso2.developerstudio.eclipse.bps.feature"
+        label="WSO2 BPS Tooling BPEL Feature"
+        version="3.6.0.qualifier"
+        provider-name="%providerName">
 
-   <description url="http://wso2.com">
-      This feature will install plugins related WSO2 Business Process Server BPEL Editor. With this plugins you can create a deployable BPEL artifact using GUI tools.
-   </description>
+    <description url="http://wso2.com">
+        This feature will install plugins related WSO2 Business Process Server BPEL Editor. With this plugins you can
+        create a deployable BPEL artifact using GUI tools.
+    </description>
 
-   <copyright url="%copyrightURL">
-      %copyright
-   </copyright>
+    <copyright url="%copyrightURL">
+        %copyright
+    </copyright>
 
-   <license url="%licenseURL">
-      %license
-   </license>
+    <license url="%licenseURL">
+        %license
+    </license>
 
-   <requires>
-       <import feature="org.wso2.developerstudio.kernel.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.capp.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.carbon.server.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.carbon.server-40.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.carbon.server-42.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.carbon.server-remote.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.carbon.server-44.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.dashboard.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.kernel.registry.core.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.kernel.security.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.kernel.utils.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.library.artifact.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.platform.libraries.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.cloud.utils.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.usr.management.feature"
-			version="0.0.0"/>
-		 <import feature="org.wso2.developerstudio.mvn.multimodule.feature"
-			version="0.0.0"/>
-   </requires>
+    <requires>
+        <import feature="org.wso2.developerstudio.kernel.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.capp.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server-40.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server-42.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server-remote.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.carbon.server-44.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.dashboard.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.kernel.registry.core.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.kernel.security.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.kernel.wso2plugins.default.samples.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.kernel.utils.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.library.artifact.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.platform.libraries.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.cloud.utils.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.usr.management.feature"
+                version="0.0.0"/>
+        <import feature="org.wso2.developerstudio.mvn.multimodule.feature"
+                version="0.0.0"/>
+    </requires>
 
-   <plugin
-         id="org.eclipse.bpel.apache.ode.deploy.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.apache.ode.deploy.model"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.apache.ode.deploy.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.apache.ode.deploy.ui"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.common.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.common.model"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.common.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.common.ui"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.common.wsdl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.common.wsdl"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.model"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.runtimes"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.runtimes"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.ui"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.validator"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.validator"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.wsil.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.wsil.model"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.eclipse.bpel.xpath10"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.eclipse.bpel.xpath10"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.wso2.developerstudio.bpel.humantask.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.wso2.developerstudio.bpel.humantask.model"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.wso2.developerstudio.bpel.humantask.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.wso2.developerstudio.bpel.humantask.ui"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.wso2.wsf.ide.bpel.export"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.wso2.wsf.ide.bpel.export"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.wso2.developerstudio.eclipse.artifact.bpel"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.wso2.developerstudio.eclipse.artifact.bpel"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.wso2.developerstudio.eclipse.bpel.connector"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.wso2.developerstudio.eclipse.bpel.connector"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.wso2.developerstudio.eclipse.bpel.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.wso2.developerstudio.eclipse.bpel.core"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
-   <plugin
-         id="org.wso2.developerstudio.humantaskeditor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+    <plugin
+            id="org.wso2.developerstudio.humantaskeditor"
+            download-size="0"
+            install-size="0"
+            version="0.0.0"
+            unpack="false"/>
 
 </feature>

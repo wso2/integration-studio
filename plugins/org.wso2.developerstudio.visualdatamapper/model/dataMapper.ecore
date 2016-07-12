@@ -275,6 +275,8 @@
     <eLiterals name="STRING_TO_NUMBER" value="37"/>
     <eLiterals name="INSTANTIATE" value="40"/>
     <eLiterals name="GET" value="41" literal="GET"/>
+    <eLiterals name="TO_STRING" value="42"/>
+    <eLiterals name="GLOBAL_VARIABLE" value="43"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Celi" eSuperTypes="#//Operator"/>
@@ -286,5 +288,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="ToString" eSuperTypes="#//Operator"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GlobalVariable" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalVariable" eSuperTypes="#//Operator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="defaultName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="defaultValue"/>
+  </eClassifiers>
 </ecore:EPackage>

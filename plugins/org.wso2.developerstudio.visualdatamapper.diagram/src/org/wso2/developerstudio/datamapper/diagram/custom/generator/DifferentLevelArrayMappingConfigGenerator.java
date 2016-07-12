@@ -73,10 +73,23 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 	@Override
 	public String generateMappingConfig(DataMapperDiagramModel model) throws DataMapperException {
 		initializeAlgorithmFields();
+		String globalVariables = instantiateGlobalVariables(model);
 		List<MappingOperation> mappingOperationList = populateOperationListFromModel(model);
 		String mainFunction = generateMainFunction(mappingOperationList, model);
 		String customFunctions = generateCustomFunctions(model);
-		return mainFunction + customFunctions;
+		return globalVariables+mainFunction + customFunctions;
+	}
+
+	private String instantiateGlobalVariables(DataMapperDiagramModel model) {
+		StringBuilder functionBuilder = new StringBuilder();
+		for (DMOperation operation : model.getOperationsList()) {
+			if (DataMapperOperatorType.GLOBAL_VARIABLE.equals(operation.getOperatorType())) {
+				functionBuilder.append("var " + operation.getProperty(TransformerConstants.GLOBAL_VARIABLE_NAME) + " = "
+						+ operation.getProperty(TransformerConstants.GLOBAL_VARIABLE_DEFAULT_VALUE));
+				functionBuilder.append(";\n");
+			}
+		}
+		return functionBuilder.toString();
 	}
 
 	protected String generateCustomFunctions(DataMapperDiagramModel model) {

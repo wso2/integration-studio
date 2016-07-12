@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -18,9 +19,11 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.datamapper.GlobalVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.GlobalVariableCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.GlobalVariableItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 
 /**
  * @generated NOT
@@ -88,7 +91,8 @@ public class GlobalVariableEditPart extends AbstractOperatorEditPart {
 	* @generated NOT
 	*/
 	protected IFigure createNodeShape() {
-		return primaryShape = new GlobalVariableFigure();
+		String name = ((GlobalVariable) ((View) getModel()).getElement()).getName();
+		return primaryShape = new GlobalVariableFigure(name);
 	}
 
 	/**
@@ -186,8 +190,11 @@ public class GlobalVariableEditPart extends AbstractOperatorEditPart {
 	
 	public class GlobalVariableFigure extends OperatorRectangle {
 
-		public GlobalVariableFigure() {
+		public GlobalVariableFigure(String name) {
 			super("GlobalVariable");
+			if (StringUtils.isNotEmpty(name)) {
+				super.changeOperatorHeader("Global Variable : \"" + name + "\"");
+			}
 			this.setBackgroundColor(THIS_BACK);
 		}
 
@@ -206,5 +213,9 @@ public class GlobalVariableEditPart extends AbstractOperatorEditPart {
 	}
 
 	static final Color THIS_BACK = DataMapperColorConstants.connectorColor;
+
+	public OperatorRectangle getGlobalVariableFigure() {
+		return (OperatorRectangle) primaryShape;
+	}
 
 }

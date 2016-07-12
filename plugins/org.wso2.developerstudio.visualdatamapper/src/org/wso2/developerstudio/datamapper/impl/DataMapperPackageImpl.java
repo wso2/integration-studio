@@ -1645,6 +1645,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGlobalVariable_Name() {
+		return (EAttribute)globalVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGlobalVariable_DefaultValue() {
+		return (EAttribute)globalVariableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComparisonOperatorType() {
 		return comparisonOperatorTypeEEnum;
 	}
@@ -1871,6 +1889,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		toStringEClass = createEClass(TO_STRING);
 
 		globalVariableEClass = createEClass(GLOBAL_VARIABLE);
+		createEAttribute(globalVariableEClass, GLOBAL_VARIABLE__NAME);
+		createEAttribute(globalVariableEClass, GLOBAL_VARIABLE__DEFAULT_VALUE);
 
 		// Create enums
 		comparisonOperatorTypeEEnum = createEEnum(COMPARISON_OPERATOR_TYPE);
@@ -2124,6 +2144,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(toStringEClass, ToString.class, "ToString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(globalVariableEClass, GlobalVariable.class, "GlobalVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGlobalVariable_Name(), ecorePackage.getEString(), "name", "defaultName", 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGlobalVariable_DefaultValue(), ecorePackage.getEString(), "defaultValue", "defaultValue", 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(comparisonOperatorTypeEEnum, ComparisonOperatorType.class, "ComparisonOperatorType");
@@ -2198,6 +2220,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.STRING_TO_NUMBER);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.INSTANTIATE);
 		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.GET);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.TO_STRING);
+		addEEnumLiteral(dataMapperOperatorTypeEEnum, DataMapperOperatorType.GLOBAL_VARIABLE);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -29,6 +29,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.EndsWithOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.FloorOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.GetOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.GlobalVariableOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.IfElseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.InstantiateOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.MatchOperatorTransformer;
@@ -45,6 +46,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SubstringOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.SubtractOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToLowerCaseOperatorTransformer;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToStringOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ToUpperCaseOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.TrimOperatorTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.operator.transformers.ANDOperatorTransformer;
@@ -100,6 +102,8 @@ public class DMOperatorTransformerFactory {
 			return new StringToBlooeanOperatorTransformer();
 		case STRING_TO_NUMBER:
 			return new StringToNumberOperatorTransformer();
+		case TO_STRING:
+			return new ToStringOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Type Convertion operator type found for tranform in DMOperatorTransformerFactory : " + type);
@@ -146,6 +150,8 @@ public class DMOperatorTransformerFactory {
 			return new PropertiesOperatorTransformer();
 		case GET:
 			return new GetOperatorTransformer();
+		case GLOBAL_VARIABLE:
+			return new GlobalVariableOperatorTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unknown Common operator type found for tranform in DMOperatorTransformerFactory : " + type);

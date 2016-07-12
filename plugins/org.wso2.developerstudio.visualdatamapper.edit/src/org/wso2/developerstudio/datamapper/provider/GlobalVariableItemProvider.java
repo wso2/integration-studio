@@ -9,8 +9,12 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.GlobalVariable;
 
 /**
@@ -41,8 +45,54 @@ public class GlobalVariableItemProvider extends OperatorItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
+			addDefaultValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GlobalVariable_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalVariable_name_feature", "_UI_GlobalVariable_type"),
+				 DataMapperPackage.Literals.GLOBAL_VARIABLE__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Default Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefaultValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GlobalVariable_defaultValue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_GlobalVariable_defaultValue_feature", "_UI_GlobalVariable_type"),
+				 DataMapperPackage.Literals.GLOBAL_VARIABLE__DEFAULT_VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -64,8 +114,10 @@ public class GlobalVariableItemProvider extends OperatorItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		GlobalVariable globalVariable = (GlobalVariable)object;
-		return getString("_UI_GlobalVariable_type") + " " + globalVariable.isSerialized();
+		String label = ((GlobalVariable)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_GlobalVariable_type") :
+			getString("_UI_GlobalVariable_type") + " " + label;
 	}
 	
 
@@ -79,6 +131,13 @@ public class GlobalVariableItemProvider extends OperatorItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(GlobalVariable.class)) {
+			case DataMapperPackage.GLOBAL_VARIABLE__NAME:
+			case DataMapperPackage.GLOBAL_VARIABLE__DEFAULT_VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

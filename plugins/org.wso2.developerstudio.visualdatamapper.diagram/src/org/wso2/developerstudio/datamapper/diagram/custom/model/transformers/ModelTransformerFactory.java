@@ -46,6 +46,8 @@ public class ModelTransformerFactory {
 			return new StringToBooleanModelTransformer();
 		case STRING_TO_NUMBER:
 			return new StringToNumberModelTransformer();
+		case TO_STRING:
+			return new ToStringModelTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unable to find type convertion operator model transformer to operator type in ModelTransformerFactory: "
@@ -89,6 +91,8 @@ public class ModelTransformerFactory {
 			return new CustomOperatorModelTransformer();
 		case PROPERTIES:
 			return new PropertiesModelTransformer();
+		case GLOBAL_VARIABLE:
+			return new GlobalVariableModelTransformer();
 		default:
 			throw new IllegalArgumentException(
 					"Unable to find common operator model transformer to operator type in ModelTransformerFactory: "

@@ -410,7 +410,23 @@ public enum DataMapperOperatorType implements Enumerator {
 	 * @generated NOT
 	 * @ordered
 	 */
-	GET(41, "GET", "GET",COMMON_OPERATION);
+	GET(41, "GET", "GET",COMMON_OPERATION), /**
+	 * The '<em><b>TO STRING</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TO_STRING_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	TO_STRING(42, "TO_STRING", "TO_STRING",TYPE_CONVERSION_OPERATION), /**
+	 * The '<em><b>GLOBAL VARIABLE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #GLOBAL_VARIABLE_VALUE
+	 * @generated NOT
+	 * @ordered
+	 */
+	GLOBAL_VARIABLE(43, "GLOBAL_VARIABLE", "GLOBAL_VARIABLE",COMMON_OPERATION);
 
 	/**
 	 * The '<em><b>OPERATOR</b></em>' literal value.
@@ -1073,6 +1089,36 @@ public enum DataMapperOperatorType implements Enumerator {
 	public static final int GET_VALUE = 41;
 
 	/**
+	 * The '<em><b>TO STRING</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TO STRING</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TO_STRING
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TO_STRING_VALUE = 42;
+
+	/**
+	 * The '<em><b>GLOBAL VARIABLE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>GLOBAL VARIABLE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #GLOBAL_VARIABLE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GLOBAL_VARIABLE_VALUE = 43;
+
+	/**
 	 * An array of all the '<em><b>Operator Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1124,6 +1170,8 @@ public enum DataMapperOperatorType implements Enumerator {
 			STRING_TO_NUMBER,
 			INSTANTIATE,
 			GET,
+			TO_STRING,
+			GLOBAL_VARIABLE,
 		};
 
 	/**
@@ -1222,6 +1270,8 @@ public enum DataMapperOperatorType implements Enumerator {
 			case STRING_TO_NUMBER_VALUE: return STRING_TO_NUMBER;
 			case INSTANTIATE_VALUE: return INSTANTIATE;
 			case GET_VALUE: return GET;
+			case TO_STRING_VALUE: return TO_STRING;
+			case GLOBAL_VARIABLE_VALUE: return GLOBAL_VARIABLE;
 		}
 		return null;
 	}

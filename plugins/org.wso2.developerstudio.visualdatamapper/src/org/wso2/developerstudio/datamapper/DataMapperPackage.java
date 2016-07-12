@@ -4029,13 +4029,31 @@ public interface DataMapperPackage extends EPackage {
 	int GLOBAL_VARIABLE__OPERATOR_TYPE = OPERATOR__OPERATOR_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE__NAME = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_VARIABLE__DEFAULT_VALUE = OPERATOR_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Global Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GLOBAL_VARIABLE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int GLOBAL_VARIABLE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.
@@ -5379,6 +5397,28 @@ public interface DataMapperPackage extends EPackage {
 	EClass getGlobalVariable();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.GlobalVariable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.wso2.developerstudio.datamapper.GlobalVariable#getName()
+	 * @see #getGlobalVariable()
+	 * @generated
+	 */
+	EAttribute getGlobalVariable_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.GlobalVariable#getDefaultValue <em>Default Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Default Value</em>'.
+	 * @see org.wso2.developerstudio.datamapper.GlobalVariable#getDefaultValue()
+	 * @see #getGlobalVariable()
+	 * @generated
+	 */
+	EAttribute getGlobalVariable_DefaultValue();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6527,6 +6567,22 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass GLOBAL_VARIABLE = eINSTANCE.getGlobalVariable();
+
+								/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GLOBAL_VARIABLE__NAME = eINSTANCE.getGlobalVariable_Name();
+
+								/**
+		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GLOBAL_VARIABLE__DEFAULT_VALUE = eINSTANCE.getGlobalVariable_DefaultValue();
 
 								/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.ComparisonOperatorType <em>Comparison Operator Type</em>}' enum.

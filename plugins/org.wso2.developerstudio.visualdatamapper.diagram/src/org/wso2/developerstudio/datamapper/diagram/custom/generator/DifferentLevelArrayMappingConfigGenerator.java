@@ -73,10 +73,23 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 	@Override
 	public String generateMappingConfig(DataMapperDiagramModel model) throws DataMapperException {
 		initializeAlgorithmFields();
+		String globalVariables = instantiateGlobalVariables(model);
 		List<MappingOperation> mappingOperationList = populateOperationListFromModel(model);
 		String mainFunction = generateMainFunction(mappingOperationList, model);
 		String customFunctions = generateCustomFunctions(model);
-		return mainFunction + customFunctions;
+		return globalVariables+mainFunction + customFunctions;
+	}
+
+	private String instantiateGlobalVariables(DataMapperDiagramModel model) {
+		StringBuilder functionBuilder = new StringBuilder();
+		for (DMOperation operation : model.getOperationsList()) {
+			if (DataMapperOperatorType.GLOBAL_VARIABLE.equals(operation.getOperatorType())) {
+				functionBuilder.append("var " + operation.getProperty(TransformerConstants.GLOBAL_VARIABLE_NAME) + " = "
+						+ operation.getProperty(TransformerConstants.GLOBAL_VARIABLE_DEFAULT_VALUE));
+				functionBuilder.append(";\n");
+			}
+		}
+		return functionBuilder.toString();
 	}
 
 	protected String generateCustomFunctions(DataMapperDiagramModel model) {
@@ -272,15 +285,23 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 
 				// find the most inner for loop bean to assign this operation
 				if (indexOfMostInnerForLoopBean >= 0) {
-					// Instantiate operation of array type variables should go
-					// to
-					// parent
-					// for loop bean
+					/*
+					 * Instantiate operation of array type variables should go
+					 * to parent for loop bean
+					 */
 					if (DataMapperOperatorType.INSTANTIATE.equals(mappingOperation.getOperation().getOperatorType())
 							&& SchemaDataType.ARRAY.equals(
 									mappingOperation.getOperation().getProperty(TransformerConstants.VARIABLE_TYPE))) {
 						indexOfMostInnerForLoopBean = getForLoopBeanList().get(indexOfMostInnerForLoopBean)
 								.getParentIndex();
+					}
+					if (indexOfMostInnerForLoopBean < 0) {
+						/*
+						 * When one to array mapping occurs for loop index of
+						 * array instantiate operation goes to -1. It also
+						 * should be in root for loop.
+						 */
+						indexOfMostInnerForLoopBean = 0;
 					}
 					getForLoopBeanList().get(indexOfMostInnerForLoopBean).getOperationList()
 							.add(mappingOperation.getIndex());
@@ -374,6 +395,9 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 	 * @return
 	 */
 	private int getParentForLoopBeanIndex(int targetRootForLoopIndex, int mostChildForLoopBean) {
+		if (targetRootForLoopIndex == mostChildForLoopBean) {
+			return mostChildForLoopBean;
+		}
 		if (mostChildForLoopBean >= 0) {
 			ForLoopBean childForLoopBean = getForLoopBeanList().get(mostChildForLoopBean);
 			int forLoopBeanIndex = mostChildForLoopBean;
@@ -438,7 +462,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 						} else {
 							functionBuilder.append("if( ");
 						}
-						functionBuilder.append("(!" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+						functionBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 								new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
 								map, tempForLoopBeanParentStack, false) + ") ");
 					}
@@ -509,7 +533,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 					} else {
 						operationBuilder.append("if( ");
 					}
-					operationBuilder.append("(!" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+					operationBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1), map,
 							tempForLoopBeanParentStack, false) + ") ");
 				}

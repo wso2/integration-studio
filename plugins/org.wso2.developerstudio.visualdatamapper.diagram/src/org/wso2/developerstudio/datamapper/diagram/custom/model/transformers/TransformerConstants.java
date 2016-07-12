@@ -48,6 +48,8 @@ public class TransformerConstants {
 	public static final String VARIABLE_TYPE = "VARIABLE_TYPE";
 	public static final String JS_TO_STRING = ".toString()";
 	public static final String GET_OPERATOR_INDEX = "getOperationIndex";
+	public static final String GLOBAL_VARIABLE_NAME = "globalVariableName";
+	public static final String GLOBAL_VARIABLE_DEFAULT_VALUE = "globalVariableValue";
 
     
 }

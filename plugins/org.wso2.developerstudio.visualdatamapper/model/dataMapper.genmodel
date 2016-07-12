@@ -78,6 +78,8 @@
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/STRING_TO_NUMBER"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/INSTANTIATE"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/GET"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/TO_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//DataMapperOperatorType/GLOBAL_VARIABLE"/>
     </genEnums>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
     <genClasses ecoreClass="dataMapper.ecore#//Trim"/>
@@ -230,6 +232,9 @@
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
     <genClasses ecoreClass="dataMapper.ecore#//ToString"/>
-    <genClasses ecoreClass="dataMapper.ecore#//GlobalVariable"/>
+    <genClasses ecoreClass="dataMapper.ecore#//GlobalVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//GlobalVariable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//GlobalVariable/defaultValue"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

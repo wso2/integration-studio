@@ -58,7 +58,10 @@ public abstract class AbstractDMOperatorTransformer implements DMOperatorTransfo
 				operationBuilder.append(" ] ");
 			}
 		}
-		operationBuilder.append(" = ");
+		// If operation does not have output variables = sign is not needed.
+		if (outputVariables.size() > 0) {
+			operationBuilder.append(" = ");
+		}
 		return operationBuilder.toString();
 	}
 

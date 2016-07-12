@@ -664,10 +664,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
-	*/
+	 * @generated NOT
+	 */
 	private ToolEntry createToString37CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.ToString37CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.ToString37CreationTool_title,
 				Messages.ToString37CreationTool_desc, Collections.singletonList(DataMapperElementTypes.ToString_2040));
 		entry.setId("createToString37CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.ToString_2040));
@@ -676,10 +676,10 @@ public class DataMapperPaletteFactory {
 	}
 
 	/**
-	* @generated
-	*/
+	 * @generated NOT
+	 */
 	private ToolEntry createGlobalVariable38CreationTool() {
-		DefaultNodeToolEntry entry = new DefaultNodeToolEntry(Messages.GlobalVariable38CreationTool_title,
+		NodeToolEntry entry = new NodeToolEntry(Messages.GlobalVariable38CreationTool_title,
 				Messages.GlobalVariable38CreationTool_desc,
 				Collections.singletonList(DataMapperElementTypes.GlobalVariable_2041));
 		entry.setId("createGlobalVariable38CreationTool"); //$NON-NLS-1$

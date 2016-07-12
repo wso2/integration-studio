@@ -40,6 +40,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.KeyHandler;
 import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.common.ui.services.marker.MarkerNavigationService;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
@@ -76,8 +77,8 @@ import org.eclipse.ui.part.ShowInContext;
 import org.wso2.developerstudio.datamapper.DataMapperRoot;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
+import org.wso2.developerstudio.datamapper.diagram.custom.CustomPaletteViewerKeyHandler;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
-import org.wso2.developerstudio.datamapper.diagram.custom.part.CustomDiagramGraphicalViewerKeyHandler;
 import org.wso2.developerstudio.datamapper.diagram.custom.persistence.DataMapperModelTransformer;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.EditorUtils;
 import org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem;
@@ -141,6 +142,10 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	 */
 	protected int getInitialDockLocation() {
 		return PositionConstants.WEST;
+	}
+	
+	protected int getInitialPaletteSize() {
+		return 200;
 	}
 
 	/**
@@ -333,14 +338,21 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
+		
+		// Define key handler for palette viewer.
+		PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
+		KeyHandler paletteViewerKeyHandler = new CustomPaletteViewerKeyHandler(paletteViewer);
+		paletteViewer.setKeyHandler(paletteViewerKeyHandler);
+		
 		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this,
 				getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);
 		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
+
 	}
 
 	@Override

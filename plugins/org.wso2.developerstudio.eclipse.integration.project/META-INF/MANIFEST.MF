@@ -26,6 +26,5 @@ Import-Package: org.apache.axiom.om;version="1.2.11.wso2v10",
  org.wso2.developerstudio.eclipse.platform.ui.editor;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.platform.ui.startup;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.platform.ui.validator;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.platform.ui.wizard;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.utils.file.model;version="[4.2.0,5.0.0)"
+ org.wso2.developerstudio.eclipse.platform.ui.wizard;version="[4.1.0,5.0.0)"
 Export-Package: org.wso2.developerstudio.eclipse.integration.project.artifact

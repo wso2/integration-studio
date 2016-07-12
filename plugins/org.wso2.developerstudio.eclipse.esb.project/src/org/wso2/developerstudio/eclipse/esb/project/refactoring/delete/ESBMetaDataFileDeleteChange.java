@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2012-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.developerstudio.eclipse.esb.project.refactoring.delete;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+package org.wso2.developerstudio.eclipse.esb.project.refactoring.delete;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -29,15 +25,19 @@ import org.eclipse.text.edits.MultiTextEdit;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.utils.file.EnhancedBufferedReader;
-import org.wso2.developerstudio.eclipse.utils.file.model.LineData;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ESBMetaDataFileDeleteChange extends TextFileChange {
 	
-	private static final String ARTIFACT_XML = "artifact.xml";
-
-	IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
+    private static final String ARTIFACT_XML_FILE = "artifact.xml";
+    private static final String LINE_SEPERATOR_PROPERTY = "line.separator";
+	IDeveloperStudioLog log= Logger.getLog(Activator.PLUGIN_ID);
+	
 	private IFile metaDataFile;
 	private IFile originalFile;
 
@@ -51,7 +51,7 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 			file.refreshLocal(0, new NullProgressMonitor());
 			originalFile.refreshLocal(0, new NullProgressMonitor());
 		} catch (CoreException ignrore) {
-
+ 
 		}
 	}
 
@@ -67,7 +67,7 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 	}
 
 	private void addTextEdits() {
-		if (ARTIFACT_XML.equalsIgnoreCase(metaDataFile.getName())) {
+		if (ARTIFACT_XML_FILE.equalsIgnoreCase(metaDataFile.getName())) {
 			try {
 				identifyReplaces();
 			} catch (IOException e) {
@@ -84,21 +84,24 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 		String nameProperty = "name=\"";
 
 		List<String> artifactEntry = new ArrayList<String>();
-		List<String> artifactEntryLineEndings = new ArrayList<String>();
 		boolean isArtifact = false;
 		boolean isArtifacts = false;
 		boolean isArtifactMatch = false;
-		boolean isArtifactLine = false;
+		boolean isArtifactLine=false;
 
 		int fullIndex = 0;
 		int startIndex = 0;
 		int spaceCount = 0;
-		EnhancedBufferedReader reader = new EnhancedBufferedReader(new FileReader(metaDataFile.getLocation().toFile()));
-		String fileName = originalFile.getName().substring(0,
-				originalFile.getName().length() - originalFile.getFileExtension().length() - 1);
-		LineData lineData = reader.readLineData();
-		while (!lineData.isEmpty()) {
-			String line = lineData.getLine();
+		BufferedReader reader =
+		                        new BufferedReader(new FileReader(metaDataFile.getLocation()
+		                                                                      .toFile()));
+		String line = reader.readLine();
+		String fileName =
+		                  originalFile.getName().substring(0,
+		                                                   originalFile.getName().length() -
+		                                                       originalFile.getFileExtension()
+		                                                                   .length() - 1);
+		while (line != null) {
 			if (!isArtifacts && line.contains(artifactsStart)) {
 				isArtifacts = true;
 			}
@@ -113,7 +116,7 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 					int artifactTagIndex = line.indexOf(artifactStart);
 					spaceCount = 0;
 					for (int stringIndex = artifactTagIndex - 1; stringIndex >= 0; stringIndex--) {
-						if (line.charAt(stringIndex) == ' ' || line.charAt(stringIndex) == '\t') {
+						if (line.charAt(stringIndex) == ' ') {
 							spaceCount++;
 						} else {
 							break;
@@ -123,7 +126,6 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 					if (line.contains(nameProperty + fileName + "\"")) {
 						isArtifact = true;
 						artifactEntry.add(line.substring(artifactTagIndex));
-						artifactEntryLineEndings.add(lineData.getLineSeperator());
 						isArtifactLine = true;
 					} else {
 						isArtifact = false;
@@ -135,7 +137,6 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 				if (isArtifact) {
 					if (!isArtifactLine && !artifactEntry.contains(line)) {
 						artifactEntry.add(line);
-						artifactEntryLineEndings.add(lineData.getLineSeperator());
 					}
 					if (line.trim().startsWith(artifactEnd)) {
 						isArtifact = false;
@@ -145,8 +146,8 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 
 				if (isArtifactMatch) {
 					int length = 0;
-					for (int i = 0; i < artifactEntry.size(); i++) {
-						length += artifactEntry.get(i).length() + artifactEntryLineEndings.get(i).length();
+					for (String string : artifactEntry) {
+						length += charsOnTheLine(string);
 					}
 					addEdit(new DeleteEdit(startIndex, length + spaceCount));
 					break;
@@ -154,9 +155,17 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 
 			}
 
-			fullIndex += lineData.getFullLineLength();
-			lineData = reader.readLineData();
+			fullIndex += charsOnTheLine(line);
+			line = reader.readLine();
 		}
 		reader.close();
 	}
+
+	private int charsOnTheLine(String line) {
+		// Here we need to add one to represent the newline character
+		String lineModified = line
+				+ System.getProperty(LINE_SEPERATOR_PROPERTY);
+		return lineModified.length();
+	}
+
 }

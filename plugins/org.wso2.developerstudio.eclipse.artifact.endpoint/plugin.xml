@@ -107,7 +107,7 @@
 				</enablement>
 		</renameParticipant>
  </extension>
-  <extension
+ <extension
          point="org.eclipse.ltk.core.refactoring.deleteParticipants">
        <deleteParticipant
 			class="org.wso2.developerstudio.eclipse.artifact.endpoint.refactor.EndpointArtifactDeleteParticipant"
@@ -115,14 +115,9 @@
 			name="ESBArtifactDeleteParticipantRefactor">
 				<enablement>
 					<and>
-						<or>
 							<instanceof
 								value="org.eclipse.core.resources.IFile">
 							</instanceof>
-							<instanceof
-								value="org.eclipse.core.resources.IProject">
-							</instanceof>
-						</or>
 						<adapt type="org.eclipse.core.resources.IResource">
              				<test
                    				property="org.eclipse.core.resources.projectNature"

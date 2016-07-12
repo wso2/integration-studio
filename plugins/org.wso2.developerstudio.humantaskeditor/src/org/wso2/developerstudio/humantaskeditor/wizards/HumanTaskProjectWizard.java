@@ -428,6 +428,8 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.selection = selection;
+        PlatformUI.getWorkbench().getHelpSystem().displayHelp(HumantaskEditorConstants.HTEDITOR_HELP_NAME);
+        setHelpAvailable(true);
     }
 
     private String changeXMLName(String content, String taskName, String tnsName) throws CoreException {

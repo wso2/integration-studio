@@ -45,7 +45,7 @@
                 <executions>
                     <execution>
                         <id>pre-clean</id>
-                        <phase>clean</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>

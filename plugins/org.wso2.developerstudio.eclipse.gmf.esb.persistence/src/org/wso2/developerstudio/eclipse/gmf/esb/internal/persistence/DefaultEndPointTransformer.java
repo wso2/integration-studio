@@ -111,7 +111,7 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 		return synapseEP;
 	}
 
-	public DefaultEndpoint create(DefaultEndpointFormPage defaultEndpointFormPage) {
+	public DefaultEndpoint create(DefaultEndpointFormPage defaultEndpointFormPage) throws NumberFormatException, JaxenException {
 		DefaultEndpoint synapseEP = new DefaultEndpoint();
 		if (StringUtils.isNotBlank(defaultEndpointFormPage.getEndpointName().getText())) {
 			synapseEP.setName(defaultEndpointFormPage.getEndpointName().getText());

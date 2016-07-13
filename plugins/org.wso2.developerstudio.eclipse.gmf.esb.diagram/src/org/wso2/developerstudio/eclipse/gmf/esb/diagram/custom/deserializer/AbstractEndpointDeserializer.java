@@ -333,6 +333,17 @@ public abstract class AbstractEndpointDeserializer
 		
 		// Error Handling - Endpoint Timeout
 		setTextValue(endpointCommons.getEndpointTimeoutDuration(), definition.getTimeoutDuration());
+		
+		if (definition.getTimeoutDuration() > 0 || definition.isDynamicTimeoutEndpoint()) {
+			String duration = null;
+            if (!definition.isDynamicTimeoutEndpoint()) {
+            	duration = Long.toString(definition.getTimeoutDuration());
+            } else {
+            	duration = "{" + definition.getDynamicTimeoutExpression().getExpression()+ "}";
+            }
+            setTextValue(endpointCommons.getEndpointTimeoutDuration(), duration);
+   
+        }
 
 		if (endpointCommons.getEndpointTimeoutAction() != null) {
 			if (definition.getTimeoutAction() == 100) {

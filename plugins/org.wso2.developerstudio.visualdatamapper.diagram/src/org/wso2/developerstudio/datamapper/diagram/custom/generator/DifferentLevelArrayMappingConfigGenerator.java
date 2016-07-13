@@ -513,18 +513,6 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 			DMVariable outputVariable = mappingOperation.getOutputVariables().get(0);
 			int outputMappedForLoop = 0;
 			String mostChildArrayElement;
-/*			// skip instantiating empty objects
-			if ((DataMapperOperatorType.INSTANTIATE.equals(mappingOperation.getOperation().getOperatorType())
-					&& (SchemaDataType.OBJECT
-							.equals(mappingOperation.getOperation().getProperty(TransformerConstants.VARIABLE_TYPE))
-							|| SchemaDataType.ARRAY.equals(mappingOperation.getOperation()
-									.getProperty(TransformerConstants.VARIABLE_TYPE))))) {
-				if (outputObjectVariableForLoopMap.containsKey(mappingOperation.getOutputVariables().get(0).getName())
-						|| outputArrayVariableForLoopMap
-								.containsKey(mappingOperation.getOutputVariables().get(0).getName())) {
-					continue;
-				}
-			}*/
 			try {
 				mostChildArrayElement = getMostChildArrayElementName(outputVariable.getName());
 				if (!mostChildArrayElement.isEmpty()

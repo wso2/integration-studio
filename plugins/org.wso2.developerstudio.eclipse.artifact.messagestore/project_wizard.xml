@@ -65,7 +65,7 @@
 			<data modelProperty="mb.connection-factory" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Queue Connection factory*</data>
 		    <data modelProperty="mb.queue-name" type="string"
-				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">JNDI Queue Name</data>
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">JNDI Queue Name *</data>
 			<data modelProperty="mb.api-version" type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
 				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.SpecVersionList">JMS API specification Version</data>

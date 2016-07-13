@@ -269,23 +269,24 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		for (IProject activeProject : projects) {
 			if (activeProject != null) {
 				try {
-					
-					if (activeProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
-						ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
-						projectPath = activeProject.getLocation().toFile();
-						try {
-							esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml").getLocation().toFile());
-							List<ESBArtifact> allESBArtifacts = esbProjectArtifact.getAllESBArtifacts();
-							for (ESBArtifact esbArtifact : allESBArtifacts) {
-								if ("synapse/message-store".equals(esbArtifact.getType())) {
-									File artifact = new File(projectPath, esbArtifact.getFile());
-									availableMS.add(artifact.getName().replaceAll("[.]xml$", ""));
-								} 
+					if(activeProject.isOpen()){
+						if (activeProject.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
+							ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
+							projectPath = activeProject.getLocation().toFile();
+							try {
+								esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml").getLocation().toFile());
+								List<ESBArtifact> allESBArtifacts = esbProjectArtifact.getAllESBArtifacts();
+								for (ESBArtifact esbArtifact : allESBArtifacts) {
+									if ("synapse/message-store".equals(esbArtifact.getType())) {
+										File artifact = new File(projectPath, esbArtifact.getFile());
+										availableMS.add(artifact.getName().replaceAll("[.]xml$", ""));
+									} 
+								}
+							} catch (Exception e) {
+								log.error("Error occured while scanning the project for artifacts", e);
+								ErrorDialog.openError(shell, "Error occured while scanning the project for artifacts",
+										e.getMessage(), null);
 							}
-						} catch (Exception e) {
-							log.error("Error occured while scanning the project for artifacts", e);
-							ErrorDialog.openError(shell, "Error occured while scanning the project for artifacts",
-									e.getMessage(), null);
 						}
 					}
 				} catch (CoreException e) {

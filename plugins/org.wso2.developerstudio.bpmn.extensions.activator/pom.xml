@@ -42,21 +42,34 @@
             </plugin>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <configuration>
-                    <tasks>
-                        <delete dir="${project.basedir}/libs"/>
-                        <mkdir dir="${project.basedir}/libs"/>
-                        <mkdir dir="${project.basedir}/libs/extensions"/>
-                        <copy file="${project.basedir}/../org.wso2.developerstudio.bpmn.extensions/target/org.wso2.developerstudio.bpmn.extensions-${project.version}.jar"
-                              tofile="${project.basedir}/libs/extensions/org.wso2.developerstudio.bpmn.extensions-${project.version}.jar"/>
-                    </tasks>
-                </configuration>
                 <executions>
                     <execution>
+                        <id>pre-clean</id>
                         <phase>clean</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>
+                        <configuration>
+                            <tasks>
+                                <delete dir="${project.basedir}/libs"/>
+                                <mkdir dir="${project.basedir}/libs"/>
+                                <mkdir dir="${project.basedir}/libs/extensions"/>
+                                <copy file="${project.basedir}/../org.wso2.developerstudio.bpmn.extensions/target/org.wso2.developerstudio.bpmn.extensions-${project.version}.jar"
+                                      tofile="${project.basedir}/libs/extensions/org.wso2.developerstudio.bpmn.extensions-${project.version}.jar"/>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-clean</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <delete dir="${project.basedir}/libs"/>
+                            </tasks>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

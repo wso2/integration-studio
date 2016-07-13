@@ -44,7 +44,7 @@
                 <artifactId>maven-antrun-plugin</artifactId>
                 <configuration>
                     <tasks>
-                        <delete dir="${project.basedir}/libs" />
+                        <delete dir="${project.basedir}/libs"/>
                         <mkdir dir="${project.basedir}/libs"/>
                         <mkdir dir="${project.basedir}/libs/extensions"/>
                         <copy file="${project.basedir}/../org.wso2.developerstudio.bpmn.extensions/target/org.wso2.developerstudio.bpmn.extensions-${project.version}.jar"

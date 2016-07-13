@@ -23,7 +23,7 @@ public class ExtensionConstants {
     public static final String BUNDLE_ID = "org.wso2.developerstudio.bpmn.extensions.activator";
 
     public static final String ACTIVITI_DESIGNER_EXTENSIONS = "Activiti Designer Extensions";
-    
+
     public static final String ERROR_CREATING_CORRESPONDING_USER_LIBRARY = "Error creating corresponding user library";
-    
+
 }

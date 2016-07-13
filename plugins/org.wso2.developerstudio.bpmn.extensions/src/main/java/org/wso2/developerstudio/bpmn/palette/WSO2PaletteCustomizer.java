@@ -26,14 +26,14 @@ import java.util.List;
  */
 public class WSO2PaletteCustomizer extends AbstractDefaultPaletteCustomizer {
 
-	@Override
-	public List<PaletteEntry> disablePaletteEntries() {
-		List<PaletteEntry> result = new ArrayList<PaletteEntry>();
-		//Disabling non generic activities.
-		result.add(PaletteEntry.ALFRESCO_START_EVENT);
-		result.add(PaletteEntry.ALFRESCO_MAIL_TASK);
-		result.add(PaletteEntry.ALFRESCO_SCRIPT_TASK);
-		result.add(PaletteEntry.ALFRESCO_USER_TASK);
-		return result;
-	}
+    @Override
+    public List<PaletteEntry> disablePaletteEntries() {
+        List<PaletteEntry> result = new ArrayList<PaletteEntry>();
+        //Disabling non generic activities.
+        result.add(PaletteEntry.ALFRESCO_START_EVENT);
+        result.add(PaletteEntry.ALFRESCO_MAIL_TASK);
+        result.add(PaletteEntry.ALFRESCO_SCRIPT_TASK);
+        result.add(PaletteEntry.ALFRESCO_USER_TASK);
+        return result;
+    }
 }

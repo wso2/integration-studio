@@ -21,12 +21,12 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
@@ -62,24 +62,18 @@ public class StartupAction implements IStartup {
         ArrayList<IClasspathEntry> classPathEntries = new ArrayList<IClasspathEntry>();
         URL url = FileLocator.toFileURL(fileURL);
         File libFolder = new File(new URI(url.getProtocol(), url.getPath(), null));
-        Files.walk(Paths.get(libFolder.getAbsolutePath())).forEach(
-                filePath -> {
-                    if (Files.isRegularFile(filePath)) {
-                        File file;
-                        try {
-                            file = new File(filePath.toUri());
-                            classPathEntries.add(JavaCore.newLibraryEntry(
-                                    new Path(file.getAbsolutePath()).makeAbsolute(), null, null));
-                        } catch (Exception e) {
-                            logger.log(Level.FINE, ExtensionConstants.ERROR_CREATING_CORRESPONDING_USER_LIBRARY, e);
-                        }
-                    }
-                });
+        List<File> files = (List<File>) FileUtils.listFiles(libFolder, new String[]{"jar"}, true);
+        for (File file : files) {
+            if (file.isFile()) {
+                classPathEntries.add(JavaCore.newLibraryEntry(new Path(file.getAbsolutePath()).makeAbsolute(),
+                        null, null));
+            }
+        }
         setLibraryPath(initializer, classPathEntries);
     }
 
     /*
-     * Sets the library paths for identified file paths in lib folder
+     * Sets the library paths for identified file paths in lib/extensions folder
      */
     public void setLibraryPath(ClasspathContainerInitializer initializer, ArrayList<IClasspathEntry> classPathEntries)
             throws CoreException {

@@ -81,6 +81,7 @@ public class WSO2MB implements IMessageStore {
 		
 		toolkit.createLabel(connSectionClient, "Queue Connection Factory *");
 		wso2mb_QueueConnFactory = toolkit.createText(connSectionClient, "");
+		wso2mb_QueueConnFactory.setText("amqp://admin:admin@clientID/carbon?brokerlist='tcp://localhost:5673'");
 		wso2mb_QueueConnFactory.setBackground(new Color(null, 229,236,253));
 		wso2mb_QueueConnFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		wso2mb_QueueConnFactory.addModifyListener(new ModifyListener() {
@@ -104,7 +105,7 @@ public class WSO2MB implements IMessageStore {
 		
     	parameterSection.setVisible(false);
     	
-		toolkit.createLabel(paramSectionClient, "JNDI Queue Name");
+		toolkit.createLabel(paramSectionClient, "JNDI Queue Name *");
 		wso2mb_jndiQueueName = toolkit.createText(paramSectionClient, "");
 		wso2mb_jndiQueueName.setBackground(new Color(null, 229,236,253));
 		wso2mb_jndiQueueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));

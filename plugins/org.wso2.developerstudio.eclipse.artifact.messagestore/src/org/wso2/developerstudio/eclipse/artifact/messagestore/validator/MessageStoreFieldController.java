@@ -74,6 +74,10 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			if(mb){
 				CommonFieldValidator.validateRequiredField(value, "Queue Connection Factory cannot be empty");
 			}
+		}else if(key.equals(FIELD_MB_QUEUE_NAME)){
+			if(mb){
+				CommonFieldValidator.validateRequiredField(value, "JNDI Queue Name cannot be empty");
+			}
 		} else if (key.equals(FIELD_JMS_PROVIDER_URL)) {
 			if (jms) {
 				CommonFieldValidator.validateRequiredField(value,

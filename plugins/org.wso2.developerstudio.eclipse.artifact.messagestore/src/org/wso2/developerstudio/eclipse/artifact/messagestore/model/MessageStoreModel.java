@@ -111,6 +111,7 @@ public class MessageStoreModel extends ProjectDataModel  {
 		availableStoreslist = new ArrayList<OMElement>();
 		selectedStoresList = new ArrayList<OMElement>();
 		mbContextFactory= "org.wso2.andes.jndi.PropertiesFileInitialContextFactory";
+		mbConnectionFactory = "amqp://admin:admin@clientID/carbon?brokerlist='tcp://localhost:5673'";
 	}
 
 	public String getJdbcDatabaseTable() {

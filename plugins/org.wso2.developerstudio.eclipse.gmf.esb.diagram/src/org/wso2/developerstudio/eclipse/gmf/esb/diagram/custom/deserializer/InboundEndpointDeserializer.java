@@ -94,6 +94,8 @@ public class InboundEndpointDeserializer extends
 
     private static final String KEY_TYPE_PARAMETER_PREFIX = "$registry:";
     private static final String POLLING_BEHAVIOUR = "polling";
+    private static final String WSO2_MB_TOPIC_CONNECTION_URL ="connectionfactory.TopicConnectionFactory";
+    private static final String WSO2_MB__QUEUE_CONNECTION_URL ="connectionfactory.QueueConnectionFactory";
 
     @Override
     public org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint createNode(IGraphicalEditPart part,
@@ -137,8 +139,15 @@ public class InboundEndpointDeserializer extends
             executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.FILE);
             updateParameters(object, InboundEndpointType.FILE);
         } else if (InboundEndpointConstants.JMS.equals(object.getProtocol())) {
-            executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.JMS);
-            updateParameters(object, InboundEndpointType.JMS);
+        	//Since both have the protocol as JMS check for mb instance
+          	boolean isWso2Mb = isWSO2MBInstance(object);
+        	if(isWso2Mb){
+        		executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.WSO2_MB);
+                updateParameters(object, InboundEndpointType.WSO2_MB);
+        	}else{
+        		 executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.JMS);
+                 updateParameters(object, InboundEndpointType.JMS);
+        	}
         } else if (InboundEndpointConstants.HTTPS.equals(object.getProtocol())) {
             executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.HTTPS);
             updateParameters(object, InboundEndpointType.HTTPS);
@@ -163,9 +172,6 @@ public class InboundEndpointDeserializer extends
         } else if (InboundEndpointConstants.FEED.equals(object.getProtocol())) {
             executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.FEED);
             updateParameters(object, InboundEndpointType.FEED);
-        }else if (InboundEndpointConstants.WSO2MB.equals(object.getProtocol())) {
-            executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.WSO2_MB);
-            updateParameters(object, InboundEndpointType.WSO2_MB);
         }
 
         // Creating Sequence mediator graphically
@@ -205,6 +211,21 @@ public class InboundEndpointDeserializer extends
     }
 
     /**
+     * Gets the WSO2 Mb instance
+     * @param object
+     * @return
+     */
+    private boolean isWSO2MBInstance(InboundEndpoint object) {
+	if(object.getParameter(WSO2_MB_TOPIC_CONNECTION_URL) != null){
+		return true;
+	}else if(object.getParameter(WSO2_MB__QUEUE_CONNECTION_URL) != null){
+		return true;
+	}else{
+		return false;	
+	}	
+	}
+
+	/**
      * Update parameters for custom Inbound Endpoints
      * 
      * @param object

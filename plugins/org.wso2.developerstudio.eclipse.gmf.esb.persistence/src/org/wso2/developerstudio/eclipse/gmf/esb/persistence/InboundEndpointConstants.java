@@ -97,6 +97,8 @@ public class InboundEndpointConstants {
 	public static final String JMS_SUBSCRIPTION_NAME = "transport.jms.SubscriptionName";
 
 	public static final String WSO2_MB_CONNECTION_URL ="wso2mb.connection.url";
+	public static final String WSO2_MB__QUEUE_CONNECTION_URL ="connectionfactory.QueueConnectionFactory";
+	public static final String WSO2_MB_TOPIC_CONNECTION_URL ="connectionfactory.TopicConnectionFactory";
 	
 	public static final String JMS_REPLY_DESTINATION = "transport.jms.ReplyDestination";
 	public static final String JMS_PUB_SUB_NO_LOCAL = "transport.jms.PubSubNoLocal";

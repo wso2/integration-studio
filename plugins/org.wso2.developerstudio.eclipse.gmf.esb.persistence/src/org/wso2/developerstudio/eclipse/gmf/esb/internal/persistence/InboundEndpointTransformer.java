@@ -43,6 +43,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
     private static final String POLLING_BEHAVIOUR = "polling";
     private static final String LISTENING_BEHAVIOUR = "listening";
     private static final String REGISTRY_PREFIX = "$registry:";
+	private static final String WSO2MB="wso2_mb";
+    private static final String TOPIC ="topic";
+    private static final String QUEUE = "queue";
+	private static final String JMS ="jms";
 
 	public void transform(TransformationInfo information, EsbNode subject)
 			throws TransformerException {
@@ -150,7 +154,11 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 
             }
         } else if (StringUtils.isNotBlank(visualInboundEndpoint.getType().getName())) {
-                inboundEndpoint.setProtocol(visualInboundEndpoint.getType().getName());
+        	    if(visualInboundEndpoint.getType().getName().equals(WSO2MB)){
+        	    	inboundEndpoint.setProtocol(JMS);
+        	    }else{
+                    inboundEndpoint.setProtocol(visualInboundEndpoint.getType().getName());
+        	    }
 
         }
 
@@ -455,8 +463,22 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             }
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSConnectionFactoryType()
                     .getLiteral()))) {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONNECTION_FACTORY_TYPE,
+            	
+            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONNECTION_FACTORY_TYPE,
                         visualInboundEndpoint.getTransportJMSConnectionFactoryType().getLiteral());
+            	if(visualInboundEndpoint.getTransportJMSConnectionFactoryType()
+                    .getLiteral().equals(TOPIC)){
+            		//When the type is topic, add the topic connection url
+            		 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSO2_MB_TOPIC_CONNECTION_URL,
+                             visualInboundEndpoint.getWso2mbConnectionUrl());
+            	}else if(visualInboundEndpoint.getTransportJMSConnectionFactoryType()
+                    .getLiteral().equals(QUEUE)){
+            		 //When the type is queue, add the queue connection url
+            		 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,
+                             visualInboundEndpoint.getWso2mbConnectionUrl());
+            	}
+            	
+               
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSJMSSpecVersion())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_JMS_SPEC_VERSION,
@@ -499,11 +521,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
     				.getTransportJMSPinnedServers())) {
             	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
                          visualInboundEndpoint.getTransportJMSPinnedServers());
-    		}
-            if (StringUtils.isNotBlank(visualInboundEndpoint
-    				.getWso2mbConnectionUrl())) {
-            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSO2_MB_CONNECTION_URL,
-                         visualInboundEndpoint.getWso2mbConnectionUrl());
     		}
             if (StringUtils.isNotBlank(visualInboundEndpoint
     				.getTransportJMSSubscriptionName())) {

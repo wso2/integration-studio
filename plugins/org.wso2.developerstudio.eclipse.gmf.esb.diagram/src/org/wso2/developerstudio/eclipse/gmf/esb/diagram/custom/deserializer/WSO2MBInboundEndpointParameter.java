@@ -84,9 +84,10 @@ public enum WSO2MBInboundEndpointParameter {
 	            INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY,true),
 		INBOUND_ENDPOINT_PINNED_SERVERS(InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS,true),
 	    JMS_SUBSCRIPTION_NAME(InboundEndpointConstants.JMS_SUBSCRIPTION_NAME,INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME,true),
-	    WSO2_MB_CONNECTION_URL(InboundEndpointConstants.WSO2_MB_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true);
-	
-    
+	    WSO2_MB_CONNECTION_URL(InboundEndpointConstants.WSO2_MB_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true),
+	    WSO2_MB__QUEUE_CONNECTION_URL(InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true),
+	    WSO2_MB_TOPIC_CONNECTION_URL(InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true);
+
     private final String name;
     private final EAttribute eAttributeValue;
     private final boolean holdsKeyValue;
@@ -110,9 +111,16 @@ public enum WSO2MBInboundEndpointParameter {
     }
 
     public boolean isMatchedWithParameterName(String parameterName) {
-        if (this.name.equals(parameterName)) {
+    	
+    	if (this.name.equals(parameterName)) {
             return true;
-        } else {
+        }else if(this.name.equals("wso2mb.connection.url") && parameterName.equals("connectionfactory.TopicConnectionFactory")){
+        	//If the gmf model name is wso2mb.connection.url and the synapse name is connectionfactory.TopicConnectionFactory
+        	return true;
+        }else if (this.name.equals("wso2mb.connection.url") && parameterName.equals("connectionfactory.QueueConnectionFactory")){
+        	//If the gmf model name is wso2mb.connection.url and the synapse name is connectionfactory.QueueConnectionFactory
+            return true;
+    	}else {
             return false;
         }
     }

@@ -21,6 +21,7 @@ import java.util.Stack;
 
 import org.wso2.developerstudio.datamapper.DataMapperOperatorType;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
@@ -36,7 +37,8 @@ public abstract class AbstractDMOperatorTransformer implements DMOperatorTransfo
 
 	protected String appendOutputVariable(DMOperation operation, List<DMVariable> outputVariables,
 			Map<String, List<SchemaDataType>> map, Stack<ForLoopBean> tempForLoopBeanParentStack,
-			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop) {
+			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop)
+			throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		int numOfOutputVariables = outputVariables.size();
 		for (int variableIndex = 0; variableIndex < numOfOutputVariables; variableIndex++) {

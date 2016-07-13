@@ -24,6 +24,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
@@ -40,7 +41,8 @@ public class ScriptGenerationUtil {
 
 	public static String getPrettyVariableNameInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map,
 			Stack<ForLoopBean> parentForLoopBeanStackTemp, boolean isOperationVariable,
-			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop) {
+			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop)
+			throws DataMapperException {
 		@SuppressWarnings("unchecked")
 		Stack<ForLoopBean> parentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStackTemp.clone();
 		// put index values for array type variables
@@ -73,7 +75,7 @@ public class ScriptGenerationUtil {
 					variableType = map.get(variableName).get(VARIABLE_TYPE_INDEX);
 					if (SchemaDataType.ARRAY.equals(variableType)) {
 						if (!outputArrayVariableForLoop.containsKey(variableName)) {
-							throw new IllegalArgumentException("Unknown variable name found : " + variableName);
+							throw new DataMapperException("Unknown variable name found : " + variableName);
 						}
 						int forLoopIndex = outputArrayVariableForLoop.get(variableName);
 						ForLoopBean tempForLoop = forLoopBeanList.get(forLoopIndex);
@@ -97,7 +99,7 @@ public class ScriptGenerationUtil {
 						isPerviousVariableTypePrimitive = false;
 					}
 				} else {
-					throw new IllegalArgumentException(
+					throw new DataMapperException(
 							"Unregistered Variable name found : " + variableName + " in - [" + map.keySet() + "]");
 				}
 				variableName += ".";
@@ -112,7 +114,7 @@ public class ScriptGenerationUtil {
 					variableType = map.get(variableName).get(VARIABLE_TYPE_INDEX);
 					if (SchemaDataType.ARRAY.equals(variableType)) {
 						if (!outputArrayVariableForLoop.containsKey(variableName)) {
-							throw new IllegalArgumentException("Unknown variable name found : " + variableName);
+							throw new DataMapperException("Unknown variable name found : " + variableName);
 						}
 						int forLoopIndex = outputArrayVariableForLoop.get(variableName);
 						ForLoopBean tempForLoop = forLoopBeanList.get(forLoopIndex);
@@ -136,7 +138,7 @@ public class ScriptGenerationUtil {
 						isPerviousVariableTypePrimitive = false;
 					}
 				} else {
-					throw new IllegalArgumentException(
+					throw new DataMapperException(
 							"Unregistered Variable name found : " + variableName + " in - [" + map.keySet() + "]");
 				}
 				variableName += ".";
@@ -173,7 +175,7 @@ public class ScriptGenerationUtil {
 						isPerviousVariableTypePrimitive = false;
 					}
 				} else {
-					throw new IllegalArgumentException(
+					throw new DataMapperException(
 							"Unregistered Variable name found : " + variableName + " in - [" + map.keySet() + "]");
 				}
 				variableName += ".";
@@ -282,9 +284,7 @@ public class ScriptGenerationUtil {
 
 	public static String instantiateForLoopCountVariables(ForLoopBean forLoopBean, List<ForLoopBean> forLoopBeanList) {
 		StringBuilder operationBuilder = new StringBuilder();
-		if (forLoopBean.getParentIndex() == -1) {
-			operationBuilder.append("// Instantiating for loop iterating variables for outputs" + "\n");
-		} else {
+		if (forLoopBean.getParentIndex() != -1) {
 			operationBuilder
 					.append("var " + getForLoopIterateName(forLoopBean, forLoopBeanList, true) + " = 0;" + "\n");
 		}

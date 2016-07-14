@@ -162,13 +162,13 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 	 */
 	@Override
 	public void createControl(Composite parent) {
-		this.getShell().setSize(800, 500);//setting the wizard size to a fixed value to avoid widget distortion
 		setShellLoc(this.getShell());
-		final ScrolledComposite scrolledComposite = new ScrolledComposite(parent, SWT.H_SCROLL | SWT.V_SCROLL);
-
+		final ScrolledComposite scrolledComposite = new ScrolledComposite(parent,SWT.NULL);
+		GridData gridDataComposite = new GridData();
+		gridDataComposite.horizontalSpan=SWT.FILL;
+		gridDataComposite.verticalSpan=SWT.FILL;
+		scrolledComposite.setData(gridDataComposite);
 		final Composite container = new Composite(scrolledComposite, SWT.NULL);
-      
-        		
 		setControl(scrolledComposite);
 		container.setLayout(new FillLayout(SWT.HORIZONTAL));
 

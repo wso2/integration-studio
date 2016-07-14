@@ -1,26 +1,26 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE;
+
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
-
 public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, DataMapperMediator> {
 
-	private static final String DATA_MAPPER_MEDIATOR_SAVE_ERROR = "Data Mapper Mediator Save Error";
 
 	@Override
-	public DataMapperMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) {
+	public DataMapperMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) throws DeserializerException {
 
 		Assert.isTrue(mediator instanceof org.wso2.carbon.mediator.datamapper.DataMapperMediator,
 				"Unsupported mediator passed in for deserialization at " + this.getClass());
@@ -45,7 +45,7 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
 	}
 
 	private boolean setConfigurationKey(
-			org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) {
+			org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) throws DeserializerException {
 		if (carbonDataMapperMediator.getMappingConfigurationKey() != null) {
 			Value keyValue = carbonDataMapperMediator.getMappingConfigurationKey();
 			if (keyValue.getKeyValue() != null && !keyValue.getKeyValue().equals("")) {
@@ -55,13 +55,14 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
 				return true;
 			}
 		} else {
-			displayUserMessage("Data Mapper Mediator Configuration is empty, "
-										+ "\n \n Please double click on the datamapper mediator to create a new configuration to map data before saving the ESB Config.");
+			throw new DeserializerException("Data Mapper Mediator Configuration is empty, "
+					+ "\n \n Please double click on the datamapper mediator to create a new configuration or add an existing configuration key before saving the ESB Config.");
+		
 		}
 		return false;
 	}
 
-	private boolean setInputSchemaKey(org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) {
+	private boolean setInputSchemaKey(org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) throws DeserializerException {
 		if (carbonDataMapperMediator.getInputType() != null) {
 			Value keyValue = carbonDataMapperMediator.getInputSchemaKey();
 			if (keyValue.getKeyValue() != null && !keyValue.getKeyValue().equals("")) {
@@ -71,14 +72,13 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
 			}
 			return true;
 		} else {
-			displayUserMessage("Data Mapper Mediator Input Schema Configuration is empty, "
-										+ "\n \n Please double click on the datamapper mediator to create a new configuration to map data before saving the ESB Config.");
+			throw new DeserializerException("Data Mapper Mediator Input Schema Configuration is empty, "
+										+ "\n \n Please double click on the datamapper mediator to create a new configuration or add an existing configuration key before saving the ESB Config.");
 		}
-		return false;
 	}
 
 	private void setOutputSchemaKey(
-			org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) {
+			org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) throws DeserializerException {
 		if (carbonDataMapperMediator.getOutputType() != null) {
 			Value keyValue = carbonDataMapperMediator.getOutputSchemaKey();
 			if (keyValue.getKeyValue() != null && !keyValue.getKeyValue().equals("")) {
@@ -87,28 +87,9 @@ public class DataMapperMediatorDeserializer extends AbstractEsbNodeDeserializer<
 				executeSetValueCommand(DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA, regKey);
 			}
 		} else {
-			displayUserMessage("Data Mapper Mediator Output Schema Configuration is empty, "
-					+ "\n \n Please double click on the datamapper to create a new configuration to map data before saving the ESB Config.");
+			throw new DeserializerException("Data Mapper Mediator Output Schema Configuration is empty, "
+					+ "\n \n Please double click on the datamapper to create a new configuration or add an existing configuration key before saving the ESB Config.");
 		}
-	}
-
-	private void displayUserMessage(final String message) {
-		Display.getDefault().syncExec(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					MessageDialog dialog = new MessageDialog(Display.getDefault().getActiveShell(),
-							DATA_MAPPER_MEDIATOR_SAVE_ERROR, null,
-							message,
-							MessageDialog.INFORMATION, new String[] { "OK" }, 0);
-					dialog.open();
-				} catch (Exception e) {
-					// need to log the error
-				}
-			}
-			// pop up user message saying an updater job is already
-			// running
-		});
 	}
 
 	private void setInputDataType(org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) {

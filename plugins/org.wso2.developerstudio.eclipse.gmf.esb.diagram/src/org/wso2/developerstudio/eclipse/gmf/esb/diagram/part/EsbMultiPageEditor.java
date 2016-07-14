@@ -116,6 +116,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.Cl
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer.DeserializeStatus;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DeserializerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.UpdateGMFPlugin;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
@@ -125,6 +126,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebugg
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.SequenceInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.event.EsbEditorEvent;
@@ -703,13 +705,30 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				}
 			}catch (NumberFormatException nfe){
 				log.error("Cannot update source view", nfe);
-				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage("Invalid input value, the value should be a number");
+				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(nfe.getMessage());
 				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
 				setActivePage(DESIGN_VIEW_PAGE_INDEX);
 				ErrorDialog.openError(getActiveEditor().getSite().getShell(), "Error",
 						"Cannot update source view. The following error(s) have been detected."
 								+ " Please see the error log for more details ",
 						editorStatus);
+			}catch (TransformerException te){
+				sourceDirty = true;
+				log.error("Error while saving the diagram", te);
+				String errorMsgHeader = "Save failed. Following error(s) have been detected."
+						+ " Please see the error log for more details.";
+				String simpleMessage = ExceptionMessageMapper
+						.getNonTechnicalMessage(te.getMessage());
+				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+				ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+			} catch (DeserializerException de) {
+				sourceDirty = true;
+				log.error("Error while saving the diagram", de);
+				String errorMsgHeader = "Save failed. Following error(s) have been detected."
+						+ " Please see the error log for more details.";
+				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(de.getMessage());
+				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+				ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 			} catch (Exception e) {
 				log.error("Cannot update source view", e);
 				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
@@ -1012,7 +1031,24 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					log.error("Error while saving the diagram", nfe);
 					String errorMsgHeader = "Save failed. Following error(s) have been detected."
 							+ " Please see the error log for more details.";
-					String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage("Invalid input value, the value should be a number");
+					String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(nfe.getMessage());
+					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+					ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+				}catch (TransformerException te){
+					sourceDirty = true;
+					log.error("Error while saving the diagram", te);
+					String errorMsgHeader = "Save failed. Following error(s) have been detected."
+							+ " Please see the error log for more details.";
+					String simpleMessage = ExceptionMessageMapper
+							.getNonTechnicalMessage(te.getMessage());
+					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+					ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+				} catch (DeserializerException de) {
+					sourceDirty = true;
+					log.error("Error while saving the diagram", de);
+					String errorMsgHeader = "Save failed. Following error(s) have been detected."
+							+ " Please see the error log for more details.";
+					String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(de.getMessage());
 					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
 					ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 				} catch (Exception e) {
@@ -1022,7 +1058,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 							+ " Please see the error log for more details.";
 					String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
 					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
-					ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+					if(!simpleMessage.equals("Invalid DataMapper mediator. Configuration registry key is required")){
+						ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+					}
 				}
 				// }
 				if (!isFormEditor) {

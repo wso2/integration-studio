@@ -43,7 +43,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 public class ThrottleMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator,ThrottleMediator> {
 
 	@Override
-	public ThrottleMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
+	public ThrottleMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) throws DeserializerException {
 		
 		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.throttle.ThrottleMediator, "Unsupported mediator passed in for deserialization at "+ this.getClass());
 		

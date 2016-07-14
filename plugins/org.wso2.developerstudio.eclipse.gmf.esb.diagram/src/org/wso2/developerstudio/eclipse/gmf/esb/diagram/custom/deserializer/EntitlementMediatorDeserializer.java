@@ -27,7 +27,7 @@ public class EntitlementMediatorDeserializer extends AbstractEsbNodeDeserializer
 	final static String KERBEROS ="org.wso2.carbon.identity.entitlement.mediator.callback.KerberosEntitlementCallbackHandler";
 	final static String X509 ="org.wso2.carbon.identity.entitlement.mediator.callback.X509EntitlementCallbackHandler";
 	
-	public EntitlementMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
+	public EntitlementMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) throws DeserializerException {
 		Assert.isTrue(mediator instanceof EntitlementMediatorExt, "Unsupported mediator passed in for deserialization at "+ this.getClass());
 		
 		EntitlementMediatorExt entitlementMediator = (EntitlementMediatorExt)mediator;

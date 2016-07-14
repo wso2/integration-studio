@@ -82,7 +82,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Dumm
 public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI> {
 
 	@Override
-	public SynapseAPI createNode(IGraphicalEditPart part,API api) {
+	public SynapseAPI createNode(IGraphicalEditPart part,API api) throws DeserializerException {
 		SynapseAPI synapseAPI = (SynapseAPI) DeserializerUtils.createNode(part, EsbElementTypes.SynapseAPI_3668);
 		setElementToEdit(synapseAPI);
 		refreshEditPartMap();

@@ -40,7 +40,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, AggregateMediator> {
 	
 	@Override
-	public AggregateMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
+	public AggregateMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) throws DeserializerException {
 		
 		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.eip.aggregator.AggregateMediator, "Invalid Mediator.");
 		

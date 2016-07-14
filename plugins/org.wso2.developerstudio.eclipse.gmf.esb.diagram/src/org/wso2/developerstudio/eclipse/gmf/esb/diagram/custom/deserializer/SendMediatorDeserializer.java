@@ -37,7 +37,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class SendMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, SendMediator> {
 
-	public SendMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
+	public SendMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) throws DeserializerException {
 		
 		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.SendMediator, "Unsupported mediator passed in for deserialization at "+ this.getClass());
 		

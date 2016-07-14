@@ -39,7 +39,7 @@ public class SwitchMediatorDeserializer extends
 		AbstractEsbNodeDeserializer<AbstractMediator, SwitchMediator> {
 
 	@Override
-	public SwitchMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) {
+	public SwitchMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) throws DeserializerException {
 
 		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.filters.SwitchMediator,
 				"Unsupported mediator passed in for deserialization at " + this.getClass());

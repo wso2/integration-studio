@@ -31,7 +31,7 @@ public class FilterMediatorDeserializer extends
 		AbstractEsbNodeDeserializer<AbstractMediator, FilterMediator> {
 
 	@Override
-	public FilterMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
+	public FilterMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) throws DeserializerException {
 
 		Assert.isTrue(
 				mediator instanceof org.apache.synapse.mediators.filters.FilterMediator,

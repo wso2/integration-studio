@@ -99,6 +99,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorO
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.SlidingBorderItemLocator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DeserializerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DeserializerUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EsbDeserializerRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.IEsbNodeDeserializer;
@@ -156,7 +157,7 @@ public class ElementDuplicator {
 		}
 	}
 	
-	public void updateAssociatedDiagrams(EsbMultiPageEditor currentEditor) {
+	public void updateAssociatedDiagrams(EsbMultiPageEditor currentEditor) throws DeserializerException {
 		EsbDiagram diagram = (EsbDiagram) currentEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();
 		IFileEditorInput input = (IFileEditorInput) currentEditor.getEditorInput();
@@ -410,7 +411,7 @@ public class ElementDuplicator {
 		}
 	}
 	
-	private void duplicateElemets(IFile file, IEditorPart editor) {
+	private void duplicateElemets(IFile file, IEditorPart editor) throws DeserializerException {
 		List<EsbNode> esbNodes = new LinkedList<EsbNode>();
 		Map registry = ((EsbMultiPageEditor) editor).getDiagramEditPart().getViewer()
 				.getEditPartRegistry();
@@ -662,7 +663,7 @@ public class ElementDuplicator {
 		nodes.clear();
 	}	
 	
-	public List<EsbNode> duplicateElementsForReceivingSequence(GraphicalEditPart rootCompartment,String sequenceKey){
+	public List<EsbNode> duplicateElementsForReceivingSequence(GraphicalEditPart rootCompartment,String sequenceKey) throws DeserializerException{
 		Value recievingSequence=new Value(sequenceKey);
 		org.apache.synapse.mediators.base.SequenceMediator sequenceMediator=null;
 		if(recievingSequence!=null){
@@ -686,7 +687,7 @@ public class ElementDuplicator {
 		return duplicateElements;
 	}
 	
-	public List<EsbNode> duplicateElements(GraphicalEditPart rootCompartment,String sequenceKey){					
+	public List<EsbNode> duplicateElements(GraphicalEditPart rootCompartment,String sequenceKey) throws DeserializerException{					
 		
 		List<SendMediator> sendMediators = getSendMediators(sequenceKey);
 		for (SendMediator sendMediator : sendMediators) {

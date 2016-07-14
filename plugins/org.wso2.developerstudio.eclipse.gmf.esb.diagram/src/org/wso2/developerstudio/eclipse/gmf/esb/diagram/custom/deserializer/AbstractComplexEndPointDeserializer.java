@@ -82,7 +82,7 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 	
 	private EsbDiagramEditor mainDiagramEditorRef;
 	
-	protected <T extends AbstractEndpoint> void deserializeComplexEndpoint(T endpoint, IGraphicalEditPart graphicalEditPart){	
+	protected <T extends AbstractEndpoint> void deserializeComplexEndpoint(T endpoint, IGraphicalEditPart graphicalEditPart) throws DeserializerException{	
 		
 		IGraphicalEditPart gpart = null;
 		String endpointName;

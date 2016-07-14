@@ -50,6 +50,7 @@ import org.w3c.dom.NodeList;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.AbstractEsbNodeDeserializer;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DeserializerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EsbDeserializerRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.IEsbNodeDeserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
@@ -102,8 +103,9 @@ public class EndPointDuplicator {
 	 * Scan and duplicators endpoints into proxy service diagram 
 	 * @param rootCompartment
 	 * @param sequenceKey
+	 * @throws DeserializerException 
 	 */
-	public void duplicateEndPoints(GraphicalEditPart rootCompartment,String sequenceKey){
+	public void duplicateEndPoints(GraphicalEditPart rootCompartment,String sequenceKey) throws DeserializerException{
 		List<Endpoint> endpoints = getEndpoints(sequenceKey);
 		for (Endpoint endpoint : endpoints) {
 			try {

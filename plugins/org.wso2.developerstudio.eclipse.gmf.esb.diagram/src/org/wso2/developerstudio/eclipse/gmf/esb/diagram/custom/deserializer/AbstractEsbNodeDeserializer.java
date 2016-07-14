@@ -173,8 +173,9 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 	 * @param mediatorFlow
 	 * @param sequence
 	 * @param connector
+	 * @throws DeserializerException 
 	 */
-	protected void deserializeSequence(IGraphicalEditPart part, SequenceMediator sequence, EsbConnector connector) {
+	protected void deserializeSequence(IGraphicalEditPart part, SequenceMediator sequence, EsbConnector connector) throws DeserializerException {
 		deserializeSequence(part, sequence, connector, isReversed());
 	}
 	
@@ -184,8 +185,9 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 	 * @param sequence
 	 * @param connector
 	 * @param reversed
+	 * @throws DeserializerException 
 	 */
-	protected void deserializeSequence(IGraphicalEditPart part, SequenceMediator sequenceMediator, EsbConnector connector, boolean reversed) {
+	protected void deserializeSequence(IGraphicalEditPart part, SequenceMediator sequenceMediator, EsbConnector connector, boolean reversed) throws DeserializerException {
 		LinkedList<EsbNode> nodeList = new LinkedList<>();
         LinkedList<CommentMediator> commentMediatorList = new LinkedList<>();
         SequenceMediator sequence = EditorUtils.stripUnsupportedMediators(sequenceMediator);
@@ -236,10 +238,11 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 	 * @param reversed
 	 * @param commentMediatorList
 	 * @param lastMediator
+	 * @throws DeserializerException 
 	 */
     private void executeMediatorDeserializer(IGraphicalEditPart part, LinkedList<EsbNode> nodeList,
             TransactionalEditingDomain domain, AbstractMediator mediator, boolean reversed,
-            LinkedList<CommentMediator> commentMediatorList, boolean lastMediator) {
+            LinkedList<CommentMediator> commentMediatorList, boolean lastMediator) throws DeserializerException {
         @SuppressWarnings("rawtypes")
         IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(mediator);
 		if (deserializer != null) {

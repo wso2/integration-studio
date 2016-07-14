@@ -26,7 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 
 public class CallMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CallMediator> {
 
-	public CallMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
+	public CallMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) throws DeserializerException {
 		
 		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.CallMediator, "Unsupported mediator passed in for deserialization at "+ this.getClass());
 		

@@ -79,36 +79,6 @@ public class ConfigureLogMediatorDialog extends Dialog {
 	private LogMediator logMediator;
 
 	/**
-	 * Log category label.
-	 */
-	private Label logCategoryLabel;
-
-	/**
-	 * Log category combo.
-	 */
-	private Combo logCategoryCombo;
-
-	/**
-	 * Log level label.
-	 */
-	private Label logLevelLabel;
-
-	/**
-	 * Log level combo.
-	 */
-	private Combo logLevelCombo;
-
-	/**
-	 * Log separator label.
-	 */
-	private Label logSeparatorLabel;
-
-	/**
-	 * Log separator text.
-	 */
-	private Text logSeparatorText;
-
-	/**
 	 * Log properties label.
 	 */
 	private Label logPropertiesLabel;
@@ -171,95 +141,11 @@ public class ConfigureLogMediatorDialog extends Dialog {
 		mainLayout.marginWidth = 5;
 		container.setLayout(mainLayout);
 
-		logCategoryLabel = new Label(container, SWT.NONE);
-		{
-			logCategoryLabel.setText("Log Category: ");
-			FormData logCategoryLabelLayoutData = new FormData();
-			logCategoryLabelLayoutData.top = new FormAttachment(0, 5);
-			logCategoryLabelLayoutData.left = new FormAttachment(0);
-			logCategoryLabel.setLayoutData(logCategoryLabelLayoutData);
-		}
-
-		logCategoryCombo = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
-		{
-			// Populate log category values.
-			for (LogCategory logCategory : LogCategory.VALUES) {
-				logCategoryCombo.add(logCategory.getLiteral());
-			}
-
-			// Select current log category.
-			logCategoryCombo.select(logMediator.getLogCategory().ordinal());
-
-			FormData logCategoryComboLayoutData = new FormData();
-			logCategoryComboLayoutData.top = new FormAttachment(
-					logCategoryLabel, 0, SWT.CENTER);
-			logCategoryComboLayoutData.left = new FormAttachment(
-					logCategoryLabel, 5);
-			logCategoryCombo.setLayoutData(logCategoryComboLayoutData);
-		}
-
-		logLevelCombo = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
-		{
-			// Populate combo box values.
-			for (LogLevel logLevelConstant : LogLevel.VALUES) {
-				logLevelCombo.add(logLevelConstant.getLiteral());
-			}
-
-			// Select the appropriate log value.
-			logLevelCombo.select(logMediator.getLogLevel().ordinal());
-
-			// Layout.
-			FormData logLevelComboLayoutData = new FormData();
-			logLevelComboLayoutData.top = new FormAttachment(logCategoryCombo,
-					5);
-			logLevelComboLayoutData.left = new FormAttachment(logCategoryCombo,
-					0, SWT.LEFT);
-			logLevelCombo.setLayoutData(logLevelComboLayoutData);
-		}
-
-		logLevelLabel = new Label(container, SWT.NONE);
-		{
-			logLevelLabel.setText("Log Level: ");
-			FormData logLevelLabelLayoutData = new FormData();
-			logLevelLabelLayoutData.top = new FormAttachment(logLevelCombo, 0,
-					SWT.CENTER);
-			logLevelLabelLayoutData.right = new FormAttachment(logLevelCombo,
-					-5);
-			logLevelLabelLayoutData.left = new FormAttachment(0);
-			logLevelLabel.setLayoutData(logLevelLabelLayoutData);
-		}
-
-		logSeparatorText = new Text(container, SWT.SINGLE | SWT.BORDER);
-		{
-			if(logMediator.getLogSeparator() != null){
-			logSeparatorText.setText(logMediator.getLogSeparator());
-			}
-			FormData logSeparatorTextLayoutData = new FormData(25, SWT.DEFAULT);
-			logSeparatorTextLayoutData.top = new FormAttachment(logLevelCombo,
-					5);
-			logSeparatorTextLayoutData.left = new FormAttachment(logLevelCombo,
-					0, SWT.LEFT);
-			logSeparatorText.setLayoutData(logSeparatorTextLayoutData);
-		}
-
-		logSeparatorLabel = new Label(container, SWT.None);
-		{
-			logSeparatorLabel.setText("Log Separator: ");
-			FormData logSeparatorLabelLayoutData = new FormData();
-			logSeparatorLabelLayoutData.top = new FormAttachment(
-					logSeparatorText, 0, SWT.CENTER);
-			logSeparatorLabelLayoutData.right = new FormAttachment(
-					logSeparatorText, -5);
-			logSeparatorLabelLayoutData.left = new FormAttachment(0);
-			logSeparatorLabel.setLayoutData(logSeparatorLabelLayoutData);
-		}
-
 		logPropertiesLabel = new Label(container, SWT.NONE);
 		{
 			logPropertiesLabel.setText("Properties:");
 			FormData logPropertiesLabelLayoutData = new FormData();
-			logPropertiesLabelLayoutData.top = new FormAttachment(
-					logSeparatorText, 10);
+			logPropertiesLabelLayoutData.top = new FormAttachment(0, 5);
 			logPropertiesLabelLayoutData.left = new FormAttachment(0);
 			logPropertiesLabel.setLayoutData(logPropertiesLabelLayoutData);
 		}
@@ -509,40 +395,6 @@ public class ConfigureLogMediatorDialog extends Dialog {
 	 * {@inheritDoc}
 	 */
 	protected void okPressed() {
-		// Log category.
-		int selectedIndex = logCategoryCombo.getSelectionIndex();
-		if (-1 != selectedIndex) {
-			String logCategoryLiteral = logCategoryCombo.getItem(selectedIndex);
-			if (!logCategoryLiteral.equals(logMediator.getLogCategory()
-					.getLiteral())) {
-				SetCommand setCmd = new SetCommand(editingDomain, logMediator,
-						EsbPackage.Literals.LOG_MEDIATOR__LOG_CATEGORY,
-						LogLevel.get(logCategoryLiteral));
-				getResultCommand().append(setCmd);
-			}
-		}
-
-		// Log level.
-		selectedIndex = logLevelCombo.getSelectionIndex();
-		if (-1 != selectedIndex) {
-			String logLevelLiteral = logLevelCombo.getItem(selectedIndex);
-			if (!logLevelLiteral.equals(logMediator.getLogLevel().getLiteral())) {
-				SetCommand setCmd = new SetCommand(editingDomain, logMediator,
-						EsbPackage.Literals.LOG_MEDIATOR__LOG_LEVEL,
-						LogLevel.get(logLevelLiteral));
-				getResultCommand().append(setCmd);
-			}
-		}
-
-		// Log separator.
-		String logSeparator = logSeparatorText.getText();
-		if (!logSeparator.equals(logMediator.getLogSeparator())) {
-			SetCommand setCmd = new SetCommand(editingDomain, logMediator,
-					EsbPackage.Literals.LOG_MEDIATOR__LOG_SEPARATOR,
-					logSeparator);
-			getResultCommand().append(setCmd);
-		}
-
 		// Log properties.
 		for (TableItem item : logPropertiesTable.getItems()) {
 			LogProperty property = (LogProperty) item.getData();

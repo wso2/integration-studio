@@ -256,6 +256,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 					inboundEndpoint.addParameter(WSO2_MB_NAMING_FACTORY_INITIAL,"org.wso2.andes.jndi.PropertiesFileInitialContextFactory");
 					inboundEndpoint.addParameter(JMS_CONNECTION_FACTORY_TYPE, "topic");
 					inboundEndpoint.addParameter(WSO2_MB_TOPIC_CONNECTION_URL,"amqp://admin:admin@clientID/carbon?brokerlist='tcp://localhost:5673'");
+					inboundEndpoint.addParameter(INTERVAL, "1000");
 					//Set the protocol as JMS
 					inboundEndpoint.setProtocol(JMS);
 				}

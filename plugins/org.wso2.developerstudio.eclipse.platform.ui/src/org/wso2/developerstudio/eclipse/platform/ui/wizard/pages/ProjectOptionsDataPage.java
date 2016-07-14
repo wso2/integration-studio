@@ -27,6 +27,7 @@ import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
@@ -36,6 +37,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -43,8 +45,11 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Link;
+import org.eclipse.swt.widgets.Monitor;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
@@ -157,11 +162,13 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 	 */
 	@Override
 	public void createControl(Composite parent) {
-
+		this.getShell().setSize(800, 500);//setting the wizard size to a fixed value to avoid widget distortion
+		setShellLoc(this.getShell());
 		final ScrolledComposite scrolledComposite = new ScrolledComposite(parent, SWT.H_SCROLL | SWT.V_SCROLL);
 
 		final Composite container = new Composite(scrolledComposite, SWT.NULL);
-
+      
+        		
 		setControl(scrolledComposite);
 		container.setLayout(new FillLayout(SWT.HORIZONTAL));
 
@@ -221,6 +228,18 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 		compositeSize.y += 100;
 		scrolledComposite.setMinSize(compositeSize);
 
+	}
+
+	private void setShellLoc(Shell shell) {
+		Monitor primary = Display.getCurrent().getPrimaryMonitor();
+	    Rectangle bounds = primary.getBounds();
+	    Rectangle rect = shell.getBounds();
+	    
+	    int x = bounds.x + (bounds.width - rect.width) / 2;
+	    int y = bounds.y + (bounds.height - rect.height) / 2;
+	    
+	    shell.setLocation(x, y);
+		
 	}
 
 	private void setupProjectOptionControls(Composite projectOptionsSection, int columns) {

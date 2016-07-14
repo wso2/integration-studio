@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
+<!-- 
   Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 
   WSO2 Inc. licenses this file to you under the Apache License,
@@ -17,63 +17,29 @@
   under the License.
    -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.wso2.developerstudio.bpmn.extensions</groupId>
-    <artifactId>org.wso2.developerstudio.bpmn.extensions.activator</artifactId>
-    <version>3.6.0-SNAPSHOT</version>
-    <name>Developer Studio BPMN Extensions Activator</name>
-    <parent>
-        <artifactId>wso2-developerstudio-bps-plugins</artifactId>
-        <groupId>org.wso2.developerstudio</groupId>
-        <version>3.6.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-    <build>
-        <sourceDirectory>src</sourceDirectory>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>pre-clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <tasks>
-                                <delete dir="${project.basedir}/libs"/>
-                                <mkdir dir="${project.basedir}/libs"/>
-                                <mkdir dir="${project.basedir}/libs/extensions"/>
-                                <copy file="${project.basedir}/../org.wso2.developerstudio.bpmn.extensions/target/org.wso2.developerstudio.bpmn.extensions-${project.version}.jar"
-                                      tofile="${project.basedir}/libs/extensions/org.wso2.developerstudio.bpmn.extensions-${project.version}.jar"/>
-                            </tasks>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>post-clean</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <tasks>
-                                <delete dir="${project.basedir}/libs"/>
-                            </tasks>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-    <packaging>eclipse-plugin</packaging>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.wso2.developerstudio.bpmn.extensions</groupId>
+	<artifactId>org.wso2.developerstudio.bpmn.extensions.activator</artifactId>
+	<version>3.6.0-SNAPSHOT</version>
+	<parent>
+		<artifactId>wso2-developerstudio-bps-plugins</artifactId>
+		<groupId>org.wso2.developerstudio</groupId>
+		<version>3.6.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<packaging>eclipse-plugin</packaging>
 </project>

@@ -93,7 +93,7 @@ public class LocalEntryFormPage extends AbstractEsbFormPage {
 		  
 		 
 		toolkit.createLabel(basicSectionClient, "Local Entry Type");
-		localEntryTypeCombo = new Combo(basicSectionClient, SWT.DROP_DOWN);
+		localEntryTypeCombo = new Combo(basicSectionClient, SWT.DROP_DOWN | SWT.READ_ONLY);
 		localEntryTypeCombo.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
 		String[] items = {IN_LINED_TEXT_ENTRY, IN_LINED_XML_ENTRY, SOURCE_URL_ENTRY};
 		localEntryTypeCombo.setItems(items);

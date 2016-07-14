@@ -14,7 +14,7 @@
       </category>
       <wizard
             category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.bpmn.wizards"
-            class="org.wso2.developerstudio.bpmn.wizards.CreateBPMNProjectWizard"
+            class="org.activiti.designer.eclipse.ui.wizard.project.CreateDefaultActivitiProjectWizard"
             finalPerspective="org.activiti.designer.eclipse.perspective.ActivitiPerspective"
             icon="icons/humanTask.png"
             id="org.wso2.developerstudio.bpmn.wizards.CreateBPMNProjectWizard"
@@ -26,7 +26,7 @@
       </wizard>
       <wizard
             category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.bpmn.wizards"
-            class="org.wso2.developerstudio.bpmn.wizards.CreateBPMNDiagramWizard"
+            class="org.activiti.designer.eclipse.ui.wizard.diagram.CreateDefaultActivitiDiagramWizard"
             finalPerspective="org.activiti.designer.eclipse.perspective.ActivitiPerspective"
             icon="icons/humanTask.png"
             id="org.wso2.developerstudio.bpmn.wizards.CreateBPMNDiagramWizard"

@@ -56,42 +56,48 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		esbProjectWizard.performFinish();
 
 		// Creating Registry Project
-		GeneralProjectWizard generalProjectWizard = new GeneralProjectWizard();
-		try {
-			esbSolutionProjectModel.setProjectName(projectName + "RegistryProject");
-		} catch (ObserverFailedException e1) {
-			log.error("Failed to set project name : " + projectName, e1);
+		if (esbSolutionProjectModel.isRegistryProjectChecked()) {
+			GeneralProjectWizard generalProjectWizard = new GeneralProjectWizard();
+			try {
+				esbSolutionProjectModel.setProjectName(esbSolutionProjectModel.getRegistryProjectName());
+			} catch (ObserverFailedException e1) {
+				log.error("Failed to set project name : " + projectName, e1);
+			}
+			generalProjectWizard.setModel(esbSolutionProjectModel);
+			generalProjectWizard.performFinish();
 		}
-		generalProjectWizard.setModel(esbSolutionProjectModel);
-		generalProjectWizard.performFinish();
 
 		// Creating connector Exporter Project
-		ConnectorCreationWizard connectorWizard = new ConnectorCreationWizard();
-		try {
-			esbSolutionProjectModel.setProjectName(projectName + "ConnectorExporterProject");
-		} catch (ObserverFailedException e1) {
-			log.error("Failed to set project name : " + projectName, e1);
+		if (esbSolutionProjectModel.isConnectorExporterProjectChecked()) {
+			ConnectorCreationWizard connectorWizard = new ConnectorCreationWizard();
+			try {
+				esbSolutionProjectModel.setProjectName(esbSolutionProjectModel.getConnectorExporterProjectName());
+			} catch (ObserverFailedException e1) {
+				log.error("Failed to set project name : " + projectName, e1);
+			}
+			connectorWizard.setModel(esbSolutionProjectModel);
+			connectorWizard.performFinish();
 		}
-		connectorWizard.setModel(esbSolutionProjectModel);
-		connectorWizard.performFinish();
 
 		// Creating Composite Project
-		DistributionProjectWizard distributionProjectWizard = new DistributionProjectWizard();
-		DistributionProjectModel distributionModel = new DistributionProjectModel();
-		try {
-			esbSolutionProjectModel.setProjectName(projectName + "CompositeProject");
-			distributionModel.setProjectName(projectName + "CompositeProject");
-			distributionModel.setGroupId(esbSolutionProjectModel.getGroupId());
-			distributionModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
-			distributionModel.setLocation(esbSolutionProjectModel.getLocation());
-			distributionModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
-			distributionModel.setSelectedOption(esbSolutionProjectModel.getSelectedOption());
-			distributionModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
-		} catch (ObserverFailedException e) {
-			log.error("Failed to set properties for project : " + projectName, e);
+		if (esbSolutionProjectModel.isCappProjectChecked()) {
+			DistributionProjectWizard distributionProjectWizard = new DistributionProjectWizard();
+			DistributionProjectModel distributionModel = new DistributionProjectModel();
+			try {
+				esbSolutionProjectModel.setProjectName(esbSolutionProjectModel.getCompositeApplicationProjectName());
+				distributionModel.setProjectName(esbSolutionProjectModel.getCompositeApplicationProjectName());
+				distributionModel.setGroupId(esbSolutionProjectModel.getGroupId());
+				distributionModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
+				distributionModel.setLocation(esbSolutionProjectModel.getLocation());
+				distributionModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
+				distributionModel.setSelectedOption(esbSolutionProjectModel.getSelectedOption());
+				distributionModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
+			} catch (ObserverFailedException e) {
+				log.error("Failed to set properties for project : " + projectName, e);
+			}
+			distributionProjectWizard.setModel(distributionModel);
+			distributionProjectWizard.performFinish();
 		}
-		distributionProjectWizard.setModel(distributionModel);
-		distributionProjectWizard.performFinish();
 
 		return true;
 	}

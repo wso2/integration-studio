@@ -16,6 +16,8 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.common.util.EList;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.TreeNode;
@@ -42,24 +44,23 @@ public class TreeNodeUtils {
 	}
 	
 	public static int getTreeWidth(TreeNode tree, int leafWidth) {
- 		int w = getTreeWidth(tree);
- 		int boxWidth = w * leafWidth;
- 		if (boxWidth < 250) {
- 			return 250;
- 		}
- 		else return boxWidth;
+ 		int w = getMaxTreeWidth(tree,0);
+ 		int boxWidth = (int) (w * 1.5) + 50;
+		if (boxWidth < 250) {
+			return 250;
+		} else {
+			return boxWidth;
+		}
  	}
 	
-	private static int getTreeWidth(TreeNode tree) {
-		int width = 0;
+	private static int getMaxTreeWidth(TreeNode tree, int width) {
 		if (tree != null) {
-			EList<Element> treeElems = tree.getElement();
-			for (Element elem : treeElems) {
-				if (elem.getLevel() > width)
-				width = elem.getLevel();
-			}
-			for (TreeNode childTree : tree.getNode()) {
-				width += 1 + getTreeWidth(childTree);
+			int thisNodeWidth = (tree.getLevel()*4 + tree.getName().length())*6;
+			width = Math.max(thisNodeWidth, width);
+			EList<TreeNode> treeNodes = tree.getNode();
+			for (Iterator<TreeNode> iterator = treeNodes.iterator(); iterator.hasNext();) {
+				TreeNode treeNode = (TreeNode) iterator.next();
+				width = getMaxTreeWidth(treeNode, width);
 			}
 		}
 		return width;

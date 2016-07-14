@@ -227,7 +227,6 @@
 		wizard="org.wso2.developerstudio.eclipse.artifact.newesbproject"
 	priority="1">
 	</wizardLink>
-
   </extension>
 
 	<extension
@@ -480,6 +479,15 @@
                        <description>ESB Solution Project</description>
          </wizard>
    </extension>
+   
+   		
+	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+      <wizardLink category="dashboard.category.esb" id="2dashboard.wizardLink.esb.solution.project"
+	    wizard="org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject"
+	   priority="1">
+     </wizardLink>
+   </extension>
+   
    
    <!-- Adding property tester for adding the item to the right click menu based on the resource type-->
   <extension

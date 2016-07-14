@@ -11,7 +11,8 @@
 				  title="Proxy Service"
 				  description="Create a new Proxy Service"
 				  error="Please give a name for the proxy service">
-			<data modelProperty="ps.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController">Proxy Service Name</data>
+				  <group id ="trigger.info" title="Trigger Information of the Task"/>
+			<data modelProperty="ps.name" group="trigger.info" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController">Proxy Service Name</data>
 			<data modelProperty="ps.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceTemplateList">Proxy Service Type</data>
 
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ESBProjectFilter">Save proxy service in:</data>

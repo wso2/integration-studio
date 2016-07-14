@@ -116,7 +116,7 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
 		return synapseAddEP;
 	}
 	
-	public AddressEndpoint create(AddressEndpointFormPage formPage) {
+	public AddressEndpoint create(AddressEndpointFormPage formPage) throws NumberFormatException, JaxenException {
 		AddressEndpoint synapseAddEP = new AddressEndpoint();
 		if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
 			synapseAddEP.setName(formPage.getEndpointName().getText());

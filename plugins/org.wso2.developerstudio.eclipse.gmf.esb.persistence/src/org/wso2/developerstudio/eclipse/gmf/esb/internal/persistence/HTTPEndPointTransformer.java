@@ -130,7 +130,7 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 		return synapseHttpEP;
 	}
 
-	public org.apache.synapse.endpoints.HTTPEndpoint create(HttpEndpointFormPage httpFormPage) {
+	public org.apache.synapse.endpoints.HTTPEndpoint create(HttpEndpointFormPage httpFormPage) throws NumberFormatException, JaxenException {
 		org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
 
 		if (StringUtils.isNotBlank(httpFormPage.getEndpointName().getText())) {

@@ -23,6 +23,7 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
@@ -131,7 +132,7 @@ public class TemplateEndPointTransformer extends AbstractEndpointTransformer{
  
         }
         
-        public org.apache.synapse.endpoints.TemplateEndpoint create(TemplateEndPointFormPage tempFormPage) {
+        public org.apache.synapse.endpoints.TemplateEndpoint create(TemplateEndPointFormPage tempFormPage) throws NumberFormatException, JaxenException {
         	org.apache.synapse.endpoints.TemplateEndpoint synapseTemplateEP = new org.apache.synapse.endpoints.TemplateEndpoint();
 
     		if (StringUtils.isNotEmpty(tempFormPage.getName())) {

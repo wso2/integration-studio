@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.Mediator;
@@ -53,7 +54,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointF
 public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransformer {
 
 	@SuppressWarnings("deprecation")
-	protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) throws NumberFormatException {
+	protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) throws NumberFormatException, JaxenException {
 
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 		EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
@@ -203,10 +204,20 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 
 		if (endpointCommons.getEndpointTimeoutDuration() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointTimeoutDuration().getText())) {
 			try {
-				synapseEPDef.setTimeoutDuration(
-						Long.parseLong(endpointCommons.getEndpointTimeoutDuration().getText().trim()));
+				String duration = endpointCommons.getEndpointTimeoutDuration().getText();
+				Pattern pattern = Pattern.compile("\\{.*\\}");
+				if (pattern.matcher(duration).matches()) {
+					duration = duration.trim().substring(1, duration.length() - 1);
+					SynapseXPath xpath = new SynapseXPath(duration);
+					synapseEPDef.setDynamicTimeoutExpression(xpath);
+				} else {
+					long timeoutMilliSeconds = Long.parseLong(duration.trim());
+					synapseEPDef.setTimeoutDuration(timeoutMilliSeconds);
+				}
 			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input is invalid,the value should be a float");
+				throw new NumberFormatException("Input is invalid,the value should be a number");
+			} catch (JaxenException e) {
+				throw e;
 			}
 		}
 

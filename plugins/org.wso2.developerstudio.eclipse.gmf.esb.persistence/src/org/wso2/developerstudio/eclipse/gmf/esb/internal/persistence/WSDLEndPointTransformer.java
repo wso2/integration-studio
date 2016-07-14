@@ -107,7 +107,7 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		return synapseWSDLEP;
 	}	
 
-	public WSDLEndpoint create(WsdlEndpointFormPage wsdlEndpointFormPage){
+	public WSDLEndpoint create(WsdlEndpointFormPage wsdlEndpointFormPage) throws NumberFormatException, JaxenException{
 		WSDLEndpoint synapseWSDLEP = new WSDLEndpoint();
 		synapseWSDLEP.setWsdlURI(wsdlEndpointFormPage.getWsdlEP_WsdlUri().getText());
 		synapseWSDLEP.setServiceName(wsdlEndpointFormPage.getWsdlEP_Service().getText());

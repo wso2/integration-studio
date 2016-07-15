@@ -211,7 +211,7 @@ public class EndsWithEditPart extends AbstractOperatorEditPart {
 		}
 
 		public IFigure getToolTip() {
-			return new Label("EndsWith Operation");
+			return new Label("EndsWith Operation. (Java 7 will not support this operation in runtime)");
 		}
 
 	}

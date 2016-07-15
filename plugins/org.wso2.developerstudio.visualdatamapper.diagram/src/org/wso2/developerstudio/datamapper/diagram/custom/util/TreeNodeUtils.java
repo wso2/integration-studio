@@ -55,7 +55,7 @@ public class TreeNodeUtils {
 	
 	private static int getMaxTreeWidth(TreeNode tree, int width) {
 		if (tree != null) {
-			int thisNodeWidth = (tree.getLevel()*4 + tree.getName().length())*6;
+			int thisNodeWidth = (int)((tree.getLevel()*4 + tree.getName().length())*4.5);
 			width = Math.max(thisNodeWidth, width);
 			EList<TreeNode> treeNodes = tree.getNode();
 			for (Iterator<TreeNode> iterator = treeNodes.iterator(); iterator.hasNext();) {

@@ -160,7 +160,7 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
     }
 
     @Override
-    public void notifyResponce(IResponseMessage responseMessage) {
+    public void notifyResponse(IResponseMessage responseMessage) {
         if (responseMessage instanceof CommandResponseMessage) {
             CommandResponseMessage response = (CommandResponseMessage) responseMessage;
             if (StringUtils.isNotEmpty(response.getFailedReason())) {

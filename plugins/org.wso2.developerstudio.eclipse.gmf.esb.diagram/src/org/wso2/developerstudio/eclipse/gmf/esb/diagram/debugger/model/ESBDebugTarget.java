@@ -225,7 +225,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
         IBreakpoint[] suspendPoints = DebugPlugin.getDefault().getBreakpointManager()
                 .getBreakpoints(SUSPEND_POINT_MODEL_ID);
         for (IBreakpoint suspendPoint : suspendPoints) {
-            DebugPlugin.getDefault().getBreakpointManager().removeBreakpoint(suspendPoint, false);
+            DebugPlugin.getDefault().getBreakpointManager().removeBreakpoint(suspendPoint, true);
         }
     }
 

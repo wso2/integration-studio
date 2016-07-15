@@ -307,7 +307,7 @@ public class MessageStoreDeserializer
 								// Set connection information to datasource
 								executeSetValueCommand(MESSAGE_STORE__JDBC_CONNECTION_INFORMATION,
 										JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE);
-								executeSetValueCommand(MESSAGE_STORE__JDBC_DATASOURCE_NAME, value);
+								executeSetValueCommand(MESSAGE_STORE__JDBC_DATASOURCE_NAME, value);								
 							}
 						} else if (param.getKey().equals(STORE_JDBC_DRIVER)) {
 							// Set connection information to pool
@@ -470,14 +470,18 @@ public class MessageStoreDeserializer
 				JDBC jdbcStore = (JDBC) messageStorePage.getStoreImpl(JDBC_MS_FQN);
 
 				setTextValue(jdbcStore.jdbc_dbTable, store.getParameters().get(STORE_JDBC_TABLE));
-				setTextValue(jdbcStore.jdbc_driver, store.getParameters().get(STORE_JDBC_DRIVER));
-				setTextValue(jdbcStore.jdbc_url, store.getParameters().get(STORE_JDBC_CONNECTION_URL));
-				setTextValue(jdbcStore.jdbc_username, store.getParameters().get(STORE_JDBC_USERNAME));
-				setTextValue(jdbcStore.jdbc_password, store.getParameters().get(STORE_JDBC_PASSWORD));
-				setTextValue(jdbcStore.jdbc_DsName, store.getParameters().get(STORE_JDBC_DS_NAME));
-
-				jdbcStore.jdbc_connectionInfo.select(0);
-
+				if(store.getParameters().get(STORE_JDBC_DS_NAME) != null){
+					jdbcStore.jdbc_connectionInfo.select(1);
+					jdbcStore.setDataSourceFields(true);
+					setTextValue(jdbcStore.jdbc_DsName, store.getParameters().get(STORE_JDBC_DS_NAME));
+				}else if(store.getParameters().get(STORE_JDBC_DRIVER)  != null ||store.getParameters().get(STORE_JDBC_CONNECTION_URL) != null || store.getParameters().get(STORE_JDBC_USERNAME) != null || store.getParameters().get(STORE_JDBC_PASSWORD) != null){
+					jdbcStore.jdbc_connectionInfo.select(0);
+					jdbcStore.setPoolingFields(true);
+					setTextValue(jdbcStore.jdbc_driver, store.getParameters().get(STORE_JDBC_DRIVER));
+					setTextValue(jdbcStore.jdbc_url, store.getParameters().get(STORE_JDBC_CONNECTION_URL));
+					setTextValue(jdbcStore.jdbc_username, store.getParameters().get(STORE_JDBC_USERNAME));
+					setTextValue(jdbcStore.jdbc_password, store.getParameters().get(STORE_JDBC_PASSWORD));
+				}
 			} else {
 				messageStorePage.storeType.select(5);
 

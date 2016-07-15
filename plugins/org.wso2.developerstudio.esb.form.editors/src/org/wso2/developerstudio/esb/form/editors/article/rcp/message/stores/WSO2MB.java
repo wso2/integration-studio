@@ -20,6 +20,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
@@ -29,8 +31,6 @@ import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.widgets.TableWrapData;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
@@ -59,9 +59,15 @@ public class WSO2MB implements IMessageStore {
 	public void createConnectionSectionFields() {
 		
 		connSection = this.createSection(form, toolkit, Messages.getString("MessageProcessorPage.section.misc"));
-	   	 
+	  	 
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		connSection.setLayoutData(samplegridData);
+
     	Composite connSectionClient = toolkit.createComposite(connSection);
-		connSectionClient.setLayout(new TableWrapLayout());
+		connSectionClient.setLayout(new GridLayout());
 		connSection.setClient(connSectionClient);
 		
 		connSection.setVisible(false);
@@ -69,7 +75,11 @@ public class WSO2MB implements IMessageStore {
 		toolkit.createLabel(connSectionClient, "Initial Context Factory *");
 		wso2mb_initCtxFactory = toolkit.createText(connSectionClient, "");
 		wso2mb_initCtxFactory.setBackground(new Color(null, 229,236,253));
-		wso2mb_initCtxFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData wso2mb_initCtxFactoryGridData = new GridData();
+		wso2mb_initCtxFactoryGridData.horizontalSpan = 3;
+		wso2mb_initCtxFactoryGridData.horizontalAlignment = GridData.FILL;
+		wso2mb_initCtxFactoryGridData.grabExcessHorizontalSpace = true;
+		wso2mb_initCtxFactory.setLayoutData(wso2mb_initCtxFactoryGridData);
 		wso2mb_initCtxFactory.setText("org.wso2.andes.jndi.PropertiesFileInitialContextFactory");
 		wso2mb_initCtxFactory.addModifyListener(new ModifyListener() {
 			@Override
@@ -83,7 +93,11 @@ public class WSO2MB implements IMessageStore {
 		wso2mb_QueueConnFactory = toolkit.createText(connSectionClient, "");
 		wso2mb_QueueConnFactory.setText("amqp://admin:admin@clientID/carbon?brokerlist='tcp://localhost:5673'");
 		wso2mb_QueueConnFactory.setBackground(new Color(null, 229,236,253));
-		wso2mb_QueueConnFactory.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData wso2mb_QueueConnFactoryGridData = new GridData();
+		wso2mb_QueueConnFactoryGridData.horizontalSpan = 3;
+		wso2mb_QueueConnFactoryGridData.horizontalAlignment = GridData.FILL;
+		wso2mb_QueueConnFactoryGridData.grabExcessHorizontalSpace = true;
+		wso2mb_QueueConnFactory.setLayoutData(wso2mb_QueueConnFactoryGridData);
 		wso2mb_QueueConnFactory.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -98,9 +112,15 @@ public class WSO2MB implements IMessageStore {
 	public void createParameterSectionFields() {
 		
 		parameterSection = this.createSection(form, toolkit, Messages.getString("MessageProcessorPage.section.misc"));
-	   	 
+	   	
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		parameterSection.setLayoutData(samplegridData);
+		
     	Composite paramSectionClient = toolkit.createComposite(parameterSection);
-    	paramSectionClient.setLayout(new TableWrapLayout());
+    	paramSectionClient.setLayout(new GridLayout());
     	parameterSection.setClient(paramSectionClient);
 		
     	parameterSection.setVisible(false);
@@ -108,7 +128,11 @@ public class WSO2MB implements IMessageStore {
 		toolkit.createLabel(paramSectionClient, "JNDI Queue Name *");
 		wso2mb_jndiQueueName = toolkit.createText(paramSectionClient, "");
 		wso2mb_jndiQueueName.setBackground(new Color(null, 229,236,253));
-		wso2mb_jndiQueueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData wso2mb_jndiQueueNameGridData = new GridData();
+		wso2mb_jndiQueueNameGridData.horizontalSpan = 3;
+		wso2mb_jndiQueueNameGridData.horizontalAlignment = GridData.FILL;
+		wso2mb_jndiQueueNameGridData.grabExcessHorizontalSpace = true;
+		wso2mb_jndiQueueName.setLayoutData(wso2mb_jndiQueueNameGridData);
 		wso2mb_jndiQueueName.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -119,7 +143,11 @@ public class WSO2MB implements IMessageStore {
 		
 		toolkit.createLabel(paramSectionClient, "JMS API Specification Version");
 		wso2mb_apiVersion = new Combo(paramSectionClient, SWT.DROP_DOWN);
-		wso2mb_apiVersion.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData wso2mb_apiVersionGridData = new GridData();
+		wso2mb_apiVersionGridData.horizontalSpan = 3;
+		wso2mb_apiVersionGridData.horizontalAlignment = GridData.FILL;
+		wso2mb_apiVersionGridData.grabExcessHorizontalSpace = true;
+		wso2mb_apiVersion.setLayoutData(wso2mb_apiVersionGridData);
 		String[] versions = {"1.1", "1.0"};
 		wso2mb_apiVersion.setItems(versions);
 		wso2mb_apiVersion.addModifyListener(new ModifyListener() {
@@ -132,7 +160,11 @@ public class WSO2MB implements IMessageStore {
 		
 		toolkit.createLabel(paramSectionClient, "Cache Connection");
 		mb_cacheConnection = new Combo(paramSectionClient, SWT.DROP_DOWN);
-		mb_cacheConnection.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData mb_cacheConnectionGridData = new GridData();
+		mb_cacheConnectionGridData.horizontalSpan = 3;
+		mb_cacheConnectionGridData.horizontalAlignment = GridData.FILL;
+		mb_cacheConnectionGridData.grabExcessHorizontalSpace = true;
+		mb_cacheConnection.setLayoutData(mb_cacheConnectionGridData);
 		String[] values = {"false", "true"};
 		mb_cacheConnection.setItems(values);
 		mb_cacheConnection.select(0);

@@ -33,6 +33,8 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -43,12 +45,9 @@ import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.events.ExpansionAdapter;
 import org.eclipse.ui.forms.events.ExpansionEvent;
-import org.eclipse.ui.forms.widgets.ColumnLayout;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.widgets.TableWrapData;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -110,11 +109,25 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		form.setText(Messages.getString("MessageStorePage.sectionMainTitle")); 
 		form.setBackgroundImage(FormArticlePlugin.getDefault().getImage(FormArticlePlugin.IMG_FORM_BG));
 
-		ColumnLayout layout = new ColumnLayout();
+		
+		GridLayout layout = new GridLayout();
+		layout.marginLeft = 20;
+		layout.marginRight = 20;
+		layout.marginTop = 10;
+		layout.numColumns = 1;
+		layout.makeColumnsEqualWidth = true;
+		
+		form.getBody().setLayout(layout);
+		GridData formGridData = new GridData();
+		formGridData.horizontalSpan = 6;
+		formGridData.grabExcessHorizontalSpace = true;
+		form.setLayoutData(formGridData);
+		
+		/*ColumnLayout layout = new ColumnLayout();
 		layout.leftMargin = 10;
 		layout.rightMargin = 10;
 		layout.maxNumColumns = 2;
-		form.getBody().setLayout(layout);
+		form.getBody().setLayout(layout);*/
 		
 		storeMap = new LinkedHashMap<>();
 		
@@ -147,15 +160,25 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		});
 		basicSection.setText(Messages.getString("MessageStorePage.section.basic"));
 		
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		basicSection.setLayoutData(samplegridData);
+		
 		Composite basicSectionClient = toolkit.createComposite(basicSection);
-		basicSectionClient.setLayout(new TableWrapLayout());
+		basicSectionClient.setLayout(new GridLayout());
 		
 		basicSection.setClient(basicSectionClient);
 		
 		toolkit.createLabel(basicSectionClient, "Message Store Name *");
 		storeName = toolkit.createText(basicSectionClient, "");
 		storeName.setBackground(new Color(null, 229,236,253));
-		storeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData storeNameGridData = new GridData();
+		storeNameGridData.horizontalSpan = 3;
+		storeNameGridData.horizontalAlignment = GridData.FILL;
+		storeNameGridData.grabExcessHorizontalSpace = true;
+		storeName.setLayoutData(storeNameGridData);
 		
 		storeName.addModifyListener(new ModifyListener() {
 			@Override
@@ -167,7 +190,12 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		
 		toolkit.createLabel(basicSectionClient, "Message Store Type *");
 		storeType = new Combo(basicSectionClient, SWT.DROP_DOWN);
-		storeType.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData storeTypeGridData = new GridData();
+		storeTypeGridData.horizontalSpan = 3;
+		storeTypeGridData.horizontalAlignment = GridData.FILL;
+		storeTypeGridData.grabExcessHorizontalSpace = true;
+		storeType.setLayoutData(storeTypeGridData);
+		
 		String[] triggerTypes = messageStoreTypes;
 		storeType.setItems(triggerTypes);
 		storeType.addSelectionListener(new SelectionAdapter() {
@@ -215,15 +243,25 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		/* Guaranteed Delivery Section */ 
 		guaranteedDeliverySection = this.createSection(form, toolkit, Messages.getString("MessageStorePage.section.guaranteedDelivery"));
 
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		guaranteedDeliverySection.setLayoutData(samplegridData);
+		
 		Composite guaranteedDeliverySectionClient = toolkit.createComposite(guaranteedDeliverySection);
-		guaranteedDeliverySectionClient.setLayout(new TableWrapLayout());
+		guaranteedDeliverySectionClient.setLayout(new GridLayout());
 		
 		guaranteedDeliverySection.setClient(guaranteedDeliverySectionClient);
 		guaranteedDeliverySection.setExpanded(false);
 		
 		toolkit.createLabel(guaranteedDeliverySectionClient, "Enable Producer Guaranteed Delivery");
 		guaranteedDeliveryEnable = new Combo(guaranteedDeliverySectionClient, SWT.DROP_DOWN);
-		guaranteedDeliveryEnable.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData guaranteedDeliveryEnableGridData = new GridData();
+		guaranteedDeliveryEnableGridData.horizontalSpan = 3;
+		guaranteedDeliveryEnableGridData.horizontalAlignment = GridData.FILL;
+		guaranteedDeliveryEnableGridData.grabExcessHorizontalSpace = true;
+		guaranteedDeliveryEnable.setLayoutData(guaranteedDeliveryEnableGridData);
 		String[] states = {"True", "False"};
 		guaranteedDeliveryEnable.setItems(states);
 		guaranteedDeliveryEnable.addSelectionListener(new SelectionAdapter() {
@@ -242,7 +280,11 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		String[] list = new String[availableMSList.size()];
 		list = availableMSList.toArray(list);
 		failoverMessageStore.setItems(list);
-		failoverMessageStore.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData failoverMessageStoreGridData = new GridData();
+		failoverMessageStoreGridData.horizontalSpan = 3;
+		failoverMessageStoreGridData.horizontalAlignment = GridData.FILL;
+		failoverMessageStoreGridData.grabExcessHorizontalSpace = true;
+		failoverMessageStore.setLayoutData(failoverMessageStoreGridData);
 		failoverMessageStore.addSelectionListener(new SelectionAdapter() {
 
 			public void widgetSelected(SelectionEvent e) {	

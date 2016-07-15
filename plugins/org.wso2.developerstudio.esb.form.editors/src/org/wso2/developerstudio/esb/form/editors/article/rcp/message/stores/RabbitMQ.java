@@ -16,9 +16,12 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.FormColors;
@@ -27,8 +30,6 @@ import org.eclipse.ui.forms.events.ExpansionEvent;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.forms.widgets.TableWrapData;
-import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
 
@@ -61,9 +62,16 @@ public class RabbitMQ implements IMessageStore {
 	public void createConnectionSectionFields() {
 		
 		connSection = this.createSection(form, toolkit, Messages.getString("MessageProcessorPage.section.misc"));
-	   	 
+	   	
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		connSection.setLayoutData(samplegridData);
+	
+
     	Composite connSectionClient = toolkit.createComposite(connSection);
-		connSectionClient.setLayout(new TableWrapLayout());
+		connSectionClient.setLayout(new GridLayout());
 		connSection.setClient(connSectionClient);
 		
 		connSection.setVisible(false);
@@ -71,7 +79,11 @@ public class RabbitMQ implements IMessageStore {
 		toolkit.createLabel(connSectionClient, "Rabbit MQ Server Hostname");
 		rabbitMQ_hostname = toolkit.createText(connSectionClient, "");
 		rabbitMQ_hostname.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_hostname.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData rabbitMQ_hostnameGridData = new GridData();
+		rabbitMQ_hostnameGridData.horizontalSpan = 3;
+		rabbitMQ_hostnameGridData.horizontalAlignment = GridData.FILL;
+		rabbitMQ_hostnameGridData.grabExcessHorizontalSpace = true;
+		rabbitMQ_hostname.setLayoutData(rabbitMQ_hostnameGridData);
 		rabbitMQ_hostname.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -83,7 +95,11 @@ public class RabbitMQ implements IMessageStore {
 		toolkit.createLabel(connSectionClient, "Rabbit MQ Server Port");
 		rabbitMQ_port = toolkit.createText(connSectionClient, "");
 		rabbitMQ_port.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_port.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData rabbitMQ_portGridData = new GridData();
+		rabbitMQ_portGridData.horizontalSpan = 3;
+		rabbitMQ_portGridData.horizontalAlignment = GridData.FILL;
+		rabbitMQ_portGridData.grabExcessHorizontalSpace = true;
+		rabbitMQ_port.setLayoutData(rabbitMQ_portGridData);
 		rabbitMQ_port.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -99,8 +115,14 @@ public class RabbitMQ implements IMessageStore {
 		
 		parameterSection = this.createSection(form, toolkit, Messages.getString("MessageProcessorPage.section.misc"));
 	   	 
+		GridData samplegridData = new GridData();
+		samplegridData.horizontalSpan = 3;
+		samplegridData.horizontalAlignment = SWT.FILL;
+		samplegridData.grabExcessHorizontalSpace = true;
+		parameterSection.setLayoutData(samplegridData);
+	
     	Composite paramSectionClient = toolkit.createComposite(parameterSection);
-    	paramSectionClient.setLayout(new TableWrapLayout());
+    	paramSectionClient.setLayout(new GridLayout());
     	parameterSection.setClient(paramSectionClient);
 		
     	parameterSection.setVisible(false);
@@ -109,7 +131,11 @@ public class RabbitMQ implements IMessageStore {
 		toolkit.createLabel(paramSectionClient, "RabbitMQ Queue Name");
 		rabbitMQ_queueName = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_queueName.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_queueName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData rabbitMQ_queueNameGridData = new GridData();
+		rabbitMQ_queueNameGridData.horizontalSpan = 3;
+		rabbitMQ_queueNameGridData.horizontalAlignment = GridData.FILL;
+		rabbitMQ_queueNameGridData.grabExcessHorizontalSpace = true;
+		rabbitMQ_queueName.setLayoutData(rabbitMQ_queueNameGridData);
 		rabbitMQ_queueName.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -121,7 +147,11 @@ public class RabbitMQ implements IMessageStore {
 		toolkit.createLabel(paramSectionClient, "RabbitMQ Exchange Name");
 		rabbitMQ_exchangeName = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_exchangeName.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_exchangeName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData rabbitMQ_exchangeNameGridData = new GridData();
+		rabbitMQ_exchangeNameGridData.horizontalSpan = 3;
+		rabbitMQ_exchangeNameGridData.horizontalAlignment = GridData.FILL;
+		rabbitMQ_exchangeNameGridData.grabExcessHorizontalSpace = true;
+		rabbitMQ_exchangeName.setLayoutData(rabbitMQ_exchangeNameGridData);
 		rabbitMQ_exchangeName.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -133,7 +163,11 @@ public class RabbitMQ implements IMessageStore {
 		toolkit.createLabel(paramSectionClient, "Routing Key");
 		rabbitMQ_routingKey = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_routingKey.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_routingKey.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData rabbitMQ_routingKeyGridData = new GridData();
+		rabbitMQ_routingKeyGridData.horizontalSpan = 3;
+		rabbitMQ_routingKeyGridData.horizontalAlignment = GridData.FILL;
+		rabbitMQ_routingKeyGridData.grabExcessHorizontalSpace = true;
+		rabbitMQ_routingKey.setLayoutData(rabbitMQ_routingKeyGridData);
 		rabbitMQ_routingKey.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -145,7 +179,11 @@ public class RabbitMQ implements IMessageStore {
 		toolkit.createLabel(paramSectionClient, "RabbitMQ Username");
 		rabbitMQ_username = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_username.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_username.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData rabbitMQ_usernameGridData = new GridData();
+		rabbitMQ_usernameGridData.horizontalSpan = 3;
+		rabbitMQ_usernameGridData.horizontalAlignment = GridData.FILL;
+		rabbitMQ_usernameGridData.grabExcessHorizontalSpace = true;
+		rabbitMQ_username.setLayoutData(rabbitMQ_usernameGridData);
 		rabbitMQ_username.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -157,7 +195,11 @@ public class RabbitMQ implements IMessageStore {
 		toolkit.createLabel(paramSectionClient, "RabbitMQ Password");
 		rabbitMQ_password = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_password.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_password.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData rabbitMQ_passwordGridData = new GridData();
+		rabbitMQ_passwordGridData.horizontalSpan = 3;
+		rabbitMQ_passwordGridData.horizontalAlignment = GridData.FILL;
+		rabbitMQ_passwordGridData.grabExcessHorizontalSpace = true;
+		rabbitMQ_password.setLayoutData(rabbitMQ_passwordGridData);
 		rabbitMQ_password.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
@@ -169,7 +211,11 @@ public class RabbitMQ implements IMessageStore {
 		toolkit.createLabel(paramSectionClient, "Virtual Host");
 		rabbitMQ_virtualhost = toolkit.createText(paramSectionClient, "");
 		rabbitMQ_virtualhost.setBackground(new Color(null, 229,236,253));
-		rabbitMQ_virtualhost.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+		GridData rabbitMQ_virtualhostGridData = new GridData();
+		rabbitMQ_virtualhostGridData.horizontalSpan = 3;
+		rabbitMQ_virtualhostGridData.horizontalAlignment = GridData.FILL;
+		rabbitMQ_virtualhostGridData.grabExcessHorizontalSpace = true;
+		rabbitMQ_virtualhost.setLayoutData(rabbitMQ_virtualhostGridData);
 		rabbitMQ_virtualhost.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {

@@ -302,13 +302,15 @@ public class MessageStoreTransformer {
 					// JDBC Store
 					className = JDBC_MS_FQN;
 					JDBC jdbcStore = (JDBC) formPage.getStoreImpl(JDBC_MS_FQN);
-
 					parameterMap.put(STORE_JDBC_TABLE, jdbcStore.jdbc_dbTable.getText());
-					parameterMap.put(STORE_JDBC_DRIVER, jdbcStore.jdbc_driver.getText());
-					parameterMap.put(STORE_JDBC_CONNECTION_URL, jdbcStore.jdbc_url.getText());
-					parameterMap.put(STORE_JDBC_USERNAME, jdbcStore.jdbc_username.getText());
-					parameterMap.put(STORE_JDBC_PASSWORD, jdbcStore.jdbc_password.getText());
-					parameterMap.put(STORE_JDBC_DS_NAME, jdbcStore.jdbc_DsName.getText());
+					if(jdbcStore.jdbc_connectionInfo.getSelectionIndex() == 0){
+						parameterMap.put(STORE_JDBC_DRIVER, jdbcStore.jdbc_driver.getText());
+						parameterMap.put(STORE_JDBC_CONNECTION_URL, jdbcStore.jdbc_url.getText());
+						parameterMap.put(STORE_JDBC_USERNAME, jdbcStore.jdbc_username.getText());
+						parameterMap.put(STORE_JDBC_PASSWORD, jdbcStore.jdbc_password.getText());
+					}else{
+						parameterMap.put(STORE_JDBC_DS_NAME, jdbcStore.jdbc_DsName.getText());	
+					}
 
 					break;
 				}

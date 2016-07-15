@@ -42,7 +42,7 @@ public interface IESBDebugger {
      * 
      * @param iResponseMessage
      */
-    public void notifyResponce(IResponseMessage iResponseMessage);
+    public void notifyResponse(IResponseMessage iResponseMessage);
 
     /**
      * This method send event for {@link IESBDebugTarget} informing ESB Server

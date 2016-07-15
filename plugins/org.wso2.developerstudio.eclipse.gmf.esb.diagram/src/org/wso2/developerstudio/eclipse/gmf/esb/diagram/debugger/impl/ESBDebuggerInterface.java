@@ -112,7 +112,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
                 log.info("NULL value read from ChannelResponceDispatcher.ESB Server shutting down.");
                 esbDebugger.fireTerminatedEvent();
             } else if (messageFactory.checkForWirelogMessage(eventMessage)){
-            	esbDebugger.notifyResponce(messageFactory.convertResponseToIResponseMessage(eventMessage));
+            	esbDebugger.notifyResponse(messageFactory.convertResponseToIResponseMessage(eventMessage));
             } else {
                 esbDebugger.notifyEvent(messageFactory.convertEventToIEventMessage(eventMessage));
             } 
@@ -138,7 +138,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
                 log.info("NULL value read from ChannelEventDispatcher.ESB Server shutting down.");
                 esbDebugger.fireTerminatedEvent();
             } else {
-                esbDebugger.notifyResponce(messageFactory.convertResponseToIResponseMessage(responseMessage));
+                esbDebugger.notifyResponse(messageFactory.convertResponseToIResponseMessage(responseMessage));
             }
         } catch (Exception e) {
             log.error(

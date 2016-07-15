@@ -19,7 +19,7 @@
         <version>3.5.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>wso2-developer-studio-kernel-dss-main-p2</artifactId>
+    <artifactId>wso2dss-tooling-main-p2</artifactId>
     <packaging>eclipse-repository</packaging>
     <name>WSO2 Developer Studio - Data Service Main P2 Repository</name>
     <url>http://wso2.org</url>

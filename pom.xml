@@ -25,7 +25,7 @@
         <module>plugins</module>
         <module>features</module>
         <module>repository</module>
-	<!--<module>installed-distribution</module>-->
+	<module>installed-distribution</module>
     </modules>
     <scm>
         <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>
@@ -107,7 +107,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-Luna-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/eclipse/luna/p2/</url>
+            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/eclipse/mars/p2/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -240,7 +240,7 @@
             <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/platform-bundles/releases/</url>
             <layout>p2</layout>
         </repository>
-	<!--repository>
+	    <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -249,7 +249,7 @@
             <id>DevS-Kernel-p2-updates-Repository</id>
             <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/updates/</url>
             <layout>p2</layout>
-        </repository-->
+        </repository>
         <repository>
             <releases>
                 <enabled>true</enabled>

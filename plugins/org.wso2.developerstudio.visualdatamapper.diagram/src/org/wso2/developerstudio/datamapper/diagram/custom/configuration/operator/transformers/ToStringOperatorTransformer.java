@@ -49,9 +49,10 @@ public class ToStringOperatorTransformer extends AbstractDMOperatorTransformer {
 			if (inputVariables.size() == 0) {
 				throw new IllegalArgumentException("To String operation needs an input");
 			} else {
-				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop)
-						+ JS_TO_STRING);
+				operationBuilder
+						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+								outputArrayVariableForLoop) + ")" + JS_TO_STRING);
 			}
 			operationBuilder.append(";");
 

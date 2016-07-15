@@ -46,7 +46,7 @@ public class ReplaceConfigureAction extends AbstractActionHandler {
 	public ReplaceConfigureAction(IWorkbenchPart part) {
 		super(part);
 		setId("configure-replace-operator-action-id");
-		setText("Configure Rplace Operator");
+		setText("Configure Replace Operator");
 		setToolTipText("Configure Replace Operator Attributes");
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));

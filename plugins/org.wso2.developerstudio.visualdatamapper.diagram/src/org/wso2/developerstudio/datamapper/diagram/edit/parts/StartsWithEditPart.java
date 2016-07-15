@@ -211,7 +211,7 @@ public class StartsWithEditPart extends AbstractOperatorEditPart {
 		}
 
 		public IFigure getToolTip() {
-			return new Label("StartsWith Operation");
+			return new Label("StartsWith Operation. (Java 7 will not support this operation in runtime)");
 		}
 
 	}

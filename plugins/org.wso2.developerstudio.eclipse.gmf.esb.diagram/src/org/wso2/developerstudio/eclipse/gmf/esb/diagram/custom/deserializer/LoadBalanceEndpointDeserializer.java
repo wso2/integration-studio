@@ -48,7 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 public class LoadBalanceEndpointDeserializer extends AbstractComplexEndPointDeserializer{//AbstractEsbNodeDeserializer<AbstractEndpoint, LoadBalanceEndPoint>{
 	
 	@Override
-	public LoadBalanceEndPoint createNode(IGraphicalEditPart part,AbstractEndpoint object) {
+	public LoadBalanceEndPoint createNode(IGraphicalEditPart part,AbstractEndpoint object) throws DeserializerException {
 		
 		Assert.isTrue(object instanceof org.apache.synapse.endpoints.LoadbalanceEndpoint, "Unsupported endpoint passed in for deserialization at "+ this.getClass());
 		

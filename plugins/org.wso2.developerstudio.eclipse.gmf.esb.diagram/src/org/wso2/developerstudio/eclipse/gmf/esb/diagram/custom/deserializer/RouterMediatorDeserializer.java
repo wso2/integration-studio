@@ -41,7 +41,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 public class RouterMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, RouterMediator> {
 
 	@Override
-	public RouterMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
+	public RouterMediator createNode(IGraphicalEditPart part, AbstractMediator object) throws DeserializerException {
 		Assert.isTrue(object instanceof org.wso2.carbon.mediators.router.impl.RouterMediator,
 				"Unsupported mediator passed in for deserialization");
 

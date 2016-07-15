@@ -47,7 +47,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 
 public class RecipientListEndpointDeserializer extends AbstractComplexEndPointDeserializer {
 
-	public RecipientListEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) {
+	public RecipientListEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) throws DeserializerException {
 		Assert.isTrue(object instanceof RecipientListEndpoint,
 				"Unsupported endpoint passed in for deserialization at " + this.getClass());
 

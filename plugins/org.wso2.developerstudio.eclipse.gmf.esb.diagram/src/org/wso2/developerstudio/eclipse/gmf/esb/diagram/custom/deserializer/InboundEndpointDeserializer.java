@@ -99,7 +99,7 @@ public class InboundEndpointDeserializer extends
 
     @Override
     public org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint createNode(IGraphicalEditPart part,
-            InboundEndpoint object) {
+            InboundEndpoint object) throws DeserializerException {
 
         // Creating a new graphical InboundEndpoint object.
         org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint inboundEndpoint = (org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint) DeserializerUtils

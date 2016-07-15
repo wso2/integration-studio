@@ -46,7 +46,7 @@ public class EndPointTemplateDeserializer extends AbstractEsbNodeDeserializer<or
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Template createNode(IGraphicalEditPart part, org.apache.synapse.endpoints.Template template) {
+	public Template createNode(IGraphicalEditPart part, org.apache.synapse.endpoints.Template template) throws DeserializerException {
 		Template templateModel = (Template) DeserializerUtils.createNode(part, EsbElementTypes.Template_3664);
 		setElementToEdit(templateModel);
 		executeSetValueCommand(TEMPLATE__NAME, template.getName());

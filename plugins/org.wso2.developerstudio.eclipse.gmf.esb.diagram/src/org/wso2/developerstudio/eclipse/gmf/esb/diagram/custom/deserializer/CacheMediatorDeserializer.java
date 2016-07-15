@@ -36,7 +36,7 @@ public class CacheMediatorDeserializer extends
 
 	@Override
 	public CacheMediator createNode(IGraphicalEditPart part,
-			AbstractMediator object) {
+			AbstractMediator object) throws DeserializerException {
 		Assert.isTrue(
 				object instanceof org.apache.synapse.mediators.builtin.CacheMediator
 						|| object instanceof org.wso2.carbon.mediator.cache.CacheMediator,

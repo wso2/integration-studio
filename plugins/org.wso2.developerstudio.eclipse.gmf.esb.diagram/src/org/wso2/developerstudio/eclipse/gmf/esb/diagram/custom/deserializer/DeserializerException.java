@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2016 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,34 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.ui.forms.editor.FormEditor;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
-
-public interface IEsbNodeDeserializer<T,R extends EsbNode> {
+public class DeserializerException extends Exception{
 	
-	void setDiagramEditor(EsbDiagramEditor diagramEditor);
-	R createNode(IGraphicalEditPart part, T object) throws DeserializerException;
-	void createNode(FormEditor part, T object);
-	public boolean isReversed();
-	public void setReversed(boolean reversed);
+	private static final long serialVersionUID = 2788705051694062245L;
+
+	public DeserializerException() {
+		super();
+	}
+
+	/**
+	 * @param message
+	 */
+	public DeserializerException(String message) {
+		super(message);
+	}
+
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public DeserializerException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	/**
+	 * @param cause
+	 */
+	public DeserializerException(Throwable cause) {
+		super(cause);
+	}
 
 }

@@ -119,7 +119,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 					try {
 						synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
 					} catch (NumberFormatException ex) {
-						throw new NumberFormatException("Input is invalid,the value should be an interger");
+						throw new NumberFormatException("Input for Suspend Error Codes is invalid,the value should be an interger");
 					}
 				}
 			}
@@ -131,7 +131,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 				synapseEPDef.setInitialSuspendDuration(
 						Long.parseLong(endpointCommons.getEndpointSuspendInitialDuration().getText().trim()));
 			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input is invalid,the value should be a long");
+				throw new NumberFormatException("Input for Suspend Initial Duration is invalid,the value should be a long");
 			}
 		}
 	
@@ -140,7 +140,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 				synapseEPDef.setSuspendMaximumDuration(
 						Long.parseLong(endpointCommons.getEndpointSuspendMaxDuration().getText().trim()));
 			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input is invalid,the value should be a long");
+				throw new NumberFormatException("Input for Suspend Maximum Duration is invalid,the value should be a long");
 			}
 			
 		}
@@ -150,7 +150,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 				synapseEPDef.setSuspendProgressionFactor(
 						Float.parseFloat((endpointCommons.getEndpointSuspendProgressFactor().getText().trim())));
 			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input is invalid,the value should be a float");
+				throw new NumberFormatException("Input for Suspend Progression Factor is invalid,the value should be a float");
 			}
 			
 		}
@@ -164,7 +164,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 					try {
 						synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
 					} catch (NumberFormatException ex) {
-						throw new NumberFormatException("Input is invalid,the value should be a float");
+						throw new NumberFormatException("Input for Entry Error Codes is invalid,the value should be a float");
 					}
 				
 				}
@@ -176,7 +176,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 				synapseEPDef.setRetriesOnTimeoutBeforeSuspend(
 						Integer.parseInt(endpointCommons.getEndpointRetryCount().getText().trim()));
 			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input is invalid,the value should be a float");
+				throw new NumberFormatException("Input for Entry Count is invalid,the value should be a float");
 			}		
 		}
 
@@ -185,7 +185,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 				synapseEPDef.setRetryDurationOnTimeout(
 						Integer.parseInt(endpointCommons.getEndpointRetryDelay().getText().trim()));
 			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input is invalid,the value should be a float");
+				throw new NumberFormatException("Input for Entry Delay is invalid,the value should be a float");
 			}
 		}
 
@@ -215,7 +215,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 					synapseEPDef.setTimeoutDuration(timeoutMilliSeconds);
 				}
 			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input is invalid,the value should be a number");
+				throw new NumberFormatException("Input for Timeout Duration is invalid,the value should be a number");
 			} catch (JaxenException e) {
 				throw e;
 			}

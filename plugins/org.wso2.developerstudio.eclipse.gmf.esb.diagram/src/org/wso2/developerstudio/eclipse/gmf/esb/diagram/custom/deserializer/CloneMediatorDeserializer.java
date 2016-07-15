@@ -63,7 +63,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 
 public class CloneMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CloneMediator> {
 
-	public CloneMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
+	public CloneMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) throws DeserializerException {
 		
 		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.eip.splitter.CloneMediator, "Unsupported mediator passed in for deserialization at "+ this.getClass());
 		

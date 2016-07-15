@@ -39,7 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 
 public class FailoverEndpointDeserializer extends AbstractComplexEndPointDeserializer{
 	
-	public FailoverEndPoint createNode(IGraphicalEditPart part,AbstractEndpoint object) {
+	public FailoverEndPoint createNode(IGraphicalEditPart part,AbstractEndpoint object) throws DeserializerException {
 		Assert.isTrue(object instanceof org.apache.synapse.endpoints.FailoverEndpoint, "Unsupported endpoint passed in for deserialization at "+ this.getClass());
 		
 		org.apache.synapse.endpoints.FailoverEndpoint failoverEndpoint = (org.apache.synapse.endpoints.FailoverEndpoint)object;

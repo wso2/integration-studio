@@ -47,7 +47,7 @@ public class EndPointDeserializer extends AbstractEsbNodeDeserializer<EndpointWr
 	@Deprecated
 	@SuppressWarnings("unchecked")
 	@Override
-	public EndpointDiagram createNode(IGraphicalEditPart part, EndpointWrapper endpointWrapper) {
+	public EndpointDiagram createNode(IGraphicalEditPart part, EndpointWrapper endpointWrapper) throws DeserializerException {
 		EndpointDiagram endpointDiagram = (EndpointDiagram) DeserializerUtils.createNode((IGraphicalEditPart)part.getParent(), EsbElementTypes.EndpointDiagram_3642);
 		refreshEditPartMap();
 		IGraphicalEditPart graphicalNode = (IGraphicalEditPart) getEditpart(endpointDiagram);

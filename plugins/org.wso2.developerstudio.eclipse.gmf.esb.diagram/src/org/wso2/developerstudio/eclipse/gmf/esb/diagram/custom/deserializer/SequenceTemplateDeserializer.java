@@ -41,7 +41,7 @@ public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<Te
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Template createNode(IGraphicalEditPart part, TemplateMediator template) {
+	public Template createNode(IGraphicalEditPart part, TemplateMediator template) throws DeserializerException {
 		Template templateModel = (Template) DeserializerUtils.createNode(part, EsbElementTypes.Template_3664);
 		setElementToEdit(templateModel);
 		executeSetValueCommand(TEMPLATE__NAME, template.getName());

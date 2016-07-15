@@ -55,7 +55,7 @@ import org.apache.commons.lang.StringUtils;
 public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMediator, EsbNode> {
 
 	@Override
-	public EsbNode createNode(IGraphicalEditPart part,SequenceMediator sequence) {
+	public EsbNode createNode(IGraphicalEditPart part,SequenceMediator sequence) throws DeserializerException {
 		EsbNode node = null;
 		if(sequence.getKey()!=null){
 			Sequence sequenceModel = (Sequence) DeserializerUtils.createNode(part, EsbElementTypes.Sequence_3503);
@@ -119,7 +119,7 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
 		
 	}
 
-	private ProxyService deserializeMainSequence(IGraphicalEditPart part, SequenceMediator sequence) {
+	private ProxyService deserializeMainSequence(IGraphicalEditPart part, SequenceMediator sequence) throws DeserializerException {
 		ProxyService sequenceModel = (ProxyService) DeserializerUtils.createNode(part,
 				EsbElementTypes.ProxyService_3001);
 

@@ -132,7 +132,7 @@
             <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/platform-bundles/releases/4.1.0-201606031446/</url>
             <layout>p2</layout>
         </repository>
-	<!--repository>
+	<repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -141,7 +141,7 @@
             <id>DevS-Kernel-p2-updates-Repository</id>
             <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/updates/</url>
             <layout>p2</layout>
-        </repository-->
+        </repository>
         <repository>
             <releases>
                 <enabled>true</enabled>

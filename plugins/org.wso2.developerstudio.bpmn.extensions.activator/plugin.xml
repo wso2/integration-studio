@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         point="org.eclipse.ui.startup">
+         <startup class="org.wso2.developerstudio.bpmn.extensions.StartupAction"/>
+   </extension>
     <extension
-            point="org.eclipse.ui.startup">
-        <startup class="org.wso2.developerstudio.bpmn.extensions.StartupAction"/>
-    </extension>
-</plugin>
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="BPMN"
+            id="org.wso2.developerstudio.bpmn.wizards"
+            parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+      </category>
+      <wizard
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.bpmn.wizards"
+            class="org.activiti.designer.eclipse.ui.wizard.project.CreateDefaultActivitiProjectWizard"
+            finalPerspective="org.activiti.designer.eclipse.perspective.ActivitiPerspective"
+            icon="icons/humanTask.png"
+            id="org.wso2.developerstudio.bpmn.wizards.CreateBPMNProjectWizard"
+            name="BPMN Project"
+            project="true">
+            <description>
+               Create a new BPMN Project with a basic folder structure and a Maven POM file.
+            </description>
+      </wizard>
+      <wizard
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.bpmn.wizards"
+            class="org.activiti.designer.eclipse.ui.wizard.diagram.CreateDefaultActivitiDiagramWizard"
+            finalPerspective="org.activiti.designer.eclipse.perspective.ActivitiPerspective"
+            icon="icons/humanTask.png"
+            id="org.wso2.developerstudio.bpmn.wizards.CreateBPMNDiagramWizard"
+            name="BPMN Diagram">
+             <description>
+               Create a new BPMN 2.0 Diagram.
+            </description>
+      </wizard>
+   </extension>
+ </plugin>

@@ -16,6 +16,16 @@
 
 package org.wso2.developerstudio.bpmn.extensions;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
@@ -28,16 +38,6 @@ import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.ui.IStartup;
 import org.osgi.framework.Bundle;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class StartupAction implements IStartup {
     private static final Logger logger = Logger.getLogger(ExtensionConstants.BUNDLE_ID);
@@ -62,11 +62,11 @@ public class StartupAction implements IStartup {
         ArrayList<IClasspathEntry> classPathEntries = new ArrayList<IClasspathEntry>();
         URL url = FileLocator.toFileURL(fileURL);
         File libFolder = new File(new URI(url.getProtocol(), url.getPath(), null));
-        List<File> files = (List<File>) FileUtils.listFiles(libFolder, new String[]{"jar"}, true);
+        List<File> files = (List<File>) FileUtils.listFiles(libFolder, new String[] { "jar" }, true);
         for (File file : files) {
             if (file.isFile()) {
-                classPathEntries.add(JavaCore.newLibraryEntry(new Path(file.getAbsolutePath()).makeAbsolute(),
-                        null, null));
+                classPathEntries.add(JavaCore.newLibraryEntry(new Path(file.getAbsolutePath()).makeAbsolute(), null,
+                        null));
             }
         }
         setLibraryPath(initializer, classPathEntries);

@@ -832,7 +832,7 @@ public class EditorUtils {
 				.getActivePage().getActiveEditor();
 				for (int i = 0; i < editorReferences.length; i++) {
 					IEditorPart editor = editorReferences[i].getEditor(false);
-					if ((editor instanceof EsbMultiPageEditor)) {
+					if ((editor instanceof EsbMultiPageEditor) && ((EsbMultiPageEditor) editor).getGraphicalEditor() != null) {
 				        /*
 				         * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints' methods should not exist inside EsbPaletteFactory class. 
 				         * Creating new instance of 'EsbPaletteFactory' must be avoided.

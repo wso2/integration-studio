@@ -59,6 +59,8 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 			}
 
 			if (startIndex.startsWith("{$") && inputVariables.size() > 1) {
+				// Start Index variable position index is 1
+				validateStartIndexInputValue(inputVariables.get(1));
 				startValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
 						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop);
 				if (length.startsWith("{$") && inputVariables.size() > 2) {
@@ -66,15 +68,19 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 							variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
 							outputArrayVariableForLoop);
 				} else {
+					validateLengthInputValue(length);
 					lengthValue = length;
 				}
 
 			} else {
+				validateStartIndexInputValue(startIndex);
 				startValue = startIndex;
-				if (length.startsWith("{$") && inputVariables.size() > 1) {
-					lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
+				if (length.startsWith("{$") && inputVariables.size() > 2) {
+					// Length variable position index is 2
+					lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
 							variableTypeMap, tempParentForLoopBeanStack, true, null, null);
 				} else {
+					validateLengthInputValue(length);
 					lengthValue = length;
 				}
 			}
@@ -86,6 +92,24 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}
 		return operationBuilder.toString();
+	}
+
+	private void validateStartIndexInputValue(DMVariable dmVariable) {
+		if(dmVariable == null){
+			throw new IllegalArgumentException("Input value for Start Index in Substring Opeartor is not defined");
+		}
+	}
+
+	private void validateLengthInputValue(String length) {
+		if(length.startsWith("{$")){
+			throw new IllegalArgumentException("Input value for Length in Substring Opeartor is not defined");
+		}
+	}
+	
+	private void validateStartIndexInputValue(String startValue) {
+		if(startValue.startsWith("{$")){
+			throw new IllegalArgumentException("Input value for Start Index in Substring Opeartor is not defined");
+		}
 	}
 
 }

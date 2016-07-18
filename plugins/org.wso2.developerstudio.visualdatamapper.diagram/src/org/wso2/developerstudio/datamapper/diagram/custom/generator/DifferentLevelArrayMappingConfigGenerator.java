@@ -439,19 +439,23 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		String mostChildVariableName = "";
 		int mostChildVariableIndex = -1;
 		for (Integer variableIndex : inputVariableIndexList) {
-			DMVariable variable = variableList.get(variableIndex);
-			String variableName = "";
-			if (DMVariableType.INTERMEDIATE.equals(variable.getType())) {
-				variableName = variableList.get(variable.getMostChildVariableIndex()).getName();
-				if (mostChildVariableName.split("\\.").length < variableName.split("\\.").length) {
-					mostChildVariableName = variableName;
-					mostChildVariableIndex = variable.getMostChildVariableIndex();
-				}
-			} else {
-				variableName = variableList.get(variableIndex).getName();
-				if (mostChildVariableName.split("\\.").length < variableName.split("\\.").length) {
-					mostChildVariableName = variableName;
-					mostChildVariableIndex = variableIndex;
+			// If input variable index is -1 we should ignore it. It happens
+			// when certain operator gets value from operator configuration.
+			if (variableIndex >= 0) {
+				DMVariable variable = variableList.get(variableIndex);
+				String variableName = "";
+				if (DMVariableType.INTERMEDIATE.equals(variable.getType())) {
+					variableName = variableList.get(variable.getMostChildVariableIndex()).getName();
+					if (mostChildVariableName.split("\\.").length < variableName.split("\\.").length) {
+						mostChildVariableName = variableName;
+						mostChildVariableIndex = variable.getMostChildVariableIndex();
+					}
+				} else {
+					variableName = variableList.get(variableIndex).getName();
+					if (mostChildVariableName.split("\\.").length < variableName.split("\\.").length) {
+						mostChildVariableName = variableName;
+						mostChildVariableIndex = variableIndex;
+					}
 				}
 			}
 		}

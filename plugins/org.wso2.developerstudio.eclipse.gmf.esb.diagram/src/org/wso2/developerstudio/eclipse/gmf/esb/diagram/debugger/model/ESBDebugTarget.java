@@ -334,11 +334,10 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
         }
     }
 
-    @Override
-    public void breakpointChanged(final IBreakpoint breakpoint, final IMarkerDelta delta) {
-        breakpointRemoved(breakpoint, delta);
-        breakpointAdded(breakpoint);
-    }
+	@Override
+	public void breakpointChanged(final IBreakpoint breakpoint, final IMarkerDelta delta) {
+		// no implementation
+	}
 
     @Override
     public boolean supportsStorageRetrieval() {

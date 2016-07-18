@@ -93,6 +93,23 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Server Host Name*</data>
 			<data modelProperty="rabbitmq.server-host-port" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Server Host Port*</data>
+			<data modelProperty="rabbitmq.sslenabled" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.SSLEnableList">SSL Enabled</data>
+			<data modelProperty="rabbitmq.ssl-keystore-location" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">SSL Key Store Location</data>
+			<data modelProperty="rabbitmq.ssl-keystore-type" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">SSL Key Store Type</data>
+			<data modelProperty="rabbitmq.ssl-keystore-password" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">SSL Key Store Password</data>
+			<data modelProperty="rabbitmq.ssl-truststore-location" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">SSL Trust Store Location</data>
+			<data modelProperty="rabbitmq.ssl-truststore-type" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">SSL Trust Store Type</data>
+			<data modelProperty="rabbitmq.ssl-truststore-password" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">SSL Trust Store Password</data>
+			<data modelProperty="rabbitmq.ssl-version" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">SSL Version</data>
 			<data modelProperty="rabbitmq.queue-name" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Queue Name</data>
 			<data modelProperty="rabbitmq.exchange-name" type="string"

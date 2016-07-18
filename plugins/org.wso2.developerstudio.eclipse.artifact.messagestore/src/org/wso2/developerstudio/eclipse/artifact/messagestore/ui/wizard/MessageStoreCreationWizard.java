@@ -95,6 +95,15 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 	private static final String STORE_RABBITMQ_PRODUCER_GUARANTEED_DELIVERY_ENABLE = "store.producer.guaranteed.delivery.enable";
 	private static final String STORE_RABBITMQ_FAILOVER_MESSAGE_STORE_NAME = "store.failover.message.store.name";
 	
+	private static final String STORE_RABBITMQ_SSL_ENABLED = "rabbitmq.connection.ssl.enabled";
+	private static final String STORE_RABBITMQ_SSL_KEYSTORE_LOCATION = "rabbitmq.connection.ssl.keystore.location";
+	private static final String STORE_RABBITMQ_SSL_KEYSTORE_TYPE = "rabbitmq.connection.ssl.keystore.type";
+	private static final String STORE_RABBITMQ_SSL_KEYSTORE_PASSWORD = "rabbitmq.connection.ssl.keystore.password";
+	private static final String STORE_RABBITMQ_SSL_TRUSTSTORE_LOCATION = "rabbitmq.connection.ssl.truststore.location";
+	private static final String STORE_RABBITMQ_SSL_TRUSTSTORE_TYPE = "rabbitmq.connection.ssl.truststore.type";
+	private static final String STORE_RABBITMQ_SSL_TRUSTSTORE_PASSWORD = "rabbitmq.connection.ssl.truststore.password";
+	private static final String STORE_RABBITMQ_SSL_VERSION = "rabbitmq.connection.ssl.version";
+	
 	private static final String STORE_JDBC_DS_NAME = "store.jdbc.dsName";
 	private static final String STORE_JDBC_PASSWORD = "store.jdbc.password";
 	private static final String STORE_JDBC_USERNAME = "store.jdbc.username";
@@ -294,6 +303,32 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			}
 			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQFailoverMessageStore())) {
 				parameters.put(STORE_RABBITMQ_FAILOVER_MESSAGE_STORE_NAME, messageStoreModel.getRabbitMQFailoverMessageStore());
+			}
+			if(messageStoreModel.getRabbitMQSSLEnabled()){
+				parameters.put(STORE_RABBITMQ_SSL_ENABLED, "true");
+			}else{
+				parameters.put(STORE_RABBITMQ_SSL_ENABLED, "false");
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQSSLKeyStoreLocation())) {
+				parameters.put(STORE_RABBITMQ_SSL_KEYSTORE_LOCATION, messageStoreModel.getRabbitMQSSLKeyStoreLocation());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQSSLKeyStoreType())) {
+				parameters.put(STORE_RABBITMQ_SSL_KEYSTORE_TYPE, messageStoreModel.getRabbitMQSSLKeyStoreType());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQSSLKeyStorePassword())) {
+				parameters.put(STORE_RABBITMQ_SSL_KEYSTORE_PASSWORD, messageStoreModel.getRabbitMQSSLKeyStorePassword());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQSSLTrustStoreLocation())) {
+				parameters.put(STORE_RABBITMQ_SSL_TRUSTSTORE_LOCATION, messageStoreModel.getRabbitMQSSLTrustStoreLocation());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQSSLTrustStoreType())) {
+				parameters.put(STORE_RABBITMQ_SSL_TRUSTSTORE_TYPE, messageStoreModel.getRabbitMQSSLTrustStoreType());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQSSLTrustStorePassword())) {
+				parameters.put(STORE_RABBITMQ_SSL_TRUSTSTORE_PASSWORD, messageStoreModel.getRabbitMQSSLTrustStorePassword());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQSSLVersion())) {
+				parameters.put(STORE_RABBITMQ_SSL_VERSION, messageStoreModel.getRabbitMQSSLVersion());
 			}
 			
 			

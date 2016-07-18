@@ -16,8 +16,8 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__CACHE_CONNECTION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__CONNECTION_FACTORY;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__ENABLE_CACHING;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__FAILOVER_MESSAGE_STORE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__INITIAL_CONTEXT_FACTORY;
@@ -44,10 +44,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSA
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__STORE_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__USER_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__VIRTUAL_HOST;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__CACHE_CONNECTION;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -106,6 +104,15 @@ public class MessageStoreDeserializer
 	private static final String STORE_RABBITMQ_QUEUE_NAME = "store.rabbitmq.queue.name";
 	private static final String STORE_RABBITMQ_HOST_PORT = "store.rabbitmq.host.port";
 	private static final String STORE_RABBITMQ_HOST_NAME = "store.rabbitmq.host.name";
+	
+	private static final String STORE_RABBITMQ_SSL_ENABLED = "rabbitmq.connection.ssl.enabled";
+	private static final String STORE_RABBITMQ_SSL_KEYSTORE_LOCATION = "rabbitmq.connection.ssl.keystore.location";
+	private static final String STORE_RABBITMQ_SSL_KEYSTORE_TYPE = "rabbitmq.connection.ssl.keystore.type";
+	private static final String STORE_RABBITMQ_SSL_KEYSTORE_PASSWORD = "rabbitmq.connection.ssl.keystore.password";
+	private static final String STORE_RABBITMQ_SSL_TRUSTSTORE_LOCATION = "rabbitmq.connection.ssl.truststore.location";
+	private static final String STORE_RABBITMQ_SSL_TRUSTSTORE_TYPE = "rabbitmq.connection.ssl.truststore.type";
+	private static final String STORE_RABBITMQ_SSL_TRUSTSTORE_PASSWORD = "rabbitmq.connection.ssl.truststore.password";
+	private static final String STORE_RABBITMQ_SSL_VERSION = "rabbitmq.connection.ssl.version";
 
 	private static final String STORE_JDBC_DS_NAME = "store.jdbc.dsName";
 	private static final String STORE_JDBC_PASSWORD = "store.jdbc.password";
@@ -463,6 +470,23 @@ public class MessageStoreDeserializer
 				setTextValue(rabbitMQStore.rabbitMQ_password, store.getParameters().get(STORE_RABBITMQ_PASSWORD));
 				setTextValue(rabbitMQStore.rabbitMQ_virtualhost,
 						store.getParameters().get(STORE_RABBITMQ_VIRTUAL_HOST));
+				
+				
+				if (store.getParameters().get(STORE_RABBITMQ_SSL_ENABLED) != null
+						&& store.getParameters().get(STORE_RABBITMQ_SSL_ENABLED).toString().equalsIgnoreCase("false")) {
+					rabbitMQStore.rabbitMQ_sslEnabled.select(1);
+				} else {
+					rabbitMQStore.rabbitMQ_sslEnabled.select(0);
+					rabbitMQStore.setSSLFields(true);
+					setTextValue(rabbitMQStore.rabbitMQ_keyStoreLocation, store.getParameters().get(STORE_RABBITMQ_SSL_KEYSTORE_LOCATION));
+					setTextValue(rabbitMQStore.rabbitMQ_keyStoreType, store.getParameters().get(STORE_RABBITMQ_SSL_KEYSTORE_TYPE));
+					setTextValue(rabbitMQStore.rabbitMQ_keyStorePassword, store.getParameters().get(STORE_RABBITMQ_SSL_KEYSTORE_PASSWORD));
+					setTextValue(rabbitMQStore.rabbitMQ_trustStoreLocation, store.getParameters().get(STORE_RABBITMQ_SSL_TRUSTSTORE_LOCATION));
+					setTextValue(rabbitMQStore.rabbitMQ_trustStoreType, store.getParameters().get(STORE_RABBITMQ_SSL_TRUSTSTORE_TYPE));
+					setTextValue(rabbitMQStore.rabbitMQ_trustStorePassword, store.getParameters().get(STORE_RABBITMQ_SSL_TRUSTSTORE_PASSWORD));
+					setTextValue(rabbitMQStore.rabbitMQ_sslVersion, store.getParameters().get(STORE_RABBITMQ_SSL_VERSION));
+				}
+				
 
 			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(JDBC_MS_FQN)) {
 				messageStorePage.storeType.select(4);

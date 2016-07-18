@@ -87,6 +87,14 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String rabbitMQVirtualHost;
 	private String rabbitMQEnableProducerGuaranteedDelivery;
 	private String rabbitMQFailoverMessageStore;
+	private boolean rabbitMQSSLEnabled;
+	private String rabbitMQSSLKeyStoreLocation;
+	private String rabbitMQSSLKeyStoreType;
+	private String rabbitMQSSLKeyStorePassword;
+	private String rabbitMQSSLTrustStoreLocation;
+	private String rabbitMQSSLTrustStoreType;
+	private String rabbitMQSSLTrustStorePassword;
+	private String rabbitMQSSLVersion;
 
 	private String jdbcDatabaseTable;
 	private String jdbcConnectionInformation;
@@ -232,6 +240,69 @@ public class MessageStoreModel extends ProjectDataModel  {
 
 	public void setRabbitMQVirtualHost(String rabbitMQVirtualHost) {
 		this.rabbitMQVirtualHost = rabbitMQVirtualHost;
+	}
+	
+	public void setRabbitMQSSLEnabled(boolean rabbitMQSSLEnabled) {
+		this.rabbitMQSSLEnabled = rabbitMQSSLEnabled;
+	}
+	
+	public boolean getRabbitMQSSLEnabled() {
+		return rabbitMQSSLEnabled;
+	}
+	
+	public void setRabbitMQSSLKeyStoreLocation(String rabbitMQSSLKeyStoreLocation) {
+		this.rabbitMQSSLKeyStoreLocation = rabbitMQSSLKeyStoreLocation;
+	}
+	
+	public String getRabbitMQSSLKeyStoreLocation() {
+		return rabbitMQSSLKeyStoreLocation;
+	}
+
+	public void setRabbitMQSSLKeyStoreType(String rabbitMQSSLKeyStoreType) {
+		this.rabbitMQSSLKeyStoreType = rabbitMQSSLKeyStoreType;
+	}
+	
+	public String getRabbitMQSSLKeyStoreType() {
+		return rabbitMQSSLKeyStoreType;
+	}
+	
+	public void setRabbitMQSSLKeyStorePassword(String rabbitMQSSLKeyStorePassword) {
+		this.rabbitMQSSLKeyStorePassword = rabbitMQSSLKeyStorePassword;
+	}
+	
+	public String getRabbitMQSSLKeyStorePassword() {
+		return rabbitMQSSLKeyStorePassword;
+	}
+	
+	public void setRabbitMQSSLTrustStoreLocation(String rabbitMQSSLTrustStoreLocation) {
+		this.rabbitMQSSLTrustStoreLocation = rabbitMQSSLTrustStoreLocation;
+	}
+	public String getRabbitMQSSLTrustStoreLocation() {
+		return rabbitMQSSLTrustStoreLocation;
+	}
+	
+	public void setRabbitMQSSLTrustStoreType(String rabbitMQSSLTrustStoreLocation) {
+		this.rabbitMQSSLTrustStoreType = rabbitMQSSLTrustStoreLocation;
+	}
+	
+	public String getRabbitMQSSLTrustStoreType() {
+		return rabbitMQSSLTrustStoreType;
+	}
+	
+	public void setRabbitMQSSLTrustStorePassword(String rabbitMQSSLTrustStorePassword) {
+		this.rabbitMQSSLTrustStorePassword = rabbitMQSSLTrustStorePassword;
+	}
+	
+	public String getRabbitMQSSLTrustStorePassword() {
+		return rabbitMQSSLTrustStorePassword;
+	}
+	
+	public void setRabbitMQSSLVersion(String rabbitMQSSLVersion) {
+		this.rabbitMQSSLVersion = rabbitMQSSLVersion;
+	}
+	
+	public String getRabbitMQSSLVersion() {
+		return rabbitMQSSLVersion;
 	}
 
 	public MessageStoreType getMessageStoreType() {
@@ -511,6 +582,22 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getJmsEnableCaching();
 		} else if (key.equals(Constants.FIELD_RABBITMQ_FAILOVER_MESSAGE_STORE)) {
 			value = getJmsTimeout();
+		}  else if (key.equals(Constants.FIELD_RABBITMQ_SSL_ENABLED)) {
+			value = getRabbitMQSSLEnabled();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SSL_KEYSTORE_LOCATION)) {
+			value = getRabbitMQSSLKeyStoreLocation();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SSL_KEYSTORE_TYPE)) {
+			value = getRabbitMQSSLKeyStoreType();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SSL_KEYSTORE_PASSWORD)) {
+			value = getRabbitMQSSLKeyStorePassword();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SSL_TRUSTSTORE_LOCATION)) {
+			value = getRabbitMQSSLTrustStoreLocation();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SSL_TRUSTSTORE_TYPE)) {
+			value = getRabbitMQSSLTrustStoreType();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SSL_TRUSTSTORE_PASSWORD)) {
+			value = getRabbitMQSSLTrustStorePassword();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SSL_VERSION)) {
+			value = getRabbitMQSSLVersion();
 		} else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
 			value = getJdbcDatabaseTable();
 		} else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
@@ -626,7 +713,23 @@ public class MessageStoreModel extends ProjectDataModel  {
 				setRabbitMQFailoverMessageStore(data.toString());
 			}
 		
-		
+	    else if (key.equals(Constants.FIELD_RABBITMQ_SSL_ENABLED)) {
+	    	setRabbitMQSSLEnabled(Boolean.parseBoolean(data.toString()));
+		}else if (key.equals(Constants.FIELD_RABBITMQ_SSL_KEYSTORE_LOCATION)) {
+			setRabbitMQSSLKeyStoreLocation(data.toString());
+		}else if (key.equals(Constants.FIELD_RABBITMQ_SSL_KEYSTORE_TYPE)) {
+			setRabbitMQSSLKeyStoreType(data.toString());
+		}else if (key.equals(Constants.FIELD_RABBITMQ_SSL_KEYSTORE_PASSWORD)) {
+			setRabbitMQSSLKeyStorePassword(data.toString());
+		}else if (key.equals(Constants.FIELD_RABBITMQ_SSL_TRUSTSTORE_LOCATION)) {
+			setRabbitMQSSLTrustStoreLocation(data.toString());
+		}else if (key.equals(Constants.FIELD_RABBITMQ_SSL_TRUSTSTORE_TYPE)) {
+			setRabbitMQSSLTrustStoreType(data.toString());
+		}else if (key.equals(Constants.FIELD_RABBITMQ_SSL_TRUSTSTORE_PASSWORD)) {
+			setRabbitMQSSLTrustStorePassword(data.toString());
+		}else if (key.equals(Constants.FIELD_RABBITMQ_SSL_VERSION)) {
+			setRabbitMQSSLVersion(data.toString());
+		}
 		else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
 			setJdbcDatabaseTable(data.toString());
 		} else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {

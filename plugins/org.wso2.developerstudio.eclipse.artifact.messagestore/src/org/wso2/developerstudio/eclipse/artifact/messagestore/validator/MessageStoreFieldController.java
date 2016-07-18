@@ -51,6 +51,7 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			isCarbonDataSource = ((MessageStoreModel) model).getJdbcConnectionInformation() == JDBCConnectionInformationType.CARBON_DATASOURCE
 					.name();
 		}
+	
 		// Mandatory fields validation
 		if (key.equals(FIELD_STORE_NAME)) {
 			CommonFieldValidator.validateArtifactName(value);
@@ -138,7 +139,7 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 	public List<String> getUpdateFields(String modelProperty,
 			ProjectDataModel model) {
 		List<String> updateFields = super.getUpdateFields(modelProperty, model);
-		if (modelProperty.equals(FIELD_STORE_TYPE) || modelProperty.equals(FIELD_JDBC_CONNECTION_INFORMATION)) {
+		if (modelProperty.equals(FIELD_STORE_TYPE) || modelProperty.equals(FIELD_JDBC_CONNECTION_INFORMATION) || modelProperty.equals(FIELD_RABBITMQ_SSL_ENABLED)) {
 			updateFields.add(FIELD_JMS_CONTEXT_FACTORY);
 			updateFields.add(FIELD_JMS_PROVIDER_URL);
 			updateFields.add(FIELD_JMS_QUEUE_NAME);
@@ -173,6 +174,15 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			updateFields.add(FIELD_RABBITMQ_VIRTUAL_HOST);			
 			updateFields.add(FIELD_RABBITMQ_ENABLE_PRODUCER_GUARANTEED_DELIVERY);
 			updateFields.add(FIELD_RABBITMQ_FAILOVER_MESSAGE_STORE);
+			updateFields.add(FIELD_RABBITMQ_SSL_ENABLED);
+			updateFields.add(FIELD_RABBITMQ_SSL_KEYSTORE_LOCATION);
+			updateFields.add(FIELD_RABBITMQ_SSL_KEYSTORE_TYPE);
+			updateFields.add(FIELD_RABBITMQ_SSL_KEYSTORE_PASSWORD);
+			updateFields.add(FIELD_RABBITMQ_SSL_TRUSTSTORE_LOCATION);
+			updateFields.add(FIELD_RABBITMQ_SSL_TRUSTSTORE_TYPE);
+			updateFields.add(FIELD_RABBITMQ_SSL_TRUSTSTORE_PASSWORD);
+			updateFields.add(FIELD_RABBITMQ_SSL_VERSION);
+
 
 			updateFields.add(FIELD_JDBC_DATABASE_TABLE);
 			updateFields.add(FIELD_JDBC_CONNECTION_INFORMATION);
@@ -202,8 +212,20 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 		} else if (modelProperty.startsWith(TXT_CUSTOM_FIELD_PREFIX)) {
 			visibleField = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.CUSTOM;
 		} else if (modelProperty.startsWith(TXT_RABBITMQ_FIELD_PREFIX)) {
-			// Checks if message store type is RabbitMQ
-			visibleField = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RABBITMQ;
+			
+			if (((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RABBITMQ) {
+				// SSL enabled should always be visible
+				if (modelProperty.equals(FIELD_RABBITMQ_SSL_ENABLED)) {
+					visibleField = true;
+				} else {
+					boolean isSSLEnabled = ((MessageStoreModel) model).getRabbitMQSSLEnabled();
+					if (modelProperty.startsWith(TXT_RABBITMQ_SSL_FIELD_PREFIX)) {
+						visibleField = isSSLEnabled;
+					} 
+				}
+			} else { // Non-RabbitMq message store type
+				visibleField = false;
+			}
 		} else if(modelProperty.startsWith(TXT_MB_FIELD_PREFIX)){
 			visibleField = ((MessageStoreModel)model).getMessageStoreType() == MessageStoreType.WSO2_MB;
 		} else if (modelProperty.startsWith(TXT_JDBC_FIELD_PREFIX)) {

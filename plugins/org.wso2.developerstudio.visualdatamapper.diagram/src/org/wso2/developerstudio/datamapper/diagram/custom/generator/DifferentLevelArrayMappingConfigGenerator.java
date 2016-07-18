@@ -510,6 +510,12 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		}
 		forLoopBeanMappingOperations = sortMappingOperationList(forLoopBeanMappingOperations);
 		for (MappingOperation mappingOperation : forLoopBeanMappingOperations) {
+			// If output is not mapped to element of a operation, we do not need
+			// it in the mapping configuration unless for global variables
+			if (mappingOperation.getOutputVariables().isEmpty()
+					&& !DataMapperOperatorType.GLOBAL_VARIABLE.equals(mappingOperation.getOperation())) {
+				continue;
+			}
 			DMVariable outputVariable = mappingOperation.getOutputVariables().get(0);
 			int outputMappedForLoop = 0;
 			String mostChildArrayElement;

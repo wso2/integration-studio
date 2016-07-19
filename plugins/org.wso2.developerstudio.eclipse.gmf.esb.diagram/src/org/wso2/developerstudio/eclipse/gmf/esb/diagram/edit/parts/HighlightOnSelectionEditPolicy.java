@@ -60,7 +60,7 @@ public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
 				border.setWidth(BREAKPOINT_HIT_BORDER_WIDTH);
 			} else {
 				border.setColor(borderColor);
-				border.setWidth(0);
+				border.setWidth(1);
 			}
 		}
 		
@@ -77,7 +77,7 @@ public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
 				LineBorder border = (LineBorder) mediator
 						.getComplexFiguredPrimaryShape().getBorder();
 				border.setColor(EditPartDrawingHelper.ComplexFigureSelectedBorderColor);
-				border.setWidth(0);
+				border.setWidth(1);
 			}
 		}
 		

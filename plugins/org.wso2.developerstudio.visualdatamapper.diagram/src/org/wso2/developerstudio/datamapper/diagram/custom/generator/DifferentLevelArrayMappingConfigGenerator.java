@@ -295,13 +295,18 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 							&& SchemaDataType.ARRAY.equals(
 									mappingOperation.getOperation().getProperty(TransformerConstants.VARIABLE_TYPE))) {
 						String variableName = mappingOperation.getOutputVariables().get(0).getName();
-						variableName = variableName.substring(0, variableName.lastIndexOf("."));
-						if (outputArrayVariableForLoopMap.containsKey(variableName)) {
-							indexOfMostInnerForLoopBean = outputArrayVariableForLoopMap.get(variableName);
-						} else if (outputObjectVariableForLoopMap.containsKey(variableName)) {
-							indexOfMostInnerForLoopBean = outputObjectVariableForLoopMap.get(variableName);
+						int lastIndex = variableName.lastIndexOf(".");
+						if (lastIndex < 0) {
+							indexOfMostInnerForLoopBean =0;
 						} else {
-							log.warn("Variable map doesn't contain variable : " + variableName);
+							variableName = variableName.substring(0, lastIndex);
+							if (outputArrayVariableForLoopMap.containsKey(variableName)) {
+								indexOfMostInnerForLoopBean = outputArrayVariableForLoopMap.get(variableName);
+							} else if (outputObjectVariableForLoopMap.containsKey(variableName)) {
+								indexOfMostInnerForLoopBean = outputObjectVariableForLoopMap.get(variableName);
+							} else {
+								log.warn("Variable map doesn't contain variable : " + variableName);
+							}
 						}
 					}
 					if (indexOfMostInnerForLoopBean < 0) {

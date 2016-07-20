@@ -62,6 +62,15 @@ public class MessageStoreTransformer {
 	private static final String STORE_RABBITMQ_QUEUE_NAME = "store.rabbitmq.queue.name";
 	private static final String STORE_RABBITMQ_HOST_PORT = "store.rabbitmq.host.port";
 	private static final String STORE_RABBITMQ_HOST_NAME = "store.rabbitmq.host.name";
+	
+	private static final String STORE_RABBITMQ_SSL_ENABLED = "rabbitmq.connection.ssl.enabled";
+	private static final String STORE_RABBITMQ_SSL_KEYSTORE_LOCATION = "rabbitmq.connection.ssl.keystore.location";
+	private static final String STORE_RABBITMQ_SSL_KEYSTORE_TYPE = "rabbitmq.connection.ssl.keystore.type";
+	private static final String STORE_RABBITMQ_SSL_KEYSTORE_PASSWORD = "rabbitmq.connection.ssl.keystore.password";
+	private static final String STORE_RABBITMQ_SSL_TRUSTSTORE_LOCATION = "rabbitmq.connection.ssl.truststore.location";
+	private static final String STORE_RABBITMQ_SSL_TRUSTSTORE_TYPE = "rabbitmq.connection.ssl.truststore.type";
+	private static final String STORE_RABBITMQ_SSL_TRUSTSTORE_PASSWORD = "rabbitmq.connection.ssl.truststore.password";
+	private static final String STORE_RABBITMQ_SSL_VERSION = "rabbitmq.connection.ssl.version";
 
 	private static final String STORE_JDBC_DS_NAME = "store.jdbc.dsName";
 	private static final String STORE_JDBC_PASSWORD = "store.jdbc.password";
@@ -295,6 +304,19 @@ public class MessageStoreTransformer {
 					parameterMap.put(STORE_RABBITMQ_USERNAME, rabbitMQStore.rabbitMQ_username.getText());
 					parameterMap.put(STORE_RABBITMQ_PASSWORD, rabbitMQStore.rabbitMQ_password.getText());
 					parameterMap.put(STORE_RABBITMQ_VIRTUAL_HOST, rabbitMQStore.rabbitMQ_virtualhost.getText());
+					
+					if(rabbitMQStore.rabbitMQ_sslEnabled.getSelectionIndex() == 0){
+						parameterMap.put(STORE_RABBITMQ_SSL_ENABLED,rabbitMQStore.rabbitMQ_sslEnabled.getText().toLowerCase());
+						parameterMap.put(STORE_RABBITMQ_SSL_KEYSTORE_LOCATION, rabbitMQStore.rabbitMQ_keyStoreLocation.getText());
+						parameterMap.put(STORE_RABBITMQ_SSL_KEYSTORE_TYPE, rabbitMQStore.rabbitMQ_keyStoreType.getText());
+						parameterMap.put(STORE_RABBITMQ_SSL_KEYSTORE_PASSWORD, rabbitMQStore.rabbitMQ_keyStorePassword.getText());
+						parameterMap.put(STORE_RABBITMQ_SSL_TRUSTSTORE_LOCATION, rabbitMQStore.rabbitMQ_trustStoreLocation.getText());
+						parameterMap.put(STORE_RABBITMQ_SSL_TRUSTSTORE_TYPE, rabbitMQStore.rabbitMQ_trustStoreType.getText());
+						parameterMap.put(STORE_RABBITMQ_SSL_TRUSTSTORE_PASSWORD, rabbitMQStore.rabbitMQ_trustStorePassword.getText());
+						parameterMap.put(STORE_RABBITMQ_SSL_VERSION, rabbitMQStore.rabbitMQ_sslVersion.getText());
+					}else{
+						parameterMap.put(STORE_RABBITMQ_SSL_ENABLED,rabbitMQStore.rabbitMQ_sslEnabled.getText().toLowerCase());
+					}
 
 					break;
 				}

@@ -969,8 +969,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	 * Saves the multi-page editor's document.
 	 */
 	public void doSave(final IProgressMonitor monitor) {
-		ESBDebuggerUtil.updateModifiedDebugPoints();
-		ESBDebuggerUtil.setPageSaveOperationActivated(true);
+		//Fixing DEVTOOLESB-596
+		if(!isFormEditor){
+			ESBDebuggerUtil.updateModifiedDebugPoints();
+			ESBDebuggerUtil.setPageSaveOperationActivated(true);
+		}
 		// Fixing TOOLS-2958
 		setContextClassLoader();
 		boolean isSaveAllow = true;

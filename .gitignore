@@ -1,9 +1,9 @@
 # No Eclipse Related Files #
 ###################
 
-.classpath
-.project
-.settings/
+#.classpath
+#.project
+#.settings/
 target/
 bin/
 test-output/

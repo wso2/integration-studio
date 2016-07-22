@@ -57,12 +57,14 @@ public class ANDOperatorTransformer extends AbstractDMOperatorTransformer {
 								outputArrayVariableForLoop) + ")");
 			}
 
-			if (inputVariables.size() == 2) {
-				operationBuilder.append(CONSTANT_AND_OPERATOR + "("
-						+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
-								variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop)
-						+ ")");
+			if (inputVariables.size() >= 2) {
+				for (int index = 1; index < inputVariables.size(); ++index) {
+					operationBuilder.append(CONSTANT_AND_OPERATOR + "("
+							+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(index),
+									variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+									outputArrayVariableForLoop)
+							+ ")");
+				}
 			}
 
 			operationBuilder.append(";");

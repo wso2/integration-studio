@@ -144,6 +144,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyScope/AXIS2"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyScope/AXIS2_CLIENT"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyScope/OPERATION"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyScope/REGISTRY"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PropertyValueType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyValueType/LITERAL"/>
@@ -658,7 +659,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/mqtt"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/rabbitmq"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/feed"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/wso2mb"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/wso2_mb"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//InboundEndpointBehaviourType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointBehaviourType/pollingInboundEndpoint"/>

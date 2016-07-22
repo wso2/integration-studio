@@ -22955,6 +22955,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(propertyScopeEEnum, PropertyScope.AXIS2);
 		addEEnumLiteral(propertyScopeEEnum, PropertyScope.AXIS2_CLIENT);
 		addEEnumLiteral(propertyScopeEEnum, PropertyScope.OPERATION);
+		addEEnumLiteral(propertyScopeEEnum, PropertyScope.REGISTRY);
 
 		initEEnum(propertyValueTypeEEnum, PropertyValueType.class, "PropertyValueType");
 		addEEnumLiteral(propertyValueTypeEEnum, PropertyValueType.LITERAL);

@@ -68,7 +68,15 @@ public enum PropertyScope implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	OPERATION(4, "OPERATION", "operation");
+	OPERATION(4, "OPERATION", "operation"), /**
+	 * The '<em><b>REGISTRY</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REGISTRY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	REGISTRY(5, "REGISTRY", "registry");
 
 	/**
 	 * The '<em><b>SYNAPSE</b></em>' literal value.
@@ -146,6 +154,21 @@ public enum PropertyScope implements Enumerator {
 	public static final int OPERATION_VALUE = 4;
 
 	/**
+	 * The '<em><b>REGISTRY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>REGISTRY</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #REGISTRY
+	 * @model literal="registry"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGISTRY_VALUE = 5;
+
+	/**
 	 * An array of all the '<em><b>Property Scope</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,6 +181,7 @@ public enum PropertyScope implements Enumerator {
 			AXIS2,
 			AXIS2_CLIENT,
 			OPERATION,
+			REGISTRY,
 		};
 
 	/**
@@ -219,6 +243,7 @@ public enum PropertyScope implements Enumerator {
 			case AXIS2_VALUE: return AXIS2;
 			case AXIS2_CLIENT_VALUE: return AXIS2_CLIENT;
 			case OPERATION_VALUE: return OPERATION;
+			case REGISTRY_VALUE: return REGISTRY;
 		}
 		return null;
 	}

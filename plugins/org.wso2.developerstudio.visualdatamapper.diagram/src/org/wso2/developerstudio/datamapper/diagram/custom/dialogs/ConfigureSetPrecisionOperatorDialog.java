@@ -78,10 +78,10 @@ public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperat
 
 		final Text delimiterText = new Text(container, SWT.BORDER);
 		delimiterText.setLayoutData(dataPropertyConfigText);
-		if (setPrecisionImpl.getNumberOfDigits() != 0) {
+		if (!StringUtils.isEmpty(setPrecisionImpl.getNumberOfDigits())) {
 			delimiterText.setText(setPrecisionImpl.getNumberOfDigits() + "");
 		} else {
-			delimiterText.setText("1");
+			delimiterText.setText("{$NoOfDigits}");
 		}
 		numberOfDecimals = delimiterText.getText();
 
@@ -120,11 +120,6 @@ public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperat
 		boolean isEnabled = false;
 		Button okButton = getButton(IDialogConstants.OK_ID);
 		if (!StringUtils.isEmpty(numberOfDecimals)) {
-			try {
-				Integer.parseInt(numberOfDecimals);
-			} catch (NumberFormatException e) {
-				okButton.setEnabled(false);
-			}
 			isEnabled = true;
 		}
 		if (okButton != null) {
@@ -136,14 +131,13 @@ public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperat
 
 		if (!StringUtils.isEmpty(numberOfDecimals)) {
 			SetPrecisionImpl setPrecisionOperatorInstance = setPrecisionImpl;
-			int numOfDecimalsInt = Integer.parseInt(numberOfDecimals);
 			SetCommand setCmnd = new SetCommand(editingDomain, setPrecisionOperatorInstance,
-					DataMapperPackage.Literals.SET_PRECISION__NUMBER_OF_DIGITS, numOfDecimalsInt);
+					DataMapperPackage.Literals.SET_PRECISION__NUMBER_OF_DIGITS, numberOfDecimals);
 			if (setCmnd.canExecute()) {
 				editingDomain.getCommandStack().execute(setCmnd);
 			}
 			((OperatorRectangle) ((SetPrecisionEditPart) editPart).getSetPrecisionFigure())
-					.changeOperatorHeader("SetPrecision : [Number of Decimals : " + numOfDecimalsInt + " ]");
+					.changeOperatorHeader("SetPrecision : [Number of Decimals : " + numberOfDecimals + " ]");
 		}
 		super.okPressed();
 	}

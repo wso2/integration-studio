@@ -41,7 +41,7 @@ public class SetPrecisionOperatorTransformer extends AbstractDMOperatorTransform
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
 			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
-		int numOfDecimals = (int) operator.getProperty(NUM_OF_DECIMALS_TAG);
+		String numOfDecimals = operator.getProperty(NUM_OF_DECIMALS_TAG).toString();
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
 				forLoopBeanList, outputArrayVariableForLoop));
@@ -49,11 +49,26 @@ public class SetPrecisionOperatorTransformer extends AbstractDMOperatorTransform
 			if (inputVariables.size() == 0) {
 				operationBuilder.append(CONSTANT_ADDITIVE);
 			} else {
-				operationBuilder
-						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop) + ")");
-				operationBuilder.append(".toFixed(" + numOfDecimals + ")");
+				if (numOfDecimals.startsWith("{$") && inputVariables.size() == 2) {
+					operationBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+							outputArrayVariableForLoop) + ")");
+					operationBuilder.append(".toFixed(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							inputVariables.get(1), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+							outputArrayVariableForLoop) + ")");
+				} else {
+					int decimalCount = 0;
+					try {
+						decimalCount = Integer.parseInt(numOfDecimals);
+					} catch (NumberFormatException e) {
+						throw new IllegalArgumentException(
+								"SetPrecision operator needs integer value or input for NumOfDecimal's value");
+					}
+					operationBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
+							inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
+							outputArrayVariableForLoop) + ")");
+					operationBuilder.append(".toFixed(" + decimalCount + ")");
+				}
 			}
 			operationBuilder.append(";");
 

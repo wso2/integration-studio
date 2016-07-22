@@ -37,7 +37,7 @@ public class SetPrecisionImpl extends OperatorImpl implements SetPrecision {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int NUMBER_OF_DIGITS_EDEFAULT = 1;
+	protected static final String NUMBER_OF_DIGITS_EDEFAULT = "{$NoOfDigits}";
 	/**
 	 * The cached value of the '{@link #getNumberOfDigits() <em>Number Of Digits</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -46,7 +46,7 @@ public class SetPrecisionImpl extends OperatorImpl implements SetPrecision {
 	 * @generated
 	 * @ordered
 	 */
-	protected int numberOfDigits = NUMBER_OF_DIGITS_EDEFAULT;
+	protected String numberOfDigits = NUMBER_OF_DIGITS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -84,7 +84,7 @@ public class SetPrecisionImpl extends OperatorImpl implements SetPrecision {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getNumberOfDigits() {
+	public String getNumberOfDigits() {
 		return numberOfDigits;
 	}
 
@@ -93,8 +93,8 @@ public class SetPrecisionImpl extends OperatorImpl implements SetPrecision {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNumberOfDigits(int newNumberOfDigits) {
-		int oldNumberOfDigits = numberOfDigits;
+	public void setNumberOfDigits(String newNumberOfDigits) {
+		String oldNumberOfDigits = numberOfDigits;
 		numberOfDigits = newNumberOfDigits;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.SET_PRECISION__NUMBER_OF_DIGITS, oldNumberOfDigits, numberOfDigits));
@@ -123,7 +123,7 @@ public class SetPrecisionImpl extends OperatorImpl implements SetPrecision {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DataMapperPackage.SET_PRECISION__NUMBER_OF_DIGITS:
-				setNumberOfDigits((Integer)newValue);
+				setNumberOfDigits((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -153,7 +153,7 @@ public class SetPrecisionImpl extends OperatorImpl implements SetPrecision {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case DataMapperPackage.SET_PRECISION__NUMBER_OF_DIGITS:
-				return numberOfDigits != NUMBER_OF_DIGITS_EDEFAULT;
+				return NUMBER_OF_DIGITS_EDEFAULT == null ? numberOfDigits != null : !NUMBER_OF_DIGITS_EDEFAULT.equals(numberOfDigits);
 		}
 		return super.eIsSet(featureID);
 	}

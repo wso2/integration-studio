@@ -47,9 +47,10 @@ public class StringToBlooeanOperatorTransformer extends AbstractDMOperatorTransf
 			if (inputVariables.size() == 0) {
 				operationBuilder.append("false");
 			} else {
-				operationBuilder.append("Boolean(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
-						inputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-						outputArrayVariableForLoop) + ")");
+				operationBuilder
+						.append(" " + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+								variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
+								outputArrayVariableForLoop) + ".toString().toLowerCase() === 'true'");
 			}
 
 			operationBuilder.append(";");

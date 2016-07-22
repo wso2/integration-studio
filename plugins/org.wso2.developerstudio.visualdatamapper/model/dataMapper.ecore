@@ -292,6 +292,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="defaultName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="defaultValue"/>
+        defaultValueLiteral="&quot;defaultValue&quot;"/>
   </eClassifiers>
 </ecore:EPackage>

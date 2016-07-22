@@ -54,7 +54,7 @@ public class GlobalVariableImpl extends OperatorImpl implements GlobalVariable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DEFAULT_VALUE_EDEFAULT = "defaultValue";
+	protected static final String DEFAULT_VALUE_EDEFAULT = "\"defaultValue\"";
 	/**
 	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

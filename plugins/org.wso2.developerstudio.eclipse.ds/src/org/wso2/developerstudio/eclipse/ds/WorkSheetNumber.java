@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.WorkSheetNumber#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getWorkSheetNumber()
  * @model extendedMetaData="name='worksheetnumber_._type' kind='simple'"

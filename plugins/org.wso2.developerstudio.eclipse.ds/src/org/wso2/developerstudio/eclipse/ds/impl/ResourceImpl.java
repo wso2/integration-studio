@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.ds.Resource;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ResourceImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ResourceImpl#getCallQuery <em>Call Query</em>}</li>
@@ -35,7 +36,6 @@ import org.wso2.developerstudio.eclipse.ds.Resource;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ResourceImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ResourceImpl#isReturnRequestStatus <em>Return Request Status</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

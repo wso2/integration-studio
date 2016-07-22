@@ -42,6 +42,7 @@ import org.wso2.developerstudio.eclipse.ds.ServiceStatus;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getDescription <em>Description</em>}</li>
@@ -63,8 +64,8 @@ import org.wso2.developerstudio.eclipse.ds.ServiceStatus;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getTransports <em>Transports</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -307,6 +308,26 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 	 * @ordered
 	 */
 	protected String transports = TRANSPORTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDisableLegacyBoxcarringMode() <em>Disable Legacy Boxcarring Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDisableLegacyBoxcarringMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DISABLE_LEGACY_BOXCARRING_MODE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDisableLegacyBoxcarringMode() <em>Disable Legacy Boxcarring Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDisableLegacyBoxcarringMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean disableLegacyBoxcarringMode = DISABLE_LEGACY_BOXCARRING_MODE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -727,6 +748,27 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isDisableLegacyBoxcarringMode() {
+		return disableLegacyBoxcarringMode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDisableLegacyBoxcarringMode(boolean newDisableLegacyBoxcarringMode) {
+		boolean oldDisableLegacyBoxcarringMode = disableLegacyBoxcarringMode;
+		disableLegacyBoxcarringMode = newDisableLegacyBoxcarringMode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.DATA_SERVICE__DISABLE_LEGACY_BOXCARRING_MODE, oldDisableLegacyBoxcarringMode, disableLegacyBoxcarringMode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
@@ -804,6 +846,8 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				return getTransports();
 			case DsPackage.DATA_SERVICE__FEATURE_ALLOW_ROLES:
 				return getFeatureAllowRoles();
+			case DsPackage.DATA_SERVICE__DISABLE_LEGACY_BOXCARRING_MODE:
+				return isDisableLegacyBoxcarringMode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -882,6 +926,9 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 			case DsPackage.DATA_SERVICE__FEATURE_ALLOW_ROLES:
 				setFeatureAllowRoles((DataServiceParameter)newValue);
 				return;
+			case DsPackage.DATA_SERVICE__DISABLE_LEGACY_BOXCARRING_MODE:
+				setDisableLegacyBoxcarringMode((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -955,6 +1002,9 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 			case DsPackage.DATA_SERVICE__FEATURE_ALLOW_ROLES:
 				setFeatureAllowRoles((DataServiceParameter)null);
 				return;
+			case DsPackage.DATA_SERVICE__DISABLE_LEGACY_BOXCARRING_MODE:
+				setDisableLegacyBoxcarringMode(DISABLE_LEGACY_BOXCARRING_MODE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1008,6 +1058,8 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				return TRANSPORTS_EDEFAULT == null ? transports != null : !TRANSPORTS_EDEFAULT.equals(transports);
 			case DsPackage.DATA_SERVICE__FEATURE_ALLOW_ROLES:
 				return getFeatureAllowRoles() != null;
+			case DsPackage.DATA_SERVICE__DISABLE_LEGACY_BOXCARRING_MODE:
+				return disableLegacyBoxcarringMode != DISABLE_LEGACY_BOXCARRING_MODE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1047,6 +1099,8 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 		result.append(enableSec);
 		result.append(", transports: ");
 		result.append(transports);
+		result.append(", disableLegacyBoxcarringMode: ");
+		result.append(disableLegacyBoxcarringMode);
 		result.append(')');
 		return result.toString();
 	}

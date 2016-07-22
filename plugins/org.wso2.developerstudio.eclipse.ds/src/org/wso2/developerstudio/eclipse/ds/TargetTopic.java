@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.TargetTopic#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getTargetTopic()
  * @model extendedMetaData="name='target-topic_._type' kind='simple'"

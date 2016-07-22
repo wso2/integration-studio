@@ -22,11 +22,11 @@ import org.wso2.developerstudio.eclipse.ds.LongRangeValidator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.LongRangeValidatorImpl#getMaximum <em>Maximum</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.LongRangeValidatorImpl#getMinimum <em>Minimum</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

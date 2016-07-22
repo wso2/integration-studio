@@ -37,11 +37,11 @@ import org.wso2.developerstudio.eclipse.ds.Subscription;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.EventSubscriptionListImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.EventSubscriptionListImpl#getSubscription <em>Subscription</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

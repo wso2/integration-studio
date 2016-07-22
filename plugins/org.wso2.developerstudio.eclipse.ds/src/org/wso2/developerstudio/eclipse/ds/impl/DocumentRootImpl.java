@@ -41,6 +41,7 @@ import org.wso2.developerstudio.eclipse.ds.Subscription;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
@@ -53,7 +54,6 @@ import org.wso2.developerstudio.eclipse.ds.Subscription;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getSql <em>Sql</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getStartingrow <em>Startingrow</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

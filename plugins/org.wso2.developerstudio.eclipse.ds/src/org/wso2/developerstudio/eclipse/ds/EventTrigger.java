@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.EventTrigger#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.EventTrigger#getExpression <em>Expression</em>}</li>
@@ -24,7 +25,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.EventTrigger#getId <em>Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.EventTrigger#getLanguage <em>Language</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getEventTrigger()
  * @model extendedMetaData="name='event-trigger_._type' kind='mixed'"

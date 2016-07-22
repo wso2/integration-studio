@@ -73,6 +73,7 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 			addBaseURIPropertyDescriptor(object);
 			addEnableBatchRequestsPropertyDescriptor(object);
 			addEnableBoxcarringPropertyDescriptor(object);
+			addDisableLegacyBoxcarringModePropertyDescriptor(object);
 			addEnableDTPPropertyDescriptor(object);
 			addDisableStreamingPropertyDescriptor(object);
 			addServiceStatusPropertyDescriptor(object);
@@ -351,6 +352,28 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 	
 
 	/**
+	 * This adds a property descriptor for the Disable Legacy Boxcarring Mode feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDisableLegacyBoxcarringModePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataService_disableLegacyBoxcarringMode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataService_disableLegacyBoxcarringMode_feature", "_UI_DataService_type"),
+				 DsPackage.Literals.DATA_SERVICE__DISABLE_LEGACY_BOXCARRING_MODE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Parameter Allow Roles feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -466,6 +489,7 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 			case DsPackage.DATA_SERVICE__DISABLE_STREAMING:
 			case DsPackage.DATA_SERVICE__ENABLE_SEC:
 			case DsPackage.DATA_SERVICE__TRANSPORTS:
+			case DsPackage.DATA_SERVICE__DISABLE_LEGACY_BOXCARRING_MODE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DsPackage.DATA_SERVICE__MIXED:

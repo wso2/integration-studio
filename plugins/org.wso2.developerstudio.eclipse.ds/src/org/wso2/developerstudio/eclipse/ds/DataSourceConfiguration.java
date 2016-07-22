@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#getProperty <em>Property</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#getId <em>Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration#isEnableOData <em>Enable OData</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataSourceConfiguration()
  * @model extendedMetaData="name='config_._type' kind='mixed'"

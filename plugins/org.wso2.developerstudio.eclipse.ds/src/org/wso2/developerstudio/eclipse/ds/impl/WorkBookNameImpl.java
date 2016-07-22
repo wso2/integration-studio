@@ -22,10 +22,10 @@ import org.wso2.developerstudio.eclipse.ds.WorkBookName;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.WorkBookNameImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

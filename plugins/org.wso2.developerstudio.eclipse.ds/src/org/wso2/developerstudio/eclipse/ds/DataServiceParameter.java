@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataServiceParameter#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataServiceParameter#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataServiceParameter()
  * @model extendedMetaData="name='parameter_._type' kind='simple'"

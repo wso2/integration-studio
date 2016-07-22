@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.CallQuery#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.CallQuery#getWithParam <em>With Param</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.CallQuery#getHref <em>Href</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.CallQuery#getRequiredRoles <em>Required Roles</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getCallQuery()
  * @model extendedMetaData="name='call-query_._type' kind='mixed'"

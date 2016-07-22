@@ -22,12 +22,12 @@ import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ParameterMappingImpl#getColumn <em>Column</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ParameterMappingImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ParameterMappingImpl#getQueryParam <em>Query Param</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -23,6 +23,7 @@ public interface DetailSectionCustomUiConstants {
 	public String BASE_URI = "Base URI";
 	public String ENABLE_BATCH_REQUESTS = "Enable Batch Requests";
 	public String ENABLE_BOX_CARRING = "Enable Boxcarring";
+	public String DISABLE_LEGACY_BOXCARRING_MODE = "Disable Legacy Boxcarring Mode";
 	public String ENABLE_DTP = "Enable Distributed Transactions";
 	
 	public String DISABLE_STREAMING = "Disable Streaming";

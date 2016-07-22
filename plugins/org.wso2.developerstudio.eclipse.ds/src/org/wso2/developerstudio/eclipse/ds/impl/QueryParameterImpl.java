@@ -38,6 +38,7 @@ import org.wso2.developerstudio.eclipse.ds.QueryParameter;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryParameterImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryParameterImpl#getValidateLongRange <em>Validate Long Range</em>}</li>
@@ -53,7 +54,6 @@ import org.wso2.developerstudio.eclipse.ds.QueryParameter;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryParameterImpl#getStructType <em>Struct Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryParameterImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

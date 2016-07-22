@@ -22,11 +22,11 @@ import org.wso2.developerstudio.eclipse.ds.QueryProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryPropertyImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryPropertyImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

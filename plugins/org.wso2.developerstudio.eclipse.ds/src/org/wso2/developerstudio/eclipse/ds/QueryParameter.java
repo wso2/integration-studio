@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.QueryParameter#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.QueryParameter#getValidateLongRange <em>Validate Long Range</em>}</li>
@@ -33,7 +34,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.QueryParameter#getStructType <em>Struct Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.QueryParameter#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQueryParameter()
  * @model extendedMetaData="name='param_._type' kind='mixed'"

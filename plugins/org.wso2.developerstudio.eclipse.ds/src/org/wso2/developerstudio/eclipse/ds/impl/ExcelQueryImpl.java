@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.ds.WorkBookName;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getWorkbookname <em>Workbookname</em>}</li>
@@ -40,7 +41,6 @@ import org.wso2.developerstudio.eclipse.ds.WorkBookName;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getStartingrow <em>Startingrow</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getMaxrowcount <em>Maxrowcount</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.AttributeMapping#getColumn <em>Column</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.AttributeMapping#getName <em>Name</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.AttributeMapping#getXsdType <em>Xsd Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.AttributeMapping#isOptional <em>Optional</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getAttributeMapping()
  * @model extendedMetaData="name='attribute_._type' kind='empty'"

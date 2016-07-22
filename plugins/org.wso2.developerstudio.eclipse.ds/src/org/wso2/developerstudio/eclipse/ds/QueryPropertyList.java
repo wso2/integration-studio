@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.QueryPropertyList#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.QueryPropertyList#getProperty <em>Property</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQueryPropertyList()
  * @model extendedMetaData="name='properties_._type' kind='mixed'"

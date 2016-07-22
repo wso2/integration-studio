@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.EventSubscriptionList#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.EventSubscriptionList#getSubscription <em>Subscription</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getEventSubscriptionList()
  * @model extendedMetaData="name='subscriptions_._type' kind='mixed'"

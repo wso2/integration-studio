@@ -35,13 +35,13 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getProperty <em>Property</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#isEnableOData <em>Enable OData</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

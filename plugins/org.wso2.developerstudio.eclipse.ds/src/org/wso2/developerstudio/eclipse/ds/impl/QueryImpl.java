@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.ds.Sql;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryImpl#getExpression <em>Expression</em>}</li>
@@ -60,7 +61,6 @@ import org.wso2.developerstudio.eclipse.ds.Sql;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryImpl#getUseConfig <em>Use Config</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryImpl#getKeyColumns <em>Key Columns</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

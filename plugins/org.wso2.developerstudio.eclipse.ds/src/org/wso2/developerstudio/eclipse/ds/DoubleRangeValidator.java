@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DoubleRangeValidator#getMaximum <em>Maximum</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DoubleRangeValidator#getMinimum <em>Minimum</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDoubleRangeValidator()
  * @model extendedMetaData="name='validateDoubleRange_._type' kind='empty'"

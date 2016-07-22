@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.ds.WorkSheetNumber;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getWorksheetnumber <em>Worksheetnumber</em>}</li>
@@ -40,7 +41,6 @@ import org.wso2.developerstudio.eclipse.ds.WorkSheetNumber;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getMaxrowcount <em>Maxrowcount</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getHasheader <em>Hasheader</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

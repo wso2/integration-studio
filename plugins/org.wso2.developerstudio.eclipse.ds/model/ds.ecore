@@ -286,6 +286,8 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disableLegacyBoxcarringMode"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSourceConfiguration">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

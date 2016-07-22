@@ -51,7 +51,7 @@ public interface GlobalVariable extends Operator {
 
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' attribute.
-	 * The default value is <code>"defaultValue"</code>.
+	 * The default value is <code>"\"defaultValue\""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Default Value</em>' attribute isn't clear,
@@ -61,7 +61,7 @@ public interface GlobalVariable extends Operator {
 	 * @return the value of the '<em>Default Value</em>' attribute.
 	 * @see #setDefaultValue(String)
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getGlobalVariable_DefaultValue()
-	 * @model default="defaultValue"
+	 * @model default="\"defaultValue\""
 	 * @generated
 	 */
 	String getDefaultValue();

@@ -162,7 +162,7 @@ public class ScheduledFailoverForwarding implements IMessageProcessor {
 			}
 		});
 
-        toolkit.createLabel(parameterSectionClient, "Max Delivery Attempts");
+        toolkit.createLabel(parameterSectionClient, "Max Redelivery Attempts");
         failover_maxDeliveryAttempts = toolkit.createText(parameterSectionClient, "");
         failover_maxDeliveryAttempts.setBackground(new Color(null, 229,236,253));
         failover_maxDeliveryAttempts.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));

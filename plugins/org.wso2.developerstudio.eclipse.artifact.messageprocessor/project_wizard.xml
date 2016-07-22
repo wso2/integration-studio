@@ -56,7 +56,7 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Retry interval (Millis)</data>
 			<data modelProperty="FS_processor.delivery_attempts"
 				type="string"
-				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Maximum delivery attempts</data>
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController">Maximum redelivery attempts</data>
 			<data
 				modelProperty="FS_processor.drop_message_after_maximum_delivery_attempts"
 				type="list"

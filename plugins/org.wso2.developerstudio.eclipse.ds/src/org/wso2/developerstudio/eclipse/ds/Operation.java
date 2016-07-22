@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Operation#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Operation#getCallQuery <em>Call Query</em>}</li>
@@ -24,7 +25,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Operation#isReturnRequestStatus <em>Return Request Status</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Operation#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getOperation()
  * @model extendedMetaData="name='operation_._type' kind='mixed'"

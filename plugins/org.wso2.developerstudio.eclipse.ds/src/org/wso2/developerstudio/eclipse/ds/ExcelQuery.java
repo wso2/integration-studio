@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ExcelQuery#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ExcelQuery#getWorkbookname <em>Workbookname</em>}</li>
@@ -25,7 +26,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ExcelQuery#getStartingrow <em>Startingrow</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ExcelQuery#getMaxrowcount <em>Maxrowcount</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getExcelQuery()
  * @model extendedMetaData="name='excel_._type' kind='mixed'"

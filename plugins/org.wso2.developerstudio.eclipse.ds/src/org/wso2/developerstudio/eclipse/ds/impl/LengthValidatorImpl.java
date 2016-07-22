@@ -24,11 +24,11 @@ import org.wso2.developerstudio.eclipse.ds.LengthValidator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.LengthValidatorImpl#getMaximum <em>Maximum</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.LengthValidatorImpl#getMinimum <em>Minimum</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

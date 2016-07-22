@@ -31,6 +31,7 @@ import org.wso2.developerstudio.eclipse.ds.TargetTopic;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.EventTriggerImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.EventTriggerImpl#getExpression <em>Expression</em>}</li>
@@ -39,7 +40,6 @@ import org.wso2.developerstudio.eclipse.ds.TargetTopic;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.EventTriggerImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.EventTriggerImpl#getLanguage <em>Language</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

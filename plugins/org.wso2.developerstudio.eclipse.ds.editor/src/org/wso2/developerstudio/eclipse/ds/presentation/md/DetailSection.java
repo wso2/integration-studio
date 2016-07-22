@@ -614,6 +614,18 @@ public class DetailSection {
 					voidMaker();
 					voidMaker();
 				}
+				
+				if (displayName
+						.equals(DetailSectionCustomUiConstants.DISABLE_LEGACY_BOXCARRING_MODE)) {
+
+					labelMaker(displayName);
+					sectionUtil.getBooleanComboField(detailsclient, toolkit,
+							selectedObject, dataService.isDisableLegacyBoxcarringMode(),
+							DsPackage.eINSTANCE
+									.getDataService_DisableLegacyBoxcarringMode());
+					voidMaker();
+					voidMaker();
+				}
 
 				if (displayName
 						.equals(DetailSectionCustomUiConstants.ENABLE_DTP)) {

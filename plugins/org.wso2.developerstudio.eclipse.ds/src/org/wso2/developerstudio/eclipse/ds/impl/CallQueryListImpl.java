@@ -32,11 +32,11 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryListImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryListImpl#getCallQuery <em>Call Query</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

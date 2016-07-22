@@ -41,7 +41,7 @@ public class PolicyFileProviderDialog extends DeveloperStudioElementProviderDial
 	 */
 	@Override
 	protected List<Object> addResourseFilesToList(List<Class<?>> typesList) {
-		List<Object> list = new ArrayList<>();
+		List<Object> list = new ArrayList();
 		if (typesList.contains(IRegistryFile.class)) {
 			list.addAll(Arrays.asList(RegistryManager.getResourceProviders(true)));
 		}

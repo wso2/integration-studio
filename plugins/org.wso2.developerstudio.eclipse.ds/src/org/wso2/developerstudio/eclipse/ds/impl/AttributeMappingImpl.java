@@ -22,6 +22,7 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.AttributeMappingImpl#getColumn <em>Column</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.AttributeMappingImpl#getName <em>Name</em>}</li>
@@ -29,7 +30,6 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.AttributeMappingImpl#getXsdType <em>Xsd Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.AttributeMappingImpl#isOptional <em>Optional</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

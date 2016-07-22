@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getDescription <em>Description</em>}</li>
@@ -39,8 +40,8 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getTransports <em>Transports</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataService()
  * @model extendedMetaData="name='data_._type' kind='mixed'"
@@ -555,5 +556,31 @@ public interface DataService extends EObject {
 	 * @generated
 	 */
 	void setFeatureAllowRoles(DataServiceParameter value);
+
+	/**
+	 * Returns the value of the '<em><b>Disable Legacy Boxcarring Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Disable Legacy Boxcarring Mode</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Disable Legacy Boxcarring Mode</em>' attribute.
+	 * @see #setDisableLegacyBoxcarringMode(boolean)
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataService_DisableLegacyBoxcarringMode()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @generated
+	 */
+	boolean isDisableLegacyBoxcarringMode();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.DataService#isDisableLegacyBoxcarringMode <em>Disable Legacy Boxcarring Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Disable Legacy Boxcarring Mode</em>' attribute.
+	 * @see #isDisableLegacyBoxcarringMode()
+	 * @generated
+	 */
+	void setDisableLegacyBoxcarringMode(boolean value);
 
 } // DataService

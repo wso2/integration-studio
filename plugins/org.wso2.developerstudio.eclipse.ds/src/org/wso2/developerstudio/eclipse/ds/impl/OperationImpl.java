@@ -29,6 +29,7 @@ import org.wso2.developerstudio.eclipse.ds.Operation;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.OperationImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.OperationImpl#getCallQuery <em>Call Query</em>}</li>
@@ -37,7 +38,6 @@ import org.wso2.developerstudio.eclipse.ds.Operation;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.OperationImpl#isReturnRequestStatus <em>Return Request Status</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.OperationImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

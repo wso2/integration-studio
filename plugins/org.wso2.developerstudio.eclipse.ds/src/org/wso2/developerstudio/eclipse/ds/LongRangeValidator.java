@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.LongRangeValidator#getMaximum <em>Maximum</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.LongRangeValidator#getMinimum <em>Minimum</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getLongRangeValidator()
  * @model extendedMetaData="name='validateLongRange_._type' kind='empty'"

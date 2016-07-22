@@ -26,6 +26,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//CallQuery/mixed"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//CallQuery/withParam"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//CallQuery/href"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//CallQuery/requiredRoles"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//CallQueryList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//CallQueryList/mixed"/>
@@ -59,11 +60,13 @@
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/policy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/transports"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/featureAllowRoles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/disableLegacyBoxcarringMode"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//DataSourceConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//DataSourceConfiguration/mixed"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//DataSourceConfiguration/property"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataSourceConfiguration/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataSourceConfiguration/enableOData"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//Description">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Description/value"/>

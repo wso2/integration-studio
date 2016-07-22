@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ElementMapping#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ElementMapping#getColumn <em>Column</em>}</li>
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ElementMapping#isOptional <em>Optional</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ElementMapping#getArrayName <em>Array Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getElementMapping()
  * @model extendedMetaData="name='element_._type' kind='mixed'"

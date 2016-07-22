@@ -22,11 +22,11 @@ import org.wso2.developerstudio.eclipse.ds.Sql;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.SqlImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.SqlImpl#getDialect <em>Dialect</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

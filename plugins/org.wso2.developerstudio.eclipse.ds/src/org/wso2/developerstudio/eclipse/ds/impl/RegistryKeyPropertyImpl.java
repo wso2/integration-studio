@@ -20,10 +20,10 @@ import org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.RegistryKeyPropertyImpl#getKey <em>Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

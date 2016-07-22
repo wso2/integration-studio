@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DocumentRoot#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
@@ -31,7 +32,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DocumentRoot#getSql <em>Sql</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DocumentRoot#getStartingrow <em>Startingrow</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDocumentRoot()
  * @model extendedMetaData="name='' kind='mixed'"

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Resource#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Resource#getCallQuery <em>Call Query</em>}</li>
@@ -23,7 +24,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Resource#getPath <em>Path</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Resource#isReturnRequestStatus <em>Return Request Status</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getResource()
  * @model extendedMetaData="name='resource_._type' kind='mixed'"

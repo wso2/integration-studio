@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.GSpreadQuery#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.GSpreadQuery#getWorksheetnumber <em>Worksheetnumber</em>}</li>
@@ -25,7 +26,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.GSpreadQuery#getMaxrowcount <em>Maxrowcount</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.GSpreadQuery#getHasheader <em>Hasheader</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getGSpreadQuery()
  * @model extendedMetaData="name='gspread_._type' kind='mixed'"

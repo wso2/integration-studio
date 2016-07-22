@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Query#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Query#getExpression <em>Expression</em>}</li>
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Query#getUseConfig <em>Use Config</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Query#getKeyColumns <em>Key Columns</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQuery()
  * @model extendedMetaData="name='query_._type' kind='mixed'"

@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.QueryProperty#getValue <em>Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.QueryProperty#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQueryProperty()
  * @model extendedMetaData="name='property_._1_._type' kind='simple'"

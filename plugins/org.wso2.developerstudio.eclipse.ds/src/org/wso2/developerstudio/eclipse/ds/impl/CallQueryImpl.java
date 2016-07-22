@@ -34,13 +34,13 @@ import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryImpl#getWithParam <em>With Param</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryImpl#getHref <em>Href</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CallQueryImpl#getRequiredRoles <em>Required Roles</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

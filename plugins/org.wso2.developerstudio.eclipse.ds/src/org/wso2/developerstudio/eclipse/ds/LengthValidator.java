@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.LengthValidator#getMaximum <em>Maximum</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.LengthValidator#getMinimum <em>Minimum</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getLengthValidator()
  * @model extendedMetaData="name='validateLength_._type' kind='empty'"

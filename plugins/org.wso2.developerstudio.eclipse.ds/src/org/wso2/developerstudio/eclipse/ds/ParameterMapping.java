@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ParameterMapping#getColumn <em>Column</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ParameterMapping#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ParameterMapping#getQueryParam <em>Query Param</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getParameterMapping()
  * @model extendedMetaData="name='with-param_._type' kind='empty'"

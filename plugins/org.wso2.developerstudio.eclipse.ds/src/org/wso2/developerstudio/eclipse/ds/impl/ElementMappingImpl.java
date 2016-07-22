@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.ds.ElementMapping;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getColumn <em>Column</em>}</li>
@@ -51,7 +52,6 @@ import org.wso2.developerstudio.eclipse.ds.ElementMapping;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#isOptional <em>Optional</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getArrayName <em>Array Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -23,11 +23,11 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ConfigurationPropertyImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ConfigurationPropertyImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

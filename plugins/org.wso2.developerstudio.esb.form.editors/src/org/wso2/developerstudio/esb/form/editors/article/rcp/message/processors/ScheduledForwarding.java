@@ -204,7 +204,7 @@ public class ScheduledForwarding implements IMessageProcessor {
 			}
 		});
 
-        toolkit.createLabel(parameterSectionClient, "Max Delivery Attempts");
+        toolkit.createLabel(parameterSectionClient, "Max Redelivery Attempts");
         forwarding_maxDeliveryAttempts = toolkit.createText(parameterSectionClient, "");
         forwarding_maxDeliveryAttempts.setBackground(new Color(null, 229,236,253));
         forwarding_maxDeliveryAttempts.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));

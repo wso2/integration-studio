@@ -82,6 +82,8 @@ public class PropertyMediatorDeserializer extends
 				executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_SCOPE, PropertyScope.TRANSPORT);
 			} else if (scope.equals(XMLConfigConstants.SCOPE_OPERATION)) {
 				executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_SCOPE, PropertyScope.OPERATION);
+			} else if (scope.equals(XMLConfigConstants.SCOPE_REGISTRY)) {
+				executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_SCOPE, PropertyScope.REGISTRY);
 			}
 		}
 		// For the remove action

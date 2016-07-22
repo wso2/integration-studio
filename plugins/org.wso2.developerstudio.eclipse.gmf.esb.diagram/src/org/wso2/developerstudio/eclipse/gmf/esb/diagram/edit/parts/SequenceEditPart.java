@@ -134,7 +134,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SequenceIt
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -969,7 +968,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		 */
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public WrappingLabel getSequenceLabelFigure() {
 			return fSequenceLabelFigure;
@@ -985,7 +984,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 
 		public IFigure getToolTip() {
 			if (StringUtils.isEmpty(toolTipMessage)) {
-				return new Label(Messages.SequenceEditPart_ToolTip);
+				return new Label(Messages.SequenceEditPart_ToolTipMessage);
 			} else {
 				return new Label(toolTipMessage);
 			}

@@ -637,6 +637,7 @@
     <eLiterals name="AXIS2" value="2" literal="axis2"/>
     <eLiterals name="AXIS2_CLIENT" value="3" literal="axis2-client"/>
     <eLiterals name="OPERATION" value="4" literal="operation"/>
+    <eLiterals name="REGISTRY" value="5" literal="registry"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PropertyValueType">
     <eLiterals name="LITERAL"/>

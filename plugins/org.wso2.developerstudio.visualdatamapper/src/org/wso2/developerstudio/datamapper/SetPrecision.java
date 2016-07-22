@@ -23,7 +23,7 @@ public interface SetPrecision extends Operator {
 
 	/**
 	 * Returns the value of the '<em><b>Number Of Digits</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
+	 * The default value is <code>"{$NoOfDigits}"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Number Of Digits</em>' attribute isn't clear,
@@ -31,12 +31,12 @@ public interface SetPrecision extends Operator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Number Of Digits</em>' attribute.
-	 * @see #setNumberOfDigits(int)
+	 * @see #setNumberOfDigits(String)
 	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getSetPrecision_NumberOfDigits()
-	 * @model default="1"
+	 * @model default="{$NoOfDigits}"
 	 * @generated
 	 */
-	int getNumberOfDigits();
+	String getNumberOfDigits();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.SetPrecision#getNumberOfDigits <em>Number Of Digits</em>}' attribute.
@@ -46,5 +46,5 @@ public interface SetPrecision extends Operator {
 	 * @see #getNumberOfDigits()
 	 * @generated
 	 */
-	void setNumberOfDigits(int value);
+	void setNumberOfDigits(String value);
 } // SetPrecision

@@ -203,8 +203,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Round" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Multiply" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="SetPrecision" eSuperTypes="#//Operator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfDigits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numberOfDigits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="{$NoOfDigits}"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Split" eSuperTypes="#//Operator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="delimiter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

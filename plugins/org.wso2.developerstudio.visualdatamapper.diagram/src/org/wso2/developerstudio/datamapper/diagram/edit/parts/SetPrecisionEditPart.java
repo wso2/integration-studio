@@ -90,7 +90,7 @@ public class SetPrecisionEditPart extends AbstractOperatorEditPart {
 	* @generated NOT
 	*/
 	protected IFigure createNodeShape() {
-		int numberOfDecimals = ((SetPrecisionImpl) ((View) getModel()).getElement()).getNumberOfDigits();
+		String numberOfDecimals = ((SetPrecisionImpl) ((View) getModel()).getElement()).getNumberOfDigits();
 		return primaryShape = new SetPrecisionFigure(numberOfDecimals);
 	}
 
@@ -196,7 +196,7 @@ public class SetPrecisionEditPart extends AbstractOperatorEditPart {
 			this.setBackgroundColor(THIS_BACK);
 		}
 
-		public SetPrecisionFigure(int numberOfDecimals) {
+		public SetPrecisionFigure(String numberOfDecimals) {
 			super("SetPrecision");
 			this.figureHeaderLabel = "SetPrecision : [Number of Decimals : " + numberOfDecimals + " ]";
 			super.changeOperatorHeader(figureHeaderLabel);

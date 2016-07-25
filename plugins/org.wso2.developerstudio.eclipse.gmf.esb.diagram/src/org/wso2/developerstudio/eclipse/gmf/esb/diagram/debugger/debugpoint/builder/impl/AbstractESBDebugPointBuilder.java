@@ -159,13 +159,14 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
      * @param position
      */
     protected void increaseBreakpointPosition(List<ESBDebugPoint> breakpontList, List<Integer> position) {
+    	List<ESBDebugPoint> modifiedDebugPointList = new ArrayList<>();
         for (ESBDebugPoint esbBreakpoint : breakpontList) {
             try {
                 AbstractESBDebugPointMessage message = increasePositionOfTheMessage(esbBreakpoint.getLocation(),
                         position);
                 ESBDebugPoint modifiedBreakpoint = new ESBDebugPoint(esbBreakpoint.getResource(),
                         esbBreakpoint.getLineNumber(), message);
-                DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(modifiedBreakpoint);
+                modifiedDebugPointList.add(modifiedBreakpoint);
                 DebugPlugin.getDefault().getBreakpointManager().removeBreakpoint(esbBreakpoint, true);
             } catch (DebugPointMarkerNotFoundException e) {
                 log.error("Error while increasing debug point position value" + e.getMessage(), e);
@@ -174,6 +175,13 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                 log.error("Error while increasing debug point position value", e);
             }
         }
+        for (ESBDebugPoint esbDebugPoint : modifiedDebugPointList) {
+        	try {
+				DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(esbDebugPoint);
+			} catch (CoreException e) {
+				 log.error("Error while increasing debug point position value and adding back", e);
+			}
+		}
     }
 
     /**

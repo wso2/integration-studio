@@ -369,8 +369,11 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		updateSchema();
-		updateAssociatedConfigFile(monitor);
-		super.doSave(monitor);
+		boolean success = updateAssociatedConfigFile(monitor);
+		//Fixing DEVTOOLESB-651
+		if (success) {
+			super.doSave(monitor);
+		}
 	}
 
 	private void updateSchema() {
@@ -450,7 +453,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		return newSchemaFile;
 	}
 
-	private void updateAssociatedConfigFile(IProgressMonitor monitor) {
+	private boolean updateAssociatedConfigFile(IProgressMonitor monitor) {
 		IEditorInput editorInput = this.getEditorInput();
 
 		if (editorInput instanceof IFileEditorInput) {
@@ -464,7 +467,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 				String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
 				if (source == null) {
 					log.warn("Could not found source"); //$NON-NLS-1$
-					return;
+					return false;
 				}
 				is = new ByteArrayInputStream(source.getBytes());
 				if (configFile.exists()) {
@@ -476,9 +479,11 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			} catch (DataMapperException e) {
 				log.warn(e.getMessage(), e);
 				popupErrorDialogBox(e);
+				return false;
 			} catch (Exception e) {
 				log.warn("Could not save file " + configFile + " : " + e); //$NON-NLS-1$
 				popupErrorDialogBox(e);
+				return false;
 			} finally {
 				if (is != null) {
 					try {
@@ -489,6 +494,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 				}
 			}
 		}
+		return true;
 	}
 
 	private void popupErrorDialogBox(Exception e) {

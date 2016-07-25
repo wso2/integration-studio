@@ -329,7 +329,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 					String newNodeName = PREFIX+prefix + ":" + editTypeDialog.getTitle();
 					valueMap.put(JSON_SCHEMA_TITLE, newNodeName);
 				} else {
-					valueMap.put(JSON_SCHEMA_TITLE, PREFIX + PREFIX+editTypeDialog.getTitle());
+					valueMap.put(JSON_SCHEMA_TITLE, PREFIX+editTypeDialog.getTitle());
 				}
 			}
 			valueMap.put(JSON_SCHEMA_TYPE, editTypeDialog.getSchemaType());

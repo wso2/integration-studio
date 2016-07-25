@@ -40,79 +40,80 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
  */
 public class ESBBreakpointDeleteAllAction extends ConfigureEsbNodeAction {
 
-    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-    /**
-     * Creates a new {@link ESBBreakpointDeleteAllAction} instance.
-     * 
-     * @param part
-     *            {@link IWorkbenchPart} instance.
-     */
-    public ESBBreakpointDeleteAllAction(IWorkbenchPart part) {
-        super(part);
-        super.init();
-        setId(ESB_BREAKPOINT_DELETE_ALL_ACTION_ID);
-        setText(ESB_BREAKPOINT_DELETE_ALL_COMMAND_LABEL);
-        setToolTipText(ESB_BREAKPOINT_DELETE_ALL_COMMAND_TOOL_TIP);
-        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
-        setHoverImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT));
-        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT));
-        setDisabledImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT_DISABLED));
-    }
+	/**
+	 * Creates a new {@link ESBBreakpointDeleteAllAction} instance.
+	 * 
+	 * @param part
+	 *            {@link IWorkbenchPart} instance.
+	 */
+	public ESBBreakpointDeleteAllAction(IWorkbenchPart part) {
+		super(part);
+		super.init();
+		setId(ESB_BREAKPOINT_DELETE_ALL_ACTION_ID);
+		setText(ESB_BREAKPOINT_DELETE_ALL_COMMAND_LABEL);
+		setToolTipText(ESB_BREAKPOINT_DELETE_ALL_COMMAND_TOOL_TIP);
+		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+		setHoverImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT));
+		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT));
+		setDisabledImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_ETOOL_PRINT_EDIT_DISABLED));
+	}
 
-    /**
-     * Utility method for retrieving the currently selected {@link EditPart}.
-     * 
-     * @return current selected {@link EditPart} or null if multiple edit parts
-     *         or no edit parts are selected.
-     */
-    @Override
-    protected EditPart getSelectedEditPart() {
-        IStructuredSelection selection = getStructuredSelection();
-        if (selection.size() == 1) {
-            Object selectedEP = selection.getFirstElement();
-            if (selectedEP instanceof EditPart) {
-                return (EditPart) selectedEP;
-            }
-        }
-        return null;
-    }
+	/**
+	 * Utility method for retrieving the currently selected {@link EditPart}.
+	 * 
+	 * @return current selected {@link EditPart} or null if multiple edit parts
+	 *         or no edit parts are selected.
+	 */
+	@Override
+	protected EditPart getSelectedEditPart() {
+		IStructuredSelection selection = getStructuredSelection();
+		if (selection.size() == 1) {
+			Object selectedEP = selection.getFirstElement();
+			if (selectedEP instanceof EditPart) {
+				return (EditPart) selectedEP;
+			}
+		}
+		return null;
+	}
 
-    /**
-     * Utility method for calculating the editing domain.
-     * 
-     * @return editing domain for this action.
-     */
-    @Override
-    protected TransactionalEditingDomain getEditingDomain() {
-        IWorkbenchPart part = getWorkbenchPart();
+	/**
+	 * Utility method for calculating the editing domain.
+	 * 
+	 * @return editing domain for this action.
+	 */
+	@Override
+	protected TransactionalEditingDomain getEditingDomain() {
+		IWorkbenchPart part = getWorkbenchPart();
 
-        if (part != null) {
-            IEditingDomainProvider edProvider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
+		if (part != null) {
+			IEditingDomainProvider edProvider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
 
-            if (edProvider != null) {
-                EditingDomain domain = edProvider.getEditingDomain();
+			if (edProvider != null) {
+				EditingDomain domain = edProvider.getEditingDomain();
 
-                if (domain instanceof TransactionalEditingDomain) {
-                    return (TransactionalEditingDomain) domain;
-                }
-            }
-        }
+				if (domain instanceof TransactionalEditingDomain) {
+					return (TransactionalEditingDomain) domain;
+				}
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    /**
-     * This method performs the action when click the menu item Enable/Disable
-     * ESB Breakpoints
-     */
-    @Override
-    protected void doRun(IProgressMonitor progressMonitor) {
-        try {
-            ESBDebuggerUtil.removeAllESBDebugPointsFromDebugPointManager();
-        } catch (ESBDebuggerException e) {
-            log.error("Error while removing debugpoints from ESB Server", e);
-        }
-    }
+	/**
+	 * This method performs the action when click the menu item Enable/Disable
+	 * ESB Breakpoints
+	 */
+	@Override
+	protected void doRun(IProgressMonitor progressMonitor) {
+		try {
+			ESBDebuggerUtil.updateModifiedDebugPoints();
+			ESBDebuggerUtil.removeAllESBDebugPointsFromDebugPointManager();
+		} catch (ESBDebuggerException e) {
+			log.error("Error while removing debugpoints from ESB Server", e);
+		}
+	}
 
 }

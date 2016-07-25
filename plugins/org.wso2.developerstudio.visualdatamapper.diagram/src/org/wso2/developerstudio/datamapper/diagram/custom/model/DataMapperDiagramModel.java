@@ -483,8 +483,12 @@ public class DataMapperDiagramModel {
 												+ operator.getProperty(TransformerConstants.PROPERTY_NAME_TAG) + "']}",
 										getUniqueDirectId(operatorElement, dataMapperLink.getOutputIndex()),
 										DMVariableType.INTERMEDIATE, SchemaDataType.INT, variableIndex, index);
-								addVariableTypeToMap(tempVar.getName(),
-										(SchemaDataType) operator.getProperty(TransformerConstants.PROPERTY_TYPE_TAG));
+								if (operator.getProperties().containsKey(TransformerConstants.PROPERTY_TYPE_TAG)) {
+									addVariableTypeToMap(tempVar.getName(), (SchemaDataType) operator
+											.getProperty(TransformerConstants.PROPERTY_TYPE_TAG));
+								} else {
+									addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
+								}
 								variablesArray.add(tempVar);
 								operatorElement.getPortVariableIndex().add(variableIndex);
 							} else if (DataMapperOperatorType.GLOBAL_VARIABLE.equals(operator.getOperatorType())) {
@@ -664,8 +668,12 @@ public class DataMapperDiagramModel {
 						+ operator.getProperty(TransformerConstants.PROPERTY_NAME_TAG) + "']}",
 				getUniqueDirectId(operatorElement, dataMapperLink.getOutputIndex()), DMVariableType.INTERMEDIATE,
 				SchemaDataType.INT, variableIndex, index);
-		addVariableTypeToMap(tempVar.getName(),
-				(SchemaDataType) operator.getProperty(TransformerConstants.PROPERTY_TYPE_TAG));
+		if (operator.getProperties().containsKey(TransformerConstants.PROPERTY_TYPE_TAG)) {
+			addVariableTypeToMap(tempVar.getName(), (SchemaDataType) operator
+					.getProperty(TransformerConstants.PROPERTY_TYPE_TAG));
+		} else {
+			addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
+		}
 		variablesArray.add(tempVar);
 		operatorElement.getPortVariableIndex().add(variableIndex);
 		if (outputAdjList.get(operator.getIndex()).size() <= dataMapperLink.getOutputIndex()) {

@@ -35,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ConfigureEsbNodeAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -105,6 +106,7 @@ public class ESBSkipPointAction extends ConfigureEsbNodeAction {
      */
     @Override
     protected void doRun(IProgressMonitor progressMonitor) {
+    	ESBDebuggerUtil.updateModifiedDebugPoints();
         EditPart selectedEP = getSelectedEditPart();
         if (selectedEP instanceof AbstractMediator && ESBDebugPointTarget.canToggleDiagramDebugpoints(selectedEP)) {
             try {

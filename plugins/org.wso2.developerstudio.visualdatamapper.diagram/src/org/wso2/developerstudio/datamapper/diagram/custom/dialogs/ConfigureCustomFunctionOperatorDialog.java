@@ -41,7 +41,6 @@ import org.wso2.developerstudio.datamapper.CustomFunction;
 import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.CustomFunctionEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
 import org.wso2.developerstudio.datamapper.impl.CustomFunctionImpl;

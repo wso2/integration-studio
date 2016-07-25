@@ -196,7 +196,7 @@ public class CustomFunctionEditPart extends AbstractOperatorEditPart {
 		public CustomFunctionFigure(String functionName) {
 			super("CustomFunction");
 			if (StringUtils.isNotEmpty(functionName)) {
-				super.changeOperatorHeader(functionName);
+				super.changeOperatorHeader("CustomFunction : " + functionName);
 			}
 			this.setBackgroundColor(THIS_BACK);
 		}

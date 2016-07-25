@@ -203,9 +203,9 @@ public class ConfigureCustomFunctionOperatorDialog extends AbstractConfigureOper
 				editingDomain.getCommandStack().execute(setCmnd);
 			}
 			((OperatorRectangle) ((CustomFunctionEditPart) editPart).getCustomFunctionFigure())
-					.changeOperatorHeader(functionName);
+					.changeOperatorHeader("CustomFunction : " + functionName);
 		}
-		
+
 		if (!StringUtils.isEmpty(functionDefinition)) {
 			CustomFunction concatOperatorInstance = customFunctionImpl;
 			SetCommand setCmnd = new SetCommand(editingDomain, concatOperatorInstance,
@@ -214,7 +214,7 @@ public class ConfigureCustomFunctionOperatorDialog extends AbstractConfigureOper
 				editingDomain.getCommandStack().execute(setCmnd);
 			}
 		}
-		
+
 		int number = Integer.parseInt(inputCount)
 				- customFunctionImpl.getBasicContainer().getLeftContainer().getLeftConnectors().size();
 		if (number > 0) {

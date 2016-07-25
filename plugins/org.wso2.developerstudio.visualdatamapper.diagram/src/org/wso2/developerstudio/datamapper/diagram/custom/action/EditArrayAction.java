@@ -70,6 +70,7 @@ public class EditArrayAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String JSON_SCHEMA_ARRAY_NAMESPACES = "arrayNamespaces";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS = "arrayElementIdentifiers";
 	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL = "arrayElementIdentifiersURL";
@@ -446,6 +447,8 @@ public class EditArrayAction extends AbstractActionHandler {
 			// Sets the values for items field which is used for serializing the
 			// array
 			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_ID, editTypeDialog.getID() + "/0");
+			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, editTypeDialog.getValue());
+			
 			// sets the value type if item holds a value
 			if (StringUtils.isNotEmpty(editTypeDialog.getValue())) {
 				valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE, editTypeDialog.getValue());

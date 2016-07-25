@@ -34,9 +34,9 @@ function saveWSDL(inputWsdl, fileName) {
     // Read contents of the file.
     wsdlContent = new XMLSerializer().serializeToString((inputWsdl));
     try {
-        IDESaveContentWithExtention(wsdlContent, "", fileName, "wsdl");
+        IDESaveContentWithExtention(wsdlContent, "htcontent", fileName, "wsdl");
     } catch (err) {
-        alert(err);
+        handleError("Error saving WSDL" + err.message);
     }
 }
 
@@ -44,9 +44,9 @@ function saveHTConfig(inputWsdl) {
     // Read contents of the file.
     htconfigContent = new XMLSerializer().serializeToString((inputWsdl));
     try {
-        IDESaveContentWithExtention(htconfigContent, "", "htconfig", "xml");
+        IDESaveContentWithExtention(htconfigContent, "htcontent", "htconfig", "xml");
     } catch (err) {
-        alert(err);
+        handleError("Error saving HTConfig" + err.message);
     }
 }
 

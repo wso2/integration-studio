@@ -28,8 +28,6 @@ public class HumantaskEditorConstants {
 
     public static final String ERROR_CREATING_CORRESPONDING_ZIP_FILE = "Error creating corresponding ZIP file";
 
-    public static final String ERROR_COPYING_FILES = "Error copying files to artifact";
-
     public static final String ERROR_FINDING_CORRESPONDING_WSDL_FILE = "Error finding corresponding WSDL file";
 
     public static final String ERROR_DELETING_CORRESPONDING_WSDL_FILE = "Error deleting corresponding WSDL file";
@@ -58,6 +56,8 @@ public class HumantaskEditorConstants {
 
     public static final String DUMMY_ORG_SCHEMA_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/organizationalentityschema.xsd";
 
+    public static final String DUMMY_POM_SCHEMA_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/templatepom.xml";
+
     public static final String DUMMY_HT_LOCATION = "platform:/plugin/org.wso2.developerstudio.humantaskeditor/HumanTaskEditor/resources/template.ht";
 
     public static final String ERROR_OPENING_THE_EDITOR_MESSAGE = "Error opening the editor";
@@ -68,23 +68,15 @@ public class HumantaskEditorConstants {
 
     public static final String THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE = "The project already exists in the workspace. Please use a different project name";
 
-    public static final String PROJECT_EXISTS_MESSAGE = "Project exists";
-
     public static final String ERROR_MESSAGE = "Error";
 
     public static final String INITIAL_HTCONFIG_NAME = "htconfig.xml";
 
-    public static final String INITIAL_CALLBACK_WSDL_NAME = "ApproveClaimCBTask.wsdl";
-
-    public static final String INITIAL_WSDL_NAME = "ApproveClaimTask.wsdl";
-
-    public static final String FILE_EXTENSION_MUST_BE_HT_MESSAGE = "File extension must be \"ht\"";
+    public static final String INITIAL_POM_NAME = "pom.xml";
 
     public static final String FILE_NAME_MUST_BE_VALID_MESSAGE = "File name must be valid";
 
     public static final String FILE_NAME_MUST_BE_SPECIFIED_MESSAGE = "File name must be specified";
-
-    public static final String FILE_NAME_MUST_BE_VALID = "Enter a valid file Name";
 
     public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "File container must be specified";
 
@@ -144,12 +136,12 @@ public class HumantaskEditorConstants {
 
     public static final String HUMAN_TASK_PROJECT_WIZARD_TITLE = "Human Task Project Wizard";
 
-    public static final String HUMAN_TASK_FILE_WIZARD_TITLE = "Human Task File Wizard";
-
     public static final String HUMAN_TASK_EXPORT_WIZARD_TITLE = "Export Human Task Artifact";
 
     public static final String ORGANIZATIONAL_ENTITY_SCHEMA_FILE = "organizationalentityschema.xsd";
-    
+
     public static final String HTEDITOR_HELP_NAME = "hteditor";
-    
+
+    public static final String BASE_FOLDER_NAME = "htcontent";
+
 }

@@ -40,7 +40,6 @@ public class HumanTaskExportWizardPage extends WizardPage {
     private String fileLocation;
     private Text deployInWorkspaceText;
     private IProject selectedProject;
-    private IProject[] prjctList;
     private String projectToArchive = null;
 
     protected HumanTaskExportWizardPage(String pageName, IProject p) {
@@ -93,15 +92,15 @@ public class HumanTaskExportWizardPage extends WizardPage {
                 handledeployInWorkspaceBrowseButton();
             }
         });
-        prjctList = getProjects();
-        if (prjctList.length != 0) {
-            for (int i = 0; i < prjctList.length; i++) {
-                projectListcombo.add(prjctList[i].getName());
+        IProject[] projectList;projectList = getProjects();
+        if (projectList.length != 0) {
+            for (int i = 0; i < projectList.length; i++) {
+                projectListcombo.add(projectList[i].getName());
                 if (selectedProject == null) {
                     projectListcombo.select(0);
                     setProjectToArchive(projectListcombo.getItem(0));
                 } else {
-                    if (selectedProject.getName().equals(prjctList[i].getName())) {
+                    if (selectedProject.getName().equals(projectList[i].getName())) {
                         projectListcombo.select(i);
                         setProjectToArchive(projectListcombo.getItem(i));
                     }
@@ -115,7 +114,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
             deployInWorkspaceText.setEnabled(false);
             deployInWorkspaceBrowseButton.setEnabled(false);
             setErrorMessage(msg);
-            setPageComplete(msg == null);
+            setPageComplete(false);
         }
 
         projectListcombo.addSelectionListener(new SelectionAdapter() {
@@ -130,17 +129,17 @@ public class HumanTaskExportWizardPage extends WizardPage {
         return projectToArchive;
     }
 
-    public void setProjectToArchive(String projectToArchive) {
+    private void setProjectToArchive(String projectToArchive) {
         this.projectToArchive = projectToArchive;
     }
 
-    protected void handledeployInWorkspaceBrowseButton() {
+    private void handledeployInWorkspaceBrowseButton() {
         String fileName = getSavePath();
         if (fileName != null)
             deployInWorkspaceText.setText(fileName);
     }
 
-    protected void handleDeployInWorkspaceText() {
+    private void handleDeployInWorkspaceText() {
         this.setFileLocation(deployInWorkspaceText.getText());
         String msg = null;
         File file = new File(getFileLocation());
@@ -161,25 +160,16 @@ public class HumanTaskExportWizardPage extends WizardPage {
             // Open the File Dialog
             fileName = dlg.open();
             if (fileName == null) {
-                // User has cancelled, so quit and return
                 done = true;
             } else {
-                // User has selected a file; see if it already exists
                 File file = new File(fileName);
-                if (file.exists()) {
-                    // If they click Yes, we're done and we drop out. If
-                    // they click No, we redisplay the File Dialog
-                    done = true;
-                } else {
-                    // File does not exist, so drop out
-                    done = false;
-                }
+                done = file.exists();
             }
         }
         return fileName;
     }
 
-    public void setFileLocation(String fileLocation) {
+    private void setFileLocation(String fileLocation) {
         this.fileLocation = fileLocation;
     }
 
@@ -188,8 +178,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
     }
 
     public IProject[] getProjects() {
-        IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-        return projects;
+        return ResourcesPlugin.getWorkspace().getRoot().getProjects();
     }
 
     @Override

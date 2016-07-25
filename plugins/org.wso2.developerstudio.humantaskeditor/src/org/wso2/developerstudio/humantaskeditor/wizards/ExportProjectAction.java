@@ -23,7 +23,7 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 
 public class ExportProjectAction implements IActionDelegate {
-    IStructuredSelection selection;
+    private IStructuredSelection selection;
 
     public void run(IAction action) {
         if (selection != null) {

@@ -18,9 +18,6 @@ package org.wso2.developerstudio.humantaskeditor.wizards;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.ui.INewWizard;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.core.runtime.*;
 import org.eclipse.jface.operation.*;
 
@@ -33,7 +30,6 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.core.resources.*;
-import org.eclipse.core.runtime.CoreException;
 
 import java.io.*;
 
@@ -144,6 +140,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         final IFile orgSchemafile = container.getFile(new Path(
                 HumantaskEditorConstants.ORGANIZATIONAL_ENTITY_SCHEMA_FILE));
         final IFile htconfigfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_HTCONFIG_NAME));
+        final IFile pomfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_POM_NAME));
         addNature(container.getProject());
         IResource[] memberList = container.members();
         for (IResource member : memberList) {
@@ -158,12 +155,13 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         InputStream wsdlStream = null;
         InputStream htconfigStream = null;
         InputStream orgSchemaStream = null;
+        InputStream pomStream = null;
         try {
             stream = openContentStream(taskName, tnsName);
             wsdlStream = openWSDLStream();
             htconfigStream = openHTConfigStream();
             orgSchemaStream = openOrgSchemaStream();
-
+            pomStream = openPomStream(containerName);
             if (file.exists()) {
                 throwCoreException("A file with the same name already exists");
             } else {
@@ -172,6 +170,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
                 cbWsdlfile.create(wsdlStream, true, monitor);
                 htconfigfile.create(htconfigStream, true, monitor);
                 orgSchemafile.create(orgSchemaStream, true, monitor);
+                pomfile.create(pomStream, true, monitor);
             }
         } catch (IOException e) {
             logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
@@ -189,6 +188,8 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
                     htconfigStream.close();
                 if (orgSchemaStream != null)
                     orgSchemaStream.close();
+                if (pomStream != null)
+                    pomStream.close();
             } catch (IOException e) {
                 logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
                 IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -252,6 +253,18 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     }
 
     /**
+     * Will initialize file contents with a dummy pom schema.
+     *
+     * @throws IOException
+     * @throws CoreException
+     */
+
+    private InputStream openPomStream(String containerName) throws IOException, CoreException {
+        String contents = changePOMName(containerName, readDummyPomSchema());
+        return new ByteArrayInputStream(contents.getBytes());
+    }
+
+    /**
      * Will initialize file contents with a dummy htconfig.
      *
      * @throws IOException
@@ -269,28 +282,18 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      */
     private String readDummyHT() throws IOException {
         StringBuilder sb = new StringBuilder();
-        URL url;
-        BufferedReader in = null;
-        InputStream inputStream = null;
-        try {
-            url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
-            inputStream = url.openConnection().getInputStream();
-            in = new BufferedReader(new InputStreamReader(inputStream));
+        URL url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
+        try (InputStream inputStream = url.openConnection().getInputStream();
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine + "\n");
+                sb.append(inputLine).append("\n");
             }
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from HT file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
                     "Error reading from project", editorStatus);
-        } finally {
-            try {
-                in.close();
-                inputStream.close();
-            } catch (Exception e) {
-            }
         }
         return sb.toString();
     }
@@ -302,28 +305,18 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      */
     private String readDummyOrgSchema() throws IOException {
         StringBuilder sb = new StringBuilder();
-        URL url;
-        BufferedReader in = null;
-        InputStream inputStream = null;
-        try {
-            url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
-            inputStream = url.openConnection().getInputStream();
-            in = new BufferedReader(new InputStreamReader(inputStream));
+        URL url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
+        try (InputStream inputStream = url.openConnection().getInputStream();
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine + "\n");
+                sb.append(inputLine).append("\n");
             }
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from org schema file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
-        } finally {
-            try {
-                in.close();
-                inputStream.close();
-            } catch (Exception e) {
-            }
         }
         return sb.toString();
     }
@@ -335,56 +328,59 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
      */
     private String readDummyWSDL() throws IOException {
         StringBuilder sb = new StringBuilder();
-        URL url;
-        BufferedReader in = null;
-        InputStream inputStream = null;
-        try {
-            url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
-            inputStream = url.openConnection().getInputStream();
-            in = new BufferedReader(new InputStreamReader(inputStream));
+        URL url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
+        try (InputStream inputStream = url.openConnection().getInputStream();
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine + "\n");
+                sb.append(inputLine).append("\n");
             }
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from WSDL file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
                     "Error reading from project", editorStatus);
-        } finally {
-            try {
-                in.close();
-                inputStream.close();
-            } catch (Exception e) {
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Read dummy pom file which is needed to initialize a new ht file
+     *
+     * @throws IOException
+     */
+    private String readDummyPomSchema() throws IOException {
+        StringBuilder sb = new StringBuilder();
+        URL url = new URL(HumantaskEditorConstants.DUMMY_POM_SCHEMA_LOCATION);
+        try (InputStream inputStream = url.openConnection().getInputStream();
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                sb.append(inputLine).append("\n");
             }
+        } catch (IOException e) {
+            logger.log(Level.FINE, "Error reading from template pom file", e);
+            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+            ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                    HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
         }
         return sb.toString();
     }
 
     private String readDummyHtConfig() throws IOException {
         StringBuilder sb = new StringBuilder();
-        URL url;
-        BufferedReader in = null;
-        InputStream inputStream = null;
-        try {
-            url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
-            inputStream = url.openConnection().getInputStream();
-            in = new BufferedReader(new InputStreamReader(inputStream));
+        URL url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
+        try (InputStream inputStream = url.openConnection().getInputStream();
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine + "\n");
+                sb.append(inputLine).append("\n");
             }
         } catch (IOException e) {
             logger.log(Level.FINE, "Error reading from HTConfig file", e);
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error",
                     "Error reading from project", editorStatus);
-        } finally {
-            try {
-                in.close();
-                inputStream.close();
-            } catch (Exception e) {
-            }
         }
         return sb.toString();
     }
@@ -401,8 +397,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         System.arraycopy(prevNatures, 0, newNatures, 0, prevNatures.length);
         newNatures[prevNatures.length] = HumanTaskNature.NATURE_ID;
         description.setNatureIds(newNatures);
-        IProgressMonitor monitor = null;
-        project.setDescription(description, monitor);
+        project.setDescription(description, null);
 
     }
 
@@ -419,7 +414,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
 
     private String changeXMLName(String content, String taskName, String tnsName) throws CoreException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Document dom = null;
+        Document dom;
         String xmlString = null;
         try {
 
@@ -448,9 +443,48 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
 
             transformer.transform(source, result);
             xmlString = stringWriter.toString();
-        } catch (ParserConfigurationException pce) {
+        } catch (ParserConfigurationException | SAXException pce) {
             throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_PARSING_XML);
-        } catch (SAXException se) {
+        } catch (IOException ioe) {
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_FILE_IO);
+        } catch (TransformerConfigurationException e) {
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORM_CONFIG);
+        } catch (TransformerException e) {
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT);
+        }
+        return xmlString;
+    }
+
+    private String changePOMName(String containerName, String content) throws CoreException {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        Document dom;
+        String xmlString = null;
+        try {
+
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            InputSource is = new InputSource(new StringReader(content));
+            dom = db.parse(is);
+            Node groupID = dom.getElementsByTagName("groupId").item(0);
+            Node artifactID = dom.getElementsByTagName("artifactId").item(0);
+            Node name = dom.getElementsByTagName("name").item(0);
+            Node description = dom.getElementsByTagName("description").item(0);
+            groupID.appendChild(dom.createTextNode("com.humantask." + containerName));
+            artifactID.appendChild(dom.createTextNode(containerName));
+            name.appendChild(dom.createTextNode(containerName));
+            description.appendChild(dom.createTextNode(containerName));
+            TransformerFactory transfactory = TransformerFactory.newInstance();
+            Transformer transformer = transfactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.METHOD, HumantaskEditorConstants.XML_OUTPUT_METHOD);
+            transformer.setOutputProperty(OutputKeys.INDENT, HumantaskEditorConstants.XML_INDENT_YES);
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(2));
+
+            StringWriter stringWriter = new StringWriter();
+            StreamResult result = new StreamResult(stringWriter);
+            DOMSource source = new DOMSource(dom.getDocumentElement());
+
+            transformer.transform(source, result);
+            xmlString = stringWriter.toString();
+        } catch (ParserConfigurationException | SAXException pce) {
             throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_PARSING_XML);
         } catch (IOException ioe) {
             throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_FILE_IO);

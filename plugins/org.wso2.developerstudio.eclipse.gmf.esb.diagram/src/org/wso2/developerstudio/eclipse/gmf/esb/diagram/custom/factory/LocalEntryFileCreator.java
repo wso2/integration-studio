@@ -49,6 +49,7 @@ public class LocalEntryFileCreator implements IFileCreator{
 	        FileUtils.writeContent(destFile, content);
 		}		
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		localEntryProjectCreationWizard.refreshDistProjects();
 	}
 
 	

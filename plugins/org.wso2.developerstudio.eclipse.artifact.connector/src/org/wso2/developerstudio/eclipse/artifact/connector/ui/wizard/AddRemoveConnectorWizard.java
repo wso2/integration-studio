@@ -184,6 +184,7 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 	
 		connectorProjectArtifact.toFile();
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		refreshDistProjects();
 		
 		return true;
 	}
@@ -224,7 +225,7 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 			artifact.addESBArtifact(connectorArtifact);
 			artifact.toFile();
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-
+			refreshDistProjects();
 		}
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}

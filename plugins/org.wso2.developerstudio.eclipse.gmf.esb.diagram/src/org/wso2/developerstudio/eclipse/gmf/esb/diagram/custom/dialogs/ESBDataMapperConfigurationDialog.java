@@ -40,6 +40,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.utils.ESBUtils;
 import org.wso2.developerstudio.eclipse.esb.core.utils.EsbTemplateFormatter;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
@@ -439,6 +440,7 @@ public class ESBDataMapperConfigurationDialog extends Dialog {
 		generalProjectArtifact.toFile();
 		addGeneralProjectPlugin(project);
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		ESBUtils.refreshDistProjects();
 		return true;
 	}
 

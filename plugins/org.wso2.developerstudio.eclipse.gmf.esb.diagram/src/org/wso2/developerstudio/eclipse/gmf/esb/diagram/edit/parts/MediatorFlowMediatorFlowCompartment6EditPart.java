@@ -164,7 +164,7 @@ public class MediatorFlowMediatorFlowCompartment6EditPart extends AbstractMediat
 			if (inputConnector.getTargetConnections().isEmpty()) {
 				AbstractOutputConnectorEditPart outputConnector = EditorUtils
 						.getOutputConnector((ShapeNodeEditPart) child);
-				if (!outputConnector.getSourceConnections().isEmpty()) {
+				if (outputConnector != null && !outputConnector.getSourceConnections().isEmpty()) {
 					EsbLinkEditPart esbLinkEditPart = (EsbLinkEditPart) outputConnector.getSourceConnections().get(0);
 					inputConnectorEditPart = (AbstractBorderItemEditPart) esbLinkEditPart.getTarget();
 				}

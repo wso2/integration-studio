@@ -103,6 +103,9 @@ public class CarbonServerUtils {
 		} else {
 			validURL = serverURL;
 		}
+		if (validURL.endsWith("/")) {
+			validURL = validURL.substring(0, validURL.length() - 1);
+		}
 		return validURL;
 
 	}

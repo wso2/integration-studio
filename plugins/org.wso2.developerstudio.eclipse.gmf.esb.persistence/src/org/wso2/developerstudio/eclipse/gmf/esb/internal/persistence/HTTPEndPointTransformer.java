@@ -88,7 +88,7 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 
 	}
 
-	public org.apache.synapse.endpoints.HTTPEndpoint create(HTTPEndpoint visualEndPoint, String name) {
+	public org.apache.synapse.endpoints.HTTPEndpoint create(HTTPEndpoint visualEndPoint, String name) throws TransformerException {
 		HTTPEndpoint httpEndPoint = visualEndPoint;
 		org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
 
@@ -96,7 +96,11 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 			synapseHttpEP.setName(name);
 		}
 
-		createAdvanceOptions(httpEndPoint, synapseHttpEP);
+		try {
+			createAdvanceOptions(httpEndPoint, synapseHttpEP);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 		if (httpEndPoint.getURITemplate() != null) {
 			UriTemplate template = UriTemplate.fromTemplate(httpEndPoint.getURITemplate());
 			synapseHttpEP.setUriTemplate(template);
@@ -203,13 +207,17 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 	}
 
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) throws TransformerException {
 
 		Assert.isTrue(subject instanceof HTTPEndpoint, "Invalid subject");
 		HTTPEndpoint httpEndPoint = (HTTPEndpoint) subject;
 		org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
 
-		createAdvanceOptions(httpEndPoint, synapseHttpEP);
+		try {
+			createAdvanceOptions(httpEndPoint, synapseHttpEP);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 		UriTemplate template = UriTemplate.fromTemplate(httpEndPoint.getURITemplate());
 		synapseHttpEP.setUriTemplate(template);
 

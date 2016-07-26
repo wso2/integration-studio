@@ -61,7 +61,7 @@ public class EditArrayAction extends AbstractActionHandler {
 	private EditPart selectedEP;
 	private static final String RENAME_ACTION_ID = "rename-node-action-id"; //$NON-NLS-1$
 	private static final String RENAME_FIELD = Messages.EditActions_editArray;
-
+	private static final String DIALOG_TITLE = "Edit Array";
 	private static final String JSON_SCHEMA_REQUIRED = "required";
 	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
 	private static final String JSON_SCHEMA_ID = "id";
@@ -403,6 +403,7 @@ public class EditArrayAction extends AbstractActionHandler {
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, value, identifierType,
 				identifierValue, identifierURL, isNullable,interrelatedElement,isOutputEditPart);
+		editTypeDialog.setTitle(DIALOG_TITLE);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {

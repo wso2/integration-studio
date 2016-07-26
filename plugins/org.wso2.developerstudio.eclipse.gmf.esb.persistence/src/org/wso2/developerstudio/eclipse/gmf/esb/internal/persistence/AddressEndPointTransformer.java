@@ -87,12 +87,16 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
 		doTransform(info, visualEndPoint.getOutputConnector());
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) throws TransformerException {
 
 		Assert.isTrue(subject instanceof AddressEndPoint, "Invalid subject");
 		AddressEndPoint addressEndPoint = (AddressEndPoint) subject;
 		AddressEndpoint synapseAddEP = new AddressEndpoint();
-		createAdvanceOptions(addressEndPoint, synapseAddEP);
+		try {
+			createAdvanceOptions(addressEndPoint, synapseAddEP);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 		synapseAddEP.getDefinition().setAddress(addressEndPoint.getURI());
 		if (StringUtils.isNotBlank(addressEndPoint.getEndPointName())) {
 			synapseAddEP.setName(addressEndPoint.getEndPointName());
@@ -104,13 +108,17 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
 		transformEndpointOutflow(info);
 	}
 
-	public AddressEndpoint create(AddressEndPoint visualEndPoint, String name) {
+	public AddressEndpoint create(AddressEndPoint visualEndPoint, String name) throws TransformerException {
 		AddressEndPoint addressEndPoint = visualEndPoint;
 		AddressEndpoint synapseAddEP = new AddressEndpoint();
 		if (StringUtils.isNotBlank(name)) {
 			synapseAddEP.setName(name);
 		}
-		createAdvanceOptions(addressEndPoint, synapseAddEP);
+		try {
+			createAdvanceOptions(addressEndPoint, synapseAddEP);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 		synapseAddEP.getDefinition().setAddress(addressEndPoint.getURI());
 
 		return synapseAddEP;

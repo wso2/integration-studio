@@ -82,7 +82,7 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
+			List<Endpoint> endPoints) throws TransformerException {
 		
 		Assert.isTrue(subject instanceof WSDLEndPoint, "Invalid subject");
 		WSDLEndPoint visualEndPoint = (WSDLEndPoint) subject;
@@ -95,7 +95,7 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 
 	}
 	
-	public WSDLEndpoint create(WSDLEndPoint visualEndPoint,String name){
+	public WSDLEndpoint create(WSDLEndPoint visualEndPoint,String name) throws TransformerException{
 		WSDLEndpoint synapseWSDLEP = new WSDLEndpoint();
 		synapseWSDLEP.setWsdlURI(visualEndPoint.getWsdlUri());
 		synapseWSDLEP.setServiceName(visualEndPoint.getService());
@@ -103,7 +103,11 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		if(StringUtils.isNotBlank(name)){
 			synapseWSDLEP.setName(name);
 		}		
-		createAdvanceOptions(visualEndPoint,synapseWSDLEP);		
+		try {
+			createAdvanceOptions(visualEndPoint,synapseWSDLEP);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 		return synapseWSDLEP;
 	}	
 

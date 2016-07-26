@@ -171,7 +171,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long TIME_OUT_DURATION_EDEFAULT = 0L;
+	protected static final String TIME_OUT_DURATION_EDEFAULT = "0";
 
 	/**
 	 * The cached value of the '{@link #getTimeOutDuration() <em>Time Out Duration</em>}' attribute.
@@ -181,7 +181,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 	 * @generated
 	 * @ordered
 	 */
-	protected long timeOutDuration = TIME_OUT_DURATION_EDEFAULT;
+	protected String timeOutDuration = TIME_OUT_DURATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTimeOutAction() <em>Time Out Action</em>}' attribute.
@@ -627,7 +627,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getTimeOutDuration() {
+	public String getTimeOutDuration() {
 		return timeOutDuration;
 	}
 
@@ -636,8 +636,8 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTimeOutDuration(long newTimeOutDuration) {
-		long oldTimeOutDuration = timeOutDuration;
+	public void setTimeOutDuration(String newTimeOutDuration) {
+		String oldTimeOutDuration = timeOutDuration;
 		timeOutDuration = newTimeOutDuration;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__TIME_OUT_DURATION, oldTimeOutDuration, timeOutDuration));
@@ -1186,7 +1186,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 				setAddressingSeparateListener((Boolean)newValue);
 				return;
 			case EsbPackage.ABSTRACT_END_POINT__TIME_OUT_DURATION:
-				setTimeOutDuration((Long)newValue);
+				setTimeOutDuration((String)newValue);
 				return;
 			case EsbPackage.ABSTRACT_END_POINT__TIME_OUT_ACTION:
 				setTimeOutAction((EndPointTimeOutAction)newValue);
@@ -1346,7 +1346,7 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 			case EsbPackage.ABSTRACT_END_POINT__ADDRESSING_SEPARATE_LISTENER:
 				return addressingSeparateListener != ADDRESSING_SEPARATE_LISTENER_EDEFAULT;
 			case EsbPackage.ABSTRACT_END_POINT__TIME_OUT_DURATION:
-				return timeOutDuration != TIME_OUT_DURATION_EDEFAULT;
+				return TIME_OUT_DURATION_EDEFAULT == null ? timeOutDuration != null : !TIME_OUT_DURATION_EDEFAULT.equals(timeOutDuration);
 			case EsbPackage.ABSTRACT_END_POINT__TIME_OUT_ACTION:
 				return timeOutAction != TIME_OUT_ACTION_EDEFAULT;
 			case EsbPackage.ABSTRACT_END_POINT__RETRY_ERROR_CODES:

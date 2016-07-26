@@ -196,12 +196,12 @@ public interface AbstractEndPoint extends EndPoint {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Time Out Duration</em>' attribute.
-	 * @see #setTimeOutDuration(long)
+	 * @see #setTimeOutDuration(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_TimeOutDuration()
 	 * @model default="0"
 	 * @generated
 	 */
-	long getTimeOutDuration();
+	String getTimeOutDuration();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTimeOutDuration <em>Time Out Duration</em>}' attribute.
@@ -211,7 +211,7 @@ public interface AbstractEndPoint extends EndPoint {
 	 * @see #getTimeOutDuration()
 	 * @generated
 	 */
-	void setTimeOutDuration(long value);
+	void setTimeOutDuration(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Time Out Action</b></em>' attribute.

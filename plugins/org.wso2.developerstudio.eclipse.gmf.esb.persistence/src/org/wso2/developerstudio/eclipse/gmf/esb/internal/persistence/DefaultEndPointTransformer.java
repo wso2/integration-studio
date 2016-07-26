@@ -92,22 +92,31 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 		doTransform(info, visualEP.getOutputConnector());
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) throws TransformerException {
 		Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
 		DefaultEndPoint visualEP = (DefaultEndPoint) subject;
-		Endpoint endPoint = (Endpoint) create(visualEP, visualEP.getEndPointName());
+		Endpoint endPoint;
+		try {
+			endPoint = (Endpoint) create(visualEP, visualEP.getEndPointName());
+		} catch (TransformerException e) {
+			throw new TransformerException(e);
+		}
 		endPoints.add(endPoint);
 
 		// Transform endpoint output data flow.
 		transformEndpointOutflow(info);
 	}
 
-	public DefaultEndpoint create(DefaultEndPoint visualEndPoint, String name) {
+	public DefaultEndpoint create(DefaultEndPoint visualEndPoint, String name) throws TransformerException {
 		DefaultEndpoint synapseEP = new DefaultEndpoint();
 		if (StringUtils.isNotBlank(name)) {
 			synapseEP.setName(name);
 		}
-		createAdvanceOptions(visualEndPoint, synapseEP);
+		try {
+			createAdvanceOptions(visualEndPoint, synapseEP);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 		return synapseEP;
 	}
 

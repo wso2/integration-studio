@@ -512,7 +512,6 @@ public class DataMapperDiagramModel {
 									addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
 									variablesArray.add(tempVar);
 									operatorElement.getPortVariableIndex().add(variableIndex);
-
 								}
 							}
 							if (outputAdjList.get(operator.getIndex()).size() <= dataMapperLink.getOutputIndex()) {
@@ -669,8 +668,8 @@ public class DataMapperDiagramModel {
 				getUniqueDirectId(operatorElement, dataMapperLink.getOutputIndex()), DMVariableType.INTERMEDIATE,
 				SchemaDataType.INT, variableIndex, index);
 		if (operator.getProperties().containsKey(TransformerConstants.PROPERTY_TYPE_TAG)) {
-			addVariableTypeToMap(tempVar.getName(), (SchemaDataType) operator
-					.getProperty(TransformerConstants.PROPERTY_TYPE_TAG));
+			addVariableTypeToMap(tempVar.getName(),
+					(SchemaDataType) operator.getProperty(TransformerConstants.PROPERTY_TYPE_TAG));
 		} else {
 			addVariableTypeToMap(tempVar.getName(), SchemaDataType.STRING);
 		}
@@ -850,6 +849,7 @@ public class DataMapperDiagramModel {
 	private void populateOutputVariablesDepthFirst(Output output) {
 		Stack<EObject> nodeStack = new Stack<>();
 		nodeStack.addAll(output.getTreeNode());
+		Map<String, String> outputInputElementMapping = new HashMap<>();
 		Stack<EObject> parentVariableStack = new Stack<EObject>();
 		while (!nodeStack.isEmpty()) {
 			EObject currentNode = nodeStack.pop();
@@ -897,14 +897,24 @@ public class DataMapperDiagramModel {
 								"INSTANTATIATE_" + operationIndex, operationIndex);
 						instantiateObjectOperator.addProperty(TransformerConstants.VARIABLE_TYPE,
 								SchemaDataType.OBJECT);
+						//This property is used to identify as a object of array elements 
+						instantiateObjectOperator.addProperty(TransformerConstants.INSTANTIATE_PARENT_VARIABLE,
+								SchemaDataType.ARRAY);
 						operationsList.add(instantiateObjectOperator);
 						outputAdjList.add(new ArrayList<Integer>());
 						outputAdjList.get(operationsList.size() - 1).add(variableIndex);
 						inputAdjList.add(new ArrayList<Integer>());
 					}
 				}
+				String mappedInputElementName;
+				if (SchemaDataType.ARRAY.equals(variableType)) {
+					mappedInputElementName = getMappedInputElement(currentTreeNode);
+					outputInputElementMapping.put(variableName, mappedInputElementName);
+				} else {
+					mappedInputElementName = getMappedInputArrayFromMap(outputInputElementMapping,variableName);
+				}
 				variablesArray.add(new DMVariable(variableName, currentNode.toString(), DMVariableType.OUTPUT,
-						variableType, variableIndex, parentVariableIndex));
+						variableType, variableIndex, parentVariableIndex,mappedInputElementName));
 				outputVariablesArray.add(variableIndex);
 				currentTreeNode.setIndex(variableIndex);
 				addVariableTypeToMap(variableName, variableType);
@@ -925,6 +935,26 @@ public class DataMapperDiagramModel {
 				ECollections.reverse(nodeList);
 			}
 		}
+	}
+
+	private String getMappedInputArrayFromMap(Map<String, String> outputInputElementMapping, String variableName) {
+		Set<String> outputArrayVariables = outputInputElementMapping.keySet();
+		for (String arrayName : outputArrayVariables) {
+			if(variableName.startsWith(arrayName)){
+				return outputInputElementMapping.get(arrayName);
+			}
+		}
+		return null;
+	}
+
+	private String getMappedInputElement(TreeNodeImpl currentTreeNode) {
+		EList<PropertyKeyValuePair> propertyList = currentTreeNode.getProperties();
+		for (PropertyKeyValuePair propertyKeyValuePair : propertyList) {
+			if ("arrayInterrelatedElement".equals(propertyKeyValuePair.getKey())) {
+				return propertyKeyValuePair.getValue();
+			}
+		}
+		return null;
 	}
 
 	private String getTreeNodeType(TreeNodeImpl currentTreeNode) {

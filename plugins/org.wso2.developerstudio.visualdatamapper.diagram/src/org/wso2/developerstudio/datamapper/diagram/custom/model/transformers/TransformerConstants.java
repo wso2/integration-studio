@@ -50,6 +50,8 @@ public class TransformerConstants {
 	public static final String GET_OPERATOR_INDEX = "getOperationIndex";
 	public static final String GLOBAL_VARIABLE_NAME = "globalVariableName";
 	public static final String GLOBAL_VARIABLE_DEFAULT_VALUE = "globalVariableValue";
+	public static final String MAPPED_INPUT_ELEMENT = "mapped.input.element";
+	public static final String INSTANTIATE_PARENT_VARIABLE = "instantiateParentVariable";
 
     
 }

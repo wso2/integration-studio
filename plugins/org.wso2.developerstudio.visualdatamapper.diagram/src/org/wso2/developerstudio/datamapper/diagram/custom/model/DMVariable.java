@@ -24,105 +24,128 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationU
  */
 public class DMVariable {
 
-    private String name;
-    private String id;
-    private int index = -1;
-    private boolean visited;
-    private DMVariableType type;
-    private SchemaDataType schemaVariableType;
-    private int parentVariableOrOperationIndex;
-    private int mostChildVariableIndex;
+	private String name;
+	private String id;
+	private int index = -1;
+	private boolean visited;
+	private DMVariableType type;
+	private SchemaDataType schemaVariableType;
+	private int parentVariableOrOperationIndex;
+	private int mostChildVariableIndex;
+	private String mappedInputVariableArrayElement;
 
-    public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index) {
-        this.name = name;
-        this.id = id;
-        this.schemaVariableType = schemaVariableType;
-        this.type = type;
-        this.index = index;
-        parentVariableOrOperationIndex = -1;
-    }
+	public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index,
+			int parentVariableIndex, String mappedInputVariableArrayElement) {
+		this.name = name;
+		this.id = id;
+		this.schemaVariableType = schemaVariableType;
+		this.type = type;
+		this.index = index;
+		this.parentVariableOrOperationIndex = parentVariableIndex;
+		this.setMappedInputVariableArrayElement(mappedInputVariableArrayElement);
+	}
 
-    public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index,
-            int parentVariableIndex) {
-        this.name = name;
-        this.id = id;
-        this.schemaVariableType = schemaVariableType;
-        this.type = type;
-        this.index = index;
-        parentVariableOrOperationIndex = parentVariableIndex;
-    }
+	public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index) {
+		this.name = name;
+		this.id = id;
+		this.schemaVariableType = schemaVariableType;
+		this.type = type;
+		this.index = index;
+		this.parentVariableOrOperationIndex = -1;
+		this.setMappedInputVariableArrayElement(null);
+	}
 
-    public String toString() {
-        return "( name = " + name + " , " + "id = " + id + " , " + "type = " + type + " )";
-    }
+	public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index,
+			int parentVariableIndex) {
+		this.name = name;
+		this.id = id;
+		this.schemaVariableType = schemaVariableType;
+		this.type = type;
+		this.index = index;
+		this.parentVariableOrOperationIndex = parentVariableIndex;
+		this.setMappedInputVariableArrayElement(null);
+	}
 
-    public String getName() {
-        return ScriptGenerationUtil.removeInvalidCharaters(name);
-    }
+	public String toString() {
+		return "( name = " + name + " , " + "id = " + id + " , " + "type = " + type + " )";
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return ScriptGenerationUtil.removeInvalidCharaters(name);
+	}
 
-    public String getId() {
-        return id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public int getIndex() {
-        return index;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setIndex(int index) {
-        this.index = index;
-    }
+	public int getIndex() {
+		return index;
+	}
 
-    public boolean isVisited() {
-        return visited;
-    }
+	public void setIndex(int index) {
+		this.index = index;
+	}
 
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
+	public boolean isVisited() {
+		return visited;
+	}
 
-    public DMVariableType getType() {
-        return type;
-    }
+	public void setVisited(boolean visited) {
+		this.visited = visited;
+	}
 
-    public void setType(DMVariableType type) {
-        this.type = type;
-    }
+	public DMVariableType getType() {
+		return type;
+	}
 
-    public SchemaDataType getSchemaVariableType() {
-        return schemaVariableType;
-    }
+	public void setType(DMVariableType type) {
+		this.type = type;
+	}
 
-    public void setSchemaVariableType(SchemaDataType schemaVariableType) {
-        this.schemaVariableType = schemaVariableType;
-    }
+	public SchemaDataType getSchemaVariableType() {
+		return schemaVariableType;
+	}
 
-    /**
-     * This method will return it's parent variable index if it is an input type or output type variable.
-     * It will return operation index if it is an intermediate variable
-     * 
-     * @return
-     */
-    public int getparentVariableOrOperationIndex() {
-        return parentVariableOrOperationIndex;
-    }
+	public void setSchemaVariableType(SchemaDataType schemaVariableType) {
+		this.schemaVariableType = schemaVariableType;
+	}
 
-    public void setparentVariableOrOperationIndex(int parentVariable) {
-        this.parentVariableOrOperationIndex = parentVariable;
-    }
-    
-    public int getMostChildVariableIndex() {
-        return mostChildVariableIndex;
-    }
+	/**
+	 * This method will return it's parent variable index if it is an input type
+	 * or output type variable. It will return operation index if it is an
+	 * intermediate variable
+	 * 
+	 * @return
+	 */
+	public int getparentVariableOrOperationIndex() {
+		return parentVariableOrOperationIndex;
+	}
 
-    public void setMostChildVariableIndex(int mostChildVariableIndex) {
-        this.mostChildVariableIndex = mostChildVariableIndex;
-    }
+	public void setparentVariableOrOperationIndex(int parentVariable) {
+		this.parentVariableOrOperationIndex = parentVariable;
+	}
+
+	public int getMostChildVariableIndex() {
+		return mostChildVariableIndex;
+	}
+
+	public void setMostChildVariableIndex(int mostChildVariableIndex) {
+		this.mostChildVariableIndex = mostChildVariableIndex;
+	}
+
+	public String getMappedInputVariableArrayElement() {
+		return mappedInputVariableArrayElement;
+	}
+
+	public void setMappedInputVariableArrayElement(String mappedInputVariableArrayElement) {
+		this.mappedInputVariableArrayElement = mappedInputVariableArrayElement;
+	}
 }

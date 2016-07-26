@@ -79,7 +79,15 @@ public class ScriptGenerationUtil {
 						}
 						int forLoopIndex = outputArrayVariableForLoop.get(variableName);
 						ForLoopBean tempForLoop = forLoopBeanList.get(forLoopIndex);
-						String iterateName = getForLoopIterateName(tempForLoop, forLoopBeanList, true);
+						String iterateName;
+						if (variable.getMappedInputVariableArrayElement() != null) {
+							iterateName = getForLoopIterateName(
+									getForLoopFromMappedVariableArrayName(
+											variable.getMappedInputVariableArrayElement(), forLoopBeanList),
+									forLoopBeanList, true);
+						} else {
+							iterateName = getForLoopIterateName(tempForLoop, forLoopBeanList, true);
+						}
 						if (iterateName.isEmpty()) {
 							iterateName = "0";
 						}
@@ -118,7 +126,16 @@ public class ScriptGenerationUtil {
 						}
 						int forLoopIndex = outputArrayVariableForLoop.get(variableName);
 						ForLoopBean tempForLoop = forLoopBeanList.get(forLoopIndex);
-						String iterateName = getForLoopIterateName(tempForLoop, forLoopBeanList, true);
+						String iterateName;
+						if (variable.getMappedInputVariableArrayElement() != null) {
+							iterateName = getForLoopIterateName(
+									getForLoopFromMappedVariableArrayName(
+											variable.getMappedInputVariableArrayElement(), forLoopBeanList),
+									forLoopBeanList, true);
+						} else {
+							iterateName = getForLoopIterateName(tempForLoop, forLoopBeanList, true);
+						}
+
 						if (iterateName.isEmpty()) {
 							iterateName = "0";
 						}
@@ -193,6 +210,16 @@ public class ScriptGenerationUtil {
 			}
 		}
 		return prettyVariableName;
+	}
+
+	public static ForLoopBean getForLoopFromMappedVariableArrayName(String mappedInputVariableArrayElement,
+			List<ForLoopBean> forLoopBeanList) {
+		for (ForLoopBean forLoopBean : forLoopBeanList) {
+			if(forLoopBean.getVariableName().equals("input"+removeInvalidCharaters(mappedInputVariableArrayElement))){
+				return forLoopBean;
+			}
+		}
+		throw new IllegalArgumentException(mappedInputVariableArrayElement + " could not be found in a for loop");
 	}
 
 	private static String getValidNextName(String nextName) {

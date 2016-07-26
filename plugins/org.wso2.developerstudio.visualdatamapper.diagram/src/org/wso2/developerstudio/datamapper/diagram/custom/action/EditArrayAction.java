@@ -84,6 +84,7 @@ public class EditArrayAction extends AbstractActionHandler {
 	private static final String STRING = "string";
 	private static final String FALSE = "false";
 	private static final String JSON_SCHEMA_NAMESPACES = "namespaces";
+	private static final String JSON_SCHEMA_OBJECT = "object";
 	private static final String JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT ="arrayInterrelatedElement";
 
 	private String title = null;
@@ -372,6 +373,16 @@ public class EditArrayAction extends AbstractActionHandler {
 			((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(editComd);
 		}
 	}
+	
+	private boolean checkForChildren(TreeNode node) {
+		EList<TreeNode> nodeList = node.getNode();
+		if(nodeList.size() >0){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
 
 	/**
 	 * opens the dilaog
@@ -448,7 +459,15 @@ public class EditArrayAction extends AbstractActionHandler {
 			// Sets the values for items field which is used for serializing the
 			// array
 			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_ID, editTypeDialog.getID() + "/0");
+			//If the node has children, then set the item type as object
+			if(checkForChildren(selectedNode)){
+				valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, JSON_SCHEMA_OBJECT);
+			}else if(StringUtils.isNotEmpty(editTypeDialog.getValue())){
+			//Else if the array is a primitive type array then set the value as the item type	
 			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, editTypeDialog.getValue());
+			}else{
+				valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, "");
+			}
 			
 			// sets the value type if item holds a value
 			if (StringUtils.isNotEmpty(editTypeDialog.getValue())) {

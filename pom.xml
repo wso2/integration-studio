@@ -100,7 +100,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/other/p2/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/other/p2/</url>
             <layout>p2</layout>
         </repository>       <repository>
             <releases>
@@ -108,8 +108,8 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>DevS-Deps-Luna-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/eclipse/mars/p2/</url>
+            <id>DevS-Deps-Mars-p2-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/mars/p2/</url>
             <layout>p2</layout>
         </repository>
        	<repository>
@@ -119,7 +119,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-releases-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
 	<repository>
@@ -129,7 +129,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-releases-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/platform-bundles/releases/4.1.0-201606031446/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/releases/4.1.0-201606031446/</url>
             <layout>p2</layout>
         </repository>
 	<repository>
@@ -139,7 +139,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-updates-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -149,7 +149,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>Additional-Tools-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/additional-tools/releases/p2/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.0.0/additional-tools/releases/p2/</url>
             <layout>p2</layout>
         </repository>
         <repository>

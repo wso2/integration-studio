@@ -84,7 +84,7 @@ public class ESBSolutionProjectModel extends ESBProjectModel {
 			if (data.toString() != null && !data.toString().isEmpty()) {
 				setRegistryProjectName(data.toString() + "Registry");
 				setConnectorExporterProjectName(data.toString() + "ConnectorExporter");
-				setCompositeApplicationProjectName(data.toString() + "CompositeAppllication");
+				setCompositeApplicationProjectName(data.toString() + "CompositeApplication");
 			} else {
 				setRegistryProjectName("");
 				setConnectorExporterProjectName("");

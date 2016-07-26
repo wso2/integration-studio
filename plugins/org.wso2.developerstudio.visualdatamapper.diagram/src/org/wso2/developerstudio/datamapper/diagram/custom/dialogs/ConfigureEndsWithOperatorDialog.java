@@ -25,13 +25,13 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.EndsWith;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
@@ -57,7 +57,7 @@ public class ConfigureEndsWithOperatorDialog extends AbstractConfigureOperatorDi
 	public void create() {
 		super.create();
 		setTitle("Configure Ends With Operator");
-		setMessage("Set ends with operator properties", IMessageProvider.INFORMATION);
+		setMessage("Configure Pattern : {$Pattern}" + " to get it from a linked element", IMessageProvider.INFORMATION);
 	}
 
 	protected void configureShell(Shell newShell) {
@@ -76,19 +76,20 @@ public class ConfigureEndsWithOperatorDialog extends AbstractConfigureOperatorDi
 		Label concatDelimiterLabel = new Label(container, SWT.NULL);
 		concatDelimiterLabel.setText("String Pattern : ");
 
-		final Text patternText = new Text(container, SWT.BORDER);
-		patternText.setLayoutData(dataPropertyConfigText);
+		final Combo comboDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER);
+		comboDropDown.add("{$Pattern}");
+		comboDropDown.setLayoutData(dataPropertyConfigText);
 		if (endsWithImpl.getPattern() != null) {
-			patternText.setText(endsWithImpl.getPattern());
+			comboDropDown.setText(endsWithImpl.getPattern());
 		} else {
-			patternText.setText("{$Pattern}");
+			comboDropDown.setText("{$Pattern}");
 		}
-		pattern = patternText.getText();
+		pattern = comboDropDown.getText();
 
-		patternText.addListener(SWT.Modify, new Listener() {
+		comboDropDown.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {
 				try {
-					pattern = new String(patternText.getText());
+					pattern = new String(comboDropDown.getText());
 					if (!StringUtils.isEmpty(pattern)) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();

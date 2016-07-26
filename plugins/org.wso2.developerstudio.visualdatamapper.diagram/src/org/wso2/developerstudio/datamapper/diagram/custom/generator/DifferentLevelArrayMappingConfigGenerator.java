@@ -289,24 +289,42 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				if (indexOfMostInnerForLoopBean >= 0) {
 					/*
 					 * Instantiate operation of array type variables should go
-					 * to previous object/array for loop bean
+					 * to previous object/array for loop bean and preference
+					 * should go for mapped input variable for loop for the
+					 * array object element instantiation
 					 */
-					if (DataMapperOperatorType.INSTANTIATE.equals(mappingOperation.getOperation().getOperatorType())
-							&& SchemaDataType.ARRAY.equals(
-									mappingOperation.getOperation().getProperty(TransformerConstants.VARIABLE_TYPE))) {
-						String variableName = mappingOperation.getOutputVariables().get(0).getName();
-						int lastIndex = variableName.lastIndexOf(".");
-						if (lastIndex < 0) {
-							indexOfMostInnerForLoopBean =0;
-						} else {
-							variableName = variableName.substring(0, lastIndex);
-							if (outputArrayVariableForLoopMap.containsKey(variableName)) {
-								indexOfMostInnerForLoopBean = outputArrayVariableForLoopMap.get(variableName);
-							} else if (outputObjectVariableForLoopMap.containsKey(variableName)) {
-								indexOfMostInnerForLoopBean = outputObjectVariableForLoopMap.get(variableName);
+					if (DataMapperOperatorType.INSTANTIATE.equals(mappingOperation.getOperation().getOperatorType())) {
+						if (SchemaDataType.ARRAY.equals(
+								mappingOperation.getOperation().getProperty(TransformerConstants.VARIABLE_TYPE))) {
+							String variableName = mappingOperation.getOutputVariables().get(0).getName();
+							int lastSeperatorIndex = variableName.lastIndexOf(".");
+							if (lastSeperatorIndex < 0) {
+								indexOfMostInnerForLoopBean = 0;
 							} else {
-								log.warn("Variable map doesn't contain variable : " + variableName);
+								variableName = variableName.substring(0, lastSeperatorIndex);
+								if (outputArrayVariableForLoopMap.containsKey(variableName)) {
+									indexOfMostInnerForLoopBean = outputArrayVariableForLoopMap.get(variableName);
+								} else if (outputObjectVariableForLoopMap.containsKey(variableName)) {
+									indexOfMostInnerForLoopBean = outputObjectVariableForLoopMap.get(variableName);
+								} else {
+									log.warn("Variable map doesn't contain variable : " + variableName);
+								}
 							}
+						} else if (SchemaDataType.OBJECT
+								.equals(mappingOperation.getOperation().getProperty(TransformerConstants.VARIABLE_TYPE))
+								&& mappingOperation.getOperation().getProperties()
+										.containsKey(TransformerConstants.INSTANTIATE_PARENT_VARIABLE)
+								&& SchemaDataType.ARRAY.equals(mappingOperation.getOperation()
+										.getProperty(TransformerConstants.INSTANTIATE_PARENT_VARIABLE))
+								&& mappingOperation.getOutputVariables().get(0)
+										.getMappedInputVariableArrayElement() != null) {
+							// Object instantiate operation of a array element
+							mappingOperation.setDoNotChangePosition(true);
+							String mappedInputVariableArrayElement = mappingOperation.getOutputVariables().get(0)
+									.getMappedInputVariableArrayElement();
+							indexOfMostInnerForLoopBean = forLoopBeanList
+									.indexOf(ScriptGenerationUtil.getForLoopFromMappedVariableArrayName(
+											mappedInputVariableArrayElement, forLoopBeanList));
 						}
 					}
 					if (indexOfMostInnerForLoopBean < 0) {
@@ -535,7 +553,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 					outputMappedForLoop = outputArrayVariableForLoopMap.get(mostChildArrayElement);
 				}
 				ForLoopBean outputMappedForLoopBean;
-				if (outputMappedForLoop >= 0) {
+				if (outputMappedForLoop >= 0 && !mappingOperation.isDoNotChangePosition()) {
 					outputMappedForLoopBean = getForLoopBeanList().get(outputMappedForLoop);
 					/*
 					 * If this both output variable and mapping in the same for

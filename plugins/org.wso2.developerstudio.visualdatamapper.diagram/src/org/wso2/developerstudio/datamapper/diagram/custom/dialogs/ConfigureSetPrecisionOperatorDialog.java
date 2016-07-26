@@ -25,13 +25,13 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.SetPrecision;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
@@ -57,7 +57,8 @@ public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperat
 	public void create() {
 		super.create();
 		setTitle("Configure Set Precision Operator");
-		setMessage("Set set precision operator properties", IMessageProvider.INFORMATION);
+		setMessage("Configure Number of Decimals(Number) : {$NoOfDigits}"
+				+ " to get the decimal count as a input from a link", IMessageProvider.INFORMATION);
 	}
 
 	protected void configureShell(Shell newShell) {
@@ -76,19 +77,20 @@ public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperat
 		Label concatDelimiterLabel = new Label(container, SWT.NULL);
 		concatDelimiterLabel.setText("Number of Decimals : ");
 
-		final Text delimiterText = new Text(container, SWT.BORDER);
-		delimiterText.setLayoutData(dataPropertyConfigText);
+		final Combo comboDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER);
+		comboDropDown.add("{$NoOfDigits}");
+		comboDropDown.setLayoutData(dataPropertyConfigText);
 		if (!StringUtils.isEmpty(setPrecisionImpl.getNumberOfDigits())) {
-			delimiterText.setText(setPrecisionImpl.getNumberOfDigits() + "");
+			comboDropDown.setText(setPrecisionImpl.getNumberOfDigits() + "");
 		} else {
-			delimiterText.setText("{$NoOfDigits}");
+			comboDropDown.setText("{$NoOfDigits}");
 		}
-		numberOfDecimals = delimiterText.getText();
+		numberOfDecimals = comboDropDown.getText();
 
-		delimiterText.addListener(SWT.Modify, new Listener() {
+		comboDropDown.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {
 				try {
-					numberOfDecimals = new String(delimiterText.getText());
+					numberOfDecimals = new String(comboDropDown.getText());
 					if (!StringUtils.isEmpty(numberOfDecimals)) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();
@@ -120,6 +122,13 @@ public class ConfigureSetPrecisionOperatorDialog extends AbstractConfigureOperat
 		boolean isEnabled = false;
 		Button okButton = getButton(IDialogConstants.OK_ID);
 		if (!StringUtils.isEmpty(numberOfDecimals)) {
+			if (!numberOfDecimals.startsWith("{$")) {
+				try {
+					Integer.parseInt(numberOfDecimals);
+				} catch (NumberFormatException e) {
+					throw new IllegalArgumentException("Start index should be a integer. Found :" + numberOfDecimals);
+				}
+			}
 			isEnabled = true;
 		}
 		if (okButton != null) {

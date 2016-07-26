@@ -45,11 +45,14 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
 				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			@SuppressWarnings("unchecked")
+			if (inputVariables.get(0) == null) {
+				throw new IllegalArgumentException("Substring operator needs input string value to execute");
+			}
+
 			String startIndex = (String) operator.getProperty(TransformerConstants.START_INDEX);
 			String length = (String) operator.getProperty(TransformerConstants.LENGTH_TAG);
 			String startValue, lengthValue;
-
+			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 0) {
 				operationBuilder
@@ -58,31 +61,23 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 								outputArrayVariableForLoop) + ")" + JS_TO_STRING + ".substring(");
 			}
 
-			if (startIndex.startsWith("{$") && inputVariables.size() > 1) {
+			if (startIndex.startsWith("{$")) {
 				// Start Index variable position index is 1
-				validateStartIndexInputValue(inputVariables.get(1));
-				startValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
-						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop);
-				if (length.startsWith("{$") && inputVariables.size() > 2) {
-					lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
+				if (inputVariables.size() > 1 && inputVariables.get(1) != null) {
+					startValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
 							variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
 							outputArrayVariableForLoop);
 				} else {
-					validateLengthInputValue(length);
-					lengthValue = length;
+					throw new IllegalArgumentException(
+							"Substring operator needs input element" + " or configured value to Start Index.");
 				}
+				lengthValue = getLengthValue(inputVariables, variableTypeMap, forLoopBeanList,
+						outputArrayVariableForLoop, length, tempParentForLoopBeanStack);
 
 			} else {
-				validateStartIndexInputValue(startIndex);
 				startValue = startIndex;
-				if (length.startsWith("{$") && inputVariables.size() > 2) {
-					// Length variable position index is 2
-					lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
-							variableTypeMap, tempParentForLoopBeanStack, true, null, null);
-				} else {
-					validateLengthInputValue(length);
-					lengthValue = length;
-				}
+				lengthValue = getLengthValue(inputVariables, variableTypeMap, forLoopBeanList,
+						outputArrayVariableForLoop, length, tempParentForLoopBeanStack);
 			}
 
 			operationBuilder.append(startValue + "," + startValue + "+" + lengthValue + ")");
@@ -94,22 +89,22 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 		return operationBuilder.toString();
 	}
 
-	private void validateStartIndexInputValue(DMVariable dmVariable) {
-		if(dmVariable == null){
-			throw new IllegalArgumentException("Input value for Start Index in Substring Opeartor is not defined");
-		}
-	}
+	private String getLengthValue(List<DMVariable> inputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop, String length,
+			Stack<ForLoopBean> tempParentForLoopBeanStack) throws DataMapperException {
+		String lengthValue;
+		if (length.startsWith("{$")) {
+			if (inputVariables.size() > 2 && inputVariables.get(2) != null) {
+				lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
+						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop);
+			} else {
+				throw new IllegalArgumentException(
+						"Substring operator needs input element" + " or configured value to Length.");
+			}
 
-	private void validateLengthInputValue(String length) {
-		if(length.startsWith("{$")){
-			throw new IllegalArgumentException("Input value for Length in Substring Opeartor is not defined");
+		} else {
+			lengthValue = length;
 		}
+		return lengthValue;
 	}
-	
-	private void validateStartIndexInputValue(String startValue) {
-		if(startValue.startsWith("{$")){
-			throw new IllegalArgumentException("Input value for Start Index in Substring Opeartor is not defined");
-		}
-	}
-
 }

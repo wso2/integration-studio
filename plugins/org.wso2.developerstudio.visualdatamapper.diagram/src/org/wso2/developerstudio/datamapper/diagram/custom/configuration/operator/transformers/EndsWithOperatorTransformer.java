@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import org.apache.commons.lang.StringUtils;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
@@ -45,8 +46,11 @@ public class EndsWithOperatorTransformer extends AbstractDMOperatorTransformer {
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
 				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
-			@SuppressWarnings("unchecked")
+			if (inputVariables.get(0) == null) {
+				throw new IllegalArgumentException("EndsWith operator needs input string value to execute");
+			}
 			String inputMethod = (String) operator.getProperty(TransformerConstants.PATTERN_TAG);
+			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 0) {
 				operationBuilder
@@ -62,6 +66,11 @@ public class EndsWithOperatorTransformer extends AbstractDMOperatorTransformer {
 									outputArrayVariableForLoop)
 							+ ")");
 				} else {
+					if (inputMethod.startsWith("{$")
+							|| StringUtils.isEmpty((String) operator.getProperty(TransformerConstants.PATTERN_TAG))) {
+						throw new IllegalArgumentException("EndsWith operator needs pattern to execute."
+								+ " Link element to pattern connector or configure pattern string");
+					}
 					operationBuilder.append(JS_TO_STRING + ".endsWith(\""
 							+ operator.getProperty(TransformerConstants.PATTERN_TAG) + "\")");
 				}

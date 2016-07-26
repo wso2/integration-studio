@@ -25,20 +25,17 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.Match;
 import org.wso2.developerstudio.datamapper.Replace;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.MatchEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ReplaceEditPart;
-import org.wso2.developerstudio.datamapper.impl.MatchImpl;
 import org.wso2.developerstudio.datamapper.impl.ReplaceImpl;
 
 public class ConfigureReplaceOperatorDialog extends AbstractConfigureOperatorDialog {
@@ -61,7 +58,10 @@ public class ConfigureReplaceOperatorDialog extends AbstractConfigureOperatorDia
 	public void create() {
 		super.create();
 		setTitle("Configure Replace Operator");
-		setMessage("Set replace operator properties", IMessageProvider.INFORMATION);
+		setMessage(
+				"Configure Target : {$Target}" + " to get it from a linked element" + "\n"
+						+ "Configure String Replace : {$Replace}" + " to get it from a linked element",
+				IMessageProvider.INFORMATION);
 	}
 
 	protected void configureShell(Shell newShell) {
@@ -80,19 +80,20 @@ public class ConfigureReplaceOperatorDialog extends AbstractConfigureOperatorDia
 		Label matchDelimiterLabel = new Label(container, SWT.NULL);
 		matchDelimiterLabel.setText("String Target : ");
 
-		final Text targetText = new Text(container, SWT.BORDER);
-		targetText.setLayoutData(dataPropertyConfigText);
+		final Combo comboDropDownTargetText = new Combo(container, SWT.DROP_DOWN | SWT.BORDER);
+		comboDropDownTargetText.add("{$Target}");
+		comboDropDownTargetText.setLayoutData(dataPropertyConfigText);
 		if (replaceImpl.getTarget() != null) {
-			targetText.setText(replaceImpl.getTarget());
+			comboDropDownTargetText.setText(replaceImpl.getTarget());
 		} else {
-			targetText.setText("{$Target}");
+			comboDropDownTargetText.setText("{$Target}");
 		}
-		target = targetText.getText();
+		target = comboDropDownTargetText.getText();
 
-		targetText.addListener(SWT.Modify, new Listener() {
+		comboDropDownTargetText.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {
 				try {
-					target = new String(targetText.getText());
+					target = new String(comboDropDownTargetText.getText());
 					if (!StringUtils.isEmpty(target)) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();
@@ -108,19 +109,20 @@ public class ConfigureReplaceOperatorDialog extends AbstractConfigureOperatorDia
 		Label matchReplaceLabel = new Label(container, SWT.NULL);
 		matchReplaceLabel.setText("String Replace : ");
 
-		final Text replaceText = new Text(container, SWT.BORDER);
-		replaceText.setLayoutData(dataPropertyConfigText);
+		final Combo comboDropDownReplaceText = new Combo(container, SWT.DROP_DOWN | SWT.BORDER);
+		comboDropDownReplaceText.add("{$Replace}");
+		comboDropDownReplaceText.setLayoutData(dataPropertyConfigText);
 		if (replaceImpl.getReplaceString() != null) {
-			replaceText.setText(replaceImpl.getReplaceString());
+			comboDropDownReplaceText.setText(replaceImpl.getReplaceString());
 		} else {
-			replaceText.setText("{$ReplaceWith}");
+			comboDropDownReplaceText.setText("{$Replace}");
 		}
-		replaceWith = replaceText.getText();
+		replaceWith = comboDropDownReplaceText.getText();
 
-		replaceText.addListener(SWT.Modify, new Listener() {
+		comboDropDownReplaceText.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {
 				try {
-					replaceWith = new String(replaceText.getText());
+					replaceWith = new String(comboDropDownReplaceText.getText());
 					if (!(StringUtils.isEmpty(target) && StringUtils.isEmpty(replaceWith))) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();

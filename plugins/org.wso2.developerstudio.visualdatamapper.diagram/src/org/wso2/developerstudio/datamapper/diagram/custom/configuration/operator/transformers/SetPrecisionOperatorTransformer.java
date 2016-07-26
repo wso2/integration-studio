@@ -46,6 +46,9 @@ public class SetPrecisionOperatorTransformer extends AbstractDMOperatorTransform
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
 				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+			if (inputVariables.get(0) == null) {
+				throw new IllegalArgumentException("SetPrecision operator needs input interger value");
+			}
 			if (inputVariables.size() == 0) {
 				operationBuilder.append(CONSTANT_ADDITIVE);
 			} else {

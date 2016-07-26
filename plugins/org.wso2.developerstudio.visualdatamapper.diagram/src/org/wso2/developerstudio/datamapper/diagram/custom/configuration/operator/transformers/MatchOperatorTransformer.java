@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import org.apache.commons.lang.StringUtils;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
@@ -45,6 +46,9 @@ public class MatchOperatorTransformer extends AbstractDMOperatorTransformer {
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
 				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+			if (inputVariables.get(0) == null) {
+				throw new IllegalArgumentException("Match operator needs input string value to execute");
+			}
 			String customInput = (String) operator.getProperty(TransformerConstants.PATTERN_TAG);
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
@@ -60,6 +64,10 @@ public class MatchOperatorTransformer extends AbstractDMOperatorTransformer {
 							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
 							outputArrayVariableForLoop));
 				} else {
+					if (customInput.startsWith("{$") || StringUtils.isEmpty(customInput)) {
+						throw new IllegalArgumentException("Match operator needs pattern to execute."
+								+ " Link element to pattern connector or configure pattern string");
+					}
 					operationBuilder.append(customInput);
 				}
 			}

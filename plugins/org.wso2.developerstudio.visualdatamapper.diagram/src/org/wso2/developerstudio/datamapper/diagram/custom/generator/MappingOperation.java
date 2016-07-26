@@ -33,6 +33,7 @@ public class MappingOperation {
 	private DMOperation operation;
 	private int index;
 	private Set<String> optionalElementList;
+	private boolean doNotChangePosition;
 
 	public MappingOperation(List<DMVariable> inputVariables, List<DMVariable> outputVariables, DMOperation operation,
 			int index) {
@@ -81,5 +82,13 @@ public class MappingOperation {
 
 	public void setOptionalElementList(Set<String> optionalElementList) {
 		this.optionalElementList = optionalElementList;
+	}
+
+	public boolean isDoNotChangePosition() {
+		return doNotChangePosition;
+	}
+
+	public void setDoNotChangePosition(boolean doNotChangePosition) {
+		this.doNotChangePosition = doNotChangePosition;
 	}
 }

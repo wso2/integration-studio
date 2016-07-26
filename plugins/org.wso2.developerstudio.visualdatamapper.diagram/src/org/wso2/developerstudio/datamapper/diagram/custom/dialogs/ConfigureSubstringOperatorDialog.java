@@ -15,12 +15,7 @@
  */
 package org.wso2.developerstudio.datamapper.diagram.custom.dialogs;
 
-import java.util.ArrayList;
-
 import org.apache.commons.lang.StringUtils;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
@@ -30,24 +25,17 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
-import org.wso2.developerstudio.datamapper.Add;
-import org.wso2.developerstudio.datamapper.DataMapperFactory;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
-import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
 import org.wso2.developerstudio.datamapper.Substring;
-import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.EndsWithEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRectangle;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.SubstringEditPart;
-import org.wso2.developerstudio.datamapper.impl.AddImpl;
-import org.wso2.developerstudio.datamapper.impl.EndsWithImpl;
 import org.wso2.developerstudio.datamapper.impl.SubstringImpl;
 
 public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorDialog {
@@ -56,7 +44,6 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 	private String startIndex;
 	private String length;
 	private TransactionalEditingDomain editingDomain;
-	private ArrayList<OperatorLeftConnector> caseOutputConnectors = new ArrayList<OperatorLeftConnector>();
 	private SubstringImpl substringImpl;
 	private EditPart editPart;
 
@@ -72,7 +59,10 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 	public void create() {
 		super.create();
 		setTitle("Configure Substring Operator");
-		setMessage("Set substring operator properties", IMessageProvider.INFORMATION);
+		setMessage(
+				"Configure Start Index(Number) : {$Index}" + " to get it from a linked element" + "\n"
+						+ "Configure Length(Number) : {$Length}" + " to get it from a linked element",
+				IMessageProvider.INFORMATION);
 	}
 
 	protected void configureShell(Shell newShell) {
@@ -91,14 +81,15 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 		Label startIndexLabel = new Label(container, SWT.NULL);
 		startIndexLabel.setText("Start Index : ");
 
-		final Text startIndexText = new Text(container, SWT.BORDER);
-		startIndexText.setLayoutData(dataPropertyConfigText);
-		startIndexText.setText(EMPTY_STRING + substringImpl.getStartIndex());
-		startIndex = startIndexText.getText();
-		startIndexText.addListener(SWT.Modify, new Listener() {
+		final Combo comboDropDownIndexText = new Combo(container, SWT.DROP_DOWN | SWT.BORDER);
+		comboDropDownIndexText.add("{$Index}");
+		comboDropDownIndexText.setLayoutData(dataPropertyConfigText);
+		comboDropDownIndexText.setText(EMPTY_STRING + substringImpl.getStartIndex());
+		startIndex = comboDropDownIndexText.getText();
+		comboDropDownIndexText.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {
 				try {
-					startIndex = new String(startIndexText.getText());
+					startIndex = new String(comboDropDownIndexText.getText());
 					if (!(StringUtils.isEmpty(startIndex))) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();
@@ -114,14 +105,15 @@ public class ConfigureSubstringOperatorDialog extends AbstractConfigureOperatorD
 		Label endIndexLabel = new Label(container, SWT.NULL);
 		endIndexLabel.setText("Length : ");
 
-		final Text endIndexText = new Text(container, SWT.BORDER);
-		endIndexText.setLayoutData(dataPropertyConfigText);
-		endIndexText.setText(EMPTY_STRING + substringImpl.getEndIndex());
-		length = endIndexText.getText();
-		endIndexText.addListener(SWT.Modify, new Listener() {
+		final Combo comboDropDownLengthText = new Combo(container, SWT.DROP_DOWN | SWT.BORDER);
+		comboDropDownLengthText.add("{$Length}");
+		comboDropDownLengthText.setLayoutData(dataPropertyConfigText);
+		comboDropDownLengthText.setText(EMPTY_STRING + substringImpl.getEndIndex());
+		length = comboDropDownLengthText.getText();
+		comboDropDownLengthText.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {
 				try {
-					length = new String(endIndexText.getText());
+					length = new String(comboDropDownLengthText.getText());
 					if (!(StringUtils.isEmpty(length))) {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						validate();

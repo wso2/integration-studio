@@ -57,7 +57,7 @@ public class EditFieldAction extends AbstractActionHandler {
 	private EditPart selectedEP;
 	private static final String RENAME_ACTION_ID = "rename-node-action-id"; //$NON-NLS-1$
 	private static final String RENAME_FIELD = Messages.EditActions_editField;
-
+	private static final String DIALOG_TITLE = "Edit Field";
 	private static final String JSON_SCHEMA_REQUIRED = "required";
 	private static final String JSON_SCHEMA_SCHEMA_VALUE = "$schema";
 	private static final String JSON_SCHEMA_ID = "id";
@@ -309,6 +309,7 @@ public class EditFieldAction extends AbstractActionHandler {
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, null, null,
 				null, null,isNullable,null,false);
+		editTypeDialog.setTitle(DIALOG_TITLE);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {

@@ -63,7 +63,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 	private EditPart selectedEP;
 	private static final String RENAME_ACTION_ID = "rename-field-action-id"; //$NON-NLS-1$
 	private static final String RENAME_FIELD = Messages.EditActions_editAttribute;
-
+	private static final String DIALOG_TITLE = "Edit Attribute";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String JSON_SCHEMA_TITLE = "title";
@@ -315,6 +315,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, null, null, null, null,
 				isNullable,null,false);
+		editTypeDialog.setTitle(DIALOG_TITLE);
 		editTypeDialog.open();
 
 		if (editTypeDialog.getOkValue()) {

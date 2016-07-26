@@ -126,7 +126,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         IResource resource = root.findMember(new Path(containerName));
         if (!resource.exists() || !(resource instanceof IContainer)) {
-            humanTaskWizardUtil.throwCoreException("Container \"" + containerName + "\" does not exist.");
+            humanTaskWizardUtil.throwCoreException("Container \"" + containerName + "\" does not exist.",null);
         }
         IContainer container = (IContainer) resource;
         final IFile file = container.getFile(new Path(fileName));
@@ -143,7 +143,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             IFile memberFile = (IFile) member;
             if (memberFile != null) {
                 if (memberFile.getFileExtension().equals("ht")) {
-                    humanTaskWizardUtil.throwCoreException("An artifact must contain only one human task file");
+                    humanTaskWizardUtil.throwCoreException("An artifact must contain only one human task file",null);
                 }
             }
         }
@@ -159,7 +159,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
             orgSchemaStream = humanTaskWizardUtil.openOrgSchemaStream();
             pomStream = humanTaskWizardUtil.openPomStream(containerName);
             if (file.exists()) {
-                humanTaskWizardUtil.throwCoreException("A file with the same name already exists");
+                humanTaskWizardUtil.throwCoreException("A file with the same name already exists",null);
             } else {
                 file.create(stream, true, monitor);
                 wsdlfile.create(wsdlStream, true, monitor);

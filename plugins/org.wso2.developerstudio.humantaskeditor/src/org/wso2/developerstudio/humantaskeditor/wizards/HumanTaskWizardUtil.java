@@ -232,13 +232,13 @@ public class HumanTaskWizardUtil {
             transformer.transform(source, result);
             xmlString = stringWriter.toString();
         } catch (ParserConfigurationException | SAXException pce) {
-            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_PARSING_XML);
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_PARSING_XML,pce);
         } catch (IOException ioe) {
-            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_FILE_IO);
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_FILE_IO,ioe);
         } catch (TransformerConfigurationException e) {
-            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORM_CONFIG);
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORM_CONFIG,e);
         } catch (TransformerException e) {
-            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT);
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT,e);
         }
         return xmlString;
     }
@@ -273,19 +273,19 @@ public class HumanTaskWizardUtil {
             transformer.transform(source, result);
             xmlString = stringWriter.toString();
         } catch (ParserConfigurationException | SAXException pce) {
-            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_PARSING_XML);
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_PARSING_XML,pce);
         } catch (IOException ioe) {
-            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_FILE_IO);
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_FILE_IO,ioe);
         } catch (TransformerConfigurationException e) {
-            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORM_CONFIG);
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORM_CONFIG,e);
         } catch (TransformerException e) {
-            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT);
+            throwCoreException(HumantaskEditorConstants.EXCEPTION_OCCURED_IN_TRANSFORMING_XML_TO_TEXT,e);
         }
         return xmlString;
     }
     
-    public void throwCoreException(String message) throws CoreException {
-        IStatus status = new Status(IStatus.ERROR, HumantaskEditorConstants.PLUGIN_ID, IStatus.OK, message, null);
+    public void throwCoreException(String message,Throwable exception) throws CoreException {
+        IStatus status = new Status(IStatus.ERROR, HumantaskEditorConstants.PLUGIN_ID, IStatus.OK, message, exception);
         throw new CoreException(status);
     }
 

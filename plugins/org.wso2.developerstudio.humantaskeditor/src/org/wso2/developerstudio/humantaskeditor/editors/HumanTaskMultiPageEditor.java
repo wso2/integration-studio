@@ -63,7 +63,6 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
         super();
         editorContentFunction = new EditorContentFunction();
         ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
-
     }
 
     /**

@@ -142,6 +142,6 @@ public class HumantaskEditorConstants {
 
     public static final String HTEDITOR_HELP_NAME = "hteditor";
 
-    public static final String BASE_FOLDER_NAME = "htcontent";
+    public static final String BASE_FOLDER_NAME = "humantaskcontent";
 
 }

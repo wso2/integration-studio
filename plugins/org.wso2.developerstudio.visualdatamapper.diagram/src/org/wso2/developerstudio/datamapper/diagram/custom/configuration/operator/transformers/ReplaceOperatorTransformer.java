@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import org.codehaus.plexus.util.StringUtils;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
@@ -45,6 +46,9 @@ public class ReplaceOperatorTransformer extends AbstractDMOperatorTransformer {
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
 				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
+			if (inputVariables.get(0) == null) {
+				throw new IllegalArgumentException("Replace operator needs input string value to execute");
+			}
 			String replaceFromCustomInput = (String) operator.getProperty(TransformerConstants.TARGET_TAG);
 			String replaceToCustomInput = (String) operator.getProperty(TransformerConstants.REPLACE_WITH_TAG);
 			String replaceFromValue, replaceToValue;
@@ -57,34 +61,56 @@ public class ReplaceOperatorTransformer extends AbstractDMOperatorTransformer {
 								outputArrayVariableForLoop) + ")" + JS_TO_STRING + ".replace(");
 			}
 
-			if (replaceFromCustomInput.startsWith("{$") && inputVariables.size() > 1) {
-				replaceFromValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
-						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop);
-				if (replaceToCustomInput.startsWith("{$") && inputVariables.size() > 2) {
-					replaceToValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
+			if (replaceFromCustomInput.startsWith("{$")) {
+				if (inputVariables.size() > 1 && inputVariables.get(1) != null) {
+					replaceFromValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
 							variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
 							outputArrayVariableForLoop);
 				} else {
-					replaceToValue = "\"" + replaceToCustomInput + "\"";
+					throw new IllegalArgumentException(
+							"Replace operator needs input element or configured value to Replace Target.");
 				}
+				replaceToValue = addReplaceToParamater(inputVariables, variableTypeMap, forLoopBeanList,
+						outputArrayVariableForLoop, replaceToCustomInput, tempParentForLoopBeanStack);
 
 			} else {
-				replaceFromValue = "\"" + replaceFromCustomInput + "\"";
-				if (replaceToCustomInput.startsWith("{$") && inputVariables.size() > 1) {
-					replaceToValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
-							variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop);
+				if (StringUtils.isNotEmpty(replaceFromCustomInput)) {
+					replaceFromValue = "\"" + replaceFromCustomInput + "\"";
 				} else {
-					replaceToValue = "\"" + replaceToCustomInput + "\"";
+					throw new IllegalArgumentException("Replace operator can not have empty string to Replace Target.");
 				}
+				replaceToValue = addReplaceToParamater(inputVariables, variableTypeMap, forLoopBeanList,
+						outputArrayVariableForLoop, replaceToCustomInput, tempParentForLoopBeanStack);
 			}
-
 			operationBuilder.append(replaceFromValue + "," + replaceToValue + ");");
 
 		} else {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}
 		return operationBuilder.toString();
+	}
+
+	private String addReplaceToParamater(List<DMVariable> inputVariables,
+			Map<String, List<SchemaDataType>> variableTypeMap, List<ForLoopBean> forLoopBeanList,
+			Map<String, Integer> outputArrayVariableForLoop, String replaceToCustomInput,
+			Stack<ForLoopBean> tempParentForLoopBeanStack) throws DataMapperException {
+		String replaceToValue;
+		if (replaceToCustomInput.startsWith("{$")) {
+			if (inputVariables.size() > 2 && inputVariables.get(2) != null) {
+				replaceToValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
+						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop);
+			} else {
+				throw new IllegalArgumentException(
+						"Replace operator needs input element" + " or configured value to Replace With.");
+			}
+		} else {
+			if (StringUtils.isNotEmpty(replaceToCustomInput)) {
+				replaceToValue = "\"" + replaceToCustomInput + "\"";
+			} else {
+				throw new IllegalArgumentException("Replace operator can not have empty string to Replace With.");
+			}
+		}
+		return replaceToValue;
 	}
 
 }

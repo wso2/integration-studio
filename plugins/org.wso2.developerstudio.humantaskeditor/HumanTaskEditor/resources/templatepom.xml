@@ -33,8 +33,8 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>maven-humantask-plugin</groupId>
-        <artifactId>maven-humantask-plugin</artifactId>
+        <groupId>org.wso2.maven</groupId>
+        <artifactId>humantask-maven-plugin</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <extensions>true</extensions>
         <executions>

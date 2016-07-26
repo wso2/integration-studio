@@ -124,7 +124,16 @@ public abstract class AbstractEndpointDeserializer
 		} else if (endpoint.getDefinition().getTimeoutAction() == 102) {
 			executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_ACTION, EndPointTimeOutAction.FAULT);
 		}
-		executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_DURATION, endpoint.getDefinition().getTimeoutDuration());
+		
+		if (endpoint.getDefinition().getTimeoutDuration() > 0 || endpoint.getDefinition().isDynamicTimeoutEndpoint()) {
+			String duration = null;
+			if (!endpoint.getDefinition().isDynamicTimeoutEndpoint()) {
+				duration = Long.toString(endpoint.getDefinition().getTimeoutDuration());
+			} else {
+				duration = "{" + endpoint.getDefinition().getDynamicTimeoutExpression().getExpression() + "}";
+			}
+			executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_DURATION, duration);
+		}
 
 		if (endpoint.getDefinition().isAddressingOn()) {
 			executeSetValueCommand(ABSTRACT_END_POINT__ADDRESSING_ENABLED, true);
@@ -332,7 +341,6 @@ public abstract class AbstractEndpointDeserializer
 		setTextValue(endpointCommons.getEndpointRetryDelay(), definition.getRetryDurationOnTimeout());
 		
 		// Error Handling - Endpoint Timeout
-		setTextValue(endpointCommons.getEndpointTimeoutDuration(), definition.getTimeoutDuration());
 		
 		if (definition.getTimeoutDuration() > 0 || definition.isDynamicTimeoutEndpoint()) {
 			String duration = null;

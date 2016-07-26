@@ -78,13 +78,17 @@ public class TemplateEndPointTransformer extends AbstractEndpointTransformer{
         }
  
         public void createSynapseObject(TransformationInfo info, EObject subject,
-                        List<Endpoint> endPoints) {
+                        List<Endpoint> endPoints) throws TransformerException {
  
                 Assert.isTrue(subject instanceof TemplateEndpoint, "Invalid subject");
                 TemplateEndpoint templateEndPoint = (TemplateEndpoint) subject;
                 org.apache.synapse.endpoints.TemplateEndpoint synapseTemplateEP = new org.apache.synapse.endpoints.TemplateEndpoint();
  
-                createAdvanceOptions(templateEndPoint,synapseTemplateEP);
+                try {
+					createAdvanceOptions(templateEndPoint,synapseTemplateEP);
+				} catch (JaxenException e) {
+					throw new TransformerException(e);
+				}
                 for(TemplateEndpointParameter parameter:templateEndPoint.getParameters()){
                         synapseTemplateEP.addParameter(parameter.getParameterName(), parameter.getParameterValue());
                 }
@@ -103,7 +107,7 @@ public class TemplateEndPointTransformer extends AbstractEndpointTransformer{
  
         }
  
-        public org.apache.synapse.endpoints.TemplateEndpoint create(TemplateEndpoint visualEndPoint,String name){
+        public org.apache.synapse.endpoints.TemplateEndpoint create(TemplateEndpoint visualEndPoint,String name) throws TransformerException{
                 TemplateEndpoint templateEndPoint = visualEndPoint;
                 org.apache.synapse.endpoints.TemplateEndpoint synapseTemplateEP = new org.apache.synapse.endpoints.TemplateEndpoint();
                 
@@ -111,7 +115,11 @@ public class TemplateEndPointTransformer extends AbstractEndpointTransformer{
                 	synapseTemplateEP.setName(name);
                 }
  
-                createAdvanceOptions(templateEndPoint,synapseTemplateEP);
+                try {
+					createAdvanceOptions(templateEndPoint,synapseTemplateEP);
+				} catch (JaxenException e) {
+					throw new TransformerException(e);
+				}
                 for(TemplateEndpointParameter parameter:templateEndPoint.getParameters()){
                 	if (StringUtils.isNotBlank(parameter.getParameterName()) && StringUtils.isNotBlank(parameter.getParameterValue())) {
                 		synapseTemplateEP.addParameter(parameter.getParameterName(), parameter.getParameterValue());

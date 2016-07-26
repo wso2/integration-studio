@@ -274,7 +274,7 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 	}
 
 	@SuppressWarnings("deprecation")
-	protected void createAdvanceOptions(AbstractEndPoint visualEndPoint, AbstractEndpoint endpoint) {
+	protected void createAdvanceOptions(AbstractEndPoint visualEndPoint, AbstractEndpoint endpoint) throws JaxenException {
 		EndpointDefinition synapseEPDef = new EndpointDefinition();
 
 		synapseEPDef.setFormat(visualEndPoint.getFormat().getLiteral());
@@ -322,7 +322,17 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		synapseEPDef.setRetryDurationOnTimeout((int) visualEndPoint.getRetryDelay());
 
 		synapseEPDef.setTimeoutAction(visualEndPoint.getTimeOutAction().getValue());
-		synapseEPDef.setTimeoutDuration(visualEndPoint.getTimeOutDuration());
+		
+		String timeOutDuration = visualEndPoint.getTimeOutDuration();
+		Pattern pattern = Pattern.compile("\\{.*\\}");
+		if (pattern.matcher(timeOutDuration).matches()) {
+			timeOutDuration = timeOutDuration.trim().substring(1, timeOutDuration.length() - 1);
+			SynapseXPath xpath = new SynapseXPath(timeOutDuration);
+			synapseEPDef.setDynamicTimeoutExpression(xpath);
+		} else {
+			long timeoutMilliSeconds = Long.parseLong(timeOutDuration.trim());
+			synapseEPDef.setTimeoutDuration(timeoutMilliSeconds);
+		}
 
 		if (visualEndPoint.isAddressingEnabled()) {
 			synapseEPDef.setAddressingOn(true);

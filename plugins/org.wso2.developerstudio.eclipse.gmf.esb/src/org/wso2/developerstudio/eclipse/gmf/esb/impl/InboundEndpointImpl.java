@@ -5621,13 +5621,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setTraceEnabled(boolean newTraceEnabled) {
 		boolean oldTraceEnabled = traceEnabled;
 		traceEnabled = newTraceEnabled;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED, oldTraceEnabled, traceEnabled));
+		// Fixing DEVTOOLESB-576
+		if (newTraceEnabled) {
+			setStatisticsEnabled(true);
+		}
 	}
 
 	/**

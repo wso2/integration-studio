@@ -369,13 +369,17 @@ public class SequencesImpl extends EsbElementImpl implements Sequences {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setTraceEnabled(boolean newTraceEnabled) {
 		boolean oldTraceEnabled = traceEnabled;
 		traceEnabled = newTraceEnabled;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SEQUENCES__TRACE_ENABLED, oldTraceEnabled, traceEnabled));
+		// Fixing DEVTOOLESB-576
+		if (newTraceEnabled) {
+			setStatisticsEnabled(true);
+		}
 	}
 
 	/**

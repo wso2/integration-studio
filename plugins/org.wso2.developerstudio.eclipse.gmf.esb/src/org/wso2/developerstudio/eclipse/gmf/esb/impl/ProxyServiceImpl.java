@@ -1061,13 +1061,17 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setTraceEnabled(boolean newTraceEnabled) {
 		boolean oldTraceEnabled = traceEnabled;
 		traceEnabled = newTraceEnabled;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE__TRACE_ENABLED, oldTraceEnabled, traceEnabled));
+		// Fixing DEVTOOLESB-576
+		if (newTraceEnabled) {
+			setStatisticsEnabled(true);
+		}
 	}
 
 	/**

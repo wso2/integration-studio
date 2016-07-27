@@ -37,7 +37,6 @@ import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class EditorContentFunction implements AbstractEditorFunctionExecutor {
 
-   
     private String text;
     private String projectName;
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
@@ -51,8 +50,12 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             return getText();
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GET_WSDL)) {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
-            IResource resource = workspace.getRoot().getProject(getProjectName())
-                    .findMember(HumantaskEditorConstants.BASE_FOLDER_NAME+File.separator+parameters[1] + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
+            IResource resource = workspace
+                    .getRoot()
+                    .getProject(getProjectName())
+                    .findMember(
+                            HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
+                                    + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
 
             if (resource.exists()) {
                 File file = resource.getLocation().toFile();
@@ -81,10 +84,18 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
 
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_REMOVE_WSDL)) {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
-            IResource resource = workspace.getRoot().getProject(getProjectName())
-                    .findMember(HumantaskEditorConstants.BASE_FOLDER_NAME+File.separator+parameters[1] + HumantaskEditorConstants.TASK_WSDL_SUFFIX);
-            IResource cbResource= workspace.getRoot().getProject(getProjectName())
-                    .findMember(HumantaskEditorConstants.BASE_FOLDER_NAME+File.separator+parameters[1] + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
+            IResource resource = workspace
+                    .getRoot()
+                    .getProject(getProjectName())
+                    .findMember(
+                            HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
+                                    + HumantaskEditorConstants.TASK_WSDL_SUFFIX);
+            IResource cbResource = workspace
+                    .getRoot()
+                    .getProject(getProjectName())
+                    .findMember(
+                            HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
+                                    + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
             if (resource.exists()) {
                 File file = resource.getLocation().toFile();
                 File cbFile = cbResource.getLocation().toFile();

@@ -56,7 +56,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     private HumanTaskProjectWizardPage page;
 
     private ISelection selection;
-    
+
     private HumanTaskWizardUtil humanTaskWizardUtil;
 
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
@@ -128,7 +128,8 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
         IProject project = root.getProject(containerName);
         if (project.exists()) {
-            humanTaskWizardUtil.throwCoreException(HumantaskEditorConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE,null);
+            humanTaskWizardUtil.throwCoreException(
+                    HumantaskEditorConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);
         } else {
             project.create(null);
             project.open(null);
@@ -136,7 +137,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
 
         IResource resource = root.findMember(new Path(containerName));
         if (!resource.exists() || !(resource instanceof IContainer)) {
-            humanTaskWizardUtil.throwCoreException("Container \"" + containerName + "\" does not exist.",null);
+            humanTaskWizardUtil.throwCoreException("Container \"" + containerName + "\" does not exist.", null);
         }
         IContainer container = (IContainer) resource;
         final IFolder folder = container.getFolder(new Path(HumantaskEditorConstants.BASE_FOLDER_NAME));
@@ -232,6 +233,5 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         this.selection = selection;
         setHelpAvailable(true);
     }
-
 
 }

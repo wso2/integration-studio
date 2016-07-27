@@ -92,7 +92,8 @@ public class HumanTaskExportWizardPage extends WizardPage {
                 handledeployInWorkspaceBrowseButton();
             }
         });
-        IProject[] projectList;projectList = getProjects();
+        IProject[] projectList;
+        projectList = getProjects();
         if (projectList.length != 0) {
             for (int i = 0; i < projectList.length; i++) {
                 projectListcombo.add(projectList[i].getName());

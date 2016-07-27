@@ -33,7 +33,7 @@ import org.wso2.developerstudio.humantaskeditor.Activator;
 public class HumanTaskUIEditor extends AbstractWebBasedEditor {
 
     private static final String WEB_APP_PATH = "HumanTaskEditor";
-    
+
     public HumanTaskUIEditor() {
         super();
     }

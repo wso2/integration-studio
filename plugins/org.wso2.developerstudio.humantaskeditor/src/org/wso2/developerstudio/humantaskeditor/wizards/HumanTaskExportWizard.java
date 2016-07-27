@@ -100,12 +100,13 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                     tmpZip.delete();
                     tmpZip.deleteOnExit();
                     monitor.setTaskName("Creating the human task artifact...");
-                    FileManagementUtil.copyDirectory(new File(path + File.separator + HumantaskEditorConstants.BASE_FOLDER_NAME), zipFolder, bpelValidFileList);
+                    FileManagementUtil.copyDirectory(new File(path + File.separator
+                            + HumantaskEditorConstants.BASE_FOLDER_NAME), zipFolder, bpelValidFileList);
                     FileManagementUtil.removeEmptyDirectories(zipFolder);
                     FileManagementUtil.zipFolder(zipFolder.getAbsolutePath(), tmpZip.getAbsolutePath());
                     if (tmpZip.exists()) {
-                        String deployableZip = (new Path(mainPage.getFileLocation())).append(aProjectList.getName() + ".zip")
-                                .toOSString(); // FileManagementUtil.addNodesToPath(PersistentWSASEmitterContext.getInstance().getWSASRuntimeLocation(),new
+                        String deployableZip = (new Path(mainPage.getFileLocation())).append(
+                                aProjectList.getName() + ".zip").toOSString(); // FileManagementUtil.addNodesToPath(PersistentWSASEmitterContext.getInstance().getWSASRuntimeLocation(),new
                         // String[]{"repository", "bpel",p.getName()+".zip"});
                         File deployedZip = new File(deployableZip);
                         FileManagementUtil.copy(tmpZip, deployedZip);

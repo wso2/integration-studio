@@ -50,8 +50,7 @@ public class FileManagementUtil {
         } else {
             if (!filesToBeCopied.contains(srcPath.getAbsolutePath()))
                 return;
-            if (!srcPath.exists()) {
-            } else {
+            if (srcPath.exists()) {
                 FileManagementUtil.copy(srcPath, dstPath);
             }
         }
@@ -176,7 +175,6 @@ public class FileManagementUtil {
         InputStream in = new FileInputStream(src);
         OutputStream out = new FileOutputStream(dst);
 
-        // Transfer bytes from in to out
         byte[] buf = new byte[1024];
         int len;
         while ((len = in.read(buf)) > 0) {

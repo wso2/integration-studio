@@ -23,7 +23,6 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ES
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.synapse.commons.json.JsonBuilder;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarkerDelta;
 import org.eclipse.core.runtime.CoreException;
@@ -63,7 +62,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEdito
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
@@ -147,6 +145,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
                     clearVariableTable();
                     setState(ESBDebuggerState.RESUMED);
                     clearSuspendedEventStatus();
+                    OpenEditorUtil.resetToolTipMessages();
                 }
             } else {
                 log.warn("Unhandled event type detected for Event Broker Topic : " + ESBDEBUGGER_EVENT_TOPIC);

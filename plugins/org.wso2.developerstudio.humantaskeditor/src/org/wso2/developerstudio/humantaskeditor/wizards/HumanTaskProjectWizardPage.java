@@ -30,7 +30,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskProjectWizardPage extends WizardPage {
@@ -128,7 +127,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
      */
 
     private void initialize() {
-        if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection) {
+        if (selection != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
             IStructuredSelection ssel = (IStructuredSelection) selection;
             if (ssel.size() > 1) {
                 return;

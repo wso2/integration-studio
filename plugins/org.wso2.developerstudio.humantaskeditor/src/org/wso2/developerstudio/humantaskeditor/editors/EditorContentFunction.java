@@ -50,9 +50,12 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             return getText();
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GET_WSDL)) {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
-            IResource resource = null;
-            resource = workspace.getRoot().getProject(getProjectName())
-                    .findMember(parameters[1] + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
+            IResource resource = workspace
+                    .getRoot()
+                    .getProject(getProjectName())
+                    .findMember(
+                            HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
+                                    + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
 
             if (resource.exists()) {
                 File file = resource.getLocation().toFile();
@@ -81,13 +84,18 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
 
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_REMOVE_WSDL)) {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
-            IResource resource = null;
-            IResource cbResource = null;
-            cbResource = workspace.getRoot().getProject(getProjectName())
-                    .findMember(parameters[1] + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
-            resource = workspace.getRoot().getProject(getProjectName())
-                    .findMember(parameters[1] + HumantaskEditorConstants.TASK_WSDL_SUFFIX);
-
+            IResource resource = workspace
+                    .getRoot()
+                    .getProject(getProjectName())
+                    .findMember(
+                            HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
+                                    + HumantaskEditorConstants.TASK_WSDL_SUFFIX);
+            IResource cbResource = workspace
+                    .getRoot()
+                    .getProject(getProjectName())
+                    .findMember(
+                            HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
+                                    + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
             if (resource.exists()) {
                 File file = resource.getLocation().toFile();
                 File cbFile = cbResource.getLocation().toFile();
@@ -127,7 +135,7 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
         this.text = text;
     }
 
-    public String getProjectName() {
+    private String getProjectName() {
         return projectName;
     }
 

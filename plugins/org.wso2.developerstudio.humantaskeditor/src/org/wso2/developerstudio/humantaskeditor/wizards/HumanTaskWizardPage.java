@@ -150,7 +150,7 @@ public class HumanTaskWizardPage extends WizardPage {
      */
 
     private void initialize() {
-        if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection) {
+        if (selection != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
             IStructuredSelection ssel = (IStructuredSelection) selection;
             if (ssel.size() > 1) {
                 return;
@@ -180,7 +180,7 @@ public class HumanTaskWizardPage extends WizardPage {
         if (dialog.open() == Window.OK) {
             Object[] result = dialog.getResult();
             if (result.length == 1) {
-                containerText.setText(((Path) result[0]).toString());
+                containerText.setText(result[0].toString());
             }
         }
     }

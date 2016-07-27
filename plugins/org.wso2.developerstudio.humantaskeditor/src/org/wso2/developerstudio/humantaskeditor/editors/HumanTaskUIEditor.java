@@ -33,7 +33,6 @@ import org.wso2.developerstudio.humantaskeditor.Activator;
 public class HumanTaskUIEditor extends AbstractWebBasedEditor {
 
     private static final String WEB_APP_PATH = "HumanTaskEditor";
-    private static final String WEB_APP_INDEX_PATH = "HumanTaskEditor/index.html";
 
     public HumanTaskUIEditor() {
         super();
@@ -57,8 +56,8 @@ public class HumanTaskUIEditor extends AbstractWebBasedEditor {
     public String getEditorURL() throws WebUIException {
         Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
         URL webAppURL = bundle.getEntry(WEB_APP_PATH);
-        File resolvedWebAppFolder = null;
-        File resolvedWebAppIndex = null;
+        File resolvedWebAppFolder;
+        File resolvedWebAppIndex;
         try {
             URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
             URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);

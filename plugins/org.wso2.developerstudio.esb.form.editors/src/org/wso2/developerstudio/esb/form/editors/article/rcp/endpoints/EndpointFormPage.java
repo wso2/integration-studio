@@ -227,6 +227,10 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 		endpointTrace.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				// Fixing DEVTOOLESB-576
+				if (Boolean.parseBoolean(endpointTrace.getText())) {
+					endpointStatistics.select(0);
+				}
 				setSave(true);
 				updateDirtyState();
 			}

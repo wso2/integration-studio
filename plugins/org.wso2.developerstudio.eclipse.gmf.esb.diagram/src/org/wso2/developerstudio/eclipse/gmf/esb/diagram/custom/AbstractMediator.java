@@ -563,6 +563,15 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 //				}			
 //			}
 			
+			// Restricted adding a Drop mediator into fault sequence as a partial fix for DEVTOOLESB-527
+			if(!mediatorRestricted){
+				if (this instanceof DropMediatorEditPart && compartment instanceof MediatorFlowMediatorFlowCompartment6EditPart){
+					mediatorRestricted = true;
+					deleteNewlyAddedMediator("Drop Mediator is not allowed to add in the fault sequence.");
+					return;
+				}
+			}
+			
 			if (!mediatorRestricted) {
 				if (restrictAddingOfMediator(nearestInputConnector, nearestEsbLinkInputConnector)) {
 					mediatorRestricted = true;

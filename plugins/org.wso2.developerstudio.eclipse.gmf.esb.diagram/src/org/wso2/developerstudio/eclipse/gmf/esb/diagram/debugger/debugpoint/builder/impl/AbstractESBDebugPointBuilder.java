@@ -221,7 +221,10 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
      */
     protected static List<ESBDebugPoint> getDebugPointsRelatedToModification(IResource resource,
             List<Integer> position, String listSequence, String action) {
-        List<ESBDebugPoint> breakpointList = new ArrayList<ESBDebugPoint>();
+    	List<ESBDebugPoint> breakpointList = new ArrayList<ESBDebugPoint>();
+    	if(position.isEmpty()){
+    		return breakpointList;
+    	}
         IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
                 .getBreakpoints(ESBDebugModelPresentation.ID);
         for (IBreakpoint breakpoint : breakpoints) {
@@ -269,6 +272,9 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
     protected List<Integer> getMediatorPosition(OutputConnector outputConnector, AbstractMediator newMediator)
             throws MediatorNotFoundException {
         EObject newMediatorImpl = ((NodeImpl) newMediator.getModel()).getElement();
+        if(newMediatorImpl == null){
+        	return new ArrayList<>();
+        }
         return getMediatorPosition(outputConnector, newMediatorImpl);
     }
 

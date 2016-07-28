@@ -1,6 +1,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.part;
 
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.internal.parts.DiagramGraphicalViewerKeyHandler;
 import org.eclipse.jface.action.IAction;
@@ -12,6 +13,7 @@ import org.eclipse.swt.events.HelpListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.IWorkbenchPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 
 public class CustomDiagramGraphicalViewerKeyHandler extends DiagramGraphicalViewerKeyHandler{	
@@ -33,6 +35,15 @@ public class CustomDiagramGraphicalViewerKeyHandler extends DiagramGraphicalView
 		
 		switch (event.keyCode) {
 		case SWT.DEL :
+			if (ESBDebuggerUtil.isDeleteOperationPerformed()) {
+				try {
+					ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion();
+				} catch (CoreException | ESBDebuggerException e) {
+					//
+				}
+			} else {
+				ESBDebuggerUtil.updateModifiedDebugPoints();
+			}
 			ESBDebuggerUtil.setDeleteOperationPerformed(true);
 			deleteAction.run(null);		
 			return true; 			

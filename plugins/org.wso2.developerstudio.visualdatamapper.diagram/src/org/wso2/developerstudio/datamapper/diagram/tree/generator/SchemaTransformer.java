@@ -336,6 +336,21 @@ public class SchemaTransformer implements ISchemaTransformer {
 		}
 		return null;
 	}
+	
+	/**
+	 * Get Nullable value
+	 * @param jsonSchemaMap
+	 * @return
+	 */
+	private String getNullableValue(Map<String, Object> jsonSchemaMap) {
+		if (jsonSchemaMap.containsKey(JSON_SCHEMA_NULLABLE)) {
+			Object type = jsonSchemaMap.get(JSON_SCHEMA_NULLABLE);
+			if (type instanceof String) {
+				return (String) type;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Gets the namespaces value
@@ -789,14 +804,18 @@ public class SchemaTransformer implements ISchemaTransformer {
 						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList,
 								JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE, valueMap.get(JSON_SCHEMA_TYPE).toString());
 					}
+					
+					
+					
 					// Check if there is xsi:nil attribute and then add the nullable value
 					boolean hasXsiNil = checkXsiNilForElements(itemsSchema);
 					if (hasXsiNil) {
 						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, TRUE);
-					} else {
+					} else if(getNullableValue(itemsSchema) != null){
+						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, getNullableValue(subSchema));
+					}else{
 						setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, FALSE);
 					}
-
 				}
 			}
 		} else if (schemaType.equals(JSON_SCHEMA_OBJECT)) {
@@ -810,17 +829,25 @@ public class SchemaTransformer implements ISchemaTransformer {
 			boolean hasXsiNil = checkXsiNilForElements(subSchema);
 			if (hasXsiNil) {
 				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, TRUE);
-			} else {
+			}else if(getNullableValue(subSchema) != null){
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, getNullableValue(subSchema));
+			}else {
 				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, FALSE);
 			}
+			
+			
 		} else {
 			// Check if there is xsi:nil attribute and then add the nullable value
 			boolean hasXsiNil = checkXsiNilForElements(subSchema);
 			if (hasXsiNil) {
 				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, TRUE);
-			} else {
+			} else if(getNullableValue(subSchema) != null){
+				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, getNullableValue(subSchema));
+			}else {
 				setPropertyKeyValuePairforTreeNodes(treeNode, propertyValueList, JSON_SCHEMA_NULLABLE, FALSE);
 			}
+			
+	
 		}
 		return treeNode;
 	}

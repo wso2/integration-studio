@@ -135,6 +135,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSPubSubNoLocalPropertyDescriptor(object);
 			addTransportJMSSharedSubscriptionPropertyDescriptor(object);
 			addTransportJMSPinnedServersPropertyDescriptor(object);
+			addTransportJMSConcurrentConsumersPropertyDescriptor(object);
 			break;
 		case CUSTOM:
 			addClassPropertyDescriptor(object);
@@ -309,6 +310,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSSharedSubscriptionPropertyDescriptor(object);
 			addTransportJMSSubscriptionNamePropertyDescriptor(object);
 			addTransportJMSPinnedServersPropertyDescriptor(object);	
+			addTransportJMSConcurrentConsumersPropertyDescriptor(object);
 		default:
 			break;
 		}
@@ -3019,6 +3021,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Transport JMS Concurrent Consumers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportJMSConcurrentConsumersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSConcurrentConsumers_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSConcurrentConsumers_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Transport JMS Destination
 	 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -3851,6 +3875,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:

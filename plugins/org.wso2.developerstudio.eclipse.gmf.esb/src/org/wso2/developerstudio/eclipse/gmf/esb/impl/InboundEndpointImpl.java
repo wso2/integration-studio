@@ -113,6 +113,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDestination <em>Transport JMS Destination</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}</li>
@@ -1189,6 +1190,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected JMSConnectionFactoryType transportJMSConnectionFactoryType = TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSConcurrentConsumers() <em>Transport JMS Concurrent Consumers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSConcurrentConsumers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSConcurrentConsumers() <em>Transport JMS Concurrent Consumers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSConcurrentConsumers()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSConcurrentConsumers = TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTransportJMSDestination() <em>Transport JMS Destination</em>}' attribute.
@@ -6563,6 +6584,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTransportJMSConcurrentConsumers() {
+		return transportJMSConcurrentConsumers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSConcurrentConsumers(String newTransportJMSConcurrentConsumers) {
+		String oldTransportJMSConcurrentConsumers = transportJMSConcurrentConsumers;
+		transportJMSConcurrentConsumers = newTransportJMSConcurrentConsumers;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS, oldTransportJMSConcurrentConsumers, transportJMSConcurrentConsumers));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getTransportJMSDestination() {
 		return transportJMSDestination;
 	}
@@ -7488,6 +7530,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportJMSConnectionFactoryJNDIName();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
 				return getTransportJMSConnectionFactoryType();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
+				return getTransportJMSConcurrentConsumers();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
 				return getTransportJMSDestination();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
@@ -7894,6 +7938,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
 				setTransportJMSConnectionFactoryType((JMSConnectionFactoryType)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
+				setTransportJMSConcurrentConsumers((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
 				setTransportJMSDestination((String)newValue);
@@ -8424,6 +8471,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
 				setTransportJMSConnectionFactoryType(TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
+				setTransportJMSConcurrentConsumers(TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
 				setTransportJMSDestination(TRANSPORT_JMS_DESTINATION_EDEFAULT);
 				return;
@@ -8902,6 +8952,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT == null ? transportJMSConnectionFactoryJNDIName != null : !TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT.equals(transportJMSConnectionFactoryJNDIName);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
 				return transportJMSConnectionFactoryType != TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
+				return TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT == null ? transportJMSConcurrentConsumers != null : !TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT.equals(transportJMSConcurrentConsumers);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
 				return TRANSPORT_JMS_DESTINATION_EDEFAULT == null ? transportJMSDestination != null : !TRANSPORT_JMS_DESTINATION_EDEFAULT.equals(transportJMSDestination);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
@@ -9250,6 +9302,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportJMSConnectionFactoryJNDIName);
 		result.append(", transportJMSConnectionFactoryType: ");
 		result.append(transportJMSConnectionFactoryType);
+		result.append(", transportJMSConcurrentConsumers: ");
+		result.append(transportJMSConcurrentConsumers);
 		result.append(", transportJMSDestination: ");
 		result.append(transportJMSDestination);
 		result.append(", transportJMSSessionTransacted: ");

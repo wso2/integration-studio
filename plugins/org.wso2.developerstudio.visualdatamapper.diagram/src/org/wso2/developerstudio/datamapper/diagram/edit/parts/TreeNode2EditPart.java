@@ -824,7 +824,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			figure2.setPreferredSize((count - 1) * 22, 3);
 			Label nodeLabel = new Label();
 			if (StringUtils.isNotEmpty(name) && name.startsWith(PREFIX)) {
+				if(type!= null){
 				newName = newName + "  : [" + type.toUpperCase() + "]";
+				}
 				if (StringUtils.isNotEmpty(nullableValue)) {
 					placeIcon(attributeImg, nullableAttributeImg, nullableValue, nodeLabel);
 				} else {

@@ -48,6 +48,8 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AddNewObjectDialog;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
@@ -80,6 +82,18 @@ public class EditObjectAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String TRUE = "true";
 	private static final String FALSE = "false";
+	private static final String JSON_SCHEMA_OBJECT = "object";
+	private static final String JSON_SCHEMA_ARRAY = "array";
+	private static final String JSON_SCHEMA_ARRAY_NAMESPACES = "arrayNamespaces";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE = "items_value_type";
+	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS = "arrayElementIdentifiers";
+	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL = "arrayElementIdentifiersURL";
+	private static final String JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL_VALUE = "arrayElementIdentifiersURLValue";
+	private static final String JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT ="arrayInterrelatedElement";
+	private static final String JSON_SCHEMA_FIELD_NAMESPACES = "fieldNamespaces";
+
 
 	private String title = null;
 	private String schemaType = null;
@@ -99,6 +113,9 @@ public class EditObjectAction extends AbstractActionHandler {
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
 	boolean hasIdentifier = false;
+	private boolean isOutputEditPart = false;
+	private String interrelatedElement = null;
+	private boolean isRootElement = false;
 
 	public EditObjectAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -172,12 +189,39 @@ public class EditObjectAction extends AbstractActionHandler {
 			} else {
 				isNullable = false;
 			}
+			//Check if the edit part is an output edit part
+			isOutputEditPart  = checkContainer(selectedEP);
+			if(isOutputEditPart){
+				interrelatedElement = setProperties(selectedNode, JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT);
+			}
+			
+			if(selectedEP instanceof TreeNodeEditPart || selectedNode instanceof TreeNode3EditPart){
+				isRootElement = true;
+			}
+			
+			
 			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace, value,
-					identifierType, identifierValue, identifierURL, isNullable);
+					identifierType, identifierValue, identifierURL, isNullable,interrelatedElement,isOutputEditPart,isRootElement);
 
 		}
 	}
 
+	/**
+	 * check if the conatiner is an output edit part
+	 * 
+	 * @param selectedEP
+	 * @return
+	 */
+	private boolean checkContainer(EditPart selectedEP) {
+		if (selectedEP.getParent() instanceof OutputEditPart) {
+			return true;
+		} else if (selectedEP.getParent() instanceof InputEditPart) {
+			return false;
+		} else {
+			return checkContainer(selectedEP.getParent());
+		}
+	}
+	
 	/**
 	 * Formats the namespace to the required format
 	 * 
@@ -399,20 +443,22 @@ public class EditObjectAction extends AbstractActionHandler {
 	 *            required
 	 * @param schemaValue
 	 *            schema value
+	 * @param interrelatedElement 
+	 * @param isRootElement2 
 	 * @param isNullable2
 	 * @param identifierValue2
 	 * @param identifierType2
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
 			String required, String schemaValue, String namespaces, String value, String identifierType,
-			String identifierValue, String identifierURL, boolean isNullable) {
+			String identifierValue, String identifierURL, boolean isNullable,String interrelatedElement, boolean isOutputEditPart, boolean isRootElement) {
 		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, value, identifierType,
-				identifierValue, identifierURL, isNullable,null,false);
+				identifierValue, identifierURL, isNullable,interrelatedElement,isOutputEditPart,isRootElement);
 		editTypeDialog.setTitle(DIALOG_TITLE);
 		editTypeDialog.open();
 
@@ -445,41 +491,23 @@ public class EditObjectAction extends AbstractActionHandler {
 			if (StringUtils.isNotEmpty(editTypeDialog.getRequired())) {
 				valueMap.put(JSON_SCHEMA_REQUIRED, editTypeDialog.getRequired());
 			}
-
-			if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
-				String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
-				valueMap.put(JSON_SCHEMA_NAMESPACES, namespacesValue);
-				valueMap.put(JSON_SCHEMA_OBJECT_NAMESPACES, namespacesValue);
-			}
-
-			// sets the properties ID to be used in serialization
-			valueMap.put(JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
-			// sets the object's type if object hold a value
-			if (StringUtils.isNotEmpty(editTypeDialog.getValue())) {
-				valueMap.put(JSON_SCHEMA_OBJECT_VALUE_TYPE, editTypeDialog.getValue());
-			}
-
-			if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())) {
-				String type = "{" + ELEMENT_IDENTIFIER + "=" + editTypeDialog.getIdentifierType() + "}";
-				valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS, type);
-			}
-			if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL())) {
-				valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL_VALUE, editTypeDialog.getIdentifierURL());
-			}
-
-			if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL())
-					&& StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())) {
-				String identifierNamespace = createNamespaceArrayForIdentifiers(editTypeDialog.getIdentifierType(),
-						editTypeDialog.getIdentifierURL());
-				valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL, identifierNamespace);
-			}
-
+			
 			if (editTypeDialog.getNullable()) {
 				valueMap.put(JSON_SCHEMA_NULLABLE, TRUE);
 			} else {
 				valueMap.put(JSON_SCHEMA_NULLABLE, FALSE);
 			}
-
+			
+			//When editing, if the type sets to object
+			if(editTypeDialog.getSchemaType().equals(JSON_SCHEMA_OBJECT)){
+				setPropertiesForTypeObject(editTypeDialog, valueMap);
+			}else if(editTypeDialog.getSchemaType().equals(JSON_SCHEMA_ARRAY)){
+				//When editing, if the type sets to object
+				setPropertiesForTypeArray(editTypeDialog,valueMap,selectedNode);
+			}/*else{
+				setPropertiesForTypePrimitive(editTypeDialog,valueMap);
+			}*/
+		
 			// Check for element identifiers
 			TreeNode treeNodeChild = getChildTreeNode(identifierType, selectedNode);
 
@@ -489,8 +517,135 @@ public class EditObjectAction extends AbstractActionHandler {
 			}
 
 			TreeNode newChild = updateElementIdentifier(selectedNode, editTypeDialog, valueMap, newValueMap);
+			
+			//If the object changes to a primitive type then remove the child nodes
+			/*if(!editTypeDialog.getSchemaType().equals(JSON_SCHEMA_OBJECT) && !editTypeDialog.getSchemaType().equals(JSON_SCHEMA_ARRAY)){
+				EList<TreeNode> nodeList = selectedNode.getNode();
+				RemoveCommand rootRemCmd = new RemoveCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
+						DataMapperPackage.Literals.TREE_NODE__NODE, nodeList);
+				if (rootRemCmd.canExecute()) {
+					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(rootRemCmd);
+				}
+			}*/
 			reflectChanges(selectedNode, valueMap, newChild, newValueMap);
 
+		}
+
+	}
+
+	/**
+	 * Set the properties belong to type primitive
+	 * @param editTypeDialog
+	 * @param valueMap
+	 */
+	private void setPropertiesForTypePrimitive(AddNewObjectDialog editTypeDialog, HashMap<String, String> valueMap) {
+		if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
+			String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
+			valueMap.put(JSON_SCHEMA_FIELD_NAMESPACES, namespacesValue);
+		}
+		
+	}
+
+	/**
+	 * Set the properties belong to type object
+	 * @param editTypeDialog
+	 * @param valueMap
+	 */
+	private void setPropertiesForTypeObject(AddNewObjectDialog editTypeDialog, HashMap<String, String> valueMap) {
+		// sets the properties ID to be used in serialization
+		valueMap.put(JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
+		
+		if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
+			String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
+			valueMap.put(JSON_SCHEMA_NAMESPACES, namespacesValue);
+			valueMap.put(JSON_SCHEMA_OBJECT_NAMESPACES, namespacesValue);
+		}
+		
+		// sets the object's type if object hold a value
+		if (StringUtils.isNotEmpty(editTypeDialog.getValue())) {
+			valueMap.put(JSON_SCHEMA_OBJECT_VALUE_TYPE, editTypeDialog.getValue());
+		}
+
+		if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())) {
+			String type = "{" + ELEMENT_IDENTIFIER + "=" + editTypeDialog.getIdentifierType() + "}";
+			valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS, type);
+		}
+		if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL())) {
+			valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL_VALUE, editTypeDialog.getIdentifierURL());
+		}
+
+		if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL())
+				&& StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())) {
+			String identifierNamespace = createNamespaceArrayForIdentifiers(editTypeDialog.getIdentifierType(),
+					editTypeDialog.getIdentifierURL());
+			valueMap.put(JSON_SCHEMA_OBJECT_ELEMENT_IDENTIFIERS_URL, identifierNamespace);
+		}
+	}
+	
+	
+	
+	
+	/**
+	 * Set the properties belong to type array
+	 * @param editTypeDialog
+	 * @param valueMap
+	 */
+	private void setPropertiesForTypeArray(AddNewObjectDialog editTypeDialog, HashMap<String, String> valueMap, TreeNode selectedNode) {
+
+		if (StringUtils.isNotEmpty(editTypeDialog.getNamespaces())) {
+			String namespacesValue = createNamespaceArray(editTypeDialog.getNamespaces());
+			valueMap.put(JSON_SCHEMA_ARRAY_NAMESPACES, namespacesValue);
+		}
+		// Sets the interrelated element
+		if (StringUtils.isNotEmpty(editTypeDialog.getInterrelatedElement())) {
+			valueMap.put(JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT, editTypeDialog.getInterrelatedElement());
+		}
+
+		// Sets the values for items field which is used for serializing the
+		// array
+		valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_ID, editTypeDialog.getID() + "/0");
+		// If the node has children, then set the item type as object
+		if (checkForChildren(selectedNode)) {
+			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, JSON_SCHEMA_OBJECT);
+		} else if (StringUtils.isNotEmpty(editTypeDialog.getValue())) {
+			// Else if the array is a primitive type array then set the value as
+			// the item type
+			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, editTypeDialog.getValue());
+		} else {
+			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_TYPE, "");
+		}
+
+		// sets the value type if item holds a value
+		if (StringUtils.isNotEmpty(editTypeDialog.getValue())) {
+			valueMap.put(JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE, editTypeDialog.getValue());
+		}
+		// sets the properties ID to be used in serialization
+		valueMap.put(JSON_SCHEMA_ADDED_PROPERTIES_ID, HAS_PROPERTIES);
+
+		if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())) {
+			String type = "{" + ELEMENT_IDENTIFIER + "=" + editTypeDialog.getIdentifierType() + "}";
+			valueMap.put(JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS, type);
+		}
+
+		if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL())) {
+			valueMap.put(JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL_VALUE, editTypeDialog.getIdentifierURL());
+		}
+
+		if (StringUtils.isNotEmpty(editTypeDialog.getIdentifierURL())
+				&& StringUtils.isNotEmpty(editTypeDialog.getIdentifierType())) {
+			String identifierNamespace = createNamespaceArrayForIdentifiers(editTypeDialog.getIdentifierType(),
+					editTypeDialog.getIdentifierURL());
+			valueMap.put(JSON_SCHEMA_ARRAY_ELEMENT_IDENTIFIERS_URL, identifierNamespace);
+		}
+	}
+	
+
+	private boolean checkForChildren(TreeNode node) {
+		EList<TreeNode> nodeList = node.getNode();
+		if(nodeList.size() >0){
+			return true;
+		}else{
+			return false;
 		}
 
 	}

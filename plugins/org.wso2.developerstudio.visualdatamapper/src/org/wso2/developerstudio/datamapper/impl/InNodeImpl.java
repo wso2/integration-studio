@@ -19,6 +19,9 @@ import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.InNode;
+import org.wso2.developerstudio.datamapper.OutNode;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.TreeNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -115,6 +118,26 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.IN_NODE__ELEMENT_PARENT, newElementParent, newElementParent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean shouldConnect(OutNode sourceEnd) {
+		// Restricting drawing links if element(treenode) is an array or object. 
+		if (this.eContainer instanceof TreeNode) {
+			SchemaDataType schemaDataType = ((TreeNode) this.eContainer).getSchemaDataType();
+			if (schemaDataType.equals(SchemaDataType.ARRAY) || schemaDataType.equals(SchemaDataType.OBJECT)) {
+				return false;
+			}
+		}
+		// Restricting drawing links if one link is already connected
+		if (this.getIncomingLink().size() > 0) {
+			return false;
+		}
+		return true;
 	}
 
 	/**

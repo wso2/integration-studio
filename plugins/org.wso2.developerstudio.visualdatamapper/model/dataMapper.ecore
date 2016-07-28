@@ -170,12 +170,18 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Subtract" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="InNode">
+    <eOperations name="shouldConnect" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="sourceEnd" eType="#//OutNode"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLink" upperBound="-1"
         eType="#//DataMapperLink" eOpposite="#//DataMapperLink/inNode"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementParent" eType="#//Element"
         eOpposite="#//Element/inNode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OutNode">
+    <eOperations name="shouldConnect" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="targetEnd" eType="#//InNode"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingLink" upperBound="-1"
         eType="#//DataMapperLink" containment="true" eOpposite="#//DataMapperLink/outNode"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementParent" eType="#//Element"

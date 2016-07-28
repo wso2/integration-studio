@@ -857,6 +857,12 @@
     <linkMetaFeature
         xsi:type="ecore:EReference"
         href="dataMapper.ecore#//DataMapperLink/inNode"/>
+    <creationConstraints>
+      <sourceEnd
+          body="self.shouldConnect(oppositeEnd)"/>
+      <targetEnd
+          body="self.shouldConnect(oppositeEnd)"/>
+    </creationConstraints>
   </links>
   <diagram>
     <diagramCanvas

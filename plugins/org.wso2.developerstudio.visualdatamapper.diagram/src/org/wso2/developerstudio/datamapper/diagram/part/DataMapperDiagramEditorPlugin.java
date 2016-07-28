@@ -21,6 +21,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.expressions.DataMapperOCLFactory;
 import org.wso2.developerstudio.datamapper.diagram.providers.ElementInitializers;
 import org.wso2.developerstudio.datamapper.provider.DataMapperItemProviderAdapterFactory;
 
@@ -70,6 +71,11 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 	private ElementInitializers initializers;
 
 	/**
+	* @generated
+	*/
+	private DataMapperOCLFactory oclFactory;
+
+	/**
 	 * @generated
 	 */
 	public DataMapperDiagramEditorPlugin() {
@@ -94,6 +100,7 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 		adapterFactory = null;
 		linkConstraints = null;
 		initializers = null;
+		oclFactory = null;
 		instance = null;
 		super.stop(context);
 	}
@@ -234,6 +241,20 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 	 */
 	public void setElementInitializers(ElementInitializers i) {
 		this.initializers = i;
+	}
+
+	/**
+	* @generated
+	*/
+	public DataMapperOCLFactory getDataMapperOCLFactory() {
+		return oclFactory;
+	}
+
+	/**
+	* @generated
+	*/
+	public void setDataMapperOCLFactory(DataMapperOCLFactory f) {
+		this.oclFactory = f;
 	}
 
 	/**

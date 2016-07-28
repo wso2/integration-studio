@@ -192,10 +192,16 @@
     <genClasses ecoreClass="dataMapper.ecore#//InNode">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/incomingLink"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/elementParent"/>
+      <genOperations ecoreOperation="dataMapper.ecore#//InNode/shouldConnect">
+        <genParameters ecoreParameter="dataMapper.ecore#//InNode/shouldConnect/sourceEnd"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//OutNode">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OutNode/outgoingLink"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//OutNode/elementParent"/>
+      <genOperations ecoreOperation="dataMapper.ecore#//OutNode/shouldConnect">
+        <genParameters ecoreParameter="dataMapper.ecore#//OutNode/shouldConnect/targetEnd"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperLink">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/inNode"/>

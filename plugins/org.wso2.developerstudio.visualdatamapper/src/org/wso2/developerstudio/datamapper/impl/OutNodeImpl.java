@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
 import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Element;
+import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.OutNode;
 
 /**
@@ -113,6 +114,15 @@ public class OutNodeImpl extends EObjectImpl implements OutNode {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.OUT_NODE__ELEMENT_PARENT, newElementParent, newElementParent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean shouldConnect(InNode targetEnd) {
+		return true;
 	}
 
 	/**

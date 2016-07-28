@@ -1013,7 +1013,7 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider
 	private String getGlobalVariable_2041Text(View view) {
 		GlobalVariable domainModelElement = (GlobalVariable) view.getElement();
 		if (domainModelElement != null) {
-			return String.valueOf(domainModelElement.isSerialized());
+			return domainModelElement.getName();
 		} else {
 			DataMapperDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2041); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$

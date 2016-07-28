@@ -70,4 +70,12 @@ public interface OutNode extends EObject {
 	 */
 	void setElementParent(Element value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean shouldConnect(InNode targetEnd);
+
 } // OutNode

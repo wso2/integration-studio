@@ -77,6 +77,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDestination <em>Transport JMS Destination</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}</li>
@@ -3788,6 +3789,32 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportJMSConnectionFactoryType(JMSConnectionFactoryType value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Concurrent Consumers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Concurrent Consumers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Concurrent Consumers</em>' attribute.
+	 * @see #setTransportJMSConcurrentConsumers(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSConcurrentConsumers()
+	 * @model
+	 * @generated
+	 */
+	String getTransportJMSConcurrentConsumers();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Concurrent Consumers</em>' attribute.
+	 * @see #getTransportJMSConcurrentConsumers()
+	 * @generated
+	 */
+	void setTransportJMSConcurrentConsumers(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Destination</b></em>' attribute.

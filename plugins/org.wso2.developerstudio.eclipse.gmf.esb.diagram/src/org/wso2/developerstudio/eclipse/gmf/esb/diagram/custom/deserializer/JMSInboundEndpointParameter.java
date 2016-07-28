@@ -40,6 +40,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -90,7 +91,8 @@ public enum JMSInboundEndpointParameter {
     JMS_CACHE_LEVEL_TYPE(InboundEndpointConstants.JMS_CACHE_LEVEL, INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, false),
     JMS_CONTENT_TYPE_PROPERTY_TYPE(InboundEndpointConstants.JMS_CONTENT_TYPE_PROPERTY, 
             INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY,true),
-	INBOUND_ENDPOINT_PINNED_SERVERS(InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS,true);
+	INBOUND_ENDPOINT_PINNED_SERVERS(InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS,true),
+	JMS_CONCURRENT_CONSUMERS(InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS, INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS, true);
     
     private final String name;
     private final EAttribute eAttributeValue;

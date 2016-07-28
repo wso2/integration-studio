@@ -6,7 +6,9 @@
  */
 package org.wso2.developerstudio.eclipse.ds;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,10 +20,12 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.CustomValidator#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.CustomValidator#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.CustomValidator#getMixed <em>Mixed</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getCustomValidator()
- * @model extendedMetaData="name='validateCustom_._type' kind='empty'"
+ * @model extendedMetaData="name='validateCustom_._type' kind='mixed'"
  * @generated
  */
 public interface CustomValidator extends EObject {
@@ -51,5 +55,39 @@ public interface CustomValidator extends EObject {
 	 * @generated
 	 */
 	void setClass(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getCustomValidator_Properties()
+	 * @model containment="true" transient="true" volatile="true" derived="true"
+	 *        extendedMetaData="kind='element' name='properties' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<CustomValidatorPropertyList> getProperties();
+
+	/**
+	 * Returns the value of the '<em><b>Mixed</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mixed</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mixed</em>' attribute list.
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getCustomValidator_Mixed()
+	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
+	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
+	 * @generated
+	 */
+	FeatureMap getMixed();
 
 } // CustomValidator

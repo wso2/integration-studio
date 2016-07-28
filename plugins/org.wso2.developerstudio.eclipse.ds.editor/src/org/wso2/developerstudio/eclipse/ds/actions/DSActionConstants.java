@@ -81,6 +81,10 @@ public interface DSActionConstants {
 	public String ADD_PATTERN_VALIDATOR_ACTION = "Add Pattern Validator";
 
 	public String ADD_CUSTOM_VALIDATOR_ACTION = "Add Custom Validator";
+	
+	public String ADD_CUSTOM_VALIDATOR_PROPERTY_LIST_ACTION = "Add Properties";
+
+	public String ADD_CUSTOM_VALIDATOR_PROPERTY_ACTION = "Add Property";
 
 	public String ADD_QUERY_PROPERTY_LIST_ACTION = "Add Properties";
 
@@ -368,6 +372,10 @@ public interface DSActionConstants {
 	public String FETCH_SIZE_DISPLAY = "Fetch Size";
 
 	public String MAX_FIELD_SIZE_DISPLAY = "Max Field Size (Bytes)";
+	
+	public String PROPERTY_NAME_DISPLAY = "Name";
+	
+	public String PROPERTY_VALUE_DISPLAY = "Value";
 
 	public String MAX_ROWS_DISPLAY = "Max Rows";
 }

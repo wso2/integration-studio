@@ -275,13 +275,31 @@ public interface DsPackage extends EPackage {
 	int CUSTOM_VALIDATOR__CLASS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VALIDATOR__PROPERTIES = 1;
+
+	/**
+	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VALIDATOR__MIXED = 2;
+
+	/**
 	 * The number of structural features of the '<em>Custom Validator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CUSTOM_VALIDATOR_FEATURE_COUNT = 1;
+	int CUSTOM_VALIDATOR_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl <em>Data Service</em>}' class.
@@ -2299,6 +2317,82 @@ public interface DsPackage extends EPackage {
 	int REGISTRY_KEY_PROPERTY_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyImpl <em>Custom Validator Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyImpl
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidatorProperty()
+	 * @generated
+	 */
+	int CUSTOM_VALIDATOR_PROPERTY = 40;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VALIDATOR_PROPERTY__VALUE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VALIDATOR_PROPERTY__NAME = 1;
+
+	/**
+	 * The number of structural features of the '<em>Custom Validator Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VALIDATOR_PROPERTY_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '
+	 * {@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl
+	 * <em>Custom Validator Property List</em>}' class. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidatorPropertyList()
+	 * @generated
+	 */
+	int CUSTOM_VALIDATOR_PROPERTY_LIST = 41;
+
+	/**
+	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED = 0;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Custom Validator Property List</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_VALIDATOR_PROPERTY_LIST_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2306,7 +2400,7 @@ public interface DsPackage extends EPackage {
 	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatus()
 	 * @generated
 	 */
-	int SERVICE_STATUS = 40;
+	int SERVICE_STATUS = 42;
 
 	/**
 	 * The meta object id for the '<em>Service Status Object</em>' data type.
@@ -2316,7 +2410,7 @@ public interface DsPackage extends EPackage {
 	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatusObject()
 	 * @generated
 	 */
-	int SERVICE_STATUS_OBJECT = 41;
+	int SERVICE_STATUS_OBJECT = 43;
 
 	/**
 	 * The meta object id for the '<em>Map</em>' data type.
@@ -2326,7 +2420,7 @@ public interface DsPackage extends EPackage {
 	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 42;
+	int MAP = 44;
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.AttributeMapping <em>Attribute Mapping</em>}'.
@@ -2531,6 +2625,28 @@ public interface DsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCustomValidator_Class();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.ds.CustomValidator#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.CustomValidator#getProperties()
+	 * @see #getCustomValidator()
+	 * @generated
+	 */
+	EReference getCustomValidator_Properties();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.eclipse.ds.CustomValidator#getMixed <em>Mixed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Mixed</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.CustomValidator#getMixed()
+	 * @see #getCustomValidator()
+	 * @generated
+	 */
+	EAttribute getCustomValidator_Mixed();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.DataService <em>Data Service</em>}'.
@@ -4533,6 +4649,70 @@ public interface DsPackage extends EPackage {
 	EAttribute getRegistryKeyProperty_Key();
 
 	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty <em>Custom Validator Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Custom Validator Property</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty
+	 * @generated
+	 */
+	EClass getCustomValidatorProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty#getValue()
+	 * @see #getCustomValidatorProperty()
+	 * @generated
+	 */
+	EAttribute getCustomValidatorProperty_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty#getName()
+	 * @see #getCustomValidatorProperty()
+	 * @generated
+	 */
+	EAttribute getCustomValidatorProperty_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList <em>Custom Validator Property List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Custom Validator Property List</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList
+	 * @generated
+	 */
+	EClass getCustomValidatorPropertyList();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList#getMixed <em>Mixed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Mixed</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList#getMixed()
+	 * @see #getCustomValidatorPropertyList()
+	 * @generated
+	 */
+	EAttribute getCustomValidatorPropertyList_Mixed();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList#getProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Property</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList#getProperty()
+	 * @see #getCustomValidatorPropertyList()
+	 * @generated
+	 */
+	EReference getCustomValidatorPropertyList_Property();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4749,6 +4929,22 @@ public interface DsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CUSTOM_VALIDATOR__CLASS = eINSTANCE.getCustomValidator_Class();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CUSTOM_VALIDATOR__PROPERTIES = eINSTANCE.getCustomValidator_Properties();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_VALIDATOR__MIXED = eINSTANCE.getCustomValidator_Mixed();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl <em>Data Service</em>}' class.
@@ -6309,6 +6505,58 @@ public interface DsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute REGISTRY_KEY_PROPERTY__KEY = eINSTANCE.getRegistryKeyProperty_Key();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyImpl <em>Custom Validator Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyImpl
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidatorProperty()
+		 * @generated
+		 */
+		EClass CUSTOM_VALIDATOR_PROPERTY = eINSTANCE.getCustomValidatorProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_VALIDATOR_PROPERTY__VALUE = eINSTANCE.getCustomValidatorProperty_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_VALIDATOR_PROPERTY__NAME = eINSTANCE.getCustomValidatorProperty_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl <em>Custom Validator Property List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidatorPropertyList()
+		 * @generated
+		 */
+		EClass CUSTOM_VALIDATOR_PROPERTY_LIST = eINSTANCE.getCustomValidatorPropertyList();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED = eINSTANCE.getCustomValidatorPropertyList_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY = eINSTANCE.getCustomValidatorPropertyList_Property();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}' enum.

@@ -387,6 +387,24 @@ public interface DsFactory extends EFactory {
 	RegistryKeyProperty createRegistryKeyProperty();
 
 	/**
+	 * Returns a new object of class '<em>Custom Validator Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom Validator Property</em>'.
+	 * @generated
+	 */
+	CustomValidatorProperty createCustomValidatorProperty();
+
+	/**
+	 * Returns a new object of class '<em>Custom Validator Property List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom Validator Property List</em>'.
+	 * @generated
+	 */
+	CustomValidatorPropertyList createCustomValidatorPropertyList();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

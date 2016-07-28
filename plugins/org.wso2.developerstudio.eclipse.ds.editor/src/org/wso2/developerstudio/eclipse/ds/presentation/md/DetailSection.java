@@ -44,6 +44,8 @@ import org.wso2.developerstudio.eclipse.ds.AttributeMapping;
 import org.wso2.developerstudio.eclipse.ds.CallQuery;
 import org.wso2.developerstudio.eclipse.ds.ConfigurationProperty;
 import org.wso2.developerstudio.eclipse.ds.CustomValidator;
+import org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty;
+import org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList;
 import org.wso2.developerstudio.eclipse.ds.DataService;
 import org.wso2.developerstudio.eclipse.ds.DataServiceParameter;
 import org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration;
@@ -97,11 +99,9 @@ public class DetailSection {
 	private Label columnLabel = null;
 	private Text columnTxt = null;
 	private Color gray = new Color(Display.getCurrent(), new RGB(169, 169, 169));
-	private Color white = new Color(Display.getCurrent(),
-			new RGB(255, 255, 255));
+	private Color white = new Color(Display.getCurrent(), new RGB(255, 255, 255));
 
-	public DetailSection(FormToolkit toolkit,
-			AdapterFactoryItemDelegator adapterFactoryItemDelegator,
+	public DetailSection(FormToolkit toolkit, AdapterFactoryItemDelegator adapterFactoryItemDelegator,
 			Composite detailsclient, Object input, DsEditor editor) {
 		this.toolkit = toolkit;
 		this.adapterFactoryItemDelegator = adapterFactoryItemDelegator;
@@ -109,8 +109,7 @@ public class DetailSection {
 		this.selectedObject = input;
 		this.editingDomain = editor.getEditingDomain();
 		this.dataService = editor.getDataService();
-		this.sectionUtil = new DetailSectionUiUtil(editor.getDataService(),
-				editingDomain);
+		this.sectionUtil = new DetailSectionUiUtil(editor.getDataService(), editingDomain);
 	}
 
 	private Label labelMaker(String s) {
@@ -156,10 +155,8 @@ public class DetailSection {
 			voidMaker();
 			voidMaker();
 			labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_DESCRIPTION);
-			sectionUtil.getAttributeField(detailsclient, toolkit, input,
-					description.getValue(),
-					DsPackage.eINSTANCE.getDescription_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getAttributeField(detailsclient, toolkit, input, description.getValue(),
+					DsPackage.eINSTANCE.getDescription_Value(), DetailSectionCustomUiConstants.STRING);
 
 			// On Data Source selection
 		} else if (input instanceof DataServiceParameter) {
@@ -168,10 +165,8 @@ public class DetailSection {
 			voidMaker();
 			voidMaker();
 			labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_PARAMETER_ALLOW_ROLES);
-			sectionUtil.getAttributeField(detailsclient, toolkit, input,
-					dataServiceParameter.getValue(),
-					DsPackage.eINSTANCE.getDataServiceParameter_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getAttributeField(detailsclient, toolkit, input, dataServiceParameter.getValue(),
+					DsPackage.eINSTANCE.getDataServiceParameter_Value(), DetailSectionCustomUiConstants.STRING);
 
 			// On Data Source selection
 		} else if (input instanceof DataSourceConfiguration) {
@@ -180,21 +175,16 @@ public class DetailSection {
 			voidMaker();
 			voidMaker();
 			labelMaker(DetailSectionCustomUiConstants.DATA_SOURCE_CONFIGURATION_ID);
-			sectionUtil.getAttributeField(detailsclient, toolkit, input,
-					config.getId(),
-					DsPackage.eINSTANCE.getDataSourceConfiguration_Id(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getAttributeField(detailsclient, toolkit, input, config.getId(),
+					DsPackage.eINSTANCE.getDataSourceConfiguration_Id(), DetailSectionCustomUiConstants.STRING);
 			if (config != null) {
 
-				EList<ConfigurationProperty> configProperties = config
-						.getProperty();
+				EList<ConfigurationProperty> configProperties = config.getProperty();
 
-				Iterator<ConfigurationProperty> iterator = configProperties
-						.iterator();
+				Iterator<ConfigurationProperty> iterator = configProperties.iterator();
 
 				while (iterator.hasNext()) {
-					ConfigurationProperty configurationProperty = (ConfigurationProperty) iterator
-							.next();
+					ConfigurationProperty configurationProperty = (ConfigurationProperty) iterator.next();
 					configurationPropertyObjectConfigurator(configurationProperty);
 				}
 			}
@@ -216,9 +206,8 @@ public class DetailSection {
 			Sql sql = (Sql) input;
 
 			labelMaker(DetailSectionCustomUiConstants.QUERY_SQL);
-			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input,
-					sql.getValue(), DsPackage.eINSTANCE.getSql_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input, sql.getValue(),
+					DsPackage.eINSTANCE.getSql_Value(), DetailSectionCustomUiConstants.STRING);
 			voidMaker();
 			voidMaker();
 
@@ -227,9 +216,8 @@ public class DetailSection {
 			Sparql sparql = (Sparql) input;
 
 			labelMaker(DetailSectionCustomUiConstants.QUERY_SPARQL);
-			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input,
-					sparql.getValue(), DsPackage.eINSTANCE.getSparql_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input, sparql.getValue(),
+					DsPackage.eINSTANCE.getSparql_Value(), DetailSectionCustomUiConstants.STRING);
 			voidMaker();
 			voidMaker();
 
@@ -238,10 +226,8 @@ public class DetailSection {
 			QueryExpression queryExpression = (QueryExpression) input;
 
 			labelMaker(DetailSectionCustomUiConstants.QUERY_EXPRESSION);
-			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input,
-					queryExpression.getValue(),
-					DsPackage.eINSTANCE.getQueryExpression_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input, queryExpression.getValue(),
+					DsPackage.eINSTANCE.getQueryExpression_Value(), DetailSectionCustomUiConstants.STRING);
 			voidMaker();
 			voidMaker();
 
@@ -292,16 +278,13 @@ public class DetailSection {
 
 			WorkBookName wrkBook = (WorkBookName) input;
 			labelMaker(DetailSectionCustomUiConstants.EXCEL_WORKBOOK_NAME);
-			sectionUtil.getAttributeField(detailsclient, toolkit, wrkBook,
-					wrkBook.getValue(),
-					DsPackage.eINSTANCE.getWorkBookName_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getAttributeField(detailsclient, toolkit, wrkBook, wrkBook.getValue(),
+					DsPackage.eINSTANCE.getWorkBookName_Value(), DetailSectionCustomUiConstants.STRING);
 		} else if (input instanceof HasHeader) {
 
 			HasHeader hasHeader = (HasHeader) input;
 			labelMaker(DetailSectionCustomUiConstants.EXCEL_HAS_HEADER);
-			sectionUtil.getBooleanComboField(detailsclient, toolkit, hasHeader,
-					hasHeader.isValue(),
+			sectionUtil.getBooleanComboField(detailsclient, toolkit, hasHeader, hasHeader.isValue(),
 					DsPackage.eINSTANCE.getHasHeader_Value());
 
 		} else if (input instanceof StartingRow) {
@@ -309,18 +292,16 @@ public class DetailSection {
 			StartingRow str = (StartingRow) input;
 			labelMaker(DetailSectionCustomUiConstants.EXCEL_STARTING_ROW);
 			String existingVal = new Long(str.getValue()).toString();
-			sectionUtil.getAttributeField(detailsclient, toolkit, str,
-					existingVal, DsPackage.eINSTANCE.getStartingRow_Value(),
-					DetailSectionCustomUiConstants.LONG);
+			sectionUtil.getAttributeField(detailsclient, toolkit, str, existingVal,
+					DsPackage.eINSTANCE.getStartingRow_Value(), DetailSectionCustomUiConstants.LONG);
 
 		} else if (input instanceof MaxRowCount) {
 
 			MaxRowCount mxrc = (MaxRowCount) input;
 			labelMaker(DetailSectionCustomUiConstants.EXCEL_MAX_ROW_COUNT);
 			String existingVal = new Long(mxrc.getValue()).toString();
-			sectionUtil.getAttributeField(detailsclient, toolkit, mxrc,
-					existingVal, DsPackage.eINSTANCE.getMaxRowCount_Value(),
-					DetailSectionCustomUiConstants.LONG);
+			sectionUtil.getAttributeField(detailsclient, toolkit, mxrc, existingVal,
+					DsPackage.eINSTANCE.getMaxRowCount_Value(), DetailSectionCustomUiConstants.LONG);
 		} else if (input instanceof GSpreadQuery) {
 
 			// no attributes to display
@@ -329,10 +310,8 @@ public class DetailSection {
 			WorkSheetNumber wrkshtnum = (WorkSheetNumber) input;
 			labelMaker(DetailSectionCustomUiConstants.GSPRED_WORK_SHEET_NUM);
 			String existingVal = new Long(wrkshtnum.getValue()).toString();
-			sectionUtil.getAttributeField(detailsclient, toolkit, wrkshtnum,
-					existingVal,
-					DsPackage.eINSTANCE.getWorkSheetNumber_Value(),
-					DetailSectionCustomUiConstants.LONG);
+			sectionUtil.getAttributeField(detailsclient, toolkit, wrkshtnum, existingVal,
+					DsPackage.eINSTANCE.getWorkSheetNumber_Value(), DetailSectionCustomUiConstants.LONG);
 
 		} else if (input instanceof QueryParameter) {
 
@@ -342,20 +321,17 @@ public class DetailSection {
 		} else if (input instanceof LongRangeValidator) {
 
 			LongRangeValidator longrval = (LongRangeValidator) input;
-			validatorObjectConfigurator(longrval,
-					DetailSectionCustomUiConstants.LONG);
+			validatorObjectConfigurator(longrval, DetailSectionCustomUiConstants.LONG);
 
 		} else if (input instanceof DoubleRangeValidator) {
 
 			DoubleRangeValidator doublerval = (DoubleRangeValidator) input;
-			validatorObjectConfigurator(doublerval,
-					DetailSectionCustomUiConstants.DOUBLE);
+			validatorObjectConfigurator(doublerval, DetailSectionCustomUiConstants.DOUBLE);
 
 		} else if (input instanceof LengthValidator) {
 
 			LengthValidator lengthaval = (LengthValidator) input;
-			validatorObjectConfigurator(lengthaval,
-					DetailSectionCustomUiConstants.LONG);
+			validatorObjectConfigurator(lengthaval, DetailSectionCustomUiConstants.LONG);
 
 		} else if (input instanceof PatternValidator) {
 
@@ -363,10 +339,8 @@ public class DetailSection {
 			voidMaker();
 			PatternValidator pValiditor = (PatternValidator) input;
 			labelMaker(DetailSectionCustomUiConstants.VALIDATOR_PATTORN);
-			sectionUtil.getMultilineTextFileld(detailsclient, toolkit,
-					pValiditor, pValiditor.getPattern(),
-					DsPackage.eINSTANCE.getPatternValidator_Pattern(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, pValiditor, pValiditor.getPattern(),
+					DsPackage.eINSTANCE.getPatternValidator_Pattern(), DetailSectionCustomUiConstants.STRING);
 
 		} else if (input instanceof CustomValidator) {
 
@@ -374,10 +348,27 @@ public class DetailSection {
 			voidMaker();
 			CustomValidator customValidator = (CustomValidator) input;
 			labelMaker(DetailSectionCustomUiConstants.VALIDATOR_CUSTOM);
-			sectionUtil.getAttributeField(detailsclient, toolkit,
-					customValidator, customValidator.getClass_(),
-					DsPackage.eINSTANCE.getCustomValidator_Class(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getAttributeField(detailsclient, toolkit, customValidator, customValidator.getClass_(),
+					DsPackage.eINSTANCE.getCustomValidator_Class(), DetailSectionCustomUiConstants.STRING);
+
+		} else if (input instanceof CustomValidatorPropertyList) {
+
+			CustomValidatorPropertyList propList = (CustomValidatorPropertyList) input;
+
+			EList<CustomValidatorProperty> customValidatorProperties = propList.getProperty();
+
+			Iterator<CustomValidatorProperty> iterator = customValidatorProperties.iterator();
+
+			while (iterator.hasNext()) {
+
+				CustomValidatorProperty customValidatorProperty = (CustomValidatorProperty) iterator.next();
+				customValidatorPropertyObjectConfigurator(customValidatorProperty);
+			}
+
+		} else if (input instanceof CustomValidatorProperty) {
+
+			CustomValidatorProperty property = (CustomValidatorProperty) input;
+			customValidatorPropertyObjectConfigurator(property);
 
 		} else if (input instanceof EventTrigger) {
 
@@ -389,29 +380,24 @@ public class DetailSection {
 			voidMaker();
 			Expression expr = (Expression) input;
 			labelMaker(DetailSectionCustomUiConstants.EVENT_TRIGGER_EXPRESSION);
-			sectionUtil.getAttributeField(detailsclient, toolkit, expr,
-					expr.getValue(), DsPackage.eINSTANCE.getExpression_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getAttributeField(detailsclient, toolkit, expr, expr.getValue(),
+					DsPackage.eINSTANCE.getExpression_Value(), DetailSectionCustomUiConstants.STRING);
 
 		} else if (input instanceof TargetTopic) {
 			voidMaker();
 			voidMaker();
 			TargetTopic ttpic = (TargetTopic) input;
 			labelMaker(DetailSectionCustomUiConstants.EVENT_TRIGGER_TARGET_TOPIC);
-			sectionUtil.getAttributeField(detailsclient, toolkit, ttpic,
-					ttpic.getValue(),
-					DsPackage.eINSTANCE.getTargetTopic_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getAttributeField(detailsclient, toolkit, ttpic, ttpic.getValue(),
+					DsPackage.eINSTANCE.getTargetTopic_Value(), DetailSectionCustomUiConstants.STRING);
 
 		} else if (input instanceof Subscription) {
 			voidMaker();
 			voidMaker();
 			Subscription subscription = (Subscription) input;
 			labelMaker(DetailSectionCustomUiConstants.EVENT_TRIGGER_SUBSCRIPTION);
-			sectionUtil.getAttributeField(detailsclient, toolkit, subscription,
-					subscription.getValue(),
-					DsPackage.eINSTANCE.getSubscription_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getAttributeField(detailsclient, toolkit, subscription, subscription.getValue(),
+					DsPackage.eINSTANCE.getSubscription_Value(), DetailSectionCustomUiConstants.STRING);
 
 		} else if (input instanceof Operation) {
 
@@ -436,9 +422,8 @@ public class DetailSection {
 			voidMaker();
 
 			labelMaker(DetailSectionCustomUiConstants.CALL_QUERY_LINK);
-			final Combo queryCombo = sectionUtil.getCustomComboField(
-					detailsclient, toolkit, callQuery, callQuery.getHref(),
-					DsPackage.eINSTANCE.getCallQuery_Href(), displayValues);
+			final Combo queryCombo = sectionUtil.getCustomComboField(detailsclient, toolkit, callQuery,
+					callQuery.getHref(), DsPackage.eINSTANCE.getCallQuery_Href(), displayValues);
 			queryCombo.addSelectionListener(new SelectionAdapter() {
 
 				@Override
@@ -446,8 +431,7 @@ public class DetailSection {
 
 					super.widgetSelected(e);
 
-					EList<ParameterMapping> existingparms = callQuery
-							.getWithParam();
+					EList<ParameterMapping> existingparms = callQuery.getWithParam();
 
 					if (existingparms != null && !existingparms.isEmpty()) {
 
@@ -458,13 +442,11 @@ public class DetailSection {
 					int selectionIndex = queryCombo.getSelectionIndex();
 
 					if (selectionIndex >= 1) {
-						if (q[selectionIndex - 1] != null
-								&& !q[selectionIndex - 1].getId().equals("")) {
+						if (q[selectionIndex - 1] != null && !q[selectionIndex - 1].getId().equals("")) {
 
 							if (q[selectionIndex - 1].getParam() != null) {
 
-								EList<QueryParameter> queryParams = q[selectionIndex - 1]
-										.getParam();
+								EList<QueryParameter> queryParams = q[selectionIndex - 1].getParam();
 
 								if (!queryParams.isEmpty()) {
 
@@ -472,13 +454,11 @@ public class DetailSection {
 
 										String paramName = param.getName();
 
-										ParameterMapping parammapping = DsFactory.eINSTANCE
-												.createParameterMapping();
+										ParameterMapping parammapping = DsFactory.eINSTANCE.createParameterMapping();
 										parammapping.setName(paramName);
 										parammapping.setQueryParam(paramName);
 
-										callQuery.getWithParam().add(
-												parammapping);
+										callQuery.getWithParam().add(parammapping);
 
 									}
 								}
@@ -507,23 +487,19 @@ public class DetailSection {
 				.getPropertyDescriptors(dataService);
 		voidMaker();
 		voidMaker();
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
 			String displayName = desc.getDisplayName(dataService);
 			if (desc.getFeature(dataService) instanceof EAttributeImpl) {
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.DATA_SERVICE_NAME)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.DATA_SERVICE_NAME)) {
 
 					labelMaker(displayName);
 
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							selectedObject, dataService.getName(),
-							DsPackage.eINSTANCE.getDataService_Name(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, selectedObject, dataService.getName(),
+							DsPackage.eINSTANCE.getDataService_Name(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 					// Fixing
@@ -532,49 +508,38 @@ public class DetailSection {
 					Description description = dataService.getDescription();
 					if (description != null) {
 						labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_DESCRIPTION);
-						sectionUtil.getAttributeField(detailsclient, toolkit,
-								description, description.getValue(),
-								DsPackage.eINSTANCE.getDescription_Value(),
-								DetailSectionCustomUiConstants.STRING);
+						sectionUtil.getAttributeField(detailsclient, toolkit, description, description.getValue(),
+								DsPackage.eINSTANCE.getDescription_Value(), DetailSectionCustomUiConstants.STRING);
 						voidMaker();
 						voidMaker();
 					}
 
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.DATA_SERVICE_GROUP)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.DATA_SERVICE_GROUP)) {
 
 					labelMaker(displayName);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							selectedObject, dataService.getServiceGroup(),
-							DsPackage.eINSTANCE.getDataService_ServiceGroup(),
+					sectionUtil.getAttributeField(detailsclient, toolkit, selectedObject, dataService.getServiceGroup(),
+							DsPackage.eINSTANCE.getDataService_ServiceGroup(), DetailSectionCustomUiConstants.STRING);
+					voidMaker();
+					voidMaker();
+				}
+
+				if (displayName.equals(DetailSectionCustomUiConstants.DATA_SERVICE_NAMESPACE)) {
+
+					labelMaker(displayName);
+					sectionUtil.getAttributeField(detailsclient, toolkit, selectedObject,
+							dataService.getServiceNamespace(), DsPackage.eINSTANCE.getDataService_ServiceNamespace(),
 							DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.DATA_SERVICE_NAMESPACE)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.DATA_SERVICE_TRANSPORTS)) {
 
 					labelMaker(displayName);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							selectedObject, dataService.getServiceNamespace(),
-							DsPackage.eINSTANCE
-									.getDataService_ServiceNamespace(),
-							DetailSectionCustomUiConstants.STRING);
-					voidMaker();
-					voidMaker();
-				}
-
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.DATA_SERVICE_TRANSPORTS)) {
-
-					labelMaker(displayName);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							selectedObject, dataService.getTransports(),
-							DsPackage.eINSTANCE.getDataService_Transports(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, selectedObject, dataService.getTransports(),
+							DsPackage.eINSTANCE.getDataService_Transports(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
@@ -582,78 +547,61 @@ public class DetailSection {
 				if (displayName.equals(DetailSectionCustomUiConstants.BASE_URI)) {
 
 					labelMaker(displayName);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							selectedObject, dataService.getBaseURI(),
-							DsPackage.eINSTANCE.getDataService_BaseURI(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, selectedObject, dataService.getBaseURI(),
+							DsPackage.eINSTANCE.getDataService_BaseURI(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.ENABLE_BATCH_REQUESTS)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.ENABLE_BATCH_REQUESTS)) {
 
 					labelMaker(displayName);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							selectedObject,
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, selectedObject,
 							dataService.isEnableBatchRequests(),
-							DsPackage.eINSTANCE
-									.getDataService_EnableBatchRequests());
+							DsPackage.eINSTANCE.getDataService_EnableBatchRequests());
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.ENABLE_BOX_CARRING)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.ENABLE_BOX_CARRING)) {
 
 					labelMaker(displayName);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							selectedObject, dataService.isEnableBoxcarring(),
-							DsPackage.eINSTANCE
-									.getDataService_EnableBoxcarring());
-					voidMaker();
-					voidMaker();
-				}
-				
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.DISABLE_LEGACY_BOXCARRING_MODE)) {
-
-					labelMaker(displayName);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							selectedObject, dataService.isDisableLegacyBoxcarringMode(),
-							DsPackage.eINSTANCE
-									.getDataService_DisableLegacyBoxcarringMode());
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, selectedObject,
+							dataService.isEnableBoxcarring(), DsPackage.eINSTANCE.getDataService_EnableBoxcarring());
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.ENABLE_DTP)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.DISABLE_LEGACY_BOXCARRING_MODE)) {
 
 					labelMaker(displayName);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							selectedObject, dataService.isEnableDTP(),
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, selectedObject,
+							dataService.isDisableLegacyBoxcarringMode(),
+							DsPackage.eINSTANCE.getDataService_DisableLegacyBoxcarringMode());
+					voidMaker();
+					voidMaker();
+				}
+
+				if (displayName.equals(DetailSectionCustomUiConstants.ENABLE_DTP)) {
+
+					labelMaker(displayName);
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, selectedObject, dataService.isEnableDTP(),
 							DsPackage.eINSTANCE.getDataService_EnableDTP());
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.DISABLE_STREAMING)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.DISABLE_STREAMING)) {
 					labelMaker(displayName);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							selectedObject, dataService.isDisableStreaming(),
-							DsPackage.eINSTANCE
-									.getDataService_DisableStreaming());
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, selectedObject,
+							dataService.isDisableStreaming(), DsPackage.eINSTANCE.getDataService_DisableStreaming());
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.ENABLE_SECURITY)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.ENABLE_SECURITY)) {
 					labelMaker(displayName);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							selectedObject, dataService.isEnableSec(),
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, selectedObject, dataService.isEnableSec(),
 							DsPackage.eINSTANCE.getDataService_EnableSec());
 					voidMaker();
 					voidMaker();
@@ -675,70 +623,56 @@ public class DetailSection {
 		}
 	}
 
-	private void configurationPropertyObjectConfigurator(
-			ConfigurationProperty configProperty) {
+	private void configurationPropertyObjectConfigurator(ConfigurationProperty configProperty) {
 		voidMaker();
 		voidMaker();
 
-		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.DRIVER_PROPERTY)) {
+		if (configProperty.getName() != null && configProperty.getName().equals(DSActionConstants.DRIVER_PROPERTY)) {
 
 			labelMaker(DSActionConstants.DRIVER_DISPLAY);
 
 		}
 
-		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.PROTOCOL_PROPERTY)) {
+		if (configProperty.getName() != null && configProperty.getName().equals(DSActionConstants.PROTOCOL_PROPERTY)) {
 
 			labelMaker(DSActionConstants.PROTOCOL_DISPLAY);
 
 		}
 
-		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.USER_PROPERTY)) {
+		if (configProperty.getName() != null && configProperty.getName().equals(DSActionConstants.USER_PROPERTY)) {
 
 			labelMaker(DSActionConstants.USER_DISPLAY);
 
 		}
 
-		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.PASSWORD_PROPERTY)) {
+		if (configProperty.getName() != null && configProperty.getName().equals(DSActionConstants.PASSWORD_PROPERTY)) {
 
 			labelMaker(DSActionConstants.PASSWORD_DISPLAY);
 
 		}
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.MINPOOLSIZE_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.MINPOOLSIZE_PROPERTY)) {
 
 			labelMaker(DSActionConstants.MINPOOLSIZE_DISPLAY);
 
 		}
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.MAXPOOLSIZE_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.MAXPOOLSIZE_PROPERTY)) {
 
 			labelMaker(DSActionConstants.MAXPOOLSIZE_DISPLAY);
 
 		}
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.VALIDATIONQUERY_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.VALIDATIONQUERY_PROPERTY)) {
 
 			labelMaker(DSActionConstants.VALIDATIONQUERY_DISPLAY);
 
 		}
 
-		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.ENABLE_AUTO_COMMIT)) {
+		if (configProperty.getName() != null && configProperty.getName().equals(DSActionConstants.ENABLE_AUTO_COMMIT)) {
 
 			labelMaker(DSActionConstants.ENABLE_AUTO_COMMIT_DISPLAY);
 		}
@@ -746,64 +680,53 @@ public class DetailSection {
 		// Cassandra type
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.CASSANDRA_SERVER_URL)) {
+				&& configProperty.getName().equals(DSActionConstants.CASSANDRA_SERVER_URL)) {
 
 			labelMaker(DSActionConstants.CASSANDRA_SERVER_URL_DISPLAY);
 		}
 
-		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.CASSANDRA_USERNAME)) {
+		if (configProperty.getName() != null && configProperty.getName().equals(DSActionConstants.CASSANDRA_USERNAME)) {
 
 			labelMaker(DSActionConstants.CASSANDRA_USERNAME_DISPLAY);
 		}
 
-		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.CASSANDRA_PASSWORD)) {
+		if (configProperty.getName() != null && configProperty.getName().equals(DSActionConstants.CASSANDRA_PASSWORD)) {
 
 			labelMaker(DSActionConstants.CASSANDRA_PASSWORD_DISPLAY);
 		}
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME)) {
+				&& configProperty.getName().equals(DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME)) {
 
 			labelMaker(DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME_DISPLAY);
 		}
 
 		// CSV constants
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.CSV_DATASOURCE_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.CSV_DATASOURCE_PROPERTY)) {
 
 			labelMaker(DSActionConstants.CSV_DATASOURCE_DISPLAY);
 		}
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.COLUMN_SEPERATOR_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.COLUMN_SEPERATOR_PROPERTY)) {
 
 			labelMaker(DSActionConstants.COLUMN_SEPERATOR_DISPLAY);
 		}
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.STARTING_ROW_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.STARTING_ROW_PROPERTY)) {
 
 			labelMaker(DSActionConstants.STARTING_ROW_DISPLAY);
 		}
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.MAX_ROW_COUNT_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.MAX_ROW_COUNT_PROPERTY)) {
 
 			labelMaker(DSActionConstants.MAX_ROW_COUNT_DISPLAY);
 		}
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.HAS_HEADER_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.HAS_HEADER_PROPERTY)) {
 
 			labelMaker(DSActionConstants.HAS_HEADER_DISPLAY);
 		}
@@ -811,8 +734,7 @@ public class DetailSection {
 		// Excel
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.EXCEL_DATASOURCE_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.EXCEL_DATASOURCE_PROPERTY)) {
 
 			labelMaker(DSActionConstants.EXCEL_DATASOURCE_DISPLAY);
 		}
@@ -820,54 +742,46 @@ public class DetailSection {
 		// JDNI type
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.JNDI_CONTEXT_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.JNDI_CONTEXT_PROPERTY)) {
 
 			labelMaker(DSActionConstants.JNDI_CONTEXT_DISPLAY);
 		}
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.JNDI_PROVIDER_URL_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.JNDI_PROVIDER_URL_PROPERTY)) {
 
 			labelMaker(DSActionConstants.JNDI_PROVIDER_URL_DISPLAY);
 		}
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.JNDI_RESOURCE_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.JNDI_RESOURCE_PROPERTY)) {
 
 			labelMaker(DSActionConstants.JNDI_RESOURCE_DISPLAY);
 		}
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.JNDI_PASSWORD_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.JNDI_PASSWORD_PROPERTY)) {
 
 			labelMaker(DSActionConstants.JNDI_PASSWORD_DISPLAY);
 		}
 
 		// Gspread
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.GSPREAD_DATASOURCE_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.GSPREAD_DATASOURCE_PROPERTY)) {
 
 			labelMaker(DSActionConstants.GSPREAD_DATASOURCE_DISPLAY);
 		}
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.GSPREAD_VISIBILITY_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.GSPREAD_VISIBILITY_PROPERTY)) {
 
 			labelMaker(DSActionConstants.GSPREAD_VISIBILITY_DISPLAY);
 		}
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.GSPREAD_USERNAME_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.GSPREAD_USERNAME_PROPERTY)) {
 
 			labelMaker(DSActionConstants.GSPREAD_USERNAME_DISPLAY);
 		}
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.GSPREAD_PASSWORD_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.GSPREAD_PASSWORD_PROPERTY)) {
 
 			labelMaker(DSActionConstants.GSPREAD_PASSWORD_DISPLAY);
 		}
@@ -875,35 +789,26 @@ public class DetailSection {
 		// Carbon data Source
 
 		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.CARBON_DATASOURCE_NAME_PROPERTY)) {
+				&& configProperty.getName().equals(DSActionConstants.CARBON_DATASOURCE_NAME_PROPERTY)) {
 
 			labelMaker(DSActionConstants.CARBON_DATASOURCE_NAME_DISPLAY);
 		}
 
-		if (configProperty.getName() != null
-				&& configProperty.getName().equals(
-						DSActionConstants.ENABLE_AUTO_COMMIT)) {
+		if (configProperty.getName() != null && configProperty.getName().equals(DSActionConstants.ENABLE_AUTO_COMMIT)) {
 
-			sectionUtil.getBooleanComboWithStringPersistance(detailsclient,
-					toolkit, configProperty, configProperty.getValue(),
-					DsPackage.eINSTANCE.getConfigurationProperty_Value());
+			sectionUtil.getBooleanComboWithStringPersistance(detailsclient, toolkit, configProperty,
+					configProperty.getValue(), DsPackage.eINSTANCE.getConfigurationProperty_Value());
 
 		} else if (configProperty.getName() != null
-				&& (configProperty.getName().equals(
-						DSActionConstants.PASSWORD_PROPERTY) || configProperty
-						.getName().equals(DSActionConstants.CASSANDRA_PASSWORD))) {
+				&& (configProperty.getName().equals(DSActionConstants.PASSWORD_PROPERTY)
+						|| configProperty.getName().equals(DSActionConstants.CASSANDRA_PASSWORD))) {
 
-			sectionUtil.getPassWordField(detailsclient, toolkit,
-					configProperty, configProperty.getValue(),
-					DsPackage.eINSTANCE.getConfigurationProperty_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getPassWordField(detailsclient, toolkit, configProperty, configProperty.getValue(),
+					DsPackage.eINSTANCE.getConfigurationProperty_Value(), DetailSectionCustomUiConstants.STRING);
 
 		} else {
-			sectionUtil.getAttributeField(detailsclient, toolkit,
-					configProperty, configProperty.getValue(),
-					DsPackage.eINSTANCE.getConfigurationProperty_Value(),
-					DetailSectionCustomUiConstants.STRING);
+			sectionUtil.getAttributeField(detailsclient, toolkit, configProperty, configProperty.getValue(),
+					DsPackage.eINSTANCE.getConfigurationProperty_Value(), DetailSectionCustomUiConstants.STRING);
 		}
 
 	}
@@ -917,8 +822,7 @@ public class DetailSection {
 		Combo rgkCombo = null;
 		Label keyColLabel = null;
 
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
@@ -930,23 +834,17 @@ public class DetailSection {
 
 					labelMaker(displayName);
 
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							query, query.getId(),
-							DsPackage.eINSTANCE.getQuery_Id(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, query, query.getId(),
+							DsPackage.eINSTANCE.getQuery_Id(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.QUERY_USE_CONFIG)
-						&& dataService != null) {
+				if (displayName.equals(DetailSectionCustomUiConstants.QUERY_USE_CONFIG) && dataService != null) {
 
-					EList<DataSourceConfiguration> configList = dataService
-							.getConfig();
+					EList<DataSourceConfiguration> configList = dataService.getConfig();
 
-					DataSourceConfiguration[] confArr = configList
-							.toArray(new DataSourceConfiguration[0]);
+					DataSourceConfiguration[] confArr = configList.toArray(new DataSourceConfiguration[0]);
 
 					// Adds a select value to the combo box
 					String[] displayValues = new String[confArr.length + 1];
@@ -956,25 +854,20 @@ public class DetailSection {
 					}
 
 					labelMaker(displayName);
-					sectionUtil.getCustomComboField(detailsclient, toolkit,
-							query, query.getUseConfig(),
-							DsPackage.eINSTANCE.getQuery_UseConfig(),
-							displayValues);
+					sectionUtil.getCustomComboField(detailsclient, toolkit, query, query.getUseConfig(),
+							DsPackage.eINSTANCE.getQuery_UseConfig(), displayValues);
 
 					voidMaker();
 					voidMaker();
 
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.QUERY_INPUT_EVENT_TRIGGER)
+				if (displayName.equals(DetailSectionCustomUiConstants.QUERY_INPUT_EVENT_TRIGGER)
 						&& dataService != null) {
 
-					EList<EventTrigger> eventList = dataService
-							.getEventTrigger();
+					EList<EventTrigger> eventList = dataService.getEventTrigger();
 
-					EventTrigger[] eventArr = eventList
-							.toArray(new EventTrigger[0]);
+					EventTrigger[] eventArr = eventList.toArray(new EventTrigger[0]);
 
 					// Adds a select value to the combo box
 					String[] displayValues = new String[eventArr.length + 1];
@@ -984,22 +877,17 @@ public class DetailSection {
 					}
 					labelMaker(displayName);
 
-					sectionUtil.getCustomComboField(detailsclient, toolkit,
-							query, query.getInputEventTrigger(),
-							DsPackage.eINSTANCE.getQuery_InputEventTrigger(),
-							displayValues);
+					sectionUtil.getCustomComboField(detailsclient, toolkit, query, query.getInputEventTrigger(),
+							DsPackage.eINSTANCE.getQuery_InputEventTrigger(), displayValues);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.QUERY_OUTPUT_EVENT_TRIGGER)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.QUERY_OUTPUT_EVENT_TRIGGER)) {
 
-					EList<EventTrigger> eventList = dataService
-							.getEventTrigger();
+					EList<EventTrigger> eventList = dataService.getEventTrigger();
 
-					EventTrigger[] eventArr = eventList
-							.toArray(new EventTrigger[0]);
+					EventTrigger[] eventArr = eventList.toArray(new EventTrigger[0]);
 
 					// Adds a select value to the combo box
 					String[] displayValues = new String[eventArr.length + 1];
@@ -1010,38 +898,31 @@ public class DetailSection {
 
 					labelMaker(displayName);
 
-					sectionUtil.getCustomComboField(detailsclient, toolkit,
-							query, query.getOutputEventTrigger(),
-							DsPackage.eINSTANCE.getQuery_OutputEventTrigger(),
-							displayValues);
+					sectionUtil.getCustomComboField(detailsclient, toolkit, query, query.getOutputEventTrigger(),
+							DsPackage.eINSTANCE.getQuery_OutputEventTrigger(), displayValues);
 					voidMaker();
 					voidMaker();
 
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.QUERY_RETURN_GENERATED_KEYS)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.QUERY_RETURN_GENERATED_KEYS)) {
 
 					labelMaker(displayName);
 
-					rgkCombo = sectionUtil.getBooleanComboField(detailsclient,
-							toolkit, query, query.isReturnGeneratedKeys(),
-							DsPackage.eINSTANCE.getQuery_ReturnGeneratedKeys());
+					rgkCombo = sectionUtil.getBooleanComboField(detailsclient, toolkit, query,
+							query.isReturnGeneratedKeys(), DsPackage.eINSTANCE.getQuery_ReturnGeneratedKeys());
 
 					voidMaker();
 					voidMaker();
 
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.QUERY_KEY_COLUMNS)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.QUERY_KEY_COLUMNS)) {
 
 					keyColLabel = labelMaker(displayName);
 
-					keyColText = sectionUtil.getAttributeField(detailsclient,
-							toolkit, query, query.getKeyColumns(),
-							DsPackage.eINSTANCE.getQuery_KeyColumns(),
-							DetailSectionCustomUiConstants.STRING);
+					keyColText = sectionUtil.getAttributeField(detailsclient, toolkit, query, query.getKeyColumns(),
+							DsPackage.eINSTANCE.getQuery_KeyColumns(), DetailSectionCustomUiConstants.STRING);
 
 					if (rgkCombo != null && rgkCombo.getSelectionIndex() == 1) {
 
@@ -1050,10 +931,8 @@ public class DetailSection {
 
 					}
 
-					if (rgkCombo != null && keyColText != null
-							&& keyColLabel != null) {
-						addSelectionListnerForRgkCombo(rgkCombo, keyColText,
-								keyColLabel);
+					if (rgkCombo != null && keyColText != null && keyColLabel != null) {
+						addSelectionListnerForRgkCombo(rgkCombo, keyColText, keyColLabel);
 					}
 					voidMaker();
 					voidMaker();
@@ -1065,8 +944,7 @@ public class DetailSection {
 		}
 	}
 
-	private void addSelectionListnerForRgkCombo(final Combo rgkCombo,
-			final Text keyColText, final Label keyColLabel) {
+	private void addSelectionListnerForRgkCombo(final Combo rgkCombo, final Text keyColText, final Label keyColLabel) {
 
 		rgkCombo.addListener(SWT.Selection, new Listener() {
 
@@ -1092,44 +970,59 @@ public class DetailSection {
 		voidMaker();
 
 		if (queryProperty.getName() != null
-				&& queryProperty.getName().equals(
-						DetailSectionCustomUiConstants.QUERY_TIMEOUT)) {
+				&& queryProperty.getName().equals(DetailSectionCustomUiConstants.QUERY_TIMEOUT)) {
 
 			labelMaker(DetailSectionCustomUiConstants.QUERY_TIMEOUT_DISPLAY);
 		}
 
 		if (queryProperty.getName() != null
-				&& queryProperty.getName().equals(
-						DetailSectionCustomUiConstants.FETCH_DIRECTION)) {
+				&& queryProperty.getName().equals(DetailSectionCustomUiConstants.FETCH_DIRECTION)) {
 
 			labelMaker(DetailSectionCustomUiConstants.FETCH_DIRECTION_DISPLAY);
 		}
 
 		if (queryProperty.getName() != null
-				&& queryProperty.getName().equals(
-						DetailSectionCustomUiConstants.FETCH_SIZE)) {
+				&& queryProperty.getName().equals(DetailSectionCustomUiConstants.FETCH_SIZE)) {
 
 			labelMaker(DetailSectionCustomUiConstants.FETCH_SIZE_DISPLAY);
 		}
 
 		if (queryProperty.getName() != null
-				&& queryProperty.getName().equals(
-						DetailSectionCustomUiConstants.MAX_FIELD_SIZE)) {
+				&& queryProperty.getName().equals(DetailSectionCustomUiConstants.MAX_FIELD_SIZE)) {
 
 			labelMaker(DetailSectionCustomUiConstants.MAX_FIELD_SIZE_DISPLAY);
 		}
 
 		if (queryProperty.getName() != null
-				&& queryProperty.getName().equals(
-						DetailSectionCustomUiConstants.MAX_ROWS)) {
+				&& queryProperty.getName().equals(DetailSectionCustomUiConstants.MAX_ROWS)) {
 
 			labelMaker(DetailSectionCustomUiConstants.MAX_ROWS_DISPLAY);
 		}
 
-		sectionUtil.getAttributeField(detailsclient, toolkit, queryProperty,
-				queryProperty.getValue(),
-				DsPackage.eINSTANCE.getQueryProperty_Value(),
+		sectionUtil.getAttributeField(detailsclient, toolkit, queryProperty, queryProperty.getValue(),
+				DsPackage.eINSTANCE.getQueryProperty_Value(), DetailSectionCustomUiConstants.STRING);
+
+		// TODO add other properties as well
+	}
+
+	private void customValidatorPropertyObjectConfigurator(CustomValidatorProperty customValidatorProperty) {
+		voidMaker();
+		voidMaker();
+
+		labelMaker(DetailSectionCustomUiConstants.PROPERTY_NAME_DISPLAY);
+
+		sectionUtil.getAttributeField(detailsclient, toolkit, customValidatorProperty,
+				customValidatorProperty.getName(), DsPackage.eINSTANCE.getCustomValidatorProperty_Name(),
 				DetailSectionCustomUiConstants.STRING);
+		voidMaker();
+		voidMaker();
+		labelMaker(DetailSectionCustomUiConstants.PROPERTY_VALUE_DISPLAY);
+
+		sectionUtil.getAttributeField(detailsclient, toolkit, customValidatorProperty,
+				customValidatorProperty.getValue(), DsPackage.eINSTANCE.getCustomValidatorProperty_Value(),
+				DetailSectionCustomUiConstants.STRING);
+		voidMaker();
+		voidMaker();
 
 		// TODO add other properties as well
 	}
@@ -1140,8 +1033,7 @@ public class DetailSection {
 				.getPropertyDescriptors(result);
 		voidMaker();
 		voidMaker();
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
@@ -1149,83 +1041,64 @@ public class DetailSection {
 
 			if (desc.getFeature(result) instanceof EAttributeImpl) {
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESULT_GROUPED_BY_ELEMENT)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESULT_GROUPED_BY_ELEMENT)) {
 
 					labelMaker(DetailSectionCustomUiConstants.RESULT_GROUPED_BY_ELEMENT);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							result, result.getElementName(),
-							DsPackage.eINSTANCE.getResultMapping_ElementName(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, result, result.getElementName(),
+							DsPackage.eINSTANCE.getResultMapping_ElementName(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESULT_ROW_NAME)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESULT_ROW_NAME)) {
 
 					labelMaker(DetailSectionCustomUiConstants.RESULT_ROW_NAME);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							result, result.getRowName(),
-							DsPackage.eINSTANCE.getResultMapping_RowName(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, result, result.getRowName(),
+							DsPackage.eINSTANCE.getResultMapping_RowName(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESULT_ROW_NAMESPACE)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESULT_ROW_NAMESPACE)) {
 
 					labelMaker(DetailSectionCustomUiConstants.RESULT_ROW_NAMESPACE);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							result, result.getDefaultNamespace(),
-							DsPackage.eINSTANCE
-									.getResultMapping_DefaultNamespace(),
+					sectionUtil.getAttributeField(detailsclient, toolkit, result, result.getDefaultNamespace(),
+							DsPackage.eINSTANCE.getResultMapping_DefaultNamespace(),
 							DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESULT_XSLT_PATH)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESULT_XSLT_PATH)) {
 
 					// TODO implement or re-use existing XSLT path confgurator.
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESULT_USE_COLUMN_NUMBERS)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESULT_USE_COLUMN_NUMBERS)) {
 
 					labelMaker(DetailSectionCustomUiConstants.RESULT_USE_COLUMN_NUMBERS);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							result, result.isUseColumnNumbers(),
-							DsPackage.eINSTANCE
-									.getResultMapping_UseColumnNumbers());
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, result, result.isUseColumnNumbers(),
+							DsPackage.eINSTANCE.getResultMapping_UseColumnNumbers());
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESULT_ESCAPE_NONPRINTABLE_CHAR)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESULT_ESCAPE_NONPRINTABLE_CHAR)) {
 
 					labelMaker(DetailSectionCustomUiConstants.RESULT_ESCAPE_NONPRINTABLE_CHAR);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							result, result.isEscapeNonPrintableChar(),
-							DsPackage.eINSTANCE
-									.getResultMapping_EscapeNonPrintableChar());
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, result, result.isEscapeNonPrintableChar(),
+							DsPackage.eINSTANCE.getResultMapping_EscapeNonPrintableChar());
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESULT_OUTPUT_TYPE)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESULT_OUTPUT_TYPE)) {
 
 					labelMaker(DetailSectionCustomUiConstants.RESULT_OUTPUT_TYPE_LABEL);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							result, result.getOutputType(),
-							DsPackage.eINSTANCE.getResultMapping_OutputType(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, result, result.getOutputType(),
+							DsPackage.eINSTANCE.getResultMapping_OutputType(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
@@ -1234,32 +1107,28 @@ public class DetailSection {
 		}
 	}
 
-	private void elementMappingObjectConfigurator(final ElementMapping element,
-			boolean makeItComplex) {
+	private void elementMappingObjectConfigurator(final ElementMapping element, boolean makeItComplex) {
 
 		ArrayList<IItemPropertyDescriptor> detailPropertyDescriptors = (ArrayList<IItemPropertyDescriptor>) adapterFactoryItemDelegator
 				.getPropertyDescriptors(element);
 		// ///////////////////////////////////////////////////
 		if (!makeItComplex) {
 			String initialVal = "";
-			String[] typeCombodisplayValues = { SELECT_VALUE,
-					DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0,
+			String[] typeCombodisplayValues = { SELECT_VALUE, DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0,
 					DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_1 };
 
-			if (element.getQueryParam() != null
-					&& !element.getQueryParam().equals("")) {
+			if (element.getQueryParam() != null && !element.getQueryParam().equals("")) {
 
 				initialVal = DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_1;
-			} else if (element.getColumn() != null
-					&& !element.getColumn().equals("")) {
+			} else if (element.getColumn() != null && !element.getColumn().equals("")) {
 
 				initialVal = DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0;
 			}
 
 			labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_DATA_SOURCE_TYPE);
 
-			paramTypeCombo = sectionUtil.getCustomComboField(detailsclient,
-					toolkit, null, initialVal, null, typeCombodisplayValues);
+			paramTypeCombo = sectionUtil.getCustomComboField(detailsclient, toolkit, null, initialVal, null,
+					typeCombodisplayValues);
 
 			paramTypeCombo.addSelectionListener(new SelectionAdapter() {
 
@@ -1284,10 +1153,8 @@ public class DetailSection {
 
 						if (element.getQueryParam() != null) {
 
-							EcoreUtil
-									.remove(element,
-											DsPackage.Literals.ELEMENT_MAPPING__QUERY_PARAM,
-											element.getQueryParam());
+							EcoreUtil.remove(element, DsPackage.Literals.ELEMENT_MAPPING__QUERY_PARAM,
+									element.getQueryParam());
 
 						}
 
@@ -1309,9 +1176,7 @@ public class DetailSection {
 
 						if (element.getColumn() != null) {
 
-							EcoreUtil.remove(element,
-									DsPackage.Literals.ELEMENT_MAPPING__COLUMN,
-									element.getColumn());
+							EcoreUtil.remove(element, DsPackage.Literals.ELEMENT_MAPPING__COLUMN, element.getColumn());
 						}
 
 					}
@@ -1323,38 +1188,31 @@ public class DetailSection {
 		voidMaker();
 		voidMaker();
 
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
 			String displayName = desc.getDisplayName(element);
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OUTPUT_FIELD)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OUTPUT_FIELD)) {
 
 				if (!makeItComplex) {
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OUTPUT_FIELD);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							element, element.getName(),
-							DsPackage.eINSTANCE.getElementMapping_Name(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, element, element.getName(),
+							DsPackage.eINSTANCE.getElementMapping_Name(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				} else {
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_COMPLEX_NAME);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							element, element.getName(),
-							DsPackage.eINSTANCE.getElementMapping_Name(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, element, element.getName(),
+							DsPackage.eINSTANCE.getElementMapping_Name(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_COLUMN_NAME)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_COLUMN_NAME)) {
 
 				if (!makeItComplex) {
 					// Fixed TOOLS-1012.
@@ -1364,8 +1222,7 @@ public class DetailSection {
 
 						Object result = editingDomain.getParent(element);
 
-						if (result != null
-								&& editingDomain.getParent(element) instanceof ResultMapping) {
+						if (result != null && editingDomain.getParent(element) instanceof ResultMapping) {
 
 							ResultMapping resultMapping = (ResultMapping) result;
 
@@ -1378,24 +1235,19 @@ public class DetailSection {
 					}
 
 					columnLabel = labelMaker(labelString);
-					columnTxt = sectionUtil.getAttributeField(detailsclient,
-							toolkit, element, element.getColumn(),
-							DsPackage.eINSTANCE.getElementMapping_Column(),
-							DetailSectionCustomUiConstants.STRING);
+					columnTxt = sectionUtil.getAttributeField(detailsclient, toolkit, element, element.getColumn(),
+							DsPackage.eINSTANCE.getElementMapping_Column(), DetailSectionCustomUiConstants.STRING);
 
 					voidMaker();
 					voidMaker();
 				}
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_QUERY_PARAM)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_QUERY_PARAM)) {
 				if (!makeItComplex) {
 					queryParamLabel = labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_QUERY_PARAM);
-					queryParamText = sectionUtil.getAttributeField(
-							detailsclient, toolkit, element,
-							element.getQueryParam(),
-							DsPackage.eINSTANCE.getElementMapping_QueryParam(),
+					queryParamText = sectionUtil.getAttributeField(detailsclient, toolkit, element,
+							element.getQueryParam(), DsPackage.eINSTANCE.getElementMapping_QueryParam(),
 							DetailSectionCustomUiConstants.STRING);
 
 					if (element.getQueryParam() == null) {
@@ -1409,108 +1261,84 @@ public class DetailSection {
 				}
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT)) {
 				if (!makeItComplex) {
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							element, element.getExport(),
-							DsPackage.eINSTANCE.getElementMapping_Export(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, element, element.getExport(),
+							DsPackage.eINSTANCE.getElementMapping_Export(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT_TYPE)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT_TYPE)) {
 				if (!makeItComplex) {
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_EXPORT_TYPE);
 					String[] displayValues = { SELECT_VALUE, "SCALAR", "ARRAY" };
-					sectionUtil.getCustomComboField(detailsclient, toolkit,
-							element, element.getExportType(),
-							DsPackage.eINSTANCE.getElementMapping_ExportType(),
-							displayValues);
+					sectionUtil.getCustomComboField(detailsclient, toolkit, element, element.getExportType(),
+							DsPackage.eINSTANCE.getElementMapping_ExportType(), displayValues);
 					voidMaker();
 					voidMaker();
 				}
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE)) {
 				if (!makeItComplex) {
-					String[] displayValues = { SELECT_VALUE, "xs:string",
-							"xs:integer", "xs:boolean", "xs:float",
-							"xs:double", "xs:decimal", "xs:dateTime",
-							"xs:time", "xs:date", "xs:long", "xs:base64Binary" };
+					String[] displayValues = { SELECT_VALUE, "xs:string", "xs:integer", "xs:boolean", "xs:float",
+							"xs:double", "xs:decimal", "xs:dateTime", "xs:time", "xs:date", "xs:long",
+							"xs:base64Binary" };
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE);
-					sectionUtil.getCustomComboField(detailsclient, toolkit,
-							element, element.getXsdType(),
-							DsPackage.eINSTANCE.getElementMapping_XsdType(),
-							displayValues);
+					sectionUtil.getCustomComboField(detailsclient, toolkit, element, element.getXsdType(),
+							DsPackage.eINSTANCE.getElementMapping_XsdType(), displayValues);
 					voidMaker();
 					voidMaker();
 				}
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_DAFAULT_VALUE)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_DAFAULT_VALUE)) {
 				if (!makeItComplex) {
 
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_DAFAULT_VALUE);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							element, element.getValue(),
-							DsPackage.eINSTANCE.getElementMapping_Value(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, element, element.getValue(),
+							DsPackage.eINSTANCE.getElementMapping_Value(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPING_ALLOWED_USER_ROLES)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPING_ALLOWED_USER_ROLES)) {
 				if (!makeItComplex) {
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPING_ALLOWED_USER_ROLES);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							element, element.getRequiredRoles(),
-							DsPackage.eINSTANCE
-									.getElementMapping_RequiredRoles(),
+					sectionUtil.getAttributeField(detailsclient, toolkit, element, element.getRequiredRoles(),
+							DsPackage.eINSTANCE.getElementMapping_RequiredRoles(),
 							DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_NAMESPACE)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_NAMESPACE)) {
 
 				labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_NAMESPACE);
-				sectionUtil.getAttributeField(detailsclient, toolkit, element,
-						element.getNamespace(),
-						DsPackage.eINSTANCE.getElementMapping_Namespace(),
-						DetailSectionCustomUiConstants.STRING);
+				sectionUtil.getAttributeField(detailsclient, toolkit, element, element.getNamespace(),
+						DsPackage.eINSTANCE.getElementMapping_Namespace(), DetailSectionCustomUiConstants.STRING);
 				voidMaker();
 				voidMaker();
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OPTIONAL_PARAM)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OPTIONAL_PARAM)) {
 				if (!makeItComplex) {
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OPTIONAL_PARAM);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							element, element.isOptional(),
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, element, element.isOptional(),
 							DsPackage.eINSTANCE.getElementMapping_Optional());
 				}
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_ARRAY_NAME)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_ARRAY_NAME)) {
 				if (!makeItComplex) {
 					labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_ARRAY_NAME);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							element, element.getArrayName(),
-							DsPackage.eINSTANCE.getElementMapping_ArrayName(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, element, element.getArrayName(),
+							DsPackage.eINSTANCE.getElementMapping_ArrayName(), DetailSectionCustomUiConstants.STRING);
 				}
 				voidMaker();
 				voidMaker();
@@ -1520,45 +1348,35 @@ public class DetailSection {
 
 		if (makeItComplex) {
 
-			EcoreUtil.remove(element,
-					DsPackage.Literals.ELEMENT_MAPPING__EXPORT_TYPE,
-					element.getExportType());
-			EcoreUtil.remove(element,
-					DsPackage.Literals.ELEMENT_MAPPING__XSD_TYPE,
-					element.getXsdType());
+			EcoreUtil.remove(element, DsPackage.Literals.ELEMENT_MAPPING__EXPORT_TYPE, element.getExportType());
+			EcoreUtil.remove(element, DsPackage.Literals.ELEMENT_MAPPING__XSD_TYPE, element.getXsdType());
 
 		}
 
 	}
 
-	private void attributeMappingObjectConfiguretor(
-			AttributeMapping attributeMapping) {
+	private void attributeMappingObjectConfiguretor(AttributeMapping attributeMapping) {
 
 		ArrayList<IItemPropertyDescriptor> detailPropertyDescriptors = (ArrayList<IItemPropertyDescriptor>) adapterFactoryItemDelegator
 				.getPropertyDescriptors(attributeMapping);
 		voidMaker();
 		voidMaker();
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
 			String displayName = desc.getDisplayName(attributeMapping);
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OUTPUT_FIELD)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OUTPUT_FIELD)) {
 
 				labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OUTPUT_FIELD);
-				sectionUtil.getAttributeField(detailsclient, toolkit,
-						attributeMapping, attributeMapping.getName(),
-						DsPackage.eINSTANCE.getAttributeMapping_Name(),
-						DetailSectionCustomUiConstants.STRING);
+				sectionUtil.getAttributeField(detailsclient, toolkit, attributeMapping, attributeMapping.getName(),
+						DsPackage.eINSTANCE.getAttributeMapping_Name(), DetailSectionCustomUiConstants.STRING);
 				voidMaker();
 				voidMaker();
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_COLUMN_NAME)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_COLUMN_NAME)) {
 
 				// Fixed TOOLS-1012.
 				String labelString = DetailSectionCustomUiConstants.ELEMENT_MAPPING_COLUMN_NAME;
@@ -1567,8 +1385,7 @@ public class DetailSection {
 
 					Object result = editingDomain.getParent(attributeMapping);
 
-					if (result != null
-							&& editingDomain.getParent(attributeMapping) instanceof ResultMapping) {
+					if (result != null && editingDomain.getParent(attributeMapping) instanceof ResultMapping) {
 
 						ResultMapping resultMapping = (ResultMapping) result;
 
@@ -1580,54 +1397,40 @@ public class DetailSection {
 					}
 				}
 				labelMaker(labelString);
-				sectionUtil.getAttributeField(detailsclient, toolkit,
-						attributeMapping, attributeMapping.getColumn(),
-						DsPackage.eINSTANCE.getAttributeMapping_Column(),
+				sectionUtil.getAttributeField(detailsclient, toolkit, attributeMapping, attributeMapping.getColumn(),
+						DsPackage.eINSTANCE.getAttributeMapping_Column(), DetailSectionCustomUiConstants.STRING);
+				voidMaker();
+				voidMaker();
+
+			}
+
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE)) {
+
+				String[] displayValues = { SELECT_VALUE, "xs:string", "xs:integer", "xs:boolean", "xs:float",
+						"xs:double", "xs:decimal", "xs:dateTime", "xs:time", "xs:date", "xs:long", "xs:base64Binary" };
+				labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE);
+				sectionUtil.getCustomComboField(detailsclient, toolkit, attributeMapping, attributeMapping.getXsdType(),
+						DsPackage.eINSTANCE.getAttributeMapping_XsdType(), displayValues);
+				voidMaker();
+				voidMaker();
+			}
+
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPING_ALLOWED_USER_ROLES)) {
+
+				labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPING_ALLOWED_USER_ROLES);
+				sectionUtil.getAttributeField(detailsclient, toolkit, attributeMapping,
+						attributeMapping.getRequiredRoles(), DsPackage.eINSTANCE.getAttributeMapping_RequiredRoles(),
 						DetailSectionCustomUiConstants.STRING);
 				voidMaker();
 				voidMaker();
 
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE)) {
-
-				String[] displayValues = { SELECT_VALUE, "xs:string",
-						"xs:integer", "xs:boolean", "xs:float", "xs:double",
-						"xs:decimal", "xs:dateTime", "xs:time", "xs:date",
-						"xs:long", "xs:base64Binary" };
-				labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_SCHEMA_TYPE);
-				sectionUtil.getCustomComboField(detailsclient, toolkit,
-						attributeMapping, attributeMapping.getXsdType(),
-						DsPackage.eINSTANCE.getAttributeMapping_XsdType(),
-						displayValues);
-				voidMaker();
-				voidMaker();
-			}
-
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPING_ALLOWED_USER_ROLES)) {
-
-				labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPING_ALLOWED_USER_ROLES);
-				sectionUtil
-						.getAttributeField(detailsclient, toolkit,
-								attributeMapping, attributeMapping
-										.getRequiredRoles(),
-								DsPackage.eINSTANCE
-										.getAttributeMapping_RequiredRoles(),
-								DetailSectionCustomUiConstants.STRING);
-				voidMaker();
-				voidMaker();
-
-			}
-
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OPTIONAL_PARAM)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OPTIONAL_PARAM)) {
 
 				labelMaker(DetailSectionCustomUiConstants.ELEMENT_MAPPING_OPTIONAL_PARAM);
-				sectionUtil.getBooleanComboField(detailsclient, toolkit,
-						attributeMapping, attributeMapping.isOptional(),
-						DsPackage.eINSTANCE.getAttributeMapping_Optional());
+				sectionUtil.getBooleanComboField(detailsclient, toolkit, attributeMapping,
+						attributeMapping.isOptional(), DsPackage.eINSTANCE.getAttributeMapping_Optional());
 			}
 		}
 	}
@@ -1639,109 +1442,82 @@ public class DetailSection {
 
 		voidMaker();
 		voidMaker();
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
 			String displayName = desc.getDisplayName(queryParam);
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_DEFAULT_VAL)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.QUERY_PARAM_DEFAULT_VAL)) {
 
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_DEFAULT_VAL);
-				sectionUtil.getAttributeField(detailsclient, toolkit,
-						queryParam, queryParam.getDefaultValue(),
-						DsPackage.eINSTANCE.getQueryParameter_DefaultValue(),
-						DetailSectionCustomUiConstants.STRING);
+				sectionUtil.getAttributeField(detailsclient, toolkit, queryParam, queryParam.getDefaultValue(),
+						DsPackage.eINSTANCE.getQueryParameter_DefaultValue(), DetailSectionCustomUiConstants.STRING);
 				voidMaker();
 				voidMaker();
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_MAPPING_NAME)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.QUERY_PARAM_MAPPING_NAME)) {
 
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_MAPPING_NAME);
-				sectionUtil.getAttributeField(detailsclient, toolkit,
-						queryParam, queryParam.getName(),
-						DsPackage.eINSTANCE.getQueryParameter_Name(),
-						DetailSectionCustomUiConstants.STRING);
+				sectionUtil.getAttributeField(detailsclient, toolkit, queryParam, queryParam.getName(),
+						DsPackage.eINSTANCE.getQueryParameter_Name(), DetailSectionCustomUiConstants.STRING);
 				voidMaker();
 				voidMaker();
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_ORDINAL)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.QUERY_PARAM_ORDINAL)) {
 
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_ORDINAL);
-				String ordinal = new Integer(queryParam.getOrdinal())
-						.toString();
-				sectionUtil.getAttributeField(detailsclient, toolkit,
-						queryParam, ordinal,
-						DsPackage.eINSTANCE.getQueryParameter_Ordinal(),
-						DetailSectionCustomUiConstants.INTEGER);
+				String ordinal = new Integer(queryParam.getOrdinal()).toString();
+				sectionUtil.getAttributeField(detailsclient, toolkit, queryParam, ordinal,
+						DsPackage.eINSTANCE.getQueryParameter_Ordinal(), DetailSectionCustomUiConstants.INTEGER);
 				voidMaker();
 				voidMaker();
 
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_TYPE)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.QUERY_PARAM_TYPE)) {
 
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_TYPE);
 				String[] displayValues = { SELECT_VALUE, "SCALAR", "ARRAY" };
-				Combo paramTypeCombo = sectionUtil.getCustomComboField(
-						detailsclient, toolkit, queryParam,
-						queryParam.getParamType(),
-						DsPackage.eINSTANCE.getQueryParameter_ParamType(),
-						displayValues);
+				Combo paramTypeCombo = sectionUtil.getCustomComboField(detailsclient, toolkit, queryParam,
+						queryParam.getParamType(), DsPackage.eINSTANCE.getQueryParameter_ParamType(), displayValues);
 				voidMaker();
 				voidMaker();
 
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_SQL_TYPE)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.QUERY_PARAM_SQL_TYPE)) {
 
-				String[] displayValues = { SELECT_VALUE, "STRING", "INTEGER",
-						"REAL", "DOUBLE", "NUMERIC", "TINYINT", "SMALLINT",
-						"BIGINT", "DATE", "TIME", "TIMESTAMP", "BIT",
-						"ORACLE_REF_CURSOR", "BINARY" };
+				String[] displayValues = { SELECT_VALUE, "STRING", "INTEGER", "REAL", "DOUBLE", "NUMERIC", "TINYINT",
+						"SMALLINT", "BIGINT", "DATE", "TIME", "TIMESTAMP", "BIT", "ORACLE_REF_CURSOR", "BINARY" };
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_SQL_TYPE);
-				Combo sqlTypeCombo = sectionUtil.getCustomComboField(
-						detailsclient, toolkit, queryParam,
-						queryParam.getSqlType(),
-						DsPackage.eINSTANCE.getQueryParameter_SqlType(),
-						displayValues);
+				Combo sqlTypeCombo = sectionUtil.getCustomComboField(detailsclient, toolkit, queryParam,
+						queryParam.getSqlType(), DsPackage.eINSTANCE.getQueryParameter_SqlType(), displayValues);
 				voidMaker();
 				voidMaker();
 
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_STRUCT_TYPE)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.QUERY_PARAM_STRUCT_TYPE)) {
 
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_STRUCT_TYPE);
-				sectionUtil.getAttributeField(detailsclient, toolkit,
-						queryParam, queryParam.getStructType(),
-						DsPackage.eINSTANCE.getQueryParameter_StructType(),
-						DetailSectionCustomUiConstants.STRING);
+				sectionUtil.getAttributeField(detailsclient, toolkit, queryParam, queryParam.getStructType(),
+						DsPackage.eINSTANCE.getQueryParameter_StructType(), DetailSectionCustomUiConstants.STRING);
 				voidMaker();
 				voidMaker();
 
 			}
 
-			if (displayName
-					.equals(DetailSectionCustomUiConstants.QUERY_PARAM_IN_OUT)) {
+			if (displayName.equals(DetailSectionCustomUiConstants.QUERY_PARAM_IN_OUT)) {
 
 				String[] displayValues = { SELECT_VALUE, "IN", "OUT" };
 				labelMaker(DetailSectionCustomUiConstants.QUERY_PARAM_IN_OUT);
 				String intialValue = queryParam.getType();
 
-				sectionUtil.getCustomComboField(detailsclient, toolkit,
-						queryParam, intialValue,
-						DsPackage.eINSTANCE.getQueryParameter_Type(),
-						displayValues);
+				sectionUtil.getCustomComboField(detailsclient, toolkit, queryParam, intialValue,
+						DsPackage.eINSTANCE.getQueryParameter_Type(), displayValues);
 				voidMaker();
 				voidMaker();
 			}
@@ -1757,41 +1533,31 @@ public class DetailSection {
 		voidMaker();
 		voidMaker();
 
-		if (validatorObject instanceof LongRangeValidator
-				&& type.equals(DetailSectionCustomUiConstants.LONG)) {
+		if (validatorObject instanceof LongRangeValidator && type.equals(DetailSectionCustomUiConstants.LONG)) {
 
 			LongRangeValidator lval = (LongRangeValidator) validatorObject;
-			for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-					.iterator(); i.hasNext();) {
+			for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 				ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
 				String displayName = desc.getDisplayName(validatorObject);
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.VALIDATOR_MAXIMUM)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.VALIDATOR_MAXIMUM)) {
 
 					String initVal = new Long(lval.getMaximum()).toString();
 					labelMaker(DetailSectionCustomUiConstants.VALIDATOR_MAXIMUM);
-					sectionUtil
-							.getAttributeField(detailsclient, toolkit, lval,
-									initVal, DsPackage.eINSTANCE
-											.getLongRangeValidator_Maximum(),
-									DetailSectionCustomUiConstants.LONG);
+					sectionUtil.getAttributeField(detailsclient, toolkit, lval, initVal,
+							DsPackage.eINSTANCE.getLongRangeValidator_Maximum(), DetailSectionCustomUiConstants.LONG);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.VALIDATOR_MINIMUM)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.VALIDATOR_MINIMUM)) {
 
 					String initVal = new Long(lval.getMinimum()).toString();
 					labelMaker(DetailSectionCustomUiConstants.VALIDATOR_MINIMUM);
-					sectionUtil
-							.getAttributeField(detailsclient, toolkit, lval,
-									initVal, DsPackage.eINSTANCE
-											.getLongRangeValidator_Minimum(),
-									DetailSectionCustomUiConstants.LONG);
+					sectionUtil.getAttributeField(detailsclient, toolkit, lval, initVal,
+							DsPackage.eINSTANCE.getLongRangeValidator_Minimum(), DetailSectionCustomUiConstants.LONG);
 					voidMaker();
 					voidMaker();
 				}
@@ -1800,73 +1566,60 @@ public class DetailSection {
 				&& type.equals(DetailSectionCustomUiConstants.DOUBLE)) {
 
 			DoubleRangeValidator dval = (DoubleRangeValidator) validatorObject;
-			for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-					.iterator(); i.hasNext();) {
+			for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 				ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
 				String displayName = desc.getDisplayName(validatorObject);
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.VALIDATOR_MAXIMUM)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.VALIDATOR_MAXIMUM)) {
 
 					String initVal = new Double(dval.getMaximum()).toString();
 					labelMaker(DetailSectionCustomUiConstants.VALIDATOR_MAXIMUM);
-					sectionUtil.getAttributeField(detailsclient, toolkit, dval,
-							initVal, DsPackage.eINSTANCE
-									.getDoubleRangeValidator_Maximum(),
+					sectionUtil.getAttributeField(detailsclient, toolkit, dval, initVal,
+							DsPackage.eINSTANCE.getDoubleRangeValidator_Maximum(),
 							DetailSectionCustomUiConstants.DOUBLE);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.VALIDATOR_MINIMUM)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.VALIDATOR_MINIMUM)) {
 
 					String initVal = new Double(dval.getMinimum()).toString();
 					labelMaker(DetailSectionCustomUiConstants.VALIDATOR_MINIMUM);
-					sectionUtil.getAttributeField(detailsclient, toolkit, dval,
-							initVal, DsPackage.eINSTANCE
-									.getDoubleRangeValidator_Minimum(),
+					sectionUtil.getAttributeField(detailsclient, toolkit, dval, initVal,
+							DsPackage.eINSTANCE.getDoubleRangeValidator_Minimum(),
 							DetailSectionCustomUiConstants.DOUBLE);
 					voidMaker();
 					voidMaker();
 				}
 			}
-		} else if (validatorObject instanceof LengthValidator
-				&& type.equals(DetailSectionCustomUiConstants.LONG)) {
+		} else if (validatorObject instanceof LengthValidator && type.equals(DetailSectionCustomUiConstants.LONG)) {
 
 			LengthValidator lval = (LengthValidator) validatorObject;
 
-			for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-					.iterator(); i.hasNext();) {
+			for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 				ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
 				String displayName = desc.getDisplayName(validatorObject);
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.VALIDATOR_MAXIMUM)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.VALIDATOR_MAXIMUM)) {
 
 					String initVal = new Long(lval.getMaximum()).toString();
 					labelMaker(DetailSectionCustomUiConstants.VALIDATOR_MAXIMUM);
-					sectionUtil.getAttributeField(detailsclient, toolkit, lval,
-							initVal,
-							DsPackage.eINSTANCE.getLengthValidator_Maximum(),
-							DetailSectionCustomUiConstants.LONG);
+					sectionUtil.getAttributeField(detailsclient, toolkit, lval, initVal,
+							DsPackage.eINSTANCE.getLengthValidator_Maximum(), DetailSectionCustomUiConstants.LONG);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.VALIDATOR_MINIMUM)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.VALIDATOR_MINIMUM)) {
 
 					String initVal = new Long(lval.getMinimum()).toString();
 					labelMaker(DetailSectionCustomUiConstants.VALIDATOR_MINIMUM);
-					sectionUtil.getAttributeField(detailsclient, toolkit, lval,
-							initVal,
-							DsPackage.eINSTANCE.getLengthValidator_Minimum(),
-							DetailSectionCustomUiConstants.LONG);
+					sectionUtil.getAttributeField(detailsclient, toolkit, lval, initVal,
+							DsPackage.eINSTANCE.getLengthValidator_Minimum(), DetailSectionCustomUiConstants.LONG);
 					voidMaker();
 					voidMaker();
 				}
@@ -1881,8 +1634,7 @@ public class DetailSection {
 				.getPropertyDescriptors(eventTrigger);
 		voidMaker();
 		voidMaker();
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
@@ -1890,28 +1642,22 @@ public class DetailSection {
 
 			if (desc.getFeature(eventTrigger) instanceof EAttributeImpl) {
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.EVENT_TRIGGER_ID)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.EVENT_TRIGGER_ID)) {
 
 					labelMaker(DetailSectionCustomUiConstants.EVENT_TRIGGER_ID);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							eventTrigger, eventTrigger.getId(),
-							DsPackage.eINSTANCE.getEventTrigger_Id(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, eventTrigger, eventTrigger.getId(),
+							DsPackage.eINSTANCE.getEventTrigger_Id(), DetailSectionCustomUiConstants.STRING);
 
 					voidMaker();
 					voidMaker();
 
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.EVENT_TRIGGER_LANGUAGE)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.EVENT_TRIGGER_LANGUAGE)) {
 
 					labelMaker(DetailSectionCustomUiConstants.EVENT_TRIGGER_LANGUAGE);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							eventTrigger, eventTrigger.getLanguage(),
-							DsPackage.eINSTANCE.getEventTrigger_Language(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, eventTrigger, eventTrigger.getLanguage(),
+							DsPackage.eINSTANCE.getEventTrigger_Language(), DetailSectionCustomUiConstants.STRING);
 
 				}
 			}
@@ -1925,8 +1671,7 @@ public class DetailSection {
 				.getPropertyDescriptors(operation);
 		voidMaker();
 		voidMaker();
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
@@ -1934,39 +1679,29 @@ public class DetailSection {
 
 			if (desc.getFeature(operation) instanceof EAttributeImpl) {
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.OPERATION_NAME)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.OPERATION_NAME)) {
 
 					labelMaker(DetailSectionCustomUiConstants.OPERATION_NAME);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							operation, operation.getName(),
-							DsPackage.eINSTANCE.getOperation_Name(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, operation, operation.getName(),
+							DsPackage.eINSTANCE.getOperation_Name(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.OPERATION_DISABLE_STREAMING)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.OPERATION_DISABLE_STREAMING)) {
 
 					labelMaker(DetailSectionCustomUiConstants.OPERATION_DISABLE_STREAMING);
-					sectionUtil
-							.getBooleanComboField(detailsclient, toolkit,
-									operation, operation.isDisableStreaming(),
-									DsPackage.eINSTANCE
-											.getOperation_DisableStreaming());
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, operation, operation.isDisableStreaming(),
+							DsPackage.eINSTANCE.getOperation_DisableStreaming());
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.OPERATION_RETURN_REQUEST_STATUS)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.OPERATION_RETURN_REQUEST_STATUS)) {
 
 					labelMaker(DetailSectionCustomUiConstants.OPERATION_RETURN_REQUEST_STATUS);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							operation, operation.isReturnRequestStatus(),
-							DsPackage.eINSTANCE
-									.getOperation_ReturnRequestStatus());
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, operation,
+							operation.isReturnRequestStatus(), DsPackage.eINSTANCE.getOperation_ReturnRequestStatus());
 
 				}
 			}
@@ -1981,24 +1716,20 @@ public class DetailSection {
 		voidMaker();
 
 		String initialVal = "";
-		String[] displayValues = { SELECT_VALUE,
-				DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0,
+		String[] displayValues = { SELECT_VALUE, DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0,
 				DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_1 };
 
-		if (paramMapping.getQueryParam() != null
-				&& !paramMapping.getQueryParam().equals("")) {
+		if (paramMapping.getQueryParam() != null && !paramMapping.getQueryParam().equals("")) {
 
 			initialVal = DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_1;
-		} else if (paramMapping.getColumn() != null
-				&& !paramMapping.getColumn().equals("")) {
+		} else if (paramMapping.getColumn() != null && !paramMapping.getColumn().equals("")) {
 
 			initialVal = DetailSectionCustomUiConstants.PARAM_MAPPING_COMBO_VAL_0;
 		}
 
 		labelMaker(DetailSectionCustomUiConstants.PARAM_MAPPING_TYPE);
 
-		paramTypeCombo = sectionUtil.getCustomComboField(detailsclient,
-				toolkit, null, initialVal, null, displayValues);
+		paramTypeCombo = sectionUtil.getCustomComboField(detailsclient, toolkit, null, initialVal, null, displayValues);
 
 		paramTypeCombo.addSelectionListener(new SelectionAdapter() {
 
@@ -2023,10 +1754,8 @@ public class DetailSection {
 
 					if (paramMapping.getQueryParam() != null) {
 
-						EcoreUtil
-								.remove(paramMapping,
-										DsPackage.Literals.PARAMETER_MAPPING__QUERY_PARAM,
-										paramMapping.getQueryParam());
+						EcoreUtil.remove(paramMapping, DsPackage.Literals.PARAMETER_MAPPING__QUERY_PARAM,
+								paramMapping.getQueryParam());
 
 					}
 
@@ -2048,8 +1777,7 @@ public class DetailSection {
 
 					if (paramMapping.getColumn() != null) {
 
-						EcoreUtil.remove(paramMapping,
-								DsPackage.Literals.PARAMETER_MAPPING__COLUMN,
+						EcoreUtil.remove(paramMapping, DsPackage.Literals.PARAMETER_MAPPING__COLUMN,
 								paramMapping.getColumn());
 					}
 
@@ -2061,8 +1789,7 @@ public class DetailSection {
 		voidMaker();
 		voidMaker();
 
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
@@ -2070,26 +1797,20 @@ public class DetailSection {
 
 			if (desc.getFeature(paramMapping) instanceof EAttributeImpl) {
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.PARAM_MAPPING_PARAM_NAME)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.PARAM_MAPPING_PARAM_NAME)) {
 
 					labelMaker(DetailSectionCustomUiConstants.PARAM_MAPPING_PARAM_NAME);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							paramMapping, paramMapping.getName(),
-							DsPackage.eINSTANCE.getParameterMapping_Name(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, paramMapping, paramMapping.getName(),
+							DsPackage.eINSTANCE.getParameterMapping_Name(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.PARAM_MAPPING_PARAM)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.PARAM_MAPPING_PARAM)) {
 
 					queryParamLabel = labelMaker(DetailSectionCustomUiConstants.PARAM_MAPPING_PARAM);
-					queryParamText = sectionUtil.getAttributeField(
-							detailsclient, toolkit, paramMapping, paramMapping
-									.getQueryParam(), DsPackage.eINSTANCE
-									.getParameterMapping_QueryParam(),
+					queryParamText = sectionUtil.getAttributeField(detailsclient, toolkit, paramMapping,
+							paramMapping.getQueryParam(), DsPackage.eINSTANCE.getParameterMapping_QueryParam(),
 							DetailSectionCustomUiConstants.STRING);
 					if (paramMapping.getQueryParam() == null) {
 
@@ -2102,13 +1823,11 @@ public class DetailSection {
 
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.PARAM_MAPPING_COLUMN)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.PARAM_MAPPING_COLUMN)) {
 
 					columnLabel = labelMaker(DetailSectionCustomUiConstants.PARAM_MAPPING_COLUMN);
-					columnTxt = sectionUtil.getAttributeField(detailsclient,
-							toolkit, paramMapping, paramMapping.getColumn(),
-							DsPackage.eINSTANCE.getParameterMapping_Column(),
+					columnTxt = sectionUtil.getAttributeField(detailsclient, toolkit, paramMapping,
+							paramMapping.getColumn(), DsPackage.eINSTANCE.getParameterMapping_Column(),
 							DetailSectionCustomUiConstants.STRING);
 					if (paramMapping.getColumn() == null) {
 
@@ -2131,8 +1850,7 @@ public class DetailSection {
 				.getPropertyDescriptors(resource);
 		voidMaker();
 		voidMaker();
-		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors
-				.iterator(); i.hasNext();) {
+		for (Iterator<IItemPropertyDescriptor> i = detailPropertyDescriptors.iterator(); i.hasNext();) {
 
 			ItemPropertyDescriptor desc = (ItemPropertyDescriptor) i.next();
 
@@ -2140,40 +1858,30 @@ public class DetailSection {
 
 			if (desc.getFeature(resource) instanceof EAttributeImpl) {
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESOUCE_PATH)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESOUCE_PATH)) {
 
 					labelMaker(DetailSectionCustomUiConstants.RESOUCE_PATH);
-					sectionUtil.getAttributeField(detailsclient, toolkit,
-							resource, resource.getPath(),
-							DsPackage.eINSTANCE.getResource_Path(),
-							DetailSectionCustomUiConstants.STRING);
+					sectionUtil.getAttributeField(detailsclient, toolkit, resource, resource.getPath(),
+							DsPackage.eINSTANCE.getResource_Path(), DetailSectionCustomUiConstants.STRING);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESOURCE_METHOD)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESOURCE_METHOD)) {
 
-					String[] displayValues = { SELECT_VALUE, "GET", "PUT",
-							"POST", "DELETE" };
+					String[] displayValues = { SELECT_VALUE, "GET", "PUT", "POST", "DELETE" };
 					labelMaker(DetailSectionCustomUiConstants.RESOURCE_METHOD);
-					sectionUtil.getCustomComboField(detailsclient, toolkit,
-							resource, resource.getMethod(),
-							DsPackage.eINSTANCE.getResource_Method(),
-							displayValues);
+					sectionUtil.getCustomComboField(detailsclient, toolkit, resource, resource.getMethod(),
+							DsPackage.eINSTANCE.getResource_Method(), displayValues);
 					voidMaker();
 					voidMaker();
 				}
 
-				if (displayName
-						.equals(DetailSectionCustomUiConstants.RESOURCE_RETURN_REQUEST_STATUS)) {
+				if (displayName.equals(DetailSectionCustomUiConstants.RESOURCE_RETURN_REQUEST_STATUS)) {
 
 					labelMaker(DetailSectionCustomUiConstants.RESOURCE_RETURN_REQUEST_STATUS);
-					sectionUtil.getBooleanComboField(detailsclient, toolkit,
-							resource, resource.isReturnRequestStatus(),
-							DsPackage.eINSTANCE
-									.getResource_ReturnRequestStatus());
+					sectionUtil.getBooleanComboField(detailsclient, toolkit, resource, resource.isReturnRequestStatus(),
+							DsPackage.eINSTANCE.getResource_ReturnRequestStatus());
 
 				}
 

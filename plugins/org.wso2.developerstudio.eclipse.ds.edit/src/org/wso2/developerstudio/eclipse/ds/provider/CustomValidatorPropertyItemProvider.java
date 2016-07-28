@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
  */
 package org.wso2.developerstudio.eclipse.ds.provider;
 
@@ -13,7 +9,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -25,18 +21,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.wso2.developerstudio.eclipse.ds.ConfigurationProperty;
+import org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty;
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
+import org.wso2.developerstudio.eclipse.ds.QueryProperty;
 import org.wso2.developerstudio.eclipse.ds.provider.labelProvider.DSEditPropertiesLabelProvider;
 
 /**
  * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty} object.
+ * {@link org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class ConfigurationPropertyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class CustomValidatorPropertyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
@@ -44,7 +41,7 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 	 * 
 	 * @generated
 	 */
-	public ConfigurationPropertyItemProvider(AdapterFactory adapterFactory) {
+	public CustomValidatorPropertyItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -52,16 +49,15 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated NOT
+	 * @generated
 	 */
-
+	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
-
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -70,45 +66,43 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 	 * This adds a property descriptor for the Value feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ConfigurationProperty_value_feature_display"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ConfigurationProperty_value_feature",
-								"_UI_ConfigurationProperty_type"),
-						DsPackage.Literals.CONFIGURATION_PROPERTY__VALUE, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_CustomValidatorProperty_value_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_CustomValidatorProperty_value_feature",
+						"_UI_CustomValidatorProperty_type"),
+				DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY__VALUE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Name feature. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * 
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ConfigurationProperty_name_feature_display"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ConfigurationProperty_name_feature",
-								"_UI_ConfigurationProperty_type"),
-						DsPackage.Literals.CONFIGURATION_PROPERTY__NAME, true, false, false,
+						getResourceLocator(), getString("_UI_CustomValidatorProperty_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_CustomValidatorProperty_name_feature",
+								"_UI_CustomValidatorProperty_type"),
+						DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-
 	}
 
 	/**
-	 * This returns ConfigurationProperty.gif. <!-- begin-user-doc --> <!--
+	 * This returns CustomValidatorProperty.gif. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated NOT
 	 */
-
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("wso2/property"));
+		return overlayImage(object, getResourceLocator().getImage("wso2/properties"));
 	}
 
 	/**
@@ -119,10 +113,10 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 	 */
 
 	public String getText(Object object) {
-		String label = DSEditPropertiesLabelProvider.getInstance()
-				.getDisplayLabel(((ConfigurationProperty) object).getName());
 
-		String type = " (" + getString("_UI_ConfigurationProperty_type") + ")";
+		String label = DSEditPropertiesLabelProvider.getInstance()
+				.getDisplayLabel(((CustomValidatorProperty) object).getName());
+		String type = " (" + getString("_UI_CustomValidatorPropertyList_type") + ")";
 		return label != null ? label.toString() + type : type;
 
 	}
@@ -135,14 +129,13 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 	 * 
 	 * @generated
 	 */
-
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ConfigurationProperty.class)) {
-		case DsPackage.CONFIGURATION_PROPERTY__VALUE:
-		case DsPackage.CONFIGURATION_PROPERTY__NAME:
+		switch (notification.getFeatureID(CustomValidatorProperty.class)) {
+		case DsPackage.CUSTOM_VALIDATOR_PROPERTY__VALUE:
+		case DsPackage.CUSTOM_VALIDATOR_PROPERTY__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
@@ -156,7 +149,6 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 	 * 
 	 * @generated
 	 */
-
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
@@ -168,7 +160,6 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 	 * 
 	 * @generated
 	 */
-
 	@Override
 	public ResourceLocator getResourceLocator() {
 		return DsEditPlugin.INSTANCE;

@@ -138,6 +138,10 @@ public class DSEditPropertiesLabelProvider {
 
 	public String MAX_FIELD_SIZE = "org.wso2.ws.dataservice.max_field_size";
 	public String MAX_FIELD_SIZE_DISPLAY = "Max Field Size (Bytes)";
+	
+	public String PROPERTY_NAME_DISPLAY = "Name";
+	public String PROPERTY_NAME = "name";
+	public String PROPERTY_VALUE_DISPLAY = "Value";
 
 	public String MAX_ROWS = "org.wso2.ws.dataservice.max_rows";
 	public String MAX_ROWS_DISPLAY = "Max Rows";
@@ -197,6 +201,8 @@ public class DSEditPropertiesLabelProvider {
 		nameMap.put(FETCH_SIZE, FETCH_SIZE_DISPLAY);
 		nameMap.put(MAX_FIELD_SIZE, MAX_FIELD_SIZE_DISPLAY);
 		nameMap.put(MAX_ROWS, MAX_ROWS_DISPLAY);
+		
+		nameMap.put(PROPERTY_NAME, PROPERTY_NAME_DISPLAY);
 
 	}
 

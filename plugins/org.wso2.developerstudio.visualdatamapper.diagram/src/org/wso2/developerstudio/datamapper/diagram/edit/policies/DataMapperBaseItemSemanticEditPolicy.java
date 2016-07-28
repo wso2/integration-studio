@@ -1,7 +1,10 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.policies;
 
+import java.util.Collections;
 import java.util.Iterator;
 
+import java.util.Map;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -32,8 +35,10 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.helpers.GeneratedEditHelperBase;
 import org.wso2.developerstudio.datamapper.DataMapperLink;
+import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.InNode;
 import org.wso2.developerstudio.datamapper.OutNode;
+import org.wso2.developerstudio.datamapper.diagram.expressions.DataMapperOCLFactory;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes;
@@ -313,17 +318,40 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		}
 
 		/**
-		 * @generated NOT
+		 * @generated
 		 */
 		public boolean canExistDataMapperLink_4001(OutNode container, DataMapperLink linkInstance, OutNode source,
 				InNode target) {
-			if (target instanceof InNodeImpl) {
-				int existingLinks = ((InNodeImpl) target).getIncomingLink().size();
-				if (existingLinks > 0) {
-					return false;
+			try {
+				if (source == null) {
+					return true;
+				} else {
+					Map<String, EClassifier> env = Collections.<String, EClassifier> singletonMap("oppositeEnd", //$NON-NLS-1$
+							DataMapperPackage.eINSTANCE.getInNode());
+					Object sourceVal = DataMapperOCLFactory
+							.getExpression(0, DataMapperPackage.eINSTANCE.getOutNode(), env)
+							.evaluate(source, Collections.singletonMap("oppositeEnd", target)); //$NON-NLS-1$
+					if (false == sourceVal instanceof Boolean || !((Boolean) sourceVal).booleanValue()) {
+						return false;
+					} // else fall-through
 				}
+				if (target == null) {
+					return true;
+				} else {
+					Map<String, EClassifier> env = Collections.<String, EClassifier> singletonMap("oppositeEnd", //$NON-NLS-1$
+							DataMapperPackage.eINSTANCE.getOutNode());
+					Object targetVal = DataMapperOCLFactory
+							.getExpression(1, DataMapperPackage.eINSTANCE.getInNode(), env)
+							.evaluate(target, Collections.singletonMap("oppositeEnd", source)); //$NON-NLS-1$
+					if (false == targetVal instanceof Boolean || !((Boolean) targetVal).booleanValue()) {
+						return false;
+					} // else fall-through
+				}
+				return true;
+			} catch (Exception e) {
+				DataMapperDiagramEditorPlugin.getInstance().logError("Link constraint evaluation error", e); //$NON-NLS-1$
+				return false;
 			}
-			return true;
 		}
 	}
 

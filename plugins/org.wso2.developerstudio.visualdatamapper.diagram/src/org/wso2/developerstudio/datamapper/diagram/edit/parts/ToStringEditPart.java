@@ -183,7 +183,7 @@ public class ToStringEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class ToStringFigure extends OperatorRectangle {
 
 		public ToStringFigure() {

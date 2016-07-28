@@ -69,4 +69,12 @@ public interface InNode extends EObject {
 	 * @generated
 	 */
 	void setElementParent(Element value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean shouldConnect(OutNode sourceEnd);
 } // InNode

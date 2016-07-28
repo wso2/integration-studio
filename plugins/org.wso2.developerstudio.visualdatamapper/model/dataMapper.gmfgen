@@ -1531,6 +1531,9 @@
         <targetMetaFeature
             href="dataMapper.genmodel#//datamapper/DataMapperLink/inNode"/>
       </modelFacet>
+      <creationConstraints
+          sourceEnd="//@expressionProviders/@providers.0/@expressions.0"
+          targetEnd="//@expressionProviders/@providers.0/@expressions.1"/>
     </links>
     <palette>
       <groups
@@ -2156,6 +2159,17 @@
   </propertySheet>
   <domainGenModel
       href="dataMapper.genmodel#/"/>
+  <expressionProviders>
+    <providers
+        xsi:type="gmfgen:GenExpressionInterpreter">
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.shouldConnect(oppositeEnd)"/>
+      <expressions
+          xsi:type="gmfgen:GenConstraint"
+          body="self.shouldConnect(oppositeEnd)"/>
+    </providers>
+  </expressionProviders>
   <labelParsers
       extensibleViaService="true">
     <implementations

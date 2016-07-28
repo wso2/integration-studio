@@ -143,7 +143,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	protected int getInitialDockLocation() {
 		return PositionConstants.WEST;
 	}
-	
+
 	protected int getInitialPaletteSize() {
 		return 200;
 	}
@@ -342,12 +342,12 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	 */
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
-		
+
 		// Define key handler for palette viewer.
 		PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
 		KeyHandler paletteViewerKeyHandler = new CustomPaletteViewerKeyHandler(paletteViewer);
 		paletteViewer.setKeyHandler(paletteViewerKeyHandler);
-		
+
 		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this,
 				getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);

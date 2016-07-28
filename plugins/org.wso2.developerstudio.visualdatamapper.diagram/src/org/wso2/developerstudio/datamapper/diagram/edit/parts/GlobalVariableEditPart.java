@@ -187,7 +187,7 @@ public class GlobalVariableEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class GlobalVariableFigure extends OperatorRectangle {
 
 		public GlobalVariableFigure(String name) {

@@ -417,6 +417,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
                          visualInboundEndpoint.getTransportJMSPinnedServers());
     		}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSConcurrentConsumers())) {
+				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS,
+						visualInboundEndpoint.getTransportJMSConcurrentConsumers());
+			}
             
             break;
         case WSO2_MB:
@@ -527,6 +531,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SUBSCRIPTION_NAME,
                          visualInboundEndpoint.getTransportJMSSubscriptionName());
     		}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSConcurrentConsumers())) {
+				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS,
+						visualInboundEndpoint.getTransportJMSConcurrentConsumers());
+			}
             break;
         case CUSTOM:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {

@@ -52,7 +52,6 @@ public class AddBranchSwitchMediatorAction extends ConfigureEsbNodeAction {
 		Assert.isTrue(selectedObj instanceof SwitchMediator, "Invalid selection.");
 		
 		Shell shell = Display.getDefault().getActiveShell();	
-		shell.setLocation(300, 200);
 		Dialog addBranchDialog = new AddCaseBranchDialog(shell, (SwitchMediator) selectedObj,getEditingDomain(),selectedEP);
 		addBranchDialog.setBlockOnOpen(true);
 		addBranchDialog.open();

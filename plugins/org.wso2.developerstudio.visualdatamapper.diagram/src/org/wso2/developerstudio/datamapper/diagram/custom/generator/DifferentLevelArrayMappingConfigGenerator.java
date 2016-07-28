@@ -16,6 +16,8 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -498,15 +500,25 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 			// adding optional object element checks
 			if (forLoopBean.getNullableVarialesList() != null && !forLoopBean.getNullableVarialesList().isEmpty()) {
 				boolean firstElement = true;
-				for (String optionalVariable : forLoopBean.getNullableVarialesList()) {
+
+				List<String> variableList = new ArrayList<>();
+				variableList.addAll(forLoopBean.getNullableVarialesList());
+				Collections.sort(variableList, new Comparator<String>() {
+					public int compare(String s1, String s2) {
+						int dist1 = Math.abs(s1.length());
+						int dist2 = Math.abs(s2.length());
+						return dist1 - dist2;
+					}
+				});
+				for (String optionalVariable : variableList) {
 					if (!isOptionalVariableCheckedBefore(optionalVariable,
 							getForLoopBeanList().get(forLoopBean.getParentIndex()))) {
 						ifLoopCreated = true;
 						if (!firstElement) {
 							functionBuilder.append(" && ");
-							firstElement = false;
 						} else {
 							functionBuilder.append("if( ");
+							firstElement = false;
 						}
 						functionBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 								new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
@@ -638,14 +650,24 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		boolean ifLoopCreated = false;
 		if (mappingOperation.getOptionalElementList() != null && !mappingOperation.getOptionalElementList().isEmpty()) {
 			boolean firstElement = true;
-			for (String optionalVariable : mappingOperation.getOptionalElementList()) {
+
+			List<String> variableList = new ArrayList<>();
+			variableList.addAll(mappingOperation.getOptionalElementList());
+			Collections.sort(variableList, new Comparator<String>() {
+				public int compare(String s1, String s2) {
+					int dist1 = Math.abs(s1.length());
+					int dist2 = Math.abs(s2.length());
+					return dist1 - dist2;
+				}
+			});
+			for (String optionalVariable : variableList) {
 				if (!isOptionalVariableCheckedBefore(optionalVariable, forLoopBean)) {
 					ifLoopCreated = true;
 					if (!firstElement) {
 						operationBuilder.append(" && ");
-						firstElement = false;
 					} else {
 						operationBuilder.append("if( ");
+						firstElement = false;
 					}
 					operationBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1), map,

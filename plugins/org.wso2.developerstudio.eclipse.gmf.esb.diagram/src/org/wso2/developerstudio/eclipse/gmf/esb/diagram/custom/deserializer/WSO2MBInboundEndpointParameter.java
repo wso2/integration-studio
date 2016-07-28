@@ -22,6 +22,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENTIAL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY;
@@ -86,7 +87,8 @@ public enum WSO2MBInboundEndpointParameter {
 	    JMS_SUBSCRIPTION_NAME(InboundEndpointConstants.JMS_SUBSCRIPTION_NAME,INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME,true),
 	    WSO2_MB_CONNECTION_URL(InboundEndpointConstants.WSO2_MB_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true),
 	    WSO2_MB__QUEUE_CONNECTION_URL(InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true),
-	    WSO2_MB_TOPIC_CONNECTION_URL(InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true);
+	    WSO2_MB_TOPIC_CONNECTION_URL(InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true),
+	    JMS_CONCURRENT_CONSUMERS(InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS, INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS, true);
 
     private final String name;
     private final EAttribute eAttributeValue;

@@ -95,6 +95,7 @@ public class InboundEndpointConstants {
 	public static final String JMS_SHARED_SUBSCRIPTION ="transport.jms.SharedSubscription";
 	public static final String INBOUND_ENDPOINT_PINNED_SERVERS="pinnedServers";
 	public static final String JMS_SUBSCRIPTION_NAME = "transport.jms.SubscriptionName";
+	public static final String JMS_CONCURRENT_CONSUMERS = "concurrent.consumers";
 
 	public static final String WSO2_MB_CONNECTION_URL ="wso2mb.connection.url";
 	public static final String WSO2_MB__QUEUE_CONNECTION_URL ="connectionfactory.QueueConnectionFactory";

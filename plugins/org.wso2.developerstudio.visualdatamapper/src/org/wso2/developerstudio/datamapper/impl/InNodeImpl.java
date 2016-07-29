@@ -126,17 +126,17 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 	 * @generated NOT
 	 */
 	public boolean shouldConnect(OutNode sourceEnd) {
-		// Restricting drawing links if element(treenode) is an array or object. 
-		if (this.eContainer instanceof TreeNode) {
-			SchemaDataType schemaDataType = ((TreeNode) this.eContainer).getSchemaDataType();
-			if (schemaDataType.equals(SchemaDataType.ARRAY) || schemaDataType.equals(SchemaDataType.OBJECT)) {
-				return false;
-			}
-		}
-		// Restricting drawing links if one link is already connected
-		if (this.getIncomingLink().size() > 0) {
-			return false;
-		}
+//		// Restricting drawing links if element(treenode) is an array or object. 
+//		if (this.eContainer instanceof TreeNode) {
+//			SchemaDataType schemaDataType = ((TreeNode) this.eContainer).getSchemaDataType();
+//			if (schemaDataType.equals(SchemaDataType.ARRAY) || schemaDataType.equals(SchemaDataType.OBJECT)) {
+//				return false;
+//			}
+//		}
+//		// Restricting drawing links if one link is already connected
+//		if (this.getIncomingLink().size() > 0) {
+//			return false;
+//		}
 		return true;
 	}
 

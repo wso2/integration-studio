@@ -25,7 +25,8 @@ Require-Bundle: org.wso2.developerstudio.eclipse.gmf.esb,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)"
 Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom,
  org.wso2.developerstudio.eclipse.gmf.esb.persistence
-Import-Package: org.apache.xml.serialize;version="2.9.0",
+Import-Package: net.sf.saxon.s9api,
+ org.apache.xml.serialize;version="2.9.0",
  org.apache.xml.serializer;version="2.7.1",
  org.eclipse.core.resources,
  org.eclipse.jface.dialogs,

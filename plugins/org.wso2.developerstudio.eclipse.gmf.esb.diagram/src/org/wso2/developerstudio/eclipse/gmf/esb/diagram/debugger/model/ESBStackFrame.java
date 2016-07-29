@@ -216,6 +216,8 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
             variables.add(textVariable);
             textVariable.fireCreationEvent();
         }
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.findView("org.eclipse.debug.ui.VariableView");
     }
 
     @Override

@@ -142,6 +142,16 @@
             <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/</url>
             <layout>p2</layout>
         </repository>
+	<repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Platform-p2-updates-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/updates/</url>
+            <layout>p2</layout>
+        </repository>
         <repository>
             <releases>
                 <enabled>true</enabled>

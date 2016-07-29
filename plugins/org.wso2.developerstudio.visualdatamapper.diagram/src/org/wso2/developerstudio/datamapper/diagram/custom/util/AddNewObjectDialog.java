@@ -85,6 +85,8 @@ public class AddNewObjectDialog extends Dialog {
 	private String identifierURL;
 	private boolean isNullable = false;
 	private String interrelatedElement;
+	private boolean isOutputEditpartContainer = false;
+	private boolean isRootElementNode = false;
 
 	private String[] DATA_TYPES = { "string", "number", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
 			"map", "union" };
@@ -93,6 +95,8 @@ public class AddNewObjectDialog extends Dialog {
 	private String[] ROOT_TYPE = {"object","array"};
 	private String[] OBJECT_TYPE = { "object" };
 	private String[] ARRAY_TYPE = { "array" };
+	/*private String[] ALL_TYPES ={"object","array","string", "number", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
+			"map", "union"};*/
 
 	// FIXME only RECORD is allowed when adding the list
 	// private String DATA_TYPE = "object";
@@ -188,6 +192,9 @@ public class AddNewObjectDialog extends Dialog {
 			lblNullables.setVisible(true);
 			lblInterrelatedElement.setVisible(false);
 			textInterrelatedElement.setVisible(false);
+			lblRequired.setVisible(true);
+			textRequired.setVisible(true);
+			isRootElementNode = true;
 		}
 		if (title.equals(DIALOG_TITLE_OBJECT)) {
 			lblSchemaValue.setVisible(false);
@@ -210,6 +217,8 @@ public class AddNewObjectDialog extends Dialog {
 			lblNullables.setVisible(true);
 			lblInterrelatedElement.setVisible(false);
 			textInterrelatedElement.setVisible(false);
+			lblRequired.setVisible(true);
+			textRequired.setVisible(true);
 		}if(title.equals(DIALOG_TITLE_ARRAY)){
 			lblSchemaValue.setVisible(false);
 			textSchemaValue.setVisible(false);
@@ -229,6 +238,8 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
+			lblRequired.setVisible(true);
+			textRequired.setVisible(true);
 			if(isOutputEditPart){
 				lblInterrelatedElement.setVisible(true);
 				textInterrelatedElement.setVisible(true);	
@@ -256,6 +267,8 @@ public class AddNewObjectDialog extends Dialog {
 			lblNullables.setVisible(true);
 			lblInterrelatedElement.setVisible(false);
 			textInterrelatedElement.setVisible(false);
+			lblSchemaValue.setVisible(false);
+			textSchemaValue.setVisible(false);
 		}if(title.equals(DIALOG_TITLE_ATTRIBUTE)){
 			lblRequired.setVisible(false);
 			textRequired.setVisible(false);
@@ -275,6 +288,8 @@ public class AddNewObjectDialog extends Dialog {
 			lblNullables.setVisible(true);
 			lblInterrelatedElement.setVisible(false);
 			textInterrelatedElement.setVisible(false);
+			lblSchemaValue.setVisible(false);
+			textSchemaValue.setVisible(false);
 		}
 	}
 	
@@ -332,64 +347,70 @@ public class AddNewObjectDialog extends Dialog {
 	 * @param schemaValue
 	 *            schemaValue
 	 * @param isOutputEditPart 
+	 * @param isRootElement 
 	 * @param identifierValue2 
 	 * @param identifierType2 
 	 */
-	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue, String identifierURL, boolean nullValue, String interrelatedElement, boolean isOutputEditPart) {
+	public void setValues(String title, String schemaType, String id, String required, String schemaValue, String namespaces, String value, String identifierType, String identifierValue, String identifierURL, boolean nullValue, String interrelatedElement, boolean isOutputEditPart, boolean isRootElement) {
 		if (StringUtils.isNotEmpty(title)) {
 			textTitle.setText(title);
 		}
 		if (StringUtils.isNotEmpty(schemaType)) {
 			switch (schemaType) {
 			case "object":
+				comboSchemaType.setItems(ROOT_TYPE);
 				comboSchemaType.select(0);
 				lblID.setVisible(true);
 				textID.setVisible(true);
 				lblRequired.setVisible(true);
 				textRequired.setVisible(true);
-				lblSchemaValue.setVisible(true);
-				textSchemaValue.setVisible(true);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(true);
-				lblCheckBoxForValue.setVisible(true);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(true);
-				lblCheckBoxForIdentifiers.setVisible(true);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
 				lblInterrelatedElement.setVisible(false);
 				textInterrelatedElement.setVisible(false);
+				if(isRootElement){
+					checkBoxForIdentifiers.setVisible(false);
+					lblCheckBoxForIdentifiers.setVisible(false);
+					lblIdentifierType.setVisible(false);
+					lblIdentifierValue.setVisible(false);
+					textIdentifierType.setVisible(false);
+					textIdentifierValue.setVisible(false);
+					lblIdentifierURL.setVisible(false);
+					textIdentifierURL.setVisible(false);
+					checkBoxForValue.setVisible(false);
+					lblCheckBoxForValue.setVisible(false);
+					lblValue.setVisible(false);
+					comboValue.setVisible(false);
+					lblSchemaValue.setVisible(true);
+					textSchemaValue.setVisible(true);
+				}else{
+					checkBoxForIdentifiers.setVisible(true);
+					lblCheckBoxForIdentifiers.setVisible(true);
+					lblIdentifierType.setVisible(false);
+					lblIdentifierValue.setVisible(false);
+					textIdentifierType.setVisible(false);
+					textIdentifierValue.setVisible(false);
+					lblIdentifierURL.setVisible(false);
+					textIdentifierURL.setVisible(false);
+					checkBoxForValue.setVisible(true);
+					lblCheckBoxForValue.setVisible(true);
+					lblValue.setVisible(false);
+					comboValue.setVisible(false);
+					lblSchemaValue.setVisible(false);
+					textSchemaValue.setVisible(false);
+				}
 				break;
 			case "array":
-				comboSchemaType.select(0);
+				comboSchemaType.setItems(ROOT_TYPE);
+				comboSchemaType.select(1);
 				lblID.setVisible(true);
 				textID.setVisible(true);
 				lblRequired.setVisible(true);
 				textRequired.setVisible(true);
-				lblSchemaValue.setVisible(false);
-				textSchemaValue.setVisible(false);
 				lblNamespaces.setVisible(true);
 				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(true);
-				lblCheckBoxForValue.setVisible(true);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(true);
-				lblCheckBoxForIdentifiers.setVisible(true);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
 				if(isOutputEditPart){
@@ -401,6 +422,37 @@ public class AddNewObjectDialog extends Dialog {
 				}else{
 				lblInterrelatedElement.setVisible(false);
 				textInterrelatedElement.setVisible(false);
+				}
+				if(isRootElement){
+					checkBoxForIdentifiers.setVisible(false);
+					lblCheckBoxForIdentifiers.setVisible(false);
+					lblIdentifierType.setVisible(false);
+					lblIdentifierValue.setVisible(false);
+					textIdentifierType.setVisible(false);
+					textIdentifierValue.setVisible(false);
+					lblIdentifierURL.setVisible(false);
+					textIdentifierURL.setVisible(false);
+					checkBoxForValue.setVisible(false);
+					lblCheckBoxForValue.setVisible(false);
+					lblValue.setVisible(false);
+					comboValue.setVisible(false);
+					lblSchemaValue.setVisible(true);
+					textSchemaValue.setVisible(true);
+				}else{
+					checkBoxForIdentifiers.setVisible(true);
+					lblCheckBoxForIdentifiers.setVisible(true);
+					lblIdentifierType.setVisible(false);
+					lblIdentifierValue.setVisible(false);
+					textIdentifierType.setVisible(false);
+					textIdentifierValue.setVisible(false);
+					lblIdentifierURL.setVisible(false);
+					textIdentifierURL.setVisible(false);
+					checkBoxForValue.setVisible(true);
+					lblCheckBoxForValue.setVisible(true);
+					lblValue.setVisible(false);
+					comboValue.setVisible(false);
+					lblSchemaValue.setVisible(false);
+					textSchemaValue.setVisible(false);
 				}
 				break;
 			case "string":
@@ -787,6 +839,12 @@ public class AddNewObjectDialog extends Dialog {
 			lblNullables.setVisible(true);
 			checkBoxForNullables.setSelection(false);
 		}
+		if(isOutputEditPart){
+			isOutputEditpartContainer = true;
+		}
+		if(isRootElement){
+			isRootElementNode = true;
+		}
 	}
 
 	/**
@@ -820,6 +878,62 @@ public class AddNewObjectDialog extends Dialog {
 		lblSchemaTypeLabel.setText(LABEL_SCHEMATYPE);
 
 		comboSchemaType = new Combo(compositeType, SWT.DROP_DOWN | SWT.READ_ONLY);
+		comboSchemaType.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if(comboSchemaType.getText().equals("object")|| comboSchemaType.getText().equals("array")){
+					lblSchemaValue.setVisible(false);
+					textSchemaValue.setVisible(false);
+					lblNamespaces.setVisible(true);
+					textNamespaces.setVisible(true);
+					checkBoxForValue.setVisible(true);
+					lblCheckBoxForValue.setVisible(true);
+					lblValue.setVisible(false);
+					comboValue.setVisible(false);
+					checkBoxForIdentifiers.setVisible(true);
+					lblCheckBoxForIdentifiers.setVisible(true);
+					lblIdentifierType.setVisible(false);
+					lblIdentifierValue.setVisible(false);
+					textIdentifierType.setVisible(false);
+					textIdentifierValue.setVisible(false);
+					lblIdentifierURL.setVisible(false);
+					textIdentifierURL.setVisible(false);
+					checkBoxForNullables.setVisible(true);
+					lblNullables.setVisible(true);
+					lblInterrelatedElement.setVisible(false);
+					textInterrelatedElement.setVisible(false);
+					lblRequired.setVisible(true);
+					textRequired.setVisible(true);
+					if(comboSchemaType.getText().equals("array") && isOutputEditpartContainer){
+						lblInterrelatedElement.setVisible(true);
+						textInterrelatedElement.setVisible(true);
+					}
+					if(isRootElementNode){
+						checkBoxForValue.setVisible(false);
+						lblCheckBoxForValue.setVisible(false);
+						lblValue.setVisible(false);
+						comboValue.setVisible(false);
+						checkBoxForIdentifiers.setVisible(false);
+						lblCheckBoxForIdentifiers.setVisible(false);
+						lblIdentifierType.setVisible(false);
+						lblIdentifierValue.setVisible(false);
+						textIdentifierType.setVisible(false);
+						textIdentifierValue.setVisible(false);
+						lblIdentifierURL.setVisible(false);
+						textIdentifierURL.setVisible(false);
+						lblSchemaValue.setVisible(true);
+						textSchemaValue.setVisible(true);
+					}
+				}
+			}
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		comboSchemaType.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 			}

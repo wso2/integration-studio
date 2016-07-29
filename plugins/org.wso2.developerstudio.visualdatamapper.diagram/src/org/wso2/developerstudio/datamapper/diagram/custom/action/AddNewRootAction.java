@@ -77,6 +77,9 @@ public class AddNewRootAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String TRUE = "true";
 	private static final String FALSE = "false";
+	private static final String JSON_SCHEMA_ARRAY = "array";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_ID = "items_id";
+	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -162,6 +165,11 @@ public class AddNewRootAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_NULLABLE,
 							nullableValue);
 					
+					if(rootElementDialog.getSchemaType().equals(JSON_SCHEMA_ARRAY)){
+						//Sets the values for items field which is used for serializing the array
+						setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, rootElementDialog.getID()+"/0");
+						setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, "");
+					}
 					String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
 					if (null != selectedInputOutputEditPart) {
 						AddCommand addCmd;

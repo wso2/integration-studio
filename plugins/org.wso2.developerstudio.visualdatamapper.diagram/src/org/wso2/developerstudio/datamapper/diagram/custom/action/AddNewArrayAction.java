@@ -176,7 +176,12 @@ public class AddNewArrayAction extends AbstractActionHandler {
 				
 				//Sets the values for items field which is used for serializing the array
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/0");
-				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, objectDialog.getValue());
+				if(StringUtils.isNotEmpty(objectDialog.getValue())){
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, objectDialog.getValue());
+				}else{
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_TYPE, "");
+				}
+				
 				//sets the value type if item holds a value
 				if(StringUtils.isNotEmpty(objectDialog.getValue())){
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_VALUE_TYPE,objectDialog.getValue());

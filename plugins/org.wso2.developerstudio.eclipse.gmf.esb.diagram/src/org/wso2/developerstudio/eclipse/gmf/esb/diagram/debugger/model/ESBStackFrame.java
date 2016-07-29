@@ -157,6 +157,21 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
     public void setLineNumber(int lineNumber) {
         this.lineNumber = lineNumber;
     }
+    
+	public void clearEnvelopeViewPropertyTableValues() {
+		try {
+			IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(
+					MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID, IWorkbenchPage.VIEW_VISIBLE);
+			for (String propertyKey : tablePropertySet) {
+				if (envelopeView instanceof ContentAcceptHandler) {
+					((ContentAcceptHandler) envelopeView).acceptContent(new String[] { propertyKey, "" },
+							AcceptedContentAction.ADD);
+				}
+			}
+		} catch (PartInitException e) {
+			log.error("Error while updating the Envelope View with cleared variable values", e);
+		}
+	}
 
     public void setVariables(PropertyRespondMessage propertyRespondMessage) throws DebugException {
         String name = propertyRespondMessage.getScope();

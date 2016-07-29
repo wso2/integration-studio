@@ -131,14 +131,14 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
                 if (propertyCommandMessage.getContext() != null) {
                     propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
                     try {
-                        IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(
-                                MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID, IWorkbenchPage.VIEW_VISIBLE);
-                        if (envelopeView instanceof ContentAcceptHandler) {
-                            for (DefaultPropertyValues propertyValue : DefaultPropertyValues.values()) {
-                                ((ContentAcceptHandler) envelopeView).acceptContent(
-                                        new String[] { propertyValue.getPropertyName(), "" }, AcceptedContentAction.REMOVE);
-                            }
-                        }
+						IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+								.showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
+										IWorkbenchPage.VIEW_VISIBLE);
+						if (envelopeView instanceof ContentAcceptHandler) {
+							((ContentAcceptHandler) envelopeView).acceptContent(
+									new String[] { propertyCommandMessage.getProperty().getPropertyName(), "" },
+									AcceptedContentAction.REMOVE);
+						}
                     } catch (PartInitException e) {
                         log.error("Error while removing a property from Envelope Property table", e);
                     }

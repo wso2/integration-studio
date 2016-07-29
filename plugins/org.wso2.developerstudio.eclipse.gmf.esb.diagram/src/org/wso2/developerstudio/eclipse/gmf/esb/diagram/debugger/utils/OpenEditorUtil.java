@@ -156,7 +156,8 @@ public class OpenEditorUtil {
 	 * @return
 	 */
 	public static String formatMessageEnvelope(String xmlString) {
-		if (StringUtils.isEmpty(xmlString)) {
+		if (StringUtils.isEmpty(xmlString) || !xmlString.startsWith("<")) {
+			// not a xml file
 			return xmlString;
 		}
 		final InputSource inputSource = new InputSource(new StringReader(xmlString));

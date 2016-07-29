@@ -16,7 +16,10 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
+import org.eclipse.gmf.runtime.diagram.ui.requests.EditCommandRequestWrapper;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
+import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
+import org.eclipse.gmf.runtime.emf.type.core.requests.IEditCommandRequest;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.tooling.runtime.actions.DefaultDeleteElementAction;
@@ -62,6 +65,24 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 	 */
 	protected Command getCommand(Request request) {
 		List operationSet = getOperationSet();
+		if(request instanceof EditCommandRequestWrapper){
+			IEditCommandRequest editCommandReq = ((EditCommandRequestWrapper)request).getEditCommandRequest();
+			if((editCommandReq) instanceof DestroyElementRequest){
+				DestroyElementRequest destroyElementReq = (DestroyElementRequest) editCommandReq;
+				if(destroyElementReq.getElementToDestroy()!=null){
+					if (ESBDebuggerUtil.isDeleteOperationPerformed()) {
+						try {
+							ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion();
+						} catch (CoreException | ESBDebuggerException e) {
+							//
+						}
+					} else {
+						ESBDebuggerUtil.updateModifiedDebugPoints();
+					}
+					ESBDebuggerUtil.setDeleteOperationPerformed(true);
+				}
+			}
+		}
 		if (operationSet.isEmpty()) {
 			return UnexecutableCommand.INSTANCE;
 		}

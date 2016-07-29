@@ -40,6 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.OpenEdito
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
 /**
@@ -49,6 +50,8 @@ import com.google.gson.JsonElement;
 public class ESBValue extends ESBDebugElement implements IValue {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static final String ENVELOPE_PROPERTY_KEY = "envelope";
+	private static final String EMPTY_STRING = "";
+	private static final String ELEMENT_SEPERATOR = ",";
 
     private final String variableValue;
     private List<IVariable> valueChildren;
@@ -164,8 +167,18 @@ public class ESBValue extends ESBDebugElement implements IValue {
             esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), valueString, variableParent,
                     tablePropertySet);
         } else {
-            esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), entry.getValue(), variableParent,
-                    tablePropertySet);
+			if (entry.getValue() instanceof JsonArray) {
+				JsonArray jsonArray = entry.getValue().getAsJsonArray();
+				for (JsonElement jsonElement : jsonArray) {
+					valueString += jsonElement.getAsString() + ELEMENT_SEPERATOR;
+				}
+				valueString = valueString.substring(0, valueString.length() - 1);
+				esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), valueString, variableParent,
+						tablePropertySet);
+			} else {
+				esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), entry.getValue(), variableParent,
+						tablePropertySet);
+			}
         }
         valueChildren.add(esbVariable);
         if (ENVELOPE_PROPERTY_KEY.equalsIgnoreCase(entry.getKey())) {

@@ -155,6 +155,7 @@ public class ESBDebugTarget extends ESBDebugElement implements IDebugTarget, Eve
 
     private void clearVariableTable() {
         ESBStackFrame stackFrame = getThreads()[0].getTopStackFrame();
+        stackFrame.clearEnvelopeViewPropertyTableValues();
         for (ESBPropertyScopeType scope : ESBPropertyScopeType.values()) {
             try {
                 PropertyRespondMessage propertyMessage = getEmptyVariableMessage(scope.toString());

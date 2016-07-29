@@ -48,12 +48,14 @@ public class EnvelopeView extends ViewPart implements ContentAcceptHandler {
     private Text messageEnvelope;
     private Table propertyTable;
     private Color tableEvenIndexColor;
+    private Color tableOddIndexColor;
     private IEventBroker addClearPropertyCommandEB;
 
     @Override
     public void createPartControl(Composite parent) {
         Display display = PlatformUI.createDisplay();
         tableEvenIndexColor = display.getSystemColor(SWT.COLOR_WIDGET_LIGHT_SHADOW);
+        tableOddIndexColor = display.getSystemColor(SWT.COLOR_WHITE);
         messageEnvelope = new Text(parent, SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI | SWT.READ_ONLY);
         messageEnvelope.setBackground(tableEvenIndexColor);
 
@@ -154,6 +156,7 @@ public class EnvelopeView extends ViewPart implements ContentAcceptHandler {
                 removeTableItem(keyValuePair[0]);
             }
         }
+        refreshTableColors();
     }
 
     private void removeTableItem(String key) {
@@ -183,9 +186,20 @@ public class EnvelopeView extends ViewPart implements ContentAcceptHandler {
         }
         TableItem item = new TableItem(propertyTable, SWT.NONE);
         item.setText(new String[] { key, value });
-        if (itemList.length % 2 == 1) {
-            item.setBackground(tableEvenIndexColor);
-        }
     }
+    
+	private void refreshTableColors() {
+		TableItem[] itemList = propertyTable.getItems();
+		boolean evenIndexPosition = false;
+		for (TableItem tableItem : itemList) {
+			if (evenIndexPosition) {
+				tableItem.setBackground(tableEvenIndexColor);
+				evenIndexPosition = false;
+			} else {
+				tableItem.setBackground(tableOddIndexColor);
+				evenIndexPosition = true;
+			}
+		}
+	}
 
 }

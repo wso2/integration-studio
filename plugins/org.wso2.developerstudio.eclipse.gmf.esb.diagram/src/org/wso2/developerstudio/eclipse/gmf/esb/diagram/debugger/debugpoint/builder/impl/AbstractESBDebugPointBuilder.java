@@ -696,10 +696,11 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                 return false;
             }
         }
-        if (addedMediatorPosition.get(addedMediatorLastPositionValueIndex) <= breakpointPosition
-                .get(addedMediatorLastPositionValueIndex)) {
-            return true;
-        }
+		if ((addedMediatorLastPositionValueIndex < breakpointPosition.size())
+				&& addedMediatorPosition.get(addedMediatorLastPositionValueIndex) <= breakpointPosition
+						.get(addedMediatorLastPositionValueIndex)) {
+			return true;
+		}
         return false;
     }
 

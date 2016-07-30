@@ -133,10 +133,10 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 //				return false;
 //			}
 //		}
-//		// Restricting drawing links if one link is already connected
-//		if (this.getIncomingLink().size() > 0) {
-//			return false;
-//		}
+		// Restricting drawing links if one link is already connected
+		if (this.getIncomingLink().size() > 0) {
+			return false;
+		}
 		return true;
 	}
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper.engine_4.6.2.SNAPSHOT.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/axiom_1.2.11.wso2v11.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/bcprov-jdk16-1.46.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/bsf-all_3.0.0.wso2v5.jar"/>

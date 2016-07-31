@@ -18,8 +18,10 @@ package org.wso2.developerstudio.humantaskeditor.wizards;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -87,9 +89,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
         IProject[] projectList = mainPage.getProjects();
         for (IProject aProjectList : projectList) {
             if (mainPage.getProjectToArchive().equals(aProjectList.getName())) {
-                List<String> bpelValidFileList;
                 String path = aProjectList.getLocation().toOSString();
-                bpelValidFileList = FileManagementUtil.getAllFilesPresentInFolder(new File(path));
                 File tempFolder = null;
                 try {
                     tempFolder = File.createTempFile("temp", ".tmp");
@@ -100,8 +100,8 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                     tmpZip.delete();
                     tmpZip.deleteOnExit();
                     monitor.setTaskName("Creating the human task artifact...");
-                    FileManagementUtil.copyDirectory(new File(path + File.separator
-                            + HumantaskEditorConstants.BASE_FOLDER_NAME), zipFolder, bpelValidFileList);
+                    FileUtils.copyDirectory(new File(path + File.separator
+                            + HumantaskEditorConstants.BASE_FOLDER_NAME), zipFolder);
                     FileManagementUtil.removeEmptyDirectories(zipFolder);
                     FileManagementUtil.zipFolder(zipFolder.getAbsolutePath(), tmpZip.getAbsolutePath());
                     if (tmpZip.exists()) {
@@ -109,7 +109,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                                 aProjectList.getName() + ".zip").toOSString(); // FileManagementUtil.addNodesToPath(PersistentWSASEmitterContext.getInstance().getWSASRuntimeLocation(),new
                         // String[]{"repository", "bpel",p.getName()+".zip"});
                         File deployedZip = new File(deployableZip);
-                        FileManagementUtil.copy(tmpZip, deployedZip);
+                        FileUtils.copyFile(tmpZip, deployedZip);
                         monitor.done();
                         if (deployedZip.exists()) {
                             return;
@@ -120,7 +120,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                         throw new Exception("Unable to create the human task archive file.");
                 } finally {
                     if (tempFolder != null) {
-                        FileManagementUtil.deleteDirectories(tempFolder);
+                        tempFolder.delete();
                     }
                 }
             }

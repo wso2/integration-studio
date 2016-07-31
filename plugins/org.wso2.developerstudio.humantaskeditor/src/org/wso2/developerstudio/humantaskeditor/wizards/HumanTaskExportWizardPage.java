@@ -20,6 +20,7 @@ import java.io.File;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.jface.dialogs.TrayDialog;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -48,6 +49,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
         if (p != null) {
             selectedProject = p;
         }
+        TrayDialog.setDialogHelpAvailable(true);
     }
 
     public void createControl(Composite parent) {
@@ -184,6 +186,6 @@ public class HumanTaskExportWizardPage extends WizardPage {
 
     @Override
     public void performHelp() {
-        PlatformUI.getWorkbench().getHelpSystem().displayHelp("org.wso2.developerstudio.humantaskeditor.hteditor");
+        PlatformUI.getWorkbench().getHelpSystem().displayHelp("hteditor");
     }
 }

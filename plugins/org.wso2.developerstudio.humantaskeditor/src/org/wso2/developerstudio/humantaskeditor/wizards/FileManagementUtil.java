@@ -20,56 +20,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+
 
 import org.wso2.developerstudio.humantaskeditor.Activator;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class FileManagementUtil {
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);
-
-    public static void copyDirectory(File srcPath, File dstPath, List<String> filesToBeCopied) throws IOException {
-
-        if (srcPath.isDirectory()) {
-            if (!dstPath.exists()) {
-                dstPath.mkdir();
-            }
-            String files[] = srcPath.list();
-            if (files != null) {
-                for (String file : files) {
-                    copyDirectory(new File(srcPath, file), new File(dstPath, file), filesToBeCopied);
-                }
-            }
-        } else {
-            if (!filesToBeCopied.contains(srcPath.getAbsolutePath()))
-                return;
-            if (srcPath.exists()) {
-                FileManagementUtil.copy(srcPath, dstPath);
-            }
-        }
-    }
-
-    public static List<String> getAllFilesPresentInFolder(File srcPath) {
-        List<String> fileList = new ArrayList<>();
-        if (srcPath.isDirectory()) {
-            String files[] = srcPath.list();
-            if (files != null) {
-                for (String file : files) {
-                    fileList.addAll(getAllFilesPresentInFolder(new File(srcPath, file)));
-                }
-            }
-        } else {
-            fileList.add(srcPath.getAbsolutePath());
-        }
-        return fileList;
-    }
 
     public static void removeEmptyDirectories(File srcPath) {
         if (srcPath.isDirectory()) {
@@ -86,11 +47,7 @@ public class FileManagementUtil {
     }
 
     static public void zipFolder(String srcFolder, String destZipFile) {
-        ZipOutputStream zip;
-        FileOutputStream fileWriter;
-        try {
-            fileWriter = new FileOutputStream(destZipFile);
-            zip = new ZipOutputStream(fileWriter);
+        try (FileOutputStream fileWriter = new FileOutputStream(destZipFile);ZipOutputStream zip = new ZipOutputStream(fileWriter)){
             addFolderContentsToZip(srcFolder, zip);
             zip.flush();
             zip.close();
@@ -110,8 +67,7 @@ public class FileManagementUtil {
             if (!srcFile.equals(".project")) {
                 byte[] buf = new byte[1024];
                 int len;
-                try {
-                    FileInputStream in = new FileInputStream(srcFile);
+                try (FileInputStream in = new FileInputStream(srcFile)) {
                     String location = folder.getName();
                     if (!path.equalsIgnoreCase("")) {
                         location = path + File.separator + folder.getName();
@@ -144,43 +100,15 @@ public class FileManagementUtil {
         File folder = new File(srcFolder);
         String fileListArray[] = folder.list();
         int i = 0;
-        while (i < fileListArray.length) {
-            String newPath = folder.getName();
-            if (!path.equalsIgnoreCase("")) {
-                newPath = path + File.separator + newPath;
-            }
-            addToZip(newPath, srcFolder + File.separator + fileListArray[i], zip);
-            i++;
-        }
-
-    }
-
-    public static void deleteDirectories(File dir) {
-        File[] children = dir.listFiles();
-        if (children != null) {
-            for (File aChildren : children) {
-                if (aChildren.list() != null && aChildren.list().length > 0) {
-                    deleteDirectories(aChildren);
-                } else {
-                    aChildren.delete();
+        if (fileListArray != null) {
+            while (i < fileListArray.length) {
+                String newPath = folder.getName();
+                if (!path.equalsIgnoreCase("")) {
+                    newPath = path + File.separator + newPath;
                 }
+                addToZip(newPath, srcFolder + File.separator + fileListArray[i], zip);
+                i++;
             }
         }
-        dir.delete();
-    }
-
-    // Copies src file to dst file.
-    // If the dst file does not exist, it is created
-    public static void copy(File src, File dst) throws IOException {
-        InputStream in = new FileInputStream(src);
-        OutputStream out = new FileOutputStream(dst);
-
-        byte[] buf = new byte[1024];
-        int len;
-        while ((len = in.read(buf)) > 0) {
-            out.write(buf, 0, len);
-        }
-        in.close();
-        out.close();
     }
 }

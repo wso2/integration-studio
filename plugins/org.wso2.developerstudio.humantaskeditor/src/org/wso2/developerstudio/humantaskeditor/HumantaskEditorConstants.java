@@ -11,6 +11,10 @@ public class HumantaskEditorConstants {
     public static final String JS_CUSTOMFUNC_GETTEXT = "gettext";
 
     public static final String JS_CUSTOMFUNC_SETTEXT = "settext";
+    
+    public static final String JS_CUSTOMFUNC_SAVEPREF = "savepreferences";
+
+    public static final String JS_CUSTOMFUNC_GETPREF = "getpreferences";
 
     public static final String JS_FUNC_PROCESS = "process();";
 

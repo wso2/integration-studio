@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.URL;
-import java.util.logging.Level;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -46,8 +45,8 @@ public class HumanTaskWizardUtil {
      */
 
     public InputStream openContentStream(String taskName, String tnsName) throws IOException, CoreException {
-        String contents = changeXMLName(readDummyHT(), taskName, tnsName);
-        return new ByteArrayInputStream(contents.getBytes());
+        String contents = changeXMLName(readTemplateHT(), taskName, tnsName);
+        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
     }
 
     /**
@@ -57,8 +56,8 @@ public class HumanTaskWizardUtil {
      */
 
     public InputStream openWSDLStream() throws IOException {
-        String contents = readDummyWSDL();
-        return new ByteArrayInputStream(contents.getBytes());
+        String contents = readTemplateWSDL();
+        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
     }
 
     /**
@@ -68,8 +67,8 @@ public class HumanTaskWizardUtil {
      */
 
     public InputStream openOrgSchemaStream() throws IOException {
-        String contents = readDummyOrgSchema();
-        return new ByteArrayInputStream(contents.getBytes());
+        String contents = readTemplateOrgSchema();
+        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
     }
 
     /**
@@ -80,8 +79,8 @@ public class HumanTaskWizardUtil {
      */
 
     public InputStream openPomStream(String containerName) throws IOException, CoreException {
-        String contents = changePOMName(containerName, readDummyPomSchema());
-        return new ByteArrayInputStream(contents.getBytes());
+        String contents = changePOMName(containerName, readTemplatePomSchema());
+        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
     }
 
     /**
@@ -91,8 +90,8 @@ public class HumanTaskWizardUtil {
      */
 
     public InputStream openHTConfigStream() throws IOException {
-        String contents = readDummyHtConfig();
-        return new ByteArrayInputStream(contents.getBytes());
+        String contents = readTemplateHtConfig();
+        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
     }
 
     /**
@@ -100,11 +99,11 @@ public class HumanTaskWizardUtil {
      *
      * @throws IOException
      */
-    public String readDummyHT() throws IOException {
+    public String readTemplateHT() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");
@@ -122,11 +121,11 @@ public class HumanTaskWizardUtil {
      *
      * @throws IOException
      */
-    public String readDummyWSDL() throws IOException {
+    public String readTemplateWSDL() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");
@@ -144,11 +143,11 @@ public class HumanTaskWizardUtil {
      *
      * @throws IOException
      */
-    public String readDummyOrgSchema() throws IOException {
+    public String readTemplateOrgSchema() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");
@@ -166,11 +165,11 @@ public class HumanTaskWizardUtil {
      *
      * @throws IOException
      */
-    public String readDummyPomSchema() throws IOException {
+    public String readTemplatePomSchema() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_POM_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");
@@ -183,11 +182,11 @@ public class HumanTaskWizardUtil {
         return sb.toString();
     }
 
-    public String readDummyHtConfig() throws IOException {
+    public String readTemplateHtConfig() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");

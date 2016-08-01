@@ -239,7 +239,9 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 		} else if (inputLabels.size() > 1) {
 			int leftConnectorIndex = operator.getLeftConnectorCount();
 			operator.setLeftConnectorCount(leftConnectorIndex + 1);
-			return formatLabel(inputLabels.get(leftConnectorIndex));
+			if(leftConnectorIndex < inputLabels.size()){
+				return formatLabel(inputLabels.get(leftConnectorIndex));
+			}
 		}
 		return "";
 	}

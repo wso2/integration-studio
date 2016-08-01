@@ -2354,11 +2354,9 @@ public interface DsPackage extends EPackage {
 	int CUSTOM_VALIDATOR_PROPERTY_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl
-	 * <em>Custom Validator Property List</em>}' class. <!-- begin-user-doc -->
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl <em>Custom Validator Property List</em>}' class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorPropertyListImpl
 	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getCustomValidatorPropertyList()
 	 * @generated

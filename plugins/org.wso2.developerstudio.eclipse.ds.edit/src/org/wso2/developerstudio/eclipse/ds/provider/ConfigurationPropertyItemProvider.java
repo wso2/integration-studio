@@ -30,10 +30,8 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
 import org.wso2.developerstudio.eclipse.ds.provider.labelProvider.DSEditPropertiesLabelProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ConfigurationPropertyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -128,11 +126,10 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached children and by creating a viewer notification, which
-	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -141,10 +138,10 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ConfigurationProperty.class)) {
-		case DsPackage.CONFIGURATION_PROPERTY__VALUE:
-		case DsPackage.CONFIGURATION_PROPERTY__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
+			case DsPackage.CONFIGURATION_PROPERTY__VALUE:
+			case DsPackage.CONFIGURATION_PROPERTY__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

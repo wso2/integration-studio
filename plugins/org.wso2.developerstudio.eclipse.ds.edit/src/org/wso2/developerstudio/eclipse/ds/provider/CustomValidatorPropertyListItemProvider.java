@@ -32,10 +32,8 @@ import org.wso2.developerstudio.eclipse.ds.DsFactory;
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class CustomValidatorPropertyListItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -67,13 +65,11 @@ public class CustomValidatorPropertyListItemProvider extends ItemProviderAdapter
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper
-		// feature to use for
+		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
@@ -91,9 +87,9 @@ public class CustomValidatorPropertyListItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -102,11 +98,10 @@ public class CustomValidatorPropertyListItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached children and by creating a viewer notification, which
-	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -114,10 +109,10 @@ public class CustomValidatorPropertyListItemProvider extends ItemProviderAdapter
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CustomValidatorPropertyList.class)) {
-		case DsPackage.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED:
-		case DsPackage.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case DsPackage.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED:
+			case DsPackage.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -133,27 +128,45 @@ public class CustomValidatorPropertyListItemProvider extends ItemProviderAdapter
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
-				FeatureMapUtil.createEntry(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__COMMENT, "")));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__COMMENT,
+					 "")));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
-				FeatureMapUtil.createEntry(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__TEXT, "")));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__TEXT,
+					 "")));
 
-		newChildDescriptors
-				.add(createChildParameter(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
-						FeatureMapUtil.createEntry(
-								XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__PROCESSING_INSTRUCTION,
-								XMLTypeFactory.eINSTANCE.createProcessingInstruction())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__PROCESSING_INSTRUCTION,
+					 XMLTypeFactory.eINSTANCE.createProcessingInstruction())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
-				FeatureMapUtil.createEntry(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__CDATA, "")));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__CDATA,
+					 "")));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
-				FeatureMapUtil.createEntry(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY,
-						DsFactory.eINSTANCE.createCustomValidatorProperty())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY,
+					 DsFactory.eINSTANCE.createCustomValidatorProperty())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY,
-				DsFactory.eINSTANCE.createCustomValidatorProperty()));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY,
+				 DsFactory.eINSTANCE.createCustomValidatorProperty()));
 	}
 
 	/**
@@ -168,18 +181,19 @@ public class CustomValidatorPropertyListItemProvider extends ItemProviderAdapter
 		Object childFeature = feature;
 		Object childObject = child;
 
-		if (childFeature instanceof EStructuralFeature
-				&& FeatureMapUtil.isFeatureMap((EStructuralFeature) childFeature)) {
-			FeatureMap.Entry entry = (FeatureMap.Entry) childObject;
+		if (childFeature instanceof EStructuralFeature && FeatureMapUtil.isFeatureMap((EStructuralFeature)childFeature)) {
+			FeatureMap.Entry entry = (FeatureMap.Entry)childObject;
 			childFeature = entry.getEStructuralFeature();
 			childObject = entry.getValue();
 		}
 
-		boolean qualify = childFeature == DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY;
+		boolean qualify =
+			childFeature == DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY;
 
 		if (qualify) {
-			return getString("_UI_CreateChild_text2",
-					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
 	}

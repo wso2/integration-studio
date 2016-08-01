@@ -60,6 +60,8 @@ import org.eclipse.ui.PartInitException;
 import org.wso2.developerstudio.eclipse.ds.CallQuery;
 import org.wso2.developerstudio.eclipse.ds.CallQueryList;
 import org.wso2.developerstudio.eclipse.ds.ConfigurationProperty;
+import org.wso2.developerstudio.eclipse.ds.CustomValidator;
+import org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList;
 import org.wso2.developerstudio.eclipse.ds.DataService;
 import org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration;
 import org.wso2.developerstudio.eclipse.ds.ElementMapping;
@@ -74,6 +76,7 @@ import org.wso2.developerstudio.eclipse.ds.ResultMapping;
 import org.wso2.developerstudio.eclipse.ds.actions.DSAction;
 import org.wso2.developerstudio.eclipse.ds.actions.DSActionConstants;
 import org.wso2.developerstudio.eclipse.ds.actions.DataSourceConfigurationAction;
+import org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorImpl;
 import org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl;
 import org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl;
 import org.wso2.developerstudio.eclipse.ds.impl.EventTriggerImpl;
@@ -123,6 +126,12 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	 * displayed.
 	 */
 	private boolean generateQueryChildrenMenu = false;
+	
+	/**
+	 * Indicates whether the menu items belonging to a CustomValidator element need to be
+	 * displayed.
+	 */
+	private boolean generateCustomValidatorChildrenMenu = false;
 
 	/**
 	 * Indicates whether the menu items belonging to a Query element need to be
@@ -165,6 +174,18 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	 * to be displayed.
 	 */
 	private boolean generateQueryPropertyListMenu = false;
+	
+	/**
+	 * Indicates whether the menu items belonging to a Custom Validator Property List need
+	 * to be displayed.
+	 */
+	private boolean generateCustomValidatorPropertyListMenu = false;
+	
+	/**
+	 * generateCallQueryInputMappingMenu indicates whether the menu items
+	 * belonging to a Validator element need to be displayed.
+	 */
+	private boolean generateCustomValidatorMenu = false;
 
 	/**
 	 * The ds menu manager manages contributions to a menu bar and its sub
@@ -204,6 +225,15 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 
 	/** The validator menu manager. */
 	private IMenuManager validatorMenuManager;
+	
+	/** The customValidator menu manager. */
+	private IMenuManager customValidatorMenuManager;
+	
+	/** The customValidator property group action. */
+	private IAction customValidatorPropertyGroupAction;
+
+	/** The customValidator property action. */
+	private IAction customValidatorPropertyAction;
 
 	/** The validator actions. */
 	private List<IAction> validatorActions;
@@ -239,6 +269,9 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 
 	/** The query instance. */
 	private Query query;
+	
+	/** The customValidator instance. */
+	private CustomValidator customValidator;
 
 	/** The event trigger instance. */
 	private EventTrigger eventTrigger;
@@ -424,10 +457,23 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 		if (generateValidatorMenu) {
 			submenuManager.insertBefore("additions", validatorMenuManager);
 		}
+		
+		if (generateCustomValidatorChildrenMenu) {
+			if (customValidator != null && StringUtils.isNotBlank(customValidator.getClass_())) {
+				submenuManager.insertBefore("additions", customValidatorPropertyGroupAction);
+			} else {
+				displayError("Enter the Custom Validator Class to proceed.");
+			}
+		}
 
 		if (generateQueryPropertyListMenu) {
 
 			submenuManager.insertBefore("additions", queryPropertyAction);
+		}
+		
+		if (generateCustomValidatorPropertyListMenu) {
+			
+			submenuManager.insertBefore("additions", customValidatorPropertyAction);
 		}
 
 		// Force an update because Eclipse hides empty menus now.
@@ -638,6 +684,36 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 			} else {
 
 				generateQueryPropertyListMenu = false;
+			}
+			
+			// If the selected element is of type CustomValidator
+
+			if (referenceObject != null && referenceObject instanceof CustomValidator) {
+				customValidator = (CustomValidatorImpl) referenceObject;
+				generateCustomValidatorMenu = true;
+				customValidatorPropertyGroupAction =
+                        new DSAction(
+                                     selection,
+                                     domain,
+                                     newChildDescriptors,
+                                     DSActionConstants.ADD_CUSTOM_VALIDATOR_PROPERTY_LIST_ACTION);
+
+			} else {
+				generateCustomValidatorMenu = false;
+			}
+			
+			// If the selected element is of type CustomValidatorPropertyList
+
+			if (referenceObject != null && referenceObject instanceof CustomValidatorPropertyList) {
+				generateCustomValidatorPropertyListMenu = true;
+
+				customValidatorPropertyAction =
+				                      new DSAction(selection, domain, newChildDescriptors,
+				                                   DSActionConstants.ADD_CUSTOM_VALIDATOR_PROPERTY_ACTION);
+
+			} else {
+
+				generateCustomValidatorPropertyListMenu = false;
 			}
 
 			// if the selected element is ResultMapping
@@ -922,7 +998,24 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 
 		if (generateQueryPropertyListMenu) {
 			menuManager.insertBefore("edit", queryPropertyAction);
+			generateQueryPropertyListMenu = false;
+		}
+		
 
+		if (generateCustomValidatorMenu) {
+			if (customValidator != null && StringUtils.isNotBlank(customValidator.getClass_())) {
+				menuManager.insertBefore("edit", customValidatorPropertyGroupAction);
+				generateCustomValidatorMenu = false;
+			} else {
+				displayError("Enter the Custom Validator Class to proceed.");
+			}
+
+		}
+		
+
+		if (generateCustomValidatorPropertyListMenu) {
+			menuManager.insertBefore("additions", customValidatorPropertyAction);
+			generateCustomValidatorPropertyListMenu = false;
 		}
 
 		// To add an Output Mapping to a Result element, the Grouped By Element

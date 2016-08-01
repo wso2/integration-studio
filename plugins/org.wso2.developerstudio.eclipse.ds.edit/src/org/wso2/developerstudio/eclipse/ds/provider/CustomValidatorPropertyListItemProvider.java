@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
  */
 package org.wso2.developerstudio.eclipse.ds.provider;
 
@@ -15,33 +11,32 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
+
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.wso2.developerstudio.eclipse.ds.CustomValidator;
+import org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList;
 import org.wso2.developerstudio.eclipse.ds.DsFactory;
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.CustomValidator} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
-public class CustomValidatorItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class CustomValidatorPropertyListItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
@@ -49,7 +44,7 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements 
 	 * 
 	 * @generated
 	 */
-	public CustomValidatorItemProvider(AdapterFactory adapterFactory) {
+	public CustomValidatorPropertyListItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -59,57 +54,13 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements 
 	 * 
 	 * @generated
 	 */
-
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addClassPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Class feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void addClassPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CustomValidator_class_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CustomValidator_class_feature", "_UI_CustomValidator_type"),
-				 DsPackage.Literals.CUSTOM_VALIDATOR__CLASS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This specifies how to implement {@link #getChildren} and is used to
-	 * deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand},
-	 * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in
-	 * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			// childrenFeatures.add(DsPackage.Literals.CUSTOM_VALIDATOR__MIXED);
-			childrenFeatures.add(DsPackage.Literals.CUSTOM_VALIDATOR__PROPERTIES);
-		}
-		return childrenFeatures;
 	}
 
 	/**
@@ -125,30 +76,25 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements 
 	}
 
 	/**
-	 * This returns CustomValidator.gif. <!-- begin-user-doc --> <!--
+	 * This returns QueryPropertyList.gif. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
 	 * @generated NOT
 	 */
 
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("wso2/validateCustom"));
+		return overlayImage(object, getResourceLocator().getImage("wso2/properties"));
 	}
 
 	/**
-	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
+	 * @generated
 	 */
-
 	@Override
 	public String getText(Object object) {
-		// String label = ((CustomValidator)object).getClass_();
-		String type = " (" + getString("_UI_CustomValidator_type") + ")";
-		return type;
-		// return label != null ? label.toString() + type : type;
-
+		return getString("_UI_CustomValidatorPropertyList_type");
 	}
 
 	/**
@@ -158,17 +104,13 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements 
 	 * end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(CustomValidator.class)) {
-			case DsPackage.CUSTOM_VALIDATOR__CLASS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case DsPackage.CUSTOM_VALIDATOR__PROPERTIES:
-			case DsPackage.CUSTOM_VALIDATOR__MIXED:
+		switch (notification.getFeatureID(CustomValidatorPropertyList.class)) {
+			case DsPackage.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED:
+			case DsPackage.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -182,50 +124,49 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements 
 	 * 
 	 * @generated
 	 */
-
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DsPackage.Literals.CUSTOM_VALIDATOR__PROPERTIES,
-				 DsFactory.eINSTANCE.createCustomValidatorPropertyList()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DsPackage.Literals.CUSTOM_VALIDATOR__MIXED,
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
 				 FeatureMapUtil.createEntry
 					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__COMMENT,
 					 "")));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DsPackage.Literals.CUSTOM_VALIDATOR__MIXED,
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
 				 FeatureMapUtil.createEntry
 					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__TEXT,
 					 "")));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DsPackage.Literals.CUSTOM_VALIDATOR__MIXED,
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
 				 FeatureMapUtil.createEntry
 					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__PROCESSING_INSTRUCTION,
 					 XMLTypeFactory.eINSTANCE.createProcessingInstruction())));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DsPackage.Literals.CUSTOM_VALIDATOR__MIXED,
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
 				 FeatureMapUtil.createEntry
 					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__CDATA,
 					 "")));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DsPackage.Literals.CUSTOM_VALIDATOR__MIXED,
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED,
 				 FeatureMapUtil.createEntry
-					(DsPackage.Literals.CUSTOM_VALIDATOR__PROPERTIES,
-					 DsFactory.eINSTANCE.createCustomValidatorPropertyList())));
+					(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY,
+					 DsFactory.eINSTANCE.createCustomValidatorProperty())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY,
+				 DsFactory.eINSTANCE.createCustomValidatorProperty()));
 	}
 
 	/**
@@ -247,7 +188,7 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements 
 		}
 
 		boolean qualify =
-			childFeature == DsPackage.Literals.CUSTOM_VALIDATOR__PROPERTIES;
+			childFeature == DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY;
 
 		if (qualify) {
 			return getString
@@ -263,10 +204,29 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements 
 	 * 
 	 * @generated
 	 */
-
 	@Override
 	public ResourceLocator getResourceLocator() {
 		return DsEditPlugin.INSTANCE;
 	}
 
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to
+	 * deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand},
+	 * {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in
+	 * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			// childrenFeatures.add(DsPackage.Literals.QUERY_PROPERTY_LIST__MIXED);
+			childrenFeatures.add(DsPackage.Literals.CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY);
+		}
+		return childrenFeatures;
+	}
 }

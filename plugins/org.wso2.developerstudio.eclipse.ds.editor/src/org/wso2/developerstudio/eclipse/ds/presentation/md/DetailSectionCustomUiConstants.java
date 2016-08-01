@@ -4,8 +4,8 @@ public interface DetailSectionCustomUiConstants {
 
 	/**
 	 * These constants have 1-1 mapping with UI_properties in
-	 * org.wso2.developerstudio.eclipse.ds.edit plugin.properties
-	 * If change constant here please change plugin.properties also.
+	 * org.wso2.developerstudio.eclipse.ds.edit plugin.properties If change
+	 * constant here please change plugin.properties also.
 	 */
 
 	public String STRING = "String";
@@ -19,13 +19,13 @@ public interface DetailSectionCustomUiConstants {
 	public String DATA_SERVICE_NAME = "Data Service Name";
 	public String DATA_SERVICE_GROUP = "Data Service Group";
 	public String DATA_SERVICE_NAMESPACE = "Data Service Namespace";
-	
+
 	public String BASE_URI = "Base URI";
 	public String ENABLE_BATCH_REQUESTS = "Enable Batch Requests";
 	public String ENABLE_BOX_CARRING = "Enable Boxcarring";
 	public String DISABLE_LEGACY_BOXCARRING_MODE = "Disable Legacy Boxcarring Mode";
 	public String ENABLE_DTP = "Enable Distributed Transactions";
-	
+
 	public String DISABLE_STREAMING = "Disable Streaming";
 	public String SERVICE_STATUS = "Service Status";
 
@@ -69,6 +69,9 @@ public interface DetailSectionCustomUiConstants {
 	public String FETCH_SIZE_DISPLAY = "Fetch Size";
 	public String MAX_FIELD_SIZE_DISPLAY = "Max Field Size (Bytes)";
 	public String MAX_ROWS_DISPLAY = "Max Rows";
+
+	public String PROPERTY_NAME_DISPLAY = "Name";
+	public String PROPERTY_VALUE_DISPLAY = "Value";
 
 	public String ELEMENT_MAPPING_COLUMN_NAME = "Data Source Column Name";
 	public String ELEMENT_MAPPING_QUERY_PARAM = "Data Source Query Param Name";

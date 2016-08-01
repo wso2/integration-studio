@@ -312,6 +312,18 @@ public class DsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DsPackage.CUSTOM_VALIDATOR_PROPERTY: {
+				CustomValidatorProperty customValidatorProperty = (CustomValidatorProperty)theEObject;
+				T result = caseCustomValidatorProperty(customValidatorProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DsPackage.CUSTOM_VALIDATOR_PROPERTY_LIST: {
+				CustomValidatorPropertyList customValidatorPropertyList = (CustomValidatorPropertyList)theEObject;
+				T result = caseCustomValidatorPropertyList(customValidatorPropertyList);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -913,6 +925,36 @@ public class DsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRegistryKeyProperty(RegistryKeyProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Custom Validator Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Custom Validator Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCustomValidatorProperty(CustomValidatorProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Custom Validator Property List</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Custom Validator Property List</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCustomValidatorPropertyList(CustomValidatorPropertyList object) {
 		return null;
 	}
 

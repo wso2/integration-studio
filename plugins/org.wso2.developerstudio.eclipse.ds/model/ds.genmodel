@@ -38,6 +38,8 @@
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//CustomValidator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//CustomValidator/class"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//CustomValidator/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//CustomValidator/mixed"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//DataService">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/mixed"/>
@@ -258,6 +260,14 @@
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//RegistryKeyProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//RegistryKeyProperty/key"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//CustomValidatorProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//CustomValidatorProperty/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//CustomValidatorProperty/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//CustomValidatorPropertyList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//CustomValidatorPropertyList/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//CustomValidatorPropertyList/property"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

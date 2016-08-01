@@ -1034,6 +1034,52 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CustomValidatorPropertyItemProvider customValidatorPropertyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCustomValidatorPropertyAdapter() {
+		if (customValidatorPropertyItemProvider == null) {
+			customValidatorPropertyItemProvider = new CustomValidatorPropertyItemProvider(this);
+		}
+
+		return customValidatorPropertyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CustomValidatorPropertyListItemProvider customValidatorPropertyListItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCustomValidatorPropertyListAdapter() {
+		if (customValidatorPropertyListItemProvider == null) {
+			customValidatorPropertyListItemProvider = new CustomValidatorPropertyListItemProvider(this);
+		}
+
+		return customValidatorPropertyListItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1175,6 +1221,8 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 		if (policyItemProvider != null) policyItemProvider.dispose();
 		if (dataServiceParameterItemProvider != null) dataServiceParameterItemProvider.dispose();
 		if (registryKeyPropertyItemProvider != null) registryKeyPropertyItemProvider.dispose();
+		if (customValidatorPropertyItemProvider != null) customValidatorPropertyItemProvider.dispose();
+		if (customValidatorPropertyListItemProvider != null) customValidatorPropertyListItemProvider.dispose();
 	}
 
 }

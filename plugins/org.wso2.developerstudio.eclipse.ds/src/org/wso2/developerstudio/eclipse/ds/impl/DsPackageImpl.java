@@ -24,6 +24,8 @@ import org.wso2.developerstudio.eclipse.ds.CallQuery;
 import org.wso2.developerstudio.eclipse.ds.CallQueryList;
 import org.wso2.developerstudio.eclipse.ds.ConfigurationProperty;
 import org.wso2.developerstudio.eclipse.ds.CustomValidator;
+import org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty;
+import org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList;
 import org.wso2.developerstudio.eclipse.ds.DataService;
 import org.wso2.developerstudio.eclipse.ds.DataServiceParameter;
 import org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration;
@@ -355,6 +357,20 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass customValidatorPropertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass customValidatorPropertyListEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum serviceStatusEEnum = null;
 
 	/**
@@ -608,6 +624,24 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 */
 	public EAttribute getCustomValidator_Class() {
 		return (EAttribute)customValidatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCustomValidator_Properties() {
+		return (EReference)customValidatorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCustomValidator_Mixed() {
+		return (EAttribute)customValidatorEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2280,6 +2314,60 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCustomValidatorProperty() {
+		return customValidatorPropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCustomValidatorProperty_Value() {
+		return (EAttribute)customValidatorPropertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCustomValidatorProperty_Name() {
+		return (EAttribute)customValidatorPropertyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCustomValidatorPropertyList() {
+		return customValidatorPropertyListEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCustomValidatorPropertyList_Mixed() {
+		return (EAttribute)customValidatorPropertyListEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCustomValidatorPropertyList_Property() {
+		return (EReference)customValidatorPropertyListEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getServiceStatus() {
 		return serviceStatusEEnum;
 	}
@@ -2353,6 +2441,8 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 
 		customValidatorEClass = createEClass(CUSTOM_VALIDATOR);
 		createEAttribute(customValidatorEClass, CUSTOM_VALIDATOR__CLASS);
+		createEReference(customValidatorEClass, CUSTOM_VALIDATOR__PROPERTIES);
+		createEAttribute(customValidatorEClass, CUSTOM_VALIDATOR__MIXED);
 
 		dataServiceEClass = createEClass(DATA_SERVICE);
 		createEAttribute(dataServiceEClass, DATA_SERVICE__MIXED);
@@ -2574,6 +2664,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		registryKeyPropertyEClass = createEClass(REGISTRY_KEY_PROPERTY);
 		createEAttribute(registryKeyPropertyEClass, REGISTRY_KEY_PROPERTY__KEY);
 
+		customValidatorPropertyEClass = createEClass(CUSTOM_VALIDATOR_PROPERTY);
+		createEAttribute(customValidatorPropertyEClass, CUSTOM_VALIDATOR_PROPERTY__VALUE);
+		createEAttribute(customValidatorPropertyEClass, CUSTOM_VALIDATOR_PROPERTY__NAME);
+
+		customValidatorPropertyListEClass = createEClass(CUSTOM_VALIDATOR_PROPERTY_LIST);
+		createEAttribute(customValidatorPropertyListEClass, CUSTOM_VALIDATOR_PROPERTY_LIST__MIXED);
+		createEReference(customValidatorPropertyListEClass, CUSTOM_VALIDATOR_PROPERTY_LIST__PROPERTY);
+
 		// Create enums
 		serviceStatusEEnum = createEEnum(SERVICE_STATUS);
 
@@ -2640,6 +2738,8 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 
 		initEClass(customValidatorEClass, CustomValidator.class, "CustomValidator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomValidator_Class(), theXMLTypePackage.getString(), "class", null, 1, 1, CustomValidator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCustomValidator_Properties(), this.getCustomValidatorPropertyList(), null, "properties", null, 0, -1, CustomValidator.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomValidator_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, CustomValidator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataServiceEClass, DataService.class, "DataService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataService_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2861,6 +2961,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEClass(registryKeyPropertyEClass, RegistryKeyProperty.class, "RegistryKeyProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRegistryKeyProperty_Key(), ecorePackage.getEString(), "key", null, 0, 1, RegistryKeyProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(customValidatorPropertyEClass, CustomValidatorProperty.class, "CustomValidatorProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCustomValidatorProperty_Value(), theXMLTypePackage.getString(), "value", null, 0, 1, CustomValidatorProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomValidatorProperty_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, CustomValidatorProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(customValidatorPropertyListEClass, CustomValidatorPropertyList.class, "CustomValidatorPropertyList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCustomValidatorPropertyList_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, CustomValidatorPropertyList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCustomValidatorPropertyList_Property(), this.getCustomValidatorProperty(), null, "property", null, 0, 5, CustomValidatorPropertyList.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(serviceStatusEEnum, ServiceStatus.class, "ServiceStatus");
 		addEEnumLiteral(serviceStatusEEnum, ServiceStatus.ACTIVE);
@@ -3018,7 +3126,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		   source, 
 		   new String[] {
 			 "name", "validateCustom_._type",
-			 "kind", "empty"
+			 "kind", "mixed"
 		   });	
 		addAnnotation
 		  (getCustomValidator_Class(), 
@@ -3027,6 +3135,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "class",
 			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getCustomValidator_Properties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "properties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getCustomValidator_Mixed(), 
+		   source, 
+		   new String[] {
+			 "kind", "elementWildcard",
+			 "name", ":mixed"
 		   });	
 		addAnnotation
 		  (dataServiceEClass, 
@@ -4390,6 +4513,50 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		   new String[] {
 			 "kind", "simple",
 			 "name", ":0"
+		   });	
+		addAnnotation
+		  (customValidatorPropertyEClass, 
+		   source, 
+		   new String[] {
+			 "name", "property_._1_._type",
+			 "kind", "simple"
+		   });	
+		addAnnotation
+		  (getCustomValidatorProperty_Value(), 
+		   source, 
+		   new String[] {
+			 "name", ":0",
+			 "kind", "simple"
+		   });	
+		addAnnotation
+		  (getCustomValidatorProperty_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "name",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (customValidatorPropertyListEClass, 
+		   source, 
+		   new String[] {
+			 "name", "properties_._type",
+			 "kind", "mixed"
+		   });	
+		addAnnotation
+		  (getCustomValidatorPropertyList_Mixed(), 
+		   source, 
+		   new String[] {
+			 "kind", "elementWildcard",
+			 "name", ":mixed"
+		   });	
+		addAnnotation
+		  (getCustomValidatorPropertyList_Property(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "property",
+			 "namespace", "##targetNamespace"
 		   });
 	}
 

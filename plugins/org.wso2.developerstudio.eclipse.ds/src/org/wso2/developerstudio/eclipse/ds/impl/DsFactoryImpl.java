@@ -103,6 +103,8 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 			case DsPackage.POLICY: return createPolicy();
 			case DsPackage.DATA_SERVICE_PARAMETER: return createDataServiceParameter();
 			case DsPackage.REGISTRY_KEY_PROPERTY: return createRegistryKeyProperty();
+			case DsPackage.CUSTOM_VALIDATOR_PROPERTY: return createCustomValidatorProperty();
+			case DsPackage.CUSTOM_VALIDATOR_PROPERTY_LIST: return createCustomValidatorPropertyList();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -546,6 +548,26 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	public RegistryKeyProperty createRegistryKeyProperty() {
 		RegistryKeyPropertyImpl registryKeyProperty = new RegistryKeyPropertyImpl();
 		return registryKeyProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomValidatorProperty createCustomValidatorProperty() {
+		CustomValidatorPropertyImpl customValidatorProperty = new CustomValidatorPropertyImpl();
+		return customValidatorProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomValidatorPropertyList createCustomValidatorPropertyList() {
+		CustomValidatorPropertyListImpl customValidatorPropertyList = new CustomValidatorPropertyListImpl();
+		return customValidatorPropertyList;
 	}
 
 	/**

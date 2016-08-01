@@ -32,6 +32,8 @@ import org.wso2.developerstudio.eclipse.ds.AttributeMapping;
 import org.wso2.developerstudio.eclipse.ds.CallQuery;
 import org.wso2.developerstudio.eclipse.ds.CallQueryList;
 import org.wso2.developerstudio.eclipse.ds.CustomValidator;
+import org.wso2.developerstudio.eclipse.ds.CustomValidatorProperty;
+import org.wso2.developerstudio.eclipse.ds.CustomValidatorPropertyList;
 import org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration;
 import org.wso2.developerstudio.eclipse.ds.Description;
 import org.wso2.developerstudio.eclipse.ds.DoubleRangeValidator;
@@ -193,6 +195,13 @@ public class DSAction extends StaticSelectionCommandAction {
 		}
 
 		if (commandName.equals(DSActionConstants.ADD_QUERY_PROPERTY_ACTION)) {
+			imageURL = "wso2/property";
+		}
+		if (commandName.equals(DSActionConstants.ADD_CUSTOM_VALIDATOR_PROPERTY_LIST_ACTION)) {
+			imageURL = "wso2/properties";
+		}
+
+		if (commandName.equals(DSActionConstants.ADD_CUSTOM_VALIDATOR_PROPERTY_ACTION)) {
 			imageURL = "wso2/property";
 		}
 		if (commandName.equals(DSActionConstants.ADD_DESCRIPTION_ACTION)) {
@@ -488,9 +497,13 @@ public class DSAction extends StaticSelectionCommandAction {
 				    commandName.equals(DSActionConstants.ADD_QUERY_PROPERTY_ACTION)) {
 					return getChildCommand(param, collection, owner);
 				}
+				
+				if (childObj instanceof CustomValidatorProperty
+						&& commandName.equals(DSActionConstants.ADD_CUSTOM_VALIDATOR_PROPERTY_ACTION)) {
+					return getChildCommand(param, collection, owner);
+				}
 
-				if (childObj instanceof ResultMapping &&
-				    commandName.equals(DSActionConstants.ADD_RESULT_ACTION)) {
+				if (childObj instanceof ResultMapping && commandName.equals(DSActionConstants.ADD_RESULT_ACTION)) {
 					return getChildCommand(param, collection, owner);
 				}
 
@@ -558,6 +571,18 @@ public class DSAction extends StaticSelectionCommandAction {
 				if (childObj instanceof CustomValidator &&
 				    commandName.equals(DSActionConstants.ADD_CUSTOM_VALIDATOR_ACTION)) {
 					return getChildCommand(param, collection, owner);
+				}
+				
+				if (childObj instanceof CustomValidatorPropertyList
+						&& commandName.equals(DSActionConstants.ADD_CUSTOM_VALIDATOR_PROPERTY_LIST_ACTION)) {
+
+					CompoundCommand compoundCmd = new CompoundCommand(commandName);
+					compoundCmd.append(getChildCommand(param, collection, owner));
+
+					CustomValidatorPropertyList owner2 = (CustomValidatorPropertyList) childObj;
+
+					return compoundCmd;
+
 				}
 
 				if (childObj instanceof EventSubscriptionList &&

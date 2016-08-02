@@ -183,7 +183,6 @@ public class ConfigureXSLTMediatorDialog extends Dialog {
 		colFeatureName.setWidth(284);
 		colFeatureName.setText("Name\t\t\t\t\t");
 		
-		colFeatureName.pack();
 		Button cmdNewFeature = new Button(cFeatures, SWT.NONE);
 		cmdNewFeature.setBounds(351, 10, 75, 25);
 		cmdNewFeature.setText("New");

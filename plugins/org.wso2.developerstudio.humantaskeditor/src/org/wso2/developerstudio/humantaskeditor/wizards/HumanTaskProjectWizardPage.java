@@ -120,6 +120,8 @@ public class HumanTaskProjectWizardPage extends WizardPage {
         initialize();
         dialogChanged();
         setControl(container);
+        PlatformUI.getWorkbench().getHelpSystem()
+                .setHelp(container, HumantaskEditorConstants.NEW_ARTIFACT_HELP_CONTEXT_ID);
     }
 
     /**
@@ -217,10 +219,4 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     public String getTNSName() {
         return tnsText.getText();
     }
-    
-    @Override
-    public void performHelp() {
-        PlatformUI.getWorkbench().getHelpSystem().displayHelp("org.wso2.developerstudio.humantaskeditor.wizardhelp");
-    }
-
 }

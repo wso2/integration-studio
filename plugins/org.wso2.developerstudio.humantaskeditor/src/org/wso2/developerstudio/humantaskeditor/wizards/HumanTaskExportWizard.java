@@ -18,8 +18,6 @@ package org.wso2.developerstudio.humantaskeditor.wizards;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collection;
-import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IProject;
@@ -31,10 +29,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
-public class HumanTaskExportWizard extends Wizard implements IExportWizard {
+public class HumanTaskExportWizard extends Wizard implements IExportWizard{
     private HumanTaskExportWizardPage mainPage;
     private IStructuredSelection selection;
 
@@ -71,8 +68,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
     public void init(IWorkbench arg0, IStructuredSelection arg1) {
         this.selection = arg1;
         setWindowTitle(HumantaskEditorConstants.HUMAN_TASK_EXPORT_WIZARD_TITLE);
-        PlatformUI.getWorkbench().getHelpSystem().displayHelp(HumantaskEditorConstants.HTEDITOR_HELP_NAME);
-        setHelpAvailable(true);
+        setHelpAvailable(false);
     }
 
     public void addPages() {
@@ -100,8 +96,8 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                     tmpZip.delete();
                     tmpZip.deleteOnExit();
                     monitor.setTaskName("Creating the human task artifact...");
-                    FileUtils.copyDirectory(new File(path + File.separator
-                            + HumantaskEditorConstants.BASE_FOLDER_NAME), zipFolder);
+                    FileUtils.copyDirectory(
+                            new File(path + File.separator + HumantaskEditorConstants.BASE_FOLDER_NAME), zipFolder);
                     FileManagementUtil.removeEmptyDirectories(zipFolder);
                     FileManagementUtil.zipFolder(zipFolder.getAbsolutePath(), tmpZip.getAbsolutePath());
                     if (tmpZip.exists()) {

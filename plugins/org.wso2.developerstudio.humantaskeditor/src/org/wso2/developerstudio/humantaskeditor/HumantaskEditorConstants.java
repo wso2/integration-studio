@@ -144,8 +144,10 @@ public class HumantaskEditorConstants {
 
     public static final String ORGANIZATIONAL_ENTITY_SCHEMA_FILE = "organizationalentityschema.xsd";
 
-    public static final String HTEDITOR_HELP_NAME = "hteditor";
-
     public static final String BASE_FOLDER_NAME = "humantaskcontent";
+    
+    public static final String NEW_ARTIFACT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskhelp";
+    
+    public static final String EXPORT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskexporthelp";
 
 }

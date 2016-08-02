@@ -35,6 +35,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
@@ -143,6 +144,8 @@ public class HumanTaskWizardPage extends WizardPage {
         initialize();
         dialogChanged();
         setControl(container);
+        PlatformUI.getWorkbench().getHelpSystem()
+                .setHelp(container, HumantaskEditorConstants.NEW_ARTIFACT_HELP_CONTEXT_ID);
     }
 
     /**

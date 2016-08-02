@@ -61,11 +61,12 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		// Creating Registry Project
 		if (esbSolutionProjectModel.isRegistryProjectChecked()) {
 			GeneralProjectWizard generalProjectWizard = new GeneralProjectWizard();
+			String registryProjectName = esbSolutionProjectModel.getRegistryProjectName();
 			try {
-				esbSolutionProjectModel.setProjectName(esbSolutionProjectModel.getRegistryProjectName());
-				esbSolutionProjectModel.setLocation(location);
+				esbSolutionProjectModel.setProjectName(registryProjectName);
+				esbSolutionProjectModel.setLocation(new File(location, registryProjectName));
 			} catch (ObserverFailedException e1) {
-				log.error("Failed to set project name : " + projectName, e1);
+				log.error("Failed to set project name : " + registryProjectName, e1);
 			}
 			generalProjectWizard.setModel(esbSolutionProjectModel);
 			generalProjectWizard.performFinish();
@@ -74,11 +75,12 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		// Creating connector Exporter Project
 		if (esbSolutionProjectModel.isConnectorExporterProjectChecked()) {
 			ConnectorCreationWizard connectorWizard = new ConnectorCreationWizard();
+			String connectorProjectName = esbSolutionProjectModel.getConnectorExporterProjectName();
 			try {
-				esbSolutionProjectModel.setProjectName(esbSolutionProjectModel.getConnectorExporterProjectName());
-				esbSolutionProjectModel.setLocation(location);
+				esbSolutionProjectModel.setProjectName(connectorProjectName);
+				esbSolutionProjectModel.setLocation(new File(location, connectorProjectName));
 			} catch (ObserverFailedException e1) {
-				log.error("Failed to set project name : " + projectName, e1);
+				log.error("Failed to set project name : " + connectorProjectName, e1);
 			}
 			connectorWizard.setModel(esbSolutionProjectModel);
 			connectorWizard.performFinish();
@@ -88,10 +90,11 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		if (esbSolutionProjectModel.isCappProjectChecked()) {
 			DistributionProjectWizard distributionProjectWizard = new DistributionProjectWizard();
 			DistributionProjectModel distributionModel = new DistributionProjectModel();
+			String distributionProjectName = esbSolutionProjectModel.getCompositeApplicationProjectName();
 			try {
-				esbSolutionProjectModel.setProjectName(esbSolutionProjectModel.getCompositeApplicationProjectName());
-				esbSolutionProjectModel.setLocation(location);
-				distributionModel.setProjectName(esbSolutionProjectModel.getCompositeApplicationProjectName());
+				esbSolutionProjectModel.setProjectName(distributionProjectName);
+				esbSolutionProjectModel.setLocation(new File(location, distributionProjectName));
+				distributionModel.setProjectName(distributionProjectName);
 				distributionModel.setLocation(esbSolutionProjectModel.getLocation());
 				distributionModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				distributionModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
@@ -100,7 +103,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				distributionModel.setSelectedOption(esbSolutionProjectModel.getSelectedOption());
 				distributionModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
 			} catch (ObserverFailedException e) {
-				log.error("Failed to set properties for project : " + projectName, e);
+				log.error("Failed to set properties for project : " + distributionProjectName, e);
 			}
 			distributionProjectWizard.setModel(distributionModel);
 			distributionProjectWizard.performFinish();

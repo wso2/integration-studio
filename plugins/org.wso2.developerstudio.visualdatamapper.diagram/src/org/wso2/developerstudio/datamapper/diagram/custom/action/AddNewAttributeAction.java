@@ -155,11 +155,11 @@ public class AddNewAttributeAction extends AbstractActionHandler {
 						nullableValue);
 				
 				/*
-				 * AddCommand is used to avoid concurrent updating. index 0 to
+				 * AddCommand is used to avoid concurrent updating. index -1 to
 				 * add as the first child
 				 */
 				AddCommand addCmd = new AddCommand(((GraphicalEditPart) selectedEP).getEditingDomain(), selectedNode,
-						DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeNew, 0);
+						DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeNew, -1);
 				if (addCmd.canExecute()) {
 					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
 				}

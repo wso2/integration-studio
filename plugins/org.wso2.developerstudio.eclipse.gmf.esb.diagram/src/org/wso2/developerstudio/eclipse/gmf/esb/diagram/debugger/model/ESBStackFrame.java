@@ -79,7 +79,8 @@ import com.google.gson.JsonObject;
  */
 public class ESBStackFrame extends ESBDebugElement implements IStackFrame, EventHandler {
 
-    private final IThread thread;
+    private static final String EMPTY_STRING = "";
+	private final IThread thread;
     private int lineNumber = 1;
     private List<IVariable> variables = new ArrayList<>();
     private boolean variablesDirty = true;
@@ -168,6 +169,9 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
 							AcceptedContentAction.ADD);
 				}
 			}
+			if (envelopeView instanceof ContentAcceptHandler) {
+                ((ContentAcceptHandler) envelopeView).acceptContent(EMPTY_STRING, AcceptedContentAction.ADD);
+            }
 		} catch (PartInitException e) {
 			log.error("Error while updating the Envelope View with cleared variable values", e);
 		}

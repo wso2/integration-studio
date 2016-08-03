@@ -277,7 +277,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				for (DMVariable outputVariable : outputVariables) {
 					if (DMVariableType.INTERMEDIATE.equals(outputVariable.getType())
 							&& !outputVariable.getName().contains("{")) {
-						functionBuilder.append("var " + outputVariable.getName() + " = [];");
+						//instantiate intermediate variables
+						functionBuilder.append("var " + outputVariable.getName() + " = '';");
 						functionBuilder.append("\n");
 					} else if (DMVariableType.OUTPUT.equals(outputVariable.getType())) {
 						mostChildArrayOutputVariable = updateOutputVariableForLoopMap(outputVariable, variableMap,

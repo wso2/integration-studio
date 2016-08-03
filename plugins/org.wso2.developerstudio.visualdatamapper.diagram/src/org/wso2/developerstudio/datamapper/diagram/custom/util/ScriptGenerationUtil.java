@@ -57,12 +57,7 @@ public class ScriptGenerationUtil {
 					prettyVariableName = "'" + prettyVariableName + "'";
 				}
 			} else {
-				if (parentForLoopBeanStack.size() > 0) {
-					prettyVariableName = variable.getName() + "[";
-					prettyVariableName += (getAccumulatedIterativeVariableString(parentForLoopBeanStack)) + "]";
-				} else {
-					prettyVariableName = variable.getName() + "[0]";
-				}
+				prettyVariableName = variable.getName();
 			}
 		} else if (DMVariableType.OUTPUT.equals(variable.getType())
 				&& getArrayElementCount(variable.getName(), map) == 1) {

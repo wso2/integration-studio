@@ -18,6 +18,7 @@ package org.wso2.developerstudio.humantaskeditor.wizards;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IProject;
@@ -31,7 +32,7 @@ import org.eclipse.ui.IExportWizard;
 import org.eclipse.ui.IWorkbench;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
-public class HumanTaskExportWizard extends Wizard implements IExportWizard{
+public class HumanTaskExportWizard extends Wizard implements IExportWizard {
     private HumanTaskExportWizardPage mainPage;
     private IStructuredSelection selection;
 
@@ -89,12 +90,24 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard{
                 File tempFolder = null;
                 try {
                     tempFolder = File.createTempFile("temp", ".tmp");
-                    tempFolder.delete();
-                    tempFolder.mkdir();
+                    boolean tmpDeleted = tempFolder.delete();
+                    boolean tmpCreated = tempFolder.mkdir();
+                    if (!tmpDeleted) {
+                        MessageDialog.openError(getShell(), "Error",
+                                HumantaskEditorConstants.ERROR_DELETING_TMP_FOLDER_MESSAGE);
+                    }
+                    if (!tmpCreated) {
+                        MessageDialog.openError(getShell(), "Error",
+                                HumantaskEditorConstants.ERROR_CREATING_TMP_FOLDER_MESSAGE);
+                    }
                     File zipFolder = new File(tempFolder, aProjectList.getName());
                     File tmpZip = File.createTempFile("temp", ".tmp");
-                    tmpZip.delete();
+                    boolean tmpZipDeleted = tmpZip.delete();
                     tmpZip.deleteOnExit();
+                    if (!tmpZipDeleted) {
+                        MessageDialog.openError(getShell(), "Error",
+                                HumantaskEditorConstants.ERROR_DELETING_TMP_FOLDER_MESSAGE);
+                    }
                     monitor.setTaskName("Creating the human task artifact...");
                     FileUtils.copyDirectory(
                             new File(path + File.separator + HumantaskEditorConstants.BASE_FOLDER_NAME), zipFolder);
@@ -116,7 +129,10 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard{
                         throw new Exception("Unable to create the human task archive file.");
                 } finally {
                     if (tempFolder != null) {
-                        tempFolder.delete();
+                        if (tempFolder.delete()) {
+                            MessageDialog.openError(getShell(), "Error",
+                                    HumantaskEditorConstants.ERROR_DELETING_TMP_FOLDER_MESSAGE);
+                        }
                     }
                 }
             }

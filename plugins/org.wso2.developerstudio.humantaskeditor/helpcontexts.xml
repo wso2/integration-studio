@@ -1,12 +1,10 @@
 <contexts>
-      <context id="humantaskhelp" title="Human Task Editor Help">
+      <context id="humantaskhelp" title="Human Task Project Wizard Help">
         <description>WSO2 Human Task Editor Helps you to create an human task artifact easily</description>
-        <topic href="HumanTaskEditor/help/NewArtifactHelp.html"  label="HumanTask Editor help"/> 
-        <topic href="HumanTaskEditor/help/ExportHelp.html"  label="General help"/>
+        <topic href="HumanTaskEditor/help/NewArtifactHelp.html"  label="HumanTask Project Wizard Help"/> 
    </context>
    <context id="humantaskexporthelp" title="Human Task Editor Export Wizard Help">
         <description>WSO2 Human Task Editor Helps you to create an human task artifact easily</description>
         <topic href="HumanTaskEditor/help/ExportHelp.html"  label="HumanTask Export wizard help"/> 
-        <topic href="HumanTaskEditor/help/ExportHelp.html"  label="General help"/>
    </context>
 </contexts> 

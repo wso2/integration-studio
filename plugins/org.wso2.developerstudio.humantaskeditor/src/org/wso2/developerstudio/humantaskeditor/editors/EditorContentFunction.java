@@ -18,9 +18,11 @@ package org.wso2.developerstudio.humantaskeditor.editors;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -65,7 +67,8 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                 if (!file.exists()) {
                     return "No File";
                 } else {
-                    try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),
+                            "UTF8"))) {
                         String sCurrentLine;
 
                         while ((sCurrentLine = reader.readLine()) != null) {
@@ -106,8 +109,13 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                     return "File not found";
                 } else {
                     try {
-                        file.delete();
-                        cbFile.delete();
+                        boolean deleted = file.delete();
+                        boolean cbDeleted = cbFile.delete();
+                        if (deleted && cbDeleted) {
+                            logger.log(Level.FINE, HumantaskEditorConstants.WSDL_DELETED_SUCCESSFULLY);
+                        } else {
+                            logger.log(Level.FINE, HumantaskEditorConstants.ERROR_DELETING_CORRESPONDING_WSDL_FILE);
+                        }
                     } catch (SecurityException e) {
                         logger.log(Level.FINE, HumantaskEditorConstants.ERROR_DELETING_CORRESPONDING_WSDL_FILE, e);
                     }

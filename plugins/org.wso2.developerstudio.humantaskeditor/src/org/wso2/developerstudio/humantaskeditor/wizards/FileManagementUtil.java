@@ -25,7 +25,6 @@ import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-
 import org.wso2.developerstudio.humantaskeditor.Activator;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
@@ -40,14 +39,20 @@ public class FileManagementUtil {
                     removeEmptyDirectories(new File(srcPath, file));
                 }
                 if (files.length == 0) {
-                    srcPath.delete();
+                    boolean srcDeleted = srcPath.delete();
+                    if (srcDeleted) {
+                        logger.log(Level.FINE, HumantaskEditorConstants.SRC_DELETED_SUCCESSFULLY);
+                    } else {
+                        logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_CORRESPONDING_ZIP_FILE);
+                    }
                 }
             }
         }
     }
 
     static public void zipFolder(String srcFolder, String destZipFile) {
-        try (FileOutputStream fileWriter = new FileOutputStream(destZipFile);ZipOutputStream zip = new ZipOutputStream(fileWriter)){
+        try (FileOutputStream fileWriter = new FileOutputStream(destZipFile);
+                ZipOutputStream zip = new ZipOutputStream(fileWriter)) {
             addFolderContentsToZip(srcFolder, zip);
             zip.flush();
             zip.close();

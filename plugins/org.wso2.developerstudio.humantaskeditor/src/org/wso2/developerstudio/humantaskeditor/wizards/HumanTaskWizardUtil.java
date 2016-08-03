@@ -104,7 +104,7 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");
@@ -126,7 +126,7 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");
@@ -148,7 +148,7 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");
@@ -170,7 +170,7 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_POM_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");
@@ -187,7 +187,7 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append("\n");

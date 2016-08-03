@@ -35,6 +35,7 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskExportWizardPage extends WizardPage {
     private String fileLocation;
@@ -62,7 +63,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
         layout.verticalSpacing = 9;
 
         getShell().setText("Combo box");
-        getShell().setLayout(layout);
+        //getShell().setLayout(layout);
         gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 2;
 
@@ -124,6 +125,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
             }
         });
         setControl(parent);
+        PlatformUI.getWorkbench().getHelpSystem().setHelp(container, HumantaskEditorConstants.EXPORT_HELP_CONTEXT_ID);
     }
 
     public String getProjectToArchive() {
@@ -180,10 +182,5 @@ public class HumanTaskExportWizardPage extends WizardPage {
 
     public IProject[] getProjects() {
         return ResourcesPlugin.getWorkspace().getRoot().getProjects();
-    }
-
-    @Override
-    public void performHelp() {
-        PlatformUI.getWorkbench().getHelpSystem().displayHelp("org.wso2.developerstudio.humantaskeditor.hteditor");
     }
 }

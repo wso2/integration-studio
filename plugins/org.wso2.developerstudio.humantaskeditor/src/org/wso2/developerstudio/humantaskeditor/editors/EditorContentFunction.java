@@ -18,9 +18,11 @@ package org.wso2.developerstudio.humantaskeditor.editors;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,8 +31,10 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PlatformUI;
+import org.osgi.service.prefs.Preferences;
 import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractEditorFunctionExecutor;
 import org.wso2.developerstudio.humantaskeditor.Activator;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
@@ -63,8 +67,8 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                 if (!file.exists()) {
                     return "No File";
                 } else {
-                    try {
-                        BufferedReader reader = new BufferedReader(new FileReader(file));
+                    try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),
+                            "UTF8"))) {
                         String sCurrentLine;
 
                         while ((sCurrentLine = reader.readLine()) != null) {
@@ -105,8 +109,13 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                     return "File not found";
                 } else {
                     try {
-                        file.delete();
-                        cbFile.delete();
+                        boolean deleted = file.delete();
+                        boolean cbDeleted = cbFile.delete();
+                        if (deleted && cbDeleted) {
+                            logger.log(Level.FINE, HumantaskEditorConstants.WSDL_DELETED_SUCCESSFULLY);
+                        } else {
+                            logger.log(Level.FINE, HumantaskEditorConstants.ERROR_DELETING_CORRESPONDING_WSDL_FILE);
+                        }
                     } catch (SecurityException e) {
                         logger.log(Level.FINE, HumantaskEditorConstants.ERROR_DELETING_CORRESPONDING_WSDL_FILE, e);
                     }
@@ -121,6 +130,15 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     (String) parameters[1], null, editorStatus);
             return null;
+        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_SAVEPREF)) { // (savepreference,"preferencename","preferencevalue")
+            Preferences preferences = InstanceScope.INSTANCE.getNode(HumantaskEditorConstants.PLUGIN_ID);
+            Preferences projectNode = preferences.node(getProjectName());
+            projectNode.put((String) parameters[1], (String) parameters[2]);
+            return null;
+        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GETPREF)) { // (getpreference,"preferencename")
+            Preferences preferences = InstanceScope.INSTANCE.getNode(HumantaskEditorConstants.PLUGIN_ID);
+            Preferences projectNode = preferences.node(getProjectName());
+            return projectNode.get((String) parameters[1], null);
         } else {
             return null;
         }

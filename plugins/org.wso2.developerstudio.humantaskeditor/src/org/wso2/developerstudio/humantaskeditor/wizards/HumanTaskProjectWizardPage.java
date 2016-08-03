@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.humantaskeditor.wizards;
 
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.dialogs.IDialogPage;
 import org.eclipse.jface.viewers.ISelection;
@@ -30,6 +29,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskProjectWizardPage extends WizardPage {
@@ -120,6 +120,8 @@ public class HumanTaskProjectWizardPage extends WizardPage {
         initialize();
         dialogChanged();
         setControl(container);
+        PlatformUI.getWorkbench().getHelpSystem()
+                .setHelp(container, HumantaskEditorConstants.NEW_ARTIFACT_HELP_CONTEXT_ID);
     }
 
     /**
@@ -134,12 +136,6 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             }
             Object obj = ssel.getFirstElement();
             if (obj instanceof IResource) {
-                IContainer container;
-                if (obj instanceof IContainer) {
-                    container = (IContainer) obj;
-                } else {
-                    container = ((IResource) obj).getParent();
-                }
                 containerText.setText(HumantaskEditorConstants.WIZARD_PAGE_TEXT);
             }
         }
@@ -223,5 +219,4 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     public String getTNSName() {
         return tnsText.getText();
     }
-
 }

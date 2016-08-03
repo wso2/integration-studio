@@ -12,6 +12,10 @@ public class HumantaskEditorConstants {
 
     public static final String JS_CUSTOMFUNC_SETTEXT = "settext";
 
+    public static final String JS_CUSTOMFUNC_SAVEPREF = "savepreferences";
+
+    public static final String JS_CUSTOMFUNC_GETPREF = "getpreferences";
+
     public static final String JS_FUNC_PROCESS = "process();";
 
     public static final String JS_FUNC_LOAD_MODEL_WITH_TEXT = "loadModelWithText();";
@@ -31,6 +35,10 @@ public class HumantaskEditorConstants {
     public static final String ERROR_FINDING_CORRESPONDING_WSDL_FILE = "Error finding corresponding WSDL file";
 
     public static final String ERROR_DELETING_CORRESPONDING_WSDL_FILE = "Error deleting corresponding WSDL file";
+
+    public static final String WSDL_DELETED_SUCCESSFULLY = "WSDL file deleted successfully";
+
+    public static final String SRC_DELETED_SUCCESSFULLY = "Src file deleted successfully";
 
     public static final String UNDEFINED_LITERAL = "undefined";
 
@@ -86,6 +94,12 @@ public class HumantaskEditorConstants {
 
     public static final String TARGET_NAME_SPACE_CANNOT_BE_EMPTY_MESSAGE = "Target namespace cannot be empty";
 
+    public static final String ERROR_DELETING_TMP_FOLDER_MESSAGE = "Error deleting existing tmp folder";
+
+    public static final String ERROR_DELETING_TMP_ZIP_FOLDER_MESSAGE = "Error deleting tmp zip folder";
+
+    public static final String ERROR_CREATING_TMP_FOLDER_MESSAGE = "Error deleting new tmp folder";
+
     public static final String ENTER_A_VALID_FILENAME = "Enter a valid file name";
 
     public static final String WIZARD_PAGE_TEXT = "Human Task Artifact";
@@ -140,8 +154,10 @@ public class HumantaskEditorConstants {
 
     public static final String ORGANIZATIONAL_ENTITY_SCHEMA_FILE = "organizationalentityschema.xsd";
 
-    public static final String HTEDITOR_HELP_NAME = "hteditor";
-
     public static final String BASE_FOLDER_NAME = "humantaskcontent";
+
+    public static final String NEW_ARTIFACT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskhelp";
+
+    public static final String EXPORT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskexporthelp";
 
 }

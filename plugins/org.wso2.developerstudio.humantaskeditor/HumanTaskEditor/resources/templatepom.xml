@@ -18,15 +18,6 @@
       <id>wso2-nexus</id>
       <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
     </repository>
-    <repository>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-        <checksumPolicy>ignore</checksumPolicy>
-      </releases>
-      <id>wso2-nexus-staging</id>
-      <url>https://maven.wso2.org/nexus/content/repositories/orgwso2maven-1005/</url>
-    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
@@ -37,15 +28,6 @@
       </releases>
       <id>wso2-nexus</id>
       <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
-    </pluginRepository>
-    <pluginRepository>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-        <checksumPolicy>ignore</checksumPolicy>
-      </releases>
-      <id>wso2-nexus-staging</id>
-      <url>https://maven.wso2.org/nexus/content/repositories/orgwso2maven-1005/</url>
     </pluginRepository>
   </pluginRepositories>
   <build>

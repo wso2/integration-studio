@@ -112,12 +112,10 @@ public class EditObjectAction extends AbstractActionHandler {
 	private String nullableValue = null;
 	private static final String NAMESPACE_PREFIX = "prefix";
 	private static final String NAMESPACE_URL = "url";
-	private static final String JSON_SCHEMA_ARRAY_ROOT_INTERREALTED_ELEMENT = "arrayRootInterrelatedElement";
 	boolean hasIdentifier = false;
 	private boolean isOutputEditPart = false;
 	private String interrelatedElement = null;
 	private boolean isRootElement = false;
-	private String rootInterrelatedElement;
 
 	public EditObjectAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -197,19 +195,13 @@ public class EditObjectAction extends AbstractActionHandler {
 				interrelatedElement = setProperties(selectedNode, JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT);
 			}
 			
-			//Check if the edit part is an output edit part
-			isOutputEditPart  = checkContainer(selectedEP);
-			if(isOutputEditPart){
-				rootInterrelatedElement = setProperties(selectedNode, JSON_SCHEMA_ARRAY_ROOT_INTERREALTED_ELEMENT);
-			}
-			
 			if(selectedEP instanceof TreeNodeEditPart || selectedNode instanceof TreeNode3EditPart){
 				isRootElement = true;
 			}
 			
 			
 			openEditRecordDialog(selectedNode, name, schemaType, id, required, schemaValue, newNamespace, value,
-					identifierType, identifierValue, identifierURL, isNullable,interrelatedElement,isOutputEditPart,isRootElement, rootInterrelatedElement);
+					identifierType, identifierValue, identifierURL, isNullable,interrelatedElement,isOutputEditPart,isRootElement);
 
 		}
 	}
@@ -452,7 +444,6 @@ public class EditObjectAction extends AbstractActionHandler {
 	 * @param schemaValue
 	 *            schema value
 	 * @param interrelatedElement 
-	 * @param rootInterrelatedElement
 	 * @param isRootElement2 
 	 * @param isNullable2
 	 * @param identifierValue2
@@ -460,14 +451,14 @@ public class EditObjectAction extends AbstractActionHandler {
 	 */
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
 			String required, String schemaValue, String namespaces, String value, String identifierType,
-			String identifierValue, String identifierURL, boolean isNullable,String interrelatedElement, boolean isOutputEditPart, boolean isRootElement, String rootInterrelatedElement) {
+			String identifierValue, String identifierURL, boolean isNullable,String interrelatedElement, boolean isOutputEditPart, boolean isRootElement) {
 		Shell shell = Display.getDefault().getActiveShell();
 		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, value, identifierType,
-				identifierValue, identifierURL, isNullable,interrelatedElement,isOutputEditPart,isRootElement, rootInterrelatedElement);
+				identifierValue, identifierURL, isNullable,interrelatedElement,isOutputEditPart,isRootElement);
 		editTypeDialog.setTitle(DIALOG_TITLE);
 		editTypeDialog.open();
 
@@ -608,11 +599,6 @@ public class EditObjectAction extends AbstractActionHandler {
 		// Sets the interrelated element
 		if (StringUtils.isNotEmpty(editTypeDialog.getInterrelatedElement())) {
 			valueMap.put(JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT, editTypeDialog.getInterrelatedElement());
-		}
-		
-		// Sets the root interrelated element
-		if (StringUtils.isNotEmpty(editTypeDialog.getRootInterrelatedElement())) {
-			valueMap.put(JSON_SCHEMA_ARRAY_ROOT_INTERREALTED_ELEMENT, editTypeDialog.getRootInterrelatedElement());
 		}
 
 		// Sets the values for items field which is used for serializing the

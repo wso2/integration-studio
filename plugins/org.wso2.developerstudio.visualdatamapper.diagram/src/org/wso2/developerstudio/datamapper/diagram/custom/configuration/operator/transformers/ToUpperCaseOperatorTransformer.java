@@ -40,10 +40,10 @@ public class ToUpperCaseOperatorTransformer extends AbstractDMOperatorTransforme
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() >= 1) {
 				operationBuilder.append(inputVariables.get(0).getName() + JS_TO_STRING + ".toUpperCase();");
@@ -53,7 +53,7 @@ public class ToUpperCaseOperatorTransformer extends AbstractDMOperatorTransforme
 		} else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() >= 1) {
 				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-						variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop)
+						variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop)
 						+ JS_TO_STRING + ".toUpperCase();");
 			} else {
 				operationBuilder.append("'';");

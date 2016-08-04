@@ -41,10 +41,11 @@ public class ReplaceOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop)
+			throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.get(0) == null) {
 				throw new IllegalArgumentException("Replace operator needs input string value to execute");
@@ -55,23 +56,25 @@ public class ReplaceOperatorTransformer extends AbstractDMOperatorTransformer {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 0) {
-				operationBuilder
-						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+				operationBuilder.append("("
+						+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop) + ")" + JS_TO_STRING + ".replace(");
+								outputArrayVariableForLoop, outputArrayRootVariableForLoop)
+						+ ")" + JS_TO_STRING + ".replace(");
 			}
 
 			if (replaceFromCustomInput.startsWith("{$")) {
 				if (inputVariables.size() > 1 && inputVariables.get(1) != null) {
 					replaceFromValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
 							variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop);
+							outputArrayVariableForLoop, outputArrayRootVariableForLoop);
 				} else {
 					throw new IllegalArgumentException(
 							"Replace operator needs input element or configured value to Replace Target.");
 				}
 				replaceToValue = addReplaceToParamater(inputVariables, variableTypeMap, forLoopBeanList,
-						outputArrayVariableForLoop, replaceToCustomInput, tempParentForLoopBeanStack);
+						outputArrayVariableForLoop, replaceToCustomInput, tempParentForLoopBeanStack,
+						outputArrayRootVariableForLoop);
 
 			} else {
 				if (StringUtils.isNotEmpty(replaceFromCustomInput)) {
@@ -80,7 +83,8 @@ public class ReplaceOperatorTransformer extends AbstractDMOperatorTransformer {
 					throw new IllegalArgumentException("Replace operator can not have empty string to Replace Target.");
 				}
 				replaceToValue = addReplaceToParamater(inputVariables, variableTypeMap, forLoopBeanList,
-						outputArrayVariableForLoop, replaceToCustomInput, tempParentForLoopBeanStack);
+						outputArrayVariableForLoop, replaceToCustomInput, tempParentForLoopBeanStack,
+						outputArrayRootVariableForLoop);
 			}
 			operationBuilder.append(replaceFromValue + "," + replaceToValue + ");");
 
@@ -93,12 +97,14 @@ public class ReplaceOperatorTransformer extends AbstractDMOperatorTransformer {
 	private String addReplaceToParamater(List<DMVariable> inputVariables,
 			Map<String, List<SchemaDataType>> variableTypeMap, List<ForLoopBean> forLoopBeanList,
 			Map<String, Integer> outputArrayVariableForLoop, String replaceToCustomInput,
-			Stack<ForLoopBean> tempParentForLoopBeanStack) throws DataMapperException {
+			Stack<ForLoopBean> tempParentForLoopBeanStack, Map<String, Integer> outputArrayRootVariableForLoop)
+			throws DataMapperException {
 		String replaceToValue;
 		if (replaceToCustomInput.startsWith("{$")) {
 			if (inputVariables.size() > 2 && inputVariables.get(2) != null) {
 				replaceToValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
-						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop);
+						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop,
+						outputArrayRootVariableForLoop);
 			} else {
 				throw new IllegalArgumentException(
 						"Replace operator needs input element" + " or configured value to Replace With.");

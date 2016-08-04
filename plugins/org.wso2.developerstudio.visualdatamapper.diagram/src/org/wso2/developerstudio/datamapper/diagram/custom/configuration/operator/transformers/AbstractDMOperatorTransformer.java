@@ -37,7 +37,7 @@ public abstract class AbstractDMOperatorTransformer implements DMOperatorTransfo
 
 	protected String appendOutputVariable(DMOperation operation, List<DMVariable> outputVariables,
 			Map<String, List<SchemaDataType>> map, Stack<ForLoopBean> tempForLoopBeanParentStack,
-			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop)
+			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop)
 			throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		int numOfOutputVariables = outputVariables.size();
@@ -47,14 +47,14 @@ public abstract class AbstractDMOperatorTransformer implements DMOperatorTransfo
 			if (operation.getOperatorType().equals(DataMapperOperatorType.INSTANTIATE)) {
 				prettyVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, false, forLoopBeanList,
-						outputArrayVariableForLoop);
+						outputArrayVariableForLoop, outputArrayRootVariableForLoop);
 				if (SchemaDataType.ARRAY.equals(operation.getProperty(TransformerConstants.VARIABLE_TYPE))) {
 					prettyVariableName = prettyVariableName.substring(0, prettyVariableName.lastIndexOf('['));
 				}
 			} else {
 				prettyVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 						outputVariables.get(variableIndex), map, tempForLoopBeanParentStack, true, forLoopBeanList,
-						outputArrayVariableForLoop);
+						outputArrayVariableForLoop, outputArrayRootVariableForLoop);
 			}
 			operationBuilder.append(prettyVariableName);
 			if (variableIndex < (numOfOutputVariables - 1)) {

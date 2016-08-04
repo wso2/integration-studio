@@ -75,6 +75,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 	private Map<String, Integer> outputArrayVariableForLoopMap;
 	private Map<String, Integer> outputObjectVariableForLoopMap;
 	private Map<String, List<SchemaDataType>> variableMap;
+	private Map<String, Integer> outputArrayRootVariableForLoop;
 
 	@Override
 	public String generateMappingConfig(DataMapperDiagramModel model) throws DataMapperException {
@@ -84,6 +85,30 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		String mainFunction = generateMainFunction(mappingOperationList, model);
 		String customFunctions = generateCustomFunctions(model);
 		return globalVariables + mainFunction + customFunctions;
+	}
+
+	private void populateOutputArrayRootVariableMap(DataMapperDiagramModel model) {
+		if (!model.getInputVariablesArray().isEmpty()) {
+			int indexOfFirstInput = model.getInputVariablesArray().get(0);
+			for (int i = 0; i <= indexOfFirstInput; i++) {
+				DMVariable outputVariable = model.getVariablesArray().get(i);
+				if (SchemaDataType.ARRAY.equals(outputVariable.getSchemaVariableType())
+						&& outputVariable.getMappedInputVariableArrayElement() != null) {
+					if (outputVariable.getMappedInputVariableRootArrayElement() != null) {
+						if (forLoopBeanMap.containsKey(ScriptGenerationUtil
+								.removeInvalidCharaters(outputVariable.getMappedInputVariableRootArrayElement()))) {
+							int rootArrayVariableForLoopIndex = outputArrayVariableForLoopMap
+									.get(outputVariable.getMappedInputVariableRootArrayElement());
+							outputArrayRootVariableForLoop.put(outputVariable.getName(), rootArrayVariableForLoopIndex);
+						} else {
+							throw new IllegalArgumentException("forLoopBeanMap is not yet populated");
+						}
+					} else {
+						outputArrayRootVariableForLoop.put(outputVariable.getName(), 0);
+					}
+				}
+			}
+		}
 	}
 
 	private String instantiateGlobalVariables(DataMapperDiagramModel model) {
@@ -121,6 +146,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 	private void initializeAlgorithmFields() {
 		forLoopBeanMap = new HashMap<>();
 		outputArrayVariableForLoopMap = new HashMap<>();
+		outputArrayRootVariableForLoop = new HashMap<>();
 		outputObjectVariableForLoopMap = new HashMap<>();
 		forLoopBeanList = new ArrayList<>();
 		rootBean = new ForLoopBean(ROOT_TAG, ROOT_TAG);
@@ -354,6 +380,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 				assignUnresolvableOperationsToRoot(unassignedMappingOperations);
 			}
 		} while (!unassignedMappingOperations.isEmpty());
+		populateOutputArrayRootVariableMap(model);
 		return mappingOperationListTemp;
 	}
 
@@ -523,7 +550,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 						}
 						functionBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 								new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
-								map, tempForLoopBeanParentStack, false, null, null) + ") ");
+								map, tempForLoopBeanParentStack, false, null, null, outputArrayRootVariableForLoop) + ") ");
 					}
 				}
 				if (ifLoopCreated) {
@@ -533,14 +560,14 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 			}
 			String forLoopVariableName = ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 					new DMVariable(forLoopBean.getVariableName(), "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1),
-					map, tempForLoopBeanParentStack, false, null, null);
+					map, tempForLoopBeanParentStack, false, null, null, outputArrayRootVariableForLoop);
 			functionBuilder.append("for(" + forLoopBean.getIterativeName() + " in "
 					+ forLoopVariableName.substring(0, forLoopVariableName.lastIndexOf("[")) + "){");
 			functionBuilder.append("\n");
-		} else {
-			functionBuilder
-					.append(ScriptGenerationUtil.instantiateForLoopCountVariables(forLoopBean, getForLoopBeanList()));
 		}
+
+		functionBuilder.append(
+				ScriptGenerationUtil.instantiateForLoopCountVariables(forLoopBean, forLoopBean, getForLoopBeanList()));
 		tempForLoopBeanParentStack = (Stack<ForLoopBean>) forLoopBeanParentStack.clone();
 		// call operations and nested for loops
 		List<Integer> operationsInForLoopList = forLoopBean.getOperationList();
@@ -560,7 +587,8 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 			int outputMappedForLoop = 0;
 			String mostChildArrayElement;
 			try {
-				mostChildArrayElement = getMostChildArrayElementName(outputVariable.getName());
+				mostChildArrayElement = ScriptGenerationUtil.getMostChildArrayElementName(outputVariable.getName(),
+						variableMap);
 				if (!mostChildArrayElement.isEmpty()
 						&& outputArrayVariableForLoopMap.containsKey(mostChildArrayElement)) {
 					outputMappedForLoop = outputArrayVariableForLoopMap.get(mostChildArrayElement);
@@ -598,10 +626,18 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		}
 
 		if (!ROOT_TAG.equals(forLoopBean.getVariableName())) {
-			// incrementing for loop iterate variable
-			functionBuilder
-					.append("\n" + ScriptGenerationUtil.getForLoopIterateName(forLoopBean, getForLoopBeanList(), true)
-							+ "++;" + "\n");
+			// incrementing for loop iterate variables
+			ForLoopBean parentForLoop = forLoopBeanList.get(forLoopBean.getParentIndex());
+			functionBuilder.append("\n");
+			while (parentForLoop != null) {
+				functionBuilder.append(ScriptGenerationUtil.getForLoopIterateName(forLoopBean, parentForLoop,
+						getForLoopBeanList(), true) + "++;" + "\n");
+				if (parentForLoop.getParentIndex() >= 0) {
+					parentForLoop = forLoopBeanList.get(parentForLoop.getParentIndex());
+				} else {
+					break;
+				}
+			}
 			functionBuilder.append("}");
 			functionBuilder.append("\n");
 			if (ifLoopCreated) {
@@ -610,25 +646,6 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 			}
 		}
 		return functionBuilder.toString();
-	}
-
-	private String getMostChildArrayElementName(String fullVariableName) throws DataMapperException {
-		String[] variableNameArray = fullVariableName.split("\\.");
-		String variableName = "";
-		String lastArrayVariable = "";
-		for (String nextName : variableNameArray) {
-			variableName += nextName;
-			if (variableMap.containsKey(variableName)) {
-				SchemaDataType variableType = variableMap.get(variableName).get(VARIABLE_TYPE_INDEX);
-				if (SchemaDataType.ARRAY.equals(variableType)) {
-					lastArrayVariable = variableName;
-				}
-			} else {
-				throw new DataMapperException("Unknown variable name found : " + variableName);
-			}
-			variableName += ".";
-		}
-		return lastArrayVariable;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -672,7 +689,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 					}
 					operationBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							new DMVariable(optionalVariable, "", DMVariableType.INPUT, SchemaDataType.ARRAY, -1), map,
-							tempForLoopBeanParentStack, false, null, null) + ") ");
+							tempForLoopBeanParentStack, false, null, null, outputArrayRootVariableForLoop) + ") ");
 				}
 			}
 			if (ifLoopCreated) {
@@ -687,7 +704,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 		operationBuilder.append(operatorTransformer.generateScriptForOperation(
 				DifferentLevelArrayMappingConfigGenerator.class, mappingOperation.getInputVariables(),
 				mappingOperation.getOutputVariables(), map, forLoopBeanParentStack, mappingOperation.getOperation(),
-				getForLoopBeanList(), outputArrayVariableForLoopMap));
+				getForLoopBeanList(), outputArrayVariableForLoopMap, outputArrayRootVariableForLoop));
 		operationBuilder.append("\n");
 		if (ifLoopCreated) {
 			operationBuilder.append("}");

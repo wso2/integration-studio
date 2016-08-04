@@ -292,10 +292,6 @@ public class EnrichMediatorImpl extends MediatorImpl implements EnrichMediator {
 		
 		// Inline Registry Key
 		inlineRegistryKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-		DeveloperStudioProviderUtils.addFilter(
-				(Map<String, List<String>>) inlineRegistryKey.getFilters(),
-				CSProviderConstants.FILTER_MEDIA_TYPE,
-				ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);
 		inlineRegistryKey.setPrettyName("InlineKey");
 		inlineRegistryKey.setKeyName("key");
 		inlineRegistryKey.setKeyValue(DEFAULT_SEQUENCE_REFERENCE_REGISTRY_KEY);

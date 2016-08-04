@@ -37,10 +37,10 @@ public class StringToBlooeanOperatorTransformer extends AbstractDMOperatorTransf
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
@@ -50,7 +50,7 @@ public class StringToBlooeanOperatorTransformer extends AbstractDMOperatorTransf
 				operationBuilder
 						.append(" " + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop) + ".toString().toLowerCase() === 'true'");
+								outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ".toString().toLowerCase() === 'true'");
 			}
 
 			operationBuilder.append(";");

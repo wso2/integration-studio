@@ -40,11 +40,11 @@ public class SetPrecisionOperatorTransformer extends AbstractDMOperatorTransform
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
 		String numOfDecimals = operator.getProperty(NUM_OF_DECIMALS_TAG).toString();
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.get(0) == null) {
 				throw new IllegalArgumentException("SetPrecision operator needs input interger value");
@@ -55,10 +55,10 @@ public class SetPrecisionOperatorTransformer extends AbstractDMOperatorTransform
 				if (numOfDecimals.startsWith("{$") && inputVariables.size() == 2) {
 					operationBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop) + ")");
+							outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
 					operationBuilder.append(".toFixed(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							inputVariables.get(1), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop) + ")");
+							outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
 				} else {
 					int decimalCount = 0;
 					try {
@@ -69,7 +69,7 @@ public class SetPrecisionOperatorTransformer extends AbstractDMOperatorTransform
 					}
 					operationBuilder.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop) + ")");
+							outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
 					operationBuilder.append(".toFixed(" + decimalCount + ")");
 				}
 			}

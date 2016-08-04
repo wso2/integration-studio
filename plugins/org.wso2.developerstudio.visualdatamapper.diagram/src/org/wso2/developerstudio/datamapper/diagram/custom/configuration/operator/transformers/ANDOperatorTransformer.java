@@ -40,10 +40,10 @@ public class ANDOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
@@ -54,7 +54,7 @@ public class ANDOperatorTransformer extends AbstractDMOperatorTransformer {
 				operationBuilder
 						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop) + ")");
+								outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
 			}
 
 			if (inputVariables.size() >= 2) {
@@ -62,7 +62,7 @@ public class ANDOperatorTransformer extends AbstractDMOperatorTransformer {
 					operationBuilder.append(CONSTANT_AND_OPERATOR + "("
 							+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(index),
 									variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-									outputArrayVariableForLoop)
+									outputArrayVariableForLoop, outputArrayRootVariableForLoop)
 							+ ")");
 				}
 			}

@@ -81,6 +81,7 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String TRUE = "true";
 	private static final String FALSE = "false";
+	private static final String JSON_SCHEMA_ARRAY_ROOT_INTERREALTED_ELEMENT = "arrayRootInterrelatedElement";
 	private boolean isOutputEditPart = false;
 
 
@@ -173,7 +174,11 @@ public class AddNewArrayAction extends AbstractActionHandler {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_INTERREALTED_ELEMENT,
 							objectDialog.getInterrelatedElement());
 				}
-				
+			    //Sets the root interrelated element
+				if(StringUtils.isNotEmpty(objectDialog.getRootInterrelatedElement())){
+					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ROOT_INTERREALTED_ELEMENT,
+							objectDialog.getInterrelatedElement());
+				}
 				//Sets the values for items field which is used for serializing the array
 				setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ARRAY_ITEMS_ID, objectDialog.getID()+"/0");
 				if(StringUtils.isNotEmpty(objectDialog.getValue())){

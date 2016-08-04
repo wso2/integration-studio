@@ -41,8 +41,8 @@ public class ScriptGenerationUtil {
 
 	public static String getPrettyVariableNameInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map,
 			Stack<ForLoopBean> parentForLoopBeanStackTemp, boolean isOperationVariable,
-			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop)
-			throws DataMapperException {
+			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop,
+			Map<String, Integer> outputRootArrayVariableForLoop) throws DataMapperException {
 		@SuppressWarnings("unchecked")
 		Stack<ForLoopBean> parentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStackTemp.clone();
 		// put index values for array type variables
@@ -74,14 +74,36 @@ public class ScriptGenerationUtil {
 						}
 						int forLoopIndex = outputArrayVariableForLoop.get(variableName);
 						ForLoopBean tempForLoop = forLoopBeanList.get(forLoopIndex);
+						String mostInnerArrayVariableName = getMostChildArrayElementName(variable.getName(),map);
 						String iterateName;
-						if (variable.getMappedInputVariableArrayElement() != null) {
-							iterateName = getForLoopIterateName(
-									getForLoopFromMappedVariableArrayName(
-											variable.getMappedInputVariableArrayElement(), forLoopBeanList),
-									forLoopBeanList, true);
+						if (variable.getMappedInputVariableArrayElement() != null
+								&& variableName.equals(mostInnerArrayVariableName)) {
+							if (variable.getMappedInputVariableRootArrayElement() != null) {
+								iterateName = getForLoopIterateName(
+										getForLoopFromMappedVariableArrayName(
+												variable.getMappedInputVariableArrayElement(), forLoopBeanList),
+										getForLoopFromMappedVariableArrayName(
+												variable.getMappedInputVariableRootArrayElement(), forLoopBeanList),
+										forLoopBeanList, true);
+							} else {
+								tempForLoop = getForLoopFromMappedVariableArrayName(
+										variable.getMappedInputVariableArrayElement(), forLoopBeanList);
+								iterateName = getForLoopIterateName(tempForLoop, null, forLoopBeanList, true);
+							}
 						} else {
-							iterateName = getForLoopIterateName(tempForLoop, forLoopBeanList, true);
+							int rootForLoopIndex = 0;
+							ForLoopBean rootTempForLoop = null;
+							if (outputRootArrayVariableForLoop.containsKey(variableName)) {
+								rootForLoopIndex = outputRootArrayVariableForLoop.get(variableName);
+								rootTempForLoop = forLoopBeanList.get(rootForLoopIndex);
+							}
+							if (rootTempForLoop != null) {
+								iterateName = getForLoopIterateName(tempForLoop, rootTempForLoop, forLoopBeanList,
+										true);
+							} else {
+								iterateName = getForLoopIterateName(tempForLoop,
+										forLoopBeanList.get(tempForLoop.getParentIndex()), forLoopBeanList, true);
+							}
 						}
 						if (iterateName.isEmpty()) {
 							iterateName = "0";
@@ -121,14 +143,36 @@ public class ScriptGenerationUtil {
 						}
 						int forLoopIndex = outputArrayVariableForLoop.get(variableName);
 						ForLoopBean tempForLoop = forLoopBeanList.get(forLoopIndex);
+						String mostInnerArrayVariableName = getMostChildArrayElementName(variable.getName(),map);
 						String iterateName;
-						if (variable.getMappedInputVariableArrayElement() != null) {
-							iterateName = getForLoopIterateName(
-									getForLoopFromMappedVariableArrayName(
-											variable.getMappedInputVariableArrayElement(), forLoopBeanList),
-									forLoopBeanList, true);
+						if (variable.getMappedInputVariableArrayElement() != null
+								&& variableName.equals(mostInnerArrayVariableName)) {
+							if (variable.getMappedInputVariableRootArrayElement() != null) {
+								iterateName = getForLoopIterateName(
+										getForLoopFromMappedVariableArrayName(
+												variable.getMappedInputVariableArrayElement(), forLoopBeanList),
+										getForLoopFromMappedVariableArrayName(
+												variable.getMappedInputVariableRootArrayElement(), forLoopBeanList),
+										forLoopBeanList, true);
+							} else {
+								tempForLoop = getForLoopFromMappedVariableArrayName(
+										variable.getMappedInputVariableArrayElement(), forLoopBeanList);
+								iterateName = getForLoopIterateName(tempForLoop, null, forLoopBeanList, true);
+							}
 						} else {
-							iterateName = getForLoopIterateName(tempForLoop, forLoopBeanList, true);
+							int rootForLoopIndex = 0;
+							ForLoopBean rootTempForLoop = null;
+							if (outputRootArrayVariableForLoop.containsKey(variableName)) {
+								rootForLoopIndex = outputRootArrayVariableForLoop.get(variableName);
+								rootTempForLoop = forLoopBeanList.get(rootForLoopIndex);
+							}
+							if (rootTempForLoop != null) {
+								iterateName = getForLoopIterateName(tempForLoop, rootTempForLoop, forLoopBeanList,
+										true);
+							} else {
+								iterateName = getForLoopIterateName(tempForLoop,
+										forLoopBeanList.get(tempForLoop.getParentIndex()), forLoopBeanList, true);
+							}
 						}
 
 						if (iterateName.isEmpty()) {
@@ -304,33 +348,55 @@ public class ScriptGenerationUtil {
 		return false;
 	}
 
-	public static String instantiateForLoopCountVariables(ForLoopBean forLoopBean, List<ForLoopBean> forLoopBeanList) {
+	public static String instantiateForLoopCountVariables(ForLoopBean forLoopBean, ForLoopBean rootForLoopBean,
+			List<ForLoopBean> forLoopBeanList) {
 		StringBuilder operationBuilder = new StringBuilder();
-		if (forLoopBean.getParentIndex() != -1) {
+		if (forLoopBean.getParentIndex() != -1 && !rootForLoopBean.equals(forLoopBean)) {
 			operationBuilder
-					.append("var " + getForLoopIterateName(forLoopBean, forLoopBeanList, true) + " = 0;" + "\n");
+					.append("var " + getForLoopIterateName(forLoopBean, rootForLoopBean, forLoopBeanList, true) + " = 0;" + "\n");
 		}
 		List<Integer> nestedForLoopList = forLoopBean.getNestedForLoopList();
 		for (Iterator<Integer> iterator = nestedForLoopList.iterator(); iterator.hasNext();) {
 			Integer index = (Integer) iterator.next();
 			ForLoopBean tempForLoopBean = forLoopBeanList.get(index);
-			operationBuilder.append(instantiateForLoopCountVariables(tempForLoopBean, forLoopBeanList));
+			operationBuilder.append(instantiateForLoopCountVariables(tempForLoopBean,rootForLoopBean, forLoopBeanList));
 		}
 		return operationBuilder.toString();
 	}
 
-	public static String getForLoopIterateName(ForLoopBean tempForLoopBean, List<ForLoopBean> forLoopBeanList,
-			Boolean calledFromOutSide) {
+	public static String getForLoopIterateName(ForLoopBean tempForLoopBean, ForLoopBean rootForLoopBean,
+			List<ForLoopBean> forLoopBeanList, Boolean calledFromOutSide) {
 		StringBuilder operationBuilder = new StringBuilder();
-		if (tempForLoopBean.getParentIndex() == -1) {
+		if (tempForLoopBean.getParentIndex() == -1
+				|| (rootForLoopBean != null && rootForLoopBean.equals(tempForLoopBean))) {
 			return operationBuilder.toString();
 		}
 		// Iterative name should only contain "count" in the front
 		if (calledFromOutSide) {
 			operationBuilder.append("count");
 		}
-		operationBuilder.append("_" + tempForLoopBean.getIterativeName()
-				+ getForLoopIterateName(forLoopBeanList.get(tempForLoopBean.getParentIndex()), forLoopBeanList, false));
+		operationBuilder.append("_" + tempForLoopBean.getIterativeName() + getForLoopIterateName(
+				forLoopBeanList.get(tempForLoopBean.getParentIndex()), rootForLoopBean, forLoopBeanList, false));
 		return operationBuilder.toString();
+	}
+	
+	public static String getMostChildArrayElementName(String fullVariableName,
+			Map<String, List<SchemaDataType>> variableMap) throws DataMapperException {
+		String[] variableNameArray = fullVariableName.split("\\.");
+		String variableName = "";
+		String lastArrayVariable = "";
+		for (String nextName : variableNameArray) {
+			variableName += nextName;
+			if (variableMap.containsKey(variableName)) {
+				SchemaDataType variableType = variableMap.get(variableName).get(VARIABLE_TYPE_INDEX);
+				if (SchemaDataType.ARRAY.equals(variableType)) {
+					lastArrayVariable = variableName;
+				}
+			} else {
+				throw new DataMapperException("Unknown variable name found : " + variableName);
+			}
+			variableName += ".";
+		}
+		return lastArrayVariable;
 	}
 }

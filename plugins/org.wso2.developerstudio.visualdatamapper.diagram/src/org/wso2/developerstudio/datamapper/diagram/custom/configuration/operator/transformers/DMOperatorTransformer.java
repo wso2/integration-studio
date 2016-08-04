@@ -34,12 +34,12 @@ public interface DMOperatorTransformer {
 
 	/**
 	 * This method generates the JS segment to execute the operation on inputs
+	 * 
 	 * @param inputVariables
 	 * @param outputVariables
 	 * @param operator
 	 * @param forLoopBeanList
 	 * @param outputArrayVariableForLoop
-	 * @param outputArrayRootVariableForLoop TODO
 	 * @param generator
 	 * 
 	 * @return script for operation
@@ -49,5 +49,5 @@ public interface DMOperatorTransformer {
 	String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException;
+			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException;
 }

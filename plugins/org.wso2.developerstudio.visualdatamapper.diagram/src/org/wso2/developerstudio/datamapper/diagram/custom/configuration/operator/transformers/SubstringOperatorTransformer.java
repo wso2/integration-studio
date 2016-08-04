@@ -40,11 +40,10 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop)
-			throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.get(0) == null) {
 				throw new IllegalArgumentException("Substring operator needs input string value to execute");
@@ -56,11 +55,10 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 0) {
-				operationBuilder.append("("
-						+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+				operationBuilder
+						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop, outputArrayRootVariableForLoop)
-						+ ")" + JS_TO_STRING + ".substring(");
+								outputArrayVariableForLoop) + ")" + JS_TO_STRING + ".substring(");
 			}
 
 			if (startIndex.startsWith("{$")) {
@@ -68,18 +66,18 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 				if (inputVariables.size() > 1 && inputVariables.get(1) != null) {
 					startValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
 							variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop, outputArrayRootVariableForLoop);
+							outputArrayVariableForLoop);
 				} else {
 					throw new IllegalArgumentException(
 							"Substring operator needs input element" + " or configured value to Start Index.");
 				}
 				lengthValue = getLengthValue(inputVariables, variableTypeMap, forLoopBeanList,
-						outputArrayVariableForLoop, length, tempParentForLoopBeanStack, outputArrayRootVariableForLoop);
+						outputArrayVariableForLoop, length, tempParentForLoopBeanStack);
 
 			} else {
 				startValue = startIndex;
 				lengthValue = getLengthValue(inputVariables, variableTypeMap, forLoopBeanList,
-						outputArrayVariableForLoop, length, tempParentForLoopBeanStack, outputArrayRootVariableForLoop);
+						outputArrayVariableForLoop, length, tempParentForLoopBeanStack);
 			}
 
 			operationBuilder.append(startValue + "," + startValue + "+" + lengthValue + ")");
@@ -93,14 +91,12 @@ public class SubstringOperatorTransformer extends AbstractDMOperatorTransformer 
 
 	private String getLengthValue(List<DMVariable> inputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop, String length,
-			Stack<ForLoopBean> tempParentForLoopBeanStack, Map<String, Integer> outputArrayRootVariableForLoop)
-			throws DataMapperException {
+			Stack<ForLoopBean> tempParentForLoopBeanStack) throws DataMapperException {
 		String lengthValue;
 		if (length.startsWith("{$")) {
 			if (inputVariables.size() > 2 && inputVariables.get(2) != null) {
 				lengthValue = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(2),
-						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop,
-						outputArrayRootVariableForLoop);
+						variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop);
 			} else {
 				throw new IllegalArgumentException(
 						"Substring operator needs input element" + " or configured value to Length.");

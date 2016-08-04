@@ -41,10 +41,10 @@ public class EndsWithOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.get(0) == null) {
 				throw new IllegalArgumentException("EndsWith operator needs input string value to execute");
@@ -56,14 +56,14 @@ public class EndsWithOperatorTransformer extends AbstractDMOperatorTransformer {
 				operationBuilder
 						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
+								outputArrayVariableForLoop) + ")");
 			}
 			if (inputMethod != null) {
 				if (inputVariables.size() == 2 && inputMethod.startsWith("{$")) {
 					operationBuilder.append(JS_TO_STRING + ".endsWith("
 							+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(1),
 									variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-									outputArrayVariableForLoop, outputArrayRootVariableForLoop)
+									outputArrayVariableForLoop)
 							+ ")");
 				} else {
 					if (inputMethod.startsWith("{$")

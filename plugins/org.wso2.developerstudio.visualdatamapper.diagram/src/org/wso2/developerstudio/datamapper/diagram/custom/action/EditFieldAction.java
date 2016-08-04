@@ -308,7 +308,7 @@ public class EditFieldAction extends AbstractActionHandler {
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);
 		editTypeDialog.setValues(title, schemaType, id, required, schemaValue, namespaces, null, null,
-				null, null,isNullable,null,false,false, null);
+				null, null,isNullable,null,false,false);
 		editTypeDialog.setTitle(DIALOG_TITLE);
 		editTypeDialog.open();
 

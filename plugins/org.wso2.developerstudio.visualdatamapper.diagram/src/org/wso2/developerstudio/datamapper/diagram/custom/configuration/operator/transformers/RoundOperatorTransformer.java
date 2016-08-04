@@ -39,17 +39,17 @@ public class RoundOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() == 0) {
 				operationBuilder.append(CONSTANT_ADDITIVE);
 			} else {
 				operationBuilder.append("Math.round(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-						outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
+						outputArrayVariableForLoop) + ")");
 			}
 			operationBuilder.append(";");
 		} else {

@@ -41,10 +41,10 @@ public class MatchOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.get(0) == null) {
 				throw new IllegalArgumentException("Match operator needs input string value to execute");
@@ -56,13 +56,13 @@ public class MatchOperatorTransformer extends AbstractDMOperatorTransformer {
 				operationBuilder
 						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")" + JS_TO_STRING + ".match(");
+								outputArrayVariableForLoop) + ")" + JS_TO_STRING + ".match(");
 			}
 			if (customInput != null) {
 				if (inputVariables.size() == 2 && customInput.startsWith("{$")) {
 					operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+							outputArrayVariableForLoop));
 				} else {
 					if (customInput.startsWith("{$") || StringUtils.isEmpty(customInput)) {
 						throw new IllegalArgumentException("Match operator needs pattern to execute."

@@ -39,16 +39,16 @@ public class CustomFunctionOperatorTransformer extends AbstractDMOperatorTransfo
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 		List<String> variableList = new ArrayList<>();
 		@SuppressWarnings("unchecked")
 		Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 		for (DMVariable inputVariable : inputVariables) {
 			variableList.add(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariable, variableTypeMap,
-					tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop));
+					tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 		}
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			operationBuilder.append(operator.getProperty(TransformerConstants.CUSTOM_FUNCTION_NAME) + "(");

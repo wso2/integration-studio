@@ -33,9 +33,10 @@ public class DMVariable {
 	private int parentVariableOrOperationIndex;
 	private int mostChildVariableIndex;
 	private String mappedInputVariableArrayElement;
+	private String mappedInputVariableRootArrayElement;
 
 	public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index,
-			int parentVariableIndex, String mappedInputVariableArrayElement) {
+			int parentVariableIndex, String mappedInputVariableArrayElement, String mappedInputVariableRootArrayElement) {
 		this.name = name;
 		this.id = id;
 		this.schemaVariableType = schemaVariableType;
@@ -43,6 +44,7 @@ public class DMVariable {
 		this.index = index;
 		this.parentVariableOrOperationIndex = parentVariableIndex;
 		this.setMappedInputVariableArrayElement(mappedInputVariableArrayElement);
+		this.setMappedInputVariableRootArrayElement(mappedInputVariableRootArrayElement);
 	}
 
 	public DMVariable(String name, String id, DMVariableType type, SchemaDataType schemaVariableType, int index) {
@@ -147,5 +149,13 @@ public class DMVariable {
 
 	public void setMappedInputVariableArrayElement(String mappedInputVariableArrayElement) {
 		this.mappedInputVariableArrayElement = mappedInputVariableArrayElement;
+	}
+
+	public String getMappedInputVariableRootArrayElement() {
+		return mappedInputVariableRootArrayElement;
+	}
+
+	public void setMappedInputVariableRootArrayElement(String mappedInputVariableRootArrayElement) {
+		this.mappedInputVariableRootArrayElement = mappedInputVariableRootArrayElement;
 	}
 }

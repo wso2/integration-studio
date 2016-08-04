@@ -41,14 +41,14 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
 		String concatOperator = (String) operator.getProperty(DELIMITER_TAG);
 		if (concatOperator == null) {
 			concatOperator = "";
 		}
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 		if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() >= 2) {
 				operationBuilder.append(inputVariables.get(0).getName() + JS_TO_STRING + ".concat('" + concatOperator
@@ -63,19 +63,19 @@ public class ConcatOperatorTransformer extends AbstractDMOperatorTransformer {
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
 			if (inputVariables.size() > 1) {
 				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-						variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop)
+						variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop)
 						+ JS_TO_STRING);
 				for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
 					operationBuilder.append(".concat('" + concatOperator + "',"
 							+ ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 									inputVariables.get(variableIndex), variableTypeMap, tempParentForLoopBeanStack,
-									true, null, null)
+									true, null, null, outputArrayRootVariableForLoop)
 							+ ")");
 				}
 				operationBuilder.append(";");
 			} else if (inputVariables.size() == 1) {
 				operationBuilder.append(ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
-						variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop)
+						variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop)
 						+ JS_TO_STRING + ".concat('" + concatOperator + "');");
 			} else {
 				operationBuilder.append("'';");

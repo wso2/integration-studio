@@ -37,7 +37,7 @@ public class IfElseOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
@@ -47,28 +47,28 @@ public class IfElseOperatorTransformer extends AbstractDMOperatorTransformer {
 			}
 			if (inputVariables.size() >= 2) {
 				operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap,
-						parentForLoopBeanStack, forLoopBeanList, outputArrayVariableForLoop));
+						parentForLoopBeanStack, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 				operationBuilder
 						.append("(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
 								variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-								outputArrayVariableForLoop) + ")");
+								outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
 				if (inputVariables.get(1) != null) {
 					operationBuilder.append("?(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							inputVariables.get(1), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop) + ")");
+							outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
 				} else {
 					operationBuilder.append("?(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							outputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop) + ")");
+							outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
 				}
 				if (inputVariables.size() > 2 && inputVariables.get(2) != null) {
 					operationBuilder.append(":(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							inputVariables.get(2), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop) + ")");
+							outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
 				} else {
 					operationBuilder.append(":(" + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 							outputVariables.get(0), variableTypeMap, tempParentForLoopBeanStack, true, forLoopBeanList,
-							outputArrayVariableForLoop) + ")");
+							outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ")");
 				}
 				operationBuilder.append(";");
 			} else {

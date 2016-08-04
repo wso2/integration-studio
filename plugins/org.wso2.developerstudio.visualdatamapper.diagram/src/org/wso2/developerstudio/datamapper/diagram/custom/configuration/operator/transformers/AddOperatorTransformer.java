@@ -40,10 +40,10 @@ public class AddOperatorTransformer extends AbstractDMOperatorTransformer {
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
 			List<DMVariable> outputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
 			Stack<ForLoopBean> parentForLoopBeanStack, DMOperation operator, List<ForLoopBean> forLoopBeanList,
-			Map<String, Integer> outputArrayVariableForLoop) throws DataMapperException {
+			Map<String, Integer> outputArrayVariableForLoop, Map<String, Integer> outputArrayRootVariableForLoop) throws DataMapperException {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
-				forLoopBeanList, outputArrayVariableForLoop));
+				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 		if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			@SuppressWarnings("unchecked")
 			Stack<ForLoopBean> tempParentForLoopBeanStack = (Stack<ForLoopBean>) parentForLoopBeanStack.clone();
@@ -52,11 +52,11 @@ public class AddOperatorTransformer extends AbstractDMOperatorTransformer {
 			if (inputVariables.size() > 0) {
 				operationBuilder.append(CONSTANT_ADD_SIGN + ScriptGenerationUtil.getPrettyVariableNameInForOperation(
 						inputVariables.get(0), variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList,
-						outputArrayVariableForLoop));
+						outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 				for (int variableIndex = 1; variableIndex < inputVariables.size(); variableIndex++) {
 					operationBuilder.append(CONSTANT_ADD_SIGN + ScriptGenerationUtil
 							.getPrettyVariableNameInForOperation(inputVariables.get(variableIndex), variableTypeMap,
-									tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop));
+									tempParentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
 				}
 			}
 			operationBuilder.append(";");

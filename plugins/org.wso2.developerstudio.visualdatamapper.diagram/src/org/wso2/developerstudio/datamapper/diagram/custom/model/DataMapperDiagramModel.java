@@ -850,6 +850,7 @@ public class DataMapperDiagramModel {
 		Stack<EObject> nodeStack = new Stack<>();
 		nodeStack.addAll(output.getTreeNode());
 		Map<String, String> outputInputElementMapping = new HashMap<>();
+		Map<String, String> outputInputRootElementMapping = new HashMap<>();
 		Stack<EObject> parentVariableStack = new Stack<EObject>();
 		while (!nodeStack.isEmpty()) {
 			EObject currentNode = nodeStack.pop();
@@ -907,14 +908,18 @@ public class DataMapperDiagramModel {
 					}
 				}
 				String mappedInputElementName;
+				String mappedInputRootArrayElementName;
 				if (SchemaDataType.ARRAY.equals(variableType)) {
 					mappedInputElementName = getMappedInputElement(currentTreeNode);
 					outputInputElementMapping.put(variableName, mappedInputElementName);
+					mappedInputRootArrayElementName = getMappedRootArrayInputElement(currentTreeNode);
+					outputInputRootElementMapping.put(variableName, mappedInputRootArrayElementName);
 				} else {
 					mappedInputElementName = getMappedInputArrayFromMap(outputInputElementMapping,variableName);
+					mappedInputRootArrayElementName = getMappedInputArrayFromMap(outputInputRootElementMapping,variableName);
 				}
 				variablesArray.add(new DMVariable(variableName, currentNode.toString(), DMVariableType.OUTPUT,
-						variableType, variableIndex, parentVariableIndex,mappedInputElementName));
+						variableType, variableIndex, parentVariableIndex,mappedInputElementName, mappedInputRootArrayElementName));
 				outputVariablesArray.add(variableIndex);
 				currentTreeNode.setIndex(variableIndex);
 				addVariableTypeToMap(variableName, variableType);
@@ -935,6 +940,16 @@ public class DataMapperDiagramModel {
 				ECollections.reverse(nodeList);
 			}
 		}
+	}
+
+	private String getMappedRootArrayInputElement(TreeNodeImpl currentTreeNode) {
+		EList<PropertyKeyValuePair> propertyList = currentTreeNode.getProperties();
+		for (PropertyKeyValuePair propertyKeyValuePair : propertyList) {
+			if ("arrayRootInterrelatedElement".equals(propertyKeyValuePair.getKey())) {
+				return propertyKeyValuePair.getValue();
+			}
+		}
+		return null;
 	}
 
 	private String getMappedInputArrayFromMap(Map<String, String> outputInputElementMapping, String variableName) {

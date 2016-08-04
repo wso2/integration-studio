@@ -71,7 +71,7 @@
         <wso2.tomcat.version>7.0.59.wso2v3</wso2.tomcat.version>
     </properties>
     <repositories>
-       	<repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -91,14 +91,14 @@
             <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
             <layout>default</layout>
         </repository>
-      <repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/other/p2/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/other/p2/</url>
             <layout>p2</layout>
         </repository>       <repository>
             <releases>
@@ -106,128 +106,18 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>DevS-Deps-Luna-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/eclipse/luna/p2/</url>
+            <id>DevS-Deps-Mars-p2-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/mars/p2/</url>
             <layout>p2</layout>
         </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-emf-query-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/emf/query/updates/releases/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-emf-transaction-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/emf/transaction/updates/releases/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-emf-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/emf/updates/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-emf-validation-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/emf/validation/updates/releases/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-emft-mwe-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/emft/mwe/updates/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-emft-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/emft/updates/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-gmf-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/gmf/updates/releases/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-gmp-gmf-notation-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-gmp-gmf-runtime-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-gmp-gmf-tooling-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-m2t-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/m2t/updates/</url>
-            <layout>p2</layout>
-        </repository>
-	<repository>
+       	<repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-releases-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/kernel/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
 	<repository>
@@ -237,7 +127,29 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-releases-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/platform-bundles/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/releases/4.1.0-201606031446/</url>
+            <layout>p2</layout>
+        </repository>
+
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-ESB-p2-releases-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/esb-tools/releases/5.0.0/rc1/</url>
+            <layout>p2</layout>
+        </repository>
+
+	<repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Kernel-p2-updates-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/</url>
             <layout>p2</layout>
         </repository>
 	<repository>
@@ -246,8 +158,18 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>ESB-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.1.0/esb-tooling/releases/</url>
+            <id>DevS-Platform-p2-updates-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/updates/</url>
+            <layout>p2</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>Additional-Tools-p2-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.0.0/additional-tools/releases/p2/</url>
             <layout>p2</layout>
         </repository>
         <repository>

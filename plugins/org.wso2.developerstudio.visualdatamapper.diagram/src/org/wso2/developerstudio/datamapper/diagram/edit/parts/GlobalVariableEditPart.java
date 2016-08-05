@@ -23,7 +23,6 @@ import org.wso2.developerstudio.datamapper.GlobalVariable;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.GlobalVariableCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.GlobalVariableItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.impl.ConstantImpl;
 
 /**
  * @generated NOT
@@ -116,9 +115,10 @@ public class GlobalVariableEditPart extends AbstractOperatorEditPart {
 	* Body of this method does not depend on settings in generation model
 	* so you may safely remove <i>generated</i> tag and modify it.
 	* 
-	* @generated
+	* @generated NOT
 	*/
 	protected NodeFigure createNodeFigure() {
+		initializeOperatorImplConnectorCount();
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();

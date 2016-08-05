@@ -24,7 +24,6 @@ import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOper
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.CompareCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.CompareItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.impl.CompareImpl;
-import org.wso2.developerstudio.datamapper.impl.ConcatImpl;
 
 /**
  * @generated NOT
@@ -119,9 +118,10 @@ public class CompareEditPart extends AbstractOperatorEditPart {
 	 * Body of this method does not depend on settings in generation model so
 	 * you may safely remove <i>generated</i> tag and modify it.
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodeFigure() {
+		initializeOperatorImplConnectorCount();
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();

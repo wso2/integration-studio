@@ -22,7 +22,6 @@ import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.datamapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.ReplaceCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.ReplaceItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.impl.MatchImpl;
 import org.wso2.developerstudio.datamapper.impl.ReplaceImpl;
 
 /**
@@ -117,9 +116,10 @@ public class ReplaceEditPart extends AbstractOperatorEditPart {
 	 * Body of this method does not depend on settings in generation model so
 	 * you may safely remove <i>generated</i> tag and modify it.
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodeFigure() {
+		initializeOperatorImplConnectorCount();
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();

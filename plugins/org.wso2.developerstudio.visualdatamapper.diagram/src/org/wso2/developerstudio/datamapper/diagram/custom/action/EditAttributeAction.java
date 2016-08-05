@@ -309,7 +309,7 @@ public class EditAttributeAction extends AbstractActionHandler {
 			String schemaValue, String namespaces, boolean isNullable) {
 
 		Shell shell = Display.getDefault().getActiveShell();
-		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
+		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class }, selectedEP);
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);

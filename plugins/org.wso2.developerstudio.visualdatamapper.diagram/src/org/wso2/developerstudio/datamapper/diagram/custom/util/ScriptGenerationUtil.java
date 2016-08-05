@@ -254,7 +254,7 @@ public class ScriptGenerationUtil {
 	public static ForLoopBean getForLoopFromMappedVariableArrayName(String mappedInputVariableArrayElement,
 			List<ForLoopBean> forLoopBeanList) {
 		for (ForLoopBean forLoopBean : forLoopBeanList) {
-			if(forLoopBean.getVariableName().equals("input"+removeInvalidCharaters(mappedInputVariableArrayElement))){
+			if(forLoopBean.getVariableName().equals(removeInvalidCharaters(mappedInputVariableArrayElement))){
 				return forLoopBean;
 			}
 		}

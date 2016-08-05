@@ -16,7 +16,19 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
+
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.tree.impl.TreeNodeImpl;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.impl.DiagramImpl;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
@@ -35,6 +47,18 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.wso2.developerstudio.datamapper.Input;
+import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
+import org.wso2.developerstudio.datamapper.SchemaDataType;
+import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
+import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
+import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
+import org.wso2.developerstudio.datamapper.impl.ElementImpl;
 
 public class AddNewObjectDialog extends Dialog {
 	
@@ -53,8 +77,8 @@ public class AddNewObjectDialog extends Dialog {
 	private Button checkBoxForIdentifiers;
 	private Button btnNamespaces;
 	private Button checkBoxForNullables;
-	private Text textInterrelatedElement;
-	private Text textRootInterrelatedElement;
+	private Combo textInterrelatedCombo;
+	private Combo textRootInterrelatedCombo;
 	
 
 	private Label lblTitleLabel;
@@ -132,15 +156,38 @@ public class AddNewObjectDialog extends Dialog {
 
 	private boolean okPressed = false;
 	private Label lblRootInterrelatedElement;
+	private InputEditPart inputRootElement;
+	private boolean isElementInOutput;
+	private EditPart selectedEP;
 
 	/**
 	 * Create the dialog.
 	 * 
 	 * @param parentShell
+	 * @param selectedEP TODO
 	 */
-	public AddNewObjectDialog(Shell parentShell, Class<?>[] type) {
+	public AddNewObjectDialog(Shell parentShell, Class<?>[] type, EditPart selectedEP) {
 		super(parentShell);
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
+		this.selectedEP = selectedEP;
+		inputRootElement = getInputRootElement(selectedEP);
+	}
+
+	private InputEditPart getInputRootElement(EditPart selectedEP) {
+		while(!(selectedEP instanceof OutputEditPart)){
+			selectedEP=selectedEP.getParent();
+			if(selectedEP instanceof DataMapperRootEditPart){
+				return null;
+			}
+		}
+		@SuppressWarnings("unchecked")
+		List<EditPart> diagramElements = selectedEP.getParent().getChildren();
+		for (EditPart editPart : diagramElements) {
+			if(editPart instanceof InputEditPart){
+				return (InputEditPart) editPart;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -192,10 +239,6 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
-			lblInterrelatedElement.setVisible(false);
-			lblRootInterrelatedElement.setVisible(false);
-			textInterrelatedElement.setVisible(false);
-			textRootInterrelatedElement.setVisible(false);
 			isRootElementNode = true;
 		}
 		if (title.equals(DIALOG_TITLE_OBJECT)) {
@@ -217,10 +260,6 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
-			lblInterrelatedElement.setVisible(false);
-			lblRootInterrelatedElement.setVisible(false);
-			textInterrelatedElement.setVisible(false);
-			textRootInterrelatedElement.setVisible(false);
 		}if(title.equals(DIALOG_TITLE_ARRAY)){
 			lblSchemaValue.setVisible(false);
 			textSchemaValue.setVisible(false);
@@ -241,15 +280,10 @@ public class AddNewObjectDialog extends Dialog {
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
 			if(isOutputEditPart){
-				lblInterrelatedElement.setVisible(true);
-				lblRootInterrelatedElement.setVisible(true);
-				textInterrelatedElement.setVisible(true);
-				textRootInterrelatedElement.setVisible(true);
-			}else{
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
+				lblInterrelatedElement.setVisible(true && isElementInOutput);
+				lblRootInterrelatedElement.setVisible(true && isElementInOutput);
+				textInterrelatedCombo.setVisible(true && isElementInOutput);
+				textRootInterrelatedCombo.setVisible(true && isElementInOutput);
 			}
 				
 		} if (title.equals(DIALOG_TITLE_FIELD)) {
@@ -267,10 +301,6 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
-			lblInterrelatedElement.setVisible(false);
-			lblRootInterrelatedElement.setVisible(false);
-			textInterrelatedElement.setVisible(false);
-			textRootInterrelatedElement.setVisible(false);
 			lblSchemaValue.setVisible(false);
 			textSchemaValue.setVisible(false);
 		}if(title.equals(DIALOG_TITLE_ATTRIBUTE)){
@@ -288,10 +318,6 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
-			lblInterrelatedElement.setVisible(false);
-			lblRootInterrelatedElement.setVisible(false);
-			textInterrelatedElement.setVisible(false);
-			textRootInterrelatedElement.setVisible(false);
 			lblSchemaValue.setVisible(false);
 			textSchemaValue.setVisible(false);
 		}
@@ -373,10 +399,6 @@ public class AddNewObjectDialog extends Dialog {
 				textNamespaces.setVisible(true);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				if(isRootElement){
 					checkBoxForIdentifiers.setVisible(false);
 					lblCheckBoxForIdentifiers.setVisible(false);
@@ -421,19 +443,14 @@ public class AddNewObjectDialog extends Dialog {
 				if(isOutputEditPart){
 					lblInterrelatedElement.setVisible(true);
 					lblRootInterrelatedElement.setVisible(true);
-					textInterrelatedElement.setVisible(true);
-					textRootInterrelatedElement.setVisible(true);
+					textInterrelatedCombo.setVisible(true);
+					textRootInterrelatedCombo.setVisible(true);
 					if(StringUtils.isNotEmpty(interrelatedElement)){
-						textInterrelatedElement.setText(interrelatedElement);
+						textInterrelatedCombo.setText(interrelatedElement);
 					}
 					if(StringUtils.isNotEmpty(rootInterrelatedElement)){
-						textRootInterrelatedElement.setText(rootInterrelatedElement);
+						textRootInterrelatedCombo.setText(rootInterrelatedElement);
 					}
-				}else{
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				}
 				if(isRootElement){
 					checkBoxForIdentifiers.setVisible(false);
@@ -489,10 +506,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "number":
 				comboSchemaType.select(1);
@@ -518,10 +531,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "boolean":
 				comboSchemaType.select(2);
@@ -545,10 +554,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "bytes":
 				comboSchemaType.select(3);
@@ -572,10 +577,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "double":
 				comboSchemaType.select(4);
@@ -599,10 +600,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "enum":
 				comboSchemaType.select(5);
@@ -626,10 +623,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "fixed":
 				comboSchemaType.select(6);
@@ -653,10 +646,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "float":
 				comboSchemaType.select(7);
@@ -680,10 +669,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "long":
 				comboSchemaType.select(8);
@@ -707,10 +692,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "map":
 				comboSchemaType.select(9);
@@ -734,10 +715,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			case "union":
 				comboSchemaType.select(10);
@@ -761,10 +738,6 @@ public class AddNewObjectDialog extends Dialog {
 				textIdentifierURL.setVisible(false);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				lblInterrelatedElement.setVisible(false);
-				lblRootInterrelatedElement.setVisible(false);
-				textInterrelatedElement.setVisible(false);
-				textRootInterrelatedElement.setVisible(false);
 				break;
 			default:
 				break;
@@ -910,15 +883,11 @@ public class AddNewObjectDialog extends Dialog {
 					textIdentifierURL.setVisible(false);
 					checkBoxForNullables.setVisible(true);
 					lblNullables.setVisible(true);
-					lblInterrelatedElement.setVisible(false);
-					lblRootInterrelatedElement.setVisible(false);
-					textInterrelatedElement.setVisible(false);
-					textRootInterrelatedElement.setVisible(false);
 					if(comboSchemaType.getText().equals("array") && isOutputEditpartContainer){
 						lblInterrelatedElement.setVisible(true);
 						lblRootInterrelatedElement.setVisible(true);
-						textInterrelatedElement.setVisible(true);
-						textRootInterrelatedElement.setVisible(true);
+						textInterrelatedCombo.setVisible(true);
+						textRootInterrelatedCombo.setVisible(true);
 					}
 					if(isRootElementNode){
 						checkBoxForValue.setVisible(false);
@@ -1049,25 +1018,34 @@ public class AddNewObjectDialog extends Dialog {
 		});
 
 		textSchemaValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
+		TreeNode node = (TreeNode) ((Node) selectedEP.getModel()).getElement();
 		
-		lblInterrelatedElement = new Label(compositeType, SWT.NONE);
-		lblInterrelatedElement.setText(LABEL_INTERRELATED_ELEMENT);
-		
-		textInterrelatedElement = new Text(compositeType, SWT.BORDER);
-		
-		textInterrelatedElement.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent arg0) {
-
+		if(inputRootElement != null && isArrayElement(node)){
+			GridData dataPropertyConfigText = new GridData();
+			dataPropertyConfigText.grabExcessHorizontalSpace = true;
+			dataPropertyConfigText.horizontalAlignment = GridData.FILL;
+			List<String> arrayInputElements = getArrayElements(inputRootElement);
+			isElementInOutput = true;
+			lblInterrelatedElement = new Label(compositeType, SWT.NONE);
+			lblInterrelatedElement.setText(LABEL_INTERRELATED_ELEMENT);
+			
+			textInterrelatedCombo = new Combo(compositeType, SWT.DROP_DOWN | SWT.BORDER);
+			textInterrelatedCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
+			for (String element : arrayInputElements) {
+				textInterrelatedCombo.add(element);
 			}
-		});
-		
-		textInterrelatedElement.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
-		
-		lblRootInterrelatedElement = new Label(compositeType, SWT.NONE);
-		lblRootInterrelatedElement.setText(LABEL_ROOT_INTERRELATED_ELEMENT);
-		
-		textRootInterrelatedElement= new Text(compositeType, SWT.BORDER);
-		textRootInterrelatedElement.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
+			
+			lblRootInterrelatedElement = new Label(compositeType, SWT.NONE);
+			lblRootInterrelatedElement.setText(LABEL_ROOT_INTERRELATED_ELEMENT);
+			
+			textRootInterrelatedCombo= new Combo(compositeType, SWT.DROP_DOWN | SWT.BORDER);
+			textRootInterrelatedCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
+			for (String element : arrayInputElements) {
+				textRootInterrelatedCombo.add(element);
+			}
+		} else{
+			isElementInOutput = false;
+		}
 		
 		checkBoxForIdentifiers = new Button(compositeType,SWT.CHECK);
 		lblCheckBoxForIdentifiers = new Label(compositeType, SWT.NONE);
@@ -1201,6 +1179,86 @@ public class AddNewObjectDialog extends Dialog {
 		return container;
 	}
 
+	private List<String> getArrayElements(InputEditPart inputRootElement) {
+		List<String> elementArray = new ArrayList<>();
+		DiagramImpl diagram = (DiagramImpl) inputRootElement.getParent().getModel();
+		DataMapperRootImpl element = (DataMapperRootImpl) diagram.getElement();
+		Input input = element.getInput();
+		Stack<EObject> nodeStack = new Stack<>();
+		nodeStack.addAll(input.getTreeNode());
+		Stack<EObject> parentVariableStack = new Stack<EObject>();
+		List<EObject> tempNodeArray = new ArrayList<>();
+		while (!nodeStack.isEmpty()) {
+			EObject currentNode = nodeStack.pop();
+			if (currentNode instanceof TreeNode) {
+				TreeNode currentTreeNode = (TreeNode) currentNode;
+				if (currentTreeNode.getLevel() <= parentVariableStack.size()) {
+					while (parentVariableStack.size() >= currentTreeNode.getLevel()) {
+						parentVariableStack.pop();
+					}
+				} else if (currentTreeNode.getLevel() > (parentVariableStack.size() + 1)) {
+					throw new IllegalArgumentException("Illegal element level detected : element level- "
+							+ currentTreeNode.getLevel() + " , parents level- " + parentVariableStack.size());
+				}
+				String variableName = getVariableName(parentVariableStack, currentTreeNode.getName());
+				String variableType = getTreeNodeType(currentTreeNode);
+				if("array".equals(variableType)){
+					elementArray.add(variableName);
+				}
+				if (currentTreeNode.getLevel() == parentVariableStack.size()) {
+					parentVariableStack.pop();
+					parentVariableStack.push(currentTreeNode);
+				} else if (currentTreeNode.getLevel() > parentVariableStack.size()) {
+					parentVariableStack.push(currentTreeNode);
+				} else {
+					while (parentVariableStack.size() >= currentTreeNode.getLevel()) {
+						parentVariableStack.pop();
+					}
+					parentVariableStack.push(currentTreeNode);
+				}
+			}
+			nodeStack.addAll(((TreeNode) currentNode).getNode());
+		}
+		// diagram.get
+		return elementArray;
+	}
+	
+	private String getVariableName(Stack<EObject> parentVariableStack, String name) {
+		String variableName = "input";
+		for (EObject eObject : parentVariableStack) {
+			if (eObject instanceof TreeNode) {
+				variableName = variableName
+						+ ScriptGenerationUtil.removeInvalidCharaters(((TreeNode) eObject).getName()) + ".";
+			} else if (eObject instanceof ElementImpl) {
+				variableName = variableName
+						+ ScriptGenerationUtil.removeInvalidCharaters(((ElementImpl) eObject).getName()) + ".";
+			} else {
+				throw new IllegalArgumentException("Illegal element type found : " + eObject.toString());
+			}
+		}
+		return variableName + ScriptGenerationUtil.removeInvalidCharaters(name);
+	}
+
+	private String getTreeNodeType(TreeNode currentTreeNode) {
+		EList<PropertyKeyValuePair> propertyList = currentTreeNode.getProperties();
+		for (PropertyKeyValuePair propertyKeyValuePair : propertyList) {
+			if ("type".equals(propertyKeyValuePair.getKey())) {
+				return propertyKeyValuePair.getValue();
+			}
+		}
+		throw new IllegalArgumentException("Type field not found in treeNode");
+	}
+
+	private boolean isArrayElement(TreeNode tempElement) {
+		EList<PropertyKeyValuePair> properties = tempElement.getProperties();
+		for (PropertyKeyValuePair propertyKeyValuePair : properties) {
+			if ("type".equals(propertyKeyValuePair.getKey()) && "array".equals(propertyKeyValuePair.getValue())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Get namespaces as a string
 	 * @param namespaces
@@ -1247,8 +1305,8 @@ public class AddNewObjectDialog extends Dialog {
 		setIdentifierValue(textIdentifierValue.getText());
 		setIdentifierURL(textIdentifierURL.getText());
 		setNullable(isNullable);
-		setInterrelatedElement(textInterrelatedElement.getText());
-		setRootInterrelatedElement(textRootInterrelatedElement.getText());
+		setInterrelatedElement(textInterrelatedCombo.getText());
+		setRootInterrelatedElement(textRootInterrelatedCombo.getText());
 		super.okPressed();
 	}
 

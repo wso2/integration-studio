@@ -303,7 +303,7 @@ public class EditFieldAction extends AbstractActionHandler {
 	private void openEditRecordDialog(TreeNode selectedNode, String title, String schemaType, String id,
 			String required, String schemaValue, String namespaces, boolean isNullable) {
 		Shell shell = Display.getDefault().getActiveShell();
-		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
+		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class }, selectedEP);
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);

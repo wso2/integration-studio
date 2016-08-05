@@ -673,7 +673,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 								initialPageLoad = false;
 							}
 
-							EditorUtils.setLockmode(graphicalEditor, false);
 							try {
 								EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 								EsbServer server = diagram.getServer();
@@ -683,6 +682,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 								log.error("Error while adding debug points to design view when page loading : "
 										+ e.getMessage(), e);
 							}
+
+							//Fixing DEVTOOLESB-711
+							Display.getDefault().asyncExec(new Runnable() {
+								@Override
+								public void run() {
+									EditorUtils.setLockmode(graphicalEditor, false);
+								}
+							});
 						}
 					});
 				}

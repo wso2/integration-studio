@@ -363,7 +363,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 							}else{
 								//Else check if the array holds a value, if so enable the connector
 								if (StringUtils.isNotEmpty(value)) {
-									return createInNodeWithPrimaryShape(childEditPart);
+									return createOutNodeWithPrimaryShape(childEditPart);
 								} else {
 									createLocatedEmptyOutNode(childEditPart);
 								}	

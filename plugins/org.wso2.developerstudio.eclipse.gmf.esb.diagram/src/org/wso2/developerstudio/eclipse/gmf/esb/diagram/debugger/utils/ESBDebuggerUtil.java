@@ -58,6 +58,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
@@ -154,27 +155,36 @@ public class ESBDebuggerUtil {
 	public static void modifyDebugPointsointsAfterMediatorAddition(AbstractMediator abstractMediator)
 			throws CoreException, ESBDebuggerException {
 
-		IEditorPart activeEditor = EditorUtils.getActiveEditor();
-
-		if (activeEditor instanceof EsbMultiPageEditor) {
-
-			IResource resource = getIResourceFromIEditorPart(activeEditor);
-
-			EsbServer esbServer = getESBServerFromIEditorPart(activeEditor);
-			if (esbServer != null) {
-				IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory
-						.getBreakpointBuilder(esbServer.getType());
-
-				try {
-					breakpointBuilder.updateExistingDebugPoints(resource, abstractMediator, esbServer,
-							ESBDebuggerConstants.MEDIATOR_INSERT_ACTION);
-				} catch (MediatorNotFoundException e) {
-					log.info("Inserted Mediator not found in a valid location for breakpoint validation", e);
-				} finally {
-					setRecentlyAddedMediator(null);
+		IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
+		for (IWorkbenchPage iWorkbenchPage : pages) {
+			IEditorReference[] editorReferences = iWorkbenchPage.getEditorReferences();
+			for (IEditorReference iEditorReference : editorReferences) {
+				IEditorPart activeEditor = iEditorReference.getEditor(false);
+				if (activeEditor instanceof EsbMultiPageEditor) {
+					IResource resource = getIResourceFromIEditorPart(activeEditor);
+					EsbServer esbServer = getESBServerFromIEditorPart(activeEditor);
+					if (esbServer != null) {
+						IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory
+								.getBreakpointBuilder(esbServer.getType());
+						try {
+							breakpointBuilder.updateExistingDebugPoints(resource, abstractMediator, esbServer,
+									ESBDebuggerConstants.MEDIATOR_INSERT_ACTION);
+							setRecentlyAddedMediator(null);
+							return;
+						} catch (MediatorNotFoundException e) {
+							log.info("Inserted Mediator not found in a valid location for breakpoint validation", e);
+						} catch (ESBDebuggerException e) {
+							log.info(e.getMessage(), e);
+						}
+					} else{
+						System.out.println();
+					}
+				} else{
+					System.out.println();
 				}
 			}
 		}
+		setRecentlyAddedMediator(null);
 	}
 
 	/**
@@ -200,30 +210,38 @@ public class ESBDebuggerUtil {
 	public static void modifyBreakpointsAfterMediatorDeletion() throws CoreException, ESBDebuggerException {
 
 		if (getDeletedMediator() != null) {
-
-			IEditorPart activeEditor = EditorUtils.getActiveEditor();
-
-			if (activeEditor instanceof EsbMultiPageEditor) {
-
-				IResource resource = getIResourceFromIEditorPart(activeEditor);
-
-				EsbServer esbServer = getESBServerFromIEditorPart(activeEditor);
-				if (esbServer != null) {
-					IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory
-							.getBreakpointBuilder(esbServer.getType());
-
-					try {
-						breakpointBuilder.updateExistingDebugPoints(resource, getDeletedMediator(), esbServer,
-								ESBDebuggerConstants.MEDIATOR_DELETE_ACTION);
-					} catch (MediatorNotFoundException e) {
-						log.info("Deleted Mediator not found in a valid location for breakpoint validation", e);
-					} finally {
-						setDeletedMediator(null);
-						ESBDebuggerUtil.setDeleteOperationPerformed(false);
+			
+			IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
+			for (IWorkbenchPage iWorkbenchPage : pages) {
+				IEditorReference[] editorReferences = iWorkbenchPage.getEditorReferences();
+				for (IEditorReference iEditorReference : editorReferences) {
+					IEditorPart activeEditor = iEditorReference.getEditor(false);
+					if(activeEditor instanceof EsbMultiPageEditor){
+						if (activeEditor instanceof EsbMultiPageEditor) {
+							IResource resource = getIResourceFromIEditorPart(activeEditor);
+							EsbServer esbServer = getESBServerFromIEditorPart(activeEditor);
+							if (esbServer != null) {
+								IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory
+										.getBreakpointBuilder(esbServer.getType());
+								try {
+									breakpointBuilder.updateExistingDebugPoints(resource, getDeletedMediator(), esbServer,
+											ESBDebuggerConstants.MEDIATOR_DELETE_ACTION);
+									setDeletedMediator(null);
+									ESBDebuggerUtil.setDeleteOperationPerformed(false);
+									return;
+								} catch (MediatorNotFoundException e) {
+									log.info("Deleted Mediator not found in a valid location for breakpoint validation", e);
+								}  catch (ESBDebuggerException e) {
+									log.info(e.getMessage(), e);
+								}
+							}
+						}
 					}
 				}
 			}
 		}
+		setDeletedMediator(null);
+		ESBDebuggerUtil.setDeleteOperationPerformed(false);
 	}
 
 	/**

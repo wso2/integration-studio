@@ -291,14 +291,24 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 				} else {
 					if (type.equals(JSON_SCHEMA_ARRAY)) {
 						String itemsType = getItemsType();
-						// If an element has values then enable the connector
-						// arrow
+						String value = getNodeValue(type);
+						// If the array has items then check whether the connector needs to be enabled			
 						if (itemsType.equals(NULL_VALUE)) {
 							createEmptyInNode(childEditPart);
 						} else if (StringUtils.isEmpty(itemsType)) {
 							createEmptyInNode(childEditPart);
 						} else {
-							return createInNode(childEditPart);
+							//if the array is a primitive array then enable the connector
+							if(!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)){
+								return createInNodeWithPrimaryShape(childEditPart);
+							}else{
+								//Else check if the array holds a value, if so enable the connector
+								if (StringUtils.isNotEmpty(value)) {
+									return createInNodeWithPrimaryShape(childEditPart);
+								} else {
+									createLocatedEmptyInNode(childEditPart);
+								}	
+							}		
 						}
 					} else if (type.equals(JSON_SCHEMA_OBJECT)) {
 						String value = getNodeValue(type);
@@ -339,16 +349,28 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 					}
 				} else {
 					if (type.equals(JSON_SCHEMA_ARRAY)) {
-						String itemsType = getItemsType();
-						// If an element has values then enable the connector
-						// arrow
+						String itemsType = getItemsType();					
+						String value = getNodeValue(type);
+						// If the array has items then check whether the connector needs to be enabled			
 						if (itemsType.equals(NULL_VALUE)) {
 							createEmptyOutNode(childEditPart);
 						} else if (StringUtils.isEmpty(itemsType)) {
 							createEmptyOutNode(childEditPart);
 						} else {
-							return createOutNode(childEditPart);
+							//if the array is a primitive array then enable the connector
+							if(!itemsType.equals(JSON_SCHEMA_ARRAY) && !itemsType.equals(JSON_SCHEMA_OBJECT)){
+								return createOutNodeWithPrimaryShape(childEditPart);
+							}else{
+								//Else check if the array holds a value, if so enable the connector
+								if (StringUtils.isNotEmpty(value)) {
+									return createInNodeWithPrimaryShape(childEditPart);
+								} else {
+									createLocatedEmptyOutNode(childEditPart);
+								}	
+							}
+							
 						}
+						
 					} else if (type.equals(JSON_SCHEMA_OBJECT)) {
 						String value = getNodeValue(type);
 						// If an element has values then enable the connector

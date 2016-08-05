@@ -147,7 +147,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	/**
 	 * @generated NOT
 	 */
-	protected IFigure createNodeShape() {
+	public IFigure createNodeShape() {
 		return primaryShape = new OutNodeFigure();
 	}
 

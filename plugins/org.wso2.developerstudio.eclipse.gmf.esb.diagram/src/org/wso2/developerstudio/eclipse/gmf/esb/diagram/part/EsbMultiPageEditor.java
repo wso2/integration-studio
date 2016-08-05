@@ -500,6 +500,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			}
 			addPage(DESIGN_VIEW_PAGE_INDEX, formEditor, editorInput);
 			setPageText(DESIGN_VIEW_PAGE_INDEX, "Form"); //$NON-NLS-1$
+			
+			EditorUtils.updateToolpalette();
 		} catch (PartInitException e) {
 		}
 	}

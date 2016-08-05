@@ -1243,6 +1243,7 @@ public class AddNewObjectDialog extends Dialog {
 				}else{
 					lblValue.setVisible(false);
 					comboValue.setVisible(false);
+					comboValue.select(0);
 				}		
 			}
 			

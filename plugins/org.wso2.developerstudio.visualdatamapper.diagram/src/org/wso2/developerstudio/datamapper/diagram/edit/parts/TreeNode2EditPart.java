@@ -305,9 +305,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 						// If an element has values then enable the connector
 						// arrow
 						if (StringUtils.isNotEmpty(value)) {
-							return createInNode(childEditPart);
+							return createInNodeWithPrimaryShape(childEditPart);
 						} else {
-							createEmptyInNode(childEditPart);
+							createLocatedEmptyInNode(childEditPart);
 						}
 					} else {
 						if (type.equals(NULL_VALUE)) {
@@ -450,6 +450,24 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
 				PositionConstants.WEST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
+		return true;
+	}
+	
+	private boolean createLocatedEmptyInNode(EditPart childEditPart){
+		IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
+				PositionConstants.WEST, 4);
+		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getFigure(), locator);
+		createEmptyInNode(childEditPart);
+		return true;
+	}
+	
+	private boolean createInNodeWithPrimaryShape(EditPart childEditPart) {
+		IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getNodeFigureOutput();
+		borderItemFigure.add(((InNodeEditPart) childEditPart).getPrimaryShape());
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
+				PositionConstants.WEST, 4);
+		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getNodeFigureOutput(), locator);
 		return true;
 	}
 

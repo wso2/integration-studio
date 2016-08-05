@@ -354,9 +354,9 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 						// If an element has values then enable the connector
 						// arrow
 						if (StringUtils.isNotEmpty(value)) {
-							return createOutNode(childEditPart);
+							return createOutNodeWithPrimaryShape(childEditPart);
 						} else {
-							createEmptyOutNode(childEditPart);
+							createLocatedEmptyOutNode(childEditPart);
 						}
 					} else {
 						if (type.equals(NULL_VALUE)) {
@@ -434,6 +434,32 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
 				PositionConstants.EAST, 4);
 		getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
+		return true;
+	}
+	
+	private boolean createLocatedEmptyOutNode(EditPart childEditPart){
+		IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
+				PositionConstants.EAST, 4);
+		getBorderedFigure().getBorderItemContainer().add(((OutNodeEditPart) childEditPart).getFigure(), locator);
+		createEmptyOutNode(childEditPart);
+		return true;
+	}
+	
+	private boolean createOutNodeWithPrimaryShape(EditPart childEditPart) {
+		IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getNodeFigureOutput();
+		if (borderItemFigure == null) {
+			borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
+		}
+		RectangleFigure primaryShape = ((OutNodeEditPart) childEditPart).getPrimaryShape();
+		if (primaryShape != null) {
+			borderItemFigure.add(primaryShape);
+		} else {
+			borderItemFigure.add(((OutNodeEditPart) childEditPart).createNodeShape());
+		}
+		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
+				PositionConstants.EAST, 4);
+		getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 		return true;
 	}
 

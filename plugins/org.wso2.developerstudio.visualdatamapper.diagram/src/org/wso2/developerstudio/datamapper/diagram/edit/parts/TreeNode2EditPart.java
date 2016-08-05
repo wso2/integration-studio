@@ -1344,7 +1344,7 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		while (iterator.hasNext()) {
 			child = (EditPart) iterator.next();
 			if (addFixedChild(child)) {
-				return;
+				//return;
 			}
 		}
 	}

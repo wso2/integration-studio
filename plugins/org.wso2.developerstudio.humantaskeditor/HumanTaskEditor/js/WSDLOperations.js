@@ -114,7 +114,6 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     wsdlSchema = wsdlDom.getElementsByTagNameNS("http://www.w3.org/2001/XMLSchema", "schema")[0];
     wsdlDefinitions = wsdlDom.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "definitions")[0];
     wsdlSchema.setAttribute("targetNamespace", targetnamespace);
-    //alert("Inside generate Input "+currentTask+" : "+ $('#' + currentTask + 'wrapper #taskCallbackServiceName').val());
     // create Data type elements
     newComplexType = wsdlDom.createElementNS(
         xsdNameSpace, "xsd:complexType");
@@ -233,13 +232,6 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
  */
 function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationName, serviceName, outputElements) {
     currentTaskName = currentTask + "wrapper";
-    /*serviceURL = $('#' + currentTaskName + ' #taskCallbackServiceURL').val();
-    operationName = $('#' + currentTaskName + ' #taskCallbackOperationName')
-        .val();
-    serviceName = $('#' + currentTaskName + ' #taskCallbackServiceName').val();
-
-    
-    outputElements = $('#' + currentTaskName + ' #outputmappingTable tr');*/
     portName = currentTask + "CBPort";
     // get Definitions
     wsdlSchema = wsdlDom.getElementsByTagNameNS("http://www.w3.org/2001/XMLSchema", "schema")[0];
@@ -281,7 +273,7 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationN
 
     // createElement
     newElement = wsdlDom.createElementNS(xsdNameSpace,
-        "xsd:element"); // scheme.appendchild()
+        "xsd:element");
     newElement.setAttribute("name", currentTask + "CBData"); // part element
     newElement.setAttribute("type", "tns:" + currentTask + "CBDataType"); // tns:
     // complextypename

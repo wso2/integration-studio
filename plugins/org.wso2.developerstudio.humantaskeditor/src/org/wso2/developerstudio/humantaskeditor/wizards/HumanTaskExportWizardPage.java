@@ -38,6 +38,7 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskExportWizardPage extends WizardPage {
+    
     private String fileLocation;
     private Text deployInWorkspaceText;
     private IProject selectedProject;
@@ -45,7 +46,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
 
     protected HumanTaskExportWizardPage(String pageName, IProject p) {
         super(pageName);
-        setTitle("Human Task Distribution");
+        setTitle(HumantaskEditorConstants.HUMAN_TASK_EXPORT_WIZARD_MAIN_TITLE);
         if (p != null) {
             selectedProject = p;
         }
@@ -62,20 +63,20 @@ public class HumanTaskExportWizardPage extends WizardPage {
         layout.numColumns = 3;
         layout.verticalSpacing = 9;
 
-        getShell().setText("Combo box");
+        getShell().setText(HumantaskEditorConstants.COMBO_BOX);
         //getShell().setLayout(layout);
         gd = new GridData(GridData.FILL_HORIZONTAL);
         gd.horizontalSpan = 2;
 
         Label projectListLabel = new Label(container, SWT.NULL);
-        projectListLabel.setText("Project: ");
+        projectListLabel.setText(HumantaskEditorConstants.PROJECT_LABEL_STRING);
         final Combo projectListcombo = new Combo(container, SWT.VERTICAL | SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
         projectListcombo.setLayoutData(gd);
         gd = new GridData(GridData.FILL_HORIZONTAL);
 
         label = new Label(container, SWT.NULL);
         label.setLayoutData(gd);
-        label.setText("Export Location");
+        label.setText(HumantaskEditorConstants.EXPORT_LOCATION_STRING);
 
         deployInWorkspaceText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -87,7 +88,7 @@ public class HumanTaskExportWizardPage extends WizardPage {
         });
 
         deployInWorkspaceBrowseButton = new Button(container, SWT.PUSH);
-        deployInWorkspaceBrowseButton.setText("Browse");
+        deployInWorkspaceBrowseButton.setText(HumantaskEditorConstants.BROWSE_LABEL);
         deployInWorkspaceBrowseButton.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
                 handledeployInWorkspaceBrowseButton();

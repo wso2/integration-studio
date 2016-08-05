@@ -47,7 +47,7 @@ public class HumanTaskWizardUtil {
 
     public InputStream openContentStream(String taskName, String tnsName) throws IOException, CoreException {
         String contents = changeXMLName(readTemplateHT(), taskName, tnsName);
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
     /**
@@ -58,7 +58,7 @@ public class HumanTaskWizardUtil {
 
     public InputStream openWSDLStream() throws IOException {
         String contents = readTemplateWSDL();
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
     /**
@@ -69,7 +69,7 @@ public class HumanTaskWizardUtil {
 
     public InputStream openOrgSchemaStream() throws IOException {
         String contents = readTemplateOrgSchema();
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
     /**
@@ -81,7 +81,7 @@ public class HumanTaskWizardUtil {
 
     public InputStream openPomStream(String containerName) throws IOException, CoreException {
         String contents = changePOMName(containerName, readTemplatePomSchema());
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
     /**
@@ -92,7 +92,7 @@ public class HumanTaskWizardUtil {
 
     public InputStream openHTConfigStream() throws IOException {
         String contents = readTemplateHtConfig();
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
     /**
@@ -104,10 +104,11 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -126,10 +127,11 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -148,10 +150,11 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -170,10 +173,11 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_POM_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -187,10 +191,11 @@ public class HumanTaskWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -223,7 +228,7 @@ public class HumanTaskWizardUtil {
             Transformer transformer = transfactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.METHOD, HumantaskEditorConstants.XML_OUTPUT_METHOD);
             transformer.setOutputProperty(OutputKeys.INDENT, HumantaskEditorConstants.XML_INDENT_YES);
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(2));
+            transformer.setOutputProperty(HumantaskEditorConstants.XML_OUTPUT_PROPERTY_NAME, Integer.toString(2));
 
             StringWriter stringWriter = new StringWriter();
             StreamResult result = new StreamResult(stringWriter);
@@ -264,7 +269,7 @@ public class HumanTaskWizardUtil {
             Transformer transformer = transfactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.METHOD, HumantaskEditorConstants.XML_OUTPUT_METHOD);
             transformer.setOutputProperty(OutputKeys.INDENT, HumantaskEditorConstants.XML_INDENT_YES);
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(2));
+            transformer.setOutputProperty(HumantaskEditorConstants.XML_OUTPUT_PROPERTY_NAME, Integer.toString(2));
 
             StringWriter stringWriter = new StringWriter();
             StreamResult result = new StreamResult(stringWriter);

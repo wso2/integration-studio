@@ -23,7 +23,6 @@
  * 
  */
 function makeDirty() {
-    //if(taskN=="")handleError("task name cannot be empty");
     IDESetDirty(true);
 }
 
@@ -85,7 +84,6 @@ function createFile(currentTaskName, state, taskNode) { //createFile
             }
             generateOutputWSDL(wsdlCBDom, xmlDom, currentTaskName, serviceURL, operationName, serviceName, outputElements);
             saveWSDL(wsdlCBDom, currentTaskName + "TaskCallBack");
-            // generateUI();
         } catch (err) {
             handleError("Callback WSDL Error " + err.message);
         }
@@ -149,8 +147,6 @@ function addTask() { //createFile
             taskPartDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "task")[0].setAttribute("name", "newTask" + i);
             xmlDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "tasks")[0].appendChild(xmlDom.importNode(taskPartDom.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "task")[0], true));
             IDESaveContent(new XMLSerializer().serializeToString((xmlDom)));
-            //generateUI();
-            //addEvent("tabChange","page-content-wrapper ",xmlDom);
         } catch (err) {
             handleError("Error Adding New Task \n" + err.message);
         }
@@ -199,7 +195,6 @@ function addInitalTask() { //createFile
 var xmlDom;
 var selectedindex = 0;
 loadModel();
-//createFile("ApproveClaim"); // todo  - Test and omit
 process();
 
 /*
@@ -233,8 +228,6 @@ function process() {
     try {
         generateUI("initial");
         setFocus();
-        //$('.taskSection').slideUp(500);
-        //$('.taskSection').collapse();
     } catch (err) {
         handleError(err.message);
     }
@@ -322,15 +315,10 @@ function generateUI(status) {
             });
         });
         $("#page-content-wrapper #tabNames li:contains('+')").remove();
-        //$("#page-content-wrapper #tabNames li:contains('-')").remove();
         $("#page-content-wrapper #tabNames").append("<li><a id='addNewTask' data-toggle='tooltip' title='Create new task' href=''>+</a></li>");
-        //$("#page-content-wrapper #tabNames").append("<li><a id='undoNewTask' href=''>-</a></li>");
         $('#addNewTask').click(function() {
             addTask();
         });
-        /*$('#undoNewTask').click(function() {
-           executeEvent();
-        });*/
         $("#page-content-wrapper").tabs();
         $("#page-content-wrapper").tabs("refresh");
         $('#page-content-wrapper').tabs("option", "active", selectedindex);
@@ -372,7 +360,6 @@ function generateTaskDiv(taskNode, caller) {
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
     $('#genericForm').hide();
-    //$("#page-content-wrapper #tabNames li:contains('"+taskName+"')").remove();
     $("#page-content-wrapper div #" + taskDivName).remove();
     $("#page-content-wrapper").append("<div id='" + taskDivName + "'></div>");
     $('#' + taskDivName).html(formDiv);
@@ -392,11 +379,9 @@ function generateTaskDiv(taskNode, caller) {
             $('#' + taskNode.getAttribute("name") + "wrapper #taskName").val(taskNode.getAttribute("name"));
             makeUnDirty();
         }
-        //generateTasks();
     });
     initValues(taskName);
     i = parseInt($('#nooftasks').val());
-    //handleError(i);
     i++;
     $('#nooftasks').val(i);
     $('#' + taskDivName + ' input:radio').each(function() {
@@ -444,7 +429,6 @@ function generateTaskDiv(taskNode, caller) {
                 makeDirty();
                 generateText(taskNode);
                 generateTaskDiv(taskNode, "taskInputSection");
-                //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
             });
 
     // Add output mapping row
@@ -506,7 +490,6 @@ function generateTaskDiv(taskNode, caller) {
                 makeDirty();
                 generateText(taskNode);
                 generateTaskDiv(taskNode, "taskOutputSection");
-                //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
             });
 
     // sync rendering values into input mapping table
@@ -554,7 +537,6 @@ function generateTaskDiv(taskNode, caller) {
                                 }
                                 makeDirty();
                                 generateTaskDiv(taskNode, "taskInputSection");
-                                //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
                             } catch (err) {
                                 handleError(err.message);
                             }
@@ -609,7 +591,6 @@ function generateTaskDiv(taskNode, caller) {
                                 }
                                 makeDirty();
                                 generateTaskDiv(taskNode, "taskOutputSection");
-                                //selectedindex = $('#page-content-wrapper a[href="#'+taskNode.getAttribute("name")+'wrapper"]').parent().index();
                             } catch (err) {
                                 handleError(err.message);
                             }
@@ -622,7 +603,6 @@ function generateTaskDiv(taskNode, caller) {
             }
         }
     }
-    //handleError($('#' +taskDivName + ' #taskCallbackServiceName').val());
     // sync other fields
     if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "documentation").length != 0 && taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "documentation")[0].hasChildNodes()) {
         $('#' + taskDivName + " #taskDocumentation")
@@ -695,7 +675,6 @@ function generateTaskDiv(taskNode, caller) {
     }
     $('#' + taskDivName + ' #' + caller).collapse('show');
     bindSuggestion(taskName, inputTags);
-    //syncwsdlFields syncWSDLFields(taskNode);
 }
 
 /*
@@ -976,7 +955,6 @@ function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:argument");
         newArgument.setAttribute("name", "role");
-        //newFrom.setAttribute("logicalPeopleGroup", "");
         newArgumentText = xmlDom.createTextNode("regionalClerksRole");
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);
@@ -1030,7 +1008,6 @@ function addGeneralNode(taskNode, xmlDom, nodeName) {
             "http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
             "htd:argument");
         newArgument.setAttribute("name", "role");
-        //newFrom.setAttribute("logicalPeopleGroup", "");
         newArgumentText = xmlDom.createTextNode("regionalClerksRole");
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);
@@ -1054,7 +1031,6 @@ function addTextNode(parentNode, xmlDom, content) {
 
 function bindToggleEvent() {
     $('.sectionHeader').click(function() {
-        //$(this).parent().find('.taskSection').slideToggle(500);
         $(this).parent().find('.taskSection').collapse('toggle');
         $(this).parent().siblings().find('.taskSection').collapse('hide');
     });
@@ -1063,10 +1039,6 @@ function bindToggleEvent() {
 function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
     taskName = taskNode.getAttribute("name");
     taskDivName = taskName + "wrapper";
-    /*if(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName).length != 0 &&
-        $('#' + taskDivName + " input[name = " + peopleAssignmentName + "" + taskDivName + "]:checked").val() == "na"){
-        emptyNode(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0].getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",peopleAssignmentName)[0]);
-    }*/ // 
     if (taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "peopleAssignments")[0]
         .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", peopleAssignmentName).length != 0 && taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "peopleAssignments")[0]
         .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", peopleAssignmentName)[0]
@@ -1127,7 +1099,6 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
                 .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", peopleAssignmentName)[0]);
         }
     if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Literal") {
-        // taskNode.removeChild(taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803","peopleAssignments")[0]);
         createNewLiteral(xmlDom, taskNode.getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "peopleAssignments")[0]
             .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", peopleAssignmentName)[0]
             .getElementsByTagNameNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803", "from")[0], $('#' + taskDivName + " #" + peopleAssignmentName + "LiteralUsers").val().trim(), $('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val().trim());
@@ -1209,7 +1180,6 @@ function bindChangeEvents() { //put all the listeners here
             }
             makeDirty();
         }
-        //generateText();
     });
     $('textarea').keyup(function(e) {
         if (e.ctrlKey || (e.ctrlKey && e.which === 83)) {
@@ -1221,15 +1191,12 @@ function bindChangeEvents() { //put all the listeners here
             }
             makeDirty();
         }
-        //generateTasks();
     });
     $('select').change(function() {
         makeDirty();
-        //generateTasks();
     });
     $('input:radio').change(function() {
         makeDirty();
-        //generateTasks();
     });
 }
 
@@ -1242,7 +1209,7 @@ function createNewLiteral(xmlDom, parent, text, grouptext) {
     var splitList = text.split(",");
     var groupSplitList = grouptext.split(",");
     newLiteral = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/200803",
-        "htd:literal"); // scheme.appendchild()
+        "htd:literal");
     newOrgEntity = xmlDom.createElementNS("http://docs.oasis-open.org/ns/bpel4people/ws-humantask/types/200803",
         "htt:tOrganizationalEntity");
     for (var i = 0; i < splitList.length; i++) {
@@ -1289,7 +1256,6 @@ function addPresentationParameter(xmlDom, taskNode, taskName, name, type) { //sh
             "htd:presentationParameter");
         newPresentationParameter.setAttribute("name", name);
         newPresentationParameter.setAttribute("type", type);
-        //newPresentationParameterText = xmlDom.createTextNode("htd:getInput(\""+taskName+"Request\")/test10:"+name);
         newPresentationParameterText = xmlDom.createTextNode("htd:getInput(\"" + taskName + "Request\")/tns:" + name);
         newPresentationParameter.appendChild(newPresentationParameterText);
         parent.appendChild(newPresentationParameter);
@@ -1322,7 +1288,6 @@ function handleTabChange() {
     $("#page-content-wrapper").tabs({
         activate: function(event, ui) {
             selectedindex = ui.newTab.index();
-            //addEvent("tabChange","page-content-wrapper "+ui.newTab.index(),xmlDom);
         }
     });
 }

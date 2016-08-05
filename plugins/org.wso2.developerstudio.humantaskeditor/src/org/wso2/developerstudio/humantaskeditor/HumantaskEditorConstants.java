@@ -160,4 +160,52 @@ public class HumantaskEditorConstants {
 
     public static final String EXPORT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskexporthelp";
 
+    public static final String EMPTY_STRING = "";
+
+    public static final String ZIP_SUFFIX = ".zip";
+
+    public static final String CREATING_THE_HUMAN_TASK_ARTIFACT_MESSAGE = "Creating the human task artifact...";
+
+    public static final String TEMP_FILE_SUFFIX = ".tmp";
+
+    public static final String TEMP_FILE_NAME = "temp";
+
+    public static final String WIZARD_PAGE_HEADER_BPEL_EXPORT = "BPEL Export";
+
+    public static final String MESSAGE_DIALOG_HUMAN_TASK_DISTRIBUTION = "Human Task Distribution";
+
+    public static final String DELETED_SUCCESSFULLY_MESSAGE = "Deleted Successfully";
+
+    public static final String UTF8_STRING = "UTF8";
+
+    public static final String FILE_NOT_FOUND_MESSAGE = "File not found";
+
+    public static final String BROWSE_LABEL = "Browse";
+
+    public static final String PROJECT_LABEL_STRING = "Project: ";
+
+    public static final String EXPORT_LOCATION_STRING = "Export Location";
+
+    public static final String COMBO_BOX = "Combo box";
+
+    public static final String HUMAN_TASK_EXPORT_WIZARD_MAIN_TITLE = "Human Task Distribution";
+
+    public static final String HT_EXTENSION = "ht";
+
+    public static final String FILE_NAME_REGEX = "^[a-zA-Z0-9]*$";
+
+    public static final String WIZARD_TARGET_NAMESPACE_LABEL = "&Target Namespace :";
+
+    public static final String WIZARD_TASK_NAME_LABEL = "&Task Name :";
+
+    public static final String WIZARD_FILE_NAME_LABEL = "&File Name :";
+
+    public static final String WIZARD_PROJECT_NAME_LABEL = "&Project Name :";
+
+    public static final String WIZARD_CONTAINER_LABEL = "&Container:";
+
+    public static final String NEWLINE_CHAR = "\n";
+
+    public static final String XML_OUTPUT_PROPERTY_NAME = "{http://xml.apache.org/xslt}indent-amount";
+
 }

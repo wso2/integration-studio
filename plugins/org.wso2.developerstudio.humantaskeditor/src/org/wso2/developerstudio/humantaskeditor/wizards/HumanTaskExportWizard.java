@@ -18,7 +18,6 @@ package org.wso2.developerstudio.humantaskeditor.wizards;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IProject;
@@ -33,6 +32,7 @@ import org.eclipse.ui.IWorkbench;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskExportWizard extends Wizard implements IExportWizard {
+    
     private HumanTaskExportWizardPage mainPage;
     private IStructuredSelection selection;
 
@@ -54,14 +54,15 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
             return false;
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            if (realException.getMessage().trim().equalsIgnoreCase(""))
-                MessageDialog.openError(getShell(), "Error", "Error occured while deploying the data service");
-            else
-                MessageDialog.openError(getShell(), "Error", realException.getMessage());
+            if (realException.getMessage().trim().equalsIgnoreCase(HumantaskEditorConstants.EMPTY_STRING)) {
+                MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE, "Error occured while deploying the data service");
+            } else {
+                MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE, realException.getMessage());
+            }
             return false;
         }
         MessageDialog
-                .openInformation(getShell(), "Human Task Distribution", "Human task archive exported successfully");
+                .openInformation(getShell(), HumantaskEditorConstants.MESSAGE_DIALOG_HUMAN_TASK_DISTRIBUTION, "Human task archive exported successfully");
 
         return true;
     }
@@ -78,45 +79,44 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
         if (selection.getFirstElement() instanceof IProject) {
             p = (IProject) selection.getFirstElement();
         }
-        mainPage = new HumanTaskExportWizardPage("BPEL Export", p);
+        mainPage = new HumanTaskExportWizardPage(HumantaskEditorConstants.WIZARD_PAGE_HEADER_BPEL_EXPORT, p);
         addPage(mainPage);
     }
 
     private void doFinish(IProgressMonitor monitor) throws Exception {
         IProject[] projectList = mainPage.getProjects();
-        for (IProject aProjectList : projectList) {
-            if (mainPage.getProjectToArchive().equals(aProjectList.getName())) {
-                String path = aProjectList.getLocation().toOSString();
+        for (IProject projectItem : projectList) {
+            if (mainPage.getProjectToArchive().equals(projectItem.getName())) {
+                String path = projectItem.getLocation().toOSString();
                 File tempFolder = null;
                 try {
-                    tempFolder = File.createTempFile("temp", ".tmp");
+                    tempFolder = File.createTempFile(HumantaskEditorConstants.TEMP_FILE_NAME, HumantaskEditorConstants.TEMP_FILE_SUFFIX);
                     boolean tmpDeleted = tempFolder.delete();
                     boolean tmpCreated = tempFolder.mkdir();
                     if (!tmpDeleted) {
-                        MessageDialog.openError(getShell(), "Error",
+                        MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE,
                                 HumantaskEditorConstants.ERROR_DELETING_TMP_FOLDER_MESSAGE);
                     }
                     if (!tmpCreated) {
-                        MessageDialog.openError(getShell(), "Error",
+                        MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE,
                                 HumantaskEditorConstants.ERROR_CREATING_TMP_FOLDER_MESSAGE);
                     }
-                    File zipFolder = new File(tempFolder, aProjectList.getName());
-                    File tmpZip = File.createTempFile("temp", ".tmp");
+                    File zipFolder = new File(tempFolder, projectItem.getName());
+                    File tmpZip = File.createTempFile(HumantaskEditorConstants.TEMP_FILE_NAME, HumantaskEditorConstants.TEMP_FILE_SUFFIX);
                     boolean tmpZipDeleted = tmpZip.delete();
                     tmpZip.deleteOnExit();
                     if (!tmpZipDeleted) {
-                        MessageDialog.openError(getShell(), "Error",
+                        MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE,
                                 HumantaskEditorConstants.ERROR_DELETING_TMP_FOLDER_MESSAGE);
                     }
-                    monitor.setTaskName("Creating the human task artifact...");
+                    monitor.setTaskName(HumantaskEditorConstants.CREATING_THE_HUMAN_TASK_ARTIFACT_MESSAGE);
                     FileUtils.copyDirectory(
                             new File(path + File.separator + HumantaskEditorConstants.BASE_FOLDER_NAME), zipFolder);
                     FileManagementUtil.removeEmptyDirectories(zipFolder);
                     FileManagementUtil.zipFolder(zipFolder.getAbsolutePath(), tmpZip.getAbsolutePath());
                     if (tmpZip.exists()) {
                         String deployableZip = (new Path(mainPage.getFileLocation())).append(
-                                aProjectList.getName() + ".zip").toOSString(); // FileManagementUtil.addNodesToPath(PersistentWSASEmitterContext.getInstance().getWSASRuntimeLocation(),new
-                        // String[]{"repository", "bpel",p.getName()+".zip"});
+                                projectItem.getName() + HumantaskEditorConstants.ZIP_SUFFIX).toOSString();
                         File deployedZip = new File(deployableZip);
                         FileUtils.copyFile(tmpZip, deployedZip);
                         monitor.done();
@@ -130,7 +130,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                 } finally {
                     if (tempFolder != null) {
                         if (tempFolder.delete()) {
-                            MessageDialog.openError(getShell(), "Error",
+                            MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE,
                                     HumantaskEditorConstants.ERROR_DELETING_TMP_FOLDER_MESSAGE);
                         }
                     }

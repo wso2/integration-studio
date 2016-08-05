@@ -80,7 +80,7 @@ public class HumanTaskWizardPage extends WizardPage {
         layout.numColumns = 3;
         layout.verticalSpacing = 9;
         Label label = new Label(container, SWT.NULL);
-        label.setText("&Container:");
+        label.setText(HumantaskEditorConstants.WIZARD_CONTAINER_LABEL);
 
         containerText = new Text(container, SWT.BORDER | SWT.SINGLE);
         GridData gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -101,7 +101,7 @@ public class HumanTaskWizardPage extends WizardPage {
             }
         });
         label = new Label(container, SWT.NULL);
-        label.setText("&File Name:");
+        label.setText(HumantaskEditorConstants.WIZARD_FILE_NAME_LABEL);
 
         fileText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -114,7 +114,7 @@ public class HumanTaskWizardPage extends WizardPage {
             }
         });
         label = new Label(container, SWT.NULL);
-        label.setText("&Task Name:");
+        label.setText(HumantaskEditorConstants.WIZARD_TASK_NAME_LABEL);
 
         taskText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -128,7 +128,7 @@ public class HumanTaskWizardPage extends WizardPage {
         });
 
         label = new Label(container, SWT.NULL);
-        label.setText("&Target Namespace:");
+        label.setText(HumantaskEditorConstants.WIZARD_TARGET_NAMESPACE_LABEL);
 
         tnsText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -233,7 +233,7 @@ public class HumanTaskWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.PROJECT_MUST_BE_WRITABLE_MESSAGE);
             return;
         }
-        if (!fileName.matches("^[a-zA-Z0-9]*$")) {
+        if (!fileName.matches(HumantaskEditorConstants.FILE_NAME_REGEX)) {
             updateStatus(HumantaskEditorConstants.ENTER_A_VALID_FILENAME);
             return;
         }

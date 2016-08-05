@@ -58,7 +58,6 @@ public class AddNewArrayAction extends AbstractActionHandler {
 	private static final String ADD_NEW_RECORDS_LIST_ACTION_ID = "add-new-records-list-action-id"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORDS_LIST = Messages.AddNewArrayAction_addNewArray;
 	private static final String DIALOG_TITLE = "Add new Array";
-	private static final String JSON_SCHEMA_REQUIRED = "required";
 	private static final String JSON_SCHEMA_ID = "id";
 	private static final String JSON_SCHEMA_TYPE = "type";
 	private static final String NAMESPACE_PREFIX = "prefix";
@@ -141,10 +140,6 @@ public class AddNewArrayAction extends AbstractActionHandler {
 				if (StringUtils.isNotEmpty(objectDialog.getID())) {
 					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_ID,
 							objectDialog.getID());
-				}
-				if (StringUtils.isNotEmpty(objectDialog.getRequired())) {
-					setPropertyKeyValuePairforTreeNodes(treeNodeNew, propertyValueList, JSON_SCHEMA_REQUIRED,
-							objectDialog.getRequired());
 				}
 				if (StringUtils.isNotEmpty(objectDialog.getNamespaces())) {
 					String namespaces = createNamespaceArray(objectDialog.getNamespaces());

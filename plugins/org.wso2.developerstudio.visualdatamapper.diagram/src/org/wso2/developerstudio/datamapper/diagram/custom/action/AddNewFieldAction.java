@@ -86,7 +86,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	protected void doRun(IProgressMonitor progressMonitor) {
 		selectedEP = getSelectedEditPart();
 		AddNewObjectDialog objectDialog = new AddNewObjectDialog(Display.getCurrent().getActiveShell(),
-				new Class[] { IRegistryFile.class });
+				new Class[] { IRegistryFile.class }, selectedEP);
 		objectDialog.create();
 		objectDialog.setTitle(DIALOG_TITLE);
 		objectDialog.setVisibility(DIALOG_TITLE,false);

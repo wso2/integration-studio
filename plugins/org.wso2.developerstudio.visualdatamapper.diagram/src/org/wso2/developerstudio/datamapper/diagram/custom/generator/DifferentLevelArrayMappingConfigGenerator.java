@@ -97,7 +97,7 @@ public class DifferentLevelArrayMappingConfigGenerator extends AbstractMappingCo
 					if (outputVariable.getMappedInputVariableRootArrayElement() != null) {
 						if (forLoopBeanMap.containsKey(ScriptGenerationUtil
 								.removeInvalidCharaters(outputVariable.getMappedInputVariableRootArrayElement()))) {
-							int rootArrayVariableForLoopIndex = outputArrayVariableForLoopMap
+							int rootArrayVariableForLoopIndex = forLoopBeanMap
 									.get(outputVariable.getMappedInputVariableRootArrayElement());
 							outputArrayRootVariableForLoop.put(outputVariable.getName(), rootArrayVariableForLoopIndex);
 						} else {

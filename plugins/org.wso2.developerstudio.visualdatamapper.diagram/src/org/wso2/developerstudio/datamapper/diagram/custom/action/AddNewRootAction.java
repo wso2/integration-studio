@@ -106,7 +106,7 @@ public class AddNewRootAction extends AbstractActionHandler {
 			} else {
 
 				AddNewObjectDialog rootElementDialog = new AddNewObjectDialog(Display.getCurrent().getActiveShell(),
-						new Class[] { IRegistryFile.class });
+						new Class[] { IRegistryFile.class }, selectedEP);
 				rootElementDialog.create();
 				rootElementDialog.setTitle(DIALOG_TITLE);
 				rootElementDialog.setVisibility(DIALOG_TITLE,false);

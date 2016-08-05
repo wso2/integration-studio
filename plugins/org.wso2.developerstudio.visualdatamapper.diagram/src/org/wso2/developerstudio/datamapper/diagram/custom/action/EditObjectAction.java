@@ -462,7 +462,7 @@ public class EditObjectAction extends AbstractActionHandler {
 			String required, String schemaValue, String namespaces, String value, String identifierType,
 			String identifierValue, String identifierURL, boolean isNullable,String interrelatedElement, boolean isOutputEditPart, boolean isRootElement, String rootInterrelatedElement) {
 		Shell shell = Display.getDefault().getActiveShell();
-		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class });
+		AddNewObjectDialog editTypeDialog = new AddNewObjectDialog(shell, new Class[] { IRegistryFile.class }, selectedEP);
 
 		editTypeDialog.create();
 		editTypeDialog.setTypeWhenEditing(schemaType);

@@ -16,6 +16,8 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -954,7 +956,18 @@ public class DataMapperDiagramModel {
 
 	private String getMappedInputArrayFromMap(Map<String, String> outputInputElementMapping, String variableName) {
 		Set<String> outputArrayVariables = outputInputElementMapping.keySet();
-		for (String arrayName : outputArrayVariables) {
+		List<String> outputArrayVariablesList = new ArrayList<>();
+		for (String string : outputArrayVariables) {
+			outputArrayVariablesList.add(string);
+		}
+		Collections.sort(outputArrayVariablesList, new Comparator<String>() {
+
+			@Override
+			public int compare(String str1, String str2) {
+				return -str1.length() + str2.length();
+			}
+		});
+		for (String arrayName : outputArrayVariablesList) {
 			if(variableName.startsWith(arrayName)){
 				return outputInputElementMapping.get(arrayName);
 			}

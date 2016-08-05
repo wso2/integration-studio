@@ -464,10 +464,18 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	
 	private boolean createInNodeWithPrimaryShape(EditPart childEditPart) {
 		IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getNodeFigureOutput();
-		borderItemFigure.add(((InNodeEditPart) childEditPart).getPrimaryShape());
+		if (borderItemFigure == null) {
+			borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
+		}
+		RectangleFigure primaryShape = ((InNodeEditPart) childEditPart).getPrimaryShape();
+		if (primaryShape != null) {
+			borderItemFigure.add(primaryShape);
+		} else {
+			borderItemFigure.add(((InNodeEditPart) childEditPart).createNodeShape());
+		}
 		BorderItemLocator locator = new AbsoluteBorderedItemLocator(getMainFigure(), borderItemFigure,
 				PositionConstants.WEST, 4);
-		getBorderedFigure().getBorderItemContainer().add(((InNodeEditPart) childEditPart).getNodeFigureOutput(), locator);
+		getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 		return true;
 	}
 

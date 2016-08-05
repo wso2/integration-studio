@@ -135,7 +135,7 @@ public class InNodeEditPart extends AbstractInNodeEditPart {
 	/**
 	 * @generated NOT
 	 */
-	protected IFigure createNodeShape() {
+	public IFigure createNodeShape() {
 		return primaryShape = new InNodeFigure();
 	}
 

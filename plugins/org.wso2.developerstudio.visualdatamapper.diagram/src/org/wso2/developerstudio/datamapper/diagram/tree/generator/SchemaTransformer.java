@@ -1054,6 +1054,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 			// If the key is already there add the new value
 			if (keyValue.getKey().equals(key)) {
 				value = keyValue.getValue();
+				if (key.contains("_id") && StringUtils.isEmpty(value)) {
+					return "default/" + treeNodeModel.getName();
+				}
 				break;
 			}
 		}
@@ -1074,11 +1077,13 @@ public class SchemaTransformer implements ISchemaTransformer {
 			// If the key is already there add the new value
 			if (keyValue.getKey().equals(key)) {
 				value = keyValue.getValue();
+				if (key.contains("_id") && StringUtils.isEmpty(value)) {
+					return "default/" + treeNode.getName();
+				}
 				break;
 			}
 		}
 		return value;
-
 	}
 
 	/**
@@ -1094,6 +1099,9 @@ public class SchemaTransformer implements ISchemaTransformer {
 			// If the key is already there add the new value
 			if (keyValue.getKey().equals(key)) {
 				value = keyValue.getValue();
+				if (key.contains("_id") && StringUtils.isEmpty(value)) {
+					return "default/" + element.getName();
+				}
 				break;
 			}
 		}

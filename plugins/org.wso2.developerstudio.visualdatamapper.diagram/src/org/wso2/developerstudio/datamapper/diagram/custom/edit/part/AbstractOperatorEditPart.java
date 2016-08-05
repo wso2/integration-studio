@@ -39,6 +39,8 @@ import org.eclipse.gmf.runtime.notation.impl.BoundsImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.TreeNodeUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+import org.wso2.developerstudio.datamapper.impl.ANDImpl;
+import org.wso2.developerstudio.datamapper.impl.OperatorImpl;
 
 public abstract class AbstractOperatorEditPart extends ShapeNodeEditPart{
 
@@ -115,6 +117,11 @@ public abstract class AbstractOperatorEditPart extends ShapeNodeEditPart{
 			ep.setResizeDirections(PositionConstants.NONE);
 		}
 		return result;
+	}
+	
+	protected void initializeOperatorImplConnectorCount(){
+		((OperatorImpl) ((View) getModel()).getElement()).setLeftConnectorCount(0);
+		((OperatorImpl) ((View) getModel()).getElement()).setRightConnectorCount(0);
 	}
 
 }

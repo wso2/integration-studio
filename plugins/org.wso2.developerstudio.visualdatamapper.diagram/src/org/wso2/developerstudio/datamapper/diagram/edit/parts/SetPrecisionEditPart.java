@@ -1,6 +1,5 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -115,9 +114,10 @@ public class SetPrecisionEditPart extends AbstractOperatorEditPart {
 	* Body of this method does not depend on settings in generation model
 	* so you may safely remove <i>generated</i> tag and modify it.
 	* 
-	* @generated
+	* @generated NOT
 	*/
 	protected NodeFigure createNodeFigure() {
+		initializeOperatorImplConnectorCount();
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();

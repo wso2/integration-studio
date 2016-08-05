@@ -137,7 +137,7 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
 						if (envelopeView instanceof ContentAcceptHandler) {
 							((ContentAcceptHandler) envelopeView).acceptContent(
 									new String[] { propertyCommandMessage.getProperty().getPropertyName(), "" },
-									AcceptedContentAction.REMOVE);
+									AcceptedContentAction.ADD);
 						}
                     } catch (PartInitException e) {
                         log.error("Error while removing a property from Envelope Property table", e);

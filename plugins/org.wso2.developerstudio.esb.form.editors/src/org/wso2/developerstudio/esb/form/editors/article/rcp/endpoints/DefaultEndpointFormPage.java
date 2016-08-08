@@ -54,15 +54,19 @@ public class DefaultEndpointFormPage extends EndpointFormPage {
     Section basicSection;
     Section miscSection;
 
-    public DefaultEndpointFormPage(FormEditor editor) {
+    public DefaultEndpointFormPage(FormEditor editor, boolean isTemplate) {
 		super(editor);
+		this.isTemplate = isTemplate;
 	}
 
 	protected void createFormContent(IManagedForm managedForm) {
 
 		super.createFormContent(managedForm);
-		
-		form.setText(Messages.getString("DefaultEndpointPage.sectionMainTitle"));
+		if (isTemplate()) {
+			form.setText(Messages.getString("DefaultEndpointTemplatePage.sectionMainTitle"));
+		} else {
+			form.setText(Messages.getString("DefaultEndpointPage.sectionMainTitle"));
+		}
 	}
 	
 	public void createFormMiscSection() {

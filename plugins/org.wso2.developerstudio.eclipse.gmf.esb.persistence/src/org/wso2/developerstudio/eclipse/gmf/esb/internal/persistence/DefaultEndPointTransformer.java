@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.endpoints.DefaultEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.MediatorProperty;
@@ -120,7 +121,7 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 		return synapseEP;
 	}
 
-	public DefaultEndpoint create(DefaultEndpointFormPage defaultEndpointFormPage) throws NumberFormatException, JaxenException {
+	public SynapseArtifact create(DefaultEndpointFormPage defaultEndpointFormPage) throws NumberFormatException, JaxenException {
 		DefaultEndpoint synapseEP = new DefaultEndpoint();
 		if (StringUtils.isNotBlank(defaultEndpointFormPage.getEndpointName().getText())) {
 			synapseEP.setName(defaultEndpointFormPage.getEndpointName().getText());
@@ -130,7 +131,11 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 			saveProperties(defaultEndpointFormPage,synapseEP);
 		}
 
-		return synapseEP;
+		if (defaultEndpointFormPage.isTemplate()) {
+			return createTemplate(defaultEndpointFormPage, synapseEP);
+		} else {
+			return synapseEP;
+		}
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)

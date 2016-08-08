@@ -111,7 +111,7 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		return synapseWSDLEP;
 	}	
 
-	public WSDLEndpoint create(WsdlEndpointFormPage wsdlEndpointFormPage) throws NumberFormatException, JaxenException{
+	public org.apache.synapse.SynapseArtifact create(WsdlEndpointFormPage wsdlEndpointFormPage) throws NumberFormatException, JaxenException{
 		WSDLEndpoint synapseWSDLEP = new WSDLEndpoint();
 		synapseWSDLEP.setWsdlURI(wsdlEndpointFormPage.getWsdlEP_WsdlUri().getText());
 		synapseWSDLEP.setServiceName(wsdlEndpointFormPage.getWsdlEP_Service().getText());
@@ -124,7 +124,11 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		if(wsdlEndpointFormPage.endpointPropertyList != null && wsdlEndpointFormPage.endpointPropertyList.size()>0){
 			saveProperties(wsdlEndpointFormPage,synapseWSDLEP);
 		}
-		return synapseWSDLEP;
+		if (wsdlEndpointFormPage.isTemplate()) {
+			return createTemplate(wsdlEndpointFormPage, synapseWSDLEP);
+		} else {
+			return synapseWSDLEP;
+		}
 	}	
 
 	

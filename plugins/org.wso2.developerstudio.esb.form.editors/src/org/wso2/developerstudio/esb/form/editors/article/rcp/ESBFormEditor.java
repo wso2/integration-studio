@@ -86,23 +86,23 @@ public class ESBFormEditor extends FormEditor {
 		} else if (artifactType == ArtifactType.TASK) {
 			currFormPage = new ScheduledTaskFormPage(this);
 		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_DEFAULT) {
-			currFormPage = new DefaultEndpointFormPage(this);
+			currFormPage = new DefaultEndpointFormPage(this,true);
 		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_ADDRESS) {
-			currFormPage = new AddressEndpointFormPage(this);
+			currFormPage = new AddressEndpointFormPage(this,true);
 		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_WSDL) {
-			currFormPage = new WsdlEndpointFormPage(this);
+			currFormPage = new WsdlEndpointFormPage(this, true);
 		} else if (artifactType == ArtifactType.TEMPLATE_ENDPOINT_HTTP) {
-			currFormPage = new HttpEndpointFormPage(this);
+			currFormPage = new HttpEndpointFormPage(this, true);
 //		} else if (artifactType == ArtifactType.ENDPOINT) {
 //			currFormPage = new EndpointFormPage(this);
 		} else if (artifactType == ArtifactType.ENDPOINT_ADDRESS) {
-			currFormPage = new AddressEndpointFormPage(this);
+			currFormPage = new AddressEndpointFormPage(this,false);
 		}else if (artifactType == ArtifactType.ENDPOINT_DEFAULT) {
-			currFormPage = new DefaultEndpointFormPage(this);
+			currFormPage = new DefaultEndpointFormPage(this,false);
 		}else if (artifactType == ArtifactType.ENDPOINT_HTTP) {
-			currFormPage = new HttpEndpointFormPage(this);
+			currFormPage = new HttpEndpointFormPage(this, false);
 		}else if (artifactType == ArtifactType.ENDPOINT_WSDL) {
-			currFormPage = new WsdlEndpointFormPage(this);
+			currFormPage = new WsdlEndpointFormPage(this, false);
 		}else if(artifactType == ArtifactType.TEMPLATE_ENDPOINT){
 			currFormPage = new TemplateEndPointFormPage(this);
 		}

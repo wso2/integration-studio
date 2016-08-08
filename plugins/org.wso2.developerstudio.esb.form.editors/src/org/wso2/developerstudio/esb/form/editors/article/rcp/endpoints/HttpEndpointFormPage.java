@@ -56,15 +56,20 @@ public class HttpEndpointFormPage extends EndpointFormPage {
     Section basicSection;
     Section miscSection;
 	
-    public HttpEndpointFormPage(FormEditor editor) {
+    public HttpEndpointFormPage(FormEditor editor, boolean isTemplate) {
 		super(editor);
+		this.isTemplate = isTemplate;
 	}
 
 	protected void createFormContent(IManagedForm managedForm) {
 
 		super.createFormContent(managedForm);
+		if (isTemplate()) {
+			form.setText(Messages.getString("HttpEndpointTemplatePage.sectionMainTitle"));
+		} else {
+			form.setText(Messages.getString("HttpEndpointPage.sectionMainTitle"));
+		}
 		
-		form.setText(Messages.getString("HttpEndpointPage.sectionMainTitle"));
 	}
 	
 	@Override

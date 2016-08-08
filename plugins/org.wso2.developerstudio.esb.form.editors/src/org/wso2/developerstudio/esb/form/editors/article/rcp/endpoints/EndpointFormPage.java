@@ -17,22 +17,29 @@
 
 package org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints;
 
+import java.util.List;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.AbstractEsbFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.Messages;
@@ -47,10 +54,11 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 	
 	protected ScrolledForm form;
     protected FormToolkit toolkit;
-    protected Text endpointName;
+	protected Text endpointName;
+	protected Text templateName;
 
-    protected Combo endpointTrace;
-    protected Combo endpointStatistics;
+	protected Combo endpointTrace;
+	protected Combo endpointStatistics;
 	
     protected Text eP_Properties;
     protected Combo eP_Optimize;
@@ -58,8 +66,28 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 
     protected Combo eP_Format;
     Section basicSection;
-	
-	 
+    
+    protected Button template_parameters;
+    protected boolean isTemplate;
+	Section templateEndpointSection;
+	public List<TemplateParameter> templateParameterList;
+    
+    public boolean isTemplate() {
+		return isTemplate;
+	}
+
+	public void setTemplate(boolean isTemplate) {
+		this.isTemplate = isTemplate;
+	}
+
+	public List<TemplateParameter> getTemplateParameterList() {
+		return templateParameterList;
+	}
+
+	public void setTemplateParameterList(List<TemplateParameter> templateParameterList) {
+		this.templateParameterList = templateParameterList;
+	}
+
 	public Text getEndpointName() {
 		return endpointName;
 	}
@@ -115,6 +143,22 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 	public void setEP_Description(Text wsdlEP_Description) {
 		this.eP_Description = wsdlEP_Description;
 	}
+	
+	public Button getTemplate_parameters() {
+		return template_parameters;
+	}
+
+	public void setTemplate_parameters(Button template_parameters) {
+		this.template_parameters = template_parameters;
+	}
+
+    public Text getTemplateName() {
+		return templateName;
+	}
+
+	public void setTemplateName(Text templateName) {
+		this.templateName = templateName;
+	}
 
 	public EndpointFormPage(FormEditor editor) {
 		super(editor, "endpointForm", Messages.getString("EndpointPage.sectionMainTitle"));
@@ -148,6 +192,7 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 		layout.maxNumColumns = 2;
 		form.getBody().setLayout(layout);*/
 		
+		createTemplateEndpointSection();
 		createFormBasicSection();
 		createFormMiscSection();
 		createFormQosSection();
@@ -155,6 +200,65 @@ public abstract class EndpointFormPage extends AbstractEsbFormPage {
 	}
 	
 	
+	
+	public void createTemplateEndpointSection(){
+		if(isTemplate){
+			templateEndpointSection = endpointCommons.createSection(form, toolkit, Messages.getString("EndpointPage.section.template"));
+			toolkit.createLabel(templateEndpointSection, "Template Parameters :");
+			
+			GridData samplegridData = new GridData();
+			samplegridData.horizontalSpan = 3;
+			samplegridData.horizontalAlignment = SWT.FILL;
+			samplegridData.grabExcessHorizontalSpace = true;
+			templateEndpointSection.setLayoutData(samplegridData);
+			// section.setLayoutData(new TableWrapData(TableWrapData.FILL));
+
+			Composite basicSectionClient = toolkit.createComposite(templateEndpointSection);
+			basicSectionClient.setLayout(new GridLayout());
+			templateEndpointSection.setClient(basicSectionClient);
+			
+			toolkit.createLabel(basicSectionClient, "Name :");
+			templateName = toolkit.createText(basicSectionClient, "");
+			templateName.setBackground(new Color(null, 229,236,253));
+			//endpointName.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+			GridData endpointNameGridData = new GridData();
+			endpointNameGridData.horizontalSpan = 3;
+			endpointNameGridData.horizontalAlignment = GridData.FILL;
+			endpointNameGridData.grabExcessHorizontalSpace = true;
+			templateName.setLayoutData(endpointNameGridData);
+			
+			templateName.addModifyListener(new ModifyListener() {
+				@Override
+				public void modifyText(ModifyEvent e) {
+					setSave(true);
+					updateDirtyState();
+				}
+			});
+			
+			toolkit.createLabel(basicSectionClient, "Parameters :");
+			
+			template_parameters = toolkit.createButton(basicSectionClient, "Add Template Parameters", SWT.PUSH);
+			template_parameters.setBackground(new Color(null, 229, 236, 253));
+			template_parameters.addSelectionListener(new SelectionListener() {
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					Shell shell = Display.getDefault().getActiveShell();
+					ConfigureTemplateParametersDialog paramDialog = new ConfigureTemplateParametersDialog(shell, templateParameterList);
+					paramDialog.setBlockOnOpen(true);
+					paramDialog.open();
+					templateParameterList = paramDialog.getTemplateParameterList();
+					setSave(true);
+					updateDirtyState();
+				}
+
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {
+
+				}
+			});
+		}
+	}
 	
 	public void createFormBasicSection() {
 		/* Basic Section */

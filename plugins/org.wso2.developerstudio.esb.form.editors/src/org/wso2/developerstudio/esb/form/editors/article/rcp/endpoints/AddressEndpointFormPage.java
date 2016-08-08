@@ -71,14 +71,19 @@ public class AddressEndpointFormPage extends EndpointFormPage {
 	Section basicSection;
 	Section miscSection;
 
-	public AddressEndpointFormPage(FormEditor editor) {
+	public AddressEndpointFormPage(FormEditor editor, boolean isTemplate) {
 		super(editor);
+		this.isTemplate = isTemplate;
 	}
 
 	protected void createFormContent(IManagedForm managedForm) {
 
 		super.createFormContent(managedForm);
-		form.setText(Messages.getString("AddressEndpointPage.sectionMainTitle"));
+		if (isTemplate()) {
+			form.setText(Messages.getString("AddressEndpointTemplatePage.sectionMainTitle"));
+		} else {
+			form.setText(Messages.getString("AddressEndpointPage.sectionMainTitle"));
+		}
 	}
 	
 

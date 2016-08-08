@@ -104,15 +104,18 @@ public class WsdlEndpointFormPage extends EndpointFormPage {
 		this.miscSection = miscSection;
 	}
 
-    public WsdlEndpointFormPage(FormEditor editor) {
+    public WsdlEndpointFormPage(FormEditor editor, boolean isTemplate) {
 		super(editor);
+		this.isTemplate = isTemplate;
 	}
 
 	protected void createFormContent(IManagedForm managedForm) {
-		
 		super.createFormContent(managedForm);
-		
-		form.setText(Messages.getString("WsdlEndpointPage.sectionMainTitle"));
+		if (isTemplate()) {
+			form.setText(Messages.getString("WsdlEndpointTemplatePage.sectionMainTitle"));
+		} else {
+			form.setText(Messages.getString("WsdlEndpointPage.sectionMainTitle"));
+		}
 	}
 
 	

@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.apache.axis2.Constants;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.config.xml.endpoints.EndpointSerializer;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -35,6 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.HttpEndpointFormPage;
@@ -134,9 +136,9 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 		return synapseHttpEP;
 	}
 
-	public org.apache.synapse.endpoints.HTTPEndpoint create(HttpEndpointFormPage httpFormPage) throws NumberFormatException, JaxenException {
+	public org.apache.synapse.SynapseArtifact create(HttpEndpointFormPage httpFormPage) throws NumberFormatException, JaxenException {
 		org.apache.synapse.endpoints.HTTPEndpoint synapseHttpEP = new org.apache.synapse.endpoints.HTTPEndpoint();
-
+		
 		if (StringUtils.isNotBlank(httpFormPage.getEndpointName().getText())) {
 			synapseHttpEP.setName(httpFormPage.getEndpointName().getText());
 		}
@@ -167,8 +169,12 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 		if(httpFormPage.endpointPropertyList != null && httpFormPage.endpointPropertyList.size()>0){
 		saveProperties(httpFormPage,synapseHttpEP);
 		}
-	
-		return synapseHttpEP;
+		
+		if (httpFormPage.isTemplate()) {
+			return createTemplate(httpFormPage, synapseHttpEP);
+		} else {
+			return synapseHttpEP;
+		}
 	}
 	
 	

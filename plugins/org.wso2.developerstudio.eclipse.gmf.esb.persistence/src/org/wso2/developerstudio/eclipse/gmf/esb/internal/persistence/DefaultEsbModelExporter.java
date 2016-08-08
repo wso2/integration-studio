@@ -41,6 +41,7 @@ import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNamespace;
 import org.apache.axis2.util.XMLPrettyPrinter;
+import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.config.xml.EntrySerializer;
@@ -259,7 +260,7 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		}		
 	}
 	
-	private org.apache.synapse.endpoints.Endpoint transformEndpoint(
+	private SynapseArtifact transformEndpoint(
 			FormPage endpointFormPage ) throws Exception {		
 		if ((FormPage) endpointFormPage instanceof WsdlEndpointFormPage) {
 			WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
@@ -403,10 +404,15 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		} else if (artifactType == ArtifactType.MESSAGE_STORE) {
 			configOM = transformMessageStore(formPage);
 		} else if (formPage instanceof EndpointFormPage) {
-			Endpoint transformEndpoint = transformEndpoint(formPage);
-			if(transformEndpoint!=null){
-				configOM = EndpointSerializer
-				.getElementFromEndpoint(transformEndpoint);
+			SynapseArtifact transformEndpoint = transformEndpoint(formPage);
+			if (transformEndpoint != null) {
+				if (transformEndpoint instanceof Endpoint) {
+					configOM = EndpointSerializer.getElementFromEndpoint((Endpoint) transformEndpoint);
+				} else if (transformEndpoint instanceof org.apache.synapse.endpoints.Template) {
+					TemplateSerializer templateSerializer = new TemplateSerializer();
+					configOM = templateSerializer
+							.serializeEndpointTemplate((org.apache.synapse.endpoints.Template) transformEndpoint, null);
+				}
 			}
 		}
 		if (configOM != null) {

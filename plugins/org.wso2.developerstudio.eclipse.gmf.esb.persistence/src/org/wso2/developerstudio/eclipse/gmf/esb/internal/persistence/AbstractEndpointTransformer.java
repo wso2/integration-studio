@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.aspects.AspectConfiguration;
+import org.apache.synapse.config.xml.endpoints.EndpointSerializer;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
@@ -47,6 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointWestOutputCon
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointWestOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointCommons;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
@@ -591,5 +593,18 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 			}
 		}
 	}
+	
+	protected org.apache.synapse.endpoints.Template createTemplate(EndpointFormPage formPage,
+			AbstractEndpoint synapseEP) {
+		org.apache.synapse.endpoints.Template endpointTemplate = new org.apache.synapse.endpoints.Template();
+		endpointTemplate.setName(formPage.getTemplateName().getText());
+		for (TemplateParameter parameter : formPage.getTemplateParameterList()) {
+			endpointTemplate.addParameter(parameter.getName());
+		}
+		endpointTemplate.setElement(EndpointSerializer.getElementFromEndpoint(synapseEP));
+		return endpointTemplate;
+	}
+	
+	
 
 }

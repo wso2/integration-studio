@@ -42,7 +42,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 /**
  * Endpoint template deserializer
  */
-public class EndPointTemplateDeserializer extends AbstractEsbNodeDeserializer<org.apache.synapse.endpoints.Template, Template> {
+public class EndPointTemplateDeserializer extends AbstractEndPointTemplateDeserializer {
 
 	@SuppressWarnings("unchecked")
 	@Override

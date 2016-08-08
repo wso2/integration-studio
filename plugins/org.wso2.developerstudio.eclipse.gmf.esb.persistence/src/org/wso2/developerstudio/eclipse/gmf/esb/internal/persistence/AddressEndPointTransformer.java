@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.endpoints.AddressEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.MediatorProperty;
@@ -124,7 +125,7 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
 		return synapseAddEP;
 	}
 	
-	public AddressEndpoint create(AddressEndpointFormPage formPage) throws NumberFormatException, JaxenException {
+	public SynapseArtifact create(AddressEndpointFormPage formPage) throws NumberFormatException, JaxenException {
 		AddressEndpoint synapseAddEP = new AddressEndpoint();
 		if (StringUtils.isNotBlank(formPage.getEndpointName().getText())) {
 			synapseAddEP.setName(formPage.getEndpointName().getText());
@@ -136,7 +137,11 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
 			saveProperties(formPage,synapseAddEP);
 		}
 
-		return synapseAddEP;
+		if (formPage.isTemplate()) {
+			return createTemplate(formPage, synapseAddEP);
+		} else {
+			return synapseAddEP;
+		}
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)

@@ -6,6 +6,9 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -364,6 +367,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * @ordered
 	 */
 	protected String newPropertyName = NEW_PROPERTY_NAME_EDEFAULT;
+	
+	private Map<String, PropertyScope> propertyNameScopeMap = new HashMap<>();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -378,6 +383,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 		valueExpression.setPropertyName("expression");
 		valueExpression.setPropertyValue(DEFAULT_EXPRESSION_PROPERTY_VALUE);		
 		setValueExpression(valueExpression);
+		
+		populatePropertyNameScopeMap();
 	}
 
 	/**
@@ -403,13 +410,15 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setPropertyName(PropertyName newPropertyName) {
 		PropertyName oldPropertyName = propertyName;
 		propertyName = newPropertyName == null ? PROPERTY_NAME_EDEFAULT : newPropertyName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__PROPERTY_NAME, oldPropertyName, propertyName));
+		//Fixing DEVTOOLESB-720
+		setPropertyScope(propertyNameScopeMap.get(newPropertyName.getName()));
 	}
 
 	/**
@@ -1096,6 +1105,58 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 		result.append(newPropertyName);
 		result.append(')');
 		return result.toString();
+	}
+	
+	private void populatePropertyNameScopeMap() {
+		propertyNameScopeMap.put("Action", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("COPY_CONTENT_LENGTH_FROM_INCOMING", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("CacheLevel", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("ClientApiNonBlocking", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("ConcurrentConsumers", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("ContentType", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("disableAddressingForOutMessages", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("DISABLE_CHUNKING", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("DISABLE_SMOOKS_RESULT_PAYLOAD", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("ERROR_CODE", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("ERROR_DETAIL", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("ERROR_EXCEPTION", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("ERROR_MESSAGE", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("FAULTS_AS_HTTP_200", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("FORCE_ERROR_ON_SOAP_FAULT", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("FORCE_HTTP_1_0", PropertyScope.AXIS2_CLIENT);
+		propertyNameScopeMap.put("FORCE_HTTP_CONTENT_LENGTH", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("FORCE_POST_PUT_NOBODY", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("FORCE_SC_ACCEPTED", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("FaultTo", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("From", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("HTTP_ETAG", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("HTTP_SC", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("JMS_COORELATION_ID", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("messageType", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("MESSAGE_FORMAT", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("MaxConcurrentConsumers", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("MercuryLastMessage", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("MercurySequenceKey", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("MessageID", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("NO_ENTITY_BODY", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("NO_KEEPALIVE", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("OUT_ONLY", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("OperationName", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("POST_TO_URI", PropertyScope.AXIS2);
+		propertyNameScopeMap.put("preserveProcessedHeaders", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("PRESERVE_WS_ADDRESSING", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("REQUEST_HOST_HEADER", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("RESPONSE", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("REST_URL_POSTFIX", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("RelatesTo", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("ReplyTo", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("SERVER_IP", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("SYSTEM_DATE", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("SYSTEM_TIME", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("TRANSPORT_HEADERS", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("TRANSPORT_IN_NAME", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("To", PropertyScope.SYNAPSE);
+		propertyNameScopeMap.put("transportNonBlocking", PropertyScope.SYNAPSE);
 	}
 
 } //PropertyMediatorImpl

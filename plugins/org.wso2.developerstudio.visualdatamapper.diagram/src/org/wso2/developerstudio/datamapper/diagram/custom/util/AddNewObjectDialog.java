@@ -279,7 +279,7 @@ public class AddNewObjectDialog extends Dialog {
 			textIdentifierURL.setVisible(false);
 			checkBoxForNullables.setVisible(true);
 			lblNullables.setVisible(true);
-			if(isOutputEditPart){
+			if (isOutputEditPart && lblInterrelatedElement != null) {
 				lblInterrelatedElement.setVisible(true && isElementInOutput);
 				lblRootInterrelatedElement.setVisible(true && isElementInOutput);
 				textInterrelatedCombo.setVisible(true && isElementInOutput);
@@ -440,7 +440,7 @@ public class AddNewObjectDialog extends Dialog {
 				textNamespaces.setVisible(true);
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
-				if(isOutputEditPart){
+				if (isOutputEditPart && lblInterrelatedElement != null) {
 					lblInterrelatedElement.setVisible(true);
 					lblRootInterrelatedElement.setVisible(true);
 					textInterrelatedCombo.setVisible(true);

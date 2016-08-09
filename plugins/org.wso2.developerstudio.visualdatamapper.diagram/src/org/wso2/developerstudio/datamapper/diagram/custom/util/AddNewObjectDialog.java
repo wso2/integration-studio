@@ -1018,33 +1018,35 @@ public class AddNewObjectDialog extends Dialog {
 		});
 
 		textSchemaValue.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
-		TreeNode node = (TreeNode) ((Node) selectedEP.getModel()).getElement();
-		
-		if(inputRootElement != null && isArrayElement(node)){
-			GridData dataPropertyConfigText = new GridData();
-			dataPropertyConfigText.grabExcessHorizontalSpace = true;
-			dataPropertyConfigText.horizontalAlignment = GridData.FILL;
-			List<String> arrayInputElements = getArrayElements(inputRootElement);
-			isElementInOutput = true;
-			lblInterrelatedElement = new Label(compositeType, SWT.NONE);
-			lblInterrelatedElement.setText(LABEL_INTERRELATED_ELEMENT);
-			
-			textInterrelatedCombo = new Combo(compositeType, SWT.DROP_DOWN | SWT.BORDER);
-			textInterrelatedCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
-			for (String element : arrayInputElements) {
-				textInterrelatedCombo.add(element);
+		if (((Node) selectedEP.getModel()).getElement() instanceof TreeNode) {
+			TreeNode node = (TreeNode) ((Node) selectedEP.getModel()).getElement();
+
+			if (inputRootElement != null && isArrayElement(node)) {
+				GridData dataPropertyConfigText = new GridData();
+				dataPropertyConfigText.grabExcessHorizontalSpace = true;
+				dataPropertyConfigText.horizontalAlignment = GridData.FILL;
+				List<String> arrayInputElements = getArrayElements(inputRootElement);
+				isElementInOutput = true;
+				lblInterrelatedElement = new Label(compositeType, SWT.NONE);
+				lblInterrelatedElement.setText(LABEL_INTERRELATED_ELEMENT);
+
+				textInterrelatedCombo = new Combo(compositeType, SWT.DROP_DOWN | SWT.BORDER);
+				textInterrelatedCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
+				for (String element : arrayInputElements) {
+					textInterrelatedCombo.add(element);
+				}
+
+				lblRootInterrelatedElement = new Label(compositeType, SWT.NONE);
+				lblRootInterrelatedElement.setText(LABEL_ROOT_INTERRELATED_ELEMENT);
+
+				textRootInterrelatedCombo = new Combo(compositeType, SWT.DROP_DOWN | SWT.BORDER);
+				textRootInterrelatedCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
+				for (String element : arrayInputElements) {
+					textRootInterrelatedCombo.add(element);
+				}
+			} else {
+				isElementInOutput = false;
 			}
-			
-			lblRootInterrelatedElement = new Label(compositeType, SWT.NONE);
-			lblRootInterrelatedElement.setText(LABEL_ROOT_INTERRELATED_ELEMENT);
-			
-			textRootInterrelatedCombo= new Combo(compositeType, SWT.DROP_DOWN | SWT.BORDER);
-			textRootInterrelatedCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
-			for (String element : arrayInputElements) {
-				textRootInterrelatedCombo.add(element);
-			}
-		} else{
-			isElementInOutput = false;
 		}
 		
 		checkBoxForIdentifiers = new Button(compositeType,SWT.CHECK);
@@ -1305,8 +1307,12 @@ public class AddNewObjectDialog extends Dialog {
 		setIdentifierValue(textIdentifierValue.getText());
 		setIdentifierURL(textIdentifierURL.getText());
 		setNullable(isNullable);
-		setInterrelatedElement(textInterrelatedCombo.getText());
-		setRootInterrelatedElement(textRootInterrelatedCombo.getText());
+		if (textInterrelatedCombo != null) {
+			setInterrelatedElement(textInterrelatedCombo.getText());
+		}
+		if (textRootInterrelatedCombo != null) {
+			setRootInterrelatedElement(textRootInterrelatedCombo.getText());
+		}
 		super.okPressed();
 	}
 

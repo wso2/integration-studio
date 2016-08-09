@@ -89,7 +89,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-mars-win32</artifactId>
+                                    <artifactId>eclipse-jee-mars-2-win32</artifactId>
                                     <version>4.5.2</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>

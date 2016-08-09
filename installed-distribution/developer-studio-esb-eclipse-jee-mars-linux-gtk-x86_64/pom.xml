@@ -89,7 +89,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-mars-linux-gtk-x86_64</artifactId>
+                                    <artifactId>eclipse-jee-mars-2-linux-gtk-x86_64</artifactId>
                                     <version>4.5.2</version>
                                     <type>tar.gz</type>
                                     <overWrite>true</overWrite>

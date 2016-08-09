@@ -261,17 +261,32 @@ public class MessageStoreTransformer {
 					// JMS Store
 					className = JMS_MS_FQN;
 					JMS jmsStore = (JMS) formPage.getStoreImpl(JMS_MS_FQN);
+					
+					if (!StringUtils.isBlank(jmsStore.jms_initCtxFactory.getText())) {
+						parameterMap.put(JAVA_NAMING_FACTORY_INITIAL, jmsStore.jms_initCtxFactory.getText());
+					}
+					if (!StringUtils.isBlank(jmsStore.jms_providerUrl.getText())) {
+						parameterMap.put(JAVA_NAMING_PROVIDER_URL, jmsStore.jms_providerUrl.getText());
+					}
 
-					parameterMap.put(JAVA_NAMING_FACTORY_INITIAL, jmsStore.jms_initCtxFactory.getText());
-					parameterMap.put(JAVA_NAMING_PROVIDER_URL, jmsStore.jms_providerUrl.getText());
-
-					parameterMap.put(STORE_JMS_DESTINATION, jmsStore.jms_jndiQueueName.getText());
-					parameterMap.put(STORE_JMS_CONNECTION_FACTORY, jmsStore.jms_connectionFactory.getText());
-					parameterMap.put(STORE_JMS_USERNAME, jmsStore.jms_username.getText());
-					parameterMap.put(STORE_JMS_PASSWORD, jmsStore.jms_password.getText());
-					parameterMap.put(STORE_JMS_CACHE_CONNECTION, jmsStore.jms_cacheConnection.getText());
-
-					parameterMap.put(STORE_JMS_JMS_SPEC_VERSION, jmsStore.jms_apiVersion.getText());
+					if (!StringUtils.isBlank(jmsStore.jms_jndiQueueName.getText())) {
+						parameterMap.put(STORE_JMS_DESTINATION, jmsStore.jms_jndiQueueName.getText());
+					}
+					if (!StringUtils.isBlank(jmsStore.jms_connectionFactory.getText())) {
+						parameterMap.put(STORE_JMS_CONNECTION_FACTORY, jmsStore.jms_connectionFactory.getText());
+					}
+					if (!StringUtils.isBlank(jmsStore.jms_username.getText())) {
+						parameterMap.put(STORE_JMS_USERNAME, jmsStore.jms_username.getText());
+					}
+					if (!StringUtils.isBlank(jmsStore.jms_password.getText())) {
+						parameterMap.put(STORE_JMS_PASSWORD, jmsStore.jms_password.getText());
+					}
+					if (!StringUtils.isBlank(jmsStore.jms_cacheConnection.getText())) {
+						parameterMap.put(STORE_JMS_CACHE_CONNECTION, jmsStore.jms_cacheConnection.getText());
+					}
+					if (!StringUtils.isBlank(jmsStore.jms_apiVersion.getText())) {
+						parameterMap.put(STORE_JMS_JMS_SPEC_VERSION, jmsStore.jms_apiVersion.getText());
+					}
 
 					break;
 				}
@@ -359,7 +374,9 @@ public class MessageStoreTransformer {
 				if (storeIndex == 1 || storeIndex == 2 || storeIndex == 3 || storeIndex == 4) {
 					parameterMap.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE,
 							formPage.guaranteedDeliveryEnable.getText().toLowerCase());
-					parameterMap.put(STORE_FAILOVER_MESSAGE_STORE_NAME, formPage.failoverMessageStore.getText());
+					if (!StringUtils.isBlank(formPage.failoverMessageStore.getText())) {
+						parameterMap.put(STORE_FAILOVER_MESSAGE_STORE_NAME, formPage.failoverMessageStore.getText());
+					}
 				}
 
 				messageStore.setName(formPage.storeName.getText());

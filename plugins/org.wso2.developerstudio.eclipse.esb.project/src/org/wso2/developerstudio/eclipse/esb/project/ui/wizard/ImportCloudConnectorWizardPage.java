@@ -71,6 +71,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.IProgressService;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
+import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorData;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorStore;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -265,64 +266,40 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 			progressService.runInUI(PlatformUI.getWorkbench().getProgressService(), new IRunnableWithProgress() {
 				public void run(IProgressMonitor monitor) {					
 					try {
-						String iconCacheDirPath = getSelectedProject().getWorkspace().getRoot().getLocation().toOSString()
-								+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CACHE;
+						String iconCacheDirPath = getSelectedProject().getWorkspace().getRoot().getLocation()
+								.toOSString() + File.separator + DIR_DOT_METADATA + File.separator + DIR_CACHE;
 						File iconCacheDir = new File(iconCacheDirPath);
 						if (!iconCacheDir.exists()) {
 							iconCacheDir.mkdir();
 						}
 						int page = 1;
-                        monitor.beginTask("Fetching list of connectors", 1000);
-                        monitor.subTask("Searching connectors in store : page " + page);
-                        List<Connector> tmpList = ConnectorStore.getConnectorInfo(getHttpClient(), txtConnectorStoreURL.getText(), page);
-						while (tmpList != null && !tmpList.isEmpty()) {
-                            connectorList.addAll(tmpList);
-                            monitor.worked(25);
-                            ++page;
-                            monitor.subTask("Searching connectors in store : page " + page);
-                            tmpList = ConnectorStore.getConnectorInfo(getHttpClient(), txtConnectorStoreURL.getText(), page);
+						monitor.beginTask("Fetching list of connectors", 1000);
+						monitor.subTask("Searching connectors in store : page " + page);
+						Object connectorInfo = ConnectorStore.getConnectorInfo(getHttpClient(),
+								txtConnectorStoreURL.getText(), page);
+						if (connectorInfo instanceof List<?>) {
+							List<Connector> tmpList = (List<Connector>) connectorInfo;
+							while (tmpList != null && !tmpList.isEmpty()) {
+								connectorList.addAll(tmpList);
+								monitor.worked(25);
+								++page;
+								monitor.subTask("Searching connectors in store : page " + page);
+								tmpList = (List<Connector>) ConnectorStore.getConnectorInfo(getHttpClient(),
+										txtConnectorStoreURL.getText(), page);
+							}
+							addConnectorsToTable(page, iconCacheDir, monitor);
+						} else if (connectorInfo instanceof ConnectorData) {
+							List<Connector> tmpList = ((ConnectorData) connectorInfo).getConnector();
+							connectorList.addAll(tmpList);
+							addConnectorsToTable(page, iconCacheDir, monitor);
 						}
-						int workUnit = (1000 - (25*page))/connectorList.size();
-						for (Connector connector : connectorList) {
-                            monitor.subTask("Fetching details of " + connector.getAttributes().getOverview_name()
-                                    + " connector.");
-                            String imageLocation = null;
-                            TableItem item = new TableItem(table, SWT.NONE);
-                            imageLocation = txtConnectorStoreURL.getText()
-                                    + connector.getAttributes().getImages_thumbnail();
-                            String[] segments = imageLocation.split("/");
-                            String imageFileName = segments[segments.length - 1];
-                            try {
-                                String imageFilePath = iconCacheDir + File.separator + imageFileName;
-                                File imageFile = new File(imageFilePath);
-                                if (!imageFile.exists()) {
-                                    // Download the thumbnail image if it is not there in the filesystem.
-                                    downloadThumbnailImage(imageLocation, imageFilePath);
-                                }
-                                Image image = new Image(Display.getDefault(), imageFilePath);
-                                Image scaled = new Image(Display.getDefault(), 55, 50);
-                                GC gc = new GC(scaled);
-                                gc.setAntialias(SWT.ON);
-                                gc.setInterpolation(SWT.HIGH);
-                                gc.drawImage(image, 0, 0, image.getBounds().width, image.getBounds().height, 0, 0,
-                                        55, 50);
-                                gc.dispose();
-                                image.dispose();
-                                item.setImage(scaled);
-                            } catch (IOException e) {
-                                log.error("Error while downloading " + imageFileName, e);
-                            }
-                            item.setText(new String[] { connector.getAttributes().getOverview_name(),
-                                    connector.getAttributes().getOverview_version() });
-                            item.setData(connector);
-                            monitor.worked(workUnit);
-                        }
-                        monitor.done();
+
 					} catch (KeyManagementException | NoSuchAlgorithmException | IOException e1) {
 						log.error("Error while listing connectors", e1);
 						IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e1.getMessage());
-						ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error while listing connectors", e1.getMessage(), editorStatus);
-                        monitor.done();
+						ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error while listing connectors",
+								e1.getMessage(), editorStatus);
+						monitor.done();
 					}
 				}
 			}, getSelectedProject().getWorkspace().getRoot());
@@ -331,6 +308,43 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		}
 	}
 	
+	protected void addConnectorsToTable(int page, File iconCacheDir, IProgressMonitor monitor) {
+		int workUnit = (1000 - (25 * page)) / connectorList.size();
+		for (Connector connector : connectorList) {
+			monitor.subTask("Fetching details of " + connector.getAttributes().getOverview_name() + " connector.");
+			String imageLocation = null;
+			TableItem item = new TableItem(table, SWT.NONE);
+			imageLocation = txtConnectorStoreURL.getText() + connector.getAttributes().getImages_thumbnail();
+			String[] segments = imageLocation.split("/");
+			String imageFileName = segments[segments.length - 1];
+			try {
+				String imageFilePath = iconCacheDir + File.separator + imageFileName;
+				File imageFile = new File(imageFilePath);
+				if (!imageFile.exists()) {
+					// Download the thumbnail image if it is not there in the
+					// filesystem.
+					downloadThumbnailImage(imageLocation, imageFilePath);
+				}
+				Image image = new Image(Display.getDefault(), imageFilePath);
+				Image scaled = new Image(Display.getDefault(), 55, 50);
+				GC gc = new GC(scaled);
+				gc.setAntialias(SWT.ON);
+				gc.setInterpolation(SWT.HIGH);
+				gc.drawImage(image, 0, 0, image.getBounds().width, image.getBounds().height, 0, 0, 55, 50);
+				gc.dispose();
+				image.dispose();
+				item.setImage(scaled);
+			} catch (IOException e) {
+				log.error("Error while downloading " + imageFileName, e);
+			}
+			item.setText(new String[] { connector.getAttributes().getOverview_name(),
+					connector.getAttributes().getOverview_version() });
+			item.setData(connector);
+			monitor.worked(workUnit);
+		}
+		monitor.done();
+	}
+
 	/*
 	 * Download the thumbnail image from the provided URL.
 	 */

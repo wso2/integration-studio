@@ -558,7 +558,7 @@ function generateTaskDiv(taskNode, caller) {
                 $("#" + taskDivName + " #inputmappingTable").append(mapping);
                 $('#' + taskDivName + ' #taskInputMappingType' + mappingNo).val(inputNodes[i].getAttribute(TYPE_ATTRIBUTE));
                 //bind suggestion event
-                inputTags.push("htd:getInput(\"" + taskName + "Request\"):/tns:" + inputNodes[i].getAttribute(ID_ATTRIBUTE));
+                inputTags.push("htd:getInput(\"" + taskName + "Request\")/tns:" + inputNodes[i].getAttribute(ID_ATTRIBUTE));
                 // bind delete event
                 $('#' + taskDivName + ' .inputDeleteButton')
                     .off()

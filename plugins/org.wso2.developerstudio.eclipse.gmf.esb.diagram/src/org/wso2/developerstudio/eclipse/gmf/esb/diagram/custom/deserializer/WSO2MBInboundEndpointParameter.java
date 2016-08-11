@@ -23,6 +23,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY;
@@ -54,6 +55,8 @@ public enum WSO2MBInboundEndpointParameter {
 	    COORDINATION_TYPE(InboundEndpointConstants.COORDINATION, INBOUND_ENDPOINT__COORDINATION, false),
 	    JMS_JAVA_NAMING_FACTORY_INITIAL_TYPE(InboundEndpointConstants.JMS_JAVA_NAMING_FACTORY_INITIAL, 
 	            INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL,true),
+	    JMS_CONNECTION_FACTORY_JNDI_NAME_TYPE(InboundEndpointConstants.JMS_CONNECTION_FACTORY_JNDI_NAME,
+	            INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME, true),
 	    JMS_DESTINATION_TYPE(InboundEndpointConstants.JMS_DESTINATION, INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION, true),
 	    JMS_JMS_SPEC_VERSION_TYPE(InboundEndpointConstants.JMS_JMS_SPEC_VERSION, 
 	            INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION, true),

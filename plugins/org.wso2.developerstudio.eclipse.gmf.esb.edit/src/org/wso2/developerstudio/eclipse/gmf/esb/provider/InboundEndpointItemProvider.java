@@ -292,6 +292,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addCoordinationPropertyDescriptor(object);			
 			addJavaNamingFactoryInitialPropertyDescriptor(object);
 			addWso2mbConnectionUrlPropertyDescriptor(object);
+			addTransportJMSConnectionFactoryJNDINamePropertyDescriptor(object);
 			addTransportJMSConnectionFactoryTypePropertyDescriptor(object);
 			addTransportJMSDestinationPropertyDescriptor(object);
 			addTransportJMSSessionTransactedPropertyDescriptor(object);

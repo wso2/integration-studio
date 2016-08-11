@@ -222,8 +222,11 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			node = new EObjectContainmentWithInverseEList<TreeNode>(TreeNode.class, this, DataMapperPackage.TREE_NODE__NODE, DataMapperPackage.TREE_NODE__FIELD_PARENT){
 				@Override
 				public boolean remove(Object object) {
-					//Fixing DEVTOOLESB-649
+					// Fixing DEVTOOLESB-649, DEVTOOLESB-724
 					if (object instanceof TreeNodeImpl && ((TreeNodeImpl) object).getInNode() != null) {
+						for (TreeNode childNode : ((TreeNodeImpl) object).getNode()) {
+							childNode.getNode().remove(childNode);
+						}
 						((TreeNodeImpl) object).getInNode().getIncomingLink().clear();
 					}
 					return super.remove(object);

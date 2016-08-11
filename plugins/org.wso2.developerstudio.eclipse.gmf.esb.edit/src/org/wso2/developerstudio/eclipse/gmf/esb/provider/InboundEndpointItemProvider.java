@@ -136,6 +136,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSSharedSubscriptionPropertyDescriptor(object);
 			addTransportJMSPinnedServersPropertyDescriptor(object);
 			addTransportJMSConcurrentConsumersPropertyDescriptor(object);
+			addTransportJMSRetryDurationPropertyDescriptor(object);
 			break;
 		case CUSTOM:
 			addClassPropertyDescriptor(object);
@@ -312,6 +313,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSSubscriptionNamePropertyDescriptor(object);
 			addTransportJMSPinnedServersPropertyDescriptor(object);	
 			addTransportJMSConcurrentConsumersPropertyDescriptor(object);
+			addTransportJMSRetryDurationPropertyDescriptor(object);
 		default:
 			break;
 		}
@@ -3212,6 +3214,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Transport JMS Retry Duration feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportJMSRetryDurationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSRetryDuration_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSRetryDuration_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Transport VFS Move Timestamp Format feature.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated NOT
@@ -3887,6 +3911,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:

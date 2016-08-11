@@ -35,6 +35,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE;
@@ -91,7 +92,8 @@ public enum WSO2MBInboundEndpointParameter {
 	    WSO2_MB_CONNECTION_URL(InboundEndpointConstants.WSO2_MB_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true),
 	    WSO2_MB__QUEUE_CONNECTION_URL(InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true),
 	    WSO2_MB_TOPIC_CONNECTION_URL(InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,true),
-	    JMS_CONCURRENT_CONSUMERS(InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS, INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS, true);
+	    JMS_CONCURRENT_CONSUMERS(InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS, INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS, true),
+	    JMS_RETRY_DURATION(InboundEndpointConstants.JMS_RETRY_DURATION, INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION, true);
 
     private final String name;
     private final EAttribute eAttributeValue;

@@ -1300,6 +1300,7 @@ public class AddNewObjectDialog extends Dialog {
 		setOkValue(true);
 		setTitleValue(textTitle.getText());
 		setSchemaType(comboSchemaType.getText());
+		setID(textID.getText());
 		setSchemaValue(textSchemaValue.getText());
 		setNamespaces(textNamespaces.getText());
 		setValue(comboValue.getText());

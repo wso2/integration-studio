@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
@@ -70,6 +71,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	private static final String JSON_SCHEMA_NULLABLE = "nullable";
 	private static final String TRUE = "true";
 	private static final String FALSE = "false";
+	private static final String OBJECT = "object";
 	
 
 	public AddNewFieldAction(IWorkbenchPart workbenchPart) {
@@ -155,6 +157,20 @@ public class AddNewFieldAction extends AbstractActionHandler {
 						DataMapperPackage.Literals.TREE_NODE__NODE, treeNodeNew, -1);
 				if (addCmd.canExecute()) {
 					((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(addCmd);
+				}
+
+				// Fixing DEVTOOLESB-673
+				// When we add this field(ie: this treeNode), If the parent is
+				// an array, we need to set parent array's "items.type" to
+				// "object".
+				for (PropertyKeyValuePair keyValue : selectedNode.getProperties()) {
+					if (JSON_SCHEMA_ARRAY_ITEMS_TYPE.equals(keyValue.getKey())) {
+						SetCommand setCmd = new SetCommand(((GraphicalEditPart) selectedEP).getEditingDomain(),
+								keyValue, DataMapperPackage.Literals.PROPERTY_KEY_VALUE_PAIR__VALUE, OBJECT);
+						if (setCmd.canExecute()) {
+							((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack().execute(setCmd);
+						}
+					}
 				}
 
 				// FIXME force refresh root

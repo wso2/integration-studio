@@ -430,56 +430,53 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 				registryResourcePathData.getRegistryResourcePath());
 	}
 
-	protected void loginToAPIMRegistry(Composite parent) throws InvalidRegistryURLException, UnknownRegistryException, MalformedURLException, URISyntaxException {
+	protected void loginToAPIMRegistry(Composite parent)
+			throws InvalidRegistryURLException, UnknownRegistryException, MalformedURLException, URISyntaxException {
 		exceptionHandler = new ExceptionHandler();
 
-		
-				Display.getDefault().syncExec(new Runnable() {
-					@SuppressWarnings({})
-					@Override
-					public void run() {
-						RegistryInfoDialog dialog = null;
-						dialog = new RegistryInfoDialog(parent.getShell(), regUrlNode1, getApimRegPath());
-						dialog.setBlockOnOpen(true);
-						dialog.create();
-						dialog.getShell().setSize(LOGIN_SHELL_WIDTH, LOGIN_SHELL_HEIGHT);
-						int status = dialog.open();
-						if (status == Window.OK) {
-							URI pathUri = null;
-							try {
-								pathUri = new URI(dialog.getServerUrl());
-								serverURL = pathUri.toURL();
-								uname = dialog.getUserName();
-								pwd = dialog.getPasswd();
-								apimRegpath = dialog.getPath();
-								verifyRegistryPath(dialog);
-								cloneRegistryModel();
-							} catch (CloneFailedException e) {
-								exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-										"Registry cloning process has failed due to " + e.getMessage());
-								log.error("Registry cloning process has failed due to " + e.getMessage(), e);
-							} catch (InvalidRegistryURLException e) {
-								exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-										"Invalid registry URl exception due to " + e.getMessage());
-								log.error("Invalid registry URl exception due to " + e.getMessage(), e);
-							} catch (UnknownRegistryException e) {
-								exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-										"Unknown registry exception  due to " + e.getMessage());
-								log.error("Unknown registry exception due to " + e.getMessage(), e);
-							} catch (URISyntaxException e) {
-								exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-										"URI syntax exception due to " + e.getMessage());
-								log.error("URI syntax exception due to " + e.getMessage(), e);
-							} catch (MalformedURLException e) {
-								exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-										"Malformed URL exception due to " + e.getMessage());
-								log.error("Malformed URL exception due to " + e.getMessage(), e);
-							}
-
-						}
+		Display.getDefault().syncExec(new Runnable() {
+			@SuppressWarnings({ }) @Override public void run() {
+				RegistryInfoDialog dialog = null;
+				dialog = new RegistryInfoDialog(parent.getShell(), regUrlNode1, getApimRegPath());
+				dialog.setBlockOnOpen(true);
+				dialog.create();
+				dialog.getShell().setSize(LOGIN_SHELL_WIDTH, LOGIN_SHELL_HEIGHT);
+				int status = dialog.open();
+				if (status == Window.OK) {
+					URI pathUri = null;
+					try {
+						pathUri = new URI(dialog.getServerUrl());
+						serverURL = pathUri.toURL();
+						uname = dialog.getUserName();
+						pwd = dialog.getPasswd();
+						apimRegpath = dialog.getPath();
+						verifyRegistryPath(dialog);
+						cloneRegistryModel();
+					} catch (CloneFailedException e) {
+						exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+								"Registry cloning process has failed due to " + e.getMessage());
+						log.error("Registry cloning process has failed due to " + e.getMessage(), e);
+					} catch (InvalidRegistryURLException e) {
+						exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+								"Invalid registry URl exception due to " + e.getMessage());
+						log.error("Invalid registry URl exception due to " + e.getMessage(), e);
+					} catch (UnknownRegistryException e) {
+						exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+								"Unknown registry exception  due to " + e.getMessage());
+						log.error("Unknown registry exception due to " + e.getMessage(), e);
+					} catch (URISyntaxException e) {
+						exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+								"URI syntax exception due to " + e.getMessage());
+						log.error("URI syntax exception due to " + e.getMessage(), e);
+					} catch (MalformedURLException e) {
+						exceptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+								"Malformed URL exception due to " + e.getMessage());
+						log.error("Malformed URL exception due to " + e.getMessage(), e);
 					}
-				});	
-					
+
+				}
+			}
+		});
 
 	}
 

@@ -1086,6 +1086,11 @@ function bindToggleEvent() {
 function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
     taskName = taskNode.getAttribute(NAME_TAGNAME);
     taskDivName = taskName + "wrapper";
+    if(taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
+        .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName).length != 0 && $('#' + taskDivName + " input[name = " + peopleAssignmentName + "" + taskDivName + "]:checked").val() == "na"){
+        taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].removeChild(taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
+        .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]);
+    }
     if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
         .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName).length != 0 && taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
         .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]

@@ -86,7 +86,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
     @Override
     public boolean performFinish() {
         final String containerName = page.getContainerName();
-        final String fileName = page.getFileName() + ".ht";
+        final String fileName = page.getFileName() + "." + HumantaskEditorConstants.HT_EXTENSION;
         final String taskName = page.getTaskName();
         final String tnsName = page.getTNSName();
         IRunnableWithProgress op = new IRunnableWithProgress() {
@@ -142,7 +142,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         for (IResource member : memberList) {
             IFile memberFile = (IFile) member;
             if (memberFile != null) {
-                if (memberFile.getFileExtension().equals("ht")) {
+                if (memberFile.getFileExtension().equals(HumantaskEditorConstants.HT_EXTENSION)) {
                     humanTaskWizardUtil.throwCoreException("An artifact must contain only one human task file", null);
                 }
             }

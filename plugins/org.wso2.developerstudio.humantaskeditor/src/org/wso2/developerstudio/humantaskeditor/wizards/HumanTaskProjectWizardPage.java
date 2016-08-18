@@ -67,7 +67,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
         layout.numColumns = 2;
         layout.verticalSpacing = 9;
         Label label = new Label(container, SWT.NULL);
-        label.setText("&Project Name :");
+        label.setText(HumantaskEditorConstants.WIZARD_PROJECT_NAME_LABEL);
 
         containerText = new Text(container, SWT.BORDER | SWT.SINGLE);
         GridData gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -80,7 +80,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
         });
 
         label = new Label(container, SWT.NULL);
-        label.setText("&File Name :");
+        label.setText(HumantaskEditorConstants.WIZARD_FILE_NAME_LABEL);
 
         fileText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -93,7 +93,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
         });
 
         label = new Label(container, SWT.NULL);
-        label.setText("&Task Name :");
+        label.setText(HumantaskEditorConstants.WIZARD_TASK_NAME_LABEL);
 
         taskText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -106,7 +106,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
         });
 
         label = new Label(container, SWT.NULL);
-        label.setText("&Target Namespace :");
+        label.setText(HumantaskEditorConstants.WIZARD_TARGET_NAMESPACE_LABEL);
 
         tnsText = new Text(container, SWT.BORDER | SWT.SINGLE);
         gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -155,19 +155,6 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
             return;
         }
-        /*
-         * if (container == null
-         * || (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
-         * updateStatus("File container must exist");
-         * return;
-         * }
-         */
-        /*
-         * if (!container.isAccessible()) {
-         * updateStatus("Project must be writable");
-         * return;
-         * }
-         */
         if (taskName.trim().isEmpty()) {
             updateStatus(HumantaskEditorConstants.TASK_NAME_CANNOT_BE_EMPTY_MESSAGE);
             return;
@@ -188,7 +175,7 @@ public class HumanTaskProjectWizardPage extends WizardPage {
             updateStatus(HumantaskEditorConstants.FILE_NAME_MUST_BE_VALID_MESSAGE);
             return;
         }
-        if (!fileName.matches("^[a-zA-Z0-9]*$")) {
+        if (!fileName.matches(HumantaskEditorConstants.FILE_NAME_REGEX)) {
             updateStatus(HumantaskEditorConstants.ENTER_A_VALID_FILENAME);
             return;
         }

@@ -20,7 +20,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
@@ -65,10 +64,10 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                 File file = resource.getLocation().toFile();
                 StringBuffer sb = new StringBuffer();
                 if (!file.exists()) {
-                    return "No File";
+                    return HumantaskEditorConstants.FILE_NOT_FOUND_MESSAGE;
                 } else {
                     try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),
-                            "UTF8"))) {
+                            HumantaskEditorConstants.UTF8_STRING))) {
                         String sCurrentLine;
 
                         while ((sCurrentLine = reader.readLine()) != null) {
@@ -104,9 +103,9 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                 File file = resource.getLocation().toFile();
                 File cbFile = cbResource.getLocation().toFile();
                 if (!file.exists()) {
-                    return "File not found";
+                    return HumantaskEditorConstants.FILE_NOT_FOUND_MESSAGE;
                 } else if (!cbFile.exists()) {
-                    return "File not found";
+                    return HumantaskEditorConstants.FILE_NOT_FOUND_MESSAGE;
                 } else {
                     try {
                         boolean deleted = file.delete();
@@ -119,7 +118,7 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                     } catch (SecurityException e) {
                         logger.log(Level.FINE, HumantaskEditorConstants.ERROR_DELETING_CORRESPONDING_WSDL_FILE, e);
                     }
-                    return "Deleted Successfully";
+                    return HumantaskEditorConstants.DELETED_SUCCESSFULLY_MESSAGE;
                 }
             } else {
                 return HumantaskEditorConstants.UNDEFINED_LITERAL;

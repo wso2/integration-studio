@@ -40,74 +40,74 @@ public class HumanTaskWizardUtil {
 
     /**
      * Will initialize file contents with a sample text.
-     *
+     * @return InputStream 
+     * @param  taskName This gives the taskName of the changed task
+     * @param  tnsName This gives the target namespace of the changed element
      * @throws IOException
      * @throws CoreException
      */
-
     public InputStream openContentStream(String taskName, String tnsName) throws IOException, CoreException {
         String contents = changeXMLName(readTemplateHT(), taskName, tnsName);
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
     /**
      * Will initialize file contents with a dummy wsdl.
-     *
+     * @return InputStream which contains WSDL contents
      * @throws IOException
      */
-
     public InputStream openWSDLStream() throws IOException {
         String contents = readTemplateWSDL();
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
     /**
      * Will initialize file contents with a dummy org schema.
-     *
+     * @return InputStream which contains organization schema's content
      * @throws IOException
      */
-
     public InputStream openOrgSchemaStream() throws IOException {
         String contents = readTemplateOrgSchema();
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
     /**
-     * Will initialize file contents with a dummy pom schema.
-     *
+     * This will open file contents of Template pom file
+     * @param containerName 
+     * @return InputStream which contains the pom contents
      * @throws IOException
      * @throws CoreException
      */
-
     public InputStream openPomStream(String containerName) throws IOException, CoreException {
         String contents = changePOMName(containerName, readTemplatePomSchema());
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
     /**
-     * Will initialize file contents with a dummy htconfig.
-     *
+     * This will open file contents of template HT Config file
+     * @return InputStream which contains the HT Config contents
      * @throws IOException
      */
-
     public InputStream openHTConfigStream() throws IOException {
         String contents = readTemplateHtConfig();
-        return new ByteArrayInputStream(contents.getBytes("UTF-8"));
+        return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
+
 
     /**
      * Read dummy ht file which is needed to initialize a new ht file
-     *
+     * @return A string of Template HumanTask File Contents
      * @throws IOException
      */
     public String readTemplateHT() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_HT_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -118,18 +118,19 @@ public class HumanTaskWizardUtil {
     }
 
     /**
-     * Read dummy ht file which is needed to initialize a new ht file
-     *
+     * Read template WSDL file which is needed to initialize a new WSDL file
+     * @return A string of Template WSDL File Contents
      * @throws IOException
      */
     public String readTemplateWSDL() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_WSDL_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -140,18 +141,19 @@ public class HumanTaskWizardUtil {
     }
 
     /**
-     * Read dummy org schema file which is needed to initialize a new ht file
-     *
+     * Read template Organization Schema file which is needed to initialize a new OrganizationSchema file
+     * @return A string of Template Org Schema File Contents
      * @throws IOException
      */
     public String readTemplateOrgSchema() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_ORG_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -162,18 +164,19 @@ public class HumanTaskWizardUtil {
     }
 
     /**
-     * Read dummy pom file which is needed to initialize a new ht file
-     *
+     * Read template POM file which is needed to initialize a new POM file for the new project
+     * @return A string of Template POM File Contents
      * @throws IOException
      */
     public String readTemplatePomSchema() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_POM_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -183,14 +186,20 @@ public class HumanTaskWizardUtil {
         return sb.toString();
     }
 
+    /**
+     * Read template HTConfig file which is needed to initialize a new HtConfig.xml file
+     * @return A string of Template HTConfig File Contents
+     * @throws IOException
+     */
     public String readTemplateHtConfig() throws IOException {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(HumantaskEditorConstants.DUMMY_HTCONFIG_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
+                        HumantaskEditorConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                sb.append(inputLine).append("\n");
+                sb.append(inputLine).append(HumantaskEditorConstants.NEWLINE_CHAR);
             }
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
@@ -200,6 +209,14 @@ public class HumanTaskWizardUtil {
         return sb.toString();
     }
 
+    /**
+     * This method changes the relevant XML Namespaces and tags accordingly
+     * @param content content of the xml file
+     * @param taskName currently Processing Task Name
+     * @param tnsName Target Namespace
+     * @return String which contains the modified XML file content
+     * @throws CoreException
+     */
     public String changeXMLName(String content, String taskName, String tnsName) throws CoreException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document dom;
@@ -223,7 +240,7 @@ public class HumanTaskWizardUtil {
             Transformer transformer = transfactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.METHOD, HumantaskEditorConstants.XML_OUTPUT_METHOD);
             transformer.setOutputProperty(OutputKeys.INDENT, HumantaskEditorConstants.XML_INDENT_YES);
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(2));
+            transformer.setOutputProperty(HumantaskEditorConstants.XML_OUTPUT_PROPERTY_NAME, Integer.toString(2));
 
             StringWriter stringWriter = new StringWriter();
             StreamResult result = new StreamResult(stringWriter);
@@ -243,6 +260,13 @@ public class HumanTaskWizardUtil {
         return xmlString;
     }
 
+    /**
+     * This method changes namespaces and relevant tags of the pom file accrodingly
+     * @param containerName Project name
+     * @param content Content of the pom file
+     * @return String of modified pom file content
+     * @throws CoreException
+     */
     public String changePOMName(String containerName, String content) throws CoreException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document dom;
@@ -264,7 +288,7 @@ public class HumanTaskWizardUtil {
             Transformer transformer = transfactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.METHOD, HumantaskEditorConstants.XML_OUTPUT_METHOD);
             transformer.setOutputProperty(OutputKeys.INDENT, HumantaskEditorConstants.XML_INDENT_YES);
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(2));
+            transformer.setOutputProperty(HumantaskEditorConstants.XML_OUTPUT_PROPERTY_NAME, Integer.toString(2));
 
             StringWriter stringWriter = new StringWriter();
             StreamResult result = new StreamResult(stringWriter);
@@ -284,11 +308,22 @@ public class HumanTaskWizardUtil {
         return xmlString;
     }
 
+    /**
+     * This method creates a new coreexception and throws it
+     * @param message The exception message that should be printed
+     * @param exception The nested exception that should be included in the throwable
+     * @throws CoreException
+     */
     public void throwCoreException(String message, Throwable exception) throws CoreException {
         IStatus status = new Status(IStatus.ERROR, HumantaskEditorConstants.PLUGIN_ID, IStatus.OK, message, exception);
         throw new CoreException(status);
     }
 
+    /**
+     * Create a new project nature for the new project 
+     * @param project The IProject instance of the new project
+     * @throws CoreException
+     */
     public static void addNature(IProject project) throws CoreException {
         if (!project.hasNature(HumanTaskNature.NATURE_ID)) {
             IProjectDescription description = project.getDescription();

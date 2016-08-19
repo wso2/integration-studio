@@ -82,64 +82,44 @@ public class RegistryMetadataFileDeleteChange extends  TextFileChange {
 				for (RegistryElement registryElement : allRegistryItems) {
 					if (registryElement instanceof RegistryItem) {
 						String file = ((RegistryItem) registryElement).getFile();
-						String fileName=file;
-						if (file
-									.lastIndexOf("/") != -1) {
-							fileName = file.substring(file
-									.lastIndexOf("/") + 1);
-						}
 
-						if(fileName.equalsIgnoreCase(getFileDeletedFileName())){
-							artifactName=registryArtifact.getName();
-							hasFound=true;
-							if(allRegistryItems.size()>1){
-								hasMultiple=true;
+						if (file.equalsIgnoreCase(originalResource.getProjectRelativePath().toPortableString())) {
+							artifactName = registryArtifact.getName();
+							hasFound = true;
+							if (allRegistryItems.size() > 1) {
+								hasMultiple = true;
 							}
-							artifactType=RegistryArtifactType.Resource;
+							artifactType = RegistryArtifactType.Resource;
 							break;
 						}
-					}else if(registryElement instanceof RegistryCollection){
+					} else if (registryElement instanceof RegistryCollection) {
 						String directory = ((RegistryCollection) registryElement).getDirectory();
-						String directoryName=directory;
-						if (directory.lastIndexOf("/") != -1) {
-							directoryName = directory
-									.substring(directory
-											.lastIndexOf("/") + 1);
-						}
-						if(directoryName.equalsIgnoreCase(getFileDeletedFileName())){
-							artifactName=registryArtifact.getName();
-							if(allRegistryItems.size()>1){
-								hasMultiple=true;
+						
+						if (directory.equalsIgnoreCase(originalResource.getProjectRelativePath().toPortableString())) {
+							artifactName = registryArtifact.getName();
+							if (allRegistryItems.size() > 1) {
+								hasMultiple = true;
 							}
-							artifactType=RegistryArtifactType.Collection;
-							hasFound=true;
+							artifactType = RegistryArtifactType.Collection;
+							hasFound = true;
 							break;
 						}
-					}else{
+					} else {
 						String file = ((RegistryDump) registryElement).getFile();
-						String fileName=file;
-						if (file
-									.lastIndexOf("/") != -1) {
-							fileName = file.substring(file
-									.lastIndexOf("/") + 1);
-						}
-						if (fileName.lastIndexOf(".")!= -1) {
-							fileName = fileName.substring(0,
-									fileName.lastIndexOf("."));
-						}
-						if(fileName.equalsIgnoreCase(getFileDeletedFileName())){
-							artifactName=registryArtifact.getName();
-							if(allRegistryItems.size()>1){
-								hasMultiple=true;
+						
+						if (file.equalsIgnoreCase(originalResource.getProjectRelativePath().toPortableString())) {
+							artifactName = registryArtifact.getName();
+							if (allRegistryItems.size() > 1) {
+								hasMultiple = true;
 							}
-							artifactType=RegistryArtifactType.Resource;
-							hasFound=true;
+							artifactType = RegistryArtifactType.Resource;
+							hasFound = true;
 							break;
 						}
 					}
 				}
-				
-				if(hasFound){
+
+				if (hasFound) {
 					break;
 				}
 			}

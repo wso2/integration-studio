@@ -433,23 +433,30 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	protected void loginToAPIMRegistry(Composite parent)
 			throws InvalidRegistryURLException, UnknownRegistryException, MalformedURLException, URISyntaxException {
 		exceptionHandler = new ExceptionHandler();
-		
-				RegistryInfoDialog dialog = null;
-				dialog = new RegistryInfoDialog(parent.getShell(), regUrlNode1, getApimRegPath());
-				dialog.setBlockOnOpen(true);
-				dialog.create();
-				dialog.getShell().setSize(LOGIN_SHELL_WIDTH, LOGIN_SHELL_HEIGHT);
-				int status = dialog.open();
-				if (status == Window.OK) {
-					URI pathUri = null;
-						pathUri = new URI(dialog.getServerUrl());
-						serverURL = pathUri.toURL();
-						uname = dialog.getUserName();
-						pwd = dialog.getPasswd();
-						apimRegpath = dialog.getPath();
-						verifyRegistryPath(dialog);
-						cloneRegistryModel();
+
+		RegistryInfoDialog dialog = null;
+		dialog = new RegistryInfoDialog(parent.getShell(), regUrlNode1, getApimRegPath());
+		dialog.setBlockOnOpen(true);
+		dialog.create();
+		dialog.getShell().setSize(LOGIN_SHELL_WIDTH, LOGIN_SHELL_HEIGHT);
+		int status = dialog.open();
+		if (status == Window.OK) {
+			URI pathUri = null;
+			pathUri = new URI(dialog.getServerUrl());
+			serverURL = pathUri.toURL();
+			uname = dialog.getUserName();
+			pwd = dialog.getPasswd();
+			apimRegpath = dialog.getPath();
+			verifyRegistryPath(dialog);
+			Display.getDefault().asyncExec(new Runnable() {
+				@SuppressWarnings({})
+				@Override
+				public void run() {
+					cloneRegistryModel();
 				}
+			});
+
+		}
 	}
 
 	private void cloneRegistryModel() throws CloneFailedException {

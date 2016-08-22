@@ -138,7 +138,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-ESB-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/esb-tools/releases/5.0.0/rc1/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/esb-tools/releases/5.0.0/</url>
             <layout>p2</layout>
         </repository>
 

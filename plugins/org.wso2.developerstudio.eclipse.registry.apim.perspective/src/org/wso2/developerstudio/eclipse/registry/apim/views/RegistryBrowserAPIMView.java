@@ -56,6 +56,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.jface.action.Action;
@@ -460,12 +461,13 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 	}
 
 	private void cloneRegistryModel() throws CloneFailedException {
-
+				
 	 Job job = new Job("Cloning Job") {
 		
 		@Override
 		protected IStatus run(IProgressMonitor monitor) {
 			try {
+				monitor.beginTask("Opening the editor", 100);
 				regUrlNode1 = new RegistryURLNode();
 				regUrlNode1.addRegistry(
 						RegistryUrlStore.getInstance().addRegistryUrl(serverURL, uname, apimRegpath, isApiManagerview()), pwd);
@@ -493,8 +495,10 @@ public class RegistryBrowserAPIMView extends ViewPart implements Observer {
 					public void run() {
 						treeViewer.setInput(localUrlNode);
 						treeViewer.expandToLevel(EXPAND_LEVEL);
+						
 					}
 				});	
+				monitor.done();
 				
 			} catch (CloneNotSupportedException e) {
 				 throw new CloneFailedException(e);

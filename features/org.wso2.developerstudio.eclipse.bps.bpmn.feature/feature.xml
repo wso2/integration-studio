@@ -64,6 +64,34 @@
    </requires>
 
    <plugin
+         id="org.eclipse.emf.validation"
+         download-size="0"
+         install-size="0"
+         version="1.8.0.201505312255"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.query"
+         download-size="0"
+         install-size="0"
+         version="1.7.0.201505312221"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.transaction"
+         download-size="0"
+         install-size="0"
+         version="1.9.0.201506010221"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.workspace"
+         download-size="0"
+         install-size="0"
+         version="1.5.1.201506010221"
+         unpack="false"/>
+
+   <plugin
          id="org.activiti.designer.libs"
          download-size="7852"
          install-size="8903"

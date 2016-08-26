@@ -3,7 +3,7 @@
 WSO2 APIM tooling provides capabilities of a complete eclipse-based development environment for the APIM custome sequence design. You can develop custome sequences, proxies and artifacts as well as manage their links and dependencies through a simplified graphical editor via WSO2 APIM tooling.
 
 ### Version
-2.0.0 - RC1
+2.0.0 - RC2
 
 ### How to Build
 This requires maven installed in your system. Run these commands to clone the repo and build it.

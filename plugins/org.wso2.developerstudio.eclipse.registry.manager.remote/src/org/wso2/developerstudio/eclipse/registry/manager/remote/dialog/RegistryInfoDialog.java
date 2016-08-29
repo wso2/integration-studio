@@ -137,8 +137,7 @@ public class RegistryInfoDialog extends Dialog {
 				} else {
 					urlText.setText(DEFAULT_CARBON_SERVER_URL);
 					userNameLabel.setText("User Name : ");
-					userNameText.setText("admin");
-					
+					userNameText.setText(DEFAULT_USERNAME);					
 				}
 
 			}

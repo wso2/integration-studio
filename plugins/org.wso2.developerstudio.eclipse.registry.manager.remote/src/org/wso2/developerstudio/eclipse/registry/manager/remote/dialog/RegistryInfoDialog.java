@@ -130,10 +130,14 @@ public class RegistryInfoDialog extends Dialog {
 				urlText.setEnabled(!isCloud.getSelection());
 				if (isCloud.getSelection()) {
 					urlText.setText(JagApiProperties.getDomain());
-					userNameLabel.setText("E mail : ");
+					userNameLabel.setSize(150, userNameLabel.getSize().y);
+					userNameLabel.setText("Cloud User Name: ");
+					userNameText.setText("");
+					userNameText.setMessage("Ex: john.gmail.com@org");
 				} else {
 					urlText.setText(DEFAULT_CARBON_SERVER_URL);
 					userNameLabel.setText("User Name : ");
+					userNameText.setText(DEFAULT_USERNAME);					
 				}
 
 			}

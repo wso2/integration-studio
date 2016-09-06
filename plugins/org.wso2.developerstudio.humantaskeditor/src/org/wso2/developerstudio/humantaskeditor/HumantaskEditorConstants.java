@@ -217,5 +217,9 @@ public class HumantaskEditorConstants {
     public static final String GROUP_ID_TEXT = "groupId";
 
     public static final String ERROR_READING_FROM_PROJECT_MESSAGE = "Error reading from project";
+    
+    public static final String HUMAN_TASK_EDITOR_NAME = "Human Task Editor";
+    
+    public static final String INDEX_HTML_FILE_NAME = "index.html";
 
 }

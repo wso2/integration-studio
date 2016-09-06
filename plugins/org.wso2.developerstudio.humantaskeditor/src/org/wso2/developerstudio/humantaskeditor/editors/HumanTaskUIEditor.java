@@ -29,6 +29,7 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.webui.core.editor.AbstractWebBasedEditor;
 import org.wso2.developerstudio.eclipse.webui.core.exception.WebUIException;
 import org.wso2.developerstudio.humantaskeditor.Activator;
+import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskUIEditor extends AbstractWebBasedEditor {
 
@@ -44,12 +45,12 @@ public class HumanTaskUIEditor extends AbstractWebBasedEditor {
 
     @Override
     public String getEditorName() {
-        return "Human Task Editor";
+        return HumantaskEditorConstants.HUMAN_TASK_EDITOR_NAME;
     }
 
     @Override
     public String getEditorTitleToolTip() {
-        return "Human Task Editor";
+        return HumantaskEditorConstants.HUMAN_TASK_EDITOR_NAME;
     }
 
     @Override
@@ -62,7 +63,7 @@ public class HumanTaskUIEditor extends AbstractWebBasedEditor {
             URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
             URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
             resolvedWebAppFolder = new File(resolvedFolderURI);
-            resolvedWebAppIndex = new File(resolvedWebAppFolder, "index.html");
+            resolvedWebAppIndex = new File(resolvedWebAppFolder, HumantaskEditorConstants.INDEX_HTML_FILE_NAME);
             return resolvedWebAppIndex.getAbsolutePath();
         } catch (IOException | URISyntaxException ex) {
             throw new WebUIException("Error while resolving the file path of web app.", ex);

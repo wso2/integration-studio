@@ -74,7 +74,6 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     /**
      * Adding the page to the wizard.
      */
-
     @Override
     public void addPages() {
         page = new HumanTaskProjectWizardPage(selection);
@@ -88,7 +87,7 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     @Override
     public boolean performFinish() {
         final String containerName = page.getContainerName();
-        final String fileName = page.getFileName() + ".ht";
+        final String fileName = page.getFileName() + "." + HumantaskEditorConstants.HT_EXTENSION;
         final String taskName = page.getTaskName();
         final String tnsName = page.getTNSName();
 
@@ -121,7 +120,6 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
      * or just replace its contents, and open the editor on the newly created
      * file.
      */
-
     private void doFinish(String containerName, String fileName, String taskName, String tnsName,
             IProgressMonitor monitor) throws CoreException {
         monitor.beginTask("Creating " + fileName, 2);
@@ -215,7 +213,6 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
                     ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                             HumantaskEditorConstants.ERROR_MESSAGE,
                             HumantaskEditorConstants.ERROR_OPENING_THE_EDITOR_MESSAGE, editorStatus);
-
                 }
             }
         });

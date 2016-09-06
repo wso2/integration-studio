@@ -97,7 +97,7 @@
                                 <artifactItem>
                                     <groupId>org.wso2.developerstudio</groupId>
                                     <artifactId>wso2-developer-studio-kernel-bps-composite-p2</artifactId>
-				    <version>4.0.0-SNAPSHOT</version>
+				    <version>3.6.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/p2-repo</outputDirectory>

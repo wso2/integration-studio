@@ -127,7 +127,6 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     /**
      * Tests if the current workbench selection is a suitable container to use.
      */
-
     private void initialize() {
         if (selection != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
             IStructuredSelection ssel = (IStructuredSelection) selection;
@@ -145,7 +144,6 @@ public class HumanTaskProjectWizardPage extends WizardPage {
     /**
      * Ensures that both text fields are set.
      */
-
     private void dialogChanged() {
         String fileName = getFileName();
         String taskName = getTaskName();

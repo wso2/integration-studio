@@ -55,7 +55,7 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
             IResource resource = workspace
                     .getRoot()
-                    .getProject(getProjectName())
+                    .getProject(this.projectName)
                     .findMember(
                             HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
                                     + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
@@ -89,13 +89,13 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
             IResource resource = workspace
                     .getRoot()
-                    .getProject(getProjectName())
+                    .getProject(this.projectName)
                     .findMember(
                             HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
                                     + HumantaskEditorConstants.TASK_WSDL_SUFFIX);
             IResource cbResource = workspace
                     .getRoot()
-                    .getProject(getProjectName())
+                    .getProject(this.projectName)
                     .findMember(
                             HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
                                     + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
@@ -131,12 +131,12 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             return null;
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_SAVEPREF)) { // (savepreference,"preferencename","preferencevalue")
             Preferences preferences = InstanceScope.INSTANCE.getNode(HumantaskEditorConstants.PLUGIN_ID);
-            Preferences projectNode = preferences.node(getProjectName());
+            Preferences projectNode = preferences.node(this.projectName);
             projectNode.put((String) parameters[1], (String) parameters[2]);
             return null;
         } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GETPREF)) { // (getpreference,"preferencename")
             Preferences preferences = InstanceScope.INSTANCE.getNode(HumantaskEditorConstants.PLUGIN_ID);
-            Preferences projectNode = preferences.node(getProjectName());
+            Preferences projectNode = preferences.node(this.projectName);
             return projectNode.get((String) parameters[1], null);
         } else {
             return null;
@@ -150,10 +150,6 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    private String getProjectName() {
-        return projectName;
     }
 
     public void setProjectName(String projectName) {

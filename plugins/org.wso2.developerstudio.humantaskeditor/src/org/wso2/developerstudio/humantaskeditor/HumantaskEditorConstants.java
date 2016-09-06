@@ -208,4 +208,14 @@ public class HumantaskEditorConstants {
 
     public static final String XML_OUTPUT_PROPERTY_NAME = "{http://xml.apache.org/xslt}indent-amount";
 
+    public static final String HUMANTASK_PACKAGE_PREFIX = "com.humantask.";
+
+    public static final String DESCRIPTION_TEXT = "description";
+
+    public static final String ARTIFACT_ID_TEXT = "artifactId";
+
+    public static final String GROUP_ID_TEXT = "groupId";
+
+    public static final String ERROR_READING_FROM_PROJECT_MESSAGE = "Error reading from project";
+
 }

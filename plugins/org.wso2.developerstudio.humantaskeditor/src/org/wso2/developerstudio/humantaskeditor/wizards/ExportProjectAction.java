@@ -39,7 +39,5 @@ public class ExportProjectAction implements IActionDelegate {
         if (selection instanceof IStructuredSelection) {
             this.selection = (IStructuredSelection) selection;
         }
-
     }
-
 }

@@ -74,7 +74,6 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
     /**
      * Adding the page to the wizard.
      */
-
     @Override
     public void addPages() {
         page = new HumanTaskProjectWizardPage(selection);
@@ -121,7 +120,6 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
      * or just replace its contents, and open the editor on the newly created
      * file.
      */
-
     private void doFinish(String containerName, String fileName, String taskName, String tnsName,
             IProgressMonitor monitor) throws CoreException {
         monitor.beginTask("Creating " + fileName, 2);

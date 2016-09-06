@@ -112,7 +112,7 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
@@ -135,7 +135,7 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
@@ -158,7 +158,7 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
@@ -181,7 +181,7 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
@@ -204,7 +204,7 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, "Error reading from project", editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
@@ -276,11 +276,11 @@ public class HumanTaskWizardUtil {
             DocumentBuilder db = dbf.newDocumentBuilder();
             InputSource is = new InputSource(new StringReader(content));
             dom = db.parse(is);
-            Node groupID = dom.getElementsByTagName("groupId").item(0);
-            Node artifactID = dom.getElementsByTagName("artifactId").item(0);
-            Node name = dom.getElementsByTagName("name").item(0);
-            Node description = dom.getElementsByTagName("description").item(0);
-            groupID.appendChild(dom.createTextNode("com.humantask." + containerName));
+            Node groupID = dom.getElementsByTagName(HumantaskEditorConstants.GROUP_ID_TEXT).item(0);
+            Node artifactID = dom.getElementsByTagName(HumantaskEditorConstants.ARTIFACT_ID_TEXT).item(0);
+            Node name = dom.getElementsByTagName(HumantaskEditorConstants.TASK_NAME_ATTRIBUTE).item(0);
+            Node description = dom.getElementsByTagName(HumantaskEditorConstants.DESCRIPTION_TEXT).item(0);
+            groupID.appendChild(dom.createTextNode(HumantaskEditorConstants.HUMANTASK_PACKAGE_PREFIX + containerName));
             artifactID.appendChild(dom.createTextNode(containerName));
             name.appendChild(dom.createTextNode(containerName));
             description.appendChild(dom.createTextNode(containerName));
@@ -320,7 +320,8 @@ public class HumanTaskWizardUtil {
     }
 
     /**
-     * Create a new project nature for the new project 
+     * Create a new project nature for the new project
+     * 
      * @param project The IProject instance of the new project
      * @throws CoreException
      */

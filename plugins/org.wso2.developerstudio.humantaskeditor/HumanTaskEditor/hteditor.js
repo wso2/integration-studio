@@ -96,8 +96,6 @@ function makeUnDirty() {
  * name. Then a DOM from the created dummy is created and sent to further
  * processing. The Task Name which is used for generating the wsdl should be
  * given.
- * 
- * 
  */
 function createFile(currentTaskName, state, taskNode) { //createFile
     // Create Task WSDL
@@ -170,8 +168,6 @@ function readCBWSDL(currentTaskName) { //createFile
  * Signature: addTask(){...}
  * 
  * This method generates creates a new task. This method add a dummy task node into the ht file and adds a new task tab and Ui elements respectively
- * 
- * 
  */
 function addTask() { //createFile
     $.get('resources/template.ht', function(data) {
@@ -280,6 +276,12 @@ function process() {
     }
 }
 
+/*
+ * Signature: generateTasks() {...}
+ * 
+ * This function is used to load the document in the source view
+ * 
+ */
 function loadModel() {
     try {
         xmlDom = marshalEditorTextContent(IDEGetFileContent());
@@ -288,6 +290,12 @@ function loadModel() {
     }
 }
 
+/*
+ * Signature: generateTasks() {...}
+ * 
+ * This function is used to load the cached document in the backend
+ * 
+ */
 function loadModelWithText() {
     var contents = ExecuteCustomFunction("gettext");
     try {
@@ -730,7 +738,6 @@ function generateTaskDiv(taskNode, caller) {
  * This method fills XML dom from UI elements in the editor.
  * 
  */
-
 function generateText(taskNode) {
     taskName = taskNode.getAttribute(NAME_TAGNAME);
     taskDivName = taskName + "wrapper";
@@ -893,6 +900,12 @@ function getArgumentName(nameValue) {
     }
 }
 
+/*
+ * Signature: createImportNodes(taskName) {...}
+ * 
+ * This function creates the import nodes for wsdl files
+ * 
+ */
 function createImportNodes(taskName) {
     importNodes = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, IMPORT_TAGNAME);
     for (i = 0; i < importNodes.length; i++) {
@@ -914,6 +927,12 @@ function createImportNodes(taskName) {
     xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].appendChild(newCBTaskImport);
 }
 
+/*
+ * Signature: setMetaRendering(taskNode) {...}
+ * 
+ * This function sets the meta data which is used in editor processing
+ * 
+ */
 function setMetaRendering(taskNode) {
     //copynode to wso2metadata
     if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, RENDERINGS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, RENDERING_TAGNAME)[0].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_INPUTS_TAGNAME).length != 0) { //check for type=wso2:input
@@ -942,7 +961,6 @@ function setMetaRendering(taskNode) {
  * This method marshals the text content into a xmlDom object
  * 
  */
-
 function marshalEditorTextContent(textContent) {
     try {
         var parser = new DOMParser();
@@ -953,6 +971,12 @@ function marshalEditorTextContent(textContent) {
     return root;
 }
 
+/*
+ * Signature: syncWSDLFields(taskName) {...}
+ * 
+ * This function syncs output properties to WSDLs
+ * 
+ */
 function syncWSDLFields(taskName) {
     taskDivName = taskName + "wrapper";
     try {
@@ -1076,6 +1100,12 @@ function addTextNode(parentNode, xmlDom, content) {
     parentNode.appendChild(newText);
 }
 
+/*
+ * Signature: bindToggleEvent() {...}
+ * 
+ * This function binds toggle event for the tabs
+ * 
+ */
 function bindToggleEvent() {
     $('.sectionHeader').click(function() {
         $(this).parent().find('.taskSection').collapse('toggle');
@@ -1083,6 +1113,12 @@ function bindToggleEvent() {
     });
 }
 
+/*
+ * Signature: marshalPeopleAssignment(taskNode, peopleAssignmentName) {...}
+ * 
+ * This function marshals people assignment nodes in to the source view
+ * 
+ */
 function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
     taskName = taskNode.getAttribute(NAME_TAGNAME);
     taskDivName = taskName + "wrapper";
@@ -1157,6 +1193,12 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
     }
 }
 
+/*
+ * Signature: unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {...}
+ * 
+ * This function unmarshals people assignment nodes in to the design view
+ * 
+ */
 function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
     taskName = taskNode.getAttribute(NAME_TAGNAME);
     taskDivName = taskName + "wrapper";
@@ -1219,7 +1261,11 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
     }
 }
 
-
+/*
+ * Signature: bindChangeEvents() {...}
+ * 
+ * This function binds change events at task creation
+ */
 function bindChangeEvents() { //put all the listeners here
 
     $('input').keyup(function(e) {
@@ -1252,8 +1298,11 @@ function bindChangeEvents() { //put all the listeners here
     });
 }
 
-
-
+/*
+ * Signature: createNewLiteral(xmlDom, parent, text, grouptext) {...}
+ * 
+ * This function creates a new literal node
+ */
 function createNewLiteral(xmlDom, parent, text, grouptext) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
@@ -1283,6 +1332,11 @@ function createNewLiteral(xmlDom, parent, text, grouptext) {
     parent.appendChild(newLiteral);
 }
 
+/*
+ * Signature: createNewRole(xmlDom, parent, text, grouptext) {...}
+ * 
+ * This function creates a new role node
+ */
 function createNewRole(xmlDom, parent, text, grouptext) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
@@ -1298,6 +1352,11 @@ function createNewRole(xmlDom, parent, text, grouptext) {
     }
 }
 
+/*
+ * Signature: addPresentationParameter(xmlDom, taskNode, taskName, name, type) {...}
+ * 
+ * This function adds a new presentation parameter
+ */
 function addPresentationParameter(xmlDom, taskNode, taskName, name, type) { //should be presentationParameters
     //if(name.indexOf("$")==0 && name.lastIndexOf("$")==(name.length-1)){ //uncomment this for $ validation
     if (type != "htt:tOrganizationalEntity") {
@@ -1315,6 +1374,11 @@ function addPresentationParameter(xmlDom, taskNode, taskName, name, type) { //sh
     // }
 }
 
+/*
+ * Signature: removeUnwantedArtifacts() {...}
+ * 
+ * This function removes any previously created artifacts
+ */
 function removeUnwantedArtifacts() {
     var taskNames = ["removeWSDL"];
     tasksList = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, TASK_TAGNAME);
@@ -1325,17 +1389,32 @@ function removeUnwantedArtifacts() {
     ExecuteCustomFunction.apply(this, taskNames);
 }
 
+/*
+ * Signature: initValues(currentTaskName) {...}
+ * 
+ * This function initializes the wsdl related values
+ */
 function initValues(currentTaskName) {
     $('#' + currentTaskName + 'wrapper #taskCallbackServiceName').val(currentTaskName + "Result");
     $('#' + currentTaskName + 'wrapper #taskCallbackOperationName').val(currentTaskName + "Response");
     $('#' + currentTaskName + 'wrapper #taskCallbackServiceURL').val("http://localhost:9763/services/" + currentTaskName + "Result");
 }
 
+/*
+ * Signature: handleError(message) {...}
+ * 
+ * This function links to the backend function for handling errors
+ */
 function handleError(message) {
     //alert(message); // A functionality to log errors is requested in https://wso2.org/jira/browse/TOOLS-3366
     ExecuteCustomFunction("alert", "Human task editor error", message);
 }
 
+/*
+ * Signature: handleTabChange() {...}
+ * 
+ * This function handles the tab change event
+ */
 function handleTabChange() {
     $("#page-content-wrapper").tabs({
         activate: function(event, ui) {
@@ -1344,6 +1423,12 @@ function handleTabChange() {
     });
 }
 
+
+/*
+ * Signature: emptyNode(parent) {...}
+ * 
+ * This function removes the child nodes and empties the node
+ */
 function emptyNode(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
@@ -1356,7 +1441,6 @@ function emptyNode(parent) {
  2) table add row events (eventID,rowID)
  3) radiobuttonselect events (eventID,radiobuttonID)    
 */
-
 var eventStack = [];
 
 function addEvent(eventType, elementID, elementValue) {

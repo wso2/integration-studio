@@ -106,8 +106,8 @@ public class HumanTaskMultiPageEditorContributor extends MultiPageEditorActionBa
                         HumantaskEditorConstants.CREATE_HUMAN_TASK_FILE_MESSAGE);
             }
         };
-        htAction.setText("Create HumanTask File");
-        htAction.setToolTipText("Create HumanTask File");
+        htAction.setText(HumantaskEditorConstants.CREATE_HUMAN_TASK_FILE_MESSAGE);
+        htAction.setToolTipText(HumantaskEditorConstants.CREATE_HUMAN_TASK_FILE_MESSAGE);
         htAction.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages()
                 .getImageDescriptor(IDE.SharedImages.IMG_OBJS_TASK_TSK));
     }

@@ -40,9 +40,10 @@ public class HumanTaskWizardUtil {
 
     /**
      * Will initialize file contents with a sample text.
-     * @return InputStream 
-     * @param  taskName This gives the taskName of the changed task
-     * @param  tnsName This gives the target namespace of the changed element
+     * 
+     * @return InputStream
+     * @param taskName This gives the taskName of the changed task
+     * @param tnsName This gives the target namespace of the changed element
      * @throws IOException
      * @throws CoreException
      */
@@ -53,6 +54,7 @@ public class HumanTaskWizardUtil {
 
     /**
      * Will initialize file contents with a dummy wsdl.
+     * 
      * @return InputStream which contains WSDL contents
      * @throws IOException
      */
@@ -63,6 +65,7 @@ public class HumanTaskWizardUtil {
 
     /**
      * Will initialize file contents with a dummy org schema.
+     * 
      * @return InputStream which contains organization schema's content
      * @throws IOException
      */
@@ -73,7 +76,8 @@ public class HumanTaskWizardUtil {
 
     /**
      * This will open file contents of Template pom file
-     * @param containerName 
+     * 
+     * @param containerName
      * @return InputStream which contains the pom contents
      * @throws IOException
      * @throws CoreException
@@ -85,6 +89,7 @@ public class HumanTaskWizardUtil {
 
     /**
      * This will open file contents of template HT Config file
+     * 
      * @return InputStream which contains the HT Config contents
      * @throws IOException
      */
@@ -93,9 +98,9 @@ public class HumanTaskWizardUtil {
         return new ByteArrayInputStream(contents.getBytes(HumantaskEditorConstants.UTF8_STRING));
     }
 
-
     /**
      * Read dummy ht file which is needed to initialize a new ht file
+     * 
      * @return A string of Template HumanTask File Contents
      * @throws IOException
      */
@@ -112,13 +117,15 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE,
+                    HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * Read template WSDL file which is needed to initialize a new WSDL file
+     * 
      * @return A string of Template WSDL File Contents
      * @throws IOException
      */
@@ -135,13 +142,15 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE,
+                    HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * Read template Organization Schema file which is needed to initialize a new OrganizationSchema file
+     * 
      * @return A string of Template Org Schema File Contents
      * @throws IOException
      */
@@ -158,13 +167,15 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE,
+                    HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * Read template POM file which is needed to initialize a new POM file for the new project
+     * 
      * @return A string of Template POM File Contents
      * @throws IOException
      */
@@ -181,13 +192,15 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE,
+                    HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * Read template HTConfig file which is needed to initialize a new HtConfig.xml file
+     * 
      * @return A string of Template HTConfig File Contents
      * @throws IOException
      */
@@ -204,13 +217,15 @@ public class HumanTaskWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    HumantaskEditorConstants.ERROR_MESSAGE, HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    HumantaskEditorConstants.ERROR_MESSAGE,
+                    HumantaskEditorConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * This method changes the relevant XML Namespaces and tags accordingly
+     * 
      * @param content content of the xml file
      * @param taskName currently Processing Task Name
      * @param tnsName Target Namespace
@@ -262,6 +277,7 @@ public class HumanTaskWizardUtil {
 
     /**
      * This method changes namespaces and relevant tags of the pom file accrodingly
+     * 
      * @param containerName Project name
      * @param content Content of the pom file
      * @return String of modified pom file content
@@ -310,6 +326,7 @@ public class HumanTaskWizardUtil {
 
     /**
      * This method creates a new coreexception and throws it
+     * 
      * @param message The exception message that should be printed
      * @param exception The nested exception that should be included in the throwable
      * @throws CoreException

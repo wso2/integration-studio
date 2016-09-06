@@ -142,8 +142,7 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     // create Data type elements
     newComplexType = wsdlDom.createElementNS(
         XSD_NAMESPACE, "xsd:complexType");
-    newComplexType.setAttribute(NAME_ATTRIBUTE, currentTask + "DataType"); // Data type
-    // Name
+    newComplexType.setAttribute(NAME_ATTRIBUTE, currentTask + "DataType"); // Data type Name
     newSequence = wsdlDom.createElementNS(XSD_NAMESPACE,
         "xsd:sequence");
 
@@ -157,7 +156,7 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
                 XSD_NAMESPACE, "xsd:element");
             newSubElement.setAttribute(NAME_ATTRIBUTE, $(this).find(
                 "input#taskInputMappingElementName" + k).val()); // Data
-            newSubElement.setAttribute(TYPE_ATTRIBUTE, type); // Data element (Input
+            newSubElement.setAttribute(TYPE_ATTRIBUTE, type); // Data element (Input)
             newSequence.appendChild(newSubElement);
         }
     });
@@ -185,15 +184,13 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     // create portType element
     newPortType = wsdlDom.createElementNS(WSDL_NAMESPACE,
         "wsdl:portType");
-    newPortType.setAttribute(NAME_ATTRIBUTE, currentTask + "PT"); // Interface Port
-    // Type
+    newPortType.setAttribute(NAME_ATTRIBUTE, currentTask + "PT"); // Interface PortType
     newOperation = wsdlDom.createElementNS(WSDL_NAMESPACE,
         "wsdl:operation");
     newOperation.setAttribute(NAME_ATTRIBUTE, operationName); // Interface Operation
     newInput = wsdlDom.createElementNS(WSDL_NAMESPACE,
         "wsdl:input");
-    newInput.setAttribute(MESSAGE_ATTRIBUTE, "tns:" + newMessage.getAttribute(NAME_ATTRIBUTE)); // message
-    // binding
+    newInput.setAttribute(MESSAGE_ATTRIBUTE, "tns:" + newMessage.getAttribute(NAME_ATTRIBUTE)); // message binding
     newOperation.appendChild(newInput);
     newPortType.appendChild(newOperation);
     wsdlDefinitions.appendChild(newPortType);
@@ -201,8 +198,7 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     // create Binding element
     newBinding = wsdlDom.createElementNS(WSDL_NAMESPACE,
         "wsdl:binding");
-    newBinding.setAttribute(NAME_ATTRIBUTE, currentTask + "Binding"); // Data element
-    // name
+    newBinding.setAttribute(NAME_ATTRIBUTE, currentTask + "Binding"); // Data element name
     newBinding.setAttribute(TYPE_ATTRIBUTE, "tns:" + newPortType.getAttribute(NAME_ATTRIBUTE)); // PortTypeName
     newSoapBinding = wsdlDom.createElementNS(
         SOAP_NAMESPACE, "soap:binding");
@@ -264,9 +260,7 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationN
     // create types(data)
     newComplexType = wsdlDom.createElementNS(
         XSD_NAMESPACE, "xsd:complexType");
-    newComplexType.setAttribute(NAME_ATTRIBUTE, currentTask + "CBDataType"); // Data
-    // type
-    // Name
+    newComplexType.setAttribute(NAME_ATTRIBUTE, currentTask + "CBDataType"); // Data type Name
     targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
     wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(XMLNS_TNS_ATTRIBUTE, targetnamespace);
     wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
@@ -283,12 +277,8 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationN
             newSubElement = wsdlDom.createElementNS(
                 XSD_NAMESPACE, "xsd:element");
             newSubElement.setAttribute(NAME_ATTRIBUTE, $(this).find(
-                "input#taskOutputMappingElementName" + k).val()); // Data
-            // element
-            // name
-            // field
-            newSubElement.setAttribute(TYPE_ATTRIBUTE, type); // Data element type
-            // field
+                "input#taskOutputMappingElementName" + k).val()); // Data element name field
+            newSubElement.setAttribute(TYPE_ATTRIBUTE, type); // Data element type field
             newSequence.appendChild(newSubElement);
         }
     });
@@ -300,8 +290,7 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationN
     newElement = wsdlDom.createElementNS(XSD_NAMESPACE,
         "xsd:element");
     newElement.setAttribute(NAME_ATTRIBUTE, currentTask + "CBData"); // part element
-    newElement.setAttribute(TYPE_ATTRIBUTE, "tns:" + currentTask + "CBDataType"); // tns:
-    // complextypename
+    newElement.setAttribute(TYPE_ATTRIBUTE, "tns:" + currentTask + "CBDataType"); // tns: complextypename
     wsdlSchema.appendChild(newElement);
     wsdlSchema.appendChild(newComplexType);
     // create message
@@ -311,30 +300,26 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationN
     newPart = wsdlDom.createElementNS(WSDL_NAMESPACE,
         "wsdl:part");
     newPart.setAttribute(NAME_ATTRIBUTE, newMessage.getAttribute(NAME_ATTRIBUTE)); // ClaimApprovalRequest
-    newPart.setAttribute(ELEMENT_ATTRIBUTE, "tns:" + newElement.getAttribute(NAME_ATTRIBUTE)); // Data
-    // binding
+    newPart.setAttribute(ELEMENT_ATTRIBUTE, "tns:" + newElement.getAttribute(NAME_ATTRIBUTE)); // Data binding
     newMessage.appendChild(newPart);
     wsdlDefinitions.appendChild(newMessage);
     // create portType
     newPortType = wsdlDom.createElementNS(WSDL_NAMESPACE,
         "wsdl:portType");
-    newPortType.setAttribute(NAME_ATTRIBUTE, currentTask + "CBPT"); // Interface Port
-    // Type
+    newPortType.setAttribute(NAME_ATTRIBUTE, currentTask + "CBPT"); // Interface PortType
     newOperation = wsdlDom.createElementNS(WSDL_NAMESPACE,
         "wsdl:operation");
     newOperation.setAttribute(NAME_ATTRIBUTE, operationName); // Interface Operation
     newInput = wsdlDom.createElementNS(WSDL_NAMESPACE,
         "wsdl:input");
-    newInput.setAttribute(MESSAGE_ATTRIBUTE, "tns:" + newMessage.getAttribute(NAME_ATTRIBUTE)); // message
-    // binding
+    newInput.setAttribute(MESSAGE_ATTRIBUTE, "tns:" + newMessage.getAttribute(NAME_ATTRIBUTE)); // message binding
     newOperation.appendChild(newInput);
     newPortType.appendChild(newOperation);
     wsdlDefinitions.appendChild(newPortType);
     // {create service element}
     newBinding = wsdlDom.createElementNS(WSDL_NAMESPACE,
         "wsdl:binding");
-    newBinding.setAttribute(NAME_ATTRIBUTE, currentTask + "CBBinding"); // Data element
-    // name
+    newBinding.setAttribute(NAME_ATTRIBUTE, currentTask + "CBBinding"); // Data element name
     newBinding.setAttribute(TYPE_ATTRIBUTE, "tns:" + newPortType.getAttribute(NAME_ATTRIBUTE)); // PortTypeName
     newSoapBinding = wsdlDom.createElementNS(
         SOAP_NAMESPACE, "soap:binding");
@@ -343,8 +328,7 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationN
         "http://schemas.xmlsoap.org/soap/http"); // tns: complextypename
     newWSDLBindingOperation = wsdlDom.createElementNS(
         WSDL_NAMESPACE, "wsdl:operation");
-    newWSDLBindingOperation.setAttribute(NAME_ATTRIBUTE, operationName); // Operation
-    // Name'
+    newWSDLBindingOperation.setAttribute(NAME_ATTRIBUTE, operationName); // Operation Name
     newWSDLBindingSoapOperation = wsdlDom.createElementNS(
         SOAP_NAMESPACE, "soap:operation");
     newWSDLBindingSoapOperation.setAttribute(SOAP_ACTION_ATTRIBUTE, "urn:" + operationName);

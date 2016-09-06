@@ -360,10 +360,11 @@ function generateUI(status) {
         $('#nooftasks').val(0);
         nodes.forEach(function(taskNode) {
             taskName = taskNode.getAttribute(NAME_TAGNAME);
-            if (status == "initial")
+            if (status == "initial") {
                 generateTaskDiv(taskNode, status); // create respective Div for each task
-            else
+            } else {
                 generateTaskDiv(taskNode);
+            }
             $("#page-content-wrapper #tabNames").append("<li class='taskDivHolder' ><a href='#" + taskName + "wrapper'>" + taskName + " </a><a id='deleteTask" + taskName + "' href='#" + taskName + "wrapper'>X</a></li>");
             $('#deleteTask' + taskName).click(function() {
                 deleteTask(taskNode);
@@ -394,11 +395,11 @@ function bindSuggestion(taskName, availableTags) {
  * 
  */
 function toTitleCase(str) {
-    if (str != undefined)
+    if (str != undefined) {
         return str.replace(/(?:^|\s)\w/g, function(match) {
             return match.toUpperCase();
         });
-    else {
+    } else {
         return str;
     }
 }
@@ -559,10 +560,11 @@ function generateTaskDiv(taskNode, caller) {
             try {
                 var mappingNo = parseInt($(
                     '#' + taskDivName + " #taskMappingNo").val());
-                if ((inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes.length != 0) && (inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes.length != 0))
+                if ((inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes.length != 0) && (inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes.length != 0)) {
                     mapping = '<tr id="inputmapping' + mappingNo + '"><td><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute(ID_ATTRIBUTE) + '"/></td><td><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value="' + inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes[0].nodeValue + '"/></td><td><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value="' + inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes[0].nodeValue.replace(/\$/g, '') + '"/></td><td><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></input></label></td></tr>';
-                else
+                } else {
                     mapping = '<tr id="inputmapping' + mappingNo + '"><td><input name="taskInputMappingid" type="hidden" id="taskInputMappingid" value="' + mappingNo + '"/><input name="textfield6" type="text" id="taskInputMappingElementName' + mappingNo + '" value="' + inputNodes[i].getAttribute(ID_ATTRIBUTE) + '"/></td><td><input name="textfield7" type="text" id="taskInputMappingDisplayName' + mappingNo + '" value=""/></td><td><input name="textfield8" type="text" id="taskInputMappingOrder' + mappingNo + '" value=""/></td><td><label><select id="taskInputMappingType' + mappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input type="button" class="inputDeleteButton btn btn-danger" name="deleteButton' + mappingNo + '" id="deleteButton' + mappingNo + '" value="Delete"></label></td></tr>';
+                }
                 $("#" + taskDivName + " #inputmappingTable").append(mapping);
                 $('#' + taskDivName + ' #taskInputMappingType' + mappingNo).val(inputNodes[i].getAttribute(TYPE_ATTRIBUTE));
                 //bind suggestion event
@@ -614,10 +616,11 @@ function generateTaskDiv(taskNode, caller) {
             try {
                 var outputmappingNo = parseInt($(
                     '#' + taskDivName + " #taskOutputMappingNo").val());
-                if ((outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes.length != 0) && (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes.length != 0))
+                if ((outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes.length != 0) && (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes.length != 0)) {
                     outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="' + outputNodes[i].getAttribute(ID_ATTRIBUTE) + '"></td><td><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes[0].nodeValue + '"></td><td><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes[0].nodeValue + '"></td><td><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value="' + outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_DEFAULT_TAGNAME)[0].childNodes[0].nodeValue + '"></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
-                else
+                } else {
                     outputmapping = '<tr id="outputmapping' + outputmappingNo + '"><td><input name="taskOutputMappingid" type="hidden" id="taskOutputMappingid" value="' + outputmappingNo + '"><input name="textfield6" type="text" id="taskOutputMappingElementName' + outputmappingNo + '" value="' + outputNodes[i].getAttribute(ID_ATTRIBUTE) + '"></td><td><input name="textfield7" type="text" id="taskOutputMappingDisplayName' + outputmappingNo + '" value=""></td><td><input name="textfield8" type="text" id="taskOutputMappingOrder' + outputmappingNo + '" value=""></td><td><label><select id="taskOutputMappingType' + outputmappingNo + '" name="select3"><option value="xsd:string" selected>string</option><option value="xsd:int">int</option><option value="xsd:double">double</option><option value="xsd:float">float</option><option value="xsd:boolean">boolean</option><option value="htt:tOrganizationalEntity">organizationalEntity</option></select></label></td><td><label><input name="textfield12" type="text" id="taskOutputMappingDefaultValues' + outputmappingNo + '" value=""></label></td><td><label><input type="button" class="outputDeleteButton btn btn-danger" name="outputDeleteButton' + outputmappingNo + '" id="outputDeleteButton' + outputmappingNo + '" value="Delete"></label></td></tr>';
+                }
                 $("#" + taskDivName + " #outputmappingTable").append(
                     outputmapping);
                 $('#' + taskDivName + ' #taskOutputMappingType' + mappingNo).val(outputNodes[i].getAttribute(TYPE_ATTRIBUTE));
@@ -744,42 +747,47 @@ function generateText(taskNode) {
     // fill general details
     taskNode.setAttribute(NAME_TAGNAME, $('#' + taskDivName + " #taskName").val().replace(/ /g, ''));
     createImportNodes(taskName);
-    if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, DOCUMENTATION_TAGNAME)[0].hasChildNodes())
+    if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, DOCUMENTATION_TAGNAME)[0].hasChildNodes()) {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, DOCUMENTATION_TAGNAME)[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #taskDocumentation").val(); //else create node and add
-    else
+    } else {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, DOCUMENTATION_TAGNAME)[0].appendChild(xmlDom.createTextNode($(
             '#' + taskDivName + " #taskDocumentation").val()));
-    if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRIORITY_TAGNAME)[0].hasChildNodes())
+    }
+    if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRIORITY_TAGNAME)[0].hasChildNodes()) {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRIORITY_TAGNAME)[0].childNodes[0].nodeValue = $(
             '#' + taskDivName + " #taskPriority").val();
-    else
+    } else {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRIORITY_TAGNAME)[0].appendChild(xmlDom.createTextNode($(
             '#' + taskDivName + " #taskPriority").val()));
+    }
     if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRESENTATION_ELEMENTS_TAGNAME)[0]
-        .getElementsByTagNameNS(BPEL_NAMESPACE, NAME_TAGNAME)[0].hasChildNodes())
+        .getElementsByTagNameNS(BPEL_NAMESPACE, NAME_TAGNAME)[0].hasChildNodes()) {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRESENTATION_ELEMENTS_TAGNAME)[0]
-        .getElementsByTagNameNS(BPEL_NAMESPACE, NAME_TAGNAME)[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #presentationElementDisplayName").val();
-    else
+            .getElementsByTagNameNS(BPEL_NAMESPACE, NAME_TAGNAME)[0].childNodes[0].nodeValue = $(
+                '#' + taskDivName + " #presentationElementDisplayName").val();
+    } else {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRESENTATION_ELEMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, NAME_TAGNAME)[0].appendChild(xmlDom.createTextNode($(
             '#' + taskDivName + " #presentationElementDisplayName").val()));
+    }
     if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRESENTATION_ELEMENTS_TAGNAME)[0]
-        .getElementsByTagNameNS(BPEL_NAMESPACE, SUBJECT_TAGNAME)[0].hasChildNodes())
+        .getElementsByTagNameNS(BPEL_NAMESPACE, SUBJECT_TAGNAME)[0].hasChildNodes()) {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRESENTATION_ELEMENTS_TAGNAME)[0]
-        .getElementsByTagNameNS(BPEL_NAMESPACE, SUBJECT_TAGNAME)[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #presentationElementDisplaySubject").val();
-    else
+            .getElementsByTagNameNS(BPEL_NAMESPACE, SUBJECT_TAGNAME)[0].childNodes[0].nodeValue = $(
+                '#' + taskDivName + " #presentationElementDisplaySubject").val();
+    } else {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRESENTATION_ELEMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, SUBJECT_TAGNAME)[0].appendChild(xmlDom.createTextNode($(
             '#' + taskDivName + " #presentationElementDisplaySubject").val()));
+    }
     if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRESENTATION_ELEMENTS_TAGNAME)[0]
-        .getElementsByTagNameNS(BPEL_NAMESPACE, DESCRIPTION_TAGNAME)[0].hasChildNodes())
+        .getElementsByTagNameNS(BPEL_NAMESPACE, DESCRIPTION_TAGNAME)[0].hasChildNodes()) {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRESENTATION_ELEMENTS_TAGNAME)[0]
-        .getElementsByTagNameNS(BPEL_NAMESPACE, DESCRIPTION_TAGNAME)[0].childNodes[0].nodeValue = $(
-            '#' + taskDivName + " #presentationElementDescription").val();
-    else
+            .getElementsByTagNameNS(BPEL_NAMESPACE, DESCRIPTION_TAGNAME)[0].childNodes[0].nodeValue = $(
+                '#' + taskDivName + " #presentationElementDescription").val();
+    } else {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PRESENTATION_ELEMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, DESCRIPTION_TAGNAME)[0].appendChild(xmlDom.createTextNode($(
             '#' + taskDivName + " #presentationElementDescription").val()));
+    }
     taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, INTERFACE_TAGNAME)[0].setAttribute(OPERATION_ATTRIBUTE, $(
         '#' + taskDivName + " #taskOperation").val());
     taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, INTERFACE_TAGNAME)[0].setAttribute(
@@ -802,18 +810,20 @@ function generateText(taskNode) {
         if (inputNodes[i].nodeName != '#text') {
             inputNodes[i].setAttribute(ID_ATTRIBUTE, $(
                 '#' + taskDivName + " #taskInputMappingElementName" + inputmapping).val());
-            if (inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes.length != 0)
+            if (inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes.length != 0) {
                 inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskInputMappingDisplayName" + inputmapping).val();
-            else
+            } else {
                 addTextNode(inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0], xmlDom, $('#' + taskDivName + " #taskInputMappingDisplayName" + inputmapping).val());
+            }
             inputNodes[i].setAttribute(TYPE_ATTRIBUTE, $(
                 '#' + taskDivName + " #taskInputMappingType" + inputmapping).val());
-            if (inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes.length != 0)
+            if (inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes.length != 0) {
                 inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes[0].nodeValue = '$' + $(
                     '#' + taskDivName + " #taskInputMappingOrder" + inputmapping).val() + '$';
-            else
+            } else {
                 addTextNode(inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0], xmlDom, $('#' + taskDivName + " #taskInputMappingOrder" + inputmapping).val());
+            }
             addPresentationParameter(xmlDom, taskNode, taskName, inputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes[0].nodeValue, inputNodes[i].getAttribute(TYPE_ATTRIBUTE));
 
             inputmapping++;
@@ -830,28 +840,32 @@ function generateText(taskNode) {
         if (outputNodes[i].nodeName != '#text') {
             outputNodes[i].setAttribute(ID_ATTRIBUTE, $(
                 '#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val());
-            if (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes.length != 0)
+            if (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes.length != 0) {
                 outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskOutputMappingDisplayName" + outputmapping).val();
-            else
+            } else {
                 addTextNode(outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_LABELS_TAGNAME)[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingDisplayName" + outputmapping).val());
+            }
             outputNodes[i].setAttribute(TYPE_ATTRIBUTE, $(
                 '#' + taskDivName + " #taskOutputMappingType" + outputmapping).val());
-            if (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes.length != 0)
+            if (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes.length != 0) {
                 outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val();
-            else
+            } else {
                 addTextNode(outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_VALUE_TAGNAME)[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingOrder" + outputmapping).val());
-            if (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, XPATH_TAGNAME)[0].childNodes.length != 0)
+            }
+            if (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, XPATH_TAGNAME)[0].childNodes.length != 0) {
                 outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, XPATH_TAGNAME)[0].childNodes[0].nodeValue = "/tns:" + taskName + "CBData/tns:" + $(
                     '#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val();
-            else
+            } else {
                 addTextNode(outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, XPATH_TAGNAME)[0], xmlDom, "/tns:" + taskName + "CBData/tns:" + $('#' + taskDivName + " #taskOutputMappingElementName" + outputmapping).val());
-            if (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_DEFAULT_TAGNAME)[0].childNodes.length != 0)
+            }
+            if (outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_DEFAULT_TAGNAME)[0].childNodes.length != 0) {
                 outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_DEFAULT_TAGNAME)[0].childNodes[0].nodeValue = $(
                     '#' + taskDivName + " #taskOutputMappingDefaultValues" + outputmapping).val();
-            else
+            } else {
                 addTextNode(outputNodes[i].getElementsByTagNameNS(RENDERINGS_NAMESPACE, RENDERINGS_DEFAULT_TAGNAME)[0], xmlDom, $('#' + taskDivName + " #taskOutputMappingDefaultValues" + outputmapping).val());
+            }
             outputmapping++;
         }
     }
@@ -887,14 +901,15 @@ function generateText(taskNode) {
 
 function getArgumentName(nameValue) {
     if (nameValue) {
-        if (nameValue.indexOf("Role") != -1)
+        if (nameValue.indexOf("Role") != -1) {
             return "role";
-        else if (nameValue.indexOf("Literal") != -1)
+        } else if (nameValue.indexOf("Literal") != -1) {
             return "literal";
-        else if (nameValue.indexOf("Expression") != -1)
+        } else if (nameValue.indexOf("Expression") != -1) {
             return "expression";
-        else
+        } else {
             return "None";
+        }
     } else {
         return "None";
     }
@@ -986,10 +1001,12 @@ function syncWSDLFields(taskName) {
     }
     if (typeof wsdlRead != 'undefined' || wsdlRead != 'undefined') {
         if (wsdlRead.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {
-            if (wsdlRead.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].getElementsByTagNameNS(SOAP_NAMESPACE, ADDRESS_TAGNAME)[0].getAttribute(LOCATION_ATTRIBUTE) != 'undefined')
+            if (wsdlRead.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].getElementsByTagNameNS(SOAP_NAMESPACE, ADDRESS_TAGNAME)[0].getAttribute(LOCATION_ATTRIBUTE) != 'undefined') {
                 $('#' + taskDivName + ' #taskCallbackServiceURL').val(wsdlRead.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].getElementsByTagNameNS(SOAP_NAMESPACE, ADDRESS_TAGNAME)[0].getAttribute(LOCATION_ATTRIBUTE));
-            if (wsdlRead.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].getElementsByTagNameNS(WSDL_NAMESPACE, SERVICE_TAGNAME)[0].getAttribute(NAME_TAGNAME) != 'undefined')
+            }
+            if (wsdlRead.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].getElementsByTagNameNS(WSDL_NAMESPACE, SERVICE_TAGNAME)[0].getAttribute(NAME_TAGNAME) != 'undefined') {
                 $('#' + taskDivName + ' #taskCallbackServiceName').val(wsdlRead.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].getElementsByTagNameNS(WSDL_NAMESPACE, SERVICE_TAGNAME)[0].getAttribute(NAME_TAGNAME));
+            }
         } else {
             createFile(taskName, "initial");
         }
@@ -1014,8 +1031,9 @@ function loadFileContent() {
  */
 function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
     try {
-        if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, assignmentName).length != 0)
+        if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, assignmentName).length != 0) {
             taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].removeChild(taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, assignmentName)[0]);
+        }
         var newAssignmentNode = xmlDom.createElementNS(
             BPEL_NAMESPACE,
             "htd:" + assignmentName);
@@ -1044,8 +1062,9 @@ function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
  */
 function addExpressionNode(taskNode, xmlDom, assignmentName) {
     try {
-        if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, assignmentName).length != 0)
+        if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, assignmentName).length != 0) {
             taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].removeChild(taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, assignmentName)[0]);
+        }
         var newAssignmentNode = xmlDom.createElementNS(
             BPEL_NAMESPACE,
             "htd:" + assignmentName);
@@ -1176,7 +1195,7 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
             }
         }
     }
-    if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Expression")
+    if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Expression") {
         if ($('#' + taskDivName + " #" + peopleAssignmentName + "Expression").val().trim() != "") {
             taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                 .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
@@ -1186,6 +1205,7 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
             taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].removeChild(taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                 .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]);
         }
+    }
     if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Literal") {
         createNewLiteral(xmlDom, taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
             .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
@@ -1211,12 +1231,13 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
             $('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "][value=" + peopleAssignmentName + "" + ownerType + "]").prop("checked", true);
             if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                 .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
-                .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME)[0].childNodes.length != 0)
+                .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME)[0].childNodes.length != 0) {
                 $('#' + taskDivName + " #" + peopleAssignmentName + "" + ownerType)
-                .val(
-                    taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
-                    .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
-                    .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME)[0].childNodes[0].nodeValue.trim());
+                    .val(
+                        taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
+                        .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
+                        .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME)[0].childNodes[0].nodeValue.trim());
+            }
             if (ownerType == "Role") { //removeexpression
                 $('#' + taskDivName + " #" + peopleAssignmentName + "" + ownerType + "LogicalGroup").val(
                     taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
@@ -1240,20 +1261,24 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
                 }
                 for (var k = 0; k < groupsList.length; k++) {
                     if (groupsList[k].childNodes.length != 0) {
-                        if ($('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val().trim() == "") $('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val(groupsList[k].childNodes[0].nodeValue);
-                        else $('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val($('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val() + ',' + groupsList[k].childNodes[0].nodeValue);
+                        if ($('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val().trim() == "") {
+                            $('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val(groupsList[k].childNodes[0].nodeValue);
+                        } else {
+                            $('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val($('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val() + ',' + groupsList[k].childNodes[0].nodeValue);
+                        }
                     }
                 }
             } else { // for expression
                 $('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "][value=" + peopleAssignmentName + "Expression]").prop("checked", true);
                 if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
-                    .getElementsByTagNameNS(BPEL_NAMESPACE, FROM_TAGNAME)[0].childNodes.length != 0)
+                    .getElementsByTagNameNS(BPEL_NAMESPACE, FROM_TAGNAME)[0].childNodes.length != 0) {
                     $('#' + taskDivName + " #" + peopleAssignmentName + "Expression")
-                    .val(
-                        taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
-                        .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
-                        .getElementsByTagNameNS(BPEL_NAMESPACE, FROM_TAGNAME)[0].childNodes[0].nodeValue.trim());
+                        .val(
+                            taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
+                            .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
+                            .getElementsByTagNameNS(BPEL_NAMESPACE, FROM_TAGNAME)[0].childNodes[0].nodeValue.trim());
+                }
             }
         }
     } else {
@@ -1453,8 +1478,11 @@ function addEvent(eventType, elementID, elementValue) {
 function getLastEventID() {
     lastElement = eventStack.pop();
     lastElementID = 0;
-    if (typeof lastElement == 'undefined') lastElementID = 0;
-    else lastElementID = lastElement[0];
+    if (typeof lastElement == 'undefined') {
+        lastElementID = 0;
+    } else {
+        lastElementID = lastElement[0];
+    }
     return lastElementID;
 }
 

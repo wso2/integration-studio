@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
@@ -76,7 +77,7 @@ public class FileManagementUtil {
                 try (FileInputStream in = new FileInputStream(srcFile)) {
                     String location = folder.getName();
                     if (!StringUtils.isBlank(path)) {
-                        location = path + File.separator + folder.getName();
+                        location = Paths.get(path,folder.getName()).toString();
                     }
                     zip.putNextEntry(new ZipEntry(location));
                     while ((len = in.read(buf)) > 0) {
@@ -96,7 +97,8 @@ public class FileManagementUtil {
         int index = 0;
         if (fileListArray != null) {
             while (index < fileListArray.length) {
-                addToZip(HumantaskEditorConstants.EMPTY_STRING, srcFolder + File.separator + fileListArray[index], zip);
+                addToZip(HumantaskEditorConstants.EMPTY_STRING, Paths.get(srcFolder, fileListArray[index]).toString(),
+                        zip);
                 index++;
             }
         }
@@ -110,9 +112,9 @@ public class FileManagementUtil {
             while (index < fileListArray.length) {
                 String newPath = folder.getName();
                 if (!StringUtils.isBlank(path)) {
-                    newPath = path + File.separator + newPath;
+                    newPath = Paths.get(path, newPath).toString();
                 }
-                addToZip(newPath, srcFolder + File.separator + fileListArray[index], zip);
+                addToZip(newPath, Paths.get(srcFolder, fileListArray[index]).toString(), zip);
                 index++;
             }
         }

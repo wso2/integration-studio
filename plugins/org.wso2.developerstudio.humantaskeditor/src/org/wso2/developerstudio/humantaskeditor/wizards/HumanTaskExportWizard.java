@@ -18,6 +18,7 @@ package org.wso2.developerstudio.humantaskeditor.wizards;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Paths;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IProject;
@@ -32,7 +33,7 @@ import org.eclipse.ui.IWorkbench;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
 public class HumanTaskExportWizard extends Wizard implements IExportWizard {
-    
+
     private HumanTaskExportWizardPage mainPage;
     private IStructuredSelection selection;
 
@@ -55,14 +56,15 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
             if (HumantaskEditorConstants.EMPTY_STRING.equalsIgnoreCase(realException.getMessage().trim())) {
-                MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE, "Error occured while deploying the data service");
+                MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE,
+                        "Error occured while deploying the data service");
             } else {
                 MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE, realException.getMessage());
             }
             return false;
         }
-        MessageDialog
-                .openInformation(getShell(), HumantaskEditorConstants.MESSAGE_DIALOG_HUMAN_TASK_DISTRIBUTION, "Human task archive exported successfully");
+        MessageDialog.openInformation(getShell(), HumantaskEditorConstants.MESSAGE_DIALOG_HUMAN_TASK_DISTRIBUTION,
+                "Human task archive exported successfully");
 
         return true;
     }
@@ -90,7 +92,8 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                 String path = projectItem.getLocation().toOSString();
                 File tempFolder = null;
                 try {
-                    tempFolder = File.createTempFile(HumantaskEditorConstants.TEMP_FILE_NAME, HumantaskEditorConstants.TEMP_FILE_SUFFIX);
+                    tempFolder = File.createTempFile(HumantaskEditorConstants.TEMP_FILE_NAME,
+                            HumantaskEditorConstants.TEMP_FILE_SUFFIX);
                     boolean tmpDeleted = tempFolder.delete();
                     boolean tmpCreated = tempFolder.mkdir();
                     if (!tmpDeleted) {
@@ -102,7 +105,8 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                                 HumantaskEditorConstants.ERROR_CREATING_TMP_FOLDER_MESSAGE);
                     }
                     File zipFolder = new File(tempFolder, projectItem.getName());
-                    File tmpZip = File.createTempFile(HumantaskEditorConstants.TEMP_FILE_NAME, HumantaskEditorConstants.TEMP_FILE_SUFFIX);
+                    File tmpZip = File.createTempFile(HumantaskEditorConstants.TEMP_FILE_NAME,
+                            HumantaskEditorConstants.TEMP_FILE_SUFFIX);
                     boolean tmpZipDeleted = tmpZip.delete();
                     tmpZip.deleteOnExit();
                     if (!tmpZipDeleted) {
@@ -110,8 +114,8 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
                                 HumantaskEditorConstants.ERROR_DELETING_TMP_FOLDER_MESSAGE);
                     }
                     monitor.setTaskName(HumantaskEditorConstants.CREATING_THE_HUMAN_TASK_ARTIFACT_MESSAGE);
-                    FileUtils.copyDirectory(
-                            new File(path + File.separator + HumantaskEditorConstants.BASE_FOLDER_NAME), zipFolder);
+                    FileUtils.copyDirectory(new File(Paths.get(path, HumantaskEditorConstants.BASE_FOLDER_NAME)
+                            .toString()), zipFolder);
                     FileManagementUtil.removeEmptyDirectories(zipFolder);
                     FileManagementUtil.zipFolder(zipFolder.getAbsolutePath(), tmpZip.getAbsolutePath());
                     if (tmpZip.exists()) {

@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -140,16 +141,16 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
         IContainer container = (IContainer) resource;
         final IFolder folder = container.getFolder(new Path(HumantaskEditorConstants.BASE_FOLDER_NAME));
         folder.create(true, true, monitor);
-        final IFile file = container.getFile(new Path(HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator
-                + fileName));
-        final IFile wsdlfile = container.getFile(new Path(HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator
-                + taskName + HumantaskEditorConstants.TASK_WSDL_SUFFIX));
-        final IFile cbwsdlfile = container.getFile(new Path(HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator
-                + taskName + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX));
-        final IFile orgSchemafile = container.getFile(new Path(HumantaskEditorConstants.BASE_FOLDER_NAME
-                + File.separator + HumantaskEditorConstants.ORGANIZATIONAL_ENTITY_SCHEMA_FILE));
-        final IFile htconfigfile = container.getFile(new Path(HumantaskEditorConstants.BASE_FOLDER_NAME
-                + File.separator + HumantaskEditorConstants.INITIAL_HTCONFIG_NAME));
+        final IFile file = container.getFile(new Path(Paths.get(HumantaskEditorConstants.BASE_FOLDER_NAME, fileName)
+                .toString()));
+        final IFile wsdlfile = container.getFile(new Path(Paths.get(HumantaskEditorConstants.BASE_FOLDER_NAME,
+                taskName + HumantaskEditorConstants.TASK_WSDL_SUFFIX).toString()));
+        final IFile cbwsdlfile = container.getFile(new Path(Paths.get(HumantaskEditorConstants.BASE_FOLDER_NAME,
+                taskName + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX).toString()));
+        final IFile orgSchemafile = container.getFile(new Path(Paths.get(HumantaskEditorConstants.BASE_FOLDER_NAME,
+                HumantaskEditorConstants.ORGANIZATIONAL_ENTITY_SCHEMA_FILE).toString()));
+        final IFile htconfigfile = container.getFile(new Path(Paths.get(HumantaskEditorConstants.BASE_FOLDER_NAME,
+                HumantaskEditorConstants.INITIAL_HTCONFIG_NAME).toString()));
         final IFile pomfile = container.getFile(new Path(HumantaskEditorConstants.INITIAL_POM_NAME));
         HumanTaskWizardUtil.addNature(file.getProject());
         InputStream stream = null;

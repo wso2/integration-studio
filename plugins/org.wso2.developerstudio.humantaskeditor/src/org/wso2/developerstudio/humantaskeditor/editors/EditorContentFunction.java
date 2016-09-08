@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,8 +58,8 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                     .getRoot()
                     .getProject(this.projectName)
                     .findMember(
-                            HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
-                                    + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
+                            Paths.get(HumantaskEditorConstants.BASE_FOLDER_NAME,
+                                    parameters[1] + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX).toString());
 
             if (resource.exists()) {
                 File file = resource.getLocation().toFile();
@@ -90,14 +91,14 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
                     .getRoot()
                     .getProject(this.projectName)
                     .findMember(
-                            HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
-                                    + HumantaskEditorConstants.TASK_WSDL_SUFFIX);
+                            Paths.get(HumantaskEditorConstants.BASE_FOLDER_NAME,
+                                    parameters[1] + HumantaskEditorConstants.TASK_WSDL_SUFFIX).toString());
             IResource cbResource = workspace
                     .getRoot()
                     .getProject(this.projectName)
                     .findMember(
-                            HumantaskEditorConstants.BASE_FOLDER_NAME + File.separator + parameters[1]
-                                    + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX);
+                            Paths.get(HumantaskEditorConstants.BASE_FOLDER_NAME,
+                                    parameters[1] + HumantaskEditorConstants.CALLBACK_TASK_WSDL_SUFFIX).toString());
             if (resource.exists()) {
                 File file = resource.getLocation().toFile();
                 File cbFile = cbResource.getLocation().toFile();

@@ -46,12 +46,12 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
 
     @Override
     public Object executeFunction(String functionName, Object[] parameters) {
-        if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_SETTEXT)) {
+        if (HumantaskEditorConstants.JS_CUSTOMFUNC_SETTEXT.equals(functionName)) {
             setText((String) parameters[1]);
             return null;
-        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GETTEXT)) {
+        } else if (HumantaskEditorConstants.JS_CUSTOMFUNC_GETTEXT.equals(functionName)) {
             return getText();
-        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GET_WSDL)) {
+        } else if (HumantaskEditorConstants.JS_CUSTOMFUNC_GET_WSDL.equals(functionName)) {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
             IResource resource = workspace
                     .getRoot()
@@ -84,8 +84,7 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             } else {
                 return HumantaskEditorConstants.UNDEFINED_LITERAL;
             }
-
-        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_REMOVE_WSDL)) {
+        } else if (HumantaskEditorConstants.JS_CUSTOMFUNC_REMOVE_WSDL.equals(functionName)) {
             IWorkspace workspace = ResourcesPlugin.getWorkspace();
             IResource resource = workspace
                     .getRoot()
@@ -123,25 +122,23 @@ public class EditorContentFunction implements AbstractEditorFunctionExecutor {
             } else {
                 return HumantaskEditorConstants.UNDEFINED_LITERAL;
             }
-
-        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_ALERT)) { // ("alert","title","message")
+        } else if (HumantaskEditorConstants.JS_CUSTOMFUNC_ALERT.equals(functionName)) { // ("alert","title","message")
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, (String) parameters[2]);
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
                     (String) parameters[1], null, editorStatus);
             return null;
-        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_SAVEPREF)) { // (savepreference,"preferencename","preferencevalue")
+        } else if (HumantaskEditorConstants.JS_CUSTOMFUNC_SAVEPREF.equals(functionName)) { // (savepreference,"preferencename","preferencevalue")
             Preferences preferences = InstanceScope.INSTANCE.getNode(HumantaskEditorConstants.PLUGIN_ID);
             Preferences projectNode = preferences.node(this.projectName);
             projectNode.put((String) parameters[1], (String) parameters[2]);
             return null;
-        } else if (functionName.equals(HumantaskEditorConstants.JS_CUSTOMFUNC_GETPREF)) { // (getpreference,"preferencename")
+        } else if (HumantaskEditorConstants.JS_CUSTOMFUNC_GETPREF.equals(functionName)) { // (getpreference,"preferencename")
             Preferences preferences = InstanceScope.INSTANCE.getNode(HumantaskEditorConstants.PLUGIN_ID);
             Preferences projectNode = preferences.node(this.projectName);
             return projectNode.get((String) parameters[1], null);
         } else {
             return null;
         }
-
     }
 
     public String getText() {

@@ -44,11 +44,11 @@ public class HumanTaskExportWizardPage extends WizardPage {
     private IProject selectedProject;
     private String projectToArchive = null;
 
-    protected HumanTaskExportWizardPage(String pageName, IProject p) {
+    protected HumanTaskExportWizardPage(String pageName, IProject project) {
         super(pageName);
         setTitle(HumantaskEditorConstants.HUMAN_TASK_EXPORT_WIZARD_MAIN_TITLE);
-        if (p != null) {
-            selectedProject = p;
+        if (project != null) {
+            selectedProject = project;
         }
     }
 

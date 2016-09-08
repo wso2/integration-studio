@@ -20,5 +20,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: 
  org.apache.commons.io,
+ org.apache.commons.lang,
  org.wso2.developerstudio.eclipse.webui.core.editor;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.webui.core.exception;version="[4.1.0,5.0.0)"

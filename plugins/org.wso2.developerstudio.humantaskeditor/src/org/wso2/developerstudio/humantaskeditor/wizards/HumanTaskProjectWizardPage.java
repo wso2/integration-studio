@@ -129,11 +129,11 @@ public class HumanTaskProjectWizardPage extends WizardPage {
      */
     private void initialize() {
         if (selection != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
-            IStructuredSelection ssel = (IStructuredSelection) selection;
-            if (ssel.size() > 1) {
+            IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+            if (structuredSelection.size() > 1) {
                 return;
             }
-            Object obj = ssel.getFirstElement();
+            Object obj = structuredSelection.getFirstElement();
             if (obj instanceof IResource) {
                 containerText.setText(HumantaskEditorConstants.WIZARD_PAGE_TEXT);
             }

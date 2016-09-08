@@ -70,9 +70,7 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
      * editor font used in page 2.
      */
     void createPage0() {
-
         humanTaskUIEditor = new HumanTaskUIEditor(this);
-
         int index;
         try {
             index = addPage(humanTaskUIEditor, getEditorInput());
@@ -105,7 +103,6 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
      */
     @Override
     protected void createPages() {
-
         createPage0();
         createPage1();
         // createPage2();
@@ -134,11 +131,6 @@ public class HumanTaskMultiPageEditor extends MultiPageEditorPart implements IRe
             humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_LOAD_MODEL);
             humanTaskUIEditor.getBrowser().execute(HumantaskEditorConstants.JS_FUNC_IDESETDIRTY_FALSE);
         }
-        /*
-         * ITextEditor editor = (ITextEditor)getEditor(1); IDocumentProvider dp
-         * = editor.getDocumentProvider(); IDocument doc =
-         * dp.getDocument(editor.getEditorInput()); doc.set("Testing One");
-         */
     }
 
     /**

@@ -247,8 +247,8 @@ public class HumanTaskWizardUtil {
             tnsList.item(0).getAttributes().getNamedItem(HumantaskEditorConstants.XMLNS_TNS).setNodeValue(tnsName);
             tnsList.item(0).getAttributes().getNamedItem(HumantaskEditorConstants.TARGET_NAMESPACE)
                     .setNodeValue(tnsName);
-            for (int i = 0; i < taskList.getLength(); i++) {
-                Node task = taskList.item(i);
+            for (int taskIndex = 0; taskIndex < taskList.getLength(); taskIndex++) {
+                Node task = taskList.item(taskIndex);
                 task.getAttributes().getNamedItem(HumantaskEditorConstants.TASK_NAME_ATTRIBUTE).setNodeValue(taskName);
             }
             TransformerFactory transfactory = TransformerFactory.newInstance();

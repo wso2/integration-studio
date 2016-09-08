@@ -54,7 +54,7 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
             return false;
         } catch (InvocationTargetException e) {
             Throwable realException = e.getTargetException();
-            if (realException.getMessage().trim().equalsIgnoreCase(HumantaskEditorConstants.EMPTY_STRING)) {
+            if (HumantaskEditorConstants.EMPTY_STRING.equalsIgnoreCase(realException.getMessage().trim())) {
                 MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE, "Error occured while deploying the data service");
             } else {
                 MessageDialog.openError(getShell(), HumantaskEditorConstants.ERROR_MESSAGE, realException.getMessage());
@@ -75,11 +75,11 @@ public class HumanTaskExportWizard extends Wizard implements IExportWizard {
 
     public void addPages() {
         super.addPages();
-        IProject p = null;
+        IProject project = null;
         if (selection.getFirstElement() instanceof IProject) {
-            p = (IProject) selection.getFirstElement();
+            project = (IProject) selection.getFirstElement();
         }
-        mainPage = new HumanTaskExportWizardPage(HumantaskEditorConstants.WIZARD_PAGE_HEADER_BPEL_EXPORT, p);
+        mainPage = new HumanTaskExportWizardPage(HumantaskEditorConstants.WIZARD_PAGE_HEADER_BPEL_EXPORT, project);
         addPage(mainPage);
     }
 

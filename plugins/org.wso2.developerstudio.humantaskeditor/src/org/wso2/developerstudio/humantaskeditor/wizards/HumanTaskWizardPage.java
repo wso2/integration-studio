@@ -154,11 +154,11 @@ public class HumanTaskWizardPage extends WizardPage {
 
     private void initialize() {
         if (selection != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
-            IStructuredSelection ssel = (IStructuredSelection) selection;
-            if (ssel.size() > 1) {
+            IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+            if (structuredSelection.size() > 1) {
                 return;
             }
-            Object obj = ssel.getFirstElement();
+            Object obj = structuredSelection.getFirstElement();
             if (obj instanceof IResource) {
                 IContainer container;
                 if (obj instanceof IContainer) {

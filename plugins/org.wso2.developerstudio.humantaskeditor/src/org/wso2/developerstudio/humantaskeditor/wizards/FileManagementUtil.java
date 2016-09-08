@@ -24,6 +24,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+
+import org.apache.commons.lang.StringUtils;
 import org.wso2.developerstudio.humantaskeditor.Activator;
 import org.wso2.developerstudio.humantaskeditor.HumantaskEditorConstants;
 
@@ -68,12 +70,12 @@ public class FileManagementUtil {
             addFolderToZip(path, srcFile, zip);
         } else {
             // Transfer bytes from in to out
-            if (!srcFile.equals(".project")) {
+            if (!".project".equals(srcFile)) {
                 byte[] buf = new byte[1024];
                 int len;
                 try (FileInputStream in = new FileInputStream(srcFile)) {
                     String location = folder.getName();
-                    if (!path.equalsIgnoreCase("")) {
+                    if (!StringUtils.isBlank(path)) {
                         location = path + File.separator + folder.getName();
                     }
                     zip.putNextEntry(new ZipEntry(location));
@@ -91,11 +93,11 @@ public class FileManagementUtil {
     static private void addFolderContentsToZip(String srcFolder, ZipOutputStream zip) {
         File folder = new File(srcFolder);
         String fileListArray[] = folder.list();
-        int i = 0;
+        int index = 0;
         if (fileListArray != null) {
-            while (i < fileListArray.length) {
-                addToZip("", srcFolder + File.separator + fileListArray[i], zip);
-                i++;
+            while (index < fileListArray.length) {
+                addToZip(HumantaskEditorConstants.EMPTY_STRING, srcFolder + File.separator + fileListArray[index], zip);
+                index++;
             }
         }
     }
@@ -103,15 +105,15 @@ public class FileManagementUtil {
     static private void addFolderToZip(String path, String srcFolder, ZipOutputStream zip) {
         File folder = new File(srcFolder);
         String fileListArray[] = folder.list();
-        int i = 0;
+        int index = 0;
         if (fileListArray != null) {
-            while (i < fileListArray.length) {
+            while (index < fileListArray.length) {
                 String newPath = folder.getName();
-                if (!path.equalsIgnoreCase("")) {
+                if (!StringUtils.isBlank(path)) {
                     newPath = path + File.separator + newPath;
                 }
-                addToZip(newPath, srcFolder + File.separator + fileListArray[i], zip);
-                i++;
+                addToZip(newPath, srcFolder + File.separator + fileListArray[index], zip);
+                index++;
             }
         }
     }

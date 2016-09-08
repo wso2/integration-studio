@@ -140,7 +140,7 @@ public class HumanTaskWizard extends Wizard implements INewWizard {
         for (IResource member : memberList) {
             IFile memberFile = (IFile) member;
             if (memberFile != null) {
-                if (memberFile.getFileExtension().equals(HumantaskEditorConstants.HT_EXTENSION)) {
+                if (HumantaskEditorConstants.HT_EXTENSION.equals(memberFile.getFileExtension())) {
                     humanTaskWizardUtil.throwCoreException("An artifact must contain only one human task file", null);
                 }
             }

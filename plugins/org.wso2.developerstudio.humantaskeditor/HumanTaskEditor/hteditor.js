@@ -66,7 +66,7 @@ var NAMESPACE_ATTRIBUTE = "namespace";
 var IMPORT_TYPE_ATTRIBUTE = "importType";
 var LOGICAL_PEOPLE_GROUP_ATTRIBUTE = "logicalPeopleGroup";
 /* Argument Definitions */
-var ROLE_ARGUMENT= "role";
+var ROLE_ARGUMENT = "role";
 var LITERAL_ARGUMENT = "literal";
 var EXPRESSION_ARGUMENT = "expression";
 /*

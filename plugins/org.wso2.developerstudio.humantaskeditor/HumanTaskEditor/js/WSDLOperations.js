@@ -84,11 +84,11 @@ function generateHTConfig(configDom, xmlDom, currentTask) {
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
     wsdlHTDeploymentConfig = configDom.getElementsByTagNameNS(HIC_NAMESPACE, HT_DEPLOYMENT_CONFIG_TAGNAME)[0];
     tasksList = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, TASK_TAGNAME);
-    if(xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length != 0) {
-    targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
-    if(configDom.getElementsByTagNameNS(HIC_NAMESPACE, HT_DEPLOYMENT_CONFIG_TAGNAME).length != 0) {
-    configDom.getElementsByTagNameNS(HIC_NAMESPACE, HT_DEPLOYMENT_CONFIG_TAGNAME)[0].setAttribute(XMLNS_TASK_ATTRIBUTE, targetnamespace);
-    }
+    if (xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length != 0) {
+        targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
+        if (configDom.getElementsByTagNameNS(HIC_NAMESPACE, HT_DEPLOYMENT_CONFIG_TAGNAME).length != 0) {
+            configDom.getElementsByTagNameNS(HIC_NAMESPACE, HT_DEPLOYMENT_CONFIG_TAGNAME)[0].setAttribute(XMLNS_TASK_ATTRIBUTE, targetnamespace);
+        }
     }
     for (l = 0; l < tasksList.length; l++) {
 
@@ -135,20 +135,20 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     serviceName = currentTask + "Service";
     portName = currentTask + "Port";
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
-    if(xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length != 0) {
-    targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
-    if(wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length!=0){
-    wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(XMLNS_TNS_ATTRIBUTE, targetnamespace);
-    }
-    if(wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0){
-    wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
-    }
-    wsdlSchema.setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
+    if (xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length != 0) {
+        targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
+        if (wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {
+            wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(XMLNS_TNS_ATTRIBUTE, targetnamespace);
+        }
+        if (wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {
+            wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
+        }
+        wsdlSchema.setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
     }
     // get Definitions node and Schema node from dummy wsdl dom
     wsdlSchema = wsdlDom.getElementsByTagNameNS(XSD_NAMESPACE, SCHEMA_TAGNAME)[0];
     wsdlDefinitions = wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0];
-    
+
     // create Data type elements
     newComplexType = wsdlDom.createElementNS(
         XSD_NAMESPACE, "xsd:complexType");
@@ -271,16 +271,16 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationN
     newComplexType = wsdlDom.createElementNS(
         XSD_NAMESPACE, "xsd:complexType");
     newComplexType.setAttribute(NAME_ATTRIBUTE, currentTask + "CBDataType"); // Data type Name
-    if(xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length!=0) {
-    targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
-    if(wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length!=0){
-    wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(XMLNS_TNS_ATTRIBUTE, targetnamespace);
+    if (xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length != 0) {
+        targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
+        if (wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {
+            wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(XMLNS_TNS_ATTRIBUTE, targetnamespace);
+        }
+        if (wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {
+            wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
+        }
+        wsdlSchema.setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
     }
-    if(wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length!=0){
-    wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
-    }
-    wsdlSchema.setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
-    }    
     newSequence = wsdlDom.createElementNS(XSD_NAMESPACE,
         "xsd:sequence");
     // should loop for input types

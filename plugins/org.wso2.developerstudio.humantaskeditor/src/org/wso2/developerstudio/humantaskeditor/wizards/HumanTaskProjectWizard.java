@@ -1,17 +1,19 @@
 /*
- * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *     Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *     WSO2 Inc. licenses this file to you under the Apache License,
+ *     Version 2.0 (the "License"); you may not use this file except
+ *     in compliance with the License.
+ *     You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *    Unless required by applicable law or agreed to in writing,
+ *    software distributed under the License is distributed on an
+ *    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *    KIND, either express or implied.  See the License for the
+ *    specific language governing permissions and limitations
+ *    under the License.
  */
 
 package org.wso2.developerstudio.humantaskeditor.wizards;
@@ -182,16 +184,21 @@ public class HumanTaskProjectWizard extends Wizard implements INewWizard {
                     HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, editorStatus);
         } finally {
             try {
-                if (stream != null)
+                if (stream != null) {
                     stream.close();
-                if (wsdlStream != null)
+                }
+                if (wsdlStream != null) {
                     wsdlStream.close();
-                if (htconfigStream != null)
+                }
+                if (htconfigStream != null) {
                     htconfigStream.close();
-                if (orgSchemaStream != null)
+                }
+                if (orgSchemaStream != null) {
                     orgSchemaStream.close();
-                if (pomStream != null)
+                }
+                if (pomStream != null) {
                     pomStream.close();
+                }
             } catch (IOException e) {
                 logger.log(Level.FINE, HumantaskEditorConstants.ERROR_CREATING_INITIAL_FILE_MESSAGE, e);
                 IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());

@@ -917,6 +917,18 @@ public class DetailSection {
 
 				}
 
+				if (displayName.equals(DetailSectionCustomUiConstants.QUERY_RETURN_UPDATED_ROW_COUNT)) {
+
+					labelMaker(displayName);
+
+					rgkCombo = sectionUtil.getBooleanComboField(detailsclient, toolkit, query,
+							query.isReturnUpdatedRowCount(), DsPackage.eINSTANCE.getQuery_ReturnUpdatedRowCount());
+
+					voidMaker();
+					voidMaker();
+
+				}
+
 				if (displayName.equals(DetailSectionCustomUiConstants.QUERY_KEY_COLUMNS)) {
 
 					keyColLabel = labelMaker(displayName);

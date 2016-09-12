@@ -60,6 +60,7 @@ import org.wso2.developerstudio.eclipse.ds.Sql;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryImpl#isReturnGeneratedKeys <em>Return Generated Keys</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryImpl#getUseConfig <em>Use Config</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryImpl#getKeyColumns <em>Key Columns</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryImpl#isReturnUpdatedRowCount <em>Return Updated Row Count</em>}</li>
  * </ul>
  *
  * @generated
@@ -204,6 +205,26 @@ public class QueryImpl extends EObjectImpl implements Query {
 	 * @ordered
 	 */
 	protected String keyColumns = KEY_COLUMNS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isReturnUpdatedRowCount() <em>Return Updated Row Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReturnUpdatedRowCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RETURN_UPDATED_ROW_COUNT_EDEFAULT = false; // TODO The default value literal "" is not valid.
+
+	/**
+	 * The cached value of the '{@link #isReturnUpdatedRowCount() <em>Return Updated Row Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReturnUpdatedRowCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean returnUpdatedRowCount = RETURN_UPDATED_ROW_COUNT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -461,6 +482,27 @@ public class QueryImpl extends EObjectImpl implements Query {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isReturnUpdatedRowCount() {
+		return returnUpdatedRowCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReturnUpdatedRowCount(boolean newReturnUpdatedRowCount) {
+		boolean oldReturnUpdatedRowCount = returnUpdatedRowCount;
+		returnUpdatedRowCount = newReturnUpdatedRowCount;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.QUERY__RETURN_UPDATED_ROW_COUNT, oldReturnUpdatedRowCount, returnUpdatedRowCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
@@ -528,6 +570,8 @@ public class QueryImpl extends EObjectImpl implements Query {
 				return getUseConfig();
 			case DsPackage.QUERY__KEY_COLUMNS:
 				return getKeyColumns();
+			case DsPackage.QUERY__RETURN_UPDATED_ROW_COUNT:
+				return isReturnUpdatedRowCount();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -593,6 +637,9 @@ public class QueryImpl extends EObjectImpl implements Query {
 			case DsPackage.QUERY__KEY_COLUMNS:
 				setKeyColumns((String)newValue);
 				return;
+			case DsPackage.QUERY__RETURN_UPDATED_ROW_COUNT:
+				setReturnUpdatedRowCount((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -651,6 +698,9 @@ public class QueryImpl extends EObjectImpl implements Query {
 			case DsPackage.QUERY__KEY_COLUMNS:
 				setKeyColumns(KEY_COLUMNS_EDEFAULT);
 				return;
+			case DsPackage.QUERY__RETURN_UPDATED_ROW_COUNT:
+				setReturnUpdatedRowCount(RETURN_UPDATED_ROW_COUNT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -694,6 +744,8 @@ public class QueryImpl extends EObjectImpl implements Query {
 				return USE_CONFIG_EDEFAULT == null ? useConfig != null : !USE_CONFIG_EDEFAULT.equals(useConfig);
 			case DsPackage.QUERY__KEY_COLUMNS:
 				return KEY_COLUMNS_EDEFAULT == null ? keyColumns != null : !KEY_COLUMNS_EDEFAULT.equals(keyColumns);
+			case DsPackage.QUERY__RETURN_UPDATED_ROW_COUNT:
+				return returnUpdatedRowCount != RETURN_UPDATED_ROW_COUNT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -723,6 +775,8 @@ public class QueryImpl extends EObjectImpl implements Query {
 		result.append(useConfig);
 		result.append(", keyColumns: ");
 		result.append(keyColumns);
+		result.append(", returnUpdatedRowCount: ");
+		result.append(returnUpdatedRowCount);
 		result.append(')');
 		return result.toString();
 	}

@@ -43,6 +43,7 @@ public interface DetailSectionCustomUiConstants {
 	public String QUERY_INPUT_EVENT_TRIGGER = "Input Event Trigger";
 	public String QUERY_OUTPUT_EVENT_TRIGGER = "Output Event Trigger";
 	public String QUERY_RETURN_GENERATED_KEYS = "Return Generated Keys";
+	public String QUERY_RETURN_UPDATED_ROW_COUNT = "Return Updated Row Count";
 
 	public String QUERY_SQL = "SQL Statment";
 	public String QUERY_SPARQL = "SPARQL Statment";

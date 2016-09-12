@@ -1590,13 +1590,22 @@ public interface DsPackage extends EPackage {
 	int QUERY__KEY_COLUMNS = 14;
 
 	/**
+	 * The feature id for the '<em><b>Return Updated Row Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY__RETURN_UPDATED_ROW_COUNT = 15;
+
+	/**
 	 * The number of structural features of the '<em>Query</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_FEATURE_COUNT = 15;
+	int QUERY_FEATURE_COUNT = 16;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.QueryParameterImpl <em>Query Parameter</em>}' class.
@@ -3981,6 +3990,17 @@ public interface DsPackage extends EPackage {
 	EAttribute getQuery_KeyColumns();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.Query#isReturnUpdatedRowCount <em>Return Updated Row Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Return Updated Row Count</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.Query#isReturnUpdatedRowCount()
+	 * @see #getQuery()
+	 * @generated
+	 */
+	EAttribute getQuery_ReturnUpdatedRowCount();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.QueryParameter <em>Query Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5969,6 +5989,14 @@ public interface DsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute QUERY__KEY_COLUMNS = eINSTANCE.getQuery_KeyColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Return Updated Row Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUERY__RETURN_UPDATED_ROW_COUNT = eINSTANCE.getQuery_ReturnUpdatedRowCount();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.QueryParameterImpl <em>Query Parameter</em>}' class.

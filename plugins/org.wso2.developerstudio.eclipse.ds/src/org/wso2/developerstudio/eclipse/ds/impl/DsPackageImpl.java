@@ -1756,6 +1756,15 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getQuery_ReturnUpdatedRowCount() {
+		return (EAttribute)queryEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getQueryParameter() {
 		return queryParameterEClass;
 	}
@@ -2585,6 +2594,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		createEAttribute(queryEClass, QUERY__RETURN_GENERATED_KEYS);
 		createEAttribute(queryEClass, QUERY__USE_CONFIG);
 		createEAttribute(queryEClass, QUERY__KEY_COLUMNS);
+		createEAttribute(queryEClass, QUERY__RETURN_UPDATED_ROW_COUNT);
 
 		queryParameterEClass = createEClass(QUERY_PARAMETER);
 		createEAttribute(queryParameterEClass, QUERY_PARAMETER__MIXED);
@@ -2882,6 +2892,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEAttribute(getQuery_ReturnGeneratedKeys(), theXMLTypePackage.getBoolean(), "returnGeneratedKeys", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_UseConfig(), theXMLTypePackage.getString(), "useConfig", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_KeyColumns(), theXMLTypePackage.getString(), "keyColumns", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQuery_ReturnUpdatedRowCount(), theXMLTypePackage.getBoolean(), "returnUpdatedRowCount", "", 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(queryParameterEClass, QueryParameter.class, "QueryParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getQueryParameter_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, QueryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2984,6 +2995,8 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// ExtendedMetaData
+		createExtendedMetaData_1Annotations();
 	}
 
 	/**
@@ -4556,6 +4569,24 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		   new String[] {
 			 "kind", "element",
 			 "name", "property",
+			 "namespace", "##targetNamespace"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaData_1Annotations() {
+		String source = "ExtendedMetaData";	
+		addAnnotation
+		  (getQuery_ReturnUpdatedRowCount(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "returnUpdatedRowCount",
 			 "namespace", "##targetNamespace"
 		   });
 	}

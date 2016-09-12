@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Query#isReturnGeneratedKeys <em>Return Generated Keys</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Query#getUseConfig <em>Use Config</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.Query#getKeyColumns <em>Key Columns</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.Query#isReturnUpdatedRowCount <em>Return Updated Row Count</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQuery()
@@ -365,5 +366,33 @@ public interface Query extends EObject {
 	 * @generated
 	 */
 	void setKeyColumns(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Return Updated Row Count</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Return Updated Row Count</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Return Updated Row Count</em>' attribute.
+	 * @see #setReturnUpdatedRowCount(boolean)
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQuery_ReturnUpdatedRowCount()
+	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 *        annotation="ExtendedMetaData kind='attribute' name='returnUpdatedRowCount' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	boolean isReturnUpdatedRowCount();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.Query#isReturnUpdatedRowCount <em>Return Updated Row Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Return Updated Row Count</em>' attribute.
+	 * @see #isReturnUpdatedRowCount()
+	 * @generated
+	 */
+	void setReturnUpdatedRowCount(boolean value);
 
 } // Query

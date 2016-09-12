@@ -1,20 +1,19 @@
 /*
- *  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *     Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
- *  WSO2 Inc. licenses this file to you under the Apache License,
- *  Version 2.0 (the "License"); you may not use this file except
- *  in compliance with the License.
- *  You may obtain a copy of the License at
+ *     WSO2 Inc. licenses this file to you under the Apache License,
+ *     Version 2.0 (the "License"); you may not use this file except
+ *     in compliance with the License.
+ *     You may obtain a copy of the License at
  *
- *  http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing,
- *  software distributed under the License is distributed on an
- *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- *  KIND, either express or implied.  See the License for the
- *  specific language governing permissions and limitations
- *  under the License.
- *
+ *    Unless required by applicable law or agreed to in writing,
+ *    software distributed under the License is distributed on an
+ *    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *    KIND, either express or implied.  See the License for the
+ *    specific language governing permissions and limitations
+ *    under the License.
  */
 /*
  * Signature: saveWSDL(inputWsdl, fileName) {...}
@@ -85,8 +84,12 @@ function generateHTConfig(configDom, xmlDom, currentTask) {
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
     wsdlHTDeploymentConfig = configDom.getElementsByTagNameNS(HIC_NAMESPACE, HT_DEPLOYMENT_CONFIG_TAGNAME)[0];
     tasksList = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, TASK_TAGNAME);
-    targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
-    configDom.getElementsByTagNameNS(HIC_NAMESPACE, HT_DEPLOYMENT_CONFIG_TAGNAME)[0].setAttribute(XMLNS_TASK_ATTRIBUTE, targetnamespace);
+    if (xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length != 0) {
+        targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
+        if (configDom.getElementsByTagNameNS(HIC_NAMESPACE, HT_DEPLOYMENT_CONFIG_TAGNAME).length != 0) {
+            configDom.getElementsByTagNameNS(HIC_NAMESPACE, HT_DEPLOYMENT_CONFIG_TAGNAME)[0].setAttribute(XMLNS_TASK_ATTRIBUTE, targetnamespace);
+        }
+    }
     for (l = 0; l < tasksList.length; l++) {
 
         var taskName = tasksList[l].getAttribute(NAME_ATTRIBUTE);
@@ -132,13 +135,20 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     serviceName = currentTask + "Service";
     portName = currentTask + "Port";
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
-    targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
-    wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(XMLNS_TNS_ATTRIBUTE, targetnamespace);
-    wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
+    if (xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length != 0) {
+        targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
+        if (wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {
+            wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(XMLNS_TNS_ATTRIBUTE, targetnamespace);
+        }
+        if (wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {
+            wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
+        }
+        wsdlSchema.setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
+    }
     // get Definitions node and Schema node from dummy wsdl dom
     wsdlSchema = wsdlDom.getElementsByTagNameNS(XSD_NAMESPACE, SCHEMA_TAGNAME)[0];
     wsdlDefinitions = wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0];
-    wsdlSchema.setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
+
     // create Data type elements
     newComplexType = wsdlDom.createElementNS(
         XSD_NAMESPACE, "xsd:complexType");
@@ -261,11 +271,16 @@ function generateOutputWSDL(wsdlDom, xmlDom, currentTask, serviceURL, operationN
     newComplexType = wsdlDom.createElementNS(
         XSD_NAMESPACE, "xsd:complexType");
     newComplexType.setAttribute(NAME_ATTRIBUTE, currentTask + "CBDataType"); // Data type Name
-    targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
-    wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(XMLNS_TNS_ATTRIBUTE, targetnamespace);
-    wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
-    wsdlSchema.setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
-
+    if (xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length != 0) {
+        targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
+        if (wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {
+            wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(XMLNS_TNS_ATTRIBUTE, targetnamespace);
+        }
+        if (wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {
+            wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME)[0].setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
+        }
+        wsdlSchema.setAttribute(TARGET_NAMESPACE_ATTRIBUTE, targetnamespace);
+    }
     newSequence = wsdlDom.createElementNS(XSD_NAMESPACE,
         "xsd:sequence");
     // should loop for input types

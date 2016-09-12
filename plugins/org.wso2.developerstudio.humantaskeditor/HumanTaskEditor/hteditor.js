@@ -1,20 +1,19 @@
 /*
- *  Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *     Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
- *  WSO2 Inc. licenses this file to you under the Apache License,
- *  Version 2.0 (the "License"); you may not use this file except
- *  in compliance with the License.
- *  You may obtain a copy of the License at
+ *     WSO2 Inc. licenses this file to you under the Apache License,
+ *     Version 2.0 (the "License"); you may not use this file except
+ *     in compliance with the License.
+ *     You may obtain a copy of the License at
  *
- *  http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing,
- *  software distributed under the License is distributed on an
- *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- *  KIND, either express or implied.  See the License for the
- *  specific language governing permissions and limitations
- *  under the License.
- *
+ *    Unless required by applicable law or agreed to in writing,
+ *    software distributed under the License is distributed on an
+ *    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *    KIND, either express or implied.  See the License for the
+ *    specific language governing permissions and limitations
+ *    under the License.
  */
 /* Namespace Definitions */
 var WSDL_NAMESPACE = "http://schemas.xmlsoap.org/wsdl/";
@@ -52,6 +51,9 @@ var SERVICE_TAGNAME = "service";
 var FROM_TAGNAME = "from";
 var USER_TAGNAME = "user";
 var GROUP_TAGNAME = "group";
+var ROLE_TAGNAME = "Role";
+var LITERAL_TAGNAME = "Literal";
+var EXPRESSION_TAGNAME = "Expression";
 /* Attribute Definitions */
 var ID_ATTRIBUTE = "id";
 var TYPE_ATTRIBUTE = "type";
@@ -63,6 +65,10 @@ var LOCATION_ATTRIBUTE = "location";
 var NAMESPACE_ATTRIBUTE = "namespace";
 var IMPORT_TYPE_ATTRIBUTE = "importType";
 var LOGICAL_PEOPLE_GROUP_ATTRIBUTE = "logicalPeopleGroup";
+/* Argument Definitions */
+var ROLE_ARGUMENT = "role";
+var LITERAL_ARGUMENT = "literal";
+var EXPRESSION_ARGUMENT = "expression";
 /*
  * Signature: makeDirty(){...}
  * 
@@ -901,12 +907,12 @@ function generateText(taskNode) {
 
 function getArgumentName(nameValue) {
     if (nameValue) {
-        if (nameValue.indexOf("Role") != -1) {
-            return "role";
-        } else if (nameValue.indexOf("Literal") != -1) {
-            return "literal";
-        } else if (nameValue.indexOf("Expression") != -1) {
-            return "expression";
+        if (nameValue.indexOf(ROLE_TAGNAME) != -1) {
+            return ROLE_ARGUMENT;
+        } else if (nameValue.indexOf(LITERAL_TAGNAME) != -1) {
+            return LITERAL_ARGUMENT;
+        } else if (nameValue.indexOf(EXPRESSION_TAGNAME) != -1) {
+            return EXPRESSION_ARGUMENT;
         } else {
             return "None";
         }
@@ -1043,7 +1049,7 @@ function addPeopleAssignementNode(taskNode, xmlDom, assignmentName) {
         newArgument = xmlDom.createElementNS(
             BPEL_NAMESPACE,
             "htd:argument");
-        newArgument.setAttribute(NAME_TAGNAME, "role");
+        newArgument.setAttribute(NAME_TAGNAME, ROLE_ARGUMENT);
         newArgumentText = xmlDom.createTextNode("regionalClerksRole");
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);
@@ -1097,7 +1103,7 @@ function addGeneralNode(taskNode, xmlDom, nodeName) {
         newArgument = xmlDom.createElementNS(
             BPEL_NAMESPACE,
             "htd:argument");
-        newArgument.setAttribute(NAME_TAGNAME, "role");
+        newArgument.setAttribute(NAME_TAGNAME, ROLE_ARGUMENT);
         newArgumentText = xmlDom.createTextNode("regionalClerksRole");
         newArgument.appendChild(newArgumentText);
         newFrom.appendChild(newArgument);
@@ -1149,7 +1155,7 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
     if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
         .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName).length != 0 && taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
         .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
-        .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME).length != 0 && $('#' + taskDivName + " input[name = " + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Role") {
+        .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME).length != 0 && $('#' + taskDivName + " input[name = " + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + ROLE_TAGNAME) {
         taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
             .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
             .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME)[0]
@@ -1159,8 +1165,8 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
                         '#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked")
                     .val()));
     } else {
-        if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Role" ||
-            $('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Literal") {
+        if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + ROLE_TAGNAME ||
+            $('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + LITERAL_TAGNAME) {
             addPeopleAssignementNode(taskNode, xmlDom, peopleAssignmentName);
             taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                 .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
@@ -1170,7 +1176,7 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
                     getArgumentName($(
                             '#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked")
                         .val()));
-        } else if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Expression") {
+        } else if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + EXPRESSION_TAGNAME) {
             addExpressionNode(taskNode, xmlDom, peopleAssignmentName);
         }
     }
@@ -1179,12 +1185,12 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
         .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName).length != 0 && taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
         .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
         .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME).length != 0) {
-        if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Role") {
-            if ($('#' + taskDivName + " #" + peopleAssignmentName + "Role").val().trim() != "") {
+        if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + ROLE_TAGNAME) {
+            if ($('#' + taskDivName + " #" + peopleAssignmentName + ROLE_TAGNAME).val().trim() != "") {
                 taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME)[0].childNodes[0].nodeValue = $(
-                        '#' + taskDivName + " #" + peopleAssignmentName + "Role").val();
+                        '#' + taskDivName + " #" + peopleAssignmentName + ROLE_TAGNAME).val();
                 taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, FROM_TAGNAME)[0].setAttribute(LOGICAL_PEOPLE_GROUP_ATTRIBUTE, $(
@@ -1195,18 +1201,18 @@ function marshalPeopleAssignment(taskNode, peopleAssignmentName) {
             }
         }
     }
-    if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Expression") {
-        if ($('#' + taskDivName + " #" + peopleAssignmentName + "Expression").val().trim() != "") {
+    if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + EXPRESSION_TAGNAME) {
+        if ($('#' + taskDivName + " #" + peopleAssignmentName + EXPRESSION_TAGNAME).val().trim() != "") {
             taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                 .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
                 .getElementsByTagNameNS(BPEL_NAMESPACE, FROM_TAGNAME)[0].childNodes[0].nodeValue = $(
-                    '#' + taskDivName + " #" + peopleAssignmentName + "Expression").val();
+                    '#' + taskDivName + " #" + peopleAssignmentName + EXPRESSION_TAGNAME).val();
         } else {
             taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].removeChild(taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                 .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]);
         }
     }
-    if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + "Literal") {
+    if ($('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "]:checked").val() == peopleAssignmentName + LITERAL_TAGNAME) {
         createNewLiteral(xmlDom, taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
             .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
             .getElementsByTagNameNS(BPEL_NAMESPACE, FROM_TAGNAME)[0], $('#' + taskDivName + " #" + peopleAssignmentName + "LiteralUsers").val().trim(), $('#' + taskDivName + " #" + peopleAssignmentName + "LiteralGroups").val().trim());
@@ -1238,14 +1244,14 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
                         .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
                         .getElementsByTagNameNS(BPEL_NAMESPACE, ARGUMENT_TAGNAME)[0].childNodes[0].nodeValue.trim());
             }
-            if (ownerType == "Role") { //removeexpression
+            if (ownerType == ROLE_TAGNAME) { //removeexpression
                 $('#' + taskDivName + " #" + peopleAssignmentName + "" + ownerType + "LogicalGroup").val(
                     taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, FROM_TAGNAME)[0].getAttribute(LOGICAL_PEOPLE_GROUP_ATTRIBUTE))
             }
         } else {
-            if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0].getElementsByTagNameNS(BPEL_NAMESPACE, "literal").length != 0) {
+            if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0].getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0].getElementsByTagNameNS(BPEL_NAMESPACE, LITERAL_ARGUMENT).length != 0) {
                 $('#' + taskDivName + " input[name=" + peopleAssignmentName + "" + taskDivName + "][value=" + peopleAssignmentName + "Literal]").prop("checked", true);
                 usersList = taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
@@ -1273,7 +1279,7 @@ function unmarshalPeopleAssignment(taskNode, peopleAssignmentName) {
                 if (taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]
                     .getElementsByTagNameNS(BPEL_NAMESPACE, FROM_TAGNAME)[0].childNodes.length != 0) {
-                    $('#' + taskDivName + " #" + peopleAssignmentName + "Expression")
+                    $('#' + taskDivName + " #" + peopleAssignmentName + EXPRESSION_TAGNAME)
                         .val(
                             taskNode.getElementsByTagNameNS(BPEL_NAMESPACE, PEOPLE_ASSIGNMENTS_TAGNAME)[0]
                             .getElementsByTagNameNS(BPEL_NAMESPACE, peopleAssignmentName)[0]

@@ -295,7 +295,7 @@ public class ScriptGenerationUtil {
 		if (variableName.startsWith("{")) {
 			return variableName;
 		}
-		return variableName.replace(':', '_').replace(',', '_').replace('=', '_');
+		return variableName.replace(':', '_').replace(",", "_Separat0r_").replace('=', '_');
 	}
 
 	private static String getAccumulatedIterativeVariableString(Stack<ForLoopBean> parentForLoopBeanStack) {

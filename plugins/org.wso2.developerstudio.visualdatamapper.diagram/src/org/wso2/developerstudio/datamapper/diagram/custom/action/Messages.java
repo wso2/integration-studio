@@ -61,6 +61,8 @@ public class Messages extends NLS {
 	public static String SchemaKeyEditorDialog_SelecSchemaSource;
 	public static String SchemaKeyEditorDialog_SelectConnector;
 	public static String SchemaKeyEditorDialog_SelectConnectorOperation;
+	public static String SchemaKeyEditorDialog_GenerateSchema;
+	public static String SchemaKeyEditorDialog_GenerateDynamicSchema;
 	public static String SchemaKeyEditorDialog_EmbeddedResources;
 	public static String SchemaKeyEditorDialog_ErrorMsgHeader;
 	public static String SchemaKeyEditorDialog_ErrorOpeningFile;

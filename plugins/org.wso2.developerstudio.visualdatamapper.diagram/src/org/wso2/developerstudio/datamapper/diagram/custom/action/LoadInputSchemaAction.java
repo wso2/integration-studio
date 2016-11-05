@@ -38,7 +38,7 @@ import org.wso2.developerstudio.datamapper.impl.InputImpl;
 public class LoadInputSchemaAction extends AbstractActionHandler {
 
 	private static final int DIALOG_HEIGHT = 250;
-	private static final int DIALOG_WIDTH = 520;
+	private static final int DIALOG_WIDTH = 570;
 	private static final String CONFIGURE_INPUT_SCHEMA_ACTION_ID = "configure-input-schema-action-id"; //$NON-NLS-1$
 	private static final String INVALID_SELECTION = "Invalid selection."; //$NON-NLS-1$
 

@@ -111,10 +111,7 @@ public class CarbonServerCommonUtils {
 	}
 
 	public static String getAxis2FilePath(IServer server) {
-		IPath serverHome = CarbonServerManager.getServerHome(server);
-		String axis2Xml =
-		                  FileUtils.addNodesToPath(serverHome.toOSString(), new String[] { "repository", "conf",
-		                                                                                  "axis2", "axis2.xml" });
+		String axis2Xml = FileUtils.addNodesToPath(CarbonServerManager.getServerConfDir(server).toOSString(), new String[] { "axis2", "axis2.xml" });
 		return axis2Xml;
 	}
 

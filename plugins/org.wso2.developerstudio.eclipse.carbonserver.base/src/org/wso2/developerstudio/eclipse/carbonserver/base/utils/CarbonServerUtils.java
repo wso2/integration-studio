@@ -136,8 +136,7 @@ public class CarbonServerUtils {
 
 	public static String getWebContextRoot(IServer server) {
 		String transportsXml =
-		                       FileUtils.addNodesToPath(CarbonServerManager.getServerHome(server).toOSString(),
-		                                                new String[] { REPOSITORY, CONF, CARBON_XML });
+		                       FileUtils.addNodesToPath(CarbonServerManager.getServerConfDir(server).toOSString(), new String[] { CARBON_XML });
 		String webContextRoot = null;
 		if (transportsXml != null) {
 			File xmlDocument = new File(transportsXml);
@@ -182,9 +181,8 @@ public class CarbonServerUtils {
 	}
 
 	public static void setServicePath(IServer server) {
-		String axis2Xml =
-		                  FileUtils.addNodesToPath(CarbonServerManager.getServerHome(server).toOSString(),
-		                                           new String[] { REPOSITORY, CONF, AXIS2, AXIS2_XML });
+		String confDir = CarbonServerManager.getServerConfDir(server).toOSString(); 
+		String axis2Xml = FileUtils.addNodesToPath(confDir, new String[] { AXIS2, AXIS2_XML });
 		XPathFactory factory = XPathFactory.newInstance();
 
 		File xmlDocument = new File(axis2Xml);

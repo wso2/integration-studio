@@ -298,6 +298,28 @@ public final class CarbonServerManager implements IServerManager {
 
 		return location;
 	}
+	
+	public static IPath getServerConfDir(IServer server) {
+		IPath location = null;
+		if (server != null) {
+			IServerManager wsasServerManager = getInstance();
+			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
+			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
+			                        ICarbonOperationManager.OPERATION_GET_SERVER_CONF);
+			Object r;
+			try {
+				r = wsasServerManager.executeOperationOnServer(server, operationParameters);
+				if (r instanceof IPath)
+					location = (IPath) r;
+			} catch (NoSuchCarbonOperationDefinedException e) {
+				return null;
+			} catch (Exception e) {
+				log.error(e);
+			}
+		}
+
+		return location;
+	}
 
 	public int getServerStatus(String serverId) {
 		IServer server = getServer(serverId);

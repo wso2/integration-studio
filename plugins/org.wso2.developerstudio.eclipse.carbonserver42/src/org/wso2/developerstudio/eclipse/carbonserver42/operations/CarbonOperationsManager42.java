@@ -108,6 +108,10 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 						if (server != null)
 							result = commonOperations .getWSASHome(server);
 						break;
+					case ICarbonOperationManager.OPERATION_GET_SERVER_CONF:
+						if (server != null)
+							result = getServerConfDirPath(server);
+						break;
 					case ICarbonOperationManager.OPERATION_GET_SERVER_PORTS:
 						if (server != null)
 							result = carbonServer42Utils.getServerPorts(server);
@@ -424,4 +428,11 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 		}
 		return url;
 	}
+	
+    public IPath getServerConfDirPath(IServer server) {
+       IPath serverHome = commonOperations.getWSASHome(server);
+       String conf = FileUtils.addNodesToPath(serverHome.toOSString(), new String[] { "repository", "conf"});
+       return new Path(conf);
+    }
+
 }

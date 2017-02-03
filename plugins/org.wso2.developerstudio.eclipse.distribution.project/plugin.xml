@@ -245,6 +245,11 @@
           id="org.wso2.developerstudio.eclipse.capp.project.publisher44"
           serverid="org.wso2.developerstudio.eclipse.carbon.server44">
     </publisher>
+      <publisher
+          class="org.wso2.developerstudio.eclipse.distribution.project.publisher.CAppProjectPublisher"
+          id="org.wso2.developerstudio.eclipse.capp.project.publisher44"
+          serverid="org.wso2.developerstudio.eclipse.carbon.server44ei">
+    </publisher>
 	<publisher
           class="org.wso2.developerstudio.eclipse.distribution.project.publisher.CAppProjectRemotePublisher"
           id="org.wso2.developerstudio.eclipse.capp.project.publisher.remote"

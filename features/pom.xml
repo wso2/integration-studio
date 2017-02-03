@@ -31,6 +31,7 @@
 	<module>org.wso2.developerstudio.carbon.server-40.feature</module>
 	<module>org.wso2.developerstudio.carbon.server-42.feature</module>
 	<module>org.wso2.developerstudio.carbon.server-44.feature</module>
+        <module>org.wso2.developerstudio.carbon.server-44ei.feature</module>
 	<module>org.wso2.developerstudio.carbon.server-remote.feature</module>
 	<module>org.wso2.developerstudio.dashboard.feature</module>
 	<module>org.wso2.developerstudio.kernel.registry.core.feature</module>

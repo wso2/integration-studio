@@ -296,8 +296,12 @@ public abstract class AbstractEndpointDeserializer
 			String outboundPolicyKey = definition.getOutboundWsSecPolicyKey();
 			if(StringUtils.isNotEmpty(inboundPolicyKey) || StringUtils.isNotEmpty(outboundPolicyKey)){
 				endpointCommons.setInoutFields(true);
-				endpointCommons.getEndpointSecurityInboundPolicyKey().setText(inboundPolicyKey);
-				endpointCommons.getEndpointSecurityOutboundPolicyKey().setText(outboundPolicyKey);
+				if (StringUtils.isNotEmpty(inboundPolicyKey)) {
+					endpointCommons.getEndpointSecurityInboundPolicyKey().setText(inboundPolicyKey);
+				}
+				if(StringUtils.isNotEmpty(outboundPolicyKey)) {
+					endpointCommons.getEndpointSecurityOutboundPolicyKey().setText(outboundPolicyKey);
+				}
 			}
 		} else {
 			endpointCommons.getEndpointSecurity().select(1);

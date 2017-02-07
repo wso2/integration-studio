@@ -2,15 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>wso2-developerstudio-apim-feature</artifactId>
+        <artifactId>wso2-developerstudio-ei-project-feature</artifactId>
         <groupId>org.wso2.developerstudio</groupId>
-        <version>2.0.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>org.wso2.developerstudio.eclipse.apim.feature</artifactId>
+    <artifactId>org.wso2.developerstudio.eclipse.ei.project.feature</artifactId>
     <packaging>eclipse-feature</packaging>
-    <name>WSO2 Developer Studio API Manager Feature</name>
-    <description>This feature contains the bundles for WSO2 API Manager feature.</description>
+    <name>WSO2 Developer Studio - Enterprise Integrator Feature</name>
+    <description>This feature contains the bundles for WSO2 Enterprise Integrator feature.</description>
     <build>
         <plugins>
             <plugin>

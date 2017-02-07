@@ -22,11 +22,11 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>wso2-developerstudio-ei-feature</artifactId>
+    <artifactId>wso2-developerstudio-ei-project-feature</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 EI Tooling Feature</name>
+    <name>WSO2 EI Tooling Features</name>
     <modules>
-        <module>org.wso2.developerstudio.eclipse.ei.feature</module>
+        <module>org.wso2.developerstudio.eclipse.ei.project.feature</module>
     </modules>
     <distributionManagement>
         <repository>

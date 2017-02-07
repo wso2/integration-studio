@@ -7,7 +7,7 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>wso2-developerstudio-ei-plugins</artifactId>
+    <artifactId>wso2-developerstudio-ei-project-plugins</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 EI Tooling Plugins</name>
     <modules>

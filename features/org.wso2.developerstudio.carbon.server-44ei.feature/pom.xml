@@ -9,8 +9,8 @@
     </parent>
     <artifactId>org.wso2.developerstudio.carbon.server-44ei.feature</artifactId>
     <packaging>eclipse-feature</packaging>
-    <name>WSO2 Developer Studio EI (Carbon Server 44) Feature</name>
-    <description>This feature contains the Enterprise Integrator server (carbon 44) bundles for WSO2 Developer Studio Kernel 4.0.0</description>
+    <name>WSO2 Developer Studio Enterprise Integrator Feature</name>
+    <description>This feature contains the Enterprise Integrator (Carbon 4.4 based) bundles for WSO2 Developer Studio Kernel 4.0.0</description>
     <build>
         <plugins>
             <plugin>

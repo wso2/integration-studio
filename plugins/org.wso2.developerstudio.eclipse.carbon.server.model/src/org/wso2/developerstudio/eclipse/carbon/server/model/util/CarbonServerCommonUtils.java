@@ -231,10 +231,9 @@ public class CarbonServerCommonUtils {
 		FileOutputStream f_out = null;
 		ObjectOutputStream obj_out = null;
 		try {
-			String serverLocalWorkspacePath = CarbonServerManager.getServerLocalWorkspacePath(server);
+			String serverLocalConfPath = CarbonServerManager.getServerConfDir(server).toOSString();
 			String objConfigPath =
-			                       FileUtils.addNodesToPath(serverLocalWorkspacePath, new String[] { "repository",
-			                                                                                        "conf", "config" });
+			                       FileUtils.addNodesToPath(serverLocalConfPath, new String[] { "config" });
 			f_out = new FileOutputStream(objConfigPath);
 			obj_out = new ObjectOutputStream(f_out);
 			obj_out.writeObject(gserver.getServerInstanceProperties());

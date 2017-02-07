@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.carbon.server-44ei.feature"
-      label="Enterprice Integrator (Carbon 4.4.0) Server Feature"
+      label="WSO2 Enterprise Integrator (Carbon 4.4 based) Feature"
       version="4.1.1.qualifier"
       provider-name="%providerName">
 

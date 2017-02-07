@@ -9,7 +9,7 @@
 		label="Runtime Name" 
 		type="string"
         context="runtime" 
-		default="WSO2 Carbon 4.4 based EI server" />
+		default="WSO2 Enterprise Integrator 6.0.0" />
 		
 	<property 
 		id="carbon.home" 

@@ -31,5 +31,5 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.carbonserver44ei</artifactId>
   <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio EI (Carbon Server 4.4)</name>
+    <name>Developer Studio Enterprise Integrator (Carbon 4.4 based)</name>
 </project>

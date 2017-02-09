@@ -64,6 +64,12 @@
  <feature id="org.wso2.developerstudio.mvn.multimodule.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
    </feature>
+ <feature id="org.wso2.developerstudio.web.ui.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>  
+  <feature id="org.eclipse.graphiti.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature> 
   <!-- ESB features -->
    <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
@@ -75,6 +81,26 @@
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
    </feature>
    <feature id="org.wso2.developerstudio.eclipse.visualdatamapper.editor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+ <feature id="org.wso2.developerstudio.eclipse.smooks.editor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+ </feature>
+   <!-- BPS features -->
+   <feature id="org.wso2.developerstudio.eclipse.bps.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.bps.hteditor.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.bps.bpmn.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <!-- DSS features -->
+   <feature id="org.wso2.developerstudio.eclipse.data.service.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+   </feature>
+   <feature id="org.wso2.developerstudio.eclipse.dss.dependencies.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
    </feature>
 </site>

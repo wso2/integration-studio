@@ -142,6 +142,28 @@
             <layout>p2</layout>
         </repository>
 
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-DSS-p2-releases-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/dss-tools/releases/3.5.1/</url>
+            <layout>p2</layout>
+        </repository>
+
+       <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-BPS-p2-releases-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/bps-tools/releases/3.6.0/</url>
+            <layout>p2</layout>
+        </repository>
+
 	<repository>
             <releases>
                 <enabled>true</enabled>

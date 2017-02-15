@@ -48,7 +48,7 @@ public class SchemaBuilder {
 	private static final String ROOT_TITLE = "root";
 	protected static final String AT_PREFIX = "@";
 	protected static final String DOLLLAR_AT_PREFIX = "$@";
-	protected static final String DOLLAR_PREFIX = "$";
+	protected static final String DOLLAR_PREFIX = "@#$";
 	protected static final String HASHCONTENT = "#@content";
 	protected static final String CONTENT = "content";
 	protected static final String XSI_TYPE_OLD = "_$@xsi:type_";

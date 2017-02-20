@@ -71,7 +71,7 @@ public class CarbonServerBehavior44ei extends CarbonServerBehaviour {
     private static final String SERVER_PORTS_OFFSET_XPATH = "/Server/Ports/Offset";
     private static final Object EMPTY_STRING = "";
     private static final String HTTPS_NAME_TAG = "https";
-    private static final String SERVER_SERVICE_CONNECTOR_XPATH = "/Server/Service/Connector[1]/@port";
+    private static final String SERVER_SERVICE_CONNECTOR_XPATH = "/Server/Service/Connector[1]/@proxyPort";
     private static final String HTTP_NAME_TAG = "http";
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private CarbonServer44eiUtils carbonServer44eiUtils = new CarbonServer44eiUtils();
@@ -162,7 +162,7 @@ public class CarbonServerBehavior44ei extends CarbonServerBehaviour {
 
 			for (int i = 0; i < ports.length; i++) {
 				int j = CarbonServerCommonConstants.getPortcaptions(Activator.PLUGIN_ID).indexOf(ports[i].getName());
-				if (j != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(j).equals("carbon.http")) {
+				if (j != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(j).equals("synapse.transport.http")) {
 					sp = ports[i];
 					port = sp.getPort();
 				} else if (j != -1 && CarbonServerCommonConstants.getPortids(Activator.PLUGIN_ID).get(j).equals("carbon.offset")) {
@@ -228,12 +228,12 @@ public class CarbonServerBehavior44ei extends CarbonServerBehaviour {
     protected Integer[] getAllPortsServerWillUse(IServer server) {
         List<Integer> ports = new ArrayList<>();
 
-        String axis2FilePath = getAxis2FilePath();
+        //String axis2FilePath = getAxis2FilePath();
         String carbonXmlPath = getCarbonXmlFilePath();
         String catelinaXmlFilePath = getCatelinaXmlFilePath();
 
         addServletTransportPorts(ports, carbonXmlPath, catelinaXmlFilePath);
-        addAxis2XmlPorts(ports, axis2FilePath);
+        //addAxis2XmlPorts(ports, axis2FilePath);
 
         return ports.toArray(new Integer[] {});
     }

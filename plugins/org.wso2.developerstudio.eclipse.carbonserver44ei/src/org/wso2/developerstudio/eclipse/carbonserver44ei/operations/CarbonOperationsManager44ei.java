@@ -394,7 +394,10 @@ public class CarbonOperationsManager44ei implements ICarbonOperationManager {
 			IPath antFile = wsasHome.append("bin").append("build.xml");
 			if (antFile.toFile().exists()) {
 				runner.setBuildFileLocation(antFile.toOSString());
-				runner.run(new NullProgressMonitor());
+				//fixing the server not starting (osgi) issue
+				//below line executes the build file and copies the jars from repo/components/plugins to lib
+				//which is not needed for server to operate
+				//runner.run(new NullProgressMonitor());
 			}
 		}
 	}

@@ -37,6 +37,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 public class ScriptGenerationUtil {
 
 	private static final int VARIABLE_TYPE_INDEX = 0;
+	private static final String HYPHEN_PREFIX = "_EnC0DeCHaRHyPh3n_";
 	public static final String VALID_VARIABLE_NAME_REGEX = "^[a-zA-Z][a-zA-Z_$0-9]*$";
 
 	public static String getPrettyVariableNameInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map,
@@ -295,7 +296,7 @@ public class ScriptGenerationUtil {
 		if (variableName.startsWith("{")) {
 			return variableName;
 		}
-		return variableName.replace(':', '_').replace(",", "_Separat0r_").replace('=', '_');
+		return variableName.replace(':', '_').replace(",", "_Separat0r_").replace('=', '_').replace("-", HYPHEN_PREFIX);
 	}
 
 	private static String getAccumulatedIterativeVariableString(Stack<ForLoopBean> parentForLoopBeanStack) {

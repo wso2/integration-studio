@@ -368,7 +368,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 */
 	protected String newPropertyName = NEW_PROPERTY_NAME_EDEFAULT;
 	
-	private Map<String, PropertyScope> propertyNameScopeMap = new HashMap<>();
+	private Map<String, PropertyScope> propertyNameScopeMap = new HashMap<String, PropertyScope>();
 
 	/**
 	 * <!-- begin-user-doc -->

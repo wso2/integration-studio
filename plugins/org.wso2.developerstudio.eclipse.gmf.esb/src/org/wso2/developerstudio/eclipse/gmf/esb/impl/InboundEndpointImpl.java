@@ -2460,7 +2460,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SOCKET_TIMEOUT_MS_EDEFAULT = 0;
+	protected static final String SOCKET_TIMEOUT_MS_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getSocketTimeoutMs() <em>Socket Timeout Ms</em>}' attribute.
@@ -2470,7 +2470,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected int socketTimeoutMs = SOCKET_TIMEOUT_MS_EDEFAULT;
+	protected String socketTimeoutMs = SOCKET_TIMEOUT_MS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSocketReceiveBufferBytes() <em>Socket Receive Buffer Bytes</em>}' attribute.
@@ -4426,7 +4426,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getSocketTimeoutMs() {
+	public String getSocketTimeoutMs() {
 		return socketTimeoutMs;
 	}
 
@@ -4435,8 +4435,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSocketTimeoutMs(int newSocketTimeoutMs) {
-		int oldSocketTimeoutMs = socketTimeoutMs;
+	public void setSocketTimeoutMs(String newSocketTimeoutMs) {
+		String oldSocketTimeoutMs = socketTimeoutMs;
 		socketTimeoutMs = newSocketTimeoutMs;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS, oldSocketTimeoutMs, socketTimeoutMs));
@@ -8173,7 +8173,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				setConsumerId((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
-				setSocketTimeoutMs((Integer)newValue);
+				setSocketTimeoutMs((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
 				setSocketReceiveBufferBytes((String)newValue);
@@ -9129,7 +9129,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
 				return CONSUMER_ID_EDEFAULT == null ? consumerId != null : !CONSUMER_ID_EDEFAULT.equals(consumerId);
 			case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
-				return socketTimeoutMs != SOCKET_TIMEOUT_MS_EDEFAULT;
+				return SOCKET_TIMEOUT_MS_EDEFAULT == null ? socketTimeoutMs != null : !SOCKET_TIMEOUT_MS_EDEFAULT.equals(socketTimeoutMs);
 			case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
 				return SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT == null ? socketReceiveBufferBytes != null : !SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT.equals(socketReceiveBufferBytes);
 			case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:

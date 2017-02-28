@@ -1016,6 +1016,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Socket Timeout Ms</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Socket Timeout Ms</em>' attribute isn't clear,
@@ -1023,12 +1024,12 @@ public interface InboundEndpoint extends EsbElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Socket Timeout Ms</em>' attribute.
-	 * @see #setSocketTimeoutMs(int)
+	 * @see #setSocketTimeoutMs(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SocketTimeoutMs()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
-	int getSocketTimeoutMs();
+	String getSocketTimeoutMs();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSocketTimeoutMs <em>Socket Timeout Ms</em>}' attribute.
@@ -1038,7 +1039,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @see #getSocketTimeoutMs()
 	 * @generated
 	 */
-	void setSocketTimeoutMs(int value);
+	void setSocketTimeoutMs(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Socket Receive Buffer Bytes</b></em>' attribute.

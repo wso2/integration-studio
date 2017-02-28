@@ -187,7 +187,7 @@ public abstract class ConfigurationPortCommonEditorSection extends ServerEditorS
 	public void init(IEditorSite site, IEditorInput input) {
 		super.init(site, input);
 
-		GenericServer gserver = (GenericServer) server.getOriginal().getAdapter(GenericServer.class);
+		GenericServer gserver = (GenericServer) server.getOriginal().loadAdapter(GenericServer.class, null);
 		try {
 			gserver.getServerInstanceProperties();
 			int a = 10;

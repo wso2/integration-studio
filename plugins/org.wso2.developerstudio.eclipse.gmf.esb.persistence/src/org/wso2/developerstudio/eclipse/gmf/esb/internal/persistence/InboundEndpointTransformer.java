@@ -760,8 +760,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.CONSUMER_ID,
                         visualInboundEndpoint.getConsumerId());
             }
-            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SOCKET_TIMEOUT_MS,
-                    Integer.toString(visualInboundEndpoint.getSocketTimeoutMs()));
+			if (visualInboundEndpoint.getSocketTimeoutMs() != -1) {
+				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SOCKET_TIMEOUT_MS,
+						Integer.toString(visualInboundEndpoint.getSocketTimeoutMs()));
+			}
             if (StringUtils.isNotBlank(visualInboundEndpoint.getSocketReceiveBufferBytes())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SOCKET_RECEIVE_BUFFER_BYTES,
                         visualInboundEndpoint.getSocketReceiveBufferBytes());

@@ -2460,7 +2460,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SOCKET_TIMEOUT_MS_EDEFAULT = 0;
+	protected static final int SOCKET_TIMEOUT_MS_EDEFAULT = -1;
 
 	/**
 	 * The cached value of the '{@link #getSocketTimeoutMs() <em>Socket Timeout Ms</em>}' attribute.

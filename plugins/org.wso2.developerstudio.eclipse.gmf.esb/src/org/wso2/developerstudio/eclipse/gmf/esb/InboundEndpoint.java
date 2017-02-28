@@ -1016,6 +1016,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Socket Timeout Ms</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Socket Timeout Ms</em>' attribute isn't clear,
@@ -1025,7 +1026,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Socket Timeout Ms</em>' attribute.
 	 * @see #setSocketTimeoutMs(int)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SocketTimeoutMs()
-	 * @model
+	 * @model default="-1"
 	 * @generated
 	 */
 	int getSocketTimeoutMs();

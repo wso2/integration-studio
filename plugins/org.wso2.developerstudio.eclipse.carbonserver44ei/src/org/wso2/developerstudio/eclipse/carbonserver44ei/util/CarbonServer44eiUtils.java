@@ -99,7 +99,7 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 		int httpsPort = 9443;
 		int offset = 0;
 		for (ServerPort serverPort : serverPorts) {
-			if (serverPort.getName().equals("Synapse transport HTTPS port(change only if applicable)") &&
+			if (serverPort.getName().equals("Carbon web console port (HTTPS)") &&
 			    serverPort.getProtocol().equals("https")) {
 				httpsPort = serverPort.getPort();
 			} else if (serverPort.getName().equals("Carbon Server Offset")) {
@@ -491,7 +491,7 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 				XPath xPath = factory.newXPath();
 				XPath catelinaXPath = factory.newXPath();
 				xPath.setNamespaceContext(cntx);
-                Node httpNode = (Node) catelinaXPath.evaluate("/Server/Service/Connector[1]/@proxyPort", catelinaDocument,
+                Node httpNode = (Node) catelinaXPath.evaluate("/Server/Service/Connector[1]/@port", catelinaDocument,
                         XPathConstants.NODE);
                 Node httpsNode = (Node) catelinaXPath.evaluate(
                         CarbonServerCommonConstants.getCatalinaXpathExpressionForSslEnabledPort(Activator.PLUGIN_ID),

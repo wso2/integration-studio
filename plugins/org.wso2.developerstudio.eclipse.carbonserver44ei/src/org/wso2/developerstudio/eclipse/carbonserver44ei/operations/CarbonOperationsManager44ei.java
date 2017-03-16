@@ -296,7 +296,7 @@ public class CarbonOperationsManager44ei implements ICarbonOperationManager {
 		String serverLocalRepoLocation = carbonServer44eiUtils.getRepositoryPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
 		String serverLocalConfLocation = carbonServer44eiUtils.getConfPathFromLocalWorkspaceRepo(serverLocalWorkspacePath);
 		carbonServer44eiUtils.updateTransportPorts(server);
-		//carbonServer44eiUtils.updateAxis2XML(server);
+		carbonServer44eiUtils.updateAxis2XML(server);
 		// just retrieving the value for hotupdate will update the axis2.xml
 		// also
 		isServerHotUpdate(server);

@@ -197,6 +197,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTraceEnabled <em>Trace Enabled</em>}</li>
@@ -2513,6 +2516,84 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportRabbitMqConnectionSslVersion(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Message Content Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Message Content Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Message Content Type</em>' attribute.
+	 * @see #setTransportRabbitMqMessageContentType(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqMessageContentType()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqMessageContentType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Message Content Type</em>' attribute.
+	 * @see #getTransportRabbitMqMessageContentType()
+	 * @generated
+	 */
+	void setTransportRabbitMqMessageContentType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Retry Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Retry Count</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Retry Count</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionRetryCount(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionRetryCount()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionRetryCount();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Retry Count</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionRetryCount()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionRetryCount(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Connection Retry Interval</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Connection Retry Interval</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Connection Retry Interval</em>' attribute.
+	 * @see #setTransportRabbitMqConnectionRetryInterval(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionRetryInterval()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConnectionRetryInterval();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Connection Retry Interval</em>' attribute.
+	 * @see #getTransportRabbitMqConnectionRetryInterval()
+	 * @generated
+	 */
+	void setTransportRabbitMqConnectionRetryInterval(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Transport Feed URL</b></em>' attribute.

@@ -233,6 +233,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedURL <em>Transport Feed URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
@@ -3583,6 +3586,66 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String transportRabbitMqConnectionSslVersion = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getTransportRabbitMqMessageContentType() <em>Transport Rabbit Mq Message Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqMessageContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqMessageContentType() <em>Transport Rabbit Mq Message Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqMessageContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqMessageContentType = TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionRetryCount() <em>Transport Rabbit Mq Connection Retry Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionRetryCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionRetryCount() <em>Transport Rabbit Mq Connection Retry Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionRetryCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionRetryCount = TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConnectionRetryInterval() <em>Transport Rabbit Mq Connection Retry Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionRetryInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConnectionRetryInterval() <em>Transport Rabbit Mq Connection Retry Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConnectionRetryInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConnectionRetryInterval = TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getTransportFeedURL() <em>Transport Feed URL</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5607,6 +5670,69 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		transportRabbitMqConnectionSslVersion = newTransportRabbitMqConnectionSslVersion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION, oldTransportRabbitMqConnectionSslVersion, transportRabbitMqConnectionSslVersion));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqMessageContentType() {
+		return transportRabbitMqMessageContentType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqMessageContentType(String newTransportRabbitMqMessageContentType) {
+		String oldTransportRabbitMqMessageContentType = transportRabbitMqMessageContentType;
+		transportRabbitMqMessageContentType = newTransportRabbitMqMessageContentType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE, oldTransportRabbitMqMessageContentType, transportRabbitMqMessageContentType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionRetryCount() {
+		return transportRabbitMqConnectionRetryCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionRetryCount(String newTransportRabbitMqConnectionRetryCount) {
+		String oldTransportRabbitMqConnectionRetryCount = transportRabbitMqConnectionRetryCount;
+		transportRabbitMqConnectionRetryCount = newTransportRabbitMqConnectionRetryCount;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT, oldTransportRabbitMqConnectionRetryCount, transportRabbitMqConnectionRetryCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConnectionRetryInterval() {
+		return transportRabbitMqConnectionRetryInterval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConnectionRetryInterval(String newTransportRabbitMqConnectionRetryInterval) {
+		String oldTransportRabbitMqConnectionRetryInterval = transportRabbitMqConnectionRetryInterval;
+		transportRabbitMqConnectionRetryInterval = newTransportRabbitMqConnectionRetryInterval;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL, oldTransportRabbitMqConnectionRetryInterval, transportRabbitMqConnectionRetryInterval));
 	}
 
 	/**
@@ -7812,6 +7938,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportRabbitMqConnectionSslTruststorePassword();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
 				return getTransportRabbitMqConnectionSslVersion();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
+				return getTransportRabbitMqMessageContentType();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
+				return getTransportRabbitMqConnectionRetryCount();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
+				return getTransportRabbitMqConnectionRetryInterval();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				return getTransportFeedURL();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
@@ -8343,6 +8475,15 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
 				setTransportRabbitMqConnectionSslVersion((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
+				setTransportRabbitMqMessageContentType((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
+				setTransportRabbitMqConnectionRetryCount((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
+				setTransportRabbitMqConnectionRetryInterval((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				setTransportFeedURL((String)newValue);
@@ -8878,6 +9019,15 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
 				setTransportRabbitMqConnectionSslVersion(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
+				setTransportRabbitMqMessageContentType(TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
+				setTransportRabbitMqConnectionRetryCount(TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
+				setTransportRabbitMqConnectionRetryInterval(TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				setTransportFeedURL(TRANSPORT_FEED_URL_EDEFAULT);
 				return;
@@ -9242,6 +9392,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT == null ? transportRabbitMqConnectionSslTruststorePassword != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT.equals(transportRabbitMqConnectionSslTruststorePassword);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
 				return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT == null ? transportRabbitMqConnectionSslVersion != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT.equals(transportRabbitMqConnectionSslVersion);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
+				return TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT == null ? transportRabbitMqMessageContentType != null : !TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT.equals(transportRabbitMqMessageContentType);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT == null ? transportRabbitMqConnectionRetryCount != null : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT.equals(transportRabbitMqConnectionRetryCount);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
+				return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT == null ? transportRabbitMqConnectionRetryInterval != null : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqConnectionRetryInterval);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				return TRANSPORT_FEED_URL_EDEFAULT == null ? transportFeedURL != null : !TRANSPORT_FEED_URL_EDEFAULT.equals(transportFeedURL);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
@@ -9592,6 +9748,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportRabbitMqConnectionSslTruststorePassword);
 		result.append(", transportRabbitMqConnectionSslVersion: ");
 		result.append(transportRabbitMqConnectionSslVersion);
+		result.append(", transportRabbitMqMessageContentType: ");
+		result.append(transportRabbitMqMessageContentType);
+		result.append(", transportRabbitMqConnectionRetryCount: ");
+		result.append(transportRabbitMqConnectionRetryCount);
+		result.append(", transportRabbitMqConnectionRetryInterval: ");
+		result.append(transportRabbitMqConnectionRetryInterval);
 		result.append(", transportFeedURL: ");
 		result.append(transportFeedURL);
 		result.append(", transportFeedType: ");

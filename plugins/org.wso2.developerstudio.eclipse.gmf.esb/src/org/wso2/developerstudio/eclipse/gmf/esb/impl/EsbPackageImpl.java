@@ -11196,7 +11196,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportFeedURL() {
+	public EAttribute getInboundEndpoint_TransportRabbitMqMessageContentType() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(170);
 	}
 
@@ -11205,7 +11205,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportFeedType() {
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionRetryCount() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(171);
 	}
 
@@ -11214,7 +11214,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TraceEnabled() {
+	public EAttribute getInboundEndpoint_TransportRabbitMqConnectionRetryInterval() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(172);
 	}
 
@@ -11223,8 +11223,35 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_StatisticsEnabled() {
+	public EAttribute getInboundEndpoint_TransportFeedURL() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(173);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportFeedType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(174);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TraceEnabled() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(175);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_StatisticsEnabled() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(176);
 	}
 
 	/**
@@ -20439,6 +20466,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_FEED_URL);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRACE_ENABLED);
@@ -22809,6 +22839,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslTruststoreType(), ecorePackage.getEString(), "transportRabbitMqConnectionSslTruststoreType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslTruststorePassword(), ecorePackage.getEString(), "transportRabbitMqConnectionSslTruststorePassword", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionSslVersion(), ecorePackage.getEString(), "transportRabbitMqConnectionSslVersion", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqMessageContentType(), ecorePackage.getEString(), "transportRabbitMqMessageContentType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionRetryCount(), ecorePackage.getEString(), "transportRabbitMqConnectionRetryCount", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionRetryInterval(), ecorePackage.getEString(), "transportRabbitMqConnectionRetryInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportFeedURL(), ecorePackage.getEString(), "transportFeedURL", "", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportFeedType(), this.getFeedType(), "transportFeedType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TraceEnabled(), ecorePackage.getEBoolean(), "traceEnabled", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

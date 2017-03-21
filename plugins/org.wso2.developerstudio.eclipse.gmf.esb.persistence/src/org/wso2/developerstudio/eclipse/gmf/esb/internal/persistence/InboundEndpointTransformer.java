@@ -1080,6 +1080,19 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_VERSION,
                         visualInboundEndpoint.getTransportRabbitMqConnectionSslVersion());
             }
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqMessageContentType())) {
+				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_MESSAGE_CONTENT_TYPE,
+						visualInboundEndpoint.getTransportRabbitMqMessageContentType());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionRetryCount())) {
+				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_COUNT,
+						visualInboundEndpoint.getTransportRabbitMqConnectionRetryCount());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionRetryInterval())) {
+				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_INTERVAL,
+						visualInboundEndpoint.getTransportRabbitMqConnectionRetryInterval());
+			}
+
             break;
         case FEED:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {

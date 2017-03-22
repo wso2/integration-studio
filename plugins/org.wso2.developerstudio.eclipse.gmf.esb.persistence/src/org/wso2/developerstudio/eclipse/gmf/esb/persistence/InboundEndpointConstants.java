@@ -210,6 +210,9 @@ public class InboundEndpointConstants {
 	public static final String RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE = "rabbitmq.connection.ssl.truststore.type";
 	public static final String RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD = "rabbitmq.connection.ssl.truststore.password";
 	public static final String RABBITMQ_CONNECTION_SSL_VERSION = "rabbitmq.connection.ssl.version";
+	public static final String RABBITMQ_MESSAGE_CONTENT_TYPE = "rabbitmq.message.content.type";
+	public static final String RABBITMQ_CONNECTION_RETRY_COUNT = "rabbitmq.connection.retry.count";
+	public static final String RABBITMQ_CONNECTION_RETRY_INTERVAL = "rabbitmq.connection.retry.interval";
 	
 	public static final String INBOUND_FEED_URL = "feed.url";
 	public static final String INBOUND_FEED_TYPE = "feed.type";

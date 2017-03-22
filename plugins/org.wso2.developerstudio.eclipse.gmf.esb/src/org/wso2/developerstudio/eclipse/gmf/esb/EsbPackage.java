@@ -24509,13 +24509,40 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION = ESB_ELEMENT_FEATURE_COUNT + 169;
 
 	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Message Content Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 170;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Retry Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT = ESB_ELEMENT_FEATURE_COUNT + 171;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Connection Retry Interval</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 172;
+
+	/**
 	 * The feature id for the '<em><b>Transport Feed URL</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 170;
+	int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 173;
 
 	/**
 	 * The feature id for the '<em><b>Transport Feed Type</b></em>' attribute.
@@ -24524,7 +24551,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 171;
+	int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 174;
 
 	/**
 	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
@@ -24533,7 +24560,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 172;
+	int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 175;
 
 	/**
 	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
@@ -24542,7 +24569,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 173;
+	int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 176;
 
 	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
@@ -24551,7 +24578,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 174;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 177;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -34716,6 +34743,39 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpoint_TransportRabbitMqConnectionSslVersion();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Message Content Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMessageContentType()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqMessageContentType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Retry Count</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionRetryCount();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Connection Retry Interval</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConnectionRetryInterval();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}'.
@@ -50238,6 +50298,30 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionSslVersion();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Message Content Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE = eINSTANCE.getInboundEndpoint_TransportRabbitMqMessageContentType();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Retry Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionRetryCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Connection Retry Interval</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionRetryInterval();
 
 		/**
 		 * The meta object literal for the '<em><b>Transport Feed URL</b></em>' attribute feature.

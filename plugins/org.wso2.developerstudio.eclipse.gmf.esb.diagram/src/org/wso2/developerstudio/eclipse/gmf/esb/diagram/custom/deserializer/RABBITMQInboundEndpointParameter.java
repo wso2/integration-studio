@@ -43,6 +43,9 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -106,7 +109,14 @@ public enum RABBITMQInboundEndpointParameter {
     RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD,
             INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD, true),
     RABBITMQ_CONNECTION_SSL_VERSION_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_VERSION,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION, true);
+            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION, true),
+    RABBITMQ_MESSAGE_CONTENT_TYPE(InboundEndpointConstants.RABBITMQ_MESSAGE_CONTENT_TYPE,
+    		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE, true),
+    RABBITMQ_CONNECTION_RETRY_COUNT(InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_COUNT,
+    		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT, true),
+    RABBITMQ_CONNECTION_RETRY_INTERVAL(InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_INTERVAL,
+    		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL, true);
+
     
     private final String name;
     private final EAttribute eAttributeValue;

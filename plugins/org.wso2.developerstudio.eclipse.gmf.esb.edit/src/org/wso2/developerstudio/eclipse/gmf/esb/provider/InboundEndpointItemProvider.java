@@ -281,6 +281,9 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportRabbitMqConnectionSslTruststoreTypePropertyDescriptor(object);
 			addTransportRabbitMqConnectionSslTruststorePasswordPropertyDescriptor(object);
 			addTransportRabbitMqConnectionSslVersionPropertyDescriptor(object);
+			addTransportRabbitMqMessageContentTypePropertyDescriptor(object);
+			addTransportRabbitMqConnectionRetryCountPropertyDescriptor(object);
+			addTransportRabbitMqConnectionRetryIntervalPropertyDescriptor(object);		
 			break;			
 		case FEED:
 			addIntervalPropertyDescriptor(object);
@@ -2116,6 +2119,72 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 getString("_UI_InboundEndpoint_transportRabbitMqConnectionSslVersion_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqConnectionSslVersion_feature", "_UI_InboundEndpoint_type"),
 				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport Rabbit Mq Message Content Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportRabbitMqMessageContentTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportRabbitMqMessageContentType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqMessageContentType_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport Rabbit Mq Connection Retry Count feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportRabbitMqConnectionRetryCountPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportRabbitMqConnectionRetryCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqConnectionRetryCount_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport Rabbit Mq Connection Retry Interval feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportRabbitMqConnectionRetryIntervalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportRabbitMqConnectionRetryInterval_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqConnectionRetryInterval_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL,
 				 true,
 				 false,
 				 false,
@@ -4019,6 +4088,9 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:

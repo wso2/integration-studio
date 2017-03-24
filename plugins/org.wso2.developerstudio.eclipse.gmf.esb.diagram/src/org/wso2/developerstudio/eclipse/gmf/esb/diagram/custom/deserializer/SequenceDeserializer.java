@@ -85,19 +85,20 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
 					executeSetValueCommand(sequenceModel.getOnError(),
 							REGISTRY_KEY_PROPERTY__KEY_VALUE, sequence.getErrorHandler());
 				}
-				// Fixing TOOLS-2652
-				if (sequence.getTraceState() == 1) {
-					executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(true));
-				} else {
-					executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(false));
-				}
-				
+								
 		        StatisticsConfigurable  statisticsConfigurable = sequence.getAspectConfiguration();
 				if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
 					executeSetValueCommand(sequenceModel,SEQUENCES__STATISTICS_ENABLED, new Boolean(true));
 				}else{
 					executeSetValueCommand(sequenceModel,SEQUENCES__STATISTICS_ENABLED, new Boolean(false));
 				}
+				//Fixing DEVTOOLESB-787
+				if(statisticsConfigurable != null && statisticsConfigurable.isTracingEnabled()){
+					executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(true));
+				}else{
+					executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(false));
+				}
+				
 				refreshEditPartMap();
 				addRootInputConnector(sequenceModel.getInputConnector());
 				IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(
@@ -139,13 +140,6 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
 			onErrorSeq.setKeyValue(sequence.getErrorHandler());
 			executeSetValueCommand(PROXY_SERVICE__ON_ERROR, onErrorSeq);
 		}
-
-		// Fixing TOOLS-2652
-		if (sequence.getTraceState() == 1) {
-			executeSetValueCommand(SEQUENCES__TRACE_ENABLED, new Boolean(true));
-		} else {
-			executeSetValueCommand(SEQUENCES__TRACE_ENABLED, new Boolean(false));
-		}
 		
         StatisticsConfigurable  statisticsConfigurable = sequence.getAspectConfiguration();
 		if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
@@ -153,6 +147,13 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
 		}else{
 			executeSetValueCommand(SEQUENCES__STATISTICS_ENABLED, new Boolean(false));
 		}
+		//Fixing DEVTOOLESB-787
+		if(statisticsConfigurable != null && statisticsConfigurable.isTracingEnabled()){
+			executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(true));
+		}else{
+			executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(false));
+		}
+				
 		InMediator inMediator = getInMediator(sequence);
 		SequenceMediator inSequence = new SequenceMediator();
 		inSequence.addAll(inMediator.getList());

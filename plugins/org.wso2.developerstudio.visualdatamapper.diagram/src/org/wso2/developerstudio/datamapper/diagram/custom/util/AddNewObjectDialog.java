@@ -17,15 +17,12 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.util;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.tree.impl.TreeNodeImpl;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.impl.DiagramImpl;
@@ -49,14 +46,10 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.datamapper.Input;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
-import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 import org.wso2.developerstudio.datamapper.impl.DataMapperRootImpl;
 import org.wso2.developerstudio.datamapper.impl.ElementImpl;
 
@@ -112,10 +105,8 @@ public class AddNewObjectDialog extends Dialog {
 	private boolean isOutputEditpartContainer = false;
 	private boolean isRootElementNode = false;
 
-	private String[] DATA_TYPES = { "string", "number", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
-			"map", "union" };
-	private String[] DATA_TYPES_FOR_VALUE = { "","string", "number", "boolean", "bytes", "double", "enum", "fixed", "float", "long",
-			"map", "union" };
+	private String[] DATA_TYPES = { "string", "number", "boolean" };
+	private String[] DATA_TYPES_FOR_VALUE = { "","string", "number", "boolean" };
 	private String[] ROOT_TYPE = {"object","array"};
 	private String[] OBJECT_TYPE = { "object" };
 	private String[] ARRAY_TYPE = { "array" };
@@ -555,190 +546,6 @@ public class AddNewObjectDialog extends Dialog {
 				checkBoxForNullables.setVisible(true);
 				lblNullables.setVisible(true);
 				break;
-			case "bytes":
-				comboSchemaType.select(3);
-				lblID.setVisible(true);
-				textID.setVisible(true);
-				lblSchemaValue.setVisible(false);
-				textSchemaValue.setVisible(false);
-				lblNamespaces.setVisible(true);
-				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(false);
-				lblCheckBoxForValue.setVisible(false);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(false);
-				lblCheckBoxForIdentifiers.setVisible(false);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
-				checkBoxForNullables.setVisible(true);
-				lblNullables.setVisible(true);
-				break;
-			case "double":
-				comboSchemaType.select(4);
-				lblID.setVisible(true);
-				textID.setVisible(true);
-				lblSchemaValue.setVisible(false);
-				textSchemaValue.setVisible(false);
-				lblNamespaces.setVisible(true);
-				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(false);
-				lblCheckBoxForValue.setVisible(false);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(false);
-				lblCheckBoxForIdentifiers.setVisible(false);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
-				checkBoxForNullables.setVisible(true);
-				lblNullables.setVisible(true);
-				break;
-			case "enum":
-				comboSchemaType.select(5);
-				lblID.setVisible(true);
-				textID.setVisible(true);
-				lblSchemaValue.setVisible(false);
-				textSchemaValue.setVisible(false);
-				lblNamespaces.setVisible(true);
-				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(false);
-				lblCheckBoxForValue.setVisible(false);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(false);
-				lblCheckBoxForIdentifiers.setVisible(false);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
-				checkBoxForNullables.setVisible(true);
-				lblNullables.setVisible(true);
-				break;
-			case "fixed":
-				comboSchemaType.select(6);
-				lblID.setVisible(true);
-				textID.setVisible(true);
-				lblSchemaValue.setVisible(false);
-				textSchemaValue.setVisible(false);
-				lblNamespaces.setVisible(true);
-				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(false);
-				lblCheckBoxForValue.setVisible(false);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(false);
-				lblCheckBoxForIdentifiers.setVisible(false);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
-				checkBoxForNullables.setVisible(true);
-				lblNullables.setVisible(true);
-				break;
-			case "float":
-				comboSchemaType.select(7);
-				lblID.setVisible(true);
-				textID.setVisible(true);
-				lblSchemaValue.setVisible(false);
-				textSchemaValue.setVisible(false);
-				lblNamespaces.setVisible(true);
-				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(false);
-				lblCheckBoxForValue.setVisible(false);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(false);
-				lblCheckBoxForIdentifiers.setVisible(false);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
-				checkBoxForNullables.setVisible(true);
-				lblNullables.setVisible(true);
-				break;
-			case "long":
-				comboSchemaType.select(8);
-				lblID.setVisible(true);
-				textID.setVisible(true);
-				lblSchemaValue.setVisible(false);
-				textSchemaValue.setVisible(false);
-				lblNamespaces.setVisible(true);
-				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(false);
-				lblCheckBoxForValue.setVisible(false);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(false);
-				lblCheckBoxForIdentifiers.setVisible(false);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
-				checkBoxForNullables.setVisible(true);
-				lblNullables.setVisible(true);
-				break;
-			case "map":
-				comboSchemaType.select(9);
-				lblID.setVisible(true);
-				textID.setVisible(true);
-				lblSchemaValue.setVisible(false);
-				textSchemaValue.setVisible(false);
-				lblNamespaces.setVisible(true);
-				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(false);
-				lblCheckBoxForValue.setVisible(false);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(false);
-				lblCheckBoxForIdentifiers.setVisible(false);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
-				checkBoxForNullables.setVisible(true);
-				lblNullables.setVisible(true);
-				break;
-			case "union":
-				comboSchemaType.select(10);
-				lblID.setVisible(true);
-				textID.setVisible(true);
-				lblSchemaValue.setVisible(false);
-				textSchemaValue.setVisible(false);
-				lblNamespaces.setVisible(true);
-				textNamespaces.setVisible(true);
-				checkBoxForValue.setVisible(false);
-				lblCheckBoxForValue.setVisible(false);
-				lblValue.setVisible(false);
-				comboValue.setVisible(false);
-				checkBoxForIdentifiers.setVisible(false);
-				lblCheckBoxForIdentifiers.setVisible(false);
-				lblIdentifierType.setVisible(false);
-				lblIdentifierValue.setVisible(false);
-				textIdentifierType.setVisible(false);
-				textIdentifierValue.setVisible(false);
-				lblIdentifierURL.setVisible(false);
-				textIdentifierURL.setVisible(false);
-				checkBoxForNullables.setVisible(true);
-				lblNullables.setVisible(true);
-				break;
 			default:
 				break;
 			}
@@ -757,30 +564,6 @@ public class AddNewObjectDialog extends Dialog {
 					break;
 				case "boolean":
 					comboValue.select(3);
-					break;
-				case "bytes":
-					comboValue.select(4);
-					break;
-				case "double":
-					comboValue.select(5);
-					break;
-				case "enum":
-					comboValue.select(6);
-					break;
-				case "fixed":
-					comboValue.select(7);
-					break;
-				case "float":
-					comboValue.select(8);
-					break;
-				case "long":
-					comboValue.select(9);
-					break;
-				case "map":
-					comboValue.select(10);
-					break;
-				case "union":
-					comboValue.select(11);
 					break;
 				default:
 					break;

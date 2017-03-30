@@ -24536,13 +24536,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 172;
 
 	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Server Retry Interval</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 173;
+
+	/**
 	 * The feature id for the '<em><b>Transport Feed URL</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 173;
+	int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 174;
 
 	/**
 	 * The feature id for the '<em><b>Transport Feed Type</b></em>' attribute.
@@ -24551,7 +24560,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 174;
+	int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 175;
 
 	/**
 	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
@@ -24560,7 +24569,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 175;
+	int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 176;
 
 	/**
 	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
@@ -24569,7 +24578,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 176;
+	int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 177;
 
 	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
@@ -24578,7 +24587,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 177;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 178;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -34776,6 +34785,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpoint_TransportRabbitMqConnectionRetryInterval();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Server Retry Interval</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqServerRetryInterval();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}'.
@@ -50322,6 +50342,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL = eINSTANCE.getInboundEndpoint_TransportRabbitMqConnectionRetryInterval();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Server Retry Interval</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = eINSTANCE.getInboundEndpoint_TransportRabbitMqServerRetryInterval();
 
 		/**
 		 * The meta object literal for the '<em><b>Transport Feed URL</b></em>' attribute feature.

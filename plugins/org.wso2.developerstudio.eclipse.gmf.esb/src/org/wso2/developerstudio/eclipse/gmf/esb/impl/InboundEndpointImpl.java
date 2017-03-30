@@ -236,6 +236,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedURL <em>Transport Feed URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
@@ -3646,6 +3647,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String transportRabbitMqConnectionRetryInterval = TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getTransportRabbitMqServerRetryInterval() <em>Transport Rabbit Mq Server Retry Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerRetryInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqServerRetryInterval() <em>Transport Rabbit Mq Server Retry Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqServerRetryInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqServerRetryInterval = TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getTransportFeedURL() <em>Transport Feed URL</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5733,6 +5754,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		transportRabbitMqConnectionRetryInterval = newTransportRabbitMqConnectionRetryInterval;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL, oldTransportRabbitMqConnectionRetryInterval, transportRabbitMqConnectionRetryInterval));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqServerRetryInterval() {
+		return transportRabbitMqServerRetryInterval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqServerRetryInterval(String newTransportRabbitMqServerRetryInterval) {
+		String oldTransportRabbitMqServerRetryInterval = transportRabbitMqServerRetryInterval;
+		transportRabbitMqServerRetryInterval = newTransportRabbitMqServerRetryInterval;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL, oldTransportRabbitMqServerRetryInterval, transportRabbitMqServerRetryInterval));
 	}
 
 	/**
@@ -7944,6 +7986,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportRabbitMqConnectionRetryCount();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
 				return getTransportRabbitMqConnectionRetryInterval();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
+				return getTransportRabbitMqServerRetryInterval();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				return getTransportFeedURL();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
@@ -8484,6 +8528,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
 				setTransportRabbitMqConnectionRetryInterval((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
+				setTransportRabbitMqServerRetryInterval((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				setTransportFeedURL((String)newValue);
@@ -9028,6 +9075,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
 				setTransportRabbitMqConnectionRetryInterval(TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
+				setTransportRabbitMqServerRetryInterval(TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				setTransportFeedURL(TRANSPORT_FEED_URL_EDEFAULT);
 				return;
@@ -9398,6 +9448,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT == null ? transportRabbitMqConnectionRetryCount != null : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT.equals(transportRabbitMqConnectionRetryCount);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
 				return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT == null ? transportRabbitMqConnectionRetryInterval != null : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqConnectionRetryInterval);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
+				return TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT == null ? transportRabbitMqServerRetryInterval != null : !TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqServerRetryInterval);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				return TRANSPORT_FEED_URL_EDEFAULT == null ? transportFeedURL != null : !TRANSPORT_FEED_URL_EDEFAULT.equals(transportFeedURL);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
@@ -9754,6 +9806,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportRabbitMqConnectionRetryCount);
 		result.append(", transportRabbitMqConnectionRetryInterval: ");
 		result.append(transportRabbitMqConnectionRetryInterval);
+		result.append(", transportRabbitMqServerRetryInterval: ");
+		result.append(transportRabbitMqServerRetryInterval);
 		result.append(", transportFeedURL: ");
 		result.append(transportFeedURL);
 		result.append(", transportFeedType: ");

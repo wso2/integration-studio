@@ -213,6 +213,7 @@ public class InboundEndpointConstants {
 	public static final String RABBITMQ_MESSAGE_CONTENT_TYPE = "rabbitmq.message.content.type";
 	public static final String RABBITMQ_CONNECTION_RETRY_COUNT = "rabbitmq.connection.retry.count";
 	public static final String RABBITMQ_CONNECTION_RETRY_INTERVAL = "rabbitmq.connection.retry.interval";
+	public static final String RABBITMQ_SERVER_RETRY_INTERVAL = "rabbitmq.server.retry.interval";
 	
 	public static final String INBOUND_FEED_URL = "feed.url";
 	public static final String INBOUND_FEED_TYPE = "feed.type";

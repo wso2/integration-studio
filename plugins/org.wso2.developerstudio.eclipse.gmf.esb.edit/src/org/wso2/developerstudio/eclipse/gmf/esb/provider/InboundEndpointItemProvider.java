@@ -284,6 +284,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportRabbitMqMessageContentTypePropertyDescriptor(object);
 			addTransportRabbitMqConnectionRetryCountPropertyDescriptor(object);
 			addTransportRabbitMqConnectionRetryIntervalPropertyDescriptor(object);		
+			addTransportRabbitMqServerRetryIntervalPropertyDescriptor(object);
 			break;			
 		case FEED:
 			addIntervalPropertyDescriptor(object);
@@ -2194,6 +2195,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Transport Rabbit Mq Server Retry Interval feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportRabbitMqServerRetryIntervalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportRabbitMqServerRetryInterval_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqServerRetryInterval_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Transport Feed URL feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4091,6 +4114,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:

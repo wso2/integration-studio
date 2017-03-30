@@ -200,6 +200,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTraceEnabled <em>Trace Enabled</em>}</li>
@@ -2594,6 +2595,32 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportRabbitMqConnectionRetryInterval(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Server Retry Interval</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Server Retry Interval</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Server Retry Interval</em>' attribute.
+	 * @see #setTransportRabbitMqServerRetryInterval(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqServerRetryInterval()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqServerRetryInterval();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Server Retry Interval</em>' attribute.
+	 * @see #getTransportRabbitMqServerRetryInterval()
+	 * @generated
+	 */
+	void setTransportRabbitMqServerRetryInterval(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Transport Feed URL</b></em>' attribute.

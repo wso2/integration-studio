@@ -115,7 +115,7 @@ public class RegistryInfoDialog extends Dialog {
 		gd = new GridData(GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_FILL);
 		container.setLayoutData(gd);
 		Label chkBoxLabel = new Label(container, SWT.NONE);
-		chkBoxLabel.setText("Connect to WSO2 App Cloud");
+//		chkBoxLabel.setText("Connect to WSO2 App Cloud");
 		gd = new GridData();
 		chkBoxLabel.setLayoutData(gd);
 
@@ -123,6 +123,8 @@ public class RegistryInfoDialog extends Dialog {
 		gd = new GridData(GridData.FILL_BOTH);
 		isCloud.setLayoutData(gd);
 		isCloud.setSelection(false);
+		isCloud.setVisible(false);
+		
 		isCloud.addSelectionListener(new SelectionListener() {
 
 			@Override

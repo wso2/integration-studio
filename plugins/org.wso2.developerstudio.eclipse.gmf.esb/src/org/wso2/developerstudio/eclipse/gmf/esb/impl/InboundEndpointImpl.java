@@ -54,6 +54,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TopicsType;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
+import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
 
 /**
  * <!-- begin-user-doc -->
@@ -237,6 +238,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsInboundPort <em>Ws Inbound Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedURL <em>Transport Feed URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
@@ -3667,6 +3676,166 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String transportRabbitMqServerRetryInterval = TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getWsInboundPort() <em>Ws Inbound Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsInboundPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_INBOUND_PORT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsInboundPort() <em>Ws Inbound Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsInboundPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsInboundPort = WS_INBOUND_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsClientSideBroadcastLevel() <em>Ws Client Side Broadcast Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsClientSideBroadcastLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final WSClientSideBroadcastLevel WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT = WSClientSideBroadcastLevel.ZERO;
+
+	/**
+	 * The cached value of the '{@link #getWsClientSideBroadcastLevel() <em>Ws Client Side Broadcast Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsClientSideBroadcastLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected WSClientSideBroadcastLevel wsClientSideBroadcastLevel = WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsOutflowDispatchSequence() <em>Ws Outflow Dispatch Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsOutflowDispatchSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsOutflowDispatchSequence() <em>Ws Outflow Dispatch Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsOutflowDispatchSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsOutflowDispatchSequence = WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsOutflowDispatchFaultSequence() <em>Ws Outflow Dispatch Fault Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsOutflowDispatchFaultSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsOutflowDispatchFaultSequence() <em>Ws Outflow Dispatch Fault Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsOutflowDispatchFaultSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsOutflowDispatchFaultSequence = WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsBossThreadPoolSize() <em>Ws Boss Thread Pool Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsBossThreadPoolSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_BOSS_THREAD_POOL_SIZE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsBossThreadPoolSize() <em>Ws Boss Thread Pool Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsBossThreadPoolSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsBossThreadPoolSize = WS_BOSS_THREAD_POOL_SIZE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsWorkerThreadPoolSize() <em>Ws Worker Thread Pool Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsWorkerThreadPoolSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_WORKER_THREAD_POOL_SIZE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsWorkerThreadPoolSize() <em>Ws Worker Thread Pool Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsWorkerThreadPoolSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsWorkerThreadPoolSize = WS_WORKER_THREAD_POOL_SIZE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsSubprotocolHandlerClass() <em>Ws Subprotocol Handler Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsSubprotocolHandlerClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsSubprotocolHandlerClass() <em>Ws Subprotocol Handler Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsSubprotocolHandlerClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsSubprotocolHandlerClass = WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsPipelineHandlerClass() <em>Ws Pipeline Handler Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsPipelineHandlerClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_PIPELINE_HANDLER_CLASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsPipelineHandlerClass() <em>Ws Pipeline Handler Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsPipelineHandlerClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsPipelineHandlerClass = WS_PIPELINE_HANDLER_CLASS_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getTransportFeedURL() <em>Transport Feed URL</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5775,6 +5944,174 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		transportRabbitMqServerRetryInterval = newTransportRabbitMqServerRetryInterval;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL, oldTransportRabbitMqServerRetryInterval, transportRabbitMqServerRetryInterval));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsInboundPort() {
+		return wsInboundPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsInboundPort(String newWsInboundPort) {
+		String oldWsInboundPort = wsInboundPort;
+		wsInboundPort = newWsInboundPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT, oldWsInboundPort, wsInboundPort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WSClientSideBroadcastLevel getWsClientSideBroadcastLevel() {
+		return wsClientSideBroadcastLevel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsClientSideBroadcastLevel(WSClientSideBroadcastLevel newWsClientSideBroadcastLevel) {
+		WSClientSideBroadcastLevel oldWsClientSideBroadcastLevel = wsClientSideBroadcastLevel;
+		wsClientSideBroadcastLevel = newWsClientSideBroadcastLevel == null ? WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT : newWsClientSideBroadcastLevel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL, oldWsClientSideBroadcastLevel, wsClientSideBroadcastLevel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsOutflowDispatchSequence() {
+		return wsOutflowDispatchSequence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsOutflowDispatchSequence(String newWsOutflowDispatchSequence) {
+		String oldWsOutflowDispatchSequence = wsOutflowDispatchSequence;
+		wsOutflowDispatchSequence = newWsOutflowDispatchSequence;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE, oldWsOutflowDispatchSequence, wsOutflowDispatchSequence));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsOutflowDispatchFaultSequence() {
+		return wsOutflowDispatchFaultSequence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsOutflowDispatchFaultSequence(String newWsOutflowDispatchFaultSequence) {
+		String oldWsOutflowDispatchFaultSequence = wsOutflowDispatchFaultSequence;
+		wsOutflowDispatchFaultSequence = newWsOutflowDispatchFaultSequence;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE, oldWsOutflowDispatchFaultSequence, wsOutflowDispatchFaultSequence));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsBossThreadPoolSize() {
+		return wsBossThreadPoolSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsBossThreadPoolSize(String newWsBossThreadPoolSize) {
+		String oldWsBossThreadPoolSize = wsBossThreadPoolSize;
+		wsBossThreadPoolSize = newWsBossThreadPoolSize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE, oldWsBossThreadPoolSize, wsBossThreadPoolSize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsWorkerThreadPoolSize() {
+		return wsWorkerThreadPoolSize;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsWorkerThreadPoolSize(String newWsWorkerThreadPoolSize) {
+		String oldWsWorkerThreadPoolSize = wsWorkerThreadPoolSize;
+		wsWorkerThreadPoolSize = newWsWorkerThreadPoolSize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE, oldWsWorkerThreadPoolSize, wsWorkerThreadPoolSize));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsSubprotocolHandlerClass() {
+		return wsSubprotocolHandlerClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsSubprotocolHandlerClass(String newWsSubprotocolHandlerClass) {
+		String oldWsSubprotocolHandlerClass = wsSubprotocolHandlerClass;
+		wsSubprotocolHandlerClass = newWsSubprotocolHandlerClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS, oldWsSubprotocolHandlerClass, wsSubprotocolHandlerClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsPipelineHandlerClass() {
+		return wsPipelineHandlerClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsPipelineHandlerClass(String newWsPipelineHandlerClass) {
+		String oldWsPipelineHandlerClass = wsPipelineHandlerClass;
+		wsPipelineHandlerClass = newWsPipelineHandlerClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS, oldWsPipelineHandlerClass, wsPipelineHandlerClass));
 	}
 
 	/**
@@ -7988,6 +8325,22 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportRabbitMqConnectionRetryInterval();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
 				return getTransportRabbitMqServerRetryInterval();
+			case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
+				return getWsInboundPort();
+			case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
+				return getWsClientSideBroadcastLevel();
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
+				return getWsOutflowDispatchSequence();
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
+				return getWsOutflowDispatchFaultSequence();
+			case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
+				return getWsBossThreadPoolSize();
+			case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
+				return getWsWorkerThreadPoolSize();
+			case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
+				return getWsSubprotocolHandlerClass();
+			case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
+				return getWsPipelineHandlerClass();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				return getTransportFeedURL();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
@@ -8531,6 +8884,30 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
 				setTransportRabbitMqServerRetryInterval((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
+				setWsInboundPort((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
+				setWsClientSideBroadcastLevel((WSClientSideBroadcastLevel)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
+				setWsOutflowDispatchSequence((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
+				setWsOutflowDispatchFaultSequence((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
+				setWsBossThreadPoolSize((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
+				setWsWorkerThreadPoolSize((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
+				setWsSubprotocolHandlerClass((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
+				setWsPipelineHandlerClass((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				setTransportFeedURL((String)newValue);
@@ -9078,6 +9455,30 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
 				setTransportRabbitMqServerRetryInterval(TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
+				setWsInboundPort(WS_INBOUND_PORT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
+				setWsClientSideBroadcastLevel(WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
+				setWsOutflowDispatchSequence(WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
+				setWsOutflowDispatchFaultSequence(WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
+				setWsBossThreadPoolSize(WS_BOSS_THREAD_POOL_SIZE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
+				setWsWorkerThreadPoolSize(WS_WORKER_THREAD_POOL_SIZE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
+				setWsSubprotocolHandlerClass(WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
+				setWsPipelineHandlerClass(WS_PIPELINE_HANDLER_CLASS_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				setTransportFeedURL(TRANSPORT_FEED_URL_EDEFAULT);
 				return;
@@ -9450,6 +9851,22 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT == null ? transportRabbitMqConnectionRetryInterval != null : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqConnectionRetryInterval);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
 				return TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT == null ? transportRabbitMqServerRetryInterval != null : !TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqServerRetryInterval);
+			case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
+				return WS_INBOUND_PORT_EDEFAULT == null ? wsInboundPort != null : !WS_INBOUND_PORT_EDEFAULT.equals(wsInboundPort);
+			case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
+				return wsClientSideBroadcastLevel != WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
+				return WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT == null ? wsOutflowDispatchSequence != null : !WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT.equals(wsOutflowDispatchSequence);
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
+				return WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT == null ? wsOutflowDispatchFaultSequence != null : !WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT.equals(wsOutflowDispatchFaultSequence);
+			case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
+				return WS_BOSS_THREAD_POOL_SIZE_EDEFAULT == null ? wsBossThreadPoolSize != null : !WS_BOSS_THREAD_POOL_SIZE_EDEFAULT.equals(wsBossThreadPoolSize);
+			case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
+				return WS_WORKER_THREAD_POOL_SIZE_EDEFAULT == null ? wsWorkerThreadPoolSize != null : !WS_WORKER_THREAD_POOL_SIZE_EDEFAULT.equals(wsWorkerThreadPoolSize);
+			case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
+				return WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT == null ? wsSubprotocolHandlerClass != null : !WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT.equals(wsSubprotocolHandlerClass);
+			case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
+				return WS_PIPELINE_HANDLER_CLASS_EDEFAULT == null ? wsPipelineHandlerClass != null : !WS_PIPELINE_HANDLER_CLASS_EDEFAULT.equals(wsPipelineHandlerClass);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 				return TRANSPORT_FEED_URL_EDEFAULT == null ? transportFeedURL != null : !TRANSPORT_FEED_URL_EDEFAULT.equals(transportFeedURL);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
@@ -9808,6 +10225,22 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportRabbitMqConnectionRetryInterval);
 		result.append(", transportRabbitMqServerRetryInterval: ");
 		result.append(transportRabbitMqServerRetryInterval);
+		result.append(", wsInboundPort: ");
+		result.append(wsInboundPort);
+		result.append(", wsClientSideBroadcastLevel: ");
+		result.append(wsClientSideBroadcastLevel);
+		result.append(", wsOutflowDispatchSequence: ");
+		result.append(wsOutflowDispatchSequence);
+		result.append(", wsOutflowDispatchFaultSequence: ");
+		result.append(wsOutflowDispatchFaultSequence);
+		result.append(", wsBossThreadPoolSize: ");
+		result.append(wsBossThreadPoolSize);
+		result.append(", wsWorkerThreadPoolSize: ");
+		result.append(wsWorkerThreadPoolSize);
+		result.append(", wsSubprotocolHandlerClass: ");
+		result.append(wsSubprotocolHandlerClass);
+		result.append(", wsPipelineHandlerClass: ");
+		result.append(wsPipelineHandlerClass);
 		result.append(", transportFeedURL: ");
 		result.append(transportFeedURL);
 		result.append(", transportFeedType: ");

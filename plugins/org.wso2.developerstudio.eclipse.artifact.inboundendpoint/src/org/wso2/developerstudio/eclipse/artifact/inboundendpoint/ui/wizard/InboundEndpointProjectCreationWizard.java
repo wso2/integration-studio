@@ -69,6 +69,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 	private static final String WSO2_MB_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
 	private static final String WSO2_MB_TOPIC_CONNECTION_URL ="connectionfactory.TopicConnectionFactory";
 	private static final String JMS_CONNECTION_FACTORY_TYPE = "transport.jms.ConnectionFactoryType";
+	private static final String WS_CLIENT_SIDE_BROADCAST_LEVEL ="ws.client.side.broadcast.level";
 	private static final String RABBITMQ = "rabbitmq";
 	private static final String INTERVAL = "interval";
 	private static final String TOPICS = "topics";
@@ -96,6 +97,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 	private static final String TYPE_LIST ="typeList";
 	private static final String CUSTOM = "custom";
 	private static final String KEY ="key";
+	private static final String WS = "ws";
 	
 	private InboundEndpointModel inboundEndpointModel;
 	private IFile inboundEndpointFile;
@@ -251,6 +253,9 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 					inboundEndpoint.addParameter(RABBITMQ_SERVER_PASSWORD, "guest");
 					inboundEndpoint.addParameter(RABBITMQ_QUEUE_NAME, "queue_name");
 					inboundEndpoint.addParameter(RABBITMQ_EXCHANGE_NAME, "excahnge_name");
+				}
+				if(ieModel.getProtocol().equals(WS)){
+					inboundEndpoint.addParameter(WS_CLIENT_SIDE_BROADCAST_LEVEL, "0");
 				}
 				if(ieModel.getSelectedInboundEndpointType().equals(WSO2_MB)){
 					inboundEndpoint.addParameter(WSO2_MB_NAMING_FACTORY_INITIAL,"org.wso2.andes.jndi.PropertiesFileInitialContextFactory");

@@ -24545,13 +24545,85 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 173;
 
 	/**
+	 * The feature id for the '<em><b>Ws Inbound Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_INBOUND_PORT = ESB_ELEMENT_FEATURE_COUNT + 174;
+
+	/**
+	 * The feature id for the '<em><b>Ws Client Side Broadcast Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL = ESB_ELEMENT_FEATURE_COUNT + 175;
+
+	/**
+	 * The feature id for the '<em><b>Ws Outflow Dispatch Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 176;
+
+	/**
+	 * The feature id for the '<em><b>Ws Outflow Dispatch Fault Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 177;
+
+	/**
+	 * The feature id for the '<em><b>Ws Boss Thread Pool Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 178;
+
+	/**
+	 * The feature id for the '<em><b>Ws Worker Thread Pool Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 179;
+
+	/**
+	 * The feature id for the '<em><b>Ws Subprotocol Handler Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 180;
+
+	/**
+	 * The feature id for the '<em><b>Ws Pipeline Handler Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 181;
+
+	/**
 	 * The feature id for the '<em><b>Transport Feed URL</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 174;
+	int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 182;
 
 	/**
 	 * The feature id for the '<em><b>Transport Feed Type</b></em>' attribute.
@@ -24560,7 +24632,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 175;
+	int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 183;
 
 	/**
 	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
@@ -24569,7 +24641,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 176;
+	int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 184;
 
 	/**
 	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
@@ -24578,7 +24650,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 177;
+	int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 185;
 
 	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
@@ -24587,7 +24659,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 178;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 186;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -26154,6 +26226,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int JMS_CACHE_LEVEL = 485;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel <em>WS Client Side Broadcast Level</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSClientSideBroadcastLevel()
+	 * @generated
+	 */
+	int WS_CLIENT_SIDE_BROADCAST_LEVEL = 486;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS <em>MQTT Subscription QOS</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26161,7 +26243,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMQTTSubscriptionQOS()
 	 * @generated
 	 */
-	int MQTT_SUBSCRIPTION_QOS = 486;
+	int MQTT_SUBSCRIPTION_QOS = 487;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FeedType <em>Feed Type</em>}' enum.
@@ -26171,7 +26253,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getFeedType()
 	 * @generated
 	 */
-	int FEED_TYPE = 487;
+	int FEED_TYPE = 488;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState <em>Enable Disable State</em>}' enum.
@@ -26181,7 +26263,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnableDisableState()
 	 * @generated
 	 */
-	int ENABLE_DISABLE_STATE = 488;
+	int ENABLE_DISABLE_STATE = 489;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator <em>Hash Generator</em>}' enum.
@@ -26191,7 +26273,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getHashGenerator()
 	 * @generated
 	 */
-	int HASH_GENERATOR = 489;
+	int HASH_GENERATOR = 490;
 
 	/**
 	 * The meta object id for the '<em>Map</em>' data type.
@@ -26201,7 +26283,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 490;
+	int MAP = 491;
 
 
 	/**
@@ -34796,6 +34878,94 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpoint_TransportRabbitMqServerRetryInterval();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Inbound Port</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsInboundPort()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsInboundPort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Client Side Broadcast Level</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsClientSideBroadcastLevel()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsClientSideBroadcastLevel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Outflow Dispatch Sequence</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchSequence()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsOutflowDispatchSequence();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Outflow Dispatch Fault Sequence</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchFaultSequence()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsOutflowDispatchFaultSequence();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Boss Thread Pool Size</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsBossThreadPoolSize()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsBossThreadPoolSize();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Worker Thread Pool Size</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsWorkerThreadPoolSize()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsWorkerThreadPoolSize();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Subprotocol Handler Class</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsSubprotocolHandlerClass()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsSubprotocolHandlerClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Pipeline Handler Class</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsPipelineHandlerClass()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsPipelineHandlerClass();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}'.
@@ -43495,6 +43665,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EEnum getJMSCacheLevel();
 
 	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel <em>WS Client Side Broadcast Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>WS Client Side Broadcast Level</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel
+	 * @generated
+	 */
+	EEnum getWSClientSideBroadcastLevel();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS <em>MQTT Subscription QOS</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -50350,6 +50530,70 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = eINSTANCE.getInboundEndpoint_TransportRabbitMqServerRetryInterval();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Inbound Port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_INBOUND_PORT = eINSTANCE.getInboundEndpoint_WsInboundPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Client Side Broadcast Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL = eINSTANCE.getInboundEndpoint_WsClientSideBroadcastLevel();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Outflow Dispatch Sequence</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE = eINSTANCE.getInboundEndpoint_WsOutflowDispatchSequence();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Outflow Dispatch Fault Sequence</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE = eINSTANCE.getInboundEndpoint_WsOutflowDispatchFaultSequence();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Boss Thread Pool Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE = eINSTANCE.getInboundEndpoint_WsBossThreadPoolSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Worker Thread Pool Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE = eINSTANCE.getInboundEndpoint_WsWorkerThreadPoolSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Subprotocol Handler Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS = eINSTANCE.getInboundEndpoint_WsSubprotocolHandlerClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Pipeline Handler Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS = eINSTANCE.getInboundEndpoint_WsPipelineHandlerClass();
 
 		/**
 		 * The meta object literal for the '<em><b>Transport Feed URL</b></em>' attribute feature.
@@ -57466,6 +57710,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum JMS_CACHE_LEVEL = eINSTANCE.getJMSCacheLevel();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel <em>WS Client Side Broadcast Level</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSClientSideBroadcastLevel()
+		 * @generated
+		 */
+		EEnum WS_CLIENT_SIDE_BROADCAST_LEVEL = eINSTANCE.getWSClientSideBroadcastLevel();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS <em>MQTT Subscription QOS</em>}' enum.

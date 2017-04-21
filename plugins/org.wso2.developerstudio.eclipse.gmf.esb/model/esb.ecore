@@ -3142,6 +3142,20 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqServerRetryInterval"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsInboundPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsClientSideBroadcastLevel"
+        eType="#//WSClientSideBroadcastLevel"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsOutflowDispatchSequence"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsOutflowDispatchFaultSequence"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsBossThreadPoolSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsWorkerThreadPoolSize"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsSubprotocolHandlerClass"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsPipelineHandlerClass"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportFeedURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportFeedType" eType="#//FeedType"/>
@@ -3167,6 +3181,7 @@
     <eLiterals name="rabbitmq" value="9" literal="RABBITMQ"/>
     <eLiterals name="feed" value="10" literal="Feed"/>
     <eLiterals name="wso2_mb" value="11" literal="WSO2_MB"/>
+    <eLiterals name="ws" value="12" literal="WS"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InboundEndpointBehaviourType">
     <eLiterals name="pollingInboundEndpoint"/>
@@ -3228,6 +3243,11 @@
     <eLiterals name="three" value="3" literal="3"/>
     <eLiterals name="two" value="2" literal="2"/>
     <eLiterals name="one" value="1" literal="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WSClientSideBroadcastLevel">
+    <eLiterals name="zero" literal="0"/>
+    <eLiterals name="one" value="1" literal="1"/>
+    <eLiterals name="two" value="2" literal="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MQTTSubscriptionQOS">
     <eLiterals name="zero" literal="0"/>

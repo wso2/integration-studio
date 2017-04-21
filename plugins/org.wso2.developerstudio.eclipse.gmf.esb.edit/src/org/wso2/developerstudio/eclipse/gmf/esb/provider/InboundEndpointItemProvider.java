@@ -318,6 +318,15 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSPinnedServersPropertyDescriptor(object);	
 			addTransportJMSConcurrentConsumersPropertyDescriptor(object);
 			addTransportJMSRetryDurationPropertyDescriptor(object);
+		case WS:
+			addWsInboundPortPropertyDescriptor(object);
+			addWsClientSideBroadcastLevelPropertyDescriptor(object);
+			addWsOutflowDispatchSequencePropertyDescriptor(object);
+			addWsOutflowDispatchFaultSequencePropertyDescriptor(object);
+			addWsBossThreadPoolSizePropertyDescriptor(object);
+			addWsWorkerThreadPoolSizePropertyDescriptor(object);
+			addWsSubprotocolHandlerClassPropertyDescriptor(object);
+			addWsPipelineHandlerClassPropertyDescriptor(object);
 		default:
 			break;
 		}
@@ -2208,6 +2217,182 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 getString("_UI_InboundEndpoint_transportRabbitMqServerRetryInterval_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqServerRetryInterval_feature", "_UI_InboundEndpoint_type"),
 				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Inbound Port feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsInboundPortPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsInboundPort_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsInboundPort_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_INBOUND_PORT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Client Side Broadcast Level feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsClientSideBroadcastLevelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsClientSideBroadcastLevel_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsClientSideBroadcastLevel_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Outflow Dispatch Sequence feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsOutflowDispatchSequencePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsOutflowDispatchSequence_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsOutflowDispatchSequence_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Outflow Dispatch Fault Sequence feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsOutflowDispatchFaultSequencePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsOutflowDispatchFaultSequence_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsOutflowDispatchFaultSequence_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Boss Thread Pool Size feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsBossThreadPoolSizePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsBossThreadPoolSize_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsBossThreadPoolSize_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Worker Thread Pool Size feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsWorkerThreadPoolSizePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsWorkerThreadPoolSize_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsWorkerThreadPoolSize_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Subprotocol Handler Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsSubprotocolHandlerClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsSubprotocolHandlerClass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsSubprotocolHandlerClass_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Pipeline Handler Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsPipelineHandlerClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsPipelineHandlerClass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsPipelineHandlerClass_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS,
 				 true,
 				 false,
 				 false,
@@ -4115,6 +4300,14 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
+			case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
+			case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
+			case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
+			case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
+			case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
+			case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
+			case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:

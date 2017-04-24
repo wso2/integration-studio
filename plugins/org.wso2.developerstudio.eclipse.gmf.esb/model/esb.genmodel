@@ -660,6 +660,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/rabbitmq"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/feed"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/wso2_mb"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/ws"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//InboundEndpointBehaviourType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointBehaviourType/pollingInboundEndpoint"/>
@@ -721,6 +722,11 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/three"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/two"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/one"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//WSClientSideBroadcastLevel">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//WSClientSideBroadcastLevel/zero"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//WSClientSideBroadcastLevel/one"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//WSClientSideBroadcastLevel/two"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MQTTSubscriptionQOS">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MQTTSubscriptionQOS/zero"/>
@@ -2475,6 +2481,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionRetryCount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqConnectionRetryInterval"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportRabbitMqServerRetryInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wsInboundPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wsClientSideBroadcastLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wsOutflowDispatchSequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wsOutflowDispatchFaultSequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wsBossThreadPoolSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wsWorkerThreadPoolSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wsSubprotocolHandlerClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/wsPipelineHandlerClass"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportFeedURL"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportFeedType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/traceEnabled"/>

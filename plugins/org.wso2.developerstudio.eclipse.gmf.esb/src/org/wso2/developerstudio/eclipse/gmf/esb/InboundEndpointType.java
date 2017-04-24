@@ -133,7 +133,15 @@ public enum InboundEndpointType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	WSO2_MB(11, "wso2_mb", "WSO2_MB");
+	WSO2_MB(11, "wso2_mb", "WSO2_MB"), /**
+	 * The '<em><b>Ws</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #WS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	WS(12, "ws", "WS");
 
 	/**
 	 * The '<em><b>Http</b></em>' literal value.
@@ -316,6 +324,21 @@ public enum InboundEndpointType implements Enumerator {
 	public static final int WSO2_MB_VALUE = 11;
 
 	/**
+	 * The '<em><b>Ws</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Ws</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #WS
+	 * @model name="ws" literal="WS"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WS_VALUE = 12;
+
+	/**
 	 * An array of all the '<em><b>Inbound Endpoint Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -335,6 +358,7 @@ public enum InboundEndpointType implements Enumerator {
 			RABBITMQ,
 			FEED,
 			WSO2_MB,
+			WS,
 		};
 
 	/**
@@ -403,6 +427,7 @@ public enum InboundEndpointType implements Enumerator {
 			case RABBITMQ_VALUE: return RABBITMQ;
 			case FEED_VALUE: return FEED;
 			case WSO2_MB_VALUE: return WSO2_MB;
+			case WS_VALUE: return WS;
 		}
 		return null;
 	}

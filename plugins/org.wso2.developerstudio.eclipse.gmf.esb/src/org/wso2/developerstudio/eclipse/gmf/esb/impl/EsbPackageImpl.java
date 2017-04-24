@@ -510,6 +510,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateOnFailBranch;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema;
+import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.WSDLDefinition;
 import org.wso2.developerstudio.eclipse.gmf.esb.WSDLDescription;
 import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
@@ -3939,6 +3940,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum jmsCacheLevelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum wsClientSideBroadcastLevelEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -11232,7 +11240,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportFeedURL() {
+	public EAttribute getInboundEndpoint_WsInboundPort() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(174);
 	}
 
@@ -11241,7 +11249,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportFeedType() {
+	public EAttribute getInboundEndpoint_WsClientSideBroadcastLevel() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(175);
 	}
 
@@ -11250,7 +11258,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TraceEnabled() {
+	public EAttribute getInboundEndpoint_WsOutflowDispatchSequence() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(176);
 	}
 
@@ -11259,8 +11267,80 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_StatisticsEnabled() {
+	public EAttribute getInboundEndpoint_WsOutflowDispatchFaultSequence() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(177);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WsBossThreadPoolSize() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(178);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WsWorkerThreadPoolSize() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(179);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WsSubprotocolHandlerClass() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(180);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WsPipelineHandlerClass() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(181);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportFeedURL() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(182);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportFeedType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(183);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TraceEnabled() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(184);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_StatisticsEnabled() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(185);
 	}
 
 	/**
@@ -18585,6 +18665,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getWSClientSideBroadcastLevel() {
+		return wsClientSideBroadcastLevelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getMQTTSubscriptionQOS() {
 		return mqttSubscriptionQOSEEnum;
 	}
@@ -20479,6 +20568,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_INBOUND_PORT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_FEED_URL);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRACE_ENABLED);
@@ -20633,6 +20730,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		jmsConnectionFactoryTypeEEnum = createEEnum(JMS_CONNECTION_FACTORY_TYPE);
 		jmsSessionAcknowledgementEEnum = createEEnum(JMS_SESSION_ACKNOWLEDGEMENT);
 		jmsCacheLevelEEnum = createEEnum(JMS_CACHE_LEVEL);
+		wsClientSideBroadcastLevelEEnum = createEEnum(WS_CLIENT_SIDE_BROADCAST_LEVEL);
 		mqttSubscriptionQOSEEnum = createEEnum(MQTT_SUBSCRIPTION_QOS);
 		feedTypeEEnum = createEEnum(FEED_TYPE);
 		enableDisableStateEEnum = createEEnum(ENABLE_DISABLE_STATE);
@@ -22853,6 +22951,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionRetryCount(), ecorePackage.getEString(), "transportRabbitMqConnectionRetryCount", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionRetryInterval(), ecorePackage.getEString(), "transportRabbitMqConnectionRetryInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqServerRetryInterval(), ecorePackage.getEString(), "transportRabbitMqServerRetryInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsInboundPort(), ecorePackage.getEString(), "wsInboundPort", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsClientSideBroadcastLevel(), this.getWSClientSideBroadcastLevel(), "wsClientSideBroadcastLevel", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsOutflowDispatchSequence(), ecorePackage.getEString(), "wsOutflowDispatchSequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsOutflowDispatchFaultSequence(), ecorePackage.getEString(), "wsOutflowDispatchFaultSequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsBossThreadPoolSize(), ecorePackage.getEString(), "wsBossThreadPoolSize", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsWorkerThreadPoolSize(), ecorePackage.getEString(), "wsWorkerThreadPoolSize", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsSubprotocolHandlerClass(), ecorePackage.getEString(), "wsSubprotocolHandlerClass", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsPipelineHandlerClass(), ecorePackage.getEString(), "wsPipelineHandlerClass", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportFeedURL(), ecorePackage.getEString(), "transportFeedURL", "", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportFeedType(), this.getFeedType(), "transportFeedType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TraceEnabled(), ecorePackage.getEBoolean(), "traceEnabled", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -23537,6 +23643,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.RABBITMQ);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.FEED);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.WSO2_MB);
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.WS);
 
 		initEEnum(inboundEndpointBehaviourTypeEEnum, InboundEndpointBehaviourType.class, "InboundEndpointBehaviourType");
 		addEEnumLiteral(inboundEndpointBehaviourTypeEEnum, InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT);
@@ -23598,6 +23705,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(jmsCacheLevelEEnum, JMSCacheLevel.THREE);
 		addEEnumLiteral(jmsCacheLevelEEnum, JMSCacheLevel.TWO);
 		addEEnumLiteral(jmsCacheLevelEEnum, JMSCacheLevel.ONE);
+
+		initEEnum(wsClientSideBroadcastLevelEEnum, WSClientSideBroadcastLevel.class, "WSClientSideBroadcastLevel");
+		addEEnumLiteral(wsClientSideBroadcastLevelEEnum, WSClientSideBroadcastLevel.ZERO);
+		addEEnumLiteral(wsClientSideBroadcastLevelEEnum, WSClientSideBroadcastLevel.ONE);
+		addEEnumLiteral(wsClientSideBroadcastLevelEEnum, WSClientSideBroadcastLevel.TWO);
 
 		initEEnum(mqttSubscriptionQOSEEnum, MQTTSubscriptionQOS.class, "MQTTSubscriptionQOS");
 		addEEnumLiteral(mqttSubscriptionQOSEEnum, MQTTSubscriptionQOS.ZERO);

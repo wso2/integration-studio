@@ -54,6 +54,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL;
 
 import java.util.Map;
 
@@ -82,6 +83,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TopicsType;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
+import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 
@@ -172,6 +174,9 @@ public class InboundEndpointDeserializer extends
         } else if (InboundEndpointConstants.FEED.equals(object.getProtocol())) {
             executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.FEED);
             updateParameters(object, InboundEndpointType.FEED);
+        } else if (InboundEndpointConstants.WS.equals(object.getProtocol())){
+            executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.WS);
+            updateParameters(object, InboundEndpointType.WS);
         }
 
         // Creating Sequence mediator graphically
@@ -756,8 +761,35 @@ public class InboundEndpointDeserializer extends
                     }
                 }
             }
-        }
-    }
+		} else if (InboundEndpointType.WS.equals(inboundEndpointType)) {
+			for (WSInboundEndpointParameter parameterType : WSInboundEndpointParameter.values()) {
+				if (parameterType.isMatchedWithParameterName(paramEntry.getKey())) {
+					if (parameterType.canHoldKeyValue()) {
+						if (ParameterKeyValueType.VALUE.equals(type)) {
+							executeSetValueCommand(parameterType.getEAttributeValue(), paramEntry.getValue());
+						} else if (ParameterKeyValueType.KEY.equals(type)) {
+							executeSetValueCommand(parameterType.getEAttributeValue(),
+									KEY_TYPE_PARAMETER_PREFIX + paramEntry.getValue());
+						} else {
+							throw new UnsupportedOperationException(
+									"Operation for ParameterKeyValueType " + type + " is not supported");
+						}
+					} else if (paramEntry.getKey().equals(InboundEndpointConstants.WS_CLIENT_SIDE_BROADCAST_LEVEL)) {
+						if (paramEntry.getValue().equals("0")) {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL,
+									WSClientSideBroadcastLevel.ZERO);
+						} else if (paramEntry.getValue().equals("1")) {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL,
+									WSClientSideBroadcastLevel.ONE);
+						} else if (paramEntry.getValue().equals("2")) {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL,
+									WSClientSideBroadcastLevel.TWO);
+						}
+					}
+				}
+			}
+		}
+	}
 
     final class ParameterEntry<key, value> implements Map.Entry<String, String> {
         private final String key;

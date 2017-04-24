@@ -1111,6 +1111,40 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         visualInboundEndpoint.getTransportFeedType().getLiteral());
             }
             break;
+        case WS:
+        	if (StringUtils.isNotBlank(visualInboundEndpoint.getWsInboundPort())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_WS_PORT,
+                        visualInboundEndpoint.getWsInboundPort());
+            }
+        	if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getWsClientSideBroadcastLevel().getLiteral()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_CLIENT_SIDE_BROADCAST_LEVEL, visualInboundEndpoint
+                        .getWsClientSideBroadcastLevel().getLiteral());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsOutflowDispatchSequence())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_OUTFLOW_DISPATCH_SEQUENCE,
+                        visualInboundEndpoint.getWsOutflowDispatchSequence());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsOutflowDispatchFaultSequence())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE,
+                        visualInboundEndpoint.getWsOutflowDispatchFaultSequence());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsBossThreadPoolSize())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_BOSS_THREAD_POOL_SIZE,
+                        visualInboundEndpoint.getWsBossThreadPoolSize());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsWorkerThreadPoolSize())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_WORKER_THREAD_POOL_SIZE,
+                        visualInboundEndpoint.getWsWorkerThreadPoolSize());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsSubprotocolHandlerClass())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_SUBPROTOCOL_HANDLER_CLASS,
+                        visualInboundEndpoint.getWsSubprotocolHandlerClass());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsPipelineHandlerClass())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_PIPELINE_HANDLER_CLASS,
+                        visualInboundEndpoint.getWsPipelineHandlerClass());
+            }
+            break;
         default:
             break;
         }

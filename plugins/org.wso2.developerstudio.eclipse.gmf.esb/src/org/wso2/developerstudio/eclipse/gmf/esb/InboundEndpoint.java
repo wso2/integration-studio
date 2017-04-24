@@ -201,6 +201,14 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedURL <em>Transport Feed URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTraceEnabled <em>Trace Enabled</em>}</li>
@@ -2621,6 +2629,217 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportRabbitMqServerRetryInterval(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Inbound Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Inbound Port</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Inbound Port</em>' attribute.
+	 * @see #setWsInboundPort(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsInboundPort()
+	 * @model
+	 * @generated
+	 */
+	String getWsInboundPort();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Inbound Port</em>' attribute.
+	 * @see #getWsInboundPort()
+	 * @generated
+	 */
+	void setWsInboundPort(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Client Side Broadcast Level</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Client Side Broadcast Level</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Client Side Broadcast Level</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel
+	 * @see #setWsClientSideBroadcastLevel(WSClientSideBroadcastLevel)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsClientSideBroadcastLevel()
+	 * @model
+	 * @generated
+	 */
+	WSClientSideBroadcastLevel getWsClientSideBroadcastLevel();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Client Side Broadcast Level</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel
+	 * @see #getWsClientSideBroadcastLevel()
+	 * @generated
+	 */
+	void setWsClientSideBroadcastLevel(WSClientSideBroadcastLevel value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Outflow Dispatch Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Outflow Dispatch Sequence</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Outflow Dispatch Sequence</em>' attribute.
+	 * @see #setWsOutflowDispatchSequence(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsOutflowDispatchSequence()
+	 * @model
+	 * @generated
+	 */
+	String getWsOutflowDispatchSequence();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Outflow Dispatch Sequence</em>' attribute.
+	 * @see #getWsOutflowDispatchSequence()
+	 * @generated
+	 */
+	void setWsOutflowDispatchSequence(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Outflow Dispatch Fault Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Outflow Dispatch Fault Sequence</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Outflow Dispatch Fault Sequence</em>' attribute.
+	 * @see #setWsOutflowDispatchFaultSequence(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsOutflowDispatchFaultSequence()
+	 * @model
+	 * @generated
+	 */
+	String getWsOutflowDispatchFaultSequence();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Outflow Dispatch Fault Sequence</em>' attribute.
+	 * @see #getWsOutflowDispatchFaultSequence()
+	 * @generated
+	 */
+	void setWsOutflowDispatchFaultSequence(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Boss Thread Pool Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Boss Thread Pool Size</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Boss Thread Pool Size</em>' attribute.
+	 * @see #setWsBossThreadPoolSize(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsBossThreadPoolSize()
+	 * @model
+	 * @generated
+	 */
+	String getWsBossThreadPoolSize();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Boss Thread Pool Size</em>' attribute.
+	 * @see #getWsBossThreadPoolSize()
+	 * @generated
+	 */
+	void setWsBossThreadPoolSize(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Worker Thread Pool Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Worker Thread Pool Size</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Worker Thread Pool Size</em>' attribute.
+	 * @see #setWsWorkerThreadPoolSize(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsWorkerThreadPoolSize()
+	 * @model
+	 * @generated
+	 */
+	String getWsWorkerThreadPoolSize();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Worker Thread Pool Size</em>' attribute.
+	 * @see #getWsWorkerThreadPoolSize()
+	 * @generated
+	 */
+	void setWsWorkerThreadPoolSize(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Subprotocol Handler Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Subprotocol Handler Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Subprotocol Handler Class</em>' attribute.
+	 * @see #setWsSubprotocolHandlerClass(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsSubprotocolHandlerClass()
+	 * @model
+	 * @generated
+	 */
+	String getWsSubprotocolHandlerClass();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Subprotocol Handler Class</em>' attribute.
+	 * @see #getWsSubprotocolHandlerClass()
+	 * @generated
+	 */
+	void setWsSubprotocolHandlerClass(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Pipeline Handler Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Pipeline Handler Class</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Pipeline Handler Class</em>' attribute.
+	 * @see #setWsPipelineHandlerClass(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsPipelineHandlerClass()
+	 * @model
+	 * @generated
+	 */
+	String getWsPipelineHandlerClass();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Pipeline Handler Class</em>' attribute.
+	 * @see #getWsPipelineHandlerClass()
+	 * @generated
+	 */
+	void setWsPipelineHandlerClass(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Transport Feed URL</b></em>' attribute.

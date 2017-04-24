@@ -675,6 +675,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createJMSSessionAcknowledgementFromString(eDataType, initialValue);
 			case EsbPackage.JMS_CACHE_LEVEL:
 				return createJMSCacheLevelFromString(eDataType, initialValue);
+			case EsbPackage.WS_CLIENT_SIDE_BROADCAST_LEVEL:
+				return createWSClientSideBroadcastLevelFromString(eDataType, initialValue);
 			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
 				return createMQTTSubscriptionQOSFromString(eDataType, initialValue);
 			case EsbPackage.FEED_TYPE:
@@ -945,6 +947,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertJMSSessionAcknowledgementToString(eDataType, instanceValue);
 			case EsbPackage.JMS_CACHE_LEVEL:
 				return convertJMSCacheLevelToString(eDataType, instanceValue);
+			case EsbPackage.WS_CLIENT_SIDE_BROADCAST_LEVEL:
+				return convertWSClientSideBroadcastLevelToString(eDataType, instanceValue);
 			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
 				return convertMQTTSubscriptionQOSToString(eDataType, instanceValue);
 			case EsbPackage.FEED_TYPE:
@@ -7179,6 +7183,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertJMSCacheLevelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WSClientSideBroadcastLevel createWSClientSideBroadcastLevelFromString(EDataType eDataType, String initialValue) {
+		WSClientSideBroadcastLevel result = WSClientSideBroadcastLevel.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertWSClientSideBroadcastLevelToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

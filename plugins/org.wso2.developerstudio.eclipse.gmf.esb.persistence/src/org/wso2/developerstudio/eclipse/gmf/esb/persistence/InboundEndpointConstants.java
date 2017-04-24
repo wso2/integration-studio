@@ -14,6 +14,7 @@ public class InboundEndpointConstants {
 	public static final String RABBITMQ = "rabbitmq";
 	public static final String FEED = "feed";
 	public static final String WSO2MB ="wso2_mb";
+	public static final String WS ="ws";
 
 	public static final String TRUE = "true";
 	public static final String FALSE = "false";
@@ -218,4 +219,13 @@ public class InboundEndpointConstants {
 	public static final String INBOUND_FEED_URL = "feed.url";
 	public static final String INBOUND_FEED_TYPE = "feed.type";
 	public static final String ATOM = "Atom";
+	
+	public static final String INBOUND_WS_PORT ="inbound.ws.port";
+	public static final String WS_CLIENT_SIDE_BROADCAST_LEVEL ="ws.client.side.broadcast.level";
+	public static final String WS_OUTFLOW_DISPATCH_SEQUENCE ="ws.outflow.dispatch.sequence";
+	public static final String WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE ="ws.outflow.dispatch.fault.sequence";
+	public static final String WS_BOSS_THREAD_POOL_SIZE ="ws.boss.thread.pool.size";
+	public static final String WS_WORKER_THREAD_POOL_SIZE ="ws.worker.thread.pool.size";
+	public static final String WS_SUBPROTOCOL_HANDLER_CLASS ="ws.subprotocol.handler.class";
+	public static final String WS_PIPELINE_HANDLER_CLASS ="ws.pipeline.handler.class";
 }

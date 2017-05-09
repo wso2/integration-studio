@@ -111,7 +111,7 @@ public class DataSourceWizardPage extends WizardPage {
 				else
 					container = ((IResource) obj).getParent();
 				String containerPath = container.getFullPath().toString();
-				if(containerPath.contains("datasource"))
+				if(containerPath.contains(File.separator+"datasource"))
 					containerText.setText(container.getFullPath().toString());
 				else
 					containerText.setText(container.getFullPath().toString().concat(File.separator+"datasource"));

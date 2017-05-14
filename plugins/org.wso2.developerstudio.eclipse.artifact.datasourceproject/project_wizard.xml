@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="New DataSource Project" 
+					description="Create new DataSource Project" 
+					error="">
+		<option id="new.dss" default="true">New Data Source Project</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.dss" 
+				  title="Data Source Project" 
+				  description="Create a new DataSource Project" 
+				  error="Please give a name for the data source project">
+			<data modelProperty="project.name" type="string" >Project Name</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

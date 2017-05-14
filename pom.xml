@@ -145,6 +145,16 @@
             <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/</url>
             <layout>p2</layout>
         </repository>
+	<repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Platform-p2-updates-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/updates/</url>
+            <layout>p2</layout>
+	</repository>
         <repository>
             <releases>
                 <enabled>true</enabled>
@@ -176,6 +186,16 @@
             <id>WSO2-Nexus-Maven-SNAPSHOT-Repository</id>
             <url>http://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</url>
             <layout>default</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-Kernel-p2-updates-Repository-2</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates</url>
+            <layout>p2</layout>
         </repository>
     </repositories>
     <pluginRepositories>

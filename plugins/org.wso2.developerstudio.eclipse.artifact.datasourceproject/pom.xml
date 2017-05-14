@@ -26,5 +26,5 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.artifact.datasourceProject</artifactId>
     <packaging>eclipse-plugin</packaging>
-    <name>Developer Studio DS Artifact</name>
+    <name>Developer Studio Datasource Project</name>
 </project>

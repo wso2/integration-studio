@@ -7,5 +7,5 @@
   </parent>
   <artifactId>org.wso2.developerstudio.eclipse.artifact.datasource</artifactId>
   <packaging>eclipse-plugin</packaging>
-  <name>Developer Studio DS Artifact</name>
+  <name>Developer Studio Datasource</name>
 </project>

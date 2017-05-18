@@ -285,6 +285,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportRabbitMqConnectionRetryCountPropertyDescriptor(object);
 			addTransportRabbitMqConnectionRetryIntervalPropertyDescriptor(object);		
 			addTransportRabbitMqServerRetryIntervalPropertyDescriptor(object);
+			addTransportRabbitMqConsumerQosPropertyDescriptor(object);
 			break;			
 		case FEED:
 			addIntervalPropertyDescriptor(object);
@@ -2221,6 +2222,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport Rabbit Mq Consumer Qos feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportRabbitMqConsumerQosPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportRabbitMqConsumerQos_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqConsumerQos_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS,
+				 true,
+				 false,
+				 false,
+				 null,
 				 "Parameters",
 				 null));
 	}

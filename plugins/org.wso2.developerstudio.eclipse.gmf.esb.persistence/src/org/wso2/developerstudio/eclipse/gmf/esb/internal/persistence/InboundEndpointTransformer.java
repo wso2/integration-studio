@@ -1080,22 +1080,27 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_VERSION,
                         visualInboundEndpoint.getTransportRabbitMqConnectionSslVersion());
             }
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqMessageContentType())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_MESSAGE_CONTENT_TYPE,
-						visualInboundEndpoint.getTransportRabbitMqMessageContentType());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionRetryCount())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_COUNT,
-						visualInboundEndpoint.getTransportRabbitMqConnectionRetryCount());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionRetryInterval())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_INTERVAL,
-						visualInboundEndpoint.getTransportRabbitMqConnectionRetryInterval());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerRetryInterval())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_RETRY_INTERVAL,
-				        visualInboundEndpoint.getTransportRabbitMqServerRetryInterval());
-		    }
+
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqMessageContentType())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_MESSAGE_CONTENT_TYPE,
+                        visualInboundEndpoint.getTransportRabbitMqMessageContentType());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionRetryCount())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_COUNT,
+                        visualInboundEndpoint.getTransportRabbitMqConnectionRetryCount());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionRetryInterval())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_INTERVAL,
+                        visualInboundEndpoint.getTransportRabbitMqConnectionRetryInterval());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerRetryInterval())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_RETRY_INTERVAL,
+                        visualInboundEndpoint.getTransportRabbitMqServerRetryInterval());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConsumerQos().getKeyValue())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
+                        visualInboundEndpoint.getTransportRabbitMqConsumerQos().getKeyValue());
+            }
             break;
         case FEED:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
@@ -1154,6 +1159,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
     private void addParameterForConfig(InboundEndpoint inboundEndpoint, String parameterName, String parameterKeyValue) {
         if (parameterKeyValue.startsWith(REGISTRY_PREFIX)) {
             parameterKeyValue = parameterKeyValue.replace(REGISTRY_PREFIX, "");
+            inboundEndpoint.addParameter(parameterName, "", parameterKeyValue);
+        } else if (parameterName.startsWith(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS)) {
             inboundEndpoint.addParameter(parameterName, "", parameterKeyValue);
         } else {
             inboundEndpoint.addParameter(parameterName, parameterKeyValue);

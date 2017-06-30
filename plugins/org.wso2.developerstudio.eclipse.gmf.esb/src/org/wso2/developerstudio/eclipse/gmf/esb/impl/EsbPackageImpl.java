@@ -11240,8 +11240,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_WsInboundPort() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(174);
+	public EReference getInboundEndpoint_TransportRabbitMqConsumerQos() {
+		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(174);
 	}
 
 	/**
@@ -11249,7 +11249,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_WsClientSideBroadcastLevel() {
+	public EAttribute getInboundEndpoint_WsInboundPort() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(175);
 	}
 
@@ -11258,7 +11258,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_WsOutflowDispatchSequence() {
+	public EAttribute getInboundEndpoint_WsClientSideBroadcastLevel() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(176);
 	}
 
@@ -11267,7 +11267,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_WsOutflowDispatchFaultSequence() {
+	public EAttribute getInboundEndpoint_WsOutflowDispatchSequence() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(177);
 	}
 
@@ -11276,7 +11276,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_WsBossThreadPoolSize() {
+	public EAttribute getInboundEndpoint_WsOutflowDispatchFaultSequence() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(178);
 	}
 
@@ -11285,7 +11285,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_WsWorkerThreadPoolSize() {
+	public EAttribute getInboundEndpoint_WsBossThreadPoolSize() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(179);
 	}
 
@@ -11294,7 +11294,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_WsSubprotocolHandlerClass() {
+	public EAttribute getInboundEndpoint_WsWorkerThreadPoolSize() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(180);
 	}
 
@@ -11303,7 +11303,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_WsPipelineHandlerClass() {
+	public EAttribute getInboundEndpoint_WsSubprotocolHandlerClass() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(181);
 	}
 
@@ -11312,7 +11312,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportFeedURL() {
+	public EAttribute getInboundEndpoint_WsPipelineHandlerClass() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(182);
 	}
 
@@ -11321,7 +11321,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportFeedType() {
+	public EAttribute getInboundEndpoint_TransportFeedURL() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(183);
 	}
 
@@ -11330,7 +11330,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TraceEnabled() {
+	public EAttribute getInboundEndpoint_TransportFeedType() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(184);
 	}
 
@@ -11339,8 +11339,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_StatisticsEnabled() {
+	public EAttribute getInboundEndpoint_TraceEnabled() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(185);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_StatisticsEnabled() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(186);
 	}
 
 	/**
@@ -20568,6 +20577,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL);
+		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_INBOUND_PORT);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE);
@@ -22951,6 +22961,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionRetryCount(), ecorePackage.getEString(), "transportRabbitMqConnectionRetryCount", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionRetryInterval(), ecorePackage.getEString(), "transportRabbitMqConnectionRetryInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqServerRetryInterval(), ecorePackage.getEString(), "transportRabbitMqServerRetryInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInboundEndpoint_TransportRabbitMqConsumerQos(), this.getRegistryKeyProperty(), null, "transportRabbitMqConsumerQos", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_WsInboundPort(), ecorePackage.getEString(), "wsInboundPort", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_WsClientSideBroadcastLevel(), this.getWSClientSideBroadcastLevel(), "wsClientSideBroadcastLevel", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_WsOutflowDispatchSequence(), ecorePackage.getEString(), "wsOutflowDispatchSequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

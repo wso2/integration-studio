@@ -24545,13 +24545,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 173;
 
 	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Consumer Qos</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS = ESB_ELEMENT_FEATURE_COUNT + 174;
+
+	/**
 	 * The feature id for the '<em><b>Ws Inbound Port</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__WS_INBOUND_PORT = ESB_ELEMENT_FEATURE_COUNT + 174;
+	int INBOUND_ENDPOINT__WS_INBOUND_PORT = ESB_ELEMENT_FEATURE_COUNT + 175;
 
 	/**
 	 * The feature id for the '<em><b>Ws Client Side Broadcast Level</b></em>' attribute.
@@ -24560,7 +24569,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL = ESB_ELEMENT_FEATURE_COUNT + 175;
+	int INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL = ESB_ELEMENT_FEATURE_COUNT + 176;
 
 	/**
 	 * The feature id for the '<em><b>Ws Outflow Dispatch Sequence</b></em>' attribute.
@@ -24569,7 +24578,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 176;
+	int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 177;
 
 	/**
 	 * The feature id for the '<em><b>Ws Outflow Dispatch Fault Sequence</b></em>' attribute.
@@ -24578,7 +24587,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 177;
+	int INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 178;
 
 	/**
 	 * The feature id for the '<em><b>Ws Boss Thread Pool Size</b></em>' attribute.
@@ -24587,7 +24596,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 178;
+	int INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 179;
 
 	/**
 	 * The feature id for the '<em><b>Ws Worker Thread Pool Size</b></em>' attribute.
@@ -24596,7 +24605,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 179;
+	int INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE = ESB_ELEMENT_FEATURE_COUNT + 180;
 
 	/**
 	 * The feature id for the '<em><b>Ws Subprotocol Handler Class</b></em>' attribute.
@@ -24605,7 +24614,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 180;
+	int INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 181;
 
 	/**
 	 * The feature id for the '<em><b>Ws Pipeline Handler Class</b></em>' attribute.
@@ -24614,7 +24623,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 181;
+	int INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 182;
 
 	/**
 	 * The feature id for the '<em><b>Transport Feed URL</b></em>' attribute.
@@ -24623,7 +24632,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 182;
+	int INBOUND_ENDPOINT__TRANSPORT_FEED_URL = ESB_ELEMENT_FEATURE_COUNT + 183;
 
 	/**
 	 * The feature id for the '<em><b>Transport Feed Type</b></em>' attribute.
@@ -24632,7 +24641,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 183;
+	int INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE = ESB_ELEMENT_FEATURE_COUNT + 184;
 
 	/**
 	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
@@ -24641,7 +24650,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 184;
+	int INBOUND_ENDPOINT__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 185;
 
 	/**
 	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
@@ -24650,7 +24659,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 185;
+	int INBOUND_ENDPOINT__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 186;
 
 	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
@@ -24659,7 +24668,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 186;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 187;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -34878,6 +34887,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpoint_TransportRabbitMqServerRetryInterval();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Transport Rabbit Mq Consumer Qos</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EReference getInboundEndpoint_TransportRabbitMqConsumerQos();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}'.
@@ -50530,6 +50550,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = eINSTANCE.getInboundEndpoint_TransportRabbitMqServerRetryInterval();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Consumer Qos</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS = eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQos();
 
 		/**
 		 * The meta object literal for the '<em><b>Ws Inbound Port</b></em>' attribute feature.

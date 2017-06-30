@@ -55,6 +55,9 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS;
 
 import java.util.Map;
 
@@ -79,6 +82,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
 import org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TopicsType;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
@@ -256,15 +261,34 @@ public class InboundEndpointDeserializer extends
      */
     private void updateParameters(InboundEndpoint inboundEndpointInstance, InboundEndpointType inboundEndpointType) {
         for (Map.Entry<String, String> paramEntry : inboundEndpointInstance.getParametersMap().entrySet()) {
-            addParameterForInboundEndpoint(paramEntry, ParameterKeyValueType.VALUE, inboundEndpointType);
+            if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS)) {
+                addParameterKeyForInboundEndpoint(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
+                        inboundEndpointInstance.getParameterKey(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS),
+                        ParameterKeyValueType.VALUE, inboundEndpointType);
+            } else {
+                addParameterForInboundEndpoint(paramEntry, ParameterKeyValueType.VALUE, inboundEndpointType);
+            }
         }
+
         // TODO proper fix after synapse release getParameterKeyMap
         for (InboundEndpointParameterType parameter : InboundEndpointParameterType.values()) {
             if (inboundEndpointInstance.getParameterKey(parameter.getName()) != null) {
-                addParameterForInboundEndpoint(new ParameterEntry<String, String>(parameter.getName(),
-                        inboundEndpointInstance.getParameterKey(parameter.getName())), ParameterKeyValueType.KEY,
-                        inboundEndpointType);
+                addParameterForInboundEndpoint(
+                        new ParameterEntry<String, String>(parameter.getName(),
+                                inboundEndpointInstance.getParameterKey(parameter.getName())),
+                        ParameterKeyValueType.KEY, inboundEndpointType);
             }
+        }
+    }
+
+    private void addParameterKeyForInboundEndpoint(String paramEntryKey, String paramEntryValue,
+            ParameterKeyValueType type, InboundEndpointType inboundEndpointType) {
+        if (paramEntryKey.equals(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS)) {
+            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS,
+                    InboundEndpointType.RABBITMQ_VALUE);
+            RegistryKeyProperty consumerQosKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+            consumerQosKey.setKeyValue(paramEntryValue);
+            executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, consumerQosKey);
         }
     }
 
@@ -714,9 +738,9 @@ public class InboundEndpointDeserializer extends
                         } else {
                             executeSetValueCommand(INBOUND_ENDPOINT__COORDINATION, false);
                         }
-                    }
+                    } 
                 }
-            }
+            }            
         } else if (InboundEndpointType.FEED.equals(inboundEndpointType)) {
             for (FEEDInboundEndpointParameter parameterType : FEEDInboundEndpointParameter.values()) {
                 if (parameterType.isMatchedWithParameterName(paramEntry.getKey())) {

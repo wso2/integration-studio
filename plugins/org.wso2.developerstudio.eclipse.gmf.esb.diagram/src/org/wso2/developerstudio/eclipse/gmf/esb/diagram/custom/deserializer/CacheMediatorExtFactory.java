@@ -83,9 +83,9 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
 			if (name != null && name.getAttributeValue() != null) {
 				try {
 					Class generator = Class.forName(name.getAttributeValue());
-					Object o = generator.newInstance();
-					if (o instanceof DigestGenerator) {
-						cacheMediator.setDigestGenerator((DigestGenerator) o);
+					Object generatorOject = generator.newInstance();
+					if (generatorOject instanceof DigestGenerator) {
+						cacheMediator.setDigestGenerator((DigestGenerator) generatorOject);
 					} else {
 						handleException("Specified class for the hashGenerator is not a "
 								+ "DigestGenerator. It *must* implement "

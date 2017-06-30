@@ -23737,7 +23737,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEEnum(hashGeneratorEEnum, HashGenerator.class, "HashGenerator");
 		addEEnumLiteral(hashGeneratorEEnum, HashGenerator.CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR);
-		addEEnumLiteral(hashGeneratorEEnum, HashGenerator.CACHING_DIGEST_DOMHASH_GENERATOR);
 
 		// Initialize data types
 		initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

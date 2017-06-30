@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2011-2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -212,16 +212,10 @@ public class CustomMediatorCreationWizard extends AbstractWSO2ProjectCreationWiz
 		 
 	}
 	
- private String[] getDepandanceyList(){
-		String[] depedencyList = new String[] { LibraryUtils.abdera_wso2vXX_jar, LibraryUtils.axiom_1_2_11_wso2vXX_jar,
-				LibraryUtils.axis2_1_6_1_wso2vXX_jar, LibraryUtils.commons_codec_wso2vXX_jar,
-				LibraryUtils.commons_httpclient_wso2vXX_jar, LibraryUtils.commons_io_wso2vXX_jar,
-				LibraryUtils.commons_loggingwso2vXX_jar, LibraryUtils.geronimo_stax_api_wso2vXX_jar,
-				LibraryUtils.httpcore_4_3_0_wso2vXX_jar, LibraryUtils.neethi_wso2vXX_jar,
-				LibraryUtils.not_yet_commons_ssl_wso2vXX_jar, LibraryUtils.synapse_core_2_1_2_wso2vXX_jar,
-				LibraryUtils.wsdl4j_wso2vXX_jar, LibraryUtils.XmlSchema_wso2vXX_jar,
-				LibraryUtils.woden_1_0_0_M8_wso2vXX_jar };
-		
+	//Fixing DEVTOOLEI-1117 and DEVTOOLEI-1119
+	private String[] getDepandanceyList() {
+		String[] depedencyList = new String[] { LibraryUtils.axis2_1_6_1_wso2vXX_jar,
+				LibraryUtils.commons_loggingwso2vXX_jar, LibraryUtils.synapse_core_2_1_7_wso2vXX_jar };
 		return depedencyList;
 	}
 }

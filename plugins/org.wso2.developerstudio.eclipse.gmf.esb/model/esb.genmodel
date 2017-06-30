@@ -743,7 +743,6 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//HashGenerator">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HashGenerator/CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HashGenerator/CACHING_DIGEST_DOMHASH_GENERATOR"/>
     </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>

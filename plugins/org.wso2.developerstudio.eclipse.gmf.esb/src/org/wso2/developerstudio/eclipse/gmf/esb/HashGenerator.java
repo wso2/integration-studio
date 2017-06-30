@@ -39,17 +39,7 @@ public enum HashGenerator implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR(0, "CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR", "CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"),
-
-	/**
-	 * The '<em><b>CACHING DIGEST DOMHASH GENERATOR</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CACHING_DIGEST_DOMHASH_GENERATOR_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	CACHING_DIGEST_DOMHASH_GENERATOR(1, "CACHING_DIGEST_DOMHASH_GENERATOR", "CACHING_DIGEST_DOMHASH_GENERATOR");
+	CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR(0, "CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR", "CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR");
 
 	/**
 	 * The '<em><b>CARBON MEDIATOR CACHE DIGEST DOMHASH GENERATOR</b></em>' literal value.
@@ -67,21 +57,6 @@ public enum HashGenerator implements Enumerator {
 	public static final int CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR_VALUE = 0;
 
 	/**
-	 * The '<em><b>CACHING DIGEST DOMHASH GENERATOR</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CACHING DIGEST DOMHASH GENERATOR</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #CACHING_DIGEST_DOMHASH_GENERATOR
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CACHING_DIGEST_DOMHASH_GENERATOR_VALUE = 1;
-
-	/**
 	 * An array of all the '<em><b>Hash Generator</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,7 +65,6 @@ public enum HashGenerator implements Enumerator {
 	private static final HashGenerator[] VALUES_ARRAY =
 		new HashGenerator[] {
 			CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR,
-			CACHING_DIGEST_DOMHASH_GENERATOR,
 		};
 
 	/**
@@ -148,7 +122,6 @@ public enum HashGenerator implements Enumerator {
 	public static HashGenerator get(int value) {
 		switch (value) {
 			case CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR_VALUE: return CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR;
-			case CACHING_DIGEST_DOMHASH_GENERATOR_VALUE: return CACHING_DIGEST_DOMHASH_GENERATOR;
 		}
 		return null;
 	}

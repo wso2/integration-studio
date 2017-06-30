@@ -3293,6 +3293,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="HashGenerator">
     <eLiterals name="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR" literal="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
-    <eLiterals name="CACHING_DIGEST_DOMHASH_GENERATOR" value="1" literal="CACHING_DIGEST_DOMHASH_GENERATOR"/>
   </eClassifiers>
 </ecore:EPackage>

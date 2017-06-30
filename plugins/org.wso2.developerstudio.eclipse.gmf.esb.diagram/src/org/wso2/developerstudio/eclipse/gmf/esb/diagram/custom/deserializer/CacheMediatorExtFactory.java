@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2016-2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,11 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
-import org.apache.synapse.config.xml.CacheMediatorFactory;
+import org.wso2.carbon.mediator.cache.config.xml.CacheMediatorFactory;
+import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
 import org.apache.synapse.config.xml.SequenceMediatorFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
-import org.apache.synapse.mediators.builtin.CacheMediator;
+import org.wso2.carbon.mediator.cache.CacheMediator;
 import org.wso2.caching.CachingConstants;
 
 public class CacheMediatorExtFactory extends CacheMediatorFactory {
@@ -78,10 +79,26 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
 
             OMAttribute name = elem.getAttribute(ATT_GENERATOR);
 
-            if (name != null) {
-                org.wso2.caching.digest.DOMHASHGenerator domhashGenerator = new org.wso2.caching.digest.DOMHASHGenerator();
-                cacheMediator.setDigestGenerator(domhashGenerator);
-            }
+			// Fixing DEVTOOLEI-1120
+			if (name != null && name.getAttributeValue() != null) {
+				try {
+					Class generator = Class.forName(name.getAttributeValue());
+					Object generatorOject = generator.newInstance();
+					if (generatorOject instanceof DigestGenerator) {
+						cacheMediator.setDigestGenerator((DigestGenerator) generatorOject);
+					} else {
+						handleException("Specified class for the hashGenerator is not a "
+								+ "DigestGenerator. It *must* implement "
+								+ "org.wso2.carbon.mediator.cache.digest.DigestGenerator interface");
+					}
+				} catch (ClassNotFoundException e) {
+					handleException("Unable to load the hash generator class", e);
+				} catch (IllegalAccessException e) {
+					handleException("Unable to access the hash generator class", e);
+				} catch (InstantiationException e) {
+					handleException("Unable to instantiate the hash generator class", e);
+				}
+			}
 
             OMAttribute timeoutAttr = elem.getAttribute(ATT_TIMEOUT);
             if (timeoutAttr != null && timeoutAttr.getAttributeValue() != null) {

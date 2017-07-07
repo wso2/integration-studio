@@ -82,9 +82,8 @@
             </commonWizard>
     </extension>
    
-   	<extension
-		point="org.wso2.developerstudio.eclipse.dashboad.link">	
-	<wizardLink category="dashboard.category.esb" id="91dashboard.wizardLink.esb.messagestore"
+	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+        <wizardLink category="dashboard.category.esb.artifacts" id="10dashboard.wizardLink.esb.messagestore"
 			wizard="org.wso2.developerstudio.eclipse.artifact.messagestore.wizard" priority="10">
 		</wizardLink>
 	</extension>

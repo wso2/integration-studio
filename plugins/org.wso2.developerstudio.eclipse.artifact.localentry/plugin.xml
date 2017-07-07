@@ -86,12 +86,11 @@
             name="Carbon Application Local Entries">
       </localentry>
    	</extension>
-   	
-   	<extension
-		point="org.wso2.developerstudio.eclipse.dashboad.link">	
-	<wizardLink category="dashboard.category.esb" id="7dashboard.wizardLink.esb.localentry"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newlocalentry" priority="7">
+
+   	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+       <wizardLink category="dashboard.category.esb.artifacts" id="4dashboard.wizardLink.esb.localentry"
+			wizard="org.wso2.developerstudio.eclipse.artifact.newlocalentry" priority="4">
 		</wizardLink>
-	</extension>
-   	
+   </extension>
+  
 </plugin>

@@ -65,11 +65,13 @@
                 </enablement>
             </commonWizard>
     </extension>
-  	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">	
-		<wizardLink category="dashboard.category.esb" id="91dashboard.wizardLink.esb.messageprocessor"
-			wizard="org.wso2.developerstudio.eclipse.artifact.messageprocessor.wizard" priority="10">
+
+	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+        <wizardLink category="dashboard.category.esb.artifacts" id="9dashboard.wizardLink.esb.messageprocessor"
+			wizard="org.wso2.developerstudio.eclipse.artifact.messageprocessor.wizard" priority="9">
 		</wizardLink>
 	</extension>
+   
  <extension
        point="org.eclipse.ui.startup">
     <startup

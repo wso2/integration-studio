@@ -13,12 +13,14 @@
 		</wizard>
    </extension>
    
-<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
-   <wizardLink category="dashboard.category.esb" id="2dashboard.wizardLink.esb.proxy"
-	wizard="org.wso2.developerstudio.eclipse.artifact.newproxyservice"
-	priority="2">
-</wizardLink>
-</extension>
+
+ <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+	<category id="dashboard.category.esb.artifacts" showTitle="true" title="ESB Artifact Types" priority="2" />
+     <wizardLink category="dashboard.category.esb.artifacts" id="1dashboard.wizardLink.esb.proxy"
+	    wizard="org.wso2.developerstudio.eclipse.artifact.newproxyservice" 
+	   priority="1">
+     </wizardLink>
+  </extension>
    
    
    	<!--extension point="org.eclipse.core.resources.natures"

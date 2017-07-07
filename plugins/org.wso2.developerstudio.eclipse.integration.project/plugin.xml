@@ -59,8 +59,4 @@
            nature="org.wso2.developerstudio.eclipse.integration.project.nature">
      </provider>
   </extension>
-  <!--extension point="org.wso2.developerstudio.eclipse.dashboad.link">
-      <category id="dashboard.category.esb" showTitle="true" title="Integration Project" priority="2" />
-      <wizardLink category="dashboard.category.esb" id="1dashboard.wizardLink.integration.project" wizard="org.wso2.developerstudio.eclipse.artifact.newintegrationproject" priority="2"></wizardLink>
-  </extension-->
 </plugin>

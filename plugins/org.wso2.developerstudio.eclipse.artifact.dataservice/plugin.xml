@@ -59,20 +59,23 @@
             sampleProjectName="EmployeeDataService">
       </sample>
    </extension>
-    <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
-     <category id="odashboard.category.ds" showTitle="true"
-                  title="Data Services Server"
-                  priority="4">
-        </category>
-         <!-- data service -->
-        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
-                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsproject">
-        </wizardLink>
-        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
-                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsartifact">
-        </wizardLink>
-        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.validiator"
-                    wizard="org.wso2.developerstudio.eclipse.artifact.newvalidiatorartifact">
-        </wizardLink>
+    		
+	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+	<category id="dashboard.category.dss.project" showTitle="true" title="DSS Project Types" priority="3" />
+	
+       <wizardLink category="dashboard.category.dss.project" id="dashboard.wizardLink.ds.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsproject" priority="1">
+       </wizardLink>
+       <wizardLink category="dashboard.category.dss.project" id="dashboard.wizardLink.ds.validiator"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newvalidiatorartifact" priority="2">
+       </wizardLink>
     </extension>
+   
+    <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+	<category id="dashboard.category.dss.artifacts" showTitle="true" title="DSS Artifact Types" priority="4" />
+     <wizardLink category="dashboard.category.dss.artifacts" id="dashboard.wizardLink.ds.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsartifact" priority="1">
+     </wizardLink>
+    </extension>
+
 </plugin>

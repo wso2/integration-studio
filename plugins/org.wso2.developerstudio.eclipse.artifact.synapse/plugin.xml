@@ -71,11 +71,11 @@
             </commonWizard>
     </extension>
     
-   <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
-	   <wizardLink category="dashboard.category.esb" id="dashboard.wizardLink.esb.synapse"
+   <!--extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+        <wizardLink category="dashboard.category.integration.artifacts" id="11dashboard.wizardLink.esb.synapse"
 		wizard="org.wso2.developerstudio.eclipse.artifact.synapseartifact"
 		priority="11">
 		</wizardLink>
-   </extension>
-    
+	</extension-->
+       
    </plugin>

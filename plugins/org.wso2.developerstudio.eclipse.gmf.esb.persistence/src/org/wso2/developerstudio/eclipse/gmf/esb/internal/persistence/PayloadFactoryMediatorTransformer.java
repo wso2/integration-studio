@@ -120,6 +120,12 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
 			} else {
 				argument.setValue(arg.getArgumentValue());
 			}
+			// adding serialization support for literal attribute
+			if (arg.isLiteral()) {
+				argument.setLiteral(true);
+			} else {
+				argument.setLiteral(false);
+			}
 			payloadFactoryMediator.addPathArgument(argument);
 		}
 		return payloadFactoryMediator;

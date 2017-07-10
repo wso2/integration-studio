@@ -2177,6 +2177,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="evaluator" eType="#//MediaType"
         defaultValueLiteral="xml"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PayloadFactoryArgumentType">
     <eLiterals name="VALUE" literal="Value"/>

@@ -16561,13 +16561,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PAYLOAD_FACTORY_ARGUMENT__EVALUATOR = ESB_NODE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Literal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAYLOAD_FACTORY_ARGUMENT__LITERAL = ESB_NODE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Payload Factory Argument</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAYLOAD_FACTORY_ARGUMENT_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 4;
+	int PAYLOAD_FACTORY_ARGUMENT_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl <em>Conditional Route Branch</em>}' class.
@@ -41319,6 +41328,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getPayloadFactoryArgument_Evaluator();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument#isLiteral <em>Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Literal</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument#isLiteral()
+	 * @see #getPayloadFactoryArgument()
+	 * @generated
+	 */
+	EAttribute getPayloadFactoryArgument_Literal();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch <em>Conditional Route Branch</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -55600,6 +55620,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute PAYLOAD_FACTORY_ARGUMENT__EVALUATOR = eINSTANCE.getPayloadFactoryArgument_Evaluator();
+
+		/**
+		 * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PAYLOAD_FACTORY_ARGUMENT__LITERAL = eINSTANCE.getPayloadFactoryArgument_Literal();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouteBranchImpl <em>Conditional Route Branch</em>}' class.

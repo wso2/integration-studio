@@ -1,15 +1,23 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__LITERAL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__ARGS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY;
+
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.transform.Argument;
-import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.ui.forms.editor.FormEditor;
-import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
@@ -18,7 +26,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class PayloadFactoryMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, PayloadFactoryMediator>{
 	private static String XML_LITERAL = "xml"; 
@@ -52,7 +59,7 @@ public class PayloadFactoryMediatorDeserializer extends AbstractEsbNodeDeseriali
 				executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE, MediaType.JSON);
 			}
 		}
-		
+				
 		EList<PayloadFactoryArgument> arguments=new BasicEList<PayloadFactoryArgument>();
 		for(Argument argument: payloadFactoryMediator.getPathArgumentList()){
 			PayloadFactoryArgument payloadFactoryArgument= EsbFactory.eINSTANCE.createPayloadFactoryArgument();
@@ -68,6 +75,13 @@ public class PayloadFactoryMediatorDeserializer extends AbstractEsbNodeDeseriali
 			}else{
 				executeSetValueCommand(payloadFactoryArgument,PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE, argument.getValue());
 				executeSetValueCommand(payloadFactoryArgument,PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE, PayloadFactoryArgumentType.VALUE);
+			}
+			
+			// adding deserialization support for literal attribute
+			if (argument.isLiteral()) {
+				executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__LITERAL, true);
+			} else {
+				executeSetValueCommand(payloadFactoryArgument, PAYLOAD_FACTORY_ARGUMENT__LITERAL, false);
 			}
 			arguments.add(payloadFactoryArgument);
 		}

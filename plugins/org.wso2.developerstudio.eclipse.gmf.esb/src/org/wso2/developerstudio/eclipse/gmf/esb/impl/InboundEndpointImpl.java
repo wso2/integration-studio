@@ -4019,7 +4019,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected InboundEndpointImpl() {
 		super();
@@ -9672,7 +9672,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {

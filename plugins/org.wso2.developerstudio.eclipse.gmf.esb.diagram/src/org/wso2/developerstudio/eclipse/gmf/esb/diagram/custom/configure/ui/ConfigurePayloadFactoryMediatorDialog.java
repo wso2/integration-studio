@@ -84,14 +84,18 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 	private TableEditor argumentTypeEditor;
 	private TableEditor argumentValueEditor;
 	private TableEditor argumentEvaluatorEditor;
+	private TableEditor argumentLiteralEditor;
 	private PropertyText argumentValue;
 	private Button cmdAddArgument;
 	private Button cmdRemoveArgument;
+	private Combo cmbLiteralValue;
 	
 	private final static String LITERAL_VALUE = "Value";
 	private final static String LITERAL_EXPRESSION = "Expression";
 	private final static String LITERAL_XML = "xml";
 	private final static String LITERAL_JSON = "json";
+	private final static String LITERAL_VALUE_TRUE = "True";
+	private final static String LITERAL_VALUE_FALSE = "False";
 
 	/**
 	 * Create the dialog.
@@ -126,7 +130,7 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 		fd_tblArguments.bottom = new FormAttachment(lblArguments, 194, SWT.BOTTOM);
 		fd_tblArguments.top = new FormAttachment(lblArguments, 6);
 		fd_tblArguments.left = new FormAttachment(0, 10);
-		fd_tblArguments.right = new FormAttachment(0, 481);
+		fd_tblArguments.right = new FormAttachment(0, 600);
 		tblArguments.setLayoutData(fd_tblArguments);
 		tblArguments.setHeaderVisible(true);
 		tblArguments.setLinesVisible(true);
@@ -157,6 +161,10 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 		tblclmnArgumentEvaluator.setWidth(100);
 		tblclmnArgumentEvaluator.setText("Evaluator");
 		
+		TableColumn tblclmnArgumentLiteral = new TableColumn(tblArguments, SWT.NONE);
+		tblclmnArgumentLiteral.setWidth(95);
+		tblclmnArgumentLiteral.setText("Literal");
+		
 		
 		cmdAddArgument = new Button(container, SWT.NONE);
 		cmdAddArgument.addSelectionListener(new SelectionAdapter() {
@@ -183,6 +191,7 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 					 initTableEditor(argumentTypeEditor,tblArguments);
 					 initTableEditor(argumentValueEditor,tblArguments);
 					 initTableEditor(argumentEvaluatorEditor,tblArguments);
+					 initTableEditor(argumentLiteralEditor,tblArguments);
 					unbindArgument(selectedIndex);
 					if (selectedIndex < tblArguments.getItemCount()) {
 						tblArguments.select(selectedIndex);
@@ -225,7 +234,7 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(597, 329);
+		return new Point(700, 329);
 	}
 	
 	/**
@@ -333,6 +342,26 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 			}
 		});
 		
+		argumentLiteralEditor = initTableEditor(argumentLiteralEditor, item.getParent());
+		cmbLiteralValue = new Combo(item.getParent(), SWT.READ_ONLY);
+		cmbLiteralValue.setItems(new String[] { LITERAL_VALUE_FALSE, LITERAL_VALUE_TRUE });
+		cmbLiteralValue.setText(item.getText(3));
+		argumentLiteralEditor.setEditor(cmbLiteralValue, item, 3);
+		item.getParent().redraw();
+		item.getParent().layout();
+		cmbLiteralValue.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event evt) {
+
+				item.setText(3, cmbLiteralValue.getText());
+				if (cmbLiteralValue.getSelectionIndex() == 0) {
+					wrapper.setLiteral(false);
+				} else {
+					wrapper.setLiteral(true);
+				}
+			}
+		});
+
+		
 /*		if (wrapper.isExpression()) {
 			if (wrapper.getEvaluator() == MediaType.XML){
 				argumentValue.setForcefullInlineEditing(false);
@@ -353,20 +382,35 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 		TableItem item = new TableItem(tblArguments, SWT.NONE);
 		ArgumentWrapper wrapper = new ArgumentWrapper(argument);
 		wrapper.setArgumentExpression(EsbFactory.eINSTANCE.copyNamespacedProperty(argument.getArgumentExpression()));
-		wrapper.setArgumentValue(argument.getArgumentValue());
-
-		if (argument.getArgumentType() == PayloadFactoryArgumentType.EXPRESSION) {
-			item.setText(new String[] { LITERAL_EXPRESSION,
-							wrapper.getArgumentExpression().getPropertyValue(),
-							argument.getEvaluator().toString()});
+		wrapper.setArgumentValue(argument.getArgumentValue());		
+		
+		//adding literal attribute support
+		if (argument.getArgumentType() == PayloadFactoryArgumentType.EXPRESSION && argument.isLiteral()) {
+			item.setText(new String[] { LITERAL_EXPRESSION, wrapper.getArgumentExpression().getPropertyValue(),
+					argument.getEvaluator().toString(),LITERAL_VALUE_TRUE});
 			wrapper.setEvaluator(argument.getEvaluator());
 			wrapper.setExpression(true);
-		} else {
-			item.setText(new String[] { LITERAL_VALUE, wrapper.getArgumentValue(), "" });
+			wrapper.setLiteral(true);
+
+		} else if (argument.getArgumentType() == PayloadFactoryArgumentType.EXPRESSION && !argument.isLiteral()) {
+			item.setText(new String[] { LITERAL_EXPRESSION, wrapper.getArgumentExpression().getPropertyValue(),
+					argument.getEvaluator().toString(),LITERAL_VALUE_FALSE});
+			wrapper.setEvaluator(argument.getEvaluator());
+			wrapper.setExpression(true);
+			wrapper.setLiteral(false);
+
+		} else if (argument.getArgumentType() == PayloadFactoryArgumentType.VALUE && argument.isLiteral()) {
+			item.setText(new String[] { LITERAL_VALUE, wrapper.getArgumentValue(), "",LITERAL_VALUE_TRUE});
 			wrapper.setEvaluator(null);
 			wrapper.setExpression(false);
+			wrapper.setLiteral(true);
+		} else if (argument.getArgumentType() == PayloadFactoryArgumentType.VALUE && !argument.isLiteral()) {
+			item.setText(new String[] { LITERAL_VALUE, wrapper.getArgumentValue(), "",LITERAL_VALUE_FALSE});
+			wrapper.setEvaluator(null);
+			wrapper.setExpression(false);
+			wrapper.setLiteral(false);
 		}
-		
+	
 		item.setData(wrapper);
 		return item;
 	}
@@ -449,6 +493,16 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 						wrapper.getArgumentValue() );
 				getResultCommand().append(setCmd);
 			}
+			//execute setcmd for literal value
+			if (wrapper.isLiteral()) {
+				setCmd = new SetCommand(editingDomain, argument, EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__LITERAL,
+						true);
+				getResultCommand().append(setCmd);
+			} else {
+				setCmd = new SetCommand(editingDomain, argument, EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__LITERAL,
+						false);
+				getResultCommand().append(setCmd);
+			}
 		}
 		// Apply changes.
 		if (getResultCommand().canExecute()) {
@@ -506,11 +560,18 @@ public class ConfigurePayloadFactoryMediatorDialog extends Dialog {
 		public void setEvaluator(MediaType formatEvaluator) {
 			this.evaluator = formatEvaluator;
 		}
+		public boolean isLiteral() {
+			return literal;
+		}
+		public void setLiteral(boolean literal) {
+			this.literal = literal;
+		}
 		
 		private PayloadFactoryArgument argument; 
 		private String argumentValue;
 		private NamespacedProperty argumentExpression;
 		private boolean expression;
 		private MediaType evaluator;
+		private boolean literal;
 	}
 }

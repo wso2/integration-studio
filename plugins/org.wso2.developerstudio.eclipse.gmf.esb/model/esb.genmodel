@@ -1879,6 +1879,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryArgument/argumentValue"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryArgument/argumentExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryArgument/evaluator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryArgument/literal"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//ConditionalRouteBranch">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ConditionalRouteBranch/breakAfterRoute"/>

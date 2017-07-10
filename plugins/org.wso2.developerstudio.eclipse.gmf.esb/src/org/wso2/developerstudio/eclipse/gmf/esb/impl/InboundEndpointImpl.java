@@ -9672,7 +9672,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated 
 	 */
 	@Override
 	public String toString() {

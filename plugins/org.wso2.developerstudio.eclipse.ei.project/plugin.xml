@@ -4,7 +4,7 @@
    <extension point="org.wso2.developerstudio.carbon.product.server.registry">
       <product.server
             carbon.server.version="carbon.server.44ei"
-            server.display.name="WSO2 Enterprise Integrator 6.1.0">
+            server.display.name="WSO2 Enterprise Integrator 6.2.0">
       </product.server>
     </extension>
 </plugin>

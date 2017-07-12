@@ -127,7 +127,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/releases/4.1.0-201606031446/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/releases/4.1.1.201702080752/</url>
             <layout>p2</layout>
         </repository>
 

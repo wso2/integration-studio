@@ -16,7 +16,7 @@
    <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
    <category id="dashboard.category.greg" showTitle="true"
                   title="Repository"
-                  priority="3">
+                  priority="5">
    </category>
     <wizardLink category="dashboard.category.greg" id="dashboard.wizardLink.general.project"
                     wizard="org.wso2.developerstudio.eclipse.general.project"

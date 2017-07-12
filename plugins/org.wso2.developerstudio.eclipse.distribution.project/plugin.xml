@@ -351,6 +351,9 @@
 		 <register.serverRole
        artifactType="jaggery/app"
        serverRole="JaggeryServer"/>
+       		 <register.serverRole
+       artifactType="datasource/datasource"
+       serverRole="DataServicesServer"/>
  </extension>
  
  <extension
@@ -430,6 +433,9 @@
       artifactType="service/rule"
       priority="5"/>
 		 <artifact.priority
+      artifactType="datasource/datasource"
+      priority="5"/>
+		 <artifact.priority
       artifactType="synapse/proxy-service"
       priority="6"/>
   </extension>
@@ -507,5 +513,8 @@
 		 <artifact.mapping
         artifactType="synapse/lib"
         fileExtension="zip"/>
+	         <artifact.mapping
+        artifactType="datasource/datasource"
+        fileExtension="xml"/>
   </extension>
 </plugin>

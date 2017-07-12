@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: WS02EIServer
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.ei.project;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.ei.project.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -37,4 +37,4 @@ Import-Package: org.eclipse.e4.core.contexts,
  org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.utils;version="[4.1.0,5.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,5.0.0)"
- 
+

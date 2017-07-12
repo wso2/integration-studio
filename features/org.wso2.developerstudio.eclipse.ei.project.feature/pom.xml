@@ -4,8 +4,8 @@
     <parent>
         <artifactId>wso2-developerstudio-ei-project-feature</artifactId>
         <groupId>org.wso2.developerstudio</groupId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.1.0-SNAPSHOT</version>
+	<relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.ei.project.feature</artifactId>
     <packaging>eclipse-feature</packaging>

@@ -18,6 +18,7 @@ public final class Messages extends NLS {
 	public static String MAVEN_WAR_PLUGIN_VERSION;
 	public static String MAVEN_CARBON_UI_PLUGIN_VERSION;
 	public static String MAVEN_DATASERVICE_PLUGIN_VERSION;
+	public static String MAVEN_DATASOURCE_PLUGIN_VERSION;
 	public static String MAVEN_BPEL_PLUGIN_VERSION;
 	public static String MAVEN_DS_VALIDATOR_PLUGIN_VERSION;
 	public static String MAVEN_GADGET_PLUGIN_VERSION;

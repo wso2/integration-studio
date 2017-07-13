@@ -30,7 +30,6 @@ org.wso2.developerstudio.library.artifact.feature
 org.wso2.developerstudio.mvn.multimodule.feature
 org.wso2.developerstudio.platform.libraries.feature
 org.wso2.developerstudio.usr.management.feature
-org.wso2.developerstudio.web.ui.feature
 
 
 ##How to Contribute

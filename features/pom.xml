@@ -42,7 +42,6 @@
 	<module>org.wso2.developerstudio.platform.libraries.feature</module>
 	<module>org.wso2.developerstudio.usr.management.feature</module>
 	<module>org.wso2.developerstudio.mvn.multimodule.feature</module>
-	<!--module>org.wso2.developerstudio.web.ui.feature</module-->
 	<module>org.wso2.developerstudio.cloud.utils.feature</module>
     </modules>
     <distributionManagement>

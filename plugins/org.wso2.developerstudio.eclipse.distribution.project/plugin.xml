@@ -258,12 +258,6 @@
  </extension>
  <extension
        point="org.wso2.developerstudio.register.server.role">
-        <register.serverRole
-       artifactType="service/axis2"
-       serverRole="ApplicationServer"/>
-		 <register.serverRole
-       artifactType="webapp/jaxws"
-       serverRole="ApplicationServer"/>
 		 <register.serverRole
        artifactType="service/dataservice"
        serverRole="DataServicesServer"/>
@@ -289,21 +283,6 @@
        artifactType="bpel/workflow"
        serverRole="BusinessProcessServer"/>
 		 <register.serverRole
-       artifactType="wso2/gadget"
-       serverRole="GadgetServer"/>
-		 <register.serverRole
-       artifactType="web/application"
-       serverRole="ApplicationServer"/>
-		 <register.serverRole
-       artifactType="war"
-       serverRole="ApplicationServer"/>
-		 <register.serverRole
-       artifactType="jar"
-       serverRole="ApplicationServer"/>
-		 <register.serverRole
-       artifactType="lib/carbon/ui"
-       serverRole="ApplicationServer"/>
-		 <register.serverRole
        artifactType="lib/synapse/mediator"
        serverRole="EnterpriseServiceBus"/>
 		 <register.serverRole
@@ -315,9 +294,6 @@
 		 <register.serverRole
        artifactType="lib/registry/filter"
        serverRole="GovernanceRegistry"/>
-		 <register.serverRole
-       artifactType="lib/library/bundle"
-       serverRole="ApplicationServer"/>
 		 <register.serverRole
        artifactType="synapse/local-entry"
        serverRole="EnterpriseServiceBus"/>
@@ -342,18 +318,12 @@
 		 <register.serverRole
        artifactType="synapse/message-processors"
        serverRole="EnterpriseServiceBus"/>
-		 <register.serverRole
-       artifactType="service/rule"
-       serverRole="BusinessRulesServer"/>
-		 <register.serverRole
-       artifactType="service/meta"
-       serverRole="ApplicationServer"/>
-		 <register.serverRole
-       artifactType="jaggery/app"
-       serverRole="JaggeryServer"/>
-       		 <register.serverRole
+       	<register.serverRole
        artifactType="datasource/datasource"
        serverRole="DataServicesServer"/>
+        <register.serverRole
+       artifactType="synapse/inbound-endpoint"
+       serverRole="EnterpriseIntegrator"/>        
  </extension>
  
  <extension

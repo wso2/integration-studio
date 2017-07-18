@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2017 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,53 +56,53 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 		return localEntry;
 	}
 
-	@Override
-	public void createNode(FormEditor formEditor, Entry object) {
-		ESBFormEditor LocalEntryFormEditor = (ESBFormEditor) formEditor;
-		LocalEntry localEntry = EsbFactoryImpl.eINSTANCE.createLocalEntry();
-		FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
-		if (formPage instanceof LocalEntryFormPage) {
-			LocalEntryFormPage localEntryPage = (LocalEntryFormPage) formPage;
-			if (localEntryPage.getLocalEntryNameTxt() != null) {
-				localEntryPage.getLocalEntryNameTxt().setText(object.getKey());
-			}
-			if (object.getType() == INLINE_TEXT) {
-				if (localEntryPage.getLocalEntryTypeCombo() != null) {
-					localEntryPage.getLocalEntryTypeCombo().select(0);
+    @Override
+    public void createNode(FormEditor formEditor, Entry object) {
+        ESBFormEditor LocalEntryFormEditor = (ESBFormEditor) formEditor;
+        LocalEntry localEntry = EsbFactoryImpl.eINSTANCE.createLocalEntry();
+        FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
+        if (formPage instanceof LocalEntryFormPage) {
+            LocalEntryFormPage localEntryPage = (LocalEntryFormPage) formPage;
+            if (localEntryPage.getLocalEntryNameTxt() != null) {
+                localEntryPage.getLocalEntryNameTxt().setText(object.getKey());
+            }
+            if (object.getType() == INLINE_TEXT) {
+                if (localEntryPage.getLocalEntryTypeCombo() != null) {
+                    localEntryPage.getLocalEntryTypeCombo().select(0);
                     if (localEntryPage.getLocalEntryTextValue() != null && object.getValue() != null) {
                         String trimmedValue = getTrimmedValue(object.getValue());
                         localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
                         localEntry.setValueLiteral(trimmedValue);
                     }
-				}
-			}
-			if (object.getType() == INLINE_XML) {
-				if (localEntryPage.getLocalEntryTypeCombo() != null) {
-					localEntryPage.getLocalEntryTypeCombo().select(1);
-					if (localEntryPage.getLocalEntryTextValue() != null) {
+                }
+            }
+            if (object.getType() == INLINE_XML) {
+                if (localEntryPage.getLocalEntryTypeCombo() != null) {
+                    localEntryPage.getLocalEntryTypeCombo().select(1);
+                    if (localEntryPage.getLocalEntryTextValue() != null) {
                         if (object.getValue() != null) {
                             String trimmedValue = getTrimmedValue(object.getValue());
                             localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
                         } else {
                             localEntryPage.getLocalEntryTextValue().setText("value/>");
                         }
-					}
-				}
-			}
-			if (object.getType() == URL_SRC) {
-				if (localEntryPage.getLocalEntryTypeCombo() != null) {
-					localEntryPage.getLocalEntryTypeCombo().select(2);
-					if (localEntryPage.getLocalEntryTextValue() != null) {
-						if (object.getSrc() != null) {
-						localEntryPage.getLocalEntryTextValue().setText(object.getSrc().toString());
-						} else {
-							localEntryPage.getLocalEntryTextValue().setText("file:/path/to/sample");
-						}
-					}
-				}
-			}
-		}
-	}
+                    }
+                }
+            }
+            if (object.getType() == URL_SRC) {
+                if (localEntryPage.getLocalEntryTypeCombo() != null) {
+                    localEntryPage.getLocalEntryTypeCombo().select(2);
+                    if (localEntryPage.getLocalEntryTextValue() != null) {
+                        if (object.getSrc() != null) {
+                            localEntryPage.getLocalEntryTextValue().setText(object.getSrc().toString());
+                        } else {
+                            localEntryPage.getLocalEntryTextValue().setText("file:/path/to/sample");
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * returns the trimmed value

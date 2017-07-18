@@ -104,14 +104,15 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 		}
 	}
 
-    /**
-     * returns the trimmed value
-     * 
-     * @param object Entry object value
-     * @return trimmed value
-     */
-    private String getTrimmedValue(Object value) {
-        return value.toString().replaceAll("[\\t\\n\\r]", "");
-    }
+	/**
+	 * returns the trimmed value
+	 * 
+	 * @param object
+	 *            Entry object value
+	 * @return trimmed value
+	 */
+	private String getTrimmedValue(Object value) {
+		return value.toString().replaceAll("[\\t\\n\\r]", "");
+	}
 
 }

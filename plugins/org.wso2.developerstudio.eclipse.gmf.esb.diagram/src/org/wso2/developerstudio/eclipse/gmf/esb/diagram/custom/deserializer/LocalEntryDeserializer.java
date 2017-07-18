@@ -69,23 +69,23 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 			if (object.getType() == INLINE_TEXT) {
 				if (localEntryPage.getLocalEntryTypeCombo() != null) {
 					localEntryPage.getLocalEntryTypeCombo().select(0);
-                    if (localEntryPage.getLocalEntryTextValue() != null && object.getValue() != null) {
-                        String trimmedValue = getTrimmedValue(object.getValue());
-                        localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
-                        localEntry.setValueLiteral(trimmedValue);
-                    }
+					if (localEntryPage.getLocalEntryTextValue() != null && object.getValue() != null) {
+						String trimmedValue = getTrimmedValue(object.getValue());
+						localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
+						localEntry.setValueLiteral(trimmedValue);
+					}
 				}
 			}
 			if (object.getType() == INLINE_XML) {
 				if (localEntryPage.getLocalEntryTypeCombo() != null) {
 					localEntryPage.getLocalEntryTypeCombo().select(1);
 					if (localEntryPage.getLocalEntryTextValue() != null) {
-                        if (object.getValue() != null) {
-                            String trimmedValue = getTrimmedValue(object.getValue());
-                            localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
-                        } else {
-                            localEntryPage.getLocalEntryTextValue().setText("value/>");
-                        }
+						if (object.getValue() != null) {
+							String trimmedValue = getTrimmedValue(object.getValue());
+							localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
+						} else {
+							localEntryPage.getLocalEntryTextValue().setText("value/>");
+						}
 					}
 				}
 			}

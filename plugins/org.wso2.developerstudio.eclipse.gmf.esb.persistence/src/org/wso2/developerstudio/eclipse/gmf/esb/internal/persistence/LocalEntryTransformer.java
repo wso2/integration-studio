@@ -109,11 +109,10 @@ public class LocalEntryTransformer extends AbstractEsbNodeTransformer {
 	 * @return trimmed value
 	 */
 	private String getTrimmedValue(LocalEntryFormPage localEntryFormPage) {
-		String localEntryFormPageValue = "";
 		if (localEntryFormPage.getLocalEntryTextValue() != null) {
-			localEntryFormPageValue = localEntryFormPage.getLocalEntryTextValue().getText().replaceAll("[\\t\\n]", "");
+			return localEntryFormPage.getLocalEntryTextValue().getText().replaceAll("[\\t\\n]", "");
 		}
-		return localEntryFormPageValue;
+		return "";
 	}
 
 }

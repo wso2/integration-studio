@@ -27,6 +27,8 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyleRange;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
@@ -40,6 +42,8 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
@@ -73,6 +77,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 
 	/* common */
 	private Label lblTargetEndpoint;
+	private StyledText txtAdvancedConfig;
 	private Text txtEndPointUrl;
 	private Text txtEndPointkey;
 	private Label lbltxtEndPointUrl;
@@ -137,6 +142,18 @@ public class AdvancedConfigComposite extends AbstractComposite {
 		setModel((ProxyServiceModel) getProjectModel());
 
 		/* common */
+		
+		txtAdvancedConfig = new StyledText(this, SWT.NONE);
+		txtAdvancedConfig.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+				true, false, 5, 0));
+		txtAdvancedConfig.setText("Advanced Configuration");
+		StyleRange styleRange = new StyleRange(0, 22, this.getForeground(), this.getBackground(), SWT.BOLD);
+		FontData data = txtAdvancedConfig.getFont().getFontData()[0];
+		Font fontAdvancedConfig = new Font(this.getDisplay(), data.getName(), data.getHeight() * 48 / 50, SWT.BOLD);
+		styleRange.font = fontAdvancedConfig;
+		txtAdvancedConfig.setStyleRanges(new StyleRange[] { styleRange });
+		txtAdvancedConfig.setBackground(this.getBackground());
+		
 		lblTargetEndpoint = new Label(this, SWT.NONE);
 		lblTargetEndpoint.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
 				false, false, 1, 1));
@@ -175,7 +192,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 		};
 
 		optEnterURL.setText("Enter URL");
-
+ 
 		optPredefinedEndpoint = new Button(this, SWT.RADIO);
 		optPredefinedEndpoint.setText("Predefined Endpoint");
 
@@ -665,7 +682,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 					cmdTestUri);
 				hideControls(lblSecPolicy, txtSecPolicy, cmdSecPolicyRegBrowse);
 			optListener.widgetSelected(null);
-			showControls(cmdReqXSLTRegBrowse,
+			showControls(txtAdvancedConfig, cmdReqXSLTRegBrowse,
 					lblReqXSLT, txtReqXSLT, chkTransformResponses,
 					lblResponseXSLT, txtResponseXSLT, cmdResXSLTRegBrowse);
 		} else if (templateId
@@ -680,7 +697,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 					lblWsdlService, txtWsdlService, publishSameServiceContract,
 					cmdTestUri);
 			optListener.widgetSelected(null);
-			showControls(lblReqLogLevel, cmbReqLogLevel, lblResLogLevel,
+			showControls(txtAdvancedConfig, lblReqLogLevel, cmbReqLogLevel, lblResLogLevel,
 					cmbResLogLevel);
 		} else if (templateId
 				.equals(PsArtifactConstants.PASS_THROUGH_PROXY_TEMPL_ID)) {
@@ -693,7 +710,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 				hideControls(cmdResXSLTRegBrowse,
 					txtResponseXSLT, lblResponseXSLT, cmdReqXSLTRegBrowse, lblReqXSLT, txtReqXSLT,
 					chkTransformResponses);
-			showControls(lblTargetEndpoint, optPredefinedEndpoint,
+			showControls(txtAdvancedConfig, lblTargetEndpoint, optPredefinedEndpoint,
 					optfromRegistry, optEnterURL);
 			optListener.widgetSelected(null);
 		} else if (templateId
@@ -708,7 +725,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 					optfromRegistry, optEnterURL);
 			hideControls(lblReqLogLevel, cmbReqLogLevel, lblResLogLevel,
 					cmbResLogLevel);
-			showControls(lblWsdlUri, txtWsdlUri, lblWsdlPort, txtWsdlPort,
+			showControls(txtAdvancedConfig, lblWsdlUri, txtWsdlUri, lblWsdlPort, txtWsdlPort,
 					lblWsdlService, txtWsdlService, publishSameServiceContract,
 					cmdTestUri);
 		} else if (templateId.equals(PsArtifactConstants.SECURE_PROXY_TEMPL_ID)) {
@@ -722,7 +739,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 					cmdTestUri);
 			showControls(lblTargetEndpoint, optPredefinedEndpoint,
 					optfromRegistry, optEnterURL);
-			showControls(lblSecPolicy, txtSecPolicy,cmdSecPolicyRegBrowse);
+			showControls(txtAdvancedConfig, lblSecPolicy, txtSecPolicy,cmdSecPolicyRegBrowse);
 			optListener.widgetSelected(null);
 		} else if (templateId.equals(PsArtifactConstants.CUSTOM_PROXY_TEMPL_ID) || selectedTemplate.isCustom()) {
 			hideControls(lblSecPolicy, txtSecPolicy,cmdSecPolicyRegBrowse );
@@ -734,7 +751,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 			hideControls(lblWsdlUri, txtWsdlUri, lblWsdlPort, txtWsdlPort,
 					lblWsdlService, txtWsdlService, publishSameServiceContract,
 					cmdTestUri);
-			hideControls(lblTargetEndpoint, txtEndPointUrl, txtEndPointkey,
+			hideControls(txtAdvancedConfig, lblTargetEndpoint, txtEndPointUrl, txtEndPointkey,
 					lbltxtEndPointUrl, lblEndpoint, cmbPredefinedEP,
 					lblEndPointkey, cmdEndPointRegBrowse, optPredefinedEndpoint,
 					optfromRegistry, optEnterURL);

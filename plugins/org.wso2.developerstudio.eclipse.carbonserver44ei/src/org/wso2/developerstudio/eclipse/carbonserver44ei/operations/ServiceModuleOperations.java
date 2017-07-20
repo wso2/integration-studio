@@ -100,7 +100,12 @@ public class ServiceModuleOperations {
 	}
 
 	public void redeployModule(boolean force) {
-		CarbonServerInformation wsasServerInformation = CarbonServerManager.getAppServerInformation().get(server);
+		//Fixing TOOLS-3460
+		CarbonServerInformation wsasServerInformation = null;
+		if(CarbonServerManager.getAppServerInformation().isEmpty()){
+	        CarbonServerManager.addExistingServers();
+		}
+	    wsasServerInformation = CarbonServerManager.getAppServerInformation().get(server);
 		if (!force && !wsasServerInformation.getChangedProjects().contains(project)) {
 			return;
 		}

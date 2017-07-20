@@ -142,10 +142,8 @@ public class AdvancedConfigComposite extends AbstractComposite {
 		setModel((ProxyServiceModel) getProjectModel());
 
 		/* common */
-		
 		txtAdvancedConfig = new StyledText(this, SWT.NONE);
-		txtAdvancedConfig.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
-				true, false, 5, 0));
+		txtAdvancedConfig.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 0));
 		txtAdvancedConfig.setText("Advanced Configuration");
 		StyleRange styleRange = new StyleRange(0, 22, this.getForeground(), this.getBackground(), SWT.BOLD);
 		FontData data = txtAdvancedConfig.getFont().getFontData()[0];
@@ -191,8 +189,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 			}
 		};
 
-		optEnterURL.setText("Enter URL");
- 
+		optEnterURL.setText("Enter URL"); 
 		optPredefinedEndpoint = new Button(this, SWT.RADIO);
 		optPredefinedEndpoint.setText("Predefined Endpoint");
 

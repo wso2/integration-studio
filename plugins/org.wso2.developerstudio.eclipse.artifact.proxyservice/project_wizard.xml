@@ -18,8 +18,7 @@
 			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
  
 			<data group="group1" modelProperty="proxy.AdvancedConfig" type="composite"  fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="class=org.wso2.developerstudio.eclipse.artifact.proxyservice.helper.AdvancedConfigProvider">Configuration</data>
-			<group id="group1" controlData="type=collapsible;state=expanded"></group>
-			
+			<group id="group1" controlData="type=collapsible;state=expanded"></group>			
 		</settings>
 		<settings optionId="import.proxyservice"
 				  title="Proxy Service"

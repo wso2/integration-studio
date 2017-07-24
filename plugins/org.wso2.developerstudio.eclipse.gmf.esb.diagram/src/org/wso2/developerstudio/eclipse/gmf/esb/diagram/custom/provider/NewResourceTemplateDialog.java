@@ -184,7 +184,7 @@ public class NewResourceTemplateDialog extends Dialog {
 		lblRegistryPath.setLayoutData(fd_lblRegistryPath);
 		lblRegistryPath.setText("Registry path");
 		txtRegistryPath = new Text(container, SWT.BORDER | SWT.H_SCROLL);
-	        
+
 		txtRegistryPath.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				validate();
@@ -196,7 +196,7 @@ public class NewResourceTemplateDialog extends Dialog {
 		fd_txtRegistryPath.left = new FormAttachment(lblProject, 22, SWT.LEFT);
 		fd_txtRegistryPath.right = new FormAttachment(cmbProject, 0, SWT.RIGHT);
 		txtRegistryPath.setLayoutData(fd_txtRegistryPath);
-		
+
 		Label label = new Label(container, SWT.SEPARATOR | SWT.VERTICAL);
 		fd_lblArtifactName.right = new FormAttachment(label, -122);
 		fd_cmbProject.right = new FormAttachment(label, -14);

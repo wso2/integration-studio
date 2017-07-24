@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2012-2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -151,7 +151,7 @@ public class AdvancedConfigComposite extends AbstractComposite {
 		styleRange.font = fontAdvancedConfig;
 		txtAdvancedConfig.setStyleRanges(new StyleRange[] { styleRange });
 		txtAdvancedConfig.setBackground(this.getBackground());
-		
+
 		lblTargetEndpoint = new Label(this, SWT.NONE);
 		lblTargetEndpoint.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
 				false, false, 1, 1));

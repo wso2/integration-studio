@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2011-2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,13 +58,11 @@ public class DistributionProjectExportWizardPage extends WizardPage {
 	private boolean pageDirty = false;
 	private boolean controlCreated = false;
 	// need to get the server roles via an extension point without hard-coding
-	private final String[] serverRoles = new String[] { "GovernanceRegistry",
-			"BusinessProcessServer", "GadgetServer",
-			"EnterpriseServiceBus", "MashupServer",
-			"ApplicationServer", "DataServicesServer",
-			"BusinessRulesServer", "IdentityServer",
-			"BusinessActivityMonitor" };
-	
+	private final String[] serverRoles = new String[] { "GovernanceRegistry", 
+	                "BusinessProcessServer", "EnterpriseServiceBus", 
+	                "ComplexEventProcessor", "DataServicesServer", 
+	                "EnterpriseIntegrator" };
+
 	public Map<String, Dependency> getDependencyList() {
 		return dependencyList;
 	}

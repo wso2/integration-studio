@@ -261,10 +261,7 @@
 		 <register.serverRole
        artifactType="service/dataservice"
        serverRole="DataServicesServer"/>
- 		<register.serverRole
-       artifactType="cep/bucket"
-       serverRole="ComplexEventProcessor"/>
- 		<register.serverRole
+ 		 <register.serverRole
        artifactType="synapse/sequence"
        serverRole="EnterpriseServiceBus"/>
  		<register.serverRole
@@ -278,7 +275,7 @@
        serverRole="EnterpriseServiceBus"/>
  		<register.serverRole
        artifactType="registry/resource"
-       serverRole="GovernanceRegistry"/>
+       serverRole="EnterpriseServiceBus"/>
 		 <register.serverRole
        artifactType="bpel/workflow"
        serverRole="BusinessProcessServer"/>
@@ -288,12 +285,6 @@
 		 <register.serverRole
        artifactType="lib/dataservice/validator"
        serverRole="DataServicesServer"/>
-		 <register.serverRole
-       artifactType="lib/registry/handlers"
-       serverRole="GovernanceRegistry"/>
-		 <register.serverRole
-       artifactType="lib/registry/filter"
-       serverRole="GovernanceRegistry"/>
 		 <register.serverRole
        artifactType="synapse/local-entry"
        serverRole="EnterpriseServiceBus"/>

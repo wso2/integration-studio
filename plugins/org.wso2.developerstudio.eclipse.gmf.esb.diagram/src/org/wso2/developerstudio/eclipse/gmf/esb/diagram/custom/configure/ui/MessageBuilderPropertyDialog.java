@@ -199,6 +199,9 @@ public class MessageBuilderPropertyDialog extends Dialog {
 
 		MessageBuilder messageBuilder = EsbFactory.eINSTANCE
 				.createMessageBuilder();
+		messageBuilder.setContentType(cTypeTxt.getText());
+		messageBuilder.setBuilderClass(builderClassTxt.getText());
+		messageBuilder.setFormatterClass(formatterClassTxt.getText());
 		TableItem item = bindBuilder(messageBuilder);
 
 		AddCommand addCmd = new AddCommand(editingDomain, builderMediator,

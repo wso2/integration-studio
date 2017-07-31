@@ -80,17 +80,18 @@
           type="datasource/datasource">
     </handler>
  </extension>
-	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
-     <category id="odashboard.category.ds" showTitle="true"
-                  title="Data Services Server"
-                  priority="4">
-        </category>
-         <!-- data source -->
-        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.datasource"
-                    wizard="org.wso2.developerstudio.eclipse.artifact.datasource.wizards.DataSourceWizard">
-        </wizardLink>
-        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.datasource.project"
-                    wizard="org.wso2.developerstudio.eclipse.artifact.newdatasourceproject">
-        </wizardLink>
-    </extension>
+ 
+  	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+		<category id="dashboard.category.dss.project" showTitle="true" title="DSS Project Types" priority="3" />
+        	<wizardLink category="dashboard.category.dss.project" id="dashboard.wizardLink.ds.datasource.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdatasourceproject" priority="3">
+        	</wizardLink>
+ 	</extension>
+   
+    <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+		<category id="dashboard.category.dss.artifacts" showTitle="true" title="DSS Artifact Types" priority="4" />
+      		<wizardLink category="dashboard.category.dss.artifacts" id="dashboard.wizardLink.ds.datasource"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.datasource.wizards.DataSourceWizard" priority="2">
+        	</wizardLink>
+   	</extension>
 </plugin>

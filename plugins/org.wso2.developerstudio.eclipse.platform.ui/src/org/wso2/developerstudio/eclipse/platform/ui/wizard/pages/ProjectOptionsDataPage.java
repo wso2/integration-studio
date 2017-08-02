@@ -1127,7 +1127,8 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 		                                                       optionData.isTextMultiline(),
 		                                                       optionData.isAddListnner(),
 		                                                       (AbstractWSO2ProjectCreationWizard) getWizard(),
-		                                                       optionData.getToolTip());
+		                                                       optionData.getToolTip(),
+		                                                       optionData.getTextboxHeight());
 		FieldExecutor fieldExecutor = new CommonFieldExecutor(optionData, getModel(), txt.getControl()) {
 
 			public void validate() throws FieldValidationException {

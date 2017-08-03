@@ -107,13 +107,23 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 		InboundEndpoint inboundEndpoint = new InboundEndpoint();
 		inboundEndpoint.setName(visualInboundEndpoint.getName());
 
-		// TODO: This validation should be done properly for specific inbound
-		// endpoint types
-		// TOOLS-3039
 		Sequence sequence = getSequence(visualInboundEndpoint
 				.getSequenceOutputConnector());
 		Sequence onErrorSequence = getSequence(visualInboundEndpoint
 				.getOnErrorSequenceOutputConnector());
+		if (isSequenceMandatoryProtocol(visualInboundEndpoint.getType().getName())) {
+			if (sequence == null && onErrorSequence == null) {
+				throw new TransformerException(
+						"Sequence and On Error Sequence cannot be empty. Please include a Sequence and an On Error Sequence");
+			}
+			if (sequence == null) {
+				throw new TransformerException("Sequence cannot be empty. Please include a Sequence");
+			}
+			if (onErrorSequence == null) {
+				throw new TransformerException(
+						"On Error Sequence cannot be empty. Please include an On Error Sequence");
+			}
+		}
 		inboundEndpoint.configure(new AspectConfiguration(visualInboundEndpoint.getName()));
 		if (visualInboundEndpoint.isStatisticsEnabled()) {
 			inboundEndpoint.getAspectConfiguration().enableStatistics();
@@ -1155,6 +1165,13 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
         }
         return inboundEndpoint;
     }
+
+	private boolean isSequenceMandatoryProtocol(String type) {
+		if (type.matches("file|jms|hl7|kafka|custom|mqtt|rabbitmq")) {
+			return true;
+		}
+		return false;
+	}
 
     private void addParameterForConfig(InboundEndpoint inboundEndpoint, String parameterName, String parameterKeyValue) {
         if (parameterKeyValue.startsWith(REGISTRY_PREFIX)) {

@@ -87,14 +87,14 @@
 	<classpathentry exported="true" kind="lib" path="lib/smooks_1.5.1.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/spring.framework_3.2.9.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/svnkit-1.7.9.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v15.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v15.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v15.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v15.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v15.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v15.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v15.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-vfs-transport_2.1.7.wso2v15.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v17.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v17.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v17.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v17.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v17.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v17.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v17.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-vfs-transport_2.1.7.wso2v17.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/tomcat-catalina-ha_7.0.69.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/tomcat-el-api_7.0.69.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/tomcat-jsp-api_7.0.69.wso2v1.jar"/>

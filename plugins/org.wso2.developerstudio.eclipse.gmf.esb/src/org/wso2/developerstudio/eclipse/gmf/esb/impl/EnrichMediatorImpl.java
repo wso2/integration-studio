@@ -66,7 +66,7 @@ public class EnrichMediatorImpl extends MediatorImpl implements EnrichMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean CLONE_SOURCE_EDEFAULT = false;
+	protected static final boolean CLONE_SOURCE_EDEFAULT = true;
 
 	/**
 	 * The cached value of the '{@link #isCloneSource() <em>Clone Source</em>}' attribute.

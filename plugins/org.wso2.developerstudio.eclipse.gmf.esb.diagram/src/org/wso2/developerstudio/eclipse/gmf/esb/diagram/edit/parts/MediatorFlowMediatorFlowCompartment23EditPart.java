@@ -53,7 +53,7 @@ public class MediatorFlowMediatorFlowCompartment23EditPart extends AbstractMedia
 		 * Override default border.
 		 * Fixing TOOLS-1864.
 		 */
-		LineBorder border = new LineBorder(new Color(null, 0, 0, 204), 1, SWT.BORDER_DASH);
+		LineBorder border = new LineBorder(new Color(null, 183, 183, 183), 1, SWT.BORDER_DASH);
 		result.setBorder(border);
 		result.setToolTip("Advice");
 		ConstrainedToolbarLayout layoutManager = new ConstrainedToolbarLayout(false);

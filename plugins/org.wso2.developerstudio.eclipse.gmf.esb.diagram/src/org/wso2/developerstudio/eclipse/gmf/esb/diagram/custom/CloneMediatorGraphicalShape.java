@@ -210,7 +210,7 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 		// Actual label to display which type this is.
 		WrappingLabel esbNodeTypeNameLabel2 = new WrappingLabel();
 		esbNodeTypeNameLabel2.setText(getNodeName());
-		esbNodeTypeNameLabel2.setForegroundColor(new Color(null, 0, 0, 0));
+		esbNodeTypeNameLabel2.setForegroundColor(new Color(null, 209, 52, 79));
 		esbNodeTypeNameLabel2.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 		esbNodeTypeNameLabel2.setAlignment(SWT.CENTER);
 		esbNodeTypeNameLabel2.setPreferredSize(new Dimension(64, 20));
@@ -234,12 +234,12 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 		innerRect.setCornerDimensions(new Dimension(1, 1));
 		innerRect.setOutline(false);
 		innerRect.setBackgroundColor(this.getBackgroundColor());
-		LineBorder innerRectBorder = new LineBorder(new Color(null, 90, 90, 90), 1,
+		LineBorder innerRectBorder = new LineBorder(new Color(null, 209, 52, 79), 1,
 				SWT.BORDER_SOLID);
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));
-		innerRect.setBackgroundColor(new Color(null, 233, 245, 215));
+		innerRect.setBackgroundColor(new Color(null, 255, 250, 251));
 
 		GridLayout innerRectLayout = new GridLayout();
 		innerRectLayout.numColumns = 1;

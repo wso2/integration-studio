@@ -278,7 +278,7 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 
 		private static final String NODE_NAME = "Fast XSLT";
 
-		private static final String ICONS_LOCATION = "icons/ico20/fastxslt-mediator.png";
+		private static final String ICONS_LOCATION = "icons/ico20/fastxslt-mediator.gif";
 
 		/**
 		 * @generated NOT

@@ -202,7 +202,7 @@ public class EqualEditPart extends AbstractOperatorEditPart {
 			this.setBackgroundColor(THIS_BACK);
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Equal");
-			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setBackgroundColor(new Color(null, 183, 183, 183));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
 			this.setBorder(titleBarBorder);

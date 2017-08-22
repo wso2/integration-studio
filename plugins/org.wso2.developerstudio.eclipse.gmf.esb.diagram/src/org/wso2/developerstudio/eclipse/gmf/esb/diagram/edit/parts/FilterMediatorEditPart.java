@@ -136,7 +136,7 @@ public class FilterMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new FilterMediatorFigure() {
+		return primaryShape = new FilterMediatorFigure(new Color(null, 247, 250, 245), new Color(null, 104, 159, 56)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
@@ -351,8 +351,8 @@ public class FilterMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
 		/**
 		 * @generated NOT
 		 */
-		public FilterMediatorFigure() {
-
+		public FilterMediatorFigure(Color bgColor, Color borderColor) {
+			super(bgColor, borderColor);
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);

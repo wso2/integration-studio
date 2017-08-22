@@ -128,7 +128,7 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new CallMediatorFigure() {
+		return primaryShape = new CallMediatorFigure(new Color(null, 232, 243, 249), new Color(null, 41, 128, 185)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
@@ -285,10 +285,10 @@ public class CallMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
 		private WrappingLabel fFigureCallMediatorDescriptionFigure;
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
-		public CallMediatorFigure() {
-
+		public CallMediatorFigure(Color bgColor, Color boderColor) {
+			super(bgColor, boderColor);
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);

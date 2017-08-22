@@ -219,7 +219,7 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle {
 		// Actual label to display which type this is.
 		WrappingLabel esbNodeTypeNameLabel = new WrappingLabel();
 		esbNodeTypeNameLabel.setText(getNodeName());
-		esbNodeTypeNameLabel.setForegroundColor(new Color(null, 0, 0, 0));
+		esbNodeTypeNameLabel.setForegroundColor(new Color(null, 53, 73, 94));
 		esbNodeTypeNameLabel.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 		esbNodeTypeNameLabel.setAlignment(SWT.CENTER);
 		esbNodeTypeNameLabel.setPreferredSize(new Dimension(45, 20));
@@ -245,11 +245,11 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle {
 		innerRect.setOutline(false);
 		innerRect.setBackgroundColor(this.getBackgroundColor());
 		LineBorder innerRectBorder = new LineBorder(
-				new Color(null, 90, 90, 90), 1, SWT.BORDER_SOLID);
+				new Color(null, 53, 73, 94), 2, SWT.BORDER_SOLID);
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));
-		innerRect.setBackgroundColor(new Color(null, 233, 245, 215));
+		innerRect.setBackgroundColor(new Color(null, 247, 247, 247));
 
 		GridLayout innerRectLayout = new GridLayout();
 		innerRectLayout.numColumns = 1;

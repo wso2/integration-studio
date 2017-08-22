@@ -127,7 +127,7 @@ public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAb
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new AggregateMediatorFigure() {
+		return primaryShape = new AggregateMediatorFigure(new Color(null, 255, 250, 251), new Color(null, 209, 52, 79)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
@@ -339,8 +339,8 @@ public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAb
 		/**
 		 * @generated NOT
 		 */
-		public AggregateMediatorFigure() {
-
+		public AggregateMediatorFigure(Color bgColor, Color boderColor) {
+			super(bgColor, boderColor);
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);

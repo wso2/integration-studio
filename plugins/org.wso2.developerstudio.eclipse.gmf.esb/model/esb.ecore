@@ -1098,6 +1098,7 @@
     <eLiterals name="JAVASCRIPT" literal="js"/>
     <eLiterals name="RUBY" value="1" literal="rb"/>
     <eLiterals name="GROOVY" value="2" literal="groovy"/>
+    <eLiterals name="NASHORNJS" value="3" literal="nashornJs"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FaultMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="soapVersion" eType="#//FaultSoapVersion"/>

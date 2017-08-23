@@ -23262,6 +23262,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(scriptLanguageEEnum, ScriptLanguage.JAVASCRIPT);
 		addEEnumLiteral(scriptLanguageEEnum, ScriptLanguage.RUBY);
 		addEEnumLiteral(scriptLanguageEEnum, ScriptLanguage.GROOVY);
+		addEEnumLiteral(scriptLanguageEEnum, ScriptLanguage.NASHORNJS);
 
 		initEEnum(faultSoapVersionEEnum, FaultSoapVersion.class, "FaultSoapVersion");
 		addEEnumLiteral(faultSoapVersionEEnum, FaultSoapVersion.SOAP_11);

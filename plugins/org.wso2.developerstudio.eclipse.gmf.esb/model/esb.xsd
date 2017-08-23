@@ -1749,6 +1749,7 @@
       <xsd:enumeration ecore:name="JAVASCRIPT" value="js"/>
       <xsd:enumeration ecore:name="RUBY" value="rb"/>
       <xsd:enumeration ecore:name="GROOVY" value="groovy"/>
+      <xsd:enumeration ecore:name="NASHORNJS" value="nashornJs"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:complexType name="FaultMediator">

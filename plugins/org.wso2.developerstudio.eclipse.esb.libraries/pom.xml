@@ -22,7 +22,7 @@
     <parent>
         <artifactId>wso2-developerstudio-esb-plugins</artifactId>
         <groupId>org.wso2.developerstudio</groupId>
-        <version>5.0.0-SNAPSHOT</version>
+        <version>6.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.esb.libraries</artifactId>

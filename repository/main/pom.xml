@@ -16,7 +16,7 @@
     <parent>
         <artifactId>wso2-developer-studio-kernel-dss-p2-parent</artifactId>
         <groupId>org.wso2.developerstudio</groupId>
-        <version>3.5.1-SNAPSHOT</version>
+        <version>6.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>wso2dss-tooling-main-p2</artifactId>

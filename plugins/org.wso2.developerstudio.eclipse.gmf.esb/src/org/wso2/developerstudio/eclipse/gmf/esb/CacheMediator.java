@@ -17,12 +17,12 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheId <em>Cache Id</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheScope <em>Cache Scope</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheProtocolType <em>Cache Protocol Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheAction <em>Cache Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getHashGenerator <em>Hash Generator</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheTimeout <em>Cache Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getMaxMessageSize <em>Max Message Size</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getImplementationType <em>Implementation Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheProtocolMethods <em>Cache Protocol Methods</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getMaxEntryCount <em>Max Entry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getSequenceType <em>Sequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getSequenceKey <em>Sequence Key</em>}</li>
@@ -30,6 +30,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getOnHitOutputConnector <em>On Hit Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getHeadersToExcludeInHash <em>Headers To Exclude In Hash</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getResponseCodes <em>Response Codes</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator()
@@ -64,33 +66,33 @@ public interface CacheMediator extends Mediator {
 	void setCacheId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Cache Scope</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheScope}.
+	 * Returns the value of the '<em><b>Cache Protocol Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheProtocolType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cache Scope</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Cache Protocol Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cache Scope</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheScope
-	 * @see #setCacheScope(CacheScope)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheScope()
+	 * @return the value of the '<em>Cache Protocol Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheProtocolType
+	 * @see #setCacheProtocolType(CacheProtocolType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheProtocolType()
 	 * @model
 	 * @generated
 	 */
-	CacheScope getCacheScope();
+	CacheProtocolType getCacheProtocolType();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheScope <em>Cache Scope</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheProtocolType <em>Cache Protocol Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cache Scope</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheScope
-	 * @see #getCacheScope()
+	 * @param value the new value of the '<em>Cache Protocol Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheProtocolType
+	 * @see #getCacheProtocolType()
 	 * @generated
 	 */
-	void setCacheScope(CacheScope value);
+	void setCacheProtocolType(CacheProtocolType value);
 
 	/**
 	 * Returns the value of the '<em><b>Cache Action</b></em>' attribute.
@@ -124,8 +126,7 @@ public interface CacheMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Hash Generator</b></em>' attribute.
-	 * The default value is <code>"CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"</code>.
-	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator}.
+	 * The default value is <code>"HTTP_REQUEST_HASH_GENERATOR"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Hash Generator</em>' attribute isn't clear,
@@ -133,24 +134,22 @@ public interface CacheMediator extends Mediator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Hash Generator</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator
-	 * @see #setHashGenerator(HashGenerator)
+	 * @see #setHashGenerator(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_HashGenerator()
-	 * @model default="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"
+	 * @model default="HTTP_REQUEST_HASH_GENERATOR"
 	 * @generated
 	 */
-	HashGenerator getHashGenerator();
+	String getHashGenerator();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getHashGenerator <em>Hash Generator</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hash Generator</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator
 	 * @see #getHashGenerator()
 	 * @generated
 	 */
-	void setHashGenerator(HashGenerator value);
+	void setHashGenerator(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Cache Timeout</b></em>' attribute.
@@ -207,33 +206,30 @@ public interface CacheMediator extends Mediator {
 	void setMaxMessageSize(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Implementation Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType}.
+	 * Returns the value of the '<em><b>Cache Protocol Methods</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Implementation Type</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Cache Protocol Methods</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Implementation Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType
-	 * @see #setImplementationType(CacheImplementationType)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_ImplementationType()
+	 * @return the value of the '<em>Cache Protocol Methods</em>' attribute.
+	 * @see #setCacheProtocolMethods(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheProtocolMethods()
 	 * @model
 	 * @generated
 	 */
-	CacheImplementationType getImplementationType();
+	String getCacheProtocolMethods();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getImplementationType <em>Implementation Type</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheProtocolMethods <em>Cache Protocol Methods</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Implementation Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType
-	 * @see #getImplementationType()
+	 * @param value the new value of the '<em>Cache Protocol Methods</em>' attribute.
+	 * @see #getCacheProtocolMethods()
 	 * @generated
 	 */
-	void setImplementationType(CacheImplementationType value);
+	void setCacheProtocolMethods(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Entry Count</b></em>' attribute.
@@ -421,5 +417,57 @@ public interface CacheMediator extends Mediator {
 	 * @generated
 	 */
 	void setMediatorFlow(MediatorFlow value);
+
+	/**
+	 * Returns the value of the '<em><b>Headers To Exclude In Hash</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Headers To Exclude In Hash</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Headers To Exclude In Hash</em>' attribute.
+	 * @see #setHeadersToExcludeInHash(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_HeadersToExcludeInHash()
+	 * @model
+	 * @generated
+	 */
+	String getHeadersToExcludeInHash();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getHeadersToExcludeInHash <em>Headers To Exclude In Hash</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Headers To Exclude In Hash</em>' attribute.
+	 * @see #getHeadersToExcludeInHash()
+	 * @generated
+	 */
+	void setHeadersToExcludeInHash(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Response Codes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Response Codes</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Response Codes</em>' attribute.
+	 * @see #setResponseCodes(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_ResponseCodes()
+	 * @model
+	 * @generated
+	 */
+	String getResponseCodes();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getResponseCodes <em>Response Codes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Response Codes</em>' attribute.
+	 * @see #getResponseCodes()
+	 * @generated
+	 */
+	void setResponseCodes(String value);
 
 } // CacheMediator

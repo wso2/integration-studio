@@ -1386,16 +1386,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheScope" eType="#//CacheScope"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheProtocolType" eType="#//CacheProtocolType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheAction" eType="#//CacheAction"
         defaultValueLiteral="FINDER"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashGenerator" eType="#//HashGenerator"
-        defaultValueLiteral="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashGenerator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="HTTP_REQUEST_HASH_GENERATOR"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheTimeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="120"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxMessageSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="2000"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementationType" eType="#//CacheImplementationType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheProtocolMethods" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxEntryCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1000"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//CacheSequenceType"
@@ -1410,6 +1410,9 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="headersToExcludeInHash"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="responseCodes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -1419,16 +1422,12 @@
     <eLiterals name="ANONYMOUS"/>
     <eLiterals name="REGISTRY_REFERENCE"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="CacheImplementationType">
-    <eLiterals name="IN_MEMORY" literal="memory"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CacheAction">
     <eLiterals name="FINDER"/>
     <eLiterals name="COLLECTOR" value="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="CacheScope">
-    <eLiterals name="PER_MEDIATOR" literal="per-mediator"/>
-    <eLiterals name="PER_HOST" value="1" literal="per-host"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="CacheProtocolType">
+    <eLiterals name="HTTP" literal="HTTP"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XQueryMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
@@ -3292,8 +3291,5 @@
   <eClassifiers xsi:type="ecore:EEnum" name="EnableDisableState">
     <eLiterals name="Disabled" literal="Disabled"/>
     <eLiterals name="Enabled" value="1" literal="Enabled"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="HashGenerator">
-    <eLiterals name="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR" literal="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
   </eClassifiers>
 </ecore:EPackage>

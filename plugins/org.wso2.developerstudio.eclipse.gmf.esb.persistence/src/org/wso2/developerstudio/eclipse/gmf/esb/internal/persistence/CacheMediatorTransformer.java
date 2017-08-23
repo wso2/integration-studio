@@ -17,6 +17,8 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
@@ -68,43 +70,44 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 		 */
 		Assert.isTrue(subject instanceof CacheMediator, "Invalid subject.");
 		CacheMediator visualCache = (CacheMediator) subject;
-
 		/*
 		 *  Configure Cache mediator.
 		 */
 		org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator();
 		setCommonProperties(cacheMediator, visualCache);
-		{	
-			if(visualCache.getCacheAction().getValue()==0){
-				if (StringUtils.isNotBlank(visualCache.getCacheId())) {
-					cacheMediator.setId(visualCache.getCacheId());
-				}			
-				cacheMediator.setScope(visualCache.getCacheScope().getLiteral());
-				cacheMediator.setTimeout(visualCache.getCacheTimeout());
+		{
+			if (visualCache.getCacheAction().getValue() == 0) {
+				cacheMediator.setHTTPMethodsToCache(visualCache.getCacheProtocolMethods().split(","));
+				cacheMediator.setProtocolType(visualCache.getCacheProtocolType().getLiteral());
+				cacheMediator.setResponseCodes(visualCache.getResponseCodes());
 				cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
-				org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator domhashGenerator = new org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator();
-				cacheMediator.setDigestGenerator(domhashGenerator);
+				cacheMediator.setHttpMethod("http");
+
+				cacheMediator.setTimeout(visualCache.getCacheTimeout());
+				cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
+
+				if (visualCache.getHashGenerator().equals("HTTP_REQUEST_HASH_GENERATOR")) {
+					org.wso2.carbon.mediator.cache.digest.DigestGenerator httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator();
+					cacheMediator.setDigestGenerator(httpRequestHashGenerator);
+				}
+
 				cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
 				cacheMediator.setCollector(false);
 			}
-			if(visualCache.getCacheAction().getValue()==1){
-				if (StringUtils.isNotBlank(visualCache.getCacheId())) {
-					cacheMediator.setId(visualCache.getCacheId());
-				}
-				cacheMediator.setScope(visualCache.getCacheScope().getLiteral());
+
+			if (visualCache.getCacheAction().getValue() == 1) {
 				cacheMediator.setCollector(true);
 			}
-			
-			if(visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)){
-				 
-				 if(visualCache.getSequenceKey() != null){
-					 
-					 RegistryKeyProperty  regKeyProperty = visualCache.getSequenceKey();
-					 cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
-				 }
-			} else {				
-				SequenceMediator onCacheHitSequence = new SequenceMediator();
 
+			if (visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
+				if (visualCache.getSequenceKey() != null) {
+
+					RegistryKeyProperty regKeyProperty = visualCache.getSequenceKey();
+					cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
+				}
+
+			} else {
+				SequenceMediator onCacheHitSequence = new SequenceMediator();
 				TransformationInfo newOnCacheHitInfo = new TransformationInfo();
 				newOnCacheHitInfo.setTraversalDirection(info.getTraversalDirection());
 				newOnCacheHitInfo.setSynapseConfiguration(info.getSynapseConfiguration());

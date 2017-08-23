@@ -717,7 +717,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EnrichMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cloneSource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+        defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//EnrichSourceType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceXpath" eType="#//NamespacedProperty"
         containment="true"/>

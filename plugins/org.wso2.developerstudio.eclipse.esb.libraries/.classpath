@@ -55,7 +55,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.oauth.mediator_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam.config_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.cache_4.6.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.cache_4.6.22.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper.engine_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.event_4.6.6.jar"/>

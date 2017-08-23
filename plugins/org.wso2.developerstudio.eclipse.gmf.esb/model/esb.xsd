@@ -2116,13 +2116,10 @@
           <xsd:element ecore:resolveProxies="true" minOccurs="0" name="onHitOutputConnector" type="esb:CacheMediatorOnHitOutputConnector"/>
           <xsd:element ecore:resolveProxies="true" minOccurs="0" name="mediatorFlow" type="esb:MediatorFlow"/>
         </xsd:sequence>
-        <xsd:attribute name="cacheId" type="ecore:EString"/>
-        <xsd:attribute default="PER_MEDIATOR" ecore:unsettable="false" name="cacheScope" type="esb:CacheScope"/>
         <xsd:attribute default="FINDER" ecore:unsettable="false" name="cacheAction" type="esb:CacheAction"/>
         <xsd:attribute default="org.wso2.caching.digest.DOMHashGenerator" ecore:unsettable="false" name="hashGenerator" type="ecore:EString"/>
         <xsd:attribute default="120" ecore:unsettable="false" name="cacheTimeout" type="ecore:EInt"/>
         <xsd:attribute default="2000" ecore:unsettable="false" name="maxMessageSize" type="ecore:EInt"/>
-        <xsd:attribute default="IN_MEMORY" ecore:unsettable="false" name="implementationType" type="esb:CacheImplementationType"/>
         <xsd:attribute default="1000" ecore:unsettable="false" name="maxEntryCount" type="ecore:EInt"/>
         <xsd:attribute default="REGISTRY_REFERENCE" ecore:unsettable="false" name="sequenceType" type="esb:CacheSequenceType"/>
       </xsd:extension>
@@ -2150,21 +2147,10 @@
       <xsd:enumeration ecore:value="0" value="REGISTRY_REFERENCE"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="CacheImplementationType">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration ecore:name="IN_MEMORY" value="memory"/>
-    </xsd:restriction>
-  </xsd:simpleType>
   <xsd:simpleType name="CacheAction">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="FINDER"/>
       <xsd:enumeration value="COLLECTOR"/>
-    </xsd:restriction>
-  </xsd:simpleType>
-  <xsd:simpleType name="CacheScope">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration ecore:name="PER_MEDIATOR" value="per-mediator"/>
-      <xsd:enumeration ecore:name="PER_HOST" value="per-host"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:complexType name="XQueryMediator">

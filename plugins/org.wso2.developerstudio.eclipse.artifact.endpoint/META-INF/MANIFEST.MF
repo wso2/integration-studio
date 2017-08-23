@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Endpoint
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.endpoint;singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 6.2.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.endpoint.Activator
 Require-Bundle: org.eclipse.text,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)",

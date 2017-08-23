@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Libraries
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.libraries;singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 6.2.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
@@ -60,7 +60,7 @@ Bundle-ClassPath: .,
  lib/org.wso2.carbon.identity.oauth.mediator_4.6.6.jar,
  lib/org.wso2.carbon.mediator.bam_4.6.6.jar,
  lib/org.wso2.carbon.mediator.bam.config_4.6.6.jar,
- lib/org.wso2.carbon.mediator.cache_4.6.6.jar,
+ lib/org.wso2.carbon.mediator.cache_4.6.22.jar,
  lib/org.wso2.carbon.mediator.datamapper_4.6.6.jar,
  lib/org.wso2.carbon.mediator.datamapper.engine_4.6.6.jar,
  lib/org.wso2.carbon.mediator.event_4.6.6.jar,
@@ -302,7 +302,6 @@ Export-Package: com.damnhandy.uri.template,
  org.wso2.carbon.mediator.bam,
  org.wso2.carbon.mediator.bam.config.stream,
  org.wso2.carbon.mediator.cache,
- org.wso2.carbon.mediator.cache.config.xml,
  org.wso2.carbon.mediator.cache.digest,
  org.wso2.carbon.mediator.datamapper,
  org.wso2.carbon.mediator.event,

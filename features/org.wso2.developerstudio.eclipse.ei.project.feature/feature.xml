@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.eclipse.ei.project.feature"
       label="WSO2 Enterprise Integrator Tooling Feature"
-      version="1.2.0.qualifier"
+      version="6.2.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

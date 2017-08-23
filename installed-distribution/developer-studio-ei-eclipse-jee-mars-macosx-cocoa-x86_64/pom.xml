@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.wso2.developerstudio</groupId>
          <artifactId>wso2-developer-studio-eclipse-ei-installed-distributions</artifactId>
-        <version>1.2.0-SNAPSHOT</version>
+        <version>6.2.0-SNAPSHOT</version>
 	<relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
@@ -98,7 +98,7 @@
                                 <artifactItem>
                                     <groupId>org.wso2.developerstudio</groupId>
                                     <artifactId>wso2-developer-studio-kernel-ei-composite-p2</artifactId>
-				    <version>1.2.0-SNAPSHOT</version>
+				    <version>6.2.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/p2-repo</outputDirectory>

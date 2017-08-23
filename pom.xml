@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>wso2-developerstudio-ei-toolkit</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>6.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 EI Tools</name>
     <modules>
@@ -171,7 +171,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates/</url>
             <layout>p2</layout>
         </repository>
 	<repository>

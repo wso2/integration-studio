@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>wso2-developerstudio-data-service-toolkit</artifactId>
-    <version>3.5.1-SNAPSHOT</version>
+    <version>6.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 Data Service Tools</name>
     <modules>
@@ -142,7 +142,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates/</url>
             <layout>p2</layout>
         </repository>
 	<repository>

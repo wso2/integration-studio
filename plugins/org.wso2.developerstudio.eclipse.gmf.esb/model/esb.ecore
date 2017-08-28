@@ -2251,6 +2251,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="buildMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FailoverEndPointInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="FailoverEndPointOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -2295,6 +2296,7 @@
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="buildMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LoadBalanceSessionType">
     <eLiterals name="NONE"/>

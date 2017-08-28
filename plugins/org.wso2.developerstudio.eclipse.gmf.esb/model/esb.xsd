@@ -3249,6 +3249,7 @@
           <xsd:element ecore:name="OutputConnector" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="OutputConnector" type="esb:FailoverEndPointOutputConnector"/>
           <xsd:element ecore:resolveProxies="true" minOccurs="0" name="westOutputConnector" type="esb:FailoverEndPointWestOutputConnector"/>
         </xsd:sequence>
+         <xsd:attribute ecore:unsettable="false" name="buildMessage" type="ecore:EBoolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -3328,6 +3329,7 @@
           <xsd:element ecore:derived="true" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="member" type="esb:Member"/>
         </xsd:sequence>
         <xsd:attribute ecore:unsettable="false" name="failover" type="ecore:EBoolean"/>
+        <xsd:attribute ecore:unsettable="false" name="buildMessage" type="ecore:EBoolean"/>
         <xsd:attribute name="policy" type="ecore:EString"/>
         <xsd:attribute default="NONE" ecore:unsettable="false" name="sessionType" type="esb:LoadBalanceSessionType"/>
         <xsd:attribute default="org.apache.synapse.endpoints.algorithms.RoundRobin" ecore:unsettable="false" name="algorithm" type="ecore:EString"/>

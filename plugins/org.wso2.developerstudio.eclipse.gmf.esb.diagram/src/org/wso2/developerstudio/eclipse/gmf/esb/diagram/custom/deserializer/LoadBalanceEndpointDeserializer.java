@@ -20,6 +20,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.END_P
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__ALGORITHM;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__SESSION_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.LOAD_BALANCE_END_POINT__BUILD_MESSAGE;
 
 import java.util.Iterator;
 
@@ -87,7 +88,8 @@ public class LoadBalanceEndpointDeserializer extends AbstractComplexEndPointDese
 			}
 			executeAddValueCommand(visualEndPoint.getProperties(), property, false);
 		}
-		
+
+		executeSetValueCommand(LOAD_BALANCE_END_POINT__BUILD_MESSAGE, loadbalanceEndpoint.isBuildMessageAtt());
 		executeSetValueCommand(LOAD_BALANCE_END_POINT__ALGORITHM, loadbalanceEndpoint.getAlgorithm().getClass().getName());
 		if (loadbalanceEndpoint.getChildren() != null && !loadbalanceEndpoint.getChildren().isEmpty()) {
 			deserializeComplexEndpoint(loadbalanceEndpoint,part);

@@ -245,7 +245,7 @@ public class EntitlementMediatorGraphicalShape extends RoundedRectangle {
 		innerRect.setOutline(false);
 		innerRect.setBackgroundColor(this.getBackgroundColor());
 		LineBorder innerRectBorder = new LineBorder(
-				new Color(null, 53, 73, 94), 2, SWT.BORDER_SOLID);
+				new Color(null, 53, 73, 94), 1, SWT.BORDER_SOLID);
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));

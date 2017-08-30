@@ -313,7 +313,7 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		primaryShape = new CloudConnectorOperationFigure() {
+		primaryShape = new CloudConnectorOperationFigure(new Color(null, 104, 159, 56)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -522,8 +522,8 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		/**
 		 * @generated NOT
 		 */
-		public CloudConnectorOperationFigure() {
-
+		public CloudConnectorOperationFigure(Color borderColor) {
+			super(borderColor);
 			/*			GridLayout layoutThis = new GridLayout();
 			 layoutThis.numColumns = 1;
 			 layoutThis.makeColumnsEqualWidth = true;

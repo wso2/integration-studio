@@ -231,8 +231,7 @@ public class SwitchMediatorGraphicalShape extends RoundedRectangle {
 		innerRect.setCornerDimensions(new Dimension(1, 1));
 		innerRect.setOutline(false);
 		innerRect.setBackgroundColor(this.getBackgroundColor());
-		LineBorder innerRectBorder = new LineBorder(new Color(null, 104, 159, 56), 2,
-				SWT.BORDER_SOLID);
+		LineBorder innerRectBorder = new LineBorder(new Color(null, 104, 159, 56), 1, SWT.BORDER_SOLID);
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));

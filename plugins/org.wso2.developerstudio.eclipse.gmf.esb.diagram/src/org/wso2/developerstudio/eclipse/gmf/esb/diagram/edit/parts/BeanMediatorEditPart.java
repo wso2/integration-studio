@@ -125,7 +125,7 @@ public class BeanMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new BeanMediatorFigure() {
+		return primaryShape = new BeanMediatorFigure(new Color(null, 208, 67, 0)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -304,8 +304,8 @@ public class BeanMediatorEditPart extends FixedSizedAbstractMediator {
 		/**
 		 * @generated
 		 */
-		public BeanMediatorFigure() {
-
+		public BeanMediatorFigure(Color borderColor) {
+			super(borderColor);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

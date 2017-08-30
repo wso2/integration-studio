@@ -128,7 +128,7 @@ public class RespondMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RespondMediatorFigure() {
+		return primaryShape = new RespondMediatorFigure(new Color(null, 41, 128, 185)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -328,8 +328,8 @@ public class RespondMediatorEditPart extends FixedSizedAbstractMediator {
 		/**
 		 * @generated NOT
 		 */
-		public RespondMediatorFigure() {
-
+		public RespondMediatorFigure(Color borderColor) {
+			super(borderColor);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

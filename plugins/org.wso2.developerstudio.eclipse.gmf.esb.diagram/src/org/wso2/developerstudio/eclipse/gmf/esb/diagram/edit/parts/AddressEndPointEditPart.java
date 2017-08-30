@@ -135,7 +135,7 @@ public class AddressEndPointEditPart extends AbstractEndpoint {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new AddressEndPointFigure() {
+		return primaryShape = new AddressEndPointFigure(new Color(null, 141, 82, 161)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -405,8 +405,8 @@ public class AddressEndPointEditPart extends AbstractEndpoint {
 		/**
 		 * @generated
 		 */
-		public AddressEndPointFigure() {
-
+		public AddressEndPointFigure(Color borderColor) {
+			super(borderColor);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

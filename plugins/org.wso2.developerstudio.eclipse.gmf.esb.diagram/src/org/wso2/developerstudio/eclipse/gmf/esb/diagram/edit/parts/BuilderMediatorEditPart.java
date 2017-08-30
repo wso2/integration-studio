@@ -127,7 +127,7 @@ public class BuilderMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new BuilderMediatorFigure() {
+		return primaryShape = new BuilderMediatorFigure(new Color(null, 121, 86, 73)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -315,8 +315,8 @@ public class BuilderMediatorEditPart extends FixedSizedAbstractMediator {
 		/**
 		 * @generated
 		 */
-		public BuilderMediatorFigure() {
-
+		public BuilderMediatorFigure(Color borderColor) {
+			super(borderColor);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

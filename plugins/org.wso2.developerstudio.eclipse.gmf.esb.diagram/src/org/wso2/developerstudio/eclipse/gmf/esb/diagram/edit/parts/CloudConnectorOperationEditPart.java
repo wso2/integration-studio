@@ -148,9 +148,6 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		String connectorPath = CloudConnectorDirectoryTraverser.getInstance()
 				.getConnectorDirectoryPathFromConnectorName(
 						project.getWorkspace().getRoot().getLocation().toOSString(), connectorName);
-		/*iconPath = project.getLocation().toOSString() + File.separator + "cloudConnectors"
-				+ File.separator + connectorName + "-connector" + File.separator + "icon"
-				+ File.separator + "icon-large.gif";*/
 		iconPath = connectorPath + File.separator + "icon" + File.separator + "icon-large.gif";
 
 	}
@@ -174,35 +171,13 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		return resultCommand;
 	}
 
-	/*	private IProject getActiveProject(){
-	 IEditorPart editorpart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-	 .getActivePage().getActiveEditor();
-	 if (editorpart == null)
-	 return null;
-	 IFileEditorInput input = (IFileEditorInput) editorpart.getEditorInput();
-
-	 IFile file = input.getFile();
-	 return file.getProject();
-	 }*/
-
 	public void fillConnectorOperationParameters() {
 		String addedConnector = ((CloudConnectorOperation) ((Node) getModel()).getElement()).getCloudConnectorName();
 		String addedOperation = ((CloudConnectorOperation) ((Node) getModel()).getElement()).getOperationName();
 		TransactionalEditingDomain editingDomain = null;
-		/*		IEditorPart editorpart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-		 .getActivePage().getActiveEditor();
-		 if (editorpart == null)
-		 return;
-		 IFileEditorInput input = (IFileEditorInput) editorpart.getEditorInput();
-
-		 IFile file = input.getFile();
-		 IProject activeProject = file.getProject();*/
 		IProject activeProject = EditorUtils.getActiveProject();
 		if (activeProject != null) {
 			if (addedConnector != null && addedOperation != null) {
-
-				//String connectorPath = activeProject.getLocation().toOSString() + File.separator
-				//		+ "cloudConnectors" + File.separator + addedConnector + "-connector";
 				String connectorPath = CloudConnectorDirectoryTraverser.getInstance()
 						.getConnectorDirectoryPathFromConnectorName(
 								activeProject.getWorkspace().getRoot().getLocation().toOSString(), addedConnector);
@@ -251,10 +226,8 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 					}
 				} catch (XMLStreamException e) {
 					log.error("Error occured while parsing selected template file", e);
-					//ErrorDialog.openError(shell,"Error occured while parsing selected template file", e.getMessage(), null);
 				} catch (IOException e) {
 					log.error("Error occured while reading selected template file", e);
-					//ErrorDialog.openError(shell,"Error occured while reading selected template file", e.getMessage(), null);
 				}
 			}
 		}
@@ -274,8 +247,6 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
 		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
 	/**
@@ -313,7 +284,7 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		primaryShape = new CloudConnectorOperationFigure() {
+		primaryShape = new CloudConnectorOperationFigure(new Color(null, 104, 159, 56)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -408,14 +379,6 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		}
 		return getContentPane();
 	}
-
-	/**
-	 * @generated NOT
-	 */
-	/*protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
-		return result;
-	}*/
 
 	/**
 	 * Creates figure for this edit part.
@@ -522,15 +485,8 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		/**
 		 * @generated NOT
 		 */
-		public CloudConnectorOperationFigure() {
-
-			/*			GridLayout layoutThis = new GridLayout();
-			 layoutThis.numColumns = 1;
-			 layoutThis.makeColumnsEqualWidth = true;
-			 this.setLayoutManager(layoutThis);
-
-			 this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8), getMapMode().DPtoLP(8)));
-			 this.setLineStyle(Graphics.LINE_DASH);*/
+		public CloudConnectorOperationFigure(Color borderColor) {
+			super(borderColor);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}
@@ -544,7 +500,6 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 
 			fFigureCloudConnectorOperationDescriptionFigure.setText("<...>");
 
-			//this.add(fFigureCloudConnectorOperationDescriptionFigure);
 			fFigureCloudConnectorOperationDescriptionFigure = getPropertyNameLabel();
 
 		}

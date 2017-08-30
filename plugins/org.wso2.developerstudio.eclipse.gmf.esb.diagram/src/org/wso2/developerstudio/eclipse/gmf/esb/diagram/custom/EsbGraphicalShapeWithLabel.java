@@ -51,8 +51,10 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 	private Layer breakpointLayer;
 	private Layer skipPointLayer;
 	protected String toolTipMessage;
+	private Color borderColor;
 
-	public EsbGraphicalShapeWithLabel() {
+	public EsbGraphicalShapeWithLabel(Color borderColor) {
+		this.borderColor = borderColor;
 		initializeShape();
 	}
 
@@ -183,6 +185,9 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 		mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth,
 				Image_PreferredHeight));
 		mainImageRectangle.add(iconImageFigure);
+		RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+		border.setColor(borderColor);
+		mainImageRectangle.setBorder(border);
 		figureLayer.add(mainImageRectangle, constraintMainImageRectangle);
 
 		RoundedRectangle propertyValueRectangle1 = new RoundedRectangle();

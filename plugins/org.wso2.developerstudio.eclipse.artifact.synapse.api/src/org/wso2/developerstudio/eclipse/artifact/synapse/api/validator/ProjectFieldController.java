@@ -45,10 +45,6 @@ public class ProjectFieldController extends AbstractFieldController {
 		} else if (modelProperty.equals(ArtifactConstants.ID_API_CONTEXT)) {
 			if (value == null || value.equals("")) {
 				throw new FieldValidationException(ArtifactConstants.ERRMSG_API_CONTEXT);
-			} else{
-				if(!value.toString().startsWith("/")){
-					throw new FieldValidationException(ArtifactConstants.ERRMSG2_API_CONTEXT);	
-				}
 			}
 		} else if (modelProperty.equals(ArtifactConstants.ID_API_PORT)) {
 			if (value != null && value.toString().length()>0) {

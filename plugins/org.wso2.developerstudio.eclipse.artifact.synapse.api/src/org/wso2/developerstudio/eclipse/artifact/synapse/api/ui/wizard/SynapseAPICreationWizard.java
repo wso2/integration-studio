@@ -144,36 +144,26 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 	}
 	
 	private String getTemplateContent(){
-		String content = new String();
+		StringBuilder content = new StringBuilder();
 		/*
 		 * FIXME: use template extension-point instead of hard-coding template
 		 * content
 		 */
-		content += "<api xmlns=\"";
-		content += "http://ws.apache.org/ns/synapse\"";
-		content += " context=\"";
-		content += artifactModel.getContext();
-		content += "\" name=\"";
-		content += artifactModel.getName();
-		content += "\""; 
-		if(artifactModel.getHostname()!=null && artifactModel.getHostname().length()>0){
-			content += " hostname=\"";
-			content += artifactModel.getHostname();
-			content += "\"";
+		content.append("<api xmlns=\"http://ws.apache.org/ns/synapse\" context=\"");
+		if (artifactModel.getContext().startsWith("/")) {
+			content.append(artifactModel.getContext());
+		} else {
+			content.append("/").append(artifactModel.getContext());
 		}
-		if(artifactModel.getPort()>0){
-			content += " port=\"";
-			content += artifactModel.getPort();
-			content += "\"";
+		content.append("\" name=\"").append(artifactModel.getName()).append("\"");
+		if (artifactModel.getHostname() != null && artifactModel.getHostname().length() > 0) {
+			content.append(" hostname=\"").append(artifactModel.getHostname()).append("\"");
 		}
-		content += ">\n";
-		content += "<resource methods=\"GET\">";
-		content += "<inSequence/>";
-		content += "<outSequence/>";
-		content += "<faultSequence/>";
-		content += "</resource>\n";
-		content += "</api>";
-		return content;
+		if (artifactModel.getPort() > 0) {
+			content.append(" port=\"").append(artifactModel.getPort()).append("\"");
+		}
+		content.append(">\n<resource methods=\"GET\"><inSequence/><outSequence/><faultSequence/></resource>\n</api>");
+		return content.toString();
 	}
 	
 	

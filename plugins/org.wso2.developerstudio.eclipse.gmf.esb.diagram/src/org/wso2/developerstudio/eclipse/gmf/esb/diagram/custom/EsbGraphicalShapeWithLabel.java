@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 	public RoundedRectangle tempPropertyValueRectangle1;
 	private WrappingLabel propertyNameLabel;
 	private static int Image_PreferredWidth = 75;
-	private static int Image_PreferredHeight = 52;
+	private static int Image_PreferredHeight = 58;
 	protected RoundedRectangle mainImageRectangle;
 	private LayeredPane pane;
 	protected Layer figureLayer;

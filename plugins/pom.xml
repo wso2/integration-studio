@@ -54,10 +54,6 @@
 		<module>org.wso2.developerstudio.visualdatamapper.edit</module>
 		<module>org.wso2.developerstudio.visualdatamapper.editor</module>
 		<module>org.wso2.developerstudio.visualdatamapper.project</module>
-		<module>org.wso2.developerstudio.eclipse.integration.core</module>
-        <module>org.wso2.developerstudio.eclipse.integration.project</module>
-        <module>org.wso2.developerstudio.eclipse.artifact.connection</module>
-        <module>org.wso2.developerstudio.eclipse.artifact.template.integration</module>
 	</modules>
 	<build>
 		<plugins>

@@ -42,6 +42,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 	private static final String CUSTOM = "custom";
     private static final String POLLING_BEHAVIOUR = "polling";
     private static final String LISTENING_BEHAVIOUR = "listening";
+    private static final String EVENT_BASED_BEHAVIOUR = "eventBased";
     private static final String REGISTRY_PREFIX = "$registry:";
 	private static final String WSO2MB="wso2_mb";
     private static final String TOPIC ="topic";
@@ -564,10 +565,16 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         visualInboundEndpoint.getInterval());
             }
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundEndpointBehaviour()))) {
-                String behaviourValue = visualInboundEndpoint.getInboundEndpointBehaviour().getLiteral()
-                        .equals(InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT.getLiteral()) ? POLLING_BEHAVIOUR
-                        : LISTENING_BEHAVIOUR;
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_BEHAVIOUR, behaviourValue);
+                String behaviourXMLValue = "";
+                String behaviourUIValue = visualInboundEndpoint.getInboundEndpointBehaviour().getLiteral();
+                if (behaviourUIValue.equals(InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT.getLiteral())) {
+                    behaviourXMLValue = POLLING_BEHAVIOUR;
+                } else if (behaviourUIValue.equals(InboundEndpointBehaviourType.LISTENING_INBOUND_ENDPOINT.getLiteral())) {
+                    behaviourXMLValue = LISTENING_BEHAVIOUR;
+                } else if (behaviourUIValue.equals(InboundEndpointBehaviourType.EVENT_BASED_INBOUND_ENDPOINT.getLiteral())) {
+                    behaviourXMLValue = EVENT_BASED_BEHAVIOUR;
+                }
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_BEHAVIOUR, behaviourXMLValue);
             }
             break;
         case HTTPS:

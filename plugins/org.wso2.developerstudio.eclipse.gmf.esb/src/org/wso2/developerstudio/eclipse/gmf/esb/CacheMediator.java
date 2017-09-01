@@ -207,6 +207,7 @@ public interface CacheMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Cache Protocol Methods</b></em>' attribute.
+	 * The default value is <code>"*"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cache Protocol Methods</em>' attribute isn't clear,
@@ -216,7 +217,7 @@ public interface CacheMediator extends Mediator {
 	 * @return the value of the '<em>Cache Protocol Methods</em>' attribute.
 	 * @see #setCacheProtocolMethods(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheProtocolMethods()
-	 * @model
+	 * @model default="*"
 	 * @generated
 	 */
 	String getCacheProtocolMethods();
@@ -446,6 +447,7 @@ public interface CacheMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Response Codes</b></em>' attribute.
+	 * The default value is <code>".*"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Response Codes</em>' attribute isn't clear,
@@ -455,7 +457,7 @@ public interface CacheMediator extends Mediator {
 	 * @return the value of the '<em>Response Codes</em>' attribute.
 	 * @see #setResponseCodes(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_ResponseCodes()
-	 * @model
+	 * @model default=".*"
 	 * @generated
 	 */
 	String getResponseCodes();

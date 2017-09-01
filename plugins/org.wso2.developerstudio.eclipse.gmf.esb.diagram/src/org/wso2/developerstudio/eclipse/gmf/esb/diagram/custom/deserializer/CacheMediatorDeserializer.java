@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.carbon.mediator.cache.CachingConstants;
 
 public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CacheMediator> {
 
@@ -59,26 +60,27 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 			if (mediator.isCollector()) {
 				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION, CacheAction.COLLECTOR);
 			} else {
-				String[] methods = mediator.getHTTPMethodsToCache();
-				if (methods.length != 0 && !methods[0].isEmpty()) {
-					StringBuilder method = new StringBuilder();
-					for (int i = 0; i < methods.length - 1; i++) {
-						method.append(methods[i]).append(", ");
+				if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(mediator.getProtocolType())) {
+					String[] methods = mediator.getHTTPMethodsToCache();
+					if (methods != null && methods.length != 0 && !methods[0].isEmpty()) {
+						StringBuilder method = new StringBuilder();
+						for (int i = 0; i < methods.length - 1; i++) {
+							method.append(methods[i]).append(", ");
+						}
+						method.append(methods[methods.length - 1]);
+						executeSetValueCommand(CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS, method.toString());
 					}
-					method.append(methods[methods.length - 1]);
-					executeSetValueCommand(CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS, method.toString());
+					String[] headerstoExclude = mediator.getHeadersToExcludeInHash();
+					StringBuilder header = new StringBuilder();
+					for (int i = 0; i < headerstoExclude.length - 1; i++) {
+						header.append(headerstoExclude[i]).append(", ");
+					}
+					header.append(headerstoExclude[headerstoExclude.length - 1]);
+					executeSetValueCommand(CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH, header.toString());
+					executeSetValueCommand(CACHE_MEDIATOR__RESPONSE_CODES, mediator.getResponseCodes());
 				}
 				executeSetValueCommand(CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE, mediator.getProtocolType());
-				executeSetValueCommand(CACHE_MEDIATOR__RESPONSE_CODES, mediator.getResponseCodes());
 				executeSetValueCommand(CACHE_MEDIATOR__MAX_MESSAGE_SIZE, mediator.getMaxMessageSize());
-
-				String[] headerstoExclude = mediator.getHeadersToExcludeInHash();
-				StringBuilder header = new StringBuilder();
-				for (int i = 0; i < headerstoExclude.length - 1; i++) {
-					header.append(headerstoExclude[i]).append(", ");
-				}
-				header.append(headerstoExclude[headerstoExclude.length-1]);
-				executeSetValueCommand(CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH, header.toString());
 				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION, CacheAction.FINDER);
 				executeSetValueCommand(CACHE_MEDIATOR__CACHE_TIMEOUT, (int) mediator.getTimeout());
 				executeSetValueCommand(CACHE_MEDIATOR__MAX_ENTRY_COUNT, (int) mediator.getInMemoryCacheSize());

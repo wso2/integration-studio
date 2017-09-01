@@ -101,6 +101,8 @@ public class InboundEndpointDeserializer extends
 
     private static final String KEY_TYPE_PARAMETER_PREFIX = "$registry:";
     private static final String POLLING_BEHAVIOUR = "polling";
+    private static final String LISTENING_BEHAVIOUR = "listening";
+    private static final String EVENT_BASED_BEHAVIOUR = "eventBased";
     private static final String WSO2_MB_TOPIC_CONNECTION_URL ="connectionfactory.TopicConnectionFactory";
     private static final String WSO2_MB__QUEUE_CONNECTION_URL ="connectionfactory.QueueConnectionFactory";
 
@@ -571,9 +573,12 @@ public class InboundEndpointDeserializer extends
                         if (paramEntry.getValue().equals(POLLING_BEHAVIOUR)) {
                             executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR,
                                     InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT);
-                        } else {
+                        } else if (paramEntry.getValue().equals(LISTENING_BEHAVIOUR)) {
                             executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR,
                                     InboundEndpointBehaviourType.LISTENING_INBOUND_ENDPOINT);
+                        } else if (paramEntry.getValue().equals(EVENT_BASED_BEHAVIOUR)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR,
+                                    InboundEndpointBehaviourType.EVENT_BASED_INBOUND_ENDPOINT);
                         }
                     }
                 }

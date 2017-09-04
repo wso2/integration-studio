@@ -302,7 +302,7 @@ public class PayloadFactoryMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public PayloadFactoryMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

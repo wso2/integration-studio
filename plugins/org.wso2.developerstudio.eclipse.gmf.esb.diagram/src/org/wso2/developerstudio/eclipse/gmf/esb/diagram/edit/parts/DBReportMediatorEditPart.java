@@ -332,7 +332,7 @@ public class DBReportMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public DBReportMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

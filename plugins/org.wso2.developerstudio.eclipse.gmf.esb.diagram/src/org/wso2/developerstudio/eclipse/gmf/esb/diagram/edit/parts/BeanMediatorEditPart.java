@@ -305,7 +305,7 @@ public class BeanMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public BeanMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

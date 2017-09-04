@@ -316,7 +316,7 @@ public class BuilderMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public BuilderMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

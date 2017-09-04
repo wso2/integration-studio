@@ -293,7 +293,7 @@ public class URLRewriteMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public URLRewriteMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

@@ -332,7 +332,7 @@ public class SpringMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public SpringMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

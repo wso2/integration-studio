@@ -332,7 +332,7 @@ public class OAuthMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public OAuthMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

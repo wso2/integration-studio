@@ -808,7 +808,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		 * @generated NOT
 		 */
 		public SequenceFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			/*
 			 * GridLayout layoutThis = new GridLayout(); layoutThis.numColumns =
 			 * 1; layoutThis.makeColumnsEqualWidth = true;

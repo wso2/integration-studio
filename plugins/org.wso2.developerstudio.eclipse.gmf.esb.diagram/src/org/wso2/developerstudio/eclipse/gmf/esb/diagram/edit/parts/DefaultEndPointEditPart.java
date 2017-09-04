@@ -351,7 +351,7 @@ public class DefaultEndPointEditPart extends AbstractEndpoint {
 		 * @generated
 		 */
 		public DefaultEndPointFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

@@ -313,7 +313,7 @@ public class TemplateEndpointEditPart extends AbstractEndpoint {
 		 * @generated
 		 */
 		public TemplateEndpointFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

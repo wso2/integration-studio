@@ -332,7 +332,7 @@ public class ScriptMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public ScriptMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

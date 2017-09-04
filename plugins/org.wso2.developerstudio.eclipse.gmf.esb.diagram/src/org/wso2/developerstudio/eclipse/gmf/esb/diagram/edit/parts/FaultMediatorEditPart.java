@@ -341,7 +341,7 @@ public class FaultMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public FaultMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

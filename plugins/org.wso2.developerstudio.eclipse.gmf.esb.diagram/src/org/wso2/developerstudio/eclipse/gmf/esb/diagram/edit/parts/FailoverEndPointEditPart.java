@@ -348,7 +348,7 @@ public class FailoverEndPointEditPart extends ComplexFiguredAbstractEndpoint {
 		 * @generated
 		 */
 		public FailoverEndPointFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

@@ -332,7 +332,7 @@ public class EventMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public EventMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

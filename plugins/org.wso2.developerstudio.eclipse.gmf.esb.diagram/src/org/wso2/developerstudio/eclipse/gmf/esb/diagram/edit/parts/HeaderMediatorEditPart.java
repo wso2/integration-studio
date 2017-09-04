@@ -332,7 +332,7 @@ public class HeaderMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public HeaderMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

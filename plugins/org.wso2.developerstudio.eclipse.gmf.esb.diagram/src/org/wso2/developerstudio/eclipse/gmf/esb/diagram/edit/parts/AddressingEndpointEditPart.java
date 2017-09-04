@@ -312,7 +312,7 @@ public class AddressingEndpointEditPart extends AbstractEndpoint {
 		 * @generated
 		 */
 		public AddressingEndpointFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

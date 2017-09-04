@@ -289,7 +289,7 @@ public class SmooksMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public SmooksMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

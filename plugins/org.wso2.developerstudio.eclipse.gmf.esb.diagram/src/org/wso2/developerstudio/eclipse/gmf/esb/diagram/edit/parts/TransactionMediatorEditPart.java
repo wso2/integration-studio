@@ -294,7 +294,7 @@ public class TransactionMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public TransactionMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

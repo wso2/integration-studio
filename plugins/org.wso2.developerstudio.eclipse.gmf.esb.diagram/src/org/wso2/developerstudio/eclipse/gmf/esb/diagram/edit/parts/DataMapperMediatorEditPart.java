@@ -337,7 +337,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public DataMapperMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

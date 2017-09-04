@@ -332,7 +332,7 @@ public class EnrichMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public EnrichMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

@@ -317,7 +317,7 @@ public class StoreMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public StoreMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

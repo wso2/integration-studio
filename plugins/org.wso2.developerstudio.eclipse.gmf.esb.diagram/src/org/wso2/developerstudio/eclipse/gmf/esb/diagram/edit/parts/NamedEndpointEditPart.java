@@ -765,7 +765,7 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		 * @generated
 		 */
 		public NamedEndpointFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

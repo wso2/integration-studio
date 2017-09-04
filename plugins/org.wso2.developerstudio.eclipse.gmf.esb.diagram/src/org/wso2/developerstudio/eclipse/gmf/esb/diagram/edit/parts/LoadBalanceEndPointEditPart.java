@@ -348,7 +348,7 @@ public class LoadBalanceEndPointEditPart extends ComplexFiguredAbstractEndpoint 
 		 * @generated
 		 */
 		public LoadBalanceEndPointFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

@@ -383,7 +383,7 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
 		 * @generated
 		 */
 		public WSDLEndPointFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

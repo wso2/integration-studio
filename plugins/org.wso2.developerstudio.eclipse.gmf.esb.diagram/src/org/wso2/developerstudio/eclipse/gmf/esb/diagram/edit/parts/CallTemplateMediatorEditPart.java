@@ -564,7 +564,7 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public CallTemplateMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

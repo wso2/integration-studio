@@ -406,7 +406,7 @@ public class AddressEndPointEditPart extends AbstractEndpoint {
 		 * @generated
 		 */
 		public AddressEndPointFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

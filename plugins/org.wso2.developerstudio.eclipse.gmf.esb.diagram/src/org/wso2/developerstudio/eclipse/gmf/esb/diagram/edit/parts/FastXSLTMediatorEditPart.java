@@ -291,7 +291,7 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated NOT
 		 */
 		public FastXSLTMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

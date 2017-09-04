@@ -319,7 +319,7 @@ public class RecipientListEndPointEditPart extends ComplexFiguredAbstractEndpoin
 		 * @generated
 		 */
 		public RecipientListEndPointFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			endpointDescriptionLabel = getPropertyNameLabel();
 		}

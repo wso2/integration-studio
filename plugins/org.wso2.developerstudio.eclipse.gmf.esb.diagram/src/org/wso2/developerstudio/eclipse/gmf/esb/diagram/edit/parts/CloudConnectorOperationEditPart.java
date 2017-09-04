@@ -486,7 +486,7 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		 * @generated NOT
 		 */
 		public CloudConnectorOperationFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

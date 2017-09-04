@@ -302,7 +302,7 @@ public class EJBMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public EJBMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

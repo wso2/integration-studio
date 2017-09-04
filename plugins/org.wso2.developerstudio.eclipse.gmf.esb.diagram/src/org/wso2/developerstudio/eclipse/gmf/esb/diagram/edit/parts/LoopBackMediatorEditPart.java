@@ -310,7 +310,7 @@ public class LoopBackMediatorEditPart extends FixedSizedAbstractMediator {
 		 * @generated
 		 */
 		public LoopBackMediatorFigure(Color borderColor) {
-			super(borderColor);
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

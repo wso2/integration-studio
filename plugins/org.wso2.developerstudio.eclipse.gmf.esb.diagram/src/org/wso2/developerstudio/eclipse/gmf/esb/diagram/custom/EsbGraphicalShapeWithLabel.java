@@ -43,8 +43,8 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 	public GridData tempConstraintPropertyValueRectangle;
 	public RoundedRectangle tempPropertyValueRectangle1;
 	private WrappingLabel propertyNameLabel;
-	private static int Image_PreferredWidth = 75;
-	private static int Image_PreferredHeight = 58;
+	private static int Image_PreferredWidth = 72;
+	private static int Image_PreferredHeight = 52;
 	protected RoundedRectangle mainImageRectangle;
 	private LayeredPane pane;
 	protected Layer figureLayer;
@@ -52,9 +52,11 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 	private Layer skipPointLayer;
 	protected String toolTipMessage;
 	private Color borderColor;
+	private boolean isEndpoint;
 
-	public EsbGraphicalShapeWithLabel(Color borderColor) {
+	public EsbGraphicalShapeWithLabel(Color borderColor, boolean isEndpoint) {
 		this.borderColor = borderColor;
+		this.isEndpoint = isEndpoint;
 		initializeShape();
 	}
 
@@ -173,7 +175,9 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 		figureLayer.setLayoutManager(figureLayerLayout);
 		GridData constraintMainImageRectangle = new GridData();
 		constraintMainImageRectangle.verticalAlignment = GridData.BEGINNING;
-		constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
+		if(!this.isEndpoint) {
+		    constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
+		}
 		constraintMainImageRectangle.verticalSpan = 1;
 
 		ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(
@@ -210,7 +214,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 		propertyNameLabel.setText(getNodeName());
 		propertyNameLabel.setForegroundColor(new Color(null, 46, 46, 46));
 		propertyNameLabel.setFont(new Font(null, new FontData(
-				PROPERTY_NAME_LABEL_FONT, 8, SWT.NONE)));
+				PROPERTY_NAME_LABEL_FONT, 7, SWT.NONE)));
 		propertyNameLabel.setAlignment(SWT.CENTER);
 		propertyNameLabel.setPreferredSize(new Dimension(
 				FixedSizedAbstractMediator.maxFigureWidth, 20));

@@ -192,7 +192,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String CACHE_PROTOCOL_METHODS_EDEFAULT = null;
+	protected static final String CACHE_PROTOCOL_METHODS_EDEFAULT = "*";
 
 	/**
 	 * The cached value of the '{@link #getCacheProtocolMethods() <em>Cache Protocol Methods</em>}' attribute.
@@ -322,7 +322,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String RESPONSE_CODES_EDEFAULT = null;
+	protected static final String RESPONSE_CODES_EDEFAULT = ".*";
 
 	/**
 	 * The cached value of the '{@link #getResponseCodes() <em>Response Codes</em>}' attribute.

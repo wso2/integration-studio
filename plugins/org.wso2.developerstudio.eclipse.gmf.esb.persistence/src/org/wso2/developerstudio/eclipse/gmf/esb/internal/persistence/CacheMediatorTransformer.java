@@ -31,6 +31,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
+import org.wso2.carbon.mediator.cache.CachingConstants;
 
 /**
  * Cache mediator transformer 
@@ -77,19 +79,36 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 		setCommonProperties(cacheMediator, visualCache);
 		{
 			if (visualCache.getCacheAction().getValue() == 0) {
-				cacheMediator.setHTTPMethodsToCache(visualCache.getCacheProtocolMethods().split(","));
 				cacheMediator.setProtocolType(visualCache.getCacheProtocolType().getLiteral());
-				cacheMediator.setResponseCodes(visualCache.getResponseCodes());
-				cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
-				cacheMediator.setHttpMethod("http");
-
-				cacheMediator.setTimeout(visualCache.getCacheTimeout());
-				cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
-
-				if (visualCache.getHashGenerator().equals("HTTP_REQUEST_HASH_GENERATOR")) {
-					org.wso2.carbon.mediator.cache.digest.DigestGenerator httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator();
-					cacheMediator.setDigestGenerator(httpRequestHashGenerator);
+				if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(visualCache.getCacheProtocolType().getLiteral())) {
+					if (StringUtils.isNotBlank(visualCache.getCacheProtocolMethods())) {
+					    cacheMediator.setHTTPMethodsToCache(visualCache.getCacheProtocolMethods().split(","));
+					} else {
+					    cacheMediator.setHTTPMethodsToCache("*");
+					}
+					if (StringUtils.isNotBlank(visualCache.getResponseCodes())) {
+					    cacheMediator.setResponseCodes(visualCache.getResponseCodes());
+					} else {
+					    cacheMediator.setResponseCodes(".*");
+					}
+					if (StringUtils.isNotBlank(visualCache.getHeadersToExcludeInHash())) {
+					    cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
+					}
+				    cacheMediator.setHttpMethod("http");
 				}
+				cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
+				cacheMediator.setTimeout(visualCache.getCacheTimeout());
+				DigestGenerator httpRequestHashGenerator = null;
+				if (visualCache.getHashGenerator().equals("HTTP_REQUEST_HASH_GENERATOR")) {
+				    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator();
+				} else if (visualCache.getHashGenerator().toLowerCase().contains("requesthashgenerator")) {
+				    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.REQUESTHASHGenerator();
+				} else if (visualCache.getHashGenerator().toLowerCase().contains("domhashgenerator")) {
+				    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator();
+				} else {
+					throw new TransformerException("Digest generator not found");
+				}
+				cacheMediator.setDigestGenerator(httpRequestHashGenerator);
 
 				cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
 				cacheMediator.setCollector(false);

@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  */
 public class CacheMediatorItemProvider
 	extends MediatorItemProvider {
+	public static final String PROTOCOL_TYPE_HTTP = "HTTP";
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -70,9 +71,11 @@ public class CacheMediatorItemProvider
 			addMaxEntryCountPropertyDescriptor(object);
 			addSequenceTypePropertyDescriptor(object);
 			addCacheProtocolTypePropertyDescriptor(object);
-			addCacheProtocolMethodsPropertyDescriptor(object);
-			addHeadersToExcludeInHashPropertyDescriptor(object);
-			addResponseCodesPropertyDescriptor(object);
+			if (PROTOCOL_TYPE_HTTP.equals(cacheMediator.getCacheProtocolType().getLiteral())) {
+			    addCacheProtocolMethodsPropertyDescriptor(object);
+			    addHeadersToExcludeInHashPropertyDescriptor(object);
+			    addResponseCodesPropertyDescriptor(object);
+			}
 			addHashGeneratorPropertyDescriptor(object);
 			if(cacheMediator.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)){
 				//adding cache on hit property descriptor.
@@ -82,7 +85,6 @@ public class CacheMediatorItemProvider
 		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
 	}
-
 
 	/**
 	 * This adds a property descriptor for the Cache Protocol Type feature.

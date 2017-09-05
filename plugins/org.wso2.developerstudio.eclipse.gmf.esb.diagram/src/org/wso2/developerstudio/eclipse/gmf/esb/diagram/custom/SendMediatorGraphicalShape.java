@@ -9,11 +9,10 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
 
 public class SendMediatorGraphicalShape extends RoundedRectangle {
 
@@ -58,8 +57,7 @@ public class SendMediatorGraphicalShape extends RoundedRectangle {
 		// layoutGraphicalNodeContainer0.marginWidth = -1;
 		graphicalNodeContainer0.setLayoutManager(layoutGraphicalNodeContainer0);
 
-		ImageDescriptor imgDesc = EsbDiagramEditorPlugin.getBundledImageDescriptor(getIconPath());
-		ImageFigure img = new ImageFigure(imgDesc.createImage());
+		ImageFigure img = new ImageFigure(ImageHolder.getInstance().getLogMediatorImage());
 		img.setSize(new Dimension(36, 40));
 
 		RectangleFigure imageRectangle1 = new RectangleFigure();

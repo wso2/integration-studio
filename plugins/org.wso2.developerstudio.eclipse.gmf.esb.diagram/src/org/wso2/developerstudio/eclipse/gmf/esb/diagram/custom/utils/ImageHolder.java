@@ -59,7 +59,6 @@ public class ImageHolder {
 	private Image throttleMediatorImage;
 	private Image xPathAttributeImage;
 	private Image xPathElementImage;
-	private static ImageHolder imageHolderInstance;
 	
 	private ImageHolder() {
 		
@@ -156,9 +155,10 @@ public class ImageHolder {
 	}
 	
 	public static ImageHolder getInstance() {
-		if(null == imageHolderInstance) {
-			imageHolderInstance = new ImageHolder();
-		}
-		return imageHolderInstance;
+		return ImageHolderInstanceHolder.IMAGEHOLDER_INSTANCE;
+	}
+	
+	private static class ImageHolderInstanceHolder {
+		private static final ImageHolder IMAGEHOLDER_INSTANCE = new ImageHolder();
 	}
 }

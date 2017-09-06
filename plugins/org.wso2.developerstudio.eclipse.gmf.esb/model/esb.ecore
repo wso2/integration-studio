@@ -718,7 +718,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="EnrichMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cloneSource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//EnrichSourceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//EnrichSourceType"
+        defaultValueLiteral="property"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceXpath" eType="#//NamespacedProperty"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -726,7 +727,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceXML" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="&lt;inline/>"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetAction" eType="#//EnrichTargetAction"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//EnrichTargetType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//EnrichTargetType"
+        defaultValueLiteral="custom"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetXpath" eType="#//NamespacedProperty"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -759,9 +761,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EnrichTargetType">
     <eLiterals name="CUSTOM" literal="custom"/>
-    <eLiterals name="ENVELOPE" value="1" literal="envelope"/>
     <eLiterals name="BODY" value="2" literal="body"/>
     <eLiterals name="PROPERTY" value="3" literal="property"/>
+    <eLiterals name="ENVELOPE" value="1" literal="envelope"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractNameValueExpressionProperty"
       abstract="true" eSuperTypes="#//EsbNode">

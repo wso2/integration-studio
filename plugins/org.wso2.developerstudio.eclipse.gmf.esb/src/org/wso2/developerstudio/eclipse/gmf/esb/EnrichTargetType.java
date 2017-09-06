@@ -33,16 +33,6 @@ public enum EnrichTargetType implements Enumerator {
 	CUSTOM(0, "CUSTOM", "custom"),
 
 	/**
-	 * The '<em><b>ENVELOPE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ENVELOPE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ENVELOPE(1, "ENVELOPE", "envelope"),
-
-	/**
 	 * The '<em><b>BODY</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,7 +50,15 @@ public enum EnrichTargetType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PROPERTY(3, "PROPERTY", "property");
+	PROPERTY(3, "PROPERTY", "property"), /**
+	 * The '<em><b>ENVELOPE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENVELOPE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENVELOPE(1, "ENVELOPE", "envelope");
 
 	/**
 	 * The '<em><b>CUSTOM</b></em>' literal value.
@@ -76,21 +74,6 @@ public enum EnrichTargetType implements Enumerator {
 	 * @ordered
 	 */
 	public static final int CUSTOM_VALUE = 0;
-
-	/**
-	 * The '<em><b>ENVELOPE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>ENVELOPE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #ENVELOPE
-	 * @model literal="envelope"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ENVELOPE_VALUE = 1;
 
 	/**
 	 * The '<em><b>BODY</b></em>' literal value.
@@ -123,6 +106,21 @@ public enum EnrichTargetType implements Enumerator {
 	public static final int PROPERTY_VALUE = 3;
 
 	/**
+	 * The '<em><b>ENVELOPE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ENVELOPE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ENVELOPE
+	 * @model literal="envelope"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENVELOPE_VALUE = 1;
+
+	/**
 	 * An array of all the '<em><b>Enrich Target Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,9 +129,9 @@ public enum EnrichTargetType implements Enumerator {
 	private static final EnrichTargetType[] VALUES_ARRAY =
 		new EnrichTargetType[] {
 			CUSTOM,
-			ENVELOPE,
 			BODY,
 			PROPERTY,
+			ENVELOPE,
 		};
 
 	/**
@@ -191,9 +189,9 @@ public enum EnrichTargetType implements Enumerator {
 	public static EnrichTargetType get(int value) {
 		switch (value) {
 			case CUSTOM_VALUE: return CUSTOM;
-			case ENVELOPE_VALUE: return ENVELOPE;
 			case BODY_VALUE: return BODY;
 			case PROPERTY_VALUE: return PROPERTY;
+			case ENVELOPE_VALUE: return ENVELOPE;
 		}
 		return null;
 	}

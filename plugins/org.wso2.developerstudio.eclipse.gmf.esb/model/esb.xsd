@@ -1203,7 +1203,7 @@
           <xsd:element ecore:resolveProxies="true" minOccurs="0" name="outputConnector" type="esb:EnrichMediatorOutputConnector"/>
         </xsd:sequence>
         <xsd:attribute default="false" ecore:unsettable="false" name="cloneSource" type="ecore:EBoolean"/>
-        <xsd:attribute default="CUSTOM" ecore:unsettable="false" name="sourceType" type="esb:EnrichSourceType"/>
+        <xsd:attribute default="PROPERTY" ecore:unsettable="false" name="sourceType" type="esb:EnrichSourceType"/>
         <xsd:attribute default="source_property" ecore:unsettable="false" name="sourceProperty" type="ecore:EString"/>
         <xsd:attribute default="&lt;inline/&gt;" ecore:unsettable="false" name="sourceXML" type="ecore:EString"/>
         <xsd:attribute default="REPLACE" ecore:unsettable="false" name="targetAction" type="esb:EnrichTargetAction"/>

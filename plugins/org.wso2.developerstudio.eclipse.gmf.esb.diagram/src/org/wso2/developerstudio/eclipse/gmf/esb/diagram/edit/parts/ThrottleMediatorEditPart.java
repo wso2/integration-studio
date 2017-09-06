@@ -135,7 +135,7 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new ThrottleMediatorFigure(new Color(null, 255, 246, 245), new Color(null, 121, 86, 73)) {
+		return primaryShape = new ThrottleMediatorFigure(new Color(null, 253, 249, 248), new Color(null, 121, 86, 73)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {

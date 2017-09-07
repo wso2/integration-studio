@@ -169,7 +169,7 @@ public class EnqueueMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new EnqueueMediatorFigure() {
+		return primaryShape = new EnqueueMediatorFigure(new Color(null, 121, 86, 73)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -280,8 +280,8 @@ public class EnqueueMediatorEditPart extends FixedSizedAbstractMediator {
 		/**
 		 * @generated
 		 */
-		public EnqueueMediatorFigure() {
-
+		public EnqueueMediatorFigure(Color borderColor) {
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

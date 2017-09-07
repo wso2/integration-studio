@@ -127,7 +127,7 @@ public class CalloutMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new CalloutMediatorFigure() {
+		return primaryShape = new CalloutMediatorFigure(new Color(null, 208, 67, 0)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -331,8 +331,8 @@ public class CalloutMediatorEditPart extends FixedSizedAbstractMediator {
 		/**
 		 * @generated
 		 */
-		public CalloutMediatorFigure() {
-
+		public CalloutMediatorFigure(Color borderColor) {
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

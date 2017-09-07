@@ -3191,6 +3191,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="InboundEndpointBehaviourType">
     <eLiterals name="pollingInboundEndpoint"/>
     <eLiterals name="listeningInboundEndpoint" value="1"/>
+    <eLiterals name="eventBasedInboundEndpoint" value="2" literal="eventBasedInboundEndpoint"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ContentType">
     <eLiterals name="xml" literal="application/xml"/>

@@ -127,7 +127,7 @@ public class OAuthMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new OAuthMediatorFigure() {
+		return primaryShape = new OAuthMediatorFigure(new Color(null, 53, 73, 94)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -331,8 +331,8 @@ public class OAuthMediatorEditPart extends FixedSizedAbstractMediator {
 		/**
 		 * @generated
 		 */
-		public OAuthMediatorFigure() {
-
+		public OAuthMediatorFigure(Color borderColor) {
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

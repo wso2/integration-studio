@@ -127,7 +127,7 @@ public class FaultMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new FaultMediatorFigure() {
+		return primaryShape = new FaultMediatorFigure(new Color(null, 243, 149, 0)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -340,8 +340,8 @@ public class FaultMediatorEditPart extends FixedSizedAbstractMediator {
 		/**
 		 * @generated
 		 */
-		public FaultMediatorFigure() {
-
+		public FaultMediatorFigure(Color borderColor) {
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

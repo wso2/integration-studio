@@ -17356,13 +17356,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int FAILOVER_END_POINT__MEDIATOR_FLOW = PARENT_END_POINT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Build Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILOVER_END_POINT__BUILD_MESSAGE = PARENT_END_POINT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Failover End Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FAILOVER_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 4;
+	int FAILOVER_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointInputConnectorImpl <em>Failover End Point Input Connector</em>}' class.
@@ -18065,13 +18074,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int LOAD_BALANCE_END_POINT__MEDIATOR_FLOW = PARENT_END_POINT_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Build Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOAD_BALANCE_END_POINT__BUILD_MESSAGE = PARENT_END_POINT_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Load Balance End Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOAD_BALANCE_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 10;
+	int LOAD_BALANCE_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl <em>Member</em>}' class.
@@ -41733,6 +41751,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getFailoverEndPoint_MediatorFlow();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#isBuildMessage <em>Build Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Build Message</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#isBuildMessage()
+	 * @see #getFailoverEndPoint()
+	 * @generated
+	 */
+	EAttribute getFailoverEndPoint_BuildMessage();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointInputConnector <em>Failover End Point Input Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -41998,6 +42027,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getLoadBalanceEndPoint_MediatorFlow();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint#isBuildMessage <em>Build Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Build Message</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint#isBuildMessage()
+	 * @see #getLoadBalanceEndPoint()
+	 * @generated
+	 */
+	EAttribute getLoadBalanceEndPoint_BuildMessage();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.Member <em>Member</em>}'.
@@ -55948,6 +55988,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EReference FAILOVER_END_POINT__MEDIATOR_FLOW = eINSTANCE.getFailoverEndPoint_MediatorFlow();
 
 		/**
+		 * The meta object literal for the '<em><b>Build Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FAILOVER_END_POINT__BUILD_MESSAGE = eINSTANCE.getFailoverEndPoint_BuildMessage();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointInputConnectorImpl <em>Failover End Point Input Connector</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -56162,6 +56210,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference LOAD_BALANCE_END_POINT__MEDIATOR_FLOW = eINSTANCE.getLoadBalanceEndPoint_MediatorFlow();
+
+		/**
+		 * The meta object literal for the '<em><b>Build Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOAD_BALANCE_END_POINT__BUILD_MESSAGE = eINSTANCE.getLoadBalanceEndPoint_BuildMessage();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl <em>Member</em>}' class.

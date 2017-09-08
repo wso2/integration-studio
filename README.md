@@ -3,7 +3,7 @@
 WSO2 EI tooling provides capabilities of a complete eclipse-based development environment for the EI projects and artifact creation.
 
 ### Version
-1.2.0 - SNAPSHOT
+6.2.0 - SNAPSHOT
 
 ### How to Build
 This requires maven installed in your system. Run these commands to clone the repo and build it.

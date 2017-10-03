@@ -18,8 +18,6 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.io.IOException;
 
-import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.CompoundBorder;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
@@ -30,7 +28,6 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -72,7 +69,6 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.TreeNodeUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.ISchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
@@ -649,12 +645,9 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			titleBarBorder.setTextAlignment(PositionConstants.CENTER);
 			titleBarBorder.setPadding(6);
 			titleBarBorder.setBackgroundColor(DataMapperColorConstants.outputTitleBarColor);
-			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setTextColor(DataMapperColorConstants.color_white);
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			LineBorder lineBorder = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
-			CompoundBorder compoundBorder = new CompoundBorder(titleBarBorder, lineBorder);
-			CompoundBorder compoundBorderTop = new CompoundBorder(border, compoundBorder);
-			this.setBorder(compoundBorderTop);
+			this.setBorder(titleBarBorder);
 
 		}
 

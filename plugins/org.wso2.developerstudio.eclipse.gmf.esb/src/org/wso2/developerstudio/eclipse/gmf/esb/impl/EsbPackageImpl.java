@@ -23217,6 +23217,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(propertyNameEEnum, PropertyName.TRANSPORT_IN_NAME);
 		addEEnumLiteral(propertyNameEEnum, PropertyName.TO);
 		addEEnumLiteral(propertyNameEEnum, PropertyName.TRANSPORT_NON_BLOCKING);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.JMS_CONNECTION_FACTORY);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.JMS_DESTINATION);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.JMS_DESTINATION_TYPE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.JMS_REPLY_DESTINATION);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.JMS_WRAPPER);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_FILE_URI);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_CONTENT_TYPE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_FILENAME_PATTERN);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.POLL_INTERVAL);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_ACTION_AFTER_PROCESS);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_MOVE_AFTER_PROCESS);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_ACTION_AFTER_ERRORS);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_MOVE_AFTER_ERRORS);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_ACTION_AFTER_FAILURE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_MOVE_AFTER_FAILURE);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_REPLY_FILE_URI);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_REPLY_FILENAME);
+		addEEnumLiteral(propertyNameEEnum, PropertyName.VFS_MOVE_TIMESTAMP_FORMAT);
 
 		initEEnum(enrichSourceInlineTypeEEnum, EnrichSourceInlineType.class, "EnrichSourceInlineType");
 		addEEnumLiteral(enrichSourceInlineTypeEEnum, EnrichSourceInlineType.CONTENT);

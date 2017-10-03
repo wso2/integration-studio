@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentValue <em>Argument Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getArgumentExpression <em>Argument Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#getEvaluator <em>Evaluator</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryArgumentImpl#isLiteral <em>Literal</em>}</li>
  * </ul>
  *
  * @generated
@@ -106,6 +107,26 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
 	 * @ordered
 	 */
 	protected MediaType evaluator = EVALUATOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isLiteral() <em>Literal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLiteral()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean LITERAL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isLiteral() <em>Literal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLiteral()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean literal = LITERAL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -242,6 +263,27 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isLiteral() {
+		return literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLiteral(boolean newLiteral) {
+		boolean oldLiteral = literal;
+		literal = newLiteral;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL, oldLiteral, literal));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -267,6 +309,8 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
 				return getArgumentExpression();
 			case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
 				return getEvaluator();
+			case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
+				return isLiteral();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -290,6 +334,9 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
 				return;
 			case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
 				setEvaluator((MediaType)newValue);
+				return;
+			case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
+				setLiteral((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -315,6 +362,9 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
 			case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
 				setEvaluator(EVALUATOR_EDEFAULT);
 				return;
+			case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
+				setLiteral(LITERAL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -335,6 +385,8 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
 				return argumentExpression != null;
 			case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
 				return evaluator != EVALUATOR_EDEFAULT;
+			case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
+				return literal != LITERAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -355,6 +407,8 @@ public class PayloadFactoryArgumentImpl extends EsbNodeImpl implements PayloadFa
 		result.append(argumentValue);
 		result.append(", evaluator: ");
 		result.append(evaluator);
+		result.append(", literal: ");
+		result.append(literal);
 		result.append(')');
 		return result.toString();
 	}

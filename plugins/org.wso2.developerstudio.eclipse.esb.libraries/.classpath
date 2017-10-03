@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/groovy-all_2.3.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/axiom_1.2.11.wso2v11.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/bcprov-jdk16-1.46.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/bsf-all_3.0.0.wso2v5.jar"/>
@@ -13,7 +14,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/commons-logging-1.1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-validator-1.4.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/geronimo-stax-api_1.0_spec_1.0.1.wso2v2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/groovy-all-2.1.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/gson-2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/handy-uri-templates_1.1.7.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/httpcore_4.3.3.wso2v1.jar"/>
@@ -55,7 +55,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.oauth.mediator_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam.config_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.cache_4.6.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.cache_4.6.25.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper.engine_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.event_4.6.6.jar"/>
@@ -87,14 +87,14 @@
 	<classpathentry exported="true" kind="lib" path="lib/smooks_1.5.1.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/spring.framework_3.2.9.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/svnkit-1.7.9.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v7.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v7.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v7.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v7.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v7.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v7.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v7.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-vfs-transport_2.1.7.wso2v7.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v21.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v21.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v21.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v21.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v21.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v21.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v21.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-vfs-transport_2.1.7.wso2v21.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/tomcat-catalina-ha_7.0.69.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/tomcat-el-api_7.0.69.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/tomcat-jsp-api_7.0.69.wso2v1.jar"/>

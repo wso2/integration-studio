@@ -743,7 +743,6 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//HashGenerator">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HashGenerator/CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HashGenerator/CACHING_DIGEST_DOMHASH_GENERATOR"/>
     </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
@@ -1880,6 +1879,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryArgument/argumentValue"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryArgument/argumentExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryArgument/evaluator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryArgument/literal"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//ConditionalRouteBranch">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ConditionalRouteBranch/breakAfterRoute"/>
@@ -1920,6 +1920,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FailoverEndPoint/OutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FailoverEndPoint/westOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FailoverEndPoint/mediatorFlow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//FailoverEndPoint/buildMessage"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//FailoverEndPointInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//FailoverEndPointOutputConnector"/>
@@ -1949,6 +1950,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LoadBalanceEndPoint/algorithm"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LoadBalanceEndPoint/sessionTimeout"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//LoadBalanceEndPoint/mediatorFlow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LoadBalanceEndPoint/buildMessage"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//Member">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Member/hostName"/>

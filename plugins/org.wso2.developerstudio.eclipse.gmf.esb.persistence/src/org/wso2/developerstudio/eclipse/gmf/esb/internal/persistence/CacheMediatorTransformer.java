@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2017 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
@@ -26,10 +28,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.developerstudio.eclipse.gmf.esb.HashGenerator;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
+import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
+import org.wso2.carbon.mediator.cache.CachingConstants;
 
 /**
  * Cache mediator transformer 
@@ -38,13 +41,10 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
 			throws TransformerException {
-		CacheMediator visualCache = (CacheMediator) subject;
-		if (visualCache.getHashGenerator() == HashGenerator.CACHING_DIGEST_DOMHASH_GENERATOR){
-			information.getParentSequence().addChild(createOldCacheMediator(subject,information));
-		}else if (visualCache.getHashGenerator() == HashGenerator.CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR) {
-			information.getParentSequence().addChild(createNewCacheMediator(subject,information));
-
-		}
+		
+		//Fixing DEVTOOLEI-1120
+		information.getParentSequence().addChild(createNewCacheMediator(subject,information));
+		
 		/**
 		 *  Transform the Cache Mediator output data flow path.
 		 */
@@ -59,72 +59,11 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transformWithinSequence(TransformationInfo information,
 			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		CacheMediator visualCache = (CacheMediator) subject;
-		if (visualCache.getHashGenerator() == HashGenerator.CACHING_DIGEST_DOMHASH_GENERATOR){
-			sequence.addChild(createOldCacheMediator(subject,information));
-		}else if (visualCache.getHashGenerator() == HashGenerator.CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR) {
-			sequence.addChild(createNewCacheMediator(subject,information));
-		}
+
+		//Fixing DEVTOOLEI-1120
+		sequence.addChild(createNewCacheMediator(subject,information));
 		doTransformWithinSequence(information,((CacheMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
 		
-	}
-	
-	private org.apache.synapse.mediators.builtin.CacheMediator createOldCacheMediator(EsbNode subject,TransformationInfo info) throws TransformerException{
-		/*
-		 *  Check subject.
-		 */
-		Assert.isTrue(subject instanceof CacheMediator, "Invalid subject.");
-		CacheMediator visualCache = (CacheMediator) subject;
-
-		/*
-		 *  Configure Cache mediator.
-		 */
-		org.apache.synapse.mediators.builtin.CacheMediator cacheMediator = new org.apache.synapse.mediators.builtin.CacheMediator();
-		setCommonProperties(cacheMediator, visualCache);
-		{	
-			if(visualCache.getCacheAction().getValue()==0){
-				if (StringUtils.isNotBlank(visualCache.getCacheId())) {
-					cacheMediator.setId(visualCache.getCacheId());
-				}			
-				cacheMediator.setScope(visualCache.getCacheScope().getLiteral());
-				cacheMediator.setTimeout(visualCache.getCacheTimeout());
-				cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
-				org.wso2.caching.digest.DOMHASHGenerator domhashGenerator = new org.wso2.caching.digest.DOMHASHGenerator();
-				cacheMediator.setDigestGenerator(domhashGenerator);
-				cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
-				cacheMediator.setCollector(false);
-			}
-			if(visualCache.getCacheAction().getValue()==1){
-				if (StringUtils.isNotBlank(visualCache.getCacheId())) {
-					cacheMediator.setId(visualCache.getCacheId());
-				}
-				cacheMediator.setScope(visualCache.getCacheScope().getLiteral());
-				cacheMediator.setCollector(true);
-			}
-			
-			if(visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)){
-				 
-				 if(visualCache.getSequenceKey() != null){
-					 
-					 RegistryKeyProperty  regKeyProperty = visualCache.getSequenceKey();
-					 cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
-				 }
-			} else {				
-				SequenceMediator onCacheHitSequence = new SequenceMediator();
-
-				TransformationInfo newOnCacheHitInfo = new TransformationInfo();
-				newOnCacheHitInfo.setTraversalDirection(info.getTraversalDirection());
-				newOnCacheHitInfo.setSynapseConfiguration(info.getSynapseConfiguration());
-				newOnCacheHitInfo.setOriginInSequence(info.getOriginInSequence());
-				newOnCacheHitInfo.setOriginOutSequence(info.getOriginOutSequence());
-				newOnCacheHitInfo.setCurrentProxy(info.getCurrentProxy());
-				newOnCacheHitInfo.setParentSequence(onCacheHitSequence);
-				doTransform(newOnCacheHitInfo, visualCache.getOnHitOutputConnector());
-				cacheMediator.setOnCacheHitSequence(onCacheHitSequence);
-			}
-
-		}
-		return cacheMediator;
 	}
 	
 	private org.wso2.carbon.mediator.cache.CacheMediator createNewCacheMediator(EsbNode subject,TransformationInfo info) throws TransformerException{
@@ -133,43 +72,61 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 		 */
 		Assert.isTrue(subject instanceof CacheMediator, "Invalid subject.");
 		CacheMediator visualCache = (CacheMediator) subject;
-
 		/*
 		 *  Configure Cache mediator.
 		 */
 		org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator();
 		setCommonProperties(cacheMediator, visualCache);
-		{	
-			if(visualCache.getCacheAction().getValue()==0){
-				if (StringUtils.isNotBlank(visualCache.getCacheId())) {
-					cacheMediator.setId(visualCache.getCacheId());
-				}			
-				cacheMediator.setScope(visualCache.getCacheScope().getLiteral());
-				cacheMediator.setTimeout(visualCache.getCacheTimeout());
+		{
+			if (visualCache.getCacheAction().getValue() == 0) {
+				cacheMediator.setProtocolType(visualCache.getCacheProtocolType().getLiteral());
+				if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(visualCache.getCacheProtocolType().getLiteral())) {
+					if (StringUtils.isNotBlank(visualCache.getCacheProtocolMethods())) {
+					    cacheMediator.setHTTPMethodsToCache(visualCache.getCacheProtocolMethods().split(","));
+					} else {
+					    cacheMediator.setHTTPMethodsToCache("*");
+					}
+					if (StringUtils.isNotBlank(visualCache.getResponseCodes())) {
+					    cacheMediator.setResponseCodes(visualCache.getResponseCodes());
+					} else {
+					    cacheMediator.setResponseCodes(".*");
+					}
+					if (StringUtils.isNotBlank(visualCache.getHeadersToExcludeInHash())) {
+					    cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
+					}
+				    cacheMediator.setHttpMethod("http");
+				}
 				cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
-				org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator domhashGenerator = new org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator();
-				cacheMediator.setDigestGenerator(domhashGenerator);
+				cacheMediator.setTimeout(visualCache.getCacheTimeout());
+				DigestGenerator httpRequestHashGenerator = null;
+				if (visualCache.getHashGenerator().equals("HTTP_REQUEST_HASH_GENERATOR")) {
+				    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator();
+				} else if (visualCache.getHashGenerator().toLowerCase().contains("requesthashgenerator")) {
+				    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.REQUESTHASHGenerator();
+				} else if (visualCache.getHashGenerator().toLowerCase().contains("domhashgenerator")) {
+				    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator();
+				} else {
+					throw new TransformerException("Digest generator not found");
+				}
+				cacheMediator.setDigestGenerator(httpRequestHashGenerator);
+
 				cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
 				cacheMediator.setCollector(false);
 			}
-			if(visualCache.getCacheAction().getValue()==1){
-				if (StringUtils.isNotBlank(visualCache.getCacheId())) {
-					cacheMediator.setId(visualCache.getCacheId());
-				}
-				cacheMediator.setScope(visualCache.getCacheScope().getLiteral());
+
+			if (visualCache.getCacheAction().getValue() == 1) {
 				cacheMediator.setCollector(true);
 			}
-			
-			if(visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)){
-				 
-				 if(visualCache.getSequenceKey() != null){
-					 
-					 RegistryKeyProperty  regKeyProperty = visualCache.getSequenceKey();
-					 cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
-				 }
-			} else {				
-				SequenceMediator onCacheHitSequence = new SequenceMediator();
 
+			if (visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
+				if (visualCache.getSequenceKey() != null) {
+
+					RegistryKeyProperty regKeyProperty = visualCache.getSequenceKey();
+					cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
+				}
+
+			} else {
+				SequenceMediator onCacheHitSequence = new SequenceMediator();
 				TransformationInfo newOnCacheHitInfo = new TransformationInfo();
 				newOnCacheHitInfo.setTraversalDirection(info.getTraversalDirection());
 				newOnCacheHitInfo.setSynapseConfiguration(info.getSynapseConfiguration());

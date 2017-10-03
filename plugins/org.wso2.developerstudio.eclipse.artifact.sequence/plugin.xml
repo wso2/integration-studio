@@ -182,12 +182,12 @@
             name="Carbon Application Sequences">
       </sequence>
    </extension>
-   
-   <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
-	   <wizardLink category="dashboard.category.esb" id="6dashboard.wizardLink.esb.sequence"
+     
+  <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
+       <wizardLink category="dashboard.category.esb.artifacts" id="3dashboard.wizardLink.esb.sequence"
 		wizard="org.wso2.developerstudio.eclipse.artifact.newsequenceartifact"
-		priority="6">
+		priority="3">
 		</wizardLink>
-   </extension>
+  </extension>
 
 </plugin>

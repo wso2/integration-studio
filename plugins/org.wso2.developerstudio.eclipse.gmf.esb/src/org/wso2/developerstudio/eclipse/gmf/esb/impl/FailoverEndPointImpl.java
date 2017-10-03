@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getWestOutputConnector <em>West Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#isBuildMessage <em>Build Message</em>}</li>
  * </ul>
  *
  * @generated
@@ -83,6 +84,26 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 	 * @ordered
 	 */
 	protected MediatorFlow mediatorFlow;
+
+	/**
+	 * The default value of the '{@link #isBuildMessage() <em>Build Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBuildMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean BUILD_MESSAGE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isBuildMessage() <em>Build Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBuildMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean buildMessage = BUILD_MESSAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,6 +270,27 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isBuildMessage() {
+		return buildMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBuildMessage(boolean newBuildMessage) {
+		boolean oldBuildMessage = buildMessage;
+		buildMessage = newBuildMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FAILOVER_END_POINT__BUILD_MESSAGE, oldBuildMessage, buildMessage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -280,6 +322,8 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 				return getWestOutputConnector();
 			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
 				return getMediatorFlow();
+			case EsbPackage.FAILOVER_END_POINT__BUILD_MESSAGE:
+				return isBuildMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -306,6 +350,9 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
 				setMediatorFlow((MediatorFlow)newValue);
 				return;
+			case EsbPackage.FAILOVER_END_POINT__BUILD_MESSAGE:
+				setBuildMessage((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -330,6 +377,9 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
 				setMediatorFlow((MediatorFlow)null);
 				return;
+			case EsbPackage.FAILOVER_END_POINT__BUILD_MESSAGE:
+				setBuildMessage(BUILD_MESSAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -350,8 +400,26 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 				return westOutputConnector != null;
 			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
 				return mediatorFlow != null;
+			case EsbPackage.FAILOVER_END_POINT__BUILD_MESSAGE:
+				return buildMessage != BUILD_MESSAGE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (buildMessage: ");
+		result.append(buildMessage);
+		result.append(')');
+		return result.toString();
 	}
 
 } //FailoverEndPointImpl

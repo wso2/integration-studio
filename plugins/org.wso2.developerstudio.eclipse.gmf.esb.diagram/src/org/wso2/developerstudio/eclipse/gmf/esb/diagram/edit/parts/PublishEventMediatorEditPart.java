@@ -125,7 +125,7 @@ public class PublishEventMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new PublishEventMediatorFigure() {
+		return primaryShape = new PublishEventMediatorFigure(new Color(null, 0, 175, 96)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -322,8 +322,8 @@ public class PublishEventMediatorEditPart extends FixedSizedAbstractMediator {
 		/**
 		 * @generated NOT
 		 */
-		public PublishEventMediatorFigure() {
-
+		public PublishEventMediatorFigure(Color borderColor) {
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

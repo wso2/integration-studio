@@ -124,7 +124,7 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new FastXSLTMediatorFigure() {
+		return primaryShape = new FastXSLTMediatorFigure(new Color(null, 243, 149, 0)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -278,7 +278,7 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 
 		private static final String NODE_NAME = "Fast XSLT";
 
-		private static final String ICONS_LOCATION = "icons/ico20/fastxslt-mediator.png";
+		private static final String ICONS_LOCATION = "icons/ico20/fastxslt-mediator.gif";
 
 		/**
 		 * @generated NOT
@@ -290,8 +290,8 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 		/**
 		 * @generated NOT
 		 */
-		public FastXSLTMediatorFigure() {
-
+		public FastXSLTMediatorFigure(Color borderColor) {
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

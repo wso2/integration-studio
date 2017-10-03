@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.wso2.developerstudio.eclipse.artifact.Task
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.task;singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 6.2.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.task.Activator
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)",

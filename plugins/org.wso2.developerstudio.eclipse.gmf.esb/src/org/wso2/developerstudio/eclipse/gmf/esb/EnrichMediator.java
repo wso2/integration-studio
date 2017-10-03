@@ -38,7 +38,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface EnrichMediator extends Mediator {
 	/**
 	 * Returns the value of the '<em><b>Clone Source</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Clone Source</em>' attribute isn't clear,
@@ -48,7 +48,7 @@ public interface EnrichMediator extends Mediator {
 	 * @return the value of the '<em>Clone Source</em>' attribute.
 	 * @see #setCloneSource(boolean)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_CloneSource()
-	 * @model default="false"
+	 * @model default="true"
 	 * @generated
 	 */
 	boolean isCloneSource();
@@ -65,6 +65,7 @@ public interface EnrichMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Source Type</b></em>' attribute.
+	 * The default value is <code>"property"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -76,7 +77,7 @@ public interface EnrichMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType
 	 * @see #setSourceType(EnrichSourceType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_SourceType()
-	 * @model
+	 * @model default="property"
 	 * @generated
 	 */
 	EnrichSourceType getSourceType();
@@ -203,6 +204,7 @@ public interface EnrichMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Target Type</b></em>' attribute.
+	 * The default value is <code>"custom"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -214,7 +216,7 @@ public interface EnrichMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType
 	 * @see #setTargetType(EnrichTargetType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_TargetType()
-	 * @model
+	 * @model default="custom"
 	 * @generated
 	 */
 	EnrichTargetType getTargetType();

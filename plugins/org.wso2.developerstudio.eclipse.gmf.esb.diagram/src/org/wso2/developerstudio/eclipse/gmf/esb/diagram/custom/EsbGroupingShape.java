@@ -51,8 +51,12 @@ public class EsbGroupingShape extends RoundedRectangle {
 	static int Image_PreferredWidth = 75;
 	static int Image_PreferredHeight = 42;
 	protected String toolTipMessage;
+	private Color backgroundColor;
+	private Color borderColor;
 
-    public EsbGroupingShape() {
+    public EsbGroupingShape(Color bgColor, Color boderColor) {
+    	this.backgroundColor = bgColor;
+    	this.borderColor = boderColor;
         GridLayout layoutThis = new GridLayout();
         layoutThis.numColumns = 2;
         layoutThis.makeColumnsEqualWidth = true;
@@ -216,7 +220,7 @@ public class EsbGroupingShape extends RoundedRectangle {
 		// Actual label to display which type this is.
 		WrappingLabel esbNodeTypeNameLabel = new WrappingLabel();
 		esbNodeTypeNameLabel.setText(getNodeName());
-		esbNodeTypeNameLabel.setForegroundColor(new Color(null, 0, 0, 0));
+		esbNodeTypeNameLabel.setForegroundColor(this.borderColor);
 		esbNodeTypeNameLabel.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 		esbNodeTypeNameLabel.setAlignment(SWT.CENTER);
 		esbNodeTypeNameLabel.setPreferredSize(new Dimension(64, 20));
@@ -240,12 +244,11 @@ public class EsbGroupingShape extends RoundedRectangle {
 		innerRect.setCornerDimensions(new Dimension(1, 1));
 		innerRect.setOutline(false);
 		innerRect.setBackgroundColor(this.getBackgroundColor());
-		LineBorder innerRectBorder = new LineBorder(
-				new Color(null, 90, 90, 90), 1, SWT.BORDER_SOLID);
+		LineBorder innerRectBorder = new LineBorder(this.borderColor, 1, SWT.BORDER_SOLID);
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));
-		innerRect.setBackgroundColor(new Color(null, 233, 245, 215));
+		innerRect.setBackgroundColor(this.backgroundColor);
 
 		GridLayout innerRectLayout = new GridLayout();
 		innerRectLayout.numColumns = 1;

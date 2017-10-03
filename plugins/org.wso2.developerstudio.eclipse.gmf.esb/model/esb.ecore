@@ -717,8 +717,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EnrichMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cloneSource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//EnrichSourceType"/>
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//EnrichSourceType"
+        defaultValueLiteral="property"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceXpath" eType="#//NamespacedProperty"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -726,7 +727,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceXML" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="&lt;inline/>"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetAction" eType="#//EnrichTargetAction"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//EnrichTargetType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//EnrichTargetType"
+        defaultValueLiteral="custom"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetXpath" eType="#//NamespacedProperty"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -759,9 +761,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EnrichTargetType">
     <eLiterals name="CUSTOM" literal="custom"/>
-    <eLiterals name="ENVELOPE" value="1" literal="envelope"/>
     <eLiterals name="BODY" value="2" literal="body"/>
     <eLiterals name="PROPERTY" value="3" literal="property"/>
+    <eLiterals name="ENVELOPE" value="1" literal="envelope"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractNameValueExpressionProperty"
       abstract="true" eSuperTypes="#//EsbNode">
@@ -1098,6 +1100,7 @@
     <eLiterals name="JAVASCRIPT" literal="js"/>
     <eLiterals name="RUBY" value="1" literal="rb"/>
     <eLiterals name="GROOVY" value="2" literal="groovy"/>
+    <eLiterals name="NASHORNJS" value="3" literal="nashornJs"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FaultMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="soapVersion" eType="#//FaultSoapVersion"/>
@@ -1385,16 +1388,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheScope" eType="#//CacheScope"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheProtocolType" eType="#//CacheProtocolType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheAction" eType="#//CacheAction"
         defaultValueLiteral="FINDER"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashGenerator" eType="#//HashGenerator"
-        defaultValueLiteral="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashGenerator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="HTTP_REQUEST_HASH_GENERATOR"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheTimeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="120"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxMessageSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="2000"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementationType" eType="#//CacheImplementationType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheProtocolMethods" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxEntryCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1000"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//CacheSequenceType"
@@ -1409,6 +1412,9 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="headersToExcludeInHash"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="responseCodes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="CacheMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -1418,16 +1424,12 @@
     <eLiterals name="ANONYMOUS"/>
     <eLiterals name="REGISTRY_REFERENCE"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="CacheImplementationType">
-    <eLiterals name="IN_MEMORY" literal="memory"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CacheAction">
     <eLiterals name="FINDER"/>
     <eLiterals name="COLLECTOR" value="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="CacheScope">
-    <eLiterals name="PER_MEDIATOR" literal="per-mediator"/>
-    <eLiterals name="PER_HOST" value="1" literal="per-host"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="CacheProtocolType">
+    <eLiterals name="HTTP" literal="HTTP"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XQueryMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
@@ -2177,6 +2179,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="evaluator" eType="#//MediaType"
         defaultValueLiteral="xml"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="PayloadFactoryArgumentType">
     <eLiterals name="VALUE" literal="Value"/>
@@ -2250,6 +2253,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="buildMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FailoverEndPointInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="FailoverEndPointOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -2294,6 +2298,7 @@
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="buildMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LoadBalanceSessionType">
     <eLiterals name="NONE"/>
@@ -3188,6 +3193,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="InboundEndpointBehaviourType">
     <eLiterals name="pollingInboundEndpoint"/>
     <eLiterals name="listeningInboundEndpoint" value="1"/>
+    <eLiterals name="eventBasedInboundEndpoint" value="2" literal="eventBasedInboundEndpoint"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ContentType">
     <eLiterals name="xml" literal="application/xml"/>
@@ -3290,9 +3296,5 @@
   <eClassifiers xsi:type="ecore:EEnum" name="EnableDisableState">
     <eLiterals name="Disabled" literal="Disabled"/>
     <eLiterals name="Enabled" value="1" literal="Enabled"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="HashGenerator">
-    <eLiterals name="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR" literal="CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
-    <eLiterals name="CACHING_DIGEST_DOMHASH_GENERATOR" value="1" literal="CACHING_DIGEST_DOMHASH_GENERATOR"/>
   </eClassifiers>
 </ecore:EPackage>

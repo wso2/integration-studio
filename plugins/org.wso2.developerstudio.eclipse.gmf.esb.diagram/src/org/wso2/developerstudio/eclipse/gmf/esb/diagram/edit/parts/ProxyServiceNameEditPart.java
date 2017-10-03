@@ -416,7 +416,7 @@ public class ProxyServiceNameEditPart extends CompartmentEditPart implements ITe
 	protected void refreshFont() {
 		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
 		if (style != null) {
-			FontData fontData = new FontData(style.getFontName(), 7, SWT.BOLD
+			FontData fontData = new FontData(style.getFontName(), 10, SWT.BOLD
 					| (style.isItalic() ? SWT.ITALIC : SWT.NORMAL));
 			setFont(fontData);
 		}

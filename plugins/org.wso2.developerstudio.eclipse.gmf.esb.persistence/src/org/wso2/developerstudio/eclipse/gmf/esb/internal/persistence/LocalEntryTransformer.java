@@ -82,7 +82,7 @@ public class LocalEntryTransformer extends AbstractEsbNodeTransformer {
 			if (localEntryFormPage.getLocalEntryNameTxt() != null) {
 				String localEntryName = localEntryFormPage.getLocalEntryNameTxt().getText();
 				int localEntryType = localEntryFormPage.getLocalEntryTypeCombo().getSelectionIndex();
-				String localEntryValue = localEntryFormPage.getLocalEntryTextValue().getText();
+				String localEntryValue = getTrimmedValue(localEntryFormPage);
 
 				localEntry = new Entry(localEntryName);
 				if (localEntryType == 0) {
@@ -99,6 +99,20 @@ public class LocalEntryTransformer extends AbstractEsbNodeTransformer {
 		}
 
 		return localEntry;
+	}
+
+	/**
+	 * returns the trimmed value
+	 * 
+	 * @param localEntryFormPage
+	 *            form page instance
+	 * @return trimmed value
+	 */
+	private String getTrimmedValue(LocalEntryFormPage localEntryFormPage) {
+		if (localEntryFormPage.getLocalEntryTextValue() != null) {
+			return localEntryFormPage.getLocalEntryTextValue().getText().replaceAll("[\\t\\n]", "");
+		}
+		return "";
 	}
 
 }

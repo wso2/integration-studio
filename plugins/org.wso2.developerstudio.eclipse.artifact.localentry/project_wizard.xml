@@ -18,10 +18,10 @@
 			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
  
 			<!-- In-Lined text -->
-			<data group="group1" modelProperty="inline.text.value" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="multiline=true">Value</data>
+			<data group="group1" modelProperty="inline.text.value" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="multiline=true;height=200">Value</data>
 			
 			<!-- In-Lined xml -->
-			<data group="group1" modelProperty="inline.xml.value" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="multiline=true">Value</data>
+			<data group="group1" modelProperty="inline.xml.value" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController" controlData="multiline=true;height=200">Value</data>
 			
 			<!-- Import source URL -->
 			<data group="group1" modelProperty="import.url" type="file" filter="*" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController">Source URL</data>

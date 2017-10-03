@@ -119,8 +119,7 @@ public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<A
 					nsp.setNamespaces(map);
 				}
 				
-				//vishualAggrigate.setCompletionMinMessagesExpression(nsp);
-				executeSetValueCommand(AGGREGATE_MEDIATOR__COMPLETION_MIN_MESSAGES_EXPRESSION, nsp);
+				executeSetValueCommand(AGGREGATE_MEDIATOR__COMPLETION_MAX_MESSAGES_EXPRESSION, nsp);
 				
 			}
 		}

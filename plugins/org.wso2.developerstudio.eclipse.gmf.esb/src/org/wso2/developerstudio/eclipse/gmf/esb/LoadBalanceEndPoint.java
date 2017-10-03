@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getAlgorithm <em>Algorithm</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getSessionTimeout <em>Session Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint#isBuildMessage <em>Build Message</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint()
@@ -279,5 +280,31 @@ public interface LoadBalanceEndPoint extends ParentEndPoint {
 	 * @generated
 	 */
 	void setMediatorFlow(MediatorFlow value);
+
+	/**
+	 * Returns the value of the '<em><b>Build Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Build Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Build Message</em>' attribute.
+	 * @see #setBuildMessage(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLoadBalanceEndPoint_BuildMessage()
+	 * @model
+	 * @generated
+	 */
+	boolean isBuildMessage();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint#isBuildMessage <em>Build Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Build Message</em>' attribute.
+	 * @see #isBuildMessage()
+	 * @generated
+	 */
+	void setBuildMessage(boolean value);
 
 } // LoadBalanceEndPoint

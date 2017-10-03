@@ -3,6 +3,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom;
 import java.util.List;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMNamespace;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.AbstractMediatorSerializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder;
@@ -18,7 +19,8 @@ public class BuilderMediatorExtSerializer extends AbstractMediatorSerializer {
 		}
 
 		BuilderMediatorExt builderMediatorExt = (BuilderMediatorExt) mediator;
-		OMElement builder = fac.createOMElement("builder", nullNS);
+		OMNamespace namespace = fac.createOMNamespace("http://ws.apache.org/ns/synapse", "syn");
+		OMElement builder = fac.createOMElement("builder", namespace);
 		saveTracingState(builder, mediator);
 
 		List<MessageBuilder> messageBuilderList = builderMediatorExt
@@ -29,7 +31,7 @@ public class BuilderMediatorExtSerializer extends AbstractMediatorSerializer {
 			for (MessageBuilder messageBuilder : messageBuilderList) {
 
 				OMElement omMessageBuilder = fac.createOMElement(
-						"messageBuilder", nullNS);
+						"messageBuilder", namespace);
 
 				if (messageBuilder.getContentType() != null) {
 

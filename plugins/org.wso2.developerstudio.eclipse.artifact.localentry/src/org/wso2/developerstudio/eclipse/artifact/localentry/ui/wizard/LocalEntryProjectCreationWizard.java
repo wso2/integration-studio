@@ -214,7 +214,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		return false;
 	}
 	
-	protected void writeTemplete(File localEntryFile){
+	private void writeTemplete(File localEntryFile) {
 		try {
 			String content = "";
 			String templateToUse = "InLineTextLE.xml";
@@ -316,10 +316,5 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 	
 	public void setProject(IProject project) {
 		this.esbProject = project;
-	}
-
-	public void setModel(ProjectDataModel model){
-		super.setModel(model);
-		this.localEntryModel = (LocalEntryModel) model;
 	}
 }

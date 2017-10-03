@@ -219,16 +219,6 @@
 		</deleteParticipant>
    </extension>
    
-   <extension point="org.wso2.developerstudio.eclipse.dashboad.link">
-	
-	<category id="dashboard.category.esb" showTitle="true" title="Enterprise Service Bus" priority="2" />
-	
-	<wizardLink category="dashboard.category.esb" id="1dashboard.wizardLink.esb.project"
-		wizard="org.wso2.developerstudio.eclipse.artifact.newesbproject"
-	priority="1">
-	</wizardLink>
-  </extension>
-
 	<extension
 			point="org.eclipse.ui.navigator.viewer">
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
@@ -482,12 +472,13 @@
    
    		
 	<extension point="org.wso2.developerstudio.eclipse.dashboad.link">
-      <wizardLink category="dashboard.category.esb" id="2dashboard.wizardLink.esb.solution.project"
-	    wizard="org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject"
+		<category id="dashboard.category.esb.project" showTitle="true" title="ESB Project Types" priority="1" />
+	
+      <wizardLink category="dashboard.category.esb.project" id="1dashboard.wizardLink.esb.solution.project"
+	    wizard="org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject" 
 	   priority="1">
      </wizardLink>
    </extension>
-   
    
    <!-- Adding property tester for adding the item to the right click menu based on the resource type-->
   <extension

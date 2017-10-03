@@ -42,6 +42,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 	private static final String CUSTOM = "custom";
     private static final String POLLING_BEHAVIOUR = "polling";
     private static final String LISTENING_BEHAVIOUR = "listening";
+    private static final String EVENT_BASED_BEHAVIOUR = "eventBased";
     private static final String REGISTRY_PREFIX = "$registry:";
 	private static final String WSO2MB="wso2_mb";
     private static final String TOPIC ="topic";
@@ -107,13 +108,23 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 		InboundEndpoint inboundEndpoint = new InboundEndpoint();
 		inboundEndpoint.setName(visualInboundEndpoint.getName());
 
-		// TODO: This validation should be done properly for specific inbound
-		// endpoint types
-		// TOOLS-3039
 		Sequence sequence = getSequence(visualInboundEndpoint
 				.getSequenceOutputConnector());
 		Sequence onErrorSequence = getSequence(visualInboundEndpoint
 				.getOnErrorSequenceOutputConnector());
+		if (isSequenceMandatoryProtocol(visualInboundEndpoint.getType().getName())) {
+			if (sequence == null && onErrorSequence == null) {
+				throw new TransformerException(
+						"Sequence and On Error Sequence cannot be empty. Please include a Sequence and an On Error Sequence");
+			}
+			if (sequence == null) {
+				throw new TransformerException("Sequence cannot be empty. Please include a Sequence");
+			}
+			if (onErrorSequence == null) {
+				throw new TransformerException(
+						"On Error Sequence cannot be empty. Please include an On Error Sequence");
+			}
+		}
 		inboundEndpoint.configure(new AspectConfiguration(visualInboundEndpoint.getName()));
 		if (visualInboundEndpoint.isStatisticsEnabled()) {
 			inboundEndpoint.getAspectConfiguration().enableStatistics();
@@ -554,10 +565,16 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         visualInboundEndpoint.getInterval());
             }
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundEndpointBehaviour()))) {
-                String behaviourValue = visualInboundEndpoint.getInboundEndpointBehaviour().getLiteral()
-                        .equals(InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT.getLiteral()) ? POLLING_BEHAVIOUR
-                        : LISTENING_BEHAVIOUR;
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_BEHAVIOUR, behaviourValue);
+                String behaviourXMLValue = "";
+                String behaviourUIValue = visualInboundEndpoint.getInboundEndpointBehaviour().getLiteral();
+                if (behaviourUIValue.equals(InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT.getLiteral())) {
+                    behaviourXMLValue = POLLING_BEHAVIOUR;
+                } else if (behaviourUIValue.equals(InboundEndpointBehaviourType.LISTENING_INBOUND_ENDPOINT.getLiteral())) {
+                    behaviourXMLValue = LISTENING_BEHAVIOUR;
+                } else if (behaviourUIValue.equals(InboundEndpointBehaviourType.EVENT_BASED_INBOUND_ENDPOINT.getLiteral())) {
+                    behaviourXMLValue = EVENT_BASED_BEHAVIOUR;
+                }
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_BEHAVIOUR, behaviourXMLValue);
             }
             break;
         case HTTPS:
@@ -1155,6 +1172,13 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
         }
         return inboundEndpoint;
     }
+
+	private boolean isSequenceMandatoryProtocol(String type) {
+		if (type.matches("file|jms|hl7|kafka|custom|mqtt|rabbitmq")) {
+			return true;
+		}
+		return false;
+	}
 
     private void addParameterForConfig(InboundEndpoint inboundEndpoint, String parameterName, String parameterKeyValue) {
         if (parameterKeyValue.startsWith(REGISTRY_PREFIX)) {

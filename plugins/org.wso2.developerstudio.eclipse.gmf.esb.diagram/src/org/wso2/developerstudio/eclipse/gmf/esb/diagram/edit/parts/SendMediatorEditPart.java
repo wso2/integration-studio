@@ -201,7 +201,7 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new SendMediatorFigure() {
+		return primaryShape = new SendMediatorFigure(new Color(null, 245, 252, 255), new Color(null, 41, 128, 185)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected) && (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
@@ -382,7 +382,8 @@ public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstrac
 		/**
 		 * @generated NOT
 		 */
-		public SendMediatorFigure() {
+		public SendMediatorFigure(Color bgColor, Color boderColor) {
+			super(bgColor, boderColor);
 
 			/*			ToolbarLayout layoutThis = new ToolbarLayout();
 			 layoutThis.setStretchMinorAxis(true);

@@ -109,10 +109,11 @@ public class LogMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstrac
 		}
 		
 		
-		if (!StringUtils.isBlank(logMediator.getSeparator())) {
+		if (!logMediator.getSeparator().isEmpty()) {
 			
 			//visualLog.setLogSeparator(logMediator.getSeparator());
-			executeSetValueCommand(LOG_MEDIATOR__LOG_SEPARATOR, logMediator.getSeparator());
+			executeSetValueCommand(LOG_MEDIATOR__LOG_SEPARATOR,
+					logMediator.getSeparator().replace("\n", "\\n").replace("\t", "\\t"));
 		}
 		
 		

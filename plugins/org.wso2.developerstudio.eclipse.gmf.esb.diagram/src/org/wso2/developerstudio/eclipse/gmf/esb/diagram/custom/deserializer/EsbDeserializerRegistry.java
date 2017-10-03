@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2017 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ import org.apache.synapse.mediators.builtin.PropertyMediator;
 import org.apache.synapse.mediators.builtin.RespondMediator;
 import org.apache.synapse.mediators.builtin.SendMediator;
 import org.apache.synapse.mediators.builtin.ValidateMediator;
-import org.apache.synapse.mediators.builtin.CacheMediator;
+import org.wso2.carbon.mediator.cache.CacheMediator;
 import org.apache.synapse.mediators.db.DBLookupMediator;
 import org.apache.synapse.mediators.db.DBReportMediator;
 import org.apache.synapse.mediators.eip.aggregator.AggregateMediator;
@@ -73,7 +73,6 @@ import org.apache.synapse.mediators.xquery.XQueryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageStore;
 import org.apache.synapse.rest.API;
 import org.apache.synapse.task.TaskDescription;
-import org.wso2.carbon.identity.entitlement.mediator.EntitlementMediator;
 import org.wso2.carbon.identity.oauth.mediator.OAuthMediator;
 import org.wso2.carbon.mediator.bam.BamMediator;
 import org.wso2.carbon.mediator.event.EventMediator;

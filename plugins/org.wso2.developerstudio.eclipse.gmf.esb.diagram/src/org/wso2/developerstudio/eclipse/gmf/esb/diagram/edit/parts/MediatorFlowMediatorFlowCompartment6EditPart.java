@@ -88,7 +88,7 @@ public class MediatorFlowMediatorFlowCompartment6EditPart extends AbstractMediat
 		 *  Hide title for fault sequence compartment and
 		 *  distinguishes it by different border color. 
 		 */
-		LineBorder border = new LineBorder(new Color(null, 204, 0, 0), 1, SWT.BORDER_DASH);
+		LineBorder border = new LineBorder(new Color(null, 192, 57, 43), 1, SWT.BORDER_DASH);
 		result.setBorder(border);
 		result.setToolTip(getCompartmentName());
 		return result;

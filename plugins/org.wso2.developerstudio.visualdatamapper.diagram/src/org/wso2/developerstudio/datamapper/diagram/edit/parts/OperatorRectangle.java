@@ -1,6 +1,5 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
-import org.eclipse.draw2d.CompoundBorder;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.RoundedRectangle;
@@ -17,12 +16,11 @@ public class OperatorRectangle extends RoundedRectangle{
 		LineBorder border = new LineBorder(DataMapperColorConstants.connectorColor, 1, Graphics.LINE_SOLID);
 
 		CustomTitleBarBorder titleBarBorder = new CustomTitleBarBorder(header);
-		titleBarBorder.setTextColor(DataMapperColorConstants.color_black);
+		titleBarBorder.setTextColor(DataMapperColorConstants.color_white);
 		titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
+		titleBarBorder.setPadding(5);
 		
-		CompoundBorder compoundBorder = new CompoundBorder(titleBarBorder, border);
-		CompoundBorder compoundBorderTop = new CompoundBorder(border, compoundBorder);
-		this.setBorder(compoundBorderTop);
+		this.setBorder(titleBarBorder);
 		return false;
 	}
 }

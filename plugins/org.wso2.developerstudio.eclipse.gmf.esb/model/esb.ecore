@@ -694,6 +694,24 @@
     <eLiterals name="TRANSPORT_IN_NAME" value="47" literal="TRANSPORT_IN_NAME"/>
     <eLiterals name="To" value="48" literal="To"/>
     <eLiterals name="transportNonBlocking" value="49" literal="transportNonBlocking"/>
+    <eLiterals name="JMS_CONNECTION_FACTORY" value="50" literal="transport.jms.ConnectionFactory"/>
+    <eLiterals name="JMS_DESTINATION" value="51" literal="transport.jms.Destination"/>
+    <eLiterals name="JMS_DESTINATION_TYPE" value="52" literal="transport.jms.DestinationType"/>
+    <eLiterals name="JMS_REPLY_DESTINATION" value="53" literal="transport.jms.ReplyDestination"/>
+    <eLiterals name="JMS_WRAPPER" value="54" literal="transport.jms.Wrapper"/>
+    <eLiterals name="VFS_FILE_URI" value="55" literal="transport.vfs.FileURI"/>
+    <eLiterals name="VFS_CONTENT_TYPE" value="56" literal="transport.vfs.ContentType"/>
+    <eLiterals name="VFS_FILENAME_PATTERN" value="57" literal="transport.vfs.FileNamePattern"/>
+    <eLiterals name="POLL_INTERVAL" value="58" literal="transport.PollInterval"/>
+    <eLiterals name="VFS_ACTION_AFTER_PROCESS" value="59" literal="transport.vfs.ActionAfterProcess"/>
+    <eLiterals name="VFS_MOVE_AFTER_PROCESS" value="60" literal="transport.vfs.MoveAfterProcess"/>
+    <eLiterals name="VFS_ACTION_AFTER_ERRORS" value="61" literal="transport.vfs.ActionAfterErrors"/>
+    <eLiterals name="VFS_MOVE_AFTER_ERRORS" value="62" literal="transport.vfs.MoveAfterErrors"/>
+    <eLiterals name="VFS_ACTION_AFTER_FAILURE" value="63" literal="transport.vfs.ActionAfterFailure"/>
+    <eLiterals name="VFS_MOVE_AFTER_FAILURE" value="64" literal="transport.vfs.MoveAfterFailure"/>
+    <eLiterals name="VFS_REPLY_FILE_URI" value="65" literal="transport.vfs.ReplyFileURI"/>
+    <eLiterals name="VFS_REPLY_FILENAME" value="66" literal="transport.vfs.ReplyFileName"/>
+    <eLiterals name="VFS_MOVE_TIMESTAMP_FORMAT" value="67" literal="transport.vfs.MoveTimestampFormat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamespacedProperty" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prettyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

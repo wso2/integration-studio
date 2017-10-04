@@ -431,7 +431,151 @@ public enum PropertyName implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	TRANSPORT_NON_BLOCKING(49, "transportNonBlocking", "transportNonBlocking");
+	TRANSPORT_NON_BLOCKING(49, "transportNonBlocking", "transportNonBlocking"), /**
+	 * The '<em><b>JMS CONNECTION FACTORY</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JMS_CONNECTION_FACTORY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	JMS_CONNECTION_FACTORY(50, "JMS_CONNECTION_FACTORY", "transport.jms.ConnectionFactory"), /**
+	 * The '<em><b>JMS DESTINATION</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JMS_DESTINATION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	JMS_DESTINATION(51, "JMS_DESTINATION", "transport.jms.Destination"), /**
+	 * The '<em><b>JMS DESTINATION TYPE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JMS_DESTINATION_TYPE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	JMS_DESTINATION_TYPE(52, "JMS_DESTINATION_TYPE", "transport.jms.DestinationType"), /**
+	 * The '<em><b>JMS REPLY DESTINATION</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JMS_REPLY_DESTINATION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	JMS_REPLY_DESTINATION(53, "JMS_REPLY_DESTINATION", "transport.jms.ReplyDestination"), /**
+	 * The '<em><b>JMS WRAPPER</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JMS_WRAPPER_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	JMS_WRAPPER(54, "JMS_WRAPPER", "transport.jms.Wrapper"), /**
+	 * The '<em><b>VFS FILE URI</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_FILE_URI_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_FILE_URI(55, "VFS_FILE_URI", "transport.vfs.FileURI"), /**
+	 * The '<em><b>VFS CONTENT TYPE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_CONTENT_TYPE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_CONTENT_TYPE(56, "VFS_CONTENT_TYPE", "transport.vfs.ContentType"), /**
+	 * The '<em><b>VFS FILENAME PATTERN</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_FILENAME_PATTERN_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_FILENAME_PATTERN(57, "VFS_FILENAME_PATTERN", "transport.vfs.FileNamePattern"), /**
+	 * The '<em><b>POLL INTERVAL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #POLL_INTERVAL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	POLL_INTERVAL(58, "POLL_INTERVAL", "transport.PollInterval"), /**
+	 * The '<em><b>VFS ACTION AFTER PROCESS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_ACTION_AFTER_PROCESS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_ACTION_AFTER_PROCESS(59, "VFS_ACTION_AFTER_PROCESS", "transport.vfs.ActionAfterProcess"), /**
+	 * The '<em><b>VFS MOVE AFTER PROCESS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_MOVE_AFTER_PROCESS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_MOVE_AFTER_PROCESS(60, "VFS_MOVE_AFTER_PROCESS", "transport.vfs.MoveAfterProcess"), /**
+	 * The '<em><b>VFS ACTION AFTER ERRORS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_ACTION_AFTER_ERRORS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_ACTION_AFTER_ERRORS(61, "VFS_ACTION_AFTER_ERRORS", "transport.vfs.ActionAfterErrors"), /**
+	 * The '<em><b>VFS MOVE AFTER ERRORS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_MOVE_AFTER_ERRORS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_MOVE_AFTER_ERRORS(62, "VFS_MOVE_AFTER_ERRORS", "transport.vfs.MoveAfterErrors"), /**
+	 * The '<em><b>VFS ACTION AFTER FAILURE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_ACTION_AFTER_FAILURE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_ACTION_AFTER_FAILURE(63, "VFS_ACTION_AFTER_FAILURE", "transport.vfs.ActionAfterFailure"), /**
+	 * The '<em><b>VFS MOVE AFTER FAILURE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_MOVE_AFTER_FAILURE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_MOVE_AFTER_FAILURE(64, "VFS_MOVE_AFTER_FAILURE", "transport.vfs.MoveAfterFailure"), /**
+	 * The '<em><b>VFS REPLY FILE URI</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_REPLY_FILE_URI_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_REPLY_FILE_URI(65, "VFS_REPLY_FILE_URI", "transport.vfs.ReplyFileURI"), /**
+	 * The '<em><b>VFS REPLY FILENAME</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_REPLY_FILENAME_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_REPLY_FILENAME(66, "VFS_REPLY_FILENAME", "transport.vfs.ReplyFileName"), /**
+	 * The '<em><b>VFS MOVE TIMESTAMP FORMAT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #VFS_MOVE_TIMESTAMP_FORMAT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	VFS_MOVE_TIMESTAMP_FORMAT(67, "VFS_MOVE_TIMESTAMP_FORMAT", "transport.vfs.MoveTimestampFormat");
 
 	/**
 	 * The '<em><b>New Property Name</b></em>' literal value.
@@ -1184,6 +1328,276 @@ public enum PropertyName implements Enumerator {
 	public static final int TRANSPORT_NON_BLOCKING_VALUE = 49;
 
 	/**
+	 * The '<em><b>JMS CONNECTION FACTORY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>JMS CONNECTION FACTORY</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #JMS_CONNECTION_FACTORY
+	 * @model literal="transport.jms.ConnectionFactory"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JMS_CONNECTION_FACTORY_VALUE = 50;
+
+	/**
+	 * The '<em><b>JMS DESTINATION</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>JMS DESTINATION</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #JMS_DESTINATION
+	 * @model literal="transport.jms.Destination"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JMS_DESTINATION_VALUE = 51;
+
+	/**
+	 * The '<em><b>JMS DESTINATION TYPE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>JMS DESTINATION TYPE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #JMS_DESTINATION_TYPE
+	 * @model literal="transport.jms.DestinationType"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JMS_DESTINATION_TYPE_VALUE = 52;
+
+	/**
+	 * The '<em><b>JMS REPLY DESTINATION</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>JMS REPLY DESTINATION</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #JMS_REPLY_DESTINATION
+	 * @model literal="transport.jms.ReplyDestination"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JMS_REPLY_DESTINATION_VALUE = 53;
+
+	/**
+	 * The '<em><b>JMS WRAPPER</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>JMS WRAPPER</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #JMS_WRAPPER
+	 * @model literal="transport.jms.Wrapper"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JMS_WRAPPER_VALUE = 54;
+
+	/**
+	 * The '<em><b>VFS FILE URI</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS FILE URI</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_FILE_URI
+	 * @model literal="transport.vfs.FileURI"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_FILE_URI_VALUE = 55;
+
+	/**
+	 * The '<em><b>VFS CONTENT TYPE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS CONTENT TYPE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_CONTENT_TYPE
+	 * @model literal="transport.vfs.ContentType"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_CONTENT_TYPE_VALUE = 56;
+
+	/**
+	 * The '<em><b>VFS FILENAME PATTERN</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS FILENAME PATTERN</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_FILENAME_PATTERN
+	 * @model literal="transport.vfs.FileNamePattern"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_FILENAME_PATTERN_VALUE = 57;
+
+	/**
+	 * The '<em><b>POLL INTERVAL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>POLL INTERVAL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #POLL_INTERVAL
+	 * @model literal="transport.PollInterval"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int POLL_INTERVAL_VALUE = 58;
+
+	/**
+	 * The '<em><b>VFS ACTION AFTER PROCESS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS ACTION AFTER PROCESS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_ACTION_AFTER_PROCESS
+	 * @model literal="transport.vfs.ActionAfterProcess"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_ACTION_AFTER_PROCESS_VALUE = 59;
+
+	/**
+	 * The '<em><b>VFS MOVE AFTER PROCESS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS MOVE AFTER PROCESS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_MOVE_AFTER_PROCESS
+	 * @model literal="transport.vfs.MoveAfterProcess"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_MOVE_AFTER_PROCESS_VALUE = 60;
+
+	/**
+	 * The '<em><b>VFS ACTION AFTER ERRORS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS ACTION AFTER ERRORS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_ACTION_AFTER_ERRORS
+	 * @model literal="transport.vfs.ActionAfterErrors"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_ACTION_AFTER_ERRORS_VALUE = 61;
+
+	/**
+	 * The '<em><b>VFS MOVE AFTER ERRORS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS MOVE AFTER ERRORS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_MOVE_AFTER_ERRORS
+	 * @model literal="transport.vfs.MoveAfterErrors"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_MOVE_AFTER_ERRORS_VALUE = 62;
+
+	/**
+	 * The '<em><b>VFS ACTION AFTER FAILURE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS ACTION AFTER FAILURE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_ACTION_AFTER_FAILURE
+	 * @model literal="transport.vfs.ActionAfterFailure"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_ACTION_AFTER_FAILURE_VALUE = 63;
+
+	/**
+	 * The '<em><b>VFS MOVE AFTER FAILURE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS MOVE AFTER FAILURE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_MOVE_AFTER_FAILURE
+	 * @model literal="transport.vfs.MoveAfterFailure"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_MOVE_AFTER_FAILURE_VALUE = 64;
+
+	/**
+	 * The '<em><b>VFS REPLY FILE URI</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS REPLY FILE URI</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_REPLY_FILE_URI
+	 * @model literal="transport.vfs.ReplyFileURI"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_REPLY_FILE_URI_VALUE = 65;
+
+	/**
+	 * The '<em><b>VFS REPLY FILENAME</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS REPLY FILENAME</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_REPLY_FILENAME
+	 * @model literal="transport.vfs.ReplyFileName"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_REPLY_FILENAME_VALUE = 66;
+
+	/**
+	 * The '<em><b>VFS MOVE TIMESTAMP FORMAT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>VFS MOVE TIMESTAMP FORMAT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #VFS_MOVE_TIMESTAMP_FORMAT
+	 * @model literal="transport.vfs.MoveTimestampFormat"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VFS_MOVE_TIMESTAMP_FORMAT_VALUE = 67;
+
+	/**
 	 * An array of all the '<em><b>Property Name</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1241,6 +1655,24 @@ public enum PropertyName implements Enumerator {
 			TRANSPORT_IN_NAME,
 			TO,
 			TRANSPORT_NON_BLOCKING,
+			JMS_CONNECTION_FACTORY,
+			JMS_DESTINATION,
+			JMS_DESTINATION_TYPE,
+			JMS_REPLY_DESTINATION,
+			JMS_WRAPPER,
+			VFS_FILE_URI,
+			VFS_CONTENT_TYPE,
+			VFS_FILENAME_PATTERN,
+			POLL_INTERVAL,
+			VFS_ACTION_AFTER_PROCESS,
+			VFS_MOVE_AFTER_PROCESS,
+			VFS_ACTION_AFTER_ERRORS,
+			VFS_MOVE_AFTER_ERRORS,
+			VFS_ACTION_AFTER_FAILURE,
+			VFS_MOVE_AFTER_FAILURE,
+			VFS_REPLY_FILE_URI,
+			VFS_REPLY_FILENAME,
+			VFS_MOVE_TIMESTAMP_FORMAT,
 		};
 
 	/**
@@ -1347,6 +1779,24 @@ public enum PropertyName implements Enumerator {
 			case TRANSPORT_IN_NAME_VALUE: return TRANSPORT_IN_NAME;
 			case TO_VALUE: return TO;
 			case TRANSPORT_NON_BLOCKING_VALUE: return TRANSPORT_NON_BLOCKING;
+			case JMS_CONNECTION_FACTORY_VALUE: return JMS_CONNECTION_FACTORY;
+			case JMS_DESTINATION_VALUE: return JMS_DESTINATION;
+			case JMS_DESTINATION_TYPE_VALUE: return JMS_DESTINATION_TYPE;
+			case JMS_REPLY_DESTINATION_VALUE: return JMS_REPLY_DESTINATION;
+			case JMS_WRAPPER_VALUE: return JMS_WRAPPER;
+			case VFS_FILE_URI_VALUE: return VFS_FILE_URI;
+			case VFS_CONTENT_TYPE_VALUE: return VFS_CONTENT_TYPE;
+			case VFS_FILENAME_PATTERN_VALUE: return VFS_FILENAME_PATTERN;
+			case POLL_INTERVAL_VALUE: return POLL_INTERVAL;
+			case VFS_ACTION_AFTER_PROCESS_VALUE: return VFS_ACTION_AFTER_PROCESS;
+			case VFS_MOVE_AFTER_PROCESS_VALUE: return VFS_MOVE_AFTER_PROCESS;
+			case VFS_ACTION_AFTER_ERRORS_VALUE: return VFS_ACTION_AFTER_ERRORS;
+			case VFS_MOVE_AFTER_ERRORS_VALUE: return VFS_MOVE_AFTER_ERRORS;
+			case VFS_ACTION_AFTER_FAILURE_VALUE: return VFS_ACTION_AFTER_FAILURE;
+			case VFS_MOVE_AFTER_FAILURE_VALUE: return VFS_MOVE_AFTER_FAILURE;
+			case VFS_REPLY_FILE_URI_VALUE: return VFS_REPLY_FILE_URI;
+			case VFS_REPLY_FILENAME_VALUE: return VFS_REPLY_FILENAME;
+			case VFS_MOVE_TIMESTAMP_FORMAT_VALUE: return VFS_MOVE_TIMESTAMP_FORMAT;
 		}
 		return null;
 	}

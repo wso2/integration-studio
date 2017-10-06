@@ -49,7 +49,7 @@ public class SOAPTask extends AbstractCustomServiceTask {
     /**
      * @See SOAPConstants.SERVICE_URL_HELP_LONG
      */
-    @Property(type = PropertyType.TEXT, displayName = SOAPConstants.SERVICE_URL_LABEL, required = true)
+    @Property(type = PropertyType.TEXT, displayName = SOAPConstants.SERVICE_URL_LABEL, required = false)
     @Help(displayHelpShort = SOAPConstants.SERVICE_URL_HELP, displayHelpLong = SOAPConstants.SERVICE_URL_HELP_LONG)
     private String serviceURL;
 

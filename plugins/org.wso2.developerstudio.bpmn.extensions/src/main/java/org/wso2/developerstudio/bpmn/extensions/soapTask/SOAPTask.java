@@ -54,6 +54,13 @@ public class SOAPTask extends AbstractCustomServiceTask {
     private String serviceURL;
 
     /**
+     * @See SOAPConstants.EPR_HELP_LONG
+     */
+    @Property(type = PropertyType.TEXT, displayName = SOAPConstants.EPR_LABEL, required = false)
+    @Help(displayHelpShort = SOAPConstants.EPR_HELP, displayHelpLong = SOAPConstants.EPR_HELP_LONG)
+    private String serviceRef;
+
+    /**
      * @See SOAPConstants.INPUT_HELP_LONG
      */
     @Property(type = PropertyType.MULTILINE_TEXT, displayName = SOAPConstants.INPUT_LABEL, required = true)

@@ -52,8 +52,8 @@ public interface RESTConstants {
     public static final String EPR_HELP_LONG =
             "This parameter can be used to point to a registry location which contains an endpoint reference as " +
                     "mentioned in" +
-                    " <a href=\"https://docs.wso2.com/display/BPS350/Endpoint+References\" >https://docs.wso2" +
-                    ".com/display/BPS350/Endpoint+References</a> " +
+                    " <a href=\"https://docs.wso2.com/display/EI620/Endpoint+References\" >https://docs.wso2" +
+                    ".com/display/EI620/Endpoint+References</a> " +
                     "URLs given in such registry resources can be changed after deployment and the current value of " +
                     "the registry resource will be read before each service invocation.  " +
                     "Supports expressions. When Both Service URL and Service Reference (EPR) are defined, only " +

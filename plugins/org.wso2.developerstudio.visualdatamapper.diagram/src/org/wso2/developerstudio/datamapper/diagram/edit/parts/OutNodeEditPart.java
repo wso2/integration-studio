@@ -17,10 +17,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.management.Notification;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
@@ -42,22 +38,15 @@ import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart.TreeNodeFigure;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.OutNodeItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 
 /**
  * @generated
@@ -325,13 +314,9 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
-
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/blueArrow.png");
-
 			int nodeDimension = 10; // width for connection nodes
 
-			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			ImageFigure mainImg = new ImageFigure(ImageHolder.getInstance().getArrowBlueImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 			mainImageRectangle.setOutline(false);

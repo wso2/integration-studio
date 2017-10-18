@@ -25,6 +25,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
 
 public class EditPartDrawingHelper {
@@ -65,18 +66,14 @@ public class EditPartDrawingHelper {
 	
 	public static ImageFigure getEastArrowIcon(int width, int height)
 	{
-		ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin
-				.getBundledImageDescriptor("icons/ico20/arrowEast.png");
-		ImageFigure img1 = new ImageFigure(imgDesc1.createImage());
+		ImageFigure img1 = new ImageFigure(ImageHolder.getInstance().getArrowEastImage());
 		img1.setSize(new Dimension(width, height));
 		return img1;
 	}
 	
 	public static ImageFigure getWestArrowIcon(int width, int height)
 	{
-		ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin
-				.getBundledImageDescriptor("icons/ico20/arrowWest.png");
-		ImageFigure img1 = new ImageFigure(imgDesc1.createImage());
+		ImageFigure img1 = new ImageFigure(ImageHolder.getInstance().getArrowWestImage());
 		img1.setSize(new Dimension(width, height));
 		return img1;
 	}

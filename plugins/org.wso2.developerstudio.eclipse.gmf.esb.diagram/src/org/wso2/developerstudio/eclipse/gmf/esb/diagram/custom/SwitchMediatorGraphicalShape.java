@@ -26,18 +26,15 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.SWITCH_MEDIATOR_ICON_PATH;
 
 /**
  * This class is the view representation of the switch mediator.
@@ -165,9 +162,7 @@ public class SwitchMediatorGraphicalShape extends RoundedRectangle {
 		// Create inner rectangle inside the left side rectangle.
 		containerInsideLeftRectangle = createInnerRectangle(leftRectangle);
 
-		ImageDescriptor imgDesc = EsbDiagramEditorPlugin.getBundledImageDescriptor(getIconPath());
-
-		Image image = imgDesc.createImage();
+		Image image = ImageHolder.getInstance().getSwitchMediatorImage();
 		Image scaled = new Image(Display.getDefault(), 23, 25);
 		GC gc = new GC(scaled);
 		gc.setAntialias(SWT.ON);
@@ -254,12 +249,12 @@ public class SwitchMediatorGraphicalShape extends RoundedRectangle {
 		return innerRect;
 	}
 
-	public String getIconPath() {
-		return "icons/ico20/switch-mediator.gif";
-	}
-
 	public String getNodeName() {
 		return "Switch";
+	}
+
+	public String getIconPath() {
+		return SWITCH_MEDIATOR_ICON_PATH;
 	}
 
 	public Color getLabelBackColor() {

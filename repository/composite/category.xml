@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="org.wso2.developerstudio.eclipse.ei.feature.category" label="WSO2 API Manager Tools">
+   <category-def name="org.wso2.developerstudio.eclipse.ei.feature.category" label="WSO2 Enterprise Integrator Tools">
    <description>
 		This is the Enterprise Integrator Feature for the Developer Studio. This provides tooling support for WSO2 Enterprise Integrator.
       </description>

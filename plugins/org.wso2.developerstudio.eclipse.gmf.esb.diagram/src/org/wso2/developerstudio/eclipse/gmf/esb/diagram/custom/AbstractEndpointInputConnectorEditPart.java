@@ -5,31 +5,20 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.GridData;
-import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.RectangleFigure;
-import org.eclipse.draw2d.RoundedRectangle;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart.EastPointerFigure;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart.WestPointerFigure;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SendMediatorEndpointOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
 
 public abstract class AbstractEndpointInputConnectorEditPart extends AbstractInputConnectorEditPart {
 
@@ -138,111 +127,6 @@ public abstract class AbstractEndpointInputConnectorEditPart extends AbstractInp
 	public class WestPointerFigure extends Figure {
 		
 	}
-	
-	/*public class EastPointerFigure extends RoundedRectangle {
-
-
-		public EastPointerFigure() {
-
-			
-			 * this.setBackgroundColor(THIS_BACK); this.setPreferredSize(new
-			 * Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
-			 
-
-			GridLayout layoutThis = new GridLayout();
-			layoutThis.numColumns = 1;
-			layoutThis.makeColumnsEqualWidth = true;
-			layoutThis.marginHeight = 0;
-			layoutThis.marginWidth = 0;
-			this.setLayoutManager(layoutThis);
-
-			this.setCornerDimensions(new Dimension(1, 1));
-			this.setFill(false);
-			this.setOutline(false);
-			// this.setBackgroundColor(get);
-			this.setPreferredSize(new Dimension(30, 30));
-			createContents();
-
-		}
-
-		public void createContents() {
-			GridData constraintImageRectangle11 = new GridData();
-			constraintImageRectangle11.verticalAlignment = GridData.FILL;
-			constraintImageRectangle11.horizontalAlignment = GridData.FILL;
-			constraintImageRectangle11.horizontalIndent = 0;
-			constraintImageRectangle11.horizontalSpan = 1;
-			constraintImageRectangle11.verticalSpan = 2;
-			constraintImageRectangle11.grabExcessHorizontalSpace = true;
-			constraintImageRectangle11.grabExcessVerticalSpace = true;
-
-			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin
-					.getBundledImageDescriptor("icons/ico20/arrowEast.png");
-			ImageFigure img1 = new ImageFigure(imgDesc1.createImage());
-			img1.setSize(new Dimension(30, 30));
-
-			RectangleFigure imageRectangle11 = new RectangleFigure();
-			imageRectangle11.setOutline(false);
-			imageRectangle11.setBackgroundColor(new Color(null, 255, 255, 255));
-			imageRectangle11.setPreferredSize(new Dimension(30, 30));
-			imageRectangle11.add(img1);
-
-			this.add(imageRectangle11, constraintImageRectangle11);
-
-		}
-
-	}
-
-	public class WestPointerFigure extends RoundedRectangle {
-
-		public WestPointerFigure() {
-
-			
-			 * this.setBackgroundColor(THIS_BACK); this.setPreferredSize(new
-			 * Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
-			 
-
-			GridLayout layoutThis = new GridLayout();
-			layoutThis.numColumns = 1;
-			layoutThis.makeColumnsEqualWidth = true;
-			layoutThis.marginHeight = 0;
-			layoutThis.marginWidth = 0;
-			this.setLayoutManager(layoutThis);
-
-			this.setCornerDimensions(new Dimension(1, 1));
-			this.setFill(false);
-			this.setOutline(false);
-			// this.setBackgroundColor(get);
-			this.setPreferredSize(new Dimension(30, 30));
-			createContents();
-
-		}
-
-		public void createContents() {
-			GridData constraintImageRectangle11 = new GridData();
-			constraintImageRectangle11.verticalAlignment = GridData.FILL;
-			constraintImageRectangle11.horizontalAlignment = GridData.FILL;
-			constraintImageRectangle11.horizontalIndent = 0;
-			constraintImageRectangle11.horizontalSpan = 1;
-			constraintImageRectangle11.verticalSpan = 2;
-			constraintImageRectangle11.grabExcessHorizontalSpace = true;
-			constraintImageRectangle11.grabExcessVerticalSpace = true;
-
-			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin
-					.getBundledImageDescriptor("icons/ico20/arrowWest.png");
-			ImageFigure img1 = new ImageFigure(imgDesc1.createImage());
-			img1.setSize(new Dimension(30, 30));
-
-			RectangleFigure imageRectangle11 = new RectangleFigure();
-			imageRectangle11.setOutline(false);
-			imageRectangle11.setBackgroundColor(new Color(null, 255, 255, 255));
-			imageRectangle11.setPreferredSize(new Dimension(30, 30));
-			imageRectangle11.add(img1);
-
-			this.add(imageRectangle11, constraintImageRectangle11);
-
-		}
-
-	}*/
 	
 	static final Color THIS_BACK = new Color(null, 50, 50, 50);
 

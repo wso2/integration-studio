@@ -45,9 +45,8 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolE
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 
 /**
  * @generated NOT
@@ -335,13 +334,9 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
-
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/greyArrow.png");
-
 			int nodeDimension = 10; // width for connection nodes
 
-			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			ImageFigure mainImg = new ImageFigure(ImageHolder.getInstance().getArrowGreyImage());
 
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
@@ -363,13 +358,9 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 		 * @generated NOT
 		 */
 		private void highlightConnectorNode() {
-
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black-coloured.jpg");
-
 			int nodeDimension = 10; // width for connection nodes
 
-			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			ImageFigure mainImg = new ImageFigure(ImageHolder.getInstance().getBlackColouredImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 			mainImageRectangle.setOutline(false);

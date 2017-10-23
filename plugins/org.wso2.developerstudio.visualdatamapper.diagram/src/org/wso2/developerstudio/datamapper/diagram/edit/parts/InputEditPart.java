@@ -18,15 +18,12 @@ package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
 import java.io.IOException;
 
-import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.CompoundBorder;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
-import org.eclipse.draw2d.ScrollPane;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.TitleBarBorder;
@@ -49,7 +46,6 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -71,7 +67,6 @@ import org.wso2.developerstudio.datamapper.diagram.custom.util.TreeNodeUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.InputCanonicalEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.InputItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.ISchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformer;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.SchemaTransformerRegistry;
@@ -509,12 +504,9 @@ public class InputEditPart extends ShapeNodeEditPart {
 			titleBarBorder.setTextAlignment(PositionConstants.CENTER);
 			titleBarBorder.setPadding(6);
 			titleBarBorder.setBackgroundColor(DataMapperColorConstants.inputTitleBarColor);
-			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setTextColor(DataMapperColorConstants.color_white);
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-			LineBorder lineBorder = new LineBorder(DataMapperColorConstants.borderColor, 1, Graphics.LINE_SOLID);
-			CompoundBorder compoundBorder = new CompoundBorder(titleBarBorder, lineBorder);
-			CompoundBorder compoundBorderTop = new CompoundBorder(border, compoundBorder);
-			this.setBorder(compoundBorderTop);
+			this.setBorder(titleBarBorder);
 
 		}
 

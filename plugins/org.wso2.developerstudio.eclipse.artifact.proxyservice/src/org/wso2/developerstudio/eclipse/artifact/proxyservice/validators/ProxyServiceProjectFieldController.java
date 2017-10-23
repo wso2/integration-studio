@@ -67,7 +67,7 @@ public class ProxyServiceProjectFieldController extends AbstractFieldController 
 							}
 
 						} catch (Exception e) {
-							throw new FieldValidationException("Artifact name already exsits");
+							throw new FieldValidationException("Specified proxy service name already exsits.");
 						}
 					}
 				}		 	 
@@ -80,34 +80,35 @@ public class ProxyServiceProjectFieldController extends AbstractFieldController 
 				throw new FieldValidationException("Specified Target Endpoint");	
 			}**/
 		} else if (modelProperty.equals("templ.common.ps.epurl")) {
-			if(((ProxyServiceModel)model).getTargetEPType()==TargetEPType.URL && !(optWsdlbasedProxy||optCustomProxy)){
-				if(value==null || value.toString().equals("")){
-					throw new FieldValidationException("Specified Target Endpoint URL");
-				} else{
+			if (((ProxyServiceModel)model).getTargetEPType() == TargetEPType.URL && !(optWsdlbasedProxy||optCustomProxy)) {
+				if (value == null || value.toString().equals("")) {
+					throw new FieldValidationException("Target Endpoint URL cannot be empty. Please specify a valid Endpoint URL.");
+				} else {
 					CommonFieldValidator.isValidUrl(value.toString().trim(), "Endpoint URL");
 				}	
 			}		
 		} else if (modelProperty.equals("templ.common.ps.epkey")) {
-			if((((ProxyServiceModel)model).getTargetEPType()==TargetEPType.REGISTRY) && (value==null || value.toString().equals("")) && !(optWsdlbasedProxy||optCustomProxy)){
-				throw new FieldValidationException("Specified Target Endpoint key");
+			if ((((ProxyServiceModel)model).getTargetEPType() == TargetEPType.REGISTRY) && (value == null ||
+					value.toString().equals("")) && !(optWsdlbasedProxy||optCustomProxy)) {
+				throw new FieldValidationException("Target Registry Endpoint key is invalid or empty. Please specify a valid Endpoint Key.");
 			}			
 		} else if (modelProperty.equals("templ.secure.ps.secpolicy")) {
 						
 		} else if (modelProperty.equals("templ.wsdl.ps.wsdlurl")) {
-			if(optWsdlbasedProxy){
-				if(value==null || value.toString().equals("")){
-					throw new FieldValidationException("Specified Target WSDL URL");
-				} else{
+			if (optWsdlbasedProxy) {
+				if (value == null || value.toString().equals("")) {
+					throw new FieldValidationException("Target WSDL URL cannot be empty. Please specify a valid WSDL URI.");
+				} else {
 					CommonFieldValidator.isValidUrl(value.toString().trim(), "WSDL URL");
 				}	
 			}
 		} else if (modelProperty.equals("templ.wsdl.ps.wsdlservice")) {
-			if(optWsdlbasedProxy  && (value==null || value.toString().equals(""))){
-				throw new FieldValidationException("Specified Target WSDL service");
+			if (optWsdlbasedProxy  && (value == null || value.toString().equals(""))) {
+				throw new FieldValidationException("Target WSDL service is invalid or empty. Please specify a valid WSDL Service.");
 			}					
 		} else if (modelProperty.equals("templ.wsdl.ps.wsdlport")) {
-			if(optWsdlbasedProxy  && (value==null || value.toString().equals(""))){
-				throw new FieldValidationException("Specified Target WSDL port");
+			if (optWsdlbasedProxy  && (value == null || value.toString().equals(""))) {
+				throw new FieldValidationException("Target WSDL port is invalid or empty. Please specify a valid WSDL Port.");
 			}					
 		} else if (modelProperty.equals("templ.wsdl.ps.publishsame")) {
 									
@@ -116,23 +117,24 @@ public class ProxyServiceProjectFieldController extends AbstractFieldController 
 		} else if (modelProperty.equals("templ.logging.ps.resloglevel")) {
 									
 		} else if (modelProperty.equals("templ.transformer.ps.xslt")) {
-			if(selectedTemplate.getId().equalsIgnoreCase(PsArtifactConstants.TRANSFORMER_PROXY_TEMPL_ID)){
-				if(value==null || StringUtils.isBlank(value.toString())){
-					throw new FieldValidationException("Specified XSLT key");
+			if (selectedTemplate.getId().equalsIgnoreCase(PsArtifactConstants.TRANSFORMER_PROXY_TEMPL_ID)) {
+				if (value == null || StringUtils.isBlank(value.toString())) {
+					throw new FieldValidationException("Request XSLT key cannot be empty. Please specify a valid XSLT key.");
 				}
 			}	
 		} else if (modelProperty.equals("templ.common.ps.eplist")) {
-			if((((ProxyServiceModel)model).getTargetEPType()==TargetEPType.PREDEFINED) && (value==null || value.toString().equals(""))){
-				throw new FieldValidationException("Specified Target Predefined Endpoint key");
+			if ((((ProxyServiceModel)model).getTargetEPType()==TargetEPType.PREDEFINED) && (value==null || value.toString().equals(""))) {
+				throw new FieldValidationException("Target Predefined Endpoint key cannot be empty. Please specify a valid Predefined Endpoint.");
 			}							
 		} else if (modelProperty.equals("save.file")) {
 			IResource resource = (IResource)value;
-			if(resource==null || !resource.exists())	
-				throw new FieldValidationException("Specified project or path doesn't exist");
+			if (resource == null || !resource.exists())	{
+				throw new FieldValidationException("Please specify a valid ESB Project to Save the proxy service.");
+			}
 		} else if (modelProperty.equals("templ.transformer.ps.transformresponses")) {
-			if(selectedTemplate.getId().equalsIgnoreCase(PsArtifactConstants.TRANSFORMER_PROXY_TEMPL_ID)){
-				if((Boolean)value && ((ProxyServiceModel)model).getResponseXSLT().equals("")){
-					throw new FieldValidationException("Specified Response XSLT key");
+			if (selectedTemplate.getId().equalsIgnoreCase(PsArtifactConstants.TRANSFORMER_PROXY_TEMPL_ID)) {
+				if ((Boolean)value && ((ProxyServiceModel)model).getResponseXSLT().equals("")) {
+					throw new FieldValidationException("Response XSLT key cannot be empty. Please specify a valid XSLT key.");
 				}
 			}
 		}

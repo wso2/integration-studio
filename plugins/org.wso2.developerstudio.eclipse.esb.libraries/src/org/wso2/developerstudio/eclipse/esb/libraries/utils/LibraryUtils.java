@@ -41,7 +41,7 @@ public class LibraryUtils {
 	public static String axis2_1_6_1_wso2vXX_jar = "axis2_1.6.1.wso2v20.jar";
 	public static String httpcore_4_3_0_wso2vXX_jar = "httpcore_4.3.3.wso2v1.jar";
 	public static String woden_1_0_0_M8_wso2vXX_jar = "woden_1.0.0.M9-wso2v1.jar";
-	public static String synapse_core_2_1_7_wso2vXX_jar = "synapse-core_2.1.7.wso2v21.jar";
+	public static String synapse_core_2_1_7_wso2vXX_jar = "synapse-core_2.1.7.wso2v23.jar";
 		
 	public static String commons_codec_wso2vXX_jar = "commons-codec_1.4.0.wso2v1.jar"; 
 	public static String commons_httpclient_wso2vXX_jar = "commons-httpclient_3.1.0.wso2v3.jar"; 

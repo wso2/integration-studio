@@ -26,7 +26,6 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -34,7 +33,8 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.AGGREGATE_MEDIATOR_ICON_PATH;
 
 /**
  * This class is the view representation of the general complex mediators.
@@ -175,10 +175,7 @@ public class EsbGroupingShape extends RoundedRectangle {
 		// Create inner rectangle inside the left side rectangle.
 		containerInsideLeftRectangle = createInnerRectangle(leftRectangle);
 
-		ImageDescriptor imgDesc = EsbDiagramEditorPlugin
-				.getBundledImageDescriptor(getIconPath());
-
-		Image image = imgDesc.createImage();
+		Image image = ImageHolder.getInstance().getMediatorImage(getIconPath());
 		Image scaled = new Image(Display.getDefault(), 30, 30);
 		GC gc = new GC(scaled);
 		gc.setAntialias(SWT.ON);
@@ -267,12 +264,12 @@ public class EsbGroupingShape extends RoundedRectangle {
 		return innerRect;
 	}
 
-	public String getIconPath() {
-		return "icons/ico20/aggregate-mediator.gif";
-	}
-
 	public String getNodeName() {
 		return "Aggregate";
+	}
+
+	public String getIconPath() {
+		return AGGREGATE_MEDIATOR_ICON_PATH;
 	}
 
 	public Color getLabelBackColor() {

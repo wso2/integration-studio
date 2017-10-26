@@ -65,8 +65,8 @@ public class FailoverEndpointDeserializer extends AbstractComplexEndPointDeseria
 		
 		deserializeComplexEndpoint(failoverEndpoint,part);
 			
-		if(StringUtils.isNotBlank(failoverEndpoint.getName())){
-             executeSetValueCommand(END_POINT__END_POINT_NAME, failoverEndpoint.getName());
+		if (StringUtils.isNotBlank(failoverEndpoint.getName())) {
+                   executeSetValueCommand(END_POINT__END_POINT_NAME, failoverEndpoint.getName());
 		}
 		executeSetValueCommand(FAILOVER_END_POINT__BUILD_MESSAGE, failoverEndpoint.isBuildMessageAtt());
 		return endPoint;

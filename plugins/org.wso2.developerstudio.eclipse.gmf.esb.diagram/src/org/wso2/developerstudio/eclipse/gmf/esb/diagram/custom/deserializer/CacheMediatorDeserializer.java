@@ -57,57 +57,57 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 			setCommonProperties(mediator, mediatorModel);
 
 
-			if (mediator.isCollector()) {
-				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION, CacheAction.COLLECTOR);
-			} else {
-				if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(mediator.getProtocolType())) {
-					String[] methods = mediator.getHTTPMethodsToCache();
-					if (methods != null && methods.length != 0 && !methods[0].isEmpty()) {
-						StringBuilder method = new StringBuilder();
-						for (int i = 0; i < methods.length - 1; i++) {
-							method.append(methods[i]).append(", ");
-						}
-						method.append(methods[methods.length - 1]);
-						executeSetValueCommand(CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS, method.toString());
-					}
-					String[] headerstoExclude = mediator.getHeadersToExcludeInHash();
-					StringBuilder header = new StringBuilder();
-					for (int i = 0; i < headerstoExclude.length - 1; i++) {
-						header.append(headerstoExclude[i]).append(", ");
-					}
-					header.append(headerstoExclude[headerstoExclude.length - 1]);
-					executeSetValueCommand(CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH, header.toString());
-					executeSetValueCommand(CACHE_MEDIATOR__RESPONSE_CODES, mediator.getResponseCodes());
-				}
-				executeSetValueCommand(CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE, mediator.getProtocolType());
-				executeSetValueCommand(CACHE_MEDIATOR__MAX_MESSAGE_SIZE, mediator.getMaxMessageSize());
-				executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION, CacheAction.FINDER);
-				executeSetValueCommand(CACHE_MEDIATOR__CACHE_TIMEOUT, (int) mediator.getTimeout());
-				executeSetValueCommand(CACHE_MEDIATOR__MAX_ENTRY_COUNT, (int) mediator.getInMemoryCacheSize());
+            if (mediator.isCollector()) {
+                executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION, CacheAction.COLLECTOR);
+            } else {
+                if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(mediator.getProtocolType())) {
+                    String[] methods = mediator.getHTTPMethodsToCache();
+                    if (methods != null && methods.length != 0 && !methods[0].isEmpty()) {
+                        StringBuilder method = new StringBuilder();
+                        for (int i = 0; i < methods.length - 1; i++) {
+                            method.append(methods[i]).append(", ");
+                        }
+                        method.append(methods[methods.length - 1]);
+                        executeSetValueCommand(CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS, method.toString());
+                    }
+                    String[] headerstoExclude = mediator.getHeadersToExcludeInHash();
+                    StringBuilder header = new StringBuilder();
+                    for (int i = 0; i < headerstoExclude.length - 1; i++) {
+                        header.append(headerstoExclude[i]).append(", ");
+                    }
+                    header.append(headerstoExclude[headerstoExclude.length - 1]);
+                    executeSetValueCommand(CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH, header.toString());
+                    executeSetValueCommand(CACHE_MEDIATOR__RESPONSE_CODES, mediator.getResponseCodes());
+                }
+                executeSetValueCommand(CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE, mediator.getProtocolType());
+                executeSetValueCommand(CACHE_MEDIATOR__MAX_MESSAGE_SIZE, mediator.getMaxMessageSize());
+                executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION, CacheAction.FINDER);
+                executeSetValueCommand(CACHE_MEDIATOR__CACHE_TIMEOUT, (int) mediator.getTimeout());
+                executeSetValueCommand(CACHE_MEDIATOR__MAX_ENTRY_COUNT, (int) mediator.getInMemoryCacheSize());
 
-				if (mediator.getDigestGenerator() != null) {
-					executeSetValueCommand(CACHE_MEDIATOR__HASH_GENERATOR,
-							mediator.getDigestGenerator().getClass().getName());
-				}
+                if (mediator.getDigestGenerator() != null) {
+                    executeSetValueCommand(CACHE_MEDIATOR__HASH_GENERATOR,
+                            mediator.getDigestGenerator().getClass().getName());
+                }
 
-				String onCacheHitRef = mediator.getOnCacheHitRef();
-				SequenceMediator onCacheHitSequence = mediator.getOnCacheHitSequence();
+                String onCacheHitRef = mediator.getOnCacheHitRef();
+                SequenceMediator onCacheHitSequence = mediator.getOnCacheHitSequence();
 
-				if (onCacheHitSequence != null) {
-					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE, CacheSequenceType.ANONYMOUS);
-					refreshEditPartMap();
-					IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(mediatorModel.getMediatorFlow())
-							.getChildren().get(0);
-					deserializeSequence(compartment, onCacheHitSequence, mediatorModel.getOnHitOutputConnector());
-				} else if (onCacheHitRef != null && !onCacheHitRef.equals("")) {
-					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE, CacheSequenceType.REGISTRY_REFERENCE);
-					RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-					regkey.setKeyValue(onCacheHitRef);
-					executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_KEY, regkey);
-				}
-			}
-		}
-		return mediatorModel;
-	}
+                if (onCacheHitSequence != null) {
+                    executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE, CacheSequenceType.ANONYMOUS);
+                    refreshEditPartMap();
+                    IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(mediatorModel.getMediatorFlow())
+                            .getChildren().get(0);
+                    deserializeSequence(compartment, onCacheHitSequence, mediatorModel.getOnHitOutputConnector());
+                } else if (onCacheHitRef != null && !onCacheHitRef.equals("")) {
+                    executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_TYPE, CacheSequenceType.REGISTRY_REFERENCE);
+                    RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                    regkey.setKeyValue(onCacheHitRef);
+                    executeSetValueCommand(CACHE_MEDIATOR__SEQUENCE_KEY, regkey);
+                }
+            }
+        }
+        return mediatorModel;
+    }
 
 }

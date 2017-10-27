@@ -165,10 +165,10 @@ public class LocalEntryProjectFieldController extends AbstractFieldController {
 	}
 	
 	public boolean isReadOnlyField(String modelProperty, ProjectDataModel model) {
-		boolean readOnlyField = super.isReadOnlyField(modelProperty, model);
-		if (modelProperty.equals("save.file") || modelProperty.equals("import.url")) {
-			readOnlyField = true;
-		}
-	    return readOnlyField;
-	}
+        boolean readOnlyField = super.isReadOnlyField(modelProperty, model);
+        if (modelProperty.equals("save.file") || modelProperty.equals("import.url")) {
+            readOnlyField = true;
+        }
+        return readOnlyField;
+    }
 }

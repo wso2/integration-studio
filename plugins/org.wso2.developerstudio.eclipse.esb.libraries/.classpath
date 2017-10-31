@@ -52,17 +52,17 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.governance.registry.extensions_4.5.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.entitlement.mediator_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.entitlement.proxy_5.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.oauth.mediator_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam.config_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper.engine_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.event_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.fastXSLT_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.publishevent_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.router.impl_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.service_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.smooks_4.6.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.oauth.mediator_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam.config_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper.engine_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.event_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.fastXSLT_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.publishevent_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.router.impl_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.service_4.6.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.smooks_4.6.28.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.registry.api_4.4.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.registry.core_4.4.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.relay_4.6.6.jar"/>

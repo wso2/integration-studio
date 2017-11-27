@@ -250,6 +250,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportMQTTSubscriptionUsernamePropertyDescriptor(object);
 			addTransportMQTTSubscriptionPasswordPropertyDescriptor(object);
 			addTransportMQTTClientIdPropertyDescriptor(object);
+			addContentTypePropertyDescriptor(object);
 			addIntervalPropertyDescriptor(object);
 			break;
 		case RABBITMQ:

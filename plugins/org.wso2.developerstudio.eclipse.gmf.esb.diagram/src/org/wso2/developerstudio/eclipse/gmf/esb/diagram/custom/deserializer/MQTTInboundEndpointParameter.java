@@ -25,6 +25,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CONTENT_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -39,7 +40,7 @@ public enum MQTTInboundEndpointParameter {
     INBOUND_MQTT_SESSION_CLEAN_TYPE(InboundEndpointConstants.INBOUND_MQTT_SESSION_CLEAN,
             INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN,true),
     INBOUND_MQTT_SUBSCRIPTION_QOS_TYPE(InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_QOS,
-            INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS,true),
+            INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS,false),
     SEQUENTIAL_TYPE(InboundEndpointConstants.SEQUENTIAL, INBOUND_ENDPOINT__SEQUENTIAL, false),
     INBOUND_MQTT_CONNECTION_FACTORY_TYPE(InboundEndpointConstants.INBOUND_MQTT_CONNECTION_FACTORY,
             INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY, true),
@@ -59,6 +60,8 @@ public enum MQTTInboundEndpointParameter {
             INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD, true),
     INBOUND_MQTT_CLIENT_ID_TYPE(InboundEndpointConstants.INBOUND_MQTT_CLIENT_ID, 
             INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID, true),
+    INBOUND_MQTT_CONTENT_TYPE(InboundEndpointConstants.INBOUND_MQTT_CONTENT_TYPE,
+            INBOUND_ENDPOINT__CONTENT_TYPE, false),
     INBOUND_MQTT_RECONNECTION_INTERVAL_TYPE(InboundEndpointConstants.INBOUND_MQTT_RECONNECTION_INTERVAL, 
             INBOUND_ENDPOINT__INTERVAL, true);
 

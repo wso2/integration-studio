@@ -16,17 +16,10 @@
 
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
-import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
-import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.MouseMotionListener;
@@ -45,22 +38,14 @@ import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.AbstractInNodeEditPart;
-import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.InNode2ItemSemanticEditPolicy;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 
 /**
  * @generated NOT
@@ -338,12 +323,9 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 		 * @generated NOT
 		 */
 		private void createContents() {
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/greyArrow.png");
-
 			int nodeDimension = 10; // width for connection nodes
 
-			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			ImageFigure mainImg = new ImageFigure(ImageHolder.getInstance().getArrowGreyImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 			mainImageRectangle.setOutline(false);
@@ -359,27 +341,6 @@ public class InNode2EditPart extends AbstractInNodeEditPart {
 			this.setFill(false);
 
 		}
-
-		/*	public void highlightElementOnSelection() {
-				ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-						"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black-coloured.jpg");
-		
-				int nodeDimension = 10; // width for connection nodes
-		
-				ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
-				mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
-				RectangleFigure mainImageRectangle = new RectangleFigure();
-		
-				mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
-				mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
-				mainImageRectangle.setBackgroundColor(new Color(null, 0, 0, 0));
-				mainImageRectangle.setOpaque(false);
-				mainImageRectangle.add(mainImg);
-				this.add(mainImageRectangle);
-				this.setOpaque(false);
-				this.setOutline(false);
-				this.setFill(false);
-			}*/
 
 		private void highlightParentElem() {
 			IFigure treeFigure = (IFigure) ((DefaultSizeNodeFigure) ((BorderedNodeFigure) getParent().getParent()

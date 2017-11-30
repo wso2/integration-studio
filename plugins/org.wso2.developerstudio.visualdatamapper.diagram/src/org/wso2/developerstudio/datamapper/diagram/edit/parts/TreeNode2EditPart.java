@@ -8,7 +8,6 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.Clickable;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -35,9 +34,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
@@ -46,19 +43,16 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.PropertyKeyValuePair;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.AbsoluteBorderedItemLocator;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode2CanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNode2ItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 
 /**
  * @generated
@@ -96,6 +90,12 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	private static final String JSON_SCHEMA_OBJECT_VALUE_TYPE = "object_value_type";
 	private static final String JSON_SCHEMA_ARRAY_ITEMS_TYPE = "items_type";
 	private static final String NULL_VALUE = "null";
+
+	private static final String CREATE_DATA_MAPPER_LINK1_CREATION_TOOL = "createDataMapperLink1CreationTool";
+	private static final String TRUE = "true";
+	private static final String FALSE = "false";
+	private static final String JSON_SCHEMA_NULLABLE = "nullable";
+	private static final String PREFIX = "@";
 
 	/**
 	 * @generated
@@ -683,26 +683,6 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
 
-		private static final String CREATE_DATA_MAPPER_LINK1_CREATION_TOOL = "createDataMapperLink1CreationTool";
-		private static final String ELEMENT_ICON = "icons/gmf/element.png";
-		private static final String ATTRIBUTE_ICON = "icons/gmf/attribute.png";
-		private static final String ARRAY_ICON = "icons/gmf/array.png";
-		private static final String OBJECT_ICON = "icons/gmf/object.png";
-		private static final String NULLABLE_ELEMENT_ICON = "icons/gmf/element-null.png";
-		private static final String NULLABLE_ATTRIBUTE_ICON = "icons/gmf/attribute-null.png";
-		private static final String NULLABLE_ARRAY_ICON = "icons/gmf/array-null.png";
-		private static final String NULLABLE_OBJECT_ICON = "icons/gmf/object-null.png";
-		private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
-		private static final String JSON_SCHEMA_TYPE = "type";
-		private static final String JSON_SCHEMA_ARRAY = "array";
-		private static final String JSON_SCHEMA_OBJECT = "object";
-		private static final String TRUE = "true";
-		private static final String FALSE = "false";
-		private static final String JSON_SCHEMA_NULLABLE = "nullable";
-
-		private static final String PREFIX = "@";
-		private static final String SCHEMA_TYPE_PREFIX = "  :[";
-		private static final String SCHEMA_TYPE_POSTFIX = "]";
 		/**
 		 * @generated
 		 */
@@ -754,58 +734,30 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 			figure2.setBorder(null);
 			figure2.setOpaque(false);
 
-			ImageDescriptor elementImgDescCollapse = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);// plus
+			ImageHolder imageHolder = ImageHolder.getInstance();
 
-			ImageDescriptor attributeImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
-
-			ImageDescriptor arrayImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
-
-			ImageDescriptor objectImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
-
-			ImageDescriptor nullableElementImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ELEMENT_ICON);
-			ImageDescriptor nullableAttributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ATTRIBUTE_ICON);
-			ImageDescriptor nullableObjectImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_OBJECT_ICON);
-			ImageDescriptor nullableArrayImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ARRAY_ICON);
-
-			final ImageFigure mainImg = new ImageFigure(elementImgDescCollapse.createImage());
+			final ImageFigure mainImg = new ImageFigure(imageHolder.getElementImage());
 			mainImg.setSize(new Dimension(10, 8));
-			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); // attribute
-																						// symbole
-																						// figure
+
+			ImageFigure attributeImg = new ImageFigure(imageHolder.getAttributeImage());
 			attributeImg.setSize(new Dimension(10, 8));
-			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); // array
-																				// symbole
-																				// figure
+
+			ImageFigure arrayImg = new ImageFigure(imageHolder.getArrayImage());
 			arrayImg.setSize(new Dimension(10, 8));
-			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); // object
-																					// symbole
-																					// figure
+
+			ImageFigure objectImg = new ImageFigure(imageHolder.getObjectImage());
 			objectImg.setSize(new Dimension(10, 8));
 
-			ImageFigure nullableObjectImg = new ImageFigure(nullableObjectImgDesc.createImage()); // object
-			// symbole
-			// figure
+			ImageFigure nullableObjectImg = new ImageFigure(imageHolder.getNullableObjectImage());
 			nullableObjectImg.setSize(new Dimension(10, 8));
 
-			ImageFigure nullableArrayImg = new ImageFigure(nullableArrayImgDesc.createImage()); // object
-			// symbole
-			// figure
+			ImageFigure nullableArrayImg = new ImageFigure(imageHolder.getNullableArrayImage());
 			nullableArrayImg.setSize(new Dimension(10, 8));
-			ImageFigure nullableAttributeImg = new ImageFigure(nullableAttributeImgDesc.createImage()); // object
-			// symbole
-			// figure
+
+			ImageFigure nullableAttributeImg = new ImageFigure(imageHolder.getNullableAttributeImage());
 			nullableAttributeImg.setSize(new Dimension(10, 8));
-			ImageFigure nullableElementImg = new ImageFigure(nullableElementImgDesc.createImage()); // object
-			// symbole
-			// figure
+
+			ImageFigure nullableElementImg = new ImageFigure(imageHolder.getNullableElementImage());
 			nullableElementImg.setSize(new Dimension(10, 8));
 
 			RectangleFigure mainImageRectangle = new RectangleFigure();
@@ -1072,32 +1024,18 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		}
 
 		public void renameElement(String name, String type) {
+			ImageHolder imageHolder = ImageHolder.getInstance();
 
-			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
-			ImageDescriptor attributeImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
-			ImageDescriptor arrayImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
-			ImageDescriptor objectImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
-
-			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
+			final ImageFigure mainImg = new ImageFigure(imageHolder.getElementImage());
 			mainImg.setSize(new Dimension(10, 8));
 
-			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); // attribute
-																						// symbole
-																						// figure
+			ImageFigure attributeImg = new ImageFigure(imageHolder.getAttributeImage());
 			attributeImg.setSize(new Dimension(10, 8));
 
-			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); // array
-																				// symbole
-																				// figure
+			ImageFigure arrayImg = new ImageFigure(imageHolder.getArrayImage());
 			arrayImg.setSize(new Dimension(10, 8));
 
-			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); // object
-																					// symbole
-																					// figure
+			ImageFigure objectImg = new ImageFigure(imageHolder.getObjectImage());
 			objectImg.setSize(new Dimension(10, 8));
 
 			Label nodeLabel = new Label();
@@ -1165,57 +1103,30 @@ public class TreeNode2EditPart extends AbstractBorderedShapeEditPart {
 		 * @param type
 		 */
 		public void createContentForNullables(String name, String type) {
-			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ELEMENT_ICON);
-			ImageDescriptor attributeImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ATTRIBUTE_ICON);
-			ImageDescriptor arrayImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ARRAY_ICON);
-			ImageDescriptor objectImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, OBJECT_ICON);
-			ImageDescriptor nullableElementImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ELEMENT_ICON);
-			ImageDescriptor nullableAttributeImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
-					ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ATTRIBUTE_ICON);
-			ImageDescriptor nullableObjectImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_OBJECT_ICON);
-			ImageDescriptor nullableArrayImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, NULLABLE_ARRAY_ICON);
+			ImageHolder imageHolder = ImageHolder.getInstance();
 
-			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
+			final ImageFigure mainImg = new ImageFigure(imageHolder.getElementImage());
 			mainImg.setSize(new Dimension(10, 8));
 
-			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); // attribute
-																						// symbole
-																						// figure
+			ImageFigure attributeImg = new ImageFigure(imageHolder.getAttributeImage());
 			attributeImg.setSize(new Dimension(10, 8));
 
-			ImageFigure arrayImg = new ImageFigure(arrayImgDesc.createImage()); // array
-																				// symbole
-																				// figure
+			ImageFigure arrayImg = new ImageFigure(imageHolder.getArrayImage());
 			arrayImg.setSize(new Dimension(10, 8));
 
-			ImageFigure objectImg = new ImageFigure(objectImgDesc.createImage()); // object
-																					// symbole
-																					// figure
+			ImageFigure objectImg = new ImageFigure(imageHolder.getObjectImage());
 			objectImg.setSize(new Dimension(10, 8));
 
-			ImageFigure nullableObjectImg = new ImageFigure(nullableObjectImgDesc.createImage()); // object
-			// symbole
-			// figure
+			ImageFigure nullableObjectImg = new ImageFigure(imageHolder.getNullableObjectImage());
 			nullableObjectImg.setSize(new Dimension(10, 8));
 
-			ImageFigure nullableArrayImg = new ImageFigure(nullableArrayImgDesc.createImage()); // object
-			// symbole
-			// figure
+			ImageFigure nullableArrayImg = new ImageFigure(imageHolder.getNullableArrayImage());
 			nullableArrayImg.setSize(new Dimension(10, 8));
-			ImageFigure nullableAttributeImg = new ImageFigure(nullableAttributeImgDesc.createImage()); // object
-			// symbole
-			// figure
+
+			ImageFigure nullableAttributeImg = new ImageFigure(imageHolder.getAttributeImage());
 			nullableAttributeImg.setSize(new Dimension(10, 8));
-			ImageFigure nullableElementImg = new ImageFigure(nullableElementImgDesc.createImage()); // object
-			// symbole
-			// figure
+
+			ImageFigure nullableElementImg = new ImageFigure(imageHolder.getNullableElementImage());
 			nullableElementImg.setSize(new Dimension(10, 8));
 
 			Label nodeLabel = new Label();

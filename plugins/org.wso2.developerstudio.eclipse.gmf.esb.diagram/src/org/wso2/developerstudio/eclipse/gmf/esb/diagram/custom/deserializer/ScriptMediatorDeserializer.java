@@ -47,14 +47,16 @@ public class ScriptMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 		setCommonProperties(scriptMediator, visualScriptMediator);
 		String type = scriptMediator.getScriptSrc();		
 		
-		if("js".equals(scriptMediator.getLanguage())){
+		if ("js".equals(scriptMediator.getLanguage())) {
 			executeSetValueCommand(EsbPackage.Literals.SCRIPT_MEDIATOR__SCRIPT_LANGUAGE, ScriptLanguage.JAVASCRIPT);
-		}else if("rb".equals(scriptMediator.getLanguage())){
+		} else if ("rb".equals(scriptMediator.getLanguage())) {
 			executeSetValueCommand(EsbPackage.Literals.SCRIPT_MEDIATOR__SCRIPT_LANGUAGE, ScriptLanguage.RUBY);
-		}else if("groovy".equals(scriptMediator.getLanguage())){
+		} else if ("groovy".equals(scriptMediator.getLanguage())) {
 			executeSetValueCommand(EsbPackage.Literals.SCRIPT_MEDIATOR__SCRIPT_LANGUAGE, ScriptLanguage.GROOVY);
+		} else if ("nashornJs".equals(scriptMediator.getLanguage())) {
+			executeSetValueCommand(EsbPackage.Literals.SCRIPT_MEDIATOR__SCRIPT_LANGUAGE, ScriptLanguage.NASHORNJS);
 		}
-		
+
 		if(type!=null){
 		   executeSetValueCommand(EsbPackage.Literals.SCRIPT_MEDIATOR__SCRIPT_TYPE, ScriptType.INLINE);
 		   executeSetValueCommand(EsbPackage.Literals.SCRIPT_MEDIATOR__SCRIPT_BODY, scriptMediator.getScriptSrc());

@@ -26,7 +26,6 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -34,7 +33,8 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.AGGREGATE_MEDIATOR_ICON_PATH;
 
 /**
  * This class is the view representation of the general complex mediators.
@@ -51,8 +51,12 @@ public class EsbGroupingShape extends RoundedRectangle {
 	static int Image_PreferredWidth = 75;
 	static int Image_PreferredHeight = 42;
 	protected String toolTipMessage;
+	private Color backgroundColor;
+	private Color borderColor;
 
-    public EsbGroupingShape() {
+    public EsbGroupingShape(Color bgColor, Color boderColor) {
+    	this.backgroundColor = bgColor;
+    	this.borderColor = boderColor;
         GridLayout layoutThis = new GridLayout();
         layoutThis.numColumns = 2;
         layoutThis.makeColumnsEqualWidth = true;
@@ -171,10 +175,7 @@ public class EsbGroupingShape extends RoundedRectangle {
 		// Create inner rectangle inside the left side rectangle.
 		containerInsideLeftRectangle = createInnerRectangle(leftRectangle);
 
-		ImageDescriptor imgDesc = EsbDiagramEditorPlugin
-				.getBundledImageDescriptor(getIconPath());
-
-		Image image = imgDesc.createImage();
+		Image image = ImageHolder.getInstance().getMediatorImage(getIconPath());
 		Image scaled = new Image(Display.getDefault(), 30, 30);
 		GC gc = new GC(scaled);
 		gc.setAntialias(SWT.ON);
@@ -216,7 +217,7 @@ public class EsbGroupingShape extends RoundedRectangle {
 		// Actual label to display which type this is.
 		WrappingLabel esbNodeTypeNameLabel = new WrappingLabel();
 		esbNodeTypeNameLabel.setText(getNodeName());
-		esbNodeTypeNameLabel.setForegroundColor(new Color(null, 0, 0, 0));
+		esbNodeTypeNameLabel.setForegroundColor(this.borderColor);
 		esbNodeTypeNameLabel.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 		esbNodeTypeNameLabel.setAlignment(SWT.CENTER);
 		esbNodeTypeNameLabel.setPreferredSize(new Dimension(64, 20));
@@ -240,12 +241,11 @@ public class EsbGroupingShape extends RoundedRectangle {
 		innerRect.setCornerDimensions(new Dimension(1, 1));
 		innerRect.setOutline(false);
 		innerRect.setBackgroundColor(this.getBackgroundColor());
-		LineBorder innerRectBorder = new LineBorder(
-				new Color(null, 90, 90, 90), 1, SWT.BORDER_SOLID);
+		LineBorder innerRectBorder = new LineBorder(this.borderColor, 1, SWT.BORDER_SOLID);
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));
-		innerRect.setBackgroundColor(new Color(null, 233, 245, 215));
+		innerRect.setBackgroundColor(this.backgroundColor);
 
 		GridLayout innerRectLayout = new GridLayout();
 		innerRectLayout.numColumns = 1;
@@ -264,12 +264,12 @@ public class EsbGroupingShape extends RoundedRectangle {
 		return innerRect;
 	}
 
-	public String getIconPath() {
-		return "icons/ico20/aggregate-mediator.gif";
-	}
-
 	public String getNodeName() {
 		return "Aggregate";
+	}
+
+	public String getIconPath() {
+		return AGGREGATE_MEDIATOR_ICON_PATH;
 	}
 
 	public Color getLabelBackColor() {

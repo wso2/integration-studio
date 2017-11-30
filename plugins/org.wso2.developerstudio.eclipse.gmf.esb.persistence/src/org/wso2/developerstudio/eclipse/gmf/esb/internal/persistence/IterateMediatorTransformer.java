@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.eip.Target;
@@ -110,8 +111,14 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer{
 			
 			iterateMediator.setContinueParent(visualIterate.isContinueParent());
 			
-			iterateMediator.setId(visualIterate.getIterateID());	
-			
+			/*
+			 * Do not serialize when Iterate ID is empty/null or contain
+			 * whitespace
+			 */
+			if (StringUtils.isNotBlank(visualIterate.getIterateID())) {
+				iterateMediator.setId(visualIterate.getIterateID());
+			}
+
 			Target target = new Target();
 			target.setSoapAction(visualIterate.getTarget().getSoapAction());
 			target.setToAddress(visualIterate.getTarget().getToAddress());

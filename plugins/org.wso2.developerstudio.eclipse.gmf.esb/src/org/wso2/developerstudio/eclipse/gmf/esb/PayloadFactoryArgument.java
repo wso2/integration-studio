@@ -20,6 +20,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument#getArgumentValue <em>Argument Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument#getArgumentExpression <em>Argument Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument#getEvaluator <em>Evaluator</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument#isLiteral <em>Literal</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryArgument()
@@ -137,5 +138,31 @@ public interface PayloadFactoryArgument extends EsbNode {
 	 * @generated
 	 */
 	void setEvaluator(MediaType value);
+
+	/**
+	 * Returns the value of the '<em><b>Literal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Literal</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Literal</em>' attribute.
+	 * @see #setLiteral(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryArgument_Literal()
+	 * @model
+	 * @generated
+	 */
+	boolean isLiteral();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument#isLiteral <em>Literal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Literal</em>' attribute.
+	 * @see #isLiteral()
+	 * @generated
+	 */
+	void setLiteral(boolean value);
 
 } // PayloadFactoryArgument

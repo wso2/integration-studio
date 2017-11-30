@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.diagram; singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 6.2.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin
 Bundle-Vendor: %providerName
@@ -69,8 +69,6 @@ Import-Package: net.sf.saxon.s9api,
  org.eclipse.ltk.internal.core.refactoring.resource,
  org.eclipse.ltk.internal.ui.refactoring,
  org.jaxen,
- org.wso2.developerstudio.eclipse.artifact.connection.model,
- org.wso2.developerstudio.eclipse.artifact.connection.ui.wizard,
  org.wso2.developerstudio.eclipse.artifact.localentry.model,
  org.wso2.developerstudio.eclipse.artifact.localentry.ui.wizard,
  org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="[4.1.0,5.0.0)",

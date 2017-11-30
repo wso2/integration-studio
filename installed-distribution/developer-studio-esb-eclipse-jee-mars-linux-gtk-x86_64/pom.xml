@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.wso2.developerstudio</groupId>
          <artifactId>wso2-developer-studio-eclipse-esb-installed-distributions</artifactId>
-        <version>5.0.0-SNAPSHOT</version>
+        <version>6.2.0-SNAPSHOT</version>
 	<relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
@@ -98,7 +98,7 @@
                                 <artifactItem>
                                     <groupId>org.wso2.developerstudio</groupId>
                                     <artifactId>wso2esb-tooling-composite-p2</artifactId>
-				    <version>5.0.0-SNAPSHOT</version>
+				    <version>6.2.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/p2-repo</outputDirectory>

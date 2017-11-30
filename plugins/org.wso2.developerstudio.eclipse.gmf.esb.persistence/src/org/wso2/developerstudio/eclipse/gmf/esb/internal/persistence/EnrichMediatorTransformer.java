@@ -42,6 +42,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  * corresponding synapse artifact(s).
  */
 public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
+	private final String ENV = "envelope";
+	private final String BDY = "body";
+	private final String CUS = "custom";
+	private final String PROP = "property";
 	/**
 	 * {@inheritDoc}
 	 */
@@ -87,6 +91,14 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
 		org.apache.synapse.mediators.elementary.EnrichMediator enrichMediator= new org.apache.synapse.mediators.elementary.EnrichMediator();
 		setCommonProperties(enrichMediator, visualEnrich);
 		{
+			// validate source/target types
+			String sourceType = visualEnrich.getSourceType().getLiteral();
+			String targetType = visualEnrich.getTargetType().getLiteral();
+			if ((ENV.equals(sourceType) && !PROP.equals(targetType)) || (CUS.equals(sourceType) && ENV.equals(targetType)) 
+					|| (BDY.equals(sourceType) && (ENV.equals(targetType) || BDY.equals(targetType)))) {
+				throw new JaxenException("Target type \"" + targetType + "\" does not support source type \""
+						+ sourceType + "\". Please change source/target types");
+			}
 			
 			source.setClone(visualEnrich.isCloneSource());
 			//source.setSourceType(visualEnrich.)

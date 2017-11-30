@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Project
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.project;singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 6.2.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.esb.project.Activator
 Require-Bundle: org.eclipse.ltk.core.refactoring,
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)",
@@ -37,6 +37,5 @@ Import-Package: org.eclipse.core.expressions,
 Export-Package: org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject,
  org.wso2.developerstudio.eclipse.esb.project.filter,
- org.wso2.developerstudio.eclipse.esb.project.ui.action,
  org.wso2.developerstudio.eclipse.esb.project.utils
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

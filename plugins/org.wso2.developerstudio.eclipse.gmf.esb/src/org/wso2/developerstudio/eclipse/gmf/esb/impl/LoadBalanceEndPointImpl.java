@@ -50,6 +50,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Session;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getAlgorithm <em>Algorithm</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getSessionTimeout <em>Session Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#isBuildMessage <em>Build Message</em>}</li>
  * </ul>
  *
  * @generated
@@ -204,6 +205,26 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 	 * @ordered
 	 */
 	protected MediatorFlow mediatorFlow;
+
+	/**
+	 * The default value of the '{@link #isBuildMessage() <em>Build Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBuildMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean BUILD_MESSAGE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isBuildMessage() <em>Build Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBuildMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean buildMessage = BUILD_MESSAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -487,6 +508,27 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isBuildMessage() {
+		return buildMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBuildMessage(boolean newBuildMessage) {
+		boolean oldBuildMessage = buildMessage;
+		buildMessage = newBuildMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOAD_BALANCE_END_POINT__BUILD_MESSAGE, oldBuildMessage, buildMessage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -532,6 +574,8 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 				return getSessionTimeout();
 			case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
 				return getMediatorFlow();
+			case EsbPackage.LOAD_BALANCE_END_POINT__BUILD_MESSAGE:
+				return isBuildMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -577,6 +621,9 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 			case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
 				setMediatorFlow((MediatorFlow)newValue);
 				return;
+			case EsbPackage.LOAD_BALANCE_END_POINT__BUILD_MESSAGE:
+				setBuildMessage((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -619,6 +666,9 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 			case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
 				setMediatorFlow((MediatorFlow)null);
 				return;
+			case EsbPackage.LOAD_BALANCE_END_POINT__BUILD_MESSAGE:
+				setBuildMessage(BUILD_MESSAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -651,6 +701,8 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 				return sessionTimeout != SESSION_TIMEOUT_EDEFAULT;
 			case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
 				return mediatorFlow != null;
+			case EsbPackage.LOAD_BALANCE_END_POINT__BUILD_MESSAGE:
+				return buildMessage != BUILD_MESSAGE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -675,6 +727,8 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 		result.append(algorithm);
 		result.append(", sessionTimeout: ");
 		result.append(sessionTimeout);
+		result.append(", buildMessage: ");
+		result.append(buildMessage);
 		result.append(')');
 		return result.toString();
 	}

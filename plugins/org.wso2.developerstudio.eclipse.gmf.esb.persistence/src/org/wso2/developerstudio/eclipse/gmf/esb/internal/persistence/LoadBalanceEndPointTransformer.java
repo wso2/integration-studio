@@ -152,7 +152,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 				((SALoadbalanceEndpoint) synapseLBEP).setSessionTimeout(sessionTimeout);
 			}
 		}
-
+		synapseLBEP.setBuildMessageAtt(visualEndPoint.isBuildMessage());
 		if (StringUtils.isNotBlank(name)) {
 			synapseLBEP.setName(name);
 		}

@@ -70,6 +70,7 @@ public class LoadBalanceEndPointItemProvider
 		}
 		
 		addAlgorithmPropertyDescriptor(object);
+		addBuildMessagePropertyDescriptor(object);
 		addDescriptionPropertyDescriptor(object);
  		return itemPropertyDescriptors;
 	}
@@ -207,6 +208,27 @@ public class LoadBalanceEndPointItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Build Message feature.
+	 * @param object  LoadbalanceEndpoint instance
+	 * @generated NOT
+	 */
+	protected void addBuildMessagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LoadBalanceEndPoint_buildMessage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LoadBalanceEndPoint_buildMessage_feature", "_UI_LoadBalanceEndPoint_type"),
+				 EsbPackage.Literals.LOAD_BALANCE_END_POINT__BUILD_MESSAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Basic",
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -282,6 +304,7 @@ public class LoadBalanceEndPointItemProvider
 			case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TYPE:
 			case EsbPackage.LOAD_BALANCE_END_POINT__ALGORITHM:
 			case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT:
+			case EsbPackage.LOAD_BALANCE_END_POINT__BUILD_MESSAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.LOAD_BALANCE_END_POINT__INPUT_CONNECTOR:

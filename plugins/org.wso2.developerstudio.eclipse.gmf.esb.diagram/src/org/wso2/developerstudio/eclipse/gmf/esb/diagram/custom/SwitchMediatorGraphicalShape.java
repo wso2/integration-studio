@@ -26,18 +26,15 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.SWITCH_MEDIATOR_ICON_PATH;
 
 /**
  * This class is the view representation of the switch mediator.
@@ -165,9 +162,7 @@ public class SwitchMediatorGraphicalShape extends RoundedRectangle {
 		// Create inner rectangle inside the left side rectangle.
 		containerInsideLeftRectangle = createInnerRectangle(leftRectangle);
 
-		ImageDescriptor imgDesc = EsbDiagramEditorPlugin.getBundledImageDescriptor(getIconPath());
-
-		Image image = imgDesc.createImage();
+		Image image = ImageHolder.getInstance().getSwitchMediatorImage();
 		Image scaled = new Image(Display.getDefault(), 23, 25);
 		GC gc = new GC(scaled);
 		gc.setAntialias(SWT.ON);
@@ -209,7 +204,7 @@ public class SwitchMediatorGraphicalShape extends RoundedRectangle {
 		// Actual label to display which type this is.
 		WrappingLabel esbNodeTypeNameLabel = new WrappingLabel();
 		esbNodeTypeNameLabel.setText(getNodeName());
-		esbNodeTypeNameLabel.setForegroundColor(new Color(null, 0, 0, 0));
+		esbNodeTypeNameLabel.setForegroundColor(new Color(null, 104, 159, 56));
 		esbNodeTypeNameLabel.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 		esbNodeTypeNameLabel.setAlignment(SWT.CENTER);
 		esbNodeTypeNameLabel.setPreferredSize(new Dimension(55, 20));
@@ -231,12 +226,11 @@ public class SwitchMediatorGraphicalShape extends RoundedRectangle {
 		innerRect.setCornerDimensions(new Dimension(1, 1));
 		innerRect.setOutline(false);
 		innerRect.setBackgroundColor(this.getBackgroundColor());
-		LineBorder innerRectBorder = new LineBorder(new Color(null, 90, 90, 90), 1,
-				SWT.BORDER_SOLID);
+		LineBorder innerRectBorder = new LineBorder(new Color(null, 104, 159, 56), 1, SWT.BORDER_SOLID);
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));
-		innerRect.setBackgroundColor(new Color(null, 233, 245, 215));
+		innerRect.setBackgroundColor(new Color(null, 247, 250, 245));
 
 		GridLayout innerRectLayout = new GridLayout();
 		innerRectLayout.numColumns = 1;
@@ -255,12 +249,12 @@ public class SwitchMediatorGraphicalShape extends RoundedRectangle {
 		return innerRect;
 	}
 
-	public String getIconPath() {
-		return "icons/ico20/switch-mediator.gif";
-	}
-
 	public String getNodeName() {
 		return "Switch";
+	}
+
+	public String getIconPath() {
+		return SWITCH_MEDIATOR_ICON_PATH;
 	}
 
 	public Color getLabelBackColor() {

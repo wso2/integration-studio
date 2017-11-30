@@ -49,8 +49,7 @@ public class FailoverEndPointItemProvider
 
 	/**
 	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * @param object  FailoverEndpoint instance
 	 * @generated NOT
 	 */
 	@Override
@@ -61,8 +60,31 @@ public class FailoverEndPointItemProvider
 		
 		super.getPropertyDescriptors(object);
 		addPropertiesPropertyDescriptor(object);
+		addBuildMessagePropertyDescriptor(object);
 	
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Build Message feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addBuildMessagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FailoverEndPoint_buildMessage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FailoverEndPoint_buildMessage_feature", "_UI_FailoverEndPoint_type"),
+				 EsbPackage.Literals.FAILOVER_END_POINT__BUILD_MESSAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Basic",
+				 null));
 	}
 
 	/**
@@ -135,6 +157,9 @@ public class FailoverEndPointItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(FailoverEndPoint.class)) {
+			case EsbPackage.FAILOVER_END_POINT__BUILD_MESSAGE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case EsbPackage.FAILOVER_END_POINT__INPUT_CONNECTOR:
 			case EsbPackage.FAILOVER_END_POINT__OUTPUT_CONNECTOR:
 			case EsbPackage.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR:

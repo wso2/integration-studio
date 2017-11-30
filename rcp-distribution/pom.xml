@@ -20,7 +20,7 @@
 	<parent>
 		<artifactId>wso2-developerstudio-esb-toolkit</artifactId>
 		<groupId>org.wso2.developerstudio</groupId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>6.2.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>wso2-developer-studio-eclipse-esb-rcp-product-distributions</artifactId>
@@ -86,7 +86,7 @@
 									<artifactItem>
 										<groupId>org.wso2.developerstudio</groupId>
 										<artifactId>wso2esb-tooling-main-p2</artifactId>
-										<version>5.0.0-SNAPSHOT</version>
+										<version>6.2.0-SNAPSHOT</version>
 										<type>zip</type>
 										<overWrite>true</overWrite>
 										<outputDirectory>target/p2-repo</outputDirectory>

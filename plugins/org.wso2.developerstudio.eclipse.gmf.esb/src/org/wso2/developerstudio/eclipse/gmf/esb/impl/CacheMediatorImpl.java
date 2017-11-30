@@ -24,6 +24,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorOnHitOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheOnHitBranch;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheProtocolType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -43,12 +44,12 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * </p>
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheId <em>Cache Id</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheScope <em>Cache Scope</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheProtocolType <em>Cache Protocol Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheAction <em>Cache Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getHashGenerator <em>Hash Generator</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheTimeout <em>Cache Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getMaxMessageSize <em>Max Message Size</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getImplementationType <em>Implementation Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheProtocolMethods <em>Cache Protocol Methods</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getMaxEntryCount <em>Max Entry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getSequenceType <em>Sequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getSequenceKey <em>Sequence Key</em>}</li>
@@ -56,6 +57,8 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getOnHitOutputConnector <em>On Hit Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getHeadersToExcludeInHash <em>Headers To Exclude In Hash</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getResponseCodes <em>Response Codes</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,24 +85,24 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	protected String cacheId = CACHE_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getCacheScope() <em>Cache Scope</em>}' attribute.
+	 * The default value of the '{@link #getCacheProtocolType() <em>Cache Protocol Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCacheScope()
+	 * @see #getCacheProtocolType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final CacheScope CACHE_SCOPE_EDEFAULT = CacheScope.PER_MEDIATOR;
+	protected static final CacheProtocolType CACHE_PROTOCOL_TYPE_EDEFAULT = CacheProtocolType.HTTP;
 
 	/**
-	 * The cached value of the '{@link #getCacheScope() <em>Cache Scope</em>}' attribute.
+	 * The cached value of the '{@link #getCacheProtocolType() <em>Cache Protocol Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCacheScope()
+	 * @see #getCacheProtocolType()
 	 * @generated
 	 * @ordered
 	 */
-	protected CacheScope cacheScope = CACHE_SCOPE_EDEFAULT;
+	protected CacheProtocolType cacheProtocolType = CACHE_PROTOCOL_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCacheAction() <em>Cache Action</em>}' attribute.
@@ -129,7 +132,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final HashGenerator HASH_GENERATOR_EDEFAULT = HashGenerator.CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR;
+	protected static final String HASH_GENERATOR_EDEFAULT = "HTTP_REQUEST_HASH_GENERATOR";
 
 	/**
 	 * The cached value of the '{@link #getHashGenerator() <em>Hash Generator</em>}' attribute.
@@ -139,7 +142,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected HashGenerator hashGenerator = HASH_GENERATOR_EDEFAULT;
+	protected String hashGenerator = HASH_GENERATOR_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCacheTimeout() <em>Cache Timeout</em>}' attribute.
@@ -182,24 +185,24 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	protected int maxMessageSize = MAX_MESSAGE_SIZE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getImplementationType() <em>Implementation Type</em>}' attribute.
+	 * The default value of the '{@link #getCacheProtocolMethods() <em>Cache Protocol Methods</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getImplementationType()
+	 * @see #getCacheProtocolMethods()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final CacheImplementationType IMPLEMENTATION_TYPE_EDEFAULT = CacheImplementationType.IN_MEMORY;
+	protected static final String CACHE_PROTOCOL_METHODS_EDEFAULT = "*";
 
 	/**
-	 * The cached value of the '{@link #getImplementationType() <em>Implementation Type</em>}' attribute.
+	 * The cached value of the '{@link #getCacheProtocolMethods() <em>Cache Protocol Methods</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getImplementationType()
+	 * @see #getCacheProtocolMethods()
 	 * @generated
 	 * @ordered
 	 */
-	protected CacheImplementationType implementationType = IMPLEMENTATION_TYPE_EDEFAULT;
+	protected String cacheProtocolMethods = CACHE_PROTOCOL_METHODS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMaxEntryCount() <em>Max Entry Count</em>}' attribute.
@@ -292,6 +295,46 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	protected MediatorFlow mediatorFlow;
 
 	/**
+	 * The default value of the '{@link #getHeadersToExcludeInHash() <em>Headers To Exclude In Hash</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHeadersToExcludeInHash()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String HEADERS_TO_EXCLUDE_IN_HASH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getHeadersToExcludeInHash() <em>Headers To Exclude In Hash</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHeadersToExcludeInHash()
+	 * @generated
+	 * @ordered
+	 */
+	protected String headersToExcludeInHash = HEADERS_TO_EXCLUDE_IN_HASH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResponseCodes() <em>Response Codes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResponseCodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESPONSE_CODES_EDEFAULT = ".*";
+
+	/**
+	 * The cached value of the '{@link #getResponseCodes() <em>Response Codes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResponseCodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected String responseCodes = RESPONSE_CODES_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -344,8 +387,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CacheScope getCacheScope() {
-		return cacheScope;
+	public CacheProtocolType getCacheProtocolType() {
+		return cacheProtocolType;
 	}
 
 	/**
@@ -353,11 +396,11 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCacheScope(CacheScope newCacheScope) {
-		CacheScope oldCacheScope = cacheScope;
-		cacheScope = newCacheScope == null ? CACHE_SCOPE_EDEFAULT : newCacheScope;
+	public void setCacheProtocolType(CacheProtocolType newCacheProtocolType) {
+		CacheProtocolType oldCacheProtocolType = cacheProtocolType;
+		cacheProtocolType = newCacheProtocolType == null ? CACHE_PROTOCOL_TYPE_EDEFAULT : newCacheProtocolType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__CACHE_SCOPE, oldCacheScope, cacheScope));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE, oldCacheProtocolType, cacheProtocolType));
 	}
 
 	/**
@@ -386,7 +429,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HashGenerator getHashGenerator() {
+	public String getHashGenerator() {
 		return hashGenerator;
 	}
 
@@ -395,9 +438,9 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHashGenerator(HashGenerator newHashGenerator) {
-		HashGenerator oldHashGenerator = hashGenerator;
-		hashGenerator = newHashGenerator == null ? HASH_GENERATOR_EDEFAULT : newHashGenerator;
+	public void setHashGenerator(String newHashGenerator) {
+		String oldHashGenerator = hashGenerator;
+		hashGenerator = newHashGenerator;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR, oldHashGenerator, hashGenerator));
 	}
@@ -449,8 +492,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CacheImplementationType getImplementationType() {
-		return implementationType;
+	public String getCacheProtocolMethods() {
+		return cacheProtocolMethods;
 	}
 
 	/**
@@ -458,11 +501,11 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImplementationType(CacheImplementationType newImplementationType) {
-		CacheImplementationType oldImplementationType = implementationType;
-		implementationType = newImplementationType == null ? IMPLEMENTATION_TYPE_EDEFAULT : newImplementationType;
+	public void setCacheProtocolMethods(String newCacheProtocolMethods) {
+		String oldCacheProtocolMethods = cacheProtocolMethods;
+		cacheProtocolMethods = newCacheProtocolMethods;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE, oldImplementationType, implementationType));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS, oldCacheProtocolMethods, cacheProtocolMethods));
 	}
 
 	/**
@@ -727,6 +770,48 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getHeadersToExcludeInHash() {
+		return headersToExcludeInHash;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHeadersToExcludeInHash(String newHeadersToExcludeInHash) {
+		String oldHeadersToExcludeInHash = headersToExcludeInHash;
+		headersToExcludeInHash = newHeadersToExcludeInHash;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH, oldHeadersToExcludeInHash, headersToExcludeInHash));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getResponseCodes() {
+		return responseCodes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResponseCodes(String newResponseCodes) {
+		String oldResponseCodes = responseCodes;
+		responseCodes = newResponseCodes;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES, oldResponseCodes, responseCodes));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -756,8 +841,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 		switch (featureID) {
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
 				return getCacheId();
-			case EsbPackage.CACHE_MEDIATOR__CACHE_SCOPE:
-				return getCacheScope();
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
+				return getCacheProtocolType();
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ACTION:
 				return getCacheAction();
 			case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR:
@@ -766,8 +851,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				return getCacheTimeout();
 			case EsbPackage.CACHE_MEDIATOR__MAX_MESSAGE_SIZE:
 				return getMaxMessageSize();
-			case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
-				return getImplementationType();
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS:
+				return getCacheProtocolMethods();
 			case EsbPackage.CACHE_MEDIATOR__MAX_ENTRY_COUNT:
 				return getMaxEntryCount();
 			case EsbPackage.CACHE_MEDIATOR__SEQUENCE_TYPE:
@@ -782,6 +867,10 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				return getOnHitOutputConnector();
 			case EsbPackage.CACHE_MEDIATOR__MEDIATOR_FLOW:
 				return getMediatorFlow();
+			case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH:
+				return getHeadersToExcludeInHash();
+			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
+				return getResponseCodes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -798,14 +887,14 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
 				setCacheId((String)newValue);
 				return;
-			case EsbPackage.CACHE_MEDIATOR__CACHE_SCOPE:
-				setCacheScope((CacheScope)newValue);
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
+				setCacheProtocolType((CacheProtocolType)newValue);
 				return;
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ACTION:
 				setCacheAction((CacheAction)newValue);
 				return;
 			case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR:
-				setHashGenerator((HashGenerator)newValue);
+				setHashGenerator((String)newValue);
 				return;
 			case EsbPackage.CACHE_MEDIATOR__CACHE_TIMEOUT:
 				setCacheTimeout((Integer)newValue);
@@ -813,8 +902,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 			case EsbPackage.CACHE_MEDIATOR__MAX_MESSAGE_SIZE:
 				setMaxMessageSize((Integer)newValue);
 				return;
-			case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
-				setImplementationType((CacheImplementationType)newValue);
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS:
+				setCacheProtocolMethods((String)newValue);
 				return;
 			case EsbPackage.CACHE_MEDIATOR__MAX_ENTRY_COUNT:
 				setMaxEntryCount((Integer)newValue);
@@ -837,6 +926,12 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 			case EsbPackage.CACHE_MEDIATOR__MEDIATOR_FLOW:
 				setMediatorFlow((MediatorFlow)newValue);
 				return;
+			case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH:
+				setHeadersToExcludeInHash((String)newValue);
+				return;
+			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
+				setResponseCodes((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -853,8 +948,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
 				setCacheId(CACHE_ID_EDEFAULT);
 				return;
-			case EsbPackage.CACHE_MEDIATOR__CACHE_SCOPE:
-				setCacheScope(CACHE_SCOPE_EDEFAULT);
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
+				setCacheProtocolType(CACHE_PROTOCOL_TYPE_EDEFAULT);
 				return;
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ACTION:
 				setCacheAction(CACHE_ACTION_EDEFAULT);
@@ -868,8 +963,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 			case EsbPackage.CACHE_MEDIATOR__MAX_MESSAGE_SIZE:
 				setMaxMessageSize(MAX_MESSAGE_SIZE_EDEFAULT);
 				return;
-			case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
-				setImplementationType(IMPLEMENTATION_TYPE_EDEFAULT);
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS:
+				setCacheProtocolMethods(CACHE_PROTOCOL_METHODS_EDEFAULT);
 				return;
 			case EsbPackage.CACHE_MEDIATOR__MAX_ENTRY_COUNT:
 				setMaxEntryCount(MAX_ENTRY_COUNT_EDEFAULT);
@@ -892,6 +987,12 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 			case EsbPackage.CACHE_MEDIATOR__MEDIATOR_FLOW:
 				setMediatorFlow((MediatorFlow)null);
 				return;
+			case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH:
+				setHeadersToExcludeInHash(HEADERS_TO_EXCLUDE_IN_HASH_EDEFAULT);
+				return;
+			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
+				setResponseCodes(RESPONSE_CODES_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -907,18 +1008,18 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 		switch (featureID) {
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
 				return CACHE_ID_EDEFAULT == null ? cacheId != null : !CACHE_ID_EDEFAULT.equals(cacheId);
-			case EsbPackage.CACHE_MEDIATOR__CACHE_SCOPE:
-				return cacheScope != CACHE_SCOPE_EDEFAULT;
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
+				return cacheProtocolType != CACHE_PROTOCOL_TYPE_EDEFAULT;
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ACTION:
 				return cacheAction != CACHE_ACTION_EDEFAULT;
 			case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR:
-				return hashGenerator != HASH_GENERATOR_EDEFAULT;
+				return HASH_GENERATOR_EDEFAULT == null ? hashGenerator != null : !HASH_GENERATOR_EDEFAULT.equals(hashGenerator);
 			case EsbPackage.CACHE_MEDIATOR__CACHE_TIMEOUT:
 				return cacheTimeout != CACHE_TIMEOUT_EDEFAULT;
 			case EsbPackage.CACHE_MEDIATOR__MAX_MESSAGE_SIZE:
 				return maxMessageSize != MAX_MESSAGE_SIZE_EDEFAULT;
-			case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
-				return implementationType != IMPLEMENTATION_TYPE_EDEFAULT;
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS:
+				return CACHE_PROTOCOL_METHODS_EDEFAULT == null ? cacheProtocolMethods != null : !CACHE_PROTOCOL_METHODS_EDEFAULT.equals(cacheProtocolMethods);
 			case EsbPackage.CACHE_MEDIATOR__MAX_ENTRY_COUNT:
 				return maxEntryCount != MAX_ENTRY_COUNT_EDEFAULT;
 			case EsbPackage.CACHE_MEDIATOR__SEQUENCE_TYPE:
@@ -933,6 +1034,10 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				return onHitOutputConnector != null;
 			case EsbPackage.CACHE_MEDIATOR__MEDIATOR_FLOW:
 				return mediatorFlow != null;
+			case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH:
+				return HEADERS_TO_EXCLUDE_IN_HASH_EDEFAULT == null ? headersToExcludeInHash != null : !HEADERS_TO_EXCLUDE_IN_HASH_EDEFAULT.equals(headersToExcludeInHash);
+			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
+				return RESPONSE_CODES_EDEFAULT == null ? responseCodes != null : !RESPONSE_CODES_EDEFAULT.equals(responseCodes);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -950,8 +1055,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (cacheId: ");
 		result.append(cacheId);
-		result.append(", cacheScope: ");
-		result.append(cacheScope);
+		result.append(", cacheProtocolType: ");
+		result.append(cacheProtocolType);
 		result.append(", cacheAction: ");
 		result.append(cacheAction);
 		result.append(", hashGenerator: ");
@@ -960,12 +1065,16 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 		result.append(cacheTimeout);
 		result.append(", maxMessageSize: ");
 		result.append(maxMessageSize);
-		result.append(", implementationType: ");
-		result.append(implementationType);
+		result.append(", cacheProtocolMethods: ");
+		result.append(cacheProtocolMethods);
 		result.append(", maxEntryCount: ");
 		result.append(maxEntryCount);
 		result.append(", sequenceType: ");
 		result.append(sequenceType);
+		result.append(", headersToExcludeInHash: ");
+		result.append(headersToExcludeInHash);
+		result.append(", responseCodes: ");
+		result.append(responseCodes);
 		result.append(')');
 		return result.toString();
 	}

@@ -49,7 +49,17 @@ public enum InboundEndpointBehaviourType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	LISTENING_INBOUND_ENDPOINT(1, "listeningInboundEndpoint", "listeningInboundEndpoint");
+	LISTENING_INBOUND_ENDPOINT(1, "listeningInboundEndpoint", "listeningInboundEndpoint"),
+
+	/**
+	 * The '<em><b>Event Based Inbound Endpoint</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EVENT_BASED_INBOUND_ENDPOINT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	EVENT_BASED_INBOUND_ENDPOINT(2, "eventBasedInboundEndpoint", "eventBasedInboundEndpoint");
 
 	/**
 	 * The '<em><b>Polling Inbound Endpoint</b></em>' literal value.
@@ -82,6 +92,21 @@ public enum InboundEndpointBehaviourType implements Enumerator {
 	public static final int LISTENING_INBOUND_ENDPOINT_VALUE = 1;
 
 	/**
+	 * The '<em><b>Event Based Inbound Endpoint</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Event Based Inbound Endpoint</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #EVENT_BASED_INBOUND_ENDPOINT
+	 * @model name="eventBasedInboundEndpoint"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT_BASED_INBOUND_ENDPOINT_VALUE = 2;
+
+	/**
 	 * An array of all the '<em><b>Inbound Endpoint Behaviour Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,6 +116,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
 		new InboundEndpointBehaviourType[] {
 			POLLING_INBOUND_ENDPOINT,
 			LISTENING_INBOUND_ENDPOINT,
+			EVENT_BASED_INBOUND_ENDPOINT,
 		};
 
 	/**
@@ -149,6 +175,7 @@ public enum InboundEndpointBehaviourType implements Enumerator {
 		switch (value) {
 			case POLLING_INBOUND_ENDPOINT_VALUE: return POLLING_INBOUND_ENDPOINT;
 			case LISTENING_INBOUND_ENDPOINT_VALUE: return LISTENING_INBOUND_ENDPOINT;
+			case EVENT_BASED_INBOUND_ENDPOINT_VALUE: return EVENT_BASED_INBOUND_ENDPOINT;
 		}
 		return null;
 	}

@@ -117,7 +117,7 @@ public class TemplateEndpointEditPart extends AbstractEndpoint {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new TemplateEndpointFigure() {
+		return primaryShape = new TemplateEndpointFigure(new Color(null, 141, 82, 161)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -312,7 +312,8 @@ public class TemplateEndpointEditPart extends AbstractEndpoint {
 		/**
 		 * @generated
 		 */
-		public TemplateEndpointFigure() {
+		public TemplateEndpointFigure(Color borderColor) {
+			super(borderColor, true);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

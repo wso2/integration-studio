@@ -50,7 +50,17 @@ public enum ScriptLanguage implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	GROOVY(2, "GROOVY", "groovy");
+	GROOVY(2, "GROOVY", "groovy"), 
+	
+	/**
+	 * The '<em><b>NASHORNJS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NASHORNJS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NASHORNJS(3, "NASHORNJS", "nashornJs");
 
 	/**
 	 * The '<em><b>JAVASCRIPT</b></em>' literal value.
@@ -98,6 +108,21 @@ public enum ScriptLanguage implements Enumerator {
 	public static final int GROOVY_VALUE = 2;
 
 	/**
+	 * The '<em><b>NASHORNJS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NASHORNJS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NASHORNJS
+	 * @model literal="nashornJs"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NASHORNJS_VALUE = 3;
+
+	/**
 	 * An array of all the '<em><b>Script Language</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,6 +133,7 @@ public enum ScriptLanguage implements Enumerator {
 			JAVASCRIPT,
 			RUBY,
 			GROOVY,
+			NASHORNJS,
 		};
 
 	/**
@@ -167,6 +193,7 @@ public enum ScriptLanguage implements Enumerator {
 			case JAVASCRIPT_VALUE: return JAVASCRIPT;
 			case RUBY_VALUE: return RUBY;
 			case GROOVY_VALUE: return GROOVY;
+			case NASHORNJS_VALUE: return NASHORNJS;
 		}
 		return null;
 	}

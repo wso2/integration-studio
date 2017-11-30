@@ -30,7 +30,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
@@ -58,22 +57,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
 import org.apache.commons.lang.StringUtils;
 
 /**
  * A dialog used to select an xpath from a given xml document.
  */
 public class XPathSelectorDialog extends Dialog {
-	/**
-	 * Attribute icon path.
-	 */
-	private static final String ATTRIBUTE_ICON_PATH = "icons/xpath/xmlAttribute.png";
-
-	/**
-	 * Element icon path.
-	 */
-	private static final String ELEMENT_ICON_PATH = "icons/xpath/xmlElement.png";
 
 	/**
 	 * Key used to store dom nodes as data within tree items.
@@ -516,17 +506,11 @@ public class XPathSelectorDialog extends Dialog {
 		childTreeItem.setText(node.getNodeName());
 
 		// Select the icon based on the node type.
-		ImageDescriptor icon;
 		if (node.getNodeType() == Node.ELEMENT_NODE) {
-			icon = EsbDiagramEditorPlugin
-					.getBundledImageDescriptor(ELEMENT_ICON_PATH);
+		    childTreeItem.setImage(ImageHolder.getInstance().getXPathElementImage());
 		} else {
-
-			icon = EsbDiagramEditorPlugin
-					.getBundledImageDescriptor(ATTRIBUTE_ICON_PATH);
+		    childTreeItem.setImage(ImageHolder.getInstance().getXPathAttributeImage());
 		}
-
-		childTreeItem.setImage(icon.createImage());
 
 		// Associated dom node with the newly created tree item.
 		childTreeItem.setData(TREE_ITEM_DATA_KEY, new TreeItemData(node));

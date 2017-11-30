@@ -21,7 +21,6 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.Label;
@@ -41,17 +40,12 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
-import org.eclipse.gef.palette.PaletteContainer;
-import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -59,17 +53,14 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementCanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.ImageHolder;
 
 /**
  * @generated
@@ -450,9 +441,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	public class ElementFigure extends RectangleFigure {
 
-		private static final String ICONS_ELEMENT = "icons/gmf/symbol_element_of.gif";
-		private static final String ICONS_ATTRIBUTE = "icons/gmf/AttributeIcon.png";
-		private static final String ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM = "org.wso2.developerstudio.visualdatamapper.diagram";
+
 		private static final String PREFIX = "@";
 		/**
 		 * @generated
@@ -491,15 +480,11 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			figure.setOpaque(false);
 			figure.setFill(false);
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ELEMENT);
-			ImageDescriptor attributeImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ATTRIBUTE);
-
-			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
+			ImageHolder imageHolder = ImageHolder.getInstance();
+			ImageFigure mainImg = new ImageFigure(imageHolder.getElementSymbolImage()); //element symbol figure
 			mainImg.setSize(new Dimension(20, 8));
 
-			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
+			ImageFigure attributeImg = new ImageFigure(imageHolder.getAttributeSymbolImage()); //attribute symbol figure
 			attributeImg.setSize(new Dimension(20, 8));
 
 			fFigureElementNameFigure = new WrappingLabel(); // element nme holding rectangle
@@ -587,16 +572,11 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		}
 
 		public void renameElement(String newName) {
-
-			ImageDescriptor mainImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ELEMENT);
-			ImageDescriptor attributeImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(ORG_WSO2_DEVELOPERSTUDIO_VISUALDATAMAPPER_DIAGRAM, ICONS_ATTRIBUTE);
-
-			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
+			ImageHolder imageHolder = ImageHolder.getInstance();
+			ImageFigure mainImg = new ImageFigure(imageHolder.getElementSymbolImage()); //element symbol figure
 			mainImg.setSize(new Dimension(20, 8));
 
-			ImageFigure attributeImg = new ImageFigure(attributeImgDesc.createImage()); //attribute symbole figure 
+			ImageFigure attributeImg = new ImageFigure(imageHolder.getAttributeSymbolImage()); //attribute symbol figure
 			attributeImg.setSize(new Dimension(20, 8));
 
 			Label elemLabel = new Label();

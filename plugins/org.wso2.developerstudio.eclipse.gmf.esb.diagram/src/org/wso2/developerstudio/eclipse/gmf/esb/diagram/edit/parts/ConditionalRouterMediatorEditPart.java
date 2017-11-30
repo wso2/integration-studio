@@ -120,7 +120,7 @@ public class ConditionalRouterMediatorEditPart extends FixedSizedAbstractMediato
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new ConditionalRouterMediatorFigure() {
+		return primaryShape = new ConditionalRouterMediatorFigure(new Color(null, 104, 159, 56)) {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
@@ -305,7 +305,8 @@ public class ConditionalRouterMediatorEditPart extends FixedSizedAbstractMediato
 		/**
 		 * @generated NOT
 		 */
-		public ConditionalRouterMediatorFigure() {
+		public ConditionalRouterMediatorFigure(Color borderColor) {
+			super(borderColor, false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}

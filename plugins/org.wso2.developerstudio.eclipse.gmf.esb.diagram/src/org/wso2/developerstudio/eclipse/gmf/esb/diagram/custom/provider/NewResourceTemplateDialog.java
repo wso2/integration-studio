@@ -158,7 +158,7 @@ public class NewResourceTemplateDialog extends Dialog {
 		      }); 
 		Label lblArtifactName = new Label(container, SWT.NONE);
 		FormData fd_lblArtifactName = new FormData();
-		fd_lblArtifactName.top = new FormAttachment(linkButton, 22);
+		fd_lblArtifactName.top = new FormAttachment(linkButton, 10);
 		fd_lblArtifactName.right = new FormAttachment(cmbProject, 22, SWT.RIGHT);
 		fd_lblArtifactName.left = new FormAttachment(0, 10);
 		lblArtifactName.setLayoutData(fd_lblArtifactName);
@@ -179,12 +179,12 @@ public class NewResourceTemplateDialog extends Dialog {
 
 		Label lblRegistryPath = new Label(container, SWT.NONE);
 		FormData fd_lblRegistryPath = new FormData();
-		fd_lblRegistryPath.top = new FormAttachment(txtResourceName, 17);
+		fd_lblRegistryPath.top = new FormAttachment(txtResourceName, 7);
 		fd_lblRegistryPath.left = new FormAttachment(lblProject, 0, SWT.LEFT);
 		lblRegistryPath.setLayoutData(fd_lblRegistryPath);
 		lblRegistryPath.setText("Registry path");
+		txtRegistryPath = new Text(container, SWT.BORDER | SWT.H_SCROLL);
 
-		txtRegistryPath = new Text(container, SWT.BORDER);
 		txtRegistryPath.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
 				validate();
@@ -192,7 +192,7 @@ public class NewResourceTemplateDialog extends Dialog {
 		});
 		txtRegistryPath.setText("/_system/config/myresources");
 		FormData fd_txtRegistryPath = new FormData();
-		fd_txtRegistryPath.top = new FormAttachment(lblRegistryPath, 6);
+		fd_txtRegistryPath.top = new FormAttachment(lblRegistryPath, 5);
 		fd_txtRegistryPath.left = new FormAttachment(lblProject, 22, SWT.LEFT);
 		fd_txtRegistryPath.right = new FormAttachment(cmbProject, 0, SWT.RIGHT);
 		txtRegistryPath.setLayoutData(fd_txtRegistryPath);
@@ -230,7 +230,7 @@ public class NewResourceTemplateDialog extends Dialog {
 		btnOpenResourceOnce = new Button(container, SWT.CHECK);
 		fd_list.bottom = new FormAttachment(btnOpenResourceOnce, 0, SWT.BOTTOM);
 		FormData fd_btnOpenResourceOnce = new FormData();
-		fd_btnOpenResourceOnce.bottom = new FormAttachment(100, -10);
+		fd_btnOpenResourceOnce.bottom = new FormAttachment(100, -1);
 		fd_btnOpenResourceOnce.left = new FormAttachment(lblProject, 0, SWT.LEFT);
 		btnOpenResourceOnce.setLayoutData(fd_btnOpenResourceOnce);
 		btnOpenResourceOnce.setText("Open resource once created");

@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  */
 public class CacheMediatorItemProvider
 	extends MediatorItemProvider {
+	public static final String PROTOCOL_TYPE_HTTP = "HTTP";
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -63,19 +64,19 @@ public class CacheMediatorItemProvider
 			itemPropertyDescriptors.clear();
 		}
 		super.getPropertyDescriptors(object);
-
-		addCacheIdPropertyDescriptor(object);
-		addCacheScopePropertyDescriptor(object);
-		addCacheActionPropertyDescriptor(object);
 		
 		if (cacheMediator.getCacheAction().equals(CacheAction.FINDER)) {
-			addHashGeneratorPropertyDescriptor(object);
 			addCacheTimeoutPropertyDescriptor(object);
 			addMaxMessageSizePropertyDescriptor(object);
-			addImplementationTypePropertyDescriptor(object);
 			addMaxEntryCountPropertyDescriptor(object);
-			
 			addSequenceTypePropertyDescriptor(object);
+			addCacheProtocolTypePropertyDescriptor(object);
+			if (PROTOCOL_TYPE_HTTP.equals(cacheMediator.getCacheProtocolType().getLiteral())) {
+			    addCacheProtocolMethodsPropertyDescriptor(object);
+			    addHeadersToExcludeInHashPropertyDescriptor(object);
+			    addResponseCodesPropertyDescriptor(object);
+			}
+			addHashGeneratorPropertyDescriptor(object);
 			if(cacheMediator.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)){
 				//adding cache on hit property descriptor.
 				addSequenceKeyPropertyDescriptor(object);
@@ -86,46 +87,24 @@ public class CacheMediatorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Cache Id feature.
+	 * This adds a property descriptor for the Cache Protocol Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected void addCacheIdPropertyDescriptor(Object object) {
+	protected void addCacheProtocolTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CacheMediator_cacheId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_cacheId_feature", "_UI_CacheMediator_type"),
-				 EsbPackage.Literals.CACHE_MEDIATOR__CACHE_ID,
+				 getString("_UI_CacheMediator_cacheProtocolType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_cacheProtocolType_feature", "_UI_CacheMediator_type"),
+				 EsbPackage.Literals.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "General",
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Cache Scope feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addCacheScopePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CacheMediator_cacheScope_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_cacheScope_feature", "_UI_CacheMediator_type"),
-				 EsbPackage.Literals.CACHE_MEDIATOR__CACHE_SCOPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "General",
+				 "Protocol",
 				 null));
 	}
 
@@ -133,7 +112,7 @@ public class CacheMediatorItemProvider
 	 * This adds a property descriptor for the Cache Action feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void addCacheActionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -147,7 +126,7 @@ public class CacheMediatorItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "General",
+				 null,
 				 null));
 	}
 
@@ -169,7 +148,7 @@ public class CacheMediatorItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "General",
+				 "Protocol",
 				 null));
 	}
 
@@ -218,24 +197,24 @@ public class CacheMediatorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Implementation Type feature.
+	 * This adds a property descriptor for the Cache Protocol Methods feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected void addImplementationTypePropertyDescriptor(Object object) {
+	protected void addCacheProtocolMethodsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CacheMediator_implementationType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_implementationType_feature", "_UI_CacheMediator_type"),
-				 EsbPackage.Literals.CACHE_MEDIATOR__IMPLEMENTATION_TYPE,
+				 getString("_UI_CacheMediator_cacheProtocolMethods_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_cacheProtocolMethods_feature", "_UI_CacheMediator_type"),
+				 EsbPackage.Literals.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Implementation",
+				 "Protocol",
 				 null));
 	}
 
@@ -305,6 +284,50 @@ public class CacheMediatorItemProvider
 				 null));
 	}
 	
+
+	/**
+	 * This adds a property descriptor for the Headers To Exclude In Hash feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addHeadersToExcludeInHashPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CacheMediator_headersToExcludeInHash_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_headersToExcludeInHash_feature", "_UI_CacheMediator_type"),
+				 EsbPackage.Literals.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Protocol",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Response Codes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResponseCodesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CacheMediator_responseCodes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_responseCodes_feature", "_UI_CacheMediator_type"),
+				 EsbPackage.Literals.CACHE_MEDIATOR__RESPONSE_CODES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Protocol",
+				 null));
+	}
 
 	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
@@ -382,14 +405,16 @@ public class CacheMediatorItemProvider
 
 		switch (notification.getFeatureID(CacheMediator.class)) {
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
-			case EsbPackage.CACHE_MEDIATOR__CACHE_SCOPE:
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
 			case EsbPackage.CACHE_MEDIATOR__CACHE_ACTION:
 			case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR:
 			case EsbPackage.CACHE_MEDIATOR__CACHE_TIMEOUT:
 			case EsbPackage.CACHE_MEDIATOR__MAX_MESSAGE_SIZE:
-			case EsbPackage.CACHE_MEDIATOR__IMPLEMENTATION_TYPE:
+			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS:
 			case EsbPackage.CACHE_MEDIATOR__MAX_ENTRY_COUNT:
 			case EsbPackage.CACHE_MEDIATOR__SEQUENCE_TYPE:
+			case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH:
+			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.CACHE_MEDIATOR__INPUT_CONNECTOR:

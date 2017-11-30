@@ -66,5 +66,6 @@ public class EditPartConstants {
 	public static final String RMSEQEUENCE_MEDIATOR_ICON_PATH ="icons/ico20/rmsequence-mediator.gif";
 	public static final String ROUTER_MEDIATOR_ICON_PATH ="icons/ico20/router-mediator.gif";
 	public static final String SEQUENCE_MEDIATOR_ICON_PATH ="icons/ico20/sequence-mediator.gif";
+	public static final String AGGREGATE_MEDIATOR_ICON_PATH = "icons/ico20/aggregate-mediator.gif";
 
 }

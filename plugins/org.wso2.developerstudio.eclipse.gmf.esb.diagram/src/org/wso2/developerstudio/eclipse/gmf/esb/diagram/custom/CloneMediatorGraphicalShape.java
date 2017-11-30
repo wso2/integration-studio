@@ -27,7 +27,6 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
@@ -35,7 +34,8 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.DiagramCustomConstants;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.CLONE_MEDIATOR_ICON_PATH;
 
 /**
  * This class is the view representation of the clone mediator.
@@ -163,10 +163,7 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 		// Create inner rectangle inside the left side rectangle.
 		containerInsideLeftRectangle = createInnerRectangle(leftRectangle);
 
-		ImageDescriptor imgDesc = EsbDiagramEditorPlugin
-				.getBundledImageDescriptor(getIconPath());
-
-		Image image = imgDesc.createImage();
+		Image image = ImageHolder.getInstance().getMediatorImage(getIconPath());
 		Image scaled = new Image(Display.getDefault(), 30, 30);
 		GC gc = new GC(scaled);
 		gc.setAntialias(SWT.ON);
@@ -210,7 +207,7 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 		// Actual label to display which type this is.
 		WrappingLabel esbNodeTypeNameLabel2 = new WrappingLabel();
 		esbNodeTypeNameLabel2.setText(getNodeName());
-		esbNodeTypeNameLabel2.setForegroundColor(new Color(null, 0, 0, 0));
+		esbNodeTypeNameLabel2.setForegroundColor(new Color(null, 209, 52, 79));
 		esbNodeTypeNameLabel2.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 		esbNodeTypeNameLabel2.setAlignment(SWT.CENTER);
 		esbNodeTypeNameLabel2.setPreferredSize(new Dimension(64, 20));
@@ -234,12 +231,12 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 		innerRect.setCornerDimensions(new Dimension(1, 1));
 		innerRect.setOutline(false);
 		innerRect.setBackgroundColor(this.getBackgroundColor());
-		LineBorder innerRectBorder = new LineBorder(new Color(null, 90, 90, 90), 1,
+		LineBorder innerRectBorder = new LineBorder(new Color(null, 209, 52, 79), 1,
 				SWT.BORDER_SOLID);
 		innerRect.setBorder(innerRectBorder);
 		innerRect.setPreferredSize(new Dimension(95, 25));
 		innerRect.setMinimumSize(new Dimension(80, 100));
-		innerRect.setBackgroundColor(new Color(null, 233, 245, 215));
+		innerRect.setBackgroundColor(new Color(null, 255, 250, 251));
 
 		GridLayout innerRectLayout = new GridLayout();
 		innerRectLayout.numColumns = 1;
@@ -258,12 +255,12 @@ public class CloneMediatorGraphicalShape extends RoundedRectangle {
 		return innerRect;
 	}
 
-	public String getIconPath() {
-		return "icons/ico20/clone-mediator.gif";
-	}
-
 	public String getNodeName() {
 		return "Clone";
+	}
+
+	public String getIconPath() {
+		return CLONE_MEDIATOR_ICON_PATH;
 	}
 
 	public Color getLabelBackColor() {

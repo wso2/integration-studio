@@ -111,12 +111,10 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer{
 			
 			iterateMediator.setContinueParent(visualIterate.isContinueParent());
 			
-			/*
-			 * Do not serialize when Iterate ID is empty/null or contain
-			 * whitespace
-			 */
+			
+			//Do not serialize when Iterate ID is empty/null or contains whitespace			 
 			if (StringUtils.isNotBlank(visualIterate.getIterateID())) {
-				iterateMediator.setId(visualIterate.getIterateID());
+			    iterateMediator.setId(visualIterate.getIterateID());
 			}
 
 			Target target = new Target();

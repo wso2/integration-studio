@@ -151,18 +151,19 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		 */
 		content.append("<api xmlns=\"http://ws.apache.org/ns/synapse\" context=\"");
 		if (artifactModel.getContext().startsWith("/")) {
-			content.append(artifactModel.getContext());
+		    content.append(artifactModel.getContext());
 		} else {
-			content.append("/").append(artifactModel.getContext());
+		    content.append("/").append(artifactModel.getContext());
 		}
 		content.append("\" name=\"").append(artifactModel.getName()).append("\"");
 		if (artifactModel.getHostname() != null && artifactModel.getHostname().length() > 0) {
-			content.append(" hostname=\"").append(artifactModel.getHostname()).append("\"");
+		    content.append(" hostname=\"").append(artifactModel.getHostname()).append("\"");
 		}
 		if (artifactModel.getPort() > 0) {
-			content.append(" port=\"").append(artifactModel.getPort()).append("\"");
+		    content.append(" port=\"").append(artifactModel.getPort()).append("\"");
 		}
-		content.append(">\n<resource methods=\"GET\"><inSequence/><outSequence/><faultSequence/></resource>\n</api>");
+		content.append(">\n<resource methods=\"GET\"><inSequence/><outSequence/><faultSequence/>"
+				+ "</resource>\n</api>");
 		return content.toString();
 	}
 	

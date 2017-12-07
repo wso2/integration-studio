@@ -78,67 +78,66 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 		org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator();
 		setCommonProperties(cacheMediator, visualCache);
 		{
-			if (visualCache.getCacheAction().getValue() == 0) {
-				cacheMediator.setProtocolType(visualCache.getCacheProtocolType().getLiteral());
-				if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(visualCache.getCacheProtocolType().getLiteral())) {
-					if (StringUtils.isNotBlank(visualCache.getCacheProtocolMethods())) {
-					    cacheMediator.setHTTPMethodsToCache(visualCache.getCacheProtocolMethods().split(","));
-					} else {
-					    cacheMediator.setHTTPMethodsToCache("*");
-					}
-					if (StringUtils.isNotBlank(visualCache.getResponseCodes())) {
-					    cacheMediator.setResponseCodes(visualCache.getResponseCodes());
-					} else {
-					    cacheMediator.setResponseCodes(".*");
-					}
-					if (StringUtils.isNotBlank(visualCache.getHeadersToExcludeInHash())) {
-					    cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
-					}
-				    cacheMediator.setHttpMethod("http");
-				}
-				cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
-				cacheMediator.setTimeout(visualCache.getCacheTimeout());
-				DigestGenerator httpRequestHashGenerator = null;
-				if (visualCache.getHashGenerator().equals("HTTP_REQUEST_HASH_GENERATOR")) {
-				    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator();
-				} else if (visualCache.getHashGenerator().toLowerCase().contains("requesthashgenerator")) {
-				    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.REQUESTHASHGenerator();
-				} else if (visualCache.getHashGenerator().toLowerCase().contains("domhashgenerator")) {
-				    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator();
-				} else {
-					throw new TransformerException("Digest generator not found");
-				}
-				cacheMediator.setDigestGenerator(httpRequestHashGenerator);
+            if (visualCache.getCacheAction().getValue() == 0) {
+                cacheMediator.setProtocolType(visualCache.getCacheProtocolType().getLiteral());
+                if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(visualCache.getCacheProtocolType().getLiteral())) {
+                    if (StringUtils.isNotBlank(visualCache.getCacheProtocolMethods())) {
+                        cacheMediator.setHTTPMethodsToCache(visualCache.getCacheProtocolMethods().split(","));
+                    } else {
+                        cacheMediator.setHTTPMethodsToCache("*");
+                    }
+                    if (StringUtils.isNotBlank(visualCache.getResponseCodes())) {
+                        cacheMediator.setResponseCodes(visualCache.getResponseCodes());
+                    } else {
+                        cacheMediator.setResponseCodes(".*");
+                    }
+                    if (StringUtils.isNotBlank(visualCache.getHeadersToExcludeInHash())) {
+                        cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
+                    }
+                    cacheMediator.setHttpMethod("http");
+                }
+                cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
+                cacheMediator.setTimeout(visualCache.getCacheTimeout());
+                DigestGenerator httpRequestHashGenerator = null;
+                if (visualCache.getHashGenerator().equals("HTTP_REQUEST_HASH_GENERATOR")) {
+                    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator();
+                } else if (visualCache.getHashGenerator().toLowerCase().contains("requesthashgenerator")) {
+                    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.REQUESTHASHGenerator();
+                } else if (visualCache.getHashGenerator().toLowerCase().contains("domhashgenerator")) {
+                    httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator();
+                } else {
+                    throw new TransformerException("Digest generator not found");
+                }
+                cacheMediator.setDigestGenerator(httpRequestHashGenerator);
+			    cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
+			    cacheMediator.setCollector(false);
+		    }
 
-				cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
-				cacheMediator.setCollector(false);
-			}
+            if (visualCache.getCacheAction().getValue() == 1) {
+                cacheMediator.setCollector(true);
+            }
 
-			if (visualCache.getCacheAction().getValue() == 1) {
-				cacheMediator.setCollector(true);
-			}
+            if (visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
+                if (visualCache.getSequenceKey() != null) {
 
-			if (visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
-				if (visualCache.getSequenceKey() != null) {
+                    RegistryKeyProperty regKeyProperty = visualCache.getSequenceKey();
+                    cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
+                }
 
-					RegistryKeyProperty regKeyProperty = visualCache.getSequenceKey();
-					cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
-				}
+            } else {
+                SequenceMediator onCacheHitSequence = new SequenceMediator();
+                TransformationInfo newOnCacheHitInfo = new TransformationInfo();
+                newOnCacheHitInfo.setTraversalDirection(info.getTraversalDirection());
+                newOnCacheHitInfo.setSynapseConfiguration(info.getSynapseConfiguration());
+                newOnCacheHitInfo.setOriginInSequence(info.getOriginInSequence());
+                newOnCacheHitInfo.setOriginOutSequence(info.getOriginOutSequence());
+                newOnCacheHitInfo.setCurrentProxy(info.getCurrentProxy());
+                newOnCacheHitInfo.setParentSequence(onCacheHitSequence);
+                doTransform(newOnCacheHitInfo, visualCache.getOnHitOutputConnector());
+                cacheMediator.setOnCacheHitSequence(onCacheHitSequence);
+            }
 
-			} else {
-				SequenceMediator onCacheHitSequence = new SequenceMediator();
-				TransformationInfo newOnCacheHitInfo = new TransformationInfo();
-				newOnCacheHitInfo.setTraversalDirection(info.getTraversalDirection());
-				newOnCacheHitInfo.setSynapseConfiguration(info.getSynapseConfiguration());
-				newOnCacheHitInfo.setOriginInSequence(info.getOriginInSequence());
-				newOnCacheHitInfo.setOriginOutSequence(info.getOriginOutSequence());
-				newOnCacheHitInfo.setCurrentProxy(info.getCurrentProxy());
-				newOnCacheHitInfo.setParentSequence(onCacheHitSequence);
-				doTransform(newOnCacheHitInfo, visualCache.getOnHitOutputConnector());
-				cacheMediator.setOnCacheHitSequence(onCacheHitSequence);
-			}
-
-		}
-		return cacheMediator;
-	}
+        }
+        return cacheMediator;
+    }
 }

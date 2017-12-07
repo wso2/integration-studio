@@ -715,6 +715,12 @@ public class InboundEndpointDeserializer extends
                             executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS,
                                     MQTTSubscriptionQOS.TWO);
                         }
+                    }  else if (paramEntry.getKey().equals(InboundEndpointConstants.CONTENT_TYPE)) {
+                        if (paramEntry.getValue().equals(InboundEndpointConstants.APPLICATION_XML)) {
+                            executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.XML);
+                        } else {
+                            executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.JSON);
+                        }
                     }
                 }
             }

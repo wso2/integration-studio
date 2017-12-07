@@ -9724,6 +9724,96 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMessageStore_Resequencepolling() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(30);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_ResequenceDatabaseTable() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(31);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_ResequenceConnectionInformation() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(32);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_ResequenceDriver() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(33);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_ResequenceURL() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(34);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_ResequenceUser() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(35);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_ResequencePassword() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(36);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_ResequenceDatasourceName() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(37);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_ResequenceXpath() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(38);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMessageStore_ResequenceXpathAttr() {
+		return (EReference)messageStoreEClass.getEStructuralFeatures().get(39);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMessageProcessorParameter() {
 		return messageProcessorParameterEClass;
 	}
@@ -20329,6 +20419,16 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(messageStoreEClass, MESSAGE_STORE__PARAMETERS);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__FAILOVER_MESSAGE_STORE);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RESEQUENCEPOLLING);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RESEQUENCE_DRIVER);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RESEQUENCE_URL);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RESEQUENCE_USER);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RESEQUENCE_PASSWORD);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RESEQUENCE_XPATH);
+		createEReference(messageStoreEClass, MESSAGE_STORE__RESEQUENCE_XPATH_ATTR);
 
 		messageProcessorParameterEClass = createEClass(MESSAGE_PROCESSOR_PARAMETER);
 		createEAttribute(messageProcessorParameterEClass, MESSAGE_PROCESSOR_PARAMETER__PARAMETER_NAME);
@@ -22716,6 +22816,16 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getMessageStore_Parameters(), this.getMessageStoreParameter(), null, "parameters", null, 0, -1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_EnableProducerGuaranteedDelivery(), ecorePackage.getEBoolean(), "enableProducerGuaranteedDelivery", "false", 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_FailoverMessageStore(), ecorePackage.getEString(), "failoverMessageStore", "", 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_Resequencepolling(), ecorePackage.getEString(), "resequencepolling", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_ResequenceDatabaseTable(), ecorePackage.getEString(), "resequenceDatabaseTable", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_ResequenceConnectionInformation(), this.getJDBCConnectionInformationType(), "resequenceConnectionInformation", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_ResequenceDriver(), ecorePackage.getEString(), "resequenceDriver", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_ResequenceURL(), ecorePackage.getEString(), "resequenceURL", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_ResequenceUser(), ecorePackage.getEString(), "resequenceUser", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_ResequencePassword(), ecorePackage.getEString(), "resequencePassword", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_ResequenceDatasourceName(), ecorePackage.getEString(), "resequenceDatasourceName", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_ResequenceXpath(), ecorePackage.getEString(), "resequenceXpath", "", 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMessageStore_ResequenceXpathAttr(), this.getNamespacedProperty(), null, "resequenceXpathAttr", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(messageProcessorParameterEClass, MessageProcessorParameter.class, "MessageProcessorParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMessageProcessorParameter_ParameterName(), ecorePackage.getEString(), "parameterName", null, 0, 1, MessageProcessorParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -23645,6 +23755,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(messageStoreTypeEEnum, MessageStoreType.CUSTOM);
 		addEEnumLiteral(messageStoreTypeEEnum, MessageStoreType.RABBITMQ);
 		addEEnumLiteral(messageStoreTypeEEnum, MessageStoreType.JDBC);
+		addEEnumLiteral(messageStoreTypeEEnum, MessageStoreType.RESEQUENCE);
 
 		initEEnum(jmsSpecVersionEEnum, JMSSpecVersion.class, "JMSSpecVersion");
 		addEEnumLiteral(jmsSpecVersionEEnum, JMSSpecVersion.JMS_11);

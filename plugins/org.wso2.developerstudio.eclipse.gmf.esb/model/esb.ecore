@@ -2641,6 +2641,7 @@
     <eLiterals name="CUSTOM" value="2"/>
     <eLiterals name="RABBITMQ" value="3"/>
     <eLiterals name="JDBC" value="4"/>
+    <eLiterals name="RESEQUENCE" value="5" literal="RESEQUENCE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="JMSSpecVersion">
     <eLiterals name="JMS_1_1" literal="1.1"/>
@@ -2692,6 +2693,20 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="failoverMessageStore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resequencepolling" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resequenceDatabaseTable"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resequenceConnectionInformation"
+        eType="#//JDBCConnectionInformationType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resequenceDriver" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resequenceURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resequenceUser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resequencePassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resequenceDatasourceName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resequenceXpath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resequenceXpathAttr" eType="#//NamespacedProperty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MessageProcessorType">
     <eLiterals name="SCHEDULED_MSG_FORWARDING" literal="SCHEDULED_MSG_FORWARDING"/>

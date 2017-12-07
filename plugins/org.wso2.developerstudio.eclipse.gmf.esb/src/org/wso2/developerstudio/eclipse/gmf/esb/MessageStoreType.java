@@ -75,7 +75,15 @@ public enum MessageStoreType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	JDBC(4, "JDBC", "JDBC");
+	JDBC(4, "JDBC", "JDBC"), /**
+	 * The '<em><b>RESEQUENCE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RESEQUENCE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	RESEQUENCE(5, "RESEQUENCE", "RESEQUENCE");
 
 	/**
 	 * The '<em><b>IN MEMORY</b></em>' literal value.
@@ -153,6 +161,21 @@ public enum MessageStoreType implements Enumerator {
 	public static final int JDBC_VALUE = 4;
 
 	/**
+	 * The '<em><b>RESEQUENCE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>RESEQUENCE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #RESEQUENCE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RESEQUENCE_VALUE = 5;
+
+	/**
 	 * An array of all the '<em><b>Message Store Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,6 +188,7 @@ public enum MessageStoreType implements Enumerator {
 			CUSTOM,
 			RABBITMQ,
 			JDBC,
+			RESEQUENCE,
 		};
 
 	/**
@@ -226,6 +250,7 @@ public enum MessageStoreType implements Enumerator {
 			case CUSTOM_VALUE: return CUSTOM;
 			case RABBITMQ_VALUE: return RABBITMQ;
 			case JDBC_VALUE: return JDBC;
+			case RESEQUENCE_VALUE: return RESEQUENCE;
 		}
 		return null;
 	}

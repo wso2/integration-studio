@@ -30,9 +30,12 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.MessageStoreFactory;
+import org.apache.synapse.config.xml.SynapsePath;
+import org.apache.synapse.config.xml.SynapsePathFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.message.store.MessageStore;
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageStore;
 
 /**
@@ -46,6 +49,7 @@ public class DummyMessageStoreFactory {
 	    public static final QName CLASS_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "class");
 	    public static final QName NAME_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "name");
 	    public static final QName SEQUENCE_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "sequence");
+	    public static final QName EXPRESSION_Q = new QName(XMLConfigConstants.NULL_NAMESPACE,"expression");
 
 	    public static final QName PARAMETER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE,
 	            "parameter");
@@ -85,27 +89,51 @@ public class DummyMessageStoreFactory {
 	    }
 
 
-	    private static Map<String, Object> getParameters(OMElement elem) {
-	        Iterator<?> params = elem.getChildrenWithName(PARAMETER_Q);
-	        Map<String, Object> parameters = new HashMap<String, Object>();
+	private static Map<String, Object> getParameters(OMElement elem) {
+		Map<String, Object> parameters = null;
+		try {
+			Iterator params = elem.getChildrenWithName(PARAMETER_Q);
+			parameters = new HashMap<>();
+			while (params.hasNext()) {
+				Object o = params.next();
+				if (o instanceof OMElement) {
+					OMElement prop = (OMElement) o;
+					OMAttribute paramName = prop.getAttribute(NAME_Q);
+					OMAttribute expression = prop.getAttribute(EXPRESSION_Q);
+					String paramValue = prop.getText();
+					if (expression != null) {
+						SynapsePath xPathExpression = SynapsePathFactory.getSynapsePath(prop, EXPRESSION_Q);
+						registerParameter(parameters, paramName, xPathExpression);
+					} else {
+						registerParameter(parameters, paramName, paramValue);
+					}
+				}
+			}
+		} catch (JaxenException e) {
+			throw new SynapseException("Error occurred while extracting the parameters", e);
+		}
+		return parameters;
+	}
 
-	        while (params.hasNext()) {
-	            Object o = params.next();
-	            if (o instanceof OMElement) {
-	                OMElement prop = (OMElement) o;
-	                OMAttribute paramName = prop.getAttribute(NAME_Q);
-	                String paramValue = prop.getText();
-	                if (paramName != null) {
-	                    if (paramValue != null) {
-	                        parameters.put(paramName.getAttributeValue(), paramValue);
-	                    }
-	                } else {
-	                    handleException("Invalid MessageStore parameter - Parameter must have a name ");
-	                }
-	            }
-	        }
-	        return parameters;
-	    }
+	/**
+	 * Register the extracted parameter in the list.
+	 *
+	 * @param parameters
+	 *            the list of parameters which should be registered.
+	 * @param paramName
+	 *            the name of the parameter.
+	 * @param paramValue
+	 *            the value of the parameter.
+	 * @param <T>
+	 *            the type of the parameter.
+	 */
+	private static <T> void registerParameter(Map<String, Object> parameters, OMAttribute paramName, T paramValue) {
+		if (paramName != null && paramValue != null) {
+			parameters.put(paramName.getAttributeValue(), paramValue);
+		} else {
+			handleException("Invalid MessageStore parameter - Parameter must have a name ");
+		}
+	}
 
 	    private static void handleException(String msg) {
 	        log.error(msg);

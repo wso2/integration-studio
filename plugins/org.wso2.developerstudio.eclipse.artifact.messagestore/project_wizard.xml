@@ -154,6 +154,35 @@
                 controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.AvailableMessageStoreList">Failover Message Store</data>
 			<!-- JDBC : end -->      
 
+			<!-- reseqeunce : begin -->
+			<data modelProperty="resequencer.database-table" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Database Table*</data>
+			<data modelProperty="resequencer.connection-information" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList">Connection Information*</data>
+			<data modelProperty="resequencer.driver" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Driver*</data>
+			<data modelProperty="resequencer.url" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">URL*</data>
+			<data modelProperty="resequencer.user" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">User*</data>
+			<data modelProperty="resequencer.password" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Password</data>
+			<data modelProperty="resequencer.datasource-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Datasource Name</data>
+			<data modelProperty="resequencer.polling.count" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Polling Count</data>
+			<data modelProperty="resequencer.xpath" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">XPath</data>
+			<data modelProperty="resequencer.xpath.namespaces" type="link"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController" controlData="align=right">&lt;a&gt;Add XPath namespaces...&lt;/a&gt;</data>
+			<data modelProperty="resequencer.enable.producer.guaranteed.delivery" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.GuaranteedDeliveryEnableDisableList">Enable Producer Guaranteed Delivery</data>
+			<data modelProperty="resequencer.failover.message.store" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.AvailableMessageStoreList">Failover Message Store</data>
+			<!-- reseqeunce : end -->
 			<group id ="location"/>	
 			<data modelProperty="save.location" type="workspacefolder"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"

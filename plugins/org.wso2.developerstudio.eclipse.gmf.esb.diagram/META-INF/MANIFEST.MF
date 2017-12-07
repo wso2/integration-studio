@@ -17,7 +17,8 @@ Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.part,
- org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers
+ org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers,
+ org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.core.expressions,

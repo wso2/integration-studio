@@ -60,6 +60,7 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.InMe
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JDBC;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JMS;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.RabbitMQ;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.Resequence;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.WSO2MB;
 /**
  * 
@@ -74,7 +75,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private String[] messageStoreTypes = {"In-Memory Message Store", "JMS Message Store", "WSO2 MB Message Store", "RabbitMQ Message Store", "JDBC Message Store", "Custom Message Store"};
+	private String[] messageStoreTypes = {"In-Memory Message Store", "JMS Message Store", "WSO2 MB Message Store", "RabbitMQ Message Store", "JDBC Message Store", "Resequence Message Store", "Custom Message Store"};
 	@SuppressWarnings("unused")
 	private IMessageStore currentMessageStore = null;
 //	private ArrayList<Section> sectionsList = new ArrayList<Section>();
@@ -90,6 +91,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 	private static final String WSO2MB = "wso2mb";
 	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
 	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
+	private static final String RESEQUENCE_MS_FQN = "org.apache.synapse.message.store.impl.resequencer.ResequenceMessageStore";
 	private static final String customStore = "customStore";
 	
 	Section guaranteedDeliverySection;
@@ -136,6 +138,7 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 		storeMap.put(WSO2MB, new WSO2MB(form, toolkit, this));
 		storeMap.put(RABBITMQ_MS_FQN, new RabbitMQ(form, toolkit, this));
 		storeMap.put(JDBC_MS_FQN, new JDBC(form, toolkit, this));
+		storeMap.put(RESEQUENCE_MS_FQN, new Resequence(form, toolkit, this));
 		storeMap.put(customStore, new CustomStore(form, toolkit, this));
 
 
@@ -213,6 +216,8 @@ public class MessageStoreFormPage extends AbstractEsbFormPage {
 				} else if (storeType.getSelectionIndex() == 4) {
 					currentMessageStore = storeMap.get(JDBC_MS_FQN);
 				} else if (storeType.getSelectionIndex() == 5) {
+					currentMessageStore = storeMap.get(RESEQUENCE_MS_FQN);
+				} else if (storeType.getSelectionIndex() == 6) {
 					currentMessageStore = storeMap.get(customStore);
 				}
 				

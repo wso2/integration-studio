@@ -247,7 +247,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 				}
 				if(ieModel.getProtocol().equals(RABBITMQ)){
 					inboundEndpoint.addParameter(RABBITMQ_CONNECTION_FACTORY, "connection_factory");
-					inboundEndpoint.addParameter(RABBITMQ_SERVER_HOST_NAME, "loclahost");
+					inboundEndpoint.addParameter(RABBITMQ_SERVER_HOST_NAME, "localhost");
 					inboundEndpoint.addParameter(RABBITMQ_SERVER_PORT, "5672");
 					inboundEndpoint.addParameter(RABBITMQ_SERVER_USER_NAME, "guest");
 					inboundEndpoint.addParameter(RABBITMQ_SERVER_PASSWORD, "guest");

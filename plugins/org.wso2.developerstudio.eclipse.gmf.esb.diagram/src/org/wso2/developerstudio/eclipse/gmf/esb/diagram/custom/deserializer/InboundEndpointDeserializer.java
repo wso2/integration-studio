@@ -60,6 +60,14 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION;
+
 
 import java.util.Map;
 
@@ -729,7 +737,28 @@ public class InboundEndpointDeserializer extends
                         } else {
                             executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.JSON);
                         }
-                    }
+                    } else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_LOCATION)) {
+	                 	executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION, 
+	                 			paramEntry.getValue());                    	
+	                } else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_TYPE)) {
+	                 	executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE, 
+	                 			paramEntry.getValue());                    	
+	                } else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_PASSWORD)) {
+	                 	executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD, 
+	                 			paramEntry.getValue());                    	
+	                } else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_LOCATION)) {
+	                 	executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION, 
+	                 			paramEntry.getValue());                    	
+	                } else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_TYPE)) {
+	                 	executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE, 
+	                 			paramEntry.getValue());                    	
+	                } else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_PASSWORD)) {
+	                 	executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD, 
+	                 			paramEntry.getValue());                    	
+	                } else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_MQTT_SSL_VERSION)) {
+	                 	executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION, 
+	                 			paramEntry.getValue()); 
+	                }
                 }
             }
         } else if (InboundEndpointType.RABBITMQ.equals(inboundEndpointType)) {

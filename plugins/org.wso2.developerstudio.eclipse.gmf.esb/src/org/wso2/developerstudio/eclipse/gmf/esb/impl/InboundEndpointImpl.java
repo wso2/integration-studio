@@ -250,10 +250,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
-<<<<<<< 3c0031ea27e5dca37970a70c2227b26c19281d41
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJmsRetriesBeforeSuspension <em>Transport Jms Retries Before Suspension</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJmsPollingSuspensionPeriod <em>Transport Jms Polling Suspension Period</em>}</li>
-=======
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}</li>
@@ -261,7 +259,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}</li>
->>>>>>> Add mqtt inbound endpoit ssl parameters
  * </ul>
  *
  * @generated
@@ -4030,7 +4027,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected boolean statisticsEnabled = STATISTICS_ENABLED_EDEFAULT;
 
 	/**
-<<<<<<< 3c0031ea27e5dca37970a70c2227b26c19281d41
 	 * The default value of the '{@link #getTransportJmsRetriesBeforeSuspension() <em>Transport Jms Retries Before Suspension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4069,7 +4065,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String transportJmsPollingSuspensionPeriod = TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT;
-=======
+	
+	/**
 	 * The default value of the '{@link #getTransportMQTTSslKeystoreLocation() <em>Transport MQTT Ssl Keystore Location</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4208,8 +4205,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String transportMQTTSslVersion = TRANSPORT_MQTT_SSL_VERSION_EDEFAULT;
->>>>>>> Add mqtt inbound endpoit ssl parameters
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated NOT
@@ -8519,12 +8514,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return isTraceEnabled();
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				return isStatisticsEnabled();
-<<<<<<< 3c0031ea27e5dca37970a70c2227b26c19281d41
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
 				return getTransportJmsRetriesBeforeSuspension();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
 				return getTransportJmsPollingSuspensionPeriod();
-=======
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
 				return getTransportMQTTSslKeystoreLocation();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
@@ -8539,7 +8532,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportMQTTSslTruststorePassword();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
 				return getTransportMQTTSslVersion();
->>>>>>> Add mqtt inbound endpoit ssl parameters
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -9114,13 +9106,11 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				setStatisticsEnabled((Boolean)newValue);
 				return;
-<<<<<<< 3c0031ea27e5dca37970a70c2227b26c19281d41
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
 				setTransportJmsRetriesBeforeSuspension((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
 				setTransportJmsPollingSuspensionPeriod((String)newValue);
-=======
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
 				setTransportMQTTSslKeystoreLocation((String)newValue);
 				return;
@@ -9141,7 +9131,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
 				setTransportMQTTSslVersion((String)newValue);
->>>>>>> Add mqtt inbound endpoit ssl parameters
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -9715,13 +9704,11 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
 				return;
-<<<<<<< 3c0031ea27e5dca37970a70c2227b26c19281d41
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
 				setTransportJmsRetriesBeforeSuspension(TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
 				setTransportJmsPollingSuspensionPeriod(TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT);
-=======
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
 				setTransportMQTTSslKeystoreLocation(TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT);
 				return;
@@ -9742,7 +9729,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
 				setTransportMQTTSslVersion(TRANSPORT_MQTT_SSL_VERSION_EDEFAULT);
->>>>>>> Add mqtt inbound endpoit ssl parameters
 				return;
 		}
 		super.eUnset(featureID);
@@ -10129,12 +10115,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return traceEnabled != TRACE_ENABLED_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
-<<<<<<< 3c0031ea27e5dca37970a70c2227b26c19281d41
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
 				return TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT == null ? transportJmsRetriesBeforeSuspension != null : !TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT.equals(transportJmsRetriesBeforeSuspension);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
 				return TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT == null ? transportJmsPollingSuspensionPeriod != null : !TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT.equals(transportJmsPollingSuspensionPeriod);
-=======
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
 				return TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT == null ? transportMQTTSslKeystoreLocation != null : !TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT.equals(transportMQTTSslKeystoreLocation);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
@@ -10149,7 +10133,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT == null ? transportMQTTSslTruststorePassword != null : !TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT.equals(transportMQTTSslTruststorePassword);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
 				return TRANSPORT_MQTT_SSL_VERSION_EDEFAULT == null ? transportMQTTSslVersion != null : !TRANSPORT_MQTT_SSL_VERSION_EDEFAULT.equals(transportMQTTSslVersion);
->>>>>>> Add mqtt inbound endpoit ssl parameters
 		}
 		return super.eIsSet(featureID);
 	}
@@ -10499,6 +10482,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportRabbitMqConnectionRetryInterval);
 		result.append(", transportRabbitMqServerRetryInterval: ");
 		result.append(transportRabbitMqServerRetryInterval);
+		result.append(", transportRabbitMqConsumerQos: ");
+		result.append(transportRabbitMqConsumerQos);
 		result.append(", wsInboundPort: ");
 		result.append(wsInboundPort);
 		result.append(", wsClientSideBroadcastLevel: ");
@@ -10523,12 +10508,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(traceEnabled);
 		result.append(", statisticsEnabled: ");
 		result.append(statisticsEnabled);
-<<<<<<< 3c0031ea27e5dca37970a70c2227b26c19281d41
 		result.append(", transportJmsRetriesBeforeSuspension: ");
 		result.append(transportJmsRetriesBeforeSuspension);
 		result.append(", transportJmsPollingSuspensionPeriod: ");
 		result.append(transportJmsPollingSuspensionPeriod);
-=======
 		result.append(", transportMQTTSslKeystoreLocation: ");
 		result.append(transportMQTTSslKeystoreLocation);
 		result.append(", transportMQTTSslKeystoreType: ");
@@ -10543,7 +10526,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportMQTTSslTruststorePassword);
 		result.append(", transportMQTTSslVersion: ");
 		result.append(transportMQTTSslVersion);
->>>>>>> Add mqtt inbound endpoit ssl parameters
 		result.append(')');
 		return result.toString();
 	}

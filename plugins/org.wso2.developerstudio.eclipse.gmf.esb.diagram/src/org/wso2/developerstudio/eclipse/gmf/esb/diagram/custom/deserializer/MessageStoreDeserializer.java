@@ -388,48 +388,34 @@ public class MessageStoreDeserializer
 							if (StringUtils.isNotBlank(value)) {
 								executeSetValueCommand(MESSAGE_STORE__FAILOVER_MESSAGE_STORE, value);
 							}
-						} else if (param.getKey().equals(STORE_RESEQUENCE_POLLING_COUNT)) {
-							if (StringUtils.isNotBlank(value)) {
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCEPOLLING, value);
-							}
-						} else if (param.getKey().equals(STORE_RESEQUENCE_XPATH)) {
-							if (param.getValue() instanceof SynapseXPath) {
-								SynapseXPath xpath = (SynapseXPath) param.getValue();
-								NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_XPATH_ATTR, namespaceProp);
-							}
-						} else if (param.getKey().equals(STORE_RESEQUENCE_DS_NAME)) {
-							if (StringUtils.isNotBlank(value)) {
-								// Set connection information to datasource
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+						} else if (param.getKey().equals(STORE_RESEQUENCE_POLLING_COUNT) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCEPOLLING, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_XPATH) && param.getValue() instanceof SynapseXPath) {
+							SynapseXPath xpath = (SynapseXPath) param.getValue();
+							NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_XPATH_ATTR, namespaceProp);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_DS_NAME) && StringUtils.isNotBlank(value)) {
+							// Set connection information to datasource
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
 										JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE);
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME, value);
-								}
-						} else if (param.getKey().equals(STORE_RESEQUENCE_DRIVER)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_DRIVER) && StringUtils.isNotBlank(value)) {
 							// Set connection information to pool
-							if (StringUtils.isNotBlank(value)) {
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
 										JDBCConnectionInformationType.JDBC_POOL);
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_DRIVER, value);
-							}
-						} else if (param.getKey().equals(STORE_RESEQUENCE_CONNECTION_URL)) {
-							if (StringUtils.isNotBlank(value)) {
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_DRIVER, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_CONNECTION_URL) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
 										JDBCConnectionInformationType.JDBC_POOL);
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_URL, value);
-							}
-						} else if (param.getKey().equals(STORE_RESEQUENCE_USERNAME)) {
-							if (StringUtils.isNotBlank(value)) {
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_URL, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_USERNAME) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
 										JDBCConnectionInformationType.JDBC_POOL);
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_USER, value);
-							}
-						} else if (param.getKey().equals(STORE_RESEQUENCE_PASSWORD)) {
-							if (StringUtils.isNotBlank(value)) {
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_USER, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_PASSWORD) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
 										JDBCConnectionInformationType.JDBC_POOL);
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_PASSWORD, value);
-							}
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_PASSWORD, value);
 						}
 					}
 				} else {

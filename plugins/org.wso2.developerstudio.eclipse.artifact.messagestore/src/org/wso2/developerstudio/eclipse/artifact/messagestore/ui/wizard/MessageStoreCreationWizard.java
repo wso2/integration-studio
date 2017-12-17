@@ -423,10 +423,9 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 					if (StringUtils.isNotBlank(messageStoreModel.getResequencePassword())) {
 						parameters.put(STORE_RESEQUENCE_PASSWORD, messageStoreModel.getResequencePassword());
 					}
-				} else if (JDBCConnectionInformationType.CARBON_DATASOURCE.toString().equals(resequenceConnectionInformation)) {
-					if (StringUtils.isNotBlank(messageStoreModel.getResequenceDatasourceName())) {
-						parameters.put(STORE_RESEQUENCE_DS_NAME, messageStoreModel.getResequenceDatasourceName());
-					}
+				} else if (JDBCConnectionInformationType.CARBON_DATASOURCE.toString().equals(resequenceConnectionInformation) 
+						&& StringUtils.isNotBlank(messageStoreModel.getResequenceDatasourceName())) {
+					parameters.put(STORE_RESEQUENCE_DS_NAME, messageStoreModel.getResequenceDatasourceName());
 				}
 			}
 		}

@@ -126,33 +126,20 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			if (jdbc && isCarbonDataSource) {
 				CommonFieldValidator.validateRequiredField(value, "JDBC Datasource Name cannot be empty");
 			}
-		} else if (key.equals(FIELD_RESEQUENCER_DATABASE_TABLE)) {
-			if (resequence) {
-				CommonFieldValidator.validateRequiredField(value, "Database Table cannot be empty");
-			}
-		} else if (key.equals(FIELD_RESEQUENCER_POLLING_COUNT)) {
-			if (resequence) {
-				if(!StringUtils.isEmpty((String) value) && !StringUtils.isNumeric((String) value)) {
-					throw new FieldValidationException("Polling count should be numeric");
-				}
-			}
-		} else if (key.equals(FIELD_RESEQUENCER_DRIVER)) {
-			if (resequence && !isCarbonDataSource) {
-				CommonFieldValidator.validateRequiredField(value, "Resequence Driver cannot be empty");
-			}
-		} else if (key.equals(FIELD_RESEQUENCER_URL)) {
-			if (resequence && !isCarbonDataSource) {
-				CommonFieldValidator.validateRequiredField(value, "Resequence URL cannot be empty");
-				CommonFieldValidator.isValidUrl(value.toString(), "JDBC");
-			}
-		} else if (key.equals(FIELD_RESEQUENCER_USER)) {
-			if (resequence && !isCarbonDataSource) {
-				CommonFieldValidator.validateRequiredField(value, "Resequence User cannot be empty");
-			}
-		} else if (key.equals(FIELD_RESEQUENCER_DATASOURCE_NAME)) {
-			if (resequence && isCarbonDataSource) {
-				CommonFieldValidator.validateRequiredField(value, "Resequence Datasource Name cannot be empty");
-			}
+		} else if (key.equals(FIELD_RESEQUENCER_DATABASE_TABLE) && resequence) {
+			CommonFieldValidator.validateRequiredField(value, "Database Table cannot be empty");
+		} else if (key.equals(FIELD_RESEQUENCER_POLLING_COUNT) && resequence && 
+				!StringUtils.isEmpty((String) value) && !StringUtils.isNumeric((String) value)) {
+			throw new FieldValidationException("Polling count should be numeric");
+		} else if (key.equals(FIELD_RESEQUENCER_DRIVER) && resequence && !isCarbonDataSource) {
+			CommonFieldValidator.validateRequiredField(value, "Resequence Driver cannot be empty");
+		} else if (key.equals(FIELD_RESEQUENCER_URL) && resequence && !isCarbonDataSource) {
+			CommonFieldValidator.validateRequiredField(value, "Resequence URL cannot be empty");
+			CommonFieldValidator.isValidUrl(value.toString(), "JDBC");
+		} else if (key.equals(FIELD_RESEQUENCER_USER) && resequence && !isCarbonDataSource) {
+			CommonFieldValidator.validateRequiredField(value, "Resequence User cannot be empty");
+		} else if (key.equals(FIELD_RESEQUENCER_DATASOURCE_NAME) && resequence && isCarbonDataSource) {
+			CommonFieldValidator.validateRequiredField(value, "Resequence Datasource Name cannot be empty");
 		} else if (key.equals(FIELD_SAVE_LOCATION)) {
 			IResource resource = (IResource) value;
 			if (resource == null || !resource.exists())

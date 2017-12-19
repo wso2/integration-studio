@@ -372,10 +372,8 @@ public class MessageStoreDeserializer
 
 					for (Entry<String, Object> param : params.entrySet()) {
 						String value = param.getValue().toString();
-						if (param.getKey().equals(STORE_RESEQUENCE_TABLE)) {
-							if (StringUtils.isNotBlank(value)) {
-								executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE, value);
-							}
+						if (param.getKey().equals(STORE_RESEQUENCE_TABLE) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE, value);
 						} else if (param.getKey().equals(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE)) {
 							if (value != null) {
 								if ("true".equals(value)) {
@@ -384,10 +382,8 @@ public class MessageStoreDeserializer
 									executeSetValueCommand(MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, false);
 								}
 							}
-						} else if (param.getKey().equals(STORE_FAILOVER_MESSAGE_STORE_NAME)) {
-							if (StringUtils.isNotBlank(value)) {
-								executeSetValueCommand(MESSAGE_STORE__FAILOVER_MESSAGE_STORE, value);
-							}
+						} else if (param.getKey().equals(STORE_FAILOVER_MESSAGE_STORE_NAME) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__FAILOVER_MESSAGE_STORE, value);
 						} else if (param.getKey().equals(STORE_RESEQUENCE_POLLING_COUNT) && StringUtils.isNotBlank(value)) {
 							executeSetValueCommand(MESSAGE_STORE__RESEQUENCEPOLLING, value);
 						} else if (param.getKey().equals(STORE_RESEQUENCE_XPATH) && param.getValue() instanceof SynapseXPath) {

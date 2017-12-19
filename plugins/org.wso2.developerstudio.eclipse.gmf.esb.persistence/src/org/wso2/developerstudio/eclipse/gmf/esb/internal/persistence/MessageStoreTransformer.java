@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -25,22 +26,30 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.synapse.config.xml.MessageStoreSerializer;
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
+import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.ui.forms.editor.FormPage;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStore;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageStoreFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.CustomStore;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JDBC;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JMS;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.RabbitMQ;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.Resequence;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.WSO2MB;
 
 public class MessageStoreTransformer {
+
+	private static final Log log = LogFactory.getLog(MessageStoreTransformer.class);
 
 	private static final String STORE_JMS_CACHE_CONNECTION = "store.jms.cache.connection";
 	private static final String STORE_JMS_JMS_SPEC_VERSION = "store.jms.JMSSpecVersion";
@@ -79,6 +88,15 @@ public class MessageStoreTransformer {
 	private static final String STORE_JDBC_DRIVER = "store.jdbc.driver";
 	private static final String STORE_JDBC_TABLE = "store.jdbc.table";
 
+	private static final String STORE_RESEQUENCE_DS_NAME = "store.jdbc.dsName";
+	private static final String STORE_RESEQUENCE_PASSWORD = "store.jdbc.password";
+	private static final String STORE_RESEQUENCE_USERNAME = "store.jdbc.username";
+	private static final String STORE_RESEQUENCE_CONNECTION_URL = "store.jdbc.connection.url";
+	private static final String STORE_RESEQUENCE_DRIVER = "store.jdbc.driver";
+	private static final String STORE_RESEQUENCE_TABLE = "store.jdbc.table";
+	private static final String STORE_RESEQUENCE_POLLING_COUNT = "store.resequence.timeout";
+	private static final String STORE_RESEQUENCE_XPATH = "store.resequence.id.path";
+
 	// private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
 	// private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
 
@@ -91,6 +109,7 @@ public class MessageStoreTransformer {
 	private static final String WSO2MB = "wso2mb";
 	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
 	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
+	private static final String RESEQUENCE_MS_FQN = "org.apache.synapse.message.store.impl.resequencer.ResequenceMessageStore";
 	private static final String customStore = "customStore";
 
 	@Deprecated
@@ -210,6 +229,60 @@ public class MessageStoreTransformer {
 						.equals(jdbcConnectionInformation)) {
 					if (StringUtils.isNotBlank(model.getJdbcDatasourceName())) {
 						parameters.put(STORE_JDBC_DS_NAME, model.getJdbcDatasourceName());
+					}
+				}
+			}
+		} else if (model.getStoreType() == MessageStoreType.RESEQUENCE) {
+			className = RESEQUENCE_MS_FQN;
+			if (StringUtils.isNotBlank(model.getResequenceDatabaseTable())) {
+				parameters.put(STORE_RESEQUENCE_TABLE, model.getResequenceDatabaseTable());
+			}
+			if (StringUtils.isNotBlank(model.getFailoverMessageStore())) {
+				parameters.put(STORE_FAILOVER_MESSAGE_STORE_NAME, model.getFailoverMessageStore());
+			}
+			if (StringUtils.isNotBlank(model.getResequencepolling())) {
+				parameters.put(STORE_RESEQUENCE_POLLING_COUNT, model.getResequencepolling());
+			}
+			if (StringUtils.isNotBlank(model.getResequenceXpathAttr().getPropertyValue())) {
+				SynapseXPath xpath;
+				try {
+					xpath = (SynapseXPath) CustomSynapsePathFactory
+							.getSynapsePath(model.getResequenceXpathAttr().getPropertyValue());
+					if (model.getResequenceXpathAttr().getNamespaces() != null) {
+						Map<String, String> map = model.getResequenceXpathAttr().getNamespaces();
+						Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
+						while (entries.hasNext()) {
+							Map.Entry<String, String> entry = entries.next();
+							xpath.addNamespace(entry.getKey(), entry.getValue());
+						}
+					}
+					parameters.put(STORE_RESEQUENCE_XPATH, xpath);
+				} catch (JaxenException e) {
+					log.error("Cannot create resequence xpaths", e);
+				}
+			}
+			parameters.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE,
+					((Boolean) model.isEnableProducerGuaranteedDelivery()).toString());
+			// Switch between connection pool and datasource
+			String resequenceConnectionInformation = model.getResequenceConnectionInformation().toString();
+			if (StringUtils.isNotBlank(resequenceConnectionInformation)) {
+				if (JDBCConnectionInformationType.JDBC_POOL.toString().equals(resequenceConnectionInformation)) {
+					if (StringUtils.isNotBlank(model.getResequenceDriver())) {
+						parameters.put(STORE_RESEQUENCE_DRIVER, model.getResequenceDriver());
+					}
+					if (StringUtils.isNotBlank(model.getResequenceURL())) {
+						parameters.put(STORE_RESEQUENCE_CONNECTION_URL, model.getResequenceURL());
+					}
+					if (StringUtils.isNotBlank(model.getResequenceUser())) {
+						parameters.put(STORE_RESEQUENCE_USERNAME, model.getResequenceUser());
+					}
+					if (StringUtils.isNotBlank(model.getResequencePassword())) {
+						parameters.put(STORE_RESEQUENCE_PASSWORD, model.getResequencePassword());
+					}
+				} else if (JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE.toString()
+						.equals(resequenceConnectionInformation)) {
+					if (StringUtils.isNotBlank(model.getResequenceDatasourceName())) {
+						parameters.put(STORE_RESEQUENCE_DS_NAME, model.getResequenceDatasourceName());
 					}
 				}
 			}
@@ -352,6 +425,39 @@ public class MessageStoreTransformer {
 					break;
 				}
 
+				case 5: {
+					// Resequence Store
+					className = RESEQUENCE_MS_FQN;
+					Resequence resequenceStore = (Resequence) formPage.getStoreImpl(RESEQUENCE_MS_FQN);
+					parameterMap.put(STORE_RESEQUENCE_TABLE, resequenceStore.resequence_dbTable.getText());
+					if(resequenceStore.resequence_poll_count.getText().length() != 0) {
+						parameterMap.put(STORE_RESEQUENCE_POLLING_COUNT, resequenceStore.resequence_poll_count.getText());
+					}
+					if(resequenceStore.resequence_xpath.getText().length() != 0) {
+						SynapseXPath xpath;
+						try {
+							xpath = new SynapseXPath(resequenceStore.resequence_xpath.getText());
+							Map<String,String> maps = resequenceStore.nsp.getNamespaces();
+							for(String key:maps.keySet()) {
+								xpath.addNamespace(key,maps.get(key));
+							}
+							parameterMap.put(STORE_RESEQUENCE_XPATH, xpath);
+						} catch (JaxenException e) {
+							log.error("Cannot create resequence xpaths", e);
+						}
+					}
+					if(resequenceStore.resequence_connectionInfo.getSelectionIndex() == 0) {
+						parameterMap.put(STORE_RESEQUENCE_DRIVER, resequenceStore.resequence_driver.getText());
+						parameterMap.put(STORE_RESEQUENCE_CONNECTION_URL, resequenceStore.resequence_url.getText());
+						parameterMap.put(STORE_RESEQUENCE_USERNAME, resequenceStore.resequence_username.getText());
+						parameterMap.put(STORE_RESEQUENCE_PASSWORD, resequenceStore.resequence_password.getText());
+					} else {
+						parameterMap.put(STORE_RESEQUENCE_DS_NAME, resequenceStore.resequence_DsName.getText());
+					}
+
+					break;
+				}
+
 				default: {
 					// Custom Store
 					CustomStore customStoreImpl = (CustomStore) formPage.getStoreImpl(customStore);
@@ -371,7 +477,7 @@ public class MessageStoreTransformer {
 				}
 				}
 
-				if (storeIndex == 1 || storeIndex == 2 || storeIndex == 3 || storeIndex == 4) {
+				if (storeIndex == 1 || storeIndex == 2 || storeIndex == 3 || storeIndex == 4 || storeIndex == 5) {
 					parameterMap.put(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE,
 							formPage.guaranteedDeliveryEnable.getText().toLowerCase());
 					if (!StringUtils.isBlank(formPage.failoverMessageStore.getText())) {

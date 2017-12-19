@@ -34,16 +34,20 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Constants;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
+import org.wso2.developerstudio.esb.form.editors.article.providers.NamespacedPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseEntryType;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 
@@ -114,6 +118,18 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String mbCacheConnection;
 	private String mbQueueName;
 	
+	private String resequenceDatabaseTable;
+	private String resequenceConnectionInformation;
+	private String resequenceDriver;
+	private String resequenceURL;
+	private String resequenceUser;
+	private String resequencePassword;
+	private String resequenceDatasourceName;
+	private String resequenceEnableProducerGuaranteedDelivery;
+	private String resequenceFailoverMessageStore;
+	private String resequencePollingCount;
+	private String resequenceXpath;
+	private Map<String,String> resequenceXpathNamespaces = new HashMap<String,String>();
 
 	public MessageStoreModel() {
 		availableStoreslist = new ArrayList<OMElement>();
@@ -517,6 +533,94 @@ public class MessageStoreModel extends ProjectDataModel  {
 		this.jdbcFailoverMessageStore = jdbcFailoverMessageStore;
 	}
 	
+	public String getResequenceDatabaseTable() {
+		return resequenceDatabaseTable;
+	}
+
+	public void setResequenceDatabaseTable(String resequenceDatabaseTable) {
+		this.resequenceDatabaseTable = resequenceDatabaseTable;
+	}
+
+	public String getResequenceConnectionInformation() {
+		return resequenceConnectionInformation;
+	}
+
+	public void setResequenceConnectionInformation(String resequenceConnectionInformation) {
+		this.resequenceConnectionInformation = resequenceConnectionInformation;
+	}
+
+	public String getResequenceDriver() {
+		return resequenceDriver;
+	}
+
+	public void setResequenceDriver(String resequenceDriver) {
+		this.resequenceDriver = resequenceDriver;
+	}
+
+	public String getResequenceURL() {
+		return resequenceURL;
+	}
+
+	public void setResequenceURL(String resequenceURL) {
+		this.resequenceURL = resequenceURL;
+	}
+
+	public String getResequenceUser() {
+		return resequenceUser;
+	}
+
+	public void setResequenceUser(String resequenceUser) {
+		this.resequenceUser = resequenceUser;
+	}
+
+	public String getResequencePassword() {
+		return resequencePassword;
+	}
+
+	public void setResequencePassword(String resequencePassword) {
+		this.resequencePassword = resequencePassword;
+	}
+
+	public String getResequenceDatasourceName() {
+		return resequenceDatasourceName;
+	}
+
+	public void setResequenceDatasourceName(String resequenceDatasourceName) {
+		this.resequenceDatasourceName = resequenceDatasourceName;
+	}
+
+	public String getResequenceEnableProducerGuaranteedDelivery() {
+		return resequenceEnableProducerGuaranteedDelivery;
+	}
+
+	public void setResequenceEnableProducerGuaranteedDelivery(String resequenceEnableProducerGuaranteedDelivery) {
+		this.resequenceEnableProducerGuaranteedDelivery = resequenceEnableProducerGuaranteedDelivery;
+	}
+
+	public String getResequenceFailoverMessageStore() {
+		return resequenceFailoverMessageStore;
+	}
+
+	public void setResequenceFailoverMessageStore(String resequenceFailoverMessageStore) {
+		this.resequenceFailoverMessageStore = resequenceFailoverMessageStore;
+	}
+
+	public String getResequencePollingCount() {
+		return resequencePollingCount;
+	}
+
+	public void setResequencePollingCount(String resequencePollingCount) {
+		this.resequencePollingCount = resequencePollingCount;
+	}
+
+	public String getResequenceXpath() {
+		return resequenceXpath;
+	}
+
+	public void setResequenceXpath(String resequenceXpath) {
+		this.resequenceXpath = resequenceXpath;
+	}
+
 	@Override
 	public Object getModelPropertyValue(String key) {
 		Object value = super.getModelPropertyValue(key);
@@ -616,6 +720,28 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getJmsEnableCaching();
 		} else if (key.equals(Constants.FIELD_JDBC_FAILOVER_MESSAGE_STORE)) {
 			value = getJmsTimeout();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_DATABASE_TABLE)) {
+			value = getResequenceDatabaseTable();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_CONNECTION_INFORMATION)) {
+			value = getResequenceConnectionInformation();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_DRIVER)) {
+			value = getResequenceDriver();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_URL)) {
+			value = getResequenceURL();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_USER)) {
+			value = getResequenceUser();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_PASSWORD)) {
+			value = getResequencePassword();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_DATASOURCE_NAME)) {
+			value = getResequenceDatasourceName();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+			value = getResequenceEnableProducerGuaranteedDelivery();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_FAILOVER_MESSAGE_STORE)) {
+			value = getResequenceFailoverMessageStore();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_POLLING_COUNT)) {
+			value = getResequencePollingCount();
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_XPATH)) {
+			value = getResequenceXpath();
 		} else if (key.equals(Constants.FIELD_STORE_NAME)) {
 			value = getStoreName();
 		} else if(key.equals(Constants.FIELD_SAVE_LOCATION)){
@@ -729,8 +855,7 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setRabbitMQSSLTrustStorePassword(data.toString());
 		}else if (key.equals(Constants.FIELD_RABBITMQ_SSL_VERSION)) {
 			setRabbitMQSSLVersion(data.toString());
-		}
-		else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
+		} else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
 			setJdbcDatabaseTable(data.toString());
 		} else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
 			setJdbcConnectionInformation(data.toString());
@@ -744,16 +869,33 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setJdbcPassword(data.toString());
 		} else if (key.equals(Constants.FIELD_JDBC_DATASOURCE_NAME)) {
 			setJdbcDatasourceName(data.toString());
-		} 
-		
-		 else if (key.equals(Constants.FIELD_JDBC_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
-				setJdbcEnableProducerGuaranteedDelivery(data.toString());
-			}
-		 else if (key.equals(Constants.FIELD_JDBC_FAILOVER_MESSAGE_STORE)) {
-				setJdbcFailoverMessageStore(data.toString());
-			}
-		
-		else if (key.equals(Constants.FIELD_STORE_NAME)) {
+		} else if (key.equals(Constants.FIELD_JDBC_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+			setJdbcEnableProducerGuaranteedDelivery(data.toString());
+		} else if (key.equals(Constants.FIELD_JDBC_FAILOVER_MESSAGE_STORE)) {
+			setJdbcFailoverMessageStore(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_DATABASE_TABLE)) {
+			setResequenceDatabaseTable(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_CONNECTION_INFORMATION)) {
+			setResequenceConnectionInformation(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_DRIVER)) {
+			setResequenceDriver(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_URL)) {
+			setResequenceURL(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_USER)) {
+			setResequenceUser(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_PASSWORD)) {
+			setResequencePassword(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_DATASOURCE_NAME)) {
+			setResequenceDatasourceName(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_ENABLE_PRODUCER_GUARANTEED_DELIVERY)) {
+			setResequenceEnableProducerGuaranteedDelivery(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_FAILOVER_MESSAGE_STORE)) {
+			setResequenceFailoverMessageStore(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_POLLING_COUNT)) {
+			setResequencePollingCount(data.toString());
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_XPATH)) {
+			setResequenceXpath(data.toString());
+		} else if (key.equals(Constants.FIELD_STORE_NAME)) {
 			setStoreName(data.toString());
 		} else if (key.equals(Constants.FIELD_CUSTOM_PROVIDER_CLASS)) {
 			setCustomProviderClass(data.toString());
@@ -763,6 +905,12 @@ public class MessageStoreModel extends ProjectDataModel  {
 			if(esbProject!=null){
 				setSaveLocation(esbProject);
 			}
+		} else if (key.equals(Constants.FIELD_RESEQUENCER_XPATH_NAMESPACES)) {
+			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+			NamespacedProperty namespacedProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+			NamespacedPropertyEditorDialog paramDialog = new NamespacedPropertyEditorDialog(shell, SWT.NULL ,namespacedProperty);
+			paramDialog.open();
+			setResequenceXpathNamespaces(namespacedProperty.getNamespaces());
 		} else if(key.equals(Constants.FIELD_SAVE_LOCATION)){
 			IContainer container=(IContainer) data;
 			if(container != null && container instanceof IFolder){
@@ -878,6 +1026,14 @@ public class MessageStoreModel extends ProjectDataModel  {
 
 	public void setSelectedStoresList(List<OMElement> selectedStoresList) {
 		this.selectedStoresList = selectedStoresList;
+	}
+
+	public Map<String,String> getResequenceXpathNamespaces() {
+		return resequenceXpathNamespaces;
+	}
+
+	public void setResequenceXpathNamespaces(Map<String,String> resequenceXpathNamespaces) {
+		this.resequenceXpathNamespaces = resequenceXpathNamespaces;
 	}
 
 }

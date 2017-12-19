@@ -41,7 +41,8 @@ Import-Package: org.apache.commons.lang,
  org.wso2.developerstudio.eclipse.registry.core.utils;version="4.1.0",
  org.wso2.developerstudio.eclipse.utils.data;version="4.1.0",
  org.wso2.developerstudio.eclipse.utils.file;version="4.1.0"
-Export-Package: org.wso2.developerstudio.esb.form.editors.article.rcp,
+Export-Package: org.wso2.developerstudio.esb.form.editors.article.providers,
+ org.wso2.developerstudio.esb.form.editors.article.rcp,
  org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints,
  org.wso2.developerstudio.esb.form.editors.article.rcp.message.processors,
  org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores

@@ -28,6 +28,15 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSA
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_PASSWORD;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_URL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JDBC_USER;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_DRIVER;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_PASSWORD;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_URL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_USER;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RESEQUENCEPOLLING;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JMS_SPEC_VERSION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__JNDI_QUEUE_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_STORE__PASSWORD;
@@ -53,6 +62,7 @@ import java.util.Map.Entry;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.message.store.MessageStore;
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
+import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.editor.FormEditor;
@@ -62,16 +72,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageStore;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.MessageStoreFormPage;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.CustomStore;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.IMessageStore;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.InMemory;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JDBC;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.JMS;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.RabbitMQ;
+import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.Resequence;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.message.stores.WSO2MB;
 
 /**
@@ -120,6 +133,15 @@ public class MessageStoreDeserializer
 	private static final String STORE_JDBC_CONNECTION_URL = "store.jdbc.connection.url";
 	private static final String STORE_JDBC_DRIVER = "store.jdbc.driver";
 	private static final String STORE_JDBC_TABLE = "store.jdbc.table";
+
+	private static final String STORE_RESEQUENCE_DS_NAME = "store.jdbc.dsName";
+	private static final String STORE_RESEQUENCE_PASSWORD = "store.jdbc.password";
+	private static final String STORE_RESEQUENCE_USERNAME = "store.jdbc.username";
+	private static final String STORE_RESEQUENCE_CONNECTION_URL = "store.jdbc.connection.url";
+	private static final String STORE_RESEQUENCE_DRIVER = "store.jdbc.driver";
+	private static final String STORE_RESEQUENCE_TABLE = "store.jdbc.table";
+	private static final String STORE_RESEQUENCE_POLLING_COUNT = "store.resequence.timeout";
+	private static final String STORE_RESEQUENCE_XPATH = "store.resequence.id.path";
 	// Fixing TOOLS-2026.
 	private static final String JMS_MS_FQN_Old = "org.wso2.carbon.message.store.persistence.jms.JMSMessageStore";
 	private static final String IN_MEMORY_MS_FQN_Old = "org.apache.synapse.message.store.InMemoryMessageStore";
@@ -129,6 +151,7 @@ public class MessageStoreDeserializer
 	private static final String WSO2MB = "wso2mb";
 	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
 	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
+	private static final String RESEQUENCE_MS_FQN = "org.apache.synapse.message.store.impl.resequencer.ResequenceMessageStore";
 	private static final String customStore = "customStore";
 
 	@Deprecated
@@ -343,6 +366,54 @@ public class MessageStoreDeserializer
 							}
 						}
 					}
+				} else if (dummyStore.getClassName().equals(RESEQUENCE_MS_FQN)) {
+					executeSetValueCommand(MESSAGE_STORE__STORE_TYPE, MessageStoreType.RESEQUENCE);
+					Map<String, Object> params = dummyStore.getParameters();
+
+					for (Entry<String, Object> param : params.entrySet()) {
+						String value = param.getValue().toString();
+						if (param.getKey().equals(STORE_RESEQUENCE_TABLE) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE, value);
+						} else if (param.getKey().equals(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE)) {
+							if (value != null) {
+								if ("true".equals(value)) {
+									executeSetValueCommand(MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, true);
+								} else if ("false".equals(value)) {
+									executeSetValueCommand(MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY, false);
+								}
+							}
+						} else if (param.getKey().equals(STORE_FAILOVER_MESSAGE_STORE_NAME) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__FAILOVER_MESSAGE_STORE, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_POLLING_COUNT) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCEPOLLING, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_XPATH) && param.getValue() instanceof SynapseXPath) {
+							SynapseXPath xpath = (SynapseXPath) param.getValue();
+							NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_XPATH_ATTR, namespaceProp);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_DS_NAME) && StringUtils.isNotBlank(value)) {
+							// Set connection information to datasource
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE);
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_DRIVER) && StringUtils.isNotBlank(value)) {
+							// Set connection information to pool
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_POOL);
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_DRIVER, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_CONNECTION_URL) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_POOL);
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_URL, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_USERNAME) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_POOL);
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_USER, value);
+						} else if (param.getKey().equals(STORE_RESEQUENCE_PASSWORD) && StringUtils.isNotBlank(value)) {
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_POOL);
+							executeSetValueCommand(MESSAGE_STORE__RESEQUENCE_PASSWORD, value);
+						}
+					}
 				} else {
 					executeSetValueCommand(MESSAGE_STORE__STORE_TYPE, MessageStoreType.CUSTOM);
 					executeSetValueCommand(MESSAGE_STORE__PROVIDER_CLASS, dummyStore.getClassName());
@@ -506,8 +577,35 @@ public class MessageStoreDeserializer
 					setTextValue(jdbcStore.jdbc_username, store.getParameters().get(STORE_JDBC_USERNAME));
 					setTextValue(jdbcStore.jdbc_password, store.getParameters().get(STORE_JDBC_PASSWORD));
 				}
-			} else {
+			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(RESEQUENCE_MS_FQN)) {
 				messageStorePage.storeType.select(5);
+
+				Resequence resquenceStore = (Resequence) messageStorePage.getStoreImpl(RESEQUENCE_MS_FQN);
+				setTextValue(resquenceStore.resequence_dbTable, store.getParameters().get(STORE_RESEQUENCE_TABLE));
+				setTextValue(resquenceStore.resequence_poll_count,
+						store.getParameters().get(STORE_RESEQUENCE_POLLING_COUNT));
+				setXPathValue(resquenceStore, resquenceStore.resequence_xpath,
+						store.getParameters().get(STORE_RESEQUENCE_XPATH));
+				if (store.getParameters().get(STORE_RESEQUENCE_DS_NAME) != null) {
+					resquenceStore.resequence_connectionInfo.select(1);
+					resquenceStore.setDataSourceFields(true);
+					setTextValue(resquenceStore.resequence_DsName, store.getParameters().get(STORE_RESEQUENCE_DS_NAME));
+				} else if (store.getParameters().get(STORE_RESEQUENCE_DRIVER) != null
+						|| store.getParameters().get(STORE_RESEQUENCE_CONNECTION_URL) != null
+						|| store.getParameters().get(STORE_JDBC_USERNAME) != null
+						|| store.getParameters().get(STORE_JDBC_PASSWORD) != null) {
+					resquenceStore.resequence_connectionInfo.select(0);
+					resquenceStore.setPoolingFields(true);
+					setTextValue(resquenceStore.resequence_driver, store.getParameters().get(STORE_RESEQUENCE_DRIVER));
+					setTextValue(resquenceStore.resequence_url,
+							store.getParameters().get(STORE_RESEQUENCE_CONNECTION_URL));
+					setTextValue(resquenceStore.resequence_username,
+							store.getParameters().get(STORE_RESEQUENCE_USERNAME));
+					setTextValue(resquenceStore.resequence_password,
+							store.getParameters().get(STORE_RESEQUENCE_PASSWORD));
+				}
+			} else {
+				messageStorePage.storeType.select(6);
 
 				CustomStore customStoreImpl = (CustomStore) messageStorePage.getStoreImpl(customStore);
 
@@ -608,6 +706,15 @@ public class MessageStoreDeserializer
 	private void setTextValue(Text textField, Object value) {
 		if (value != null) {
 			textField.setText(value.toString());
+		}
+	}
+
+	private void setXPathValue(IMessageStore storeImpl, Text textField, Object value) {
+		if (value != null && value instanceof SynapseXPath) {
+			textField.setText(((SynapseXPath)value).getExpression());
+			if(storeImpl instanceof Resequence){
+				((Resequence) storeImpl).nsp.setNamespaces(((SynapseXPath)value).getNamespaces());
+			}
 		}
 	}
 }

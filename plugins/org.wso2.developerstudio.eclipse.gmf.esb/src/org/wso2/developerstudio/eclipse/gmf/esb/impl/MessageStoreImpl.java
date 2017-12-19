@@ -36,6 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStore;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,6 +76,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableProducerGuaranteedDelivery <em>Enable Producer Guaranteed Delivery</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getFailoverMessageStore <em>Failover Message Store</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequencepolling <em>Resequencepolling</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDatabaseTable <em>Resequence Database Table</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceConnectionInformation <em>Resequence Connection Information</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDriver <em>Resequence Driver</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceURL <em>Resequence URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceUser <em>Resequence User</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequencePassword <em>Resequence Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceDatasourceName <em>Resequence Datasource Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceXpath <em>Resequence Xpath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getResequenceXpathAttr <em>Resequence Xpath Attr</em>}</li>
  * </ul>
  *
  * @generated
@@ -669,6 +680,196 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * @ordered
 	 */
 	protected String failoverMessageStore = FAILOVER_MESSAGE_STORE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResequencepolling() <em>Resequencepolling</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequencepolling()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESEQUENCEPOLLING_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getResequencepolling() <em>Resequencepolling</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequencepolling()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resequencepolling = RESEQUENCEPOLLING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResequenceDatabaseTable() <em>Resequence Database Table</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceDatabaseTable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESEQUENCE_DATABASE_TABLE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getResequenceDatabaseTable() <em>Resequence Database Table</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceDatabaseTable()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resequenceDatabaseTable = RESEQUENCE_DATABASE_TABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResequenceConnectionInformation() <em>Resequence Connection Information</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceConnectionInformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final JDBCConnectionInformationType RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT = JDBCConnectionInformationType.JDBC_POOL;
+
+	/**
+	 * The cached value of the '{@link #getResequenceConnectionInformation() <em>Resequence Connection Information</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceConnectionInformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected JDBCConnectionInformationType resequenceConnectionInformation = RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResequenceDriver() <em>Resequence Driver</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceDriver()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESEQUENCE_DRIVER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getResequenceDriver() <em>Resequence Driver</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceDriver()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resequenceDriver = RESEQUENCE_DRIVER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResequenceURL() <em>Resequence URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESEQUENCE_URL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getResequenceURL() <em>Resequence URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resequenceURL = RESEQUENCE_URL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResequenceUser() <em>Resequence User</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceUser()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESEQUENCE_USER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getResequenceUser() <em>Resequence User</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceUser()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resequenceUser = RESEQUENCE_USER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResequencePassword() <em>Resequence Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequencePassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESEQUENCE_PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getResequencePassword() <em>Resequence Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequencePassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resequencePassword = RESEQUENCE_PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResequenceDatasourceName() <em>Resequence Datasource Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceDatasourceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESEQUENCE_DATASOURCE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getResequenceDatasourceName() <em>Resequence Datasource Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceDatasourceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resequenceDatasourceName = RESEQUENCE_DATASOURCE_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResequenceXpath() <em>Resequence Xpath</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceXpath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESEQUENCE_XPATH_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getResequenceXpath() <em>Resequence Xpath</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceXpath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resequenceXpath = RESEQUENCE_XPATH_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getResequenceXpathAttr() <em>Resequence Xpath Attr</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResequenceXpathAttr()
+	 * @generated
+	 * @ordered
+	 */
+	protected NamespacedProperty resequenceXpathAttr;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1315,6 +1516,233 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getResequencepolling() {
+		return resequencepolling;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequencepolling(String newResequencepolling) {
+		String oldResequencepolling = resequencepolling;
+		resequencepolling = newResequencepolling;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING, oldResequencepolling, resequencepolling));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getResequenceDatabaseTable() {
+		return resequenceDatabaseTable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequenceDatabaseTable(String newResequenceDatabaseTable) {
+		String oldResequenceDatabaseTable = resequenceDatabaseTable;
+		resequenceDatabaseTable = newResequenceDatabaseTable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE, oldResequenceDatabaseTable, resequenceDatabaseTable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JDBCConnectionInformationType getResequenceConnectionInformation() {
+		return resequenceConnectionInformation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequenceConnectionInformation(JDBCConnectionInformationType newResequenceConnectionInformation) {
+		JDBCConnectionInformationType oldResequenceConnectionInformation = resequenceConnectionInformation;
+		resequenceConnectionInformation = newResequenceConnectionInformation == null ? RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT : newResequenceConnectionInformation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION, oldResequenceConnectionInformation, resequenceConnectionInformation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getResequenceDriver() {
+		return resequenceDriver;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequenceDriver(String newResequenceDriver) {
+		String oldResequenceDriver = resequenceDriver;
+		resequenceDriver = newResequenceDriver;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER, oldResequenceDriver, resequenceDriver));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getResequenceURL() {
+		return resequenceURL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequenceURL(String newResequenceURL) {
+		String oldResequenceURL = resequenceURL;
+		resequenceURL = newResequenceURL;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_URL, oldResequenceURL, resequenceURL));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getResequenceUser() {
+		return resequenceUser;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequenceUser(String newResequenceUser) {
+		String oldResequenceUser = resequenceUser;
+		resequenceUser = newResequenceUser;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_USER, oldResequenceUser, resequenceUser));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getResequencePassword() {
+		return resequencePassword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequencePassword(String newResequencePassword) {
+		String oldResequencePassword = resequencePassword;
+		resequencePassword = newResequencePassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD, oldResequencePassword, resequencePassword));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getResequenceDatasourceName() {
+		return resequenceDatasourceName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequenceDatasourceName(String newResequenceDatasourceName) {
+		String oldResequenceDatasourceName = resequenceDatasourceName;
+		resequenceDatasourceName = newResequenceDatasourceName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME, oldResequenceDatasourceName, resequenceDatasourceName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getResequenceXpath() {
+		return resequenceXpath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequenceXpath(String newResequenceXpath) {
+		String oldResequenceXpath = resequenceXpath;
+		resequenceXpath = newResequenceXpath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH, oldResequenceXpath, resequenceXpath));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamespacedProperty getResequenceXpathAttr() {
+		if (resequenceXpathAttr != null && resequenceXpathAttr.eIsProxy()) {
+			InternalEObject oldResequenceXpathAttr = (InternalEObject)resequenceXpathAttr;
+			resequenceXpathAttr = (NamespacedProperty)eResolveProxy(oldResequenceXpathAttr);
+			if (resequenceXpathAttr != oldResequenceXpathAttr) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR, oldResequenceXpathAttr, resequenceXpathAttr));
+			}
+		}
+		return resequenceXpathAttr;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamespacedProperty basicGetResequenceXpathAttr() {
+		return resequenceXpathAttr;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResequenceXpathAttr(NamespacedProperty newResequenceXpathAttr) {
+		NamespacedProperty oldResequenceXpathAttr = resequenceXpathAttr;
+		resequenceXpathAttr = newResequenceXpathAttr;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR, oldResequenceXpathAttr, resequenceXpathAttr));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1392,6 +1820,27 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return isEnableProducerGuaranteedDelivery();
 			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
 				return getFailoverMessageStore();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
+				return getResequencepolling();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
+				return getResequenceDatabaseTable();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
+				return getResequenceConnectionInformation();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
+				return getResequenceDriver();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
+				return getResequenceURL();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
+				return getResequenceUser();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
+				return getResequencePassword();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
+				return getResequenceDatasourceName();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
+				return getResequenceXpath();
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
+				if (resolve) return getResequenceXpathAttr();
+				return basicGetResequenceXpathAttr();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1496,6 +1945,36 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
 				setFailoverMessageStore((String)newValue);
 				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
+				setResequencepolling((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
+				setResequenceDatabaseTable((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
+				setResequenceConnectionInformation((JDBCConnectionInformationType)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
+				setResequenceDriver((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
+				setResequenceURL((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
+				setResequenceUser((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
+				setResequencePassword((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
+				setResequenceDatasourceName((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
+				setResequenceXpath((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
+				setResequenceXpathAttr((NamespacedProperty)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1598,6 +2077,36 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
 				setFailoverMessageStore(FAILOVER_MESSAGE_STORE_EDEFAULT);
 				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
+				setResequencepolling(RESEQUENCEPOLLING_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
+				setResequenceDatabaseTable(RESEQUENCE_DATABASE_TABLE_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
+				setResequenceConnectionInformation(RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
+				setResequenceDriver(RESEQUENCE_DRIVER_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
+				setResequenceURL(RESEQUENCE_URL_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
+				setResequenceUser(RESEQUENCE_USER_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
+				setResequencePassword(RESEQUENCE_PASSWORD_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
+				setResequenceDatasourceName(RESEQUENCE_DATASOURCE_NAME_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
+				setResequenceXpath(RESEQUENCE_XPATH_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
+				setResequenceXpathAttr((NamespacedProperty)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1670,6 +2179,26 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return enableProducerGuaranteedDelivery != ENABLE_PRODUCER_GUARANTEED_DELIVERY_EDEFAULT;
 			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
 				return FAILOVER_MESSAGE_STORE_EDEFAULT == null ? failoverMessageStore != null : !FAILOVER_MESSAGE_STORE_EDEFAULT.equals(failoverMessageStore);
+			case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
+				return RESEQUENCEPOLLING_EDEFAULT == null ? resequencepolling != null : !RESEQUENCEPOLLING_EDEFAULT.equals(resequencepolling);
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
+				return RESEQUENCE_DATABASE_TABLE_EDEFAULT == null ? resequenceDatabaseTable != null : !RESEQUENCE_DATABASE_TABLE_EDEFAULT.equals(resequenceDatabaseTable);
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
+				return resequenceConnectionInformation != RESEQUENCE_CONNECTION_INFORMATION_EDEFAULT;
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
+				return RESEQUENCE_DRIVER_EDEFAULT == null ? resequenceDriver != null : !RESEQUENCE_DRIVER_EDEFAULT.equals(resequenceDriver);
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
+				return RESEQUENCE_URL_EDEFAULT == null ? resequenceURL != null : !RESEQUENCE_URL_EDEFAULT.equals(resequenceURL);
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
+				return RESEQUENCE_USER_EDEFAULT == null ? resequenceUser != null : !RESEQUENCE_USER_EDEFAULT.equals(resequenceUser);
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
+				return RESEQUENCE_PASSWORD_EDEFAULT == null ? resequencePassword != null : !RESEQUENCE_PASSWORD_EDEFAULT.equals(resequencePassword);
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
+				return RESEQUENCE_DATASOURCE_NAME_EDEFAULT == null ? resequenceDatasourceName != null : !RESEQUENCE_DATASOURCE_NAME_EDEFAULT.equals(resequenceDatasourceName);
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
+				return RESEQUENCE_XPATH_EDEFAULT == null ? resequenceXpath != null : !RESEQUENCE_XPATH_EDEFAULT.equals(resequenceXpath);
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR:
+				return resequenceXpathAttr != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1742,6 +2271,24 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 		result.append(enableProducerGuaranteedDelivery);
 		result.append(", failoverMessageStore: ");
 		result.append(failoverMessageStore);
+		result.append(", resequencepolling: ");
+		result.append(resequencepolling);
+		result.append(", resequenceDatabaseTable: ");
+		result.append(resequenceDatabaseTable);
+		result.append(", resequenceConnectionInformation: ");
+		result.append(resequenceConnectionInformation);
+		result.append(", resequenceDriver: ");
+		result.append(resequenceDriver);
+		result.append(", resequenceURL: ");
+		result.append(resequenceURL);
+		result.append(", resequenceUser: ");
+		result.append(resequenceUser);
+		result.append(", resequencePassword: ");
+		result.append(resequencePassword);
+		result.append(", resequenceDatasourceName: ");
+		result.append(resequenceDatasourceName);
+		result.append(", resequenceXpath: ");
+		result.append(resequenceXpath);
 		result.append(')');
 		return result.toString();
 	}

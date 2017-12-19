@@ -122,6 +122,26 @@ public class MessageStoreItemProvider
 			addEnableProducerGuaranteedDeliveryPropertyDescriptor(object);
 			addFailoverMessageStorePropertyDescriptor(object);
 			break;
+		case RESEQUENCE:
+			addResequenceDatabaseTablePropertyDescriptor(object);
+			addResequenceConnectionInformationPropertyDescriptor(object);
+			addResequencepollingPropertyDescriptor(object);
+			addResequenceXpathAttrPropertyDescriptor(object);
+
+			switch (store.getResequenceConnectionInformation()) {
+			case JDBC_POOL:
+				addResequenceDriverPropertyDescriptor(object);
+				addResequenceURLPropertyDescriptor(object);
+				addResequenceUserPropertyDescriptor(object);
+				addResequencePasswordPropertyDescriptor(object);
+				break;
+			case JDBC_CARBON_DATASOURCE:
+				addResequenceDatasourceNamePropertyDescriptor(object);
+				break;
+			}
+			addEnableProducerGuaranteedDeliveryPropertyDescriptor(object);
+			addFailoverMessageStorePropertyDescriptor(object);
+			break;
 		default:
 			break;
 		}
@@ -790,6 +810,226 @@ public class MessageStoreItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Resequencepolling feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequencepollingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequencepolling_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequencepolling_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCEPOLLING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resequence Database Table feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequenceDatabaseTablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequenceDatabaseTable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequenceDatabaseTable_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resequence Connection Information feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequenceConnectionInformationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequenceConnectionInformation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequenceConnectionInformation_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resequence Driver feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequenceDriverPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequenceDriver_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequenceDriver_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_DRIVER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resequence URL feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequenceURLPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequenceURL_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequenceURL_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_URL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resequence User feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequenceUserPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequenceUser_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequenceUser_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_USER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resequence Password feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequencePasswordPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequencePassword_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequencePassword_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_PASSWORD,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resequence Datasource Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequenceDatasourceNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequenceDatasourceName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequenceDatasourceName_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resequence Xpath feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequenceXpathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequenceXpath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequenceXpath_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_XPATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resequence Xpath Attr feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addResequenceXpathAttrPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_resequenceXpathAttr_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageStore_resequenceXpathAttr_feature", "_UI_MessageStore_type"),
+				 EsbPackage.Literals.MESSAGE_STORE__RESEQUENCE_XPATH_ATTR,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -885,6 +1125,15 @@ public class MessageStoreItemProvider
 			case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
 			case EsbPackage.MESSAGE_STORE__ENABLE_PRODUCER_GUARANTEED_DELIVERY:
 			case EsbPackage.MESSAGE_STORE__FAILOVER_MESSAGE_STORE:
+			case EsbPackage.MESSAGE_STORE__RESEQUENCEPOLLING:
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE:
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION:
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DRIVER:
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_URL:
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_USER:
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_PASSWORD:
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME:
+			case EsbPackage.MESSAGE_STORE__RESEQUENCE_XPATH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:

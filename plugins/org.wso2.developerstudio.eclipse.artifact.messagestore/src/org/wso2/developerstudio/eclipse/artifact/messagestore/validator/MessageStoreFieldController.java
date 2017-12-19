@@ -44,11 +44,18 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 		boolean rabbitmq = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RABBITMQ;
 		boolean jdbc = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.JDBC;
 		boolean mb = ((MessageStoreModel)model).getMessageStoreType() == MessageStoreType.WSO2_MB;
+		boolean resequence = ((MessageStoreModel)model).getMessageStoreType() == MessageStoreType.RESEQUENCE;
 
 		boolean isCarbonDataSource = false;
 		// Decide connection information type only if JDBC
 		if (jdbc) {
 			isCarbonDataSource = ((MessageStoreModel) model).getJdbcConnectionInformation() == JDBCConnectionInformationType.CARBON_DATASOURCE
+					.name();
+		}
+
+		// Decide connection information type if Resequence
+		if (resequence) {
+			isCarbonDataSource = ((MessageStoreModel) model).getResequenceConnectionInformation() == JDBCConnectionInformationType.CARBON_DATASOURCE
 					.name();
 		}
 	
@@ -119,6 +126,20 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			if (jdbc && isCarbonDataSource) {
 				CommonFieldValidator.validateRequiredField(value, "JDBC Datasource Name cannot be empty");
 			}
+		} else if (key.equals(FIELD_RESEQUENCER_DATABASE_TABLE) && resequence) {
+			CommonFieldValidator.validateRequiredField(value, "Database Table cannot be empty");
+		} else if (key.equals(FIELD_RESEQUENCER_POLLING_COUNT) && resequence && 
+				!StringUtils.isEmpty((String) value) && !StringUtils.isNumeric((String) value)) {
+			throw new FieldValidationException("Polling count should be numeric");
+		} else if (key.equals(FIELD_RESEQUENCER_DRIVER) && resequence && !isCarbonDataSource) {
+			CommonFieldValidator.validateRequiredField(value, "Resequence Driver cannot be empty");
+		} else if (key.equals(FIELD_RESEQUENCER_URL) && resequence && !isCarbonDataSource) {
+			CommonFieldValidator.validateRequiredField(value, "Resequence URL cannot be empty");
+			CommonFieldValidator.isValidUrl(value.toString(), "JDBC");
+		} else if (key.equals(FIELD_RESEQUENCER_USER) && resequence && !isCarbonDataSource) {
+			CommonFieldValidator.validateRequiredField(value, "Resequence User cannot be empty");
+		} else if (key.equals(FIELD_RESEQUENCER_DATASOURCE_NAME) && resequence && isCarbonDataSource) {
+			CommonFieldValidator.validateRequiredField(value, "Resequence Datasource Name cannot be empty");
 		} else if (key.equals(FIELD_SAVE_LOCATION)) {
 			IResource resource = (IResource) value;
 			if (resource == null || !resource.exists())
@@ -139,7 +160,8 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 	public List<String> getUpdateFields(String modelProperty,
 			ProjectDataModel model) {
 		List<String> updateFields = super.getUpdateFields(modelProperty, model);
-		if (modelProperty.equals(FIELD_STORE_TYPE) || modelProperty.equals(FIELD_JDBC_CONNECTION_INFORMATION) || modelProperty.equals(FIELD_RABBITMQ_SSL_ENABLED)) {
+		if (modelProperty.equals(FIELD_STORE_TYPE) || modelProperty.equals(FIELD_JDBC_CONNECTION_INFORMATION)
+				|| modelProperty.equals(FIELD_RABBITMQ_SSL_ENABLED) || modelProperty.equals(FIELD_RESEQUENCER_CONNECTION_INFORMATION)) {
 			updateFields.add(FIELD_JMS_CONTEXT_FACTORY);
 			updateFields.add(FIELD_JMS_PROVIDER_URL);
 			updateFields.add(FIELD_JMS_QUEUE_NAME);
@@ -194,6 +216,19 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			updateFields.add(FIELD_JDBC_ENABLE_PRODUCER_GUARANTEED_DELIVERY);
 			updateFields.add(FIELD_JDBC_FAILOVER_MESSAGE_STORE);
 			
+			updateFields.add(FIELD_RESEQUENCER_DATABASE_TABLE);
+			updateFields.add(FIELD_RESEQUENCER_CONNECTION_INFORMATION);
+			updateFields.add(FIELD_RESEQUENCER_DRIVER);
+			updateFields.add(FIELD_RESEQUENCER_URL);
+			updateFields.add(FIELD_RESEQUENCER_USER);
+			updateFields.add(FIELD_RESEQUENCER_PASSWORD);
+			updateFields.add(FIELD_RESEQUENCER_DATASOURCE_NAME);
+			updateFields.add(FIELD_RESEQUENCER_ENABLE_PRODUCER_GUARANTEED_DELIVERY);
+			updateFields.add(FIELD_RESEQUENCER_FAILOVER_MESSAGE_STORE);
+			updateFields.add(FIELD_RESEQUENCER_POLLING_COUNT);
+			updateFields.add(FIELD_RESEQUENCER_XPATH);
+			updateFields.add(FIELD_RESEQUENCER_XPATH_NAMESPACES);
+
 			updateFields.add(FIELD_CUSTOM_PROVIDER_CLASS);
 			updateFields.add(FIELD_CUSTOM_PARAMETERS);
 		} else if (modelProperty.equals(FIELD_CREATE_ESB_PRJ)) {
@@ -246,6 +281,27 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 					}
 				}
 			} else { // Non-JDBC message store type
+				visibleField = false;
+			}
+		} else if (modelProperty.startsWith(TXT_RESEQUENCER_FIELD_PREFIX)) {
+			// Checks if message store type is Resequence
+			if (((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RESEQUENCE) {
+				// Database table and Connection information should always be visible
+				if (modelProperty.equals(FIELD_RESEQUENCER_DATABASE_TABLE)
+						|| modelProperty.equals(FIELD_RESEQUENCER_CONNECTION_INFORMATION) || modelProperty.equals(FIELD_RESEQUENCER_POLLING_COUNT)
+						|| modelProperty.equals(FIELD_RESEQUENCER_XPATH) || modelProperty.equals(FIELD_RESEQUENCER_XPATH_NAMESPACES)) {
+					visibleField = true;
+				} else {
+					boolean isCarbonDataSource = ((MessageStoreModel) model).getResequenceConnectionInformation() == JDBCConnectionInformationType.CARBON_DATASOURCE
+							.name();
+					// Carbon data source enables datasource name field only
+					if (modelProperty.equals(FIELD_RESEQUENCER_DATASOURCE_NAME)) {
+						visibleField = isCarbonDataSource;
+					} else { // Other fields
+						visibleField = !isCarbonDataSource;
+					}
+				}
+			} else { // Non-Resequence message store type
 				visibleField = false;
 			}
 		} else if (modelProperty.equals(FIELD_AVAILABLE_STORES)) {

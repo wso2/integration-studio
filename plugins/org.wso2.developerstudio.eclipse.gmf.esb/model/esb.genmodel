@@ -614,6 +614,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageStoreType/CUSTOM"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageStoreType/RABBITMQ"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageStoreType/JDBC"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageStoreType/RESEQUENCE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSSpecVersion">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSpecVersion/JMS_1_1"/>
@@ -665,6 +666,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//InboundEndpointBehaviourType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointBehaviourType/pollingInboundEndpoint"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointBehaviourType/listeningInboundEndpoint"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointBehaviourType/eventBasedInboundEndpoint"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ContentType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ContentType/xml"/>
@@ -2211,6 +2213,16 @@
           ecoreFeature="ecore:EReference esb.ecore#//MessageStore/parameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/enableProducerGuaranteedDelivery"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/failoverMessageStore"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/resequencepolling"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/resequenceDatabaseTable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/resequenceConnectionInformation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/resequenceDriver"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/resequenceURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/resequenceUser"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/resequencePassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/resequenceDatasourceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/resequenceXpath"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//MessageStore/resequenceXpathAttr"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//MessageProcessorParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessorParameter/parameterName"/>

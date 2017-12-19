@@ -21927,13 +21927,103 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_STORE__FAILOVER_MESSAGE_STORE = ESB_ELEMENT_FEATURE_COUNT + 29;
 
 	/**
+	 * The feature id for the '<em><b>Resequencepolling</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCEPOLLING = ESB_ELEMENT_FEATURE_COUNT + 30;
+
+	/**
+	 * The feature id for the '<em><b>Resequence Database Table</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE = ESB_ELEMENT_FEATURE_COUNT + 31;
+
+	/**
+	 * The feature id for the '<em><b>Resequence Connection Information</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION = ESB_ELEMENT_FEATURE_COUNT + 32;
+
+	/**
+	 * The feature id for the '<em><b>Resequence Driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCE_DRIVER = ESB_ELEMENT_FEATURE_COUNT + 33;
+
+	/**
+	 * The feature id for the '<em><b>Resequence URL</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCE_URL = ESB_ELEMENT_FEATURE_COUNT + 34;
+
+	/**
+	 * The feature id for the '<em><b>Resequence User</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCE_USER = ESB_ELEMENT_FEATURE_COUNT + 35;
+
+	/**
+	 * The feature id for the '<em><b>Resequence Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCE_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 36;
+
+	/**
+	 * The feature id for the '<em><b>Resequence Datasource Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 37;
+
+	/**
+	 * The feature id for the '<em><b>Resequence Xpath</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCE_XPATH = ESB_ELEMENT_FEATURE_COUNT + 38;
+
+	/**
+	 * The feature id for the '<em><b>Resequence Xpath Attr</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RESEQUENCE_XPATH_ATTR = ESB_ELEMENT_FEATURE_COUNT + 39;
+
+	/**
 	 * The number of structural features of the '<em>Message Store</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 30;
+	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 40;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.
@@ -33092,6 +33182,116 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getMessageStore_FailoverMessageStore();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencepolling <em>Resequencepolling</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resequencepolling</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencepolling()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_Resequencepolling();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatabaseTable <em>Resequence Database Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resequence Database Table</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatabaseTable()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_ResequenceDatabaseTable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceConnectionInformation <em>Resequence Connection Information</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resequence Connection Information</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceConnectionInformation()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_ResequenceConnectionInformation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDriver <em>Resequence Driver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resequence Driver</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDriver()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_ResequenceDriver();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceURL <em>Resequence URL</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resequence URL</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceURL()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_ResequenceURL();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceUser <em>Resequence User</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resequence User</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceUser()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_ResequenceUser();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencePassword <em>Resequence Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resequence Password</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequencePassword()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_ResequencePassword();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatasourceName <em>Resequence Datasource Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resequence Datasource Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceDatasourceName()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_ResequenceDatasourceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpath <em>Resequence Xpath</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resequence Xpath</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpath()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_ResequenceXpath();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpathAttr <em>Resequence Xpath Attr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Resequence Xpath Attr</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getResequenceXpathAttr()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EReference getMessageStore_ResequenceXpathAttr();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorParameter <em>Message Processor Parameter</em>}'.
@@ -49240,6 +49440,86 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute MESSAGE_STORE__FAILOVER_MESSAGE_STORE = eINSTANCE.getMessageStore_FailoverMessageStore();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequencepolling</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RESEQUENCEPOLLING = eINSTANCE.getMessageStore_Resequencepolling();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequence Database Table</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RESEQUENCE_DATABASE_TABLE = eINSTANCE.getMessageStore_ResequenceDatabaseTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequence Connection Information</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RESEQUENCE_CONNECTION_INFORMATION = eINSTANCE.getMessageStore_ResequenceConnectionInformation();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequence Driver</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RESEQUENCE_DRIVER = eINSTANCE.getMessageStore_ResequenceDriver();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequence URL</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RESEQUENCE_URL = eINSTANCE.getMessageStore_ResequenceURL();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequence User</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RESEQUENCE_USER = eINSTANCE.getMessageStore_ResequenceUser();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequence Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RESEQUENCE_PASSWORD = eINSTANCE.getMessageStore_ResequencePassword();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequence Datasource Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RESEQUENCE_DATASOURCE_NAME = eINSTANCE.getMessageStore_ResequenceDatasourceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequence Xpath</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RESEQUENCE_XPATH = eINSTANCE.getMessageStore_ResequenceXpath();
+
+		/**
+		 * The meta object literal for the '<em><b>Resequence Xpath Attr</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE_STORE__RESEQUENCE_XPATH_ATTR = eINSTANCE.getMessageStore_ResequenceXpathAttr();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.

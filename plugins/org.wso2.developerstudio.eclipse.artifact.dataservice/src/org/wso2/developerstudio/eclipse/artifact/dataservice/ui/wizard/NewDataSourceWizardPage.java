@@ -80,11 +80,13 @@ public class NewDataSourceWizardPage extends WizardPage {
 	private Text txtJdbcUrl;
 	private Text txtUserName;
 	private Text txtPassword;
+	private Text txtSecretAliasPassword;
 	
 	/* Cassandra DS controls */
 	private Text txtCassandraServerUrl;
 	private Text txtCassandraUserName;
-	private Text txtCassandraPassword;		
+	private Text txtCassandraPassword;
+	private Text txtCassandraSecretAliasPassword;
 	
 	/* CSV DS controls*/
 	private Text txtCsvFileLocation;
@@ -103,6 +105,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 	private Text txtProviderUrl;
 	private Text txtResourceName;
 	private Text txtJndiPassword;
+	private Text txtJndiSecretAliasPassword;
 	
 	/* Google Spreadsheet controls */
 	private Text txtlblGoogleSpreadsheetUrl;
@@ -217,7 +220,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 		
 		final Label lblXADatasourceClass = new Label(cRDBMS, SWT.NONE);
 		lblXADatasourceClass.setText("XA-Datasource class");
-		final GridData gd_lblXADatasourceClass = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		GridData gd_lblXADatasourceClass = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_lblXADatasourceClass.exclude=true;
 		lblXADatasourceClass.setLayoutData(gd_lblXADatasourceClass);
 		lblXADatasourceClass.setVisible(false);
@@ -277,13 +280,31 @@ public class NewDataSourceWizardPage extends WizardPage {
 		GridData gd_txtPassword = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_txtPassword.widthHint = 100;
 		txtPassword.setLayoutData(gd_txtPassword);
+		
+		final ControlDecoration cd_txtPassword = new ControlDecoration(txtPassword, SWT.LEFT | SWT.TOP);
+		cd_txtPassword.setDescriptionText("Password is required");
+
+		txtSecretAliasPassword = new Text(cRDBMS, SWT.BORDER);
+		final GridData gd_txtSecretPassword = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_txtSecretPassword.widthHint = 100;
+		gd_txtSecretPassword.exclude = true;
+		txtSecretAliasPassword.setLayoutData(gd_txtSecretPassword);
+		txtSecretAliasPassword.setVisible(false);
+		
+		final ControlDecoration cd_txtSecretAliasPassword = new ControlDecoration(txtSecretAliasPassword, SWT.LEFT | SWT.TOP);
+		cd_txtSecretAliasPassword.setDescriptionText("Secret alias name is required");
+		
+		//add Secret Alias check box
+		final Button checkSecretAlias = new Button(cRDBMS, SWT.CHECK);
+		checkSecretAlias.setText("Use as Secret Alias");
+		
 		new Label(cRDBMS, SWT.NONE);
 			
 		
 		//Cassandra Data source configuration controls
 		tbtmCASSANDRA = new CTabItem(tabConfig, SWT.NONE);
 		
-		Composite cCassandra = new Composite(tabConfig, SWT.NONE);
+		final Composite cCassandra = new Composite(tabConfig, SWT.NONE);
 		tbtmCASSANDRA.setControl(cCassandra);
 		cCassandra.setLayout(new GridLayout(2, false));
 		
@@ -319,9 +340,22 @@ public class NewDataSourceWizardPage extends WizardPage {
 		gd_txtCassandraPassword.widthHint = 140;
 		txtCassandraPassword.setLayoutData(gd_txtCassandraPassword);
 		
-		ControlDecoration cdtxtCassandraPassword = new ControlDecoration(txtCassandraPassword, SWT.LEFT | SWT.TOP);
+		final ControlDecoration cdtxtCassandraPassword = new ControlDecoration(txtCassandraPassword, SWT.LEFT | SWT.TOP);
 		cdtxtCassandraPassword.setDescriptionText("Password required");
 		cdtxtCassandraPassword.setImage(fd.getImage());		
+		
+		txtCassandraSecretAliasPassword = new Text(cCassandra, SWT.BORDER);
+		final GridData gd_txtCassandraSecretPassword = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_txtCassandraSecretPassword.widthHint = 140;
+		gd_txtCassandraSecretPassword.exclude = true;
+		txtCassandraSecretAliasPassword.setLayoutData(gd_txtCassandraSecretPassword);
+		txtCassandraSecretAliasPassword.setVisible(false);
+		
+		final ControlDecoration cd_txtCassandraSecretAliasPassword = new ControlDecoration(txtCassandraSecretAliasPassword, SWT.LEFT | SWT.TOP);
+		cd_txtCassandraSecretAliasPassword.setDescriptionText("Secret alias name for Cassandra db is required");
+		
+		final Button checkSecretAliasCassandra = new Button(cCassandra, SWT.CHECK);
+		checkSecretAliasCassandra.setText("Use as Secret Alias");
 		
 		Label lblCassandraHidden = new Label(cCassandra, SWT.NONE);
 		lblCassandraHidden.setText("");
@@ -523,7 +557,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 		//JNDI Data source configuration controls
 		tbtmJNDI = new CTabItem(tabConfig, SWT.NONE);
 		
-		Composite cJNDI = new Composite(tabConfig, SWT.NONE);
+		final Composite cJNDI = new Composite(tabConfig, SWT.NONE);
 		tbtmJNDI.setControl(cJNDI);
 		cJNDI.setLayout(new GridLayout(2, false));
 		
@@ -571,9 +605,22 @@ public class NewDataSourceWizardPage extends WizardPage {
 		gd_txtJndiPassword.widthHint = 140;
 		txtJndiPassword.setLayoutData(gd_txtJndiPassword);
 		
-		ControlDecoration cdtxtJndiPassword = new ControlDecoration(txtJndiPassword, SWT.LEFT | SWT.TOP);
+		final ControlDecoration cdtxtJndiPassword = new ControlDecoration(txtJndiPassword, SWT.LEFT | SWT.TOP);
 		cdtxtJndiPassword.setDescriptionText("password required");
 		cdtxtJndiPassword.setImage(fd.getImage());
+		
+		txtJndiSecretAliasPassword = new Text(cJNDI, SWT.BORDER);
+		GridData gd_txtJNDISecretPassword = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_txtJNDISecretPassword.widthHint = 140;
+		gd_txtJNDISecretPassword.exclude = true;
+		txtJndiSecretAliasPassword.setLayoutData(gd_txtJNDISecretPassword);
+		txtJndiSecretAliasPassword.setVisible(false);
+
+		final ControlDecoration cdtxtJNDISecretAliasPassword = new ControlDecoration(txtJndiSecretAliasPassword, SWT.LEFT | SWT.TOP);
+		cdtxtJNDISecretAliasPassword.setDescriptionText("Secret alias name is required for JNDI");
+		
+		final Button checkJNDISecretAlias = new Button(cJNDI, SWT.CHECK);
+		checkJNDISecretAlias.setText("Use as Secret Alias");
 		
 		Label lblJndiHidden = new Label(cJNDI, SWT.NONE);
 		lblJndiHidden.setText("");
@@ -777,6 +824,63 @@ public class NewDataSourceWizardPage extends WizardPage {
 			}
 		});
 		
+		checkSecretAlias.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				boolean isEnabled = (((Button)e.widget).getSelection());
+				txtPassword.setVisible(!isEnabled);
+				((GridData)txtPassword.getLayoutData()).exclude = isEnabled;
+				
+				txtSecretAliasPassword.setVisible(isEnabled);
+				((GridData)txtSecretAliasPassword.getLayoutData()).exclude = !isEnabled;
+				if(isEnabled) {
+					cd_txtSecretAliasPassword.show();
+					cd_txtPassword.hide();
+				} else {
+					cd_txtSecretAliasPassword.hide();
+					cd_txtPassword.show();
+				}
+				cRDBMS.layout();
+			}
+		});
+		
+		checkSecretAliasCassandra.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				boolean isEnabled = (((Button)e.widget).getSelection());
+				txtCassandraPassword.setVisible(!isEnabled);
+				((GridData)txtCassandraPassword.getLayoutData()).exclude = isEnabled;
+				
+				txtCassandraSecretAliasPassword.setVisible(isEnabled);
+				((GridData)txtCassandraSecretAliasPassword.getLayoutData()).exclude = !isEnabled;
+				if(isEnabled) {
+					cd_txtCassandraSecretAliasPassword.show();
+					cdtxtCassandraPassword.hide();
+				} else {
+					cd_txtCassandraSecretAliasPassword.hide();
+					cdtxtCassandraPassword.show();
+				}
+				cCassandra.layout();
+			}
+		});
+		
+		checkJNDISecretAlias.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				boolean isEnabled = (((Button)e.widget).getSelection());
+				txtJndiPassword.setVisible(!isEnabled);
+				((GridData)txtJndiPassword.getLayoutData()).exclude = isEnabled;
+				
+				txtJndiSecretAliasPassword.setVisible(isEnabled);
+				((GridData)txtJndiSecretAliasPassword.getLayoutData()).exclude = !isEnabled;
+				if(isEnabled) {
+					cdtxtJNDISecretAliasPassword.show();
+					cdtxtJndiPassword.hide();
+				} else {
+					cdtxtJNDISecretAliasPassword.hide();
+					cdtxtJndiPassword.show();
+				}
+				cJNDI.layout();
+			}
+		});
+		
 		cmbDatabaseEngine.addSelectionListener(new SelectionAdapter() {
 			
 			public void widgetSelected(SelectionEvent e) {
@@ -822,7 +926,13 @@ public class NewDataSourceWizardPage extends WizardPage {
 				model.getRdbmsConfig().setXaDsClass(txtXADatasourceClass.getText());
 				model.getRdbmsConfig().setJdbcUrl(txtJdbcUrl.getText());
 				model.getRdbmsConfig().setJdbcUser(txtUserName.getText());
-				model.getRdbmsConfig().setJdbcPassword(txtPassword.getText());
+				boolean isSecretAliasEnabled = checkSecretAlias.getSelection();
+				model.getRdbmsConfig().setSecretAlias(isSecretAliasEnabled);
+				if(isSecretAliasEnabled) {
+					model.getRdbmsConfig().setJdbcPassword(txtSecretAliasPassword.getText());
+				} else {
+					model.getRdbmsConfig().setJdbcPassword(txtPassword.getText());
+				}
 				if(isXA){
 					if(txtXADatasourceClass.getText().trim().equals("")||txtJdbcUrl.getText().trim().equals("") || txtDataSourceId.getText().trim().equals("") ){
 						setPageComplete(false);
@@ -851,7 +961,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 		txtJdbcUrl.addModifyListener(rdbmsFieldListener);
 		txtUserName.addModifyListener(rdbmsFieldListener);
 		txtPassword.addModifyListener(rdbmsFieldListener);
-
+		txtSecretAliasPassword.addModifyListener(rdbmsFieldListener);
 		
 		cassandraFieldListener = new ModifyListener() {
 			
@@ -859,7 +969,13 @@ public class NewDataSourceWizardPage extends WizardPage {
 				
 				model.getCassandraConfig().setServerURL(txtCassandraServerUrl.getText());
 				model.getCassandraConfig().setUserName(txtCassandraUserName.getText());
-				model.getCassandraConfig().setPassword(txtCassandraPassword.getText());
+				boolean isSecretAliasEnabled = checkSecretAliasCassandra.getSelection();
+				model.getCassandraConfig().setSecretAlias(isSecretAliasEnabled);
+				if(isSecretAliasEnabled) {
+					model.getCassandraConfig().setPassword(txtCassandraSecretAliasPassword.getText());
+				} else {
+					model.getCassandraConfig().setPassword(txtCassandraPassword.getText());
+				}
 				if(txtCassandraServerUrl.getText().trim().equals("")|| txtCassandraUserName.getText().trim().equals("")|| txtCassandraPassword.getText().trim().equals("")){
 					setPageComplete(false);
 					setErrorMessage("Required Field(s) are missing or invalid");
@@ -874,6 +990,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 		txtCassandraServerUrl.addModifyListener(cassandraFieldListener);
 		txtCassandraUserName.addModifyListener(cassandraFieldListener);
 		txtCassandraPassword.addModifyListener(cassandraFieldListener);
+		txtCassandraSecretAliasPassword.addModifyListener(cassandraFieldListener);
 		
 		csvFieldListener = new ModifyListener() {
 			
@@ -956,7 +1073,13 @@ public class NewDataSourceWizardPage extends WizardPage {
 				model.getJndiConfig().setJndiContextClass(txtJndiContextClass.getText());
 				model.getJndiConfig().setProvideUrl(txtProviderUrl.getText());
 				model.getJndiConfig().setResourceName(txtResourceName.getText());
-				model.getJndiConfig().setPassword(txtJndiPassword.getText());
+				boolean isSecretAliasEnabled = checkJNDISecretAlias.getSelection();
+				model.getJndiConfig().setSecretAlias(isSecretAliasEnabled);
+				if(isSecretAliasEnabled) {
+					model.getJndiConfig().setPassword(txtJndiSecretAliasPassword.getText());
+				} else {
+					model.getJndiConfig().setPassword(txtJndiPassword.getText());
+				}
 				if(txtJndiContextClass.getText().trim().equals("")|| txtProviderUrl.getText().trim().equals("")|| txtResourceName.getText().trim().equals("")|| txtJndiPassword.getText().trim().equals("")|| txtDataSourceId.getText().trim().equals("") ){
 					setPageComplete(false);
 					setErrorMessage("Required Field(s) are missing or invalid");

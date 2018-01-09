@@ -449,7 +449,11 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		Iterator<String> iterator = config.keySet().iterator();
 		while (iterator.hasNext()) {
 			String key = (String) iterator.next();
-			sb.append("<property name=\"").append(key).append("\">").append(config.get(key)).append("</property>\n");
+			if(dsModel.isEnableSecretAlias() && (key.equals("org.wso2.ws.dataservice.password") || key.equals("password") || key.equals("jndi_password"))) {
+				sb.append("<property name=\"").append(key).append("\" secretAlias=\"").append(config.get(key)).append("\"/>");
+			} else {
+				sb.append("<property name=\"").append(key).append("\">").append(config.get(key)).append("</property>\n");
+			}
 		}
 		templateContent = templateContent.replaceAll("<config.properties>", sb.toString());
 

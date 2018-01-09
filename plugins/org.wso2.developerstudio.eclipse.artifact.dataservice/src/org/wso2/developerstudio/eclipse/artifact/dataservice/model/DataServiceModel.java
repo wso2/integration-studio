@@ -52,6 +52,7 @@ public class DataServiceModel extends ProjectDataModel {
 	private String dataSourceId;
 	private String secPolicy = "";
 	private IContainer dataServiceSaveLocation;
+	private static boolean enableSecretAlias = false;
 
 	// configuration
 	private RdbmsConfig rdbmsConfig;
@@ -175,6 +176,10 @@ public class DataServiceModel extends ProjectDataModel {
 
 	public String getDataSourceId() {
 		return dataSourceId;
+	}
+
+	public boolean isEnableSecretAlias() {
+		return enableSecretAlias;
 	}
 
 	public RdbmsConfig getRdbmsConfig() {
@@ -320,6 +325,7 @@ public class DataServiceModel extends ProjectDataModel {
 	public static class RdbmsConfig implements DataSourceConfig {
 		private LinkedHashMap<String, String> config;
 		private boolean xaDs;
+		private boolean isSecretAlias;
 		private String driverClass;
 		private String xaDsClass;
 		private String jdbcUrl;
@@ -332,6 +338,15 @@ public class DataServiceModel extends ProjectDataModel {
 
 		public void setXaDs(boolean xaDs) {
 			this.xaDs = xaDs;
+		}
+
+		public void setSecretAlias(boolean isSecretAliasEnabled) {
+			this.isSecretAlias = isSecretAliasEnabled;
+			enableSecretAlias = isSecretAliasEnabled;
+		}
+
+		public boolean isSecretAliasEnabled() {
+			return isSecretAlias;
 		}
 
 		public String getDriverClass() {
@@ -385,11 +400,18 @@ public class DataServiceModel extends ProjectDataModel {
 				// config.put("org.wso2.ws.dataservice.minpoolsize","");
 				// config.put("org.wso2.ws.dataservice.minpoolsize","");
 				// config.put("org.wso2.ws.dataservice.validation_query","");
-			} else {
+			} else if(!this.isSecretAlias) {
 				config.put("org.wso2.ws.dataservice.xa_datasource_class", getXaDsClass());
 				String xaProperties = "\n";
 				xaProperties += "\t\t\t<property name=\"User\">" + getJdbcUser() + "</property>\n";
 				xaProperties += "\t\t\t<property name=\"Password\">" + getJdbcPassword() + "</property>\n";
+				xaProperties += "\t\t\t<property name=\"URL\">" + getJdbcUrl() + "</property>\n";
+				config.put("org.wso2.ws.dataservice.xa_datasource_properties", xaProperties);
+			} else {
+				config.put("org.wso2.ws.dataservice.xa_datasource_class", getXaDsClass());
+				String xaProperties = "\n";
+				xaProperties += "\t\t\t<property name=\"User\">" + getJdbcUser() + "</property>\n";
+				xaProperties += "\t\t\t<property name=\"Password\" secretAlias=" + getJdbcPassword() + "\"/>\n";
 				xaProperties += "\t\t\t<property name=\"URL\">" + getJdbcUrl() + "</property>\n";
 				config.put("org.wso2.ws.dataservice.xa_datasource_properties", xaProperties);
 			}
@@ -403,6 +425,7 @@ public class DataServiceModel extends ProjectDataModel {
 		private String serverURL;
 		private String userName;
 		private String password;
+		private boolean isSecretAlias;
 
 		public LinkedHashMap<String, String> getConfig() {
 			config = new LinkedHashMap<String, String>();
@@ -436,6 +459,15 @@ public class DataServiceModel extends ProjectDataModel {
 
 		public void setPassword(String password) {
 			this.password = password;
+		}
+
+		public void setSecretAlias(boolean isSecretAliasEnabled) {
+			this.isSecretAlias = isSecretAliasEnabled;
+			enableSecretAlias = isSecretAliasEnabled;
+		}
+
+		public boolean isSecretAliasEnabled() {
+			return isSecretAlias;
 		}
 	}
 
@@ -504,6 +536,7 @@ public class DataServiceModel extends ProjectDataModel {
 		private String provideUrl;
 		private String resourceName;
 		private String password;
+		private boolean isSecretAlias;
 
 		public String getJndiContextClass() {
 			return jndiContextClass;
@@ -535,6 +568,15 @@ public class DataServiceModel extends ProjectDataModel {
 
 		public void setPassword(String password) {
 			this.password = password;
+		}
+
+		public void setSecretAlias(boolean isSecretAliasEnabled) {
+			this.isSecretAlias = isSecretAliasEnabled;
+			enableSecretAlias = isSecretAliasEnabled;
+		}
+
+		public boolean isSecretAliasEnabled() {
+			return isSecretAlias;
 		}
 
 		public LinkedHashMap<String, String> getConfig() {

@@ -201,6 +201,24 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/TRANSPORT_IN_NAME"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/To"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/transportNonBlocking"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/JMS_CONNECTION_FACTORY"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/JMS_DESTINATION"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/JMS_DESTINATION_TYPE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/JMS_REPLY_DESTINATION"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/JMS_WRAPPER"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_FILE_URI"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_CONTENT_TYPE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_FILENAME_PATTERN"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/POLL_INTERVAL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_ACTION_AFTER_PROCESS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_MOVE_AFTER_PROCESS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_ACTION_AFTER_ERRORS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_MOVE_AFTER_ERRORS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_ACTION_AFTER_FAILURE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_MOVE_AFTER_FAILURE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_REPLY_FILE_URI"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_REPLY_FILENAME"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyName/VFS_MOVE_TIMESTAMP_FORMAT"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EnrichSourceInlineType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichSourceInlineType/CONTENT"/>
@@ -220,9 +238,9 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EnrichTargetType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/CUSTOM"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/ENVELOPE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/BODY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/PROPERTY"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/ENVELOPE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EventTopicType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EventTopicType/STATIC"/>
@@ -257,6 +275,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ScriptLanguage/JAVASCRIPT"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ScriptLanguage/RUBY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ScriptLanguage/GROOVY"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ScriptLanguage/NASHORNJS"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FaultSoapVersion">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FaultSoapVersion/SOAP_1_1"/>
@@ -314,16 +333,12 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheSequenceType/ANONYMOUS"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheSequenceType/REGISTRY_REFERENCE"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CacheImplementationType">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheImplementationType/IN_MEMORY"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CacheAction">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheAction/FINDER"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheAction/COLLECTOR"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CacheScope">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheScope/PER_MEDIATOR"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheScope/PER_HOST"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CacheProtocolType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CacheProtocolType/HTTP"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//XQueryVariableType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//XQueryVariableType/DOCUMENT"/>
@@ -742,9 +757,6 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EnableDisableState">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Disabled"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Enabled"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//HashGenerator">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HashGenerator/CARBON_MEDIATOR_CACHE_DIGEST_DOMHASH_GENERATOR"/>
     </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
@@ -1494,12 +1506,12 @@
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CacheMediator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheScope"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheProtocolType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheAction"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/hashGenerator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheTimeout"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/maxMessageSize"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/implementationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheProtocolMethods"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/maxEntryCount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/sequenceType"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//CacheMediator/sequenceKey"/>
@@ -1507,6 +1519,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CacheMediator/outputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CacheMediator/onHitOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CacheMediator/mediatorFlow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/headersToExcludeInHash"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/responseCodes"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorOutputConnector"/>
@@ -2508,6 +2522,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportFeedType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/traceEnabled"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/statisticsEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJmsRetriesBeforeSuspension"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJmsPollingSuspensionPeriod"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/name"/>

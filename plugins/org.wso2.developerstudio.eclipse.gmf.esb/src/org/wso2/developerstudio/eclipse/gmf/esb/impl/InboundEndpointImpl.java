@@ -250,6 +250,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJmsRetriesBeforeSuspension <em>Transport Jms Retries Before Suspension</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJmsPollingSuspensionPeriod <em>Transport Jms Polling Suspension Period</em>}</li>
  * </ul>
  *
  * @generated
@@ -4018,6 +4020,46 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected boolean statisticsEnabled = STATISTICS_ENABLED_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getTransportJmsRetriesBeforeSuspension() <em>Transport Jms Retries Before Suspension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJmsRetriesBeforeSuspension()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJmsRetriesBeforeSuspension() <em>Transport Jms Retries Before Suspension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJmsRetriesBeforeSuspension()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJmsRetriesBeforeSuspension = TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJmsPollingSuspensionPeriod() <em>Transport Jms Polling Suspension Period</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJmsPollingSuspensionPeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJmsPollingSuspensionPeriod() <em>Transport Jms Polling Suspension Period</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJmsPollingSuspensionPeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJmsPollingSuspensionPeriod = TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated NOT
 	 */
@@ -6153,6 +6195,48 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJmsRetriesBeforeSuspension() {
+		return transportJmsRetriesBeforeSuspension;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJmsRetriesBeforeSuspension(String newTransportJmsRetriesBeforeSuspension) {
+		String oldTransportJmsRetriesBeforeSuspension = transportJmsRetriesBeforeSuspension;
+		transportJmsRetriesBeforeSuspension = newTransportJmsRetriesBeforeSuspension;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION, oldTransportJmsRetriesBeforeSuspension, transportJmsRetriesBeforeSuspension));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJmsPollingSuspensionPeriod() {
+		return transportJmsPollingSuspensionPeriod;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJmsPollingSuspensionPeriod(String newTransportJmsPollingSuspensionPeriod) {
+		String oldTransportJmsPollingSuspensionPeriod = transportJmsPollingSuspensionPeriod;
+		transportJmsPollingSuspensionPeriod = newTransportJmsPollingSuspensionPeriod;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD, oldTransportJmsPollingSuspensionPeriod, transportJmsPollingSuspensionPeriod));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -8135,6 +8219,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return isTraceEnabled();
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				return isStatisticsEnabled();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
+				return getTransportJmsRetriesBeforeSuspension();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
+				return getTransportJmsPollingSuspensionPeriod();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -8709,6 +8797,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				setStatisticsEnabled((Boolean)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
+				setTransportJmsRetriesBeforeSuspension((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
+				setTransportJmsPollingSuspensionPeriod((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -9281,6 +9375,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
+				setTransportJmsRetriesBeforeSuspension(TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
+				setTransportJmsPollingSuspensionPeriod(TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -9666,13 +9766,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return traceEnabled != TRACE_ENABLED_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
+				return TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT == null ? transportJmsRetriesBeforeSuspension != null : !TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT.equals(transportJmsRetriesBeforeSuspension);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
+				return TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT == null ? transportJmsPollingSuspensionPeriod != null : !TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT.equals(transportJmsPollingSuspensionPeriod);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated 
+	 * @generated
 	 */
 	@Override
 	public String toString() {
@@ -10041,6 +10145,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(traceEnabled);
 		result.append(", statisticsEnabled: ");
 		result.append(statisticsEnabled);
+		result.append(", transportJmsRetriesBeforeSuspension: ");
+		result.append(transportJmsRetriesBeforeSuspension);
+		result.append(", transportJmsPollingSuspensionPeriod: ");
+		result.append(transportJmsPollingSuspensionPeriod);
 		result.append(')');
 		return result.toString();
 	}

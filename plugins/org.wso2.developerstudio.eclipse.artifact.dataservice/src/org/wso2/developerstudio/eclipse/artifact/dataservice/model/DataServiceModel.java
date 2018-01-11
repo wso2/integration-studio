@@ -404,7 +404,11 @@ public class DataServiceModel extends ProjectDataModel {
 				config.put("org.wso2.ws.dataservice.xa_datasource_class", getXaDsClass());
 				String xaProperties = "\n";
 				xaProperties += "\t\t\t<property name=\"User\">" + getJdbcUser() + "</property>\n";
-				xaProperties += "\t\t\t<property name=\"Password\">" + getJdbcPassword() + "</property>\n";
+				if (!this.isSecretAlias) {
+				    xaProperties += "\t\t\t<property name=\"Password\">" + getJdbcPassword() + "</property>\n";
+				} else {
+				    xaProperties += "\t\t\t<property name=\"Password\" svns:secretAlias=" + getJdbcPassword() + "\"/>\n";
+				}
 				xaProperties += "\t\t\t<property name=\"URL\">" + getJdbcUrl() + "</property>\n";
 				config.put("org.wso2.ws.dataservice.xa_datasource_properties", xaProperties);
 			} else {

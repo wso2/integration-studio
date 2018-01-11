@@ -613,6 +613,15 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getConfigurationProperty_SecretAlias() {
+		return (EAttribute)configurationPropertyEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCustomValidator() {
 		return customValidatorEClass;
 	}
@@ -2447,6 +2456,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		configurationPropertyEClass = createEClass(CONFIGURATION_PROPERTY);
 		createEAttribute(configurationPropertyEClass, CONFIGURATION_PROPERTY__VALUE);
 		createEAttribute(configurationPropertyEClass, CONFIGURATION_PROPERTY__NAME);
+		createEAttribute(configurationPropertyEClass, CONFIGURATION_PROPERTY__SECRET_ALIAS);
 
 		customValidatorEClass = createEClass(CUSTOM_VALIDATOR);
 		createEAttribute(customValidatorEClass, CUSTOM_VALIDATOR__CLASS);
@@ -2745,6 +2755,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEClass(configurationPropertyEClass, ConfigurationProperty.class, "ConfigurationProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConfigurationProperty_Value(), theXMLTypePackage.getString(), "value", null, 0, 1, ConfigurationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConfigurationProperty_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, ConfigurationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfigurationProperty_SecretAlias(), ecorePackage.getEString(), "secretAlias", "", 0, 1, ConfigurationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customValidatorEClass, CustomValidator.class, "CustomValidator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustomValidator_Class(), theXMLTypePackage.getString(), "class", null, 1, 1, CustomValidator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2892,7 +2903,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEAttribute(getQuery_ReturnGeneratedKeys(), theXMLTypePackage.getBoolean(), "returnGeneratedKeys", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_UseConfig(), theXMLTypePackage.getString(), "useConfig", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuery_KeyColumns(), theXMLTypePackage.getString(), "keyColumns", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getQuery_ReturnUpdatedRowCount(), theXMLTypePackage.getBoolean(), "returnUpdatedRowCount", "", 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQuery_ReturnUpdatedRowCount(), theXMLTypePackage.getBoolean(), "returnUpdatedRowCount", "false", 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(queryParameterEClass, QueryParameter.class, "QueryParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getQueryParameter_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, QueryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

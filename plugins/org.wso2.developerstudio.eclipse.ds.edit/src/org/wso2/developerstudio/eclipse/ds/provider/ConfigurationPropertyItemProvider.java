@@ -99,6 +99,27 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 	}
 
 	/**
+	 * This adds a property descriptor for the Secret Alias feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSecretAliasPropertyDescriptor(Object object) {
+	    itemPropertyDescriptors.add(createItemPropertyDescriptor
+			(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_ConfigurationProperty_secretAlias_feature"),
+			getString("_UI_PropertyDescriptor_description", "_UI_ConfigurationProperty_secretAlias_feature", "_UI_ConfigurationProperty_type"),
+			DsPackage.Literals.CONFIGURATION_PROPERTY__SECRET_ALIAS,
+			true,
+			false,
+			false,
+			ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+			null,
+			null));
+	}
+
+	/**
 	 * This returns ConfigurationProperty.gif. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
 	 * 
@@ -140,6 +161,7 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter imple
 		switch (notification.getFeatureID(ConfigurationProperty.class)) {
 			case DsPackage.CONFIGURATION_PROPERTY__VALUE:
 			case DsPackage.CONFIGURATION_PROPERTY__NAME:
+			case DsPackage.CONFIGURATION_PROPERTY__SECRET_ALIAS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

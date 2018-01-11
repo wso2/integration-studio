@@ -825,60 +825,60 @@ public class NewDataSourceWizardPage extends WizardPage {
 		});
 		
 		checkSecretAlias.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				boolean isEnabled = (((Button)e.widget).getSelection());
-				txtPassword.setVisible(!isEnabled);
-				((GridData)txtPassword.getLayoutData()).exclude = isEnabled;
+		    public void widgetSelected(SelectionEvent e) {
+		        boolean isEnabled = (((Button)e.widget).getSelection());
+		        txtPassword.setVisible(!isEnabled);
+		        ((GridData)txtPassword.getLayoutData()).exclude = isEnabled;
 				
-				txtSecretAliasPassword.setVisible(isEnabled);
-				((GridData)txtSecretAliasPassword.getLayoutData()).exclude = !isEnabled;
-				if(isEnabled) {
-					cd_txtSecretAliasPassword.show();
-					cd_txtPassword.hide();
-				} else {
-					cd_txtSecretAliasPassword.hide();
-					cd_txtPassword.show();
-				}
-				cRDBMS.layout();
-			}
+		        txtSecretAliasPassword.setVisible(isEnabled);
+		        ((GridData)txtSecretAliasPassword.getLayoutData()).exclude = !isEnabled;
+		        if (isEnabled) {
+		            cd_txtSecretAliasPassword.show();
+		            cd_txtPassword.hide();
+		        } else {
+		            cd_txtSecretAliasPassword.hide();
+		            cd_txtPassword.show();
+		        }
+		        cRDBMS.layout();
+		    }
 		});
 		
 		checkSecretAliasCassandra.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				boolean isEnabled = (((Button)e.widget).getSelection());
-				txtCassandraPassword.setVisible(!isEnabled);
-				((GridData)txtCassandraPassword.getLayoutData()).exclude = isEnabled;
+		    public void widgetSelected(SelectionEvent e) {
+		        boolean isEnabled = (((Button)e.widget).getSelection());
+		        txtCassandraPassword.setVisible(!isEnabled);
+		        ((GridData)txtCassandraPassword.getLayoutData()).exclude = isEnabled;
 				
-				txtCassandraSecretAliasPassword.setVisible(isEnabled);
-				((GridData)txtCassandraSecretAliasPassword.getLayoutData()).exclude = !isEnabled;
-				if(isEnabled) {
-					cd_txtCassandraSecretAliasPassword.show();
-					cdtxtCassandraPassword.hide();
-				} else {
-					cd_txtCassandraSecretAliasPassword.hide();
-					cdtxtCassandraPassword.show();
-				}
-				cCassandra.layout();
-			}
+		        txtCassandraSecretAliasPassword.setVisible(isEnabled);
+		        ((GridData)txtCassandraSecretAliasPassword.getLayoutData()).exclude = !isEnabled;
+		        if (isEnabled) {
+		            cd_txtCassandraSecretAliasPassword.show();
+		            cdtxtCassandraPassword.hide();
+		        } else {
+		            cd_txtCassandraSecretAliasPassword.hide();
+		            cdtxtCassandraPassword.show();
+		        }
+		        cCassandra.layout();
+		    }
 		});
 		
 		checkJNDISecretAlias.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent e) {
-				boolean isEnabled = (((Button)e.widget).getSelection());
-				txtJndiPassword.setVisible(!isEnabled);
-				((GridData)txtJndiPassword.getLayoutData()).exclude = isEnabled;
+		    public void widgetSelected(SelectionEvent e) {
+		        boolean isEnabled = (((Button)e.widget).getSelection());
+		        txtJndiPassword.setVisible(!isEnabled);
+		        ((GridData)txtJndiPassword.getLayoutData()).exclude = isEnabled;
 				
-				txtJndiSecretAliasPassword.setVisible(isEnabled);
-				((GridData)txtJndiSecretAliasPassword.getLayoutData()).exclude = !isEnabled;
-				if(isEnabled) {
-					cdtxtJNDISecretAliasPassword.show();
-					cdtxtJndiPassword.hide();
-				} else {
-					cdtxtJNDISecretAliasPassword.hide();
-					cdtxtJndiPassword.show();
-				}
-				cJNDI.layout();
-			}
+		        txtJndiSecretAliasPassword.setVisible(isEnabled);
+		        ((GridData)txtJndiSecretAliasPassword.getLayoutData()).exclude = !isEnabled;
+		        if (isEnabled) {
+		            cdtxtJNDISecretAliasPassword.show();
+		            cdtxtJndiPassword.hide();
+		        } else {
+		            cdtxtJNDISecretAliasPassword.hide();
+		            cdtxtJndiPassword.show();
+		        }
+		        cJNDI.layout();
+		    }
 		});
 		
 		cmbDatabaseEngine.addSelectionListener(new SelectionAdapter() {
@@ -928,10 +928,10 @@ public class NewDataSourceWizardPage extends WizardPage {
 				model.getRdbmsConfig().setJdbcUser(txtUserName.getText());
 				boolean isSecretAliasEnabled = checkSecretAlias.getSelection();
 				model.getRdbmsConfig().setSecretAlias(isSecretAliasEnabled);
-				if(isSecretAliasEnabled) {
-					model.getRdbmsConfig().setJdbcPassword(txtSecretAliasPassword.getText());
+				if (isSecretAliasEnabled) {
+				    model.getRdbmsConfig().setJdbcPassword(txtSecretAliasPassword.getText());
 				} else {
-					model.getRdbmsConfig().setJdbcPassword(txtPassword.getText());
+				    model.getRdbmsConfig().setJdbcPassword(txtPassword.getText());
 				}
 				if(isXA){
 					if(txtXADatasourceClass.getText().trim().equals("")||txtJdbcUrl.getText().trim().equals("") || txtDataSourceId.getText().trim().equals("") ){
@@ -971,10 +971,10 @@ public class NewDataSourceWizardPage extends WizardPage {
 				model.getCassandraConfig().setUserName(txtCassandraUserName.getText());
 				boolean isSecretAliasEnabled = checkSecretAliasCassandra.getSelection();
 				model.getCassandraConfig().setSecretAlias(isSecretAliasEnabled);
-				if(isSecretAliasEnabled) {
-					model.getCassandraConfig().setPassword(txtCassandraSecretAliasPassword.getText());
+				if (isSecretAliasEnabled) {
+				    model.getCassandraConfig().setPassword(txtCassandraSecretAliasPassword.getText());
 				} else {
-					model.getCassandraConfig().setPassword(txtCassandraPassword.getText());
+				    model.getCassandraConfig().setPassword(txtCassandraPassword.getText());
 				}
 				if(txtCassandraServerUrl.getText().trim().equals("")|| txtCassandraUserName.getText().trim().equals("")|| txtCassandraPassword.getText().trim().equals("")){
 					setPageComplete(false);
@@ -1075,10 +1075,10 @@ public class NewDataSourceWizardPage extends WizardPage {
 				model.getJndiConfig().setResourceName(txtResourceName.getText());
 				boolean isSecretAliasEnabled = checkJNDISecretAlias.getSelection();
 				model.getJndiConfig().setSecretAlias(isSecretAliasEnabled);
-				if(isSecretAliasEnabled) {
-					model.getJndiConfig().setPassword(txtJndiSecretAliasPassword.getText());
+				if (isSecretAliasEnabled) {
+				    model.getJndiConfig().setPassword(txtJndiSecretAliasPassword.getText());
 				} else {
-					model.getJndiConfig().setPassword(txtJndiPassword.getText());
+				    model.getJndiConfig().setPassword(txtJndiPassword.getText());
 				}
 				if(txtJndiContextClass.getText().trim().equals("")|| txtProviderUrl.getText().trim().equals("")|| txtResourceName.getText().trim().equals("")|| txtJndiPassword.getText().trim().equals("")|| txtDataSourceId.getText().trim().equals("") ){
 					setPageComplete(false);

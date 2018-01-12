@@ -41,4 +41,6 @@ public interface QueryValidator {
 	boolean validateReturnGeneratedKeys(boolean value);
 	boolean validateUseConfig(String value);
 	boolean validateKeyColumns(String value);
+
+	boolean validateReturnUpdatedRowCount(boolean value);
 }

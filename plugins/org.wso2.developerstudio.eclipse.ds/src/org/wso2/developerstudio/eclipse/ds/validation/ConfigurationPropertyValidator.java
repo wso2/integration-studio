@@ -16,4 +16,6 @@ public interface ConfigurationPropertyValidator {
 
 	boolean validateValue(String value);
 	boolean validateName(String value);
+
+	boolean validateSecretAlias(String value);
 }

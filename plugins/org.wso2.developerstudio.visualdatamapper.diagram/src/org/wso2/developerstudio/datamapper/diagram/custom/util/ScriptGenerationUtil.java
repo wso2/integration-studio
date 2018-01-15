@@ -101,9 +101,11 @@ public class ScriptGenerationUtil {
 							if (rootTempForLoop != null) {
 								iterateName = getForLoopIterateName(tempForLoop, rootTempForLoop, forLoopBeanList,
 										true);
-							} else {
+							} else if (tempForLoop.getParentIndex() > 0) {
 								iterateName = getForLoopIterateName(tempForLoop,
 										forLoopBeanList.get(tempForLoop.getParentIndex()), forLoopBeanList, true);
+							} else {
+								iterateName = getForLoopIterateName(tempForLoop, null, forLoopBeanList, true);
 							}
 						}
 						if (iterateName.isEmpty()) {
@@ -170,9 +172,11 @@ public class ScriptGenerationUtil {
 							if (rootTempForLoop != null) {
 								iterateName = getForLoopIterateName(tempForLoop, rootTempForLoop, forLoopBeanList,
 										true);
-							} else {
+							} else if (tempForLoop.getParentIndex() > 0) {
 								iterateName = getForLoopIterateName(tempForLoop,
 										forLoopBeanList.get(tempForLoop.getParentIndex()), forLoopBeanList, true);
+							} else {
+								iterateName = getForLoopIterateName(tempForLoop, null, forLoopBeanList, true);
 							}
 						}
 
@@ -368,7 +372,7 @@ public class ScriptGenerationUtil {
 	public static String getForLoopIterateName(ForLoopBean tempForLoopBean, ForLoopBean rootForLoopBean,
 			List<ForLoopBean> forLoopBeanList, Boolean calledFromOutSide) {
 		StringBuilder operationBuilder = new StringBuilder();
-		if (tempForLoopBean.getParentIndex() == -1
+		if (null == rootForLoopBean || tempForLoopBean.getParentIndex() == -1
 				|| (rootForLoopBean != null && rootForLoopBean.equals(tempForLoopBean))) {
 			return operationBuilder.toString();
 		}

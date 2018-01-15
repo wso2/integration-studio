@@ -28,8 +28,9 @@
   </xsd:complexType>
   <xsd:complexType ecore:name="ConfigurationProperty" name="property_._type">
     <xsd:simpleContent>
-      <xsd:extension base="xsd:string">
+      <xsd:extension base="xsd:string" >
         <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="secretAlias" type="xsd:string" use="optional" />
       </xsd:extension>
     </xsd:simpleContent>
   </xsd:complexType>

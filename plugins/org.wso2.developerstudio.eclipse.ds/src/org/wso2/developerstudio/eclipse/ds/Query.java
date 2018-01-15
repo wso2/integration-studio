@@ -369,7 +369,7 @@ public interface Query extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Return Updated Row Count</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Return Updated Row Count</em>' attribute isn't clear,
@@ -379,7 +379,7 @@ public interface Query extends EObject {
 	 * @return the value of the '<em>Return Updated Row Count</em>' attribute.
 	 * @see #setReturnUpdatedRowCount(boolean)
 	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQuery_ReturnUpdatedRowCount()
-	 * @model default="" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 * @model default="false" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
 	 *        annotation="ExtendedMetaData kind='attribute' name='returnUpdatedRowCount' namespace='##targetNamespace'"
 	 * @generated
 	 */

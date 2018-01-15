@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty#getValue <em>Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty#getSecretAlias <em>Secret Alias</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getConfigurationProperty()
@@ -80,5 +81,32 @@ public interface ConfigurationProperty extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Secret Alias</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Secret Alias</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Secret Alias</em>' attribute.
+	 * @see #setSecretAlias(String)
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getConfigurationProperty_SecretAlias()
+	 * @model default=""
+	 * @generated
+	 */
+	String getSecretAlias();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty#getSecretAlias <em>Secret Alias</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Secret Alias</em>' attribute.
+	 * @see #getSecretAlias()
+	 * @generated
+	 */
+	void setSecretAlias(String value);
 
 } // ConfigurationProperty

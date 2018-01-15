@@ -247,13 +247,22 @@ public interface DsPackage extends EPackage {
 	int CONFIGURATION_PROPERTY__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Secret Alias</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIGURATION_PROPERTY__SECRET_ALIAS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Configuration Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION_PROPERTY_FEATURE_COUNT = 2;
+	int CONFIGURATION_PROPERTY_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorImpl <em>Custom Validator</em>}' class.
@@ -2613,6 +2622,17 @@ public interface DsPackage extends EPackage {
 	EAttribute getConfigurationProperty_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty#getSecretAlias <em>Secret Alias</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Secret Alias</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.ConfigurationProperty#getSecretAlias()
+	 * @see #getConfigurationProperty()
+	 * @generated
+	 */
+	EAttribute getConfigurationProperty_SecretAlias();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.CustomValidator <em>Custom Validator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4929,6 +4949,14 @@ public interface DsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONFIGURATION_PROPERTY__NAME = eINSTANCE.getConfigurationProperty_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Secret Alias</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONFIGURATION_PROPERTY__SECRET_ALIAS = eINSTANCE.getConfigurationProperty_SecretAlias();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorImpl <em>Custom Validator</em>}' class.

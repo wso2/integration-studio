@@ -81,6 +81,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	private static final String SERVER_ROLE = "DataServicesServer";
 	private static final String LINE_SEPERATOR = "line.separator";
 	private static final String DATASERVICE_TEMPLATE = "templates/Dataservice1.dbs";
+	private static final String DATASERVICE_TEMPLATE_SECRETALIAS = "templates/Dataservice2.dbs";
 	private String version = "1.0.0";
 
 	private final DataServiceModel dsModel;
@@ -436,7 +437,13 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		String eol = System.getProperty(LINE_SEPERATOR);
 		ITemporaryFileTag dsTempTag = FileUtils.createNewTempTag();
 		StringBuffer sb = new StringBuffer();
-		File dsTemplateFile = new DataServiceTemplateUtils().getResourceFile(DATASERVICE_TEMPLATE);
+		File dsTemplateFile;
+		boolean isSecretAliasEnabled = dsModel.isEnableSecretAlias();
+		if (!isSecretAliasEnabled) {
+		    dsTemplateFile = new DataServiceTemplateUtils().getResourceFile(DATASERVICE_TEMPLATE);
+		} else {
+		    dsTemplateFile = new DataServiceTemplateUtils().getResourceFile(DATASERVICE_TEMPLATE_SECRETALIAS);
+		}
 		String templateContent = FileUtils.getContentAsString(dsTemplateFile);
 		templateContent = templateContent.replaceAll("\\{", "<");
 		templateContent = templateContent.replaceAll("\\}", ">");
@@ -449,7 +456,11 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		Iterator<String> iterator = config.keySet().iterator();
 		while (iterator.hasNext()) {
 			String key = (String) iterator.next();
-			sb.append("<property name=\"").append(key).append("\">").append(config.get(key)).append("</property>\n");
+			if (isSecretAliasEnabled && (key.equals("org.wso2.ws.dataservice.password") || key.equals("password") || key.equals("jndi_password"))) {
+			    sb.append("<property name=\"").append(key).append("\" svns:secretAlias=\"").append(config.get(key)).append("\"/>");
+			} else {
+			    sb.append("<property name=\"").append(key).append("\">").append(config.get(key)).append("</property>\n");
+			}
 		}
 		templateContent = templateContent.replaceAll("<config.properties>", sb.toString());
 

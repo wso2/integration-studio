@@ -186,6 +186,14 @@ public class InboundEndpointConstants {
 	public static final String INBOUND_MQTT_SUBSCRIPTION_PASSWORD = "mqtt.subscription.password";
 	public static final String INBOUND_MQTT_CLIENT_ID = "mqtt.client.id";
 	public static final String INBOUND_MQTT_RECONNECTION_INTERVAL = "mqtt.reconnection.interval";
+	public static final String INBOUND_MQTT_SSL_KEYSTORE_LOCATION = "mqtt.ssl.keystore.location";
+	public static final String INBOUND_MQTT_SSL_KEYSTORE_TYPE = "mqtt.ssl.keystore.type";
+	public static final String INBOUND_MQTT_SSL_KEYSTORE_PASSWORD = "mqtt.ssl.keystore.password";
+	public static final String INBOUND_MQTT_SSL_TRUSTSTORE_LOCATION = "mqtt.ssl.truststore.location";
+	public static final String INBOUND_MQTT_SSL_TRUSTSTORE_TYPE = "mqtt.ssl.truststore.type";
+	public static final String INBOUND_MQTT_SSL_TRUSTSTORE_PASSWORD = "mqtt.ssl.truststore.password";
+	public static final String INBOUND_MQTT_SSL_VERSION = "mqtt.ssl.version";
+
 
 	public static final String RABBITMQ_CONNECTION_FACTORY = "rabbitmq.connection.factory";
 	public static final String RABBITMQ_SERVER_HOST_NAME = "rabbitmq.server.host.name";

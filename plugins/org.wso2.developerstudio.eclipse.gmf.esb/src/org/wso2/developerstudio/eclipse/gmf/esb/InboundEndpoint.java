@@ -216,6 +216,13 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJmsRetriesBeforeSuspension <em>Transport Jms Retries Before Suspension</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJmsPollingSuspensionPeriod <em>Transport Jms Polling Suspension Period</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreLocation <em>Transport MQTT Ssl Truststore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint()
@@ -3029,6 +3036,188 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportJmsPollingSuspensionPeriod(String value);
+	
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Ssl Keystore Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Ssl Keystore Location</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Ssl Keystore Location</em>' attribute.
+	 * @see #setTransportMQTTSslKeystoreLocation(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslKeystoreLocation()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSslKeystoreLocation();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Ssl Keystore Location</em>' attribute.
+	 * @see #getTransportMQTTSslKeystoreLocation()
+	 * @generated
+	 */
+	void setTransportMQTTSslKeystoreLocation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Ssl Keystore Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Ssl Keystore Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Ssl Keystore Type</em>' attribute.
+	 * @see #setTransportMQTTSslKeystoreType(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslKeystoreType()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSslKeystoreType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Ssl Keystore Type</em>' attribute.
+	 * @see #getTransportMQTTSslKeystoreType()
+	 * @generated
+	 */
+	void setTransportMQTTSslKeystoreType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Ssl Keystore Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Ssl Keystore Password</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Ssl Keystore Password</em>' attribute.
+	 * @see #setTransportMQTTSslKeystorePassword(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslKeystorePassword()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSslKeystorePassword();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Ssl Keystore Password</em>' attribute.
+	 * @see #getTransportMQTTSslKeystorePassword()
+	 * @generated
+	 */
+	void setTransportMQTTSslKeystorePassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Ssl Truststore Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Ssl Truststore Location</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Ssl Truststore Location</em>' attribute.
+	 * @see #setTransportMQTTSslTruststoreLocation(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslTruststoreLocation()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSslTruststoreLocation();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreLocation <em>Transport MQTT Ssl Truststore Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Ssl Truststore Location</em>' attribute.
+	 * @see #getTransportMQTTSslTruststoreLocation()
+	 * @generated
+	 */
+	void setTransportMQTTSslTruststoreLocation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Ssl Truststore Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Ssl Truststore Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Ssl Truststore Type</em>' attribute.
+	 * @see #setTransportMQTTSslTruststoreType(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslTruststoreType()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSslTruststoreType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Ssl Truststore Type</em>' attribute.
+	 * @see #getTransportMQTTSslTruststoreType()
+	 * @generated
+	 */
+	void setTransportMQTTSslTruststoreType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Ssl Truststore Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Ssl Truststore Password</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Ssl Truststore Password</em>' attribute.
+	 * @see #setTransportMQTTSslTruststorePassword(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslTruststorePassword()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSslTruststorePassword();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Ssl Truststore Password</em>' attribute.
+	 * @see #getTransportMQTTSslTruststorePassword()
+	 * @generated
+	 */
+	void setTransportMQTTSslTruststorePassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport MQTT Ssl Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport MQTT Ssl Version</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport MQTT Ssl Version</em>' attribute.
+	 * @see #setTransportMQTTSslVersion(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTSslVersion()
+	 * @model
+	 * @generated
+	 */
+	String getTransportMQTTSslVersion();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport MQTT Ssl Version</em>' attribute.
+	 * @see #getTransportMQTTSslVersion()
+	 * @generated
+	 */
+	void setTransportMQTTSslVersion(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Class</b></em>' attribute.

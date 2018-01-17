@@ -972,6 +972,35 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_RECONNECTION_INTERVAL,
                         visualInboundEndpoint.getInterval());
             }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslKeystoreLocation())) {
+	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_LOCATION,
+	                    visualInboundEndpoint.getTransportMQTTSslKeystoreLocation());
+	        }
+	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslKeystoreType())) {
+	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_TYPE,
+	                    visualInboundEndpoint.getTransportMQTTSslKeystoreType());
+	        }
+	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslKeystorePassword())) {
+	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_PASSWORD,
+	                    visualInboundEndpoint.getTransportMQTTSslKeystorePassword());
+	        }
+	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslTruststoreLocation())) {
+	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_LOCATION,
+	                    visualInboundEndpoint.getTransportMQTTSslTruststoreLocation());
+	        }
+	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslTruststoreType())) {
+	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_TYPE,
+	                    visualInboundEndpoint.getTransportMQTTSslTruststoreType());
+	        }
+	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslTruststorePassword())) {
+	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_PASSWORD,
+	                    visualInboundEndpoint.getTransportMQTTSslTruststorePassword());
+	        }
+	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslVersion())) {
+	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_VERSION,
+	                    visualInboundEndpoint.getTransportMQTTSslVersion());
+	        }
+
             break;
         case RABBITMQ:
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {

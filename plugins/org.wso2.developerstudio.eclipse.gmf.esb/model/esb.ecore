@@ -3206,6 +3206,7 @@
 	<eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJmsRetriesBeforeSuspension"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJmsPollingSuspensionPeriod"
+	eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTSslKeystoreLocation"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTSslKeystoreType"

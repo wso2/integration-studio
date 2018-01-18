@@ -101,7 +101,7 @@ public class ScriptGenerationUtil {
 							if (rootTempForLoop != null) {
 								iterateName = getForLoopIterateName(tempForLoop, rootTempForLoop, forLoopBeanList,
 										true);
-							} else if (tempForLoop.getParentIndex() > 0) {
+							} else if (tempForLoop.getParentIndex() >= 0) {
 								iterateName = getForLoopIterateName(tempForLoop,
 										forLoopBeanList.get(tempForLoop.getParentIndex()), forLoopBeanList, true);
 							} else {

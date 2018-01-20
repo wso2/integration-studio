@@ -35,6 +35,7 @@
     <genClasses ecoreClass="ds.ecore#//ConfigurationProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ConfigurationProperty/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ConfigurationProperty/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//ConfigurationProperty/secretAlias"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//CustomValidator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//CustomValidator/class"/>
@@ -182,6 +183,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/returnGeneratedKeys"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/useConfig"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/keyColumns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Query/returnUpdatedRowCount"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//QueryParameter">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//QueryParameter/mixed"/>

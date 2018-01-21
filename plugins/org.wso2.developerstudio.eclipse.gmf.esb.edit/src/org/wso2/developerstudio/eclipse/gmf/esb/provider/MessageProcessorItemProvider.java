@@ -76,12 +76,15 @@ public class MessageProcessorItemProvider
 			addRetryIntervalPropertyDescriptor(object);
 			addNonRetryHttpStatusCodesPropertyDescriptor(object);
 			addMaxDeliveryAttemptsPropertyDescriptor(object);
+			addMaxStoreConnectionAttemptsPropertyDescriptor(object);
+			addStoreConnectionIntervalPropertyDescriptor(object);
 			addDropMessageAfterMaximumDeliveryAttemptsPropertyDescriptor(object);
 			addAxis2ClientRepositoryPropertyDescriptor(object);
 			addAxis2ConfigurationPropertyDescriptor(object);
 			addReplySequenceNamePropertyDescriptor(object);
 			addFaultSequenceNamePropertyDescriptor(object);
 			addDeactivateSequenceNamePropertyDescriptor(object);
+			addFailMessagesStorePropertyDescriptor(object);
             addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
 			addTaskCountPropertyDescriptor(object);
@@ -679,6 +682,72 @@ public class MessageProcessorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Max Store Connection Attempts feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addMaxStoreConnectionAttemptsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageProcessor_maxStoreConnectionAttempts_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_maxStoreConnectionAttempts_feature", "_UI_MessageProcessor_type"),
+				 EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Store Connection Interval feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addStoreConnectionIntervalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageProcessor_storeConnectionInterval_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_storeConnectionInterval_feature", "_UI_MessageProcessor_type"),
+				 EsbPackage.Literals.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Fail Messages Store feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addFailMessagesStorePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageProcessor_failMessagesStore_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_failMessagesStore_feature", "_UI_MessageProcessor_type"),
+				 EsbPackage.Literals.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -764,6 +833,9 @@ public class MessageProcessorItemProvider
 			case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
 			case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
+			case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+			case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+			case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:

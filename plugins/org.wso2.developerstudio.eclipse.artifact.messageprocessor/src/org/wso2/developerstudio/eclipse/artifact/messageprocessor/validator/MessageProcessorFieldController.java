@@ -84,6 +84,27 @@ public class MessageProcessorFieldController extends AbstractFieldController {
 							"Forwarding interval is not valid");
 				}
 			}
+		} else if (modelProperty.equals("FS_processor.max_store_connection_attempts")) {
+			if (isScheduledMessage) {
+				String valueAsString = (String)value; 
+				// "-" is not numeric. All negative values are not numeric. "" is numeric
+				if(valueAsString.equals("-1")) {
+					
+				} else if(!StringUtils.isNumeric(valueAsString)
+						|| valueAsString.isEmpty() 
+						|| ( !valueAsString.isEmpty() && StringUtils.isNumeric(valueAsString) 
+								&& Integer.parseInt(valueAsString) < -1)) {
+					throw new FieldValidationException("Maximum Number of Store Connection Attempts is not valid");
+				}
+			}
+		} else if (model.equals("FS_processor.store_connection_retry_interval")) {
+			if(isScheduledMessage) {
+				if (!StringUtils.isNumeric((String) value)) {
+					throw new FieldValidationException(
+							"Stroe Connection Attempt Interval is not valid");
+				}
+			}
+			
 		} else if (modelProperty.equals("sampling_processor.sampling_interval")) {
 			if (isSamplingProcessor) {
 				if (!StringUtils.isNumeric((String) value)) {
@@ -219,6 +240,9 @@ public class MessageProcessorFieldController extends AbstractFieldController {
 			updatedList.add("FS_processor.Deactivate_sequence_name");
 			updatedList.add("FS_processor.forwarding_interval");
 			updatedList.add("FS_processor.retry_interval");
+			updatedList.add("FS_processor.max_store_connection_attempts");
+			updatedList.add("FS_processor.store_connection_retry_interval");
+			updatedList.add("FS_processor.fail_messages_store");
 			updatedList
 					.add("FS_processor.drop_message_after_maximum_delivery_attempts");
 			updatedList.add("FS_processor.task_count");

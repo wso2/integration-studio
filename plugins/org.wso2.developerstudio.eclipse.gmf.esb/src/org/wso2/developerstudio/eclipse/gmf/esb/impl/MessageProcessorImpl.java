@@ -77,6 +77,9 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getTaskCount <em>Task Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getMaxStoreConnectionAttempts <em>Max Store Connection Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getStoreConnectionInterval <em>Store Connection Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getFailMessagesStore <em>Fail Messages Store</em>}</li>
  * </ul>
  *
  * @generated
@@ -521,6 +524,66 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * @ordered
 	 */
 	protected String taskCount = TASK_COUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMaxStoreConnectionAttempts() <em>Max Store Connection Attempts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxStoreConnectionAttempts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MAX_STORE_CONNECTION_ATTEMPTS_EDEFAULT = -1;
+
+	/**
+	 * The cached value of the '{@link #getMaxStoreConnectionAttempts() <em>Max Store Connection Attempts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxStoreConnectionAttempts()
+	 * @generated
+	 * @ordered
+	 */
+	protected int maxStoreConnectionAttempts = MAX_STORE_CONNECTION_ATTEMPTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStoreConnectionInterval() <em>Store Connection Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStoreConnectionInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int STORE_CONNECTION_INTERVAL_EDEFAULT = 1000;
+
+	/**
+	 * The cached value of the '{@link #getStoreConnectionInterval() <em>Store Connection Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStoreConnectionInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected int storeConnectionInterval = STORE_CONNECTION_INTERVAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFailMessagesStore() <em>Fail Messages Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFailMessagesStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FAIL_MESSAGES_STORE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFailMessagesStore() <em>Fail Messages Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFailMessagesStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected String failMessagesStore = FAIL_MESSAGES_STORE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1204,6 +1267,69 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getMaxStoreConnectionAttempts() {
+		return maxStoreConnectionAttempts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setMaxStoreConnectionAttempts(int newMaxStoreConnectionAttempts) {
+		int oldMaxStoreConnectionAttempts = maxStoreConnectionAttempts;
+		maxStoreConnectionAttempts = newMaxStoreConnectionAttempts;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS, oldMaxStoreConnectionAttempts, maxStoreConnectionAttempts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getStoreConnectionInterval() {
+		return storeConnectionInterval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setStoreConnectionInterval(int newStoreConnectionInterval) {
+		int oldStoreConnectionInterval = storeConnectionInterval;
+		storeConnectionInterval = newStoreConnectionInterval;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL, oldStoreConnectionInterval, storeConnectionInterval));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getFailMessagesStore() {
+		return failMessagesStore;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setFailMessagesStore(String newFailMessagesStore) {
+		String oldFailMessagesStore = failMessagesStore;
+		failMessagesStore = newFailMessagesStore;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE, oldFailMessagesStore, failMessagesStore));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -1283,6 +1409,12 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return getParameters();
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				return getTaskCount();
+			case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+				return getMaxStoreConnectionAttempts();
+			case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+				return getStoreConnectionInterval();
+			case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
+				return getFailMessagesStore();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1372,6 +1504,15 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				setTaskCount((String)newValue);
 				return;
+			case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+				setMaxStoreConnectionAttempts((Integer)newValue);
+				return;
+			case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+				setStoreConnectionInterval((Integer)newValue);
+				return;
+			case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
+				setFailMessagesStore((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1459,6 +1600,15 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				setTaskCount(TASK_COUNT_EDEFAULT);
 				return;
+			case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+				setMaxStoreConnectionAttempts(MAX_STORE_CONNECTION_ATTEMPTS_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+				setStoreConnectionInterval(STORE_CONNECTION_INTERVAL_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
+				setFailMessagesStore(FAIL_MESSAGES_STORE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1521,6 +1671,12 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return parameters != null && !parameters.isEmpty();
 			case EsbPackage.MESSAGE_PROCESSOR__TASK_COUNT:
 				return TASK_COUNT_EDEFAULT == null ? taskCount != null : !TASK_COUNT_EDEFAULT.equals(taskCount);
+			case EsbPackage.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS:
+				return maxStoreConnectionAttempts != MAX_STORE_CONNECTION_ATTEMPTS_EDEFAULT;
+			case EsbPackage.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL:
+				return storeConnectionInterval != STORE_CONNECTION_INTERVAL_EDEFAULT;
+			case EsbPackage.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE:
+				return FAIL_MESSAGES_STORE_EDEFAULT == null ? failMessagesStore != null : !FAIL_MESSAGES_STORE_EDEFAULT.equals(failMessagesStore);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1573,6 +1729,12 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 		result.append(nonRetryHttpStatusCodes);
 		result.append(", taskCount: ");
 		result.append(taskCount);
+		result.append(", maxStoreConnectionAttempts: ");
+		result.append(maxStoreConnectionAttempts);
+		result.append(", storeConnectionInterval: ");
+		result.append(storeConnectionInterval);
+		result.append(", failMessagesStore: ");
+		result.append(failMessagesStore);
 		result.append(')');
 		return result.toString();
 	}

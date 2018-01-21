@@ -59,6 +59,8 @@ public class ScheduledForwarding implements IMessageProcessor {
     public Text forwarding_retryInterval;
     public Text forwarding_nonRetryHttpCodes;
     public Text forwarding_maxDeliveryAttempts;
+    public Text forwarding_maxStoreConnectionAttempts;
+    public Text forwarding_storeConnectionAttemptInterval;
     public Combo forwarding_dropMessageAfterMaxDeliveryAttempts;
     public Text forwarding_axis2ClientRepo;
     public Text forwarding_axis2Config;
@@ -68,6 +70,7 @@ public class ScheduledForwarding implements IMessageProcessor {
     public Button forwarding_add_faultSequence;
     public Text forwarding_deactiveSequence;
     public Button forwarding_add_deactiveSequence;
+    public Text forwarding_failMessagesStore;
     public Text forwarding_quartzConfigFilePath;
     public Text forwarding_cronExpression;
     public Text forwarding_taskCount;
@@ -215,7 +218,7 @@ public class ScheduledForwarding implements IMessageProcessor {
 				esbFormPage.updateDirtyState();
 			}
 		});
-
+        
         toolkit.createLabel(parameterSectionClient, "Drop Message After Maximum Delivery Attempts");
         forwarding_dropMessageAfterMaxDeliveryAttempts = new Combo(parameterSectionClient, SWT.DROP_DOWN);
         forwarding_dropMessageAfterMaxDeliveryAttempts.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
@@ -228,7 +231,33 @@ public class ScheduledForwarding implements IMessageProcessor {
 				esbFormPage.updateDirtyState();
 			}
 		});
-
+        
+        addSeparator(form, toolkit, parameterSectionClient);
+        
+        toolkit.createLabel(parameterSectionClient, "Maximum Store Connection Attempts");
+        forwarding_maxStoreConnectionAttempts = toolkit.createText(parameterSectionClient, "");
+        forwarding_maxStoreConnectionAttempts.setBackground(new Color(null, 229,236,253));
+        forwarding_maxStoreConnectionAttempts.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_maxStoreConnectionAttempts.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
+        
+        toolkit.createLabel(parameterSectionClient, "Store Connection Attempt Interval(miliseconds)");
+        forwarding_storeConnectionAttemptInterval = toolkit.createText(parameterSectionClient, "");
+        forwarding_storeConnectionAttemptInterval.setBackground(new Color(null, 229,236,253));
+        forwarding_storeConnectionAttemptInterval.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_storeConnectionAttemptInterval.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
+        
         addSeparator(form, toolkit, parameterSectionClient);
 
         toolkit.createLabel(parameterSectionClient, "Axis2 Client Repository");
@@ -375,6 +404,18 @@ public class ScheduledForwarding implements IMessageProcessor {
 				
 			}
         });
+        
+        toolkit.createLabel(parameterSectionClient, "Fail Messages Store");
+        forwarding_failMessagesStore = toolkit.createText(parameterSectionClient, "");
+        forwarding_failMessagesStore.setBackground(new Color(null, 229,236,253));
+        forwarding_failMessagesStore.setLayoutData(new TableWrapData(TableWrapData.FILL_GRAB));
+        forwarding_failMessagesStore.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				esbFormPage.setSave(true);
+				esbFormPage.updateDirtyState();
+			}
+		});
 
         addSeparator(form, toolkit, parameterSectionClient);
 

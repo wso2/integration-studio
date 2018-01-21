@@ -10075,6 +10075,33 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMessageProcessor_MaxStoreConnectionAttempts() {
+		return (EAttribute)messageProcessorEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageProcessor_StoreConnectionInterval() {
+		return (EAttribute)messageProcessorEClass.getEStructuralFeatures().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageProcessor_FailMessagesStore() {
+		return (EAttribute)messageProcessorEClass.getEStructuralFeatures().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAPIHandler() {
 		return apiHandlerEClass;
 	}
@@ -20541,6 +20568,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageProcessorEClass, MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES);
 		createEReference(messageProcessorEClass, MESSAGE_PROCESSOR__PARAMETERS);
 		createEAttribute(messageProcessorEClass, MESSAGE_PROCESSOR__TASK_COUNT);
+		createEAttribute(messageProcessorEClass, MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS);
+		createEAttribute(messageProcessorEClass, MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL);
+		createEAttribute(messageProcessorEClass, MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE);
 
 		apiHandlerEClass = createEClass(API_HANDLER);
 		createEAttribute(apiHandlerEClass, API_HANDLER__CLASS_NAME);
@@ -22947,6 +22977,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageProcessor_NonRetryHttpStatusCodes(), ecorePackage.getEString(), "nonRetryHttpStatusCodes", null, 0, 1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMessageProcessor_Parameters(), this.getMessageProcessorParameter(), null, "parameters", null, 0, -1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageProcessor_TaskCount(), ecorePackage.getEString(), "taskCount", null, 0, 1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageProcessor_MaxStoreConnectionAttempts(), ecorePackage.getEInt(), "maxStoreConnectionAttempts", "-1", 0, 1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageProcessor_StoreConnectionInterval(), ecorePackage.getEInt(), "storeConnectionInterval", "1000", 0, 1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageProcessor_FailMessagesStore(), ecorePackage.getEString(), "failMessagesStore", null, 0, 1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(apiHandlerEClass, APIHandler.class, "APIHandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAPIHandler_ClassName(), ecorePackage.getEString(), "className", null, 0, 1, APIHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

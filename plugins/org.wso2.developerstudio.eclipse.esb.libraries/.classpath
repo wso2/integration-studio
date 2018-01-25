@@ -52,17 +52,17 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.governance.registry.extensions_4.5.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.entitlement.mediator_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.entitlement.proxy_5.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.oauth.mediator_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam.config_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper.engine_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.event_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.fastXSLT_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.publishevent_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.router.impl_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.service_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.smooks_4.6.52.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.oauth.mediator_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam.config_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper.engine_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.event_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.fastXSLT_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.publishevent_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.router.impl_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.service_4.6.53.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.smooks_4.6.53.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.registry.api_4.4.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.registry.core_4.4.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.relay_4.6.6.jar"/>
@@ -105,13 +105,13 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.cache_4.6.52.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v36.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v36.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v36.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v36.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v36.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v36.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v36.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/synapse-vfs-transport_2.1.7.wso2v36.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-commons_2.1.7.wso2v37.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-core_2.1.7.wso2v37.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-extensions_2.1.7.wso2v37.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-fix-transport_2.1.7.wso2v37.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-nhttp-transport_2.1.7.wso2v37.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-samples_2.1.7.wso2v37.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-tasks_2.1.7.wso2v37.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/synapse-vfs-transport_2.1.7.wso2v37.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

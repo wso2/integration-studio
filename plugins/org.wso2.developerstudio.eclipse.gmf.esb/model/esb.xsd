@@ -3899,6 +3899,9 @@
         <xsd:attribute name="cronExpression" type="ecore:EString"/>
         <xsd:attribute name="pinnedServers" type="ecore:EString"/>
         <xsd:attribute name="nonRetryHttpStatusCodes" type="ecore:EString"/>
+        <xsd:attribute default="-1" ecore:unsettable="false" name="maxStoreConnectionAttempts" type="ecore:EInt"/>
+        <xsd:attribute default="1000" ecore:unsettable="false" name="storeConnectionInterval" type="ecore:EInt"/>
+        <xsd:attribute name="failMessagesStore" type="ecore:EString"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

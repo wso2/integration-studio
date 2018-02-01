@@ -229,6 +229,10 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				messageProcessorPrameeters.put("max.delivery.attempts",
 						messageProcessorModel.getDeliveryAttempts());
 			}
+			
+			messageProcessorPrameeters.put("max.store.connection.attempts", Integer.toString(messageProcessorModel.getMaxStoreConnectionAttempts()));
+			messageProcessorPrameeters.put("store.connection.retry.interval", Integer.toString(messageProcessorModel.getStoreConnectionInterval()));
+			
 			if (StringUtils.isNotBlank(messageProcessorModel
 					.getClientRepository())) {
 				messageProcessorPrameeters.put("axis2.repo",
@@ -256,6 +260,12 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				messageProcessorPrameeters.put(
 						"message.processor.deactivate.sequence",
 						messageProcessorModel.getDeactivateSequenceName());
+			}
+			if (StringUtils.isNotBlank(messageProcessorModel
+					.getFailMessagesStore())) {
+				messageProcessorPrameeters.put(
+						"message.processor.failMessagesStore",
+						messageProcessorModel.getFailMessagesStore());
 			}
 			if (StringUtils.isNotBlank(messageProcessorModel
 					.getConfigurationFilePath())) {

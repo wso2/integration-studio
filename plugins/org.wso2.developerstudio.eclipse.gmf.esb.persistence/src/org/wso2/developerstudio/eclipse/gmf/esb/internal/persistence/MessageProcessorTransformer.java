@@ -86,6 +86,8 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 			parameters.put("interval", ((Long) model.getForwardingInterval()).toString());
 			parameters.put("client.retry.interval", ((Long) model.getRetryInterval()).toString());
 			parameters.put("max.delivery.attempts", ((Integer) model.getMaxDeliveryAttempts()).toString());
+			parameters.put("max.store.connection.attempts", Integer.toString(model.getMaxStoreConnectionAttempts()));
+			parameters.put("store.connection.retry.interval", Integer.toString(model.getStoreConnectionInterval()));
 
 			if (StringUtils.isNotBlank(model.getAxis2ClientRepository())) {
 				parameters.put("axis2.repo", model.getAxis2ClientRepository());
@@ -107,6 +109,10 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 					&& StringUtils.isNotBlank(model.getDeactivateSequenceName().getKeyValue())) {
 				parameters.put("message.processor.deactivate.sequence", model.getDeactivateSequenceName()
 						.getKeyValue());
+			}
+			if(model.getFailMessagesStore() != null
+				    && StringUtils.isNotBlank(model.getFailMessagesStore())) {
+				parameters.put("message.processor.failMessagesStore", model.getFailMessagesStore());
 			}
 			if (StringUtils.isNotBlank(model.getQuartzConfigFilePath())) {
 				parameters.put("quartz.conf", model.getQuartzConfigFilePath());
@@ -324,6 +330,12 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 						if(StringUtils.isNotEmpty(forwarder.forwarding_maxDeliveryAttempts.getText())){
 						parameterMap.put("max.delivery.attempts", forwarder.forwarding_maxDeliveryAttempts.getText());
 						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_maxStoreConnectionAttempts.getText())) {
+							parameterMap.put("max.store.connection.attempts",forwarder.forwarding_maxStoreConnectionAttempts.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_storeConnectionAttemptInterval.getText())) {
+							parameterMap.put("store.connection.retry.interval", forwarder.forwarding_storeConnectionAttemptInterval.getText());
+						}
 						if(StringUtils.isNotEmpty(forwarder.forwarding_axis2ClientRepo.getText())){
 						parameterMap.put("axis2.repo", forwarder.forwarding_axis2ClientRepo.getText());
 						}
@@ -338,6 +350,9 @@ public class MessageProcessorTransformer extends AbstractEsbNodeTransformer {
 						}
 						if(StringUtils.isNotEmpty(forwarder.forwarding_deactiveSequence.getText())){
 						parameterMap.put("message.processor.deactivate.sequence", forwarder.forwarding_deactiveSequence.getText());
+						}
+						if(StringUtils.isNotEmpty(forwarder.forwarding_failMessagesStore.getText())) {
+							parameterMap.put("message.processor.failMessagesStore", forwarder.forwarding_failMessagesStore.getText());
 						}
 						if(StringUtils.isNotEmpty(forwarder.forwarding_quartzConfigFilePath.getText())){
 						parameterMap.put("quartz.conf", forwarder.forwarding_quartzConfigFilePath.getText());

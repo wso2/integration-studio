@@ -25,6 +25,9 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSA
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FORWARDING_INTERVAL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_STORE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES;
@@ -152,6 +155,32 @@ public class MessageProcessorDeserializer
 						}
 						keySet.remove("max.delivery.attempts");
 					}
+					if (parameters.containsKey("max.store.connection.attempts")) {
+						Object value = parameters.get("max.store.connection.attempts");
+						if (value != null) {
+							try {
+								executeSetValueCommand(MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS,
+										new Integer(value.toString()));
+							} catch (NumberFormatException e) {
+								// set default value -1
+								executeSetValueCommand(MESSAGE_PROCESSOR__MAX_STORE_CONNECTION_ATTEMPTS, -1);
+							}
+						}
+						keySet.remove("max.store.connection.attempts");
+					}
+					if (parameters.containsKey("store.connection.retry.interval")) {
+						Object value = parameters.get("store.connection.retry.interval");
+						if (value != null) {
+							try {
+								executeSetValueCommand(MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL,
+										new Integer(value.toString()));
+							} catch (NumberFormatException e) {
+								// set default value -1
+								executeSetValueCommand(MESSAGE_PROCESSOR__STORE_CONNECTION_INTERVAL, -1);
+							}
+						}
+						keySet.remove("store.connection.retry.interval");
+					}
 					if (parameters.containsKey("axis2.repo")) {
 						Object value = parameters.get("axis2.repo");
 						if (StringUtils.isNotBlank(value.toString())) {
@@ -215,6 +244,15 @@ public class MessageProcessorDeserializer
 							
 						}
 						keySet.remove("message.processor.deactivate.sequence");
+					}
+					if (parameters.containsKey("message.processor.failMessagesStore")) {
+						Object value = parameters.get("message.processor.failMessagesStore");
+						if (StringUtils.isNotBlank(value.toString())) {
+							executeSetValueCommand(MESSAGE_PROCESSOR__FAIL_MESSAGES_STORE, value.toString());
+
+						}
+						keySet.remove("message.processor.failMessagesStore");
+
 					}
 					if (parameters.containsKey("quartz.conf")) {
 						Object value = parameters.get("quartz.conf");
@@ -655,6 +693,10 @@ public class MessageProcessorDeserializer
 				keySet.remove("non.retry.status.codes");
 				setTextValue(forwarder.forwarding_maxDeliveryAttempts,processor.getParameters().get("max.delivery.attempts"));
 				keySet.remove("max.delivery.attempts");
+				setTextValue(forwarder.forwarding_maxStoreConnectionAttempts, processor.getParameters().get("max.store.connection.attempts"));
+				keySet.remove("max.store.connection.attempts");
+				setTextValue(forwarder.forwarding_storeConnectionAttemptInterval, processor.getParameters().get("store.connection.retry.interval"));
+				keySet.remove("store.connection.retry.interval");
 				setTextValue(forwarder.forwarding_axis2ClientRepo, processor.getParameters().get("axis2.repo"));
 				keySet.remove("axis2.repo");
 				setTextValue(forwarder.forwarding_axis2Config, processor.getParameters().get("axis2.config"));
@@ -665,6 +707,8 @@ public class MessageProcessorDeserializer
 				keySet.remove("message.processor.fault.sequence");
 				setTextValue(forwarder.forwarding_deactiveSequence, processor.getParameters().get("message.processor.deactivate.sequence"));
 				keySet.remove("message.processor.deactivate.sequence");
+				setTextValue(forwarder.forwarding_failMessagesStore, processor.getParameters().get("message.processor.failMessagesStore"));
+				keySet.remove("message.processor.failMessagesStore");
 				setTextValue(forwarder.forwarding_quartzConfigFilePath, processor.getParameters().get("quartz.conf"));
 				keySet.remove("quartz.conf");
 				setTextValue(forwarder.forwarding_cronExpression, processor.getParameters().get("cronExpression"));

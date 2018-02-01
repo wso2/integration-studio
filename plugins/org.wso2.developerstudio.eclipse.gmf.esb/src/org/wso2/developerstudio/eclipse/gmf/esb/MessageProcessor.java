@@ -51,6 +51,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getTaskCount <em>Task Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxStoreConnectionAttempts <em>Max Store Connection Attempts</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getStoreConnectionInterval <em>Store Connection Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFailMessagesStore <em>Fail Messages Store</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor()
@@ -710,5 +713,85 @@ public interface MessageProcessor extends EsbElement {
 	 * @generated
 	 */
 	void setTaskCount(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Max Store Connection Attempts</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Max Store Connection Attempts</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max Store Connection Attempts</em>' attribute.
+	 * @see #setMaxStoreConnectionAttempts(int)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_MaxStoreConnectionAttempts()
+	 * @model default="-1"
+	 * @generated
+	 */
+	int getMaxStoreConnectionAttempts();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getMaxStoreConnectionAttempts <em>Max Store Connection Attempts</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max Store Connection Attempts</em>' attribute.
+	 * @see #getMaxStoreConnectionAttempts()
+	 * @generated
+	 */
+	void setMaxStoreConnectionAttempts(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Store Connection Interval</b></em>' attribute.
+	 * The default value is <code>"1000"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Store Connection Interval</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Store Connection Interval</em>' attribute.
+	 * @see #setStoreConnectionInterval(int)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_StoreConnectionInterval()
+	 * @model default="1000"
+	 * @generated
+	 */
+	int getStoreConnectionInterval();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getStoreConnectionInterval <em>Store Connection Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Store Connection Interval</em>' attribute.
+	 * @see #getStoreConnectionInterval()
+	 * @generated
+	 */
+	void setStoreConnectionInterval(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Fail Messages Store</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Fail Messages Store</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fail Messages Store</em>' attribute.
+	 * @see #setFailMessagesStore(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_FailMessagesStore()
+	 * @model
+	 * @generated
+	 */
+	String getFailMessagesStore();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getFailMessagesStore <em>Fail Messages Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fail Messages Store</em>' attribute.
+	 * @see #getFailMessagesStore()
+	 * @generated
+	 */
+	void setFailMessagesStore(String value);
 
 } // MessageProcessor

@@ -61,6 +61,9 @@ public class MessageProcessorModel extends ProjectDataModel {
 	private String replySequenceName;
 	private String FaultSequenceName;
 	private String deactivateSequenceName;
+	private int maxStoreConnectionAttempts;
+	private int storeConnectionInterval;
+	private String failMessagesStore;
     private String sequence;
 	private String classFQN;
 	private String endpointName;
@@ -85,6 +88,8 @@ public class MessageProcessorModel extends ProjectDataModel {
 		deliveryAttempts = "4";
 		forwardingInterval = 1000;
 		samplingInterval = 1000;
+		maxStoreConnectionAttempts = -1;
+		storeConnectionInterval = 1000;
 		samplingConcurrency = 1;
 		taskCount = "1";
 	}
@@ -199,6 +204,30 @@ public class MessageProcessorModel extends ProjectDataModel {
 
 	public void setDeactivateSequenceName(String deactivateSequenceName) {
 		this.deactivateSequenceName = deactivateSequenceName;
+	}
+	
+	public int getMaxStoreConnectionAttempts() {
+		return maxStoreConnectionAttempts;
+	}
+
+	public void setMaxStoreConnectionAttempts(int maxStoreConnectionAttempts) {
+		this.maxStoreConnectionAttempts = maxStoreConnectionAttempts;
+	}
+
+	public int getStoreConnectionInterval() {
+		return storeConnectionInterval;
+	}
+
+	public void setStoreConnectionInterval(int storeConnectionInterval) {
+		this.storeConnectionInterval = storeConnectionInterval;
+	}
+
+	public String getFailMessagesStore() {
+		return failMessagesStore;
+	}
+
+	public void setFailMessagesStore(String failMessagesStore) {
+		this.failMessagesStore = failMessagesStore;
 	}
 
 	public String getSequence() {
@@ -335,6 +364,12 @@ public class MessageProcessorModel extends ProjectDataModel {
 				modelPropertyValue = getCronExpression();
 			} else if (key.equals("FS_processor.delivery_attempts")) {
 				modelPropertyValue = getDeliveryAttempts();
+			} else if (key.equals("FS_processor.max_store_connection_attempts")) {
+				modelPropertyValue = getMaxStoreConnectionAttempts();
+			} else if (key.equals("FS_processor.store_connection_retry_interval")) {
+				modelPropertyValue = getStoreConnectionInterval();
+			} else if (key.equals("FS_processor.fail_messages_store")) {
+				modelPropertyValue = getFailMessagesStore();
 			} else if (key.equals("Forwarding_processor.client_repository")) {
 				modelPropertyValue = getClientRepository();
 			} else if (key.equals("Forwarding_processor.axis2_configuration")) {
@@ -405,6 +440,12 @@ public class MessageProcessorModel extends ProjectDataModel {
 			setCronExpression(data.toString());
 		} else if (key.equals("FS_processor.delivery_attempts")) {
 			setDeliveryAttempts(data.toString());
+		} else if (key.equals("FS_processor.max_store_connection_attempts")) {
+			setMaxStoreConnectionAttempts(Integer.parseInt(data.toString()));
+		} else if (key.equals("FS_processor.store_connection_retry_interval")) {
+			setStoreConnectionInterval(Integer.parseInt(data.toString()));
+		} else if (key.equals("FS_processor.fail_messages_store")) {
+			setFailMessagesStore(data.toString());
 		} else if (key.equals("Forwarding_processor.client_repository")) {
 			setClientRepository(data.toString());
 		} else if (key.equals("Forwarding_processor.axis2_configuration")) {

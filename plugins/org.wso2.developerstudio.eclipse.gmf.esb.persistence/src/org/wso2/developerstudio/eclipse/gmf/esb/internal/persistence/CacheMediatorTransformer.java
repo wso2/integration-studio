@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
+import org.wso2.carbon.mediator.cache.CacheManager;
 import org.wso2.carbon.mediator.cache.CachingConstants;
 
 /**
@@ -75,7 +76,7 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 		/*
 		 *  Configure Cache mediator.
 		 */
-		org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator();
+		org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator(new CacheManager());
 		setCommonProperties(cacheMediator, visualCache);
 		{
             if (visualCache.getCacheAction().getValue() == 0) {
@@ -94,7 +95,6 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                     if (StringUtils.isNotBlank(visualCache.getHeadersToExcludeInHash())) {
                         cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
                     }
-                    cacheMediator.setHttpMethod("http");
                 }
                 cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
                 cacheMediator.setTimeout(visualCache.getCacheTimeout());

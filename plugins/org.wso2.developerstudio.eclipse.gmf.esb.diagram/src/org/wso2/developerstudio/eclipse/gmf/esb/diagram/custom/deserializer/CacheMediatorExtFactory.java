@@ -23,12 +23,12 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
+import org.wso2.carbon.mediator.cache.CacheManager;
 import org.wso2.carbon.mediator.cache.CacheMediatorFactory;
 import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
 import org.apache.synapse.config.xml.SequenceMediatorFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.wso2.carbon.mediator.cache.CacheMediator;
-import org.wso2.caching.CachingConstants;
 
 public class CacheMediatorExtFactory extends CacheMediatorFactory {
     private static final QName CACHE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "cache");
@@ -52,7 +52,7 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
 				+ "Unexpected element as the cache mediator configuration");
 		}
 
-		CacheMediator cacheMediator = new CacheMediator();
+		CacheMediator cacheMediator = new CacheMediator(new CacheManager());
 
 		OMAttribute collectorAttr = elem.getAttribute(ATT_COLLECTOR);
 		if (collectorAttr != null && collectorAttr.getAttributeValue() != null

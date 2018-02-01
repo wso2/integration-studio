@@ -16,14 +16,11 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom;
 
-import java.util.Iterator;
-
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMNode;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.AbstractMediatorSerializer;
 
-public class ClassMediatorExtSerializer extends AbstractMediatorSerializer{
+public class ClassMediatorExtSerializer extends AbstractMediatorSerializer {
 	
 	public OMElement serializeSpecificMediator(Mediator m) {
 
@@ -41,20 +38,7 @@ public class ClassMediatorExtSerializer extends AbstractMediatorSerializer{
             handleException("Invalid class mediator. The class name is required");
         }
 
-        Iterator itr = mediator.getProperties().keySet().iterator();
-        while(itr.hasNext()) {
-            String propName = (String) itr.next();
-            Object o = mediator.getProperties().get(propName);
-            OMElement prop = fac.createOMElement(PROP_Q, clazz);
-            prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
-
-            if (o instanceof String) {
-                prop.addAttribute(fac.createOMAttribute("value", nullNS, (String) o));
-            } else {
-                prop.addChild((OMNode) o);
-            }
-            clazz.addChild(prop);
-        }
+        super.serializeProperties(clazz, mediator.getProperties());
 
         return clazz;
     }

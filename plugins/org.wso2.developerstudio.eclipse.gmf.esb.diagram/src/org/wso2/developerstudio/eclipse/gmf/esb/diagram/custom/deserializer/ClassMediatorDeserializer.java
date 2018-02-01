@@ -16,9 +16,10 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-import java.util.Map;
+import java.util.List;
 
 import org.apache.synapse.mediators.AbstractMediator;
+import org.apache.synapse.mediators.MediatorProperty;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.ui.forms.editor.FormEditor;
@@ -41,12 +42,12 @@ public class ClassMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 		setElementToEdit(mediatorModel);
 		setCommonProperties(mediator, mediatorModel);
 		executeSetValueCommand(CLASS_MEDIATOR__CLASS_NAME, mediator.getMediatorClass());
-		@SuppressWarnings("unchecked")
-		Map<String,Object> properties = mediator.getProperties();
-		for (Map.Entry<String,Object> entry : properties.entrySet()) {
+
+		List<MediatorProperty> properties = mediator.getProperties();
+		for (MediatorProperty entry : properties) {
 			final ClassProperty property = EsbFactory.eINSTANCE.createClassProperty();
-			property.setPropertyName(entry.getKey());
-			property.setPropertyValue(entry.getValue().toString());
+			property.setPropertyName(entry.getName());
+			property.setPropertyValue(entry.getValue());
 			executeAddValueCommand(mediatorModel.getProperties(),property, false);
 		}
 		

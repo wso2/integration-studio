@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import java.util.List;
 
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.eclipse.core.runtime.Assert;
@@ -28,6 +29,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ClassProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class ClassMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, ClassMediator> {
@@ -47,7 +51,18 @@ public class ClassMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 		for (MediatorProperty entry : properties) {
 			final ClassProperty property = EsbFactory.eINSTANCE.createClassProperty();
 			property.setPropertyName(entry.getName());
-			property.setPropertyValue(entry.getValue());
+			
+			if (null != entry.getValue()) {
+				property.setPropertyValueType(PropertyValueType.LITERAL);
+				property.setPropertyValue(entry.getValue());
+
+			} else if (null != entry.getExpression()) {
+				property.setPropertyValueType(PropertyValueType.EXPRESSION);
+				SynapsePath xpath = entry.getExpression();
+				NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
+				property.setPropertyExpression(namespaceProp);
+
+			}
 			executeAddValueCommand(mediatorModel.getProperties(),property, false);
 		}
 		

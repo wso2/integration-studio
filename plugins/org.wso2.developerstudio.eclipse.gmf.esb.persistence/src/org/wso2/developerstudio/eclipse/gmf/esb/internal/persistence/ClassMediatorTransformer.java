@@ -96,13 +96,13 @@ public class ClassMediatorTransformer extends AbstractEsbNodeTransformer {
 			mediatorProperty.setName(visualProperty.getPropertyName());
 			if (visualProperty.getPropertyValueType().getLiteral().equals("LITERAL")) {
 				mediatorProperty.setValue(visualProperty.getPropertyValue());
+				
 			} else if (visualProperty.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
 				NamespacedProperty namespacedExpression = visualProperty.getPropertyExpression();
-				if (namespacedExpression != null) {
+				if (null != namespacedExpression) {
 					SynapsePath propertyExpression = CustomSynapsePathFactory
 							.getSynapsePath(namespacedExpression.getPropertyValue());
-					if (namespacedExpression.getNamespaces() != null
-							&& !(propertyExpression instanceof SynapseJsonPath)) {
+					if (null != namespacedExpression.getNamespaces() && !(propertyExpression instanceof SynapseJsonPath)) {
 						for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
 							propertyExpression.addNamespace(entry.getKey(), entry.getValue());
 						}

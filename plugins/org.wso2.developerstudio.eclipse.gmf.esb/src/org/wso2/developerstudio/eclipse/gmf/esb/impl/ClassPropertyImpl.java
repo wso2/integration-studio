@@ -18,7 +18,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class ClassPropertyImpl extends AbstractNameValuePropertyImpl implements ClassProperty {
+public class ClassPropertyImpl extends AbstractNameValueExpressionPropertyImpl implements ClassProperty {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

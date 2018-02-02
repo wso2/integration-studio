@@ -32,6 +32,7 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
@@ -46,11 +47,33 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ClassMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
 
 /**
  * Dialog used to configure {@link ClassMediator} nodes.
  */
-public class ConfigureClassMediatorDialog extends Dialog {		
+public class ConfigureClassMediatorDialog extends Dialog {
+
+	private static final String LITERAL_TYPE = "LITERAL";
+	private static final String EXPRESSION_TYPE = "EXPRESSION";
+	private static final String EXP = "exp";
+
+	/**
+	 * Table widgets
+	 */
+	private Combo cmbPropertyType;
+	private Text txtPropertyName;
+	private PropertyText propertyValue;
+
+	/**
+	 * Table editors
+	 */
+	private TableEditor propertyTypeEditor;
+	private TableEditor propertyNameEditor;
+	private TableEditor propertyValueEditor;
+	
 	/**
 	 * {@link ClassMediator} domain object.
 	 */
@@ -147,8 +170,6 @@ public class ConfigureClassMediatorDialog extends Dialog {
 			classNameText.setLayoutData(classNameTextLayoutData);
 		}
 		
-		
-		
 		classPropertiesLabel = new Label(container, SWT.NONE);
 		{
 			classPropertiesLabel.setText("Properties:");
@@ -187,6 +208,9 @@ public class ConfigureClassMediatorDialog extends Dialog {
 				public void handleEvent(Event event) {
 					int selectedIndex = classPropertiesTable.getSelectionIndex();
 					if (-1 != selectedIndex) {
+						initTableEditor(propertyNameEditor, classPropertiesTable);
+						initTableEditor(propertyTypeEditor, classPropertiesTable);
+						initTableEditor(propertyValueEditor, classPropertiesTable);
 						unbindClassProperty(selectedIndex);
 						
 						// Select the next available candidate for deletion.
@@ -203,13 +227,29 @@ public class ConfigureClassMediatorDialog extends Dialog {
 		classPropertiesTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
 		{
 			TableColumn nameColumn = new TableColumn(classPropertiesTable, SWT.LEFT);
+			TableColumn typeColumn = new TableColumn(classPropertiesTable, SWT.LEFT);
 			TableColumn valueColumn = new TableColumn(classPropertiesTable, SWT.LEFT);
+			
 			nameColumn.setText("Name");
-			nameColumn.setWidth(150);			
-			valueColumn.setText("Value");
-			valueColumn.setWidth(200); 			
+			nameColumn.setWidth(150);
+			typeColumn.setText("Type");
+			typeColumn.setWidth(150);
+			valueColumn.setText("Value/Expression");
+			valueColumn.setWidth(200); 	
+			
 			classPropertiesTable.setHeaderVisible(true);
 			classPropertiesTable.setLinesVisible(true);
+			
+			Listener tblPropertiesListener = new Listener() {
+				public void handleEvent(Event evt) {
+					if (null != evt.item && evt.item instanceof TableItem) {
+						TableItem item = (TableItem) evt.item;
+						editItem(item);
+					}
+				}
+			};
+
+			classPropertiesTable.addListener(SWT.Selection, tblPropertiesListener);
 			
 			// Populate properties.
 			for (ClassProperty property : classMediator.getProperties()) {
@@ -231,6 +271,66 @@ public class ConfigureClassMediatorDialog extends Dialog {
 		return container;
 	}	
 	
+	private void editItem(final TableItem item) {
+
+		NamespacedProperty expression = (NamespacedProperty) item.getData(EXP);
+
+		propertyNameEditor = initTableEditor(propertyNameEditor, item.getParent());
+		txtPropertyName = new Text(item.getParent(), SWT.NONE);
+		txtPropertyName.setText(item.getText(0));
+		propertyNameEditor.setEditor(txtPropertyName, item, 0);
+		item.getParent().redraw();
+		item.getParent().layout();
+		txtPropertyName.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				item.setText(0, txtPropertyName.getText());
+			}
+		});
+
+		propertyTypeEditor = initTableEditor(propertyTypeEditor, item.getParent());
+		cmbPropertyType = new Combo(item.getParent(), SWT.READ_ONLY);
+		cmbPropertyType.setItems(new String[] { LITERAL_TYPE, EXPRESSION_TYPE });
+		cmbPropertyType.setText(item.getText(1));
+		propertyTypeEditor.setEditor(cmbPropertyType, item, 1);
+		item.getParent().redraw();
+		item.getParent().layout();
+		cmbPropertyType.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event evt) {
+				item.setText(1, cmbPropertyType.getText());
+			}
+		});
+
+		propertyValueEditor = initTableEditor(propertyValueEditor, item.getParent());
+
+		propertyValue = new PropertyText(item.getParent(), SWT.NONE, cmbPropertyType);
+		propertyValue.addProperties(item.getText(2), expression);
+		propertyValueEditor.setEditor(propertyValue, item, 2);
+		item.getParent().redraw();
+		item.getParent().layout();
+		propertyValue.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				item.setText(2, propertyValue.getText());
+				Object property = propertyValue.getProperty();
+				if (property instanceof NamespacedProperty) {
+					item.setData(EXP, (NamespacedProperty) property);
+				}
+			}
+		});
+	}
+
+	private TableEditor initTableEditor(TableEditor editor, Table table) {
+		if (null != editor) {
+			Control lastCtrl = editor.getEditor();
+			if (null != lastCtrl) {
+				lastCtrl.dispose();
+			}
+		}
+		editor = new TableEditor(table);
+		editor.horizontalAlignment = SWT.LEFT;
+		editor.grabHorizontal = true;
+		return editor;
+	}
+
 	/**
 	 * Sets up a table editor that allows users to edit cell values inline.
 	 * 
@@ -308,17 +408,31 @@ public class ConfigureClassMediatorDialog extends Dialog {
 		// Class properties.
 		for (TableItem item : classPropertiesTable.getItems()) {
 			ClassProperty property = (ClassProperty) item.getData();
+			NamespacedProperty expression = (NamespacedProperty)item.getData(EXP);
 			
 			// If the property is a new one, add it to the model.
 			if (null == property.eContainer()) {
 				// Update the class property with the latest data from table row.
 				property.setPropertyName(item.getText(0));
-				property.setPropertyValue(item.getText(1));
+
+				if (item.getText(1).equals(LITERAL_TYPE)) {
+					property.setPropertyValueType(PropertyValueType.LITERAL);
+					property.setPropertyValue(item.getText(2));
+
+				} else if (item.getText(1).equals(EXPRESSION_TYPE)) {
+					property.setPropertyValueType(PropertyValueType.EXPRESSION);
+					NamespacedProperty namespaceProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+					namespaceProperty.setPropertyValue(item.getText(2));
+					namespaceProperty.setNamespaces(expression.getNamespaces());
+					property.setPropertyExpression(namespaceProperty);
+				}
+				property.setPropertyValue(item.getText(2));
 				
 				// Record the add operation.
 				AddCommand addCmd = new AddCommand(editingDomain, classMediator,
 						EsbPackage.Literals.CLASS_MEDIATOR__PROPERTIES, property);
 				getResultCommand().append(addCmd);
+				
 			} else {
 				// If the property name needs to be updated.
 				if (!property.getPropertyName().equals(item.getText(0))) {
@@ -326,12 +440,47 @@ public class ConfigureClassMediatorDialog extends Dialog {
 							EsbPackage.Literals.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME, item.getText(0));
 					getResultCommand().append(setCmd);
 				}
-				
-				// If the property value needs to be updated.
-				if (!property.getPropertyValue().equals(item.getText(1))) {
-					SetCommand setCmd = new SetCommand(editingDomain, property,
-							EsbPackage.Literals.ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE, item.getText(1));
-					getResultCommand().append(setCmd);
+
+				//update property type and value
+				if (item.getText(1).equals(LITERAL_TYPE)) {
+					SetCommand setCmdValueType = new SetCommand(editingDomain, property,
+							EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE_TYPE,
+							PropertyValueType.LITERAL);
+					getResultCommand().append(setCmdValueType);
+
+					if (!property.getPropertyValue().equals(item.getText(2))) {
+						SetCommand setCmd = new SetCommand(editingDomain, property,
+								EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE,
+								item.getText(2));
+						getResultCommand().append(setCmd);
+					}
+
+				} else if (item.getText(1).equals(EXPRESSION_TYPE)) {
+					SetCommand setCmdValueType = new SetCommand(editingDomain, property,
+							EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE_TYPE,
+							PropertyValueType.EXPRESSION);
+					getResultCommand().append(setCmdValueType);
+
+					if (null == property.getPropertyExpression()) {
+						NamespacedProperty namespaceProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+						namespaceProperty.setPropertyValue(item.getText(2));
+						namespaceProperty.setNamespaces(expression.getNamespaces());
+
+						AddCommand addCmd = new AddCommand(editingDomain, property,
+								EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_EXPRESSION,
+								namespaceProperty);
+						getResultCommand().append(addCmd);
+
+					} else {
+						SetCommand setCmd = new SetCommand(editingDomain, property.getPropertyExpression(),
+								EsbPackage.Literals.NAMESPACED_PROPERTY__PROPERTY_VALUE, item.getText(2));
+						getResultCommand().append(setCmd);
+
+						setCmd = new SetCommand(editingDomain, property.getPropertyExpression(),
+								EsbPackage.Literals.NAMESPACED_PROPERTY__NAMESPACES, expression.getNamespaces());
+						getResultCommand().append(setCmd);
+					}
+
 				}
 			}
 		}
@@ -353,8 +502,19 @@ public class ConfigureClassMediatorDialog extends Dialog {
 	 */
 	private TableItem bindClassProperty(ClassProperty property) {
 		TableItem item = new TableItem(classPropertiesTable, SWT.NONE);
-		item.setText(new String [] {property.getPropertyName(), property.getPropertyValue()});
+		
+		if (property.getPropertyValueType().getLiteral().equals(LITERAL_TYPE)) {
+			item.setText(new String[] { property.getPropertyName(), property.getPropertyValueType().getLiteral(),
+					property.getPropertyValue() });
+
+		} else if (property.getPropertyValueType().getLiteral().equals(EXPRESSION_TYPE)) {
+			item.setText(new String[] { property.getPropertyName(), property.getPropertyValueType().getLiteral(),
+					property.getPropertyExpression().getPropertyValue() });
+		}
+
 		item.setData(property);
+		item.setData(EXP, EsbFactory.eINSTANCE.copyNamespacedProperty(property.getPropertyExpression()));
+		
 		return item;
 	}
 

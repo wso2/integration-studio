@@ -1071,7 +1071,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClassMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="ClassMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ClassProperty" eSuperTypes="#//AbstractNameValueProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassProperty" eSuperTypes="#//AbstractNameValueExpressionProperty"/>
   <eClassifiers xsi:type="ecore:EClass" name="SpringMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="beanName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="bean_name"/>

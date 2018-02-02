@@ -21145,7 +21145,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		classMediatorEClass.getESuperTypes().add(this.getMediator());
 		classMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 		classMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
-		classPropertyEClass.getESuperTypes().add(this.getAbstractNameValueProperty());
+		classPropertyEClass.getESuperTypes().add(this.getAbstractNameValueExpressionProperty());
 		springMediatorEClass.getESuperTypes().add(this.getMediator());
 		springMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 		springMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());

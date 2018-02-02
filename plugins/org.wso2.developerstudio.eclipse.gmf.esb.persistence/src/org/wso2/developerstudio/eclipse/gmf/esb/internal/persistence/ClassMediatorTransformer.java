@@ -17,17 +17,23 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.apache.synapse.Mediator;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExt;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyClassMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
@@ -43,12 +49,15 @@ public class ClassMediatorTransformer extends AbstractEsbNodeTransformer {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void transform(TransformationInfo info, EsbNode subject)
-			throws TransformerException {		
-		 info.getParentSequence().addChild(createClassMediator(subject));
-		
-		 // Transform the class mediator output data flow path.
-		 doTransform(info, ((ClassMediator)subject).getOutputConnector());
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {	
+		try {
+			info.getParentSequence().addChild(createClassMediator(subject));
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
+
+		// Transform the class mediator output data flow path.
+		doTransform(info, ((ClassMediator) subject).getOutputConnector());
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -61,13 +70,16 @@ public class ClassMediatorTransformer extends AbstractEsbNodeTransformer {
 	public void transformWithinSequence(TransformationInfo information,
 			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		// TODO Auto-generated method stub
-		sequence.addChild(createClassMediator(subject));
-		doTransformWithinSequence(information,((ClassMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
-		
-		
+		try {
+			sequence.addChild(createClassMediator(subject));
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
+		doTransformWithinSequence(information, ((ClassMediator) subject).getOutputConnector().getOutgoingLink(),
+				sequence);
 	}
 	
-	private ClassMediatorExt createClassMediator(EsbNode subject) throws TransformerException {
+	private ClassMediatorExt createClassMediator(EsbNode subject) throws TransformerException, JaxenException {
 		Assert.isTrue(subject instanceof ClassMediator, "Invalid subject.");
 		ClassMediator visualClass = (ClassMediator) subject;
 
@@ -82,7 +94,23 @@ public class ClassMediatorTransformer extends AbstractEsbNodeTransformer {
 		for (ClassProperty visualProperty : visualClass.getProperties()) {
 			MediatorProperty mediatorProperty = new MediatorProperty();
 			mediatorProperty.setName(visualProperty.getPropertyName());
-			mediatorProperty.setValue(visualProperty.getPropertyValue());
+			if (visualProperty.getPropertyValueType().getLiteral().equals("LITERAL")) {
+				mediatorProperty.setValue(visualProperty.getPropertyValue());
+				
+			} else if (visualProperty.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
+				NamespacedProperty namespacedExpression = visualProperty.getPropertyExpression();
+				if (null != namespacedExpression) {
+					SynapsePath propertyExpression = CustomSynapsePathFactory
+							.getSynapsePath(namespacedExpression.getPropertyValue());
+					if (null != namespacedExpression.getNamespaces() && !(propertyExpression instanceof SynapseJsonPath)) {
+						for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+							propertyExpression.addNamespace(entry.getKey(), entry.getValue());
+						}
+					}
+
+					mediatorProperty.setExpression(propertyExpression);
+				}
+			}
 			propertyList.add(mediatorProperty);
 		}
 		classMediator.addAllProperties(propertyList);

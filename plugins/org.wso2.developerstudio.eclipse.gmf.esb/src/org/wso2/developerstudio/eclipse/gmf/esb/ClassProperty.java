@@ -17,5 +17,5 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * @model
  * @generated
  */
-public interface ClassProperty extends AbstractNameValueProperty {
+public interface ClassProperty extends AbstractNameValueExpressionProperty {
 } // ClassProperty

@@ -8496,7 +8496,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_PROPERTY__PROPERTY_NAME = ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_NAME;
+	int CLASS_PROPERTY__PROPERTY_NAME = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Property Value Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_PROPERTY__PROPERTY_VALUE_TYPE = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Property Value</b></em>' attribute.
@@ -8505,7 +8514,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_PROPERTY__PROPERTY_VALUE = ABSTRACT_NAME_VALUE_PROPERTY__PROPERTY_VALUE;
+	int CLASS_PROPERTY__PROPERTY_VALUE = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Property Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_PROPERTY__PROPERTY_EXPRESSION = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_EXPRESSION;
 
 	/**
 	 * The number of structural features of the '<em>Class Property</em>' class.
@@ -8514,7 +8532,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_PROPERTY_FEATURE_COUNT = ABSTRACT_NAME_VALUE_PROPERTY_FEATURE_COUNT + 0;
+	int CLASS_PROPERTY_FEATURE_COUNT = ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SpringMediatorImpl <em>Spring Mediator</em>}' class.

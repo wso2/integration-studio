@@ -1154,7 +1154,8 @@ public class EsbSwitch<T> extends Switch<T> {
 			case EsbPackage.CLASS_PROPERTY: {
 				ClassProperty classProperty = (ClassProperty)theEObject;
 				T result = caseClassProperty(classProperty);
-				if (result == null) result = caseAbstractNameValueProperty(classProperty);
+				if (result == null) result = caseAbstractNameValueExpressionProperty(classProperty);
+				if (result == null) result = caseEsbNode(classProperty);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

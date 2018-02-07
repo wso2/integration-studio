@@ -101,27 +101,41 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 				resource.setDispatcherHelper(new URLMappingHelper(visualResource.getUrlMapping()));
 			}
 
+			boolean isMethodAvailable = false;
 			if (visualResource.isAllowGet()) {
+				isMethodAvailable = true;
 				resource.addMethod("GET");
 			}
 			if (visualResource.isAllowPost()) {
+				isMethodAvailable = true;
 				resource.addMethod("POST");
 			}
 			if (visualResource.isAllowPut()) {
+				isMethodAvailable = true;
 				resource.addMethod("PUT");
 			}
 			if (visualResource.isAllowDelete()) {
+				isMethodAvailable = true;
 				resource.addMethod("DELETE");
 			}
 			if (visualResource.isAllowOptions()) {
+				isMethodAvailable = true;
 				resource.addMethod("OPTIONS");
 			}
 			if (visualResource.isAllowHead()) {
+				isMethodAvailable = true;
 				resource.addMethod("HEAD");
 			}
 			if (visualResource.isAllowPatch()) {
+				isMethodAvailable = true;
 				resource.addMethod("PATCH");
 			}
+			
+			if (!isMethodAvailable) {
+				throw new TransformerException("API resource methods cannot be empty. "
+						+ "Please specify atleast one method for each API resource.");
+			}
+			
 			resource.setProtocol(visualResource.getProtocol().getValue());
 
 			information.getCurrentAPI().addResource(resource);

@@ -3119,6 +3119,7 @@
     <xsd:restriction base="xsd:string">
       <xsd:enumeration ecore:name="XML" value="xml"/>
       <xsd:enumeration ecore:name="JSON" value="json"/>
+      <xsd:enumeration ecore:name="TEXT" value="text"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:complexType name="PayloadFactoryMediatorInputConnector">

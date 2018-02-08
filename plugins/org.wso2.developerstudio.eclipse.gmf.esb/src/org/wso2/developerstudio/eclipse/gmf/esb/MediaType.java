@@ -49,7 +49,15 @@ public enum MediaType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	JSON(1, "JSON", "json");
+	JSON(1, "JSON", "json"), /**
+	 * The '<em><b>TEXT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TEXT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TEXT(2, "TEXT", "text");
 
 	/**
 	 * The '<em><b>XML</b></em>' literal value.
@@ -82,6 +90,21 @@ public enum MediaType implements Enumerator {
 	public static final int JSON_VALUE = 1;
 
 	/**
+	 * The '<em><b>TEXT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TEXT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TEXT
+	 * @model literal="text"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEXT_VALUE = 2;
+
+	/**
 	 * An array of all the '<em><b>Media Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,6 +114,7 @@ public enum MediaType implements Enumerator {
 		new MediaType[] {
 			XML,
 			JSON,
+			TEXT,
 		};
 
 	/**
@@ -149,6 +173,7 @@ public enum MediaType implements Enumerator {
 		switch (value) {
 			case XML_VALUE: return XML;
 			case JSON_VALUE: return JSON;
+			case TEXT_VALUE: return TEXT;
 		}
 		return null;
 	}

@@ -560,6 +560,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MediaType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MediaType/XML"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MediaType/JSON"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MediaType/TEXT"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PayloadFactoryArgumentType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PayloadFactoryArgumentType/VALUE"/>

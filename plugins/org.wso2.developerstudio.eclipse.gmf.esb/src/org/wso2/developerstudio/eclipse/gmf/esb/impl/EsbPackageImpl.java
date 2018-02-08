@@ -23818,6 +23818,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEEnum(mediaTypeEEnum, MediaType.class, "MediaType");
 		addEEnumLiteral(mediaTypeEEnum, MediaType.XML);
 		addEEnumLiteral(mediaTypeEEnum, MediaType.JSON);
+		addEEnumLiteral(mediaTypeEEnum, MediaType.TEXT);
 
 		initEEnum(payloadFactoryArgumentTypeEEnum, PayloadFactoryArgumentType.class, "PayloadFactoryArgumentType");
 		addEEnumLiteral(payloadFactoryArgumentTypeEEnum, PayloadFactoryArgumentType.VALUE);

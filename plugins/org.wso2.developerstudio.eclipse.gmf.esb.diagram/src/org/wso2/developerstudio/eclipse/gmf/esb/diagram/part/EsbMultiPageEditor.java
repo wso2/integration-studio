@@ -721,38 +721,25 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			}catch (NumberFormatException nfe){
 				log.error("Cannot update source view", nfe);
 				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(nfe.getMessage());
-				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+				handleSourceUpdateError(simpleMessage, nfe);
 				setActivePage(DESIGN_VIEW_PAGE_INDEX);
-				ErrorDialog.openError(getActiveEditor().getSite().getShell(), "Error",
-						"Cannot update source view. The following error(s) have been detected."
-								+ " Please see the error log for more details ",
-						editorStatus);
-			}catch (TransformerException te){
+			} catch (TransformerException te) {
 				sourceDirty = true;
 				log.error("Error while saving the diagram", te);
 				String errorMsgHeader = "Save failed. Following error(s) have been detected."
-						+ " Please see the error log for more details.";
-				String simpleMessage = ExceptionMessageMapper
-						.getNonTechnicalMessage(te.getMessage());
-				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
-				ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+						+ " Please see the error log for more details";
+				handleSourceUpdateError(errorMsgHeader, te);
 			} catch (DeserializerException de) {
 				sourceDirty = true;
 				log.error("Error while saving the diagram", de);
 				String errorMsgHeader = "Save failed. Following error(s) have been detected."
 						+ " Please see the error log for more details.";
-				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(de.getMessage());
-				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
-				ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+				handleSourceUpdateError(errorMsgHeader, de);
 			} catch (Exception e) {
 				log.error("Cannot update source view", e);
 				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
-				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+				handleSourceUpdateError(simpleMessage, e);
 				setActivePage(DESIGN_VIEW_PAGE_INDEX);
-				ErrorDialog.openError(getActiveEditor().getSite().getShell(), "Error",
-						"Cannot update source view. The following error(s) have been detected."
-								+ " Please see the error log for more details ",
-						editorStatus);
 			}
 			break;
 		}
@@ -920,6 +907,34 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		}
 
 		return xmlFile;
+	}
+
+	private void handleSourceUpdateError(String errorMsgHeader, Exception e) {
+		MessageDialog dialog = new MessageDialog(Display.getCurrent().getActiveShell(), "Error", null,
+				errorMsgHeader + "\n\n" + e.getMessage() + "\n\n"
+						+ "Would you like to rollback to the last saved state ?",
+				MessageDialog.ERROR, new String[] { "Yes", "No" }, 0);
+		int result = dialog.open();
+		if (result == 0) {
+			sourceEditor.getDocument().set(getContentFromAssociatedXMLFile());
+		} else {
+			sourceEditor.getDocument().set("");
+			setActivePage(DESIGN_VIEW_PAGE_INDEX);
+		}
+	}
+
+	private String getContentFromAssociatedXMLFile() {
+		IFile xmlFile = null;
+		String source = null;
+		xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
+		try {
+			source = new Scanner(xmlFile.getContents()).useDelimiter("\\A").next();
+		} catch (CoreException exception) {
+			MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error Details",
+					"Error in loading associated XML : " + exception.getMessage());
+		}
+
+		return source;
 	}
 
 	private void updateAssociatedDiagrams() {

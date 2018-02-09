@@ -184,7 +184,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 			artifact.setName(regModel.getArtifactName());
 			artifact.setVersion(version);
 			artifact.setType("registry/resource");
-			artifact.setServerRole("GovernanceRegistry");
+			artifact.setServerRole("EnterpriseIntegrator");
 			artifact.setGroupId(groupId);
 			List<RegistryResourceInfo> registryResources = regResInfoDoc.getRegistryResources();
 			for (RegistryResourceInfo registryResourceInfo : registryResources) {

@@ -3650,6 +3650,8 @@
         </xsd:sequence>
         <xsd:attribute ecore:default="api_name" ecore:unsettable="false" name="apiName" type="ecore:EString" use="required"/>
         <xsd:attribute ecore:default="/context" ecore:unsettable="false" name="context" type="ecore:EString" use="required"/>
+        <xsd:attribute ecore:default="" ecore:unsettable="false" name="versionType" type="ecore:EString" />
+        <xsd:attribute ecore:default="" ecore:unsettable="false" name="version" type="ecore:EString" />
         <xsd:attribute name="hostName" type="ecore:EString"/>
         <xsd:attribute ecore:unsettable="false" name="port" type="ecore:EInt"/>
       </xsd:extension>

@@ -64,14 +64,14 @@ public class ProjectFieldController extends AbstractFieldController {
 					throw new FieldValidationException(
 							"Specified configuration file is a directory");
 				}
-		}  else if(modelProperty.equals("available.apis")){
-			APIArtifactModel apiModel = (APIArtifactModel) model; 
-			if(null!=apiModel.getAvailableAPIslist() && apiModel.getAvailableAPIslist().size()>0){
-				if(null==apiModel.getSelectedAPIsList() || apiModel.getSelectedAPIsList().size() <=0){
+		} else if (modelProperty.equals("available.apis")) {
+			APIArtifactModel apiModel = (APIArtifactModel) model;
+			if (null != apiModel.getAvailableAPIslist() && apiModel.getAvailableAPIslist().size() > 0) {
+				if (null == apiModel.getSelectedAPIsList() || apiModel.getSelectedAPIsList().size() <= 0) {
 					throw new FieldValidationException("Please select at least one artifact");
-			 }
-		  }
-	  }
+				}
+			}
+		}
 	}
 	
 	public List<String> getUpdateFields(String modelProperty, ProjectDataModel model) {

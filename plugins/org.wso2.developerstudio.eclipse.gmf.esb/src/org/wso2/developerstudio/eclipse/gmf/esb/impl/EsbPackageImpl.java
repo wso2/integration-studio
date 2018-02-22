@@ -30,6 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnec
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceOutSequenceOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractBooleanFeature;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractCommonTarget;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
@@ -3962,6 +3963,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum enableDisableStateEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum apiVersionTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -8880,6 +8888,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EAttribute getSynapseAPI_StatisticsEnabled() {
 		return (EAttribute)synapseAPIEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSynapseAPI_Version() {
+		return (EAttribute)synapseAPIEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSynapseAPI_VersionType() {
+		return (EAttribute)synapseAPIEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -18931,6 +18957,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getAPIVersionType() {
+		return apiVersionTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getMap() {
 		return mapEDataType;
 	}
@@ -20414,6 +20449,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(synapseAPIEClass, SYNAPSE_API__HANDLERS);
 		createEAttribute(synapseAPIEClass, SYNAPSE_API__TRACE_ENABLED);
 		createEAttribute(synapseAPIEClass, SYNAPSE_API__STATISTICS_ENABLED);
+		createEAttribute(synapseAPIEClass, SYNAPSE_API__VERSION);
+		createEAttribute(synapseAPIEClass, SYNAPSE_API__VERSION_TYPE);
 
 		apiResourceEClass = createEClass(API_RESOURCE);
 		createEReference(apiResourceEClass, API_RESOURCE__INPUT_CONNECTOR);
@@ -20982,6 +21019,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		mqttSubscriptionQOSEEnum = createEEnum(MQTT_SUBSCRIPTION_QOS);
 		feedTypeEEnum = createEEnum(FEED_TYPE);
 		enableDisableStateEEnum = createEEnum(ENABLE_DISABLE_STATE);
+		apiVersionTypeEEnum = createEEnum(API_VERSION_TYPE);
 
 		// Create data types
 		mapEDataType = createEDataType(MAP);
@@ -22823,6 +22861,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getSynapseAPI_Handlers(), this.getAPIHandler(), null, "handlers", null, 0, -1, SynapseAPI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSynapseAPI_TraceEnabled(), ecorePackage.getEBoolean(), "traceEnabled", null, 0, 1, SynapseAPI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSynapseAPI_StatisticsEnabled(), ecorePackage.getEBoolean(), "statisticsEnabled", null, 0, 1, SynapseAPI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSynapseAPI_Version(), ecorePackage.getEString(), "version", "", 0, 1, SynapseAPI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSynapseAPI_VersionType(), this.getAPIVersionType(), "versionType", "none", 0, 1, SynapseAPI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(apiResourceEClass, APIResource.class, "APIResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAPIResource_InputConnector(), this.getAPIResourceInputConnector(), null, "inputConnector", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -24016,6 +24056,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEEnum(enableDisableStateEEnum, EnableDisableState.class, "EnableDisableState");
 		addEEnumLiteral(enableDisableStateEEnum, EnableDisableState.DISABLED);
 		addEEnumLiteral(enableDisableStateEEnum, EnableDisableState.ENABLED);
+
+		initEEnum(apiVersionTypeEEnum, APIVersionType.class, "APIVersionType");
+		addEEnumLiteral(apiVersionTypeEEnum, APIVersionType.NONE);
+		addEEnumLiteral(apiVersionTypeEEnum, APIVersionType.CONTEXT);
+		addEEnumLiteral(apiVersionTypeEEnum, APIVersionType.URL);
 
 		// Initialize data types
 		initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

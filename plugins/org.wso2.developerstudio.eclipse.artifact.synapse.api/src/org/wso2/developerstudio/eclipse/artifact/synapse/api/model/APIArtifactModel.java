@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.artifact.synapse.api.util.ArtifactConsta
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseEntryType;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
@@ -54,6 +55,8 @@ public class APIArtifactModel extends ProjectDataModel {
 	private String context;
 	private String hostname;
 	private int port;
+	private String versionType = APIVersionType.NONE.getLiteral();
+	private String version = "";
 	private IContainer saveLocation;
 	private List<OMElement> availableAPIslist;
 	private List<OMElement> selectedAPIsList;
@@ -66,34 +69,59 @@ public class APIArtifactModel extends ProjectDataModel {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getContext() {
 		return context;
 	}
+
 	public void setContext(String context) {
 		this.context = context;
 	}
+
 	public String getHostname() {
 		return hostname;
 	}
+
 	public void setHostname(String hostname) {
 		this.hostname = hostname;
 	}
+
 	public int getPort() {
 		return port;
 	}
+
 	public void setPort(int port) {
 		this.port = port;
 	}
+
+	public String getVersionType() {
+		return versionType;
+	}
+
+	public void setVersionType(String versionType) {
+		this.versionType = versionType;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
 	public IContainer getSaveLocation() {
 		return saveLocation;
 	}
+
 	public void setSaveLocation(IContainer saveLocation) {
 		this.saveLocation = saveLocation;
 	}
-	
+
 	@Override
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
@@ -105,21 +133,26 @@ public class APIArtifactModel extends ProjectDataModel {
 			} else if (key.equals(ArtifactConstants.ID_API_HOSTNAME)) {
 				modelPropertyValue = getHostname();
 			} else if (key.equals(ArtifactConstants.ID_API_PORT)) {
-				modelPropertyValue = (getPort()!=0)?getPort():null;
+				modelPropertyValue = (getPort() != 0) ? getPort() : null;
 			} else if (key.equals(ArtifactConstants.ID_SAVE_LOCATION)) {
-				IContainer container= getSaveLocation();
-				if(container != null && container instanceof IFolder){
-					IFolder apiFolder = container.getProject().getFolder("src").getFolder("main").getFolder("synapse-config").getFolder("api");
+				IContainer container = getSaveLocation();
+				if (container != null && container instanceof IFolder) {
+					IFolder apiFolder = container.getProject().getFolder("src").getFolder("main")
+							.getFolder("synapse-config").getFolder("api");
 					modelPropertyValue = apiFolder;
-				}else{
+				} else {
 					modelPropertyValue = container;
 				}
-			} else if(key.equals("available.apis")){
-				if(selectedAPIsList!=null){
+			} else if (key.equals("available.apis")) {
+				if (selectedAPIsList != null) {
 					modelPropertyValue = selectedAPIsList.toArray();
-					}
 				}
-		  }
+			} else if (key.equals(ArtifactConstants.ID_API_VERSIONTYPE)) {
+				modelPropertyValue = getVersionType();
+			} else if (key.equals(ArtifactConstants.ID_API_VERSION)) {
+				modelPropertyValue = getVersion();
+			}
+		}
 	 
 		return modelPropertyValue;
 	}
@@ -187,7 +220,12 @@ public class APIArtifactModel extends ProjectDataModel {
 			if(esbProject!=null){
 				setSaveLocation(esbProject);
 			}
+		} else if (key.equals(ArtifactConstants.ID_API_VERSIONTYPE)) {
+			setVersionType(data.toString());
+		} else if (key.equals(ArtifactConstants.ID_API_VERSION)) {
+			setVersion(data.toString());
 		}
+		
 		return result;
 	}
 	

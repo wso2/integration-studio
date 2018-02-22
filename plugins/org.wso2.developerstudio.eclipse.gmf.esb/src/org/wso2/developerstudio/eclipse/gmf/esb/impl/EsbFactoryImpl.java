@@ -681,6 +681,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createFeedTypeFromString(eDataType, initialValue);
 			case EsbPackage.ENABLE_DISABLE_STATE:
 				return createEnableDisableStateFromString(eDataType, initialValue);
+			case EsbPackage.API_VERSION_TYPE:
+				return createAPIVersionTypeFromString(eDataType, initialValue);
 			case EsbPackage.MAP:
 				return createMapFromString(eDataType, initialValue);
 			default:
@@ -949,6 +951,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertFeedTypeToString(eDataType, instanceValue);
 			case EsbPackage.ENABLE_DISABLE_STATE:
 				return convertEnableDisableStateToString(eDataType, instanceValue);
+			case EsbPackage.API_VERSION_TYPE:
+				return convertAPIVersionTypeToString(eDataType, instanceValue);
 			case EsbPackage.MAP:
 				return convertMapToString(eDataType, instanceValue);
 			default:
@@ -2332,14 +2336,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 */
 	public ClassProperty createClassProperty() {
 		ClassPropertyImpl classProperty = new ClassPropertyImpl();
-		NamespacedProperty namespacedProperty = createNamespacedProperty();
-		namespacedProperty.setPrettyName("property expression");
-		namespacedProperty.setPropertyName("expression");
-		namespacedProperty.setPropertyValue("/default/expression");
-		classProperty.setPropertyExpression(namespacedProperty);
-		classProperty.setPropertyName("property_name");
-		classProperty.setPropertyValue("property_value");
-		
 		return classProperty;
 	}
 
@@ -7244,6 +7240,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertEnableDisableStateToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public APIVersionType createAPIVersionTypeFromString(EDataType eDataType, String initialValue) {
+		APIVersionType result = APIVersionType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAPIVersionTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

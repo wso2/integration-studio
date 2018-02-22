@@ -18,15 +18,22 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
 
+import javax.xml.stream.XMLStreamException;
+
+import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.impl.llom.util.AXIOMUtil;
 import org.apache.synapse.aspects.AspectConfiguration;
+import org.apache.synapse.config.xml.rest.VersionStrategyFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.rest.API;
+import org.apache.synapse.rest.version.VersionStrategy;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIHandlerProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyHandler;
@@ -89,7 +96,7 @@ public class APITransformer extends AbstractEsbNodeTransformer{
 		
 	}
 	
-	public API create(SynapseAPI visualAPI){
+	public API create(SynapseAPI visualAPI) throws TransformerException{
 		API api=null;
 		if(visualAPI.getContext() ==null || !visualAPI.getContext().startsWith("/") ){
 			api=new API(visualAPI.getApiName(), "/default");
@@ -101,6 +108,22 @@ public class APITransformer extends AbstractEsbNodeTransformer{
 		}
 		if(visualAPI.getPort() > 0){
 			api.setPort(visualAPI.getPort());
+		}
+		if (null != visualAPI.getVersionType()
+				&& !visualAPI.getVersionType().getLiteral().equals(APIVersionType.NONE.getLiteral())) {
+			StringBuilder content = new StringBuilder();
+			content.append("<api xmlns=\"http://ws.apache.org/ns/synapse\" version=\"");
+			content.append(visualAPI.getVersion() + "\" version-type=\"");
+			content.append(visualAPI.getVersionType().getLiteral() + "\" ></api>");
+
+			OMElement apiElement;
+			try {
+				apiElement = AXIOMUtil.stringToOM(content.toString());
+				VersionStrategy versionStrategy = VersionStrategyFactory.createVersioningStrategy(api, apiElement);
+				api.setVersionStrategy(versionStrategy);
+			} catch (XMLStreamException e) {
+				throw new TransformerException("Unable to create the OMelement for API VersionStrategy.", e);
+			}
 		}
 		api.configure(new AspectConfiguration(visualAPI.getApiName()));
 		return api;

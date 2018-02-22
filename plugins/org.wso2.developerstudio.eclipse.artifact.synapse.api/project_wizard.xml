@@ -32,6 +32,11 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Hostname</data>
 			<data modelProperty="api.port" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Port</data>
+			<data modelProperty="api.versiontype" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.APIVersionTypes">Version Type</data>	
+			<data modelProperty="api.version" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Version</data>
 			<group id ="location"/>	
 			<data modelProperty="save.location" type="workspacefolder"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController"

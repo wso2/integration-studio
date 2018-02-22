@@ -42,6 +42,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAP
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__PORT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__STATISTICS_ENABLED;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__TRACE_ENABLED;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__VERSION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SYNAPSE_API__VERSION_TYPE;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -66,6 +68,7 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIHandlerProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
@@ -105,6 +108,18 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 		if (api.getPort() > 0) {
 			executeSetValueCommand(SYNAPSE_API__PORT, api.getPort());
 		}
+		
+		if (!api.getVersionStrategy().getVersionType().equals(APIVersionType.NONE.getLiteral())) {
+			if (api.getVersionStrategy().getVersionType().equals(APIVersionType.CONTEXT.getLiteral())) {
+				executeSetValueCommand(SYNAPSE_API__VERSION_TYPE, APIVersionType.CONTEXT);
+			} else if (api.getVersionStrategy().getVersionType().equals(APIVersionType.URL.getLiteral())) {
+				executeSetValueCommand(SYNAPSE_API__VERSION_TYPE, APIVersionType.URL);
+			}
+			executeSetValueCommand(SYNAPSE_API__VERSION, api.getVersionStrategy().getVersion());
+		} else {
+			executeSetValueCommand(SYNAPSE_API__VERSION_TYPE, APIVersionType.NONE);
+		}
+		
 		GraphicalEditPart apiCompartment = (GraphicalEditPart) getEditpart(synapseAPI).getChildren().get(0);
 		Resource[] resources = api.getResources();
 		

@@ -65,6 +65,8 @@ public class SynapseAPIItemProvider
 			addHandlersPropertyDescriptor(object);
 			addTraceEnabledPropertyDescriptor(object);
 			addStatisticsEnabledPropertyDescriptor(object);
+			addVersionPropertyDescriptor(object);
+			addVersionTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -224,6 +226,50 @@ public class SynapseAPIItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Version feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVersionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SynapseAPI_version_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_version_feature", "_UI_SynapseAPI_type"),
+				 EsbPackage.Literals.SYNAPSE_API__VERSION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Version Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVersionTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SynapseAPI_versionType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_versionType_feature", "_UI_SynapseAPI_type"),
+				 EsbPackage.Literals.SYNAPSE_API__VERSION_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -296,6 +342,8 @@ public class SynapseAPIItemProvider
 			case EsbPackage.SYNAPSE_API__PORT:
 			case EsbPackage.SYNAPSE_API__TRACE_ENABLED:
 			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
+			case EsbPackage.SYNAPSE_API__VERSION:
+			case EsbPackage.SYNAPSE_API__VERSION_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.SYNAPSE_API__RESOURCES:

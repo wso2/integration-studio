@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.APIHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
 
@@ -43,6 +44,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getHandlers <em>Handlers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SynapseAPIImpl#getVersionType <em>Version Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -187,6 +190,46 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 	 * @ordered
 	 */
 	protected boolean statisticsEnabled = STATISTICS_ENABLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERSION_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String version = VERSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVersionType() <em>Version Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersionType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final APIVersionType VERSION_TYPE_EDEFAULT = APIVersionType.NONE;
+
+	/**
+	 * The cached value of the '{@link #getVersionType() <em>Version Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersionType()
+	 * @generated
+	 * @ordered
+	 */
+	protected APIVersionType versionType = VERSION_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -366,6 +409,48 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getVersion() {
+		return version;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVersion(String newVersion) {
+		String oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SYNAPSE_API__VERSION, oldVersion, version));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public APIVersionType getVersionType() {
+		return versionType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVersionType(APIVersionType newVersionType) {
+		APIVersionType oldVersionType = versionType;
+		versionType = newVersionType == null ? VERSION_TYPE_EDEFAULT : newVersionType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SYNAPSE_API__VERSION_TYPE, oldVersionType, versionType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -401,6 +486,10 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 				return isTraceEnabled();
 			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
 				return isStatisticsEnabled();
+			case EsbPackage.SYNAPSE_API__VERSION:
+				return getVersion();
+			case EsbPackage.SYNAPSE_API__VERSION_TYPE:
+				return getVersionType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -440,6 +529,12 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
 				setStatisticsEnabled((Boolean)newValue);
 				return;
+			case EsbPackage.SYNAPSE_API__VERSION:
+				setVersion((String)newValue);
+				return;
+			case EsbPackage.SYNAPSE_API__VERSION_TYPE:
+				setVersionType((APIVersionType)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -476,6 +571,12 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
 				setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
 				return;
+			case EsbPackage.SYNAPSE_API__VERSION:
+				setVersion(VERSION_EDEFAULT);
+				return;
+			case EsbPackage.SYNAPSE_API__VERSION_TYPE:
+				setVersionType(VERSION_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -504,6 +605,10 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 				return traceEnabled != TRACE_ENABLED_EDEFAULT;
 			case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
 				return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
+			case EsbPackage.SYNAPSE_API__VERSION:
+				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
+			case EsbPackage.SYNAPSE_API__VERSION_TYPE:
+				return versionType != VERSION_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -530,6 +635,10 @@ public class SynapseAPIImpl extends EsbElementImpl implements SynapseAPI {
 		result.append(traceEnabled);
 		result.append(", statisticsEnabled: ");
 		result.append(statisticsEnabled);
+		result.append(", version: ");
+		result.append(version);
+		result.append(", versionType: ");
+		result.append(versionType);
 		result.append(')');
 		return result.toString();
 	}

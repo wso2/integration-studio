@@ -25,6 +25,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getHandlers <em>Handlers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isTraceEnabled <em>Trace Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersionType <em>Version Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI()
@@ -221,5 +223,62 @@ public interface SynapseAPI extends EsbElement {
 	 * @generated
 	 */
 	void setStatisticsEnabled(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Version</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Version</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Version</em>' attribute.
+	 * @see #setVersion(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_Version()
+	 * @model default=""
+	 * @generated
+	 */
+	String getVersion();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersion <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Version</em>' attribute.
+	 * @see #getVersion()
+	 * @generated
+	 */
+	void setVersion(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Version Type</b></em>' attribute.
+	 * The default value is <code>"none"</code>.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Version Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Version Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType
+	 * @see #setVersionType(APIVersionType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_VersionType()
+	 * @model default="none"
+	 * @generated
+	 */
+	APIVersionType getVersionType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersionType <em>Version Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Version Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType
+	 * @see #getVersionType()
+	 * @generated
+	 */
+	void setVersionType(APIVersionType value);
 
 } // SynapseAPI

@@ -28,12 +28,19 @@ public class ArtifactConstants extends NLS {
 	public static String ID_API_PORT;
 	public static String ID_CREATE_PRJ;
 	public static String ID_SAVE_LOCATION;
+	public static String ID_API_VERSIONTYPE;
+	public static String ID_API_VERSION;
 	
 	//Messages
 	public static String ERRMSG_SAVE_LOCATION;
 	public static String ERRMSG_API_CONTEXT;
 	public static String ERRMSG_API_PORT;
 	public static String ERRMSG2_API_CONTEXT;
+	
+	//API version types
+	public static String API_VERSION_TYPE_NONE;
+	public static String API_VERSION_TYPE_CONTEXT;
+	public static String API_VERSION_TYPE_URL;
 	
 	static {
 		// initialize resource bundle

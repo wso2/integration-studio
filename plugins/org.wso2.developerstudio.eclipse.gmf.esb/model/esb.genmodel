@@ -759,6 +759,11 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Disabled"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnableDisableState/Enabled"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//APIVersionType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//APIVersionType/None"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//APIVersionType/Context"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//APIVersionType/URL"/>
+    </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/V"/>
@@ -2100,6 +2105,8 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//SynapseAPI/handlers"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/traceEnabled"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/statisticsEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/versionType"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//APIResource">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//APIResource/inputConnector"/>

@@ -20044,13 +20044,31 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int SYNAPSE_API__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNAPSE_API__VERSION = ESB_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Version Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNAPSE_API__VERSION_TYPE = ESB_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Synapse API</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYNAPSE_API_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 8;
+	int SYNAPSE_API_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl <em>API Resource</em>}' class.
@@ -26526,6 +26544,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int ENABLE_DISABLE_STATE = 488;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType <em>API Version Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIVersionType()
+	 * @generated
+	 */
+	int API_VERSION_TYPE = 489;
+
+	/**
 	 * The meta object id for the '<em>Map</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26533,7 +26561,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 489;
+	int MAP = 490;
 
 
 	/**
@@ -32305,6 +32333,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getSynapseAPI_StatisticsEnabled();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersion()
+	 * @see #getSynapseAPI()
+	 * @generated
+	 */
+	EAttribute getSynapseAPI_Version();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersionType <em>Version Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersionType()
+	 * @see #getSynapseAPI()
+	 * @generated
+	 */
+	EAttribute getSynapseAPI_VersionType();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource <em>API Resource</em>}'.
@@ -44253,6 +44303,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EEnum getEnableDisableState();
 
 	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType <em>API Version Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>API Version Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType
+	 * @generated
+	 */
+	EEnum getAPIVersionType();
+
+	/**
 	 * Returns the meta object for data type '{@link java.util.Map <em>Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48914,6 +48974,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute SYNAPSE_API__STATISTICS_ENABLED = eINSTANCE.getSynapseAPI_StatisticsEnabled();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SYNAPSE_API__VERSION = eINSTANCE.getSynapseAPI_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Version Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SYNAPSE_API__VERSION_TYPE = eINSTANCE.getSynapseAPI_VersionType();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl <em>API Resource</em>}' class.
@@ -58502,6 +58578,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum ENABLE_DISABLE_STATE = eINSTANCE.getEnableDisableState();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType <em>API Version Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIVersionType()
+		 * @generated
+		 */
+		EEnum API_VERSION_TYPE = eINSTANCE.getAPIVersionType();
 
 		/**
 		 * The meta object literal for the '<em>Map</em>' data type.

@@ -45,6 +45,7 @@ import org.wso2.developerstudio.eclipse.artifact.synapse.api.util.APIImageUtils;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -161,6 +162,10 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 		}
 		if (artifactModel.getPort() > 0) {
 		    content.append(" port=\"").append(artifactModel.getPort()).append("\"");
+		}
+		if (!artifactModel.getVersionType().equalsIgnoreCase(APIVersionType.NONE.getLiteral())) {
+			content.append(" version-type=\"").append(artifactModel.getVersionType()).append("\" version=\"")
+					.append(artifactModel.getVersion()).append("\"");
 		}
 		content.append(">\n<resource methods=\"GET\"><inSequence/><outSequence/><faultSequence/>"
 				+ "</resource>\n</api>");

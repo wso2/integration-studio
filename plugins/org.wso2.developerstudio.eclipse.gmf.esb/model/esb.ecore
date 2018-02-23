@@ -2536,6 +2536,10 @@
         eType="#//APIHandler" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="traceEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="statisticsEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionType" eType="#//APIVersionType"
+        defaultValueLiteral="none"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="APIResource" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//APIResourceInputConnector"
@@ -3355,5 +3359,10 @@
   <eClassifiers xsi:type="ecore:EEnum" name="EnableDisableState">
     <eLiterals name="Disabled" literal="Disabled"/>
     <eLiterals name="Enabled" value="1" literal="Enabled"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="APIVersionType">
+    <eLiterals name="None" literal="none"/>
+    <eLiterals name="Context" value="1" literal="context"/>
+    <eLiterals name="URL" value="2" literal="url"/>
   </eClassifiers>
 </ecore:EPackage>

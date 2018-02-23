@@ -28,7 +28,7 @@
     <artifactId>developer-studio-ei-eclipse-jee-mars-win64-x86_64</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Eclipse APIM distribution-win64-x86_64</name>
+    <name>WSO2 Developer Studio Eclipse EI distribution-win64-x86_64</name>
     <url>http://wso2.org</url>
     <repositories>
     	<repository>

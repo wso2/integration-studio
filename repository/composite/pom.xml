@@ -21,6 +21,6 @@
     </parent>
     <artifactId>wso2-developer-studio-kernel-ei-composite-p2</artifactId>
     <packaging>eclipse-repository</packaging>
-    <name>WSO2 Enterprise Integrator Tooling P2 Composie Repository</name>
+    <name>WSO2 Enterprise Integrator Tooling P2 Composite Repository</name>
     <url>http://wso2.org</url>
 </project>

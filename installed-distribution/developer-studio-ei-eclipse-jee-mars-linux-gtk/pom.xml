@@ -28,7 +28,7 @@
     <artifactId>developer-studio-ei-eclipse-jee-mars-linux-gtk</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Eclipse APIM distribution-linux-gtk</name>
+    <name>WSO2 Developer Studio Eclipse EI distribution-linux-gtk</name>
     <url>http://wso2.org</url>
     <repositories>
     	<repository>

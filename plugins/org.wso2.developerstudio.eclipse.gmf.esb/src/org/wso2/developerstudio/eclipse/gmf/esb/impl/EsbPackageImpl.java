@@ -11487,26 +11487,35 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportJmsRetriesBeforeSuspension() {
+	public EAttribute getInboundEndpoint_TransportJMSRetriesBeforeSuspension() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(187);
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportJmsPollingSuspensionPeriod() {
+	public EAttribute getInboundEndpoint_TransportJMSResetConnectionOnPollingSuspension() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(188);
 	}
-	
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSPollingSuspensionPeriod() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(189);
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_TransportMQTTSslKeystoreLocation() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(189);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(190);
 	}
 	
 	/**
@@ -11515,15 +11524,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_TransportMQTTSslKeystoreType() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(190);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getInboundEndpoint_TransportMQTTSslKeystorePassword() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(191);
 	}
 
@@ -11532,7 +11532,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportMQTTSslTruststoreLocation() {
+	public EAttribute getInboundEndpoint_TransportMQTTSslKeystorePassword() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(192);
 	}
 
@@ -11541,7 +11541,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportMQTTSslTruststoreType() {
+	public EAttribute getInboundEndpoint_TransportMQTTSslTruststoreLocation() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(193);
 	}
 
@@ -11550,7 +11550,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportMQTTSslTruststorePassword() {
+	public EAttribute getInboundEndpoint_TransportMQTTSslTruststoreType() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(194);
 	}
 
@@ -11559,8 +11559,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_TransportMQTTSslVersion() {
+	public EAttribute getInboundEndpoint_TransportMQTTSslTruststorePassword() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(195);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportMQTTSslVersion() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(196);
 	}
 
 	/**
@@ -20858,6 +20867,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRACE_ENABLED);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__STATISTICS_ENABLED);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE);
@@ -23269,8 +23279,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_TransportFeedType(), this.getFeedType(), "transportFeedType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TraceEnabled(), ecorePackage.getEBoolean(), "traceEnabled", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_StatisticsEnabled(), ecorePackage.getEBoolean(), "statisticsEnabled", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInboundEndpoint_TransportJmsRetriesBeforeSuspension(), ecorePackage.getEString(), "transportJmsRetriesBeforeSuspension", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInboundEndpoint_TransportJmsPollingSuspensionPeriod(), ecorePackage.getEString(), "transportJmsPollingSuspensionPeriod", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSRetriesBeforeSuspension(), ecorePackage.getEString(), "transportJMSRetriesBeforeSuspension", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSResetConnectionOnPollingSuspension(), ecorePackage.getEBoolean(), "transportJMSResetConnectionOnPollingSuspension", "false", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSPollingSuspensionPeriod(), ecorePackage.getEString(), "transportJMSPollingSuspensionPeriod", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTSslKeystoreLocation(), ecorePackage.getEString(), "transportMQTTSslKeystoreLocation", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTSslKeystoreType(), ecorePackage.getEString(), "transportMQTTSslKeystoreType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTSslKeystorePassword(), ecorePackage.getEString(), "transportMQTTSslKeystorePassword", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

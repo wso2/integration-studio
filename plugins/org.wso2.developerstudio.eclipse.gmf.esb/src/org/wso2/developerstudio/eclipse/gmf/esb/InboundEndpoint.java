@@ -214,8 +214,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTraceEnabled <em>Trace Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJmsRetriesBeforeSuspension <em>Transport Jms Retries Before Suspension</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJmsPollingSuspensionPeriod <em>Transport Jms Polling Suspension Period</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}</li>
@@ -2986,57 +2987,84 @@ public interface InboundEndpoint extends EsbElement {
 	void setStatisticsEnabled(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Transport Jms Retries Before Suspension</b></em>' attribute.
+	 * Returns the value of the '<em><b>Transport JMS Retries Before Suspension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Transport Jms Retries Before Suspension</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Transport JMS Retries Before Suspension</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transport Jms Retries Before Suspension</em>' attribute.
-	 * @see #setTransportJmsRetriesBeforeSuspension(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJmsRetriesBeforeSuspension()
+	 * @return the value of the '<em>Transport JMS Retries Before Suspension</em>' attribute.
+	 * @see #setTransportJMSRetriesBeforeSuspension(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSRetriesBeforeSuspension()
 	 * @model
 	 * @generated
 	 */
-	String getTransportJmsRetriesBeforeSuspension();
+	String getTransportJMSRetriesBeforeSuspension();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJmsRetriesBeforeSuspension <em>Transport Jms Retries Before Suspension</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transport Jms Retries Before Suspension</em>' attribute.
-	 * @see #getTransportJmsRetriesBeforeSuspension()
+	 * @param value the new value of the '<em>Transport JMS Retries Before Suspension</em>' attribute.
+	 * @see #getTransportJMSRetriesBeforeSuspension()
 	 * @generated
 	 */
-	void setTransportJmsRetriesBeforeSuspension(String value);
+	void setTransportJMSRetriesBeforeSuspension(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Transport Jms Polling Suspension Period</b></em>' attribute.
+	 * Returns the value of the '<em><b>Transport JMS Reset Connection On Polling Suspension</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Transport Jms Polling Suspension Period</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Transport JMS Reset Connection On Polling Suspension</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transport Jms Polling Suspension Period</em>' attribute.
-	 * @see #setTransportJmsPollingSuspensionPeriod(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJmsPollingSuspensionPeriod()
+	 * @return the value of the '<em>Transport JMS Reset Connection On Polling Suspension</em>' attribute.
+	 * @see #setTransportJMSResetConnectionOnPollingSuspension(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSResetConnectionOnPollingSuspension()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isTransportJMSResetConnectionOnPollingSuspension();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Reset Connection On Polling Suspension</em>' attribute.
+	 * @see #isTransportJMSResetConnectionOnPollingSuspension()
+	 * @generated
+	 */
+	void setTransportJMSResetConnectionOnPollingSuspension(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Polling Suspension Period</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Polling Suspension Period</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Polling Suspension Period</em>' attribute.
+	 * @see #setTransportJMSPollingSuspensionPeriod(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSPollingSuspensionPeriod()
 	 * @model
 	 * @generated
 	 */
-	String getTransportJmsPollingSuspensionPeriod();
+	String getTransportJMSPollingSuspensionPeriod();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJmsPollingSuspensionPeriod <em>Transport Jms Polling Suspension Period</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transport Jms Polling Suspension Period</em>' attribute.
-	 * @see #getTransportJmsPollingSuspensionPeriod()
+	 * @param value the new value of the '<em>Transport JMS Polling Suspension Period</em>' attribute.
+	 * @see #getTransportJMSPollingSuspensionPeriod()
 	 * @generated
 	 */
-	void setTransportJmsPollingSuspensionPeriod(String value);
-	
+	void setTransportJMSPollingSuspensionPeriod(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Ssl Keystore Location</b></em>' attribute.
 	 * <!-- begin-user-doc -->

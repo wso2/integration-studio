@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 WSO2, Inc. (http://wso2.com)
+ * Copyright 2016-2018 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,9 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -94,7 +97,10 @@ public enum JMSInboundEndpointParameter {
             INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY,true),
 	INBOUND_ENDPOINT_PINNED_SERVERS(InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS,true),
 	JMS_CONCURRENT_CONSUMERS(InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS, INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS, true),
-	JMS_RETRY_DURATION(InboundEndpointConstants.JMS_RETRY_DURATION, INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION, true);
+	JMS_RETRY_DURATION(InboundEndpointConstants.JMS_RETRY_DURATION, INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION, true),
+	JMS_RETRIES_BEFORE_SUSPENSION_TYPE(InboundEndpointConstants.JMS_RETRIES_BEFORE_SUSPENSION, INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION,true),
+	JMS_POLLING_SUSPENSION_PERIOD_TYPE(InboundEndpointConstants.JMS_POLLING_SUSPENSION_PERIOD,INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD,true),
+	JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_TYPE(InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,false);
     
     private final String name;
     private final EAttribute eAttributeValue;

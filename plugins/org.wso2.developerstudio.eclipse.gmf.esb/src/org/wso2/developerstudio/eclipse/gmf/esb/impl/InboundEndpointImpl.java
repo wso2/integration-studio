@@ -250,8 +250,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJmsRetriesBeforeSuspension <em>Transport Jms Retries Before Suspension</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJmsPollingSuspensionPeriod <em>Transport Jms Polling Suspension Period</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}</li>
@@ -4027,45 +4028,65 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected boolean statisticsEnabled = STATISTICS_ENABLED_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTransportJmsRetriesBeforeSuspension() <em>Transport Jms Retries Before Suspension</em>}' attribute.
+	 * The default value of the '{@link #getTransportJMSRetriesBeforeSuspension() <em>Transport JMS Retries Before Suspension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTransportJmsRetriesBeforeSuspension()
+	 * @see #getTransportJMSRetriesBeforeSuspension()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final String TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTransportJmsRetriesBeforeSuspension() <em>Transport Jms Retries Before Suspension</em>}' attribute.
+	 * The cached value of the '{@link #getTransportJMSRetriesBeforeSuspension() <em>Transport JMS Retries Before Suspension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTransportJmsRetriesBeforeSuspension()
+	 * @see #getTransportJMSRetriesBeforeSuspension()
 	 * @generated
 	 * @ordered
 	 */
-	protected String transportJmsRetriesBeforeSuspension = TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT;
+	protected String transportJMSRetriesBeforeSuspension = TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTransportJmsPollingSuspensionPeriod() <em>Transport Jms Polling Suspension Period</em>}' attribute.
+	 * The default value of the '{@link #isTransportJMSResetConnectionOnPollingSuspension() <em>Transport JMS Reset Connection On Polling Suspension</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTransportJmsPollingSuspensionPeriod()
+	 * @see #isTransportJMSResetConnectionOnPollingSuspension()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTransportJMSResetConnectionOnPollingSuspension() <em>Transport JMS Reset Connection On Polling Suspension</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportJMSResetConnectionOnPollingSuspension()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportJMSResetConnectionOnPollingSuspension = TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSPollingSuspensionPeriod() <em>Transport JMS Polling Suspension Period</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSPollingSuspensionPeriod()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final String TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTransportJmsPollingSuspensionPeriod() <em>Transport Jms Polling Suspension Period</em>}' attribute.
+	 * The cached value of the '{@link #getTransportJMSPollingSuspensionPeriod() <em>Transport JMS Polling Suspension Period</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTransportJmsPollingSuspensionPeriod()
+	 * @see #getTransportJMSPollingSuspensionPeriod()
 	 * @generated
 	 * @ordered
 	 */
-	protected String transportJmsPollingSuspensionPeriod = TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT;
-	
+	protected String transportJMSPollingSuspensionPeriod = TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getTransportMQTTSslKeystoreLocation() <em>Transport MQTT Ssl Keystore Location</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -6345,43 +6366,64 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTransportJmsRetriesBeforeSuspension() {
-		return transportJmsRetriesBeforeSuspension;
+	public String getTransportJMSRetriesBeforeSuspension() {
+		return transportJMSRetriesBeforeSuspension;
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTransportJmsRetriesBeforeSuspension(String newTransportJmsRetriesBeforeSuspension) {
-		String oldTransportJmsRetriesBeforeSuspension = transportJmsRetriesBeforeSuspension;
-		transportJmsRetriesBeforeSuspension = newTransportJmsRetriesBeforeSuspension;
+	public void setTransportJMSRetriesBeforeSuspension(String newTransportJMSRetriesBeforeSuspension) {
+		String oldTransportJMSRetriesBeforeSuspension = transportJMSRetriesBeforeSuspension;
+		transportJMSRetriesBeforeSuspension = newTransportJMSRetriesBeforeSuspension;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION, oldTransportJmsRetriesBeforeSuspension, transportJmsRetriesBeforeSuspension));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION, oldTransportJMSRetriesBeforeSuspension, transportJMSRetriesBeforeSuspension));
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTransportJmsPollingSuspensionPeriod() {
-		return transportJmsPollingSuspensionPeriod;
+	public boolean isTransportJMSResetConnectionOnPollingSuspension() {
+		return transportJMSResetConnectionOnPollingSuspension;
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTransportJmsPollingSuspensionPeriod(String newTransportJmsPollingSuspensionPeriod) {
-		String oldTransportJmsPollingSuspensionPeriod = transportJmsPollingSuspensionPeriod;
-		transportJmsPollingSuspensionPeriod = newTransportJmsPollingSuspensionPeriod;
+	public void setTransportJMSResetConnectionOnPollingSuspension(boolean newTransportJMSResetConnectionOnPollingSuspension) {
+		boolean oldTransportJMSResetConnectionOnPollingSuspension = transportJMSResetConnectionOnPollingSuspension;
+		transportJMSResetConnectionOnPollingSuspension = newTransportJMSResetConnectionOnPollingSuspension;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD, oldTransportJmsPollingSuspensionPeriod, transportJmsPollingSuspensionPeriod));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION, oldTransportJMSResetConnectionOnPollingSuspension, transportJMSResetConnectionOnPollingSuspension));
 	}
-	
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSPollingSuspensionPeriod() {
+		return transportJMSPollingSuspensionPeriod;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSPollingSuspensionPeriod(String newTransportJMSPollingSuspensionPeriod) {
+		String oldTransportJMSPollingSuspensionPeriod = transportJMSPollingSuspensionPeriod;
+		transportJMSPollingSuspensionPeriod = newTransportJMSPollingSuspensionPeriod;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD, oldTransportJMSPollingSuspensionPeriod, transportJMSPollingSuspensionPeriod));
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8515,9 +8557,11 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				return isStatisticsEnabled();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
-				return getTransportJmsRetriesBeforeSuspension();
+				return getTransportJMSRetriesBeforeSuspension();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
+				return isTransportJMSResetConnectionOnPollingSuspension();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
-				return getTransportJmsPollingSuspensionPeriod();
+				return getTransportJMSPollingSuspensionPeriod();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
 				return getTransportMQTTSslKeystoreLocation();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
@@ -9107,10 +9151,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				setStatisticsEnabled((Boolean)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
-				setTransportJmsRetriesBeforeSuspension((String)newValue);
+				setTransportJMSRetriesBeforeSuspension((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
+				setTransportJMSResetConnectionOnPollingSuspension((Boolean)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
-				setTransportJmsPollingSuspensionPeriod((String)newValue);
+				setTransportJMSPollingSuspensionPeriod((String)newValue);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
 				setTransportMQTTSslKeystoreLocation((String)newValue);
 				return;
@@ -9705,10 +9753,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
-				setTransportJmsRetriesBeforeSuspension(TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT);
+				setTransportJMSRetriesBeforeSuspension(TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
+				setTransportJMSResetConnectionOnPollingSuspension(TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
-				setTransportJmsPollingSuspensionPeriod(TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT);
+				setTransportJMSPollingSuspensionPeriod(TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
 				setTransportMQTTSslKeystoreLocation(TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT);
 				return;
@@ -10116,9 +10168,11 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 				return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
-				return TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT == null ? transportJmsRetriesBeforeSuspension != null : !TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT.equals(transportJmsRetriesBeforeSuspension);
+				return TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT == null ? transportJMSRetriesBeforeSuspension != null : !TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT.equals(transportJMSRetriesBeforeSuspension);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
+				return transportJMSResetConnectionOnPollingSuspension != TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
-				return TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT == null ? transportJmsPollingSuspensionPeriod != null : !TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT.equals(transportJmsPollingSuspensionPeriod);
+				return TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT == null ? transportJMSPollingSuspensionPeriod != null : !TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT.equals(transportJMSPollingSuspensionPeriod);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
 				return TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT == null ? transportMQTTSslKeystoreLocation != null : !TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT.equals(transportMQTTSslKeystoreLocation);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
@@ -10482,8 +10536,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportRabbitMqConnectionRetryInterval);
 		result.append(", transportRabbitMqServerRetryInterval: ");
 		result.append(transportRabbitMqServerRetryInterval);
-		result.append(", transportRabbitMqConsumerQos: ");
-		result.append(transportRabbitMqConsumerQos);
 		result.append(", wsInboundPort: ");
 		result.append(wsInboundPort);
 		result.append(", wsClientSideBroadcastLevel: ");
@@ -10508,10 +10560,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(traceEnabled);
 		result.append(", statisticsEnabled: ");
 		result.append(statisticsEnabled);
-		result.append(", transportJmsRetriesBeforeSuspension: ");
-		result.append(transportJmsRetriesBeforeSuspension);
-		result.append(", transportJmsPollingSuspensionPeriod: ");
-		result.append(transportJmsPollingSuspensionPeriod);
+		result.append(", transportJMSRetriesBeforeSuspension: ");
+		result.append(transportJMSRetriesBeforeSuspension);
+		result.append(", transportJMSResetConnectionOnPollingSuspension: ");
+		result.append(transportJMSResetConnectionOnPollingSuspension);
+		result.append(", transportJMSPollingSuspensionPeriod: ");
+		result.append(transportJMSPollingSuspensionPeriod);
 		result.append(", transportMQTTSslKeystoreLocation: ");
 		result.append(transportMQTTSslKeystoreLocation);
 		result.append(", transportMQTTSslKeystoreType: ");

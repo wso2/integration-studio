@@ -436,6 +436,12 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RETRY_DURATION,
 						visualInboundEndpoint.getTransportJMSRetryDuration());
 			}
+			if (StringUtils.isNotBlank(
+					String.valueOf(visualInboundEndpoint.isTransportJMSResetConnectionOnPollingSuspension()))) {
+				addParameterForConfig(inboundEndpoint,
+						InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
+						String.valueOf(visualInboundEndpoint.isTransportJMSResetConnectionOnPollingSuspension()));
+			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSRetriesBeforeSuspension())) {
 				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RETRIES_BEFORE_SUSPENSION,
 						visualInboundEndpoint.getTransportJMSRetriesBeforeSuspension());
@@ -443,12 +449,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSPollingSuspensionPeriod())) {
 				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_POLLING_SUSPENSION_PERIOD,
 						visualInboundEndpoint.getTransportJMSPollingSuspensionPeriod());
-			}
-			if (StringUtils.isNotBlank(
-					String.valueOf(visualInboundEndpoint.isTransportJMSResetConnectionOnPollingSuspension()))) {
-				addParameterForConfig(inboundEndpoint,
-						InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
-						String.valueOf(visualInboundEndpoint.isTransportJMSResetConnectionOnPollingSuspension()));
 			}
             break;
         case WSO2_MB:

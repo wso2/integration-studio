@@ -496,16 +496,16 @@ public class InboundEndpointDeserializer
 						} else {
 							executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION, false);
 						}
-                    } else if (paramEntry.getKey()
-                            .equals(InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION)) {
-                        if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
-                            executeSetValueCommand(
-                                    INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION, true);
-                        } else {
-                            executeSetValueCommand(
-                                    INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION, false);
-                        }
-                    }
+					} else if (paramEntry.getKey()
+							.equals(InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION)) {
+						if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+							executeSetValueCommand(
+									INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION, true);
+						} else {
+							executeSetValueCommand(
+									INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION, false);
+						}
+					}
 				}
 			}
 		} else if (InboundEndpointType.WSO2_MB.equals(inboundEndpointType)) {

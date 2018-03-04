@@ -137,9 +137,9 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSPinnedServersPropertyDescriptor(object);
 			addTransportJMSConcurrentConsumersPropertyDescriptor(object);
 			addTransportJMSRetryDurationPropertyDescriptor(object);
-            addTransportJMSResetConnectionOnPollingSuspensionPropertyDescriptor(object);
-            addTransportJMSRetriesBeforeSuspensionPropertyDescriptor(object);
-            addTransportJMSPollingSuspensionPeriodPropertyDescriptor(object);
+			addTransportJMSResetConnectionOnPollingSuspensionPropertyDescriptor(object);
+			addTransportJMSRetriesBeforeSuspensionPropertyDescriptor(object);
+			addTransportJMSPollingSuspensionPeriodPropertyDescriptor(object);
 			break;
 		case CUSTOM:
 			addClassPropertyDescriptor(object);

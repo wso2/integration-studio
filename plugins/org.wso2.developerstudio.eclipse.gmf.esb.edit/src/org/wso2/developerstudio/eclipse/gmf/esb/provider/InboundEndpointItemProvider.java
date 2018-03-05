@@ -1,5 +1,5 @@
 /**
- * Copyright 2009-2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2009-2018 WSO2, Inc. (http://wso2.com)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -137,8 +137,9 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSPinnedServersPropertyDescriptor(object);
 			addTransportJMSConcurrentConsumersPropertyDescriptor(object);
 			addTransportJMSRetryDurationPropertyDescriptor(object);
-			addTransportJmsRetriesBeforeSuspensionPropertyDescriptor(object);
-			addTransportJmsPollingSuspensionPeriodPropertyDescriptor(object);
+			addTransportJMSResetConnectionOnPollingSuspensionPropertyDescriptor(object);
+			addTransportJMSRetriesBeforeSuspensionPropertyDescriptor(object);
+			addTransportJMSPollingSuspensionPeriodPropertyDescriptor(object);
 			break;
 		case CUSTOM:
 			addClassPropertyDescriptor(object);
@@ -2523,18 +2524,18 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Transport Jms Retries Before Suspension feature.
+	 * This adds a property descriptor for the Transport JMS Retries Before Suspension feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected void addTransportJmsRetriesBeforeSuspensionPropertyDescriptor(Object object) {
+	protected void addTransportJMSRetriesBeforeSuspensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_transportJmsRetriesBeforeSuspension_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJmsRetriesBeforeSuspension_feature", "_UI_InboundEndpoint_type"),
+				 getString("_UI_InboundEndpoint_transportJMSRetriesBeforeSuspension_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSRetriesBeforeSuspension_feature", "_UI_InboundEndpoint_type"),
 				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION,
 				 true,
 				 false,
@@ -2543,20 +2544,42 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 "Parameters",
 				 null));
 	}
-	
+
 	/**
-	 * This adds a property descriptor for the Transport Jms Polling Suspension Period feature.
+	 * This adds a property descriptor for the Transport JMS Reset Connection On Polling Suspension feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected void addTransportJmsPollingSuspensionPeriodPropertyDescriptor(Object object) {
+	protected void addTransportJMSResetConnectionOnPollingSuspensionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_transportJmsPollingSuspensionPeriod_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJmsPollingSuspensionPeriod_feature", "_UI_InboundEndpoint_type"),
+				 getString("_UI_InboundEndpoint_transportJMSResetConnectionOnPollingSuspension_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSResetConnectionOnPollingSuspension_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport JMS Polling Suspension Period feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addTransportJMSPollingSuspensionPeriodPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSPollingSuspensionPeriod_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSPollingSuspensionPeriod_feature", "_UI_InboundEndpoint_type"),
 				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD,
 				 true,
 				 false,
@@ -4544,6 +4567,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
 			case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:

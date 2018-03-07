@@ -2040,6 +2040,14 @@ public class SecurityFormPage extends FormPage {
         Button securityScenarioDisplayButton = new Button(secComposite, SWT.NONE);
         securityScenarioDisplayButton.setImage(buttonImage);
         securityScenarioDisplayButton.setVisible(true);
+		/*
+		 * FIXME : Need to design images for these scenarios
+		 * (https://github.com/wso2/devstudio-tooling-ei/issues/134) hence
+		 * disabled
+		 */
+		if (scenarioNumber >= 17 && scenarioNumber <= 20) {
+			securityScenarioDisplayButton.setEnabled(false);
+		}
         securityScenarioDisplayButton.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {

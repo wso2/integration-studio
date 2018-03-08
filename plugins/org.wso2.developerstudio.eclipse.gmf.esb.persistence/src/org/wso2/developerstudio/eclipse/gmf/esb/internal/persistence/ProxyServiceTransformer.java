@@ -408,12 +408,17 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 				break;
 			}
 			
-			if (visualService.getWsdlType()!=ProxyWsdlType.NONE && visualService.getWsdlType() != ProxyWsdlType.ENDPOINT) {
-				proxyService.setResourceMap(new ResourceMap());
-				for (ProxyWSDLResource wsdlResource : visualService.getWsdlResources()) {
-					proxyService.getResourceMap().addResource(wsdlResource.getLocation(),wsdlResource.getKey().getKeyValue());
+			if (visualService.getWsdlType() != ProxyWsdlType.NONE) {
+				setPreservePolicyValue(visualService, proxyService);
+				if (visualService.getWsdlType() != ProxyWsdlType.ENDPOINT) {
+					proxyService.setResourceMap(new ResourceMap());
+					for (ProxyWSDLResource wsdlResource : visualService.getWsdlResources()) {
+						proxyService.getResourceMap().addResource(wsdlResource.getLocation(),
+								wsdlResource.getKey().getKeyValue());
+					}
 				}
 			}
+		
 			String pinnedServerInfo = visualService.getPinnedServers();
 			if (pinnedServerInfo != null && !pinnedServerInfo.equals("")) {
 				for (String a : pinnedServerInfo.split(",")) {
@@ -553,6 +558,23 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 			// operation (attempting to route one proxy service's messages to
 			// another).
 			// parentMediator.addChild(new SendMediator());
+		}
+	}
+	
+	/**
+	 * This sets the preserve policy value
+	 * 
+	 * @param visualService
+	 *            gmf model proxy service object
+	 * @param proxyService
+	 *            synapse proxy service object
+	 */
+	private void setPreservePolicyValue(org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualService,
+			ProxyService proxyService) {
+		if (visualService.isPreservePolicy()) {
+			proxyService.setPreservePolicy("true");
+		} else {
+			proxyService.setPreservePolicy("false");
 		}
 	}
 	

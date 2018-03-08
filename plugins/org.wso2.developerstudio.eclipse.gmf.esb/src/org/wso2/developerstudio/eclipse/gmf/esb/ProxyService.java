@@ -52,6 +52,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getEndpointName <em>Endpoint Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#isMainSequence <em>Main Sequence</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlType <em>Wsdl Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#isPreservePolicy <em>Preserve Policy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlXML <em>Wsdl XML</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlURL <em>Wsdl URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlKey <em>Wsdl Key</em>}</li>
@@ -938,6 +939,33 @@ public interface ProxyService extends EsbElement {
 	 * @generated
 	 */
 	void setWsdlType(ProxyWsdlType value);
+
+	/**
+	 * Returns the value of the '<em><b>Preserve Policy</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Preserve Policy</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Preserve Policy</em>' attribute.
+	 * @see #setPreservePolicy(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getProxyService_PreservePolicy()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isPreservePolicy();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#isPreservePolicy <em>Preserve Policy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Preserve Policy</em>' attribute.
+	 * @see #isPreservePolicy()
+	 * @generated
+	 */
+	void setPreservePolicy(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Wsdl XML</b></em>' attribute.

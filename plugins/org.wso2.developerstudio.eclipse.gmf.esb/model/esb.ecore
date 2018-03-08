@@ -190,6 +190,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mainSequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsdlType" eType="#//ProxyWsdlType"
         defaultValueLiteral="NONE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preservePolicy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsdlXML" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="&lt;definitions/>"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsdlURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

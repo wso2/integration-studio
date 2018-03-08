@@ -9,7 +9,7 @@
 		label="Runtime Name" 
 		type="string"
         context="runtime" 
-		default="WSO2 Enterprise Integrator 6.0.0" />
+		default="WSO2 Enterprise Integrator 6.2.0" />
 		
 	<property 
 		id="carbon.home" 

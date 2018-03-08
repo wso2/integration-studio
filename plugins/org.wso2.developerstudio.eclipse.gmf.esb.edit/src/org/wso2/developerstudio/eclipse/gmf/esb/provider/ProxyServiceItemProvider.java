@@ -98,9 +98,13 @@ public class ProxyServiceItemProvider
 				break;
 			}
 			}
-			if (proxy.getWsdlType() != ProxyWsdlType.NONE && proxy.getWsdlType() != ProxyWsdlType.ENDPOINT) {
-				addWsdlResourcesPropertyDescriptor(object);
+			if (proxy.getWsdlType() != ProxyWsdlType.NONE) {
+				addPreservePolicyPropertyDescriptor(object);
+				if (proxy.getWsdlType() != ProxyWsdlType.ENDPOINT) {
+					addWsdlResourcesPropertyDescriptor(object);
+				}
 			}
+			
 			addInSequenceTypePropertyDescriptor(object);
 			switch (proxy.getInSequenceType()) {
 			case REGISTRY_REFERENCE: {
@@ -447,6 +451,28 @@ public class ProxyServiceItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "WSDL",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Preserve Policy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addPreservePolicyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProxyService_preservePolicy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProxyService_preservePolicy_feature", "_UI_ProxyService_type"),
+				 EsbPackage.Literals.PROXY_SERVICE__PRESERVE_POLICY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 "WSDL",
 				 null));
 	}
@@ -1037,6 +1063,7 @@ public class ProxyServiceItemProvider
 			case EsbPackage.PROXY_SERVICE__ENDPOINT_NAME:
 			case EsbPackage.PROXY_SERVICE__MAIN_SEQUENCE:
 			case EsbPackage.PROXY_SERVICE__WSDL_TYPE:
+			case EsbPackage.PROXY_SERVICE__PRESERVE_POLICY:
 			case EsbPackage.PROXY_SERVICE__WSDL_XML:
 			case EsbPackage.PROXY_SERVICE__WSDL_URL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

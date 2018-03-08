@@ -90,6 +90,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getEndpointName <em>Endpoint Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#isMainSequence <em>Main Sequence</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlType <em>Wsdl Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#isPreservePolicy <em>Preserve Policy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlXML <em>Wsdl XML</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlURL <em>Wsdl URL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlKey <em>Wsdl Key</em>}</li>
@@ -630,6 +631,26 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 	 * @ordered
 	 */
 	protected ProxyWsdlType wsdlType = WSDL_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isPreservePolicy() <em>Preserve Policy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPreservePolicy()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean PRESERVE_POLICY_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isPreservePolicy() <em>Preserve Policy</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPreservePolicy()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean preservePolicy = PRESERVE_POLICY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWsdlXML() <em>Wsdl XML</em>}' attribute.
@@ -1762,6 +1783,27 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isPreservePolicy() {
+		return preservePolicy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPreservePolicy(boolean newPreservePolicy) {
+		boolean oldPreservePolicy = preservePolicy;
+		preservePolicy = newPreservePolicy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE__PRESERVE_POLICY, oldPreservePolicy, preservePolicy));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getWsdlXML() {
 		return wsdlXML;
 	}
@@ -2068,6 +2110,8 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 				return isMainSequence();
 			case EsbPackage.PROXY_SERVICE__WSDL_TYPE:
 				return getWsdlType();
+			case EsbPackage.PROXY_SERVICE__PRESERVE_POLICY:
+				return isPreservePolicy();
 			case EsbPackage.PROXY_SERVICE__WSDL_XML:
 				return getWsdlXML();
 			case EsbPackage.PROXY_SERVICE__WSDL_URL:
@@ -2198,6 +2242,9 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 				return;
 			case EsbPackage.PROXY_SERVICE__WSDL_TYPE:
 				setWsdlType((ProxyWsdlType)newValue);
+				return;
+			case EsbPackage.PROXY_SERVICE__PRESERVE_POLICY:
+				setPreservePolicy((Boolean)newValue);
 				return;
 			case EsbPackage.PROXY_SERVICE__WSDL_XML:
 				setWsdlXML((String)newValue);
@@ -2333,6 +2380,9 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 			case EsbPackage.PROXY_SERVICE__WSDL_TYPE:
 				setWsdlType(WSDL_TYPE_EDEFAULT);
 				return;
+			case EsbPackage.PROXY_SERVICE__PRESERVE_POLICY:
+				setPreservePolicy(PRESERVE_POLICY_EDEFAULT);
+				return;
 			case EsbPackage.PROXY_SERVICE__WSDL_XML:
 				setWsdlXML(WSDL_XML_EDEFAULT);
 				return;
@@ -2432,6 +2482,8 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 				return mainSequence != MAIN_SEQUENCE_EDEFAULT;
 			case EsbPackage.PROXY_SERVICE__WSDL_TYPE:
 				return wsdlType != WSDL_TYPE_EDEFAULT;
+			case EsbPackage.PROXY_SERVICE__PRESERVE_POLICY:
+				return preservePolicy != PRESERVE_POLICY_EDEFAULT;
 			case EsbPackage.PROXY_SERVICE__WSDL_XML:
 				return WSDL_XML_EDEFAULT == null ? wsdlXML != null : !WSDL_XML_EDEFAULT.equals(wsdlXML);
 			case EsbPackage.PROXY_SERVICE__WSDL_URL:
@@ -2497,6 +2549,8 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 		result.append(mainSequence);
 		result.append(", wsdlType: ");
 		result.append(wsdlType);
+		result.append(", preservePolicy: ");
+		result.append(preservePolicy);
 		result.append(", wsdlXML: ");
 		result.append(wsdlXML);
 		result.append(", wsdlURL: ");

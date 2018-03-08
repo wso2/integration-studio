@@ -100,6 +100,12 @@ public class ProxyServiceDeserializer extends AbstractEsbNodeDeserializer<ProxyS
 			hasPublishWsdl=false;
 		}
 		
+		if("false".equals(object.getPreservePolicy())){
+			executeSetValueCommand(PROXY_SERVICE__PRESERVE_POLICY, false);
+		} else {
+			executeSetValueCommand(PROXY_SERVICE__PRESERVE_POLICY, true);
+		}
+		
 		Endpoint targetInLineEndpoint = object.getTargetInLineEndpoint();
 		if(targetInLineEndpoint!=null){
 			setHasInlineEndPoint(true);

@@ -1114,13 +1114,22 @@ public interface EsbPackage extends EPackage {
 	int PROXY_SERVICE__WSDL_TYPE = ESB_ELEMENT_FEATURE_COUNT + 33;
 
 	/**
+	 * The feature id for the '<em><b>Preserve Policy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROXY_SERVICE__PRESERVE_POLICY = ESB_ELEMENT_FEATURE_COUNT + 34;
+
+	/**
 	 * The feature id for the '<em><b>Wsdl XML</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE__WSDL_XML = ESB_ELEMENT_FEATURE_COUNT + 34;
+	int PROXY_SERVICE__WSDL_XML = ESB_ELEMENT_FEATURE_COUNT + 35;
 
 	/**
 	 * The feature id for the '<em><b>Wsdl URL</b></em>' attribute.
@@ -1129,7 +1138,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE__WSDL_URL = ESB_ELEMENT_FEATURE_COUNT + 35;
+	int PROXY_SERVICE__WSDL_URL = ESB_ELEMENT_FEATURE_COUNT + 36;
 
 	/**
 	 * The feature id for the '<em><b>Wsdl Key</b></em>' containment reference.
@@ -1138,7 +1147,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE__WSDL_KEY = ESB_ELEMENT_FEATURE_COUNT + 36;
+	int PROXY_SERVICE__WSDL_KEY = ESB_ELEMENT_FEATURE_COUNT + 37;
 
 	/**
 	 * The feature id for the '<em><b>Wsdl Endpoint</b></em>' containment reference.
@@ -1147,7 +1156,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE__WSDL_ENDPOINT = ESB_ELEMENT_FEATURE_COUNT + 37;
+	int PROXY_SERVICE__WSDL_ENDPOINT = ESB_ELEMENT_FEATURE_COUNT + 38;
 
 	/**
 	 * The feature id for the '<em><b>Wsdl Resources</b></em>' containment reference list.
@@ -1156,7 +1165,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE__WSDL_RESOURCES = ESB_ELEMENT_FEATURE_COUNT + 38;
+	int PROXY_SERVICE__WSDL_RESOURCES = ESB_ELEMENT_FEATURE_COUNT + 39;
 
 	/**
 	 * The feature id for the '<em><b>On Error</b></em>' containment reference.
@@ -1165,7 +1174,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE__ON_ERROR = ESB_ELEMENT_FEATURE_COUNT + 39;
+	int PROXY_SERVICE__ON_ERROR = ESB_ELEMENT_FEATURE_COUNT + 40;
 
 	/**
 	 * The number of structural features of the '<em>Proxy Service</em>' class.
@@ -1174,7 +1183,7 @@ public interface EsbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 40;
+	int PROXY_SERVICE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 41;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyOutputConnectorImpl <em>Proxy Output Connector</em>}' class.
@@ -27492,6 +27501,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getProxyService_WsdlType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#isPreservePolicy <em>Preserve Policy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Preserve Policy</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#isPreservePolicy()
+	 * @see #getProxyService()
+	 * @generated
+	 */
+	EAttribute getProxyService_PreservePolicy();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlXML <em>Wsdl XML</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -45078,6 +45098,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute PROXY_SERVICE__WSDL_TYPE = eINSTANCE.getProxyService_WsdlType();
+
+		/**
+		 * The meta object literal for the '<em><b>Preserve Policy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROXY_SERVICE__PRESERVE_POLICY = eINSTANCE.getProxyService_PreservePolicy();
 
 		/**
 		 * The meta object literal for the '<em><b>Wsdl XML</b></em>' attribute feature.

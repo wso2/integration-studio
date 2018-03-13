@@ -71,7 +71,8 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>${basedir}/scripts/intaller-script-mars.sh</executable>
+                                                        <commandlineArgs>${localRepositoryPath}</commandlineArgs>
+							<executable>${basedir}/scripts/installer-script-mars.sh</executable>
 						</configuration>
 					</execution>
 				</executions>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.wso2.developerstudio.carbon.server-42.feature"
-      label="Carbon 4.2.0 Server Feature"
-      version="4.2.0.qualifier"
+      label="Carbon 6.2.0 Server Feature"
+      version="6.2.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

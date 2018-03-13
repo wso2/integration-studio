@@ -16,7 +16,7 @@
     <parent>
     	<groupId>org.wso2.developerstudio</groupId>
     	<artifactId>wso2-devstudio-tooling-platform-parent</artifactId>
-    	<version>4.2.0-SNAPSHOT</version>
+    	<version>6.2.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>wso2-developer-studio-tooling-platform-p2-parent</artifactId>

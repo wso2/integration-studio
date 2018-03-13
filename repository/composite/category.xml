@@ -64,11 +64,8 @@
  <feature id="org.wso2.developerstudio.mvn.multimodule.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
    </feature>
-  <feature id="org.wso2.developerstudio.web.ui.feature" version="0.0.0">		
-    <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>		
-  </feature> 
-  <feature id="org.eclipse.graphiti.feature" version="0.0.0">
-      <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
+ <feature id="org.eclipse.graphiti.feature" version="0.0.0">
+     <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
    </feature> 
   <!-- ESB features -->
    <feature id="org.wso2.developerstudio.eclipse.esb.editor.feature" version="0.0.0">

@@ -135,7 +135,6 @@ public abstract class AbstractWebBasedEditor extends EditorPart {
 	@Override
 	public void createPartControl(Composite parent) {
 		try {
-
 			browser = new Browser(parent, SWT.NONE);
 			browser.setUrl(getEditorURL());
 			browser.addControlListener(new ControlListener() {

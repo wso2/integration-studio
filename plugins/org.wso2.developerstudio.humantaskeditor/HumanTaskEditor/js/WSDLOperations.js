@@ -135,6 +135,7 @@ function generateInputWSDL(wsdlDom, xmlDom, currentTask) {
     serviceName = currentTask + "Service";
     portName = currentTask + "Port";
     inputElements = $('#' + currentTaskName + ' #inputmappingTable tr');
+    wsdlSchema = wsdlDom.getElementsByTagNameNS(XSD_NAMESPACE, SCHEMA_TAGNAME)[0];
     if (xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME).length != 0) {
         targetnamespace = xmlDom.getElementsByTagNameNS(BPEL_NAMESPACE, HUMAN_INTERACTIONS_TAGNAME)[0].getAttribute(TARGET_NAMESPACE_ATTRIBUTE);
         if (wsdlDom.getElementsByTagNameNS(WSDL_NAMESPACE, DEFINITIONS_TAGNAME).length != 0) {

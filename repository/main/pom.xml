@@ -21,7 +21,7 @@
     </parent>
     <artifactId>wso2-developer-studio-tooling-platform-p2</artifactId>
     <packaging>eclipse-repository</packaging>
-    <name>WSO2 Developer Studio Kernel - P2 Repository</name>
+    <name>WSO2 Developer Studio Platform-P2 Repository</name>
     <url>http://wso2.org</url>
  <properties>
       <versionproperty>4.1.0</versionproperty>

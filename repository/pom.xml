@@ -21,7 +21,7 @@
     </parent>
     <artifactId>wso2-developer-studio-tooling-platform-p2-parent</artifactId>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Kernel - P2 Repositories</name>
+    <name>WSO2 Developer Studio Platform-P2 Repositories</name>
     <url>http://wso2.org</url>
     <modules>
 	<module>main</module>

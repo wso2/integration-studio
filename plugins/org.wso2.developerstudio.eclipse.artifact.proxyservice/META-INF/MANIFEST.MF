@@ -17,4 +17,4 @@ Import-Package: org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.project.utils,
  org.wso2.developerstudio.eclipse.gmf.esb,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
- org.wso2.developerstudio.eclipse.samples.contributor;version="[4.1.0,5.0.0)"
+ org.wso2.developerstudio.eclipse.samples.contributor;version="6.2.0"

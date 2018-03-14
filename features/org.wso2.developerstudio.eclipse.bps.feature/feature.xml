@@ -149,7 +149,7 @@
             version="0.0.0"
             unpack="false"/>
 
-    <plugin
+    <!--plugin
             id="org.wso2.developerstudio.bpel.humantask.model"
             download-size="0"
             install-size="0"
@@ -161,7 +161,7 @@
             download-size="0"
             install-size="0"
             version="0.0.0"
-            unpack="false"/>
+            unpack="false"/-->
 
     <plugin
             id="org.wso2.wsf.ide.bpel.export"
@@ -191,11 +191,11 @@
             version="0.0.0"
             unpack="false"/>
 
-    <plugin
+    <!--plugin
             id="org.wso2.developerstudio.humantaskeditor"
             download-size="0"
             install-size="0"
             version="0.0.0"
-            unpack="false"/>
+            unpack="false"/-->
 
 </feature>

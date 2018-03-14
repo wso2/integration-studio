@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Carbonserver42
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.carbonserver42;singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 6.2.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.carbonserver42.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.wso2.developerstudio.eclipse.libraries,
+ org.wso2.developerstudio.eclipse.libraries;bundle-version="6.2.0",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0"
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
@@ -30,26 +30,26 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.eclipse.wst.server.ui,
  org.eclipse.wst.server.ui.editor,
  org.eclipse.wst.server.ui.wizard,
- org.wso2.developerstudio.eclipse.carbon.server.model.configuration;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbon.server.model.exception;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbon.server.model.operations;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbon.server.model.util;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonfeatures;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver.base.console;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver.base.exception;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver.base.impl;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver.base.interfaces;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver.base.internal;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver.base.manager;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver.base.service.util;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver.base.util;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.carbonserver.base.utils;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.distribution.project.publisher;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.server.base.core;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.server.base.interfaces;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.utils.wst;version="[4.1.0,5.0.0)"
+ org.wso2.developerstudio.eclipse.carbon.server.model.configuration;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbon.server.model.exception;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbon.server.model.operations;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbon.server.model.util;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonfeatures;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.console;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.exception;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.impl;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.interfaces;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.internal;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.manager;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.service.util;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.util;version="6.2.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.utils;version="6.2.0",
+ org.wso2.developerstudio.eclipse.distribution.project.publisher;version="6.2.0",
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,6.2.0)",
+ org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.1.0,6.2.0)",
+ org.wso2.developerstudio.eclipse.server.base.core;version="6.2.0",
+ org.wso2.developerstudio.eclipse.server.base.interfaces;version="6.2.0",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,6.2.0)",
+ org.wso2.developerstudio.eclipse.utils.wst;version="[4.1.0,6.2.0)"
 Bundle-Vendor: WSO2
-Export-Package: org.wso2.developerstudio.eclipse.carbonserver42.register.product.servers;version="4.2.0"
+Export-Package: org.wso2.developerstudio.eclipse.carbonserver42.register.product.servers;version="6.2.0"

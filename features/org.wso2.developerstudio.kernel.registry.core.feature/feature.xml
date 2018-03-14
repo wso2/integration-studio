@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.kernel.registry.core.feature"
       label="Registry Feature"
-      version="4.2.0.qualifier"
+      version="6.2.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

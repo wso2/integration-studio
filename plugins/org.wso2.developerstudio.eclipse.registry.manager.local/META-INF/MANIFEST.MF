@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Local
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.manager.local;singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 6.2.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.registry.manager.local.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -36,18 +36,18 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.wso2.carbon.user.core.common,
  org.wso2.carbon.user.core.service,
  org.wso2.carbon.utils,
- org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.platform.core;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.registry.base.core;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.registry.base.interfaces;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.registry.base.model;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.registry.base.persistent;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.registry.base.ui.dialog;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.registry.base.ui.util;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.registry.core.exception;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.registry.core.utils;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="[4.1.0,5.0.0)"
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,6.2.0)",
+ org.wso2.developerstudio.eclipse.platform.core;version="[4.1.0,6.2.0)",
+ org.wso2.developerstudio.eclipse.registry.base.core;version="6.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.interfaces;version="6.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.model;version="6.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.persistent;version="6.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.ui.dialog;version="6.2.0",
+ org.wso2.developerstudio.eclipse.registry.base.ui.util;version="6.2.0",
+ org.wso2.developerstudio.eclipse.registry.core.exception;version="6.2.0",
+ org.wso2.developerstudio.eclipse.registry.core.utils;version="6.2.0",
+ org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="6.2.0"
 Bundle-ClassPath: .,
  lib/checkin-client-4.6.0.jar
-Export-Package: org.wso2.developerstudio.eclipse.registry.manager.local.utils;version="4.2.0",
+Export-Package: org.wso2.developerstudio.eclipse.registry.manager.local.utils;version="6.2.0",
  org.wso2.registry.checkin

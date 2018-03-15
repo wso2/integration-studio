@@ -24,7 +24,7 @@
     <name>WSO2 Developer Studio Platform-P2 Repository</name>
     <url>http://wso2.org</url>
  <properties>
-      <versionproperty>4.1.0</versionproperty>
+      <versionproperty>6.2.0</versionproperty>
    </properties>
    <build>
       <plugins>

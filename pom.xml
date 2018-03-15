@@ -77,7 +77,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/kernel-p2-4.1.0.201708021629/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/</url>
             <layout>p2</layout>
         </repository>
 		<repository>

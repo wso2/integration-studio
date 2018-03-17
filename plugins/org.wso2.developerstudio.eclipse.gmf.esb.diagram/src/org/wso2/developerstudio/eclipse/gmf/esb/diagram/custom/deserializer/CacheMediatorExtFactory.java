@@ -117,6 +117,22 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
 						}
 					}
 				}
+				for (Iterator iterator = implElem.getChildrenWithLocalName("enableCacheControl"); iterator.hasNext();) {
+					OMElement child = (OMElement) iterator.next();
+					if (null != child.getText() && !"".equals(child.getText())
+							&& (child.getText().equals("true") || child.getText().equals("false"))) {
+						cacheMediator.setCacheControlEnabled(Boolean.parseBoolean(child.getText()));
+						break;
+					}
+				}
+				for (Iterator iterator = implElem.getChildrenWithLocalName("includeAgeHeader"); iterator.hasNext();) {
+					OMElement child = (OMElement) iterator.next();
+					if (null != child.getText() && !"".equals(child.getText())
+							&& (child.getText().equals("true") || child.getText().equals("false"))) {
+						cacheMediator.setAddAgeHeaderEnabled(Boolean.parseBoolean(child.getText()));
+						break;
+					}
+				}
 			}
 
 			OMElement onCacheHitElem = elem.getFirstChildWithName(ON_CACHE_HIT_Q);

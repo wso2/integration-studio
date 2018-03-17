@@ -34,6 +34,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getResponseCodes <em>Response Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isEnableCacheControl <em>Enable Cache Control</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isIncludeAgeHeader <em>Include Age Header</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isCollector <em>Collector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator()
@@ -527,5 +528,32 @@ public interface CacheMediator extends Mediator {
 	 * @generated
 	 */
 	void setIncludeAgeHeader(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Collector</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Collector</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Collector</em>' attribute.
+	 * @see #setCollector(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_Collector()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isCollector();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isCollector <em>Collector</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Collector</em>' attribute.
+	 * @see #isCollector()
+	 * @generated
+	 */
+	void setCollector(boolean value);
 
 } // CacheMediator

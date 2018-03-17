@@ -14079,6 +14079,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCacheMediator_Collector() {
+		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCacheMediatorInputConnector() {
 		return cacheMediatorInputConnectorEClass;
 	}
@@ -19865,6 +19874,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__RESPONSE_CODES);
 		createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__ENABLE_CACHE_CONTROL);
 		createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__INCLUDE_AGE_HEADER);
+		createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__COLLECTOR);
 
 		cacheMediatorInputConnectorEClass = createEClass(CACHE_MEDIATOR_INPUT_CONNECTOR);
 
@@ -22281,6 +22291,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getCacheMediator_ResponseCodes(), ecorePackage.getEString(), "responseCodes", ".*", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_EnableCacheControl(), ecorePackage.getEBoolean(), "enableCacheControl", "false", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_IncludeAgeHeader(), ecorePackage.getEBoolean(), "includeAgeHeader", "false", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheMediator_Collector(), ecorePackage.getEBoolean(), "collector", "false", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cacheMediatorInputConnectorEClass, CacheMediatorInputConnector.class, "CacheMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

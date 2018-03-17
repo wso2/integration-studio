@@ -11399,13 +11399,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CACHE_MEDIATOR__INCLUDE_AGE_HEADER = MEDIATOR_FEATURE_COUNT + 17;
 
 	/**
+	 * The feature id for the '<em><b>Collector</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE_MEDIATOR__COLLECTOR = MEDIATOR_FEATURE_COUNT + 18;
+
+	/**
 	 * The number of structural features of the '<em>Cache Mediator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 18;
+	int CACHE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 19;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorInputConnectorImpl <em>Cache Mediator Input Connector</em>}' class.
@@ -38619,6 +38628,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getCacheMediator_IncludeAgeHeader();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isCollector <em>Collector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Collector</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isCollector()
+	 * @see #getCacheMediator()
+	 * @generated
+	 */
+	EAttribute getCacheMediator_Collector();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorInputConnector <em>Cache Mediator Input Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -53838,6 +53858,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute CACHE_MEDIATOR__INCLUDE_AGE_HEADER = eINSTANCE.getCacheMediator_IncludeAgeHeader();
+
+		/**
+		 * The meta object literal for the '<em><b>Collector</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CACHE_MEDIATOR__COLLECTOR = eINSTANCE.getCacheMediator_Collector();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorInputConnectorImpl <em>Cache Mediator Input Connector</em>}' class.

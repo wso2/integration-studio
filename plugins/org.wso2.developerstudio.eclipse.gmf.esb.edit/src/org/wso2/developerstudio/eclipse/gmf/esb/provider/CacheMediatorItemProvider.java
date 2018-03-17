@@ -65,7 +65,8 @@ public class CacheMediatorItemProvider
 		}
 		super.getPropertyDescriptors(object);
 		
-		if (cacheMediator.getCacheAction().equals(CacheAction.FINDER)) {
+		if (cacheMediator.getCacheAction().equals(CacheAction.FINDER) || !cacheMediator.isCollector()) {
+			addCollectorPropertyDescriptor(object);
 			addCacheTimeoutPropertyDescriptor(object);
 			addMaxMessageSizePropertyDescriptor(object);
 			addMaxEntryCountPropertyDescriptor(object);
@@ -83,7 +84,9 @@ public class CacheMediatorItemProvider
 				//adding cache on hit property descriptor.
 				addSequenceKeyPropertyDescriptor(object);
 			}
-		} 
+		} else {
+			addCollectorPropertyDescriptor(object);
+		}
 		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
 	}
@@ -398,6 +401,28 @@ public class CacheMediatorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Collector feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addCollectorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CacheMediator_collector_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_collector_feature", "_UI_CacheMediator_type"),
+				 EsbPackage.Literals.CACHE_MEDIATOR__COLLECTOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "General",
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -485,6 +510,7 @@ public class CacheMediatorItemProvider
 			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
 			case EsbPackage.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL:
 			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
+			case EsbPackage.CACHE_MEDIATOR__COLLECTOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.CACHE_MEDIATOR__INPUT_CONNECTOR:

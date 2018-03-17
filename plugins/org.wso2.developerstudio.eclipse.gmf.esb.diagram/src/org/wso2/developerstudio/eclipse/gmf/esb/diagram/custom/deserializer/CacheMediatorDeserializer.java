@@ -29,6 +29,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__INCLUDE_AGE_HEADER;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__COLLECTOR;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.mediators.AbstractMediator;
@@ -62,6 +63,7 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 
             if (mediator.isCollector()) {
                 executeSetValueCommand(CACHE_MEDIATOR__CACHE_ACTION, CacheAction.COLLECTOR);
+                executeSetValueCommand(CACHE_MEDIATOR__COLLECTOR, true);
             } else {
                 if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(mediator.getProtocolType())) {
                     String[] methods = mediator.getHTTPMethodsToCache();

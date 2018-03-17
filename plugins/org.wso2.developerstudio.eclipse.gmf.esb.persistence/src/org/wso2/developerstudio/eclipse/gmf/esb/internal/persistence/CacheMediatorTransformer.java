@@ -79,7 +79,8 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 		org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator(new CacheManager());
 		setCommonProperties(cacheMediator, visualCache);
 		{
-            if (visualCache.getCacheAction().getValue() == 0) {
+            cacheMediator.setCollector(visualCache.isCollector());
+            if (visualCache.getCacheAction().getValue() == 0 || !visualCache.isCollector()) {
                 cacheMediator.setProtocolType(visualCache.getCacheProtocolType().getLiteral());
                 if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(visualCache.getCacheProtocolType().getLiteral())) {
                     if (StringUtils.isNotBlank(visualCache.getCacheProtocolMethods())) {
@@ -112,12 +113,7 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                 }
                 cacheMediator.setDigestGenerator(httpRequestHashGenerator);
 			    cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
-			    cacheMediator.setCollector(false);
 		    }
-
-            if (visualCache.getCacheAction().getValue() == 1) {
-                cacheMediator.setCollector(true);
-            }
 
             if (visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
                 if (visualCache.getSequenceKey() != null) {

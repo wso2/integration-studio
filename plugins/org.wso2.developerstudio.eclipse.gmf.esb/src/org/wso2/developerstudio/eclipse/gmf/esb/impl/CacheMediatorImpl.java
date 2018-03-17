@@ -61,6 +61,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getResponseCodes <em>Response Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#isEnableCacheControl <em>Enable Cache Control</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#isIncludeAgeHeader <em>Include Age Header</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#isCollector <em>Collector</em>}</li>
  * </ul>
  *
  * @generated
@@ -375,6 +376,26 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * @ordered
 	 */
 	protected boolean includeAgeHeader = INCLUDE_AGE_HEADER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isCollector() <em>Collector</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCollector()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean COLLECTOR_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCollector() <em>Collector</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCollector()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean collector = COLLECTOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -896,6 +917,27 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isCollector() {
+		return collector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCollector(boolean newCollector) {
+		boolean oldCollector = collector;
+		collector = newCollector;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__COLLECTOR, oldCollector, collector));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -959,6 +1001,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				return isEnableCacheControl();
 			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
 				return isIncludeAgeHeader();
+			case EsbPackage.CACHE_MEDIATOR__COLLECTOR:
+				return isCollector();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1025,6 +1069,9 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				return;
 			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
 				setIncludeAgeHeader((Boolean)newValue);
+				return;
+			case EsbPackage.CACHE_MEDIATOR__COLLECTOR:
+				setCollector((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1093,6 +1140,9 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
 				setIncludeAgeHeader(INCLUDE_AGE_HEADER_EDEFAULT);
 				return;
+			case EsbPackage.CACHE_MEDIATOR__COLLECTOR:
+				setCollector(COLLECTOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1142,6 +1192,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				return enableCacheControl != ENABLE_CACHE_CONTROL_EDEFAULT;
 			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
 				return includeAgeHeader != INCLUDE_AGE_HEADER_EDEFAULT;
+			case EsbPackage.CACHE_MEDIATOR__COLLECTOR:
+				return collector != COLLECTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1183,6 +1235,8 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 		result.append(enableCacheControl);
 		result.append(", includeAgeHeader: ");
 		result.append(includeAgeHeader);
+		result.append(", collector: ");
+		result.append(collector);
 		result.append(')');
 		return result.toString();
 	}

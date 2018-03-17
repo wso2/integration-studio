@@ -879,6 +879,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/endpointName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/mainSequence"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/wsdlType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/preservePolicy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/wsdlXML"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/wsdlURL"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/wsdlKey"/>
@@ -1527,6 +1528,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CacheMediator/mediatorFlow"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/headersToExcludeInHash"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/responseCodes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/enableCacheControl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/includeAgeHeader"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorOutputConnector"/>

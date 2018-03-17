@@ -11381,13 +11381,31 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CACHE_MEDIATOR__RESPONSE_CODES = MEDIATOR_FEATURE_COUNT + 15;
 
 	/**
+	 * The feature id for the '<em><b>Enable Cache Control</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE_MEDIATOR__ENABLE_CACHE_CONTROL = MEDIATOR_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>Include Age Header</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE_MEDIATOR__INCLUDE_AGE_HEADER = MEDIATOR_FEATURE_COUNT + 17;
+
+	/**
 	 * The number of structural features of the '<em>Cache Mediator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 16;
+	int CACHE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 18;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorInputConnectorImpl <em>Cache Mediator Input Connector</em>}' class.
@@ -38579,6 +38597,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getCacheMediator_ResponseCodes();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isEnableCacheControl <em>Enable Cache Control</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enable Cache Control</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isEnableCacheControl()
+	 * @see #getCacheMediator()
+	 * @generated
+	 */
+	EAttribute getCacheMediator_EnableCacheControl();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isIncludeAgeHeader <em>Include Age Header</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Include Age Header</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isIncludeAgeHeader()
+	 * @see #getCacheMediator()
+	 * @generated
+	 */
+	EAttribute getCacheMediator_IncludeAgeHeader();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediatorInputConnector <em>Cache Mediator Input Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -53782,6 +53822,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute CACHE_MEDIATOR__RESPONSE_CODES = eINSTANCE.getCacheMediator_ResponseCodes();
+
+		/**
+		 * The meta object literal for the '<em><b>Enable Cache Control</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CACHE_MEDIATOR__ENABLE_CACHE_CONTROL = eINSTANCE.getCacheMediator_EnableCacheControl();
+
+		/**
+		 * The meta object literal for the '<em><b>Include Age Header</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CACHE_MEDIATOR__INCLUDE_AGE_HEADER = eINSTANCE.getCacheMediator_IncludeAgeHeader();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorInputConnectorImpl <em>Cache Mediator Input Connector</em>}' class.

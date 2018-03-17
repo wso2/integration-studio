@@ -75,6 +75,8 @@ public class CacheMediatorItemProvider
 			    addCacheProtocolMethodsPropertyDescriptor(object);
 			    addHeadersToExcludeInHashPropertyDescriptor(object);
 			    addResponseCodesPropertyDescriptor(object);
+			    addEnableCacheControlPropertyDescriptor(object);
+			    addIncludeAgeHeaderPropertyDescriptor(object);
 			}
 			addHashGeneratorPropertyDescriptor(object);
 			if(cacheMediator.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)){
@@ -84,6 +86,28 @@ public class CacheMediatorItemProvider
 		} 
 		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Cache Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCacheIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CacheMediator_cacheId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_cacheId_feature", "_UI_CacheMediator_type"),
+				 EsbPackage.Literals.CACHE_MEDIATOR__CACHE_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -330,6 +354,50 @@ public class CacheMediatorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Enable Cache Control feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addEnableCacheControlPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CacheMediator_enableCacheControl_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_enableCacheControl_feature", "_UI_CacheMediator_type"),
+				 EsbPackage.Literals.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Protocol",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Include Age Header feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addIncludeAgeHeaderPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CacheMediator_includeAgeHeader_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_includeAgeHeader_feature", "_UI_CacheMediator_type"),
+				 EsbPackage.Literals.CACHE_MEDIATOR__INCLUDE_AGE_HEADER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Protocol",
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -415,6 +483,8 @@ public class CacheMediatorItemProvider
 			case EsbPackage.CACHE_MEDIATOR__SEQUENCE_TYPE:
 			case EsbPackage.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH:
 			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
+			case EsbPackage.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL:
+			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.CACHE_MEDIATOR__INPUT_CONNECTOR:

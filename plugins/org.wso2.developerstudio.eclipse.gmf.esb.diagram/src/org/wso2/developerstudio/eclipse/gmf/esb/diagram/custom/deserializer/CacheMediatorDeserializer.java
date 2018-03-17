@@ -26,6 +26,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_PROTOCOL_METHODS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__RESPONSE_CODES;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__INCLUDE_AGE_HEADER;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH;
 
 import org.apache.commons.lang.StringUtils;
@@ -39,6 +41,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.carbon.mediator.cache.CacheMediatorFactory;
 import org.wso2.carbon.mediator.cache.CachingConstants;
 
 public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CacheMediator> {
@@ -78,6 +81,8 @@ public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
                     header.append(headerstoExclude[headerstoExclude.length - 1]);
                     executeSetValueCommand(CACHE_MEDIATOR__HEADERS_TO_EXCLUDE_IN_HASH, header.toString());
                     executeSetValueCommand(CACHE_MEDIATOR__RESPONSE_CODES, mediator.getResponseCodes());
+                    executeSetValueCommand(CACHE_MEDIATOR__ENABLE_CACHE_CONTROL, mediator.isCacheControlEnabled());
+                    executeSetValueCommand(CACHE_MEDIATOR__INCLUDE_AGE_HEADER, mediator.isAddAgeHeaderEnabled());
                 }
                 executeSetValueCommand(CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE, mediator.getProtocolType());
                 executeSetValueCommand(CACHE_MEDIATOR__MAX_MESSAGE_SIZE, mediator.getMaxMessageSize());

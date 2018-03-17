@@ -92,6 +92,8 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                     } else {
                         cacheMediator.setResponseCodes(".*");
                     }
+                    cacheMediator.setCacheControlEnabled(visualCache.isEnableCacheControl());
+                    cacheMediator.setAddAgeHeaderEnabled(visualCache.isIncludeAgeHeader());
                     if (StringUtils.isNotBlank(visualCache.getHeadersToExcludeInHash())) {
                         cacheMediator.setHeadersToExcludeInHash(visualCache.getHeadersToExcludeInHash().split(","));
                     }

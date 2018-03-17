@@ -59,6 +59,8 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getHeadersToExcludeInHash <em>Headers To Exclude In Hash</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getResponseCodes <em>Response Codes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#isEnableCacheControl <em>Enable Cache Control</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#isIncludeAgeHeader <em>Include Age Header</em>}</li>
  * </ul>
  *
  * @generated
@@ -333,6 +335,46 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * @ordered
 	 */
 	protected String responseCodes = RESPONSE_CODES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isEnableCacheControl() <em>Enable Cache Control</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableCacheControl()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLE_CACHE_CONTROL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isEnableCacheControl() <em>Enable Cache Control</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableCacheControl()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enableCacheControl = ENABLE_CACHE_CONTROL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIncludeAgeHeader() <em>Include Age Header</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIncludeAgeHeader()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INCLUDE_AGE_HEADER_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIncludeAgeHeader() <em>Include Age Header</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIncludeAgeHeader()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean includeAgeHeader = INCLUDE_AGE_HEADER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -812,6 +854,48 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isEnableCacheControl() {
+		return enableCacheControl;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnableCacheControl(boolean newEnableCacheControl) {
+		boolean oldEnableCacheControl = enableCacheControl;
+		enableCacheControl = newEnableCacheControl;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL, oldEnableCacheControl, enableCacheControl));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isIncludeAgeHeader() {
+		return includeAgeHeader;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIncludeAgeHeader(boolean newIncludeAgeHeader) {
+		boolean oldIncludeAgeHeader = includeAgeHeader;
+		includeAgeHeader = newIncludeAgeHeader;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER, oldIncludeAgeHeader, includeAgeHeader));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -871,6 +955,10 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				return getHeadersToExcludeInHash();
 			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
 				return getResponseCodes();
+			case EsbPackage.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL:
+				return isEnableCacheControl();
+			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
+				return isIncludeAgeHeader();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -931,6 +1019,12 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				return;
 			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
 				setResponseCodes((String)newValue);
+				return;
+			case EsbPackage.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL:
+				setEnableCacheControl((Boolean)newValue);
+				return;
+			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
+				setIncludeAgeHeader((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -993,6 +1087,12 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
 				setResponseCodes(RESPONSE_CODES_EDEFAULT);
 				return;
+			case EsbPackage.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL:
+				setEnableCacheControl(ENABLE_CACHE_CONTROL_EDEFAULT);
+				return;
+			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
+				setIncludeAgeHeader(INCLUDE_AGE_HEADER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1038,6 +1138,10 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 				return HEADERS_TO_EXCLUDE_IN_HASH_EDEFAULT == null ? headersToExcludeInHash != null : !HEADERS_TO_EXCLUDE_IN_HASH_EDEFAULT.equals(headersToExcludeInHash);
 			case EsbPackage.CACHE_MEDIATOR__RESPONSE_CODES:
 				return RESPONSE_CODES_EDEFAULT == null ? responseCodes != null : !RESPONSE_CODES_EDEFAULT.equals(responseCodes);
+			case EsbPackage.CACHE_MEDIATOR__ENABLE_CACHE_CONTROL:
+				return enableCacheControl != ENABLE_CACHE_CONTROL_EDEFAULT;
+			case EsbPackage.CACHE_MEDIATOR__INCLUDE_AGE_HEADER:
+				return includeAgeHeader != INCLUDE_AGE_HEADER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1075,6 +1179,10 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 		result.append(headersToExcludeInHash);
 		result.append(", responseCodes: ");
 		result.append(responseCodes);
+		result.append(", enableCacheControl: ");
+		result.append(enableCacheControl);
+		result.append(", includeAgeHeader: ");
+		result.append(includeAgeHeader);
 		result.append(')');
 		return result.toString();
 	}

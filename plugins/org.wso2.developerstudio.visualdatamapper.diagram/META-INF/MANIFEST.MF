@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.visualdatamapper.diagram; singleton:=true
-Bundle-Version: 6.2.0.qualifier
+Bundle-Version: 6.3.0.qualifier
 Bundle-ClassPath: .,
  lib/jaxb-impl-2.2.4-1.jar,
  lib/jaxb-xjc-2.2.4-1.jar,
@@ -219,12 +219,12 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.runtime.draw2d.ui;visibility:=reexport,
  org.wso2.developerstudio.eclipse.registry.core,
  org.wso2.developerstudio.visualdatamapper.editor,
- org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,5.0.0)",
+ org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.gmf.esb,
  org.eclipse.equinox.registry,
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="5.0.0"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[6.0.0,7.0.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.fasterxml.jackson.annotation;version="2.7.2",
@@ -317,19 +317,19 @@ Import-Package: com.fasterxml.jackson.annotation;version="2.7.2",
  org.eclipse.xsd.impl,
  org.json.simple;version="1.1.0",
  org.json.simple.parser;version="1.1.0",
- org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.core.model;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.maven.utils;version="6.2.0",
+ org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.capp.core.model;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.capp.maven.utils;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.esb.core.interfaces,
  org.wso2.developerstudio.eclipse.esb.core.utils,
- org.wso2.developerstudio.eclipse.general.project.artifact;version="6.2.0",
- org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="6.2.0",
- org.wso2.developerstudio.eclipse.general.project.dialogs;version="6.2.0",
- org.wso2.developerstudio.eclipse.general.project.utils;version="6.2.0",
+ org.wso2.developerstudio.eclipse.general.project.artifact;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.general.project.dialogs;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.general.project.utils;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.gmf.esb,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider,
  org.wso2.developerstudio.eclipse.gmf.esb.diagram.part,
- org.wso2.developerstudio.eclipse.registry.core;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.core.interfaces;version="6.2.0"
+ org.wso2.developerstudio.eclipse.registry.core;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[6.0.0,7.0.0)"

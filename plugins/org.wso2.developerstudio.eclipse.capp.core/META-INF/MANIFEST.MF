@@ -21,7 +21,7 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.eclipse.ui.model,
  org.eclipse.ui.navigator,
  org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.registry.core.interfaces;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.archive;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)"
 Export-Package: org.wso2.developerstudio.eclipse.capp.core.artifacts;version="6.3.0",

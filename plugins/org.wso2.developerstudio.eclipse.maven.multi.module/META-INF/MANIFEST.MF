@@ -7,7 +7,7 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.maven.multi.module.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2",
- org.wso2.developerstudio.eclipse.dashboard;bundle-version="6.3.0"
+ org.wso2.developerstudio.eclipse.dashboard;bundle-version="[6.0.0,7.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.expressions,
@@ -21,7 +21,7 @@ Import-Package: org.eclipse.core.expressions,
  org.wso2.developerstudio.eclipse.platform.core.utils;version="4.1.0",
  org.wso2.developerstudio.eclipse.platform.ui.validator;version="4.1.0",
  org.wso2.developerstudio.eclipse.platform.ui.wizard;version="4.1.0",
- org.wso2.developerstudio.eclipse.project.extensions.handlers;version="6.3.0",
+ org.wso2.developerstudio.eclipse.project.extensions.handlers;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="4.1.0",
  org.wso2.developerstudio.eclipse.utils.project;version="4.1.0",
  org.wso2.developerstudio.eclipse.utils.ui

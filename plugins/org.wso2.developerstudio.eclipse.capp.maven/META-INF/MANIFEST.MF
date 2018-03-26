@@ -10,11 +10,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2"
 Bundle-ActivationPolicy: lazy
-Import-Package: org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="6.3.0",
+Import-Package: org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.maven;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.maven.util;version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.samples.contributor;version="6.3.0",
+ org.wso2.developerstudio.eclipse.samples.contributor;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)"
 Export-Package: org.wso2.developerstudio.eclipse.capp.maven;version="6.3.0",
  org.wso2.developerstudio.eclipse.capp.maven.sample;version="6.3.0",

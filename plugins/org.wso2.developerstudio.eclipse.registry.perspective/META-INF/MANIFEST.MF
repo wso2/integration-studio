@@ -10,8 +10,8 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.wso2.developerstudio.eclipse.dashboard.handlers,
  org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.registry.base;version="6.3.0",
- org.wso2.developerstudio.eclipse.registry.base.model;version="6.3.0",
- org.wso2.developerstudio.eclipse.registry.manager.remote;version="6.3.0",
- org.wso2.developerstudio.eclipse.registry.manager.remote.dialog;version="6.3.0",
- org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="6.3.0"
+ org.wso2.developerstudio.eclipse.registry.base;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.model;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.manager.remote;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.manager.remote.dialog;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="[6.0.0,7.0.0)"

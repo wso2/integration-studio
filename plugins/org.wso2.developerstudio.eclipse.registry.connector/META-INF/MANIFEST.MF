@@ -2,39 +2,39 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Connector
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.connector;singleton:=true
-Bundle-Version: 6.2.0.qualifier
+Bundle-Version: 6.3.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.capp.registry.connector.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.0.0",
- org.wso2.developerstudio.eclipse.libraries;bundle-version="6.2.0"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
+ org.wso2.developerstudio.eclipse.libraries;bundle-version="6.3.0"
 Bundle-ActivationPolicy: lazy
 Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.eclipse.core.resources,
  org.eclipse.ui.navigator,
  org.wso2.carbon.registry.core.exceptions,
- org.wso2.developerstudio.eclipse.capp.core.artifacts.configure;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.core.data;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.core.manifest;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.core.model;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.core.utils;version="6.2.0",
- org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.platform.core;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.platform.core.interfaces;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.registry.base.core;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.model;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.persistent;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.ui.dialog;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.util;version="6.2.0",
+ org.wso2.developerstudio.eclipse.capp.core.artifacts.configure;version="6.3.0",
+ org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="6.3.0",
+ org.wso2.developerstudio.eclipse.capp.core.data;version="6.3.0",
+ org.wso2.developerstudio.eclipse.capp.core.manifest;version="6.3.0",
+ org.wso2.developerstudio.eclipse.capp.core.model;version="6.3.0",
+ org.wso2.developerstudio.eclipse.capp.core.utils;version="6.3.0",
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core.interfaces;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.core;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.base.model;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.base.persistent;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.base.ui.dialog;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.base.util;version="6.3.0",
  org.wso2.developerstudio.eclipse.registry.core,
- org.wso2.developerstudio.eclipse.registry.core.exception;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.core.interfaces;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.libraries.utils;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.manager.local.utils;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="6.2.0",
- org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,6.2.0)",
+ org.wso2.developerstudio.eclipse.registry.core.exception;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.libraries.utils;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.manager.local.utils;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="6.3.0",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,7.0.0)",
  org.wso2.registry.checkin
-Export-Package: org.wso2.developerstudio.eclipse.capp.registry.connector.handler;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.registry.connector.model;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.registry.connector.utils;version="6.2.0"
+Export-Package: org.wso2.developerstudio.eclipse.capp.registry.connector.handler;version="6.3.0",
+ org.wso2.developerstudio.eclipse.capp.registry.connector.model;version="6.3.0",
+ org.wso2.developerstudio.eclipse.capp.registry.connector.utils;version="6.3.0"

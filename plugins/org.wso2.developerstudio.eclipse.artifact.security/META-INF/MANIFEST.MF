@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SecurityProject
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.security;singleton:=true
-Bundle-Version: 6.2.0.qualifier
+Bundle-Version: 6.3.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.security.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: WSO2 Inc.
-Export-Package: org.wso2.developerstudio.eclipse.security.project.model;version="6.2.0",
- org.wso2.developerstudio.eclipse.security.project.ui.form;version="6.2.0"
+Export-Package: org.wso2.developerstudio.eclipse.security.project.model;version="6.3.0",
+ org.wso2.developerstudio.eclipse.security.project.ui.form;version="6.3.0"
 Import-Package: org.apache.commons.lang,
  org.apache.woden,
  org.apache.woden.wsdl20,
@@ -20,22 +20,22 @@ Import-Package: org.apache.commons.lang,
  org.eclipse.ui.texteditor,
  org.eclipse.wst.sse.ui,
  org.wso2.carbon.registry.synchronization,
- org.wso2.developerstudio.eclipse.capp.core.artifacts;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="6.2.0",
- org.wso2.developerstudio.eclipse.capp.core.model;version="6.2.0",
- org.wso2.developerstudio.eclipse.general.project.artifact;version="6.2.0",
- org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="6.2.0",
- org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.platform.core.exception;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.platform.core.project.model;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.registry.core.interfaces;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.manager.local.utils;version="6.2.0",
- org.wso2.developerstudio.eclipse.usermgt.remote;version="6.2.0",
- org.wso2.developerstudio.eclipse.utils;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.utils.template;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,6.2.0)"
+ org.wso2.developerstudio.eclipse.capp.core.artifacts;version="6.3.0",
+ org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="6.3.0",
+ org.wso2.developerstudio.eclipse.capp.core.model;version="6.3.0",
+ org.wso2.developerstudio.eclipse.general.project.artifact;version="6.3.0",
+ org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="6.3.0",
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core.exception;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core.project.model;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core.utils;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="6.3.0",
+ org.wso2.developerstudio.eclipse.registry.manager.local.utils;version="6.3.0",
+ org.wso2.developerstudio.eclipse.usermgt.remote;version="6.3.0",
+ org.wso2.developerstudio.eclipse.utils;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.utils.template;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,7.0.0)"
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.forms,

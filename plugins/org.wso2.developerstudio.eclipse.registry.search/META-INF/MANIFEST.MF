@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Search
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.search;singleton:=true
-Bundle-Version: 6.2.0.qualifier
+Bundle-Version: 6.3.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.registry.search.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
@@ -15,13 +15,13 @@ Import-Package: org.eclipse.core.resources,
  org.wso2.carbon.registry.app,
  org.wso2.carbon.registry.core,
  org.wso2.carbon.registry.core.exceptions,
- org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,6.2.0)",
- org.wso2.developerstudio.eclipse.registry.base.core;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.editor.input;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.logger;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.managers;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.model;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.persistent;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.ui.controls;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.ui.editor;version="6.2.0",
- org.wso2.developerstudio.eclipse.registry.base.ui.util;version="6.2.0"
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.core;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.editor.input;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.logger;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.managers;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.model;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.persistent;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.ui.controls;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.ui.editor;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.registry.base.ui.util;version="[6.0.0,7.0.0)"

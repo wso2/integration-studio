@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.carbon.server-44.feature"
       label="Carbon 4.4.0 Server Feature"
-      version="6.2.0.qualifier"
+      version="6.3.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

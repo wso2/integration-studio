@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Humantaskeditor
 Bundle-SymbolicName: org.wso2.developerstudio.humantaskeditor;singleton:=true
-Bundle-Version: 6.2.0.qualifier
+Bundle-Version: 6.3.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.humantaskeditor.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -21,5 +21,5 @@ Bundle-ActivationPolicy: lazy
 Import-Package: 
  org.apache.commons.io,
  org.apache.commons.lang,
- org.wso2.developerstudio.eclipse.webui.core.editor;version="6.2.0",
- org.wso2.developerstudio.eclipse.webui.core.exception;version="6.2.0"
+ org.wso2.developerstudio.eclipse.webui.core.editor;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.webui.core.exception;version="[6.0.0,7.0.0)"

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.ds;singleton:=true
-Bundle-Version: 6.2.0.qualifier
+Bundle-Version: 6.3.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -22,12 +22,12 @@ Import-Package: org.eclipse.ltk.core.refactoring,
  org.eclipse.ltk.core.refactoring.participants,
  org.eclipse.text.edits,
  org.eclipse.ui.plugin,
- org.wso2.developerstudio.eclipse.distribution.project.export;version="6.2.0",
- org.wso2.developerstudio.eclipse.distribution.project.model;version="6.2.0",
- org.wso2.developerstudio.eclipse.distribution.project.util;version="6.2.0",
+ org.wso2.developerstudio.eclipse.distribution.project.export;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.distribution.project.model;version="[6.0.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.distribution.project.util;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.ds,
- org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.maven.util;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.platform.core.project.export.util;version="[4.1.0,5.0.0)",
- org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,5.0.0)"
+ org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.maven.util;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.platform.core.project.export.util;version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)"
 Bundle-Activator: org.wso2.developerstudio.eclipse.ds.Activator

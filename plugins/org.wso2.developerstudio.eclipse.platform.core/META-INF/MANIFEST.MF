@@ -2,30 +2,30 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Platform Core
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.platform.core;singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 4.3.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.platform.core.Activator
 Require-Bundle: org.eclipse.ltk.core.refactoring,
  org.eclipse.core.expressions,
  org.eclipse.osgi.services;bundle-version="3.5.0",
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.0.0",
- org.wso2.developerstudio.eclipse.utils;bundle-version="4.1.0";visibility:=reexport,
- org.wso2.developerstudio.eclipse.logging;bundle-version="4.1.0";visibility:=reexport,
- org.wso2.developerstudio.eclipse.maven;bundle-version="4.1.0";visibility:=reexport
-Export-Package: org.wso2.developerstudio.eclipse.platform.core;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.bundle;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.event;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.exception;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.interfaces;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.manifest;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.mediatype;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.model;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.nature;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.project.export;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.project.export.util;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.project.model;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.templates;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.types;version="4.2.0",
- org.wso2.developerstudio.eclipse.platform.core.utils;version="4.2.0"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.3.0",
+ org.wso2.developerstudio.eclipse.utils;bundle-version="4.3.0";visibility:=reexport,
+ org.wso2.developerstudio.eclipse.logging;bundle-version="4.3.0";visibility:=reexport,
+ org.wso2.developerstudio.eclipse.maven;bundle-version="4.3.0";visibility:=reexport
+Export-Package: org.wso2.developerstudio.eclipse.platform.core;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.bundle;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.event;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.exception;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.interfaces;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.manifest;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.mediatype;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.model;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.nature;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.project.export;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.project.export.util;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.project.model;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.templates;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.types;version="4.3.0",
+ org.wso2.developerstudio.eclipse.platform.core.utils;version="4.3.0"
 Import-Package: org.eclipse.core.internal.propertytester,
  org.eclipse.core.resources,
  org.eclipse.e4.core.contexts,

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: KernelLibraries
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.kernel.libraries;singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 4.3.0.qualifier
 Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.ui.workbench,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2";visibility:=reexport,
@@ -257,5 +257,5 @@ Export-Package: javax.wsdl;version="1.6.2.wso2v1",
  org.jaxen.saxpath.helpers;version="1.2.11.wso2v10",
  org.jaxen.util;version="1.2.11.wso2v10",
  org.jaxen.xom;version="1.2.11.wso2v10",
- org.wso2.developerstudio.eclipse.kernel.libraries;version="4.2.0"
+ org.wso2.developerstudio.eclipse.kernel.libraries;version="4.3.0"
 Bundle-ActivationPolicy: lazy

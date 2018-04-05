@@ -296,6 +296,9 @@ public class ProjectWizardSettings extends AbstractXMLDoc {
 			multiline = controlData.get("multiline").toLowerCase().equals("true");
 
 		}
+		if (controlData.containsKey("height")) {
+			projectOptionData.setTextboxHeight(Integer.parseInt(controlData.get("height")));
+		}
 		if (controlData.containsKey("listner")) {
 			listner = controlData.get("listner").toLowerCase().equals("true");
 		}

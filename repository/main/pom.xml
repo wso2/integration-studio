@@ -24,7 +24,7 @@
    <name>WSO2 Developer Studio Kernel - P2 Repository</name>
    <url>http://wso2.org</url>
    <properties>
-      <versionproperty>4.2.0</versionproperty>
+      <versionproperty>4.3.0</versionproperty>
    </properties>
    <build>
       <plugins>

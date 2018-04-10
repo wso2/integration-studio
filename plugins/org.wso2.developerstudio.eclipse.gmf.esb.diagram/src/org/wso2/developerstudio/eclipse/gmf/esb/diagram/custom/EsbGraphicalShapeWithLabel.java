@@ -211,7 +211,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
 
 		// Label to display description.
 		propertyNameLabel = new WrappingLabel();
-		propertyNameLabel.setText(getNodeName());
+		propertyNameLabel.setText("");
 		propertyNameLabel.setForegroundColor(new Color(null, 46, 46, 46));
 		propertyNameLabel.setFont(new Font(null, new FontData(
 				PROPERTY_NAME_LABEL_FONT, 7, SWT.NONE)));

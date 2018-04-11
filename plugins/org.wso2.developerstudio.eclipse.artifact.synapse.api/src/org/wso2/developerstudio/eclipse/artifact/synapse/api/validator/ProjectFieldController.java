@@ -78,11 +78,11 @@ public class ProjectFieldController extends AbstractFieldController {
 		List<String> updateFields = super.getUpdateFields(modelProperty, model);
 		if (modelProperty.equals(ArtifactConstants.ID_CREATE_PRJ)) {
 			updateFields.add(ArtifactConstants.ID_SAVE_LOCATION);
-		}else if (modelProperty.equals("import.file")) {
-			updateFields.add("available.apis"); 
-		}else if (modelProperty.equals("create.esb.prj")) {
+		} else if (modelProperty.equals("import.file")) {
+			updateFields.add("available.apis");
+		} else if (modelProperty.equals("create.esb.prj")) {
 			updateFields.add("save.location");
-		}else if (modelProperty.equals("api.versiontype")) {
+		} else if (modelProperty.equals("api.versiontype")) {
 			updateFields.add("api.version");
 		}
 		return updateFields;

@@ -517,8 +517,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createTargetEndpointTypeFromString(eDataType, initialValue);
 			case EsbPackage.CACHE_SEQUENCE_TYPE:
 				return createCacheSequenceTypeFromString(eDataType, initialValue);
-			case EsbPackage.CACHE_ACTION:
-				return createCacheActionFromString(eDataType, initialValue);
+			case EsbPackage.CACHE_TYPE:
+				return createCacheTypeFromString(eDataType, initialValue);
 			case EsbPackage.CACHE_PROTOCOL_TYPE:
 				return createCacheProtocolTypeFromString(eDataType, initialValue);
 			case EsbPackage.XQUERY_VARIABLE_TYPE:
@@ -787,8 +787,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertTargetEndpointTypeToString(eDataType, instanceValue);
 			case EsbPackage.CACHE_SEQUENCE_TYPE:
 				return convertCacheSequenceTypeToString(eDataType, instanceValue);
-			case EsbPackage.CACHE_ACTION:
-				return convertCacheActionToString(eDataType, instanceValue);
+			case EsbPackage.CACHE_TYPE:
+				return convertCacheTypeToString(eDataType, instanceValue);
 			case EsbPackage.CACHE_PROTOCOL_TYPE:
 				return convertCacheProtocolTypeToString(eDataType, instanceValue);
 			case EsbPackage.XQUERY_VARIABLE_TYPE:
@@ -5615,8 +5615,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CacheAction createCacheActionFromString(EDataType eDataType, String initialValue) {
-		CacheAction result = CacheAction.get(initialValue);
+	public CacheType createCacheTypeFromString(EDataType eDataType, String initialValue) {
+		CacheType result = CacheType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -5626,7 +5626,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertCacheActionToString(EDataType eDataType, Object instanceValue) {
+	public String convertCacheTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

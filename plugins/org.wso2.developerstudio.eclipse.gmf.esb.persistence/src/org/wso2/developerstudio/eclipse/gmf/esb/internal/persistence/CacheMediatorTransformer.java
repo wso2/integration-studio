@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2017 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2018 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,23 +17,22 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.wso2.carbon.mediator.cache.CacheManager;
+import org.wso2.carbon.mediator.cache.CachingConstants;
+import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheSequenceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.CacheType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
-import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
-import org.wso2.carbon.mediator.cache.CacheManager;
-import org.wso2.carbon.mediator.cache.CachingConstants;
 
 /**
  * Cache mediator transformer 
@@ -78,9 +77,9 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 		 */
 		org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator(new CacheManager());
 		setCommonProperties(cacheMediator, visualCache);
-		{
-            cacheMediator.setCollector(visualCache.isCollector());
-            if (visualCache.getCacheAction().getValue() == 0 || !visualCache.isCollector()) {
+		{   
+            if (visualCache.getCacheType().equals(CacheType.FINDER)) {
+            	cacheMediator.setCollector(false);
                 cacheMediator.setProtocolType(visualCache.getCacheProtocolType().getLiteral());
                 if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(visualCache.getCacheProtocolType().getLiteral())) {
                     if (StringUtils.isNotBlank(visualCache.getCacheProtocolMethods())) {
@@ -113,6 +112,8 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                 }
                 cacheMediator.setDigestGenerator(httpRequestHashGenerator);
 			    cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
+		    }else{
+            	cacheMediator.setCollector(true);
 		    }
 
             if (visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {

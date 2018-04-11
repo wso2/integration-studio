@@ -19,6 +19,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.VALID
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__SCHEMAS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__SOURCE_XPATH;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -61,6 +62,8 @@ public class ValidateMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 		
 		refreshEditPartMap();
 		EditPart mediatorFlow=getEditpart(VisualValidateMediator.getMediatorFlow());
+		
+		executeSetValueCommand(VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA, validateMediator.isCacheSchema());
 		
 		if(validateMediator.getSource() != null){
 			

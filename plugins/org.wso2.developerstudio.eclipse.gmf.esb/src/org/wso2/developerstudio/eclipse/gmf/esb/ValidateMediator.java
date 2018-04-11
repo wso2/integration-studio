@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getOnFailOutputConnector <em>On Fail Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getMediatorFlow <em>Mediator Flow</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#isEnableCacheSchema <em>Enable Cache Schema</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator()
@@ -209,5 +210,32 @@ public interface ValidateMediator extends Mediator {
 	 * @generated
 	 */
 	EList<ValidateResource> getResources();
+
+	/**
+	 * Returns the value of the '<em><b>Enable Cache Schema</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Enable Cache Schema</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enable Cache Schema</em>' attribute.
+	 * @see #setEnableCacheSchema(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getValidateMediator_EnableCacheSchema()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isEnableCacheSchema();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#isEnableCacheSchema <em>Enable Cache Schema</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Enable Cache Schema</em>' attribute.
+	 * @see #isEnableCacheSchema()
+	 * @generated
+	 */
+	void setEnableCacheSchema(boolean value);
 
 } // ValidateMediator

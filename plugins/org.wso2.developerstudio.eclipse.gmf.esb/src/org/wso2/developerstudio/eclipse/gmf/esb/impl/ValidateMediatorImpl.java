@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getOnFailOutputConnector <em>On Fail Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorImpl#isEnableCacheSchema <em>Enable Cache Schema</em>}</li>
  * </ul>
  *
  * @generated
@@ -133,6 +134,26 @@ public class ValidateMediatorImpl extends MediatorImpl implements ValidateMediat
 	 * @ordered
 	 */
 	protected EList<ValidateResource> resources;
+
+	/**
+	 * The default value of the '{@link #isEnableCacheSchema() <em>Enable Cache Schema</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableCacheSchema()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLE_CACHE_SCHEMA_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isEnableCacheSchema() <em>Enable Cache Schema</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableCacheSchema()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enableCacheSchema = ENABLE_CACHE_SCHEMA_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -415,6 +436,27 @@ public class ValidateMediatorImpl extends MediatorImpl implements ValidateMediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isEnableCacheSchema() {
+		return enableCacheSchema;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnableCacheSchema(boolean newEnableCacheSchema) {
+		boolean oldEnableCacheSchema = enableCacheSchema;
+		enableCacheSchema = newEnableCacheSchema;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA, oldEnableCacheSchema, enableCacheSchema));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -464,6 +506,8 @@ public class ValidateMediatorImpl extends MediatorImpl implements ValidateMediat
 				return getMediatorFlow();
 			case EsbPackage.VALIDATE_MEDIATOR__RESOURCES:
 				return getResources();
+			case EsbPackage.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA:
+				return isEnableCacheSchema();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -505,6 +549,9 @@ public class ValidateMediatorImpl extends MediatorImpl implements ValidateMediat
 				getResources().clear();
 				getResources().addAll((Collection<? extends ValidateResource>)newValue);
 				return;
+			case EsbPackage.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA:
+				setEnableCacheSchema((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -542,6 +589,9 @@ public class ValidateMediatorImpl extends MediatorImpl implements ValidateMediat
 			case EsbPackage.VALIDATE_MEDIATOR__RESOURCES:
 				getResources().clear();
 				return;
+			case EsbPackage.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA:
+				setEnableCacheSchema(ENABLE_CACHE_SCHEMA_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -571,8 +621,26 @@ public class ValidateMediatorImpl extends MediatorImpl implements ValidateMediat
 				return mediatorFlow != null;
 			case EsbPackage.VALIDATE_MEDIATOR__RESOURCES:
 				return resources != null && !resources.isEmpty();
+			case EsbPackage.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA:
+				return enableCacheSchema != ENABLE_CACHE_SCHEMA_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (enableCacheSchema: ");
+		result.append(enableCacheSchema);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ValidateMediatorImpl

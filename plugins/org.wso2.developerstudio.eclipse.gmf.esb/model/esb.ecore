@@ -2451,6 +2451,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
         eType="#//ValidateResource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enableCacheSchema" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValidateResource" eSuperTypes="#//AbstractLocationKeyResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="ValidateFeature" eSuperTypes="#//AbstractBooleanFeature"/>

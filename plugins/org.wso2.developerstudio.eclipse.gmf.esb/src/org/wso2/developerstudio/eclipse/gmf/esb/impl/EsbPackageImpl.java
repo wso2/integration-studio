@@ -8427,6 +8427,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getValidateMediator_EnableCacheSchema() {
+		return (EAttribute)validateMediatorEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getValidateResource() {
 		return validateResourceEClass;
 	}
@@ -20429,6 +20438,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(validateMediatorEClass, VALIDATE_MEDIATOR__ON_FAIL_OUTPUT_CONNECTOR);
 		createEReference(validateMediatorEClass, VALIDATE_MEDIATOR__MEDIATOR_FLOW);
 		createEReference(validateMediatorEClass, VALIDATE_MEDIATOR__RESOURCES);
+		createEAttribute(validateMediatorEClass, VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA);
 
 		validateResourceEClass = createEClass(VALIDATE_RESOURCE);
 
@@ -22846,6 +22856,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getValidateMediator_OnFailOutputConnector(), this.getValidateMediatorOnFailOutputConnector(), null, "onFailOutputConnector", null, 0, 1, ValidateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getValidateMediator_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, ValidateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getValidateMediator_Resources(), this.getValidateResource(), null, "resources", null, 0, -1, ValidateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getValidateMediator_EnableCacheSchema(), ecorePackage.getEBoolean(), "enableCacheSchema", "true", 0, 1, ValidateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(validateResourceEClass, ValidateResource.class, "ValidateResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

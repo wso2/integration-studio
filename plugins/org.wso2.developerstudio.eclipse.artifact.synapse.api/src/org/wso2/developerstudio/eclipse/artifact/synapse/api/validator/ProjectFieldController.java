@@ -82,6 +82,8 @@ public class ProjectFieldController extends AbstractFieldController {
 			updateFields.add("available.apis"); 
 		}else if (modelProperty.equals("create.esb.prj")) {
 			updateFields.add("save.location");
+		}else if (modelProperty.equals("api.versiontype")) {
+			updateFields.add("api.version");
 		}
 		return updateFields;
 	}
@@ -99,6 +101,12 @@ public class ProjectFieldController extends AbstractFieldController {
 		if (modelProperty.equals("available.apis")) {
 			List<OMElement> availableAPIsList = ((APIArtifactModel) model).getAvailableAPIslist();
 			visibleField = (availableAPIsList != null && availableAPIsList.size() > 0);
+		} else if (modelProperty.equals("api.version")) {
+			visibleField = false;
+			if (((APIArtifactModel) model).getVersionType() == ArtifactConstants.API_VERSION_TYPE_CONTEXT
+					|| ((APIArtifactModel) model).getVersionType() == ArtifactConstants.API_VERSION_TYPE_URL) {
+				visibleField = true;
+			}
 		}
 		return visibleField;
 	}

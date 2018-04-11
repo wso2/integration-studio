@@ -18,7 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheId <em>Cache Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheProtocolType <em>Cache Protocol Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheAction <em>Cache Action</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheType <em>Cache Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getHashGenerator <em>Hash Generator</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheTimeout <em>Cache Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getMaxMessageSize <em>Max Message Size</em>}</li>
@@ -34,7 +34,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getResponseCodes <em>Response Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isEnableCacheControl <em>Enable Cache Control</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isIncludeAgeHeader <em>Include Age Header</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isCollector <em>Collector</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator()
@@ -98,34 +97,34 @@ public interface CacheMediator extends Mediator {
 	void setCacheProtocolType(CacheProtocolType value);
 
 	/**
-	 * Returns the value of the '<em><b>Cache Action</b></em>' attribute.
+	 * Returns the value of the '<em><b>Cache Type</b></em>' attribute.
 	 * The default value is <code>"FINDER"</code>.
-	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheAction}.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cache Action</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Cache Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cache Action</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheAction
-	 * @see #setCacheAction(CacheAction)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheAction()
+	 * @return the value of the '<em>Cache Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheType
+	 * @see #setCacheType(CacheType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheType()
 	 * @model default="FINDER"
 	 * @generated
 	 */
-	CacheAction getCacheAction();
+	CacheType getCacheType();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheAction <em>Cache Action</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheType <em>Cache Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cache Action</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheAction
-	 * @see #getCacheAction()
+	 * @param value the new value of the '<em>Cache Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheType
+	 * @see #getCacheType()
 	 * @generated
 	 */
-	void setCacheAction(CacheAction value);
+	void setCacheType(CacheType value);
 
 	/**
 	 * Returns the value of the '<em><b>Hash Generator</b></em>' attribute.
@@ -528,32 +527,5 @@ public interface CacheMediator extends Mediator {
 	 * @generated
 	 */
 	void setIncludeAgeHeader(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Collector</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Collector</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Collector</em>' attribute.
-	 * @see #setCollector(boolean)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_Collector()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isCollector();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#isCollector <em>Collector</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Collector</em>' attribute.
-	 * @see #isCollector()
-	 * @generated
-	 */
-	void setCollector(boolean value);
 
 } // CacheMediator

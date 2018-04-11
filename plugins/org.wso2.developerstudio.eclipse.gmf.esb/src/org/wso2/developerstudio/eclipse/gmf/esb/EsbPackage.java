@@ -19007,13 +19007,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int VALIDATE_MEDIATOR__RESOURCES = MEDIATOR_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Enable Cache Schema</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA = MEDIATOR_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Validate Mediator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALIDATE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 8;
+	int VALIDATE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateResourceImpl <em>Validate Resource</em>}' class.
@@ -31822,6 +31831,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getValidateMediator_Resources();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#isEnableCacheSchema <em>Enable Cache Schema</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enable Cache Schema</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator#isEnableCacheSchema()
+	 * @see #getValidateMediator()
+	 * @generated
+	 */
+	EAttribute getValidateMediator_EnableCacheSchema();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource <em>Validate Resource</em>}'.
@@ -48626,6 +48646,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference VALIDATE_MEDIATOR__RESOURCES = eINSTANCE.getValidateMediator_Resources();
+
+		/**
+		 * The meta object literal for the '<em><b>Enable Cache Schema</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA = eINSTANCE.getValidateMediator_EnableCacheSchema();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateResourceImpl <em>Validate Resource</em>}' class.

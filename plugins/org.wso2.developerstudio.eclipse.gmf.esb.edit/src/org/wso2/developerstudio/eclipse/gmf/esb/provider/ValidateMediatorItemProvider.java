@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -62,6 +63,7 @@ public class ValidateMediatorItemProvider
 			
 			addSchemasPropertyDescriptor(object);
 			addSourceXpathPropertyDescriptor(object);
+			addEnableCacheSchemaPropertyDescriptor(object);
 			addFeaturesPropertyDescriptor(object);
 			addResourcesPropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
@@ -158,6 +160,28 @@ public class ValidateMediatorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Enable Cache Schema feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnableCacheSchemaPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ValidateMediator_enableCacheSchema_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ValidateMediator_enableCacheSchema_feature", "_UI_ValidateMediator_type"),
+				 EsbPackage.Literals.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -236,6 +260,9 @@ public class ValidateMediatorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ValidateMediator.class)) {
+			case EsbPackage.VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case EsbPackage.VALIDATE_MEDIATOR__SOURCE_XPATH:
 			case EsbPackage.VALIDATE_MEDIATOR__FEATURES:
 			case EsbPackage.VALIDATE_MEDIATOR__SCHEMAS:

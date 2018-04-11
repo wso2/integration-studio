@@ -1517,7 +1517,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheAction"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/hashGenerator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheTimeout"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/collector"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/maxMessageSize"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheProtocolMethods"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/maxEntryCount"/>
@@ -1531,6 +1530,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/responseCodes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/enableCacheControl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/includeAgeHeader"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/collector"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CacheMediatorOutputConnector"/>
@@ -2045,6 +2045,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ValidateMediator/onFailOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ValidateMediator/mediatorFlow"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ValidateMediator/resources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ValidateMediator/enableCacheSchema"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//ValidateResource"/>
     <genClasses ecoreClass="esb.ecore#//ValidateFeature"/>

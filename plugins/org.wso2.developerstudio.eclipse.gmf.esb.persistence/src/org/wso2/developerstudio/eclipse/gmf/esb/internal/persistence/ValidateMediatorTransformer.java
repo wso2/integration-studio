@@ -27,6 +27,7 @@ import org.apache.synapse.util.resolver.ResourceMap;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -102,7 +103,14 @@ public class ValidateMediatorTransformer  extends AbstractEsbNodeTransformer {
 		}
 
 		List<Value> valueList = new ArrayList<Value>();
-		for (ValidateSchema schema : visualValidateMediator.getSchemas()) {
+		EList<ValidateSchema> schemaList = visualValidateMediator.getSchemas();
+		
+		if (schemaList.isEmpty()) {
+			throw new TransformerException("Schema list of the validation mediator cannot be empty. Please specify one"
+					+ " or more schema for the validation mediator.");
+		}
+		
+		for (ValidateSchema schema : schemaList) {
 
 			if (schema.getValidateSchemaKeyType().getLiteral()
 					.equals(KeyType.STATIC.getLiteral())) {
@@ -143,6 +151,11 @@ public class ValidateMediatorTransformer  extends AbstractEsbNodeTransformer {
 		newOnFailInfo.setCurrentProxy(information.getCurrentProxy());
 		newOnFailInfo.setParentSequence(onFailMediatorList);
 		doTransform(newOnFailInfo, visualValidateMediator.getOnFailOutputConnector());
+		
+		if (onFailMediatorList.getList().isEmpty()) {
+			throw new TransformerException("Mediator list within Onfail sequence of validation mediator cannot be empty. Please specify one"
+					+ " or more mediators for Onfail sequence of the validation mediator.");
+		}
 		validateMediator.addAll(onFailMediatorList.getList());
 	
 		

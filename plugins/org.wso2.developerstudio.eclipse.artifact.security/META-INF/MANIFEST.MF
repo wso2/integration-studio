@@ -42,6 +42,6 @@ Require-Bundle: org.eclipse.ui,
  org.wso2.developerstudio.eclipse.platform.ui,
  org.wso2.developerstudio.eclipse.maven,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2",
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

@@ -47,7 +47,7 @@
 				<checksumPolicy>ignore</checksumPolicy>
 			</releases>
 			<id>Eclipse-p2-repo</id>
-			<url>http://download.eclipse.org/releases/mars</url>
+			<url>http://download.eclipse.org/releases/oxygen/</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>

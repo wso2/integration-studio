@@ -102,26 +102,17 @@
             <id>DevS-Deps-p2-Repository</id>
             <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/other/p2/</url>
             <layout>p2</layout>
-        </repository>       <repository>
+        </repository>       
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-Oxygen-p2-Repository</id>
-            <url>file:/home/sohani/Music/P2/test</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/oxygen/p2/</url>
             <layout>p2</layout>
         </repository>
-         <!--repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>Eclipse-modeling-gmp-gmf-tooling-p2-repo</id>
-            <url>http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases</url>
-            <layout>p2</layout>
-        </repository-->
        	<repository>
             <releases>
                 <enabled>true</enabled>

@@ -25,10 +25,10 @@
 	<relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
-    <artifactId>developer-studio-ei-eclipse-jee-mars-linux-gtk</artifactId>
+    <artifactId>developer-studio-ei-eclipse-jee-oxygen-linux-gtk-x86_64</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Eclipse EI distribution-linux-gtk</name>
+    <name>WSO2 Developer Studio Eclipse EI distribution-linux-gtk-x86_64</name>
     <url>http://wso2.org</url>
     <repositories>
     	<repository>
@@ -43,7 +43,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/releases/</url>
             <layout>p2</layout>
         </repository>
     </repositories>
@@ -89,8 +89,8 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-mars-2-linux-gtk</artifactId>
-                                    <version>4.5.2</version>
+                                    <artifactId>eclipse-jee-oxygen-3a-linux-gtk-x86_64</artifactId>
+                                    <version>4.7.3a</version>
                                     <type>tar.gz</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target</outputDirectory>

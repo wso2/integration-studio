@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.validation,
  org.eclipse.emf.validation.ui,
  org.eclipse.emf.query,
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.eclipse.ltk.core.refactoring,

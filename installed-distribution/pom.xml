@@ -54,7 +54,7 @@
     <modules>
         <module>developer-studio-ei-eclipse-jee-oxygen-linux-gtk</module>
         <module>developer-studio-ei-eclipse-jee-oxygen-linux-gtk-x86_64</module>
-        <module>developer-studio-ei-eclipse-jee-oxygen-macosx-cocoa-x86_64</module>
+        <!--module>developer-studio-ei-eclipse-jee-oxygen-macosx-cocoa-x86_64</module-->
         <module>developer-studio-ei-eclipse-jee-oxygen-win32</module>
         <module>developer-studio-ei-eclipse-jee-oxygen-win64-x86_64</module>
     </modules>

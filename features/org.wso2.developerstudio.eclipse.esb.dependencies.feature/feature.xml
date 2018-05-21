@@ -61,7 +61,7 @@
          id="org.apache.batik.css"
          download-size="0"
          install-size="0"
-         version="1.8.0.v20170214-1941"
+         version="1.6.0.v201011041432"
          unpack="false"/>
 <plugin
          id="org.apache.batik.dom.svg"
@@ -109,13 +109,13 @@
          id="org.apache.batik.util.gui"
          download-size="0"
          install-size="0"
-         version="1.8.0.v20170214-1941"
+         version="1.6.0.v201011041432"
          unpack="false"/>
 <plugin
          id="org.apache.batik.util"
          download-size="0"
          install-size="0"
-         version="1.8.0.v20170214-1941"
+         version="1.6.0.v201011041432"
          unpack="false"/>
 <plugin
          id="org.apache.batik.xml"

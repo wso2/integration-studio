@@ -148,14 +148,6 @@
         			<phase>package</phase>
         			<configuration>
             				<tasks>
-						<replace token="512m" value="1024m"
-                         dir="target/Eclipse.app/Contents/Eclipse">
-                                                        <include name="**/eclipse.ini"/>
-                                                </replace>
-						<replace token="40m" value="512m"
-                         dir="target/Eclipse.app/Contents/Eclipse">
-                                                        <include name="**/eclipse.ini"/>
-                                                </replace>
 						<replace token="256m" value="512m"
                          dir="target/Eclipse.app/Contents/Eclipse">
                                                         <include name="**/eclipse.ini"/>

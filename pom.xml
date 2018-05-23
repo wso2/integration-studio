@@ -127,7 +127,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/releases/4.1.0-201606031446/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/releases/6.2.0-201803151238/</url>
             <layout>p2</layout>
         </repository>
 
@@ -138,7 +138,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-ESB-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/esb-tools/releases/5.0.0/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/esb-tools/releases/6.2.0/</url>
             <layout>p2</layout>
         </repository>
 
@@ -149,7 +149,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/kernel-p2-4.1.0.201804040908/</url>
             <layout>p2</layout>
         </repository>
 	<repository>

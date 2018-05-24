@@ -152,7 +152,7 @@
             <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/kernel-p2-4.1.0.201804040908/</url>
             <layout>p2</layout>
         </repository>
-	<repository>
+	<!--repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -161,7 +161,7 @@
             <id>DevS-Platform-p2-updates-Repository</id>
             <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/updates/</url>
             <layout>p2</layout>
-        </repository>
+        </repository-->
         <repository>
             <releases>
                 <enabled>true</enabled>

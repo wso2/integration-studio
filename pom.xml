@@ -28,9 +28,9 @@
         <!--<module>installed-distribution</module>-->
     </modules>
     <scm>
-        <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>
-        <developerConnection>scm:git:https://github.com/wso2/developer-studio.git</developerConnection>
-        <url>https://github.com/wso2/developer-studio.git</url>
+        <connection>scm:git:https://github.com/wso2/devstudio-tooling-apim.git</connection>
+        <developerConnection>scm:git:https://github.com/wso2/devstudio-tooling-apim.git</developerConnection>
+        <url>https://github.com/wso2/devstudio-tooling-apim.git</url>
     </scm>
     <distributionManagement>
         <repository>

@@ -38,7 +38,7 @@ Import-Package: javax.activation;version="1.1.0",
  org.wso2.developerstudio.eclipse.logging.core;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.ui;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.ui.preferences;version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.platform.ui.utils;version="4.1.0"
+ org.wso2.developerstudio.eclipse.platform.ui.utils;version="[4.1.0,7.0.0)"
 Export-Package: org.wso2.carbon.core.services.authentication,
  org.wso2.carbon.registry.resource.services,
  org.wso2.developerstudio.eclipse.registry.resource.authorization;version="6.3.0"

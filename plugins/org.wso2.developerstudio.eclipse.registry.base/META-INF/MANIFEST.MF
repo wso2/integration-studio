@@ -7,7 +7,7 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.registry.base.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.libraries,
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)"
 Export-Package: org.wso2.carbon.authenticator.stub,
  org.wso2.carbon.registry.ws.client.registry,
  org.wso2.carbon.registry.ws.stub.xsd,

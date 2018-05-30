@@ -53,10 +53,8 @@
                <execution>
                   <phase>install</phase>
                   <configuration>
-                     <target>
-                        <copy file="${project.build.directory}/${project.artifactId}-${project.version}.zip" 
-                            tofile="${project.build.directory}/${project.artifactId}-${versionproperty}-${build.date}.zip" />
-                        <delete file="${project.build.directory}/${project.artifactId}-${project.version}.zip"/>
+                  <target>
+                        <copy file="${project.build.directory}/${artifactId}-${version}.zip" tofile="${project.build.directory}/${artifactId}-${versionproperty}-${build.date}.zip" />
                      </target>
                   </configuration>
                   <goals>

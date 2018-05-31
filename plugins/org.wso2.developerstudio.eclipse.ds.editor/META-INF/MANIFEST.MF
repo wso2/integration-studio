@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.expressions,
  org.eclipse.emf.transaction,
  org.wso2.developerstudio.eclipse.ds,
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.commons.lang,
  org.eclipse.datatools.connectivity,
@@ -53,7 +53,7 @@ Import-Package: org.apache.commons.lang,
  org.wso2.developerstudio.eclipse.platform.ui.dialogs;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.registry.core;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.usermgt.remote;version="4.1.0",
+ org.wso2.developerstudio.eclipse.usermgt.remote;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.data;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

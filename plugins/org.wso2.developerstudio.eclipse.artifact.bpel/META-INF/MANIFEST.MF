@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.wsdl,
  org.eclipse.wst.common.modulecore,
  org.wso2.developerstudio.eclipse.libraries;bundle-version="[6.0.0,7.0.0)",
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
  org.eclipse.bpel.apache.ode.deploy.ui;bundle-version="3.5.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -79,7 +79,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>Eclipse-p2-repo</id>
-            <url>http://download.eclipse.org/releases/mars/</url>
+            <url>http://download.eclipse.org/releases/oxygen/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -108,8 +108,8 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>DevS-Deps-Mars-p2-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/mars/p2/
+            <id>DevS-Deps-Oxygen-p2-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/oxygen/p2/
             </url>
             <layout>p2</layout>
         </repository>

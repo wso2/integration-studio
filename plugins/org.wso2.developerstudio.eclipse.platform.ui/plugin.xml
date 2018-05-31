@@ -38,22 +38,6 @@
         </initializer>
     </extension>
 
-    <extension point="org.eclipse.ui.menus">
-        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-            <menu label="Developer Studio"
-                  mnemonic="C"
-                  id="org.wso2.developerstudio.eclipse.platform.ui.main">
-                <command
-                        commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.sampleCommand"
-                        icon="icons/carbon-studio-small-logo.gif"
-                        id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.sampleCommand"
-                        label="About"
-                        tooltip="About Developer Studio">
-                </command>
-            </menu>
-        </menuContribution>
-    </extension>
-
     <extension
             point="org.eclipse.ui.commands">
         <category

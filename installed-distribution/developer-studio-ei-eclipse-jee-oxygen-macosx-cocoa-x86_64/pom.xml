@@ -25,10 +25,10 @@
 	<relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
-    <artifactId>developer-studio-ei-eclipse-jee-mars-linux-gtk-x86_64</artifactId>
+    <artifactId>developer-studio-ei-eclipse-jee-oxygen-macosx-cocoa-x86_64</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <name>WSO2 Developer Studio Eclipse EI distribution-linux-gtk-x86_64</name>
+    <name>WSO2 Developer Studio Eclipse EI distribution-macosx-cocoa-x86_64</name>
     <url>http://wso2.org</url>
     <repositories>
     	<repository>
@@ -43,7 +43,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-p2-Repository</id>
-            <url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/4.0.0/kernel/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/releases/</url>
             <layout>p2</layout>
         </repository>
     </repositories>
@@ -89,8 +89,8 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-mars-2-linux-gtk-x86_64</artifactId>
-                                    <version>4.5.2</version>
+                                    <artifactId>eclipse-jee-oxygen-3a-macosx-cocoa-x86_64</artifactId>
+                                    <version>4.7.3a</version>
                                     <type>tar.gz</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target</outputDirectory>
@@ -122,7 +122,7 @@
 						<java classname="org.eclipse.equinox.launcher.Main" fork="true"
 							spawn="false" failonerror="true" maxmemory="1024m">
 						<classpath>
-							<fileset dir="${project.basedir}/target/eclipse/plugins" includes="org.eclipse.equinox.launcher*.jar" />
+							<fileset dir="${project.basedir}/target/Eclipse.app/Contents/Eclipse/plugins" includes="org.eclipse.equinox.launcher*.jar" />
 						</classpath>
 						<arg value="-nosplash" />
 						<arg value="-application" />
@@ -130,10 +130,9 @@
 						<arg value="-repository" />
 						<arg value="file:${project.basedir}/target/p2-repo" />
 						<arg value="-destination" />
-						<arg value="${project.basedir}/target/eclipse" />
+						<arg value="${project.basedir}/target/Eclipse.app/Contents/Eclipse" />
 						<arg value="-installIU" />
 						<arg value="Q:everything.select(x | x.properties ~= filter('(org.eclipse.equinox.p2.type.group=true)'))"/>
-					
 					</java>
 					</tasks>
 				</configuration>
@@ -149,16 +148,8 @@
         			<phase>package</phase>
         			<configuration>
             				<tasks>
-						<replace token="512m" value="1024m"
-                         dir="target/eclipse">
-                                                        <include name="**/eclipse.ini"/>
-                                                </replace>
-						<replace token="40m" value="512m"
-                         dir="target/eclipse">
-                                                        <include name="**/eclipse.ini"/>
-                                                </replace>
 						<replace token="256m" value="512m"
-                         dir="target/eclipse">
+                         dir="target/Eclipse.app/Contents/Eclipse">
                                                         <include name="**/eclipse.ini"/>
                                                 </replace>
             				</tasks>

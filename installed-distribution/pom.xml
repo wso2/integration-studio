@@ -52,11 +52,11 @@
         </dependencies>
     </dependencyManagement>    
     <modules>
-        <module>developer-studio-ei-eclipse-jee-mars-linux-gtk</module>
-        <module>developer-studio-ei-eclipse-jee-mars-linux-gtk-x86_64</module>
-        <module>developer-studio-ei-eclipse-jee-mars-macosx-cocoa-x86_64</module>
-        <module>developer-studio-ei-eclipse-jee-mars-win32</module>
-        <module>developer-studio-ei-eclipse-jee-mars-win64-x86_64</module>
+        <module>developer-studio-ei-eclipse-jee-oxygen-linux-gtk</module>
+        <module>developer-studio-ei-eclipse-jee-oxygen-linux-gtk-x86_64</module>
+        <module>developer-studio-ei-eclipse-jee-oxygen-macosx-cocoa-x86_64</module>
+        <module>developer-studio-ei-eclipse-jee-oxygen-win32</module>
+        <module>developer-studio-ei-eclipse-jee-oxygen-win64-x86_64</module>
     </modules>
     <build>
 		<plugins>
@@ -72,7 +72,7 @@
 						</goals>
 						<configuration>
                                                         <commandlineArgs>${localRepositoryPath}</commandlineArgs>
-							<executable>${basedir}/scripts/installer-script-mars.sh</executable>
+							<executable>${basedir}/scripts/installer-script-oxygen.sh</executable>
 						</configuration>
 					</execution>
 				</executions>

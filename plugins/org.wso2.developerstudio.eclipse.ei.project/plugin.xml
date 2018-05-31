@@ -19,4 +19,27 @@
             server.display.name="WSO2 Enterprise Integrator 6.3.0">
       </product.server>
     </extension>
+    <extension-point id="org.wso2.developerstudio.aboutDialog.contributor" name="AboutDialogContributor" schema="schema/org.wso2.developerstudio.aboutDialog.contributor.exsd"/>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+            <menu label="Developer Studio"
+                  mnemonic="C"
+                  id="org.wso2.developerstudio.eclipse.platform.ui.main">
+                <command
+                        commandId="org.wso2.developerstudio.eclipse.ei.commands.sampleCommand"
+                        icon="icons/carbon-studio-small-logo.gif"
+                        id="org.wso2.developerstudio.eclipse.ei.toolbars.sampleCommand"
+                        label="About"
+                        tooltip="About Developer Studio">
+                </command>
+            </menu>
+        </menuContribution>
+    </extension>
+     <extension
+            point="org.eclipse.ui.handlers">
+        <handler
+                class="org.wso2.developerstudio.eclipse.ei.project.DeveloperStudioAboutPageHandler"
+                commandId="org.wso2.developerstudio.eclipse.ei.commands.sampleCommand">
+        </handler>
+    </extension>
 </plugin>

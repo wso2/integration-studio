@@ -54,7 +54,7 @@ public class AboutDialog extends Dialog {
     }
 
 	protected Point getInitialSize() {
-		return new Point(logoWidth + 70, logoHeight * 4-50);
+		return new Point(logoWidth + 70, logoHeight * 4 - 100);
 	}
 
 	@Override
@@ -78,16 +78,16 @@ public class AboutDialog extends Dialog {
 		parent.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		Composite dialogArea = (Composite) super.createDialogArea(parent);
 		dialogArea.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		dialogArea.setSize(new Point(logoWidth, logoHeight * 4));
+		dialogArea.setSize(new Point(logoWidth, logoHeight * 4 - 70));
 
 		Composite composite = new Composite(dialogArea, SWT.BORDER);
 		composite.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		composite.setLayout(new GridLayout(1, false));
-		composite.setSize(new Point(logoWidth + 70, logoHeight * 4));
+		composite.setSize(new Point(logoWidth + 70, logoHeight * 4 - 70));
 		
 		GridData gd_composite = new GridData(SWT.CENTER, SWT.TOP, true, true, 1, 1);
 		gd_composite.widthHint = logoWidth + 70;
-		gd_composite.heightHint = logoHeight * 4;
+		gd_composite.heightHint = logoHeight * 4 - 70;
 		 
 		composite.setLayoutData(gd_composite);
 

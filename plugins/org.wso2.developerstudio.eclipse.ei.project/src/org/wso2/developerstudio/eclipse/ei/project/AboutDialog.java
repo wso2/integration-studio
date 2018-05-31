@@ -40,7 +40,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 public class AboutDialog extends Dialog {
 
 	private static final String KERNAL_MSG = "Powered by - WSO2 Enterprise Integrator Tooling Version ";
-	private static final String VERSION = "3.0.0";
+	private static final String VERSION = "6.3.0";
 	private static final String LICENSED = "Licensed under the Apache License, Version 2.0";
 	private static final String URL = "https://wso2.com/integration/";
 	private static final String EXT_POINT = "org.wso2.developerstudio.aboutDialog.contributor";
@@ -102,7 +102,7 @@ public class AboutDialog extends Dialog {
 		Label lblVersion = new Label(composite, SWT.NONE);
 		lblVersion.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_BORDER));
 		lblVersion.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		lblVersion.setText(KERNAL_MSG.concat(getVersion()));
+		lblVersion.setText(KERNAL_MSG.concat(VERSION));
 		
 		Label lblLicense = new Label(composite, SWT.NONE);
 		lblLicense.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
@@ -149,16 +149,6 @@ public class AboutDialog extends Dialog {
 		parent.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		Button button = createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
 		button.setFocus();
-	}
-
-	private String getVersion() {
-		String version = VERSION;
-		try {	
-			version = Platform.getBundle(Activator.PLUGIN_ID).getHeaders().get("Bundle-Version");
-			version = version.replaceAll(".qualifier", " ");
-		} catch (Exception ignored) {
-		}
-		return version;
 	}
 
 }

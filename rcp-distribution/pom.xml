@@ -29,7 +29,7 @@
 	<properties>
 		<kernel.rcp.version>4.2.0-alpha</kernel.rcp.version>
 		<platform.p2.version>4.2.0-SNAPSHOT</platform.p2.version>
-		<eclipse.deps.p2.url>http://builder1.us1.wso2.org/~developerstudio/developer-studio-kernel/dependencies/eclipse/mars/p2/</eclipse.deps.p2.url>
+		<eclipse.deps.p2.url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/oxygen/p2/</eclipse.deps.p2.url>
 		<kernel.rcp.eclipse.dir>${project.basedir}/target/kernel-rcp</kernel.rcp.eclipse.dir>
 	</properties>
 	<modules>

@@ -39,8 +39,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
 public class AboutDialog extends Dialog {
 
-	private static final String KERNAL_MSG = "Powered by - WSO2 Enterprise Integrator Tooling Version ";
-	private static final String VERSION = "6.3.0";
+	private static final String VERSION = "Version : 6.3.0";
 	private static final String LICENSED = "Licensed under the Apache License, Version 2.0";
 	private static final String URL = "https://wso2.com/integration/";
 	private static final String EXT_POINT = "org.wso2.developerstudio.aboutDialog.contributor";
@@ -54,7 +53,7 @@ public class AboutDialog extends Dialog {
     }
 
 	protected Point getInitialSize() {
-		return new Point(logoWidth + 70, logoHeight * 4 - 100);
+		return new Point(logoWidth + 60, logoHeight * 4 - 90);
 	}
 
 	@Override
@@ -78,16 +77,16 @@ public class AboutDialog extends Dialog {
 		parent.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		Composite dialogArea = (Composite) super.createDialogArea(parent);
 		dialogArea.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		dialogArea.setSize(new Point(logoWidth, logoHeight * 4 - 70));
+		dialogArea.setSize(new Point(logoWidth, logoHeight * 4 - 60));
 
 		Composite composite = new Composite(dialogArea, SWT.BORDER);
 		composite.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		composite.setLayout(new GridLayout(1, false));
-		composite.setSize(new Point(logoWidth + 70, logoHeight * 4 - 70));
+		composite.setSize(new Point(logoWidth + 45, logoHeight * 4 - 60));
 		
 		GridData gd_composite = new GridData(SWT.CENTER, SWT.TOP, true, true, 1, 1);
-		gd_composite.widthHint = logoWidth + 70;
-		gd_composite.heightHint = logoHeight * 4 - 70;
+		gd_composite.widthHint = logoWidth + 45;
+		gd_composite.heightHint = logoHeight * 4 - 60;
 		 
 		composite.setLayoutData(gd_composite);
 
@@ -100,15 +99,24 @@ public class AboutDialog extends Dialog {
 		lblDevsLogo.setLayoutData(gdDevsLogo);
 
 		Label lblVersion = new Label(composite, SWT.NONE);
+		GridData versionGrid = new GridData();
+		versionGrid.horizontalIndent = 25;
+		lblVersion.setLayoutData(versionGrid);
 		lblVersion.setForeground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_BORDER));
 		lblVersion.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		lblVersion.setText(KERNAL_MSG.concat(VERSION));
+		lblVersion.setText(VERSION);
 		
 		Label lblLicense = new Label(composite, SWT.NONE);
+		GridData licenseGrid = new GridData();
+		licenseGrid.horizontalIndent = 25;
+		lblLicense.setLayoutData(licenseGrid);
 		lblLicense.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblLicense.setText(LICENSED);
 
 		Link linkDevStudioUrl = new Link(composite, SWT.NONE);
+		GridData urlGrid = new GridData();
+		urlGrid.horizontalIndent = 25;
+		linkDevStudioUrl.setLayoutData(urlGrid);
 		linkDevStudioUrl.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		linkDevStudioUrl.setText("Visit :<a>" + URL + "</a>");
 		linkDevStudioUrl.addListener(SWT.Selection, new Listener() {

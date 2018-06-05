@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
@@ -267,9 +268,21 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 				}
 			}
 			
-			//Sets an empty string value for sequence and onerror sequence
-			inboundEndpoint.setInjectingSeq("");
-			inboundEndpoint.setOnErrorSeq("");
+			if (isSequenceMandatoryProtocol(ieModel.getSelectedInboundEndpointType()) && ieModel.isGenerateSequence()) {
+				// Generate sequence and error sequence
+				inboundEndpoint.setInjectingSeq("Sequence");
+				inboundEndpoint.setOnErrorSeq("Sequence");
+			} else if (isSequenceMandatoryProtocol(ieModel.getSelectedInboundEndpointType())
+					&& StringUtils.isNotEmpty(ieModel.getSequence())
+					&& StringUtils.isNotEmpty(ieModel.getErrorSequence())) {
+				// Set defined sequence and error sequence
+				inboundEndpoint.setInjectingSeq(ieModel.getSequence());
+				inboundEndpoint.setOnErrorSeq(ieModel.getErrorSequence());
+			} else {
+				// Set empty sequence and error sequence
+				inboundEndpoint.setInjectingSeq("");
+				inboundEndpoint.setOnErrorSeq("");
+			}
 			
 			OMElement inboundEndpointOmElement = InboundEndpointSerializer.serializeInboundEndpoint(inboundEndpoint);
 			FileUtils.writeContent(inboundEndpointFile, inboundEndpointOmElement.toString());
@@ -277,6 +290,22 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		} catch (IOException e) {
 			log.error(InboundEndpointArtifactProperties.errorIOException, e);
 		}
+	}
+	
+	private boolean isSequenceMandatoryProtocol(String type) {
+		if (type.equals(InboundEndpointArtifactProperties.typeFile)
+				| type.equals(InboundEndpointArtifactProperties.typeJMS)
+				| type.equals(InboundEndpointArtifactProperties.typeHL7)
+				| type.equals(InboundEndpointArtifactProperties.typeKAFKA)
+				| type.equals(InboundEndpointArtifactProperties.typeCustom)
+				| type.equals(InboundEndpointArtifactProperties.typeMQTT)
+				| type.equals(InboundEndpointArtifactProperties.typeRabbitMq)
+				| type.equals(InboundEndpointArtifactProperties.typeWSO2_MB)
+				| type.equals(InboundEndpointArtifactProperties.typeWS)) {
+			return true;
+
+		}
+		return false;
 	}
 	
 	public void copyImportFile(IContainer importLocation,boolean isNewArtifact,String groupId) throws IOException {

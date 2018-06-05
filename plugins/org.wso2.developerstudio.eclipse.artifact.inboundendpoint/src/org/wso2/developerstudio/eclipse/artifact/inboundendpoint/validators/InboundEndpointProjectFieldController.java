@@ -41,8 +41,6 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public void validate(String modelProperty, Object value, ProjectDataModel model) throws FieldValidationException {
-		InboundEndpointModel inboundEndpointModel = (InboundEndpointModel) model;
-		String selectedInboundEndpointType = inboundEndpointModel.getSelectedInboundEndpointType();
 		if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionIEName)) {
 			CommonFieldValidator.validateArtifactName(value);
 			if (value != null) {
@@ -95,6 +93,24 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 			} else {
 				visibleField = false;
 			}
+		} else if (modelProperty.equals(InboundEndpointArtifactProperties.generateSequence)
+				| modelProperty.equals(InboundEndpointArtifactProperties.inboundEPSequence)
+				| modelProperty.equals(InboundEndpointArtifactProperties.inboundEPErrorSequence)) {
+			InboundEndpointModel inboundEndpointModel = (InboundEndpointModel) model;
+			String selectedInboundEndpointType = inboundEndpointModel.getSelectedInboundEndpointType();
+			visibleField = false;
+			if (selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeFile)
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeJMS)
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeHL7)
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeKAFKA)
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeCustom)
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeMQTT)
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeRabbitMq)
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeWSO2_MB)
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeWS)) {
+				visibleField = true;
+
+			}
 		}
 		return visibleField;
 	}
@@ -104,11 +120,17 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 
 		if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionIEType)) {
 			updatedList.add(InboundEndpointArtifactProperties.wizardOptionClass);
+			updatedList.add(InboundEndpointArtifactProperties.generateSequence);
+			updatedList.add(InboundEndpointArtifactProperties.inboundEPSequence);
+			updatedList.add(InboundEndpointArtifactProperties.inboundEPErrorSequence);
 		} else if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionCreateESBProject)) {
 			updatedList.add(InboundEndpointArtifactProperties.wizardOptionSaveLocation);
 		} else if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionImportFilePath)) {
 			updatedList.add(InboundEndpointArtifactProperties.wizardOptionAvailableInboundEndpoints);
-		}
+		} else if (modelProperty.equals(InboundEndpointArtifactProperties.generateSequence)) {
+			updatedList.add(InboundEndpointArtifactProperties.inboundEPSequence);
+			updatedList.add(InboundEndpointArtifactProperties.inboundEPErrorSequence);
+        }
 
 		return updatedList;
 	}
@@ -117,6 +139,9 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 		boolean enableField = super.isEnableField(modelProperty, model);
 		if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionImportFilePath)) {
 			enableField = true;
+		} else if (modelProperty.equals(InboundEndpointArtifactProperties.inboundEPSequence)
+				| modelProperty.equals(InboundEndpointArtifactProperties.inboundEPErrorSequence)) {
+			enableField = !(((InboundEndpointModel) model).isGenerateSequence());
 		}
 		return enableField;
 	}
@@ -128,4 +153,6 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 		}
 		return readOnlyField;
 	}
+	
+	
 }

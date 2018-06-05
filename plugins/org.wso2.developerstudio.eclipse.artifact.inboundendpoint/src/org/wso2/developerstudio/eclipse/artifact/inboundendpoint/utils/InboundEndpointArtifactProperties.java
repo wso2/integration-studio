@@ -85,6 +85,10 @@ public final class InboundEndpointArtifactProperties extends NLS {
 	public static String errorUnexpectedError;
 	public static String errorIOException;
 	public static String errorOpenEditor;
+	
+	public static String generateSequence;
+	public static String inboundEPSequence;
+	public static String inboundEPErrorSequence;
 
 	static {
 		// initialize resource bundle

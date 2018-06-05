@@ -71,6 +71,9 @@ public class InboundEndpointModel extends ProjectDataModel {
 	private String vfsLockReleaseSameNode;
 	private String vfsDistributedLock;
 	private String vfsDistributedTimeout;
+	private boolean generateSequence = false;
+	private String sequence;
+	private String errorSequence;
 
 	private List<OMElement> availableLEList;
 	private IContainer inboundEndpointSaveLocation;
@@ -146,6 +149,12 @@ public class InboundEndpointModel extends ProjectDataModel {
 				modelPropertyValue = getVfsDistributedTimeout();
 			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionAvailableIEs)) {
 				modelPropertyValue = selectedLEList.toArray();
+			} else if (key.equals(InboundEndpointArtifactProperties.generateSequence)) {
+				modelPropertyValue = isGenerateSequence();
+			} else if (key.equals(InboundEndpointArtifactProperties.inboundEPSequence)) {
+				modelPropertyValue = getSequence();
+			} else if (key.equals(InboundEndpointArtifactProperties.inboundEPErrorSequence)) {
+				modelPropertyValue = getErrorSequence();
 			}
 		}
 		return modelPropertyValue;
@@ -255,6 +264,12 @@ public class InboundEndpointModel extends ProjectDataModel {
 			if (esbProject != null) {
 				setInboundEndpointSaveLocation(esbProject);
 			}
+		} else if (key.equals(InboundEndpointArtifactProperties.generateSequence)) {
+			setGenerateSequence((Boolean)data);
+		} else if (key.equals(InboundEndpointArtifactProperties.inboundEPSequence)) {
+			setSequence(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.inboundEPErrorSequence)) {
+			setErrorSequence(data.toString());
 		}
 		return returnResult;
 	}
@@ -584,6 +599,31 @@ public class InboundEndpointModel extends ProjectDataModel {
 
 	public void setCoordination(String coordination) {
 		this.coordination = coordination;
+	}
+	
+	public boolean isGenerateSequence() {
+		return generateSequence;
+		
+	}
+	
+	public void setGenerateSequence(boolean generateSequence) {
+		this.generateSequence = generateSequence;
+	}
+	
+	public String getSequence() {
+		return sequence;
+	}
+
+	public void setSequence(String sequence) {
+		this.sequence = sequence;
+	}
+	
+	public String getErrorSequence() {
+		return errorSequence;
+	}
+
+	public void setErrorSequence(String errorSequence) {
+		this.errorSequence = errorSequence;
 	}
 
 }

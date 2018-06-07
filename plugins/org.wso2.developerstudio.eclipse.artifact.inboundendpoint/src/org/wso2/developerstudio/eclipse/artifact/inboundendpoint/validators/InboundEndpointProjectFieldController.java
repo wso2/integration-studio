@@ -107,7 +107,8 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeMQTT)
 					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeRabbitMq)
 					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeWSO2_MB)
-					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeWS)) {
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeWS)
+					| selectedInboundEndpointType.equals(InboundEndpointArtifactProperties.typeWSS)) {
 				visibleField = true;
 
 			}

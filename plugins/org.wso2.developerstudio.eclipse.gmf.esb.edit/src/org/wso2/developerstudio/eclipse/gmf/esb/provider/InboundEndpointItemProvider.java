@@ -338,7 +338,30 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addWsBossThreadPoolSizePropertyDescriptor(object);
 			addWsWorkerThreadPoolSizePropertyDescriptor(object);
 			addWsSubprotocolHandlerClassPropertyDescriptor(object);
+			addWsDefaultContentTypePropertyDescriptor(object);
+			addWsShutdownStatusCodePropertyDescriptor(object);
+			addWsShutdownStatusMessagePropertyDescriptor(object);
 			addWsPipelineHandlerClassPropertyDescriptor(object);
+			addWsUsePortOffsetPropertyDescriptor(object);
+		case WSS:
+			addWsInboundPortPropertyDescriptor(object);
+			addWsClientSideBroadcastLevelPropertyDescriptor(object);
+			addWsOutflowDispatchSequencePropertyDescriptor(object);
+			addWsOutflowDispatchFaultSequencePropertyDescriptor(object);
+			addWssSslKeyStoreFilePropertyDescriptor(object);
+			addWssSslKeyStorePassPropertyDescriptor(object);
+			addWssSslTrustStoreFilePropertyDescriptor(object);
+			addWssSslKeyStorePassPropertyDescriptor(object);
+			addWssSslCertPassPropertyDescriptor(object);
+			addWsBossThreadPoolSizePropertyDescriptor(object);
+			addWsWorkerThreadPoolSizePropertyDescriptor(object);
+			addWsSubprotocolHandlerClassPropertyDescriptor(object);
+			addWsDefaultContentTypePropertyDescriptor(object);
+			addWsShutdownStatusCodePropertyDescriptor(object);
+			addWsShutdownStatusMessagePropertyDescriptor(object);
+			addWsUsePortOffsetPropertyDescriptor(object);
+			addWssSslProtocolsPropertyDescriptor(object);
+			addWssSslCipherSuitesPropertyDescriptor(object);
 		default:
 			break;
 		}
@@ -2744,6 +2767,248 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Wss Ssl Key Store File feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWssSslKeyStoreFilePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wssSslKeyStoreFile_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wssSslKeyStoreFile_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Wss Ssl Key Store Pass feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWssSslKeyStorePassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wssSslKeyStorePass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wssSslKeyStorePass_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Wss Ssl Trust Store File feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWssSslTrustStoreFilePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wssSslTrustStoreFile_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wssSslTrustStoreFile_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Wss Ssl Trust Store Pass feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWssSslTrustStorePassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wssSslTrustStorePass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wssSslTrustStorePass_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Wss Ssl Cert Pass feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWssSslCertPassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wssSslCertPass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wssSslCertPass_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Default Content Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsDefaultContentTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsDefaultContentType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsDefaultContentType_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Shutdown Status Code feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsShutdownStatusCodePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsShutdownStatusCode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsShutdownStatusCode_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Shutdown Status Message feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsShutdownStatusMessagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsShutdownStatusMessage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsShutdownStatusMessage_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Ws Use Port Offset feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWsUsePortOffsetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wsUsePortOffset_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wsUsePortOffset_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Wss Ssl Protocols feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWssSslProtocolsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wssSslProtocols_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wssSslProtocols_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Wss Ssl Cipher Suites feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addWssSslCipherSuitesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_wssSslCipherSuites_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_wssSslCipherSuites_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Parameters",
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Class feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -4576,6 +4841,17 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
+			case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
+			case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:

@@ -224,6 +224,17 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsDefaultContentType <em>Ws Default Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isWsUsePortOffset <em>Ws Use Port Offset</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslProtocols <em>Wss Ssl Protocols</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint()
@@ -3246,6 +3257,293 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportMQTTSslVersion(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Wss Ssl Key Store File</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wss Ssl Key Store File</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wss Ssl Key Store File</em>' attribute.
+	 * @see #setWssSslKeyStoreFile(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslKeyStoreFile()
+	 * @model
+	 * @generated
+	 */
+	String getWssSslKeyStoreFile();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wss Ssl Key Store File</em>' attribute.
+	 * @see #getWssSslKeyStoreFile()
+	 * @generated
+	 */
+	void setWssSslKeyStoreFile(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Wss Ssl Key Store Pass</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wss Ssl Key Store Pass</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wss Ssl Key Store Pass</em>' attribute.
+	 * @see #setWssSslKeyStorePass(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslKeyStorePass()
+	 * @model
+	 * @generated
+	 */
+	String getWssSslKeyStorePass();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wss Ssl Key Store Pass</em>' attribute.
+	 * @see #getWssSslKeyStorePass()
+	 * @generated
+	 */
+	void setWssSslKeyStorePass(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Wss Ssl Trust Store File</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wss Ssl Trust Store File</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wss Ssl Trust Store File</em>' attribute.
+	 * @see #setWssSslTrustStoreFile(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslTrustStoreFile()
+	 * @model
+	 * @generated
+	 */
+	String getWssSslTrustStoreFile();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wss Ssl Trust Store File</em>' attribute.
+	 * @see #getWssSslTrustStoreFile()
+	 * @generated
+	 */
+	void setWssSslTrustStoreFile(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Wss Ssl Trust Store Pass</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wss Ssl Trust Store Pass</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wss Ssl Trust Store Pass</em>' attribute.
+	 * @see #setWssSslTrustStorePass(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslTrustStorePass()
+	 * @model default=""
+	 * @generated
+	 */
+	String getWssSslTrustStorePass();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wss Ssl Trust Store Pass</em>' attribute.
+	 * @see #getWssSslTrustStorePass()
+	 * @generated
+	 */
+	void setWssSslTrustStorePass(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Wss Ssl Cert Pass</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wss Ssl Cert Pass</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wss Ssl Cert Pass</em>' attribute.
+	 * @see #setWssSslCertPass(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslCertPass()
+	 * @model
+	 * @generated
+	 */
+	String getWssSslCertPass();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wss Ssl Cert Pass</em>' attribute.
+	 * @see #getWssSslCertPass()
+	 * @generated
+	 */
+	void setWssSslCertPass(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Default Content Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Default Content Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Default Content Type</em>' attribute.
+	 * @see #setWsDefaultContentType(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsDefaultContentType()
+	 * @model
+	 * @generated
+	 */
+	String getWsDefaultContentType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsDefaultContentType <em>Ws Default Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Default Content Type</em>' attribute.
+	 * @see #getWsDefaultContentType()
+	 * @generated
+	 */
+	void setWsDefaultContentType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Shutdown Status Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Shutdown Status Code</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Shutdown Status Code</em>' attribute.
+	 * @see #setWsShutdownStatusCode(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsShutdownStatusCode()
+	 * @model
+	 * @generated
+	 */
+	String getWsShutdownStatusCode();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Shutdown Status Code</em>' attribute.
+	 * @see #getWsShutdownStatusCode()
+	 * @generated
+	 */
+	void setWsShutdownStatusCode(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Shutdown Status Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Shutdown Status Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Shutdown Status Message</em>' attribute.
+	 * @see #setWsShutdownStatusMessage(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsShutdownStatusMessage()
+	 * @model
+	 * @generated
+	 */
+	String getWsShutdownStatusMessage();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Shutdown Status Message</em>' attribute.
+	 * @see #getWsShutdownStatusMessage()
+	 * @generated
+	 */
+	void setWsShutdownStatusMessage(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ws Use Port Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ws Use Port Offset</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ws Use Port Offset</em>' attribute.
+	 * @see #setWsUsePortOffset(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WsUsePortOffset()
+	 * @model
+	 * @generated
+	 */
+	boolean isWsUsePortOffset();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isWsUsePortOffset <em>Ws Use Port Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ws Use Port Offset</em>' attribute.
+	 * @see #isWsUsePortOffset()
+	 * @generated
+	 */
+	void setWsUsePortOffset(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Wss Ssl Protocols</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wss Ssl Protocols</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wss Ssl Protocols</em>' attribute.
+	 * @see #setWssSslProtocols(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslProtocols()
+	 * @model
+	 * @generated
+	 */
+	String getWssSslProtocols();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslProtocols <em>Wss Ssl Protocols</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wss Ssl Protocols</em>' attribute.
+	 * @see #getWssSslProtocols()
+	 * @generated
+	 */
+	void setWssSslProtocols(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Wss Ssl Cipher Suites</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Wss Ssl Cipher Suites</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Wss Ssl Cipher Suites</em>' attribute.
+	 * @see #setWssSslCipherSuites(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_WssSslCipherSuites()
+	 * @model
+	 * @generated
+	 */
+	String getWssSslCipherSuites();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Wss Ssl Cipher Suites</em>' attribute.
+	 * @see #getWssSslCipherSuites()
+	 * @generated
+	 */
+	void setWssSslCipherSuites(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Class</b></em>' attribute.

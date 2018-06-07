@@ -31,6 +31,7 @@ public class InboundEndpointConstants {
 	public static final String FEED = "feed";
 	public static final String WSO2MB ="wso2_mb";
 	public static final String WS ="ws";
+	public static final String WSS = "wss";
 
 	public static final String TRUE = "true";
 	public static final String FALSE = "false";
@@ -255,5 +256,17 @@ public class InboundEndpointConstants {
 	public static final String WS_BOSS_THREAD_POOL_SIZE ="ws.boss.thread.pool.size";
 	public static final String WS_WORKER_THREAD_POOL_SIZE ="ws.worker.thread.pool.size";
 	public static final String WS_SUBPROTOCOL_HANDLER_CLASS ="ws.subprotocol.handler.class";
+	public static final String WS_DEFAULT_CONTENT_TYPE ="ws.default.content.type";
+	public static final String WS_SHUTDWN_STATUS_CODE = "ws.shutdown.status.code";
+	public static final String WS_SHUTDOWN_STATUS_MESSAGE = "ws.shutdown.status.message";	
+	public static final String WS_USE_PORT_OFFSET = "ws.use.port.offset";
 	public static final String WS_PIPELINE_HANDLER_CLASS ="ws.pipeline.handler.class";
+	
+	public static final String WSS_SSL_KEY_STORE_FILE= "wss.ssl.key.store.file";
+	public static final String WSS_SSL_KEY_STORE_PASS = "wss.ssl.key.store.pass";
+	public static final String WSS_SSL_TRUST_STORE_FILE= "wss.ssl.trust.store.file";
+	public static final String WSS_SSL_TRUST_STORE_PASS = "wss.ssl.trust.store.pass";
+	public static final String WSS_SSL_CERT_PASS = "wss.ssl.cert.pass";
+	public static final String WSS_SSL_PROTOCOLS= "wss.ssl.protocols";
+	public static final String WSS_SSL_CIPHER_SUITES= "wss.ssl.cipher.suites";
 }

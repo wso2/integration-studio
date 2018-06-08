@@ -710,9 +710,9 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             } else {
                 throw new TransformerException("Group ID cannot be empty");
             }
-            if (StringUtils.isNotBlank(visualInboundEndpoint.getContentType().getLiteral())) {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.CONTENT_TYPE, visualInboundEndpoint
-                        .getContentType().getLiteral());
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getContentType())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.CONTENT_TYPE,
+                        visualInboundEndpoint.getContentType());
             }
 
             String consumerType = visualInboundEndpoint.getConsumerType().getLiteral();
@@ -935,9 +935,9 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         visualInboundEndpoint.getTransportMQTTTopicName());
             }
 
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getContentType().getLiteral()))) {
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getContentType())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_CONTENT_TYPE,
-                        visualInboundEndpoint.getContentType().getLiteral());
+                        visualInboundEndpoint.getContentType());
             }
 
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportMQTTSubscriptionQOS()

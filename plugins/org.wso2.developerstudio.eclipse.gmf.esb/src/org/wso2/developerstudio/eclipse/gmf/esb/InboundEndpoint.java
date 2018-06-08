@@ -968,7 +968,6 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Content Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.ContentType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Content Type</em>' attribute isn't clear,
@@ -976,24 +975,22 @@ public interface InboundEndpoint extends EsbElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Content Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ContentType
-	 * @see #setContentType(ContentType)
+	 * @see #setContentType(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ContentType()
 	 * @model
 	 * @generated
 	 */
-	ContentType getContentType();
+	String getContentType();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getContentType <em>Content Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Content Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ContentType
 	 * @see #getContentType()
 	 * @generated
 	 */
-	void setContentType(ContentType value);
+	void setContentType(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Thread Count</b></em>' attribute.

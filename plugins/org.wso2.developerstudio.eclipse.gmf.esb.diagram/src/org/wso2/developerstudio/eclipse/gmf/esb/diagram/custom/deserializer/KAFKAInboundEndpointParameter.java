@@ -115,7 +115,7 @@ public enum KAFKAInboundEndpointParameter {
             false),
     FILTER_FROM_BLACKLIST_TYPE(InboundEndpointConstants.FILTER_FROM_BLACKLIST, INBOUND_ENDPOINT__TOPIC_FILTER_FROM,
             false),
-    CONTENT_TYPE_TYPE(InboundEndpointConstants.CONTENT_TYPE, INBOUND_ENDPOINT__CONTENT_TYPE, false),
+    CONTENT_TYPE_TYPE(InboundEndpointConstants.CONTENT_TYPE, INBOUND_ENDPOINT__CONTENT_TYPE, true),
     CONSUMER_TYPE_TYPE(InboundEndpointConstants.CONSUMER_TYPE, INBOUND_ENDPOINT__CONSUMER_TYPE, false),
     TOPICS_TYPE(InboundEndpointConstants.TOPICS, INBOUND_ENDPOINT__TOPICS_NAME, false),
     TOPIC_FILTER_TYPE(InboundEndpointConstants.TOPIC_FILTER, INBOUND_ENDPOINT__TOPIC_FILTER_NAME, false),

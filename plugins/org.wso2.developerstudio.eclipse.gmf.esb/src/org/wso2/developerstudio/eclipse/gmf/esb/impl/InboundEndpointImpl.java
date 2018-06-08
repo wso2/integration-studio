@@ -2290,7 +2290,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ContentType CONTENT_TYPE_EDEFAULT = ContentType.XML;
+	protected static final String CONTENT_TYPE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
@@ -2299,7 +2299,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected ContentType contentType = CONTENT_TYPE_EDEFAULT;
+	protected String contentType = CONTENT_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getConsumerType() <em>Consumer Type</em>}' attribute.
@@ -5107,17 +5107,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContentType getContentType() {
+	public String getContentType() {
 		return contentType;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setContentType(ContentType newContentType) {
-		ContentType oldContentType = contentType;
-		contentType = newContentType == null ? CONTENT_TYPE_EDEFAULT : newContentType;
+	public void setContentType(String newContentType) {
+		String oldContentType = contentType;
+		contentType = newContentType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE, oldContentType, contentType));
 	}
@@ -9372,7 +9373,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				setGroupId((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
-				setContentType((ContentType)newValue);
+				setContentType((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
 				setConsumerType((ConsumerType)newValue);
@@ -10543,7 +10544,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
 				return GROUP_ID_EDEFAULT == null ? groupId != null : !GROUP_ID_EDEFAULT.equals(groupId);
 			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
-				return contentType != CONTENT_TYPE_EDEFAULT;
+				return CONTENT_TYPE_EDEFAULT == null ? contentType != null : !CONTENT_TYPE_EDEFAULT.equals(contentType);
 			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
 				return consumerType != CONSUMER_TYPE_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:

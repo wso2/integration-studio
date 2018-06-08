@@ -24986,13 +24986,112 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION = ESB_ELEMENT_FEATURE_COUNT + 196;
 
 	/**
+	 * The feature id for the '<em><b>Wss Ssl Key Store File</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE = ESB_ELEMENT_FEATURE_COUNT + 197;
+
+	/**
+	 * The feature id for the '<em><b>Wss Ssl Key Store Pass</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS = ESB_ELEMENT_FEATURE_COUNT + 198;
+
+	/**
+	 * The feature id for the '<em><b>Wss Ssl Trust Store File</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE = ESB_ELEMENT_FEATURE_COUNT + 199;
+
+	/**
+	 * The feature id for the '<em><b>Wss Ssl Trust Store Pass</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS = ESB_ELEMENT_FEATURE_COUNT + 200;
+
+	/**
+	 * The feature id for the '<em><b>Wss Ssl Cert Pass</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WSS_SSL_CERT_PASS = ESB_ELEMENT_FEATURE_COUNT + 201;
+
+	/**
+	 * The feature id for the '<em><b>Ws Default Content Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 202;
+
+	/**
+	 * The feature id for the '<em><b>Ws Shutdown Status Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE = ESB_ELEMENT_FEATURE_COUNT + 203;
+
+	/**
+	 * The feature id for the '<em><b>Ws Shutdown Status Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE = ESB_ELEMENT_FEATURE_COUNT + 204;
+
+	/**
+	 * The feature id for the '<em><b>Ws Use Port Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WS_USE_PORT_OFFSET = ESB_ELEMENT_FEATURE_COUNT + 205;
+
+	/**
+	 * The feature id for the '<em><b>Wss Ssl Protocols</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS = ESB_ELEMENT_FEATURE_COUNT + 206;
+
+	/**
+	 * The feature id for the '<em><b>Wss Ssl Cipher Suites</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES = ESB_ELEMENT_FEATURE_COUNT + 207;
+
+	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 197;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 208;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -35641,6 +35740,127 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpoint_TransportMQTTSslVersion();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Wss Ssl Key Store File</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStoreFile()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WssSslKeyStoreFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Wss Ssl Key Store Pass</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslKeyStorePass()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WssSslKeyStorePass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Wss Ssl Trust Store File</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStoreFile()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WssSslTrustStoreFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Wss Ssl Trust Store Pass</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslTrustStorePass()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WssSslTrustStorePass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Wss Ssl Cert Pass</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCertPass()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WssSslCertPass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsDefaultContentType <em>Ws Default Content Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Default Content Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsDefaultContentType()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsDefaultContentType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Shutdown Status Code</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusCode()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsShutdownStatusCode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Shutdown Status Message</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsShutdownStatusMessage()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsShutdownStatusMessage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isWsUsePortOffset <em>Ws Use Port Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ws Use Port Offset</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isWsUsePortOffset()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WsUsePortOffset();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslProtocols <em>Wss Ssl Protocols</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Wss Ssl Protocols</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslProtocols()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WssSslProtocols();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Wss Ssl Cipher Suites</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCipherSuites()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_WssSslCipherSuites();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter <em>Inbound Endpoint Parameter</em>}'.
@@ -51548,6 +51768,94 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION = eINSTANCE.getInboundEndpoint_TransportMQTTSslVersion();
+
+		/**
+		 * The meta object literal for the '<em><b>Wss Ssl Key Store File</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE = eINSTANCE.getInboundEndpoint_WssSslKeyStoreFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Wss Ssl Key Store Pass</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS = eINSTANCE.getInboundEndpoint_WssSslKeyStorePass();
+
+		/**
+		 * The meta object literal for the '<em><b>Wss Ssl Trust Store File</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE = eINSTANCE.getInboundEndpoint_WssSslTrustStoreFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Wss Ssl Trust Store Pass</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS = eINSTANCE.getInboundEndpoint_WssSslTrustStorePass();
+
+		/**
+		 * The meta object literal for the '<em><b>Wss Ssl Cert Pass</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WSS_SSL_CERT_PASS = eINSTANCE.getInboundEndpoint_WssSslCertPass();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Default Content Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE = eINSTANCE.getInboundEndpoint_WsDefaultContentType();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Shutdown Status Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE = eINSTANCE.getInboundEndpoint_WsShutdownStatusCode();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Shutdown Status Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE = eINSTANCE.getInboundEndpoint_WsShutdownStatusMessage();
+
+		/**
+		 * The meta object literal for the '<em><b>Ws Use Port Offset</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WS_USE_PORT_OFFSET = eINSTANCE.getInboundEndpoint_WsUsePortOffset();
+
+		/**
+		 * The meta object literal for the '<em><b>Wss Ssl Protocols</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS = eINSTANCE.getInboundEndpoint_WssSslProtocols();
+
+		/**
+		 * The meta object literal for the '<em><b>Wss Ssl Cipher Suites</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES = eINSTANCE.getInboundEndpoint_WssSslCipherSuites();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.

@@ -11596,6 +11596,105 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getInboundEndpoint_WssSslKeyStoreFile() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(197);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WssSslKeyStorePass() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(198);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WssSslTrustStoreFile() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(199);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WssSslTrustStorePass() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(200);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WssSslCertPass() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(201);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WsDefaultContentType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(202);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WsShutdownStatusCode() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(203);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WsShutdownStatusMessage() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(204);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WsUsePortOffset() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(205);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WssSslProtocols() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(206);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_WssSslCipherSuites() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(207);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInboundEndpointParameter() {
 		return inboundEndpointParameterEClass;
 	}
@@ -20917,6 +21016,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_CERT_PASS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_USE_PORT_OFFSET);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES);
 
 		inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
 		createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
@@ -23334,6 +23444,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_TransportMQTTSslTruststoreType(), ecorePackage.getEString(), "transportMQTTSslTruststoreType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTSslTruststorePassword(), ecorePackage.getEString(), "transportMQTTSslTruststorePassword", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportMQTTSslVersion(), ecorePackage.getEString(), "transportMQTTSslVersion", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WssSslKeyStoreFile(), ecorePackage.getEString(), "wssSslKeyStoreFile", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WssSslKeyStorePass(), ecorePackage.getEString(), "wssSslKeyStorePass", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WssSslTrustStoreFile(), ecorePackage.getEString(), "wssSslTrustStoreFile", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WssSslTrustStorePass(), ecorePackage.getEString(), "wssSslTrustStorePass", "", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WssSslCertPass(), ecorePackage.getEString(), "wssSslCertPass", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsDefaultContentType(), ecorePackage.getEString(), "wsDefaultContentType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsShutdownStatusCode(), ecorePackage.getEString(), "wsShutdownStatusCode", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsShutdownStatusMessage(), ecorePackage.getEString(), "wsShutdownStatusMessage", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WsUsePortOffset(), ecorePackage.getEBoolean(), "wsUsePortOffset", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WssSslProtocols(), ecorePackage.getEString(), "wssSslProtocols", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_WssSslCipherSuites(), ecorePackage.getEString(), "wssSslCipherSuites", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -24032,6 +24153,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.FEED);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.WSO2_MB);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.WS);
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.WSS);
 
 		initEEnum(inboundEndpointBehaviourTypeEEnum, InboundEndpointBehaviourType.class, "InboundEndpointBehaviourType");
 		addEEnumLiteral(inboundEndpointBehaviourTypeEEnum, InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT);

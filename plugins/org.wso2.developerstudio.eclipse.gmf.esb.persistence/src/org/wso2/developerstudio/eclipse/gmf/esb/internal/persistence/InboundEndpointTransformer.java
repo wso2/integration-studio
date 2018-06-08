@@ -1204,11 +1204,100 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_SUBPROTOCOL_HANDLER_CLASS,
                         visualInboundEndpoint.getWsSubprotocolHandlerClass());
             }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsDefaultContentType())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_DEFAULT_CONTENT_TYPE,
+                        visualInboundEndpoint.getWsDefaultContentType());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsShutdownStatusCode())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_SHUTDWN_STATUS_CODE,
+                        visualInboundEndpoint.getWsShutdownStatusCode());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsShutdownStatusMessage())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_SHUTDOWN_STATUS_MESSAGE,
+                        visualInboundEndpoint.getWsShutdownStatusMessage());
+            }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getWsPipelineHandlerClass())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_PIPELINE_HANDLER_CLASS,
                         visualInboundEndpoint.getWsPipelineHandlerClass());
             }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isWsUsePortOffset()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_USE_PORT_OFFSET,
+                        String.valueOf(visualInboundEndpoint.isWsUsePortOffset()));
+            }
             break;
+        case WSS:
+        	if (StringUtils.isNotBlank(visualInboundEndpoint.getWsInboundPort())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_WS_PORT,
+                        visualInboundEndpoint.getWsInboundPort());
+            }
+        	if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getWsClientSideBroadcastLevel().getLiteral()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_CLIENT_SIDE_BROADCAST_LEVEL, visualInboundEndpoint
+                        .getWsClientSideBroadcastLevel().getLiteral());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsOutflowDispatchSequence())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_OUTFLOW_DISPATCH_SEQUENCE,
+                        visualInboundEndpoint.getWsOutflowDispatchSequence());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsOutflowDispatchFaultSequence())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE,
+                        visualInboundEndpoint.getWsOutflowDispatchFaultSequence());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWssSslKeyStoreFile())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSS_SSL_KEY_STORE_FILE,
+                        visualInboundEndpoint.getWssSslKeyStoreFile());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWssSslKeyStorePass())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSS_SSL_KEY_STORE_PASS,
+                        visualInboundEndpoint.getWssSslKeyStorePass());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWssSslTrustStoreFile())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSS_SSL_TRUST_STORE_FILE,
+                        visualInboundEndpoint.getWssSslTrustStoreFile());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWssSslTrustStorePass())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSS_SSL_TRUST_STORE_PASS,
+                        visualInboundEndpoint.getWssSslTrustStorePass());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWssSslCertPass())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSS_SSL_CERT_PASS,
+                        visualInboundEndpoint.getWssSslCertPass());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsBossThreadPoolSize())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_BOSS_THREAD_POOL_SIZE,
+                        visualInboundEndpoint.getWsBossThreadPoolSize());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsWorkerThreadPoolSize())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_WORKER_THREAD_POOL_SIZE,
+                        visualInboundEndpoint.getWsWorkerThreadPoolSize());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsSubprotocolHandlerClass())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_SUBPROTOCOL_HANDLER_CLASS,
+                        visualInboundEndpoint.getWsSubprotocolHandlerClass());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsDefaultContentType())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_DEFAULT_CONTENT_TYPE,
+                        visualInboundEndpoint.getWsDefaultContentType());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsShutdownStatusCode())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_SHUTDWN_STATUS_CODE,
+                        visualInboundEndpoint.getWsShutdownStatusCode());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsShutdownStatusMessage())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_SHUTDOWN_STATUS_MESSAGE,
+                        visualInboundEndpoint.getWsShutdownStatusMessage());
+            }
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isWsUsePortOffset()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_USE_PORT_OFFSET,
+                        String.valueOf(visualInboundEndpoint.isWsUsePortOffset()));
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWssSslProtocols())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSS_SSL_PROTOCOLS,
+                        visualInboundEndpoint.getWssSslProtocols());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWssSslCipherSuites())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSS_SSL_CIPHER_SUITES,
+                        visualInboundEndpoint.getWssSslCipherSuites());
+            }
         default:
             break;
         }
@@ -1216,7 +1305,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
     }
 
 	private boolean isSequenceMandatoryProtocol(String type) {
-		if (type.matches("file|jms|hl7|kafka|custom|mqtt|rabbitmq")) {
+		if (type.matches("file|jms|hl7|kafka|custom|mqtt|rabbitmq|wso2_mb|ws|wss")) {
 			return true;
 		}
 		return false;

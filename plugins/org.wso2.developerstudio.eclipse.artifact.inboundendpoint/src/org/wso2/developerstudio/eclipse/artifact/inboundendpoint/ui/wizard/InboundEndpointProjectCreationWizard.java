@@ -301,7 +301,8 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 				| type.equals(InboundEndpointArtifactProperties.typeMQTT)
 				| type.equals(InboundEndpointArtifactProperties.typeRabbitMq)
 				| type.equals(InboundEndpointArtifactProperties.typeWSO2_MB)
-				| type.equals(InboundEndpointArtifactProperties.typeWS)) {
+				| type.equals(InboundEndpointArtifactProperties.typeWS)
+				| type.equals(InboundEndpointArtifactProperties.typeWSS)) {
 			return true;
 
 		}

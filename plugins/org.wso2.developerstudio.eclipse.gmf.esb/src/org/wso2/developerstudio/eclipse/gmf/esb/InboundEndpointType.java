@@ -141,7 +141,15 @@ public enum InboundEndpointType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	WS(12, "ws", "WS");
+	WS(12, "ws", "WS"), /**
+	 * The '<em><b>Wss</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #WSS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	WSS(13, "wss", "WSS");
 
 	/**
 	 * The '<em><b>Http</b></em>' literal value.
@@ -339,6 +347,21 @@ public enum InboundEndpointType implements Enumerator {
 	public static final int WS_VALUE = 12;
 
 	/**
+	 * The '<em><b>Wss</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Wss</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #WSS
+	 * @model name="wss" literal="WSS"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WSS_VALUE = 13;
+
+	/**
 	 * An array of all the '<em><b>Inbound Endpoint Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -359,6 +382,7 @@ public enum InboundEndpointType implements Enumerator {
 			FEED,
 			WSO2_MB,
 			WS,
+			WSS,
 		};
 
 	/**
@@ -428,6 +452,7 @@ public enum InboundEndpointType implements Enumerator {
 			case FEED_VALUE: return FEED;
 			case WSO2_MB_VALUE: return WSO2_MB;
 			case WS_VALUE: return WS;
+			case WSS_VALUE: return WSS;
 		}
 		return null;
 	}

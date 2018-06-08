@@ -260,6 +260,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsDefaultContentType <em>Ws Default Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isWsUsePortOffset <em>Ws Use Port Offset</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslProtocols <em>Wss Ssl Protocols</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
  * </ul>
  *
  * @generated
@@ -4227,6 +4238,225 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 */
 	protected String transportMQTTSslVersion = TRANSPORT_MQTT_SSL_VERSION_EDEFAULT;
 	/**
+	 * The default value of the '{@link #getWssSslKeyStoreFile() <em>Wss Ssl Key Store File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslKeyStoreFile()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WSS_SSL_KEY_STORE_FILE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWssSslKeyStoreFile() <em>Wss Ssl Key Store File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslKeyStoreFile()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wssSslKeyStoreFile = WSS_SSL_KEY_STORE_FILE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWssSslKeyStorePass() <em>Wss Ssl Key Store Pass</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslKeyStorePass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WSS_SSL_KEY_STORE_PASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWssSslKeyStorePass() <em>Wss Ssl Key Store Pass</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslKeyStorePass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wssSslKeyStorePass = WSS_SSL_KEY_STORE_PASS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWssSslTrustStoreFile() <em>Wss Ssl Trust Store File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslTrustStoreFile()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WSS_SSL_TRUST_STORE_FILE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWssSslTrustStoreFile() <em>Wss Ssl Trust Store File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslTrustStoreFile()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wssSslTrustStoreFile = WSS_SSL_TRUST_STORE_FILE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWssSslTrustStorePass() <em>Wss Ssl Trust Store Pass</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslTrustStorePass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WSS_SSL_TRUST_STORE_PASS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getWssSslTrustStorePass() <em>Wss Ssl Trust Store Pass</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslTrustStorePass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wssSslTrustStorePass = WSS_SSL_TRUST_STORE_PASS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWssSslCertPass() <em>Wss Ssl Cert Pass</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslCertPass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WSS_SSL_CERT_PASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWssSslCertPass() <em>Wss Ssl Cert Pass</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslCertPass()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wssSslCertPass = WSS_SSL_CERT_PASS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsDefaultContentType() <em>Ws Default Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsDefaultContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_DEFAULT_CONTENT_TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsDefaultContentType() <em>Ws Default Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsDefaultContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsDefaultContentType = WS_DEFAULT_CONTENT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsShutdownStatusCode() <em>Ws Shutdown Status Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsShutdownStatusCode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_SHUTDOWN_STATUS_CODE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsShutdownStatusCode() <em>Ws Shutdown Status Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsShutdownStatusCode()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsShutdownStatusCode = WS_SHUTDOWN_STATUS_CODE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWsShutdownStatusMessage() <em>Ws Shutdown Status Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsShutdownStatusMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWsShutdownStatusMessage() <em>Ws Shutdown Status Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWsShutdownStatusMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wsShutdownStatusMessage = WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isWsUsePortOffset() <em>Ws Use Port Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isWsUsePortOffset()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean WS_USE_PORT_OFFSET_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isWsUsePortOffset() <em>Ws Use Port Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isWsUsePortOffset()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean wsUsePortOffset = WS_USE_PORT_OFFSET_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWssSslProtocols() <em>Wss Ssl Protocols</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslProtocols()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WSS_SSL_PROTOCOLS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWssSslProtocols() <em>Wss Ssl Protocols</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslProtocols()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wssSslProtocols = WSS_SSL_PROTOCOLS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWssSslCipherSuites() <em>Wss Ssl Cipher Suites</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslCipherSuites()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WSS_SSL_CIPHER_SUITES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWssSslCipherSuites() <em>Wss Ssl Cipher Suites</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWssSslCipherSuites()
+	 * @generated
+	 * @ordered
+	 */
+	protected String wssSslCipherSuites = WSS_SSL_CIPHER_SUITES_EDEFAULT;
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated NOT
 	 */
@@ -6574,6 +6804,237 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWssSslKeyStoreFile() {
+		return wssSslKeyStoreFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWssSslKeyStoreFile(String newWssSslKeyStoreFile) {
+		String oldWssSslKeyStoreFile = wssSslKeyStoreFile;
+		wssSslKeyStoreFile = newWssSslKeyStoreFile;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE, oldWssSslKeyStoreFile, wssSslKeyStoreFile));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWssSslKeyStorePass() {
+		return wssSslKeyStorePass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWssSslKeyStorePass(String newWssSslKeyStorePass) {
+		String oldWssSslKeyStorePass = wssSslKeyStorePass;
+		wssSslKeyStorePass = newWssSslKeyStorePass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS, oldWssSslKeyStorePass, wssSslKeyStorePass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWssSslTrustStoreFile() {
+		return wssSslTrustStoreFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWssSslTrustStoreFile(String newWssSslTrustStoreFile) {
+		String oldWssSslTrustStoreFile = wssSslTrustStoreFile;
+		wssSslTrustStoreFile = newWssSslTrustStoreFile;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE, oldWssSslTrustStoreFile, wssSslTrustStoreFile));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWssSslTrustStorePass() {
+		return wssSslTrustStorePass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWssSslTrustStorePass(String newWssSslTrustStorePass) {
+		String oldWssSslTrustStorePass = wssSslTrustStorePass;
+		wssSslTrustStorePass = newWssSslTrustStorePass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS, oldWssSslTrustStorePass, wssSslTrustStorePass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWssSslCertPass() {
+		return wssSslCertPass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWssSslCertPass(String newWssSslCertPass) {
+		String oldWssSslCertPass = wssSslCertPass;
+		wssSslCertPass = newWssSslCertPass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS, oldWssSslCertPass, wssSslCertPass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsDefaultContentType() {
+		return wsDefaultContentType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsDefaultContentType(String newWsDefaultContentType) {
+		String oldWsDefaultContentType = wsDefaultContentType;
+		wsDefaultContentType = newWsDefaultContentType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE, oldWsDefaultContentType, wsDefaultContentType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsShutdownStatusCode() {
+		return wsShutdownStatusCode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsShutdownStatusCode(String newWsShutdownStatusCode) {
+		String oldWsShutdownStatusCode = wsShutdownStatusCode;
+		wsShutdownStatusCode = newWsShutdownStatusCode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE, oldWsShutdownStatusCode, wsShutdownStatusCode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWsShutdownStatusMessage() {
+		return wsShutdownStatusMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsShutdownStatusMessage(String newWsShutdownStatusMessage) {
+		String oldWsShutdownStatusMessage = wsShutdownStatusMessage;
+		wsShutdownStatusMessage = newWsShutdownStatusMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE, oldWsShutdownStatusMessage, wsShutdownStatusMessage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isWsUsePortOffset() {
+		return wsUsePortOffset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWsUsePortOffset(boolean newWsUsePortOffset) {
+		boolean oldWsUsePortOffset = wsUsePortOffset;
+		wsUsePortOffset = newWsUsePortOffset;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET, oldWsUsePortOffset, wsUsePortOffset));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWssSslProtocols() {
+		return wssSslProtocols;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWssSslProtocols(String newWssSslProtocols) {
+		String oldWssSslProtocols = wssSslProtocols;
+		wssSslProtocols = newWssSslProtocols;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS, oldWssSslProtocols, wssSslProtocols));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWssSslCipherSuites() {
+		return wssSslCipherSuites;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWssSslCipherSuites(String newWssSslCipherSuites) {
+		String oldWssSslCipherSuites = wssSslCipherSuites;
+		wssSslCipherSuites = newWssSslCipherSuites;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES, oldWssSslCipherSuites, wssSslCipherSuites));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -8576,6 +9037,28 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportMQTTSslTruststorePassword();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
 				return getTransportMQTTSslVersion();
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
+				return getWssSslKeyStoreFile();
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
+				return getWssSslKeyStorePass();
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
+				return getWssSslTrustStoreFile();
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
+				return getWssSslTrustStorePass();
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
+				return getWssSslCertPass();
+			case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
+				return getWsDefaultContentType();
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
+				return getWsShutdownStatusCode();
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
+				return getWsShutdownStatusMessage();
+			case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
+				return isWsUsePortOffset();
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
+				return getWssSslProtocols();
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
+				return getWssSslCipherSuites();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -9180,6 +9663,39 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
 				setTransportMQTTSslVersion((String)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
+				setWssSslKeyStoreFile((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
+				setWssSslKeyStorePass((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
+				setWssSslTrustStoreFile((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
+				setWssSslTrustStorePass((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
+				setWssSslCertPass((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
+				setWsDefaultContentType((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
+				setWsShutdownStatusCode((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
+				setWsShutdownStatusMessage((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
+				setWsUsePortOffset((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
+				setWssSslProtocols((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
+				setWssSslCipherSuites((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -9782,6 +10298,39 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
 				setTransportMQTTSslVersion(TRANSPORT_MQTT_SSL_VERSION_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
+				setWssSslKeyStoreFile(WSS_SSL_KEY_STORE_FILE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
+				setWssSslKeyStorePass(WSS_SSL_KEY_STORE_PASS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
+				setWssSslTrustStoreFile(WSS_SSL_TRUST_STORE_FILE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
+				setWssSslTrustStorePass(WSS_SSL_TRUST_STORE_PASS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
+				setWssSslCertPass(WSS_SSL_CERT_PASS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
+				setWsDefaultContentType(WS_DEFAULT_CONTENT_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
+				setWsShutdownStatusCode(WS_SHUTDOWN_STATUS_CODE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
+				setWsShutdownStatusMessage(WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
+				setWsUsePortOffset(WS_USE_PORT_OFFSET_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
+				setWssSslProtocols(WSS_SSL_PROTOCOLS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
+				setWssSslCipherSuites(WSS_SSL_CIPHER_SUITES_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -10187,6 +10736,28 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT == null ? transportMQTTSslTruststorePassword != null : !TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT.equals(transportMQTTSslTruststorePassword);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
 				return TRANSPORT_MQTT_SSL_VERSION_EDEFAULT == null ? transportMQTTSslVersion != null : !TRANSPORT_MQTT_SSL_VERSION_EDEFAULT.equals(transportMQTTSslVersion);
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
+				return WSS_SSL_KEY_STORE_FILE_EDEFAULT == null ? wssSslKeyStoreFile != null : !WSS_SSL_KEY_STORE_FILE_EDEFAULT.equals(wssSslKeyStoreFile);
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
+				return WSS_SSL_KEY_STORE_PASS_EDEFAULT == null ? wssSslKeyStorePass != null : !WSS_SSL_KEY_STORE_PASS_EDEFAULT.equals(wssSslKeyStorePass);
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
+				return WSS_SSL_TRUST_STORE_FILE_EDEFAULT == null ? wssSslTrustStoreFile != null : !WSS_SSL_TRUST_STORE_FILE_EDEFAULT.equals(wssSslTrustStoreFile);
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
+				return WSS_SSL_TRUST_STORE_PASS_EDEFAULT == null ? wssSslTrustStorePass != null : !WSS_SSL_TRUST_STORE_PASS_EDEFAULT.equals(wssSslTrustStorePass);
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
+				return WSS_SSL_CERT_PASS_EDEFAULT == null ? wssSslCertPass != null : !WSS_SSL_CERT_PASS_EDEFAULT.equals(wssSslCertPass);
+			case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
+				return WS_DEFAULT_CONTENT_TYPE_EDEFAULT == null ? wsDefaultContentType != null : !WS_DEFAULT_CONTENT_TYPE_EDEFAULT.equals(wsDefaultContentType);
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
+				return WS_SHUTDOWN_STATUS_CODE_EDEFAULT == null ? wsShutdownStatusCode != null : !WS_SHUTDOWN_STATUS_CODE_EDEFAULT.equals(wsShutdownStatusCode);
+			case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
+				return WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT == null ? wsShutdownStatusMessage != null : !WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT.equals(wsShutdownStatusMessage);
+			case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
+				return wsUsePortOffset != WS_USE_PORT_OFFSET_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
+				return WSS_SSL_PROTOCOLS_EDEFAULT == null ? wssSslProtocols != null : !WSS_SSL_PROTOCOLS_EDEFAULT.equals(wssSslProtocols);
+			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
+				return WSS_SSL_CIPHER_SUITES_EDEFAULT == null ? wssSslCipherSuites != null : !WSS_SSL_CIPHER_SUITES_EDEFAULT.equals(wssSslCipherSuites);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -10580,6 +11151,28 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportMQTTSslTruststorePassword);
 		result.append(", transportMQTTSslVersion: ");
 		result.append(transportMQTTSslVersion);
+		result.append(", wssSslKeyStoreFile: ");
+		result.append(wssSslKeyStoreFile);
+		result.append(", wssSslKeyStorePass: ");
+		result.append(wssSslKeyStorePass);
+		result.append(", wssSslTrustStoreFile: ");
+		result.append(wssSslTrustStoreFile);
+		result.append(", wssSslTrustStorePass: ");
+		result.append(wssSslTrustStorePass);
+		result.append(", wssSslCertPass: ");
+		result.append(wssSslCertPass);
+		result.append(", wsDefaultContentType: ");
+		result.append(wsDefaultContentType);
+		result.append(", wsShutdownStatusCode: ");
+		result.append(wsShutdownStatusCode);
+		result.append(", wsShutdownStatusMessage: ");
+		result.append(wsShutdownStatusMessage);
+		result.append(", wsUsePortOffset: ");
+		result.append(wsUsePortOffset);
+		result.append(", wssSslProtocols: ");
+		result.append(wssSslProtocols);
+		result.append(", wssSslCipherSuites: ");
+		result.append(wssSslCipherSuites);
 		result.append(')');
 		return result.toString();
 	}

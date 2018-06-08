@@ -23,7 +23,6 @@ import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProv
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 
 public class InboundEndpointCreationTypes extends AbstractListDataProvider {
-
 	@Override
 	public List<ListData> getListData(String modelProperty, ProjectDataModel model) {
 		List<ListData> epTypeList = new ArrayList<ListData>();
@@ -53,7 +52,8 @@ public class InboundEndpointCreationTypes extends AbstractListDataProvider {
 				InboundEndpointArtifactProperties.typeWSO2_MB));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeWS,
 				InboundEndpointArtifactProperties.typeWS));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeWSS,
+				InboundEndpointArtifactProperties.typeWSS));
 		return epTypeList;
 	}
-
 }

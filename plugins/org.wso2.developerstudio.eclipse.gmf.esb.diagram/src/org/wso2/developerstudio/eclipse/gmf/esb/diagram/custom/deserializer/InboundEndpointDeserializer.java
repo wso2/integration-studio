@@ -68,6 +68,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET;
 
 import java.util.Map;
 
@@ -194,6 +195,9 @@ public class InboundEndpointDeserializer
 		} else if (InboundEndpointConstants.WS.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.WS);
 			updateParameters(object, InboundEndpointType.WS);
+		} else if (InboundEndpointConstants.WSS.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.WSS);
+			updateParameters(object, InboundEndpointType.WSS);
 		}
 
 		// Creating Sequence mediator graphically
@@ -865,6 +869,45 @@ public class InboundEndpointDeserializer
 						} else if (paramEntry.getValue().equals("2")) {
 							executeSetValueCommand(INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL,
 									WSClientSideBroadcastLevel.TWO);
+						}
+					} else if (paramEntry.getKey().equals(InboundEndpointConstants.WS_USE_PORT_OFFSET)) {
+						if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_USE_PORT_OFFSET, true);
+						} else {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_USE_PORT_OFFSET, false);
+						}
+					}
+				}
+			}
+		} else if (InboundEndpointType.WSS.equals(inboundEndpointType)) {
+			for (WSInboundEndpointParameter parameterType : WSInboundEndpointParameter.values()) {
+				if (parameterType.isMatchedWithParameterName(paramEntry.getKey())) {
+					if (parameterType.canHoldKeyValue()) {
+						if (ParameterKeyValueType.VALUE.equals(type)) {
+							executeSetValueCommand(parameterType.getEAttributeValue(), paramEntry.getValue());
+						} else if (ParameterKeyValueType.KEY.equals(type)) {
+							executeSetValueCommand(parameterType.getEAttributeValue(),
+									KEY_TYPE_PARAMETER_PREFIX + paramEntry.getValue());
+						} else {
+							throw new UnsupportedOperationException(
+									"Operation for ParameterKeyValueType " + type + " is not supported");
+						}
+					} else if (paramEntry.getKey().equals(InboundEndpointConstants.WS_CLIENT_SIDE_BROADCAST_LEVEL)) {
+						if (paramEntry.getValue().equals("0")) {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL,
+									WSClientSideBroadcastLevel.ZERO);
+						} else if (paramEntry.getValue().equals("1")) {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL,
+									WSClientSideBroadcastLevel.ONE);
+						} else if (paramEntry.getValue().equals("2")) {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL,
+									WSClientSideBroadcastLevel.TWO);
+						}
+					} else if (paramEntry.getKey().equals(InboundEndpointConstants.WS_USE_PORT_OFFSET)) {
+						if (paramEntry.getValue().equals(InboundEndpointConstants.TRUE)) {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_USE_PORT_OFFSET, true);
+						} else {
+							executeSetValueCommand(INBOUND_ENDPOINT__WS_USE_PORT_OFFSET, false);
 						}
 					}
 				}

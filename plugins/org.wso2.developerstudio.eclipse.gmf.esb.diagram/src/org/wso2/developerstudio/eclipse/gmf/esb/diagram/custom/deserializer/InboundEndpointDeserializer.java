@@ -880,7 +880,7 @@ public class InboundEndpointDeserializer
 				}
 			}
 		} else if (InboundEndpointType.WSS.equals(inboundEndpointType)) {
-			for (WSInboundEndpointParameter parameterType : WSInboundEndpointParameter.values()) {
+			for (WSSInboundEndpointParameter parameterType : WSSInboundEndpointParameter.values()) {
 				if (parameterType.isMatchedWithParameterName(paramEntry.getKey())) {
 					if (parameterType.canHoldKeyValue()) {
 						if (ParameterKeyValueType.VALUE.equals(type)) {

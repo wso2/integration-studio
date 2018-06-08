@@ -330,6 +330,25 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSPinnedServersPropertyDescriptor(object);	
 			addTransportJMSConcurrentConsumersPropertyDescriptor(object);
 			addTransportJMSRetryDurationPropertyDescriptor(object);
+		case WSS:
+			addWsInboundPortPropertyDescriptor(object);
+			addWsClientSideBroadcastLevelPropertyDescriptor(object);
+			addWsOutflowDispatchSequencePropertyDescriptor(object);
+			addWsOutflowDispatchFaultSequencePropertyDescriptor(object);
+			addWssSslKeyStoreFilePropertyDescriptor(object);
+			addWssSslKeyStorePassPropertyDescriptor(object);
+			addWssSslTrustStoreFilePropertyDescriptor(object);
+			addWssSslTrustStorePassPropertyDescriptor(object);
+			addWssSslCertPassPropertyDescriptor(object);
+			addWsBossThreadPoolSizePropertyDescriptor(object);
+			addWsWorkerThreadPoolSizePropertyDescriptor(object);
+			addWsSubprotocolHandlerClassPropertyDescriptor(object);
+			addWsDefaultContentTypePropertyDescriptor(object);
+			addWsShutdownStatusCodePropertyDescriptor(object);
+			addWsShutdownStatusMessagePropertyDescriptor(object);
+			addWsUsePortOffsetPropertyDescriptor(object);
+			addWssSslProtocolsPropertyDescriptor(object);
+			addWssSslCipherSuitesPropertyDescriptor(object);
 		case WS:
 			addWsInboundPortPropertyDescriptor(object);
 			addWsClientSideBroadcastLevelPropertyDescriptor(object);
@@ -343,25 +362,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addWsShutdownStatusMessagePropertyDescriptor(object);
 			addWsPipelineHandlerClassPropertyDescriptor(object);
 			addWsUsePortOffsetPropertyDescriptor(object);
-		case WSS:
-			addWsInboundPortPropertyDescriptor(object);
-			addWsClientSideBroadcastLevelPropertyDescriptor(object);
-			addWsOutflowDispatchSequencePropertyDescriptor(object);
-			addWsOutflowDispatchFaultSequencePropertyDescriptor(object);
-			addWssSslKeyStoreFilePropertyDescriptor(object);
-			addWssSslKeyStorePassPropertyDescriptor(object);
-			addWssSslTrustStoreFilePropertyDescriptor(object);
-			addWssSslKeyStorePassPropertyDescriptor(object);
-			addWssSslCertPassPropertyDescriptor(object);
-			addWsBossThreadPoolSizePropertyDescriptor(object);
-			addWsWorkerThreadPoolSizePropertyDescriptor(object);
-			addWsSubprotocolHandlerClassPropertyDescriptor(object);
-			addWsDefaultContentTypePropertyDescriptor(object);
-			addWsShutdownStatusCodePropertyDescriptor(object);
-			addWsShutdownStatusMessagePropertyDescriptor(object);
-			addWsUsePortOffsetPropertyDescriptor(object);
-			addWssSslProtocolsPropertyDescriptor(object);
-			addWssSslCipherSuitesPropertyDescriptor(object);
 		default:
 			break;
 		}

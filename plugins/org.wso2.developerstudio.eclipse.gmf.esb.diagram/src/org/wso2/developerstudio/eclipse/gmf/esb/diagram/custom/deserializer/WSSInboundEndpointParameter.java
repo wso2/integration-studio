@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 WSO2, Inc. (http://wso2.com)
+ * Copyright 2018 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,10 +20,16 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE;
@@ -38,7 +44,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConst
  * whether it could hold key attribute
  *
  */
-public enum WSInboundEndpointParameter {
+public enum WSSInboundEndpointParameter {
 
 	INBOUND_ENDPOINT__WS_INBOUND_PORT_TYPE(InboundEndpointConstants.INBOUND_WS_PORT, INBOUND_ENDPOINT__WS_INBOUND_PORT, true),
 	INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL_TYPE(InboundEndpointConstants.WS_CLIENT_SIDE_BROADCAST_LEVEL, 
@@ -47,14 +53,26 @@ public enum WSInboundEndpointParameter {
 			INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE, true),
 	INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_TYPE(InboundEndpointConstants.WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE,
 			INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE, true),
+	INBOUND_ENDPOINT__WSS_SSL_CERT_PASS_TYPE(InboundEndpointConstants.WSS_SSL_CERT_PASS,
+			INBOUND_ENDPOINT__WSS_SSL_CERT_PASS, true),
+	INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES_TYPE(InboundEndpointConstants.WSS_SSL_CIPHER_SUITES,
+			INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES, true),
+	INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE_TYPE(InboundEndpointConstants.WSS_SSL_KEY_STORE_FILE,
+			INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE, true),
+	INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS_TYPE(InboundEndpointConstants.WSS_SSL_KEY_STORE_PASS,
+			INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS, true),
+	INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS_TYPE(InboundEndpointConstants.WSS_SSL_PROTOCOLS,
+			INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS, true),
+	INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE_TYPE(InboundEndpointConstants.WSS_SSL_TRUST_STORE_FILE,
+			INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE, true),
+	INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS_TYPE(InboundEndpointConstants.WSS_SSL_TRUST_STORE_PASS,
+			INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS, true),
 	INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE_TYPE(InboundEndpointConstants.WS_BOSS_THREAD_POOL_SIZE,
 			INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE, true),
 	INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE_TYPE(InboundEndpointConstants.WS_WORKER_THREAD_POOL_SIZE,
 			INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE, true),
 	INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS_TYPE(InboundEndpointConstants.WS_SUBPROTOCOL_HANDLER_CLASS, 
 			INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS, true),
-	INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS_TYPE(InboundEndpointConstants.WS_PIPELINE_HANDLER_CLASS,
-			INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS, true),
 	INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE_TYPE(InboundEndpointConstants.WS_DEFAULT_CONTENT_TYPE,
 			INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE,true),
 	INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE_TYPE(InboundEndpointConstants.WS_SHUTDWN_STATUS_CODE,
@@ -69,7 +87,7 @@ public enum WSInboundEndpointParameter {
     private final EAttribute eAttributeValue;
     private final boolean holdsKeyValue;
 
-    WSInboundEndpointParameter(String name, EAttribute eAttributeValue, boolean holdsKeyValue) {
+    WSSInboundEndpointParameter(String name, EAttribute eAttributeValue, boolean holdsKeyValue) {
         this.name = name;
         this.eAttributeValue = eAttributeValue;
         this.holdsKeyValue = holdsKeyValue;

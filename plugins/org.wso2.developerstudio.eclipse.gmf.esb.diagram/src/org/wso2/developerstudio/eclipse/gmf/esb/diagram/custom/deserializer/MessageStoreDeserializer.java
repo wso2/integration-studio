@@ -543,21 +543,32 @@ public class MessageStoreDeserializer
 						store.getParameters().get(STORE_RABBITMQ_VIRTUAL_HOST));
 				
 				
-				if (store.getParameters().get(STORE_RABBITMQ_SSL_ENABLED) != null
-						&& store.getParameters().get(STORE_RABBITMQ_SSL_ENABLED).toString().equalsIgnoreCase("false")) {
+				if (store.getParameters().get(STORE_RABBITMQ_SSL_ENABLED) == null) {
 					rabbitMQStore.rabbitMQ_sslEnabled.select(1);
+					rabbitMQStore.setSSLFields(false);
 				} else {
-					rabbitMQStore.rabbitMQ_sslEnabled.select(0);
-					rabbitMQStore.setSSLFields(true);
-					setTextValue(rabbitMQStore.rabbitMQ_keyStoreLocation, store.getParameters().get(STORE_RABBITMQ_SSL_KEYSTORE_LOCATION));
-					setTextValue(rabbitMQStore.rabbitMQ_keyStoreType, store.getParameters().get(STORE_RABBITMQ_SSL_KEYSTORE_TYPE));
-					setTextValue(rabbitMQStore.rabbitMQ_keyStorePassword, store.getParameters().get(STORE_RABBITMQ_SSL_KEYSTORE_PASSWORD));
-					setTextValue(rabbitMQStore.rabbitMQ_trustStoreLocation, store.getParameters().get(STORE_RABBITMQ_SSL_TRUSTSTORE_LOCATION));
-					setTextValue(rabbitMQStore.rabbitMQ_trustStoreType, store.getParameters().get(STORE_RABBITMQ_SSL_TRUSTSTORE_TYPE));
-					setTextValue(rabbitMQStore.rabbitMQ_trustStorePassword, store.getParameters().get(STORE_RABBITMQ_SSL_TRUSTSTORE_PASSWORD));
-					setTextValue(rabbitMQStore.rabbitMQ_sslVersion, store.getParameters().get(STORE_RABBITMQ_SSL_VERSION));
+					if (store.getParameters().get(STORE_RABBITMQ_SSL_ENABLED).toString().equalsIgnoreCase("false")) {
+						rabbitMQStore.rabbitMQ_sslEnabled.select(1);
+						rabbitMQStore.setSSLFields(false);
+					} else {
+						rabbitMQStore.rabbitMQ_sslEnabled.select(0);
+						rabbitMQStore.setSSLFields(true);
+						setTextValue(rabbitMQStore.rabbitMQ_keyStoreLocation,
+								store.getParameters().get(STORE_RABBITMQ_SSL_KEYSTORE_LOCATION));
+						setTextValue(rabbitMQStore.rabbitMQ_keyStoreType,
+								store.getParameters().get(STORE_RABBITMQ_SSL_KEYSTORE_TYPE));
+						setTextValue(rabbitMQStore.rabbitMQ_keyStorePassword,
+								store.getParameters().get(STORE_RABBITMQ_SSL_KEYSTORE_PASSWORD));
+						setTextValue(rabbitMQStore.rabbitMQ_trustStoreLocation,
+								store.getParameters().get(STORE_RABBITMQ_SSL_TRUSTSTORE_LOCATION));
+						setTextValue(rabbitMQStore.rabbitMQ_trustStoreType,
+								store.getParameters().get(STORE_RABBITMQ_SSL_TRUSTSTORE_TYPE));
+						setTextValue(rabbitMQStore.rabbitMQ_trustStorePassword,
+								store.getParameters().get(STORE_RABBITMQ_SSL_TRUSTSTORE_PASSWORD));
+						setTextValue(rabbitMQStore.rabbitMQ_sslVersion,
+								store.getParameters().get(STORE_RABBITMQ_SSL_VERSION));
+					}
 				}
-				
 
 			} else if (dummyMessageStore.getClassName().equalsIgnoreCase(JDBC_MS_FQN)) {
 				messageStorePage.storeType.select(4);

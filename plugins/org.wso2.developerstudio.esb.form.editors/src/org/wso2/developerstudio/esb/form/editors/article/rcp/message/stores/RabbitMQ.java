@@ -312,6 +312,8 @@ public class RabbitMQ implements IMessageStore {
 	public void setSSLFields(boolean check) {
 		if (check) {
 			enableSSLfields();
+		}else {
+			dissableSSLfields();
 		}
 	}
 

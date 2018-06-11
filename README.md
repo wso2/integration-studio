@@ -18,6 +18,7 @@ org.wso2.developerstudio.carbon.server.feature
 org.wso2.developerstudio.carbon.server-40.feature
 org.wso2.developerstudio.carbon.server-42.feature
 org.wso2.developerstudio.carbon.server-44.feature
+org.wso2.developerstudio.carbon.server-44ei.feature
 org.wso2.developerstudio.carbon.server-remote.feature
 org.wso2.developerstudio.cloud.utils.feature
 org.wso2.developerstudio.dashboard.feature

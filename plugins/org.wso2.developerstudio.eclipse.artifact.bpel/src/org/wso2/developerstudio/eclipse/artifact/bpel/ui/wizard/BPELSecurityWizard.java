@@ -42,13 +42,17 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
@@ -339,10 +343,22 @@ public class BPELSecurityWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.selection = selection;
 		IResource resource = (IResource) selection.getFirstElement();
-		activeProject = resource.getProject();
-		setWindowTitle("Apply Security");
+		if(resource != null) {
+			activeProject = resource.getProject();
+			setWindowTitle("Apply Security");
+		}else {
+			showWarningMessage();
+		}
+		
 	}
 
+	private void showWarningMessage() {
+		String errorMsgHeader = "Warning !";
+		String reason = "Please select a BPEL Project before applying Security";
+		IStatus editorStatus = new Status(IStatus.WARNING, Activator.PLUGIN_ID, reason);
+		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Warning ", errorMsgHeader, editorStatus);
+ 	}
+	
 	public void addPages() {
 
 		if (policyFileLocation == null) {

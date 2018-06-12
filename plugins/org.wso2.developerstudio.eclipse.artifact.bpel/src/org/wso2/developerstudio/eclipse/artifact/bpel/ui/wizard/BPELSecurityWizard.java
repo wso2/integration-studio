@@ -343,18 +343,31 @@ public class BPELSecurityWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.selection = selection;
 		IResource resource = (IResource) selection.getFirstElement();
+		String reason;
 		if(resource != null) {
-			activeProject = resource.getProject();
-			setWindowTitle("Apply Security");
+			if(checkBPELProject(resource)) {
+				activeProject = resource.getProject();
+				setWindowTitle("Apply Security");
+			}else {
+				reason = "Please select a valid BPEL Project to apply Security";
+				showWarningMessage(reason);
+			}
 		}else {
-			showWarningMessage();
+			reason = "Please select a BPEL Project before applying Security";
+			showWarningMessage(reason);
 		}
 		
 	}
+	
+	private boolean checkBPELProject(IResource resource) {
+		if(resource.getProject().getFolder(BPEL_CONTENT).exists()) {
+			return true;
+		}
+		return false;		
+	}
 
-	private void showWarningMessage() {
+	private void showWarningMessage(String reason) {
 		String errorMsgHeader = "Warning !";
-		String reason = "Please select a BPEL Project before applying Security";
 		IStatus editorStatus = new Status(IStatus.WARNING, Activator.PLUGIN_ID, reason);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Warning ", errorMsgHeader, editorStatus);
  	}

@@ -120,7 +120,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -130,17 +130,17 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/platform-bundles/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/releases/6.2.0-201803151238/</url>
             <layout>p2</layout>
         </repository>
-        <!--repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/kernel-p2-4.1.0.201804040908/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -150,9 +150,9 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/platform-bundles/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/updates/</url>
             <layout>p2</layout>
-        </repository-->
+        </repository>
         <repository>
             <releases>
                 <enabled>true</enabled>

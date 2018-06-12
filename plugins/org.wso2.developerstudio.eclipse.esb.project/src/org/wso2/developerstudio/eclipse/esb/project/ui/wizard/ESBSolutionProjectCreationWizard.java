@@ -16,21 +16,25 @@
 package org.wso2.developerstudio.eclipse.esb.project.ui.wizard;
 
 import java.io.File;
-
+import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.ISelection;
+import org.wso2.developerstudio.eclipse.artifact.connector.model.ConnectorModel;
 import org.wso2.developerstudio.eclipse.artifact.connector.ui.wizard.ConnectorCreationWizard;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DistributionProjectModel;
 import org.wso2.developerstudio.eclipse.distribution.project.ui.wizard.DistributionProjectWizard;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.model.ESBSolutionProjectModel;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBImageUtils;
+import org.wso2.developerstudio.eclipse.general.project.model.GeneralProjectModel;
 import org.wso2.developerstudio.eclipse.general.project.ui.wizard.GeneralProjectWizard;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+
 
 /**
  * This wizard class is to create ESB, Registry, Connector Exporter, Composite
@@ -42,6 +46,7 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private IProject project;
 	private ESBSolutionProjectModel esbSolutionProjectModel;
+	private File pomFile;
 
 	public ESBSolutionProjectCreationWizard() {
 		setEsbSolutionProjectModel(new ESBSolutionProjectModel());
@@ -50,39 +55,46 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	}
 
 	public boolean performFinish() {
-		String projectName = esbSolutionProjectModel.getProjectName();
 		File location = esbSolutionProjectModel.getLocation();
+
 		// Creating ESB project
 		ESBProjectWizard esbProjectWizard = new ESBProjectWizard();
 		esbProjectWizard.setEsbProjectModel(esbSolutionProjectModel);
 		esbProjectWizard.setModel(esbSolutionProjectModel);
 		esbProjectWizard.performFinish();
-
+		pomFile = esbProjectWizard.getPomFile();
 		// Creating Registry Project
 		if (esbSolutionProjectModel.isRegistryProjectChecked()) {
 			GeneralProjectWizard generalProjectWizard = new GeneralProjectWizard();
+			GeneralProjectModel generalProjectModel = new GeneralProjectModel();
 			String registryProjectName = esbSolutionProjectModel.getRegistryProjectName();
 			try {
-				esbSolutionProjectModel.setProjectName(registryProjectName);
-				esbSolutionProjectModel.setLocation(new File(location, registryProjectName));
+				generalProjectModel.setProjectName(registryProjectName);
+				generalProjectModel.setLocation(new File(location, registryProjectName));
+				updateMavenInformation(pomFile);
+				generalProjectModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
+
 			} catch (ObserverFailedException e1) {
 				log.error("Failed to set project name : " + registryProjectName, e1);
 			}
-			generalProjectWizard.setModel(esbSolutionProjectModel);
+			generalProjectWizard.setModel(generalProjectModel);
 			generalProjectWizard.performFinish();
 		}
 
 		// Creating connector Exporter Project
 		if (esbSolutionProjectModel.isConnectorExporterProjectChecked()) {
 			ConnectorCreationWizard connectorWizard = new ConnectorCreationWizard();
+			ConnectorModel connectorModel = new ConnectorModel();
 			String connectorProjectName = esbSolutionProjectModel.getConnectorExporterProjectName();
 			try {
-				esbSolutionProjectModel.setProjectName(connectorProjectName);
-				esbSolutionProjectModel.setLocation(new File(location, connectorProjectName));
+				connectorModel.setProjectName(connectorProjectName);
+				connectorModel.setLocation(new File(location, connectorProjectName));
+				updateMavenInformation(pomFile);
+				connectorModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 			} catch (ObserverFailedException e1) {
 				log.error("Failed to set project name : " + connectorProjectName, e1);
 			}
-			connectorWizard.setModel(esbSolutionProjectModel);
+			connectorWizard.setModel(connectorModel);
 			connectorWizard.performFinish();
 		}
 
@@ -96,9 +108,9 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				esbSolutionProjectModel.setLocation(new File(location, distributionProjectName));
 				distributionModel.setProjectName(distributionProjectName);
 				distributionModel.setLocation(esbSolutionProjectModel.getLocation());
-				distributionModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				distributionModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
 				distributionModel.setLocation(esbSolutionProjectModel.getLocation());
+				updateMavenInformation(pomFile);
 				distributionModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				distributionModel.setSelectedOption(esbSolutionProjectModel.getSelectedOption());
 				distributionModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
@@ -110,6 +122,26 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		}
 
 		return true;
+	}
+
+	private void updateMavenInformation(File pomLocation) {
+		MavenProject mavenProject = getMavenProject(pomLocation);
+		esbSolutionProjectModel.getMavenInfo().setGroupId(mavenProject.getGroupId());
+		esbSolutionProjectModel.getMavenInfo().setArtifactId(mavenProject.getArtifactId());
+		esbSolutionProjectModel.getMavenInfo().setVersion(mavenProject.getVersion());
+	}
+
+	public MavenProject getMavenProject(File pomLocation) {
+		MavenProject mavenProject = null;
+		if (pomLocation != null && pomLocation.exists()) {
+			try {
+				mavenProject = MavenUtils.getMavenProject(pomLocation);
+			} catch (Exception e) {
+				log.error("error reading pom file", e);
+			}
+		}
+		return mavenProject;
+
 	}
 
 	public ESBSolutionProjectModel getEsbSolutionProjectModel() {

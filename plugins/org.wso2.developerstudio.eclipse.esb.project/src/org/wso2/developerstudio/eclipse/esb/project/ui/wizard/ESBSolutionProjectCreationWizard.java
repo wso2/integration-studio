@@ -16,7 +16,6 @@
 package org.wso2.developerstudio.eclipse.esb.project.ui.wizard;
 
 import java.io.File;
-
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;

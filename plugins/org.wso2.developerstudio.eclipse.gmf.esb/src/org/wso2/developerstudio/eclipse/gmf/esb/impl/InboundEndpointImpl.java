@@ -592,7 +592,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INTERVAL_EDEFAULT = "";
+	protected static final String INTERVAL_EDEFAULT = "1000";
 
 	/**
 	 * The cached value of the '{@link #getInterval() <em>Interval</em>}' attribute.

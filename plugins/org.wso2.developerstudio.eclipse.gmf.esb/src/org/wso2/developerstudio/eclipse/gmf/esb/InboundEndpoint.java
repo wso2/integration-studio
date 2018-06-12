@@ -3843,7 +3843,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Interval</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Interval</em>' attribute isn't clear,
@@ -3853,7 +3853,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @return the value of the '<em>Interval</em>' attribute.
 	 * @see #setInterval(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Interval()
-	 * @model default=""
+	 * @model default="1000"
 	 * @generated
 	 */
 	String getInterval();

@@ -47,6 +47,9 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private IProject project;
 	private ESBSolutionProjectModel esbSolutionProjectModel;
 	private File pomFile;
+	private String CAPP_ARTIFACT_ID = "CompositeApplication";
+	private String CONNECTOR_ARTIFACT_ID = "ConnectorExporter";
+	private String REGISTRY_ARTIFACT_ID = "Registry";
 
 	public ESBSolutionProjectCreationWizard() {
 		setEsbSolutionProjectModel(new ESBSolutionProjectModel());
@@ -71,7 +74,8 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			try {
 				generalProjectModel.setProjectName(registryProjectName);
 				generalProjectModel.setLocation(new File(location, registryProjectName));
-				updateMavenInformation(pomFile);
+				updateMavenInformation(pomFile,REGISTRY_ARTIFACT_ID);
+				generalProjectModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				generalProjectModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 
 			} catch (ObserverFailedException e1) {
@@ -89,7 +93,8 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			try {
 				connectorModel.setProjectName(connectorProjectName);
 				connectorModel.setLocation(new File(location, connectorProjectName));
-				updateMavenInformation(pomFile);
+				updateMavenInformation(pomFile,CONNECTOR_ARTIFACT_ID);
+				connectorModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				connectorModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 			} catch (ObserverFailedException e1) {
 				log.error("Failed to set project name : " + connectorProjectName, e1);
@@ -110,7 +115,8 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 				distributionModel.setLocation(esbSolutionProjectModel.getLocation());
 				distributionModel.setIsUserDefine(esbSolutionProjectModel.isUserSet());
 				distributionModel.setLocation(esbSolutionProjectModel.getLocation());
-				updateMavenInformation(pomFile);
+				updateMavenInformation(pomFile,CAPP_ARTIFACT_ID);
+				distributionModel.setGroupId(esbSolutionProjectModel.getGroupId());
 				distributionModel.setMavenInfo(esbSolutionProjectModel.getMavenInfo());
 				distributionModel.setSelectedOption(esbSolutionProjectModel.getSelectedOption());
 				distributionModel.setSelectedWorkingSets(esbSolutionProjectModel.getSelectedWorkingSets());
@@ -124,10 +130,10 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		return true;
 	}
 
-	private void updateMavenInformation(File pomLocation) {
+	private void updateMavenInformation(File pomLocation, String name) {
 		MavenProject mavenProject = getMavenProject(pomLocation);
 		esbSolutionProjectModel.getMavenInfo().setGroupId(mavenProject.getGroupId());
-		esbSolutionProjectModel.getMavenInfo().setArtifactId(mavenProject.getArtifactId());
+		esbSolutionProjectModel.getMavenInfo().setArtifactId(mavenProject.getArtifactId()+name);
 		esbSolutionProjectModel.getMavenInfo().setVersion(mavenProject.getVersion());
 	}
 

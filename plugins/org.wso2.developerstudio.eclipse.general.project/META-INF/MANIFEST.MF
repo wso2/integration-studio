@@ -43,5 +43,6 @@ Import-Package: org.apache.axiom.om,
 Export-Package: org.wso2.developerstudio.eclipse.general.project.artifact;version="6.3.0",
  org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="6.3.0",
  org.wso2.developerstudio.eclipse.general.project.dialogs;version="6.3.0",
+ org.wso2.developerstudio.eclipse.general.project.model;version="6.3.0",
  org.wso2.developerstudio.eclipse.general.project.ui.wizard;version="6.3.0",
  org.wso2.developerstudio.eclipse.general.project.utils;version="6.3.0"

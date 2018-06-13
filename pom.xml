@@ -70,7 +70,7 @@
             <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
-        <!--repository>
+        <repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -79,7 +79,7 @@
             <id>DevS-Kernel-p2-updates-Repository</id>
             <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/updates/</url>
             <layout>p2</layout>
-        </repository-->
+        </repository>
 		<repository>
 			<releases>
 				<enabled>true</enabled>

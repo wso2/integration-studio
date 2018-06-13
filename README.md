@@ -6,7 +6,7 @@ Devstudio Tooling for BPS project contains two main components
   - Human Task Editor
 
 ### Version
-1.0.0 - Alpha
+6.3.0
 
 ### How to Build
 This requires maven installed in your system. Run these commands to clone the repo and build it.

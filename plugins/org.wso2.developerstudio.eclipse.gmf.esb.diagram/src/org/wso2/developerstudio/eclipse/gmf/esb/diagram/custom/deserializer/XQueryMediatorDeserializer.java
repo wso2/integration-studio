@@ -16,7 +16,6 @@ import org.apache.synapse.mediators.xquery.MediatorVariable;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -129,30 +128,38 @@ public class XQueryMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 					}
 					
 					ItemType typeNum = varBase.getType();
+					XdmNodeKind nodeKid = varBase.getNodeKind();
 					
-					if(typeNum.equals(ItemType.INT)){
-						vishualVariable.setVariableType(XQueryVariableType.INT);
-					}else if(typeNum.equals(ItemType.INTEGER)){
-						vishualVariable.setVariableType(XQueryVariableType.INTEGER);
-					}else if(typeNum.equals(ItemType.BOOLEAN)){
-						vishualVariable.setVariableType(XQueryVariableType.BOOLEAN);
-					}else if(typeNum.equals(ItemType.BYTE)){
-						vishualVariable.setVariableType(XQueryVariableType.BYTE);
-					}else if(typeNum.equals(ItemType.DOUBLE)){
-						vishualVariable.setVariableType(XQueryVariableType.DOUBLE);
-					}else if(typeNum.equals(ItemType.SHORT)){
-						vishualVariable.setVariableType(XQueryVariableType.SHORT);
-					}else if(typeNum.equals(ItemType.LONG)){
-						vishualVariable.setVariableType(XQueryVariableType.LONG);
-					}else if(typeNum.equals(ItemType.FLOAT)){
-						vishualVariable.setVariableType(XQueryVariableType.FLOAT);
-					}else if(typeNum.equals(ItemType.STRING)){
-						vishualVariable.setVariableType(XQueryVariableType.STRING);
-					}else if(typeNum.equals(XdmNodeKind.DOCUMENT)){
-						vishualVariable.setVariableType(XQueryVariableType.DOCUMENT);
-					}else if(typeNum.equals(XdmNodeKind.ELEMENT)){
-						vishualVariable.setVariableType(XQueryVariableType.ELEMENT);
+					if(typeNum != null) {
+						if(typeNum.equals(ItemType.INT)){
+							vishualVariable.setVariableType(XQueryVariableType.INT);
+						}else if(typeNum.equals(ItemType.INTEGER)){
+							vishualVariable.setVariableType(XQueryVariableType.INTEGER);
+						}else if(typeNum.equals(ItemType.BOOLEAN)){
+							vishualVariable.setVariableType(XQueryVariableType.BOOLEAN);
+						}else if(typeNum.equals(ItemType.BYTE)){
+							vishualVariable.setVariableType(XQueryVariableType.BYTE);
+						}else if(typeNum.equals(ItemType.DOUBLE)){
+							vishualVariable.setVariableType(XQueryVariableType.DOUBLE);
+						}else if(typeNum.equals(ItemType.SHORT)){
+							vishualVariable.setVariableType(XQueryVariableType.SHORT);
+						}else if(typeNum.equals(ItemType.LONG)){
+							vishualVariable.setVariableType(XQueryVariableType.LONG);
+						}else if(typeNum.equals(ItemType.FLOAT)){
+							vishualVariable.setVariableType(XQueryVariableType.FLOAT);
+						}else if(typeNum.equals(ItemType.STRING)){
+							vishualVariable.setVariableType(XQueryVariableType.STRING);
+						}
 					}
+					
+					if(nodeKid != null) {
+						if(nodeKid.equals(XdmNodeKind.DOCUMENT)){
+							vishualVariable.setVariableType(XQueryVariableType.DOCUMENT);
+						}else if(nodeKid.equals(XdmNodeKind.ELEMENT)){
+							vishualVariable.setVariableType(XQueryVariableType.ELEMENT);
+						}
+					}
+					
 					
 				} else if(mediatorVariable instanceof MediatorCustomVariable){
 					
@@ -193,31 +200,39 @@ public class XQueryMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 						vishualVariable.setValueKey(regKey);
 					}
 					
-					ItemType typeNum = customVar.getType();
 					
-					if(typeNum.equals(ItemType.INT)){
-						vishualVariable.setVariableType(XQueryVariableType.INT);
-					}else if(typeNum.equals(ItemType.INTEGER)){
-						vishualVariable.setVariableType(XQueryVariableType.INTEGER);
-					}else if(typeNum.equals(ItemType.BOOLEAN)){
-						vishualVariable.setVariableType(XQueryVariableType.BOOLEAN);
-					}else if(typeNum.equals(ItemType.BYTE)){
-						vishualVariable.setVariableType(XQueryVariableType.BYTE);
-					}else if(typeNum.equals(ItemType.DOUBLE)){
-						vishualVariable.setVariableType(XQueryVariableType.DOUBLE);
-					}else if(typeNum.equals(ItemType.SHORT)){
-						vishualVariable.setVariableType(XQueryVariableType.SHORT);
-					}else if(typeNum.equals(ItemType.LONG)){
-						vishualVariable.setVariableType(XQueryVariableType.LONG);
-					}else if(typeNum.equals(ItemType.FLOAT)){
-						vishualVariable.setVariableType(XQueryVariableType.FLOAT);
-					}else if(typeNum.equals(ItemType.STRING)){
-						vishualVariable.setVariableType(XQueryVariableType.STRING);
-					}else if(typeNum.equals(XdmNodeKind.DOCUMENT)){
-						vishualVariable.setVariableType(XQueryVariableType.DOCUMENT);
-					}else if(typeNum.equals(XdmNodeKind.ELEMENT)){
-						vishualVariable.setVariableType(XQueryVariableType.ELEMENT);
-					}					
+					ItemType typeNum = customVar.getType();
+					XdmNodeKind nodeKid = customVar.getNodeKind();
+					if(typeNum != null) {
+						if(typeNum.equals(ItemType.INT)){
+							vishualVariable.setVariableType(XQueryVariableType.INT);
+						}else if(typeNum.equals(ItemType.INTEGER)){
+							vishualVariable.setVariableType(XQueryVariableType.INTEGER);
+						}else if(typeNum.equals(ItemType.BOOLEAN)){
+							vishualVariable.setVariableType(XQueryVariableType.BOOLEAN);
+						}else if(typeNum.equals(ItemType.BYTE)){
+							vishualVariable.setVariableType(XQueryVariableType.BYTE);
+						}else if(typeNum.equals(ItemType.DOUBLE)){
+							vishualVariable.setVariableType(XQueryVariableType.DOUBLE);
+						}else if(typeNum.equals(ItemType.SHORT)){
+							vishualVariable.setVariableType(XQueryVariableType.SHORT);
+						}else if(typeNum.equals(ItemType.LONG)){
+							vishualVariable.setVariableType(XQueryVariableType.LONG);
+						}else if(typeNum.equals(ItemType.FLOAT)){
+							vishualVariable.setVariableType(XQueryVariableType.FLOAT);
+						}else if(typeNum.equals(ItemType.STRING)){
+							vishualVariable.setVariableType(XQueryVariableType.STRING);
+						}			
+					}
+					
+					if(nodeKid != null) {
+						if(nodeKid.equals(XdmNodeKind.DOCUMENT)){
+							vishualVariable.setVariableType(XQueryVariableType.DOCUMENT);
+						}else if(nodeKid.equals(XdmNodeKind.ELEMENT)){
+							vishualVariable.setVariableType(XQueryVariableType.ELEMENT);
+						}			
+					}
+							
 				}
 				
 				varList.add(vishualVariable);			

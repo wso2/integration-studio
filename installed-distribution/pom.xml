@@ -71,7 +71,8 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>${basedir}/scripts/intaller-script-oxygen.sh</executable>
+                                                        <commandlineArgs>${localRepositoryPath}</commandlineArgs>
+							<executable>${basedir}/scripts/installer-script-oxygen.sh</executable>
 						</configuration>
 					</execution>
 				</executions>

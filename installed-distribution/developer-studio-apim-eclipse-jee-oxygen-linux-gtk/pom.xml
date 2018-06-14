@@ -86,6 +86,7 @@
                             <goal>unpack</goal>
                         </goals>
                         <configuration>
+                            <artifactItems>
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
                                     <artifactId>eclipse-jee-oxygen-3a-linux-gtk</artifactId>

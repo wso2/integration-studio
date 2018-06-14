@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Perspective
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.apim.perspective;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.5.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.registry.apim.perspective.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="4.1.0",
- org.wso2.developerstudio.eclipse.libraries;bundle-version="4.1.0"
+ org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
+ org.wso2.developerstudio.eclipse.libraries;bundle-version="[4.1.0,7.0.0)"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.e4.core.contexts,
  org.eclipse.e4.core.services.events,

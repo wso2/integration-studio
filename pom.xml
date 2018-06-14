@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>wso2-developerstudio-apim-toolkit</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.5.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 API Manager Tools</name>
     <modules>
@@ -78,7 +78,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>Eclipse-p2-repo</id>
-            <url>http://download.eclipse.org/releases/mars/</url>
+            <url>http://download.eclipse.org/releases/oxygen/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -107,7 +107,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Deps-Mars-p2-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/mars/p2/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/oxygen/p2/</url>
             <layout>p2</layout>
         </repository>
        	<repository>
@@ -117,7 +117,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
 	<repository>
@@ -127,7 +127,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/releases/6.2.0-201803151238/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/platform-bundles/releases/</url>
             <layout>p2</layout>
         </repository>
 
@@ -138,7 +138,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-ESB-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/esb-tools/releases/6.2.0/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/esb-tools/releases/</url>
             <layout>p2</layout>
         </repository>
 
@@ -149,19 +149,29 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/updates/kernel-p2-4.1.0.201804040908/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/updates/</url>
             <layout>p2</layout>
         </repository>
-	<!--repository>
+	<repository>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/platform-bundles/updates/</url>
             <layout>p2</layout>
-        </repository-->
+        </repository>
+         <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </releases>
+            <id>DevS-ESB-p2-updates-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/esb-tools/updates/</url>
+            <layout>p2</layout>
+        </repository>
         <repository>
             <releases>
                 <enabled>true</enabled>

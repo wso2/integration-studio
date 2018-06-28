@@ -9,7 +9,7 @@
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
 
-  <!-- Kernel features and required core features-->	
+  <!-- Kernel features and required core features-->
     <feature id="org.wso2.developerstudio.kernel.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
@@ -34,6 +34,9 @@
  <feature id="org.wso2.developerstudio.carbon.server-44.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>
+  <feature id="org.wso2.developerstudio.carbon.server-44ei.feature" version="0.0.0">
+    <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
+  </feature>
  <feature id="org.wso2.developerstudio.dashboard.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.apim.feature.category"/>
    </feature>

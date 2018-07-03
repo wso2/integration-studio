@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.library.artifact.feature"
       label="Library Bundle Feature"
-      version="6.3.0.qualifier"
+      version="6.4.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

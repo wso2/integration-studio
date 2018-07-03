@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Carbon Server Base
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.carbonserver.base;singleton:=true
-Bundle-Version: 6.3.0.qualifier
+Bundle-Version: 6.4.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.carbonserver.base.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -41,13 +41,13 @@ Import-Package: org.eclipse.core.expressions,
  org.wso2.developerstudio.eclipse.server.base.core;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.server.base.interfaces;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.carbonserver.base.console;version="6.3.0",
- org.wso2.developerstudio.eclipse.carbonserver.base.exception;version="6.3.0",
- org.wso2.developerstudio.eclipse.carbonserver.base.impl;version="6.3.0",
- org.wso2.developerstudio.eclipse.carbonserver.base.interfaces;version="6.3.0",
- org.wso2.developerstudio.eclipse.carbonserver.base.internal;version="6.3.0",
- org.wso2.developerstudio.eclipse.carbonserver.base.manager;version="6.3.0",
- org.wso2.developerstudio.eclipse.carbonserver.base.monitor;version="6.3.0",
- org.wso2.developerstudio.eclipse.carbonserver.base.service.util;version="6.3.0",
- org.wso2.developerstudio.eclipse.carbonserver.base.util;version="6.3.0",
- org.wso2.developerstudio.eclipse.carbonserver.base.utils;version="6.3.0"
+Export-Package: org.wso2.developerstudio.eclipse.carbonserver.base.console;version="6.4.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.exception;version="6.4.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.impl;version="6.4.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.interfaces;version="6.4.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.internal;version="6.4.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.manager;version="6.4.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.monitor;version="6.4.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.service.util;version="6.4.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.util;version="6.4.0",
+ org.wso2.developerstudio.eclipse.carbonserver.base.utils;version="6.4.0"

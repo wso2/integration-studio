@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.capp.core;singleton:=true
-Bundle-Version: 6.3.0.qualifier
+Bundle-Version: 6.4.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.capp.core.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
@@ -24,16 +24,16 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.wso2.developerstudio.eclipse.registry.core.interfaces;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.archive;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.capp.core.artifacts;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.artifacts.configure;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.data;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.manifest;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.model;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.provider;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.ui.pages;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.ui.utils;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.ui.wizard;version="6.3.0",
- org.wso2.developerstudio.eclipse.capp.core.utils;version="6.3.0"
+Export-Package: org.wso2.developerstudio.eclipse.capp.core.artifacts;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.artifacts.configure;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.data;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.manifest;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.model;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.provider;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.ui.pages;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.ui.utils;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.ui.wizard;version="6.4.0",
+ org.wso2.developerstudio.eclipse.capp.core.utils;version="6.4.0"
 Bundle-Localization: plugin
 

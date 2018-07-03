@@ -16,7 +16,7 @@
     <parent>
         <artifactId>wso2-developer-studio-tooling-platform-p2-parent</artifactId>
         <groupId>org.wso2.developerstudio</groupId>
-        <version>6.3.0-SNAPSHOT</version>
+        <version>6.4.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>wso2-developer-studio-tooling-platform-p2</artifactId>
@@ -24,7 +24,7 @@
     <name>WSO2 Developer Studio Platform-P2 Repository</name>
     <url>http://wso2.org</url>
  <properties>
-      <versionproperty>6.3.0</versionproperty>
+      <versionproperty>6.4.0</versionproperty>
    </properties>
    <build>
       <plugins>

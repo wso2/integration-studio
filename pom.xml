@@ -18,14 +18,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>wso2-developerstudio-ei-toolkit</artifactId>
-    <version>6.3.0-SNAPSHOT</version>
+    <version>6.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 EI Tools</name>
     <modules>
         <module>plugins</module>
         <module>features</module>
         <module>repository</module>
-        <module>installed-distribution</module>
+        <!--module>installed-distribution</module-->
     </modules>
     <scm>
         <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>

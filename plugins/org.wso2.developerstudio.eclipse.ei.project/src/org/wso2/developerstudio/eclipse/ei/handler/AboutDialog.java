@@ -39,7 +39,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
 public class AboutDialog extends Dialog {
 
-	private static final String VERSION = "Version : 6.3.0";
+	private static final String VERSION = "Version : 6.4.0";
 	private static final String LICENSED = "Licensed under the Apache License, Version 2.0";
 	private static final String URL = "https://wso2.com/integration/";
 	private static final String EXT_POINT = "org.wso2.developerstudio.aboutDialog.contributor";

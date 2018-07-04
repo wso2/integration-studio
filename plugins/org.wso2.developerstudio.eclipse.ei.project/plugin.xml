@@ -18,6 +18,10 @@
             carbon.server.version="carbon.server.44ei"
             server.display.name="WSO2 Enterprise Integrator 6.3.0">
       </product.server>
+      <product.server
+            carbon.server.version="carbon.server.44ei"
+            server.display.name="WSO2 Enterprise Integrator 6.4.0">
+      </product.server>
     </extension>
     <extension-point id="org.wso2.developerstudio.aboutDialog.contributor" name="AboutDialogContributor" schema="schema/org.wso2.developerstudio.aboutDialog.contributor.exsd"/>
     <extension point="org.eclipse.ui.menus">

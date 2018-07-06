@@ -41,7 +41,7 @@ public class SchemaGeneratorForXSD extends AbstractSchemaGenerator implements IS
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	@Override
-	public String getSchemaContent(String filePath, FileType option) throws IOException {
+	public String getSchemaContent(String filePath, FileType option, String delimiter) throws IOException {
 		String schemaContent = null;
 		File xsdFile = new File(filePath);
 		InputStream xsdInputStream = new FileInputStream(xsdFile);
@@ -57,7 +57,7 @@ public class SchemaGeneratorForXSD extends AbstractSchemaGenerator implements IS
 				if (generatedXMLContent != null) {
 					String xmlSchemaContent = XML_VERSION_1_0_ENCODING_UTF_8 + generatedXMLContent;
 					SchemaGeneratorForXML schemaGeneratorForXML = new SchemaGeneratorForXML();
-					schemaContent = schemaGeneratorForXML.getSchemaContent(xmlSchemaContent, FileType.XML);
+					schemaContent = schemaGeneratorForXML.getSchemaContent(xmlSchemaContent, FileType.XML, null);
 				}
 				deleteRegResourcesCreated(xsdRegResource);
 			} catch (Exception e) {

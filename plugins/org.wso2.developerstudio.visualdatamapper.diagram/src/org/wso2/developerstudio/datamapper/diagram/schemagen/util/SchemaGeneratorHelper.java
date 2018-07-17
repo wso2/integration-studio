@@ -40,20 +40,20 @@ public class SchemaGeneratorHelper {
 	 * @param filePath
 	 * @return
 	 */
-	public String getSchemaContent(FileType option, String filePath) {
+	public String getSchemaContent(FileType option, String filePath, String delimiter) {
 
 		SchemaGeneratorFactory schemaGenFactory = new SchemaGeneratorFactory();
 		ISchemaGenerator schemaGenerator = schemaGenFactory.getSchemaGenerator(option);
 
 		if (schemaGenerator instanceof SchemaGeneratorForXSD) {
 			try {
-				return schemaGenerator.getSchemaContent(filePath, option);
+				return schemaGenerator.getSchemaContent(filePath, option, null);
 			} catch (IOException e) {
 				log.error("Error while generating schema", e);
 			}
 		} else {
 			try {
-				return schemaGenerator.getSchemaResourcePath(filePath, option);
+				return schemaGenerator.getSchemaResourcePath(filePath, option, delimiter);
 			} catch (IOException e) {
 				log.error("Error while generating schema", e);
 			}

@@ -24,13 +24,13 @@ import org.apache.commons.io.FileUtils;
 public class SchemaGeneratorForJSON extends AbstractSchemaGenerator implements ISchemaGenerator {
 
 	@Override
-	public String getSchemaResourcePath(String filePath, FileType type) throws IOException {
+	public String getSchemaResourcePath(String filePath, FileType type, String delimiter) throws IOException {
 		String entireFileText = FileUtils.readFileToString(new File(filePath));
-		return  getSchemaContent(entireFileText, type);
+		return  getSchemaContent(entireFileText, type, null);
 	}
 
 	@Override
-	public String getSchemaContent(String fileText, FileType type) throws IOException {
+	public String getSchemaContent(String fileText, FileType type, String delimiter) throws IOException {
 		SchemaBuilderWithNamepaces sb = new SchemaBuilderWithNamepaces();
 		String jsonSchema = sb.createSchema(fileText, type);
 		return  jsonSchema;

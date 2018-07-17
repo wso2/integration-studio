@@ -97,6 +97,8 @@ public class SchemaKeyEditorDialog extends Dialog {
     private static final String FILE_DIALOG_TITLE = "Select File";
     private Text schemaKeyTextField;
     private Label lblSchemaTypeLabel;
+    private Label lblDelimiterLabel;
+    private Text delimiterTextField;
     private Combo schemaTypeCombo;
     private EditPart selectedEP;
     private IFile inputFile;
@@ -135,6 +137,9 @@ public class SchemaKeyEditorDialog extends Dialog {
     private static final String WORKSPACE = "workspace"; //$NON-NLS-1$
     private static final String REGISTRY = "registry"; //$NON-NLS-1$
     private static final String FILE_SYSTEM = "file system"; //$NON-NLS-1$
+    
+    private static final String DELIMITER = "delimiter";
+    private static final String DEFAULT_DELIMITER = ",";
 
     private static final String ERROR_MSG_HEADER = Messages.SchemaKeyEditorDialog_ErrorMsgHeader;
     private static final String SCHEMA_KEY_EDITOR_DIALOG_TEXT =
@@ -159,6 +164,8 @@ public class SchemaKeyEditorDialog extends Dialog {
             Messages.SchemaKeyEditorDialog_ReasonRegistryURL;
     private static final String SELECT_SCHEMA_SOURCE =
             Messages.SchemaKeyEditorDialog_SelecSchemaSource;
+    private static final String ENTER_DELIMITER = 
+    		Messages.SchemaKeyEditorDialog_EnterDelimiter;
     private static final String ERROR_DIALOG_VISIBILITY =
             Messages.SchemaKeyEditorFialog_VisibilityError; // $NON-NLS-1$
     private static final String SELECT_CONNECTOR = Messages.SchemaKeyEditorDialog_SelectConnector;
@@ -231,6 +238,10 @@ public class SchemaKeyEditorDialog extends Dialog {
         // initialize components
         lblSchemaTypeLabel = new Label(grpPropertyKey, SWT.NORMAL);
         schemaTypeCombo = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
+        
+        lblDelimiterLabel = new Label(grpPropertyKey,SWT.NORMAL);
+        delimiterTextField = new Text(grpPropertyKey,SWT.BORDER);
+        
         lblConnector = new Label(grpPropertyKey, SWT.NORMAL);
         lblConnectorOperation = new Label(grpPropertyKey, SWT.NORMAL);
         cmbConnector = new Combo(grpPropertyKey, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.BORDER);
@@ -261,6 +272,19 @@ public class SchemaKeyEditorDialog extends Dialog {
                     generateSchema.setVisible(false);
                     link.setVisible(false);
                     schemaKeyTextField.setVisible(false);
+                    lblDelimiterLabel.setVisible(false);
+                    delimiterTextField.setVisible(false);
+                    grpPropertyKey.redraw();
+                } else if (FileType.CSV.toString().equals(schemaTypeCombo.getText())) {
+                    lblConnector.setVisible(false);
+                    lblConnectorOperation.setVisible(false);
+                    cmbConnector.setVisible(false);
+                    cmbConnectorOperation.setVisible(false);
+                    generateSchema.setVisible(false);
+                    link.setVisible(true);
+                    schemaKeyTextField.setVisible(true);
+                    lblDelimiterLabel.setVisible(true);
+                    delimiterTextField.setVisible(true);
                     grpPropertyKey.redraw();
                 } else {
                     lblConnector.setVisible(false);
@@ -270,6 +294,8 @@ public class SchemaKeyEditorDialog extends Dialog {
                     generateSchema.setVisible(false);
                     link.setVisible(true);
                     schemaKeyTextField.setVisible(true);
+                    lblDelimiterLabel.setVisible(false);
+                    delimiterTextField.setVisible(false);
                     grpPropertyKey.redraw();
                 }
             }
@@ -282,7 +308,17 @@ public class SchemaKeyEditorDialog extends Dialog {
         schemaTypeCombo.setItems(options);
         schemaTypeCombo.select(0);
         schemaTypeCombo.setLayoutData(comboLayoutData);
-
+        
+        FormData delimiterLabelLayout = new FormData();
+        delimiterLabelLayout.left = new FormAttachment(schemaTypeCombo, 10, SWT.RIGHT);
+        lblDelimiterLabel.setText(ENTER_DELIMITER);
+        lblDelimiterLabel.setLayoutData(delimiterLabelLayout);
+        
+        FormData delimiterTextFieldLayout = new FormData();
+        delimiterTextFieldLayout.left = new FormAttachment(lblDelimiterLabel, 10, SWT.RIGHT);
+        delimiterTextField.setLayoutData(delimiterTextFieldLayout);
+        delimiterTextField.setText(DEFAULT_DELIMITER);
+        
         FormData connectorLabelLayoutData = new FormData();
         connectorLabelLayoutData.top = new FormAttachment(lblSchemaTypeLabel, 20, SWT.BOTTOM);
 
@@ -573,7 +609,7 @@ public class SchemaKeyEditorDialog extends Dialog {
             }
 
             String schema = schemaGeneratorHelper.getSchemaContent(FileType.JSONSCHEMA,
-                    schemaFilePath);
+                    schemaFilePath, null);
             DataMapperSchemaEditorUtil schemaEditorUtil = new DataMapperSchemaEditorUtil(inputFile);
             if (schema != null) {
                 String schemaSaveFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
@@ -586,7 +622,7 @@ public class SchemaKeyEditorDialog extends Dialog {
                 DataMapperSchemaEditorUtil schemaEditorUtil1 =
                         new DataMapperSchemaEditorUtil(inputFile);
                 String schema1 = schemaGeneratorHelper.getSchemaContent(FileType.XML,
-                        rootWorkspaceLocation);
+                        rootWorkspaceLocation, null);
                 file.delete();
                 if (schema1 != null) {
                     String schemaSaveFilePath1 =
@@ -686,7 +722,8 @@ public class SchemaKeyEditorDialog extends Dialog {
 
                 boolean isCompatible = checkFileExtensionAgainstTheSchemaType(fileType);
                 if (isCompatible) {
-                    String schema = schemaGeneratorHelper.getSchemaContent(fileType, resourceFile);
+                    String schema = 
+                    		schemaGeneratorHelper.getSchemaContent(fileType, resourceFile, delimiterTextField.getText());
                     String schemaFilePath = null;
                     try {
                         schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
@@ -815,7 +852,7 @@ public class SchemaKeyEditorDialog extends Dialog {
             if (isCompatible) {
                 String schema =
                         schemaGeneratorHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()],
-                                outputFile.getAbsolutePath());
+                                outputFile.getAbsolutePath(),delimiterTextField.getText());
                 outputDirectory.deleteOnExit();
                 String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
 
@@ -909,7 +946,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 
             String schema =
                     schemaGeneratorHelper.getSchemaContent(FileType.values()[schemaTypeCombo.getSelectionIndex()],
-                            filePath);
+                            filePath, delimiterTextField.getText());
             if (schema != null) {
                 String schemaFilePath = schemaEditorUtil.createDiagram(schema, schemaType);
                 if (!schemaFilePath.isEmpty()) {

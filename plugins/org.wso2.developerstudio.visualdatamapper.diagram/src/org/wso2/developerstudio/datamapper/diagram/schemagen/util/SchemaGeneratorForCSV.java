@@ -31,14 +31,14 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 public class SchemaGeneratorForCSV extends AbstractSchemaGenerator implements ISchemaGenerator {
 
 	@Override
-	public String getSchemaResourcePath(String filePath, FileType type) throws IOException {
+	public String getSchemaResourcePath(String filePath, FileType type, String delimiter) throws IOException {
 		String entireFileText = FileUtils.readFileToString(new File(filePath));
-		return getSchemaContent(entireFileText, type);
+		return getSchemaContent(entireFileText, type, delimiter);
 	}
 
 	@Override
-	public String getSchemaContent(String fileText, FileType type) throws IOException {
-		List<Map<String, String>> data = readObjectsFromCsv(fileText);
+	public String getSchemaContent(String fileText, FileType type, String delimiter) throws IOException {
+		List<Map<String, String>> data = readObjectsFromCsv(fileText, delimiter);
 		String value = writeAsJson(data);
 		SchemaBuilderWithNamepaces sb = new SchemaBuilderWithNamepaces();
 		String jsonSchema = sb.createSchema(value, type);
@@ -52,9 +52,13 @@ public class SchemaGeneratorForCSV extends AbstractSchemaGenerator implements IS
 	 * @return
 	 * @throws IOException
 	 */
-	public List<Map<String, String>> readObjectsFromCsv(String content) throws IOException {
+	public List<Map<String, String>> readObjectsFromCsv(String content, String delimiter) throws IOException {
 		CsvMapper mapper = new CsvMapper();
-		CsvSchema schema = CsvSchema.emptySchema().withHeader();
+		char delimiterChar =',';
+		if (!delimiter.isEmpty()) {
+			delimiterChar = delimiter.charAt(0);
+		}
+		CsvSchema schema = CsvSchema.emptySchema().withHeader().withColumnSeparator(delimiterChar);
 		MappingIterator<Map<String, String>> it = mapper.readerFor(Map.class).with(schema).readValues(content);
 		return it.readAll();
 	}

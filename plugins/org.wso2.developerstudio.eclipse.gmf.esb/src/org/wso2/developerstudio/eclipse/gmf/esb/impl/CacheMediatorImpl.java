@@ -44,7 +44,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheId <em>Cache Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheProtocolType <em>Cache Protocol Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getCacheType <em>Cache Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl#getHashGenerator <em>Hash Generator</em>}</li>
@@ -67,26 +66,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * @generated
  */
 public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
-	/**
-	 * The default value of the '{@link #getCacheId() <em>Cache Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCacheId()
-	 * @generated NOT
-	 * @ordered
-	 */
-	protected static final String CACHE_ID_EDEFAULT = "";
-
-	/**
-	 * The cached value of the '{@link #getCacheId() <em>Cache Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCacheId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String cacheId = CACHE_ID_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getCacheProtocolType() <em>Cache Protocol Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -402,27 +381,6 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	@Override
 	protected EClass eStaticClass() {
 		return EsbPackage.Literals.CACHE_MEDIATOR;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getCacheId() {
-		return cacheId;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCacheId(String newCacheId) {
-		String oldCacheId = cacheId;
-		cacheId = newCacheId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CACHE_MEDIATOR__CACHE_ID, oldCacheId, cacheId));
 	}
 
 	/**
@@ -924,8 +882,6 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
-				return getCacheId();
 			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
 				return getCacheProtocolType();
 			case EsbPackage.CACHE_MEDIATOR__CACHE_TYPE:
@@ -973,9 +929,6 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
-				setCacheId((String)newValue);
-				return;
 			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
 				setCacheProtocolType((CacheProtocolType)newValue);
 				return;
@@ -1040,9 +993,6 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
-				setCacheId(CACHE_ID_EDEFAULT);
-				return;
 			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
 				setCacheProtocolType(CACHE_PROTOCOL_TYPE_EDEFAULT);
 				return;
@@ -1107,8 +1057,6 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
-				return CACHE_ID_EDEFAULT == null ? cacheId != null : !CACHE_ID_EDEFAULT.equals(cacheId);
 			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
 				return cacheProtocolType != CACHE_PROTOCOL_TYPE_EDEFAULT;
 			case EsbPackage.CACHE_MEDIATOR__CACHE_TYPE:
@@ -1158,9 +1106,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (cacheId: ");
-		result.append(cacheId);
-		result.append(", cacheProtocolType: ");
+		result.append(" (cacheProtocolType: ");
 		result.append(cacheProtocolType);
 		result.append(", cacheType: ");
 		result.append(cacheType);

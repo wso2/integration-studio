@@ -1392,14 +1392,6 @@
                         <ownedChild>
                           <domainMetaElement
                               href="esb.ecore#//CacheMediator"/>
-                          <labelMappings
-                              xsi:type="gmfmap:FeatureLabelMapping"
-                              readOnly="true">
-                            <diagramLabel
-                                href="esb.gmfgraph#CacheMediatorId"/>
-                            <features
-                                href="esb.ecore#//CacheMediator/cacheId"/>
-                          </labelMappings>
                           <tool
                               xsi:type="gmftool:CreationTool"
                               href="esb.gmftool#//@palette/@tools.1/@tools.22"/>

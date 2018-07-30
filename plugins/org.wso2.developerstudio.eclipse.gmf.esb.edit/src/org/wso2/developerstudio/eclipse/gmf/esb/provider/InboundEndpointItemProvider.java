@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 
 /**
  * This is the item provider adapter for a
@@ -294,9 +295,14 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportRabbitMqConnectionSslVersionPropertyDescriptor(object);
 			addTransportRabbitMqMessageContentTypePropertyDescriptor(object);
 			addTransportRabbitMqConnectionRetryCountPropertyDescriptor(object);
-			addTransportRabbitMqConnectionRetryIntervalPropertyDescriptor(object);		
+			addTransportRabbitMqConnectionRetryIntervalPropertyDescriptor(object);
 			addTransportRabbitMqServerRetryIntervalPropertyDescriptor(object);
-			addTransportRabbitMqConsumerQosPropertyDescriptor(object);
+			addTransportRabbitMqConsumerQosTypePropertyDescriptor(object);
+			if (PayloadFormatType.INLINE.equals(inboundEndpoint.getTransportRabbitMqConsumerQosType())) {
+				addTransportRabbitMqConsumerQosPropertyDescriptor(object);
+			} else {
+				addTransportRabbitMqConsumerQosKeyPropertyDescriptor(object);
+			}
 			break;			
 		case FEED:
 			addIntervalPropertyDescriptor(object);
@@ -2260,27 +2266,23 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 null));
 	}
 
-	/**
-	 * This adds a property descriptor for the Transport Rabbit Mq Consumer Qos feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addTransportRabbitMqConsumerQosPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_transportRabbitMqConsumerQos_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportRabbitMqConsumerQos_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS,
-				 true,
-				 false,
-				 false,
-				 null,
-				 "Parameters",
-				 null));
-	}
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Consumer Qos feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    protected void addTransportRabbitMqConsumerQosKeyPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_InboundEndpoint_transportRabbitMqConsumerQosKey_feature"),
+                        getString("_UI_PropertyDescriptor_description",
+                                "_UI_InboundEndpoint_transportRabbitMqConsumerQosKey_feature",
+                                "_UI_InboundEndpoint_type"),
+                        EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, true, false, false,
+                        null, "Parameters", null));
+    }
 
 	/**
 	 * This adds a property descriptor for the Ws Inbound Port feature.
@@ -3007,6 +3009,41 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 "Parameters",
 				 null));
 	}
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Consumer Qos feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    protected void addTransportRabbitMqConsumerQosPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_InboundEndpoint_transportRabbitMqConsumerQos_feature"),
+                        getString("_UI_PropertyDescriptor_description",
+                                "_UI_InboundEndpoint_transportRabbitMqConsumerQos_feature", "_UI_InboundEndpoint_type"),
+                        EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+    }
+
+    /**
+     * This adds a property descriptor for the Transport Rabbit Mq Consumer Qos Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    protected void addTransportRabbitMqConsumerQosTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_InboundEndpoint_transportRabbitMqConsumerQosType_feature"),
+                        getString("_UI_PropertyDescriptor_description",
+                                "_UI_InboundEndpoint_transportRabbitMqConsumerQosType_feature",
+                                "_UI_InboundEndpoint_type"),
+                        EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+    }
 
 	/**
 	 * This adds a property descriptor for the Class feature. <!--
@@ -4598,6 +4635,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			childrenFeatures.add(EsbPackage.Literals.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.INBOUND_ENDPOINT__CONTAINER);
 			childrenFeatures.add(EsbPackage.Literals.INBOUND_ENDPOINT__SERVICE_PARAMETERS);
+			childrenFeatures.add(EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY);
 		}
 		return childrenFeatures;
 	}
@@ -4852,6 +4890,8 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
 			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
 			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
@@ -4860,6 +4900,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
 			case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
 			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -4906,6 +4947,11 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			(createChildParameter
 				(EsbPackage.Literals.INBOUND_ENDPOINT__SERVICE_PARAMETERS,
 				 EsbFactory.eINSTANCE.createInboundEndpointParameter()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY,
+				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 	}
 
 }

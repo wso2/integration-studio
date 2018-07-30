@@ -24779,13 +24779,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 173;
 
 	/**
-	 * The feature id for the '<em><b>Transport Rabbit Mq Consumer Qos</b></em>' containment reference.
+	 * The feature id for the '<em><b>Transport Rabbit Mq Consumer Qos Key</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS = ESB_ELEMENT_FEATURE_COUNT + 174;
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY = ESB_ELEMENT_FEATURE_COUNT + 174;
 
 	/**
 	 * The feature id for the '<em><b>Ws Inbound Port</b></em>' attribute.
@@ -25085,13 +25085,31 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES = ESB_ELEMENT_FEATURE_COUNT + 207;
 
 	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Consumer Qos</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS = ESB_ELEMENT_FEATURE_COUNT + 208;
+
+	/**
+	 * The feature id for the '<em><b>Transport Rabbit Mq Consumer Qos Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE = ESB_ELEMENT_FEATURE_COUNT + 209;
+
+	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 208;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 210;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -35489,15 +35507,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getInboundEndpoint_TransportRabbitMqServerRetryInterval();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Transport Rabbit Mq Consumer Qos</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos()
+	 * @return the meta object for the containment reference '<em>Transport Rabbit Mq Consumer Qos Key</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosKey()
 	 * @see #getInboundEndpoint()
 	 * @generated
 	 */
-	EReference getInboundEndpoint_TransportRabbitMqConsumerQos();
+	EReference getInboundEndpoint_TransportRabbitMqConsumerQosKey();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}'.
@@ -35861,6 +35879,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpoint_WssSslCipherSuites();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Consumer Qos</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConsumerQos();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport Rabbit Mq Consumer Qos Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportRabbitMqConsumerQosType();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter <em>Inbound Endpoint Parameter</em>}'.
@@ -51586,12 +51626,12 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL = eINSTANCE.getInboundEndpoint_TransportRabbitMqServerRetryInterval();
 
 		/**
-		 * The meta object literal for the '<em><b>Transport Rabbit Mq Consumer Qos</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Consumer Qos Key</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS = eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQos();
+		EReference INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY = eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosKey();
 
 		/**
 		 * The meta object literal for the '<em><b>Ws Inbound Port</b></em>' attribute feature.
@@ -51856,6 +51896,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES = eINSTANCE.getInboundEndpoint_WssSslCipherSuites();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Consumer Qos</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS = eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQos();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport Rabbit Mq Consumer Qos Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE = eINSTANCE.getInboundEndpoint_TransportRabbitMqConsumerQosType();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.

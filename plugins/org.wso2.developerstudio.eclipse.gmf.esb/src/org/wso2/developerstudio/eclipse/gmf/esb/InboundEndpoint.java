@@ -201,7 +201,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsInboundPort <em>Ws Inbound Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}</li>
@@ -235,6 +235,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isWsUsePortOffset <em>Ws Use Port Offset</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslProtocols <em>Wss Ssl Protocols</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint()
@@ -2650,30 +2652,30 @@ public interface InboundEndpoint extends EsbElement {
 	void setTransportRabbitMqServerRetryInterval(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Transport Rabbit Mq Consumer Qos</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Consumer Qos Key</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Transport Rabbit Mq Consumer Qos</em>' reference isn't clear,
+	 * If the meaning of the '<em>Transport Rabbit Mq Consumer Qos Key</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transport Rabbit Mq Consumer Qos</em>' containment reference.
-	 * @see #setTransportRabbitMqConsumerQos(RegistryKeyProperty)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQos()
+	 * @return the value of the '<em>Transport Rabbit Mq Consumer Qos Key</em>' containment reference.
+	 * @see #setTransportRabbitMqConsumerQosKey(RegistryKeyProperty)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQosKey()
 	 * @model containment="true"
 	 * @generated
 	 */
-	RegistryKeyProperty getTransportRabbitMqConsumerQos();
+	RegistryKeyProperty getTransportRabbitMqConsumerQosKey();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transport Rabbit Mq Consumer Qos</em>' containment reference.
-	 * @see #getTransportRabbitMqConsumerQos()
+	 * @param value the new value of the '<em>Transport Rabbit Mq Consumer Qos Key</em>' containment reference.
+	 * @see #getTransportRabbitMqConsumerQosKey()
 	 * @generated
 	 */
-	void setTransportRabbitMqConsumerQos(RegistryKeyProperty value);
+	void setTransportRabbitMqConsumerQosKey(RegistryKeyProperty value);
 
 	/**
 	 * Returns the value of the '<em><b>Ws Inbound Port</b></em>' attribute.
@@ -3541,6 +3543,62 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setWssSslCipherSuites(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Consumer Qos</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Consumer Qos</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Consumer Qos</em>' attribute.
+	 * @see #setTransportRabbitMqConsumerQos(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQos()
+	 * @model
+	 * @generated
+	 */
+	String getTransportRabbitMqConsumerQos();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Consumer Qos</em>' attribute.
+	 * @see #getTransportRabbitMqConsumerQos()
+	 * @generated
+	 */
+	void setTransportRabbitMqConsumerQos(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport Rabbit Mq Consumer Qos Type</b></em>' attribute.
+	 * The default value is <code>"Registry Reference"</code>.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport Rabbit Mq Consumer Qos Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport Rabbit Mq Consumer Qos Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType
+	 * @see #setTransportRabbitMqConsumerQosType(PayloadFormatType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConsumerQosType()
+	 * @model default="Registry Reference"
+	 * @generated
+	 */
+	PayloadFormatType getTransportRabbitMqConsumerQosType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport Rabbit Mq Consumer Qos Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType
+	 * @see #getTransportRabbitMqConsumerQosType()
+	 * @generated
+	 */
+	void setTransportRabbitMqConsumerQosType(PayloadFormatType value);
 
 	/**
 	 * Returns the value of the '<em><b>Class</b></em>' attribute.

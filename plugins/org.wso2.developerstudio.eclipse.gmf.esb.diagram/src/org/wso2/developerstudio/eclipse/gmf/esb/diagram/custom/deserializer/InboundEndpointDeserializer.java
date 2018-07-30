@@ -60,6 +60,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE;
@@ -279,9 +281,17 @@ public class InboundEndpointDeserializer
 	private void updateParameters(InboundEndpoint inboundEndpointInstance, InboundEndpointType inboundEndpointType) {
 		for (Map.Entry<String, String> paramEntry : inboundEndpointInstance.getParametersMap().entrySet()) {
 			if (paramEntry.getKey().equals(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS)) {
-				addParameterKeyForInboundEndpoint(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
-						inboundEndpointInstance.getParameterKey(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS),
-						ParameterKeyValueType.VALUE, inboundEndpointType);
+				if (inboundEndpointInstance.getParameterKey(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS) != null) {
+					addParameterKeyForInboundEndpoint(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
+							inboundEndpointInstance.getParameterKey(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS),
+							ParameterKeyValueType.KEY, inboundEndpointType);
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE,
+							PayloadFormatType.REGISTRY_REFERENCE);
+				} else {
+					addParameterForInboundEndpoint(paramEntry, ParameterKeyValueType.VALUE, inboundEndpointType);
+					executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE,
+							PayloadFormatType.INLINE);
+				}
 			} else {
 				addParameterForInboundEndpoint(paramEntry, ParameterKeyValueType.VALUE, inboundEndpointType);
 			}
@@ -301,11 +311,11 @@ public class InboundEndpointDeserializer
 	private void addParameterKeyForInboundEndpoint(String paramEntryKey, String paramEntryValue,
 			ParameterKeyValueType type, InboundEndpointType inboundEndpointType) {
 		if (paramEntryKey.equals(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS)) {
-			executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS,
+			executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY,
 					InboundEndpointType.RABBITMQ_VALUE);
 			RegistryKeyProperty consumerQosKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 			consumerQosKey.setKeyValue(paramEntryValue);
-			executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, consumerQosKey);
+			executeSetValueCommand(INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, consumerQosKey);
 		}
 	}
 

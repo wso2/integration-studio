@@ -23,7 +23,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
@@ -41,44 +40,33 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.MouseWheelHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.dialogs.IPageChangedListener;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.PageChangedEvent;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocumentListener;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -89,23 +77,19 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
-import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IPropertyListener;
-import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.IWindowListener;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.eclipse.ui.texteditor.MarkerUtilities; 
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject.GMFPluginDetails;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
@@ -126,10 +110,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Dese
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.MediatorFactoryUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.UpdateGMFPlugin;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MediatorNotFoundException;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.MissingAttributeException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.utils.ESBDebuggerUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.ProcessSourceView;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.SourceError;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator.ValidationException;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.SequenceInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
@@ -199,6 +184,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	private String validationMessage;
 	boolean initialPageLoad;
 	boolean isFormEditor;
+	
+	private IFile file;
+	private List<IMarker> iMarkers = new ArrayList<>();
 
 	/**
 	 * Creates a multi-page editor
@@ -389,10 +377,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	void createPage1() {
 
 		try {
-			sourceEditor = new EsbObjectSourceEditor(getTemporaryFile("xml"));
+			file = getTemporaryFile("xml");
+			sourceEditor = new EsbObjectSourceEditor(file);
 			addPage(SOURCE_VIEW_PAGE_INDEX, sourceEditor.getEditor(), sourceEditor.getInput());
 			setPageText(SOURCE_VIEW_PAGE_INDEX, "Source");
-
 			sourceEditor.getDocument().addDocumentListener(new IDocumentListener() {
 
 				public void documentAboutToBeChanged(final DocumentEvent event) {
@@ -1012,27 +1000,37 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				String xmlSource = sourceEditor.getDocument().get();
 				final Deserializer deserializer = Deserializer.getInstance();
 				DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(xmlSource);
+				
 				if (deserializeStatus.isValid()) {
-					if (isFormEditor) {
-						sourceDirty = true;
-						handleFormViewActivatedEvent();
+					deleteMarkers();
+					SourceError sourceError = ProcessSourceView.validateSynapseContent(xmlSource);
+					if (sourceError != null) {
+						addMarker(sourceError);
 					} else {
-						handleDesignViewActivatedEvent();
+						if (isFormEditor) {
+							sourceDirty = true;
+							handleFormViewActivatedEvent();
+						} else {
+							handleDesignViewActivatedEvent();
+						}
 					}
 				} else {
-					IEditorInput editorInput = getEditorInput();
-					IFile file = ((FileEditorInput) editorInput).getFile();
 
-					printHandleDesignViewActivatedEventErrorMessageSimple(deserializeStatus.getExecption(),
-							deserializeStatus);
-					if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Error in Configuration",
-							"There are errors in source configuration, Save anyway?")) {
-						saveForcefully(xmlSource, file, monitor);
-						sourceDirty = false;
-						firePropertyChange(PROP_DIRTY);
+					if (!(deserializeStatus.getExecption() instanceof org.apache.synapse.SynapseException)) {
+						deleteMarkers();
+						addMarker(ProcessSourceView.validateXMLContent(xmlSource));
+
+					} else {
+						SourceError sourceError = ProcessSourceView.validateSynapseContent(xmlSource);
+						deleteMarkers();
+						addMarker(sourceError);
 					}
+					
 					return;
 				}
+			} catch (ValidationException e) {
+				isSaveAllow = false;
+				//previous saved content
 			} catch (Exception e) {
 				isSaveAllow = false;
 				printHandleDesignViewActivatedEventErrorMessage(e);
@@ -1115,6 +1113,35 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		});
 	}
 
+	private void deleteMarkers() {
+		try {
+			file.deleteMarkers("org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror", false, 1);
+		} catch (CoreException e) {
+			// ignore
+		}
+		iMarkers.clear();
+	}
+	
+	private void addMarker(SourceError sourceError) {
+		try {
+			IMarker marker = file.createMarker("org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror");
+
+			marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+			marker.setAttribute(IMarker.MESSAGE, sourceError.getException());
+			MarkerUtilities.setLineNumber(marker, sourceError.getLineNumber());
+			marker.setAttribute(IMarker.CHAR_START, sourceError.getStartChar());
+
+			if (sourceError.getStartChar() != sourceError.getEndChar()) {
+				marker.setAttribute(IMarker.CHAR_END, sourceError.getEndChar());
+			} else {
+				marker.setAttribute(IMarker.CHAR_END, sourceError.getEndChar() + 1);
+			}
+
+		} catch (CoreException e) {
+			// ignore
+		}
+	}
+	
 	public boolean isDirty() {
 		if (getEditor(0) instanceof EsbDiagramEditor) {
 			return getEditor(0).isDirty() || sourceDirty;

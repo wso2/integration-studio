@@ -81,28 +81,6 @@ public class CacheMediatorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Cache Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCacheIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CacheMediator_cacheId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CacheMediator_cacheId_feature", "_UI_CacheMediator_type"),
-				 EsbPackage.Literals.CACHE_MEDIATOR__CACHE_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Cache Protocol Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -464,7 +442,6 @@ public class CacheMediatorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CacheMediator.class)) {
-			case EsbPackage.CACHE_MEDIATOR__CACHE_ID:
 			case EsbPackage.CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE:
 			case EsbPackage.CACHE_MEDIATOR__CACHE_TYPE:
 			case EsbPackage.CACHE_MEDIATOR__HASH_GENERATOR:

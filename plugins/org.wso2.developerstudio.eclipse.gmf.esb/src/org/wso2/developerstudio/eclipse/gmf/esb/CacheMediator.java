@@ -16,7 +16,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheId <em>Cache Id</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheProtocolType <em>Cache Protocol Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheType <em>Cache Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getHashGenerator <em>Hash Generator</em>}</li>
@@ -41,32 +40,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * @generated
  */
 public interface CacheMediator extends Mediator {
-	/**
-	 * Returns the value of the '<em><b>Cache Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Cache Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cache Id</em>' attribute.
-	 * @see #setCacheId(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheId()
-	 * @model
-	 * @generated
-	 */
-	String getCacheId();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator#getCacheId <em>Cache Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cache Id</em>' attribute.
-	 * @see #getCacheId()
-	 * @generated
-	 */
-	void setCacheId(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Cache Protocol Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheProtocolType}.

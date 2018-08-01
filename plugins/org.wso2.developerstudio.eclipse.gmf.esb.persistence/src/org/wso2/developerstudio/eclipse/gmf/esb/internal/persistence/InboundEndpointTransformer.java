@@ -1156,9 +1156,15 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_RETRY_INTERVAL,
                         visualInboundEndpoint.getTransportRabbitMqServerRetryInterval());
             }
-            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConsumerQos().getKeyValue())) {
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConsumerQos())
+                    && visualInboundEndpoint.getTransportRabbitMqConsumerQosType().toString() == "Inline") {
+                inboundEndpoint.addParameter(InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
+                        visualInboundEndpoint.getTransportRabbitMqConsumerQos());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConsumerQosKey().getKeyValue())
+                    && visualInboundEndpoint.getTransportRabbitMqConsumerQosType().toString() == "Registry Reference") {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
-                        visualInboundEndpoint.getTransportRabbitMqConsumerQos().getKeyValue());
+                        visualInboundEndpoint.getTransportRabbitMqConsumerQosKey().getKeyValue());
             }
             break;
         case FEED:

@@ -3199,7 +3199,7 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqServerRetryInterval"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transportRabbitMqConsumerQos"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transportRabbitMqConsumerQosKey"
         eType="#//RegistryKeyProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsInboundPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsClientSideBroadcastLevel"
@@ -3253,6 +3253,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wsUsePortOffset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wssSslProtocols" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wssSslCipherSuites" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqConsumerQos"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqConsumerQosType"
+        eType="#//PayloadFormatType" defaultValueLiteral="Registry Reference"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointParameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

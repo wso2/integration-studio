@@ -47,6 +47,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -118,8 +119,9 @@ public enum RABBITMQInboundEndpointParameter {
     RABBITMQ_CONNECTION_RETRY_INTERVAL(InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_INTERVAL,
     		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL, true),
     RABBITMQ_SERVER_RETRY_INTERVAL(InboundEndpointConstants.RABBITMQ_SERVER_RETRY_INTERVAL,
-    		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL, true);
-
+    		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL, true),
+    RABBITMQ_CONSUMER_QOS( InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
+            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, true);
     
     private final String name;
     private final EAttribute eAttributeValue;

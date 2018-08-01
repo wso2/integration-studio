@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
 import org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS;
 import org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TopicFilterFromType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TopicsType;
@@ -237,7 +238,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsInboundPort <em>Ws Inbound Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}</li>
@@ -271,6 +272,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isWsUsePortOffset <em>Ws Use Port Offset</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslProtocols <em>Wss Ssl Protocols</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -3788,15 +3791,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String transportRabbitMqServerRetryInterval = TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTransportRabbitMqConsumerQos()
-	 * <em>Transport Rabbit Mq Consumer Qos</em>}' reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #getTransportRabbitMqConsumerQos()
+	 * The cached value of the '{@link #getTransportRabbitMqConsumerQosKey() <em>Transport Rabbit Mq Consumer Qos Key</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConsumerQosKey()
 	 * @generated
 	 * @ordered
 	 */
-	protected RegistryKeyProperty transportRabbitMqConsumerQos;
+	protected RegistryKeyProperty transportRabbitMqConsumerQosKey;
 
 	/**
 	 * The default value of the '{@link #getWsInboundPort() <em>Ws Inbound Port</em>}' attribute.
@@ -4457,6 +4459,45 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 */
 	protected String wssSslCipherSuites = WSS_SSL_CIPHER_SUITES_EDEFAULT;
 	/**
+	 * The default value of the '{@link #getTransportRabbitMqConsumerQos() <em>Transport Rabbit Mq Consumer Qos</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConsumerQos()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConsumerQos() <em>Transport Rabbit Mq Consumer Qos</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConsumerQos()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportRabbitMqConsumerQos = TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportRabbitMqConsumerQosType() <em>Transport Rabbit Mq Consumer Qos Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConsumerQosType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final PayloadFormatType TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT = PayloadFormatType.REGISTRY_REFERENCE;
+
+	/**
+	 * The cached value of the '{@link #getTransportRabbitMqConsumerQosType() <em>Transport Rabbit Mq Consumer Qos Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportRabbitMqConsumerQosType()
+	 * @generated
+	 * @ordered
+	 */
+	protected PayloadFormatType transportRabbitMqConsumerQosType = TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT;
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated NOT
 	 */
@@ -4467,7 +4508,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		consumerQosKey.setKeyName("ConsumerQos Key");
 		consumerQosKey.setPrettyName("ConsumerQos Key");
 		consumerQosKey.setKeyValue("");
-		setTransportRabbitMqConsumerQos(consumerQosKey);
+		setTransportRabbitMqConsumerQosKey(consumerQosKey);
 	}
 
 	/**
@@ -6318,11 +6359,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RegistryKeyProperty getTransportRabbitMqConsumerQos() {
-		return transportRabbitMqConsumerQos;
+	public RegistryKeyProperty getTransportRabbitMqConsumerQosKey() {
+		return transportRabbitMqConsumerQosKey;
 	}
 
 	/**
@@ -6330,32 +6372,33 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTransportRabbitMqConsumerQos(RegistryKeyProperty newTransportRabbitMqConsumerQos, NotificationChain msgs) {
-		RegistryKeyProperty oldTransportRabbitMqConsumerQos = transportRabbitMqConsumerQos;
-		transportRabbitMqConsumerQos = newTransportRabbitMqConsumerQos;
+	public NotificationChain basicSetTransportRabbitMqConsumerQosKey(RegistryKeyProperty newTransportRabbitMqConsumerQosKey, NotificationChain msgs) {
+		RegistryKeyProperty oldTransportRabbitMqConsumerQosKey = transportRabbitMqConsumerQosKey;
+		transportRabbitMqConsumerQosKey = newTransportRabbitMqConsumerQosKey;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, oldTransportRabbitMqConsumerQos, newTransportRabbitMqConsumerQos);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, oldTransportRabbitMqConsumerQosKey, newTransportRabbitMqConsumerQosKey);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTransportRabbitMqConsumerQos(RegistryKeyProperty newTransportRabbitMqConsumerQos) {
-		if (newTransportRabbitMqConsumerQos != transportRabbitMqConsumerQos) {
+	public void setTransportRabbitMqConsumerQosKey(RegistryKeyProperty newTransportRabbitMqConsumerQosKey) {
+		if (newTransportRabbitMqConsumerQosKey != transportRabbitMqConsumerQosKey) {
 			NotificationChain msgs = null;
-			if (transportRabbitMqConsumerQos != null)
-				msgs = ((InternalEObject)transportRabbitMqConsumerQos).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, null, msgs);
-			if (newTransportRabbitMqConsumerQos != null)
-				msgs = ((InternalEObject)newTransportRabbitMqConsumerQos).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, null, msgs);
-			msgs = basicSetTransportRabbitMqConsumerQos(newTransportRabbitMqConsumerQos, msgs);
+			if (transportRabbitMqConsumerQosKey != null)
+				msgs = ((InternalEObject)transportRabbitMqConsumerQosKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, null, msgs);
+			if (newTransportRabbitMqConsumerQosKey != null)
+				msgs = ((InternalEObject)newTransportRabbitMqConsumerQosKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, null, msgs);
+			msgs = basicSetTransportRabbitMqConsumerQosKey(newTransportRabbitMqConsumerQosKey, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, newTransportRabbitMqConsumerQos, newTransportRabbitMqConsumerQos));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, newTransportRabbitMqConsumerQosKey, newTransportRabbitMqConsumerQosKey));
 	}
 
 	/**
@@ -7033,6 +7076,48 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		wssSslCipherSuites = newWssSslCipherSuites;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES, oldWssSslCipherSuites, wssSslCipherSuites));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportRabbitMqConsumerQos() {
+		return transportRabbitMqConsumerQos;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConsumerQos(String newTransportRabbitMqConsumerQos) {
+		String oldTransportRabbitMqConsumerQos = transportRabbitMqConsumerQos;
+		transportRabbitMqConsumerQos = newTransportRabbitMqConsumerQos;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, oldTransportRabbitMqConsumerQos, transportRabbitMqConsumerQos));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PayloadFormatType getTransportRabbitMqConsumerQosType() {
+		return transportRabbitMqConsumerQosType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportRabbitMqConsumerQosType(PayloadFormatType newTransportRabbitMqConsumerQosType) {
+		PayloadFormatType oldTransportRabbitMqConsumerQosType = transportRabbitMqConsumerQosType;
+		transportRabbitMqConsumerQosType = newTransportRabbitMqConsumerQosType == null ? TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT : newTransportRabbitMqConsumerQosType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE, oldTransportRabbitMqConsumerQosType, transportRabbitMqConsumerQosType));
 	}
 
 	/**
@@ -8631,8 +8716,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return basicSetContainer(null, msgs);
 			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
 				return ((InternalEList<?>)getServiceParameters()).basicRemove(otherEnd, msgs);
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
-				return basicSetTransportRabbitMqConsumerQos(null, msgs);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+				return basicSetTransportRabbitMqConsumerQosKey(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -8992,8 +9077,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportRabbitMqConnectionRetryInterval();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
 				return getTransportRabbitMqServerRetryInterval();
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
-				return getTransportRabbitMqConsumerQos();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+				return getTransportRabbitMqConsumerQosKey();
 			case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
 				return getWsInboundPort();
 			case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
@@ -9060,6 +9145,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getWssSslProtocols();
 			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
 				return getWssSslCipherSuites();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
+				return getTransportRabbitMqConsumerQos();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
+				return getTransportRabbitMqConsumerQosType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -9595,8 +9684,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
 				setTransportRabbitMqServerRetryInterval((String)newValue);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
-				setTransportRabbitMqConsumerQos((RegistryKeyProperty)newValue);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+				setTransportRabbitMqConsumerQosKey((RegistryKeyProperty)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
 				setWsInboundPort((String)newValue);
@@ -9696,6 +9785,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
 				setWssSslCipherSuites((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
+				setTransportRabbitMqConsumerQos((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
+				setTransportRabbitMqConsumerQosType((PayloadFormatType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -10230,8 +10325,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
 				setTransportRabbitMqServerRetryInterval(TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
-				setTransportRabbitMqConsumerQos((RegistryKeyProperty)null);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+				setTransportRabbitMqConsumerQosKey((RegistryKeyProperty)null);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
 				setWsInboundPort(WS_INBOUND_PORT_EDEFAULT);
@@ -10331,6 +10426,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
 				setWssSslCipherSuites(WSS_SSL_CIPHER_SUITES_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
+				setTransportRabbitMqConsumerQos(TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
+				setTransportRabbitMqConsumerQosType(TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -10691,8 +10792,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT == null ? transportRabbitMqConnectionRetryInterval != null : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqConnectionRetryInterval);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
 				return TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT == null ? transportRabbitMqServerRetryInterval != null : !TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqServerRetryInterval);
-			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
-				return transportRabbitMqConsumerQos != null;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+				return transportRabbitMqConsumerQosKey != null;
 			case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
 				return WS_INBOUND_PORT_EDEFAULT == null ? wsInboundPort != null : !WS_INBOUND_PORT_EDEFAULT.equals(wsInboundPort);
 			case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
@@ -10759,6 +10860,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return WSS_SSL_PROTOCOLS_EDEFAULT == null ? wssSslProtocols != null : !WSS_SSL_PROTOCOLS_EDEFAULT.equals(wssSslProtocols);
 			case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
 				return WSS_SSL_CIPHER_SUITES_EDEFAULT == null ? wssSslCipherSuites != null : !WSS_SSL_CIPHER_SUITES_EDEFAULT.equals(wssSslCipherSuites);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
+				return TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT == null ? transportRabbitMqConsumerQos != null : !TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT.equals(transportRabbitMqConsumerQos);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
+				return transportRabbitMqConsumerQosType != TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -11174,6 +11279,10 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(wssSslProtocols);
 		result.append(", wssSslCipherSuites: ");
 		result.append(wssSslCipherSuites);
+		result.append(", transportRabbitMqConsumerQos: ");
+		result.append(transportRabbitMqConsumerQos);
+		result.append(", transportRabbitMqConsumerQosType: ");
+		result.append(transportRabbitMqConsumerQosType);
 		result.append(')');
 		return result.toString();
 	}

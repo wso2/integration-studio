@@ -673,6 +673,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createJMSSessionAcknowledgementFromString(eDataType, initialValue);
 			case EsbPackage.JMS_CACHE_LEVEL:
 				return createJMSCacheLevelFromString(eDataType, initialValue);
+			case EsbPackage.JMS_BROKER_TYPE:
+				return createJMSBrokerTypeFromString(eDataType, initialValue);
 			case EsbPackage.WS_CLIENT_SIDE_BROADCAST_LEVEL:
 				return createWSClientSideBroadcastLevelFromString(eDataType, initialValue);
 			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
@@ -943,6 +945,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertJMSSessionAcknowledgementToString(eDataType, instanceValue);
 			case EsbPackage.JMS_CACHE_LEVEL:
 				return convertJMSCacheLevelToString(eDataType, instanceValue);
+			case EsbPackage.JMS_BROKER_TYPE:
+				return convertJMSBrokerTypeToString(eDataType, instanceValue);
 			case EsbPackage.WS_CLIENT_SIDE_BROADCAST_LEVEL:
 				return convertWSClientSideBroadcastLevelToString(eDataType, instanceValue);
 			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
@@ -7167,6 +7171,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertJMSCacheLevelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JMSBrokerType createJMSBrokerTypeFromString(EDataType eDataType, String initialValue) {
+		JMSBrokerType result = JMSBrokerType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertJMSBrokerTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

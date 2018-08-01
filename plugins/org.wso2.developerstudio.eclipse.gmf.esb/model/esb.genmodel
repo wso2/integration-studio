@@ -1513,7 +1513,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MediatorSequence/description"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CacheMediator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheProtocolType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/cacheType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CacheMediator/hashGenerator"/>

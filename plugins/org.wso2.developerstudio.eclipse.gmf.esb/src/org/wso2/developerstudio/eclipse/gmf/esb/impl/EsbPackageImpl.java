@@ -14044,7 +14044,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheMediator_CacheId() {
+	public EAttribute getCacheMediator_CacheProtocolType() {
 		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -14053,7 +14053,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheMediator_CacheProtocolType() {
+	public EAttribute getCacheMediator_CacheType() {
 		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -14062,7 +14062,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheMediator_CacheType() {
+	public EAttribute getCacheMediator_HashGenerator() {
 		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -14071,7 +14071,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheMediator_HashGenerator() {
+	public EAttribute getCacheMediator_CacheTimeout() {
 		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -14080,7 +14080,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheMediator_CacheTimeout() {
+	public EAttribute getCacheMediator_MaxMessageSize() {
 		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -14089,7 +14089,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheMediator_MaxMessageSize() {
+	public EAttribute getCacheMediator_CacheProtocolMethods() {
 		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -14098,7 +14098,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheMediator_CacheProtocolMethods() {
+	public EAttribute getCacheMediator_MaxEntryCount() {
 		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -14107,7 +14107,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheMediator_MaxEntryCount() {
+	public EAttribute getCacheMediator_SequenceType() {
 		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -14116,17 +14116,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCacheMediator_SequenceType() {
-		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getCacheMediator_SequenceKey() {
-		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(9);
+		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -14135,7 +14126,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getCacheMediator_InputConnector() {
-		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(10);
+		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -14144,7 +14135,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getCacheMediator_OutputConnector() {
-		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(11);
+		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -14153,7 +14144,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getCacheMediator_OnHitOutputConnector() {
-		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(12);
+		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -14162,7 +14153,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getCacheMediator_MediatorFlow() {
-		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(13);
+		return (EReference)cacheMediatorEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -14171,7 +14162,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getCacheMediator_HeadersToExcludeInHash() {
-		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(14);
+		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -14180,7 +14171,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getCacheMediator_ResponseCodes() {
-		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(15);
+		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -14189,7 +14180,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getCacheMediator_EnableCacheControl() {
-		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(16);
+		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -14198,7 +14189,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getCacheMediator_IncludeAgeHeader() {
-		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(17);
+		return (EAttribute)cacheMediatorEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -19974,7 +19965,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(mediatorSequenceEClass, MEDIATOR_SEQUENCE__DESCRIPTION);
 
 		cacheMediatorEClass = createEClass(CACHE_MEDIATOR);
-		createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__CACHE_ID);
 		createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__CACHE_PROTOCOL_TYPE);
 		createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__CACHE_TYPE);
 		createEAttribute(cacheMediatorEClass, CACHE_MEDIATOR__HASH_GENERATOR);
@@ -22404,7 +22394,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMediatorSequence_Description(), ecorePackage.getEString(), "description", null, 0, 1, MediatorSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cacheMediatorEClass, CacheMediator.class, "CacheMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCacheMediator_CacheId(), ecorePackage.getEString(), "cacheId", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_CacheProtocolType(), this.getCacheProtocolType(), "cacheProtocolType", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_CacheType(), this.getCacheType(), "cacheType", "FINDER", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_HashGenerator(), ecorePackage.getEString(), "hashGenerator", "HTTP_REQUEST_HASH_GENERATOR", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

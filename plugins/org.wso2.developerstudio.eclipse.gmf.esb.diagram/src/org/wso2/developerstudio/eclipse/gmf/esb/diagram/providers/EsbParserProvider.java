@@ -22,7 +22,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.AggregateMedi
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.BAMMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.BeanMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.BuilderMediatorDescriptionEditPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CacheMediatorCacheIdEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CallTemplateMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CalloutMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CalloutMediatorSoapActionEditPart;
@@ -479,23 +478,6 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
 			cloneMediatorCloneID_5144Parser = parser;
 		}
 		return cloneMediatorCloneID_5144Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	private IParser cacheMediatorCacheId_5145Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getCacheMediatorCacheId_5145Parser() {
-		if (cacheMediatorCacheId_5145Parser == null) {
-			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getCacheMediator_CacheId() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			cacheMediatorCacheId_5145Parser = parser;
-		}
-		return cacheMediatorCacheId_5145Parser;
 	}
 
 	/**
@@ -1212,8 +1194,6 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
 			return getHeaderMediatorDescription_5183Parser();
 		case CloneMediatorCloneIDEditPart.VISUAL_ID:
 			return getCloneMediatorCloneID_5144Parser();
-		case CacheMediatorCacheIdEditPart.VISUAL_ID:
-			return getCacheMediatorCacheId_5145Parser();
 		case IterateMediatorIterateIDEditPart.VISUAL_ID:
 			return getIterateMediatorIterateID_5146Parser();
 		case CalloutMediatorDescriptionEditPart.VISUAL_ID:

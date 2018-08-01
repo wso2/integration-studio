@@ -11389,7 +11389,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInboundEndpoint_TransportRabbitMqConsumerQos() {
+	public EReference getInboundEndpoint_TransportRabbitMqConsumerQosKey() {
 		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(174);
 	}
 
@@ -11688,6 +11688,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EAttribute getInboundEndpoint_WssSslCipherSuites() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(207);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConsumerQos() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(208);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportRabbitMqConsumerQosType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(209);
 	}
 
 	/**
@@ -20993,7 +21011,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL);
-		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS);
+		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_INBOUND_PORT);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE);
@@ -21027,6 +21045,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WS_USE_PORT_OFFSET);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE);
 
 		inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
 		createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
@@ -23421,7 +23441,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionRetryCount(), ecorePackage.getEString(), "transportRabbitMqConnectionRetryCount", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqConnectionRetryInterval(), ecorePackage.getEString(), "transportRabbitMqConnectionRetryInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_TransportRabbitMqServerRetryInterval(), ecorePackage.getEString(), "transportRabbitMqServerRetryInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInboundEndpoint_TransportRabbitMqConsumerQos(), this.getRegistryKeyProperty(), null, "transportRabbitMqConsumerQos", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInboundEndpoint_TransportRabbitMqConsumerQosKey(), this.getRegistryKeyProperty(), null, "transportRabbitMqConsumerQosKey", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_WsInboundPort(), ecorePackage.getEString(), "wsInboundPort", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_WsClientSideBroadcastLevel(), this.getWSClientSideBroadcastLevel(), "wsClientSideBroadcastLevel", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_WsOutflowDispatchSequence(), ecorePackage.getEString(), "wsOutflowDispatchSequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -23455,6 +23475,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_WsUsePortOffset(), ecorePackage.getEBoolean(), "wsUsePortOffset", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_WssSslProtocols(), ecorePackage.getEString(), "wssSslProtocols", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_WssSslCipherSuites(), ecorePackage.getEString(), "wssSslCipherSuites", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConsumerQos(), ecorePackage.getEString(), "transportRabbitMqConsumerQos", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportRabbitMqConsumerQosType(), this.getPayloadFormatType(), "transportRabbitMqConsumerQosType", "Registry Reference", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

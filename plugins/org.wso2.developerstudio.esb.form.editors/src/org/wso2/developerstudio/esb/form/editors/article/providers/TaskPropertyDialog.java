@@ -78,7 +78,8 @@ public class TaskPropertyDialog extends Dialog {
 	 */
 	private CompoundCommand resultCommand;
 
-	private String[] properties = { "format", "message", "soapAction", "to", "proxyName", "sequenceName", "injectTo" };
+	private String[] properties = {
+			"format", "message", "soapAction", "to", "proxyName", "sequenceName", "injectTo", "registryKey"	};
 
 	public TaskPropertyDialog(Shell parentShell, String taskImpel, List<TaskProperty> list) {
 		super(parentShell);

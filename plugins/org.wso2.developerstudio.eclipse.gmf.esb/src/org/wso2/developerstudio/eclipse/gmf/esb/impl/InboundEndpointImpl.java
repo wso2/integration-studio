@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
+import org.wso2.developerstudio.eclipse.gmf.esb.JMSBrokerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
@@ -137,6 +138,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
@@ -1238,7 +1240,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final JMSConnectionFactoryType TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT = JMSConnectionFactoryType.TOPIC;
+	protected static final JMSConnectionFactoryType TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT = JMSConnectionFactoryType.QUEUE;
 
 	/**
 	 * The cached value of the '{@link #getTransportJMSConnectionFactoryType()
@@ -1736,6 +1738,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String transportJMSDurableSubscriberName = TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSBrokerType() <em>Transport JMS Broker Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSBrokerType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final JMSBrokerType TRANSPORT_JMS_BROKER_TYPE_EDEFAULT = JMSBrokerType.OTHER;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSBrokerType() <em>Transport JMS Broker Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSBrokerType()
+	 * @generated
+	 * @ordered
+	 */
+	protected JMSBrokerType transportJMSBrokerType = TRANSPORT_JMS_BROKER_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTransportMQTTConnectionFactory()
@@ -8375,6 +8397,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JMSBrokerType getTransportJMSBrokerType() {
+		return transportJMSBrokerType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSBrokerType(JMSBrokerType newTransportJMSBrokerType) {
+		JMSBrokerType oldTransportJMSBrokerType = transportJMSBrokerType;
+		transportJMSBrokerType = newTransportJMSBrokerType == null ? TRANSPORT_JMS_BROKER_TYPE_EDEFAULT : newTransportJMSBrokerType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE, oldTransportJMSBrokerType, transportJMSBrokerType));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -8875,6 +8918,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportJMSPubSubNoLocal();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
 				return getTransportJMSDurableSubscriberName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
+				return getTransportJMSBrokerType();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
 				return getTransportMQTTConnectionFactory();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
@@ -9379,6 +9424,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
 				setTransportJMSDurableSubscriberName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
+				setTransportJMSBrokerType((JMSBrokerType)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
 				setTransportMQTTConnectionFactory((String)newValue);
@@ -10022,6 +10070,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
 				setTransportJMSDurableSubscriberName(TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
+				setTransportJMSBrokerType(TRANSPORT_JMS_BROKER_TYPE_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
 				setTransportMQTTConnectionFactory(TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT);
 				return;
@@ -10590,6 +10641,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT == null ? transportJMSPubSubNoLocal != null : !TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT.equals(transportJMSPubSubNoLocal);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
 				return TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT == null ? transportJMSDurableSubscriberName != null : !TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT.equals(transportJMSDurableSubscriberName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
+				return transportJMSBrokerType != TRANSPORT_JMS_BROKER_TYPE_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
 				return TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT == null ? transportMQTTConnectionFactory != null : !TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT.equals(transportMQTTConnectionFactory);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
@@ -11013,6 +11066,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportJMSPubSubNoLocal);
 		result.append(", transportJMSDurableSubscriberName: ");
 		result.append(transportJMSDurableSubscriberName);
+		result.append(", transportJMSBrokerType: ");
+		result.append(transportJMSBrokerType);
 		result.append(", transportMQTTConnectionFactory: ");
 		result.append(transportMQTTConnectionFactory);
 		result.append(", transportMQTTServerHostName: ");

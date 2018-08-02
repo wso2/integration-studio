@@ -100,6 +100,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
@@ -4743,6 +4744,7 @@ public interface InboundEndpoint extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Transport JMS Connection Factory Type</b></em>' attribute.
+	 * The default value is <code>"queue"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -4754,7 +4756,7 @@ public interface InboundEndpoint extends EsbElement {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType
 	 * @see #setTransportJMSConnectionFactoryType(JMSConnectionFactoryType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSConnectionFactoryType()
-	 * @model
+	 * @model default="queue"
 	 * @generated
 	 */
 	JMSConnectionFactoryType getTransportJMSConnectionFactoryType();
@@ -5393,6 +5395,36 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportJMSDurableSubscriberName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Broker Type</b></em>' attribute.
+	 * The default value is <code>"OTHER"</code>.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.JMSBrokerType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Broker Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Broker Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.JMSBrokerType
+	 * @see #setTransportJMSBrokerType(JMSBrokerType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSBrokerType()
+	 * @model default="OTHER"
+	 * @generated
+	 */
+	JMSBrokerType getTransportJMSBrokerType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Broker Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.JMSBrokerType
+	 * @see #getTransportJMSBrokerType()
+	 * @generated
+	 */
+	void setTransportJMSBrokerType(JMSBrokerType value);
 
 	/**
 	 * Returns the value of the '<em><b>Transport MQTT Connection Factory</b></em>' attribute.

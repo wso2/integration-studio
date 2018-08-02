@@ -742,6 +742,11 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/two"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/one"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSBrokerType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSBrokerType/WSO2_BROKER_PROFILE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSBrokerType/ActiveMQ"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSBrokerType/OTHER"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//WSClientSideBroadcastLevel">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//WSClientSideBroadcastLevel/zero"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//WSClientSideBroadcastLevel/one"/>
@@ -2422,6 +2427,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSReplyDestination"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSPubSubNoLocal"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDurableSubscriberName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSBrokerType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTConnectionFactory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerHostName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerPort"/>

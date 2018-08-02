@@ -2966,7 +2966,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSConnectionFactoryJNDIName"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSConnectionFactoryType"
-        eType="#//JMSConnectionFactoryType"/>
+        eType="#//JMSConnectionFactoryType" defaultValueLiteral="queue"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSConcurrentConsumers"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSDestination"
@@ -3013,6 +3013,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSDurableSubscriberName"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSBrokerType"
+        eType="#//JMSBrokerType" defaultValueLiteral="OTHER"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTConnectionFactory"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTServerHostName"
@@ -3341,6 +3343,11 @@
     <eLiterals name="three" value="3" literal="3"/>
     <eLiterals name="two" value="2" literal="2"/>
     <eLiterals name="one" value="1" literal="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="JMSBrokerType">
+    <eLiterals name="WSO2_BROKER_PROFILE"/>
+    <eLiterals name="ActiveMQ" value="1"/>
+    <eLiterals name="OTHER" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="WSClientSideBroadcastLevel">
     <eLiterals name="zero" literal="0"/>

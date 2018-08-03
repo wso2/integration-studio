@@ -1004,8 +1004,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				if (deserializeStatus.isValid()) {
 					deleteMarkers();
 					SourceError sourceError = ProcessSourceView.validateSynapseContent(xmlSource);
+					
 					if (sourceError != null) {
 						addMarker(sourceError);
+						
 					} else {
 						if (isFormEditor) {
 							sourceDirty = true;
@@ -1016,7 +1018,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					}
 				} else {
 
-					if (!(deserializeStatus.getExecption() instanceof org.apache.synapse.SynapseException)) {
+					if (!(deserializeStatus.getExecption() instanceof org.apache.synapse.SynapseException || 
+							deserializeStatus.getExecption() instanceof org.wso2.carbon.mediator.service.MediatorException)) {
 						deleteMarkers();
 						addMarker(ProcessSourceView.validateXMLContent(xmlSource));
 
@@ -1030,15 +1033,28 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				}
 			} catch (ValidationException e) {
 				isSaveAllow = false;
-				//previous saved content
+				IEditorInput editorInput = getEditorInput();
+				IFile file = ((FileEditorInput) editorInput).getFile();
+				printHandleDesignViewActivatedEventErrorMessage(e);
+				
+				if (MessageDialog.openQuestion(Display.getCurrent().getActiveShell(), "Error in Configuration",
+						"There are errors in source configuration, Save anyway?")) {
+					saveForcefully(sourceEditor.getDocument().get(), file, monitor);
+					sourceDirty = false;
+					firePropertyChange(PROP_DIRTY);
+				}
+				
 			} catch (Exception e) {
 				isSaveAllow = false;
 				printHandleDesignViewActivatedEventErrorMessage(e);
+				
 			} finally {
 				AbstractEsbNodeDeserializer.cleanupData();
 				firePropertyChange(PROP_DIRTY);
+				
 			}
 		}
+		
 		if (isSaveAllow) {
 			sourceDirty = false;
 		}

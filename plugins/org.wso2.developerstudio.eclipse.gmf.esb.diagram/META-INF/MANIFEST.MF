@@ -62,7 +62,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Eclipse-LazyStart: true
 Import-Package: net.sf.saxon.s9api,
- org.apache.xerces.parsers;version="2.9.0",
+ org.apache.xerces.parsers,
  org.eclipse.core.filesystem,
  org.eclipse.e4.core.services.events,
  org.eclipse.emf.query.conditions.eobjects,
@@ -71,7 +71,6 @@ Import-Package: net.sf.saxon.s9api,
  org.eclipse.ltk.internal.core.refactoring.resource,
  org.eclipse.ltk.internal.ui.refactoring,
  org.jaxen,
- org.wso2.carbon.identity.oauth.mediator.config.xml,
  org.wso2.developerstudio.eclipse.artifact.localentry.model,
  org.wso2.developerstudio.eclipse.artifact.localentry.ui.wizard,
  org.wso2.developerstudio.eclipse.capp.core.artifacts.manager;version="[6.0.0,7.0.0)",

@@ -1,3 +1,21 @@
+/*
+*  Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+*
+*  WSO2 Inc. licenses this file to you under the Apache License,
+*  Version 2.0 (the "License"); you may not use this file except
+*  in compliance with the License.
+*  You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator;
 
 import java.io.IOException;
@@ -29,36 +47,46 @@ import org.apache.synapse.config.xml.DropMediatorFactory;
 import org.apache.synapse.config.xml.EJBMediatorFactory;
 import org.apache.synapse.config.xml.EnqueueMediatorFactory;
 import org.apache.synapse.config.xml.EnrichMediatorFactory;
+import org.apache.synapse.config.xml.EntryFactory;
 import org.apache.synapse.config.xml.FaultMediatorFactory;
 import org.apache.synapse.config.xml.FilterMediatorFactory;
 import org.apache.synapse.config.xml.ForEachMediatorFactory;
 import org.apache.synapse.config.xml.HeaderMediatorFactory;
+import org.apache.synapse.config.xml.InvokeMediatorFactory;
 import org.apache.synapse.config.xml.IterateMediatorFactory;
 import org.apache.synapse.config.xml.LogMediatorFactory;
 import org.apache.synapse.config.xml.LoopBackMediatorFactory;
 import org.apache.synapse.config.xml.MessageProcessorFactory;
+import org.apache.synapse.config.xml.MessageStoreFactory;
 import org.apache.synapse.config.xml.POJOCommandMediatorFactory;
 import org.apache.synapse.config.xml.PayloadFactoryMediatorFactory;
 import org.apache.synapse.config.xml.PropertyMediatorFactory;
+import org.apache.synapse.config.xml.ProxyServiceFactory;
 import org.apache.synapse.config.xml.RespondMediatorFactory;
 import org.apache.synapse.config.xml.SendMediatorFactory;
 import org.apache.synapse.config.xml.SequenceMediatorFactory;
 import org.apache.synapse.config.xml.SwitchMediatorFactory;
+import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.config.xml.TransactionMediatorFactory;
 import org.apache.synapse.config.xml.URLRewriteMediatorFactory;
 import org.apache.synapse.config.xml.ValidateMediatorFactory;
 import org.apache.synapse.config.xml.XSLTMediatorFactory;
+import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.apache.synapse.config.xml.eventing.EventPublisherMediatorFactory;
+import org.apache.synapse.config.xml.inbound.InboundEndpointFactory;
+import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.mediators.bsf.ScriptMediatorFactory;
 import org.apache.synapse.mediators.spring.SpringMediatorFactory;
 import org.apache.synapse.mediators.throttle.ThrottleMediatorFactory;
 import org.apache.synapse.mediators.xquery.XQueryMediatorFactory;
+import org.apache.synapse.startup.quartz.SimpleQuartzFactory;
 import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorFactory;
 import org.wso2.carbon.identity.oauth.mediator.config.xml.OAuthMediatorFactory;
 import org.wso2.carbon.mediator.cache.CacheMediatorFactory;
 import org.wso2.carbon.mediator.datamapper.config.xml.DataMapperMediatorFactory;
 import org.wso2.carbon.mediator.event.xml.EventMediatorFactory;
 import org.wso2.carbon.mediator.fastXSLT.config.xml.FastXSLTMediatorFactory;
+import org.wso2.carbon.mediator.service.MediatorException;
 import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
 import org.wso2.carbon.relay.mediators.builder.xml.BuilderMediatorFactory;
 import org.wso2.carbon.rule.mediator.RuleMediatorFactory;
@@ -71,6 +99,10 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+/**
+ * Process source view content
+ *
+ */
 public class ProcessSourceView {
 
 	private static SourceError sourceError = new SourceError();
@@ -83,10 +115,28 @@ public class ProcessSourceView {
 			"dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone", "iterate",
 			"foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent"));
 
+	private static Set<String> artifacts = new HashSet<>(Arrays.asList("api", "proxy", "endpoint", "inboundEndpoint",
+			"localEntry", "messageProcessor", "store", "sequence", "task", "template"));
+
+	private static Set<String> intermediary = new HashSet<>(Arrays.asList("inSequence", "outSequence", "faultSequence",
+			"resource", "description", "target", "publishWSDL", "enableAddressing", "enableSec", "enableRM", "policy",
+			"parameter", "timeout", "duration", "responseAction", "markForSuspension", "action", "errorCodes",
+			"retriesBeforeSuspension", "retryDelay", "suspendOnFailure", "initialDuration", "progressionFactor",
+			"maximumDuration", "membershipHandler", "definition", "member", "http", "address", "failover",
+			"dynamicLoadbalance", "wsdl", "loadBalance", "default", "recipientlist"));
+
 	public ProcessSourceView() {
 
 	}
 
+	/**
+	 * Start processing synapse content. Here we split the content and send for
+	 * processing
+	 * 
+	 * @param xmlContent
+	 *            xml content of the source view
+	 * @return If there is an source view error
+	 */
 	public static SourceError validateSynapseContent(String xmlContent) {
 
 		xmlTagsQueue.clear();
@@ -103,6 +153,14 @@ public class ProcessSourceView {
 
 	}
 
+	/**
+	 * Validate for the xml parser errors in the source content
+	 * 
+	 * @param xmlContent
+	 *            source view content
+	 * @return Source error
+	 * @throws ValidationException
+	 */
 	public static SourceError validateXMLContent(String xmlContent) throws ValidationException {
 
 		String parserClass = "org.apache.xerces.parsers.SAXParser";
@@ -129,6 +187,17 @@ public class ProcessSourceView {
 		return sourceError;
 	}
 
+	/**
+	 * Create XML tag objects according to the source view content
+	 * 
+	 * @param line
+	 *            Line content
+	 * @param index
+	 *            Line number
+	 * @param length
+	 *            Current content length
+	 * @return List of XML tags in the line
+	 */
 	private static List<XMLTag> processTags(String line, int index, int length) {
 		List<XMLTag> tempTags = new ArrayList<>();
 
@@ -241,8 +310,12 @@ public class ProcessSourceView {
 		return tempTags;
 	}
 
+	/**
+	 * Validate created XMLTags
+	 * 
+	 * @return SourceError object if there is an error
+	 */
 	private static SourceError synapseValidation() {
-		// api proxy sequence
 
 		SourceError sourceError = null;
 		xmlTags = new Stack<>();
@@ -264,7 +337,7 @@ public class ProcessSourceView {
 					}
 
 				} else {
-					// type 4 are already covered in xml validation.
+					// type 4 is already covered in xml validation.
 					// can be 8
 					String error = "Closing tag \"" + tempTag.getValue()
 							+ "\" does not have a coresponding starting tag.";
@@ -296,6 +369,11 @@ public class ProcessSourceView {
 		return sourceError;
 	}
 
+	/**
+	 * Validate for each synapse content tags
+	 * 
+	 * @return SourceError object if there is an error
+	 */
 	private static SourceError mediatorValidation() {
 
 		boolean insideTag = true;
@@ -306,11 +384,8 @@ public class ProcessSourceView {
 			String error = "";
 
 			if (xmlTag.getTagType() == 3) {
-				if (mediators.contains(xmlTag.getqName())) {
-					error = validateMediators(mediatorVal, xmlTag.getqName());
-				} else {
-					// add other artifact validation
-				}
+
+				error = validate(mediatorVal, xmlTag.getqName());
 
 				if (!error.equals("")) {
 					return createError(error, xmlTag);
@@ -325,15 +400,13 @@ public class ProcessSourceView {
 						mediatorVal = xmlTag.getValue().concat(mediatorVal);
 
 						if (xmlTag.isStartTag()) {
-							if (mediators.contains(xmlTag.getqName())) {
-								error = validateMediators(mediatorVal, xmlTag.getqName());
-							} else {
-								// add other artifact validation
-							}
+
+							error = validate(mediatorVal, xmlTag.getqName());
 
 							if (!error.equals("")) {
 								return createError(error, xmlTag);
 							}
+
 							insideTag = false;
 						}
 					}
@@ -344,6 +417,15 @@ public class ProcessSourceView {
 		return null;
 	}
 
+	/**
+	 * Create a SourceError object
+	 * 
+	 * @param error
+	 *            Error description to add in the IMarker
+	 * @param xmlTag
+	 *            Current XMLTag
+	 * @return Created source error
+	 */
 	private static SourceError createError(String error, XMLTag xmlTag) {
 		SourceError sourceError = new SourceError();
 		sourceError.setException(error);
@@ -354,6 +436,99 @@ public class ProcessSourceView {
 		return sourceError;
 	}
 
+	private static String validate(String mediatorVal, String qTag) {
+
+		String error = "";
+
+		if (intermediary.contains(qTag)) {
+
+		} else if (artifacts.contains(qTag)) {
+			error = validateArtifacts(mediatorVal, qTag);
+
+		} else if (mediators.contains(qTag)) {
+			error = validateMediators(mediatorVal, qTag);
+
+		}
+		return error;
+
+	}
+
+	/**
+	 * Process synapse validation on artifacts such as proxy, api, endpoint, etc.
+	 * 
+	 * @param mediator
+	 *            Mediator content
+	 * @param qTag
+	 *            QName of the mediator
+	 * @return Error description
+	 */
+	private static String validateArtifacts(String mediator, String qTag) {
+
+		try {
+			OMElement omElement = AXIOMUtil.stringToOM(mediator);
+
+			if (qTag.equals("api")) {
+				APIFactory factory = new APIFactory();
+				factory.createAPI(omElement);
+
+			} else if (qTag.equals("proxy")) {
+				ProxyServiceFactory factory = new ProxyServiceFactory();
+				factory.createProxy(omElement, null);
+
+			} else if (qTag.equals("endpoint")) {
+				EndpointFactory.getEndpointFromElement(omElement, false, null);
+
+			} else if (qTag.equals("inboundEndpoint")) {
+				InboundEndpointFactory factory = new InboundEndpointFactory();
+				factory.createInboundEndpoint(omElement, null);
+
+			} else if (qTag.equals("localEntry")) {
+				EntryFactory factory = new EntryFactory();
+				factory.createEntry(omElement, null);
+
+			} else if (qTag.equals("messageProcessor")) {
+				MessageProcessorFactory factory = new MessageProcessorFactory();
+				factory.createMessageProcessor(omElement);
+
+			} else if (qTag.equals("store")) {
+				MessageStoreFactory factory = new MessageStoreFactory();
+				factory.createMessageStore(omElement, null);
+
+			} else if (qTag.equals("sequence")) {
+				SequenceMediatorFactory factory = new SequenceMediatorFactory();
+				factory.createMediator(omElement, null);
+
+			} else if (qTag.equals("task")) {
+				SimpleQuartzFactory factory = new SimpleQuartzFactory();
+				factory.createStartup(omElement);
+
+			} else if (qTag.equals("template")) {
+				TemplateMediatorFactory factory = new TemplateMediatorFactory();
+				factory.createMediator(omElement, null);
+
+			}
+
+		} catch (SynapseException e) {
+			return e.getMessage();
+
+		} catch (MediatorException e) {
+			return e.getMessage();
+
+		} catch (XMLStreamException e) {
+			// ignore
+		}
+		return "";
+	}
+
+	/**
+	 * Validate esb mediators such as log, send, call, etc.
+	 * 
+	 * @param mediator
+	 *            Mediator content
+	 * @param qTag
+	 *            QName of the mediator
+	 * @return Error description
+	 */
 	private static String validateMediators(String mediator, String qTag) {
 
 		try {
@@ -404,7 +579,8 @@ public class ProcessSourceView {
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("call-template")) {
-				//
+				InvokeMediatorFactory factory = new InvokeMediatorFactory();
+				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("sequence")) {
 				SequenceMediatorFactory factory = new SequenceMediatorFactory();
@@ -563,16 +739,37 @@ public class ProcessSourceView {
 		} catch (SynapseException e) {
 			return e.getMessage();
 
+		} catch (MediatorException e) {
+			return e.getMessage();
+
 		} catch (XMLStreamException e) {
 			// ignore
 		}
 		return "";
 	}
 
+	/**
+	 * Check whether there is a tag within the source view line
+	 * 
+	 * @param value
+	 *            Source view content
+	 * @return Whether content has a tag or not
+	 */
 	private static boolean hasTag(String value) {
 		return value.contains("<") || value.contains(">");
 	}
 
+	/**
+	 * Calculate the current length of the source view.
+	 * 
+	 * @param xml
+	 *            Full source view content
+	 * @param start
+	 *            Current tag starting index
+	 * @param line
+	 *            Line number
+	 * @return Starting index acording to the source view
+	 */
 	private static int calculateLength(String xml, int start, int line) {
 		int length = 0;
 		String[] lines = xml.split("\n");
@@ -583,6 +780,9 @@ public class ProcessSourceView {
 		return length;
 	}
 
+	/**
+	 * Set xml parser errors for the sourceError object.
+	 */
 	private static class MyErrorHandler extends DefaultHandler {
 		String errorMsg = "";
 

@@ -4,6 +4,7 @@
 <annotation>
       <appinfo>
          <meta.schema plugin="org.wso2.developerstudio.eclipse.project.extensions" id="org.wso2.developerstudio.project.nature.provider" name="org.wso2.developerstudio.project.nature.provider"/>
+      	 <meta.schema plugin="org.wso2.developerstudio.eclipse.project.extensions" id="org.wso2.developerstudio.eclipse.project.extensions.artifacttemplates" name="ESB related template artifacts"/>
       </appinfo>
       <documentation>
          This extension point facilitates adding of new project natures in to WSO2 Developer Studio.

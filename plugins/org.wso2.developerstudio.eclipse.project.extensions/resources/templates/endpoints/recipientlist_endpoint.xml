@@ -1,0 +1,7 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="{ep.name}">
+	<recipientlist>
+		<endpoint>
+			<default />
+		</endpoint>
+	</recipientlist>
+</endpoint>

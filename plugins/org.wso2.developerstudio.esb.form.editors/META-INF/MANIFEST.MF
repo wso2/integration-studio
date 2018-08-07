@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.wso2.developerstudio.eclipse.gmf.esb,
  org.eclipse.m2e.maven.runtime,
  org.wso2.developerstudio.eclipse.maven,
- org.eclipse.ui.workbench
+ org.eclipse.ui.workbench,
+ org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.3.0,7.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.commons.lang,

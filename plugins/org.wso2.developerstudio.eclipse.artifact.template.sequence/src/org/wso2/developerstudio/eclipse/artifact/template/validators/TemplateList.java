@@ -8,8 +8,8 @@ import java.util.Map;
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
-import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
+import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 

@@ -62,7 +62,7 @@ import org.wso2.developerstudio.eclipse.platform.core.model.AbstractComposite;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectOptionData;
-import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplate;
 
 import static org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants.*;
 

@@ -10,7 +10,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.ui.IEditorPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
@@ -34,6 +33,7 @@ public class ConnectionCalculator {
 
 	private static Point currentFigureLocation = null;
 	private static Point connectorFigureLocation = null;
+	public static boolean forwardConnectorPresent = false;
 
 	public static EsbLinkEditPart getNearestLinkEditPart(ArrayList links,
 			AbstractBorderedShapeEditPart childEditPart) {
@@ -115,6 +115,7 @@ public class ConnectionCalculator {
 
 			if ((connectors.size() != 0)) {
 				if (connectors.get(0) instanceof AbstractInputConnectorEditPart) {
+					forwardConnectorPresent = false;
 					currentConnector = EditorUtils
 							.getInputConnector(childEditPart);
 				} else {
@@ -189,6 +190,11 @@ public class ConnectionCalculator {
 			}
 		}
 		if (nearForwardConnector != null) {
+                   if ((connectors.size() != 0)) {
+                        if (connectors.get(0) instanceof AbstractInputConnectorEditPart) {
+                            forwardConnectorPresent = true;
+                        }
+                    }
 			updateCurrentStatesForGivenFigure(nearForwardConnector);
 			if((nearForwardConnector.getParent() instanceof ProxyServiceEditPart)
 					||(nearForwardConnector.getParent() instanceof APIResourceEditPart)){

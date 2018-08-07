@@ -27,15 +27,13 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 
 public class ArtifactTemplateHandler {
-	private static final String ESB_ARTIFACT_TEMPLATE_EXTENSION =
-	                                                              "org.wso2.developerstudio.eclipse.project.extensions.artifacttemplates";
+	private static final String ESB_ARTIFACT_TEMPLATE_EXTENSION = "org.wso2.developerstudio.eclipse.project.extensions.artifacttemplates";
 	private static List<ArtifactTemplate> templateList;
 
 	private static void loadProxyTemplateInfo() {
 		templateList = new ArrayList<ArtifactTemplate>();
-		IConfigurationElement[] config =
-		                                 Platform.getExtensionRegistry()
-		                                         .getConfigurationElementsFor(ESB_ARTIFACT_TEMPLATE_EXTENSION);
+		IConfigurationElement[] config = Platform.getExtensionRegistry()
+				.getConfigurationElementsFor(ESB_ARTIFACT_TEMPLATE_EXTENSION);
 		for (IConfigurationElement e : config) {
 			try {
 				ArtifactTemplate proxyTemplate = new ArtifactTemplate(e.getAttribute("id"), e.getAttribute("name"));
@@ -63,14 +61,14 @@ public class ArtifactTemplateHandler {
 	}
 
 	public static ArtifactTemplate[] getArtifactTemplates(Map<String, List<String>> filters) {
-		if (filters == null || filters.size() == 0 ||
-		    !DeveloperStudioProviderUtils.isFilterPresent(filters, CSProviderConstants.FILTER_MEDIA_TYPE)) {
+		if (filters == null || filters.size() == 0
+				|| !DeveloperStudioProviderUtils.isFilterPresent(filters, CSProviderConstants.FILTER_MEDIA_TYPE)) {
 			return templateList.toArray(new ArtifactTemplate[] {});
 		} else {
 			List<ArtifactTemplate> filteredTemplateList = new ArrayList<ArtifactTemplate>();
 			for (ArtifactTemplate artifactTemplate : templateList) {
-				if (artifactTemplate.getMediaType() != null &&
-				    DeveloperStudioProviderUtils.isMediaTypeFilterPassed(filters, artifactTemplate.getMediaType())) {
+				if (artifactTemplate.getMediaType() != null && DeveloperStudioProviderUtils
+						.isMediaTypeFilterPassed(filters, artifactTemplate.getMediaType())) {
 					filteredTemplateList.add(artifactTemplate);
 				}
 			}

@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
@@ -32,7 +33,10 @@ import java.util.Stack;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMException;
+import org.apache.axiom.om.impl.OMNamespaceImpl;
 import org.apache.axiom.om.util.AXIOMUtil;
+import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.AggregateMediatorFactory;
 import org.apache.synapse.config.xml.BeanMediatorFactory;
@@ -98,6 +102,7 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
+import javax.xml.namespace.QName;
 
 /**
  * Process source view content
@@ -325,15 +330,23 @@ public class ProcessSourceView {
 			XMLTag tempTag = xmlTagsQueue.remove();
 
 			if (tempTag.isStartTag()) { // 14
-				// type 4 is already covered in xml validation.
 				xmlTags.push(tempTag);
+				// type 4 is already covered in xml validation.
+				if (prev.getTagType() == 7 && !"".equals(prev.getValue().trim())) {
+					String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
+							+ tempTag.getValue() + "\".";
+					return createError(error, tempTag);
+					
+				}
 
 			} else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
 				if (prev != null && prev.getTagType() != 8) {
 					xmlTags.push(tempTag);
-					sourceError = mediatorValidation();
-					if (sourceError != null) {
-						return sourceError;
+					if (!intermediary.contains(tempTag.getqName())) {
+						sourceError = mediatorValidation();
+						if (sourceError != null) {
+							return sourceError;
+						}
 					}
 
 				} else {
@@ -349,7 +362,7 @@ public class ProcessSourceView {
 				if (prev != null && (prev.getTagType() == 4 || prev.getTagType() == 7)) {
 					xmlTags.push(tempTag);
 
-				} else {
+				} else if (tempTag.getTagType() == 6) {
 					String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
 							+ tempTag.getValue() + "\".";
 					return createError(error, tempTag);
@@ -397,7 +410,11 @@ public class ProcessSourceView {
 
 					if (xmlTags.size() > 0) {
 						xmlTag = xmlTags.pop();
-						mediatorVal = xmlTag.getValue().concat(mediatorVal);
+						if (xmlTag.getTagType() == 4) {
+							mediatorVal = xmlTag.getValue().concat(" ".concat(mediatorVal));
+						} else {
+							mediatorVal = xmlTag.getValue().concat(mediatorVal);
+						}
 
 						if (xmlTag.isStartTag()) {
 
@@ -407,8 +424,10 @@ public class ProcessSourceView {
 								return createError(error, xmlTag);
 							}
 
-							insideTag = false;
+							insideTag = intermediary.contains(xmlTag.getqName());
 						}
+					} else {
+						insideTag = false;
 					}
 				}
 			}
@@ -476,8 +495,11 @@ public class ProcessSourceView {
 				factory.createProxy(omElement, null);
 
 			} else if (qTag.equals("endpoint")) {
+				//omElement = omElement.getFirstElement();
+				omElement.getFirstElement().setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
 				EndpointFactory.getEndpointFromElement(omElement, false, null);
 
+				
 			} else if (qTag.equals("inboundEndpoint")) {
 				InboundEndpointFactory factory = new InboundEndpointFactory();
 				factory.createInboundEndpoint(omElement, null);
@@ -508,12 +530,9 @@ public class ProcessSourceView {
 
 			}
 
-		} catch (SynapseException e) {
+		} catch (SynapseException | MediatorException e) {
 			return e.getMessage();
-
-		} catch (MediatorException e) {
-			return e.getMessage();
-
+			
 		} catch (XMLStreamException e) {
 			// ignore
 		}
@@ -619,8 +638,9 @@ public class ProcessSourceView {
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("script")) {
+				Properties properties = new Properties();
 				ScriptMediatorFactory factory = new ScriptMediatorFactory();
-				factory.createMediator(omElement, null);
+				factory.createMediator(omElement, properties);
 
 			} else if (qTag.equals("spring")) {
 				SpringMediatorFactory factory = new SpringMediatorFactory();
@@ -736,12 +756,9 @@ public class ProcessSourceView {
 
 			}
 
-		} catch (SynapseException e) {
+		} catch (SynapseException | MediatorException e) {
 			return e.getMessage();
-
-		} catch (MediatorException e) {
-			return e.getMessage();
-
+			
 		} catch (XMLStreamException e) {
 			// ignore
 		}

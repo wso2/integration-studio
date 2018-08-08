@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.developerstudio.eclipse.project.extensions" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.developerstudio.eclipse.platform.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.developerstudio.eclipse.project.extensions" id="org.wso2.developerstudio.project.nature.provider" name="org.wso2.developerstudio.project.nature.provider"/>
+         <meta.schema plugin="org.wso2.developerstudio.eclipse.platform.core" id="org.wso2.developerstudio.eclipse.platform.core.artifacttemplates" name="ESB related template artifacts"/>
       </appinfo>
       <documentation>
-         This extension point facilitates adding of new project natures in to WSO2 Developer Studio.
+         [Enter description of this extension point.]
       </documentation>
    </annotation>
 
@@ -17,9 +17,9 @@
          </appinfo>
       </annotation>
       <complexType>
-         <sequence>
-            <element ref="projectnature" minOccurs="1" maxOccurs="unbounded"/>
-         </sequence>
+         <choice minOccurs="1" maxOccurs="unbounded">
+            <element ref="template"/>
+         </choice>
          <attribute name="point" type="string" use="required">
             <annotation>
                <documentation>
@@ -47,30 +47,47 @@
       </complexType>
    </element>
 
-   <element name="projectnature">
+   <element name="template">
       <complexType>
-         <attribute name="ismultipleartifact" type="string">
+         <attribute name="id" type="string" use="required">
             <annotation>
                <documentation>
-                  
+                  Unique id
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="projectnature" type="string">
+         <attribute name="name" type="string" use="required">
             <annotation>
                <documentation>
-                  
+                  Display name
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="id" type="string">
+         <attribute name="mediaType" type="string" use="required">
             <annotation>
                <documentation>
-                  
+                  The media type for this template
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="iscappsupported" type="string">
+         <attribute name="extension" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The extensions for this template
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="file" type="string" use="required">
+            <annotation>
+               <documentation>
+                  points to the template
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="custom" type="boolean" use="default" value="false">
             <annotation>
                <documentation>
                   
@@ -94,14 +111,7 @@
          <meta.section type="examples"/>
       </appinfo>
       <documentation>
-         &lt;extension
-          point=&quot;org.wso2.developerstudio.project.nature.provider&quot;&gt;
-           &lt;projectnature
-             id=&quot;org.wso2.developerstudio.eclipse.maven.features&quot;
-             projectnature=&quot;org.wso2.developerstudio.eclipse.maven.project.nature&quot;
-             ismultipleartifact=&quot;true&quot;            
-             &lt;/projectnature&gt;
-    &lt;/extension&gt;
+         [Enter extension point usage example here.]
       </documentation>
    </annotation>
 

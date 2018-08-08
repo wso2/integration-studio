@@ -3,9 +3,15 @@
 <plugin>
    <extension-point id="org.wso2.developerstudio.project.nature.provider" name="WSO2 Project Natures" 
                                                           schema="schema/org.wso2.developerstudio.project.nature.provider.exsd"/>
-   <extension-point id="artifacttemplates" name="Template artifacts" schema="schema/org.wso2.developerstudio.eclipse.project.extensions/schema/org.wso2.developerstudio.project.nature.provider.exsd"/>                       
+   <extension-point id="artifacttemplates" name="Template artifacts" schema="schema/artifacttemplates.exsd"/>                       
    	<extension
           point="org.wso2.developerstudio.eclipse.project.extensions.artifacttemplates">
+        <template
+            file="resources/templates/datamapper/datamapper.dmc"
+            id="org.wso2.developerstudio.eclipse.esb.template.datamapper"
+            name="Data Mapper"
+            mediaType="application/datamapper"
+            extension="dmc"></template>
         <template 
              file="resources/templates/sequences/sequence.xml"
              id="org.wso2.developerstudio.eclipse.esb.sequence"

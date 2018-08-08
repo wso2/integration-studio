@@ -145,16 +145,20 @@ public class ProcessSourceView {
 	public static SourceError validateSynapseContent(String xmlContent) {
 
 		xmlTagsQueue.clear();
-		String[] lines = xmlContent.split("\n");
-		int length = 0;
+		if (!xmlContent.trim().isEmpty()) {
+			String[] lines = xmlContent.split("\n");
+			int length = 0;
 
-		for (int i = 0; i < lines.length; i++) {
-			String line = lines[i];
-			processTags(line, i, length);
-			length += (line.length() + 1);
+			for (int i = 0; i < lines.length; i++) {
+				String line = lines[i];
+				processTags(line, i, length);
+				length += (line.length() + 1);
+			}
+
+			return synapseValidation();
+		} else {
+			return null;
 		}
-
-		return synapseValidation();
 
 	}
 

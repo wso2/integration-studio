@@ -122,10 +122,10 @@ public class Deserializer {
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	public void updateDesign(String source, EsbDiagramEditor graphicalEditor, boolean withSynapse) throws Exception {
+	public void updateDesign(String source, EsbDiagramEditor graphicalEditor) throws Exception {
 		
 		EsbDeserializerRegistry.getInstance().init(graphicalEditor);
-		Map<String, Object> artifacts = getArtifacts(source, withSynapse);		
+		Map<String, Object> artifacts = getArtifacts(source);		
 		
 		Diagram diagram = graphicalEditor.getDiagram();
 		EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
@@ -194,7 +194,7 @@ public class Deserializer {
 	
 	@SuppressWarnings("unchecked")
 	public void updateDesign(String source, ESBFormEditor formEditor, ArtifactType artifactType) throws Exception {
-		Map<String, Object> artifacts = getArtifacts(source, true);	
+		Map<String, Object> artifacts = getArtifacts(source);	
 		for (Map.Entry<String, Object> artifact : artifacts.entrySet()) {
 			@SuppressWarnings("rawtypes")
 			IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance()
@@ -296,7 +296,7 @@ public class Deserializer {
 		return artifactType;
 	}
 	
-	private Map<String,Object> getArtifacts(String source, boolean withSynapse) throws Exception{
+	private Map<String,Object> getArtifacts(String source) throws Exception{
 		Map<String,Object> artifacts =new LinkedHashMap<String, Object>();
 		
 		ArtifactType artifactType = getArtifactType(source);
@@ -353,7 +353,7 @@ public class Deserializer {
 			break;
 		case API:
 			//API api = APIFactory.createAPI(element);
-			API api = DummyAPIFactory.createAPI(element, withSynapse);
+			API api = DummyAPIFactory.createAPI(element);
 			artifacts.put(api.getName(), api);
 			break;
 		case ENDPOINT:
@@ -430,9 +430,9 @@ public class Deserializer {
 		return mediatorFlowContainerList;
 	}
 	
-	public DeserializeStatus isValidSynapseConfig(String source, boolean withSynapse) {
+	public DeserializeStatus isValidSynapseConfig(String source) {
 		try {
-			getArtifacts(source, withSynapse);
+			getArtifacts(source);
 			return new DeserializeStatus(true, null,source);
 		} catch (Exception e) {
 			return new DeserializeStatus(false, e,source);
@@ -449,7 +449,7 @@ public class Deserializer {
 			}
 			
 			try {
-				getArtifacts(element.toStringWithConsume(), true);
+				getArtifacts(element.toStringWithConsume());
 			} catch (Exception e) {
 				if (!(elementSub.getLocalName().equals("proxy") || elementSub.getLocalName().equals("target")
 						|| elementSub.getLocalName().equals("template") || elementSub.getLocalName().equals("api"))) {
@@ -468,7 +468,7 @@ public class Deserializer {
 				
 				elementSub.addChild(omElement);
 				try {
-					getArtifacts(element.toStringWithConsume(), true);
+					getArtifacts(element.toStringWithConsume());
 				} catch (Exception e) {
 					List<OMElement> subChildElements = IteratorUtils.toList(omElement.getChildElements());
 					if (subChildElements.size() > 0) {

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.wso2.developerstudio.eclipse.platform.core" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.wso2.developerstudio.eclipse.project.extensions" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.wso2.developerstudio.eclipse.platform.core" id="org.wso2.developerstudio.eclipse.platform.core.artifacttemplates" name="ESB related template artifacts"/>
+         <meta.schema plugin="org.wso2.developerstudio.eclipse.project.extensions" id="org.wso2.developerstudio.eclipse.project.extensions.artifacttemplates" name="ESB related template artifacts"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]

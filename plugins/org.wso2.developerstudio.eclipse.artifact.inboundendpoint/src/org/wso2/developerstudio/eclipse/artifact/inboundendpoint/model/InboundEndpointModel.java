@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.Activator;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
+import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointAvailableSequences;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseEntryType;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
@@ -71,13 +72,13 @@ public class InboundEndpointModel extends ProjectDataModel {
 	private String vfsLockReleaseSameNode;
 	private String vfsDistributedLock;
 	private String vfsDistributedTimeout;
-	private boolean generateSequence = false;
 	private String sequence;
 	private String errorSequence;
 
 	private List<OMElement> availableLEList;
 	private IContainer inboundEndpointSaveLocation;
 	private List<OMElement> selectedLEList = new ArrayList<OMElement>();
+	private Boolean generateSequence = getInitalGenerateSquencePropery();
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -625,5 +626,19 @@ public class InboundEndpointModel extends ProjectDataModel {
 	public void setErrorSequence(String errorSequence) {
 		this.errorSequence = errorSequence;
 	}
-
+	
+	/**
+	 * returns the initial value for the generateSequence property. This will set the default option if 
+	 * no sequences are available
+	 * 
+	 * @return boolean initial value
+	 */
+	private boolean getInitalGenerateSquencePropery() {
+		try {
+			InboundEndpointAvailableSequences availableSequnce = new InboundEndpointAvailableSequences();
+			return availableSequnce.getListData(null, null).isEmpty();
+		}catch(Exception e) {
+			return false;
+		}
+	}
 }

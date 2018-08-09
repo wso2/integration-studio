@@ -29,7 +29,7 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractFieldController;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.ui.validator.CommonFieldValidator;
 
 import java.util.List;

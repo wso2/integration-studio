@@ -78,7 +78,7 @@ public class InboundEndpointModel extends ProjectDataModel {
 	private List<OMElement> availableLEList;
 	private IContainer inboundEndpointSaveLocation;
 	private List<OMElement> selectedLEList = new ArrayList<OMElement>();
-	private Boolean generateSequence = getInitalGenerateSquencePropery();
+	private boolean generateSequence = getInitalGenerateSquencePropery();
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 

@@ -633,12 +633,12 @@ public class InboundEndpointModel extends ProjectDataModel {
 	 * 
 	 * @return boolean initial value
 	 */
-	private boolean getInitalGenerateSquencePropery() {
-		try {
-			InboundEndpointAvailableSequences availableSequnce = new InboundEndpointAvailableSequences();
-			return availableSequnce.getListData(null, null).isEmpty();
-		}catch(Exception e) {
-			return false;
-		}
-	}
+    private boolean getInitalGenerateSquencePropery() {
+        try {
+            InboundEndpointAvailableSequences availableSequnce = new InboundEndpointAvailableSequences();
+            return availableSequnce.getListData(null, null).isEmpty();
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

@@ -31,12 +31,13 @@ public class ClassMediatorExtFactory extends ClassMediatorFactory {
 	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
 		OMAttribute name = elem.getAttribute(ATT_NAME);
-		if (name == null) {
-			String msg = "The name of the actual mediator class is a required attribute";
-			throw new SynapseException(msg);
-		}
 
-		ClassMediatorExt classMediator = new ClassMediatorExt(name.getAttributeValue());
+		ClassMediatorExt classMediator;
+		if (name != null) {
+			classMediator = new ClassMediatorExt(name.getAttributeValue());
+		} else {
+			classMediator = new ClassMediatorExt("sample-class-mediator");
+		}
 
 		classMediator.addAllProperties(MediatorPropertyFactory.getMediatorProperties(elem));
 		processAuditStatus(classMediator, elem);

@@ -93,8 +93,6 @@ public class DummyMediatorFactoryFinder {
  	private Map<String, Library> synapseLibraryMap;
     private Map<String, SynapseImport> synapseImportMap;
 
-	private static final Log log = LogFactory.getLog(MediatorFactoryFinder.class);
-
     private static final Class[] mediatorFactories = {
             SequenceMediatorFactory.class,
             LogMediatorFactory.class,
@@ -196,17 +194,13 @@ public class DummyMediatorFactoryFinder {
         } else {
             qName = new QName(localName);
         }
-        if (log.isDebugEnabled()) {
-            log.debug("getMediator(" + qName + ")");
-        }
+     
         Class cls = factoryMap.get(qName);
 
         if (cls == null && localName.indexOf('.') > -1) {
             String newLocalName = localName.substring(0, localName.indexOf('.'));
             qName = new QName(element.getNamespace().getNamespaceURI(), newLocalName);
-            if (log.isDebugEnabled()) {
-                log.debug("getMediator.2(" + qName + ")");
-            }
+           
             cls = factoryMap.get(qName);
         }
 
@@ -230,7 +224,7 @@ public class DummyMediatorFactoryFinder {
 
 
             String msg = "Unknown mediator referenced by configuration element : " + qName;
-            log.error(msg);
+
             throw new SynapseException(msg);
         }
 
@@ -245,12 +239,12 @@ public class DummyMediatorFactoryFinder {
         	
         } catch (InstantiationException e) {
             String msg = "Error initializing mediator factory : " + cls;
-            log.error(msg);
+        
             throw new SynapseException(msg, e);
 
         } catch (IllegalAccessException e) {
             String msg = "Error initializing mediator factory : " + cls;
-            log.error(msg);
+          
             throw new SynapseException(msg, e);
 		}
 	}
@@ -279,7 +273,7 @@ public class DummyMediatorFactoryFinder {
     }
 
     private void handleException(String msg) {
-        log.error(msg);
+
         throw new SynapseException(msg);
     }
 

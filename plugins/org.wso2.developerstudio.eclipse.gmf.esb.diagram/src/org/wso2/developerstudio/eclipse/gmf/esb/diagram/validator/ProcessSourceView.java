@@ -116,7 +116,7 @@ public class ProcessSourceView {
 	private static Set<String> mediators = new HashSet<>(Arrays.asList("log", "call", "enqueue", "send", "loopback",
 			"respond", "event", "drop", "enrich", "property", "filter", "call-template", "sequence", "store", "switch",
 			"validate", "conditionalRouter", "bean", "class", "pojoCommand", "ejb", "script", "spring", "enrich",
-			"fault", "header", "payload", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT", "cache",
+			"makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT", "cache",
 			"dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone", "iterate",
 			"foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent"));
 
@@ -223,41 +223,69 @@ public class ProcessSourceView {
 
 				int sT = value.indexOf("<");
 				int eT = value.indexOf(">");
-
+				boolean order = eT > sT;
 				if (sT != -1) {
 					// has <
 					if (eT != -1) {
 						// has < and > ==> can be 1, 2, 3, 8
-						if (value.substring(sT + 1, sT + 2).equals("/")) {
-							// 2
-							xmlTag.setTagType(2);
-							String[] values = value.substring(sT + 2, eT).split(" ");
-							xmlTag.setqName(values[0]);
-						} else if (value.substring(eT - 1, eT).equals("/")) {
-							// 3
-							xmlTag.setTagType(3);
-							String[] qName = value.substring(sT + 1).split("/| ");// **needs to be //?
-							xmlTag.setqName(qName[0]);
+						if (order) {
+							if (value.substring(sT + 1, sT + 2).equals("/")) {
+								// 2
+								xmlTag.setTagType(2);
+								String[] values = value.substring(sT + 2, eT).split(" ");
+								xmlTag.setqName(values[0]);
+							} else if (value.substring(eT - 1, eT).equals("/")) {
+								// 3
+								xmlTag.setTagType(3);
+								String[] qName = value.substring(sT + 1).split("/| ");// **needs to be //?
+								xmlTag.setqName(qName[0]);
 
-						} else if (value.substring(sT + 1, sT + 2).equals("?")) {
-							// 8
-							xmlTag.setTagType(8);
+							} else if (value.substring(sT + 1, sT + 2).equals("?")) {
+								// 8
+								xmlTag.setTagType(8);
+							} else if (value.substring(sT + 1, sT + 2).equals("!")) {
+								// 7 <![CDATA[ ]]>
+								xmlTag.setTagType(7);
+							} else {
+								// 1
+								xmlTag.setTagType(1);
+								String[] values = (value.substring(sT + 1, eT)).split(" ");
+								xmlTag.setqName(values[0]);
+							}
+
+							xmlTag.setEndIndex(eT + length + 1);
+							xmlTag.setStartIndex(sT + length + 1);
+							xmlTag.setValue(value.substring(sT, eT + 1));
+							value = value.substring(eT + 1);
+							
 						} else {
-							// 1
-							xmlTag.setTagType(1);
-							String[] values = (value.substring(sT + 1, eT)).split(" ");
-							xmlTag.setqName(values[0]);
+							
+							if (eT > 0 && value.substring(eT - 1, eT).equals("/")) {
+								xmlTag.setTagType(5);
+
+							} else {
+								if (value.substring(eT - 1, eT).equals("?")) {
+									xmlTag.setTagType(8);
+								} else if (value.substring(eT - 1, eT).equals("]")) {
+									// 7 ]]>
+									xmlTag.setTagType(7);
+								} else {
+									xmlTag.setTagType(6);
+								}
+							}
+							xmlTag.setValue(value.substring(0, eT + 1));
+							xmlTag.setEndIndex(eT + length + 1);
+							xmlTag.setStartIndex(-1);
+							value = value.substring(eT + 1);
 						}
-
-						xmlTag.setEndIndex(eT + length + 1);
-						xmlTag.setStartIndex(sT + length + 1);
-						xmlTag.setValue(value.substring(sT, eT + 1));
-						value = value.substring(eT + 1);
-
+						
 					} else {
 						// has < ==> can be 4 || can be 8
 						if (value.substring(sT + 1, sT + 2).equals("?")) {
 							xmlTag.setTagType(8);
+						} else if (value.substring(sT + 1, sT + 2).equals("!")) {
+							// 7 <![CDATA[
+							xmlTag.setTagType(7);
 						} else {
 							xmlTag.setTagType(4);
 							String[] values = (value.substring(sT + 1)).split(" ");
@@ -277,11 +305,12 @@ public class ProcessSourceView {
 							xmlTag.setTagType(5);
 
 						} else {
-							if (value.substring(sT + 1, sT + 2).equals("?")) {
+							if (value.substring(eT - 1, eT).equals("?")) {
 								xmlTag.setTagType(8);
+							} else if (value.substring(eT - 1, eT).equals("]")) {
+								// 7  ]]>
+								xmlTag.setTagType(7);
 							} else {
-								// String[] qName = value.split(" ");
-								// xmlTag.setqName(qName[0]);
 								xmlTag.setTagType(6);
 							}
 						}
@@ -363,7 +392,7 @@ public class ProcessSourceView {
 				}
 
 			} else if (tempTag.getTagType() == 6 || tempTag.getTagType() == 7) {
-				if (prev != null && (prev.getTagType() == 4 || prev.getTagType() == 7)) {
+				if (prev != null && (prev.getTagType() == 4 || prev.getTagType() == 7 || prev.getTagType() == 1)) {
 					xmlTags.push(tempTag);
 
 				} else if (tempTag.getTagType() == 6) {
@@ -654,7 +683,7 @@ public class ProcessSourceView {
 				EnrichMediatorFactory factory = new EnrichMediatorFactory();
 				factory.createMediator(omElement, null);
 
-			} else if (qTag.equals("fault")) {
+			} else if (qTag.equals("makefault")) {
 				FaultMediatorFactory factory = new FaultMediatorFactory();
 				factory.createMediator(omElement, null);
 
@@ -662,7 +691,7 @@ public class ProcessSourceView {
 				HeaderMediatorFactory factory = new HeaderMediatorFactory();
 				factory.createMediator(omElement, null);
 
-			} else if (qTag.equals("payload")) {
+			} else if (qTag.equals("payloadFactory")) {
 				PayloadFactoryMediatorFactory factory = new PayloadFactoryMediatorFactory();
 				factory.createMediator(omElement, null);
 

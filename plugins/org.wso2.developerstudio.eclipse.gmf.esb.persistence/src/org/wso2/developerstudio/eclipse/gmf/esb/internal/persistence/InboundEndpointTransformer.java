@@ -179,7 +179,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_HTTP_PORT,
                         visualInboundEndpoint.getInboundHttpPort());
             } else {
-                throw new IllegalArgumentException("HTTP Inbound Endpoint Error : Inbound HTTP Port is Required");
+            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_HTTP_PORT,
+                        "8000");
             }
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeCore()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_CORE,
@@ -688,7 +689,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INTERVAL,
                         visualInboundEndpoint.getInterval());
             } else {
-                throw new TransformerException("Interval cannot be empty");
+            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INTERVAL, "100");
             }
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SEQUENTIAL,
@@ -702,13 +703,15 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.ZOOKEEPER_CONNECT,
                         visualInboundEndpoint.getZookeeperConnect());
             } else {
-                throw new TransformerException("Zookeeper connect cannot be empty");
+            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.ZOOKEEPER_CONNECT,
+                        "localhost:2181");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getGroupId())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.GROUP_ID,
                         visualInboundEndpoint.getGroupId());
             } else {
-                throw new TransformerException("Group ID cannot be empty");
+            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.GROUP_ID,
+                        "sample-group");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getContentType())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.CONTENT_TYPE,
@@ -726,7 +729,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPICS,
                                         visualInboundEndpoint.getTopicsName());
                             } else {
-                                throw new TransformerException("Topics name cannot be empty");
+                            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPICS,
+                                        "sample-topic");
                             }
                         } else { // Topic filter type selected
                             String topicFilterFromValue = visualInboundEndpoint.getTopicFilterFrom().getLiteral();
@@ -743,7 +747,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPIC_FILTER,
                                         visualInboundEndpoint.getTopicFilterName());
                             } else {
-                                throw new TransformerException("Topic filter name cannot be empty");
+                            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPIC_FILTER,
+                                        "sample-topic-filter");
                             }
                         }
                     }
@@ -752,31 +757,32 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_TOPIC,
                                 visualInboundEndpoint.getSimpleConsumerTopic());
                     } else {
-                        throw new TransformerException("Simple consumer topic cannot be empty");
+                    	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_TOPIC, "sample-consumer-topc");
                     }
                     if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerBrokers())) {
                         addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_BROKERS,
                                 visualInboundEndpoint.getSimpleConsumerBrokers());
                     } else {
-                        throw new TransformerException("Simple consumer brokers cannot be empty");
+                    	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_BROKERS,
+                                "localhost");
                     }
                     if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerPort())) {
                         addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PORT,
                                 visualInboundEndpoint.getSimpleConsumerPort());
                     } else {
-                        throw new TransformerException("Simple consumer port cannot be empty");
+                    	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PORT, "9092");
                     }
                     if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerPartition())) {
                         addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PARTITION,
                                 visualInboundEndpoint.getSimpleConsumerPartition());
                     } else {
-                        throw new TransformerException("Simple consumer partition cannot be empty");
+                    	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PARTITION, "1");
                     }
                     if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerMaxMessagesToRead())) {
                          addParameterForConfig(inboundEndpoint,InboundEndpointConstants.SIMPLE_MAX_MESSAGES_TO_READ,
                                 visualInboundEndpoint.getSimpleConsumerMaxMessagesToRead());
                     } else {
-                        throw new TransformerException("Max messages to read cannot be empty");
+                    	addParameterForConfig(inboundEndpoint,InboundEndpointConstants.SIMPLE_MAX_MESSAGES_TO_READ, "5");
                     }
                 }
             }

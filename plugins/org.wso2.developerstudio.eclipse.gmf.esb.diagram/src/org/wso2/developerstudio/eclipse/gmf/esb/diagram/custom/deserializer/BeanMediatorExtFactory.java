@@ -26,8 +26,8 @@ import org.apache.synapse.config.xml.AbstractMediatorFactory;
 import org.apache.synapse.config.xml.ValueFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.bean.BeanConstants;
+import org.apache.synapse.mediators.bean.BeanMediator.Action;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.BeanMediatorExt;
-import static org.apache.synapse.mediators.bean.BeanMediator.*;
 
 public class BeanMediatorExtFactory extends AbstractMediatorFactory {
 
@@ -42,8 +42,6 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
 		attributeValue = elem.getAttributeValue(new QName(BeanConstants.VAR));
 		if (attributeValue != null) {
 			mediator.setVarName(attributeValue);
-		} else {
-			handleException("'var' attribute of Bean mediator is required.");
 		}
 
 		attributeValue = elem.getAttributeValue(new QName(BeanConstants.ACTION));
@@ -66,11 +64,8 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
 					assert false;
 				}
 			} catch (IllegalArgumentException e) {
-				handleException("'action' attribute of bean mediator must be set to 'CREATE', "
-						+ "'REMOVE', 'SET_PROPERTY' or 'GET_PROPERTY'.");
+				// ignore
 			}
-		} else {
-			handleException("'action' attribute of Bean mediator is required.");
 		}
 
 		return mediator;
@@ -85,9 +80,6 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
 		attributeValue = elem.getAttributeValue(new QName(BeanConstants.CLASS));
 		if (attributeValue != null) {
 			mediator.setClassName(attributeValue.trim());
-		} else {
-			handleException("'class' attribute of Bean mediator is required when 'CREATE' action "
-					+ "is set.");
 		}
 
 		attributeValue = elem.getAttributeValue(new QName(BeanConstants.REPLACE));
@@ -105,9 +97,6 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
 
 		if (elem.getAttributeValue(ATT_VALUE) != null) {
 			mediator.setValue(new ValueFactory().createValue(BeanConstants.VALUE, elem));
-		} else {
-			handleException("'value' attribute of Bean mediator is required when 'SET_PROPERTY' "
-					+ "action is set.");
 		}
 	}
 
@@ -119,9 +108,6 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
 
 		if (elem.getAttributeValue(new QName(BeanConstants.TARGET)) != null) {
 			mediator.setTargetValue(new ValueFactory().createValue(BeanConstants.TARGET, elem));
-		} else {
-			handleException("'target' attribute of Bean mediator is required when 'GET_PROPERTY' "
-					+ "action is set.");
 		}
 	}
 
@@ -132,9 +118,6 @@ public class BeanMediatorExtFactory extends AbstractMediatorFactory {
 		attributeValue = elem.getAttributeValue(new QName(BeanConstants.PROPERTY));
 		if (attributeValue != null) {
 			mediator.setPropertyName(attributeValue);
-		} else {
-			handleException("'property' attribute of Bean mediator is required when "
-					+ "SET/GET_PROPERTY action is set.");
 		}
 	}
 

@@ -48,7 +48,7 @@ public class DummyAPIFactory {
 
 	static final QName ATT_VALUE = new QName("value");
 
-	public static API createAPI(OMElement apiElt, boolean withSynape) {
+	public static API createAPI(OMElement apiElt, boolean withSynapse) {
 		OMAttribute nameAtt = apiElt.getAttribute(new QName("name"));
 		if (nameAtt == null || "".equals(nameAtt.getAttributeValue())) {
 			handleException("Attribute 'name' is required for an API definition");
@@ -92,7 +92,7 @@ public class DummyAPIFactory {
 		boolean noResources = true;
 		while (resources.hasNext()) {
 			OMElement resourceElt = (OMElement) resources.next();
-			if (withSynape) {
+			if (withSynapse) {
 				api.addResource(ResourceFactory.createResource(resourceElt));
 			} else {
 				api.addResource(DummyResourceFactory.createResource(resourceElt));

@@ -43,15 +43,11 @@ public class EJBMediatorExtFactory extends AbstractMediatorFactory {
 		attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEANSTALK));
 		if (attributeValue != null) {
 			mediator.setBeanstalkName(attributeValue.trim());
-		} else {
-			handleException("'beanstalk' attribute of callEjb mediator is required");
 		}
 
 		attributeValue = elem.getAttributeValue(new QName(BeanConstants.CLASS));
 		if (attributeValue != null) {
 			mediator.setClassName(attributeValue.trim());
-		} else {
-			handleException("'class' attribute of callEjb mediator is required");
 		}
 
 		attributeValue = elem.getAttributeValue(new QName(EJBConstants.STATEFUL));
@@ -59,9 +55,6 @@ public class EJBMediatorExtFactory extends AbstractMediatorFactory {
 			attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEAN_ID));
 			if (attributeValue != null) {
 				mediator.setBeanId(new ValueFactory().createValue(EJBConstants.BEAN_ID, elem));
-			} else {
-				handleException("'id' attribute is required for stateful session bean "
-						+ "invocations.");
 			}
 		}
 
@@ -97,8 +90,6 @@ public class EJBMediatorExtFactory extends AbstractMediatorFactory {
 				if (argElem.getAttributeValue(ATT_VALUE) != null) {
 					mediator.addArgument(new ValueFactory().createValue(BeanConstants.VALUE,
 							argElem));
-				} else {
-					handleException("'value' attribute of 'arg' element is required.");
 				}
 			}
 		}
@@ -106,9 +97,6 @@ public class EJBMediatorExtFactory extends AbstractMediatorFactory {
 		attributeValue = elem.getAttributeValue(new QName(EJBConstants.METHOD));
 		if (attributeValue != null) {
 			mediator.setMethodName(attributeValue);
-		} else if (!remove) {
-			handleException("'method' attribute of EJB mediator is optional only when it's a "
-					+ "bean removal.");
 		}
 
 		return mediator;

@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.wso2.developerstudio.eclipse.project.extensions;singlet
 Bundle-Version: 6.4.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.project.extensions.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.utils
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,
@@ -25,4 +26,5 @@ Export-Package: org.wso2.developerstudio.eclipse.project.extensions.handlers;ver
    org.eclipse.swt.graphics,
    org.eclipse.jface.resource,
    org.eclipse.ui.forms.editor,
-   org.eclipse.ui.forms"
+   org.eclipse.ui.forms",
+ org.wso2.developerstudio.eclipse.project.extensions.templates

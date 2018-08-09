@@ -1,0 +1,2 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="{ep.name}"
+	template="{ep.template}" uri="{ep.uri}" />

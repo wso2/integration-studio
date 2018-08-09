@@ -39,7 +39,7 @@ public class RegistryArtifactTemplateList extends AbstractListDataProvider {
 	}
 
 	
-	private static final String REGISTRY_TEMPLATE_EXTENSION="org.wso2.developerstudio.eclipse.platform.core.artifacttemplates";
+	private static final String REGISTRY_TEMPLATE_EXTENSION="org.wso2.developerstudio.eclipse.project.extensions.artifacttemplates";
 	private static List<RegistryTemplate> regTemplateList;
 	
 	private static void loadProxyTemplateInfo(){

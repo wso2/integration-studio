@@ -98,11 +98,9 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 
 			// PublishEvent event attributes
 			publishEventMediator.setMetaProperties(getVisualAttributes(visualPublishEvent.getMetaAttributes()));
-			publishEventMediator
-					.setCorrelationProperties(getVisualAttributes(visualPublishEvent.getCorrelationAttributes()));
+			publishEventMediator.setCorrelationProperties(getVisualAttributes(visualPublishEvent.getCorrelationAttributes()));
 			publishEventMediator.setPayloadProperties(getVisualAttributes(visualPublishEvent.getPayloadAttributes()));
-			publishEventMediator
-					.setArbitraryProperties(getVisualAttributes(visualPublishEvent.getArbitraryAttributes()));
+			publishEventMediator.setArbitraryProperties(getVisualAttributes(visualPublishEvent.getArbitraryAttributes()));
 		}
 		return publishEventMediator;
 	}
@@ -122,8 +120,7 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 			if (StringUtils.isNotEmpty(visualAttribute.getAttributeType().getLiteral())) {
 				attribute.setType(visualAttribute.getAttributeType().getLiteral());
 			}
-			if (visualAttribute.getAttributeValueType().getLiteral()
-					.equals(AttributeValueType.EXPRESSION.getLiteral())) {
+			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.EXPRESSION.getLiteral())) {
 				// ESB supports only STRING for attribute type, hence value is set to STRING at
 				// any given time
 				NamespacedProperty namespacedExpression = visualAttribute.getAttributeExpression();

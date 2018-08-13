@@ -113,10 +113,10 @@ Bundle-ClassPath: .,
  lib/org.wso2.carbon.mediator.datamapper.engine_4.6.91.jar,
  lib/org.wso2.carbon.mediator.event_4.6.91.jar,
  lib/org.wso2.carbon.mediator.fastXSLT_4.6.91.jar,
- lib/org.wso2.carbon.mediator.publishevent_4.6.91.jar,
  lib/org.wso2.carbon.mediator.router.impl_4.6.91.jar,
  lib/org.wso2.carbon.mediator.service_4.6.91.jar,
- lib/org.wso2.carbon.mediator.smooks_4.6.91.jar
+ lib/org.wso2.carbon.mediator.smooks_4.6.91.jar,
+ lib/org.wso2.carbon.mediator.publishevent-4.6.97.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jdt.ui,

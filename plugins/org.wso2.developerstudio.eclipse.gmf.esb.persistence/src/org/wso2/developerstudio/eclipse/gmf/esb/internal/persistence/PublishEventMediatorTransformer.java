@@ -85,12 +85,24 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 			// PublishEvent event sink name
 			if (StringUtils.isNotBlank(visualPublishEvent.getEventSink())) {
 				publishEventMediator.setEventSinkName(visualPublishEvent.getEventSink());
+
 			}
+			// PublishEvent async
+			if (StringUtils.isNotBlank(String.valueOf(visualPublishEvent.isAsync()))) {
+				publishEventMediator.setAsync(visualPublishEvent.isAsync());
+			}
+			// PublishEvent Async Timeout
+			if (StringUtils.isNotBlank(visualPublishEvent.getAsyncTimeout())) {
+				publishEventMediator.setAsyncTimeout(Integer.parseInt(visualPublishEvent.getAsyncTimeout()));
+			}
+
 			// PublishEvent event attributes
 			publishEventMediator.setMetaProperties(getVisualAttributes(visualPublishEvent.getMetaAttributes()));
-			publishEventMediator.setCorrelationProperties(getVisualAttributes(visualPublishEvent.getCorrelationAttributes()));
+			publishEventMediator
+					.setCorrelationProperties(getVisualAttributes(visualPublishEvent.getCorrelationAttributes()));
 			publishEventMediator.setPayloadProperties(getVisualAttributes(visualPublishEvent.getPayloadAttributes()));
-			publishEventMediator.setArbitraryProperties(getVisualAttributes(visualPublishEvent.getArbitraryAttributes()));
+			publishEventMediator
+					.setArbitraryProperties(getVisualAttributes(visualPublishEvent.getArbitraryAttributes()));
 		}
 		return publishEventMediator;
 	}
@@ -110,12 +122,14 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 			if (StringUtils.isNotEmpty(visualAttribute.getAttributeType().getLiteral())) {
 				attribute.setType(visualAttribute.getAttributeType().getLiteral());
 			}
-			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.EXPRESSION.getLiteral())) {
-				// ESB supports only STRING for attribute type, hence value is set to STRING at any given time
+			if (visualAttribute.getAttributeValueType().getLiteral()
+					.equals(AttributeValueType.EXPRESSION.getLiteral())) {
+				// ESB supports only STRING for attribute type, hence value is set to STRING at
+				// any given time
 				NamespacedProperty namespacedExpression = visualAttribute.getAttributeExpression();
 				if (namespacedExpression != null) {
-					SynapsePath propertyExpression = CustomSynapsePathFactory.getSynapsePath(namespacedExpression
-							.getPropertyValue());
+					SynapsePath propertyExpression = CustomSynapsePathFactory
+							.getSynapsePath(namespacedExpression.getPropertyValue());
 					if (namespacedExpression.getNamespaces() != null
 							&& !(propertyExpression instanceof SynapseJsonPath)) {
 						for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
@@ -146,6 +160,6 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 			doTransformWithinSequence(info, visualPublishEvent.getOutputconnector().getOutgoingLink(), sequence);
 		} catch (JaxenException e) {
 			throw new TransformerException(e);
-		}		
+		}
 	}
 }

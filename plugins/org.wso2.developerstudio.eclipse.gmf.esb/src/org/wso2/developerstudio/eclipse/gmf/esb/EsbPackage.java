@@ -4855,13 +4855,31 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES = MEDIATOR_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Async</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLISH_EVENT_MEDIATOR__ASYNC = MEDIATOR_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Async Timeout</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT = MEDIATOR_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Publish Event Mediator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PUBLISH_EVENT_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
+	int PUBLISH_EVENT_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorInputConnectorImpl <em>Publish Event Mediator Input Connector</em>}' class.
@@ -29135,6 +29153,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getPublishEventMediator_ArbitraryAttributes();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#isAsync <em>Async</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Async</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#isAsync()
+	 * @see #getPublishEventMediator()
+	 * @generated
+	 */
+	EAttribute getPublishEventMediator_Async();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getAsyncTimeout <em>Async Timeout</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Async Timeout</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getAsyncTimeout()
+	 * @see #getPublishEventMediator()
+	 * @generated
+	 */
+	EAttribute getPublishEventMediator_AsyncTimeout();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorInputConnector <em>Publish Event Mediator Input Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -46648,6 +46688,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES = eINSTANCE.getPublishEventMediator_ArbitraryAttributes();
+
+		/**
+		 * The meta object literal for the '<em><b>Async</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PUBLISH_EVENT_MEDIATOR__ASYNC = eINSTANCE.getPublishEventMediator_Async();
+
+		/**
+		 * The meta object literal for the '<em><b>Async Timeout</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT = eINSTANCE.getPublishEventMediator_AsyncTimeout();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorInputConnectorImpl <em>Publish Event Mediator Input Connector</em>}' class.

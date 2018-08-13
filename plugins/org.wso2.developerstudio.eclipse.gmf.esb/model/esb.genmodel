@@ -1047,6 +1047,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/correlationAttributes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/payloadAttributes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/arbitraryAttributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/Async"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/AsyncTimeout"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//PublishEventMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//PublishEventMediatorOutputConnector"/>

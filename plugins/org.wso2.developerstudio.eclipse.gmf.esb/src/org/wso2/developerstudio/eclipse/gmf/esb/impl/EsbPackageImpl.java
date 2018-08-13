@@ -6069,6 +6069,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPublishEventMediator_Async() {
+		return (EAttribute)publishEventMediatorEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPublishEventMediator_AsyncTimeout() {
+		return (EAttribute)publishEventMediatorEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPublishEventMediatorInputConnector() {
 		return publishEventMediatorInputConnectorEClass;
 	}
@@ -19467,6 +19485,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES);
 		createEReference(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES);
 		createEReference(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES);
+		createEAttribute(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__ASYNC);
+		createEAttribute(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT);
 
 		publishEventMediatorInputConnectorEClass = createEClass(PUBLISH_EVENT_MEDIATOR_INPUT_CONNECTOR);
 
@@ -21888,6 +21908,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getPublishEventMediator_CorrelationAttributes(), this.getPublishEventMediatorAttribute(), null, "correlationAttributes", null, 0, -1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPublishEventMediator_PayloadAttributes(), this.getPublishEventMediatorAttribute(), null, "payloadAttributes", null, 0, -1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPublishEventMediator_ArbitraryAttributes(), this.getPublishEventMediatorAttribute(), null, "arbitraryAttributes", null, 0, -1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublishEventMediator_Async(), ecorePackage.getEBoolean(), "Async", "true", 0, 1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublishEventMediator_AsyncTimeout(), ecorePackage.getEString(), "AsyncTimeout", "", 0, 1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(publishEventMediatorInputConnectorEClass, PublishEventMediatorInputConnector.class, "PublishEventMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

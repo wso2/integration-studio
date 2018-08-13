@@ -463,6 +463,10 @@
         eType="#//PublishEventMediatorAttribute" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="arbitraryAttributes" upperBound="-1"
         eType="#//PublishEventMediatorAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Async" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AsyncTimeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediatorInputConnector"
       eSuperTypes="#//InputConnector"/>

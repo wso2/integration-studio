@@ -36,6 +36,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getCorrelationAttributes <em>Correlation Attributes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getPayloadAttributes <em>Payload Attributes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getArbitraryAttributes <em>Arbitrary Attributes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#isAsync <em>Async</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getAsyncTimeout <em>Async Timeout</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator()
@@ -236,5 +238,59 @@ public interface PublishEventMediator extends Mediator {
 	 * @generated
 	 */
 	EList<PublishEventMediatorAttribute> getArbitraryAttributes();
+
+	/**
+	 * Returns the value of the '<em><b>Async</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Async</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Async</em>' attribute.
+	 * @see #setAsync(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_Async()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isAsync();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#isAsync <em>Async</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Async</em>' attribute.
+	 * @see #isAsync()
+	 * @generated
+	 */
+	void setAsync(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Async Timeout</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Async Timeout</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Async Timeout</em>' attribute.
+	 * @see #setAsyncTimeout(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediator_AsyncTimeout()
+	 * @model default=""
+	 * @generated
+	 */
+	String getAsyncTimeout();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator#getAsyncTimeout <em>Async Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Async Timeout</em>' attribute.
+	 * @see #getAsyncTimeout()
+	 * @generated
+	 */
+	void setAsyncTimeout(String value);
 
 } // PublishEventMediator

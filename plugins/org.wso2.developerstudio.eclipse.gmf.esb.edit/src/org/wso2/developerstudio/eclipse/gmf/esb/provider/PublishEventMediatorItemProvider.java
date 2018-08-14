@@ -66,6 +66,8 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
 		addStreamNamePropertyDescriptor(object);
 		addStreamVersionPropertyDescriptor(object);
 		addEventSinkPropertyDescriptor(object);
+		addAsyncPropertyDescriptor(object);
+		addAsyncTimeoutPropertyDescriptor(object);
 		addMetaAttributesPropertyDescriptor(object);
 		addCorrelationAttributesPropertyDescriptor(object);
 		addPayloadAttributesPropertyDescriptor(object);
@@ -230,6 +232,50 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Async feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAsyncPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PublishEventMediator_Async_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_Async_feature", "_UI_PublishEventMediator_type"),
+				 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Async Timeout feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAsyncTimeoutPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PublishEventMediator_AsyncTimeout_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_AsyncTimeout_feature", "_UI_PublishEventMediator_type"),
+				 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -305,6 +351,8 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
 			case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
 			case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
 			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:

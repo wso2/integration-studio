@@ -23,6 +23,8 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLI
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.SynapsePath;
@@ -41,15 +43,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
-public class PublishEventMediatorDeserializer extends
-		AbstractEsbNodeDeserializer<AbstractMediator, PublishEventMediator> {
+public class PublishEventMediatorDeserializer
+		extends AbstractEsbNodeDeserializer<AbstractMediator, PublishEventMediator> {
 
 	@Override
 	public PublishEventMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
 		Assert.isTrue(object instanceof org.wso2.carbon.mediator.publishevent.PublishEventMediator,
 				"Unsupported mediator passed in for deserialization");
 		org.wso2.carbon.mediator.publishevent.PublishEventMediator mediator = (org.wso2.carbon.mediator.publishevent.PublishEventMediator) object;
-
 		PublishEventMediator mediatorModel = (PublishEventMediator) DeserializerUtils.createNode(part,
 				EsbElementTypes.PublishEventMediator_3785);
 		setElementToEdit(mediatorModel);
@@ -58,6 +59,8 @@ public class PublishEventMediatorDeserializer extends
 		executeSetValueCommand(PUBLISH_EVENT_MEDIATOR__STREAM_NAME, mediator.getStreamName());
 		executeSetValueCommand(PUBLISH_EVENT_MEDIATOR__STREAM_VERSION, mediator.getStreamVersion());
 		executeSetValueCommand(PUBLISH_EVENT_MEDIATOR__EVENT_SINK, mediator.getEventSinkName());
+		executeSetValueCommand(PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT, String.valueOf(mediator.getAsyncTimeout()));
+		executeSetValueCommand(PUBLISH_EVENT_MEDIATOR__ASYNC, mediator.isAsync());
 
 		// Meta attributes
 		EList<PublishEventMediatorAttribute> metaAttributesList = new BasicEList<PublishEventMediatorAttribute>();
@@ -70,13 +73,13 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(metaProperty.getType())) {
 				metaAttribute.setAttributeType(AttributeType.getByName(metaProperty.getType()));
 			}
-			
+
 			metaAttribute.setDefaultValue(metaProperty.getDefaultValue());
-			
+
 			if (metaProperty.getValue() != null) {
 				metaAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				metaAttribute.setAttributeValue(metaProperty.getValue());
-				
+
 			} else if (metaProperty.getExpression() != null) {
 				metaAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);
 				SynapsePath xpath = metaProperty.getExpression();
@@ -101,9 +104,9 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(correlationProperty.getType())) {
 				correlationAttribute.setAttributeType(AttributeType.getByName(correlationProperty.getType()));
 			}
-			
+
 			correlationAttribute.setDefaultValue(correlationProperty.getDefaultValue());
-			
+
 			if (correlationProperty.getValue() != null) {
 				correlationAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				correlationAttribute.setAttributeValue(correlationProperty.getValue());
@@ -130,9 +133,9 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(payloadProperty.getType())) {
 				payloadAttribute.setAttributeType(AttributeType.getByName(payloadProperty.getType()));
 			}
-			
+
 			payloadAttribute.setDefaultValue(payloadProperty.getDefaultValue());
-			
+
 			if (payloadProperty.getValue() != null) {
 				payloadAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				payloadAttribute.setAttributeValue(payloadProperty.getValue());
@@ -160,9 +163,9 @@ public class PublishEventMediatorDeserializer extends
 			if (StringUtils.isNotEmpty(arbitraryProperty.getType())) {
 				arbitraryAttribute.setAttributeType(AttributeType.getByName(arbitraryProperty.getType()));
 			}
-			
+
 			arbitraryAttribute.setDefaultValue(arbitraryProperty.getDefaultValue());
-			
+
 			if (arbitraryProperty.getValue() != null) {
 				arbitraryAttribute.setAttributeValueType(AttributeValueType.VALUE);
 				arbitraryAttribute.setAttributeValue(arbitraryProperty.getValue());
@@ -180,6 +183,5 @@ public class PublishEventMediatorDeserializer extends
 
 		return mediatorModel;
 	}
-
 
 }

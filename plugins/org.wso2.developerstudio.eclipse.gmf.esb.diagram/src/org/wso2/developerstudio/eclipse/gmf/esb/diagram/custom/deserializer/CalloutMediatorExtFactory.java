@@ -9,7 +9,6 @@ import org.apache.synapse.mediators.builtin.CalloutMediator;
 import org.jaxen.JaxenException;
 
 import javax.xml.namespace.QName;
-import java.io.File;
 import java.util.Properties;
 
 /**
@@ -113,17 +112,11 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
                     callout.setRequestXPath(
                             SynapseXPathFactory.getSynapseXPath(sourceElt, ATT_XPATH));
                 } catch (JaxenException e) {
-                    handleException("Invalid source XPath : "
-                                    + sourceElt.getAttributeValue(ATT_XPATH));
+                    // ignore
                 }
             } else if (sourceElt.getAttribute(ATT_KEY) != null) {
                 callout.setRequestKey(sourceElt.getAttributeValue(ATT_KEY));
-            } else {
-                handleException("A 'xpath' or 'key' attribute " +
-                                "is required for the Callout 'source'");
-            }
-        } else {
-            handleException("The message 'source' must be specified for a Callout mediator");
+            }   
         }
 
         if (targetElt != null) {
@@ -132,17 +125,12 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
                     callout.setTargetXPath(
                         SynapseXPathFactory.getSynapseXPath(targetElt, ATT_XPATH));
                 } catch (JaxenException e) {
-                    handleException("Invalid target XPath : "
-                        + targetElt.getAttributeValue(ATT_XPATH));
+                    // ignore
                 }
             } else if (targetElt.getAttribute(ATT_KEY) != null) {
                 callout.setTargetKey(targetElt.getAttributeValue(ATT_KEY));
-            } else {
-                handleException("A 'xpath' or 'key' attribute " +
-                    "is required for the Callout 'target'");
             }
-        } else {
-            handleException("The message 'target' must be specified for a Callout mediator");
+            
         }
 
         if (wsSec != null) {
@@ -161,7 +149,6 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
                 }
             } else {
                 callout.setSecurityOn(false);
-                handleException("A policy key is required to enable security");
             }
         }
 

@@ -33,22 +33,18 @@ import java.util.Stack;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMException;
 import org.apache.axiom.om.impl.OMNamespaceImpl;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.AggregateMediatorFactory;
-import org.apache.synapse.config.xml.BeanMediatorFactory;
 import org.apache.synapse.config.xml.CallMediatorFactory;
 import org.apache.synapse.config.xml.CalloutMediatorFactory;
-import org.apache.synapse.config.xml.ClassMediatorFactory;
 import org.apache.synapse.config.xml.CloneMediatorFactory;
 import org.apache.synapse.config.xml.ConditionalRouterMediatorFactory;
 import org.apache.synapse.config.xml.DBLookupMediatorFactory;
 import org.apache.synapse.config.xml.DBReportMediatorFactory;
 import org.apache.synapse.config.xml.DropMediatorFactory;
-import org.apache.synapse.config.xml.EJBMediatorFactory;
 import org.apache.synapse.config.xml.EnqueueMediatorFactory;
 import org.apache.synapse.config.xml.EnrichMediatorFactory;
 import org.apache.synapse.config.xml.EntryFactory;
@@ -62,6 +58,7 @@ import org.apache.synapse.config.xml.LogMediatorFactory;
 import org.apache.synapse.config.xml.LoopBackMediatorFactory;
 import org.apache.synapse.config.xml.MessageProcessorFactory;
 import org.apache.synapse.config.xml.MessageStoreFactory;
+import org.apache.synapse.config.xml.MessageStoreMediatorFactory;
 import org.apache.synapse.config.xml.POJOCommandMediatorFactory;
 import org.apache.synapse.config.xml.PayloadFactoryMediatorFactory;
 import org.apache.synapse.config.xml.PropertyMediatorFactory;
@@ -95,6 +92,9 @@ import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
 import org.wso2.carbon.relay.mediators.builder.xml.BuilderMediatorFactory;
 import org.wso2.carbon.rule.mediator.RuleMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.sheet.XMLTag;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -102,7 +102,6 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
-import javax.xml.namespace.QName;
 
 /**
  * Process source view content
@@ -116,12 +115,12 @@ public class ProcessSourceView {
 	private static Set<String> mediators = new HashSet<>(Arrays.asList("log", "call", "enqueue", "send", "loopback",
 			"respond", "event", "drop", "enrich", "property", "filter", "call-template", "sequence", "store", "switch",
 			"validate", "conditionalRouter", "bean", "class", "pojoCommand", "ejb", "script", "spring", "enrich",
-			"makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT", "cache",
-			"dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone", "iterate",
-			"foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent"));
+			"makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT",
+			"cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
+			"iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent"));
 
 	private static Set<String> artifacts = new HashSet<>(Arrays.asList("api", "proxy", "endpoint", "inboundEndpoint",
-			"localEntry", "messageProcessor", "store", "sequence", "task", "template"));
+			"localEntry", "messageProcessor", "messageStore", "sequence", "task", "template"));
 
 	private static Set<String> intermediary = new HashSet<>(Arrays.asList("inSequence", "outSequence", "faultSequence",
 			"resource", "description", "target", "publishWSDL", "enableAddressing", "enableSec", "enableRM", "policy",
@@ -257,9 +256,9 @@ public class ProcessSourceView {
 							xmlTag.setStartIndex(sT + length + 1);
 							xmlTag.setValue(value.substring(sT, eT + 1));
 							value = value.substring(eT + 1);
-							
+
 						} else {
-							
+
 							if (eT > 0 && value.substring(eT - 1, eT).equals("/")) {
 								xmlTag.setTagType(5);
 
@@ -278,7 +277,7 @@ public class ProcessSourceView {
 							xmlTag.setStartIndex(-1);
 							value = value.substring(eT + 1);
 						}
-						
+
 					} else {
 						// has < ==> can be 4 || can be 8
 						if (value.substring(sT + 1, sT + 2).equals("?")) {
@@ -308,7 +307,7 @@ public class ProcessSourceView {
 							if (value.substring(eT - 1, eT).equals("?")) {
 								xmlTag.setTagType(8);
 							} else if (value.substring(eT - 1, eT).equals("]")) {
-								// 7  ]]>
+								// 7 ]]>
 								xmlTag.setTagType(7);
 							} else {
 								xmlTag.setTagType(6);
@@ -369,7 +368,7 @@ public class ProcessSourceView {
 					String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
 							+ tempTag.getValue() + "\".";
 					return createError(error, tempTag);
-					
+
 				}
 
 			} else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
@@ -528,11 +527,10 @@ public class ProcessSourceView {
 				factory.createProxy(omElement, null);
 
 			} else if (qTag.equals("endpoint")) {
-				//omElement = omElement.getFirstElement();
+				// omElement = omElement.getFirstElement();
 				omElement.getFirstElement().setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
 				EndpointFactory.getEndpointFromElement(omElement, false, null);
 
-				
 			} else if (qTag.equals("inboundEndpoint")) {
 				InboundEndpointFactory factory = new InboundEndpointFactory();
 				factory.createInboundEndpoint(omElement, null);
@@ -545,7 +543,7 @@ public class ProcessSourceView {
 				MessageProcessorFactory factory = new MessageProcessorFactory();
 				factory.createMessageProcessor(omElement);
 
-			} else if (qTag.equals("store")) {
+			} else if (qTag.equals("messageStore")) {
 				MessageStoreFactory factory = new MessageStoreFactory();
 				factory.createMessageStore(omElement, null);
 
@@ -565,7 +563,7 @@ public class ProcessSourceView {
 
 		} catch (SynapseException | MediatorException e) {
 			return e.getMessage();
-			
+
 		} catch (XMLStreamException e) {
 			// ignore
 		}
@@ -639,8 +637,8 @@ public class ProcessSourceView {
 				factory.createAnonymousSequence(omElement, null);
 
 			} else if (qTag.equals("store")) {
-				MessageProcessorFactory factory = new MessageProcessorFactory();
-				factory.createMessageProcessor(omElement);
+				MessageStoreMediatorFactory factory = new MessageStoreMediatorFactory();
+				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("switch")) {
 				SwitchMediatorFactory factory = new SwitchMediatorFactory();
@@ -655,11 +653,11 @@ public class ProcessSourceView {
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("bean")) {
-				BeanMediatorFactory factory = new BeanMediatorFactory();
+				BeanMediatorExtFactory factory = new BeanMediatorExtFactory();
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("class")) {
-				ClassMediatorFactory factory = new ClassMediatorFactory();
+				ClassMediatorExtFactory factory = new ClassMediatorExtFactory();
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("pojoCommand")) {
@@ -667,7 +665,7 @@ public class ProcessSourceView {
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("ejb")) {
-				EJBMediatorFactory factory = new EJBMediatorFactory();
+				EJBMediatorExtFactory factory = new EJBMediatorExtFactory();
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("script")) {
@@ -791,7 +789,7 @@ public class ProcessSourceView {
 
 		} catch (SynapseException | MediatorException e) {
 			return e.getMessage();
-			
+
 		} catch (XMLStreamException e) {
 			// ignore
 		}

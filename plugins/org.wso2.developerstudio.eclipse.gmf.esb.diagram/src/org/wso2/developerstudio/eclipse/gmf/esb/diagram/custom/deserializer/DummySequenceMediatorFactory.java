@@ -29,7 +29,6 @@ import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.SynapseException;
 import org.apache.synapse.aspects.AspectConfigurable;
 import org.apache.synapse.aspects.AspectConfiguration;
-import org.apache.synapse.config.xml.MediatorFactoryFinder;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.ListMediator;
 import org.apache.synapse.mediators.Value;

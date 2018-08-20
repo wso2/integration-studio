@@ -165,8 +165,9 @@ public class StoreMediatorItemProvider
 				 null));
 	}
 	
-	/*
+	/**
 	 * This will add the property descriptor for the Expression feature
+	 * @generated NOT
 	 */
 	protected void addExpressionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add

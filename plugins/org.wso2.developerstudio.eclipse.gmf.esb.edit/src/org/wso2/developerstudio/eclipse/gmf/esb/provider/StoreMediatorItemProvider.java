@@ -55,15 +55,25 @@ public class StoreMediatorItemProvider
 	
 	@Override 
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		StoreMediator storeMediator = (StoreMediator) object;
+		
 		if (itemPropertyDescriptors != null) {
 			itemPropertyDescriptors.clear();
 		}
 		super.getPropertyDescriptors(object);
 
 		addAvailableMessageStoresPropertyDescriptor(object);
-		addMessageStorePropertyDescriptor(object);
 		addOnStoreSequencePropertyDescriptor(object);
 		addDescriptionPropertyDescriptor(object);
+		addSpecifyAsPropertyDescriptor(object);
+ 		switch (storeMediator.getSpecifyAs()) {
+ 			case VALUE:
+ 				addMessageStorePropertyDescriptor(object);
+ 				break;
+ 			case EXPRESSION:
+ 				addExpressionPropertyDescriptor(object);
+ 				break;
+		}
 		return itemPropertyDescriptors;
 	}
 
@@ -134,6 +144,46 @@ public class StoreMediatorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Specify As feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSpecifyAsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_StoreMediator_SpecifyAs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_SpecifyAs_feature", "_UI_StoreMediator_type"),
+				 EsbPackage.Literals.STORE_MEDIATOR__SPECIFY_AS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+	
+	/*
+	 * This will add the property descriptor for the Expression feature
+	 */
+	protected void addExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(), getString("_UI_StoreMediator_Expression_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_Expression_feature", "_UI_StoreMediator_type"),
+				 EsbPackage.Literals.STORE_MEDIATOR__EXPRESSION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -147,6 +197,7 @@ public class StoreMediatorItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(EsbPackage.Literals.STORE_MEDIATOR__INPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.STORE_MEDIATOR__OUTPUT_CONNECTOR);
+			childrenFeatures.add(EsbPackage.Literals.STORE_MEDIATOR__EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -206,10 +257,12 @@ public class StoreMediatorItemProvider
 		switch (notification.getFeatureID(StoreMediator.class)) {
 			case EsbPackage.STORE_MEDIATOR__MESSAGE_STORE:
 			case EsbPackage.STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES:
+			case EsbPackage.STORE_MEDIATOR__SPECIFY_AS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.STORE_MEDIATOR__INPUT_CONNECTOR:
 			case EsbPackage.STORE_MEDIATOR__OUTPUT_CONNECTOR:
+			case EsbPackage.STORE_MEDIATOR__EXPRESSION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -237,6 +290,11 @@ public class StoreMediatorItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.STORE_MEDIATOR__OUTPUT_CONNECTOR,
 				 EsbFactory.eINSTANCE.createStoreMediatorOutputConnector()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.STORE_MEDIATOR__EXPRESSION,
+				 EsbFactory.eINSTANCE.createNamespacedProperty()));
 	}
 
 }

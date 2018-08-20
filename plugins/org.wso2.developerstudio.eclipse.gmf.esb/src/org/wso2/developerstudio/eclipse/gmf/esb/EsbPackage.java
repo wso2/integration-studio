@@ -16155,13 +16155,31 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES = MEDIATOR_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Specify As</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_MEDIATOR__SPECIFY_AS = MEDIATOR_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_MEDIATOR__EXPRESSION = MEDIATOR_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Store Mediator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 5;
+	int STORE_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.StoreMediatorInputConnectorImpl <em>Store Mediator Input Connector</em>}' class.
@@ -26694,6 +26712,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int JMS_BROKER_TYPE = 485;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType <em>Store Mediator Specify Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getStoreMediatorSpecifyType()
+	 * @generated
+	 */
+	int STORE_MEDIATOR_SPECIFY_TYPE = 486;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel <em>WS Client Side Broadcast Level</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26701,7 +26729,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSClientSideBroadcastLevel()
 	 * @generated
 	 */
-	int WS_CLIENT_SIDE_BROADCAST_LEVEL = 486;
+	int WS_CLIENT_SIDE_BROADCAST_LEVEL = 487;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MQTTSubscriptionQOS <em>MQTT Subscription QOS</em>}' enum.
@@ -26711,7 +26739,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMQTTSubscriptionQOS()
 	 * @generated
 	 */
-	int MQTT_SUBSCRIPTION_QOS = 487;
+	int MQTT_SUBSCRIPTION_QOS = 488;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FeedType <em>Feed Type</em>}' enum.
@@ -26721,7 +26749,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getFeedType()
 	 * @generated
 	 */
-	int FEED_TYPE = 488;
+	int FEED_TYPE = 489;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnableDisableState <em>Enable Disable State</em>}' enum.
@@ -26731,7 +26759,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnableDisableState()
 	 * @generated
 	 */
-	int ENABLE_DISABLE_STATE = 489;
+	int ENABLE_DISABLE_STATE = 490;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType <em>API Version Type</em>}' enum.
@@ -26741,7 +26769,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIVersionType()
 	 * @generated
 	 */
-	int API_VERSION_TYPE = 490;
+	int API_VERSION_TYPE = 491;
 
 	/**
 	 * The meta object id for the '<em>Map</em>' data type.
@@ -26751,7 +26779,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 491;
+	int MAP = 492;
 
 
 	/**
@@ -41997,6 +42025,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getStoreMediator_AvailableMessageStores();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getSpecifyAs <em>Specify As</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Specify As</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getSpecifyAs()
+	 * @see #getStoreMediator()
+	 * @generated
+	 */
+	EAttribute getStoreMediator_SpecifyAs();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getExpression()
+	 * @see #getStoreMediator()
+	 * @generated
+	 */
+	EReference getStoreMediator_Expression();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorInputConnector <em>Store Mediator Input Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -44681,6 +44731,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EEnum getJMSBrokerType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType <em>Store Mediator Specify Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Store Mediator Specify Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType
+	 * @generated
+	 */
+	EEnum getStoreMediatorSpecifyType();
 
 	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel <em>WS Client Side Broadcast Level</em>}'.
@@ -56732,6 +56792,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES = eINSTANCE.getStoreMediator_AvailableMessageStores();
 
 		/**
+		 * The meta object literal for the '<em><b>Specify As</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STORE_MEDIATOR__SPECIFY_AS = eINSTANCE.getStoreMediator_SpecifyAs();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STORE_MEDIATOR__EXPRESSION = eINSTANCE.getStoreMediator_Expression();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.StoreMediatorInputConnectorImpl <em>Store Mediator Input Connector</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -59128,6 +59204,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum JMS_BROKER_TYPE = eINSTANCE.getJMSBrokerType();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType <em>Store Mediator Specify Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getStoreMediatorSpecifyType()
+		 * @generated
+		 */
+		EEnum STORE_MEDIATOR_SPECIFY_TYPE = eINSTANCE.getStoreMediatorSpecifyType();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel <em>WS Client Side Broadcast Level</em>}' enum.

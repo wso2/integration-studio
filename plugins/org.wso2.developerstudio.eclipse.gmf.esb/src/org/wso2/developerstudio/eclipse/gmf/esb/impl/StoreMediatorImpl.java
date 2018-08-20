@@ -16,10 +16,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 
@@ -36,6 +38,8 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getAvailableMessageStores <em>Available Message Stores</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getSpecifyAs <em>Specify As</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.StoreMediatorImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @generated
@@ -112,6 +116,36 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 	protected String availableMessageStores = AVAILABLE_MESSAGE_STORES_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getSpecifyAs() <em>Specify As</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecifyAs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final StoreMediatorSpecifyType SPECIFY_AS_EDEFAULT = StoreMediatorSpecifyType.VALUE;
+
+	/**
+	 * The cached value of the '{@link #getSpecifyAs() <em>Specify As</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecifyAs()
+	 * @generated
+	 * @ordered
+	 */
+	protected StoreMediatorSpecifyType specifyAs = SPECIFY_AS_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected NamespacedProperty expression;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -129,6 +163,13 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 		onStoreSequence.setKeyName("onStore Sequence");
 		onStoreSequence.setKeyValue("");
 		setOnStoreSequence(onStoreSequence);
+		
+		// Populate add name-spaced property.
+		NamespacedProperty payloadXpath = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+		payloadXpath.setPrettyName("Payload XPath");
+		payloadXpath.setPropertyName("xpath");
+		payloadXpath.setPropertyValue(DEFAULT_XPATH_PROPERTY_VALUE);
+		setExpression(payloadXpath);
 	}
 
 	/**
@@ -318,6 +359,70 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public StoreMediatorSpecifyType getSpecifyAs() {
+		return specifyAs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSpecifyAs(StoreMediatorSpecifyType newSpecifyAs) {
+		StoreMediatorSpecifyType oldSpecifyAs = specifyAs;
+		specifyAs = newSpecifyAs == null ? SPECIFY_AS_EDEFAULT : newSpecifyAs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.STORE_MEDIATOR__SPECIFY_AS, oldSpecifyAs, specifyAs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamespacedProperty getExpression() {
+		return expression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExpression(NamespacedProperty newExpression, NotificationChain msgs) {
+		NamespacedProperty oldExpression = expression;
+		expression = newExpression;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.STORE_MEDIATOR__EXPRESSION, oldExpression, newExpression);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExpression(NamespacedProperty newExpression) {
+		if (newExpression != expression) {
+			NotificationChain msgs = null;
+			if (expression != null)
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.STORE_MEDIATOR__EXPRESSION, null, msgs);
+			if (newExpression != null)
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.STORE_MEDIATOR__EXPRESSION, null, msgs);
+			msgs = basicSetExpression(newExpression, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.STORE_MEDIATOR__EXPRESSION, newExpression, newExpression));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -327,6 +432,8 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 				return basicSetInputConnector(null, msgs);
 			case EsbPackage.STORE_MEDIATOR__OUTPUT_CONNECTOR:
 				return basicSetOutputConnector(null, msgs);
+			case EsbPackage.STORE_MEDIATOR__EXPRESSION:
+				return basicSetExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -350,6 +457,10 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 				return getOutputConnector();
 			case EsbPackage.STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES:
 				return getAvailableMessageStores();
+			case EsbPackage.STORE_MEDIATOR__SPECIFY_AS:
+				return getSpecifyAs();
+			case EsbPackage.STORE_MEDIATOR__EXPRESSION:
+				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -377,6 +488,12 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 				return;
 			case EsbPackage.STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES:
 				setAvailableMessageStores((String)newValue);
+				return;
+			case EsbPackage.STORE_MEDIATOR__SPECIFY_AS:
+				setSpecifyAs((StoreMediatorSpecifyType)newValue);
+				return;
+			case EsbPackage.STORE_MEDIATOR__EXPRESSION:
+				setExpression((NamespacedProperty)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -406,6 +523,12 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 			case EsbPackage.STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES:
 				setAvailableMessageStores(AVAILABLE_MESSAGE_STORES_EDEFAULT);
 				return;
+			case EsbPackage.STORE_MEDIATOR__SPECIFY_AS:
+				setSpecifyAs(SPECIFY_AS_EDEFAULT);
+				return;
+			case EsbPackage.STORE_MEDIATOR__EXPRESSION:
+				setExpression((NamespacedProperty)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -429,6 +552,10 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 				return outputConnector != null;
 			case EsbPackage.STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES:
 				return AVAILABLE_MESSAGE_STORES_EDEFAULT == null ? availableMessageStores != null : !AVAILABLE_MESSAGE_STORES_EDEFAULT.equals(availableMessageStores);
+			case EsbPackage.STORE_MEDIATOR__SPECIFY_AS:
+				return specifyAs != SPECIFY_AS_EDEFAULT;
+			case EsbPackage.STORE_MEDIATOR__EXPRESSION:
+				return expression != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -448,6 +575,8 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 		result.append(messageStore);
 		result.append(", availableMessageStores: ");
 		result.append(availableMessageStores);
+		result.append(", SpecifyAs: ");
+		result.append(specifyAs);
 		result.append(')');
 		return result.toString();
 	}

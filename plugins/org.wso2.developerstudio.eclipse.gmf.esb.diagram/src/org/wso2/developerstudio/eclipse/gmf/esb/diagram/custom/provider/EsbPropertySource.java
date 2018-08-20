@@ -172,6 +172,8 @@ public class EsbPropertySource extends PropertySource {
 			return new RuleMediatorRuleSetPropertyDescriptor(object,itemPropertyDescriptor);
 		}*/ else if (pkg.getStoreMediator_OnStoreSequence().equals(feature)) {
 			return new CustomPropertyDescriptor(object,itemPropertyDescriptor);
+		}else if (pkg.getStoreMediator_Expression().equals(feature)) {
+			return	 new CustomPropertyDescriptor(object,itemPropertyDescriptor);
 		} else if(pkg.getFilterMediator_Xpath().equals(feature)){
 		    return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getFilterMediator_Source().equals(feature)){

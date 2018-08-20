@@ -21,6 +21,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getAvailableMessageStores <em>Available Message Stores</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getSpecifyAs <em>Specify As</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator()
@@ -157,5 +159,60 @@ public interface StoreMediator extends Mediator {
 	 * @generated
 	 */
 	void setAvailableMessageStores(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Specify As</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Specify As</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Specify As</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType
+	 * @see #setSpecifyAs(StoreMediatorSpecifyType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_SpecifyAs()
+	 * @model
+	 * @generated
+	 */
+	StoreMediatorSpecifyType getSpecifyAs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getSpecifyAs <em>Specify As</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Specify As</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType
+	 * @see #getSpecifyAs()
+	 * @generated
+	 */
+	void setSpecifyAs(StoreMediatorSpecifyType value);
+
+	/**
+	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Expression</em>' containment reference.
+	 * @see #setExpression(NamespacedProperty)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_Expression()
+	 * @model containment="true"
+	 * @generated
+	 */
+	NamespacedProperty getExpression();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator#getExpression <em>Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Expression</em>' containment reference.
+	 * @see #getExpression()
+	 * @generated
+	 */
+	void setExpression(NamespacedProperty value);
 
 } // StoreMediator

@@ -39,7 +39,7 @@ public class StoreMediatorTransformer extends AbstractEsbNodeTransformer {
 		try {
 			information.getParentSequence().addChild(createStoreMediator(subject));
 		} catch (JaxenException e) {
-			new TransformerException(e);
+			throw new TransformerException(e);
 		}
 		doTransform(information,
 				((StoreMediator) subject).getOutputConnector());

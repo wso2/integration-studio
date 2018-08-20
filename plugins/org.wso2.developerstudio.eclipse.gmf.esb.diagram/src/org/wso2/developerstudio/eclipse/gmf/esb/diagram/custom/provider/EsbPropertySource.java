@@ -166,14 +166,15 @@ public class EsbPropertySource extends PropertySource {
 			return new RuleMediatorFactsPropertyDescriptor(object,itemPropertyDescriptor);
 		} else if(pkg.getRuleMediator_ResultsConfiguration().equals(feature)){
 			return new RuleMediatorResultsPropertyDescriptor(object,itemPropertyDescriptor);	
-		}else if(pkg.getRuleMediator_RuleSessionProperties().equals(feature)){
+		} else if(pkg.getRuleMediator_RuleSessionProperties().equals(feature)){
 			return new RuleMediatorSessionPropertyDescriptor(object,itemPropertyDescriptor);
 		}/*else if(pkg.getRuleMediator_RuleSetProperties().equals(feature)){
 			return new RuleMediatorRuleSetPropertyDescriptor(object,itemPropertyDescriptor);
-		}*/ else if (pkg.getStoreMediator_OnStoreSequence().equals(feature)) {
+		}*/ 
+		  else if(pkg.getStoreMediator_OnStoreSequence().equals(feature)) {
 			return new CustomPropertyDescriptor(object,itemPropertyDescriptor);
-		}else if (pkg.getStoreMediator_Expression().equals(feature)) {
-			return	 new CustomPropertyDescriptor(object,itemPropertyDescriptor);
+		} else if(pkg.getStoreMediator_Expression().equals(feature)) {
+			return new CustomPropertyDescriptor(object,itemPropertyDescriptor);
 		} else if(pkg.getFilterMediator_Xpath().equals(feature)){
 		    return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getFilterMediator_Source().equals(feature)){

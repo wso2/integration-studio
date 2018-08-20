@@ -29,7 +29,7 @@ public class StoreMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 				executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.EXPRESSION);
 			} else {
 				executeSetValueCommand(STORE_MEDIATOR__MESSAGE_STORE, storeMediator.getMessageStoreName());
-				executeSetValueCommand(CALLOUT_MEDIATOR__RESULT_TYPE, StoreMediatorSpecifyType.VALUE);
+				executeSetValueCommand(STORE_MEDIATOR__SPECIFY_AS, StoreMediatorSpecifyType.VALUE);
 			}
 		}
 		

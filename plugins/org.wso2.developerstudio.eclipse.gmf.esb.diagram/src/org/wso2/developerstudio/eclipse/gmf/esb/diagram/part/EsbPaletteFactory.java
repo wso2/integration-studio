@@ -121,7 +121,7 @@ public class EsbPaletteFactory {
 				paletteRoot.add(createLinks4Group());
 			}
 		} catch (Exception e) {
-			log.error("Rrror occur while obtaining the perspective Id " + e.getMessage(), e);
+			log.error("Error occur while obtaining the perspective Id " + e.getMessage(), e);
 		// If any error occur while obtaining the perspective Id then the ESB editor loads in a normal way
 			paletteRoot.add(createNodes1Group());
 			paletteRoot.add(createMediators2Group());
@@ -2052,8 +2052,7 @@ public class EsbPaletteFactory {
 		/*	types.add(EsbElementTypes.Sequence_3187);
 			types.add(EsbElementTypes.Sequence_3254);
 			types.add(EsbElementTypes.Sequence_3375);*/
-		NodeToolEntry entry = new NodeToolEntry(name,
-				Messages.Sequence4CreationTool_desc, types);
+		NodeToolEntry entry = new NodeToolEntry(name, null, types);
 		entry.setId("createSequence4CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(EsbElementTypes
 				.getImageDescriptor(EsbElementTypes.Sequence_3503));
@@ -2063,8 +2062,7 @@ public class EsbPaletteFactory {
 	}
 
 	private ToolEntry createDefinedEndpointCreationTool(String name) {
-		NodeToolEntry entry = new NodeToolEntry(name,
-				Messages.NamedEndpoint6CreationTool_desc,
+		NodeToolEntry entry = new NodeToolEntry(name, null,
 				Collections.singletonList(EsbElementTypes.NamedEndpoint_3660));
 		entry.setId("createNamedEndpoint6CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(EsbElementTypes

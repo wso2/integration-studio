@@ -4,18 +4,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
-import org.eclipse.gmf.runtime.diagram.ui.actions.AbstractDeleteFromAction;
-import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.EditCommandRequestWrapper;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
@@ -23,11 +19,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.IEditCommandRequest;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.tooling.runtime.actions.DefaultDeleteElementAction;
-import org.eclipse.swt.SWT;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry;
@@ -35,10 +27,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequences;
 import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.exception.ESBDebuggerException;
@@ -51,6 +41,8 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  * @generated
  */
 public class DeleteElementAction extends DefaultDeleteElementAction {
+	
+	private static boolean deleteTriggrred = false;
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	/**
@@ -111,7 +103,8 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 			if (ESBDebuggerUtil.isDeleteOperationPerformed()) {
 				ESBDebuggerUtil.setDeletedMediator((AbstractMediator) editPart);
 				try {
-					ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion(true);
+					setDeleteTriggrred(true);
+					ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion(true);					
 				} catch (CoreException | ESBDebuggerException e) {
 					log.error(
 							"Error while modifing debug points after mediator deletion : "
@@ -169,5 +162,13 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 		}
 
 		return true;
+	}
+
+	public static boolean isDeleteTriggrred() {
+		return deleteTriggrred;
+	}
+
+	public static void setDeleteTriggrred(boolean deleteTriggrred) {
+		DeleteElementAction.deleteTriggrred = deleteTriggrred;
 	}
 }

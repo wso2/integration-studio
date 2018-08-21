@@ -25,7 +25,7 @@ public class OpenSeparatelyEditPolicy extends OpenEditPolicy {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 	protected Command getOpenCommand(Request request) {
-		ESBDebuggerUtil.updateModifiedDebugPoints();
+		ESBDebuggerUtil.updateModifiedDebugPoints(false);
 		if (getTargetEditPart(request) instanceof SequenceEditPart) {
 			String name=((Sequence)((Node)((SequenceEditPart)getTargetEditPart(request)).getModel()).getElement()).getName();
 			if(!"{XPath}".equals(name) && ! (name.startsWith("conf:") || name.startsWith("gov:"))){

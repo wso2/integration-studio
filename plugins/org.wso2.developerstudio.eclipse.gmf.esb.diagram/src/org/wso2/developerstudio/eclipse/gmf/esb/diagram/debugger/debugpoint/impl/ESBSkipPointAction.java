@@ -106,7 +106,7 @@ public class ESBSkipPointAction extends ConfigureEsbNodeAction {
      */
     @Override
     protected void doRun(IProgressMonitor progressMonitor) {
-    	ESBDebuggerUtil.updateModifiedDebugPoints();
+    	ESBDebuggerUtil.updateModifiedDebugPoints(false);
         EditPart selectedEP = getSelectedEditPart();
         if (selectedEP instanceof AbstractMediator && ESBDebugPointTarget.canToggleDiagramDebugpoints(selectedEP)) {
             try {

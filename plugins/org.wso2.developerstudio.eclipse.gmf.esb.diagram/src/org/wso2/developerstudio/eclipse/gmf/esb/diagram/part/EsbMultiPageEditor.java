@@ -1001,7 +1001,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	public void doSave(final IProgressMonitor monitor) {
 		//Fixing DEVTOOLESB-596
 		if(!isFormEditor){
-			ESBDebuggerUtil.updateModifiedDebugPoints();
+			ESBDebuggerUtil.updateModifiedDebugPoints(true);
 			ESBDebuggerUtil.setPageSaveOperationActivated(true);
 		}
 		// Fixing TOOLS-2958

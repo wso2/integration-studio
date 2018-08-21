@@ -119,6 +119,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediato
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ValidateMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.DeleteElementAction;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -589,28 +590,30 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 				} 
 			}
 		}
-		
+
 		if (!mediatorRestricted) {
                     AbstractMediator previousMediator = getPreviousMediator(nearestEsbLinkOutputConnector,
                             nearestOutputConnector);
-                    if (previousMediator == null && nearestESBLink == null && nearestInputConnector == null) {
-                        // check whether previous mediator is a Drop Mediator.
-                        // 1 - (checkForDropMediator(inputConnectorEditpartList) == 1 && !(this instanceof DropMediatorEditPart)
-                        //    This checks whether there are any drop in the flow and we are not adding any  drop now.
-                        // 2 - checkForDropMediator(inputConnectorEditpartList) >= 2
-                        //    This checks for adding a drop mediator after drop. i.e. there will be two drops in the flow.
-                        // 3 - ConnectionCalculator.forwardConnectorPresent
-                        //     This checks whether there are any nearForwardConnector in the flow. This check is needed
-                        //     in the delete flow as with other two we can't differentiate whether there is drop or we are doing a delete.
-                        if (((checkForDropMediator(inputConnectorEditpartList) == 1 && !(this instanceof DropMediatorEditPart))
-                                || checkForDropMediator(inputConnectorEditpartList) >= 2)
-                                && !ConnectionCalculator.forwardConnectorPresent) {
-                            mediatorRestricted = true;
-                            mediatorType = "Drop Mediator";
-                            deleteNewlyAddedMediator(warningAddingMediatorsAfter + mediatorType);
-                            return;
-                        }
-                    }
+			if (previousMediator == null && nearestESBLink == null && nearestInputConnector == null) {
+				// check whether previous mediator is a Drop Mediator.
+				int numberOfDrop = checkForDropMediator(inputConnectorEditpartList);
+				// 1 - numberOfDrop == 1 && !(this instanceof DropMediatorEditPart)
+				//    This checks whether there are any drop in the flow and we are not adding any  drop now.
+				// 2 - numberOfDrop >= 2
+				//    This checks for adding a drop mediator after drop. i.e. there will be two drops in the flow.
+				// 3 - DeleteElementAction.deleteTriggrred
+				//     Boolean to check whether this is called in delete flow or not
+				if (!DeleteElementAction.isDeleteTriggrred()) {
+					if ((numberOfDrop == 1 && !(this instanceof DropMediatorEditPart)) || numberOfDrop >= 2) {
+						mediatorRestricted = true;
+						mediatorType = "Drop Mediator";
+						deleteNewlyAddedMediator(warningAddingMediatorsAfter + mediatorType);
+						return;
+					}
+				} else {
+					DeleteElementAction.setDeleteTriggrred(false);
+				}
+			}
 			if (previousMediator != null && previousMediator != this) {
 				AbstractMediator mediator = hasMediator(previousMediator);
 				mediatorRestricted = true;

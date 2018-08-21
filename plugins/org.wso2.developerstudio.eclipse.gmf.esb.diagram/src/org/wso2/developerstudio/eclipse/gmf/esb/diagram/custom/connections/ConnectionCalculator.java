@@ -33,7 +33,6 @@ public class ConnectionCalculator {
 
 	private static Point currentFigureLocation = null;
 	private static Point connectorFigureLocation = null;
-	public static boolean forwardConnectorPresent = false;
 
 	public static EsbLinkEditPart getNearestLinkEditPart(ArrayList links,
 			AbstractBorderedShapeEditPart childEditPart) {
@@ -115,7 +114,6 @@ public class ConnectionCalculator {
 
 			if ((connectors.size() != 0)) {
 				if (connectors.get(0) instanceof AbstractInputConnectorEditPart) {
-					forwardConnectorPresent = false;
 					currentConnector = EditorUtils
 							.getInputConnector(childEditPart);
 				} else {
@@ -190,11 +188,6 @@ public class ConnectionCalculator {
 			}
 		}
 		if (nearForwardConnector != null) {
-                   if ((connectors.size() != 0)) {
-                        if (connectors.get(0) instanceof AbstractInputConnectorEditPart) {
-                            forwardConnectorPresent = true;
-                        }
-                    }
 			updateCurrentStatesForGivenFigure(nearForwardConnector);
 			if((nearForwardConnector.getParent() instanceof ProxyServiceEditPart)
 					||(nearForwardConnector.getParent() instanceof APIResourceEditPart)){

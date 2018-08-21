@@ -747,6 +747,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSBrokerType/ActiveMQ"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSBrokerType/OTHER"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//StoreMediatorSpecifyType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//StoreMediatorSpecifyType/Value"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//StoreMediatorSpecifyType/Expression"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//WSClientSideBroadcastLevel">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//WSClientSideBroadcastLevel/zero"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//WSClientSideBroadcastLevel/one"/>
@@ -1879,6 +1883,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//StoreMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//StoreMediator/outputConnector"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//StoreMediator/availableMessageStores"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//StoreMediator/SpecifyAs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//StoreMediator/Expression"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//StoreMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//StoreMediatorOutputConnector"/>

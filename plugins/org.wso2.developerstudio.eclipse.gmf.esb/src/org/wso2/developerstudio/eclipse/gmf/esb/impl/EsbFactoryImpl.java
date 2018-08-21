@@ -675,6 +675,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createJMSCacheLevelFromString(eDataType, initialValue);
 			case EsbPackage.JMS_BROKER_TYPE:
 				return createJMSBrokerTypeFromString(eDataType, initialValue);
+			case EsbPackage.STORE_MEDIATOR_SPECIFY_TYPE:
+				return createStoreMediatorSpecifyTypeFromString(eDataType, initialValue);
 			case EsbPackage.WS_CLIENT_SIDE_BROADCAST_LEVEL:
 				return createWSClientSideBroadcastLevelFromString(eDataType, initialValue);
 			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
@@ -947,6 +949,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertJMSCacheLevelToString(eDataType, instanceValue);
 			case EsbPackage.JMS_BROKER_TYPE:
 				return convertJMSBrokerTypeToString(eDataType, instanceValue);
+			case EsbPackage.STORE_MEDIATOR_SPECIFY_TYPE:
+				return convertStoreMediatorSpecifyTypeToString(eDataType, instanceValue);
 			case EsbPackage.WS_CLIENT_SIDE_BROADCAST_LEVEL:
 				return convertWSClientSideBroadcastLevelToString(eDataType, instanceValue);
 			case EsbPackage.MQTT_SUBSCRIPTION_QOS:
@@ -7191,6 +7195,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertJMSBrokerTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StoreMediatorSpecifyType createStoreMediatorSpecifyTypeFromString(EDataType eDataType, String initialValue) {
+		StoreMediatorSpecifyType result = StoreMediatorSpecifyType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertStoreMediatorSpecifyTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

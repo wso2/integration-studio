@@ -450,6 +450,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorSpecifyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseParentContainer;
@@ -3944,6 +3945,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum jmsBrokerTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum storeMediatorSpecifyTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -16788,6 +16796,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getStoreMediator_SpecifyAs() {
+		return (EAttribute)storeMediatorEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStoreMediator_Expression() {
+		return (EReference)storeMediatorEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStoreMediatorInputConnector() {
 		return storeMediatorInputConnectorEClass;
 	}
@@ -19119,6 +19145,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getStoreMediatorSpecifyType() {
+		return storeMediatorSpecifyTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getWSClientSideBroadcastLevel() {
 		return wsClientSideBroadcastLevelEEnum;
 	}
@@ -20388,6 +20423,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(storeMediatorEClass, STORE_MEDIATOR__INPUT_CONNECTOR);
 		createEReference(storeMediatorEClass, STORE_MEDIATOR__OUTPUT_CONNECTOR);
 		createEAttribute(storeMediatorEClass, STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES);
+		createEAttribute(storeMediatorEClass, STORE_MEDIATOR__SPECIFY_AS);
+		createEReference(storeMediatorEClass, STORE_MEDIATOR__EXPRESSION);
 
 		storeMediatorInputConnectorEClass = createEClass(STORE_MEDIATOR_INPUT_CONNECTOR);
 
@@ -21234,6 +21271,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		jmsSessionAcknowledgementEEnum = createEEnum(JMS_SESSION_ACKNOWLEDGEMENT);
 		jmsCacheLevelEEnum = createEEnum(JMS_CACHE_LEVEL);
 		jmsBrokerTypeEEnum = createEEnum(JMS_BROKER_TYPE);
+		storeMediatorSpecifyTypeEEnum = createEEnum(STORE_MEDIATOR_SPECIFY_TYPE);
 		wsClientSideBroadcastLevelEEnum = createEEnum(WS_CLIENT_SIDE_BROADCAST_LEVEL);
 		mqttSubscriptionQOSEEnum = createEEnum(MQTT_SUBSCRIPTION_QOS);
 		feedTypeEEnum = createEEnum(FEED_TYPE);
@@ -22821,6 +22859,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getStoreMediator_InputConnector(), this.getStoreMediatorInputConnector(), null, "inputConnector", null, 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStoreMediator_OutputConnector(), this.getStoreMediatorOutputConnector(), null, "outputConnector", null, 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStoreMediator_AvailableMessageStores(), ecorePackage.getEString(), "availableMessageStores", null, 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStoreMediator_SpecifyAs(), this.getStoreMediatorSpecifyType(), "SpecifyAs", null, 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStoreMediator_Expression(), this.getNamespacedProperty(), null, "Expression", null, 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(storeMediatorInputConnectorEClass, StoreMediatorInputConnector.class, "StoreMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -24283,6 +24323,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(jmsBrokerTypeEEnum, JMSBrokerType.WSO2_BROKER_PROFILE);
 		addEEnumLiteral(jmsBrokerTypeEEnum, JMSBrokerType.ACTIVE_MQ);
 		addEEnumLiteral(jmsBrokerTypeEEnum, JMSBrokerType.OTHER);
+
+		initEEnum(storeMediatorSpecifyTypeEEnum, StoreMediatorSpecifyType.class, "StoreMediatorSpecifyType");
+		addEEnumLiteral(storeMediatorSpecifyTypeEEnum, StoreMediatorSpecifyType.VALUE);
+		addEEnumLiteral(storeMediatorSpecifyTypeEEnum, StoreMediatorSpecifyType.EXPRESSION);
 
 		initEEnum(wsClientSideBroadcastLevelEEnum, WSClientSideBroadcastLevel.class, "WSClientSideBroadcastLevel");
 		addEEnumLiteral(wsClientSideBroadcastLevelEEnum, WSClientSideBroadcastLevel.ZERO);

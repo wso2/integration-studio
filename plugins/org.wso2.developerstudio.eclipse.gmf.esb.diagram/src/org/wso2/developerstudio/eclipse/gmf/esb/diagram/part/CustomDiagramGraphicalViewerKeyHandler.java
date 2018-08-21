@@ -37,12 +37,12 @@ public class CustomDiagramGraphicalViewerKeyHandler extends DiagramGraphicalView
 		case SWT.DEL :
 			if (ESBDebuggerUtil.isDeleteOperationPerformed()) {
 				try {
-					ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion();
+					ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion(false);
 				} catch (CoreException | ESBDebuggerException e) {
 					//
 				}
 			} else {
-				ESBDebuggerUtil.updateModifiedDebugPoints();
+				ESBDebuggerUtil.updateModifiedDebugPoints(false);
 			}
 			ESBDebuggerUtil.setDeleteOperationPerformed(true);
 			deleteAction.run(null);		

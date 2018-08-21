@@ -72,12 +72,12 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 				if(destroyElementReq.getElementToDestroy()!=null){
 					if (ESBDebuggerUtil.isDeleteOperationPerformed()) {
 						try {
-							ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion();
+							ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion(false);
 						} catch (CoreException | ESBDebuggerException e) {
 							//
 						}
 					} else {
-						ESBDebuggerUtil.updateModifiedDebugPoints();
+						ESBDebuggerUtil.updateModifiedDebugPoints(false);
 					}
 					ESBDebuggerUtil.setDeleteOperationPerformed(true);
 				}
@@ -111,7 +111,7 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 			if (ESBDebuggerUtil.isDeleteOperationPerformed()) {
 				ESBDebuggerUtil.setDeletedMediator((AbstractMediator) editPart);
 				try {
-					ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion();
+					ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion(true);
 				} catch (CoreException | ESBDebuggerException e) {
 					log.error(
 							"Error while modifing debug points after mediator deletion : "

@@ -226,7 +226,7 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 
                 try {
                     if (ESBDebuggerUtil.getRecentlyAddedMediator() != null) {
-                        ESBDebuggerUtil.modifyDebugPointsointsAfterMediatorAddition(ESBDebuggerUtil
+                        ESBDebuggerUtil.modifyDebugPointsointsAfterMediatorAddition(false, ESBDebuggerUtil
                                 .getRecentlyAddedMediator());
                         if (!ESBDebuggerUtil.isPageSaveOperationActivated()
                                 && !ESBDebuggerUtil.isPageChangeOperationActivated()

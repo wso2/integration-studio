@@ -109,7 +109,7 @@ public class ESBBreakpointDeleteAllAction extends ConfigureEsbNodeAction {
 	@Override
 	protected void doRun(IProgressMonitor progressMonitor) {
 		try {
-			ESBDebuggerUtil.updateModifiedDebugPoints();
+			ESBDebuggerUtil.updateModifiedDebugPoints(false);
 			ESBDebuggerUtil.removeAllESBDebugPointsFromDebugPointManager();
 		} catch (ESBDebuggerException e) {
 			log.error("Error while removing debugpoints from ESB Server", e);

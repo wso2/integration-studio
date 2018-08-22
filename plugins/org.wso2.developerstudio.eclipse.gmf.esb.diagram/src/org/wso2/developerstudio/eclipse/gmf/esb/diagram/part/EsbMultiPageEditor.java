@@ -251,17 +251,17 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 								DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true);
 								deleteMarkers();
 								if (deserializeStatus.isValid()
-										|| deserializeStatus
-												.getExecption() instanceof SynapseException
-										|| deserializeStatus
-												.getExecption() instanceof MediatorException) {
+										|| deserializeStatus.getExecption() instanceof SynapseException
+										|| deserializeStatus.getExecption() instanceof MediatorException) {
 
 									if (!deserializeStatus.isValid()) {
 										SourceError sourceError = ProcessSourceView.validateSynapseContent(source);
 
 										if (sourceError == null) {
-											sourceError = new SourceError(deserializeStatus.getExecption().getMessage(), 0, 0, 2);
+											sourceError = new SourceError(deserializeStatus.getExecption().getMessage(),
+													0, 0, 2);
 										}
+
 										addMarker(sourceError);
 									}
 
@@ -272,6 +272,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 											doSave(new NullProgressMonitor());
 										}
 									});
+
+								} else if (deserializeStatus.getExecption() instanceof NullPointerException) {
+									addMarker(new SourceError("Invalid mediator configuration: "
+											+ deserializeStatus.getExecption().getMessage(), 0, 0, 2));
 
 								} else {
 									setActivePage(SOURCE_VIEW_PAGE_INDEX);
@@ -419,7 +423,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	 */
 	void createPage2() {
 		deleteMarkers();
-		
+
 		Composite composite = new Composite(getContainer(), SWT.NONE);
 		GridLayout layout = new GridLayout();
 		composite.setLayout(layout);
@@ -433,7 +437,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	private void createPageForm(final ArtifactType artifactType) {
 		deleteMarkers();
-		
+
 		IEditorInput editorInput = getEditorInput();
 		currentEditor = this;
 		formEditor = new ESBFormEditor(artifactType);
@@ -619,9 +623,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 				if (!deserializeStatus.isValid()) {
 
 					deleteMarkers();
-					if (!(deserializeStatus.getExecption() instanceof org.apache.synapse.SynapseException
-							|| deserializeStatus
-									.getExecption() instanceof org.wso2.carbon.mediator.service.MediatorException)) {
+					if (!(deserializeStatus.getExecption() instanceof SynapseException
+							|| deserializeStatus.getExecption() instanceof MediatorException)) {
 						setActivePage(SOURCE_VIEW_PAGE_INDEX);
 						sourceEditor.getDocument().set(source);
 
@@ -634,17 +637,20 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 						} catch (ValidationException e) {
 							// ignore
 						}
-					}
+					} else if (deserializeStatus.getExecption() instanceof NullPointerException) {
+						addMarker(new SourceError(
+								"Invalid mediator configuration: " + deserializeStatus.getExecption().getMessage(), 0,
+								0, 2));
 
-				 else {
-					SourceError sourceError = ProcessSourceView.validateSynapseContent(source);
-					if ( sourceError == null) {
-						sourceError =  new SourceError(deserializeStatus.getExecption().getMessage(), 0, 0, 2);
+					} else {
+						SourceError sourceError = ProcessSourceView.validateSynapseContent(source);
+						if (sourceError == null) {
+							sourceError = new SourceError(deserializeStatus.getExecption().getMessage(), 0, 0, 2);
+						}
+						addMarker(sourceError);
 					}
-					addMarker(sourceError);
 				}
-			}
-				
+
 			}
 
 			try {
@@ -652,7 +658,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					sourceDirty = true;
 					handleFormViewActivatedEvent();
 				} else {
-					sourceDirty = true;
 					handleDesignViewActivatedEvent(false);
 
 					deleteMarkers();
@@ -723,6 +728,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					SourceError tempError = ProcessSourceView.validateSynapseContent(source);
 					if (tempError != null) {
 						addMarker(tempError);
+						sourceDirty = true;
 					}
 				}
 			} catch (NumberFormatException nfe) {
@@ -952,37 +958,37 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 						.getActivePage().getEditorReferences();
 				for (int i = 0; i < editorReferences.length; i++) {
 					IEditorPart editor = editorReferences[i].getEditor(false);
-//					if ((editor instanceof EsbMultiPageEditor) && (!editor.equals(this))) {
+					// if ((editor instanceof EsbMultiPageEditor) && (!editor.equals(this))) {
 
-						// IFile openedFile =
-						// ((IFileEditorInput)editor.getEditorInput()).getFile();
-						/*
-						 * ElementDuplicator endPointDuplicator = new
-						 * ElementDuplicator(openedFile.getProject(),((
-						 * EsbMultiPageEditor)editor).getGraphicalEditor());
-						 * endPointDuplicator.updateAssociatedDiagrams(( EsbMultiPageEditor)editor);
-						 */
+					// IFile openedFile =
+					// ((IFileEditorInput)editor.getEditorInput()).getFile();
+					/*
+					 * ElementDuplicator endPointDuplicator = new
+					 * ElementDuplicator(openedFile.getProject(),((
+					 * EsbMultiPageEditor)editor).getGraphicalEditor());
+					 * endPointDuplicator.updateAssociatedDiagrams(( EsbMultiPageEditor)editor);
+					 */
 
-						/*
-						 * Map registry = ((EsbMultiPageEditor) editor).getDiagramEditPart()
-						 * .getViewer().getEditPartRegistry();
-						 * 
-						 * 
-						 * Collection<Object> values=new ArrayList<Object>();
-						 * values.addAll(registry.values());
-						 * 
-						 * for (int j = 0; j < values.size(); ++j) { EditPart element = (EditPart)
-						 * values.toArray()[j]; if (element instanceof SequenceEditPart) { String key =
-						 * ((Sequence) ((Node) element.getModel()).getElement()) .getName(); String name
-						 * = ((Sequences) child).getName(); if (key.equals(name)) { EndPointDuplicator
-						 * endPointDuplicator = new EndPointDuplicator(file.getProject(),
-						 * ((EsbMultiPageEditor) editor).graphicalEditor); GraphicalEditPart
-						 * rootCompartment = EditorUtils
-						 * .getSequenceAndEndpointCompartmentEditPart(element);
-						 * endPointDuplicator.duplicateEndPoints( rootCompartment, ((Sequences)
-						 * child).getName()); } } }
-						 */
-//					}
+					/*
+					 * Map registry = ((EsbMultiPageEditor) editor).getDiagramEditPart()
+					 * .getViewer().getEditPartRegistry();
+					 * 
+					 * 
+					 * Collection<Object> values=new ArrayList<Object>();
+					 * values.addAll(registry.values());
+					 * 
+					 * for (int j = 0; j < values.size(); ++j) { EditPart element = (EditPart)
+					 * values.toArray()[j]; if (element instanceof SequenceEditPart) { String key =
+					 * ((Sequence) ((Node) element.getModel()).getElement()) .getName(); String name
+					 * = ((Sequences) child).getName(); if (key.equals(name)) { EndPointDuplicator
+					 * endPointDuplicator = new EndPointDuplicator(file.getProject(),
+					 * ((EsbMultiPageEditor) editor).graphicalEditor); GraphicalEditPart
+					 * rootCompartment = EditorUtils
+					 * .getSequenceAndEndpointCompartmentEditPart(element);
+					 * endPointDuplicator.duplicateEndPoints( rootCompartment, ((Sequences)
+					 * child).getName()); } } }
+					 */
+					// }
 				}
 			}
 			break;
@@ -993,12 +999,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	 * Saves the multi-page editor's document.
 	 */
 	public void doSave(final IProgressMonitor monitor) {
-		//addedMarkers = false;
+		// addedMarkers = false;
 		// Fixing DEVTOOLESB-596
 		if (!isFormEditor) {
 			ESBDebuggerUtil.updateModifiedDebugPoints();
 			ESBDebuggerUtil.setPageSaveOperationActivated(true);
 		}
+		MediatorFactoryUtils.registerFactories();
 		// Fixing TOOLS-2958
 		setContextClassLoader();
 		boolean isSaveAllow = true;
@@ -1013,8 +1020,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					SourceError sourceError = ProcessSourceView.validateSynapseContent(xmlSource);
 
 					if (sourceError != null) {
-						addMarker(sourceError);
-		
+						if (!sourceError.getException().contains("Invalid mediator")) {
+							addMarker(sourceError);
+						}
+
 					} else {
 						if (isFormEditor) {
 							sourceDirty = true;
@@ -1024,12 +1033,17 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 						}
 					}
 				} else {
-					if (!(deserializeStatus.getExecption() instanceof org.apache.synapse.SynapseException
-							|| deserializeStatus
-									.getExecption() instanceof org.wso2.carbon.mediator.service.MediatorException)) {
+					if (!(deserializeStatus.getExecption() instanceof SynapseException
+							|| deserializeStatus.getExecption() instanceof MediatorException
+							|| deserializeStatus.getExecption() instanceof NullPointerException)) {
 
 						addMarker(ProcessSourceView.validateXMLContent(xmlSource));
-				
+						return;
+
+					} else if (deserializeStatus.getExecption() instanceof NullPointerException) {
+						addMarker(new SourceError(
+								"Invalid mediator configuration: " + deserializeStatus.getExecption().getMessage(), 0,
+								0, 2));
 						return;
 
 					} else {
@@ -1037,6 +1051,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 						if (sourceError == null) {
 							sourceError = new SourceError(deserializeStatus.getExecption().getMessage(), 0, 0, 2);
 						}
+
 						addMarker(sourceError);
 					}
 

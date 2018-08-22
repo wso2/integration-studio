@@ -23,6 +23,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
@@ -34,6 +35,7 @@ import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.OMNamespaceImpl;
+import org.apache.axiom.om.impl.dom.NamespaceImpl;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.SynapseException;
@@ -94,6 +96,7 @@ import org.wso2.carbon.rule.mediator.RuleMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.sheet.XMLTag;
 import org.xml.sax.InputSource;
@@ -127,7 +130,9 @@ public class ProcessSourceView {
 			"parameter", "timeout", "duration", "responseAction", "markForSuspension", "action", "errorCodes",
 			"retriesBeforeSuspension", "retryDelay", "suspendOnFailure", "initialDuration", "progressionFactor",
 			"maximumDuration", "membershipHandler", "definition", "member", "http", "address", "failover",
-			"dynamicLoadbalance", "wsdl", "loadBalance", "default", "recipientlist"));
+			"dynamicLoadbalance", "wsdl", "loadBalance", "default", "recipientlist", "format", "args", "source", "onCacheHit",
+			"protocol", "methods", "headersToExcludeInHash", "responseCodes", "enableCacheControl", "includeAgeHeader",
+			"hashGenerator", "implementation", "onReject", "onAccept", "obligations", "advice"));
 
 	public ProcessSourceView() {
 
@@ -216,14 +221,22 @@ public class ProcessSourceView {
 
 		if (hasTag(value)) {
 			// has a tag
-			while (hasTag(value)) {
+			while (hasTag(value) || hasString(value)) {
 				xmlTag = new XMLTag();
 				xmlTag.setLine(index + 1);
 
 				int sT = value.indexOf("<");
 				int eT = value.indexOf(">");
 				boolean order = eT > sT;
-				if (sT != -1) {
+				
+				if (hasStringBeforeTag(value, sT)) {
+					xmlTag.setTagType(7);
+					xmlTag.setEndIndex(sT + length + 1);
+					xmlTag.setStartIndex(0 + length + 1);
+					xmlTag.setValue(value.substring(0, sT));
+					value = value.substring(sT);
+						
+				} else if (sT != -1) {
 					// has <
 					if (eT != -1) {
 						// has < and > ==> can be 1, 2, 3, 8
@@ -357,12 +370,17 @@ public class ProcessSourceView {
 		SourceError sourceError = null;
 		xmlTags = new Stack<>();
 		XMLTag prev = null;
+		Stack<XMLTag> intermediaryStack = new Stack<>();
 
 		while (!xmlTagsQueue.isEmpty()) {
 			XMLTag tempTag = xmlTagsQueue.remove();
 
 			if (tempTag.isStartTag()) { // 14
 				xmlTags.push(tempTag);
+				
+				if (mediators.contains(tempTag.getqName())) {
+					intermediaryStack.push(tempTag);
+				}
 				// type 4 is already covered in xml validation.
 				if (prev.getTagType() == 7 && !"".equals(prev.getValue().trim())) {
 					String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
@@ -374,10 +392,19 @@ public class ProcessSourceView {
 			} else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
 				if (prev != null && prev.getTagType() != 8) {
 					xmlTags.push(tempTag);
-					if (!intermediary.contains(tempTag.getqName())) {
+					XMLTag currentMediator = null;
+					if (intermediaryStack.size() > 0) {
+						currentMediator = intermediaryStack.pop();
+					}
+					if (!intermediary.contains(tempTag.getqName()) && 
+							((tempTag.getTagType() == 3) || (currentMediator != null && currentMediator.getqName().equals(tempTag.getqName())) || artifacts.contains(tempTag.getqName()))) {
 						sourceError = mediatorValidation();
 						if (sourceError != null) {
 							return sourceError;
+						}
+					} else {
+						if (currentMediator != null) {
+							intermediaryStack.push(currentMediator);
 						}
 					}
 
@@ -422,10 +449,12 @@ public class ProcessSourceView {
 	private static SourceError mediatorValidation() {
 
 		boolean insideTag = true;
+		String firstMediatorQTag = "";
 		if (xmlTags.size() > 0) {
 
 			XMLTag xmlTag = xmlTags.pop();
 			String mediatorVal = xmlTag.getValue();
+			firstMediatorQTag = xmlTag.getqName();
 			String error = "";
 
 			if (xmlTag.getTagType() == 3) {
@@ -448,7 +477,7 @@ public class ProcessSourceView {
 							mediatorVal = xmlTag.getValue().concat(mediatorVal);
 						}
 
-						if (xmlTag.isStartTag()) {
+						if (xmlTag.isStartTag() && xmlTag.getqName().equals(firstMediatorQTag)) {
 
 							error = validate(mediatorVal, xmlTag.getqName());
 
@@ -457,6 +486,8 @@ public class ProcessSourceView {
 							}
 
 							insideTag = intermediary.contains(xmlTag.getqName());
+						} else {
+							insideTag = true;
 						}
 					} else {
 						insideTag = false;
@@ -492,14 +523,18 @@ public class ProcessSourceView {
 		String error = "";
 
 		if (intermediary.contains(qTag)) {
-
+			return error;
+			
 		} else if (artifacts.contains(qTag)) {
-			error = validateArtifacts(mediatorVal, qTag);
+			return validateArtifacts(mediatorVal, qTag);
 
 		} else if (mediators.contains(qTag)) {
-			error = validateMediators(mediatorVal, qTag);
+			return validateMediators(mediatorVal, qTag);
 
+		} else if (DummyMediatorFactoryFinder.getInstance().getFactory(mediatorVal, qTag) == null) {
+			return "Invalid mediator " + mediatorVal;
 		}
+		
 		return error;
 
 	}
@@ -528,7 +563,11 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("endpoint")) {
 				// omElement = omElement.getFirstElement();
-				omElement.getFirstElement().setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
+				if (omElement.getFirstElement() != null) {
+					omElement.getFirstElement().setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
+				} else {
+					omElement.setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
+				}
 				EndpointFactory.getEndpointFromElement(omElement, false, null);
 
 			} else if (qTag.equals("inboundEndpoint")) {
@@ -566,6 +605,9 @@ public class ProcessSourceView {
 
 		} catch (XMLStreamException e) {
 			// ignore
+		} catch (NullPointerException e) {
+			return e.getMessage();
+			
 		}
 		return "";
 	}
@@ -618,6 +660,19 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("enrich")) {
 				EnrichMediatorFactory factory = new EnrichMediatorFactory();
+				omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				
+				Iterator iterator = omElement.getChildrenWithLocalName("source");
+				if (iterator.hasNext()) {
+					OMElement source = (OMElement) iterator.next();
+					source.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				}
+				
+				iterator = omElement.getChildrenWithLocalName("target");
+				if (iterator.hasNext()) {
+					OMElement target = (OMElement) iterator.next();
+					target.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				}
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("property")) {
@@ -691,6 +746,13 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("payloadFactory")) {
 				PayloadFactoryMediatorFactory factory = new PayloadFactoryMediatorFactory();
+				omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				Iterator children = omElement.getChildrenWithLocalName("format");
+				if (children.hasNext()) {
+					OMElement formatElement = (OMElement) children.next();
+					formatElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				}
+				 
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("smooks")) {
@@ -719,6 +781,7 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("cache")) {
 				CacheMediatorFactory factory = new CacheMediatorFactory();
+				omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("dbreport")) {
@@ -763,10 +826,12 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("entitlementService")) {
 				EntitlementMediatorFactory factory = new EntitlementMediatorFactory();
+				omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("oauthService")) {
 				OAuthMediatorFactory factory = new OAuthMediatorFactory();
+				omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("builder")) {
@@ -805,6 +870,21 @@ public class ProcessSourceView {
 	 */
 	private static boolean hasTag(String value) {
 		return value.contains("<") || value.contains(">");
+	}
+	
+	private static boolean hasString(String value) {
+		if (!value.trim().equals("") && value.length() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private static boolean hasStringBeforeTag(String value, int sT) {
+		if (sT > 0 && !value.substring(0, sT).trim().equals("")) {
+			return true;	
+		}
+		return false;
 	}
 
 	/**

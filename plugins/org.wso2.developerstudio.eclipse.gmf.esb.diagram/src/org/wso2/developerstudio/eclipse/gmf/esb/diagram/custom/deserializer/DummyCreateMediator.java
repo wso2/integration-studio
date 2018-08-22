@@ -122,241 +122,244 @@ public class DummyCreateMediator {
 		if ("log".equals(localName)) {
 
 			LogMediatorExtFactory factory = new LogMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("send".equals(localName)) {
 
 			SendMediatorExtFactory factory = new SendMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("drop".equals(localName)) {
 
 			mediator = new DropMediator();
 			processAuditStatus(mediator, omElement);
+			return mediator;
 
 		} else if ("property".equals(localName)) {
 
 			PropertyMediatorExtFactory factory = new PropertyMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("validate".equals(localName)) {
 
 			ValidateMediatorExtFactory factory = new ValidateMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("payloadFactory".equals(localName)) {
 
 			PayloadFactoryMediatorExtFactory factory = new PayloadFactoryMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("filter".equals(localName)) {
 
 			FilterMediatorExtFactory factory = new FilterMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("call".equals(localName)) {
 
 			CallMediatorExtFactory factory = new CallMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("respond".equals(localName)) {
 
 			mediator = new RespondMediator();
 			processAuditStatus(mediator, omElement);
+			return mediator;
 
 		} else if ("store".equals(localName)) {
 
 			StoreMediatorExtFactory factory = new StoreMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("loopback".equals(localName)) {
 
 			mediator = new LoopBackMediator();
 			processAuditStatus(mediator, omElement);
+			return mediator;
 
 		} else if ("header".equals(localName)) {
 
 			HeaderMediatorExtFactory factory = new HeaderMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("class".equals(localName)) {
 
 			ClassMediatorExtFactory factory = new ClassMediatorExtFactory();
-			mediator = factory.createMediator(omElement, null);
+			return factory.createMediator(omElement, null);
 
 		} else if ("cache".equals(localName)) {
 
 			CacheMediatorExtFactory factory = new CacheMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement, null);
+			return factory.createSpecificMediator(omElement, null);
 
 		} else if ("xslt".equals(localName)) {
 
 			XSLTMediatorExtFactory factory = new XSLTMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("datamapper".equals(localName)) {
 
 			DataMapperMediatorExtFactory factory = new DataMapperMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("aggregate".equals(localName)) {
 
 			AggregateMediatorExtFactory factory = new AggregateMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("iterate".equals(localName)) {
 
 			IterateMediatorExtFactory factory = new IterateMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("script".equals(localName)) {
 
 			ScriptMediatorExtFactory factory = new ScriptMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("enrich".equals(localName)) {
 
 			EnrichMediatorExtFactory factory = new EnrichMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("ejb".equals(localName)) {
 
 			EJBMediatorExtFactory factory = new EJBMediatorExtFactory();
-			mediator = factory.createMediator(omElement, null);
+			return factory.createMediator(omElement, null);
 
 		} else if ("switch".equals(localName)) {
 
 			SwitchMediatorExtFactory factory = new SwitchMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("xquery".equals(localName)) {
 
 			XQueryMediatorExtFactory factory = new XQueryMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("clone".equals(localName)) {
 
 			CloneMediatorFactory factory = new CloneMediatorFactory();
-			mediator = factory.createMediator(omElement, null);
+			return factory.createMediator(omElement, null);
 
 		} else if ("builder".equals(localName)) {
 
 			BuilderMediatorExtFactory factory = new BuilderMediatorExtFactory();
-			mediator = factory.createMediator(omElement, null);
+			return factory.createMediator(omElement, null);
 
 		} else if ("enqueue".equals(localName)) {
 
 			EnqueueMediatorExtFactory factory = new EnqueueMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("event".equals(localName)) {
 
 			EventMediatorExtFactory factory = new EventMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("call-template".equals(localName)) {
 
 			CallTemplateMediatorExtFactory factory = new CallTemplateMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("conditionalRouter".equals(localName)) {
 
 			ConditionalRouterMediatorExtFactory factory = new ConditionalRouterMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("bean".equals(localName)) {
 
 			BeanMediatorExtFactory factory = new BeanMediatorExtFactory();
-			mediator = factory.createMediator(omElement, null);
+			return factory.createMediator(omElement, null);
 
 		} else if ("sequence".equals(localName)) {
 
 			SequenceMediatorExtFactory factory = new SequenceMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("pojoCommand".equals(localName)) {
 
 			POJOCommandMediatorExtFactory factory = new POJOCommandMediatorExtFactory();
-			mediator = factory.createMediator(omElement, null);
+			return factory.createMediator(omElement, null);
 
 		} else if ("spring".equals(localName)) {
 
 			SpringMediatorExtFactory factory = new SpringMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("makefault".equals(localName)) {
 
 			MakefaultMediatorExtFactory factory = new MakefaultMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("smooks".equals(localName)) {
 
 			SmooksMediatorExtFactory factory = new SmooksMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("rewrite".equals(localName)) {
 
 			RewriteMediatorExtFactory factory = new RewriteMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("fastXSLT".equals(localName)) {
 
 			FastXSLTMediatorExtFactory factory = new FastXSLTMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("dbreport".equals(localName)) {
 
 			DbReportMediatorExtFactory factory = new DbReportMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("dblookup".equals(localName)) {
 
 			DbLookupMediatorExtFactory factory = new DbLookupMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("throttle".equals(localName)) {
 
 			ThrottleMediatorExtFactory factory = new ThrottleMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("transaction".equals(localName)) {
 
 			TransactionMediatorExtFactory factory = new TransactionMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("callout".equals(localName)) {
 
 			CalloutMediatorExtFactory factory = new CalloutMediatorExtFactory();
-			mediator = factory.createMediator(omElement, null);
+			return factory.createMediator(omElement, null);
 
 		} else if ("entitlementService".equals(localName)) {
 
 			EntitlementMediatorExtFactory factory = new EntitlementMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement, null);
+			return factory.createSpecificMediator(omElement, null);
 
 		} else if ("foreach".equals(localName)) {
 
 			ForEachMediatorExtFactory factory = new ForEachMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("oauthService".equals(localName)) {
 			OAuthServiceMediatorExtFactory factory = new OAuthServiceMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 
 		} else if ("rule".equals(localName)) {
 
 			RuleMediatorExtFactory factory = new RuleMediatorExtFactory();
-			mediator = factory.createMediator(omElement, null);
+			return factory.createMediator(omElement, null);
 
 		} else if ("bam".equals(localName)) {
 
 			BamMediatorExtFactory factory = new BamMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement, null);
+			return factory.createSpecificMediator(omElement, null);
 
 		} else if ("publishEvent".equals(localName)) {
 
 			PublishEventMediatorExtFactory factory = new PublishEventMediatorExtFactory();
-			mediator = factory.createSpecificMediator(omElement);
+			return factory.createSpecificMediator(omElement);
 		}
 
 		return mediator;

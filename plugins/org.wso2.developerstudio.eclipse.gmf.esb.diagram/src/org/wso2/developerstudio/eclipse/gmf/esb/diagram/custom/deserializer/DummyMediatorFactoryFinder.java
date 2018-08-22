@@ -89,7 +89,7 @@ import org.wso2.carbon.mediator.service.MediatorException;
 
 public class DummyMediatorFactoryFinder {
 
-
+	private final static String SYNAPSE_NS = "http://ws.apache.org/ns/synapse";
  	private Map<String, Library> synapseLibraryMap;
     private Map<String, SynapseImport> synapseImportMap;
 
@@ -249,6 +249,54 @@ public class DummyMediatorFactoryFinder {
 		}
 	}
 
+	public Class getFactory(String mediatorVal, String qTag) {
+		
+		OMElement element;
+		String localName = "";
+		QName qName;
+		Class cls = null;
+		try {
+			element = AXIOMUtil.stringToOM(mediatorVal);
+			
+			localName = element.getLocalName();
+	        
+	        if (element.getNamespace() != null) {
+	            qName = new QName(element.getNamespace().getNamespaceURI(), localName);
+	        } else {
+	            qName = new QName(localName);
+	        }
+	        
+	        cls = factoryMap.get(qName);
+
+	        if (cls == null && localName.indexOf('.') > -1) {
+	            String newLocalName = localName.substring(0, localName.indexOf('.'));
+	            if (element.getNamespace() != null) {
+	            	qName = new QName(element.getNamespace().getNamespaceURI(), newLocalName);
+	            }
+	           
+	            cls = factoryMap.get(qName);
+	        }
+	        
+	        if (cls == null && element.getNamespace() == null) {
+	        	qName = new QName(SYNAPSE_NS, localName);
+	        	
+	        	cls = factoryMap.get(qName);
+	        	
+	        	if (cls == null && localName.indexOf('.') > -1) {
+	        		String newLocalName = localName.substring(0, localName.indexOf('.'));
+	        		qName = new QName(SYNAPSE_NS, newLocalName);
+	        		
+	        		cls = factoryMap.get(qName);
+	        	}
+	        }
+	        
+		} catch (XMLStreamException e) {
+			// ignore
+		}
+		
+        return cls;
+	}
+	
     /**
      * This method exposes all the MediatorFactories and its Extensions
      * @return factoryMap

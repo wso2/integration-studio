@@ -536,10 +536,10 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		if (configOM != null) {
 			DefaultEsbModelExporter.prettify(configOM, baos);
+			sourceXML = format(configOM.toString());
 		}
 
 		//sourceXML = baos.toString("UTF-8");
-		sourceXML = format(configOM.toString());
 		sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
 		return sourceXML;
 	}

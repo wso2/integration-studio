@@ -39,7 +39,7 @@ public enum FilterMediatorConditionType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SOURCE_REGEX(0, "SOURCE_REGEX", "Source and Regualar Expression"), /**
+	SOURCE_REGEX(0, "SOURCE_REGEX", "Source and Regular Expression"), /**
 	 * The '<em><b>XPath</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,7 +58,7 @@ public enum FilterMediatorConditionType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SOURCE_REGEX
-	 * @model literal="Source and Regualar Expression"
+	 * @model literal="Source and Regular Expression"
 	 * @generated
 	 * @ordered
 	 */

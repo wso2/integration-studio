@@ -30,7 +30,7 @@ public enum FilterConditionType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SOURCE_AND_REGEX(0, "SOURCE_AND_REGEX", "Source and Regualar Expression"),
+	SOURCE_AND_REGEX(0, "SOURCE_AND_REGEX", "Source and Regular Expression"),
 
 	/**
 	 * The '<em><b>XPATH</b></em>' literal object.
@@ -51,7 +51,7 @@ public enum FilterConditionType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SOURCE_AND_REGEX
-	 * @model literal="Source and Regualar Expression"
+	 * @model literal="Source and Regular Expression"
 	 * @generated
 	 * @ordered
 	 */

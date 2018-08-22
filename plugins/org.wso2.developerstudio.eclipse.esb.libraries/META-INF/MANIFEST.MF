@@ -114,7 +114,7 @@ Bundle-ClassPath: .,
  lib/org.wso2.carbon.mediator.router.impl_4.6.98.jar,
  lib/org.wso2.carbon.mediator.service_4.6.98.jar,
  lib/org.wso2.carbon.mediator.smooks_4.6.98.jar,
- lib/org.wso2.carbon.mediator.publishevent_4.6.98.jar
+ lib/org.wso2.carbon.mediator.publishevent_4.6.98.jar,
  lib/xercesImpl-2.8.1.jar,
  lib/handy-uri-templates_2.1.6.wso2v2.jar
 Require-Bundle: org.eclipse.ui,

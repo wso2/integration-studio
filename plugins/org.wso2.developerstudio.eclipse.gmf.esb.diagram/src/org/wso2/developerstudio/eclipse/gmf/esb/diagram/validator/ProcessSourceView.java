@@ -896,7 +896,7 @@ public class ProcessSourceView {
 	 *            Current tag starting index
 	 * @param line
 	 *            Line number
-	 * @return Starting index acording to the source view
+	 * @return Starting index according to the source view
 	 */
 	private static int calculateLength(String xml, int start, int line) {
 		int length = 0;

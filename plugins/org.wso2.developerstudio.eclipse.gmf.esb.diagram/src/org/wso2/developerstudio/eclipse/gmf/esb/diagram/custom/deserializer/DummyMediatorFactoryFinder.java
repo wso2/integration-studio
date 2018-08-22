@@ -214,7 +214,7 @@ public class DummyMediatorFactoryFinder {
                 }
             }
 
-            if (!synapseImportMap.isEmpty()) {
+            if (synapseImportMap != null && !synapseImportMap.isEmpty()) {
                 for (Map.Entry<String, SynapseImport> entry : synapseImportMap.entrySet()) {
                     if (localName.startsWith(entry.getValue().getLibName())) {
                         return getDynamicInvokeMediator(element, entry.getValue().getLibPackage());

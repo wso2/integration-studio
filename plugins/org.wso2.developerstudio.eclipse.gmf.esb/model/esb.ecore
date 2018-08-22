@@ -386,7 +386,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="FilterMediatorConditionType">
-    <eLiterals name="SOURCE_REGEX" literal="Source and Regualar Expression"/>
+    <eLiterals name="SOURCE_REGEX" literal="Source and Regular Expression"/>
     <eLiterals name="XPath" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FilterContainer" eSuperTypes="#//EsbNode">

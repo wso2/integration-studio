@@ -742,6 +742,15 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/two"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/one"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSBrokerType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSBrokerType/WSO2_BROKER_PROFILE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSBrokerType/ActiveMQ"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSBrokerType/OTHER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//StoreMediatorSpecifyType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//StoreMediatorSpecifyType/Value"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//StoreMediatorSpecifyType/Expression"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//WSClientSideBroadcastLevel">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//WSClientSideBroadcastLevel/zero"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//WSClientSideBroadcastLevel/one"/>
@@ -1042,6 +1051,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/correlationAttributes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/payloadAttributes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/arbitraryAttributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/Async"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/AsyncTimeout"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//PublishEventMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//PublishEventMediatorOutputConnector"/>
@@ -1872,6 +1883,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//StoreMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//StoreMediator/outputConnector"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//StoreMediator/availableMessageStores"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//StoreMediator/SpecifyAs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//StoreMediator/Expression"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//StoreMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//StoreMediatorOutputConnector"/>
@@ -2422,6 +2435,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSReplyDestination"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSPubSubNoLocal"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDurableSubscriberName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSBrokerType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTConnectionFactory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerHostName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportMQTTServerPort"/>

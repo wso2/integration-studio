@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.Activator;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
+import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointAvailableSequences;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseEntryType;
 import org.wso2.developerstudio.eclipse.esb.core.utils.SynapseFileUtils;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
@@ -71,13 +72,13 @@ public class InboundEndpointModel extends ProjectDataModel {
 	private String vfsLockReleaseSameNode;
 	private String vfsDistributedLock;
 	private String vfsDistributedTimeout;
-	private boolean generateSequence = false;
 	private String sequence;
 	private String errorSequence;
 
 	private List<OMElement> availableLEList;
 	private IContainer inboundEndpointSaveLocation;
 	private List<OMElement> selectedLEList = new ArrayList<OMElement>();
+	private boolean generateSequence = getInitalGenerateSquencePropery();
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -260,12 +261,12 @@ public class InboundEndpointModel extends ProjectDataModel {
 			setSuspend(data.toString());
 		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionCreateESBProject)) {
 			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-			IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
+			IProject esbProject = ESBProjectUtils.createESBProject(shell, getLocation());
 			if (esbProject != null) {
 				setInboundEndpointSaveLocation(esbProject);
 			}
 		} else if (key.equals(InboundEndpointArtifactProperties.generateSequence)) {
-			setGenerateSequence((Boolean)data);
+			setGenerateSequence((Boolean) data);
 		} else if (key.equals(InboundEndpointArtifactProperties.inboundEPSequence)) {
 			setSequence(data.toString());
 		} else if (key.equals(InboundEndpointArtifactProperties.inboundEPErrorSequence)) {
@@ -349,8 +350,8 @@ public class InboundEndpointModel extends ProjectDataModel {
 		}
 		IContainer newInboundEndpointSaveLocation = null;
 		if (currentSelection != null) {
-			String path = absolutionPath.toString().substring(
-					currentSelection.getLocation().toFile().toString().length());
+			String path = absolutionPath.toString()
+					.substring(currentSelection.getLocation().toFile().toString().length());
 
 			if ("".equals(path)) {
 				newInboundEndpointSaveLocation = currentSelection;
@@ -600,16 +601,16 @@ public class InboundEndpointModel extends ProjectDataModel {
 	public void setCoordination(String coordination) {
 		this.coordination = coordination;
 	}
-	
+
 	public boolean isGenerateSequence() {
 		return generateSequence;
-		
+
 	}
-	
+
 	public void setGenerateSequence(boolean generateSequence) {
 		this.generateSequence = generateSequence;
 	}
-	
+
 	public String getSequence() {
 		return sequence;
 	}
@@ -617,7 +618,7 @@ public class InboundEndpointModel extends ProjectDataModel {
 	public void setSequence(String sequence) {
 		this.sequence = sequence;
 	}
-	
+
 	public String getErrorSequence() {
 		return errorSequence;
 	}
@@ -626,4 +627,18 @@ public class InboundEndpointModel extends ProjectDataModel {
 		this.errorSequence = errorSequence;
 	}
 
+	/**
+	 * returns the initial value for the generateSequence property. This will set
+	 * the default option if no sequences are available
+	 * 
+	 * @return boolean initial value
+	 */
+	private boolean getInitalGenerateSquencePropery() {
+		try {
+			InboundEndpointAvailableSequences availableSequnce = new InboundEndpointAvailableSequences();
+			return availableSequnce.getListData(null, null).isEmpty();
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }

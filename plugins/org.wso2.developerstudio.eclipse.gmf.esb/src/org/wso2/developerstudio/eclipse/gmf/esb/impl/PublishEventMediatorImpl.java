@@ -52,6 +52,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnec
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getCorrelationAttributes <em>Correlation Attributes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getPayloadAttributes <em>Payload Attributes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getArbitraryAttributes <em>Arbitrary Attributes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#isAsync <em>Async</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorImpl#getAsyncTimeout <em>Async Timeout</em>}</li>
  * </ul>
  *
  * @generated
@@ -176,6 +178,46 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
 	 * @ordered
 	 */
 	protected EList<PublishEventMediatorAttribute> arbitraryAttributes;
+
+	/**
+	 * The default value of the '{@link #isAsync() <em>Async</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAsync()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ASYNC_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isAsync() <em>Async</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAsync()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean async = ASYNC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAsyncTimeout() <em>Async Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAsyncTimeout()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ASYNC_TIMEOUT_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getAsyncTimeout() <em>Async Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAsyncTimeout()
+	 * @generated
+	 * @ordered
+	 */
+	protected String asyncTimeout = ASYNC_TIMEOUT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -398,6 +440,48 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isAsync() {
+		return async;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAsync(boolean newAsync) {
+		boolean oldAsync = async;
+		async = newAsync;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC, oldAsync, async));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getAsyncTimeout() {
+		return asyncTimeout;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAsyncTimeout(String newAsyncTimeout) {
+		String oldAsyncTimeout = asyncTimeout;
+		asyncTimeout = newAsyncTimeout;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT, oldAsyncTimeout, asyncTimeout));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -443,6 +527,10 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
 				return getPayloadAttributes();
 			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
 				return getArbitraryAttributes();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+				return isAsync();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
+				return getAsyncTimeout();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -487,6 +575,12 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
 				getArbitraryAttributes().clear();
 				getArbitraryAttributes().addAll((Collection<? extends PublishEventMediatorAttribute>)newValue);
 				return;
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+				setAsync((Boolean)newValue);
+				return;
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
+				setAsyncTimeout((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -526,6 +620,12 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
 			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
 				getArbitraryAttributes().clear();
 				return;
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+				setAsync(ASYNC_EDEFAULT);
+				return;
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
+				setAsyncTimeout(ASYNC_TIMEOUT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -556,6 +656,10 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
 				return payloadAttributes != null && !payloadAttributes.isEmpty();
 			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
 				return arbitraryAttributes != null && !arbitraryAttributes.isEmpty();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+				return async != ASYNC_EDEFAULT;
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
+				return ASYNC_TIMEOUT_EDEFAULT == null ? asyncTimeout != null : !ASYNC_TIMEOUT_EDEFAULT.equals(asyncTimeout);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -576,6 +680,10 @@ public class PublishEventMediatorImpl extends MediatorImpl implements PublishEve
 		result.append(streamVersion);
 		result.append(", eventSink: ");
 		result.append(eventSink);
+		result.append(", Async: ");
+		result.append(async);
+		result.append(", AsyncTimeout: ");
+		result.append(asyncTimeout);
 		result.append(')');
 		return result.toString();
 	}

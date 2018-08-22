@@ -36,3 +36,5 @@ feature.common.properties
 ## no eclipse packs
 *.tar.gz
 
+## Generated When Building
+plugins/org.wso2.developerstudio.eclipse.gmf.esb.persistence/library.jar

@@ -386,7 +386,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="FilterMediatorConditionType">
-    <eLiterals name="SOURCE_REGEX" literal="Source and Regualar Expression"/>
+    <eLiterals name="SOURCE_REGEX" literal="Source and Regular Expression"/>
     <eLiterals name="XPath" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FilterContainer" eSuperTypes="#//EsbNode">
@@ -463,6 +463,10 @@
         eType="#//PublishEventMediatorAttribute" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="arbitraryAttributes" upperBound="-1"
         eType="#//PublishEventMediatorAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Async" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AsyncTimeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediatorInputConnector"
       eSuperTypes="#//InputConnector"/>
@@ -2157,6 +2161,9 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="availableMessageStores"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="SpecifyAs" eType="#//StoreMediatorSpecifyType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Expression" eType="#//NamespacedProperty"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StoreMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="StoreMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -2966,7 +2973,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSConnectionFactoryJNDIName"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSConnectionFactoryType"
-        eType="#//JMSConnectionFactoryType"/>
+        eType="#//JMSConnectionFactoryType" defaultValueLiteral="queue"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSConcurrentConsumers"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSDestination"
@@ -3013,6 +3020,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSDurableSubscriberName"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSBrokerType"
+        eType="#//JMSBrokerType" defaultValueLiteral="OTHER"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTConnectionFactory"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTServerHostName"
@@ -3341,6 +3350,15 @@
     <eLiterals name="three" value="3" literal="3"/>
     <eLiterals name="two" value="2" literal="2"/>
     <eLiterals name="one" value="1" literal="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="JMSBrokerType">
+    <eLiterals name="WSO2_BROKER_PROFILE"/>
+    <eLiterals name="ActiveMQ" value="1"/>
+    <eLiterals name="OTHER" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StoreMediatorSpecifyType">
+    <eLiterals name="Value"/>
+    <eLiterals name="Expression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="WSClientSideBroadcastLevel">
     <eLiterals name="zero" literal="0"/>

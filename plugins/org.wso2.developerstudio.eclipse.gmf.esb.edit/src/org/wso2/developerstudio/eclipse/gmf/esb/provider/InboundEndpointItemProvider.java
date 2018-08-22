@@ -29,6 +29,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain; 
+import org.eclipse.emf.transaction.util.TransactionUtil;
 
 /**
  * This is the item provider adapter for a
@@ -38,6 +41,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
  * @generated
  */
 public class InboundEndpointItemProvider extends EsbElementItemProvider {
+	
+	private static final String JAVA_NAMING_FACTORY_INITIAL_WSO2_BROKER = "org.wso2.andes.jndi.PropertiesFileInitialContextFactory";
+	private static final String JAVA_NAMING_FACTORY_INITIAL_ACTIVEMQ = "org.apache.activemq.jndi.ActiveMQInitialContextFactory";
+	private static final String CONNECTION_FACTORY_JNDI_NAME_WSO2_BROKER = "QueueConnectionFactory";
+	private static final String CONNECTION_FACTORY_JNDI_NAME_ACTIVEMQ = "QueueConnectionFactory";
+	private static final String TRANSPORT_JMS_DESTINATION_WSO2_BROKER = "JMSMS";
+	private static final String TRANSPORT_JMS_DESTINATION_ACTIVEMQ = "ordersQueue";
+	private static final String JAVA_NAMING_PROVIDER_URL_WSO2_BROKER = "conf/jndi.properties";
+	private static final String JAVA_NAMING_PROVIDER_URL_ACTIVEMQ = "tcp://localhost:61616";
+	
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -141,6 +154,29 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addTransportJMSResetConnectionOnPollingSuspensionPropertyDescriptor(object);
 			addTransportJMSRetriesBeforeSuspensionPropertyDescriptor(object);
 			addTransportJMSPollingSuspensionPeriodPropertyDescriptor(object);
+			addTransportJMSBrokerTypePropertyDescriptor(object);
+			
+			switch (inboundEndpoint.getTransportJMSBrokerType()) {
+			case WSO2_BROKER_PROFILE:
+				updateJavaNamingFactoryInitialProperty(inboundEndpoint,JAVA_NAMING_FACTORY_INITIAL_WSO2_BROKER);
+				updateJavaNamingProviderUrlProperty(inboundEndpoint, JAVA_NAMING_PROVIDER_URL_WSO2_BROKER);
+				updateTransportJMSDestinationProperty(inboundEndpoint, TRANSPORT_JMS_DESTINATION_WSO2_BROKER);
+				updateTransportJMSConnectionFactoryJNDINameProperty(inboundEndpoint, CONNECTION_FACTORY_JNDI_NAME_WSO2_BROKER);
+				break;
+			case ACTIVE_MQ:
+				updateJavaNamingFactoryInitialProperty(inboundEndpoint,JAVA_NAMING_FACTORY_INITIAL_ACTIVEMQ);
+				updateJavaNamingProviderUrlProperty(inboundEndpoint, JAVA_NAMING_PROVIDER_URL_ACTIVEMQ);
+				updateTransportJMSDestinationProperty(inboundEndpoint, TRANSPORT_JMS_DESTINATION_ACTIVEMQ);
+				updateTransportJMSConnectionFactoryJNDINameProperty(inboundEndpoint, CONNECTION_FACTORY_JNDI_NAME_ACTIVEMQ);
+				break;
+			case OTHER:
+				updateJavaNamingFactoryInitialProperty(inboundEndpoint,"");
+				updateJavaNamingProviderUrlProperty(inboundEndpoint, "");
+				updateTransportJMSDestinationProperty(inboundEndpoint, "");
+				updateTransportJMSConnectionFactoryJNDINameProperty(inboundEndpoint, "");
+				break;
+			}
+			
 			break;
 		case CUSTOM:
 			addClassPropertyDescriptor(object);
@@ -2566,7 +2602,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -2588,7 +2624,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -2610,7 +2646,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -3509,7 +3545,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -3531,7 +3567,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -3553,7 +3589,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -3874,7 +3910,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -3957,7 +3993,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				getString("_UI_InboundEndpoint_transportJMSUserName_feature"),
 				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSUserName_feature",
 						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME,
-				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters(Advanced)", null));
 	}
 
 	/**
@@ -3973,7 +4009,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				getString("_UI_InboundEndpoint_transportJMSPassword_feature"),
 				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSPassword_feature",
 						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD,
-				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters(Advanced)", null));
 	}
 
 	/**
@@ -3990,7 +4026,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				getString("_UI_PropertyDescriptor_description",
 						"_UI_InboundEndpoint_transportJMSJMSSpecVersion_feature", "_UI_InboundEndpoint_type"),
 				EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters(Advanced)", null));
 	}
 
 	/**
@@ -4007,7 +4043,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				getString("_UI_PropertyDescriptor_description",
 						"_UI_InboundEndpoint_transportJMSSubscriptionDurable_feature", "_UI_InboundEndpoint_type"),
 				EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters(Advanced)", null));
 	}
 
 	/**
@@ -4026,7 +4062,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 								"_UI_InboundEndpoint_transportJMSDurableSubscriberClientID_feature",
 								"_UI_InboundEndpoint_type"),
 						EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID, true, false,
-						false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+						false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters(Advanced)", null));
 	}
 
 	/**
@@ -4043,7 +4079,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				getString("_UI_PropertyDescriptor_description",
 						"_UI_InboundEndpoint_transportJMSMessageSelector_feature", "_UI_InboundEndpoint_type"),
 				EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters(Advanced)", null));
 	}
 
 	/**
@@ -4064,7 +4100,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -4172,7 +4208,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				getString("_UI_PropertyDescriptor_description",
 						"_UI_InboundEndpoint_transportJMSReceiveTimeout_feature", "_UI_InboundEndpoint_type"),
 				EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters(Advanced)", null));
 	}
 
 	/**
@@ -4188,7 +4224,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				getString("_UI_InboundEndpoint_transportJMSContentType_feature"),
 				getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSContentType_feature",
 						"_UI_InboundEndpoint_type"), EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE,
-				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters", null));
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Parameters(Advanced)", null));
 	}
 
 	/**
@@ -4209,7 +4245,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -4231,7 +4267,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -4253,7 +4289,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
 				 null));
 	}
 
@@ -4275,7 +4311,29 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 "Parameters(Advanced)",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transport JMS Broker Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTransportJMSBrokerTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_transportJMSBrokerType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSBrokerType_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
 				 null));
 	}
 
@@ -4757,6 +4815,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
@@ -4954,4 +5013,67 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 	}
 
+	/**
+	 * This updates the value of JavaNamingFactoryInitial to the new value
+	 */
+	private void updateJavaNamingFactoryInitialProperty(final InboundEndpoint inboundEndpoint, final String newValue) {
+		
+		TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(inboundEndpoint);
+	    domain1.getCommandStack().execute(new RecordingCommand(domain1) {
+ 	        @Override
+	        protected void doExecute() {
+	        	if(! inboundEndpoint.getJavaNamingFactoryInitial().equals(newValue)) {
+	        	inboundEndpoint.setJavaNamingFactoryInitial(newValue);
+	        	}
+	        }
+	    });
+	}
+	
+	/**
+	 * This updates the value of JavaNamingProviderUrl to the new value 
+	 */
+	private void updateJavaNamingProviderUrlProperty(final InboundEndpoint inboundEndpoint, final String newValue) {
+		
+		TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(inboundEndpoint);
+	    domain1.getCommandStack().execute(new RecordingCommand(domain1) {
+ 	        @Override
+	        protected void doExecute() {
+	        	if(! inboundEndpoint.getJavaNamingProviderUrl().equals(newValue)) {
+	        	inboundEndpoint.setJavaNamingProviderUrl(newValue);
+	        	}
+	        }
+	    });
+	}
+	
+	/**
+	 * This updates the value of TransportJMSDestination to the new value 
+	 */
+	private void updateTransportJMSDestinationProperty(final InboundEndpoint inboundEndpoint,final String newValue) {
+		
+		TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(inboundEndpoint);
+	    domain1.getCommandStack().execute(new RecordingCommand(domain1) {
+ 	        @Override
+	        protected void doExecute() {
+	        	if(! inboundEndpoint.getTransportJMSDestination().equals(newValue)) {
+	        	inboundEndpoint.setTransportJMSDestination(newValue);
+	        	}
+	        }
+	    });
+	}
+	
+	/**
+	 * This updates the value of TransportJMSConnectionFactoryJNDIName to the new value 
+	 */
+	private void updateTransportJMSConnectionFactoryJNDINameProperty(final InboundEndpoint inboundEndpoint,final String newValue) {
+		
+		TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(inboundEndpoint);
+	    domain1.getCommandStack().execute(new RecordingCommand(domain1) {
+ 	        @Override
+	        protected void doExecute() {
+	        	if(! inboundEndpoint.getTransportJMSConnectionFactoryJNDIName().equals(newValue)) {
+	        	inboundEndpoint.setTransportJMSConnectionFactoryJNDIName(newValue);
+	        	}
+	        }
+	    });
+	}
 }

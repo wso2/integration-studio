@@ -29,7 +29,7 @@
  	</settings>
  	 	<settings optionId="import.mediator"
  			 				title="Mediator Artifact"
- 			  			description="Create a Mediator Artifact using a existing Mediator file"
+ 			  			description="Create a Mediator Artifact using an existing Mediator file"
  			  			error="Please select the project">	  
  	 		<data modelProperty="import.project.list" type="list" 
  					fieldController="org.wso2.developerstudio.eclipse.artifact.mediator.validators.MediatorFieldsController"

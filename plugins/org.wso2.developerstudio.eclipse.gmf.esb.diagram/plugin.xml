@@ -6541,15 +6541,6 @@
       </key>
    </extension>
     <!--key board shortcuts-->
-   <extension
-          point="org.wso2.developerstudio.eclipse.platform.core.artifacttemplates">
-   <template
-            file="resources/templates/datamapper/datamapper.dmc"
-            id="org.wso2.developerstudio.eclipse.esb.template.datamapper"
-            name="Data Mapper"
-            mediaType="application/datamapper"
-            extension="dmc"></template>
- </extension> 
  <extension 
    point="org.eclipse.ui.views">
       <category

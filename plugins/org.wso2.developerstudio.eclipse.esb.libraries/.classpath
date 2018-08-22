@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.databridge.agent_5.1.42.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/handy-uri-templates_2.1.6.wso2v2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xercesImpl-2.8.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.publishevent_4.6.98.jar"/>

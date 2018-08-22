@@ -51,8 +51,6 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 		if (StringUtils.isNotBlank(mediator.getVarName())) {
 			mediatorElem.addAttribute(fac.createOMAttribute(BeanConstants.VAR, nullNS,
 					mediator.getVarName()));
-		} else {
-			handleException();
 		}
 
         switch (mediator.getAction()) {

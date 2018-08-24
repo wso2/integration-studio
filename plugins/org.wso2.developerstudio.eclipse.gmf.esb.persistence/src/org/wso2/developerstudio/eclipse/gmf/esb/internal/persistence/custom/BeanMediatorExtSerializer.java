@@ -44,8 +44,6 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 		if (null != mediator.getAction()) { // Never becomes empty
 			mediatorElem.addAttribute(fac.createOMAttribute(BeanConstants.ACTION, nullNS, mediator
 					.getAction().toString()));
-		} else {
-			handleException();
 		}
 
 		if (StringUtils.isNotBlank(mediator.getVarName())) {
@@ -75,8 +73,6 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 		if (StringUtils.isNotBlank(mediator.getClassName())) {
 			mediatorElem.addAttribute(fac.createOMAttribute(BeanConstants.CLASS, nullNS,
 					mediator.getClassName()));
-        } else {
-            handleException();
         }
 
         if (!mediator.isReplace()) {
@@ -98,8 +94,6 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 						mediatorElem);
 			}
 			
-        } else {
-            handleException();
         }
     }
 
@@ -117,8 +111,6 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 						BeanConstants.TARGET, mediatorElem);
 			}
         	 
-        } else {
-            handleException();
         }
     }
 
@@ -127,17 +119,11 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 		if (StringUtils.isNotBlank(mediator.getPropertyName())) {
             mediatorElem.addAttribute(fac.createOMAttribute(
                     BeanConstants.PROPERTY, nullNS, mediator.getPropertyName()));
-        } else {
-            handleException();
         }
     }
 
     public String getMediatorClassName() {
         return BeanMediatorExt.class.getName();
-    }
-
-    private void handleException() {
-        handleException("Invalid bean mediator was passed in for serialization");
     }
 
 }

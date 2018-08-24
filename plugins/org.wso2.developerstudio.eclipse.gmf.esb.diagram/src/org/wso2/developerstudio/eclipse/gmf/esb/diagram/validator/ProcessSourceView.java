@@ -34,8 +34,11 @@ import java.util.Stack;
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMText;
 import org.apache.axiom.om.impl.OMNamespaceImpl;
 import org.apache.axiom.om.impl.dom.NamespaceImpl;
+import org.apache.axiom.om.impl.llom.OMElementImpl;
+import org.apache.axiom.om.impl.llom.OMTextImpl;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.SynapseException;
@@ -89,6 +92,7 @@ import org.wso2.carbon.mediator.cache.CacheMediatorFactory;
 import org.wso2.carbon.mediator.datamapper.config.xml.DataMapperMediatorFactory;
 import org.wso2.carbon.mediator.event.xml.EventMediatorFactory;
 import org.wso2.carbon.mediator.fastXSLT.config.xml.FastXSLTMediatorFactory;
+import org.wso2.carbon.mediator.publishevent.PublishEventMediatorFactory;
 import org.wso2.carbon.mediator.service.MediatorException;
 import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
 import org.wso2.carbon.relay.mediators.builder.xml.BuilderMediatorFactory;
@@ -132,7 +136,10 @@ public class ProcessSourceView {
 			"maximumDuration", "membershipHandler", "definition", "member", "http", "address", "failover",
 			"dynamicLoadbalance", "wsdl", "loadBalance", "default", "recipientlist", "format", "args", "source", "onCacheHit",
 			"protocol", "methods", "headersToExcludeInHash", "responseCodes", "enableCacheControl", "includeAgeHeader",
-			"hashGenerator", "implementation", "onReject", "onAccept", "obligations", "advice"));
+			"hashGenerator", "implementation", "onReject", "onAccept", "obligations", "advice", "case", "on-fail", "then",
+			"else", "eventSink", "streamName", "streamVersion", "attributes", "meta", "correlation", "payload", "arbitrary",
+			"serverProfile", "streamConfig", "with-param", "schema", "feature", "code", "reason", "makefault", "equal", 
+			"condition", "include"));
 
 	public ProcessSourceView() {
 
@@ -397,10 +404,16 @@ public class ProcessSourceView {
 						currentMediator = intermediaryStack.pop();
 					}
 					if (!intermediary.contains(tempTag.getqName()) && 
-							((tempTag.getTagType() == 3) || (currentMediator != null && currentMediator.getqName().equals(tempTag.getqName())) || artifacts.contains(tempTag.getqName()))) {
-						sourceError = mediatorValidation();
-						if (sourceError != null) {
-							return sourceError;
+							((tempTag.getTagType() == 3) || (currentMediator != null && currentMediator.getqName().equals(tempTag.getqName()))
+									|| artifacts.contains(tempTag.getqName()))) {
+						if (tempTag.getTagType() == 3 && currentMediator != null && currentMediator.getqName().equals("payloadFactory") 
+								&& !tempTag.getqName().equals("payloadFactory")) {
+							intermediaryStack.push(currentMediator);
+						} else {
+							sourceError = mediatorValidation();
+							if (sourceError != null) {
+								return sourceError;
+							}
 						}
 					} else {
 						if (currentMediator != null) {
@@ -681,6 +694,13 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("filter")) {
 				FilterMediatorFactory factory = new FilterMediatorFactory();
+				
+				Iterator iterator = omElement.getChildrenWithLocalName("then");
+				if (iterator.hasNext()) {
+					OMElement then = (OMElement) iterator.next();
+					then.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				}
+				
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("call-template")) {
@@ -701,6 +721,25 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("validate")) {
 				ValidateMediatorFactory factory = new ValidateMediatorFactory();
+				setNamespaceForChildren(omElement);
+//				Iterator children = omElement.getChildrenWithLocalName("schema");
+//				if (children.hasNext()) {
+//					OMElement schemaElement = (OMElement) children.next();
+//					schemaElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+//				}
+
+//				
+//				children = omElement.getChildrenWithLocalName("attributes");
+//				if (children.hasNext()) {
+//					OMElement attributesElement = (OMElement) children.next();
+//					attributesElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+//				}
+//				
+//				children = omElement.getChildrenWithLocalName("eventSink");
+//				if (children.hasNext()) {
+//					OMElement eventSinkElement = (OMElement) children.next();
+//					eventSinkElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+//				}
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("conditionalRouter")) {
@@ -730,6 +769,11 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("spring")) {
 				SpringMediatorFactory factory = new SpringMediatorFactory();
+				Iterator children = omElement.getChildrenWithLocalName("spring");
+				if (children.hasNext()) {
+					OMElement codeElement = (OMElement) children.next();
+					codeElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", "spring"));
+				}
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("enrich")) {
@@ -738,6 +782,18 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("makefault")) {
 				FaultMediatorFactory factory = new FaultMediatorFactory();
+				Iterator children = omElement.getChildrenWithLocalName("code");
+				if (children.hasNext()) {
+					OMElement codeElement = (OMElement) children.next();
+					codeElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				}
+				
+				children = omElement.getChildrenWithLocalName("reason");
+				if (children.hasNext()) {
+					OMElement reasonElement = (OMElement) children.next();
+					reasonElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				}
+				
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("header")) {
@@ -847,7 +903,8 @@ public class ProcessSourceView {
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("publishEvent")) {
-				EventPublisherMediatorFactory factory = new EventPublisherMediatorFactory();
+				PublishEventMediatorFactory factory = new PublishEventMediatorFactory();
+				setNamespaceForChildren(omElement);
 				factory.createMediator(omElement, null);
 
 			}
@@ -862,6 +919,28 @@ public class ProcessSourceView {
 	}
 
 	/**
+	 * Set the namespace for all the child elements
+	 * 
+	 * @param omElement
+	 *            Root element
+	 */
+	private static void setNamespaceForChildren(OMElement omElement) {
+		Iterator childern = omElement.getChildren();
+		OMElement currentElement = null;
+		while(childern.hasNext()) {
+			Object child = childern.next();
+			if (child instanceof OMElementImpl) {
+				currentElement = (OMElement) child;
+				currentElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				if (currentElement.getChildren().hasNext()) {
+					setNamespaceForChildren(currentElement);
+				}
+				
+			}
+		}
+	}
+	
+	/**
 	 * Check whether there is a tag within the source view line
 	 * 
 	 * @param value
@@ -872,6 +951,13 @@ public class ProcessSourceView {
 		return value.contains("<") || value.contains(">");
 	}
 	
+	/**
+	 * Check whether non empty string content exists
+	 * 
+	 * @param value
+	 *            Content of the line
+	 * @return Whether non empty string content exists
+	 */
 	private static boolean hasString(String value) {
 		if (!value.trim().equals("") && value.length() > 0) {
 			return true;
@@ -880,9 +966,16 @@ public class ProcessSourceView {
 		}
 	}
 	
+	/**
+	 * Returns whether a non empty string exists before < tag
+	 * 
+	 * @param value
+	 *            Content of the line
+	 * @return Whether there is non empty content
+	 */
 	private static boolean hasStringBeforeTag(String value, int sT) {
 		if (sT > 0 && !value.substring(0, sT).trim().equals("")) {
-			return true;	
+			return true;
 		}
 		return false;
 	}

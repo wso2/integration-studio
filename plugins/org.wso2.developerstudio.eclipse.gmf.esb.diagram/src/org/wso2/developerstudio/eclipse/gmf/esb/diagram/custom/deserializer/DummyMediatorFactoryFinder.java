@@ -82,8 +82,17 @@ import org.apache.synapse.config.xml.eventing.EventPublisherMediatorFactory;
 import org.apache.synapse.libraries.imports.SynapseImport;
 import org.apache.synapse.libraries.model.Library;
 import org.apache.synapse.mediators.Value;
+import org.apache.synapse.mediators.bsf.ScriptMediatorFactory;
+import org.apache.synapse.mediators.spring.SpringMediatorFactory;
 import org.apache.synapse.mediators.template.InvokeMediator;
+import org.apache.synapse.mediators.xquery.XQueryMediatorFactory;
+import org.wso2.carbon.identity.oauth.mediator.config.xml.OAuthMediatorFactory;
+import org.wso2.carbon.mediator.datamapper.config.xml.DataMapperMediatorFactory;
+import org.wso2.carbon.mediator.event.xml.EventMediatorFactory;
+import org.wso2.carbon.mediator.fastXSLT.config.xml.FastXSLTMediatorFactory;
+import org.wso2.carbon.mediator.publishevent.PublishEventMediatorFactory;
 import org.wso2.carbon.mediator.service.MediatorException;
+import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
 
 //import sun.misc.Service;
 
@@ -93,6 +102,11 @@ public class DummyMediatorFactoryFinder {
  	private Map<String, Library> synapseLibraryMap;
     private Map<String, SynapseImport> synapseImportMap;
 
+    /**
+     *    
+			"cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
+			"iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent"
+     */
     private static final Class[] mediatorFactories = {
             SequenceMediatorFactory.class,
             LogMediatorFactory.class,
@@ -134,7 +148,17 @@ public class DummyMediatorFactoryFinder {
             LoopBackMediatorFactory.class,
             RespondMediatorFactory.class,
             CommentMediatorFactory.class,
-            ForEachMediatorFactory.class
+            ForEachMediatorFactory.class,
+            OAuthMediatorFactory.class,
+            SpringMediatorFactory.class,
+            PublishEventMediatorFactory.class,
+//            EventMediatorFactory.class,
+            ScriptMediatorFactory.class
+//            SmooksMediatorFactory.class,
+//            XQueryMediatorFactory.class,
+//            XSLTMediatorFactory.class,
+//            FastXSLTMediatorFactory.class,
+//            DataMapperMediatorFactory.class
     };
 
     private final static DummyMediatorFactoryFinder instance  = new DummyMediatorFactoryFinder();

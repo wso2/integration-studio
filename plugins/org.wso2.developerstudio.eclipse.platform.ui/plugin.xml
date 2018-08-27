@@ -158,6 +158,10 @@
                 class="org.wso2.developerstudio.eclipse.platform.ui.handlers.OpenDashboardHandler"
                 commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard">
         </handler>
+         <handler
+                class="org.wso2.developerstudio.eclipse.platform.ui.handlers.OpenTemplateDashboardHandler"
+                commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opentemplatedashboard">
+        </handler>
        
         <!--
         <handler

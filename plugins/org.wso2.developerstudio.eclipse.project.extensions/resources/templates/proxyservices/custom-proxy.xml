@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <proxy xmlns="http://ws.apache.org/ns/synapse" name="{proxy.name}"
-	transports="http,https" startOnLoad="true" trace="disable">
+	transports="{proxy.transports}" startOnLoad="true" trace="disable">
 	<target>
 		<inSequence />
 	</target>

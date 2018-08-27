@@ -52,6 +52,7 @@ public class ProxyServiceModel extends ProjectDataModel {
 	private List<OMElement> availablePSList;
 	private IContainer proxyServiceSaveLocation;
 	private String proxyServiceName="";
+	private List<String> transports=new ArrayList<String>();
 	private String endPointUrl="";
 	private String endPointKey="";
 	private String secPolicy="";
@@ -172,6 +173,17 @@ public class ProxyServiceModel extends ProjectDataModel {
 			setProxyServiceName(data.toString());
 		} else if (key.equals("proxy.target.ep.type")) {
 			setTargetEPType((TargetEPType)data);
+		} else if (key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_FIX) || key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_HL7)
+				|| key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_HTTP) || key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_HTTPS)
+				|| key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_JMS) || key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_LOCAL)
+				|| key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_MAILTO) || key.equals(PsArtifactConstants.WIZARD_OPTION_PS_TRANSPORT_VFS)) {
+			List<String> selectedTransports = getTransports();
+			String transport = key.substring(10, key.lastIndexOf("."));
+			if (selectedTransports.contains(transport)) {
+				selectedTransports.remove(transport);
+			} else {
+				setTransports(transport);
+			}
 		} else if(key.equals(PsArtifactConstants.WIZARD_OPTION_TEMPL_COMMON_PS_EPURL)){
 			setEndPointUrl(data.toString());
 		} else if(key.equals(PsArtifactConstants.WIZARD_OPTION_TEMPL_COMMON_PS_EPKEY)){
@@ -393,6 +405,14 @@ public class ProxyServiceModel extends ProjectDataModel {
 		return proxyServiceName;
 	}
 	
+	public void setTransports(String transport) {
+		this.transports.add(transport);
+	}
+
+	public List<String> getTransports() {
+		return transports;
+	}
+
 	public void setSelectedProxyList(List<OMElement> selectedProxyList) {
 		this.selectedProxyList = selectedProxyList;
 	}

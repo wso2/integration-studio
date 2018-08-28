@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.eclipse.apim.feature"
       label="WSO2 API Manager Tooling Feature"
-      version="2.5.0.qualifier"
+      version="2.6.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

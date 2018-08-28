@@ -52,6 +52,7 @@ public class TaskPropertyDialog extends Dialog {
 	private boolean defaultESBtask;
 	private static final String LITERAL = "LITERAL";
 	private List<TaskProperty> taskPropertyList = new ArrayList<TaskProperty>();
+	private List<TaskProperty> removedPropertyList = new ArrayList<TaskProperty>();
 	private boolean newButtonSelected = false;
 	/**
 	 * Table for add/edit/remove parameters.
@@ -114,8 +115,11 @@ public class TaskPropertyDialog extends Dialog {
 
 		newPropertyButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				TableItem item = bindPram(EsbFactory.eINSTANCE.createTaskProperty());
+				TaskProperty taskProperty = EsbFactory.eINSTANCE.createTaskProperty();
+				taskProperty.setPropertyName("New Property");
+				TableItem item = bindPram(taskProperty);
 				propertyTable.select(propertyTable.indexOf(item));
+				newButtonSelected = true;
 			}
 		});
 
@@ -180,13 +184,16 @@ public class TaskPropertyDialog extends Dialog {
 
 			// When updating an existing property
 		if (taskPropertyList.size() > 0) {
-			if (getMissingProperties() != null) {
-				taskPropertyList.addAll(getMissingProperties());
+			if (defaultESBtask) {
+				List<TaskProperty> missingProperties = getMissingProperties();
+				if (missingProperties != null) {
+					taskPropertyList.addAll(missingProperties);
+				}
 			}
 			for (TaskProperty property : taskPropertyList) {
 				bindPram(property);
 			}
-		} else {
+		} else if (defaultESBtask) {
 			// when adding properties for the first time
 			for (int i = 0; i < properties.length; i++) {
 				bindPram(properties[i]);
@@ -259,6 +266,9 @@ public class TaskPropertyDialog extends Dialog {
 			} else {
 				newPropertyButton.setEnabled(false);
 			}
+		} else if (!defaultESBtask) {
+			// Enable the button for the custom task
+			newPropertyButton.setEnabled(true);
 		} else {
 			// Disable the button when adding properties for the first time
 			newPropertyButton.setEnabled(false);
@@ -309,7 +319,9 @@ public class TaskPropertyDialog extends Dialog {
 
 			taskPropertyList.add(param);
 		}
-
+		if (removedPropertyList.size() > 0) {
+			removedPropertyList.clear();
+		}
 		setTaskPropertyList(taskPropertyList);
 		finalizeDefaultMessageInjecttorTask();
 		super.okPressed();
@@ -327,6 +339,10 @@ public class TaskPropertyDialog extends Dialog {
 
 	protected void cancelPressed() {
 		finalizeDefaultMessageInjecttorTask();
+		if (removedPropertyList.size() > 0) {
+			taskPropertyList.addAll(removedPropertyList);
+			removedPropertyList.clear();
+		}
 		super.cancelPressed();
 	}
 
@@ -357,6 +373,7 @@ public class TaskPropertyDialog extends Dialog {
 			for (TaskProperty propertyItem : taskPropertyList) {
 				if (propertyItem.getPropertyName().equals(param.getPropertyName())) {
 					taskPropertyList.remove(propertyItem);
+					removedPropertyList.add(propertyItem);
 					break;
 				}
 			}
@@ -401,7 +418,14 @@ public class TaskPropertyDialog extends Dialog {
 					if (selectedColumn == 0 && !newButtonSelected) {
 						return; // for default message-injector-task don't allow
 								// to edit the property names
-					}
+					} else if (selectedColumn == 0 && defaultESBtask) {
+						//don't allow to edit the default property names.
+						for (int i = 0, n = properties.length; i < n; i++) {
+							if (properties[i].equals(item.getText(selectedColumn))) {
+								return;
+							}
+					    }
+				    }
 					Text editorControl = new Text(table, SWT.NONE);
 					final int editorControlColumn = selectedColumn;
 					editorControl.setText(item.getText(selectedColumn));

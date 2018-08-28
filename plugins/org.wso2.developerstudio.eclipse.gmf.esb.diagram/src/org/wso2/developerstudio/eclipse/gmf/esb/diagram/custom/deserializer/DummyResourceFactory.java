@@ -21,10 +21,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axis2.Constants;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.synapse.SequenceType;
-import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.rest.RESTConstants;
@@ -36,7 +33,6 @@ import javax.xml.namespace.QName;
 import java.util.Properties;
 
 public class DummyResourceFactory {
-	 private static final Log log = LogFactory.getLog(DummyResourceFactory.class);
 
 	    public static Resource createResource(OMElement resourceElt) {
 	        return createResource(resourceElt, new Properties());

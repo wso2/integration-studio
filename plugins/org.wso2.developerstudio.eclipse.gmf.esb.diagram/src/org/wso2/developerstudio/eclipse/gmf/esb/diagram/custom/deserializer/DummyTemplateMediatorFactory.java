@@ -24,92 +24,69 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNode;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.Nameable;
-import org.apache.synapse.SequenceType;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.SynapseException;
 import org.apache.synapse.aspects.AspectConfigurable;
 import org.apache.synapse.aspects.AspectConfiguration;
+import org.apache.synapse.config.xml.AbstractListMediatorFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.ListMediator;
-import org.apache.synapse.mediators.Value;
-import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.builtin.CommentMediator;
-import org.apache.synapse.config.xml.ValueFactory;
+import org.apache.synapse.mediators.template.TemplateMediator;
 
 import javax.xml.namespace.QName;
-
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Properties;
 
-public class DummySequenceMediatorFactory {
+public class DummyTemplateMediatorFactory extends AbstractListMediatorFactory {
 
+	private static final QName TEMPLATE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "template");
+	private static final QName TEMPLATE_BODY_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "sequence");
 	protected static final QName ATT_NAME = new QName("name");
-	protected static final QName ATT_VALUE = new QName("value");
-	protected static final QName ATT_DESCRIPTION = new QName("description");
-	protected static final QName ATT_XPATH = new QName("xpath");
-	protected static final QName ATT_REGEX = new QName("regex");
-	protected static final QName ATT_SEQUENCE = new QName("sequence");
-	protected static final QName ATT_EXPRN = new QName("expression");
-	protected static final QName ATT_KEY = new QName("key");
-	protected static final QName ATT_SOURCE = new QName("source");
-	protected static final QName ATT_TARGET = new QName("target");
-	protected static final QName ATT_ONERROR = new QName("onError");
-	protected static final QName ATT_EVAL = new QName("evaluator");
 	protected static final QName ATT_STATS = new QName(XMLConfigConstants.STATISTICS_ATTRIB_NAME);
-	protected static final QName PROP_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "property");
-	protected static final QName FEATURE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "feature");
-	protected static final QName TARGET_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "target");
 	protected static final QName DESCRIPTION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "description");
 
-	private static final QName SEQUENCE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "sequence");
+	/**
+	 * Element QName Definitions
+	 */
+	public static final QName PARAMETER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "parameter");
+
+	protected Mediator createSpecificMediator(OMElement elem, Properties properties) {
+		TemplateMediator templateTemplateMediator = new TemplateMediator();
+		OMAttribute nameAttr = elem.getAttribute(ATT_NAME);
+		if (nameAttr != null) {
+			templateTemplateMediator.setName(nameAttr.getAttributeValue());
+			processAuditStatus(templateTemplateMediator, elem);
+			initParameters(elem, templateTemplateMediator);
+			OMElement templateBodyElem = elem.getFirstChildWithName(TEMPLATE_BODY_Q);
+			addChildren(templateBodyElem, templateTemplateMediator, properties);
+		} else {
+			String msg = "A EIP template should be a named mediator .";
+			throw new SynapseException(msg);
+		}
+		return templateTemplateMediator;
+	}
+
+	private void initParameters(OMElement templateElem, TemplateMediator templateMediator) {
+		Iterator subElements = templateElem.getChildElements();
+		Collection<String> paramNames = new ArrayList<String>();
+		while (subElements.hasNext()) {
+			OMElement child = (OMElement) subElements.next();
+			if (child.getQName().equals(PARAMETER_Q)) {
+				OMAttribute paramNameAttr = child.getAttribute(ATT_NAME);
+				if (paramNameAttr != null) {
+					paramNames.add(paramNameAttr.getAttributeValue());
+				}
+				// child.detach();
+			}
+		}
+		templateMediator.setParameters(paramNames);
+	}
 
 	public QName getTagQName() {
-		return SEQUENCE_Q;
-	}
-
-	public SequenceMediator createAnonymousSequence(OMElement elem, Properties properties) {
-		SequenceMediator seqMediator = new SequenceMediator();
-		OMAttribute e = elem.getAttribute(ATT_ONERROR);
-		if (e != null) {
-			seqMediator.setErrorHandler(e.getAttributeValue());
-		}
-		processAuditStatus(seqMediator, elem);
-		OMElement descElem = elem.getFirstChildWithName(DESCRIPTION_Q);
-		if (descElem != null) {
-			seqMediator.setDescription(descElem.getText());
-		}
-		addChildren(elem, seqMediator, properties);
-		seqMediator.setSequenceType(SequenceType.ANON);
-		return seqMediator;
-	}
-
-	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
-
-		SequenceMediator seqMediator = new SequenceMediator();
-
-		OMAttribute n = elem.getAttribute(ATT_NAME);
-		OMAttribute e = elem.getAttribute(ATT_ONERROR);
-		if (n != null) {
-			seqMediator.setName(n.getAttributeValue());
-			if (e != null) {
-				seqMediator.setErrorHandler(e.getAttributeValue());
-			}
-			processAuditStatus(seqMediator, elem);
-			addChildren(elem, seqMediator, properties);
-
-		} else {
-			n = elem.getAttribute(ATT_KEY);
-			if (n != null) {
-				// ValueFactory for creating dynamic or static Value
-				ValueFactory keyFac = new ValueFactory();
-				// create dynamic or static key based on OMElement
-				Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, elem);
-				// setKey
-				seqMediator.setKey(generatedKey);
-				
-			}
-		}
-		return seqMediator;
+		return TEMPLATE_Q;
 	}
 
 	protected void processAuditStatus(Mediator mediator, OMElement mediatorOmElement) {
@@ -155,7 +132,7 @@ public class DummySequenceMediatorFactory {
 		while (it.hasNext()) {
 			OMNode child = (OMNode) it.next();
 			if (child instanceof OMElement) {
-				if (!DESCRIPTION_Q.equals(((OMElement) child).getQName())) { // neglect the description tag
+				if (!DESCRIPTION_Q.equals(((OMElement) child).getQName())) {
 					Mediator med = DummyMediatorFactoryFinder.getInstance().getMediator((OMElement) child, properties);
 					if (med != null) {
 						m.addChild(med);

@@ -297,7 +297,7 @@ public class Deserializer {
 	}
 	
 	private Map<String,Object> getArtifacts(String source, boolean withSynapse) throws Exception{
-		Map<String,Object> artifacts =new LinkedHashMap<String, Object>();
+		Map<String,Object> artifacts = new LinkedHashMap<String, Object>();
 		
 		ArtifactType artifactType = getArtifactType(source);
 		OMElement element = AXIOMUtil.stringToOM(source);
@@ -338,12 +338,24 @@ public class Deserializer {
 				artifacts.putAll(endpointTemplates);
 			break;
 		case PROXY:
-			ProxyService proxy = ProxyServiceFactory.createProxy(element, properties);
+			ProxyService proxy;
+			if (withSynapse) {
+				proxy = ProxyServiceFactory.createProxy(element, properties);
+			} else {
+				proxy = DummyProxyServiceFactory.createProxy(element, properties);
+			}
 			artifacts.put(proxy.getName(), proxy);
 			break;
 		case SEQUENCE:
-			SequenceMediatorFactory sequenceMediatorFactory = new SequenceMediatorFactory();
-			SequenceMediator sequence = (SequenceMediator) sequenceMediatorFactory.createSpecificMediator(element, properties);
+			SequenceMediator sequence;
+			if (withSynapse) {
+				SequenceMediatorFactory sequenceMediatorFactory = new SequenceMediatorFactory();
+				sequence = (SequenceMediator) sequenceMediatorFactory.createSpecificMediator(element, properties);
+			} else {
+				DummySequenceMediatorFactory sequenceMediatorFactory = new DummySequenceMediatorFactory();
+				sequence = (SequenceMediator) sequenceMediatorFactory.createSpecificMediator(element, properties);
+			}
+			
 			artifacts.put(sequence.getName(), sequence);
 			break;
 		case MAIN_SEQUENCE:
@@ -378,10 +390,15 @@ public class Deserializer {
 					.createOMNamespace(synapseNS, ""));
 			artifacts.put(task.getName(), task);
 			break;				
-		case TEMPLATE_SEQUENCE:			
-			TemplateMediatorFactory templateMediatorFactory = new TemplateMediatorFactory();
-			TemplateMediator templateMediator = (TemplateMediator) templateMediatorFactory
-					.createMediator(element, properties);
+		case TEMPLATE_SEQUENCE:	
+			TemplateMediator templateMediator;
+			if (withSynapse) {
+				TemplateMediatorFactory templateMediatorFactory = new TemplateMediatorFactory();
+				templateMediator = (TemplateMediator) templateMediatorFactory.createMediator(element, properties);
+			} else {
+				DummyTemplateMediatorFactory templateMediatorFactory = new DummyTemplateMediatorFactory();
+				templateMediator = (TemplateMediator) templateMediatorFactory.createMediator(element, properties);
+			}
 			artifacts.put(templateMediator.getName(), templateMediator);
 			break;		
 		case TEMPLATE_ENDPOINT_ADDRESS:

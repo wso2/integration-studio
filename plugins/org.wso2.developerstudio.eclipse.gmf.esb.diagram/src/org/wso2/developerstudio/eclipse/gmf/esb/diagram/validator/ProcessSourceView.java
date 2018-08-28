@@ -86,6 +86,7 @@ import org.apache.synapse.mediators.spring.SpringMediatorFactory;
 import org.apache.synapse.mediators.throttle.ThrottleMediatorFactory;
 import org.apache.synapse.mediators.xquery.XQueryMediatorFactory;
 import org.apache.synapse.startup.quartz.SimpleQuartzFactory;
+import org.eclipse.ui.internal.ide.dialogs.IFileStoreFilter;
 import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorFactory;
 import org.wso2.carbon.identity.oauth.mediator.config.xml.OAuthMediatorFactory;
 import org.wso2.carbon.mediator.cache.CacheMediatorFactory;
@@ -99,9 +100,13 @@ import org.wso2.carbon.relay.mediators.builder.xml.BuilderMediatorFactory;
 import org.wso2.carbon.rule.mediator.RuleMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageStoreFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummySequenceMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.POJOCommandMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.sheet.XMLTag;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -124,7 +129,7 @@ public class ProcessSourceView {
 			"validate", "conditionalRouter", "bean", "class", "pojoCommand", "ejb", "script", "spring", "enrich",
 			"makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT",
 			"cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
-			"iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent"));
+			"iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent", "syn:builder"));
 
 	private static Set<String> artifacts = new HashSet<>(Arrays.asList("api", "proxy", "endpoint", "inboundEndpoint",
 			"localEntry", "messageProcessor", "messageStore", "sequence", "task", "template"));
@@ -139,7 +144,9 @@ public class ProcessSourceView {
 			"hashGenerator", "implementation", "onReject", "onAccept", "obligations", "advice", "case", "on-fail", "then",
 			"else", "eventSink", "streamName", "streamVersion", "attributes", "meta", "correlation", "payload", "arbitrary",
 			"serverProfile", "streamConfig", "with-param", "schema", "feature", "code", "reason", "makefault", "equal", 
-			"condition", "include"));
+			"condition", "include", "detail", "input", "output", "rewriterule", "variable", "result", "messageCount",
+			"correlateOn", "completeCondition", "onComplete", "configuration", "source", "syn:messageBuilder", "brs:source", 
+			"brs:target", "brs:ruleSet", "brs:properties", "brs:input", "brs:output", "attribute", "arg"));
 
 	public ProcessSourceView() {
 
@@ -378,6 +385,7 @@ public class ProcessSourceView {
 		xmlTags = new Stack<>();
 		XMLTag prev = null;
 		Stack<XMLTag> intermediaryStack = new Stack<>();
+		int ruleCount = 0;
 
 		while (!xmlTagsQueue.isEmpty()) {
 			XMLTag tempTag = xmlTagsQueue.remove();
@@ -387,6 +395,12 @@ public class ProcessSourceView {
 				
 				if (mediators.contains(tempTag.getqName())) {
 					intermediaryStack.push(tempTag);
+				}
+				if(tempTag.getqName().equals("brs:rule")) {
+					ruleCount++;
+					if (ruleCount == 1) {
+						intermediaryStack.push(tempTag);
+					}
 				}
 				// type 4 is already covered in xml validation.
 				if (prev.getTagType() == 7 && !"".equals(prev.getValue().trim())) {
@@ -406,9 +420,24 @@ public class ProcessSourceView {
 					if (!intermediary.contains(tempTag.getqName()) && 
 							((tempTag.getTagType() == 3) || (currentMediator != null && currentMediator.getqName().equals(tempTag.getqName()))
 									|| artifacts.contains(tempTag.getqName()))) {
-						if (tempTag.getTagType() == 3 && currentMediator != null && currentMediator.getqName().equals("payloadFactory") 
-								&& !tempTag.getqName().equals("payloadFactory")) {
+						if (tempTag.getTagType() == 3 && currentMediator != null && ((currentMediator.getqName().equals("payloadFactory") 
+								&& !tempTag.getqName().equals("payloadFactory")) || (currentMediator.getqName().equals("throttle") 
+										&& !tempTag.getqName().equals("throttle")))) {
 							intermediaryStack.push(currentMediator);
+						} else if (currentMediator != null && currentMediator.getqName().equals("brs:rule")) {
+							if (tempTag.getqName().equals("brs:rule")) {
+								ruleCount--;
+							}
+							if (ruleCount == 0 && currentMediator.getqName().equals("brs:rule")) {
+								sourceError = mediatorValidation();
+								if (sourceError != null) {
+									return sourceError;
+								}
+							} else {
+								if (currentMediator != null) {
+									intermediaryStack.push(currentMediator);
+								}
+							}
 						} else {
 							sourceError = mediatorValidation();
 							if (sourceError != null) {
@@ -421,7 +450,7 @@ public class ProcessSourceView {
 						}
 					}
 
-				} else {
+				} else if (tempTag.getTagType() != 3) {
 					// type 4 is already covered in xml validation.
 					// can be 8
 					String error = "Closing tag \"" + tempTag.getValue()
@@ -463,6 +492,7 @@ public class ProcessSourceView {
 
 		boolean insideTag = true;
 		String firstMediatorQTag = "";
+		boolean isFirstRule = false;
 		if (xmlTags.size() > 0) {
 
 			XMLTag xmlTag = xmlTags.pop();
@@ -491,14 +521,22 @@ public class ProcessSourceView {
 						}
 
 						if (xmlTag.isStartTag() && xmlTag.getqName().equals(firstMediatorQTag)) {
+							
+							//rule mediator temp fix
+							if (xmlTag.getqName().equals("brs:rule") && !isFirstRule) {
+								isFirstRule = true;
+								insideTag = true;
+								
+							} else {
 
-							error = validate(mediatorVal, xmlTag.getqName());
-
-							if (!error.equals("")) {
-								return createError(error, xmlTag);
+								error = validate(mediatorVal, xmlTag.getqName());
+	
+								if (!error.equals("")) {
+									return createError(error, xmlTag);
+								}
+	
+								insideTag = intermediary.contains(xmlTag.getqName());
 							}
-
-							insideTag = intermediary.contains(xmlTag.getqName());
 						} else {
 							insideTag = true;
 						}
@@ -575,7 +613,6 @@ public class ProcessSourceView {
 				factory.createProxy(omElement, null);
 
 			} else if (qTag.equals("endpoint")) {
-				// omElement = omElement.getFirstElement();
 				if (omElement.getFirstElement() != null) {
 					omElement.getFirstElement().setNamespace(new OMNamespaceImpl(SynapseConstants.SYNAPSE_NAMESPACE, ""));
 				} else {
@@ -596,12 +633,12 @@ public class ProcessSourceView {
 				factory.createMessageProcessor(omElement);
 
 			} else if (qTag.equals("messageStore")) {
-				MessageStoreFactory factory = new MessageStoreFactory();
+				DummyMessageStoreFactory factory = new DummyMessageStoreFactory();
 				factory.createMessageStore(omElement, null);
 
 			} else if (qTag.equals("sequence")) {
-				SequenceMediatorFactory factory = new SequenceMediatorFactory();
-				factory.createMediator(omElement, null);
+				DummySequenceMediatorFactory factory = new DummySequenceMediatorFactory();
+				factory.createSpecificMediator(omElement, null);
 
 			} else if (qTag.equals("task")) {
 				SimpleQuartzFactory factory = new SimpleQuartzFactory();
@@ -722,24 +759,6 @@ public class ProcessSourceView {
 			} else if (qTag.equals("validate")) {
 				ValidateMediatorFactory factory = new ValidateMediatorFactory();
 				setNamespaceForChildren(omElement);
-//				Iterator children = omElement.getChildrenWithLocalName("schema");
-//				if (children.hasNext()) {
-//					OMElement schemaElement = (OMElement) children.next();
-//					schemaElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
-//				}
-
-//				
-//				children = omElement.getChildrenWithLocalName("attributes");
-//				if (children.hasNext()) {
-//					OMElement attributesElement = (OMElement) children.next();
-//					attributesElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
-//				}
-//				
-//				children = omElement.getChildrenWithLocalName("eventSink");
-//				if (children.hasNext()) {
-//					OMElement eventSinkElement = (OMElement) children.next();
-//					eventSinkElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
-//				}
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("conditionalRouter")) {
@@ -755,7 +774,7 @@ public class ProcessSourceView {
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("pojoCommand")) {
-				POJOCommandMediatorFactory factory = new POJOCommandMediatorFactory();
+				POJOCommandMediatorExtFactory factory = new POJOCommandMediatorExtFactory();
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("ejb")) {
@@ -842,10 +861,12 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("dbreport")) {
 				DBReportMediatorFactory factory = new DBReportMediatorFactory();
+				setNamespaceForChildren(omElement);
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("dblookup")) {
 				DBLookupMediatorFactory factory = new DBLookupMediatorFactory();
+				setNamespaceForChildren(omElement);
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("event")) {
@@ -874,6 +895,11 @@ public class ProcessSourceView {
 
 			} else if (qTag.equals("iterate")) {
 				IterateMediatorFactory factory = new IterateMediatorFactory();
+				Iterator iterator = omElement.getChildrenWithLocalName("target");
+				if (iterator.hasNext()) {
+					OMElement source = (OMElement) iterator.next();
+					source.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
+				}
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("foreach")) {
@@ -890,8 +916,8 @@ public class ProcessSourceView {
 				omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
 				factory.createMediator(omElement, null);
 
-			} else if (qTag.equals("builder")) {
-				BuilderMediatorFactory factory = new BuilderMediatorFactory();
+			} else if (qTag.equals("builder") || qTag.equals("syn:builder")) {
+				BuilderMediatorExtFactory factory = new BuilderMediatorExtFactory();
 				factory.createMediator(omElement, null);
 
 			} else if (qTag.equals("rule")) {

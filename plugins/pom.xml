@@ -54,6 +54,7 @@
 		<module>org.wso2.developerstudio.visualdatamapper.edit</module>
 		<module>org.wso2.developerstudio.visualdatamapper.editor</module>
 		<module>org.wso2.developerstudio.visualdatamapper.project</module>
+		<module>org.wso2.developerstudio.eclipse.esb.dashboard.templates</module>
 	</modules>
 	<build>
 		<plugins>

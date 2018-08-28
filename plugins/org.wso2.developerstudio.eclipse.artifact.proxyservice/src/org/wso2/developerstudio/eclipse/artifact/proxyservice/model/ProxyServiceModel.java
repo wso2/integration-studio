@@ -51,24 +51,24 @@ public class ProxyServiceModel extends ProjectDataModel {
 	private ArtifactTemplate selectedTemplate;
 	private List<OMElement> availablePSList;
 	private IContainer proxyServiceSaveLocation;
-	private String proxyServiceName="";
-	private List<String> transports=new ArrayList<String>();
-	private String endPointUrl="";
-	private String endPointKey="";
-	private String secPolicy="";
-	private String wsdlUri="";
-	private String wsdlService="";
-	private String wsdlPort="";
+	private String proxyServiceName = "";
+	private List<String> transports = new ArrayList<String>();
+	private String endPointUrl = "";
+	private String endPointKey = "";
+	private String secPolicy = "";
+	private String wsdlUri = "";
+	private String wsdlService = "";
+	private String wsdlPort = "";
 	private boolean publishSameService;
-	private String requestLogLevel="none";
-	private String responseLogLevel="none";
-	private String requestXSLT="";
-	private String responseXSLT="";
+	private String requestLogLevel = "none";
+	private String responseLogLevel = "none";
+	private String requestXSLT = "";
+	private String responseXSLT = "";
 	private boolean transformResponses;
 	private boolean predefinedEP;
 	private String predefinedEndPoint;
-	List<OMElement> selectedProxyList=new ArrayList<OMElement>();
-	private TargetEPType targetEPType=TargetEPType.URL;
+	List<OMElement> selectedProxyList = new ArrayList<OMElement>();
+	private TargetEPType targetEPType = TargetEPType.URL;
 	
 	
 	

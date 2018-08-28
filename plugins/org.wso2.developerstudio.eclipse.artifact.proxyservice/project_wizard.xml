@@ -13,15 +13,15 @@
 				  error="Please give a name for the proxy service">
             <data modelProperty="ps.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController">Proxy Service Name</data>
 			<data modelProperty="ps.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceTemplateList">Proxy Service Type</data>
-			<group id="transports.group" title="Select the transports"/>
-			<data modelProperty="transport.fix.choice" type="choice" group="transports.group">fix</data>
-			<data modelProperty="transport.hl7.choice" type="choice" group="transports.group">hl7</data>
-			<data modelProperty="transport.http.choice" type="choice" group="transports.group">http</data>
-			<data modelProperty="transport.https.choice" type="choice" group="transports.group">https</data>
-			<data modelProperty="transport.jms.choice" type="choice" group="transports.group">jms</data>
-			<data modelProperty="transport.local.choice" type="choice" group="transports.group">local</data>
-			<data modelProperty="transport.mailto.choice" type="choice" group="transports.group">mailto</data>
-			<data modelProperty="transport.vfs.choice" type="choice" group="transports.group">vfs</data>
+			<data modelProperty="transports" type="link">Select the transports:</data>
+			<data modelProperty="transport.fix.choice" controlData="align=right" type="choice">fix</data>
+			<data modelProperty="transport.hl7.choice" type="choice">hl7</data>
+			<data modelProperty="transport.http.choice" type="choice">http</data>
+			<data modelProperty="transport.https.choice" type="choice">https</data>
+			<data modelProperty="transport.jms.choice" type="choice">jms</data>
+			<data modelProperty="transport.local.choice" type="choice">local</data>
+			<data modelProperty="transport.mailto.choice" type="choice">mailto</data>
+			<data modelProperty="transport.vfs.choice" type="choice">vfs</data>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ESBProjectFilter">Save in:</data>
 			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data> 
 			<data group="group1" modelProperty="proxy.AdvancedConfig" type="composite"  fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="class=org.wso2.developerstudio.eclipse.artifact.proxyservice.helper.AdvancedConfigProvider">Configuration</data>

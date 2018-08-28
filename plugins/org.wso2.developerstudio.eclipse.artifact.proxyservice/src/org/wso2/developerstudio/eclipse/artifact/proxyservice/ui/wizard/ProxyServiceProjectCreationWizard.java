@@ -239,7 +239,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 		templateContent = templateContent.replaceAll("\\{", "<");
 		templateContent = templateContent.replaceAll("\\}", ">");
 
-		String newContent= StringUtils.replace(templateContent,"<proxy.name>", psModel.getProxyServiceName());
+		String newContent = StringUtils.replace(templateContent,"<proxy.name>", psModel.getProxyServiceName());
 		List<String> selectedTransports = psModel.getTransports();
 		String transports;
 		if (selectedTransports.size() == 0) {

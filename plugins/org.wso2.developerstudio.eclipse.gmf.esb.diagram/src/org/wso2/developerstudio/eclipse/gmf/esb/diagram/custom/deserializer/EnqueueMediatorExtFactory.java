@@ -27,34 +27,34 @@ import org.apache.synapse.config.xml.EnqueueMediatorFactory;
 import org.apache.synapse.mediators.builtin.EnqueueMediator;
 
 public class EnqueueMediatorExtFactory extends EnqueueMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new EnqueueMediator();
 
-		QName SEQUENCE_ATT = new QName("sequence");
-		QName PRIORITY_ATT = new QName("priority");
-		QName QUEUE_ATT = new QName("executor");
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		processAuditStatus(mediator, omElement);
+	Mediator mediator = new EnqueueMediator();
 
-		OMAttribute seqAtt = omElement.getAttribute(SEQUENCE_ATT);
-		if (seqAtt != null && !"".equals(seqAtt.getAttributeValue())) {
-			((EnqueueMediator) mediator).setSequenceName(seqAtt.getAttributeValue());
-		}
+	QName SEQUENCE_ATT = new QName("sequence");
+	QName PRIORITY_ATT = new QName("priority");
+	QName QUEUE_ATT = new QName("executor");
 
-		OMAttribute priorityAtt = omElement.getAttribute(PRIORITY_ATT);
-		if (priorityAtt != null && !"".equals(priorityAtt.getAttributeValue())) {
-			((EnqueueMediator) mediator).setPriority(Integer.parseInt(priorityAtt.getAttributeValue()));
-		}
+	processAuditStatus(mediator, omElement);
 
-		OMAttribute queueAtt = omElement.getAttribute(QUEUE_ATT);
-		if (queueAtt != null && !"".equals(queueAtt.getAttributeValue())) {
-			((EnqueueMediator) mediator).setExecutorName(queueAtt.getAttributeValue());
-		}
-		
-		return mediator;
-		
+	OMAttribute seqAtt = omElement.getAttribute(SEQUENCE_ATT);
+	if (seqAtt != null && !"".equals(seqAtt.getAttributeValue())) {
+	    ((EnqueueMediator) mediator).setSequenceName(seqAtt.getAttributeValue());
 	}
+
+	OMAttribute priorityAtt = omElement.getAttribute(PRIORITY_ATT);
+	if (priorityAtt != null && !"".equals(priorityAtt.getAttributeValue())) {
+	    ((EnqueueMediator) mediator).setPriority(Integer.parseInt(priorityAtt.getAttributeValue()));
+	}
+
+	OMAttribute queueAtt = omElement.getAttribute(QUEUE_ATT);
+	if (queueAtt != null && !"".equals(queueAtt.getAttributeValue())) {
+	    ((EnqueueMediator) mediator).setExecutorName(queueAtt.getAttributeValue());
+	}
+
+	return mediator;
+
+    }
 
 }

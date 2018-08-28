@@ -36,77 +36,76 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
 
 public class IterateMediatorExtFactory extends IterateMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new IterateMediator();
 
-		QName ATT_CONTPAR = new QName("continueParent");
-		QName ATT_PREPLD = new QName("preservePayload");
-		QName ATT_ATTACHPATH = new QName("attachPath");
-		QName ATT_SEQUENCIAL = new QName("sequential");
-		QName ID_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "id");
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		processAuditStatus(mediator, omElement);
+	Mediator mediator = new IterateMediator();
 
-		OMAttribute id = omElement.getAttribute(ID_Q);
-		if (id != null) {
-			((IterateMediator) mediator).setId(id.getAttributeValue());
-		}
+	QName ATT_CONTPAR = new QName("continueParent");
+	QName ATT_PREPLD = new QName("preservePayload");
+	QName ATT_ATTACHPATH = new QName("attachPath");
+	QName ATT_SEQUENCIAL = new QName("sequential");
+	QName ID_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "id");
 
-		OMAttribute continueParent = omElement.getAttribute(ATT_CONTPAR);
-		if (continueParent != null) {
-			((IterateMediator) mediator).setContinueParent(Boolean.valueOf(continueParent.getAttributeValue()));
-		}
+	processAuditStatus(mediator, omElement);
 
-		OMAttribute preservePayload = omElement.getAttribute(ATT_PREPLD);
-		if (preservePayload != null) {
-			((IterateMediator) mediator).setPreservePayload(Boolean.valueOf(preservePayload.getAttributeValue()));
-		}
-
-		OMAttribute expression = omElement.getAttribute(ATT_EXPRN);
-		if (expression != null) {
-			try {
-				((IterateMediator) mediator)
-						.setExpression(SynapseXPathFactory.getSynapseXPath(omElement, ATT_EXPRN));
-			} catch (JaxenException e) {
-				// ignore
-			}
-		}
-
-		OMAttribute attachPath = omElement.getAttribute(ATT_ATTACHPATH);
-		String attachPathValue = ".";
-		if (attachPath != null) {
-			attachPathValue = attachPath.getAttributeValue();
-		}
-
-		try {
-			SynapseXPath xp = new SynapseXPath(attachPathValue);
-			Log log = LogFactory.getLog(IterateMediatorFactory.class);
-			OMElementUtils.addNameSpaces(xp, omElement, log);
-			((IterateMediator) mediator).setAttachPath(xp);
-		} catch (JaxenException e) {
-			// ignore
-		}
-
-		boolean asynchronous = true;
-		OMAttribute asynchronousAttr = omElement.getAttribute(ATT_SEQUENCIAL);
-		if (asynchronousAttr != null && asynchronousAttr.getAttributeValue().equals("true")) {
-			asynchronous = false;
-		}
-
-		OMElement targetElement = omElement.getFirstChildWithName(TARGET_Q);
-		if (targetElement != null) {
-			Target target = TargetFactory.createTarget(targetElement, null);
-			if (target != null) {
-				target.setAsynchronous(asynchronous);
-				((IterateMediator) mediator).setTarget(target);
-			}
-		}
-
-		addAllCommentChildrenToList(omElement, ((IterateMediator) mediator).getCommentsList());
-
-		return mediator;
+	OMAttribute id = omElement.getAttribute(ID_Q);
+	if (id != null) {
+	    ((IterateMediator) mediator).setId(id.getAttributeValue());
 	}
+
+	OMAttribute continueParent = omElement.getAttribute(ATT_CONTPAR);
+	if (continueParent != null) {
+	    ((IterateMediator) mediator).setContinueParent(Boolean.valueOf(continueParent.getAttributeValue()));
+	}
+
+	OMAttribute preservePayload = omElement.getAttribute(ATT_PREPLD);
+	if (preservePayload != null) {
+	    ((IterateMediator) mediator).setPreservePayload(Boolean.valueOf(preservePayload.getAttributeValue()));
+	}
+
+	OMAttribute expression = omElement.getAttribute(ATT_EXPRN);
+	if (expression != null) {
+	    try {
+		((IterateMediator) mediator).setExpression(SynapseXPathFactory.getSynapseXPath(omElement, ATT_EXPRN));
+	    } catch (JaxenException e) {
+		// ignore
+	    }
+	}
+
+	OMAttribute attachPath = omElement.getAttribute(ATT_ATTACHPATH);
+	String attachPathValue = ".";
+	if (attachPath != null) {
+	    attachPathValue = attachPath.getAttributeValue();
+	}
+
+	try {
+	    SynapseXPath xp = new SynapseXPath(attachPathValue);
+	    Log log = LogFactory.getLog(IterateMediatorFactory.class);
+	    OMElementUtils.addNameSpaces(xp, omElement, log);
+	    ((IterateMediator) mediator).setAttachPath(xp);
+	} catch (JaxenException e) {
+	    // ignore
+	}
+
+	boolean asynchronous = true;
+	OMAttribute asynchronousAttr = omElement.getAttribute(ATT_SEQUENCIAL);
+	if (asynchronousAttr != null && asynchronousAttr.getAttributeValue().equals("true")) {
+	    asynchronous = false;
+	}
+
+	OMElement targetElement = omElement.getFirstChildWithName(TARGET_Q);
+	if (targetElement != null) {
+	    Target target = TargetFactory.createTarget(targetElement, null);
+	    if (target != null) {
+		target.setAsynchronous(asynchronous);
+		((IterateMediator) mediator).setTarget(target);
+	    }
+	}
+
+	addAllCommentChildrenToList(omElement, ((IterateMediator) mediator).getCommentsList());
+
+	return mediator;
+    }
 
 }

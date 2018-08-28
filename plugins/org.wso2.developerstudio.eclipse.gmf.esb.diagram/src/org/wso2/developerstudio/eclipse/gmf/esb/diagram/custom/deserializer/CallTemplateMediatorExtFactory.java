@@ -33,31 +33,31 @@ import org.apache.synapse.mediators.template.InvokeMediator;
 
 public class CallTemplateMediatorExtFactory extends InvokeMediatorFactory {
 
-	protected Mediator createSpecificMediator(OMElement omElement) {
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		InvokeMediator mediator = new InvokeMediator();
+	InvokeMediator mediator = new InvokeMediator();
 
-		processAuditStatus(mediator, omElement);
-		OMAttribute targetTemplateAttr = omElement.getAttribute(ATT_TARGET);
-		if (targetTemplateAttr != null) {
-			((InvokeMediator) mediator).setTargetTemplate(targetTemplateAttr.getAttributeValue());
-			buildParameters(omElement, (InvokeMediator) mediator);
-		}
-		
-		return mediator;
+	processAuditStatus(mediator, omElement);
+	OMAttribute targetTemplateAttr = omElement.getAttribute(ATT_TARGET);
+	if (targetTemplateAttr != null) {
+	    ((InvokeMediator) mediator).setTargetTemplate(targetTemplateAttr.getAttributeValue());
+	    buildParameters(omElement, (InvokeMediator) mediator);
 	}
-	
-	private void buildParameters(OMElement elem, InvokeMediator invoker) {
-		Iterator subElements = elem.getChildElements();
-		while (subElements.hasNext()) {
-			OMElement child = (OMElement) subElements.next();
-			if (child.getQName().equals(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "with-param"))) {
-				OMAttribute paramNameAttr = child.getAttribute(ATT_NAME);
-				Value paramValue = new ValueFactory().createValue("value", child);
-				if (paramNameAttr != null) {
-					invoker.addExpressionForParamName(paramNameAttr.getAttributeValue(), paramValue);
-				}
-			}
+
+	return mediator;
+    }
+
+    private void buildParameters(OMElement elem, InvokeMediator invoker) {
+	Iterator subElements = elem.getChildElements();
+	while (subElements.hasNext()) {
+	    OMElement child = (OMElement) subElements.next();
+	    if (child.getQName().equals(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "with-param"))) {
+		OMAttribute paramNameAttr = child.getAttribute(ATT_NAME);
+		Value paramValue = new ValueFactory().createValue("value", child);
+		if (paramNameAttr != null) {
+		    invoker.addExpressionForParamName(paramNameAttr.getAttributeValue(), paramValue);
 		}
+	    }
 	}
+    }
 }

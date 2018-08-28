@@ -24,67 +24,68 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.validator;
  */
 public class SourceError {
 
-	/**
-	 * Exception to be added as the error message
-	 */
-	private String exception;
-	
-	/**
-	 * Line number where the error occurred
-	 */
-	private int lineNumber;
-	
-	/**
-	 * Starting chat index to indicate the error according to the source view content
-	 */
-	private int startChar;
-	
-	/**
-	 * Ending char index to indicate the error according to the source view content
-	 */
-	private int endChar;
+    /**
+     * Exception to be added as the error message
+     */
+    private String exception;
 
-	public SourceError(String exception, int lineNumber, int startChar, int endChar) {
-		this.exception = exception;
-		this.lineNumber = lineNumber;
-		this.startChar = startChar;
-		this.endChar = endChar;
-	}
+    /**
+     * Line number where the error occurred
+     */
+    private int lineNumber;
 
-	public SourceError() {
+    /**
+     * Starting chat index to indicate the error according to the source view
+     * content
+     */
+    private int startChar;
 
-	}
+    /**
+     * Ending char index to indicate the error according to the source view content
+     */
+    private int endChar;
 
-	public String getException() {
-		return exception;
-	}
+    public SourceError(String exception, int lineNumber, int startChar, int endChar) {
+	this.exception = exception;
+	this.lineNumber = lineNumber;
+	this.startChar = startChar;
+	this.endChar = endChar;
+    }
 
-	public void setException(String exception) {
-		this.exception = exception;
-	}
+    public SourceError() {
 
-	public int getLineNumber() {
-		return lineNumber;
-	}
+    }
 
-	public void setLineNumber(int lineNumber) {
-		this.lineNumber = lineNumber;
-	}
+    public String getException() {
+	return exception;
+    }
 
-	public int getStartChar() {
-		return startChar;
-	}
+    public void setException(String exception) {
+	this.exception = exception;
+    }
 
-	public void setStartChar(int startChar) {
-		this.startChar = startChar;
-	}
+    public int getLineNumber() {
+	return lineNumber;
+    }
 
-	public int getEndChar() {
-		return endChar;
-	}
+    public void setLineNumber(int lineNumber) {
+	this.lineNumber = lineNumber;
+    }
 
-	public void setEndChar(int endChar) {
-		this.endChar = endChar;
-	}
+    public int getStartChar() {
+	return startChar;
+    }
+
+    public void setStartChar(int startChar) {
+	this.startChar = startChar;
+    }
+
+    public int getEndChar() {
+	return endChar;
+    }
+
+    public void setEndChar(int endChar) {
+	this.endChar = endChar;
+    }
 
 }

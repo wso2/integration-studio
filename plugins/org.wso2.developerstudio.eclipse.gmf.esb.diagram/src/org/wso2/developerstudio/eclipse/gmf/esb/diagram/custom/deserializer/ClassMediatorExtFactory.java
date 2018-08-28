@@ -22,7 +22,6 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.MediatorPropertyFactory;
-import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.ClassMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExt;
 

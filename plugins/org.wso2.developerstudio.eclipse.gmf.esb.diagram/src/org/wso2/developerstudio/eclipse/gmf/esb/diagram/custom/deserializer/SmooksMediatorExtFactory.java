@@ -32,106 +32,106 @@ import org.wso2.carbon.mediator.transform.SmooksMediator;
 import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
 
 public class SmooksMediatorExtFactory extends SmooksMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new SmooksMediator();
 
-		QName CONFIG_KEY = new QName("config-key");
-		QName PERSISTENCE_UNIT = new QName("persistence-unit");
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		OMAttribute configFileAttr = omElement.getAttribute(CONFIG_KEY);
+	Mediator mediator = new SmooksMediator();
 
-		if (configFileAttr != null) {
-			((SmooksMediator) mediator).setConfigKey(configFileAttr.getAttributeValue());
-		}
+	QName CONFIG_KEY = new QName("config-key");
+	QName PERSISTENCE_UNIT = new QName("persistence-unit");
 
-		OMAttribute persistenceUnitAttr = omElement.getAttribute(PERSISTENCE_UNIT);
-		if (persistenceUnitAttr != null) {
-			((SmooksMediator) mediator).setPersistenceUnitAttr(persistenceUnitAttr.getAttributeValue());
-		}
+	OMAttribute configFileAttr = omElement.getAttribute(CONFIG_KEY);
 
-		OMElement inputElement = omElement
-				.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "input"));
-		if (inputElement != null) {
-			((SmooksMediator) mediator).setInput(createInput(inputElement));
-		} else {
-			((SmooksMediator) mediator).setInput(new Input());
-		}
-
-		OMElement outputElement = omElement
-				.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "output"));
-		if (inputElement != null) {
-			((SmooksMediator) mediator).setOutput(createOutput(outputElement));
-		} else {
-			((SmooksMediator) mediator).setOutput(new Output());
-		}
-		
-		return mediator;
+	if (configFileAttr != null) {
+	    ((SmooksMediator) mediator).setConfigKey(configFileAttr.getAttributeValue());
 	}
-	
-	private Input createInput(OMElement input) {
-		Input in = new Input();
 
-		OMAttribute typeAttr = input.getAttribute(new QName("type"));
-		String typeValue = "";
-		if (typeAttr != null) {
-			typeValue = typeAttr.getAttributeValue();
-		}
-
-		if (typeValue.equals("xml")) {
-			in.setType(SmooksMediator.TYPES.XML);
-		} else {
-			in.setType(SmooksMediator.TYPES.TEXT);
-		}
-
-		if (input.getAttribute(new QName("expression")) != null) {
-			try {
-				in.setExpression(SynapseXPathFactory.getSynapseXPath(input, new QName("expression")));
-			} catch (JaxenException e) {
-				// ignore
-			}
-		}
-
-		return in;
+	OMAttribute persistenceUnitAttr = omElement.getAttribute(PERSISTENCE_UNIT);
+	if (persistenceUnitAttr != null) {
+	    ((SmooksMediator) mediator).setPersistenceUnitAttr(persistenceUnitAttr.getAttributeValue());
 	}
-	
-	private Output createOutput(OMElement output) {
-		Output in = new Output();
 
-		OMAttribute typeAttr = output.getAttribute(new QName("type"));
-		String typeValue = "";
-		if (typeAttr != null) {
-			typeValue = typeAttr.getAttributeValue();
-		}
-
-		if (typeValue.equals("xml")) {
-			in.setType(SmooksMediator.TYPES.XML);
-		} else if (typeValue.equals("java")) {
-			in.setType(SmooksMediator.TYPES.JAVA);
-		} else {
-			in.setType(SmooksMediator.TYPES.TEXT);
-		}
-
-		if (output.getAttribute(new QName("expression")) != null) {
-			try {
-				in.setExpression(SynapseXPathFactory.getSynapseXPath(output, new QName("expression")));
-			} catch (JaxenException e) {
-				// ignore
-			}
-		}
-
-		OMAttribute actionAttr = output.getAttribute(new QName("action"));
-		if (actionAttr != null && actionAttr.getAttributeValue() != null) {
-			in.setAction(actionAttr.getAttributeValue());
-		}
-
-		OMAttribute propertyAttr = output.getAttribute(new QName("property"));
-		if (propertyAttr != null && propertyAttr.getAttributeValue() != null) {
-			in.setProperty(propertyAttr.getAttributeValue());
-		}
-
-		return in;
+	OMElement inputElement = omElement
+		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "input"));
+	if (inputElement != null) {
+	    ((SmooksMediator) mediator).setInput(createInput(inputElement));
+	} else {
+	    ((SmooksMediator) mediator).setInput(new Input());
 	}
+
+	OMElement outputElement = omElement
+		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "output"));
+	if (inputElement != null) {
+	    ((SmooksMediator) mediator).setOutput(createOutput(outputElement));
+	} else {
+	    ((SmooksMediator) mediator).setOutput(new Output());
+	}
+
+	return mediator;
+    }
+
+    private Input createInput(OMElement input) {
+	Input in = new Input();
+
+	OMAttribute typeAttr = input.getAttribute(new QName("type"));
+	String typeValue = "";
+	if (typeAttr != null) {
+	    typeValue = typeAttr.getAttributeValue();
+	}
+
+	if (typeValue.equals("xml")) {
+	    in.setType(SmooksMediator.TYPES.XML);
+	} else {
+	    in.setType(SmooksMediator.TYPES.TEXT);
+	}
+
+	if (input.getAttribute(new QName("expression")) != null) {
+	    try {
+		in.setExpression(SynapseXPathFactory.getSynapseXPath(input, new QName("expression")));
+	    } catch (JaxenException e) {
+		// ignore
+	    }
+	}
+
+	return in;
+    }
+
+    private Output createOutput(OMElement output) {
+	Output in = new Output();
+
+	OMAttribute typeAttr = output.getAttribute(new QName("type"));
+	String typeValue = "";
+	if (typeAttr != null) {
+	    typeValue = typeAttr.getAttributeValue();
+	}
+
+	if (typeValue.equals("xml")) {
+	    in.setType(SmooksMediator.TYPES.XML);
+	} else if (typeValue.equals("java")) {
+	    in.setType(SmooksMediator.TYPES.JAVA);
+	} else {
+	    in.setType(SmooksMediator.TYPES.TEXT);
+	}
+
+	if (output.getAttribute(new QName("expression")) != null) {
+	    try {
+		in.setExpression(SynapseXPathFactory.getSynapseXPath(output, new QName("expression")));
+	    } catch (JaxenException e) {
+		// ignore
+	    }
+	}
+
+	OMAttribute actionAttr = output.getAttribute(new QName("action"));
+	if (actionAttr != null && actionAttr.getAttributeValue() != null) {
+	    in.setAction(actionAttr.getAttributeValue());
+	}
+
+	OMAttribute propertyAttr = output.getAttribute(new QName("property"));
+	if (propertyAttr != null && propertyAttr.getAttributeValue() != null) {
+	    in.setProperty(propertyAttr.getAttributeValue());
+	}
+
+	return in;
+    }
 
 }

@@ -39,84 +39,83 @@ import org.jaxen.JaxenException;
 import org.xml.sax.SAXException;
 
 public class ValidateMediatorExtFactory extends ValidateMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new ValidateMediator();
-		
-		QName ON_FAIL_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "on-fail");
-		QName SCHEMA_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "schema");
-		QName ATT_CACHE_SCHEMA = new QName("cache-schema");
 
-		List<Value> schemaKeys = new ArrayList<Value>();
-		Iterator schemas = omElement.getChildrenWithName(SCHEMA_Q);
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		while (schemas.hasNext()) {
-			Object o = schemas.next();
-			if (o instanceof OMElement) {
-				OMElement omElem = (OMElement) o;
-				OMAttribute keyAtt = omElem.getAttribute(ATT_KEY);
-				if (keyAtt != null) {
-					ValueFactory keyFac = new ValueFactory();
-					Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElem);
-					schemaKeys.add(generatedKey);
-				}
-			}
+	Mediator mediator = new ValidateMediator();
+
+	QName ON_FAIL_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "on-fail");
+	QName SCHEMA_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "schema");
+	QName ATT_CACHE_SCHEMA = new QName("cache-schema");
+
+	List<Value> schemaKeys = new ArrayList<Value>();
+	Iterator schemas = omElement.getChildrenWithName(SCHEMA_Q);
+
+	while (schemas.hasNext()) {
+	    Object o = schemas.next();
+	    if (o instanceof OMElement) {
+		OMElement omElem = (OMElement) o;
+		OMAttribute keyAtt = omElem.getAttribute(ATT_KEY);
+		if (keyAtt != null) {
+		    ValueFactory keyFac = new ValueFactory();
+		    Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElem);
+		    schemaKeys.add(generatedKey);
 		}
-
-		if (schemaKeys.size() != 0) {
-			((ValidateMediator) mediator).setSchemaKeys(schemaKeys);
-		}
-
-		OMAttribute attSource = omElement.getAttribute(ATT_SOURCE);
-
-		if (attSource != null) {
-			try {
-				if (attSource.getAttributeValue() != null) {
-					((ValidateMediator) mediator)
-							.setSource(SynapsePathFactory.getSynapsePath(omElement, ATT_SOURCE));
-				}
-			} catch (JaxenException e) {
-				// ignore
-			}
-		}
-
-		OMAttribute attSchemaCache = omElement.getAttribute(ATT_CACHE_SCHEMA);
-		if (attSchemaCache != null) {
-			final boolean cacheSchema = Boolean.parseBoolean(attSchemaCache.getAttributeValue());
-			((ValidateMediator) mediator).setCacheSchema(cacheSchema);
-		}
-
-		((ValidateMediator) mediator).setResourceMap(ResourceMapFactory.createResourceMap(omElement));
-
-		OMElement onFail = null;
-		Iterator iterator = omElement.getChildrenWithName(ON_FAIL_Q);
-		if (iterator.hasNext()) {
-			onFail = (OMElement) iterator.next();
-		}
-
-		if (onFail != null && onFail.getChildElements().hasNext()) {
-			addChildren(onFail, (ValidateMediator) mediator, null);
-		}
-
-		processAuditStatus(mediator, omElement);
-		for (Map.Entry<String, String> entry : collectNameValuePairs(omElement,
-				new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "feature")).entrySet()) {
-			String value = entry.getValue();
-			boolean isFeatureEnabled = true;
-			if ("true".equals(value)) {
-				isFeatureEnabled = true;
-			} else if ("false".equals(value)) {
-				isFeatureEnabled = false;
-			}
-			try {
-				((ValidateMediator) mediator).addFeature(entry.getKey(), isFeatureEnabled);
-			} catch (SAXException e) {
-				// ignore
-			}
-		}
-
-		return mediator;
+	    }
 	}
+
+	if (schemaKeys.size() != 0) {
+	    ((ValidateMediator) mediator).setSchemaKeys(schemaKeys);
+	}
+
+	OMAttribute attSource = omElement.getAttribute(ATT_SOURCE);
+
+	if (attSource != null) {
+	    try {
+		if (attSource.getAttributeValue() != null) {
+		    ((ValidateMediator) mediator).setSource(SynapsePathFactory.getSynapsePath(omElement, ATT_SOURCE));
+		}
+	    } catch (JaxenException e) {
+		// ignore
+	    }
+	}
+
+	OMAttribute attSchemaCache = omElement.getAttribute(ATT_CACHE_SCHEMA);
+	if (attSchemaCache != null) {
+	    final boolean cacheSchema = Boolean.parseBoolean(attSchemaCache.getAttributeValue());
+	    ((ValidateMediator) mediator).setCacheSchema(cacheSchema);
+	}
+
+	((ValidateMediator) mediator).setResourceMap(ResourceMapFactory.createResourceMap(omElement));
+
+	OMElement onFail = null;
+	Iterator iterator = omElement.getChildrenWithName(ON_FAIL_Q);
+	if (iterator.hasNext()) {
+	    onFail = (OMElement) iterator.next();
+	}
+
+	if (onFail != null && onFail.getChildElements().hasNext()) {
+	    addChildren(onFail, (ValidateMediator) mediator, null);
+	}
+
+	processAuditStatus(mediator, omElement);
+	for (Map.Entry<String, String> entry : collectNameValuePairs(omElement,
+		new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "feature")).entrySet()) {
+	    String value = entry.getValue();
+	    boolean isFeatureEnabled = true;
+	    if ("true".equals(value)) {
+		isFeatureEnabled = true;
+	    } else if ("false".equals(value)) {
+		isFeatureEnabled = false;
+	    }
+	    try {
+		((ValidateMediator) mediator).addFeature(entry.getKey(), isFeatureEnabled);
+	    } catch (SAXException e) {
+		// ignore
+	    }
+	}
+
+	return mediator;
+    }
 
 }

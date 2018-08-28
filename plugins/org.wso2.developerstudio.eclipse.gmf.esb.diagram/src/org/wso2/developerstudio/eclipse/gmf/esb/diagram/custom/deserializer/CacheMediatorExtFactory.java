@@ -44,7 +44,6 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
     private static final QName IMPLEMENTATION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "implementation");
     private static final QName PROTOCOL_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "protocol");
     private static final long DEFAULT_TIMEOUT = 5000L;
-    private static final int DEFAULT_DISK_CACHE_SIZE = 200;
 
 	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 

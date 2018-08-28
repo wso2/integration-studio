@@ -45,122 +45,119 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.builtin.SendMediator;
 
 public class SendMediatorExtFactory extends SendMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		Mediator mediator = new SendMediator();
-		
-		// TODO add setting values for specific endpoints
-		QName SEND_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "send");
-		QName ENDPOINT_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "endpoint");
-		QName RECEIVING_SEQUENCE = new QName(XMLConfigConstants.RECEIVE);
-		QName BUILD_MESSAGE = new QName("buildmessage");
 
-		processAuditStatus(mediator, omElement);
+    protected Mediator createSpecificMediator(OMElement omElement) {
+	Mediator mediator = new SendMediator();
 
-		OMElement epElement = omElement.getFirstChildWithName(ENDPOINT_Q);
+	// TODO add setting values for specific endpoints
+	QName SEND_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "send");
+	QName ENDPOINT_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "endpoint");
+	QName RECEIVING_SEQUENCE = new QName(XMLConfigConstants.RECEIVE);
+	QName BUILD_MESSAGE = new QName("buildmessage");
 
-		if (epElement != null) {
+	processAuditStatus(mediator, omElement);
 
-			Endpoint endpoint = null;
-			try {
-				endpoint = EndpointFactory.getEndpointFromElement(epElement, true, null);
-			} catch (Exception e) {
+	OMElement epElement = omElement.getFirstChildWithName(ENDPOINT_Q);
 
-				if (omElement.getAttribute(ATT_KEY) != null) {
-					endpoint = new IndirectEndpoint();
-				}
+	if (epElement != null) {
 
-				if (omElement.getAttribute(new QName("key-expression")) != null) {
-					endpoint = new ResolvingEndpoint();
-				}
+	    Endpoint endpoint = null;
+	    try {
+		endpoint = EndpointFactory.getEndpointFromElement(epElement, true, null);
+	    } catch (Exception e) {
 
-				if (omElement.getAttribute(new QName("template")) != null) {
-					endpoint = new TemplateEndpoint();
-				}
-
-				if (omElement
-						.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "address")) != null) {
-					endpoint = new AddressEndpoint();
-				}
-
-				if (omElement
-						.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "wsdl")) != null) {
-					endpoint = new WSDLEndpoint();
-				}
-
-				if (omElement
-						.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "default")) != null) {
-					endpoint = new DefaultEndpoint();
-				}
-
-				if (omElement.getFirstChildWithName(
-						new QName(SynapseConstants.SYNAPSE_NAMESPACE, "loadbalance")) != null) {
-
-					if (omElement.getFirstChildWithName(
-							new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session")) != null) {
-						endpoint = new SALoadbalanceEndpoint();
-					} else {
-						endpoint = new LoadbalanceEndpoint();
-					}
-				}
-
-				if (omElement.getFirstChildWithName(
-						new QName(SynapseConstants.SYNAPSE_NAMESPACE, "dynamicLoadbalance")) != null) {
-					endpoint = new DynamicLoadbalanceEndpoint();
-				}
-
-				if (omElement.getFirstChildWithName(
-						new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serviceDynamicLoadbalance")) != null) {
-					// Enable after synapse fix
-					/// endpoint = new ServiceDynamicLoadbalanceEndpoint();
-				}
-
-				OMElement foElement = omElement
-						.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "failover"));
-				if (foElement != null) {
-					endpoint = new FailoverEndpoint();
-				}
-
-				OMElement rcplElement = omElement
-						.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "recipientlist"));
-				if (rcplElement != null) {
-					endpoint = new RecipientListEndpoint();
-				}
-
-				OMElement httpElement = omElement
-						.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "http"));
-				if (httpElement != null) {
-					endpoint = new HTTPEndpoint();
-				}
-
-				OMElement classElement = omElement
-						.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "class"));
-				if (classElement != null) {
-					endpoint = new ClassEndpoint();
-				}
-			}
-
-			if (endpoint != null) {
-				((SendMediator) mediator).setEndpoint(endpoint);
-			} else {
-				endpoint = new AddressEndpoint();
-			}
+		if (omElement.getAttribute(ATT_KEY) != null) {
+		    endpoint = new IndirectEndpoint();
 		}
 
-		String receivingSequence = omElement.getAttributeValue(RECEIVING_SEQUENCE);
-		if (receivingSequence != null) {
-			ValueFactory valueFactory = new ValueFactory();
-			Value value = valueFactory.createValue(XMLConfigConstants.RECEIVE, omElement);
-
-			((SendMediator) mediator).setReceivingSequence(value);
-		}
-		String buildMessage = omElement.getAttributeValue(BUILD_MESSAGE);
-
-		if ("true".equals(buildMessage)) {
-			((SendMediator) mediator).setBuildMessage(true);
+		if (omElement.getAttribute(new QName("key-expression")) != null) {
+		    endpoint = new ResolvingEndpoint();
 		}
 
-		return mediator;
+		if (omElement.getAttribute(new QName("template")) != null) {
+		    endpoint = new TemplateEndpoint();
+		}
+
+		if (omElement.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "address")) != null) {
+		    endpoint = new AddressEndpoint();
+		}
+
+		if (omElement.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "wsdl")) != null) {
+		    endpoint = new WSDLEndpoint();
+		}
+
+		if (omElement.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "default")) != null) {
+		    endpoint = new DefaultEndpoint();
+		}
+
+		if (omElement
+			.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "loadbalance")) != null) {
+
+		    if (omElement
+			    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session")) != null) {
+			endpoint = new SALoadbalanceEndpoint();
+		    } else {
+			endpoint = new LoadbalanceEndpoint();
+		    }
+		}
+
+		if (omElement.getFirstChildWithName(
+			new QName(SynapseConstants.SYNAPSE_NAMESPACE, "dynamicLoadbalance")) != null) {
+		    endpoint = new DynamicLoadbalanceEndpoint();
+		}
+
+		if (omElement.getFirstChildWithName(
+			new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serviceDynamicLoadbalance")) != null) {
+		    // Enable after synapse fix
+		    /// endpoint = new ServiceDynamicLoadbalanceEndpoint();
+		}
+
+		OMElement foElement = omElement
+			.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "failover"));
+		if (foElement != null) {
+		    endpoint = new FailoverEndpoint();
+		}
+
+		OMElement rcplElement = omElement
+			.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "recipientlist"));
+		if (rcplElement != null) {
+		    endpoint = new RecipientListEndpoint();
+		}
+
+		OMElement httpElement = omElement
+			.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "http"));
+		if (httpElement != null) {
+		    endpoint = new HTTPEndpoint();
+		}
+
+		OMElement classElement = omElement
+			.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "class"));
+		if (classElement != null) {
+		    endpoint = new ClassEndpoint();
+		}
+	    }
+
+	    if (endpoint != null) {
+		((SendMediator) mediator).setEndpoint(endpoint);
+	    } else {
+		endpoint = new AddressEndpoint();
+	    }
 	}
+
+	String receivingSequence = omElement.getAttributeValue(RECEIVING_SEQUENCE);
+	if (receivingSequence != null) {
+	    ValueFactory valueFactory = new ValueFactory();
+	    Value value = valueFactory.createValue(XMLConfigConstants.RECEIVE, omElement);
+
+	    ((SendMediator) mediator).setReceivingSequence(value);
+	}
+	String buildMessage = omElement.getAttributeValue(BUILD_MESSAGE);
+
+	if ("true".equals(buildMessage)) {
+	    ((SendMediator) mediator).setBuildMessage(true);
+	}
+
+	return mediator;
+    }
 
 }

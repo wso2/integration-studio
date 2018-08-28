@@ -36,70 +36,70 @@ import org.apache.synapse.mediators.filters.router.ConditionalRoute;
 import org.apache.synapse.mediators.filters.router.ConditionalRouterMediator;
 
 public class ConditionalRouterMediatorExtFactory extends ConditionalRouterMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new ConditionalRouterMediator();
 
-		QName CONDITIONAL_ROUTER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "conditionalRouter");
-		QName ROUTE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "conditionalRoute");
-		QName CONDITION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "condition");
-		QName TARGET_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "target");
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		QName CONTINUE_AFTER_ATTR = new QName(XMLConfigConstants.NULL_NAMESPACE, "continueAfter");
-		QName BREAK_ROUTE_ATTR = new QName(XMLConfigConstants.NULL_NAMESPACE, "breakRoute");
-		QName ASYNCHRONOUS_ATTR = new QName(XMLConfigConstants.NULL_NAMESPACE, "asynchronous");
+	Mediator mediator = new ConditionalRouterMediator();
 
-		processAuditStatus(mediator, omElement);
+	QName CONDITIONAL_ROUTER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "conditionalRouter");
+	QName ROUTE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "conditionalRoute");
+	QName CONDITION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "condition");
+	QName TARGET_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "target");
 
-		if (omElement.getAttribute(CONTINUE_AFTER_ATTR) != null) {
-			if (JavaUtils.isTrueExplicitly(omElement.getAttributeValue(CONTINUE_AFTER_ATTR).trim())) {
-				((ConditionalRouterMediator) mediator).setContinueAfter(true);
-			} else {
-				((ConditionalRouterMediator) mediator).setContinueAfter(false);
-			}
-		}
+	QName CONTINUE_AFTER_ATTR = new QName(XMLConfigConstants.NULL_NAMESPACE, "continueAfter");
+	QName BREAK_ROUTE_ATTR = new QName(XMLConfigConstants.NULL_NAMESPACE, "breakRoute");
+	QName ASYNCHRONOUS_ATTR = new QName(XMLConfigConstants.NULL_NAMESPACE, "asynchronous");
 
-		Iterator itr = omElement.getChildrenWithName(ROUTE_Q);
-		while (itr.hasNext()) {
-			OMElement routeElem = (OMElement) itr.next();
-			ConditionalRoute conditionalRoute = new ConditionalRoute();
+	processAuditStatus(mediator, omElement);
 
-			if (routeElem.getAttribute(BREAK_ROUTE_ATTR) != null) {
-				if (JavaUtils.isTrueExplicitly(routeElem.getAttributeValue(BREAK_ROUTE_ATTR).trim())) {
-
-					conditionalRoute.setBreakRoute(true);
-				} else {
-
-					conditionalRoute.setBreakRoute(false);
-				}
-			}
-
-			OMElement conditionElem = routeElem.getFirstChildWithName(CONDITION_Q);
-			if (conditionElem != null) {
-
-				try {
-					Evaluator evaluator = EvaluatorFactoryFinder.getInstance()
-							.getEvaluator(conditionElem.getFirstElement());
-					conditionalRoute.setEvaluator(evaluator);
-				} catch (EvaluatorException ee) {
-					// ignore
-				}
-			}
-
-			OMElement targetElem = routeElem.getFirstChildWithName(TARGET_Q);
-			Target target = TargetFactory.createTarget(targetElem, null);
-			if (JavaUtils.isTrueExplicitly(routeElem.getAttributeValue(ASYNCHRONOUS_ATTR))) {
-				target.setAsynchronous(true);
-			} else {
-				target.setAsynchronous(false);
-			}
-			conditionalRoute.setTarget(target);
-			((ConditionalRouterMediator) mediator).addRoute(conditionalRoute);
-
-		}
-
-		return mediator;
+	if (omElement.getAttribute(CONTINUE_AFTER_ATTR) != null) {
+	    if (JavaUtils.isTrueExplicitly(omElement.getAttributeValue(CONTINUE_AFTER_ATTR).trim())) {
+		((ConditionalRouterMediator) mediator).setContinueAfter(true);
+	    } else {
+		((ConditionalRouterMediator) mediator).setContinueAfter(false);
+	    }
 	}
+
+	Iterator itr = omElement.getChildrenWithName(ROUTE_Q);
+	while (itr.hasNext()) {
+	    OMElement routeElem = (OMElement) itr.next();
+	    ConditionalRoute conditionalRoute = new ConditionalRoute();
+
+	    if (routeElem.getAttribute(BREAK_ROUTE_ATTR) != null) {
+		if (JavaUtils.isTrueExplicitly(routeElem.getAttributeValue(BREAK_ROUTE_ATTR).trim())) {
+
+		    conditionalRoute.setBreakRoute(true);
+		} else {
+
+		    conditionalRoute.setBreakRoute(false);
+		}
+	    }
+
+	    OMElement conditionElem = routeElem.getFirstChildWithName(CONDITION_Q);
+	    if (conditionElem != null) {
+
+		try {
+		    Evaluator evaluator = EvaluatorFactoryFinder.getInstance()
+			    .getEvaluator(conditionElem.getFirstElement());
+		    conditionalRoute.setEvaluator(evaluator);
+		} catch (EvaluatorException ee) {
+		    // ignore
+		}
+	    }
+
+	    OMElement targetElem = routeElem.getFirstChildWithName(TARGET_Q);
+	    Target target = TargetFactory.createTarget(targetElem, null);
+	    if (JavaUtils.isTrueExplicitly(routeElem.getAttributeValue(ASYNCHRONOUS_ATTR))) {
+		target.setAsynchronous(true);
+	    } else {
+		target.setAsynchronous(false);
+	    }
+	    conditionalRoute.setTarget(target);
+	    ((ConditionalRouterMediator) mediator).addRoute(conditionalRoute);
+
+	}
+
+	return mediator;
+    }
 
 }

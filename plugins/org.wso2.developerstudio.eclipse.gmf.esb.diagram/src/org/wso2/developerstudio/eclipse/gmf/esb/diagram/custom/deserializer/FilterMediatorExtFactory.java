@@ -35,84 +35,84 @@ import org.apache.synapse.mediators.filters.FilterMediator;
 import org.jaxen.JaxenException;
 
 public class FilterMediatorExtFactory extends FilterMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new FilterMediator();
 
-		QName THEN_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "then");
-		QName ELSE_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "else");
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		OMAttribute attXpath = omElement.getAttribute(ATT_XPATH);
-		OMAttribute attSource = omElement.getAttribute(ATT_SOURCE);
-		OMAttribute attRegex = omElement.getAttribute(ATT_REGEX);
+	Mediator mediator = new FilterMediator();
 
-		if (attXpath != null) {
-			if (attXpath.getAttributeValue() != null && attXpath.getAttributeValue().trim().length() > 0) {
-				try {
-					((FilterMediator) mediator).setXpath(SynapsePathFactory.getSynapsePath(omElement, ATT_XPATH));
-				} catch (JaxenException e) {
-					// ignore
-				}
-			}
+	QName THEN_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "then");
+	QName ELSE_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "else");
 
-		} else if (attSource != null && attRegex != null) {
+	OMAttribute attXpath = omElement.getAttribute(ATT_XPATH);
+	OMAttribute attSource = omElement.getAttribute(ATT_SOURCE);
+	OMAttribute attRegex = omElement.getAttribute(ATT_REGEX);
 
-			if ((attSource.getAttributeValue() != null && attSource.getAttributeValue().trim().length() > 0)
-					|| (attRegex.getAttributeValue() != null && attRegex.getAttributeValue().trim().length() > 0)) {
+	if (attXpath != null) {
+	    if (attXpath.getAttributeValue() != null && attXpath.getAttributeValue().trim().length() > 0) {
+		try {
+		    ((FilterMediator) mediator).setXpath(SynapsePathFactory.getSynapsePath(omElement, ATT_XPATH));
+		} catch (JaxenException e) {
+		    // ignore
+		}
+	    }
 
-				try {
-					((FilterMediator) mediator).setSource(SynapsePathFactory.getSynapsePath(omElement, ATT_SOURCE));
-				} catch (JaxenException e) {
-					// ignore
-				}
+	} else if (attSource != null && attRegex != null) {
 
-				try {
-					((FilterMediator) mediator).setRegex(Pattern.compile(attRegex.getAttributeValue()));
-				} catch (PatternSyntaxException pse) {
-					// ignore
-				}
-			}
+	    if ((attSource.getAttributeValue() != null && attSource.getAttributeValue().trim().length() > 0)
+		    || (attRegex.getAttributeValue() != null && attRegex.getAttributeValue().trim().length() > 0)) {
 
+		try {
+		    ((FilterMediator) mediator).setSource(SynapsePathFactory.getSynapsePath(omElement, ATT_SOURCE));
+		} catch (JaxenException e) {
+		    // ignore
 		}
 
-		processAuditStatus(mediator, omElement);
+		try {
+		    ((FilterMediator) mediator).setRegex(Pattern.compile(attRegex.getAttributeValue()));
+		} catch (PatternSyntaxException pse) {
+		    // ignore
+		}
+	    }
 
-		OMElement thenElem = omElement.getFirstChildWithName(THEN_Q);
+	}
 
-		if (thenElem != null) {
+	processAuditStatus(mediator, omElement);
 
-			((FilterMediator) mediator).setThenElementPresent(true);
-			OMAttribute sequenceAttr = thenElem.getAttribute(ATT_SEQUENCE);
+	OMElement thenElem = omElement.getFirstChildWithName(THEN_Q);
 
-			if (sequenceAttr != null && sequenceAttr.getAttributeValue() != null) {
-				((FilterMediator) mediator).setThenKey(sequenceAttr.getAttributeValue());
+	if (thenElem != null) {
 
-			} else {
-				addChildren(thenElem, (FilterMediator) mediator, null);
-			}
+	    ((FilterMediator) mediator).setThenElementPresent(true);
+	    OMAttribute sequenceAttr = thenElem.getAttribute(ATT_SEQUENCE);
 
-			OMElement elseElem = omElement.getFirstChildWithName(ELSE_Q);
-			if (elseElem != null) {
+	    if (sequenceAttr != null && sequenceAttr.getAttributeValue() != null) {
+		((FilterMediator) mediator).setThenKey(sequenceAttr.getAttributeValue());
 
-				sequenceAttr = elseElem.getAttribute(ATT_SEQUENCE);
-				if (sequenceAttr != null && sequenceAttr.getAttributeValue() != null) {
-					((FilterMediator) mediator).setElseKey(sequenceAttr.getAttributeValue());
+	    } else {
+		addChildren(thenElem, (FilterMediator) mediator, null);
+	    }
 
-				} else {
-					AnonymousListMediator listMediator = AnonymousListMediatorFactory
-							.createAnonymousListMediator(elseElem, null);
-					((FilterMediator) mediator).setElseMediator(listMediator);
-				}
-			}
+	    OMElement elseElem = omElement.getFirstChildWithName(ELSE_Q);
+	    if (elseElem != null) {
+
+		sequenceAttr = elseElem.getAttribute(ATT_SEQUENCE);
+		if (sequenceAttr != null && sequenceAttr.getAttributeValue() != null) {
+		    ((FilterMediator) mediator).setElseKey(sequenceAttr.getAttributeValue());
 
 		} else {
-
-			((FilterMediator) mediator).setThenElementPresent(false);
-			addChildren(omElement, (FilterMediator) mediator, null);
+		    AnonymousListMediator listMediator = AnonymousListMediatorFactory
+			    .createAnonymousListMediator(elseElem, null);
+		    ((FilterMediator) mediator).setElseMediator(listMediator);
 		}
+	    }
 
-		return mediator;
+	} else {
+
+	    ((FilterMediator) mediator).setThenElementPresent(false);
+	    addChildren(omElement, (FilterMediator) mediator, null);
 	}
+
+	return mediator;
+    }
 
 }

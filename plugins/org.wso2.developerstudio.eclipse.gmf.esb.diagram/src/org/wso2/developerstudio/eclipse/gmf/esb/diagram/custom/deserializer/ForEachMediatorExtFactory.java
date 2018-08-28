@@ -37,56 +37,56 @@ import org.jaxen.JaxenException;
 
 public class ForEachMediatorExtFactory extends ForEachMediatorFactory {
 
-	private static final QName ID_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "id");
+    private static final QName ID_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "id");
 
-	protected Mediator createSpecificMediator(OMElement omElement) {
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		ForEachMediator mediator = new ForEachMediator();
-		processAuditStatus(mediator, omElement);
+	ForEachMediator mediator = new ForEachMediator();
+	processAuditStatus(mediator, omElement);
 
-		OMAttribute id = omElement.getAttribute(ID_Q);
-		if (id != null) {
-			mediator.setId(id.getAttributeValue());
-		}
-
-		OMAttribute expression = omElement.getAttribute(ATT_EXPRN);
-		if (expression != null) {
-			try {
-				mediator.setExpression(SynapseXPathFactory.getSynapseXPath(omElement, ATT_EXPRN));
-			} catch (JaxenException e) {
-				// ignore
-			}
-		}
-
-		OMAttribute sequenceAttr = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "sequence"));
-		OMElement sequence;
-
-		if (sequenceAttr != null && sequenceAttr.getAttributeValue() != null) {
-			mediator.setSequenceRef(sequenceAttr.getAttributeValue());
-
-		} else if ((sequence = omElement
-				.getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "sequence"))) != null) {
-			SequenceMediatorExtFactory fac = new SequenceMediatorExtFactory();
-			SequenceMediator sequenceMediator = fac.createAnonymousSequence(sequence, null);
-
-			if (validateSequence(sequenceMediator)) {
-				mediator.setSequence(sequenceMediator);
-			}
-		}
-		
-		return mediator;
+	OMAttribute id = omElement.getAttribute(ID_Q);
+	if (id != null) {
+	    mediator.setId(id.getAttributeValue());
 	}
 
-	private boolean validateSequence(SequenceMediator sequence) {
-		if (sequence != null) {
-			List<Mediator> mediators = sequence.getList();
-			for (Mediator m : mediators) {
-				if (m instanceof CallMediator || m instanceof CalloutMediator || m instanceof SendMediator) {
-					return false;
-				}
-			}
-		}
-		return true;
+	OMAttribute expression = omElement.getAttribute(ATT_EXPRN);
+	if (expression != null) {
+	    try {
+		mediator.setExpression(SynapseXPathFactory.getSynapseXPath(omElement, ATT_EXPRN));
+	    } catch (JaxenException e) {
+		// ignore
+	    }
 	}
+
+	OMAttribute sequenceAttr = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "sequence"));
+	OMElement sequence;
+
+	if (sequenceAttr != null && sequenceAttr.getAttributeValue() != null) {
+	    mediator.setSequenceRef(sequenceAttr.getAttributeValue());
+
+	} else if ((sequence = omElement
+		.getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "sequence"))) != null) {
+	    SequenceMediatorExtFactory fac = new SequenceMediatorExtFactory();
+	    SequenceMediator sequenceMediator = fac.createAnonymousSequence(sequence, null);
+
+	    if (validateSequence(sequenceMediator)) {
+		mediator.setSequence(sequenceMediator);
+	    }
+	}
+
+	return mediator;
+    }
+
+    private boolean validateSequence(SequenceMediator sequence) {
+	if (sequence != null) {
+	    List<Mediator> mediators = sequence.getList();
+	    for (Mediator m : mediators) {
+		if (m instanceof CallMediator || m instanceof CalloutMediator || m instanceof SendMediator) {
+		    return false;
+		}
+	    }
+	}
+	return true;
+    }
 
 }

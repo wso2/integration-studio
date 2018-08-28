@@ -28,27 +28,27 @@ import org.apache.synapse.mediators.db.DBReportMediator;
 
 public class DbReportMediatorExtFactory extends DBReportMediatorFactory {
 
-	protected Mediator createSpecificMediator(OMElement omElement) {
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		Mediator mediator = new DBReportMediator();
-		QName DBREPORT_USE_TX = new QName("useTransaction");
+	Mediator mediator = new DBReportMediator();
+	QName DBREPORT_USE_TX = new QName("useTransaction");
 
-		processAuditStatus(mediator, omElement);
+	processAuditStatus(mediator, omElement);
 
-		OMAttribute useTx = omElement.getAttribute(DBREPORT_USE_TX);
-		if (useTx != null && useTx.getAttributeValue() != null) {
-			String useTxValue = useTx.getAttributeValue();
-			if (useTxValue.equals("true")) {
-				((DBReportMediator) mediator).setUseTransaction(true);
-			} else {
-				((DBReportMediator) mediator).setUseTransaction(false);
-			}
-		}
-		buildDataSource(omElement, (DBReportMediator) mediator);
-		processStatements(omElement, (DBReportMediator) mediator);
-
-		return mediator;
-
+	OMAttribute useTx = omElement.getAttribute(DBREPORT_USE_TX);
+	if (useTx != null && useTx.getAttributeValue() != null) {
+	    String useTxValue = useTx.getAttributeValue();
+	    if (useTxValue.equals("true")) {
+		((DBReportMediator) mediator).setUseTransaction(true);
+	    } else {
+		((DBReportMediator) mediator).setUseTransaction(false);
+	    }
 	}
+	buildDataSource(omElement, (DBReportMediator) mediator);
+	processStatements(omElement, (DBReportMediator) mediator);
+
+	return mediator;
+
+    }
 
 }

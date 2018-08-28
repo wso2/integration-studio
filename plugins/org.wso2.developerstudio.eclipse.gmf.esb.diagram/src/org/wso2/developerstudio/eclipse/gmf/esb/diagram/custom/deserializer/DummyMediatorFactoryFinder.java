@@ -95,11 +95,11 @@ import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
 
 public class DummyMediatorFactoryFinder {
 
-	private final static String SYNAPSE_NS = "http://ws.apache.org/ns/synapse";
-	private Map<String, Library> synapseLibraryMap;
-	private Map<String, SynapseImport> synapseImportMap;
+    private final static String SYNAPSE_NS = "http://ws.apache.org/ns/synapse";
+    private Map<String, Library> synapseLibraryMap;
+    private Map<String, SynapseImport> synapseImportMap;
 
-	private static final Class[] mediatorFactories = { 
+    private static final Class[] mediatorFactories = { 
 			SequenceMediatorFactory.class, 
 			LogMediatorFactory.class,
 			SendMediatorFactory.class, 
@@ -152,283 +152,283 @@ public class DummyMediatorFactoryFinder {
 			DataMapperMediatorFactory.class, 
 			ThrottleMediatorFactory.class };
 
-	private final static DummyMediatorFactoryFinder instance = new DummyMediatorFactoryFinder();
+    private final static DummyMediatorFactoryFinder instance = new DummyMediatorFactoryFinder();
 
-	/**
-	 * A map of mediator QNames to implementation class
-	 */
-	private static Map<QName, Class> factoryMap = new HashMap<QName, Class>();
+    /**
+     * A map of mediator QNames to implementation class
+     */
+    private static Map<QName, Class> factoryMap = new HashMap<QName, Class>();
 
-	private static boolean initialized = false;
+    private static boolean initialized = false;
 
-	public static synchronized DummyMediatorFactoryFinder getInstance() {
-		if (!initialized) {
-			loadMediatorFactories();
+    public static synchronized DummyMediatorFactoryFinder getInstance() {
+	if (!initialized) {
+	    loadMediatorFactories();
+	}
+	return instance;
+    }
+
+    /**
+     * Force re initialization next time
+     */
+    public static synchronized void reset() {
+	factoryMap.clear();
+	initialized = false;
+    }
+
+    private DummyMediatorFactoryFinder() {
+    }
+
+    private static void loadMediatorFactories() {
+	for (Class c : mediatorFactories) {
+	    try {
+		MediatorFactory fac = (MediatorFactory) c.newInstance();
+		factoryMap.put(fac.getTagQName(), c);
+	    } catch (Exception e) {
+		throw new SynapseException("Error instantiating " + c.getName(), e);
+	    }
+	}
+	initialized = true;
+    }
+
+    /**
+     * This method returns a Processor given an OMElement. This will be used
+     * recursively by the elements which contain processor elements themselves (e.g.
+     * rules)
+     *
+     * @param element
+     *            XML representation of a mediator
+     * @param properties
+     *            bag of properties to pass in any information to the factory
+     * @return Processor
+     */
+    public Mediator getMediator(OMElement element, Properties properties) {
+
+	String localName = element.getLocalName();
+	QName qName;
+	if (element.getNamespace() != null) {
+	    qName = new QName(element.getNamespace().getNamespaceURI(), localName);
+	} else {
+	    qName = new QName(localName);
+	}
+
+	Class cls = factoryMap.get(qName);
+
+	if (cls == null && localName.indexOf('.') > -1) {
+	    String newLocalName = localName.substring(0, localName.indexOf('.'));
+	    qName = new QName(element.getNamespace().getNamespaceURI(), newLocalName);
+
+	    cls = factoryMap.get(qName);
+	}
+
+	if (cls == null) {
+	    if (synapseLibraryMap != null && !synapseLibraryMap.isEmpty()) {
+		for (Map.Entry<String, Library> entry : synapseLibraryMap.entrySet()) {
+		    if (entry.getValue().getLibArtifactDetails().containsKey(localName)) {
+			return getDynamicInvokeMediator(element, entry.getValue().getPackage());
+		    }
 		}
-		return instance;
-	}
+	    }
 
-	/**
-	 * Force re initialization next time
-	 */
-	public static synchronized void reset() {
-		factoryMap.clear();
-		initialized = false;
-	}
-
-	private DummyMediatorFactoryFinder() {
-	}
-
-	private static void loadMediatorFactories() {
-		for (Class c : mediatorFactories) {
-			try {
-				MediatorFactory fac = (MediatorFactory) c.newInstance();
-				factoryMap.put(fac.getTagQName(), c);
-			} catch (Exception e) {
-				throw new SynapseException("Error instantiating " + c.getName(), e);
-			}
+	    if (synapseImportMap != null && !synapseImportMap.isEmpty()) {
+		for (Map.Entry<String, SynapseImport> entry : synapseImportMap.entrySet()) {
+		    if (localName.startsWith(entry.getValue().getLibName())) {
+			return getDynamicInvokeMediator(element, entry.getValue().getLibPackage());
+		    }
 		}
-		initialized = true;
+	    }
+
+	    String msg = "Unknown mediator referenced by configuration element : " + qName;
+
+	    throw new SynapseException(msg);
 	}
 
-	/**
-	 * This method returns a Processor given an OMElement. This will be used
-	 * recursively by the elements which contain processor elements themselves (e.g.
-	 * rules)
-	 *
-	 * @param element
-	 *            XML representation of a mediator
-	 * @param properties
-	 *            bag of properties to pass in any information to the factory
-	 * @return Processor
-	 */
-	public Mediator getMediator(OMElement element, Properties properties) {
+	try {
+	    MediatorFactory mf = (MediatorFactory) cls.newInstance();
+	    return mf.createMediator(element, properties);
 
-		String localName = element.getLocalName();
-		QName qName;
+	} catch (SynapseException | MediatorException e) {
+	    String msg = "Error initializing mediator factory : " + cls;
+	    DummyCreateMediator dummyCreateMediator = new DummyCreateMediator();
+	    return dummyCreateMediator.createMediator(element, localName);
+
+	} catch (InstantiationException e) {
+	    String msg = "Error initializing mediator factory : " + cls;
+
+	    throw new SynapseException(msg, e);
+
+	} catch (IllegalAccessException e) {
+	    String msg = "Error initializing mediator factory : " + cls;
+
+	    throw new SynapseException(msg, e);
+	}
+    }
+
+    public Class getFactory(String mediatorVal, String qTag) {
+
+	OMElement element;
+	String localName = "";
+	QName qName;
+	Class cls = null;
+	try {
+	    element = AXIOMUtil.stringToOM(mediatorVal);
+
+	    localName = element.getLocalName();
+
+	    if (element.getNamespace() != null) {
+		qName = new QName(element.getNamespace().getNamespaceURI(), localName);
+	    } else {
+		qName = new QName(localName);
+	    }
+
+	    cls = factoryMap.get(qName);
+
+	    if (cls == null && localName.indexOf('.') > -1) {
+		String newLocalName = localName.substring(0, localName.indexOf('.'));
 		if (element.getNamespace() != null) {
-			qName = new QName(element.getNamespace().getNamespaceURI(), localName);
-		} else {
-			qName = new QName(localName);
+		    qName = new QName(element.getNamespace().getNamespaceURI(), newLocalName);
 		}
 
-		Class cls = factoryMap.get(qName);
+		cls = factoryMap.get(qName);
+	    }
+
+	    if (cls == null && element.getNamespace() == null) {
+		qName = new QName(SYNAPSE_NS, localName);
+
+		cls = factoryMap.get(qName);
 
 		if (cls == null && localName.indexOf('.') > -1) {
-			String newLocalName = localName.substring(0, localName.indexOf('.'));
-			qName = new QName(element.getNamespace().getNamespaceURI(), newLocalName);
+		    String newLocalName = localName.substring(0, localName.indexOf('.'));
+		    qName = new QName(SYNAPSE_NS, newLocalName);
 
-			cls = factoryMap.get(qName);
+		    cls = factoryMap.get(qName);
 		}
+	    }
 
-		if (cls == null) {
-			if (synapseLibraryMap != null && !synapseLibraryMap.isEmpty()) {
-				for (Map.Entry<String, Library> entry : synapseLibraryMap.entrySet()) {
-					if (entry.getValue().getLibArtifactDetails().containsKey(localName)) {
-						return getDynamicInvokeMediator(element, entry.getValue().getPackage());
-					}
-				}
-			}
+	} catch (XMLStreamException e) {
+	    // ignore
+	}
 
-			if (synapseImportMap != null && !synapseImportMap.isEmpty()) {
-				for (Map.Entry<String, SynapseImport> entry : synapseImportMap.entrySet()) {
-					if (localName.startsWith(entry.getValue().getLibName())) {
-						return getDynamicInvokeMediator(element, entry.getValue().getLibPackage());
-					}
-				}
-			}
+	return cls;
+    }
 
-			String msg = "Unknown mediator referenced by configuration element : " + qName;
+    /**
+     * This method exposes all the MediatorFactories and its Extensions
+     * 
+     * @return factoryMap
+     */
+    public Map<QName, Class> getFactoryMap() {
+	return factoryMap;
+    }
 
-			throw new SynapseException(msg);
+    /**
+     * Allow the mediator factory finder to act as an XMLToObjectMapper for
+     * Mediators (i.e. Sequence Mediator) loaded dynamically from a Registry
+     * 
+     * @param om
+     *            node from which the object is expected
+     * @return Object buit from the om node
+     */
+    public Object getObjectFromOMNode(OMNode om, Properties properties) {
+	if (om instanceof OMElement) {
+	    return getMediator((OMElement) om, properties);
+	} else {
+	    handleException("Invalid mediator configuration XML : " + om);
+	}
+	return null;
+    }
+
+    private void handleException(String msg) {
+
+	throw new SynapseException(msg);
+    }
+
+    public Map<String, Library> getSynapseLibraryMap() {
+	return synapseLibraryMap;
+    }
+
+    public void setSynapseLibraryMap(Map<String, Library> synapseLibraryMap) {
+	this.synapseLibraryMap = synapseLibraryMap;
+    }
+
+    public Map<String, SynapseImport> getSynapseImportMap() {
+	return synapseImportMap;
+    }
+
+    public void setSynapseImportMap(Map<String, SynapseImport> synapseImportMap) {
+	this.synapseImportMap = synapseImportMap;
+    }
+
+    public static void main(String[] args) throws Exception {
+	String connectorStr = "<sfdc.getContact xmlns=\"http://ws.apache.org/ns/synapse\">\n"
+		+ "\t\t <parameter name=\"param1\" value=\"val1\"/>\n"
+		+ "\t\t <parameter name=\"param2\" value=\"val2\"/>\n" + "\t</sfdc.getContact>";
+
+	OMElement inConnectorElem = AXIOMUtil.stringToOM(connectorStr);
+	String libName = "synapse.lang.eip";
+
+	InvokeMediator invokeMediator = MediatorFactoryFinder.getInstance().getDynamicInvokeMediator(inConnectorElem,
+		libName);
+	invokeMediator.getTargetTemplate();
+
+    }
+
+    public OMElement getCallTemplateFromConnector(OMElement connectorElem, String libraryName) {
+	String callTemplateConfig = "<call-template target=\"synapse.lang.eip.sfdc.getContact\">\n"
+		+ "            <with-param name=\"p1\" value=\"abc\"/>\n"
+		+ "            <with-param name=\"p2\" value=\"efg\"/>\n" + "        </call-template>";
+	OMElement callTemplateElem = null;
+
+	try {
+	    callTemplateElem = AXIOMUtil.stringToOM(callTemplateConfig);
+
+	} catch (XMLStreamException e) {
+	    e.printStackTrace();
+	}
+	return callTemplateElem;
+    }
+
+    public InvokeMediator getDynamicInvokeMediator(OMElement connectorElem, String libraryName) {
+	InvokeMediator invokeMediator = new InvokeMediator();
+	if (connectorElem.getLocalName() != null && libraryName != null && !libraryName.equals("")) {
+	    invokeMediator.setTargetTemplate(libraryName + "." + connectorElem.getLocalName());
+	}
+
+	// load configuration based references for the given connector
+	OMAttribute config_key = connectorElem.getAttribute(new QName(XMLConfigConstants.CONFIG_REF));
+	if (config_key != null) {
+	    // ValueFactory for creating dynamic or static Value
+	    ValueFactory keyFac = new ValueFactory();
+	    // create dynamic or static key based on OMElement
+	    Value generatedKey = keyFac.createValue(XMLConfigConstants.CONFIG_REF, connectorElem);
+	    // setKey
+	    invokeMediator.setKey(generatedKey);
+	}
+
+	buildParamteres(connectorElem, invokeMediator);
+
+	invokeMediator.setPackageName(libraryName);
+	invokeMediator.setDynamicMediator(true);
+	return invokeMediator;
+
+    }
+
+    private void buildParamteres(OMElement connectorElem, InvokeMediator invokeMediator) {
+	Iterator parameters = connectorElem.getChildElements();
+	while (parameters.hasNext()) {
+	    OMNode paramNode = (OMNode) parameters.next();
+	    if (paramNode instanceof OMElement) {
+		String paramName = ((OMElement) paramNode).getLocalName(); // ((OMElement)
+									   // paramNode).getAttributeValue(new
+									   // QName("name"));
+		String paramValueStr = ((OMElement) paramNode).getText();// ((OMElement)
+									 // paramNode).getAttributeValue(new
+									 // QName("value"));
+		if (paramName != null && !paramName.equals("") && paramValueStr != null && !paramValueStr.equals("")) {
+		    Value paramValue = new ValueFactory().createTextValue((OMElement) paramNode);
+		    invokeMediator.addExpressionForParamName(paramName, paramValue);
 		}
-
-		try {
-			MediatorFactory mf = (MediatorFactory) cls.newInstance();
-			return mf.createMediator(element, properties);
-
-		} catch (SynapseException | MediatorException e) {
-			String msg = "Error initializing mediator factory : " + cls;
-			DummyCreateMediator dummyCreateMediator = new DummyCreateMediator();
-			return dummyCreateMediator.createMediator(element, localName);
-
-		} catch (InstantiationException e) {
-			String msg = "Error initializing mediator factory : " + cls;
-
-			throw new SynapseException(msg, e);
-
-		} catch (IllegalAccessException e) {
-			String msg = "Error initializing mediator factory : " + cls;
-
-			throw new SynapseException(msg, e);
-		}
+	    }
 	}
-
-	public Class getFactory(String mediatorVal, String qTag) {
-
-		OMElement element;
-		String localName = "";
-		QName qName;
-		Class cls = null;
-		try {
-			element = AXIOMUtil.stringToOM(mediatorVal);
-
-			localName = element.getLocalName();
-
-			if (element.getNamespace() != null) {
-				qName = new QName(element.getNamespace().getNamespaceURI(), localName);
-			} else {
-				qName = new QName(localName);
-			}
-
-			cls = factoryMap.get(qName);
-
-			if (cls == null && localName.indexOf('.') > -1) {
-				String newLocalName = localName.substring(0, localName.indexOf('.'));
-				if (element.getNamespace() != null) {
-					qName = new QName(element.getNamespace().getNamespaceURI(), newLocalName);
-				}
-
-				cls = factoryMap.get(qName);
-			}
-
-			if (cls == null && element.getNamespace() == null) {
-				qName = new QName(SYNAPSE_NS, localName);
-
-				cls = factoryMap.get(qName);
-
-				if (cls == null && localName.indexOf('.') > -1) {
-					String newLocalName = localName.substring(0, localName.indexOf('.'));
-					qName = new QName(SYNAPSE_NS, newLocalName);
-
-					cls = factoryMap.get(qName);
-				}
-			}
-
-		} catch (XMLStreamException e) {
-			// ignore
-		}
-
-		return cls;
-	}
-
-	/**
-	 * This method exposes all the MediatorFactories and its Extensions
-	 * 
-	 * @return factoryMap
-	 */
-	public Map<QName, Class> getFactoryMap() {
-		return factoryMap;
-	}
-
-	/**
-	 * Allow the mediator factory finder to act as an XMLToObjectMapper for
-	 * Mediators (i.e. Sequence Mediator) loaded dynamically from a Registry
-	 * 
-	 * @param om
-	 *            node from which the object is expected
-	 * @return Object buit from the om node
-	 */
-	public Object getObjectFromOMNode(OMNode om, Properties properties) {
-		if (om instanceof OMElement) {
-			return getMediator((OMElement) om, properties);
-		} else {
-			handleException("Invalid mediator configuration XML : " + om);
-		}
-		return null;
-	}
-
-	private void handleException(String msg) {
-
-		throw new SynapseException(msg);
-	}
-
-	public Map<String, Library> getSynapseLibraryMap() {
-		return synapseLibraryMap;
-	}
-
-	public void setSynapseLibraryMap(Map<String, Library> synapseLibraryMap) {
-		this.synapseLibraryMap = synapseLibraryMap;
-	}
-
-	public Map<String, SynapseImport> getSynapseImportMap() {
-		return synapseImportMap;
-	}
-
-	public void setSynapseImportMap(Map<String, SynapseImport> synapseImportMap) {
-		this.synapseImportMap = synapseImportMap;
-	}
-
-	public static void main(String[] args) throws Exception {
-		String connectorStr = "<sfdc.getContact xmlns=\"http://ws.apache.org/ns/synapse\">\n"
-				+ "\t\t <parameter name=\"param1\" value=\"val1\"/>\n"
-				+ "\t\t <parameter name=\"param2\" value=\"val2\"/>\n" + "\t</sfdc.getContact>";
-
-		OMElement inConnectorElem = AXIOMUtil.stringToOM(connectorStr);
-		String libName = "synapse.lang.eip";
-
-		InvokeMediator invokeMediator = MediatorFactoryFinder.getInstance().getDynamicInvokeMediator(inConnectorElem,
-				libName);
-		invokeMediator.getTargetTemplate();
-
-	}
-
-	public OMElement getCallTemplateFromConnector(OMElement connectorElem, String libraryName) {
-		String callTemplateConfig = "<call-template target=\"synapse.lang.eip.sfdc.getContact\">\n"
-				+ "            <with-param name=\"p1\" value=\"abc\"/>\n"
-				+ "            <with-param name=\"p2\" value=\"efg\"/>\n" + "        </call-template>";
-		OMElement callTemplateElem = null;
-
-		try {
-			callTemplateElem = AXIOMUtil.stringToOM(callTemplateConfig);
-
-		} catch (XMLStreamException e) {
-			e.printStackTrace();
-		}
-		return callTemplateElem;
-	}
-
-	public InvokeMediator getDynamicInvokeMediator(OMElement connectorElem, String libraryName) {
-		InvokeMediator invokeMediator = new InvokeMediator();
-		if (connectorElem.getLocalName() != null && libraryName != null && !libraryName.equals("")) {
-			invokeMediator.setTargetTemplate(libraryName + "." + connectorElem.getLocalName());
-		}
-
-		// load configuration based references for the given connector
-		OMAttribute config_key = connectorElem.getAttribute(new QName(XMLConfigConstants.CONFIG_REF));
-		if (config_key != null) {
-			// ValueFactory for creating dynamic or static Value
-			ValueFactory keyFac = new ValueFactory();
-			// create dynamic or static key based on OMElement
-			Value generatedKey = keyFac.createValue(XMLConfigConstants.CONFIG_REF, connectorElem);
-			// setKey
-			invokeMediator.setKey(generatedKey);
-		}
-
-		buildParamteres(connectorElem, invokeMediator);
-
-		invokeMediator.setPackageName(libraryName);
-		invokeMediator.setDynamicMediator(true);
-		return invokeMediator;
-
-	}
-
-	private void buildParamteres(OMElement connectorElem, InvokeMediator invokeMediator) {
-		Iterator parameters = connectorElem.getChildElements();
-		while (parameters.hasNext()) {
-			OMNode paramNode = (OMNode) parameters.next();
-			if (paramNode instanceof OMElement) {
-				String paramName = ((OMElement) paramNode).getLocalName(); // ((OMElement)
-																			// paramNode).getAttributeValue(new
-																			// QName("name"));
-				String paramValueStr = ((OMElement) paramNode).getText();// ((OMElement)
-																			// paramNode).getAttributeValue(new
-																			// QName("value"));
-				if (paramName != null && !paramName.equals("") && paramValueStr != null && !paramValueStr.equals("")) {
-					Value paramValue = new ValueFactory().createTextValue((OMElement) paramNode);
-					invokeMediator.addExpressionForParamName(paramName, paramValue);
-				}
-			}
-		}
-	}
+    }
 }

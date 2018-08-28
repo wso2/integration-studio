@@ -28,18 +28,18 @@ import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.transaction.TransactionMediator;
 
 public class TransactionMediatorExtFactory extends TransactionMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new TransactionMediator();
-		
-		OMAttribute action = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "action"));
-		processAuditStatus(mediator, omElement);
-		if (action != null) {
-			((TransactionMediator) mediator).setAction(action.getAttributeValue());
-		}
-		
-		return mediator;
+
+    protected Mediator createSpecificMediator(OMElement omElement) {
+
+	Mediator mediator = new TransactionMediator();
+
+	OMAttribute action = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "action"));
+	processAuditStatus(mediator, omElement);
+	if (action != null) {
+	    ((TransactionMediator) mediator).setAction(action.getAttributeValue());
 	}
+
+	return mediator;
+    }
 
 }

@@ -42,111 +42,111 @@ import java.util.Properties;
 
 public class DummyTemplateMediatorFactory extends AbstractListMediatorFactory {
 
-	private static final QName TEMPLATE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "template");
-	private static final QName TEMPLATE_BODY_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "sequence");
-	protected static final QName ATT_NAME = new QName("name");
-	protected static final QName ATT_STATS = new QName(XMLConfigConstants.STATISTICS_ATTRIB_NAME);
-	protected static final QName DESCRIPTION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "description");
+    private static final QName TEMPLATE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "template");
+    private static final QName TEMPLATE_BODY_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "sequence");
+    protected static final QName ATT_NAME = new QName("name");
+    protected static final QName ATT_STATS = new QName(XMLConfigConstants.STATISTICS_ATTRIB_NAME);
+    protected static final QName DESCRIPTION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "description");
 
-	/**
-	 * Element QName Definitions
-	 */
-	public static final QName PARAMETER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "parameter");
+    /**
+     * Element QName Definitions
+     */
+    public static final QName PARAMETER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "parameter");
 
-	protected Mediator createSpecificMediator(OMElement elem, Properties properties) {
-		TemplateMediator templateTemplateMediator = new TemplateMediator();
-		OMAttribute nameAttr = elem.getAttribute(ATT_NAME);
-		if (nameAttr != null) {
-			templateTemplateMediator.setName(nameAttr.getAttributeValue());
-			processAuditStatus(templateTemplateMediator, elem);
-			initParameters(elem, templateTemplateMediator);
-			OMElement templateBodyElem = elem.getFirstChildWithName(TEMPLATE_BODY_Q);
-			addChildren(templateBodyElem, templateTemplateMediator, properties);
-		} else {
-			String msg = "A EIP template should be a named mediator .";
+    protected Mediator createSpecificMediator(OMElement elem, Properties properties) {
+	TemplateMediator templateTemplateMediator = new TemplateMediator();
+	OMAttribute nameAttr = elem.getAttribute(ATT_NAME);
+	if (nameAttr != null) {
+	    templateTemplateMediator.setName(nameAttr.getAttributeValue());
+	    processAuditStatus(templateTemplateMediator, elem);
+	    initParameters(elem, templateTemplateMediator);
+	    OMElement templateBodyElem = elem.getFirstChildWithName(TEMPLATE_BODY_Q);
+	    addChildren(templateBodyElem, templateTemplateMediator, properties);
+	} else {
+	    String msg = "A EIP template should be a named mediator .";
+	    throw new SynapseException(msg);
+	}
+	return templateTemplateMediator;
+    }
+
+    private void initParameters(OMElement templateElem, TemplateMediator templateMediator) {
+	Iterator subElements = templateElem.getChildElements();
+	Collection<String> paramNames = new ArrayList<String>();
+	while (subElements.hasNext()) {
+	    OMElement child = (OMElement) subElements.next();
+	    if (child.getQName().equals(PARAMETER_Q)) {
+		OMAttribute paramNameAttr = child.getAttribute(ATT_NAME);
+		if (paramNameAttr != null) {
+		    paramNames.add(paramNameAttr.getAttributeValue());
+		}
+		// child.detach();
+	    }
+	}
+	templateMediator.setParameters(paramNames);
+    }
+
+    public QName getTagQName() {
+	return TEMPLATE_Q;
+    }
+
+    protected void processAuditStatus(Mediator mediator, OMElement mediatorOmElement) {
+
+	String name = null;
+	if (mediator instanceof Nameable) {
+	    name = ((Nameable) mediator).getName();
+	}
+	if (name == null || "".equals(name)) {
+	    name = SynapseConstants.ANONYMOUS_SEQUENCE;
+	}
+
+	if (mediator instanceof AspectConfigurable) {
+	    AspectConfiguration configuration = new AspectConfiguration(name);
+	    ((AspectConfigurable) mediator).configure(configuration);
+
+	    OMAttribute statistics = mediatorOmElement.getAttribute(ATT_STATS);
+	    if (statistics != null) {
+		String statisticsValue = statistics.getAttributeValue();
+		if (statisticsValue != null) {
+		    if (XMLConfigConstants.STATISTICS_ENABLE.equals(statisticsValue)) {
+			configuration.enableStatistics();
+		    }
+		}
+	    }
+
+	    OMAttribute trace = mediatorOmElement
+		    .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.TRACE_ATTRIB_NAME));
+	    if (trace != null) {
+		String traceValue = trace.getAttributeValue();
+		if (traceValue != null) {
+		    if (traceValue.equals(XMLConfigConstants.TRACE_ENABLE)) {
+			configuration.enableTracing();
+		    }
+		}
+	    }
+	}
+    }
+
+    protected static void addChildren(OMElement el, ListMediator m, Properties properties) {
+	Iterator it = el.getChildren();
+
+	while (it.hasNext()) {
+	    OMNode child = (OMNode) it.next();
+	    if (child instanceof OMElement) {
+		if (!DESCRIPTION_Q.equals(((OMElement) child).getQName())) {
+		    Mediator med = DummyMediatorFactoryFinder.getInstance().getMediator((OMElement) child, properties);
+		    if (med != null) {
+			m.addChild(med);
+		    } else {
+			String msg = "Unknown mediator : " + ((OMElement) child).getLocalName();
 			throw new SynapseException(msg);
+		    }
 		}
-		return templateTemplateMediator;
+	    } else if (child instanceof OMComment) {
+		CommentMediator commendMediator = new CommentMediator();
+		commendMediator.setCommentText(((OMComment) child).getValue());
+		m.addChild(commendMediator);
+	    }
 	}
-
-	private void initParameters(OMElement templateElem, TemplateMediator templateMediator) {
-		Iterator subElements = templateElem.getChildElements();
-		Collection<String> paramNames = new ArrayList<String>();
-		while (subElements.hasNext()) {
-			OMElement child = (OMElement) subElements.next();
-			if (child.getQName().equals(PARAMETER_Q)) {
-				OMAttribute paramNameAttr = child.getAttribute(ATT_NAME);
-				if (paramNameAttr != null) {
-					paramNames.add(paramNameAttr.getAttributeValue());
-				}
-				// child.detach();
-			}
-		}
-		templateMediator.setParameters(paramNames);
-	}
-
-	public QName getTagQName() {
-		return TEMPLATE_Q;
-	}
-
-	protected void processAuditStatus(Mediator mediator, OMElement mediatorOmElement) {
-
-		String name = null;
-		if (mediator instanceof Nameable) {
-			name = ((Nameable) mediator).getName();
-		}
-		if (name == null || "".equals(name)) {
-			name = SynapseConstants.ANONYMOUS_SEQUENCE;
-		}
-
-		if (mediator instanceof AspectConfigurable) {
-			AspectConfiguration configuration = new AspectConfiguration(name);
-			((AspectConfigurable) mediator).configure(configuration);
-
-			OMAttribute statistics = mediatorOmElement.getAttribute(ATT_STATS);
-			if (statistics != null) {
-				String statisticsValue = statistics.getAttributeValue();
-				if (statisticsValue != null) {
-					if (XMLConfigConstants.STATISTICS_ENABLE.equals(statisticsValue)) {
-						configuration.enableStatistics();
-					}
-				}
-			}
-
-			OMAttribute trace = mediatorOmElement
-					.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.TRACE_ATTRIB_NAME));
-			if (trace != null) {
-				String traceValue = trace.getAttributeValue();
-				if (traceValue != null) {
-					if (traceValue.equals(XMLConfigConstants.TRACE_ENABLE)) {
-						configuration.enableTracing();
-					}
-				}
-			}
-		}
-	}
-
-	protected static void addChildren(OMElement el, ListMediator m, Properties properties) {
-		Iterator it = el.getChildren();
-
-		while (it.hasNext()) {
-			OMNode child = (OMNode) it.next();
-			if (child instanceof OMElement) {
-				if (!DESCRIPTION_Q.equals(((OMElement) child).getQName())) {
-					Mediator med = DummyMediatorFactoryFinder.getInstance().getMediator((OMElement) child, properties);
-					if (med != null) {
-						m.addChild(med);
-					} else {
-						String msg = "Unknown mediator : " + ((OMElement) child).getLocalName();
-						throw new SynapseException(msg);
-					}
-				}
-			} else if (child instanceof OMComment) {
-				CommentMediator commendMediator = new CommentMediator();
-				commendMediator.setCommentText(((OMComment) child).getValue());
-				m.addChild(commendMediator);
-			}
-		}
-	}
+    }
 
 }

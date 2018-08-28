@@ -1,4 +1,5 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
@@ -13,15 +14,6 @@ import java.util.Properties;
 
 /**
  * Factory for {@link CalloutMediator} instances.
- * 
- * <pre>
- * &lt;callout serviceURL="string" | endpointKey="string" [action="string"]&gt;
- *      &lt;configuration [axis2xml="string"] [repository="string"]/&gt;?
- *      &lt;source xpath="expression" | key="string" | type="envelope"&gt;
- *      &lt;target xpath="expression" | key="string"/&gt;
- *      &lt;enableSec policy="string" | outboundPolicy="String" | inboundPolicy="String" /&gt;?
- * &lt;/callout&gt;
- * </pre>
  */
 public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
 

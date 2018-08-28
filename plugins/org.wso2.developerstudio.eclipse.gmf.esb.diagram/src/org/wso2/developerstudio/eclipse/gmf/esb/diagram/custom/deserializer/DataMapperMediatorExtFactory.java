@@ -30,59 +30,48 @@ import org.wso2.carbon.mediator.datamapper.config.xml.DataMapperMediatorConstant
 import org.wso2.carbon.mediator.datamapper.config.xml.DataMapperMediatorFactory;
 
 public class DataMapperMediatorExtFactory extends DataMapperMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new DataMapperMediator();
 
-		OMAttribute configKeyAttribute = omElement.getAttribute(new QName(DataMapperMediatorConstants.CONFIG));
-		OMAttribute inputSchemaKeyAttribute = omElement
-				.getAttribute(new QName(DataMapperMediatorConstants.INPUT_SCHEMA));
-		OMAttribute outputSchemaKeyAttribute = omElement
-				.getAttribute(new QName(DataMapperMediatorConstants.OUTPUT_SCHEMA));
-		OMAttribute inputTypeAttribute = omElement.getAttribute(new QName(DataMapperMediatorConstants.INPUT_TYPE));
-		OMAttribute outputTypeAttribute = omElement
-				.getAttribute(new QName(DataMapperMediatorConstants.OUTPUT_TYPE));
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		ValueFactory keyFac = new ValueFactory();
+	Mediator mediator = new DataMapperMediator();
 
-		if (configKeyAttribute != null) {
-			Value configKeyValue = keyFac.createValue(configKeyAttribute.getLocalName(), omElement);
-			((DataMapperMediator) mediator).setMappingConfigurationKey(configKeyValue);
-		} else {
-			// ignore
-		}
+	OMAttribute configKeyAttribute = omElement.getAttribute(new QName(DataMapperMediatorConstants.CONFIG));
+	OMAttribute inputSchemaKeyAttribute = omElement
+		.getAttribute(new QName(DataMapperMediatorConstants.INPUT_SCHEMA));
+	OMAttribute outputSchemaKeyAttribute = omElement
+		.getAttribute(new QName(DataMapperMediatorConstants.OUTPUT_SCHEMA));
+	OMAttribute inputTypeAttribute = omElement.getAttribute(new QName(DataMapperMediatorConstants.INPUT_TYPE));
+	OMAttribute outputTypeAttribute = omElement.getAttribute(new QName(DataMapperMediatorConstants.OUTPUT_TYPE));
 
-		if (inputSchemaKeyAttribute != null) {
-			Value inputSchemaKeyValue = keyFac.createValue(inputSchemaKeyAttribute.getLocalName(), omElement);
-			((DataMapperMediator) mediator).setInputSchemaKey(inputSchemaKeyValue);
-		} else {
-			// ignore
-		}
+	ValueFactory keyFac = new ValueFactory();
 
-		if (outputSchemaKeyAttribute != null) {
-			Value outputSchemaKeyValue = keyFac.createValue(outputSchemaKeyAttribute.getLocalName(), omElement);
-			((DataMapperMediator) mediator).setOutputSchemaKey(outputSchemaKeyValue);
-		} else {
-			// ignore
-		}
-
-		if (inputTypeAttribute != null) {
-			((DataMapperMediator) mediator).setInputType(inputTypeAttribute.getAttributeValue());
-		} else {
-			// ignore
-		}
-
-		if (outputTypeAttribute != null) {
-			((DataMapperMediator) mediator).setOutputType(outputTypeAttribute.getAttributeValue());
-		} else {
-			// ignore
-		}
-
-		processAuditStatus(mediator, omElement);
-		
-		return mediator;
-
+	if (configKeyAttribute != null) {
+	    Value configKeyValue = keyFac.createValue(configKeyAttribute.getLocalName(), omElement);
+	    ((DataMapperMediator) mediator).setMappingConfigurationKey(configKeyValue);
 	}
+
+	if (inputSchemaKeyAttribute != null) {
+	    Value inputSchemaKeyValue = keyFac.createValue(inputSchemaKeyAttribute.getLocalName(), omElement);
+	    ((DataMapperMediator) mediator).setInputSchemaKey(inputSchemaKeyValue);
+	}
+
+	if (outputSchemaKeyAttribute != null) {
+	    Value outputSchemaKeyValue = keyFac.createValue(outputSchemaKeyAttribute.getLocalName(), omElement);
+	    ((DataMapperMediator) mediator).setOutputSchemaKey(outputSchemaKeyValue);
+	}
+
+	if (inputTypeAttribute != null) {
+	    ((DataMapperMediator) mediator).setInputType(inputTypeAttribute.getAttributeValue());
+	}
+
+	if (outputTypeAttribute != null) {
+	    ((DataMapperMediator) mediator).setOutputType(outputTypeAttribute.getAttributeValue());
+	}
+
+	processAuditStatus(mediator, omElement);
+
+	return mediator;
+
+    }
 
 }

@@ -31,29 +31,29 @@ import org.wso2.carbon.mediator.event.EventMediator;
 import org.wso2.carbon.mediator.event.xml.EventMediatorFactory;
 
 public class EventMediatorExtFactory extends EventMediatorFactory {
-	
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new EventMediator();
-		OMAttribute topicAttr = omElement.getAttribute(new QName("topic"));
-		if (topicAttr != null) {
-			ValueFactory vf = new ValueFactory();
-			Value value = vf.createValue("topic", omElement);
 
-			((EventMediator) mediator).setTopic(value);
-		}
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		OMAttribute expression = omElement.getAttribute(new QName("expression"));
-		if (expression != null) {
-			try {
-				((EventMediator) mediator)
-						.setExpression(SynapseXPathFactory.getSynapseXPath(omElement, new QName("expression")));
-			} catch (JaxenException e) {
-				// ignore
-			}
-		}
-		
-		return mediator;
+	Mediator mediator = new EventMediator();
+	OMAttribute topicAttr = omElement.getAttribute(new QName("topic"));
+	if (topicAttr != null) {
+	    ValueFactory vf = new ValueFactory();
+	    Value value = vf.createValue("topic", omElement);
+
+	    ((EventMediator) mediator).setTopic(value);
 	}
+
+	OMAttribute expression = omElement.getAttribute(new QName("expression"));
+	if (expression != null) {
+	    try {
+		((EventMediator) mediator)
+			.setExpression(SynapseXPathFactory.getSynapseXPath(omElement, new QName("expression")));
+	    } catch (JaxenException e) {
+		// ignore
+	    }
+	}
+
+	return mediator;
+    }
 
 }

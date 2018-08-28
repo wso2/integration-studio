@@ -958,37 +958,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 						.getActivePage().getEditorReferences();
 				for (int i = 0; i < editorReferences.length; i++) {
 					IEditorPart editor = editorReferences[i].getEditor(false);
-					// if ((editor instanceof EsbMultiPageEditor) && (!editor.equals(this))) {
-
-					// IFile openedFile =
-					// ((IFileEditorInput)editor.getEditorInput()).getFile();
-					/*
-					 * ElementDuplicator endPointDuplicator = new
-					 * ElementDuplicator(openedFile.getProject(),((
-					 * EsbMultiPageEditor)editor).getGraphicalEditor());
-					 * endPointDuplicator.updateAssociatedDiagrams(( EsbMultiPageEditor)editor);
-					 */
-
-					/*
-					 * Map registry = ((EsbMultiPageEditor) editor).getDiagramEditPart()
-					 * .getViewer().getEditPartRegistry();
-					 * 
-					 * 
-					 * Collection<Object> values=new ArrayList<Object>();
-					 * values.addAll(registry.values());
-					 * 
-					 * for (int j = 0; j < values.size(); ++j) { EditPart element = (EditPart)
-					 * values.toArray()[j]; if (element instanceof SequenceEditPart) { String key =
-					 * ((Sequence) ((Node) element.getModel()).getElement()) .getName(); String name
-					 * = ((Sequences) child).getName(); if (key.equals(name)) { EndPointDuplicator
-					 * endPointDuplicator = new EndPointDuplicator(file.getProject(),
-					 * ((EsbMultiPageEditor) editor).graphicalEditor); GraphicalEditPart
-					 * rootCompartment = EditorUtils
-					 * .getSequenceAndEndpointCompartmentEditPart(element);
-					 * endPointDuplicator.duplicateEndPoints( rootCompartment, ((Sequences)
-					 * child).getName()); } } }
-					 */
-					// }
 				}
 			}
 			break;
@@ -1339,11 +1308,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	void rebuildModelObject(final String xml, boolean withSynapse) throws Exception {
 
-		// try {
 		Deserializer.getInstance().updateDesign(xml, graphicalEditor, withSynapse);
-		// } catch (Exception e) {
-		// System.out.println("ABC: " + e.getMessage());
-		// }
 
 		final EsbMultiPageEditor tempEditor = this;
 		Display.getDefault().asyncExec(new Runnable() {

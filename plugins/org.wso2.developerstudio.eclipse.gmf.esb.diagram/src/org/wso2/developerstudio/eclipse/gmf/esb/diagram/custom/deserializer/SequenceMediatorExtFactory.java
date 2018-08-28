@@ -30,38 +30,38 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 
 public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
 
-	protected Mediator createSpecificMediator(OMElement omElement) {
-		
-		Mediator mediator = new SequenceMediator();
+    protected Mediator createSpecificMediator(OMElement omElement) {
 
-		OMAttribute e = omElement.getAttribute(ATT_ONERROR);
-		OMAttribute n = omElement.getAttribute(ATT_NAME);
+	Mediator mediator = new SequenceMediator();
 
-		if (e != null) {
-			((SequenceMediator) mediator).setErrorHandler(e.getAttributeValue());
-		}
-		processAuditStatus(mediator, omElement);
+	OMAttribute e = omElement.getAttribute(ATT_ONERROR);
+	OMAttribute n = omElement.getAttribute(ATT_NAME);
 
-		OMElement descElem = omElement.getFirstChildWithName(DESCRIPTION_Q);
-		if (descElem != null) {
-			((SequenceMediator) mediator).setDescription(descElem.getText());
-		}
-		addChildren(omElement, ((SequenceMediator) mediator), null);
-		((SequenceMediator) mediator).setSequenceType(SequenceType.ANON);
-
-		if (n != null) {
-			((SequenceMediator) mediator).setName(n.getAttributeValue());
-
-		} else {
-			n = omElement.getAttribute(ATT_KEY);
-			if (n != null) {
-				ValueFactory keyFac = new ValueFactory();
-				Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
-				((SequenceMediator) mediator).setKey(generatedKey);
-
-			}
-		}
-		
-		return mediator;
+	if (e != null) {
+	    ((SequenceMediator) mediator).setErrorHandler(e.getAttributeValue());
 	}
+	processAuditStatus(mediator, omElement);
+
+	OMElement descElem = omElement.getFirstChildWithName(DESCRIPTION_Q);
+	if (descElem != null) {
+	    ((SequenceMediator) mediator).setDescription(descElem.getText());
+	}
+	addChildren(omElement, ((SequenceMediator) mediator), null);
+	((SequenceMediator) mediator).setSequenceType(SequenceType.ANON);
+
+	if (n != null) {
+	    ((SequenceMediator) mediator).setName(n.getAttributeValue());
+
+	} else {
+	    n = omElement.getAttribute(ATT_KEY);
+	    if (n != null) {
+		ValueFactory keyFac = new ValueFactory();
+		Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
+		((SequenceMediator) mediator).setKey(generatedKey);
+
+	    }
+	}
+
+	return mediator;
+    }
 }

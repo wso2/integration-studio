@@ -63,6 +63,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Eclipse-LazyStart: true
 Import-Package: net.sf.saxon.s9api,
+ org.apache.xerces.parsers,
  org.eclipse.core.filesystem,
  org.eclipse.e4.core.services.events,
  org.eclipse.emf.query.conditions.eobjects,

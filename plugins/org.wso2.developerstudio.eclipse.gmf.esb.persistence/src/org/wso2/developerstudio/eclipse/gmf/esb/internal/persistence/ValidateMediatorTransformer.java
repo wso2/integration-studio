@@ -105,11 +105,6 @@ public class ValidateMediatorTransformer  extends AbstractEsbNodeTransformer {
 		List<Value> valueList = new ArrayList<Value>();
 		EList<ValidateSchema> schemaList = visualValidateMediator.getSchemas();
 		
-		if (schemaList.isEmpty()) {
-			throw new TransformerException("Schema list of the validation mediator cannot be empty. Please specify one"
-					+ " or more schema for the validation mediator.");
-		}
-		
 		for (ValidateSchema schema : schemaList) {
 
 			if (schema.getValidateSchemaKeyType().getLiteral()
@@ -152,10 +147,6 @@ public class ValidateMediatorTransformer  extends AbstractEsbNodeTransformer {
 		newOnFailInfo.setParentSequence(onFailMediatorList);
 		doTransform(newOnFailInfo, visualValidateMediator.getOnFailOutputConnector());
 		
-		if (onFailMediatorList.getList().isEmpty()) {
-			throw new TransformerException("Mediator list within Onfail sequence of validation mediator cannot be empty. Please specify one"
-					+ " or more mediators for Onfail sequence of the validation mediator.");
-		}
 		validateMediator.addAll(onFailMediatorList.getList());
 	
 		

@@ -75,9 +75,7 @@ public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
 		int scriptTypeValue = scriptType.getValue();
 		String language=visualScript.getScriptLanguage().getLiteral();
 		String function = visualScript.getMediateFunction();
-		if(scriptTypeValue == 1 && StringUtils.isBlank(function)){
-			throw new TransformerException("Function cannot be empty in Script mediator. Please specify a function");
-		}
+		
 		org.apache.synapse.mediators.bsf.ScriptMediator scriptMediator =null;
 		if(scriptTypeValue==0){
 		String scriptSourceCode=visualScript.getScriptBody();

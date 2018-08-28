@@ -32,10 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Enti
 public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory{
 
     public Mediator createSpecificMediator(OMElement element, Properties properties) {
-        if (!EntitlementConstants.ELEMENT_ENTITLEMENT.equals(element.getQName())) {
-            handleException("Unable to create the Entitlement mediator. "
-                    + "Unexpected element as the Entitlement mediator configuration");
-        }
 
         EntitlementMediatorExt mediator = null;
         OMAttribute remoteServiceUrl = null;

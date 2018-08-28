@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.databridge.agent_5.1.42.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/handy-uri-templates_2.1.6.wso2v2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xercesImpl-2.8.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.publishevent_4.6.98.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.identity.oauth.mediator_4.6.98.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.bam_4.6.98.jar"/>
@@ -35,7 +38,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/commons-validator-1.4.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/geronimo-stax-api_1.0_spec_1.0.1.wso2v2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/gson-2.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/handy-uri-templates_1.1.7.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/httpcore_4.3.3.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-annotations_2.6.1.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jackson-core_2.6.1.wso2v1.jar"/>
@@ -104,7 +106,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/wso2-uri-templates_1.6.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/wso2caching-core-4.0.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/wso2eventing-api-2.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/xercesImpl-2.8.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xml-apis-1.4.01.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xml-resolver-1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xmlbeans_2.3.0.wso2v1.jar"/>

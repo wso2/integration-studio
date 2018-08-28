@@ -132,8 +132,7 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 			}
 			
 			if (!isMethodAvailable) {
-				throw new TransformerException("API resource methods cannot be empty. "
-						+ "Please specify atleast one method for each API resource.");
+				resource.addMethod("GET");
 			}
 			
 			resource.setProtocol(visualResource.getProtocol().getValue());

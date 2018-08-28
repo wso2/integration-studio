@@ -26,6 +26,7 @@ import org.apache.synapse.Mediator;
 import org.wso2.carbon.mediator.cache.CacheManager;
 import org.wso2.carbon.mediator.cache.CacheMediatorFactory;
 import org.wso2.carbon.mediator.cache.digest.DigestGenerator;
+import org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator;
 import org.apache.synapse.config.xml.SequenceMediatorFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.wso2.carbon.mediator.cache.CacheMediator;
@@ -43,14 +44,8 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
     private static final QName IMPLEMENTATION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "implementation");
     private static final QName PROTOCOL_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "protocol");
     private static final long DEFAULT_TIMEOUT = 5000L;
-    private static final int DEFAULT_DISK_CACHE_SIZE = 200;
 
 	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
-
-		if (!CACHE_Q.equals(elem.getQName())) {
-			handleException("Unable to create the cache mediator. "
-				+ "Unexpected element as the cache mediator configuration");
-		}
 
 		CacheMediator cacheMediator = new CacheMediator(new CacheManager());
 
@@ -104,9 +99,7 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
 							if (generatorOject instanceof DigestGenerator) {
 								cacheMediator.setDigestGenerator((DigestGenerator) generatorOject);
 							} else {
-								handleException("Specified class for the hashGenerator is not a "
-										+ "DigestGenerator. It *must* implement "
-										+ "org.wso2.carbon.mediator.cache.digest.DigestGenerator interface");
+								cacheMediator.setDigestGenerator(new HttpRequestHashGenerator());
 							}
 						} catch (ClassNotFoundException e) {
 							handleException("Unable to load the hash generator class", e);
@@ -152,7 +145,7 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
 				if (sizeAttr != null && sizeAttr.getAttributeValue() != null) {
 					cacheMediator.setInMemoryCacheSize(Integer.parseInt(sizeAttr.getAttributeValue()));
 				} else {
-					handleException("unknown implementation type for the Cache mediator");
+					cacheMediator.setInMemoryCacheSize(-1);
 				}
 			}
 		}

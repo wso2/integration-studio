@@ -191,7 +191,20 @@ public class TaskPropertyDialog extends Dialog {
 				}
 			}
 			for (TaskProperty property : taskPropertyList) {
-				bindPram(property);
+				if (!defaultESBtask && taskPropertyList.size() >= properties.length) {
+					boolean isExist = false;
+					for (int i = 0; i < properties.length; i++) {
+						if (properties[i].equals(property.getPropertyName())) {
+							isExist = true;
+							break;
+						}
+					}
+					if (!isExist) {
+						bindPram(property);
+					}
+				} else {
+				    bindPram(property);
+				}
 			}
 		} else if (defaultESBtask) {
 			// when adding properties for the first time

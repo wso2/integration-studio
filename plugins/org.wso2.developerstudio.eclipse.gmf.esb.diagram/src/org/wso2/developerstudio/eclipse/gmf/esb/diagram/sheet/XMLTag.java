@@ -23,118 +23,123 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.sheet;
  * tags.
  */
 public class XMLTag {
-	
-	/**
-	 * Tag types are categorized as follows, 
-	 * 1 <abc> 
-	 * 2 </abc> 
-	 * 3 <abc/> 
-	 * 4 <log level="ab" 
-	 * 5 level="abc" /> 
-	 * 6 level="abc"> 
-	 * 7 level="abc" => no tags 
-	 * 8 <?xml version=\"1.0\" encoding=\"UTF-8\"?>
-	 */
-	int tagType;
 
-	/**
-	 * string value hold by this xml part
-	 */
-	String value;
+    /**
+     * Tag types are categorized as follows, 
+     * 1 <abc> 
+     * 2 </abc> 
+     * 3 <abc/> 
+     * 4 <log level="ab" 
+     * 5 level="abc" /> 
+     * 6 level="abc"> 
+     * 7 level="abc" => no tags 
+     * 8 <?xml version=\"1.0\" encoding=\"UTF-8\"?>
+     */
+    int tagType;
 
-	/**
-	 * Line number on the source view
-	 */
-	int line;
+    /**
+     * string value hold by this xml part
+     */
+    String value;
 
-	/**
-	 * Starting index according to the source view content
-	 */
-	int startIndex;
+    /**
+     * Line number on the source view
+     */
+    int line;
 
-	/**
-	 * Ending index according to the source view content
-	 */
-	int endIndex;
+    /**
+     * Starting index according to the source view content
+     */
+    int startIndex;
 
-	/**
-	 * qName if there is a part of a tag
-	 */
-	String qName = "";
+    /**
+     * Ending index according to the source view content
+     */
+    int endIndex;
 
-	public String getValue() {
-		return value;
+    /**
+     * qName if there is a part of a tag
+     */
+    String qName = "";
+
+    public String getValue() {
+	return value;
+    }
+
+    public void setValue(String value) {
+	this.value = value;
+    }
+
+    public int getLine() {
+	return line;
+    }
+
+    public void setLine(int line) {
+	this.line = line;
+    }
+
+    public int getStartIndex() {
+	return startIndex;
+    }
+
+    public void setStartIndex(int startIndex) {
+	this.startIndex = startIndex;
+    }
+
+    public int getEndIndex() {
+	return endIndex;
+    }
+
+    public void setEndIndex(int endIndex) {
+	this.endIndex = endIndex;
+    }
+
+    public String getqName() {
+	int index = qName.indexOf(":");
+	if (index == -1) {
+	    return qName;
+	} else {
+	    return qName.substring(index + 1);
+	}
+    }
+
+    public void setqName(String qName) {
+	this.qName = qName;
+    }
+
+    public int getTagType() {
+	return tagType;
+    }
+
+    public void setTagType(int tagType) {
+	this.tagType = tagType;
+    }
+
+    /**
+     * Return whether it is an ending tag, i.e. is a tag type 2 or tag type 5 (type
+     * 3 is not considered, as it has both starting and ending tags)
+     * 
+     * @return Is ending tag
+     */
+    public boolean isEndTag() {
+	if (this.tagType == 2 || this.tagType == 5) {
+	    return true;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	return false;
+    }
+
+    /**
+     * Return whether it is a starting tag, i.e. is a tag type 1 or tag type 4 (type
+     * 3 is not considered, as it has both starting and ending tags)
+     * 
+     * @return Is staring tag
+     */
+    public boolean isStartTag() {
+	if (this.tagType == 1 || this.tagType == 4) {
+	    return true;
 	}
 
-	public int getLine() {
-		return line;
-	}
-
-	public void setLine(int line) {
-		this.line = line;
-	}
-
-	public int getStartIndex() {
-		return startIndex;
-	}
-
-	public void setStartIndex(int startIndex) {
-		this.startIndex = startIndex;
-	}
-
-	public int getEndIndex() {
-		return endIndex;
-	}
-
-	public void setEndIndex(int endIndex) {
-		this.endIndex = endIndex;
-	}
-
-	public String getqName() {
-		return qName;
-	}
-
-	public void setqName(String qName) {
-		this.qName = qName;
-	}
-
-	public int getTagType() {
-		return tagType;
-	}
-
-	public void setTagType(int tagType) {
-		this.tagType = tagType;
-	}
-
-	/**
-	 * Return whether it is an ending tag, i.e. is a tag type 2 or tag type 5 (type
-	 * 3 is not considered, as it has both starting and ending tags)
-	 * 
-	 * @return Is ending tag
-	 */
-	public boolean isEndTag() {
-		if (this.tagType == 2 || this.tagType == 5) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Return whether it is a starting tag, i.e. is a tag type 1 or tag type 4 (type
-	 * 3 is not considered, as it has both starting and ending tags)
-	 * 
-	 * @return Is staring tag
-	 */
-	public boolean isStartTag() {
-		if (this.tagType == 1 || this.tagType == 4) {
-			return true;
-		}
-
-		return false;
-	}
+	return false;
+    }
 }

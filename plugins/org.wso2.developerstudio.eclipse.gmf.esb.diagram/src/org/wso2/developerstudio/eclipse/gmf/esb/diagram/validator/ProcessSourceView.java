@@ -122,7 +122,7 @@ public class ProcessSourceView {
 	    "makefault", "header", "payloadFactory", "smooks", "rewrite", "xquery", "xslt", "datamapper", "fastXSLT",
 	    "cache", "dbreport", "dblookup", "event", "throttle", "transaction", "aggregate", "callout", "clone",
 	    "iterate", "foreach", "entitlementService", "oauthService", "builder", "rule", "bam", "publishEvent",
-	    "syn:builder"));
+	    "builder"));
 
     private static Set<String> artifacts = new HashSet<>(Arrays.asList("api", "proxy", "endpoint", "inboundEndpoint",
 	    "localEntry", "messageProcessor", "messageStore", "sequence", "task", "template"));
@@ -139,8 +139,8 @@ public class ProcessSourceView {
 	    "correlation", "payload", "arbitrary", "serverProfile", "streamConfig", "with-param", "schema", "feature",
 	    "code", "reason", "makefault", "equal", "condition", "include", "detail", "input", "output", "rewriterule",
 	    "variable", "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration",
-	    "source", "syn:messageBuilder", "brs:source", "brs:target", "brs:ruleSet", "brs:properties", "brs:input",
-	    "brs:output", "attribute", "arg"));
+	    "source", "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg" , 
+	    "fact"));
 
     public ProcessSourceView() {
 
@@ -345,6 +345,7 @@ public class ProcessSourceView {
 			xmlTag.setTagType(7);
 			xmlTag.setEndIndex(-1);
 			xmlTag.setStartIndex(-1);
+			value = "";
 
 		    }
 		}
@@ -379,23 +380,24 @@ public class ProcessSourceView {
 	xmlTags = new Stack<>();
 	XMLTag prev = null;
 	Stack<XMLTag> intermediaryStack = new Stack<>();
-	int ruleCount = 0;
+	boolean insideRuleSet = false;
 
 	while (!xmlTagsQueue.isEmpty()) {
 	    XMLTag tempTag = xmlTagsQueue.remove();
 
 	    if (tempTag.isStartTag()) { // 14
 		xmlTags.push(tempTag);
-
-		if (mediators.contains(tempTag.getqName())) {
-		    intermediaryStack.push(tempTag);
+		
+		if (tempTag.getqName().equals("ruleSet")) {
+		    insideRuleSet = true;
 		}
-		if (tempTag.getqName().equals("brs:rule")) {
-		    ruleCount++;
-		    if (ruleCount == 1) {
+		
+		if (mediators.contains(tempTag.getqName())) {
+		    if (!tempTag.getqName().equals("rule") || (tempTag.getqName().equals("rule") && !insideRuleSet)) {
 			intermediaryStack.push(tempTag);
 		    }
 		}
+		
 		// type 4 is already covered in xml validation.
 		if (prev.getTagType() == 7 && !"".equals(prev.getValue().trim())) {
 		    String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
@@ -405,41 +407,49 @@ public class ProcessSourceView {
 		}
 
 	    } else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
+		
+		if (tempTag.getqName().equals("ruleSet")) {
+		    insideRuleSet = false;
+		}
+		
 		if (prev != null && prev.getTagType() != 8) {
 		    xmlTags.push(tempTag);
 		    XMLTag currentMediator = null;
+		    
 		    if (intermediaryStack.size() > 0) {
 			currentMediator = intermediaryStack.pop();
 		    }
+		    
 		    if (!intermediary.contains(tempTag.getqName()) && ((tempTag.getTagType() == 3)
 			    || (currentMediator != null && currentMediator.getqName().equals(tempTag.getqName()))
 			    || artifacts.contains(tempTag.getqName()))) {
+			
 			if (tempTag.getTagType() == 3 && currentMediator != null
-				&& ((currentMediator.getqName().equals("payloadFactory")
-					&& !tempTag.getqName().equals("payloadFactory"))
-					|| (currentMediator.getqName().equals("throttle")
-						&& !tempTag.getqName().equals("throttle")))) {
+				&& ((currentMediator.getqName().equals("payloadFactory") && !tempTag.getqName().equals("payloadFactory"))
+					|| (currentMediator.getqName().equals("throttle") && !tempTag.getqName().equals("throttle")))) {
 			    intermediaryStack.push(currentMediator);
-			} else if (currentMediator != null && currentMediator.getqName().equals("brs:rule")) {
-			    if (tempTag.getqName().equals("brs:rule")) {
-				ruleCount--;
-			    }
-			    if (ruleCount == 0 && currentMediator.getqName().equals("brs:rule")) {
+			    
+			} else if (currentMediator != null && currentMediator.getqName().equals("rule")) {
+			    
+			    if (!insideRuleSet && tempTag.getqName().equals("rule")) {
 				sourceError = mediatorValidation();
 				if (sourceError != null) {
 				    return sourceError;
 				}
+				
 			    } else {
 				if (currentMediator != null) {
 				    intermediaryStack.push(currentMediator);
 				}
 			    }
+			    
 			} else {
 			    sourceError = mediatorValidation();
 			    if (sourceError != null) {
 				return sourceError;
 			    }
 			}
+			
 		    } else {
 			if (currentMediator != null) {
 			    intermediaryStack.push(currentMediator);
@@ -463,6 +473,9 @@ public class ProcessSourceView {
 		    String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
 			    + tempTag.getValue() + "\".";
 		    return createError(error, tempTag);
+		    
+		} else if (intermediaryStack.size() > 0) {
+		    xmlTags.push(tempTag);
 		}
 
 	    } else if (tempTag.getTagType() == 8) {
@@ -488,7 +501,8 @@ public class ProcessSourceView {
 
 	boolean insideTag = true;
 	String firstMediatorQTag = "";
-	boolean isFirstRule = false;
+	boolean insideRuleSet = false;
+	
 	if (xmlTags.size() > 0) {
 
 	    XMLTag xmlTag = xmlTags.pop();
@@ -509,7 +523,9 @@ public class ProcessSourceView {
 		while (insideTag) {
 
 		    if (xmlTags.size() > 0) {
+			
 			xmlTag = xmlTags.pop();
+			
 			if (xmlTag.getTagType() == 4) {
 			    mediatorVal = xmlTag.getValue().concat(" ".concat(mediatorVal));
 			} else {
@@ -518,11 +534,12 @@ public class ProcessSourceView {
 
 			if (xmlTag.isStartTag() && xmlTag.getqName().equals(firstMediatorQTag)) {
 
-			    // rule mediator temp fix
-			    if (xmlTag.getqName().equals("brs:rule") && !isFirstRule) {
-				isFirstRule = true;
+			    if (xmlTag.getqName().equals("rule") && insideRuleSet) {
 				insideTag = true;
 
+			    } else if (xmlTag.getqName().equals("ruleSet")) {
+				insideRuleSet = false;
+				
 			    } else {
 
 				error = validate(mediatorVal, xmlTag.getqName());
@@ -533,7 +550,11 @@ public class ProcessSourceView {
 
 				insideTag = intermediary.contains(xmlTag.getqName());
 			    }
+			    
 			} else {
+			    if (xmlTag.isEndTag() && xmlTag.getqName().equals("ruleSet")) {
+				insideRuleSet = true;
+			    }
 			    insideTag = true;
 			}
 		    } else {
@@ -913,7 +934,7 @@ public class ProcessSourceView {
 		omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
 		factory.createMediator(omElement, null);
 
-	    } else if (qTag.equals("builder") || qTag.equals("syn:builder")) {
+	    } else if (qTag.equals("builder")) {
 		BuilderMediatorExtFactory factory = new BuilderMediatorExtFactory();
 		factory.createMediator(omElement, null);
 

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.mediation_4.4.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.kernel_4.4.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.common_4.4.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.backend_4.4.9.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.databridge.agent_5.1.42.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/handy-uri-templates_2.1.6.wso2v2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xercesImpl-2.8.1.jar"/>
@@ -78,10 +82,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.registry.core_4.4.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.relay_4.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.relay.mediators.builder_4.6.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.backend_4.4.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.common_4.4.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.kernel_4.4.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.rule.mediation_4.4.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.securevault_4.4.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.throttle_4.2.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.user.api_4.4.7.jar"/>

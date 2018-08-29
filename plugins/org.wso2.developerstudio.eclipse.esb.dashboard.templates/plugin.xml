@@ -18,21 +18,37 @@
 -->
 <?eclipse version="3.4"?>
 <plugin>
-<extension point="org.eclipse.ui.newWizards">
+<!--extension point="org.eclipse.ui.newWizards">
   <category
             name="Template Wizard"
             id="dashboard.category.esb.project.template"
             parentCategory="org.wso2.developerstudio.eclipse.capp.project">
             </category>
 		<wizard name="Soap to XML conversion template" 
-			category="dashboard.category.esb.project.template"
-			class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.MessageStoreCreationWizard"
-			wizardManifest="project_wizard.xml"
+			category="org.wso2.developerstudio.eclipse.capp.project/dashboard.category.esb.project.template"
+			class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.HumanTaskProjectWizard"
 			id="org.wso2.developerstudio.eclipse.template.messagestore.wizard"
 			icon="icons/message-store-small.png">
 			<description>Soap to XML conversion template</description>
 		</wizard>
-	</extension>
+	</extension-->
+	
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Templates"
+            id="org.wso2.developerstudio.templates"
+            parentCategory="org.wso2.developerstudio.eclipse.capp.project">
+      </category>
+      <wizard
+            name="SOAP to XML Template"
+            icon="icons/message-store-small.png"
+            project="true"
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+            class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.TemplateProjectWizard"
+            id="org.wso2.developerstudio.wizards.esb.template">
+      </wizard>  
+   </extension>
 	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true"
 			priority="high"
@@ -60,7 +76,7 @@
 				           </or>
 				  </triggerPoints>
 		</navigatorContent>
-	</extension>-->
+	</extension>
 			<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
                 menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
@@ -85,13 +101,18 @@
                     </or>
                 </enablement>
             </commonWizard>
-    </extension>
+    </extension>-->
    
-	<extension point="org.wso2.developerstudio.eclipse.template.dashboad.link">
-	<category id="dashboard.category.esb.project.template.wizard" showTitle="true" title="ESB Project Templates" priority="1" />
-        <wizardLink category="dashboard.category.esb.project.template.wizard" id="1dashboard.wizardLink.esb.messagestore"
-			wizard="org.wso2.developerstudio.eclipse.template.messagestore.wizard" priority="1">
-		</wizardLink>
-	</extension>
+	<extension
+point="org.wso2.developerstudio.eclipse.template.dashboad.link">
+<wizardCategory category="org.wso2.developerstudio.templates"/>
+    <category id="dashboard.category.esb.template" showTitle="false"
+                 title="ESB Templates"
+                 priority="1">
+       </category>
+       <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"
+                   wizard="org.wso2.developerstudio.wizards.esb.template">
+       </wizardLink>
+  </extension>
 
 </plugin>

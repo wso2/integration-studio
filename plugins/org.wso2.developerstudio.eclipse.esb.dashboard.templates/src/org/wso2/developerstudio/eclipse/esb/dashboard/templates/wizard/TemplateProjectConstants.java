@@ -165,7 +165,7 @@ public class TemplateProjectConstants {
 
     public static final String TASK_WSDL_SUFFIX = "Task.wsdl";
 
-    public static final String HUMAN_TASK_PROJECT_WIZARD_TITLE = "Template Project";
+    public static final String PROJECT_WIZARD_TITLE = "Template Project";
 
     public static final String HUMAN_TASK_EXPORT_WIZARD_TITLE = "Export Human Task Artifact";
 

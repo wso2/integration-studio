@@ -15,5 +15,6 @@ Import-Package: org.eclipse.core.resources,
  org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.utils,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
+ org.wso2.developerstudio.eclipse.esb.project.model,
  org.wso2.developerstudio.eclipse.esb.project.utils,
  org.wso2.developerstudio.eclipse.gmf.esb

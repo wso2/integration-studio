@@ -346,7 +346,7 @@ public class TemplateWizardUtil {
      * @param project The IProject instance of the new project
      * @throws CoreException
      */
-    public static void addNature(IProject project, String natureID) throws CoreException {
+    public void addNature(IProject project, String natureID) throws CoreException {
         if (!project.hasNature(natureID)) {
             IProjectDescription description = project.getDescription();
             String[] prevNatures = description.getNatureIds();

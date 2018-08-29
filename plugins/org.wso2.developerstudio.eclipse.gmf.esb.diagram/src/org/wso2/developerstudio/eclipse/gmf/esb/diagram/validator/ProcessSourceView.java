@@ -544,7 +544,7 @@ public class ProcessSourceView {
 
 				error = validate(mediatorVal, xmlTag.getqName());
 
-				if (!error.equals("")) {
+				if (error != null && !error.equals("")) {
 				    return createError(error, xmlTag);
 				}
 

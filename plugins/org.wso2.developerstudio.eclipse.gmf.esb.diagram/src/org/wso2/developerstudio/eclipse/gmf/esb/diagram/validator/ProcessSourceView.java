@@ -397,14 +397,6 @@ public class ProcessSourceView {
 			intermediaryStack.push(tempTag);
 		    }
 		}
-		
-		// type 4 is already covered in xml validation.
-		if (prev.getTagType() == 7 && !"".equals(prev.getValue().trim())) {
-		    String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
-			    + tempTag.getValue() + "\".";
-		    return createError(error, tempTag);
-
-		}
 
 	    } else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
 		

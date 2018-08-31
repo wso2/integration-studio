@@ -219,8 +219,7 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
     /**
      * Add decorator to the IResource.
      * 
-     * @param decoration
-     *            Default decoration
+     * @param decoration    Default decoration
      */
     private void addDecorator(IDecoration decoration) {
 	decoration.addOverlay(IMAGE_DESCRIPTOR, IDecoration.TOP_RIGHT);
@@ -229,8 +228,7 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
     /**
      * Check for the validity of a given synapse configuration.
      * 
-     * @param source
-     *            Synapse configuration
+     * @param source	Synapse configuration
      * @return Validity of the synapse configuration
      */
     private boolean isValid(String source) {

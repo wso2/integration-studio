@@ -76,7 +76,6 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
 		    if (!isValid(source)) {
 			addDecorator(decoration);
 		    }
-
 		} catch (CoreException e) {
 		    // ignore
 		}
@@ -197,9 +196,8 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
 			if (!isValid(source)) {
 			    return false;
 			}
-
 		    } catch (FileNotFoundException e) {
-			// ignore
+			return false;
 		    }
 		}
 	    }

@@ -667,6 +667,9 @@ public class DistProjectEditorPage extends FormPage {
 			}
 		}
 
+		/**
+		 * Disable listing corrupted artifacts for the composite project pom file.
+		 * 
 		if (getMissingDependencyList().size() > 0) {
 			editorStatus =
 			               new MultiStatus(
@@ -682,6 +685,7 @@ public class DistProjectEditorPage extends FormPage {
 			setPageDirty(true);
 			updateDirtyState();
 		}
+		**/
 		trDependencies.layout();
 	}
 

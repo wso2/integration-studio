@@ -73,7 +73,7 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
 
 		try {
 		    String source = new Scanner(iFile.getContents()).useDelimiter("\\A").next();
-		    if (!isValid(source)) {
+		    if (!isValid(source, iFile)) {
 			addDecorator(decoration);
 		    }
 		} catch (CoreException e) {
@@ -243,4 +243,17 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
 	return false;
     }
 
+    private boolean isValid(String source, IFile iFile) {
+
+	try {
+	    iFile.deleteMarkers(null, false, 1);
+	    if (!isValid(source)) {
+		iFile.createMarker("Configuration Error");
+		return false;
+	    }
+	} catch (CoreException e) {
+	    // ignore
+	}
+	return true;
+    }
 }

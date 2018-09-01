@@ -70,6 +70,7 @@ import org.apache.synapse.config.xml.SwitchMediatorFactory;
 import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.config.xml.TransactionMediatorFactory;
 import org.apache.synapse.config.xml.URLRewriteMediatorFactory;
+import org.apache.synapse.config.xml.ValidateMediatorFactory;
 import org.apache.synapse.config.xml.XSLTMediatorFactory;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.apache.synapse.config.xml.inbound.InboundEndpointFactory;
@@ -98,7 +99,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Dumm
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummySequenceMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.POJOCommandMediatorExtFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ValidateMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.sheet.XMLTag;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -767,7 +767,7 @@ public class ProcessSourceView {
 		factory.createMediator(omElement, null);
 
 	    } else if (qTag.equals("validate")) {
-		ValidateMediatorExtFactory factory = new ValidateMediatorExtFactory();
+		ValidateMediatorFactory factory = new ValidateMediatorFactory();
 		setNamespaceForChildren(omElement);
 		factory.createMediator(omElement, null);
 

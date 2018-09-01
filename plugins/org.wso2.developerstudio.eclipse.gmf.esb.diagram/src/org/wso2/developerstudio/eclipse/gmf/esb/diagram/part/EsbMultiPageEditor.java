@@ -1022,6 +1022,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 						}
 
 						addMarker(sourceError);
+						
+						if (isFormEditor) {
+						    sourceDirty = true;
+						    handleFormViewActivatedEvent();
+						} else {
+						    handleDesignViewActivatedEvent(false);
+						}
 					}
 
 				}

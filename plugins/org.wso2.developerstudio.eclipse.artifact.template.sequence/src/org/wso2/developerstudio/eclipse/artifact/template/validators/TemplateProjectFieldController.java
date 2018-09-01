@@ -81,6 +81,9 @@ public class TemplateProjectFieldController extends AbstractFieldController {
                             }
                         }
                     } catch (Exception e) {
+                	if (e.getMessage().equals("Artifact name already exists")) {
+                	    throw new FieldValidationException(e.getMessage(), e);
+                	}
                         throw new FieldValidationException("Unexpected error occurred while validating artifact name", e);
                     }
                 }

@@ -197,7 +197,7 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
 			    return false;
 			}
 		    } catch (FileNotFoundException e) {
-			return false;
+			// ignore
 		    }
 		}
 	    }

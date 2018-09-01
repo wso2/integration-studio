@@ -402,16 +402,16 @@ public class Deserializer {
 			artifacts.put(templateMediator.getName(), templateMediator);
 			break;		
 		case TEMPLATE_ENDPOINT_ADDRESS:
-			createEndpointTemplate(element, properties, artifacts);
+			createEndpointTemplate(element, properties, artifacts, withSynapse);
 			break;			
 		case TEMPLATE_ENDPOINT_WSDL:
-			createEndpointTemplate(element, properties, artifacts);
+			createEndpointTemplate(element, properties, artifacts, withSynapse);
 			break;			
 		case TEMPLATE_ENDPOINT_DEFAULT:
-			createEndpointTemplate(element, properties, artifacts);
+			createEndpointTemplate(element, properties, artifacts, withSynapse);
 			break;			
 		case TEMPLATE_ENDPOINT_HTTP:
-			createEndpointTemplate(element, properties, artifacts);
+			createEndpointTemplate(element, properties, artifacts, withSynapse);
 			break;					
 		case MESSAGE_STORE:
 			MessageStore store = DummyMessageStoreFactory.createMessageStore(element, properties);
@@ -432,11 +432,20 @@ public class Deserializer {
 		return artifacts;
 	}
 	
-	private void createEndpointTemplate(OMElement element, Properties properties, Map<String,Object> artifacts){
+	private void createEndpointTemplate(OMElement element, Properties properties, Map<String,Object> artifacts, boolean  withSynapse){
+	    Template template;
+	    if (withSynapse) {
 		TemplateFactory templateFactory = new TemplateFactory();
-		Template template = templateFactory.createEndpointTemplate(element, properties);
+		template = templateFactory.createEndpointTemplate(element, properties);
 		TemplateEndpointFactory.getEndpointFromElement(template.getElement(), false, new Properties());
-		artifacts.put(template.getName(), template);
+		
+	    } else {
+		DummyTemplateFactory templateFactory = new DummyTemplateFactory();
+		template = templateFactory.createEndpointTemplate(element, properties);
+		DummyTemplateEndpointFactory.getEndpointFromElement(template.getElement(), false, new Properties());
+		
+	    }
+	    artifacts.put(template.getName(), template);
 	}
 
 

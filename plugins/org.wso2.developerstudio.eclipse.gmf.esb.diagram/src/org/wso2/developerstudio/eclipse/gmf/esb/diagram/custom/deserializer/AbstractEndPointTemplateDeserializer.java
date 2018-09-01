@@ -19,7 +19,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import org.apache.synapse.config.xml.endpoints.TemplateEndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.editor.FormEditor;
@@ -52,7 +51,7 @@ public abstract class AbstractEndPointTemplateDeserializer
 		}
 		setTextValue(endpointPage.getTemplateName(), template.getName());
 
-		Endpoint endpoint = TemplateEndpointFactory.getEndpointFromElement(template.getElement(), false,
+		Endpoint endpoint = DummyTemplateEndpointFactory.getEndpointFromElement(template.getElement(), false,
 				new Properties());
 		IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
 		deserializer.createNode(formEditor, endpoint);

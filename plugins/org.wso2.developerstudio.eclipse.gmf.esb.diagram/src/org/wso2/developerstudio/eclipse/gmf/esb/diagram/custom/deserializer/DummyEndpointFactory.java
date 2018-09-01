@@ -22,23 +22,10 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNode;
 import org.apache.synapse.SynapseConstants;
+import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.config.xml.XMLConfigConstants;
-import org.apache.synapse.config.xml.endpoints.AddressEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.ClassEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.DefaultEndpointFactory;
 import org.apache.synapse.config.xml.endpoints.DefinitionFactory;
-import org.apache.synapse.config.xml.endpoints.DynamicLoadbalanceEndpointFactory;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
-import org.apache.synapse.config.xml.endpoints.FailoverEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.HTTPEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.IndirectEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.LoadbalanceEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.RecipientListEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.ResolvingEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.SALoadbalanceEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.ServiceDynamicLoadbalanceEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.TemplateEndpointFactory;
-import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
 import org.apache.synapse.config.xml.MediatorPropertyFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
@@ -62,24 +49,19 @@ public abstract class DummyEndpointFactory {
 
     }
 
-    private static final String ENDPOINT_NAME_PREFIX = "endpoint_";
-
     public static final QName ON_FAULT_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "onError");
 
     private static final QName DESCRIPTION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "description");
 
     public static Endpoint getEndpointFromElement(OMElement elem, boolean isAnonymous, Properties properties) {
-	// return getEndpointFactory(elem).createEndpointWithName(elem, isAnonymous,
-	// properties);
-	return null;
+	return getEndpointFactory(elem).createEndpointWithName(elem, isAnonymous, properties);
     }
 
     public static Endpoint getEndpointFromElement(OMElement elem, DefinitionFactory factory, boolean isAnonymous,
 	    Properties properties) {
-	EndpointFactory fac = getEndpointFactory(elem);
+	DummyEndpointFactory fac = getEndpointFactory(elem);
 	fac.setEndpointDefinitionFactory(factory);
-	// return fac.createEndpointWithName(elem, isAnonymous, properties);
-	return null;
+	return fac.createEndpointWithName(elem, isAnonymous, properties);
     }
 
     public Object getObjectFromOMNode(OMNode om, Properties properties) {
@@ -89,34 +71,9 @@ public abstract class DummyEndpointFactory {
 	return null;
     }
 
-    /**
-     * Creates the Endpoint implementation for the given XML endpoint configuration.
-     * If the endpoint configuration is an inline one, it should be an anonymous
-     * endpoint. If it is defined as an immediate child element of the definitions
-     * tag it should have a name, which is used as the key in local registry.
-     *
-     * @param epConfig
-     *            OMElement containing the endpoint configuration.
-     * @param anonymousEndpoint
-     *            false if the endpoint has a name. true otherwise.
-     * @param properties
-     *            bag of properties to pass in any information to the factory
-     * @return Endpoint implementation for the given configuration.
-     */
     protected abstract Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties);
 
-    /**
-     * Make sure that the endpoints created by the factory has a name
-     * 
-     * @param epConfig
-     *            OMElement containing the endpoint configuration.
-     * @param anonymousEndpoint
-     *            false if the endpoint has a name. true otherwise.
-     * @param properties
-     *            bag of properties to pass in any information to the factory
-     * @return Endpoint implementation for the given configuration.
-     */
-    public Endpoint createEndpointWithName(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
+    private Endpoint createEndpointWithName(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
 	Endpoint ep = createEndpoint(epConfig, anonymousEndpoint, properties);
 	OMElement descriptionElem = epConfig.getFirstChildWithName(DESCRIPTION_Q);
@@ -124,7 +81,6 @@ public abstract class DummyEndpointFactory {
 	    ep.setDescription(descriptionElem.getText());
 	}
 
-	// if the endpoint doesn't have a name we will generate a unique name.
 	if (anonymousEndpoint && ep.getName() == null) {
 	    if (ep instanceof AbstractEndpoint) {
 		((AbstractEndpoint) ep).setAnonymous(true);
@@ -140,48 +96,38 @@ public abstract class DummyEndpointFactory {
 
     protected void extractSpecificEndpointProperties(EndpointDefinition definition, OMElement elem) {
 
-	// overridden by the Factories which has specific building
     }
 
-    /**
-     * Returns the EndpointFactory implementation for given endpoint configuration.
-     * Throws a SynapseException, if there is no EndpointFactory for given
-     * configuration.
-     *
-     * @param configElement
-     *            Endpoint configuration.
-     * @return EndpointFactory implementation.
-     */
-    private static EndpointFactory getEndpointFactory(OMElement configElement) {
+    private static DummyEndpointFactory getEndpointFactory(OMElement configElement) {
 
 	if (configElement.getAttribute(new QName("key")) != null) {
-	    return IndirectEndpointFactory.getInstance();
+	    return DummyIndirectEndpointFactory.getInstance();
 	}
 
 	if (configElement.getAttribute(new QName("key-expression")) != null) {
-	    return ResolvingEndpointFactory.getInstance();
+	    return DummyResolvingEndpointFactory.getInstance();
 	}
 
 	if (configElement.getAttribute(new QName("template")) != null) {
-	    return new TemplateEndpointFactory();
+	    return new DummyTemplateEndpointFactory();
 	}
 
 	OMElement addressElement = configElement
 		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "address"));
 	if (addressElement != null) {
-	    return AddressEndpointFactory.getInstance();
+	    return DummyAddressEndpointFactory.getInstance();
 	}
 
 	OMElement wsdlElement = configElement
 		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "wsdl"));
 	if (wsdlElement != null) {
-	    return WSDLEndpointFactory.getInstance();
+	    return DummyWSDLEndpointFactory.getInstance();
 	}
 
 	OMElement defaultElement = configElement
 		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "default"));
 	if (defaultElement != null) {
-	    return DefaultEndpointFactory.getInstance();
+	    return DummyDefaultEndpointFactory.getInstance();
 	}
 
 	OMElement lbElement = configElement
@@ -190,63 +136,51 @@ public abstract class DummyEndpointFactory {
 	    OMElement sessionElement = configElement
 		    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session"));
 	    if (sessionElement != null) {
-		return SALoadbalanceEndpointFactory.getInstance();
+		return DummySALoadbalanceEndpointFactory.getInstance();
 	    } else {
-		return LoadbalanceEndpointFactory.getInstance();
+		return DummyLoadbalanceEndpointFactory.getInstance();
 	    }
 	}
 
 	OMElement dlbElement = configElement
 		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "dynamicLoadbalance"));
 	if (dlbElement != null) {
-	    return DynamicLoadbalanceEndpointFactory.getInstance();
+	    return DummyDynamicLoadbalanceEndpointFactory.getInstance();
 	}
 
 	OMElement sdlbElement = configElement
 		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serviceDynamicLoadbalance"));
 	if (sdlbElement != null) {
-	    return ServiceDynamicLoadbalanceEndpointFactory.getInstance();
+	    return DummyServiceDynamicLoadbalanceEndpointFactory.getInstance();
 	}
 
 	OMElement foElement = configElement
 		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "failover"));
 	if (foElement != null) {
-	    return FailoverEndpointFactory.getInstance();
+	    return DummyFailoverEndpointFactory.getInstance();
 	}
 
 	OMElement rcplElement = configElement
 		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "recipientlist"));
 	if (rcplElement != null) {
-	    return RecipientListEndpointFactory.getInstance();
+	    return DummyRecipientListEndpointFactory.getInstance();
 	}
 
 	OMElement httpElement = configElement
 		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "http"));
 	if (httpElement != null) {
-	    return HTTPEndpointFactory.getInstance();
+	    return DummyHTTPEndpointFactory.getInstance();
 	}
 
 	OMElement classElement = configElement
 		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "class"));
 	if (classElement != null) {
-	    return ClassEndpointFactory.getInstance();
+	    return DummyClassEndpointFactory.getInstance();
 	}
 
-	return AddressEndpointFactory.getInstance();
-
+	return null;
     }
 
-    /**
-     * Helper method to construct children endpoints
-     *
-     * @param listEndpointElement
-     *            OMElement representing the children endpoints
-     * @param parent
-     *            Parent endpoint
-     * @param properties
-     *            bag of properties to pass in any information to the factory
-     * @return List of children endpoints
-     */
     protected ArrayList<Endpoint> getEndpoints(OMElement listEndpointElement, Endpoint parent, Properties properties) {
 
 	ArrayList<Endpoint> endpoints = new ArrayList<Endpoint>();
@@ -268,32 +202,14 @@ public abstract class DummyEndpointFactory {
 	return endpoints;
     }
 
-    /**
-     * provide a custom Endpoint definition factory
-     * 
-     * @param factory
-     */
     public void setEndpointDefinitionFactory(DefinitionFactory factory) {
 	customDefnFactory = factory;
     }
 
-    /**
-     * return current factory for building this endpoint definition
-     * 
-     * @return
-     */
     public DefinitionFactory getEndpointDefinitionFactory() {
 	return customDefnFactory;
     }
 
-    /**
-     * Helper method to extract endpoint properties.
-     *
-     * @param endpoint
-     *            actual endpoint to set the properties
-     * @param endpointElement
-     *            actual endpoint element
-     */
     protected void processProperties(PropertyInclude endpoint, OMElement endpointElement) {
 	List<MediatorProperty> properties = MediatorPropertyFactory.getMediatorProperties(endpointElement);
 
@@ -302,4 +218,30 @@ public abstract class DummyEndpointFactory {
 	}
     }
 
+    protected void processAuditStatus(EndpointDefinition definition, String name, OMElement epOmElement) {
+
+	if (name == null || "".equals(name)) {
+	    name = SynapseConstants.ANONYMOUS_ENDPOINT;
+	}
+	AspectConfiguration aspectConfiguration = new AspectConfiguration(name);
+	definition.configure(aspectConfiguration);
+	OMAttribute statistics = epOmElement.getAttribute(new QName(XMLConfigConstants.STATISTICS_ATTRIB_NAME));
+	if (statistics != null) {
+	    String statisticsValue = statistics.getAttributeValue();
+	    if (statisticsValue != null) {
+		if (XMLConfigConstants.STATISTICS_ENABLE.equals(statisticsValue)) {
+		    aspectConfiguration.enableStatistics();
+		}
+	    }
+	}
+	OMAttribute tracing = epOmElement.getAttribute(new QName(XMLConfigConstants.TRACE_ATTRIB_NAME));
+	if (tracing != null) {
+	    String tracingValue = tracing.getAttributeValue();
+	    if (tracingValue != null) {
+		if (XMLConfigConstants.TRACE_ENABLE.equals(tracingValue)) {
+		    aspectConfiguration.enableTracing();
+		}
+	    }
+	}
+    }
 }

@@ -656,7 +656,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			try {
 				if (isFormEditor) {
 					sourceDirty = true;
-					handleFormViewActivatedEvent();
+					handleFormViewActivatedEvent(false);
 				} else {
 					handleDesignViewActivatedEvent(false);
 
@@ -782,14 +782,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	 * 
 	 * @throws Exception
 	 */
-	private void handleFormViewActivatedEvent() throws Exception {
+	private void handleFormViewActivatedEvent(boolean withSynapse) throws Exception {
 
 		if (sourceEditor != null) {
 			String xmlSource = sourceEditor.getDocument().get();
 			if (xmlSource != null && sourceDirty) {// source dirty is comming as
 													// false
 				if (!xmlSource.trim().isEmpty()) {
-					Deserializer.getInstance().updateDesign(xmlSource, formEditor, currArtifactType, true);
+					Deserializer.getInstance().updateDesign(xmlSource, formEditor, currArtifactType, withSynapse);
 					final EsbMultiPageEditor tempEditor = this;
 					Display.getDefault().asyncExec(new Runnable() {
 						public void run() {
@@ -996,7 +996,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 					} else {
 						if (isFormEditor) {
 							sourceDirty = true;
-							handleFormViewActivatedEvent();
+							handleFormViewActivatedEvent(true);
 						} else {
 							handleDesignViewActivatedEvent(true);
 						}
@@ -1025,7 +1025,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 						
 						if (isFormEditor) {
 						    sourceDirty = true;
-						    handleFormViewActivatedEvent();
+						    handleFormViewActivatedEvent(false);
 						} else {
 						    handleDesignViewActivatedEvent(false);
 						}

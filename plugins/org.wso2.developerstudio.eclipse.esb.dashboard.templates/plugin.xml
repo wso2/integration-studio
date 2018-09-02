@@ -41,12 +41,22 @@
                 parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
         <wizard
-                name="Hello World Proxy Template"
+                name="Hello World"
                 icon="icons/message-store-small.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
-                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.TemplateProjectWizard"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.HelloWorldTemplateProjectWizard"
                 id="org.wso2.developerstudio.wizards.esb.template">
+                <description>Hello World Proxy Template</description>
+        </wizard>
+        <wizard
+                name="Hello World Workflow"
+                icon="icons/message-store-small.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.HelloWorldTemplateProjectWizard"
+                id="org.wso2.developerstudio.wizards.bps.template">
+                <description>Hello World Workflow Template</description>
         </wizard>
     </extension>
     <!--<extension point="org.eclipse.ui.navigator.navigatorContent">
@@ -113,6 +123,14 @@
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"
                     wizard="org.wso2.developerstudio.wizards.esb.template">
         </wizardLink>
+        <category id="dashboard.category.bps.template" showTitle="false"
+                  title="BPS Templates"
+                  priority="2">
+        </category>
+        <wizardLink category="dashboard.category.bps.template" id="dashboard.wizardLink.bps.template.project"
+                    wizard="org.wso2.developerstudio.wizards.bps.template">
+        </wizardLink>
+        
     </extension>
 
 </plugin>

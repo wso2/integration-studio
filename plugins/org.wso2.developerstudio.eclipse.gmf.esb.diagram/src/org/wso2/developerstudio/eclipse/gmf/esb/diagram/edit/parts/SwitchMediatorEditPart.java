@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
@@ -58,6 +57,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.MultipleCompartme
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.SwitchMediatorGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolTip;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SwitchMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.SwitchMediatorItemSemanticEditPolicy;
@@ -396,13 +396,12 @@ public class SwitchMediatorEditPart extends MultipleCompartmentComplexFiguredAbs
 			return Messages.SwitchMediatorEditPart_NodeName;
 		}
 
-		public IFigure getToolTip() {
-			if (StringUtils.isEmpty(toolTipMessage)) {
-				return new Label(Messages.SwitchMediatorEditPart_ToolTipMessage);
-			} else {
-				return new Label(toolTipMessage);
-			}
-		}
+        public IFigure getToolTip() {
+            if (StringUtils.isEmpty(toolTipMessage)) {
+                toolTipMessage = Messages.SwitchMediatorEditPart_ToolTipMessage;
+            }
+            return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
+        }
 
 	}
 

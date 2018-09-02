@@ -96,7 +96,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Buil
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageStoreFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummySequenceMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.POJOCommandMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.sheet.XMLTag;
@@ -137,10 +136,10 @@ public class ProcessSourceView {
 	    "includeAgeHeader", "hashGenerator", "implementation", "onReject", "onAccept", "obligations", "advice",
 	    "case", "on-fail", "then", "else", "eventSink", "streamName", "streamVersion", "attributes", "meta",
 	    "correlation", "payload", "arbitrary", "serverProfile", "streamConfig", "with-param", "schema", "feature",
-	    "code", "reason", "makefault", "equal", "condition", "include", "detail", "input", "output", "rewriterule",
-	    "variable", "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration",
-	    "source", "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg" , 
-	    "fact", "trigger"));
+	    "code", "reason", "equal", "condition", "include", "detail", "input", "output", "rewriterule", "variable",
+	    "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration", "source",
+	    "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg", "fact",
+	    "trigger"));
 
     public ProcessSourceView() {
 
@@ -387,11 +386,11 @@ public class ProcessSourceView {
 
 	    if (tempTag.isStartTag()) { // 14
 		xmlTags.push(tempTag);
-		
+
 		if (tempTag.getqName().equals("ruleSet")) {
 		    insideRuleSet = true;
 		}
-		
+
 		if (mediators.contains(tempTag.getqName())) {
 		    if (!tempTag.getqName().equals("rule") || (tempTag.getqName().equals("rule") && !insideRuleSet)) {
 			intermediaryStack.push(tempTag);
@@ -399,49 +398,70 @@ public class ProcessSourceView {
 		}
 
 	    } else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
-		
+
 		if (tempTag.getqName().equals("ruleSet")) {
 		    insideRuleSet = false;
 		}
-		
+
 		if (prev != null && prev.getTagType() != 8) {
 		    xmlTags.push(tempTag);
 		    XMLTag currentMediator = null;
-		    
+
 		    if (intermediaryStack.size() > 0) {
 			currentMediator = intermediaryStack.pop();
 		    }
-		    
+
 		    if (!intermediary.contains(tempTag.getqName()) && ((tempTag.getTagType() == 3)
 			    || (currentMediator != null && currentMediator.getqName().equals(tempTag.getqName()))
 			    || artifacts.contains(tempTag.getqName()))) {
-			
+
 			if (tempTag.getTagType() == 3 && currentMediator != null
 				&& ((currentMediator.getqName().equals("payloadFactory") && !tempTag.getqName().equals("payloadFactory"))
 					|| (currentMediator.getqName().equals("throttle") && !tempTag.getqName().equals("throttle")))) {
 			    intermediaryStack.push(currentMediator);
-			    
+
 			} else if (currentMediator != null && currentMediator.getqName().equals("rule")) {
-			    
+
 			    if (!insideRuleSet && tempTag.getqName().equals("rule")) {
 				sourceError = mediatorValidation();
 				if (sourceError != null) {
 				    return sourceError;
 				}
-				
+
 			    } else {
 				if (currentMediator != null) {
 				    intermediaryStack.push(currentMediator);
 				}
 			    }
 			    
+			} else if (currentMediator != null && currentMediator.getqName().equals("makefault")) {
+			    XMLTag next;
+			    if (intermediaryStack.size() > 0) {
+				next = intermediaryStack.pop();
+				if (next != null && next.getqName().equals("validate")) {
+				    intermediaryStack.push(next);
+
+				} else {
+				    sourceError = mediatorValidation();
+				    if (sourceError != null) {
+					return sourceError;
+				    }
+				}
+				
+			    } else {
+				sourceError = mediatorValidation();
+				if (sourceError != null) {
+				    return sourceError;
+				}
+			    }
+
 			} else {
 			    sourceError = mediatorValidation();
 			    if (sourceError != null) {
 				return sourceError;
 			    }
 			}
-			
+
 		    } else {
 			if (currentMediator != null) {
 			    intermediaryStack.push(currentMediator);
@@ -465,7 +485,7 @@ public class ProcessSourceView {
 		    String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
 			    + tempTag.getValue() + "\".";
 		    return createError(error, tempTag);
-		    
+
 		} else if (intermediaryStack.size() > 0) {
 		    xmlTags.push(tempTag);
 		}
@@ -494,7 +514,7 @@ public class ProcessSourceView {
 	boolean insideTag = true;
 	String firstMediatorQTag = "";
 	boolean insideRuleSet = false;
-	
+
 	if (xmlTags.size() > 0) {
 
 	    XMLTag xmlTag = xmlTags.pop();
@@ -515,9 +535,9 @@ public class ProcessSourceView {
 		while (insideTag) {
 
 		    if (xmlTags.size() > 0) {
-			
+
 			xmlTag = xmlTags.pop();
-			
+
 			if (xmlTag.getTagType() == 4) {
 			    mediatorVal = xmlTag.getValue().concat(" ".concat(mediatorVal));
 			} else {
@@ -531,7 +551,7 @@ public class ProcessSourceView {
 
 			    } else if (xmlTag.getqName().equals("ruleSet")) {
 				insideRuleSet = false;
-				
+
 			    } else {
 
 				error = validate(mediatorVal, xmlTag.getqName());
@@ -542,7 +562,7 @@ public class ProcessSourceView {
 
 				insideTag = intermediary.contains(xmlTag.getqName());
 			    }
-			    
+
 			} else {
 			    if (xmlTag.isEndTag() && xmlTag.getqName().equals("ruleSet")) {
 				insideRuleSet = true;
@@ -647,7 +667,7 @@ public class ProcessSourceView {
 		factory.createMessageStore(omElement, null);
 
 	    } else if (qTag.equals("sequence")) {
-		DummySequenceMediatorFactory factory = new DummySequenceMediatorFactory();
+		SequenceMediatorFactory factory = new SequenceMediatorFactory();
 		factory.createSpecificMediator(omElement, null);
 
 	    } else if (qTag.equals("task")) {

@@ -37,9 +37,11 @@ public class TemplateProjectWizardPage extends WizardPage {
     private Text containerText;
 
     private ISelection selection;
+    
+    private String wizardPageText = TemplateProjectConstants.WIZARD_PAGE_TEXT;
 
     /**
-     * Constructor for Human Task Wizard Page.
+     * Constructor for Wizard Page.
      *
      * @param pageName
      */
@@ -47,6 +49,19 @@ public class TemplateProjectWizardPage extends WizardPage {
         super(TemplateProjectConstants.WIZARD_PAGE_NAME);
         setTitle(TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE);
         setDescription(TemplateProjectConstants.PROJECT_WIZARD_PAGE_DESCRIPTION);
+        this.selection = selection;
+    }
+        
+    /**
+     * Constructor for Wizard Page.
+     *
+     * @param pageName
+     */
+    public TemplateProjectWizardPage(ISelection selection, String pageTitle, String pageDescription, String wizardPageText) {
+        super(TemplateProjectConstants.WIZARD_PAGE_NAME);
+        setTitle(pageTitle);
+        setDescription(pageDescription);
+        setWizardPageText(wizardPageText);
         this.selection = selection;
     }
 
@@ -91,7 +106,7 @@ public class TemplateProjectWizardPage extends WizardPage {
             }
             Object obj = structuredSelection.getFirstElement();
             if (obj instanceof IResource) {
-                containerText.setText(TemplateProjectConstants.WIZARD_PAGE_TEXT);
+                containerText.setText(getWizardPageText());
             }
         }
     }
@@ -116,6 +131,14 @@ public class TemplateProjectWizardPage extends WizardPage {
 
     public String getContainerName() {
         return containerText.getText();
+    }
+
+    public String getWizardPageText() {
+        return wizardPageText;
+    }
+
+    public void setWizardPageText(String wizardPageText) {
+        this.wizardPageText = wizardPageText;
     }
 
 }

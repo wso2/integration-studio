@@ -51,12 +51,12 @@ public class ESBArtifactsProvider extends CappArtifactsListProvider {
 		    IFile iFile = project.getFile(path);
 
 		    try {
-			IMarker[] markers = iFile.findMarkers(null, false, 1);
-			if (markers.length == 0) {
-			    validArtifacts.add(lD);
-			}
+    			IMarker[] markers = iFile.findMarkers("CAPP_NOT_ALLOWED", false, 1);
+    			if (markers.length == 0) {
+    			    validArtifacts.add(lD);
+    			}
 		    } catch (CoreException e) {
-			// ignore
+		        // ignore
 		    }
 		}
 	    });

@@ -170,6 +170,10 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	 * Properties view page index.
 	 */
 	private static final int PROPERTY_VIEW_PAGE_INDEX = 2;
+	
+    private static final String SOURCE_VIEW_ERROR = "SOURCE_VIEW_ERROR";
+    
+    private static final String CONFIG_ERROR = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror";
 
 	/**
 	 * Used to hold temporary files.
@@ -191,6 +195,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
 	private IFile file;
 	private static final List<IFile> files = new ArrayList<>();
+	private static final List<IFile> artifactXMLFiles = new ArrayList<>();
 
 	/**
 	 * Creates a multi-page editor
@@ -889,6 +894,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	}
 
 	private IFile updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
+	    
 		IFile xmlFile = null;
 		String source = null;
 		if (isFormEditor) {
@@ -912,6 +918,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 			xmlFile.create(is, true, monitor);
 		}
 
+		artifactXMLFiles.add(xmlFile);
+		xmlFile.deleteMarkers(SOURCE_VIEW_ERROR, false, 1);
+		if (getActivePage() == SOURCE_VIEW_PAGE_INDEX && file.findMarkers(CONFIG_ERROR, false, 1).length > 0) {
+		    xmlFile.createMarker(SOURCE_VIEW_ERROR);
+		}
 		return xmlFile;
 	}
 
@@ -1141,22 +1152,33 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 		});
 	}
 
-	private void deleteMarkers() {
-		try {
-			for (IFile iFile : files) {
-				iFile.deleteMarkers("org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror", false, 1);
-			}
-		} catch (CoreException e) {
-			// ignore
-		}
-		files.clear();
-	}
+    private void deleteMarkers() {
+        // remove markers from temporary xml files
+        try {
+            for (IFile iFile : files) {
+                iFile.deleteMarkers(CONFIG_ERROR, false, 1);
+            }
+        } catch (CoreException e) {
+            // ignore
+        }
+        files.clear();
+
+        // remove markers from artifact xml iFiles
+        try {
+            for (IFile iFile : artifactXMLFiles) {
+                iFile.deleteMarkers(SOURCE_VIEW_ERROR, false, 1);
+            }
+        } catch (CoreException e) {
+            // ignore
+        }
+        artifactXMLFiles.clear();
+    }
 
 	private void addMarker(SourceError sourceError) {
 		try {
 			if (sourceError != null) {
 				files.add(file);
-				IMarker marker = file.createMarker("org.wso2.developerstudio.eclipse.gmf.esb.diagram.synapseerror");
+				IMarker marker = file.createMarker(CONFIG_ERROR);
 
 				marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
 				marker.setAttribute(IMarker.MESSAGE, sourceError.getException());

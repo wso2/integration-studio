@@ -37,7 +37,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 
 public class FileDecorator extends LabelProvider implements ILightweightLabelDecorator {
 
-    private static final String ICON = "/icons/Symbol-warning-small.png";
+    private static final String ICON = "/icons/error.png";
     private static final String API = "api";
     private static final String ENDPOINTS = "endpoints";
     private static final String INBOUND_ENDPOINT = "inbound-endpoints";
@@ -51,6 +51,8 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
     private static final String SRC = "src";
     private static final String MAIN = "main";
     private static final String SYNAPSE_CONFIG = "synapse-config";
+    private static final String SOURCE_VIEW_ERROR = "SOURCE_VIEW_ERROR";
+    private static final String CAPP_NOT_ALLOWED = "CAPP_NOT_ALLOWED";
     private static final String[] ARTIFACTS = { API, ENDPOINTS, INBOUND_ENDPOINT, LOCAL_ENTRY, MS_PROCESSOR, MS_STORE,
             PROXY, SEQUENCES, TASKS, TEMPLATES };
     private static final ImageDescriptor IMAGE_DESCRIPTOR = ImageDescriptor.createFromFile(FileDecorator.class, ICON);
@@ -67,7 +69,6 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
 
             IFile iFile = (IFile) element;
             String fileName = iFile.getName();
-
             if (!fileName.equals("pom.xml") && iFile.getFileExtension().equals("xml")
                     && getProjectType(iFile.getFullPath().toString(), iFile.getProject().getName(), fileName)) {
 
@@ -222,7 +223,7 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
      * @param decoration Default decoration
      */
     private void addDecorator(IDecoration decoration) {
-        decoration.addOverlay(IMAGE_DESCRIPTOR, IDecoration.TOP_RIGHT);
+        decoration.addOverlay(IMAGE_DESCRIPTOR, IDecoration.BOTTOM_LEFT);
     }
 
     /**
@@ -246,10 +247,17 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
     private boolean isValid(String source, IFile iFile) {
 
         try {
-            iFile.deleteMarkers(null, false, 1);
             if (!isValid(source)) {
-                iFile.createMarker("Configuration Error");
+                iFile.deleteMarkers(CAPP_NOT_ALLOWED, false, 1);
+                iFile.createMarker(CAPP_NOT_ALLOWED);
                 return false;
+                
+            } else if (iFile.findMarkers(SOURCE_VIEW_ERROR, false, 1).length > 0) {
+                return false;
+                
+            } else {
+                iFile.deleteMarkers(null, false, 1);
+                
             }
         } catch (CoreException e) {
             // ignore

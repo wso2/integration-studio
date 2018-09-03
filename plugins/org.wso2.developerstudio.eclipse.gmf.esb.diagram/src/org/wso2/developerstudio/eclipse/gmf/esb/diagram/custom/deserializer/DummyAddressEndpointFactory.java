@@ -82,6 +82,8 @@ public class DummyAddressEndpointFactory extends DummyEndpointFactory {
 
         if (address != null) {
             endpointDefinition.setAddress(address.getAttributeValue().trim());
+        } else {
+            endpointDefinition.setAddress("");
         }
 
         extractSpecificEndpointProperties(endpointDefinition, elem);

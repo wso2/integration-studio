@@ -46,10 +46,10 @@ public class SourceError {
     private int endChar;
 
     public SourceError(String exception, int lineNumber, int startChar, int endChar) {
-	this.exception = exception;
-	this.lineNumber = lineNumber;
-	this.startChar = startChar;
-	this.endChar = endChar;
+        this.exception = exception;
+        this.lineNumber = lineNumber;
+        this.startChar = startChar;
+        this.endChar = endChar;
     }
 
     public SourceError() {
@@ -57,35 +57,35 @@ public class SourceError {
     }
 
     public String getException() {
-	return exception;
+        return exception;
     }
 
     public void setException(String exception) {
-	this.exception = exception;
+        this.exception = exception;
     }
 
     public int getLineNumber() {
-	return lineNumber;
+        return lineNumber;
     }
 
     public void setLineNumber(int lineNumber) {
-	this.lineNumber = lineNumber;
+        this.lineNumber = lineNumber;
     }
 
     public int getStartChar() {
-	return startChar;
+        return startChar;
     }
 
     public void setStartChar(int startChar) {
-	this.startChar = startChar;
+        this.startChar = startChar;
     }
 
     public int getEndChar() {
-	return endChar;
+        return endChar;
     }
 
     public void setEndChar(int endChar) {
-	this.endChar = endChar;
+        this.endChar = endChar;
     }
 
 }

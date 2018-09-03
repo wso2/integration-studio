@@ -375,8 +375,13 @@ public class Deserializer {
 		case ENDPOINT_HTTP:
 		case ENDPOINT_WSDL:
 		case TEMPLATE_ENDPOINT:
-			Endpoint endpoint = EndpointFactory.getEndpointFromElement(element, false, properties);
-			EndpointWrapper wrapper = new EndpointWrapper(endpoint,endpoint.getName());
+		    Endpoint endpoint;
+		    if (withSynapse) {
+		        endpoint = EndpointFactory.getEndpointFromElement(element, false, properties);
+		    } else {
+		        endpoint = DummyEndpointFactory.getEndpointFromElement(element, false, properties);
+		    }
+			EndpointWrapper wrapper = new EndpointWrapper(endpoint, endpoint.getName());
 			artifacts.put(wrapper.getName(), wrapper);
 			break;
 		case LOCAL_ENTRY:

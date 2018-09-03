@@ -52,7 +52,7 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
     private static final String MAIN = "main";
     private static final String SYNAPSE_CONFIG = "synapse-config";
     private static final String[] ARTIFACTS = { API, ENDPOINTS, INBOUND_ENDPOINT, LOCAL_ENTRY, MS_PROCESSOR, MS_STORE,
-	    PROXY, SEQUENCES, TASKS, TEMPLATES };
+            PROXY, SEQUENCES, TASKS, TEMPLATES };
     private static final ImageDescriptor IMAGE_DESCRIPTOR = ImageDescriptor.createFromFile(FileDecorator.class, ICON);
 
     private static Deserializer deserializer = null;
@@ -63,197 +63,197 @@ public class FileDecorator extends LabelProvider implements ILightweightLabelDec
     @Override
     public void decorate(Object element, IDecoration decoration) {
 
-	if (element instanceof IFile) {
+        if (element instanceof IFile) {
 
-	    IFile iFile = (IFile) element;
-	    String fileName = iFile.getName();
+            IFile iFile = (IFile) element;
+            String fileName = iFile.getName();
 
-	    if (!fileName.equals("pom.xml") && iFile.getFileExtension().equals("xml")
-		    && getProjectType(iFile.getFullPath().toString(), iFile.getProject().getName(), fileName)) {
+            if (!fileName.equals("pom.xml") && iFile.getFileExtension().equals("xml")
+                    && getProjectType(iFile.getFullPath().toString(), iFile.getProject().getName(), fileName)) {
 
-		try {
-		    String source = new Scanner(iFile.getContents()).useDelimiter("\\A").next();
-		    if (!isValid(source, iFile)) {
-			addDecorator(decoration);
-		    }
-		} catch (CoreException e) {
-		    // ignore
-		}
+                try {
+                    String source = new Scanner(iFile.getContents()).useDelimiter("\\A").next();
+                    if (!isValid(source, iFile)) {
+                        addDecorator(decoration);
+                    }
+                } catch (CoreException e) {
+                    // ignore
+                }
 
-	    }
+            }
 
-	} else if (element instanceof Folder) {
+        } else if (element instanceof Folder) {
 
-	    Folder folder = (Folder) element;
-	    String fullPath = folder.getLocation().toString();
+            Folder folder = (Folder) element;
+            String fullPath = folder.getLocation().toString();
 
-	    if (fullPath.endsWith(SRC)) {
-		// process src
-		if (!validSrc(fullPath)) {
-		    addDecorator(decoration);
-		}
+            if (fullPath.endsWith(SRC)) {
+                // process src
+                if (!validSrc(fullPath)) {
+                    addDecorator(decoration);
+                }
 
-	    } else if (fullPath.endsWith(MAIN)) {
-		// process main
-		if (!validMain(fullPath)) {
-		    addDecorator(decoration);
-		}
+            } else if (fullPath.endsWith(MAIN)) {
+                // process main
+                if (!validMain(fullPath)) {
+                    addDecorator(decoration);
+                }
 
-	    } else if (fullPath.endsWith(SYNAPSE_CONFIG)) {
-		// process synapse-config
-		if (!validSynapseConfig(fullPath)) {
-		    addDecorator(decoration);
-		}
+            } else if (fullPath.endsWith(SYNAPSE_CONFIG)) {
+                // process synapse-config
+                if (!validSynapseConfig(fullPath)) {
+                    addDecorator(decoration);
+                }
 
-	    } else if (fullPath.endsWith(API) || fullPath.endsWith(ENDPOINTS) || fullPath.endsWith(INBOUND_ENDPOINT)
-		    || fullPath.endsWith(LOCAL_ENTRY) || fullPath.endsWith(MS_PROCESSOR) || fullPath.endsWith(MS_STORE)
-		    || fullPath.endsWith(PROXY) || fullPath.endsWith(SEQUENCES) || fullPath.endsWith(TASKS)
-		    || fullPath.endsWith(TEMPLATES)) {
-		// process xml files
-		if (!validArtifacts(fullPath)) {
-		    addDecorator(decoration);
-		}
+            } else if (fullPath.endsWith(API) || fullPath.endsWith(ENDPOINTS) || fullPath.endsWith(INBOUND_ENDPOINT)
+                    || fullPath.endsWith(LOCAL_ENTRY) || fullPath.endsWith(MS_PROCESSOR) || fullPath.endsWith(MS_STORE)
+                    || fullPath.endsWith(PROXY) || fullPath.endsWith(SEQUENCES) || fullPath.endsWith(TASKS)
+                    || fullPath.endsWith(TEMPLATES)) {
+                // process xml files
+                if (!validArtifacts(fullPath)) {
+                    addDecorator(decoration);
+                }
 
-	    } else {
-		// process project
-		if (!validProject(fullPath)) {
-		    addDecorator(decoration);
-		}
-	    }
+            } else {
+                // process project
+                if (!validProject(fullPath)) {
+                    addDecorator(decoration);
+                }
+            }
 
-	} else if (element instanceof Project) {
-	    // process project
-	    Project project = (Project) element;
-	    if (!validProject(project.getLocation().toString())) {
-		addDecorator(decoration);
-	    }
+        } else if (element instanceof Project) {
+            // process project
+            Project project = (Project) element;
+            if (!validProject(project.getLocation().toString())) {
+                addDecorator(decoration);
+            }
 
-	}
+        }
     }
 
     private boolean getProjectType(String fullPath, String projectName, String fileName) {
 
-	for (int i = 0; i < ARTIFACTS.length; i++) {
+        for (int i = 0; i < ARTIFACTS.length; i++) {
 
-	    if (fullPath.equals(File.separator + projectName + File.separator + SRC + File.separator + MAIN
-		    + File.separator + SYNAPSE_CONFIG + File.separator + ARTIFACTS[i] + File.separator + fileName)) {
-		return true;
-	    }
-	}
-	return false;
+            if (fullPath.equals(File.separator + projectName + File.separator + SRC + File.separator + MAIN
+                    + File.separator + SYNAPSE_CONFIG + File.separator + ARTIFACTS[i] + File.separator + fileName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean validSrc(String folderPath) {
 
-	String newPath = folderPath + File.separator + MAIN;
-	File newFile = new File(newPath);
+        String newPath = folderPath + File.separator + MAIN;
+        File newFile = new File(newPath);
 
-	if (newFile.exists() && newFile.isDirectory() && !validMain(newPath)) {
-	    return false;
-	}
-	return true;
+        if (newFile.exists() && newFile.isDirectory() && !validMain(newPath)) {
+            return false;
+        }
+        return true;
     }
 
     private boolean validMain(String folderPath) {
 
-	String newPath = folderPath + File.separator + SYNAPSE_CONFIG;
-	File newFile = new File(newPath);
+        String newPath = folderPath + File.separator + SYNAPSE_CONFIG;
+        File newFile = new File(newPath);
 
-	if (newFile.exists() && newFile.isDirectory() && !validSynapseConfig(newPath)) {
-	    return false;
-	}
-	return true;
+        if (newFile.exists() && newFile.isDirectory() && !validSynapseConfig(newPath)) {
+            return false;
+        }
+        return true;
     }
 
     private boolean validSynapseConfig(String folderPath) {
 
-	for (int i = 0; i < ARTIFACTS.length; i++) {
+        for (int i = 0; i < ARTIFACTS.length; i++) {
 
-	    File newFile = new File(folderPath + File.separator + ARTIFACTS[i]);
-	    if (newFile.exists() && newFile.isDirectory()
-		    && !validArtifacts(folderPath + File.separator + ARTIFACTS[i])) {
-		return false;
-	    }
-	}
-	return true;
+            File newFile = new File(folderPath + File.separator + ARTIFACTS[i]);
+            if (newFile.exists() && newFile.isDirectory()
+                    && !validArtifacts(folderPath + File.separator + ARTIFACTS[i])) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean validArtifacts(String folderPath) {
 
-	File rootfFolder = new File(folderPath);
-	String[] files = rootfFolder.list();
+        File rootfFolder = new File(folderPath);
+        String[] files = rootfFolder.list();
 
-	if (files != null) {
+        if (files != null) {
 
-	    for (int i = 0; i < files.length; i++) {
+            for (int i = 0; i < files.length; i++) {
 
-		String fileName = files[i];
-		if (fileName.endsWith(".xml")) {
+                String fileName = files[i];
+                if (fileName.endsWith(".xml")) {
 
-		    try {
-			String source = new Scanner(new FileReader(folderPath + File.separator + fileName))
-				.useDelimiter("\\A").next();
-			if (!isValid(source)) {
-			    return false;
-			}
-		    } catch (FileNotFoundException e) {
-			// ignore
-		    }
-		}
-	    }
-	}
-	return true;
+                    try {
+                        String source = new Scanner(new FileReader(folderPath + File.separator + fileName))
+                                .useDelimiter("\\A").next();
+                        if (!isValid(source)) {
+                            return false;
+                        }
+                    } catch (FileNotFoundException e) {
+                        // ignore
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     private boolean validProject(String folderPath) {
 
-	String newPath = folderPath + File.separator + SRC;
-	File newFile = new File(newPath);
+        String newPath = folderPath + File.separator + SRC;
+        File newFile = new File(newPath);
 
-	if (newFile.exists() && newFile.isDirectory() && !validSrc(newPath)) {
-	    return false;
-	}
-	return true;
+        if (newFile.exists() && newFile.isDirectory() && !validSrc(newPath)) {
+            return false;
+        }
+        return true;
     }
 
     /**
      * Add decorator to the IResource.
      * 
-     * @param decoration    Default decoration
+     * @param decoration Default decoration
      */
     private void addDecorator(IDecoration decoration) {
-	decoration.addOverlay(IMAGE_DESCRIPTOR, IDecoration.TOP_RIGHT);
+        decoration.addOverlay(IMAGE_DESCRIPTOR, IDecoration.TOP_RIGHT);
     }
 
     /**
      * Check for the validity of a given synapse configuration.
      * 
-     * @param source	Synapse configuration
+     * @param source Synapse configuration
      * @return Validity of the synapse configuration
      */
     private boolean isValid(String source) {
-	if (deserializer == null) {
-	    deserializer = Deserializer.getInstance();
-	}
-	DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true);
+        if (deserializer == null) {
+            deserializer = Deserializer.getInstance();
+        }
+        DeserializeStatus deserializeStatus = deserializer.isValidSynapseConfig(source, true);
 
-	if (deserializeStatus.isValid()) {
-	    return true;
-	}
-	return false;
+        if (deserializeStatus.isValid()) {
+            return true;
+        }
+        return false;
     }
 
     private boolean isValid(String source, IFile iFile) {
 
-	try {
-	    iFile.deleteMarkers(null, false, 1);
-	    if (!isValid(source)) {
-		iFile.createMarker("Configuration Error");
-		return false;
-	    }
-	} catch (CoreException e) {
-	    // ignore
-	}
-	return true;
+        try {
+            iFile.deleteMarkers(null, false, 1);
+            if (!isValid(source)) {
+                iFile.createMarker("Configuration Error");
+                return false;
+            }
+        } catch (CoreException e) {
+            // ignore
+        }
+        return true;
     }
 }

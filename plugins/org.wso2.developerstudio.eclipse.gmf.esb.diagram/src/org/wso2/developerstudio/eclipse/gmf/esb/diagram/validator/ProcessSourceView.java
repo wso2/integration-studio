@@ -380,22 +380,51 @@ public class ProcessSourceView {
         XMLTag prev = null;
         Stack<XMLTag> intermediaryStack = new Stack<>();
         boolean insideRuleSet = false;
+        String artifactType = "";
 
         while (!xmlTagsQueue.isEmpty()) {
             XMLTag tempTag = xmlTagsQueue.remove();
 
             if (tempTag.isStartTag()) { // 14
                 xmlTags.push(tempTag);
+                
+                if (artifactType.equals("") && artifacts.contains(tempTag.getqName())) {
+                	artifactType = tempTag.getqName();
+                }
 
                 if (tempTag.getqName().equals("ruleSet")) {
                     insideRuleSet = true;
                 }
 
-                if (mediators.contains(tempTag.getqName())) {
-                    if (!tempTag.getqName().equals("rule") || (tempTag.getqName().equals("rule") && !insideRuleSet)) {
-                        intermediaryStack.push(tempTag);
-                    }
-                }
+				if ((!tempTag.getqName().equals("sequence") && mediators.contains(tempTag.getqName()))) {
+					if (!artifactType.equals("localEntry") && (!tempTag.getqName().equals("rule")
+							|| (tempTag.getqName().equals("rule") && !insideRuleSet))) {
+						if (intermediaryStack.size() > 0) {
+							XMLTag next = intermediaryStack.pop();
+							intermediaryStack.push(next);
+							if (next != null && !next.getqName().equals("payloadFactory")) {
+								intermediaryStack.push(tempTag);
+							}
+						} else {
+							intermediaryStack.push(tempTag);
+						}
+					}
+
+				} else if (tempTag.getqName().equals("sequence")) {
+					if (intermediaryStack.size() > 0) {
+						XMLTag next = intermediaryStack.pop();
+						intermediaryStack.push(next);
+						if (!artifactType.equals("localEntry") && (!(next.getqName().equals("foreach")
+								|| next.getqName().equals("clone") || next.getqName().equals("iterate")
+								|| (next.getqName().equals("payloadFactory"))))) {
+							intermediaryStack.push(tempTag);
+						}
+					} else {
+						if (!artifactType.equals("localEntry") && !artifactType.equals("sequence")) {
+							intermediaryStack.push(tempTag);
+						}
+					}
+				}
 
             } else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
 
@@ -456,19 +485,48 @@ public class ProcessSourceView {
                                     return sourceError;
                                 }
                             }
+                            
+                        } else if (currentMediator != null && tempTag.getqName().equals("sequence")) {
 
-                        } else {
-                            sourceError = mediatorValidation();
-                            if (sourceError != null) {
-                                return sourceError;
-                            }
-                        }
+							if (currentMediator.getqName().equals("foreach")
+									|| currentMediator.getqName().equals("clone")
+									|| currentMediator.getqName().equals("iterate")
+									|| currentMediator.getqName().equals("payloadFactory")) {
+								intermediaryStack.push(currentMediator);
 
-                    } else {
-                        if (currentMediator != null) {
-                            intermediaryStack.push(currentMediator);
-                        }
-                    }
+							} else {
+								sourceError = mediatorValidation();
+								if (sourceError != null) {
+									return sourceError;
+								}
+							}
+
+						} else {
+							if (currentMediator != null
+									&& (currentMediator.getqName().equals("foreach")
+											|| currentMediator.getqName().equals("clone")
+											|| currentMediator.getqName().equals("iterate"))
+									&& !tempTag.getqName().equals(currentMediator.getqName())) {
+								intermediaryStack.push(currentMediator);
+
+							} else if ((!artifactType.equals("localEntry") && tempTag.getTagType() == 3) || (tempTag
+									.getTagType() != 3
+									&& (currentMediator != null && tempTag.getqName().equals(currentMediator.getqName())
+											|| (artifacts.contains(tempTag.getqName()))))) {
+								sourceError = mediatorValidation();
+								if (sourceError != null) {
+									return sourceError;
+								}
+							} else if (currentMediator != null) {
+								intermediaryStack.push(currentMediator);
+							}
+						}
+
+					} else {
+						if (currentMediator != null) {
+							intermediaryStack.push(currentMediator);
+						}
+					}
 
                 } else if (tempTag.getTagType() != 3) {
                     // type 4 is already covered in xml validation.

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ESB DashBoard Templates Wizard
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.dashboard.templates;singleton:=true
-Bundle-Version: 6.2.0.qualifier
+Bundle-Version: 6.4.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,5.0.0)",

@@ -388,53 +388,54 @@ public class ProcessSourceView {
 
             if (tempTag.isStartTag()) { // 14
                 xmlTags.push(tempTag);
-                
+
                 if (artifactType.equals("") && artifacts.contains(tempTag.getqName())) {
-                	artifactType = tempTag.getqName();
+                    artifactType = tempTag.getqName();
                 }
-                
-                if (artifactType.equals("endpoint") && (tempTag.getqName().equals("loadbalance") || tempTag.getqName().equals("failover") 
-                		|| tempTag.getqName().equals("recipientlist"))) {
-                	insideGraphicalEp = true;
+
+                if (artifactType.equals("endpoint") && (tempTag.getqName().equals("loadbalance")
+                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                    insideGraphicalEp = true;
                 }
 
                 if (tempTag.getqName().equals("ruleSet")) {
                     insideRuleSet = true;
                 }
 
-				if ((!tempTag.getqName().equals("sequence") && !tempTag.getqName().equals("endpoint") && mediators.contains(tempTag.getqName()))) {
-					if (!artifactType.equals("localEntry") && (!tempTag.getqName().equals("rule")
-							|| (tempTag.getqName().equals("rule") && !insideRuleSet))) {
-						if (intermediaryStack.size() > 0) {
-							XMLTag next = intermediaryStack.pop();
-							intermediaryStack.push(next);
-							if (next != null && !next.getqName().equals("payloadFactory")) {
-								intermediaryStack.push(tempTag);
-							}
-						} else {
-							intermediaryStack.push(tempTag);
-						}
-					}
+                if ((!tempTag.getqName().equals("sequence") && !tempTag.getqName().equals("endpoint")
+                        && mediators.contains(tempTag.getqName()))) {
+                    if (!artifactType.equals("localEntry") && (!tempTag.getqName().equals("rule")
+                            || (tempTag.getqName().equals("rule") && !insideRuleSet))) {
+                        if (intermediaryStack.size() > 0) {
+                            XMLTag next = intermediaryStack.pop();
+                            intermediaryStack.push(next);
+                            if (next != null && !next.getqName().equals("payloadFactory")) {
+                                intermediaryStack.push(tempTag);
+                            }
+                        } else {
+                            intermediaryStack.push(tempTag);
+                        }
+                    }
 
-				} else if (tempTag.getqName().equals("sequence")) {
-					if (intermediaryStack.size() > 0) {
-						XMLTag next = intermediaryStack.pop();
-						intermediaryStack.push(next);
-						if (!artifactType.equals("localEntry") && (!(next.getqName().equals("foreach")
-								|| next.getqName().equals("clone") || next.getqName().equals("iterate")
-								|| (next.getqName().equals("payloadFactory"))))) {
-							intermediaryStack.push(tempTag);
-						}
-					} else {
-						if (!artifactType.equals("localEntry") && !artifactType.equals("sequence")) {
-							intermediaryStack.push(tempTag);
-						}
-					}
-				} else if (tempTag.getqName().equals("endpoint")) {
-					if (!insideGraphicalEp) {
-						intermediaryStack.push(tempTag);
-					}					
-				}
+                } else if (tempTag.getqName().equals("sequence")) {
+                    if (intermediaryStack.size() > 0) {
+                        XMLTag next = intermediaryStack.pop();
+                        intermediaryStack.push(next);
+                        if (!artifactType.equals("localEntry") && (!(next.getqName().equals("foreach")
+                                || next.getqName().equals("clone") || next.getqName().equals("iterate")
+                                || (next.getqName().equals("payloadFactory"))))) {
+                            intermediaryStack.push(tempTag);
+                        }
+                    } else {
+                        if (!artifactType.equals("localEntry") && !artifactType.equals("sequence")) {
+                            intermediaryStack.push(tempTag);
+                        }
+                    }
+                } else if (tempTag.getqName().equals("endpoint")) {
+                    if (!insideGraphicalEp) {
+                        intermediaryStack.push(tempTag);
+                    }
+                }
 
             } else if (tempTag.isEndTag() || tempTag.getTagType() == 3) {// 235
 
@@ -442,11 +443,11 @@ public class ProcessSourceView {
                     insideRuleSet = false;
                 }
 
-                if (artifactType.equals("endpoint") && insideGraphicalEp && (tempTag.getqName().equals("loadbalance") 
-                		|| tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
-                	insideGraphicalEp = false;
+                if (artifactType.equals("endpoint") && insideGraphicalEp && (tempTag.getqName().equals("loadbalance")
+                        || tempTag.getqName().equals("failover") || tempTag.getqName().equals("recipientlist"))) {
+                    insideGraphicalEp = false;
                 }
-                
+
                 if (prev != null && prev.getTagType() != 8) {
                     xmlTags.push(tempTag);
                     XMLTag currentMediator = null;
@@ -500,51 +501,51 @@ public class ProcessSourceView {
                                     return sourceError;
                                 }
                             }
-                            
+
                         } else if (tempTag.getqName().equals("sequence")) {
 
-							if (currentMediator != null && (currentMediator.getqName().equals("foreach")
-									|| currentMediator.getqName().equals("clone")
-									|| currentMediator.getqName().equals("iterate")
-									|| currentMediator.getqName().equals("payloadFactory"))) {
-								intermediaryStack.push(currentMediator);
+                            if (currentMediator != null && (currentMediator.getqName().equals("foreach")
+                                    || currentMediator.getqName().equals("clone")
+                                    || currentMediator.getqName().equals("iterate")
+                                    || currentMediator.getqName().equals("payloadFactory"))) {
+                                intermediaryStack.push(currentMediator);
 
-							} else if (!artifactType.equals("localEntry") && !artifactType.equals("template")) {
-								sourceError = mediatorValidation();
-								if (sourceError != null) {
-									return sourceError;
-								}
-							}
+                            } else if (!artifactType.equals("localEntry") && !artifactType.equals("template")) {
+                                sourceError = mediatorValidation();
+                                if (sourceError != null) {
+                                    return sourceError;
+                                }
+                            }
 
-						} else {
-							if (currentMediator != null
-									&& (currentMediator.getqName().equals("foreach")
-											|| currentMediator.getqName().equals("clone")
-											|| currentMediator.getqName().equals("iterate"))
-									&& !tempTag.getqName().equals(currentMediator.getqName())) {
-								intermediaryStack.push(currentMediator);
+                        } else {
+                            if (currentMediator != null
+                                    && (currentMediator.getqName().equals("foreach")
+                                            || currentMediator.getqName().equals("clone")
+                                            || currentMediator.getqName().equals("iterate"))
+                                    && !tempTag.getqName().equals(currentMediator.getqName())) {
+                                intermediaryStack.push(currentMediator);
 
-							} else if ((!artifactType.equals("localEntry") && tempTag.getTagType() == 3) || (tempTag
-									.getTagType() != 3
-									&& (currentMediator != null && tempTag.getqName().equals(currentMediator.getqName())
-											|| (artifacts.contains(tempTag.getqName()))))) {
-								if ((!tempTag.getqName().equals("endpoint")
-										|| (tempTag.getqName().equals("endpoint") && !insideGraphicalEp))) {
-									sourceError = mediatorValidation();
-									if (sourceError != null) {
-										return sourceError;
-									}
-								}
-							} else if (currentMediator != null) {
-								intermediaryStack.push(currentMediator);
-							}
-						}
+                            } else if ((!artifactType.equals("localEntry") && tempTag.getTagType() == 3) || (tempTag
+                                    .getTagType() != 3
+                                    && (currentMediator != null && tempTag.getqName().equals(currentMediator.getqName())
+                                            || (artifacts.contains(tempTag.getqName()))))) {
+                                if ((!tempTag.getqName().equals("endpoint")
+                                        || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp))) {
+                                    sourceError = mediatorValidation();
+                                    if (sourceError != null) {
+                                        return sourceError;
+                                    }
+                                }
+                            } else if (currentMediator != null) {
+                                intermediaryStack.push(currentMediator);
+                            }
+                        }
 
-					} else {
-						if (currentMediator != null) {
-							intermediaryStack.push(currentMediator);
-						}
-					}
+                    } else {
+                        if (currentMediator != null) {
+                            intermediaryStack.push(currentMediator);
+                        }
+                    }
 
                 } else if (tempTag.getTagType() != 3) {
                     // type 4 is already covered in xml validation.

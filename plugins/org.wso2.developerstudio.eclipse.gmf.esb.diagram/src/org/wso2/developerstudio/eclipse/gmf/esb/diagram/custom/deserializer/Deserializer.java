@@ -32,7 +32,6 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.collections.IteratorUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.config.SynapseConfigurationBuilder;
@@ -419,11 +418,21 @@ public class Deserializer {
 			createEndpointTemplate(element, properties, artifacts, withSynapse);
 			break;					
 		case MESSAGE_STORE:
-			MessageStore store = DummyMessageStoreFactory.createMessageStore(element, properties);
+			MessageStore store;
+			if (withSynapse) {
+			    store = DummyMessageStoreFactory.createMessageStore(element, properties);
+			} else {
+			    store = MessageStoreExtFactory.createMessageStore(element, properties);
+			}
 			artifacts.put(store.getName(), store);
 			break;
 		case MESSAGE_PROCESSOR:
-			MessageProcessor messageProcessor = DummyMessageProcessorFactory.createMessageProcessor(element, properties);
+		        MessageProcessor messageProcessor;
+		        if (withSynapse) {
+		            messageProcessor = DummyMessageProcessorFactory.createMessageProcessor(element, properties);
+		        } else {
+		            messageProcessor = MessageProcessorExtFactory.createMessageProcessor(element, properties);
+		        }
 			artifacts.put(messageProcessor.getName(), messageProcessor);
 			break;
 		case INBOUND_ENDPOINT:

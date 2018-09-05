@@ -58,7 +58,6 @@ import org.apache.synapse.config.xml.InvokeMediatorFactory;
 import org.apache.synapse.config.xml.IterateMediatorFactory;
 import org.apache.synapse.config.xml.LogMediatorFactory;
 import org.apache.synapse.config.xml.LoopBackMediatorFactory;
-import org.apache.synapse.config.xml.MessageProcessorFactory;
 import org.apache.synapse.config.xml.MessageStoreMediatorFactory;
 import org.apache.synapse.config.xml.PayloadFactoryMediatorFactory;
 import org.apache.synapse.config.xml.PropertyMediatorFactory;
@@ -95,6 +94,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Bean
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageProcessorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageStoreFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.POJOCommandMediatorExtFactory;
@@ -554,6 +554,13 @@ public class ProcessSourceView {
                             + "\" does not have a coresponding starting tag.";
 
                     return createError(error, tempTag);
+                    
+                } else if (tempTag.getTagType() == 3 && artifacts.contains(tempTag.getqName())) {
+                    xmlTags.push(tempTag);
+                    sourceError = mediatorValidation();
+                    if (sourceError != null) {
+                        return sourceError;
+                    }
                 }
 
             } else if (tempTag.getTagType() == 6 || tempTag.getTagType() == 7) {
@@ -738,8 +745,8 @@ public class ProcessSourceView {
                 factory.createEntry(omElement, null);
 
             } else if (qTag.equals("messageProcessor")) {
-                MessageProcessorFactory factory = new MessageProcessorFactory();
-                factory.createMessageProcessor(omElement);
+                DummyMessageProcessorFactory factory = new DummyMessageProcessorFactory();
+                factory.createMessageProcessor(omElement, null);
 
             } else if (qTag.equals("messageStore")) {
                 DummyMessageStoreFactory factory = new DummyMessageStoreFactory();
@@ -1130,8 +1137,13 @@ public class ProcessSourceView {
     private static int calculateLength(String xml, int start, int line) {
         int length = 0;
         String[] lines = xml.split("\n");
+        int nonEmptyLines = lines.length;
         for (int i = 0; i < line - 1; i++) {
-            length += (lines[i].length() + 1);
+            if (nonEmptyLines > i) {
+                length += (lines[i].length() + 1);
+            } else {
+                length += 1;
+            }
         }
         length = length + start;
         return length;

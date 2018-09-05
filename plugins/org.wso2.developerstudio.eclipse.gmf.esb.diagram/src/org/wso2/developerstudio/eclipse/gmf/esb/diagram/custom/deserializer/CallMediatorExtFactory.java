@@ -27,7 +27,6 @@ import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.CallMediatorFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
-import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.builtin.CallMediator;
 
@@ -47,7 +46,7 @@ public class CallMediatorExtFactory extends CallMediatorFactory {
 
 	OMElement epElement = omElement.getFirstChildWithName(ENDPOINT_Q);
 	if (epElement != null) {
-	    Endpoint endpoint = EndpointFactory.getEndpointFromElement(epElement, true, null);
+	    Endpoint endpoint = DummyEndpointFactory.getEndpointFromElement(epElement, true, null);
 	    if (endpoint != null) {
 		((CallMediator) mediator).setEndpoint(endpoint);
 	    }

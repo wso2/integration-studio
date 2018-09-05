@@ -81,54 +81,63 @@ public class DummyWSDLEndpointFactory extends DummyEndpointFactory {
 	    String portName = wsdlElement.getAttributeValue(new QName("port"));
 	    String wsdlURI = wsdlElement.getAttributeValue(new QName("uri"));
 
-	    wsdlEndpoint.setServiceName(serviceName);
-	    wsdlEndpoint.setPortName(portName);
+	    if (serviceName == null || serviceName.equals("")) {
+	    	wsdlEndpoint.setServiceName("WSDL_Service");
+	    } else {
+	    	wsdlEndpoint.setServiceName(serviceName);
+	    }
+	    
+	    if (portName == null || portName.equals("")) {
+	    	wsdlEndpoint.setPortName("8080");
+	    } else {
+	    	wsdlEndpoint.setPortName(portName);
+	    }
 
 	    String noParsing = properties.getProperty(SKIP_WSDL_PARSING);
 
 	    if (wsdlURI != null) {
-		wsdlEndpoint.setWsdlURI(wsdlURI.trim());
-		if (noParsing == null || !JavaUtils.isTrueExplicitly(noParsing)) {
-		    try {
-			OMNode wsdlOM = SynapseConfigUtils.getOMElementFromURL(new URL(wsdlURI).toString(),
-				properties.get(SynapseConstants.SYNAPSE_HOME) != null
-					? properties.get(SynapseConstants.SYNAPSE_HOME).toString()
-					: "");
-			if (wsdlOM != null && wsdlOM instanceof OMElement) {
-			    OMElement omElement = (OMElement) wsdlOM;
-			    OMNamespace ns = omElement.getNamespace();
-			    if (ns != null) {
-				new WSDL11EndpointBuilder().populateEndpointDefinitionFromWSDL(endpoint, wsdlURI.trim(),
-					omElement, serviceName, portName);
-			    }
+			wsdlEndpoint.setWsdlURI(wsdlURI.trim());
+			if (noParsing == null || !JavaUtils.isTrueExplicitly(noParsing)) {
+				try {
+					OMNode wsdlOM = SynapseConfigUtils.getOMElementFromURL(new URL(wsdlURI).toString(),
+							properties.get(SynapseConstants.SYNAPSE_HOME) != null
+									? properties.get(SynapseConstants.SYNAPSE_HOME).toString()
+									: "");
+					if (wsdlOM != null && wsdlOM instanceof OMElement) {
+						OMElement omElement = (OMElement) wsdlOM;
+						OMNamespace ns = omElement.getNamespace();
+						if (ns != null) {
+							new WSDL11EndpointBuilder().populateEndpointDefinitionFromWSDL(endpoint, wsdlURI.trim(),
+									omElement, serviceName, portName);
+						}
+					}
+				} catch (Exception e) {
+					// ignore
+				}
 			}
-		    } catch (Exception e) {
-			// ignore
-		    }
-		}
 	    }
 
-	    OMElement definitionElement = wsdlElement.getFirstChildWithName(
-		    new QName(org.apache.axis2.namespace.Constants.NS_URI_WSDL11, "definitions"));
-	    if (endpoint == null && definitionElement != null) {
-		wsdlEndpoint.setWsdlDoc(definitionElement);
+			OMElement definitionElement = wsdlElement.getFirstChildWithName(
+					new QName(org.apache.axis2.namespace.Constants.NS_URI_WSDL11, "definitions"));
+			if (endpoint == null && definitionElement != null) {
+				wsdlEndpoint.setWsdlDoc(definitionElement);
 
-		if (noParsing == null || !JavaUtils.isTrueExplicitly(noParsing)) {
-		    String resolveRoot = properties.get(SynapseConstants.RESOLVE_ROOT).toString();
-		    String baseUri = "file:./";
-		    if (resolveRoot != null) {
-			baseUri = resolveRoot.trim();
-		    }
-		    if (!baseUri.endsWith(File.separator)) {
-			baseUri = baseUri + File.separator;
-		    }
-		    new WSDL11EndpointBuilder().populateEndpointDefinitionFromWSDL(endpoint, baseUri, definitionElement,
-			    serviceName, portName);
-		} else {
-		    endpoint = new EndpointDefinition();
+				if (noParsing == null || !JavaUtils.isTrueExplicitly(noParsing)) {
+					String resolveRoot = properties.get(SynapseConstants.RESOLVE_ROOT).toString();
+					String baseUri = "file:./";
+					if (resolveRoot != null) {
+						baseUri = resolveRoot.trim();
+					}
+					if (!baseUri.endsWith(File.separator)) {
+						baseUri = baseUri + File.separator;
+					}
+					new WSDL11EndpointBuilder().populateEndpointDefinitionFromWSDL(endpoint, baseUri, definitionElement,
+							serviceName, portName);
+				} else {
+					endpoint = new EndpointDefinition();
+				}
+			}
 		}
-	    }
-	}
 
 	processProperties(wsdlEndpoint, epConfig);
 

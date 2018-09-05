@@ -58,126 +58,128 @@ public abstract class AbstractEndpointDeserializer
 			executeSetValueCommand(END_POINT__END_POINT_NAME, endpoint.getName());
 		}
 
-		StatisticsConfigurable statisticsConfigurable = endpoint.getDefinition().getAspectConfiguration();
-		if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
-			executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(true));
-		} else {
-			executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(false));
-		}
-		// Fixing TOOLS-2652
-		if (endpoint.getDefinition().isTracingEnabled()) {
-			executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(true));
-		} else {
-			executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(false));
-		}
-
-		if ("soap11".equals(endpoint.getDefinition().getFormat())) {
-			executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.SOAP_11);
-		} else if ("soap12".equals(endpoint.getDefinition().getFormat())) {
-			executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.SOAP_12);
-		} else if ("pox".equals(endpoint.getDefinition().getFormat())) {
-			executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.POX);
-		} else if ("get".equals(endpoint.getDefinition().getFormat())) {
-			executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.GET);
-		} else if ("rest".equals(endpoint.getDefinition().getFormat())) {
-			executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.REST);
-		}
-
-		if (endpoint.getDefinition().isUseMTOM()) {
-			executeSetValueCommand(ABSTRACT_END_POINT__OPTIMIZE, EndPointAttachmentOptimization.MTOM);
-		} else if (endpoint.getDefinition().isUseSwa()) {
-			executeSetValueCommand(ABSTRACT_END_POINT__OPTIMIZE, EndPointAttachmentOptimization.SWA);
-		}
-
-		for (Integer code : endpoint.getDefinition().getSuspendErrorCodes()) {
-			if (suspendErrorCodes == null) {
-				suspendErrorCodes = code.toString();
+		if (endpoint.getDefinition() != null) {
+			StatisticsConfigurable statisticsConfigurable = endpoint.getDefinition().getAspectConfiguration();
+			if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
+				executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(true));
 			} else {
-				suspendErrorCodes = suspendErrorCodes + "," + code.toString();
+				executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(false));
 			}
-		}
-		executeSetValueCommand(ABSTRACT_END_POINT__SUSPEND_ERROR_CODES, suspendErrorCodes);
-		executeSetValueCommand(ABSTRACT_END_POINT__SUSPEND_INITIAL_DURATION,
-				endpoint.getDefinition().getInitialSuspendDuration());
-		executeSetValueCommand(ABSTRACT_END_POINT__SUSPEND_MAXIMUM_DURATION,
-				endpoint.getDefinition().getSuspendMaximumDuration());
-		executeSetValueCommand(ABSTRACT_END_POINT__SUSPEND_PROGRESSION_FACTOR,
-				endpoint.getDefinition().getSuspendProgressionFactor());
-
-		for (Integer code : endpoint.getDefinition().getTimeoutErrorCodes()) {
-			if (retryErrorCodes == null) {
-				retryErrorCodes = code.toString();
+			// Fixing TOOLS-2652
+			if (endpoint.getDefinition().isTracingEnabled()) {
+				executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(true));
 			} else {
-				retryErrorCodes = retryErrorCodes + "," + code.toString();
+				executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(false));
 			}
-		}
-		executeSetValueCommand(ABSTRACT_END_POINT__RETRY_ERROR_CODES, retryErrorCodes);
-		executeSetValueCommand(ABSTRACT_END_POINT__RETRY_COUNT,
-				endpoint.getDefinition().getRetriesOnTimeoutBeforeSuspend());
-		executeSetValueCommand(ABSTRACT_END_POINT__RETRY_DELAY,
-				(long) endpoint.getDefinition().getRetryDurationOnTimeout());
-
-		if (endpoint.getDefinition().getTimeoutAction() == 100) {
-			executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_ACTION, EndPointTimeOutAction.NEVER);
-		} else if (endpoint.getDefinition().getTimeoutAction() == 101) {
-			executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_ACTION, EndPointTimeOutAction.DISCARD);
-		} else if (endpoint.getDefinition().getTimeoutAction() == 102) {
-			executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_ACTION, EndPointTimeOutAction.FAULT);
-		}
-		
-		if (endpoint.getDefinition().getTimeoutDuration() > 0 || endpoint.getDefinition().isDynamicTimeoutEndpoint()) {
-			String duration = null;
-			if (!endpoint.getDefinition().isDynamicTimeoutEndpoint()) {
-				duration = Long.toString(endpoint.getDefinition().getTimeoutDuration());
-			} else {
-				duration = "{" + endpoint.getDefinition().getDynamicTimeoutExpression().getExpression() + "}";
-			}
-			executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_DURATION, duration);
-		}
-
-		if (endpoint.getDefinition().isAddressingOn()) {
-			executeSetValueCommand(ABSTRACT_END_POINT__ADDRESSING_ENABLED, true);
-			executeSetValueCommand(ABSTRACT_END_POINT__ADDRESSING_SEPARATE_LISTENER,
-					endpoint.getDefinition().isUseSeparateListener());
-			if ("final".equals(endpoint.getDefinition().getAddressingVersion())) {
-				executeSetValueCommand(ABSTRACT_END_POINT__ADDRESSING_VERSION, EndPointAddressingVersion.FINAL);
-			} else {
-				executeSetValueCommand(ABSTRACT_END_POINT__ADDRESSING_VERSION, EndPointAddressingVersion.SUBMISSION);
-			}
-		}
-
-		if (endpoint.getDefinition().isReliableMessagingOn()) {
-			executeSetValueCommand(ABSTRACT_END_POINT__RELIABLE_MESSAGING_ENABLED, true);
-
-			RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-			String wsRMPolicyKey = endpoint.getDefinition().getWsRMPolicyKey();
-			if (wsRMPolicyKey != null) {
-				regkey.setKeyValue(wsRMPolicyKey);
-			} else {
-				regkey.setKeyValue("");
-			}
-			executeSetValueCommand(ABSTRACT_END_POINT__RELIABLE_MESSAGING_POLICY, regkey);
-		}
-
-		if (endpoint.getDefinition().isSecurityOn()) {
-			executeSetValueCommand(ABSTRACT_END_POINT__SECURITY_ENABLED, true);
-
-			String wsSecPolicyKey = endpoint.getDefinition().getWsSecPolicyKey();
-			if (StringUtils.isNotBlank(wsSecPolicyKey)) {
-				RegistryKeyProperty regkey = getRegistryKeyForPolicy(wsSecPolicyKey);
-				executeSetValueCommand(ABSTRACT_END_POINT__SECURITY_POLICY, regkey);
+			
+			if ("soap11".equals(endpoint.getDefinition().getFormat())) {
+				executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.SOAP_11);
+			} else if ("soap12".equals(endpoint.getDefinition().getFormat())) {
+				executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.SOAP_12);
+			} else if ("pox".equals(endpoint.getDefinition().getFormat())) {
+				executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.POX);
+			} else if ("get".equals(endpoint.getDefinition().getFormat())) {
+				executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.GET);
+			} else if ("rest".equals(endpoint.getDefinition().getFormat())) {
+				executeSetValueCommand(ABSTRACT_END_POINT__FORMAT, EndPointMessageFormat.REST);
 			}
 
-			String inboundPolicyKey = endpoint.getDefinition().getInboundWsSecPolicyKey();
-			if (StringUtils.isNotBlank(inboundPolicyKey)) {
-				RegistryKeyProperty regkey = getRegistryKeyForPolicy(inboundPolicyKey);
-				executeSetValueCommand(ABSTRACT_END_POINT__INBOUND_POLICY, regkey);
+			if (endpoint.getDefinition().isUseMTOM()) {
+				executeSetValueCommand(ABSTRACT_END_POINT__OPTIMIZE, EndPointAttachmentOptimization.MTOM);
+			} else if (endpoint.getDefinition().isUseSwa()) {
+				executeSetValueCommand(ABSTRACT_END_POINT__OPTIMIZE, EndPointAttachmentOptimization.SWA);
 			}
 
-			String outoundPolicyKey = endpoint.getDefinition().getOutboundWsSecPolicyKey();
-			if (StringUtils.isNotBlank(outoundPolicyKey)) {
-				RegistryKeyProperty regkey = getRegistryKeyForPolicy(outoundPolicyKey);
-				executeSetValueCommand(ABSTRACT_END_POINT__OUTBOUND_POLICY, regkey);
+			for (Integer code : endpoint.getDefinition().getSuspendErrorCodes()) {
+				if (suspendErrorCodes == null) {
+					suspendErrorCodes = code.toString();
+				} else {
+					suspendErrorCodes = suspendErrorCodes + "," + code.toString();
+				}
+			}
+			executeSetValueCommand(ABSTRACT_END_POINT__SUSPEND_ERROR_CODES, suspendErrorCodes);
+			executeSetValueCommand(ABSTRACT_END_POINT__SUSPEND_INITIAL_DURATION,
+					endpoint.getDefinition().getInitialSuspendDuration());
+			executeSetValueCommand(ABSTRACT_END_POINT__SUSPEND_MAXIMUM_DURATION,
+					endpoint.getDefinition().getSuspendMaximumDuration());
+			executeSetValueCommand(ABSTRACT_END_POINT__SUSPEND_PROGRESSION_FACTOR,
+					endpoint.getDefinition().getSuspendProgressionFactor());
+
+			for (Integer code : endpoint.getDefinition().getTimeoutErrorCodes()) {
+				if (retryErrorCodes == null) {
+					retryErrorCodes = code.toString();
+				} else {
+					retryErrorCodes = retryErrorCodes + "," + code.toString();
+				}
+			}
+			executeSetValueCommand(ABSTRACT_END_POINT__RETRY_ERROR_CODES, retryErrorCodes);
+			executeSetValueCommand(ABSTRACT_END_POINT__RETRY_COUNT,
+					endpoint.getDefinition().getRetriesOnTimeoutBeforeSuspend());
+			executeSetValueCommand(ABSTRACT_END_POINT__RETRY_DELAY,
+					(long) endpoint.getDefinition().getRetryDurationOnTimeout());
+
+			if (endpoint.getDefinition().getTimeoutAction() == 100) {
+				executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_ACTION, EndPointTimeOutAction.NEVER);
+			} else if (endpoint.getDefinition().getTimeoutAction() == 101) {
+				executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_ACTION, EndPointTimeOutAction.DISCARD);
+			} else if (endpoint.getDefinition().getTimeoutAction() == 102) {
+				executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_ACTION, EndPointTimeOutAction.FAULT);
+			}
+			
+			if (endpoint.getDefinition().getTimeoutDuration() > 0 || endpoint.getDefinition().isDynamicTimeoutEndpoint()) {
+				String duration = null;
+				if (!endpoint.getDefinition().isDynamicTimeoutEndpoint()) {
+					duration = Long.toString(endpoint.getDefinition().getTimeoutDuration());
+				} else {
+					duration = "{" + endpoint.getDefinition().getDynamicTimeoutExpression().getExpression() + "}";
+				}
+				executeSetValueCommand(ABSTRACT_END_POINT__TIME_OUT_DURATION, duration);
+			}
+
+			if (endpoint.getDefinition().isAddressingOn()) {
+				executeSetValueCommand(ABSTRACT_END_POINT__ADDRESSING_ENABLED, true);
+				executeSetValueCommand(ABSTRACT_END_POINT__ADDRESSING_SEPARATE_LISTENER,
+						endpoint.getDefinition().isUseSeparateListener());
+				if ("final".equals(endpoint.getDefinition().getAddressingVersion())) {
+					executeSetValueCommand(ABSTRACT_END_POINT__ADDRESSING_VERSION, EndPointAddressingVersion.FINAL);
+				} else {
+					executeSetValueCommand(ABSTRACT_END_POINT__ADDRESSING_VERSION, EndPointAddressingVersion.SUBMISSION);
+				}
+			}
+
+			if (endpoint.getDefinition().isReliableMessagingOn()) {
+				executeSetValueCommand(ABSTRACT_END_POINT__RELIABLE_MESSAGING_ENABLED, true);
+
+				RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+				String wsRMPolicyKey = endpoint.getDefinition().getWsRMPolicyKey();
+				if (wsRMPolicyKey != null) {
+					regkey.setKeyValue(wsRMPolicyKey);
+				} else {
+					regkey.setKeyValue("");
+				}
+				executeSetValueCommand(ABSTRACT_END_POINT__RELIABLE_MESSAGING_POLICY, regkey);
+			}
+
+			if (endpoint.getDefinition().isSecurityOn()) {
+				executeSetValueCommand(ABSTRACT_END_POINT__SECURITY_ENABLED, true);
+
+				String wsSecPolicyKey = endpoint.getDefinition().getWsSecPolicyKey();
+				if (StringUtils.isNotBlank(wsSecPolicyKey)) {
+					RegistryKeyProperty regkey = getRegistryKeyForPolicy(wsSecPolicyKey);
+					executeSetValueCommand(ABSTRACT_END_POINT__SECURITY_POLICY, regkey);
+				}
+
+				String inboundPolicyKey = endpoint.getDefinition().getInboundWsSecPolicyKey();
+				if (StringUtils.isNotBlank(inboundPolicyKey)) {
+					RegistryKeyProperty regkey = getRegistryKeyForPolicy(inboundPolicyKey);
+					executeSetValueCommand(ABSTRACT_END_POINT__INBOUND_POLICY, regkey);
+				}
+
+				String outoundPolicyKey = endpoint.getDefinition().getOutboundWsSecPolicyKey();
+				if (StringUtils.isNotBlank(outoundPolicyKey)) {
+					RegistryKeyProperty regkey = getRegistryKeyForPolicy(outoundPolicyKey);
+					executeSetValueCommand(ABSTRACT_END_POINT__OUTBOUND_POLICY, regkey);
+				}
 			}
 		}
 

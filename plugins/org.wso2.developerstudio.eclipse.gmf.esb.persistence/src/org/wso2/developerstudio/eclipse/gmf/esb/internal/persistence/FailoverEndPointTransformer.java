@@ -172,18 +172,15 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 					}
 				}
 
+				OMElement element = null;
 				String endpointName = (String) visualEndPoint.getName();
-				if(StringUtils.isEmpty(endpointName)) {
-					Random rand = new Random();
-					int randomNum = rand.nextInt((100 - 1) + 1) + 1;
-					endpointName = "SampleFailoverEndpoint_" + randomNum;
+				if (!StringUtils.isEmpty(endpointName)) {
+					IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+					IFile file = activeProject.getFile(location);
+					final String source = FileUtils.getContentAsString(file.getContents());
+					element = AXIOMUtil.stringToOM(source);
 				}
-				IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
-				IFile file = activeProject.getFile(location);
-
-				final String source = FileUtils.getContentAsString(file.getContents());
-
-				OMElement element = AXIOMUtil.stringToOM(source);
+				
 				Properties properties = new Properties();
 				properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
 				synapseFailEP = (FailoverEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);

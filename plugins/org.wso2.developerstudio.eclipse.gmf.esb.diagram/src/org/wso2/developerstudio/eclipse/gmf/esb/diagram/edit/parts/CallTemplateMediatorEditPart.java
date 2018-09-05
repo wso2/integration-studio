@@ -40,7 +40,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
@@ -75,7 +74,6 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -97,6 +95,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLo
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolTip;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.OpenEditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CallTemplateMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CallTemplateMediatorItemSemanticEditPolicy;
@@ -104,12 +103,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplate;
-import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.project.extensions.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 /**
@@ -600,14 +599,12 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 			return Messages.CallTemplateMediatorEditPart_NodeName;
 		}
 
-		public IFigure getToolTip() {
-			if (StringUtils.isEmpty(toolTipMessage)) {
-				return new Label(
-						Messages.CallTemplateMediatorEditPart_ToolTipMessage);
-			} else {
-				return new Label(toolTipMessage);
-			}
-		}
+        public IFigure getToolTip() {
+            if (StringUtils.isEmpty(toolTipMessage)) {
+                toolTipMessage = Messages.CallTemplateMediatorEditPart_ToolTipMessage;
+            }
+            return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
+        }
 
 	}
 	

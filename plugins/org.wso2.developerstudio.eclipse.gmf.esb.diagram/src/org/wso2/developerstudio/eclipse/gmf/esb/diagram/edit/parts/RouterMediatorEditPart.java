@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
@@ -56,6 +55,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLo
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolTip;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.RouterMediatorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.RouterMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.RouterMediatorItemSemanticEditPolicy;
@@ -377,13 +377,12 @@ public class RouterMediatorEditPart extends complexFiguredAbstractMediator {
 			return Messages.RouterMediatorEditPart_NodeName;
 		}
 
-		public IFigure getToolTip() {
-			if (StringUtils.isEmpty(toolTipMessage)) {
-				return new Label(Messages.RouterMediatorEditPart_ToolTip);
-			} else {
-				return new Label(toolTipMessage);
-			}
-		}
+        public IFigure getToolTip() {
+            if (StringUtils.isEmpty(toolTipMessage)) {
+                toolTipMessage = Messages.RouterMediatorEditPart_ToolTip;
+            }
+            return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
+        }
 
 	}
 

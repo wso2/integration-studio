@@ -18,7 +18,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
@@ -45,6 +44,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLo
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CustomToolTip;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.FastXSLTMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.FastXSLTMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
@@ -274,8 +274,6 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 	 */
 	public class FastXSLTMediatorFigure extends EsbGraphicalShapeWithLabel {
 
-		private static final String TOOL_TIP = "Fast XSLT transformations";
-
 		private static final String NODE_NAME = "Fast XSLT";
 
 		private static final String ICONS_LOCATION = "icons/ico20/fastxslt-mediator.gif";
@@ -328,13 +326,12 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 			return NODE_NAME;
 		}
 
-		public IFigure getToolTip() {
-			if (StringUtils.isEmpty(toolTipMessage)) {
-				return new Label(TOOL_TIP);
-			} else {
-				return new Label(toolTipMessage);
-			}
-		}
+        public IFigure getToolTip() {
+            if (StringUtils.isEmpty(toolTipMessage)) {
+                toolTipMessage = Messages.FastXSLTMediatorEditPart_ToolTipMessage;
+            }
+            return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
+        }
 
 	}
 

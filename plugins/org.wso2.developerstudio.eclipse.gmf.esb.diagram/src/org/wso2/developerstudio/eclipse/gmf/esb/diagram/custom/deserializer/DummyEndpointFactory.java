@@ -33,6 +33,7 @@ import org.apache.synapse.endpoints.EndpointDefinition;
 import org.apache.synapse.PropertyInclude;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.endpoints.AbstractEndpoint;
+import org.apache.synapse.endpoints.AddressEndpoint;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -54,7 +55,11 @@ public abstract class DummyEndpointFactory {
     private static final QName DESCRIPTION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "description");
 
     public static Endpoint getEndpointFromElement(OMElement elem, boolean isAnonymous, Properties properties) {
-	return getEndpointFactory(elem).createEndpointWithName(elem, isAnonymous, properties);
+    	if (getEndpointFactory(elem) != null) {
+    		return getEndpointFactory(elem).createEndpointWithName(elem, isAnonymous, properties);
+    	} else {
+    		return new AddressEndpoint();
+    	}
     }
 
     public static Endpoint getEndpointFromElement(OMElement elem, DefinitionFactory factory, boolean isAnonymous,

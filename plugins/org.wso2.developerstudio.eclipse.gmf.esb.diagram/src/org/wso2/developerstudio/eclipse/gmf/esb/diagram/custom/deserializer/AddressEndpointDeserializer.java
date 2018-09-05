@@ -60,7 +60,9 @@ public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
 		setElementToEdit(endPoint);
 		deserializeEndpoint(addressEndpoint, endPoint);
 
-		executeSetValueCommand(ADDRESS_END_POINT__URI, addressEndpoint.getDefinition().getAddress());
+		if (addressEndpoint.getDefinition() != null) {
+			executeSetValueCommand(ADDRESS_END_POINT__URI, addressEndpoint.getDefinition().getAddress());
+		}
 
 		return endPoint;
 	}

@@ -49,7 +49,6 @@ import org.apache.synapse.config.xml.DBReportMediatorFactory;
 import org.apache.synapse.config.xml.DropMediatorFactory;
 import org.apache.synapse.config.xml.EnqueueMediatorFactory;
 import org.apache.synapse.config.xml.EnrichMediatorFactory;
-import org.apache.synapse.config.xml.EntryFactory;
 import org.apache.synapse.config.xml.FaultMediatorFactory;
 import org.apache.synapse.config.xml.FilterMediatorFactory;
 import org.apache.synapse.config.xml.ForEachMediatorFactory;
@@ -72,7 +71,6 @@ import org.apache.synapse.config.xml.URLRewriteMediatorFactory;
 import org.apache.synapse.config.xml.ValidateMediatorFactory;
 import org.apache.synapse.config.xml.XSLTMediatorFactory;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
-import org.apache.synapse.config.xml.inbound.InboundEndpointFactory;
 import org.apache.synapse.config.xml.rest.APIFactory;
 import org.apache.synapse.mediators.bsf.ScriptMediatorFactory;
 import org.apache.synapse.mediators.spring.SpringMediatorFactory;
@@ -93,6 +91,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyEntryFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyInboundEndpointFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageProcessorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageStoreFactory;
@@ -521,7 +521,8 @@ public class ProcessSourceView {
                             if (currentMediator != null
                                     && (currentMediator.getqName().equals("foreach")
                                             || currentMediator.getqName().equals("clone")
-                                            || currentMediator.getqName().equals("iterate"))
+                                            || currentMediator.getqName().equals("iterate")
+                                            || currentMediator.getqName().equals("property"))
                                     && !tempTag.getqName().equals(currentMediator.getqName())) {
                                 intermediaryStack.push(currentMediator);
 
@@ -737,11 +738,11 @@ public class ProcessSourceView {
                 EndpointFactory.getEndpointFromElement(omElement, false, null);
 
             } else if (qTag.equals("inboundEndpoint")) {
-                InboundEndpointFactory factory = new InboundEndpointFactory();
-                factory.createInboundEndpoint(omElement, null);
+                DummyInboundEndpointFactory factory = new DummyInboundEndpointFactory();
+                factory.createInboundEndpointDev(omElement);
 
             } else if (qTag.equals("localEntry")) {
-                EntryFactory factory = new EntryFactory();
+                DummyEntryFactory factory = new DummyEntryFactory();
                 factory.createEntry(omElement, null);
 
             } else if (qTag.equals("messageProcessor")) {

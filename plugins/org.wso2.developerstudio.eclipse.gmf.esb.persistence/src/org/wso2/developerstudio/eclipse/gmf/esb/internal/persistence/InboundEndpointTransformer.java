@@ -112,19 +112,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				.getSequenceOutputConnector());
 		Sequence onErrorSequence = getSequence(visualInboundEndpoint
 				.getOnErrorSequenceOutputConnector());
-		if (isSequenceMandatoryProtocol(visualInboundEndpoint.getType().getName())) {
-			if (sequence == null && onErrorSequence == null) {
-				throw new TransformerException(
-						"Sequence and On Error Sequence cannot be empty. Please include a Sequence and an On Error Sequence");
-			}
-			if (sequence == null) {
-				throw new TransformerException("Sequence cannot be empty. Please include a Sequence");
-			}
-			if (onErrorSequence == null) {
-				throw new TransformerException(
-						"On Error Sequence cannot be empty. Please include an On Error Sequence");
-			}
-		}
+
 		inboundEndpoint.configure(new AspectConfiguration(visualInboundEndpoint.getName()));
 		if (visualInboundEndpoint.isStatisticsEnabled()) {
 			inboundEndpoint.getAspectConfiguration().enableStatistics();
@@ -1026,43 +1014,49 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_FACTORY,
                         visualInboundEndpoint.getTransportRabbitMqConnectionFactory());
             } else {
-                throw new TransformerException("RabbitMQ connection factory cannot be empty");
+                throw new TransformerException("AMQPConnectionFactory");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerHostName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME,
                         visualInboundEndpoint.getTransportRabbitMqServerHostName());
             } else {
-                throw new TransformerException("RabbitMQ server hostname cannot be empty");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME,
+                        "localhost");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerPort())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PORT,
                         visualInboundEndpoint.getTransportRabbitMqServerPort());
             } else {
-                throw new TransformerException("RabbitMQ server port cannot be empty");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PORT,
+                        "5672");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerUserName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_USER_NAME,
                         visualInboundEndpoint.getTransportRabbitMqServerUserName());
             } else {
-                throw new TransformerException("RabbitMQ server username cannot be empty");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_USER_NAME,
+                        "guest");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerPassword())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PASSWORD,
                         visualInboundEndpoint.getTransportRabbitMqServerPassword());
             } else {
-                throw new TransformerException("RabbitMQ server password cannot be empty");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PASSWORD,
+                        "guest");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_QUEUE_NAME,
                         visualInboundEndpoint.getTransportRabbitMqQueueName());
             } else {
-                throw new TransformerException("RabbitMQ queue name cannot be empty");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_QUEUE_NAME,
+                        "queue");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqExchangeName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_EXCHANGE_NAME,
                         visualInboundEndpoint.getTransportRabbitMqExchangeName());
             } else {
-                throw new TransformerException("RabbitMQ exchange name cannot be empty");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_EXCHANGE_NAME,
+                        "exchange");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueDurable())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_QUEUE_DURABLE,
@@ -1315,13 +1309,6 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
         }
         return inboundEndpoint;
     }
-
-	private boolean isSequenceMandatoryProtocol(String type) {
-		if (type.matches("file|jms|hl7|kafka|custom|mqtt|rabbitmq|wso2_mb|ws|wss")) {
-			return true;
-		}
-		return false;
-	}
 
     private void addParameterForConfig(InboundEndpoint inboundEndpoint, String parameterName, String parameterKeyValue) {
         if (parameterKeyValue.startsWith(REGISTRY_PREFIX)) {

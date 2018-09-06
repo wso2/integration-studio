@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="ScienceLabEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http uri-template="https://reqres.in/api"/>
+</endpoint>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="ArithmaticOperationService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log description="Log Request Payload" level="full"/>
+            <switch description="Retrieve the first element name and match in the case. Otherwise, send back custom payload." source="local-name(//soapenv:Body/*[1])" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                <case regex="AddInteger">
+                    <header name="Action" scope="default" value="http://tempuri.org/SOAP.Demo.AddInteger"/>
+                    <send description="Send request to the endpoint">
+                        <endpoint key="NumberAdditionEP"/>
+                    </send>
+                </case>
+                <case regex="DivideInteger">
+                    <header name="Action" scope="default" value="http://tempuri.org/SOAP.Demo.DivideInteger"/>
+                    <send>
+                        <endpoint key="NumberDivisionEP"/>
+                    </send>
+                </case>
+                <default>
+                    <payloadFactory description="Build custom payload to send back" media-type="xml">
+                        <format>
+                            <Message xmlns="">Discard request. Matching case not found.</Message>
+                        </format>
+                        <args/>
+                    </payloadFactory>
+                    <loopback/>
+                </default>
+            </switch>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </target>
+</proxy>

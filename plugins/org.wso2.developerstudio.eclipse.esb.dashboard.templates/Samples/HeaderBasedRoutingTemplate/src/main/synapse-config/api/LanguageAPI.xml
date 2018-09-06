@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/lang" name="LanguageAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/echo/{name}">
+        <inSequence>
+            <property description="Read transport header" expression="$trp:request-lang" name="language" scope="default" type="STRING"/>
+            <switch description="Match the language and build the payload" source="$ctx:language">
+                <case regex="en">
+                    <payloadFactory media-type="json">
+                        <format>{
+"Message":"Hello $1"
+}</format>
+                        <args>
+                            <arg evaluator="xml" expression="get-property('uri.var.name')"/>
+                        </args>
+                    </payloadFactory>
+                </case>
+                <case regex="fr">
+                    <payloadFactory media-type="json">
+                        <format>{
+"Message":"Bonjour $1"
+}</format>
+                        <args>
+                            <arg evaluator="xml" expression="get-property('uri.var.name')"/>
+                        </args>
+                    </payloadFactory>
+                </case>
+                <case regex="la">
+                    <payloadFactory media-type="json">
+                        <format>{
+"Mensaje":"Hola $1"
+}</format>
+                        <args>
+                            <arg evaluator="xml" expression="get-property('uri.var.name')"/>
+                        </args>
+                    </payloadFactory>
+                </case>
+                <default>
+                    <payloadFactory media-type="json">
+                        <format>{
+"Message":"Language does not support."
+}</format>
+                        <args>
+                            <arg evaluator="xml" expression="get-property('uri.var.name')"/>
+                        </args>
+                    </payloadFactory>
+                </default>
+            </switch>
+            <respond description="Respond with built payload"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

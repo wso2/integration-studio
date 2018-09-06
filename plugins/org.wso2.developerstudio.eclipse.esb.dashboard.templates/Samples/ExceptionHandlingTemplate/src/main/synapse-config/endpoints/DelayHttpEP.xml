@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="DelayHttpEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="get" uri-template="https://reqres.in/api/users?delay=45">
+        <timeout>
+            <duration>30000</duration>
+            <responseAction>fault</responseAction>
+        </timeout>
+        <suspendOnFailure>
+            <initialDuration>30000</initialDuration>
+            <progressionFactor>1.0</progressionFactor>
+        </suspendOnFailure>
+        <markForSuspension>
+            <retriesBeforeSuspension>1</retriesBeforeSuspension>
+            <retryDelay>15000</retryDelay>
+        </markForSuspension>
+    </http>
+</endpoint>

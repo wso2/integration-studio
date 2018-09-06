@@ -1,5 +1,5 @@
 /*
- *     Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *     Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  *     WSO2 Inc. licenses this file to you under the Apache License,
  *     Version 2.0 (the "License"); you may not use this file except
@@ -53,13 +53,13 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public class TemplateWizardUtil {
-    
+
     /**
      * Will initialize file contents with a sample text.
-     * 
-     * @return InputStream
+     *
      * @param taskName This gives the taskName of the changed task
-     * @param tnsName This gives the target namespace of the changed element
+     * @param tnsName  This gives the target namespace of the changed element
+     * @return InputStream
      * @throws IOException
      * @throws CoreException
      */
@@ -70,7 +70,7 @@ public class TemplateWizardUtil {
 
     /**
      * Will initialize file contents with a dummy wsdl.
-     * 
+     *
      * @return InputStream which contains WSDL contents
      * @throws IOException
      */
@@ -81,7 +81,7 @@ public class TemplateWizardUtil {
 
     /**
      * Will initialize file contents with a dummy org schema.
-     * 
+     *
      * @return InputStream which contains organization schema's content
      * @throws IOException
      */
@@ -92,7 +92,7 @@ public class TemplateWizardUtil {
 
     /**
      * This will open file contents of Template pom file
-     * 
+     *
      * @param containerName
      * @return InputStream which contains the pom contents
      * @throws IOException
@@ -105,7 +105,7 @@ public class TemplateWizardUtil {
 
     /**
      * This will open file contents of template HT Config file
-     * 
+     *
      * @return InputStream which contains the HT Config contents
      * @throws IOException
      */
@@ -116,7 +116,7 @@ public class TemplateWizardUtil {
 
     /**
      * Read dummy ht file which is needed to initialize a new ht file
-     * 
+     *
      * @return A string of Template HumanTask File Contents
      * @throws IOException
      */
@@ -124,8 +124,8 @@ public class TemplateWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(TemplateProjectConstants.DUMMY_HT_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
-                        TemplateProjectConstants.UTF8_STRING))) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(inputStream, TemplateProjectConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append(TemplateProjectConstants.NEWLINE_CHAR);
@@ -133,15 +133,15 @@ public class TemplateWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    TemplateProjectConstants.ERROR_MESSAGE,
-                    TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    TemplateProjectConstants.ERROR_MESSAGE, TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE,
+                    editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * Read template WSDL file which is needed to initialize a new WSDL file
-     * 
+     *
      * @return A string of Template WSDL File Contents
      * @throws IOException
      */
@@ -149,8 +149,8 @@ public class TemplateWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(TemplateProjectConstants.DUMMY_WSDL_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
-                        TemplateProjectConstants.UTF8_STRING))) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(inputStream, TemplateProjectConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append(TemplateProjectConstants.NEWLINE_CHAR);
@@ -158,15 +158,15 @@ public class TemplateWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    TemplateProjectConstants.ERROR_MESSAGE,
-                    TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    TemplateProjectConstants.ERROR_MESSAGE, TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE,
+                    editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * Read template Organization Schema file which is needed to initialize a new OrganizationSchema file
-     * 
+     *
      * @return A string of Template Org Schema File Contents
      * @throws IOException
      */
@@ -174,8 +174,8 @@ public class TemplateWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(TemplateProjectConstants.DUMMY_ORG_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
-                        TemplateProjectConstants.UTF8_STRING))) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(inputStream, TemplateProjectConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append(TemplateProjectConstants.NEWLINE_CHAR);
@@ -183,15 +183,15 @@ public class TemplateWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    TemplateProjectConstants.ERROR_MESSAGE,
-                    TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    TemplateProjectConstants.ERROR_MESSAGE, TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE,
+                    editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * Read template POM file which is needed to initialize a new POM file for the new project
-     * 
+     *
      * @return A string of Template POM File Contents
      * @throws IOException
      */
@@ -199,8 +199,8 @@ public class TemplateWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(TemplateProjectConstants.DUMMY_POM_SCHEMA_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
-                        TemplateProjectConstants.UTF8_STRING))) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(inputStream, TemplateProjectConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append(TemplateProjectConstants.NEWLINE_CHAR);
@@ -208,15 +208,15 @@ public class TemplateWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    TemplateProjectConstants.ERROR_MESSAGE,
-                    TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    TemplateProjectConstants.ERROR_MESSAGE, TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE,
+                    editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * Read template HTConfig file which is needed to initialize a new HtConfig.xml file
-     * 
+     *
      * @return A string of Template HTConfig File Contents
      * @throws IOException
      */
@@ -224,8 +224,8 @@ public class TemplateWizardUtil {
         StringBuilder sb = new StringBuilder();
         URL url = new URL(TemplateProjectConstants.DUMMY_HTCONFIG_LOCATION);
         try (InputStream inputStream = url.openConnection().getInputStream();
-                BufferedReader in = new BufferedReader(new InputStreamReader(inputStream,
-                        TemplateProjectConstants.UTF8_STRING))) {
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(inputStream, TemplateProjectConstants.UTF8_STRING))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 sb.append(inputLine).append(TemplateProjectConstants.NEWLINE_CHAR);
@@ -233,18 +233,18 @@ public class TemplateWizardUtil {
         } catch (IOException e) {
             IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
             ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-                    TemplateProjectConstants.ERROR_MESSAGE,
-                    TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE, editorStatus);
+                    TemplateProjectConstants.ERROR_MESSAGE, TemplateProjectConstants.ERROR_READING_FROM_PROJECT_MESSAGE,
+                    editorStatus);
         }
         return sb.toString();
     }
 
     /**
      * This method changes the relevant XML Namespaces and tags accordingly
-     * 
-     * @param content content of the xml file
+     *
+     * @param content  content of the xml file
      * @param taskName currently Processing Task Name
-     * @param tnsName Target Namespace
+     * @param tnsName  Target Namespace
      * @return String which contains the modified XML file content
      * @throws CoreException
      */
@@ -293,9 +293,9 @@ public class TemplateWizardUtil {
 
     /**
      * This method changes namespaces and relevant tags of the pom file accrodingly
-     * 
+     *
      * @param containerName Project name
-     * @param content Content of the pom file
+     * @param content       Content of the pom file
      * @return String of modified pom file content
      * @throws CoreException
      */
@@ -339,10 +339,10 @@ public class TemplateWizardUtil {
         }
         return xmlString;
     }
-    
+
     /**
      * Create a new project nature for the new project
-     * 
+     *
      * @param project The IProject instance of the new project
      * @throws CoreException
      */
@@ -360,8 +360,8 @@ public class TemplateWizardUtil {
 
     /**
      * This method creates a new coreexception and throws it
-     * 
-     * @param message The exception message that should be printed
+     *
+     * @param message   The exception message that should be printed
      * @param exception The nested exception that should be included in the throwable
      * @throws CoreException
      */

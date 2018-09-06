@@ -363,7 +363,6 @@ public class Deserializer {
 			artifacts.put(mainSequence.getName(), mainSequence);
 			break;
 		case API:
-			//API api = APIFactory.createAPI(element);
 			API api = DummyAPIFactory.createAPI(element, withSynapse);
 			artifacts.put(api.getName(), api);
 			break;
@@ -384,7 +383,12 @@ public class Deserializer {
 			artifacts.put(wrapper.getName(), wrapper);
 			break;
 		case LOCAL_ENTRY:
-			Entry entry = EntryExtFactory.createEntry(element, properties);
+			Entry entry;
+			if (withSynapse) {
+			    entry = DummyEntryFactory.createEntry(element, properties);
+			} else {
+			    entry = EntryExtFactory.createEntry(element, properties);
+			}
 			artifacts.put(entry.getKey(), entry);
 			break;
 		case TASK:
@@ -436,7 +440,12 @@ public class Deserializer {
 			artifacts.put(messageProcessor.getName(), messageProcessor);
 			break;
 		case INBOUND_ENDPOINT:
-			InboundEndpoint inboundEndpoint= InboundEndpointExtFactory.createInboundEndpointDev(element);
+			InboundEndpoint inboundEndpoint;
+			if (withSynapse) {
+			    inboundEndpoint = DummyInboundEndpointFactory.createInboundEndpointDev(element);  
+			} else {
+			    inboundEndpoint = InboundEndpointExtFactory.createInboundEndpointDev(element);   
+			}
 			artifacts.put(inboundEndpoint.getName(), inboundEndpoint);
 			break;
 		default:

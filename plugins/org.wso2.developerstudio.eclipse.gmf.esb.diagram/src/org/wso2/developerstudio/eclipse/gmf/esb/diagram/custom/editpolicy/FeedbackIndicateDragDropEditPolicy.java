@@ -69,10 +69,8 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
     private static IFigure feedbackFigureRed;
     private static Image feedbackImageRed;
-
     private static IFigure feedbackFigureGreen;
     private static Image feedbackImageGreen;
-
     private static IFigure feedBackFigureCurrent;
 
     private static Point currentFigureLocation = null;
@@ -126,11 +124,11 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      * {@inheritDoc}
      */
     public void eraseTargetFeedback(Request request) {
+
         if (feedBackFigureCurrent != null) {
             removeFeedback(feedBackFigureCurrent);
             feedBackFigureCurrent = null;
         }
-
         super.eraseTargetFeedback(request);
     }
 
@@ -142,6 +140,7 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
      * @return
      */
     public IFigure getFeedbackFigure(boolean allowDrop) {
+
         if (feedBackFigureCurrent != null) {
             removeFeedback(feedBackFigureCurrent);
             feedBackFigureCurrent = null;
@@ -190,7 +189,6 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         } else {
             feedbackFigure.setBounds(new Rectangle((x - p.x) + horizontal, (y - p.y) + vertical,
                     feedbackImageRed.getBounds().width, feedbackImageRed.getBounds().height));
-
         }
     }
 
@@ -214,7 +212,6 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
         EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
         double zoom = esbMultiPageEditor.getZoom();
-
         org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
 
         currentFigureLocation = new Point(
@@ -490,7 +487,7 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         }
         // If the y distance between the current mouse pointer and nearest ESB Link is
         // more than 35
-        // this will return false as the main calcluation logic in the
+        // this will return false as the main calculation logic in the
         // ConnectionCalculator class
         if (current > (35 * zoom)) {
             return false;
@@ -549,7 +546,6 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
         // return false if no near connector and no near ESB Link
         return (isNearConnectorAvailable || isNearlinkAvailable);
-
     }
 
     /**
@@ -589,7 +585,6 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
             Iterator<?> types = elementTypes.iterator();
             while (types.hasNext()) {
                 Object object = types.next();
-
                 if (!(getHost() instanceof EndpoinMediatorFlowCompartmentEditPart)) {
 
                     /*

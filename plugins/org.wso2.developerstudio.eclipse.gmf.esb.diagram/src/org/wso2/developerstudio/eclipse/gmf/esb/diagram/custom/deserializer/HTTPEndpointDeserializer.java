@@ -104,6 +104,8 @@ public class HTTPEndpointDeserializer extends AbstractEndpointDeserializer {
 		setTextValue(httpEndpointPage.getEP_Description(), endpoint.getDescription());
 		if (endpoint.getUriTemplate() != null) {
 			setTextValue(httpEndpointPage.httpEP_UriTemplate, endpoint.getUriTemplate().getTemplate());
+		} else {
+		    setTextValue(httpEndpointPage.httpEP_UriTemplate, "");
 		}
 		String httpMethod = endpoint.getHttpMethod();
 		if (httpMethod != null) {// {"LEAVE_AS_IS", "GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS", "PATCH"};

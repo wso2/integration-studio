@@ -23,6 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMAttribute;
@@ -102,16 +103,14 @@ public class ValidateMediatorExtFactory extends ValidateMediatorFactory {
 	for (Map.Entry<String, String> entry : collectNameValuePairs(omElement,
 		new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "feature")).entrySet()) {
 	    String value = entry.getValue();
-	    boolean isFeatureEnabled = true;
-	    if ("true".equals(value)) {
-		isFeatureEnabled = true;
-	    } else if ("false".equals(value)) {
-		isFeatureEnabled = false;
-	    }
-	    try {
-		((ValidateMediator) mediator).addFeature(entry.getKey(), isFeatureEnabled);
-	    } catch (SAXException e) {
-		// ignore
+	    boolean isFeatureEnabled = "true".equals(value) ? true : false;
+	    String key = entry.getKey();
+	    if (XMLConstants.FEATURE_SECURE_PROCESSING.equals(key)) {
+	        try {
+	            ((ValidateMediator) mediator).addFeature(key, isFeatureEnabled);
+	        } catch (SAXException e) {
+	            // ignore
+	        }
 	    }
 	}
 

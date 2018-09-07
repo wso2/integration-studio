@@ -80,12 +80,7 @@ public class XSLTMediatorExtFactory extends XSLTMediatorFactory {
 
 	for (Map.Entry<String, String> entry : collectNameValuePairs(omElement, FEATURE_Q).entrySet()) {
 	    String value = entry.getValue();
-	    boolean isFeatureEnabled;
-	    if ("true".equals(value)) {
-		isFeatureEnabled = true;
-	    } else {
-		isFeatureEnabled = false;
-	    }
+	    boolean isFeatureEnabled = "true".equals(value) ? true : false;
 	    ((XSLTMediator) mediator).addFeature(entry.getKey(), isFeatureEnabled);
 	}
 

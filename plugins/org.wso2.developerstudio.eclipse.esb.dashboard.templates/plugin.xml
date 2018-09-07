@@ -158,6 +158,14 @@
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ScheduleTaskTeamplate"
                 id="org.wso2.developerstudio.wizards.esb.scheduleTaskTeamplate">
         </wizard>
+         <wizard
+                name="Read Sales Force Accounts Template"
+                icon="icons/server.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ReadSalesforceAccountsTemplate"
+                id="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate">
+        </wizard>
 
 
     </extension>
@@ -283,6 +291,11 @@
                     wizard="org.wso2.developerstudio.wizards.esb.scheduleTaskTeamplate"
                     description="Sample Schdule Task templates">
         </wizardLink>
+         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
+                    wizard="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate"
+                    description="Read the SaleForce Accounts using SALESFORCE ACCOUNT Conenctor">
+        </wizardLink>
+        
 
     </extension>
 

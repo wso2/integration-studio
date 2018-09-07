@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="SalesforceAccountService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <salesforce.init>
+                <username>user@domain.com</username>
+                <password>password</password>
+                <loginUrl>https://wso2--wsbox.cs8.my.salesforce.com/services/Soap/u/43.0</loginUrl>
+                <blocking>false</blocking>
+            </salesforce.init>
+            <salesforce.query>
+                <batchSize>1</batchSize>
+                <queryString>SELECT Id FROM Account</queryString>
+            </salesforce.query>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+</proxy>

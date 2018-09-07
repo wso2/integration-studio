@@ -1,5 +1,20 @@
-//Liscense
-
+/*
+ *  Copyright (c) 2018, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ *  WSO2 Inc. licenses this file to you under the Apache License,
+ *  Version 2.0 (the "License"); you may not use this file except
+ *  in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard;
 
 import java.io.File;
@@ -27,17 +42,19 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
-public class Template2ProjectWizard extends Wizard implements INewWizard {
+/**
+ * ContentBasedRoutingTemplate
+ */
+public class ReadSalesforceAccountsTemplate extends Wizard implements INewWizard {
 
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-
-    String sampleName = "Proxying_A_SOAP_API";
+    String sampleName = "ReadSalesforceAccountsTemplate";
     String baseId = "wso2.sample" + sampleName + ".";
 
-    public Template2ProjectWizard() {
+    public ReadSalesforceAccountsTemplate() {
         super();
         setNeedsProgressMonitor(true);
         templateWizardUtil = new TemplateWizardUtil();
@@ -88,67 +105,17 @@ public class Template2ProjectWizard extends Wizard implements INewWizard {
     }
 
     /**
-     * Copy each files which belongs to the samples.
-     *
-     * @param esbProject
-     * @param esbProjectArtifact
-     */
-    private void copyFiles(IProject esbProject, ESBProjectArtifact esbProjectArtifact) {
-
-        // Copy  Proxy Files
-        String proxyName = "Sample2";
-        ProjectCreationUtil
-                .copyArtifact(esbProject, groupId, sampleName, proxyName, esbProjectArtifact, "proxy-services");
-
-        String apiName = "API1";
-        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, apiName, esbProjectArtifact, "api");
-
-    }
-
-    private void addCappDependencies(IProject CarbonAppProject) throws Exception {
-
-        File pomfile = CarbonAppProject.getFile("pom.xml").getLocation().toFile();
-
-        List<Dependency> dependencyList = new ArrayList<Dependency>();
-        MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
-        Properties properties = mavenProject.getModel().getProperties();
-
-        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "Sample2", "proxy-service");
-        dependencyList.add(dependency);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
-
-        Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "API1", "api");
-        dependencyList.add(dependency2);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
-
-        Dependency dependency3 = ProjectCreationUtil.addDependencyForCAPP(groupId, "salesforce-connector", "lib");
-        dependencyList.add(dependency3);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency3), "capp/EnterpriseServiceBus");
-
-        ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
-        properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
-        mavenProject.getModel().setProperties(properties);
-        MavenUtils.addMavenDependency(mavenProject, dependencyList);
-        MavenUtils.saveMavenProject(mavenProject, pomfile);
-        CarbonAppProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-
-    }
-
-    /**
      * The worker method. It will find the container, create the file if missing or
      * just replace its contents, and open the editor on the newly created file.
      */
     private void doFinish(String containerName, IProgressMonitor monitor) throws CoreException {
 
         try {
-
             IProject project = ProjectCreationUtil
                     .createProject(containerName, TemplateProjectConstants.ESB_PROJECT_NATURE);
 
             File pomfile = project.getFile("pom.xml").getLocation().toFile();
-
             groupId = baseId + containerName;
-
             ProjectCreationUtil.createProjectPOM(groupId, pomfile, containerName, "pom");
 
             templateWizardUtil.addNature(project, TemplateProjectConstants.ESB_PROJECT_NATURE);
@@ -156,17 +123,12 @@ public class Template2ProjectWizard extends Wizard implements INewWizard {
             MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
                     new String[] { TemplateProjectConstants.ESB_PROJECT_NATURE });
 
-            // Create connector exporter project . 
+            // Create connector exporter project .
             IProject connectorProject = ProjectCreationUtil.createConnectorExporterProject(groupId, containerName);
 
             // add connector.
             String connectorName = "salesforce-connector";
             String connectorVersion = "2.0.2";
-            ProjectCreationUtil.addConnectorToWorkSpace(connectorName + "-" + connectorVersion);
-            ProjectCreationUtil.addConnectorToProject(connectorProject, connectorName, connectorVersion, groupId);
-
-            connectorName = "fileconnector-connector";
-            connectorVersion = "2.0.10";
             ProjectCreationUtil.addConnectorToWorkSpace(connectorName + "-" + connectorVersion);
             ProjectCreationUtil.addConnectorToProject(connectorProject, connectorName, connectorVersion, groupId);
 
@@ -176,21 +138,19 @@ public class Template2ProjectWizard extends Wizard implements INewWizard {
             ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
             IFile artifactXML = project.getFile("artifact.xml");
             esbProjectArtifact.setSource(artifactXML.getLocation().toFile());
-            esbProjectArtifact.toFile();
-
             copyFiles(project, esbProjectArtifact);
-
             esbProjectArtifact.toFile();
 
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
             IProject cappProject = ProjectCreationUtil
                     .carbonAppCreation(containerName + "CarbonApplication", containerName, groupId, sampleName);
-
             addCappDependencies(cappProject);
-
+        } catch (CoreException ex) {
+            templateWizardUtil
+                    .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);
         } catch (Exception ex) {
-            templateWizardUtil.throwCoreException("Error creating pom file for project " + containerName, ex);
+            templateWizardUtil.throwCoreException("Error creating sample project " + containerName, ex);
         }
     }
 
@@ -204,6 +164,51 @@ public class Template2ProjectWizard extends Wizard implements INewWizard {
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.selection = selection;
         setHelpAvailable(true);
+    }
+
+    /**
+     * Copy the files which belongs to the samples.
+     *
+     * @param esbProject
+     * @param esbProjectArtifact
+     */
+    private void copyFiles(IProject esbProject, ESBProjectArtifact esbProjectArtifact) {
+
+        String artifactName = "SalesforceAccountService";
+        String type = "proxy-services";
+        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
+
+    }
+
+    /**
+     * Add the dependencies for the carbon application of the {@link #sampleName} sample.
+     *
+     * @param CarbonAppProject
+     * @throws Exception
+     */
+    private void addCappDependencies(IProject CarbonAppProject) throws Exception {
+
+        File pomfile = CarbonAppProject.getFile("pom.xml").getLocation().toFile();
+
+        List<Dependency> dependencyList = new ArrayList<Dependency>();
+        MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
+        Properties properties = mavenProject.getModel().getProperties();
+
+        Dependency dependency = ProjectCreationUtil
+                .addDependencyForCAPP(groupId, "SalesforceAccountService", "proxy-service");
+        dependencyList.add(dependency);
+        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
+
+        Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "salesforce-connector", "lib");
+        dependencyList.add(dependency2);
+        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
+
+        ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
+        properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());
+        mavenProject.getModel().setProperties(properties);
+        MavenUtils.addMavenDependency(mavenProject, dependencyList);
+        MavenUtils.saveMavenProject(mavenProject, pomfile);
+        CarbonAppProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
     }
 
 }

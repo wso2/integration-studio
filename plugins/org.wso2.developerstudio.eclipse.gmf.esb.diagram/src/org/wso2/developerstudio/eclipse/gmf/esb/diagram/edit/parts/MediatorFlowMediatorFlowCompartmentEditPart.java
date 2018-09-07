@@ -98,6 +98,13 @@ public class MediatorFlowMediatorFlowCompartmentEditPart extends AbstractMediato
 	 */
 	public static final int VISUAL_ID = 7034;
 
+	
+	
+	public BorderedNodeFigure getBorderedNodeFigure() {
+	     return borderedNodeFigure;
+	}
+	 
+	 
 	/**
 	 * @generated
 	 */

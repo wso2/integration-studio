@@ -32,7 +32,6 @@ public class Template2ProjectWizard extends Wizard implements INewWizard {
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
-    // private File pomfile;
     private String groupId;
 
     String sampleName = "Proxying_A_SOAP_API";
@@ -157,13 +156,23 @@ public class Template2ProjectWizard extends Wizard implements INewWizard {
             MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
                     new String[] { TemplateProjectConstants.ESB_PROJECT_NATURE });
 
-            // add connector
+            // add connector.
             String connectorName = "salesforce-connector";
             String connectorVersion = "2.0.2";
             ProjectCreationUtil.addConnectorToWorkSpace(connectorName + "-" + connectorVersion);
             IProject connectorProject = ProjectCreationUtil.createConnectorExporterProject(groupId, containerName);
-            ProjectCreationUtil.addConnectorToProject(connectorProject, connectorName, connectorVersion, groupId);
+            ProjectCreationUtil.addConnectorToProject(connectorProject, connectorName, connectorVersion, groupId); 
+            
+           connectorName = "fileconnector-connector";
+            connectorVersion = "2.0.10";
+            ProjectCreationUtil.addConnectorToWorkSpace(connectorName + "-" + connectorVersion);
+           // IProject connectorProject = ProjectCreationUtil.createConnectorExporterProject(groupId, containerName);
+            ProjectCreationUtil.addConnectorToProject(connectorProject, connectorName, connectorVersion, groupId); 
+            
+            
+            connectorProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
+            
             ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
             IFile artifactXML = project.getFile("artifact.xml");
             esbProjectArtifact.setSource(artifactXML.getLocation().toFile());

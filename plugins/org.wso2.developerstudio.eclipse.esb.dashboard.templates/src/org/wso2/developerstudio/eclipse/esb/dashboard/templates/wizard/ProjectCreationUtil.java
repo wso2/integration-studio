@@ -487,7 +487,7 @@ public class ProjectCreationUtil {
     }
 
     /**
-     * Copy the connector to the workspace to get the conenctor in the design view.
+     * Copy the connector to the workspace to get the connector in the design view.
      *
      * @param connectorName
      * @throws IOException
@@ -507,7 +507,6 @@ public class ProjectCreationUtil {
             File destFile = new File(conenctorLocation + File.separator + connectorZIPName);
             FileUtils.copy(connectorFile, destFile);
             unzip(destFile.toString(), conenctorLocation.toString() + File.separator + connectorName);
-
         }
     }
 

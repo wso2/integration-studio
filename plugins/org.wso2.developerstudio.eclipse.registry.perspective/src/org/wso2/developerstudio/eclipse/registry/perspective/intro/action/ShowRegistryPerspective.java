@@ -16,9 +16,12 @@ package org.wso2.developerstudio.eclipse.registry.perspective.intro.action;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.wso2.developerstudio.eclipse.dashboard.handlers.DashboardUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
@@ -43,12 +46,21 @@ public class ShowRegistryPerspective extends Action {
 		return "Switch to registry perspective";
 	}
 	public ImageDescriptor getImageDescriptor() {
-		return ImageDescriptor.createFromImage(DashboardUtil.resizeImage(SWTResourceManager
-				.getImage(this.getClass(), "/intro/css/graphics/registry.png"),
-				16, 16));
+		return ImageDescriptor.createFromImage(resizeImage(SWTResourceManager
+				.getImage(this.getClass(), "/intro/css/graphics/registry.png"),16,16));
 	}
 	public String getDescription() {
 		return "Switch to registry perspective";
 	}
+	
+	private Image resizeImage(Image image, int width, int height) {
+        Image scaled = new Image(Display.getDefault(), width, height);
+        GC gc = new GC(scaled);
+        gc.setAntialias(SWT.ON);
+        gc.setInterpolation(SWT.HIGH);
+        gc.drawImage(image, 0, 0, image.getBounds().width, image.getBounds().height, 0, 0, width, height);
+        gc.dispose();
+        return scaled;
+    }
 
 }

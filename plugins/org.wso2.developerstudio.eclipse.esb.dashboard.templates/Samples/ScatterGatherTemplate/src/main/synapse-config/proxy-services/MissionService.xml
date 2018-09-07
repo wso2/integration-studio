@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="MissionService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <header name="SOAPAction" scope="transport" value="http://tempuri.org/SOAP.Demo.Mission"/>
+            <clone description="Clone request payload to Mission EP" id="ScatterGatherProxy">
+                <target>
+                    <endpoint key="MissionEP"/>
+                </target>
+                <target>
+                    <endpoint key="MissionEP"/>
+                </target>
+                <target>
+                    <endpoint key="MissionEP"/>
+                </target>
+            </clone>
+        </inSequence>
+        <outSequence>
+            <property description="Set root element to wrap response" name="RootElement" scope="default">
+                <Responses xmlns=""/>
+            </property>
+            <aggregate description="Aggregate responses and send back to client" id="ScatterGatherProxy">
+                <completeCondition>
+                    <messageCount max="-1" min="-1"/>
+                </completeCondition>
+                <onComplete enclosingElementProperty="RootElement" expression="//*[local-name() = 'MissionResult']">
+                    <send/>
+                </onComplete>
+            </aggregate>
+        </outSequence>
+        <faultSequence/>
+    </target>
+</proxy>

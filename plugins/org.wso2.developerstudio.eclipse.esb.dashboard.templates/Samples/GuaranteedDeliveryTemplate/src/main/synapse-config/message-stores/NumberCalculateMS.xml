@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messageStore class="org.apache.synapse.message.store.impl.jms.JmsStore" name="NumberCalculateMS" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="store.jms.destination">NumberCalculateQueue</parameter>
+    <parameter name="store.producer.guaranteed.delivery.enable">false</parameter>
+    <parameter name="store.jms.cache.connection">true</parameter>
+    <parameter name="java.naming.factory.initial">org.wso2.andes.jndi.PropertiesFileInitialContextFactory</parameter>
+    <parameter name="connectionfactory.QueueConnectionFactory">amqp://admin:admin@clientID/carbon?brokerlist='tcp://localhost:5675'</parameter>
+    <parameter name="store.jms.JMSSpecVersion">1.1</parameter>
+</messageStore>

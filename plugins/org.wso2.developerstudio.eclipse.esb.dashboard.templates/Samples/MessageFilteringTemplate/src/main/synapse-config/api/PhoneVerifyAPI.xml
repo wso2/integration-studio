@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/phones" name="PhoneVerifyAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/validate/{phoneNumber}">
+        <inSequence>
+            <property description="Read the phone number in the resource URL" expression="get-property('uri.var.phoneNumber')" name="phoneNumber" scope="default" type="STRING"/>
+            <log description="Log the phone number" level="custom">
+                <property expression="$ctx:phoneNumber" name="PhoneNumber"/>
+            </log>
+            <filter description="Check phone number has 10 digits" xpath="fn:string-length($ctx:phoneNumber) = 10">
+                <then>
+                    <property description="Set parameters to the backend URL" expression="fn:concat('CheckPhoneNumber?PhoneNumber=', get-property('phoneNumber'), '&amp;LicenseKey=0')" name="REST_URL_POSTFIX" scope="axis2" type="STRING"/>
+                    <send description="Send request to endpoint">
+                        <endpoint key="PhoneVerifyEP"/>
+                    </send>
+                </then>
+                <else>
+                    <payloadFactory description="Build custom message for invalid phone numbers" media-type="xml">
+                        <format>
+                            <Message xmlns="">Invalid Phone Number</Message>
+                        </format>
+                        <args/>
+                    </payloadFactory>
+                    <loopback description="Jump to outSequence to respond back"/>
+                </else>
+            </filter>
+        </inSequence>
+        <outSequence>
+            <send description="Send response back to the client"/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

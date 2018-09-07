@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="NumberCaculateResponseSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log Reponse" level="full"/>
+    <drop description="Drop Response"/>
+</sequence>

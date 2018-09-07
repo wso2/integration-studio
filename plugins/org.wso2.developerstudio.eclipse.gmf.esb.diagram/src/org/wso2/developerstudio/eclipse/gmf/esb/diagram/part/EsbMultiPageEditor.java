@@ -663,8 +663,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
                                deleteMarkers();
                                if (ProcessSourceView.validateSynapseContent(source) != null) {
                                    sourceDirty = true;
-                               } else {
-                                   sourceDirty = false;
                                }
 
 				if (isFormEditor) {

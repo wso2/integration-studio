@@ -584,7 +584,9 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		CallMediator callMediator = getCallMediator(info);
 
 		if (visualEndPoint.isInLine()) {
-			info.getCurrentProxy().setTargetInLineEndpoint(synapseEP);
+			if (info != null && info.getCurrentProxy() != null) {
+				info.getCurrentProxy().setTargetInLineEndpoint(synapseEP);
+			}
 		} else {
 			if (sendMediator != null) {
 				sendMediator.setEndpoint(synapseEP);

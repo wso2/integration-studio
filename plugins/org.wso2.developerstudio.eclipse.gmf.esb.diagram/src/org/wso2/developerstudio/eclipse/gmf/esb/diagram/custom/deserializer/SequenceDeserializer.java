@@ -17,20 +17,16 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.synapse.Mediator;
 import org.apache.synapse.aspects.statistics.StatisticsConfigurable;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.mediators.builtin.SendMediator;
 import org.apache.synapse.mediators.filters.InMediator;
 import org.apache.synapse.mediators.filters.OutMediator;
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -61,17 +57,17 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
 			Sequence sequenceModel = (Sequence) DeserializerUtils.createNode(part, EsbElementTypes.Sequence_3503);
 			setCommonProperties(sequence, sequenceModel);
 			executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getKeyValue());
-			if (sequence.getKey().getExpression()!=null) {
+			if (sequence.getKey().getExpression() != null) {
 								executeSetValueCommand(sequenceModel, SEQUENCE__REFERRING_SEQUENCE_TYPE, KeyType.DYNAMIC);
 								NamespacedProperty namespacedProperty = createNamespacedProperty(sequence.getKey().getExpression());
 								executeSetValueCommand(sequenceModel, SEQUENCE__DYNAMIC_REFERENCE_KEY,namespacedProperty);
 								//executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getExpression());
-							}else{
+							} else{
 								executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getKeyValue());
 							}
 			
-			node = sequenceModel;
-		} else if(sequence.getName()!=null){
+			return sequenceModel;
+		} else if(sequence.getName() != null) {
 			if ("main".equals(sequence.getName())) {
 				node = deserializeMainSequence(part,sequence);
 			} else{
@@ -89,13 +85,13 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
 		        StatisticsConfigurable  statisticsConfigurable = sequence.getAspectConfiguration();
 				if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
 					executeSetValueCommand(sequenceModel,SEQUENCES__STATISTICS_ENABLED, new Boolean(true));
-				}else{
+				} else{
 					executeSetValueCommand(sequenceModel,SEQUENCES__STATISTICS_ENABLED, new Boolean(false));
 				}
 				//Fixing DEVTOOLESB-787
-				if(statisticsConfigurable != null && statisticsConfigurable.isTracingEnabled()){
+				if (statisticsConfigurable != null && statisticsConfigurable.isTracingEnabled()){
 					executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(true));
-				}else{
+				} else {
 					executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(false));
 				}
 				
@@ -109,10 +105,13 @@ public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMe
 						sequenceModel.getInputConnector());
 				addPairMediatorFlow(sequenceModel.getOutputConnector(),
 						sequenceModel.getInputConnector());
-				node = sequenceModel;
+				return sequenceModel;
 			}
 		} else{
-			Assert.isTrue(false, "Unsupported sequence mediator configuration");
+		    Sequence sequenceModel = (Sequence) DeserializerUtils.createNode(part, EsbElementTypes.Sequence_3503);
+		    executeSetValueCommand(sequenceModel, SEQUENCE__NAME, "SEQ_NAME");
+		    return sequenceModel;
+		    
 		}
 		
 		return node;

@@ -1,4 +1,5 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
+
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
@@ -9,20 +10,10 @@ import org.apache.synapse.mediators.builtin.CalloutMediator;
 import org.jaxen.JaxenException;
 
 import javax.xml.namespace.QName;
-import java.io.File;
 import java.util.Properties;
 
 /**
  * Factory for {@link CalloutMediator} instances.
- * 
- * <pre>
- * &lt;callout serviceURL="string" | endpointKey="string" [action="string"]&gt;
- *      &lt;configuration [axis2xml="string"] [repository="string"]/&gt;?
- *      &lt;source xpath="expression" | key="string" | type="envelope"&gt;
- *      &lt;target xpath="expression" | key="string"/&gt;
- *      &lt;enableSec policy="string" | outboundPolicy="String" | inboundPolicy="String" /&gt;?
- * &lt;/callout&gt;
- * </pre>
  */
 public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
 
@@ -113,17 +104,11 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
                     callout.setRequestXPath(
                             SynapseXPathFactory.getSynapseXPath(sourceElt, ATT_XPATH));
                 } catch (JaxenException e) {
-                    handleException("Invalid source XPath : "
-                                    + sourceElt.getAttributeValue(ATT_XPATH));
+                    // ignore
                 }
             } else if (sourceElt.getAttribute(ATT_KEY) != null) {
                 callout.setRequestKey(sourceElt.getAttributeValue(ATT_KEY));
-            } else {
-                handleException("A 'xpath' or 'key' attribute " +
-                                "is required for the Callout 'source'");
-            }
-        } else {
-            handleException("The message 'source' must be specified for a Callout mediator");
+            }   
         }
 
         if (targetElt != null) {
@@ -132,17 +117,12 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
                     callout.setTargetXPath(
                         SynapseXPathFactory.getSynapseXPath(targetElt, ATT_XPATH));
                 } catch (JaxenException e) {
-                    handleException("Invalid target XPath : "
-                        + targetElt.getAttributeValue(ATT_XPATH));
+                    // ignore
                 }
             } else if (targetElt.getAttribute(ATT_KEY) != null) {
                 callout.setTargetKey(targetElt.getAttributeValue(ATT_KEY));
-            } else {
-                handleException("A 'xpath' or 'key' attribute " +
-                    "is required for the Callout 'target'");
             }
-        } else {
-            handleException("The message 'target' must be specified for a Callout mediator");
+            
         }
 
         if (wsSec != null) {
@@ -161,7 +141,6 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
                 }
             } else {
                 callout.setSecurityOn(false);
-                handleException("A policy key is required to enable security");
             }
         }
 

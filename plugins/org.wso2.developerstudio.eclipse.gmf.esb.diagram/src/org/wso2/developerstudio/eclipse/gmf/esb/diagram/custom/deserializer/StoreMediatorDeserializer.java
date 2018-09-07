@@ -20,8 +20,13 @@ public class StoreMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 		setElementToEdit(visualStoreMediator);
 		setCommonProperties(storeMediator, visualStoreMediator);
 		
-		executeSetValueCommand(STORE_MEDIATOR__MESSAGE_STORE,storeMediator.getMessageStoreName());
-		if((storeMediator.getOnStoreSequence()!=null)&&!("".equals(storeMediator.getOnStoreSequence()))){
+		if (storeMediator.getMessageStoreName() != null && !storeMediator.getMessageStoreName().isEmpty()) {
+		    executeSetValueCommand(STORE_MEDIATOR__MESSAGE_STORE, storeMediator.getMessageStoreName());
+		} else {
+		    executeSetValueCommand(STORE_MEDIATOR__MESSAGE_STORE, "messageStore");
+		}
+		
+		if ((storeMediator.getOnStoreSequence() != null) && !("".equals(storeMediator.getOnStoreSequence()))) {
 			executeSetValueCommand(visualStoreMediator.getOnStoreSequence(),REGISTRY_KEY_PROPERTY__KEY_VALUE, storeMediator.getOnStoreSequence());
 			if (storeMediator.getMessageStoreExp() != null) {
 				executeSetValueCommand(STORE_MEDIATOR__EXPRESSION,

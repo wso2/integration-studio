@@ -60,7 +60,8 @@ public class InboundEndpointExtFactory {
         if (inboundEndpointElem.getAttributeValue(ATT_NAME) != null) {
             inboundEndpoint.setName(inboundEndpointElem.getAttributeValue(ATT_NAME));
         } else {
-            throw new SynapseException("Inbound Endpoint name cannot be null");
+            throw new SynapseException("Attribute \"name\" is not defined for the inbound endpoint. "
+                    + "Name should be equal to inbound endpoint artifact .xml file name.");
         }
         inboundEndpoint.configure(new AspectConfiguration(inboundEndpointElem.getAttributeValue(ATT_NAME)));
 		if (inboundEndpointElem.getAttributeValue(ATT_TRACE) != null

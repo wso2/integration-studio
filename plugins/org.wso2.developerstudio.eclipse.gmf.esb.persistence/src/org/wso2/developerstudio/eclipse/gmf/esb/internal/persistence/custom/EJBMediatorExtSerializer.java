@@ -47,15 +47,11 @@ public class EJBMediatorExtSerializer extends EJBMediatorSerializer {
 	        if (mediator.getBeanstalkName() != null) {
 	            mediatorElem.addAttribute(fac.createOMAttribute(
 	                    EJBConstants.BEANSTALK, nullNS, mediator.getBeanstalkName()));
-	        } else {
-	            handleException();
 	        }
 
 	        if (mediator.getClassName() != null) {
 	            mediatorElem.addAttribute(fac.createOMAttribute(
 	                    BeanConstants.CLASS, nullNS, mediator.getClassName()));
-	        } else {
-	            handleException();
 	        }
 
 	        if (mediator.getBeanId() != null) {
@@ -68,8 +64,6 @@ public class EJBMediatorExtSerializer extends EJBMediatorSerializer {
 	        if (mediator.getMethodName() != null) {
 	            mediatorElem.addAttribute(fac.createOMAttribute(
 	                    EJBConstants.METHOD, nullNS, mediator.getMethodName()));
-	        } else if (!mediator.isRemove()) {
-	            handleException();
 	        }
 
 	        if (mediator.getTargetValue() != null) {
@@ -107,10 +101,6 @@ public class EJBMediatorExtSerializer extends EJBMediatorSerializer {
 
 	    public String getMediatorClassName() {
 	        return EJBMediatorExt.class.getName();
-	    }
-
-	    private void handleException() {
-	        handleException("Invalid ejb mediator was passed in for serialization.");
 	    }
 
 }

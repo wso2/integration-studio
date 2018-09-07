@@ -22,11 +22,9 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
-import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.config.xml.AbstractMediatorFactory;
-import org.eclipse.core.runtime.Assert;
 import org.wso2.carbon.mediator.bam.BamMediator;
 import org.wso2.carbon.mediator.bam.config.stream.StreamConfiguration;
 
@@ -35,18 +33,14 @@ public class BamMediatorExtFactory extends AbstractMediatorFactory {
 	public static final QName BAM_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "bam");
 
 	public Mediator createSpecificMediator(OMElement omElement, Properties properties) {
+		
 		BamMediator bam = new BamMediator();
-		if (StringUtils.isEmpty(this.getServerProfileName(omElement))) {
-			handleException("BAM Mediator : Server Profile Name can not be empty");
-		} else if (StringUtils.isEmpty(this.getStreamName(omElement))) {
-			handleException("BAM Mediator : Stream Name can not be empty");
-		} else if (StringUtils.isEmpty(this.getStreamVersion(omElement))) {
-			handleException("BAM Mediator : Stream Version can not be empty");
-		}
+		
 		bam.setServerProfile(this.getServerProfileName(omElement));
 		bam.getStream().setStreamConfiguration(new StreamConfiguration());
 		bam.getStream().getStreamConfiguration().setName(this.getStreamName(omElement));
 		bam.getStream().getStreamConfiguration().setVersion(this.getStreamVersion(omElement));
+		
 		return bam;
 	}
 
@@ -62,8 +56,6 @@ public class BamMediatorExtFactory extends AbstractMediatorFactory {
 			OMAttribute serverProfileAttr = serverProfileElement.getAttribute(new QName("name"));
 			if (serverProfileAttr != null) {
 				return serverProfileAttr.getAttributeValue();
-			} else {
-				return null;
 			}
 		}
 		return null;
@@ -82,11 +74,8 @@ public class BamMediatorExtFactory extends AbstractMediatorFactory {
 				OMAttribute streamNameAttr = streamConfigElement.getAttribute(new QName("name"));
 				if (streamNameAttr != null) {
 					return streamNameAttr.getAttributeValue();
-				} else {
-					return null;
 				}
 			}
-			return null;
 		}
 
 		return null;
@@ -102,15 +91,11 @@ public class BamMediatorExtFactory extends AbstractMediatorFactory {
 					SynapseConstants.SYNAPSE_NAMESPACE, "streamConfig"));
 
 			if (streamConfigElement != null) {
-				OMAttribute streamVersionAttr = streamConfigElement.getAttribute(new QName(
-						"version"));
+				OMAttribute streamVersionAttr = streamConfigElement.getAttribute(new QName("version"));
 				if (streamVersionAttr != null) {
 					return streamVersionAttr.getAttributeValue();
-				} else {
-					return null;
 				}
 			}
-			return null;
 		}
 
 		return null;

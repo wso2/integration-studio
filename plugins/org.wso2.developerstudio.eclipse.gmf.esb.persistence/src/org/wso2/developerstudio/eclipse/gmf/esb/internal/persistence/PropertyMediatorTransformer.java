@@ -99,16 +99,16 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
 		{			
 			String pName = visualProp.getPropertyName().getLiteral();
 			if (pName != null && !pName.equals("")) {
-				if(NEW_PROPERTY.equals(pName)){
+				if (NEW_PROPERTY.equals(pName)) {
 					String newPropertyName = visualProp.getNewPropertyName();
-					if(newPropertyName != null && !"".equals(newPropertyName)){						
+					if (newPropertyName != null && !"".equals(newPropertyName)) {
 						propMediator.setName(newPropertyName);
-					}else{
-						throw new TransformerException("Property name cannot be empty in Property mediator. Please specify a property name");
+					} else {
+						propMediator.setName("PROPERTY_NAME");
 					}
-				}else{
+				} else {
 					propMediator.setName(visualProp.getPropertyName().getLiteral());
-				}				
+				}
 			}
 			// Action.
 			switch (visualProp.getPropertyAction()) {

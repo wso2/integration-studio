@@ -32,7 +32,6 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.collections.IteratorUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.config.SynapseConfigurationBuilder;
@@ -122,10 +121,10 @@ public class Deserializer {
 	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
-	public void updateDesign(String source, EsbDiagramEditor graphicalEditor) throws Exception {
+	public void updateDesign(String source, EsbDiagramEditor graphicalEditor, boolean withSyanpse) throws Exception {
 		
 		EsbDeserializerRegistry.getInstance().init(graphicalEditor);
-		Map<String, Object> artifacts = getArtifacts(source);		
+		Map<String, Object> artifacts = getArtifacts(source, withSyanpse);		
 		
 		Diagram diagram = graphicalEditor.getDiagram();
 		EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
@@ -193,8 +192,8 @@ public class Deserializer {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void updateDesign(String source, ESBFormEditor formEditor, ArtifactType artifactType) throws Exception {
-		Map<String, Object> artifacts = getArtifacts(source);	
+	public void updateDesign(String source, ESBFormEditor formEditor, ArtifactType artifactType, boolean withSynapse) throws Exception {
+		Map<String, Object> artifacts = getArtifacts(source, withSynapse);	
 		for (Map.Entry<String, Object> artifact : artifacts.entrySet()) {
 			@SuppressWarnings("rawtypes")
 			IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance()
@@ -296,8 +295,8 @@ public class Deserializer {
 		return artifactType;
 	}
 	
-	private Map<String,Object> getArtifacts(String source) throws Exception{
-		Map<String,Object> artifacts =new LinkedHashMap<String, Object>();
+	private Map<String,Object> getArtifacts(String source, boolean withSynapse) throws Exception{
+		Map<String,Object> artifacts = new LinkedHashMap<String, Object>();
 		
 		ArtifactType artifactType = getArtifactType(source);
 		OMElement element = AXIOMUtil.stringToOM(source);
@@ -338,12 +337,24 @@ public class Deserializer {
 				artifacts.putAll(endpointTemplates);
 			break;
 		case PROXY:
-			ProxyService proxy = ProxyServiceFactory.createProxy(element, properties);
+			ProxyService proxy;
+			if (withSynapse) {
+				proxy = ProxyServiceFactory.createProxy(element, properties);
+			} else {
+				proxy = DummyProxyServiceFactory.createProxy(element, properties);
+			}
 			artifacts.put(proxy.getName(), proxy);
 			break;
 		case SEQUENCE:
-			SequenceMediatorFactory sequenceMediatorFactory = new SequenceMediatorFactory();
-			SequenceMediator sequence = (SequenceMediator) sequenceMediatorFactory.createSpecificMediator(element, properties);
+			SequenceMediator sequence;
+			if (withSynapse) {
+				SequenceMediatorFactory sequenceMediatorFactory = new SequenceMediatorFactory();
+				sequence = (SequenceMediator) sequenceMediatorFactory.createSpecificMediator(element, properties);
+			} else {
+				DummySequenceMediatorFactory sequenceMediatorFactory = new DummySequenceMediatorFactory();
+				sequence = (SequenceMediator) sequenceMediatorFactory.createSpecificMediator(element, properties);
+			}
+			
 			artifacts.put(sequence.getName(), sequence);
 			break;
 		case MAIN_SEQUENCE:
@@ -352,8 +363,7 @@ public class Deserializer {
 			artifacts.put(mainSequence.getName(), mainSequence);
 			break;
 		case API:
-			//API api = APIFactory.createAPI(element);
-			API api = DummyAPIFactory.createAPI(element);
+			API api = DummyAPIFactory.createAPI(element, withSynapse);
 			artifacts.put(api.getName(), api);
 			break;
 		case ENDPOINT:
@@ -363,49 +373,84 @@ public class Deserializer {
 		case ENDPOINT_HTTP:
 		case ENDPOINT_WSDL:
 		case TEMPLATE_ENDPOINT:
-			Endpoint endpoint = EndpointFactory.getEndpointFromElement(element, false, properties);
-			EndpointWrapper wrapper = new EndpointWrapper(endpoint,endpoint.getName());
+		    Endpoint endpoint;
+		    if (withSynapse) {
+		        endpoint = EndpointFactory.getEndpointFromElement(element, false, properties);
+		    } else {
+		        endpoint = DummyEndpointFactory.getEndpointFromElement(element, false, properties);
+		    }
+			EndpointWrapper wrapper = new EndpointWrapper(endpoint, endpoint.getName());
 			artifacts.put(wrapper.getName(), wrapper);
 			break;
 		case LOCAL_ENTRY:
-			Entry entry = EntryExtFactory.createEntry(element, properties);
+			Entry entry;
+			if (withSynapse) {
+			    entry = EntryExtFactory.createEntry(element, properties);
+			} else {
+			    entry = DummyEntryFactory.createEntry(element, properties);
+			}
 			artifacts.put(entry.getKey(), entry);
 			break;
 		case TASK:
-			//TaskDescription task = TaskDescriptionFactory.createTaskDescription(element, OMAbstractFactory.getOMFactory()
-			//		.createOMNamespace(synapseNS, ""));
-			TaskDescription task = DummyTaskDescriptionFactory.createTaskDescription(element, OMAbstractFactory.getOMFactory()
-					.createOMNamespace(synapseNS, ""));
+                       TaskDescription task;
+                       if (withSynapse) {
+                           task = DummyTaskDescriptionFactory.createTaskDescription(element,
+                                    OMAbstractFactory.getOMFactory().createOMNamespace(synapseNS, ""));
+                       } else {
+                           task = TaskDescriptionExtFactory.createTaskDescription(element,
+                                    OMAbstractFactory.getOMFactory().createOMNamespace(synapseNS, ""));
+                       }
+			 
 			artifacts.put(task.getName(), task);
 			break;				
-		case TEMPLATE_SEQUENCE:			
-			TemplateMediatorFactory templateMediatorFactory = new TemplateMediatorFactory();
-			TemplateMediator templateMediator = (TemplateMediator) templateMediatorFactory
-					.createMediator(element, properties);
+		case TEMPLATE_SEQUENCE:	
+			TemplateMediator templateMediator;
+			if (withSynapse) {
+				TemplateMediatorFactory templateMediatorFactory = new TemplateMediatorFactory();
+				templateMediator = (TemplateMediator) templateMediatorFactory.createMediator(element, properties);
+			} else {
+				DummyTemplateMediatorFactory templateMediatorFactory = new DummyTemplateMediatorFactory();
+				templateMediator = (TemplateMediator) templateMediatorFactory.createMediator(element, properties);
+			}
 			artifacts.put(templateMediator.getName(), templateMediator);
 			break;		
 		case TEMPLATE_ENDPOINT_ADDRESS:
-			createEndpointTemplate(element, properties, artifacts);
+			createEndpointTemplate(element, properties, artifacts, withSynapse);
 			break;			
 		case TEMPLATE_ENDPOINT_WSDL:
-			createEndpointTemplate(element, properties, artifacts);
+			createEndpointTemplate(element, properties, artifacts, withSynapse);
 			break;			
 		case TEMPLATE_ENDPOINT_DEFAULT:
-			createEndpointTemplate(element, properties, artifacts);
+			createEndpointTemplate(element, properties, artifacts, withSynapse);
 			break;			
 		case TEMPLATE_ENDPOINT_HTTP:
-			createEndpointTemplate(element, properties, artifacts);
+			createEndpointTemplate(element, properties, artifacts, withSynapse);
 			break;					
 		case MESSAGE_STORE:
-			MessageStore store = DummyMessageStoreFactory.createMessageStore(element, properties);
+			MessageStore store;
+			if (withSynapse) {
+			    store = DummyMessageStoreFactory.createMessageStore(element, properties);
+			} else {
+			    store = MessageStoreExtFactory.createMessageStore(element, properties);
+			}
 			artifacts.put(store.getName(), store);
 			break;
 		case MESSAGE_PROCESSOR:
-			MessageProcessor messageProcessor = DummyMessageProcessorFactory.createMessageProcessor(element, properties);
+		        MessageProcessor messageProcessor;
+		        if (withSynapse) {
+		            messageProcessor = DummyMessageProcessorFactory.createMessageProcessor(element, properties);
+		        } else {
+		            messageProcessor = MessageProcessorExtFactory.createMessageProcessor(element, properties);
+		        }
 			artifacts.put(messageProcessor.getName(), messageProcessor);
 			break;
 		case INBOUND_ENDPOINT:
-			InboundEndpoint inboundEndpoint= InboundEndpointExtFactory.createInboundEndpointDev(element);
+			InboundEndpoint inboundEndpoint;
+			if (withSynapse) {
+			    inboundEndpoint = DummyInboundEndpointFactory.createInboundEndpointDev(element);  
+			} else {
+			    inboundEndpoint = InboundEndpointExtFactory.createInboundEndpointDev(element);   
+			}
 			artifacts.put(inboundEndpoint.getName(), inboundEndpoint);
 			break;
 		default:
@@ -415,11 +460,20 @@ public class Deserializer {
 		return artifacts;
 	}
 	
-	private void createEndpointTemplate(OMElement element, Properties properties, Map<String,Object> artifacts){
+	private void createEndpointTemplate(OMElement element, Properties properties, Map<String,Object> artifacts, boolean  withSynapse){
+	    Template template;
+	    if (withSynapse) {
 		TemplateFactory templateFactory = new TemplateFactory();
-		Template template = templateFactory.createEndpointTemplate(element, properties);
+		template = templateFactory.createEndpointTemplate(element, properties);
 		TemplateEndpointFactory.getEndpointFromElement(template.getElement(), false, new Properties());
-		artifacts.put(template.getName(), template);
+		
+	    } else {
+		DummyTemplateFactory templateFactory = new DummyTemplateFactory();
+		template = templateFactory.createEndpointTemplate(element, properties);
+		DummyTemplateEndpointFactory.getEndpointFromElement(template.getElement(), false, new Properties());
+		
+	    }
+	    artifacts.put(template.getName(), template);
 	}
 
 
@@ -430,16 +484,16 @@ public class Deserializer {
 		return mediatorFlowContainerList;
 	}
 	
-	public DeserializeStatus isValidSynapseConfig(String source) {
+	public DeserializeStatus isValidSynapseConfig(String source, boolean withSyanpse) {
 		try {
-			getArtifacts(source);
+			getArtifacts(source, withSyanpse);
 			return new DeserializeStatus(true, null,source);
 		} catch (Exception e) {
 			return new DeserializeStatus(false, e,source);
 		}
 	}
 	
-	public String validate(OMElement element, OMElement elementSub) {
+	public String validate(OMElement element, OMElement elementSub, boolean withSynapse) {
 		try {
 			Iterator<OMElement> childElements = elementSub.getChildElements();
 			List<OMElement> childElementsList = IteratorUtils.toList(childElements);
@@ -449,7 +503,7 @@ public class Deserializer {
 			}
 			
 			try {
-				getArtifacts(element.toStringWithConsume());
+				getArtifacts(element.toStringWithConsume(), withSynapse);
 			} catch (Exception e) {
 				if (!(elementSub.getLocalName().equals("proxy") || elementSub.getLocalName().equals("target")
 						|| elementSub.getLocalName().equals("template") || elementSub.getLocalName().equals("api"))) {
@@ -468,11 +522,11 @@ public class Deserializer {
 				
 				elementSub.addChild(omElement);
 				try {
-					getArtifacts(element.toStringWithConsume());
+					getArtifacts(element.toStringWithConsume(), withSynapse);
 				} catch (Exception e) {
 					List<OMElement> subChildElements = IteratorUtils.toList(omElement.getChildElements());
 					if (subChildElements.size() > 0) {
-						String returnMessage = validate(element, omElement);
+						String returnMessage = validate(element, omElement, withSynapse);
 						if (!returnMessage.equals("ErrorNotFound")) {
 							return returnMessage;
 						}

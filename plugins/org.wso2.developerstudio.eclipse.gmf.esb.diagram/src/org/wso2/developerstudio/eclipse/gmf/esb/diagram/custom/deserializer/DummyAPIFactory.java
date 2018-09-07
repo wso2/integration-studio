@@ -48,15 +48,18 @@ public class DummyAPIFactory {
 
 	static final QName ATT_VALUE = new QName("value");
 
-	public static API createAPI(OMElement apiElt) {
+	public static API createAPI(OMElement apiElt, boolean withSynapse) {
 		OMAttribute nameAtt = apiElt.getAttribute(new QName("name"));
-		if (nameAtt == null || "".equals(nameAtt.getAttributeValue())) {
-			handleException("Attribute 'name' is required for an API definition");
-		}
-
 		OMAttribute contextAtt = apiElt.getAttribute(new QName("context"));
-		if (contextAtt == null || "".equals(contextAtt.getAttributeValue())) {
-			handleException("Attribute 'context' is required for an API definition");
+
+		if (withSynapse) {
+			if (nameAtt == null || "".equals(nameAtt.getAttributeValue())) {
+				handleException("Attribute 'name' is required for an API definition");
+			}
+
+			if (contextAtt == null || "".equals(contextAtt.getAttributeValue())) {
+				handleException("Attribute 'context' is required for an API definition");
+			}
 		}
 
 		API api = new API(nameAtt.getAttributeValue(), contextAtt.getAttributeValue());
@@ -92,7 +95,11 @@ public class DummyAPIFactory {
 		boolean noResources = true;
 		while (resources.hasNext()) {
 			OMElement resourceElt = (OMElement) resources.next();
-			api.addResource(ResourceFactory.createResource(resourceElt));
+			if (withSynapse) {
+				api.addResource(ResourceFactory.createResource(resourceElt));
+			} else {
+				api.addResource(DummyResourceFactory.createResource(resourceElt));
+			}
 			noResources = false;
 		}
 

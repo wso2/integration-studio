@@ -504,5 +504,17 @@
         </newWizardShortcut>
         </perspectiveExtension>
     </extension>
-  
+
+   <extension point="org.eclipse.ui.activities">
+    <activity id="org.wso2.developerstudio.eclipse.common.activity.disable" name="MenuHidingActivity">
+      <enabledWhen>
+         <with variable="activePartId">
+                 <equals value="nonExistentPartId"/>
+         </with>
+      </enabledWhen>
+    </activity>
+    <activityPatternBinding activityId="org.wso2.developerstudio.eclipse.common.activity.disable" pattern="org.eclipse.ui.ide/org.eclipse.ui.wizards.new.project"/>
+    <activityPatternBinding activityId="org.wso2.developerstudio.eclipse.common.activity.disable" pattern="org.eclipse.ui.ide/org.eclipse.ui.wizards.new.file"/>
+    <activityPatternBinding activityId="org.wso2.developerstudio.eclipse.common.activity.disable" pattern="org.eclipse.ui.ide/org.eclipse.ui.wizards.new.folder"/>
+   </extension>
 </plugin>

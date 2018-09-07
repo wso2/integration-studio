@@ -36,6 +36,14 @@ public final class PsArtifactConstants extends NLS{
 	public static String WIZARD_OPTION_IMPORT_OPTION;
 	public static String WIZARD_OPTION_CREATE_ESB_PROJECT;
 	public static String WIZARD_OPTION_PS_NAME;
+	public static String WIZARD_OPTION_PS_TRANSPORT_FIX;
+	public static String WIZARD_OPTION_PS_TRANSPORT_HL7;
+	public static String WIZARD_OPTION_PS_TRANSPORT_HTTP;
+	public static String WIZARD_OPTION_PS_TRANSPORT_HTTPS;
+	public static String WIZARD_OPTION_PS_TRANSPORT_JMS;
+	public static String WIZARD_OPTION_PS_TRANSPORT_LOCAL;
+	public static String WIZARD_OPTION_PS_TRANSPORT_MAILTO;
+	public static String WIZARD_OPTION_PS_TRANSPORT_VFS;
 	public static String WIZARD_OPTION_AVAILABLE_PS;
 	public static String WIZARD_OPTION_TEMPL_COMMON_PS_PICKFROMREG;
 	public static String WIZARD_OPTION_TEMPL_COMMON_PS_ENTERURL;

@@ -48,7 +48,8 @@ public class EntryExtFactory extends EntryFactory {
 
         OMAttribute key = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
         if (key == null) {
-            handleException("The 'key' attribute is required for a local registry entry");
+            handleException("Attribute \"key\" is not defined for the local entry configuration. \n"
+                    + "Key value should be equal to loacl entry artifact .xml file name.");
             return null;
 
         } else {

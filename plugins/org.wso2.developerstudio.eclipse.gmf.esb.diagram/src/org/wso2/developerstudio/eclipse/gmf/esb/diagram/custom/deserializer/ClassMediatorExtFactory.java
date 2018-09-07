@@ -22,7 +22,6 @@ import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.MediatorPropertyFactory;
-import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.ClassMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExt;
 
@@ -31,12 +30,13 @@ public class ClassMediatorExtFactory extends ClassMediatorFactory {
 	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
 		OMAttribute name = elem.getAttribute(ATT_NAME);
-		if (name == null) {
-			String msg = "The name of the actual mediator class is a required attribute";
-			throw new SynapseException(msg);
-		}
 
-		ClassMediatorExt classMediator = new ClassMediatorExt(name.getAttributeValue());
+		ClassMediatorExt classMediator;
+		if (name != null) {
+			classMediator = new ClassMediatorExt(name.getAttributeValue());
+		} else {
+			classMediator = new ClassMediatorExt("sample-class-mediator");
+		}
 
 		classMediator.addAllProperties(MediatorPropertyFactory.getMediatorProperties(elem));
 		processAuditStatus(classMediator, elem);

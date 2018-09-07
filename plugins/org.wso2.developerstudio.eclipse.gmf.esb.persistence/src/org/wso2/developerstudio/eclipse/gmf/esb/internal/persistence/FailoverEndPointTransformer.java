@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Random;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
@@ -119,11 +120,6 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 	public FailoverEndpoint create(TransformationInfo info, FailoverEndPoint visualEndPoint, String name,
 			List<Endpoint> endPoints) throws TransformerException {
 		
-		if (StringUtils.isEmpty(visualEndPoint.getName())) {
-			throw new TransformerException(
-					"FailoverEndPoint should be configured. Double click on endpoint to configure.");
-		}
-		
 		IEditorPart editorPart = null;
 		IProject activeProject = null;
 		FailoverEndpoint synapseFailEP = new FailoverEndpoint();
@@ -176,13 +172,15 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 					}
 				}
 
+				OMElement element = null;
 				String endpointName = (String) visualEndPoint.getName();
-				IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
-				IFile file = activeProject.getFile(location);
-
-				final String source = FileUtils.getContentAsString(file.getContents());
-
-				OMElement element = AXIOMUtil.stringToOM(source);
+				if (!StringUtils.isEmpty(endpointName)) {
+					IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+					IFile file = activeProject.getFile(location);
+					final String source = FileUtils.getContentAsString(file.getContents());
+					element = AXIOMUtil.stringToOM(source);
+				}
+				
 				Properties properties = new Properties();
 				properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
 				synapseFailEP = (FailoverEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);

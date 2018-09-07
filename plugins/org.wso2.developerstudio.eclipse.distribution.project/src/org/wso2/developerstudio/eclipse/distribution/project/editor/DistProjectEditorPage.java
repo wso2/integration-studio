@@ -671,6 +671,9 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			}
 		}
 
+		/**
+		 * Disable listing corrupted artifacts for the composite project pom file.
+		 * 
 		if (getMissingDependencyList().size() > 0) {
 			editorStatus =
 			               new MultiStatus(
@@ -686,6 +689,7 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 			setPageDirty(true);
 			updateDirtyState();
 		}
+		**/
 		trDependencies.layout();
 	}
 

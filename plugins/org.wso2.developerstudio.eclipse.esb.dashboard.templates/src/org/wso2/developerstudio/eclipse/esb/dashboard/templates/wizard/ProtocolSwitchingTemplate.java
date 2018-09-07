@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 /**
- * ContentBasedRoutingTemplate
+ * The class which handles Protocol Switching Template Sample.
  */
 public class ProtocolSwitchingTemplate extends Wizard implements INewWizard {
 
@@ -177,7 +177,7 @@ public class ProtocolSwitchingTemplate extends Wizard implements INewWizard {
      * @param CarbonAppProject
      * @throws Exception
      */
-    private void addCappDependencies(IProject CarbonAppProject) throws Exception { 
+    private void addCappDependencies(IProject CarbonAppProject) throws Exception {
 
         File pomfile = CarbonAppProject.getFile("pom.xml").getLocation().toFile();
 
@@ -185,7 +185,8 @@ public class ProtocolSwitchingTemplate extends Wizard implements INewWizard {
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
 
-        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "StudentRegistrationService", "proxy-service");
+        Dependency dependency = ProjectCreationUtil
+                .addDependencyForCAPP(groupId, "StudentRegistrationService", "proxy-service");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
 

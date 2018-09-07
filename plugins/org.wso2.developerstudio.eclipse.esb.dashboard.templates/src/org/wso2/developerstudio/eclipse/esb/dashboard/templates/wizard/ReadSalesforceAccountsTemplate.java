@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 /**
- * ContentBasedRoutingTemplate
+ * The class which handles Sales Force Accounts Read Template Sample.
  */
 public class ReadSalesforceAccountsTemplate extends Wizard implements INewWizard {
 

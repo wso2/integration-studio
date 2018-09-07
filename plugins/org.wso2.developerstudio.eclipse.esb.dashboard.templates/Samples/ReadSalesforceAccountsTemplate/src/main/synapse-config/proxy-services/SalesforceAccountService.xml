@@ -5,7 +5,7 @@
             <salesforce.init>
                 <username>user@domain.com</username>
                 <password>password</password>
-                <loginUrl>https://wso2--wsbox.cs8.my.salesforce.com/services/Soap/u/43.0</loginUrl>
+                <loginUrl>loginUrl</loginUrl>
                 <blocking>false</blocking>
             </salesforce.init>
             <salesforce.query>

@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 /**
- * ContentBasedRoutingTemplate
+ * The class which handles Schdule Task Template Sample.
  */
 public class ScheduleTaskTeamplate extends Wizard implements INewWizard {
 
@@ -166,15 +166,13 @@ public class ScheduleTaskTeamplate extends Wizard implements INewWizard {
         String type = "tasks";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
-         artifactName = "PersonRecordSeq";
+        artifactName = "PersonRecordSeq";
         type = "sequences";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
         artifactName = "PersonRecordEP";
         type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-
-     
 
     }
 
@@ -192,22 +190,17 @@ public class ScheduleTaskTeamplate extends Wizard implements INewWizard {
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
 
-        Dependency dependency = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "PersonRecordRetrieveTask", "task");
+        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "PersonRecordRetrieveTask", "task");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
 
-        
-        Dependency dependency3 = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "PersonRecordSeq", "sequence");
+        Dependency dependency3 = ProjectCreationUtil.addDependencyForCAPP(groupId, "PersonRecordSeq", "sequence");
         dependencyList.add(dependency3);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency3), "capp/EnterpriseServiceBus");
 
         Dependency dependency4 = ProjectCreationUtil.addDependencyForCAPP(groupId, "PersonRecordEP", "endpoint");
         dependencyList.add(dependency4);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency4), "capp/EnterpriseServiceBus");
-
-       
 
         ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
         properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());

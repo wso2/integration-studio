@@ -43,6 +43,9 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
+/**
+ * The class which handles the Hello Wrold Proxy Template.
+ */
 public class HelloWorldService extends Wizard implements INewWizard {
 
     private TemplateProjectWizardPage page;
@@ -51,7 +54,7 @@ public class HelloWorldService extends Wizard implements INewWizard {
     // private File pomfile;
     private String groupId;
     String sampleName = "HelloWorld";
-    String baseId = "com.example1.";
+    String baseId = "wso2.sample" + sampleName + ".";
 
     public HelloWorldService() {
         super();
@@ -113,15 +116,11 @@ public class HelloWorldService extends Wizard implements INewWizard {
 
             IProject project = ProjectCreationUtil
                     .createProject(containerName, TemplateProjectConstants.ESB_PROJECT_NATURE);
-
             File pomfile = project.getFile("pom.xml").getLocation().toFile();
-
             groupId = baseId + containerName;
 
             ProjectCreationUtil.createProjectPOM(groupId, pomfile, containerName, "pom");
-
             templateWizardUtil.addNature(project, TemplateProjectConstants.ESB_PROJECT_NATURE);
-
             MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
                     new String[] { TemplateProjectConstants.ESB_PROJECT_NATURE });
 
@@ -131,17 +130,13 @@ public class HelloWorldService extends Wizard implements INewWizard {
             esbProjectArtifact.toFile();
 
             copyFiles(project, esbProjectArtifact);
-
             esbProjectArtifact.toFile();
-
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
             String cappGroupId = groupId + "CarbonApplication";
             IProject cappProject = ProjectCreationUtil
                     .carbonAppCreation(containerName + "CarbonApplication", containerName, cappGroupId, sampleName);
-
             addCappDependencies(cappProject);
-
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

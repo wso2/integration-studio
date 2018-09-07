@@ -34,14 +34,6 @@
                 id="org.wso2.developerstudio.wizards.esb.template">
         </wizard>
         <wizard
-                name="Proxying a SOAP API -- TEST Sample"
-                icon="icons/cApp-wizard.png"
-                project="true"
-                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
-                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.Template2ProjectWizard"
-                id="org.wso2.developerstudio.wizards.esb.template2">
-        </wizard>
-        <wizard
                 name="Proxying A SOAP Service"
                 icon="icons/server.png"
                 project="true"
@@ -163,9 +155,6 @@
         </category>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"
                     wizard="org.wso2.developerstudio.wizards.esb.template" description="Test 1 Description">
-        </wizardLink>
-        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template2.project"
-                    wizard="org.wso2.developerstudio.wizards.esb.template2" description="Test 2 Description">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.proxyingASoapService.project"

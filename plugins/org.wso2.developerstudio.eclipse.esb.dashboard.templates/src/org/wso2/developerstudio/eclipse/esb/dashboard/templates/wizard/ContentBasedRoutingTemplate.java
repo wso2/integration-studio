@@ -44,7 +44,7 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 /**
- * ContentBasedRoutingTemplate
+ * The class which handles content based routing sample.
  */
 public class ContentBasedRoutingTemplate extends Wizard implements INewWizard {
 
@@ -170,7 +170,7 @@ public class ContentBasedRoutingTemplate extends Wizard implements INewWizard {
         artifactName = "NumberAdditionEP";
         type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-        
+
         artifactName = "NumberDivisionEP";
         type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
@@ -198,7 +198,7 @@ public class ContentBasedRoutingTemplate extends Wizard implements INewWizard {
         Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "NumberAdditionEP", "endpoint");
         dependencyList.add(dependency2);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
-        
+
         Dependency dependency3 = ProjectCreationUtil.addDependencyForCAPP(groupId, "NumberDivisionEP", "endpoint");
         dependencyList.add(dependency3);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency3), "capp/EnterpriseServiceBus");

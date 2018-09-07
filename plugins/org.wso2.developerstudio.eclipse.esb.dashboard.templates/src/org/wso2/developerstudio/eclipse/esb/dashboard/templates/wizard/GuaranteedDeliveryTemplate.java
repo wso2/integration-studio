@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 /**
- * ContentBasedRoutingTemplate
+ * The class which handles Guranteed Delivery Template Sample.
  */
 public class GuaranteedDeliveryTemplate extends Wizard implements INewWizard {
 

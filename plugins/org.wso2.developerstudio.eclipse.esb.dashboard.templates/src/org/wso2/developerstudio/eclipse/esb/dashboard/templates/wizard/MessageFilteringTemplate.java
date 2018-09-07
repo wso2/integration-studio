@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 /**
- * ContentBasedRoutingTemplate
+ * The class which Message Filtering  Template Sample.
  */
 public class MessageFilteringTemplate extends Wizard implements INewWizard {
 
@@ -177,7 +177,7 @@ public class MessageFilteringTemplate extends Wizard implements INewWizard {
      * @param CarbonAppProject
      * @throws Exception
      */
-    private void addCappDependencies(IProject CarbonAppProject) throws Exception { 
+    private void addCappDependencies(IProject CarbonAppProject) throws Exception {
 
         File pomfile = CarbonAppProject.getFile("pom.xml").getLocation().toFile();
 

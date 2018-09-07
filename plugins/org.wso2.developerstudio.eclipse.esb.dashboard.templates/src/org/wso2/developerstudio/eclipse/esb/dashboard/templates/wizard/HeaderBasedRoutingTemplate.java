@@ -44,7 +44,7 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 /**
- * ContentBasedRoutingTemplate
+ * The class which handles Header Based Routing  Template Sample.
  */
 public class HeaderBasedRoutingTemplate extends Wizard implements INewWizard {
 

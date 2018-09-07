@@ -61,7 +61,8 @@ public class DummyTaskDescriptionFactory {
             if (name != null) {
                 taskDescription.setName(name);
             } else {
-                handleException("Name for a task is required, missing name in the task");
+                handleException("Attribute \"key\" is not defined for the task configuration. \n"
+                        + "Key value should be equal to task artifact .xml file name.");
             }
 
             String group = el.getAttributeValue(

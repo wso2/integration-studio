@@ -121,8 +121,7 @@ public class TemplateProjectConstants {
 
     public static final String WIZARD_PAGE_TEXT = "Template Artifact";
 
-    public static final String PROJECT_WIZARD_PAGE_DESCRIPTION =
-            "This wizard creates a hello world proxy, " + "which you can call to get the hello world response";
+    public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "Create Sample Template";
 
     public static final String PROJECT_WIZARD_PAGE_TITLE = "Template Project";
 
@@ -241,5 +240,9 @@ public class TemplateProjectConstants {
     public static final String INDEX_HTML_FILE_NAME = "index.html";
 
     public static final String ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
+
+    public static final String DISTRIBUTION_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.distribution.project.nature";
+
+    public static final String CONNECTOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.connector.project.nature";
 
 }

@@ -154,24 +154,26 @@
                   priority="1">
         </category>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"
-                    wizard="org.wso2.developerstudio.wizards.esb.template" description="Test 1 Description">
+                    wizard="org.wso2.developerstudio.wizards.esb.template" description="Hello World Proxy Template">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.proxyingASoapService.project"
-                    wizard="org.wso2.developerstudio.wizards.esb.proxyingASoapService" description="Soap Proxy">
+                    wizard="org.wso2.developerstudio.wizards.esb.proxyingASoapService"
+                    description="Proxying a SOAP Service Template">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.proxyingARESTAPI.project"
-                    wizard="org.wso2.developerstudio.wizards.esb.proxyingARESTAPI" description="Rest Proxy">
+                    wizard="org.wso2.developerstudio.wizards.esb.proxyingARESTAPI"
+                    description="Proxying a REST API Template">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.contentBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.contentBasedRoutingTemplate"
-                    description="CBR Template">
+                    description="Content Based Routing Template">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.headerBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.headerBasedRoutingTemplate"
-                    description="Header based Routing">
+                    description="Header based Routing Template">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.messageFilteringTemplate.project"
@@ -184,7 +186,7 @@
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.scatterGatherTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.scatterGatherTemplate"
-                    description="Scatter Gather Template">
+                    description="Scatter Gather Integration Pattern Template">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.fileTransferTeamplate"
                     wizard="org.wso2.developerstudio.wizards.esb.fileTransferTeamplate"
@@ -196,7 +198,7 @@
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.restToSoapTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.restToSoapTemplate"
-                    description="REST to SOAP Template">
+                    description="REST to SOAP Conversion Template">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.exceptionHandlingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.exceptionHandlingTemplate"
@@ -214,7 +216,7 @@
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate"
-                    description="Read the SaleForce Accounts using SALESFORCE ACCOUNT Conenctor">
+                    description="Read the SaleForce Accounts using Salesforce account Connector Template">
         </wizardLink>
     </extension>
 </plugin>

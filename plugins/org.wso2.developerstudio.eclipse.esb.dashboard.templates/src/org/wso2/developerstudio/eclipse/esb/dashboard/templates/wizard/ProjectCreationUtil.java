@@ -63,8 +63,6 @@ import org.wso2.developerstudio.eclipse.utils.template.TemplateUtil;
  */
 public class ProjectCreationUtil {
 
-    private static final String DISTRIBUTION_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.distribution.project.nature";
-    private static final String CONNECTOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.connector.project.nature";
     private static String MAVEN_CAR_VERSION = "2.1.1";
     private static String MAVEN_CAR_DEPLOY_VERSION = "1.1.1";
     private static String version = "1.0.0";
@@ -344,10 +342,11 @@ public class ProjectCreationUtil {
 
             File pomfile = CarbonAppProject.getFile("pom.xml").getLocation().toFile();
             ProjectCreationUtil.createCarbonAppPOM(pomfile, groupId, containerName);
-            ProjectUtils.addNatureToProject(CarbonAppProject, false, DISTRIBUTION_PROJECT_NATURE);
+            ProjectUtils
+                    .addNatureToProject(CarbonAppProject, false, TemplateProjectConstants.DISTRIBUTION_PROJECT_NATURE);
 
             MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
-                    new String[] { DISTRIBUTION_PROJECT_NATURE });
+                    new String[] { TemplateProjectConstants.DISTRIBUTION_PROJECT_NATURE });
             CarbonAppProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
             return CarbonAppProject;
@@ -417,15 +416,16 @@ public class ProjectCreationUtil {
         createProjectPOM(groupID, pomfile, connectorProjectName, "pom");
         updateConnectorExporterProjectPom(connectorProject);
 
-        ProjectUtils.addNatureToProject(connectorProject, false, CONNECTOR_PROJECT_NATURE);
-        MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {}, new String[] { CONNECTOR_PROJECT_NATURE });
+        ProjectUtils.addNatureToProject(connectorProject, false, TemplateProjectConstants.CONNECTOR_PROJECT_NATURE);
+        MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
+                new String[] { TemplateProjectConstants.CONNECTOR_PROJECT_NATURE });
 
         return connectorProject;
 
     }
 
     /**
-     * Copy the relevant connector and artifact xml for the conenctor project.
+     * Copy the relevant connector and artifact xml for the connector project.
      *
      * @param conenctorProject
      * @param connectorName

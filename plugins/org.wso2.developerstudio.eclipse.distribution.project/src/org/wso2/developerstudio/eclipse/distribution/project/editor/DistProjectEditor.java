@@ -22,6 +22,9 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.PartInitException;
@@ -76,8 +79,10 @@ public class DistProjectEditor extends FormEditor implements Refreshable {
 			
 			if(getFile()!=null){
 				setTitle(getFile().toString().replaceFirst("^L/",""));
-			}
-			
+			}	
+
+			IWorkspace workspace = ResourcesPlugin.getWorkspace();
+			workspace.addResourceChangeListener(distProjectEditorPage);
 
 		} catch (PartInitException e) {
 			log.error("Page init error has occurred", e);

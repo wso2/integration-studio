@@ -29,13 +29,16 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
-
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
@@ -61,6 +64,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -96,7 +100,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.preferences.CappPreferencesP
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.eclipse.jface.dialogs.ErrorDialog;
 
-public class DistProjectEditorPage extends FormPage {
+public class DistProjectEditorPage extends FormPage implements IResourceDeltaVisitor, IResourceChangeListener {
 
 	private static final String SERVER_ROLE_ATTR = "serverRole";
 
@@ -903,14 +907,26 @@ public class DistProjectEditorPage extends FormPage {
 		return refreshAction;
 	}
 
-	public void refreshForm() throws Exception {
-		initContent();
-		createTreeContent();
-		txtVersion.setText(getVersion());
-		txtArtifactId.setText(getArtifactId());
-		txtDescription.setText(getDescription());
-		txtGroupId.setText(getGroupId());
-	}
+	/* If the GUI elements are accessed from a thread other than the thread that has created the element 
+	 * ERROR_THREAD_INVALID_ACCESS exception will be thrown. To avoid that a new thread is created and 
+	 * UISynchronize's asyncExec() is called
+	 */
+    public void refreshForm() throws Exception {
+        initContent();
+        new Thread(new Runnable() {
+            public void run() {
+                Display.getDefault().asyncExec(new Runnable() {
+                    public void run() {
+                        createTreeContent();
+                        txtVersion.setText(getVersion());
+                        txtArtifactId.setText(getArtifactId());
+                        txtDescription.setText(getDescription());
+                        txtGroupId.setText(getGroupId());
+                    }
+                });
+            }
+        }).start();
+    }
 
 	public void setDependencyList(Map<String, Dependency> dependencyList) {
 		this.dependencyList = dependencyList;
@@ -1061,5 +1077,32 @@ public class DistProjectEditorPage extends FormPage {
 		System.arraycopy(b, 0, result, a.length, b.length);
 		return result;
 	}
+
+    @Override
+    public boolean visit(IResourceDelta delta) throws CoreException {
+
+        switch (delta.getKind()) {
+        case IResourceDelta.REMOVED:
+            try {
+                refreshForm();
+            } catch (Exception e) {
+                log.error("refresh opration failed", e);
+            }
+            break;
+        }
+        return true;
+    }
+
+    @Override
+    public void resourceChanged(IResourceChangeEvent event) {
+
+        if (event.getType() != IResourceChangeEvent.POST_CHANGE)
+            return;
+        try {
+            event.getDelta().accept(this);
+        } catch (CoreException e) {
+            log.error("event is failed to capture", e);
+        }
+    }
 
 }

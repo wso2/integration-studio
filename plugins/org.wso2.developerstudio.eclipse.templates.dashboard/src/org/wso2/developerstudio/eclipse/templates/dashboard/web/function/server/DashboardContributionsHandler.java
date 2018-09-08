@@ -16,7 +16,9 @@
 
 package org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -32,6 +34,9 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -108,8 +113,14 @@ public class DashboardContributionsHandler {
                 String priority = element.getAttribute("priority");
                 String wizardId =  element.getAttribute("wizard");
                 String label = jsf.getName(wizardId);
+                String imagePath = element.getAttribute("image");
+                String encodedImage = "";
+                if(imagePath != null && !imagePath.isEmpty()) {
+                    encodedImage = convertImageToBase64(extension, imagePath);
+                }
                 String key = element.getAttribute("id") + ":" + wizardId + ":"
-                        + ((priority != null) ? priority : "0") + ":" + element.getAttribute("description") + ":" + label;
+                        + ((priority != null) ? priority : "0") + ":" + element.getAttribute("description") + ":" + label + ":"
+                        + encodedImage;
                 wizardLinks.put(key, element.getAttribute("category"));
             } else if ("customAction".equals(element.getName())) {
                 customActions.put(element.getAttribute("id"), element);;
@@ -123,11 +134,13 @@ public class DashboardContributionsHandler {
             if (dashboardCategories.containsKey(catID)) {
                 DashboardCategory cat = dashboardCategories.get(catID);
                 DashboardLink link = new DashboardLink();
-                link.setId(wizardLink.getKey().split(":")[0]);
-                link.setName(wizardLink.getKey().split(":")[1]);
-                link.setDescription(wizardLink.getKey().split(":")[3]);
-                link.setTitle(wizardLink.getKey().split(":")[4]);
-                String priorityValue = wizardLink.getKey().split(":")[2];
+                String [] wizardLinkDetails = wizardLink.getKey().split(":");
+                link.setId(wizardLinkDetails[0]);
+                link.setName(wizardLinkDetails[1]);
+                if (wizardLinkDetails.length >= 4) link.setDescription(wizardLinkDetails[3]);
+                if (wizardLinkDetails.length >= 5) link.setTitle(wizardLinkDetails[4]);
+                if (wizardLinkDetails.length >= 6) link.setLinkImage(wizardLinkDetails[5]);
+                String priorityValue = wizardLinkDetails[2];
                 if (priorityValue != null) {
                     try {
                         link.setPriority(Integer.parseInt(priorityValue));
@@ -208,5 +221,23 @@ public class DashboardContributionsHandler {
             }
         }
         return catJson += "]";
+    }
+
+    /**
+     * This method retrieves image from the given image path and plugin name and converts it to base64 string 
+     * @param extension extension object of the contributing plugin
+     * @param imagePath image path relative the contributing plugin root
+     * @return base64 encoded string of the image
+     */
+    private static String convertImageToBase64(IExtension extension, String imagePath) {
+        String contributerPluginId = extension.getContributor().getName();
+        ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(contributerPluginId,
+                imagePath);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ImageLoader loader = new ImageLoader();
+        loader.data = new ImageData[] { imageDescriptor.getImageData() };
+        loader.save(out, SWT.IMAGE_PNG);
+        String base64 = Base64.getEncoder().encodeToString(out.toByteArray());
+        return base64;
     }
 }

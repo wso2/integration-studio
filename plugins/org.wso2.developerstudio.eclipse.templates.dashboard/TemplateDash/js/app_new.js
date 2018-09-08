@@ -38,6 +38,7 @@ function loadWelcomeNodes(contributionsString) {
             wizardNode.priority = wizard.priority;
             wizardNode.description = wizard.description;
             wizardNode.label = wizard.title;
+            wizardNode.image = wizard.image;
             welcomeNode.nodes.push(wizardNode);
         });
         welcomeNodes.push(welcomeNode);
@@ -109,7 +110,7 @@ function drawWelcomeNodes(){
 		// $("#root-container").append("<h1>" + welcomeNode.title + "</h1>" );
 		welcomeNode.nodes.forEach(function (childNode) {
 			escapedChildTitle = childNode.title.replace(/\./g, '');
-			templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description);
+			templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description, childNode.image);
 			$("#esb-templates").append(templateNode);		
 			$("#"+escapedChildTitle).click(function(){
 				openWizard(childNode.wizardID);
@@ -119,8 +120,16 @@ function drawWelcomeNodes(){
 	});
 }
 
-function createTemplateNode(templateID, templateName, templateDescription){
-	var html = "<div class='col-sm-4 col-md-3 template' id='"+ templateID +"'> <div class='thumb'> <a href='#'> <img data-src='holder.js/533x400?auto=yes&random=yes' class='img-responsive'> <div class='hover-opaque'>"+ templateDescription +"</div></a> </div><div class='thumb thumb-caption text-center'> <figcaption><a href='#'>"+ templateName +"</a></figcaption> </div></div>";
+function createTemplateNode(templateID, templateName, templateDescription, image){
+	if(image == null || image == "") {
+		resolvedimage = "data-src='holder.js/533x400?auto=yes&random=yes'";
+	} else {
+		resolvedimage = "src='data:image/png;base64, " + image + "'";
+	}
+	var html = "<div class='col-sm-4 col-md-3 template' id='" + templateID + "'> <div class='thumb'> <a href='#'>" +
+			" <img " + resolvedimage + " class='img-responsive'> <div class='hover-opaque'>" + templateDescription + 
+			"</div></a> </div><div class='thumb thumb-caption text-center'> <figcaption><a href='#'>" + templateName + 
+			"</a></figcaption> </div></div>";
 	return html;
 }
 

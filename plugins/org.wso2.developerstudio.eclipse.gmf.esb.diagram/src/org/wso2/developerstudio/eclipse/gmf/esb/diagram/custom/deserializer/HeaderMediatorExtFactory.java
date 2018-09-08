@@ -48,7 +48,7 @@ public class HeaderMediatorExtFactory extends HeaderMediatorFactory {
 	OMAttribute action = omElement.getAttribute(ATT_ACTION);
 	OMAttribute scope = omElement.getAttribute(ATT_SCOPE);
 
-	if (name != null || name.getAttributeValue() != null) {
+	if (name != null && name.getAttributeValue() != null) {
 	    if (scope == null || scope.getAttributeValue().equals(XMLConfigConstants.SCOPE_DEFAULT)) {
 		String nameAtt = name.getAttributeValue();
 		int colonPos = nameAtt.indexOf(":");

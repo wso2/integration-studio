@@ -18,7 +18,8 @@ function setViewPortFullScreen(duration) {
     svgArea.animate({viewBox: (cx - 650 / 2) + ' ' + (cy - 650 / 2) + ' ' + 650 + ' ' + 650}, duration);
 }
 
-var portValue = serverDetails.port;
+//This value is injected to this script at browser widget initialization
+//var portValue = serverDetails.port; 
 
 var welcomeNodeArray;
 GetDashboardWizards();

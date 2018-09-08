@@ -26,6 +26,7 @@ import java.net.URL;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
@@ -152,6 +153,15 @@ public class JSEmbeddedFunctions {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path));
         writer.write(str);         
         writer.close();
+    }
+
+    /**
+     * This method sets resolved port value to eclipse preferences(Global registry)
+     * @param port port to be written
+     */
+    public void setPortGlobalVariable(int port) {
+        IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
+        rootNode.put("portDetails", String.valueOf(port));
     }
     
     private String contructJSProperty(int port) {

@@ -24,6 +24,7 @@ import java.net.URL;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -110,8 +111,19 @@ public class WelcomePageEditor extends EditorPart {
 		data.grabExcessHorizontalSpace = true;
 		data.grabExcessVerticalSpace = true;
 		browser.setLayoutData(data);
+		setPortValueToJS(browser);
 		return browser;
 	}
+
+    /**
+     * This method sets port value retrieved from preferences to JS script of the page
+     * @param browser started browser instance
+     */
+    private void setPortValueToJS(Browser browser) {
+        IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
+        String port = rootNode.get("portDetails", null);
+        browser.execute("var portValue = '" + port + "';");
+    }
 
 	@Override
 	public void setFocus() {

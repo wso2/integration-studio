@@ -77,6 +77,8 @@ public class PlatformEarlyStartUpHandler implements IStartup {
         servletHandler.addServletWithMapping(GetWizardsFunctionServlet.class, "/getwizards");
         servletHandler.addServletWithMapping(OpenIDEFunctionServlet.class, "/getwizarddetails");
         
+        JSEmbeddedFunctions jsf = new JSEmbeddedFunctions();
+        jsf.setPortGlobalVariable(port);
         try {
             server.start();
             server.join();
@@ -86,15 +88,14 @@ public class PlatformEarlyStartUpHandler implements IStartup {
             try {
                 server.stop();
                 port++; //increment port value
-                JSEmbeddedFunctions jsf = new JSEmbeddedFunctions();
-                jsf.writePortValue(port);
+                //jsf.writePortValue(port);
                 startEmbeddedJetty(port);
             } catch (Exception e1) {
-                log.error("Error in server port failover",e1);
+                log.error("Error in server port failover", e1);
             }
 
         } catch (Exception e2) {
-            log.error("Error starting dashboard server ",e2);
+            log.error("Error starting dashboard server ", e2);
         }
     }
 

@@ -39,7 +39,11 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWizard;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ide.IDE;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
@@ -116,7 +120,8 @@ public class HelloWorldService extends Wizard implements INewWizard {
 
             IProject project = ProjectCreationUtil
                     .createProject(containerName, TemplateProjectConstants.ESB_PROJECT_NATURE);
-            File pomfile = project.getFile("pom.xml").getLocation().toFile();
+            IFile pomfileDesc = project.getFile("pom.xml");
+            File pomfile = pomfileDesc.getLocation().toFile();
             groupId = baseId + containerName;
 
             ProjectCreationUtil.createProjectPOM(groupId, pomfile, containerName, "pom");
@@ -137,6 +142,19 @@ public class HelloWorldService extends Wizard implements INewWizard {
             IProject cappProject = ProjectCreationUtil
                     .carbonAppCreation(containerName + "CarbonApplication", containerName, cappGroupId, sampleName);
             addCappDependencies(cappProject);
+            getShell().getDisplay().asyncExec(new Runnable() {
+                @Override
+                public void run() {
+                    IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                    try {
+                        IDE.openEditor(page, pomfileDesc, true);
+                    } catch (PartInitException e) {
+                        MessageDialog.openError(getShell(), TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR,
+                                e.getMessage());
+                    }
+                }
+            });
+
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

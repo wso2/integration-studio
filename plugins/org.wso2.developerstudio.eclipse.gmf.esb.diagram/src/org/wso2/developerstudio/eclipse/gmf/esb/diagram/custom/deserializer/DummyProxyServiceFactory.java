@@ -49,10 +49,10 @@ public class DummyProxyServiceFactory {
 	ProxyService proxy = null;
 
 	OMAttribute name = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
-	if (name == null) {
-	    handleException("The 'name' attribute is required for a Proxy service definition");
-	} else {
+	if (name != null) {
 	    proxy = new ProxyService(name.getAttributeValue());
+	} else {
+	    proxy = new ProxyService("");
 	}
 
 	OMAttribute trans = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "transports"));

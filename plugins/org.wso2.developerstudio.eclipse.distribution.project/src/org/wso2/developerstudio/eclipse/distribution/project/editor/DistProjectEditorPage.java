@@ -1087,11 +1087,13 @@ public class DistProjectEditorPage extends FormPage implements IResourceDeltaVis
 
         switch (delta.getKind()) {
         case IResourceDelta.REMOVED:
-            try {
-                refreshForm();
-            } catch (Exception e) {
-                log.error("refresh opration failed", e);
-            }
+            if (pomFileRes.getLocation() != null) {
+        	 try {
+                     refreshForm();
+                 } catch (Exception e) {
+                     log.error("refresh opration failed", e);
+                 }
+            }            
             break;
         }
         return true;

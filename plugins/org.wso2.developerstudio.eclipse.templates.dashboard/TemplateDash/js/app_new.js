@@ -101,11 +101,6 @@ function GetDashboardWizards() {
     });
 }*/
 
-$(window).resize(function () {
-    $('.wso2-logo').css("left", $(".header").width() - $('.wso2-logo').width() - $('.devs-logo').width() - 40);
-    location.reload();
-});
-
 function drawWelcomeNodes(){
 	welcomeNodeArray.forEach(function (welcomeNode) {
 		// $("#root-container").append("<h1>" + welcomeNode.title + "</h1>" );

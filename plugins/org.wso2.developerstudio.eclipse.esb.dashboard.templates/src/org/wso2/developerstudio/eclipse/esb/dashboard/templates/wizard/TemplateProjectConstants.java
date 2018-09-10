@@ -94,6 +94,8 @@ public class TemplateProjectConstants {
     public static final String THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE = "The project already exists in the workspace. Please use a different project name";
 
     public static final String ERROR_MESSAGE = "Error";
+    
+    public static final String ERROR_MESSAGE_OPENING_EDITOR = "Error opening editor";
 
     public static final String INITIAL_HTCONFIG_NAME = "htconfig.xml";
 

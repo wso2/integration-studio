@@ -26,7 +26,7 @@
                         commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opentemplatedashboard"
                         icon="icons/carbon-normal.png"
                         id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opentemplatedashboard"
-                        label="Start From Templates"
+                        label="Getting Started"
                         tooltip="Open Developer Studio Template Dashboard">
                 </command>
                   <separator

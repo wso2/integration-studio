@@ -154,69 +154,85 @@
                   priority="1">
         </category>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"
-                    wizard="org.wso2.developerstudio.wizards.esb.template" description="Hello World Proxy Template">
+                    wizard="org.wso2.developerstudio.wizards.esb.template"
+                    description="Hello World Proxy Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.proxyingASoapService.project"
                     wizard="org.wso2.developerstudio.wizards.esb.proxyingASoapService"
-                    description="Proxying a SOAP Service Template">
+                    description="Proxying a SOAP Service Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.proxyingARESTAPI.project"
                     wizard="org.wso2.developerstudio.wizards.esb.proxyingARESTAPI"
-                    description="Proxying a REST API Template">
+                    description="Proxying a REST API Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.contentBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.contentBasedRoutingTemplate"
-                    description="Content Based Routing Template">
+                    description="Content Based Routing Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.headerBasedRoutingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.headerBasedRoutingTemplate"
-                    description="Header based Routing Template">
+                    description="Header based Routing Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.messageFilteringTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.messageFilteringTemplate"
-                    description="Message Filtering Template">
+                    description="Message Filtering Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.protocolSwitchingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.protocolSwitchingTemplate"
-                    description="Protocol Switching Template">
+                    description="Protocol Switching Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.scatterGatherTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.scatterGatherTemplate"
-                    description="Scatter Gather Integration Pattern Template">
+                    description="Scatter Gather Integration Pattern Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.fileTransferTeamplate"
                     wizard="org.wso2.developerstudio.wizards.esb.fileTransferTeamplate"
-                    description="File Transfer Template">
+                    description="File Transfer Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.guaranteedDeliveryTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.guaranteedDeliveryTemplate"
-                    description="Guranteed Delivery Template">
+                    description="Guranteed Delivery Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.restToSoapTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.restToSoapTemplate"
-                    description="REST to SOAP Conversion Template">
+                    description="REST to SOAP Conversion Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.exceptionHandlingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.exceptionHandlingTemplate"
-                    description="Exception Handling Template">
+                    description="Exception Handling Template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.xmlToJsonTransformationTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.xmlToJsonTransformationTemplate"
-                    description="XML to JSON Transformation template">
+                    description="XML to JSON Transformation template"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.scheduleTaskTeamplate"
                     wizard="org.wso2.developerstudio.wizards.esb.scheduleTaskTeamplate"
-                    description="Sample Schdule Task templates">
+                    description="Sample Schdule Task templates"
+                    image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate"
-                    description="Read the SaleForce Accounts using Salesforce account Connector Template">
+                    description="Read the SaleForce Accounts using Salesforce account Connector Template"
+                    image="icons/server.png">
         </wizardLink>
     </extension>
 </plugin>

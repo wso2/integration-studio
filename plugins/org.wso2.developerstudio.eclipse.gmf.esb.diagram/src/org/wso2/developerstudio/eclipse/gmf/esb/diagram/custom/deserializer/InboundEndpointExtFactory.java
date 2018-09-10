@@ -21,7 +21,6 @@ import java.util.Iterator;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.synapse.SynapseException;
 import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.inbound.InboundEndpoint;
@@ -60,9 +59,9 @@ public class InboundEndpointExtFactory {
         if (inboundEndpointElem.getAttributeValue(ATT_NAME) != null) {
             inboundEndpoint.setName(inboundEndpointElem.getAttributeValue(ATT_NAME));
         } else {
-            throw new SynapseException("Attribute \"name\" is not defined for the inbound endpoint. "
-                    + "Name should be equal to inbound endpoint artifact .xml file name.");
+            inboundEndpoint.setName("");
         }
+        
         inboundEndpoint.configure(new AspectConfiguration(inboundEndpointElem.getAttributeValue(ATT_NAME)));
 		if (inboundEndpointElem.getAttributeValue(ATT_TRACE) != null
 				&& ENABLE_TAG.equals(inboundEndpointElem.getAttributeValue(ATT_TRACE))) {

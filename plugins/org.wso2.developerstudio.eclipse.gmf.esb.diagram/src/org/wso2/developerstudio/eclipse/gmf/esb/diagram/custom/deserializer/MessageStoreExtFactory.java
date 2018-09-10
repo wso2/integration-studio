@@ -28,7 +28,6 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.SynapseConstants;
-import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.config.xml.SynapsePathFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
@@ -61,8 +60,7 @@ public class MessageStoreExtFactory {
         if (nameAtt != null) {
             messageStore.setName(nameAtt.getAttributeValue());
         } else {
-            throw new SynapseException("Attribute \"name\" is not defined for the message store."
-                    + " Name should be equal to message store artifact .xml file name.");
+            messageStore.setName("");
         }
 
         OMElement descriptionElem = elem.getFirstChildWithName(DESCRIPTION_Q);

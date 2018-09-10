@@ -63,7 +63,7 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 		FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
 		if (formPage instanceof LocalEntryFormPage) {
 			LocalEntryFormPage localEntryPage = (LocalEntryFormPage) formPage;
-			if (localEntryPage.getLocalEntryNameTxt() != null) {
+			if (localEntryPage.getLocalEntryNameTxt() != null && object.getKey() != null) {
 				localEntryPage.getLocalEntryNameTxt().setText(object.getKey());
 			}
 			if (object.getType() == INLINE_TEXT) {

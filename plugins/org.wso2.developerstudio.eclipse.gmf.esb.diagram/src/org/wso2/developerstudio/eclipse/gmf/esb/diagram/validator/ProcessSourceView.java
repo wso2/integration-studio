@@ -33,6 +33,7 @@ import java.util.Stack;
 
 import javax.xml.stream.XMLStreamException;
 
+import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.OMNamespaceImpl;
 import org.apache.axiom.om.impl.llom.OMElementImpl;
@@ -77,6 +78,7 @@ import org.apache.synapse.mediators.spring.SpringMediatorFactory;
 import org.apache.synapse.mediators.throttle.ThrottleMediatorFactory;
 import org.apache.synapse.mediators.xquery.XQueryMediatorFactory;
 import org.apache.synapse.startup.quartz.SimpleQuartzFactory;
+import org.apache.synapse.task.SynapseTaskException;
 import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorFactory;
 import org.wso2.carbon.identity.oauth.mediator.config.xml.OAuthMediatorFactory;
 import org.wso2.carbon.mediator.cache.CacheMediatorFactory;
@@ -91,12 +93,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BamM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BeanMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.BuilderMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.ClassMediatorExtFactory;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyEntryFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyInboundEndpointFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMediatorFactoryFinder;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageProcessorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyMessageStoreFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.DummyTaskDescriptionFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EJBMediatorExtFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.EntryExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.POJOCommandMediatorExtFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.sheet.XMLTag;
 import org.xml.sax.InputSource;
@@ -742,7 +745,7 @@ public class ProcessSourceView {
                 factory.createInboundEndpointDev(omElement);
 
             } else if (qTag.equals("localEntry")) {
-                DummyEntryFactory factory = new DummyEntryFactory();
+                EntryExtFactory factory = new EntryExtFactory();
                 factory.createEntry(omElement, null);
 
             } else if (qTag.equals("messageProcessor")) {
@@ -758,8 +761,8 @@ public class ProcessSourceView {
                 factory.createSpecificMediator(omElement, null);
 
             } else if (qTag.equals("task")) {
-                SimpleQuartzFactory factory = new SimpleQuartzFactory();
-                factory.createStartup(omElement);
+                DummyTaskDescriptionFactory factory = new DummyTaskDescriptionFactory();
+                factory.createTaskDescription(omElement, OMAbstractFactory.getOMFactory().createOMNamespace("http://ws.apache.org/ns/synapse", ""));
 
             } else if (qTag.equals("template")) {
                 TemplateMediatorFactory factory = new TemplateMediatorFactory();
@@ -767,7 +770,7 @@ public class ProcessSourceView {
 
             }
 
-        } catch (SynapseException | MediatorException e) {
+        } catch (SynapseException | MediatorException| SynapseTaskException e) {
             return e.getMessage();
 
         } catch (XMLStreamException e) {

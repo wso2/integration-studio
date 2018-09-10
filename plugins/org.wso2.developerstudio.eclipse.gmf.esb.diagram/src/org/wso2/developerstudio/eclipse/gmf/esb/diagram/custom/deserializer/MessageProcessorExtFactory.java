@@ -28,7 +28,6 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.SynapseConstants;
-import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.message.processor.MessageProcessor;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyMessageProcessor;
@@ -60,8 +59,7 @@ public class MessageProcessorExtFactory {
         if (nameAtt != null) {
             messageProcessor.setName(nameAtt.getAttributeValue());
         } else {
-            throw new SynapseException("Attribute \"name\" is not defined for the message processor. "
-                    + "Name should be equal to message processor artifact .xml file name.");
+            messageProcessor.setName("");
         }
 
         OMAttribute targetSequenceAtt = elem.getAttribute(TARGET_ENDPOINT_Q);

@@ -81,11 +81,12 @@ public class WelcomePageEditor extends EditorPart {
 	public void createPartControl(Composite parent) {
 		browser = createBrowser(parent);
 		try {
-			browser.setUrl(getWelcomePage());
+		    String port = getPortValueForJS(browser);
+		    browser.setUrl(getWelcomePage() + "?port=" + port);
 		} catch (URISyntaxException e) {
-			log.error("Error while intializing Welcome Page", e);
+		    log.error("Error while intializing Welcome Page", e);
 		} catch (IOException e) {
-			log.error("Error while intializing Welcome Page", e);
+		    log.error("Welcome Page not found", e);
 		}
 	}
 
@@ -111,18 +112,16 @@ public class WelcomePageEditor extends EditorPart {
 		data.grabExcessHorizontalSpace = true;
 		data.grabExcessVerticalSpace = true;
 		browser.setLayoutData(data);
-		setPortValueToJS(browser);
 		return browser;
 	}
 
     /**
-     * This method sets port value retrieved from preferences to JS script of the page
+     * This method gets port value retrieved from preferences
      * @param browser started browser instance
      */
-    private void setPortValueToJS(Browser browser) {
+    private String getPortValueForJS(Browser browser) {
         IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
-        String port = rootNode.get("portDetails", null);
-        browser.execute("var portValue = '" + port + "';");
+        return rootNode.get("portDetails", null);
     }
 
 	@Override

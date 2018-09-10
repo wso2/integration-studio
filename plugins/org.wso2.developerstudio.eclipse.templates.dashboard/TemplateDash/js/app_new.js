@@ -4,6 +4,20 @@ var colorBorder = "#ffffff";
 var rectAnimationDuration = 50;
 
 var centerLogo;
+var portValue = resolveGetParam("port");
+
+function resolveGetParam(param) {
+    var paramValue = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === param) paramValue = decodeURIComponent(tmp[1]);
+        });
+    return paramValue;
+}
 
 var w = window,
     d = document,

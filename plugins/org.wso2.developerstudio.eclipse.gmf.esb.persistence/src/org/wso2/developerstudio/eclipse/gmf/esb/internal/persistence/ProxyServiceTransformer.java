@@ -359,19 +359,20 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 		// Check start.
 		if (info.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {
 			
-			Assert.isTrue(StringUtils.isNotBlank(visualService.getName()), "Proxy name cannot be empty!");
-			
-			Assert.isTrue(
-					info.getSynapseConfiguration().getProxyService(visualService.getName()) == null,
-					"Circular reference detected while serializing proxy service!");
+			String proxyName;
+			if (visualService.getName() != null) {
+			    proxyName = visualService.getName();
+			} else {
+			    proxyName = "";
+			}
 
-			ProxyService proxyService = new ProxyService(visualService.getName());
+			ProxyService proxyService = new ProxyService(proxyName);
 			info.setCurrentProxy(proxyService);
 
 			if (visualService.getServiceGroup() != null) {
 				proxyService.setServiceGroup(visualService.getServiceGroup());
 			}
-			AspectConfiguration aspectConfiguration = new AspectConfiguration(visualService.getName());
+			AspectConfiguration aspectConfiguration = new AspectConfiguration(proxyName);
 			if (visualService.isStatisticsEnabled()) {
 				proxyService.getAspectConfiguration().enableStatistics();
 			} else {
@@ -428,8 +429,7 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 			if (pinnedServers.size() > 0)
 				proxyService.setPinnedServers(pinnedServers);
 		   
-			info.getSynapseConfiguration().addProxyService(
-					visualService.getName(), proxyService);
+			info.getSynapseConfiguration().addProxyService(proxyName, proxyService);
 			
 			// startOnLoad attribute.
 			proxyService.setStartOnLoad(visualService.isStartOnLoad());

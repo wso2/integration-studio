@@ -529,8 +529,9 @@ public class ProcessSourceView {
                                     && !tempTag.getqName().equals(currentMediator.getqName())) {
                                 intermediaryStack.push(currentMediator);
 
-                            } else if ((!artifactType.equals("localEntry") && tempTag.getTagType() == 3) || (tempTag
-                                    .getTagType() != 3
+                            } else if ((!artifactType.equals("localEntry") && tempTag.getTagType() == 3 && (currentMediator == null 
+                                    || currentMediator != null && !currentMediator.getqName().equals("filter")))
+                                    || (tempTag.getTagType() != 3
                                     && (currentMediator != null && tempTag.getqName().equals(currentMediator.getqName())
                                             || (artifacts.contains(tempTag.getqName()))))) {
                                 if ((!tempTag.getqName().equals("endpoint")
@@ -851,13 +852,7 @@ public class ProcessSourceView {
 
             } else if (qTag.equals("filter")) {
                 FilterMediatorFactory factory = new FilterMediatorFactory();
-
-                Iterator iterator = omElement.getChildrenWithLocalName("then");
-                if (iterator.hasNext()) {
-                    OMElement then = (OMElement) iterator.next();
-                    then.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
-                }
-
+                setNamespaceForChildren(omElement);
                 factory.createMediator(omElement, null);
 
             } else if (qTag.equals("call-template")) {

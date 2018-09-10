@@ -89,7 +89,9 @@ public class DeserializerUtils {
 		if(cc.canExecute()){
 			editPart.getDiagramEditDomain().getDiagramCommandStack()
 				.execute(cc);
-			return ((Node)((IAdaptable)createCmd.getResult()).getAdapter(EObject.class)).getElement();
+			if (((Node)((IAdaptable)createCmd.getResult()).getAdapter(EObject.class)) != null) {
+			    return ((Node)((IAdaptable)createCmd.getResult()).getAdapter(EObject.class)).getElement();
+			}
 		}
 		return null;
 	}

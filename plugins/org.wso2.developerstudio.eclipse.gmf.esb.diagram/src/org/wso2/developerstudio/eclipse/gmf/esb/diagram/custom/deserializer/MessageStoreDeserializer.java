@@ -443,7 +443,7 @@ public class MessageStoreDeserializer
 				.getFormPageForArtifact(ArtifactType.MESSAGE_STORE);
 		org.wso2.developerstudio.eclipse.gmf.esb.MessageStore messageStore = EsbFactoryImpl.eINSTANCE
 				.createMessageStore();
-
+		
 		messageStore.setStoreName(store.getName());
 		messageStore.setDescription(store.getDescription());
 
@@ -457,7 +457,9 @@ public class MessageStoreDeserializer
 
 			DummyMessageStore dummyMessageStore = (DummyMessageStore) store;
 
-			messageStorePage.storeName.setText(dummyMessageStore.getName());
+			if (dummyMessageStore.getName() != null) {
+			    messageStorePage.storeName.setText(dummyMessageStore.getName());
+			}
 
 			if (dummyMessageStore.getParameters().get(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE) != null
 					&& dummyMessageStore.getParameters().get(STORE_PRODUCER_GUARANTEED_DELIVERY_ENABLE).toString()

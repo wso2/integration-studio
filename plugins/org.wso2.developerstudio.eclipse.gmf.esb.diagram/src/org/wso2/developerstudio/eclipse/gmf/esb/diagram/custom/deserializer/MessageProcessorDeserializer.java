@@ -636,7 +636,9 @@ public class MessageProcessorDeserializer
 		
 		DummyMessageProcessor dummyMessageProcessor = (DummyMessageProcessor) processor;
 			
-		messageProcessorPage.processorName.setText(dummyMessageProcessor.getName());
+		if (dummyMessageProcessor.getName() != null) {
+		    messageProcessorPage.processorName.setText(dummyMessageProcessor.getName());
+		}
 		messageProcessorPage.storeName.setText(dummyMessageProcessor.getMessageStoreName());
 			
 

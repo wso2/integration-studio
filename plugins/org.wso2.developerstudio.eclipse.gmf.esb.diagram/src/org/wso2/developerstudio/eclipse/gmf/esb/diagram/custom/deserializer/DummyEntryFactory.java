@@ -29,7 +29,6 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNode;
 import org.apache.axiom.om.OMText;
 import org.apache.synapse.SynapseConstants;
-import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 
@@ -40,43 +39,41 @@ public class DummyEntryFactory {
     public static Entry createEntry(OMElement elem, Properties properties) {
 
         OMAttribute key = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
+        Entry entry;
         if (key == null) {
-            throw new SynapseException("Attribute \"key\" is not defined for the local entry configuration. \n"
-                    + "Key value should be equal to loacl entry artifact .xml file name.");
+            entry = new Entry("");
+        } else {
+            entry = new Entry(key.getAttributeValue());
+        }
+
+        OMElement descriptionElem = elem.getFirstChildWithName(DESCRIPTION_Q);
+        if (descriptionElem != null) {
+            entry.setDescription(descriptionElem.getText());
+            descriptionElem.detach();
+        }
+
+        String src = elem.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "src"));
+        if (src != null) {
+            try {
+                entry.setSrc(new URL(src.trim()));
+                entry.setType(Entry.URL_SRC);
+            } catch (MalformedURLException e) {
+                // ignore
+            }
 
         } else {
+            OMNode nodeValue = elem.getFirstOMChild();
+            OMElement elemValue = elem.getFirstElement();
 
-            Entry entry = new Entry(key.getAttributeValue());
-
-            OMElement descriptionElem = elem.getFirstChildWithName(DESCRIPTION_Q);
-            if (descriptionElem != null) {
-                entry.setDescription(descriptionElem.getText());
-                descriptionElem.detach();
+            if (elemValue != null) {
+                entry.setType(Entry.INLINE_XML);
+                entry.setValue(elemValue);
+            } else if (nodeValue != null && nodeValue instanceof OMText) {
+                entry.setType(Entry.INLINE_TEXT);
+                entry.setValue(elem.getText());
             }
-
-            String src = elem.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "src"));
-
-            if (src != null) {
-                try {
-                    entry.setSrc(new URL(src.trim()));
-                    entry.setType(Entry.URL_SRC);
-                } catch (MalformedURLException e) {
-                    // ignore
-                }
-
-            } else {
-                OMNode nodeValue = elem.getFirstOMChild();
-                OMElement elemValue = elem.getFirstElement();
-
-                if (elemValue != null) {
-                    entry.setType(Entry.INLINE_XML);
-                    entry.setValue(elemValue);
-                } else if (nodeValue != null && nodeValue instanceof OMText) {
-                    entry.setType(Entry.INLINE_TEXT);
-                    entry.setValue(elem.getText());
-                }
-            }
-            return entry;
         }
+
+        return entry;
     }
 }

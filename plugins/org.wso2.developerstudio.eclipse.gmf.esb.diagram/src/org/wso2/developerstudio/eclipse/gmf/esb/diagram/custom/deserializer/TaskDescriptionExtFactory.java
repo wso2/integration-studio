@@ -28,7 +28,6 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNamespace;
-import org.apache.synapse.task.SynapseTaskException;
 import org.apache.synapse.task.TaskDescription;
 
 public class TaskDescriptionExtFactory {
@@ -47,8 +46,7 @@ public class TaskDescriptionExtFactory {
         if (name != null) {
             taskDescription.setName(name);
         } else {
-            throw new SynapseTaskException("Attribute \"key\" is not defined for the task configuration. \n"
-                    + "Key value should be equal to task artifact .xml file name.");
+            taskDescription.setName("");
         }
 
         String group = element.getAttributeValue(new QName(NULL_NAMESPACE, "group"));

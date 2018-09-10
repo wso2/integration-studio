@@ -51,20 +51,32 @@ public class DummyAPIFactory {
 	public static API createAPI(OMElement apiElt, boolean withSynapse) {
 		OMAttribute nameAtt = apiElt.getAttribute(new QName("name"));
 		OMAttribute contextAtt = apiElt.getAttribute(new QName("context"));
+		API api;
 
 		if (withSynapse) {
 			if (nameAtt == null || "".equals(nameAtt.getAttributeValue())) {
-				handleException("Attribute 'name' is required for an API definition");
+				handleException("Attribute \"name\" is not defined for the API definition. \n"
+				        + "Key value should be equal to API artifact .xml file name.");
 			}
 
 			if (contextAtt == null || "".equals(contextAtt.getAttributeValue())) {
-				handleException("Attribute 'context' is required for an API definition");
+				handleException("Attribute \"context\" is required for the API definition");
 			}
+			api = new API(nameAtt.getAttributeValue(), contextAtt.getAttributeValue());
+			api.configure(new AspectConfiguration(nameAtt.getAttributeValue()));
+			
+		} else {
+		    String nameValue = "";
+		    String contextValue = "/";
+		    if (nameAtt != null) {
+		        nameValue = nameAtt.getAttributeValue();
+		    }
+		    if (contextAtt != null) {
+		        contextValue = contextAtt.getAttributeValue();
+		    }
+		    api = new API(nameValue, contextValue);
+		    api.configure(new AspectConfiguration(nameValue));
 		}
-
-		API api = new API(nameAtt.getAttributeValue(), contextAtt.getAttributeValue());
-
-		api.configure(new AspectConfiguration(nameAtt.getAttributeValue()));
 		
 		OMAttribute traceAtt = apiElt.getAttribute(new QName("trace"));
 		if (traceAtt != null && "enable".equals(traceAtt.getAttributeValue())) {

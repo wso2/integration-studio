@@ -55,8 +55,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint,
 				"Invalid subject.");
 		org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint = (org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint) subject;
-		information.getSynapseConfiguration().addInboundEndpoint(
+		if (visualInboundEndpoint.getName() != null) {
+		    information.getSynapseConfiguration().addInboundEndpoint(
 				visualInboundEndpoint.getName(), create(visualInboundEndpoint));
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,

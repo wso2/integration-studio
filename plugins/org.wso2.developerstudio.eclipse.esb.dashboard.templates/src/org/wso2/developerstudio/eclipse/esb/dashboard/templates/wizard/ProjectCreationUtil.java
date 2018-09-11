@@ -214,8 +214,7 @@ public class ProjectCreationUtil {
             updatePomForArtifact(esbProject, artifactType);  //artifactIdForPomDependency);
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // TODO 
         }
 
     }
@@ -349,8 +348,7 @@ public class ProjectCreationUtil {
 
             return CarbonAppProject;
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // TODO 
         }
         return null;
 
@@ -385,7 +383,7 @@ public class ProjectCreationUtil {
      * @param artifactName
      * @param type         - the name appended in carbon app dependency list. Inside <properties> tag
      *                     eg. values  endpoint , api , proxy-service , inbound-endpoint , sequence ,
-     *                     message-store , message-processors , null for dataservice
+     *                     message-store , message-processors , null for dataservice , task
      * @return
      */
     public static Dependency addDependencyForCAPP(String groupId, String artifactName, String type) {

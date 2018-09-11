@@ -48,16 +48,16 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 /**
  * The class which handles Guranteed Delivery Template Sample.
  */
-public class DataPolling extends Wizard implements INewWizard {
+public class DatabasePolling extends Wizard implements INewWizard {
 
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "GuaranteedDeliveryTemplate";
+    String sampleName = "DatabasePolling";
     String baseId = "wso2.sample" + sampleName + ".";
 
-    public DataPolling() {
+    public DatabasePolling() {
         super();
         setNeedsProgressMonitor(true);
         templateWizardUtil = new TemplateWizardUtil();
@@ -201,9 +201,9 @@ public class DataPolling extends Wizard implements INewWizard {
      */
     private void copyDSSFiles(IProject dssProject, ESBProjectArtifact dssProjectArtifact, String groupID) {
 
-        String artifactName = "test";
-        //TODO put the sample name for dataSePro
-        DSSProjectCreationUtil.copyArtifact(dssProject, "dataSePro", artifactName, dssProjectArtifact, groupID);
+        String artifactName = "DoctorsDataService";
+        DSSProjectCreationUtil
+                .copyArtifact(dssProject, sampleName + "DataService", artifactName, dssProjectArtifact, groupID);
 
     }
 
@@ -215,28 +215,16 @@ public class DataPolling extends Wizard implements INewWizard {
      */
     private void copyFiles(IProject esbProject, ESBProjectArtifact esbProjectArtifact) {
 
-        String artifactName = "NumberCalculateService";
-        String type = "proxy-services";
+        String artifactName = "DoctorsRecordsSyncTask";
+        String type = "tasks";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
-        artifactName = "NumberCalculateErrorSeq";
+        artifactName = "DoctorsRecordsSyncSeq";
         type = "sequences";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
-        artifactName = "NumberCaculateResponseSeq";
-        type = "sequences";
-        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-
-        artifactName = "NumberCalculateEP";
+        artifactName = "DoctorsDataServiceEP";
         type = "endpoints";
-        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-
-        artifactName = "NumberCalculateMS";
-        type = "message-stores";
-        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-
-        artifactName = "NumberCalculateMP";
-        type = "message-processors";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
     }
@@ -255,38 +243,21 @@ public class DataPolling extends Wizard implements INewWizard {
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
 
-        Dependency dependency = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCalculateService", "proxy-service");
+        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "DoctorsRecordsSyncTask", "task");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
 
-        Dependency dependency2 = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCalculateErrorSeq", "sequence");
+        Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "DoctorsRecordsSyncSeq", "sequence");
         dependencyList.add(dependency2);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
 
-        Dependency dependency3 = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCaculateResponseSeq", "sequence");
+        Dependency dependency3 = ProjectCreationUtil.addDependencyForCAPP(groupId, "DoctorsDataServiceEP", "endpoint");
         dependencyList.add(dependency3);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency3), "capp/EnterpriseServiceBus");
 
-        Dependency dependency4 = ProjectCreationUtil.addDependencyForCAPP(groupId, "NumberCalculateEP", "endpoint");
+        Dependency dependency4 = ProjectCreationUtil.addDependencyForCAPP(groupId, "DoctorsDataService", null);
         dependencyList.add(dependency4);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency4), "capp/EnterpriseServiceBus");
-
-        Dependency dependency5 = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCalculateMS", "message-store");
-        dependencyList.add(dependency5);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency5), "capp/EnterpriseServiceBus");
-
-        Dependency dependency6 = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCalculateMP", "message-processors");
-        dependencyList.add(dependency6);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency6), "capp/EnterpriseServiceBus");
-
-        Dependency dependency7 = ProjectCreationUtil.addDependencyForCAPP(groupId, "test", null);
-        dependencyList.add(dependency7);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency7), "capp/DataServicesServer");
+        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency4), "capp/DataServicesServer");
 
         ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
         properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());

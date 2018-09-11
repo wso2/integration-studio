@@ -149,14 +149,13 @@ public class DSSProjectCreationUtil {
             }
             MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
         } catch (Exception e) {
-            // TODO Handle this properly.
-            e.printStackTrace();
+            // TODO 
         }
 
         try {
             project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
         } catch (CoreException e) {
-            // TODO Handle this properly.
+            // TODO 
 
         }
     }
@@ -192,8 +191,7 @@ public class DSSProjectCreationUtil {
                     .addESBArtifact(createArtifact(artifactName, groupID, "1.0.0", relativePath, "dataservice"));
             dssProjectArtifact.toFile();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            //  e.printStackTrace();
+            // TODO 
         }
 
     }

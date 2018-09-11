@@ -26,11 +26,11 @@
                 parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
         <wizard
-                name="DSS DATA Polling"
+                name="DataBase Polling"
                 icon="icons/message-store-small.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
-                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.DataPolling"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.DatabasePolling"
                 id="org.wso2.developerstudio.wizards.esb.dataPolling">
         </wizard>
         <wizard
@@ -244,7 +244,7 @@
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.dataPolling.project"
                     wizard="org.wso2.developerstudio.wizards.esb.dataPolling"
-                    description="DSS DB Polling Template"
+                    description="Data Base Polling"
                     image="icons/server.png">
         </wizardLink>
     </extension>

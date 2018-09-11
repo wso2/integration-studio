@@ -78,6 +78,23 @@ $("#DataSourceProject").click(function(){
 	openWizard(dataSourceProject);
 });
 
+var BPMNProject = "org.wso2.developerstudio.bpmn.wizards.CreateBPMNProjectWizard";
+var BPELProject = "org.wso2.developerstudio.eclipse.artifact.newbpelartifact";
+var HumanTaskProject = "org.wso2.developerstudio.humantaskeditor.wizards.HumanTaskProjectWizard";
+
+$("#BPMNProject").click(function(){
+	//OpenIDEWizard(esbNewProjectWizard);
+	openWizard(BPMNProject);
+}); 
+
+$("#HumanTaskProject").click(function(){
+	openWizard(HumanTaskProject);
+});
+
+$("#BPELWorkFlowProject").click(function(){
+	openWizard(BPELProject);
+});
+
 /*var mavenWizard = "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
 var cappWizard = 'org.wso2.developerstudio.eclipse.distribution.project';
 var serverWizard = 'org.eclipse.wst.server.ui.new.server';

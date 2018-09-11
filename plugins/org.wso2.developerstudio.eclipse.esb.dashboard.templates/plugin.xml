@@ -26,7 +26,15 @@
                 parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
         <wizard
-                name="Hello World Proxy Template"
+                name="DataBase Polling"
+                icon="icons/message-store-small.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.DatabasePolling"
+                id="org.wso2.developerstudio.wizards.esb.dataPolling">
+        </wizard>
+        <wizard
+                name="Hello World Proxy Service"
                 icon="icons/message-store-small.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -34,7 +42,7 @@
                 id="org.wso2.developerstudio.wizards.esb.template">
         </wizard>
         <wizard
-                name="Proxying A SOAP Service"
+                name="Proxying a SOAP Service"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -42,7 +50,7 @@
                 id="org.wso2.developerstudio.wizards.esb.proxyingASoapService">
         </wizard>
         <wizard
-                name="Proxying A REST API"
+                name="Proxying a REST Service"
                 icon="icons/maven-24x24.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -50,7 +58,7 @@
                 id="org.wso2.developerstudio.wizards.esb.proxyingARESTAPI">
         </wizard>
         <wizard
-                name="Content Based Routing Template"
+                name="Content Based Routing"
                 icon="icons/registry.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -58,7 +66,7 @@
                 id="org.wso2.developerstudio.wizards.esb.contentBasedRoutingTemplate">
         </wizard>
         <wizard
-                name="Header Based Routing Template"
+                name="Header Based Routing"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -66,7 +74,7 @@
                 id="org.wso2.developerstudio.wizards.esb.headerBasedRoutingTemplate">
         </wizard>
         <wizard
-                name="Message Filtering Template"
+                name="Message Filtering"
                 icon="icons/message-store-small.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -74,7 +82,7 @@
                 id="org.wso2.developerstudio.wizards.esb.messageFilteringTemplate">
         </wizard>
         <wizard
-                name="Protocol Switching Template"
+                name="Protocol Switching"
                 icon="icons/registry.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -82,7 +90,7 @@
                 id="org.wso2.developerstudio.wizards.esb.protocolSwitchingTemplate">
         </wizard>
         <wizard
-                name="Scatter Gather Pattern Template"
+                name="Scatter Gather Integration Pattern"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -90,7 +98,7 @@
                 id="org.wso2.developerstudio.wizards.esb.scatterGatherTemplate">
         </wizard>
         <wizard
-                name="File Transfer Template"
+                name="File Transfer"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -98,7 +106,7 @@
                 id="org.wso2.developerstudio.wizards.esb.fileTransferTeamplate">
         </wizard>
         <wizard
-                name="Guranteed Delivery Template"
+                name="Guaranteed Delivery"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -106,7 +114,7 @@
                 id="org.wso2.developerstudio.wizards.esb.guaranteedDeliveryTemplate">
         </wizard>
         <wizard
-                name="REST to SOAP Template"
+                name="REST to SOAP Conversion"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -114,7 +122,7 @@
                 id="org.wso2.developerstudio.wizards.esb.restToSoapTemplate">
         </wizard>
         <wizard
-                name="Exception Handling Template"
+                name="Exception Handling"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -122,7 +130,7 @@
                 id="org.wso2.developerstudio.wizards.esb.exceptionHandlingTemplate">
         </wizard>
         <wizard
-                name="XML To JSON transformation Template"
+                name="XML To JSON Transformation"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -130,7 +138,7 @@
                 id="org.wso2.developerstudio.wizards.esb.xmlToJsonTransformationTemplate">
         </wizard>
         <wizard
-                name="Sample Schduled Task Template"
+                name="Sample Schduled Task"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -138,7 +146,7 @@
                 id="org.wso2.developerstudio.wizards.esb.scheduleTaskTeamplate">
         </wizard>
         <wizard
-                name="Read Sales Force Accounts Template"
+                name="Read Sales Force Accounts"
                 icon="icons/server.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
@@ -232,6 +240,11 @@
                     id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate"
                     description="Read the SaleForce Accounts using Salesforce account Connector Template"
+                    image="icons/server.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.dataPolling.project"
+                    wizard="org.wso2.developerstudio.wizards.esb.dataPolling"
+                    description="Data Base Polling"
                     image="icons/server.png">
         </wizardLink>
     </extension>

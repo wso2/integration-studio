@@ -15,6 +15,9 @@
  */
 package org.wso2.developerstudio.eclipse.artifact.dataservice.utils;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.artifact.dataservice.Activator;
@@ -33,4 +36,8 @@ public class DataServiceTemplateUtils extends TemplateUtil{
 		return instance;
 	}
 
+	@Override
+	public File getResourceFile(String filename) throws IOException {
+		return super.getResourceFile(filename);
+	}
 }

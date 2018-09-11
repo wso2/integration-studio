@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>wso2-developerstudio-data-service-toolkit</artifactId>
-    <version>6.2.0-SNAPSHOT</version>
+    <version>6.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 Data Service Tools</name>
     <modules>
@@ -79,7 +79,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>Eclipse-p2-repo</id>
-            <url>http://download.eclipse.org/releases/mars/</url>
+            <url>http://download.eclipse.org/releases/oxygen/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -108,9 +108,8 @@
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
-            <id>DevS-Deps-Luna-p2-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/mars/p2/
-            </url>
+            <id>DevS-Deps-Oxygen-p2-Repository</id>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/dependencies/eclipse/oxygen/p2/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -120,7 +119,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-releases-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/kernel/releases/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/releases/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -130,9 +129,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-releases-Repository</id>
-            <url>
-                http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/releases/4.1.0-201606031446/
-            </url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/platform-bundles/releases/</url>
             <layout>p2</layout>
         </repository>
         <repository>
@@ -142,7 +139,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Kernel-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/kernel/updates/</url>
             <layout>p2</layout>
         </repository>
 	<repository>
@@ -152,7 +149,7 @@
                 <checksumPolicy>ignore</checksumPolicy>
             </releases>
             <id>DevS-Platform-p2-updates-Repository</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/platform-bundles/updates/</url>
+            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.3.0/platform-bundles/updates/</url>
             <layout>p2</layout>
 	</repository>
         <repository>
@@ -186,16 +183,6 @@
             <id>WSO2-Nexus-Maven-SNAPSHOT-Repository</id>
             <url>http://maven.wso2.org/nexus/content/repositories/wso2.maven2.snapshot/</url>
             <layout>default</layout>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <id>DevS-Kernel-p2-updates-Repository-2</id>
-            <url>http://product-dist.wso2.com/p2/developer-studio-kernel/4.1.0/updates</url>
-            <layout>p2</layout>
         </repository>
     </repositories>
     <pluginRepositories>

@@ -27,6 +27,7 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ConfigurationPropertyImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ConfigurationPropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ConfigurationPropertyImpl#getSecretAlias <em>Secret Alias</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,6 +72,26 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSecretAlias() <em>Secret Alias</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSecretAlias()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SECRET_ALIAS_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getSecretAlias() <em>Secret Alias</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSecretAlias()
+	 * @generated
+	 * @ordered
+	 */
+	protected String secretAlias = SECRET_ALIAS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,6 +160,27 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getSecretAlias() {
+		return secretAlias;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSecretAlias(String newSecretAlias) {
+		String oldSecretAlias = secretAlias;
+		secretAlias = newSecretAlias;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.CONFIGURATION_PROPERTY__SECRET_ALIAS, oldSecretAlias, secretAlias));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
@@ -147,6 +189,8 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 				return getValue();
 			case DsPackage.CONFIGURATION_PROPERTY__NAME:
 				return getName();
+			case DsPackage.CONFIGURATION_PROPERTY__SECRET_ALIAS:
+				return getSecretAlias();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,6 +209,9 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 				return;
 			case DsPackage.CONFIGURATION_PROPERTY__NAME:
 				setName((String)newValue);
+				return;
+			case DsPackage.CONFIGURATION_PROPERTY__SECRET_ALIAS:
+				setSecretAlias((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -185,6 +232,9 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 			case DsPackage.CONFIGURATION_PROPERTY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case DsPackage.CONFIGURATION_PROPERTY__SECRET_ALIAS:
+				setSecretAlias(SECRET_ALIAS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -202,6 +252,8 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case DsPackage.CONFIGURATION_PROPERTY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case DsPackage.CONFIGURATION_PROPERTY__SECRET_ALIAS:
+				return SECRET_ALIAS_EDEFAULT == null ? secretAlias != null : !SECRET_ALIAS_EDEFAULT.equals(secretAlias);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -221,6 +273,8 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 		result.append(value);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", secretAlias: ");
+		result.append(secretAlias);
 		result.append(')');
 		return result.toString();
 	}

@@ -55,6 +55,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorO
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment5EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
@@ -204,6 +206,17 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
         int x = MouseInfo.getPointerInfo().getLocation().x;
         int y = MouseInfo.getPointerInfo().getLocation().y;
+        int offSetX = 0;
+        int offSetY = 0;
+
+        // MediatorFlowMediatorFlowCompartmentEditPart logic is written to use relative coordinates for calculations
+        // So, the offset values are needed for mimic the locaion in the drag and drop policy
+        if (childEditPart instanceof MediatorFlowMediatorFlowCompartmentEditPart) {
+            offSetX = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
+                    .getLocation().x;
+            offSetY = ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
+                    .getLocation().y;
+        }
 
         Control ctrl = (childEditPart.getViewer().getControl());
         FigureCanvas canvas = (FigureCanvas) ctrl;
@@ -214,13 +227,8 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         double zoom = esbMultiPageEditor.getZoom();
         org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
 
-        currentFigureLocation = new Point(
-                (x + horizontal - p.x
-                        - ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart).getBorderedNodeFigure()
-                                .getLocation().x)
-                        / zoom,
-                (y + vertical - p.y - ((MediatorFlowMediatorFlowCompartmentEditPart) childEditPart)
-                        .getBorderedNodeFigure().getLocation().y) / zoom);
+        currentFigureLocation = new Point((x + horizontal - p.x - offSetX) / zoom,
+                (y + vertical - p.y - offSetY / zoom));
     }
 
     /**
@@ -531,6 +539,7 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
                 outputConnectorEditpartList.add((AbstractOutputConnectorEditPart) element);
             }
         }
+
         Control ctrl = getHost().getViewer().getControl();
         FigureCanvas canvas = (FigureCanvas) ctrl;
         int horizontal = canvas.getHorizontalBar().getSelection();
@@ -557,7 +566,8 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         // whether is is possible to add the mediator using the similar logic as
         // ConenctionCalcluator class.
         if (request instanceof CreateUnspecifiedTypeRequest) {
-            if (getHost() instanceof MediatorFlowMediatorFlowCompartmentEditPart) {
+            if ((getHost() instanceof MediatorFlowMediatorFlowCompartment5EditPart)
+                    || (getHost() instanceof MediatorFlowMediatorFlowCompartmentEditPart)) {
                 if (!isConnectable()) {
                     // If the new addition of the mediator is not connectable to a nearest
                     // EsbLink or nearest connector edit part this will stop adding the current

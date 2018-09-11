@@ -117,15 +117,22 @@ function GetDashboardWizards() {
 
 function drawWelcomeNodes(){
 	welcomeNodeArray.forEach(function (welcomeNode) {
-		// $("#root-container").append("<h1>" + welcomeNode.title + "</h1>" );
-		welcomeNode.nodes.forEach(function (childNode) {
+	//	 $("#root-container").append("<h1>" + welcomeNode.title + "</h1>" );
+		
+		 welcomeNode.nodes.forEach(function (childNode) {
 			escapedChildTitle = childNode.title.replace(/\./g, '');
-			templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description, childNode.image);
-			$("#esb-templates").append(templateNode);		
+			templateNode = createTemplateNode(escapedChildTitle, childNode.label, childNode.description, childNode.image);	
+			if ( welcomeNode.title == "ESB_Templates"){
+				$("#esb-templates").append(templateNode);
+			} else if (welcomeNode.title == "DSS_Templates"){
+				$("#dss-templates").append(templateNode);
+			}					
 			$("#"+escapedChildTitle).click(function(){
 				openWizard(childNode.wizardID);
 		    });
 		});
+		 
+		 
 		
 	});
 }

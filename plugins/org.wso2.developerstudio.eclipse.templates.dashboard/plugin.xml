@@ -11,30 +11,8 @@
         <editor
                 class="org.wso2.developerstudio.eclipse.templates.dashboard.web.view.WelcomePageEditor"
                 id="org.wso2.developerstudio.eclipse.templates.dashboard"
-                name="Developer Studio Template Dashboard"></editor>
-    </extension>
-        <extension point="org.eclipse.ui.menus">
-        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?before=file">
-            <menu label="Developer Studio"
-                  mnemonic="T"
-                  id="org.wso2.developerstudio.eclipse.platform.ui.main">
-                  <separator
-                        name="separator-id-dashoad-up"
-                        visible="true">
-                 </separator>
-                <command
-                        commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opentemplatedashboard"
-                        icon="icons/carbon-normal.png"
-                        id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opentemplatedashboard"
-                        label="Getting Started"
-                        tooltip="Open Developer Studio Template Dashboard">
-                </command>
-                  <separator
-                        name="separator-id-dashoad-down"
-                        visible="true">
-                 </separator>
-            </menu>
-        </menuContribution>
+                name="Getting Started">
+        </editor>
     </extension>
     
     <extension point="org.eclipse.ui.newWizards">

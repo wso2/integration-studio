@@ -150,7 +150,7 @@
             point="org.wso2.developerstudio.eclipse.template.dashboad.link">
         <wizardCategory category="org.wso2.developerstudio.templates"/>
         <category id="dashboard.category.esb.template" showTitle="false"
-                  title="ESB Templates"
+                  title="ESB_Templates"
                   priority="1">
         </category>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.template.project"

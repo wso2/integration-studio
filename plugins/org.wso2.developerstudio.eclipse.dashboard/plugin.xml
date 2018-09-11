@@ -18,19 +18,30 @@
             <menu label="Developer Studio"
                   mnemonic="C"
                   id="org.wso2.developerstudio.eclipse.platform.ui.main">
-                  <separator
-                        name="separator-id-dashoad-up"
+                 <separator
+                        name="separator-id-dashboard-up"
                         visible="true">
                  </separator>
-                <command
+                 <command
+                        commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opentemplatedashboard"
+                        icon="icons/getting-started.png"
+                        id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opentemplatedashboard"
+                        label="Getting Started"
+                        tooltip="Open Developer Studio Template Dashboard">
+                 </command>
+                 <separator
+                        name="separator-id-dashboard-middle"
+                        visible="true">
+                 </separator>
+                 <command
                         commandId="org.wso2.developerstudio.eclipse.platform.ui.commands.opendashboard"
                         icon="icons/carbon-normal.png"
                         id="org.wso2.developerstudio.eclipse.platform.ui.toolbars.opendashboard"
                         label="Open Dashboard"
                         tooltip="Open Developer Studio Dashboard">
-                </command>
-                  <separator
-                        name="separator-id-dashoad-down"
+                 </command>
+                 <separator
+                        name="separator-id-dashboard-down"
                         visible="true">
                  </separator>
             </menu>

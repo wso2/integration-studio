@@ -94,7 +94,7 @@ public class TemplateProjectConstants {
     public static final String THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE = "The project already exists in the workspace. Please use a different project name";
 
     public static final String ERROR_MESSAGE = "Error";
-    
+
     public static final String ERROR_MESSAGE_OPENING_EDITOR = "Error opening editor";
 
     public static final String INITIAL_HTCONFIG_NAME = "htconfig.xml";
@@ -243,8 +243,12 @@ public class TemplateProjectConstants {
 
     public static final String ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
 
+    public static final String DS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.ds.project.nature";
+
     public static final String DISTRIBUTION_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.distribution.project.nature";
 
     public static final String CONNECTOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.connector.project.nature";
+
+    public static final String DS_PROJECT_DATASERVICE_FOLDER = "dataservice";
 
 }

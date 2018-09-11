@@ -257,13 +257,12 @@ public class ProjectCreationUtil {
       </plugin>*/
 
     /**
-     * @param esbProject
-     * @param type       - the name appended in artifact.xml file
+     * @param project
+     * @param type    - the name appended in artifact.xml file
      * @throws IOException
      * @throws XmlPullParserException
      */
-    public static void updatePomForArtifact(IProject esbProject, String type)
-            throws IOException, XmlPullParserException {
+    public static void updatePomForArtifact(IProject project, String type) throws IOException, XmlPullParserException {
 
         String artifactIdForPomDependency = type; // ID in project pom's plugin.
         String pluginVersion = "2.1.0";
@@ -281,7 +280,7 @@ public class ProjectCreationUtil {
             pluginVersion = "1.0.0";
         }
 
-        String pluginName = "wso2-esb-" + artifactIdForPomDependency + "-plugin"; // corresponding Belgian name in POM.
+        String pluginName = "wso2-esb-" + artifactIdForPomDependency + "-plugin"; // corresponding plugin name in POM.
 
         if (type.equals("message-store")) {
             pluginName = "wso2-esb-messagestore-plugin";
@@ -289,7 +288,7 @@ public class ProjectCreationUtil {
             pluginName = "wso2-esb-messageprocessor-plugin";
         }
 
-        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 
         // Skip changing the pom file if group ID and artifact ID are matched
@@ -386,22 +385,27 @@ public class ProjectCreationUtil {
      * @param artifactName
      * @param type         - the name appended in carbon app dependency list. Inside <properties> tag
      *                     eg. values  endpoint , api , proxy-service , inbound-endpoint , sequence ,
-     *                     message-store , message-processors
+     *                     message-store , message-processors , null for dataservice
      * @return
      */
     public static Dependency addDependencyForCAPP(String groupId, String artifactName, String type) {
-        Dependency dependency = new Dependency();
-        dependency.setGroupId(groupId + "." + type);
-        dependency.setArtifactId(artifactName);
 
+        Dependency dependency = new Dependency();
+
+        dependency.setArtifactId(artifactName);
+        dependency.setVersion("1.0.0");
+
+        if (type != null && !type.isEmpty()) {
+            dependency.setGroupId(groupId + "." + type);
+            dependency.setType("xml");
+        } else {
+            dependency.setGroupId(groupId);
+            dependency.setType("synapse_dataservice");
+        }
         if (artifactName.equals("salesforce-connector")) {
             dependency.setVersion("2.0.2");
             dependency.setType("zip");
-        } else {
-            dependency.setVersion("1.0.0");
-            dependency.setType("xml");
         }
-
         return dependency;
 
     }

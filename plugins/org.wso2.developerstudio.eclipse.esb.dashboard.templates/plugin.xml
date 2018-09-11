@@ -26,6 +26,14 @@
                 parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
         <wizard
+                name="DSS DATA Polling"
+                icon="icons/message-store-small.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.DataPolling"
+                id="org.wso2.developerstudio.wizards.esb.dataPolling">
+        </wizard>
+        <wizard
                 name="Hello World Proxy Template"
                 icon="icons/message-store-small.png"
                 project="true"
@@ -232,6 +240,11 @@
                     id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate"
                     description="Read the SaleForce Accounts using Salesforce account Connector Template"
+                    image="icons/server.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.dataPolling.project"
+                    wizard="org.wso2.developerstudio.wizards.esb.dataPolling"
+                    description="DSS DB Polling Template"
                     image="icons/server.png">
         </wizardLink>
     </extension>

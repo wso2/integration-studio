@@ -171,4 +171,19 @@ public class JSEmbeddedFunctions {
                 "}");
         return sb.toString();
     }
+
+    /**
+     * This method returns the current web app path(Which is inside the bundle)
+     * @return web app folder absolute path
+     * @throws URISyntaxException
+     * @throws IOException
+     */
+    public String getWebAppPath() throws URISyntaxException, IOException {
+        Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+        URL webAppURL = bundle.getEntry(WELCOME_PAGE_WEB_SITE_FOLDER);
+        URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
+        URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
+        File resolvedWebAppFolder = new File(resolvedFolderURI);
+        return resolvedWebAppFolder.getAbsolutePath();
+    }
 }

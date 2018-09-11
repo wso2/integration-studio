@@ -2,7 +2,6 @@ var colorOrange = "#f47a20";
 var colorOrange2 = "#ffffff";
 var colorBorder = "#ffffff";
 var rectAnimationDuration = 50;
-
 var centerLogo;
 var portValue = resolveGetParam("port");
 
@@ -127,13 +126,13 @@ $("#openExistingProject").click(function(){
 });
 
 function openWizard(wizardid) {
-    $.post("http://localhost:"+portValue+"/openide", { status: wizardid } ,function(data, status){
+    $.post("http://localhost:"+portValue+"/servlet/openide", { status: wizardid } ,function(data, status){
     });
 }
 
 function GetDashboardWizards() {
 	var jsonString;
-    $.get("http://localhost:"+portValue+"/getwizards", function(data, status){
+    $.get("http://localhost:"+portValue+"/servlet/getwizards", function(data, status){
         loadWelcomeNodes(JSON.stringify(data));
     });
 }

@@ -79,15 +79,9 @@ public class WelcomePageEditor extends EditorPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-		browser = createBrowser(parent);
-		try {
-		    String port = getPortValueForJS(browser);
-		    browser.setUrl(getWelcomePage() + "?port=" + port);
-		} catch (URISyntaxException e) {
-		    log.error("Error while intializing Welcome Page", e);
-		} catch (IOException e) {
-		    log.error("Welcome Page not found", e);
-		}
+	    browser = createBrowser(parent);
+	    String port = getPortValueForJS(browser);
+	    browser.setUrl("http://localhost:" + port + "/welcome?port=" + port);
 	}
 
 	private String getWelcomePage() throws URISyntaxException, IOException {

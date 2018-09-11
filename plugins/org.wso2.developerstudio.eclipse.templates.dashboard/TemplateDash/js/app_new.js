@@ -66,6 +66,18 @@ function loadWelcomeNodes(contributionsString) {
 var esbNewProjectWizard = "org.wso2.developerstudio.eclipse.artifact.newesbsolutionproject";
 var projectExportWizard = "org.wso2.developerstudio.eclipse.distribution.exportAsArtifact";
 
+var dataSourceProject = "org.wso2.developerstudio.eclipse.artifact.newdatasourceproject";
+var dataServiceProject = "org.wso2.developerstudio.eclipse.artifact.newdsproject";
+
+$("#DataServiceProject").click(function(){
+	//OpenIDEWizard(esbNewProjectWizard);
+	openWizard(dataServiceProject);
+}); 
+
+$("#DataSourceProject").click(function(){
+	openWizard(dataSourceProject);
+});
+
 /*var mavenWizard = "org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard.MvnMultiModuleWizard";
 var cappWizard = 'org.wso2.developerstudio.eclipse.distribution.project';
 var serverWizard = 'org.eclipse.wst.server.ui.new.server';

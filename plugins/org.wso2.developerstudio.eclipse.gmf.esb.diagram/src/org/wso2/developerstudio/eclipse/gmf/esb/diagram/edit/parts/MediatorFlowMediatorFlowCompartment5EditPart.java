@@ -81,6 +81,11 @@ public class MediatorFlowMediatorFlowCompartment5EditPart extends AbstractMediat
 
 	/* 	Sequences  */
 
+    
+    public BorderedNodeFigure getBorderedNodeFigure() {
+        return borderedNodeFigure;
+   }
+    
 	/**
 	 * @generated
 	 */

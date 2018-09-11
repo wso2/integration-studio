@@ -23,8 +23,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -44,19 +42,20 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
-import org.osgi.framework.Bundle;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ide.IDE;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
-import org.wso2.developerstudio.eclipse.utils.template.TemplateUtil;
 
 /**
  * Util class to for sample template creation.
@@ -356,6 +355,30 @@ public class ProjectCreationUtil {
         }
         return null;
 
+    }
+
+    /**
+     * Used to open the carbon app pom file with dist project nature.
+     *
+     * @param shell
+     * @param pomfileDesc
+     */
+    public static void openEditor(Shell shell, IFile pomfileDesc) {
+        final Shell shellV = shell;
+        final IFile pomFile = pomfileDesc;
+        shellV.getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                try {
+                    IDE.openEditor(page, pomFile,
+                            "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor", true);
+                } catch (PartInitException e) {
+                    MessageDialog
+                            .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
+                }
+            }
+        });
     }
 
     /**

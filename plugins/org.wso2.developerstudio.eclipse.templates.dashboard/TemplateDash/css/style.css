@@ -99,6 +99,7 @@ body{
 }
 .input-group-addon svg{
     width: 35px;
+    height: 35px;
     margin-top: 3px;
     margin-right: 6px;
 }

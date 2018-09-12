@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="SalesOrderQueueEP" xmlns="http://ws.apache.org/ns/synapse">
+    <address uri="rabbitmq:/SalesOrderQueue?rabbitmq.server.host.name=localhost&amp;rabbitmq.server.port=5672&amp;rabbitmq.queue.name=SalesOrderQueue&amp;rabbitmq.exchange.name=amq.direct"/>
+</endpoint>

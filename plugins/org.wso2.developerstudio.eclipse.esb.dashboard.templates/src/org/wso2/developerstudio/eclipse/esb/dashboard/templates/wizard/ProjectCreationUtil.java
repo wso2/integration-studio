@@ -357,7 +357,7 @@ public class ProjectCreationUtil {
     /**
      * Used to open the carbon app pom file with dist project nature.
      *
-     * @param shell Eclipse shell reference
+     * @param shell    Eclipse shell reference
      * @param fileDesc IFile instance of the file to be opened
      * @param editorID ID of the editor which used to open this file
      */
@@ -365,7 +365,7 @@ public class ProjectCreationUtil {
         final Shell shellV = shell;
         final IFile fileRef = fileDesc;
         final String editorID = editorId;
-        
+
         shellV.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
@@ -396,16 +396,24 @@ public class ProjectCreationUtil {
         dependency.setVersion("1.0.0");
 
         if (type != null && !type.isEmpty()) {
+
             dependency.setGroupId(groupId + "." + type);
             dependency.setType("xml");
+
+            if (type.equals("resource")) {
+                dependency.setType("zip");
+            }
+
         } else {
             dependency.setGroupId(groupId);
             dependency.setType("synapse_dataservice");
         }
+
         if (artifactName.equals("salesforce-connector")) {
             dependency.setVersion("2.0.2");
             dependency.setType("zip");
         }
+
         return dependency;
 
     }

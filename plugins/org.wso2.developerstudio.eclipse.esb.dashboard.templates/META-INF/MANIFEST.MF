@@ -12,10 +12,13 @@ Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,
+ org.eclipse.jdt.core,
  org.eclipse.ui.ide,
  org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.utils,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.utils,
+ org.wso2.developerstudio.eclipse.general.project.artifact;version="6.4.0",
+ org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="6.4.0",
  org.wso2.developerstudio.eclipse.general.project.model;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.gmf.esb

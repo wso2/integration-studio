@@ -41,6 +41,7 @@ body{
     background-color: transparent;
     color: #7f8c8d;
     font-size: 18px;
+    outline:none;
 }
 .nav-stacked>li.active{
     border-left: 8px solid #3498db;
@@ -113,6 +114,8 @@ button:focus{
     background: #e9eff24f;
     min-height: 8em;
     margin-left: 0;
+    max-height: 30em;
+    overflow: auto;
 }
 .template{
     margin-bottom: 20px;
@@ -125,6 +128,9 @@ button:focus{
     position: relative;
     margin: 0 auto;
     max-width: 533px;
+    border-width: 1px 1px 0px 1px;
+    border-color: #E6E6E6;
+    border-style: solid;
 }
 
 .hover-opaque {
@@ -160,6 +166,13 @@ button:focus{
     padding: 10px;
 }
 
+figcaption{
+    width: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 figcaption a {
     color: #4E4E54;
     -moz-transition: color 0.5s ease;
@@ -172,10 +185,6 @@ figcaption a:hover {
     color: #73A7F7;
     text-decoration: none;
 }
-
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
-
 
 button {
     margin: 15px;

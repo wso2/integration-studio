@@ -166,14 +166,15 @@ function drawWelcomeNodes(){
 }
 
 function createTemplateNode(templateID, templateName, templateDescription, image){
-	if(image == null || image == "") {
-		resolvedimage = "data-src='holder.js/533x400?auto=yes&random=yes'";
+	if(image != null || image != "") {
+		resolvedimage = "src='./images/template_thumb.jpg'";
 	} else {
 		resolvedimage = "src='data:image/png;base64, " + image + "'";
 	}
-	var html = "<div class='col-sm-4 col-md-3 template' id='" + templateID + "'> <div class='thumb'> <a href='#'>" +
+	var html = "<div class='col-sm-4 col-md-3 template' data-title='" + templateName + "' id='" + templateID + "'> <div class='thumb'> <a href='#'>" +
 			" <img " + resolvedimage + " class='img-responsive'> <div class='hover-opaque'>" + templateDescription + 
-			"</div></a> </div><div class='thumb thumb-caption text-center'> <figcaption><a href='#'>" + templateName + 
+			"</div></a> </div><div class='thumb thumb-caption text-center'> <figcaption><a href='#' " +
+			"data-toggle='tooltip' data-placement='right' title='" + templateName + "'>" + templateName + 
 			"</a></figcaption> </div></div>";
 	return html;
 }
@@ -222,3 +223,18 @@ $('#zoomInIconP').click(function () {
     }, animationDuration);
 });
 
+$(document).ready(function(){
+    $('.scrollbar-macosx').scrollbar();
+    
+    $('#search').keyup(function(){
+        var valThis = $(this).val().toLowerCase();
+        if(valThis == ""){
+            $('.template-list > .template').show();
+        } else {
+            $('.template-list > .template').each(function(){
+                var text = $(this).attr("data-title").toLowerCase();
+                (text.indexOf(valThis) >= 0) ? $(this).show() : $(this).hide();
+            });
+        };
+    });
+});

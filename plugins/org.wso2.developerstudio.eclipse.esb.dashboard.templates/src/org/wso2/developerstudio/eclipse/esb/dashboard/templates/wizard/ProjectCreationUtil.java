@@ -361,9 +361,11 @@ public class ProjectCreationUtil {
      * @param fileDesc IFile instance of the file to be opened
      * @param editorID ID of the editor which used to open this file
      */
-    public static void openEditor(Shell shell, IFile fileDesc, String editorID) {
+    public static void openEditor(Shell shell, IFile fileDesc, String editorId) {
         final Shell shellV = shell;
         final IFile fileRef = fileDesc;
+        final String editorID = editorId;
+        
         shellV.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {

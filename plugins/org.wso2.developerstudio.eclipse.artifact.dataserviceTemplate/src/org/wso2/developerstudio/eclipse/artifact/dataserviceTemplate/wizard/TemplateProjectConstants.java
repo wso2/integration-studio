@@ -27,7 +27,7 @@ public class TemplateProjectConstants {
 
     public static final String ERROR_MESSAGE_OPENING_EDITOR = "Error opening editor";
 
-    public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "File container must be specified";
+    public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "Project name must be specified";
 
     public static final String WIZARD_PAGE_TEXT = "Template Artifact";
 

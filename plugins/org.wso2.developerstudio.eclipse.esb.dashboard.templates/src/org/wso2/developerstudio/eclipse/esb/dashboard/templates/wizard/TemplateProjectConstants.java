@@ -251,4 +251,8 @@ public class TemplateProjectConstants {
 
     public static final String DS_PROJECT_DATASERVICE_FOLDER = "dataservice";
 
+    public static final String SYNAPSE_CONFIG_EDITOR_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID";
+
+    public static final String DISTRIBUTION_POM_EDITOR_ID = "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor";
+
 }

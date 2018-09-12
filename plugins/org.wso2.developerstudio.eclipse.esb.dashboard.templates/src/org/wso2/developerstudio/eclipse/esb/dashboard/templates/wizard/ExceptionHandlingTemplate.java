@@ -136,10 +136,12 @@ public class ExceptionHandlingTemplate extends Wizard implements INewWizard {
                     .carbonAppCreation(containerName + "CarbonApplication", containerName, groupId, sampleName);
             addCappDependencies(cappProject);
 
-            // Open Carbon application POM on sample creation.
-            IFile pomfileDesc = cappProject.getFile("pom.xml");
+            // Open synapse application on sample creation.
+            String openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator +
+                    "api + File.separator + TimeoutAPI.xml";
+            IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, pomfileDesc);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
 
         } catch (CoreException ex) {
             templateWizardUtil

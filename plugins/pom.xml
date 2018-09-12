@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>wso2-developerstudio-data-service-toolkit</artifactId>
@@ -13,20 +14,21 @@
     <modules>
         <module>org.wso2.developerstudio.eclipse.ds.editor.xml</module>
         <module>org.wso2.developerstudio.eclipse.ds.customvalidator</module>
-	<module>org.wso2.developerstudio.eclipse.ds</module>
-	<module>org.wso2.developerstudio.eclipse.ds.edit</module>
-	<module>org.wso2.developerstudio.eclipse.ds.editor</module>
-	<module>org.wso2.developerstudio.eclipse.ds.source.editor</module>
+        <module>org.wso2.developerstudio.eclipse.ds</module>
+        <module>org.wso2.developerstudio.eclipse.ds.edit</module>
+        <module>org.wso2.developerstudio.eclipse.ds.editor</module>
+        <module>org.wso2.developerstudio.eclipse.ds.source.editor</module>
         <module>org.wso2.developerstudio.eclipse.artifact.dataserviceProject</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.dataservice</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.dataservice.validator</module>
-	
-	<module>
-		org.wso2.developerstudio.eclipse.artifact.datasourceproject
-	</module>
-	<module>
-		org.wso2.developerstudio.eclipse.artifact.datasource
-	</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.dataserviceTemplate</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.dataservice</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.dataservice.validator</module>
+
+        <module>
+            org.wso2.developerstudio.eclipse.artifact.datasourceproject
+        </module>
+        <module>
+            org.wso2.developerstudio.eclipse.artifact.datasource
+        </module>
     </modules>
     <build>
         <plugins>

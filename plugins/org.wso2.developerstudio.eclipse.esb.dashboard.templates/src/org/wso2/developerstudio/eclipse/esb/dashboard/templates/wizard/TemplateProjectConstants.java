@@ -105,7 +105,7 @@ public class TemplateProjectConstants {
 
     public static final String FILE_NAME_MUST_BE_SPECIFIED_MESSAGE = "File name must be specified";
 
-    public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "File container must be specified";
+    public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "Project name must be specified";
 
     public static final String TASK_NAME_CANNOT_HAVE_SPACES_MESSAGE = "Task name should'nt have spaces";
 

@@ -26,6 +26,14 @@
                 parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
         <wizard
+                name="RabbitMQ Sample"
+                icon="icons/message-store-small.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.RabbitMQSampleTemplate"
+                id="org.wso2.developerstudio.wizards.esb.rabbitMQSampleTemplate">
+        </wizard>
+        <wizard
                 name="JMS Proxy Service"
                 icon="icons/message-store-small.png"
                 project="true"
@@ -258,6 +266,12 @@
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.jmsProxyTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.jmsProxyTemplate"
                     description="JMS Proxy Service"
+                    image="icons/server.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb.template"
+                    id="dashboard.wizardLink.esb.rabbitMQSampleTemplate.project"
+                    wizard="org.wso2.developerstudio.wizards.esb.rabbitMQSampleTemplate"
+                    description="RabbitMq Sample"
                     image="icons/server.png">
         </wizardLink>
     </extension>

@@ -26,6 +26,14 @@
                 parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
         <wizard
+                name="JMS Proxy Service"
+                icon="icons/message-store-small.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.JMSProxyTemplate"
+                id="org.wso2.developerstudio.wizards.esb.jmsProxyTemplate">
+        </wizard>
+        <wizard
                 name="DataBase Polling"
                 icon="icons/message-store-small.png"
                 project="true"
@@ -245,6 +253,11 @@
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.dataPolling.project"
                     wizard="org.wso2.developerstudio.wizards.esb.dataPolling"
                     description="Data Base Polling"
+                    image="icons/server.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.jmsProxyTemplate.project"
+                    wizard="org.wso2.developerstudio.wizards.esb.jmsProxyTemplate"
+                    description="JMS Proxy Service"
                     image="icons/server.png">
         </wizardLink>
     </extension>

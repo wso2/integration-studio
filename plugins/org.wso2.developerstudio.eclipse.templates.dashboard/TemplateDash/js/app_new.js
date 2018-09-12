@@ -172,7 +172,7 @@ function createTemplateNode(templateID, templateName, templateDescription, image
 		resolvedimage = "src='data:image/png;base64, " + image + "'";
 	}
 	var html = "<div class='col-xs-4 col-sm-4 col-md-3 col-lg-3 template' data-title='" + templateName + "' id='" + templateID + "'> <div class='thumb'> <a href='#'>" +
-			" <img " + resolvedimage + " class='img-responsive'> <div class='hover-opaque'>" + templateDescription + 
+			" <img " + resolvedimage + " class='img-responsive'> <div class='hover-opaque scrollbar-macosx'>" + templateDescription + 
 			"</div></a> </div><div class='thumb thumb-caption text-center'> <figcaption><a href='#' " +
 			"data-toggle='tooltip' data-placement='right' title='" + templateName + "'>" + templateName + 
 			"</a></figcaption> </div></div>";

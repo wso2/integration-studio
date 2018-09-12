@@ -148,6 +148,7 @@ button:focus{
     -moz-transition: all ease .5s;
     padding: 20px;
     color: #fff;
+    overflow: auto;
 }
 
 .thumb:hover .hover-opaque {

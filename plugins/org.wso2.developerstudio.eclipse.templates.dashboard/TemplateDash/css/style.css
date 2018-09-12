@@ -97,14 +97,10 @@ body{
     height: 50px;
     border-radius: 0;
 }
-.temp-input-group button{
-    border:0;
-    background:transparent;
-    margin: 0;
-}
 .input-group-addon svg{
-    width: 40px;
+    width: 35px;
     margin-top: 3px;
+    margin-right: 6px;
 }
 button:focus{
     outline: none;

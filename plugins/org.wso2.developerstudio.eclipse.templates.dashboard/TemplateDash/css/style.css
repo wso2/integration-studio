@@ -56,6 +56,12 @@ body{
 .section-one .icon, .section-one .text{
     float: left;
 }
+.icon{
+    width: 20%;
+}
+.text{
+    width: 80%;
+}
 .nav-stacked>li{
     border-right: 1px solid #ececec;
     margin-top: 0px !important;
@@ -68,7 +74,7 @@ body{
     padding: 1em;
     background: rgba(236, 240, 241, 0.8);
     margin: 0 1em 1em;
-    height: 90px;
+    min-height: 90px;
 }
 .section-one{
     margin-top: 12px;
@@ -97,14 +103,10 @@ body{
     height: 50px;
     border-radius: 0;
 }
-.temp-input-group button{
-    border:0;
-    background:transparent;
-    margin: 0;
-}
 .input-group-addon svg{
-    width: 40px;
+    width: 35px;
     margin-top: 3px;
+    margin-right: 6px;
 }
 button:focus{
     outline: none;
@@ -165,14 +167,12 @@ button:focus{
     color: #4E4E54;
     padding: 10px;
 }
-
 figcaption{
-    width: 95%;
+    width: 180px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 figcaption a {
     color: #4E4E54;
     -moz-transition: color 0.5s ease;

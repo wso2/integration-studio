@@ -357,19 +357,19 @@ public class ProjectCreationUtil {
     /**
      * Used to open the carbon app pom file with dist project nature.
      *
-     * @param shell
-     * @param pomfileDesc
+     * @param shell Eclipse shell reference
+     * @param fileDesc IFile instance of the file to be opened
+     * @param editorID ID of the editor which used to open this file
      */
-    public static void openEditor(Shell shell, IFile pomfileDesc) {
+    public static void openEditor(Shell shell, IFile fileDesc, String editorID) {
         final Shell shellV = shell;
-        final IFile pomFile = pomfileDesc;
+        final IFile fileRef = fileDesc;
         shellV.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
-                    IDE.openEditor(page, pomFile,
-                            "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor", true);
+                    IDE.openEditor(page, fileRef, editorID, true);
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());

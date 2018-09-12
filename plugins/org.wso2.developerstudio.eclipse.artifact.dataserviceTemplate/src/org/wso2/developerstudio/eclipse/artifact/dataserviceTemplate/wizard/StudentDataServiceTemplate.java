@@ -43,7 +43,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
-import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
@@ -136,7 +135,7 @@ public class StudentDataServiceTemplate extends Wizard implements INewWizard {
             MavenUtils.updateWithMavenEclipsePlugin(dssServicePomFile, new String[] {},
                     new String[] { TemplateProjectConstants.DS_PROJECT_NATURE });
 
-            ESBProjectArtifact dssProjectArtifact = new ESBProjectArtifact();
+            DSSProjectArtifact dssProjectArtifact = new DSSProjectArtifact();
             IFile dssArtifactfile = dssServiceProject.getFile("artifact.xml");
             dssProjectArtifact.setSource(dssArtifactfile.getLocation().toFile());
             dssProjectArtifact.toFile();
@@ -185,7 +184,7 @@ public class StudentDataServiceTemplate extends Wizard implements INewWizard {
      * @param dssProjectArtifact
      * @param groupID
      */
-    private void copyDSSFiles(IProject dssProject, ESBProjectArtifact dssProjectArtifact, String groupID) {
+    private void copyDSSFiles(IProject dssProject, DSSProjectArtifact dssProjectArtifact, String groupID) {
 
         String artifactName = "StudentDataService";
         DSSProjectCreationUtil

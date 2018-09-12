@@ -215,6 +215,20 @@ function showUnselectedNodes() {
     });
 }
 
+function searchTemplates(searchInput, templateList){
+	$(searchInput).keyup(function(){
+        var valThis = $(this).val().toLowerCase();
+        if(valThis == ""){
+            $(templateList +' > .template').show();
+        } else {
+            $(templateList + ' > .template').each(function(){
+                var text = $(this).attr("data-title").toLowerCase();
+                (text.indexOf(valThis) >= 0) ? $(this).show() : $(this).hide();
+            });
+        };
+    });
+}
+
 $('#zoomInIconP').click(function () {
     setSelectedNode(null);
     setTimeout(function () {
@@ -226,15 +240,6 @@ $('#zoomInIconP').click(function () {
 $(document).ready(function(){
     $('.scrollbar-macosx').scrollbar();
     
-    $('#search').keyup(function(){
-        var valThis = $(this).val().toLowerCase();
-        if(valThis == ""){
-            $('.template-list > .template').show();
-        } else {
-            $('.template-list > .template').each(function(){
-                var text = $(this).attr("data-title").toLowerCase();
-                (text.indexOf(valThis) >= 0) ? $(this).show() : $(this).hide();
-            });
-        };
-    });
+    searchTemplates("#search", ".template-list");
+    searchTemplates("#dss-search", ".dss-template-list");
 });

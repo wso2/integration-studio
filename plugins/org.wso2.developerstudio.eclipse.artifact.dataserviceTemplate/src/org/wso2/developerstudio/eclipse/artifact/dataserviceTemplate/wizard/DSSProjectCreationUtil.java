@@ -34,8 +34,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
-import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
@@ -170,7 +168,7 @@ public class DSSProjectCreationUtil {
      * @param groupID
      */
     public static void copyArtifact(IProject dssProject, String sampleName, String artifactName,
-            ESBProjectArtifact dssProjectArtifact, String groupID) {
+            DSSProjectArtifact dssProjectArtifact, String groupID) {
 
         IContainer location = dssProject.getFolder("dataservice");
 
@@ -188,7 +186,7 @@ public class DSSProjectCreationUtil {
                     .replaceAll(Pattern.quote(File.separator), "/");
 
             dssProjectArtifact
-                    .addESBArtifact(createArtifact(artifactName, groupID, "1.0.0", relativePath, "dataservice"));
+                    .addDSSArtifact(createArtifact(artifactName, groupID, "1.0.0", relativePath, "dataservice"));
             dssProjectArtifact.toFile();
         } catch (Exception e) {
             // TODO 
@@ -196,8 +194,8 @@ public class DSSProjectCreationUtil {
 
     }
 
-    private static ESBArtifact createArtifact(String name, String groupId, String version, String path, String type) {
-        ESBArtifact artifact = new ESBArtifact();
+    private static DSSArtifact createArtifact(String name, String groupId, String version, String path, String type) {
+        DSSArtifact artifact = new DSSArtifact();
         artifact.setName(name);
         artifact.setVersion(version);
         artifact.setType("synapse/" + type);

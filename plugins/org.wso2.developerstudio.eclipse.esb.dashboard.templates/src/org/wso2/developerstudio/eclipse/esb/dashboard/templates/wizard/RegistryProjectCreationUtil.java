@@ -18,8 +18,6 @@
 
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard;
 
-import java.io.File;
-
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.model.Repository;
@@ -37,6 +35,8 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryEl
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+
+import java.io.File;
 
 /**
  * Util class to for sample template creation of Registry Resource Projects.

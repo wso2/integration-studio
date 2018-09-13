@@ -18,10 +18,6 @@
 
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.regex.Pattern;
-
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
@@ -38,6 +34,10 @@ import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.regex.Pattern;
 
 /**
  * Util class to for sample template creation of DSS Projects.

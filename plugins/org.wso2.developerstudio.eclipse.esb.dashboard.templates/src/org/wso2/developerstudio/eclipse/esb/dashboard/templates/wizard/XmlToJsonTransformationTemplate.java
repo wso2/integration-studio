@@ -17,12 +17,6 @@
  */
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard;
 
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
@@ -42,6 +36,12 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * The class which handles XML to JSON Transformation Template Sample.
@@ -68,8 +68,7 @@ public class XmlToJsonTransformationTemplate extends Wizard implements INewWizar
      */
     @Override
     public void addPages() {
-        page = new TemplateProjectWizardPage(selection,
-                TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + name + " Template");
+        page = new TemplateProjectWizardPage(selection, name);
         addPage(page);
     }
 

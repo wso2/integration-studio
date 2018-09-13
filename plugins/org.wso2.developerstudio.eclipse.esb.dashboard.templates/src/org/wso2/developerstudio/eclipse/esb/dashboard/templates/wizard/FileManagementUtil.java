@@ -18,6 +18,9 @@
 
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard;
 
+import org.apache.commons.lang.StringUtils;
+import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,9 +30,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
-import org.apache.commons.lang.StringUtils;
-import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
 
 public class FileManagementUtil {
     private static final Logger logger = Logger.getLogger(Activator.PLUGIN_ID);

@@ -17,12 +17,6 @@
  */
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard;
 
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
@@ -45,6 +39,12 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectA
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.jdt.JavaUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
+
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * The class JSON To XML Transfromation which includes data mapper.
@@ -71,8 +71,7 @@ public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
      */
     @Override
     public void addPages() {
-        page = new TemplateProjectWizardPage(selection,
-                TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + name + " Template");
+        page = new TemplateProjectWizardPage(selection, name);
         addPage(page);
     }
 

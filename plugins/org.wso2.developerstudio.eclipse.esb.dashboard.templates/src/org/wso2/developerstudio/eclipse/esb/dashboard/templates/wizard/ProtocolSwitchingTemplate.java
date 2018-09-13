@@ -143,6 +143,7 @@ public class ProtocolSwitchingTemplate extends Wizard implements INewWizard {
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
+            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.PROTOCOL_SWITCHING_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

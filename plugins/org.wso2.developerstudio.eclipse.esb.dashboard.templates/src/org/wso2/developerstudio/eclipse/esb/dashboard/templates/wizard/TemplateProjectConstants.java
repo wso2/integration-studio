@@ -258,5 +258,44 @@ public class TemplateProjectConstants {
     public final static String JDT_BUILD_COMMAND = "org.eclipse.jdt.core.javabuilder";
 
     public final static String JDT_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
+    
+    //public final static String HELLO_WORLD_TEMPLATE_HELP_CONTEXT = "org.wso2.developerstudio.eclipse.esb.dashboard.templates.HelloWorld";
+    public final static String HELLO_WORLD_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/HelloWorld/helpcontent/howtodeploy.html";
+    
+    public final static String CONTENT_BASED_ROUTING_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/ContentBasedRoutingTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String DB_POLLING_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/DatabasePolling/helpcontent/howtodeploy.html";
+    
+    public final static String EXCEPTION_HANDLING_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/ExceptionHandlingTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String FILE_TRANSFER_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/FileTransferTeamplate/helpcontent/howtodeploy.html";
+    
+    public final static String GURANTEED_DELIVERY_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/GuaranteedDeliveryTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String HEADER_BASED_ROUTING_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/HeaderBasedRoutingTemplate/helpcontent/howtodeploy.html";
 
+    public final static String JMS_PROXY_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/JMSProxyTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String JSON_TO_XML_MAPPING_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/JsonToXmlMappingTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String MESSAGE_FILTERING_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/MessageFilteringTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String PROTOCOL_SWITCHING_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/ProtocolSwitchingTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String PROXYING_REST_API_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/ProxyingRestAPITemplate/helpcontent/howtodeploy.html";
+    
+    public final static String PROXYING_SOAP_API_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/ProxyingSoapServiceTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String RABBITMQ_SAMPLE_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/RabbitMQSampleTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String READ_SALESFORCE_ACCOUNT_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/ReadSalesforceAccountsTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String REST_TO_SOAP_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/RestToSoapTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String SCATTER_GATHER_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/ScatterGatherTemplate/helpcontent/howtodeploy.html";
+    
+    public final static String SCHEDULED_TASK_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/ScheduleTaskTeamplate/helpcontent/howtodeploy.html";
+    
+    public final static String XML_TO_JSON_TEMPLATE_HELP_CONTEXT = "/org.wso2.developerstudio.eclipse.esb.dashboard.templates/Samples/XmlToJsonTransformationTemplate/helpcontent/howtodeploy.html";
+    
 }

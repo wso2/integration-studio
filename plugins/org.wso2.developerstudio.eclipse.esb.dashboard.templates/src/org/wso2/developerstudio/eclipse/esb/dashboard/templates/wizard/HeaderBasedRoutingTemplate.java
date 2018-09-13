@@ -145,6 +145,7 @@ public class HeaderBasedRoutingTemplate extends Wizard implements INewWizard {
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
+            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.HEADER_BASED_ROUTING_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

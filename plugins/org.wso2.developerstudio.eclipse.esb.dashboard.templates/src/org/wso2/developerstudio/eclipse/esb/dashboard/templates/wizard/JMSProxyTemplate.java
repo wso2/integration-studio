@@ -143,6 +143,7 @@ public class JMSProxyTemplate extends Wizard implements INewWizard {
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
+            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.JMS_PROXY_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

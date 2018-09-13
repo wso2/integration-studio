@@ -175,7 +175,7 @@ public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
             IFile fileDesc = esbSolutionProject.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-
+            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.JSON_TO_XML_MAPPING_TEMPLATE_HELP_CONTEXT);
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

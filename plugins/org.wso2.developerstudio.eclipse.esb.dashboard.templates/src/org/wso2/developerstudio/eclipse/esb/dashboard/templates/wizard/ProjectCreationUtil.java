@@ -385,7 +385,25 @@ public class ProjectCreationUtil {
                 }
             }
         });
-    }
+    }            
+    
+    /**
+     * Used to open the carbon app pom file with dist project nature.
+     *
+     * @param shell Eclipse shell reference
+     * @param helpId ID of the helop which used to open this file
+     */
+    public static void openHelp(Shell shell, String helpId) {
+        final Shell shellV = shell;
+        final String helpID = helpId;
+        shellV.getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                //PlatformUI.getWorkbench().getHelpSystem().displayHelp(helpID);
+                PlatformUI.getWorkbench().getHelpSystem().displayHelpResource(helpID);
+            }
+        });
+    }  
 
     /**
      * @param groupId

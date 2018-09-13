@@ -612,15 +612,17 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
         parentStack = removeTopObjectsUntilFirstMediator(parentStack);
         EObject mediatorImpl = parentStack.pop();
         List<Integer> positionList = new ArrayList<>();
-        for (EsbElement mediator : eList) {
-            if (mediator.equals(mediatorImpl)) {
-                positionList.add(eList.size() - count);
-                if (parentStack.isEmpty()) {
-                    return positionList;
+        if(eList!= null) {
+            for (EsbElement mediator : eList) {
+                if (mediator.equals(mediatorImpl)) {
+                    positionList.add(eList.size() - count);
+                    if (parentStack.isEmpty()) {
+                        return positionList;
+                    }
+                    break;
+                } else {
+                    count++;
                 }
-                break;
-            } else {
-                count++;
             }
         }
         OutputConnector tempConnector;

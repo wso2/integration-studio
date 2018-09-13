@@ -227,8 +227,8 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         double zoom = esbMultiPageEditor.getZoom();
         org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
 
-        currentFigureLocation = new Point((x + horizontal - p.x - offSetX) / zoom,
-                (y + vertical - p.y - offSetY / zoom));
+        currentFigureLocation = new Point((x + horizontal - p.x - (offSetX*zoom)) / zoom,
+                (y + vertical - p.y - (offSetY*zoom)) / zoom);
     }
 
     /**
@@ -298,7 +298,6 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
                 updateCurrentStatesForGivenFigure(connectors.get(i));
                 double actualCurrentPosition = currentFigureLocation.x;
                 double xLeft = connectorFigureLocation.x;
-
                 // If the current connector is East Pointer
                 if ((figure instanceof EastPointerFigure)
                         || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart.EastPointerFigure)
@@ -532,14 +531,52 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
             EditPart element = (EditPart) getHost().getViewer().getEditPartRegistry().values().toArray()[i];
 
             if (element instanceof EsbLinkEditPart) {
+                if(EditorUtils.getEndpoint((AbstractConnectorEditPart) ((EsbLinkEditPart)element).getSource())!=null){
+                    if(!((EsbLinkEditPart)element).getSource().getParent().getParent().equals(getHost())){
+                        continue;
+                    }
+                }
                 esbLinkEditpartList.add((EsbLinkEditPart) element);
             }
 
             if (element instanceof AbstractOutputConnectorEditPart) {
-                outputConnectorEditpartList.add((AbstractOutputConnectorEditPart) element);
+                if (((AbstractOutputConnectorEditPart) element).getParent()
+                        .getParent().equals(getHost())) {
+                    outputConnectorEditpartList
+                            .add((AbstractOutputConnectorEditPart) element);
+
+                } else if (((AbstractOutputConnectorEditPart) element)
+                        .getParent().equals(
+                                getHost().getParent().getParent()
+                                        .getParent().getParent())) {
+                    /*
+                     * for proxy service output Connector
+                     */
+                    outputConnectorEditpartList
+                            .add((AbstractOutputConnectorEditPart) element);
+
+                } else if (((AbstractOutputConnectorEditPart) element)
+                        .getParent().equals(
+                                getHost().getParent().getParent())) {
+                    /*
+                     * for sequences output Connector
+                     */
+                    outputConnectorEditpartList
+                            .add((AbstractOutputConnectorEditPart) element);
+
+                } else if (((AbstractOutputConnectorEditPart) element)
+                        .getParent().equals(
+                                getHost().getParent().getParent()
+                                        .getParent().getParent().getParent())) {
+                    /*
+                     * Switch mediator case or default branch.
+                     */
+                    outputConnectorEditpartList
+                            .add((AbstractOutputConnectorEditPart) element);
+                }
             }
         }
-
+        
         Control ctrl = getHost().getViewer().getControl();
         FigureCanvas canvas = (FigureCanvas) ctrl;
         int horizontal = canvas.getHorizontalBar().getSelection();

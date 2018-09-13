@@ -46,10 +46,12 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.eclipse.ui.navigator.CommonNavigator;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -357,7 +359,7 @@ public class ProjectCreationUtil {
     /**
      * Used to open the carbon app pom file with dist project nature.
      *
-     * @param shell Eclipse shell reference
+     * @param shell    Eclipse shell reference
      * @param fileDesc IFile instance of the file to be opened
      * @param editorID ID of the editor which used to open this file
      */
@@ -365,13 +367,15 @@ public class ProjectCreationUtil {
         final Shell shellV = shell;
         final IFile fileRef = fileDesc;
         final String editorID = editorId;
-        
+
         shellV.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
                     IDE.openEditor(page, fileRef, editorID, true);
+                    ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true))
+                            .setLinkingEnabled(true);
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());

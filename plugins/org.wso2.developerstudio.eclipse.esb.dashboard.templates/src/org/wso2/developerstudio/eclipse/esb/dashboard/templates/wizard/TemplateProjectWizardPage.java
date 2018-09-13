@@ -32,6 +32,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class TemplateProjectWizardPage extends WizardPage {
 
     private Text containerText;
@@ -100,12 +103,36 @@ public class TemplateProjectWizardPage extends WizardPage {
      * Ensures that both text fields are set.
      */
     private void dialogChanged() {
+        updateStatus(validateContainerName(getContainerName()));
+    }
 
-        if (getContainerName().length() == 0) {
-            updateStatus(TemplateProjectConstants.FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE);
-            return;
+    private String validateContainerName(Object value) {
+
+        if (value == null) {
+            return "Project name cannot be empty";
         }
-        updateStatus(null);
+
+        String projectName = value.toString();
+
+        if (projectName.trim().equals("")) {
+            return "Project name cannot be empty";
+        } else {
+            if (projectName.indexOf(0x20) != -1) {
+                return "Project name cannot contain spaces";
+            } else {
+                if (!isValidArtifactName(projectName)) {
+                    return "Project name cannot contain invalid characters(^/ : ; * # $ ? \" <> + $)";
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public static boolean isValidArtifactName(String name) {
+        Pattern pattern = Pattern.compile("^[^/\\ \\\\:@%\\^+;,=\\[\\{\\]\\}*#\\$?\"<>|\\(\\)]+$");
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
     }
 
     private void updateStatus(String message) {

@@ -94,7 +94,7 @@ public class ConnectionCalculator {
 				nearestLink = (EsbLinkEditPart) nearLinks.get(q);
 			}
 		}
-		if (current > (35*zoom)) {
+		if (current > (60*zoom)) {
 			return null;
 		}
 		return nearestLink;
@@ -109,6 +109,8 @@ public class ConnectionCalculator {
 		AbstractConnectorEditPart currentConnector = null;
 		int yCurrent = 0, yDistance1 = 0, yDistance2 = 0;
 		double EastDistance = 0, EastCurrent = 0, WestCurrent = 0, WestDistance = 0;
+	    EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
+	    double zoom = esbMultiPageEditor.getZoom();
 
 		if (childEditPart != null) {
 
@@ -174,6 +176,10 @@ public class ConnectionCalculator {
 							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
 							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)) {
 
+					    if((figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
+                                ||(figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)){
+                            xLeft=xLeft-82;
+                        }
 						WestDistance = Math.abs(xLeft - actualCurrentPosition);
 						if (((connectors.get(i) instanceof AbstractOutputConnectorEditPart) && (xLeft > actualCurrentPosition))
 								|| ((connectors.get(i) instanceof AbstractInputConnectorEditPart) && (xLeft < actualCurrentPosition))) {
@@ -224,7 +230,7 @@ public class ConnectionCalculator {
 			yCurrent = yDistance2;
 			nearConnector = nearReverseConnector;
 		}
-		if (yCurrent > 35) {
+		if (yCurrent > 60*zoom) {
 			nearConnector = null;
 		}
 				

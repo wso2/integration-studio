@@ -69,7 +69,7 @@ public class RegistryProjectCreationUtil {
 
         try {
             for (String fileType : fileTypes) {
-                File importFile = ProxyServiceTemplateUtils.getInstance().getResourceFile(
+                File importFile = ResourceUtils.getInstance().getResourceFile(
                         "Samples" + File.separator + sampleName + File.separator + artifactName + fileType);
                 IFile newArtifact = location.getFile(new Path(artifactName + fileType));
                 File destFile = newArtifact.getLocation().toFile();

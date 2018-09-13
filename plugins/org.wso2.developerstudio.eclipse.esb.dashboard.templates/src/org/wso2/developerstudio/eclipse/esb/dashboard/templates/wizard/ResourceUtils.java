@@ -22,13 +22,13 @@ import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.utils.template.TemplateUtil;
 
-public class ProxyServiceTemplateUtils extends TemplateUtil {
+public class ResourceUtils extends TemplateUtil {
 
     private static TemplateUtil instance;
 
     public static TemplateUtil getInstance() {
         if (instance == null) {
-            instance = new ProxyServiceTemplateUtils();
+            instance = new ResourceUtils();
         }
         return instance;
     }

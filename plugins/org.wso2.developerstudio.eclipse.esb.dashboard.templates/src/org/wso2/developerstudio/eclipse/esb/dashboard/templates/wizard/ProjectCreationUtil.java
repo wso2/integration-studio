@@ -36,13 +36,15 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.eclipse.ui.navigator.CommonNavigator;
+import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -374,8 +376,9 @@ public class ProjectCreationUtil {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
                     IDE.openEditor(page, fileRef, editorID, true);
-                    ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true))
-                            .setLinkingEnabled(true);
+                    IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                            .findView(IPageLayout.ID_PROJECT_EXPLORER);
+                    ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileRef));
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());

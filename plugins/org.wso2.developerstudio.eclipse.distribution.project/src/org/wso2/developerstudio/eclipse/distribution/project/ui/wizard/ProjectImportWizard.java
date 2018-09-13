@@ -38,10 +38,15 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String ESB_FILE_EXTENSION = "esb";
 	private static final String ESB_DIAGRAM_FILE_EXTENSION = "esb_diagram";
+	private String PROJECT_WIZARD_TITLE = "Open Existing Project";
+	
+	public ProjectImportWizard() {
+	    setWindowTitle(PROJECT_WIZARD_TITLE);
+	}
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection currentSelection) {
-		super.init(workbench, currentSelection);
+		super.init(workbench, currentSelection);		
 	}
 
 	@Override

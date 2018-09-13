@@ -204,7 +204,7 @@ public class ProjectCreationUtil {
                     IDE.openEditor(page, fileRef, editorID, true);
                     IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                             .findView(IPageLayout.ID_PROJECT_EXPLORER);
-                    ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileDesc));
+                    ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileRef));
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());

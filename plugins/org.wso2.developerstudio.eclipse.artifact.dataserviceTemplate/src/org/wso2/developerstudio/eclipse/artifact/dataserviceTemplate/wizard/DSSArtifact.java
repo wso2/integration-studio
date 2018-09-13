@@ -58,24 +58,24 @@ public class DSSArtifact {
         this.type = type;
     }
 
-    public void setFile(String file) {
-        this.file = file;
-    }
-
     public String getFile() {
         return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
     }
 
     public boolean isAnonymous() {
         return name != null ? false : true;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
-    }
-
     public String getGroupId() {
         return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
 }

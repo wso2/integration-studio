@@ -18,10 +18,6 @@
 
 package org.wso2.developerstudio.eclipse.artifact.dataserviceTemplate.wizard;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.regex.Pattern;
-
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
@@ -37,14 +33,16 @@ import org.eclipse.core.runtime.Path;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.regex.Pattern;
+
 /**
  * Util class to for sample template creation of DSS Projects.
  */
 public class DSSProjectCreationUtil {
 
-    private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
     public static final String PACKAGE_PHASE = "package";
-
     public static final String EXEC_GOAL = "exec";
     public static final String INSTALL_PHASE = "install";
     public static final String DEPLOY_PHASE = "deploy";
@@ -56,6 +54,7 @@ public class DSSProjectCreationUtil {
     public static final String ARGUMENT_TAG = "argument";
     public static final String ARGUMENT_VALUE_CLEAN = "clean";
     public static final String ARGUMENT_VALUE_SKIP_TESTS = "-Dmaven.test.skip=${maven.test.skip}";
+    private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
 
     /**
      * Update the pom file for DataService Project.

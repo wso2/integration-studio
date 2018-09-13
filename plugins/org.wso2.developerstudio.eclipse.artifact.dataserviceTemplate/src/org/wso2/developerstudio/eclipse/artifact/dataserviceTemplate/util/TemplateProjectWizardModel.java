@@ -10,12 +10,12 @@ public class TemplateProjectWizardModel {
 
     private String wizardPageText;
 
-    public void setPageTitle(String pageTitle) {
-        this.pageTitle = pageTitle;
-    }
-
     public String getPageTitle() {
         return pageTitle;
+    }
+
+    public void setPageTitle(String pageTitle) {
+        this.pageTitle = pageTitle;
     }
 
     public String getWindowTitle() {

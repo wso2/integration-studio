@@ -26,7 +26,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.xml.stream.FactoryConfigurationError;
 
 /**
@@ -43,8 +42,6 @@ import javax.xml.stream.FactoryConfigurationError;
  * </artifacts>
  */
 public class DSSProjectArtifact extends AbstractXMLDoc implements Observer {
-    List<DSSArtifact> dssArtifacts = new ArrayList<DSSArtifact>();
-
     private static final String NAME = "name";
     private static final String VERSION = "version";
     private static final String TYPE = "type";
@@ -53,7 +50,7 @@ public class DSSProjectArtifact extends AbstractXMLDoc implements Observer {
     private static final String FILE = "file";
     private static final String ARTIFACTS = "artifacts";
     private static final String ARTIFACT = "artifact";
-
+    List<DSSArtifact> dssArtifacts = new ArrayList<DSSArtifact>();
     private File source;
 
     public void update(Observable o, Object arg) {
@@ -143,12 +140,12 @@ public class DSSProjectArtifact extends AbstractXMLDoc implements Observer {
         return documentElement;
     }
 
-    public void setSource(File source) {
-        this.source = source;
-    }
-
     public File getSource() {
         return source;
+    }
+
+    public void setSource(File source) {
+        this.source = source;
     }
 
     public File toFile() throws Exception {

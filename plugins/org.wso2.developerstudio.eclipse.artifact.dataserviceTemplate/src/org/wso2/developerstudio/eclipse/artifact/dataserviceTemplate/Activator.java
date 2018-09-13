@@ -38,6 +38,15 @@ public class Activator extends AbstractUIPlugin {
     public Activator() {
     }
 
+    /**
+     * Returns the shared instance
+     *
+     * @return the shared instance
+     */
+    public static Activator getDefault() {
+        return plugin;
+    }
+
     /*
      * (non-Javadoc)
      * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
@@ -54,15 +63,6 @@ public class Activator extends AbstractUIPlugin {
     public void stop(BundleContext context) throws Exception {
         plugin = null;
         super.stop(context);
-    }
-
-    /**
-     * Returns the shared instance
-     *
-     * @return the shared instance
-     */
-    public static Activator getDefault() {
-        return plugin;
     }
 
 }

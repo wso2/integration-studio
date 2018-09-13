@@ -51,12 +51,12 @@ import java.util.Properties;
  */
 public class StudentDataServiceTemplate extends Wizard implements INewWizard {
 
-    private TemplateProjectWizardPage page;
-    private ISelection selection;
-    private String groupId;
     String sampleName = "Student";
     String baseId = "wso2.sample" + sampleName + ".";
     String name = "Students Data Service";
+    private TemplateProjectWizardPage page;
+    private ISelection selection;
+    private String groupId;
 
     public StudentDataServiceTemplate() {
         super();

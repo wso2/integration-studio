@@ -27,17 +27,15 @@ public class TemplateProjectConstants {
 
     public static final String ERROR_MESSAGE_OPENING_EDITOR = "Error opening editor";
 
-    public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "Project name must be specified";
-
     public static final String WIZARD_PAGE_TEXT = "Template Artifact";
 
     public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "Create Sample Template";
 
-    public static final String PROJECT_WIZARD_PAGE_TITLE = "Template Project";
+    public static final String PROJECT_WIZARD_PAGE_TITLE = "Create Proejct Using ";
 
     public static final String WIZARD_PAGE_NAME = "wizardPage";
 
-    public static final String PROJECT_WIZARD_TITLE = "Template Project";
+    public static final String PROJECT_WIZARD_TITLE = "Start Using a Template";
 
     public static final String NEW_ARTIFACT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskhelp";
 

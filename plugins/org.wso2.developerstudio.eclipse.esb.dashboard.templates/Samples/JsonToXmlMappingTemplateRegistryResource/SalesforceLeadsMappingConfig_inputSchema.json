@@ -1,0 +1,92 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "object",
+  "properties" : {
+    "owner" : {
+      "id" : "http://wso2jsonschema.org/owner",
+      "type" : "array",
+      "items" : [ {
+        "id" : "http://wso2jsonschema.org/owner/0",
+        "type" : "object",
+        "properties" : {
+          "ID" : {
+            "id" : "http://wso2jsonschema.org/owner/0/ID",
+            "type" : "string"
+          },
+          "name" : {
+            "id" : "http://wso2jsonschema.org/owner/0/name",
+            "type" : "string"
+          },
+          "city" : {
+            "id" : "http://wso2jsonschema.org/owner/0/city",
+            "type" : "string"
+          },
+          "code" : {
+            "id" : "http://wso2jsonschema.org/owner/0/code",
+            "type" : "string"
+          },
+          "country" : {
+            "id" : "http://wso2jsonschema.org/owner/0/country",
+            "type" : "string"
+          }
+        }
+      } ]
+    },
+    "lead" : {
+      "id" : "http://wso2jsonschema.org/lead",
+      "type" : "array",
+      "items" : [ {
+        "id" : "http://wso2jsonschema.org/lead/0",
+        "type" : "object",
+        "properties" : {
+          "ID" : {
+            "id" : "http://wso2jsonschema.org/lead/0/ID",
+            "type" : "string"
+          },
+          "name" : {
+            "id" : "http://wso2jsonschema.org/lead/0/name",
+            "type" : "string"
+          },
+          "city" : {
+            "id" : "http://wso2jsonschema.org/lead/0/city",
+            "type" : "string"
+          },
+          "code" : {
+            "id" : "http://wso2jsonschema.org/lead/0/code",
+            "type" : "string"
+          },
+          "country" : {
+            "id" : "http://wso2jsonschema.org/lead/0/country",
+            "type" : "string"
+          }
+        }
+      } ]
+    },
+    "sendNotificationEmail" : {
+      "id" : "http://wso2jsonschema.org/sendNotificationEmail",
+      "type" : "string"
+    },
+    "convertedStatus" : {
+      "id" : "http://wso2jsonschema.org/convertedStatus",
+      "type" : "string"
+    },
+    "doNotCreateOpportunity" : {
+      "id" : "http://wso2jsonschema.org/doNotCreateOpportunity",
+      "type" : "string"
+    },
+    "opportunityName" : {
+      "id" : "http://wso2jsonschema.org/opportunityName",
+      "type" : "string"
+    },
+    "overwriteLeadSource" : {
+      "id" : "http://wso2jsonschema.org/overwriteLeadSource",
+      "type" : "string"
+    },
+    "sessionId" : {
+      "id" : "http://wso2jsonschema.org/sessionId",
+      "type" : "string"
+    }
+  }
+}

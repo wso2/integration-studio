@@ -94,7 +94,7 @@ public class TemplateProjectConstants {
     public static final String THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE = "The project already exists in the workspace. Please use a different project name";
 
     public static final String ERROR_MESSAGE = "Error";
-    
+
     public static final String ERROR_MESSAGE_OPENING_EDITOR = "Error opening editor";
 
     public static final String INITIAL_HTCONFIG_NAME = "htconfig.xml";
@@ -104,8 +104,6 @@ public class TemplateProjectConstants {
     public static final String FILE_NAME_MUST_BE_VALID_MESSAGE = "File name must be valid";
 
     public static final String FILE_NAME_MUST_BE_SPECIFIED_MESSAGE = "File name must be specified";
-
-    public static final String FILE_CONTAINER_MUST_BE_SPECIFIED_MESSAGE = "File container must be specified";
 
     public static final String TASK_NAME_CANNOT_HAVE_SPACES_MESSAGE = "Task name should'nt have spaces";
 
@@ -125,7 +123,7 @@ public class TemplateProjectConstants {
 
     public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "Create Sample Template";
 
-    public static final String PROJECT_WIZARD_PAGE_TITLE = "Template Project";
+    public static final String PROJECT_WIZARD_PAGE_TITLE = "Create Proejct Using ";
 
     public static final String WIZARD_PAGE_NAME = "wizardPage";
 
@@ -167,7 +165,7 @@ public class TemplateProjectConstants {
 
     public static final String TASK_WSDL_SUFFIX = "Task.wsdl";
 
-    public static final String PROJECT_WIZARD_TITLE = "Template Project";
+    public static final String PROJECT_WIZARD_TITLE = "Start Using a Template";
 
     public static final String HUMAN_TASK_EXPORT_WIZARD_TITLE = "Export Human Task Artifact";
 
@@ -243,8 +241,22 @@ public class TemplateProjectConstants {
 
     public static final String ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
 
+    public static final String DS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.ds.project.nature";
+
     public static final String DISTRIBUTION_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.distribution.project.nature";
 
     public static final String CONNECTOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.connector.project.nature";
+
+    public static final String DS_PROJECT_DATASERVICE_FOLDER = "dataservice";
+
+    public static final String SYNAPSE_CONFIG_EDITOR_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID";
+
+    public static final String DISTRIBUTION_POM_EDITOR_ID = "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor";
+
+    public static final String GENERAL_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
+
+    public final static String JDT_BUILD_COMMAND = "org.eclipse.jdt.core.javabuilder";
+
+    public final static String JDT_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
 
 }

@@ -50,11 +50,13 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private String CAPP_ARTIFACT_ID = "CompositeApplication";
 	private String CONNECTOR_ARTIFACT_ID = "ConnectorExporter";
 	private String REGISTRY_ARTIFACT_ID = "Registry";
+	private String PROJECT_WIZARD_TITLE = "New ESB Solution Project";
 
 	public ESBSolutionProjectCreationWizard() {
 		setEsbSolutionProjectModel(new ESBSolutionProjectModel());
 		setModel(esbSolutionProjectModel);
 		setDefaultPageImageDescriptor(ESBImageUtils.getInstance().getImageDescriptor("esb-project-wizard.png"));
+		setWindowTitle(PROJECT_WIZARD_TITLE);
 	}
 
 	public boolean performFinish() {

@@ -18,15 +18,6 @@
 
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.regex.Pattern;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -45,17 +36,30 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 /**
  * Util class to for sample template creation.
@@ -214,8 +218,7 @@ public class ProjectCreationUtil {
             updatePomForArtifact(esbProject, artifactType);  //artifactIdForPomDependency);
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // TODO 
         }
 
     }
@@ -257,13 +260,12 @@ public class ProjectCreationUtil {
       </plugin>*/
 
     /**
-     * @param esbProject
-     * @param type       - the name appended in artifact.xml file
+     * @param project
+     * @param type    - the name appended in artifact.xml file
      * @throws IOException
      * @throws XmlPullParserException
      */
-    public static void updatePomForArtifact(IProject esbProject, String type)
-            throws IOException, XmlPullParserException {
+    public static void updatePomForArtifact(IProject project, String type) throws IOException, XmlPullParserException {
 
         String artifactIdForPomDependency = type; // ID in project pom's plugin.
         String pluginVersion = "2.1.0";
@@ -281,7 +283,7 @@ public class ProjectCreationUtil {
             pluginVersion = "1.0.0";
         }
 
-        String pluginName = "wso2-esb-" + artifactIdForPomDependency + "-plugin"; // corresponding Belgian name in POM.
+        String pluginName = "wso2-esb-" + artifactIdForPomDependency + "-plugin"; // corresponding plugin name in POM.
 
         if (type.equals("message-store")) {
             pluginName = "wso2-esb-messagestore-plugin";
@@ -289,7 +291,7 @@ public class ProjectCreationUtil {
             pluginName = "wso2-esb-messageprocessor-plugin";
         }
 
-        File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
+        File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
         MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 
         // Skip changing the pom file if group ID and artifact ID are matched
@@ -318,7 +320,7 @@ public class ProjectCreationUtil {
         String fileLocation = "Samples" + File.separator + samplename + File.separator + "src" + File.separator + "main"
                 + File.separator + "synapse-config" + File.separator + type + File.separator + name + ".xml";
 
-        return ProxyServiceTemplateUtils.getInstance().getResourceFile(fileLocation);
+        return ResourceUtils.getInstance().getResourceFile(fileLocation);
     }
 
     private static ESBArtifact createArtifact(String name, String groupId, String version, String path, String type) {
@@ -350,8 +352,7 @@ public class ProjectCreationUtil {
 
             return CarbonAppProject;
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            // TODO 
         }
         return null;
 
@@ -360,19 +361,24 @@ public class ProjectCreationUtil {
     /**
      * Used to open the carbon app pom file with dist project nature.
      *
-     * @param shell
-     * @param pomfileDesc
+     * @param shell    Eclipse shell reference
+     * @param fileDesc IFile instance of the file to be opened
+     * @param editorID ID of the editor which used to open this file
      */
-    public static void openEditor(Shell shell, IFile pomfileDesc) {
+    public static void openEditor(Shell shell, IFile fileDesc, String editorId) {
         final Shell shellV = shell;
-        final IFile pomFile = pomfileDesc;
+        final IFile fileRef = fileDesc;
+        final String editorID = editorId;
+
         shellV.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
-                    IDE.openEditor(page, pomFile,
-                            "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor", true);
+                    IDE.openEditor(page, fileRef, editorID, true);
+                    IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                            .findView(IPageLayout.ID_PROJECT_EXPLORER);
+                    ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileRef));
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
@@ -386,20 +392,33 @@ public class ProjectCreationUtil {
      * @param artifactName
      * @param type         - the name appended in carbon app dependency list. Inside <properties> tag
      *                     eg. values  endpoint , api , proxy-service , inbound-endpoint , sequence ,
-     *                     message-store , message-processors
+     *                     message-store , message-processors , null for dataservice , task
      * @return
      */
     public static Dependency addDependencyForCAPP(String groupId, String artifactName, String type) {
+
         Dependency dependency = new Dependency();
-        dependency.setGroupId(groupId + "." + type);
+
         dependency.setArtifactId(artifactName);
+        dependency.setVersion("1.0.0");
+
+        if (type != null && !type.isEmpty()) {
+
+            dependency.setGroupId(groupId + "." + type);
+            dependency.setType("xml");
+
+            if (type.equals("resource")) {
+                dependency.setType("zip");
+            }
+
+        } else {
+            dependency.setGroupId(groupId);
+            dependency.setType("synapse_dataservice");
+        }
 
         if (artifactName.equals("salesforce-connector")) {
             dependency.setVersion("2.0.2");
             dependency.setType("zip");
-        } else {
-            dependency.setVersion("1.0.0");
-            dependency.setType("xml");
         }
 
         return dependency;
@@ -460,7 +479,7 @@ public class ProjectCreationUtil {
         String connectorZIPName = connectorName + "-" + connectorVersion + ".zip";
 
         // copy the connector to the connector project
-        File connectorFile = ProxyServiceTemplateUtils.getInstance()
+        File connectorFile = ResourceUtils.getInstance()
                 .getResourceFile("Samples" + File.separator + "Connectors" + File.separator + connectorZIPName);
         File destFile = new File(conenctorProject.getLocation().toString() + File.separator + connectorZIPName);
         FileUtils.copy(connectorFile, destFile);
@@ -525,7 +544,7 @@ public class ProjectCreationUtil {
         String connectorZIPName = connectorName + ".zip";
 
         if (!new File(conenctorLocation + File.separator + connectorZIPName).exists()) {
-            File connectorFile = ProxyServiceTemplateUtils.getInstance()
+            File connectorFile = ResourceUtils.getInstance()
                     .getResourceFile("Samples" + File.separator + "Connectors" + File.separator + connectorZIPName);
             File destFile = new File(conenctorLocation + File.separator + connectorZIPName);
             FileUtils.copy(connectorFile, destFile);

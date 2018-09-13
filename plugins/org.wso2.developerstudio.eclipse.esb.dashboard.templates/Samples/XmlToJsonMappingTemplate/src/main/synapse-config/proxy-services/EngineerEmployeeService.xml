@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="EngineerEmployeeService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <datamapper config="gov:datamapper/EmployeeToEngineerMappingConfig.dmc" description="Transform employee payload XML to JSON" inputSchema="gov:datamapper/EmployeeToEngineerMappingConfig_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/EmployeeToEngineerMappingConfig_outputSchema.json" outputType="JSON"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+</proxy>

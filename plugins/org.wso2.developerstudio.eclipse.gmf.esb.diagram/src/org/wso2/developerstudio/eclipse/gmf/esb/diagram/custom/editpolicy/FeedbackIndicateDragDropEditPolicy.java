@@ -531,14 +531,52 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
             EditPart element = (EditPart) getHost().getViewer().getEditPartRegistry().values().toArray()[i];
 
             if (element instanceof EsbLinkEditPart) {
+                if(EditorUtils.getEndpoint((AbstractConnectorEditPart) ((EsbLinkEditPart)element).getSource())!=null){
+                    if(!((EsbLinkEditPart)element).getSource().getParent().getParent().equals(getHost())){
+                        continue;
+                    }
+                }
                 esbLinkEditpartList.add((EsbLinkEditPart) element);
             }
 
             if (element instanceof AbstractOutputConnectorEditPart) {
-                outputConnectorEditpartList.add((AbstractOutputConnectorEditPart) element);
+                if (((AbstractOutputConnectorEditPart) element).getParent()
+                        .getParent().equals(getHost())) {
+                    outputConnectorEditpartList
+                            .add((AbstractOutputConnectorEditPart) element);
+
+                } else if (((AbstractOutputConnectorEditPart) element)
+                        .getParent().equals(
+                                getHost().getParent().getParent()
+                                        .getParent().getParent())) {
+                    /*
+                     * for proxy service output Connector
+                     */
+                    outputConnectorEditpartList
+                            .add((AbstractOutputConnectorEditPart) element);
+
+                } else if (((AbstractOutputConnectorEditPart) element)
+                        .getParent().equals(
+                                getHost().getParent().getParent())) {
+                    /*
+                     * for sequences output Connector
+                     */
+                    outputConnectorEditpartList
+                            .add((AbstractOutputConnectorEditPart) element);
+
+                } else if (((AbstractOutputConnectorEditPart) element)
+                        .getParent().equals(
+                                getHost().getParent().getParent()
+                                        .getParent().getParent().getParent())) {
+                    /*
+                     * Switch mediator case or default branch.
+                     */
+                    outputConnectorEditpartList
+                            .add((AbstractOutputConnectorEditPart) element);
+                }
             }
         }
-
+        
         Control ctrl = getHost().getViewer().getControl();
         FigureCanvas canvas = (FigureCanvas) ctrl;
         int horizontal = canvas.getHorizontalBar().getSelection();

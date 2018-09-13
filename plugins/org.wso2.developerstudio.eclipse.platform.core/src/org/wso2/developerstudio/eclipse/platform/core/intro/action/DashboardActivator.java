@@ -25,7 +25,7 @@ import org.osgi.framework.BundleContext;
 public class DashboardActivator extends AbstractUIPlugin {
 
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.dashboad"; //$NON-NLS-1$
+    public static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.kernel.dashboard";
 
     // The shared instance
     private static DashboardActivator plugin;

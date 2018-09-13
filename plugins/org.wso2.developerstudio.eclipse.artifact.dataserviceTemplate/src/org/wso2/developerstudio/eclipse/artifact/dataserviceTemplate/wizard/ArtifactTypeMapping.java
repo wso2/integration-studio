@@ -18,11 +18,11 @@
 
 package org.wso2.developerstudio.eclipse.artifact.dataserviceTemplate.wizard;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ArtifactTypeMapping {
 

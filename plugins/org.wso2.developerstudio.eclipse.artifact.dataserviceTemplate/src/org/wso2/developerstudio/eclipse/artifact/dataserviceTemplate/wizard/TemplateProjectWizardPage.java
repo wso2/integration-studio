@@ -53,6 +53,12 @@ public class TemplateProjectWizardPage extends WizardPage {
         this.selection = selection;
     }
 
+    public static boolean isValidArtifactName(String name) {
+        Pattern pattern = Pattern.compile("^[^/\\ \\\\:@%\\^+;,=\\[\\{\\]\\}*#\\$?\"<>|\\(\\)]+$");
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+
     /**
      * @see IDialogPage#createControl(Composite)
      */
@@ -126,12 +132,6 @@ public class TemplateProjectWizardPage extends WizardPage {
             }
         }
         return null;
-    }
-
-    public static boolean isValidArtifactName(String name) {
-        Pattern pattern = Pattern.compile("^[^/\\ \\\\:@%\\^+;,=\\[\\{\\]\\}*#\\$?\"<>|\\(\\)]+$");
-        Matcher matcher = pattern.matcher(name);
-        return matcher.matches();
     }
 
     private void updateStatus(String message) {

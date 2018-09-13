@@ -177,6 +177,14 @@
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.JsonToXmlMappingTemplate"
                 id="org.wso2.developerstudio.wizards.esb.jsonToXmlMappingTemplate">
         </wizard>
+        <wizard
+                name="XML to JSON Mapping"
+                icon="icons/message-store-small.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.XmlToJsonMappingTemplate"
+                id="org.wso2.developerstudio.wizards.esb.xmlToJsonMappingTemplate">
+        </wizard>
     </extension>
     <extension
             point="org.wso2.developerstudio.eclipse.template.dashboad.link">
@@ -285,7 +293,13 @@
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.jsonToXmlMappingTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.jsonToXmlMappingTemplate"
-                    description="JSON to XML Mapping Sample Template"
+                    description="This sample demonstrates JSON to XML Mapping"
+                    image="icons/server.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb.template"
+                    id="dashboard.wizardLink.esb.xmlToJsonMappingTemplate"
+                    wizard="org.wso2.developerstudio.wizards.esb.xmlToJsonMappingTemplate"
+                    description="This sample demonstrates XML to JSON Mapping"
                     image="icons/server.png">
         </wizardLink>
     </extension>

@@ -1,0 +1,66 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "object",
+  "properties" : {
+    "engineers" : {
+      "id" : "http://wso2jsonschema.org/engineers",
+      "type" : "object",
+      "properties" : {
+        "engineerList" : {
+          "id" : "http://wso2jsonschema.org/engineers/engineerList",
+          "type" : "array",
+          "items" : [ {
+            "id" : "http://wso2jsonschema.org/engineers/engineerList/0",
+            "type" : "object",
+            "properties" : {
+              "fullname" : {
+                "id" : "http://wso2jsonschema.org/engineers/engineerList/0/fullname",
+                "type" : "string"
+              },
+              "addresses" : {
+                "id" : "http://wso2jsonschema.org/engineers/engineerList/0/addresses",
+                "type" : "object",
+                "properties" : {
+                  "address" : {
+                    "id" : "http://wso2jsonschema.org/engineers/engineerList/0/addresses/address",
+                    "type" : "array",
+                    "items" : [ {
+                      "id" : "http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0",
+                      "type" : "object",
+                      "properties" : {
+                        "location" : {
+                          "id" : "http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/location",
+                          "type" : "string"
+                        },
+                        "city" : {
+                          "id" : "http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city",
+                          "type" : "object",
+                          "properties" : {
+                            "postalcode" : {
+                              "id" : "http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/postalcode",
+                              "type" : "number"
+                            },
+                            "name" : {
+                              "id" : "http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/name",
+                              "type" : "string"
+                            }
+                          }
+                        },
+                        "road" : {
+                          "id" : "http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/road",
+                          "type" : "string"
+                        }
+                      }
+                    } ]
+                  }
+                }
+              }
+            }
+          } ]
+        }
+      }
+    }
+  }
+}

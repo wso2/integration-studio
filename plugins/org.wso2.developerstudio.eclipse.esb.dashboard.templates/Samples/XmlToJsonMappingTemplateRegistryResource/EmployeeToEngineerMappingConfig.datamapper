@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datamapper:DataMapperRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+  <input>
+    <treeNode name="ns1:employees" schemaDataType="OBJECT" level="1">
+      <node name="ns1:employee" level="2">
+        <node name="ns1:firstname" schemaDataType="STRING" level="3">
+          <properties key="namespaces" value="{prefix=ns1, url=http://wso2.employee.info}"/>
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/ns1:employee/0/ns1:firstname"/>
+          <properties key="nullable" value="false"/>
+          <outNode>
+            <outgoingLink inNode="//@operators.0/@basicContainer/@leftContainer/@leftConnectors.0/@inNode"/>
+          </outNode>
+          <inNode/>
+        </node>
+        <node name="ns1:lastname" schemaDataType="STRING" level="3">
+          <properties key="namespaces" value="{prefix=ns1, url=http://wso2.employee.info}"/>
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/ns1:employee/0/ns1:lastname"/>
+          <properties key="nullable" value="false"/>
+          <outNode>
+            <outgoingLink inNode="//@operators.0/@basicContainer/@leftContainer/@leftConnectors.1/@inNode"/>
+          </outNode>
+          <inNode/>
+        </node>
+        <node name="ns2:addresses" schemaDataType="OBJECT" level="3">
+          <node name="ns2:address" level="4">
+            <node name="@location" schemaDataType="STRING" level="5">
+              <properties key="type" value="string"/>
+              <properties key="id" value="http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/location"/>
+              <properties key="nullable" value="false"/>
+              <outNode>
+                <outgoingLink inNode="//@operators.1/@basicContainer/@leftContainer/@leftConnectors.0/@inNode"/>
+              </outNode>
+              <inNode/>
+            </node>
+            <node name="ns2:city" schemaDataType="OBJECT" level="5">
+              <node name="@postalcode" schemaDataType="NUMBER" level="6">
+                <properties key="type" value="number"/>
+                <properties key="id" value="http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/postalcode"/>
+                <properties key="nullable" value="false"/>
+                <outNode>
+                  <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.1/@node.0/@node.1/@node.0/@inNode"/>
+                </outNode>
+                <inNode/>
+              </node>
+              <properties key="namespaces" value="{prefix=ns2, url=http://wso2.employee.address}"/>
+              <properties key="type" value="object"/>
+              <properties key="id" value="http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/ns2:city"/>
+              <properties key="object_value_type" value="string"/>
+              <properties key="nullable" value="false"/>
+              <properties key="attribute_id" value="{attribute_id=[http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/postalcode]}"/>
+              <properties key="attribute_type" value="{attribute_type=[number]}"/>
+              <outNode>
+                <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.1/@node.0/@node.1/@node.1/@inNode"/>
+              </outNode>
+              <inNode/>
+            </node>
+            <node name="ns2:road" schemaDataType="STRING" level="5">
+              <properties key="namespaces" value="{prefix=ns2, url=http://wso2.employee.address}"/>
+              <properties key="type" value="string"/>
+              <properties key="id" value="http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/ns2:road"/>
+              <properties key="nullable" value="false"/>
+              <outNode>
+                <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.1/@node.0/@node.2/@inNode"/>
+              </outNode>
+              <inNode/>
+            </node>
+            <properties key="namespaces" value="{prefix=ns2, url=http://wso2.employee.address}"/>
+            <properties key="type" value="array"/>
+            <properties key="id" value="http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address"/>
+            <properties key="items_id" value="http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0"/>
+            <properties key="items_type" value="object"/>
+            <properties key="nullable" value="false"/>
+            <properties key="attribute_id" value="{attribute_id=[http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/location]}"/>
+            <properties key="attribute_type" value="{attribute_type=[string]}"/>
+            <properties key="properties_id" value="{ns2:city={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/ns2:city, type=object, value={type=string}, attributes={postalcode={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/postalcode, type=number}}}, ns2:road={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/ns2:road, type=string}}"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <properties key="namespaces" value="{prefix=ns2, url=http://wso2.employee.address}"/>
+          <properties key="type" value="object"/>
+          <properties key="id" value="http://wso2jsonschema.org/ns1:employee/0/ns2:addresses"/>
+          <properties key="nullable" value="false"/>
+          <properties key="properties_id" value="{ns2:address={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address, type=array, items=[{id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0, type=object, properties={ns2:city={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/ns2:city, type=object, value={type=string}, attributes={postalcode={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/postalcode, type=number}}}, ns2:road={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/ns2:road, type=string}}, attributes={location={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/location, type=string}}}]}}"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <properties key="namespaces" value="{prefix=ns1, url=http://wso2.employee.info}"/>
+        <properties key="type" value="array"/>
+        <properties key="id" value="http://wso2jsonschema.org/ns1:employee"/>
+        <properties key="items_id" value="http://wso2jsonschema.org/ns1:employee/0"/>
+        <properties key="items_type" value="object"/>
+        <properties key="nullable" value="false"/>
+        <properties key="properties_id" value="{ns1:firstname={id=http://wso2jsonschema.org/ns1:employee/0/ns1:firstname, type=string}, ns1:lastname={id=http://wso2jsonschema.org/ns1:employee/0/ns1:lastname, type=string}, ns2:addresses={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses, type=object, properties={ns2:address={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address, type=array, items=[{id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0, type=object, properties={ns2:city={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/ns2:city, type=object, value={type=string}, attributes={postalcode={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/postalcode, type=number}}}, ns2:road={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/ns2:road, type=string}}, attributes={location={id=http://wso2jsonschema.org/ns1:employee/0/ns2:addresses/ns2:address/0/location, type=string}}}]}}}}"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <properties key="namespaces" value="{prefix=ns1, url=http://wso2.employee.info},{prefix=ns2, url=http://wso2.employee.address}"/>
+      <properties key="namespaces" value="{prefix=ns1, url=http://wso2.employee.info}"/>
+      <properties key="type" value="object"/>
+      <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
+      <properties key="id" value="http://wso2jsonschema.org"/>
+      <properties key="nullable" value="false"/>
+      <outNode/>
+      <inNode/>
+    </treeNode>
+  </input>
+  <output>
+    <treeNode name="root" schemaDataType="OBJECT" level="1">
+      <node name="engineers" schemaDataType="OBJECT" level="2">
+        <node name="engineerList" level="3">
+          <node name="fullname" schemaDataType="STRING" level="4">
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/engineers/engineerList/0/fullname"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode incomingLink="//@operators.0/@basicContainer/@rightContainer/@rightConnectors.0/@outNode/@outgoingLink.2"/>
+          </node>
+          <node name="addresses" schemaDataType="OBJECT" level="4">
+            <node name="address" level="5">
+              <node name="location" schemaDataType="STRING" level="6">
+                <properties key="type" value="string"/>
+                <properties key="id" value="http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/location"/>
+                <properties key="nullable" value="false"/>
+                <outNode/>
+                <inNode incomingLink="//@operators.1/@basicContainer/@rightContainer/@rightConnectors.0/@outNode/@outgoingLink.0"/>
+              </node>
+              <node name="city" schemaDataType="OBJECT" level="6">
+                <node name="postalcode" schemaDataType="NUMBER" level="7">
+                  <properties key="type" value="number"/>
+                  <properties key="id" value="http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/postalcode"/>
+                  <properties key="nullable" value="false"/>
+                  <outNode/>
+                  <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.2/@node.0/@node.1/@node.0/@outNode/@outgoingLink.0"/>
+                </node>
+                <node name="name" schemaDataType="STRING" level="7">
+                  <properties key="type" value="string"/>
+                  <properties key="id" value="http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/name"/>
+                  <properties key="nullable" value="false"/>
+                  <outNode/>
+                  <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.2/@node.0/@node.1/@outNode/@outgoingLink.0"/>
+                </node>
+                <properties key="type" value="object"/>
+                <properties key="id" value="http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city"/>
+                <properties key="nullable" value="false"/>
+                <properties key="properties_id" value="{postalcode={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/postalcode, type=number}, name={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/name, type=string}}"/>
+                <outNode/>
+                <inNode/>
+              </node>
+              <node name="road" schemaDataType="STRING" level="6">
+                <properties key="type" value="string"/>
+                <properties key="id" value="http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/road"/>
+                <properties key="nullable" value="false"/>
+                <outNode/>
+                <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.2/@node.0/@node.2/@outNode/@outgoingLink.0"/>
+              </node>
+              <properties key="type" value="array"/>
+              <properties key="id" value="http://wso2jsonschema.org/engineers/engineerList/0/addresses/address"/>
+              <properties key="items_id" value="http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0"/>
+              <properties key="items_type" value="object"/>
+              <properties key="nullable" value="false"/>
+              <properties key="properties_id" value="{location={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/location, type=string}, city={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city, type=object, properties={postalcode={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/postalcode, type=number}, name={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/name, type=string}}}, road={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/road, type=string}}"/>
+              <outNode/>
+              <inNode/>
+            </node>
+            <properties key="type" value="object"/>
+            <properties key="id" value="http://wso2jsonschema.org/engineers/engineerList/0/addresses"/>
+            <properties key="nullable" value="false"/>
+            <properties key="properties_id" value="{address={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address, type=array, items=[{id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0, type=object, properties={location={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/location, type=string}, city={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city, type=object, properties={postalcode={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/postalcode, type=number}, name={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/name, type=string}}}, road={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/road, type=string}}}]}}"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <properties key="type" value="array"/>
+          <properties key="id" value="http://wso2jsonschema.org/engineers/engineerList"/>
+          <properties key="items_id" value="http://wso2jsonschema.org/engineers/engineerList/0"/>
+          <properties key="items_type" value="object"/>
+          <properties key="nullable" value="false"/>
+          <properties key="properties_id" value="{fullname={id=http://wso2jsonschema.org/engineers/engineerList/0/fullname, type=string}, addresses={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses, type=object, properties={address={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address, type=array, items=[{id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0, type=object, properties={location={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/location, type=string}, city={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city, type=object, properties={postalcode={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/postalcode, type=number}, name={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/name, type=string}}}, road={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/road, type=string}}}]}}}}"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <properties key="type" value="object"/>
+        <properties key="id" value="http://wso2jsonschema.org/engineers"/>
+        <properties key="nullable" value="false"/>
+        <properties key="properties_id" value="{engineerList={id=http://wso2jsonschema.org/engineers/engineerList, type=array, items=[{id=http://wso2jsonschema.org/engineers/engineerList/0, type=object, properties={fullname={id=http://wso2jsonschema.org/engineers/engineerList/0/fullname, type=string}, addresses={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses, type=object, properties={address={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address, type=array, items=[{id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0, type=object, properties={location={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/location, type=string}, city={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city, type=object, properties={postalcode={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/postalcode, type=number}, name={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/city/name, type=string}}}, road={id=http://wso2jsonschema.org/engineers/engineerList/0/addresses/address/0/road, type=string}}}]}}}}}]}}"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <properties key="type" value="object"/>
+      <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
+      <properties key="id" value="http://wso2jsonschema.org"/>
+      <properties key="nullable" value="false"/>
+      <outNode/>
+      <inNode/>
+    </treeNode>
+  </output>
+  <operators xsi:type="datamapper:Concat" defaultInputConnectors="2" defaultOutputConnectors="1" inputSizeFixed="false" operatorType="CONCAT" delimiter=" ">
+    <basicContainer>
+      <leftContainer>
+        <leftConnectors>
+          <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@outNode/@outgoingLink.0"/>
+        </leftConnectors>
+        <leftConnectors>
+          <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.1/@outNode/@outgoingLink.0"/>
+        </leftConnectors>
+      </leftContainer>
+      <rightContainer>
+        <rightConnectors>
+          <outNode>
+            <outgoingLink/>
+            <outgoingLink/>
+            <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.0/@inNode"/>
+          </outNode>
+        </rightConnectors>
+      </rightContainer>
+    </basicContainer>
+  </operators>
+  <operators xsi:type="datamapper:UpperCase" defaultInputConnectors="1" defaultOutputConnectors="1" operatorType="UPPERCASE">
+    <basicContainer>
+      <leftContainer>
+        <leftConnectors>
+          <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.2/@node.0/@node.0/@outNode/@outgoingLink.0"/>
+        </leftConnectors>
+      </leftContainer>
+      <rightContainer>
+        <rightConnectors>
+          <outNode>
+            <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.1/@node.0/@node.0/@inNode"/>
+          </outNode>
+        </rightConnectors>
+      </rightContainer>
+    </basicContainer>
+  </operators>
+</datamapper:DataMapperRoot>

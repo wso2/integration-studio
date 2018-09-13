@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datamapper:DataMapperRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+  <input>
+    <treeNode name="root" schemaDataType="OBJECT" level="1">
+      <node name="owner" level="2">
+        <node name="ID" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/owner/0/ID"/>
+          <properties key="nullable" value="false"/>
+          <outNode>
+            <outgoingLink/>
+            <outgoingLink inNode="//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.5/@inNode"/>
+          </outNode>
+          <inNode/>
+        </node>
+        <node name="name" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/owner/0/name"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <node name="city" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/owner/0/city"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <node name="code" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/owner/0/code"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <node name="country" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/owner/0/country"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <properties key="type" value="array"/>
+        <properties key="id" value="http://wso2jsonschema.org/owner"/>
+        <properties key="items_id" value="http://wso2jsonschema.org/owner/0"/>
+        <properties key="items_type" value="object"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <node name="lead" level="2">
+        <node name="ID" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/lead/0/ID"/>
+          <properties key="nullable" value="false"/>
+          <outNode>
+            <outgoingLink inNode="//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.2/@inNode"/>
+          </outNode>
+          <inNode/>
+        </node>
+        <node name="name" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/lead/0/name"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <node name="city" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/lead/0/city"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <node name="code" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/lead/0/code"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <node name="country" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/lead/0/country"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <properties key="type" value="array"/>
+        <properties key="id" value="http://wso2jsonschema.org/lead"/>
+        <properties key="items_id" value="http://wso2jsonschema.org/lead/0"/>
+        <properties key="items_type" value="object"/>
+        <properties key="nullable" value="false"/>
+        <properties key="properties_id" value="{ID={id=http://wso2jsonschema.org/owner/0/ID, type=string}, name={id=http://wso2jsonschema.org/owner/0/name, type=string}, city={id=http://wso2jsonschema.org/owner/0/city, type=string}, code={id=http://wso2jsonschema.org/owner/0/code, type=string}, country={id=http://wso2jsonschema.org/owner/0/country, type=string}}"/>
+        <properties key="properties_id" value="{ID={id=http://wso2jsonschema.org/lead/0/ID, type=string}, name={id=http://wso2jsonschema.org/lead/0/name, type=string}, city={id=http://wso2jsonschema.org/lead/0/city, type=string}, code={id=http://wso2jsonschema.org/lead/0/code, type=string}, country={id=http://wso2jsonschema.org/lead/0/country, type=string}}"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <node name="sendNotificationEmail" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/sendNotificationEmail"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <node name="convertedStatus" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/convertedStatus"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.0/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="doNotCreateOpportunity" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/doNotCreateOpportunity"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.1/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="opportunityName" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/opportunityName"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.3/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="overwriteLeadSource" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/overwriteLeadSource"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.1/@node.0/@node.0/@node.6/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="sessionId" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/sessionId"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.0/@node.0/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <properties key="type" value="object"/>
+      <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
+      <properties key="id" value="http://wso2jsonschema.org"/>
+      <properties key="nullable" value="false"/>
+      <outNode/>
+      <inNode/>
+    </treeNode>
+  </input>
+  <output>
+    <treeNode name="soapenv:Envelope" schemaDataType="OBJECT" level="1">
+      <node name="soapenv:Header" schemaDataType="OBJECT" level="2">
+        <node name="urn:SessionHeader" schemaDataType="OBJECT" level="3">
+          <node name="urn:sessionId" schemaDataType="STRING" level="4">
+            <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/soapenv:Header/urn:SessionHeader/urn:sessionId"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode incomingLink="//@input/@treeNode.0/@node.7/@outNode/@outgoingLink.0"/>
+          </node>
+          <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+          <properties key="type" value="object"/>
+          <properties key="id" value="http://wso2jsonschema.org/soapenv:Header/urn:SessionHeader"/>
+          <properties key="nullable" value="false"/>
+          <properties key="properties_id" value="{urn:sessionId={id=http://wso2jsonschema.org/soapenv:Header/urn:SessionHeader/urn:sessionId, type=string}}"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <properties key="namespaces" value="{prefix=soapenv, url=http://www.w3.org/2003/05/soap-envelope/}"/>
+        <properties key="type" value="object"/>
+        <properties key="id" value="http://wso2jsonschema.org/soapenv:Header"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <node name="soapenv:Body" schemaDataType="OBJECT" level="2">
+        <node name="urn:convertLead" schemaDataType="OBJECT" level="3">
+          <node name="urn:leadConverts" level="4">
+            <node name="urn:convertedStatus" schemaDataType="STRING" level="5">
+              <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+              <properties key="type" value="string"/>
+              <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:convertedStatus"/>
+              <properties key="nullable" value="false"/>
+              <outNode/>
+              <inNode incomingLink="//@input/@treeNode.0/@node.3/@outNode/@outgoingLink.0"/>
+            </node>
+            <node name="urn:doNotCreateOpportunity" schemaDataType="BOOLEAN" level="5">
+              <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+              <properties key="type" value="boolean"/>
+              <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:doNotCreateOpportunity"/>
+              <properties key="nullable" value="false"/>
+              <outNode/>
+              <inNode incomingLink="//@input/@treeNode.0/@node.4/@outNode/@outgoingLink.0"/>
+            </node>
+            <node name="urn:leadId" schemaDataType="STRING" level="5">
+              <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+              <properties key="type" value="string"/>
+              <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:leadId"/>
+              <properties key="nullable" value="false"/>
+              <outNode/>
+              <inNode incomingLink="//@input/@treeNode.0/@node.1/@node.0/@outNode/@outgoingLink.0"/>
+            </node>
+            <node name="urn:opportunityName" schemaDataType="STRING" level="5">
+              <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+              <properties key="type" value="string"/>
+              <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:opportunityName"/>
+              <properties key="nullable" value="false"/>
+              <outNode/>
+              <inNode incomingLink="//@input/@treeNode.0/@node.5/@outNode/@outgoingLink.0"/>
+            </node>
+            <node name="urn:overwriteLeadSource" schemaDataType="BOOLEAN" level="5">
+              <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+              <properties key="type" value="boolean"/>
+              <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:overwriteLeadSource"/>
+              <properties key="nullable" value="false"/>
+              <outNode/>
+              <inNode/>
+            </node>
+            <node name="urn:ownerId" schemaDataType="STRING" level="5">
+              <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+              <properties key="type" value="string"/>
+              <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:ownerId"/>
+              <properties key="nullable" value="false"/>
+              <outNode/>
+              <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@outNode/@outgoingLink.1"/>
+            </node>
+            <node name="urn:sendNotificationEmail" schemaDataType="BOOLEAN" level="5">
+              <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+              <properties key="type" value="boolean"/>
+              <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:sendNotificationEmail"/>
+              <properties key="nullable" value="false"/>
+              <outNode/>
+              <inNode incomingLink="//@input/@treeNode.0/@node.6/@outNode/@outgoingLink.0"/>
+            </node>
+            <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+            <properties key="type" value="array"/>
+            <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts"/>
+            <properties key="items_id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0"/>
+            <properties key="items_type" value="object"/>
+            <properties key="nullable" value="false"/>
+            <properties key="properties_id" value="{urn:convertedStatus={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:convertedStatus, type=string}, urn:doNotCreateOpportunity={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:doNotCreateOpportunity, type=boolean}, urn:leadId={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:leadId, type=string}, urn:opportunityName={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:opportunityName, type=string}, urn:overwriteLeadSource={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:overwriteLeadSource, type=boolean}, urn:ownerId={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:ownerId, type=string}, urn:sendNotificationEmail={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:sendNotificationEmail, type=boolean}}"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <properties key="namespaces" value="{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+          <properties key="type" value="object"/>
+          <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/urn:convertLead"/>
+          <properties key="nullable" value="false"/>
+          <properties key="properties_id" value="{urn:leadConverts={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts, type=array, items=[{id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0, type=object, properties={urn:convertedStatus={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:convertedStatus, type=string}, urn:doNotCreateOpportunity={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:doNotCreateOpportunity, type=boolean}, urn:leadId={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:leadId, type=string}, urn:opportunityName={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:opportunityName, type=string}, urn:overwriteLeadSource={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:overwriteLeadSource, type=boolean}, urn:ownerId={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:ownerId, type=string}, urn:sendNotificationEmail={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:sendNotificationEmail, type=boolean}}}]}}"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <properties key="namespaces" value="{prefix=soapenv, url=http://www.w3.org/2003/05/soap-envelope/}"/>
+        <properties key="type" value="object"/>
+        <properties key="id" value="http://wso2jsonschema.org/soapenv:Body"/>
+        <properties key="nullable" value="false"/>
+        <properties key="properties_id" value="{urn:SessionHeader={id=http://wso2jsonschema.org/soapenv:Header/urn:SessionHeader, type=object, properties={urn:sessionId={id=http://wso2jsonschema.org/soapenv:Header/urn:SessionHeader/urn:sessionId, type=string}}}}"/>
+        <properties key="properties_id" value="{urn:convertLead={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead, type=object, properties={urn:leadConverts={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts, type=array, items=[{id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0, type=object, properties={urn:convertedStatus={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:convertedStatus, type=string}, urn:doNotCreateOpportunity={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:doNotCreateOpportunity, type=boolean}, urn:leadId={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:leadId, type=string}, urn:opportunityName={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:opportunityName, type=string}, urn:overwriteLeadSource={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:overwriteLeadSource, type=boolean}, urn:ownerId={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:ownerId, type=string}, urn:sendNotificationEmail={id=http://wso2jsonschema.org/soapenv:Body/urn:convertLead/urn:leadConverts/0/urn:sendNotificationEmail, type=boolean}}}]}}}}"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <properties key="namespaces" value="{prefix=soapenv, url=http://www.w3.org/2003/05/soap-envelope/},{prefix=urn, url=urn:enterprise.soap.sforce.com}"/>
+      <properties key="namespaces" value="{prefix=soapenv, url=http://www.w3.org/2003/05/soap-envelope/}"/>
+      <properties key="type" value="object"/>
+      <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
+      <properties key="id" value="http://wso2jsonschema.org"/>
+      <properties key="nullable" value="false"/>
+      <outNode/>
+      <inNode/>
+    </treeNode>
+  </output>
+</datamapper:DataMapperRoot>

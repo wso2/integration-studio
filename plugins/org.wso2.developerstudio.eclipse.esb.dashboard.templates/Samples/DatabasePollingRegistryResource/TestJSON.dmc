@@ -1,8 +1,0 @@
-map_S_root_S_root = function(){ 
-var outputroot={};
-
-outputroot =  {};
-outputroot['123'] = inputroot['123'];
-return outputroot;
-};
-

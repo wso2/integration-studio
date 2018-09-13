@@ -48,18 +48,18 @@ import org.wso2.developerstudio.eclipse.utils.jdt.JavaUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 /**
- * The class which handles Sample.
+ * The class JSON To XML Transfromation which includes data mapper.
  */
-public class DataMapperTemplate extends Wizard implements INewWizard {
+public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
 
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "DatabasePolling";
+    String sampleName = "JsonToXmlMappingTemplate";
     String baseId = "wso2.sample" + sampleName + ".";
 
-    public DataMapperTemplate() {
+    public JsonToXmlMappingTemplate() {
         super();
         setNeedsProgressMonitor(true);
         templateWizardUtil = new TemplateWizardUtil();
@@ -116,10 +116,9 @@ public class DataMapperTemplate extends Wizard implements INewWizard {
     private void doFinish(String containerName, IProgressMonitor monitor) throws CoreException {
 
         try {
-
             groupId = baseId + containerName;
 
-            //ESB Project
+            //ESB Solution Project Creation
             IProject esbSolutionProject = ProjectCreationUtil
                     .createProject(containerName, TemplateProjectConstants.ESB_PROJECT_NATURE);
 
@@ -139,34 +138,7 @@ public class DataMapperTemplate extends Wizard implements INewWizard {
 
             esbSolutionProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
-            //DSS Project Creation
-            IProject dssServiceProject = ProjectCreationUtil
-                    .createProject(containerName + "DataServiceProject", TemplateProjectConstants.DS_PROJECT_NATURE);
-
-            IFolder dsfolder = ProjectUtils
-                    .getWorkspaceFolder(dssServiceProject, TemplateProjectConstants.DS_PROJECT_DATASERVICE_FOLDER);
-
-            if (!dsfolder.exists()) {
-                ProjectUtils.createFolder(dsfolder);
-            }
-
-            File dssServicePomFile = dssServiceProject.getFile("pom.xml").getLocation().toFile();
-            ProjectCreationUtil
-                    .createProjectPOM(groupId, dssServicePomFile, containerName + "DataServiceProject", "pom");
-            DSSProjectCreationUtil.updatePom(dssServicePomFile, dssServiceProject);
-            ProjectUtils.addNatureToProject(dssServiceProject, false, TemplateProjectConstants.DS_PROJECT_NATURE);
-            MavenUtils.updateWithMavenEclipsePlugin(dssServicePomFile, new String[] {},
-                    new String[] { TemplateProjectConstants.DS_PROJECT_NATURE });
-
-            ESBProjectArtifact dssProjectArtifact = new ESBProjectArtifact();
-            IFile dssArtifactfile = dssServiceProject.getFile("artifact.xml");
-            dssProjectArtifact.setSource(dssArtifactfile.getLocation().toFile());
-            dssProjectArtifact.toFile();
-
-            copyDSSFiles(dssServiceProject, dssProjectArtifact, groupId);
-            dssServiceProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-
-            // Registry project Creation
+            // Registry Resource Project Creation
             IProject registryProject = ProjectCreationUtil.createProject(containerName + "RegistryResource", null);
             JavaUtils.addJavaNature(registryProject, false);
 
@@ -191,15 +163,15 @@ public class DataMapperTemplate extends Wizard implements INewWizard {
 
             copyRegistryFiles(registryProject, registryArtifact, groupId);
 
-            // Carbon Application Project
+            // Carbon Application Project Creation
             IProject cappProject = ProjectCreationUtil
                     .carbonAppCreation(containerName + "CarbonApplication", containerName, groupId, sampleName);
             addCappDependencies(cappProject);
 
             // Open synapse application on sample creation.
             String openFileName =
-                    "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "tasks"
-                            + File.separator + "DoctorsRecordsSyncTask.xml";
+                    "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "api"
+                            + File.separator + "SalesforceLeads.xml";
             IFile fileDesc = esbSolutionProject.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
@@ -225,58 +197,30 @@ public class DataMapperTemplate extends Wizard implements INewWizard {
     }
 
     /**
-     * Copy Registry Resource Files
+     * Copy Registry Resource Files for Data Mapper.
      *
      * @throws Exception
      */
     private void copyRegistryFiles(IProject registryProject, GeneralProjectArtifact registryArtifact, String groupID)
             throws Exception {
 
-        String configName = "TestJSON";
-        RegistryProjectCreationUtil
-                .copyArtifact(registryProject, sampleName + "RegistryResource", configName, registryArtifact, groupID);
-
-        configName = "TESTXML";
+        String configName = "SalesforceLeadsMappingConfig";
         RegistryProjectCreationUtil
                 .copyArtifact(registryProject, sampleName + "RegistryResource", configName, registryArtifact, groupID);
 
         RegistryProjectCreationUtil.updateRegistryResourcePOM(registryProject);
-
     }
 
     /**
-     * Copy the files related to DSS Project
-     *
-     * @param dssProject
-     * @param dssProjectArtifact
-     * @param groupID
-     */
-    private void copyDSSFiles(IProject dssProject, ESBProjectArtifact dssProjectArtifact, String groupID) {
-
-        String artifactName = "DoctorsDataService";
-        DSSProjectCreationUtil
-                .copyArtifact(dssProject, sampleName + "DataService", artifactName, dssProjectArtifact, groupID);
-
-    }
-
-    /**
-     * Copy the files which belongs to the samples.
+     * Copy the files which belongs to the sample.
      *
      * @param esbProject
      * @param esbProjectArtifact
      */
     private void copyFiles(IProject esbProject, ESBProjectArtifact esbProjectArtifact) {
 
-        String artifactName = "DoctorsRecordsSyncTask";
-        String type = "tasks";
-        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-
-        artifactName = "DoctorsRecordsSyncSeq";
-        type = "sequences";
-        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-
-        artifactName = "DoctorsDataServiceEP";
-        type = "endpoints";
+        String artifactName = "SalesforceLeads";
+        String type = "api";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
     }
@@ -295,36 +239,20 @@ public class DataMapperTemplate extends Wizard implements INewWizard {
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
 
-        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "DoctorsRecordsSyncTask", "task");
+        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "SalesforceLeads", "api");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
 
-        Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "DoctorsRecordsSyncSeq", "sequence");
-        dependencyList.add(dependency2);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
-
-        Dependency dependency3 = ProjectCreationUtil.addDependencyForCAPP(groupId, "DoctorsDataServiceEP", "endpoint");
-        dependencyList.add(dependency3);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency3), "capp/EnterpriseServiceBus");
-
-        Dependency dependency4 = ProjectCreationUtil.addDependencyForCAPP(groupId, "DoctorsDataService", null);
-        dependencyList.add(dependency4);
-        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency4), "capp/DataServicesServer");
-
         String[] fileTypes = { "_inputSchema", "_outputSchema", "" };
-        String[] registryFiles = { "TestJSON", "TESTXML" };
+        String[] registryFiles = { "SalesforceLeadsMappingConfig" };
 
         for (String registryFile : registryFiles) {
-
             for (String fileType : fileTypes) {
-
-                Dependency dependency5 = ProjectCreationUtil
+                Dependency dependency2 = ProjectCreationUtil
                         .addDependencyForCAPP(groupId, registryFile + fileType, "resource");
-                dependencyList.add(dependency5);
-                properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency5), "capp/EnterpriseServiceBus");
-
+                dependencyList.add(dependency2);
+                properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
             }
-
         }
 
         ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();

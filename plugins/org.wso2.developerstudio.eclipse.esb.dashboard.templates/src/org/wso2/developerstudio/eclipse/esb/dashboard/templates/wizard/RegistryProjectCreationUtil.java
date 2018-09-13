@@ -39,13 +39,11 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 /**
- * Util class to for sample template creation of DSS Projects.
+ * Util class to for sample template creation of Registry Resource Projects.
  */
 public class RegistryProjectCreationUtil {
 
-    private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
     public static final String PACKAGE_PHASE = "package";
-
     public static final String EXEC_GOAL = "exec";
     public static final String INSTALL_PHASE = "install";
     public static final String DEPLOY_PHASE = "deploy";
@@ -59,23 +57,20 @@ public class RegistryProjectCreationUtil {
     public static final String ARGUMENT_VALUE_SKIP_TESTS = "-Dmaven.test.skip=${maven.test.skip}";
 
     /**
-     * Copy the RegistryResource Artifacts.
+     * Copy the RegistryResource Artifacts related to Data mapper and update the Artifact.xml file
      */
     public static void copyArtifact(IProject registryProject, String sampleName, String artifactName,
             GeneralProjectArtifact registryArtifact, String groupID) {
 
         IContainer location = registryProject;
-
         String[] fileTypes = {
                 "_inputSchema.json", "_outputSchema.json", ".dmc", ".datamapper_diagram", ".datamapper"
         };
 
         try {
-
             for (String fileType : fileTypes) {
                 File importFile = ProxyServiceTemplateUtils.getInstance().getResourceFile(
                         "Samples" + File.separator + sampleName + File.separator + artifactName + fileType);
-
                 IFile newArtifact = location.getFile(new Path(artifactName + fileType));
                 File destFile = newArtifact.getLocation().toFile();
                 FileUtils.copy(importFile, destFile);
@@ -83,17 +78,20 @@ public class RegistryProjectCreationUtil {
                 if (fileType.contains(".json") || fileType.contains(".dmc")) {
                     updateArtifactXML(registryProject, artifactName + fileType, groupID + ".resource");
                 }
-
             }
-
             registryProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-
         } catch (Exception e) {
-            // TODO 
         }
-
     }
 
+    /**
+     * Update artifact.xml of registry resource for Data Mapper Resources.
+     *
+     * @param registryProject
+     * @param artifactName
+     * @param groupID
+     * @throws Exception
+     */
     private static void updateArtifactXML(IProject registryProject, String artifactName, String groupID)
             throws Exception {
 
@@ -117,11 +115,8 @@ public class RegistryProjectCreationUtil {
                 artifact.addRegistryElement(item);
             }
         }
-
         generalProjectArtifact.addArtifact(artifact);
-
         generalProjectArtifact.toFile();
-
     }
 
     public static void updateRegistryResourcePOM(IProject registryResourceProject) throws Exception {
@@ -167,7 +162,6 @@ public class RegistryProjectCreationUtil {
         mavenProject.getModel().addPluginRepository(repo);
         mavenProject.getModel().addRepository(repo1);
         mavenProject.getModel().addPluginRepository(repo1);
-
         MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 
     }

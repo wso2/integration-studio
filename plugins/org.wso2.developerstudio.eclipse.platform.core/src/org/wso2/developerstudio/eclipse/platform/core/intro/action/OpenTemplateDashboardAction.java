@@ -48,8 +48,8 @@ public class OpenTemplateDashboardAction extends Action implements IIntroAction 
         IWorkbenchPage page = window.getActivePage();
         try {
             hideDashboards();
-            PlatformUI.getWorkbench().showPerspective("org.eclipse.jst.j2ee.J2EEPerspective", window);
-            page.openEditor(new NullEditorInput(), "org.wso2.developerstudio.eclipse.templates.dashboard");
+            PlatformUI.getWorkbench().showPerspective("org.wso2.developerstudio.welcome.perspective", window);
+            page.openEditor(new NullEditorInput(), DASHBOARD_VIEW_ID);
         } catch (Exception e) {
             log.error("Cannot open dashboard", e);
         }
@@ -89,7 +89,7 @@ public class OpenTemplateDashboardAction extends Action implements IIntroAction 
         }
 
         public String getName() {
-            return "Dashboard";
+            return "Kernel Template Dashboard";
         }
 
         public IPersistableElement getPersistable() {

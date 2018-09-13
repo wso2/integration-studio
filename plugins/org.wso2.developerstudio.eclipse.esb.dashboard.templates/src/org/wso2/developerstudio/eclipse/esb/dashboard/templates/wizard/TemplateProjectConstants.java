@@ -125,7 +125,7 @@ public class TemplateProjectConstants {
 
     public static final String PROJECT_WIZARD_PAGE_DESCRIPTION = "Create Sample Template";
 
-    public static final String PROJECT_WIZARD_PAGE_TITLE = "Template Project";
+    public static final String PROJECT_WIZARD_PAGE_TITLE = "Create Proejct Using ";
 
     public static final String WIZARD_PAGE_NAME = "wizardPage";
 
@@ -167,7 +167,7 @@ public class TemplateProjectConstants {
 
     public static final String TASK_WSDL_SUFFIX = "Task.wsdl";
 
-    public static final String PROJECT_WIZARD_TITLE = "Template Project";
+    public static final String PROJECT_WIZARD_TITLE = "Start Using a Template";
 
     public static final String HUMAN_TASK_EXPORT_WIZARD_TITLE = "Export Human Task Artifact";
 

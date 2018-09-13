@@ -43,9 +43,9 @@ public class TemplateProjectWizardPage extends WizardPage {
      *
      * @param pageName
      */
-    public TemplateProjectWizardPage(ISelection selection) {
+    public TemplateProjectWizardPage(ISelection selection, String title) {
         super(TemplateProjectConstants.WIZARD_PAGE_NAME);
-        setTitle(TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE);
+        setTitle(TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + title + " Template");
         setDescription(TemplateProjectConstants.PROJECT_WIZARD_PAGE_DESCRIPTION);
         this.selection = selection;
     }

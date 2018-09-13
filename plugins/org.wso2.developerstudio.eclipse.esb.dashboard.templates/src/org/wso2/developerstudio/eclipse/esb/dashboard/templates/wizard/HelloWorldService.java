@@ -18,12 +18,6 @@
 
 package org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard;
 
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
@@ -44,6 +38,12 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
 /**
  * The class which handles the Hello Wrold Proxy Template.
  */
@@ -56,6 +56,7 @@ public class HelloWorldService extends Wizard implements INewWizard {
     private String groupId;
     String sampleName = "HelloWorld";
     String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Hello World Service";
 
     public HelloWorldService() {
         super();
@@ -69,7 +70,7 @@ public class HelloWorldService extends Wizard implements INewWizard {
      */
     @Override
     public void addPages() {
-        page = new TemplateProjectWizardPage(selection);
+        page = new TemplateProjectWizardPage(selection, name);
         addPage(page);
     }
 
@@ -140,8 +141,8 @@ public class HelloWorldService extends Wizard implements INewWizard {
             addCappDependencies(cappProject);
 
             // Open synapse application on sample creation.
-            String openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator +
-                    "proxy-services" + File.separator + "HelloWorld.xml";
+            String openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
+                    + "proxy-services" + File.separator + "HelloWorld.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);

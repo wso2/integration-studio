@@ -33,6 +33,7 @@ public class ConnectionCalculator {
 
 	private static Point currentFigureLocation = null;
 	private static Point connectorFigureLocation = null;
+	private static final int WIDTH_OF_PROXYCONNECTOR = 82;
 
 	public static EsbLinkEditPart getNearestLinkEditPart(ArrayList links,
 			AbstractBorderedShapeEditPart childEditPart) {
@@ -109,8 +110,8 @@ public class ConnectionCalculator {
 		AbstractConnectorEditPart currentConnector = null;
 		int yCurrent = 0, yDistance1 = 0, yDistance2 = 0;
 		double EastDistance = 0, EastCurrent = 0, WestCurrent = 0, WestDistance = 0;
-	    EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
-	    double zoom = esbMultiPageEditor.getZoom();
+		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
+		double zoom = esbMultiPageEditor.getZoom();
 
 		if (childEditPart != null) {
 
@@ -137,6 +138,11 @@ public class ConnectionCalculator {
 				IFigure figure = (IFigure) ((DefaultSizeNodeFigure) connectors
 						.get(i).getFigure()).getChildren().get(0);
 
+				// Skip the Additional output connectors as they are taken into account at the latter part of the code
+				if((figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AdditionalOutputConnector.EastPointerFigure)
+				    || (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AdditionalOutputConnector.WestPointerFigure)) {
+				    continue;
+				}
 				if ((currentConnector!=null)&&(!connectors.get(i).equals(currentConnector))
 						&& (!connectors.get(i).getParent()
 								.equals(currentConnector.getParent()))) {
@@ -156,7 +162,7 @@ public class ConnectionCalculator {
 
 						if((figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart.EastPointerFigure)
 								||(figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart.EastPointerFigure)){
-							xLeft=xLeft-82;
+							xLeft=xLeft-WIDTH_OF_PROXYCONNECTOR;
 						}
 						EastDistance = Math.abs(xLeft - actualCurrentPosition);
 						if (((connectors.get(i) instanceof AbstractOutputConnectorEditPart) && (xLeft < actualCurrentPosition))
@@ -174,16 +180,17 @@ public class ConnectionCalculator {
 							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart.WestPointerFigure)
 							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyFaultInputConnectorEditPart.WestPointerFigure)
 							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
-							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)) {
+							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)
+							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AdditionalOutputConnector.WestPointerFigure)) {
 
 					    if((figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart.WestPointerFigure)
                                 ||(figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart.WestPointerFigure)){
-                            xLeft=xLeft-82;
+                            xLeft=xLeft-WIDTH_OF_PROXYCONNECTOR;
                         }
 						WestDistance = Math.abs(xLeft - actualCurrentPosition);
 						if (((connectors.get(i) instanceof AbstractOutputConnectorEditPart) && (xLeft > actualCurrentPosition))
 								|| ((connectors.get(i) instanceof AbstractInputConnectorEditPart) && (xLeft < actualCurrentPosition))) {
-							if ((WestCurrent == 0)
+						    if ((WestCurrent == 0)
 									|| (WestCurrent > WestDistance)) {
 								WestCurrent = WestDistance;
 								nearReverseConnector = connectors.get(i);

@@ -18,8 +18,6 @@
 
 package org.wso2.developerstudio.eclipse.artifact.dataserviceTemplate.wizard;
 
-import java.io.File;
-
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -39,15 +37,19 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.eclipse.ui.navigator.CommonNavigator;
+import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
+
+import java.io.File;
 
 /**
  * Util class to for sample template creation.
@@ -200,8 +202,9 @@ public class ProjectCreationUtil {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
                     IDE.openEditor(page, fileRef, editorID, true);
-                    ((CommonNavigator) page.findViewReference(IPageLayout.ID_PROJECT_EXPLORER, null).getView(true))
-                            .setLinkingEnabled(true);
+                    IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                            .findView(IPageLayout.ID_PROJECT_EXPLORER);
+                    ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileDesc));
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());

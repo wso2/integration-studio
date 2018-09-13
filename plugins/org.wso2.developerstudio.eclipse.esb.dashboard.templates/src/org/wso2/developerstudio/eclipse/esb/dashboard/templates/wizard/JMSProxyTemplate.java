@@ -54,6 +54,7 @@ public class JMSProxyTemplate extends Wizard implements INewWizard {
     private String groupId;
     String sampleName = "JMSProxyTemplate";
     String baseId = "wso2.sample" + sampleName + ".";
+    String sampleTitle = "JMS Integration";
 
     public JMSProxyTemplate() {
         super();
@@ -67,7 +68,8 @@ public class JMSProxyTemplate extends Wizard implements INewWizard {
      */
     @Override
     public void addPages() {
-        page = new TemplateProjectWizardPage(selection);
+        page = new TemplateProjectWizardPage(selection,
+                TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + sampleTitle + " Template");
         addPage(page);
     }
 

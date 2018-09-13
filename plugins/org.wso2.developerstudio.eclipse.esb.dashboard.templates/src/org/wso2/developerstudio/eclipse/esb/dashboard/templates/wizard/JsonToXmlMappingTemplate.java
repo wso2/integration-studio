@@ -57,6 +57,7 @@ public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
     private String groupId;
     String sampleName = "JsonToXmlMappingTemplate";
     String baseId = "wso2.sample" + sampleName + ".";
+    String name = "JSON to XML Mapping";
 
     public JsonToXmlMappingTemplate() {
         super();
@@ -70,7 +71,8 @@ public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
      */
     @Override
     public void addPages() {
-        page = new TemplateProjectWizardPage(selection);
+        page = new TemplateProjectWizardPage(selection,
+                TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + name + " Template");
         addPage(page);
     }
 

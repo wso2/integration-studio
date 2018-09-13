@@ -56,6 +56,7 @@ public class DatabasePolling extends Wizard implements INewWizard {
     private String groupId;
     String sampleName = "DatabasePolling";
     String baseId = "wso2.sample" + sampleName + ".";
+    String sampleTitle = "Database Polling";
 
     public DatabasePolling() {
         super();
@@ -69,7 +70,8 @@ public class DatabasePolling extends Wizard implements INewWizard {
      */
     @Override
     public void addPages() {
-        page = new TemplateProjectWizardPage(selection);
+        page = new TemplateProjectWizardPage(selection,
+                TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + sampleTitle + " Template");
         addPage(page);
     }
 
@@ -168,8 +170,9 @@ public class DatabasePolling extends Wizard implements INewWizard {
             addCappDependencies(cappProject);
 
             // Open synapse application on sample creation.
-            String openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator +
-                    "tasks" + File.separator + "DoctorsRecordsSyncTask.xml";
+            String openFileName =
+                    "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "tasks"
+                            + File.separator + "DoctorsRecordsSyncTask.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);

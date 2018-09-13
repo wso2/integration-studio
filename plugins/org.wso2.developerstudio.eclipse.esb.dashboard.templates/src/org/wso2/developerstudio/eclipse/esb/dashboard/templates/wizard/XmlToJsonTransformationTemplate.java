@@ -54,6 +54,7 @@ public class XmlToJsonTransformationTemplate extends Wizard implements INewWizar
     private String groupId;
     String sampleName = "XmlToJsonTransformationTemplate";
     String baseId = "wso2.sample" + sampleName + ".";
+    String name = "XML To JSON Transformation";
 
     public XmlToJsonTransformationTemplate() {
         super();
@@ -67,7 +68,8 @@ public class XmlToJsonTransformationTemplate extends Wizard implements INewWizar
      */
     @Override
     public void addPages() {
-        page = new TemplateProjectWizardPage(selection);
+        page = new TemplateProjectWizardPage(selection,
+                TemplateProjectConstants.PROJECT_WIZARD_PAGE_TITLE + name + " Template");
         addPage(page);
     }
 
@@ -137,12 +139,13 @@ public class XmlToJsonTransformationTemplate extends Wizard implements INewWizar
             addCappDependencies(cappProject);
 
             // Open synapse application on sample creation.
-            String openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + 
-                    "api" + File.separator + "ScienceLabAPI.xml";
+            String openFileName =
+                    "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "api"
+                            + File.separator + "ScienceLabAPI.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            
+
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

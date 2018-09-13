@@ -51,25 +51,6 @@ public class PlatformEarlyStartUpHandler implements IStartup {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
-     * This method queries all servers registered for developer studio and
-     * register them to be available on eclipse default server option.
-     */
-    private void registerProductServers() {
-        ServerExtensionsRegistryUtils serverExtensionsRegistryUtils = new ServerExtensionsRegistryUtils();
-        IConfigurationElement[] registeredServers = serverExtensionsRegistryUtils.retrieveRegisteredProductServers();
-
-        DynamicServer44eiExtensionGenerator dynamicEIServerExtensionGenerator = new DynamicServer44eiExtensionGenerator();
-        dynamicEIServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
-
-        DynamicServer44ExtensionGenerator dynamicServerExtensionGenerator = new DynamicServer44ExtensionGenerator();
-        dynamicServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
-        DynamicServer42ExtensionGenerator dynamicServer42ExtensionGenerator = new DynamicServer42ExtensionGenerator();
-        dynamicServer42ExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
-        DynamicServer40ExtensionGenerator dynamicServer40ExtensionGenerator = new DynamicServer40ExtensionGenerator();
-        dynamicServer40ExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
-    }
-
-    /**
      * This method starts embedded jetty server at eclipse startup. This embedded jetty server is used to fulfill the 
      * dashboard page requests.
      * @param port port which the jetty server is started
@@ -149,7 +130,6 @@ public class PlatformEarlyStartUpHandler implements IStartup {
     @Override
     public void earlyStartup() {
         //This method fires before startup and we use this to register carbon servers and start embedded jetty
-        registerProductServers();
         startEmbeddedJetty(FunctionServerConstants.EMBEDDED_SERVER_PORT);
     }
 

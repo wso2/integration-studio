@@ -76,6 +76,9 @@ body{
     margin: 0 1em 1em;
     min-height: 90px;
 }
+.actions{
+	margin-bottom:.5em;
+}
 .section-one{
     margin-top: 12px;
 }

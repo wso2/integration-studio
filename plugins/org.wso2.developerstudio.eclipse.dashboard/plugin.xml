@@ -47,11 +47,6 @@
             </menu>
         </menuContribution>
     </extension>
-    <extension point="org.eclipse.ui.intro.configExtension">
-        <configExtension
-           configId="org.eclipse.ui.intro.universalConfig"
-           content="intro/welcome.xml" />
-    </extension>
     
     <extension point="org.eclipse.ui.newWizards">
   <category name="WSO2BASS" id="org.wso2.developerstudio.eclipse.capp.projectBASS">

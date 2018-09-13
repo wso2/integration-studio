@@ -318,7 +318,7 @@ public class ProjectCreationUtil {
         String fileLocation = "Samples" + File.separator + samplename + File.separator + "src" + File.separator + "main"
                 + File.separator + "synapse-config" + File.separator + type + File.separator + name + ".xml";
 
-        return ProxyServiceTemplateUtils.getInstance().getResourceFile(fileLocation);
+        return ResourceUtils.getInstance().getResourceFile(fileLocation);
     }
 
     private static ESBArtifact createArtifact(String name, String groupId, String version, String path, String type) {
@@ -400,16 +400,24 @@ public class ProjectCreationUtil {
         dependency.setVersion("1.0.0");
 
         if (type != null && !type.isEmpty()) {
+
             dependency.setGroupId(groupId + "." + type);
             dependency.setType("xml");
+
+            if (type.equals("resource")) {
+                dependency.setType("zip");
+            }
+
         } else {
             dependency.setGroupId(groupId);
             dependency.setType("synapse_dataservice");
         }
+
         if (artifactName.equals("salesforce-connector")) {
             dependency.setVersion("2.0.2");
             dependency.setType("zip");
         }
+
         return dependency;
 
     }
@@ -468,7 +476,7 @@ public class ProjectCreationUtil {
         String connectorZIPName = connectorName + "-" + connectorVersion + ".zip";
 
         // copy the connector to the connector project
-        File connectorFile = ProxyServiceTemplateUtils.getInstance()
+        File connectorFile = ResourceUtils.getInstance()
                 .getResourceFile("Samples" + File.separator + "Connectors" + File.separator + connectorZIPName);
         File destFile = new File(conenctorProject.getLocation().toString() + File.separator + connectorZIPName);
         FileUtils.copy(connectorFile, destFile);
@@ -533,7 +541,7 @@ public class ProjectCreationUtil {
         String connectorZIPName = connectorName + ".zip";
 
         if (!new File(conenctorLocation + File.separator + connectorZIPName).exists()) {
-            File connectorFile = ProxyServiceTemplateUtils.getInstance()
+            File connectorFile = ResourceUtils.getInstance()
                     .getResourceFile("Samples" + File.separator + "Connectors" + File.separator + connectorZIPName);
             File destFile = new File(conenctorLocation + File.separator + connectorZIPName);
             FileUtils.copy(connectorFile, destFile);

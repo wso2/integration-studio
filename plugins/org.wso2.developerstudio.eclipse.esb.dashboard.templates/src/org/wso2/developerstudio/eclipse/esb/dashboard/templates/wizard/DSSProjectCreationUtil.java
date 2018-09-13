@@ -175,7 +175,7 @@ public class DSSProjectCreationUtil {
         IContainer location = dssProject.getFolder("dataservice");
 
         try {
-            File importFile = ProxyServiceTemplateUtils.getInstance().getResourceFile(
+            File importFile = ResourceUtils.getInstance().getResourceFile(
                     "Samples" + File.separator + sampleName + File.separator + "dataservice" + File.separator
                             + artifactName + ".dbs");
             IFile newArtifact = location.getFile(new Path(artifactName + ".dbs"));

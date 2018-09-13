@@ -255,4 +255,10 @@ public class TemplateProjectConstants {
 
     public static final String DISTRIBUTION_POM_EDITOR_ID = "org.wso2.developerstudio.eclipse.distribution.project.editor.DistProjectEditor";
 
+    public static final String GENERAL_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
+
+    public final static String JDT_BUILD_COMMAND = "org.eclipse.jdt.core.javabuilder";
+
+    public final static String JDT_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
+
 }

@@ -169,6 +169,14 @@
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.ReadSalesforceAccountsTemplate"
                 id="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate">
         </wizard>
+        <wizard
+                name="JSON to XML Mapping"
+                icon="icons/message-store-small.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.JsonToXmlMappingTemplate"
+                id="org.wso2.developerstudio.wizards.esb.jsonToXmlMappingTemplate">
+        </wizard>
     </extension>
     <extension
             point="org.wso2.developerstudio.eclipse.template.dashboad.link">
@@ -272,6 +280,12 @@
                     id="dashboard.wizardLink.esb.rabbitMQSampleTemplate.project"
                     wizard="org.wso2.developerstudio.wizards.esb.rabbitMQSampleTemplate"
                     description="A sample which demonstrates the integration with RabbitMQ"
+                    image="icons/server.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb.template"
+                    id="dashboard.wizardLink.esb.jsonToXmlMappingTemplate.project"
+                    wizard="org.wso2.developerstudio.wizards.esb.jsonToXmlMappingTemplate"
+                    description="JSON to XML Mapping Sample Template"
                     image="icons/server.png">
         </wizardLink>
     </extension>

@@ -39,6 +39,11 @@
             </menu>
         </menuContribution>
     </extension>
+    <extension point="org.eclipse.ui.intro.configExtension">
+         <configExtension
+            configId="org.eclipse.ui.intro.universalConfig"
+            content="intro/welcome.xml" />
+     </extension>
      <extension
             point="org.eclipse.ui.handlers">
         <handler

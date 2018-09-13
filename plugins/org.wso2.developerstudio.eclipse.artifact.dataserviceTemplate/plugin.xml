@@ -26,7 +26,7 @@
                 parentCategory="org.wso2.developerstudio.eclipse.capp.project">
         </category>
         <wizard
-                name="Students Data Service Sample"
+                name="Students Data Service"
                 icon="icons/message-store-small.png"
                 project="true"
                 category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"

@@ -148,10 +148,11 @@ public class StudentDataServiceTemplate extends Wizard implements INewWizard {
                     .carbonAppCreation(containerName + "CarbonApplication", containerName, groupId, sampleName);
             addCappDependencies(cappProject);
 
-            // Open Carbon application POM on sample creation.
-            IFile pomfileDesc = cappProject.getFile("pom.xml");
+            // Open synapse application on sample creation.
+            String openFileName = "dataservice" + File.separator + "StudentDataService.dbs";
+            IFile fileDesc = dssServiceProject.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, pomfileDesc);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.DS_EDITOR_ID);
 
         } catch (CoreException ex) {
             IStatus status = new Status(IStatus.ERROR, TemplateProjectConstants.PLUGIN_ID, IStatus.OK,

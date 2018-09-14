@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -143,8 +144,8 @@ public class ScheduleTaskTeamplate extends Wizard implements INewWizard {
                             + File.separator + "PersonRecordRetrieveTask.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
-                    TemplateProjectConstants.SCHEDULED_TASK_TEMPLATE_HELP_CONTEXT);
+            URL url = ProjectCreationUtil.copyReadMe( project , sampleName );            
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
 
         } catch (CoreException ex) {
             templateWizardUtil

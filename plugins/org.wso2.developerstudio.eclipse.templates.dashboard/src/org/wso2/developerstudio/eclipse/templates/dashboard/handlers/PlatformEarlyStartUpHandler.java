@@ -49,7 +49,6 @@ import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.
 public class PlatformEarlyStartUpHandler implements IStartup {
     
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
     /**
      * This method starts embedded jetty server at eclipse startup. This embedded jetty server is used to fulfill the 
      * dashboard page requests.

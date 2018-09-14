@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<contexts>
+    <context id="HelloWorld" title="Hello world...!">
+        <description> Hello world template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/HelloWorld/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/HelloWorld/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="ContentBasedRoutingTemplate" title="Content Based Routing Template">
+        <description> ContentBasedRoutingTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/ContentBasedRoutingTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/ContentBasedRoutingTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="DatabasePolling" title="Database Polling">
+        <description> DatabasePolling template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/DatabasePolling/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/DatabasePolling/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="ExceptionHandlingTemplate" title="Exception Handling">
+        <description> ExceptionHandlingTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/ExceptionHandlingTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/ExceptionHandlingTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="FileTransferTeamplate" title="File Transfer">
+        <description> FileTransferTeamplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/FileTransferTeamplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/FileTransferTeamplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="GuaranteedDeliveryTemplate" title="Guranteed Delivery">
+        <description> GuaranteedDeliveryTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/GuaranteedDeliveryTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/GuaranteedDeliveryTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="HeaderBasedRoutingTemplate" title="Header Based Routing">
+        <description> HeaderBasedRoutingTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/HeaderBasedRoutingTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/HeaderBasedRoutingTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="JMSProxyTemplate" title="JMS Proxy Template">
+        <description> JMSProxyTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/JMSProxyTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/JMSProxyTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="JsonToXmlMappingTemplate" title="JSON to XML">
+        <description> JsonToXmlMappingTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/JsonToXmlMappingTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/JsonToXmlMappingTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="MessageFilteringTemplate" title="Message Filtering">
+        <description> MessageFilteringTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/MessageFilteringTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/MessageFilteringTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="ProtocolSwitchingTemplate" title="Protocol Switching">
+        <description> ProtocolSwitchingTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/ProtocolSwitchingTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/ProtocolSwitchingTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="ProxyingRestAPITemplate" title="Proxying REST API">
+        <description> ProxyingRestAPITemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/ProxyingRestAPITemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/ProxyingRestAPITemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="ProxyingSoapServiceTemplate" title="Proxying SOAP Service">
+        <description> ProxyingSoapServiceTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/ProxyingSoapServiceTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/ProxyingSoapServiceTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="RabbitMQSampleTemplate" title="Rabbit MQ Sample">
+        <description> RabbitMQSampleTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/RabbitMQSampleTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/RabbitMQSampleTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="ReadSalesforceAccountsTemplate" title="Read Salesforce Accounts">
+        <description> ReadSalesforceAccountsTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/ReadSalesforceAccountsTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/ReadSalesforceAccountsTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="RestToSoapTemplate" title="REST to SOAP">
+        <description> RestToSoapTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/RestToSoapTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/RestToSoapTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="ScatterGatherTemplate" title="Scatter Gather Pattern">
+        <description> ScatterGatherTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/ScatterGatherTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/ScatterGatherTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="ScheduleTaskTeamplate" title="Scheduled Task">
+        <description> ScheduleTaskTeamplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/ScheduleTaskTeamplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/ScheduleTaskTeamplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context>
+    <context id="XmlToJsonTransformationTemplate" title="XML to JSON">
+        <description> XmlToJsonTransformationTemplate template describes the basics of the esb proxy and how to use payload factory in order to produce a hello world response</description>
+        <topic href="Samples/XmlToJsonTransformationTemplate/helpcontent/howtodeploy.html" label="How To Deploy in EI"/>
+        <topic href="Samples/XmlToJsonTransformationTemplate/helpcontent/templateelements.html" label="Get to know about the elements"/>
+    </context> 
+</contexts>
+

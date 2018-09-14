@@ -582,7 +582,10 @@ public class ProcessSourceView {
                 }
 
             } else if (tempTag.getTagType() == 8) {
-                if (prev != null && prev.getTagType() != 8) {
+                if (tempTag.getValue().contains("xml-multiple")) {
+                    xmlTags.push(tempTag);
+                    
+                } else if (prev != null && prev.getTagType() != 8) {
                     String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
                             + tempTag.getValue() + "\".";
                     return createError(error, tempTag);

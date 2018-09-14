@@ -143,9 +143,8 @@ public class ScatterGatherTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "MissionService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            URL url = ProjectCreationUtil.copyReadMe( project , sampleName );            
+            URL url = ProjectCreationUtil.copyReadMe(project, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
-
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);
@@ -181,11 +180,11 @@ public class ScatterGatherTemplate extends Wizard implements INewWizard {
         artifactName = "MissionEP1";
         type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-        
+
         artifactName = "MissionEP2";
         type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-        
+
         artifactName = "MissionEP3";
         type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
@@ -212,11 +211,11 @@ public class ScatterGatherTemplate extends Wizard implements INewWizard {
         Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "MissionEP1", "endpoint");
         dependencyList.add(dependency2);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
-        
+
         Dependency dependency3 = ProjectCreationUtil.addDependencyForCAPP(groupId, "MissionEP2", "endpoint");
         dependencyList.add(dependency3);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency3), "capp/EnterpriseServiceBus");
-        
+
         Dependency dependency4 = ProjectCreationUtil.addDependencyForCAPP(groupId, "MissionEP3", "endpoint");
         dependencyList.add(dependency4);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency4), "capp/EnterpriseServiceBus");

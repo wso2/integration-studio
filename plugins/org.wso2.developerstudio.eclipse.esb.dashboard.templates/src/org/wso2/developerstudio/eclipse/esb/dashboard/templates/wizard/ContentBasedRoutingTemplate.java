@@ -144,7 +144,7 @@ public class ContentBasedRoutingTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "ArithmaticOperationService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            URL url = ProjectCreationUtil.copyReadMe( project , sampleName );            
+            URL url = ProjectCreationUtil.copyReadMe(project, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
         } catch (CoreException ex) {
             templateWizardUtil

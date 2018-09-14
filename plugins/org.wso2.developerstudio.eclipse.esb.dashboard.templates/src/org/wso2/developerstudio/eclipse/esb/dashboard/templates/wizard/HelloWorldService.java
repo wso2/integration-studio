@@ -26,7 +26,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
@@ -38,7 +37,6 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -147,11 +145,9 @@ public class HelloWorldService extends Wizard implements INewWizard {
             String openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
                     + "proxy-services" + File.separator + "HelloWorld.xml";
             IFile fileDesc = project.getFile(openFileName);
-            Shell shell = getShell();                      
-            
-            URL url = ProjectCreationUtil.copyReadMe( project , sampleName );            
+            Shell shell = getShell();
+            URL url = ProjectCreationUtil.copyReadMe(project, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
-            
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

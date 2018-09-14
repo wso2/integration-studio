@@ -185,6 +185,14 @@
                 class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.XmlToJsonMappingTemplate"
                 id="org.wso2.developerstudio.wizards.esb.xmlToJsonMappingTemplate">
         </wizard>
+        <wizard
+                name="Kafka Consumer and Producer"
+                icon="icons/message-store-small.png"
+                project="true"
+                category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.templates"
+                class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.KafkaTemplate"
+                id="org.wso2.developerstudio.wizards.esb.kafkaTemplate">
+        </wizard>
     </extension>
     <extension
             point="org.wso2.developerstudio.eclipse.template.dashboad.link">
@@ -265,13 +273,13 @@
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.scheduleTaskTeamplate"
                     wizard="org.wso2.developerstudio.wizards.esb.scheduleTaskTeamplate"
-                    description="Periodical scheduled templates"
+                    description="Periodical scheduled tasks"
                     image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate"
-                    description="Fetch leads records from Salesforce system and write them to a Google spreadsheet"
+                    description="Fetch leads records from Salesforce system"
                     image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.dataPolling.project"
@@ -300,6 +308,12 @@
                     id="dashboard.wizardLink.esb.xmlToJsonMappingTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.xmlToJsonMappingTemplate"
                     description="This sample demonstrates XML to JSON Mapping"
+                    image="icons/server.png">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb.template"
+                    id="dashboard.wizardLink.esb.kafkaTemplate"
+                    wizard="org.wso2.developerstudio.wizards.esb.kafkaTemplate"
+                    description="This sample demonstrates Kafka Consumer and Producer Scenario with ESB Kafka Conenctor"
                     image="icons/server.png">
         </wizardLink>
     </extension>

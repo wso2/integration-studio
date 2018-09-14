@@ -273,13 +273,13 @@
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.scheduleTaskTeamplate"
                     wizard="org.wso2.developerstudio.wizards.esb.scheduleTaskTeamplate"
-                    description="Periodical scheduled templates"
+                    description="Periodical scheduled tasks"
                     image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template"
                     id="dashboard.wizardLink.esb.readSalesforceAccountsTemplate"
                     wizard="org.wso2.developerstudio.wizards.esb.readSalesforceAccountsTemplate"
-                    description="Fetch leads records from Salesforce system and write them to a Google spreadsheet"
+                    description="Fetch leads records from Salesforce system"
                     image="icons/server.png">
         </wizardLink>
         <wizardLink category="dashboard.category.esb.template" id="dashboard.wizardLink.esb.dataPolling.project"

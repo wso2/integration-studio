@@ -12,7 +12,7 @@
                     <arg evaluator="xml" expression="get-property('uri.var.zipCode')"/>
                 </args>
             </payloadFactory>
-            <header name="Action" scope="default" value="http://tempuri.org/SOAP.Demo.LookupCity"/>
+            <header description="Set SOAPAction header" name="Action" scope="default" value="http://tempuri.org/SOAP.Demo.LookupCity"/>
             <property action="remove" description="Avoid appending resource to endpoint URL" name="REST_URL_POSTFIX" scope="axis2"/>
             <send description="Send Request Payload to SOAP endpoint">
                 <endpoint key="CityLookupEP"/>

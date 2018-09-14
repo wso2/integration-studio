@@ -2,28 +2,25 @@
 <proxy name="MissionService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
     <target>
         <inSequence>
-            <header name="SOAPAction" scope="transport" value="http://tempuri.org/SOAP.Demo.Mission"/>
-            <clone description="Clone request payload to Mission EP" id="ScatterGatherProxy">
+            <header description="Set SOAPAction header" name="SOAPAction" scope="transport" value="http://tempuri.org/SOAP.Demo.Mission"/>
+            <clone description="Clone request payload to three different endpoints" id="ScatterGatherProxy">
                 <target>
-                    <endpoint key="MissionEP"/>
+                    <endpoint key="MissionEP1"/>
                 </target>
                 <target>
-                    <endpoint key="MissionEP"/>
+                    <endpoint key="MissionEP2"/>
                 </target>
                 <target>
-                    <endpoint key="MissionEP"/>
+                    <endpoint key="MissionEP3"/>
                 </target>
             </clone>
         </inSequence>
         <outSequence>
-            <property description="Set root element to wrap response" name="RootElement" scope="default">
-                <Responses xmlns=""/>
-            </property>
             <aggregate description="Aggregate responses and send back to client" id="ScatterGatherProxy">
                 <completeCondition>
                     <messageCount max="-1" min="-1"/>
                 </completeCondition>
-                <onComplete enclosingElementProperty="RootElement" expression="//*[local-name() = 'MissionResult']">
+                <onComplete expression="//*[local-name() = 'MissionResult']">
                     <send/>
                 </onComplete>
             </aggregate>

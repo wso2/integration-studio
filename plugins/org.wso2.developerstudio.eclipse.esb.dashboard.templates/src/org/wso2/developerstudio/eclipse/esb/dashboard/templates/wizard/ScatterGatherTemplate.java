@@ -177,7 +177,15 @@ public class ScatterGatherTemplate extends Wizard implements INewWizard {
         String type = "proxy-services";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
-        artifactName = "MissionEP";
+        artifactName = "MissionEP1";
+        type = "endpoints";
+        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
+        
+        artifactName = "MissionEP2";
+        type = "endpoints";
+        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
+        
+        artifactName = "MissionEP3";
         type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
     }
@@ -200,9 +208,17 @@ public class ScatterGatherTemplate extends Wizard implements INewWizard {
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
 
-        Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "MissionEP", "endpoint");
+        Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "MissionEP1", "endpoint");
         dependencyList.add(dependency2);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
+        
+        Dependency dependency3 = ProjectCreationUtil.addDependencyForCAPP(groupId, "MissionEP2", "endpoint");
+        dependencyList.add(dependency3);
+        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency3), "capp/EnterpriseServiceBus");
+        
+        Dependency dependency4 = ProjectCreationUtil.addDependencyForCAPP(groupId, "MissionEP3", "endpoint");
+        dependencyList.add(dependency4);
+        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency4), "capp/EnterpriseServiceBus");
 
         ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
         properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());

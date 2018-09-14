@@ -141,7 +141,7 @@ public class HeaderBasedRoutingTemplate extends Wizard implements INewWizard {
             // Open synapse application on sample creation.
             String openFileName =
                     "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "api"
-                            + File.separator + "LanguageAPI.xml";
+                            + File.separator + "CalculatorAPI.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
@@ -174,8 +174,16 @@ public class HeaderBasedRoutingTemplate extends Wizard implements INewWizard {
      */
     private void copyFiles(IProject esbProject, ESBProjectArtifact esbProjectArtifact) {
 
-        String artifactName = "LanguageAPI";
+        String artifactName = "CalculatorAPI";
         String type = "api";
+        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
+        
+        artifactName = "CalculatorAddEP";
+        type = "endpoints";
+        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
+
+        artifactName = "CalculatorDivideEP";
+        type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
     }
@@ -194,9 +202,17 @@ public class HeaderBasedRoutingTemplate extends Wizard implements INewWizard {
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
 
-        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "LanguageAPI", "api");
+        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "CalculatorAPI", "api");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
+        
+        Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "CalculatorAddEP", "endpoint");
+        dependencyList.add(dependency2);
+        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
+
+        Dependency dependency3 = ProjectCreationUtil.addDependencyForCAPP(groupId, "CalculatorDivideEP", "endpoint");
+        dependencyList.add(dependency3);
+        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency3), "capp/EnterpriseServiceBus");
 
         ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
         properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());

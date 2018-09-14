@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<proxy name="ArithmaticOperationService" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
-    <target>
+<api context="/calculate" name="CalculatorAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
         <inSequence>
             <log description="Log Request Payload" level="full"/>
-            <switch description="Route based on the Operation" source="//ArithmaticOperation/Operation">
+            <switch description="Route based on the Operation" source="$trp:Operation">
                 <case regex="Add">
                     <payloadFactory description="Construct payload for addition operation" media-type="xml">
                         <format>
@@ -19,7 +19,7 @@
                     </payloadFactory>
                     <header description="Set SOAPAction header" name="Action" scope="default" value="http://tempuri.org/SOAP.Demo.AddInteger"/>
                     <call description="Send request to the endpoint">
-                        <endpoint key="NumberAdditionEP"/>
+                        <endpoint key="CalculatorAddEP"/>
                     </call>
                 </case>
                 <case regex="Divide">
@@ -37,7 +37,7 @@
                     </payloadFactory>
                     <header description="Set SOAPAction header" name="Action" scope="default" value="http://tempuri.org/SOAP.Demo.DivideInteger"/>
                     <call>
-                        <endpoint key="NumberDivisionEP"/>
+                        <endpoint key="CalculatorDivideEP"/>
                     </call>
                 </case>
                 <default>
@@ -53,5 +53,5 @@
         </inSequence>
         <outSequence/>
         <faultSequence/>
-    </target>
-</proxy>
+    </resource>
+</api>

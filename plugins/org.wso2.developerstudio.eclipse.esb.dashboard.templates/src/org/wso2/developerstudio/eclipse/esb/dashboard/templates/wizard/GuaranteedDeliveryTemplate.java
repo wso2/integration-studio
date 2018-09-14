@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -142,9 +143,8 @@ public class GuaranteedDeliveryTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "NumberCalculateService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
-                    TemplateProjectConstants.GURANTEED_DELIVERY_TEMPLATE_HELP_CONTEXT);
-
+            URL url = ProjectCreationUtil.copyReadMe( project , sampleName );            
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

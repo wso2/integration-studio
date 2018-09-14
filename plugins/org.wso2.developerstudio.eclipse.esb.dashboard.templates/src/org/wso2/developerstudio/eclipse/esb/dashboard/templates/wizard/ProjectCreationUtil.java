@@ -43,6 +43,7 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
@@ -57,6 +58,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -365,28 +368,52 @@ public class ProjectCreationUtil {
      * @param fileDesc IFile instance of the file to be opened
      * @param editorID ID of the editor which used to open this file
      */
-    public static void openEditor(Shell shell, IFile fileDesc, String editorId, String helpId) {
+    public static void openEditor(Shell shell, IFile fileDesc, String editorId,  URL url) {
         final Shell shellV = shell;
         final IFile fileRef = fileDesc;
         final String editorID = editorId;
-        final String helpID = helpId;
+        final URL url1 = url;
 
         shellV.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
+                    final IWebBrowser browser = PlatformUI.getWorkbench().getBrowserSupport().createBrowser( "Template" );
+                    browser.openURL( url1 );
+                    
                     IDE.openEditor(page, fileRef, editorID, true);
                     IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                             .findView(IPageLayout.ID_PROJECT_EXPLORER);
                     ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileRef));
-                    openHelp(shellV, helpID);
+                   
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
                 }
             }
         });
+    }
+    
+    
+    public static URL  copyReadMe(IProject project , String sampleName) throws Exception {
+	
+	// copy html
+        File importFile = ResourceUtils.getInstance().getResourceFile("Samples" + File.separator + sampleName + File.separator 
+    	    + "ReadMe.html");
+        
+        IFile htmlFile = project.getFile(new Path( sampleName  + "_.html"));
+        File destFile = htmlFile.getLocation().toFile();
+        FileUtils.copy(importFile, destFile);
+        
+        
+        // open html.
+        IFile fileDeschtml = project.getFile(sampleName  + "_.html");
+        File file = new File ( fileDeschtml.getLocation().toString());
+        URL url = file.toURI().toURL();
+        
+	return url;
+	
     }
 
     /**

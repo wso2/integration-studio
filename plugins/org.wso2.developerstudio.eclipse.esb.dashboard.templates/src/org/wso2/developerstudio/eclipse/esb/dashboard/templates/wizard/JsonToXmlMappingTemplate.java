@@ -42,6 +42,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -174,8 +175,8 @@ public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
                             + File.separator + "SalesforceLeads.xml";
             IFile fileDesc = esbSolutionProject.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
-                    TemplateProjectConstants.JSON_TO_XML_TEMPLATE_HELP_CONTEXT);
+            URL url = ProjectCreationUtil.copyReadMe( esbSolutionProject , sampleName );            
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

@@ -419,6 +419,9 @@ public class ProjectCreationUtil {
         if (artifactName.equals("salesforce-connector")) {
             dependency.setVersion("2.0.2");
             dependency.setType("zip");
+        } else if (artifactName.equals("kafkaTransport-connector")) {
+            dependency.setVersion("2.0.5");
+            dependency.setType("zip");
         }
 
         return dependency;

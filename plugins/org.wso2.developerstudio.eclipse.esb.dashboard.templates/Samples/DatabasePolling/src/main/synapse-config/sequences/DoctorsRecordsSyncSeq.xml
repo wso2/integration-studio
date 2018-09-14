@@ -3,7 +3,7 @@
     <log level="custom">
         <property name="Message" value="Doctor records sync task."/>
     </log>
-    <header name="Action" scope="default" value="urn:request_box"/>
+    <header description="Set SOAPAction header" name="Action" scope="default" value="urn:request_box"/>
     <payloadFactory description="Request payload to send to data service endpoint" media-type="xml">
         <format>
             <dat:request_box xmlns:dat="http://ws.wso2.org/dataservice">

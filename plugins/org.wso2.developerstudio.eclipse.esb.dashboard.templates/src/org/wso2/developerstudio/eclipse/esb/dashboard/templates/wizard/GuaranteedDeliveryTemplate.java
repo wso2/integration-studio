@@ -140,7 +140,7 @@ public class GuaranteedDeliveryTemplate extends Wizard implements INewWizard {
 
             // Open synapse application on sample creation.
             String openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "NumberCalculateService.xml";
+                    + "proxy-services" + File.separator + "UserRegistrationService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             URL url = ProjectCreationUtil.copyReadMe( project , sampleName );            
@@ -173,27 +173,31 @@ public class GuaranteedDeliveryTemplate extends Wizard implements INewWizard {
      */
     private void copyFiles(IProject esbProject, ESBProjectArtifact esbProjectArtifact) {
 
-        String artifactName = "NumberCalculateService";
-        String type = "proxy-services";
+        String artifactName = "MockAPI";
+        String type = "api";
+        ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
+        
+        artifactName = "UserRegistrationService";
+        type = "proxy-services";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
-        artifactName = "NumberCalculateErrorSeq";
+        artifactName = "UserRegistrationErrorSeq";
         type = "sequences";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
-        artifactName = "NumberCaculateResponseSeq";
+        artifactName = "UserRegistrationResponseSeq";
         type = "sequences";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
-        artifactName = "NumberCalculateEP";
+        artifactName = "UserRegistrationEP";
         type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
-        artifactName = "NumberCalculateMS";
+        artifactName = "UserRegistrationMS";
         type = "message-stores";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
-        artifactName = "NumberCalculateMP";
+        artifactName = "UserRegistrationMP";
         type = "message-processors";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
 
@@ -214,33 +218,38 @@ public class GuaranteedDeliveryTemplate extends Wizard implements INewWizard {
         Properties properties = mavenProject.getModel().getProperties();
 
         Dependency dependency = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCalculateService", "proxy-service");
+                .addDependencyForCAPP(groupId, "MockAPI", "api");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
-
+        
         Dependency dependency2 = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCalculateErrorSeq", "sequence");
+                .addDependencyForCAPP(groupId, "UserRegistrationService", "proxy-service");
         dependencyList.add(dependency2);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");
 
         Dependency dependency3 = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCaculateResponseSeq", "sequence");
+                .addDependencyForCAPP(groupId, "UserRegistrationErrorSeq", "sequence");
         dependencyList.add(dependency3);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency3), "capp/EnterpriseServiceBus");
 
-        Dependency dependency4 = ProjectCreationUtil.addDependencyForCAPP(groupId, "NumberCalculateEP", "endpoint");
+        Dependency dependency4 = ProjectCreationUtil
+                .addDependencyForCAPP(groupId, "UserRegistrationResponseSeq", "sequence");
         dependencyList.add(dependency4);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency4), "capp/EnterpriseServiceBus");
 
-        Dependency dependency5 = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCalculateMS", "message-store");
+        Dependency dependency5 = ProjectCreationUtil.addDependencyForCAPP(groupId, "UserRegistrationEP", "endpoint");
         dependencyList.add(dependency5);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency5), "capp/EnterpriseServiceBus");
 
         Dependency dependency6 = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "NumberCalculateMP", "message-processors");
+                .addDependencyForCAPP(groupId, "UserRegistrationMS", "message-store");
         dependencyList.add(dependency6);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency6), "capp/EnterpriseServiceBus");
+
+        Dependency dependency7 = ProjectCreationUtil
+                .addDependencyForCAPP(groupId, "UserRegistrationMP", "message-processors");
+        dependencyList.add(dependency7);
+        properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency7), "capp/EnterpriseServiceBus");
 
         ArtifactTypeMapping artifactTypeMapping = new ArtifactTypeMapping();
         properties.put("artifact.types", artifactTypeMapping.getArtifactTypes());

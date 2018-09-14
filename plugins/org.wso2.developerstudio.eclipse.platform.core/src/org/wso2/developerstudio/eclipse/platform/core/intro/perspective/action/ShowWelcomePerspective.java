@@ -31,6 +31,8 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 import org.wso2.developerstudio.eclipse.platform.core.intro.perspective.Activator;
 
+import java.io.File;
+
 /**
  * Action handler for switch to WSO2 welcome perspective
  *
@@ -41,8 +43,7 @@ public class ShowWelcomePerspective extends Action {
     public void run() {
         try {
             IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-            PlatformUI.getWorkbench().showPerspective("org.wso2.developerstudio.welcome.remote.welcome.pespective",
-                    window);
+            PlatformUI.getWorkbench().showPerspective("org.wso2.developerstudio.welcome.perspective", window);
         } catch (Exception e) {
             log.error("Cannot open welcome perspective", e);
         }
@@ -54,7 +55,8 @@ public class ShowWelcomePerspective extends Action {
 
     public ImageDescriptor getImageDescriptor() {
         return ImageDescriptor.createFromImage(
-                resizeImage(SWTResourceManager.getImage(this.getClass(), "/intro/css/graphics/registry.png"), 16, 16));
+                resizeImage(SWTResourceManager.getImage(this.getClass(), File.separator + "intro" + File.separator
+                        + "css" + File.separator + "graphics" + File.separator + "registry.png"), 16, 16));
     }
 
     public String getDescription() {

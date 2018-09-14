@@ -141,7 +141,7 @@ public class ProxyingARESTAPI extends Wizard implements INewWizard {
             // Open synapse application on sample creation.
             String openFileName =
                     "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator + "api"
-                            + File.separator + "UsersRestAPI.xml";
+                            + File.separator + "UserInfoRestAPI.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
@@ -174,7 +174,7 @@ public class ProxyingARESTAPI extends Wizard implements INewWizard {
      */
     private void copyFiles(IProject esbProject, ESBProjectArtifact esbProjectArtifact) {
 
-        String apiName = "UsersRestAPI";
+        String apiName = "UserInfoRestAPI";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, apiName, esbProjectArtifact, "api");
 
         String endPointName = "UsersHttpEP";
@@ -196,7 +196,7 @@ public class ProxyingARESTAPI extends Wizard implements INewWizard {
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
 
-        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "UsersRestAPI", "api");
+        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "UserInfoRestAPI", "api");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
 

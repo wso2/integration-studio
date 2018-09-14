@@ -140,7 +140,7 @@ public class ProxyingASoapService extends Wizard implements INewWizard {
 
             // Open synapse application on sample creation.
             String openFileName = "src" + File.separator + "main" + File.separator + "synapse-config" + File.separator
-                    + "proxy-services" + File.separator + "EchoService.xml";
+                    + "proxy-services" + File.separator + "ProxyForEchoService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
@@ -173,7 +173,7 @@ public class ProxyingASoapService extends Wizard implements INewWizard {
      */
     private void copyFiles(IProject esbProject, ESBProjectArtifact esbProjectArtifact) {
 
-        String proxyName = "EchoService";
+        String proxyName = "ProxyForEchoService";
         ProjectCreationUtil
                 .copyArtifact(esbProject, groupId, sampleName, proxyName, esbProjectArtifact, "proxy-services");
 
@@ -196,7 +196,7 @@ public class ProxyingASoapService extends Wizard implements INewWizard {
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
 
-        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "EchoService", "proxy-service");
+        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "ProxyForEchoService", "proxy-service");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
 

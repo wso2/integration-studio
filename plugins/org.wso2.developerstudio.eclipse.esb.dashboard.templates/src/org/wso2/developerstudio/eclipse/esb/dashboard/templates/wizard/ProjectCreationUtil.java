@@ -365,10 +365,11 @@ public class ProjectCreationUtil {
      * @param fileDesc IFile instance of the file to be opened
      * @param editorID ID of the editor which used to open this file
      */
-    public static void openEditor(Shell shell, IFile fileDesc, String editorId) {
+    public static void openEditor(Shell shell, IFile fileDesc, String editorId, String helpId) {
         final Shell shellV = shell;
         final IFile fileRef = fileDesc;
         final String editorID = editorId;
+        final String helpID = helpId;
 
         shellV.getDisplay().asyncExec(new Runnable() {
             @Override
@@ -379,19 +380,20 @@ public class ProjectCreationUtil {
                     IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                             .findView(IPageLayout.ID_PROJECT_EXPLORER);
                     ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileRef));
+                    openHelp(shellV, helpID);
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
                 }
             }
         });
-    }            
-    
+    }
+
     /**
-     * Used to open the carbon app pom file with dist project nature.
+     * Used to open the help content of the relevant sample.
      *
-     * @param shell Eclipse shell reference
-     * @param helpId ID of the helop which used to open this file
+     * @param shell  Eclipse shell reference
+     * @param helpId ID of the help which used to open this file
      */
     public static void openHelp(Shell shell, String helpId) {
         final Shell shellV = shell;
@@ -399,11 +401,10 @@ public class ProjectCreationUtil {
         shellV.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
-                //PlatformUI.getWorkbench().getHelpSystem().displayHelp(helpID);
                 PlatformUI.getWorkbench().getHelpSystem().displayHelpResource(helpID);
             }
         });
-    }  
+    }
 
     /**
      * @param groupId

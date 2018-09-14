@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class JMSProxyTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "JMSProxyTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "JMS Integration";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "JMSProxyTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "JMS Integration";
 
     public JMSProxyTemplate() {
         super();
@@ -142,8 +142,8 @@ public class JMSProxyTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "OrderPaymentService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.JMS_PROXY_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.JMS_PROXY_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

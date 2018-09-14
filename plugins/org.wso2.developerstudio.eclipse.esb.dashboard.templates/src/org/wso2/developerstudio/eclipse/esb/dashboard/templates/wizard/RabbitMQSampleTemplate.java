@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class RabbitMQSampleTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "RabbitMQSampleTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "RabbitMQ Integration";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "RabbitMQSampleTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "RabbitMQ Integration";
 
     public RabbitMQSampleTemplate() {
         super();
@@ -142,8 +142,8 @@ public class RabbitMQSampleTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "SalesOrderAddService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.RABBITMQ_SAMPLE_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.RABBITMQ_SAMPLE_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

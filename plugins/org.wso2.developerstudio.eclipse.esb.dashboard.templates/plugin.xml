@@ -317,14 +317,14 @@
                     image="icons/server.png">
         </wizardLink>
     </extension>
-	<extension
-	      point="org.eclipse.help.contexts">
-	   <contexts
-	         file="Samples/HelpContext/HelpContent.xml"
-	         plugin="org.wso2.developerstudio.eclipse.esb.dashboard.templates">
-	   </contexts>
-	</extension>
-	<extension point="org.eclipse.help.toc">
-	<toc file="templatehelpcontent/toc.xml" primary="true" />
-	</extension>
+    <extension
+            point="org.eclipse.help.contexts">
+        <contexts
+                file="Samples/HelpContext/HelpContent.xml"
+                plugin="org.wso2.developerstudio.eclipse.esb.dashboard.templates">
+        </contexts>
+    </extension>
+    <extension point="org.eclipse.help.toc">
+        <toc file="Samples/HelpContext/toc.xml" primary="true"/>
+    </extension>
 </plugin>

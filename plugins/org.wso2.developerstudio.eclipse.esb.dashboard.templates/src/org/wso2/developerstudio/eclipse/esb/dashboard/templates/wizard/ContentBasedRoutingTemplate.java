@@ -49,13 +49,13 @@ import java.util.Properties;
  */
 public class ContentBasedRoutingTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "ContentBasedRoutingTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Content Based Routing";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "ContentBasedRoutingTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "Content Based Routing";
 
     public ContentBasedRoutingTemplate() {
         super();
@@ -143,9 +143,8 @@ public class ContentBasedRoutingTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "ArithmaticOperationService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.CONTENT_BASED_ROUTING_TEMPLATE_HELP_CONTEXT);
-
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.CONTENT_BASED_ROUTING_TEMPLATE_HELP_CONTEXT);
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

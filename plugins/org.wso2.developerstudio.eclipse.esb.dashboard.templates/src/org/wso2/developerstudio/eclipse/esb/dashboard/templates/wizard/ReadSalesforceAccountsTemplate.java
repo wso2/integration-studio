@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class ReadSalesforceAccountsTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "ReadSalesforceAccountsTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Fetch SalesForce Account Information";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "ReadSalesforceAccountsTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "Fetch SalesForce Account Information";
 
     public ReadSalesforceAccountsTemplate() {
         super();
@@ -154,8 +154,8 @@ public class ReadSalesforceAccountsTemplate extends Wizard implements INewWizard
                     + "proxy-services" + File.separator + "SalesforceAccountService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.READ_SALESFORCE_ACCOUNT_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.READ_SALESFORCE_ACCOUNT_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

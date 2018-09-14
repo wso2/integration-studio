@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class MessageFilteringTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "MessageFilteringTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Message Filtering";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "MessageFilteringTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "Message Filtering";
 
     public MessageFilteringTemplate() {
         super();
@@ -143,8 +143,8 @@ public class MessageFilteringTemplate extends Wizard implements INewWizard {
                             + File.separator + "PhoneVerifyAPI.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.MESSAGE_FILTERING_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.MESSAGE_FILTERING_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

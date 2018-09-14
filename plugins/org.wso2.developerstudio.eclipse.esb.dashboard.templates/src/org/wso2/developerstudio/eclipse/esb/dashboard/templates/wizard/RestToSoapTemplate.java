@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class RestToSoapTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "RestToSoapTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "REST to SOAP Conversion";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "RestToSoapTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "REST to SOAP Conversion";
 
     public RestToSoapTemplate() {
         super();
@@ -143,8 +143,8 @@ public class RestToSoapTemplate extends Wizard implements INewWizard {
                             + File.separator + "CityInformationAPI.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.REST_TO_SOAP_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.REST_TO_SOAP_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

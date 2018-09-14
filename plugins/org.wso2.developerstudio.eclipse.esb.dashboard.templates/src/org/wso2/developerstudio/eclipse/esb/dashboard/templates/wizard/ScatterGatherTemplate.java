@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class ScatterGatherTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "ScatterGatherTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Scatter Gather Integration Pattern";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "ScatterGatherTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "Scatter Gather Integration Pattern";
 
     public ScatterGatherTemplate() {
         super();
@@ -142,8 +142,8 @@ public class ScatterGatherTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "MissionService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.SCATTER_GATHER_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.SCATTER_GATHER_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

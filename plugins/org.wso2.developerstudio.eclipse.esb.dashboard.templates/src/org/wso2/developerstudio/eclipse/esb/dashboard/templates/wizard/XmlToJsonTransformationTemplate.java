@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class XmlToJsonTransformationTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "XmlToJsonTransformationTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "XML To JSON Transformation";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "XmlToJsonTransformationTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "XML To JSON Transformation";
 
     public XmlToJsonTransformationTemplate() {
         super();
@@ -143,8 +143,8 @@ public class XmlToJsonTransformationTemplate extends Wizard implements INewWizar
                             + File.separator + "ScienceLabAPI.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.XML_TO_JSON_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.XML_TO_JSON_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

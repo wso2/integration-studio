@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class ScheduleTaskTeamplate extends Wizard implements INewWizard {
 
+    String sampleName = "ScheduleTaskTeamplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Periodical Scheduled Tasks";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "ScheduleTaskTeamplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "Periodical Scheduled Tasks";
 
     public ScheduleTaskTeamplate() {
         super();
@@ -143,8 +143,8 @@ public class ScheduleTaskTeamplate extends Wizard implements INewWizard {
                             + File.separator + "PersonRecordRetrieveTask.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.SCHEDULED_TASK_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.SCHEDULED_TASK_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

@@ -49,13 +49,13 @@ import java.util.Properties;
  */
 public class ProxyingARESTAPI extends Wizard implements INewWizard {
 
+    String sampleName = "ProxyingRestAPITemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Proxying a REST Service";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "ProxyingRestAPITemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "Proxying a REST Service";
 
     public ProxyingARESTAPI() {
         super();
@@ -144,8 +144,8 @@ public class ProxyingARESTAPI extends Wizard implements INewWizard {
                             + File.separator + "UserInfoRestAPI.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.PROXYING_REST_API_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.PROXYING_REST_API_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

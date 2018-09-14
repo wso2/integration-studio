@@ -35,8 +35,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.help.IWorkbenchHelpSystem;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
@@ -51,14 +49,14 @@ import java.util.Properties;
  */
 public class HelloWorldService extends Wizard implements INewWizard {
 
+    String sampleName = "HelloWorld";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Hello World Service";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     // private File pomfile;
     private String groupId;
-    String sampleName = "HelloWorld";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "Hello World Service";
 
     public HelloWorldService() {
         super();
@@ -147,8 +145,8 @@ public class HelloWorldService extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "HelloWorld.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.HELLO_WORLD_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.HELLO_WORLD_TEMPLATE_HELP_CONTEXT);
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

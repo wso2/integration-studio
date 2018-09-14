@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class KafkaTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "KafkaTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Kafka Consumer and Producer";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "KafkaTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "Kafka Consumer and Producer";
 
     public KafkaTemplate() {
         super();
@@ -157,7 +157,8 @@ public class KafkaTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "WeatherDataPublishService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.KAFKA_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

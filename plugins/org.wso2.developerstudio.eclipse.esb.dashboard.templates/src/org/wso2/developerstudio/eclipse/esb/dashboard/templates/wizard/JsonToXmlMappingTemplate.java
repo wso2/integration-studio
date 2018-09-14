@@ -51,13 +51,13 @@ import java.util.Properties;
  */
 public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "JsonToXmlMappingTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "JSON to XML Mapping";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "JsonToXmlMappingTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "JSON to XML Mapping";
 
     public JsonToXmlMappingTemplate() {
         super();
@@ -174,8 +174,8 @@ public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
                             + File.separator + "SalesforceLeads.xml";
             IFile fileDesc = esbSolutionProject.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.JSON_TO_XML_MAPPING_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.JSON_TO_XML_TEMPLATE_HELP_CONTEXT);
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

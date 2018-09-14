@@ -51,13 +51,13 @@ import java.util.Properties;
  */
 public class XmlToJsonMappingTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "XmlToJsonMappingTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "XML to JSON Mapping";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "XmlToJsonMappingTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "XML to JSON Mapping";
 
     public XmlToJsonMappingTemplate() {
         super();
@@ -173,7 +173,8 @@ public class XmlToJsonMappingTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "EngineerEmployeeService.xml";
             IFile fileDesc = esbSolutionProject.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.JSON_TO_XML_MAPPING_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

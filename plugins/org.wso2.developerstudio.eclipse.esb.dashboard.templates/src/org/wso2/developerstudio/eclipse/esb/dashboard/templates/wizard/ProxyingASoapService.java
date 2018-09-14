@@ -49,13 +49,13 @@ import java.util.Properties;
  */
 public class ProxyingASoapService extends Wizard implements INewWizard {
 
+    String sampleName = "ProxyingSoapServiceTemplate";
+    String baseId = "wso2.sampleProxyingSoapServiceTemplate.";
+    String name = "Proxying a SOAP Service";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "ProxyingSoapServiceTemplate";
-    String baseId = "wso2.sampleProxyingSoapServiceTemplate.";
-    String name = "Proxying a SOAP Service";
 
     public ProxyingASoapService() {
         super();
@@ -143,8 +143,8 @@ public class ProxyingASoapService extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "ProxyForEchoService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.PROXYING_SOAP_API_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.PROXYING_SOAP_API_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil
@@ -197,7 +197,8 @@ public class ProxyingASoapService extends Wizard implements INewWizard {
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
 
-        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "ProxyForEchoService", "proxy-service");
+        Dependency dependency = ProjectCreationUtil
+                .addDependencyForCAPP(groupId, "ProxyForEchoService", "proxy-service");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
 

@@ -48,13 +48,13 @@ import java.util.Properties;
  */
 public class ProtocolSwitchingTemplate extends Wizard implements INewWizard {
 
+    String sampleName = "ProtocolSwitchingTemplate";
+    String baseId = "wso2.sample" + sampleName + ".";
+    String name = "Protocol Switching";
     private TemplateProjectWizardPage page;
     private ISelection selection;
     private TemplateWizardUtil templateWizardUtil;
     private String groupId;
-    String sampleName = "ProtocolSwitchingTemplate";
-    String baseId = "wso2.sample" + sampleName + ".";
-    String name = "Protocol Switching";
 
     public ProtocolSwitchingTemplate() {
         super();
@@ -142,8 +142,8 @@ public class ProtocolSwitchingTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "StudentRegistrationService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID);
-            ProjectCreationUtil.openHelp(shell, TemplateProjectConstants.PROTOCOL_SWITCHING_TEMPLATE_HELP_CONTEXT);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID,
+                    TemplateProjectConstants.PROTOCOL_SWITCHING_TEMPLATE_HELP_CONTEXT);
 
         } catch (CoreException ex) {
             templateWizardUtil

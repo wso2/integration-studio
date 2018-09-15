@@ -175,7 +175,7 @@ public class JsonToXmlMappingTemplate extends Wizard implements INewWizard {
                             + File.separator + "SalesforceLeads.xml";
             IFile fileDesc = esbSolutionProject.getFile(openFileName);
             Shell shell = getShell();
-            URL url = ProjectCreationUtil.copyReadMe( esbSolutionProject , sampleName );            
+            URL url = ProjectCreationUtil.copyReadMe(esbSolutionProject, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
         } catch (CoreException ex) {
             templateWizardUtil

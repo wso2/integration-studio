@@ -143,7 +143,7 @@ public class GuaranteedDeliveryTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "UserRegistrationService.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            URL url = ProjectCreationUtil.copyReadMe( project , sampleName );            
+            URL url = ProjectCreationUtil.copyReadMe(project, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
         } catch (CoreException ex) {
             templateWizardUtil
@@ -176,7 +176,7 @@ public class GuaranteedDeliveryTemplate extends Wizard implements INewWizard {
         String artifactName = "MockAPI";
         String type = "api";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-        
+
         artifactName = "UserRegistrationService";
         type = "proxy-services";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
@@ -217,11 +217,10 @@ public class GuaranteedDeliveryTemplate extends Wizard implements INewWizard {
         MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
         Properties properties = mavenProject.getModel().getProperties();
 
-        Dependency dependency = ProjectCreationUtil
-                .addDependencyForCAPP(groupId, "MockAPI", "api");
+        Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "MockAPI", "api");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
-        
+
         Dependency dependency2 = ProjectCreationUtil
                 .addDependencyForCAPP(groupId, "UserRegistrationService", "proxy-service");
         dependencyList.add(dependency2);

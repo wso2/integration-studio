@@ -144,9 +144,8 @@ public class RestToSoapTemplate extends Wizard implements INewWizard {
                             + File.separator + "CityInformationAPI.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            URL url = ProjectCreationUtil.copyReadMe( project , sampleName );            
+            URL url = ProjectCreationUtil.copyReadMe(project, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
-
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

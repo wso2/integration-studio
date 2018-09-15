@@ -174,9 +174,8 @@ public class XmlToJsonMappingTemplate extends Wizard implements INewWizard {
                     + "proxy-services" + File.separator + "EngineerEmployeeService.xml";
             IFile fileDesc = esbSolutionProject.getFile(openFileName);
             Shell shell = getShell();
-            URL url = ProjectCreationUtil.copyReadMe( esbSolutionProject , sampleName );            
+            URL url = ProjectCreationUtil.copyReadMe(esbSolutionProject, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
-
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);

@@ -145,9 +145,8 @@ public class HeaderBasedRoutingTemplate extends Wizard implements INewWizard {
                             + File.separator + "CalculatorAPI.xml";
             IFile fileDesc = project.getFile(openFileName);
             Shell shell = getShell();
-            URL url = ProjectCreationUtil.copyReadMe( project , sampleName );            
+            URL url = ProjectCreationUtil.copyReadMe(project, sampleName);
             ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.SYNAPSE_CONFIG_EDITOR_ID, url);
-
         } catch (CoreException ex) {
             templateWizardUtil
                     .throwCoreException(TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, null);
@@ -179,7 +178,7 @@ public class HeaderBasedRoutingTemplate extends Wizard implements INewWizard {
         String artifactName = "CalculatorAPI";
         String type = "api";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
-        
+
         artifactName = "CalculatorAddEP";
         type = "endpoints";
         ProjectCreationUtil.copyArtifact(esbProject, groupId, sampleName, artifactName, esbProjectArtifact, type);
@@ -207,7 +206,7 @@ public class HeaderBasedRoutingTemplate extends Wizard implements INewWizard {
         Dependency dependency = ProjectCreationUtil.addDependencyForCAPP(groupId, "CalculatorAPI", "api");
         dependencyList.add(dependency);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency), "capp/EnterpriseServiceBus");
-        
+
         Dependency dependency2 = ProjectCreationUtil.addDependencyForCAPP(groupId, "CalculatorAddEP", "endpoint");
         dependencyList.add(dependency2);
         properties.put(ProjectCreationUtil.getArtifactInfoAsString(dependency2), "capp/EnterpriseServiceBus");

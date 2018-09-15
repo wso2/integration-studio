@@ -317,4 +317,10 @@
                     image="icons/server.png">
         </wizardLink>
     </extension>
+    <extension point="org.eclipse.ui.views">
+      <view id="org.wso2.developerstudio.eclipse.esb.templates.view"
+         name="Template Guide"
+         class="org.wso2.developerstudio.eclipse.esb.dashboard.templates.wizard.TemplateGuideView"
+         icon="icons/server.png"/>
+    </extension>
 </plugin>

@@ -379,15 +379,15 @@ public class ProjectCreationUtil {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
                     // Open HTML
-                    final IWebBrowser browser = PlatformUI.getWorkbench().getBrowserSupport().createBrowser("Template");
-                    browser.openURL(url1);
+                    //final IWebBrowser browser = PlatformUI.getWorkbench().getBrowserSupport().createBrowser("Template");
+                    //browser.openURL(url1);
 
                     // Open Synapse Configuration and expand
                     IDE.openEditor(page, fileRef, editorID, true);
                     IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                             .findView(IPageLayout.ID_PROJECT_EXPLORER);
                     ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileRef));
-
+                    openHelp(shellV, url1);
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
@@ -427,15 +427,24 @@ public class ProjectCreationUtil {
      * Used to open the help content of the relevant sample.
      *
      * @param shell  Eclipse shell reference
-     * @param helpId ID of the help which used to open this file
+     * @param helpURL URL of the help html page
      */
-    public static void openHelp(Shell shell, String helpId) {
-        final Shell shellV = shell;
-        final String helpID = helpId;
-        shellV.getDisplay().asyncExec(new Runnable() {
+    public static void openHelp(Shell shell, URL helpURL) {
+        final Shell shellRef = shell;
+        final URL helpUrl = helpURL;
+
+        shellRef.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
-                PlatformUI.getWorkbench().getHelpSystem().displayHelpResource(helpID);
+                try {
+                    TemplateGuideView templateGuideView = (TemplateGuideView) PlatformUI.getWorkbench()
+                            .getActiveWorkbenchWindow().getActivePage()
+                            .showView(TemplateProjectConstants.TEMPLATE_GUIDE_VIEW_ID);
+                    templateGuideView.setURL(helpUrl);
+                } catch (PartInitException e) {
+                    MessageDialog.openError(shellRef, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR,
+                            e.getMessage());
+                }
             }
         });
     }

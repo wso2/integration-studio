@@ -533,7 +533,7 @@ public class ProcessSourceView {
                                     || currentMediator != null && !currentMediator.getqName().equals("filter")))
                                     || (tempTag.getTagType() != 3
                                     && (currentMediator != null && tempTag.getqName().equals(currentMediator.getqName())
-                                            || (artifacts.contains(tempTag.getqName()))))) {
+                                            || (artifacts.contains(tempTag.getqName()) && !artifactType.equals("localEntry"))))) {
                                 if ((!tempTag.getqName().equals("endpoint")
                                         || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp))) {
                                     sourceError = mediatorValidation();

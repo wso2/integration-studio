@@ -260,46 +260,5 @@ public class TemplateProjectConstants {
     public final static String JDT_PROJECT_NATURE = "org.eclipse.jdt.core.javanature";
 
     public final static String TEMPLATE_GUIDE_VIEW_ID = "org.wso2.developerstudio.eclipse.esb.templates.view";
-
-    public final static String HELLO_WORLD_TEMPLATE_HELP_CONTEXT = "/HelloWorld/ReadMe.html";
-
-    public final static String CONTENT_BASED_ROUTING_TEMPLATE_HELP_CONTEXT = "/ContentBasedRoutingTemplate/ReadMe.html";
-
-    public final static String DB_POLLING_TEMPLATE_HELP_CONTEXT = "/DatabasePolling/ReadMe.html";
-
-    public final static String EXCEPTION_HANDLING_TEMPLATE_HELP_CONTEXT = "/ExceptionHandlingTemplate/ReadMe.html";
-
-    public final static String FILE_TRANSFER_TEMPLATE_HELP_CONTEXT = "/FileTransferTeamplate/ReadMe.html";
-
-    public final static String GURANTEED_DELIVERY_TEMPLATE_HELP_CONTEXT = "/GuaranteedDeliveryTemplate/ReadMe.html";
-
-    public final static String HEADER_BASED_ROUTING_TEMPLATE_HELP_CONTEXT = "/HeaderBasedRoutingTemplate/ReadMe.html";
-
-    public final static String JMS_PROXY_TEMPLATE_HELP_CONTEXT = "/JMSProxyTemplate/ReadMe.html";
-
-    public final static String JSON_TO_XML_MAPPING_TEMPLATE_HELP_CONTEXT = "/JsonToXmlMappingTemplate/ReadMe.html";
-
-    public final static String MESSAGE_FILTERING_TEMPLATE_HELP_CONTEXT = "/MessageFilteringTemplate/ReadMe.html";
-
-    public final static String PROTOCOL_SWITCHING_TEMPLATE_HELP_CONTEXT = "/ProtocolSwitchingTemplate/ReadMe.html";
-
-    public final static String PROXYING_REST_API_TEMPLATE_HELP_CONTEXT = "/ProxyingRestAPITemplate/ReadMe.html";
-
-    public final static String PROXYING_SOAP_API_TEMPLATE_HELP_CONTEXT = "/ProxyingSoapServiceTemplate/ReadMe.html";
-
-    public final static String RABBITMQ_SAMPLE_TEMPLATE_HELP_CONTEXT = "/RabbitMQSampleTemplate/ReadMe.html";
-
-    public final static String READ_SALESFORCE_ACCOUNT_TEMPLATE_HELP_CONTEXT = "/ReadSalesforceAccountsTemplate/ReadMe.html";
-
-    public final static String REST_TO_SOAP_TEMPLATE_HELP_CONTEXT = "/RestToSoapTemplate/ReadMe.html";
-
-    public final static String SCATTER_GATHER_TEMPLATE_HELP_CONTEXT = "/ScatterGatherTemplate/ReadMe.html";
-
-    public final static String SCHEDULED_TASK_TEMPLATE_HELP_CONTEXT = "/ScheduleTaskTeamplate/ReadMe.html";
-
-    public final static String XML_TO_JSON_TEMPLATE_HELP_CONTEXT = "/XmlToJsonTransformationTemplate/ReadMe.html";
-
-    public final static String JSON_TO_XML_TEMPLATE_HELP_CONTEXT = "/JsonToXmlMappingTemplate/ReadMe.html";
-
-    public final static String KAFKA_TEMPLATE_HELP_CONTEXT = "/KafkaTemplate/ReadMe.html";
+    
 }

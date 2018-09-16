@@ -227,8 +227,8 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
         double zoom = esbMultiPageEditor.getZoom();
         org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
 
-        currentFigureLocation = new Point((x + horizontal - p.x - (offSetX*zoom)) / zoom,
-                (y + vertical - p.y - (offSetY*zoom)) / zoom);
+        currentFigureLocation = new Point((x + horizontal - p.x - (offSetX * zoom)) / zoom,
+                (y + vertical - p.y - (offSetY * zoom)) / zoom);
     }
 
     /**
@@ -381,7 +381,9 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
         if ((yDistance1 != 0) && ((yDistance2 == 0) || (yDistance1 < yDistance2))) {
             yCurrent = yDistance1;
-            nearConnector = nearForwardConnector;
+            if (EastCurrent > 20) {
+                nearConnector = nearForwardConnector;
+            }
         } else {
             yCurrent = yDistance2;
             nearConnector = nearReverseConnector;
@@ -531,8 +533,9 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
             EditPart element = (EditPart) getHost().getViewer().getEditPartRegistry().values().toArray()[i];
 
             if (element instanceof EsbLinkEditPart) {
-                if(EditorUtils.getEndpoint((AbstractConnectorEditPart) ((EsbLinkEditPart)element).getSource())!=null){
-                    if(!((EsbLinkEditPart)element).getSource().getParent().getParent().equals(getHost())){
+                if (EditorUtils
+                        .getEndpoint((AbstractConnectorEditPart) ((EsbLinkEditPart) element).getSource()) != null) {
+                    if (!((EsbLinkEditPart) element).getSource().getParent().getParent().equals(getHost())) {
                         continue;
                     }
                 }
@@ -540,43 +543,33 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
             }
 
             if (element instanceof AbstractOutputConnectorEditPart) {
-                if (((AbstractOutputConnectorEditPart) element).getParent()
-                        .getParent().equals(getHost())) {
-                    outputConnectorEditpartList
-                            .add((AbstractOutputConnectorEditPart) element);
+                if (((AbstractOutputConnectorEditPart) element).getParent().getParent().equals(getHost())) {
+                    outputConnectorEditpartList.add((AbstractOutputConnectorEditPart) element);
 
-                } else if (((AbstractOutputConnectorEditPart) element)
-                        .getParent().equals(
-                                getHost().getParent().getParent()
-                                        .getParent().getParent())) {
+                } else if (((AbstractOutputConnectorEditPart) element).getParent()
+                        .equals(getHost().getParent().getParent().getParent().getParent())) {
                     /*
                      * for proxy service output Connector
                      */
-                    outputConnectorEditpartList
-                            .add((AbstractOutputConnectorEditPart) element);
+                    outputConnectorEditpartList.add((AbstractOutputConnectorEditPart) element);
 
-                } else if (((AbstractOutputConnectorEditPart) element)
-                        .getParent().equals(
-                                getHost().getParent().getParent())) {
+                } else if (((AbstractOutputConnectorEditPart) element).getParent()
+                        .equals(getHost().getParent().getParent())) {
                     /*
                      * for sequences output Connector
                      */
-                    outputConnectorEditpartList
-                            .add((AbstractOutputConnectorEditPart) element);
+                    outputConnectorEditpartList.add((AbstractOutputConnectorEditPart) element);
 
-                } else if (((AbstractOutputConnectorEditPart) element)
-                        .getParent().equals(
-                                getHost().getParent().getParent()
-                                        .getParent().getParent().getParent())) {
+                } else if (((AbstractOutputConnectorEditPart) element).getParent()
+                        .equals(getHost().getParent().getParent().getParent().getParent().getParent())) {
                     /*
                      * Switch mediator case or default branch.
                      */
-                    outputConnectorEditpartList
-                            .add((AbstractOutputConnectorEditPart) element);
+                    outputConnectorEditpartList.add((AbstractOutputConnectorEditPart) element);
                 }
             }
         }
-        
+
         Control ctrl = getHost().getViewer().getControl();
         FigureCanvas canvas = (FigureCanvas) ctrl;
         int horizontal = canvas.getHorizontalBar().getSelection();

@@ -70,5 +70,7 @@ public class TemplateProjectConstants {
     public static final String DS_PROJECT_DATASERVICE_FOLDER = "dataservice";
 
     public static final String DS_EDITOR_ID = "org.wso2.developerstudio.eclipse.ds.presentation.DsEditorID";
+    
+    public final static String TEMPLATE_GUIDE_VIEW_ID = "org.wso2.developerstudio.eclipse.esb.templates.view";
 
 }

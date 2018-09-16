@@ -162,8 +162,6 @@ button:focus{
     opacity: 1;
 }
 
-
-
 .thumb-caption {
     background: #fff;
     border-color: #E6E6E6;
@@ -173,7 +171,7 @@ button:focus{
     padding: 10px;
 }
 figcaption{
-    width: 180px;
+    width: 90%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

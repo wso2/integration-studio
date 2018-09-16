@@ -47,9 +47,12 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.templates.dashboard.help.TemplateGuideView;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 import java.io.File;
+import java.net.URL;
 
 /**
  * Util class to for sample template creation.
@@ -185,32 +188,88 @@ public class ProjectCreationUtil {
     }
 
     /**
-     * Used to open the carbon app pom file with dist project nature.
+     * Used to open the relevant artifact.
      *
      * @param shell    Eclipse shell reference
      * @param fileDesc IFile instance of the file to be opened
      * @param editorID ID of the editor which used to open this file
      */
-    public static void openEditor(Shell shell, IFile fileDesc, String editorId) {
+    public static void openEditor(Shell shell, IFile fileDesc, String editorId, URL url) {
         final Shell shellV = shell;
         final IFile fileRef = fileDesc;
         final String editorID = editorId;
+        final URL url1 = url;
 
         shellV.getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
                 IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                 try {
+                    // Open Synapse Configuration and expand
                     IDE.openEditor(page, fileRef, editorID, true);
                     IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                             .findView(IPageLayout.ID_PROJECT_EXPLORER);
                     ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileRef));
+                    openHelp(shellV, url1);
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
                 }
             }
         });
+    }
+
+    /**
+     * Used to open the help content of the relevant sample.
+     *
+     * @param shell   Eclipse shell reference
+     * @param helpURL URL of the help html page
+     */
+    public static void openHelp(Shell shell, URL helpURL) {
+        final Shell shellRef = shell;
+        final URL helpUrl = helpURL;
+
+        shellRef.getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    TemplateGuideView templateGuideView = (TemplateGuideView) PlatformUI.getWorkbench()
+                            .getActiveWorkbenchWindow().getActivePage()
+                            .showView(TemplateProjectConstants.TEMPLATE_GUIDE_VIEW_ID);
+                    templateGuideView.setURL(helpUrl);
+                } catch (PartInitException e) {
+                    MessageDialog
+                            .openError(shellRef, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
+                }
+            }
+        });
+    }
+
+    /**
+     * Copy the ReadMe.html to the project.
+     *
+     * @param project
+     * @param sampleName
+     * @return
+     * @throws Exception
+     */
+    public static URL copyReadMe(IProject project, String sampleName) throws Exception {
+
+        // copy html
+        File importFile = ResourceTemplateUtils.getInstance()
+                .getResourceFile("Samples" + File.separator + sampleName + File.separator + "ReadMe.html");
+
+        IFile htmlFile = project.getFile(new Path("ReadMe.html"));
+        File destFile = htmlFile.getLocation().toFile();
+        FileUtils.copy(importFile, destFile);
+
+        IFile fileDeschtml = project.getFile("ReadMe.html");
+        File file = new File(fileDeschtml.getLocation().toString());
+        URL url = file.toURI().toURL();
+        project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+
+        return url;
+
     }
 
     /**

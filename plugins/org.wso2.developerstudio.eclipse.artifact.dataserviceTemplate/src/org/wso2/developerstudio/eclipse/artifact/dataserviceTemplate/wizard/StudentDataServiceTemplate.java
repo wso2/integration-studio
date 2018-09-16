@@ -42,6 +42,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -51,7 +52,7 @@ import java.util.Properties;
  */
 public class StudentDataServiceTemplate extends Wizard implements INewWizard {
 
-    String sampleName = "Student";
+    String sampleName = "StudentDataService";
     String baseId = "wso2.sample" + sampleName + ".";
     String name = "Students Data Service";
     private TemplateProjectWizardPage page;
@@ -153,8 +154,8 @@ public class StudentDataServiceTemplate extends Wizard implements INewWizard {
             String openFileName = "dataservice" + File.separator + "StudentDataService.dbs";
             IFile fileDesc = dssServiceProject.getFile(openFileName);
             Shell shell = getShell();
-            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.DS_EDITOR_ID);
-
+            URL url = ProjectCreationUtil.copyReadMe(dssServiceProject, sampleName);
+            ProjectCreationUtil.openEditor(shell, fileDesc, TemplateProjectConstants.DS_EDITOR_ID, url);
         } catch (CoreException ex) {
             IStatus status = new Status(IStatus.ERROR, TemplateProjectConstants.PLUGIN_ID, IStatus.OK,
                     TemplateProjectConstants.THE_PROJECT_EXISTS_IN_THE_WORKSPACE_MESSAGE, ex);
@@ -189,8 +190,7 @@ public class StudentDataServiceTemplate extends Wizard implements INewWizard {
     private void copyDSSFiles(IProject dssProject, DSSProjectArtifact dssProjectArtifact, String groupID) {
 
         String artifactName = "StudentDataService";
-        DSSProjectCreationUtil
-                .copyArtifact(dssProject, sampleName + "DataService", artifactName, dssProjectArtifact, groupID);
+        DSSProjectCreationUtil.copyArtifact(dssProject, sampleName, artifactName, dssProjectArtifact, groupID);
 
     }
 

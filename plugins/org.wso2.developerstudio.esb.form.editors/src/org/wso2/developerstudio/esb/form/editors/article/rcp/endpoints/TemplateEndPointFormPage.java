@@ -23,7 +23,6 @@ import java.util.List;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -262,13 +261,10 @@ public class TemplateEndPointFormPage extends EndpointFormPage {
 							}
 						} catch (Exception e) {
 							log.error("Error occured while scanning the project for artifacts", e);
-							ErrorDialog.openError(shell, "Error occured while scanning the project for artifacts",
-									e.getMessage(), null);
 						}
 					}
 				} catch (CoreException e) {
 					log.error("Error occured while scanning the project", e);
-					ErrorDialog.openError(shell, "Error occured while scanning the project", e.getMessage(), null);
 				}
 			}
 		}

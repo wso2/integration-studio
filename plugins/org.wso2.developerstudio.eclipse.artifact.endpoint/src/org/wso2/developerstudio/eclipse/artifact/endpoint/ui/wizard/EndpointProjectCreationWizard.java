@@ -33,6 +33,7 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -56,7 +57,6 @@ import org.wso2.developerstudio.eclipse.artifact.endpoint.utils.EpArtifactConsta
 import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.HttpMethodList.HttpMethodType;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.ProjectFilter;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
-// import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
@@ -440,16 +440,16 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		templateContent = templateContent.replaceAll("\\}", ">");
 		String newContent = StringUtils.replace(templateContent, "<ep.name>", epModel.getEpName());
 		if (type.equals(EpArtifactConstants.ADDRESS_EP)) {
-			newContent = StringUtils.replace(newContent, "<address.uri>", epModel.getAddressEPURI());
+			newContent = StringUtils.replace(newContent, "<address.uri>", StringEscapeUtils.escapeHtml(epModel.getAddressEPURI()));
 		} else if (type.equals(EpArtifactConstants.WSDL_EP)) {
-			newContent = StringUtils.replace(newContent, "<wsdl.uri>", epModel.getWsdlEPURI());
+			newContent = StringUtils.replace(newContent, "<wsdl.uri>", StringEscapeUtils.escapeHtml(epModel.getWsdlEPURI()));
 			newContent = StringUtils.replace(newContent, "<service.name>", epModel.getWsdlEPService());
 			newContent = StringUtils.replace(newContent, "<service.port>", epModel.getWsdlEPPort());
 		} else if (type.equals(EpArtifactConstants.TEMPLATE_EP)) {
-			newContent = StringUtils.replace(newContent, "<ep.uri>", epModel.getTemplateEPURI());
+			newContent = StringUtils.replace(newContent, "<ep.uri>", StringEscapeUtils.escapeHtml(epModel.getTemplateEPURI()));
 			newContent = StringUtils.replace(newContent, "<ep.template>", epModel.getTemplateEPTargetTemp());
 		} else if (type.equals(EpArtifactConstants.HTTP_EP)) {
-			newContent = StringUtils.replace(newContent, "<http.uritemplate>", epModel.getHttpUriTemplate());
+			newContent = StringUtils.replace(newContent, "<http.uritemplate>", StringEscapeUtils.escapeHtml(epModel.getHttpUriTemplate()));
 			if (!HttpMethodType.Leave_as_is.name().equals(epModel.getHttpMethod().name())) {
 				newContent =
 				             StringUtils.replace(newContent, "<http.method>", epModel.getHttpMethod().name()

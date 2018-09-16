@@ -1,25 +1,129 @@
 <!DOCTYPE html>
 <html>
-<title>Hello World</title>
+<title>Hello World Sample</title>
 <head>
 </head>
 <body>
-<div id="content">
-    <h1>Hello World Sample</h1>
-    <h3>About the Sample</h3>
-    <ul>
-        <li><h4>Scenario Description</h4></li>
-        <li><h4>Sample Description</h4></li>
-    </ul>
-    <h3>Summary of Artifacts</h3>
-    <ul>
-        <li>Hello World Proxy Service</li>
-    </ul>
-    <h3>How to deploy in EI</h3>
-    <ol>
-        <li>Right click on carbon application project</li>
-        <li>Select export composite application project</li>
-    </ol>
-</div>
+	<div id="content">
+		<h1>Hello World Sample</h1>
+		<h3>About the Sample</h3>
+		<p>
+			<span style="font-weight: 400;">This template contains a
+				simple service exposed over HTTP protocol.</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">When the service get invoked,
+				a simple message is generated and sent back to the client as the
+				response.</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">Two projects get created with
+				this template. </span><strong>ESB project</strong><span
+				style="font-weight: 400;"> contains all the ESB artifacts and
+				the </span><strong>Composite Application project</strong><span
+				style="font-weight: 400;"> is used to package and export the
+				artifacts created within the ESB project.</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">ESB project contains a simple
+			</span><a
+				href="https://docs.wso2.com/display/EI630/Working+with+Proxy+Services"><strong>Proxy
+					service</strong></a><span style="font-weight: 400;"> called
+				&lsquo;HelloWorld&rsquo; which generates and send a json message
+				when it is invoked.</span>
+		</p>
+		<h3>Executing the sample</h3>
+		<ol>
+			<li><span style="font-weight: 400;"> Configure EI server</span></li>
+		</ol>
+		<p>
+			<span style="font-weight: 400;">Attach an EI server runtime
+				into the Developer Studio following the instructions given below (if
+				you haven&rsquo;t already done).</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">Navigate to the Developer
+				Studio Dashboard and click </span><strong>Server</strong><span
+				style="font-weight: 400;"> under </span><strong>Add Server</strong><span
+				style="font-weight: 400;">.</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">In the &lsquo;</span><strong>Define
+				a New Server</strong><span style="font-weight: 400;">&rsquo; dialog
+				box, expand the WSO2 folder, and select the respective product and
+				version.</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">Click </span><strong>Next</strong><span
+				style="font-weight: 400;">, click </span><strong>Browse</strong><span
+				style="font-weight: 400;"> that is next to CARBON_HOME, and
+				select the WSO2 EI distribution directory, to define the server
+				runtime environment and click </span><strong>Next</strong><span
+				style="font-weight: 400;">.</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">Review the default port
+				details for the ESB profile of WSO2 EI. Typically, you can leave
+				these unchanged, but if you are already running another server on
+				these ports, specify unused ports here. (See </span><a
+				href="https://docs.wso2.com/display/ADMIN44x/Default+Ports+of+WSO2+Products"><span
+				style="font-weight: 400;">Default Ports of WSO2 Products</span></a><span
+				style="font-weight: 400;"> for more information.) Click </span><strong>Next</strong><span
+				style="font-weight: 400;">. </span>
+		</p>
+		<ol start="2">
+			<li><span style="font-weight: 400;"> Deploy the CApp
+					project.</span></li>
+		</ol>
+		<p>
+			<span style="font-weight: 400;">To deploy the CApp project in
+				the ESB server that we just added, select relevant project from the
+				list, click </span><strong>Add</strong><span style="font-weight: 400;">
+				to move it into the Configured list, and then click </span><strong>Finish</strong><span
+				style="font-weight: 400;">.</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">Please refer to </span><a
+				href="https://docs.wso2.com/display/ADMIN44x/Deploying+Composite+Applications+in+the+Server#DeployingCompositeApplicationsintheServer-DeployingusingtheToolinginterface"><span
+				style="font-weight: 400;">this resource</span></a><span
+				style="font-weight: 400;"> for more information.</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">The ESB server of WSO2 EI is
+				now added inside Eclipse tooling.</span>
+		</p>
+		<ol start="3">
+			<li><span style="font-weight: 400;"> Start the server</span></li>
+		</ol>
+		<p>
+			<span style="font-weight: 400;">You will see that the server
+				is currently stopped. Click </span><strong>Play </strong><span
+				style="font-weight: 400;">butto</span><strong>n </strong><span
+				style="font-weight: 400;">on the toolbar to start the server.
+			</span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">If you are prompted to save
+				changes to any of the artifact files, click </span><strong>Yes</strong><span
+				style="font-weight: 400;">. </span>
+		</p>
+		<p>
+			<span style="font-weight: 400;">As the server starts, the
+				Console tab will appear. You should see messages indicating that the
+				C-App was successfully deployed. The C-App will now be available in
+				the ESB profile's management console (</span><strong>Manage -&gt;
+				Carbon Applications -&gt; List</strong><span style="font-weight: 400;">).</span>
+		</p>
+		<ol start="4">
+			<li><span style="font-weight: 400;"> Invoke the service</span></li>
+		</ol>
+		<p>
+			<span style="font-weight: 400;">Invoke the service using an
+				HTTP client like cURL.</span>
+		</p>
+		<p>
+			<strong>curl http://localhost:8280/services/HelloWorld</strong>
+		</p>
+	</div>
 </body>
 </html>

@@ -65,6 +65,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.CacheMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneTargetContainerImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.DropMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementAdviceContainerImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementObligationsContainerImpl;
@@ -316,12 +317,18 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                         if (isComplexMediatorType(mediatorImpl)) {
                             tempConnector = getNextMediatorOutputConnector(mediatorImpl);
                         } else {
+                            if ((mediatorImpl instanceof DropMediatorImpl)) {
+                                return positionList;
+                            }
                             tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediatorImpl);
                         }
                         mediatorImpl = getNextMediatorFromParentStack(parentStack);
                         break;
                     } else {
                         count++;
+                        if ((mediator instanceof DropMediatorImpl)) {
+                            return positionList;
+                        }
                         tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediator);
                     }
                 } else {
@@ -438,7 +445,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
 
     private EObject getNextMediatorFromParentStack(Stack<EObject> parentStack) {
         EObject nextImpl = parentStack.pop();
-        while (!(nextImpl instanceof MediatorImpl)) {
+        while (!(nextImpl instanceof MediatorImpl) && !(nextImpl instanceof DropMediatorImpl)) {
             if (parentStack.isEmpty()) {
                 throw new IllegalArgumentException(
                         "Valid MediatorImpl instance not found in the given parent instances stack ");
@@ -632,6 +639,9 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
         if (isComplexMediatorType(mediatorImpl)) {
             tempConnector = getNextMediatorOutputConnector(mediatorImpl);
         } else {
+            if ((mediatorImpl instanceof DropMediatorImpl)) {
+                return positionList;
+            }
             tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediatorImpl);
         }
         mediatorImpl = getNextMediatorFromParentStack(parentStack);
@@ -654,6 +664,9 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                         if (isComplexMediatorType(mediatorImpl)) {
                             tempConnector = getNextMediatorOutputConnector(mediatorImpl);
                         } else {
+                            if ((mediatorImpl instanceof DropMediatorImpl)) {
+                                return positionList;
+                            }
                             tempConnector = EditorUtils.getOutputConnectorFromMediator((Mediator) mediatorImpl);
                         }
                         mediatorImpl = getNextMediatorFromParentStack(parentStack);

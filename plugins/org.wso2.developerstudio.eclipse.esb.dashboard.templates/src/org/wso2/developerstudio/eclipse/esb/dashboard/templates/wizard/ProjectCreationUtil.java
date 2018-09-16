@@ -43,13 +43,13 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.templates.dashboard.help.TemplateGuideView;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
@@ -426,7 +426,7 @@ public class ProjectCreationUtil {
     /**
      * Used to open the help content of the relevant sample.
      *
-     * @param shell  Eclipse shell reference
+     * @param shell   Eclipse shell reference
      * @param helpURL URL of the help html page
      */
     public static void openHelp(Shell shell, URL helpURL) {
@@ -442,8 +442,8 @@ public class ProjectCreationUtil {
                             .showView(TemplateProjectConstants.TEMPLATE_GUIDE_VIEW_ID);
                     templateGuideView.setURL(helpUrl);
                 } catch (PartInitException e) {
-                    MessageDialog.openError(shellRef, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR,
-                            e.getMessage());
+                    MessageDialog
+                            .openError(shellRef, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
                 }
             }
         });

@@ -52,6 +52,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 /**
@@ -210,7 +211,9 @@ public class ProjectCreationUtil {
                     IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                             .findView(IPageLayout.ID_PROJECT_EXPLORER);
                     ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileRef));
-                    openHelp(shellV, url1);
+                    if (url1 != null) {
+                        openHelp(shellV, url1);
+                    }
                 } catch (PartInitException e) {
                     MessageDialog
                             .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
@@ -251,13 +254,21 @@ public class ProjectCreationUtil {
      * @param project
      * @param sampleName
      * @return
+     * @throws IOException
+     * @throws CoreException
      * @throws Exception
      */
     public static URL copyReadMe(IProject project, String sampleName) throws Exception {
 
         // copy html
-        File importFile = ResourceTemplateUtils.getInstance()
-                .getResourceFile("Samples" + File.separator + sampleName + File.separator + "ReadMe.html");
+        File importFile = null;
+        try {
+            importFile = ResourceTemplateUtils.getInstance()
+                    .getResourceFile("Samples" + File.separator + sampleName + File.separator + "ReadMe.html");
+        } catch (IOException e) {
+            // If readme html is not present.
+            return null;
+        }
 
         IFile htmlFile = project.getFile(new Path("ReadMe.html"));
         File destFile = htmlFile.getLocation().toFile();

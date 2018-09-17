@@ -43,8 +43,7 @@ public class ShowWelcomePerspective extends Action {
     public void run() {
         try {
             IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-            //PlatformUI.getWorkbench().showPerspective("org.wso2.developerstudio.welcome.remote.welcome.perspective",window);
-            PlatformUI.getWorkbench().showPerspective("WELCOME_PERSPECTIVE",window);
+            PlatformUI.getWorkbench().showPerspective("WELCOME_PERSPECTIVE", window);
         } catch (Exception e) {
             log.error("Cannot open welcome perspective", e);
         }

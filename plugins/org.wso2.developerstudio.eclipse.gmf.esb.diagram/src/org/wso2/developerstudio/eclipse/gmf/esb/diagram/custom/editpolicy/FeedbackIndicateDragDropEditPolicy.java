@@ -381,7 +381,10 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 
         if ((yDistance1 != 0) && ((yDistance2 == 0) || (yDistance1 < yDistance2))) {
             yCurrent = yDistance1;
-            if (EastCurrent > 20) {
+            if ((nearForwardConnector.getParent() instanceof ProxyServiceEditPart)
+                    || (nearForwardConnector.getParent() instanceof APIResourceEditPart)) {
+                nearConnector = nearForwardConnector;
+            } else if (EastCurrent > 20) {
                 nearConnector = nearForwardConnector;
             }
         } else {

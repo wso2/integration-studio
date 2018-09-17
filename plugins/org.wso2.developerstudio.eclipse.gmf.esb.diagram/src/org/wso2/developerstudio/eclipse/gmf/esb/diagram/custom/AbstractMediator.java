@@ -218,29 +218,33 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 			reverse(this);
 		}
         if (i == 0) {
-            if (ESBDebuggerUtil.getRecentlyAddedMediator() == null
-                    && (!ESBDebuggerUtil.isPageSaveOperationActivated()
-                            && !ESBDebuggerUtil.isPageChangeOperationActivated() && !ESBDebuggerUtil
-                                .isPageCreateOperationActivated())) {
-                ESBDebuggerUtil.setRecentlyAddedMediator(this);
-            } else {
-
-                try {
-                    if (ESBDebuggerUtil.getRecentlyAddedMediator() != null) {
-                        ESBDebuggerUtil.modifyDebugPointsointsAfterMediatorAddition(false, ESBDebuggerUtil
-                                .getRecentlyAddedMediator());
-                        if (!ESBDebuggerUtil.isPageSaveOperationActivated()
+            try {
+                if (ESBDebuggerUtil.getRecentlyAddedMediator() == null
+                        && (!ESBDebuggerUtil.isPageSaveOperationActivated()
                                 && !ESBDebuggerUtil.isPageChangeOperationActivated()
-                                && !ESBDebuggerUtil.isPageCreateOperationActivated()) {
-                            ESBDebuggerUtil.setRecentlyAddedMediator(this);
+                                && !ESBDebuggerUtil.isPageCreateOperationActivated())) {
+                    ESBDebuggerUtil.setRecentlyAddedMediator(this);
+                } else {
+
+                    try {
+                        if (ESBDebuggerUtil.getRecentlyAddedMediator() != null) {
+                            ESBDebuggerUtil.modifyDebugPointsointsAfterMediatorAddition(false,
+                                    ESBDebuggerUtil.getRecentlyAddedMediator());
+                            if (!ESBDebuggerUtil.isPageSaveOperationActivated()
+                                    && !ESBDebuggerUtil.isPageChangeOperationActivated()
+                                    && !ESBDebuggerUtil.isPageCreateOperationActivated()) {
+                                ESBDebuggerUtil.setRecentlyAddedMediator(this);
+                            }
                         }
+                    } catch (CoreException | ESBDebuggerException e) {
+                        log.error("Error while setting recently added mediator : " + e.getMessage(), e);
                     }
-                } catch (CoreException | ESBDebuggerException e) {
-                    log.error("Error while setting recently added mediator : " + e.getMessage(), e);
                 }
+            } catch (Exception e) {
+                log.error("Error while setting recently added mediator : " + e.getMessage(), e);
             }
 
-		}
+        }
 		/*
 		 * activate method is being called twice. At the first time most of the
 		 * child figures has not been initialized. So that we should call

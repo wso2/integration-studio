@@ -31,7 +31,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.part.EditorPart;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -82,6 +85,13 @@ public class WelcomePageEditor extends EditorPart {
 	    browser = createBrowser(parent);
 	    String port = getPortValueForJS(browser);
 	    browser.setUrl("http://localhost:" + port + "/welcome?port=" + port);
+	     
+	    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+	    try {
+	        PlatformUI.getWorkbench().showPerspective("WELCOME_PERSPECTIVE", window);
+	    } catch (WorkbenchException e) {
+	        log.error("Could not load the perspective.", e);
+	    }
 	}
 
 	private String getWelcomePage() throws URISyntaxException, IOException {

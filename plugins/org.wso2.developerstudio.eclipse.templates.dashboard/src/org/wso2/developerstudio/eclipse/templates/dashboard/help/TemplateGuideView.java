@@ -17,11 +17,18 @@
  */
 package org.wso2.developerstudio.eclipse.templates.dashboard.help;
 
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
+import org.osgi.framework.Bundle;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 public class TemplateGuideView extends ViewPart {
@@ -31,6 +38,27 @@ public class TemplateGuideView extends ViewPart {
     @Override
     public void createPartControl(Composite arg0) {
         browser = new Browser(arg0, SWT.NONE);
+
+        try {
+            browser.setUrl(getDefaultPage());
+        } catch (Exception ex) {
+        }
+
+    }
+
+    private String getDefaultPage() throws URISyntaxException, IOException {
+        String PLUGIN_ID = "org.wso2.developerstudio.eclipse.esb.dashboard.templates";
+        String INDEX_HTML = "DefaultReadMe.html";
+        Bundle bundle = Platform.getBundle(PLUGIN_ID);
+        if (bundle == null) {
+            return null;
+        }
+        URL webAppURL = bundle.getEntry("Samples");
+        URL resolvedFolderURL = FileLocator.toFileURL(webAppURL);
+        URI resolvedFolderURI = new URI(resolvedFolderURL.getProtocol(), resolvedFolderURL.getPath(), null);
+        File resolvedWebAppFolder = new File(resolvedFolderURI);
+        File resolvedWebAppIndex = new File(resolvedWebAppFolder, INDEX_HTML);
+        return resolvedWebAppIndex.getAbsolutePath();
     }
 
     @Override

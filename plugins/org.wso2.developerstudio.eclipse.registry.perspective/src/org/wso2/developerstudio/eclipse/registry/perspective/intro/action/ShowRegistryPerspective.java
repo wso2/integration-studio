@@ -48,8 +48,7 @@ public class ShowRegistryPerspective extends Action {
 		return "Switch to registry perspective";
 	}
 	public ImageDescriptor getImageDescriptor() {
-		return ImageDescriptor.createFromImage(resizeImage(SWTResourceManager.getImage(this.getClass(), File.separator + "intro" 
-		        + File.separator + "css" + File.separator + "graphics" + File.separator + "registry.png"), 16, 16));
+		return ImageDescriptor.createFromImage(resizeImage(SWTResourceManager.getImage(this.getClass(), "/intro/css/graphics/registry.png"),16,16));
 	}
 	public String getDescription() {
 		return "Switch to registry perspective";

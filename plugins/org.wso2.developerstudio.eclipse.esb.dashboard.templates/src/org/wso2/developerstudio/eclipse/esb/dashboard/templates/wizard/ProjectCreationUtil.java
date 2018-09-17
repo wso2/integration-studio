@@ -43,6 +43,7 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.ISetSelectionTarget;
 import org.wso2.developerstudio.eclipse.esb.core.ESBMavenConstants;
@@ -67,7 +68,8 @@ import java.util.zip.ZipInputStream;
  * Util class to for sample template creation.
  */
 public class ProjectCreationUtil {
-
+    
+    private static final String J2EE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
     private static String MAVEN_CAR_VERSION = "2.1.1";
     private static String MAVEN_CAR_DEPLOY_VERSION = "1.1.1";
     private static String version = "1.0.0";
@@ -383,14 +385,16 @@ public class ProjectCreationUtil {
                     //browser.openURL(url1);
 
                     // Open Synapse Configuration and expand
+                    PlatformUI.getWorkbench().showPerspective(J2EE_PERSPECTIVE,
+                            PlatformUI.getWorkbench().getActiveWorkbenchWindow());
                     IDE.openEditor(page, fileRef, editorID, true);
                     IViewPart view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
                             .findView(IPageLayout.ID_PROJECT_EXPLORER);
                     ((ISetSelectionTarget) view).selectReveal(new StructuredSelection(fileRef));
                     openHelp(shellV, url1);
-                } catch (PartInitException e) {
-                    MessageDialog
-                            .openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
+                    
+                } catch (WorkbenchException e) {
+                    MessageDialog.openError(shellV, TemplateProjectConstants.ERROR_MESSAGE_OPENING_EDITOR, e.getMessage());
                 }
             }
         });

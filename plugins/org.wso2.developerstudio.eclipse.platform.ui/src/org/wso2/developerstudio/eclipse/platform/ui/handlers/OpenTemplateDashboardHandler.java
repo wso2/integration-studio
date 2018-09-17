@@ -39,7 +39,7 @@ public class OpenTemplateDashboardHandler extends AbstractHandler {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     static final String INTRO_VIEW_ID = "org.eclipse.ui.internal.introview";
     static final String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.templates.dashboard";
-    static final String J2EE_PERSPECTIVE_ID = "org.eclipse.jst.j2ee.J2EEPerspective";
+    static final String J2EE_PERSPECTIVE_ID = "WELCOME_PERSPECTIVE";
 
     public Object execute(ExecutionEvent event) throws ExecutionException {
         IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();

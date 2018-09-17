@@ -14,6 +14,8 @@
  */
 package org.wso2.developerstudio.eclipse.registry.perspective.intro.action;
 
+import java.io.File;
+
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
@@ -46,8 +48,8 @@ public class ShowRegistryPerspective extends Action {
 		return "Switch to registry perspective";
 	}
 	public ImageDescriptor getImageDescriptor() {
-		return ImageDescriptor.createFromImage(resizeImage(SWTResourceManager
-				.getImage(this.getClass(), "/intro/css/graphics/registry.png"),16,16));
+		return ImageDescriptor.createFromImage(resizeImage(SWTResourceManager.getImage(this.getClass(), File.separator + "intro" 
+		        + File.separator + "css" + File.separator + "graphics" + File.separator + "registry.png"), 16, 16));
 	}
 	public String getDescription() {
 		return "Switch to registry perspective";

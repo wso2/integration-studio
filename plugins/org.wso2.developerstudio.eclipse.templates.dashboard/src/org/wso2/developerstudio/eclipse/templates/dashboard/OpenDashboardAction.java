@@ -46,7 +46,7 @@ public class OpenDashboardAction extends Action implements IIntroAction {
 		IWorkbenchPage page = window.getActivePage();
 		try {
 			hideDashboards();
-			PlatformUI.getWorkbench().showPerspective("org.eclipse.jst.j2ee.J2EEPerspective", window);
+			PlatformUI.getWorkbench().showPerspective("WELCOME_PERSPECTIVE", window);
 			page.openEditor(new NullEditorInput(), "org.wso2.developerstudio.eclipse.templates.dashboard");
 		} catch (Exception e) {
 			log.error("Cannot open dashboard", e);

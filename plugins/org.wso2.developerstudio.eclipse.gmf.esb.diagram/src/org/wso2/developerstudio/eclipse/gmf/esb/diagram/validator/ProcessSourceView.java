@@ -327,9 +327,9 @@ public class ProcessSourceView {
                             xmlTag.setTagType(5);
 
                         } else {
-                            if (value.substring(endTag - 1, endTag).equals("?")) {
+                            if (endTag > 0 && value.substring(endTag - 1, endTag).equals("?")) {
                                 xmlTag.setTagType(8);
-                            } else if (value.substring(endTag - 1, endTag).equals("]")) {
+                            } else if (endTag > 0 && value.substring(endTag - 1, endTag).equals("]")) {
                                 // 7 ]]>
                                 xmlTag.setTagType(7);
                             } else {
@@ -571,12 +571,7 @@ public class ProcessSourceView {
             } else if (tempTag.getTagType() == 6 || tempTag.getTagType() == 7) {
                 if (prev != null && (prev.getTagType() == 4 || prev.getTagType() == 7 || prev.getTagType() == 1)) {
                     xmlTags.push(tempTag);
-
-                } else if (tempTag.getTagType() == 6) {
-                    String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
-                            + tempTag.getValue() + "\".";
-                    return createError(error, tempTag);
-
+                    
                 } else if (intermediaryStack.size() > 0) {
                     xmlTags.push(tempTag);
                 }

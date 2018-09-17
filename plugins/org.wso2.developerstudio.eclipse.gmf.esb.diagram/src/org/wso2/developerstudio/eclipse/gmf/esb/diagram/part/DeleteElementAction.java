@@ -42,8 +42,6 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class DeleteElementAction extends DefaultDeleteElementAction {
 	
-	private static boolean deleteTriggrred = false;
-
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	/**
 	 * @generated
@@ -102,8 +100,7 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 		if (editPart instanceof AbstractMediator) {
 			if (ESBDebuggerUtil.isDeleteOperationPerformed()) {
 				ESBDebuggerUtil.setDeletedMediator((AbstractMediator) editPart);
-				try {
-					setDeleteTriggrred(true);
+				try {					
 					ESBDebuggerUtil.modifyBreakpointsAfterMediatorDeletion(true);					
 				} catch (CoreException | ESBDebuggerException e) {
 					log.error(
@@ -164,11 +161,4 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 		return true;
 	}
 
-	public static boolean isDeleteTriggrred() {
-		return deleteTriggrred;
-	}
-
-	public static void setDeleteTriggrred(boolean deleteTriggrred) {
-		DeleteElementAction.deleteTriggrred = deleteTriggrred;
-	}
 }

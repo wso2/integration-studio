@@ -20,10 +20,12 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperEditorStartupUtils;
 import org.wso2.developerstudio.datamapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.expressions.DataMapperOCLFactory;
 import org.wso2.developerstudio.datamapper.diagram.providers.ElementInitializers;
 import org.wso2.developerstudio.datamapper.provider.DataMapperItemProviderAdapterFactory;
+import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 
 /**
  * @generated
@@ -85,6 +87,9 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 	 * @generated
 	 */
 	public void start(BundleContext context) throws Exception {
+	    if (DataMapperEditor.getOpenable() == null) {
+	        DataMapperEditor.setOpenable(new DataMapperEditorStartupUtils());
+	    }
 		super.start(context);
 		instance = this;
 		myLogHelper = new LogHelper(this);

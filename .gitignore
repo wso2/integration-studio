@@ -1,8 +1,6 @@
 # No Eclipse Related Files #
 ###################
 
-.classpath
-.project
 .settings/
 target/
 bin/

@@ -71,7 +71,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CacheMediator
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CallMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.DropMediatorEditPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.DropMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
@@ -119,7 +118,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediato
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ValidateMediatorEditPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.DeleteElementAction;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -218,29 +216,33 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 			reverse(this);
 		}
         if (i == 0) {
-            if (ESBDebuggerUtil.getRecentlyAddedMediator() == null
-                    && (!ESBDebuggerUtil.isPageSaveOperationActivated()
-                            && !ESBDebuggerUtil.isPageChangeOperationActivated() && !ESBDebuggerUtil
-                                .isPageCreateOperationActivated())) {
-                ESBDebuggerUtil.setRecentlyAddedMediator(this);
-            } else {
-
-                try {
-                    if (ESBDebuggerUtil.getRecentlyAddedMediator() != null) {
-                        ESBDebuggerUtil.modifyDebugPointsointsAfterMediatorAddition(false, ESBDebuggerUtil
-                                .getRecentlyAddedMediator());
-                        if (!ESBDebuggerUtil.isPageSaveOperationActivated()
+            try {
+                if (ESBDebuggerUtil.getRecentlyAddedMediator() == null
+                        && (!ESBDebuggerUtil.isPageSaveOperationActivated()
                                 && !ESBDebuggerUtil.isPageChangeOperationActivated()
-                                && !ESBDebuggerUtil.isPageCreateOperationActivated()) {
-                            ESBDebuggerUtil.setRecentlyAddedMediator(this);
+                                && !ESBDebuggerUtil.isPageCreateOperationActivated())) {
+                    ESBDebuggerUtil.setRecentlyAddedMediator(this);
+                } else {
+
+                    try {
+                        if (ESBDebuggerUtil.getRecentlyAddedMediator() != null) {
+                            ESBDebuggerUtil.modifyDebugPointsointsAfterMediatorAddition(false,
+                                    ESBDebuggerUtil.getRecentlyAddedMediator());
+                            if (!ESBDebuggerUtil.isPageSaveOperationActivated()
+                                    && !ESBDebuggerUtil.isPageChangeOperationActivated()
+                                    && !ESBDebuggerUtil.isPageCreateOperationActivated()) {
+                                ESBDebuggerUtil.setRecentlyAddedMediator(this);
+                            }
                         }
+                    } catch (CoreException | ESBDebuggerException e) {
+                        log.error("Error while setting recently added mediator : " + e.getMessage(), e);
                     }
-                } catch (CoreException | ESBDebuggerException e) {
-                    log.error("Error while setting recently added mediator : " + e.getMessage(), e);
                 }
+            } catch (Exception e) {
+                log.error("Error while setting recently added mediator : " + e.getMessage(), e);
             }
 
-		}
+        }
 		/*
 		 * activate method is being called twice. At the first time most of the
 		 * child figures has not been initialized. So that we should call
@@ -594,26 +596,6 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		if (!mediatorRestricted) {
                     AbstractMediator previousMediator = getPreviousMediator(nearestEsbLinkOutputConnector,
                             nearestOutputConnector);
-			if (previousMediator == null && nearestESBLink == null && nearestInputConnector == null) {
-				// check whether previous mediator is a Drop Mediator.
-				int numberOfDrop = checkForDropMediator(inputConnectorEditpartList);
-				// 1 - numberOfDrop == 1 && !(this instanceof DropMediatorEditPart)
-				//    This checks whether there are any drop in the flow and we are not adding any  drop now.
-				// 2 - numberOfDrop >= 2
-				//    This checks for adding a drop mediator after drop. i.e. there will be two drops in the flow.
-				// 3 - DeleteElementAction.deleteTriggrred
-				//     Boolean to check whether this is called in delete flow or not
-				if (!DeleteElementAction.isDeleteTriggrred()) {
-					if ((numberOfDrop == 1 && !(this instanceof DropMediatorEditPart)) || numberOfDrop >= 2) {
-						mediatorRestricted = true;
-						mediatorType = "Drop Mediator";
-						deleteNewlyAddedMediator(warningAddingMediatorsAfter + mediatorType);
-						return;
-					}
-				} else {
-					DeleteElementAction.setDeleteTriggrred(false);
-				}
-			}
 			if (previousMediator != null && previousMediator != this) {
 				AbstractMediator mediator = hasMediator(previousMediator);
 				mediatorRestricted = true;
@@ -1054,25 +1036,6 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		return previousMediator;
 	}
 
-	/**
-	 * Check whether the previous mediator in the flow is a drop mediator or not.
-	 *
-	 * @param connectors - The list of input connectors available in the flow.
-	 * @return - No. of drop mediators in the flow. This includes the current mediator which we are adding.
-	 */
-	private int checkForDropMediator(ArrayList<AbstractConnectorEditPart> connectors) {
-		int dropMediatorCount = 0;
-		for (int i = 0; i < connectors.size(); ++i) {
-			if (connectors.get(i) instanceof DropMediatorInputConnectorEditPart) {
-				dropMediatorCount++;
-				if (dropMediatorCount >= 2) {
-					break;
-				}
-			}
-		}
-		return dropMediatorCount;
-	}
-	
 	private AbstractMediator hasMediator(AbstractMediator mediator){
 		AbstractMediator existingMediator = null;
 		

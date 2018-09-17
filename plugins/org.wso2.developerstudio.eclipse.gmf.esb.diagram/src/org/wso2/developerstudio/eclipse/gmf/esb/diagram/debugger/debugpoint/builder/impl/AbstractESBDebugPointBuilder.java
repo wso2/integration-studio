@@ -632,6 +632,9 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                 }
             }
         }
+        if (parentStack.isEmpty()) {
+            return positionList;
+        }
         OutputConnector tempConnector;
         if (isComplexListMediator(mediatorImpl)) {
             positionList.add(getPositionOfInnerContainer(parentStack, mediatorImpl));

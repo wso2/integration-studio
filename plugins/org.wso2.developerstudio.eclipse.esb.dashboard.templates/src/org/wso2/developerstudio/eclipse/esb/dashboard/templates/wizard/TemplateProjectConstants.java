@@ -173,8 +173,6 @@ public class TemplateProjectConstants {
 
     public static final String BASE_FOLDER_NAME = "humantaskcontent";
 
-    public static final String NEW_ARTIFACT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskhelp";
-
     public static final String EXPORT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskexporthelp";
 
     public static final String EMPTY_STRING = "";

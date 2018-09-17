@@ -57,8 +57,7 @@ public class ShowWelcomePerspective extends Action {
         return ImageDescriptor
                 .createFromImage(
                         resizeImage(
-                                SWTResourceManager.getImage(this.getClass(), File.separator + "intro" + File.separator
-                                        + "css" + File.separator + "graphics" + File.separator + "welcome.png"),
+                                SWTResourceManager.getImage(this.getClass(), "/intro/css/graphics/welcome.png"),
                                 16, 16));
     }
 

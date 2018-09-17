@@ -70,18 +70,15 @@
 	        </li>
 			<li>
 				<h3>Create a request payload file named request.xml with the following content:</h3> 
-				<pre>
-					<code class="language-xml">
+				<pre><code class="language-xml">
 					&lt;echo:echoString xmlns:echo="http://echo.services.core.carbon.wso2.org"&gt;
 						&lt;in&gt;Hello&lt;/in&gt;
-					&lt;/echo:echoString&gt;</code>
-				</pre>
+					&lt;/echo:echoString&gt;
+				</code></pre>
 			</li>
 			<li>
-				<h3>Invoke the service with the following request. Use an HTTP
-					client like cURL.</h3> <pre>
-					<code class="language-bash">curl -X POST -d @request.xml -H "Content-Type: text/xml" -H "SOAPAction: urn:echoString" http://localhost:8280/services/ProxyForEchoService </code>
-				</pre>
+				<h3>Invoke the service with the following request. Use an HTTP client like cURL.</h3>
+				<pre><code class="language-bash">curl -X POST -d @request.xml http://localhost:8280/services/ProxyForEchoService &nbsp;-H "Content-Type: text/xml" -H "SOAPAction: urn:echoString"</code></pre>
 			</li>
 		</ol>
 	</div>

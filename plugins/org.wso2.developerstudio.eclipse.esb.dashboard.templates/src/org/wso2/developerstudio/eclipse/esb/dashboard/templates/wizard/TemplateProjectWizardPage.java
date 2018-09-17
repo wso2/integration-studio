@@ -84,9 +84,7 @@ public class TemplateProjectWizardPage extends WizardPage {
 
         initialize();
         dialogChanged();
-        setControl(container);
-        PlatformUI.getWorkbench().getHelpSystem()
-                .setHelp(container, TemplateProjectConstants.NEW_ARTIFACT_HELP_CONTEXT_ID);
+        setControl(container);      
     }
 
     /**

@@ -7,7 +7,7 @@
 <div id="content">
     <h1>Scatter-Gather Flow Control Sample</h1>
     <h3>About the Sample</h3>
-    <p><span style="font-weight: 400;">This sample demonstrates how to implement Scatter-Gather </span><a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html"><span style="font-weight: 400;">enterprise integration pattern</span></a><span style="font-weight: 400;">.</span></p>
+    <p><span style="font-weight: 400;">This sample demonstrates how to implement Scatter-Gather </span><a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html"><span style="font-weight: 400;">enterprise integration pattern with Enterprise Integrator</span></a><span style="font-weight: 400;">.</span></p>
 <p><span style="font-weight: 400;">Two projects get created with this template. The </span><strong>ESB config project</strong><span style="font-weight: 400;"> contains a </span><a href="https://docs.wso2.com/display/EI630/Working+with+Proxy+Services"><span style="font-weight: 400;">proxy service</span></a><span style="font-weight: 400;"> called MissionService and three </span><a href="https://docs.wso2.com/display/EI630/Working+with+Endpoints"><span style="font-weight: 400;">endpoints</span></a><span style="font-weight: 400;"> MissionEP1, MissionEP2, MissionEP3. The </span><strong>Composite Application project</strong><span style="font-weight: 400;"> is used to package and export the artifacts created within the ESB config project.</span></p>
 <p><span style="font-weight: 400;">The proxy service clones the request payload and send it to three different endpoints. The responses are aggregated and built into a single payload and send back to the client.</span></p>
     <h3>Executing the sample</h3>
@@ -28,9 +28,9 @@
 <ol start="3">
 <li><span style="font-weight: 400;"> Start the server</span></li>
 </ol>
-<p><span style="font-weight: 400;">you see that the server is currently stopped. Click </span><strong>Play </strong><span style="font-weight: 400;">butto</span><strong>n </strong><span style="font-weight: 400;">on the Servers tab's toolbar to start the server. </span></p>
+<p><span style="font-weight: 400;">You can see that the server is currently stopped. Click </span><strong>Play </strong><span style="font-weight: 400;">butto</span><strong>n </strong><span style="font-weight: 400;">on the Servers tab's toolbar to start the server. </span></p>
 <p><span style="font-weight: 400;">If you are prompted to save changes to any of the artifact files, click </span><strong>Yes</strong><span style="font-weight: 400;">. </span></p>
-<p><span style="font-weight: 400;">As the server starts, the Console tab appear. You should see messages indicating that the C-App was successfully deployed. The C-App will now be available in the ESB profile's management console (</span><strong>Manage -&gt; Carbon Applications -&gt; List</strong><span style="font-weight: 400;">).</span></p>
+<p><span style="font-weight: 400;">As the server starts, the Console tab appears. You should see messages indicating that the C-App was successfully deployed. The C-App will now be available in the ESB profile's management console (</span><strong>Manage -&gt; Carbon Applications -&gt; List</strong><span style="font-weight: 400;">).</span></p>
 <ol start="4">
 <li><span style="font-weight: 400;"> Invoke the service</span></li>
 </ol>

@@ -31,8 +31,8 @@
 			<h3>About</h3>
 			<p>This sample demonstrates how we can expose an existing SOAP service as a RESTful API. &nbsp;</p>
 			<p>Two projects get created with this template. <strong>ESB config project</strong> contains an 
-			<a href="https://docs.wso2.com/display/EI630/Working+with+APIs">REST API</a> called &lsquo;CityInformationAPI&rsquo;
-			 and an <a href="https://docs.wso2.com/display/EI630/Working+with+Endpoints">Endpoint</a> &lsquo;CityLookupEP&rsquo;. 
+			REST API called &lsquo;CityInformationAPI&rsquo;
+			 and an Endpoint &lsquo;CityLookupEP&rsquo;. 
 			 The <strong>Composite application project</strong> is used to package and export the artifacts created within the ESB project.</p>
 			<p>The API resource is configured with an URI-Template and parameterized to get the ZIP code. A request payload 
 			is constructed with a given zip code. Also, &lsquo;SOAPAction&rsquo; which is a mandatory header for SOAP 1.1 is 
@@ -41,40 +41,38 @@
 		
 		<h3>Executing the sample</h3>
 		<ol>
+	        <li>
+	            <h3>Connect the ESB server to WSO2 EI Tooling</h3>
+	            <p>Attach an EI server runtime into the Developer Studio following the instructions given below (if
+	                    you haven&rsquo;t already done).
+	            </p>
+	            <p>Open the <strong>Developer Studio Dashboard</strong> and click <strong>Server</strong>
+	                    under <strong>Add Server</strong>.</p>
+	            <p>In the &lsquo;<strong>Define a New Server</strong>&rsquo; dialog box, expand the WSO2 folder,
+	                and select the respective product and version.</p>
+	            <p>Click <strong>Next</strong>, and then click <strong>Browse</strong> (next to CARBON_HOME) and
+	                select the WSO2 EI distribution directory.</p>
+	            <p>Click <strong>Next</strong> and review the default ports for the ESB profile of WSO2 EI.
+	                Typically, you can leave these unchanged, but if you are already running another server on these ports,
+	                specify unused ports here.</p>
+	            <p>Click <strong>Finish</strong>. The ESB server of WSO2 EI is now connected to WSO2 EI Tooling.</p>
+	        </li>
+	        <li>
+	            <h3>Deploy the ESB artifacts in the server</h3>
+	            <p>In the <strong>Servers</strong> tab, right-click the server and click <strong>Add and Remove</strong>.</p>
+	            <p>Select the relevant project from the list, and click <strong>Add</strong>.</p>
+	            <p>Click <strong>Finish</strong>. The template sample is now deployed in the server.</p>
+	        </li>
+	        <li>
+	            <h3>Start the server</h3>
+	            <p>Click the <strong>Play</strong> button on the toolbar.</p>
+	            <p>If you are prompted to save changes to any of the artifact files, click <strong>Yes</strong>.</p>
+	            <p>As the server starts, the <strong>Console</strong> tab will appear.
+	                You should see messages indicating that the C-App was successfully deployed.</p>
+	        </li>
 			<li>
-				<h3>Configure EI server</h3>
-				<p>Attach an EI server runtime into the Developer Studio following the instructions given below if you haven&rsquo;t already done.</p>
-				<p>Navigate to the Developer Studio Dashboard and click <strong>Server</strong> under <strong>Add Server</strong>.</p>
-				<p>In the &lsquo;<strong>Define a New Server</strong>&rsquo; dialog box, expand the WSO2 folder, and select the 
-				respective product and version.</p>
-				<p>Click <strong>Next</strong>, click <strong>Browse</strong> that is next to CARBON_HOME, and select the WSO2 EI 
-				distribution directory, to define the server runtime environment and click <strong>Next</strong>.</p>
-				<p>Review the default port details for the ESB profile of WSO2 EI. Typically, you can leave these unchanged, but
-				 if you are already running another server on these ports, specify unused ports here. (See 
-				 <a href="https://docs.wso2.com/display/ADMIN44x/Default+Ports+of+WSO2+Products">Default Ports of WSO2 Products
-				 </a> for more information.) Click <strong>Next</strong>.</p>
-			</li>
-			<li>
-				<h3>Deploy the CApp project</h3>
-				<p>To deploy the CApp project in the ESB server that we just added, select relevant project from the list,
-				 click <strong>Add</strong> to move it into the Configured list, and then click <strong>Finish</strong>.</p>
-				<p>Please refer to <a href="https://docs.wso2.com/display/ADMIN44x/Deploying+Composite+Applications+in+the+Server#DeployingCompositeApplicationsintheServer-DeployingusingtheToolinginterface">
-				this resource</a> for more information.</p>
-				<p>The ESB server of WSO2 EI is now added inside Eclipse tooling. On the Servers tab,</p>
-			</li>
-			<li>
-				<h3>Start the server</h3>
-				<p>you see that the server is currently stopped. Click <strong>Play</strong> button
-				on the Servers tab's toolbar to start the server.</p>
-				<p>If you are prompted to save changes to any of the artifact files, click <strong>Yes</strong>.</p>
-				<p>As the server starts, the Console tab appear. You should see messages indicating that the C-App was
-				 successfully deployed. The C-App will now be available in the ESB profile's management console 
-				 (<strong>Manage -&gt; Carbon Applications -&gt; List</strong>).</p>
-			</li>
-			<li>
-				<h3>Invoke the service</h3>
-				<p>Invoke the REST API using an HTTP client like cURL.</p>
-				<pre><code class="language-bash">curl http://localhost:8280/city/lookup/60601</code>
+				<h3>Invoke the service with the following request. Use an HTTP client like cURL.</h3>
+				<pre><code class="language-bash">curl http://localhost:8280/city/lookup/60601</code></pre>
 			</li>
 		</ol>		
 	</div>

@@ -30,52 +30,48 @@
 		<div class="about-template">
 			<h3>About the Sample</h3>
 		    <p>This sample demonstrates how to implement Scatter-Gather 
-		    <a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html">enterprise
-		     integration pattern with Enterprise Integrator</a>.</p>
+		    enterprise integration pattern with Enterprise Integrator.</p>
 			<p>Two projects get created with this template. The <strong>ESB config project</strong> contains a 
-			<a href="https://docs.wso2.com/display/EI630/Working+with+Proxy+Services">proxy service</a> 
-			called MissionService and three <a href="https://docs.wso2.com/display/EI630/Working+with+Endpoints">
-			endpoints</a> MissionEP1, MissionEP2, MissionEP3. The <strong>Composite Application project</strong> 
-			is used to package and export the artifacts created within the ESB config project.</p>
+			proxy service called MissionService and three endpoints MissionEP1, MissionEP2, and MissionEP3. 
+			The <strong>Composite Application project</strong> is used to package and export the artifacts created 
+			within the ESB config project.</p>
 			<p>The proxy service clones the request payload and send it to three different endpoints. 
 			The responses are aggregated and built into a single payload and send back to the client.</p>
 		</div>
 		 
 		<h3>Executing the sample</h3>
 		<ol>
+	        <li>
+	            <h3>Connect the ESB server to WSO2 EI Tooling</h3>
+	            <p>Attach an EI server runtime into the Developer Studio following the instructions given below (if
+	                    you haven&rsquo;t already done).
+	            </p>
+	            <p>Open the <strong>Developer Studio Dashboard</strong> and click <strong>Server</strong>
+	                    under <strong>Add Server</strong>.</p>
+	            <p>In the &lsquo;<strong>Define a New Server</strong>&rsquo; dialog box, expand the WSO2 folder,
+	                and select the respective product and version.</p>
+	            <p>Click <strong>Next</strong>, and then click <strong>Browse</strong> (next to CARBON_HOME) and
+	                select the WSO2 EI distribution directory.</p>
+	            <p>Click <strong>Next</strong> and review the default ports for the ESB profile of WSO2 EI.
+	                Typically, you can leave these unchanged, but if you are already running another server on these ports,
+	                specify unused ports here.</p>
+	            <p>Click <strong>Finish</strong>. The ESB server of WSO2 EI is now connected to WSO2 EI Tooling.</p>
+	        </li>
+	        <li>
+	            <h3>Deploy the ESB artifacts in the server</h3>
+	            <p>In the <strong>Servers</strong> tab, right-click the server and click <strong>Add and Remove</strong>.</p>
+	            <p>Select the relevant project from the list, and click <strong>Add</strong>.</p>
+	            <p>Click <strong>Finish</strong>. The template sample is now deployed in the server.</p>
+	        </li>
+	        <li>
+	            <h3>Start the server</h3>
+	            <p>Click the <strong>Play</strong> button on the toolbar.</p>
+	            <p>If you are prompted to save changes to any of the artifact files, click <strong>Yes</strong>.</p>
+	            <p>As the server starts, the <strong>Console</strong> tab will appear.
+	                You should see messages indicating that the C-App was successfully deployed.</p>
+	        </li>
 			<li> 
-				<h3>Configure EI server</h3>
-				<p>Attach an EI server runtime into the Developer Studio following the instructions given below if you haven&rsquo;t already done.</p>
-				<p>Navigate to the Developer Studio Dashboard and click <strong>Server</strong> under <strong>Add Server</strong>.</p>
-				<p>In the &lsquo;<strong>Define a New Server</strong>&rsquo; dialog box, expand the WSO2 folder, 
-				and select the respective product and version.</p>
-				<p>Click <strong>Next</strong>, click <strong>Browse</strong> that is next to CARBON_HOME, and 
-				select the WSO2 EI distribution directory, to define the server runtime environment and click <strong>Next</strong>.</p>
-				<p>Review the default port details for the ESB profile of WSO2 EI. Typically, you can leave these 
-				unchanged, but if you are already running another server on these ports, specify unused ports here. 
-				(See <a href="https://docs.wso2.com/display/ADMIN44x/Default+Ports+of+WSO2+Products">Default Ports of WSO2 Products</a> 
-				for more information.) Click <strong>Next</strong>. </p>
-			</li>
-			<li>
-				<h3>Deploy the CApp project</h3>
-				<p>To deploy the CApp project in the ESB server that we just added, select relevant project from the list, click 
-				<strong>Add</strong> to move it into the Configured list, and then click <strong>Finish</strong>.</p>
-				<p>Please refer to <a href="https://docs.wso2.com/display/ADMIN44x/Deploying+Composite+Applications+in+the+Server#DeployingCompositeApplicationsintheServer-DeployingusingtheToolinginterface">
-				this resource</a> for more information.</p>
-				<p>The ESB server of WSO2 EI is now added inside Eclipse tooling. On the Servers tab, </p>
-			</li>
-			<li> 
-				<h3>Start the server</h3>
-				<p>You can see that the server is currently stopped. Click <strong>Play </strong>butto<strong>n </strong>
-				on the Servers tab's toolbar to start the server. </p>
-				<p>If you are prompted to save changes to any of the artifact files, click <strong>Yes</strong>. </p>
-				<p>As the server starts, the Console tab appears. You should see messages indicating that the 
-				C-App was successfully deployed. The C-App will now be available in the ESB profile's management 
-				console (<strong>Manage -&gt; Carbon Applications -&gt; List</strong>).</p>
-			</li>
-			<li> 
-				<h3>Invoke the service</h3>
-				<p>Invoke the service using an HTTP client like cURL.</p>
+				<h3>Invoke the service with the following request. Use an HTTP client like cURL.</h3>
 				<pre><code class="language-bash">curl -X POST -d &lsquo;&lt;tem:Mission xmlns:tem="http://tempuri.org"/&gt;&rsquo; &nbsp;http://localhost:8280/services/MissionService -H "Content-Type: text/xml"</code></pre>
 			</li>
 		</ol>		

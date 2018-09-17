@@ -979,11 +979,15 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 	public void doSave(final IProgressMonitor monitor) {
 
 		// Fixing DEVTOOLESB-596
-		if (!isFormEditor) {
-			ESBDebuggerUtil.updateModifiedDebugPoints(true);
-			ESBDebuggerUtil.setPageSaveOperationActivated(true);
-		}
-		MediatorFactoryUtils.registerFactories();
+        if (!isFormEditor) {
+            try {
+                ESBDebuggerUtil.updateModifiedDebugPoints(true);
+                ESBDebuggerUtil.setPageSaveOperationActivated(true);
+            } catch (Exception e) {
+                log.error(e);
+            }
+        }
+        MediatorFactoryUtils.registerFactories();
 		// Fixing TOOLS-2958
 		setContextClassLoader();
 		boolean isSaveAllow = true;

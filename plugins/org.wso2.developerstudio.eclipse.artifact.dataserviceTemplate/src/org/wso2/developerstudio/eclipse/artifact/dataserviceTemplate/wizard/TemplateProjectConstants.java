@@ -37,8 +37,6 @@ public class TemplateProjectConstants {
 
     public static final String PROJECT_WIZARD_TITLE = "Start Using a Template";
 
-    public static final String NEW_ARTIFACT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskhelp";
-
     public static final String EXPORT_HELP_CONTEXT_ID = "org.wso2.developerstudio.humantaskeditor.humantaskexporthelp";
 
     public static final String EMPTY_STRING = "";

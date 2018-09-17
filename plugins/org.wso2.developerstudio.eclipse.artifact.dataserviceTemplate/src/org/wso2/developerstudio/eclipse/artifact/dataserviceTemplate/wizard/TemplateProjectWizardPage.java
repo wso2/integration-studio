@@ -30,7 +30,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.PlatformUI;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -85,8 +84,6 @@ public class TemplateProjectWizardPage extends WizardPage {
         initialize();
         dialogChanged();
         setControl(container);
-        PlatformUI.getWorkbench().getHelpSystem()
-                .setHelp(container, TemplateProjectConstants.NEW_ARTIFACT_HELP_CONTEXT_ID);
     }
 
     /**

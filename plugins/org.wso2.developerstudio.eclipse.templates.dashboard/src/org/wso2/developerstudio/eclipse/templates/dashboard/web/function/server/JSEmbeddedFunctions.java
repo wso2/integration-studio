@@ -31,7 +31,6 @@ import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -41,7 +40,6 @@ import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
 
 public class JSEmbeddedFunctions {
     
-    private static final String J2EE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
     private static final String PORT_PROPERTIES = "serverproperties.js";
     private static final String WELCOME_PAGE_WEB_SITE_FOLDER = "TemplateDash";
 
@@ -68,14 +66,7 @@ public class JSEmbeddedFunctions {
             IWizard wizard = descriptor.createWizard();
             WizardDialog wd = new WizardDialog(Display.getDefault().getActiveShell(), wizard);
             wd.setTitle(wizard.getWindowTitle());
-            if (wd.open() == WizardDialog.OK) {
-                try {
-                    PlatformUI.getWorkbench().showPerspective(J2EE_PERSPECTIVE,
-                            PlatformUI.getWorkbench().getActiveWorkbenchWindow());
-                } catch (WorkbenchException e) {
-                    log.error("Error while opening J2EE perspective.", e);
-                }
-            }
+            wd.open();
         }
     }
     

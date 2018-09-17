@@ -40,6 +40,7 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
+import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
 
 
 public class WelcomePageEditor extends EditorPart {
@@ -83,7 +84,7 @@ public class WelcomePageEditor extends EditorPart {
 	@Override
 	public void createPartControl(Composite parent) {
 	    browser = createBrowser(parent);
-	    String port = getPortValueForJS(browser);
+	    String port = getPortValueForJS();
 	    browser.setUrl("http://localhost:" + port + "/welcome?port=" + port);
 	     
 	    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
@@ -123,9 +124,9 @@ public class WelcomePageEditor extends EditorPart {
      * This method gets port value retrieved from preferences
      * @param browser started browser instance
      */
-    private String getPortValueForJS(Browser browser) {
+    private String getPortValueForJS() {
         IEclipsePreferences rootNode = Platform.getPreferencesService().getRootNode();
-        return rootNode.get("portDetails", null);
+        return rootNode.get("portDetails", String.valueOf(FunctionServerConstants.EMBEDDED_SERVER_PORT));
     }
 
 	@Override

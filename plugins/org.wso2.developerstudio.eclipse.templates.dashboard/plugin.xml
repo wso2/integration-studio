@@ -25,4 +25,10 @@
       <extension point="org.eclipse.ui.startup">
      <startup class="org.wso2.developerstudio.eclipse.templates.dashboard.handlers.PlatformEarlyStartUpHandler"/>
    </extension>
+    <extension point="org.eclipse.ui.views">
+        <view id="org.wso2.developerstudio.eclipse.esb.templates.view"
+              name="Template Guide"
+              class="org.wso2.developerstudio.eclipse.templates.dashboard.help.TemplateGuideView"
+              icon="icons/help.png"/>
+    </extension>
 </plugin>

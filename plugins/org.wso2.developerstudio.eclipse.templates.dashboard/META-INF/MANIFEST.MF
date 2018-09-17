@@ -39,5 +39,5 @@ Export-Package: org.wso2.developerstudio.eclipse.templates.dashboard.handlers;ve
    org.eclipse.swt.graphics,
    org.eclipse.jface.resource,
    org.eclipse.ui.forms.editor,
-   org.eclipse.ui.forms"
- 
+   org.eclipse.ui.forms",
+ org.wso2.developerstudio.eclipse.templates.dashboard.help

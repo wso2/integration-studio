@@ -29,6 +29,6 @@
         <view id="org.wso2.developerstudio.eclipse.esb.templates.view"
               name="Template Guide"
               class="org.wso2.developerstudio.eclipse.templates.dashboard.help.TemplateGuideView"
-              icon="icons/carbon-normal.png"/>
+              icon="icons/help.png"/>
     </extension>
 </plugin>

@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Connector
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.connector;singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.connector.Activator
 Require-Bundle: org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,7.0.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.wso2.developerstudio.eclipse.distribution.project.export;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.esb.core,
@@ -17,5 +17,5 @@ Import-Package: org.wso2.developerstudio.eclipse.distribution.project.export;ver
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.project;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,7.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.artifact.connector.model;version="6.4.0",
+Export-Package: org.wso2.developerstudio.eclipse.artifact.connector.model;version="6.5.0",
  org.wso2.developerstudio.eclipse.artifact.connector.ui.wizard

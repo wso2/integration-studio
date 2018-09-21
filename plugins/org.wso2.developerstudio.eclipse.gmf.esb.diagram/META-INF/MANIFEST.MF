@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.diagram; singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin
 Bundle-Vendor: %providerName
@@ -58,9 +58,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.4.0,7.0.0)"
+ org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.5.0,7.0.0)"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-LazyStart: true
 Import-Package: net.sf.saxon.s9api,
  org.apache.xerces.parsers,

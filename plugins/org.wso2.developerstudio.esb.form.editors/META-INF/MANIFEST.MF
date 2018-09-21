@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Editor
 Bundle-SymbolicName: org.wso2.developerstudio.esb.form.editors;singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.esb.forgm.editors.article.FormArticlePlugin
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.ui,
@@ -11,8 +11,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.m2e.maven.runtime,
  org.wso2.developerstudio.eclipse.maven,
  org.eclipse.ui.workbench,
- org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.4.0,7.0.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.5.0,7.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.commons.lang,
  org.eclipse.core.filesystem,

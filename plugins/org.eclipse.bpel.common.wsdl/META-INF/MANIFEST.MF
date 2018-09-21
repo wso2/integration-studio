@@ -2,7 +2,7 @@
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.bpel.common.wsdl;singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Activator: org.eclipse.bpel.common.wsdl.SoaWsdlCommonPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,

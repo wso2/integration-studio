@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SecurityProject
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.security;singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.security.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: WSO2 Inc.
-Export-Package: org.wso2.developerstudio.eclipse.security.project.model;version="6.4.0",
- org.wso2.developerstudio.eclipse.security.project.ui.form;version="6.4.0"
+Export-Package: org.wso2.developerstudio.eclipse.security.project.model;version="6.5.0",
+ org.wso2.developerstudio.eclipse.security.project.ui.form;version="6.5.0"
 Import-Package: org.apache.commons.lang,
  org.apache.woden,
  org.apache.woden.wsdl20,

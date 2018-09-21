@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Local
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.manager.local;singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.registry.manager.local.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -49,5 +49,5 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="[6.0.0,7.0.0)"
 Bundle-ClassPath: .,
  lib/checkin-client-4.6.0.jar
-Export-Package: org.wso2.developerstudio.eclipse.registry.manager.local.utils;version="6.4.0",
+Export-Package: org.wso2.developerstudio.eclipse.registry.manager.local.utils;version="6.5.0",
  org.wso2.registry.checkin

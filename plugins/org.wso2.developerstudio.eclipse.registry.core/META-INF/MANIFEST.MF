@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Governance Registry Core
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.core;singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.registry.core.Activator
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.ui,
@@ -31,9 +31,9 @@ Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.wst;version="[4.1.0,7.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.registry.core;version="6.4.0",
- org.wso2.developerstudio.eclipse.registry.core.exception;version="6.4.0",
- org.wso2.developerstudio.eclipse.registry.core.interfaces;version="6.4.0",
- org.wso2.developerstudio.eclipse.registry.core.internal.impl;version="6.4.0",
- org.wso2.developerstudio.eclipse.registry.core.ui.dialogs;version="6.4.0",
- org.wso2.developerstudio.eclipse.registry.core.utils;version="6.4.0"
+Export-Package: org.wso2.developerstudio.eclipse.registry.core;version="6.5.0",
+ org.wso2.developerstudio.eclipse.registry.core.exception;version="6.5.0",
+ org.wso2.developerstudio.eclipse.registry.core.interfaces;version="6.5.0",
+ org.wso2.developerstudio.eclipse.registry.core.internal.impl;version="6.5.0",
+ org.wso2.developerstudio.eclipse.registry.core.ui.dialogs;version="6.5.0",
+ org.wso2.developerstudio.eclipse.registry.core.utils;version="6.5.0"

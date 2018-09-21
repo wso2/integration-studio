@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.mvn.multimodule.feature"
       label="Maven Multi Module Feature"
-      version="6.4.0.qualifier"
+      version="6.5.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

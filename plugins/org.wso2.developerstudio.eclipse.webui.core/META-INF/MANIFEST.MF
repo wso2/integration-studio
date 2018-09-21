@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: WebBased UI Tools
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.webui.core;singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Vendor: WSO2
 Bundle-Activator: org.wso2.developerstudio.eclipse.webui.core.WebUICorePlugin
 Require-Bundle: org.eclipse.ui,
@@ -14,12 +14,12 @@ Require-Bundle: org.eclipse.ui,
  org.apache.commons.io,
  org.junit,
  org.wso2.developerstudio.eclipse.logging
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/gson-2.2.4.jar
-Export-Package: org.wso2.developerstudio.eclipse.webui.core.composite;version="6.4.0",
- org.wso2.developerstudio.eclipse.webui.core.editor;version="6.4.0",
- org.wso2.developerstudio.eclipse.webui.core.exception;version="6.4.0",
- org.wso2.developerstudio.eclipse.webui.core.util;version="6.4.0"
+Export-Package: org.wso2.developerstudio.eclipse.webui.core.composite;version="6.5.0",
+ org.wso2.developerstudio.eclipse.webui.core.editor;version="6.5.0",
+ org.wso2.developerstudio.eclipse.webui.core.exception;version="6.5.0",
+ org.wso2.developerstudio.eclipse.webui.core.util;version="6.5.0"
 Import-Package: org.wso2.developerstudio.eclipse.platform.ui.utils

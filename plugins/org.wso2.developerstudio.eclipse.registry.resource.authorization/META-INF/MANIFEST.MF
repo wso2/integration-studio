@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Authorization
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.resource.authorization
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.registry.resource.authorization.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -41,4 +41,4 @@ Import-Package: javax.activation;version="1.1.0",
  org.wso2.developerstudio.eclipse.platform.ui.utils;version="[4.1.0,7.0.0)"
 Export-Package: org.wso2.carbon.core.services.authentication,
  org.wso2.carbon.registry.resource.services,
- org.wso2.developerstudio.eclipse.registry.resource.authorization;version="6.4.0"
+ org.wso2.developerstudio.eclipse.registry.resource.authorization;version="6.5.0"

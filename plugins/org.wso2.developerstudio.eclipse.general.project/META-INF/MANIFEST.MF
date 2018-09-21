@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GeneralProject
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.general.project;singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.general.project.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ltk.core.refactoring,
  org.eclipse.m2e.maven.runtime;bundle-version="1.6.2",
- org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.4.0,7.0.0)"
+ org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.5.0,7.0.0)"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axiom.om,
  org.apache.commons.io;version="2.0.0.wso2v1",
@@ -41,9 +41,9 @@ Import-Package: org.apache.axiom.om,
  org.wso2.developerstudio.eclipse.utils.jdt;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.project;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.ui;version="[4.1.0,7.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.general.project.artifact;version="6.4.0",
- org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="6.4.0",
- org.wso2.developerstudio.eclipse.general.project.dialogs;version="6.4.0",
- org.wso2.developerstudio.eclipse.general.project.model;version="6.4.0",
- org.wso2.developerstudio.eclipse.general.project.ui.wizard;version="6.4.0",
- org.wso2.developerstudio.eclipse.general.project.utils;version="6.4.0"
+Export-Package: org.wso2.developerstudio.eclipse.general.project.artifact;version="6.5.0",
+ org.wso2.developerstudio.eclipse.general.project.artifact.bean;version="6.5.0",
+ org.wso2.developerstudio.eclipse.general.project.dialogs;version="6.5.0",
+ org.wso2.developerstudio.eclipse.general.project.model;version="6.5.0",
+ org.wso2.developerstudio.eclipse.general.project.ui.wizard;version="6.5.0",
+ org.wso2.developerstudio.eclipse.general.project.utils;version="6.5.0"

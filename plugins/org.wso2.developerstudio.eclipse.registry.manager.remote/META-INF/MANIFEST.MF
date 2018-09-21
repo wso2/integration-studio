@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: App
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.registry.manager.remote;singleton:=true
-Bundle-Version: 6.4.0.qualifier
+Bundle-Version: 6.5.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.registry.manager.remote.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -67,8 +67,8 @@ Import-Package: javax.xml.stream;version="1.0.1",
  org.wso2.developerstudio.eclipse.usermgt.remote;version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils;version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.utils.file;version="[4.1.0,7.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.registry.manager.remote;version="6.4.0",
- org.wso2.developerstudio.eclipse.registry.manager.remote.dialog;version="6.4.0",
- org.wso2.developerstudio.eclipse.registry.manager.remote.utils;version="6.4.0",
- org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="6.4.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.wso2.developerstudio.eclipse.registry.manager.remote;version="6.5.0",
+ org.wso2.developerstudio.eclipse.registry.manager.remote.dialog;version="6.5.0",
+ org.wso2.developerstudio.eclipse.registry.manager.remote.utils;version="6.5.0",
+ org.wso2.developerstudio.eclipse.registry.manager.remote.views;version="6.5.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

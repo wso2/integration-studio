@@ -2,7 +2,7 @@
 <feature
       id="org.wso2.developerstudio.eclipse.dss.dependencies.feature"
       label="DSS Tool Dependencies"
-      version="6.4.0.qualifier"
+      version="6.5.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://wso2.com">

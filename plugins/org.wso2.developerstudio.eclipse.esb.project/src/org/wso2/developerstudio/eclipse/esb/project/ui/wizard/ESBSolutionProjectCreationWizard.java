@@ -20,6 +20,9 @@ import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.wso2.developerstudio.eclipse.artifact.connector.model.ConnectorModel;
 import org.wso2.developerstudio.eclipse.artifact.connector.ui.wizard.ConnectorCreationWizard;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DistributionProjectModel;
@@ -42,6 +45,7 @@ import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCr
  * 
  */
 public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
+	private static final String JAVAEE_PERSPECTIVE = "org.eclipse.jst.j2ee.J2EEPerspective";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private IProject project;
@@ -128,7 +132,17 @@ public class ESBSolutionProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			distributionProjectWizard.setModel(distributionModel);
 			distributionProjectWizard.performFinish();
 		}
-
+		
+		//open J2EE perspective for 'Create New' project from template dashboard
+		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		if (!JAVAEE_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+			try {
+				PlatformUI.getWorkbench().showPerspective(JAVAEE_PERSPECTIVE, window);
+			} catch (WorkbenchException e) {
+				log.error("Cannot switch to " + JAVAEE_PERSPECTIVE, e);
+			}
+		}
+		
 		return true;
 	}
 

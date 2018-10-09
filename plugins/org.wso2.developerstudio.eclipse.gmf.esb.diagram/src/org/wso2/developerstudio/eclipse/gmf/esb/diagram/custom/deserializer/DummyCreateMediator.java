@@ -208,7 +208,7 @@ public class DummyCreateMediator {
 
 	} else if ("ejb".equals(localName)) {
 
-	    EJBMediatorExtFactory factory = new EJBMediatorExtFactory();
+	    EJBMediatorExtFactory factory = EJBMediatorExtFactory.getInstance();
 	    return factory.createMediator(omElement, null);
 
 	} else if ("switch".equals(localName)) {
@@ -228,7 +228,7 @@ public class DummyCreateMediator {
 
 	} else if ("builder".equals(localName)) {
 
-	    BuilderMediatorExtFactory factory = new BuilderMediatorExtFactory();
+	    BuilderMediatorExtFactory factory = BuilderMediatorExtFactory.getInstance();
 	    return factory.createMediator(omElement, null);
 
 	} else if ("enqueue".equals(localName)) {
@@ -253,7 +253,7 @@ public class DummyCreateMediator {
 
 	} else if ("bean".equals(localName)) {
 
-	    BeanMediatorExtFactory factory = new BeanMediatorExtFactory();
+	    BeanMediatorExtFactory factory = BeanMediatorExtFactory.getInstance();
 	    return factory.createMediator(omElement, null);
 
 	} else if ("sequence".equals(localName)) {
@@ -263,7 +263,7 @@ public class DummyCreateMediator {
 
 	} else if ("pojoCommand".equals(localName)) {
 
-	    POJOCommandMediatorExtFactory factory = new POJOCommandMediatorExtFactory();
+	    POJOCommandMediatorExtFactory factory = POJOCommandMediatorExtFactory.getInstance();
 	    return factory.createMediator(omElement, null);
 
 	} else if ("spring".equals(localName)) {
@@ -337,7 +337,7 @@ public class DummyCreateMediator {
 
 	} else if ("bam".equals(localName)) {
 
-	    BamMediatorExtFactory factory = new BamMediatorExtFactory();
+	    BamMediatorExtFactory factory = BamMediatorExtFactory.getInstance();
 	    return factory.createSpecificMediator(omElement, null);
 
 	} else if ("publishEvent".equals(localName)) {

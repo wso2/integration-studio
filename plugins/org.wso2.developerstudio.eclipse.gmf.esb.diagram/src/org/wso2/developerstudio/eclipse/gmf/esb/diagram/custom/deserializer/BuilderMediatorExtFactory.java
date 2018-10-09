@@ -18,41 +18,53 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Buil
 
 public class BuilderMediatorExtFactory extends BuilderMediatorFactory {
 
-	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
-		
-		BuilderMediatorExt builderExt = new BuilderMediatorExt();
-		
-		List<MessageBuilder> msgBuilderList =  new ArrayList<MessageBuilder>();
-		
-		for(@SuppressWarnings("unchecked")
-		Iterator<Element> it = elem.getChildrenWithLocalName("messageBuilder"); it.hasNext();){
-			
-			OMElement msgBuild  =  (OMElement) it.next();
-			
-			MessageBuilder msgBuilder = EsbFactory.eINSTANCE.createMessageBuilder();
-			
-			OMAttribute contentType = msgBuild.getAttribute(new QName("contentType"));
-			
-			OMAttribute builderClazz = msgBuild.getAttribute(new QName("class"));
-			
-			OMAttribute formatterClass = msgBuild.getAttribute(new QName("formatterClass"));
-			
-			if(contentType != null && contentType.getAttributeValue() != null){
-			msgBuilder.setContentType(contentType.getAttributeValue());
-			}
-			if(builderClazz != null && builderClazz.getAttributeValue() != null){
-			msgBuilder.setBuilderClass(builderClazz.getAttributeValue());
-			}
-			if(formatterClass != null && formatterClass.getAttributeValue() != null){
-			msgBuilder.setFormatterClass(formatterClass.getAttributeValue());
-			}
-			
-			msgBuilderList.add(msgBuilder);
-		}
-		
-		builderExt.setMessageBuilderList(msgBuilderList);
-		
-		return builderExt;
-		
-	}
+    private static BuilderMediatorExtFactory instance;
+
+    private BuilderMediatorExtFactory() {
+    }
+
+    public static synchronized BuilderMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new BuilderMediatorExtFactory();
+        }
+        return instance;
+    }
+
+    public Mediator createSpecificMediator(OMElement elem, Properties properties) {
+
+        BuilderMediatorExt builderExt = new BuilderMediatorExt();
+
+        List<MessageBuilder> msgBuilderList = new ArrayList<MessageBuilder>();
+
+        for (@SuppressWarnings("unchecked")
+        Iterator<Element> it = elem.getChildrenWithLocalName("messageBuilder"); it.hasNext();) {
+
+            OMElement msgBuild = (OMElement) it.next();
+
+            MessageBuilder msgBuilder = EsbFactory.eINSTANCE.createMessageBuilder();
+
+            OMAttribute contentType = msgBuild.getAttribute(new QName("contentType"));
+
+            OMAttribute builderClazz = msgBuild.getAttribute(new QName("class"));
+
+            OMAttribute formatterClass = msgBuild.getAttribute(new QName("formatterClass"));
+
+            if (contentType != null && contentType.getAttributeValue() != null) {
+                msgBuilder.setContentType(contentType.getAttributeValue());
+            }
+            if (builderClazz != null && builderClazz.getAttributeValue() != null) {
+                msgBuilder.setBuilderClass(builderClazz.getAttributeValue());
+            }
+            if (formatterClass != null && formatterClass.getAttributeValue() != null) {
+                msgBuilder.setFormatterClass(formatterClass.getAttributeValue());
+            }
+
+            msgBuilderList.add(msgBuilder);
+        }
+
+        builderExt.setMessageBuilderList(msgBuilderList);
+
+        return builderExt;
+
+    }
 }

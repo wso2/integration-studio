@@ -32,6 +32,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Bean
 public class BeanMediatorExtFactory extends AbstractMediatorFactory {
 
 	private static final QName BEAN_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "bean");
+	
+	private static BeanMediatorExtFactory instance;
+	
+	private BeanMediatorExtFactory() {
+	}
+	
+	public static synchronized BeanMediatorExtFactory getInstance() {
+	    if (instance == null) {
+	        instance = new BeanMediatorExtFactory();
+	    }
+	    return instance;
+	}
 
 	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 

@@ -32,78 +32,89 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EJBM
 
 public class EJBMediatorExtFactory extends AbstractMediatorFactory {
 
-	private static final QName EJB_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "ejb");
+    private static EJBMediatorExtFactory instance;
 
-	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
+    private EJBMediatorExtFactory() {
+    }
 
-		EJBMediatorExt mediator = new EJBMediatorExt();
+    public static synchronized EJBMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new EJBMediatorExtFactory();
+        }
+        return instance;
+    }
 
-		String attributeValue;
+    private static final QName EJB_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "ejb");
 
-		attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEANSTALK));
-		if (attributeValue != null) {
-			mediator.setBeanstalkName(attributeValue.trim());
-		}
+    public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
-		attributeValue = elem.getAttributeValue(new QName(BeanConstants.CLASS));
-		if (attributeValue != null) {
-			mediator.setClassName(attributeValue.trim());
-		}
+        EJBMediatorExt mediator = new EJBMediatorExt();
 
-		attributeValue = elem.getAttributeValue(new QName(EJBConstants.STATEFUL));
-		if (Boolean.valueOf(attributeValue)) {
-			attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEAN_ID));
-			if (attributeValue != null) {
-				mediator.setBeanId(new ValueFactory().createValue(EJBConstants.BEAN_ID, elem));
-			}
-		}
+        String attributeValue;
 
-		boolean remove;
-		attributeValue = elem.getAttributeValue(new QName(EJBConstants.REMOVE));
-		remove = Boolean.valueOf(attributeValue);
-		if (remove) {
-			mediator.setRemove(true);
-		}
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEANSTALK));
+        if (attributeValue != null) {
+            mediator.setBeanstalkName(attributeValue.trim());
+        }
 
-		String targetValue = elem.getAttributeValue(new QName(BeanConstants.TARGET));
-		if (targetValue != null) {
-			mediator.setTargetValue(targetValue);
-		}
+        attributeValue = elem.getAttributeValue(new QName(BeanConstants.CLASS));
+        if (attributeValue != null) {
+            mediator.setClassName(attributeValue.trim());
+        }
 
-		attributeValue = elem.getAttributeValue(new QName(EJBConstants.JNDI_NAME));
-		if (attributeValue != null) {
-			mediator.setJndiName(attributeValue);
-		}
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.STATEFUL));
+        if (Boolean.valueOf(attributeValue)) {
+            attributeValue = elem.getAttributeValue(new QName(EJBConstants.BEAN_ID));
+            if (attributeValue != null) {
+                mediator.setBeanId(new ValueFactory().createValue(EJBConstants.BEAN_ID, elem));
+            }
+        }
 
-		OMElement argumentsElem = elem.getFirstChildWithName(new QName(
-				XMLConfigConstants.SYNAPSE_NAMESPACE, EJBConstants.ARGS));
+        boolean remove;
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.REMOVE));
+        remove = Boolean.valueOf(attributeValue);
+        if (remove) {
+            mediator.setRemove(true);
+        }
 
-		if (argumentsElem != null) {
+        String targetValue = elem.getAttributeValue(new QName(BeanConstants.TARGET));
+        if (targetValue != null) {
+            mediator.setTargetValue(targetValue);
+        }
 
-			@SuppressWarnings("rawtypes")
-			Iterator itr = argumentsElem.getChildrenWithName(new QName(
-					XMLConfigConstants.SYNAPSE_NAMESPACE, EJBConstants.ARG));
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.JNDI_NAME));
+        if (attributeValue != null) {
+            mediator.setJndiName(attributeValue);
+        }
 
-			while (itr.hasNext()) {
-				OMElement argElem = (OMElement) itr.next();
+        OMElement argumentsElem = elem
+                .getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, EJBConstants.ARGS));
 
-				if (argElem.getAttributeValue(ATT_VALUE) != null) {
-					mediator.addArgument(new ValueFactory().createValue(BeanConstants.VALUE,
-							argElem));
-				}
-			}
-		}
+        if (argumentsElem != null) {
 
-		attributeValue = elem.getAttributeValue(new QName(EJBConstants.METHOD));
-		if (attributeValue != null) {
-			mediator.setMethodName(attributeValue);
-		}
+            @SuppressWarnings("rawtypes")
+            Iterator itr = argumentsElem
+                    .getChildrenWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, EJBConstants.ARG));
 
-		return mediator;
-	}
+            while (itr.hasNext()) {
+                OMElement argElem = (OMElement) itr.next();
 
-	public QName getTagQName() {
-		return EJB_Q;
-	}
+                if (argElem.getAttributeValue(ATT_VALUE) != null) {
+                    mediator.addArgument(new ValueFactory().createValue(BeanConstants.VALUE, argElem));
+                }
+            }
+        }
+
+        attributeValue = elem.getAttributeValue(new QName(EJBConstants.METHOD));
+        if (attributeValue != null) {
+            mediator.setMethodName(attributeValue);
+        }
+
+        return mediator;
+    }
+
+    public QName getTagQName() {
+        return EJB_Q;
+    }
 
 }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="devstudio"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="Developer Studio">
+         <property
+               name="appName"
+               value="Developer Studio">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/carbon-studio-logo.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="Licensed under Apache License, version 2.&#x0A;Please visit : http://wso2.com/products/developer-studio/">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/icon-16.gif,icons/icon-32.gif,icons/icon-48.gif,icons/icon-64.gif,icons/icon-128.gif,icons/icon-256.gif">
+         </property>
+         <property
+           name="lifeCycleURI"
+           value="bundleclass://org.wso2.developerstudio.rcp.plugin/org.wso2.developerstudio.rcp.plugin.LifeCycleManager">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="729FCF">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,252,445,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,275,440,10">
+         </property>
+         <property 
+         		name="introBrandingImage" 
+         		value="product:icons/developer-studio.svg"/>
+		 <property 
+		 		name="introTitle" 
+		 		value="Welcome to WSO2 Developer Studio"/>
+   <property
+         name="preferenceCustomization"
+         value="plugin_customization.ini">
+   </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="WSO2"
+            icon="icons/perspective.png"
+            class="org.wso2.developerstudio.rcp.plugin.perspective.DeveloperStudioPerspective"
+            id="org.wso2.developerstudio.eclipse.WSO2DeveloperStudioPerspective">
+      </perspective>
+   </extension>
+   <extension point="org.eclipse.ui.intro">
+ 		<introProductBinding
+			introId="org.eclipse.ui.intro.universal"
+ 			productId="org.wso2.developerstudio.rcp.plugin.devstudio">
+		</introProductBinding>
+	</extension>
+
+	<extension point="org.eclipse.ui.intro.configExtension">
+        <configExtension content="intro/welcome.xml"
+                         configId="org.eclipse.ui.intro.universalConfig"></configExtension>
+    </extension>
+     <extension point="org.eclipse.ui.splashHandlers">
+
+      <splashHandler
+
+            class="org.wso2.developerstudio.rcp.plugin.handler.SplashHandler"
+
+            id="org.wso2.developerstudio.rcp.plugin.handler.id">
+
+      </splashHandler>
+
+      <splashHandlerProductBinding
+
+            productId="org.wso2.developerstudio.rcp.plugin.devstudio"
+
+            splashId="org.wso2.developerstudio.rcp.plugin.handler.id">
+
+      </splashHandlerProductBinding>
+
+   </extension>
+
+</plugin>

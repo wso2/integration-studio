@@ -26,9 +26,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getInputConnector <em>Input Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getConnectorParameters <em>Connector Parameters</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getInputConnector <em>Input Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getOutputConnector <em>Output Connector</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getConnectorParameters <em>Connector
+ * Parameters</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloudConnector()
@@ -36,72 +37,79 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface CloudConnector extends EsbElement {
-	/**
-	 * Returns the value of the '<em><b>Input Connector</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Input Connector</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Input Connector</em>' containment reference.
-	 * @see #setInputConnector(CloudConnectorInputConnector)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloudConnector_InputConnector()
-	 * @model containment="true"
-	 * @generated
-	 */
-	CloudConnectorInputConnector getInputConnector();
+    /**
+     * Returns the value of the '<em><b>Input Connector</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Input Connector</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Input Connector</em>' containment reference.
+     * @see #setInputConnector(CloudConnectorInputConnector)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloudConnector_InputConnector()
+     * @model containment="true"
+     * @generated
+     */
+    CloudConnectorInputConnector getInputConnector();
 
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getInputConnector <em>Input Connector</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Input Connector</em>' containment reference.
-	 * @see #getInputConnector()
-	 * @generated
-	 */
-	void setInputConnector(CloudConnectorInputConnector value);
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getInputConnector <em>Input
+     * Connector</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @param value the new value of the '<em>Input Connector</em>' containment reference.
+     * @see #getInputConnector()
+     * @generated
+     */
+    void setInputConnector(CloudConnectorInputConnector value);
 
-	/**
-	 * Returns the value of the '<em><b>Output Connector</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Output Connector</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Output Connector</em>' containment reference.
-	 * @see #setOutputConnector(CloudConnectorOutputConnector)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloudConnector_OutputConnector()
-	 * @model containment="true"
-	 * @generated
-	 */
-	CloudConnectorOutputConnector getOutputConnector();
+    /**
+     * Returns the value of the '<em><b>Output Connector</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Output Connector</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Output Connector</em>' containment reference.
+     * @see #setOutputConnector(CloudConnectorOutputConnector)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloudConnector_OutputConnector()
+     * @model containment="true"
+     * @generated
+     */
+    CloudConnectorOutputConnector getOutputConnector();
 
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getOutputConnector <em>Output Connector</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Output Connector</em>' containment reference.
-	 * @see #getOutputConnector()
-	 * @generated
-	 */
-	void setOutputConnector(CloudConnectorOutputConnector value);
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector#getOutputConnector
+     * <em>Output Connector</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @param value the new value of the '<em>Output Connector</em>' containment reference.
+     * @see #getOutputConnector()
+     * @generated
+     */
+    void setOutputConnector(CloudConnectorOutputConnector value);
 
-	/**
-	 * Returns the value of the '<em><b>Connector Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Connector Parameters</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Connector Parameters</em>' containment reference list.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloudConnector_ConnectorParameters()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<CallTemplateParameter> getConnectorParameters();
+    /**
+     * Returns the value of the '<em><b>Connector Parameters</b></em>' containment reference list.
+     * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Connector Parameters</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Connector Parameters</em>' containment reference list.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCloudConnector_ConnectorParameters()
+     * @model containment="true"
+     * @generated
+     */
+    EList<CallTemplateParameter> getConnectorParameters();
 
 } // CloudConnector

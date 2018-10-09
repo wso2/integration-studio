@@ -160,7 +160,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
      * @param position
      */
     protected void increaseBreakpointPosition(List<ESBDebugPoint> breakpontList, List<Integer> position) {
-    	List<ESBDebugPoint> modifiedDebugPointList = new ArrayList<>();
+        List<ESBDebugPoint> modifiedDebugPointList = new ArrayList<>();
         for (ESBDebugPoint esbBreakpoint : breakpontList) {
             try {
                 AbstractESBDebugPointMessage message = increasePositionOfTheMessage(esbBreakpoint.getLocation(),
@@ -177,12 +177,12 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
             }
         }
         for (ESBDebugPoint esbDebugPoint : modifiedDebugPointList) {
-        	try {
-				DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(esbDebugPoint);
-			} catch (CoreException e) {
-				 log.error("Error while increasing debug point position value and adding back", e);
-			}
-		}
+            try {
+                DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(esbDebugPoint);
+            } catch (CoreException e) {
+                log.error("Error while increasing debug point position value and adding back", e);
+            }
+        }
     }
 
     /**
@@ -220,12 +220,12 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
      * @param position
      * @return
      */
-    protected static List<ESBDebugPoint> getDebugPointsRelatedToModification(IResource resource,
-            List<Integer> position, String listSequence, String action) {
-    	List<ESBDebugPoint> breakpointList = new ArrayList<ESBDebugPoint>();
-    	if(position.isEmpty()){
-    		return breakpointList;
-    	}
+    protected static List<ESBDebugPoint> getDebugPointsRelatedToModification(IResource resource, List<Integer> position,
+            String listSequence, String action) {
+        List<ESBDebugPoint> breakpointList = new ArrayList<ESBDebugPoint>();
+        if (position.isEmpty()) {
+            return breakpointList;
+        }
         IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
                 .getBreakpoints(ESBDebugModelPresentation.ID);
         for (IBreakpoint breakpoint : breakpoints) {
@@ -273,8 +273,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
     protected List<Integer> getMediatorPosition(OutputConnector outputConnector, AbstractMediator newMediator)
             throws MediatorNotFoundException {
         EObject newMediatorImpl = ((NodeImpl) newMediator.getModel()).getElement();
-        if(newMediatorImpl == null){
-        	return new ArrayList<>();
+        if (newMediatorImpl == null) {
+            return new ArrayList<>();
         }
         return getMediatorPosition(outputConnector, newMediatorImpl);
     }
@@ -342,7 +342,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                 "Selected Mediator is not found in a valid position. Unknown Complex Mediator Type found : "
                         + mediatorImpl.getClass());
     }
-    
+
     private Stack<EObject> removeTopObjectsUntilFirstMediator(Stack<EObject> parentStack) {
         while (!(parentStack.peek() instanceof MediatorImpl)) {
             parentStack.pop();
@@ -363,8 +363,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
             } else if (innerContainerInstance instanceof FilterFailContainerImpl) {
                 return FILTER_FAIL_CONTAINER_POSITION_VALUE;
             } else {
-                throw new IllegalArgumentException("Unknown Filter Mediator Container type found : "
-                        + innerContainerInstance.getClass());
+                throw new IllegalArgumentException(
+                        "Unknown Filter Mediator Container type found : " + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof SwitchMediatorImpl) {
             parentStack.pop();
@@ -398,8 +398,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
             } else if (innerContainerInstance instanceof ThrottleOnRejectContainerImpl) {
                 return THROTTLE_ON_REJECT_CONTAINER_POSITION_VALUE;
             } else {
-                throw new IllegalArgumentException("Unknown Throttle Mediator Container type found : "
-                        + innerContainerInstance.getClass());
+                throw new IllegalArgumentException(
+                        "Unknown Throttle Mediator Container type found : " + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof EntitlementMediatorImpl) {
             parentStack.pop();
@@ -413,8 +413,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
             } else if (innerContainerInstance instanceof EntitlementObligationsContainerImpl) {
                 return ENTITLEMENT_OBLIGATIONS_CONTAINER_POSITION_VALUE;
             } else {
-                throw new IllegalArgumentException("Unknown Throttle Mediator Container type found : "
-                        + innerContainerInstance.getClass());
+                throw new IllegalArgumentException(
+                        "Unknown Throttle Mediator Container type found : " + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof CloneMediatorImpl) {
             innerParentContainer = parentStack.pop();
@@ -438,8 +438,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                         "Required SwitchCaseContainerImpl instance not found in switchCaseContainerList ");
             }
         }
-        throw new IllegalArgumentException("Unknown multiple inner sequence mediator found : "
-                + mediatorImpl.getClass());
+        throw new IllegalArgumentException(
+                "Unknown multiple inner sequence mediator found : " + mediatorImpl.getClass());
 
     }
 
@@ -462,8 +462,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
             } else if (innerContainerInstance instanceof FilterFailContainerImpl) {
                 return ((FilterMediatorImpl) mediatorImpl).getFailOutputConnector();
             } else {
-                throw new IllegalArgumentException("Unknown Filter Mediator Container type found : "
-                        + innerContainerInstance.getClass());
+                throw new IllegalArgumentException(
+                        "Unknown Filter Mediator Container type found : " + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof SwitchMediatorImpl) {
             if (innerParentContainer instanceof SwitchCaseParentContainerImpl) {
@@ -472,8 +472,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
             } else if (innerParentContainer instanceof SwitchDefaultParentContainerImpl) {
                 return ((SwitchMediatorImpl) mediatorImpl).getDefaultBranch();
             } else {
-                throw new IllegalArgumentException("Unknown Switch Mediator Container type found : "
-                        + innerContainerInstance.getClass());
+                throw new IllegalArgumentException(
+                        "Unknown Switch Mediator Container type found : " + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof ThrottleMediatorImpl) {
             if (innerContainerInstance instanceof ThrottleOnAcceptContainerImpl) {
@@ -481,8 +481,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
             } else if (innerContainerInstance instanceof ThrottleOnRejectContainerImpl) {
                 return ((ThrottleMediatorImpl) mediatorImpl).getOnRejectOutputConnector();
             } else {
-                throw new IllegalArgumentException("Unknown Filter Mediator Container type found : "
-                        + innerContainerInstance.getClass());
+                throw new IllegalArgumentException(
+                        "Unknown Filter Mediator Container type found : " + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof EntitlementMediatorImpl) {
             if (innerContainerInstance instanceof EntitlementOnRejectContainerImpl) {
@@ -494,15 +494,15 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
             } else if (innerContainerInstance instanceof EntitlementObligationsContainerImpl) {
                 return ((EntitlementMediatorImpl) mediatorImpl).getObligationsOutputConnector();
             } else {
-                throw new IllegalArgumentException("Unknown Entitlement Mediator Container type found : "
-                        + innerContainerInstance.getClass());
+                throw new IllegalArgumentException(
+                        "Unknown Entitlement Mediator Container type found : " + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof CloneMediatorImpl) {
             if (innerParentContainer instanceof CloneMediatorContainerImpl) {
                 return ((CloneMediatorImpl) mediatorImpl).getTargetsOutputConnector().get(cloneTargetPosition);
             } else {
-                throw new IllegalArgumentException("Unknown Clone Mediator Container type found : "
-                        + innerContainerInstance.getClass());
+                throw new IllegalArgumentException(
+                        "Unknown Clone Mediator Container type found : " + innerContainerInstance.getClass());
             }
         } else if (mediatorImpl instanceof ValidateMediatorImpl) {
             return ((ValidateMediatorImpl) mediatorImpl).getOnFailOutputConnector();
@@ -619,7 +619,7 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
         parentStack = removeTopObjectsUntilFirstMediator(parentStack);
         EObject mediatorImpl = parentStack.pop();
         List<Integer> positionList = new ArrayList<>();
-        if(eList!= null) {
+        if (eList != null) {
             for (EsbElement mediator : eList) {
                 if (mediator.equals(mediatorImpl)) {
                     positionList.add(eList.size() - count);
@@ -688,8 +688,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
         throw new MediatorNotFoundException(selection + " Mediator not found in Fault Sequence");
     }
 
-    private AbstractESBDebugPointMessage increasePositionOfTheMessage(
-            AbstractESBDebugPointMessage esbDebugPointMessage, List<Integer> position) {
+    private AbstractESBDebugPointMessage increasePositionOfTheMessage(AbstractESBDebugPointMessage esbDebugPointMessage,
+            List<Integer> position) {
         List<Integer> positionArray = esbDebugPointMessage.getMediatorPosition().getPosition();
         int modifiedPositionValue = positionArray.get(position.size() - 1) + 1;
         positionArray.set(position.size() - 1, modifiedPositionValue);
@@ -697,8 +697,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
         return esbDebugPointMessage;
     }
 
-    private AbstractESBDebugPointMessage decreasePositionOfTheMessage(
-            AbstractESBDebugPointMessage esbDebugPointMessage, List<Integer> position) {
+    private AbstractESBDebugPointMessage decreasePositionOfTheMessage(AbstractESBDebugPointMessage esbDebugPointMessage,
+            List<Integer> position) {
         List<Integer> positionArray = esbDebugPointMessage.getMediatorPosition().getPosition();
         int modifiedPositionValue = positionArray.get(position.size() - 1) - 1;
         positionArray.set(position.size() - 1, modifiedPositionValue);
@@ -714,11 +714,11 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
                 return false;
             }
         }
-		if ((addedMediatorLastPositionValueIndex < breakpointPosition.size())
-				&& addedMediatorPosition.get(addedMediatorLastPositionValueIndex) <= breakpointPosition
-						.get(addedMediatorLastPositionValueIndex)) {
-			return true;
-		}
+        if ((addedMediatorLastPositionValueIndex < breakpointPosition.size())
+                && addedMediatorPosition.get(addedMediatorLastPositionValueIndex) <= breakpointPosition
+                        .get(addedMediatorLastPositionValueIndex)) {
+            return true;
+        }
         return false;
     }
 
@@ -726,8 +726,8 @@ public abstract class AbstractESBDebugPointBuilder implements IESBDebugPointBuil
         return tempConnector instanceof OutputConnector;
     }
 
-    private static String getSequenceTypeOfBreakpoint(IBreakpoint breakpoint) throws DebugPointMarkerNotFoundException,
-            CoreException {
+    private static String getSequenceTypeOfBreakpoint(IBreakpoint breakpoint)
+            throws DebugPointMarkerNotFoundException, CoreException {
         return ((ESBDebugPoint) breakpoint).getLocation().getSequenceType();
     }
 

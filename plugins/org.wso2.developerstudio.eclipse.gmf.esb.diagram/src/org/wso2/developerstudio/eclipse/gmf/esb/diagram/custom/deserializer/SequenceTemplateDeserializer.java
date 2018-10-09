@@ -39,49 +39,46 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
  */
 public class SequenceTemplateDeserializer extends AbstractEsbNodeDeserializer<TemplateMediator, Template> {
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public Template createNode(IGraphicalEditPart part, TemplateMediator template) throws DeserializerException {
-		Template templateModel = (Template) DeserializerUtils.createNode(part, EsbElementTypes.Template_3664);
-		setElementToEdit(templateModel);
-		executeSetValueCommand(TEMPLATE__NAME, template.getName());
-		executeSetValueCommand(TEMPLATE__TEMPLATE_TYPE, TemplateType.SEQUENCE);
-		
-		if (template.getParameters() != null) {
-		    for (String parameter : template.getParameters()) {
-		        TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
-		        templateParameter.setName(parameter);
-		        executeAddValueCommand(templateModel.getParameters(), templateParameter, false);
-		    }
-		}
-		
-		SequenceMediator sequenceMediator = new SequenceMediator();
-		sequenceMediator.addAll(template.getList());
-		sequenceMediator.setName(template.getName());
-		
-		refreshEditPartMap();
-		@SuppressWarnings("rawtypes")
-		IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance()
-		.getDeserializer(sequenceMediator);
-		IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(templateModel).getChildren().get(0);
-		if (deserializer != null) {
-			EsbNode node = deserializer.createNode(compartment,sequenceMediator);
-			if (node!=null) {
-				refreshEditPartMap();
-				IGraphicalEditPart graphicalNode = (IGraphicalEditPart) getEditpart(node);
-				if(graphicalNode!=null){
-					Rectangle rect = new Rectangle(new Point(), graphicalNode.getFigure().getPreferredSize()).getCopy();
-					rect.x = 0;
-					rect.y = 0;
-					SetBoundsCommand sbc = new SetBoundsCommand(graphicalNode.getEditingDomain(),
-							"change location", new EObjectAdapter((View) graphicalNode.getModel()), rect);
-					graphicalNode.getDiagramEditDomain().getDiagramCommandStack()
-							.execute(new ICommandProxy(sbc));
-				}
-			}
-		}
-		return templateModel;
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public Template createNode(IGraphicalEditPart part, TemplateMediator template) throws DeserializerException {
+        Template templateModel = (Template) DeserializerUtils.createNode(part, EsbElementTypes.Template_3664);
+        setElementToEdit(templateModel);
+        executeSetValueCommand(TEMPLATE__NAME, template.getName());
+        executeSetValueCommand(TEMPLATE__TEMPLATE_TYPE, TemplateType.SEQUENCE);
 
+        if (template.getParameters() != null) {
+            for (String parameter : template.getParameters()) {
+                TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
+                templateParameter.setName(parameter);
+                executeAddValueCommand(templateModel.getParameters(), templateParameter, false);
+            }
+        }
+
+        SequenceMediator sequenceMediator = new SequenceMediator();
+        sequenceMediator.addAll(template.getList());
+        sequenceMediator.setName(template.getName());
+
+        refreshEditPartMap();
+        @SuppressWarnings("rawtypes")
+        IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(sequenceMediator);
+        IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(templateModel).getChildren().get(0);
+        if (deserializer != null) {
+            EsbNode node = deserializer.createNode(compartment, sequenceMediator);
+            if (node != null) {
+                refreshEditPartMap();
+                IGraphicalEditPart graphicalNode = (IGraphicalEditPart) getEditpart(node);
+                if (graphicalNode != null) {
+                    Rectangle rect = new Rectangle(new Point(), graphicalNode.getFigure().getPreferredSize()).getCopy();
+                    rect.x = 0;
+                    rect.y = 0;
+                    SetBoundsCommand sbc = new SetBoundsCommand(graphicalNode.getEditingDomain(), "change location",
+                            new EObjectAdapter((View) graphicalNode.getModel()), rect);
+                    graphicalNode.getDiagramEditDomain().getDiagramCommandStack().execute(new ICommandProxy(sbc));
+                }
+            }
+        }
+        return templateModel;
+    }
 
 }

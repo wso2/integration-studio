@@ -31,40 +31,43 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddCaseBranchDialog;
 
 public class AddBranchSwitchMediatorAction extends ConfigureEsbNodeAction {
-	
-	public AddBranchSwitchMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId("add-case-switch-mediator-action-id");
-		setText("Add/Remove Case..");
-		setToolTipText("Add or Remove case branches.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
-	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof SwitchMediator, "Invalid selection.");
-		
-		Shell shell = Display.getDefault().getActiveShell();	
-		Dialog addBranchDialog = new AddCaseBranchDialog(shell, (SwitchMediator) selectedObj,getEditingDomain(),selectedEP);
-		addBranchDialog.setBlockOnOpen(true);
-		addBranchDialog.open();
+    public AddBranchSwitchMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId("add-case-switch-mediator-action-id");
+        setText("Add/Remove Case..");
+        setToolTipText("Add or Remove case branches.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
+    }
 
-	/*	SwitchMediator parentMediator = (SwitchMediator) selectedObj;
-		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentMediator);
-		SwitchCaseBranchOutputConnector cb = EsbFactory.eINSTANCE.createSwitchCaseBranchOutputConnector();
-		AddCommand addCmd = new AddCommand(domain,parentMediator,EsbPackage.Literals.SWITCH_MEDIATOR__CASE_BRANCHES, cb);
-		if (addCmd.canExecute()){
-			domain.getCommandStack().execute(addCmd);
-		} */
-		
+    /**
+     * {@inheritDoc}
+     */
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-	}
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof SwitchMediator, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        Dialog addBranchDialog = new AddCaseBranchDialog(shell, (SwitchMediator) selectedObj, getEditingDomain(),
+                selectedEP);
+        addBranchDialog.setBlockOnOpen(true);
+        addBranchDialog.open();
+
+        /*
+         * SwitchMediator parentMediator = (SwitchMediator) selectedObj;
+         * TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentMediator);
+         * SwitchCaseBranchOutputConnector cb = EsbFactory.eINSTANCE.createSwitchCaseBranchOutputConnector();
+         * AddCommand addCmd = new AddCommand(domain,parentMediator,EsbPackage.Literals.SWITCH_MEDIATOR__CASE_BRANCHES,
+         * cb);
+         * if (addCmd.canExecute()){
+         * domain.getCommandStack().execute(addCmd);
+         * }
+         */
+
+    }
 
 }

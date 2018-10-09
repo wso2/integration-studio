@@ -25,13 +25,13 @@ import org.eclipse.draw2d.geometry.Rectangle;
  *
  */
 public class CustomToolTip {
-    
+
     private final int RATIO = 2;
 
     /**
-     * Return tool tip shape that adjusted according to the tool tip message 
-     *  
-     * @return rectangle shape {@link IFigure} 
+     * Return tool tip shape that adjusted according to the tool tip message
+     * 
+     * @return rectangle shape {@link IFigure}
      */
     public IFigure getCustomToolTipShape(String toolTipMessage) {
         RectangleFigure toolTipBox = new RectangleFigure();

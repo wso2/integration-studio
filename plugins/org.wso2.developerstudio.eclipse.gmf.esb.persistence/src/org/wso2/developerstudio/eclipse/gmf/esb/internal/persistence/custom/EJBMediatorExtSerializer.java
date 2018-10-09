@@ -28,79 +28,71 @@ import org.apache.synapse.mediators.bean.enterprise.EJBConstants;
 import org.apache.synapse.mediators.bean.enterprise.EJBMediator;
 
 public class EJBMediatorExtSerializer extends EJBMediatorSerializer {
-	
-	 private static final String EJB = "ejb";
 
-	    public OMElement serializeSpecificMediator(Mediator m) {
+    private static final String EJB = "ejb";
 
-	        if (!(m instanceof EJBMediator)) {
-	            handleException("An unsupported mediator was passed in for serialization : " +
-	                    m.getType());
-	            return null;
-	        }
+    public OMElement serializeSpecificMediator(Mediator m) {
 
-	        EJBMediatorExt mediator = (EJBMediatorExt) m;
+        if (!(m instanceof EJBMediator)) {
+            handleException("An unsupported mediator was passed in for serialization : " + m.getType());
+            return null;
+        }
 
-	        OMElement mediatorElem = fac.createOMElement(EJB, synNS);
-	        saveTracingState(mediatorElem, mediator);
+        EJBMediatorExt mediator = (EJBMediatorExt) m;
 
-	        if (mediator.getBeanstalkName() != null) {
-	            mediatorElem.addAttribute(fac.createOMAttribute(
-	                    EJBConstants.BEANSTALK, nullNS, mediator.getBeanstalkName()));
-	        }
+        OMElement mediatorElem = fac.createOMElement(EJB, synNS);
+        saveTracingState(mediatorElem, mediator);
 
-	        if (mediator.getClassName() != null) {
-	            mediatorElem.addAttribute(fac.createOMAttribute(
-	                    BeanConstants.CLASS, nullNS, mediator.getClassName()));
-	        }
+        if (mediator.getBeanstalkName() != null) {
+            mediatorElem
+                    .addAttribute(fac.createOMAttribute(EJBConstants.BEANSTALK, nullNS, mediator.getBeanstalkName()));
+        }
 
-	        if (mediator.getBeanId() != null) {
-	            mediatorElem.addAttribute(fac.createOMAttribute(
-	                    EJBConstants.STATEFUL, nullNS, Boolean.toString(true)));
-	            new ValueSerializer().serializeValue(
-	                    mediator.getBeanId(), EJBConstants.BEAN_ID, mediatorElem);
-	        }
+        if (mediator.getClassName() != null) {
+            mediatorElem.addAttribute(fac.createOMAttribute(BeanConstants.CLASS, nullNS, mediator.getClassName()));
+        }
 
-	        if (mediator.getMethodName() != null) {
-	            mediatorElem.addAttribute(fac.createOMAttribute(
-	                    EJBConstants.METHOD, nullNS, mediator.getMethodName()));
-	        }
+        if (mediator.getBeanId() != null) {
+            mediatorElem.addAttribute(fac.createOMAttribute(EJBConstants.STATEFUL, nullNS, Boolean.toString(true)));
+            new ValueSerializer().serializeValue(mediator.getBeanId(), EJBConstants.BEAN_ID, mediatorElem);
+        }
 
-	        if (mediator.getTargetValue() != null) {
-	        	mediatorElem.addAttribute(fac.createOMAttribute(
-	                    "target", nullNS, mediator.getTargetValue()));
-	        }
+        if (mediator.getMethodName() != null) {
+            mediatorElem.addAttribute(fac.createOMAttribute(EJBConstants.METHOD, nullNS, mediator.getMethodName()));
+        }
 
-	        if (mediator.getJndiName() != null) {
-	            mediatorElem.addAttribute(fac.createOMAttribute(
-	                    EJBConstants.JNDI_NAME, nullNS, mediator.getJndiName()));
-	        }
+        if (mediator.getTargetValue() != null) {
+            mediatorElem.addAttribute(fac.createOMAttribute("target", nullNS, mediator.getTargetValue()));
+        }
 
-	        if (mediator.isRemove()) {
-	            mediatorElem.addAttribute(fac.createOMAttribute(
-	                    EJBConstants.REMOVE, nullNS, Boolean.toString(true)));
-	        }
+        if (mediator.getJndiName() != null) {
+            mediatorElem.addAttribute(fac.createOMAttribute(EJBConstants.JNDI_NAME, nullNS, mediator.getJndiName()));
+        }
 
-	        List<Value> argList = mediator.getArgumentList();
+        if (mediator.isRemove()) {
+            mediatorElem.addAttribute(fac.createOMAttribute(EJBConstants.REMOVE, nullNS, Boolean.toString(true)));
+        }
 
-	        if (argList != null && argList.size() > 0) {
+        List<Value> argList = mediator.getArgumentList();
 
-	            OMElement argumentsElem = fac.createOMElement(EJBConstants.ARGS, synNS);
+        if (argList != null && argList.size() > 0) {
 
-	            for (Value arg : argList) {
-	                OMElement argElem = fac.createOMElement(EJBConstants.ARG, synNS);
-	                new ValueSerializer().serializeValue(arg, BeanConstants.VALUE, argElem);
-	                argumentsElem.addChild(argElem);
-	            }
+            OMElement argumentsElem = fac.createOMElement(EJBConstants.ARGS, synNS);
 
-	            mediatorElem.addChild(argumentsElem);
-	        }
+            for (Value arg : argList) {
+                OMElement argElem = fac.createOMElement(EJBConstants.ARG, synNS);
+                new ValueSerializer().serializeValue(arg, BeanConstants.VALUE, argElem);
+                argumentsElem.addChild(argElem);
+            }
 
-	        return mediatorElem;
-	    }
+            mediatorElem.addChild(argumentsElem);
+        }
 
-	    public String getMediatorClassName() {
-	        return EJBMediatorExt.class.getName();
-	    }
+        return mediatorElem;
+    }
+
+    public String getMediatorClassName() {
+        return EJBMediatorExt.class.getName();
+    }
 
 }

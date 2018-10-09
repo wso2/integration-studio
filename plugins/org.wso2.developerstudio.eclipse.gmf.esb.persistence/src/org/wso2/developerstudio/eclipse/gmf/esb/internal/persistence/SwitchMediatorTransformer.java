@@ -37,85 +37,85 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
-		try {
-			info.getParentSequence().addChild(createSwitchMediator(info, subject));
-			doTransform(info, ((SwitchMediator) subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        try {
+            info.getParentSequence().addChild(createSwitchMediator(info, subject));
+            doTransform(info, ((SwitchMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		try {
-			sequence.addChild(createSwitchMediator(information, subject));
-			doTransformWithinSequence(information, ((SwitchMediator) subject).getOutputConnector().getOutgoingLink(),
-					sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createSwitchMediator(information, subject));
+            doTransformWithinSequence(information, ((SwitchMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	private org.apache.synapse.mediators.filters.SwitchMediator createSwitchMediator(TransformationInfo info,
-			EsbNode subject) throws JaxenException, TransformerException {
+    private org.apache.synapse.mediators.filters.SwitchMediator createSwitchMediator(TransformationInfo info,
+            EsbNode subject) throws JaxenException, TransformerException {
 
-		Assert.isTrue(subject instanceof SwitchMediator, "Invalid subject.");
-		SwitchMediator visualSwitch = (SwitchMediator) subject;
+        Assert.isTrue(subject instanceof SwitchMediator, "Invalid subject.");
+        SwitchMediator visualSwitch = (SwitchMediator) subject;
 
-		org.apache.synapse.mediators.filters.SwitchMediator switchMediator = new org.apache.synapse.mediators.filters.SwitchMediator();
-		setCommonProperties(switchMediator, visualSwitch);
+        org.apache.synapse.mediators.filters.SwitchMediator switchMediator = new org.apache.synapse.mediators.filters.SwitchMediator();
+        setCommonProperties(switchMediator, visualSwitch);
 
-		if (visualSwitch.getSourceXpath() != null && !visualSwitch.getSourceXpath().getPropertyValue().equals("")) {
-			SynapsePath XPath = CustomSynapsePathFactory.getSynapsePath(visualSwitch.getSourceXpath()
-					.getPropertyValue());
-			if (visualSwitch.getSourceXpath().getNamespaces() != null && !(XPath instanceof SynapseJsonPath)) {
-				for (int i = 0; i < visualSwitch.getSourceXpath().getNamespaces().keySet().size(); ++i) {
-					String prefix = (String) visualSwitch.getSourceXpath().getNamespaces().keySet().toArray()[i];
-					String namespaceUri = visualSwitch.getSourceXpath().getNamespaces().get(prefix);
-					XPath.addNamespace(prefix, namespaceUri);
-				}
-			}
+        if (visualSwitch.getSourceXpath() != null && !visualSwitch.getSourceXpath().getPropertyValue().equals("")) {
+            SynapsePath XPath = CustomSynapsePathFactory
+                    .getSynapsePath(visualSwitch.getSourceXpath().getPropertyValue());
+            if (visualSwitch.getSourceXpath().getNamespaces() != null && !(XPath instanceof SynapseJsonPath)) {
+                for (int i = 0; i < visualSwitch.getSourceXpath().getNamespaces().keySet().size(); ++i) {
+                    String prefix = (String) visualSwitch.getSourceXpath().getNamespaces().keySet().toArray()[i];
+                    String namespaceUri = visualSwitch.getSourceXpath().getNamespaces().get(prefix);
+                    XPath.addNamespace(prefix, namespaceUri);
+                }
+            }
 
-			switchMediator.setSource(XPath);
-		} else {
-			switchMediator.setSource(new SynapseXPath("Default:"));
-		}
+            switchMediator.setSource(XPath);
+        } else {
+            switchMediator.setSource(new SynapseXPath("Default:"));
+        }
 
-		for (SwitchCaseBranchOutputConnector outputConnector : visualSwitch.getCaseBranches()) {
-			SwitchCase switchCase = new SwitchCase();
-			AnonymousListMediator caseMediator = new AnonymousListMediator();
-			switchCase.setRegex(Pattern.compile(outputConnector.getCaseRegex()));
-			switchCase.setCaseMediator(caseMediator);
-			switchMediator.addCase(switchCase);
-			TransformationInfo newInfo = new TransformationInfo();
-			newInfo.setCurrentProxy(info.getCurrentProxy());
-			newInfo.setTraversalDirection(info.getTraversalDirection());
-			newInfo.setSynapseConfiguration(info.getSynapseConfiguration());
-			newInfo.setOriginInSequence(info.getOriginInSequence());
-			newInfo.setOriginOutSequence(info.getOriginOutSequence());
-			newInfo.setParentSequence(caseMediator);
-			doTransform(newInfo, outputConnector);
-		}
+        for (SwitchCaseBranchOutputConnector outputConnector : visualSwitch.getCaseBranches()) {
+            SwitchCase switchCase = new SwitchCase();
+            AnonymousListMediator caseMediator = new AnonymousListMediator();
+            switchCase.setRegex(Pattern.compile(outputConnector.getCaseRegex()));
+            switchCase.setCaseMediator(caseMediator);
+            switchMediator.addCase(switchCase);
+            TransformationInfo newInfo = new TransformationInfo();
+            newInfo.setCurrentProxy(info.getCurrentProxy());
+            newInfo.setTraversalDirection(info.getTraversalDirection());
+            newInfo.setSynapseConfiguration(info.getSynapseConfiguration());
+            newInfo.setOriginInSequence(info.getOriginInSequence());
+            newInfo.setOriginOutSequence(info.getOriginOutSequence());
+            newInfo.setParentSequence(caseMediator);
+            doTransform(newInfo, outputConnector);
+        }
 
-		SwitchCase switchCase = new SwitchCase();
-		AnonymousListMediator caseMediator = new AnonymousListMediator();
-		switchCase.setCaseMediator(caseMediator);
-		switchMediator.setDefaultCase(switchCase);
-		TransformationInfo newInfo = new TransformationInfo();
-		newInfo.setCurrentProxy(info.getCurrentProxy());
-		newInfo.setTraversalDirection(info.getTraversalDirection());
-		newInfo.setSynapseConfiguration(info.getSynapseConfiguration());
-		newInfo.setOriginInSequence(info.getOriginInSequence());
-		newInfo.setOriginOutSequence(info.getOriginOutSequence());
-		newInfo.setParentSequence(caseMediator);
-		doTransform(newInfo, visualSwitch.getDefaultBranch());
+        SwitchCase switchCase = new SwitchCase();
+        AnonymousListMediator caseMediator = new AnonymousListMediator();
+        switchCase.setCaseMediator(caseMediator);
+        switchMediator.setDefaultCase(switchCase);
+        TransformationInfo newInfo = new TransformationInfo();
+        newInfo.setCurrentProxy(info.getCurrentProxy());
+        newInfo.setTraversalDirection(info.getTraversalDirection());
+        newInfo.setSynapseConfiguration(info.getSynapseConfiguration());
+        newInfo.setOriginInSequence(info.getOriginInSequence());
+        newInfo.setOriginOutSequence(info.getOriginOutSequence());
+        newInfo.setParentSequence(caseMediator);
+        doTransform(newInfo, visualSwitch.getDefaultBranch());
 
-		return switchMediator;
-	}
+        return switchMediator;
+    }
 }

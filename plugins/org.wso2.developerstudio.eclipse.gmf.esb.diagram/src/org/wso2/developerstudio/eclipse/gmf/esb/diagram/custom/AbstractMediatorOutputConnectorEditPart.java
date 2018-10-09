@@ -30,254 +30,232 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlu
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
-public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOutputConnectorEditPart{
+public abstract class AbstractMediatorOutputConnectorEditPart extends AbstractOutputConnectorEditPart {
 
-	public final boolean isInput=false;
-	public static LinkToolEntry entry;
-	
-	public NodeFigure figure_;
-	
-	protected IFigure primaryShapeForward;
+    public final boolean isInput = false;
+    public static LinkToolEntry entry;
 
-	public IFigure primaryShapeReverse;
-	
-	//abstract public IFigure getPrimaryShapeForward();
-	//abstract public IFigure getPrimaryShapeReverse();	
-	//abstract public NodeFigure getNodeFigureOutput();
-	
-	
-	
-	public IFigure createNodeShapeReverse() {
-		return primaryShapeReverse = new WestPointerFigure();
-	}
+    public NodeFigure figure_;
 
-	public IFigure createNodeShapeForward() {
-		return primaryShapeForward = new EastPointerFigure();
-	}
+    protected IFigure primaryShapeForward;
 
+    public IFigure primaryShapeReverse;
 
-	public EastPointerFigure getPrimaryShapeForward() {
-		return (EastPointerFigure) primaryShapeForward;
-	}
+    // abstract public IFigure getPrimaryShapeForward();
+    // abstract public IFigure getPrimaryShapeReverse();
+    // abstract public NodeFigure getNodeFigureOutput();
 
-	public WestPointerFigure getPrimaryShapeReverse() {
-		return (WestPointerFigure) primaryShapeReverse;
-	}	
-	
-	public AbstractMediatorOutputConnectorEditPart(View view) {
-		super(view);
-		// TODO Auto-generated constructor stub
-	}
+    public IFigure createNodeShapeReverse() {
+        return primaryShapeReverse = new WestPointerFigure();
+    }
 
+    public IFigure createNodeShapeForward() {
+        return primaryShapeForward = new EastPointerFigure();
+    }
 
-	protected NodeFigure createNodeFigure() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public EastPointerFigure getPrimaryShapeForward() {
+        return (EastPointerFigure) primaryShapeForward;
+    }
 
-	public NodeFigure getNodeFigureOutput() {
-		return figure_;
-	}	
-	
-	static{
-	 entry = new LinkToolEntry(
-			Messages.EsbLink1CreationTool_title,
-			Messages.EsbLink1CreationTool_desc,
-			Collections.singletonList(EsbElementTypes.EsbLink_4001));
-	entry.setId("createEsbLink1CreationTool"); //$NON-NLS-1$
-	entry.setSmallIcon(EsbElementTypes
-			.getImageDescriptor(EsbElementTypes.EsbLink_4001));
-	entry.setLargeIcon(entry.getSmallIcon());
-	}
-	
+    public WestPointerFigure getPrimaryShapeReverse() {
+        return (WestPointerFigure) primaryShapeReverse;
+    }
 
-	
-	public static class LinkToolEntry extends ToolEntry {
+    public AbstractMediatorOutputConnectorEditPart(View view) {
+        super(view);
+        // TODO Auto-generated constructor stub
+    }
 
-		/**
-		 * @generated
-		 */
-		private final List<IElementType> relationshipTypes;
+    protected NodeFigure createNodeFigure() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-		/**
-		 * @generated
-		 */
-		private LinkToolEntry(String title, String description,
-				List<IElementType> relationshipTypes) {
-			super(title, description, null, null);
-			this.relationshipTypes = relationshipTypes;
-		}
+    public NodeFigure getNodeFigureOutput() {
+        return figure_;
+    }
 
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
-	}
-	
-	public class EastPointerFigure extends RoundedRectangle {
+    static {
+        entry = new LinkToolEntry(Messages.EsbLink1CreationTool_title, Messages.EsbLink1CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.EsbLink_4001));
+        entry.setId("createEsbLink1CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EsbLink_4001));
+        entry.setLargeIcon(entry.getSmallIcon());
+    }
 
-		
-		public EastPointerFigure() {
+    public static class LinkToolEntry extends ToolEntry {
 
-			GridLayout layoutThis = new GridLayout();
-			layoutThis.numColumns = 1;
-			layoutThis.makeColumnsEqualWidth = true;
-			layoutThis.marginHeight = 0;
-			layoutThis.marginWidth = 0;
-			this.setLayoutManager(layoutThis);
+        /**
+         * @generated
+         */
+        private final List<IElementType> relationshipTypes;
 
-			this.setCornerDimensions(new Dimension(1, 1));
-			this.setFill(false);
-			this.setOutline(false);
-			// this.setBackgroundColor(get);
-			this.setPreferredSize(new Dimension(22, 18));
-			this.addMouseMotionListener(new MouseMotionListener() {
+        /**
+         * @generated
+         */
+        private LinkToolEntry(String title, String description, List<IElementType> relationshipTypes) {
+            super(title, description, null, null);
+            this.relationshipTypes = relationshipTypes;
+        }
 
-				public void mouseMoved(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+        /**
+         * @generated
+         */
+        public Tool createTool() {
+            Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
+            tool.setProperties(getToolProperties());
+            return tool;
+        }
+    }
 
-				}
+    public class EastPointerFigure extends RoundedRectangle {
 
-				public void mouseHover(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+        public EastPointerFigure() {
 
-				}
+            GridLayout layoutThis = new GridLayout();
+            layoutThis.numColumns = 1;
+            layoutThis.makeColumnsEqualWidth = true;
+            layoutThis.marginHeight = 0;
+            layoutThis.marginWidth = 0;
+            this.setLayoutManager(layoutThis);
 
-				public void mouseExited(MouseEvent arg0) {
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("createEsbLink1CreationTool")) {
-					getEditDomain().getPaletteViewer().setActiveTool(null);		
-					}
+            this.setCornerDimensions(new Dimension(1, 1));
+            this.setFill(false);
+            this.setOutline(false);
+            // this.setBackgroundColor(get);
+            this.setPreferredSize(new Dimension(22, 18));
+            this.addMouseMotionListener(new MouseMotionListener() {
 
-				}
+                public void mouseMoved(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-				public void mouseEntered(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("selectionTool")) {
-						getEditDomain()
-								.getPaletteViewer()
-								.setActiveTool(
-										(ToolEntry) (((PaletteContainer) getEditDomain()
-												.getPaletteViewer()
-												.getPaletteRoot().getChildren()
-												.get(4)).getChildren().get(0)));
-					}
+                }
 
-				}
+                public void mouseHover(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-				public void mouseDragged(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+                }
 
-				}
-			});
-			createContents();
-		}
-		
-		public void createContents() {
-			GridData constraintImageRectangle11 = new GridData();
-			constraintImageRectangle11.verticalAlignment = GridData.FILL;
-			constraintImageRectangle11.horizontalAlignment = GridData.FILL;
-			constraintImageRectangle11.horizontalIndent = 0;
-			constraintImageRectangle11.horizontalSpan = 1;
-			constraintImageRectangle11.verticalSpan = 2;
-			constraintImageRectangle11.grabExcessHorizontalSpace = true;
-			constraintImageRectangle11.grabExcessVerticalSpace = true;
+                public void mouseExited(MouseEvent arg0) {
+                    if (getEditDomain().getPaletteViewer().getActiveTool().getId()
+                            .equals("createEsbLink1CreationTool")) {
+                        getEditDomain().getPaletteViewer().setActiveTool(null);
+                    }
 
-			ImageFigure img1 = EditPartDrawingHelper.getEastArrowIcon(22, 18);
-			this.add(img1, constraintImageRectangle11);
+                }
 
-		}
+                public void mouseEntered(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
+                    if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
+                        getEditDomain().getPaletteViewer()
+                                .setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+                                        .getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
+                    }
 
-	}
-	
-	@Override
-	public boolean isSelectable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+                }
 
-	public class WestPointerFigure extends RoundedRectangle {
+                public void mouseDragged(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-		public WestPointerFigure() {
+                }
+            });
+            createContents();
+        }
 
-			GridLayout layoutThis = new GridLayout();
-			layoutThis.numColumns = 1;
-			layoutThis.makeColumnsEqualWidth = true;
-			layoutThis.marginHeight = 0;
-			layoutThis.marginWidth = 0;
-			this.setLayoutManager(layoutThis);
+        public void createContents() {
+            GridData constraintImageRectangle11 = new GridData();
+            constraintImageRectangle11.verticalAlignment = GridData.FILL;
+            constraintImageRectangle11.horizontalAlignment = GridData.FILL;
+            constraintImageRectangle11.horizontalIndent = 0;
+            constraintImageRectangle11.horizontalSpan = 1;
+            constraintImageRectangle11.verticalSpan = 2;
+            constraintImageRectangle11.grabExcessHorizontalSpace = true;
+            constraintImageRectangle11.grabExcessVerticalSpace = true;
 
-			this.setCornerDimensions(new Dimension(1, 1));
-			this.setFill(false);
-			this.setOutline(false);
-			// this.setBackgroundColor(get);
-			this.setPreferredSize(new Dimension(22, 18));			
-			this.addMouseMotionListener(new MouseMotionListener() {
+            ImageFigure img1 = EditPartDrawingHelper.getEastArrowIcon(22, 18);
+            this.add(img1, constraintImageRectangle11);
 
-				public void mouseMoved(MouseEvent me) {
-					// TODO Auto-generated method stub
+        }
 
-				}
+    }
 
-				public void mouseHover(MouseEvent me) {
-					// TODO Auto-generated method stub
+    @Override
+    public boolean isSelectable() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-				}
+    public class WestPointerFigure extends RoundedRectangle {
 
-				public void mouseExited(MouseEvent me) {
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("createEsbLink1CreationTool")) {
-					getEditDomain().getPaletteViewer().setActiveTool(null);
-					}
-					
-				}
+        public WestPointerFigure() {
 
-				public void mouseEntered(MouseEvent me) {
-					// TODO Auto-generated method stub
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("selectionTool")) {
-						getEditDomain()
-								.getPaletteViewer()
-								.setActiveTool(
-										(ToolEntry) (((PaletteContainer) getEditDomain()
-												.getPaletteViewer()
-												.getPaletteRoot().getChildren()
-												.get(4)).getChildren().get(0)));
+            GridLayout layoutThis = new GridLayout();
+            layoutThis.numColumns = 1;
+            layoutThis.makeColumnsEqualWidth = true;
+            layoutThis.marginHeight = 0;
+            layoutThis.marginWidth = 0;
+            this.setLayoutManager(layoutThis);
 
-					}
-				}
+            this.setCornerDimensions(new Dimension(1, 1));
+            this.setFill(false);
+            this.setOutline(false);
+            // this.setBackgroundColor(get);
+            this.setPreferredSize(new Dimension(22, 18));
+            this.addMouseMotionListener(new MouseMotionListener() {
 
-				public void mouseDragged(MouseEvent me) {
-					// TODO Auto-generated method stub
+                public void mouseMoved(MouseEvent me) {
+                    // TODO Auto-generated method stub
 
-				}
-			});
-			createContents();
-		}
-		
-		public void createContents() {
-			GridData constraintImageRectangle11 = new GridData();
-			constraintImageRectangle11.verticalAlignment = GridData.FILL;
-			constraintImageRectangle11.horizontalAlignment = GridData.FILL;
-			constraintImageRectangle11.horizontalIndent = 0;
-			constraintImageRectangle11.horizontalSpan = 1;
-			constraintImageRectangle11.verticalSpan = 2;
-			constraintImageRectangle11.grabExcessHorizontalSpace = true;
-			constraintImageRectangle11.grabExcessVerticalSpace = true;
+                }
 
-			ImageFigure img1 = EditPartDrawingHelper.getWestArrowIcon(22, 18);
-			this.add(img1, constraintImageRectangle11);
+                public void mouseHover(MouseEvent me) {
+                    // TODO Auto-generated method stub
 
-		}
+                }
 
-	}
-	static final Color THIS_BACK = new Color(null, 50, 50, 50);
-	
-	
+                public void mouseExited(MouseEvent me) {
+                    if (getEditDomain().getPaletteViewer().getActiveTool().getId()
+                            .equals("createEsbLink1CreationTool")) {
+                        getEditDomain().getPaletteViewer().setActiveTool(null);
+                    }
+
+                }
+
+                public void mouseEntered(MouseEvent me) {
+                    // TODO Auto-generated method stub
+                    if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
+                        getEditDomain().getPaletteViewer()
+                                .setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+                                        .getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
+
+                    }
+                }
+
+                public void mouseDragged(MouseEvent me) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+            createContents();
+        }
+
+        public void createContents() {
+            GridData constraintImageRectangle11 = new GridData();
+            constraintImageRectangle11.verticalAlignment = GridData.FILL;
+            constraintImageRectangle11.horizontalAlignment = GridData.FILL;
+            constraintImageRectangle11.horizontalIndent = 0;
+            constraintImageRectangle11.horizontalSpan = 1;
+            constraintImageRectangle11.verticalSpan = 2;
+            constraintImageRectangle11.grabExcessHorizontalSpace = true;
+            constraintImageRectangle11.grabExcessVerticalSpace = true;
+
+            ImageFigure img1 = EditPartDrawingHelper.getWestArrowIcon(22, 18);
+            this.add(img1, constraintImageRectangle11);
+
+        }
+
+    }
+
+    static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

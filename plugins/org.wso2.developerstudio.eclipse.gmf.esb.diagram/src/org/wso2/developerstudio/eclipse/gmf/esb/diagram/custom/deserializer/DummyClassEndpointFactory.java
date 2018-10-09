@@ -43,49 +43,49 @@ public class DummyClassEndpointFactory extends DummyEndpointFactory {
     }
 
     public static DummyClassEndpointFactory getInstance() {
-	return instance;
+        return instance;
     }
 
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	ClassEndpoint clazzEndpoint = new ClassEndpoint();
-	OMAttribute endpointName = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
+        ClassEndpoint clazzEndpoint = new ClassEndpoint();
+        OMAttribute endpointName = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
 
-	if (endpointName != null) {
-	    clazzEndpoint.setName(endpointName.getAttributeValue());
-	}
+        if (endpointName != null) {
+            clazzEndpoint.setName(endpointName.getAttributeValue());
+        }
 
-	OMElement classElement = epConfig.getFirstChildWithName(CLASS_QNAME);
-	if (classElement != null) {
+        OMElement classElement = epConfig.getFirstChildWithName(CLASS_QNAME);
+        if (classElement != null) {
 
-	    String nameAttr = classElement.getAttributeValue(NAME_QNAME);
-	    if (nameAttr != null) {
+            String nameAttr = classElement.getAttributeValue(NAME_QNAME);
+            if (nameAttr != null) {
 
-		Endpoint endpoint = null;
-		try {
-		    Class clazz = Class.forName(nameAttr);
-		    endpoint = (Endpoint) clazz.newInstance();
-		    for (Iterator iter = classElement.getChildrenWithName(PARAMETER_QNAME); iter.hasNext();) {
-			OMElement paramEle = (OMElement) iter.next();
-			setParameter(endpoint, paramEle, clazzEndpoint);
-		    }
-		} catch (Exception e) {
-		    // ignore
-		}
+                Endpoint endpoint = null;
+                try {
+                    Class clazz = Class.forName(nameAttr);
+                    endpoint = (Endpoint) clazz.newInstance();
+                    for (Iterator iter = classElement.getChildrenWithName(PARAMETER_QNAME); iter.hasNext();) {
+                        OMElement paramEle = (OMElement) iter.next();
+                        setParameter(endpoint, paramEle, clazzEndpoint);
+                    }
+                } catch (Exception e) {
+                    // ignore
+                }
 
-		clazzEndpoint.setClassEndpoint(endpoint);
-	    }
-	}
-	return clazzEndpoint;
+                clazzEndpoint.setClassEndpoint(endpoint);
+            }
+        }
+        return clazzEndpoint;
     }
 
     private void setParameter(Endpoint endpoint, OMElement paramEle, ClassEndpoint clazzEndpoint)
-	    throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-	String name = paramEle.getAttributeValue(new QName("name"));
-	String value = paramEle.getText();
-	if (name != null) {
-	    PropertyHelper.setInstanceProperty(name, value, endpoint);
-	    clazzEndpoint.setParameters(name, value);
-	}
+            throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+        String name = paramEle.getAttributeValue(new QName("name"));
+        String value = paramEle.getText();
+        if (name != null) {
+            PropertyHelper.setInstanceProperty(name, value, endpoint);
+            clazzEndpoint.setParameters(name, value);
+        }
     }
 }

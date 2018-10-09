@@ -30,26 +30,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class PublishEventAttributesPropertyDescriptor extends PropertyDescriptor {
 
-	private String attributeCategory;
+    private String attributeCategory;
 
-	public PublishEventAttributesPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor, String attributeCategory) {
-		super(object, itemPropertyDescriptor);
-		this.attributeCategory = attributeCategory;
-	}
+    public PublishEventAttributesPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor,
+            String attributeCategory) {
+        super(object, itemPropertyDescriptor);
+        this.attributeCategory = attributeCategory;
+    }
 
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-				Shell shell = Display.getDefault().getActiveShell();
-				PublishEventMediator publishEventMediator = (PublishEventMediator) object;
-				ConfigurePublishEventAttributesDialog configurePublishEventAttributesDialog = new ConfigurePublishEventAttributesDialog(
-						shell, publishEventMediator, TransactionUtil.getEditingDomain(publishEventMediator), attributeCategory);
-				configurePublishEventAttributesDialog.setBlockOnOpen(true);
-				configurePublishEventAttributesDialog.open();
-				return null;
-			}
-		};
-	}
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                PublishEventMediator publishEventMediator = (PublishEventMediator) object;
+                ConfigurePublishEventAttributesDialog configurePublishEventAttributesDialog = new ConfigurePublishEventAttributesDialog(
+                        shell, publishEventMediator, TransactionUtil.getEditingDomain(publishEventMediator),
+                        attributeCategory);
+                configurePublishEventAttributesDialog.setBlockOnOpen(true);
+                configurePublishEventAttributesDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

@@ -21,29 +21,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Addb
 
 public class AddBranchLoadBalanceEndpointAction extends ConfigureEsbNodeAction {
 
-	public AddBranchLoadBalanceEndpointAction(IWorkbenchPart part) {
-		super(part);
-		setId("add-branch-loadBalance-endPoint-action-id");
-		setText("Branches");
-		setToolTipText("Add a branch to loadBalance-endpoint.");
-		// TODO Auto-generated constructor stub
-	}
+    public AddBranchLoadBalanceEndpointAction(IWorkbenchPart part) {
+        super(part);
+        setId("add-branch-loadBalance-endPoint-action-id");
+        setText("Branches");
+        setToolTipText("Add a branch to loadBalance-endpoint.");
+        // TODO Auto-generated constructor stub
+    }
 
-	
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof LoadBalanceEndPoint, "Invalid selection.");
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-		
-		Shell shell = Display.getDefault().getActiveShell();
-		shell.setLocation(300, 200);
-		Dialog addBranchDialog = new AddbranchEndpointDialog(shell, (EndPoint) selectedObj,getEditingDomain(),selectedEP);
-		addBranchDialog.setBlockOnOpen(true);
-		addBranchDialog.open();
-		
-	}
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof LoadBalanceEndPoint, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        shell.setLocation(300, 200);
+        Dialog addBranchDialog = new AddbranchEndpointDialog(shell, (EndPoint) selectedObj, getEditingDomain(),
+                selectedEP);
+        addBranchDialog.setBlockOnOpen(true);
+        addBranchDialog.open();
+
+    }
 
 }

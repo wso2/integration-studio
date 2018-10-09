@@ -13,17 +13,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfCacheMediatorEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(4);
-		types.add(EsbElementTypes.CacheMediatorInputConnector_3106);
-		types.add(EsbElementTypes.CacheMediatorOutputConnector_3107);
-		types.add(EsbElementTypes.CacheMediatorOnHitOutputConnector_3618);
-		types.add(EsbElementTypes.MediatorFlow_3619);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(4);
+        types.add(EsbElementTypes.CacheMediatorInputConnector_3106);
+        types.add(EsbElementTypes.CacheMediatorOutputConnector_3107);
+        types.add(EsbElementTypes.CacheMediatorOnHitOutputConnector_3618);
+        types.add(EsbElementTypes.MediatorFlow_3619);
+        return types;
+    }
 
 }

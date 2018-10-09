@@ -26,34 +26,34 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchDefault
 
 public abstract class AbstractMediatorFlowEditPart extends ShapeNodeEditPart {
 
-	public AbstractMediatorFlowEditPart(View view) {
-		super(view);
-	}
+    public AbstractMediatorFlowEditPart(View view) {
+        super(view);
+    }
 
-	/**
-	 * This method will return the associated output connector for the
-	 * MediatorFlow Eg: 1.Filter mediator fail MediatorFlow should return
-	 * FilterMediatorFailOutputConnector 2.Aggregate mediator on complete
-	 * MediatorFlow should return AggregateMediatorOnCompleteOutputConnector
-	 * etc.
-	 * 
-	 * @return OutputConnector
-	 */
-	public abstract AbstractOutputConnectorEditPart getAssociatedOutputConnector();
+    /**
+     * This method will return the associated output connector for the
+     * MediatorFlow Eg: 1.Filter mediator fail MediatorFlow should return
+     * FilterMediatorFailOutputConnector 2.Aggregate mediator on complete
+     * MediatorFlow should return AggregateMediatorOnCompleteOutputConnector
+     * etc.
+     * 
+     * @return OutputConnector
+     */
+    public abstract AbstractOutputConnectorEditPart getAssociatedOutputConnector();
 
-	/**
-	 * This method will return the relevant output connector for a particular
-	 * mediatorFlow when we have variable for mediator flow count in a mediator.
-	 * Eg: Switch, Clone mediators
-	 * 
-	 * @param ContainerEditPart
-	 * @param complexFiguredAbstractMediator
-	 * @return
-	 */
-	protected AdditionalOutputConnector getAddtionalOutputConnector(ShapeNodeEditPart ContainerEditPart,
-			complexFiguredAbstractMediator complexFiguredAbstractMediator) {
-		List<EditPart> children = complexFiguredAbstractMediator.getChildren();
-		List<EditPart> targetlist = ContainerEditPart.getChildren();
+    /**
+     * This method will return the relevant output connector for a particular
+     * mediatorFlow when we have variable for mediator flow count in a mediator.
+     * Eg: Switch, Clone mediators
+     * 
+     * @param ContainerEditPart
+     * @param complexFiguredAbstractMediator
+     * @return
+     */
+    protected AdditionalOutputConnector getAddtionalOutputConnector(ShapeNodeEditPart ContainerEditPart,
+            complexFiguredAbstractMediator complexFiguredAbstractMediator) {
+        List<EditPart> children = complexFiguredAbstractMediator.getChildren();
+        List<EditPart> targetlist = ContainerEditPart.getChildren();
         int targetIndex = 0;
         for (EditPart containerEditPart : targetlist) {
             if (containerEditPart.equals(this.getParent())) {
@@ -71,8 +71,8 @@ public abstract class AbstractMediatorFlowEditPart extends ShapeNodeEditPart {
                 tempTargetIndexCount++;
             }
         }
-        throw new IllegalArgumentException("Matching AdditionalOutputConnector is not found for given container : "
-                + this.getParent().toString());
+        throw new IllegalArgumentException(
+                "Matching AdditionalOutputConnector is not found for given container : " + this.getParent().toString());
     }
 
 }

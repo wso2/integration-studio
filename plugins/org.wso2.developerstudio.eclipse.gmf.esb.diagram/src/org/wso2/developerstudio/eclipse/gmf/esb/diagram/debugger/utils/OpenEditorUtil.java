@@ -72,193 +72,193 @@ import org.xml.sax.SAXException;
  */
 public class OpenEditorUtil {
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static AbstractMediator previousHitPoint;
-	private static String toolTipMessage;
-	private static List<AbstractMediator> suspendEditPartList;
-	private static final String XML_STARTING_TAG = "<?xml";
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static AbstractMediator previousHitPoint;
+    private static String toolTipMessage;
+    private static List<AbstractMediator> suspendEditPartList;
+    private static final String XML_STARTING_TAG = "<?xml";
 
-	/**
-	 * This private constructor is to hide the implicit public constructor
-	 */
-	private OpenEditorUtil() {
-	}
+    /**
+     * This private constructor is to hide the implicit public constructor
+     */
+    private OpenEditorUtil() {
+    }
 
-	public static void removeBreakpointHitStatus() {
-		if (previousHitPoint != null) {
-			previousHitPoint.setBreakpointHitStatus(false);
-			// Fixing DEVTOOLESB-261
-			previousHitPoint.setSelected(EditPart.SELECTED);
-			previousHitPoint.setSelected(EditPart.SELECTED_NONE);
-		}
-	}
+    public static void removeBreakpointHitStatus() {
+        if (previousHitPoint != null) {
+            previousHitPoint.setBreakpointHitStatus(false);
+            // Fixing DEVTOOLESB-261
+            previousHitPoint.setSelected(EditPart.SELECTED);
+            previousHitPoint.setSelected(EditPart.SELECTED_NONE);
+        }
+    }
 
-	public static void setPreviousHitEditPart(AbstractMediator hitPoint) {
-		previousHitPoint = hitPoint;
-	}
+    public static void setPreviousHitEditPart(AbstractMediator hitPoint) {
+        previousHitPoint = hitPoint;
+    }
 
-	public static AbstractMediator getPreviousHitEditPart() {
-		return previousHitPoint;
-	}
+    public static AbstractMediator getPreviousHitEditPart() {
+        return previousHitPoint;
+    }
 
-	public static void setToolTipMessageOnMediator(String message) {
-		toolTipMessage = message;
-		AbstractMediator mediator = getPreviousHitEditPart();
-		setToolTipMessageOnMediator(mediator, message);
-	}
-	
-	public static void setToolTipMessageOnMediator(AbstractMediator mediator, String message) {
-		toolTipMessage = message;
-		if (mediator instanceof FixedSizedAbstractMediator) {
-			((FixedSizedAbstractMediator) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
-		} else if (mediator instanceof SingleCompartmentComplexFiguredAbstractMediator) {
+    public static void setToolTipMessageOnMediator(String message) {
+        toolTipMessage = message;
+        AbstractMediator mediator = getPreviousHitEditPart();
+        setToolTipMessageOnMediator(mediator, message);
+    }
 
-			((SingleCompartmentComplexFiguredAbstractMediator) mediator).getPrimaryShape()
-					.setToolTipMessage(formatMessageEnvelope(message));
+    public static void setToolTipMessageOnMediator(AbstractMediator mediator, String message) {
+        toolTipMessage = message;
+        if (mediator instanceof FixedSizedAbstractMediator) {
+            ((FixedSizedAbstractMediator) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
+        } else if (mediator instanceof SingleCompartmentComplexFiguredAbstractMediator) {
 
-		} else if (mediator instanceof CloneMediatorEditPart) {
-			((CloneMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
-		} else if (mediator instanceof EntitlementMediatorEditPart) {
-			((EntitlementMediatorEditPart) mediator).getPrimaryShape()
-					.setToolTipMessage(formatMessageEnvelope(message));
-		} else if (mediator instanceof FilterMediatorEditPart) {
-			((FilterMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
-		} else if (mediator instanceof SwitchMediatorEditPart) {
-			((SwitchMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
-		} else if (mediator instanceof ThrottleMediatorEditPart) {
-			((ThrottleMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
-		}
-	}
+            ((SingleCompartmentComplexFiguredAbstractMediator) mediator).getPrimaryShape()
+                    .setToolTipMessage(formatMessageEnvelope(message));
 
-	public static void resetToolTipMessages() {
-		if (suspendEditPartList != null) {
-			for (AbstractMediator mediator : suspendEditPartList) {
-				// Empty message will reset the value
-				setToolTipMessageOnMediator(mediator, "");
-			}
-			suspendEditPartList = null;
-		}
-	}
+        } else if (mediator instanceof CloneMediatorEditPart) {
+            ((CloneMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
+        } else if (mediator instanceof EntitlementMediatorEditPart) {
+            ((EntitlementMediatorEditPart) mediator).getPrimaryShape()
+                    .setToolTipMessage(formatMessageEnvelope(message));
+        } else if (mediator instanceof FilterMediatorEditPart) {
+            ((FilterMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
+        } else if (mediator instanceof SwitchMediatorEditPart) {
+            ((SwitchMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
+        } else if (mediator instanceof ThrottleMediatorEditPart) {
+            ((ThrottleMediatorEditPart) mediator).getPrimaryShape().setToolTipMessage(formatMessageEnvelope(message));
+        }
+    }
 
-	public static void setToolTipMessageOnMediator() {
-		if (toolTipMessage != null) {
-			setToolTipMessageOnMediator(toolTipMessage);
-		} else {
-			log.warn("Valid tooltip message is not yet registered");
-		}
-	}
+    public static void resetToolTipMessages() {
+        if (suspendEditPartList != null) {
+            for (AbstractMediator mediator : suspendEditPartList) {
+                // Empty message will reset the value
+                setToolTipMessageOnMediator(mediator, "");
+            }
+            suspendEditPartList = null;
+        }
+    }
 
-	/**
-	 * This method format a unformatted xml document string
-	 * 
-	 * @param xmlString
-	 *            string
-	 * @return
-	 */
-	public static String formatMessageEnvelope(String xmlString) {
-		if (StringUtils.isEmpty(xmlString) || !xmlString.startsWith("<")) {
-			// not a xml file
-			return xmlString;
-		}
-		final InputSource inputSource = new InputSource(new StringReader(xmlString));
-		try {
-			final Node document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource)
-					.getDocumentElement();
-			final DOMImplementationRegistry registry = DOMImplementationRegistry.newInstance();
-			final Boolean keepDeclaration = Boolean.valueOf(xmlString.startsWith(XML_STARTING_TAG));
-			final DOMImplementationLS impl = (DOMImplementationLS) registry.getDOMImplementation("LS");
-			final LSSerializer writer = impl.createLSSerializer();
-			writer.getDomConfig().setParameter("format-pretty-print", Boolean.TRUE);
-			writer.getDomConfig().setParameter("xml-declaration", keepDeclaration);
-			return writer.writeToString(document);
-		} catch (SAXException | IOException | ParserConfigurationException | ClassNotFoundException
-				| InstantiationException | IllegalAccessException | ClassCastException e) {
-			log.warn("Error while parsing the xml string", e);
-		}
-		return xmlString;
-	}
+    public static void setToolTipMessageOnMediator() {
+        if (toolTipMessage != null) {
+            setToolTipMessageOnMediator(toolTipMessage);
+        } else {
+            log.warn("Valid tooltip message is not yet registered");
+        }
+    }
 
-	/**
-	 * Open the ESB diagram editor for the given ESB configuration file
-	 * 
-	 * @param fileTobeOpened
-	 */
-	public static void openSeparateEditor(final IFile fileTobeOpened, final ESBDebugPoint breakpoint) {
-		try {
-			final String source = FileUtils.readFileToString(fileTobeOpened.getLocation().toFile());
-			final Deserializer deserializer = Deserializer.getInstance();
+    /**
+     * This method format a unformatted xml document string
+     * 
+     * @param xmlString
+     *            string
+     * @return
+     */
+    public static String formatMessageEnvelope(String xmlString) {
+        if (StringUtils.isEmpty(xmlString) || !xmlString.startsWith("<")) {
+            // not a xml file
+            return xmlString;
+        }
+        final InputSource inputSource = new InputSource(new StringReader(xmlString));
+        try {
+            final Node document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource)
+                    .getDocumentElement();
+            final DOMImplementationRegistry registry = DOMImplementationRegistry.newInstance();
+            final Boolean keepDeclaration = Boolean.valueOf(xmlString.startsWith(XML_STARTING_TAG));
+            final DOMImplementationLS impl = (DOMImplementationLS) registry.getDOMImplementation("LS");
+            final LSSerializer writer = impl.createLSSerializer();
+            writer.getDomConfig().setParameter("format-pretty-print", Boolean.TRUE);
+            writer.getDomConfig().setParameter("xml-declaration", keepDeclaration);
+            return writer.writeToString(document);
+        } catch (SAXException | IOException | ParserConfigurationException | ClassNotFoundException
+                | InstantiationException | IllegalAccessException | ClassCastException e) {
+            log.warn("Error while parsing the xml string", e);
+        }
+        return xmlString;
+    }
 
-			PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					openFileOnEditor(fileTobeOpened, breakpoint, source, deserializer);
-				}
+    /**
+     * Open the ESB diagram editor for the given ESB configuration file
+     * 
+     * @param fileTobeOpened
+     */
+    public static void openSeparateEditor(final IFile fileTobeOpened, final ESBDebugPoint breakpoint) {
+        try {
+            final String source = FileUtils.readFileToString(fileTobeOpened.getLocation().toFile());
+            final Deserializer deserializer = Deserializer.getInstance();
 
-				private void openFileOnEditor(final IFile fileTobeOpened, final ESBDebugPoint breakpoint,
-						final String source, final Deserializer deserializer) {
-					try {
-						ArtifactType artifactType = deserializer.getArtifactType(source);
+            PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+                @Override
+                public void run() {
+                    openFileOnEditor(fileTobeOpened, breakpoint, source, deserializer);
+                }
 
-						IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-								.getActivePage();
-						IEditorPart openEditor = activePage.openEditor(
-								new EsbEditorInput(null, fileTobeOpened, artifactType.getLiteral()),
-								EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
-						EsbMultiPageEditor multipageEitor = (EsbMultiPageEditor) openEditor;
+                private void openFileOnEditor(final IFile fileTobeOpened, final ESBDebugPoint breakpoint,
+                        final String source, final Deserializer deserializer) {
+                    try {
+                        ArtifactType artifactType = deserializer.getArtifactType(source);
 
-						drawSuspendedBreakpointMark(breakpoint, multipageEitor);
+                        IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                                .getActivePage();
+                        IEditorPart openEditor = activePage.openEditor(
+                                new EsbEditorInput(null, fileTobeOpened, artifactType.getLiteral()),
+                                EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
+                        EsbMultiPageEditor multipageEitor = (EsbMultiPageEditor) openEditor;
 
-					} catch (MediatorNotFoundException | MissingAttributeException e) {
-						log.warn("Error while drawing suspended breakpoint mark : " + e.getMessage(), e);
-					} catch (Exception e) {
-						log.error("Error occured while getting artifact type for the given ESB configuration ", e);
-					}
-				}
-			});
+                        drawSuspendedBreakpointMark(breakpoint, multipageEitor);
 
-		} catch (IOException e) {
-			log.error("Error occured while opening a separate editor", e);
-		}
-	}
+                    } catch (MediatorNotFoundException | MissingAttributeException e) {
+                        log.warn("Error while drawing suspended breakpoint mark : " + e.getMessage(), e);
+                    } catch (Exception e) {
+                        log.error("Error occured while getting artifact type for the given ESB configuration ", e);
+                    }
+                }
+            });
 
-	/**
-	 * This method will mark debug point as hit, in the given
-	 * {@link EsbMultiPageEditor}
-	 * 
-	 * @param breakpoint
-	 * @param multipageEitor
-	 * @throws CoreException
-	 * @throws ESBDebuggerException
-	 */
-	private static void drawSuspendedBreakpointMark(final ESBDebugPoint breakpoint, EsbMultiPageEditor multipageEitor)
-			throws CoreException, ESBDebuggerException {
+        } catch (IOException e) {
+            log.error("Error occured while opening a separate editor", e);
+        }
+    }
 
-		Diagram diagram = multipageEitor.getDiagram();
-		EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
-		EsbServer esbServer = esbDiagram.getServer();
-		AbstractEsbNodeDeserializer.setRootCompartment(multipageEitor.getDiagramEditPart());
-		IMediatorLocator mediatorLocator = MediatorLocatorFactory.getMediatorLocator(esbServer.getType());
-		if (mediatorLocator != null) {
-			if (previousHitPoint != null) {
-				previousHitPoint.setBreakpointHitStatus(false);
-				previousHitPoint.setSelected(EditPart.SELECTED_NONE);
-			}
-			EditPart editPart = mediatorLocator.getMediatorEditPart(esbServer, breakpoint);
+    /**
+     * This method will mark debug point as hit, in the given
+     * {@link EsbMultiPageEditor}
+     * 
+     * @param breakpoint
+     * @param multipageEitor
+     * @throws CoreException
+     * @throws ESBDebuggerException
+     */
+    private static void drawSuspendedBreakpointMark(final ESBDebugPoint breakpoint, EsbMultiPageEditor multipageEitor)
+            throws CoreException, ESBDebuggerException {
 
-			if (editPart instanceof AbstractMediator) {
-				((AbstractMediator) editPart).setBreakpointHitStatus(true);
-				while (true) {
-					if (((AbstractMediator) editPart).isBreakpointHit()) {
-						break;
-					}
-				}
-				if (suspendEditPartList == null) {
-					suspendEditPartList = new ArrayList<>();
-				}
-				suspendEditPartList.add((AbstractMediator) editPart);
-				editPart.setSelected(EditPart.SELECTED);
-				previousHitPoint = ((AbstractMediator) editPart);
-			}
-		}
-	}
+        Diagram diagram = multipageEitor.getDiagram();
+        EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
+        EsbServer esbServer = esbDiagram.getServer();
+        AbstractEsbNodeDeserializer.setRootCompartment(multipageEitor.getDiagramEditPart());
+        IMediatorLocator mediatorLocator = MediatorLocatorFactory.getMediatorLocator(esbServer.getType());
+        if (mediatorLocator != null) {
+            if (previousHitPoint != null) {
+                previousHitPoint.setBreakpointHitStatus(false);
+                previousHitPoint.setSelected(EditPart.SELECTED_NONE);
+            }
+            EditPart editPart = mediatorLocator.getMediatorEditPart(esbServer, breakpoint);
+
+            if (editPart instanceof AbstractMediator) {
+                ((AbstractMediator) editPart).setBreakpointHitStatus(true);
+                while (true) {
+                    if (((AbstractMediator) editPart).isBreakpointHit()) {
+                        break;
+                    }
+                }
+                if (suspendEditPartList == null) {
+                    suspendEditPartList = new ArrayList<>();
+                }
+                suspendEditPartList.add((AbstractMediator) editPart);
+                editPart.setSelected(EditPart.SELECTED);
+                previousHitPoint = ((AbstractMediator) editPart);
+            }
+        }
+    }
 }

@@ -50,8 +50,8 @@ import com.google.gson.JsonElement;
 public class ESBValue extends ESBDebugElement implements IValue {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private static final String ENVELOPE_PROPERTY_KEY = "envelope";
-	private static final String EMPTY_STRING = "";
-	private static final String ELEMENT_SEPERATOR = ",";
+    private static final String EMPTY_STRING = "";
+    private static final String ELEMENT_SEPERATOR = ",";
 
     private final String variableValue;
     private List<IVariable> valueChildren;
@@ -167,30 +167,27 @@ public class ESBValue extends ESBDebugElement implements IValue {
             esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), valueString, variableParent,
                     tablePropertySet);
         } else {
-			if (entry.getValue() instanceof JsonArray) {
-				JsonArray jsonArray = entry.getValue().getAsJsonArray();
-				for (JsonElement jsonElement : jsonArray) {
-					valueString += jsonElement.getAsString() + ELEMENT_SEPERATOR;
-				}
-				valueString = valueString.substring(0, valueString.length() - 1);
-				esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), valueString, variableParent,
-						tablePropertySet);
-			} else {
-				esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), entry.getValue(), variableParent,
-						tablePropertySet);
-			}
+            if (entry.getValue() instanceof JsonArray) {
+                JsonArray jsonArray = entry.getValue().getAsJsonArray();
+                for (JsonElement jsonElement : jsonArray) {
+                    valueString += jsonElement.getAsString() + ELEMENT_SEPERATOR;
+                }
+                valueString = valueString.substring(0, valueString.length() - 1);
+                esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), valueString, variableParent,
+                        tablePropertySet);
+            } else {
+                esbVariable = new ESBVariable(getDebugTarget(), entry.getKey(), entry.getValue(), variableParent,
+                        tablePropertySet);
+            }
         }
         valueChildren.add(esbVariable);
         if (ENVELOPE_PROPERTY_KEY.equalsIgnoreCase(entry.getKey())) {
             String envelopeMessage = entry.getValue().getAsString();
             OpenEditorUtil.setToolTipMessageOnMediator(envelopeMessage);
             try {
-                IViewPart envelopeView = PlatformUI
-                        .getWorkbench()
-                        .getActiveWorkbenchWindow()
-                        .getActivePage()
-                        .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
-                                IWorkbenchPage.VIEW_VISIBLE);
+                IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(
+                        MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
+                        IWorkbenchPage.VIEW_VISIBLE);
                 if (envelopeView instanceof ContentAcceptHandler) {
                     ((ContentAcceptHandler) envelopeView).acceptContent(envelopeMessage, AcceptedContentAction.ADD);
                 }
@@ -199,15 +196,12 @@ public class ESBValue extends ESBDebugElement implements IValue {
             }
         } else if (isSpecialProperty(entry.getKey())) {
             try {
-                IViewPart envelopeView = PlatformUI
-                        .getWorkbench()
-                        .getActiveWorkbenchWindow()
-                        .getActivePage()
-                        .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
-                                IWorkbenchPage.VIEW_VISIBLE);
+                IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(
+                        MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
+                        IWorkbenchPage.VIEW_VISIBLE);
                 if (envelopeView instanceof ContentAcceptHandler) {
-                    ((ContentAcceptHandler) envelopeView).acceptContent(new String[] { entry.getKey(),
-                            entry.getValue().getAsString() }, AcceptedContentAction.ADD);
+                    ((ContentAcceptHandler) envelopeView).acceptContent(
+                            new String[] { entry.getKey(), entry.getValue().getAsString() }, AcceptedContentAction.ADD);
                 }
             } catch (PartInitException e) {
                 log.error("Error while updating the Envelope View with new message envelope", e);

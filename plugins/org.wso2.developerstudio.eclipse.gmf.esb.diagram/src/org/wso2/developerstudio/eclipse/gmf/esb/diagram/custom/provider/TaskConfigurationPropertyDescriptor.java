@@ -15,26 +15,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureLogMediatorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.TaskPropertyDialog;
 
-public class TaskConfigurationPropertyDescriptor extends PropertyDescriptor{
+public class TaskConfigurationPropertyDescriptor extends PropertyDescriptor {
 
-	public TaskConfigurationPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public TaskConfigurationPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				Task task = (Task) object;
-				 //.getEditingDomain()
-				Dialog taskConfigurationDialog = new TaskPropertyDialog(shell, task, TransactionUtil.getEditingDomain(task));
-				taskConfigurationDialog.setBlockOnOpen(true);
-				taskConfigurationDialog.open();
-				return null;
-			}
-		};
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                Task task = (Task) object;
+                // .getEditingDomain()
+                Dialog taskConfigurationDialog = new TaskPropertyDialog(shell, task,
+                        TransactionUtil.getEditingDomain(task));
+                taskConfigurationDialog.setBlockOnOpen(true);
+                taskConfigurationDialog.open();
+                return null;
+            }
+        };
+    }
 }

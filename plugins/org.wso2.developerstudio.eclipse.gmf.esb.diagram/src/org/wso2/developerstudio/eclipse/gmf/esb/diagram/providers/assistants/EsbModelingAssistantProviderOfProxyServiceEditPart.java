@@ -13,19 +13,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfProxyServiceEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(6);
-		types.add(EsbElementTypes.ProxyOutputConnector_3002);
-		types.add(EsbElementTypes.ProxyInputConnector_3003);
-		types.add(EsbElementTypes.ProxyOutSequenceOutputConnector_3729);
-		types.add(EsbElementTypes.ProxyFaultInputConnector_3489);
-		types.add(EsbElementTypes.ProxyServiceContainer_3486);
-		types.add(EsbElementTypes.ProxyInSequenceInputConnector_3731);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(6);
+        types.add(EsbElementTypes.ProxyOutputConnector_3002);
+        types.add(EsbElementTypes.ProxyInputConnector_3003);
+        types.add(EsbElementTypes.ProxyOutSequenceOutputConnector_3729);
+        types.add(EsbElementTypes.ProxyFaultInputConnector_3489);
+        types.add(EsbElementTypes.ProxyServiceContainer_3486);
+        types.add(EsbElementTypes.ProxyInSequenceInputConnector_3731);
+        return types;
+    }
 
 }

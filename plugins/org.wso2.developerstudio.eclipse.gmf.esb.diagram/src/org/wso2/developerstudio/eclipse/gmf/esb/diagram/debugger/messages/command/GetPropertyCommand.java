@@ -34,7 +34,7 @@ public class GetPropertyCommand {
         this.commandArgument = commandArgument;
         this.context = context;
     }
-    
+
     public GetPropertyCommand(String command, String commandArgument, String context, PropertyValueBean property) {
         this.command = command;
         this.commandArgument = commandArgument;

@@ -13,17 +13,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfRouterMediatorEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(4);
-		types.add(EsbElementTypes.RouterMediatorInputConnector_3629);
-		types.add(EsbElementTypes.RouterMediatorOutputConnector_3630);
-		types.add(EsbElementTypes.RouterMediatorTargetOutputConnector_3631);
-		types.add(EsbElementTypes.RouterMediatorContainer_3632);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(4);
+        types.add(EsbElementTypes.RouterMediatorInputConnector_3629);
+        types.add(EsbElementTypes.RouterMediatorOutputConnector_3630);
+        types.add(EsbElementTypes.RouterMediatorTargetOutputConnector_3631);
+        types.add(EsbElementTypes.RouterMediatorContainer_3632);
+        return types;
+    }
 
 }

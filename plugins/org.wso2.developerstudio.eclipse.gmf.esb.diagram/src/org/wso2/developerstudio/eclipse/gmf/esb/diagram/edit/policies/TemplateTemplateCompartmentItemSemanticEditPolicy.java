@@ -11,24 +11,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
  */
 public class TemplateTemplateCompartmentItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
-	/**
-	 * @generated
-	 */
-	public TemplateTemplateCompartmentItemSemanticEditPolicy() {
-		super(EsbElementTypes.Template_3664);
-	}
+    /**
+     * @generated
+     */
+    public TemplateTemplateCompartmentItemSemanticEditPolicy() {
+        super(EsbElementTypes.Template_3664);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected Command getCreateCommand(CreateElementRequest req) {
-		if (EsbElementTypes.Sequences_3665 == req.getElementType()) {
-			return getGEFWrapper(new Sequences2CreateCommand(req));
-		}
-		if (EsbElementTypes.EndpointDiagram_3666 == req.getElementType()) {
-			return getGEFWrapper(new EndpointDiagram2CreateCommand(req));
-		}
-		return super.getCreateCommand(req);
-	}
+    /**
+     * @generated
+     */
+    protected Command getCreateCommand(CreateElementRequest req) {
+        if (EsbElementTypes.Sequences_3665 == req.getElementType()) {
+            return getGEFWrapper(new Sequences2CreateCommand(req));
+        }
+        if (EsbElementTypes.EndpointDiagram_3666 == req.getElementType()) {
+            return getGEFWrapper(new EndpointDiagram2CreateCommand(req));
+        }
+        return super.getCreateCommand(req);
+    }
 
 }

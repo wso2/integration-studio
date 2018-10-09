@@ -18,35 +18,42 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom;
 
 import org.apache.synapse.mediators.template.InvokeMediator;
 
-public class CloudConnectorOperationExt extends InvokeMediator{
+public class CloudConnectorOperationExt extends InvokeMediator {
 
-	private String connectorComponentName;
-	private String operation;
-	private String configRef;	
-	private String cloudConnectorName;
-	
-	public String getConnectorComponentName() {
-		return connectorComponentName;
-	}
-	public void setConnectorComponentName(String connectorComponentName) {
-		this.connectorComponentName = connectorComponentName;
-	}	
-	public String getCloudConnectorName() {
-		return cloudConnectorName;
-	}
-	public void setCloudConnectorName(String cloudConnectorName) {
-		this.cloudConnectorName = cloudConnectorName;
-	}
-	public String getConfigRef() {
-		return configRef;
-	}
-	public void setConfigRef(String configRef) {
-		this.configRef = configRef;
-	}	
-	public String getOperation() {
-		return operation;
-	}
-	public void setOperation(String operation) {
-		this.operation = operation;
-	}	
+    private String connectorComponentName;
+    private String operation;
+    private String configRef;
+    private String cloudConnectorName;
+
+    public String getConnectorComponentName() {
+        return connectorComponentName;
+    }
+
+    public void setConnectorComponentName(String connectorComponentName) {
+        this.connectorComponentName = connectorComponentName;
+    }
+
+    public String getCloudConnectorName() {
+        return cloudConnectorName;
+    }
+
+    public void setCloudConnectorName(String cloudConnectorName) {
+        this.cloudConnectorName = cloudConnectorName;
+    }
+
+    public String getConfigRef() {
+        return configRef;
+    }
+
+    public void setConfigRef(String configRef) {
+        this.configRef = configRef;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
 }

@@ -31,33 +31,31 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Template;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureTemplateParametersDialog;
 
 /**
- * Custom property descriptor for template parameters 
+ * Custom property descriptor for template parameters
  */
 public class TemplateParametersPropertyDescriptor extends PropertyDescriptor {
 
-	public TemplateParametersPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public TemplateParametersPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				Template template=null;
-				if(object instanceof Sequences){
-					template = (Template) ((Sequences)object).eContainer();
-				}else if(object instanceof AbstractEndPoint){
-					template= (Template) ((AbstractEndPoint)object).eContainer().eContainer();
-				}
-				ConfigureTemplateParametersDialog dialog = new ConfigureTemplateParametersDialog(
-						shell, template);
-				dialog.setBlockOnOpen(true);
-				dialog.open();
-				return null;
-			}
-		};
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                Template template = null;
+                if (object instanceof Sequences) {
+                    template = (Template) ((Sequences) object).eContainer();
+                } else if (object instanceof AbstractEndPoint) {
+                    template = (Template) ((AbstractEndPoint) object).eContainer().eContainer();
+                }
+                ConfigureTemplateParametersDialog dialog = new ConfigureTemplateParametersDialog(shell, template);
+                dialog.setBlockOnOpen(true);
+                dialog.open();
+                return null;
+            }
+        };
+    }
 
 }

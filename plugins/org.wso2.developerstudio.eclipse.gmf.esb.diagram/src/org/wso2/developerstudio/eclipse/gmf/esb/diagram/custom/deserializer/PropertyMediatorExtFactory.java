@@ -34,68 +34,68 @@ public class PropertyMediatorExtFactory extends PropertyMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	QName ATT_SCOPE = new QName("scope");
-	QName ATT_ACTION = new QName("action");
-	QName ATT_TYPE = new QName("type");
-	QName ATT_PATTERN = new QName("pattern");
-	QName ATT_GROUP = new QName("group");
+        QName ATT_SCOPE = new QName("scope");
+        QName ATT_ACTION = new QName("action");
+        QName ATT_TYPE = new QName("type");
+        QName ATT_PATTERN = new QName("pattern");
+        QName ATT_GROUP = new QName("group");
 
-	Mediator mediator = new PropertyMediator();
+        Mediator mediator = new PropertyMediator();
 
-	OMAttribute name = omElement.getAttribute(ATT_NAME);
-	OMAttribute value = omElement.getAttribute(ATT_VALUE);
-	OMAttribute expression = omElement.getAttribute(ATT_EXPRN);
-	OMAttribute scope = omElement.getAttribute(ATT_SCOPE);
-	OMAttribute action = omElement.getAttribute(ATT_ACTION);
-	OMAttribute type = omElement.getAttribute(ATT_TYPE);
-	OMAttribute pattern = omElement.getAttribute(ATT_PATTERN);
-	OMAttribute group = omElement.getAttribute(ATT_GROUP);
+        OMAttribute name = omElement.getAttribute(ATT_NAME);
+        OMAttribute value = omElement.getAttribute(ATT_VALUE);
+        OMAttribute expression = omElement.getAttribute(ATT_EXPRN);
+        OMAttribute scope = omElement.getAttribute(ATT_SCOPE);
+        OMAttribute action = omElement.getAttribute(ATT_ACTION);
+        OMAttribute type = omElement.getAttribute(ATT_TYPE);
+        OMAttribute pattern = omElement.getAttribute(ATT_PATTERN);
+        OMAttribute group = omElement.getAttribute(ATT_GROUP);
 
-	OMElement valueElement = omElement.getFirstElement();
+        OMElement valueElement = omElement.getFirstElement();
 
-	if (name != null) {
-	    ((PropertyMediator) mediator).setName(name.getAttributeValue());
-	}
+        if (name != null) {
+            ((PropertyMediator) mediator).setName(name.getAttributeValue());
+        }
 
-	String dataType = null;
-	if (type != null) {
-	    dataType = type.getAttributeValue();
-	}
+        String dataType = null;
+        if (type != null) {
+            dataType = type.getAttributeValue();
+        }
 
-	if (value != null) {
-	    ((PropertyMediator) mediator).setValue(value.getAttributeValue(), dataType);
+        if (value != null) {
+            ((PropertyMediator) mediator).setValue(value.getAttributeValue(), dataType);
 
-	} else if (valueElement != null) {
-	    ((PropertyMediator) mediator).setValueElement(valueElement.cloneOMElement());
+        } else if (valueElement != null) {
+            ((PropertyMediator) mediator).setValueElement(valueElement.cloneOMElement());
 
-	} else if (expression != null) {
-	    try {
-		((PropertyMediator) mediator).setExpression(SynapsePathFactory.getSynapsePath(omElement, ATT_EXPRN),
-			dataType);
-	    } catch (JaxenException e) {
-		// ignore
-	    }
-	}
+        } else if (expression != null) {
+            try {
+                ((PropertyMediator) mediator).setExpression(SynapsePathFactory.getSynapsePath(omElement, ATT_EXPRN),
+                        dataType);
+            } catch (JaxenException e) {
+                // ignore
+            }
+        }
 
-	if (pattern != null) {
-	    ((PropertyMediator) mediator).setPattern(Pattern.compile(pattern.getAttributeValue()));
-	    if (group != null) {
-		int groupValue = Integer.parseInt(group.getAttributeValue());
-		if (groupValue >= 0) {
-		    ((PropertyMediator) mediator).setGroup(groupValue);
-		}
-	    }
-	}
+        if (pattern != null) {
+            ((PropertyMediator) mediator).setPattern(Pattern.compile(pattern.getAttributeValue()));
+            if (group != null) {
+                int groupValue = Integer.parseInt(group.getAttributeValue());
+                if (groupValue >= 0) {
+                    ((PropertyMediator) mediator).setGroup(groupValue);
+                }
+            }
+        }
 
-	if (action != null && "remove".equals(action.getAttributeValue())) {
-	    ((PropertyMediator) mediator).setAction(PropertyMediator.ACTION_REMOVE);
-	}
+        if (action != null && "remove".equals(action.getAttributeValue())) {
+            ((PropertyMediator) mediator).setAction(PropertyMediator.ACTION_REMOVE);
+        }
 
-	if (scope != null) {
-	    ((PropertyMediator) mediator).setScope(scope.getAttributeValue());
-	}
+        if (scope != null) {
+            ((PropertyMediator) mediator).setScope(scope.getAttributeValue());
+        }
 
-	processAuditStatus(mediator, omElement);
-	return mediator;
+        processAuditStatus(mediator, omElement);
+        return mediator;
     }
 }

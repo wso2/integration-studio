@@ -28,29 +28,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureProxyServiceDialog;;
 
 /**
- * Custom property descriptor for proxy-service parameters 
+ * Custom property descriptor for proxy-service parameters
  */
 public class ProxyParametersPropertyDescriptor extends PropertyDescriptor {
 
-	public ProxyParametersPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public ProxyParametersPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				ProxyService proxy=(ProxyService) object;
-				
-				ConfigureProxyServiceDialog dialog = new ConfigureProxyServiceDialog(
-						shell, proxy);
-				dialog.setBlockOnOpen(true);
-				dialog.open();
-				return null;
-			}
-		};
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ProxyService proxy = (ProxyService) object;
+
+                ConfigureProxyServiceDialog dialog = new ConfigureProxyServiceDialog(shell, proxy);
+                dialog.setBlockOnOpen(true);
+                dialog.open();
+                return null;
+            }
+        };
+    }
 
 }

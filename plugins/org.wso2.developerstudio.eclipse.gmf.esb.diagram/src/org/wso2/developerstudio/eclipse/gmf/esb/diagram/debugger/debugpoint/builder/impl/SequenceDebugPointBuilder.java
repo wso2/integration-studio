@@ -51,7 +51,8 @@ public class SequenceDebugPointBuilder extends AbstractESBDebugPointBuilder {
             String commandArgument) throws CoreException, ESBDebuggerException {
 
         int lineNumber = -1;
-        ESBSequenceDebugPointMessage sequenceDebugPoint = (ESBSequenceDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
+        ESBSequenceDebugPointMessage sequenceDebugPoint = (ESBSequenceDebugPointMessage) getESBDebugPointMessage(
+                esbServer, part, commandArgument);
         return new ESBDebugPoint(resource, lineNumber, sequenceDebugPoint);
     }
 
@@ -78,8 +79,8 @@ public class SequenceDebugPointBuilder extends AbstractESBDebugPointBuilder {
         }
     }
 
-	@Override
-	public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
+    @Override
+    public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
             String commandArgument) throws CoreException, ESBDebuggerException {
         SequencesImpl sequence = (SequencesImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
         EObject selection = ((View) part.getModel()).getElement();
@@ -88,6 +89,6 @@ public class SequenceDebugPointBuilder extends AbstractESBDebugPointBuilder {
                 new ESBMediatorPosition(position));
         ESBSequenceDebugPointMessage sequenceDebugPoint = new ESBSequenceDebugPointMessage(null, commandArgument,
                 SEQUENCE_LABEL, sequenceBean);
-		return sequenceDebugPoint;
-	}
+        return sequenceDebugPoint;
+    }
 }

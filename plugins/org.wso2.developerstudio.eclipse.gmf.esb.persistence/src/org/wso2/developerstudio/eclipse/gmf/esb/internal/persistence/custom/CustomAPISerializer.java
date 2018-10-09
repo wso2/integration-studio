@@ -38,85 +38,80 @@ import org.apache.synapse.rest.Resource;
  */
 public class CustomAPISerializer {
 
-	private static final OMFactory fac = OMAbstractFactory.getOMFactory();
-	
-	static final QName PROP_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "property");
+    private static final OMFactory fac = OMAbstractFactory.getOMFactory();
 
-	static final QName ATT_NAME = new QName("name");
+    static final QName PROP_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "property");
 
-	static final QName ATT_VALUE = new QName("value");
+    static final QName ATT_NAME = new QName("name");
 
-	protected static final OMNamespace nullNS = fac.createOMNamespace(
-			XMLConfigConstants.NULL_NAMESPACE, "");
+    static final QName ATT_VALUE = new QName("value");
 
-	public static OMElement serializeAPI(API api) {
-		OMElement apiElt = fac.createOMElement("api", SynapseConstants.SYNAPSE_OMNAMESPACE);
-		apiElt.addAttribute("name", api.getAPIName(), null);
-		apiElt.addAttribute("context", api.getContext(), null);
-		if(api.getAspectConfiguration().isStatisticsEnable()){
-			apiElt.addAttribute("statistics","enable",null);
-		}
-		if(api.getAspectConfiguration().isTracingEnabled()){
-			apiElt.addAttribute("trace","enable",null);
-		}
-		VersionStrategySerializer.serializeVersioningStrategy(api.getVersionStrategy(), apiElt);
-		if (api.getHost() != null) {
-			apiElt.addAttribute("hostname", api.getHost(), null);
-		}
-		if (api.getPort() != -1) {
-			apiElt.addAttribute("port", String.valueOf(api.getPort()), null);
-		}
+    protected static final OMNamespace nullNS = fac.createOMNamespace(XMLConfigConstants.NULL_NAMESPACE, "");
 
-		Resource[] resources = api.getResources();
-		for (Resource r : resources) {
-			OMElement resourceElt = ResourceSerializer.serializeResource(r);
-			apiElt.addChild(resourceElt);
-		}
+    public static OMElement serializeAPI(API api) {
+        OMElement apiElt = fac.createOMElement("api", SynapseConstants.SYNAPSE_OMNAMESPACE);
+        apiElt.addAttribute("name", api.getAPIName(), null);
+        apiElt.addAttribute("context", api.getContext(), null);
+        if (api.getAspectConfiguration().isStatisticsEnable()) {
+            apiElt.addAttribute("statistics", "enable", null);
+        }
+        if (api.getAspectConfiguration().isTracingEnabled()) {
+            apiElt.addAttribute("trace", "enable", null);
+        }
+        VersionStrategySerializer.serializeVersioningStrategy(api.getVersionStrategy(), apiElt);
+        if (api.getHost() != null) {
+            apiElt.addAttribute("hostname", api.getHost(), null);
+        }
+        if (api.getPort() != -1) {
+            apiElt.addAttribute("port", String.valueOf(api.getPort()), null);
+        }
 
-		Handler[] handlers = api.getHandlers();
-		if (handlers.length > 0) {
-			OMElement handlersElt = fac.createOMElement("handlers",
-					SynapseConstants.SYNAPSE_OMNAMESPACE);
-			for (Handler handler : handlers) {
-				OMElement handlerElt = fac.createOMElement("handler",
-						SynapseConstants.SYNAPSE_OMNAMESPACE);
-				handlersElt.addChild(handlerElt);
+        Resource[] resources = api.getResources();
+        for (Resource r : resources) {
+            OMElement resourceElt = ResourceSerializer.serializeResource(r);
+            apiElt.addChild(resourceElt);
+        }
 
-				if(handler instanceof DummyHandler) {
-					DummyHandler dummyHandler = (DummyHandler) handler;
-					handlerElt.addAttribute("class", dummyHandler.getClassName(), null);
-				} else {
-					handlerElt.addAttribute("class", handler.getClass().getName(), null);
-				}
-				
-				Iterator itr = handler.getProperties().keySet().iterator();
-				while (itr.hasNext()) {
-					String propName = (String) itr.next();
-					Object o = handler.getProperties().get(propName);
-					OMElement prop = fac.createOMElement(PROP_Q, handlerElt);
-					prop.addAttribute(fac.createOMAttribute(ATT_NAME.getLocalPart(),
-							nullNS, propName));
+        Handler[] handlers = api.getHandlers();
+        if (handlers.length > 0) {
+            OMElement handlersElt = fac.createOMElement("handlers", SynapseConstants.SYNAPSE_OMNAMESPACE);
+            for (Handler handler : handlers) {
+                OMElement handlerElt = fac.createOMElement("handler", SynapseConstants.SYNAPSE_OMNAMESPACE);
+                handlersElt.addChild(handlerElt);
 
-					if (o instanceof String) {
-						prop.addAttribute(fac.createOMAttribute(
-								ATT_VALUE.getLocalPart(), nullNS, (String) o));
-					} else {
-						prop.addChild((OMNode) o);
-					}
-					handlerElt.addChild(prop);
-				}
-			}
-			apiElt.addChild(handlersElt);
-		}
-		return apiElt;
-	}
+                if (handler instanceof DummyHandler) {
+                    DummyHandler dummyHandler = (DummyHandler) handler;
+                    handlerElt.addAttribute("class", dummyHandler.getClassName(), null);
+                } else {
+                    handlerElt.addAttribute("class", handler.getClass().getName(), null);
+                }
 
-	public static OMElement serializeAPI(OMElement parent, API api) {
-		OMElement apiElt = serializeAPI(api);
-		if (parent != null) {
-			parent.addChild(apiElt);
-		}
-		return apiElt;
-	}
+                Iterator itr = handler.getProperties().keySet().iterator();
+                while (itr.hasNext()) {
+                    String propName = (String) itr.next();
+                    Object o = handler.getProperties().get(propName);
+                    OMElement prop = fac.createOMElement(PROP_Q, handlerElt);
+                    prop.addAttribute(fac.createOMAttribute(ATT_NAME.getLocalPart(), nullNS, propName));
+
+                    if (o instanceof String) {
+                        prop.addAttribute(fac.createOMAttribute(ATT_VALUE.getLocalPart(), nullNS, (String) o));
+                    } else {
+                        prop.addChild((OMNode) o);
+                    }
+                    handlerElt.addChild(prop);
+                }
+            }
+            apiElt.addChild(handlersElt);
+        }
+        return apiElt;
+    }
+
+    public static OMElement serializeAPI(OMElement parent, API api) {
+        OMElement apiElt = serializeAPI(api);
+        if (parent != null) {
+            parent.addChild(apiElt);
+        }
+        return apiElt;
+    }
 
 }

@@ -50,118 +50,118 @@ public class DummyServiceDynamicLoadbalanceEndpointFactory extends DummyEndpoint
     }
 
     public static DummyServiceDynamicLoadbalanceEndpointFactory getInstance() {
-	return instance;
+        return instance;
     }
 
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	OMElement loadbalanceElement = epConfig
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serviceDynamicLoadbalance"));
-	if (loadbalanceElement == null) {
-	    return null;
-	}
+        OMElement loadbalanceElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serviceDynamicLoadbalance"));
+        if (loadbalanceElement == null) {
+            return null;
+        }
 
-	String configuration = loadbalanceElement
-		.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "configuration"));
-	OMElement servicesEle = null;
-	if (configuration != null) {
-	    if (configuration.startsWith("$system:")) {
-		configuration = System.getProperty(configuration.substring("$system:".length()));
-	    }
+        String configuration = loadbalanceElement
+                .getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "configuration"));
+        OMElement servicesEle = null;
+        if (configuration != null) {
+            if (configuration.startsWith("$system:")) {
+                configuration = System.getProperty(configuration.substring("$system:".length()));
+            }
 
-	    StAXOMBuilder builder = null;
-	    try {
-		builder = new StAXOMBuilder(new URL(configuration).openStream());
-	    } catch (Exception e) {
-		// ignore
-	    }
-	    servicesEle = builder.getDocumentElement().getFirstChildWithName(SERVICES_QNAME);
-	} else {
-	    OMElement lbConfigEle = loadbalanceElement.getFirstChildWithName(LB_CONFIG_QNAME);
-	    if (lbConfigEle != null) {
-		servicesEle = lbConfigEle.getFirstChildWithName(SERVICES_QNAME);
-	    }
+            StAXOMBuilder builder = null;
+            try {
+                builder = new StAXOMBuilder(new URL(configuration).openStream());
+            } catch (Exception e) {
+                // ignore
+            }
+            servicesEle = builder.getDocumentElement().getFirstChildWithName(SERVICES_QNAME);
+        } else {
+            OMElement lbConfigEle = loadbalanceElement.getFirstChildWithName(LB_CONFIG_QNAME);
+            if (lbConfigEle != null) {
+                servicesEle = lbConfigEle.getFirstChildWithName(SERVICES_QNAME);
+            }
 
-	}
+        }
 
-	Map<String, String> hostDomainMap = new HashMap<String, String>();
-	if (servicesEle != null) {
-	    for (Iterator<OMElement> iter = servicesEle.getChildrenWithLocalName("service"); iter.hasNext();) {
-		OMElement serviceEle = iter.next();
-		OMElement hostsEle = serviceEle
-			.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "hosts"));
-		List<String> hosts = new ArrayList<String>();
+        Map<String, String> hostDomainMap = new HashMap<String, String>();
+        if (servicesEle != null) {
+            for (Iterator<OMElement> iter = servicesEle.getChildrenWithLocalName("service"); iter.hasNext();) {
+                OMElement serviceEle = iter.next();
+                OMElement hostsEle = serviceEle
+                        .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "hosts"));
+                List<String> hosts = new ArrayList<String>();
 
-		if (hostsEle != null) {
-		    for (Iterator<OMElement> hostIter = hostsEle.getChildrenWithLocalName("host"); hostIter
-			    .hasNext();) {
-			OMElement hostEle = hostIter.next();
-			String host = hostEle.getText();
-			if (host.trim().length() == 0) {
-			    hosts.add("host_name");
-			}
-			hosts.add(host);
-		    }
-		}
+                if (hostsEle != null) {
+                    for (Iterator<OMElement> hostIter = hostsEle.getChildrenWithLocalName("host"); hostIter
+                            .hasNext();) {
+                        OMElement hostEle = hostIter.next();
+                        String host = hostEle.getText();
+                        if (host.trim().length() == 0) {
+                            hosts.add("host_name");
+                        }
+                        hosts.add(host);
+                    }
+                }
 
-		OMElement domainEle = serviceEle
-			.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "domain"));
-		String domain = "domain_name";
-		if (domainEle != null) {
-		    domain = domainEle.getText();
-		}
+                OMElement domainEle = serviceEle
+                        .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "domain"));
+                String domain = "domain_name";
+                if (domainEle != null) {
+                    domain = domainEle.getText();
+                }
 
-		for (String host : hosts) {
-		    if (!hostDomainMap.containsKey(host)) {
-			hostDomainMap.put(host, domain);
-		    }
+                for (String host : hosts) {
+                    if (!hostDomainMap.containsKey(host)) {
+                        hostDomainMap.put(host, domain);
+                    }
 
-		}
-	    }
-	}
+                }
+            }
+        }
 
-	LoadbalanceAlgorithm algorithm = LoadbalanceAlgorithmFactory.createLoadbalanceAlgorithm(loadbalanceElement,
-		null);
+        LoadbalanceAlgorithm algorithm = LoadbalanceAlgorithmFactory.createLoadbalanceAlgorithm(loadbalanceElement,
+                null);
 
-	ServiceDynamicLoadbalanceEndpoint loadbalanceEndpoint = new ServiceDynamicLoadbalanceEndpoint(hostDomainMap,
-		algorithm);
+        ServiceDynamicLoadbalanceEndpoint loadbalanceEndpoint = new ServiceDynamicLoadbalanceEndpoint(hostDomainMap,
+                algorithm);
 
-	OMAttribute name = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
-	if (name != null) {
-	    loadbalanceEndpoint.setName(name.getAttributeValue());
-	}
+        OMAttribute name = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
+        if (name != null) {
+            loadbalanceEndpoint.setName(name.getAttributeValue());
+        }
 
-	OMElement sessionElement = epConfig
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session"));
-	if (sessionElement != null) {
+        OMElement sessionElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session"));
+        if (sessionElement != null) {
 
-	    OMElement sessionTimeout = sessionElement
-		    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "sessionTimeout"));
+            OMElement sessionTimeout = sessionElement
+                    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "sessionTimeout"));
 
-	    if (sessionTimeout != null) {
-		try {
-		    loadbalanceEndpoint.setSessionTimeout(Long.parseLong(sessionTimeout.getText().trim()));
-		} catch (NumberFormatException nfe) {
-		    loadbalanceEndpoint.setSessionTimeout(1000);
-		}
-	    }
+            if (sessionTimeout != null) {
+                try {
+                    loadbalanceEndpoint.setSessionTimeout(Long.parseLong(sessionTimeout.getText().trim()));
+                } catch (NumberFormatException nfe) {
+                    loadbalanceEndpoint.setSessionTimeout(1000);
+                }
+            }
 
-	    String type = sessionElement.getAttributeValue(new QName("type"));
+            String type = sessionElement.getAttributeValue(new QName("type"));
 
-	    if (type.equalsIgnoreCase("soap")) {
-		Dispatcher soapDispatcher = new SoapSessionDispatcher();
-		loadbalanceEndpoint.setDispatcher(soapDispatcher);
+            if (type.equalsIgnoreCase("soap")) {
+                Dispatcher soapDispatcher = new SoapSessionDispatcher();
+                loadbalanceEndpoint.setDispatcher(soapDispatcher);
 
-	    } else if (type.equalsIgnoreCase("http")) {
-		Dispatcher httpDispatcher = new HttpSessionDispatcher();
-		loadbalanceEndpoint.setDispatcher(httpDispatcher);
+            } else if (type.equalsIgnoreCase("http")) {
+                Dispatcher httpDispatcher = new HttpSessionDispatcher();
+                loadbalanceEndpoint.setDispatcher(httpDispatcher);
 
-	    }
+            }
 
-	    loadbalanceEndpoint.setSessionAffinity(true);
-	}
-	loadbalanceEndpoint.setFailover(false);
+            loadbalanceEndpoint.setSessionAffinity(true);
+        }
+        loadbalanceEndpoint.setFailover(false);
 
-	return loadbalanceEndpoint;
+        return loadbalanceEndpoint;
     }
 }

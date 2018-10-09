@@ -44,133 +44,133 @@ public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFact
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	QName PAYLOAD_FACTORY_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "payloadFactory");
+        QName PAYLOAD_FACTORY_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "payloadFactory");
 
-	QName FORMAT_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "format");
-	QName ARGS_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "args");
-	QName ATT_LITERAL = new QName("literal");
+        QName FORMAT_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "format");
+        QName ARGS_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "args");
+        QName ATT_LITERAL = new QName("literal");
 
-	QName TYPE_Q = new QName("media-type");
+        QName TYPE_Q = new QName("media-type");
 
-	String JSON_TYPE = "json";
-	String XML_TYPE = "xml";
-	String TEXT_TYPE = "text";
+        String JSON_TYPE = "json";
+        String XML_TYPE = "xml";
+        String TEXT_TYPE = "text";
 
-	Mediator mediator = new PayloadFactoryMediator();
+        Mediator mediator = new PayloadFactoryMediator();
 
-	processAuditStatus(mediator, omElement);
-	String mediaTypeValue = omElement.getAttributeValue(TYPE_Q);
+        processAuditStatus(mediator, omElement);
+        String mediaTypeValue = omElement.getAttributeValue(TYPE_Q);
 
-	if (mediaTypeValue != null) {
-	    ((PayloadFactoryMediator) mediator).setType(mediaTypeValue);
-	} else {
-	    ((PayloadFactoryMediator) mediator).setType(XML_TYPE);
-	}
+        if (mediaTypeValue != null) {
+            ((PayloadFactoryMediator) mediator).setType(mediaTypeValue);
+        } else {
+            ((PayloadFactoryMediator) mediator).setType(XML_TYPE);
+        }
 
-	OMElement formatElem = omElement.getFirstChildWithName(FORMAT_Q);
-	if (formatElem != null) {
-	    OMAttribute n = formatElem.getAttribute(ATT_KEY);
-	    if (n == null) {
-		OMElement copy = formatElem.cloneOMElement();
-		removeIndentations(copy);
+        OMElement formatElem = omElement.getFirstChildWithName(FORMAT_Q);
+        if (formatElem != null) {
+            OMAttribute n = formatElem.getAttribute(ATT_KEY);
+            if (n == null) {
+                OMElement copy = formatElem.cloneOMElement();
+                removeIndentations(copy);
 
-		if (mediaTypeValue != null
-			&& (mediaTypeValue.contains(JSON_TYPE) || mediaTypeValue.contains(TEXT_TYPE))) {
-		    ((PayloadFactoryMediator) mediator).setFormat(copy.getText());
-		} else {
-		    ((PayloadFactoryMediator) mediator).setFormat(copy.getFirstElement().toString());
-		}
+                if (mediaTypeValue != null
+                        && (mediaTypeValue.contains(JSON_TYPE) || mediaTypeValue.contains(TEXT_TYPE))) {
+                    ((PayloadFactoryMediator) mediator).setFormat(copy.getText());
+                } else {
+                    ((PayloadFactoryMediator) mediator).setFormat(copy.getFirstElement().toString());
+                }
 
-	    } else {
-		ValueFactory keyFac = new ValueFactory();
-		Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, formatElem);
-		((PayloadFactoryMediator) mediator).setFormatKey(generatedKey);
-		((PayloadFactoryMediator) mediator).setFormatDynamic(true);
+            } else {
+                ValueFactory keyFac = new ValueFactory();
+                Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, formatElem);
+                ((PayloadFactoryMediator) mediator).setFormatKey(generatedKey);
+                ((PayloadFactoryMediator) mediator).setFormatDynamic(true);
 
-	    }
-	}
+            }
+        }
 
-	OMElement argumentsElem = omElement.getFirstChildWithName(ARGS_Q);
+        OMElement argumentsElem = omElement.getFirstChildWithName(ARGS_Q);
 
-	if (argumentsElem != null) {
+        if (argumentsElem != null) {
 
-	    Iterator itr = argumentsElem.getChildElements();
+            Iterator itr = argumentsElem.getChildElements();
 
-	    while (itr.hasNext()) {
-		OMElement argElem = (OMElement) itr.next();
-		Argument arg = new Argument();
-		String value;
+            while (itr.hasNext()) {
+                OMElement argElem = (OMElement) itr.next();
+                Argument arg = new Argument();
+                String value;
 
-		boolean isLiteral = false;
-		String isLiteralString = argElem.getAttributeValue(ATT_LITERAL);
-		if (isLiteralString != null) {
-		    isLiteral = Boolean.parseBoolean(isLiteralString);
+                boolean isLiteral = false;
+                String isLiteralString = argElem.getAttributeValue(ATT_LITERAL);
+                if (isLiteralString != null) {
+                    isLiteral = Boolean.parseBoolean(isLiteralString);
 
-		}
-		arg.setLiteral(isLiteral);
+                }
+                arg.setLiteral(isLiteral);
 
-		if ((value = argElem.getAttributeValue(ATT_VALUE)) != null) {
+                if ((value = argElem.getAttributeValue(ATT_VALUE)) != null) {
 
-		    arg.setValue(value);
-		    arg.setExpression(null);
-		    ((PayloadFactoryMediator) mediator).addPathArgument(arg);
+                    arg.setValue(value);
+                    arg.setExpression(null);
+                    ((PayloadFactoryMediator) mediator).addPathArgument(arg);
 
-		} else if ((value = argElem.getAttributeValue(ATT_EXPRN)) != null) {
+                } else if ((value = argElem.getAttributeValue(ATT_EXPRN)) != null) {
 
-		    if (value.trim().length() > 0) {
+                    if (value.trim().length() > 0) {
 
-			try {
+                        try {
 
-			    String evaluator = argElem.getAttributeValue(new QName("evaluator"));
-			    if (evaluator != null && evaluator.equals(JSON_TYPE)) {
-				if (value.startsWith("json-eval(")) {
-				    value = value.substring(10, value.length() - 1);
-				}
-				arg.setExpression(SynapseJsonPathFactory.getSynapseJsonPath(value));
+                            String evaluator = argElem.getAttributeValue(new QName("evaluator"));
+                            if (evaluator != null && evaluator.equals(JSON_TYPE)) {
+                                if (value.startsWith("json-eval(")) {
+                                    value = value.substring(10, value.length() - 1);
+                                }
+                                arg.setExpression(SynapseJsonPathFactory.getSynapseJsonPath(value));
 
-				arg.getExpression().setPathType(SynapsePath.JSON_PATH);
-				((PayloadFactoryMediator) mediator).addPathArgument(arg);
-			    } else {
-				SynapseXPath sxp = SynapseXPathFactory.getSynapseXPath(argElem, ATT_EXPRN);
-				sxp.setForceDisableStreamXpath(Boolean.TRUE);
-				arg.setExpression(sxp);
-				arg.getExpression().setPathType(SynapsePath.X_PATH);
-				((PayloadFactoryMediator) mediator).addPathArgument(arg);
-			    }
-			} catch (JaxenException e) {
-			    // ignore
-			}
+                                arg.getExpression().setPathType(SynapsePath.JSON_PATH);
+                                ((PayloadFactoryMediator) mediator).addPathArgument(arg);
+                            } else {
+                                SynapseXPath sxp = SynapseXPathFactory.getSynapseXPath(argElem, ATT_EXPRN);
+                                sxp.setForceDisableStreamXpath(Boolean.TRUE);
+                                arg.setExpression(sxp);
+                                arg.getExpression().setPathType(SynapsePath.X_PATH);
+                                ((PayloadFactoryMediator) mediator).addPathArgument(arg);
+                            }
+                        } catch (JaxenException e) {
+                            // ignore
+                        }
 
-		    }
-		}
-	    }
+                    }
+                }
+            }
 
-	}
+        }
 
-	return mediator;
+        return mediator;
     }
 
     private void removeIndentations(OMElement element) {
-	List<OMText> removables = new ArrayList<OMText>();
-	removeIndentations(element, removables);
-	for (OMText node : removables) {
-	    node.detach();
-	}
+        List<OMText> removables = new ArrayList<OMText>();
+        removeIndentations(element, removables);
+        for (OMText node : removables) {
+            node.detach();
+        }
     }
 
     private void removeIndentations(OMElement element, List<OMText> removables) {
-	Iterator children = element.getChildren();
-	while (children.hasNext()) {
-	    Object next = children.next();
-	    if (next instanceof OMText) {
-		OMText text = (OMText) next;
-		if (text.getText().trim().equals("")) {
-		    removables.add(text);
-		}
-	    } else if (next instanceof OMElement) {
-		removeIndentations((OMElement) next, removables);
-	    }
-	}
+        Iterator children = element.getChildren();
+        while (children.hasNext()) {
+            Object next = children.next();
+            if (next instanceof OMText) {
+                OMText text = (OMText) next;
+                if (text.getText().trim().equals("")) {
+                    removables.add(text);
+                }
+            } else if (next instanceof OMElement) {
+                removeIndentations((OMElement) next, removables);
+            }
+        }
     }
 
 }

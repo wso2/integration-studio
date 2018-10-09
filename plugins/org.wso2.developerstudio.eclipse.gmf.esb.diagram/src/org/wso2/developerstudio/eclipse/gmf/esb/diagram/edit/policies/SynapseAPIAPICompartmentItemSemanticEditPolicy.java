@@ -10,21 +10,21 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
  */
 public class SynapseAPIAPICompartmentItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
-	/**
-	 * @generated
-	 */
-	public SynapseAPIAPICompartmentItemSemanticEditPolicy() {
-		super(EsbElementTypes.SynapseAPI_3668);
-	}
+    /**
+     * @generated
+     */
+    public SynapseAPIAPICompartmentItemSemanticEditPolicy() {
+        super(EsbElementTypes.SynapseAPI_3668);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected Command getCreateCommand(CreateElementRequest req) {
-		if (EsbElementTypes.APIResource_3669 == req.getElementType()) {
-			return getGEFWrapper(new APIResourceCreateCommand(req));
-		}
-		return super.getCreateCommand(req);
-	}
+    /**
+     * @generated
+     */
+    protected Command getCreateCommand(CreateElementRequest req) {
+        if (EsbElementTypes.APIResource_3669 == req.getElementType()) {
+            return getGEFWrapper(new APIResourceCreateCommand(req));
+        }
+        return super.getCreateCommand(req);
+    }
 
 }

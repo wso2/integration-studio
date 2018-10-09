@@ -13,15 +13,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfPayloadFactoryMediatorEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(EsbElementTypes.PayloadFactoryMediatorInputConnector_3598);
-		types.add(EsbElementTypes.PayloadFactoryMediatorOutputConnector_3599);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(2);
+        types.add(EsbElementTypes.PayloadFactoryMediatorInputConnector_3598);
+        types.add(EsbElementTypes.PayloadFactoryMediatorOutputConnector_3599);
+        return types;
+    }
 
 }

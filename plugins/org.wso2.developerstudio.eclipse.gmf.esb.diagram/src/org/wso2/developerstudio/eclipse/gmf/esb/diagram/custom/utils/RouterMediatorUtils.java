@@ -39,79 +39,78 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RouterTargetC
 
 public class RouterMediatorUtils {
 
-	public static void reorderWhenRevered(EditPart editpart){			
-		reorder(editpart,PositionConstants.EAST);
-	}
-	
-	public static void reorderWhenForward(EditPart editpart){
-		reorder(editpart,PositionConstants.WEST);
-	}
-	
-	private static void reorder(EditPart editpart,int position) {
-		ArrayList<RouterTargetContainerEditPart> targetContainers = new ArrayList<RouterTargetContainerEditPart>();
-		List<IFigure> outputConnectors = new ArrayList<IFigure>();
-		ArrayList<RouterMediatorTargetOutputConnectorEditPart> targetOutputConnectorsList = new ArrayList<RouterMediatorTargetOutputConnectorEditPart>();
-		List<BorderItemLocator> outputLocators = new ArrayList<BorderItemLocator>();
+    public static void reorderWhenRevered(EditPart editpart) {
+        reorder(editpart, PositionConstants.EAST);
+    }
 
-		for (int i = 0; i < editpart.getChildren().size(); ++i) {
-			EditPart item = (EditPart) editpart.getChildren().get(i);
-			if (item instanceof RouterMediatorTargetOutputConnectorEditPart) {
-				RouterMediatorTargetOutputConnectorEditPart targetOutputConnectorEditPart = (RouterMediatorTargetOutputConnectorEditPart) editpart
-						.getChildren().get(i);
-				targetOutputConnectorsList.add(targetOutputConnectorEditPart);
-			} else if (item instanceof RouterMediatorContainerEditPart){
-				for (int j = 0; j < item.getChildren().size(); ++j) {
-					if (item.getChildren().get(j) instanceof RouterTargetContainerEditPart) {
-						RouterTargetContainerEditPart targetContainerEditPart = (RouterTargetContainerEditPart) item.getChildren().get(j);
-						targetContainers.add(targetContainerEditPart);
-					}
-				}
-			}
-		}
+    public static void reorderWhenForward(EditPart editpart) {
+        reorder(editpart, PositionConstants.WEST);
+    }
 
-		for (int i = 0; i < targetContainers.size(); ++i) {
-			if(targetOutputConnectorsList.size()> i){
-			IFigure borderItemFigure = targetOutputConnectorsList.get(i).getFigure();
-			outputConnectors.add(borderItemFigure);
-			BorderItemLocator locator = new FixedBorderItemLocator(targetContainers.get(i)
-					.getFigure(), borderItemFigure, position, 0.5);
-			outputLocators.add(locator);
-			}
-		}
+    private static void reorder(EditPart editpart, int position) {
+        ArrayList<RouterTargetContainerEditPart> targetContainers = new ArrayList<RouterTargetContainerEditPart>();
+        List<IFigure> outputConnectors = new ArrayList<IFigure>();
+        ArrayList<RouterMediatorTargetOutputConnectorEditPart> targetOutputConnectorsList = new ArrayList<RouterMediatorTargetOutputConnectorEditPart>();
+        List<BorderItemLocator> outputLocators = new ArrayList<BorderItemLocator>();
 
-		for (int i = 0; i < outputConnectors.size(); ++i) {
-			((RouterMediatorEditPart) editpart).getBorderedFigure().getBorderItemContainer()
-					.add(outputConnectors.get(i), outputLocators.get(i));
-		}
-		targetOutputConnectorsList.clear();
-		outputLocators.clear();
-		if(((RouterMediatorEditPart)editpart).reversed){
-			MediatorFigureReverser.reverse(editpart,true);
-		}		
-	}
-	
-	public static void addTargetInitially(EditPart child,TransactionalEditingDomain domain) {
-		RouterMediatorEditPart routerMediatorEditPart = (RouterMediatorEditPart) child;
-		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (routerMediatorEditPart)
-				.getModel()).getElement();
-		if (((RouterMediator) parentContainer).getTargetOutputConnector().size() == 0) {
-			RouterMediatorTargetOutputConnector targetOutputConnector = EsbFactory.eINSTANCE
-					.createRouterMediatorTargetOutputConnector();
-			AddCommand addTargetConnectorCmd = new AddCommand(domain, parentContainer,
-					EsbPackage.Literals.ROUTER_MEDIATOR__TARGET_OUTPUT_CONNECTOR, targetOutputConnector);
-			if (addTargetConnectorCmd.canExecute()) {
-				domain.getCommandStack().execute(addTargetConnectorCmd);
-			}
+        for (int i = 0; i < editpart.getChildren().size(); ++i) {
+            EditPart item = (EditPart) editpart.getChildren().get(i);
+            if (item instanceof RouterMediatorTargetOutputConnectorEditPart) {
+                RouterMediatorTargetOutputConnectorEditPart targetOutputConnectorEditPart = (RouterMediatorTargetOutputConnectorEditPart) editpart
+                        .getChildren().get(i);
+                targetOutputConnectorsList.add(targetOutputConnectorEditPart);
+            } else if (item instanceof RouterMediatorContainerEditPart) {
+                for (int j = 0; j < item.getChildren().size(); ++j) {
+                    if (item.getChildren().get(j) instanceof RouterTargetContainerEditPart) {
+                        RouterTargetContainerEditPart targetContainerEditPart = (RouterTargetContainerEditPart) item
+                                .getChildren().get(j);
+                        targetContainers.add(targetContainerEditPart);
+                    }
+                }
+            }
+        }
 
-			RouterTargetContainer targetContainer = EsbFactory.eINSTANCE.createRouterTargetContainer();
-			AddCommand addCmd = new AddCommand(domain,
-					((RouterMediator) parentContainer).getRouterContainer(),
-					EsbPackage.Literals.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER,
-					targetContainer);
-			if (addCmd.canExecute()) {
-				domain.getCommandStack().execute(addCmd);
-			}
-		}
-	}
-	
+        for (int i = 0; i < targetContainers.size(); ++i) {
+            if (targetOutputConnectorsList.size() > i) {
+                IFigure borderItemFigure = targetOutputConnectorsList.get(i).getFigure();
+                outputConnectors.add(borderItemFigure);
+                BorderItemLocator locator = new FixedBorderItemLocator(targetContainers.get(i).getFigure(),
+                        borderItemFigure, position, 0.5);
+                outputLocators.add(locator);
+            }
+        }
+
+        for (int i = 0; i < outputConnectors.size(); ++i) {
+            ((RouterMediatorEditPart) editpart).getBorderedFigure().getBorderItemContainer()
+                    .add(outputConnectors.get(i), outputLocators.get(i));
+        }
+        targetOutputConnectorsList.clear();
+        outputLocators.clear();
+        if (((RouterMediatorEditPart) editpart).reversed) {
+            MediatorFigureReverser.reverse(editpart, true);
+        }
+    }
+
+    public static void addTargetInitially(EditPart child, TransactionalEditingDomain domain) {
+        RouterMediatorEditPart routerMediatorEditPart = (RouterMediatorEditPart) child;
+        EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (routerMediatorEditPart).getModel())
+                .getElement();
+        if (((RouterMediator) parentContainer).getTargetOutputConnector().size() == 0) {
+            RouterMediatorTargetOutputConnector targetOutputConnector = EsbFactory.eINSTANCE
+                    .createRouterMediatorTargetOutputConnector();
+            AddCommand addTargetConnectorCmd = new AddCommand(domain, parentContainer,
+                    EsbPackage.Literals.ROUTER_MEDIATOR__TARGET_OUTPUT_CONNECTOR, targetOutputConnector);
+            if (addTargetConnectorCmd.canExecute()) {
+                domain.getCommandStack().execute(addTargetConnectorCmd);
+            }
+
+            RouterTargetContainer targetContainer = EsbFactory.eINSTANCE.createRouterTargetContainer();
+            AddCommand addCmd = new AddCommand(domain, ((RouterMediator) parentContainer).getRouterContainer(),
+                    EsbPackage.Literals.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER, targetContainer);
+            if (addCmd.canExecute()) {
+                domain.getCommandStack().execute(addCmd);
+            }
+        }
+    }
+
 }

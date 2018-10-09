@@ -44,147 +44,131 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
  */
 public class EvaluatorExpressionEditorDialog extends Dialog {
 
-	/**
-	 * Create the dialog.
-	 * 
-	 * @param parentShell
-	 */
-	/**
-	 * Evaluator Expression Property text field.
-	 */
-	private Text eETextField;
+    /**
+     * Create the dialog.
+     * 
+     * @param parentShell
+     */
+    /**
+     * Evaluator Expression Property text field.
+     */
+    private Text eETextField;
 
-	/**
-	 * Evaluator Expression Property being edited.
-	 */
-	private EvaluatorExpressionProperty evaluatorExpressionProperty;
+    /**
+     * Evaluator Expression Property being edited.
+     */
+    private EvaluatorExpressionProperty evaluatorExpressionProperty;
 
-	public EvaluatorExpressionEditorDialog(Shell parentShell,
-			EvaluatorExpressionProperty evaluatorExpressionProperty) {
-		super(parentShell);
-		this.evaluatorExpressionProperty = evaluatorExpressionProperty;
-	}
+    public EvaluatorExpressionEditorDialog(Shell parentShell, EvaluatorExpressionProperty evaluatorExpressionProperty) {
+        super(parentShell);
+        this.evaluatorExpressionProperty = evaluatorExpressionProperty;
+    }
 
-	/**
-	 * Create contents of the dialog.
-	 * 
-	 * @param parent
-	 */
-	
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		container.setLayout(new GridLayout(1, false));
-		
-		Label lblEvaluatorExpression = new Label(container, SWT.NONE);
-		lblEvaluatorExpression.setText("Evaluator Expression");
-		
+    /**
+     * Create contents of the dialog.
+     * 
+     * @param parent
+     */
 
-		eETextField = new Text(container, SWT.BORDER | SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
-		eETextField.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        container.setLayout(new GridLayout(1, false));
 
+        Label lblEvaluatorExpression = new Label(container, SWT.NONE);
+        lblEvaluatorExpression.setText("Evaluator Expression");
 
-		eETextField.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				saveConfiguration();
-			}
-		});
+        eETextField = new Text(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
+        eETextField.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
-		String elements[] = {"<match/>",
-				"<and></and>", "<equal/>", "<or></or>", "<not></not>" };
-		try {
-			SimpleContentProposalProvider provider = new SimpleContentProposalProvider(
-					elements);
-			char[] autoActivationCharacters = new char[] { '<', '>' };
-			org.eclipse.jface.bindings.keys.KeyStroke keyStroke;
+        eETextField.addSelectionListener(new SelectionAdapter() {
 
-			keyStroke = org.eclipse.jface.bindings.keys.KeyStroke
-					.getInstance("Ctrl+Space");
-			ContentProposalAdapter adapter = new ContentProposalAdapter(
-					eETextField, new TextContentAdapter(), provider, keyStroke,
-					autoActivationCharacters);
+            public void widgetSelected(SelectionEvent e) {
+                saveConfiguration();
+            }
+        });
 
-			adapter.setLabelProvider(new ILabelProvider() {
+        String elements[] = { "<match/>", "<and></and>", "<equal/>", "<or></or>", "<not></not>" };
+        try {
+            SimpleContentProposalProvider provider = new SimpleContentProposalProvider(elements);
+            char[] autoActivationCharacters = new char[] { '<', '>' };
+            org.eclipse.jface.bindings.keys.KeyStroke keyStroke;
 
-				public void removeListener(ILabelProviderListener arg0) {
+            keyStroke = org.eclipse.jface.bindings.keys.KeyStroke.getInstance("Ctrl+Space");
+            ContentProposalAdapter adapter = new ContentProposalAdapter(eETextField, new TextContentAdapter(), provider,
+                    keyStroke, autoActivationCharacters);
 
-				}
+            adapter.setLabelProvider(new ILabelProvider() {
 
-				public boolean isLabelProperty(Object arg0, String arg1) {
-					return false;
-				}
+                public void removeListener(ILabelProviderListener arg0) {
 
-				public void dispose() {
+                }
 
-				}
+                public boolean isLabelProperty(Object arg0, String arg1) {
+                    return false;
+                }
 
-				public void addListener(ILabelProviderListener arg0) {
+                public void dispose() {
 
-				}
+                }
 
-				public String getText(Object obj) {
-					ContentProposal cp = (ContentProposal) obj;
-					String text = "";
-					if (!cp.getContent().contains("/>")) {
-						text = cp.getContent().substring(0,
-								cp.getContent().lastIndexOf("/") - 1);
+                public void addListener(ILabelProviderListener arg0) {
 
-					} else {
-						text = cp.getContent().substring(0,
-								cp.getContent().lastIndexOf("/"))
-								+ ">";
-					}
-					return text;
-				}
+                }
 
-				public Image getImage(Object obj) {
-					return null;
-				}
-			});
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		loadConfiguration();
-		return container;
-	}
+                public String getText(Object obj) {
+                    ContentProposal cp = (ContentProposal) obj;
+                    String text = "";
+                    if (!cp.getContent().contains("/>")) {
+                        text = cp.getContent().substring(0, cp.getContent().lastIndexOf("/") - 1);
 
-	/**
-	 * Create contents of the button bar.
-	 * 
-	 * @param parent
-	 */
-	
-	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
-				true);
-		createButton(parent, IDialogConstants.CANCEL_ID,
-				IDialogConstants.CANCEL_LABEL, false);
-	}
+                    } else {
+                        text = cp.getContent().substring(0, cp.getContent().lastIndexOf("/")) + ">";
+                    }
+                    return text;
+                }
 
-	private void loadConfiguration() {
-		if (!StringUtils.isBlank(evaluatorExpressionProperty
-				.getEvaluatorValue())) {
-			eETextField
-					.setText(evaluatorExpressionProperty.getEvaluatorValue());
-		}
-	}
+                public Image getImage(Object obj) {
+                    return null;
+                }
+            });
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        loadConfiguration();
+        return container;
+    }
 
-	
-	protected void okPressed() {
-		saveConfiguration();
-		super.okPressed();
-	}
+    /**
+     * Create contents of the button bar.
+     * 
+     * @param parent
+     */
 
-	private void saveConfiguration() {
-		evaluatorExpressionProperty.setEvaluatorValue(eETextField.getText());
-	}
+    protected void createButtonsForButtonBar(Composite parent) {
+        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+    }
 
-	/**
-	 * Return the initial size of the dialog.
-	 */
-	
-	protected Point getInitialSize() {
-		return new Point(450, 300);
-	}
+    private void loadConfiguration() {
+        if (!StringUtils.isBlank(evaluatorExpressionProperty.getEvaluatorValue())) {
+            eETextField.setText(evaluatorExpressionProperty.getEvaluatorValue());
+        }
+    }
+
+    protected void okPressed() {
+        saveConfiguration();
+        super.okPressed();
+    }
+
+    private void saveConfiguration() {
+        evaluatorExpressionProperty.setEvaluatorValue(eETextField.getText());
+    }
+
+    /**
+     * Return the initial size of the dialog.
+     */
+
+    protected Point getInitialSize() {
+        return new Point(450, 300);
+    }
 }

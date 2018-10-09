@@ -46,8 +46,8 @@ public class ESBInboundEndpointBean {
         if (inboundEndpointBean instanceof ESBInboundEndpointBean) {
             ESBInboundEndpointBean inboundEndpointBeanTemp = (ESBInboundEndpointBean) inboundEndpointBean;
             if (!(getInboundEndpointKey().equals((inboundEndpointBeanTemp).getInboundEndpointKey())
-                    && getSequenceType().equals((inboundEndpointBeanTemp).getSequenceType()) && getMediatorPosition()
-                    .equals(inboundEndpointBeanTemp.getMediatorPosition()))) {
+                    && getSequenceType().equals((inboundEndpointBeanTemp).getSequenceType())
+                    && getMediatorPosition().equals(inboundEndpointBeanTemp.getMediatorPosition()))) {
                 return false;
             }
             return true;

@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPointInputConnector;
  * @generated
  */
 public class WSDLEndPointInputConnectorImpl extends InputConnectorImpl implements WSDLEndPointInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WSDLEndPointInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected WSDLEndPointInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.WSDL_END_POINT_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.WSDL_END_POINT_INPUT_CONNECTOR;
+    }
 
-} //WSDLEndPointInputConnectorImpl
+} // WSDLEndPointInputConnectorImpl

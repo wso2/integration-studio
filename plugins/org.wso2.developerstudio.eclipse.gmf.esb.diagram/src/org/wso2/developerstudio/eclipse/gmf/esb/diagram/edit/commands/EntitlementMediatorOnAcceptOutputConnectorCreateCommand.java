@@ -20,66 +20,67 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
  */
 public class EntitlementMediatorOnAcceptOutputConnectorCreateCommand extends EditElementCommand {
 
-	/**
-	 * @generated
-	 */
-	public EntitlementMediatorOnAcceptOutputConnectorCreateCommand(CreateElementRequest req) {
-		super(req.getLabel(), null, req);
-	}
+    /**
+     * @generated
+     */
+    public EntitlementMediatorOnAcceptOutputConnectorCreateCommand(CreateElementRequest req) {
+        super(req.getLabel(), null, req);
+    }
 
-	/**
-	 * FIXME: replace with setElementToEdit()
-	 * @generated
-	 */
-	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
-		if (container instanceof View) {
-			container = ((View) container).getElement();
-		}
-		return container;
-	}
+    /**
+     * FIXME: replace with setElementToEdit()
+     * 
+     * @generated
+     */
+    protected EObject getElementToEdit() {
+        EObject container = ((CreateElementRequest) getRequest()).getContainer();
+        if (container instanceof View) {
+            container = ((View) container).getElement();
+        }
+        return container;
+    }
 
-	/**
-	 * @generated
-	 */
-	public boolean canExecute() {
-		EntitlementMediator container = (EntitlementMediator) getElementToEdit();
-		if (container.getOnAcceptOutputConnector() != null) {
-			return false;
-		}
-		return true;
+    /**
+     * @generated
+     */
+    public boolean canExecute() {
+        EntitlementMediator container = (EntitlementMediator) getElementToEdit();
+        if (container.getOnAcceptOutputConnector() != null) {
+            return false;
+        }
+        return true;
 
-	}
+    }
 
-	/**
-	 * @generated
-	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		EntitlementMediatorOnAcceptOutputConnector newElement = EsbFactory.eINSTANCE
-				.createEntitlementMediatorOnAcceptOutputConnector();
+    /**
+     * @generated
+     */
+    protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+        EntitlementMediatorOnAcceptOutputConnector newElement = EsbFactory.eINSTANCE
+                .createEntitlementMediatorOnAcceptOutputConnector();
 
-		EntitlementMediator owner = (EntitlementMediator) getElementToEdit();
-		owner.setOnAcceptOutputConnector(newElement);
+        EntitlementMediator owner = (EntitlementMediator) getElementToEdit();
+        owner.setOnAcceptOutputConnector(newElement);
 
-		doConfigure(newElement, monitor, info);
+        doConfigure(newElement, monitor, info);
 
-		((CreateElementRequest) getRequest()).setNewElement(newElement);
-		return CommandResult.newOKCommandResult(newElement);
-	}
+        ((CreateElementRequest) getRequest()).setNewElement(newElement);
+        return CommandResult.newOKCommandResult(newElement);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void doConfigure(EntitlementMediatorOnAcceptOutputConnector newElement, IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
-		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
-		if (configureCommand != null && configureCommand.canExecute()) {
-			configureCommand.execute(monitor, info);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void doConfigure(EntitlementMediatorOnAcceptOutputConnector newElement, IProgressMonitor monitor,
+            IAdaptable info) throws ExecutionException {
+        IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+        ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+        configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+        configureRequest.addParameters(getRequest().getParameters());
+        ICommand configureCommand = elementType.getEditCommand(configureRequest);
+        if (configureCommand != null && configureCommand.canExecute()) {
+            configureCommand.execute(monitor, info);
+        }
+    }
 
 }

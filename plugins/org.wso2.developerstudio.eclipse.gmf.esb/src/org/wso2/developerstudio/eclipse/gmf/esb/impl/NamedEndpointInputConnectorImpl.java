@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpointInputConnector;
  * @generated
  */
 public class NamedEndpointInputConnectorImpl extends InputConnectorImpl implements NamedEndpointInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NamedEndpointInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected NamedEndpointInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.NAMED_ENDPOINT_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.NAMED_ENDPOINT_INPUT_CONNECTOR;
+    }
 
-} //NamedEndpointInputConnectorImpl
+} // NamedEndpointInputConnectorImpl

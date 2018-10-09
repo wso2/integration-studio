@@ -44,78 +44,78 @@ public class DummySALoadbalanceEndpointFactory extends DummyEndpointFactory {
     }
 
     public static DummySALoadbalanceEndpointFactory getInstance() {
-	return instance;
+        return instance;
     }
 
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	SALoadbalanceEndpoint loadbalanceEndpoint = new SALoadbalanceEndpoint();
+        SALoadbalanceEndpoint loadbalanceEndpoint = new SALoadbalanceEndpoint();
 
-	OMElement sessionElement = epConfig
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session"));
-	if (sessionElement != null) {
+        OMElement sessionElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session"));
+        if (sessionElement != null) {
 
-	    OMElement sessionTimeout = sessionElement
-		    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "sessionTimeout"));
+            OMElement sessionTimeout = sessionElement
+                    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "sessionTimeout"));
 
-	    if (sessionTimeout != null) {
-		try {
-		    loadbalanceEndpoint.setSessionTimeout(Long.parseLong(sessionTimeout.getText().trim()));
-		} catch (NumberFormatException nfe) {
-		    loadbalanceEndpoint.setSessionTimeout(1000);
-		}
-	    }
+            if (sessionTimeout != null) {
+                try {
+                    loadbalanceEndpoint.setSessionTimeout(Long.parseLong(sessionTimeout.getText().trim()));
+                } catch (NumberFormatException nfe) {
+                    loadbalanceEndpoint.setSessionTimeout(1000);
+                }
+            }
 
-	    String type = sessionElement.getAttributeValue(new QName("type"));
+            String type = sessionElement.getAttributeValue(new QName("type"));
 
-	    if (type.equalsIgnoreCase("soap")) {
-		Dispatcher soapDispatcher = new SoapSessionDispatcher();
-		loadbalanceEndpoint.setDispatcher(soapDispatcher);
+            if (type.equalsIgnoreCase("soap")) {
+                Dispatcher soapDispatcher = new SoapSessionDispatcher();
+                loadbalanceEndpoint.setDispatcher(soapDispatcher);
 
-	    } else if (type.equalsIgnoreCase("http")) {
-		Dispatcher httpDispatcher = new HttpSessionDispatcher();
-		loadbalanceEndpoint.setDispatcher(httpDispatcher);
+            } else if (type.equalsIgnoreCase("http")) {
+                Dispatcher httpDispatcher = new HttpSessionDispatcher();
+                loadbalanceEndpoint.setDispatcher(httpDispatcher);
 
-	    } else if (type.equalsIgnoreCase("simpleClientSession")) {
-		Dispatcher csDispatcher = new SimpleClientSessionDispatcher();
-		loadbalanceEndpoint.setDispatcher(csDispatcher);
-	    }
-	}
+            } else if (type.equalsIgnoreCase("simpleClientSession")) {
+                Dispatcher csDispatcher = new SimpleClientSessionDispatcher();
+                loadbalanceEndpoint.setDispatcher(csDispatcher);
+            }
+        }
 
-	OMAttribute name = epConfig
-		.getAttribute(new QName(org.apache.synapse.config.xml.XMLConfigConstants.NULL_NAMESPACE, "name"));
+        OMAttribute name = epConfig
+                .getAttribute(new QName(org.apache.synapse.config.xml.XMLConfigConstants.NULL_NAMESPACE, "name"));
 
-	if (name != null) {
-	    loadbalanceEndpoint.setName(name.getAttributeValue());
-	}
+        if (name != null) {
+            loadbalanceEndpoint.setName(name.getAttributeValue());
+        }
 
-	OMElement loadbalanceElement;
-	loadbalanceElement = epConfig
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "loadbalance"));
+        OMElement loadbalanceElement;
+        loadbalanceElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "loadbalance"));
 
-	if (loadbalanceElement != null) {
+        if (loadbalanceElement != null) {
 
-	    List<Endpoint> endpoints = getEndpoints(loadbalanceElement, loadbalanceEndpoint, properties);
-	    loadbalanceEndpoint.setChildren(endpoints);
+            List<Endpoint> endpoints = getEndpoints(loadbalanceElement, loadbalanceEndpoint, properties);
+            loadbalanceEndpoint.setChildren(endpoints);
 
-	    LoadbalanceAlgorithm algorithm = LoadbalanceAlgorithmFactory.createLoadbalanceAlgorithm(loadbalanceElement,
-		    endpoints);
-	    loadbalanceEndpoint.setAlgorithm(algorithm);
+            LoadbalanceAlgorithm algorithm = LoadbalanceAlgorithmFactory.createLoadbalanceAlgorithm(loadbalanceElement,
+                    endpoints);
+            loadbalanceEndpoint.setAlgorithm(algorithm);
 
-	    String buildMessageAtt = loadbalanceElement.getAttributeValue(new QName(XMLConfigConstants.BUILD_MESSAGE));
-	    if (buildMessageAtt != null) {
-		loadbalanceEndpoint.setBuildMessageAttAvailable(true);
-		if (JavaUtils.isTrueExplicitly(buildMessageAtt)) {
-		    loadbalanceEndpoint.setBuildMessageAtt(true);
-		}
-	    }
+            String buildMessageAtt = loadbalanceElement.getAttributeValue(new QName(XMLConfigConstants.BUILD_MESSAGE));
+            if (buildMessageAtt != null) {
+                loadbalanceEndpoint.setBuildMessageAttAvailable(true);
+                if (JavaUtils.isTrueExplicitly(buildMessageAtt)) {
+                    loadbalanceEndpoint.setBuildMessageAtt(true);
+                }
+            }
 
-	    processProperties(loadbalanceEndpoint, epConfig);
+            processProperties(loadbalanceEndpoint, epConfig);
 
-	    return loadbalanceEndpoint;
-	}
+            return loadbalanceEndpoint;
+        }
 
-	return null;
+        return null;
     }
 
 }

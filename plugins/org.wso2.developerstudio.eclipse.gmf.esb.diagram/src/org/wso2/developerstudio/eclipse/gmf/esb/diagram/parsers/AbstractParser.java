@@ -24,4 +24,3 @@ import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.osgi.util.NLS;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.Messages;
-

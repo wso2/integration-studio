@@ -28,23 +28,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.DefaultEsbM
  * models / languages.
  */
 public interface EsbModelTransformer {
-	/**
-	 * TODO: Use a factory instead.
-	 */
-	EsbModelTransformer instance = new DefaultEsbModelExporter();
-	
-	/**
-	 * Exports the given ESB visual model into specified destination file.
-	 * 
-	 * @param resource ESB visual model container.
-	 * @param destination destination file.
-	 * @throws Exception if an error occurs while performing the export operation.
-	 */
-	void export(Resource resource, File destination) throws Exception;
-	
-	String designToSource(EsbServer serverModel) throws Exception;
-	
-	String formToSource(FormPage formPage, ArtifactType artifactType) throws Exception;
-	
-	EsbServer sourceToDesign(String source,EsbServer esbServer) throws Exception;
+    /**
+     * TODO: Use a factory instead.
+     */
+    EsbModelTransformer instance = new DefaultEsbModelExporter();
+
+    /**
+     * Exports the given ESB visual model into specified destination file.
+     * 
+     * @param resource ESB visual model container.
+     * @param destination destination file.
+     * @throws Exception if an error occurs while performing the export operation.
+     */
+    void export(Resource resource, File destination) throws Exception;
+
+    String designToSource(EsbServer serverModel) throws Exception;
+
+    String formToSource(FormPage formPage, ArtifactType artifactType) throws Exception;
+
+    EsbServer sourceToDesign(String source, EsbServer esbServer) throws Exception;
 }

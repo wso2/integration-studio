@@ -26,55 +26,55 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.Namespac
  * properties.
  */
 public class NamespacedPropertyEditor extends CustomDialogCellEditor {
-	/**
-	 * {@link NamespacedProperty} instance used for editing.
-	 */
-	private NamespacedProperty namespacedProperty;
+    /**
+     * {@link NamespacedProperty} instance used for editing.
+     */
+    private NamespacedProperty namespacedProperty;
 
-	/**
-	 * Property owner.
-	 */
-	private Object propertyContainer;
+    /**
+     * Property owner.
+     */
+    private Object propertyContainer;
 
-	/**
-	 * Property descriptor.
-	 */
-	private IItemPropertyDescriptor propertyDescriptor;
+    /**
+     * Property descriptor.
+     */
+    private IItemPropertyDescriptor propertyDescriptor;
 
-	/**
-	 * Creates a new {@link NamespacedPropertyEditor) instance.
-	 * 
-	 * @param parent parent {@link Composite}.
-	 * @param namespacedProperty original {@link NamespacedProperty} instance to be replaced after editing.
-	 * @param propertyContainer property owner object.
-	 * @param propertyDescriptor property descriptor.
-	 */
-	public NamespacedPropertyEditor(Composite parent, NamespacedProperty namespacedProperty, Object propertyContainer,
-			IItemPropertyDescriptor propertyDescriptor) {
-		super(parent);
-		this.namespacedProperty = getEsbFactory().copyNamespacedProperty(namespacedProperty);
-		this.propertyContainer = propertyContainer;
-		this.propertyDescriptor = propertyDescriptor;
-	}
+    /**
+     * Creates a new {@link NamespacedPropertyEditor) instance.
+     * 
+     * @param parent parent {@link Composite}.
+     * @param namespacedProperty original {@link NamespacedProperty} instance to be replaced after editing.
+     * @param propertyContainer property owner object.
+     * @param propertyDescriptor property descriptor.
+     */
+    public NamespacedPropertyEditor(Composite parent, NamespacedProperty namespacedProperty, Object propertyContainer,
+            IItemPropertyDescriptor propertyDescriptor) {
+        super(parent);
+        this.namespacedProperty = getEsbFactory().copyNamespacedProperty(namespacedProperty);
+        this.propertyContainer = propertyContainer;
+        this.propertyDescriptor = propertyDescriptor;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected Object openDialogBox(Control cellEditorWindow) {
-		NamespacedPropertyEditorDialog dialog = new NamespacedPropertyEditorDialog(cellEditorWindow.getShell(),
-				getStyle(), namespacedProperty);
-		dialog.open();
-		if (dialog.isSaved()) {
-			propertyDescriptor.setPropertyValue(propertyContainer, namespacedProperty);
-		}
-		return null;
-	}	
+    /**
+     * {@inheritDoc}
+     */
+    protected Object openDialogBox(Control cellEditorWindow) {
+        NamespacedPropertyEditorDialog dialog = new NamespacedPropertyEditorDialog(cellEditorWindow.getShell(),
+                getStyle(), namespacedProperty);
+        dialog.open();
+        if (dialog.isSaved()) {
+            propertyDescriptor.setPropertyValue(propertyContainer, namespacedProperty);
+        }
+        return null;
+    }
 
-	protected NamespacedProperty getNamespacedProperty() {
-		return namespacedProperty;
-	}
+    protected NamespacedProperty getNamespacedProperty() {
+        return namespacedProperty;
+    }
 
-	protected void setNamespacedProperty(NamespacedProperty namespacedProperty) {
-		this.namespacedProperty = namespacedProperty;
-	}
+    protected void setNamespacedProperty(NamespacedProperty namespacedProperty) {
+        this.namespacedProperty = namespacedProperty;
+    }
 }

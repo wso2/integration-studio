@@ -20,10 +20,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
  */
 public class EsbEditPartProvider extends DefaultEditPartProvider {
 
-	/**
-	 * @generated
-	 */
-	public EsbEditPartProvider() {
-		super(new EsbEditPartFactory(), EsbVisualIDRegistry.TYPED_INSTANCE, EsbDiagramEditPart.MODEL_ID);
-	}
+    /**
+     * @generated
+     */
+    public EsbEditPartProvider() {
+        super(new EsbEditPartFactory(), EsbVisualIDRegistry.TYPED_INSTANCE, EsbDiagramEditPart.MODEL_ID);
+    }
 }

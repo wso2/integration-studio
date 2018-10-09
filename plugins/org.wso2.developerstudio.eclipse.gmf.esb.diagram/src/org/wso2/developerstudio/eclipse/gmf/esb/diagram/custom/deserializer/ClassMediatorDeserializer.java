@@ -36,39 +36,38 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class ClassMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, ClassMediator> {
 
-	@Override
-	public ClassMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
-		
-		Assert.isTrue(object instanceof ClassMediatorExt,"Unsupported mediator passed in for deserialization");
-		ClassMediatorExt mediator = (ClassMediatorExt) object;
-		
-		final ClassMediator mediatorModel = (ClassMediator) DeserializerUtils.createNode(part, EsbElementTypes.ClassMediator_3506);
-		setElementToEdit(mediatorModel);
-		setCommonProperties(mediator, mediatorModel);
-		executeSetValueCommand(CLASS_MEDIATOR__CLASS_NAME, mediator.getMediatorClass());
+    @Override
+    public ClassMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
 
-		List<MediatorProperty> properties = mediator.getProperties();
-		for (MediatorProperty entry : properties) {
-			final ClassProperty property = EsbFactory.eINSTANCE.createClassProperty();
-			property.setPropertyName(entry.getName());
-			
-			if (null != entry.getValue()) {
-				property.setPropertyValueType(PropertyValueType.LITERAL);
-				property.setPropertyValue(entry.getValue());
+        Assert.isTrue(object instanceof ClassMediatorExt, "Unsupported mediator passed in for deserialization");
+        ClassMediatorExt mediator = (ClassMediatorExt) object;
 
-			} else if (null != entry.getExpression()) {
-				property.setPropertyValueType(PropertyValueType.EXPRESSION);
-				SynapsePath xpath = entry.getExpression();
-				NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
-				property.setPropertyExpression(namespaceProp);
+        final ClassMediator mediatorModel = (ClassMediator) DeserializerUtils.createNode(part,
+                EsbElementTypes.ClassMediator_3506);
+        setElementToEdit(mediatorModel);
+        setCommonProperties(mediator, mediatorModel);
+        executeSetValueCommand(CLASS_MEDIATOR__CLASS_NAME, mediator.getMediatorClass());
 
-			}
-			executeAddValueCommand(mediatorModel.getProperties(),property, false);
-		}
-		
-		return mediatorModel;
-	}
+        List<MediatorProperty> properties = mediator.getProperties();
+        for (MediatorProperty entry : properties) {
+            final ClassProperty property = EsbFactory.eINSTANCE.createClassProperty();
+            property.setPropertyName(entry.getName());
 
+            if (null != entry.getValue()) {
+                property.setPropertyValueType(PropertyValueType.LITERAL);
+                property.setPropertyValue(entry.getValue());
 
+            } else if (null != entry.getExpression()) {
+                property.setPropertyValueType(PropertyValueType.EXPRESSION);
+                SynapsePath xpath = entry.getExpression();
+                NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
+                property.setPropertyExpression(namespaceProp);
+
+            }
+            executeAddValueCommand(mediatorModel.getProperties(), property, false);
+        }
+
+        return mediatorModel;
+    }
 
 }

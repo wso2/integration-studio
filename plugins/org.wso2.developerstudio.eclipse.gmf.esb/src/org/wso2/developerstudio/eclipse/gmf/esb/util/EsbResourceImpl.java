@@ -5,8 +5,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 public class EsbResourceImpl extends XMLResourceImpl {
 
-	
-	public EsbResourceImpl(URI uri) {
-		super(uri);
-	}
+    public EsbResourceImpl(URI uri) {
+        super(uri);
+    }
 }

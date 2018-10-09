@@ -57,375 +57,379 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
  */
 public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 
-	public IFigure sequenceInputConnectorFigure;
+    public IFigure sequenceInputConnectorFigure;
 
-	public IFigure sequenceOutputConnectorFigure;
+    public IFigure sequenceOutputConnectorFigure;
 
-	public IFigure onErrorSequenceInputConnectorFigure;
+    public IFigure onErrorSequenceInputConnectorFigure;
 
-	public IFigure onErrorSequenceOutputConnectorFigure;
+    public IFigure onErrorSequenceOutputConnectorFigure;
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 3767;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 3767;
 
-	/**
-	 * @generated
-	 */
-	protected IFigure contentPane;
+    /**
+     * @generated
+     */
+    protected IFigure contentPane;
 
-	/**
-	 * @generated
-	 */
-	protected IFigure primaryShape;
+    /**
+     * @generated
+     */
+    protected IFigure primaryShape;
 
-	/**
-	 * figure update status
-	 */
-	private boolean figureUpdated;
+    /**
+     * figure update status
+     */
+    private boolean figureUpdated;
 
-	/**
-	 * @generated
-	 */
-	public InboundEndpointEditPart(View view) {
-		super(view);
-	}
+    /**
+     * @generated
+     */
+    public InboundEndpointEditPart(View view) {
+        super(view);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				EsbVisualIDRegistry.TYPED_INSTANCE));
-		super.createDefaultEditPolicies();
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new InboundEndpointItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new InboundEndpointCanonicalEditPolicy());
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that
-		// would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		//remove 8 corners
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
-	}
+    /**
+     * @generated NOT
+     */
+    protected void createDefaultEditPolicies() {
+        installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+                new CreationEditPolicyWithCustomReparent(EsbVisualIDRegistry.TYPED_INSTANCE));
+        super.createDefaultEditPolicies();
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new InboundEndpointItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new InboundEndpointCanonicalEditPolicy());
+        installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+        // For handle Double click Event.
+        installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+        // XXX need an SCR to runtime to have another abstract superclass that
+        // would let children add reasonable editpolicies
+        // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        // remove 8 corners
+        installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
+    }
 
-	/**
-	 * @generated
-	 */
-	protected LayoutEditPolicy createLayoutEditPolicy() {
-		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
+    /**
+     * @generated
+     */
+    protected LayoutEditPolicy createLayoutEditPolicy() {
+        org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
-			protected EditPolicy createChildEditPolicy(EditPart child) {
-				View childView = (View) child.getModel();
-				switch (EsbVisualIDRegistry.getVisualID(childView)) {
-				case InboundEndpointSequenceInputConnectorEditPart.VISUAL_ID:
-				case InboundEndpointSequenceOutputConnectorEditPart.VISUAL_ID:
-				case InboundEndpointOnErrorSequenceInputConnectorEditPart.VISUAL_ID:
-				case InboundEndpointOnErrorSequenceOutputConnectorEditPart.VISUAL_ID:
-					return new BorderItemSelectionEditPolicy();
-				}
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
-				if (result == null) {
-					result = new NonResizableEditPolicy();
-				}
-				return result;
-			}
+            protected EditPolicy createChildEditPolicy(EditPart child) {
+                View childView = (View) child.getModel();
+                switch (EsbVisualIDRegistry.getVisualID(childView)) {
+                case InboundEndpointSequenceInputConnectorEditPart.VISUAL_ID:
+                case InboundEndpointSequenceOutputConnectorEditPart.VISUAL_ID:
+                case InboundEndpointOnErrorSequenceInputConnectorEditPart.VISUAL_ID:
+                case InboundEndpointOnErrorSequenceOutputConnectorEditPart.VISUAL_ID:
+                    return new BorderItemSelectionEditPolicy();
+                }
+                EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+                if (result == null) {
+                    result = new NonResizableEditPolicy();
+                }
+                return result;
+            }
 
-			protected Command getMoveChildrenCommand(Request request) {
-				return null;
-			}
+            protected Command getMoveChildrenCommand(Request request) {
+                return null;
+            }
 
-			protected Command getCreateCommand(CreateRequest request) {
-				return null;
-			}
-		};
-		return lep;
-	}
+            protected Command getCreateCommand(CreateRequest request) {
+                return null;
+            }
+        };
+        return lep;
+    }
 
-	public void notifyChanged(Notification notification) {
-		super.notifyChanged(notification);
-		if (notification.getFeature() instanceof EAttributeImpl) {
-			if (notification.getNotifier() instanceof BoundsImpl) {
-				int y = ((BoundsImpl) notification.getNotifier()).getY();
-				if (y == -1) {
-					y = +2;
-				}
-				alignLeft(y, ((BoundsImpl) notification.getNotifier()).getWidth(),
-						((BoundsImpl) notification.getNotifier()).getHeight());
-				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
-				canvas.getViewport().repaint();
+    public void notifyChanged(Notification notification) {
+        super.notifyChanged(notification);
+        if (notification.getFeature() instanceof EAttributeImpl) {
+            if (notification.getNotifier() instanceof BoundsImpl) {
+                int y = ((BoundsImpl) notification.getNotifier()).getY();
+                if (y == -1) {
+                    y = +2;
+                }
+                alignLeft(y, ((BoundsImpl) notification.getNotifier()).getWidth(),
+                        ((BoundsImpl) notification.getNotifier()).getHeight());
+                FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+                canvas.getViewport().repaint();
 
-			}
-		}
-	}
+            }
+        }
+    }
 
-	private void alignLeft(int y, int width, int height) {
-		y = 100;
-		Rectangle constraints = new Rectangle(0, y, width, height);
-		((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
-	}
+    private void alignLeft(int y, int width, int height) {
+        y = 100;
+        Rectangle constraints = new Rectangle(0, y, width, height);
+        ((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
+    }
 
-	private void alignLeft() {
-		alignLeft(getFigure().getBounds().y, getFigure().getBounds().width, getFigure().getBounds().height);
-	}
+    private void alignLeft() {
+        alignLeft(getFigure().getBounds().y, getFigure().getBounds().width, getFigure().getBounds().height);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected IFigure createNodeShape() {
-		return primaryShape = new InboundEndpointFigure() {
-			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
-				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
-					alignLeft();
-				}
-				/*				if (!figureUpdated) {
-				 updateFigure();
-				 }*/
+    /**
+     * @generated NOT
+     */
+    protected IFigure createNodeShape() {
+        return primaryShape = new InboundEndpointFigure() {
+            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+                super.setBounds(rect);
+                if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+                    alignLeft();
+                }
+                /*
+                 * if (!figureUpdated) {
+                 * updateFigure();
+                 * }
+                 */
 
-			};
-		};
-	}
+            };
+        };
+    }
 
-	protected void addChildVisual(EditPart childEditPart, int index) {
-		if (addFixedChild(childEditPart)) {
-			return;
-		}
-		super.addChildVisual(childEditPart, -1);
-	}
+    protected void addChildVisual(EditPart childEditPart, int index) {
+        if (addFixedChild(childEditPart)) {
+            return;
+        }
+        super.addChildVisual(childEditPart, -1);
+    }
 
-	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof InboundEndpointSequenceInputConnectorEditPart) {
-			IFigure borderItemFigure = ((InboundEndpointSequenceInputConnectorEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-					PositionConstants.EAST, 0.25);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-			sequenceInputConnectorFigure = borderItemFigure;
-			return true;
-		}
-		if (childEditPart instanceof InboundEndpointSequenceOutputConnectorEditPart) {
-			IFigure borderItemFigure = ((InboundEndpointSequenceOutputConnectorEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					(IFigure) ((IFigure) ((IFigure) (IFigure) getFigure().getChildren().get(0)).getChildren().get(0))
-							.getChildren().get(0), borderItemFigure, PositionConstants.EAST, 0.25);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-			sequenceOutputConnectorFigure = borderItemFigure;
-			return true;
-		}
-		if (childEditPart instanceof InboundEndpointOnErrorSequenceInputConnectorEditPart) {
+    protected boolean addFixedChild(EditPart childEditPart) {
+        if (childEditPart instanceof InboundEndpointSequenceInputConnectorEditPart) {
+            IFigure borderItemFigure = ((InboundEndpointSequenceInputConnectorEditPart) childEditPart).getFigure();
+            BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+                    PositionConstants.EAST, 0.25);
+            getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+            sequenceInputConnectorFigure = borderItemFigure;
+            return true;
+        }
+        if (childEditPart instanceof InboundEndpointSequenceOutputConnectorEditPart) {
+            IFigure borderItemFigure = ((InboundEndpointSequenceOutputConnectorEditPart) childEditPart).getFigure();
+            BorderItemLocator locator = new FixedBorderItemLocator(
+                    (IFigure) ((IFigure) ((IFigure) (IFigure) getFigure().getChildren().get(0)).getChildren().get(0))
+                            .getChildren().get(0),
+                    borderItemFigure, PositionConstants.EAST, 0.25);
+            getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+            sequenceOutputConnectorFigure = borderItemFigure;
+            return true;
+        }
+        if (childEditPart instanceof InboundEndpointOnErrorSequenceInputConnectorEditPart) {
 
-			IFigure borderItemFigure = ((InboundEndpointOnErrorSequenceInputConnectorEditPart) childEditPart)
-					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-					PositionConstants.EAST, 0.75);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-			onErrorSequenceInputConnectorFigure = borderItemFigure;
-			return true;
-		}
-		if (childEditPart instanceof InboundEndpointOnErrorSequenceOutputConnectorEditPart) {
-			IFigure borderItemFigure = ((InboundEndpointOnErrorSequenceOutputConnectorEditPart) childEditPart)
-					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					(IFigure) ((IFigure) ((IFigure) (IFigure) getFigure().getChildren().get(0)).getChildren().get(0))
-							.getChildren().get(0), borderItemFigure, PositionConstants.EAST, 0.75);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-			onErrorSequenceOutputConnectorFigure = borderItemFigure;
-			return true;
-		}
+            IFigure borderItemFigure = ((InboundEndpointOnErrorSequenceInputConnectorEditPart) childEditPart)
+                    .getFigure();
+            BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+                    PositionConstants.EAST, 0.75);
+            getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+            onErrorSequenceInputConnectorFigure = borderItemFigure;
+            return true;
+        }
+        if (childEditPart instanceof InboundEndpointOnErrorSequenceOutputConnectorEditPart) {
+            IFigure borderItemFigure = ((InboundEndpointOnErrorSequenceOutputConnectorEditPart) childEditPart)
+                    .getFigure();
+            BorderItemLocator locator = new FixedBorderItemLocator(
+                    (IFigure) ((IFigure) ((IFigure) (IFigure) getFigure().getChildren().get(0)).getChildren().get(0))
+                            .getChildren().get(0),
+                    borderItemFigure, PositionConstants.EAST, 0.75);
+            getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+            onErrorSequenceOutputConnectorFigure = borderItemFigure;
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * @generated
-	 */
-	public InboundEndpointFigure getPrimaryShape() {
-		return (InboundEndpointFigure) primaryShape;
-	}
+    /**
+     * @generated
+     */
+    public InboundEndpointFigure getPrimaryShape() {
+        return (InboundEndpointFigure) primaryShape;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
-		return result;
-	}
+    /**
+     * @generated
+     */
+    protected NodeFigure createNodePlate() {
+        DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+        return result;
+    }
 
-	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated
-	 */
-	protected NodeFigure createMainFigure() {
-		NodeFigure figure = createNodePlate();
-		figure.setLayoutManager(new StackLayout());
-		IFigure shape = createNodeShape();
-		figure.add(shape);
-		contentPane = setupContentPane(shape);
-		return figure;
-	}
+    /**
+     * Creates figure for this edit part.
+     * 
+     * Body of this method does not depend on settings in generation model
+     * so you may safely remove <i>generated</i> tag and modify it.
+     * 
+     * @generated
+     */
+    protected NodeFigure createMainFigure() {
+        NodeFigure figure = createNodePlate();
+        figure.setLayoutManager(new StackLayout());
+        IFigure shape = createNodeShape();
+        figure.add(shape);
+        contentPane = setupContentPane(shape);
+        return figure;
+    }
 
-	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * 
-	 * @param nodeShape
-	 *            instance of generated figure class
-	 * @generated
-	 */
-	protected IFigure setupContentPane(IFigure nodeShape) {
-		if (nodeShape.getLayoutManager() == null) {
-			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
-			layout.setSpacing(5);
-			nodeShape.setLayoutManager(layout);
-		}
-		return nodeShape; // use nodeShape itself as contentPane
-	}
+    /**
+     * Default implementation treats passed figure as content pane.
+     * Respects layout one may have set for generated figure.
+     * 
+     * @param nodeShape
+     *            instance of generated figure class
+     * @generated
+     */
+    protected IFigure setupContentPane(IFigure nodeShape) {
+        if (nodeShape.getLayoutManager() == null) {
+            ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
+            layout.setSpacing(5);
+            nodeShape.setLayoutManager(layout);
+        }
+        return nodeShape; // use nodeShape itself as contentPane
+    }
 
-	/**
-	 * @generated
-	 */
-	public IFigure getContentPane() {
-		if (contentPane != null) {
-			return contentPane;
-		}
-		return super.getContentPane();
-	}
+    /**
+     * @generated
+     */
+    public IFigure getContentPane() {
+        if (contentPane != null) {
+            return contentPane;
+        }
+        return super.getContentPane();
+    }
 
-	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
-		if (editPart instanceof IBorderItemEditPart) {
-			return getBorderedFigure().getBorderItemContainer();
-		}
-		return getContentPane();
-	}
+    protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
+        if (editPart instanceof IBorderItemEditPart) {
+            return getBorderedFigure().getBorderItemContainer();
+        }
+        return getContentPane();
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setForegroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setForegroundColor(color);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setForegroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setForegroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setBackgroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setBackgroundColor(color);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setBackgroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setBackgroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineWidth(int width) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineWidth(width);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setLineWidth(int width) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineWidth(width);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineType(int style) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineStyle(style);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setLineType(int style) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineStyle(style);
+        }
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public class InboundEndpointFigure extends InboundEndpointGroupBox {
+    /**
+     * @generated NOT
+     */
+    public class InboundEndpointFigure extends InboundEndpointGroupBox {
 
-		private WrappingLabel fFigureProxyNamePropertyLabel;
+        private WrappingLabel fFigureProxyNamePropertyLabel;
 
-		/**
-		 * @generated NOT
-		 */
-		public InboundEndpointFigure() {
+        /**
+         * @generated NOT
+         */
+        public InboundEndpointFigure() {
 
-			ToolbarLayout layoutThis = new ToolbarLayout();
-			layoutThis.setStretchMinorAxis(true);
-			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
-			layoutThis.setSpacing(0);
-			layoutThis.setVertical(false);
+            ToolbarLayout layoutThis = new ToolbarLayout();
+            layoutThis.setStretchMinorAxis(true);
+            layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+            layoutThis.setSpacing(0);
+            layoutThis.setVertical(false);
 
-			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(300), getMapMode().DPtoLP(400)));
-			this.setOutline(false);
-			this.setBackgroundColor(THIS_BACK);
-			this.setForegroundColor(new Color(null, 0, 0, 0));
-			createContents();
-		}
+            this.setLayoutManager(layoutThis);
+            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(300), getMapMode().DPtoLP(400)));
+            this.setOutline(false);
+            this.setBackgroundColor(THIS_BACK);
+            this.setForegroundColor(new Color(null, 0, 0, 0));
+            createContents();
+        }
 
-		public void addPropertyChangeListener(PropertyChangeListener listener) {
-			// TODO Auto-generated method stub
-			super.addPropertyChangeListener(listener);
-		}
+        public void addPropertyChangeListener(PropertyChangeListener listener) {
+            // TODO Auto-generated method stub
+            super.addPropertyChangeListener(listener);
+        }
 
-		public void add(IFigure figure, Object constraint, int index) {
-			if (figure instanceof DefaultSizeNodeFigure) {
-				GridData layoutData = new GridData();
-				layoutData.grabExcessHorizontalSpace = true;
-				layoutData.grabExcessVerticalSpace = true;
-				layoutData.horizontalAlignment = GridData.FILL;
-				layoutData.verticalAlignment = GridData.FILL;
-				super.add(figure, layoutData, index);
-			} else if (figure instanceof RoundedRectangle) {
-				GridData layoutData = new GridData();
-				layoutData.grabExcessHorizontalSpace = true;
-				layoutData.grabExcessVerticalSpace = true;
-				layoutData.horizontalAlignment = GridData.FILL;
-				layoutData.verticalAlignment = GridData.FILL;
-				super.add(figure, layoutData, index);
-			}
+        public void add(IFigure figure, Object constraint, int index) {
+            if (figure instanceof DefaultSizeNodeFigure) {
+                GridData layoutData = new GridData();
+                layoutData.grabExcessHorizontalSpace = true;
+                layoutData.grabExcessVerticalSpace = true;
+                layoutData.horizontalAlignment = GridData.FILL;
+                layoutData.verticalAlignment = GridData.FILL;
+                super.add(figure, layoutData, index);
+            } else if (figure instanceof RoundedRectangle) {
+                GridData layoutData = new GridData();
+                layoutData.grabExcessHorizontalSpace = true;
+                layoutData.grabExcessVerticalSpace = true;
+                layoutData.horizontalAlignment = GridData.FILL;
+                layoutData.verticalAlignment = GridData.FILL;
+                super.add(figure, layoutData, index);
+            }
 
-			else {
-				super.add(figure, constraint, index);
-			}
-		}
+            else {
+                super.add(figure, constraint, index);
+            }
+        }
 
-		/**
-		 * @generated NOT
-		 * @customizations add the property label to parent figure
-		 */
-		private void createContents() {
-			fFigureProxyNamePropertyLabel = getProxyNameLabel();
-		}
+        /**
+         * @generated NOT
+         * @customizations add the property label to parent figure
+         */
+        private void createContents() {
+            fFigureProxyNamePropertyLabel = getProxyNameLabel();
+        }
 
-		public String getIconPath() {
-			return "icons/ico20/inbound-endpoint.gif";
-		}
+        public String getIconPath() {
+            return "icons/ico20/inbound-endpoint.gif";
+        }
 
-		public String getNodeName() {
-			return "Inbound EP";
-		}
+        public String getNodeName() {
+            return "Inbound EP";
+        }
 
-		public Color getBackgroundColor() {
-			return THIS_BACK;
-		}
+        public Color getBackgroundColor() {
+            return THIS_BACK;
+        }
 
-		public Color getLabelBackColor() {
-			return THIS_LABEL_BACK;
-		}
+        public Color getLabelBackColor() {
+            return THIS_LABEL_BACK;
+        }
 
-	}
+    }
 
-	/**
-	 * @generated
-	 */
-	static final Color THIS_BACK = new Color(null, 255, 255, 255);
-	static final Color THIS_LABEL_BACK = new Color(null, 0, 0, 0);
+    /**
+     * @generated
+     */
+    static final Color THIS_BACK = new Color(null, 255, 255, 255);
+    static final Color THIS_LABEL_BACK = new Color(null, 0, 0, 0);
 
 }

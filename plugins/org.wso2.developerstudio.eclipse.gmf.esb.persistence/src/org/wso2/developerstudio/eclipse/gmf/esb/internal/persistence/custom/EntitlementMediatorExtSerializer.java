@@ -26,17 +26,15 @@ import org.wso2.carbon.identity.entitlement.mediator.EntitlementConstants;
 import org.wso2.carbon.identity.entitlement.mediator.EntitlementMediator;
 import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorFactory;
 
-public class EntitlementMediatorExtSerializer extends AbstractMediatorSerializer{
+public class EntitlementMediatorExtSerializer extends AbstractMediatorSerializer {
 
-	
-	public String getMediatorClassName() {
-		return EntitlementMediatorExt.class.getName();
-	}
-	
-	protected OMElement serializeSpecificMediator(Mediator mediator) {
+    public String getMediatorClassName() {
+        return EntitlementMediatorExt.class.getName();
+    }
+
+    protected OMElement serializeSpecificMediator(Mediator mediator) {
         if (!(mediator instanceof EntitlementMediator)) {
-            handleException("Unsupported mediator passed in for serialization : "
-                    + mediator.getType());
+            handleException("Unsupported mediator passed in for serialization : " + mediator.getType());
         }
 
         EntitlementMediatorExt entitlement = null;
@@ -45,21 +43,20 @@ public class EntitlementMediatorExtSerializer extends AbstractMediatorSerializer
         entitlement = (EntitlementMediatorExt) mediator;
         entitlementElem = fac.createOMElement("entitlementService", synNS);
         saveTracingState(entitlementElem, entitlement);
-        entitlementElem.addAttribute(fac.createOMAttribute("remoteServiceUrl", nullNS, entitlement
-                .getRemoteServiceUrl()));
-        entitlementElem.addAttribute(fac.createOMAttribute("remoteServiceUserName", nullNS,
-                entitlement.getRemoteServiceUserName()));
-        entitlementElem.addAttribute(fac.createOMAttribute("remoteServicePassword", nullNS,
-                entitlement.getRemoteServicePassword()));
+        entitlementElem
+                .addAttribute(fac.createOMAttribute("remoteServiceUrl", nullNS, entitlement.getRemoteServiceUrl()));
+        entitlementElem.addAttribute(
+                fac.createOMAttribute("remoteServiceUserName", nullNS, entitlement.getRemoteServiceUserName()));
+        entitlementElem.addAttribute(
+                fac.createOMAttribute("remoteServicePassword", nullNS, entitlement.getRemoteServicePassword()));
 
         if (entitlement.getCallbackClass() != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute("callbackClass", nullNS,
-                    entitlement.getCallbackClass()));
+            entitlementElem
+                    .addAttribute(fac.createOMAttribute("callbackClass", nullNS, entitlement.getCallbackClass()));
         }
 
         if (entitlement.getCacheType() != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute("cacheType", nullNS,
-                    entitlement.getCacheType()));
+            entitlementElem.addAttribute(fac.createOMAttribute("cacheType", nullNS, entitlement.getCacheType()));
         }
 
         if (entitlement.getInvalidationInterval() != 0) {
@@ -73,84 +70,76 @@ public class EntitlementMediatorExtSerializer extends AbstractMediatorSerializer
         }
 
         if (entitlement.getThriftHost() != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute(EntitlementConstants.THRIFT_HOST,
-                    nullNS, entitlement.getThriftHost()));
+            entitlementElem.addAttribute(
+                    fac.createOMAttribute(EntitlementConstants.THRIFT_HOST, nullNS, entitlement.getThriftHost()));
         }
 
         if (entitlement.getThriftPort() != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute(EntitlementConstants.THRIFT_PORT,
-                    nullNS, entitlement.getThriftPort()));
+            entitlementElem.addAttribute(
+                    fac.createOMAttribute(EntitlementConstants.THRIFT_PORT, nullNS, entitlement.getThriftPort()));
         }
 
         if (entitlement.getReuseSession() != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute(EntitlementConstants.REUSE_SESSION,
-                    nullNS, entitlement.getReuseSession()));
+            entitlementElem.addAttribute(
+                    fac.createOMAttribute(EntitlementConstants.REUSE_SESSION, nullNS, entitlement.getReuseSession()));
         }
 
         if (entitlement.getClient() != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute(EntitlementConstants.CLIENT,
-                    nullNS, entitlement.getClient()));
+            entitlementElem
+                    .addAttribute(fac.createOMAttribute(EntitlementConstants.CLIENT, nullNS, entitlement.getClient()));
         }
 
         String onReject = entitlement.getOnRejectSeqKey();
         if (onReject != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute(XMLConfigConstants.ONREJECT, nullNS,
-                    onReject));
+            entitlementElem.addAttribute(fac.createOMAttribute(XMLConfigConstants.ONREJECT, nullNS, onReject));
         } else {
             Mediator m = entitlement.getOnRejectMediator();
             SequenceMediatorSerializer serializer = new SequenceMediatorSerializer();
             if (m != null && m instanceof SequenceMediator) {
-                OMElement element = serializer.serializeAnonymousSequence(null,
-                        (SequenceMediator) m);
+                OMElement element = serializer.serializeAnonymousSequence(null, (SequenceMediator) m);
                 element.setLocalName(XMLConfigConstants.ONREJECT);
                 entitlementElem.addChild(element);
             }
         }
         String onAccept = entitlement.getOnAcceptSeqKey();
         if (onAccept != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute(XMLConfigConstants.ONACCEPT, nullNS,
-                    onAccept));
+            entitlementElem.addAttribute(fac.createOMAttribute(XMLConfigConstants.ONACCEPT, nullNS, onAccept));
         } else {
             Mediator m = entitlement.getOnAcceptMediator();
             SequenceMediatorSerializer serializer = new SequenceMediatorSerializer();
             if (m != null && m instanceof SequenceMediator) {
-                OMElement element = serializer.serializeAnonymousSequence(null,
-                        (SequenceMediator) m);
+                OMElement element = serializer.serializeAnonymousSequence(null, (SequenceMediator) m);
                 element.setLocalName(XMLConfigConstants.ONACCEPT);
                 entitlementElem.addChild(element);
             }
         }
         String obligation = entitlement.getObligationsSeqKey();
         if (obligation != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute(EntitlementMediatorFactory.OBLIGATIONS, nullNS,
-                    obligation));
+            entitlementElem
+                    .addAttribute(fac.createOMAttribute(EntitlementMediatorFactory.OBLIGATIONS, nullNS, obligation));
         } else {
             Mediator m = entitlement.getObligationsMediator();
             SequenceMediatorSerializer serializer = new SequenceMediatorSerializer();
             if (m != null && m instanceof SequenceMediator) {
-                OMElement element = serializer.serializeAnonymousSequence(null,
-                        (SequenceMediator) m);
+                OMElement element = serializer.serializeAnonymousSequence(null, (SequenceMediator) m);
                 element.setLocalName(EntitlementMediatorFactory.OBLIGATIONS);
                 entitlementElem.addChild(element);
             }
         }
         String advice = entitlement.getAdviceSeqKey();
         if (advice != null) {
-            entitlementElem.addAttribute(fac.createOMAttribute(EntitlementMediatorFactory.ADVICE, nullNS,
-                    advice));
+            entitlementElem.addAttribute(fac.createOMAttribute(EntitlementMediatorFactory.ADVICE, nullNS, advice));
         } else {
             Mediator m = entitlement.getAdviceMediator();
             SequenceMediatorSerializer serializer = new SequenceMediatorSerializer();
             if (m != null && m instanceof SequenceMediator) {
-                OMElement element = serializer.serializeAnonymousSequence(null,
-                        (SequenceMediator) m);
+                OMElement element = serializer.serializeAnonymousSequence(null, (SequenceMediator) m);
                 element.setLocalName(EntitlementMediatorFactory.ADVICE);
                 entitlementElem.addChild(element);
             }
         }
 
         return entitlementElem;
-	}
-
+    }
 
 }

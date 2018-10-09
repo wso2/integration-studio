@@ -14,31 +14,31 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.RouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddRouteBranchDialog;
 
-public class AddBranchRouterMediatorAction extends ConfigureEsbNodeAction{
+public class AddBranchRouterMediatorAction extends ConfigureEsbNodeAction {
 
-	public AddBranchRouterMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId("add-branch-router-mediator-action-id");
-		setText("Add/Remove Route..");
-		setToolTipText("Add or Remove Route branches.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
-	}
+    public AddBranchRouterMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId("add-branch-router-mediator-action-id");
+        setText("Add/Remove Route..");
+        setToolTipText("Add or Remove Route branches.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
+    }
 
-	
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof RouterMediator, "Invalid selection.");
-		
-		Shell shell = Display.getDefault().getActiveShell();	
-		shell.setLocation(300, 200);
-		Dialog addBranchDialog = new AddRouteBranchDialog(shell, (RouterMediator) selectedObj,getEditingDomain(),selectedEP);
-		addBranchDialog.setBlockOnOpen(true);
-		addBranchDialog.open();
-		
-	}
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
+
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof RouterMediator, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        shell.setLocation(300, 200);
+        Dialog addBranchDialog = new AddRouteBranchDialog(shell, (RouterMediator) selectedObj, getEditingDomain(),
+                selectedEP);
+        addBranchDialog.setBlockOnOpen(true);
+        addBranchDialog.open();
+
+    }
 
 }

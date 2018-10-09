@@ -6,7 +6,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -21,83 +20,91 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediatorOnRejectOutputConnector} object.
+ * This is the item provider adapter for a
+ * {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediatorOnRejectOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
-public class ThrottleMediatorOnRejectOutputConnectorItemProvider
-    extends OutputConnectorItemProvider {
+public class ThrottleMediatorOnRejectOutputConnectorItemProvider extends OutputConnectorItemProvider {
     /**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+     * This constructs an instance from a factory and a notifier.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     public ThrottleMediatorOnRejectOutputConnectorItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+        super(adapterFactory);
+    }
 
     /**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the property descriptors for the adapted class.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+        if (itemPropertyDescriptors == null) {
+            super.getPropertyDescriptors(object);
 
-		}
-		return itemPropertyDescriptors;
-	}
+        }
+        return itemPropertyDescriptors;
+    }
 
     /**
-	 * This returns ThrottleMediatorOnRejectOutputConnector.gif.
-	 * <!-- begin-user-doc -->
+     * This returns ThrottleMediatorOnRejectOutputConnector.gif.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ThrottleMediatorOnRejectOutputConnector"));
-	}
+        return overlayImage(object,
+                getResourceLocator().getImage("full/obj16/ThrottleMediatorOnRejectOutputConnector"));
+    }
 
     /**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     public String getText(Object object) {
-		return getString("_UI_ThrottleMediatorOnRejectOutputConnector_type");
-	}
+        return getString("_UI_ThrottleMediatorOnRejectOutputConnector_type");
+    }
 
     /**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+        updateChildren(notification);
+        super.notifyChanged(notification);
+    }
 
     /**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+     * that can be created under this object.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
 
 }

@@ -13,17 +13,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfLoadBalanceEndPoint2EditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(4);
-		types.add(EsbElementTypes.LoadBalanceEndPointInputConnector_3657);
-		types.add(EsbElementTypes.LoadBalanceEndPointOutputConnector_3658);
-		types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659);
-		types.add(EsbElementTypes.MediatorFlow_3779);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(4);
+        types.add(EsbElementTypes.LoadBalanceEndPointInputConnector_3657);
+        types.add(EsbElementTypes.LoadBalanceEndPointOutputConnector_3658);
+        types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659);
+        types.add(EsbElementTypes.MediatorFlow_3779);
+        return types;
+    }
 
 }

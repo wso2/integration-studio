@@ -21,8 +21,8 @@ import org.eclipse.gmf.runtime.notation.View;
 
 public abstract class AbstractComplexEndpointCompartmentEditPart extends ShapeCompartmentEditPart {
 
-	public AbstractComplexEndpointCompartmentEditPart(View view) {
-		super(view);
-	}
+    public AbstractComplexEndpointCompartmentEditPart(View view) {
+        super(view);
+    }
 
 }

@@ -10,18 +10,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
  */
 public class EsbLinkItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
-	/**
-	 * @generated
-	 */
-	public EsbLinkItemSemanticEditPolicy() {
-		super(EsbElementTypes.EsbLink_4001);
-	}
+    /**
+     * @generated
+     */
+    public EsbLinkItemSemanticEditPolicy() {
+        super(EsbElementTypes.EsbLink_4001);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected Command getDestroyElementCommand(DestroyElementRequest req) {
-		return getGEFWrapper(new DestroyElementCommand(req));
-	}
+    /**
+     * @generated
+     */
+    protected Command getDestroyElementCommand(DestroyElementRequest req) {
+        return getGEFWrapper(new DestroyElementCommand(req));
+    }
 
 }

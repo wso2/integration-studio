@@ -21,24 +21,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleChildMediatorsConfiguration;
  * @generated
  */
 public class RuleChildMediatorsConfigurationImpl extends EObjectImpl implements RuleChildMediatorsConfiguration {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RuleChildMediatorsConfigurationImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected RuleChildMediatorsConfigurationImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.RULE_CHILD_MEDIATORS_CONFIGURATION;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //RuleChildMediatorsConfigurationImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.RULE_CHILD_MEDIATORS_CONFIGURATION;
+    }
+
+} // RuleChildMediatorsConfigurationImpl

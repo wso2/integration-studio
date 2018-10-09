@@ -84,8 +84,8 @@ public class ESBTemplateDebugPointMessage extends AbstractESBDebugPointMessage {
         if (debugPointMessage instanceof ESBTemplateDebugPointMessage) {
             ESBTemplateDebugPointMessage debugPointMessageTemp = (ESBTemplateDebugPointMessage) debugPointMessage;
             if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent())
-                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument()) && getTemplate()
-                    .equals(debugPointMessageTemp.getTemplate()))) {
+                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument())
+                    && getTemplate().equals(debugPointMessageTemp.getTemplate()))) {
                 return false;
             }
             return true;
@@ -128,7 +128,8 @@ public class ESBTemplateDebugPointMessage extends AbstractESBDebugPointMessage {
             if (TEMPLATE_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
                 templateKey = convertJsonElementValueToString(entry.getValue());
             } else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry.getKey())) {
-                mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry.getValue()));
+                mediatorPosition = convertMediatorPositionStringToList(
+                        convertJsonElementValueToString(entry.getValue()));
             }
         }
         setTemplate(new ESBTemplateBean(templateKey, mediatorPosition));

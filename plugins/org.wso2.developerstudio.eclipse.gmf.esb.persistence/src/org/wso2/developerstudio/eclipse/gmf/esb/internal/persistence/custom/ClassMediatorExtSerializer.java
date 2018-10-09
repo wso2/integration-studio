@@ -21,8 +21,8 @@ import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.AbstractMediatorSerializer;
 
 public class ClassMediatorExtSerializer extends AbstractMediatorSerializer {
-	
-	public OMElement serializeSpecificMediator(Mediator m) {
+
+    public OMElement serializeSpecificMediator(Mediator m) {
 
         if (!(m instanceof ClassMediatorExt)) {
             handleException("Unsupported mediator passed in for serialization : " + m.getType());
@@ -32,8 +32,7 @@ public class ClassMediatorExtSerializer extends AbstractMediatorSerializer {
         saveTracingState(clazz, mediator);
 
         if (mediator.getMediator() != null && mediator.getMediator().getClass().getName() != null) {
-            clazz.addAttribute(fac.createOMAttribute(
-                "name", nullNS, mediator.getMediatorClass()));
+            clazz.addAttribute(fac.createOMAttribute("name", nullNS, mediator.getMediatorClass()));
         } else {
             handleException("Invalid class mediator. The class name is required");
         }

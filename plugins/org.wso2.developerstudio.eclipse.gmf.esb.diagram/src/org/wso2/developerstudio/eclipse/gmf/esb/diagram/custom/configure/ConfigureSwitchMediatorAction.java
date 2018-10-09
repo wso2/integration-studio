@@ -42,39 +42,38 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediato
  * custom UI.
  */
 public class ConfigureSwitchMediatorAction extends ConfigureEsbNodeAction {
-	
-	CompoundCommand resultCommand;
 
-	/**
-	 * Creates a new {@link ConfigureSwitchMediatorAction} instance.
-	 * 
-	 * @param part a {@link IWorkbenchPart} instance.
-	 */
-	public ConfigureSwitchMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId("configure-switch-mediator-action-id");
-		setText("Configure...");
-		setToolTipText("Configure switch mediator.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
-	
+    CompoundCommand resultCommand;
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof SwitchMediator, "Invalid selection.");
+    /**
+     * Creates a new {@link ConfigureSwitchMediatorAction} instance.
+     * 
+     * @param part a {@link IWorkbenchPart} instance.
+     */
+    public ConfigureSwitchMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId("configure-switch-mediator-action-id");
+        setText("Configure...");
+        setToolTipText("Configure switch mediator.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-		Shell shell = Display.getDefault().getActiveShell();		
-		Dialog ConfigureSwitchMediatorDialog = new ConfigureSwitchMediatorDialog(shell, (SwitchMediator) selectedObj);
-		ConfigureSwitchMediatorDialog.setBlockOnOpen(true);
-		ConfigureSwitchMediatorDialog.open();
-		
-	}
-	
+    /**
+     * {@inheritDoc}
+     */
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
+
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof SwitchMediator, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        Dialog ConfigureSwitchMediatorDialog = new ConfigureSwitchMediatorDialog(shell, (SwitchMediator) selectedObj);
+        ConfigureSwitchMediatorDialog.setBlockOnOpen(true);
+        ConfigureSwitchMediatorDialog.open();
+
+    }
+
 }

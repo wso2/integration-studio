@@ -34,56 +34,51 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
-public class ConditionalRouterMediatorDeserializer extends
-		AbstractEsbNodeDeserializer<AbstractMediator, ConditionalRouterMediator> {
+public class ConditionalRouterMediatorDeserializer
+        extends AbstractEsbNodeDeserializer<AbstractMediator, ConditionalRouterMediator> {
 
-	@Override
-	public ConditionalRouterMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
-		Assert.isTrue(object instanceof org.apache.synapse.mediators.filters.router.ConditionalRouterMediator,
-				"Unsupported mediator passed in for deserialization");
+    @Override
+    public ConditionalRouterMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
+        Assert.isTrue(object instanceof org.apache.synapse.mediators.filters.router.ConditionalRouterMediator,
+                "Unsupported mediator passed in for deserialization");
 
-		org.apache.synapse.mediators.filters.router.ConditionalRouterMediator mediator = 
-			(org.apache.synapse.mediators.filters.router.ConditionalRouterMediator) object;
-		ConditionalRouterMediator mediatorModel = (ConditionalRouterMediator) DeserializerUtils
-				.createNode(part, EsbElementTypes.ConditionalRouterMediator_3635);
-		setElementToEdit(mediatorModel);
-		setCommonProperties(mediator, mediatorModel);
+        org.apache.synapse.mediators.filters.router.ConditionalRouterMediator mediator = (org.apache.synapse.mediators.filters.router.ConditionalRouterMediator) object;
+        ConditionalRouterMediator mediatorModel = (ConditionalRouterMediator) DeserializerUtils.createNode(part,
+                EsbElementTypes.ConditionalRouterMediator_3635);
+        setElementToEdit(mediatorModel);
+        setCommonProperties(mediator, mediatorModel);
 
-		executeSetValueCommand(CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE,
-				mediator.isContinueAfter());
+        executeSetValueCommand(CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE, mediator.isContinueAfter());
 
-		for (ConditionalRoute route : mediator.getConditionalRoutes()) {
-			ConditionalRouteBranch routeBranch = EsbFactory.eINSTANCE
-					.createConditionalRouteBranch();
-			routeBranch.setBreakAfterRoute(route.isBreakRoute());
-			EvaluatorExpressionProperty evaluatorExpression = EsbFactory.eINSTANCE
-					.createEvaluatorExpressionProperty();
+        for (ConditionalRoute route : mediator.getConditionalRoutes()) {
+            ConditionalRouteBranch routeBranch = EsbFactory.eINSTANCE.createConditionalRouteBranch();
+            routeBranch.setBreakAfterRoute(route.isBreakRoute());
+            EvaluatorExpressionProperty evaluatorExpression = EsbFactory.eINSTANCE.createEvaluatorExpressionProperty();
 
-			EvaluatorSerializer evaluatorSerializer = EvaluatorSerializerFinder.getInstance()
-					.getSerializer(route.getEvaluator().getName());
-			if (evaluatorSerializer != null) {
-				try {
-					OMFactory factory = OMAbstractFactory.getOMFactory();
-					OMElement root = factory.createOMElement("root", null);
-					evaluatorSerializer.serialize(root, route.getEvaluator());
-					evaluatorExpression.setEvaluatorValue(root.toString().replaceAll("^<root>", "")
-							.replaceAll("</root>$", ""));
-					 routeBranch.setEvaluatorExpression(evaluatorExpression);
-				} catch (Exception e) {
-					// ignored
-				}
-			}
-			if (route.getTarget() != null) {
-				RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-				regkey.setKeyValue(route.getTarget().getSequenceRef());
-				routeBranch.setTargetSequence(regkey);
-			}
+            EvaluatorSerializer evaluatorSerializer = EvaluatorSerializerFinder.getInstance()
+                    .getSerializer(route.getEvaluator().getName());
+            if (evaluatorSerializer != null) {
+                try {
+                    OMFactory factory = OMAbstractFactory.getOMFactory();
+                    OMElement root = factory.createOMElement("root", null);
+                    evaluatorSerializer.serialize(root, route.getEvaluator());
+                    evaluatorExpression
+                            .setEvaluatorValue(root.toString().replaceAll("^<root>", "").replaceAll("</root>$", ""));
+                    routeBranch.setEvaluatorExpression(evaluatorExpression);
+                } catch (Exception e) {
+                    // ignored
+                }
+            }
+            if (route.getTarget() != null) {
+                RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                regkey.setKeyValue(route.getTarget().getSequenceRef());
+                routeBranch.setTargetSequence(regkey);
+            }
 
-			executeAddValueCommand(mediatorModel.getConditionalRouteBranches(), routeBranch, false);
-		}
+            executeAddValueCommand(mediatorModel.getConditionalRouteBranches(), routeBranch, false);
+        }
 
-		return mediatorModel;
-	}
-
+        return mediatorModel;
+    }
 
 }

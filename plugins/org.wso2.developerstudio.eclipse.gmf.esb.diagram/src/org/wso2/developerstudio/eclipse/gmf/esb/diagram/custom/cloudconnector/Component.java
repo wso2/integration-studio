@@ -24,42 +24,43 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMElement;
 import org.wso2.developerstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
 
-public class Component extends AbstractXMLDoc{
-	
-	private List<SubComponents> subComponents=new ArrayList<SubComponents>();
+public class Component extends AbstractXMLDoc {
 
-	public List<SubComponents> getSubComponents() {
-		return subComponents;
-	}
+    private List<SubComponents> subComponents = new ArrayList<SubComponents>();
 
-	public void setSubComponents(List<SubComponents> subComponents) {
-		this.subComponents = subComponents;
-	}
+    public List<SubComponents> getSubComponents() {
+        return subComponents;
+    }
 
-	@Override
-	protected void deserialize(OMElement documentElement) throws Exception {
-		List<OMElement> artifactsElements = getChildElements(documentElement, "subComponents");
-		for (OMElement omElement : artifactsElements) {
-			List<OMElement> artifactElements = getChildElements(omElement, "component");			
-			for (OMElement omElement2 : artifactElements) {		
-				OMElement fileElement= (OMElement) omElement2.getChildrenWithLocalName("file").next();
-				SubComponents artifactDependency=new SubComponents(omElement2.getAttributeValue(new QName("name")),fileElement.getText().split(".xml")[0]); 
-				subComponents.add(artifactDependency);
-			}
+    public void setSubComponents(List<SubComponents> subComponents) {
+        this.subComponents = subComponents;
+    }
+
+    @Override
+    protected void deserialize(OMElement documentElement) throws Exception {
+        List<OMElement> artifactsElements = getChildElements(documentElement, "subComponents");
+        for (OMElement omElement : artifactsElements) {
+            List<OMElement> artifactElements = getChildElements(omElement, "component");
+            for (OMElement omElement2 : artifactElements) {
+                OMElement fileElement = (OMElement) omElement2.getChildrenWithLocalName("file").next();
+                SubComponents artifactDependency = new SubComponents(omElement2.getAttributeValue(new QName("name")),
+                        fileElement.getText().split(".xml")[0]);
+                subComponents.add(artifactDependency);
+            }
         }
-		
-	}
 
-	@Override
-	protected String serialize() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	@Override
-	protected String getDefaultName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    protected String serialize() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    protected String getDefaultName() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

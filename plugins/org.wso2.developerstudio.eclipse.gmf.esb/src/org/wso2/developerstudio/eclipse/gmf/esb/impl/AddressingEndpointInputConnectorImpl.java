@@ -27,24 +27,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class AddressingEndpointInputConnectorImpl extends InputConnectorImpl implements AddressingEndpointInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AddressingEndpointInputConnectorImpl() {
-		super();
-	}
+public class AddressingEndpointInputConnectorImpl extends InputConnectorImpl
+        implements AddressingEndpointInputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected AddressingEndpointInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.ADDRESSING_ENDPOINT_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.ADDRESSING_ENDPOINT_INPUT_CONNECTOR;
+    }
 
-} //AddressingEndpointInputConnectorImpl
+} // AddressingEndpointInputConnectorImpl

@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class APIResourceEndpointInputConnectorImpl extends InputConnectorImpl implements APIResourceEndpointInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected APIResourceEndpointInputConnectorImpl() {
-		super();
-	}
+public class APIResourceEndpointInputConnectorImpl extends InputConnectorImpl
+        implements APIResourceEndpointInputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected APIResourceEndpointInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.API_RESOURCE_ENDPOINT_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.API_RESOURCE_ENDPOINT_INPUT_CONNECTOR;
+    }
 
-} //APIResourceEndpointInputConnectorImpl
+} // APIResourceEndpointInputConnectorImpl

@@ -58,315 +58,317 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
  */
 public class EventMediatorEditPart extends FixedSizedAbstractMediator {
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 3504;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 3504;
 
-	/**
-	 * @generated
-	 */
-	protected IFigure contentPane;
+    /**
+     * @generated
+     */
+    protected IFigure contentPane;
 
-	/**
-	 * @generated
-	 */
-	public EventMediatorEditPart(View view) {
-		super(view);
-	}
+    /**
+     * @generated
+     */
+    public EventMediatorEditPart(View view) {
+        super(view);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new EventMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new EventMediatorCanonicalEditPolicy());
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-	}
+    /**
+     * @generated NOT
+     */
+    protected void createDefaultEditPolicies() {
+        installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new EventMediatorItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new EventMediatorCanonicalEditPolicy());
+        installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+        // For handle Double click Event.
+        installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+        // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
+        // editpolicies
+        // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected LayoutEditPolicy createLayoutEditPolicy() {
-		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
+    /**
+     * @generated
+     */
+    protected LayoutEditPolicy createLayoutEditPolicy() {
+        org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
-			protected EditPolicy createChildEditPolicy(EditPart child) {
-				View childView = (View) child.getModel();
-				switch (EsbVisualIDRegistry.getVisualID(childView)) {
-				case EventMediatorInputConnectorEditPart.VISUAL_ID:
-				case EventMediatorOutputConnectorEditPart.VISUAL_ID:
-					return new BorderItemSelectionEditPolicy();
-				}
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
-				if (result == null) {
-					result = new NonResizableEditPolicy();
-				}
-				return result;
-			}
+            protected EditPolicy createChildEditPolicy(EditPart child) {
+                View childView = (View) child.getModel();
+                switch (EsbVisualIDRegistry.getVisualID(childView)) {
+                case EventMediatorInputConnectorEditPart.VISUAL_ID:
+                case EventMediatorOutputConnectorEditPart.VISUAL_ID:
+                    return new BorderItemSelectionEditPolicy();
+                }
+                EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+                if (result == null) {
+                    result = new NonResizableEditPolicy();
+                }
+                return result;
+            }
 
-			protected Command getMoveChildrenCommand(Request request) {
-				return null;
-			}
+            protected Command getMoveChildrenCommand(Request request) {
+                return null;
+            }
 
-			protected Command getCreateCommand(CreateRequest request) {
-				return null;
-			}
-		};
-		return lep;
-	}
+            protected Command getCreateCommand(CreateRequest request) {
+                return null;
+            }
+        };
+        return lep;
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected IFigure createNodeShape() {
-		return primaryShape = new EventMediatorFigure(new Color(null, 121, 86, 73)) {
-			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
-				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
-					connectToMostSuitableElement();
-					reAllocate(rect);
-				}
-			};
-		};
-	}
+    /**
+     * @generated NOT
+     */
+    protected IFigure createNodeShape() {
+        return primaryShape = new EventMediatorFigure(new Color(null, 121, 86, 73)) {
+            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+                super.setBounds(rect);
+                if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+                    connectToMostSuitableElement();
+                    reAllocate(rect);
+                }
+            };
+        };
+    }
 
-	/**
-	 * @generated
-	 */
-	public EventMediatorFigure getPrimaryShape() {
-		return (EventMediatorFigure) primaryShape;
-	}
+    /**
+     * @generated
+     */
+    public EventMediatorFigure getPrimaryShape() {
+        return (EventMediatorFigure) primaryShape;
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof EventMediatorTopicTypeEditPart) {
-			((EventMediatorTopicTypeEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureEventMediatorPropertyValue());
-			return true;
-		}
-		if (childEditPart instanceof EventMediatorDescriptionEditPart) {
-			((EventMediatorDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getEventMediatorDescriptionLabel());
-			return true;
-		}
-		if (childEditPart instanceof EventMediatorInputConnectorEditPart) {
-			IFigure borderItemFigure = ((EventMediatorInputConnectorEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-					PositionConstants.WEST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-			return true;
-		}
-		if (childEditPart instanceof EventMediatorOutputConnectorEditPart) {
-			IFigure borderItemFigure = ((EventMediatorOutputConnectorEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-					PositionConstants.EAST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-			return true;
-		}
-		return false;
-	}
+    /**
+     * @generated NOT
+     */
+    protected boolean addFixedChild(EditPart childEditPart) {
+        if (childEditPart instanceof EventMediatorTopicTypeEditPart) {
+            ((EventMediatorTopicTypeEditPart) childEditPart)
+                    .setLabel(getPrimaryShape().getFigureEventMediatorPropertyValue());
+            return true;
+        }
+        if (childEditPart instanceof EventMediatorDescriptionEditPart) {
+            ((EventMediatorDescriptionEditPart) childEditPart)
+                    .setLabel(getPrimaryShape().getEventMediatorDescriptionLabel());
+            return true;
+        }
+        if (childEditPart instanceof EventMediatorInputConnectorEditPart) {
+            IFigure borderItemFigure = ((EventMediatorInputConnectorEditPart) childEditPart).getFigure();
+            BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+                    PositionConstants.WEST, 0.5);
+            getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+            return true;
+        }
+        if (childEditPart instanceof EventMediatorOutputConnectorEditPart) {
+            IFigure borderItemFigure = ((EventMediatorOutputConnectorEditPart) childEditPart).getFigure();
+            BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+                    PositionConstants.EAST, 0.5);
+            getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected boolean removeFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof EventMediatorTopicTypeEditPart) {
-			return true;
-		}
-		if (childEditPart instanceof EventMediatorDescriptionEditPart) {
-			return true;
-		}
-		if (childEditPart instanceof EventMediatorInputConnectorEditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((EventMediatorInputConnectorEditPart) childEditPart).getFigure());
-			return true;
-		}
-		if (childEditPart instanceof EventMediatorOutputConnectorEditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((EventMediatorOutputConnectorEditPart) childEditPart).getFigure());
-			return true;
-		}
-		return false;
-	}
+    /**
+     * @generated
+     */
+    protected boolean removeFixedChild(EditPart childEditPart) {
+        if (childEditPart instanceof EventMediatorTopicTypeEditPart) {
+            return true;
+        }
+        if (childEditPart instanceof EventMediatorDescriptionEditPart) {
+            return true;
+        }
+        if (childEditPart instanceof EventMediatorInputConnectorEditPart) {
+            getBorderedFigure().getBorderItemContainer()
+                    .remove(((EventMediatorInputConnectorEditPart) childEditPart).getFigure());
+            return true;
+        }
+        if (childEditPart instanceof EventMediatorOutputConnectorEditPart) {
+            getBorderedFigure().getBorderItemContainer()
+                    .remove(((EventMediatorOutputConnectorEditPart) childEditPart).getFigure());
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void addChildVisual(EditPart childEditPart, int index) {
-		if (addFixedChild(childEditPart)) {
-			return;
-		}
-		super.addChildVisual(childEditPart, -1);
-	}
+    /**
+     * @generated
+     */
+    protected void addChildVisual(EditPart childEditPart, int index) {
+        if (addFixedChild(childEditPart)) {
+            return;
+        }
+        super.addChildVisual(childEditPart, -1);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void removeChildVisual(EditPart childEditPart) {
-		if (removeFixedChild(childEditPart)) {
-			return;
-		}
-		super.removeChildVisual(childEditPart);
-	}
+    /**
+     * @generated
+     */
+    protected void removeChildVisual(EditPart childEditPart) {
+        if (removeFixedChild(childEditPart)) {
+            return;
+        }
+        super.removeChildVisual(childEditPart);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
-		if (editPart instanceof IBorderItemEditPart) {
-			return getBorderedFigure().getBorderItemContainer();
-		}
-		return getContentPane();
-	}
+    /**
+     * @generated
+     */
+    protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
+        if (editPart instanceof IBorderItemEditPart) {
+            return getBorderedFigure().getBorderItemContainer();
+        }
+        return getContentPane();
+    }
 
-	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated NOT
-	 */
-	protected NodeFigure createMainFigure() {
-		NodeFigure figure = createNodePlate();
-		figure.setLayoutManager(new ToolbarLayout(true));
-		IFigure shape = createNodeShape();
-		figure.add(shape);
-		contentPane = setupContentPane(shape);
-		return figure;
-	}
+    /**
+     * Creates figure for this edit part.
+     * 
+     * Body of this method does not depend on settings in generation model
+     * so you may safely remove <i>generated</i> tag and modify it.
+     * 
+     * @generated NOT
+     */
+    protected NodeFigure createMainFigure() {
+        NodeFigure figure = createNodePlate();
+        figure.setLayoutManager(new ToolbarLayout(true));
+        IFigure shape = createNodeShape();
+        figure.add(shape);
+        contentPane = setupContentPane(shape);
+        return figure;
+    }
 
-	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
-	 * @generated
-	 */
-	protected IFigure setupContentPane(IFigure nodeShape) {
-		if (nodeShape.getLayoutManager() == null) {
-			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
-			layout.setSpacing(5);
-			nodeShape.setLayoutManager(layout);
-		}
-		return nodeShape; // use nodeShape itself as contentPane
-	}
+    /**
+     * Default implementation treats passed figure as content pane.
+     * Respects layout one may have set for generated figure.
+     * 
+     * @param nodeShape instance of generated figure class
+     * @generated
+     */
+    protected IFigure setupContentPane(IFigure nodeShape) {
+        if (nodeShape.getLayoutManager() == null) {
+            ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
+            layout.setSpacing(5);
+            nodeShape.setLayoutManager(layout);
+        }
+        return nodeShape; // use nodeShape itself as contentPane
+    }
 
-	/**
-	 * @generated
-	 */
-	public IFigure getContentPane() {
-		if (contentPane != null) {
-			return contentPane;
-		}
-		return super.getContentPane();
-	}
+    /**
+     * @generated
+     */
+    public IFigure getContentPane() {
+        if (contentPane != null) {
+            return contentPane;
+        }
+        return super.getContentPane();
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setForegroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setForegroundColor(color);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setForegroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setForegroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setBackgroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setBackgroundColor(color);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setBackgroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setBackgroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineWidth(int width) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineWidth(width);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setLineWidth(int width) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineWidth(width);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineType(int style) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineStyle(style);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setLineType(int style) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineStyle(style);
+        }
+    }
 
-	/*	*//**
-			 * @generated
-			 */
-	/*
-	public EditPart getPrimaryChildEditPart() {
-	return getChildBySemanticHint(EsbVisualIDRegistry
-			.getType(EventMediatorTopicTypeEditPart.VISUAL_ID));
-	}*/
+    /*	*//**
+           * @generated
+           */
+    /*
+     * public EditPart getPrimaryChildEditPart() {
+     * return getChildBySemanticHint(EsbVisualIDRegistry
+     * .getType(EventMediatorTopicTypeEditPart.VISUAL_ID));
+     * }
+     */
 
-	/**
-	 * @generated
-	 */
-	public class EventMediatorFigure extends EsbGraphicalShapeWithLabel {
+    /**
+     * @generated
+     */
+    public class EventMediatorFigure extends EsbGraphicalShapeWithLabel {
 
-		/**
-		 * @generated
-		 */
-		private WrappingLabel fFigureEventMediatorPropertyValue;
+        /**
+         * @generated
+         */
+        private WrappingLabel fFigureEventMediatorPropertyValue;
 
-		private WrappingLabel eventMediatorDescriptionLabel;
+        private WrappingLabel eventMediatorDescriptionLabel;
 
-		/**
-		 * @generated
-		 */
-		public EventMediatorFigure(Color borderColor) {
-			super(borderColor, false);
-			this.setBackgroundColor(THIS_BACK);
-			createContents();
-		}
+        /**
+         * @generated
+         */
+        public EventMediatorFigure(Color borderColor) {
+            super(borderColor, false);
+            this.setBackgroundColor(THIS_BACK);
+            createContents();
+        }
 
-		/**
-		 * @generated NOT
-		 */
-		private void createContents() {
+        /**
+         * @generated NOT
+         */
+        private void createContents() {
 
-			fFigureEventMediatorPropertyValue = new WrappingLabel();
-			fFigureEventMediatorPropertyValue
-					.setText(DEFAULT_PROPERTY_VALUE_TEXT);
-			fFigureEventMediatorPropertyValue.setAlignment(SWT.CENTER);
-			eventMediatorDescriptionLabel = getPropertyNameLabel();
-		}
+            fFigureEventMediatorPropertyValue = new WrappingLabel();
+            fFigureEventMediatorPropertyValue.setText(DEFAULT_PROPERTY_VALUE_TEXT);
+            fFigureEventMediatorPropertyValue.setAlignment(SWT.CENTER);
+            eventMediatorDescriptionLabel = getPropertyNameLabel();
+        }
 
-		/**
-		 * @generated
-		 */
-		public WrappingLabel getFigureEventMediatorPropertyValue() {
-			return fFigureEventMediatorPropertyValue;
-		}
+        /**
+         * @generated
+         */
+        public WrappingLabel getFigureEventMediatorPropertyValue() {
+            return fFigureEventMediatorPropertyValue;
+        }
 
-		public WrappingLabel getEventMediatorDescriptionLabel() {
-			return eventMediatorDescriptionLabel;
-		}
+        public WrappingLabel getEventMediatorDescriptionLabel() {
+            return eventMediatorDescriptionLabel;
+        }
 
-		public String getIconPath() {
-			return EVENT_MEDIATOR_ICON_PATH;
-		}
+        public String getIconPath() {
+            return EVENT_MEDIATOR_ICON_PATH;
+        }
 
-		public String getNodeName() {
-			return Messages.EventMediatorEditPart_NodeName;
-		}
+        public String getNodeName() {
+            return Messages.EventMediatorEditPart_NodeName;
+        }
 
         public IFigure getToolTip() {
             if (StringUtils.isEmpty(toolTipMessage)) {
@@ -375,11 +377,11 @@ public class EventMediatorEditPart extends FixedSizedAbstractMediator {
             return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
         }
 
-	}
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	static final Color THIS_BACK = new Color(null, 230, 230, 230);
+    /**
+     * @generated NOT
+     */
+    static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

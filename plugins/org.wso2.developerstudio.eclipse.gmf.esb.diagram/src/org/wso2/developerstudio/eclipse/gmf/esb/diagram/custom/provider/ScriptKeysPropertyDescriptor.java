@@ -16,24 +16,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class ScriptKeysPropertyDescriptor extends PropertyDescriptor {
 
-	public ScriptKeysPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public ScriptKeysPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				ScriptMediator ruleMediator = (ScriptMediator) object;
-				ConfigureScriptKeysDialog configurationDialog = new ConfigureScriptKeysDialog(
-						shell, ruleMediator, TransactionUtil.getEditingDomain(ruleMediator));
-				configurationDialog.setBlockOnOpen(true);
-				configurationDialog.open();
-				return null;
-			}
-		};
-	}
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ScriptMediator ruleMediator = (ScriptMediator) object;
+                ConfigureScriptKeysDialog configurationDialog = new ConfigureScriptKeysDialog(shell, ruleMediator,
+                        TransactionUtil.getEditingDomain(ruleMediator));
+                configurationDialog.setBlockOnOpen(true);
+                configurationDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

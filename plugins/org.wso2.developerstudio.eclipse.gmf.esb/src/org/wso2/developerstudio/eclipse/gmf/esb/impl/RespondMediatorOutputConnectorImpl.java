@@ -28,23 +28,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RespondMediatorOutputConnector;
  * @generated
  */
 public class RespondMediatorOutputConnectorImpl extends OutputConnectorImpl implements RespondMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RespondMediatorOutputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected RespondMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.RESPOND_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.RESPOND_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //RespondMediatorOutputConnectorImpl
+} // RespondMediatorOutputConnectorImpl

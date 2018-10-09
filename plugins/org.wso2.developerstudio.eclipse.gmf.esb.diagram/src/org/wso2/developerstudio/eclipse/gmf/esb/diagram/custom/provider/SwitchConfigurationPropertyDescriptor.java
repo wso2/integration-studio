@@ -10,28 +10,27 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureSwitchMediatorDialog;
- 
+
 public class SwitchConfigurationPropertyDescriptor extends PropertyDescriptor {
- 
-	public SwitchConfigurationPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
- 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				SwitchMediator switchMediator = (SwitchMediator) object;
-				 //.getEditingDomain()
-				ConfigureSwitchMediatorDialog switchMediatorConfigurationDialog = new ConfigureSwitchMediatorDialog(shell, switchMediator);
-				switchMediatorConfigurationDialog.setBlockOnOpen(true);
-				switchMediatorConfigurationDialog.open();
-				return null;
-			}
-		};
-	}
- 
+
+    public SwitchConfigurationPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                SwitchMediator switchMediator = (SwitchMediator) object;
+                // .getEditingDomain()
+                ConfigureSwitchMediatorDialog switchMediatorConfigurationDialog = new ConfigureSwitchMediatorDialog(
+                        shell, switchMediator);
+                switchMediatorConfigurationDialog.setBlockOnOpen(true);
+                switchMediatorConfigurationDialog.open();
+                return null;
+            }
+        };
+    }
+
 }

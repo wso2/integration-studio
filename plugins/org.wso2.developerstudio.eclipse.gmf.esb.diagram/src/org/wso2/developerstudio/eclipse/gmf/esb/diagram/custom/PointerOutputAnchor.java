@@ -4,16 +4,16 @@ import org.eclipse.draw2d.AbstractConnectionAnchor;
 import org.eclipse.draw2d.geometry.Point;
 
 public class PointerOutputAnchor extends AbstractConnectionAnchor {
-	public PointerOutputAnchor(AbstractPointerShape pointerShape) {
-		super(pointerShape);
-	}
+    public PointerOutputAnchor(AbstractPointerShape pointerShape) {
+        super(pointerShape);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Point getLocation(Point reference) {
-		Point result = ((AbstractPointerShape) getOwner()).getOutputAnchorPoint();
-		getOwner().translateToAbsolute(result);
-		return result;
-	}		
+    /**
+     * {@inheritDoc}
+     */
+    public Point getLocation(Point reference) {
+        Point result = ((AbstractPointerShape) getOwner()).getOutputAnchorPoint();
+        getOwner().translateToAbsolute(result);
+        return result;
+    }
 }

@@ -32,131 +32,141 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactsConfiguration;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleFactsConfigurationImpl#getFacts <em>Facts</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RuleFactsConfigurationImpl#getFacts <em>Facts</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class RuleFactsConfigurationImpl extends EObjectImpl implements RuleFactsConfiguration {
-	/**
-	 * The cached value of the '{@link #getFacts() <em>Facts</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFacts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<RuleFact> facts;
+    /**
+     * The cached value of the '{@link #getFacts() <em>Facts</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getFacts()
+     * @generated
+     * @ordered
+     */
+    protected EList<RuleFact> facts;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RuleFactsConfigurationImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected RuleFactsConfigurationImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.RULE_FACTS_CONFIGURATION;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<RuleFact> getFacts() {
-		if (facts == null) {
-			facts = new EObjectContainmentEList<RuleFact>(RuleFact.class, this, EsbPackage.RULE_FACTS_CONFIGURATION__FACTS);
-		}
-		return facts;
-	}
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.RULE_FACTS_CONFIGURATION;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
-				return ((InternalEList<?>)getFacts()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<RuleFact> getFacts() {
+        if (facts == null) {
+            facts = new EObjectContainmentEList<RuleFact>(RuleFact.class, this,
+                    EsbPackage.RULE_FACTS_CONFIGURATION__FACTS);
+        }
+        return facts;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
-				return getFacts();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
-				getFacts().clear();
-				getFacts().addAll((Collection<? extends RuleFact>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+        case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
+            return ((InternalEList<?>) getFacts()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
-				getFacts().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
-				return facts != null && !facts.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+        switch (featureID) {
+        case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
+            return getFacts();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
-} //RuleFactsConfigurationImpl
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+
+    public void eSet(int featureID, Object newValue) {
+        switch (featureID) {
+        case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
+            getFacts().clear();
+            getFacts().addAll((Collection<? extends RuleFact>) newValue);
+            return;
+        }
+        super.eSet(featureID, newValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+
+    @Override
+    public void eUnset(int featureID) {
+        switch (featureID) {
+        case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
+            getFacts().clear();
+            return;
+        }
+        super.eUnset(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+
+    @Override
+    public boolean eIsSet(int featureID) {
+        switch (featureID) {
+        case EsbPackage.RULE_FACTS_CONFIGURATION__FACTS:
+            return facts != null && !facts.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
+
+} // RuleFactsConfigurationImpl

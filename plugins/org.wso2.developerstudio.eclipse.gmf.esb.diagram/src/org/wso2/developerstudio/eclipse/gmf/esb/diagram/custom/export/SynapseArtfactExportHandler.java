@@ -25,70 +25,65 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtil
 
 public class SynapseArtfactExportHandler extends ProjectArtifactHandler {
 
-	public List<IResource> exportArtifact(IProject project) throws Exception {
-		List<IResource> exportResources = new ArrayList<IResource>();
-		NullProgressMonitor nullProgressMonitor = new NullProgressMonitor();
+    public List<IResource> exportArtifact(IProject project) throws Exception {
+        List<IResource> exportResources = new ArrayList<IResource>();
+        NullProgressMonitor nullProgressMonitor = new NullProgressMonitor();
 
-		clearTarget(project);
-		List<IResource> esbMembers = new ArrayList<IResource>();
-		/*TODO: list artifacts by reading artifact.xml instead of file system scan */
-		IResource[] synapseMembers = project.getFolder(SYNAPSE_RESOURCE_DIR).members();
-		IResource[] sequenceMembers = project.getFolder(SEQUENCE_RESOURCE_DIR).members();
-		IResource[] members = new IResource[synapseMembers.length+sequenceMembers.length];
-		if(synapseMembers.length>0)
-			System.arraycopy(synapseMembers, 0, members, 0, synapseMembers.length);
-		if(sequenceMembers.length>0)
-			System.arraycopy(sequenceMembers, 0, members, synapseMembers.length, sequenceMembers.length);
-		
-		for (int i = 0; i < members.length; ++i) {
-			if (members[i].toString().matches(".*esb_diagram")) {
+        clearTarget(project);
+        List<IResource> esbMembers = new ArrayList<IResource>();
+        /* TODO: list artifacts by reading artifact.xml instead of file system scan */
+        IResource[] synapseMembers = project.getFolder(SYNAPSE_RESOURCE_DIR).members();
+        IResource[] sequenceMembers = project.getFolder(SEQUENCE_RESOURCE_DIR).members();
+        IResource[] members = new IResource[synapseMembers.length + sequenceMembers.length];
+        if (synapseMembers.length > 0)
+            System.arraycopy(synapseMembers, 0, members, 0, synapseMembers.length);
+        if (sequenceMembers.length > 0)
+            System.arraycopy(sequenceMembers, 0, members, synapseMembers.length, sequenceMembers.length);
 
-				esbMembers.add(members[i]);
-				ResourceSet resourceSet = new ResourceSetImpl();
-				Resource resource = null;
-				File f = new File(((IResource) members[i]).getLocationURI()
-						.getPath());
-				URI uri = URI.createFileURI(f.getAbsolutePath());
-				resource = resourceSet.getResource(uri, true);
+        for (int i = 0; i < members.length; ++i) {
+            if (members[i].toString().matches(".*esb_diagram")) {
 
-				IFolder binaries = project.getFolder("target");
-				if (!binaries.exists()) {
-					binaries.create(true, true, nullProgressMonitor);
-					binaries.setHidden(true);
-				}
+                esbMembers.add(members[i]);
+                ResourceSet resourceSet = new ResourceSetImpl();
+                Resource resource = null;
+                File f = new File(((IResource) members[i]).getLocationURI().getPath());
+                URI uri = URI.createFileURI(f.getAbsolutePath());
+                resource = resourceSet.getResource(uri, true);
 
-				IFile dummyFile = project.getFile("target" + File.separator
-						+ "synapse_"
-						+ members[i].getName().split(".esb_diagram")[0]
-						+ ".xml");
+                IFolder binaries = project.getFolder("target");
+                if (!binaries.exists()) {
+                    binaries.create(true, true, nullProgressMonitor);
+                    binaries.setHidden(true);
+                }
 
-				EsbObjectSourceEditor sourceEditor = new EsbObjectSourceEditor(
-						dummyFile);
+                IFile dummyFile = project.getFile("target" + File.separator + "synapse_"
+                        + members[i].getName().split(".esb_diagram")[0] + ".xml");
 
-				EsbDiagram diagram = (EsbDiagram) ((org.eclipse.gmf.runtime.notation.impl.DiagramImpl) resource
-						.getContents().get(0)).getElement();
-				EsbServer server = diagram.getServer();
+                EsbObjectSourceEditor sourceEditor = new EsbObjectSourceEditor(dummyFile);
 
-				String newSource = null;
-				try {
-					newSource = EsbModelTransformer.instance
-							.designToSource(server);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+                EsbDiagram diagram = (EsbDiagram) ((org.eclipse.gmf.runtime.notation.impl.DiagramImpl) resource
+                        .getContents().get(0)).getElement();
+                EsbServer server = diagram.getServer();
 
-				InputStream is = new ByteArrayInputStream(newSource.getBytes());
-				try {
-					dummyFile.delete(true, null);
-					dummyFile.create(is, true, null);
+                String newSource = null;
+                try {
+                    newSource = EsbModelTransformer.instance.designToSource(server);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-				} catch (Exception e) {
-					System.err.println("Error: " + e.getMessage());
-				}
-				exportResources.add(dummyFile);
-			}
-		}
-		return exportResources;
-	}
+                InputStream is = new ByteArrayInputStream(newSource.getBytes());
+                try {
+                    dummyFile.delete(true, null);
+                    dummyFile.create(is, true, null);
+
+                } catch (Exception e) {
+                    System.err.println("Error: " + e.getMessage());
+                }
+                exportResources.add(dummyFile);
+            }
+        }
+        return exportResources;
+    }
 
 }

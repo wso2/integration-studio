@@ -29,28 +29,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
-public class ResolvingEndpointDeserializer extends
-AbstractEsbNodeDeserializer<ResolvingEndpoint, NamedEndpoint>{
-	public NamedEndpoint createNode(IGraphicalEditPart part, ResolvingEndpoint resolvingEndpoint) {
+public class ResolvingEndpointDeserializer extends AbstractEsbNodeDeserializer<ResolvingEndpoint, NamedEndpoint> {
+    public NamedEndpoint createNode(IGraphicalEditPart part, ResolvingEndpoint resolvingEndpoint) {
 
-		NamedEndpoint endPoint = (NamedEndpoint) DeserializerUtils.createNode(part,
-				EsbElementTypes.NamedEndpoint_3660);
-		setElementToEdit(endPoint);		
-		if(resolvingEndpoint.getKeyExpression() != null){			
-			SynapseXPath xpath  = resolvingEndpoint.getKeyExpression();			
-			NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();			
-			nsp.setPropertyValue(xpath.toString());			
-			if (xpath.getNamespaces() != null) {
-				@SuppressWarnings("unchecked")
-				Map<String, String> map = xpath.getNamespaces();
-				nsp.setNamespaces(map);
-			}	
-			executeSetValueCommand(NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY,nsp);		
-		}
-		
-		executeSetValueCommand(NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,KeyType.DYNAMIC);
+        NamedEndpoint endPoint = (NamedEndpoint) DeserializerUtils.createNode(part, EsbElementTypes.NamedEndpoint_3660);
+        setElementToEdit(endPoint);
+        if (resolvingEndpoint.getKeyExpression() != null) {
+            SynapseXPath xpath = resolvingEndpoint.getKeyExpression();
+            NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+            nsp.setPropertyValue(xpath.toString());
+            if (xpath.getNamespaces() != null) {
+                @SuppressWarnings("unchecked")
+                Map<String, String> map = xpath.getNamespaces();
+                nsp.setNamespaces(map);
+            }
+            executeSetValueCommand(NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY, nsp);
+        }
 
-		return endPoint;
-	}
+        executeSetValueCommand(NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE, KeyType.DYNAMIC);
+
+        return endPoint;
+    }
 
 }

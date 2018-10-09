@@ -55,7 +55,8 @@ public class InboundEndpointDebugPointBuilder extends AbstractESBDebugPointBuild
             String commandArgument) throws ESBDebuggerException, CoreException {
 
         int lineNumber = -1;
-        ESBInboundEndpointDebugPointMessage inboundDebugPoint = (ESBInboundEndpointDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
+        ESBInboundEndpointDebugPointMessage inboundDebugPoint = (ESBInboundEndpointDebugPointMessage) getESBDebugPointMessage(
+                esbServer, part, commandArgument);
         return new ESBDebugPoint(resource, lineNumber, inboundDebugPoint);
     }
 
@@ -66,8 +67,8 @@ public class InboundEndpointDebugPointBuilder extends AbstractESBDebugPointBuild
         // on both "onErrorSequence" and "sequence"
     }
 
-	@Override
-	public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
+    @Override
+    public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
             String commandArgument) throws CoreException, ESBDebuggerException {
         InboundEndpointImpl inboundEndpoint = (InboundEndpointImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
         List<Integer> position = new ArrayList<>();
@@ -80,15 +81,15 @@ public class InboundEndpointDebugPointBuilder extends AbstractESBDebugPointBuild
             position.add(0);
             sequenceType = INBOUND_FAULT_SEQ_LABEL;
         } else {
-            throw new IllegalArgumentException("Selected Metdiator Edit Part is in a unknown position : "
-                    + container.toString());
+            throw new IllegalArgumentException(
+                    "Selected Metdiator Edit Part is in a unknown position : " + container.toString());
         }
 
         ESBInboundEndpointBean inboundBean = new ESBInboundEndpointBean(inboundEndpoint.getName(), sequenceType,
                 new ESBMediatorPosition(position));
         ESBInboundEndpointDebugPointMessage inboundDebugPoint = new ESBInboundEndpointDebugPointMessage(null,
                 commandArgument, new ESBInboundEndpointSequenceBean(inboundBean));
-		return inboundDebugPoint;
-	}
+        return inboundDebugPoint;
+    }
 
 }

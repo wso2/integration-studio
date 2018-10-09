@@ -26,40 +26,37 @@ import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 
-public class PropertyMediatorOMPropertyDialog extends
-		AbstractMediatorMultiLinePropertyDialog {
+public class PropertyMediatorOMPropertyDialog extends AbstractMediatorMultiLinePropertyDialog {
 
-	public PropertyMediatorOMPropertyDialog(String title, Shell parentShell,
-			Mediator mediator, EStructuralFeature feature, String initialText) {
-		super(title, parentShell, mediator, feature, initialText);
-	}
-	
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
+    public PropertyMediatorOMPropertyDialog(String title, Shell parentShell, Mediator mediator,
+            EStructuralFeature feature, String initialText) {
+        super(title, parentShell, mediator, feature, initialText);
+    }
 
-		newShell.setText("Property Mediator OM Value");
-	}
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
 
-	@Override
-	protected boolean isValid(String stringContent) {
-		
-			OMElement element = null;
-			try {
-				element = AXIOMUtil.stringToOM(stringContent);
-				element.build();
-			} catch (Exception e) {
-				String errorMsgHeader = "Malformed xml";
-				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-						e.getMessage());
-				ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error",
-						errorMsgHeader, editorStatus);
-				element = null;
-			}
-			if (element != null) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	
+        newShell.setText("Property Mediator OM Value");
+    }
+
+    @Override
+    protected boolean isValid(String stringContent) {
+
+        OMElement element = null;
+        try {
+            element = AXIOMUtil.stringToOM(stringContent);
+            element.build();
+        } catch (Exception e) {
+            String errorMsgHeader = "Malformed xml";
+            IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+            ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+            element = null;
+        }
+        if (element != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

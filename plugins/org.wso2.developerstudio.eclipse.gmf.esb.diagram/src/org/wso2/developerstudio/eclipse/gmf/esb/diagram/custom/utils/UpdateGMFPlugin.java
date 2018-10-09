@@ -19,11 +19,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils;
 import org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject.IUpdateGMFPlugin;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 
-public class UpdateGMFPlugin implements IUpdateGMFPlugin{
+public class UpdateGMFPlugin implements IUpdateGMFPlugin {
 
-	@Override
-	public void updateOpenedEditors() {
-		EditorUtils.updateToolpalette();		
-	}
+    @Override
+    public void updateOpenedEditors() {
+        EditorUtils.updateToolpalette();
+    }
 
 }

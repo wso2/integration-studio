@@ -19,24 +19,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTFeature;
  * @generated
  */
 public class XSLTFeatureImpl extends AbstractBooleanFeatureImpl implements XSLTFeature {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected XSLTFeatureImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected XSLTFeatureImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.XSLT_FEATURE;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //XSLTFeatureImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.XSLT_FEATURE;
+    }
+
+} // XSLTFeatureImpl

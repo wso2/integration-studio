@@ -57,146 +57,146 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegist
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
-public class SequenceTransformer extends AbstractEsbNodeTransformer{
+public class SequenceTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {	
-		// Check subject.
-		Assert.isTrue(
-				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequences,
-				"Invalid subject.");
-		org.wso2.developerstudio.eclipse.gmf.esb.Sequences visualSequence = (org.wso2.developerstudio.eclipse.gmf.esb.Sequences) subject;
-		if(visualSequence.isRecieveSequence()){
-			handleServiceChaining(visualSequence,(SequenceMediator) information.getParentSequence(),visualSequence.getAssociatedProxy());
-		}
-	}
-
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		
-	}
-
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		// Check subject.
-		Assert.isTrue(
-				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequences,
-				"Invalid subject.");
-		org.wso2.developerstudio.eclipse.gmf.esb.Sequences visualSequence = (org.wso2.developerstudio.eclipse.gmf.esb.Sequences) subject;
-		if(!"".equals(visualSequence.getOnError().getKeyValue())){
-			sequence.setErrorHandler(visualSequence.getOnError().getKeyValue());
-		}
-		
-		// Fixing TOOLS-2652
-		sequence.setTraceState(visualSequence.isTraceEnabled() ? 1 : 0);
-
-		AspectConfiguration aspectConfiguration = new AspectConfiguration(visualSequence.getName());
-		sequence.configure(aspectConfiguration);
-		if (visualSequence.isStatisticsEnabled()) {
-			aspectConfiguration.enableStatistics();
-		} else {
-			aspectConfiguration.disableStatistics();
-		}
-		
-		EsbLink outgoingLink= visualSequence.getOutputConnector().getOutgoingLink();
-		doTransformWithinSequence(information, outgoingLink, sequence);	
-	}
-	
-	private void handleServiceChaining(org.wso2.developerstudio.eclipse.gmf.esb.Sequences visualSequence,SequenceMediator sequence,List proxyNames) throws TransformerException{
-		IEditorPart editorPart = null;
-		IProject activeProject = null;
-		Sequence currentSequence = null;
-		
-		IEditorReference editorReferences[] = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences();
-		for (int i = 0; i < editorReferences.length; i++) {
-			IEditorPart editor = editorReferences[i].getEditor(false);
-
-			if (editor != null) {
-				editorPart = editor.getSite().getWorkbenchWindow()
-						.getActivePage().getActiveEditor();
-			}
-
-			if (editorPart != null) {
-				IFileEditorInput input = (IFileEditorInput) editorPart
-						.getEditorInput();
-				IFile file = input.getFile();
-				activeProject = file.getProject();
-			}
-		}	
-		
-		String name = (String) proxyNames.get(0);
-		IPath location = new Path("src/main/graphical-synapse-config/proxy-services" + "/" + "proxy_"
-				+ name + ".esb_diagram");
-		IFile file = activeProject.getFile(location);
-
-		ResourceSet resourceSet = new ResourceSetImpl();
-		Resource resource = null;
-
-		File f = new File(file.getLocationURI().getPath());
-		URI uri = URI.createFileURI(f.getAbsolutePath());
-
-		if (!f.exists()) {
-
-		} else {
-
-			resource = resourceSet.getResource(uri, true);
-
-			EsbDiagram s = (EsbDiagram) ((org.eclipse.gmf.runtime.notation.impl.DiagramImpl) resource
-					.getContents().get(0)).getElement();
-			EList<EsbElement> children = s.getServer().getChildren();
-			for (EsbElement esbElement : children) {
-				if (esbElement instanceof ProxyService){
-					ProxyService proxyService = (ProxyService) esbElement;
-					List<EsbElement> elements = (List<EsbElement>) proxyService.getContainer().getSequenceAndEndpointContainer().getMediatorFlow().getChildren();
-					for(EsbElement elem:elements){
-						if((elem instanceof Sequence)&&(((Sequence)elem).getName().equals(visualSequence.getName()))){
-							currentSequence=(Sequence) elem;
-						}						
-					}
-				}
-			}
-			OutputConnector source=((EsbLink)currentSequence.getInputConnector().getIncomingLinks().get(0)).getSource();
-			InputConnector target=null;
-			if(currentSequence.getOutputConnector().get(0).getOutgoingLink()!=null){
-				target = currentSequence.getOutputConnector().get(0).getOutgoingLink().getTarget();
-			}
-			
-			if((source.eContainer() instanceof AbstractEndPoint)&&((target!=null)&&(target.eContainer() instanceof AbstractEndPoint))){
-				
-				EsbNodeTransformer transformer=EsbTransformerRegistry.getInstance().getTransformer((EsbNode)target.eContainer());
-				TransformationInfo transformationInfo=new TransformationInfo();
-				transformationInfo.setParentSequence(sequence);
-				SendMediator sendMediator=new SendMediator();
-				sequence.addChild(sendMediator);			
-				
-				if((getEndpointOutputConnector((AbstractEndPoint) target.eContainer())).getOutgoingLink()!=null){
-					InputConnector nextTarget=(getEndpointOutputConnector((AbstractEndPoint) target.eContainer())).getOutgoingLink().getTarget();
-					if(nextTarget.eContainer() instanceof Sequence){
-						String sequenceName=((Sequence)nextTarget.eContainer()).getName();
-						if(((Sequence)nextTarget.eContainer()).getOutputConnector().get(0).getOutgoingLink().getTarget().eContainer() instanceof AbstractEndPoint){
-							sendMediator.setReceivingSequence(new Value(sequenceName));
-						}
-					}
-				}
-				transformer.transformWithinSequence(transformationInfo,(EsbNode)target.eContainer(),sequence);				
-			}
-		}		
-	}
-	
-	public static OutputConnector getEndpointOutputConnector(AbstractEndPoint endpoint){
-		if(endpoint instanceof AddressEndPoint){
-			return ((AddressEndPoint)endpoint).getOutputConnector();
-		}else if(endpoint instanceof DefaultEndPoint){
-			return ((DefaultEndPoint)endpoint).getOutputConnector();
-		}else if(endpoint instanceof WSDLEndPoint){
-			return ((WSDLEndPoint)endpoint).getOutputConnector();
-		}else if(endpoint instanceof NamedEndpoint){
-			return ((NamedEndpoint)endpoint).getOutputConnector();
-		} else if(endpoint instanceof TemplateEndpoint){
-			return ((TemplateEndpoint)endpoint).getOutputConnector();
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequences, "Invalid subject.");
+        org.wso2.developerstudio.eclipse.gmf.esb.Sequences visualSequence = (org.wso2.developerstudio.eclipse.gmf.esb.Sequences) subject;
+        if (visualSequence.isRecieveSequence()) {
+            handleServiceChaining(visualSequence, (SequenceMediator) information.getParentSequence(),
+                    visualSequence.getAssociatedProxy());
         }
-		return null;
-	}
+    }
+
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+
+    }
+
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequences, "Invalid subject.");
+        org.wso2.developerstudio.eclipse.gmf.esb.Sequences visualSequence = (org.wso2.developerstudio.eclipse.gmf.esb.Sequences) subject;
+        if (!"".equals(visualSequence.getOnError().getKeyValue())) {
+            sequence.setErrorHandler(visualSequence.getOnError().getKeyValue());
+        }
+
+        // Fixing TOOLS-2652
+        sequence.setTraceState(visualSequence.isTraceEnabled() ? 1 : 0);
+
+        AspectConfiguration aspectConfiguration = new AspectConfiguration(visualSequence.getName());
+        sequence.configure(aspectConfiguration);
+        if (visualSequence.isStatisticsEnabled()) {
+            aspectConfiguration.enableStatistics();
+        } else {
+            aspectConfiguration.disableStatistics();
+        }
+
+        EsbLink outgoingLink = visualSequence.getOutputConnector().getOutgoingLink();
+        doTransformWithinSequence(information, outgoingLink, sequence);
+    }
+
+    private void handleServiceChaining(org.wso2.developerstudio.eclipse.gmf.esb.Sequences visualSequence,
+            SequenceMediator sequence, List proxyNames) throws TransformerException {
+        IEditorPart editorPart = null;
+        IProject activeProject = null;
+        Sequence currentSequence = null;
+
+        IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        for (int i = 0; i < editorReferences.length; i++) {
+            IEditorPart editor = editorReferences[i].getEditor(false);
+
+            if (editor != null) {
+                editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+            }
+
+            if (editorPart != null) {
+                IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
+                IFile file = input.getFile();
+                activeProject = file.getProject();
+            }
+        }
+
+        String name = (String) proxyNames.get(0);
+        IPath location = new Path(
+                "src/main/graphical-synapse-config/proxy-services" + "/" + "proxy_" + name + ".esb_diagram");
+        IFile file = activeProject.getFile(location);
+
+        ResourceSet resourceSet = new ResourceSetImpl();
+        Resource resource = null;
+
+        File f = new File(file.getLocationURI().getPath());
+        URI uri = URI.createFileURI(f.getAbsolutePath());
+
+        if (!f.exists()) {
+
+        } else {
+
+            resource = resourceSet.getResource(uri, true);
+
+            EsbDiagram s = (EsbDiagram) ((org.eclipse.gmf.runtime.notation.impl.DiagramImpl) resource.getContents()
+                    .get(0)).getElement();
+            EList<EsbElement> children = s.getServer().getChildren();
+            for (EsbElement esbElement : children) {
+                if (esbElement instanceof ProxyService) {
+                    ProxyService proxyService = (ProxyService) esbElement;
+                    List<EsbElement> elements = (List<EsbElement>) proxyService.getContainer()
+                            .getSequenceAndEndpointContainer().getMediatorFlow().getChildren();
+                    for (EsbElement elem : elements) {
+                        if ((elem instanceof Sequence)
+                                && (((Sequence) elem).getName().equals(visualSequence.getName()))) {
+                            currentSequence = (Sequence) elem;
+                        }
+                    }
+                }
+            }
+            OutputConnector source = ((EsbLink) currentSequence.getInputConnector().getIncomingLinks().get(0))
+                    .getSource();
+            InputConnector target = null;
+            if (currentSequence.getOutputConnector().get(0).getOutgoingLink() != null) {
+                target = currentSequence.getOutputConnector().get(0).getOutgoingLink().getTarget();
+            }
+
+            if ((source.eContainer() instanceof AbstractEndPoint)
+                    && ((target != null) && (target.eContainer() instanceof AbstractEndPoint))) {
+
+                EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance()
+                        .getTransformer((EsbNode) target.eContainer());
+                TransformationInfo transformationInfo = new TransformationInfo();
+                transformationInfo.setParentSequence(sequence);
+                SendMediator sendMediator = new SendMediator();
+                sequence.addChild(sendMediator);
+
+                if ((getEndpointOutputConnector((AbstractEndPoint) target.eContainer())).getOutgoingLink() != null) {
+                    InputConnector nextTarget = (getEndpointOutputConnector((AbstractEndPoint) target.eContainer()))
+                            .getOutgoingLink().getTarget();
+                    if (nextTarget.eContainer() instanceof Sequence) {
+                        String sequenceName = ((Sequence) nextTarget.eContainer()).getName();
+                        if (((Sequence) nextTarget.eContainer()).getOutputConnector().get(0).getOutgoingLink()
+                                .getTarget().eContainer() instanceof AbstractEndPoint) {
+                            sendMediator.setReceivingSequence(new Value(sequenceName));
+                        }
+                    }
+                }
+                transformer.transformWithinSequence(transformationInfo, (EsbNode) target.eContainer(), sequence);
+            }
+        }
+    }
+
+    public static OutputConnector getEndpointOutputConnector(AbstractEndPoint endpoint) {
+        if (endpoint instanceof AddressEndPoint) {
+            return ((AddressEndPoint) endpoint).getOutputConnector();
+        } else if (endpoint instanceof DefaultEndPoint) {
+            return ((DefaultEndPoint) endpoint).getOutputConnector();
+        } else if (endpoint instanceof WSDLEndPoint) {
+            return ((WSDLEndPoint) endpoint).getOutputConnector();
+        } else if (endpoint instanceof NamedEndpoint) {
+            return ((NamedEndpoint) endpoint).getOutputConnector();
+        } else if (endpoint instanceof TemplateEndpoint) {
+            return ((TemplateEndpoint) endpoint).getOutputConnector();
+        }
+        return null;
+    }
 }

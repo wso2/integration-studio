@@ -44,19 +44,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 
 public class CacheMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CacheMediator> {
 
-	@Override
-	public CacheMediator createNode(IGraphicalEditPart part, AbstractMediator object) throws DeserializerException {
-		Assert.isTrue(object instanceof org.wso2.carbon.mediator.cache.CacheMediator,
-				"Unsupported mediator passed in for deserialization");
-		CacheMediator mediatorModel = (CacheMediator) DeserializerUtils.createNode(part,
-				EsbElementTypes.CacheMediator_3518);
-		// Fixing DEVTOOLEI-1120
-		if (object instanceof org.wso2.carbon.mediator.cache.CacheMediator) {
-			org.wso2.carbon.mediator.cache.CacheMediator mediator = (org.wso2.carbon.mediator.cache.CacheMediator) object;
+    @Override
+    public CacheMediator createNode(IGraphicalEditPart part, AbstractMediator object) throws DeserializerException {
+        Assert.isTrue(object instanceof org.wso2.carbon.mediator.cache.CacheMediator,
+                "Unsupported mediator passed in for deserialization");
+        CacheMediator mediatorModel = (CacheMediator) DeserializerUtils.createNode(part,
+                EsbElementTypes.CacheMediator_3518);
+        // Fixing DEVTOOLEI-1120
+        if (object instanceof org.wso2.carbon.mediator.cache.CacheMediator) {
+            org.wso2.carbon.mediator.cache.CacheMediator mediator = (org.wso2.carbon.mediator.cache.CacheMediator) object;
 
-			setElementToEdit(mediatorModel);
-			setCommonProperties(mediator, mediatorModel);
-
+            setElementToEdit(mediatorModel);
+            setCommonProperties(mediator, mediatorModel);
 
             if (mediator.isCollector()) {
                 executeSetValueCommand(CACHE_MEDIATOR__CACHE_TYPE, CacheType.COLLECTOR);

@@ -29,30 +29,29 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureConditionalRouterMediatorDialog;
 
-public class ConfigureConditionalRouterMediatorAction extends ConfigureEsbNodeAction{
+public class ConfigureConditionalRouterMediatorAction extends ConfigureEsbNodeAction {
 
-	
-	public ConfigureConditionalRouterMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId("configure-conditional-router-mediator-action-id");
-		setText("Configure...");
-		setToolTipText("Configure Conditional Router mediator.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
+    public ConfigureConditionalRouterMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId("configure-conditional-router-mediator-action-id");
+        setText("Configure...");
+        setToolTipText("Configure Conditional Router mediator.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof ConditionalRouterMediator, "Invalid selection.");
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof ConditionalRouterMediator, "Invalid selection.");
 
-		Shell shell = Display.getDefault().getActiveShell();
-		ConfigureConditionalRouterMediatorDialog configurationDialog = new ConfigureConditionalRouterMediatorDialog(
-				shell, (ConditionalRouterMediator) selectedObj, getEditingDomain());
-		configurationDialog.setBlockOnOpen(true);
-		configurationDialog.open();
-	}
+        Shell shell = Display.getDefault().getActiveShell();
+        ConfigureConditionalRouterMediatorDialog configurationDialog = new ConfigureConditionalRouterMediatorDialog(
+                shell, (ConditionalRouterMediator) selectedObj, getEditingDomain());
+        configurationDialog.setBlockOnOpen(true);
+        configurationDialog.open();
+    }
 
 }

@@ -26,7 +26,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseParentContainer#getSwitchCaseContainer <em>Switch Case Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseParentContainer#getSwitchCaseContainer <em>Switch Case
+ * Container</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchCaseParentContainer()
@@ -34,20 +35,21 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface SwitchCaseParentContainer extends EsbNode {
-	/**
-	 * Returns the value of the '<em><b>Switch Case Container</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseContainer}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Switch Case Container</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Switch Case Container</em>' containment reference list.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchCaseParentContainer_SwitchCaseContainer()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<SwitchCaseContainer> getSwitchCaseContainer();
+    /**
+     * Returns the value of the '<em><b>Switch Case Container</b></em>' containment reference list.
+     * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseContainer}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Switch Case Container</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Switch Case Container</em>' containment reference list.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchCaseParentContainer_SwitchCaseContainer()
+     * @model containment="true" required="true"
+     * @generated
+     */
+    EList<SwitchCaseContainer> getSwitchCaseContainer();
 
 } // SwitchCaseParentContainer

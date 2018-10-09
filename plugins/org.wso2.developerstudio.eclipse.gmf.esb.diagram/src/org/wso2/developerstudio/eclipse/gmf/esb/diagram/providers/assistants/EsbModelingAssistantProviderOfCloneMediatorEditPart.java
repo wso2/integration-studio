@@ -13,17 +13,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfCloneMediatorEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(4);
-		types.add(EsbElementTypes.CloneMediatorInputConnector_3103);
-		types.add(EsbElementTypes.CloneMediatorOutputConnector_3104);
-		types.add(EsbElementTypes.CloneMediatorTargetOutputConnector_3133);
-		types.add(EsbElementTypes.CloneMediatorContainer_3603);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(4);
+        types.add(EsbElementTypes.CloneMediatorInputConnector_3103);
+        types.add(EsbElementTypes.CloneMediatorOutputConnector_3104);
+        types.add(EsbElementTypes.CloneMediatorTargetOutputConnector_3133);
+        types.add(EsbElementTypes.CloneMediatorContainer_3603);
+        return types;
+    }
 
 }

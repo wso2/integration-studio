@@ -74,10 +74,10 @@ public class ESBDebugLaunchDelegate implements ILaunchConfigurationDelegate {
         String hostName = DEFAULT_HOST_NAME;
 
         try {
-            commandPort = Integer.parseInt(configuration.getAttribute(Messages.DebuggerConfigTab_CommandPortLabel,
-                    DEFAULT_COMMAND_PORT));
-            eventPort = Integer.parseInt(configuration.getAttribute(Messages.DebuggerConfigTab_EventPortLabel,
-                    DEFAULT_COMMAND_PORT));
+            commandPort = Integer.parseInt(
+                    configuration.getAttribute(Messages.DebuggerConfigTab_CommandPortLabel, DEFAULT_COMMAND_PORT));
+            eventPort = Integer.parseInt(
+                    configuration.getAttribute(Messages.DebuggerConfigTab_EventPortLabel, DEFAULT_COMMAND_PORT));
             hostName = configuration.getAttribute(Messages.DebuggerConfigTab_ServerHostName, hostName);
 
             ESBDebugger esbDebugger = new ESBDebugger(commandPort, eventPort, hostName);

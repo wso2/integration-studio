@@ -27,24 +27,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * @generated
  */
 public class CacheOnHitBranchImpl extends EObjectImpl implements CacheOnHitBranch {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CacheOnHitBranchImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected CacheOnHitBranchImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.CACHE_ON_HIT_BRANCH;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //CacheOnHitBranchImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.CACHE_ON_HIT_BRANCH;
+    }
+
+} // CacheOnHitBranchImpl

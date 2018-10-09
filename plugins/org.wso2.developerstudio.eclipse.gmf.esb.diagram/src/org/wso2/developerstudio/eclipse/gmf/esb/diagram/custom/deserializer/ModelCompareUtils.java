@@ -34,16 +34,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 
 public class ModelCompareUtils {
-	
-	void updateModel(EObject original,EObject current) throws InterruptedException{
 
-		// Matching model elements
-		//MatchModel match = MatchService.doMatch(original, current, Collections.<String, Object> emptyMap());
-		// Computing differences
-		//DiffModel diff = DiffService.doDiff(match, false);
-		// Merges all differences from original to current
-		//List<DiffElement> differences = new ArrayList<DiffElement>(diff.getOwnedElements());
-		//MergeService.merge(differences, true);
-	}
+    void updateModel(EObject original, EObject current) throws InterruptedException {
+
+        // Matching model elements
+        // MatchModel match = MatchService.doMatch(original, current, Collections.<String, Object> emptyMap());
+        // Computing differences
+        // DiffModel diff = DiffService.doDiff(match, false);
+        // Merges all differences from original to current
+        // List<DiffElement> differences = new ArrayList<DiffElement>(diff.getOwnedElements());
+        // MergeService.merge(differences, true);
+    }
 
 }

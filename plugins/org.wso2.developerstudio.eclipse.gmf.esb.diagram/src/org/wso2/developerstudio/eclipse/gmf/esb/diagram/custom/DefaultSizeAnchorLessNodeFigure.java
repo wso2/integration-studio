@@ -5,16 +5,16 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 
 public class DefaultSizeAnchorLessNodeFigure extends DefaultSizeNodeFigure {
-	
-	public DefaultSizeAnchorLessNodeFigure(int width, int height) {
-		super(width, height);
-	}
-	
-	public ConnectionAnchor getSourceConnectionAnchorAt(Point p) {
-		return null;
-	}
 
-	public ConnectionAnchor getTargetConnectionAnchorAt(Point p) {
-		return null;
-	}	
+    public DefaultSizeAnchorLessNodeFigure(int width, int height) {
+        super(width, height);
+    }
+
+    public ConnectionAnchor getSourceConnectionAnchorAt(Point p) {
+        return null;
+    }
+
+    public ConnectionAnchor getTargetConnectionAnchorAt(Point p) {
+        return null;
+    }
 }

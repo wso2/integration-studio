@@ -111,11 +111,11 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
             if (eventMessage == null) {
                 log.info("NULL value read from ChannelResponceDispatcher.ESB Server shutting down.");
                 esbDebugger.fireTerminatedEvent();
-            } else if (messageFactory.checkForWirelogMessage(eventMessage)){
-            	esbDebugger.notifyResponse(messageFactory.convertResponseToIResponseMessage(eventMessage));
+            } else if (messageFactory.checkForWirelogMessage(eventMessage)) {
+                esbDebugger.notifyResponse(messageFactory.convertResponseToIResponseMessage(eventMessage));
             } else {
                 esbDebugger.notifyEvent(messageFactory.convertEventToIEventMessage(eventMessage));
-            } 
+            }
         } catch (Exception e) {
             log.error("Error while converting Event message from ESB Server to IEventMessage : " + e.getMessage(), e);
         }
@@ -141,8 +141,7 @@ public class ESBDebuggerInterface implements IESBDebuggerInterface {
                 esbDebugger.notifyResponse(messageFactory.convertResponseToIResponseMessage(responseMessage));
             }
         } catch (Exception e) {
-            log.error(
-                    "Error while converting Response message from ESB Server to IResponseMessage : " + e.getMessage(),
+            log.error("Error while converting Response message from ESB Server to IResponseMessage : " + e.getMessage(),
                     e);
         }
 

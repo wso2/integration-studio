@@ -19,24 +19,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTResource;
  * @generated
  */
 public class XSLTResourceImpl extends AbstractLocationKeyResourceImpl implements XSLTResource {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected XSLTResourceImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected XSLTResourceImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.XSLT_RESOURCE;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //XSLTResourceImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.XSLT_RESOURCE;
+    }
+
+} // XSLTResourceImpl

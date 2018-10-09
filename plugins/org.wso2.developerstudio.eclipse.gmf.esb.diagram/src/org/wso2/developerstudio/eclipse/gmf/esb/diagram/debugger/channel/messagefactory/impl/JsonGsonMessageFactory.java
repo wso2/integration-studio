@@ -127,7 +127,7 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
 
             switch (entry.getKey()) {
             case WIRE_LOG_LABEL:
-            	break;
+                break;
             case EVENT_LABEL:
                 event = getEventMessageType(entry.getValue().getAsString());
                 break;
@@ -186,13 +186,13 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
             return new SpecialCoordinationEventMessage(event, messageReciever, callbackReciever);
         case BREAKPOINT:
         case SKIPPOINT:
-            return new DebugPointEventMessage(event, ESBDebuggerUtil.getESBDebugPoint(debugPointType, event,
-                    recievedArtifactInfo));
+            return new DebugPointEventMessage(event,
+                    ESBDebuggerUtil.getESBDebugPoint(debugPointType, event, recievedArtifactInfo));
         case WIRE_LOG:
             return new GeneralEventMessage(event);
         default:
-            throw new IllegalArgumentException("Invalid Event Message Recieved from ESB Server Debugger : "
-                    + eventMessage);
+            throw new IllegalArgumentException(
+                    "Invalid Event Message Recieved from ESB Server Debugger : " + eventMessage);
         }
     }
 
@@ -230,16 +230,16 @@ public class JsonGsonMessageFactory implements ICommunicationMessageFactory {
         Gson debugPointMessage = builder.create();
         return debugPointMessage.toJson(debugPoint);
     }
-    
+
     @Override
     public JsonObject createMediatorLocationJsonObj(AbstractESBDebugPointMessage debugPoint) {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(ESBMediatorPosition.class, new MediatorPositionGsonSerializer());
         builder.setFieldNamingStrategy(new PojoToGsonCustomNamingStrategy());
         Gson debugPointMessage = builder.create();
-        String jsonString = debugPointMessage.toJson(debugPoint);        
-        JsonObject jsonObject = new JsonParser().parse(jsonString).getAsJsonObject();        
-        jsonObject.remove(COMMAND_ARGUMENT_LABEL);        
+        String jsonString = debugPointMessage.toJson(debugPoint);
+        JsonObject jsonObject = new JsonParser().parse(jsonString).getAsJsonObject();
+        jsonObject.remove(COMMAND_ARGUMENT_LABEL);
         return jsonObject;
     }
 

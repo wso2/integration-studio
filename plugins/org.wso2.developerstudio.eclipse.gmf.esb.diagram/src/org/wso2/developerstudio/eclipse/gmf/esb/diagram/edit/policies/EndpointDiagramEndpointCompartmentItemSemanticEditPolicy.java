@@ -17,42 +17,42 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
  */
 public class EndpointDiagramEndpointCompartmentItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
-	/**
-	 * @generated
-	 */
-	public EndpointDiagramEndpointCompartmentItemSemanticEditPolicy() {
-		super(EsbElementTypes.EndpointDiagram_3642);
-	}
+    /**
+     * @generated
+     */
+    public EndpointDiagramEndpointCompartmentItemSemanticEditPolicy() {
+        super(EsbElementTypes.EndpointDiagram_3642);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected Command getCreateCommand(CreateElementRequest req) {
-		if (EsbElementTypes.DefaultEndPoint_3643 == req.getElementType()) {
-			return getGEFWrapper(new DefaultEndPoint2CreateCommand(req));
-		}
-		if (EsbElementTypes.AddressEndPoint_3646 == req.getElementType()) {
-			return getGEFWrapper(new AddressEndPoint2CreateCommand(req));
-		}
-		if (EsbElementTypes.FailoverEndPoint_3649 == req.getElementType()) {
-			return getGEFWrapper(new FailoverEndPoint2CreateCommand(req));
-		}
-		if (EsbElementTypes.RecipientListEndPoint_3696 == req.getElementType()) {
-			return getGEFWrapper(new RecipientListEndPoint2CreateCommand(req));
-		}
-		if (EsbElementTypes.WSDLEndPoint_3653 == req.getElementType()) {
-			return getGEFWrapper(new WSDLEndPoint2CreateCommand(req));
-		}
-		if (EsbElementTypes.LoadBalanceEndPoint_3656 == req.getElementType()) {
-			return getGEFWrapper(new LoadBalanceEndPoint2CreateCommand(req));
-		}
-		if (EsbElementTypes.HTTPEndpoint_3712 == req.getElementType()) {
-			return getGEFWrapper(new HTTPEndpoint2CreateCommand(req));
-		}
-		if (EsbElementTypes.TemplateEndpoint_3725 == req.getElementType()) {
-			return getGEFWrapper(new TemplateEndpoint2CreateCommand(req));
-		}
-		return super.getCreateCommand(req);
-	}
+    /**
+     * @generated
+     */
+    protected Command getCreateCommand(CreateElementRequest req) {
+        if (EsbElementTypes.DefaultEndPoint_3643 == req.getElementType()) {
+            return getGEFWrapper(new DefaultEndPoint2CreateCommand(req));
+        }
+        if (EsbElementTypes.AddressEndPoint_3646 == req.getElementType()) {
+            return getGEFWrapper(new AddressEndPoint2CreateCommand(req));
+        }
+        if (EsbElementTypes.FailoverEndPoint_3649 == req.getElementType()) {
+            return getGEFWrapper(new FailoverEndPoint2CreateCommand(req));
+        }
+        if (EsbElementTypes.RecipientListEndPoint_3696 == req.getElementType()) {
+            return getGEFWrapper(new RecipientListEndPoint2CreateCommand(req));
+        }
+        if (EsbElementTypes.WSDLEndPoint_3653 == req.getElementType()) {
+            return getGEFWrapper(new WSDLEndPoint2CreateCommand(req));
+        }
+        if (EsbElementTypes.LoadBalanceEndPoint_3656 == req.getElementType()) {
+            return getGEFWrapper(new LoadBalanceEndPoint2CreateCommand(req));
+        }
+        if (EsbElementTypes.HTTPEndpoint_3712 == req.getElementType()) {
+            return getGEFWrapper(new HTTPEndpoint2CreateCommand(req));
+        }
+        if (EsbElementTypes.TemplateEndpoint_3725 == req.getElementType()) {
+            return getGEFWrapper(new TemplateEndpoint2CreateCommand(req));
+        }
+        return super.getCreateCommand(req);
+    }
 
 }

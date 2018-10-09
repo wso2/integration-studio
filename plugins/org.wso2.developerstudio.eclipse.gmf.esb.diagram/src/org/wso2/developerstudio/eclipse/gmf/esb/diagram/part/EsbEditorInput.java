@@ -23,70 +23,69 @@ import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 
-
 public class EsbEditorInput extends FileEditorInput implements IEsbEditorInput {
-private Resource diagramResource;
-private IFile xmlResource;
-private String artifatcType;
+    private Resource diagramResource;
+    private IFile xmlResource;
+    private String artifatcType;
 
-	public IFile getXmlResource() {
-		return xmlResource;
-	}
+    public IFile getXmlResource() {
+        return xmlResource;
+    }
 
-	public void setXmlResource(IFile xmlResource) {
-		this.xmlResource = xmlResource;
-	}
+    public void setXmlResource(IFile xmlResource) {
+        this.xmlResource = xmlResource;
+    }
 
-	public EsbEditorInput(Resource diagramResource,IFile xmlResource, String artifatcType) {
-		super(xmlResource);
- 		this.diagramResource = diagramResource;
- 		this.xmlResource = xmlResource;
- 		this.artifatcType = artifatcType;
- 	}
- 
- 	public boolean exists() {
- 		return true;
- 	}
- 
- 	public ImageDescriptor getImageDescriptor() {
- 		return ImageDescriptor.getMissingImageDescriptor();
- 	}
- 
- 	public String getName() {
- 		return "sampleName";
- 	}
- 
- 	public IPersistableElement getPersistable() {
- 		return this;
- 	}
- 
- 	public String getToolTipText() {
- 		return "Developer Studio Dashboard";
- 	}
- 
- 	public Object getAdapter(Class adapter) {
- 		return null;
- 	}
- 
- 	public void setDiagramResource(Resource diagramResource) {
- 		this.diagramResource = diagramResource;
- 	}
- 
- 	public Resource getDiagramResource() {
- 		return diagramResource;
- 	}
- 	
-	public String getArtifatcType() {
-		return artifatcType;
-	}
+    public EsbEditorInput(Resource diagramResource, IFile xmlResource, String artifatcType) {
+        super(xmlResource);
+        this.diagramResource = diagramResource;
+        this.xmlResource = xmlResource;
+        this.artifatcType = artifatcType;
+    }
 
-	public void setArtifatcType(String artifatcType) {
-		this.artifatcType = artifatcType;
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		return this == o || o instanceof FileEditorInput && xmlResource.equals(((FileEditorInput) o).getFile())
-				|| o instanceof EsbEditorInput && xmlResource.equals(((EsbEditorInput) o).getXmlResource());
-	}
+    public boolean exists() {
+        return true;
+    }
+
+    public ImageDescriptor getImageDescriptor() {
+        return ImageDescriptor.getMissingImageDescriptor();
+    }
+
+    public String getName() {
+        return "sampleName";
+    }
+
+    public IPersistableElement getPersistable() {
+        return this;
+    }
+
+    public String getToolTipText() {
+        return "Developer Studio Dashboard";
+    }
+
+    public Object getAdapter(Class adapter) {
+        return null;
+    }
+
+    public void setDiagramResource(Resource diagramResource) {
+        this.diagramResource = diagramResource;
+    }
+
+    public Resource getDiagramResource() {
+        return diagramResource;
+    }
+
+    public String getArtifatcType() {
+        return artifatcType;
+    }
+
+    public void setArtifatcType(String artifatcType) {
+        this.artifatcType = artifatcType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return this == o || o instanceof FileEditorInput && xmlResource.equals(((FileEditorInput) o).getFile())
+                || o instanceof EsbEditorInput && xmlResource.equals(((EsbEditorInput) o).getXmlResource());
+    }
 }

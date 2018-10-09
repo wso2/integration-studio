@@ -14,18 +14,13 @@
  * limitations under the License.
  */
 
-
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.sheet;
 
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-
-
 public class EsbCustomPropertySheetPage extends PropertySheetPage {
-	public EsbCustomPropertySheetPage()
-	   {
-	      super();
-	      setSorter(new EsbCustomPropertySheetSorter());
-	   }
+    public EsbCustomPropertySheetPage() {
+        super();
+        setSorter(new EsbCustomPropertySheetSorter());
+    }
 }

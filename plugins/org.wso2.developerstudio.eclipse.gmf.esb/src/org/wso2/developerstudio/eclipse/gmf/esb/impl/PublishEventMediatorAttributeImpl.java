@@ -30,149 +30,164 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorAttributeImpl#getDefaultValue <em>Default Value</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PublishEventMediatorAttributeImpl#getDefaultValue
+ * <em>Default Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PublishEventMediatorAttributeImpl extends AbstractNameValueExpressionAttributeImpl implements PublishEventMediatorAttribute {
-	/**
-	 * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DEFAULT_VALUE_EDEFAULT = "";
-	/**
-	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String defaultValue = DEFAULT_VALUE_EDEFAULT;
+public class PublishEventMediatorAttributeImpl extends AbstractNameValueExpressionAttributeImpl
+        implements PublishEventMediatorAttribute {
+    /**
+     * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getDefaultValue()
+     * @generated
+     * @ordered
+     */
+    protected static final String DEFAULT_VALUE_EDEFAULT = "";
+    /**
+     * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getDefaultValue()
+     * @generated
+     * @ordered
+     */
+    protected String defaultValue = DEFAULT_VALUE_EDEFAULT;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected PublishEventMediatorAttributeImpl() {
-		super();
-		// Value expression.
-		NamespacedProperty valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-		valueExpression.setPrettyName("Attribute Expression");
-		valueExpression.setPropertyName("exp");
-		valueExpression.setPropertyValue("/default/expression");
-		setAttributeExpression(valueExpression);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    protected PublishEventMediatorAttributeImpl() {
+        super();
+        // Value expression.
+        NamespacedProperty valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+        valueExpression.setPrettyName("Attribute Expression");
+        valueExpression.setPropertyName("exp");
+        valueExpression.setPropertyValue("/default/expression");
+        setAttributeExpression(valueExpression);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getDefaultValue() {
-		return defaultValue;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String getDefaultValue() {
+        return defaultValue;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDefaultValue(String newDefaultValue) {
-		String oldDefaultValue = defaultValue;
-		defaultValue = newDefaultValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE, oldDefaultValue, defaultValue));
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setDefaultValue(String newDefaultValue) {
+        String oldDefaultValue = defaultValue;
+        defaultValue = newDefaultValue;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE, oldDefaultValue, defaultValue));
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE:
-				return getDefaultValue();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+        switch (featureID) {
+        case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE:
+            return getDefaultValue();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE:
-				setDefaultValue((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void eSet(int featureID, Object newValue) {
+        switch (featureID) {
+        case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE:
+            setDefaultValue((String) newValue);
+            return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE:
-				setDefaultValue(DEFAULT_VALUE_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void eUnset(int featureID) {
+        switch (featureID) {
+        case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE:
+            setDefaultValue(DEFAULT_VALUE_EDEFAULT);
+            return;
+        }
+        super.eUnset(featureID);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE:
-				return DEFAULT_VALUE_EDEFAULT == null ? defaultValue != null : !DEFAULT_VALUE_EDEFAULT.equals(defaultValue);
-		}
-		return super.eIsSet(featureID);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public boolean eIsSet(int featureID) {
+        switch (featureID) {
+        case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE__DEFAULT_VALUE:
+            return DEFAULT_VALUE_EDEFAULT == null ? defaultValue != null : !DEFAULT_VALUE_EDEFAULT.equals(defaultValue);
+        }
+        return super.eIsSet(featureID);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy())
+            return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (defaultValue: ");
-		result.append(defaultValue);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (defaultValue: ");
+        result.append(defaultValue);
+        result.append(')');
+        return result.toString();
+    }
 
-} //PublishEventMediatorAttributeImpl
+} // PublishEventMediatorAttributeImpl

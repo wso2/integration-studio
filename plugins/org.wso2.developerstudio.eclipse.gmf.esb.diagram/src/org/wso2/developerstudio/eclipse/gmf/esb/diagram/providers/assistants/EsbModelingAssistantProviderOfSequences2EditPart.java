@@ -13,16 +13,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfSequences2EditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(3);
-		types.add(EsbElementTypes.MediatorFlow_3615);
-		types.add(EsbElementTypes.SequencesInputConnector_3616);
-		types.add(EsbElementTypes.SequencesOutputConnector_3617);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(3);
+        types.add(EsbElementTypes.MediatorFlow_3615);
+        types.add(EsbElementTypes.SequencesInputConnector_3616);
+        types.add(EsbElementTypes.SequencesOutputConnector_3617);
+        return types;
+    }
 
 }

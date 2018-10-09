@@ -43,9 +43,8 @@ public class SequenceMediatorLocator extends AbstractMediatorLocator {
      * @throws DebugPointMarkerNotFoundException
      */
     @Override
-    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint debugPoint)
-            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException,
-            CoreException {
+    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint debugPoint) throws MediatorNotFoundException,
+            MissingAttributeException, DebugPointMarkerNotFoundException, CoreException {
         ESBSequenceDebugPointMessage debugPointMessage = (ESBSequenceDebugPointMessage) debugPoint.getLocation();
 
         List<Integer> positionArray = debugPointMessage.getSequence().getMediatorPosition().getPosition();

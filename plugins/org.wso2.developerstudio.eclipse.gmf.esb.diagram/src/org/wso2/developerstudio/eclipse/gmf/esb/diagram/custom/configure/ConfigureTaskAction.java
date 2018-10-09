@@ -30,30 +30,29 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.TaskPropertyDialog;
 
-public class ConfigureTaskAction extends ConfigureEsbNodeAction{
+public class ConfigureTaskAction extends ConfigureEsbNodeAction {
 
-	public ConfigureTaskAction(IWorkbenchPart part) {
-		super(part);
-		setId("configure-task-action-id");
-		setText("Configure...");
-		setToolTipText("Configure Task.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
+    public ConfigureTaskAction(IWorkbenchPart part) {
+        super(part);
+        setId("configure-task-action-id");
+        setText("Configure...");
+        setToolTipText("Configure Task.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof Task, "Invalid selection.");
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof Task, "Invalid selection.");
 
-		Shell shell = Display.getDefault().getActiveShell();
-		Dialog configurationDialog = new TaskPropertyDialog(shell,
-				(Task) selectedObj, getEditingDomain());
-		configurationDialog.setBlockOnOpen(true);
-		configurationDialog.open();
-		
-	}
+        Shell shell = Display.getDefault().getActiveShell();
+        Dialog configurationDialog = new TaskPropertyDialog(shell, (Task) selectedObj, getEditingDomain());
+        configurationDialog.setBlockOnOpen(true);
+        configurationDialog.open();
+
+    }
 
 }

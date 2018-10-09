@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
-
 import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.gef.editpolicies.SelectionEditPolicy;
@@ -28,76 +27,71 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditPartDrawingHe
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
 
-
 public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
-	
-	private static final int BREAKPOINT_HIT_BORDER_WIDTH = 3;
 
-	protected void showSelection() {
-		setselected(true);
-	}
+    private static final int BREAKPOINT_HIT_BORDER_WIDTH = 3;
 
-	protected void hideSelection() {
-		setselected(false);
-	}
-		
-	private void setselected(boolean isselected) {
-		
-		Color figureColor = EditPartDrawingHelper.FigureNormalColor;
-		Color borderColor = EditPartDrawingHelper.FigureNormalColor;
-		if (isselected) { 
-			figureColor = EditPartDrawingHelper.FigureSelectedColor;
-			borderColor = EditPartDrawingHelper.FigureSelectedBorderColor;
-		}
-		
-		if(getHost() instanceof FixedSizedAbstractMediator) {
-			FixedSizedAbstractMediator mediator = (FixedSizedAbstractMediator)getHost();
-			mediator.getFixedSizedPrimaryShape().setBackgroundColor(figureColor);
-			RoundedRectangleBorder border = (RoundedRectangleBorder)mediator.getFixedSizedPrimaryShape().getBorder();
-			border.setColor(borderColor);
-			if (mediator.isBreakpointHit()) {
-				border.setColor(EditPartDrawingHelper.FigureBreakpointHitColor);
-				border.setWidth(BREAKPOINT_HIT_BORDER_WIDTH);
-			} else {
-				border.setColor(borderColor);
-				border.setWidth(1);
-			}
-		}
-		
-		if (getHost() instanceof complexFiguredAbstractMediator) {
-			complexFiguredAbstractMediator mediator = (complexFiguredAbstractMediator) getHost();
-			mediator.getComplexFiguredPrimaryShape().setBackgroundColor(
-					figureColor);
-			if (mediator.isBreakpointHit()) {
-				LineBorder border = (LineBorder) mediator
-						.getComplexFiguredPrimaryShape().getBorder();
-				border.setColor(EditPartDrawingHelper.FigureBreakpointHitColor);
-				border.setWidth(BREAKPOINT_HIT_BORDER_WIDTH);
-			} else {
-				LineBorder border = (LineBorder) mediator
-						.getComplexFiguredPrimaryShape().getBorder();
-				border.setColor(EditPartDrawingHelper.ComplexFigureSelectedBorderColor);
-				border.setWidth(1);
-			}
-		}
-		
-		if (getHost() instanceof AbstractEndpoint) {
-			AbstractEndpoint mediator = (AbstractEndpoint) getHost();
-			mediator.getEndPointPrimaryShape().setBackgroundColor(figureColor);
-			Border border = mediator.getEndPointPrimaryShape().getBorder();
-			if (border instanceof RoundedRectangleBorder) {
-				RoundedRectangleBorder roundedRectangleBorder = (RoundedRectangleBorder) border;
-				roundedRectangleBorder.setColor(borderColor);
-			}
-		}
-		
-		if(getHost() instanceof AbstractEndpoint2) {
-			AbstractEndpoint2 mediator = (AbstractEndpoint2)getHost();
-			mediator.getEndPoint2PrimaryShape().setBackgroundColor(figureColor);
-			RoundedRectangleBorder border = (RoundedRectangleBorder)mediator.getEndPoint2PrimaryShape().getBorder();
-			border.setColor(borderColor);
-		}
-	}
+    protected void showSelection() {
+        setselected(true);
+    }
+
+    protected void hideSelection() {
+        setselected(false);
+    }
+
+    private void setselected(boolean isselected) {
+
+        Color figureColor = EditPartDrawingHelper.FigureNormalColor;
+        Color borderColor = EditPartDrawingHelper.FigureNormalColor;
+        if (isselected) {
+            figureColor = EditPartDrawingHelper.FigureSelectedColor;
+            borderColor = EditPartDrawingHelper.FigureSelectedBorderColor;
+        }
+
+        if (getHost() instanceof FixedSizedAbstractMediator) {
+            FixedSizedAbstractMediator mediator = (FixedSizedAbstractMediator) getHost();
+            mediator.getFixedSizedPrimaryShape().setBackgroundColor(figureColor);
+            RoundedRectangleBorder border = (RoundedRectangleBorder) mediator.getFixedSizedPrimaryShape().getBorder();
+            border.setColor(borderColor);
+            if (mediator.isBreakpointHit()) {
+                border.setColor(EditPartDrawingHelper.FigureBreakpointHitColor);
+                border.setWidth(BREAKPOINT_HIT_BORDER_WIDTH);
+            } else {
+                border.setColor(borderColor);
+                border.setWidth(1);
+            }
+        }
+
+        if (getHost() instanceof complexFiguredAbstractMediator) {
+            complexFiguredAbstractMediator mediator = (complexFiguredAbstractMediator) getHost();
+            mediator.getComplexFiguredPrimaryShape().setBackgroundColor(figureColor);
+            if (mediator.isBreakpointHit()) {
+                LineBorder border = (LineBorder) mediator.getComplexFiguredPrimaryShape().getBorder();
+                border.setColor(EditPartDrawingHelper.FigureBreakpointHitColor);
+                border.setWidth(BREAKPOINT_HIT_BORDER_WIDTH);
+            } else {
+                LineBorder border = (LineBorder) mediator.getComplexFiguredPrimaryShape().getBorder();
+                border.setColor(EditPartDrawingHelper.ComplexFigureSelectedBorderColor);
+                border.setWidth(1);
+            }
+        }
+
+        if (getHost() instanceof AbstractEndpoint) {
+            AbstractEndpoint mediator = (AbstractEndpoint) getHost();
+            mediator.getEndPointPrimaryShape().setBackgroundColor(figureColor);
+            Border border = mediator.getEndPointPrimaryShape().getBorder();
+            if (border instanceof RoundedRectangleBorder) {
+                RoundedRectangleBorder roundedRectangleBorder = (RoundedRectangleBorder) border;
+                roundedRectangleBorder.setColor(borderColor);
+            }
+        }
+
+        if (getHost() instanceof AbstractEndpoint2) {
+            AbstractEndpoint2 mediator = (AbstractEndpoint2) getHost();
+            mediator.getEndPoint2PrimaryShape().setBackgroundColor(figureColor);
+            RoundedRectangleBorder border = (RoundedRectangleBorder) mediator.getEndPoint2PrimaryShape().getBorder();
+            border.setColor(borderColor);
+        }
+    }
 
 }
-

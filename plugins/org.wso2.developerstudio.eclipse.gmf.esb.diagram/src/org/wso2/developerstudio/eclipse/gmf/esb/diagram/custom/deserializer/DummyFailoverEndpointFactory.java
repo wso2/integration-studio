@@ -36,41 +36,41 @@ public class DummyFailoverEndpointFactory extends DummyEndpointFactory {
     }
 
     public static DummyFailoverEndpointFactory getInstance() {
-	return instance;
+        return instance;
     }
 
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	OMElement failoverElement = epConfig
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "failover"));
-	if (failoverElement != null) {
+        OMElement failoverElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "failover"));
+        if (failoverElement != null) {
 
-	    FailoverEndpoint failoverEndpoint = new FailoverEndpoint();
+            FailoverEndpoint failoverEndpoint = new FailoverEndpoint();
 
-	    String name = epConfig.getAttributeValue(new QName("name"));
-	    if (name != null) {
-		failoverEndpoint.setName(name);
-	    }
+            String name = epConfig.getAttributeValue(new QName("name"));
+            if (name != null) {
+                failoverEndpoint.setName(name);
+            }
 
-	    failoverEndpoint.setChildren(getEndpoints(failoverElement, failoverEndpoint, properties));
+            failoverEndpoint.setChildren(getEndpoints(failoverElement, failoverEndpoint, properties));
 
-	    String dynamicFO = failoverElement.getAttributeValue(new QName("dynamic"));
-	    if (dynamicFO != null && JavaUtils.isFalseExplicitly(dynamicFO)) {
-		failoverEndpoint.setDynamic(false);
-	    }
+            String dynamicFO = failoverElement.getAttributeValue(new QName("dynamic"));
+            if (dynamicFO != null && JavaUtils.isFalseExplicitly(dynamicFO)) {
+                failoverEndpoint.setDynamic(false);
+            }
 
-	    String buildMessageAtt = failoverElement.getAttributeValue(new QName(XMLConfigConstants.BUILD_MESSAGE));
-	    if (buildMessageAtt != null) {
-		failoverEndpoint.setBuildMessageAttAvailable(true);
-		if (JavaUtils.isTrueExplicitly(buildMessageAtt)) {
-		    failoverEndpoint.setBuildMessageAtt(true);
-		}
-	    }
+            String buildMessageAtt = failoverElement.getAttributeValue(new QName(XMLConfigConstants.BUILD_MESSAGE));
+            if (buildMessageAtt != null) {
+                failoverEndpoint.setBuildMessageAttAvailable(true);
+                if (JavaUtils.isTrueExplicitly(buildMessageAtt)) {
+                    failoverEndpoint.setBuildMessageAtt(true);
+                }
+            }
 
-	    processProperties(failoverEndpoint, epConfig);
+            processProperties(failoverEndpoint, epConfig);
 
-	    return failoverEndpoint;
-	}
-	return null;
+            return failoverEndpoint;
+        }
+        return null;
     }
 }

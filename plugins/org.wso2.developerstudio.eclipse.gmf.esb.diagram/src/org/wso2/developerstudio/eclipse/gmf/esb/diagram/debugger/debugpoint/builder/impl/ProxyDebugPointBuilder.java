@@ -60,7 +60,8 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
             String commandArgument) throws ESBDebuggerException, CoreException {
 
         int lineNumber = -1;
-        ESBProxyDebugPointMessage proxyDebugPoint = (ESBProxyDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
+        ESBProxyDebugPointMessage proxyDebugPoint = (ESBProxyDebugPointMessage) getESBDebugPointMessage(esbServer, part,
+                commandArgument);
         return new ESBDebugPoint(resource, lineNumber, proxyDebugPoint);
     }
 
@@ -83,8 +84,8 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
                 position = getMediatorPosition(proxy.getOutSequenceOutputConnector(), abstractMediator);
                 breakpontList = getDebugPointsRelatedToModification(resource, position, PROXY_OUTSEQ_LABEL, action);
             } else if (container instanceof ProxyServiceFaultContainerEditPart) {
-                position = getMediatorPositionInFaultSeq(proxy.getContainer().getFaultContainer().getMediatorFlow()
-                        .getChildren(), abstractMediator);
+                position = getMediatorPositionInFaultSeq(
+                        proxy.getContainer().getFaultContainer().getMediatorFlow().getChildren(), abstractMediator);
                 breakpontList = getDebugPointsRelatedToModification(resource, position, PROXY_FAULTSEQ_LABEL, action);
             } else {
                 throw new IllegalArgumentException(MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE + container.toString());
@@ -103,8 +104,8 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
 
     }
 
-	@Override
-	public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
+    @Override
+    public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
             String commandArgument) throws CoreException, ESBDebuggerException {
         ProxyServiceImpl proxy = (ProxyServiceImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
         List<Integer> position = null;
@@ -120,8 +121,8 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
                 sequenceType = PROXY_INSEQ_LABEL;
             }
         } else if (container instanceof ProxyServiceFaultContainerEditPart) {
-            position = getMediatorPositionInFaultSeq(proxy.getContainer().getFaultContainer().getMediatorFlow()
-                    .getChildren(), selection);
+            position = getMediatorPositionInFaultSeq(
+                    proxy.getContainer().getFaultContainer().getMediatorFlow().getChildren(), selection);
             sequenceType = PROXY_FAULTSEQ_LABEL;
         } else {
             throw new IllegalArgumentException(MEDIATOR_IN_A_UNKNOWN_POSITION_LOG_MESSAGE + container.toString());
@@ -130,7 +131,7 @@ public class ProxyDebugPointBuilder extends AbstractESBDebugPointBuilder {
         ESBProxyBean proxyBean = new ESBProxyBean(proxy.getName(), sequenceType, new ESBMediatorPosition(position));
         ESBProxyDebugPointMessage proxyDebugPoint = new ESBProxyDebugPointMessage(null, commandArgument,
                 new ESBProxySequenceBean(proxyBean));
-		return proxyDebugPoint;
-	}
+        return proxyDebugPoint;
+    }
 
 }

@@ -24,35 +24,36 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
- * DBReport mediator transformer 
+ * DBReport mediator transformer
  *
  */
 public class DBReportMediatorTransformer extends AbstractDBMediatorTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 
-		information.getParentSequence().addChild(createDBReportMediator(subject));
-		doTransform(information, ((DBReportMediator) subject).getOutputConnector());
+        information.getParentSequence().addChild(createDBReportMediator(subject));
+        doTransform(information, ((DBReportMediator) subject).getOutputConnector());
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		sequence.addChild(createDBReportMediator(subject));
-		doTransformWithinSequence(information,((DBReportMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		
-	}
-	
-	private org.apache.synapse.mediators.db.DBReportMediator createDBReportMediator(EsbNode subject){
-		
-		Assert.isTrue(subject instanceof DBReportMediator,"Unsupported mediator passed in for serialization.");
-		DBReportMediator visualDBReport =(DBReportMediator)subject;
-		
-		org.apache.synapse.mediators.db.DBReportMediator dbReportMediator=new org.apache.synapse.mediators.db.DBReportMediator();
-		transformDBMediator(dbReportMediator,visualDBReport);
-		dbReportMediator.setUseTransaction(visualDBReport.isConnectionUseTransaction());
-		
-		return dbReportMediator;
-	}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        sequence.addChild(createDBReportMediator(subject));
+        doTransformWithinSequence(information, ((DBReportMediator) subject).getOutputConnector().getOutgoingLink(),
+                sequence);
+
+    }
+
+    private org.apache.synapse.mediators.db.DBReportMediator createDBReportMediator(EsbNode subject) {
+
+        Assert.isTrue(subject instanceof DBReportMediator, "Unsupported mediator passed in for serialization.");
+        DBReportMediator visualDBReport = (DBReportMediator) subject;
+
+        org.apache.synapse.mediators.db.DBReportMediator dbReportMediator = new org.apache.synapse.mediators.db.DBReportMediator();
+        transformDBMediator(dbReportMediator, visualDBReport);
+        dbReportMediator.setUseTransaction(visualDBReport.isConnectionUseTransaction());
+
+        return dbReportMediator;
+    }
 
 }

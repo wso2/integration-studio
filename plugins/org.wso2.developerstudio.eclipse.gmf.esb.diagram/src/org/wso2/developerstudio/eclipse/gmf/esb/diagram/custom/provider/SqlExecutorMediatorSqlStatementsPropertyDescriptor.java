@@ -32,25 +32,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
  * Custom property descriptor for SQL statements of DBLookup and DBReport mediators
  */
 public class SqlExecutorMediatorSqlStatementsPropertyDescriptor extends PropertyDescriptor {
- 
-	public SqlExecutorMediatorSqlStatementsPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
- 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				AbstractSqlExecutorMediator sqlExecutorMediator = (AbstractSqlExecutorMediator) object;
-				ConfigureSqlStatementsDialog configurationDialog = new ConfigureSqlStatementsDialog(shell, sqlExecutorMediator, TransactionUtil.getEditingDomain(sqlExecutorMediator));
-				configurationDialog.setBlockOnOpen(true);
-				configurationDialog.open();
-				return null;
-			}
-		};
-	}
- 
+
+    public SqlExecutorMediatorSqlStatementsPropertyDescriptor(Object object,
+            IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                AbstractSqlExecutorMediator sqlExecutorMediator = (AbstractSqlExecutorMediator) object;
+                ConfigureSqlStatementsDialog configurationDialog = new ConfigureSqlStatementsDialog(shell,
+                        sqlExecutorMediator, TransactionUtil.getEditingDomain(sqlExecutorMediator));
+                configurationDialog.setBlockOnOpen(true);
+                configurationDialog.open();
+                return null;
+            }
+        };
+    }
+
 }

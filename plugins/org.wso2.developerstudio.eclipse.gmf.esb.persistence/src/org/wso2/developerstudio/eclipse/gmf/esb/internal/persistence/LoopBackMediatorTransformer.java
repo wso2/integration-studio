@@ -34,45 +34,43 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  */
 public class LoopBackMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		LoopBackMediator visualMediator = (LoopBackMediator) subject;
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        LoopBackMediator visualMediator = (LoopBackMediator) subject;
 
-		information.getParentSequence().addChild(createLoopBackMediator(visualMediator));
+        information.getParentSequence().addChild(createLoopBackMediator(visualMediator));
 
-		// Transform the loopback mediator output data flow path.
-		doTransform(information, visualMediator.getOutputConnector());
-	}
+        // Transform the loopback mediator output data flow path.
+        doTransform(information, visualMediator.getOutputConnector());
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws TransformerException {
-		LoopBackMediator visualMediator = (LoopBackMediator) subject;
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        LoopBackMediator visualMediator = (LoopBackMediator) subject;
 
-		sequence.addChild(createLoopBackMediator(visualMediator));
-		doTransformWithinSequence(information, visualMediator.getOutputConnector()
-				.getOutgoingLink(), sequence);
-	}
+        sequence.addChild(createLoopBackMediator(visualMediator));
+        doTransformWithinSequence(information, visualMediator.getOutputConnector().getOutgoingLink(), sequence);
+    }
 
-	/**
-	 * Create LoopBack mediator from visual mediator.
-	 * 
-	 * @param visualMediator
-	 * @return
-	 */
-	private org.apache.synapse.mediators.builtin.LoopBackMediator createLoopBackMediator(
-			LoopBackMediator visualMediator) {
-		org.apache.synapse.mediators.builtin.LoopBackMediator loopBackMediator = new org.apache.synapse.mediators.builtin.LoopBackMediator();
-		setCommonProperties(loopBackMediator, visualMediator);
-		
-		return loopBackMediator;
-	}
+    /**
+     * Create LoopBack mediator from visual mediator.
+     * 
+     * @param visualMediator
+     * @return
+     */
+    private org.apache.synapse.mediators.builtin.LoopBackMediator createLoopBackMediator(
+            LoopBackMediator visualMediator) {
+        org.apache.synapse.mediators.builtin.LoopBackMediator loopBackMediator = new org.apache.synapse.mediators.builtin.LoopBackMediator();
+        setCommonProperties(loopBackMediator, visualMediator);
+
+        return loopBackMediator;
+    }
 
 }

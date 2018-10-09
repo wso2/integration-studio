@@ -18,25 +18,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultBranchOutputConnect
  *
  * @generated
  */
-public class SwitchDefaultBranchOutputConnectorImpl extends OutputConnectorImpl implements SwitchDefaultBranchOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SwitchDefaultBranchOutputConnectorImpl() {
-		super();
-	}
+public class SwitchDefaultBranchOutputConnectorImpl extends OutputConnectorImpl
+        implements SwitchDefaultBranchOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected SwitchDefaultBranchOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.SWITCH_DEFAULT_BRANCH_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //SwitchDefaultBranchOutputConnectorImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.SWITCH_DEFAULT_BRANCH_OUTPUT_CONNECTOR;
+    }
+
+} // SwitchDefaultBranchOutputConnectorImpl

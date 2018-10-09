@@ -31,186 +31,164 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediator
 
 public class AddTargetBranchDialog extends Dialog {
 
-	private CloneMediator cloneMediator;
-	private Label caseCount;
-	private Text count;
-	private EditPart editpart;
-	private TransactionalEditingDomain editingDomain;
-	private ArrayList<CloneTargetContainer> targetBranches=new ArrayList<CloneTargetContainer>();
-	private ArrayList<CloneMediatorTargetOutputConnector> targetOutputConnectors=new ArrayList<CloneMediatorTargetOutputConnector>();
-	private List<CloneTarget> cloneTargets = new ArrayList<CloneTarget>();
+    private CloneMediator cloneMediator;
+    private Label caseCount;
+    private Text count;
+    private EditPart editpart;
+    private TransactionalEditingDomain editingDomain;
+    private ArrayList<CloneTargetContainer> targetBranches = new ArrayList<CloneTargetContainer>();
+    private ArrayList<CloneMediatorTargetOutputConnector> targetOutputConnectors = new ArrayList<CloneMediatorTargetOutputConnector>();
+    private List<CloneTarget> cloneTargets = new ArrayList<CloneTarget>();
 
+    public AddTargetBranchDialog(Shell parentShell, CloneMediator cloneMediator,
+            TransactionalEditingDomain editingDomain, EditPart editpart) {
+        super(parentShell);
+        this.cloneMediator = cloneMediator;
+        this.editpart = editpart;
+        this.editingDomain = editingDomain;
+    }
 
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
 
-	public AddTargetBranchDialog(Shell parentShell, CloneMediator cloneMediator,
-	                           TransactionalEditingDomain editingDomain, EditPart editpart) {
-		super(parentShell);
-		this.cloneMediator=cloneMediator;
-		this.editpart=editpart;
-		this.editingDomain=editingDomain;
-	}
+        // Set title.
+        newShell.setText("Add Target Branches.");
+    }
 
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        FormLayout mainLayout = new FormLayout();
+        mainLayout.marginHeight = 5;
+        mainLayout.marginWidth = 5;
+        container.setLayout(mainLayout);
 
-		// Set title.
-		newShell.setText("Add Target Branches.");
-	}
+        caseCount = new Label(container, SWT.NONE);
+        {
+            caseCount.setText("Number of branches: ");
+            FormData caseCountLabelLayoutData = new FormData();
+            caseCountLabelLayoutData.top = new FormAttachment(0, 5);
+            caseCountLabelLayoutData.left = new FormAttachment(0);
+            caseCount.setLayoutData(caseCountLabelLayoutData);
+        }
 
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
+        count = new Text(container, SWT.NONE);
+        {
+            FormData countLayoutData = new FormData();
+            countLayoutData.width = 50;
+            countLayoutData.top = new FormAttachment(caseCount, 0, SWT.CENTER);
+            countLayoutData.left = new FormAttachment(caseCount, 5);
+            count.setLayoutData(countLayoutData);
+            int i = cloneMediator.getCloneContainer().getCloneTargetContainer().size();
+            count.setText(Integer.toString(i));
+        }
 
-		caseCount = new Label(container, SWT.NONE);
-		{
-			caseCount.setText("Number of branches: ");
-			FormData caseCountLabelLayoutData = new FormData();
-			caseCountLabelLayoutData.top = new FormAttachment(0, 5);
-			caseCountLabelLayoutData.left = new FormAttachment(0);
-			caseCount.setLayoutData(caseCountLabelLayoutData);
-		}
+        return container;
+    }
 
-		count = new Text(container, SWT.NONE);
-		{
-			FormData countLayoutData = new FormData();
-			countLayoutData.width = 50;
-			countLayoutData.top = new FormAttachment(caseCount, 0, SWT.CENTER);
-			countLayoutData.left = new FormAttachment(caseCount, 5);
-			count.setLayoutData(countLayoutData);
-			int i =cloneMediator.getCloneContainer().getCloneTargetContainer().size();
-			count.setText(Integer.toString(i));
-		}
+    protected void okPressed() {
+        int number = Integer.parseInt(count.getText())
+                - cloneMediator.getCloneContainer().getCloneTargetContainer().size();
 
-		return container;
-	}
-	
-	
-	
-	protected void okPressed() {		
-		int number = Integer.parseInt(count.getText())
-				- cloneMediator.getCloneContainer().getCloneTargetContainer()
-						.size();
+        if (number > 0) {
 
-		if (number > 0) {
+            for (int i = 0; i < number; ++i) {
+                CloneTargetContainer targetContainer = EsbFactory.eINSTANCE.createCloneTargetContainer();
 
-			for (int i = 0; i < number; ++i) {
-				CloneTargetContainer targetContainer = EsbFactory.eINSTANCE
-						.createCloneTargetContainer();
+                AddCommand addCmd = new AddCommand(editingDomain, cloneMediator.getCloneContainer(),
+                        EsbPackage.Literals.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER, targetContainer);
 
-				AddCommand addCmd = new AddCommand(
-						editingDomain,
-						cloneMediator.getCloneContainer(),
-						EsbPackage.Literals.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER,
-						targetContainer);
+                if (addCmd.canExecute()) {
+                    editingDomain.getCommandStack().execute(addCmd);
+                }
 
-				if (addCmd.canExecute()) {
-					editingDomain.getCommandStack().execute(addCmd);
-				}
+                CloneMediatorTargetOutputConnector targetOutputConnector = EsbFactory.eINSTANCE
+                        .createCloneMediatorTargetOutputConnector();
 
-				CloneMediatorTargetOutputConnector targetOutputConnector = EsbFactory.eINSTANCE
-						.createCloneMediatorTargetOutputConnector();
+                AddCommand addTargetOutputConnectorCommand = new AddCommand(editingDomain, cloneMediator,
+                        EsbPackage.Literals.CLONE_MEDIATOR__TARGETS_OUTPUT_CONNECTOR, targetOutputConnector);
 
-				AddCommand addTargetOutputConnectorCommand = new AddCommand(
-						editingDomain,
-						cloneMediator,
-						EsbPackage.Literals.CLONE_MEDIATOR__TARGETS_OUTPUT_CONNECTOR,
-						targetOutputConnector);
+                if (addTargetOutputConnectorCommand.canExecute()) {
+                    editingDomain.getCommandStack().execute(addTargetOutputConnectorCommand);
+                }
 
-				if (addTargetOutputConnectorCommand.canExecute()) {
-					editingDomain.getCommandStack().execute(
-							addTargetOutputConnectorCommand);
-				}
+                CloneTarget target = EsbFactory.eINSTANCE.createCloneTarget();
 
-				CloneTarget target = EsbFactory.eINSTANCE.createCloneTarget();
+                AddCommand addTargetCmd = new AddCommand(editingDomain, cloneMediator,
+                        EsbPackage.Literals.CLONE_MEDIATOR__TARGETS, target);
+                if (addTargetCmd.canExecute()) {
+                    editingDomain.getCommandStack().execute(addTargetCmd);
+                }
 
-				AddCommand addTargetCmd = new AddCommand(editingDomain,
-						cloneMediator,
-						EsbPackage.Literals.CLONE_MEDIATOR__TARGETS, target);
-				if (addTargetCmd.canExecute()) {
-					editingDomain.getCommandStack().execute(addTargetCmd);
-				}
+            }
+        } else {
 
-			}
-		} else {
+            for (int i = 0; i < Math.abs(number); ++i) {
+                CloneTargetContainer lastTargetContainer = cloneMediator.getCloneContainer().getCloneTargetContainer()
+                        .get(cloneMediator.getCloneContainer().getCloneTargetContainer().size() - 1);
 
-			for (int i = 0; i < Math.abs(number); ++i) {
-				CloneTargetContainer lastTargetContainer = cloneMediator
-						.getCloneContainer()
-						.getCloneTargetContainer()
-						.get(cloneMediator.getCloneContainer()
-								.getCloneTargetContainer().size() - 1);
+                targetBranches.add(lastTargetContainer);
 
-				targetBranches.add(lastTargetContainer);
+                DeleteCommand deleteCmd = new DeleteCommand(editingDomain, targetBranches);
 
-				DeleteCommand deleteCmd = new DeleteCommand(editingDomain,
-						targetBranches);
+                if (deleteCmd.canExecute()) {
+                    editingDomain.getCommandStack().execute(deleteCmd);
+                }
 
-				if (deleteCmd.canExecute()) {
-					editingDomain.getCommandStack().execute(deleteCmd);
-				}
+                targetBranches.remove(lastTargetContainer);
 
-				targetBranches.remove(lastTargetContainer);
+                CloneMediatorTargetOutputConnector lastTargetOutputConnector = cloneMediator.getTargetsOutputConnector()
+                        .get(cloneMediator.getTargetsOutputConnector().size() - 1);
 
-				CloneMediatorTargetOutputConnector lastTargetOutputConnector = cloneMediator
-						.getTargetsOutputConnector().get(
-								cloneMediator.getTargetsOutputConnector()
-										.size() - 1);
+                targetOutputConnectors.add(lastTargetOutputConnector);
 
-				targetOutputConnectors.add(lastTargetOutputConnector);
+                DeleteCommand deleteTargetOutputConnectorscmd = new DeleteCommand(editingDomain,
+                        targetOutputConnectors);
 
-				DeleteCommand deleteTargetOutputConnectorscmd = new DeleteCommand(
-						editingDomain, targetOutputConnectors);
+                if (deleteTargetOutputConnectorscmd.canExecute()) {
+                    editingDomain.getCommandStack().execute(deleteTargetOutputConnectorscmd);
+                }
 
-				if (deleteTargetOutputConnectorscmd.canExecute()) {
-					editingDomain.getCommandStack().execute(
-							deleteTargetOutputConnectorscmd);
-				}
+                targetOutputConnectors.remove(lastTargetOutputConnector);
 
-				targetOutputConnectors.remove(lastTargetOutputConnector);
+                CloneTarget lastCloneTarget = cloneMediator.getTargets().get(cloneMediator.getTargets().size() - 1);
 
-				CloneTarget lastCloneTarget = cloneMediator.getTargets().get(
-						cloneMediator.getTargets().size() - 1);
+                cloneTargets.add(lastCloneTarget);
 
-				cloneTargets.add(lastCloneTarget);
+                DeleteCommand deleteTarget = new DeleteCommand(editingDomain, cloneTargets);
 
-				DeleteCommand deleteTarget = new DeleteCommand(editingDomain,
-						cloneTargets);
+                if (deleteTarget.canExecute()) {
 
-				if (deleteTarget.canExecute()) {
+                    editingDomain.getCommandStack().execute(deleteTarget);
+                }
 
-					editingDomain.getCommandStack().execute(deleteTarget);
-				}
+                cloneTargets.remove(lastCloneTarget);
 
-				cloneTargets.remove(lastCloneTarget);
+            }
+        }
+        if (editpart instanceof CloneMediatorEditPart) {
+            if (((CloneMediatorEditPart) editpart).reversed) {
+                CloneMediatorUtils.reorderWhenRevered(editpart);
+            } else {
+                CloneMediatorUtils.reorderWhenForward(editpart);
+            }
+        }
+        super.okPressed();
 
-			}
-		}
-		if (editpart instanceof CloneMediatorEditPart) {
-			if (((CloneMediatorEditPart) editpart).reversed) {
-				CloneMediatorUtils.reorderWhenRevered(editpart);
-			} else {
-				CloneMediatorUtils.reorderWhenForward(editpart);
-			}
-		}
-		super.okPressed();
-		
-		// Rearrange Clone mediator on add or remove of targets.
-		reArrange();
-	}
-	
-	/**
-	 * Rearrange Clone mediator on add or remove of targets.
-	 */
-	private void reArrange(){
-		Display.getCurrent().asyncExec(new Runnable() {			
-			@Override
-			public void run() {	
-				XYRepossition.resizeContainers((IGraphicalEditPart) editpart);
-				XYRepossition.reArrange((IGraphicalEditPart) editpart);	
-			}});
-	}
+        // Rearrange Clone mediator on add or remove of targets.
+        reArrange();
+    }
+
+    /**
+     * Rearrange Clone mediator on add or remove of targets.
+     */
+    private void reArrange() {
+        Display.getCurrent().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                XYRepossition.resizeContainers((IGraphicalEditPart) editpart);
+                XYRepossition.reArrange((IGraphicalEditPart) editpart);
+            }
+        });
+    }
 
 }

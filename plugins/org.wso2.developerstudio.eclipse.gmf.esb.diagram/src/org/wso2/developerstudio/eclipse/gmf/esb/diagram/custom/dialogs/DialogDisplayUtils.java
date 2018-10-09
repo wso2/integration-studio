@@ -21,11 +21,11 @@ import org.eclipse.swt.widgets.Shell;
 
 public class DialogDisplayUtils {
 
-	public static void setPositionInCenter(Shell shell) {
-		Rectangle monitor = shell.getDisplay().getPrimaryMonitor().getBounds();
-		Rectangle dialogRectangle = shell.getBounds();
-		int x = monitor.x + (monitor.width - dialogRectangle.width) / 2;
-		int y = monitor.y + (monitor.height - dialogRectangle.height) / 3;
-		shell.setLocation(x, y);
-	}
+    public static void setPositionInCenter(Shell shell) {
+        Rectangle monitor = shell.getDisplay().getPrimaryMonitor().getBounds();
+        Rectangle dialogRectangle = shell.getBounds();
+        int x = monitor.x + (monitor.width - dialogRectangle.width) / 2;
+        int y = monitor.y + (monitor.height - dialogRectangle.height) / 3;
+        shell.setLocation(x, y);
+    }
 }

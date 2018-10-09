@@ -26,75 +26,75 @@ import org.apache.synapse.message.MessageProducer;
 import org.apache.synapse.message.store.AbstractMessageStore;
 
 public class DummyMessageStore extends AbstractMessageStore {
-	private String className;
+    private String className;
 
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void clear() {
+    public void clear() {
 
-	}
+    }
 
-	public MessageContext get(int id) {
-		return null;
-	}
+    public MessageContext get(int id) {
+        return null;
+    }
 
-	public MessageContext get(String id) {
-		return null;
-	}
+    public MessageContext get(String id) {
+        return null;
+    }
 
-	public List<MessageContext> getAll() {
-		return new ArrayList<MessageContext>();
-	}
+    public List<MessageContext> getAll() {
+        return new ArrayList<MessageContext>();
+    }
 
-	public boolean offer(MessageContext mc) {
-		return false;
-	}
+    public boolean offer(MessageContext mc) {
+        return false;
+    }
 
-	public MessageContext peek() {
-		return null;
-	}
+    public MessageContext peek() {
+        return null;
+    }
 
-	public MessageContext poll() {
-		return null;
-	}
+    public MessageContext poll() {
+        return null;
+    }
 
-	public MessageContext remove() throws NoSuchElementException {
-		return null;
-	}
+    public MessageContext remove() throws NoSuchElementException {
+        return null;
+    }
 
-	public MessageContext remove(String mc) {
-		return null;
-	}
+    public MessageContext remove(String mc) {
+        return null;
+    }
 
-	public String getClassName() {
-		return className;
-	}
+    public String getClassName() {
+        return className;
+    }
 
-	public void setClassName(String className) {
-		this.className = className;
-	}
+    public void setClassName(String className) {
+        this.className = className;
+    }
 
-	public int getType() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public int getType() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	public MessageConsumer newConsumer() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public MessageConsumer newConsumer() throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public MessageConsumer getConsumer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public MessageConsumer getConsumer() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public MessageProducer getProducer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public MessageProducer getProducer() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

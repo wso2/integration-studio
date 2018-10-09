@@ -58,8 +58,7 @@ public class RemovePropertyFromTableDialog extends TitleAreaDialog {
     public void create() {
         super.create();
         setTitle(Messages.RemovePropertyFromTableDialog_DialogTitle);
-        setMessage(Messages.RemovePropertyFromTableDialog_DialogDescription,
-                IMessageProvider.INFORMATION);
+        setMessage(Messages.RemovePropertyFromTableDialog_DialogDescription, IMessageProvider.INFORMATION);
     }
 
     @Override
@@ -76,8 +75,8 @@ public class RemovePropertyFromTableDialog extends TitleAreaDialog {
 
         Label propertyKeyLabel = new Label(container, SWT.NULL);
         propertyKeyLabel.setText(Messages.ClearPropertyDialog_PropertyNameLabel);
-		final Combo propertyKeyValueDropDown = new Combo(container,
-				SWT.DROP_DOWN | SWT.BORDER | SWT.H_SCROLL | SWT.READ_ONLY);
+        final Combo propertyKeyValueDropDown = new Combo(container,
+                SWT.DROP_DOWN | SWT.BORDER | SWT.H_SCROLL | SWT.READ_ONLY);
         propertyKeyValueDropDown.setLayoutData(dataPropertyConfigText);
         for (String key : variablesSet) {
             propertyKeyValueDropDown.add(key);
@@ -114,7 +113,7 @@ public class RemovePropertyFromTableDialog extends TitleAreaDialog {
     protected void cancelPressed() {
         super.cancelPressed();
     }
-    
+
     @Override
     protected void configureShell(Shell newShell) {
         super.configureShell(newShell);

@@ -24,7 +24,7 @@ import org.eclipse.draw2d.text.ParagraphTextLayout;
 import org.eclipse.draw2d.text.TextFlow;
 
 /**
- * Provide a custom label figure with a {@link TextFlow} that calculate and adjust content 
+ * Provide a custom label figure with a {@link TextFlow} that calculate and adjust content
  * according to the width to height ratio
  *
  */

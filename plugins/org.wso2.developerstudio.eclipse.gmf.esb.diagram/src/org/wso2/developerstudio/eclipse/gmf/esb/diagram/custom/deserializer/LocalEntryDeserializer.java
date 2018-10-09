@@ -33,86 +33,86 @@ import static org.apache.synapse.config.Entry.*;
 
 public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, LocalEntry> {
 
-	@Override
-	public LocalEntry createNode(IGraphicalEditPart part, Entry entry) {
-		LocalEntry localEntry = (LocalEntry) DeserializerUtils.createNode(part, EsbElementTypes.LocalEntry_3663);
-		setElementToEdit(localEntry);
+    @Override
+    public LocalEntry createNode(IGraphicalEditPart part, Entry entry) {
+        LocalEntry localEntry = (LocalEntry) DeserializerUtils.createNode(part, EsbElementTypes.LocalEntry_3663);
+        setElementToEdit(localEntry);
 
-		executeSetValueCommand(LOCAL_ENTRY__ENTRY_NAME, entry.getKey());
+        executeSetValueCommand(LOCAL_ENTRY__ENTRY_NAME, entry.getKey());
 
-		if (entry.getType() == URL_SRC) {
-			executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.URL);
-			executeSetValueCommand(LOCAL_ENTRY__VALUE_URL, entry.getSrc().toString());
-		} else if (entry.getType() == INLINE_XML) {
-			executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.XML);
-			executeSetValueCommand(LOCAL_ENTRY__VALUE_XML, entry.getValue().toString());
-		} else if (entry.getType() == INLINE_TEXT) {
-			executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.LITERAL);
-			executeSetValueCommand(LOCAL_ENTRY__VALUE_LITERAL, entry.getValue().toString());
-		} else {
-			/* REMOTE_ENTRY? nothing to do */
-		}
+        if (entry.getType() == URL_SRC) {
+            executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.URL);
+            executeSetValueCommand(LOCAL_ENTRY__VALUE_URL, entry.getSrc().toString());
+        } else if (entry.getType() == INLINE_XML) {
+            executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.XML);
+            executeSetValueCommand(LOCAL_ENTRY__VALUE_XML, entry.getValue().toString());
+        } else if (entry.getType() == INLINE_TEXT) {
+            executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.LITERAL);
+            executeSetValueCommand(LOCAL_ENTRY__VALUE_LITERAL, entry.getValue().toString());
+        } else {
+            /* REMOTE_ENTRY? nothing to do */
+        }
 
-		return localEntry;
-	}
+        return localEntry;
+    }
 
-	@Override
-	public void createNode(FormEditor formEditor, Entry object) {
-		ESBFormEditor LocalEntryFormEditor = (ESBFormEditor) formEditor;
-		LocalEntry localEntry = EsbFactoryImpl.eINSTANCE.createLocalEntry();
-		FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
-		if (formPage instanceof LocalEntryFormPage) {
-			LocalEntryFormPage localEntryPage = (LocalEntryFormPage) formPage;
-			if (localEntryPage.getLocalEntryNameTxt() != null && object.getKey() != null) {
-				localEntryPage.getLocalEntryNameTxt().setText(object.getKey());
-			}
-			if (object.getType() == INLINE_TEXT) {
-				if (localEntryPage.getLocalEntryTypeCombo() != null) {
-					localEntryPage.getLocalEntryTypeCombo().select(0);
-					if (localEntryPage.getLocalEntryTextValue() != null && object.getValue() != null) {
-						String trimmedValue = getTrimmedValue(object.getValue());
-						localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
-						localEntry.setValueLiteral(trimmedValue);
-					}
-				}
-			}
-			if (object.getType() == INLINE_XML) {
-				if (localEntryPage.getLocalEntryTypeCombo() != null) {
-					localEntryPage.getLocalEntryTypeCombo().select(1);
-					if (localEntryPage.getLocalEntryTextValue() != null) {
-						if (object.getValue() != null) {
-							String trimmedValue = getTrimmedValue(object.getValue());
-							localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
-						} else {
-							localEntryPage.getLocalEntryTextValue().setText("value/>");
-						}
-					}
-				}
-			}
-			if (object.getType() == URL_SRC) {
-				if (localEntryPage.getLocalEntryTypeCombo() != null) {
-					localEntryPage.getLocalEntryTypeCombo().select(2);
-					if (localEntryPage.getLocalEntryTextValue() != null) {
-						if (object.getSrc() != null) {
-						localEntryPage.getLocalEntryTextValue().setText(object.getSrc().toString());
-						} else {
-							localEntryPage.getLocalEntryTextValue().setText("file:/path/to/sample");
-						}
-					}
-				}
-			}
-		}
-	}
+    @Override
+    public void createNode(FormEditor formEditor, Entry object) {
+        ESBFormEditor LocalEntryFormEditor = (ESBFormEditor) formEditor;
+        LocalEntry localEntry = EsbFactoryImpl.eINSTANCE.createLocalEntry();
+        FormPage formPage = LocalEntryFormEditor.getFormPageForArtifact(ArtifactType.LOCAL_ENTRY);
+        if (formPage instanceof LocalEntryFormPage) {
+            LocalEntryFormPage localEntryPage = (LocalEntryFormPage) formPage;
+            if (localEntryPage.getLocalEntryNameTxt() != null && object.getKey() != null) {
+                localEntryPage.getLocalEntryNameTxt().setText(object.getKey());
+            }
+            if (object.getType() == INLINE_TEXT) {
+                if (localEntryPage.getLocalEntryTypeCombo() != null) {
+                    localEntryPage.getLocalEntryTypeCombo().select(0);
+                    if (localEntryPage.getLocalEntryTextValue() != null && object.getValue() != null) {
+                        String trimmedValue = getTrimmedValue(object.getValue());
+                        localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
+                        localEntry.setValueLiteral(trimmedValue);
+                    }
+                }
+            }
+            if (object.getType() == INLINE_XML) {
+                if (localEntryPage.getLocalEntryTypeCombo() != null) {
+                    localEntryPage.getLocalEntryTypeCombo().select(1);
+                    if (localEntryPage.getLocalEntryTextValue() != null) {
+                        if (object.getValue() != null) {
+                            String trimmedValue = getTrimmedValue(object.getValue());
+                            localEntryPage.getLocalEntryTextValue().setText(trimmedValue);
+                        } else {
+                            localEntryPage.getLocalEntryTextValue().setText("value/>");
+                        }
+                    }
+                }
+            }
+            if (object.getType() == URL_SRC) {
+                if (localEntryPage.getLocalEntryTypeCombo() != null) {
+                    localEntryPage.getLocalEntryTypeCombo().select(2);
+                    if (localEntryPage.getLocalEntryTextValue() != null) {
+                        if (object.getSrc() != null) {
+                            localEntryPage.getLocalEntryTextValue().setText(object.getSrc().toString());
+                        } else {
+                            localEntryPage.getLocalEntryTextValue().setText("file:/path/to/sample");
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-	/**
-	 * returns the trimmed value
-	 * 
-	 * @param object
-	 *            Entry object value
-	 * @return trimmed value
-	 */
-	private String getTrimmedValue(Object value) {
-		return value.toString().replaceAll("[\\t\\n\\r]", "");
-	}
+    /**
+     * returns the trimmed value
+     * 
+     * @param object
+     *            Entry object value
+     * @return trimmed value
+     */
+    private String getTrimmedValue(Object value) {
+        return value.toString().replaceAll("[\\t\\n\\r]", "");
+    }
 
 }

@@ -16,30 +16,29 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureProxyServiceDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureSwitchMediatorDialog;
 
-public class ConfigureProxyServiceAction extends ConfigureEsbNodeAction{
+public class ConfigureProxyServiceAction extends ConfigureEsbNodeAction {
 
-	public ConfigureProxyServiceAction(IWorkbenchPart part) {
-		super(part);
-		setId("configure-proxy-service-action-id");
-		setText("Configure...");
-		setToolTipText("Configure proxy service.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
+    public ConfigureProxyServiceAction(IWorkbenchPart part) {
+        super(part);
+        setId("configure-proxy-service-action-id");
+        setText("Configure...");
+        setToolTipText("Configure proxy service.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-	
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof ProxyService, "Invalid selection.");
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-		Shell shell = Display.getDefault().getActiveShell();		
-		Dialog ConfigureProxyServiceDialog = new ConfigureProxyServiceDialog(shell, (ProxyService) selectedObj);
-		ConfigureProxyServiceDialog.setBlockOnOpen(true);
-		ConfigureProxyServiceDialog.open();
-		
-	}
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof ProxyService, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        Dialog ConfigureProxyServiceDialog = new ConfigureProxyServiceDialog(shell, (ProxyService) selectedObj);
+        ConfigureProxyServiceDialog.setBlockOnOpen(true);
+        ConfigureProxyServiceDialog.open();
+
+    }
 
 }

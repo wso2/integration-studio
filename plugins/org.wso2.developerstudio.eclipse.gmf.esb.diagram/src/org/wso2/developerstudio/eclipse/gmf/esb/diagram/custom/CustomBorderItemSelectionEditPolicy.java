@@ -21,14 +21,14 @@ import java.util.List;
 
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 
-public class CustomBorderItemSelectionEditPolicy extends
-		BorderItemSelectionEditPolicy {
+public class CustomBorderItemSelectionEditPolicy extends BorderItemSelectionEditPolicy {
 
-	@Override
-	protected List createSelectionHandles() {
-		List list = new ArrayList();
-		//createMoveHandle(list); //no need to add this, even without this it supports moving, this adds a border therefore dnt add
-		return list;
-	}
-	
+    @Override
+    protected List createSelectionHandles() {
+        List list = new ArrayList();
+        // createMoveHandle(list); //no need to add this, even without this it supports moving, this adds a border
+        // therefore dnt add
+        return list;
+    }
+
 }

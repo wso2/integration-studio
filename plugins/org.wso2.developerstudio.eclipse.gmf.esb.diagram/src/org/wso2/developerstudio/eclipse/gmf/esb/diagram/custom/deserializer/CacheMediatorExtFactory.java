@@ -45,113 +45,114 @@ public class CacheMediatorExtFactory extends CacheMediatorFactory {
     private static final QName PROTOCOL_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "protocol");
     private static final long DEFAULT_TIMEOUT = 5000L;
 
-	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
+    public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
-		CacheMediator cacheMediator = new CacheMediator(new CacheManager());
+        CacheMediator cacheMediator = new CacheMediator(new CacheManager());
 
-		OMAttribute collectorAttr = elem.getAttribute(ATT_COLLECTOR);
-		if (collectorAttr != null && collectorAttr.getAttributeValue() != null
-				&& "true".equals(collectorAttr.getAttributeValue())) {
-			cacheMediator.setCollector(true);
+        OMAttribute collectorAttr = elem.getAttribute(ATT_COLLECTOR);
+        if (collectorAttr != null && collectorAttr.getAttributeValue() != null
+                && "true".equals(collectorAttr.getAttributeValue())) {
+            cacheMediator.setCollector(true);
 
-		} else {
-			cacheMediator.setCollector(false);
-			OMAttribute timeoutAttr = elem.getAttribute(ATT_TIMEOUT);
-			if (timeoutAttr != null && timeoutAttr.getAttributeValue() != null) {
-				cacheMediator.setTimeout(Long.parseLong(timeoutAttr.getAttributeValue()));
-			} else {
-				cacheMediator.setTimeout(DEFAULT_TIMEOUT);
-			}
+        } else {
+            cacheMediator.setCollector(false);
+            OMAttribute timeoutAttr = elem.getAttribute(ATT_TIMEOUT);
+            if (timeoutAttr != null && timeoutAttr.getAttributeValue() != null) {
+                cacheMediator.setTimeout(Long.parseLong(timeoutAttr.getAttributeValue()));
+            } else {
+                cacheMediator.setTimeout(DEFAULT_TIMEOUT);
+            }
 
-			OMAttribute maxMessageSizeAttr = elem.getAttribute(ATT_MAX_MSG_SIZE);
-			if (maxMessageSizeAttr != null && maxMessageSizeAttr.getAttributeValue() != null) {
-				cacheMediator.setMaxMessageSize(Integer.parseInt(maxMessageSizeAttr.getAttributeValue()));
-			}
+            OMAttribute maxMessageSizeAttr = elem.getAttribute(ATT_MAX_MSG_SIZE);
+            if (maxMessageSizeAttr != null && maxMessageSizeAttr.getAttributeValue() != null) {
+                cacheMediator.setMaxMessageSize(Integer.parseInt(maxMessageSizeAttr.getAttributeValue()));
+            }
 
-			for (Iterator itr = elem.getChildrenWithName(PROTOCOL_Q); itr.hasNext();) {
-				OMElement implElem = (OMElement) itr.next();
-				OMAttribute typeAttr = implElem.getAttribute(ATT_TYPE);
-				if (typeAttr != null && typeAttr.getAttributeValue() != null) {
-					String protocolType = typeAttr.getAttributeValue();
-					cacheMediator.setProtocolType(protocolType);
-				}
-				for (Iterator itrChildren = implElem.getChildrenWithLocalName("methods"); itrChildren.hasNext();) {
-					OMElement child = (OMElement) itrChildren.next();
-					cacheMediator.setHTTPMethodsToCache(child.getText().split(","));
-				}
-				for (Iterator itrChildren = implElem.getChildrenWithLocalName("headersToExcludeInHash"); itrChildren.hasNext();) {
-					OMElement child = (OMElement) itrChildren.next();
-					cacheMediator.setHeadersToExcludeInHash(child.getText().split(","));
-				}
-				for (Iterator itrChildren = implElem.getChildrenWithLocalName("responseCodes"); itrChildren
-						.hasNext();) {
-					OMElement child = (OMElement) itrChildren.next();
-					cacheMediator.setResponseCodes(child.getText());
-				}
-				for (Iterator itrChildren = implElem.getChildrenWithLocalName("hashGenerator"); itrChildren
-						.hasNext();) {
-					OMElement child = (OMElement) itrChildren.next();
+            for (Iterator itr = elem.getChildrenWithName(PROTOCOL_Q); itr.hasNext();) {
+                OMElement implElem = (OMElement) itr.next();
+                OMAttribute typeAttr = implElem.getAttribute(ATT_TYPE);
+                if (typeAttr != null && typeAttr.getAttributeValue() != null) {
+                    String protocolType = typeAttr.getAttributeValue();
+                    cacheMediator.setProtocolType(protocolType);
+                }
+                for (Iterator itrChildren = implElem.getChildrenWithLocalName("methods"); itrChildren.hasNext();) {
+                    OMElement child = (OMElement) itrChildren.next();
+                    cacheMediator.setHTTPMethodsToCache(child.getText().split(","));
+                }
+                for (Iterator itrChildren = implElem.getChildrenWithLocalName("headersToExcludeInHash"); itrChildren
+                        .hasNext();) {
+                    OMElement child = (OMElement) itrChildren.next();
+                    cacheMediator.setHeadersToExcludeInHash(child.getText().split(","));
+                }
+                for (Iterator itrChildren = implElem.getChildrenWithLocalName("responseCodes"); itrChildren
+                        .hasNext();) {
+                    OMElement child = (OMElement) itrChildren.next();
+                    cacheMediator.setResponseCodes(child.getText());
+                }
+                for (Iterator itrChildren = implElem.getChildrenWithLocalName("hashGenerator"); itrChildren
+                        .hasNext();) {
+                    OMElement child = (OMElement) itrChildren.next();
 
-					if (child.getText() != null && !"".equals(child.getText())) {
-						try {
-							Class generator = Class.forName(child.getText());
-							Object generatorOject = generator.newInstance();
-							if (generatorOject instanceof DigestGenerator) {
-								cacheMediator.setDigestGenerator((DigestGenerator) generatorOject);
-							} else {
-								cacheMediator.setDigestGenerator(new HttpRequestHashGenerator());
-							}
-						} catch (ClassNotFoundException e) {
-							handleException("Unable to load the hash generator class", e);
-						} catch (IllegalAccessException e) {
-							handleException("Unable to access the hash generator class", e);
-						} catch (InstantiationException e) {
-							handleException("Unable to instantiate the hash generator class", e);
-						}
-					}
-				}
-				for (Iterator iterator = implElem.getChildrenWithLocalName("enableCacheControl"); iterator.hasNext();) {
-					OMElement child = (OMElement) iterator.next();
-					if (null != child.getText() && !"".equals(child.getText())
-							&& (child.getText().equals("true") || child.getText().equals("false"))) {
-						cacheMediator.setCacheControlEnabled(Boolean.parseBoolean(child.getText()));
-						break;
-					}
-				}
-				for (Iterator iterator = implElem.getChildrenWithLocalName("includeAgeHeader"); iterator.hasNext();) {
-					OMElement child = (OMElement) iterator.next();
-					if (null != child.getText() && !"".equals(child.getText())
-							&& (child.getText().equals("true") || child.getText().equals("false"))) {
-						cacheMediator.setAddAgeHeaderEnabled(Boolean.parseBoolean(child.getText()));
-						break;
-					}
-				}
-			}
+                    if (child.getText() != null && !"".equals(child.getText())) {
+                        try {
+                            Class generator = Class.forName(child.getText());
+                            Object generatorOject = generator.newInstance();
+                            if (generatorOject instanceof DigestGenerator) {
+                                cacheMediator.setDigestGenerator((DigestGenerator) generatorOject);
+                            } else {
+                                cacheMediator.setDigestGenerator(new HttpRequestHashGenerator());
+                            }
+                        } catch (ClassNotFoundException e) {
+                            handleException("Unable to load the hash generator class", e);
+                        } catch (IllegalAccessException e) {
+                            handleException("Unable to access the hash generator class", e);
+                        } catch (InstantiationException e) {
+                            handleException("Unable to instantiate the hash generator class", e);
+                        }
+                    }
+                }
+                for (Iterator iterator = implElem.getChildrenWithLocalName("enableCacheControl"); iterator.hasNext();) {
+                    OMElement child = (OMElement) iterator.next();
+                    if (null != child.getText() && !"".equals(child.getText())
+                            && (child.getText().equals("true") || child.getText().equals("false"))) {
+                        cacheMediator.setCacheControlEnabled(Boolean.parseBoolean(child.getText()));
+                        break;
+                    }
+                }
+                for (Iterator iterator = implElem.getChildrenWithLocalName("includeAgeHeader"); iterator.hasNext();) {
+                    OMElement child = (OMElement) iterator.next();
+                    if (null != child.getText() && !"".equals(child.getText())
+                            && (child.getText().equals("true") || child.getText().equals("false"))) {
+                        cacheMediator.setAddAgeHeaderEnabled(Boolean.parseBoolean(child.getText()));
+                        break;
+                    }
+                }
+            }
 
-			OMElement onCacheHitElem = elem.getFirstChildWithName(ON_CACHE_HIT_Q);
-			if (onCacheHitElem != null) {
-				OMAttribute sequenceAttr = onCacheHitElem.getAttribute(ATT_SEQUENCE);
-				if (sequenceAttr != null && sequenceAttr.getAttributeValue() != null) {
-					cacheMediator.setOnCacheHitRef(sequenceAttr.getAttributeValue());
-				} else if (onCacheHitElem.getFirstElement() != null) {
-					cacheMediator.setOnCacheHitSequence(
-							new SequenceMediatorFactory().createAnonymousSequence(onCacheHitElem, properties));
-				}
-			}
+            OMElement onCacheHitElem = elem.getFirstChildWithName(ON_CACHE_HIT_Q);
+            if (onCacheHitElem != null) {
+                OMAttribute sequenceAttr = onCacheHitElem.getAttribute(ATT_SEQUENCE);
+                if (sequenceAttr != null && sequenceAttr.getAttributeValue() != null) {
+                    cacheMediator.setOnCacheHitRef(sequenceAttr.getAttributeValue());
+                } else if (onCacheHitElem.getFirstElement() != null) {
+                    cacheMediator.setOnCacheHitSequence(
+                            new SequenceMediatorFactory().createAnonymousSequence(onCacheHitElem, properties));
+                }
+            }
 
-			for (Iterator itr = elem.getChildrenWithName(IMPLEMENTATION_Q); itr.hasNext();) {
-				OMElement implElem = (OMElement) itr.next();
-				OMAttribute sizeAttr = implElem.getAttribute(ATT_SIZE);
-				if (sizeAttr != null && sizeAttr.getAttributeValue() != null) {
-					cacheMediator.setInMemoryCacheSize(Integer.parseInt(sizeAttr.getAttributeValue()));
-				} else {
-					cacheMediator.setInMemoryCacheSize(-1);
-				}
-			}
-		}
+            for (Iterator itr = elem.getChildrenWithName(IMPLEMENTATION_Q); itr.hasNext();) {
+                OMElement implElem = (OMElement) itr.next();
+                OMAttribute sizeAttr = implElem.getAttribute(ATT_SIZE);
+                if (sizeAttr != null && sizeAttr.getAttributeValue() != null) {
+                    cacheMediator.setInMemoryCacheSize(Integer.parseInt(sizeAttr.getAttributeValue()));
+                } else {
+                    cacheMediator.setInMemoryCacheSize(-1);
+                }
+            }
+        }
 
-		addAllCommentChildrenToList(elem, cacheMediator.getCommentsList());
+        addAllCommentChildrenToList(elem, cacheMediator.getCommentsList());
 
-		return cacheMediator;
-	}
+        return cacheMediator;
+    }
 }

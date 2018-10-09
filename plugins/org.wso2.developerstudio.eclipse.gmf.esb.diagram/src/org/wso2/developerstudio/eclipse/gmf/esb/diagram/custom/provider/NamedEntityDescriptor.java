@@ -23,150 +23,149 @@ import java.util.regex.Pattern;
  * references.
  */
 public class NamedEntityDescriptor {
-	/**
-	 * Descriptor literal pattern.
-	 */
-	private static final Pattern descriptorPattern = Pattern.compile("(.*)\\[([^\\]]*+)\\]");
-	
-	/**
-	 * Entity name.
-	 */
-	private String name;
-	
-	/**
-	 * Entity type.
-	 */
-	private NamedEntityType type;
-	
-	/**
-	 * Identifies the named entity type.
-	 */
-	public enum NamedEntityType {
-		/**
-		 * Sequence.
-		 */
-		SEQUENCE("sequence"),
-		
-		/**
-		 * Endpoint.
-		 */
-		ENDPOINT("endpoint"),
-		
-		/**
-		 * Proxy service.
-		 */
-		PROXY_SERVICE("proxy-service"),
-		
-		/**
-		 * Local entry.
-		 */
-		LOCAL_ENTRY("local-entry");
-		
-		/**
-		 * Array of enum constants.
-		 */
-		private static final NamedEntityType [] values = new NamedEntityType [] {
-				SEQUENCE, ENDPOINT, PROXY_SERVICE, LOCAL_ENTRY,
-		}; 
-		
-		/**
-		 * Quantifier used to identify the entity type.
-		 */
-		private String quantifier;
-		
-		/**
-		 * {@link NamedEntityType} enum constructor.
-		 * 
-		 * @param quantifier string used to identify the entity type.
-		 */
-		private NamedEntityType(String quantifier) {
-			this.quantifier = quantifier;
-		}
-		
-		/**
-		 * @return the quantifier.
-		 */
-		public String getQuantifier() {
-			return quantifier;
-		}
-		
-		/**
-		 * {@inheritDoc}
-		 */
-		public String toString() {
-			return getQuantifier();
-		}
-		
-		/**
-		 * Utility method for constructing a {@link NamedEntityType} from a
-		 * quantifier string.
-		 * 
-		 * @param quantifier
-		 *            quantifier string.
-		 * @return a {@link NamedEntityType} corresponding to the specified
-		 *         quantifier string or null.
-		 */
-		public static NamedEntityType get(String quantifier) {
-			for (int i = 0; i < values.length; i++) {
-				if (values[i].getQuantifier().equals(quantifier)) {
-					return values[i];
-				}
-			}
-			return null;
-		}
-	}
-	
-	/**
-	 * Creates a new {@link NamedEntityDescriptor} instance.
-	 * 
-	 * @param name entity name.
-	 * @param type entity type.
-	 */
-	public NamedEntityDescriptor(String name, NamedEntityType type) {
-		this.name = name;
-		this.type = type;
-	}
-	
-	/**
-	 * @return entity name.
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * Descriptor literal pattern.
+     */
+    private static final Pattern descriptorPattern = Pattern.compile("(.*)\\[([^\\]]*+)\\]");
 
-	/**
-	 * @return entity type.
-	 */
-	public NamedEntityType getType() {
-		return type;
-	}
+    /**
+     * Entity name.
+     */
+    private String name;
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String toString() {
-		return String.format("%s [%s]", getName(), getType());
-	}
+    /**
+     * Entity type.
+     */
+    private NamedEntityType type;
 
-	/**
-	 * Utility method for constructing a {@link NamedEntityDescriptor} from the
-	 * corresponding string literal.
-	 * 
-	 * @param descriptorString
-	 *            descriptor literal string.
-	 * @return {@link NamedEntityDescriptor} corresponding to the input string
-	 *         or null.
-	 */
-	public static NamedEntityDescriptor fromString(String descriptorString) {
-		Matcher matcher = descriptorPattern.matcher(descriptorString);
-		if (matcher.matches()) {
-			String nameString = matcher.group(1);
-			String typeString = matcher.group(2);
-			NamedEntityType entityType = NamedEntityType.get(typeString);
-			if (null != entityType) {
-				return new NamedEntityDescriptor(nameString, entityType);
-			}
-		}
-		return null;
-	}
+    /**
+     * Identifies the named entity type.
+     */
+    public enum NamedEntityType {
+        /**
+         * Sequence.
+         */
+        SEQUENCE("sequence"),
+
+        /**
+         * Endpoint.
+         */
+        ENDPOINT("endpoint"),
+
+        /**
+         * Proxy service.
+         */
+        PROXY_SERVICE("proxy-service"),
+
+        /**
+         * Local entry.
+         */
+        LOCAL_ENTRY("local-entry");
+
+        /**
+         * Array of enum constants.
+         */
+        private static final NamedEntityType[] values = new NamedEntityType[] { SEQUENCE, ENDPOINT, PROXY_SERVICE,
+                LOCAL_ENTRY, };
+
+        /**
+         * Quantifier used to identify the entity type.
+         */
+        private String quantifier;
+
+        /**
+         * {@link NamedEntityType} enum constructor.
+         * 
+         * @param quantifier string used to identify the entity type.
+         */
+        private NamedEntityType(String quantifier) {
+            this.quantifier = quantifier;
+        }
+
+        /**
+         * @return the quantifier.
+         */
+        public String getQuantifier() {
+            return quantifier;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        public String toString() {
+            return getQuantifier();
+        }
+
+        /**
+         * Utility method for constructing a {@link NamedEntityType} from a
+         * quantifier string.
+         * 
+         * @param quantifier
+         *            quantifier string.
+         * @return a {@link NamedEntityType} corresponding to the specified
+         *         quantifier string or null.
+         */
+        public static NamedEntityType get(String quantifier) {
+            for (int i = 0; i < values.length; i++) {
+                if (values[i].getQuantifier().equals(quantifier)) {
+                    return values[i];
+                }
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Creates a new {@link NamedEntityDescriptor} instance.
+     * 
+     * @param name entity name.
+     * @param type entity type.
+     */
+    public NamedEntityDescriptor(String name, NamedEntityType type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    /**
+     * @return entity name.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return entity type.
+     */
+    public NamedEntityType getType() {
+        return type;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String toString() {
+        return String.format("%s [%s]", getName(), getType());
+    }
+
+    /**
+     * Utility method for constructing a {@link NamedEntityDescriptor} from the
+     * corresponding string literal.
+     * 
+     * @param descriptorString
+     *            descriptor literal string.
+     * @return {@link NamedEntityDescriptor} corresponding to the input string
+     *         or null.
+     */
+    public static NamedEntityDescriptor fromString(String descriptorString) {
+        Matcher matcher = descriptorPattern.matcher(descriptorString);
+        if (matcher.matches()) {
+            String nameString = matcher.group(1);
+            String typeString = matcher.group(2);
+            NamedEntityType entityType = NamedEntityType.get(typeString);
+            if (null != entityType) {
+                return new NamedEntityDescriptor(nameString, entityType);
+            }
+        }
+        return null;
+    }
 }

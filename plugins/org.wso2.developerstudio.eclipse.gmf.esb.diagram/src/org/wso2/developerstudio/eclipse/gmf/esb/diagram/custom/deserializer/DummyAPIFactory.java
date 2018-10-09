@@ -40,145 +40,144 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Dumm
  * 
  */
 public class DummyAPIFactory {
-	private static final Log log = LogFactory.getLog(APIFactory.class);
+    private static final Log log = LogFactory.getLog(APIFactory.class);
 
-	static final QName PROP_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "property");
+    static final QName PROP_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "property");
 
-	static final QName ATT_NAME = new QName("name");
+    static final QName ATT_NAME = new QName("name");
 
-	static final QName ATT_VALUE = new QName("value");
+    static final QName ATT_VALUE = new QName("value");
 
-	public static API createAPI(OMElement apiElt, boolean withSynapse) {
-		OMAttribute nameAtt = apiElt.getAttribute(new QName("name"));
-		OMAttribute contextAtt = apiElt.getAttribute(new QName("context"));
-		API api;
+    public static API createAPI(OMElement apiElt, boolean withSynapse) {
+        OMAttribute nameAtt = apiElt.getAttribute(new QName("name"));
+        OMAttribute contextAtt = apiElt.getAttribute(new QName("context"));
+        API api;
 
-		if (withSynapse) {
-			if (nameAtt == null || "".equals(nameAtt.getAttributeValue())) {
-				handleException("Attribute \"name\" is not defined for the API definition. \n"
-				        + "Key value should be equal to API artifact .xml file name.");
-			}
+        if (withSynapse) {
+            if (nameAtt == null || "".equals(nameAtt.getAttributeValue())) {
+                handleException("Attribute \"name\" is not defined for the API definition. \n"
+                        + "Key value should be equal to API artifact .xml file name.");
+            }
 
-			if (contextAtt == null || "".equals(contextAtt.getAttributeValue())) {
-				handleException("Attribute \"context\" is required for the API definition");
-			}
-			api = new API(nameAtt.getAttributeValue(), contextAtt.getAttributeValue());
-			api.configure(new AspectConfiguration(nameAtt.getAttributeValue()));
-			
-		} else {
-		    String nameValue = "";
-		    String contextValue = "/";
-		    if (nameAtt != null) {
-		        nameValue = nameAtt.getAttributeValue();
-		    }
-		    if (contextAtt != null) {
-		        contextValue = contextAtt.getAttributeValue();
-		    }
-		    api = new API(nameValue, contextValue);
-		    api.configure(new AspectConfiguration(nameValue));
-		}
-		
-		OMAttribute traceAtt = apiElt.getAttribute(new QName("trace"));
-		if (traceAtt != null && "enable".equals(traceAtt.getAttributeValue())) {
-			api.getAspectConfiguration().setTracingEnabled(true);
-		}
-		
-		OMAttribute statisticsAtt = apiElt.getAttribute(new QName("statistics"));
-		if (statisticsAtt != null && "enable".equals(statisticsAtt.getAttributeValue())) {
-			api.getAspectConfiguration().setStatisticsEnable(true);
-		}
-		
-		OMAttribute hostAtt = apiElt.getAttribute(new QName("hostname"));
-		if (hostAtt != null && !"".equals(hostAtt.getAttributeValue())) {
-			api.setHost(hostAtt.getAttributeValue());
-		}
+            if (contextAtt == null || "".equals(contextAtt.getAttributeValue())) {
+                handleException("Attribute \"context\" is required for the API definition");
+            }
+            api = new API(nameAtt.getAttributeValue(), contextAtt.getAttributeValue());
+            api.configure(new AspectConfiguration(nameAtt.getAttributeValue()));
 
-		VersionStrategy vStrategy = VersionStrategyFactory.createVersioningStrategy(api, apiElt);
+        } else {
+            String nameValue = "";
+            String contextValue = "/";
+            if (nameAtt != null) {
+                nameValue = nameAtt.getAttributeValue();
+            }
+            if (contextAtt != null) {
+                contextValue = contextAtt.getAttributeValue();
+            }
+            api = new API(nameValue, contextValue);
+            api.configure(new AspectConfiguration(nameValue));
+        }
 
-		api.setVersionStrategy(vStrategy);
+        OMAttribute traceAtt = apiElt.getAttribute(new QName("trace"));
+        if (traceAtt != null && "enable".equals(traceAtt.getAttributeValue())) {
+            api.getAspectConfiguration().setTracingEnabled(true);
+        }
 
-		OMAttribute portAtt = apiElt.getAttribute(new QName("port"));
-		if (portAtt != null && !"".equals(portAtt.getAttributeValue())) {
-			api.setPort(Integer.parseInt(portAtt.getAttributeValue()));
-		}
+        OMAttribute statisticsAtt = apiElt.getAttribute(new QName("statistics"));
+        if (statisticsAtt != null && "enable".equals(statisticsAtt.getAttributeValue())) {
+            api.getAspectConfiguration().setStatisticsEnable(true);
+        }
 
-		Iterator resources = apiElt.getChildrenWithName(new QName(
-				XMLConfigConstants.SYNAPSE_NAMESPACE, "resource"));
-		boolean noResources = true;
-		while (resources.hasNext()) {
-			OMElement resourceElt = (OMElement) resources.next();
-			if (withSynapse) {
-				api.addResource(ResourceFactory.createResource(resourceElt));
-			} else {
-				api.addResource(DummyResourceFactory.createResource(resourceElt));
-			}
-			noResources = false;
-		}
+        OMAttribute hostAtt = apiElt.getAttribute(new QName("hostname"));
+        if (hostAtt != null && !"".equals(hostAtt.getAttributeValue())) {
+            api.setHost(hostAtt.getAttributeValue());
+        }
 
-		if (noResources) {
-			handleException("An API must contain at least one resource definition");
-		}
+        VersionStrategy vStrategy = VersionStrategyFactory.createVersioningStrategy(api, apiElt);
 
-		OMElement handlersElt = apiElt.getFirstChildWithName(new QName(
-				XMLConfigConstants.SYNAPSE_NAMESPACE, "handlers"));
-		if (handlersElt != null) {
-			Iterator handlers = handlersElt.getChildrenWithName(new QName(
-					XMLConfigConstants.SYNAPSE_NAMESPACE, "handler"));
-			while (handlers.hasNext()) {
-				OMElement handlerElt = (OMElement) handlers.next();
-				defineHandler(api, handlerElt);
-			}
-		}
+        api.setVersionStrategy(vStrategy);
 
-		return api;
-	}
+        OMAttribute portAtt = apiElt.getAttribute(new QName("port"));
+        if (portAtt != null && !"".equals(portAtt.getAttributeValue())) {
+            api.setPort(Integer.parseInt(portAtt.getAttributeValue()));
+        }
 
-	private static void defineHandler(API api, OMElement handlerElt) {
-		String handlerClass = handlerElt.getAttributeValue(new QName("class"));
-		if (handlerClass == null || "".equals(handlerClass)) {
-			handleException("A handler element must have a class attribute");
-		}
+        Iterator resources = apiElt.getChildrenWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "resource"));
+        boolean noResources = true;
+        while (resources.hasNext()) {
+            OMElement resourceElt = (OMElement) resources.next();
+            if (withSynapse) {
+                api.addResource(ResourceFactory.createResource(resourceElt));
+            } else {
+                api.addResource(DummyResourceFactory.createResource(resourceElt));
+            }
+            noResources = false;
+        }
 
-		try {
-			DummyHandler dummyHandler = new DummyHandler();
-			dummyHandler.setClassName(handlerClass);
-			api.addHandler(dummyHandler);
+        if (noResources) {
+            handleException("An API must contain at least one resource definition");
+        }
 
-			for (Iterator it = handlerElt.getChildrenWithName(PROP_Q); it.hasNext();) {
-				OMElement child = (OMElement) it.next();
+        OMElement handlersElt = apiElt
+                .getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "handlers"));
+        if (handlersElt != null) {
+            Iterator handlers = handlersElt
+                    .getChildrenWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "handler"));
+            while (handlers.hasNext()) {
+                OMElement handlerElt = (OMElement) handlers.next();
+                defineHandler(api, handlerElt);
+            }
+        }
 
-				String propName = child.getAttribute(ATT_NAME).getAttributeValue();
-				if (propName == null) {
-					handleException("A Class mediator property must specify the name attribute");
-				} else {
-					if (child.getAttribute(ATT_VALUE) != null) {
-						String value = child.getAttribute(ATT_VALUE).getAttributeValue();
-						dummyHandler.addProperty(propName, value);
-					} else {
-						OMNode omElt = child.getFirstElement();
-						if (omElt != null) {
-							dummyHandler.addProperty(propName, omElt);
-						} else {
-							handleException("A Class mediator property must specify "
-									+ "name and value attributes, or a name and a child XML fragment");
-						}
-					}
-				}
-			}
+        return api;
+    }
 
-		} catch (Exception e) {
-			handleException("Error initializing API handler: " + handlerClass, e);
-		}
-	}
+    private static void defineHandler(API api, OMElement handlerElt) {
+        String handlerClass = handlerElt.getAttributeValue(new QName("class"));
+        if (handlerClass == null || "".equals(handlerClass)) {
+            handleException("A handler element must have a class attribute");
+        }
 
-	private static void handleException(String msg) {
-		log.error(msg);
-		throw new SynapseException(msg);
-	}
+        try {
+            DummyHandler dummyHandler = new DummyHandler();
+            dummyHandler.setClassName(handlerClass);
+            api.addHandler(dummyHandler);
 
-	private static void handleException(String msg, Exception e) {
-		log.error(msg, e);
-		throw new SynapseException(msg, e);
-	}
+            for (Iterator it = handlerElt.getChildrenWithName(PROP_Q); it.hasNext();) {
+                OMElement child = (OMElement) it.next();
+
+                String propName = child.getAttribute(ATT_NAME).getAttributeValue();
+                if (propName == null) {
+                    handleException("A Class mediator property must specify the name attribute");
+                } else {
+                    if (child.getAttribute(ATT_VALUE) != null) {
+                        String value = child.getAttribute(ATT_VALUE).getAttributeValue();
+                        dummyHandler.addProperty(propName, value);
+                    } else {
+                        OMNode omElt = child.getFirstElement();
+                        if (omElt != null) {
+                            dummyHandler.addProperty(propName, omElt);
+                        } else {
+                            handleException("A Class mediator property must specify "
+                                    + "name and value attributes, or a name and a child XML fragment");
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            handleException("Error initializing API handler: " + handlerClass, e);
+        }
+    }
+
+    private static void handleException(String msg) {
+        log.error(msg);
+        throw new SynapseException(msg);
+    }
+
+    private static void handleException(String msg, Exception e) {
+        log.error(msg, e);
+        throw new SynapseException(msg, e);
+    }
 
 }

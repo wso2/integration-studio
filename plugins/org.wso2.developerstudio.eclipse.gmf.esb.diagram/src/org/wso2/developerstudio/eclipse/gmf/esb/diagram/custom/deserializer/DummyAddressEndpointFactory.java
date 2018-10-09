@@ -36,7 +36,7 @@ public class DummyAddressEndpointFactory extends DummyEndpointFactory {
     private static DummyAddressEndpointFactory instance = new DummyAddressEndpointFactory();
 
     private DummyAddressEndpointFactory() {
-	
+
     }
 
     public static DummyAddressEndpointFactory getInstance() {
@@ -44,19 +44,17 @@ public class DummyAddressEndpointFactory extends DummyEndpointFactory {
     }
 
     @Override
-    protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint,
-                                      Properties properties) {
+    protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
         AddressEndpoint addressEndpoint = new AddressEndpoint();
-        OMAttribute name = epConfig.getAttribute(
-                new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
+        OMAttribute name = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
 
         if (name != null) {
             addressEndpoint.setName(name.getAttributeValue());
         }
 
-        OMElement addressElement = epConfig.getFirstChildWithName(
-                new QName(SynapseConstants.SYNAPSE_NAMESPACE, "address"));
+        OMElement addressElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "address"));
         if (addressElement != null) {
             EndpointDefinition definition = createEndpointDefinition(addressElement);
             addressEndpoint.setDefinition(definition);
@@ -76,7 +74,7 @@ public class DummyAddressEndpointFactory extends DummyEndpointFactory {
         if (fac == null) {
             fac = new EndpointDefinitionFactory();
             endpointDefinition = fac.createDefinition(elem);
-        } else{
+        } else {
             endpointDefinition = fac.createDefinition(elem);
         }
 

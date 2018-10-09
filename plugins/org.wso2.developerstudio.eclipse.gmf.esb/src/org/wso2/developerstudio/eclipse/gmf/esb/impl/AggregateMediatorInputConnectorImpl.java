@@ -22,35 +22,38 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
  * @generated
  */
 public class AggregateMediatorInputConnectorImpl extends InputConnectorImpl implements AggregateMediatorInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AggregateMediatorInputConnectorImpl() {
-		super();
-	}
-	
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected AggregateMediatorInputConnectorImpl() {
+        super();
+    }
 
-/*	public boolean shouldConnect(OutputConnector sourceEnd) {
-		EObject container = sourceEnd.eContainer();
-		if(container instanceof AggregateMediator){
-			if(this.eContainer.equals(container)){
-				return false;
-			}
-		}
-		enable multiple input links 
-		return true;
-	}*/
+    /*
+     * public boolean shouldConnect(OutputConnector sourceEnd) {
+     * EObject container = sourceEnd.eContainer();
+     * if(container instanceof AggregateMediator){
+     * if(this.eContainer.equals(container)){
+     * return false;
+     * }
+     * }
+     * enable multiple input links
+     * return true;
+     * }
+     */
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.AGGREGATE_MEDIATOR_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.AGGREGATE_MEDIATOR_INPUT_CONNECTOR;
+    }
 
-} //AggregateMediatorInputConnectorImpl
+} // AggregateMediatorInputConnectorImpl

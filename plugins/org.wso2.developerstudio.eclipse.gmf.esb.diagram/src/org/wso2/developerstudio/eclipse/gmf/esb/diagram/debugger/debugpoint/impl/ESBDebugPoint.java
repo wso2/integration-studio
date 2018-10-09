@@ -66,7 +66,8 @@ import com.google.gson.JsonParser;
  * skip point. </u1>
  * 
  * @see <a
- *      href="http://help.eclipse.org/juno/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fdebug%2Fcore%2Fmodel%2FBreakpoint.html">Breakpoint</a>
+ *      href=
+ *      "http://help.eclipse.org/juno/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fdebug%2Fcore%2Fmodel%2FBreakpoint.html">Breakpoint</a>
  * @see <a href=
  *      "http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fcore%2Fresources%2FIMarker.html">IMarker</a>
  */

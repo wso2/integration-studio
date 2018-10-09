@@ -13,17 +13,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfConditionalRouterMediatorEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(4);
-		types.add(EsbElementTypes.ConditionalRouterMediatorInputConnector_3636);
-		types.add(EsbElementTypes.ConditionalRouterMediatorOutputConnector_3637);
-		types.add(EsbElementTypes.ConditionalRouterMediatorAdditionalOutputConnector_3638);
-		types.add(EsbElementTypes.MediatorFlow_3639);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(4);
+        types.add(EsbElementTypes.ConditionalRouterMediatorInputConnector_3636);
+        types.add(EsbElementTypes.ConditionalRouterMediatorOutputConnector_3637);
+        types.add(EsbElementTypes.ConditionalRouterMediatorAdditionalOutputConnector_3638);
+        types.add(EsbElementTypes.MediatorFlow_3639);
+        return types;
+    }
 
 }

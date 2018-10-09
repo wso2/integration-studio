@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -35,75 +34,75 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
 
 public class AbstractMediatorMultiLinePropertyDialog extends Dialog {
 
-	protected Mediator mediator;
-	private EStructuralFeature feature;
-	private TransactionalEditingDomain editingDomain;
-	private CompoundCommand resultCommand;
-	private String initialText;
-	private String title;
-	
-	private Text inlineText;
+    protected Mediator mediator;
+    private EStructuralFeature feature;
+    private TransactionalEditingDomain editingDomain;
+    private CompoundCommand resultCommand;
+    private String initialText;
+    private String title;
 
-	public AbstractMediatorMultiLinePropertyDialog(String title, Shell parentShell,
-			Mediator mediator, EStructuralFeature feature, String initialText) {
-		super(parentShell);
-		this.mediator = mediator;
-		this.editingDomain = TransactionUtil.getEditingDomain(mediator);
-		this.initialText = initialText;
-		this.feature = feature;
-		this.title = title;
-	}
+    private Text inlineText;
 
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
-		newShell.setText(title);
-	}
+    public AbstractMediatorMultiLinePropertyDialog(String title, Shell parentShell, Mediator mediator,
+            EStructuralFeature feature, String initialText) {
+        super(parentShell);
+        this.mediator = mediator;
+        this.editingDomain = TransactionUtil.getEditingDomain(mediator);
+        this.initialText = initialText;
+        this.feature = feature;
+        this.title = title;
+    }
 
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
-		inlineText = createText(container);
-		return container;
-	}
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
+        newShell.setText(title);
+    }
 
-	private Text createText(Composite composite) {
-		Text text = new Text(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
-		text.setText(initialText);
-		FormData formLayoutData = new FormData(360, 90);
-		formLayoutData.top = new FormAttachment(0, 8);
-		formLayoutData.left = new FormAttachment(0, 8);
-		formLayoutData.right = new FormAttachment(100, -8);
-		text.setLayoutData(formLayoutData);
-		return text;
-	}
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        FormLayout mainLayout = new FormLayout();
+        mainLayout.marginHeight = 5;
+        mainLayout.marginWidth = 5;
+        container.setLayout(mainLayout);
+        inlineText = createText(container);
+        return container;
+    }
 
-	@Override
-	protected void okPressed() {
-		if (isValid(inlineText.getText())) {
-			setPropertyValue(inlineText.getText());
-			super.okPressed();
-		}
-	}
+    private Text createText(Composite composite) {
+        Text text = new Text(composite, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
+        text.setText(initialText);
+        FormData formLayoutData = new FormData(360, 90);
+        formLayoutData.top = new FormAttachment(0, 8);
+        formLayoutData.left = new FormAttachment(0, 8);
+        formLayoutData.right = new FormAttachment(100, -8);
+        text.setLayoutData(formLayoutData);
+        return text;
+    }
 
-	private void setPropertyValue(String multilineString) {
-		SetCommand setCmd = new SetCommand(editingDomain, mediator, feature, multilineString);
-		getResultCommand().append(setCmd);
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		}
-	}
+    @Override
+    protected void okPressed() {
+        if (isValid(inlineText.getText())) {
+            setPropertyValue(inlineText.getText());
+            super.okPressed();
+        }
+    }
 
-	protected boolean isValid(String stringContent) {
-		return true;
-	}
+    private void setPropertyValue(String multilineString) {
+        SetCommand setCmd = new SetCommand(editingDomain, mediator, feature, multilineString);
+        getResultCommand().append(setCmd);
+        if (getResultCommand().canExecute()) {
+            editingDomain.getCommandStack().execute(getResultCommand());
+        }
+    }
 
-	private CompoundCommand getResultCommand() {
-		if (null == resultCommand) {
-			resultCommand = new CompoundCommand();
-		}
-		return resultCommand;
-	}
+    protected boolean isValid(String stringContent) {
+        return true;
+    }
+
+    private CompoundCommand getResultCommand() {
+        if (null == resultCommand) {
+            resultCommand = new CompoundCommand();
+        }
+        return resultCommand;
+    }
 }

@@ -49,136 +49,136 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.WsdlEndpo
 
 public class WSDLEndpointDeserializer extends AbstractEndpointDeserializer {
 
-	@Deprecated
-	public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) {
-		Assert.isTrue(object instanceof org.apache.synapse.endpoints.WSDLEndpoint,
-				"Unsupported endpoint passed in for deserialization at " + this.getClass());
+    @Deprecated
+    public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) {
+        Assert.isTrue(object instanceof org.apache.synapse.endpoints.WSDLEndpoint,
+                "Unsupported endpoint passed in for deserialization at " + this.getClass());
 
-		org.apache.synapse.endpoints.WSDLEndpoint wsdlEndpoint = (org.apache.synapse.endpoints.WSDLEndpoint) object;
+        org.apache.synapse.endpoints.WSDLEndpoint wsdlEndpoint = (org.apache.synapse.endpoints.WSDLEndpoint) object;
 
-		IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
-				|| part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.WSDLEndPoint_3653
-						: EsbElementTypes.WSDLEndPoint_3612;
-		AbstractEndPoint endPoint = (AbstractEndPoint) DeserializerUtils.createNode(part, endpointType);
-		setElementToEdit(endPoint);
-		deserializeEndpoint(wsdlEndpoint, endPoint);
+        IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
+                || part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.WSDLEndPoint_3653
+                        : EsbElementTypes.WSDLEndPoint_3612;
+        AbstractEndPoint endPoint = (AbstractEndPoint) DeserializerUtils.createNode(part, endpointType);
+        setElementToEdit(endPoint);
+        deserializeEndpoint(wsdlEndpoint, endPoint);
 
-		executeSetValueCommand(WSDL_END_POINT__WSDL_URI, wsdlEndpoint.getWsdlURI());
-		executeSetValueCommand(WSDL_END_POINT__PORT, wsdlEndpoint.getPortName());
-		executeSetValueCommand(WSDL_END_POINT__SERVICE, wsdlEndpoint.getServiceName());
+        executeSetValueCommand(WSDL_END_POINT__WSDL_URI, wsdlEndpoint.getWsdlURI());
+        executeSetValueCommand(WSDL_END_POINT__PORT, wsdlEndpoint.getPortName());
+        executeSetValueCommand(WSDL_END_POINT__SERVICE, wsdlEndpoint.getServiceName());
 
-		return endPoint;
-	}
+        return endPoint;
+    }
 
-	@Override
-	public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
-		ESBFormEditor addressEPFormEditor = (ESBFormEditor) formEditor;
-		EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor
-				.getFormPageForArtifact(ArtifactType.ENDPOINT);
+    @Override
+    public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
+        ESBFormEditor addressEPFormEditor = (ESBFormEditor) formEditor;
+        EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor
+                .getFormPageForArtifact(ArtifactType.ENDPOINT);
 
-		WSDLEndpoint endpoint = (WSDLEndpoint) endpointObject;
+        WSDLEndpoint endpoint = (WSDLEndpoint) endpointObject;
 
-		WsdlEndpointFormPage wsdlEndpointPage = (WsdlEndpointFormPage) endpointPage;
-		// setTextValue(wsdlEndpointPage.wsdlEP_Properties,
-		// endpoint.getDefinition().get);
-		deserializeEndpoint(formEditor, endpointObject);
-		setTextValue(wsdlEndpointPage.getWsdlEP_WsdlUri(), endpoint.getWsdlURI());
-		setTextValue(wsdlEndpointPage.getWsdlEP_Service(), endpoint.getServiceName());
-		setTextValue(wsdlEndpointPage.getWsdlEP_Port(), endpoint.getPortName());
-		setTextValue(wsdlEndpointPage.getEndpointName(), endpoint.getName());
-		setTextValue(wsdlEndpointPage.getEP_Description(), endpoint.getDescription());
-		
-		if (endpoint.getProperties().size() > 0) {
-			List<EndPointProperty> existingProperties = wsdlEndpointPage.endpointPropertyList;
-			wsdlEndpointPage.endpointPropertyList = getProperties(endpoint, existingProperties);
+        WsdlEndpointFormPage wsdlEndpointPage = (WsdlEndpointFormPage) endpointPage;
+        // setTextValue(wsdlEndpointPage.wsdlEP_Properties,
+        // endpoint.getDefinition().get);
+        deserializeEndpoint(formEditor, endpointObject);
+        setTextValue(wsdlEndpointPage.getWsdlEP_WsdlUri(), endpoint.getWsdlURI());
+        setTextValue(wsdlEndpointPage.getWsdlEP_Service(), endpoint.getServiceName());
+        setTextValue(wsdlEndpointPage.getWsdlEP_Port(), endpoint.getPortName());
+        setTextValue(wsdlEndpointPage.getEndpointName(), endpoint.getName());
+        setTextValue(wsdlEndpointPage.getEP_Description(), endpoint.getDescription());
 
-		} else {
-			wsdlEndpointPage.endpointPropertyList = null;
-		}
+        if (endpoint.getProperties().size() > 0) {
+            List<EndPointProperty> existingProperties = wsdlEndpointPage.endpointPropertyList;
+            wsdlEndpointPage.endpointPropertyList = getProperties(endpoint, existingProperties);
 
-		super.createNode(formEditor, endpointObject);
-	}
-	
-	/**
-	 * Get properties 
-	 * @param endpoint endpoint
-	 * @param existingProperties existing properties
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public List<EndPointProperty> getProperties(WSDLEndpoint endpoint, List<EndPointProperty> existingProperties) {
+        } else {
+            wsdlEndpointPage.endpointPropertyList = null;
+        }
 
-		List<EndPointProperty> newlyAddedProperties = new ArrayList<EndPointProperty>();
-		List<EndPointProperty> removedProperties = new ArrayList<EndPointProperty>();
-		List<EndPointProperty> newProperties = new ArrayList<EndPointProperty>();
+        super.createNode(formEditor, endpointObject);
+    }
 
-		for (Iterator<MediatorProperty> i = endpoint.getProperties().iterator(); i.hasNext();) {
-			MediatorProperty next = i.next();
-			EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
-			property.setName(next.getName());
+    /**
+     * Get properties
+     * 
+     * @param endpoint endpoint
+     * @param existingProperties existing properties
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public List<EndPointProperty> getProperties(WSDLEndpoint endpoint, List<EndPointProperty> existingProperties) {
 
-			if (next.getExpression() != null) {
-				property.setValueType(PropertyValueType.EXPRESSION);
-				NamespacedProperty valueXPath = EsbFactory.eINSTANCE.createNamespacedProperty();
-				valueXPath.setPropertyValue(next.getExpression().toString());
-				Map<String, String> namespaces = (Map<String, String>) next.getExpression().getNamespaces();
-				valueXPath.setNamespaces(namespaces);
-				property.setValueExpression(valueXPath);
-			} else if (next.getValue() != null) {
-				property.setValueType(PropertyValueType.LITERAL);
-				property.setValue(next.getValue());
-			}
+        List<EndPointProperty> newlyAddedProperties = new ArrayList<EndPointProperty>();
+        List<EndPointProperty> removedProperties = new ArrayList<EndPointProperty>();
+        List<EndPointProperty> newProperties = new ArrayList<EndPointProperty>();
 
-			if (next.getScope() != null) {
-				property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
-			} else {
-				property.setScope(EndPointPropertyScope.SYNAPSE);
-			}
+        for (Iterator<MediatorProperty> i = endpoint.getProperties().iterator(); i.hasNext();) {
+            MediatorProperty next = i.next();
+            EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
+            property.setName(next.getName());
 
-			if (existingProperties != null) {
-				for (EndPointProperty propertyItem : existingProperties) {
-					// When updating the existing properties from source view, then remove the property
-					// from old list and add to new list
-					if (propertyItem.getName().equals(next.getName())) {
-						existingProperties.remove(propertyItem);
-						newlyAddedProperties.add(property);
-						break;
-					}
-				}
-			}
-			// When adding a new property from source then add it to the new list
-			if (!newlyAddedProperties.contains(property)) {
-				newlyAddedProperties.add(property);
-			}
-		}
-		// If old properties contain any property values, then remove the value and add the property to the
-		// new
-		// list, DEVTOOLESB-505
-		if (existingProperties != null) {
-			for (EndPointProperty prop : existingProperties) {
-				String value = prop.getName();
-				if (StringUtils.isNotEmpty(value)) {
-					// Add the property to removed list
-					removedProperties.add(prop);
-				}
-			}
-		}
-		// First remove the removed properties from existing properties
-		if (removedProperties.size() > 0) {
-			existingProperties.removeAll(removedProperties);
-		}
-		// Adds the new properties
-		if (newProperties.size() > 0) {
-			newlyAddedProperties.addAll(newProperties);
-		}
-		// Adds the existing old properties (which didn't get updated)
-		// to the new list
-		if (existingProperties != null) {
-			newlyAddedProperties.addAll(existingProperties);
-		}
-		return newlyAddedProperties;
+            if (next.getExpression() != null) {
+                property.setValueType(PropertyValueType.EXPRESSION);
+                NamespacedProperty valueXPath = EsbFactory.eINSTANCE.createNamespacedProperty();
+                valueXPath.setPropertyValue(next.getExpression().toString());
+                Map<String, String> namespaces = (Map<String, String>) next.getExpression().getNamespaces();
+                valueXPath.setNamespaces(namespaces);
+                property.setValueExpression(valueXPath);
+            } else if (next.getValue() != null) {
+                property.setValueType(PropertyValueType.LITERAL);
+                property.setValue(next.getValue());
+            }
 
-	}
+            if (next.getScope() != null) {
+                property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
+            } else {
+                property.setScope(EndPointPropertyScope.SYNAPSE);
+            }
 
+            if (existingProperties != null) {
+                for (EndPointProperty propertyItem : existingProperties) {
+                    // When updating the existing properties from source view, then remove the property
+                    // from old list and add to new list
+                    if (propertyItem.getName().equals(next.getName())) {
+                        existingProperties.remove(propertyItem);
+                        newlyAddedProperties.add(property);
+                        break;
+                    }
+                }
+            }
+            // When adding a new property from source then add it to the new list
+            if (!newlyAddedProperties.contains(property)) {
+                newlyAddedProperties.add(property);
+            }
+        }
+        // If old properties contain any property values, then remove the value and add the property to the
+        // new
+        // list, DEVTOOLESB-505
+        if (existingProperties != null) {
+            for (EndPointProperty prop : existingProperties) {
+                String value = prop.getName();
+                if (StringUtils.isNotEmpty(value)) {
+                    // Add the property to removed list
+                    removedProperties.add(prop);
+                }
+            }
+        }
+        // First remove the removed properties from existing properties
+        if (removedProperties.size() > 0) {
+            existingProperties.removeAll(removedProperties);
+        }
+        // Adds the new properties
+        if (newProperties.size() > 0) {
+            newlyAddedProperties.addAll(newProperties);
+        }
+        // Adds the existing old properties (which didn't get updated)
+        // to the new list
+        if (existingProperties != null) {
+            newlyAddedProperties.addAll(existingProperties);
+        }
+        return newlyAddedProperties;
+
+    }
 
 }

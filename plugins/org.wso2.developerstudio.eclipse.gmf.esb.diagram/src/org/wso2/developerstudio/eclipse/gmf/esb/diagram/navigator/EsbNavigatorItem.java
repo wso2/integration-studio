@@ -11,79 +11,77 @@ import org.eclipse.gmf.runtime.notation.View;
  */
 public class EsbNavigatorItem extends EsbAbstractNavigatorItem {
 
-	/**
-	 * @generated
-	 */
-	static {
-		final Class[] supportedTypes = new Class[] { View.class, EObject.class };
-		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
+    /**
+     * @generated
+     */
+    static {
+        final Class[] supportedTypes = new Class[] { View.class, EObject.class };
+        Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-			public Object getAdapter(Object adaptableObject, Class adapterType) {
-				if (adaptableObject instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem
-						&& (adapterType == View.class || adapterType == EObject.class)) {
-					return ((org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) adaptableObject)
-							.getView();
-				}
-				return null;
-			}
+            public Object getAdapter(Object adaptableObject, Class adapterType) {
+                if (adaptableObject instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem
+                        && (adapterType == View.class || adapterType == EObject.class)) {
+                    return ((org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) adaptableObject)
+                            .getView();
+                }
+                return null;
+            }
 
-			public Class[] getAdapterList() {
-				return supportedTypes;
-			}
-		}, org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem.class);
-	}
+            public Class[] getAdapterList() {
+                return supportedTypes;
+            }
+        }, org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem.class);
+    }
 
-	/**
-	 * @generated
-	 */
-	private View myView;
+    /**
+     * @generated
+     */
+    private View myView;
 
-	/**
-	 * @generated
-	 */
-	private boolean myLeaf = false;
+    /**
+     * @generated
+     */
+    private boolean myLeaf = false;
 
-	/**
-	 * @generated
-	 */
-	public EsbNavigatorItem(View view, Object parent, boolean isLeaf) {
-		super(parent);
-		myView = view;
-		myLeaf = isLeaf;
-	}
+    /**
+     * @generated
+     */
+    public EsbNavigatorItem(View view, Object parent, boolean isLeaf) {
+        super(parent);
+        myView = view;
+        myLeaf = isLeaf;
+    }
 
-	/**
-	 * @generated
-	 */
-	public View getView() {
-		return myView;
-	}
+    /**
+     * @generated
+     */
+    public View getView() {
+        return myView;
+    }
 
-	/**
-	 * @generated
-	 */
-	public boolean isLeaf() {
-		return myLeaf;
-	}
+    /**
+     * @generated
+     */
+    public boolean isLeaf() {
+        return myLeaf;
+    }
 
-	/**
-	 * @generated
-	 */
-	public boolean equals(Object obj) {
-		if (obj instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) {
-			return EcoreUtil.getURI(getView()).equals(
-					EcoreUtil
-							.getURI(((org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) obj)
-									.getView()));
-		}
-		return super.equals(obj);
-	}
+    /**
+     * @generated
+     */
+    public boolean equals(Object obj) {
+        if (obj instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) {
+            return EcoreUtil.getURI(getView()).equals(EcoreUtil.getURI(
+                    ((org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) obj).getView()));
+        }
+        return super.equals(obj);
+    }
 
-	/**
-	 * @generated
-	 */
-	public int hashCode() {
-		return EcoreUtil.getURI(getView()).hashCode();
-	}
+    /**
+     * @generated
+     */
+    public int hashCode() {
+        return EcoreUtil.getURI(getView()).hashCode();
+    }
 
 }

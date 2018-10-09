@@ -24,20 +24,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
-public class IndirectEndpointDeserializer extends
-		AbstractEsbNodeDeserializer<IndirectEndpoint, NamedEndpoint> {
+public class IndirectEndpointDeserializer extends AbstractEsbNodeDeserializer<IndirectEndpoint, NamedEndpoint> {
 
-	public NamedEndpoint createNode(IGraphicalEditPart part, IndirectEndpoint indirectEndpoint) {
+    public NamedEndpoint createNode(IGraphicalEditPart part, IndirectEndpoint indirectEndpoint) {
 
-		NamedEndpoint endPoint = (NamedEndpoint) DeserializerUtils.createNode(part,
-				EsbElementTypes.NamedEndpoint_3660);
-		setElementToEdit(endPoint);
+        NamedEndpoint endPoint = (NamedEndpoint) DeserializerUtils.createNode(part, EsbElementTypes.NamedEndpoint_3660);
+        setElementToEdit(endPoint);
 
-		executeSetValueCommand(NAMED_ENDPOINT__NAME,indirectEndpoint.getKey());
-		executeSetValueCommand(NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,KeyType.STATIC);
+        executeSetValueCommand(NAMED_ENDPOINT__NAME, indirectEndpoint.getKey());
+        executeSetValueCommand(NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE, KeyType.STATIC);
 
-		return endPoint;
-	}
-
+        return endPoint;
+    }
 
 }

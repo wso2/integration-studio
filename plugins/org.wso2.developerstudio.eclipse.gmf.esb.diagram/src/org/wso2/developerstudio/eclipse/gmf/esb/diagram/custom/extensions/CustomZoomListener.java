@@ -19,19 +19,20 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.extensions;
 import org.eclipse.gef.editparts.ZoomListener;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 
-public class CustomZoomListener implements ZoomListener{
+public class CustomZoomListener implements ZoomListener {
 
-	private EsbMultiPageEditor esbEditor;
-	
-	public CustomZoomListener(EsbMultiPageEditor esbEditor) {
-		this.esbEditor= esbEditor;
-	}	
-	/**
-	 * Set zoomed value in EsbMultiPageEditor while zooming
-	 */
-	@Override
-	public void zoomChanged(double zoom) {
-		esbEditor.setZoom(zoom);				
-	}
+    private EsbMultiPageEditor esbEditor;
+
+    public CustomZoomListener(EsbMultiPageEditor esbEditor) {
+        this.esbEditor = esbEditor;
+    }
+
+    /**
+     * Set zoomed value in EsbMultiPageEditor while zooming
+     */
+    @Override
+    public void zoomChanged(double zoom) {
+        esbEditor.setZoom(zoom);
+    }
 
 }

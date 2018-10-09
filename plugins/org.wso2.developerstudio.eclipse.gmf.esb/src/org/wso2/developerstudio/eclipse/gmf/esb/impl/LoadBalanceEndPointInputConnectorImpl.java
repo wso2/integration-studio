@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointInputConnecto
  *
  * @generated
  */
-public class LoadBalanceEndPointInputConnectorImpl extends InputConnectorImpl implements LoadBalanceEndPointInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LoadBalanceEndPointInputConnectorImpl() {
-		super();
-	}
+public class LoadBalanceEndPointInputConnectorImpl extends InputConnectorImpl
+        implements LoadBalanceEndPointInputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected LoadBalanceEndPointInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.LOAD_BALANCE_END_POINT_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.LOAD_BALANCE_END_POINT_INPUT_CONNECTOR;
+    }
 
-} //LoadBalanceEndPointInputConnectorImpl
+} // LoadBalanceEndPointInputConnectorImpl

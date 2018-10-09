@@ -76,297 +76,305 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 
-public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNodeDeserializer<AbstractEndpoint, ParentEndPoint> {
+public abstract class AbstractComplexEndPointDeserializer
+        extends AbstractEsbNodeDeserializer<AbstractEndpoint, ParentEndPoint> {
 
-	private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.gmf.esb.diagram");
-	
-	private EsbDiagramEditor mainDiagramEditorRef;
-	
-	protected <T extends AbstractEndpoint> void deserializeComplexEndpoint(T endpoint, IGraphicalEditPart graphicalEditPart) throws DeserializerException{	
-		
-		IGraphicalEditPart gpart = null;
-		String endpointName;
+    private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.gmf.esb.diagram");
 
+    private EsbDiagramEditor mainDiagramEditorRef;
 
-		
-		if(endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()){
-			
-			if (endpoint.getName() != null) {
-				endpointName = endpoint.getName();
-				executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
-			} else {
-				long lDateTime = new Date().getTime();
-				endpointName = String.valueOf(lDateTime);
-				executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
-				// Setting a name for original endpoint if there was no name specified. Reason is, according to the
-				// current design, anonymous complex endpoints(LB,Failover etc..) will be converted to a named endpoint
-				// while deserialization.
-				endpoint.setName(endpointName);
-				endpoint.setAnonymous(false);
-			}
-			
-			mainDiagramEditorRef = getDiagramEditor();
-						
-			IProject currentProject=getActiveProject();
-					IFile fileTobeOpened = null;
-					OMElement configOM = EndpointSerializer.getElementFromEndpoint(endpoint);
-		
-						try{
-						IFolder iFolder = currentProject.getFolder(SYNAPSE_CONFIG_DIR + "/complex-endpoints/");
-						if (!iFolder.exists()){
-							iFolder.create(IResource.NONE, true, null);
-						} 
-						fileTobeOpened = iFolder.getFile(endpointName + ".xml");
-						InputStream stream = new ByteArrayInputStream(configOM.toString().getBytes(StandardCharsets.UTF_8));
-						if(!fileTobeOpened.exists()){
-							fileTobeOpened.create(stream, true, new NullProgressMonitor());
-						}else{
-							fileTobeOpened.setContents(stream, false, false, null);		
-						}						
-						}catch(Exception e){
-							log.error(e);
-						}
-			
-						if(endpoint.getParentEndpoint() != null){// && ((AbstractEndpoint)endpoint.getParentEndpoint()).getParentEndpoint() != null){
-							return;
-						}
-			
-			//We can not get the editorPart without opening the editor.
-/*			IEditorPart editorPart = createFiles(endpointName,
-					"complex_endpoint_" + endpointName + ".esb_diagram",
-					"complex_endpoint_" + endpointName + ".esb");*/
-			
-/*			
-			if (editorPart != null && editorPart instanceof EsbMultiPageEditor) {
+    protected <T extends AbstractEndpoint> void deserializeComplexEndpoint(T endpoint,
+            IGraphicalEditPart graphicalEditPart) throws DeserializerException {
 
-				EsbMultiPageEditor editor = (EsbMultiPageEditor) editorPart;*/
-				
-				/*
-				 * Setting the sub editor editing domain to deserializerRegistry.
-				 */
-/*				EsbDiagramEditor subDiagramEditor = editor.getGraphicalEditor();
-				if (subDiagramEditor != null) {
-					EsbDeserializerRegistry.getInstance().init(subDiagramEditor);
-				}*/
-				
-				final List<EditPart> editPartList = new ArrayList<EditPart>();
-				
-/*				if (editor.getDiagramEditPart() != null) {
+        IGraphicalEditPart gpart = null;
+        String endpointName;
 
-					EsbDiagramEditPart esbDiagramEditPart = (EsbDiagramEditPart) editor.getDiagramEditPart();*/
-				
-					
-/*					if (esbDiagramEditPart.getChildren() != null && !esbDiagramEditPart.getChildren().isEmpty()) {
+        if (endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()) {
 
-						EsbServerEditPart esbServerEditPart = (EsbServerEditPart) esbDiagramEditPart.getChildren().get(0);
-						
-							EditPart childEditPart = (EditPart) esbServerEditPart.getChildren().get(0);*/
-							
-							//get the edit part for adding endpoints
-							//gpart = findRelevntEditPart(childEditPart);
-							gpart = findRelevntEditPart(graphicalEditPart);
-							
-							if (gpart != null) {
+            if (endpoint.getName() != null) {
+                endpointName = endpoint.getName();
+                executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
+            } else {
+                long lDateTime = new Date().getTime();
+                endpointName = String.valueOf(lDateTime);
+                executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
+                // Setting a name for original endpoint if there was no name specified. Reason is, according to the
+                // current design, anonymous complex endpoints(LB,Failover etc..) will be converted to a named endpoint
+                // while deserialization.
+                endpoint.setName(endpointName);
+                endpoint.setAnonymous(false);
+            }
 
-								for (Endpoint ep : endpoint.getChildren()) {
-									
-									 	@SuppressWarnings("rawtypes")
-									 	IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(ep);
+            mainDiagramEditorRef = getDiagramEditor();
 
-										@SuppressWarnings("unchecked")
-										EsbNode visualEndpoint = deserializer.createNode(gpart, ep);
-										refreshEditPartMap();
-										EditPart endpointEP = getEditpart(visualEndpoint);
-										editPartList.add(endpointEP);
-									
-								}
-							}
-					//}
-				//}
-				
-				//final IEditorPart tempEp = editorPart;
+            IProject currentProject = getActiveProject();
+            IFile fileTobeOpened = null;
+            OMElement configOM = EndpointSerializer.getElementFromEndpoint(endpoint);
 
-				Display.getCurrent().asyncExec(new Runnable() {
-					
-					@Override
-					public void run() {
-						relocateEndPoints(editPartList);	
-						//Save the sub editor when the work done
-						//tempEp.doSave(new NullProgressMonitor());
-												
-						//IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-						//activePage.closeEditor(tempEp, false);
-					}
-				});
-				
-				/*
-				 * Setting back main editor editing domain to deserializerRegistry.
-				 */
-				
-				if(mainDiagramEditorRef != null){
-					EsbDeserializerRegistry.getInstance().init(mainDiagramEditorRef);
-					refreshEditPartMap();
-				}
-							
-			//}
-		}
-	}
-	
-	/**
-	 * This is to avoid RJS0007E Semantic refresh failed issue appears in
-	 * compartments, which has only one node. This should be replaced with the
-	 * better approach
-	 */
-	public static void relocateEndPoints(List<EditPart> editPartList){
-		for (Iterator<EditPart> it = editPartList.iterator(); it.hasNext();) {
-			EditPart next = it.next();
+            try {
+                IFolder iFolder = currentProject.getFolder(SYNAPSE_CONFIG_DIR + "/complex-endpoints/");
+                if (!iFolder.exists()) {
+                    iFolder.create(IResource.NONE, true, null);
+                }
+                fileTobeOpened = iFolder.getFile(endpointName + ".xml");
+                InputStream stream = new ByteArrayInputStream(configOM.toString().getBytes(StandardCharsets.UTF_8));
+                if (!fileTobeOpened.exists()) {
+                    fileTobeOpened.create(stream, true, new NullProgressMonitor());
+                } else {
+                    fileTobeOpened.setContents(stream, false, false, null);
+                }
+            } catch (Exception e) {
+                log.error(e);
+            }
 
-			GraphicalEditPart gEditpart = (GraphicalEditPart) next;
-			Rectangle rect = gEditpart.getFigure().getBounds().getCopy();
-			rect.y++;
-			SetBoundsCommand sbc = new SetBoundsCommand(gEditpart.getEditingDomain(),
-					"change location", new EObjectAdapter((View) next.getModel()), rect);
+            if (endpoint.getParentEndpoint() != null) {// &&
+                                                       // ((AbstractEndpoint)endpoint.getParentEndpoint()).getParentEndpoint()
+                                                       // != null){
+                return;
+            }
 
-			gEditpart.getDiagramEditDomain().getDiagramCommandStack()
-					.execute(new ICommandProxy(sbc));
-			
-			try {
-				Thread.sleep(50);
-			} catch (InterruptedException e) {
-				//ignored
-			}
+            // We can not get the editorPart without opening the editor.
+            /*
+             * IEditorPart editorPart = createFiles(endpointName,
+             * "complex_endpoint_" + endpointName + ".esb_diagram",
+             * "complex_endpoint_" + endpointName + ".esb");
+             */
 
-		}
-		editPartList = new ArrayList<EditPart>();
-	}
-	
-	protected IGraphicalEditPart findRelevntEditPart(EditPart childEditPart) {
-		
-		IGraphicalEditPart gpartTemp = null;
-		
-		//Check child edit part it self AbstractComplexEndpointCompartmentEditPart
-		if (childEditPart instanceof AbstractComplexEndpointCompartmentEditPart) {
+            /*
+             * if (editorPart != null && editorPart instanceof EsbMultiPageEditor) {
+             * 
+             * EsbMultiPageEditor editor = (EsbMultiPageEditor) editorPart;
+             */
 
-			return (AbstractComplexEndpointCompartmentEditPart) childEditPart;
-			
-		} 
-		else{
-			// Check children of this AbstractComplexEndpointCompartmentEditPart
-			if (childEditPart.getChildren() != null ) {
-				
-				for (Object child : childEditPart.getChildren()) {
-					
-					EditPart l2childEditPart = (EditPart) child;
-					
-					if (l2childEditPart instanceof AbstractComplexEndpointCompartmentEditPart) {
+            /*
+             * Setting the sub editor editing domain to deserializerRegistry.
+             */
+            /*
+             * EsbDiagramEditor subDiagramEditor = editor.getGraphicalEditor();
+             * if (subDiagramEditor != null) {
+             * EsbDeserializerRegistry.getInstance().init(subDiagramEditor);
+             * }
+             */
 
-						return (AbstractComplexEndpointCompartmentEditPart) l2childEditPart;
-						
-					}else {
-						
-						gpartTemp = findRelevntEditPart(l2childEditPart);
-						
-						if(gpartTemp != null){
-							
-							break;
-						}
-						
-					}
-				}
-			}
-		}
-		
-		return gpartTemp;
-	}
-	
-	protected IEditorPart createFiles(String name, String fileURI1, String fileURI2) {
-		IEditorPart editorPart = null;
-		Resource diagram;
-		IProject currentProject=getActiveProject();
+            final List<EditPart> editPartList = new ArrayList<EditPart>();
 
-		String basePath = "platform:/resource/" + currentProject.getName() + "/" + COMPLEX_ENDPOINT_RESOURCE_DIR  + "/";
-		
-		IFile file = currentProject.getFile(COMPLEX_ENDPOINT_RESOURCE_DIR + "/"+ fileURI1);
+            /*
+             * if (editor.getDiagramEditPart() != null) {
+             * 
+             * EsbDiagramEditPart esbDiagramEditPart = (EsbDiagramEditPart) editor.getDiagramEditPart();
+             */
 
-		if (!file.exists()) {
-			
-			
-			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR
-					+ "/endpoints/" + name + ".xml");
-			
-			String path = fileTobeOpened.getParent().getFullPath() + "/";
-			
-/*			diagram = EsbDiagramEditorUtil.createResource(
-					URI.createURI(basePath + fileURI1),
-					URI.createURI(basePath + fileURI2),
-					new NullProgressMonitor(), "complex_endpoint", name, null);*/
-			String source;
-			try {
-				source = FileUtils.readFileToString(fileTobeOpened.getLocation().toFile());
-				Openable openable = ESBGraphicalEditor.getOpenable();
-				editorPart = openable.editorOpen(fileTobeOpened.getName(), ArtifactType.COMPLEX_ENDPOINT.getLiteral(), path, source);
-			} catch (IOException e1) {
-				log.error("Error while reading the file : "+fileTobeOpened, e1);
-			} catch (Exception e) {
-				log.error("Error while opening the file : "+fileTobeOpened, e);
-			}			
-/*			try {
-				EsbDiagramEditorUtil.openDiagram(diagram);
+            /*
+             * if (esbDiagramEditPart.getChildren() != null && !esbDiagramEditPart.getChildren().isEmpty()) {
+             * 
+             * EsbServerEditPart esbServerEditPart = (EsbServerEditPart) esbDiagramEditPart.getChildren().get(0);
+             * 
+             * EditPart childEditPart = (EditPart) esbServerEditPart.getChildren().get(0);
+             */
 
-			} catch (PartInitException e) {
-				log.error("Cannot init editor", e);
-			}*/
-			
-		}
-/*			
-			diagram = EsbDiagramEditorUtil.createResource(
-					URI.createURI(basePath + fileURI1),
-					URI.createURI(basePath + fileURI2),
-					new NullProgressMonitor(), "complex_endpoint", name, null);
-			try {
-				String path = diagram.getURI().toPlatformString(true);
-				IResource workspaceResource = ResourcesPlugin.getWorkspace().getRoot()
-						.findMember(new Path(path));
-				if (workspaceResource instanceof IFile) {
-					IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-							.getActivePage();
-					editorPart =  page.openEditor(new FileEditorInput((IFile) workspaceResource),EsbDiagramEditor.ID);
-				}
-		
+            // get the edit part for adding endpoints
+            // gpart = findRelevntEditPart(childEditPart);
+            gpart = findRelevntEditPart(graphicalEditPart);
 
-			} catch (PartInitException e) {
-				log.error("Cannot init editor", e);
-			}
-			
-		}
-		return editorPart;*/
-		return editorPart;
-		
-	}
-	
-	protected IProject getActiveProject() {
-		IEditorPart editorPart = null;
-		IProject activeProject = null;
-		IEditorReference editorReferences[] = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences();
-		for (int i = 0; i < editorReferences.length; i++) {
-			IEditorPart editor = editorReferences[i].getEditor(false);
+            if (gpart != null) {
 
-			if (editor != null) {
-				editorPart = editor.getSite().getWorkbenchWindow()
-						.getActivePage().getActiveEditor();
-			}
+                for (Endpoint ep : endpoint.getChildren()) {
 
-			if (editorPart != null) {
-				EsbEditorInput input = (EsbEditorInput) editorPart
-						.getEditorInput();
-				IFile file = input.getXmlResource();
-				activeProject = file.getProject();
-			}
-		}
-		return activeProject;
-	}
-	
-	
+                    @SuppressWarnings("rawtypes")
+                    IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(ep);
+
+                    @SuppressWarnings("unchecked")
+                    EsbNode visualEndpoint = deserializer.createNode(gpart, ep);
+                    refreshEditPartMap();
+                    EditPart endpointEP = getEditpart(visualEndpoint);
+                    editPartList.add(endpointEP);
+
+                }
+            }
+            // }
+            // }
+
+            // final IEditorPart tempEp = editorPart;
+
+            Display.getCurrent().asyncExec(new Runnable() {
+
+                @Override
+                public void run() {
+                    relocateEndPoints(editPartList);
+                    // Save the sub editor when the work done
+                    // tempEp.doSave(new NullProgressMonitor());
+
+                    // IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                    // activePage.closeEditor(tempEp, false);
+                }
+            });
+
+            /*
+             * Setting back main editor editing domain to deserializerRegistry.
+             */
+
+            if (mainDiagramEditorRef != null) {
+                EsbDeserializerRegistry.getInstance().init(mainDiagramEditorRef);
+                refreshEditPartMap();
+            }
+
+            // }
+        }
+    }
+
+    /**
+     * This is to avoid RJS0007E Semantic refresh failed issue appears in
+     * compartments, which has only one node. This should be replaced with the
+     * better approach
+     */
+    public static void relocateEndPoints(List<EditPart> editPartList) {
+        for (Iterator<EditPart> it = editPartList.iterator(); it.hasNext();) {
+            EditPart next = it.next();
+
+            GraphicalEditPart gEditpart = (GraphicalEditPart) next;
+            Rectangle rect = gEditpart.getFigure().getBounds().getCopy();
+            rect.y++;
+            SetBoundsCommand sbc = new SetBoundsCommand(gEditpart.getEditingDomain(), "change location",
+                    new EObjectAdapter((View) next.getModel()), rect);
+
+            gEditpart.getDiagramEditDomain().getDiagramCommandStack().execute(new ICommandProxy(sbc));
+
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                // ignored
+            }
+
+        }
+        editPartList = new ArrayList<EditPart>();
+    }
+
+    protected IGraphicalEditPart findRelevntEditPart(EditPart childEditPart) {
+
+        IGraphicalEditPart gpartTemp = null;
+
+        // Check child edit part it self AbstractComplexEndpointCompartmentEditPart
+        if (childEditPart instanceof AbstractComplexEndpointCompartmentEditPart) {
+
+            return (AbstractComplexEndpointCompartmentEditPart) childEditPart;
+
+        } else {
+            // Check children of this AbstractComplexEndpointCompartmentEditPart
+            if (childEditPart.getChildren() != null) {
+
+                for (Object child : childEditPart.getChildren()) {
+
+                    EditPart l2childEditPart = (EditPart) child;
+
+                    if (l2childEditPart instanceof AbstractComplexEndpointCompartmentEditPart) {
+
+                        return (AbstractComplexEndpointCompartmentEditPart) l2childEditPart;
+
+                    } else {
+
+                        gpartTemp = findRelevntEditPart(l2childEditPart);
+
+                        if (gpartTemp != null) {
+
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        return gpartTemp;
+    }
+
+    protected IEditorPart createFiles(String name, String fileURI1, String fileURI2) {
+        IEditorPart editorPart = null;
+        Resource diagram;
+        IProject currentProject = getActiveProject();
+
+        String basePath = "platform:/resource/" + currentProject.getName() + "/" + COMPLEX_ENDPOINT_RESOURCE_DIR + "/";
+
+        IFile file = currentProject.getFile(COMPLEX_ENDPOINT_RESOURCE_DIR + "/" + fileURI1);
+
+        if (!file.exists()) {
+
+            IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/endpoints/" + name + ".xml");
+
+            String path = fileTobeOpened.getParent().getFullPath() + "/";
+
+            /*
+             * diagram = EsbDiagramEditorUtil.createResource(
+             * URI.createURI(basePath + fileURI1),
+             * URI.createURI(basePath + fileURI2),
+             * new NullProgressMonitor(), "complex_endpoint", name, null);
+             */
+            String source;
+            try {
+                source = FileUtils.readFileToString(fileTobeOpened.getLocation().toFile());
+                Openable openable = ESBGraphicalEditor.getOpenable();
+                editorPart = openable.editorOpen(fileTobeOpened.getName(), ArtifactType.COMPLEX_ENDPOINT.getLiteral(),
+                        path, source);
+            } catch (IOException e1) {
+                log.error("Error while reading the file : " + fileTobeOpened, e1);
+            } catch (Exception e) {
+                log.error("Error while opening the file : " + fileTobeOpened, e);
+            }
+            /*
+             * try {
+             * EsbDiagramEditorUtil.openDiagram(diagram);
+             * 
+             * } catch (PartInitException e) {
+             * log.error("Cannot init editor", e);
+             * }
+             */
+
+        }
+        /*
+         * diagram = EsbDiagramEditorUtil.createResource(
+         * URI.createURI(basePath + fileURI1),
+         * URI.createURI(basePath + fileURI2),
+         * new NullProgressMonitor(), "complex_endpoint", name, null);
+         * try {
+         * String path = diagram.getURI().toPlatformString(true);
+         * IResource workspaceResource = ResourcesPlugin.getWorkspace().getRoot()
+         * .findMember(new Path(path));
+         * if (workspaceResource instanceof IFile) {
+         * IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+         * .getActivePage();
+         * editorPart = page.openEditor(new FileEditorInput((IFile) workspaceResource),EsbDiagramEditor.ID);
+         * }
+         * 
+         * 
+         * } catch (PartInitException e) {
+         * log.error("Cannot init editor", e);
+         * }
+         * 
+         * }
+         * return editorPart;
+         */
+        return editorPart;
+
+    }
+
+    protected IProject getActiveProject() {
+        IEditorPart editorPart = null;
+        IProject activeProject = null;
+        IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        for (int i = 0; i < editorReferences.length; i++) {
+            IEditorPart editor = editorReferences[i].getEditor(false);
+
+            if (editor != null) {
+                editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+            }
+
+            if (editorPart != null) {
+                EsbEditorInput input = (EsbEditorInput) editorPart.getEditorInput();
+                IFile file = input.getXmlResource();
+                activeProject = file.getProject();
+            }
+        }
+        return activeProject;
+    }
+
 }

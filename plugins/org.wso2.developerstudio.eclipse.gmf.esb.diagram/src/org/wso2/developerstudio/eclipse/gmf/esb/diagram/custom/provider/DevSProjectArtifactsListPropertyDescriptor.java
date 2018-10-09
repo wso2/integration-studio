@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider;
 
 import java.util.ArrayList;
@@ -24,23 +23,20 @@ import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.swt.widgets.Composite;
 
+public class DevSProjectArtifactsListPropertyDescriptor extends PropertyDescriptor {
 
-public class DevSProjectArtifactsListPropertyDescriptor extends PropertyDescriptor{
+    public DevSProjectArtifactsListPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-	
-	public DevSProjectArtifactsListPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
 
-	public CellEditor createPropertyEditor(Composite parent) {		
-		
-		ArrayList<String> availableList = getAvailableArtifactListFromProject(parent);
-		return new ExtendedComboBoxCellEditor(parent, availableList, getLabelProvider());
-	}
-	
-	//override this methods to return wanted artifact types 
-	protected ArrayList<String> getAvailableArtifactListFromProject(Composite parent) {
-		return new ArrayList<String>();
-	}
+        ArrayList<String> availableList = getAvailableArtifactListFromProject(parent);
+        return new ExtendedComboBoxCellEditor(parent, availableList, getLabelProvider());
+    }
+
+    // override this methods to return wanted artifact types
+    protected ArrayList<String> getAvailableArtifactListFromProject(Composite parent) {
+        return new ArrayList<String>();
+    }
 }

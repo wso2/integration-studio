@@ -29,30 +29,29 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureSqlStatementsDialog;
 
-public class ConfigureSqlStatementsAction extends ConfigureEsbNodeAction{
+public class ConfigureSqlStatementsAction extends ConfigureEsbNodeAction {
 
-	
-	public ConfigureSqlStatementsAction(IWorkbenchPart part) {
-		super(part);
-		setId("configure-sql-statements-action-id");
-		setText("Configure Statements...");
-		setToolTipText("Configure Statements.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
+    public ConfigureSqlStatementsAction(IWorkbenchPart part) {
+        super(part);
+        setId("configure-sql-statements-action-id");
+        setText("Configure Statements...");
+        setToolTipText("Configure Statements.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof AbstractSqlExecutorMediator, "Invalid selection.");
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-		Shell shell = Display.getDefault().getActiveShell();		
-		ConfigureSqlStatementsDialog configurationDialog = new ConfigureSqlStatementsDialog(shell,  (AbstractSqlExecutorMediator) selectedObj,
-				getEditingDomain());
-		configurationDialog.setBlockOnOpen(true);
-		configurationDialog.open();
-	}
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof AbstractSqlExecutorMediator, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        ConfigureSqlStatementsDialog configurationDialog = new ConfigureSqlStatementsDialog(shell,
+                (AbstractSqlExecutorMediator) selectedObj, getEditingDomain());
+        configurationDialog.setBlockOnOpen(true);
+        configurationDialog.open();
+    }
 
 }

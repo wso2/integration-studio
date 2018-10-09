@@ -18,25 +18,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class DBLookupMediatorOutputConnectorImpl extends OutputConnectorImpl implements DBLookupMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DBLookupMediatorOutputConnectorImpl() {
-		super();
-	}
+public class DBLookupMediatorOutputConnectorImpl extends OutputConnectorImpl
+        implements DBLookupMediatorOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected DBLookupMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.DB_LOOKUP_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //DBLookupMediatorOutputConnectorImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.DB_LOOKUP_MEDIATOR_OUTPUT_CONNECTOR;
+    }
+
+} // DBLookupMediatorOutputConnectorImpl

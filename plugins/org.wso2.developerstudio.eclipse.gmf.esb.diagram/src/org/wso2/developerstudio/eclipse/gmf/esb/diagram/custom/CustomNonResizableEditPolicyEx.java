@@ -14,49 +14,46 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx;
 
-
 public class CustomNonResizableEditPolicyEx extends NonResizableEditPolicyEx {
 
-	
-	@Override
-	protected List createSelectionHandles() {
-		List list = new ArrayList();
-		//createMoveHandle(list); //no need to add this, even without this it supports moving, this adds a border therefore dnt add
-		return list;
-	}
-	
-	
-	/*
-	@Override
-	protected IFigure createDragSourceFeedbackFigure() {
-		// Use a ghost rectangle for feedback
-		RectangleFigure r = new RectangleFigure();
-		StackLayout propertyRectLayout = new StackLayout();
-		r.setLayoutManager(propertyRectLayout);
-		String path = "icons/ico20/property-mediator.gif";
-		ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(path, 55, 35);
-		
-		RectangleFigure propertyValueRectangle1 = new RectangleFigure();
-		propertyValueRectangle1.setOutline(false);
-		propertyValueRectangle1.setBackgroundColor(EditPartDrawingHelper.FigureNormalColor );
-		propertyValueRectangle1.setAlpha(100); // ghost look
-		
-		r.add(iconImageFigure);
-		r.add(propertyValueRectangle1);
-		//FigureUtilities.makeGhostShape(r);
-		r.setLineStyle(Graphics.LINE_DOT);
-		r.setForegroundColor(ColorConstants.white);
-		r.setBounds(getInitialFeedbackBounds());
-		r.validate();
-		addFeedback(r);
-		return r;
-	}
-	*/
+    @Override
+    protected List createSelectionHandles() {
+        List list = new ArrayList();
+        // createMoveHandle(list); //no need to add this, even without this it supports moving, this adds a border
+        // therefore dnt add
+        return list;
+    }
+
+    /*
+     * @Override
+     * protected IFigure createDragSourceFeedbackFigure() {
+     * // Use a ghost rectangle for feedback
+     * RectangleFigure r = new RectangleFigure();
+     * StackLayout propertyRectLayout = new StackLayout();
+     * r.setLayoutManager(propertyRectLayout);
+     * String path = "icons/ico20/property-mediator.gif";
+     * ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(path, 55, 35);
+     * 
+     * RectangleFigure propertyValueRectangle1 = new RectangleFigure();
+     * propertyValueRectangle1.setOutline(false);
+     * propertyValueRectangle1.setBackgroundColor(EditPartDrawingHelper.FigureNormalColor );
+     * propertyValueRectangle1.setAlpha(100); // ghost look
+     * 
+     * r.add(iconImageFigure);
+     * r.add(propertyValueRectangle1);
+     * //FigureUtilities.makeGhostShape(r);
+     * r.setLineStyle(Graphics.LINE_DOT);
+     * r.setForegroundColor(ColorConstants.white);
+     * r.setBounds(getInitialFeedbackBounds());
+     * r.validate();
+     * addFeedback(r);
+     * return r;
+     * }
+     */
 }

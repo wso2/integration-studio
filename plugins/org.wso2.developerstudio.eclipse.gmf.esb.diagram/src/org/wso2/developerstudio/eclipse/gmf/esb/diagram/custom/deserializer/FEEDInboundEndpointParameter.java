@@ -23,16 +23,18 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 
 public enum FEEDInboundEndpointParameter {
-    INTERVAL_TYPE(InboundEndpointConstants.INTERVAL, INBOUND_ENDPOINT__INTERVAL, true),
-    INBOUND_FEED_URL_TYPE(InboundEndpointConstants.INBOUND_FEED_URL, INBOUND_ENDPOINT__TRANSPORT_FEED_URL, true),
-    INBOUND_FEED_TYPE_TYPE(InboundEndpointConstants.INBOUND_FEED_TYPE, INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE, false);
+    INTERVAL_TYPE(InboundEndpointConstants.INTERVAL, INBOUND_ENDPOINT__INTERVAL, true), INBOUND_FEED_URL_TYPE(
+            InboundEndpointConstants.INBOUND_FEED_URL, INBOUND_ENDPOINT__TRANSPORT_FEED_URL,
+            true), INBOUND_FEED_TYPE_TYPE(InboundEndpointConstants.INBOUND_FEED_TYPE,
+                    INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE, false);
 
     private final String name;
     private final EAttribute eAttributeValue;
     private final boolean holdsKeyValue;
 
     /**
-     * This Enum represent Feed inbound endpoint parameters with parameter name , related EAttribute and boolean value indicating
+     * This Enum represent Feed inbound endpoint parameters with parameter name , related EAttribute and boolean value
+     * indicating
      * whether it could hold key attribute
      *
      */

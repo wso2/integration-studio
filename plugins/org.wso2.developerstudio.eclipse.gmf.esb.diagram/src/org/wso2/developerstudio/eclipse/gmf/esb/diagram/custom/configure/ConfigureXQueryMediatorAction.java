@@ -16,27 +16,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class ConfigureXQueryMediatorAction extends ConfigureEsbNodeAction {
 
-	
-	public ConfigureXQueryMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId("configure-xquery-mediator-action-id");
-		setText("Configure...");
-		setToolTipText("Configure xquery mediator.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
+    public ConfigureXQueryMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId("configure-xquery-mediator-action-id");
+        setText("Configure...");
+        setToolTipText("Configure xquery mediator.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof XQueryMediator, "Invalid selection.");
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-		Shell shell = Display.getDefault().getActiveShell();		
-		Dialog xqueryMediatorConfigurationDialog = new ConfigureXQueryMediatorDialog(shell, (XQueryMediator) selectedObj,
-				getEditingDomain());
-		xqueryMediatorConfigurationDialog.setBlockOnOpen(true);
-		xqueryMediatorConfigurationDialog.open();
-	}
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof XQueryMediator, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        Dialog xqueryMediatorConfigurationDialog = new ConfigureXQueryMediatorDialog(shell,
+                (XQueryMediator) selectedObj, getEditingDomain());
+        xqueryMediatorConfigurationDialog.setBlockOnOpen(true);
+        xqueryMediatorConfigurationDialog.open();
+    }
 }

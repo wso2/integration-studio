@@ -15,7 +15,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
 
-
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -59,504 +58,465 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
  */
 public class ConfigureLogMediatorDialog extends Dialog {
 
-	/**
-	 * Table widgets
-	 */
-	private Combo cmbPropertyType;
-	private Text txtPropertyName;
-	private PropertyText propertyValue;
+    /**
+     * Table widgets
+     */
+    private Combo cmbPropertyType;
+    private Text txtPropertyName;
+    private PropertyText propertyValue;
 
-	/**
-	 * Table editors
-	 * */
-	private TableEditor propertyTypeEditor;
-	private TableEditor propertyNameEditor;
-	private TableEditor propertyValueEditor;
+    /**
+     * Table editors
+     */
+    private TableEditor propertyTypeEditor;
+    private TableEditor propertyNameEditor;
+    private TableEditor propertyValueEditor;
 
-	/**
-	 * {@link LogMediator} domain object.
-	 */
-	private LogMediator logMediator;
+    /**
+     * {@link LogMediator} domain object.
+     */
+    private LogMediator logMediator;
 
-	/**
-	 * Log properties label.
-	 */
-	private Label logPropertiesLabel;
+    /**
+     * Log properties label.
+     */
+    private Label logPropertiesLabel;
 
-	/**
-	 * Button for adding a new log property.
-	 */
-	private Button newLogPropertyButton;
+    /**
+     * Button for adding a new log property.
+     */
+    private Button newLogPropertyButton;
 
-	/**
-	 * Button for deleting an existing log property.
-	 */
-	private Button removeLogPropertyButton;
+    /**
+     * Button for deleting an existing log property.
+     */
+    private Button removeLogPropertyButton;
 
-	/**
-	 * Table of log properties.
-	 */
-	private Table logPropertiesTable;
+    /**
+     * Table of log properties.
+     */
+    private Table logPropertiesTable;
 
-	/**
-	 * Editing domain.
-	 */
-	private TransactionalEditingDomain editingDomain;
+    /**
+     * Editing domain.
+     */
+    private TransactionalEditingDomain editingDomain;
 
-	/**
-	 * Command for recording user operations.
-	 */
-	private CompoundCommand resultCommand;
+    /**
+     * Command for recording user operations.
+     */
+    private CompoundCommand resultCommand;
 
-	/**
-	 * Creates a new {@link ConfigureLogMediatorDialog} instance.
-	 * 
-	 * @param parentShell
-	 *            parent shell.
-	 */
-	public ConfigureLogMediatorDialog(Shell parentShell,
-			LogMediator logMediator, TransactionalEditingDomain editingDomain) {
-		super(parentShell);
-		this.logMediator = logMediator;
-		this.editingDomain = editingDomain;
-	}
+    /**
+     * Creates a new {@link ConfigureLogMediatorDialog} instance.
+     * 
+     * @param parentShell
+     *            parent shell.
+     */
+    public ConfigureLogMediatorDialog(Shell parentShell, LogMediator logMediator,
+            TransactionalEditingDomain editingDomain) {
+        super(parentShell);
+        this.logMediator = logMediator;
+        this.editingDomain = editingDomain;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
+    /**
+     * {@inheritDoc}
+     */
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
 
-		// Set title.
-		newShell.setText("Log Mediator Configuration");
-	}
+        // Set title.
+        newShell.setText("Log Mediator Configuration");
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
+    /**
+     * {@inheritDoc}
+     */
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        FormLayout mainLayout = new FormLayout();
+        mainLayout.marginHeight = 5;
+        mainLayout.marginWidth = 5;
+        container.setLayout(mainLayout);
 
-		logPropertiesLabel = new Label(container, SWT.NONE);
-		{
-			logPropertiesLabel.setText("Properties:");
-			FormData logPropertiesLabelLayoutData = new FormData();
-			logPropertiesLabelLayoutData.top = new FormAttachment(0, 5);
-			logPropertiesLabelLayoutData.left = new FormAttachment(0);
-			logPropertiesLabel.setLayoutData(logPropertiesLabelLayoutData);
-		}
+        logPropertiesLabel = new Label(container, SWT.NONE);
+        {
+            logPropertiesLabel.setText("Properties:");
+            FormData logPropertiesLabelLayoutData = new FormData();
+            logPropertiesLabelLayoutData.top = new FormAttachment(0, 5);
+            logPropertiesLabelLayoutData.left = new FormAttachment(0);
+            logPropertiesLabel.setLayoutData(logPropertiesLabelLayoutData);
+        }
 
-		newLogPropertyButton = new Button(container, SWT.NONE);
-		{
-			newLogPropertyButton.setText("New...");
-			FormData newLogPropertyButtonLayoutData = new FormData(80,
-					SWT.DEFAULT);
-			newLogPropertyButtonLayoutData.top = new FormAttachment(
-					logPropertiesLabel, 10);
-			newLogPropertyButtonLayoutData.right = new FormAttachment(100);
-			newLogPropertyButton.setLayoutData(newLogPropertyButtonLayoutData);
+        newLogPropertyButton = new Button(container, SWT.NONE);
+        {
+            newLogPropertyButton.setText("New...");
+            FormData newLogPropertyButtonLayoutData = new FormData(80, SWT.DEFAULT);
+            newLogPropertyButtonLayoutData.top = new FormAttachment(logPropertiesLabel, 10);
+            newLogPropertyButtonLayoutData.right = new FormAttachment(100);
+            newLogPropertyButton.setLayoutData(newLogPropertyButtonLayoutData);
 
-			newLogPropertyButton.addListener(SWT.Selection, new Listener() {
-				public void handleEvent(Event event) {
-					TableItem item = bindLogProperty(EsbFactory.eINSTANCE
-							.createLogProperty());
-					logPropertiesTable.select(logPropertiesTable.indexOf(item));
-				}
-			});
-		}
+            newLogPropertyButton.addListener(SWT.Selection, new Listener() {
+                public void handleEvent(Event event) {
+                    TableItem item = bindLogProperty(EsbFactory.eINSTANCE.createLogProperty());
+                    logPropertiesTable.select(logPropertiesTable.indexOf(item));
+                }
+            });
+        }
 
-		removeLogPropertyButton = new Button(container, SWT.NONE);
-		{
-			removeLogPropertyButton.setText("Remove");
-			FormData removeLogPropertyButtonLayoutData = new FormData();
-			removeLogPropertyButtonLayoutData.top = new FormAttachment(
-					newLogPropertyButton, 5);
-			removeLogPropertyButtonLayoutData.right = new FormAttachment(100);
-			removeLogPropertyButtonLayoutData.left = new FormAttachment(
-					newLogPropertyButton, 0, SWT.LEFT);
-			removeLogPropertyButton
-					.setLayoutData(removeLogPropertyButtonLayoutData);
+        removeLogPropertyButton = new Button(container, SWT.NONE);
+        {
+            removeLogPropertyButton.setText("Remove");
+            FormData removeLogPropertyButtonLayoutData = new FormData();
+            removeLogPropertyButtonLayoutData.top = new FormAttachment(newLogPropertyButton, 5);
+            removeLogPropertyButtonLayoutData.right = new FormAttachment(100);
+            removeLogPropertyButtonLayoutData.left = new FormAttachment(newLogPropertyButton, 0, SWT.LEFT);
+            removeLogPropertyButton.setLayoutData(removeLogPropertyButtonLayoutData);
 
-			removeLogPropertyButton.addListener(SWT.Selection, new Listener() {
-				public void handleEvent(Event event) {
-					int selectedIndex = logPropertiesTable.getSelectionIndex();
-					if (-1 != selectedIndex) {
-						initTableEditor(propertyNameEditor, logPropertiesTable);
-						initTableEditor(propertyTypeEditor, logPropertiesTable);
-						initTableEditor(propertyValueEditor, logPropertiesTable);
-						unbindLogProperty(selectedIndex);
+            removeLogPropertyButton.addListener(SWT.Selection, new Listener() {
+                public void handleEvent(Event event) {
+                    int selectedIndex = logPropertiesTable.getSelectionIndex();
+                    if (-1 != selectedIndex) {
+                        initTableEditor(propertyNameEditor, logPropertiesTable);
+                        initTableEditor(propertyTypeEditor, logPropertiesTable);
+                        initTableEditor(propertyValueEditor, logPropertiesTable);
+                        unbindLogProperty(selectedIndex);
 
-						// Select the next available candidate for deletion.
-						if (selectedIndex < logPropertiesTable.getItemCount()) {
-							logPropertiesTable.select(selectedIndex);
-						} else {
-							logPropertiesTable.select(selectedIndex - 1);
-						}
-					}
-				}
-			});
-		}
+                        // Select the next available candidate for deletion.
+                        if (selectedIndex < logPropertiesTable.getItemCount()) {
+                            logPropertiesTable.select(selectedIndex);
+                        } else {
+                            logPropertiesTable.select(selectedIndex - 1);
+                        }
+                    }
+                }
+            });
+        }
 
-		logPropertiesTable = new Table(container, SWT.BORDER
-				| SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
-		{
-			TableColumn nameColumn = new TableColumn(logPropertiesTable,
-					SWT.LEFT);
-			TableColumn typeColumn = new TableColumn(logPropertiesTable,
-			        SWT.LEFT);
-			TableColumn valueColumn = new TableColumn(logPropertiesTable,
-					SWT.LEFT);
-			
-			nameColumn.setText("Name");
-			nameColumn.setWidth(150);
-			typeColumn.setText("Type");
-			typeColumn.setWidth(150);
-			valueColumn.setText("Value/Expression");
-			valueColumn.setWidth(200);
+        logPropertiesTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
+        {
+            TableColumn nameColumn = new TableColumn(logPropertiesTable, SWT.LEFT);
+            TableColumn typeColumn = new TableColumn(logPropertiesTable, SWT.LEFT);
+            TableColumn valueColumn = new TableColumn(logPropertiesTable, SWT.LEFT);
 
-			logPropertiesTable.setHeaderVisible(true);
-			logPropertiesTable.setLinesVisible(true);
+            nameColumn.setText("Name");
+            nameColumn.setWidth(150);
+            typeColumn.setText("Type");
+            typeColumn.setWidth(150);
+            valueColumn.setText("Value/Expression");
+            valueColumn.setWidth(200);
 
-			Listener tblPropertiesListener = new Listener() {
-				
-				public void handleEvent(Event evt) {
-					if (null != evt.item) {
-						if (evt.item instanceof TableItem) {
-							TableItem item = (TableItem) evt.item;
-							editItem(item);
-						}
-					} 
-				}
-			};
+            logPropertiesTable.setHeaderVisible(true);
+            logPropertiesTable.setLinesVisible(true);
 
-			logPropertiesTable
-					.addListener(SWT.Selection, tblPropertiesListener);
+            Listener tblPropertiesListener = new Listener() {
 
-			// Populate properties.
-			for (LogProperty property : logMediator.getProperties()) {
-				bindLogProperty(property);
-			}
+                public void handleEvent(Event evt) {
+                    if (null != evt.item) {
+                        if (evt.item instanceof TableItem) {
+                            TableItem item = (TableItem) evt.item;
+                            editItem(item);
+                        }
+                    }
+                }
+            };
 
-			// In-line editing of properties.
-			//setupTableEditor(logPropertiesTable);
+            logPropertiesTable.addListener(SWT.Selection, tblPropertiesListener);
 
-			// Layout.
-			FormData logPropertiesTableLayoutData = new FormData(SWT.DEFAULT,
-					150);
-			logPropertiesTableLayoutData.top = new FormAttachment(
-					newLogPropertyButton, 0, SWT.TOP);
-			logPropertiesTableLayoutData.left = new FormAttachment(0);
-			logPropertiesTableLayoutData.right = new FormAttachment(
-					newLogPropertyButton, -5);
-			logPropertiesTableLayoutData.bottom = new FormAttachment(100);
-			logPropertiesTable.setLayoutData(logPropertiesTableLayoutData);
-		}
+            // Populate properties.
+            for (LogProperty property : logMediator.getProperties()) {
+                bindLogProperty(property);
+            }
 
-		return container;
-	}
+            // In-line editing of properties.
+            // setupTableEditor(logPropertiesTable);
 
-	private void editItem(final TableItem item) {
-		
-		NamespacedProperty expression = (NamespacedProperty)item.getData("exp");
-		
-		propertyNameEditor = initTableEditor(propertyNameEditor, item.getParent());
-		txtPropertyName = new Text(item.getParent(), SWT.NONE);
-		txtPropertyName.setText(item.getText(0));
-		propertyNameEditor.setEditor(txtPropertyName, item, 0);
-		item.getParent().redraw();
-		item.getParent().layout();
-		txtPropertyName.addModifyListener(new ModifyListener() {
+            // Layout.
+            FormData logPropertiesTableLayoutData = new FormData(SWT.DEFAULT, 150);
+            logPropertiesTableLayoutData.top = new FormAttachment(newLogPropertyButton, 0, SWT.TOP);
+            logPropertiesTableLayoutData.left = new FormAttachment(0);
+            logPropertiesTableLayoutData.right = new FormAttachment(newLogPropertyButton, -5);
+            logPropertiesTableLayoutData.bottom = new FormAttachment(100);
+            logPropertiesTable.setLayoutData(logPropertiesTableLayoutData);
+        }
 
-			public void modifyText(ModifyEvent e) {
-				item.setText(0,txtPropertyName.getText());
-			}
-		});
-		
-		propertyTypeEditor = initTableEditor(propertyTypeEditor,
-				item.getParent());
-		cmbPropertyType = new Combo(item.getParent(), SWT.READ_ONLY);
-		cmbPropertyType.setItems(new String[] { "LITERAL", "EXPRESSION" });
-		cmbPropertyType.setText(item.getText(1));
-		propertyTypeEditor.setEditor(cmbPropertyType, item, 1);
-		item.getParent().redraw();
-		item.getParent().layout();
-		cmbPropertyType.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event evt) {
-				item.setText(1, cmbPropertyType.getText());
-			}
-		});
-		
-		propertyValueEditor = initTableEditor(propertyValueEditor,
-				item.getParent());
-		
-		propertyValue = new PropertyText(item.getParent(), SWT.NONE, cmbPropertyType);
-		propertyValue.addProperties(item.getText(2),expression);
-		propertyValueEditor.setEditor(propertyValue, item, 2);
-		item.getParent().redraw();
-		item.getParent().layout();
-		propertyValue.addModifyListener(new ModifyListener() {
-			
-			public void modifyText(ModifyEvent e) {
-				item.setText(2,propertyValue.getText());
-				Object property = propertyValue.getProperty();
-				if(property instanceof NamespacedProperty){
-					item.setData("exp",(NamespacedProperty)property);
-				} 
-			}
-		});
-	}
+        return container;
+    }
 
-	private TableEditor initTableEditor(TableEditor editor, Table table) {
-		if (null != editor) {
-			Control lastCtrl = editor.getEditor();
-			if (null != lastCtrl) {
-				lastCtrl.dispose();
-			}
-		}
-		editor = new TableEditor(table);
-		editor.horizontalAlignment = SWT.LEFT;
-		editor.grabHorizontal = true;
-		return editor;
-	}
+    private void editItem(final TableItem item) {
 
-	/**
-	 * Sets up a table editor that allows users to edit cell values inline.
-	 * 
-	 * @param table
-	 *            table against which a table editor is setup.
-	 */
-	@Deprecated
-	private void setupTableEditor(final Table table) {
-		final TableEditor cellEditor = new TableEditor(table);
-		cellEditor.grabHorizontal = true;
-		cellEditor.minimumWidth = 50;
-		table.addMouseListener(new MouseAdapter() {
-			/**
-			 * Setup a new cell editor control at double click event.
-			 */
-			public void mouseDoubleClick(MouseEvent e) {
-				// Dispose the old editor control (if one is setup).
-				Control oldEditorControl = cellEditor.getEditor();
-				if (null != oldEditorControl)
-					oldEditorControl.dispose();
+        NamespacedProperty expression = (NamespacedProperty) item.getData("exp");
 
-				// Mouse location.
-				Point mouseLocation = new Point(e.x, e.y);
+        propertyNameEditor = initTableEditor(propertyNameEditor, item.getParent());
+        txtPropertyName = new Text(item.getParent(), SWT.NONE);
+        txtPropertyName.setText(item.getText(0));
+        propertyNameEditor.setEditor(txtPropertyName, item, 0);
+        item.getParent().redraw();
+        item.getParent().layout();
+        txtPropertyName.addModifyListener(new ModifyListener() {
 
-				// Grab the selected row.
-				TableItem item = (TableItem) table.getItem(mouseLocation);
-				if (null == item)
-					return;
+            public void modifyText(ModifyEvent e) {
+                item.setText(0, txtPropertyName.getText());
+            }
+        });
 
-				// Determine which column was selected.
-				int selectedColumn = -1;
-				for (int i = 0, n = table.getColumnCount(); i < n; i++) {
-					if (item.getBounds(i).contains(mouseLocation)) {
-						selectedColumn = i;
-						break;
-					}
-				}
+        propertyTypeEditor = initTableEditor(propertyTypeEditor, item.getParent());
+        cmbPropertyType = new Combo(item.getParent(), SWT.READ_ONLY);
+        cmbPropertyType.setItems(new String[] { "LITERAL", "EXPRESSION" });
+        cmbPropertyType.setText(item.getText(1));
+        propertyTypeEditor.setEditor(cmbPropertyType, item, 1);
+        item.getParent().redraw();
+        item.getParent().layout();
+        cmbPropertyType.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event evt) {
+                item.setText(1, cmbPropertyType.getText());
+            }
+        });
 
-				// Setup a new editor control.
-				if (-1 != selectedColumn) {
-					Text editorControl = new Text(table, SWT.NONE);
-					final int editorControlColumn = selectedColumn;
-					editorControl.setText(item.getText(selectedColumn));
-					editorControl.addModifyListener(new ModifyListener() {
-						public void modifyText(ModifyEvent e) {
-							Text text = (Text) cellEditor.getEditor();
-							cellEditor.getItem().setText(editorControlColumn,
-									text.getText());
-						}
-					});
-					editorControl.selectAll();
-					editorControl.setFocus();
-					cellEditor.setEditor(editorControl, item, selectedColumn);
-				}
-			}
+        propertyValueEditor = initTableEditor(propertyValueEditor, item.getParent());
 
-			/**
-			 * Dispose cell editor control at mouse down (otherwise the control
-			 * keep showing).
-			 */
-			public void mouseDown(MouseEvent e) {
-				Control oldEditorControl = cellEditor.getEditor();
-				if (null != oldEditorControl)
-					oldEditorControl.dispose();
-			}
-		});
-	}
+        propertyValue = new PropertyText(item.getParent(), SWT.NONE, cmbPropertyType);
+        propertyValue.addProperties(item.getText(2), expression);
+        propertyValueEditor.setEditor(propertyValue, item, 2);
+        item.getParent().redraw();
+        item.getParent().layout();
+        propertyValue.addModifyListener(new ModifyListener() {
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void okPressed() {
-		// Log properties.
-		for (TableItem item : logPropertiesTable.getItems()) {
-			LogProperty property = (LogProperty) item.getData();
-			NamespacedProperty expression = (NamespacedProperty)item.getData("exp");
+            public void modifyText(ModifyEvent e) {
+                item.setText(2, propertyValue.getText());
+                Object property = propertyValue.getProperty();
+                if (property instanceof NamespacedProperty) {
+                    item.setData("exp", (NamespacedProperty) property);
+                }
+            }
+        });
+    }
 
-			// If the property is a new one, add it to the model.
-			if (null == property.eContainer()) {
-				// Update the log property with the latest data from table row.
-				property.setPropertyName(item.getText(0));
+    private TableEditor initTableEditor(TableEditor editor, Table table) {
+        if (null != editor) {
+            Control lastCtrl = editor.getEditor();
+            if (null != lastCtrl) {
+                lastCtrl.dispose();
+            }
+        }
+        editor = new TableEditor(table);
+        editor.horizontalAlignment = SWT.LEFT;
+        editor.grabHorizontal = true;
+        return editor;
+    }
 
-				if (item.getText(1).equals("LITERAL")) {
-					property.setPropertyValueType(PropertyValueType.LITERAL);
-					property.setPropertyValue(item.getText(2));
-				}
+    /**
+     * Sets up a table editor that allows users to edit cell values inline.
+     * 
+     * @param table
+     *            table against which a table editor is setup.
+     */
+    @Deprecated
+    private void setupTableEditor(final Table table) {
+        final TableEditor cellEditor = new TableEditor(table);
+        cellEditor.grabHorizontal = true;
+        cellEditor.minimumWidth = 50;
+        table.addMouseListener(new MouseAdapter() {
+            /**
+             * Setup a new cell editor control at double click event.
+             */
+            public void mouseDoubleClick(MouseEvent e) {
+                // Dispose the old editor control (if one is setup).
+                Control oldEditorControl = cellEditor.getEditor();
+                if (null != oldEditorControl)
+                    oldEditorControl.dispose();
 
-				if (item.getText(1).equals("EXPRESSION")) {
-					property.setPropertyValueType(PropertyValueType.EXPRESSION);
-					NamespacedProperty namespaceProperty = EsbFactoryImpl.eINSTANCE
-							.createNamespacedProperty();
-					namespaceProperty.setPropertyValue(item.getText(2));
-					namespaceProperty.setNamespaces(expression.getNamespaces());
-					property.setPropertyExpression(namespaceProperty);
-				}
+                // Mouse location.
+                Point mouseLocation = new Point(e.x, e.y);
 
-				// Record the add operation.
-				AddCommand addCmd = new AddCommand(editingDomain, logMediator,
-						EsbPackage.Literals.LOG_MEDIATOR__PROPERTIES, property);
-				getResultCommand().append(addCmd);
-			} else {
-				// If the property name needs to be updated.
-				if (!property.getPropertyName().equals(item.getText(0))) {
-					SetCommand setCmd = new SetCommand(
-							editingDomain,
-							property,
-							EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_NAME,
-							item.getText(0));
-					getResultCommand().append(setCmd);
-				}
+                // Grab the selected row.
+                TableItem item = (TableItem) table.getItem(mouseLocation);
+                if (null == item)
+                    return;
 
-				if (item.getText(1).equals("LITERAL")) {
+                // Determine which column was selected.
+                int selectedColumn = -1;
+                for (int i = 0, n = table.getColumnCount(); i < n; i++) {
+                    if (item.getBounds(i).contains(mouseLocation)) {
+                        selectedColumn = i;
+                        break;
+                    }
+                }
 
-					SetCommand setCmdValueType = new SetCommand(
-							editingDomain,
-							property,
-							EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE_TYPE,
-							PropertyValueType.LITERAL);
-					getResultCommand().append(setCmdValueType);
-					if (!property.getPropertyValue().equals(item.getText(2))) {
-						SetCommand setCmd = new SetCommand(
-								editingDomain,
-								property,
-								EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE,
-								item.getText(2));
-						getResultCommand().append(setCmd);
-					}
-				}
-				if (item.getText(1).equals("EXPRESSION")) {
-					SetCommand setCmdValueType = new SetCommand(
-							editingDomain,
-							property,
-							EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE_TYPE,
-							PropertyValueType.EXPRESSION);
-					getResultCommand().append(setCmdValueType);
+                // Setup a new editor control.
+                if (-1 != selectedColumn) {
+                    Text editorControl = new Text(table, SWT.NONE);
+                    final int editorControlColumn = selectedColumn;
+                    editorControl.setText(item.getText(selectedColumn));
+                    editorControl.addModifyListener(new ModifyListener() {
+                        public void modifyText(ModifyEvent e) {
+                            Text text = (Text) cellEditor.getEditor();
+                            cellEditor.getItem().setText(editorControlColumn, text.getText());
+                        }
+                    });
+                    editorControl.selectAll();
+                    editorControl.setFocus();
+                    cellEditor.setEditor(editorControl, item, selectedColumn);
+                }
+            }
 
-					if (property.getPropertyExpression() == null) {
-						NamespacedProperty namespaceProperty = EsbFactoryImpl.eINSTANCE
-								.createNamespacedProperty();
-						namespaceProperty.setPropertyValue(item.getText(2));
-						namespaceProperty.setNamespaces(expression.getNamespaces());
+            /**
+             * Dispose cell editor control at mouse down (otherwise the control
+             * keep showing).
+             */
+            public void mouseDown(MouseEvent e) {
+                Control oldEditorControl = cellEditor.getEditor();
+                if (null != oldEditorControl)
+                    oldEditorControl.dispose();
+            }
+        });
+    }
 
-						AddCommand addCmd = new AddCommand(
-								editingDomain,
-								property,
-								EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_EXPRESSION,
-								namespaceProperty);
-						getResultCommand().append(addCmd);
-					} else {
-						SetCommand setCmd = new SetCommand(
-								editingDomain,
-								property.getPropertyExpression(),
-								EsbPackage.Literals.NAMESPACED_PROPERTY__PROPERTY_VALUE,
-								item.getText(2));
-						getResultCommand().append(setCmd);
-						
-						setCmd = new SetCommand(
-								editingDomain,
-								property.getPropertyExpression(),
-								EsbPackage.Literals.NAMESPACED_PROPERTY__NAMESPACES,
-								expression.getNamespaces());
-						getResultCommand().append(setCmd);
-					}
+    /**
+     * {@inheritDoc}
+     */
+    protected void okPressed() {
+        // Log properties.
+        for (TableItem item : logPropertiesTable.getItems()) {
+            LogProperty property = (LogProperty) item.getData();
+            NamespacedProperty expression = (NamespacedProperty) item.getData("exp");
 
-				}
+            // If the property is a new one, add it to the model.
+            if (null == property.eContainer()) {
+                // Update the log property with the latest data from table row.
+                property.setPropertyName(item.getText(0));
 
-			}
-		}
+                if (item.getText(1).equals("LITERAL")) {
+                    property.setPropertyValueType(PropertyValueType.LITERAL);
+                    property.setPropertyValue(item.getText(2));
+                }
 
-		// Apply changes.
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		} 
+                if (item.getText(1).equals("EXPRESSION")) {
+                    property.setPropertyValueType(PropertyValueType.EXPRESSION);
+                    NamespacedProperty namespaceProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+                    namespaceProperty.setPropertyValue(item.getText(2));
+                    namespaceProperty.setNamespaces(expression.getNamespaces());
+                    property.setPropertyExpression(namespaceProperty);
+                }
 
-		super.okPressed();
-	}
+                // Record the add operation.
+                AddCommand addCmd = new AddCommand(editingDomain, logMediator,
+                        EsbPackage.Literals.LOG_MEDIATOR__PROPERTIES, property);
+                getResultCommand().append(addCmd);
+            } else {
+                // If the property name needs to be updated.
+                if (!property.getPropertyName().equals(item.getText(0))) {
+                    SetCommand setCmd = new SetCommand(editingDomain, property,
+                            EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_NAME,
+                            item.getText(0));
+                    getResultCommand().append(setCmd);
+                }
 
-	/**
-	 * Utility method for binding a log property into the UI. Note that this
-	 * method does not record any commands, it simply adds a new row into the
-	 * table and associates the passed {@link LogProperty} to it.
-	 * 
-	 * @return {@link TableItem} which was introduced.
-	 */
-	private TableItem bindLogProperty(LogProperty property) {
-		TableItem item = new TableItem(logPropertiesTable, SWT.NONE);
-		if (property.getPropertyValueType().getLiteral().equals("LITERAL")) {
-			item.setText(new String[] { property.getPropertyName(),
-			        property.getPropertyValueType().getLiteral(),
-					property.getPropertyValue() });
-		}
-		if (property.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
-			item.setText(new String[] { property.getPropertyName(),
-			        property.getPropertyValueType().getLiteral(),
-					property.getPropertyExpression().getPropertyValue() });
-		}
+                if (item.getText(1).equals("LITERAL")) {
 
-		item.setData(property);
-		item.setData("exp",
-				EsbFactory.eINSTANCE.copyNamespacedProperty(property.getPropertyExpression()));
-		return item;
-	}
+                    SetCommand setCmdValueType = new SetCommand(editingDomain, property,
+                            EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE_TYPE,
+                            PropertyValueType.LITERAL);
+                    getResultCommand().append(setCmdValueType);
+                    if (!property.getPropertyValue().equals(item.getText(2))) {
+                        SetCommand setCmd = new SetCommand(editingDomain, property,
+                                EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE,
+                                item.getText(2));
+                        getResultCommand().append(setCmd);
+                    }
+                }
+                if (item.getText(1).equals("EXPRESSION")) {
+                    SetCommand setCmdValueType = new SetCommand(editingDomain, property,
+                            EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_VALUE_TYPE,
+                            PropertyValueType.EXPRESSION);
+                    getResultCommand().append(setCmdValueType);
 
-	/**
-	 * Removes the corresponding table item from the table and records a command
-	 * for detaching the corresponding log property from the model.
-	 * 
-	 * @param itemIndex
-	 *            index of the row which is to be removed.
-	 */
-	private void unbindLogProperty(int itemIndex) {
-		TableItem item = logPropertiesTable.getItem(itemIndex);
-		LogProperty property = (LogProperty) item.getData();
-		// If the property is part of the model, record a command for getting
-		// rid of it.
-		if (null != property.eContainer()) {
-			RemoveCommand removeCmd = new RemoveCommand(editingDomain,
-					logMediator, EsbPackage.Literals.LOG_MEDIATOR__PROPERTIES,
-					property);
-			getResultCommand().append(removeCmd);
-		}
-		logPropertiesTable.remove(logPropertiesTable.indexOf(item));
-	}
+                    if (property.getPropertyExpression() == null) {
+                        NamespacedProperty namespaceProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+                        namespaceProperty.setPropertyValue(item.getText(2));
+                        namespaceProperty.setNamespaces(expression.getNamespaces());
 
-	/**
-	 * Utility method for retrieving the result {@link CompoundCommand} which is
-	 * used to record user operations.
-	 * 
-	 * @return result command.
-	 */
-	private CompoundCommand getResultCommand() {
-		if (null == resultCommand) {
-			resultCommand = new CompoundCommand();
-		}
-		return resultCommand;
-	}
+                        AddCommand addCmd = new AddCommand(editingDomain, property,
+                                EsbPackage.Literals.ABSTRACT_NAME_VALUE_EXPRESSION_PROPERTY__PROPERTY_EXPRESSION,
+                                namespaceProperty);
+                        getResultCommand().append(addCmd);
+                    } else {
+                        SetCommand setCmd = new SetCommand(editingDomain, property.getPropertyExpression(),
+                                EsbPackage.Literals.NAMESPACED_PROPERTY__PROPERTY_VALUE, item.getText(2));
+                        getResultCommand().append(setCmd);
+
+                        setCmd = new SetCommand(editingDomain, property.getPropertyExpression(),
+                                EsbPackage.Literals.NAMESPACED_PROPERTY__NAMESPACES, expression.getNamespaces());
+                        getResultCommand().append(setCmd);
+                    }
+
+                }
+
+            }
+        }
+
+        // Apply changes.
+        if (getResultCommand().canExecute()) {
+            editingDomain.getCommandStack().execute(getResultCommand());
+        }
+
+        super.okPressed();
+    }
+
+    /**
+     * Utility method for binding a log property into the UI. Note that this
+     * method does not record any commands, it simply adds a new row into the
+     * table and associates the passed {@link LogProperty} to it.
+     * 
+     * @return {@link TableItem} which was introduced.
+     */
+    private TableItem bindLogProperty(LogProperty property) {
+        TableItem item = new TableItem(logPropertiesTable, SWT.NONE);
+        if (property.getPropertyValueType().getLiteral().equals("LITERAL")) {
+            item.setText(new String[] { property.getPropertyName(), property.getPropertyValueType().getLiteral(),
+                    property.getPropertyValue() });
+        }
+        if (property.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
+            item.setText(new String[] { property.getPropertyName(), property.getPropertyValueType().getLiteral(),
+                    property.getPropertyExpression().getPropertyValue() });
+        }
+
+        item.setData(property);
+        item.setData("exp", EsbFactory.eINSTANCE.copyNamespacedProperty(property.getPropertyExpression()));
+        return item;
+    }
+
+    /**
+     * Removes the corresponding table item from the table and records a command
+     * for detaching the corresponding log property from the model.
+     * 
+     * @param itemIndex
+     *            index of the row which is to be removed.
+     */
+    private void unbindLogProperty(int itemIndex) {
+        TableItem item = logPropertiesTable.getItem(itemIndex);
+        LogProperty property = (LogProperty) item.getData();
+        // If the property is part of the model, record a command for getting
+        // rid of it.
+        if (null != property.eContainer()) {
+            RemoveCommand removeCmd = new RemoveCommand(editingDomain, logMediator,
+                    EsbPackage.Literals.LOG_MEDIATOR__PROPERTIES, property);
+            getResultCommand().append(removeCmd);
+        }
+        logPropertiesTable.remove(logPropertiesTable.indexOf(item));
+    }
+
+    /**
+     * Utility method for retrieving the result {@link CompoundCommand} which is
+     * used to record user operations.
+     * 
+     * @return result command.
+     */
+    private CompoundCommand getResultCommand() {
+        if (null == resultCommand) {
+            resultCommand = new CompoundCommand();
+        }
+        return resultCommand;
+    }
 }

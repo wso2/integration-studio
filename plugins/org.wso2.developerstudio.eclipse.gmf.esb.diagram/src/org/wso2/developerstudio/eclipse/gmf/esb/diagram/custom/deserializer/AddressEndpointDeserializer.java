@@ -47,128 +47,130 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointF
 
 public class AddressEndpointDeserializer extends AbstractEndpointDeserializer {
 
-	@Deprecated
-	public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) {
-		Assert.isTrue(object instanceof org.apache.synapse.endpoints.AddressEndpoint,
-				"Unsupported endpoint passed in for deserialization at " + this.getClass());
+    @Deprecated
+    public AbstractEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) {
+        Assert.isTrue(object instanceof org.apache.synapse.endpoints.AddressEndpoint,
+                "Unsupported endpoint passed in for deserialization at " + this.getClass());
 
-		org.apache.synapse.endpoints.AddressEndpoint addressEndpoint = (org.apache.synapse.endpoints.AddressEndpoint) object;
-		IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
-				|| part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.AddressEndPoint_3646
-						: EsbElementTypes.AddressEndPoint_3610;
-		AbstractEndPoint endPoint = (AbstractEndPoint) DeserializerUtils.createNode(part, endpointType);
-		setElementToEdit(endPoint);
-		deserializeEndpoint(addressEndpoint, endPoint);
+        org.apache.synapse.endpoints.AddressEndpoint addressEndpoint = (org.apache.synapse.endpoints.AddressEndpoint) object;
+        IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
+                || part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.AddressEndPoint_3646
+                        : EsbElementTypes.AddressEndPoint_3610;
+        AbstractEndPoint endPoint = (AbstractEndPoint) DeserializerUtils.createNode(part, endpointType);
+        setElementToEdit(endPoint);
+        deserializeEndpoint(addressEndpoint, endPoint);
 
-		if (addressEndpoint.getDefinition() != null) {
-			executeSetValueCommand(ADDRESS_END_POINT__URI, addressEndpoint.getDefinition().getAddress());
-		}
+        if (addressEndpoint.getDefinition() != null) {
+            executeSetValueCommand(ADDRESS_END_POINT__URI, addressEndpoint.getDefinition().getAddress());
+        }
 
-		return endPoint;
-	}
+        return endPoint;
+    }
 
-	@Override
-	public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
+    @Override
+    public void createNode(FormEditor formEditor, AbstractEndpoint endpointObject) {
 
-		ESBFormEditor addressEPFormEditor = (ESBFormEditor) formEditor;
-		EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor.getFormPageForArtifact(ArtifactType.ENDPOINT);
+        ESBFormEditor addressEPFormEditor = (ESBFormEditor) formEditor;
+        EndpointFormPage endpointPage = (EndpointFormPage) addressEPFormEditor
+                .getFormPageForArtifact(ArtifactType.ENDPOINT);
 
-		AddressEndpoint endpoint = (AddressEndpoint) endpointObject;
-		
-		AddressEndpointFormPage addressEndpointPage = (AddressEndpointFormPage) endpointPage;
-		
-		setTextValue(addressEndpointPage.getAddressEP_URI(), endpoint.getDefinition().getAddress());
-		setTextValue(addressEndpointPage.getEP_Description(), endpoint.getDescription());
-		deserializeEndpoint(addressEPFormEditor, endpointObject);
-		
-		if (endpoint.getProperties().size() > 0) {
-			List<EndPointProperty> existingProperties = addressEndpointPage.endpointPropertyList;
-			addressEndpointPage.endpointPropertyList = getProperties(endpoint, existingProperties);
+        AddressEndpoint endpoint = (AddressEndpoint) endpointObject;
 
-		} else {
-			addressEndpointPage.endpointPropertyList = null;
-		}
-		super.createNode(formEditor, endpointObject);
-	}
-	
-	/**
-	 * Get properties 
-	 * @param endpoint endpoint
-	 * @param existingProperties existing properties
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public List<EndPointProperty> getProperties(AddressEndpoint endpoint, List<EndPointProperty> existingProperties) {
+        AddressEndpointFormPage addressEndpointPage = (AddressEndpointFormPage) endpointPage;
 
-		List<EndPointProperty> newlyAddedProperties = new ArrayList<EndPointProperty>();
-		List<EndPointProperty> removedProperties = new ArrayList<EndPointProperty>();
-		List<EndPointProperty> newProperties = new ArrayList<EndPointProperty>();
+        setTextValue(addressEndpointPage.getAddressEP_URI(), endpoint.getDefinition().getAddress());
+        setTextValue(addressEndpointPage.getEP_Description(), endpoint.getDescription());
+        deserializeEndpoint(addressEPFormEditor, endpointObject);
 
-		for (Iterator<MediatorProperty> i = endpoint.getProperties().iterator(); i.hasNext();) {
-			MediatorProperty next = i.next();
-			EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
-			property.setName(next.getName());
+        if (endpoint.getProperties().size() > 0) {
+            List<EndPointProperty> existingProperties = addressEndpointPage.endpointPropertyList;
+            addressEndpointPage.endpointPropertyList = getProperties(endpoint, existingProperties);
 
-			if (next.getExpression() != null) {
-				property.setValueType(PropertyValueType.EXPRESSION);
-				NamespacedProperty valueXPath = EsbFactory.eINSTANCE.createNamespacedProperty();
-				valueXPath.setPropertyValue(next.getExpression().toString());
-				Map<String, String> namespaces = (Map<String, String>) next.getExpression().getNamespaces();
-				valueXPath.setNamespaces(namespaces);
-				property.setValueExpression(valueXPath);
-			} else if (next.getValue() != null) {
-				property.setValueType(PropertyValueType.LITERAL);
-				property.setValue(next.getValue());
-			}
+        } else {
+            addressEndpointPage.endpointPropertyList = null;
+        }
+        super.createNode(formEditor, endpointObject);
+    }
 
-			if (next.getScope() != null) {
-				property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
-			} else {
-				property.setScope(EndPointPropertyScope.SYNAPSE);
-			}
+    /**
+     * Get properties
+     * 
+     * @param endpoint endpoint
+     * @param existingProperties existing properties
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public List<EndPointProperty> getProperties(AddressEndpoint endpoint, List<EndPointProperty> existingProperties) {
 
-			if (existingProperties != null) {
-				for (EndPointProperty propertyItem : existingProperties) {
-					// When updating the existing properties from source view, then remove the property
-					// from old list and add to new list
-					if (propertyItem.getName().equals(next.getName())) {
-						existingProperties.remove(propertyItem);
-						newlyAddedProperties.add(property);
-						break;
-					}
-				}
-			}
-			// When adding a new property from source then add it to the new list
-			if (!newlyAddedProperties.contains(property)) {
-				newlyAddedProperties.add(property);
-			}
-		}
-		// If old properties contain any property values, then remove the value and add the property to the
-		// new
-		// list, DEVTOOLESB-505
-		if (existingProperties != null) {
-			for (EndPointProperty prop : existingProperties) {
-				String value = prop.getName();
-				if (StringUtils.isNotEmpty(value)) {
-					// Add the property to removed list
-					removedProperties.add(prop);
-				}
-			}
-		}
-		// First remove the removed properties from existing properties
-		if (removedProperties.size() > 0) {
-			existingProperties.removeAll(removedProperties);
-		}
-		// Adds the new properties
-		if (newProperties.size() > 0) {
-			newlyAddedProperties.addAll(newProperties);
-		}
-		// Adds the existing old properties (which didn't get updated)
-		// to the new list
-		if (existingProperties != null) {
-			newlyAddedProperties.addAll(existingProperties);
-		}
-		return newlyAddedProperties;
+        List<EndPointProperty> newlyAddedProperties = new ArrayList<EndPointProperty>();
+        List<EndPointProperty> removedProperties = new ArrayList<EndPointProperty>();
+        List<EndPointProperty> newProperties = new ArrayList<EndPointProperty>();
 
-	}
+        for (Iterator<MediatorProperty> i = endpoint.getProperties().iterator(); i.hasNext();) {
+            MediatorProperty next = i.next();
+            EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
+            property.setName(next.getName());
+
+            if (next.getExpression() != null) {
+                property.setValueType(PropertyValueType.EXPRESSION);
+                NamespacedProperty valueXPath = EsbFactory.eINSTANCE.createNamespacedProperty();
+                valueXPath.setPropertyValue(next.getExpression().toString());
+                Map<String, String> namespaces = (Map<String, String>) next.getExpression().getNamespaces();
+                valueXPath.setNamespaces(namespaces);
+                property.setValueExpression(valueXPath);
+            } else if (next.getValue() != null) {
+                property.setValueType(PropertyValueType.LITERAL);
+                property.setValue(next.getValue());
+            }
+
+            if (next.getScope() != null) {
+                property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
+            } else {
+                property.setScope(EndPointPropertyScope.SYNAPSE);
+            }
+
+            if (existingProperties != null) {
+                for (EndPointProperty propertyItem : existingProperties) {
+                    // When updating the existing properties from source view, then remove the property
+                    // from old list and add to new list
+                    if (propertyItem.getName().equals(next.getName())) {
+                        existingProperties.remove(propertyItem);
+                        newlyAddedProperties.add(property);
+                        break;
+                    }
+                }
+            }
+            // When adding a new property from source then add it to the new list
+            if (!newlyAddedProperties.contains(property)) {
+                newlyAddedProperties.add(property);
+            }
+        }
+        // If old properties contain any property values, then remove the value and add the property to the
+        // new
+        // list, DEVTOOLESB-505
+        if (existingProperties != null) {
+            for (EndPointProperty prop : existingProperties) {
+                String value = prop.getName();
+                if (StringUtils.isNotEmpty(value)) {
+                    // Add the property to removed list
+                    removedProperties.add(prop);
+                }
+            }
+        }
+        // First remove the removed properties from existing properties
+        if (removedProperties.size() > 0) {
+            existingProperties.removeAll(removedProperties);
+        }
+        // Adds the new properties
+        if (newProperties.size() > 0) {
+            newlyAddedProperties.addAll(newProperties);
+        }
+        // Adds the existing old properties (which didn't get updated)
+        // to the new list
+        if (existingProperties != null) {
+            newlyAddedProperties.addAll(existingProperties);
+        }
+        return newlyAddedProperties;
+
+    }
 }

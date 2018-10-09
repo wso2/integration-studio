@@ -24,36 +24,39 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddT
 
 public class AddBranchCloneMediatorAction extends ConfigureEsbNodeAction {
 
-	public AddBranchCloneMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId("add-branch-clone-mediator-action-id");
-		setText("Add/Remove Target..");
-		setToolTipText("Add or Remove target branches.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
-	}
+    public AddBranchCloneMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId("add-branch-clone-mediator-action-id");
+        setText("Add/Remove Target..");
+        setToolTipText("Add or Remove target branches.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
+    }
 
-	
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof CloneMediator, "Invalid selection.");
-		
-		Shell shell = Display.getDefault().getActiveShell();	
-		Dialog addBranchDialog = new AddTargetBranchDialog(shell, (CloneMediator) selectedObj,getEditingDomain(),selectedEP);
-		addBranchDialog.setBlockOnOpen(true);
-		addBranchDialog.open();
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-/*		CloneMediator parentMediator = (CloneMediator) selectedObj;
-		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentMediator);
-		CloneMediatorTargetOutputConnector cb = EsbFactory.eINSTANCE.createCloneMediatorTargetOutputConnector();
-		AddCommand addCmd = new AddCommand(domain,parentMediator,EsbPackage.Literals.CLONE_MEDIATOR__TARGETS_OUTPUT_CONNECTOR, cb);
-		if (addCmd.canExecute()){
-			domain.getCommandStack().execute(addCmd);
-		} */
-		
-	}
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof CloneMediator, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        Dialog addBranchDialog = new AddTargetBranchDialog(shell, (CloneMediator) selectedObj, getEditingDomain(),
+                selectedEP);
+        addBranchDialog.setBlockOnOpen(true);
+        addBranchDialog.open();
+
+        /*
+         * CloneMediator parentMediator = (CloneMediator) selectedObj;
+         * TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentMediator);
+         * CloneMediatorTargetOutputConnector cb = EsbFactory.eINSTANCE.createCloneMediatorTargetOutputConnector();
+         * AddCommand addCmd = new
+         * AddCommand(domain,parentMediator,EsbPackage.Literals.CLONE_MEDIATOR__TARGETS_OUTPUT_CONNECTOR, cb);
+         * if (addCmd.canExecute()){
+         * domain.getCommandStack().execute(addCmd);
+         * }
+         */
+
+    }
 
 }

@@ -27,31 +27,29 @@ import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;;
 
-
 public class PropertyMediatorOMPropertyDescriptor extends PropertyDescriptor {
-		 
-		public PropertyMediatorOMPropertyDescriptor(Object object,
-				IItemPropertyDescriptor itemPropertyDescriptor) {
-			super(object, itemPropertyDescriptor);
-		}
-	 
-		
-		public CellEditor createPropertyEditor(Composite parent) {
-			return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-				
-				protected Object openDialogBox(Control cellEditorWindow) {
-				    Shell shell = Display.getDefault().getActiveShell();
-					String title = EMFEditUIPlugin.INSTANCE.getString("_UI_FeatureEditorDialog_title", 
-											new Object [] { getDisplayName(), getEditLabelProvider().getText(object) });
-					PropertyMediator propertyMediator = (PropertyMediator) object;
-					PropertyMediatorOMPropertyDialog nediatorConfigurationDialog = new PropertyMediatorOMPropertyDialog(title, shell, 
-							propertyMediator, EsbPackage.Literals.PROPERTY_MEDIATOR__OM, propertyMediator.getOM());
-					nediatorConfigurationDialog.setBlockOnOpen(true);
-					nediatorConfigurationDialog.open();
-					
-					return null;
-				}
-			};
-		}
-	 
-	}
+
+    public PropertyMediatorOMPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                String title = EMFEditUIPlugin.INSTANCE.getString("_UI_FeatureEditorDialog_title",
+                        new Object[] { getDisplayName(), getEditLabelProvider().getText(object) });
+                PropertyMediator propertyMediator = (PropertyMediator) object;
+                PropertyMediatorOMPropertyDialog nediatorConfigurationDialog = new PropertyMediatorOMPropertyDialog(
+                        title, shell, propertyMediator, EsbPackage.Literals.PROPERTY_MEDIATOR__OM,
+                        propertyMediator.getOM());
+                nediatorConfigurationDialog.setBlockOnOpen(true);
+                nediatorConfigurationDialog.open();
+
+                return null;
+            }
+        };
+    }
+
+}

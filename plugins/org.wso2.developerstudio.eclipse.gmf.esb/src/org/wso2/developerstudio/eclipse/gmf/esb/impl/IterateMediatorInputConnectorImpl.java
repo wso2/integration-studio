@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediatorInputConnector;
  * @generated
  */
 public class IterateMediatorInputConnectorImpl extends InputConnectorImpl implements IterateMediatorInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IterateMediatorInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected IterateMediatorInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.ITERATE_MEDIATOR_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.ITERATE_MEDIATOR_INPUT_CONNECTOR;
+    }
 
-} //IterateMediatorInputConnectorImpl
+} // IterateMediatorInputConnectorImpl

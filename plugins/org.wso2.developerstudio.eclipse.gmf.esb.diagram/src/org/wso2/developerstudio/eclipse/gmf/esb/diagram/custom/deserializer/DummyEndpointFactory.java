@@ -55,48 +55,48 @@ public abstract class DummyEndpointFactory {
     private static final QName DESCRIPTION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "description");
 
     public static Endpoint getEndpointFromElement(OMElement elem, boolean isAnonymous, Properties properties) {
-    	if (getEndpointFactory(elem) != null) {
-    		return getEndpointFactory(elem).createEndpointWithName(elem, isAnonymous, properties);
-    	} else {
-    		return new AddressEndpoint();
-    	}
+        if (getEndpointFactory(elem) != null) {
+            return getEndpointFactory(elem).createEndpointWithName(elem, isAnonymous, properties);
+        } else {
+            return new AddressEndpoint();
+        }
     }
 
     public static Endpoint getEndpointFromElement(OMElement elem, DefinitionFactory factory, boolean isAnonymous,
-	    Properties properties) {
-	DummyEndpointFactory fac = getEndpointFactory(elem);
-	fac.setEndpointDefinitionFactory(factory);
-	return fac.createEndpointWithName(elem, isAnonymous, properties);
+            Properties properties) {
+        DummyEndpointFactory fac = getEndpointFactory(elem);
+        fac.setEndpointDefinitionFactory(factory);
+        return fac.createEndpointWithName(elem, isAnonymous, properties);
     }
 
     public Object getObjectFromOMNode(OMNode om, Properties properties) {
-	if (om instanceof OMElement) {
-	    return createEndpointWithName((OMElement) om, false, properties);
-	}
-	return null;
+        if (om instanceof OMElement) {
+            return createEndpointWithName((OMElement) om, false, properties);
+        }
+        return null;
     }
 
     protected abstract Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties);
 
     private Endpoint createEndpointWithName(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	Endpoint ep = createEndpoint(epConfig, anonymousEndpoint, properties);
-	OMElement descriptionElem = epConfig.getFirstChildWithName(DESCRIPTION_Q);
-	if (descriptionElem != null) {
-	    ep.setDescription(descriptionElem.getText());
-	}
+        Endpoint ep = createEndpoint(epConfig, anonymousEndpoint, properties);
+        OMElement descriptionElem = epConfig.getFirstChildWithName(DESCRIPTION_Q);
+        if (descriptionElem != null) {
+            ep.setDescription(descriptionElem.getText());
+        }
 
-	if (anonymousEndpoint && ep.getName() == null) {
-	    if (ep instanceof AbstractEndpoint) {
-		((AbstractEndpoint) ep).setAnonymous(true);
-	    }
-	}
+        if (anonymousEndpoint && ep.getName() == null) {
+            if (ep instanceof AbstractEndpoint) {
+                ((AbstractEndpoint) ep).setAnonymous(true);
+            }
+        }
 
-	OMAttribute onFaultAtt = epConfig.getAttribute(ON_FAULT_Q);
-	if (onFaultAtt != null) {
-	    ep.setErrorHandler(onFaultAtt.getAttributeValue());
-	}
-	return ep;
+        OMAttribute onFaultAtt = epConfig.getAttribute(ON_FAULT_Q);
+        if (onFaultAtt != null) {
+            ep.setErrorHandler(onFaultAtt.getAttributeValue());
+        }
+        return ep;
     }
 
     protected void extractSpecificEndpointProperties(EndpointDefinition definition, OMElement elem) {
@@ -105,148 +105,148 @@ public abstract class DummyEndpointFactory {
 
     private static DummyEndpointFactory getEndpointFactory(OMElement configElement) {
 
-	if (configElement.getAttribute(new QName("key")) != null) {
-	    return DummyIndirectEndpointFactory.getInstance();
-	}
+        if (configElement.getAttribute(new QName("key")) != null) {
+            return DummyIndirectEndpointFactory.getInstance();
+        }
 
-	if (configElement.getAttribute(new QName("key-expression")) != null) {
-	    return DummyResolvingEndpointFactory.getInstance();
-	}
+        if (configElement.getAttribute(new QName("key-expression")) != null) {
+            return DummyResolvingEndpointFactory.getInstance();
+        }
 
-	if (configElement.getAttribute(new QName("template")) != null) {
-	    return new DummyTemplateEndpointFactory();
-	}
+        if (configElement.getAttribute(new QName("template")) != null) {
+            return new DummyTemplateEndpointFactory();
+        }
 
-	OMElement addressElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "address"));
-	if (addressElement != null) {
-	    return DummyAddressEndpointFactory.getInstance();
-	}
+        OMElement addressElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "address"));
+        if (addressElement != null) {
+            return DummyAddressEndpointFactory.getInstance();
+        }
 
-	OMElement wsdlElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "wsdl"));
-	if (wsdlElement != null) {
-	    return DummyWSDLEndpointFactory.getInstance();
-	}
+        OMElement wsdlElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "wsdl"));
+        if (wsdlElement != null) {
+            return DummyWSDLEndpointFactory.getInstance();
+        }
 
-	OMElement defaultElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "default"));
-	if (defaultElement != null) {
-	    return DummyDefaultEndpointFactory.getInstance();
-	}
+        OMElement defaultElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "default"));
+        if (defaultElement != null) {
+            return DummyDefaultEndpointFactory.getInstance();
+        }
 
-	OMElement lbElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "loadbalance"));
-	if (lbElement != null) {
-	    OMElement sessionElement = configElement
-		    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session"));
-	    if (sessionElement != null) {
-		return DummySALoadbalanceEndpointFactory.getInstance();
-	    } else {
-		return DummyLoadbalanceEndpointFactory.getInstance();
-	    }
-	}
+        OMElement lbElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "loadbalance"));
+        if (lbElement != null) {
+            OMElement sessionElement = configElement
+                    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session"));
+            if (sessionElement != null) {
+                return DummySALoadbalanceEndpointFactory.getInstance();
+            } else {
+                return DummyLoadbalanceEndpointFactory.getInstance();
+            }
+        }
 
-	OMElement dlbElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "dynamicLoadbalance"));
-	if (dlbElement != null) {
-	    return DummyDynamicLoadbalanceEndpointFactory.getInstance();
-	}
+        OMElement dlbElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "dynamicLoadbalance"));
+        if (dlbElement != null) {
+            return DummyDynamicLoadbalanceEndpointFactory.getInstance();
+        }
 
-	OMElement sdlbElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serviceDynamicLoadbalance"));
-	if (sdlbElement != null) {
-	    return DummyServiceDynamicLoadbalanceEndpointFactory.getInstance();
-	}
+        OMElement sdlbElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serviceDynamicLoadbalance"));
+        if (sdlbElement != null) {
+            return DummyServiceDynamicLoadbalanceEndpointFactory.getInstance();
+        }
 
-	OMElement foElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "failover"));
-	if (foElement != null) {
-	    return DummyFailoverEndpointFactory.getInstance();
-	}
+        OMElement foElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "failover"));
+        if (foElement != null) {
+            return DummyFailoverEndpointFactory.getInstance();
+        }
 
-	OMElement rcplElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "recipientlist"));
-	if (rcplElement != null) {
-	    return DummyRecipientListEndpointFactory.getInstance();
-	}
+        OMElement rcplElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "recipientlist"));
+        if (rcplElement != null) {
+            return DummyRecipientListEndpointFactory.getInstance();
+        }
 
-	OMElement httpElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "http"));
-	if (httpElement != null) {
-	    return DummyHTTPEndpointFactory.getInstance();
-	}
+        OMElement httpElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "http"));
+        if (httpElement != null) {
+            return DummyHTTPEndpointFactory.getInstance();
+        }
 
-	OMElement classElement = configElement
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "class"));
-	if (classElement != null) {
-	    return DummyClassEndpointFactory.getInstance();
-	}
+        OMElement classElement = configElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "class"));
+        if (classElement != null) {
+            return DummyClassEndpointFactory.getInstance();
+        }
 
-	return null;
+        return null;
     }
 
     protected ArrayList<Endpoint> getEndpoints(OMElement listEndpointElement, Endpoint parent, Properties properties) {
 
-	ArrayList<Endpoint> endpoints = new ArrayList<Endpoint>();
-	ArrayList<String> keys = new ArrayList<String>();
-	Iterator iter = listEndpointElement.getChildrenWithName(XMLConfigConstants.ENDPOINT_ELT);
-	while (iter.hasNext()) {
-	    OMElement endptElem = (OMElement) iter.next();
-	    Endpoint endpoint = EndpointFactory.getEndpointFromElement(endptElem, true, properties);
-	    if (endpoint instanceof IndirectEndpoint) {
-		String key = ((IndirectEndpoint) endpoint).getKey();
-		if (!keys.contains(key)) {
-		    keys.add(key);
-		}
-	    }
-	    endpoint.setParentEndpoint(parent);
-	    endpoints.add(endpoint);
-	}
+        ArrayList<Endpoint> endpoints = new ArrayList<Endpoint>();
+        ArrayList<String> keys = new ArrayList<String>();
+        Iterator iter = listEndpointElement.getChildrenWithName(XMLConfigConstants.ENDPOINT_ELT);
+        while (iter.hasNext()) {
+            OMElement endptElem = (OMElement) iter.next();
+            Endpoint endpoint = EndpointFactory.getEndpointFromElement(endptElem, true, properties);
+            if (endpoint instanceof IndirectEndpoint) {
+                String key = ((IndirectEndpoint) endpoint).getKey();
+                if (!keys.contains(key)) {
+                    keys.add(key);
+                }
+            }
+            endpoint.setParentEndpoint(parent);
+            endpoints.add(endpoint);
+        }
 
-	return endpoints;
+        return endpoints;
     }
 
     public void setEndpointDefinitionFactory(DefinitionFactory factory) {
-	customDefnFactory = factory;
+        customDefnFactory = factory;
     }
 
     public DefinitionFactory getEndpointDefinitionFactory() {
-	return customDefnFactory;
+        return customDefnFactory;
     }
 
     protected void processProperties(PropertyInclude endpoint, OMElement endpointElement) {
-	List<MediatorProperty> properties = MediatorPropertyFactory.getMediatorProperties(endpointElement);
+        List<MediatorProperty> properties = MediatorPropertyFactory.getMediatorProperties(endpointElement);
 
-	if (properties != null && properties.size() > 0) {
-	    endpoint.addProperties(properties);
-	}
+        if (properties != null && properties.size() > 0) {
+            endpoint.addProperties(properties);
+        }
     }
 
     protected void processAuditStatus(EndpointDefinition definition, String name, OMElement epOmElement) {
 
-	if (name == null || "".equals(name)) {
-	    name = SynapseConstants.ANONYMOUS_ENDPOINT;
-	}
-	AspectConfiguration aspectConfiguration = new AspectConfiguration(name);
-	definition.configure(aspectConfiguration);
-	OMAttribute statistics = epOmElement.getAttribute(new QName(XMLConfigConstants.STATISTICS_ATTRIB_NAME));
-	if (statistics != null) {
-	    String statisticsValue = statistics.getAttributeValue();
-	    if (statisticsValue != null) {
-		if (XMLConfigConstants.STATISTICS_ENABLE.equals(statisticsValue)) {
-		    aspectConfiguration.enableStatistics();
-		}
-	    }
-	}
-	OMAttribute tracing = epOmElement.getAttribute(new QName(XMLConfigConstants.TRACE_ATTRIB_NAME));
-	if (tracing != null) {
-	    String tracingValue = tracing.getAttributeValue();
-	    if (tracingValue != null) {
-		if (XMLConfigConstants.TRACE_ENABLE.equals(tracingValue)) {
-		    aspectConfiguration.enableTracing();
-		}
-	    }
-	}
+        if (name == null || "".equals(name)) {
+            name = SynapseConstants.ANONYMOUS_ENDPOINT;
+        }
+        AspectConfiguration aspectConfiguration = new AspectConfiguration(name);
+        definition.configure(aspectConfiguration);
+        OMAttribute statistics = epOmElement.getAttribute(new QName(XMLConfigConstants.STATISTICS_ATTRIB_NAME));
+        if (statistics != null) {
+            String statisticsValue = statistics.getAttributeValue();
+            if (statisticsValue != null) {
+                if (XMLConfigConstants.STATISTICS_ENABLE.equals(statisticsValue)) {
+                    aspectConfiguration.enableStatistics();
+                }
+            }
+        }
+        OMAttribute tracing = epOmElement.getAttribute(new QName(XMLConfigConstants.TRACE_ATTRIB_NAME));
+        if (tracing != null) {
+            String tracingValue = tracing.getAttributeValue();
+            if (tracingValue != null) {
+                if (XMLConfigConstants.TRACE_ENABLE.equals(tracingValue)) {
+                    aspectConfiguration.enableTracing();
+                }
+            }
+        }
     }
 }

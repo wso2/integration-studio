@@ -23,69 +23,70 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFl
  */
 public class MediatorFlowMediatorFlowCompartment9EditPart extends AbstractMediatorCompartmentEditPart {
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 7030;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 7030;
 
-	/**
-	 * @generated NOT
-	 */
-	public MediatorFlowMediatorFlowCompartment9EditPart(View view) {
-		super(view);
-		complexity = Complexity.DOUBLE;
-	}
+    /**
+     * @generated NOT
+     */
+    public MediatorFlowMediatorFlowCompartment9EditPart(View view) {
+        super(view);
+        complexity = Complexity.DOUBLE;
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public String getCompartmentName() {
-		//return Messages.MediatorFlowMediatorFlowCompartment9EditPart_title;
-		return null; //"OnAccept";
-	}
+    /**
+     * @generated NOT
+     */
+    public String getCompartmentName() {
+        // return Messages.MediatorFlowMediatorFlowCompartment9EditPart_title;
+        return null; // "OnAccept";
+    }
 
-	public IFigure createFigure() {
-		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
-		result.setTitle("OnAccept");
-		result.setTitleVisibility(true);
-		/*
-		 * Override default border.
-		 * Fixing TOOLS-1864.
-		 */
-		LineBorder border = new LineBorder(new Color(null, 183, 183, 183), 1, SWT.BORDER_DASH);
-		result.setBorder(border);
-		result.setToolTip("OnAccept");
-		ConstrainedToolbarLayout layoutManager = new ConstrainedToolbarLayout(false);
-		layoutManager.setSpacing(-15);
-		result.setLayoutManager(layoutManager);
-		return result;
-	}
+    public IFigure createFigure() {
+        ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
+        result.setTitle("OnAccept");
+        result.setTitleVisibility(true);
+        /*
+         * Override default border.
+         * Fixing TOOLS-1864.
+         */
+        LineBorder border = new LineBorder(new Color(null, 183, 183, 183), 1, SWT.BORDER_DASH);
+        result.setBorder(border);
+        result.setToolTip("OnAccept");
+        ConstrainedToolbarLayout layoutManager = new ConstrainedToolbarLayout(false);
+        layoutManager.setSpacing(-15);
+        result.setLayoutManager(layoutManager);
+        return result;
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new MediatorFlowMediatorFlowCompartment9ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new MediatorFlowMediatorFlowCompartment9CanonicalEditPolicy());
-	}
+    /**
+     * @generated NOT
+     */
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+                new MediatorFlowMediatorFlowCompartment9ItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+                new MediatorFlowMediatorFlowCompartment9CanonicalEditPolicy());
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setRatio(Double ratio) {
-		if (getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
-			super.setRatio(ratio);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setRatio(Double ratio) {
+        if (getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
+            super.setRatio(ratio);
+        }
+    }
 
-	public boolean isSelectable() {
-		// TODO This or using ResizableEditpolicy?
-		return false;
-	}
+    public boolean isSelectable() {
+        // TODO This or using ResizableEditpolicy?
+        return false;
+    }
 
 }

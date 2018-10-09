@@ -61,147 +61,147 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  * 
  */
 public class EndPointDuplicator {
-	/**
-	 * Working project
-	 */
-	private IProject project;
-	
-	/**
-	 * DeveloperStudio logger
-	 * */
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+    /**
+     * Working project
+     */
+    private IProject project;
 
-	/**
-	 * 
-	 * @param project
-	 * @param diagramEditor
-	 */
-	public EndPointDuplicator(IProject project,EsbDiagramEditor diagramEditor) {
-		this(project);
-		if (AbstractEsbNodeDeserializer.getDiagramEditor()==null) {
-			if(diagramEditor!=null){
-				 EsbDeserializerRegistry.getInstance().init(diagramEditor);
-			} else {
-				throw new IllegalArgumentException("diagramEditor cannot be null");
-			}
-		} 
-	}
-	
-	/**
-	 * 
-	 * @param project
-	 */
-	public EndPointDuplicator(IProject project) {
-		if (project != null) {
-			this.project = project;
-		} else {
-			throw new IllegalArgumentException("Project cannot be null");
-		}
-	}
-	
-	/**
-	 * Scan and duplicators endpoints into proxy service diagram 
-	 * @param rootCompartment
-	 * @param sequenceKey
-	 * @throws DeserializerException 
-	 */
-	public void duplicateEndPoints(GraphicalEditPart rootCompartment,String sequenceKey) throws DeserializerException{
-		List<Endpoint> endpoints = getEndpoints(sequenceKey);
-		for (Endpoint endpoint : endpoints) {
-			try {
-				@SuppressWarnings("rawtypes")
-				IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
-				if(deserializer!=null){
-					AbstractEndPoint endPoint = (AbstractEndPoint) deserializer.createNode(rootCompartment, endpoint);
-					//FIXME: set inline
-				}
-			} catch (NullPointerException e) {
-				log.error("EsbDeserializerRegistry must be initialized before it can be used",e);
-			}
-		}
-	}
+    /**
+     * DeveloperStudio logger
+     */
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private String getFileLocation(String key) {
-		IFolder endpointsDir = project.getFolder("src/main/synapse-config/sequences");
-		if (endpointsDir.exists()) {
-			IFile file = endpointsDir.getFile(key.concat(".xml"));
-			if (file.exists()) {
-				return file.getLocation().toOSString();
-			}
-		}
-		return null;
-	}
+    /**
+     * 
+     * @param project
+     * @param diagramEditor
+     */
+    public EndPointDuplicator(IProject project, EsbDiagramEditor diagramEditor) {
+        this(project);
+        if (AbstractEsbNodeDeserializer.getDiagramEditor() == null) {
+            if (diagramEditor != null) {
+                EsbDeserializerRegistry.getInstance().init(diagramEditor);
+            } else {
+                throw new IllegalArgumentException("diagramEditor cannot be null");
+            }
+        }
+    }
 
-	private List<Endpoint> getEndpoints(String key) {
-		List<Endpoint> epList = new LinkedList<Endpoint>();
-		
-		String fileLocation = getFileLocation(key); 
-		if(fileLocation==null) {
-			log.error("Cannot find sequence '" + key + "'");
-			return Collections.EMPTY_LIST;
-		}
+    /**
+     * 
+     * @param project
+     */
+    public EndPointDuplicator(IProject project) {
+        if (project != null) {
+            this.project = project;
+        } else {
+            throw new IllegalArgumentException("Project cannot be null");
+        }
+    }
 
-		DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
-		domFactory.setNamespaceAware(true);
-		NamespaceContext ctx = new NamespaceContext() {
-			public String getNamespaceURI(String prefix) {
-				return "http://ws.apache.org/ns/synapse";
-			}
+    /**
+     * Scan and duplicators endpoints into proxy service diagram
+     * 
+     * @param rootCompartment
+     * @param sequenceKey
+     * @throws DeserializerException
+     */
+    public void duplicateEndPoints(GraphicalEditPart rootCompartment, String sequenceKey) throws DeserializerException {
+        List<Endpoint> endpoints = getEndpoints(sequenceKey);
+        for (Endpoint endpoint : endpoints) {
+            try {
+                @SuppressWarnings("rawtypes")
+                IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
+                if (deserializer != null) {
+                    AbstractEndPoint endPoint = (AbstractEndPoint) deserializer.createNode(rootCompartment, endpoint);
+                    // FIXME: set inline
+                }
+            } catch (NullPointerException e) {
+                log.error("EsbDeserializerRegistry must be initialized before it can be used", e);
+            }
+        }
+    }
 
-			public String getPrefix(String str) {
-				return null;
-			}
+    private String getFileLocation(String key) {
+        IFolder endpointsDir = project.getFolder("src/main/synapse-config/sequences");
+        if (endpointsDir.exists()) {
+            IFile file = endpointsDir.getFile(key.concat(".xml"));
+            if (file.exists()) {
+                return file.getLocation().toOSString();
+            }
+        }
+        return null;
+    }
 
-			public Iterator<?> getPrefixes(String str) {
-				return null;
-			}
-		};
-		try {
-			DocumentBuilder builder = domFactory.newDocumentBuilder();
-			Document doc = builder.parse(fileLocation);
-			XPath xpath = XPathFactory.newInstance().newXPath();
-			xpath.setNamespaceContext(ctx);
-			
-			XPathExpression expr = xpath.compile("//:endpoint");
+    private List<Endpoint> getEndpoints(String key) {
+        List<Endpoint> epList = new LinkedList<Endpoint>();
 
-			Object result = expr.evaluate(doc, XPathConstants.NODESET);
-			NodeList nodes = (NodeList) result;
-			for (int i = 0; i < nodes.getLength(); i++) {
-				try {
-					Node item = nodes.item(i);
-					StringWriter writer = new StringWriter();
-					Transformer transformer = TransformerFactory.newInstance().newTransformer();
-					transformer.transform(new DOMSource(item), new StreamResult(writer));
-					OMElement element = AXIOMUtil.stringToOM(writer.toString());
-					epList.add(EndpointFactory.getEndpointFromElement(element, false,
-							new Properties()));
-				} catch (Exception e) {
-					//FIXME: log real error message
-					log.error("An unexpected error has occurred",e);
-				} 
-			}
-			
-			expr = xpath.compile("//:sequence[@key]");
+        String fileLocation = getFileLocation(key);
+        if (fileLocation == null) {
+            log.error("Cannot find sequence '" + key + "'");
+            return Collections.EMPTY_LIST;
+        }
 
-			result = expr.evaluate(doc, XPathConstants.NODESET);
-			nodes = (NodeList) result;
-			for (int i = 0; i < nodes.getLength(); i++) {
-				try {
-					if(nodes.item(i) instanceof Attr){
-						Attr attr = (Attr) nodes.item(i);
-						epList.addAll(getEndpoints(attr.getValue()));
-					}
-				} catch (Exception e) {
-					//FIXME: log real error message
-					log.error("An unexpected error has occurred",e);
-				} 
-			}
-		} catch (Exception e) {
-			//FIXME: log real error message
-			log.error("error",e);
-		}
+        DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
+        domFactory.setNamespaceAware(true);
+        NamespaceContext ctx = new NamespaceContext() {
+            public String getNamespaceURI(String prefix) {
+                return "http://ws.apache.org/ns/synapse";
+            }
 
-		return epList;
-	}
+            public String getPrefix(String str) {
+                return null;
+            }
+
+            public Iterator<?> getPrefixes(String str) {
+                return null;
+            }
+        };
+        try {
+            DocumentBuilder builder = domFactory.newDocumentBuilder();
+            Document doc = builder.parse(fileLocation);
+            XPath xpath = XPathFactory.newInstance().newXPath();
+            xpath.setNamespaceContext(ctx);
+
+            XPathExpression expr = xpath.compile("//:endpoint");
+
+            Object result = expr.evaluate(doc, XPathConstants.NODESET);
+            NodeList nodes = (NodeList) result;
+            for (int i = 0; i < nodes.getLength(); i++) {
+                try {
+                    Node item = nodes.item(i);
+                    StringWriter writer = new StringWriter();
+                    Transformer transformer = TransformerFactory.newInstance().newTransformer();
+                    transformer.transform(new DOMSource(item), new StreamResult(writer));
+                    OMElement element = AXIOMUtil.stringToOM(writer.toString());
+                    epList.add(EndpointFactory.getEndpointFromElement(element, false, new Properties()));
+                } catch (Exception e) {
+                    // FIXME: log real error message
+                    log.error("An unexpected error has occurred", e);
+                }
+            }
+
+            expr = xpath.compile("//:sequence[@key]");
+
+            result = expr.evaluate(doc, XPathConstants.NODESET);
+            nodes = (NodeList) result;
+            for (int i = 0; i < nodes.getLength(); i++) {
+                try {
+                    if (nodes.item(i) instanceof Attr) {
+                        Attr attr = (Attr) nodes.item(i);
+                        epList.addAll(getEndpoints(attr.getValue()));
+                    }
+                } catch (Exception e) {
+                    // FIXME: log real error message
+                    log.error("An unexpected error has occurred", e);
+                }
+            }
+        } catch (Exception e) {
+            // FIXME: log real error message
+            log.error("error", e);
+        }
+
+        return epList;
+    }
 
 }

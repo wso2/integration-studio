@@ -34,67 +34,63 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EJBMediatorExt;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
-public class EJBMediatorDeserializer extends
-		AbstractEsbNodeDeserializer<EJBMediatorExt, EJBMediator> {
+public class EJBMediatorDeserializer extends AbstractEsbNodeDeserializer<EJBMediatorExt, EJBMediator> {
 
-	@Override
-	public EJBMediator createNode(IGraphicalEditPart part, EJBMediatorExt mediator) {
-		EJBMediator mediatorModel = (EJBMediator) DeserializerUtils.createNode(part,
-				EsbElementTypes.EJBMediator_3686);
-		setElementToEdit(mediatorModel);
-		setCommonProperties(mediator, mediatorModel);
+    @Override
+    public EJBMediator createNode(IGraphicalEditPart part, EJBMediatorExt mediator) {
+        EJBMediator mediatorModel = (EJBMediator) DeserializerUtils.createNode(part, EsbElementTypes.EJBMediator_3686);
+        setElementToEdit(mediatorModel);
+        setCommonProperties(mediator, mediatorModel);
 
-		executeSetValueCommand(EJB_MEDIATOR__BEANSTALK, mediator.getBeanstalkName());
-		executeSetValueCommand(EJB_MEDIATOR__CLASS, mediator.getClassName());
-		executeSetValueCommand(EJB_MEDIATOR__JNDI_NAME, mediator.getJndiName());
-		executeSetValueCommand(EJB_MEDIATOR__METHOD, mediator.getMethodName());
-		executeSetValueCommand(EJB_MEDIATOR__REMOVE, mediator.isRemove());
-		executeSetValueCommand(EJB_MEDIATOR__TARGET, mediator.getTargetValue());
+        executeSetValueCommand(EJB_MEDIATOR__BEANSTALK, mediator.getBeanstalkName());
+        executeSetValueCommand(EJB_MEDIATOR__CLASS, mediator.getClassName());
+        executeSetValueCommand(EJB_MEDIATOR__JNDI_NAME, mediator.getJndiName());
+        executeSetValueCommand(EJB_MEDIATOR__METHOD, mediator.getMethodName());
+        executeSetValueCommand(EJB_MEDIATOR__REMOVE, mediator.isRemove());
+        executeSetValueCommand(EJB_MEDIATOR__TARGET, mediator.getTargetValue());
 
-		Value beanId = mediator.getBeanId();
-		if (beanId != null) {
-			if (beanId.getExpression() != null) {
-				executeSetValueCommand(EJB_MEDIATOR__SESSION_ID_TYPE, PropertyValueType.EXPRESSION);
-				executeSetValueCommand(EJB_MEDIATOR__SESSION_ID_EXPRESSION,
-						createNamespacedProperty(beanId.getExpression()));
-			} else {
-				executeSetValueCommand(EJB_MEDIATOR__SESSION_ID_TYPE, PropertyValueType.LITERAL);
-				executeSetValueCommand(EJB_MEDIATOR__SESSION_ID_LITERAL, beanId.getKeyValue());
-			}
-		}
+        Value beanId = mediator.getBeanId();
+        if (beanId != null) {
+            if (beanId.getExpression() != null) {
+                executeSetValueCommand(EJB_MEDIATOR__SESSION_ID_TYPE, PropertyValueType.EXPRESSION);
+                executeSetValueCommand(EJB_MEDIATOR__SESSION_ID_EXPRESSION,
+                        createNamespacedProperty(beanId.getExpression()));
+            } else {
+                executeSetValueCommand(EJB_MEDIATOR__SESSION_ID_TYPE, PropertyValueType.LITERAL);
+                executeSetValueCommand(EJB_MEDIATOR__SESSION_ID_LITERAL, beanId.getKeyValue());
+            }
+        }
 
-		// Method Arguments
-		EList<MethodArgument> methodArgumentList = new BasicEList<MethodArgument>();
+        // Method Arguments
+        EList<MethodArgument> methodArgumentList = new BasicEList<MethodArgument>();
 
-		for (Value methodArgument : mediator.getArgumentList()) {
+        for (Value methodArgument : mediator.getArgumentList()) {
 
-			MethodArgument argument = EsbFactory.eINSTANCE.createMethodArgument();
+            MethodArgument argument = EsbFactory.eINSTANCE.createMethodArgument();
 
-			if (methodArgument.getKeyValue() != null) {
-				argument.setPropertyValueType(PropertyValueType.LITERAL);
-				argument.setPropertyValue(methodArgument.getKeyValue());
+            if (methodArgument.getKeyValue() != null) {
+                argument.setPropertyValueType(PropertyValueType.LITERAL);
+                argument.setPropertyValue(methodArgument.getKeyValue());
 
-			} else if (methodArgument.getExpression() != null) {
-				argument.setPropertyValueType(PropertyValueType.EXPRESSION);
-				NamespacedProperty namespaceProperty = EsbFactory.eINSTANCE
-						.createNamespacedProperty();
-				namespaceProperty.setPropertyValue(methodArgument.getExpression().toString());
-				Map namespaces = methodArgument.getExpression().getNamespaces();
-				Object[] namespacesKeys = namespaces.keySet().toArray();
-				for (int i = 0; i < namespacesKeys.length; ++i) {
-					namespaceProperty.getNamespaces().put((String) namespacesKeys[i],
-							(String) namespaces.get(namespacesKeys[i]));
-				}
-				argument.setPropertyExpression(namespaceProperty);
+            } else if (methodArgument.getExpression() != null) {
+                argument.setPropertyValueType(PropertyValueType.EXPRESSION);
+                NamespacedProperty namespaceProperty = EsbFactory.eINSTANCE.createNamespacedProperty();
+                namespaceProperty.setPropertyValue(methodArgument.getExpression().toString());
+                Map namespaces = methodArgument.getExpression().getNamespaces();
+                Object[] namespacesKeys = namespaces.keySet().toArray();
+                for (int i = 0; i < namespacesKeys.length; ++i) {
+                    namespaceProperty.getNamespaces().put((String) namespacesKeys[i],
+                            (String) namespaces.get(namespacesKeys[i]));
+                }
+                argument.setPropertyExpression(namespaceProperty);
 
-			}
+            }
 
-			methodArgumentList.add(argument);
-		}
-		executeSetValueCommand(EJB_MEDIATOR__METHOD_ARGUMENTS, methodArgumentList);
+            methodArgumentList.add(argument);
+        }
+        executeSetValueCommand(EJB_MEDIATOR__METHOD_ARGUMENTS, methodArgumentList);
 
-		return mediatorModel;
-	}
-
+        return mediatorModel;
+    }
 
 }

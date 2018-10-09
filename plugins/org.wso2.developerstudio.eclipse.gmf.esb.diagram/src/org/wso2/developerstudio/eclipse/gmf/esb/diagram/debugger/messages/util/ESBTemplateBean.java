@@ -39,8 +39,8 @@ public class ESBTemplateBean {
     public boolean equals(Object templateBean) {
         if (templateBean instanceof ESBTemplateBean) {
             ESBTemplateBean templateBeanTemp = (ESBTemplateBean) templateBean;
-            if (!(getTemplateKey().equals((templateBeanTemp).getTemplateKey()) && getMediatorPosition().equals(
-                    templateBeanTemp.getMediatorPosition()))) {
+            if (!(getTemplateKey().equals((templateBeanTemp).getTemplateKey())
+                    && getMediatorPosition().equals(templateBeanTemp.getMediatorPosition()))) {
                 return false;
             }
             return true;

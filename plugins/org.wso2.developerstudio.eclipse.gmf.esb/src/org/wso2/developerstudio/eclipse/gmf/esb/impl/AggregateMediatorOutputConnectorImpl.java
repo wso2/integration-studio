@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class AggregateMediatorOutputConnectorImpl extends OutputConnectorImpl implements AggregateMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AggregateMediatorOutputConnectorImpl() {
-		super();
-	}
+public class AggregateMediatorOutputConnectorImpl extends OutputConnectorImpl
+        implements AggregateMediatorOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected AggregateMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.AGGREGATE_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.AGGREGATE_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //AggregateMediatorOutputConnectorImpl
+} // AggregateMediatorOutputConnectorImpl

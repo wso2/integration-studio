@@ -21,17 +21,17 @@ import org.osgi.framework.Bundle;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.utils.ui.ImageUtils;
 
-public class DiagramImageUtils extends ImageUtils{
-	private static ImageUtils instance;
+public class DiagramImageUtils extends ImageUtils {
+    private static ImageUtils instance;
 
-	public static ImageUtils getInstance(){
-		if (instance==null){
-			instance=new DiagramImageUtils();
-		}
-		return instance;
-	} 
+    public static ImageUtils getInstance() {
+        if (instance == null) {
+            instance = new DiagramImageUtils();
+        }
+        return instance;
+    }
 
-	public Bundle getBundle(){
-		return Platform.getBundle(Activator.PLUGIN_ID);
-	}
+    public Bundle getBundle() {
+        return Platform.getBundle(Activator.PLUGIN_ID);
+    }
 }

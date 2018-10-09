@@ -6,15 +6,15 @@ import org.eclipse.gmf.runtime.notation.View;
 
 public class AbstractConnectorEditPart extends AbstractBorderItemEditPart {
 
-	public AbstractConnectorEditPart(View view) {
-		super(view);
-		// TODO Auto-generated constructor stub
-	}
+    public AbstractConnectorEditPart(View view) {
+        super(view);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	protected NodeFigure createNodeFigure() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    protected NodeFigure createNodeFigure() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

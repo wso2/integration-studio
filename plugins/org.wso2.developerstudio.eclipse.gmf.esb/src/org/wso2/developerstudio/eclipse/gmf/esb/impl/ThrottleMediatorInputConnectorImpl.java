@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediatorInputConnector;
  * @generated
  */
 public class ThrottleMediatorInputConnectorImpl extends InputConnectorImpl implements ThrottleMediatorInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ThrottleMediatorInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ThrottleMediatorInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.THROTTLE_MEDIATOR_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.THROTTLE_MEDIATOR_INPUT_CONNECTOR;
+    }
 
-} //ThrottleMediatorInputConnectorImpl
+} // ThrottleMediatorInputConnectorImpl

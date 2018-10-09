@@ -24,17 +24,19 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 
 /**
- * This Enum represent CXF WS RM inbound endpoint parameters with parameter name , related EAttribute and boolean value indicating
+ * This Enum represent CXF WS RM inbound endpoint parameters with parameter name , related EAttribute and boolean value
+ * indicating
  * whether it could hold key attribute
  *
  */
 public enum CXFWSRMInboundEndpointParameter {
-    INBOUND_CXF_RM_HOST_TYPE(InboundEndpointConstants.INBOUND_CXF_RM_HOST, INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST, true),
-    INBOUND_CXF_RM_PORT_TYPE(InboundEndpointConstants.INBOUND_CXF_RM_PORT, INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT, true),
-    INBOUND_CXF_RM_CONFIG_FILE_TYPE(InboundEndpointConstants.INBOUND_CXF_RM_CONFIG_FILE,
-            INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE, true),
-    ENABLE_SSL_TYPE(InboundEndpointConstants.ENABLE_SSL, INBOUND_ENDPOINT__ENABLE_SSL, false);
-            
+    INBOUND_CXF_RM_HOST_TYPE(InboundEndpointConstants.INBOUND_CXF_RM_HOST, INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST,
+            true), INBOUND_CXF_RM_PORT_TYPE(InboundEndpointConstants.INBOUND_CXF_RM_PORT,
+                    INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT,
+                    true), INBOUND_CXF_RM_CONFIG_FILE_TYPE(InboundEndpointConstants.INBOUND_CXF_RM_CONFIG_FILE,
+                            INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE, true), ENABLE_SSL_TYPE(
+                                    InboundEndpointConstants.ENABLE_SSL, INBOUND_ENDPOINT__ENABLE_SSL, false);
+
     private final String name;
     private final EAttribute eAttributeValue;
     private final boolean holdsKeyValue;

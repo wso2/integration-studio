@@ -39,25 +39,24 @@ import org.apache.synapse.task.TaskDescriptionFactory;
  * 
  */
 public class DummyTaskDescriptionFactory {
-	private static final Log log = LogFactory.getLog(TaskDescriptionFactory.class);
-	private static final String NULL_NAMESPACE = "";
-	private final static String TASK = "task";
-	private final static String TRIGGER = "trigger";
-	private final static String PROPERTY = "property";
-	private static final String DESCRIPTION = "description";
-	
-	public static TaskDescription createTaskDescription(OMElement el, OMNamespace tagetNamespace) {
-		if (log.isDebugEnabled()) {
+    private static final Log log = LogFactory.getLog(TaskDescriptionFactory.class);
+    private static final String NULL_NAMESPACE = "";
+    private final static String TASK = "task";
+    private final static String TRIGGER = "trigger";
+    private final static String PROPERTY = "property";
+    private static final String DESCRIPTION = "description";
+
+    public static TaskDescription createTaskDescription(OMElement el, OMNamespace tagetNamespace) {
+        if (log.isDebugEnabled()) {
             log.debug("Creating SimpleQuartz Task");
         }
-		
-		QName task = createQName(TASK, tagetNamespace);
+
+        QName task = createQName(TASK, tagetNamespace);
         if (task.equals(el.getQName())) {
 
             TaskDescription taskDescription = new TaskDescription();
 
-            String name = el.getAttributeValue(
-                    new QName(NULL_NAMESPACE, "name"));
+            String name = el.getAttributeValue(new QName(NULL_NAMESPACE, "name"));
             if (name != null) {
                 taskDescription.setName(name);
             } else {
@@ -65,8 +64,7 @@ public class DummyTaskDescriptionFactory {
                         + "Key value should be equal to task artifact .xml file name.");
             }
 
-            String group = el.getAttributeValue(
-                    new QName(NULL_NAMESPACE, "group"));
+            String group = el.getAttributeValue(new QName(NULL_NAMESPACE, "group"));
             if (group != null) {
                 taskDescription.setTaskGroup(group);
             }
@@ -77,10 +75,10 @@ public class DummyTaskDescriptionFactory {
                 String classname = classAttr.getAttributeValue();
                 taskDescription.setTaskImplClassName(classname);
             } else {
-                log.warn("TaskClass cannot be found." +
-                        "Task implementation may need a task class if there is no default one");
+                log.warn("TaskClass cannot be found."
+                        + "Task implementation may need a task class if there is no default one");
             }
-            
+
             OMElement descElem = el.getFirstChildWithName(createQName(DESCRIPTION, tagetNamespace));
             if (descElem != null) {
                 taskDescription.setTaskDescription(descElem.getText());
@@ -137,12 +135,10 @@ public class DummyTaskDescriptionFactory {
 
                 OMAttribute repeatInterval = trigger.getAttribute(new QName("interval"));
                 if (repeatInterval == null && taskDescription.getCount() > 1) {
-                    handleException("Trigger seems to be " +
-                            "a simple trigger, but no interval specified");
+                    handleException("Trigger seems to be " + "a simple trigger, but no interval specified");
                 } else if (repeatInterval != null && repeatInterval.getAttributeValue() != null) {
                     try {
-                        long repeatIntervalInMillis = Long.parseLong(
-                                repeatInterval.getAttributeValue());
+                        long repeatIntervalInMillis = Long.parseLong(repeatInterval.getAttributeValue());
                         taskDescription.setInterval(repeatIntervalInMillis);
                     } catch (Exception e) {
                         handleException("Failed to parse trigger interval as a long value", e);
@@ -154,8 +150,7 @@ public class DummyTaskDescriptionFactory {
                     taskDescription.setCount(1);
                     taskDescription.setInterval(1);
                 } else if (expr != null && taskDescription.getInterval() > 0) {
-                    handleException("Trigger syntax error : " +
-                            "both cron and simple trigger attributes are present");
+                    handleException("Trigger syntax error : " + "both cron and simple trigger attributes are present");
                 } else if (expr != null && expr.getAttributeValue() != null) {
                     taskDescription.setCronExpression(expr.getAttributeValue());
                 }
@@ -170,10 +165,10 @@ public class DummyTaskDescriptionFactory {
             handleException("Syntax error in the task : wrong QName for the task");
             return null;
         }
-		
-	}
-	
-	private static QName createQName(String localName, OMNamespace omNamespace) {
+
+    }
+
+    private static QName createQName(String localName, OMNamespace omNamespace) {
         return new QName(omNamespace.getNamespaceURI(), localName, omNamespace.getPrefix());
     }
 

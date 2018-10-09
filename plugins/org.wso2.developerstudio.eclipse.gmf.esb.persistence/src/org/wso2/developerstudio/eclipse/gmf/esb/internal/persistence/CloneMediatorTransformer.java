@@ -60,198 +60,173 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {
-		try {
-			information.getParentSequence().addChild(
-					createCloneMediator(information, subject));
-			/*
-			 * Transform the mediator output data flow path.
-			 */
-			doTransform(information, ((CloneMediator) subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createCloneMediator(information, subject));
+            /*
+             * Transform the mediator output data flow path.
+             */
+            doTransform(information, ((CloneMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+    }
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		try {
-			sequence.addChild(createCloneMediator(information, subject));
-			doTransformWithinSequence(information, ((CloneMediator) subject)
-					.getOutputConnector().getOutgoingLink(), sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createCloneMediator(information, subject));
+            doTransformWithinSequence(information, ((CloneMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	private org.apache.synapse.mediators.eip.splitter.CloneMediator createCloneMediator(
-			TransformationInfo information, EsbNode subject) throws TransformerException, JaxenException {
-		/*
-		 * Check subject.
-		 */
-		Assert.isTrue(subject instanceof CloneMediator, "Invalid subject.");
-		CloneMediator visualClone = (CloneMediator) subject;
+    private org.apache.synapse.mediators.eip.splitter.CloneMediator createCloneMediator(TransformationInfo information,
+            EsbNode subject) throws TransformerException, JaxenException {
+        /*
+         * Check subject.
+         */
+        Assert.isTrue(subject instanceof CloneMediator, "Invalid subject.");
+        CloneMediator visualClone = (CloneMediator) subject;
 
-		/*
-		 * Configure Clone mediator.
-		 */
-		org.apache.synapse.mediators.eip.splitter.CloneMediator cloneMediator = new org.apache.synapse.mediators.eip.splitter.CloneMediator();
-		setCommonProperties(cloneMediator, visualClone);
-		{
-			if (visualClone.getCloneID() != null && !visualClone.getCloneID().isEmpty()) {
-				cloneMediator.setId(visualClone.getCloneID());
-			}
-			cloneMediator.setSequential(visualClone.isSequentialMediation());
-			cloneMediator.setContinueParent(visualClone.isContinueParent());
+        /*
+         * Configure Clone mediator.
+         */
+        org.apache.synapse.mediators.eip.splitter.CloneMediator cloneMediator = new org.apache.synapse.mediators.eip.splitter.CloneMediator();
+        setCommonProperties(cloneMediator, visualClone);
+        {
+            if (visualClone.getCloneID() != null && !visualClone.getCloneID().isEmpty()) {
+                cloneMediator.setId(visualClone.getCloneID());
+            }
+            cloneMediator.setSequential(visualClone.isSequentialMediation());
+            cloneMediator.setContinueParent(visualClone.isContinueParent());
 
-			List<Target> targetList = new ArrayList<Target>();
+            List<Target> targetList = new ArrayList<Target>();
 
-			for (int i = 0; i < visualClone.getTargets().size(); ++i) {
+            for (int i = 0; i < visualClone.getTargets().size(); ++i) {
 
-				CloneTarget visualTarget = visualClone.getTargets().get(i);
-				Target target = new Target();
-				
-				if (visualTarget.getSoapAction()!= null && !visualTarget.getSoapAction().equals("")) {
-					target.setSoapAction(visualTarget.getSoapAction()); // set soap action.
-				} else {
-					target.setSoapAction(null);
-				}
-				if (visualTarget.getToAddress() != null && !visualTarget.getToAddress().equals("")) {
-					target.setToAddress(visualTarget.getToAddress()); // set to address.
-				} else {
-					target.setToAddress(null);
-				}
-				
-				if (visualTarget.getSequenceType().equals(
-						TargetSequenceType.ANONYMOUS)) { // handle if target sequence type anonymous.
+                CloneTarget visualTarget = visualClone.getTargets().get(i);
+                Target target = new Target();
 
-					CloneMediatorTargetOutputConnector outputConnector = visualClone
-							.getTargetsOutputConnector().get(i);
-					SequenceMediator targetSequence = new SequenceMediator();
+                if (visualTarget.getSoapAction() != null && !visualTarget.getSoapAction().equals("")) {
+                    target.setSoapAction(visualTarget.getSoapAction()); // set soap action.
+                } else {
+                    target.setSoapAction(null);
+                }
+                if (visualTarget.getToAddress() != null && !visualTarget.getToAddress().equals("")) {
+                    target.setToAddress(visualTarget.getToAddress()); // set to address.
+                } else {
+                    target.setToAddress(null);
+                }
 
-					TransformationInfo newInfo = new TransformationInfo();
-					newInfo.setTraversalDirection(information
-							.getTraversalDirection());
-					newInfo.setSynapseConfiguration(information
-							.getSynapseConfiguration());
-					newInfo.setOriginInSequence(information
-							.getOriginInSequence());
-					newInfo.setOriginOutSequence(information
-							.getOriginOutSequence());
-					newInfo.setCurrentProxy(information.getCurrentProxy());
-					newInfo.setParentSequence(targetSequence);
-					doTransform(newInfo, outputConnector);
+                if (visualTarget.getSequenceType().equals(TargetSequenceType.ANONYMOUS)) { // handle if target sequence
+                                                                                           // type anonymous.
 
-					target.setSequence(targetSequence);
+                    CloneMediatorTargetOutputConnector outputConnector = visualClone.getTargetsOutputConnector().get(i);
+                    SequenceMediator targetSequence = new SequenceMediator();
 
-				} else if (visualTarget.getSequenceType().equals(
-						TargetSequenceType.REGISTRY_REFERENCE)) { //handle if target sequence type registry ref.
+                    TransformationInfo newInfo = new TransformationInfo();
+                    newInfo.setTraversalDirection(information.getTraversalDirection());
+                    newInfo.setSynapseConfiguration(information.getSynapseConfiguration());
+                    newInfo.setOriginInSequence(information.getOriginInSequence());
+                    newInfo.setOriginOutSequence(information.getOriginOutSequence());
+                    newInfo.setCurrentProxy(information.getCurrentProxy());
+                    newInfo.setParentSequence(targetSequence);
+                    doTransform(newInfo, outputConnector);
 
-					target.setSequenceRef(visualTarget.getSequenceKey()
-							.getKeyValue());
-				}
+                    target.setSequence(targetSequence);
 
-				if (visualTarget.getEndpointType().equals(
-						TargetEndpointType.ANONYMOUS)) {
-				
-					EObject endpoint = null;
-					CloneMediatorTargetOutputConnector outputConnector = visualClone
-							.getTargetsOutputConnector().get(i);
+                } else if (visualTarget.getSequenceType().equals(TargetSequenceType.REGISTRY_REFERENCE)) { // handle if
+                                                                                                           // target
+                                                                                                           // sequence
+                                                                                                           // type
+                                                                                                           // registry
+                                                                                                           // ref.
 
-					SequenceMediator targetSequence = new SequenceMediator();
-					TransformationInfo newInfo = new TransformationInfo();
-					newInfo.setTraversalDirection(information
-							.getTraversalDirection());
-					newInfo.setSynapseConfiguration(information
-							.getSynapseConfiguration());
-					newInfo.setOriginInSequence(information
-							.getOriginInSequence());
-					newInfo.setOriginOutSequence(information
-							.getOriginOutSequence());
-					newInfo.setCurrentProxy(information.getCurrentProxy());
-					newInfo.setParentSequence(targetSequence);
-					
-					doTransform(newInfo, outputConnector);
-					
+                    target.setSequenceRef(visualTarget.getSequenceKey().getKeyValue());
+                }
 
-					if (newInfo.isEndPointFound) {
-						endpoint = newInfo.getFirstEndpoint();
+                if (visualTarget.getEndpointType().equals(TargetEndpointType.ANONYMOUS)) {
 
-						if (endpoint instanceof DefaultEndPointImpl) {
-							DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
-							DefaultEndpoint synapseEP = transformer.create(
-									(DefaultEndPoint) endpoint, null);
-							target.setEndpoint(synapseEP);
-						} else if (endpoint instanceof AddressEndPointImpl) {
-							AddressEndPointTransformer transformer = new AddressEndPointTransformer();
-							AddressEndpoint synapseEP = transformer.create(
-									(AddressEndPoint) endpoint, null);
-							target.setEndpoint(synapseEP);
-						} else if (endpoint instanceof FailoverEndPointImpl) {
-							FailoverEndPointTransformer transformer = new FailoverEndPointTransformer();
-							FailoverEndpoint synapseEP = transformer.create(
-									newInfo, (FailoverEndPoint) endpoint, null,
-									null);
-							target.setEndpoint(synapseEP);
-						} else if (endpoint instanceof HTTPEndpointImpl) {
-							HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
-							HTTPEndpoint synapseEP = transformer
-									.create((org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint) endpoint,
-											null);
-							target.setEndpoint(synapseEP);
-						} else if (endpoint instanceof LoadBalanceEndPointImpl) {
-							LoadBalanceEndPointTransformer transformer = new LoadBalanceEndPointTransformer();
-							LoadbalanceEndpoint synapseEP = transformer.create(
-									newInfo, (LoadBalanceEndPoint) endpoint,
-									null, null);
-							target.setEndpoint(synapseEP);
-						} else if (endpoint instanceof NamedEndpointImpl) {
-							NamedEndPointTransformer transformer = new NamedEndPointTransformer();
-							@SuppressWarnings("static-access")
-							Endpoint synapseEP = transformer.create(
-									(NamedEndpoint) endpoint, null);
-							target.setEndpoint(synapseEP);
-						} else if (endpoint instanceof RecipientListEndPointImpl) {
-							RecipientListEndPointTransformer transformer = new RecipientListEndPointTransformer();
-							RecipientListEndpoint synapseEP = transformer
-									.create(newInfo,
-											(RecipientListEndPoint) endpoint,
-											null, null);
-							target.setEndpoint(synapseEP);
-						} else if (endpoint instanceof TemplateEndpointImpl) {
-							TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
-							TemplateEndpoint synapseEP = transformer
-									.create((org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint) endpoint,
-											null);
-							target.setEndpoint(synapseEP);
-						} else if (endpoint instanceof WSDLEndPointImpl) {
-							WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
-							WSDLEndpoint synapseEP = transformer.create(
-									(WSDLEndPoint) endpoint, null);
-							target.setEndpoint(synapseEP);
-						}
+                    EObject endpoint = null;
+                    CloneMediatorTargetOutputConnector outputConnector = visualClone.getTargetsOutputConnector().get(i);
 
-					}
-				} else if (visualTarget.getEndpointType().equals(
-						TargetEndpointType.REGISTRY_REFERENCE)) {
+                    SequenceMediator targetSequence = new SequenceMediator();
+                    TransformationInfo newInfo = new TransformationInfo();
+                    newInfo.setTraversalDirection(information.getTraversalDirection());
+                    newInfo.setSynapseConfiguration(information.getSynapseConfiguration());
+                    newInfo.setOriginInSequence(information.getOriginInSequence());
+                    newInfo.setOriginOutSequence(information.getOriginOutSequence());
+                    newInfo.setCurrentProxy(information.getCurrentProxy());
+                    newInfo.setParentSequence(targetSequence);
 
-					target.setEndpointRef(visualTarget.getEndpointKey()
-							.getKeyValue());
-				}
+                    doTransform(newInfo, outputConnector);
 
-				targetList.add(target);
+                    if (newInfo.isEndPointFound) {
+                        endpoint = newInfo.getFirstEndpoint();
 
-			}
+                        if (endpoint instanceof DefaultEndPointImpl) {
+                            DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
+                            DefaultEndpoint synapseEP = transformer.create((DefaultEndPoint) endpoint, null);
+                            target.setEndpoint(synapseEP);
+                        } else if (endpoint instanceof AddressEndPointImpl) {
+                            AddressEndPointTransformer transformer = new AddressEndPointTransformer();
+                            AddressEndpoint synapseEP = transformer.create((AddressEndPoint) endpoint, null);
+                            target.setEndpoint(synapseEP);
+                        } else if (endpoint instanceof FailoverEndPointImpl) {
+                            FailoverEndPointTransformer transformer = new FailoverEndPointTransformer();
+                            FailoverEndpoint synapseEP = transformer.create(newInfo, (FailoverEndPoint) endpoint, null,
+                                    null);
+                            target.setEndpoint(synapseEP);
+                        } else if (endpoint instanceof HTTPEndpointImpl) {
+                            HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
+                            HTTPEndpoint synapseEP = transformer
+                                    .create((org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint) endpoint, null);
+                            target.setEndpoint(synapseEP);
+                        } else if (endpoint instanceof LoadBalanceEndPointImpl) {
+                            LoadBalanceEndPointTransformer transformer = new LoadBalanceEndPointTransformer();
+                            LoadbalanceEndpoint synapseEP = transformer.create(newInfo, (LoadBalanceEndPoint) endpoint,
+                                    null, null);
+                            target.setEndpoint(synapseEP);
+                        } else if (endpoint instanceof NamedEndpointImpl) {
+                            NamedEndPointTransformer transformer = new NamedEndPointTransformer();
+                            @SuppressWarnings("static-access")
+                            Endpoint synapseEP = transformer.create((NamedEndpoint) endpoint, null);
+                            target.setEndpoint(synapseEP);
+                        } else if (endpoint instanceof RecipientListEndPointImpl) {
+                            RecipientListEndPointTransformer transformer = new RecipientListEndPointTransformer();
+                            RecipientListEndpoint synapseEP = transformer.create(newInfo,
+                                    (RecipientListEndPoint) endpoint, null, null);
+                            target.setEndpoint(synapseEP);
+                        } else if (endpoint instanceof TemplateEndpointImpl) {
+                            TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
+                            TemplateEndpoint synapseEP = transformer
+                                    .create((org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint) endpoint, null);
+                            target.setEndpoint(synapseEP);
+                        } else if (endpoint instanceof WSDLEndPointImpl) {
+                            WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
+                            WSDLEndpoint synapseEP = transformer.create((WSDLEndPoint) endpoint, null);
+                            target.setEndpoint(synapseEP);
+                        }
 
-			cloneMediator.setTargets(targetList);
-		}
-		return cloneMediator;
-	}
+                    }
+                } else if (visualTarget.getEndpointType().equals(TargetEndpointType.REGISTRY_REFERENCE)) {
 
-	
+                    target.setEndpointRef(visualTarget.getEndpointKey().getKeyValue());
+                }
+
+                targetList.add(target);
+
+            }
+
+            cloneMediator.setTargets(targetList);
+        }
+        return cloneMediator;
+    }
+
 }

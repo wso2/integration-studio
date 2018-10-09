@@ -15,7 +15,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Recipient List End Point Input Connector</b></em>'.

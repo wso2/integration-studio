@@ -20,49 +20,48 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartListener;
 
 /**
- * Mediator editpart listener to capture editpart select and 
+ * Mediator editpart listener to capture editpart select and
  * deselect.
  *
  */
 public class MediatorEditPartListener implements EditPartListener {
 
-	private EditPart editPart;
+    private EditPart editPart;
 
-	public MediatorEditPartListener(EditPart editPart) {
-		this.editPart = editPart;
-	}
+    public MediatorEditPartListener(EditPart editPart) {
+        this.editPart = editPart;
+    }
 
-	@Override
-	public void childAdded(EditPart child, int index) {
-		// TODO Auto-generated method stub
+    @Override
+    public void childAdded(EditPart child, int index) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	public void partActivated(EditPart editpart) {
-		// TODO Auto-generated method stub
+    @Override
+    public void partActivated(EditPart editpart) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	public void partDeactivated(EditPart editpart) {
-		// TODO Auto-generated method stub
-	}
+    @Override
+    public void partDeactivated(EditPart editpart) {
+        // TODO Auto-generated method stub
+    }
 
-	@Override
-	public void removingChild(EditPart child, int index) {
-		// TODO Auto-generated method stub
+    @Override
+    public void removingChild(EditPart child, int index) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	public void selectedStateChanged(EditPart editpart) {
-		// Reset select state on deselection of the mediator
-		if (editPart instanceof FixedSizedAbstractMediator
-				&& ((FixedSizedAbstractMediator) editPart).isSelected()
-				&& editpart.getSelected() == 0) {
-			((FixedSizedAbstractMediator) editPart).setSelected(false);
-		}
-	}
+    @Override
+    public void selectedStateChanged(EditPart editpart) {
+        // Reset select state on deselection of the mediator
+        if (editPart instanceof FixedSizedAbstractMediator && ((FixedSizedAbstractMediator) editPart).isSelected()
+                && editpart.getSelected() == 0) {
+            ((FixedSizedAbstractMediator) editPart).setSelected(false);
+        }
+    }
 
 }

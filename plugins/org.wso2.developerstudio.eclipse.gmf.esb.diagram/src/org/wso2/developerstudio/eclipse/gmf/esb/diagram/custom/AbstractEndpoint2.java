@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom;
 
 import org.eclipse.draw2d.IFigure;
@@ -24,30 +23,29 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HighlightOnSelectionEditPolicy;
 
-public class AbstractEndpoint2 extends AbstractBorderedShapeEditPart{
+public class AbstractEndpoint2 extends AbstractBorderedShapeEditPart {
 
-	protected IFigure primaryShape;
-	
-	
-	public AbstractEndpoint2(View view) {
-		super(view);
-	}
+    protected IFigure primaryShape;
 
-	@Override
-	protected NodeFigure createMainFigure() {
-		return super.createNodeFigure();
-	}
+    public AbstractEndpoint2(View view) {
+        super(view);
+    }
 
-	@Override
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());  //remove 8 corners
-		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, new HighlightOnSelectionEditPolicy()); //selection
-	}
-	
-	public IFigure getEndPoint2PrimaryShape() {
-		return primaryShape;
-	}
+    @Override
+    protected NodeFigure createMainFigure() {
+        return super.createNodeFigure();
+    }
+
+    @Override
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+        installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); // remove 8 corners
+        installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, new HighlightOnSelectionEditPolicy()); // selection
+    }
+
+    public IFigure getEndPoint2PrimaryShape() {
+        return primaryShape;
+    }
 }

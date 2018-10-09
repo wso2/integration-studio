@@ -29,25 +29,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 
 public class ConnectionUtils {
 
-	public static boolean createConnection(AbstractConnectorEditPart target, AbstractConnectorEditPart source) {
-		if (source != null && target != null && (source.getParent() instanceof ShapeNodeEditPart)) {
-			CompoundCommand cc = new CompoundCommand("Create Link");
-			if (((ShapeNodeEditPart) source.getParent()).getRoot() != null) {
-				ICommand createSubTopicsCmd = new DeferredCreateConnectionViewAndElementCommand(
-						new CreateConnectionViewAndElementRequest(EsbElementTypes.EsbLink_4001,
-								((IHintedType) EsbElementTypes.EsbLink_4001).getSemanticHint(),
-								((ShapeNodeEditPart) source.getParent()).getDiagramPreferencesHint()),
-						new EObjectAdapter((EObject) source.getModel()),
-						new EObjectAdapter((EObject) target.getModel()),
-						((ShapeNodeEditPart) source.getParent()).getViewer());
+    public static boolean createConnection(AbstractConnectorEditPart target, AbstractConnectorEditPart source) {
+        if (source != null && target != null && (source.getParent() instanceof ShapeNodeEditPart)) {
+            CompoundCommand cc = new CompoundCommand("Create Link");
+            if (((ShapeNodeEditPart) source.getParent()).getRoot() != null) {
+                ICommand createSubTopicsCmd = new DeferredCreateConnectionViewAndElementCommand(
+                        new CreateConnectionViewAndElementRequest(EsbElementTypes.EsbLink_4001,
+                                ((IHintedType) EsbElementTypes.EsbLink_4001).getSemanticHint(),
+                                ((ShapeNodeEditPart) source.getParent()).getDiagramPreferencesHint()),
+                        new EObjectAdapter((EObject) source.getModel()),
+                        new EObjectAdapter((EObject) target.getModel()),
+                        ((ShapeNodeEditPart) source.getParent()).getViewer());
 
-				cc.add(new ICommandProxy(createSubTopicsCmd));
-				if (target.getDiagramEditDomain() != null) {
-					target.getDiagramEditDomain().getDiagramCommandStack().execute(cc);
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+                cc.add(new ICommandProxy(createSubTopicsCmd));
+                if (target.getDiagramEditDomain() != null) {
+                    target.getDiagramEditDomain().getDiagramCommandStack().execute(cc);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

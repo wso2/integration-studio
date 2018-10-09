@@ -6,27 +6,23 @@ import org.eclipse.ui.IWorkbenchPart;
 
 public class DirectionFilterMediatorAction extends DirectionEsbNodeAction {
 
-	
-	
-	EditPart editorPart;
-	
-	
-	public DirectionFilterMediatorAction(IWorkbenchPart part) {
-		super(part);
-		
+    EditPart editorPart;
 
-		setText("Reverse");
-		setToolTipText("Set Direction Filter mediator.");
-		// TODO Auto-generated constructor stub
-	}
-	
-	public void setEditorPart(EditPart editorPart_){
-		editorPart=editorPart_;		
-	}
+    public DirectionFilterMediatorAction(IWorkbenchPart part) {
+        super(part);
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		
-		Reverse(editorPart);
-	}
+        setText("Reverse");
+        setToolTipText("Set Direction Filter mediator.");
+        // TODO Auto-generated constructor stub
+    }
+
+    public void setEditorPart(EditPart editorPart_) {
+        editorPart = editorPart_;
+    }
+
+    protected void doRun(IProgressMonitor progressMonitor) {
+
+        Reverse(editorPart);
+    }
 
 }

@@ -29,23 +29,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureEJBMediatorMethodArgumentsDialog;
 
 public class EJBMediatorMethodArgumentConfigurationPropertyDescriptor extends PropertyDescriptor {
-	public EJBMediatorMethodArgumentConfigurationPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public EJBMediatorMethodArgumentConfigurationPropertyDescriptor(Object object,
+            IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				EJBMediator ejbMediator = (EJBMediator) object;
-				ConfigureEJBMediatorMethodArgumentsDialog ejbMediatorConfigurationDialog = new ConfigureEJBMediatorMethodArgumentsDialog(
-						shell, ejbMediator, TransactionUtil.getEditingDomain(ejbMediator));
-				ejbMediatorConfigurationDialog.setBlockOnOpen(true);
-				ejbMediatorConfigurationDialog.open();
-				return null;
-			}
-		};
-	}
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                EJBMediator ejbMediator = (EJBMediator) object;
+                ConfigureEJBMediatorMethodArgumentsDialog ejbMediatorConfigurationDialog = new ConfigureEJBMediatorMethodArgumentsDialog(
+                        shell, ejbMediator, TransactionUtil.getEditingDomain(ejbMediator));
+                ejbMediatorConfigurationDialog.setBlockOnOpen(true);
+                ejbMediatorConfigurationDialog.open();
+                return null;
+            }
+        };
+    }
 }

@@ -33,369 +33,359 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder;
 
 public class MessageBuilderPropertyDialog extends Dialog {
 
-	private Table builderTable;
-	private Button addBtn;
-	private Button removeBtn;
-	private Text cTypeTxt;
-	private Text builderClassTxt;
-	private Text formatterClassTxt;
+    private Table builderTable;
+    private Button addBtn;
+    private Button removeBtn;
+    private Text cTypeTxt;
+    private Text builderClassTxt;
+    private Text formatterClassTxt;
 
-	private BuilderMediator builderMediator;
-	private TransactionalEditingDomain editingDomain;
-	private TableItem currentSelectedItem;
+    private BuilderMediator builderMediator;
+    private TransactionalEditingDomain editingDomain;
+    private TableItem currentSelectedItem;
 
-	public MessageBuilderPropertyDialog(Shell parentShell,
-			BuilderMediator builderMediator) {
-		super(parentShell);
-		this.builderMediator = builderMediator;
-		this.editingDomain = TransactionUtil.getEditingDomain(builderMediator);
-	}
+    public MessageBuilderPropertyDialog(Shell parentShell, BuilderMediator builderMediator) {
+        super(parentShell);
+        this.builderMediator = builderMediator;
+        this.editingDomain = TransactionUtil.getEditingDomain(builderMediator);
+    }
 
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		container.setSize(1000, 2000);
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        container.setSize(1000, 2000);
 
-		// Set layout for the main container
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
+        // Set layout for the main container
+        FormLayout mainLayout = new FormLayout();
+        mainLayout.marginHeight = 5;
+        mainLayout.marginWidth = 5;
+        container.setLayout(mainLayout);
 
-		// setting up the builder table
-		builderTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION
-				| SWT.HIDE_SELECTION);
+        // setting up the builder table
+        builderTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
 
-		TableColumn builder = new TableColumn(builderTable, SWT.LEFT);
+        TableColumn builder = new TableColumn(builderTable, SWT.LEFT);
 
-		builder.setText("Message Builder");
-		builder.setWidth(300);
+        builder.setText("Message Builder");
+        builder.setWidth(300);
 
-		builderTable.setHeaderVisible(true);
-		builderTable.setLinesVisible(true);
+        builderTable.setHeaderVisible(true);
+        builderTable.setLinesVisible(true);
 
-		addBtn = new Button(container, SWT.NONE);
-		addBtn.setText("Add...");
-		addBtn.addListener(SWT.Selection, new Listener() {
+        addBtn = new Button(container, SWT.NONE);
+        addBtn.setText("Add...");
+        addBtn.addListener(SWT.Selection, new Listener() {
 
-			public void handleEvent(Event event) {
+            public void handleEvent(Event event) {
 
-				addMessageBuilder();
-			}
-		});
+                addMessageBuilder();
+            }
+        });
 
-		removeBtn = new Button(container, SWT.NONE);
-		removeBtn.setText("Remove");
-		removeBtn.addListener(SWT.Selection, new Listener() {
+        removeBtn = new Button(container, SWT.NONE);
+        removeBtn.setText("Remove");
+        removeBtn.addListener(SWT.Selection, new Listener() {
 
-			public void handleEvent(Event event) {
+            public void handleEvent(Event event) {
 
-				removeMessageBuilder();
+                removeMessageBuilder();
 
-			}
-		});
+            }
+        });
 
-		builderTable.addListener(SWT.Selection, getTableListner());
+        builderTable.addListener(SWT.Selection, getTableListner());
 
-		for (MessageBuilder mBuilder : builderMediator.getMessageBuilders()) {
+        for (MessageBuilder mBuilder : builderMediator.getMessageBuilders()) {
 
-			bindBuilder(mBuilder);
-		}
+            bindBuilder(mBuilder);
+        }
 
-		Group configGrp = new Group(container, SWT.NONE);
-		configGrp.setText("Message Builder Properties");
+        Group configGrp = new Group(container, SWT.NONE);
+        configGrp.setText("Message Builder Properties");
 
-		GridLayout gl = new GridLayout(2, false);
-		configGrp.setLayout(gl);
+        GridLayout gl = new GridLayout(2, false);
+        configGrp.setLayout(gl);
 
-		Label cTypeLabel = new Label(configGrp, SWT.NONE);
-		cTypeLabel.setText("Content Type");
+        Label cTypeLabel = new Label(configGrp, SWT.NONE);
+        cTypeLabel.setText("Content Type");
 
-		GridData gd1 = new GridData();
-		gd1.horizontalAlignment = GridData.HORIZONTAL_ALIGN_BEGINNING;
-		gd1.verticalIndent = 10;
-		cTypeLabel.setLayoutData(gd1);
+        GridData gd1 = new GridData();
+        gd1.horizontalAlignment = GridData.HORIZONTAL_ALIGN_BEGINNING;
+        gd1.verticalIndent = 10;
+        cTypeLabel.setLayoutData(gd1);
 
-		cTypeTxt = new Text(configGrp, SWT.SINGLE | SWT.BORDER);
+        cTypeTxt = new Text(configGrp, SWT.SINGLE | SWT.BORDER);
 
-		GridData gd2 = new GridData(GridData.FILL_HORIZONTAL);
-		gd2.verticalIndent = 10;
-		cTypeTxt.setLayoutData(gd2);
-		cTypeTxt.addModifyListener(new ModifyListener() {
+        GridData gd2 = new GridData(GridData.FILL_HORIZONTAL);
+        gd2.verticalIndent = 10;
+        cTypeTxt.setLayoutData(gd2);
+        cTypeTxt.addModifyListener(new ModifyListener() {
 
-			public void modifyText(ModifyEvent e) {
+            public void modifyText(ModifyEvent e) {
 
-				setBuilderType();
-			}
-		});
+                setBuilderType();
+            }
+        });
 
-		Label builderClsLabel = new Label(configGrp, SWT.NONE);
-		builderClsLabel.setText("Builder Class");
-		builderClsLabel.setLayoutData(gd1);
+        Label builderClsLabel = new Label(configGrp, SWT.NONE);
+        builderClsLabel.setText("Builder Class");
+        builderClsLabel.setLayoutData(gd1);
 
-		builderClassTxt = new Text(configGrp, SWT.SINGLE | SWT.BORDER);
-		builderClassTxt.setLayoutData(gd2);
-		builderClassTxt.addModifyListener(new ModifyListener() {
-
-			public void modifyText(ModifyEvent e) {
-
-				setBuilderClass();
-			}
-		});
-
-		Label formatterClassLabel = new Label(configGrp, SWT.NONE);
-		formatterClassLabel.setText("Formatter Class");
-		formatterClassLabel.setLayoutData(gd1);
-
-		formatterClassTxt = new Text(configGrp, SWT.SINGLE | SWT.BORDER);
-		formatterClassTxt.setLayoutData(gd2);
-		formatterClassTxt.addModifyListener(new ModifyListener() {
-
-			public void modifyText(ModifyEvent e) {
-
-				setFormatterClass();
-			}
-		});
-
-		if (builderTable.getItemCount() > 0) {
-			builderTable.select(0);
-			TableItem item = builderTable.getItem(builderTable
-					.getSelectionIndex());
-			setCurrentSelectedItem(item);
-			updateFields(item);
-		}
-
-		// Layout related configurations
-		FormData builderTableLayoutData = new FormData(SWT.DEFAULT, 150);
-		builderTableLayoutData.top = new FormAttachment(0, 0);
-		builderTableLayoutData.left = new FormAttachment(0, 0);
-		builderTable.setLayoutData(builderTableLayoutData);
-
-		FormData frmData = new FormData();
-		frmData.left = new FormAttachment(builderTable, 5);
-		frmData.right = new FormAttachment(100, 0);
-		addBtn.setLayoutData(frmData);
-
-		frmData = new FormData();
-		frmData.top = new FormAttachment(addBtn, 5);
-		frmData.left = new FormAttachment(builderTable, 5);
-		removeBtn.setLayoutData(frmData);
-
-		frmData = new FormData();
-		frmData.top = new FormAttachment(builderTable, 20);
-		frmData.left = new FormAttachment(0, 0);
-		frmData.right = new FormAttachment(100, 0);
-		frmData.bottom = new FormAttachment(100, 0);
-		configGrp.setLayoutData(frmData);
-
-		return parent;
+        builderClassTxt = new Text(configGrp, SWT.SINGLE | SWT.BORDER);
+        builderClassTxt.setLayoutData(gd2);
+        builderClassTxt.addModifyListener(new ModifyListener() {
 
-	}
+            public void modifyText(ModifyEvent e) {
+
+                setBuilderClass();
+            }
+        });
+
+        Label formatterClassLabel = new Label(configGrp, SWT.NONE);
+        formatterClassLabel.setText("Formatter Class");
+        formatterClassLabel.setLayoutData(gd1);
+
+        formatterClassTxt = new Text(configGrp, SWT.SINGLE | SWT.BORDER);
+        formatterClassTxt.setLayoutData(gd2);
+        formatterClassTxt.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent e) {
 
-	/**
-	 * 
-	 * Adding Message builder to builder table.
-	 */
-	private void addMessageBuilder() {
+                setFormatterClass();
+            }
+        });
+
+        if (builderTable.getItemCount() > 0) {
+            builderTable.select(0);
+            TableItem item = builderTable.getItem(builderTable.getSelectionIndex());
+            setCurrentSelectedItem(item);
+            updateFields(item);
+        }
 
-		MessageBuilder messageBuilder = EsbFactory.eINSTANCE
-				.createMessageBuilder();
-		messageBuilder.setContentType(cTypeTxt.getText());
-		messageBuilder.setBuilderClass(builderClassTxt.getText());
-		messageBuilder.setFormatterClass(formatterClassTxt.getText());
-		TableItem item = bindBuilder(messageBuilder);
-
-		AddCommand addCmd = new AddCommand(editingDomain, builderMediator,
-				EsbPackage.Literals.BUILDER_MEDIATOR__MESSAGE_BUILDERS,
-				messageBuilder);
+        // Layout related configurations
+        FormData builderTableLayoutData = new FormData(SWT.DEFAULT, 150);
+        builderTableLayoutData.top = new FormAttachment(0, 0);
+        builderTableLayoutData.left = new FormAttachment(0, 0);
+        builderTable.setLayoutData(builderTableLayoutData);
+
+        FormData frmData = new FormData();
+        frmData.left = new FormAttachment(builderTable, 5);
+        frmData.right = new FormAttachment(100, 0);
+        addBtn.setLayoutData(frmData);
 
-		if (addCmd.canExecute()) {
+        frmData = new FormData();
+        frmData.top = new FormAttachment(addBtn, 5);
+        frmData.left = new FormAttachment(builderTable, 5);
+        removeBtn.setLayoutData(frmData);
 
-			editingDomain.getCommandStack().execute(addCmd);
-		}
-		builderTable.select(builderTable.indexOf(item));
-		setCurrentSelectedItem(item);
+        frmData = new FormData();
+        frmData.top = new FormAttachment(builderTable, 20);
+        frmData.left = new FormAttachment(0, 0);
+        frmData.right = new FormAttachment(100, 0);
+        frmData.bottom = new FormAttachment(100, 0);
+        configGrp.setLayoutData(frmData);
 
-	}
+        return parent;
 
-	/**
-	 * 
-	 * Remove Message builder from builder table.
-	 */
+    }
 
-	private void removeMessageBuilder() {
+    /**
+     * 
+     * Adding Message builder to builder table.
+     */
+    private void addMessageBuilder() {
 
-		int selectedIndex = builderTable.getSelectionIndex();
-		if (-1 != selectedIndex) {
+        MessageBuilder messageBuilder = EsbFactory.eINSTANCE.createMessageBuilder();
+        messageBuilder.setContentType(cTypeTxt.getText());
+        messageBuilder.setBuilderClass(builderClassTxt.getText());
+        messageBuilder.setFormatterClass(formatterClassTxt.getText());
+        TableItem item = bindBuilder(messageBuilder);
 
-			unbindBuilder(selectedIndex);
+        AddCommand addCmd = new AddCommand(editingDomain, builderMediator,
+                EsbPackage.Literals.BUILDER_MEDIATOR__MESSAGE_BUILDERS, messageBuilder);
 
-			// Select the next available candidate for deletion.
-			if (selectedIndex < builderTable.getItemCount()) {
-				builderTable.select(selectedIndex);
-			} else {
-				builderTable.select(selectedIndex - 1);
-			}
-		}
-	}
+        if (addCmd.canExecute()) {
 
-	/**
-	 * create Listener for table
-	 * 
-	 */
-	private Listener getTableListner() {
+            editingDomain.getCommandStack().execute(addCmd);
+        }
+        builderTable.select(builderTable.indexOf(item));
+        setCurrentSelectedItem(item);
 
-		Listener builderTableListner = new Listener() {
+    }
 
-			public void handleEvent(Event evt) {
-				if (null != evt.item) {
-					if (evt.item instanceof TableItem) {
+    /**
+     * 
+     * Remove Message builder from builder table.
+     */
 
-						TableItem item = (TableItem) evt.item;
-						setCurrentSelectedItem(item);
-						updateFields(item);
+    private void removeMessageBuilder() {
 
-					}
-				}
-			}
-		};
+        int selectedIndex = builderTable.getSelectionIndex();
+        if (-1 != selectedIndex) {
 
-		return builderTableListner;
-	}
+            unbindBuilder(selectedIndex);
 
-	private TableItem bindBuilder(MessageBuilder builder) {
+            // Select the next available candidate for deletion.
+            if (selectedIndex < builderTable.getItemCount()) {
+                builderTable.select(selectedIndex);
+            } else {
+                builderTable.select(selectedIndex - 1);
+            }
+        }
+    }
 
-		TableItem item = new TableItem(builderTable, SWT.NONE);
-		item.setText(new String[] { "MessageBuilder" });
-		item.setData(builder);
-		return item;
-	}
+    /**
+     * create Listener for table
+     * 
+     */
+    private Listener getTableListner() {
 
-	private void unbindBuilder(int itemIndex) {
+        Listener builderTableListner = new Listener() {
 
-		MessageBuilder builder = getcurrentMesssageBuilder();
+            public void handleEvent(Event evt) {
+                if (null != evt.item) {
+                    if (evt.item instanceof TableItem) {
 
-		if (builder != null && builder.eContainer() != null) {
+                        TableItem item = (TableItem) evt.item;
+                        setCurrentSelectedItem(item);
+                        updateFields(item);
 
-			RemoveCommand removeCmd = new RemoveCommand(editingDomain,
-					builderMediator,
-					EsbPackage.Literals.BUILDER_MEDIATOR__MESSAGE_BUILDERS,
-					builder);
+                    }
+                }
+            }
+        };
 
-			if (removeCmd.canExecute()) {
+        return builderTableListner;
+    }
 
-				editingDomain.getCommandStack().execute(removeCmd);
-			}
-		}
+    private TableItem bindBuilder(MessageBuilder builder) {
 
-		builderTable.remove(itemIndex);
-	}
+        TableItem item = new TableItem(builderTable, SWT.NONE);
+        item.setText(new String[] { "MessageBuilder" });
+        item.setData(builder);
+        return item;
+    }
 
-	private void setBuilderType() {
-		MessageBuilder builder = getcurrentMesssageBuilder();
+    private void unbindBuilder(int itemIndex) {
 
-		if (builder != null) {
-			SetCommand setCmd = new SetCommand(editingDomain, builder,
-					EsbPackage.Literals.MESSAGE_BUILDER__CONTENT_TYPE,
-					cTypeTxt.getText());
-			if (setCmd.canExecute()) {
+        MessageBuilder builder = getcurrentMesssageBuilder();
 
-				editingDomain.getCommandStack().execute(setCmd);
-			}
-		}
-	}
+        if (builder != null && builder.eContainer() != null) {
 
-	private void setBuilderClass() {
+            RemoveCommand removeCmd = new RemoveCommand(editingDomain, builderMediator,
+                    EsbPackage.Literals.BUILDER_MEDIATOR__MESSAGE_BUILDERS, builder);
 
-		MessageBuilder builder = getcurrentMesssageBuilder();
+            if (removeCmd.canExecute()) {
 
-		if (builder != null) {
-			SetCommand setCmd = new SetCommand(editingDomain, builder,
-					EsbPackage.Literals.MESSAGE_BUILDER__BUILDER_CLASS,
-					builderClassTxt.getText());
-			if (setCmd.canExecute()) {
+                editingDomain.getCommandStack().execute(removeCmd);
+            }
+        }
 
-				editingDomain.getCommandStack().execute(setCmd);
-			}
-		}
-	}
+        builderTable.remove(itemIndex);
+    }
 
-	private void setFormatterClass() {
+    private void setBuilderType() {
+        MessageBuilder builder = getcurrentMesssageBuilder();
 
-		MessageBuilder builder = getcurrentMesssageBuilder();
+        if (builder != null) {
+            SetCommand setCmd = new SetCommand(editingDomain, builder,
+                    EsbPackage.Literals.MESSAGE_BUILDER__CONTENT_TYPE, cTypeTxt.getText());
+            if (setCmd.canExecute()) {
 
-		if (builder != null) {
-			SetCommand setCmd = new SetCommand(editingDomain, builder,
-					EsbPackage.Literals.MESSAGE_BUILDER__FORMATTER_CLASS,
-					formatterClassTxt.getText());
-			if (setCmd.canExecute()) {
+                editingDomain.getCommandStack().execute(setCmd);
+            }
+        }
+    }
 
-				editingDomain.getCommandStack().execute(setCmd);
-			}
-		}
+    private void setBuilderClass() {
 
-	}
+        MessageBuilder builder = getcurrentMesssageBuilder();
 
-	private void updateFields(TableItem item) {
+        if (builder != null) {
+            SetCommand setCmd = new SetCommand(editingDomain, builder,
+                    EsbPackage.Literals.MESSAGE_BUILDER__BUILDER_CLASS, builderClassTxt.getText());
+            if (setCmd.canExecute()) {
 
-		MessageBuilder builder = getcurrentMesssageBuilder();
+                editingDomain.getCommandStack().execute(setCmd);
+            }
+        }
+    }
 
-		if (builder != null) {
+    private void setFormatterClass() {
 
-			if (builder.getContentType() != null) {
+        MessageBuilder builder = getcurrentMesssageBuilder();
 
-				cTypeTxt.setText(builder.getContentType());
+        if (builder != null) {
+            SetCommand setCmd = new SetCommand(editingDomain, builder,
+                    EsbPackage.Literals.MESSAGE_BUILDER__FORMATTER_CLASS, formatterClassTxt.getText());
+            if (setCmd.canExecute()) {
 
-			} else {
+                editingDomain.getCommandStack().execute(setCmd);
+            }
+        }
 
-				cTypeTxt.setText("");
-			}
+    }
 
-			if (builder.getBuilderClass() != null) {
+    private void updateFields(TableItem item) {
 
-				builderClassTxt.setText(builder.getBuilderClass());
+        MessageBuilder builder = getcurrentMesssageBuilder();
 
-			} else {
+        if (builder != null) {
 
-				builderClassTxt.setText("");
-			}
+            if (builder.getContentType() != null) {
 
-			if (builder.getFormatterClass() != null) {
+                cTypeTxt.setText(builder.getContentType());
 
-				formatterClassTxt.setText(builder.getFormatterClass());
+            } else {
 
-			} else {
+                cTypeTxt.setText("");
+            }
 
-				formatterClassTxt.setText("");
-			}
-		}
-	}
+            if (builder.getBuilderClass() != null) {
 
-	private MessageBuilder getcurrentMesssageBuilder() {
+                builderClassTxt.setText(builder.getBuilderClass());
 
-		TableItem currentItem = getCurrentSelectedItem();
+            } else {
 
-		if (currentItem != null && currentItem.getData() != null) {
+                builderClassTxt.setText("");
+            }
 
-			MessageBuilder builder = (MessageBuilder) currentItem.getData();
+            if (builder.getFormatterClass() != null) {
 
-			return builder;
-		}
+                formatterClassTxt.setText(builder.getFormatterClass());
 
-		return null;
+            } else {
 
-	}
+                formatterClassTxt.setText("");
+            }
+        }
+    }
 
-	public TableItem getCurrentSelectedItem() {
-		return currentSelectedItem;
-	}
+    private MessageBuilder getcurrentMesssageBuilder() {
 
-	public void setCurrentSelectedItem(TableItem currentSelectedItem) {
-		this.currentSelectedItem = currentSelectedItem;
-	}
+        TableItem currentItem = getCurrentSelectedItem();
 
-	public void okPressed() {
+        if (currentItem != null && currentItem.getData() != null) {
 
-		super.okPressed();
-	}
+            MessageBuilder builder = (MessageBuilder) currentItem.getData();
+
+            return builder;
+        }
+
+        return null;
+
+    }
+
+    public TableItem getCurrentSelectedItem() {
+        return currentSelectedItem;
+    }
+
+    public void setCurrentSelectedItem(TableItem currentSelectedItem) {
+        this.currentSelectedItem = currentSelectedItem;
+    }
+
+    public void okPressed() {
+
+        super.okPressed();
+    }
 
 }

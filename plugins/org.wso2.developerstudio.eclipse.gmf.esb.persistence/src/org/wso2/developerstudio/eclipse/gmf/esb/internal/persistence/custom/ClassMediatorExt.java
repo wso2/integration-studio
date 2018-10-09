@@ -20,18 +20,18 @@ import org.apache.synapse.mediators.ext.ClassMediator;
 
 public class ClassMediatorExt extends ClassMediator {
 
-	private String mediatorClass;
+    private String mediatorClass;
 
-	public ClassMediatorExt(String mediatorClass) {
-		this.setMediatorClass(mediatorClass);
-	}
+    public ClassMediatorExt(String mediatorClass) {
+        this.setMediatorClass(mediatorClass);
+    }
 
-	public void setMediatorClass(String mediatorClass) {
-		this.mediatorClass = mediatorClass;
-	}
+    public void setMediatorClass(String mediatorClass) {
+        this.mediatorClass = mediatorClass;
+    }
 
-	public String getMediatorClass() {
-		return mediatorClass;
-	}
+    public String getMediatorClass() {
+        return mediatorClass;
+    }
 
 }

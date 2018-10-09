@@ -43,8 +43,8 @@ public class ESBSequenceBean {
         if (sequenceBean instanceof ESBSequenceBean) {
             ESBSequenceBean seqBeanTemp = (ESBSequenceBean) sequenceBean;
             if (!(getSequenceKey().equals((seqBeanTemp).getSequenceKey())
-                    && getSequenceType().equals((seqBeanTemp).getSequenceType()) && getMediatorPosition().equals(
-                    seqBeanTemp.getMediatorPosition()))) {
+                    && getSequenceType().equals((seqBeanTemp).getSequenceType())
+                    && getMediatorPosition().equals(seqBeanTemp.getMediatorPosition()))) {
                 return false;
             }
             return true;

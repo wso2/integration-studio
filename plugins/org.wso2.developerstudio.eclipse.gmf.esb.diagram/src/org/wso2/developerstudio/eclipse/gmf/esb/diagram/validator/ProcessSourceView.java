@@ -529,11 +529,13 @@ public class ProcessSourceView {
                                     && !tempTag.getqName().equals(currentMediator.getqName())) {
                                 intermediaryStack.push(currentMediator);
 
-                            } else if ((!artifactType.equals("localEntry") && tempTag.getTagType() == 3 && (currentMediator == null 
-                                    || currentMediator != null && !currentMediator.getqName().equals("filter")))
-                                    || (tempTag.getTagType() != 3
-                                    && (currentMediator != null && tempTag.getqName().equals(currentMediator.getqName())
-                                            || (artifacts.contains(tempTag.getqName()) && !artifactType.equals("localEntry"))))) {
+                            } else if ((!artifactType.equals("localEntry") && tempTag.getTagType() == 3
+                                    && (currentMediator == null
+                                            || currentMediator != null && !currentMediator.getqName().equals("filter")))
+                                    || (tempTag.getTagType() != 3 && (currentMediator != null
+                                            && tempTag.getqName().equals(currentMediator.getqName())
+                                            || (artifacts.contains(tempTag.getqName())
+                                                    && !artifactType.equals("localEntry"))))) {
                                 if ((!tempTag.getqName().equals("endpoint")
                                         || (tempTag.getqName().equals("endpoint") && !insideGraphicalEp))) {
                                     sourceError = mediatorValidation();
@@ -559,7 +561,7 @@ public class ProcessSourceView {
                             + "\" does not have a coresponding starting tag.";
 
                     return createError(error, tempTag);
-                    
+
                 } else if (tempTag.getTagType() == 3 && artifacts.contains(tempTag.getqName())) {
                     xmlTags.push(tempTag);
                     sourceError = mediatorValidation();
@@ -571,7 +573,7 @@ public class ProcessSourceView {
             } else if (tempTag.getTagType() == 6 || tempTag.getTagType() == 7) {
                 if (prev != null && (prev.getTagType() == 4 || prev.getTagType() == 7 || prev.getTagType() == 1)) {
                     xmlTags.push(tempTag);
-                    
+
                 } else if (intermediaryStack.size() > 0) {
                     xmlTags.push(tempTag);
                 }
@@ -579,7 +581,7 @@ public class ProcessSourceView {
             } else if (tempTag.getTagType() == 8) {
                 if (tempTag.getValue().contains("xml-multiple")) {
                     xmlTags.push(tempTag);
-                    
+
                 } else if (prev != null && prev.getTagType() != 8) {
                     String error = "Cannot have the tag \"" + prev.getValue() + "\" before the tag \""
                             + tempTag.getValue() + "\".";
@@ -761,7 +763,8 @@ public class ProcessSourceView {
 
             } else if (qTag.equals("task")) {
                 DummyTaskDescriptionFactory factory = new DummyTaskDescriptionFactory();
-                factory.createTaskDescription(omElement, OMAbstractFactory.getOMFactory().createOMNamespace("http://ws.apache.org/ns/synapse", ""));
+                factory.createTaskDescription(omElement,
+                        OMAbstractFactory.getOMFactory().createOMNamespace("http://ws.apache.org/ns/synapse", ""));
 
             } else if (qTag.equals("template")) {
                 TemplateMediatorFactory factory = new TemplateMediatorFactory();
@@ -769,7 +772,7 @@ public class ProcessSourceView {
 
             }
 
-        } catch (SynapseException | MediatorException| SynapseTaskException e) {
+        } catch (SynapseException | MediatorException | SynapseTaskException e) {
             return e.getMessage();
 
         } catch (XMLStreamException e) {

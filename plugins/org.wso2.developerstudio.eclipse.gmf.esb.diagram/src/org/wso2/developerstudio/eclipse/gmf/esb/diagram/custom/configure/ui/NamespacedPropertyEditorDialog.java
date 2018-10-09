@@ -44,545 +44,519 @@ import java.util.regex.Pattern;
  * A SWT based editor dialog to be used for editing namespaced properties.
  */
 public class NamespacedPropertyEditorDialog extends Dialog {
-	/**
-	 * Dialog shell.
-	 */
-	private Shell dialogShell;
+    /**
+     * Dialog shell.
+     */
+    private Shell dialogShell;
 
-	/**
-	 * Group box for separating property value edit area.
-	 */
-	private Group propertyGroupBox;
+    /**
+     * Group box for separating property value edit area.
+     */
+    private Group propertyGroupBox;
 
-	/**
-	 * Text field used for manipulating property value.
-	 */
-	private Text propertyTextField;
+    /**
+     * Text field used for manipulating property value.
+     */
+    private Text propertyTextField;
 
-	/**
-	 * Button used to fire up the xpath editor.
-	 */
-	private Button selectXpathButton;
-	
-	private boolean showDynamicXPathOption;
-	
-	private Button chkDynamicXPath;
+    /**
+     * Button used to fire up the xpath editor.
+     */
+    private Button selectXpathButton;
 
-	private Label lblDynamicDescription;
-	
-	private String dynamicXpathDescriptionText = " : This enables the value of XPath to be evaluvated at run time.";
+    private boolean showDynamicXPathOption;
 
+    private Button chkDynamicXPath;
 
-	/**
-	 * Group box for separating namespaces edit area.
-	 */
-	private Group namespacesGroupBox;
+    private Label lblDynamicDescription;
 
-	/**
-	 * Namespace 'Prefix' label.
-	 */
-	private Label nsPrefixLabel;
+    private String dynamicXpathDescriptionText = " : This enables the value of XPath to be evaluvated at run time.";
 
-	/**
-	 * Namespace prefix text field.
-	 */
-	private Text nsPrefixTextField;
+    /**
+     * Group box for separating namespaces edit area.
+     */
+    private Group namespacesGroupBox;
 
-	/**
-	 * Namespace 'URI' label.
-	 */
-	private Label nsUriLabel;
+    /**
+     * Namespace 'Prefix' label.
+     */
+    private Label nsPrefixLabel;
 
-	/**
-	 * Namespace URI text field.
-	 */
-	private Text nsUriTextField;
+    /**
+     * Namespace prefix text field.
+     */
+    private Text nsPrefixTextField;
 
-	/**
-	 * Namespace list box.
-	 */
-	private List nsListBox;
+    /**
+     * Namespace 'URI' label.
+     */
+    private Label nsUriLabel;
 
-	/**
-	 * Add namespace button.
-	 */
-	private Button addButton;
+    /**
+     * Namespace URI text field.
+     */
+    private Text nsUriTextField;
 
-	/**
-	 * Edit namespace button.
-	 */
-	private Button editButton;
+    /**
+     * Namespace list box.
+     */
+    private List nsListBox;
 
-	/**
-	 * Remove namespace button.
-	 */
-	private Button removeButton;
+    /**
+     * Add namespace button.
+     */
+    private Button addButton;
 
-	/**
-	 * Cancel button.
-	 */
-	private Button cancelButton;
+    /**
+     * Edit namespace button.
+     */
+    private Button editButton;
 
-	/**
-	 * Ok button.
-	 */
-	private Button okButton;
+    /**
+     * Remove namespace button.
+     */
+    private Button removeButton;
 
-	/**
-	 * {@link NamespacedProperty} being edited.
-	 */
-	private NamespacedProperty nsProperty;
+    /**
+     * Cancel button.
+     */
+    private Button cancelButton;
 
-	/**
-	 * Namespaces collected.
-	 */
-	private Map<String, String> collectedNamespaces;
+    /**
+     * Ok button.
+     */
+    private Button okButton;
 
-	/**
-	 * Format string used for displaying namespaces.
-	 */
-	private static final String namespaceDisplayFormat = "xmlns:%s=\"%s\"";
+    /**
+     * {@link NamespacedProperty} being edited.
+     */
+    private NamespacedProperty nsProperty;
 
-	/**
-	 * Regex pattern used to identify a namespace string.
-	 */
-	private static final Pattern namespaceDisplayPattern = Pattern
-			.compile("xmlns:([^=]++)=.*+");
+    /**
+     * Namespaces collected.
+     */
+    private Map<String, String> collectedNamespaces;
 
-	/**
-	 * Status indicating whether this dialog was saved or cancelled.
-	 */
-	private boolean saved;
-	
-	/**
-	 * Status indicating whether the XPath is dynamic.
-	 */
-	private boolean isDynamicXPath;
+    /**
+     * Format string used for displaying namespaces.
+     */
+    private static final String namespaceDisplayFormat = "xmlns:%s=\"%s\"";
 
+    /**
+     * Regex pattern used to identify a namespace string.
+     */
+    private static final Pattern namespaceDisplayPattern = Pattern.compile("xmlns:([^=]++)=.*+");
 
-	/**
-	 * Constructs a new dialog.
-	 * 
-	 * @param parent
-	 *            parent shell.
-	 * @param style
-	 *            style.
-	 * @param property
-	 *            namespaced property to be manipulated.
-	 */
-	public NamespacedPropertyEditorDialog(Shell parent,
-			NamespacedProperty property) {
-		super(parent);
-		this.nsProperty = property;
-		this.collectedNamespaces = new HashMap<String, String>();
-		this.showDynamicXPathOption = property.isSupportsDynamicXPaths();
-	}
+    /**
+     * Status indicating whether this dialog was saved or cancelled.
+     */
+    private boolean saved;
 
-	// /**
-	// * Main function used for testing purposes.
-	// *
-	// * @param args arguments.
-	// */
-	// public static void main(String[] args) {
-	// Display display = Display.getDefault();
-	// Shell shell = new Shell(display);
-	// NamespacedPropertyEditorDialog dialog = new
-	// NamespacedPropertyEditorDialog(shell, SWT.NULL,
-	// EsbFactory.eINSTANCE.createNamespacedProperty());
-	// dialog.open();
-	// }
+    /**
+     * Status indicating whether the XPath is dynamic.
+     */
+    private boolean isDynamicXPath;
 
-	/**
-	 * Creates ui components and opens the dialog.
-	 */
-	public void open() {
-		Shell parentShell = getParent();
-		dialogShell = new Shell(parentShell, SWT.DIALOG_TRIM
-				| SWT.APPLICATION_MODAL);
+    /**
+     * Constructs a new dialog.
+     * 
+     * @param parent
+     *            parent shell.
+     * @param style
+     *            style.
+     * @param property
+     *            namespaced property to be manipulated.
+     */
+    public NamespacedPropertyEditorDialog(Shell parent, NamespacedProperty property) {
+        super(parent);
+        this.nsProperty = property;
+        this.collectedNamespaces = new HashMap<String, String>();
+        this.showDynamicXPathOption = property.isSupportsDynamicXPaths();
+    }
 
-		// Configure dialog shell internal layout.
-		FormLayout dialogShellLayout = new FormLayout();
-		dialogShellLayout.marginHeight = 5;
-		dialogShellLayout.marginWidth = 5;
-		dialogShell.setLayout(dialogShellLayout);
+    // /**
+    // * Main function used for testing purposes.
+    // *
+    // * @param args arguments.
+    // */
+    // public static void main(String[] args) {
+    // Display display = Display.getDefault();
+    // Shell shell = new Shell(display);
+    // NamespacedPropertyEditorDialog dialog = new
+    // NamespacedPropertyEditorDialog(shell, SWT.NULL,
+    // EsbFactory.eINSTANCE.createNamespacedProperty());
+    // dialog.open();
+    // }
 
-		// Construct and layout property edit box.
-		propertyGroupBox = new Group(dialogShell, SWT.NONE);
-		{
-			propertyGroupBox.setText("Property");
-			FormData groupBoxLayoutData = new FormData();
-			groupBoxLayoutData.top = new FormAttachment(0);
-			groupBoxLayoutData.left = new FormAttachment(0);
-			groupBoxLayoutData.right = new FormAttachment(100);
-			propertyGroupBox.setLayoutData(groupBoxLayoutData);
+    /**
+     * Creates ui components and opens the dialog.
+     */
+    public void open() {
+        Shell parentShell = getParent();
+        dialogShell = new Shell(parentShell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
 
-			// Configure group box internal layout.
-			FormLayout groupBoxLayout = new FormLayout();
-			groupBoxLayout.marginWidth = 5;
-			groupBoxLayout.marginHeight = 5;
-			propertyGroupBox.setLayout(groupBoxLayout);
+        // Configure dialog shell internal layout.
+        FormLayout dialogShellLayout = new FormLayout();
+        dialogShellLayout.marginHeight = 5;
+        dialogShellLayout.marginWidth = 5;
+        dialogShell.setLayout(dialogShellLayout);
 
-			// Xpath editor launch button.
-			selectXpathButton = new Button(propertyGroupBox, SWT.NONE);
-			selectXpathButton.setText("Select XPath");
-			FormData selectXpathButtonLayoutData = new FormData();
-			selectXpathButtonLayoutData.right = new FormAttachment(100);
-			selectXpathButtonLayoutData.top = new FormAttachment(0);
-			selectXpathButton.setLayoutData(selectXpathButtonLayoutData);
+        // Construct and layout property edit box.
+        propertyGroupBox = new Group(dialogShell, SWT.NONE);
+        {
+            propertyGroupBox.setText("Property");
+            FormData groupBoxLayoutData = new FormData();
+            groupBoxLayoutData.top = new FormAttachment(0);
+            groupBoxLayoutData.left = new FormAttachment(0);
+            groupBoxLayoutData.right = new FormAttachment(100);
+            propertyGroupBox.setLayoutData(groupBoxLayoutData);
 
-			// Property editor text field.
-			propertyTextField = new Text(propertyGroupBox, SWT.BORDER);
-			FormData textFieldLayoutData = new FormData();
-			textFieldLayoutData.right = new FormAttachment(selectXpathButton, -5);
-			textFieldLayoutData.top = new FormAttachment(selectXpathButton, 0, SWT.CENTER);
-			textFieldLayoutData.left = new FormAttachment(0);
-			propertyTextField.setLayoutData(textFieldLayoutData);
-				
-			if (showDynamicXPathOption) {
-				// XPath dynamic option 
-				chkDynamicXPath = new Button(propertyGroupBox, SWT.CHECK);
-				chkDynamicXPath.setText("Dynamic");
-				FormData chekboxLayoutData = new FormData();
-				chekboxLayoutData.top = new FormAttachment(propertyTextField, 4, SWT.BOTTOM);
-				chekboxLayoutData.left = new FormAttachment(propertyTextField, 0, SWT.LEFT);
-				chkDynamicXPath.setLayoutData(chekboxLayoutData);
-				
-				chkDynamicXPath.addListener(SWT.Selection, new Listener() {
-					public void handleEvent(Event event) {
-						isDynamicXPath = chkDynamicXPath.getSelection();
-					}
-				});
-			
-				// XPath dynamic option description
-				lblDynamicDescription = new Label(propertyGroupBox, SWT.CENTER);
-				lblDynamicDescription.setText(dynamicXpathDescriptionText);
-				FormData lableLayoutData = new FormData();
-				lableLayoutData.top = new FormAttachment(propertyTextField, 8, SWT.BOTTOM);
-				lableLayoutData.left = new FormAttachment(chkDynamicXPath, 6, SWT.RIGHT);
-				lblDynamicDescription.setLayoutData(lableLayoutData);
-			}
-		}
+            // Configure group box internal layout.
+            FormLayout groupBoxLayout = new FormLayout();
+            groupBoxLayout.marginWidth = 5;
+            groupBoxLayout.marginHeight = 5;
+            propertyGroupBox.setLayout(groupBoxLayout);
 
-		// OK button.
-		okButton = new Button(dialogShell, SWT.NONE);
-		{
-			okButton.setText("OK");
-			FormData okButtonLayoutData = new FormData();
-			okButtonLayoutData.right = new FormAttachment(100);
-			okButtonLayoutData.bottom = new FormAttachment(100);
-			okButtonLayoutData.width = 80;
-			okButton.setLayoutData(okButtonLayoutData);
-		}
+            // Xpath editor launch button.
+            selectXpathButton = new Button(propertyGroupBox, SWT.NONE);
+            selectXpathButton.setText("Select XPath");
+            FormData selectXpathButtonLayoutData = new FormData();
+            selectXpathButtonLayoutData.right = new FormAttachment(100);
+            selectXpathButtonLayoutData.top = new FormAttachment(0);
+            selectXpathButton.setLayoutData(selectXpathButtonLayoutData);
 
-		// Cancel button.
-		cancelButton = new Button(dialogShell, SWT.NONE);
-		{
-			cancelButton.setText("Cancel");
-			FormData cancelButtonLayoutData = new FormData();
-			cancelButtonLayoutData.top = new FormAttachment(okButton, 0,
-					SWT.CENTER);
-			cancelButtonLayoutData.right = new FormAttachment(okButton, -5);
-			cancelButtonLayoutData.width = 80;
-			cancelButton.setLayoutData(cancelButtonLayoutData);
-		}
+            // Property editor text field.
+            propertyTextField = new Text(propertyGroupBox, SWT.BORDER);
+            FormData textFieldLayoutData = new FormData();
+            textFieldLayoutData.right = new FormAttachment(selectXpathButton, -5);
+            textFieldLayoutData.top = new FormAttachment(selectXpathButton, 0, SWT.CENTER);
+            textFieldLayoutData.left = new FormAttachment(0);
+            propertyTextField.setLayoutData(textFieldLayoutData);
 
-		// Construct and layout namespace edit box.
-		namespacesGroupBox = new Group(dialogShell, SWT.NONE);
-		{
-			namespacesGroupBox.setText("Namespaces");
-			FormData groupBoxLayoutData = new FormData();
-			groupBoxLayoutData.top = new FormAttachment(propertyGroupBox, 5);
-			groupBoxLayoutData.left = new FormAttachment(0);
-			groupBoxLayoutData.right = new FormAttachment(100);
-			groupBoxLayoutData.bottom = new FormAttachment(okButton, -10);
-			namespacesGroupBox.setLayoutData(groupBoxLayoutData);
+            if (showDynamicXPathOption) {
+                // XPath dynamic option
+                chkDynamicXPath = new Button(propertyGroupBox, SWT.CHECK);
+                chkDynamicXPath.setText("Dynamic");
+                FormData chekboxLayoutData = new FormData();
+                chekboxLayoutData.top = new FormAttachment(propertyTextField, 4, SWT.BOTTOM);
+                chekboxLayoutData.left = new FormAttachment(propertyTextField, 0, SWT.LEFT);
+                chkDynamicXPath.setLayoutData(chekboxLayoutData);
 
-			// Configure group box internal layout.
-			FormLayout groupBoxLayout = new FormLayout();
-			groupBoxLayout.marginWidth = 5;
-			groupBoxLayout.marginHeight = 5;
-			namespacesGroupBox.setLayout(groupBoxLayout);
+                chkDynamicXPath.addListener(SWT.Selection, new Listener() {
+                    public void handleEvent(Event event) {
+                        isDynamicXPath = chkDynamicXPath.getSelection();
+                    }
+                });
 
-			// Namespace prefix label.
-			nsPrefixLabel = new Label(namespacesGroupBox, SWT.NONE);
-			{
-				nsPrefixLabel.setText("Prefix:");
-				FormData nsPrefixLabelLayoutData = new FormData();
-				nsPrefixLabelLayoutData.top = new FormAttachment(0);
-				nsPrefixLabelLayoutData.left = new FormAttachment(0);
-				nsPrefixLabel.setLayoutData(nsPrefixLabelLayoutData);
-			}
+                // XPath dynamic option description
+                lblDynamicDescription = new Label(propertyGroupBox, SWT.CENTER);
+                lblDynamicDescription.setText(dynamicXpathDescriptionText);
+                FormData lableLayoutData = new FormData();
+                lableLayoutData.top = new FormAttachment(propertyTextField, 8, SWT.BOTTOM);
+                lableLayoutData.left = new FormAttachment(chkDynamicXPath, 6, SWT.RIGHT);
+                lblDynamicDescription.setLayoutData(lableLayoutData);
+            }
+        }
 
-			// Namespace prefix text field.
-			nsPrefixTextField = new Text(namespacesGroupBox, SWT.BORDER);
-			{
-				FormData nsPrefixTextFieldLayoutData = new FormData();
-				nsPrefixTextFieldLayoutData.top = new FormAttachment(
-						nsPrefixLabel, 0, SWT.CENTER);
-				nsPrefixTextFieldLayoutData.left = new FormAttachment(
-						nsPrefixLabel, 5);
-				nsPrefixTextFieldLayoutData.width = 100;
-				nsPrefixTextField.setLayoutData(nsPrefixTextFieldLayoutData);
-			}
+        // OK button.
+        okButton = new Button(dialogShell, SWT.NONE);
+        {
+            okButton.setText("OK");
+            FormData okButtonLayoutData = new FormData();
+            okButtonLayoutData.right = new FormAttachment(100);
+            okButtonLayoutData.bottom = new FormAttachment(100);
+            okButtonLayoutData.width = 80;
+            okButton.setLayoutData(okButtonLayoutData);
+        }
 
-			// Namespace URI label.
-			nsUriLabel = new Label(namespacesGroupBox, SWT.NONE);
-			{
-				nsUriLabel.setText("URI:");
-				FormData nsUriLabelLayoutData = new FormData();
-				nsUriLabelLayoutData.top = new FormAttachment(
-						nsPrefixTextField, 0, SWT.CENTER);
-				nsUriLabelLayoutData.left = new FormAttachment(
-						nsPrefixTextField, 5);
-				nsUriLabel.setLayoutData(nsUriLabelLayoutData);
-			}
+        // Cancel button.
+        cancelButton = new Button(dialogShell, SWT.NONE);
+        {
+            cancelButton.setText("Cancel");
+            FormData cancelButtonLayoutData = new FormData();
+            cancelButtonLayoutData.top = new FormAttachment(okButton, 0, SWT.CENTER);
+            cancelButtonLayoutData.right = new FormAttachment(okButton, -5);
+            cancelButtonLayoutData.width = 80;
+            cancelButton.setLayoutData(cancelButtonLayoutData);
+        }
 
-			// Add namespace button.
-			addButton = new Button(namespacesGroupBox, SWT.NONE);
-			{
-				addButton.setText("Add");
-				FormData addButtonLayoutData = new FormData();
-				addButtonLayoutData.top = new FormAttachment(nsUriLabel, 0,
-						SWT.CENTER);
-				addButtonLayoutData.right = new FormAttachment(100);
-				addButtonLayoutData.width = 80;
-				addButton.setLayoutData(addButtonLayoutData);
-			}
+        // Construct and layout namespace edit box.
+        namespacesGroupBox = new Group(dialogShell, SWT.NONE);
+        {
+            namespacesGroupBox.setText("Namespaces");
+            FormData groupBoxLayoutData = new FormData();
+            groupBoxLayoutData.top = new FormAttachment(propertyGroupBox, 5);
+            groupBoxLayoutData.left = new FormAttachment(0);
+            groupBoxLayoutData.right = new FormAttachment(100);
+            groupBoxLayoutData.bottom = new FormAttachment(okButton, -10);
+            namespacesGroupBox.setLayoutData(groupBoxLayoutData);
 
-			// Namespace URI input text field.
-			nsUriTextField = new Text(namespacesGroupBox, SWT.BORDER);
-			{
-				FormData nsUriTextFieldLayoutData = new FormData();
-				nsUriTextFieldLayoutData.top = new FormAttachment(nsUriLabel,
-						0, SWT.CENTER);
-				nsUriTextFieldLayoutData.left = new FormAttachment(nsUriLabel,
-						5);
-				nsUriTextFieldLayoutData.right = new FormAttachment(addButton,
-						-5);
-				nsUriTextField.setLayoutData(nsUriTextFieldLayoutData);
-			}
+            // Configure group box internal layout.
+            FormLayout groupBoxLayout = new FormLayout();
+            groupBoxLayout.marginWidth = 5;
+            groupBoxLayout.marginHeight = 5;
+            namespacesGroupBox.setLayout(groupBoxLayout);
 
-			// Edit namespace button.
-			editButton = new Button(namespacesGroupBox, SWT.NONE);
-			{
-				editButton.setText("Edit");
-				FormData editButtonLayoutData = new FormData();
-				editButtonLayoutData.top = new FormAttachment(addButton, 10);
-				editButtonLayoutData.right = new FormAttachment(100);
-				editButtonLayoutData.left = new FormAttachment(addButton, 0,
-						SWT.LEFT);
-				editButton.setLayoutData(editButtonLayoutData);
-			}
+            // Namespace prefix label.
+            nsPrefixLabel = new Label(namespacesGroupBox, SWT.NONE);
+            {
+                nsPrefixLabel.setText("Prefix:");
+                FormData nsPrefixLabelLayoutData = new FormData();
+                nsPrefixLabelLayoutData.top = new FormAttachment(0);
+                nsPrefixLabelLayoutData.left = new FormAttachment(0);
+                nsPrefixLabel.setLayoutData(nsPrefixLabelLayoutData);
+            }
 
-			// Remove namespace button.
-			removeButton = new Button(namespacesGroupBox, SWT.NONE);
-			{
-				removeButton.setText("Remove");
-				FormData removeButtonLayoutData = new FormData();
-				removeButtonLayoutData.top = new FormAttachment(editButton, 5);
-				removeButtonLayoutData.right = new FormAttachment(100);
-				removeButtonLayoutData.left = new FormAttachment(editButton, 0,
-						SWT.LEFT);
-				removeButton.setLayoutData(removeButtonLayoutData);
-			}
+            // Namespace prefix text field.
+            nsPrefixTextField = new Text(namespacesGroupBox, SWT.BORDER);
+            {
+                FormData nsPrefixTextFieldLayoutData = new FormData();
+                nsPrefixTextFieldLayoutData.top = new FormAttachment(nsPrefixLabel, 0, SWT.CENTER);
+                nsPrefixTextFieldLayoutData.left = new FormAttachment(nsPrefixLabel, 5);
+                nsPrefixTextFieldLayoutData.width = 100;
+                nsPrefixTextField.setLayoutData(nsPrefixTextFieldLayoutData);
+            }
 
-			// Namespaces list box.
-			nsListBox = new List(namespacesGroupBox, SWT.BORDER);
-			{
-				FormData nsListBoxFormData = new FormData();
-				nsListBoxFormData.top = new FormAttachment(editButton, 0,
-						SWT.TOP);
-				nsListBoxFormData.left = new FormAttachment(0);
-				nsListBoxFormData.right = new FormAttachment(addButton, -5);
-				nsListBoxFormData.bottom = new FormAttachment(100);
-				nsListBox.setLayoutData(nsListBoxFormData);
-			}
-		}
+            // Namespace URI label.
+            nsUriLabel = new Label(namespacesGroupBox, SWT.NONE);
+            {
+                nsUriLabel.setText("URI:");
+                FormData nsUriLabelLayoutData = new FormData();
+                nsUriLabelLayoutData.top = new FormAttachment(nsPrefixTextField, 0, SWT.CENTER);
+                nsUriLabelLayoutData.left = new FormAttachment(nsPrefixTextField, 5);
+                nsUriLabel.setLayoutData(nsUriLabelLayoutData);
+            }
 
-		loadConfiguration();
-		initActions();
-		setTabOrder();
+            // Add namespace button.
+            addButton = new Button(namespacesGroupBox, SWT.NONE);
+            {
+                addButton.setText("Add");
+                FormData addButtonLayoutData = new FormData();
+                addButtonLayoutData.top = new FormAttachment(nsUriLabel, 0, SWT.CENTER);
+                addButtonLayoutData.right = new FormAttachment(100);
+                addButtonLayoutData.width = 80;
+                addButton.setLayoutData(addButtonLayoutData);
+            }
 
-		// Open dialog.
-		dialogShell.layout();
-		dialogShell.pack();
-		dialogShell.setSize(640, 415);
-		centerDialog();
-		dialogShell.open();
-		Display display = dialogShell.getDisplay();
-		while (!dialogShell.isDisposed()) {
-			if (!display.readAndDispatch())
-				display.sleep();
-		}
-	}
+            // Namespace URI input text field.
+            nsUriTextField = new Text(namespacesGroupBox, SWT.BORDER);
+            {
+                FormData nsUriTextFieldLayoutData = new FormData();
+                nsUriTextFieldLayoutData.top = new FormAttachment(nsUriLabel, 0, SWT.CENTER);
+                nsUriTextFieldLayoutData.left = new FormAttachment(nsUriLabel, 5);
+                nsUriTextFieldLayoutData.right = new FormAttachment(addButton, -5);
+                nsUriTextField.setLayoutData(nsUriTextFieldLayoutData);
+            }
 
-	private void loadConfiguration() {
-		dialogShell.setText(String.format("Namespaced Property Editor",
-				nsProperty.getPrettyName()));
-		propertyGroupBox.setText(nsProperty.getPrettyName());
-		String xpath = nsProperty.getPropertyValue();
-		if (xpath != null) {
-			if (showDynamicXPathOption){
-				isDynamicXPath = nsProperty.isDynamic();
-				chkDynamicXPath.setSelection(isDynamicXPath);
-			}
-			propertyTextField.setText(xpath);
-		}
+            // Edit namespace button.
+            editButton = new Button(namespacesGroupBox, SWT.NONE);
+            {
+                editButton.setText("Edit");
+                FormData editButtonLayoutData = new FormData();
+                editButtonLayoutData.top = new FormAttachment(addButton, 10);
+                editButtonLayoutData.right = new FormAttachment(100);
+                editButtonLayoutData.left = new FormAttachment(addButton, 0, SWT.LEFT);
+                editButton.setLayoutData(editButtonLayoutData);
+            }
 
-		for (Entry<String, String> nsEntry : nsProperty.getNamespaces().entrySet()) {
-			addNamespace(nsEntry.getKey(), nsEntry.getValue());
-		}
-	}
+            // Remove namespace button.
+            removeButton = new Button(namespacesGroupBox, SWT.NONE);
+            {
+                removeButton.setText("Remove");
+                FormData removeButtonLayoutData = new FormData();
+                removeButtonLayoutData.top = new FormAttachment(editButton, 5);
+                removeButtonLayoutData.right = new FormAttachment(100);
+                removeButtonLayoutData.left = new FormAttachment(editButton, 0, SWT.LEFT);
+                removeButton.setLayoutData(removeButtonLayoutData);
+            }
 
-	private void initActions() {
-		selectXpathButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				XPathSelectorDialog xpathEditorDialog = new XPathSelectorDialog(
-						dialogShell);
-				xpathEditorDialog.open();
-				if (xpathEditorDialog.getSelectedXpath() != null) {
-					propertyTextField.setText(xpathEditorDialog
-							.getSelectedXpath());
-					collectedNamespaces.clear();
-					nsListBox.removeAll();
-					for (Entry<String, String> nsEntry: xpathEditorDialog.getNameSpaces().entrySet()) {
-						addNamespace(nsEntry.getKey(), nsEntry.getValue());
-					}
-				}
-			}
-		});
+            // Namespaces list box.
+            nsListBox = new List(namespacesGroupBox, SWT.BORDER);
+            {
+                FormData nsListBoxFormData = new FormData();
+                nsListBoxFormData.top = new FormAttachment(editButton, 0, SWT.TOP);
+                nsListBoxFormData.left = new FormAttachment(0);
+                nsListBoxFormData.right = new FormAttachment(addButton, -5);
+                nsListBoxFormData.bottom = new FormAttachment(100);
+                nsListBox.setLayoutData(nsListBoxFormData);
+            }
+        }
 
-		addButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				String prefix = nsPrefixTextField.getText();
-				String uri = nsUriTextField.getText();
-				if (isValidNamespace(prefix, uri)) {
-					addNamespace(prefix, uri);
-					nsPrefixTextField.setText("");
-					nsUriTextField.setText("");
-					nsPrefixTextField.setFocus();
-				} else {
-					// TODO: Report invalid namespace here.
-				}
-			}
-		});
+        loadConfiguration();
+        initActions();
+        setTabOrder();
 
-		removeButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				for (String selection : nsListBox.getSelection()) {
-					removeNamespace(selection);
-				}
-			}
-		});
+        // Open dialog.
+        dialogShell.layout();
+        dialogShell.pack();
+        dialogShell.setSize(640, 415);
+        centerDialog();
+        dialogShell.open();
+        Display display = dialogShell.getDisplay();
+        while (!dialogShell.isDisposed()) {
+            if (!display.readAndDispatch())
+                display.sleep();
+        }
+    }
 
-		editButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				String[] selection = nsListBox.getSelection();
-				if (selection.length > 0) {
-					String selectedNamespace = selection[0];
-					String prefix = extractPrefix(selectedNamespace);
-					String uri = collectedNamespaces.get(prefix);
-					if (null != uri) {
-						collectedNamespaces.remove(prefix);
-						nsPrefixTextField.setText(prefix);
-						nsUriTextField.setText(uri);
-						nsPrefixTextField.setFocus();
-					}
-					nsListBox.remove(selectedNamespace);
-				}
-			}
-		});
+    private void loadConfiguration() {
+        dialogShell.setText(String.format("Namespaced Property Editor", nsProperty.getPrettyName()));
+        propertyGroupBox.setText(nsProperty.getPrettyName());
+        String xpath = nsProperty.getPropertyValue();
+        if (xpath != null) {
+            if (showDynamicXPathOption) {
+                isDynamicXPath = nsProperty.isDynamic();
+                chkDynamicXPath.setSelection(isDynamicXPath);
+            }
+            propertyTextField.setText(xpath);
+        }
 
-		okButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				try {
-					saveConfiguration();
-					setSaved(true);
-				} catch (Exception ex) {
-					// TODO: Report validation error here.
-				}
-				dialogShell.dispose();
-			}
-		});
+        for (Entry<String, String> nsEntry : nsProperty.getNamespaces().entrySet()) {
+            addNamespace(nsEntry.getKey(), nsEntry.getValue());
+        }
+    }
 
-		cancelButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				setSaved(false);
-				dialogShell.dispose();
-			}
-		});
-	}
+    private void initActions() {
+        selectXpathButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                XPathSelectorDialog xpathEditorDialog = new XPathSelectorDialog(dialogShell);
+                xpathEditorDialog.open();
+                if (xpathEditorDialog.getSelectedXpath() != null) {
+                    propertyTextField.setText(xpathEditorDialog.getSelectedXpath());
+                    collectedNamespaces.clear();
+                    nsListBox.removeAll();
+                    for (Entry<String, String> nsEntry : xpathEditorDialog.getNameSpaces().entrySet()) {
+                        addNamespace(nsEntry.getKey(), nsEntry.getValue());
+                    }
+                }
+            }
+        });
 
-	private boolean isValidNamespace(String prefix, String uri) {
-		// TODO: Perform proper validation here.
-		if (prefix == null || uri == null
-				|| collectedNamespaces.containsKey(prefix)) {
-			return false;
-		} else if (prefix.isEmpty() || uri.isEmpty()) {
-			return false;
-		}
-		return true;
-	}
+        addButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                String prefix = nsPrefixTextField.getText();
+                String uri = nsUriTextField.getText();
+                if (isValidNamespace(prefix, uri)) {
+                    addNamespace(prefix, uri);
+                    nsPrefixTextField.setText("");
+                    nsUriTextField.setText("");
+                    nsPrefixTextField.setFocus();
+                } else {
+                    // TODO: Report invalid namespace here.
+                }
+            }
+        });
 
-	private void addNamespace(String prefix, String uri) {
-		collectedNamespaces.put(prefix, uri);
-		String namespaceDisplayValue = String.format(namespaceDisplayFormat,
-				prefix, uri);
-		nsListBox.add(namespaceDisplayValue);
-	}
+        removeButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                for (String selection : nsListBox.getSelection()) {
+                    removeNamespace(selection);
+                }
+            }
+        });
 
-	private void removeNamespace(String namespace) {
-		nsListBox.remove(namespace);
-		String prefix = extractPrefix(namespace);
-		if (prefix != null && !prefix.isEmpty()) {
-			collectedNamespaces.remove(prefix);
-		}
-	}
+        editButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                String[] selection = nsListBox.getSelection();
+                if (selection.length > 0) {
+                    String selectedNamespace = selection[0];
+                    String prefix = extractPrefix(selectedNamespace);
+                    String uri = collectedNamespaces.get(prefix);
+                    if (null != uri) {
+                        collectedNamespaces.remove(prefix);
+                        nsPrefixTextField.setText(prefix);
+                        nsUriTextField.setText(uri);
+                        nsPrefixTextField.setFocus();
+                    }
+                    nsListBox.remove(selectedNamespace);
+                }
+            }
+        });
 
-	private String extractPrefix(String namespace) {
-		Matcher matcher = namespaceDisplayPattern.matcher(namespace);
-		if (matcher.find()) {
-			return matcher.group(1);
-		}
-		return null;
-	}
+        okButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                try {
+                    saveConfiguration();
+                    setSaved(true);
+                } catch (Exception ex) {
+                    // TODO: Report validation error here.
+                }
+                dialogShell.dispose();
+            }
+        });
 
-	private void centerDialog() {
-		Rectangle parentBounds = getParent().getBounds();
-		Rectangle dialogBounds = dialogShell.getBounds();
-		int centerX, centerY;
-		centerX = (parentBounds.width - dialogBounds.width) / 2
-				+ parentBounds.x;
-		centerY = (parentBounds.height - dialogBounds.height) / 2
-				+ parentBounds.y;
-		dialogShell.setLocation(new Point(centerX, centerY));
-	}
+        cancelButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                setSaved(false);
+                dialogShell.dispose();
+            }
+        });
+    }
 
-	private void setTabOrder() {
-		Control[] tabOrder = new Control[] { propertyTextField,
-				selectXpathButton };
-		propertyGroupBox.setTabList(tabOrder);
+    private boolean isValidNamespace(String prefix, String uri) {
+        // TODO: Perform proper validation here.
+        if (prefix == null || uri == null || collectedNamespaces.containsKey(prefix)) {
+            return false;
+        } else if (prefix.isEmpty() || uri.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 
-		tabOrder = new Control[] { nsPrefixTextField, nsUriTextField, addButton };
-		namespacesGroupBox.setTabList(tabOrder);
+    private void addNamespace(String prefix, String uri) {
+        collectedNamespaces.put(prefix, uri);
+        String namespaceDisplayValue = String.format(namespaceDisplayFormat, prefix, uri);
+        nsListBox.add(namespaceDisplayValue);
+    }
 
-		tabOrder = new Control[] { propertyGroupBox, namespacesGroupBox,
-				okButton };
-		dialogShell.setTabList(tabOrder);
-	}
+    private void removeNamespace(String namespace) {
+        nsListBox.remove(namespace);
+        String prefix = extractPrefix(namespace);
+        if (prefix != null && !prefix.isEmpty()) {
+            collectedNamespaces.remove(prefix);
+        }
+    }
 
-	private void saveConfiguration() throws Exception {
-		nsProperty.setPropertyValue(propertyTextField.getText());
-		nsProperty.getNamespaces().clear();
-		nsProperty.getNamespaces().putAll(collectedNamespaces);
-		nsProperty.setDynamic(isDynamicXPath);
-	}
+    private String extractPrefix(String namespace) {
+        Matcher matcher = namespaceDisplayPattern.matcher(namespace);
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+        return null;
+    }
 
-	private void setSaved(boolean saved) {
-		this.saved = saved;
-	}
+    private void centerDialog() {
+        Rectangle parentBounds = getParent().getBounds();
+        Rectangle dialogBounds = dialogShell.getBounds();
+        int centerX, centerY;
+        centerX = (parentBounds.width - dialogBounds.width) / 2 + parentBounds.x;
+        centerY = (parentBounds.height - dialogBounds.height) / 2 + parentBounds.y;
+        dialogShell.setLocation(new Point(centerX, centerY));
+    }
 
-	public boolean isSaved() {
-		return saved;
-	}
+    private void setTabOrder() {
+        Control[] tabOrder = new Control[] { propertyTextField, selectXpathButton };
+        propertyGroupBox.setTabList(tabOrder);
+
+        tabOrder = new Control[] { nsPrefixTextField, nsUriTextField, addButton };
+        namespacesGroupBox.setTabList(tabOrder);
+
+        tabOrder = new Control[] { propertyGroupBox, namespacesGroupBox, okButton };
+        dialogShell.setTabList(tabOrder);
+    }
+
+    private void saveConfiguration() throws Exception {
+        nsProperty.setPropertyValue(propertyTextField.getText());
+        nsProperty.getNamespaces().clear();
+        nsProperty.getNamespaces().putAll(collectedNamespaces);
+        nsProperty.setDynamic(isDynamicXPath);
+    }
+
+    private void setSaved(boolean saved) {
+        this.saved = saved;
+    }
+
+    public boolean isSaved() {
+        return saved;
+    }
 }

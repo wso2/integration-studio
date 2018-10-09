@@ -31,18 +31,6 @@ import org.wso2.carbon.mediator.bam.config.stream.StreamConfiguration;
 public class BamMediatorExtFactory extends AbstractMediatorFactory {
 
 	public static final QName BAM_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "bam");
-	
-	private static BamMediatorExtFactory instance;
-	
-	private BamMediatorExtFactory() {
-	}
-	
-	public static synchronized BamMediatorExtFactory getInstance() {
-	    if (instance == null) {
-	        instance = new BamMediatorExtFactory();
-	    }
-	    return instance;
-	}
 
 	public Mediator createSpecificMediator(OMElement omElement, Properties properties) {
 		

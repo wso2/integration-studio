@@ -34,7 +34,19 @@ import org.apache.synapse.mediators.eip.aggregator.AggregateMediator;
 import org.jaxen.JaxenException;
 
 public class AggregateMediatorExtFactory extends AggregateMediatorFactory {
+    
+    private static AggregateMediatorExtFactory instance;
+    
+    private AggregateMediatorExtFactory() {
+    }
 
+    public static synchronized AggregateMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new AggregateMediatorExtFactory();
+        }
+        return instance;
+    }
+    
     protected Mediator createSpecificMediator(OMElement omElement) {
 	Mediator mediator = new AggregateMediator();
 

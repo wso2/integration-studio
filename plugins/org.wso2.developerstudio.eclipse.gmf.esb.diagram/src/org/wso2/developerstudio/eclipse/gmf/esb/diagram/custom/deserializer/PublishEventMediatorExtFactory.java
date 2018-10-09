@@ -35,6 +35,18 @@ import org.wso2.carbon.mediator.publishevent.PublishEventMediator;
 import org.wso2.carbon.mediator.publishevent.PublishEventMediatorFactory;
 
 public class PublishEventMediatorExtFactory extends PublishEventMediatorFactory {
+    
+    private static PublishEventMediatorExtFactory instance;
+    
+    private PublishEventMediatorExtFactory() {
+    }
+    
+    public static synchronized PublishEventMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new PublishEventMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

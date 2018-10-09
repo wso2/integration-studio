@@ -36,6 +36,18 @@ import org.apache.synapse.mediators.transform.XSLTMediator;
 import org.jaxen.JaxenException;
 
 public class XSLTMediatorExtFactory extends XSLTMediatorFactory {
+    
+    private static XSLTMediatorExtFactory instance;
+    
+    private XSLTMediatorExtFactory() {
+    }
+    
+    public static synchronized XSLTMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new XSLTMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

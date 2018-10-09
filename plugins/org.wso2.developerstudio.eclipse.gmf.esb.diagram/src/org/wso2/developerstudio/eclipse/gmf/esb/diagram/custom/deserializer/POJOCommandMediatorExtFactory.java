@@ -29,17 +29,6 @@ import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
 
 public class POJOCommandMediatorExtFactory extends POJOCommandMediatorFactory {
-    private static POJOCommandMediatorExtFactory instance;
-
-    private POJOCommandMediatorExtFactory() {
-    }
-
-    public static synchronized POJOCommandMediatorExtFactory getInstance() {
-        if (instance == null) {
-            instance = new POJOCommandMediatorExtFactory();
-        }
-        return instance;
-    }
 
     public Mediator createSpecificMediator(OMElement elem, Properties properties) {
         POJOCommandMediatorExt pojoMediator = null;

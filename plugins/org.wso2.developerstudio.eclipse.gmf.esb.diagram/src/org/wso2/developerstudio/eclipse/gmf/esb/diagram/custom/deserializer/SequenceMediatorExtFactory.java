@@ -29,6 +29,18 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 
 public class SequenceMediatorExtFactory extends SequenceMediatorFactory {
+    
+    private static SequenceMediatorExtFactory instance;
+    
+    private SequenceMediatorExtFactory() {
+    }
+    
+    public static synchronized SequenceMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new SequenceMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

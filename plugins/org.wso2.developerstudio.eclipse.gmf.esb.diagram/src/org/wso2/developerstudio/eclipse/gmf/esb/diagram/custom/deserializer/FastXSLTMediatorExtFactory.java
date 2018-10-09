@@ -28,6 +28,18 @@ import org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator;
 import org.wso2.carbon.mediator.fastXSLT.config.xml.FastXSLTMediatorFactory;
 
 public class FastXSLTMediatorExtFactory extends FastXSLTMediatorFactory {
+    
+    private static FastXSLTMediatorExtFactory instance;
+    
+    private FastXSLTMediatorExtFactory() {
+    }
+    
+    public static synchronized FastXSLTMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new FastXSLTMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

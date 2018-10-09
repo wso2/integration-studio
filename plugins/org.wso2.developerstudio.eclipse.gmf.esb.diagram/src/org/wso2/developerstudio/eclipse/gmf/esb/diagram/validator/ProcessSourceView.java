@@ -187,6 +187,11 @@ public class ProcessSourceView {
     private static RuleMediatorFactory ruleMediatorFactory;
     private static PublishEventMediatorFactory publishEventMediatorFactory;
     private static ClassMediatorExtFactory classMediatorExtFactory;
+    private static BeanMediatorExtFactory beanMediatorExtFactory;
+    private static POJOCommandMediatorExtFactory pojoCommandMediatorExtFactory;
+    private static EJBMediatorExtFactory ejbMediatorExtFactory;
+    private static BuilderMediatorExtFactory builderMediatorExtFactory;
+    private static BamMediatorExtFactory bamMediatorExtFactory;
 
     public ProcessSourceView() {
 
@@ -958,8 +963,10 @@ public class ProcessSourceView {
                 conditionalRouterMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("bean")) {
-                BeanMediatorExtFactory factory = BeanMediatorExtFactory.getInstance();
-                factory.createMediator(omElement, null);
+                if (beanMediatorExtFactory == null) {
+                    beanMediatorExtFactory = new BeanMediatorExtFactory();
+                }
+                beanMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("class")) {
                 if (classMediatorExtFactory == null) {
@@ -968,12 +975,16 @@ public class ProcessSourceView {
                 classMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("pojoCommand")) {
-                POJOCommandMediatorExtFactory factory = POJOCommandMediatorExtFactory.getInstance();
-                factory.createMediator(omElement, null);
+                if (pojoCommandMediatorExtFactory == null) {
+                    pojoCommandMediatorExtFactory = new POJOCommandMediatorExtFactory();
+                }
+                pojoCommandMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("ejb")) {
-                EJBMediatorExtFactory factory = EJBMediatorExtFactory.getInstance();
-                factory.createMediator(omElement, null);
+                if (ejbMediatorExtFactory == null) {
+                    ejbMediatorExtFactory = new EJBMediatorExtFactory();
+                }
+                ejbMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("script")) {
                 Properties properties = new Properties();
@@ -1149,8 +1160,10 @@ public class ProcessSourceView {
                 oAuthMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("builder")) {
-                BuilderMediatorExtFactory factory = BuilderMediatorExtFactory.getInstance();
-                factory.createMediator(omElement, null);
+                if (builderMediatorExtFactory == null) {
+                    builderMediatorExtFactory = new BuilderMediatorExtFactory();
+                }
+                builderMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("rule")) {
                 if (ruleMediatorFactory == null) {
@@ -1159,8 +1172,10 @@ public class ProcessSourceView {
                 ruleMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("bam")) {
-                BamMediatorExtFactory factory = BamMediatorExtFactory.getInstance();
-                factory.createMediator(omElement, null);
+                if (bamMediatorExtFactory == null) {
+                    bamMediatorExtFactory = new BamMediatorExtFactory();
+                }
+                bamMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("publishEvent")) {
                 if (publishEventMediatorFactory == null) {

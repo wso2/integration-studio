@@ -36,6 +36,18 @@ import org.apache.synapse.mediators.filters.SwitchMediator;
 import org.jaxen.JaxenException;
 
 public class SwitchMediatorExtFactory extends SwitchMediatorFactory {
+    
+    private static SwitchMediatorExtFactory instance;
+    
+    private SwitchMediatorExtFactory() {
+    }
+    
+    public static synchronized SwitchMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new SwitchMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

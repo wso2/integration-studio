@@ -32,6 +32,18 @@ import org.wso2.carbon.mediator.transform.SmooksMediator;
 import org.wso2.carbon.mediator.transform.xml.SmooksMediatorFactory;
 
 public class SmooksMediatorExtFactory extends SmooksMediatorFactory {
+    
+    private static SmooksMediatorExtFactory instance;
+    
+    private SmooksMediatorExtFactory() {
+    }
+    
+    public static synchronized SmooksMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new SmooksMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

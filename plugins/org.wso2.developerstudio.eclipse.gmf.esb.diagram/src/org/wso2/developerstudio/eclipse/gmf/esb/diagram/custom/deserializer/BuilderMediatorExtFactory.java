@@ -18,18 +18,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Buil
 
 public class BuilderMediatorExtFactory extends BuilderMediatorFactory {
 
-    private static BuilderMediatorExtFactory instance;
-
-    private BuilderMediatorExtFactory() {
-    }
-
-    public static synchronized BuilderMediatorExtFactory getInstance() {
-        if (instance == null) {
-            instance = new BuilderMediatorExtFactory();
-        }
-        return instance;
-    }
-
     public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
         BuilderMediatorExt builderExt = new BuilderMediatorExt();

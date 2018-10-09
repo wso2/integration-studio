@@ -32,18 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EJBM
 
 public class EJBMediatorExtFactory extends AbstractMediatorFactory {
 
-    private static EJBMediatorExtFactory instance;
-
-    private EJBMediatorExtFactory() {
-    }
-
-    public static synchronized EJBMediatorExtFactory getInstance() {
-        if (instance == null) {
-            instance = new EJBMediatorExtFactory();
-        }
-        return instance;
-    }
-
     private static final QName EJB_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "ejb");
 
     public Mediator createSpecificMediator(OMElement elem, Properties properties) {

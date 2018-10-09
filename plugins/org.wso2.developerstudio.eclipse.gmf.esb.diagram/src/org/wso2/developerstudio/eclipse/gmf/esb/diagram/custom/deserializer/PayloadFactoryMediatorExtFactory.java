@@ -41,6 +41,18 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
 
 public class PayloadFactoryMediatorExtFactory extends PayloadFactoryMediatorFactory {
+    
+    private static PayloadFactoryMediatorExtFactory instance;
+    
+    private PayloadFactoryMediatorExtFactory() {
+    }
+    
+    public static synchronized PayloadFactoryMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new PayloadFactoryMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

@@ -27,6 +27,18 @@ import org.apache.synapse.config.xml.LogMediatorFactory;
 import org.apache.synapse.mediators.builtin.LogMediator;
 
 public class LogMediatorExtFactory extends LogMediatorFactory {
+    
+    private static LogMediatorExtFactory instance;
+    
+    private LogMediatorExtFactory() {
+    }
+    
+    public static synchronized LogMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new LogMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

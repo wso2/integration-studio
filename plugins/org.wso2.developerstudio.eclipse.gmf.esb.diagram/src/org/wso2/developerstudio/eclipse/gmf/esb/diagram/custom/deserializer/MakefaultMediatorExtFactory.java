@@ -35,6 +35,18 @@ import org.apache.synapse.mediators.transform.FaultMediator;
 import org.jaxen.JaxenException;
 
 public class MakefaultMediatorExtFactory extends FaultMediatorFactory {
+    
+    private static MakefaultMediatorExtFactory instance;
+    
+    private MakefaultMediatorExtFactory() {
+    }
+    
+    public static synchronized MakefaultMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new MakefaultMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

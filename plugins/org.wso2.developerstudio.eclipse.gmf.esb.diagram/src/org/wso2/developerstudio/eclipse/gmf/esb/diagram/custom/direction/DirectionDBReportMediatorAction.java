@@ -6,23 +6,22 @@ import org.eclipse.ui.IWorkbenchPart;
 
 public class DirectionDBReportMediatorAction extends DirectionEsbNodeAction {
 
-	EditPart editorPart;
-	
-	public DirectionDBReportMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setText("Reverse");
-		setToolTipText("Set Direction DBReport mediator.");
-		// TODO Auto-generated constructor stub
-	}
+    EditPart editorPart;
 
-	
-	public void setEditorPart(EditPart editorPart_){
-		editorPart=editorPart_;		
-	}
+    public DirectionDBReportMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setText("Reverse");
+        setToolTipText("Set Direction DBReport mediator.");
+        // TODO Auto-generated constructor stub
+    }
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		
-		Reverse(editorPart);
-	}
+    public void setEditorPart(EditPart editorPart_) {
+        editorPart = editorPart_;
+    }
+
+    protected void doRun(IProgressMonitor progressMonitor) {
+
+        Reverse(editorPart);
+    }
 
 }

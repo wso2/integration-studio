@@ -33,126 +33,123 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
-public class IterateMediatorTransformer extends AbstractEsbNodeTransformer{
+public class IterateMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {
-		try {
-			information.getParentSequence().addChild(createIterateMediator(information,subject));
-			/*
-			 *  Transform the property mediator output data flow path.
-			 */
-			doTransform(information,
-					((IterateMediator) subject).getOutputConnector());	
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}	
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createIterateMediator(information, subject));
+            /*
+             * Transform the property mediator output data flow path.
+             */
+            doTransform(information, ((IterateMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		try {
-			sequence.addChild(createIterateMediator(information,subject));
-			doTransformWithinSequence(information,((IterateMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
-	
-	private org.apache.synapse.mediators.eip.splitter.IterateMediator createIterateMediator(TransformationInfo information,EsbNode subject) throws JaxenException, TransformerException{
-		/*
-		 *  Check subject.
-		 */
-		Assert.isTrue(subject instanceof IterateMediator, "Invalid subject.");
-		IterateMediator visualIterate = (IterateMediator) subject;
+    }
 
-		/*
-		 *  Configure Iterate mediator.
-		 */
-		org.apache.synapse.mediators.eip.splitter.IterateMediator iterateMediator = new org.apache.synapse.mediators.eip.splitter.IterateMediator();
-		setCommonProperties(iterateMediator, visualIterate);
-		{	
-			NamespacedProperty iterateExp = visualIterate.getIterateExpression();
-			
-			if(iterateExp != null && !iterateExp.getPropertyValue().equals("")){
-				
-				SynapseXPath xpath = new SynapseXPath(iterateExp.getPropertyValue());
-				Map<String, String> nameSpaceMap = iterateExp.getNamespaces();
-				
-				
-				for(String key : nameSpaceMap.keySet()){
-					
-					xpath.addNamespace(key, nameSpaceMap.get(key));
-				}
-				
-				iterateMediator.setExpression(xpath);
-				
-			}
-			
-			if(visualIterate.isPreservePayload()){
-				iterateMediator.setPreservePayload(true);
-				NamespacedProperty attachedPath = visualIterate.getAttachPath();
-				if(attachedPath != null && !attachedPath.getPropertyValue().equals("")){
-					SynapseXPath xpath = new SynapseXPath(attachedPath.getPropertyValue());
-					Map<String, String> nameSpaceMap = attachedPath.getNamespaces();
-					for(String key : nameSpaceMap.keySet()){
-						xpath.addNamespace(key, nameSpaceMap.get(key));
-					}
-					iterateMediator.setAttachPath(xpath);
-				}
-			} else{
-				iterateMediator.setPreservePayload(false);
-			}
-			
-			iterateMediator.setContinueParent(visualIterate.isContinueParent());
-			
-			
-			//Do not serialize when Iterate ID is empty/null or contains whitespace			 
-			if (StringUtils.isNotBlank(visualIterate.getIterateID())) {
-			    iterateMediator.setId(visualIterate.getIterateID());
-			}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createIterateMediator(information, subject));
+            doTransformWithinSequence(information, ((IterateMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-			Target target = new Target();
-			target.setSoapAction(visualIterate.getTarget().getSoapAction());
-			target.setToAddress(visualIterate.getTarget().getToAddress());
-			
-			switch (visualIterate.getSequenceType()) {
-			case ANONYMOUS:
-				SequenceMediator targetSequence=new SequenceMediator();
-				
-				TransformationInfo newInfo = new TransformationInfo();
-				newInfo.setTraversalDirection(information.getTraversalDirection());
-				newInfo.setSynapseConfiguration(information.getSynapseConfiguration());
-				newInfo.setOriginInSequence(information.getOriginInSequence());
-				newInfo.setOriginOutSequence(information.getOriginOutSequence());
-				newInfo.setCurrentProxy(information.getCurrentProxy());
-				newInfo.setParentSequence(targetSequence);
-				doTransform(newInfo,visualIterate.getTargetOutputConnector());
-				target.setSequence(targetSequence);
-				break;
-				
-			case REGISTRY_REFERENCE:
-				target.setSequenceRef(visualIterate.getSequenceKey().getKeyValue());
-				break;
-				
-			case NAMED_REFERENCE:
-				target.setSequenceRef(visualIterate.getSequenceName());
-				break;
-			}
-			
-			if(visualIterate.isSequentialMediation()) {
-				target.setAsynchronous(false);
-			}
-						
-			iterateMediator.setTarget(target);
+    private org.apache.synapse.mediators.eip.splitter.IterateMediator createIterateMediator(
+            TransformationInfo information, EsbNode subject) throws JaxenException, TransformerException {
+        /*
+         * Check subject.
+         */
+        Assert.isTrue(subject instanceof IterateMediator, "Invalid subject.");
+        IterateMediator visualIterate = (IterateMediator) subject;
 
-		}
-		return iterateMediator;
-	}
+        /*
+         * Configure Iterate mediator.
+         */
+        org.apache.synapse.mediators.eip.splitter.IterateMediator iterateMediator = new org.apache.synapse.mediators.eip.splitter.IterateMediator();
+        setCommonProperties(iterateMediator, visualIterate);
+        {
+            NamespacedProperty iterateExp = visualIterate.getIterateExpression();
+
+            if (iterateExp != null && !iterateExp.getPropertyValue().equals("")) {
+
+                SynapseXPath xpath = new SynapseXPath(iterateExp.getPropertyValue());
+                Map<String, String> nameSpaceMap = iterateExp.getNamespaces();
+
+                for (String key : nameSpaceMap.keySet()) {
+
+                    xpath.addNamespace(key, nameSpaceMap.get(key));
+                }
+
+                iterateMediator.setExpression(xpath);
+
+            }
+
+            if (visualIterate.isPreservePayload()) {
+                iterateMediator.setPreservePayload(true);
+                NamespacedProperty attachedPath = visualIterate.getAttachPath();
+                if (attachedPath != null && !attachedPath.getPropertyValue().equals("")) {
+                    SynapseXPath xpath = new SynapseXPath(attachedPath.getPropertyValue());
+                    Map<String, String> nameSpaceMap = attachedPath.getNamespaces();
+                    for (String key : nameSpaceMap.keySet()) {
+                        xpath.addNamespace(key, nameSpaceMap.get(key));
+                    }
+                    iterateMediator.setAttachPath(xpath);
+                }
+            } else {
+                iterateMediator.setPreservePayload(false);
+            }
+
+            iterateMediator.setContinueParent(visualIterate.isContinueParent());
+
+            // Do not serialize when Iterate ID is empty/null or contains whitespace
+            if (StringUtils.isNotBlank(visualIterate.getIterateID())) {
+                iterateMediator.setId(visualIterate.getIterateID());
+            }
+
+            Target target = new Target();
+            target.setSoapAction(visualIterate.getTarget().getSoapAction());
+            target.setToAddress(visualIterate.getTarget().getToAddress());
+
+            switch (visualIterate.getSequenceType()) {
+            case ANONYMOUS:
+                SequenceMediator targetSequence = new SequenceMediator();
+
+                TransformationInfo newInfo = new TransformationInfo();
+                newInfo.setTraversalDirection(information.getTraversalDirection());
+                newInfo.setSynapseConfiguration(information.getSynapseConfiguration());
+                newInfo.setOriginInSequence(information.getOriginInSequence());
+                newInfo.setOriginOutSequence(information.getOriginOutSequence());
+                newInfo.setCurrentProxy(information.getCurrentProxy());
+                newInfo.setParentSequence(targetSequence);
+                doTransform(newInfo, visualIterate.getTargetOutputConnector());
+                target.setSequence(targetSequence);
+                break;
+
+            case REGISTRY_REFERENCE:
+                target.setSequenceRef(visualIterate.getSequenceKey().getKeyValue());
+                break;
+
+            case NAMED_REFERENCE:
+                target.setSequenceRef(visualIterate.getSequenceName());
+                break;
+            }
+
+            if (visualIterate.isSequentialMediation()) {
+                target.setAsynchronous(false);
+            }
+
+            iterateMediator.setTarget(target);
+
+        }
+        return iterateMediator;
+    }
 
 }

@@ -17,83 +17,84 @@ import org.eclipse.swt.layout.FillLayout;
 
 public class EmbeddedEntriesDialog extends Dialog {
 
-	private java.util.List<NamedEntityDescriptor> localNamedEntities;
-	private String selectedItem=null;
-	
-	/**
-	 * Create the dialog.
-	 * @param parentShell
-	 */
-	public EmbeddedEntriesDialog(Shell parentShell,java.util.List<NamedEntityDescriptor> localNamedEntities) {
-		super(parentShell);
-		setLocalNamedEntities(localNamedEntities);
-	}
+    private java.util.List<NamedEntityDescriptor> localNamedEntities;
+    private String selectedItem = null;
 
-	/**
-	 * Create contents of the dialog.
-	 * @param parent
-	 */
-	@Override
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		
-		Group grpSelectAnEntry = new Group(container, SWT.NONE);
-		grpSelectAnEntry.setLayout(new FillLayout(SWT.HORIZONTAL));
-		grpSelectAnEntry.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		grpSelectAnEntry.setText("Select an entry among the following");
-		
-		final List lstItems = new List(grpSelectAnEntry, SWT.BORDER);
-		for (NamedEntityDescriptor descriptor : getLocalNamedEntities()) {
-			lstItems.add(descriptor.toString());
-		}
-		
-		lstItems.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				String[] selection = lstItems.getSelection();
-				if (selection.length > 0) {
-					NamedEntityDescriptor descriptor = NamedEntityDescriptor.fromString(selection[0]);
-					if (null != descriptor) {
-						setSelectedItem(descriptor.getName());
-					}
-				}
-			}
-		});
-		return container;
-	}
+    /**
+     * Create the dialog.
+     * 
+     * @param parentShell
+     */
+    public EmbeddedEntriesDialog(Shell parentShell, java.util.List<NamedEntityDescriptor> localNamedEntities) {
+        super(parentShell);
+        setLocalNamedEntities(localNamedEntities);
+    }
 
-	/**
-	 * Create contents of the button bar.
-	 * @param parent
-	 */
-	@Override
-	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
-				true);
-		createButton(parent, IDialogConstants.CANCEL_ID,
-				IDialogConstants.CANCEL_LABEL, false);
-	}
+    /**
+     * Create contents of the dialog.
+     * 
+     * @param parent
+     */
+    @Override
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
 
-	/**
-	 * Return the initial size of the dialog.
-	 */
-	@Override
-	protected Point getInitialSize() {
-		return new Point(450, 300);
-	}
+        Group grpSelectAnEntry = new Group(container, SWT.NONE);
+        grpSelectAnEntry.setLayout(new FillLayout(SWT.HORIZONTAL));
+        grpSelectAnEntry.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+        grpSelectAnEntry.setText("Select an entry among the following");
 
-	public void setLocalNamedEntities(java.util.List<NamedEntityDescriptor> localNamedEntities) {
-		this.localNamedEntities = localNamedEntities;
-	}
+        final List lstItems = new List(grpSelectAnEntry, SWT.BORDER);
+        for (NamedEntityDescriptor descriptor : getLocalNamedEntities()) {
+            lstItems.add(descriptor.toString());
+        }
 
-	public java.util.List<NamedEntityDescriptor> getLocalNamedEntities() {
-		return localNamedEntities;
-	}
+        lstItems.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                String[] selection = lstItems.getSelection();
+                if (selection.length > 0) {
+                    NamedEntityDescriptor descriptor = NamedEntityDescriptor.fromString(selection[0]);
+                    if (null != descriptor) {
+                        setSelectedItem(descriptor.getName());
+                    }
+                }
+            }
+        });
+        return container;
+    }
 
-	public void setSelectedItem(String selectedItem) {
-		this.selectedItem = selectedItem;
-	}
+    /**
+     * Create contents of the button bar.
+     * 
+     * @param parent
+     */
+    @Override
+    protected void createButtonsForButtonBar(Composite parent) {
+        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+    }
 
-	public String getSelectedItem() {
-		return selectedItem;
-	}
+    /**
+     * Return the initial size of the dialog.
+     */
+    @Override
+    protected Point getInitialSize() {
+        return new Point(450, 300);
+    }
+
+    public void setLocalNamedEntities(java.util.List<NamedEntityDescriptor> localNamedEntities) {
+        this.localNamedEntities = localNamedEntities;
+    }
+
+    public java.util.List<NamedEntityDescriptor> getLocalNamedEntities() {
+        return localNamedEntities;
+    }
+
+    public void setSelectedItem(String selectedItem) {
+        this.selectedItem = selectedItem;
+    }
+
+    public String getSelectedItem() {
+        return selectedItem;
+    }
 }

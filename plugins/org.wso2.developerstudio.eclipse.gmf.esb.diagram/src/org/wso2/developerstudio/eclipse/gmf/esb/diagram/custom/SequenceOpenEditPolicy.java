@@ -12,20 +12,20 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class SequenceOpenEditPolicy extends OpenEditPolicy {
 
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-	
-	protected Command getOpenCommand(Request request) {
-		if (getTargetEditPart(request) instanceof SequenceEditPart) {
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-			try {
-				((SequenceEditPart) getTargetEditPart(request)).createDialogBox();
-			} catch (Exception e) {
-				log.error("Cannot open sequence file " , e);
-				MessageDialog.openError(Display.getCurrent().getActiveShell(), "Cannot open sequence file ",
-						e.getLocalizedMessage());
-			}
-		}
-		return  null;
-	}
+    protected Command getOpenCommand(Request request) {
+        if (getTargetEditPart(request) instanceof SequenceEditPart) {
+
+            try {
+                ((SequenceEditPart) getTargetEditPart(request)).createDialogBox();
+            } catch (Exception e) {
+                log.error("Cannot open sequence file ", e);
+                MessageDialog.openError(Display.getCurrent().getActiveShell(), "Cannot open sequence file ",
+                        e.getLocalizedMessage());
+            }
+        }
+        return null;
+    }
 
 }

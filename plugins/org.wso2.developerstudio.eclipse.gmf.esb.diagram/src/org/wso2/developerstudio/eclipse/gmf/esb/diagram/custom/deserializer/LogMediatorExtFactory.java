@@ -30,53 +30,53 @@ public class LogMediatorExtFactory extends LogMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	Mediator mediator = new LogMediator();
+        Mediator mediator = new LogMediator();
 
-	OMAttribute level = omElement.getAttribute(new QName("level"));
-	OMAttribute category = omElement.getAttribute(new QName("category"));
-	OMAttribute separator = omElement.getAttribute(new QName("separator"));
+        OMAttribute level = omElement.getAttribute(new QName("level"));
+        OMAttribute category = omElement.getAttribute(new QName("category"));
+        OMAttribute separator = omElement.getAttribute(new QName("separator"));
 
-	processAuditStatus(mediator, omElement);
+        processAuditStatus(mediator, omElement);
 
-	if (level != null) {
-	    String levelstr = level.getAttributeValue();
-	    if ("simple".equals(levelstr)) {
-		((LogMediator) mediator).setLogLevel(LogMediator.SIMPLE);
-	    } else if ("headers".equals(levelstr)) {
-		((LogMediator) mediator).setLogLevel(LogMediator.HEADERS);
-	    } else if ("full".equals(levelstr)) {
-		((LogMediator) mediator).setLogLevel(LogMediator.FULL);
-	    } else if ("custom".equals(levelstr)) {
-		((LogMediator) mediator).setLogLevel(LogMediator.CUSTOM);
-	    } else {
-		((LogMediator) mediator).setLogLevel(LogMediator.CUSTOM);
-	    }
-	}
+        if (level != null) {
+            String levelstr = level.getAttributeValue();
+            if ("simple".equals(levelstr)) {
+                ((LogMediator) mediator).setLogLevel(LogMediator.SIMPLE);
+            } else if ("headers".equals(levelstr)) {
+                ((LogMediator) mediator).setLogLevel(LogMediator.HEADERS);
+            } else if ("full".equals(levelstr)) {
+                ((LogMediator) mediator).setLogLevel(LogMediator.FULL);
+            } else if ("custom".equals(levelstr)) {
+                ((LogMediator) mediator).setLogLevel(LogMediator.CUSTOM);
+            } else {
+                ((LogMediator) mediator).setLogLevel(LogMediator.CUSTOM);
+            }
+        }
 
-	if (category != null) {
-	    String catstr = category.getAttributeValue().trim().toUpperCase();
-	    if ("INFO".equals(catstr)) {
-		((LogMediator) mediator).setCategory(LogMediator.CATEGORY_INFO);
-	    } else if ("TRACE".equals(catstr)) {
-		((LogMediator) mediator).setCategory(LogMediator.CATEGORY_TRACE);
-	    } else if ("DEBUG".equals(catstr)) {
-		((LogMediator) mediator).setCategory(LogMediator.CATEGORY_DEBUG);
-	    } else if ("WARN".equals(catstr)) {
-		((LogMediator) mediator).setCategory(LogMediator.CATEGORY_WARN);
-	    } else if ("ERROR".equals(catstr)) {
-		((LogMediator) mediator).setCategory(LogMediator.CATEGORY_ERROR);
-	    } else if ("FATAL".equals(catstr)) {
-		((LogMediator) mediator).setCategory(LogMediator.CATEGORY_FATAL);
-	    } else {
-		((LogMediator) mediator).setCategory(LogMediator.CATEGORY_DEBUG);
-	    }
-	}
+        if (category != null) {
+            String catstr = category.getAttributeValue().trim().toUpperCase();
+            if ("INFO".equals(catstr)) {
+                ((LogMediator) mediator).setCategory(LogMediator.CATEGORY_INFO);
+            } else if ("TRACE".equals(catstr)) {
+                ((LogMediator) mediator).setCategory(LogMediator.CATEGORY_TRACE);
+            } else if ("DEBUG".equals(catstr)) {
+                ((LogMediator) mediator).setCategory(LogMediator.CATEGORY_DEBUG);
+            } else if ("WARN".equals(catstr)) {
+                ((LogMediator) mediator).setCategory(LogMediator.CATEGORY_WARN);
+            } else if ("ERROR".equals(catstr)) {
+                ((LogMediator) mediator).setCategory(LogMediator.CATEGORY_ERROR);
+            } else if ("FATAL".equals(catstr)) {
+                ((LogMediator) mediator).setCategory(LogMediator.CATEGORY_FATAL);
+            } else {
+                ((LogMediator) mediator).setCategory(LogMediator.CATEGORY_DEBUG);
+            }
+        }
 
-	if (separator != null) {
-	    ((LogMediator) mediator).setSeparator(separator.getAttributeValue());
-	}
+        if (separator != null) {
+            ((LogMediator) mediator).setSeparator(separator.getAttributeValue());
+        }
 
-	return mediator;
+        return mediator;
     }
 
 }

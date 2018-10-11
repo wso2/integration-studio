@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.sheet;
 
 import org.eclipse.ui.views.properties.IPropertySheetEntry;
 import org.eclipse.ui.views.properties.PropertySheetSorter;
 
-
 public class EsbCustomPropertySheetSorter extends PropertySheetSorter {
-	public void sort(IPropertySheetEntry[] entries) {
-	}
+    public void sort(IPropertySheetEntry[] entries) {
+    }
 }

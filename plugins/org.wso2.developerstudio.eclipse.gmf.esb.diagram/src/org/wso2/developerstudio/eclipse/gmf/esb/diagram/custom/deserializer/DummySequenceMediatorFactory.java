@@ -64,112 +64,112 @@ public class DummySequenceMediatorFactory {
     private static final QName SEQUENCE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "sequence");
 
     public QName getTagQName() {
-	return SEQUENCE_Q;
+        return SEQUENCE_Q;
     }
 
     public SequenceMediator createAnonymousSequence(OMElement elem, Properties properties) {
-	SequenceMediator seqMediator = new SequenceMediator();
-	OMAttribute e = elem.getAttribute(ATT_ONERROR);
-	if (e != null) {
-	    seqMediator.setErrorHandler(e.getAttributeValue());
-	}
-	processAuditStatus(seqMediator, elem);
-	OMElement descElem = elem.getFirstChildWithName(DESCRIPTION_Q);
-	if (descElem != null) {
-	    seqMediator.setDescription(descElem.getText());
-	}
-	addChildren(elem, seqMediator, properties);
-	seqMediator.setSequenceType(SequenceType.ANON);
-	return seqMediator;
+        SequenceMediator seqMediator = new SequenceMediator();
+        OMAttribute e = elem.getAttribute(ATT_ONERROR);
+        if (e != null) {
+            seqMediator.setErrorHandler(e.getAttributeValue());
+        }
+        processAuditStatus(seqMediator, elem);
+        OMElement descElem = elem.getFirstChildWithName(DESCRIPTION_Q);
+        if (descElem != null) {
+            seqMediator.setDescription(descElem.getText());
+        }
+        addChildren(elem, seqMediator, properties);
+        seqMediator.setSequenceType(SequenceType.ANON);
+        return seqMediator;
     }
 
     public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
-	SequenceMediator seqMediator = new SequenceMediator();
+        SequenceMediator seqMediator = new SequenceMediator();
 
-	OMAttribute n = elem.getAttribute(ATT_NAME);
-	OMAttribute e = elem.getAttribute(ATT_ONERROR);
-	if (n != null) {
-	    seqMediator.setName(n.getAttributeValue());
-	    if (e != null) {
-		seqMediator.setErrorHandler(e.getAttributeValue());
-	    }
-	    processAuditStatus(seqMediator, elem);
-	    addChildren(elem, seqMediator, properties);
+        OMAttribute n = elem.getAttribute(ATT_NAME);
+        OMAttribute e = elem.getAttribute(ATT_ONERROR);
+        if (n != null) {
+            seqMediator.setName(n.getAttributeValue());
+            if (e != null) {
+                seqMediator.setErrorHandler(e.getAttributeValue());
+            }
+            processAuditStatus(seqMediator, elem);
+            addChildren(elem, seqMediator, properties);
 
-	} else {
-	    n = elem.getAttribute(ATT_KEY);
-	    if (n != null) {
-		// ValueFactory for creating dynamic or static Value
-		ValueFactory keyFac = new ValueFactory();
-		// create dynamic or static key based on OMElement
-		Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, elem);
-		// setKey
-		seqMediator.setKey(generatedKey);
+        } else {
+            n = elem.getAttribute(ATT_KEY);
+            if (n != null) {
+                // ValueFactory for creating dynamic or static Value
+                ValueFactory keyFac = new ValueFactory();
+                // create dynamic or static key based on OMElement
+                Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, elem);
+                // setKey
+                seqMediator.setKey(generatedKey);
 
-	    }
-	}
-	return seqMediator;
+            }
+        }
+        return seqMediator;
     }
 
     protected void processAuditStatus(Mediator mediator, OMElement mediatorOmElement) {
 
-	String name = null;
-	if (mediator instanceof Nameable) {
-	    name = ((Nameable) mediator).getName();
-	}
-	if (name == null || "".equals(name)) {
-	    name = SynapseConstants.ANONYMOUS_SEQUENCE;
-	}
+        String name = null;
+        if (mediator instanceof Nameable) {
+            name = ((Nameable) mediator).getName();
+        }
+        if (name == null || "".equals(name)) {
+            name = SynapseConstants.ANONYMOUS_SEQUENCE;
+        }
 
-	if (mediator instanceof AspectConfigurable) {
-	    AspectConfiguration configuration = new AspectConfiguration(name);
-	    ((AspectConfigurable) mediator).configure(configuration);
+        if (mediator instanceof AspectConfigurable) {
+            AspectConfiguration configuration = new AspectConfiguration(name);
+            ((AspectConfigurable) mediator).configure(configuration);
 
-	    OMAttribute statistics = mediatorOmElement.getAttribute(ATT_STATS);
-	    if (statistics != null) {
-		String statisticsValue = statistics.getAttributeValue();
-		if (statisticsValue != null) {
-		    if (XMLConfigConstants.STATISTICS_ENABLE.equals(statisticsValue)) {
-			configuration.enableStatistics();
-		    }
-		}
-	    }
+            OMAttribute statistics = mediatorOmElement.getAttribute(ATT_STATS);
+            if (statistics != null) {
+                String statisticsValue = statistics.getAttributeValue();
+                if (statisticsValue != null) {
+                    if (XMLConfigConstants.STATISTICS_ENABLE.equals(statisticsValue)) {
+                        configuration.enableStatistics();
+                    }
+                }
+            }
 
-	    OMAttribute trace = mediatorOmElement
-		    .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.TRACE_ATTRIB_NAME));
-	    if (trace != null) {
-		String traceValue = trace.getAttributeValue();
-		if (traceValue != null) {
-		    if (traceValue.equals(XMLConfigConstants.TRACE_ENABLE)) {
-			configuration.enableTracing();
-		    }
-		}
-	    }
-	}
+            OMAttribute trace = mediatorOmElement
+                    .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.TRACE_ATTRIB_NAME));
+            if (trace != null) {
+                String traceValue = trace.getAttributeValue();
+                if (traceValue != null) {
+                    if (traceValue.equals(XMLConfigConstants.TRACE_ENABLE)) {
+                        configuration.enableTracing();
+                    }
+                }
+            }
+        }
     }
 
     protected static void addChildren(OMElement el, ListMediator m, Properties properties) {
-	Iterator it = el.getChildren();
+        Iterator it = el.getChildren();
 
-	while (it.hasNext()) {
-	    OMNode child = (OMNode) it.next();
-	    if (child instanceof OMElement) {
-		if (!DESCRIPTION_Q.equals(((OMElement) child).getQName())) { // neglect the description tag
-		    Mediator med = DummyMediatorFactoryFinder.getInstance().getMediator((OMElement) child, properties);
-		    if (med != null) {
-			m.addChild(med);
-		    } else {
-			String msg = "Unknown mediator : " + ((OMElement) child).getLocalName();
-			throw new SynapseException(msg);
-		    }
-		}
-	    } else if (child instanceof OMComment) {
-		CommentMediator commendMediator = new CommentMediator();
-		commendMediator.setCommentText(((OMComment) child).getValue());
-		m.addChild(commendMediator);
-	    }
-	}
+        while (it.hasNext()) {
+            OMNode child = (OMNode) it.next();
+            if (child instanceof OMElement) {
+                if (!DESCRIPTION_Q.equals(((OMElement) child).getQName())) { // neglect the description tag
+                    Mediator med = DummyMediatorFactoryFinder.getInstance().getMediator((OMElement) child, properties);
+                    if (med != null) {
+                        m.addChild(med);
+                    } else {
+                        String msg = "Unknown mediator : " + ((OMElement) child).getLocalName();
+                        throw new SynapseException(msg);
+                    }
+                }
+            } else if (child instanceof OMComment) {
+                CommentMediator commendMediator = new CommentMediator();
+                commendMediator.setCommentText(((OMComment) child).getValue());
+                m.addChild(commendMediator);
+            }
+        }
     }
 
 }

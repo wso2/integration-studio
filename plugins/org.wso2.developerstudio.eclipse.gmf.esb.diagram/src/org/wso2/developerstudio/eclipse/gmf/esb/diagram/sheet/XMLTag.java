@@ -25,14 +25,14 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.sheet;
 public class XMLTag {
 
     /**
-     * Tag types are categorized as follows, 
-     * 1 <abc> 
-     * 2 </abc> 
-     * 3 <abc/> 
-     * 4 <log level="ab" 
-     * 5 level="abc" /> 
-     * 6 level="abc"> 
-     * 7 level="abc" => no tags 
+     * Tag types are categorized as follows,
+     * 1 <abc>
+     * 2 </abc>
+     * 3 <abc/>
+     * 4 <log level="ab"
+     * 5 level="abc" />
+     * 6 level="abc">
+     * 7 level="abc" => no tags
      * 8 <?xml version=\"1.0\" encoding=\"UTF-8\"?>
      */
     int tagType;
@@ -63,56 +63,56 @@ public class XMLTag {
     String qName = "";
 
     public String getValue() {
-	return value;
+        return value;
     }
 
     public void setValue(String value) {
-	this.value = value;
+        this.value = value;
     }
 
     public int getLine() {
-	return line;
+        return line;
     }
 
     public void setLine(int line) {
-	this.line = line;
+        this.line = line;
     }
 
     public int getStartIndex() {
-	return startIndex;
+        return startIndex;
     }
 
     public void setStartIndex(int startIndex) {
-	this.startIndex = startIndex;
+        this.startIndex = startIndex;
     }
 
     public int getEndIndex() {
-	return endIndex;
+        return endIndex;
     }
 
     public void setEndIndex(int endIndex) {
-	this.endIndex = endIndex;
+        this.endIndex = endIndex;
     }
 
     public String getqName() {
-	int index = qName.indexOf(":");
-	if (index == -1) {
-	    return qName;
-	} else {
-	    return qName.substring(index + 1);
-	}
+        int index = qName.indexOf(":");
+        if (index == -1) {
+            return qName;
+        } else {
+            return qName.substring(index + 1);
+        }
     }
 
     public void setqName(String qName) {
-	this.qName = qName;
+        this.qName = qName;
     }
 
     public int getTagType() {
-	return tagType;
+        return tagType;
     }
 
     public void setTagType(int tagType) {
-	this.tagType = tagType;
+        this.tagType = tagType;
     }
 
     /**
@@ -122,11 +122,11 @@ public class XMLTag {
      * @return Is ending tag
      */
     public boolean isEndTag() {
-	if (this.tagType == 2 || this.tagType == 5) {
-	    return true;
-	}
+        if (this.tagType == 2 || this.tagType == 5) {
+            return true;
+        }
 
-	return false;
+        return false;
     }
 
     /**
@@ -136,10 +136,10 @@ public class XMLTag {
      * @return Is staring tag
      */
     public boolean isStartTag() {
-	if (this.tagType == 1 || this.tagType == 4) {
-	    return true;
-	}
+        if (this.tagType == 1 || this.tagType == 4) {
+            return true;
+        }
 
-	return false;
+        return false;
     }
 }

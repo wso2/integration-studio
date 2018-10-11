@@ -27,75 +27,75 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
  */
 public class TemplateTemplateCompartmentEditPart extends ShapeCompartmentEditPart {
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 7043;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 7043;
 
-	/**
-	 * @generated
-	 */
-	public TemplateTemplateCompartmentEditPart(View view) {
-		super(view);
-	}
+    /**
+     * @generated
+     */
+    public TemplateTemplateCompartmentEditPart(View view) {
+        super(view);
+    }
 
-	/**
-	 * @generated
-	 */
-	public String getCompartmentName() {
-		return Messages.TemplateTemplateCompartmentEditPart_title;
-	}
+    /**
+     * @generated
+     */
+    public String getCompartmentName() {
+        return Messages.TemplateTemplateCompartmentEditPart_title;
+    }
 
-	/**
-	 * @generated
-	 */
-	public IFigure createFigure() {
-		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
-		result.setTitleVisibility(false);
-		return result;
-	}
+    /**
+     * @generated
+     */
+    public IFigure createFigure() {
+        ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
+        result.setTitleVisibility(false);
+        return result;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new TemplateTemplateCompartmentItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				EsbVisualIDRegistry.TYPED_INSTANCE));
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new TemplateTemplateCompartmentCanonicalEditPolicy());
-	}
+    /**
+     * @generated
+     */
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new TemplateTemplateCompartmentItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+                new CreationEditPolicyWithCustomReparent(EsbVisualIDRegistry.TYPED_INSTANCE));
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new TemplateTemplateCompartmentCanonicalEditPolicy());
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setRatio(Double ratio) {
-		if (getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
-			super.setRatio(ratio);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setRatio(Double ratio) {
+        if (getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
+            super.setRatio(ratio);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	public EditPart getTargetEditPart(Request request) {
-		if (request instanceof CreateViewAndElementRequest) {
-			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
-					.getCreateElementRequestAdapter();
-			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-			if (type == EsbElementTypes.Sequences_3665) {
-				return this;
-			}
-			if (type == EsbElementTypes.EndpointDiagram_3666) {
-				return this;
-			}
-			return getParent().getTargetEditPart(request);
-		}
-		if (request instanceof CreateUnspecifiedTypeConnectionRequest) {
-			return getParent().getTargetEditPart(request);
-		}
-		return super.getTargetEditPart(request);
-	}
+    /**
+     * @generated
+     */
+    public EditPart getTargetEditPart(Request request) {
+        if (request instanceof CreateViewAndElementRequest) {
+            CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
+                    .getCreateElementRequestAdapter();
+            IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
+            if (type == EsbElementTypes.Sequences_3665) {
+                return this;
+            }
+            if (type == EsbElementTypes.EndpointDiagram_3666) {
+                return this;
+            }
+            return getParent().getTargetEditPart(request);
+        }
+        if (request instanceof CreateUnspecifiedTypeConnectionRequest) {
+            return getParent().getTargetEditPart(request);
+        }
+        return super.getTargetEditPart(request);
+    }
 
 }

@@ -47,7 +47,7 @@ public interface IESBDebugPointBuilder {
      */
     ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource, AbstractMediator mediatorPart,
             String commandArguement) throws CoreException, ESBDebuggerException;
-    
+
     /**
      * This method return a {@link AbstractESBDebugPointMessage} of mediatorPart which is in
      * file resource and esbServer

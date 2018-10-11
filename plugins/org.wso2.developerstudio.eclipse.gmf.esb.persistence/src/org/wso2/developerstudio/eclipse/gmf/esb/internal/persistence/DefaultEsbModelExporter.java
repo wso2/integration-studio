@@ -104,481 +104,471 @@ import org.xml.sax.SAXException;
  * Default implementation of {@link EsbModelTransformer}.
  */
 public class DefaultEsbModelExporter implements EsbModelTransformer {
-	static String sourceXML= new String();
-	/**
-	 * {@inheritDoc}
-	 */
-	public void export(Resource resource, File destination) throws Exception {
-		Assert.isTrue(resource.getContents().size() == 1,
-				"Resource should have exactly one root object.");
-		EObject rootObj = resource.getContents().get(0);
-		Assert.isTrue(rootObj instanceof EsbDiagram, "Unknown diagram object.");
-		EsbDiagram esbDiagram = (EsbDiagram) rootObj;
-		EsbServer server = esbDiagram.getServer();
-		Assert.isTrue(null != server,
-				"Unable to locate esb server visual model object.");
-		export(server, destination);
-	}
+    static String sourceXML = new String();
 
-	/**
-	 * Exports the given {@link EsbServer} visual model into specified
-	 * destination.
-	 * 
-	 * @param serverModel
-	 *            {@link EsbServer} visual model instance.
-	 * @param destination
-	 *            target file.
-	 * @throws Exception
-	 *             if an error occurs during export operation.
-	 */
-	private void export(EsbServer serverModel, File destination)
-			throws Exception {
-		SynapseXMLConfigurationSerializer serializer = new SynapseXMLConfigurationSerializer();
-		OMElement configOM = serializer
-				.serializeConfiguration(transform(serverModel));
-		OutputStream os = new FileOutputStream(destination);
-		XMLPrettyPrinter.prettify(configOM, os);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public void export(Resource resource, File destination) throws Exception {
+        Assert.isTrue(resource.getContents().size() == 1, "Resource should have exactly one root object.");
+        EObject rootObj = resource.getContents().get(0);
+        Assert.isTrue(rootObj instanceof EsbDiagram, "Unknown diagram object.");
+        EsbDiagram esbDiagram = (EsbDiagram) rootObj;
+        EsbServer server = esbDiagram.getServer();
+        Assert.isTrue(null != server, "Unable to locate esb server visual model object.");
+        export(server, destination);
+    }
 
-	/**
-	 * Transforms the given {@link EsbServer} visual model into a
-	 * {@link SynapseConfiguration} object.
-	 * 
-	 * @param serverModel
-	 *            {@link EsbServer} visual model.
-	 * @return configured {@link SynapseConfiguration} object.
-	 * @throws Exception
-	 *             if an error occurs during transformation.
-	 */
-	private SynapseConfiguration transform(EsbServer serverModel)
-			throws Exception {
-		SynapseConfiguration configuration = new SynapseConfiguration();
-		TransformationInfo info = new TransformationInfo();
-		info.getTransformedMediators().clear();
-		info.setSynapseConfiguration(configuration);
-		
-		//message  mediation
-		MessageMediator messageMed = serverModel.getMessageMediator();
-		if (messageMed!=null) {
-			MessageMediatorTransformer transformer = new MessageMediatorTransformer();
-			info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
-			transformer.transform(info, messageMed);
-		}
-		
-		List<EsbElement> childNodes = serverModel.getChildren();
-		int startupCount=-1;
-		for (EsbElement childNode : childNodes) {
-			
-			// service mediation.
-			if (childNode instanceof ProxyService) {
-				ProxyService visualService = (ProxyService) childNode;
-				ProxyServiceTransformer transformer = new ProxyServiceTransformer();
-				info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
-				transformer.transform(info, visualService);
-			}
-			
-			
-			if(childNode instanceof Task){
-				++startupCount;
-				Task task=(Task) childNode;		
-				TaskTransformer transformer=new TaskTransformer();
-				transformer.transform(info,task,startupCount);
-			}
-			
-			
-		}
-		return configuration;
-	}
-	
-	private SequenceMediator transformSequence(EsbServer serverModel)
-			throws Exception {
-		List<EsbElement> childNodes = serverModel.getChildren();
-		SequenceMediator sequence = new SequenceMediator();		
-		TransformationInfo info = new TransformationInfo();
-		info.getTransformedMediators().clear();
-		for (EsbElement childNode : childNodes) {
-			if (childNode instanceof Sequences) {
-				Sequences visualSequence = (Sequences) childNode;
-				sequence.setName(visualSequence.getName());
-				SequenceTransformer transformer = new SequenceTransformer();
-				transformer.transformWithinSequence(info, visualSequence,
-						sequence);
-			}
-		}
-		return sequence;
-	}
-	
-	private org.apache.synapse.core.axis2.ProxyService transformProxyService(
-			ProxyService visualService ) throws Exception {
-		TransformationInfo info = new TransformationInfo();
-		info.getTransformedMediators().clear();
-		SynapseConfiguration configuration = new SynapseConfiguration();;
-		info.setSynapseConfiguration(configuration);
-		org.apache.synapse.core.axis2.ProxyService proxy = new org.apache.synapse.core.axis2.ProxyService(
-				visualService.getName());
-		ProxyServiceTransformer transformer = new ProxyServiceTransformer();
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
-		transformer.transform(info, visualService );
-		org.apache.synapse.core.axis2.ProxyService proxyService = configuration.getProxyService(visualService.getName());
-		if(proxyService!=null){
-			proxy = proxyService;
-		}
-		return proxy;
-	}
-	
-	
-	private org.apache.synapse.endpoints.Endpoint transformEndpoint(
-			EndpointDiagram visualEndpoint ) throws Exception {		
-		if(((EndpointDiagram) visualEndpoint).getChild() instanceof WSDLEndPoint){
-			WSDLEndPointTransformer transformer= new WSDLEndPointTransformer();
-			return transformer.create((WSDLEndPoint) ((EndpointDiagram) visualEndpoint).getChild(),visualEndpoint.getName());
-		}else if(((EndpointDiagram) visualEndpoint).getChild() instanceof DefaultEndPoint){
-			DefaultEndPointTransformer transformer= new DefaultEndPointTransformer();
-			return transformer.create((DefaultEndPoint) ((EndpointDiagram) visualEndpoint).getChild(),visualEndpoint.getName());
-		}else if(((EndpointDiagram) visualEndpoint).getChild() instanceof AddressEndPoint){
-			AddressEndPointTransformer transformer= new AddressEndPointTransformer();
-			return transformer.create((AddressEndPoint) ((EndpointDiagram) visualEndpoint).getChild(),visualEndpoint.getName());
-		}else if(((EndpointDiagram) visualEndpoint).getChild() instanceof FailoverEndPoint){
-			FailoverEndPointTransformer transformer= new FailoverEndPointTransformer();
-			return transformer.create(new TransformationInfo(),(FailoverEndPoint) ((EndpointDiagram) visualEndpoint).getChild(),visualEndpoint.getName(),null);
-		}else if(((EndpointDiagram) visualEndpoint).getChild() instanceof LoadBalanceEndPoint){
-			LoadBalanceEndPointTransformer transformer= new LoadBalanceEndPointTransformer();
-			return transformer.create(new TransformationInfo(),(LoadBalanceEndPoint) ((EndpointDiagram) visualEndpoint).getChild(),visualEndpoint.getName(),null);
-		} else if (((EndpointDiagram) visualEndpoint).getChild() instanceof RecipientListEndPoint) {
-			RecipientListEndPointTransformer transformer = new RecipientListEndPointTransformer();
-			return transformer.create(new TransformationInfo(),
-					(RecipientListEndPoint) ((EndpointDiagram) visualEndpoint).getChild(),
-					visualEndpoint.getName(), null);
-		}else if(((EndpointDiagram) visualEndpoint).getChild() instanceof TemplateEndpoint){
-			TemplateEndPointTransformer transformer= new TemplateEndPointTransformer();
-			return transformer.create((TemplateEndpoint) ((EndpointDiagram) visualEndpoint).getChild(),visualEndpoint.getName());
-		}else if(((EndpointDiagram) visualEndpoint).getChild() instanceof HTTPEndpoint){
-			HTTPEndPointTransformer transformer= new HTTPEndPointTransformer();
-			return transformer.create((HTTPEndpoint) ((EndpointDiagram) visualEndpoint).getChild(),visualEndpoint.getName());
-		}else{
-			return null;
-		}		
-	}
-	
-	private SynapseArtifact transformEndpoint(
-			FormPage endpointFormPage ) throws Exception {		
-		if ((FormPage) endpointFormPage instanceof WsdlEndpointFormPage) {
-			WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
-			return transformer.create((WsdlEndpointFormPage) endpointFormPage);
-		} else if ((FormPage) endpointFormPage instanceof AddressEndpointFormPage) {
-			AddressEndPointTransformer transformer = new AddressEndPointTransformer();
-			return transformer.create((AddressEndpointFormPage) endpointFormPage);
-		} else if ((FormPage) endpointFormPage instanceof HttpEndpointFormPage) {
-			HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
-			return transformer.create((HttpEndpointFormPage) endpointFormPage);
-		} else if ((FormPage) endpointFormPage instanceof DefaultEndpointFormPage) {
-			DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
-			return transformer.create((DefaultEndpointFormPage) endpointFormPage);
-		}else if ((FormPage) endpointFormPage instanceof TemplateEndPointFormPage) {
-			TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
-			return transformer.create((TemplateEndPointFormPage) endpointFormPage);
-		}
-		else {
-			return null;
-		}	
-	}
-	
-	private org.apache.synapse.config.Entry transformLocalEntry(
-			LocalEntry visualLocalEntry ) throws Exception {	
-		LocalEntryTransformer transformer=new LocalEntryTransformer();
-		return transformer.createEntry(visualLocalEntry);
-	}	
-	
-	private org.apache.synapse.config.Entry transformLocalEntry(
-			FormPage localEntryFormPage ) throws Exception {	
-		LocalEntryTransformer transformer=new LocalEntryTransformer();
-		return transformer.createEntry(localEntryFormPage);
-	}
-	
-	private org.apache.synapse.task.TaskDescription transformTask(FormPage scheduledTaskFormPage) throws Exception{
-		TaskTransformer transformer= new TaskTransformer();
-		return transformer.createTask(scheduledTaskFormPage);
-	}
-	
-	private org.apache.synapse.task.TaskDescription transformTask(Task visualTask){
-		TaskTransformer transformer= new TaskTransformer();
-		return transformer.create(visualTask);
-	}
-	
-	private OMElement transformMessageProcessor(FormPage messageProcessorFormPage) {
-		MessageProcessorTransformer transformer = new MessageProcessorTransformer();
-		return transformer.createMessageProcessor(messageProcessorFormPage);
-	}
-	
-	private OMElement transformMessageStore(FormPage messageProcessorFormPage) {
-		MessageStoreTransformer transformer = new MessageStoreTransformer();
-		return transformer.createMessageStore(messageProcessorFormPage);
-	}
-	
-	private org.apache.synapse.rest.API transformAPI(SynapseAPI visualAPI) throws Exception{		
-		TransformationInfo info = new TransformationInfo();
-		info.getTransformedMediators().clear();
-		SynapseConfiguration configuration = new SynapseConfiguration();;
-		info.setSynapseConfiguration(configuration);
-		API api=null;
-		APITransformer transformer= new APITransformer();
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
-		transformer.transform(info, visualAPI );
-		api=configuration.getAPI(visualAPI.getApiName());
-		if(api!=null){
-			return api;
-		}
-		return new API(visualAPI.getApiName(), visualAPI.getContext());
-	}
-	
-	private TemplateMediator transformSequenceTemplate(Template template ) throws Exception{
-		TransformationInfo info = new TransformationInfo();
-		info.getTransformedMediators().clear();
-		SynapseConfiguration configuration = new SynapseConfiguration();
-		info.setSynapseConfiguration(configuration);
-		TemplateMediator templateMediator = new TemplateMediator();
-		templateMediator.setName(template.getName());
-		templateMediator.setParameters(new ArrayList<String>());
-		TemplateTransformer transformer = new TemplateTransformer();
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
-		transformer.transform(info, template);
-		TemplateMediator mediator = configuration.getSequenceTemplate(template.getName());
-		if (mediator != null) {
-			templateMediator = mediator;
-		}
-		return templateMediator;
-	}
-	
-	private org.apache.synapse.endpoints.Template transformEndpointTemplate(Template template) throws Exception{
-		TransformationInfo info = new TransformationInfo();
-		info.getTransformedMediators().clear();
-		SynapseConfiguration configuration = new SynapseConfiguration();
-		info.setSynapseConfiguration(configuration);
-		org.apache.synapse.endpoints.Template epTemplate = new org.apache.synapse.endpoints.Template();
-		epTemplate.setName(template.getName());
+    /**
+     * Exports the given {@link EsbServer} visual model into specified
+     * destination.
+     * 
+     * @param serverModel
+     *            {@link EsbServer} visual model instance.
+     * @param destination
+     *            target file.
+     * @throws Exception
+     *             if an error occurs during export operation.
+     */
+    private void export(EsbServer serverModel, File destination) throws Exception {
+        SynapseXMLConfigurationSerializer serializer = new SynapseXMLConfigurationSerializer();
+        OMElement configOM = serializer.serializeConfiguration(transform(serverModel));
+        OutputStream os = new FileOutputStream(destination);
+        XMLPrettyPrinter.prettify(configOM, os);
+    }
 
-		TemplateTransformer transformer = new TemplateTransformer();
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
-		transformer.transform(info, template);
-		org.apache.synapse.endpoints.Template endpointTemplate = configuration
-				.getEndpointTemplate(template.getName());
-		if (endpointTemplate != null) {
-			epTemplate = endpointTemplate;
-		}
-		return epTemplate;
-	}
-	
-	private SequenceMediator transformMainSequence(ProxyService visualService) throws Exception{
-		TransformationInfo info = new TransformationInfo();
-		info.getTransformedMediators().clear();
-		SynapseConfiguration configuration = new SynapseConfiguration();
-		info.setSynapseConfiguration(configuration);
-		ProxyServiceTransformer transformer = new ProxyServiceTransformer();
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
-		transformer.transform(info, visualService );
-		return info.getMainSequence();
-	}
-	
-    private org.apache.synapse.inbound.InboundEndpoint transformInbundEndpoint(InboundEndpoint visualInboundEndpoint) throws Exception{
+    /**
+     * Transforms the given {@link EsbServer} visual model into a
+     * {@link SynapseConfiguration} object.
+     * 
+     * @param serverModel
+     *            {@link EsbServer} visual model.
+     * @return configured {@link SynapseConfiguration} object.
+     * @throws Exception
+     *             if an error occurs during transformation.
+     */
+    private SynapseConfiguration transform(EsbServer serverModel) throws Exception {
+        SynapseConfiguration configuration = new SynapseConfiguration();
+        TransformationInfo info = new TransformationInfo();
+        info.getTransformedMediators().clear();
+        info.setSynapseConfiguration(configuration);
+
+        // message mediation
+        MessageMediator messageMed = serverModel.getMessageMediator();
+        if (messageMed != null) {
+            MessageMediatorTransformer transformer = new MessageMediatorTransformer();
+            info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
+            transformer.transform(info, messageMed);
+        }
+
+        List<EsbElement> childNodes = serverModel.getChildren();
+        int startupCount = -1;
+        for (EsbElement childNode : childNodes) {
+
+            // service mediation.
+            if (childNode instanceof ProxyService) {
+                ProxyService visualService = (ProxyService) childNode;
+                ProxyServiceTransformer transformer = new ProxyServiceTransformer();
+                info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
+                transformer.transform(info, visualService);
+            }
+
+            if (childNode instanceof Task) {
+                ++startupCount;
+                Task task = (Task) childNode;
+                TaskTransformer transformer = new TaskTransformer();
+                transformer.transform(info, task, startupCount);
+            }
+
+        }
+        return configuration;
+    }
+
+    private SequenceMediator transformSequence(EsbServer serverModel) throws Exception {
+        List<EsbElement> childNodes = serverModel.getChildren();
+        SequenceMediator sequence = new SequenceMediator();
+        TransformationInfo info = new TransformationInfo();
+        info.getTransformedMediators().clear();
+        for (EsbElement childNode : childNodes) {
+            if (childNode instanceof Sequences) {
+                Sequences visualSequence = (Sequences) childNode;
+                sequence.setName(visualSequence.getName());
+                SequenceTransformer transformer = new SequenceTransformer();
+                transformer.transformWithinSequence(info, visualSequence, sequence);
+            }
+        }
+        return sequence;
+    }
+
+    private org.apache.synapse.core.axis2.ProxyService transformProxyService(ProxyService visualService)
+            throws Exception {
+        TransformationInfo info = new TransformationInfo();
+        info.getTransformedMediators().clear();
+        SynapseConfiguration configuration = new SynapseConfiguration();;
+        info.setSynapseConfiguration(configuration);
+        org.apache.synapse.core.axis2.ProxyService proxy = new org.apache.synapse.core.axis2.ProxyService(
+                visualService.getName());
+        ProxyServiceTransformer transformer = new ProxyServiceTransformer();
+        info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
+        transformer.transform(info, visualService);
+        org.apache.synapse.core.axis2.ProxyService proxyService = configuration
+                .getProxyService(visualService.getName());
+        if (proxyService != null) {
+            proxy = proxyService;
+        }
+        return proxy;
+    }
+
+    private org.apache.synapse.endpoints.Endpoint transformEndpoint(EndpointDiagram visualEndpoint) throws Exception {
+        if (((EndpointDiagram) visualEndpoint).getChild() instanceof WSDLEndPoint) {
+            WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
+            return transformer.create((WSDLEndPoint) ((EndpointDiagram) visualEndpoint).getChild(),
+                    visualEndpoint.getName());
+        } else if (((EndpointDiagram) visualEndpoint).getChild() instanceof DefaultEndPoint) {
+            DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
+            return transformer.create((DefaultEndPoint) ((EndpointDiagram) visualEndpoint).getChild(),
+                    visualEndpoint.getName());
+        } else if (((EndpointDiagram) visualEndpoint).getChild() instanceof AddressEndPoint) {
+            AddressEndPointTransformer transformer = new AddressEndPointTransformer();
+            return transformer.create((AddressEndPoint) ((EndpointDiagram) visualEndpoint).getChild(),
+                    visualEndpoint.getName());
+        } else if (((EndpointDiagram) visualEndpoint).getChild() instanceof FailoverEndPoint) {
+            FailoverEndPointTransformer transformer = new FailoverEndPointTransformer();
+            return transformer.create(new TransformationInfo(),
+                    (FailoverEndPoint) ((EndpointDiagram) visualEndpoint).getChild(), visualEndpoint.getName(), null);
+        } else if (((EndpointDiagram) visualEndpoint).getChild() instanceof LoadBalanceEndPoint) {
+            LoadBalanceEndPointTransformer transformer = new LoadBalanceEndPointTransformer();
+            return transformer.create(new TransformationInfo(),
+                    (LoadBalanceEndPoint) ((EndpointDiagram) visualEndpoint).getChild(), visualEndpoint.getName(),
+                    null);
+        } else if (((EndpointDiagram) visualEndpoint).getChild() instanceof RecipientListEndPoint) {
+            RecipientListEndPointTransformer transformer = new RecipientListEndPointTransformer();
+            return transformer.create(new TransformationInfo(),
+                    (RecipientListEndPoint) ((EndpointDiagram) visualEndpoint).getChild(), visualEndpoint.getName(),
+                    null);
+        } else if (((EndpointDiagram) visualEndpoint).getChild() instanceof TemplateEndpoint) {
+            TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
+            return transformer.create((TemplateEndpoint) ((EndpointDiagram) visualEndpoint).getChild(),
+                    visualEndpoint.getName());
+        } else if (((EndpointDiagram) visualEndpoint).getChild() instanceof HTTPEndpoint) {
+            HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
+            return transformer.create((HTTPEndpoint) ((EndpointDiagram) visualEndpoint).getChild(),
+                    visualEndpoint.getName());
+        } else {
+            return null;
+        }
+    }
+
+    private SynapseArtifact transformEndpoint(FormPage endpointFormPage) throws Exception {
+        if ((FormPage) endpointFormPage instanceof WsdlEndpointFormPage) {
+            WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
+            return transformer.create((WsdlEndpointFormPage) endpointFormPage);
+        } else if ((FormPage) endpointFormPage instanceof AddressEndpointFormPage) {
+            AddressEndPointTransformer transformer = new AddressEndPointTransformer();
+            return transformer.create((AddressEndpointFormPage) endpointFormPage);
+        } else if ((FormPage) endpointFormPage instanceof HttpEndpointFormPage) {
+            HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
+            return transformer.create((HttpEndpointFormPage) endpointFormPage);
+        } else if ((FormPage) endpointFormPage instanceof DefaultEndpointFormPage) {
+            DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
+            return transformer.create((DefaultEndpointFormPage) endpointFormPage);
+        } else if ((FormPage) endpointFormPage instanceof TemplateEndPointFormPage) {
+            TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
+            return transformer.create((TemplateEndPointFormPage) endpointFormPage);
+        } else {
+            return null;
+        }
+    }
+
+    private org.apache.synapse.config.Entry transformLocalEntry(LocalEntry visualLocalEntry) throws Exception {
+        LocalEntryTransformer transformer = new LocalEntryTransformer();
+        return transformer.createEntry(visualLocalEntry);
+    }
+
+    private org.apache.synapse.config.Entry transformLocalEntry(FormPage localEntryFormPage) throws Exception {
+        LocalEntryTransformer transformer = new LocalEntryTransformer();
+        return transformer.createEntry(localEntryFormPage);
+    }
+
+    private org.apache.synapse.task.TaskDescription transformTask(FormPage scheduledTaskFormPage) throws Exception {
+        TaskTransformer transformer = new TaskTransformer();
+        return transformer.createTask(scheduledTaskFormPage);
+    }
+
+    private org.apache.synapse.task.TaskDescription transformTask(Task visualTask) {
+        TaskTransformer transformer = new TaskTransformer();
+        return transformer.create(visualTask);
+    }
+
+    private OMElement transformMessageProcessor(FormPage messageProcessorFormPage) {
+        MessageProcessorTransformer transformer = new MessageProcessorTransformer();
+        return transformer.createMessageProcessor(messageProcessorFormPage);
+    }
+
+    private OMElement transformMessageStore(FormPage messageProcessorFormPage) {
+        MessageStoreTransformer transformer = new MessageStoreTransformer();
+        return transformer.createMessageStore(messageProcessorFormPage);
+    }
+
+    private org.apache.synapse.rest.API transformAPI(SynapseAPI visualAPI) throws Exception {
+        TransformationInfo info = new TransformationInfo();
+        info.getTransformedMediators().clear();
+        SynapseConfiguration configuration = new SynapseConfiguration();;
+        info.setSynapseConfiguration(configuration);
+        API api = null;
+        APITransformer transformer = new APITransformer();
+        info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
+        transformer.transform(info, visualAPI);
+        api = configuration.getAPI(visualAPI.getApiName());
+        if (api != null) {
+            return api;
+        }
+        return new API(visualAPI.getApiName(), visualAPI.getContext());
+    }
+
+    private TemplateMediator transformSequenceTemplate(Template template) throws Exception {
+        TransformationInfo info = new TransformationInfo();
+        info.getTransformedMediators().clear();
+        SynapseConfiguration configuration = new SynapseConfiguration();
+        info.setSynapseConfiguration(configuration);
+        TemplateMediator templateMediator = new TemplateMediator();
+        templateMediator.setName(template.getName());
+        templateMediator.setParameters(new ArrayList<String>());
+        TemplateTransformer transformer = new TemplateTransformer();
+        info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
+        transformer.transform(info, template);
+        TemplateMediator mediator = configuration.getSequenceTemplate(template.getName());
+        if (mediator != null) {
+            templateMediator = mediator;
+        }
+        return templateMediator;
+    }
+
+    private org.apache.synapse.endpoints.Template transformEndpointTemplate(Template template) throws Exception {
+        TransformationInfo info = new TransformationInfo();
+        info.getTransformedMediators().clear();
+        SynapseConfiguration configuration = new SynapseConfiguration();
+        info.setSynapseConfiguration(configuration);
+        org.apache.synapse.endpoints.Template epTemplate = new org.apache.synapse.endpoints.Template();
+        epTemplate.setName(template.getName());
+
+        TemplateTransformer transformer = new TemplateTransformer();
+        info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
+        transformer.transform(info, template);
+        org.apache.synapse.endpoints.Template endpointTemplate = configuration.getEndpointTemplate(template.getName());
+        if (endpointTemplate != null) {
+            epTemplate = endpointTemplate;
+        }
+        return epTemplate;
+    }
+
+    private SequenceMediator transformMainSequence(ProxyService visualService) throws Exception {
+        TransformationInfo info = new TransformationInfo();
+        info.getTransformedMediators().clear();
+        SynapseConfiguration configuration = new SynapseConfiguration();
+        info.setSynapseConfiguration(configuration);
+        ProxyServiceTransformer transformer = new ProxyServiceTransformer();
+        info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
+        transformer.transform(info, visualService);
+        return info.getMainSequence();
+    }
+
+    private org.apache.synapse.inbound.InboundEndpoint transformInbundEndpoint(InboundEndpoint visualInboundEndpoint)
+            throws Exception {
         TransformationInfo info = new TransformationInfo();
         info.getTransformedMediators().clear();
         SynapseConfiguration configuration = new SynapseConfiguration();
         info.setSynapseConfiguration(configuration);
         InboundEndpointTransformer transformer = new InboundEndpointTransformer();
         transformer.transform(info, visualInboundEndpoint);
-        org.apache.synapse.inbound.InboundEndpoint inboundEndpoint = configuration.getInboundEndpoint(visualInboundEndpoint.getName());
+        org.apache.synapse.inbound.InboundEndpoint inboundEndpoint = configuration
+                .getInboundEndpoint(visualInboundEndpoint.getName());
         return inboundEndpoint;
     }
-    
-    public String formToSource(FormPage formPage, ArtifactType artifactType ) throws Exception {
-		OMElement configOM = null;
-		if (artifactType == ArtifactType.LOCAL_ENTRY) {
-			configOM = EntrySerializer.serializeEntry(
-					transformLocalEntry(formPage), null);
-		} else if (artifactType == ArtifactType.TASK){
-			String TASK_EXTENSION_NS = "http://ws.apache.org/ns/synapse";
-			OMNamespace TASK_OM_NAMESPACE = OMAbstractFactory.getOMFactory().createOMNamespace(TASK_EXTENSION_NS, "");
-			configOM = TaskDescriptionSerializer.serializeTaskDescription(TASK_OM_NAMESPACE, transformTask(formPage));
-		} else if (artifactType == ArtifactType.MESSAGE_PROCESSOR) {
-			configOM = transformMessageProcessor(formPage);
-		} else if (artifactType == ArtifactType.MESSAGE_STORE) {
-			configOM = transformMessageStore(formPage);
-		} else if (formPage instanceof EndpointFormPage) {
-			SynapseArtifact transformEndpoint = transformEndpoint(formPage);
-			if (transformEndpoint != null) {
-				if (transformEndpoint instanceof Endpoint) {
-					configOM = EndpointSerializer.getElementFromEndpoint((Endpoint) transformEndpoint);
-				} else if (transformEndpoint instanceof org.apache.synapse.endpoints.Template) {
-					TemplateSerializer templateSerializer = new TemplateSerializer();
-					configOM = templateSerializer
-							.serializeEndpointTemplate((org.apache.synapse.endpoints.Template) transformEndpoint, null);
-				}
-			}
-		}
-		if (configOM != null) {
-			sourceXML = format(configOM.toString());
-			sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
-		}
-		return sourceXML;
-    	
+
+    public String formToSource(FormPage formPage, ArtifactType artifactType) throws Exception {
+        OMElement configOM = null;
+        if (artifactType == ArtifactType.LOCAL_ENTRY) {
+            configOM = EntrySerializer.serializeEntry(transformLocalEntry(formPage), null);
+        } else if (artifactType == ArtifactType.TASK) {
+            String TASK_EXTENSION_NS = "http://ws.apache.org/ns/synapse";
+            OMNamespace TASK_OM_NAMESPACE = OMAbstractFactory.getOMFactory().createOMNamespace(TASK_EXTENSION_NS, "");
+            configOM = TaskDescriptionSerializer.serializeTaskDescription(TASK_OM_NAMESPACE, transformTask(formPage));
+        } else if (artifactType == ArtifactType.MESSAGE_PROCESSOR) {
+            configOM = transformMessageProcessor(formPage);
+        } else if (artifactType == ArtifactType.MESSAGE_STORE) {
+            configOM = transformMessageStore(formPage);
+        } else if (formPage instanceof EndpointFormPage) {
+            SynapseArtifact transformEndpoint = transformEndpoint(formPage);
+            if (transformEndpoint != null) {
+                if (transformEndpoint instanceof Endpoint) {
+                    configOM = EndpointSerializer.getElementFromEndpoint((Endpoint) transformEndpoint);
+                } else if (transformEndpoint instanceof org.apache.synapse.endpoints.Template) {
+                    TemplateSerializer templateSerializer = new TemplateSerializer();
+                    configOM = templateSerializer
+                            .serializeEndpointTemplate((org.apache.synapse.endpoints.Template) transformEndpoint, null);
+                }
+            }
+        }
+        if (configOM != null) {
+            sourceXML = format(configOM.toString());
+            sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
+        }
+        return sourceXML;
+
     }
 
-	public String designToSource(EsbServer serverModel) throws Exception {
-		SynapseXMLConfigurationSerializer serializer = new SynapseXMLConfigurationSerializer();
-		SequenceMediatorSerializer sequenceSerializer = new SequenceMediatorSerializer();
-		OMElement configOM = null;
+    public String designToSource(EsbServer serverModel) throws Exception {
+        SynapseXMLConfigurationSerializer serializer = new SynapseXMLConfigurationSerializer();
+        SequenceMediatorSerializer sequenceSerializer = new SequenceMediatorSerializer();
+        OMElement configOM = null;
 
-		if (serverModel.getChildren().size() == 1) {
-			EsbElement child = serverModel.getChildren().get(0);
-			switch (serverModel.getType()) {
-			case SEQUENCE:
-				if (child instanceof Sequences) {
-					configOM = sequenceSerializer.serializeMediator(null,
-							transformSequence(serverModel));
-				}
-				break;
-			case PROXY:
-				if (child instanceof ProxyService) {
-					configOM = ProxyServiceSerializer.serializeProxy(null,
-							transformProxyService((ProxyService) child));
-				}
-				break;
-			case ENDPOINT:
-			case COMPLEX_ENDPOINT:
-				if (child instanceof EndpointDiagram) {
-					Endpoint transformEndpoint = transformEndpoint((EndpointDiagram) child);
-					if(transformEndpoint!=null){
-						configOM = EndpointSerializer
-						.getElementFromEndpoint(transformEndpoint);
-					}
-				}
-				break;
-			case LOCAL_ENTRY:
-				if (child instanceof LocalEntry) {
-					configOM = EntrySerializer.serializeEntry(
-							transformLocalEntry((LocalEntry) child), null);
-				}
-				break;						
-			case TEMPLATE_SEQUENCE:
-				if (child instanceof Template) {
-					TemplateMediator templateMediator = transformSequenceTemplate((Template) child);
-					configOM = MediatorSerializerFinder.getInstance().getSerializer(templateMediator).serializeMediator(null, templateMediator);
-				}
-				break;				
-			case TEMPLATE_ENDPOINT_ADDRESS:
-				if (child instanceof Template) {
-					TemplateSerializer templateSerializer = new TemplateSerializer();
-					configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child), null);
-
-				}
-				break;				
-			case TEMPLATE_ENDPOINT_WSDL:
-				if (child instanceof Template) {
-					TemplateSerializer templateSerializer = new TemplateSerializer();
-					configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child), null);
-				}
-				break;
-				
-			case TEMPLATE_ENDPOINT_DEFAULT:
-				if (child instanceof Template) {
-					TemplateSerializer templateSerializer = new TemplateSerializer();
-					configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child), null);
-				}
-				break;				
-			case TEMPLATE_ENDPOINT_HTTP:
-				if (child instanceof Template) {
-					TemplateSerializer templateSerializer = new TemplateSerializer();
-					configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child), null);
-				}
-				break;				
-			case TASK:
-				if (child instanceof Task) {
-					String TASK_EXTENSION_NS = "http://ws.apache.org/ns/synapse";
-				    OMNamespace TASK_OM_NAMESPACE = OMAbstractFactory.getOMFactory().createOMNamespace(TASK_EXTENSION_NS, "");
-					configOM = TaskDescriptionSerializer.serializeTaskDescription(TASK_OM_NAMESPACE,transformTask((Task)child));
-				}
-				break;	
-			case API:
-				if (child instanceof SynapseAPI) {
-					configOM = CustomAPISerializer.serializeAPI(transformAPI((SynapseAPI)child));
-				}
-				break;	
-			case MAIN_SEQUENCE:
-				if (child instanceof ProxyService) {
-					configOM = sequenceSerializer.serializeMediator(null,
-							transformMainSequence((ProxyService)child));
-				}
-				break;
-			case MESSAGE_STORE:
-				if(child instanceof MessageStore){
-					configOM = MessageStoreTransformer.createMessageStore((MessageStore) child);
-				}
-				break;
-			case MESSAGE_PROCESSOR:
-				if(child instanceof MessageProcessor) {
-					configOM = MessageProcessorTransformer.createMessageProcessor((MessageProcessor) child);
-				}
-				break;
-            case INBOUND_ENDPOINT:
-                if (child instanceof InboundEndpoint) {
-                        configOM = InboundEndpointSerializer.serializeInboundEndpoint(transformInbundEndpoint((InboundEndpoint)child));
+        if (serverModel.getChildren().size() == 1) {
+            EsbElement child = serverModel.getChildren().get(0);
+            switch (serverModel.getType()) {
+            case SEQUENCE:
+                if (child instanceof Sequences) {
+                    configOM = sequenceSerializer.serializeMediator(null, transformSequence(serverModel));
                 }
                 break;
-			case SYNAPSE_CONFIG:
-			default:
-				configOM = serializer.serializeConfiguration(transform(serverModel));
-				break;
-			}
-		} else {
-			configOM = serializer.serializeConfiguration(transform(serverModel));
-		}
+            case PROXY:
+                if (child instanceof ProxyService) {
+                    configOM = ProxyServiceSerializer.serializeProxy(null, transformProxyService((ProxyService) child));
+                }
+                break;
+            case ENDPOINT:
+            case COMPLEX_ENDPOINT:
+                if (child instanceof EndpointDiagram) {
+                    Endpoint transformEndpoint = transformEndpoint((EndpointDiagram) child);
+                    if (transformEndpoint != null) {
+                        configOM = EndpointSerializer.getElementFromEndpoint(transformEndpoint);
+                    }
+                }
+                break;
+            case LOCAL_ENTRY:
+                if (child instanceof LocalEntry) {
+                    configOM = EntrySerializer.serializeEntry(transformLocalEntry((LocalEntry) child), null);
+                }
+                break;
+            case TEMPLATE_SEQUENCE:
+                if (child instanceof Template) {
+                    TemplateMediator templateMediator = transformSequenceTemplate((Template) child);
+                    configOM = MediatorSerializerFinder.getInstance().getSerializer(templateMediator)
+                            .serializeMediator(null, templateMediator);
+                }
+                break;
+            case TEMPLATE_ENDPOINT_ADDRESS:
+                if (child instanceof Template) {
+                    TemplateSerializer templateSerializer = new TemplateSerializer();
+                    configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child),
+                            null);
 
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		if (configOM != null) {
-			DefaultEsbModelExporter.prettify(configOM, baos);
-			sourceXML = format(configOM.toString());
-		}
+                }
+                break;
+            case TEMPLATE_ENDPOINT_WSDL:
+                if (child instanceof Template) {
+                    TemplateSerializer templateSerializer = new TemplateSerializer();
+                    configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child),
+                            null);
+                }
+                break;
 
-		//sourceXML = baos.toString("UTF-8");
-		sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
-		return sourceXML;
-	}
+            case TEMPLATE_ENDPOINT_DEFAULT:
+                if (child instanceof Template) {
+                    TemplateSerializer templateSerializer = new TemplateSerializer();
+                    configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child),
+                            null);
+                }
+                break;
+            case TEMPLATE_ENDPOINT_HTTP:
+                if (child instanceof Template) {
+                    TemplateSerializer templateSerializer = new TemplateSerializer();
+                    configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child),
+                            null);
+                }
+                break;
+            case TASK:
+                if (child instanceof Task) {
+                    String TASK_EXTENSION_NS = "http://ws.apache.org/ns/synapse";
+                    OMNamespace TASK_OM_NAMESPACE = OMAbstractFactory.getOMFactory()
+                            .createOMNamespace(TASK_EXTENSION_NS, "");
+                    configOM = TaskDescriptionSerializer.serializeTaskDescription(TASK_OM_NAMESPACE,
+                            transformTask((Task) child));
+                }
+                break;
+            case API:
+                if (child instanceof SynapseAPI) {
+                    configOM = CustomAPISerializer.serializeAPI(transformAPI((SynapseAPI) child));
+                }
+                break;
+            case MAIN_SEQUENCE:
+                if (child instanceof ProxyService) {
+                    configOM = sequenceSerializer.serializeMediator(null, transformMainSequence((ProxyService) child));
+                }
+                break;
+            case MESSAGE_STORE:
+                if (child instanceof MessageStore) {
+                    configOM = MessageStoreTransformer.createMessageStore((MessageStore) child);
+                }
+                break;
+            case MESSAGE_PROCESSOR:
+                if (child instanceof MessageProcessor) {
+                    configOM = MessageProcessorTransformer.createMessageProcessor((MessageProcessor) child);
+                }
+                break;
+            case INBOUND_ENDPOINT:
+                if (child instanceof InboundEndpoint) {
+                    configOM = InboundEndpointSerializer
+                            .serializeInboundEndpoint(transformInbundEndpoint((InboundEndpoint) child));
+                }
+                break;
+            case SYNAPSE_CONFIG:
+            default:
+                configOM = serializer.serializeConfiguration(transform(serverModel));
+                break;
+            }
+        } else {
+            configOM = serializer.serializeConfiguration(transform(serverModel));
+        }
 
-	private static final String prettyPrintStylesheet = "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0' "
-			+ " xmlns:xalan='http://xml.apache.org/xslt' "
-			+ " exclude-result-prefixes='xalan'>"
-			+ "  <xsl:output method='xml' indent='yes' xalan:indent-amount='4'/>"
-			+ "  <xsl:strip-space elements='*'/>"
-			+ "  <xsl:template match='/'>"
-			+ "    <xsl:apply-templates/>"
-			+ "  </xsl:template>"
-			+ "  <xsl:template match='node() | @*'>"
-			+ "        <xsl:copy>"
-			+ "          <xsl:apply-templates select='node() | @*'/>"
-			+ "        </xsl:copy>" + "  </xsl:template>" + "</xsl:stylesheet>";
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        if (configOM != null) {
+            DefaultEsbModelExporter.prettify(configOM, baos);
+            sourceXML = format(configOM.toString());
+        }
 
-	protected static void prettify(OMElement wsdlElement, OutputStream out)
-			throws Exception {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		wsdlElement.serialize(baos);
+        // sourceXML = baos.toString("UTF-8");
+        sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
+        return sourceXML;
+    }
 
-		Source stylesheetSource = new StreamSource(new ByteArrayInputStream(
-				prettyPrintStylesheet.getBytes()));
-		Source xmlSource = new StreamSource(new ByteArrayInputStream(
-				baos.toByteArray()));
+    private static final String prettyPrintStylesheet = "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0' "
+            + " xmlns:xalan='http://xml.apache.org/xslt' " + " exclude-result-prefixes='xalan'>"
+            + "  <xsl:output method='xml' indent='yes' xalan:indent-amount='4'/>" + "  <xsl:strip-space elements='*'/>"
+            + "  <xsl:template match='/'>" + "    <xsl:apply-templates/>" + "  </xsl:template>"
+            + "  <xsl:template match='node() | @*'>" + "        <xsl:copy>"
+            + "          <xsl:apply-templates select='node() | @*'/>" + "        </xsl:copy>" + "  </xsl:template>"
+            + "</xsl:stylesheet>";
 
-		TransformerFactory tf = TransformerFactory.newInstance();
-		Templates templates = tf.newTemplates(stylesheetSource);
-		Transformer transformer = templates.newTransformer();
-		transformer.transform(xmlSource, new StreamResult(out));
-	}
+    protected static void prettify(OMElement wsdlElement, OutputStream out) throws Exception {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        wsdlElement.serialize(baos);
 
-	@Deprecated
-	public EsbServer sourceToDesign(String source, EsbServer esbServer) throws Exception {
-		// TODO : remove this method
-		return null;
-	}
-	
+        Source stylesheetSource = new StreamSource(new ByteArrayInputStream(prettyPrintStylesheet.getBytes()));
+        Source xmlSource = new StreamSource(new ByteArrayInputStream(baos.toByteArray()));
+
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Templates templates = tf.newTemplates(stylesheetSource);
+        Transformer transformer = templates.newTransformer();
+        transformer.transform(xmlSource, new StreamResult(out));
+    }
+
+    @Deprecated
+    public EsbServer sourceToDesign(String source, EsbServer esbServer) throws Exception {
+        // TODO : remove this method
+        return null;
+    }
+
     public String format(String unformattedXml) {
         try {
             final Document document = parseXmlFile(unformattedXml);
@@ -610,5 +600,5 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }	
+    }
 }

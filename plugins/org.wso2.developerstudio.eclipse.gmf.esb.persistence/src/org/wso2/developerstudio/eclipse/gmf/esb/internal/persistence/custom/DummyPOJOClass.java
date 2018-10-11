@@ -17,5 +17,5 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom;
 
 public class DummyPOJOClass {
-//this is a dummy class
+    // this is a dummy class
 }

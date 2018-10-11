@@ -7,16 +7,17 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 public class ShowPropertyViewEditPolicy extends OpenEditPolicy {
-	
-	protected Command getOpenCommand(Request request) {
-			try {
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.eclipse.ui.views.PropertySheet");
-			} catch (PartInitException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		return null;
-	}
+
+    protected Command getOpenCommand(Request request) {
+        try {
+            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                    .showView("org.eclipse.ui.views.PropertySheet");
+        } catch (PartInitException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
 }

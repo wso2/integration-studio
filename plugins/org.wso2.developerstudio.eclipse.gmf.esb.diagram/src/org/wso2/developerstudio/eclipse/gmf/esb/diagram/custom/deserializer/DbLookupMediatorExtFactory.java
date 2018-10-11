@@ -27,12 +27,12 @@ public class DbLookupMediatorExtFactory extends DBLookupMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	Mediator mediator = new DBLookupMediator();
-	processAuditStatus(mediator, omElement);
-	buildDataSource(omElement, (DBLookupMediator) mediator);
-	processStatements(omElement, (DBLookupMediator) mediator);
+        Mediator mediator = new DBLookupMediator();
+        processAuditStatus(mediator, omElement);
+        buildDataSource(omElement, (DBLookupMediator) mediator);
+        processStatements(omElement, (DBLookupMediator) mediator);
 
-	return mediator;
+        return mediator;
     }
 
 }

@@ -27,24 +27,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointWestOutputC
  *
  * @generated
  */
-public class RecipientListEndPointWestOutputConnectorImpl extends OutputConnectorImpl implements RecipientListEndPointWestOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RecipientListEndPointWestOutputConnectorImpl() {
-		super();
-	}
+public class RecipientListEndPointWestOutputConnectorImpl extends OutputConnectorImpl
+        implements RecipientListEndPointWestOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected RecipientListEndPointWestOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.RECIPIENT_LIST_END_POINT_WEST_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.RECIPIENT_LIST_END_POINT_WEST_OUTPUT_CONNECTOR;
+    }
 
-} //RecipientListEndPointWestOutputConnectorImpl
+} // RecipientListEndPointWestOutputConnectorImpl

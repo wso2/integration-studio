@@ -21,24 +21,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * @generated
  */
 public abstract class EsbNodeImpl extends EObjectImpl implements EsbNode {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EsbNodeImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected EsbNodeImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.ESB_NODE;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //EsbNodeImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.ESB_NODE;
+    }
+
+} // EsbNodeImpl

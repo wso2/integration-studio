@@ -54,172 +54,171 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  * {@link CustomDialogCellEditor} responsible for handling registry key properties.
  */
 public class RegistryKeyPropertyEditor extends CustomDialogCellEditor {
-	/**
-	 * {@link RegistryKeyProperty} used for editing.
-	 */
-	private RegistryKeyProperty registryKeyProperty;
+    /**
+     * {@link RegistryKeyProperty} used for editing.
+     */
+    private RegistryKeyProperty registryKeyProperty;
 
-	/**
-	 * Property owner.
-	 */
-	private Object propertyContainer;
+    /**
+     * Property owner.
+     */
+    private Object propertyContainer;
 
-	/**
-	 * Property descriptor.
-	 */
-	private IItemPropertyDescriptor propertyDescriptor;
-	
-	/**
-	 * Error log.
-	 */
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
-	/**
-	 * Creates a new {@link RegistryKeyPropertyEditor} instance.
-	 * 
-	 * @param parent parent {@link Composite}.
-	 * @param registryKeyProperty orginal {@link RegistryKeyProperty} to be replaced after editing.
-	 * @param propertyContainer property owner.
-	 * @param propertyDescriptor property descriptor.
-	 */
-	public RegistryKeyPropertyEditor(Composite parent, RegistryKeyProperty registryKeyProperty, Object propertyContainer,
-			IItemPropertyDescriptor propertyDescriptor) {
-		super(parent);
-		this.registryKeyProperty = EsbFactoryImpl.eINSTANCE.copyRegistryKeyProperty(registryKeyProperty); 
-		this.propertyContainer = propertyContainer;
-		this.propertyDescriptor = propertyDescriptor;
-	}
+    /**
+     * Property descriptor.
+     */
+    private IItemPropertyDescriptor propertyDescriptor;
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected Object openDialogBox(Control cellEditorWindow) {
-		//RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(cellEditorWindow.getShell(),
-		//		getStyle(), registryKeyProperty, findLocalNamedEntities(propertyContainer));
-		RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(cellEditorWindow.getShell(),
-				getStyle(), registryKeyProperty, findLocalNamedEntities(propertyContainer));
-		dialog.create();
-		dialog.getShell().setSize(520,250);
-		dialog.getShell().setText("Resource Key Editor");
-		dialog.open();
-		
-		if (dialog.getReturnCode()==Window.OK) {
-			propertyDescriptor.setPropertyValue(propertyContainer, registryKeyProperty);
-		}
-		return null;
-	}
+    /**
+     * Error log.
+     */
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	/**
-	 * Utility method for querying current named local entities that can be the
-	 * target of registry key attributes.
-	 * 
-	 * @param obj {@link EObject} which is part of the current resource being edited.
-	 * @return a list of local named entities.
-	 */
-	private List<NamedEntityDescriptor> findLocalNamedEntities(Object obj) {
-		List<NamedEntityDescriptor> result = new ArrayList<NamedEntityDescriptor>();
-		if (obj instanceof EObject) {
-			EObject rootObj = EcoreUtil.getRootContainer((EObject) obj);
-			
-			// Condition for filtering sequences.
-			EObjectCondition isSequence = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getMediatorSequence(),
-					TypeRelation.SAMETYPE_LITERAL);
-			
-			// Condition for filtering endpoints.
-			EObjectCondition isEndpoint = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getEndPoint(),
-					TypeRelation.SUBTYPE_LITERAL);
-			
-			// Condition for filtering proxy services.
-			EObjectCondition isProxyService = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getProxyService(),
-					TypeRelation.SAMETYPE_LITERAL);
-			
-			// Condition for local entries.
-			EObjectCondition isLocalEntry = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getLocalEntry(),
-					TypeRelation.SAMETYPE_LITERAL);
-			
-			// Construct the final query.
-			SELECT stmt = new SELECT(new FROM(rootObj), new WHERE(isSequence.OR(isEndpoint).OR(isProxyService).OR(
-					isLocalEntry)));
-			
-			// Execute.
-			IQueryResult queryResult = stmt.execute();
-			
-			// Extract named entity descriptors.
-			for (EObject object : queryResult.getEObjects()) {
-				switch (object.eClass().getClassifierID()) {
-					case EsbPackage.MEDIATOR_SEQUENCE:
-						MediatorSequence sequence = (MediatorSequence) object;
-						if (!sequence.isAnonymous()) {
-							result.add(new NamedEntityDescriptor(sequence.getSequenceName(), NamedEntityType.SEQUENCE));
-						}
-						break;
-					case EsbPackage.DEFAULT_END_POINT:
-					case EsbPackage.ADDRESS_END_POINT:
-					case EsbPackage.WSDL_END_POINT:
-					case EsbPackage.LOAD_BALANCE_END_POINT:
-					case EsbPackage.FAILOVER_END_POINT:
-					//case EsbPackage.DYNAMIC_LOAD_BALANCE_END_POINT:
-						EndPoint endpoint = (EndPoint) object;
-						if (!endpoint.isAnonymous()) {
-							result.add(new NamedEntityDescriptor(endpoint.getEndPointName(), NamedEntityType.ENDPOINT));
-						}
-						break;
-					case EsbPackage.PROXY_SERVICE:
-						ProxyService proxyService = (ProxyService) object;
-						result.add(new NamedEntityDescriptor(proxyService.getName(), NamedEntityType.PROXY_SERVICE));
-						break;
-					case EsbPackage.LOCAL_ENTRY:
-						LocalEntry localEntry = (LocalEntry) object;
-						result.add(new NamedEntityDescriptor(localEntry.getEntryName(), NamedEntityType.LOCAL_ENTRY));
-						break;
-					default:
-						// TODO: Log the unexpected result.
-				}
-			}
-		}
-		
-		return result;
-	}
-	
-	/**
-	 * Utility method for getting current local entries that can be the
-	 * target of registry key attributes.
-	 * 
-	 * @param obj {@link EObject} which is part of the current resource being edited.
-	 * @return a list of local named entities.
-	 */
-	private List<NamedEntityDescriptor> getLocalNamedEntities(Object obj) {
-		List<NamedEntityDescriptor> result = new ArrayList<NamedEntityDescriptor>();
-		
-		if (obj instanceof EObject) {
-			EObject eObject = (EObject) obj;
-			if (eObject.eResource() != null) {
-				URI uri = eObject.eResource().getURI();
+    /**
+     * Creates a new {@link RegistryKeyPropertyEditor} instance.
+     * 
+     * @param parent parent {@link Composite}.
+     * @param registryKeyProperty orginal {@link RegistryKeyProperty} to be replaced after editing.
+     * @param propertyContainer property owner.
+     * @param propertyDescriptor property descriptor.
+     */
+    public RegistryKeyPropertyEditor(Composite parent, RegistryKeyProperty registryKeyProperty,
+            Object propertyContainer, IItemPropertyDescriptor propertyDescriptor) {
+        super(parent);
+        this.registryKeyProperty = EsbFactoryImpl.eINSTANCE.copyRegistryKeyProperty(registryKeyProperty);
+        this.propertyContainer = propertyContainer;
+        this.propertyDescriptor = propertyDescriptor;
+    }
 
-				if (uri.isPlatform()) {
-					uri = URI.createURI(uri.toPlatformString(true));
-				}
+    /**
+     * {@inheritDoc}
+     */
+    protected Object openDialogBox(Control cellEditorWindow) {
+        // RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(cellEditorWindow.getShell(),
+        // getStyle(), registryKeyProperty, findLocalNamedEntities(propertyContainer));
+        RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(cellEditorWindow.getShell(),
+                getStyle(), registryKeyProperty, findLocalNamedEntities(propertyContainer));
+        dialog.create();
+        dialog.getShell().setSize(520, 250);
+        dialog.getShell().setText("Resource Key Editor");
+        dialog.open();
 
-				String fileString = URI.decode(uri.path());
-				IFile file = ResourcesPlugin.getWorkspace().getRoot()
-						.getFile(new Path(fileString));
-				IProject project = file.getProject();
-				ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
+        if (dialog.getReturnCode() == Window.OK) {
+            propertyDescriptor.setPropertyValue(propertyContainer, registryKeyProperty);
+        }
+        return null;
+    }
 
-				try {
-					esbProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
-					List<ESBArtifact> allArtifacts = esbProjectArtifact.getAllESBArtifacts();
-					for (ESBArtifact artifact : allArtifacts) {
-						if (artifact.getType().equals("synapse/local-entry")) {
-							result.add(new NamedEntityDescriptor(artifact.getName(), NamedEntityType.LOCAL_ENTRY));
-						}
-					}
-				} catch (Exception e) {
-					log.error(e);
-				}
-			}
-		}
-		
-		return result;
-	}
+    /**
+     * Utility method for querying current named local entities that can be the
+     * target of registry key attributes.
+     * 
+     * @param obj {@link EObject} which is part of the current resource being edited.
+     * @return a list of local named entities.
+     */
+    private List<NamedEntityDescriptor> findLocalNamedEntities(Object obj) {
+        List<NamedEntityDescriptor> result = new ArrayList<NamedEntityDescriptor>();
+        if (obj instanceof EObject) {
+            EObject rootObj = EcoreUtil.getRootContainer((EObject) obj);
+
+            // Condition for filtering sequences.
+            EObjectCondition isSequence = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getMediatorSequence(),
+                    TypeRelation.SAMETYPE_LITERAL);
+
+            // Condition for filtering endpoints.
+            EObjectCondition isEndpoint = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getEndPoint(),
+                    TypeRelation.SUBTYPE_LITERAL);
+
+            // Condition for filtering proxy services.
+            EObjectCondition isProxyService = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getProxyService(),
+                    TypeRelation.SAMETYPE_LITERAL);
+
+            // Condition for local entries.
+            EObjectCondition isLocalEntry = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getLocalEntry(),
+                    TypeRelation.SAMETYPE_LITERAL);
+
+            // Construct the final query.
+            SELECT stmt = new SELECT(new FROM(rootObj),
+                    new WHERE(isSequence.OR(isEndpoint).OR(isProxyService).OR(isLocalEntry)));
+
+            // Execute.
+            IQueryResult queryResult = stmt.execute();
+
+            // Extract named entity descriptors.
+            for (EObject object : queryResult.getEObjects()) {
+                switch (object.eClass().getClassifierID()) {
+                case EsbPackage.MEDIATOR_SEQUENCE:
+                    MediatorSequence sequence = (MediatorSequence) object;
+                    if (!sequence.isAnonymous()) {
+                        result.add(new NamedEntityDescriptor(sequence.getSequenceName(), NamedEntityType.SEQUENCE));
+                    }
+                    break;
+                case EsbPackage.DEFAULT_END_POINT:
+                case EsbPackage.ADDRESS_END_POINT:
+                case EsbPackage.WSDL_END_POINT:
+                case EsbPackage.LOAD_BALANCE_END_POINT:
+                case EsbPackage.FAILOVER_END_POINT:
+                    // case EsbPackage.DYNAMIC_LOAD_BALANCE_END_POINT:
+                    EndPoint endpoint = (EndPoint) object;
+                    if (!endpoint.isAnonymous()) {
+                        result.add(new NamedEntityDescriptor(endpoint.getEndPointName(), NamedEntityType.ENDPOINT));
+                    }
+                    break;
+                case EsbPackage.PROXY_SERVICE:
+                    ProxyService proxyService = (ProxyService) object;
+                    result.add(new NamedEntityDescriptor(proxyService.getName(), NamedEntityType.PROXY_SERVICE));
+                    break;
+                case EsbPackage.LOCAL_ENTRY:
+                    LocalEntry localEntry = (LocalEntry) object;
+                    result.add(new NamedEntityDescriptor(localEntry.getEntryName(), NamedEntityType.LOCAL_ENTRY));
+                    break;
+                default:
+                    // TODO: Log the unexpected result.
+                }
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Utility method for getting current local entries that can be the
+     * target of registry key attributes.
+     * 
+     * @param obj {@link EObject} which is part of the current resource being edited.
+     * @return a list of local named entities.
+     */
+    private List<NamedEntityDescriptor> getLocalNamedEntities(Object obj) {
+        List<NamedEntityDescriptor> result = new ArrayList<NamedEntityDescriptor>();
+
+        if (obj instanceof EObject) {
+            EObject eObject = (EObject) obj;
+            if (eObject.eResource() != null) {
+                URI uri = eObject.eResource().getURI();
+
+                if (uri.isPlatform()) {
+                    uri = URI.createURI(uri.toPlatformString(true));
+                }
+
+                String fileString = URI.decode(uri.path());
+                IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(fileString));
+                IProject project = file.getProject();
+                ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
+
+                try {
+                    esbProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
+                    List<ESBArtifact> allArtifacts = esbProjectArtifact.getAllESBArtifacts();
+                    for (ESBArtifact artifact : allArtifacts) {
+                        if (artifact.getType().equals("synapse/local-entry")) {
+                            result.add(new NamedEntityDescriptor(artifact.getName(), NamedEntityType.LOCAL_ENTRY));
+                        }
+                    }
+                } catch (Exception e) {
+                    log.error(e);
+                }
+            }
+        }
+
+        return result;
+    }
 }

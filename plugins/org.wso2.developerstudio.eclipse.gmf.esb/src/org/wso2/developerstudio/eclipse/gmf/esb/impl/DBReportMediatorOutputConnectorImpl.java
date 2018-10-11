@@ -18,25 +18,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class DBReportMediatorOutputConnectorImpl extends OutputConnectorImpl implements DBReportMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DBReportMediatorOutputConnectorImpl() {
-		super();
-	}
+public class DBReportMediatorOutputConnectorImpl extends OutputConnectorImpl
+        implements DBReportMediatorOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected DBReportMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.DB_REPORT_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //DBReportMediatorOutputConnectorImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.DB_REPORT_MEDIATOR_OUTPUT_CONNECTOR;
+    }
+
+} // DBReportMediatorOutputConnectorImpl

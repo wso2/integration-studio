@@ -28,23 +28,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndPointInputConnector;
  * @generated
  */
 public class HTTPEndPointInputConnectorImpl extends InputConnectorImpl implements HTTPEndPointInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HTTPEndPointInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected HTTPEndPointInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.HTTP_END_POINT_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.HTTP_END_POINT_INPUT_CONNECTOR;
+    }
 
-} //HTTPEndPointInputConnectorImpl
+} // HTTPEndPointInputConnectorImpl

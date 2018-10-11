@@ -25,26 +25,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
  * 
  */
 public abstract class CustomDialogCellEditor extends DialogCellEditor {
-	/**
-	 * {@link EsbFactory} reference.
-	 */
-	private EsbFactory esbFactory = EsbFactory.eINSTANCE;
-	
-	/**
-	 * Constructs a new {@link CustomDialogCellEditor}.
-	 * 
-	 * @param parent parent {@link Composite}. 
-	 */
-	public CustomDialogCellEditor(Composite parent) {
-		super(parent);
-	}
-	
-	/**
-	 * Utility method for retreiving a reference to the {@link EsbFactory}.
-	 * 
-	 * @return reference to {@link EsbFactory} instance.
-	 */
-	protected EsbFactory getEsbFactory() {
-		return esbFactory;
-	}
+    /**
+     * {@link EsbFactory} reference.
+     */
+    private EsbFactory esbFactory = EsbFactory.eINSTANCE;
+
+    /**
+     * Constructs a new {@link CustomDialogCellEditor}.
+     * 
+     * @param parent parent {@link Composite}.
+     */
+    public CustomDialogCellEditor(Composite parent) {
+        super(parent);
+    }
+
+    /**
+     * Utility method for retreiving a reference to the {@link EsbFactory}.
+     * 
+     * @return reference to {@link EsbFactory} instance.
+     */
+    protected EsbFactory getEsbFactory() {
+        return esbFactory;
+    }
 }

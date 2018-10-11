@@ -45,116 +45,116 @@ public class RewriteMediatorExtFactory extends URLRewriteMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	Mediator mediator = new URLRewriteMediator();
+        Mediator mediator = new URLRewriteMediator();
 
-	QName RULE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "rewriterule");
+        QName RULE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "rewriterule");
 
-	QName ATT_IN_PROPERTY = new QName("inProperty");
-	QName ATT_OUT_PROPERTY = new QName("outProperty");
+        QName ATT_IN_PROPERTY = new QName("inProperty");
+        QName ATT_OUT_PROPERTY = new QName("outProperty");
 
-	Iterator rules = omElement.getChildrenWithName(RULE_Q);
-	String inputProperty = omElement.getAttributeValue(ATT_IN_PROPERTY);
-	String outputProperty = omElement.getAttributeValue(ATT_OUT_PROPERTY);
+        Iterator rules = omElement.getChildrenWithName(RULE_Q);
+        String inputProperty = omElement.getAttributeValue(ATT_IN_PROPERTY);
+        String outputProperty = omElement.getAttributeValue(ATT_OUT_PROPERTY);
 
-	if (inputProperty != null) {
-	    ((URLRewriteMediator) mediator).setInputProperty(inputProperty);
-	}
-	if (outputProperty != null) {
-	    ((URLRewriteMediator) mediator).setOutputProperty(outputProperty);
-	}
+        if (inputProperty != null) {
+            ((URLRewriteMediator) mediator).setInputProperty(inputProperty);
+        }
+        if (outputProperty != null) {
+            ((URLRewriteMediator) mediator).setOutputProperty(outputProperty);
+        }
 
-	while (rules.hasNext()) {
-	    ((URLRewriteMediator) mediator).addRule(parseRule((OMElement) rules.next()));
-	}
+        while (rules.hasNext()) {
+            ((URLRewriteMediator) mediator).addRule(parseRule((OMElement) rules.next()));
+        }
 
-	processAuditStatus(mediator, omElement);
+        processAuditStatus(mediator, omElement);
 
-	return mediator;
+        return mediator;
     }
 
     private RewriteRule parseRule(OMElement ruleElement) {
-	Iterator actions = ruleElement.getChildrenWithName(ACTION_Q);
+        Iterator actions = ruleElement.getChildrenWithName(ACTION_Q);
 
-	RewriteRule rule = new RewriteRule();
-	while (actions.hasNext()) {
-	    rule.addRewriteAction(parseAction((OMElement) actions.next()));
-	}
+        RewriteRule rule = new RewriteRule();
+        while (actions.hasNext()) {
+            rule.addRewriteAction(parseAction((OMElement) actions.next()));
+        }
 
-	OMElement condition = ruleElement.getFirstChildWithName(CONDITION_Q);
-	if (condition != null) {
-	    OMElement child = condition.getFirstElement();
-	    if (child != null) {
-		try {
-		    Evaluator eval = EvaluatorFactoryFinder.getInstance().getEvaluator(child);
-		    rule.setCondition(eval);
-		} catch (EvaluatorException e) {
-		    // ignore
-		}
-	    }
-	}
+        OMElement condition = ruleElement.getFirstChildWithName(CONDITION_Q);
+        if (condition != null) {
+            OMElement child = condition.getFirstElement();
+            if (child != null) {
+                try {
+                    Evaluator eval = EvaluatorFactoryFinder.getInstance().getEvaluator(child);
+                    rule.setCondition(eval);
+                } catch (EvaluatorException e) {
+                    // ignore
+                }
+            }
+        }
 
-	return rule;
+        return rule;
     }
 
     private RewriteAction parseAction(OMElement actionElement) {
-	String value = actionElement.getAttributeValue(ATT_VALUE);
-	String xpath = actionElement.getAttributeValue(ATT_XPATH);
-	String type = actionElement.getAttributeValue(ATT_TYPE);
-	QName xpath_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "xpath");
+        String value = actionElement.getAttributeValue(ATT_VALUE);
+        String xpath = actionElement.getAttributeValue(ATT_XPATH);
+        String type = actionElement.getAttributeValue(ATT_TYPE);
+        QName xpath_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "xpath");
 
-	RewriteAction action = new RewriteAction();
-	if (xpath != null) {
-	    try {
-		action.setXpath(SynapseXPathFactory.getSynapseXPath(actionElement, xpath_Q));
-	    } catch (JaxenException e) {
-		// ignore
-	    }
-	} else if (value != null) {
-	    action.setValue(value);
-	}
+        RewriteAction action = new RewriteAction();
+        if (xpath != null) {
+            try {
+                action.setXpath(SynapseXPathFactory.getSynapseXPath(actionElement, xpath_Q));
+            } catch (JaxenException e) {
+                // ignore
+            }
+        } else if (value != null) {
+            action.setValue(value);
+        }
 
-	String fragment = actionElement.getAttributeValue(ATT_FRAGMENT);
-	if (fragment != null) {
-	    if (FRAGMENT_PROTOCOL.equals(fragment)) {
-		action.setFragmentIndex(URIFragments.PROTOCOL);
-	    } else if (FRAGMENT_USER_INFO.equals(fragment)) {
-		action.setFragmentIndex(URIFragments.USER_INFO);
-	    } else if (FRAGMENT_HOST.equals(fragment)) {
-		action.setFragmentIndex(URIFragments.HOST);
-	    } else if (FRAGMENT_PORT.equals(fragment)) {
-		action.setFragmentIndex(URIFragments.PORT);
-	    } else if (FRAGMENT_PATH.equals(fragment)) {
-		action.setFragmentIndex(URIFragments.PATH);
-	    } else if (FRAGMENT_QUERY.equals(fragment)) {
-		action.setFragmentIndex(URIFragments.QUERY);
-	    } else if (FRAGMENT_REF.equals(fragment)) {
-		action.setFragmentIndex(URIFragments.REF);
-	    } else if (FRAGMENT_FULL_URI.equals(fragment)) {
-		action.setFragmentIndex(URIFragments.FULL_URI);
-	    }
-	}
+        String fragment = actionElement.getAttributeValue(ATT_FRAGMENT);
+        if (fragment != null) {
+            if (FRAGMENT_PROTOCOL.equals(fragment)) {
+                action.setFragmentIndex(URIFragments.PROTOCOL);
+            } else if (FRAGMENT_USER_INFO.equals(fragment)) {
+                action.setFragmentIndex(URIFragments.USER_INFO);
+            } else if (FRAGMENT_HOST.equals(fragment)) {
+                action.setFragmentIndex(URIFragments.HOST);
+            } else if (FRAGMENT_PORT.equals(fragment)) {
+                action.setFragmentIndex(URIFragments.PORT);
+            } else if (FRAGMENT_PATH.equals(fragment)) {
+                action.setFragmentIndex(URIFragments.PATH);
+            } else if (FRAGMENT_QUERY.equals(fragment)) {
+                action.setFragmentIndex(URIFragments.QUERY);
+            } else if (FRAGMENT_REF.equals(fragment)) {
+                action.setFragmentIndex(URIFragments.REF);
+            } else if (FRAGMENT_FULL_URI.equals(fragment)) {
+                action.setFragmentIndex(URIFragments.FULL_URI);
+            }
+        }
 
-	if (type != null) {
-	    if (ACTION_SET.equals(type)) {
-		action.setActionType(RewriteAction.ACTION_SET);
-	    } else if (ACTION_APPEND.equals(type)) {
-		action.setActionType(RewriteAction.ACTION_APPEND);
-	    } else if (ACTION_PREPEND.equals(type)) {
-		action.setActionType(RewriteAction.ACTION_PREPEND);
-	    } else if (ACTION_REPLACE.equals(type)) {
-		action.setActionType(RewriteAction.ACTION_REPLACE);
-		String regex = actionElement.getAttributeValue(ATT_REGEX);
-		if (regex != null) {
-		    action.setRegex(regex);
-		}
-	    } else if (ACTION_REMOVE.equals(type)) {
-		action.setActionType(RewriteAction.ACTION_REMOVE);
-	    } else {
-		action.setActionType(RewriteAction.ACTION_SET);
-	    }
-	}
+        if (type != null) {
+            if (ACTION_SET.equals(type)) {
+                action.setActionType(RewriteAction.ACTION_SET);
+            } else if (ACTION_APPEND.equals(type)) {
+                action.setActionType(RewriteAction.ACTION_APPEND);
+            } else if (ACTION_PREPEND.equals(type)) {
+                action.setActionType(RewriteAction.ACTION_PREPEND);
+            } else if (ACTION_REPLACE.equals(type)) {
+                action.setActionType(RewriteAction.ACTION_REPLACE);
+                String regex = actionElement.getAttributeValue(ATT_REGEX);
+                if (regex != null) {
+                    action.setRegex(regex);
+                }
+            } else if (ACTION_REMOVE.equals(type)) {
+                action.setActionType(RewriteAction.ACTION_REMOVE);
+            } else {
+                action.setActionType(RewriteAction.ACTION_SET);
+            }
+        }
 
-	return action;
+        return action;
     }
 
 }

@@ -23,21 +23,19 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
-public class RespondMediatorDeserializer extends
-AbstractEsbNodeDeserializer<AbstractMediator, RespondMediator> {
+public class RespondMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, RespondMediator> {
 
-	@Override
-	public RespondMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) {
-		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.RespondMediator,
-				"Unsupported mediator passed in for deserialization at " + this.getClass());
+    @Override
+    public RespondMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) {
+        Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.RespondMediator,
+                "Unsupported mediator passed in for deserialization at " + this.getClass());
 
-		org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator visualRespondMediator = (org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator) DeserializerUtils
-				.createNode(part, EsbElementTypes.RespondMediator_3739);
-		setElementToEdit(visualRespondMediator);
-		setCommonProperties(mediator, visualRespondMediator);
+        org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator visualRespondMediator = (org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator) DeserializerUtils
+                .createNode(part, EsbElementTypes.RespondMediator_3739);
+        setElementToEdit(visualRespondMediator);
+        setCommonProperties(mediator, visualRespondMediator);
 
-		return visualRespondMediator;
-	}
-
+        return visualRespondMediator;
+    }
 
 }

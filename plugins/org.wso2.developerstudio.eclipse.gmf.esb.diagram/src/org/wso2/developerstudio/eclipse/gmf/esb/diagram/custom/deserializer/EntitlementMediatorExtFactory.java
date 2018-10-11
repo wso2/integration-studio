@@ -29,7 +29,7 @@ import org.wso2.carbon.identity.entitlement.mediator.EntitlementConstants;
 import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
 
-public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory{
+public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory {
 
     public Mediator createSpecificMediator(OMElement element, Properties properties) {
 
@@ -63,7 +63,7 @@ public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory{
         if (remoteServicePassword != null && remoteServicePassword.getAttributeValue() != null) {
             mediator.setRemoteServicePassword(remoteServicePassword.getAttributeValue());
         }
-        
+
         callbackClass = element.getAttribute(EntitlementConstants.ATTR_CALLBACK_CLASS);
         if (callbackClass != null && callbackClass.getAttributeValue() != null) {
             mediator.setCallbackClass(callbackClass.getAttributeValue());
@@ -76,8 +76,7 @@ public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory{
 
         invalidationInterval = element.getAttribute(EntitlementConstants.ATTR_INVALIDATION_INTERVAL);
         if (invalidationInterval != null && invalidationInterval.getAttributeValue() != null) {
-            mediator.setInvalidationInterval(Integer.
-                    parseInt(invalidationInterval.getAttributeValue()));
+            mediator.setInvalidationInterval(Integer.parseInt(invalidationInterval.getAttributeValue()));
         }
 
         maxCacheEntries = element.getAttribute(EntitlementConstants.ATTR_MAX_CACHE_ENTRIES);
@@ -103,11 +102,11 @@ public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory{
         client = element.getAttribute(EntitlementConstants.ATTR_CLIENT);
         if (client != null && client.getAttributeValue() != null) {
             mediator.setClient(client.getAttributeValue());
-        }        
+        }
 
         SequenceMediatorFactory mediatorFactory = new SequenceMediatorFactory();
-        OMAttribute onReject = element.getAttribute(
-                new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.ONREJECT));
+        OMAttribute onReject = element
+                .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.ONREJECT));
         if (onReject != null) {
             String onRejectValue = onReject.getAttributeValue();
             if (onRejectValue != null) {
@@ -117,12 +116,12 @@ public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory{
             OMElement onRejectMediatorElement = element.getFirstChildWithName(
                     new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, XMLConfigConstants.ONREJECT));
             if (onRejectMediatorElement != null) {
-                mediator.setOnRejectMediator(mediatorFactory.createAnonymousSequence(
-                        onRejectMediatorElement, properties));
+                mediator.setOnRejectMediator(
+                        mediatorFactory.createAnonymousSequence(onRejectMediatorElement, properties));
             }
         }
-        OMAttribute onAccept = element.getAttribute(
-                new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.ONACCEPT));
+        OMAttribute onAccept = element
+                .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.ONACCEPT));
         if (onAccept != null) {
             String onAcceptValue = onAccept.getAttributeValue();
             if (onAcceptValue != null) {
@@ -132,38 +131,35 @@ public class EntitlementMediatorExtFactory extends EntitlementMediatorFactory{
             OMElement onAcceptMediatorElement = element.getFirstChildWithName(
                     new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, XMLConfigConstants.ONACCEPT));
             if (onAcceptMediatorElement != null) {
-                mediator.setOnAcceptMediator(mediatorFactory.createAnonymousSequence(
-                        onAcceptMediatorElement, properties));
+                mediator.setOnAcceptMediator(
+                        mediatorFactory.createAnonymousSequence(onAcceptMediatorElement, properties));
             }
         }
-        OMAttribute obligations = element.getAttribute(
-                new QName(XMLConfigConstants.NULL_NAMESPACE, OBLIGATIONS));
+        OMAttribute obligations = element.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, OBLIGATIONS));
         if (obligations != null) {
             String obligationsValue = obligations.getAttributeValue();
             if (obligationsValue != null) {
                 mediator.setObligationsSeqKey(obligationsValue.trim());
             }
         } else {
-            OMElement obligationsMediatorElement = element.getFirstChildWithName(
-                    new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, OBLIGATIONS));
+            OMElement obligationsMediatorElement = element
+                    .getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, OBLIGATIONS));
             if (obligationsMediatorElement != null) {
-                mediator.setObligationsMediator(mediatorFactory.createAnonymousSequence(
-                        obligationsMediatorElement, properties));
+                mediator.setObligationsMediator(
+                        mediatorFactory.createAnonymousSequence(obligationsMediatorElement, properties));
             }
         }
-        OMAttribute advice = element.getAttribute(
-                new QName(XMLConfigConstants.NULL_NAMESPACE, ADVICE));
+        OMAttribute advice = element.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, ADVICE));
         if (advice != null) {
             String adviceValue = advice.getAttributeValue();
             if (adviceValue != null) {
                 mediator.setAdviceSeqKey(adviceValue.trim());
             }
         } else {
-            OMElement adviceMediatorElement = element.getFirstChildWithName(
-                    new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, ADVICE));
+            OMElement adviceMediatorElement = element
+                    .getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, ADVICE));
             if (adviceMediatorElement != null) {
-                mediator.setAdviceMediator(mediatorFactory.createAnonymousSequence(
-                        adviceMediatorElement, properties));
+                mediator.setAdviceMediator(mediatorFactory.createAnonymousSequence(adviceMediatorElement, properties));
             }
         }
 

@@ -12,24 +12,24 @@ import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureURLrewriteruleDialog;
 
-public class URLRewiterConfigurationPropertyDescriptor extends PropertyDescriptor{
+public class URLRewiterConfigurationPropertyDescriptor extends PropertyDescriptor {
 
-	public URLRewiterConfigurationPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public URLRewiterConfigurationPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-		   protected Object openDialogBox(Control cellEditorWindow) {
-		        Shell shell = Display.getDefault().getActiveShell();
-				URLRewriteMediator urlMediator = (URLRewriteMediator) object;
-		        ConfigureURLrewriteruleDialog urlMediatorConfigurationDialog = new ConfigureURLrewriteruleDialog(shell, urlMediator,TransactionUtil.getEditingDomain(urlMediator));
-		        urlMediatorConfigurationDialog.setBlockOnOpen(true);
-		        urlMediatorConfigurationDialog.open();
-				return null;
-			}
-		};
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                URLRewriteMediator urlMediator = (URLRewriteMediator) object;
+                ConfigureURLrewriteruleDialog urlMediatorConfigurationDialog = new ConfigureURLrewriteruleDialog(shell,
+                        urlMediator, TransactionUtil.getEditingDomain(urlMediator));
+                urlMediatorConfigurationDialog.setBlockOnOpen(true);
+                urlMediatorConfigurationDialog.open();
+                return null;
+            }
+        };
+    }
 }

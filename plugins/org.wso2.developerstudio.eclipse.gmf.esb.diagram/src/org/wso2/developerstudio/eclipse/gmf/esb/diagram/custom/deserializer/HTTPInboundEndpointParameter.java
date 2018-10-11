@@ -28,27 +28,33 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 
 /**
- * This Enum represent http inbound endpoint parameters with parameter name , related EAttribute and boolean value indicating
+ * This Enum represent http inbound endpoint parameters with parameter name , related EAttribute and boolean value
+ * indicating
  * whether it could hold key attribute
  *
  */
 public enum HTTPInboundEndpointParameter {
 
-    INBOUND_HTTP_PORT_TYPE(InboundEndpointConstants.INBOUND_HTTP_PORT, INBOUND_ENDPOINT__INBOUND_HTTP_PORT, true),
-    INBOUND_WORKER_POOL_SIZE_CORE_TYPE(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_CORE, 
-            INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE,true),
-    INBOUND_WORKER_POOL_SIZE_MAX_TYPE(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_MAX,
-            INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX, true),
-    INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_TYPE(InboundEndpointConstants.INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC,
-            INBOUND_ENDPOINT__INBOUND_HTTP_PORT, true),
-    INBOUND_WORKER_POOL_QUEUE_LENGTH_TYPE(InboundEndpointConstants.INBOUND_WORKER_POOL_QUEUE_LENGTH,
-            INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH, true),
-    INBOUND_THREAD_GROUOP_ID_TYPE(InboundEndpointConstants.INBOUND_THREAD_GROUOP_ID,
-            INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID, true),
-    INBOUND_THREAD_ID_TYPE(InboundEndpointConstants.INBOUND_THREAD_ID, INBOUND_ENDPOINT__INBOUND_THREAD_ID, true),
-    DISPATCH_FILTER_PATTERN_TYPE(InboundEndpointConstants.DISPATCH_FILTER_PATTERN,
-            INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN, true);
-    
+    INBOUND_HTTP_PORT_TYPE(InboundEndpointConstants.INBOUND_HTTP_PORT, INBOUND_ENDPOINT__INBOUND_HTTP_PORT,
+            true), INBOUND_WORKER_POOL_SIZE_CORE_TYPE(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_CORE,
+                    INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE,
+                    true), INBOUND_WORKER_POOL_SIZE_MAX_TYPE(InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_MAX,
+                            INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX,
+                            true), INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_TYPE(
+                                    InboundEndpointConstants.INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC,
+                                    INBOUND_ENDPOINT__INBOUND_HTTP_PORT, true), INBOUND_WORKER_POOL_QUEUE_LENGTH_TYPE(
+                                            InboundEndpointConstants.INBOUND_WORKER_POOL_QUEUE_LENGTH,
+                                            INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH,
+                                            true), INBOUND_THREAD_GROUOP_ID_TYPE(
+                                                    InboundEndpointConstants.INBOUND_THREAD_GROUOP_ID,
+                                                    INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID,
+                                                    true), INBOUND_THREAD_ID_TYPE(
+                                                            InboundEndpointConstants.INBOUND_THREAD_ID,
+                                                            INBOUND_ENDPOINT__INBOUND_THREAD_ID,
+                                                            true), DISPATCH_FILTER_PATTERN_TYPE(
+                                                                    InboundEndpointConstants.DISPATCH_FILTER_PATTERN,
+                                                                    INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN, true);
+
     private final String name;
     private final EAttribute eAttributeValue;
     private final boolean holdsKeyValue;

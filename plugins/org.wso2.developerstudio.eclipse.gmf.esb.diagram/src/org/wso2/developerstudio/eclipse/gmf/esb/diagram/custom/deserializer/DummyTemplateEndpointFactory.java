@@ -34,27 +34,27 @@ public class DummyTemplateEndpointFactory extends DummyEndpointFactory {
     public Endpoint createEndpoint(OMElement endpointElement, boolean a, Properties properties) {
         TemplateEndpoint templateEndpoint = new TemplateEndpoint();
 
-        OMAttribute endpointNameAttribute = endpointElement.getAttribute(
-                new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
+        OMAttribute endpointNameAttribute = endpointElement
+                .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
         if (endpointNameAttribute != null) {
             templateEndpoint.addParameter("name", endpointNameAttribute.getAttributeValue());
             templateEndpoint.setName(endpointNameAttribute.getAttributeValue());
         }
 
-        OMAttribute endpointURIAttribute = endpointElement.getAttribute(
-                new QName(XMLConfigConstants.NULL_NAMESPACE, "uri"));
+        OMAttribute endpointURIAttribute = endpointElement
+                .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "uri"));
         if (endpointURIAttribute != null) {
             templateEndpoint.addParameter("uri", endpointURIAttribute.getAttributeValue());
         }
 
-        OMAttribute endpointTemplateAttribute = endpointElement.getAttribute(
-                new QName(XMLConfigConstants.NULL_NAMESPACE, "template"));
+        OMAttribute endpointTemplateAttribute = endpointElement
+                .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "template"));
         if (endpointTemplateAttribute != null) {
             templateEndpoint.setTemplate(endpointTemplateAttribute.getAttributeValue());
         }
 
-        Iterator paramItr = endpointElement.getChildrenWithName(
-                new QName(SynapseConstants.SYNAPSE_NAMESPACE, "parameter"));
+        Iterator paramItr = endpointElement
+                .getChildrenWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "parameter"));
         while (paramItr.hasNext()) {
             OMElement paramElement = (OMElement) paramItr.next();
 
@@ -62,11 +62,10 @@ public class DummyTemplateEndpointFactory extends DummyEndpointFactory {
             OMAttribute paramValue = paramElement.getAttribute(new QName("value"));
 
             if (paramName != null && paramValue != null) {
-                templateEndpoint.addParameter(paramName.getAttributeValue(),
-                        paramValue.getAttributeValue());
+                templateEndpoint.addParameter(paramName.getAttributeValue(), paramValue.getAttributeValue());
             }
         }
-        
+
         return templateEndpoint;
     }
 }

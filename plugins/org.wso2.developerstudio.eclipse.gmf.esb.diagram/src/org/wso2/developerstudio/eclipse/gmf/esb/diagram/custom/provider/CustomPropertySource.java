@@ -23,22 +23,21 @@ import org.eclipse.ui.views.properties.IPropertyDescriptor;
 /**
  * A custom {@link PropertySource} class.
  */
-public class CustomPropertySource extends PropertySource {	
-	/**
-	 * Creates a new {@link CustomPropertySource} instance.
-	 * 
-	 * @param object property container object.
-	 * @param itemPropertySource {@link IItemPropertySource} instance.
-	 */
-	public CustomPropertySource(Object object, IItemPropertySource itemPropertySource) {
-		super(object, itemPropertySource);
-	}
+public class CustomPropertySource extends PropertySource {
+    /**
+     * Creates a new {@link CustomPropertySource} instance.
+     * 
+     * @param object property container object.
+     * @param itemPropertySource {@link IItemPropertySource} instance.
+     */
+    public CustomPropertySource(Object object, IItemPropertySource itemPropertySource) {
+        super(object, itemPropertySource);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected IPropertyDescriptor createPropertyDescriptor(
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		return new CustomPropertyDescriptor(this.object, itemPropertyDescriptor);
-	}		
+    /**
+     * {@inheritDoc}
+     */
+    protected IPropertyDescriptor createPropertyDescriptor(IItemPropertyDescriptor itemPropertyDescriptor) {
+        return new CustomPropertyDescriptor(this.object, itemPropertyDescriptor);
+    }
 }

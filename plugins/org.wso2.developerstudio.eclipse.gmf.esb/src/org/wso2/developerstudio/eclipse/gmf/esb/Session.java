@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Session#getType <em>Type</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Session#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSession()
@@ -25,33 +25,35 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Session extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.Type}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.Type
-	 * @see #setType(Type)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSession_Type()
-	 * @model
-	 * @generated
-	 */
-	Type getType();
+    /**
+     * Returns the value of the '<em><b>Type</b></em>' attribute.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.Type}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.Type
+     * @see #setType(Type)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSession_Type()
+     * @model
+     * @generated
+     */
+    Type getType();
 
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Session#getType <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.Type
-	 * @see #getType()
-	 * @generated
-	 */
-	void setType(Type value);
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Session#getType <em>Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @param value the new value of the '<em>Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.Type
+     * @see #getType()
+     * @generated
+     */
+    void setType(Type value);
 
 } // Session

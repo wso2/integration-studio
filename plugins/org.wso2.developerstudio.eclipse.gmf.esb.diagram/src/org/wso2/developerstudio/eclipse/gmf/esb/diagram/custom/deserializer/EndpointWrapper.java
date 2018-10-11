@@ -19,19 +19,19 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import org.apache.synapse.endpoints.Endpoint;
 
 public class EndpointWrapper {
-	private Endpoint endpoint;
-	private String name;
+    private Endpoint endpoint;
+    private String name;
 
-	public EndpointWrapper(Endpoint endpoint, String name) {
-		this.endpoint = endpoint;
-		this.name = name;
-	}
+    public EndpointWrapper(Endpoint endpoint, String name) {
+        this.endpoint = endpoint;
+        this.name = name;
+    }
 
-	public Endpoint getEndpoint() {
-		return endpoint;
-	}
+    public Endpoint getEndpoint() {
+        return endpoint;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 }

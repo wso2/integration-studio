@@ -29,62 +29,61 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
  * {@link EsbNode} domain objects through custom UIs.
  */
 public abstract class ConfigureEsbNodeAction extends AbstractActionHandler {
-	/**
-	 * Creates a new {@link ConfigureEsbNodeAction} instance.
-	 * 
-	 * @param part {@link IWorkbenchPart} instance.
-	 */
-	public ConfigureEsbNodeAction(IWorkbenchPart part) {
-		super(part);
-		
-	}
+    /**
+     * Creates a new {@link ConfigureEsbNodeAction} instance.
+     * 
+     * @param part {@link IWorkbenchPart} instance.
+     */
+    public ConfigureEsbNodeAction(IWorkbenchPart part) {
+        super(part);
 
-	/**
-	 * Utility method for retrieving the currently selected {@link EditPart}.
-	 * 
-	 * @return current selected {@link EditPart} or null if multiple edit parts
-	 *         or no edit parts are selected.
-	 */
-	protected EditPart getSelectedEditPart() {
-		IStructuredSelection selection = getStructuredSelection();
-		if (selection.size() == 1) {
-			Object selectedEP = selection.getFirstElement();
-			if (selectedEP instanceof EditPart) {
-				return (EditPart) selectedEP;
-			}
-		}
-		return null;
-	}
-	
-	/**
-	 * Utility method for calculating the editing domain.
-	 * 
-	 * @return editing domain for this action.
-	 */
-	protected TransactionalEditingDomain getEditingDomain() {        
+    }
+
+    /**
+     * Utility method for retrieving the currently selected {@link EditPart}.
+     * 
+     * @return current selected {@link EditPart} or null if multiple edit parts
+     *         or no edit parts are selected.
+     */
+    protected EditPart getSelectedEditPart() {
+        IStructuredSelection selection = getStructuredSelection();
+        if (selection.size() == 1) {
+            Object selectedEP = selection.getFirstElement();
+            if (selectedEP instanceof EditPart) {
+                return (EditPart) selectedEP;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Utility method for calculating the editing domain.
+     * 
+     * @return editing domain for this action.
+     */
+    protected TransactionalEditingDomain getEditingDomain() {
         // try adapting the workbench part
         IWorkbenchPart part = getWorkbenchPart();
 
         if (part != null) {
-            IEditingDomainProvider edProvider = (IEditingDomainProvider) part
-                .getAdapter(IEditingDomainProvider.class);
+            IEditingDomainProvider edProvider = (IEditingDomainProvider) part.getAdapter(IEditingDomainProvider.class);
 
             if (edProvider != null) {
-            	EditingDomain domain = edProvider.getEditingDomain();
-            	
-            	if (domain instanceof TransactionalEditingDomain) {
-            		return (TransactionalEditingDomain) domain;
-            	}
+                EditingDomain domain = edProvider.getEditingDomain();
+
+                if (domain instanceof TransactionalEditingDomain) {
+                    return (TransactionalEditingDomain) domain;
+                }
             }
         }
-        
+
         return null;
     }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void refresh() {
-		// TODO: Check whether this is necessary.
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public void refresh() {
+        // TODO: Check whether this is necessary.
+    }
 }

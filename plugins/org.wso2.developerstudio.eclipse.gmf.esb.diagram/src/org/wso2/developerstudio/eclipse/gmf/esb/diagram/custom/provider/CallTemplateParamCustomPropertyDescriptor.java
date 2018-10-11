@@ -18,29 +18,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class CallTemplateParamCustomPropertyDescriptor extends PropertyDescriptor {
 
-	public CallTemplateParamCustomPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-   
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				Mediator mediator =(Mediator)object;
-				if(mediator instanceof CallTemplateMediator){
-					mediator = (CallTemplateMediator)mediator;
-				}else if(mediator instanceof CloudConnectorOperation){
-					mediator = (CloudConnectorOperation)mediator;
-				}
-			
-				CallTemplateParamDialog callTemplateParamDialog = new CallTemplateParamDialog(shell,
-						mediator,TransactionUtil.getEditingDomain(mediator));
-				callTemplateParamDialog.setBlockOnOpen(true);
-				callTemplateParamDialog.open();
-				return null;
-			}
-		};
-	}
+    public CallTemplateParamCustomPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                Mediator mediator = (Mediator) object;
+                if (mediator instanceof CallTemplateMediator) {
+                    mediator = (CallTemplateMediator) mediator;
+                } else if (mediator instanceof CloudConnectorOperation) {
+                    mediator = (CloudConnectorOperation) mediator;
+                }
+
+                CallTemplateParamDialog callTemplateParamDialog = new CallTemplateParamDialog(shell, mediator,
+                        TransactionUtil.getEditingDomain(mediator));
+                callTemplateParamDialog.setBlockOnOpen(true);
+                callTemplateParamDialog.open();
+                return null;
+            }
+        };
+    }
 }

@@ -22,205 +22,180 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.WestPointerShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
-public abstract class AbstractOutputConnector extends AbstractBorderItemEditPart{
+public abstract class AbstractOutputConnector extends AbstractBorderItemEditPart {
 
-	public final boolean isInput=false;
-	public static LinkToolEntry entry;
-	
-	public NodeFigure figure_;
-	
-	protected IFigure primaryShapeForward;
+    public final boolean isInput = false;
+    public static LinkToolEntry entry;
 
-	public IFigure primaryShapeReverse;
-	
-	//abstract public IFigure getPrimaryShapeForward();
-	//abstract public IFigure getPrimaryShapeReverse();	
-	//abstract public NodeFigure getNodeFigureOutput();
-	
-	
-	
-	public IFigure createNodeShapeReverse() {
-		return primaryShapeReverse = new WestPointerFigure();
-	}
+    public NodeFigure figure_;
 
-	public IFigure createNodeShapeForward() {
-		return primaryShapeForward = new EastPointerFigure();
-	}
+    protected IFigure primaryShapeForward;
 
+    public IFigure primaryShapeReverse;
 
-	public EastPointerFigure getPrimaryShapeForward() {
-		return (EastPointerFigure) primaryShapeForward;
-	}
+    // abstract public IFigure getPrimaryShapeForward();
+    // abstract public IFigure getPrimaryShapeReverse();
+    // abstract public NodeFigure getNodeFigureOutput();
 
-	public WestPointerFigure getPrimaryShapeReverse() {
-		return (WestPointerFigure) primaryShapeReverse;
-	}
-	
-	
-	public AbstractOutputConnector(View view) {
-		super(view);
-		// TODO Auto-generated constructor stub
-	}
+    public IFigure createNodeShapeReverse() {
+        return primaryShapeReverse = new WestPointerFigure();
+    }
 
+    public IFigure createNodeShapeForward() {
+        return primaryShapeForward = new EastPointerFigure();
+    }
 
-	protected NodeFigure createNodeFigure() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public EastPointerFigure getPrimaryShapeForward() {
+        return (EastPointerFigure) primaryShapeForward;
+    }
 
-	public NodeFigure getNodeFigureOutput() {
-		return figure_;
-	}
-	
-	static{
-	 entry = new LinkToolEntry(
-			Messages.EsbLink1CreationTool_title,
-			Messages.EsbLink1CreationTool_desc,
-			Collections.singletonList(EsbElementTypes.EsbLink_4001));
-	entry.setId("createEsbLink1CreationTool"); //$NON-NLS-1$
-	entry.setSmallIcon(EsbElementTypes
-			.getImageDescriptor(EsbElementTypes.EsbLink_4001));
-	entry.setLargeIcon(entry.getSmallIcon());
-	}
-	
+    public WestPointerFigure getPrimaryShapeReverse() {
+        return (WestPointerFigure) primaryShapeReverse;
+    }
 
-	
-	public static class LinkToolEntry extends ToolEntry {
+    public AbstractOutputConnector(View view) {
+        super(view);
+        // TODO Auto-generated constructor stub
+    }
 
-		/**
-		 * @generated
-		 */
-		private final List<IElementType> relationshipTypes;
+    protected NodeFigure createNodeFigure() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-		/**
-		 * @generated
-		 */
-		private LinkToolEntry(String title, String description,
-				List<IElementType> relationshipTypes) {
-			super(title, description, null, null);
-			this.relationshipTypes = relationshipTypes;
-		}
+    public NodeFigure getNodeFigureOutput() {
+        return figure_;
+    }
 
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
-	}
-	
-	public class EastPointerFigure extends EastPointerShape {
+    static {
+        entry = new LinkToolEntry(Messages.EsbLink1CreationTool_title, Messages.EsbLink1CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.EsbLink_4001));
+        entry.setId("createEsbLink1CreationTool"); //$NON-NLS-1$
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EsbLink_4001));
+        entry.setLargeIcon(entry.getSmallIcon());
+    }
 
-		
-		public EastPointerFigure() {
+    public static class LinkToolEntry extends ToolEntry {
 
-			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
-					getMapMode().DPtoLP(10)));
-			this.addMouseMotionListener(new MouseMotionListener() {
+        /**
+         * @generated
+         */
+        private final List<IElementType> relationshipTypes;
 
-				public void mouseMoved(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+        /**
+         * @generated
+         */
+        private LinkToolEntry(String title, String description, List<IElementType> relationshipTypes) {
+            super(title, description, null, null);
+            this.relationshipTypes = relationshipTypes;
+        }
 
-				}
+        /**
+         * @generated
+         */
+        public Tool createTool() {
+            Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
+            tool.setProperties(getToolProperties());
+            return tool;
+        }
+    }
 
-				public void mouseHover(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+    public class EastPointerFigure extends EastPointerShape {
 
-				}
+        public EastPointerFigure() {
 
-				public void mouseExited(MouseEvent arg0) {
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("createEsbLink1CreationTool")) {
-					getEditDomain().getPaletteViewer().setActiveTool(null);		
-					}
+            this.setBackgroundColor(THIS_BACK);
+            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+            this.addMouseMotionListener(new MouseMotionListener() {
 
-				}
+                public void mouseMoved(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-				public void mouseEntered(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("selectionTool")) {
-						getEditDomain()
-								.getPaletteViewer()
-								.setActiveTool(
-										(ToolEntry) (((PaletteContainer) getEditDomain()
-												.getPaletteViewer()
-												.getPaletteRoot().getChildren()
-												.get(4)).getChildren().get(0)));
-					}
+                }
 
-				}
+                public void mouseHover(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-				public void mouseDragged(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+                }
 
-				}
-			});
-		}
+                public void mouseExited(MouseEvent arg0) {
+                    if (getEditDomain().getPaletteViewer().getActiveTool().getId()
+                            .equals("createEsbLink1CreationTool")) {
+                        getEditDomain().getPaletteViewer().setActiveTool(null);
+                    }
 
-	}
-	
-	@Override
-	public boolean isSelectable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+                }
 
-	public class WestPointerFigure extends WestPointerShape {
+                public void mouseEntered(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
+                    if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
+                        getEditDomain().getPaletteViewer()
+                                .setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+                                        .getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
+                    }
 
-		public WestPointerFigure() {
+                }
 
-			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
-					getMapMode().DPtoLP(10)));
-			this.addMouseMotionListener(new MouseMotionListener() {
+                public void mouseDragged(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-				public void mouseMoved(MouseEvent me) {
-					// TODO Auto-generated method stub
+                }
+            });
+        }
 
-				}
+    }
 
-				public void mouseHover(MouseEvent me) {
-					// TODO Auto-generated method stub
+    @Override
+    public boolean isSelectable() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-				}
+    public class WestPointerFigure extends WestPointerShape {
 
-				public void mouseExited(MouseEvent me) {
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("createEsbLink1CreationTool")) {
-					getEditDomain().getPaletteViewer().setActiveTool(null);
-					}
-					
-				}
+        public WestPointerFigure() {
 
-				public void mouseEntered(MouseEvent me) {
-					// TODO Auto-generated method stub
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("selectionTool")) {
-						getEditDomain()
-								.getPaletteViewer()
-								.setActiveTool(
-										(ToolEntry) (((PaletteContainer) getEditDomain()
-												.getPaletteViewer()
-												.getPaletteRoot().getChildren()
-												.get(4)).getChildren().get(0)));
+            this.setBackgroundColor(THIS_BACK);
+            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+            this.addMouseMotionListener(new MouseMotionListener() {
 
-					}
-				}
+                public void mouseMoved(MouseEvent me) {
+                    // TODO Auto-generated method stub
 
-				public void mouseDragged(MouseEvent me) {
-					// TODO Auto-generated method stub
+                }
 
-				}
-			});
-		}
+                public void mouseHover(MouseEvent me) {
+                    // TODO Auto-generated method stub
 
-	}
-	static final Color THIS_BACK = new Color(null, 50, 50, 50);
-	
-	
+                }
+
+                public void mouseExited(MouseEvent me) {
+                    if (getEditDomain().getPaletteViewer().getActiveTool().getId()
+                            .equals("createEsbLink1CreationTool")) {
+                        getEditDomain().getPaletteViewer().setActiveTool(null);
+                    }
+
+                }
+
+                public void mouseEntered(MouseEvent me) {
+                    // TODO Auto-generated method stub
+                    if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
+                        getEditDomain().getPaletteViewer()
+                                .setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+                                        .getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
+
+                    }
+                }
+
+                public void mouseDragged(MouseEvent me) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+        }
+
+    }
+
+    static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

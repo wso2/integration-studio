@@ -29,28 +29,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class CommentMediatorTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject){
-		information.getParentSequence().addChild(createCommentMediator(information, subject));
-	}
+    public void transform(TransformationInfo information, EsbNode subject) {
+        information.getParentSequence().addChild(createCommentMediator(information, subject));
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
-			throws Exception {
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
+            throws Exception {
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		sequence.addChild(createCommentMediator(information, subject));
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        sequence.addChild(createCommentMediator(information, subject));
 
-	}
+    }
 
-	private org.apache.synapse.mediators.builtin.CommentMediator createCommentMediator(TransformationInfo information,
-			EsbNode subject) {
-		Assert.isTrue(subject instanceof CommentMediator, "Unsupported mediator passed in for serialization.");
-		CommentMediator visualComment = (CommentMediator) subject;
-		org.apache.synapse.mediators.builtin.CommentMediator commentMediator = new org.apache.synapse.mediators.builtin.CommentMediator();
-		commentMediator.setCommentText(visualComment.getCommentText());
-		return commentMediator;
-	}
+    private org.apache.synapse.mediators.builtin.CommentMediator createCommentMediator(TransformationInfo information,
+            EsbNode subject) {
+        Assert.isTrue(subject instanceof CommentMediator, "Unsupported mediator passed in for serialization.");
+        CommentMediator visualComment = (CommentMediator) subject;
+        org.apache.synapse.mediators.builtin.CommentMediator commentMediator = new org.apache.synapse.mediators.builtin.CommentMediator();
+        commentMediator.setCommentText(visualComment.getCommentText());
+        return commentMediator;
+    }
 
 }

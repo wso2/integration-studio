@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediatorOutputConnect
  *
  * @generated
  */
-public class TransactionMediatorOutputConnectorImpl extends OutputConnectorImpl implements TransactionMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TransactionMediatorOutputConnectorImpl() {
-		super();
-	}
+public class TransactionMediatorOutputConnectorImpl extends OutputConnectorImpl
+        implements TransactionMediatorOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected TransactionMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.TRANSACTION_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.TRANSACTION_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //TransactionMediatorOutputConnectorImpl
+} // TransactionMediatorOutputConnectorImpl

@@ -30,28 +30,30 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource;
  * @generated
  */
 public class ValidateResourceImpl extends AbstractLocationKeyResourceImpl implements ValidateResource {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected ValidateResourceImpl() {
-		super();
-		RegistryKeyProperty registryPropertyKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-		registryPropertyKey.setKeyName("keyName");
-		registryPropertyKey.setPrettyName("prettyName");
-		registryPropertyKey.setKeyValue("default/key");	
-		setKey(registryPropertyKey);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    protected ValidateResourceImpl() {
+        super();
+        RegistryKeyProperty registryPropertyKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+        registryPropertyKey.setKeyName("keyName");
+        registryPropertyKey.setPrettyName("prettyName");
+        registryPropertyKey.setKeyValue("default/key");
+        setKey(registryPropertyKey);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.VALIDATE_RESOURCE;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.VALIDATE_RESOURCE;
+    }
 
-} //ValidateResourceImpl
+} // ValidateResourceImpl

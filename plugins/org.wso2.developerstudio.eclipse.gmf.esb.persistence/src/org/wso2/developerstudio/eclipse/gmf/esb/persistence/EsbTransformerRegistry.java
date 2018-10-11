@@ -156,118 +156,118 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Medi
  * A registry of visual model object transformers.
  */
 public class EsbTransformerRegistry {
-	/**
-	 * Singleton instance.
-	 */
-	private static EsbTransformerRegistry singleton;		
-	
-	/**
-	 * Visual model type to transformers map.
-	 */
-	private Map<Class<?>, EsbNodeTransformer> transformersMap;
-	
-	/**
-	 * Creates a new transformer registry.
-	 */
-	private EsbTransformerRegistry() {
-		MediatorSerializerRegister.registerSerializers(); /* Register Custom serializers */
-		transformersMap = new HashMap<Class<?>, EsbNodeTransformer>();
-		addTransformer(ProxyService.class, new ProxyServiceTransformer());
-		addTransformer(DefaultEndPoint.class, new DefaultEndPointTransformer());
-		addTransformer(AddressEndPoint.class, new AddressEndPointTransformer());
-		addTransformer(DropMediator.class, new DropMediatorTransformer());
-		addTransformer(FilterMediator.class, new FilterMediatorTransformer());
-		addTransformer(LogMediator.class, new LogMediatorTransformer());
-		addTransformer(PropertyMediator.class, new PropertyMediatorTransformer());
-		addTransformer(EnrichMediator.class, new EnrichMediatorTransformer());
-		addTransformer(XSLTMediator.class, new XSLTMediatorTransformer());
-		addTransformer(FastXSLTMediator.class, new FastXSLTMediatorTransformer());
-		addTransformer(SwitchMediator.class, new SwitchMediatorTransformer());
-		addTransformer(MessageMediator.class, new MessageMediatorTransformer());
-		addTransformer(ClassMediator.class, new ClassMediatorTransformer());
-		addTransformer(FaultMediator.class, new FaultMediatorTransformer());
-		addTransformer(EventMediator.class, new EventMediatorTransformer());
-		addTransformer(FailoverEndPoint.class, new FailoverEndPointTransformer());
-		addTransformer(WSDLEndPoint.class, new WSDLEndPointTransformer());
-		addTransformer(LoadBalanceEndPoint.class, new LoadBalanceEndPointTransformer());
-		addTransformer(XQueryMediator.class, new XQueryMediatorTransformer());
-		addTransformer(Sequence.class, new SequenceMediatorTransformer());
-		addTransformer(DBLookupMediator.class, new DBLookupMediatorTransformer());
-		addTransformer(DBReportMediator.class, new DBReportMediatorTransformer());
-		addTransformer(HeaderMediator.class, new HeaderMediatorTransformer());
-		addTransformer(CacheMediator.class, new CacheMediatorTransformer());
-		addTransformer(AggregateMediator.class, new AggregateMediatorTransformer());
-		addTransformer(CalloutMediator.class, new CalloutMediatorTransformer());
-		addTransformer(TransactionMediator.class, new TransactionMediatorTransformer());
-		addTransformer(IterateMediator.class, new IterateMediatorTransformer());
-		addTransformer(CloneMediator.class, new CloneMediatorTransformer());
-		addTransformer(ThrottleMediator.class, new ThrottleMediatorTransformer());
-		addTransformer(OAuthMediator.class, new OAuthMediatorTransformer());
-		addTransformer(RuleMediator.class, new RuleMediatorTransformer());
-		addTransformer(SendMediator.class, new SendMediatorTransformer());
-		addTransformer(SpringMediator.class, new SpringMediatorTransformer());
-		addTransformer(ScriptMediator.class, new ScriptMediatorTransformer());
-		addTransformer(SmooksMediator.class, new SmooksMediatorTransformer());
-		addTransformer(EntitlementMediator.class, new EntitlementMediatorTransformer());
-		addTransformer(CommandMediator.class, new CommandMediatorTransformer());
-		addTransformer(StoreMediator.class, new StoreMediatorTransformer());
-		addTransformer(EnqueueMediator.class, new EnqueueMediatorTransformer());
-		addTransformer(PayloadFactoryMediator.class, new PayloadFactoryMediatorTransformer());
-		addTransformer(CallTemplateMediator.class, new CallTemplateMediatorTransformer());
-		addTransformer(RouterMediator.class, new RouterMediatorTransformer());
-		addTransformer(ConditionalRouterMediator.class, new ConditionalRouterMediatorTransformer());
-		addTransformer(ValidateMediator.class, new ValidateMediatorTransformer());
-		addTransformer(URLRewriteMediator.class, new URLReWriterMediatorTransformer());
-		addTransformer(BuilderMediator.class, new BuilderMediatorTransformer());
-		addTransformer(NamedEndpoint.class, new NamedEndPointTransformer());
-		addTransformer(APIResource.class, new APIResourceTransformer());
-		addTransformer(Template.class, new TemplateTransformer());
-		addTransformer(BAMMediator.class, new BAMMediatorTransformer());
-		addTransformer(EJBMediator.class, new EJBMediatorTransformer());
-		addTransformer(BeanMediator.class, new BeanMediatorTransformer());
-		addTransformer(Sequences.class, new SequenceTransformer());
-		addTransformer(AddressingEndpoint.class, new AddresingEndPointTransformer());
-		addTransformer(RecipientListEndPoint.class, new RecipientListEndPointTransformer());
-		addTransformer(HTTPEndpoint.class, new HTTPEndPointTransformer());
-		addTransformer(TemplateEndpoint.class, new TemplateEndPointTransformer());
-		addTransformer(CloudConnectorOperation.class, new CloudConnectorOperationTransformer());
-		addTransformer(LoopBackMediator.class, new LoopBackMediatorTransformer());
-		addTransformer(RespondMediator.class, new RespondMediatorTransformer());
-		addTransformer(CallMediator.class, new CallMediatorTransformer());
-		addTransformer(DataMapperMediator.class, new DataMapperMediatorTransformer());
-		addTransformer(ForEachMediator.class, new ForEachMediatorTransformer());
-		addTransformer(PublishEventMediator.class, new PublishEventMediatorTransformer());
-	}
-	
-	/**
-	 * @return singleton instance.
-	 */
-	public static EsbTransformerRegistry getInstance() {
-		if (null == singleton) {
-			singleton = new EsbTransformerRegistry();
-		}
-		return singleton;
-	}
-	
-	/**
-	 * Adds a new transformer into this registry.
-	 * 
-	 * @param <K>
-	 * @param visualModelClass
-	 * @param transformer
-	 */
-	public <K extends EsbNode>  void addTransformer(Class<K> visualModelClass, EsbNodeTransformer transformer) {
-		transformersMap.put(visualModelClass, transformer);
-	}
-	
-	/**
-	 * Attempts to locate a transformer corresponding to the specified visual model object.
-	 * 
-	 * @param <K>
-	 * @param esbNode
-	 * @return
-	 */
-	public <K extends EsbNode>  EsbNodeTransformer getTransformer(K esbNode) {
-		return transformersMap.get(esbNode.eClass().getInstanceClass());
-	}
+    /**
+     * Singleton instance.
+     */
+    private static EsbTransformerRegistry singleton;
+
+    /**
+     * Visual model type to transformers map.
+     */
+    private Map<Class<?>, EsbNodeTransformer> transformersMap;
+
+    /**
+     * Creates a new transformer registry.
+     */
+    private EsbTransformerRegistry() {
+        MediatorSerializerRegister.registerSerializers(); /* Register Custom serializers */
+        transformersMap = new HashMap<Class<?>, EsbNodeTransformer>();
+        addTransformer(ProxyService.class, new ProxyServiceTransformer());
+        addTransformer(DefaultEndPoint.class, new DefaultEndPointTransformer());
+        addTransformer(AddressEndPoint.class, new AddressEndPointTransformer());
+        addTransformer(DropMediator.class, new DropMediatorTransformer());
+        addTransformer(FilterMediator.class, new FilterMediatorTransformer());
+        addTransformer(LogMediator.class, new LogMediatorTransformer());
+        addTransformer(PropertyMediator.class, new PropertyMediatorTransformer());
+        addTransformer(EnrichMediator.class, new EnrichMediatorTransformer());
+        addTransformer(XSLTMediator.class, new XSLTMediatorTransformer());
+        addTransformer(FastXSLTMediator.class, new FastXSLTMediatorTransformer());
+        addTransformer(SwitchMediator.class, new SwitchMediatorTransformer());
+        addTransformer(MessageMediator.class, new MessageMediatorTransformer());
+        addTransformer(ClassMediator.class, new ClassMediatorTransformer());
+        addTransformer(FaultMediator.class, new FaultMediatorTransformer());
+        addTransformer(EventMediator.class, new EventMediatorTransformer());
+        addTransformer(FailoverEndPoint.class, new FailoverEndPointTransformer());
+        addTransformer(WSDLEndPoint.class, new WSDLEndPointTransformer());
+        addTransformer(LoadBalanceEndPoint.class, new LoadBalanceEndPointTransformer());
+        addTransformer(XQueryMediator.class, new XQueryMediatorTransformer());
+        addTransformer(Sequence.class, new SequenceMediatorTransformer());
+        addTransformer(DBLookupMediator.class, new DBLookupMediatorTransformer());
+        addTransformer(DBReportMediator.class, new DBReportMediatorTransformer());
+        addTransformer(HeaderMediator.class, new HeaderMediatorTransformer());
+        addTransformer(CacheMediator.class, new CacheMediatorTransformer());
+        addTransformer(AggregateMediator.class, new AggregateMediatorTransformer());
+        addTransformer(CalloutMediator.class, new CalloutMediatorTransformer());
+        addTransformer(TransactionMediator.class, new TransactionMediatorTransformer());
+        addTransformer(IterateMediator.class, new IterateMediatorTransformer());
+        addTransformer(CloneMediator.class, new CloneMediatorTransformer());
+        addTransformer(ThrottleMediator.class, new ThrottleMediatorTransformer());
+        addTransformer(OAuthMediator.class, new OAuthMediatorTransformer());
+        addTransformer(RuleMediator.class, new RuleMediatorTransformer());
+        addTransformer(SendMediator.class, new SendMediatorTransformer());
+        addTransformer(SpringMediator.class, new SpringMediatorTransformer());
+        addTransformer(ScriptMediator.class, new ScriptMediatorTransformer());
+        addTransformer(SmooksMediator.class, new SmooksMediatorTransformer());
+        addTransformer(EntitlementMediator.class, new EntitlementMediatorTransformer());
+        addTransformer(CommandMediator.class, new CommandMediatorTransformer());
+        addTransformer(StoreMediator.class, new StoreMediatorTransformer());
+        addTransformer(EnqueueMediator.class, new EnqueueMediatorTransformer());
+        addTransformer(PayloadFactoryMediator.class, new PayloadFactoryMediatorTransformer());
+        addTransformer(CallTemplateMediator.class, new CallTemplateMediatorTransformer());
+        addTransformer(RouterMediator.class, new RouterMediatorTransformer());
+        addTransformer(ConditionalRouterMediator.class, new ConditionalRouterMediatorTransformer());
+        addTransformer(ValidateMediator.class, new ValidateMediatorTransformer());
+        addTransformer(URLRewriteMediator.class, new URLReWriterMediatorTransformer());
+        addTransformer(BuilderMediator.class, new BuilderMediatorTransformer());
+        addTransformer(NamedEndpoint.class, new NamedEndPointTransformer());
+        addTransformer(APIResource.class, new APIResourceTransformer());
+        addTransformer(Template.class, new TemplateTransformer());
+        addTransformer(BAMMediator.class, new BAMMediatorTransformer());
+        addTransformer(EJBMediator.class, new EJBMediatorTransformer());
+        addTransformer(BeanMediator.class, new BeanMediatorTransformer());
+        addTransformer(Sequences.class, new SequenceTransformer());
+        addTransformer(AddressingEndpoint.class, new AddresingEndPointTransformer());
+        addTransformer(RecipientListEndPoint.class, new RecipientListEndPointTransformer());
+        addTransformer(HTTPEndpoint.class, new HTTPEndPointTransformer());
+        addTransformer(TemplateEndpoint.class, new TemplateEndPointTransformer());
+        addTransformer(CloudConnectorOperation.class, new CloudConnectorOperationTransformer());
+        addTransformer(LoopBackMediator.class, new LoopBackMediatorTransformer());
+        addTransformer(RespondMediator.class, new RespondMediatorTransformer());
+        addTransformer(CallMediator.class, new CallMediatorTransformer());
+        addTransformer(DataMapperMediator.class, new DataMapperMediatorTransformer());
+        addTransformer(ForEachMediator.class, new ForEachMediatorTransformer());
+        addTransformer(PublishEventMediator.class, new PublishEventMediatorTransformer());
+    }
+
+    /**
+     * @return singleton instance.
+     */
+    public static EsbTransformerRegistry getInstance() {
+        if (null == singleton) {
+            singleton = new EsbTransformerRegistry();
+        }
+        return singleton;
+    }
+
+    /**
+     * Adds a new transformer into this registry.
+     * 
+     * @param <K>
+     * @param visualModelClass
+     * @param transformer
+     */
+    public <K extends EsbNode> void addTransformer(Class<K> visualModelClass, EsbNodeTransformer transformer) {
+        transformersMap.put(visualModelClass, transformer);
+    }
+
+    /**
+     * Attempts to locate a transformer corresponding to the specified visual model object.
+     * 
+     * @param <K>
+     * @param esbNode
+     * @return
+     */
+    public <K extends EsbNode> EsbNodeTransformer getTransformer(K esbNode) {
+        return transformersMap.get(esbNode.eClass().getInstanceClass());
+    }
 }

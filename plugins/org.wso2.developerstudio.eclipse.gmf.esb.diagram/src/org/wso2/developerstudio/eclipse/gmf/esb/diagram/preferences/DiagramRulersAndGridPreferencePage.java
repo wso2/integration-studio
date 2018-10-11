@@ -8,10 +8,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlu
  */
 public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage {
 
-	/**
-	 * @generated
-	 */
-	public DiagramRulersAndGridPreferencePage() {
-		setPreferenceStore(EsbDiagramEditorPlugin.getInstance().getPreferenceStore());
-	}
+    /**
+     * @generated
+     */
+    public DiagramRulersAndGridPreferencePage() {
+        setPreferenceStore(EsbDiagramEditorPlugin.getInstance().getPreferenceStore());
+    }
 }

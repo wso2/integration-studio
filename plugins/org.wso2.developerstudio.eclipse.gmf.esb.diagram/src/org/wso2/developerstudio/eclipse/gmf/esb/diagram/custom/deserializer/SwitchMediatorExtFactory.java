@@ -39,49 +39,49 @@ public class SwitchMediatorExtFactory extends SwitchMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	Mediator mediator = new SwitchMediator();
+        Mediator mediator = new SwitchMediator();
 
-	QName CASE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "case");
-	QName DEFAULT_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "default");
+        QName CASE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "case");
+        QName DEFAULT_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "default");
 
-	OMAttribute source = omElement.getAttribute(ATT_SOURCE);
-	if (source != null) {
-	    try {
-		((SwitchMediator) mediator).setSource(SynapsePathFactory.getSynapsePath(omElement, ATT_SOURCE));
+        OMAttribute source = omElement.getAttribute(ATT_SOURCE);
+        if (source != null) {
+            try {
+                ((SwitchMediator) mediator).setSource(SynapsePathFactory.getSynapsePath(omElement, ATT_SOURCE));
 
-	    } catch (JaxenException e) {
-		// ignore
-	    }
-	}
+            } catch (JaxenException e) {
+                // ignore
+            }
+        }
 
-	processAuditStatus(mediator, omElement);
-	Iterator iter = omElement.getChildrenWithName(CASE_Q);
-	while (iter.hasNext()) {
-	    OMElement caseElem = (OMElement) iter.next();
-	    SwitchCase aCase = new SwitchCase();
-	    OMAttribute regex = caseElem.getAttribute(ATT_REGEX);
-	    if (regex != null) {
+        processAuditStatus(mediator, omElement);
+        Iterator iter = omElement.getChildrenWithName(CASE_Q);
+        while (iter.hasNext()) {
+            OMElement caseElem = (OMElement) iter.next();
+            SwitchCase aCase = new SwitchCase();
+            OMAttribute regex = caseElem.getAttribute(ATT_REGEX);
+            if (regex != null) {
 
-		try {
-		    aCase.setRegex(Pattern.compile(regex.getAttributeValue()));
-		} catch (PatternSyntaxException pse) {
-		    // ignore
-		}
-	    }
-	    aCase.setCaseMediator(AnonymousListMediatorFactory.createAnonymousListMediator(caseElem, null));
-	    ((SwitchMediator) mediator).addCase(aCase);
-	}
+                try {
+                    aCase.setRegex(Pattern.compile(regex.getAttributeValue()));
+                } catch (PatternSyntaxException pse) {
+                    // ignore
+                }
+            }
+            aCase.setCaseMediator(AnonymousListMediatorFactory.createAnonymousListMediator(caseElem, null));
+            ((SwitchMediator) mediator).addCase(aCase);
+        }
 
-	iter = omElement.getChildrenWithName(DEFAULT_Q);
-	while (iter.hasNext()) {
-	    SwitchCase aCase = new SwitchCase();
-	    aCase.setCaseMediator(
-		    AnonymousListMediatorFactory.createAnonymousListMediator((OMElement) iter.next(), null));
-	    ((SwitchMediator) mediator).setDefaultCase(aCase);
-	    break;
-	}
+        iter = omElement.getChildrenWithName(DEFAULT_Q);
+        while (iter.hasNext()) {
+            SwitchCase aCase = new SwitchCase();
+            aCase.setCaseMediator(
+                    AnonymousListMediatorFactory.createAnonymousListMediator((OMElement) iter.next(), null));
+            ((SwitchMediator) mediator).setDefaultCase(aCase);
+            break;
+        }
 
-	return mediator;
+        return mediator;
 
     }
 

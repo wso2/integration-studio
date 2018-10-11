@@ -49,214 +49,196 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  * corresponding synapse artifact(s).
  */
 public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
-	
-	private final String NEW_PROPERTY = "New Property...";
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo info, EsbNode subject)
-			throws TransformerException {	
-		try {
-			info.getParentSequence().addChild(createPropertyMediator(subject));
-			// Transform the property mediator output data flow path.
-			doTransform(info,
-					((PropertyMediator) subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		} catch (XMLStreamException e) {
-			throw new TransformerException(e);
-		}
-	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		// TODO Auto-generated method stub		
-		try {
-			sequence.addChild(createPropertyMediator(subject));
-			doTransformWithinSequence(information,((PropertyMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		} catch (XMLStreamException e) {
-			throw new TransformerException(e);
-		}		
-	}
-	
-	private org.apache.synapse.mediators.builtin.PropertyMediator createPropertyMediator(EsbNode subject) throws XMLStreamException, JaxenException, TransformerException{
-		// Check subject.
-		Assert.isTrue(subject instanceof PropertyMediator, "Invalid subject.");
-		PropertyMediator visualProp = (PropertyMediator) subject;
+    private final String NEW_PROPERTY = "New Property...";
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-		// Configure property mediator.
-		org.apache.synapse.mediators.builtin.PropertyMediator propMediator = new org.apache.synapse.mediators.builtin.PropertyMediator();
-		setCommonProperties(propMediator, visualProp);
-		{			
-			String pName = visualProp.getPropertyName().getLiteral();
-			if (pName != null && !pName.equals("")) {
-				if (NEW_PROPERTY.equals(pName)) {
-					String newPropertyName = visualProp.getNewPropertyName();
-					if (newPropertyName != null && !"".equals(newPropertyName)) {
-						propMediator.setName(newPropertyName);
-					} else {
-						propMediator.setName("PROPERTY_NAME");
-					}
-				} else {
-					propMediator.setName(visualProp.getPropertyName().getLiteral());
-				}
-			}
-			// Action.
-			switch (visualProp.getPropertyAction()) {
-			case SET:
-				propMediator
-						.setAction(org.apache.synapse.mediators.builtin.PropertyMediator.ACTION_SET);
-				break;
-			case REMOVE:
-				propMediator
-						.setAction(org.apache.synapse.mediators.builtin.PropertyMediator.ACTION_REMOVE);
-				break;
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        try {
+            info.getParentSequence().addChild(createPropertyMediator(subject));
+            // Transform the property mediator output data flow path.
+            doTransform(info, ((PropertyMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        } catch (XMLStreamException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-			}
-			if(visualProp.getPropertyAction().equals(PropertyAction.REMOVE)) {
-				
-				propMediator.setExpression(null);
-				propMediator.setValue(null);
-				
-			} else {
-				if (visualProp.getValueType().getName().equals("LITERAL")) {
-					switch (visualProp.getPropertyDataType()) {
-					case BOOLEAN:
-						String value= null;
-						if(visualProp.isBoolean()){
-							value = "true";
-						}	
-						else {value ="false";}
-						propMediator.setValue(value,
-								XMLConfigConstants.DATA_TYPES.BOOLEAN.toString());
-						break;
-					case FLOAT:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.FLOAT.toString());
-						break;
-					case DOUBLE:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.DOUBLE.toString());
-						break;
-					case INTEGER:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.INTEGER.toString());
-						break;
-					case LONG:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.LONG.toString());
-						break;
-					case OM:
-						propMediator.setValueElement(AXIOMUtil.stringToOM(visualProp.getOM()));
-						break;
-					case SHORT:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.SHORT.toString());
-						break;
-					case STRING:
-						propMediator.setValue(visualProp.getValue(),
-								XMLConfigConstants.DATA_TYPES.STRING.toString());
-						break;
-					}
-				} else {
-					if (visualProp.getValueExpression() != null) {
-						SynapsePath xpath = CustomSynapsePathFactory.getSynapsePath(visualProp
-								.getValueExpression().getPropertyValue());
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-						// SynapseJsonPath doesn't allow namespaces
-						if (visualProp.getValueExpression().getNamespaces() != null && !(xpath instanceof SynapseJsonPath)) {
-							Map<String, String> map = visualProp.getValueExpression()
-									.getNamespaces();
-							Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
-							while (entries.hasNext()) {
-								Map.Entry<String, String> entry = entries.next();
-								xpath.addNamespace(entry.getKey(), entry.getValue());
-							}
-						}
+    }
 
-						switch (visualProp.getPropertyDataType()) {
-						case BOOLEAN:
-							propMediator.setExpression(xpath,
-									XMLConfigConstants.DATA_TYPES.BOOLEAN.toString());
-							break;
-						case FLOAT:
-							propMediator.setExpression(xpath,
-									XMLConfigConstants.DATA_TYPES.FLOAT.toString());
-							break;
-						case DOUBLE:
-							propMediator.setExpression(xpath,
-									XMLConfigConstants.DATA_TYPES.DOUBLE.toString());
-							break;
-						case INTEGER:
-							propMediator.setExpression(xpath,
-									XMLConfigConstants.DATA_TYPES.INTEGER.toString());
-							break;
-						case LONG:
-							propMediator.setExpression(xpath,
-									XMLConfigConstants.DATA_TYPES.LONG.toString());
-							break;
-						case OM:
-							propMediator.setExpression(xpath,
-									XMLConfigConstants.DATA_TYPES.OM.toString());
-							break;
-						case SHORT:
-							propMediator.setExpression(xpath,
-									XMLConfigConstants.DATA_TYPES.SHORT.toString());
-							break;
-						case STRING:
-							propMediator.setExpression(xpath,
-									XMLConfigConstants.DATA_TYPES.STRING.toString());
-							break;
-						}
-					}
-				}
-			}
-			switch (visualProp.getPropertyScope()) {
-			case AXIS2:
-				propMediator.setScope(XMLConfigConstants.SCOPE_AXIS2);
-				break;
-			case AXIS2_CLIENT:
-				propMediator.setScope(XMLConfigConstants.SCOPE_CLIENT);
-				break;
-			case SYNAPSE:
-				propMediator.setScope(XMLConfigConstants.SCOPE_DEFAULT);
-				break;
-			case TRANSPORT:
-				propMediator.setScope(XMLConfigConstants.SCOPE_TRANSPORT);
-				break;
-			case OPERATION:
-				propMediator.setScope(XMLConfigConstants.SCOPE_OPERATION);
-				break;
-			case REGISTRY:
-				propMediator.setScope(XMLConfigConstants.SCOPE_REGISTRY);
-			}
-			
-			if (visualProp.getValueStringPattern() != null && !visualProp.getValueStringPattern().equals("")) {
-				try {
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // TODO Auto-generated method stub
+        try {
+            sequence.addChild(createPropertyMediator(subject));
+            doTransformWithinSequence(information, ((PropertyMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        } catch (XMLStreamException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-					Pattern pattern = Pattern.compile(visualProp
-							.getValueStringPattern());
-					propMediator.setPattern(pattern);
-				} catch (PatternSyntaxException e) {
+    private org.apache.synapse.mediators.builtin.PropertyMediator createPropertyMediator(EsbNode subject)
+            throws XMLStreamException, JaxenException, TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof PropertyMediator, "Invalid subject.");
+        PropertyMediator visualProp = (PropertyMediator) subject;
 
-					log.error(e);
-				}
-			}
-			
-			propMediator.setGroup(visualProp.getValueStringCapturingGroup());
+        // Configure property mediator.
+        org.apache.synapse.mediators.builtin.PropertyMediator propMediator = new org.apache.synapse.mediators.builtin.PropertyMediator();
+        setCommonProperties(propMediator, visualProp);
+        {
+            String pName = visualProp.getPropertyName().getLiteral();
+            if (pName != null && !pName.equals("")) {
+                if (NEW_PROPERTY.equals(pName)) {
+                    String newPropertyName = visualProp.getNewPropertyName();
+                    if (newPropertyName != null && !"".equals(newPropertyName)) {
+                        propMediator.setName(newPropertyName);
+                    } else {
+                        propMediator.setName("PROPERTY_NAME");
+                    }
+                } else {
+                    propMediator.setName(visualProp.getPropertyName().getLiteral());
+                }
+            }
+            // Action.
+            switch (visualProp.getPropertyAction()) {
+            case SET:
+                propMediator.setAction(org.apache.synapse.mediators.builtin.PropertyMediator.ACTION_SET);
+                break;
+            case REMOVE:
+                propMediator.setAction(org.apache.synapse.mediators.builtin.PropertyMediator.ACTION_REMOVE);
+                break;
 
-		}
-		return propMediator;
-	} 
+            }
+            if (visualProp.getPropertyAction().equals(PropertyAction.REMOVE)) {
 
+                propMediator.setExpression(null);
+                propMediator.setValue(null);
+
+            } else {
+                if (visualProp.getValueType().getName().equals("LITERAL")) {
+                    switch (visualProp.getPropertyDataType()) {
+                    case BOOLEAN:
+                        String value = null;
+                        if (visualProp.isBoolean()) {
+                            value = "true";
+                        } else {
+                            value = "false";
+                        }
+                        propMediator.setValue(value, XMLConfigConstants.DATA_TYPES.BOOLEAN.toString());
+                        break;
+                    case FLOAT:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.FLOAT.toString());
+                        break;
+                    case DOUBLE:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.DOUBLE.toString());
+                        break;
+                    case INTEGER:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.INTEGER.toString());
+                        break;
+                    case LONG:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.LONG.toString());
+                        break;
+                    case OM:
+                        propMediator.setValueElement(AXIOMUtil.stringToOM(visualProp.getOM()));
+                        break;
+                    case SHORT:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.SHORT.toString());
+                        break;
+                    case STRING:
+                        propMediator.setValue(visualProp.getValue(), XMLConfigConstants.DATA_TYPES.STRING.toString());
+                        break;
+                    }
+                } else {
+                    if (visualProp.getValueExpression() != null) {
+                        SynapsePath xpath = CustomSynapsePathFactory
+                                .getSynapsePath(visualProp.getValueExpression().getPropertyValue());
+
+                        // SynapseJsonPath doesn't allow namespaces
+                        if (visualProp.getValueExpression().getNamespaces() != null
+                                && !(xpath instanceof SynapseJsonPath)) {
+                            Map<String, String> map = visualProp.getValueExpression().getNamespaces();
+                            Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
+                            while (entries.hasNext()) {
+                                Map.Entry<String, String> entry = entries.next();
+                                xpath.addNamespace(entry.getKey(), entry.getValue());
+                            }
+                        }
+
+                        switch (visualProp.getPropertyDataType()) {
+                        case BOOLEAN:
+                            propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.BOOLEAN.toString());
+                            break;
+                        case FLOAT:
+                            propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.FLOAT.toString());
+                            break;
+                        case DOUBLE:
+                            propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.DOUBLE.toString());
+                            break;
+                        case INTEGER:
+                            propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.INTEGER.toString());
+                            break;
+                        case LONG:
+                            propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.LONG.toString());
+                            break;
+                        case OM:
+                            propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.OM.toString());
+                            break;
+                        case SHORT:
+                            propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.SHORT.toString());
+                            break;
+                        case STRING:
+                            propMediator.setExpression(xpath, XMLConfigConstants.DATA_TYPES.STRING.toString());
+                            break;
+                        }
+                    }
+                }
+            }
+            switch (visualProp.getPropertyScope()) {
+            case AXIS2:
+                propMediator.setScope(XMLConfigConstants.SCOPE_AXIS2);
+                break;
+            case AXIS2_CLIENT:
+                propMediator.setScope(XMLConfigConstants.SCOPE_CLIENT);
+                break;
+            case SYNAPSE:
+                propMediator.setScope(XMLConfigConstants.SCOPE_DEFAULT);
+                break;
+            case TRANSPORT:
+                propMediator.setScope(XMLConfigConstants.SCOPE_TRANSPORT);
+                break;
+            case OPERATION:
+                propMediator.setScope(XMLConfigConstants.SCOPE_OPERATION);
+                break;
+            case REGISTRY:
+                propMediator.setScope(XMLConfigConstants.SCOPE_REGISTRY);
+            }
+
+            if (visualProp.getValueStringPattern() != null && !visualProp.getValueStringPattern().equals("")) {
+                try {
+
+                    Pattern pattern = Pattern.compile(visualProp.getValueStringPattern());
+                    propMediator.setPattern(pattern);
+                } catch (PatternSyntaxException e) {
+
+                    log.error(e);
+                }
+            }
+
+            propMediator.setGroup(visualProp.getValueStringCapturingGroup());
+
+        }
+        return propMediator;
+    }
 
 }

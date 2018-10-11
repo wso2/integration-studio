@@ -13,24 +13,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Thro
 
 public class ThrottlePolicyEntryPropertyDescriptor extends PropertyDescriptor {
 
-	public ThrottlePolicyEntryPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-		
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				ThrottleMediator throttleMediator = (ThrottleMediator)object;
-		        ThrottlePolicyEntryDialog policyEntryDialog = new ThrottlePolicyEntryDialog(shell,throttleMediator);
-		        policyEntryDialog.setBlockOnOpen(true);
-		        policyEntryDialog.open();
-				return null;
-			}
-		};
-	}
+    public ThrottlePolicyEntryPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ThrottleMediator throttleMediator = (ThrottleMediator) object;
+                ThrottlePolicyEntryDialog policyEntryDialog = new ThrottlePolicyEntryDialog(shell, throttleMediator);
+                policyEntryDialog.setBlockOnOpen(true);
+                policyEntryDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

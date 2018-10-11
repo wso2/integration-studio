@@ -24,64 +24,64 @@ import javax.xml.namespace.QName;
 import org.apache.axiom.om.OMElement;
 import org.wso2.developerstudio.eclipse.platform.core.manifest.AbstractXMLDoc;
 
-public class Connector extends AbstractXMLDoc{
+public class Connector extends AbstractXMLDoc {
 
-	private List<Dependency> componentDependencies=new ArrayList<Dependency>();
-	private String connectorName = null;
-	private String authenticationInfo = null;
-	
-	public String getAuthenticationInfo() {
-		return authenticationInfo;
-	}
+    private List<Dependency> componentDependencies = new ArrayList<Dependency>();
+    private String connectorName = null;
+    private String authenticationInfo = null;
 
-	public void setAuthenticationInfo(String authenticationInfo) {
-		this.authenticationInfo = authenticationInfo;
-	}
+    public String getAuthenticationInfo() {
+        return authenticationInfo;
+    }
 
-	public String getConnectorName() {
-		return connectorName;
-	}
+    public void setAuthenticationInfo(String authenticationInfo) {
+        this.authenticationInfo = authenticationInfo;
+    }
 
-	public void setConnectorName(String connectorName) {
-		this.connectorName = connectorName;
-	}
+    public String getConnectorName() {
+        return connectorName;
+    }
 
-	public List<Dependency> getComponentDependencies() {
-		return componentDependencies;
-	}
+    public void setConnectorName(String connectorName) {
+        this.connectorName = connectorName;
+    }
 
-	public void setComponentDependencies(List<Dependency> componentDependencies) {
-		this.componentDependencies = componentDependencies;
-	}
+    public List<Dependency> getComponentDependencies() {
+        return componentDependencies;
+    }
 
-	@Override
-	protected void deserialize(OMElement documentElement) throws Exception {		
-		List<OMElement> component = getChildElements(documentElement, "component");
-		setConnectorName(component.get(0).getAttributeValue(new QName("name")));
-		for (OMElement omElement : component) {
-			List<OMElement> artifactElements = getChildElements(omElement, "dependency");			
-			for (OMElement omElement2 : artifactElements) {				
-				Dependency artifactDependency=new Dependency(omElement2.getAttributeValue(new QName("component"))); 
-				componentDependencies.add(artifactDependency);
-			}
-			List<OMElement> authenticationInfo = getChildElements(omElement, "authenticationInfo");
-			if(!authenticationInfo.isEmpty()){
-				setAuthenticationInfo(authenticationInfo.get(0).getText());
-			}
+    public void setComponentDependencies(List<Dependency> componentDependencies) {
+        this.componentDependencies = componentDependencies;
+    }
+
+    @Override
+    protected void deserialize(OMElement documentElement) throws Exception {
+        List<OMElement> component = getChildElements(documentElement, "component");
+        setConnectorName(component.get(0).getAttributeValue(new QName("name")));
+        for (OMElement omElement : component) {
+            List<OMElement> artifactElements = getChildElements(omElement, "dependency");
+            for (OMElement omElement2 : artifactElements) {
+                Dependency artifactDependency = new Dependency(omElement2.getAttributeValue(new QName("component")));
+                componentDependencies.add(artifactDependency);
+            }
+            List<OMElement> authenticationInfo = getChildElements(omElement, "authenticationInfo");
+            if (!authenticationInfo.isEmpty()) {
+                setAuthenticationInfo(authenticationInfo.get(0).getText());
+            }
         }
-		
-	}
 
-	@Override
-	protected String serialize() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	@Override
-	protected String getDefaultName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    protected String serialize() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    protected String getDefaultName() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

@@ -8,11 +8,11 @@ import org.eclipse.gmf.tooling.runtime.update.UpdaterNodeDescriptor;
  */
 public class EsbNodeDescriptor extends UpdaterNodeDescriptor {
 
-	/**
-	 * @generated
-	 */
-	public EsbNodeDescriptor(EObject modelElement, int visualID) {
-		super(modelElement, visualID);
-	}
+    /**
+     * @generated
+     */
+    public EsbNodeDescriptor(EObject modelElement, int visualID) {
+        super(modelElement, visualID);
+    }
 
 }

@@ -36,34 +36,36 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * @generated
  */
 public class ProxyWSDLResourceImpl extends AbstractLocationKeyResourceImpl implements ProxyWSDLResource {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 *
-	 * @generated NOT
-	 */
-	protected ProxyWSDLResourceImpl() {
-		super();
-		
-		// Resource key.
-		RegistryKeyProperty wsdlResourceKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-		//Set filter properties to filter in only wsdl media type
-		DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>)wsdlResourceKey.getFilters(), CSProviderConstants.FILTER_MEDIA_TYPE, PlatformMediaTypeConstants.MEDIA_TYPE_XSD);
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    protected ProxyWSDLResourceImpl() {
+        super();
 
-		wsdlResourceKey.setPrettyName("WSDL Resource Key");
-		wsdlResourceKey.setKeyName("key");
-		wsdlResourceKey.setKeyValue(DEFAULT_RESOURCE_REFERENCE_REGISTRY_KEY);
-		setKey(wsdlResourceKey);
-	}
+        // Resource key.
+        RegistryKeyProperty wsdlResourceKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+        // Set filter properties to filter in only wsdl media type
+        DeveloperStudioProviderUtils.addFilter((Map<String, List<String>>) wsdlResourceKey.getFilters(),
+                CSProviderConstants.FILTER_MEDIA_TYPE, PlatformMediaTypeConstants.MEDIA_TYPE_XSD);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.PROXY_WSDL_RESOURCE;
-	}
+        wsdlResourceKey.setPrettyName("WSDL Resource Key");
+        wsdlResourceKey.setKeyName("key");
+        wsdlResourceKey.setKeyValue(DEFAULT_RESOURCE_REFERENCE_REGISTRY_KEY);
+        setKey(wsdlResourceKey);
+    }
 
-} //ProxyWSDLResourceImpl
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.PROXY_WSDL_RESOURCE;
+    }
+
+} // ProxyWSDLResourceImpl

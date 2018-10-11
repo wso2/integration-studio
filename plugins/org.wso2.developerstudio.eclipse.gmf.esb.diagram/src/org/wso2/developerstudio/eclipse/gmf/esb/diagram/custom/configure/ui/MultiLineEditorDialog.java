@@ -15,78 +15,70 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-public class MultiLineEditorDialog extends Dialog{
+public class MultiLineEditorDialog extends Dialog {
 
-	/**
-	 * Evaluator Expression Property text field.
-	 */
-	private Text eETextField;
-	private String value;
-	
-	public MultiLineEditorDialog(Shell parentShell,
-			String value) {
-		super(parentShell);
-	}
-	
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		container.setLayout(new GridLayout(1, false));
-		
-		Label lblEvaluatorExpression = new Label(container, SWT.NONE);
-		lblEvaluatorExpression.setText("Evaluator Expression");
-		
+    /**
+     * Evaluator Expression Property text field.
+     */
+    private Text eETextField;
+    private String value;
 
-		eETextField = new Text(container, SWT.BORDER | SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
-		eETextField.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+    public MultiLineEditorDialog(Shell parentShell, String value) {
+        super(parentShell);
+    }
 
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        container.setLayout(new GridLayout(1, false));
 
-		eETextField.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				saveConfiguration();
-			}
-		});
-		loadConfiguration();
-		return container;
-	}
+        Label lblEvaluatorExpression = new Label(container, SWT.NONE);
+        lblEvaluatorExpression.setText("Evaluator Expression");
 
-	/**
-	 * Create contents of the button bar.
-	 * 
-	 * @param parent
-	 */
-	
-	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
-				true);
-		createButton(parent, IDialogConstants.CANCEL_ID,
-				IDialogConstants.CANCEL_LABEL, false);
-	}
+        eETextField = new Text(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
+        eETextField.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
-	private void loadConfiguration() {
-		if (!StringUtils.isBlank(value)) {
-			eETextField
-					.setText(value);
-		}
-	}
+        eETextField.addSelectionListener(new SelectionAdapter() {
 
-	
-	protected void okPressed() {
-		saveConfiguration();
-		super.okPressed();
-	}
+            public void widgetSelected(SelectionEvent e) {
+                saveConfiguration();
+            }
+        });
+        loadConfiguration();
+        return container;
+    }
 
-	private void saveConfiguration() {
-		value=eETextField.getText();
-	}
+    /**
+     * Create contents of the button bar.
+     * 
+     * @param parent
+     */
 
-	/**
-	 * Return the initial size of the dialog.
-	 */
-	
-	protected Point getInitialSize() {
-		return new Point(450, 300);
-	}
-	
+    protected void createButtonsForButtonBar(Composite parent) {
+        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+    }
+
+    private void loadConfiguration() {
+        if (!StringUtils.isBlank(value)) {
+            eETextField.setText(value);
+        }
+    }
+
+    protected void okPressed() {
+        saveConfiguration();
+        super.okPressed();
+    }
+
+    private void saveConfiguration() {
+        value = eETextField.getText();
+    }
+
+    /**
+     * Return the initial size of the dialog.
+     */
+
+    protected Point getInitialSize() {
+        return new Point(450, 300);
+    }
+
 }

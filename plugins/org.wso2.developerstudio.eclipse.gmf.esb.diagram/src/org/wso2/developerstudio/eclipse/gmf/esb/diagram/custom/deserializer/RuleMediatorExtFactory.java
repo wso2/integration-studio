@@ -25,15 +25,14 @@ import org.wso2.carbon.rule.mediator.config.RuleMediatorConfig;
 import org.wso2.carbon.rule.mediator.internal.config.RuleMediatorConfigHelper;
 
 public class RuleMediatorExtFactory extends RuleMediatorFactory {
-	
-	@Override
-	protected Mediator createSpecificMediator(OMElement omElement, Properties properties) {
-		
-		RuleMediatorConfig ruleMediatorConfig = RuleMediatorConfigHelper.getRuleMediatorConfig(omElement);
+
+    @Override
+    protected Mediator createSpecificMediator(OMElement omElement, Properties properties) {
+
+        RuleMediatorConfig ruleMediatorConfig = RuleMediatorConfigHelper.getRuleMediatorConfig(omElement);
         RuleMediatorExt mediator = new RuleMediatorExt(ruleMediatorConfig);
 
-		return mediator;
-	}
-	
+        return mediator;
+    }
 
 }

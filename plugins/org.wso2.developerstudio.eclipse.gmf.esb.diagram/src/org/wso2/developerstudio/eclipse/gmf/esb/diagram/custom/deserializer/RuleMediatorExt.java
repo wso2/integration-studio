@@ -21,23 +21,23 @@ import org.apache.synapse.mediators.AbstractMediator;
 import org.wso2.carbon.rule.mediator.config.RuleMediatorConfig;
 
 public class RuleMediatorExt extends AbstractMediator {
-	private RuleMediatorConfig config;
+    private RuleMediatorConfig config;
 
-	public RuleMediatorExt(RuleMediatorConfig config) {
-		setRuleMediatorConfig(config);
-	}
+    public RuleMediatorExt(RuleMediatorConfig config) {
+        setRuleMediatorConfig(config);
+    }
 
-	@Override
-	public boolean mediate(MessageContext messageContext) {
-		return true;
-	}
+    @Override
+    public boolean mediate(MessageContext messageContext) {
+        return true;
+    }
 
-	public void setRuleMediatorConfig(RuleMediatorConfig config) {
-		this.config = config;
-	}
+    public void setRuleMediatorConfig(RuleMediatorConfig config) {
+        this.config = config;
+    }
 
-	public RuleMediatorConfig getRuleMediatorConfig() {
-		return config;
-	}
+    public RuleMediatorConfig getRuleMediatorConfig() {
+        return config;
+    }
 
 }

@@ -36,29 +36,29 @@ public class OAuthServiceMediatorExtFactory extends OAuthMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	OAuthMediator mediator = null;
-	OMAttribute remoteServiceUrl = null;
-	OMAttribute username = null;
-	OMAttribute password = null;
+        OAuthMediator mediator = null;
+        OMAttribute remoteServiceUrl = null;
+        OMAttribute username = null;
+        OMAttribute password = null;
 
-	mediator = new OAuthMediator();
+        mediator = new OAuthMediator();
 
-	remoteServiceUrl = omElement.getAttribute(ATTR_NAME_SERVICE_EPR);
-	if (remoteServiceUrl != null && remoteServiceUrl.getAttributeValue() != null) {
-	    mediator.setRemoteServiceUrl(remoteServiceUrl.getAttributeValue());
-	}
+        remoteServiceUrl = omElement.getAttribute(ATTR_NAME_SERVICE_EPR);
+        if (remoteServiceUrl != null && remoteServiceUrl.getAttributeValue() != null) {
+            mediator.setRemoteServiceUrl(remoteServiceUrl.getAttributeValue());
+        }
 
-	username = omElement.getAttribute(ATTR_NAME_USERNAME);
-	if (username != null && username.getAttributeValue() != null) {
-	    mediator.setUsername(username.getAttributeValue());
-	}
+        username = omElement.getAttribute(ATTR_NAME_USERNAME);
+        if (username != null && username.getAttributeValue() != null) {
+            mediator.setUsername(username.getAttributeValue());
+        }
 
-	password = omElement.getAttribute(ATTR_NAME_PASSWORD);
-	if (password != null && password.getAttributeValue() != null) {
-	    mediator.setPassword(password.getAttributeValue());
-	}
+        password = omElement.getAttribute(ATTR_NAME_PASSWORD);
+        if (password != null && password.getAttributeValue() != null) {
+            mediator.setPassword(password.getAttributeValue());
+        }
 
-	return mediator;
+        return mediator;
 
     }
 

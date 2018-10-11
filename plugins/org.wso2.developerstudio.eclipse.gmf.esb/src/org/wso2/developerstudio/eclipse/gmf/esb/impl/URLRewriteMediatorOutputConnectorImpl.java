@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediatorOutputConnecto
  *
  * @generated
  */
-public class URLRewriteMediatorOutputConnectorImpl extends OutputConnectorImpl implements URLRewriteMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected URLRewriteMediatorOutputConnectorImpl() {
-		super();
-	}
+public class URLRewriteMediatorOutputConnectorImpl extends OutputConnectorImpl
+        implements URLRewriteMediatorOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected URLRewriteMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.URL_REWRITE_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.URL_REWRITE_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //URLRewriteMediatorOutputConnectorImpl
+} // URLRewriteMediatorOutputConnectorImpl

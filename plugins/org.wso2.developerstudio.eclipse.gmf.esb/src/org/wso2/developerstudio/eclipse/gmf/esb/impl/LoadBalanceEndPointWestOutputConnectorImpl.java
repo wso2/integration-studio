@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointWestOutputCon
  *
  * @generated
  */
-public class LoadBalanceEndPointWestOutputConnectorImpl extends OutputConnectorImpl implements LoadBalanceEndPointWestOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LoadBalanceEndPointWestOutputConnectorImpl() {
-		super();
-	}
+public class LoadBalanceEndPointWestOutputConnectorImpl extends OutputConnectorImpl
+        implements LoadBalanceEndPointWestOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected LoadBalanceEndPointWestOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.LOAD_BALANCE_END_POINT_WEST_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.LOAD_BALANCE_END_POINT_WEST_OUTPUT_CONNECTOR;
+    }
 
-} //LoadBalanceEndPointWestOutputConnectorImpl
+} // LoadBalanceEndPointWestOutputConnectorImpl

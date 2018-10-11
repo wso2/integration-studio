@@ -19,12 +19,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom;
 import org.apache.synapse.MessageContext;
 import org.apache.synapse.mediators.AbstractMediator;
 
-public class DummyClassMediator extends AbstractMediator{
+public class DummyClassMediator extends AbstractMediator {
 
-	public boolean mediate(MessageContext messageContext) {
-		// noting to do
-		return true;
-	}
-	
-	
+    public boolean mediate(MessageContext messageContext) {
+        // noting to do
+        return true;
+    }
+
 }

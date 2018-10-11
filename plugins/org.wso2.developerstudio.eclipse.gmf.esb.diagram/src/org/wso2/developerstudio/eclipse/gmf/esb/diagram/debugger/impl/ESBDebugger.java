@@ -191,7 +191,7 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
                 ESBDebuggerUtil.repopulateESBServerBreakpoints();
                 break;
             case WIRE_LOG:
-            	debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTY_VALUE,
+                debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTY_VALUE,
                         WIRE_LOG_PROPERTY_TAG, new PropertyValueBean("log", null)));
                 break;
             default:
@@ -206,16 +206,16 @@ public class ESBDebugger implements IESBDebugger, EventHandler {
     }
 
     private void getPropertiesFromESB() throws Exception {
-        debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE,
-                AXIS2_PROPERTY_TAG));
-        debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE,
-                AXIS2_CLIENT_PROPERTY_TAG));
-        debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE,
-                TRANSPORT_PROPERTY_TAG));
-        debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE,
-                OPERATION_PROPERTY_TAG));
-        debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE,
-        		SYANPSE_PROPERTY_TAG));
+        debuggerInterface.sendGetPropertiesCommand(
+                new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE, AXIS2_PROPERTY_TAG));
+        debuggerInterface.sendGetPropertiesCommand(
+                new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE, AXIS2_CLIENT_PROPERTY_TAG));
+        debuggerInterface.sendGetPropertiesCommand(
+                new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE, TRANSPORT_PROPERTY_TAG));
+        debuggerInterface.sendGetPropertiesCommand(
+                new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE, OPERATION_PROPERTY_TAG));
+        debuggerInterface.sendGetPropertiesCommand(
+                new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTIES_VALUE, SYANPSE_PROPERTY_TAG));
         debuggerInterface.sendGetPropertiesCommand(new GetPropertyCommand(GET_COMMAND_VALUE, PROPERTY_VALUE,
                 WIRE_LOG_PROPERTY_TAG, new PropertyValueBean("log", null)));
     }

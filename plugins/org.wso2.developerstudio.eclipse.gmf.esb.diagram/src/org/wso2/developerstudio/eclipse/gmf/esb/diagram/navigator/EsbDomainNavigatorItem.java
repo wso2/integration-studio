@@ -13,98 +13,97 @@ import org.eclipse.ui.views.properties.IPropertySourceProvider;
  */
 public class EsbDomainNavigatorItem extends PlatformObject {
 
-	/**
-	 * @generated
-	 */
-	static {
-		final Class[] supportedTypes = new Class[] { EObject.class, IPropertySource.class };
-		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
+    /**
+     * @generated
+     */
+    static {
+        final Class[] supportedTypes = new Class[] { EObject.class, IPropertySource.class };
+        Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-			public Object getAdapter(Object adaptableObject, Class adapterType) {
-				if (adaptableObject instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) {
-					org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem domainNavigatorItem = (org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) adaptableObject;
-					EObject eObject = domainNavigatorItem.getEObject();
-					if (adapterType == EObject.class) {
-						return eObject;
-					}
-					if (adapterType == IPropertySource.class) {
-						return domainNavigatorItem.getPropertySourceProvider().getPropertySource(eObject);
-					}
-				}
+            public Object getAdapter(Object adaptableObject, Class adapterType) {
+                if (adaptableObject instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) {
+                    org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem domainNavigatorItem = (org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) adaptableObject;
+                    EObject eObject = domainNavigatorItem.getEObject();
+                    if (adapterType == EObject.class) {
+                        return eObject;
+                    }
+                    if (adapterType == IPropertySource.class) {
+                        return domainNavigatorItem.getPropertySourceProvider().getPropertySource(eObject);
+                    }
+                }
 
-				return null;
-			}
+                return null;
+            }
 
-			public Class[] getAdapterList() {
-				return supportedTypes;
-			}
-		}, org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem.class);
-	}
+            public Class[] getAdapterList() {
+                return supportedTypes;
+            }
+        }, org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem.class);
+    }
 
-	/**
-	 * @generated
-	 */
-	private Object myParent;
+    /**
+     * @generated
+     */
+    private Object myParent;
 
-	/**
-	 * @generated
-	 */
-	private EObject myEObject;
+    /**
+     * @generated
+     */
+    private EObject myEObject;
 
-	/**
-	 * @generated
-	 */
-	private IPropertySourceProvider myPropertySourceProvider;
+    /**
+     * @generated
+     */
+    private IPropertySourceProvider myPropertySourceProvider;
 
-	/**
-	 * @generated
-	 */
-	public EsbDomainNavigatorItem(EObject eObject, Object parent, IPropertySourceProvider propertySourceProvider) {
-		myParent = parent;
-		myEObject = eObject;
-		myPropertySourceProvider = propertySourceProvider;
-	}
+    /**
+     * @generated
+     */
+    public EsbDomainNavigatorItem(EObject eObject, Object parent, IPropertySourceProvider propertySourceProvider) {
+        myParent = parent;
+        myEObject = eObject;
+        myPropertySourceProvider = propertySourceProvider;
+    }
 
-	/**
-	 * @generated
-	 */
-	public Object getParent() {
-		return myParent;
-	}
+    /**
+     * @generated
+     */
+    public Object getParent() {
+        return myParent;
+    }
 
-	/**
-	 * @generated
-	 */
-	public EObject getEObject() {
-		return myEObject;
-	}
+    /**
+     * @generated
+     */
+    public EObject getEObject() {
+        return myEObject;
+    }
 
-	/**
-	 * @generated
-	 */
-	public IPropertySourceProvider getPropertySourceProvider() {
-		return myPropertySourceProvider;
-	}
+    /**
+     * @generated
+     */
+    public IPropertySourceProvider getPropertySourceProvider() {
+        return myPropertySourceProvider;
+    }
 
-	/**
-	 * @generated
-	 */
-	public boolean equals(Object obj) {
-		if (obj instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) {
-			return EcoreUtil
-					.getURI(getEObject())
-					.equals(EcoreUtil
-							.getURI(((org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) obj)
-									.getEObject()));
-		}
-		return super.equals(obj);
-	}
+    /**
+     * @generated
+     */
+    public boolean equals(Object obj) {
+        if (obj instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) {
+            return EcoreUtil.getURI(getEObject())
+                    .equals(EcoreUtil.getURI(
+                            ((org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbDomainNavigatorItem) obj)
+                                    .getEObject()));
+        }
+        return super.equals(obj);
+    }
 
-	/**
-	 * @generated
-	 */
-	public int hashCode() {
-		return EcoreUtil.getURI(getEObject()).hashCode();
-	}
+    /**
+     * @generated
+     */
+    public int hashCode() {
+        return EcoreUtil.getURI(getEObject()).hashCode();
+    }
 
 }

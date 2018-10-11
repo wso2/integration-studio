@@ -19,24 +19,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogMediatorInputConnector;
  * @generated
  */
 public class LogMediatorInputConnectorImpl extends InputConnectorImpl implements LogMediatorInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LogMediatorInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected LogMediatorInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.LOG_MEDIATOR_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //LogMediatorInputConnectorImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.LOG_MEDIATOR_INPUT_CONNECTOR;
+    }
+
+} // LogMediatorInputConnectorImpl

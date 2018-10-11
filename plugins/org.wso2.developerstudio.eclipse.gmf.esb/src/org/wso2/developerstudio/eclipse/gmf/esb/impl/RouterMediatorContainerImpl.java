@@ -34,125 +34,137 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterTargetContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterMediatorContainerImpl#getRouterTargetContainer <em>Router Target Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterMediatorContainerImpl#getRouterTargetContainer
+ * <em>Router Target Container</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class RouterMediatorContainerImpl extends EsbNodeImpl implements RouterMediatorContainer {
-	/**
-	 * The cached value of the '{@link #getRouterTargetContainer() <em>Router Target Container</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRouterTargetContainer()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<RouterTargetContainer> routerTargetContainer;
+    /**
+     * The cached value of the '{@link #getRouterTargetContainer() <em>Router Target Container</em>}' containment
+     * reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getRouterTargetContainer()
+     * @generated
+     * @ordered
+     */
+    protected EList<RouterTargetContainer> routerTargetContainer;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RouterMediatorContainerImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected RouterMediatorContainerImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.ROUTER_MEDIATOR_CONTAINER;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.ROUTER_MEDIATOR_CONTAINER;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<RouterTargetContainer> getRouterTargetContainer() {
-		if (routerTargetContainer == null) {
-			routerTargetContainer = new EObjectContainmentEList<RouterTargetContainer>(RouterTargetContainer.class, this, EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER);
-		}
-		return routerTargetContainer;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<RouterTargetContainer> getRouterTargetContainer() {
+        if (routerTargetContainer == null) {
+            routerTargetContainer = new EObjectContainmentEList<RouterTargetContainer>(RouterTargetContainer.class,
+                    this, EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER);
+        }
+        return routerTargetContainer;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
-				return ((InternalEList<?>)getRouterTargetContainer()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+        case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
+            return ((InternalEList<?>) getRouterTargetContainer()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
-				return getRouterTargetContainer();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+        switch (featureID) {
+        case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
+            return getRouterTargetContainer();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
-				getRouterTargetContainer().clear();
-				getRouterTargetContainer().addAll((Collection<? extends RouterTargetContainer>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
+        switch (featureID) {
+        case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
+            getRouterTargetContainer().clear();
+            getRouterTargetContainer().addAll((Collection<? extends RouterTargetContainer>) newValue);
+            return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
-				getRouterTargetContainer().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void eUnset(int featureID) {
+        switch (featureID) {
+        case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
+            getRouterTargetContainer().clear();
+            return;
+        }
+        super.eUnset(featureID);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
-				return routerTargetContainer != null && !routerTargetContainer.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public boolean eIsSet(int featureID) {
+        switch (featureID) {
+        case EsbPackage.ROUTER_MEDIATOR_CONTAINER__ROUTER_TARGET_CONTAINER:
+            return routerTargetContainer != null && !routerTargetContainer.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
 
-} //RouterMediatorContainerImpl
+} // RouterMediatorContainerImpl

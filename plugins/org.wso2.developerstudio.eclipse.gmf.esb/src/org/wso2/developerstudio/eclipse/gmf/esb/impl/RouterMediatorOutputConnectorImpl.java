@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorOutputConnector;
  * @generated
  */
 public class RouterMediatorOutputConnectorImpl extends OutputConnectorImpl implements RouterMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RouterMediatorOutputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected RouterMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.ROUTER_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.ROUTER_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //RouterMediatorOutputConnectorImpl
+} // RouterMediatorOutputConnectorImpl

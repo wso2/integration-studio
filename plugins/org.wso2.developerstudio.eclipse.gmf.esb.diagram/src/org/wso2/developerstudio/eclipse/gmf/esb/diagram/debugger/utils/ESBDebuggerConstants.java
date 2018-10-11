@@ -205,5 +205,5 @@ public class ESBDebuggerConstants {
     public static final String MESSAGE_ENVELOPE_VIEW_SECONDARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.envelope.view.secondary";
     public static final String WIRE_LOG_VIEW_PRIMARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.wirelog.view";
     public static final String WIRE_LOG_VIEW_SECONDARY_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.wirelog.secondary";
-    
+
 }

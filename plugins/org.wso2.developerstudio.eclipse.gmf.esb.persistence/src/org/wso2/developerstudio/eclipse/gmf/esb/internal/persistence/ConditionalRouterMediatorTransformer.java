@@ -39,66 +39,62 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
- * Conditional router mediator transformer 
+ * Conditional router mediator transformer
  *
  */
 public class ConditionalRouterMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		try {
-			information.getParentSequence().addChild(createConditionalRouterMediator(information, subject));
-			doTransform(information,
-					((ConditionalRouterMediator) subject).getOutputConnector());
-		} catch (XMLStreamException e) {
-			throw new TransformerException(e);
-		} catch (EvaluatorException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createConditionalRouterMediator(information, subject));
+            doTransform(information, ((ConditionalRouterMediator) subject).getOutputConnector());
+        } catch (XMLStreamException e) {
+            throw new TransformerException(e);
+        } catch (EvaluatorException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws TransformerException {
-		try {
-			sequence.addChild(createConditionalRouterMediator(information, subject));
-			doTransformWithinSequence(information, ((ConditionalRouterMediator) subject)
-					.getOutputConnector().getOutgoingLink(), sequence);
-		} catch (XMLStreamException e) {
-			throw new TransformerException(e);
-		} catch (EvaluatorException e) {
-			throw new TransformerException(e);
-		}		
-	}
-	
-	private org.apache.synapse.mediators.filters.router.ConditionalRouterMediator createConditionalRouterMediator(
-			TransformationInfo information, EsbNode subject) throws XMLStreamException, EvaluatorException{
-		
-		Assert.isTrue(subject instanceof ConditionalRouterMediator, "Unsupported mediator passed in for serialization");
-		ConditionalRouterMediator routerModel = (ConditionalRouterMediator) subject;
-		
-		org.apache.synapse.mediators.filters.router.ConditionalRouterMediator router = new org.apache.synapse.mediators.filters.router.ConditionalRouterMediator();
-		setCommonProperties(router, routerModel);
-		router.setContinueAfter(routerModel.isContinueAfterRoute());
-		
-		EList<ConditionalRouteBranch> routes = routerModel.getConditionalRouteBranches();
-		for (ConditionalRouteBranch route : routes) {
-			ConditionalRoute conditionalRoute = new ConditionalRoute();
-			conditionalRoute.setBreakRoute(route.isBreakAfterRoute());
-			OMElement evaluatorExpressionOM = AXIOMUtil.stringToOM(route.getEvaluatorExpression().getEvaluatorValue());
-            Evaluator evaluator = EvaluatorFactoryFinder.getInstance().getEvaluator(
-            		evaluatorExpressionOM);
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createConditionalRouterMediator(information, subject));
+            doTransformWithinSequence(information,
+                    ((ConditionalRouterMediator) subject).getOutputConnector().getOutgoingLink(), sequence);
+        } catch (XMLStreamException e) {
+            throw new TransformerException(e);
+        } catch (EvaluatorException e) {
+            throw new TransformerException(e);
+        }
+    }
+
+    private org.apache.synapse.mediators.filters.router.ConditionalRouterMediator createConditionalRouterMediator(
+            TransformationInfo information, EsbNode subject) throws XMLStreamException, EvaluatorException {
+
+        Assert.isTrue(subject instanceof ConditionalRouterMediator, "Unsupported mediator passed in for serialization");
+        ConditionalRouterMediator routerModel = (ConditionalRouterMediator) subject;
+
+        org.apache.synapse.mediators.filters.router.ConditionalRouterMediator router = new org.apache.synapse.mediators.filters.router.ConditionalRouterMediator();
+        setCommonProperties(router, routerModel);
+        router.setContinueAfter(routerModel.isContinueAfterRoute());
+
+        EList<ConditionalRouteBranch> routes = routerModel.getConditionalRouteBranches();
+        for (ConditionalRouteBranch route : routes) {
+            ConditionalRoute conditionalRoute = new ConditionalRoute();
+            conditionalRoute.setBreakRoute(route.isBreakAfterRoute());
+            OMElement evaluatorExpressionOM = AXIOMUtil.stringToOM(route.getEvaluatorExpression().getEvaluatorValue());
+            Evaluator evaluator = EvaluatorFactoryFinder.getInstance().getEvaluator(evaluatorExpressionOM);
             conditionalRoute.setEvaluator(evaluator);
-    		Target target = new Target();
-    		target.setSequenceRef(route.getTargetSequence().getKeyValue());
-    		conditionalRoute.setTarget(target);
-    		router.addRoute(conditionalRoute);
-		}
-		return router;
-	}
+            Target target = new Target();
+            target.setSequenceRef(route.getTargetSequence().getKeyValue());
+            conditionalRoute.setTarget(target);
+            router.addRoute(conditionalRoute);
+        }
+        return router;
+    }
 
 }

@@ -59,319 +59,317 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  *
  */
 public class ConfigureEndPointPropertiesDialog extends TitleAreaDialog {
-	
-	/**
-	 * logger
-	 */
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	/**
-	 * Domain model
-	 */
-	private EndPoint endPoint;
-	
-	/**
-	 * Editing domain.
-	 */
-	private TransactionalEditingDomain editingDomain;
+    /**
+     * logger
+     */
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	/**
-	 * Command for recording user operations.
-	 */
-	private CompoundCommand resultCommand;
-	
-	/**
-	 * UI widgets 
-	 */
-	private Table tblProperties;
-	private Button cmdAddProperty;
-	private Button cmdRemoveProperty;
+    /**
+     * Domain model
+     */
+    private EndPoint endPoint;
 
-	private Text txtPropertyName;
-	private Text txtPropertyValue;
-	private Combo cmbPropertyScope;
+    /**
+     * Editing domain.
+     */
+    private TransactionalEditingDomain editingDomain;
 
-	
-	/**
-	 * Table editors
-	 * */
-	private TableEditor propertyNameEditor;
-	private TableEditor propertyValueEditor;
-	private TableEditor propertyScopeEditor;
-	
-	public ConfigureEndPointPropertiesDialog(Shell parentShell,
-			EndPoint endPoint, TransactionalEditingDomain editingDomain) {
-		super(parentShell);
-		this.endPoint = endPoint;
-		this.editingDomain = editingDomain;
-	}
+    /**
+     * Command for recording user operations.
+     */
+    private CompoundCommand resultCommand;
 
-	/**
-	 * Create contents of the *dialog.
-	 * @param parent
-	 */
-	@Override
-	protected Control createDialogArea(Composite parent) {
-		setTitle("EndPoint Properties Configuration");
-		setMessage("Properties can be used to associate configuration data with an endpoint.");
-		Composite area = (Composite) super.createDialogArea(parent);
-		Composite container = new Composite(area, SWT.NONE);
-		container.setLayoutData(new GridData(GridData.FILL_BOTH));
-		
-		tblProperties = new Table(container, SWT.BORDER | SWT.FULL_SELECTION);
-		tblProperties.setBounds(10, 10, 610, 222);
-		tblProperties.setHeaderVisible(true);
-		tblProperties.setLinesVisible(true);
-		tblProperties.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (null != e.item) {
-					if (e.item instanceof TableItem) {
-						TableItem item = (TableItem) e.item;
-						editProperty(item);
-						cmdRemoveProperty.setEnabled(true);
-					}
-				} else{
-					cmdRemoveProperty.setEnabled(false);
-				}
-			}
-		});
-		
-		TableColumn tblclmnName = new TableColumn(tblProperties, SWT.NONE);
-		tblclmnName.setWidth(200);
-		tblclmnName.setText("Name");
-		
-		TableColumn tblclmnValue = new TableColumn(tblProperties, SWT.NONE);
-		tblclmnValue.setWidth(250);
-		tblclmnValue.setText("Value");		
-		
-		TableColumn tblclmnScope = new TableColumn(tblProperties, SWT.NONE);
-		tblclmnScope.setWidth(160);
-		tblclmnScope.setText("Scope");
-		
-		
-		cmdAddProperty = new Button(container, SWT.NONE);
-		cmdAddProperty.setBounds(627, 10, 86, 29);
-		cmdAddProperty.setText("Add");
-		cmdAddProperty.addSelectionListener(new SelectionListener() {
-			
-			public void widgetSelected(SelectionEvent event) {
+    /**
+     * UI widgets
+     */
+    private Table tblProperties;
+    private Button cmdAddProperty;
+    private Button cmdRemoveProperty;
 
-				EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
-				property.setName("property_name");
-				property.setValueType(PropertyValueType.LITERAL);
-				property.setValue("property_value");		
-				property.setScope(EndPointPropertyScope.SYNAPSE);
-				TableItem item = bindProperty(property);
-				tblProperties.select(tblProperties.indexOf(item));
+    private Text txtPropertyName;
+    private Text txtPropertyValue;
+    private Combo cmbPropertyScope;
 
-			}
-			
-			public void widgetDefaultSelected(SelectionEvent event) {}
-		});
-		
-		cmdRemoveProperty = new Button(container, SWT.NONE);
-		cmdRemoveProperty.setBounds(626, 45, 86, 29);
-		cmdRemoveProperty.setText("Remove");
-		cmdRemoveProperty.setEnabled(false);
-		cmdRemoveProperty.addSelectionListener(new SelectionListener() {
-			
-			public void widgetSelected(SelectionEvent arg0) {
-				if(tblProperties.getSelectionIndex()!=-1)
-					unbindProperty(tblProperties.getSelectionIndex());
-				initTableEditor(propertyNameEditor, tblProperties);
-				initTableEditor(propertyScopeEditor, tblProperties);
-				initTableEditor(propertyValueEditor, tblProperties);
-				cmdRemoveProperty.setEnabled(false);
-			}
-			
-			public void widgetDefaultSelected(SelectionEvent arg0) {}
-		});
-		
-		for (Iterator<EndPointProperty> iterator = endPoint.getProperties().iterator(); iterator.hasNext();) {
-			EndPointProperty property = iterator.next();
-			bindProperty(property);
-		}
+    /**
+     * Table editors
+     */
+    private TableEditor propertyNameEditor;
+    private TableEditor propertyValueEditor;
+    private TableEditor propertyScopeEditor;
 
-		return area;
-	}
+    public ConfigureEndPointPropertiesDialog(Shell parentShell, EndPoint endPoint,
+            TransactionalEditingDomain editingDomain) {
+        super(parentShell);
+        this.endPoint = endPoint;
+        this.editingDomain = editingDomain;
+    }
 
-	/**
-	 * @param property
-	 */
-	public TableItem bindProperty(EndPointProperty property) {
-		TableItem item = new TableItem(tblProperties, SWT.NONE);
-		item.setText(0, property.getName());		
-		item.setText(1,property.getValue());
-		item.setText(2, property.getScope().toString());
-		item.setData(property);
-		return item;
-	}
-	
-	/**
-	 * @param property
-	 */
-	public void unbindProperty(int itemIndex) {
-		TableItem item = tblProperties.getItem(itemIndex);
+    /**
+     * Create contents of the *dialog.
+     * 
+     * @param parent
+     */
+    @Override
+    protected Control createDialogArea(Composite parent) {
+        setTitle("EndPoint Properties Configuration");
+        setMessage("Properties can be used to associate configuration data with an endpoint.");
+        Composite area = (Composite) super.createDialogArea(parent);
+        Composite container = new Composite(area, SWT.NONE);
+        container.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		if (item.getData() instanceof EndPointProperty) {
-			EndPointProperty property = (EndPointProperty) item.getData();
+        tblProperties = new Table(container, SWT.BORDER | SWT.FULL_SELECTION);
+        tblProperties.setBounds(10, 10, 610, 222);
+        tblProperties.setHeaderVisible(true);
+        tblProperties.setLinesVisible(true);
+        tblProperties.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                if (null != e.item) {
+                    if (e.item instanceof TableItem) {
+                        TableItem item = (TableItem) e.item;
+                        editProperty(item);
+                        cmdRemoveProperty.setEnabled(true);
+                    }
+                } else {
+                    cmdRemoveProperty.setEnabled(false);
+                }
+            }
+        });
 
-			if (null != property.eContainer()) {
-				RemoveCommand removeCmd = new RemoveCommand(editingDomain, endPoint,
-						EsbPackage.Literals.END_POINT__PROPERTIES, property);
-				getResultCommand().append(removeCmd);
-			}
-			tblProperties.remove(tblProperties.indexOf(item));
-		}
-	}
+        TableColumn tblclmnName = new TableColumn(tblProperties, SWT.NONE);
+        tblclmnName.setWidth(200);
+        tblclmnName.setText("Name");
 
-	/**
-	 * Create contents of the button bar.
-	 * @param parent
-	 */
-	@Override
-	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
-				true);
-		createButton(parent, IDialogConstants.CANCEL_ID,
-				IDialogConstants.CANCEL_LABEL, false);
-	}
+        TableColumn tblclmnValue = new TableColumn(tblProperties, SWT.NONE);
+        tblclmnValue.setWidth(250);
+        tblclmnValue.setText("Value");
 
-	/**
-	 * Return the initial size of the *dialog.
-	 */
-	@Override
-	protected Point getInitialSize() {
-		return new Point(731, 400);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
+        TableColumn tblclmnScope = new TableColumn(tblProperties, SWT.NONE);
+        tblclmnScope.setWidth(160);
+        tblclmnScope.setText("Scope");
 
-		newShell.setText("Properties");
-	}
-	
-	/**
-	 * Utility method for retrieving the result {@link CompoundCommand} which is
-	 * used to record user operations.
-	 * 
-	 * @return result command.
-	 */
-	private CompoundCommand getResultCommand() {
-		if (null == resultCommand) {
-			resultCommand = new CompoundCommand();
-		}
-		return resultCommand;
-	}
-	
-	private void editProperty(final TableItem item) {
-		
+        cmdAddProperty = new Button(container, SWT.NONE);
+        cmdAddProperty.setBounds(627, 10, 86, 29);
+        cmdAddProperty.setText("Add");
+        cmdAddProperty.addSelectionListener(new SelectionListener() {
 
-		propertyNameEditor = initTableEditor(propertyNameEditor, item.getParent());
-		txtPropertyName = new Text(item.getParent(), SWT.NONE);
-		txtPropertyName.setText(item.getText(0));
-		propertyNameEditor.setEditor(txtPropertyName, item, 0);
-		item.getParent().redraw();
-		item.getParent().layout();
-		txtPropertyName.addModifyListener(new ModifyListener() {
+            public void widgetSelected(SelectionEvent event) {
 
-			public void modifyText(ModifyEvent e) {
-				item.setText(0, txtPropertyName.getText());
-			}
-		});
-		
-		propertyValueEditor = initTableEditor(propertyValueEditor, item.getParent());
-		txtPropertyValue = new Text(item.getParent(), SWT.NONE);
-		txtPropertyValue.setText(item.getText(1));
-		propertyValueEditor.setEditor(txtPropertyValue, item, 1);
-		item.getParent().redraw();
-		item.getParent().layout();
-		txtPropertyValue.addModifyListener(new ModifyListener() {
+                EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
+                property.setName("property_name");
+                property.setValueType(PropertyValueType.LITERAL);
+                property.setValue("property_value");
+                property.setScope(EndPointPropertyScope.SYNAPSE);
+                TableItem item = bindProperty(property);
+                tblProperties.select(tblProperties.indexOf(item));
 
-			public void modifyText(ModifyEvent e) {
-				item.setText(1, txtPropertyValue.getText());
-			}
-		});		
-		
-		propertyScopeEditor = initTableEditor(propertyScopeEditor, item.getParent());
-		cmbPropertyScope = new Combo(item.getParent(), SWT.READ_ONLY);
-		cmbPropertyScope.setItems(new String[] { EndPointPropertyScope.SYNAPSE.toString(),
-				EndPointPropertyScope.TRANSPORT.toString(), EndPointPropertyScope.AXIS2.toString(),
-				EndPointPropertyScope.AXIS2_CLIENT.toString() });
-		cmbPropertyScope.setText(item.getText(2));
-		propertyScopeEditor.setEditor(cmbPropertyScope, item, 2);
-		item.getParent().redraw();
-		item.getParent().layout();
-		cmbPropertyScope.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event evt) {
-				item.setText(2, cmbPropertyScope.getText());
-			}
-		});		
-	}
+            }
 
-	private TableEditor initTableEditor(TableEditor editor, Table table) {
-		if (null != editor) {
-			Control lastCtrl = editor.getEditor();
-			if (null != lastCtrl) {
-				lastCtrl.dispose();
-			}
-		}
-		editor = new TableEditor(table);
-		editor.horizontalAlignment = SWT.LEFT;
-		editor.grabHorizontal = true;
-		return editor;
-	}
-	
-	@Override
-	protected void okPressed() {
-		
-		for(TableItem item : tblProperties.getItems()){
-			EndPointProperty property = (EndPointProperty)item.getData();
-		
-			AddCommand addCmd = null;
+            public void widgetDefaultSelected(SelectionEvent event) {
+            }
+        });
 
-			if (null == property.eContainer()) {
-				addCmd = new AddCommand(editingDomain, endPoint,
-						EsbPackage.Literals.END_POINT__PROPERTIES, property);
-				getResultCommand().append(addCmd);
-			}
+        cmdRemoveProperty = new Button(container, SWT.NONE);
+        cmdRemoveProperty.setBounds(626, 45, 86, 29);
+        cmdRemoveProperty.setText("Remove");
+        cmdRemoveProperty.setEnabled(false);
+        cmdRemoveProperty.addSelectionListener(new SelectionListener() {
 
-			SetCommand setCommand = null;
-			
-			if(!property.getName().equals(item.getText(0))){
-				setCommand = new SetCommand(editingDomain, property,
-						EsbPackage.Literals.END_POINT_PROPERTY__NAME, item.getText(0));
-				getResultCommand().append(setCommand);
-			}
-				
-				if(!property.getValue().equals(item.getText(1))){
-					setCommand = new SetCommand(editingDomain, property,
-							EsbPackage.Literals.END_POINT_PROPERTY__VALUE, item.getText(1));
-					getResultCommand().append(setCommand);
-				}					
-			
-			if(!property.getScope().toString().equals(item.getText(2))){
-				setCommand = new SetCommand(editingDomain, property,
-						EsbPackage.Literals.END_POINT_PROPERTY__SCOPE, EndPointPropertyScope.get(item.getText(2)));
-				getResultCommand().append(setCommand);
-			}
-		}
-		
-		// Apply changes.
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		} else {
-			if(getResultCommand().getCommandList().size()>1){
-				log.error("EndPoint Properties : cannot save properties", new Exception(
-						"Cannot execute command stack "));
-			}
-		}
-		
-		super.okPressed();
-	}
+            public void widgetSelected(SelectionEvent arg0) {
+                if (tblProperties.getSelectionIndex() != -1)
+                    unbindProperty(tblProperties.getSelectionIndex());
+                initTableEditor(propertyNameEditor, tblProperties);
+                initTableEditor(propertyScopeEditor, tblProperties);
+                initTableEditor(propertyValueEditor, tblProperties);
+                cmdRemoveProperty.setEnabled(false);
+            }
+
+            public void widgetDefaultSelected(SelectionEvent arg0) {
+            }
+        });
+
+        for (Iterator<EndPointProperty> iterator = endPoint.getProperties().iterator(); iterator.hasNext();) {
+            EndPointProperty property = iterator.next();
+            bindProperty(property);
+        }
+
+        return area;
+    }
+
+    /**
+     * @param property
+     */
+    public TableItem bindProperty(EndPointProperty property) {
+        TableItem item = new TableItem(tblProperties, SWT.NONE);
+        item.setText(0, property.getName());
+        item.setText(1, property.getValue());
+        item.setText(2, property.getScope().toString());
+        item.setData(property);
+        return item;
+    }
+
+    /**
+     * @param property
+     */
+    public void unbindProperty(int itemIndex) {
+        TableItem item = tblProperties.getItem(itemIndex);
+
+        if (item.getData() instanceof EndPointProperty) {
+            EndPointProperty property = (EndPointProperty) item.getData();
+
+            if (null != property.eContainer()) {
+                RemoveCommand removeCmd = new RemoveCommand(editingDomain, endPoint,
+                        EsbPackage.Literals.END_POINT__PROPERTIES, property);
+                getResultCommand().append(removeCmd);
+            }
+            tblProperties.remove(tblProperties.indexOf(item));
+        }
+    }
+
+    /**
+     * Create contents of the button bar.
+     * 
+     * @param parent
+     */
+    @Override
+    protected void createButtonsForButtonBar(Composite parent) {
+        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+    }
+
+    /**
+     * Return the initial size of the *dialog.
+     */
+    @Override
+    protected Point getInitialSize() {
+        return new Point(731, 400);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
+
+        newShell.setText("Properties");
+    }
+
+    /**
+     * Utility method for retrieving the result {@link CompoundCommand} which is
+     * used to record user operations.
+     * 
+     * @return result command.
+     */
+    private CompoundCommand getResultCommand() {
+        if (null == resultCommand) {
+            resultCommand = new CompoundCommand();
+        }
+        return resultCommand;
+    }
+
+    private void editProperty(final TableItem item) {
+
+        propertyNameEditor = initTableEditor(propertyNameEditor, item.getParent());
+        txtPropertyName = new Text(item.getParent(), SWT.NONE);
+        txtPropertyName.setText(item.getText(0));
+        propertyNameEditor.setEditor(txtPropertyName, item, 0);
+        item.getParent().redraw();
+        item.getParent().layout();
+        txtPropertyName.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent e) {
+                item.setText(0, txtPropertyName.getText());
+            }
+        });
+
+        propertyValueEditor = initTableEditor(propertyValueEditor, item.getParent());
+        txtPropertyValue = new Text(item.getParent(), SWT.NONE);
+        txtPropertyValue.setText(item.getText(1));
+        propertyValueEditor.setEditor(txtPropertyValue, item, 1);
+        item.getParent().redraw();
+        item.getParent().layout();
+        txtPropertyValue.addModifyListener(new ModifyListener() {
+
+            public void modifyText(ModifyEvent e) {
+                item.setText(1, txtPropertyValue.getText());
+            }
+        });
+
+        propertyScopeEditor = initTableEditor(propertyScopeEditor, item.getParent());
+        cmbPropertyScope = new Combo(item.getParent(), SWT.READ_ONLY);
+        cmbPropertyScope.setItems(
+                new String[] { EndPointPropertyScope.SYNAPSE.toString(), EndPointPropertyScope.TRANSPORT.toString(),
+                        EndPointPropertyScope.AXIS2.toString(), EndPointPropertyScope.AXIS2_CLIENT.toString() });
+        cmbPropertyScope.setText(item.getText(2));
+        propertyScopeEditor.setEditor(cmbPropertyScope, item, 2);
+        item.getParent().redraw();
+        item.getParent().layout();
+        cmbPropertyScope.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event evt) {
+                item.setText(2, cmbPropertyScope.getText());
+            }
+        });
+    }
+
+    private TableEditor initTableEditor(TableEditor editor, Table table) {
+        if (null != editor) {
+            Control lastCtrl = editor.getEditor();
+            if (null != lastCtrl) {
+                lastCtrl.dispose();
+            }
+        }
+        editor = new TableEditor(table);
+        editor.horizontalAlignment = SWT.LEFT;
+        editor.grabHorizontal = true;
+        return editor;
+    }
+
+    @Override
+    protected void okPressed() {
+
+        for (TableItem item : tblProperties.getItems()) {
+            EndPointProperty property = (EndPointProperty) item.getData();
+
+            AddCommand addCmd = null;
+
+            if (null == property.eContainer()) {
+                addCmd = new AddCommand(editingDomain, endPoint, EsbPackage.Literals.END_POINT__PROPERTIES, property);
+                getResultCommand().append(addCmd);
+            }
+
+            SetCommand setCommand = null;
+
+            if (!property.getName().equals(item.getText(0))) {
+                setCommand = new SetCommand(editingDomain, property, EsbPackage.Literals.END_POINT_PROPERTY__NAME,
+                        item.getText(0));
+                getResultCommand().append(setCommand);
+            }
+
+            if (!property.getValue().equals(item.getText(1))) {
+                setCommand = new SetCommand(editingDomain, property, EsbPackage.Literals.END_POINT_PROPERTY__VALUE,
+                        item.getText(1));
+                getResultCommand().append(setCommand);
+            }
+
+            if (!property.getScope().toString().equals(item.getText(2))) {
+                setCommand = new SetCommand(editingDomain, property, EsbPackage.Literals.END_POINT_PROPERTY__SCOPE,
+                        EndPointPropertyScope.get(item.getText(2)));
+                getResultCommand().append(setCommand);
+            }
+        }
+
+        // Apply changes.
+        if (getResultCommand().canExecute()) {
+            editingDomain.getCommandStack().execute(getResultCommand());
+        } else {
+            if (getResultCommand().getCommandList().size() > 1) {
+                log.error("EndPoint Properties : cannot save properties",
+                        new Exception("Cannot execute command stack "));
+            }
+        }
+
+        super.okPressed();
+    }
 
 }

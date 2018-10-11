@@ -26,53 +26,45 @@ import org.apache.synapse.config.xml.MediatorFactory;
 import org.apache.synapse.config.xml.MediatorFactoryFinder;
 
 public class MediatorFactoryUtils {
-	private static MediatorFactoryFinder  mediatorFactoryFinder = null;
-	private static DummyMediatorFactoryFinder  dummyMediatorFactoryFinder = null;
-	
-	static {
-		mediatorFactoryFinder = MediatorFactoryFinder.getInstance();
-		dummyMediatorFactoryFinder = DummyMediatorFactoryFinder.getInstance();
-	}
-	
-	/* custom mediator factories */
-	@SuppressWarnings("rawtypes")
-	private static final Class[] mediatorFactories = { 
-		ClassMediatorExtFactory.class,
-		POJOCommandMediatorExtFactory.class,
-		BuilderMediatorExtFactory.class,
-		RuleMediatorExtFactory.class,
-		EJBMediatorExtFactory.class,
-		BeanMediatorExtFactory.class,
-		BamMediatorExtFactory.class,
-		CalloutMediatorExtFactory.class,
-		EntitlementMediatorExtFactory.class,
-		CloudConnectorOperationExtFactory.class,
-		CacheMediatorExtFactory.class
-	};
-	
-	public static synchronized void registerFactories() {
-		@SuppressWarnings("rawtypes")
-		Map<QName, Class> factoryMap = mediatorFactoryFinder.getFactoryMap();
-		Map<QName, Class> dummyFactoryMap = dummyMediatorFactoryFinder.getFactoryMap();
-		for (@SuppressWarnings("rawtypes") Class c : mediatorFactories) {
-			try {
-				MediatorFactory factory = (MediatorFactory) c.newInstance();
-				if(factory instanceof CloudConnectorOperationExtFactory){
-					List<QName> tagQNameList=((CloudConnectorOperationExtFactory) factory).getTagQNameList();
-					for(int i=0;i<tagQNameList.size();++i){
-						factoryMap.put(tagQNameList.get(i), c);
-						dummyFactoryMap.put(tagQNameList.get(i), c);
-					}
-				}else{
-					QName tagQName = factory.getTagQName();
-					factoryMap.put(tagQName, c);
-					dummyFactoryMap.put(tagQName, c);
-				}
-			} catch (Exception e) {
-				throw new SynapseException("Error instantiating " + c.getName(), e);
-			}
-		}
-	}
-	
+    private static MediatorFactoryFinder mediatorFactoryFinder = null;
+    private static DummyMediatorFactoryFinder dummyMediatorFactoryFinder = null;
+
+    static {
+        mediatorFactoryFinder = MediatorFactoryFinder.getInstance();
+        dummyMediatorFactoryFinder = DummyMediatorFactoryFinder.getInstance();
+    }
+
+    /* custom mediator factories */
+    @SuppressWarnings("rawtypes")
+    private static final Class[] mediatorFactories = { ClassMediatorExtFactory.class,
+            POJOCommandMediatorExtFactory.class, BuilderMediatorExtFactory.class, RuleMediatorExtFactory.class,
+            EJBMediatorExtFactory.class, BeanMediatorExtFactory.class, BamMediatorExtFactory.class,
+            CalloutMediatorExtFactory.class, EntitlementMediatorExtFactory.class,
+            CloudConnectorOperationExtFactory.class, CacheMediatorExtFactory.class };
+
+    public static synchronized void registerFactories() {
+        @SuppressWarnings("rawtypes")
+        Map<QName, Class> factoryMap = mediatorFactoryFinder.getFactoryMap();
+        Map<QName, Class> dummyFactoryMap = dummyMediatorFactoryFinder.getFactoryMap();
+        for (@SuppressWarnings("rawtypes")
+        Class c : mediatorFactories) {
+            try {
+                MediatorFactory factory = (MediatorFactory) c.newInstance();
+                if (factory instanceof CloudConnectorOperationExtFactory) {
+                    List<QName> tagQNameList = ((CloudConnectorOperationExtFactory) factory).getTagQNameList();
+                    for (int i = 0; i < tagQNameList.size(); ++i) {
+                        factoryMap.put(tagQNameList.get(i), c);
+                        dummyFactoryMap.put(tagQNameList.get(i), c);
+                    }
+                } else {
+                    QName tagQName = factory.getTagQName();
+                    factoryMap.put(tagQName, c);
+                    dummyFactoryMap.put(tagQName, c);
+                }
+            } catch (Exception e) {
+                throw new SynapseException("Error instantiating " + c.getName(), e);
+            }
+        }
+    }
 
 }

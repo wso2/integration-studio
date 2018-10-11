@@ -32,27 +32,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Call
 
 public class ConfigureCallTemplateMediatorAction extends ConfigureEsbNodeAction {
 
-	public ConfigureCallTemplateMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId("configure-call-template-mediator-action-id");
-		setText("Configure...");
-		setToolTipText("Configure CallTemplate mediator.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
+    public ConfigureCallTemplateMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId("configure-call-template-mediator-action-id");
+        setText("Configure...");
+        setToolTipText("Configure CallTemplate mediator.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof CallTemplateMediator, "Invalid selection.");
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof CallTemplateMediator, "Invalid selection.");
 
-		Shell shell = Display.getDefault().getActiveShell();
-		Dialog configurationDialog = new CallTemplateParamDialog(shell,
-				(CallTemplateMediator) selectedObj, getEditingDomain());
-		configurationDialog.setBlockOnOpen(true);
-		configurationDialog.open();
-	}
+        Shell shell = Display.getDefault().getActiveShell();
+        Dialog configurationDialog = new CallTemplateParamDialog(shell, (CallTemplateMediator) selectedObj,
+                getEditingDomain());
+        configurationDialog.setBlockOnOpen(true);
+        configurationDialog.open();
+    }
 
 }

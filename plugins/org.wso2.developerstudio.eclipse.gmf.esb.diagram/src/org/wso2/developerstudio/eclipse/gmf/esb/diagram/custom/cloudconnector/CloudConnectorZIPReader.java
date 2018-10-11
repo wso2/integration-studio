@@ -26,26 +26,29 @@ import java.util.zip.ZipFile;
  * This class is used to retrieve data from Cloud Connector ZIP file.
  * 
  */
-public class CloudConnectorZIPReader {	
-	private ZipFile zipFile;
-	
-	public ZipFile getZipFile() {
-		return zipFile;
-	}
-	public void setZipFile(ZipFile zipFile) {
-		this.zipFile = zipFile;
-	}
-	private CloudConnectorZIPReader(File file) throws ZipException, IOException{
-		zipFile=new ZipFile(file);
-	}
-	/*
-	 * static method for creating an instance of this class 
-	 */
-	public static CloudConnectorZIPReader getInstance(File file) throws ZipException, IOException{
-		return new CloudConnectorZIPReader(file);
-	}
-	
-	public InputStream getFileContentInZIP(String name) throws IOException{
-		return zipFile.getInputStream(zipFile.getEntry(name));
-	}
+public class CloudConnectorZIPReader {
+    private ZipFile zipFile;
+
+    public ZipFile getZipFile() {
+        return zipFile;
+    }
+
+    public void setZipFile(ZipFile zipFile) {
+        this.zipFile = zipFile;
+    }
+
+    private CloudConnectorZIPReader(File file) throws ZipException, IOException {
+        zipFile = new ZipFile(file);
+    }
+
+    /*
+     * static method for creating an instance of this class
+     */
+    public static CloudConnectorZIPReader getInstance(File file) throws ZipException, IOException {
+        return new CloudConnectorZIPReader(file);
+    }
+
+    public InputStream getFileContentInZIP(String name) throws IOException {
+        return zipFile.getInputStream(zipFile.getEntry(name));
+    }
 }

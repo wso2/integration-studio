@@ -35,61 +35,61 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFl
  */
 public class MediatorFlowMediatorFlowCompartment15EditPart extends AbstractMediatorCompartmentEditPart {
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 7038;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 7038;
 
-	/**
-	 * @generated
-	 */
-	public MediatorFlowMediatorFlowCompartment15EditPart(View view) {
-		super(view);
-	}
+    /**
+     * @generated
+     */
+    public MediatorFlowMediatorFlowCompartment15EditPart(View view) {
+        super(view);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public String getCompartmentName() {
-		//return Messages.MediatorFlowMediatorFlowCompartment15EditPart_title;
-		return "Target";
-	}
+    /**
+     * @generated NOT
+     */
+    public String getCompartmentName() {
+        // return Messages.MediatorFlowMediatorFlowCompartment15EditPart_title;
+        return "Target";
+    }
 
-	public IFigure createFigure() {
-		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
-		result.setTitleVisibility(false);
-		// Override default border.
-		result.setBorder(new MarginBorder(0, 0, 0, 0));
-		result.setToolTip((String) null);
-		return result;
-	}
+    public IFigure createFigure() {
+        ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
+        result.setTitleVisibility(false);
+        // Override default border.
+        result.setBorder(new MarginBorder(0, 0, 0, 0));
+        result.setToolTip((String) null);
+        return result;
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new MediatorFlowMediatorFlowCompartment15ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new MediatorFlowMediatorFlowCompartment15CanonicalEditPolicy());
-	}
+    /**
+     * @generated NOT
+     */
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+                new MediatorFlowMediatorFlowCompartment15ItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+                new MediatorFlowMediatorFlowCompartment15CanonicalEditPolicy());
+    }
 
-	public boolean isSelectable() {
-		// TODO This or using ResizableEditpolicy?
-		return false;
-	}
+    public boolean isSelectable() {
+        // TODO This or using ResizableEditpolicy?
+        return false;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setRatio(Double ratio) {
-		if (getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
-			super.setRatio(ratio);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setRatio(Double ratio) {
+        if (getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
+            super.setRatio(ratio);
+        }
+    }
 
 }

@@ -47,54 +47,55 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 
 public class RecipientListEndpointDeserializer extends AbstractComplexEndPointDeserializer {
 
-	public RecipientListEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) throws DeserializerException {
-		Assert.isTrue(object instanceof RecipientListEndpoint,
-				"Unsupported endpoint passed in for deserialization at " + this.getClass());
+    public RecipientListEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object)
+            throws DeserializerException {
+        Assert.isTrue(object instanceof RecipientListEndpoint,
+                "Unsupported endpoint passed in for deserialization at " + this.getClass());
 
-		RecipientListEndpoint endpoint = (RecipientListEndpoint) object;
-		IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart ||
-				part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.RecipientListEndPoint_3696
-				: EsbElementTypes.RecipientListEndPoint_3692;
-		RecipientListEndPoint model = (RecipientListEndPoint) DeserializerUtils.createNode(part,
-				endpointType);
-		setElementToEdit(model);
+        RecipientListEndpoint endpoint = (RecipientListEndpoint) object;
+        IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
+                || part instanceof EndpointDiagramEndpointCompartmentEditPart)
+                        ? EsbElementTypes.RecipientListEndPoint_3696
+                        : EsbElementTypes.RecipientListEndPoint_3692;
+        RecipientListEndPoint model = (RecipientListEndPoint) DeserializerUtils.createNode(part, endpointType);
+        setElementToEdit(model);
 
-		for (Iterator<MediatorProperty> i = endpoint.getProperties().iterator(); i.hasNext();) {
-			MediatorProperty next = i.next();
-			EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
-			property.setName(next.getName());
-			property.setValue(next.getValue());
-			if (next.getScope() != null) {
-				property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
-			} else {
-				property.setScope(EndPointPropertyScope.SYNAPSE);
-			}
-			executeAddValueCommand(model.getProperties(), property, false);
-		}
+        for (Iterator<MediatorProperty> i = endpoint.getProperties().iterator(); i.hasNext();) {
+            MediatorProperty next = i.next();
+            EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
+            property.setName(next.getName());
+            property.setValue(next.getValue());
+            if (next.getScope() != null) {
+                property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
+            } else {
+                property.setScope(EndPointPropertyScope.SYNAPSE);
+            }
+            executeAddValueCommand(model.getProperties(), property, false);
+        }
 
-		if (endpoint.getDynamicEnpointSet() != null) {
-			if (StringUtils.isNotBlank(endpoint.getDynamicEnpointSet().getKeyValue())) {
-				executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.VALUE);
-				executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE, endpoint.getDynamicEnpointSet().getKeyValue());
-				executeSetValueCommand(RECIPIENT_LIST_END_POINT__MAX_CACHE, endpoint.getCurrentPoolSize());
-			} else if (endpoint.getDynamicEnpointSet().getExpression() != null) {
-				SynapsePath xpath = endpoint.getDynamicEnpointSet().getExpression();
-				NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
-				executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.XPATH);
-				executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION, namespaceProp);
-				executeSetValueCommand(RECIPIENT_LIST_END_POINT__MAX_CACHE, endpoint.getCurrentPoolSize());
-			}
-		} else {
-			executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.INLINE);
-			deserializeComplexEndpoint(endpoint,part);
-		}
-		
-		if(StringUtils.isNotBlank(endpoint.getName())){
+        if (endpoint.getDynamicEnpointSet() != null) {
+            if (StringUtils.isNotBlank(endpoint.getDynamicEnpointSet().getKeyValue())) {
+                executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.VALUE);
+                executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE,
+                        endpoint.getDynamicEnpointSet().getKeyValue());
+                executeSetValueCommand(RECIPIENT_LIST_END_POINT__MAX_CACHE, endpoint.getCurrentPoolSize());
+            } else if (endpoint.getDynamicEnpointSet().getExpression() != null) {
+                SynapsePath xpath = endpoint.getDynamicEnpointSet().getExpression();
+                NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
+                executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.XPATH);
+                executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION, namespaceProp);
+                executeSetValueCommand(RECIPIENT_LIST_END_POINT__MAX_CACHE, endpoint.getCurrentPoolSize());
+            }
+        } else {
+            executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.INLINE);
+            deserializeComplexEndpoint(endpoint, part);
+        }
+
+        if (StringUtils.isNotBlank(endpoint.getName())) {
             executeSetValueCommand(END_POINT__END_POINT_NAME, endpoint.getName());
-		}
+        }
 
-		return model;
-	}
-
+        return model;
+    }
 
 }

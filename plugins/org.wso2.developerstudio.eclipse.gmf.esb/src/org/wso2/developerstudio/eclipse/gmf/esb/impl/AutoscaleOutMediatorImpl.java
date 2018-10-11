@@ -19,24 +19,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * @generated
  */
 public class AutoscaleOutMediatorImpl extends MediatorImpl implements AutoscaleOutMediator {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AutoscaleOutMediatorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected AutoscaleOutMediatorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.AUTOSCALE_OUT_MEDIATOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //AutoscaleOutMediatorImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.AUTOSCALE_OUT_MEDIATOR;
+    }
+
+} // AutoscaleOutMediatorImpl

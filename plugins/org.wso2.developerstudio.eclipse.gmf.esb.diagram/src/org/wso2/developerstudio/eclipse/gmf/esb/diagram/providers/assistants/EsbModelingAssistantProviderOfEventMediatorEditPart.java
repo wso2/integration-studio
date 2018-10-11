@@ -13,15 +13,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfEventMediatorEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(EsbElementTypes.EventMediatorInputConnector_3052);
-		types.add(EsbElementTypes.EventMediatorOutputConnector_3053);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(2);
+        types.add(EsbElementTypes.EventMediatorInputConnector_3052);
+        types.add(EsbElementTypes.EventMediatorOutputConnector_3053);
+        return types;
+    }
 
 }

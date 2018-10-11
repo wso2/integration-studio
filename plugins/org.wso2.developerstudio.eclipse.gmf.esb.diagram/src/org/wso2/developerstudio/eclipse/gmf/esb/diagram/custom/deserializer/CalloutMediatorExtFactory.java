@@ -15,10 +15,9 @@ import java.util.Properties;
 /**
  * Factory for {@link CalloutMediator} instances.
  */
-public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
+public class CalloutMediatorExtFactory extends AbstractMediatorFactory {
 
-    private static final QName TAG_NAME
-        = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "callout");
+    private static final QName TAG_NAME = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "callout");
     private static final QName ATT_URL = new QName("serviceURL");
     private static final QName ATT_ENDPOINT = new QName("endpointKey");
     private static final QName ATT_ACTION = new QName("action");
@@ -26,22 +25,14 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
     private static final QName ATT_USESERVERCONFIG = new QName("useServerConfig");
     private static final QName ATT_REPOSITORY = new QName("repository");
     private static final QName ATT_INIT_AXI2_CLIENT_OPTIONS = new QName("initAxis2ClientOptions");
-    private static final QName Q_CONFIG
-            = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "configuration");
-    private static final QName Q_SOURCE
-            = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "source");
-    private static final QName Q_TARGET
-            = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "target");
-    private static final QName ATT_SOURCE_TYPE
-            = new QName(XMLConfigConstants.NULL_NAMESPACE, "type");
-    private static final QName Q_SEC
-            = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "enableSec");
-    private static final QName ATT_POLICY
-            = new QName(XMLConfigConstants.NULL_NAMESPACE, "policy");
-    private static final QName ATT_OUTBOUND_SEC_POLICY
-                = new QName(XMLConfigConstants.NULL_NAMESPACE, "outboundPolicy");
-    private static final QName ATT_INBOUND_SEC_POLICY
-                = new QName(XMLConfigConstants.NULL_NAMESPACE, "inboundPolicy");
+    private static final QName Q_CONFIG = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "configuration");
+    private static final QName Q_SOURCE = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "source");
+    private static final QName Q_TARGET = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "target");
+    private static final QName ATT_SOURCE_TYPE = new QName(XMLConfigConstants.NULL_NAMESPACE, "type");
+    private static final QName Q_SEC = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "enableSec");
+    private static final QName ATT_POLICY = new QName(XMLConfigConstants.NULL_NAMESPACE, "policy");
+    private static final QName ATT_OUTBOUND_SEC_POLICY = new QName(XMLConfigConstants.NULL_NAMESPACE, "outboundPolicy");
+    private static final QName ATT_INBOUND_SEC_POLICY = new QName(XMLConfigConstants.NULL_NAMESPACE, "inboundPolicy");
 
     public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
@@ -49,12 +40,12 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
 
         OMAttribute attServiceURL = elem.getAttribute(ATT_URL);
         OMAttribute attEndpoint = elem.getAttribute(ATT_ENDPOINT);
-        OMAttribute attAction     = elem.getAttribute(ATT_ACTION);
+        OMAttribute attAction = elem.getAttribute(ATT_ACTION);
         OMAttribute attUseServerConfig = elem.getAttribute(ATT_USESERVERCONFIG);
         OMAttribute initAxis2ClientOptions = elem.getAttribute(ATT_INIT_AXI2_CLIENT_OPTIONS);
-        OMElement   configElt     = elem.getFirstChildWithName(Q_CONFIG);
-        OMElement   sourceElt     = elem.getFirstChildWithName(Q_SOURCE);
-        OMElement   targetElt     = elem.getFirstChildWithName(Q_TARGET);
+        OMElement configElt = elem.getFirstChildWithName(Q_CONFIG);
+        OMElement sourceElt = elem.getFirstChildWithName(Q_SOURCE);
+        OMElement targetElt = elem.getFirstChildWithName(Q_TARGET);
         OMElement wsSec = elem.getFirstChildWithName(Q_SEC);
 
         if (attServiceURL != null) {
@@ -66,15 +57,15 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
         if (attAction != null) {
             callout.setAction(attAction.getAttributeValue());
         }
-        
+
         if (attUseServerConfig != null) {
-        	callout.setUseServerConfig(attUseServerConfig.getAttributeValue());
+            callout.setUseServerConfig(attUseServerConfig.getAttributeValue());
         }
 
         if (initAxis2ClientOptions != null) {
-            if("true".equals(initAxis2ClientOptions.getAttributeValue().toLowerCase())){
+            if ("true".equals(initAxis2ClientOptions.getAttributeValue().toLowerCase())) {
                 callout.setInitClientOptions(true);
-            } else if ("false".equals(initAxis2ClientOptions.getAttributeValue().toLowerCase())){
+            } else if ("false".equals(initAxis2ClientOptions.getAttributeValue().toLowerCase())) {
                 callout.setInitClientOptions(false);
             }
         }
@@ -85,12 +76,12 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
             OMAttribute repoAttr = configElt.getAttribute(ATT_REPOSITORY);
 
             if (axis2xmlAttr != null && axis2xmlAttr.getAttributeValue() != null) {
-            	callout.setAxis2xml(axis2xmlAttr.getAttributeValue());
+                callout.setAxis2xml(axis2xmlAttr.getAttributeValue());
             }
 
             if (repoAttr != null && repoAttr.getAttributeValue() != null) {
-            	  callout.setClientRepository(repoAttr.getAttributeValue());
-               
+                callout.setClientRepository(repoAttr.getAttributeValue());
+
             }
         }
 
@@ -101,28 +92,26 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
                 callout.setUseEnvelopeAsSource(true);
             } else if (sourceElt.getAttribute(ATT_XPATH) != null) {
                 try {
-                    callout.setRequestXPath(
-                            SynapseXPathFactory.getSynapseXPath(sourceElt, ATT_XPATH));
+                    callout.setRequestXPath(SynapseXPathFactory.getSynapseXPath(sourceElt, ATT_XPATH));
                 } catch (JaxenException e) {
                     // ignore
                 }
             } else if (sourceElt.getAttribute(ATT_KEY) != null) {
                 callout.setRequestKey(sourceElt.getAttributeValue(ATT_KEY));
-            }   
+            }
         }
 
         if (targetElt != null) {
             if (targetElt.getAttribute(ATT_XPATH) != null) {
                 try {
-                    callout.setTargetXPath(
-                        SynapseXPathFactory.getSynapseXPath(targetElt, ATT_XPATH));
+                    callout.setTargetXPath(SynapseXPathFactory.getSynapseXPath(targetElt, ATT_XPATH));
                 } catch (JaxenException e) {
                     // ignore
                 }
             } else if (targetElt.getAttribute(ATT_KEY) != null) {
                 callout.setTargetKey(targetElt.getAttributeValue(ATT_KEY));
             }
-            
+
         }
 
         if (wsSec != null) {
@@ -132,7 +121,7 @@ public class CalloutMediatorExtFactory extends AbstractMediatorFactory{
             OMAttribute inboundPolicyKey = wsSec.getAttribute(ATT_INBOUND_SEC_POLICY);
             if (policyKey != null) {
                 callout.setWsSecPolicyKey(policyKey.getAttributeValue());
-            } else if (outboundPolicyKey != null || inboundPolicyKey != null){
+            } else if (outboundPolicyKey != null || inboundPolicyKey != null) {
                 if (outboundPolicyKey != null) {
                     callout.setOutboundWsSecPolicyKey(outboundPolicyKey.getAttributeValue());
                 }

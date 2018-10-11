@@ -30,30 +30,29 @@ import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureCommandMediatorDialog;
 
-public class ConfigureCommandMediatorAction extends ConfigureEsbNodeAction{
+public class ConfigureCommandMediatorAction extends ConfigureEsbNodeAction {
 
-	
-	public ConfigureCommandMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId("configure-command-mediator-action-id");
-		setText("Configure...");
-		setToolTipText("Configure command mediator.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
+    public ConfigureCommandMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId("configure-command-mediator-action-id");
+        setText("Configure...");
+        setToolTipText("Configure command mediator.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof CommandMediator, "Invalid selection.");
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-		Shell shell = Display.getDefault().getActiveShell();		
-		Dialog configurationDialog = new ConfigureCommandMediatorDialog(shell, (CommandMediator) selectedObj,
-				getEditingDomain());
-		configurationDialog.setBlockOnOpen(true);
-		configurationDialog.open();
-	}
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof CommandMediator, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        Dialog configurationDialog = new ConfigureCommandMediatorDialog(shell, (CommandMediator) selectedObj,
+                getEditingDomain());
+        configurationDialog.setBlockOnOpen(true);
+        configurationDialog.open();
+    }
 
 }

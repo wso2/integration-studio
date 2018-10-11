@@ -13,24 +13,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Vali
 
 public class ValidateSchemasPropertyDescriptor extends PropertyDescriptor {
 
-	public ValidateSchemasPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-		
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				ValidateMediator  validateMediator = (ValidateMediator)object;
-				ValidateSchemasDialog schemadialog = new ValidateSchemasDialog(shell,validateMediator);
-				schemadialog.setBlockOnOpen(true);
-				schemadialog.open();
-				return null;
-			}
-		};
-	}
+    public ValidateSchemasPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ValidateMediator validateMediator = (ValidateMediator) object;
+                ValidateSchemasDialog schemadialog = new ValidateSchemasDialog(shell, validateMediator);
+                schemadialog.setBlockOnOpen(true);
+                schemadialog.open();
+                return null;
+            }
+        };
+    }
 
 }

@@ -45,76 +45,76 @@ public class DummyLoadbalanceEndpointFactory extends DummyEndpointFactory {
     }
 
     public static DummyLoadbalanceEndpointFactory getInstance() {
-	return instance;
+        return instance;
     }
 
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	OMElement loadbalanceElement = epConfig
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "loadbalance"));
+        OMElement loadbalanceElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "loadbalance"));
 
-	if (loadbalanceElement != null) {
+        if (loadbalanceElement != null) {
 
-	    LoadbalanceEndpoint loadbalanceEndpoint = new LoadbalanceEndpoint();
+            LoadbalanceEndpoint loadbalanceEndpoint = new LoadbalanceEndpoint();
 
-	    OMAttribute name = epConfig
-		    .getAttribute(new QName(org.apache.synapse.config.xml.XMLConfigConstants.NULL_NAMESPACE, "name"));
-	    if (name != null) {
-		loadbalanceEndpoint.setName(name.getAttributeValue());
-	    }
+            OMAttribute name = epConfig
+                    .getAttribute(new QName(org.apache.synapse.config.xml.XMLConfigConstants.NULL_NAMESPACE, "name"));
+            if (name != null) {
+                loadbalanceEndpoint.setName(name.getAttributeValue());
+            }
 
-	    LoadbalanceAlgorithm algorithm = null;
-	    if (loadbalanceElement.getFirstChildWithName(XMLConfigConstants.ENDPOINT_ELT) != null) {
+            LoadbalanceAlgorithm algorithm = null;
+            if (loadbalanceElement.getFirstChildWithName(XMLConfigConstants.ENDPOINT_ELT) != null) {
 
-		List<Endpoint> endpoints = getEndpoints(loadbalanceElement, loadbalanceEndpoint, properties);
-		loadbalanceEndpoint.setChildren(endpoints);
-		algorithm = LoadbalanceAlgorithmFactory.createLoadbalanceAlgorithm(loadbalanceElement, endpoints);
-		algorithm.setLoadBalanceEndpoint(loadbalanceEndpoint);
+                List<Endpoint> endpoints = getEndpoints(loadbalanceElement, loadbalanceEndpoint, properties);
+                loadbalanceEndpoint.setChildren(endpoints);
+                algorithm = LoadbalanceAlgorithmFactory.createLoadbalanceAlgorithm(loadbalanceElement, endpoints);
+                algorithm.setLoadBalanceEndpoint(loadbalanceEndpoint);
 
-	    } else if (loadbalanceElement.getFirstChildWithName(MEMBER) != null) {
+            } else if (loadbalanceElement.getFirstChildWithName(MEMBER) != null) {
 
-		List<Member> members = getMembers(loadbalanceElement);
-		loadbalanceEndpoint.setMembers(members);
-		algorithm = LoadbalanceAlgorithmFactory.createLoadbalanceAlgorithm2(loadbalanceElement, members);
-		loadbalanceEndpoint.startApplicationMembershipTimer();
-	    }
+                List<Member> members = getMembers(loadbalanceElement);
+                loadbalanceEndpoint.setMembers(members);
+                algorithm = LoadbalanceAlgorithmFactory.createLoadbalanceAlgorithm2(loadbalanceElement, members);
+                loadbalanceEndpoint.startApplicationMembershipTimer();
+            }
 
-	    loadbalanceEndpoint.setAlgorithm(algorithm);
+            loadbalanceEndpoint.setAlgorithm(algorithm);
 
-	    String failover = loadbalanceElement.getAttributeValue(new QName("failover"));
-	    if (failover != null && failover.equalsIgnoreCase("false")) {
-		loadbalanceEndpoint.setFailover(false);
-	    }
+            String failover = loadbalanceElement.getAttributeValue(new QName("failover"));
+            if (failover != null && failover.equalsIgnoreCase("false")) {
+                loadbalanceEndpoint.setFailover(false);
+            }
 
-	    String buildMessageAtt = loadbalanceElement.getAttributeValue(new QName(XMLConfigConstants.BUILD_MESSAGE));
-	    if (buildMessageAtt != null) {
-		loadbalanceEndpoint.setBuildMessageAttAvailable(true);
-		if (JavaUtils.isTrueExplicitly(buildMessageAtt)) {
-		    loadbalanceEndpoint.setBuildMessageAtt(true);
-		}
-	    }
-	    processProperties(loadbalanceEndpoint, epConfig);
-	    return loadbalanceEndpoint;
-	}
-	return null;
+            String buildMessageAtt = loadbalanceElement.getAttributeValue(new QName(XMLConfigConstants.BUILD_MESSAGE));
+            if (buildMessageAtt != null) {
+                loadbalanceEndpoint.setBuildMessageAttAvailable(true);
+                if (JavaUtils.isTrueExplicitly(buildMessageAtt)) {
+                    loadbalanceEndpoint.setBuildMessageAtt(true);
+                }
+            }
+            processProperties(loadbalanceEndpoint, epConfig);
+            return loadbalanceEndpoint;
+        }
+        return null;
     }
 
     private List<Member> getMembers(OMElement loadbalanceElement) {
-	List<Member> members = new ArrayList<Member>();
-	for (Iterator memberIter = loadbalanceElement.getChildrenWithName(MEMBER); memberIter.hasNext();) {
-	    OMElement memberEle = (OMElement) memberIter.next();
-	    Member member = new Member(memberEle.getAttributeValue(new QName("hostName")), -1);
-	    String http = memberEle.getAttributeValue(new QName("httpPort"));
-	    if (http != null) {
-		member.setHttpPort(Integer.parseInt(http));
-	    }
-	    String https = memberEle.getAttributeValue(new QName("httpsPort"));
-	    if (https != null && https.trim().length() != 0) {
-		member.setHttpsPort(Integer.parseInt(https.trim()));
-	    }
-	    members.add(member);
-	}
-	return members;
+        List<Member> members = new ArrayList<Member>();
+        for (Iterator memberIter = loadbalanceElement.getChildrenWithName(MEMBER); memberIter.hasNext();) {
+            OMElement memberEle = (OMElement) memberIter.next();
+            Member member = new Member(memberEle.getAttributeValue(new QName("hostName")), -1);
+            String http = memberEle.getAttributeValue(new QName("httpPort"));
+            if (http != null) {
+                member.setHttpPort(Integer.parseInt(http));
+            }
+            String https = memberEle.getAttributeValue(new QName("httpsPort"));
+            if (https != null && https.trim().length() != 0) {
+                member.setHttpsPort(Integer.parseInt(https.trim()));
+            }
+            members.add(member);
+        }
+        return members;
     }
 
 }

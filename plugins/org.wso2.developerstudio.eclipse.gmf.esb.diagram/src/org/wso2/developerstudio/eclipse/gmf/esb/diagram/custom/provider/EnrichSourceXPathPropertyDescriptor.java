@@ -10,28 +10,27 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.NamespacedPropertyEditorDialog;
- 
+
 public class EnrichSourceXPathPropertyDescriptor extends PropertyDescriptor {
- 
-	public EnrichSourceXPathPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
- 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				EnrichMediator enrichMediator = (EnrichMediator) object;
-				 //.getEditingDomain()
-				NamespacedPropertyEditorDialog enrichMediatorConfigurationDialog = new NamespacedPropertyEditorDialog(shell, enrichMediator.getSourceXpath());
-				//enrichMediatorConfigurationDialog.setBlockOnOpen(true);
-				enrichMediatorConfigurationDialog.open();
-				return null;
-			}
-		};
-	}
- 
+
+    public EnrichSourceXPathPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                EnrichMediator enrichMediator = (EnrichMediator) object;
+                // .getEditingDomain()
+                NamespacedPropertyEditorDialog enrichMediatorConfigurationDialog = new NamespacedPropertyEditorDialog(
+                        shell, enrichMediator.getSourceXpath());
+                // enrichMediatorConfigurationDialog.setBlockOnOpen(true);
+                enrichMediatorConfigurationDialog.open();
+                return null;
+            }
+        };
+    }
+
 }

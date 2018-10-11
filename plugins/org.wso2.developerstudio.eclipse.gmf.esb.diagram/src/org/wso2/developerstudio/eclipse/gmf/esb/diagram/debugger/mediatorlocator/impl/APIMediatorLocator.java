@@ -51,17 +51,16 @@ public class APIMediatorLocator extends AbstractMediatorLocator {
      * @throws DebugPointMarkerNotFoundException
      */
     @Override
-    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint breakpoint)
-            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException,
-            CoreException {
+    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint breakpoint) throws MediatorNotFoundException,
+            MissingAttributeException, DebugPointMarkerNotFoundException, CoreException {
         ESBAPIDebugPointMessage debugPointMessage = (ESBAPIDebugPointMessage) breakpoint.getLocation();
         List<Integer> positionArray = debugPointMessage.getSequence().getApi().getMediatorPosition().getPosition();
         String sequenceType = debugPointMessage.getSequence().getApi().getSequenceType();
         SynapseAPIImpl api = (SynapseAPIImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
         APIResource apiResource = getMatchingAPIResource(api, debugPointMessage);
         if (sequenceType.equals(API_FAULTSEQ_LABEL)) {
-            return getMediatorInFaultSeq(
-                    apiResource.getContainer().getFaultContainer().getMediatorFlow().getChildren(), positionArray);
+            return getMediatorInFaultSeq(apiResource.getContainer().getFaultContainer().getMediatorFlow().getChildren(),
+                    positionArray);
         } else if (sequenceType.equals(API_INSEQ_LABEL)) {
             return getMediatorFromMediationFlow(apiResource.getOutputConnector(), positionArray);
         } else if (sequenceType.equals(API_OUTSEQ_LABEL)) {

@@ -75,340 +75,344 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorIt
  */
 public class EsbDiagramEditor extends DiagramDocumentEditor implements IGotoMarker {
 
-	private EsbMultiPageEditor esbEditor;
-	/**
-	 * @generated
-	 */
-	public static final String ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID"; //$NON-NLS-1$
+    private EsbMultiPageEditor esbEditor;
+    /**
+     * @generated
+     */
+    public static final String ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID"; //$NON-NLS-1$
 
-	/**
-	 * @generated
-	 */
-	public static final String CONTEXT_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"; //$NON-NLS-1$
+    /**
+     * @generated
+     */
+    public static final String CONTEXT_ID = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"; //$NON-NLS-1$
 
-	/**
-	 * @generated
-	 */
-	public EsbDiagramEditor() {
-		super(true);
-	}
+    /**
+     * @generated
+     */
+    public EsbDiagramEditor() {
+        super(true);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public EsbDiagramEditor(EsbMultiPageEditor esbEditor) {
-		super(true);
-		this.esbEditor = esbEditor;
-	}
+    /**
+     * @generated NOT
+     */
+    public EsbDiagramEditor(EsbMultiPageEditor esbEditor) {
+        super(true);
+        this.esbEditor = esbEditor;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected String getContextID() {
-		return CONTEXT_ID;
-	}
+    /**
+     * @generated
+     */
+    protected String getContextID() {
+        return CONTEXT_ID;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected PaletteRoot createPaletteRoot(PaletteRoot existingPaletteRoot) {
-		PaletteRoot root = super.createPaletteRoot(existingPaletteRoot);
-		new EsbPaletteFactory().fillPalette(root);
-		return root;
-	}
+    /**
+     * @generated
+     */
+    protected PaletteRoot createPaletteRoot(PaletteRoot existingPaletteRoot) {
+        PaletteRoot root = super.createPaletteRoot(existingPaletteRoot);
+        new EsbPaletteFactory().fillPalette(root);
+        return root;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected PreferencesHint getPreferencesHint() {
-		return EsbDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT;
-	}
+    /**
+     * @generated
+     */
+    protected PreferencesHint getPreferencesHint() {
+        return EsbDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT;
+    }
 
-	/**
-	 * @generated
-	 */
-	public String getContributorId() {
-		return EsbDiagramEditorPlugin.ID;
-	}
+    /**
+     * @generated
+     */
+    public String getContributorId() {
+        return EsbDiagramEditorPlugin.ID;
+    }
 
-	/**
-	 * @generated
-	 */
-	@SuppressWarnings("rawtypes")
-	public Object getAdapter(Class type) {
-		if (type == IShowInTargetList.class) {
-			return new IShowInTargetList() {
-				public String[] getShowInTargetIds() {
-					return new String[] { ProjectExplorer.VIEW_ID };
-				}
-			};
-		}
-		return super.getAdapter(type);
-	}
+    /**
+     * @generated
+     */
+    @SuppressWarnings("rawtypes")
+    public Object getAdapter(Class type) {
+        if (type == IShowInTargetList.class) {
+            return new IShowInTargetList() {
+                public String[] getShowInTargetIds() {
+                    return new String[] { ProjectExplorer.VIEW_ID };
+                }
+            };
+        }
+        return super.getAdapter(type);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected IDocumentProvider getDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput || input instanceof URIEditorInput || input instanceof EsbEditorInput) {
-			return EsbDiagramEditorPlugin.getInstance().getDocumentProvider();
-		}
-		return super.getDocumentProvider(input);
-	}
+    /**
+     * @generated NOT
+     */
+    protected IDocumentProvider getDocumentProvider(IEditorInput input) {
+        if (input instanceof IFileEditorInput || input instanceof URIEditorInput || input instanceof EsbEditorInput) {
+            return EsbDiagramEditorPlugin.getInstance().getDocumentProvider();
+        }
+        return super.getDocumentProvider(input);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public TransactionalEditingDomain getEditingDomain() {
-		IDocument document = null;
-		if (getDocumentProvider() != null) {
-			document = getEditorInput() != null ? getDocumentProvider().getDocument(getEditorInput()) : null;
-		} else {
-			document = getEditorInput() != null ? getDocumentProvider(getEditorInput()).getDocument(getEditorInput())
-					: null;
-		}
-		if (document instanceof IDiagramDocument) {
-			return ((IDiagramDocument) document).getEditingDomain();
-		}
-		return super.getEditingDomain();
-	}
+    /**
+     * @generated NOT
+     */
+    public TransactionalEditingDomain getEditingDomain() {
+        IDocument document = null;
+        if (getDocumentProvider() != null) {
+            document = getEditorInput() != null ? getDocumentProvider().getDocument(getEditorInput()) : null;
+        } else {
+            document = getEditorInput() != null ? getDocumentProvider(getEditorInput()).getDocument(getEditorInput())
+                    : null;
+        }
+        if (document instanceof IDiagramDocument) {
+            return ((IDiagramDocument) document).getEditingDomain();
+        }
+        return super.getEditingDomain();
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected void setDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput || input instanceof URIEditorInput || input instanceof EsbEditorInput) {
-			setDocumentProvider(EsbDiagramEditorPlugin.getInstance().getDocumentProvider());
-		} else {
-			super.setDocumentProvider(input);
-		}
-	}
+    /**
+     * @generated NOT
+     */
+    protected void setDocumentProvider(IEditorInput input) {
+        if (input instanceof IFileEditorInput || input instanceof URIEditorInput || input instanceof EsbEditorInput) {
+            setDocumentProvider(EsbDiagramEditorPlugin.getInstance().getDocumentProvider());
+        } else {
+            super.setDocumentProvider(input);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	public void gotoMarker(IMarker marker) {
-		MarkerNavigationService.getInstance().gotoMarker(this, marker);
-	}
+    /**
+     * @generated
+     */
+    public void gotoMarker(IMarker marker) {
+        MarkerNavigationService.getInstance().gotoMarker(this, marker);
+    }
 
-	public void doSave(IProgressMonitor progressMonitor) {
-		IDocumentProvider p = getDocumentProvider();
-		if (p == null) {
-			return;
-		}
-		updateState(getEditorInput());
-		validateState(getEditorInput());
-		performSave(false, progressMonitor);
-	}
+    public void doSave(IProgressMonitor progressMonitor) {
+        IDocumentProvider p = getDocumentProvider();
+        if (p == null) {
+            return;
+        }
+        updateState(getEditorInput());
+        validateState(getEditorInput());
+        performSave(false, progressMonitor);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public boolean isSaveAsAllowed() {
-		return false;
-	}
+    /**
+     * @generated NOT
+     */
+    public boolean isSaveAsAllowed() {
+        return false;
+    }
 
-	/**
-	 * @generated
-	 */
-	public void doSaveAs() {
-		performSaveAs(new NullProgressMonitor());
-	}
+    /**
+     * @generated
+     */
+    public void doSaveAs() {
+        performSaveAs(new NullProgressMonitor());
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void performSaveAs(IProgressMonitor progressMonitor) {
-		Shell shell = getSite().getShell();
-		IEditorInput input = getEditorInput();
-		SaveAsDialog dialog = new SaveAsDialog(shell);
-		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input).getFile() : null;
-		if (original != null) {
-			dialog.setOriginalFile(original);
-		}
-		dialog.create();
-		IDocumentProvider provider = getDocumentProvider();
-		if (provider == null) {
-			// editor has been programmatically closed while the dialog was open
-			return;
-		}
-		if (provider.isDeleted(input) && original != null) {
-			String message = NLS.bind(Messages.EsbDiagramEditor_SavingDeletedFile, original.getName());
-			dialog.setErrorMessage(null);
-			dialog.setMessage(message, IMessageProvider.WARNING);
-		}
-		if (dialog.open() == Window.CANCEL) {
-			if (progressMonitor != null) {
-				progressMonitor.setCanceled(true);
-			}
-			return;
-		}
-		IPath filePath = dialog.getResult();
-		if (filePath == null) {
-			if (progressMonitor != null) {
-				progressMonitor.setCanceled(true);
-			}
-			return;
-		}
-		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-		IFile file = workspaceRoot.getFile(filePath);
-		final IEditorInput newInput = new FileEditorInput(file);
-		// Check if the editor is already open
-		IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
-		IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences();
-		for (int i = 0; i < editorRefs.length; i++) {
-			if (matchingStrategy.matches(editorRefs[i], newInput)) {
-				MessageDialog.openWarning(shell, Messages.EsbDiagramEditor_SaveAsErrorTitle,
-						Messages.EsbDiagramEditor_SaveAsErrorMessage);
-				return;
-			}
-		}
-		boolean success = false;
-		try {
-			provider.aboutToChange(newInput);
-			getDocumentProvider(newInput).saveDocument(progressMonitor, newInput,
-					getDocumentProvider().getDocument(getEditorInput()), true);
-			success = true;
-		} catch (CoreException x) {
-			IStatus status = x.getStatus();
-			if (status == null || status.getSeverity() != IStatus.CANCEL) {
-				ErrorDialog.openError(shell, Messages.EsbDiagramEditor_SaveErrorTitle,
-						Messages.EsbDiagramEditor_SaveErrorMessage, x.getStatus());
-			}
-		} finally {
-			provider.changed(newInput);
-			if (success) {
-				setInput(newInput);
-			}
-		}
-		if (progressMonitor != null) {
-			progressMonitor.setCanceled(!success);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void performSaveAs(IProgressMonitor progressMonitor) {
+        Shell shell = getSite().getShell();
+        IEditorInput input = getEditorInput();
+        SaveAsDialog dialog = new SaveAsDialog(shell);
+        IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input).getFile() : null;
+        if (original != null) {
+            dialog.setOriginalFile(original);
+        }
+        dialog.create();
+        IDocumentProvider provider = getDocumentProvider();
+        if (provider == null) {
+            // editor has been programmatically closed while the dialog was open
+            return;
+        }
+        if (provider.isDeleted(input) && original != null) {
+            String message = NLS.bind(Messages.EsbDiagramEditor_SavingDeletedFile, original.getName());
+            dialog.setErrorMessage(null);
+            dialog.setMessage(message, IMessageProvider.WARNING);
+        }
+        if (dialog.open() == Window.CANCEL) {
+            if (progressMonitor != null) {
+                progressMonitor.setCanceled(true);
+            }
+            return;
+        }
+        IPath filePath = dialog.getResult();
+        if (filePath == null) {
+            if (progressMonitor != null) {
+                progressMonitor.setCanceled(true);
+            }
+            return;
+        }
+        IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+        IFile file = workspaceRoot.getFile(filePath);
+        final IEditorInput newInput = new FileEditorInput(file);
+        // Check if the editor is already open
+        IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
+        IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .getEditorReferences();
+        for (int i = 0; i < editorRefs.length; i++) {
+            if (matchingStrategy.matches(editorRefs[i], newInput)) {
+                MessageDialog.openWarning(shell, Messages.EsbDiagramEditor_SaveAsErrorTitle,
+                        Messages.EsbDiagramEditor_SaveAsErrorMessage);
+                return;
+            }
+        }
+        boolean success = false;
+        try {
+            provider.aboutToChange(newInput);
+            getDocumentProvider(newInput).saveDocument(progressMonitor, newInput,
+                    getDocumentProvider().getDocument(getEditorInput()), true);
+            success = true;
+        } catch (CoreException x) {
+            IStatus status = x.getStatus();
+            if (status == null || status.getSeverity() != IStatus.CANCEL) {
+                ErrorDialog.openError(shell, Messages.EsbDiagramEditor_SaveErrorTitle,
+                        Messages.EsbDiagramEditor_SaveErrorMessage, x.getStatus());
+            }
+        } finally {
+            provider.changed(newInput);
+            if (success) {
+                setInput(newInput);
+            }
+        }
+        if (progressMonitor != null) {
+            progressMonitor.setCanceled(!success);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	public ShowInContext getShowInContext() {
-		return new ShowInContext(getEditorInput(), getNavigatorSelection());
-	}
+    /**
+     * @generated
+     */
+    public ShowInContext getShowInContext() {
+        return new ShowInContext(getEditorInput(), getNavigatorSelection());
+    }
 
-	/**
-	 * @generated
-	 */
-	private ISelection getNavigatorSelection() {
-		IDiagramDocument document = getDiagramDocument();
-		if (document == null) {
-			return StructuredSelection.EMPTY;
-		}
-		Diagram diagram = document.getDiagram();
-		if (diagram == null || diagram.eResource() == null) {
-			return StructuredSelection.EMPTY;
-		}
-		IFile file = WorkspaceSynchronizer.getFile(diagram.eResource());
-		if (file != null) {
-			EsbNavigatorItem item = new EsbNavigatorItem(diagram, file, false);
-			return new StructuredSelection(item);
-		}
-		return StructuredSelection.EMPTY;
-	}
+    /**
+     * @generated
+     */
+    private ISelection getNavigatorSelection() {
+        IDiagramDocument document = getDiagramDocument();
+        if (document == null) {
+            return StructuredSelection.EMPTY;
+        }
+        Diagram diagram = document.getDiagram();
+        if (diagram == null || diagram.eResource() == null) {
+            return StructuredSelection.EMPTY;
+        }
+        IFile file = WorkspaceSynchronizer.getFile(diagram.eResource());
+        if (file != null) {
+            EsbNavigatorItem item = new EsbNavigatorItem(diagram, file, false);
+            return new StructuredSelection(item);
+        }
+        return StructuredSelection.EMPTY;
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected void configureGraphicalViewer() {
-		super.configureGraphicalViewer();
+    /**
+     * @generated NOT
+     */
+    protected void configureGraphicalViewer() {
+        super.configureGraphicalViewer();
 
-		IDiagramGraphicalViewer viewer = getDiagramGraphicalViewer();
-		KeyHandler viewerKeyHandler = new CustomDiagramGraphicalViewerKeyHandler(this, viewer);
+        IDiagramGraphicalViewer viewer = getDiagramGraphicalViewer();
+        KeyHandler viewerKeyHandler = new CustomDiagramGraphicalViewerKeyHandler(this, viewer);
 
-		KeyHandler parentHandler = getKeyHandler();
+        KeyHandler parentHandler = getKeyHandler();
 
-		/*		// CTRL + '=' disable zoom in 
-		 parentHandler.remove(KeyStroke.getPressed('=', 0x3d, SWT.CTRL));
-		 // CTRL + '-' * disable zoom out
-		 parentHandler.remove(KeyStroke.getPressed('-', 0x2d, SWT.CTRL));*/
+        /*
+         * // CTRL + '=' disable zoom in
+         * parentHandler.remove(KeyStroke.getPressed('=', 0x3d, SWT.CTRL));
+         * // CTRL + '-' * disable zoom out
+         * parentHandler.remove(KeyStroke.getPressed('-', 0x2d, SWT.CTRL));
+         */
 
-		viewerKeyHandler.setParent(getKeyHandler());
-		viewer.setKeyHandler(new DirectEditKeyHandler(viewer).setParent(viewerKeyHandler));
+        viewerKeyHandler.setParent(getKeyHandler());
+        viewer.setKeyHandler(new DirectEditKeyHandler(viewer).setParent(viewerKeyHandler));
 
-		// Define key handler for palette viewer.
-		PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
-		KeyHandler paletteViewerKeyHandler = new CustomPaletteViewerKeyHandler(paletteViewer);
-		paletteViewer.setKeyHandler(paletteViewerKeyHandler);
+        // Define key handler for palette viewer.
+        PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
+        KeyHandler paletteViewerKeyHandler = new CustomPaletteViewerKeyHandler(paletteViewer);
+        paletteViewer.setKeyHandler(paletteViewerKeyHandler);
 
-		//This enables the property view to be informed of selection changes in our graphical view, 
-		//when our view is the active workbench part.
-		esbEditor.getSite().setSelectionProvider(viewer);
+        // This enables the property view to be informed of selection changes in our graphical view,
+        // when our view is the active workbench part.
+        esbEditor.getSite().setSelectionProvider(viewer);
 
-		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this,
-				getDiagramGraphicalViewer());
-		getDiagramGraphicalViewer().setContextMenu(provider);
-		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
-		getDiagramGraphicalViewer().addDropTargetListener(
-				new CustomPaletteToolTransferDropTargetListener(getGraphicalViewer()));
+        DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this,
+                getDiagramGraphicalViewer());
+        getDiagramGraphicalViewer().setContextMenu(provider);
+        getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
+        getDiagramGraphicalViewer()
+                .addDropTargetListener(new CustomPaletteToolTransferDropTargetListener(getGraphicalViewer()));
 
-		// Adding zoom listener 
-		ZoomManager zoomManager = (ZoomManager) getGraphicalViewer().getProperty(ZoomManager.class.toString());
-		zoomManager.addZoomListener(new CustomZoomListener(esbEditor));
-	}
+        // Adding zoom listener
+        ZoomManager zoomManager = (ZoomManager) getGraphicalViewer().getProperty(ZoomManager.class.toString());
+        zoomManager.addZoomListener(new CustomZoomListener(esbEditor));
+    }
 
-	protected int getInitialDockLocation() {
-		return PositionConstants.WEST;
-	}
+    protected int getInitialDockLocation() {
+        return PositionConstants.WEST;
+    }
 
-	protected int getInitialPaletteSize() {
-		return 240;
-	}
+    protected int getInitialPaletteSize() {
+        return 240;
+    }
 
-	public void focusToolBar() {
+    public void focusToolBar() {
 
-		PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
-		DrawerEditPart mediatorsGroupEditpart = null;
-		//ToolEntryEditPart callMediatorToolEntryEditpart = null;
-		Boolean mediatorsGroupFound = false;
-		//Boolean callMediatorFound = false;
+        PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
+        DrawerEditPart mediatorsGroupEditpart = null;
+        // ToolEntryEditPart callMediatorToolEntryEditpart = null;
+        Boolean mediatorsGroupFound = false;
+        // Boolean callMediatorFound = false;
 
-		for (Iterator ite = paletteViewer.getEditPartRegistry().values().iterator(); ite.hasNext();) {
+        for (Iterator ite = paletteViewer.getEditPartRegistry().values().iterator(); ite.hasNext();) {
 
-			Object ep = ite.next();
-			if (ep instanceof DrawerEditPart && !mediatorsGroupFound) {
+            Object ep = ite.next();
+            if (ep instanceof DrawerEditPart && !mediatorsGroupFound) {
 
-				mediatorsGroupEditpart = (DrawerEditPart) ep;
-				if (mediatorsGroupEditpart.getModel() instanceof PaletteDrawer) {
-					PaletteDrawer paletteDrawer = (PaletteDrawer) mediatorsGroupEditpart.getModel();
-					if (paletteDrawer.getId().equals("createMediators2Group")) {
-						mediatorsGroupFound = true;
-					}
-				}
-			} /*else if (ep instanceof ToolEntryEditPart && !callMediatorFound) {
-				
-				callMediatorToolEntryEditpart = (ToolEntryEditPart)ep;
-				ToolEntry paletteDrawer = (ToolEntry) callMediatorToolEntryEditpart.getModel();
-				//search for call mediator which is the first mediator listed under mediaotrs
-				if (paletteDrawer.getId().equals("createCallMediator45CreationTool")) {
-					callMediatorFound = true;
-				}
-				}*/
-		}
+                mediatorsGroupEditpart = (DrawerEditPart) ep;
+                if (mediatorsGroupEditpart.getModel() instanceof PaletteDrawer) {
+                    PaletteDrawer paletteDrawer = (PaletteDrawer) mediatorsGroupEditpart.getModel();
+                    if (paletteDrawer.getId().equals("createMediators2Group")) {
+                        mediatorsGroupFound = true;
+                    }
+                }
+            } /*
+               * else if (ep instanceof ToolEntryEditPart && !callMediatorFound) {
+               * 
+               * callMediatorToolEntryEditpart = (ToolEntryEditPart)ep;
+               * ToolEntry paletteDrawer = (ToolEntry) callMediatorToolEntryEditpart.getModel();
+               * //search for call mediator which is the first mediator listed under mediaotrs
+               * if (paletteDrawer.getId().equals("createCallMediator45CreationTool")) {
+               * callMediatorFound = true;
+               * }
+               * }
+               */
+        }
 
-		if (mediatorsGroupFound) { // we only need to enable this shortcut for mediators group
+        if (mediatorsGroupFound) { // we only need to enable this shortcut for mediators group
 
-			if (!mediatorsGroupEditpart.isExpanded()) {
-				mediatorsGroupEditpart.setExpanded(true);
-			}
+            if (!mediatorsGroupEditpart.isExpanded()) {
+                mediatorsGroupEditpart.setExpanded(true);
+            }
 
-			paletteViewer.select(mediatorsGroupEditpart);
-			paletteViewer.setFocus(mediatorsGroupEditpart);
-			//paletteViewer.setActiveTool((ToolEntry)callMediatorToolEntryEditpart.getModel());
-			paletteViewer.getControl().forceFocus();
-			if (paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
-				CustomPaletteViewerKeyHandler customKeyHandler = (CustomPaletteViewerKeyHandler) paletteViewer
-						.getKeyHandler();
-				customKeyHandler.resetSerchString();
-			}
-		}
-	}
+            paletteViewer.select(mediatorsGroupEditpart);
+            paletteViewer.setFocus(mediatorsGroupEditpart);
+            // paletteViewer.setActiveTool((ToolEntry)callMediatorToolEntryEditpart.getModel());
+            paletteViewer.getControl().forceFocus();
+            if (paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
+                CustomPaletteViewerKeyHandler customKeyHandler = (CustomPaletteViewerKeyHandler) paletteViewer
+                        .getKeyHandler();
+                customKeyHandler.resetSerchString();
+            }
+        }
+    }
 
 }

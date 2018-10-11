@@ -30,23 +30,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class XQueryVariablesPropertyDescriptor extends PropertyDescriptor {
 
-	public XQueryVariablesPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				XQueryMediator xQueryMediator = (XQueryMediator) object;
-				ConfigureXQueryMediatorDialog xqueryMediatorConfigurationDialog = new ConfigureXQueryMediatorDialog(shell, xQueryMediator, TransactionUtil.getEditingDomain(xQueryMediator));
-				xqueryMediatorConfigurationDialog.setBlockOnOpen(true);
-				xqueryMediatorConfigurationDialog.open();
-				return null;
-			}
-		};
-	}
+    public XQueryVariablesPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                XQueryMediator xQueryMediator = (XQueryMediator) object;
+                ConfigureXQueryMediatorDialog xqueryMediatorConfigurationDialog = new ConfigureXQueryMediatorDialog(
+                        shell, xQueryMediator, TransactionUtil.getEditingDomain(xQueryMediator));
+                xqueryMediatorConfigurationDialog.setBlockOnOpen(true);
+                xqueryMediatorConfigurationDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

@@ -29,117 +29,105 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditP
 
 public abstract class AbstractInputConnector extends AbstractBorderItemEditPart {
 
-	
-	public final boolean isInput=true;
-	
-	protected IFigure primaryShapeForward;
+    public final boolean isInput = true;
 
-	protected IFigure primaryShapeReverse;
-	
-	public NodeFigure figure_;
-	
-	
-	//abstract public IFigure getPrimaryShapeForward(); 
-	//abstract public IFigure getPrimaryShapeReverse();
-	
-	
-	public AbstractInputConnector(View view) {
-		super(view);
-		// TODO Auto-generated constructor stub
-	}
+    protected IFigure primaryShapeForward;
 
-	protected NodeFigure createNodeFigure() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+    protected IFigure primaryShapeReverse;
 
+    public NodeFigure figure_;
 
-	public NodeFigure getNodeFigureInput() {
+    // abstract public IFigure getPrimaryShapeForward();
+    // abstract public IFigure getPrimaryShapeReverse();
 
-		return figure_;
-	}
-	
+    public AbstractInputConnector(View view) {
+        super(view);
+        // TODO Auto-generated constructor stub
+    }
 
-	protected IFigure createNodeShapeForward() {
-		return primaryShapeForward = new EastPointerFigure();
-	}
+    protected NodeFigure createNodeFigure() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	protected IFigure createNodeShapeReverse() {
-		return primaryShapeReverse = new WestPointerFigure();
-	}
+    public NodeFigure getNodeFigureInput() {
 
+        return figure_;
+    }
 
-	public EastPointerFigure getPrimaryShapeForward() {
-		return (EastPointerFigure) primaryShapeForward;
-	}
+    protected IFigure createNodeShapeForward() {
+        return primaryShapeForward = new EastPointerFigure();
+    }
 
-	public WestPointerFigure getPrimaryShapeReverse() {
-		return (WestPointerFigure) primaryShapeReverse;
+    protected IFigure createNodeShapeReverse() {
+        return primaryShapeReverse = new WestPointerFigure();
+    }
 
-	}
-	
-	public void notifyChanged(Notification notification) {
-		int direction = -1;
-		super.notifyChanged(notification);
-		if (notification.getEventType() == Notification.ADD) {			
-			/*
-			 * You can directly call Reverse(EditPart) method here. But it will
-			 * lead to reduce the performance since it will call
-			 * Reverse(EditPart) for each and every notifyChange event. So we
-			 * will filter the request to some extend.
-			 */
-			if (this.getTargetConnections().size() != 0) {
-				EditPart link = ((EsbLinkEditPart) this.getTargetConnections()
-						.get(0)).getSource();
-				if (((link instanceof AbstractOutputConnector)
-						&& (((AbstractOutputConnector) link).getParent() instanceof AbstractMediator)
-						&& (((AbstractMediator) ((AbstractOutputConnector) link)
-								.getParent()).reversed)) || (link instanceof AbstractEndpointOutputConnector)) {
-					if(this.getParent() instanceof AbstractMediator){
-					((AbstractMediator) this.getParent()).reverse(this
-							.getParent());	
-					}
-				}
-				
-				if(this.getParent() instanceof SequenceEditPart){
-					if(link instanceof AbstractEndpointOutputConnector){
-					//((SequenceEditPart)this.getParent()).moveConnectorsRightSide();
-					}
-				}
-			}
-		}
-	}
-	
-	@Override
-	public boolean isSelectable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public EastPointerFigure getPrimaryShapeForward() {
+        return (EastPointerFigure) primaryShapeForward;
+    }
 
-	public class EastPointerFigure extends EastPointerShape {
+    public WestPointerFigure getPrimaryShapeReverse() {
+        return (WestPointerFigure) primaryShapeReverse;
 
+    }
 
-		public EastPointerFigure() {
+    public void notifyChanged(Notification notification) {
+        int direction = -1;
+        super.notifyChanged(notification);
+        if (notification.getEventType() == Notification.ADD) {
+            /*
+             * You can directly call Reverse(EditPart) method here. But it will
+             * lead to reduce the performance since it will call
+             * Reverse(EditPart) for each and every notifyChange event. So we
+             * will filter the request to some extend.
+             */
+            if (this.getTargetConnections().size() != 0) {
+                EditPart link = ((EsbLinkEditPart) this.getTargetConnections().get(0)).getSource();
+                if (((link instanceof AbstractOutputConnector)
+                        && (((AbstractOutputConnector) link).getParent() instanceof AbstractMediator)
+                        && (((AbstractMediator) ((AbstractOutputConnector) link).getParent()).reversed))
+                        || (link instanceof AbstractEndpointOutputConnector)) {
+                    if (this.getParent() instanceof AbstractMediator) {
+                        ((AbstractMediator) this.getParent()).reverse(this.getParent());
+                    }
+                }
 
-			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
-					getMapMode().DPtoLP(10)));
-		}
+                if (this.getParent() instanceof SequenceEditPart) {
+                    if (link instanceof AbstractEndpointOutputConnector) {
+                        // ((SequenceEditPart)this.getParent()).moveConnectorsRightSide();
+                    }
+                }
+            }
+        }
+    }
 
-	}
+    @Override
+    public boolean isSelectable() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public class WestPointerFigure extends WestPointerShape {
+    public class EastPointerFigure extends EastPointerShape {
 
-		public WestPointerFigure() {
+        public EastPointerFigure() {
 
-			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
-					getMapMode().DPtoLP(10)));
-		}
+            this.setBackgroundColor(THIS_BACK);
+            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+        }
 
-	}
-	
-	static final Color THIS_BACK = new Color(null, 50, 50, 50);
+    }
+
+    public class WestPointerFigure extends WestPointerShape {
+
+        public WestPointerFigure() {
+
+            this.setBackgroundColor(THIS_BACK);
+            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+        }
+
+    }
+
+    static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

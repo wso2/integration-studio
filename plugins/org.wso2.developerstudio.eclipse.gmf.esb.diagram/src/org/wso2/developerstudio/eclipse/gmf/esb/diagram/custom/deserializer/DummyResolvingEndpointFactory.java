@@ -34,30 +34,30 @@ public class DummyResolvingEndpointFactory extends DummyEndpointFactory {
     private static final QName ATTR_KEY_EXPRESSION = new QName("key-expression");
 
     private DummyResolvingEndpointFactory() {
-	
+
     }
 
     public static DummyResolvingEndpointFactory getInstance() {
-	return instance;
+        return instance;
     }
 
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	ResolvingEndpoint resolvingEndpoint = new ResolvingEndpoint();
-	String name = epConfig.getAttributeValue(new QName("name"));
-	if (name != null) {
-	    resolvingEndpoint.setName(name);
-	}
+        ResolvingEndpoint resolvingEndpoint = new ResolvingEndpoint();
+        String name = epConfig.getAttributeValue(new QName("name"));
+        if (name != null) {
+            resolvingEndpoint.setName(name);
+        }
 
-	try {
-	    resolvingEndpoint.setKeyExpression(SynapseXPathFactory.getSynapseXPath(epConfig, ATTR_KEY_EXPRESSION));
-	} catch (JaxenException e) {
-	    // ignore
-	}
+        try {
+            resolvingEndpoint.setKeyExpression(SynapseXPathFactory.getSynapseXPath(epConfig, ATTR_KEY_EXPRESSION));
+        } catch (JaxenException e) {
+            // ignore
+        }
 
-	processProperties(resolvingEndpoint, epConfig);
+        processProperties(resolvingEndpoint, epConfig);
 
-	return resolvingEndpoint;
+        return resolvingEndpoint;
     }
 
 }

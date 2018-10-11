@@ -34,59 +34,59 @@ public class CallMediatorExtFactory extends CallMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	Mediator mediator = new CallMediator();
+        Mediator mediator = new CallMediator();
 
-	QName ENDPOINT_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "endpoint");
-	QName BLOCKING_Q = new QName("blocking");
-	QName ATT_INIT_AXIS2_CLIENT_OPTIONS = new QName("initAxis2ClientOptions");
-	QName ATT_AXIS2XML = new QName("axis2xml");
-	QName ATT_REPOSITORY = new QName("repository");
+        QName ENDPOINT_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "endpoint");
+        QName BLOCKING_Q = new QName("blocking");
+        QName ATT_INIT_AXIS2_CLIENT_OPTIONS = new QName("initAxis2ClientOptions");
+        QName ATT_AXIS2XML = new QName("axis2xml");
+        QName ATT_REPOSITORY = new QName("repository");
 
-	processAuditStatus(mediator, omElement);
+        processAuditStatus(mediator, omElement);
 
-	OMElement epElement = omElement.getFirstChildWithName(ENDPOINT_Q);
-	if (epElement != null) {
-	    Endpoint endpoint = DummyEndpointFactory.getEndpointFromElement(epElement, true, null);
-	    if (endpoint != null) {
-		((CallMediator) mediator).setEndpoint(endpoint);
-	    }
-	}
+        OMElement epElement = omElement.getFirstChildWithName(ENDPOINT_Q);
+        if (epElement != null) {
+            Endpoint endpoint = DummyEndpointFactory.getEndpointFromElement(epElement, true, null);
+            if (endpoint != null) {
+                ((CallMediator) mediator).setEndpoint(endpoint);
+            }
+        }
 
-	OMAttribute blockingAtt = omElement.getAttribute(BLOCKING_Q);
-	if (blockingAtt != null) {
+        OMAttribute blockingAtt = omElement.getAttribute(BLOCKING_Q);
+        if (blockingAtt != null) {
 
-	    ((CallMediator) mediator).setBlocking(Boolean.parseBoolean(blockingAtt.getAttributeValue()));
-	    if (((CallMediator) mediator).isBlocking()) {
-		OMAttribute initAxis2ClientOptions = omElement.getAttribute(ATT_INIT_AXIS2_CLIENT_OPTIONS);
-		OMAttribute axis2xmlAttr = omElement.getAttribute(ATT_AXIS2XML);
-		OMAttribute repoAttr = omElement.getAttribute(ATT_REPOSITORY);
+            ((CallMediator) mediator).setBlocking(Boolean.parseBoolean(blockingAtt.getAttributeValue()));
+            if (((CallMediator) mediator).isBlocking()) {
+                OMAttribute initAxis2ClientOptions = omElement.getAttribute(ATT_INIT_AXIS2_CLIENT_OPTIONS);
+                OMAttribute axis2xmlAttr = omElement.getAttribute(ATT_AXIS2XML);
+                OMAttribute repoAttr = omElement.getAttribute(ATT_REPOSITORY);
 
-		if (initAxis2ClientOptions != null) {
-		    ((CallMediator) mediator)
-			    .setInitClientOptions(Boolean.parseBoolean(initAxis2ClientOptions.getAttributeValue()));
-		}
+                if (initAxis2ClientOptions != null) {
+                    ((CallMediator) mediator)
+                            .setInitClientOptions(Boolean.parseBoolean(initAxis2ClientOptions.getAttributeValue()));
+                }
 
-		if (axis2xmlAttr != null && axis2xmlAttr.getAttributeValue() != null) {
-		    File axis2xml = new File(axis2xmlAttr.getAttributeValue());
-		    if (axis2xml.exists() && axis2xml.isFile()) {
-			((CallMediator) mediator).setAxis2xml(axis2xmlAttr.getAttributeValue());
-		    } else {
-			// ignore
-		    }
-		}
+                if (axis2xmlAttr != null && axis2xmlAttr.getAttributeValue() != null) {
+                    File axis2xml = new File(axis2xmlAttr.getAttributeValue());
+                    if (axis2xml.exists() && axis2xml.isFile()) {
+                        ((CallMediator) mediator).setAxis2xml(axis2xmlAttr.getAttributeValue());
+                    } else {
+                        // ignore
+                    }
+                }
 
-		if (repoAttr != null && repoAttr.getAttributeValue() != null) {
-		    File repo = new File(repoAttr.getAttributeValue());
-		    if (repo.exists() && repo.isDirectory()) {
-			((CallMediator) mediator).setClientRepository(repoAttr.getAttributeValue());
-		    } else {
-			// ignore
-		    }
-		}
-	    }
-	}
+                if (repoAttr != null && repoAttr.getAttributeValue() != null) {
+                    File repo = new File(repoAttr.getAttributeValue());
+                    if (repo.exists() && repo.isDirectory()) {
+                        ((CallMediator) mediator).setClientRepository(repoAttr.getAttributeValue());
+                    } else {
+                        // ignore
+                    }
+                }
+            }
+        }
 
-	return mediator;
+        return mediator;
     }
 
 }

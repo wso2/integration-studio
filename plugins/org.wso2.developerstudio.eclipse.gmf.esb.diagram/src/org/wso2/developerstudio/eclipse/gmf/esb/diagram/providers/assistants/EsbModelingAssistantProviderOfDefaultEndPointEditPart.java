@@ -13,15 +13,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfDefaultEndPointEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(EsbElementTypes.DefaultEndPointInputConnector_3021);
-		types.add(EsbElementTypes.DefaultEndPointOutputConnector_3022);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(2);
+        types.add(EsbElementTypes.DefaultEndPointInputConnector_3021);
+        types.add(EsbElementTypes.DefaultEndPointOutputConnector_3022);
+        return types;
+    }
 
 }

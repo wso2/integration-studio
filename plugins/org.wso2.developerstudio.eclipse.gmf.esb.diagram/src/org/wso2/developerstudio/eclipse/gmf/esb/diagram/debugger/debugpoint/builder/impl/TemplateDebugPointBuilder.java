@@ -59,9 +59,10 @@ public class TemplateDebugPointBuilder extends AbstractESBDebugPointBuilder {
     public ESBDebugPoint getESBDebugPoint(EsbServer esbServer, IResource resource, AbstractMediator part,
             String commandArgument) throws ESBDebuggerException, CoreException {
 
-    	int lineNumber = -1;
-    	ESBTemplateDebugPointMessage templateDebugPoint = (ESBTemplateDebugPointMessage)getESBDebugPointMessage(esbServer, part, commandArgument);
-    	return new ESBDebugPoint(resource, lineNumber, templateDebugPoint);
+        int lineNumber = -1;
+        ESBTemplateDebugPointMessage templateDebugPoint = (ESBTemplateDebugPointMessage) getESBDebugPointMessage(
+                esbServer, part, commandArgument);
+        return new ESBDebugPoint(resource, lineNumber, templateDebugPoint);
     }
 
     /**
@@ -91,10 +92,10 @@ public class TemplateDebugPointBuilder extends AbstractESBDebugPointBuilder {
         }
     }
 
-	@Override
-	public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
+    @Override
+    public AbstractESBDebugPointMessage getESBDebugPointMessage(EsbServer esbServer, AbstractMediator part,
             String commandArgument) throws CoreException, ESBDebuggerException {
-		TemplateImpl template = (TemplateImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
+        TemplateImpl template = (TemplateImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
 
         if (template.getChild() instanceof SequencesImpl) {
             EsbElement sequnce = template.getChild();
@@ -105,9 +106,9 @@ public class TemplateDebugPointBuilder extends AbstractESBDebugPointBuilder {
                     TEMPLATE_LABEL, templateBean);
             return templateDebugPoint;
         } else {
-            throw new UnsupportedOperationException("Debug Point Integration not supported for template : "
-                    + template.getChild());
+            throw new UnsupportedOperationException(
+                    "Debug Point Integration not supported for template : " + template.getChild());
         }
-	}
+    }
 
 }

@@ -23,38 +23,33 @@ import org.apache.synapse.config.xml.MediatorSerializer;
 import org.apache.synapse.config.xml.MediatorSerializerFinder;
 
 public class MediatorSerializerRegister {
-	static MediatorSerializerFinder mediatorSerializerFinder = null;
+    static MediatorSerializerFinder mediatorSerializerFinder = null;
 
-	static {
-		mediatorSerializerFinder = MediatorSerializerFinder.getInstance();
-	}
-	
-	/* custom mediator serializers */
-	@SuppressWarnings("rawtypes")
-	private static final Class[] mediatorSerializers = { 
-		ClassMediatorExtSerializer.class,
-		POJOCommandMediatorExtSerializer.class,
-		BuilderMediatorExtSerializer.class,
-		RuleMediatorExtSerialize.class,
-		EJBMediatorExtSerializer.class,
-		BeanMediatorExtSerializer.class,
-		CloudConnectorOperationExtSerializer.class,
-		EntitlementMediatorExtSerializer.class
-		};
+    static {
+        mediatorSerializerFinder = MediatorSerializerFinder.getInstance();
+    }
 
-	public static synchronized void registerSerializers() {
-		Map<String, MediatorSerializer> serializerMap = mediatorSerializerFinder.getSerializerMap();
-		for (@SuppressWarnings("rawtypes") Class c : mediatorSerializers) {
-			try {
-				MediatorSerializer ser = (MediatorSerializer) c.newInstance();
-				String mediatorClassName = ser.getMediatorClassName();
-				if (!serializerMap.containsKey(mediatorClassName)) {
-					serializerMap.put(ser.getMediatorClassName(), ser);
-				}
-			} catch (Exception e) {
-				throw new SynapseException("Error instantiating " + c.getName(), e);
-			}
-		}
-	}
+    /* custom mediator serializers */
+    @SuppressWarnings("rawtypes")
+    private static final Class[] mediatorSerializers = { ClassMediatorExtSerializer.class,
+            POJOCommandMediatorExtSerializer.class, BuilderMediatorExtSerializer.class, RuleMediatorExtSerialize.class,
+            EJBMediatorExtSerializer.class, BeanMediatorExtSerializer.class, CloudConnectorOperationExtSerializer.class,
+            EntitlementMediatorExtSerializer.class };
+
+    public static synchronized void registerSerializers() {
+        Map<String, MediatorSerializer> serializerMap = mediatorSerializerFinder.getSerializerMap();
+        for (@SuppressWarnings("rawtypes")
+        Class c : mediatorSerializers) {
+            try {
+                MediatorSerializer ser = (MediatorSerializer) c.newInstance();
+                String mediatorClassName = ser.getMediatorClassName();
+                if (!serializerMap.containsKey(mediatorClassName)) {
+                    serializerMap.put(ser.getMediatorClassName(), ser);
+                }
+            } catch (Exception e) {
+                throw new SynapseException("Error instantiating " + c.getName(), e);
+            }
+        }
+    }
 
 }

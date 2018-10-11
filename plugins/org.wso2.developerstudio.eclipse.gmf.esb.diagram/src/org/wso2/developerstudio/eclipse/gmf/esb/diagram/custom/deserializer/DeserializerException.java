@@ -16,34 +16,34 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-public class DeserializerException extends Exception{
-	
-	private static final long serialVersionUID = 2788705051694062245L;
+public class DeserializerException extends Exception {
 
-	public DeserializerException() {
-		super();
-	}
+    private static final long serialVersionUID = 2788705051694062245L;
 
-	/**
-	 * @param message
-	 */
-	public DeserializerException(String message) {
-		super(message);
-	}
+    public DeserializerException() {
+        super();
+    }
 
-	/**
-	 * @param message
-	 * @param cause
-	 */
-	public DeserializerException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    /**
+     * @param message
+     */
+    public DeserializerException(String message) {
+        super(message);
+    }
 
-	/**
-	 * @param cause
-	 */
-	public DeserializerException(Throwable cause) {
-		super(cause);
-	}
+    /**
+     * @param message
+     * @param cause
+     */
+    public DeserializerException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    /**
+     * @param cause
+     */
+    public DeserializerException(Throwable cause) {
+        super(cause);
+    }
 
 }

@@ -13,15 +13,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfHTTPEndpointEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(EsbElementTypes.HTTPEndPointInputConnector_3710);
-		types.add(EsbElementTypes.HTTPEndPointOutputConnector_3711);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(2);
+        types.add(EsbElementTypes.HTTPEndPointInputConnector_3710);
+        types.add(EsbElementTypes.HTTPEndPointOutputConnector_3711);
+        return types;
+    }
 
 }

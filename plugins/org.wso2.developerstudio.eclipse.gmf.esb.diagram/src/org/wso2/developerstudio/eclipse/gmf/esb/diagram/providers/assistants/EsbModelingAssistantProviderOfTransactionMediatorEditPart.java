@@ -13,15 +13,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfTransactionMediatorEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(EsbElementTypes.TransactionMediatorInputConnector_3118);
-		types.add(EsbElementTypes.TransactionMediatorOutputConnector_3119);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(2);
+        types.add(EsbElementTypes.TransactionMediatorInputConnector_3118);
+        types.add(EsbElementTypes.TransactionMediatorOutputConnector_3119);
+        return types;
+    }
 
 }

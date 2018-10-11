@@ -39,60 +39,60 @@ public class XSLTMediatorExtFactory extends XSLTMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	XSLTMediator mediator = new XSLTMediator();
+        XSLTMediator mediator = new XSLTMediator();
 
-	QName ATTRIBUTE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "attribute");
-	QName ATT_USECACHE = new QName("useCache");
+        QName ATTRIBUTE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "attribute");
+        QName ATT_USECACHE = new QName("useCache");
 
-	OMAttribute attXslt = omElement.getAttribute(ATT_KEY);
-	OMAttribute attSource = omElement.getAttribute(ATT_SOURCE);
-	OMAttribute attTarget = omElement.getAttribute(ATT_TARGET);
-	OMAttribute attUseCache = omElement.getAttribute(ATT_USECACHE);
+        OMAttribute attXslt = omElement.getAttribute(ATT_KEY);
+        OMAttribute attSource = omElement.getAttribute(ATT_SOURCE);
+        OMAttribute attTarget = omElement.getAttribute(ATT_TARGET);
+        OMAttribute attUseCache = omElement.getAttribute(ATT_USECACHE);
 
-	if (attXslt != null) {
-	    ValueFactory keyFac = new ValueFactory();
-	    Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
+        if (attXslt != null) {
+            ValueFactory keyFac = new ValueFactory();
+            Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
 
-	    ((XSLTMediator) mediator).setXsltKey(generatedKey);
-	} else {
-	    // ignore
-	}
+            ((XSLTMediator) mediator).setXsltKey(generatedKey);
+        } else {
+            // ignore
+        }
 
-	if (attSource != null) {
-	    try {
-		((XSLTMediator) mediator).setSourceXPathString(attSource.getAttributeValue());
-		((XSLTMediator) mediator).setSource(SynapseXPathFactory.getSynapseXPath(omElement, ATT_SOURCE));
+        if (attSource != null) {
+            try {
+                ((XSLTMediator) mediator).setSourceXPathString(attSource.getAttributeValue());
+                ((XSLTMediator) mediator).setSource(SynapseXPathFactory.getSynapseXPath(omElement, ATT_SOURCE));
 
-	    } catch (JaxenException e) {
-		// ignore
-	    }
-	}
+            } catch (JaxenException e) {
+                // ignore
+            }
+        }
 
-	if (attTarget != null) {
-	    ((XSLTMediator) mediator).setTargetPropertyName(attTarget.getAttributeValue());
-	}
+        if (attTarget != null) {
+            ((XSLTMediator) mediator).setTargetPropertyName(attTarget.getAttributeValue());
+        }
 
-	if (attUseCache != null) {
-	    ((XSLTMediator) mediator).setUseCache(Boolean.parseBoolean(attUseCache.getAttributeValue()));
-	}
+        if (attUseCache != null) {
+            ((XSLTMediator) mediator).setUseCache(Boolean.parseBoolean(attUseCache.getAttributeValue()));
+        }
 
-	processAuditStatus(mediator, omElement);
+        processAuditStatus(mediator, omElement);
 
-	for (Map.Entry<String, String> entry : collectNameValuePairs(omElement, FEATURE_Q).entrySet()) {
-	    String value = entry.getValue();
-	    boolean isFeatureEnabled = "true".equals(value) ? true : false;
-	    ((XSLTMediator) mediator).addFeature(entry.getKey(), isFeatureEnabled);
-	}
+        for (Map.Entry<String, String> entry : collectNameValuePairs(omElement, FEATURE_Q).entrySet()) {
+            String value = entry.getValue();
+            boolean isFeatureEnabled = "true".equals(value) ? true : false;
+            ((XSLTMediator) mediator).addFeature(entry.getKey(), isFeatureEnabled);
+        }
 
-	for (Map.Entry<String, String> entry : collectNameValuePairs(omElement, ATTRIBUTE_Q).entrySet()) {
-	    ((XSLTMediator) mediator).addAttribute(entry.getKey(), entry.getValue());
-	}
+        for (Map.Entry<String, String> entry : collectNameValuePairs(omElement, ATTRIBUTE_Q).entrySet()) {
+            ((XSLTMediator) mediator).addAttribute(entry.getKey(), entry.getValue());
+        }
 
-	((XSLTMediator) mediator).addAllProperties(MediatorPropertyFactory.getMediatorProperties(omElement));
+        ((XSLTMediator) mediator).addAllProperties(MediatorPropertyFactory.getMediatorProperties(omElement));
 
-	((XSLTMediator) mediator).setResourceMap(ResourceMapFactory.createResourceMap(omElement));
+        ((XSLTMediator) mediator).setResourceMap(ResourceMapFactory.createResourceMap(omElement));
 
-	return mediator;
+        return mediator;
     }
 
 }

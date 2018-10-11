@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom;
 
-
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPolicy;
@@ -27,64 +26,64 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HighlightOnSe
 
 public abstract class FixedSizedAbstractMediator extends AbstractMediator {
 
-	public static int FigureWidth = 75;
-	public static int FigureHeight = 75;
-	protected static final int maxFigureWidth = 10000;
-	protected IFigure primaryShape;
-	private boolean selected;
-	
-	public abstract EsbGraphicalShapeWithLabel getPrimaryShape();
-	
-	public FixedSizedAbstractMediator(View view) {
-		super(view);
-		this.setSelected(false);
-	}
-	
-	public IFigure getFigure() {
-		IFigure figure = super.getFigure();
-		figure.setMaximumSize(new Dimension(maxFigureWidth, FigureHeight));
-		return figure;
-	}
-	
-	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(FigureWidth, FigureHeight);
-		//result.setMinimumSize(new Dimension(FigureWidth, FigureHeight));
-		result.setMaximumSize(new Dimension(maxFigureWidth, FigureHeight));
-		
-		/*
-		 * Add mouse listener to node figure which enables editing mediator
-		 * description on mediator selection.
-		 */
-		result.addMouseListener(new MediatorFigureSelectionListener(this));
+    public static int FigureWidth = 75;
+    public static int FigureHeight = 75;
+    protected static final int maxFigureWidth = 10000;
+    protected IFigure primaryShape;
+    private boolean selected;
 
-		// Add mediator editpart listener to listen on select deselect events
-		this.addEditPartListener(new MediatorEditPartListener(this));
+    public abstract EsbGraphicalShapeWithLabel getPrimaryShape();
 
-		return result;
-	}
-	
-	public IFigure getFixedSizedPrimaryShape() {
-		return primaryShape;
-	}
+    public FixedSizedAbstractMediator(View view) {
+        super(view);
+        this.setSelected(false);
+    }
 
-	@Override
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-			installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());  //remove 8 corners
-			installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, new HighlightOnSelectionEditPolicy()); //selection
-	}
+    public IFigure getFigure() {
+        IFigure figure = super.getFigure();
+        figure.setMaximumSize(new Dimension(maxFigureWidth, FigureHeight));
+        return figure;
+    }
 
-	/**
-	 * @return the selected
-	 */
-	public boolean isSelected() {
-		return selected;
-	}
+    protected NodeFigure createNodePlate() {
+        DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(FigureWidth, FigureHeight);
+        // result.setMinimumSize(new Dimension(FigureWidth, FigureHeight));
+        result.setMaximumSize(new Dimension(maxFigureWidth, FigureHeight));
 
-	/**
-	 * @param selected the selected to set
-	 */
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
+        /*
+         * Add mouse listener to node figure which enables editing mediator
+         * description on mediator selection.
+         */
+        result.addMouseListener(new MediatorFigureSelectionListener(this));
+
+        // Add mediator editpart listener to listen on select deselect events
+        this.addEditPartListener(new MediatorEditPartListener(this));
+
+        return result;
+    }
+
+    public IFigure getFixedSizedPrimaryShape() {
+        return primaryShape;
+    }
+
+    @Override
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); // remove 8 corners
+        installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, new HighlightOnSelectionEditPolicy()); // selection
+    }
+
+    /**
+     * @return the selected
+     */
+    public boolean isSelected() {
+        return selected;
+    }
+
+    /**
+     * @param selected the selected to set
+     */
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 }

@@ -36,79 +36,80 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class EventMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, EventMediator> {
 
-	public EventMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
-		
-		Assert.isTrue(mediator instanceof org.wso2.carbon.mediator.event.EventMediator, "Unsupported mediator passed in for deserialization at "+ this.getClass());
-		
-		org.wso2.carbon.mediator.event.EventMediator eventMediator = (org.wso2.carbon.mediator.event.EventMediator)mediator;
-		
-		org.wso2.developerstudio.eclipse.gmf.esb.EventMediator VisualEventMediator = (org.wso2.developerstudio.eclipse.gmf.esb.EventMediator) DeserializerUtils.createNode(part, EsbElementTypes.EventMediator_3504);
-		setElementToEdit(VisualEventMediator);
-		setCommonProperties(eventMediator, VisualEventMediator);
-		
-		//EventMediator vishualEvent = EsbFactory.eINSTANCE.createEventMediator();
-		
-		Value topic  = eventMediator.getTopic();
-		
-		if (topic != null) {
-			//For static topic type.
-			if(StringUtils.isNotBlank(topic.getKeyValue())){
-				
-				//vishualEvent.setTopicType(EventTopicType.STATIC);
-				executeSetValueCommand(EVENT_MEDIATOR__TOPIC_TYPE, EventTopicType.STATIC);
-				
-				//vishualEvent.setStaticTopic(topic.getKeyValue());
-				executeSetValueCommand(EVENT_MEDIATOR__STATIC_TOPIC, topic.getKeyValue());
-			}
-			
-			//For dynamic topic type.
-			if(topic.getExpression() != null){
-				
-				//vishualEvent.setTopicType(EventTopicType.DYNAMIC);
-				executeSetValueCommand(EVENT_MEDIATOR__TOPIC_TYPE, EventTopicType.DYNAMIC);
-				
-				SynapsePath xpath  = topic.getExpression();
-				
-				NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
-				
-				if (xpath.getNamespaces() != null) {
+    public EventMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) {
 
-					@SuppressWarnings("unchecked")
-					Map<String, String> map = xpath.getNamespaces();
+        Assert.isTrue(mediator instanceof org.wso2.carbon.mediator.event.EventMediator,
+                "Unsupported mediator passed in for deserialization at " + this.getClass());
 
-					nsp.setNamespaces(map);
-				}
-				
-				nsp.setPropertyValue(xpath.toString());
-				
-				//vishualEvent.setDynamicTopic(nsp);
-				executeSetValueCommand(EVENT_MEDIATOR__DYNAMIC_TOPIC, nsp);				
-			}
-		}
-		
-		//For event Expression.
-		if(eventMediator.getExpression() != null){
-			
-			SynapseXPath xpath  = eventMediator.getExpression();
-			
-			NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
-			
-			if (xpath.getNamespaces() != null) {
+        org.wso2.carbon.mediator.event.EventMediator eventMediator = (org.wso2.carbon.mediator.event.EventMediator) mediator;
 
-				@SuppressWarnings("unchecked")
-				Map<String, String> map = xpath.getNamespaces();
+        org.wso2.developerstudio.eclipse.gmf.esb.EventMediator VisualEventMediator = (org.wso2.developerstudio.eclipse.gmf.esb.EventMediator) DeserializerUtils
+                .createNode(part, EsbElementTypes.EventMediator_3504);
+        setElementToEdit(VisualEventMediator);
+        setCommonProperties(eventMediator, VisualEventMediator);
 
-				nsp.setNamespaces(map);
-			}
-			
-			nsp.setPropertyValue(xpath.toString());
-			
-			//vishualEvent.setEventExpression(nsp);
-			executeSetValueCommand(EVENT_MEDIATOR__EVENT_EXPRESSION, nsp);
-		}
-		
-		return VisualEventMediator;
-	}
+        // EventMediator vishualEvent = EsbFactory.eINSTANCE.createEventMediator();
 
+        Value topic = eventMediator.getTopic();
+
+        if (topic != null) {
+            // For static topic type.
+            if (StringUtils.isNotBlank(topic.getKeyValue())) {
+
+                // vishualEvent.setTopicType(EventTopicType.STATIC);
+                executeSetValueCommand(EVENT_MEDIATOR__TOPIC_TYPE, EventTopicType.STATIC);
+
+                // vishualEvent.setStaticTopic(topic.getKeyValue());
+                executeSetValueCommand(EVENT_MEDIATOR__STATIC_TOPIC, topic.getKeyValue());
+            }
+
+            // For dynamic topic type.
+            if (topic.getExpression() != null) {
+
+                // vishualEvent.setTopicType(EventTopicType.DYNAMIC);
+                executeSetValueCommand(EVENT_MEDIATOR__TOPIC_TYPE, EventTopicType.DYNAMIC);
+
+                SynapsePath xpath = topic.getExpression();
+
+                NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+
+                if (xpath.getNamespaces() != null) {
+
+                    @SuppressWarnings("unchecked")
+                    Map<String, String> map = xpath.getNamespaces();
+
+                    nsp.setNamespaces(map);
+                }
+
+                nsp.setPropertyValue(xpath.toString());
+
+                // vishualEvent.setDynamicTopic(nsp);
+                executeSetValueCommand(EVENT_MEDIATOR__DYNAMIC_TOPIC, nsp);
+            }
+        }
+
+        // For event Expression.
+        if (eventMediator.getExpression() != null) {
+
+            SynapseXPath xpath = eventMediator.getExpression();
+
+            NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+
+            if (xpath.getNamespaces() != null) {
+
+                @SuppressWarnings("unchecked")
+                Map<String, String> map = xpath.getNamespaces();
+
+                nsp.setNamespaces(map);
+            }
+
+            nsp.setPropertyValue(xpath.toString());
+
+            // vishualEvent.setEventExpression(nsp);
+            executeSetValueCommand(EVENT_MEDIATOR__EVENT_EXPRESSION, nsp);
+        }
+
+        return VisualEventMediator;
+    }
 
 }

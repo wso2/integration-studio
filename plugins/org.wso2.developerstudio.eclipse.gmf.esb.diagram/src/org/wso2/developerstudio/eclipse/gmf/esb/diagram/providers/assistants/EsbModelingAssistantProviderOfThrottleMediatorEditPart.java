@@ -13,18 +13,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfThrottleMediatorEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(5);
-		types.add(EsbElementTypes.ThrottleMediatorInputConnector_3121);
-		types.add(EsbElementTypes.ThrottleMediatorOutputConnector_3122);
-		types.add(EsbElementTypes.ThrottleMediatorOnAcceptOutputConnector_3581);
-		types.add(EsbElementTypes.ThrottleMediatorOnRejectOutputConnector_3582);
-		types.add(EsbElementTypes.ThrottleContainer_3583);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(5);
+        types.add(EsbElementTypes.ThrottleMediatorInputConnector_3121);
+        types.add(EsbElementTypes.ThrottleMediatorOutputConnector_3122);
+        types.add(EsbElementTypes.ThrottleMediatorOnAcceptOutputConnector_3581);
+        types.add(EsbElementTypes.ThrottleMediatorOnRejectOutputConnector_3582);
+        types.add(EsbElementTypes.ThrottleContainer_3583);
+        return types;
+    }
 
 }

@@ -18,25 +18,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorFailOutputConnecto
  *
  * @generated
  */
-public class FilterMediatorFailOutputConnectorImpl extends OutputConnectorImpl implements FilterMediatorFailOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FilterMediatorFailOutputConnectorImpl() {
-		super();
-	}
+public class FilterMediatorFailOutputConnectorImpl extends OutputConnectorImpl
+        implements FilterMediatorFailOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected FilterMediatorFailOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.FILTER_MEDIATOR_FAIL_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //FilterMediatorFailOutputConnectorImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.FILTER_MEDIATOR_FAIL_OUTPUT_CONNECTOR;
+    }
+
+} // FilterMediatorFailOutputConnectorImpl

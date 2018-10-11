@@ -80,14 +80,14 @@ import com.google.gson.JsonObject;
 public class ESBStackFrame extends ESBDebugElement implements IStackFrame, EventHandler {
 
     private static final String EMPTY_STRING = "";
-	private final IThread thread;
+    private final IThread thread;
     private int lineNumber = 1;
     private List<IVariable> variables = new ArrayList<>();
     private boolean variablesDirty = true;
     private IEventBroker propertyChangeCommandEB;
     private Set<String> tablePropertySet = new HashSet<>();
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    
+
     private Map<JsonObject, ESBWirelog> wireLogs = new HashMap<JsonObject, ESBWirelog>();
 
     public ESBStackFrame(IDebugTarget target, IThread thread) {
@@ -158,24 +158,24 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
     public void setLineNumber(int lineNumber) {
         this.lineNumber = lineNumber;
     }
-    
-	public void clearEnvelopeViewPropertyTableValues() {
-		try {
-			IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(
-					MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID, IWorkbenchPage.VIEW_VISIBLE);
-			for (String propertyKey : tablePropertySet) {
-				if (envelopeView instanceof ContentAcceptHandler) {
-					((ContentAcceptHandler) envelopeView).acceptContent(new String[] { propertyKey, "" },
-							AcceptedContentAction.ADD);
-				}
-			}
-			if (envelopeView instanceof ContentAcceptHandler) {
+
+    public void clearEnvelopeViewPropertyTableValues() {
+        try {
+            IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(
+                    MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID, IWorkbenchPage.VIEW_VISIBLE);
+            for (String propertyKey : tablePropertySet) {
+                if (envelopeView instanceof ContentAcceptHandler) {
+                    ((ContentAcceptHandler) envelopeView).acceptContent(new String[] { propertyKey, "" },
+                            AcceptedContentAction.ADD);
+                }
+            }
+            if (envelopeView instanceof ContentAcceptHandler) {
                 ((ContentAcceptHandler) envelopeView).acceptContent(EMPTY_STRING, AcceptedContentAction.ADD);
             }
-		} catch (PartInitException e) {
-			log.error("Error while updating the Envelope View with cleared variable values", e);
-		}
-	}
+        } catch (PartInitException e) {
+            log.error("Error while updating the Envelope View with cleared variable values", e);
+        }
+    }
 
     public void setVariables(PropertyRespondMessage propertyRespondMessage) throws DebugException {
         String name = propertyRespondMessage.getScope();
@@ -220,8 +220,8 @@ public class ESBStackFrame extends ESBDebugElement implements IStackFrame, Event
             variables.add(textVariable);
             textVariable.fireCreationEvent();
         }
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.findView("org.eclipse.debug.ui.VariableView");
+        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                .findView("org.eclipse.debug.ui.VariableView");
     }
 
     @Override

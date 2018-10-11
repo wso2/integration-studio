@@ -84,7 +84,7 @@ public class ESBDebugPointTarget {
     public static boolean canToggleDiagramDebugpoints(EditPart part) {
         return true;
     }
-    
+
     /**
      * This method checks whether selected part can used as a wirelogView Point
      * 
@@ -117,16 +117,16 @@ public class ESBDebugPointTarget {
      * @throws CoreException
      * @throws ESBDebuggerException
      */
-    public static void toggleDiagramDebugpoints(AbstractMediator part, String commandArgument) throws CoreException,
-            ESBDebuggerException {
+    public static void toggleDiagramDebugpoints(AbstractMediator part, String commandArgument)
+            throws CoreException, ESBDebuggerException {
 
         IEditorPart activeEditor = EditorUtils.getActiveEditor();
 
         if (activeEditor instanceof EsbMultiPageEditor) {
 
             EsbServer esbServer = getESBServerFromESBMultiPageEditor(activeEditor);
-            IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory.getBreakpointBuilder(esbServer
-                    .getType());
+            IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory
+                    .getBreakpointBuilder(esbServer.getType());
             IResource resource = getFileIResourceFromESBMultiPageEditor(activeEditor);
             ESBDebugPoint debugPoint = breakpointBuilder.getESBDebugPoint(esbServer, resource, part, commandArgument);
             ESBDebugPoint existingBreakpoint = getMatchingDebugPoint(debugPoint);
@@ -148,7 +148,7 @@ public class ESBDebugPointTarget {
             }
         }
     }
-    
+
     /**
      * This method performs the graphical view breakpoint insertion action
      * 
@@ -156,18 +156,19 @@ public class ESBDebugPointTarget {
      * @throws CoreException
      * @throws ESBDebuggerException
      */
-    public static void triggerWirelogRetrieveEventWithMediatorId(AbstractMediator part, IEventBroker wirelLogsReceiveEB) throws CoreException,
-            ESBDebuggerException {
+    public static void triggerWirelogRetrieveEventWithMediatorId(AbstractMediator part, IEventBroker wirelLogsReceiveEB)
+            throws CoreException, ESBDebuggerException {
 
         IEditorPart activeEditor = EditorUtils.getActiveEditor();
 
         if (activeEditor instanceof EsbMultiPageEditor) {
             EsbServer esbServer = getESBServerFromESBMultiPageEditor(activeEditor);
-            IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory.getBreakpointBuilder(esbServer
-                    .getType());
-            AbstractESBDebugPointMessage debugPointMsg = breakpointBuilder.getESBDebugPointMessage(esbServer, part, null);
+            IESBDebugPointBuilder breakpointBuilder = ESBDebugPointBuilderFactory
+                    .getBreakpointBuilder(esbServer.getType());
+            AbstractESBDebugPointMessage debugPointMsg = breakpointBuilder.getESBDebugPointMessage(esbServer, part,
+                    null);
             JsonObject breakpointCommandJsonObject = new JsonGsonMessageFactory()
-					.createMediatorLocationJsonObj(debugPointMsg);
+                    .createMediatorLocationJsonObj(debugPointMsg);
             wirelLogsReceiveEB.send(ESB_STACK_FRAME_WIRE_LOGS_RECEIVED_EVENT, breakpointCommandJsonObject);
         }
     }

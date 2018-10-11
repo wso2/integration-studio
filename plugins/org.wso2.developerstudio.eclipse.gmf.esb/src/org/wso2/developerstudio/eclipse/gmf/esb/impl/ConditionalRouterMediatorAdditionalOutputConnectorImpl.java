@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class ConditionalRouterMediatorAdditionalOutputConnectorImpl extends OutputConnectorImpl implements ConditionalRouterMediatorAdditionalOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ConditionalRouterMediatorAdditionalOutputConnectorImpl() {
-		super();
-	}
+public class ConditionalRouterMediatorAdditionalOutputConnectorImpl extends OutputConnectorImpl
+        implements ConditionalRouterMediatorAdditionalOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ConditionalRouterMediatorAdditionalOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.CONDITIONAL_ROUTER_MEDIATOR_ADDITIONAL_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.CONDITIONAL_ROUTER_MEDIATOR_ADDITIONAL_OUTPUT_CONNECTOR;
+    }
 
-} //ConditionalRouterMediatorAdditionalOutputConnectorImpl
+} // ConditionalRouterMediatorAdditionalOutputConnectorImpl

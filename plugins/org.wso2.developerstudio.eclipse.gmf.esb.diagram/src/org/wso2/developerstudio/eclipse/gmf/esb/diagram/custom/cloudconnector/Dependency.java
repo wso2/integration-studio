@@ -17,17 +17,17 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector;
 
 public class Dependency {
-	private String component;
+    private String component;
 
-	public Dependency(String component) {
-		this.component=component;
-	}
+    public Dependency(String component) {
+        this.component = component;
+    }
 
-	public String getComponent() {
-		return component;
-	}
+    public String getComponent() {
+        return component;
+    }
 
-	public void setComponent(String component) {
-		this.component = component;
-	}
+    public void setComponent(String component) {
+        this.component = component;
+    }
 }

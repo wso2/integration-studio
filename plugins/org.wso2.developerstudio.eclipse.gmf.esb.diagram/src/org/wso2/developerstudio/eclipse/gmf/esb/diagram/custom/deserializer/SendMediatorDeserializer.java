@@ -37,77 +37,81 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class SendMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, SendMediator> {
 
-	public SendMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) throws DeserializerException {
-		
-		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.SendMediator, "Unsupported mediator passed in for deserialization at "+ this.getClass());
-		
-		org.apache.synapse.mediators.builtin.SendMediator sendMediator = (org.apache.synapse.mediators.builtin.SendMediator)mediator;
-		
-		org.wso2.developerstudio.eclipse.gmf.esb.SendMediator visualSendMediator = (org.wso2.developerstudio.eclipse.gmf.esb.SendMediator) DeserializerUtils.createNode(part, EsbElementTypes.SendMediator_3515);
-		setElementToEdit(visualSendMediator);
-		setCommonProperties(sendMediator, visualSendMediator);
-		
-		refreshEditPartMap();
-		EditPart mediatorFlow=getEditpart(visualSendMediator.getMediatorFlow());
-		
-		//SendMediator vishualSend  = EsbFactory.eINSTANCE.createSendMediator();
-		
-		if(sendMediator.getReceivingSequence() != null){
-			
-			Value receivingSequenceValue = sendMediator.getReceivingSequence();
-		
-			//For Static sequence type.
-			if(receivingSequenceValue.getKeyValue() != null){
-				
-				//vishualSend.setReceivingSequenceType(ReceivingSequenceType.STATIC);
-				executeSetValueCommand(SEND_MEDIATOR__RECEIVING_SEQUENCE_TYPE, ReceivingSequenceType.STATIC);
-				
-				RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-				regkey.setKeyValue(receivingSequenceValue.getKeyValue());
-				
-				//vishualSend.setStaticReceivingSequence(regkey);
-				executeSetValueCommand(SEND_MEDIATOR__STATIC_RECEIVING_SEQUENCE, regkey);
-				
-			}
-			
-			//For Dynamic sequence type.
-			if(receivingSequenceValue.getExpression() != null){
+    public SendMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) throws DeserializerException {
 
-				executeSetValueCommand(SEND_MEDIATOR__RECEIVING_SEQUENCE_TYPE,ReceivingSequenceType.DYNAMIC);
-				
-				SynapsePath xpath  = receivingSequenceValue.getExpression();
-				executeSetValueCommand(SEND_MEDIATOR__DYNAMIC_RECEIVING_SEQUENCE,createNamespacedProperty(xpath));
-			}
-		}
-		
-		Endpoint endpoint = sendMediator.getEndpoint();
-		if(endpoint!=null){
-			@SuppressWarnings("rawtypes")
-			IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
-			@SuppressWarnings("unchecked")
-			//EndPoint visualEndPoint = (EndPoint) deserializer.createNode(getRootCompartment(), endpoint);
-			EndPoint visualEndPoint = (EndPoint) deserializer.createNode((IGraphicalEditPart) mediatorFlow.getChildren().get(0), endpoint);
-			if(isReversed()){
-				executeSetValueCommand(visualEndPoint,END_POINT__REVERSED,true);
-			}
-			visualSendMediator.setNextNode(visualEndPoint);
-			
-		} /*safe to remove : not valid in current implementation/UI*/ 
-		/*	else if (!(isReversed() || hasInlineEndPoint() || isAddedAddressingEndPoint())){
-			AddressingEndpoint visualEndPoint = (AddressingEndpoint) DeserializerUtils.createNode(
-					(IGraphicalEditPart) mediatorFlow.getChildren().get(0), EsbElementTypes.AddressingEndpoint_3689);
-			if(isReversed()){
-				executeSetValueCommand(visualEndPoint,END_POINT__REVERSED,true);
-			}
-			visualSendMediator.setNextNode(visualEndPoint);
-			setAddedAddressingEndPoint(true);
-			refreshEditPartMap();
-		}*/
-			
-		executeSetValueCommand(SEND_MEDIATOR__BUILD_MESSAGE_BEFORE_SENDING, sendMediator.isBuildMessage());
-		
-		return visualSendMediator;
-	}
+        Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.SendMediator,
+                "Unsupported mediator passed in for deserialization at " + this.getClass());
 
-	
+        org.apache.synapse.mediators.builtin.SendMediator sendMediator = (org.apache.synapse.mediators.builtin.SendMediator) mediator;
+
+        org.wso2.developerstudio.eclipse.gmf.esb.SendMediator visualSendMediator = (org.wso2.developerstudio.eclipse.gmf.esb.SendMediator) DeserializerUtils
+                .createNode(part, EsbElementTypes.SendMediator_3515);
+        setElementToEdit(visualSendMediator);
+        setCommonProperties(sendMediator, visualSendMediator);
+
+        refreshEditPartMap();
+        EditPart mediatorFlow = getEditpart(visualSendMediator.getMediatorFlow());
+
+        // SendMediator vishualSend = EsbFactory.eINSTANCE.createSendMediator();
+
+        if (sendMediator.getReceivingSequence() != null) {
+
+            Value receivingSequenceValue = sendMediator.getReceivingSequence();
+
+            // For Static sequence type.
+            if (receivingSequenceValue.getKeyValue() != null) {
+
+                // vishualSend.setReceivingSequenceType(ReceivingSequenceType.STATIC);
+                executeSetValueCommand(SEND_MEDIATOR__RECEIVING_SEQUENCE_TYPE, ReceivingSequenceType.STATIC);
+
+                RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                regkey.setKeyValue(receivingSequenceValue.getKeyValue());
+
+                // vishualSend.setStaticReceivingSequence(regkey);
+                executeSetValueCommand(SEND_MEDIATOR__STATIC_RECEIVING_SEQUENCE, regkey);
+
+            }
+
+            // For Dynamic sequence type.
+            if (receivingSequenceValue.getExpression() != null) {
+
+                executeSetValueCommand(SEND_MEDIATOR__RECEIVING_SEQUENCE_TYPE, ReceivingSequenceType.DYNAMIC);
+
+                SynapsePath xpath = receivingSequenceValue.getExpression();
+                executeSetValueCommand(SEND_MEDIATOR__DYNAMIC_RECEIVING_SEQUENCE, createNamespacedProperty(xpath));
+            }
+        }
+
+        Endpoint endpoint = sendMediator.getEndpoint();
+        if (endpoint != null) {
+            @SuppressWarnings("rawtypes")
+            IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
+            @SuppressWarnings("unchecked")
+            // EndPoint visualEndPoint = (EndPoint) deserializer.createNode(getRootCompartment(), endpoint);
+            EndPoint visualEndPoint = (EndPoint) deserializer
+                    .createNode((IGraphicalEditPart) mediatorFlow.getChildren().get(0), endpoint);
+            if (isReversed()) {
+                executeSetValueCommand(visualEndPoint, END_POINT__REVERSED, true);
+            }
+            visualSendMediator.setNextNode(visualEndPoint);
+
+        } /* safe to remove : not valid in current implementation/UI */
+        /*
+         * else if (!(isReversed() || hasInlineEndPoint() || isAddedAddressingEndPoint())){
+         * AddressingEndpoint visualEndPoint = (AddressingEndpoint) DeserializerUtils.createNode(
+         * (IGraphicalEditPart) mediatorFlow.getChildren().get(0), EsbElementTypes.AddressingEndpoint_3689);
+         * if(isReversed()){
+         * executeSetValueCommand(visualEndPoint,END_POINT__REVERSED,true);
+         * }
+         * visualSendMediator.setNextNode(visualEndPoint);
+         * setAddedAddressingEndPoint(true);
+         * refreshEditPartMap();
+         * }
+         */
+
+        executeSetValueCommand(SEND_MEDIATOR__BUILD_MESSAGE_BEFORE_SENDING, sendMediator.isBuildMessage());
+
+        return visualSendMediator;
+    }
+
 }

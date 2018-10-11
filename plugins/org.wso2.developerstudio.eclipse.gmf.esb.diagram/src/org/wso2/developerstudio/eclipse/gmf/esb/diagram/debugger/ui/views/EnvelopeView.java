@@ -187,19 +187,19 @@ public class EnvelopeView extends ViewPart implements ContentAcceptHandler {
         TableItem item = new TableItem(propertyTable, SWT.NONE);
         item.setText(new String[] { key, value });
     }
-    
-	private void refreshTableColors() {
-		TableItem[] itemList = propertyTable.getItems();
-		boolean evenIndexPosition = false;
-		for (TableItem tableItem : itemList) {
-			if (evenIndexPosition) {
-				tableItem.setBackground(tableEvenIndexColor);
-				evenIndexPosition = false;
-			} else {
-				tableItem.setBackground(tableOddIndexColor);
-				evenIndexPosition = true;
-			}
-		}
-	}
+
+    private void refreshTableColors() {
+        TableItem[] itemList = propertyTable.getItems();
+        boolean evenIndexPosition = false;
+        for (TableItem tableItem : itemList) {
+            if (evenIndexPosition) {
+                tableItem.setBackground(tableEvenIndexColor);
+                evenIndexPosition = false;
+            } else {
+                tableItem.setBackground(tableOddIndexColor);
+                evenIndexPosition = true;
+            }
+        }
+    }
 
 }

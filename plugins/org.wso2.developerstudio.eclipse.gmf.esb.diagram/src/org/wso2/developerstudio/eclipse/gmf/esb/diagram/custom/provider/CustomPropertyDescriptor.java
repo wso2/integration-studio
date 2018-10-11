@@ -15,7 +15,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider;
 
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.jface.viewers.CellEditor;
@@ -25,22 +24,23 @@ import org.eclipse.swt.widgets.Composite;
  * Custom {@link PropertyDescriptor} class.
  */
 public class CustomPropertyDescriptor extends PropertyDescriptor {
-	
-	/**
-	 * Creates a new {@link CustomPropertyDescriptor} instance.
-	 * 
-	 * @param object property container object.
-	 * @param itemPropertyDescriptor {@link IItemPropertyDescriptor} instance.
-	 */
-	public CustomPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public CellEditor createPropertyEditor(Composite composite) {		
-		CellEditor result = CustomPropertyEditorFactory.createCustomPropertyEditor(composite, object, itemPropertyDescriptor);		
-		return (null == result) ? super.createPropertyEditor(composite) : result;				
-	}
+    /**
+     * Creates a new {@link CustomPropertyDescriptor} instance.
+     * 
+     * @param object property container object.
+     * @param itemPropertyDescriptor {@link IItemPropertyDescriptor} instance.
+     */
+    public CustomPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public CellEditor createPropertyEditor(Composite composite) {
+        CellEditor result = CustomPropertyEditorFactory.createCustomPropertyEditor(composite, object,
+                itemPropertyDescriptor);
+        return (null == result) ? super.createPropertyEditor(composite) : result;
+    }
 }

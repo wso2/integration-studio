@@ -32,48 +32,48 @@ public class StoreMediatorExtFactory extends MessageStoreMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	Mediator mediator = new MessageStoreMediator();
+        Mediator mediator = new MessageStoreMediator();
 
-	QName ATT_MESSAGE_STORE = new QName("messageStore");
-	QName ATT_SEQUENCE = new QName("sequence");
+        QName ATT_MESSAGE_STORE = new QName("messageStore");
+        QName ATT_SEQUENCE = new QName("sequence");
 
-	processAuditStatus(mediator, omElement);
+        processAuditStatus(mediator, omElement);
 
-	OMAttribute nameAtt = omElement.getAttribute(ATT_NAME);
-	if (nameAtt != null) {
-	    ((MessageStoreMediator) mediator).setName(nameAtt.getAttributeValue());
-	}
+        OMAttribute nameAtt = omElement.getAttribute(ATT_NAME);
+        if (nameAtt != null) {
+            ((MessageStoreMediator) mediator).setName(nameAtt.getAttributeValue());
+        }
 
-	OMAttribute messageStoreNameAtt = omElement.getAttribute(ATT_MESSAGE_STORE);
+        OMAttribute messageStoreNameAtt = omElement.getAttribute(ATT_MESSAGE_STORE);
 
-	if (messageStoreNameAtt != null) {
-	    if (checkForExpression(messageStoreNameAtt)) {
-		String path = messageStoreNameAtt.getAttributeValue().substring(1,
-			messageStoreNameAtt.getAttributeValue().length() - 1);
-		try {
-		    ((MessageStoreMediator) mediator)
-			    .setMessageStoreExp(SynapsePathFactory.getSynapsePath(omElement, path));
-		} catch (JaxenException e) {
-		    // ignore
-		}
-	    } else {
-		((MessageStoreMediator) mediator).setMessageStoreName(messageStoreNameAtt.getAttributeValue());
-	    }
-	} else {
-	    // ignore
-	}
+        if (messageStoreNameAtt != null) {
+            if (checkForExpression(messageStoreNameAtt)) {
+                String path = messageStoreNameAtt.getAttributeValue().substring(1,
+                        messageStoreNameAtt.getAttributeValue().length() - 1);
+                try {
+                    ((MessageStoreMediator) mediator)
+                            .setMessageStoreExp(SynapsePathFactory.getSynapsePath(omElement, path));
+                } catch (JaxenException e) {
+                    // ignore
+                }
+            } else {
+                ((MessageStoreMediator) mediator).setMessageStoreName(messageStoreNameAtt.getAttributeValue());
+            }
+        } else {
+            // ignore
+        }
 
-	OMAttribute sequenceAtt = omElement.getAttribute(ATT_SEQUENCE);
+        OMAttribute sequenceAtt = omElement.getAttribute(ATT_SEQUENCE);
 
-	if (sequenceAtt != null) {
-	    ((MessageStoreMediator) mediator).setOnStoreSequence(sequenceAtt.getAttributeValue());
-	}
+        if (sequenceAtt != null) {
+            ((MessageStoreMediator) mediator).setOnStoreSequence(sequenceAtt.getAttributeValue());
+        }
 
-	return mediator;
+        return mediator;
     }
 
     private boolean checkForExpression(OMAttribute atr) {
-	return ((atr.getAttributeValue().startsWith("{")) && (atr.getAttributeValue().endsWith("}")));
+        return ((atr.getAttributeValue().startsWith("{")) && (atr.getAttributeValue().endsWith("}")));
     }
 
 }

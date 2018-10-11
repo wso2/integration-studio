@@ -26,67 +26,67 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
  */
 public class EsbDiagramEditPart extends DiagramEditPart {
 
-	/**
-	 * @generated
-	 */
-	public final static String MODEL_ID = "Esb"; //$NON-NLS-1$
+    /**
+     * @generated
+     */
+    public final static String MODEL_ID = "Esb"; //$NON-NLS-1$
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 1000;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 1000;
 
-	/**
-	 * @generated
-	 */
-	public EsbDiagramEditPart(View view) {
-		super(view);
-	}
+    /**
+     * @generated
+     */
+    public EsbDiagramEditPart(View view) {
+        super(view);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new EsbDiagramItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new EsbDiagramCanonicalEditPolicy());
-		final FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
-		canvas.addControlListener(new ControlListener() {
+    /**
+     * @generated NOT
+     */
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new EsbDiagramItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new EsbDiagramCanonicalEditPolicy());
+        final FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+        canvas.addControlListener(new ControlListener() {
 
-			public void controlResized(ControlEvent e) {
-				canvas.getViewport().repaint();
+            public void controlResized(ControlEvent e) {
+                canvas.getViewport().repaint();
 
-			}
+            }
 
-			public void controlMoved(ControlEvent e) {
-				canvas.getViewport().repaint();
-			}
-		});
+            public void controlMoved(ControlEvent e) {
+                canvas.getViewport().repaint();
+            }
+        });
 
-		canvas.getHorizontalBar().addSelectionListener(new SelectionAdapter() {
+        canvas.getHorizontalBar().addSelectionListener(new SelectionAdapter() {
 
-			public void widgetSelected(SelectionEvent e) {
-				canvas.getViewport().repaint();
-				super.widgetSelected(e);
-			}
-		});
-		canvas.getVerticalBar().addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                canvas.getViewport().repaint();
+                super.widgetSelected(e);
+            }
+        });
+        canvas.getVerticalBar().addSelectionListener(new SelectionAdapter() {
 
-			public void widgetSelected(SelectionEvent e) {
-				canvas.getViewport().repaint();
-				super.widgetSelected(e);
-			}
-		});
+            public void widgetSelected(SelectionEvent e) {
+                canvas.getViewport().repaint();
+                super.widgetSelected(e);
+            }
+        });
 
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
-	}
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	/*package-local*/
-	static class NodeLabelDragPolicy extends NonResizableEditPolicy {
-	}
+    /**
+     * @generated NOT
+     */
+    /* package-local */
+    static class NodeLabelDragPolicy extends NonResizableEditPolicy {
+    }
 
 }

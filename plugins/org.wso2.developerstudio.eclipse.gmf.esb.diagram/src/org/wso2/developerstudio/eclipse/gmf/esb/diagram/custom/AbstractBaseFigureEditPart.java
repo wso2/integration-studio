@@ -11,61 +11,61 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
 
-public class AbstractBaseFigureEditPart extends AbstractBorderedShapeEditPart{
+public class AbstractBaseFigureEditPart extends AbstractBorderedShapeEditPart {
 
-	public IFigure inputConnectorFigure;
+    public IFigure inputConnectorFigure;
 
-	public IFigure outputConnectorFigure;
+    public IFigure outputConnectorFigure;
 
-	public IFigure faultInputnputConnectorFigure;
-	
-	public IFigure outSequenceOutputConnectorFigure;
-	
-	public IFigure inSequenceInputConnectorFigure;
-	
-	public Map<InputConnector, SendMediatorEditPart> sendMediatorAndInSequenceInputConnectorMap=new HashMap<InputConnector, SendMediatorEditPart>();
+    public IFigure faultInputnputConnectorFigure;
 
-	protected int y=0;
-	protected int x=0;
-	
+    public IFigure outSequenceOutputConnectorFigure;
 
-	public int getX() {
-		return x;
-	}
+    public IFigure inSequenceInputConnectorFigure;
 
-	public void setX(int x) {
-		this.x = x;
-	}	
+    public Map<InputConnector, SendMediatorEditPart> sendMediatorAndInSequenceInputConnectorMap = 
+            new HashMap<InputConnector, SendMediatorEditPart>();
 
-	public int getY() {
-		return y;
-	}
+    protected int y = 0;
+    protected int x = 0;
 
-	public void setY(int y) {
-		this.y = y;
-	}
-	
-	public AbstractBaseFigureEditPart(View view) {
-		super(view);
-	}
+    public int getX() {
+        return x;
+    }
 
-	protected NodeFigure createMainFigure() {
-		return null;
-	}
-	
-	@Override
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
-	}	
-	
-	public Map<InputConnector, SendMediatorEditPart> getSendMediatorAndInSequenceInputConnectorMap() {
-		return sendMediatorAndInSequenceInputConnectorMap;
-	}
+    public void setX(int x) {
+        this.x = x;
+    }
 
-	public void setSendMediatorAndInSequenceInputConnectorMap(
-			Map<InputConnector, SendMediatorEditPart> sendMediatorAndInSequenceInputConnectorMap) {
-		this.sendMediatorAndInSequenceInputConnectorMap = sendMediatorAndInSequenceInputConnectorMap;
-	}
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public AbstractBaseFigureEditPart(View view) {
+        super(view);
+    }
+
+    protected NodeFigure createMainFigure() {
+        return null;
+    }
+
+    @Override
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+    }
+
+    public Map<InputConnector, SendMediatorEditPart> getSendMediatorAndInSequenceInputConnectorMap() {
+        return sendMediatorAndInSequenceInputConnectorMap;
+    }
+
+    public void setSendMediatorAndInSequenceInputConnectorMap(
+            Map<InputConnector, SendMediatorEditPart> sendMediatorAndInSequenceInputConnectorMap) {
+        this.sendMediatorAndInSequenceInputConnectorMap = sendMediatorAndInSequenceInputConnectorMap;
+    }
 }

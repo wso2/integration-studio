@@ -19,27 +19,29 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateFeature;
  * @generated
  */
 public class ValidateFeatureImpl extends AbstractBooleanFeatureImpl implements ValidateFeature {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected ValidateFeatureImpl() {
-		super();
-		
-		setFeatureName("feature_name");
-		setFeatureEnabled(true);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    protected ValidateFeatureImpl() {
+        super();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.VALIDATE_FEATURE;
-	}
+        setFeatureName("feature_name");
+        setFeatureEnabled(true);
+    }
 
-} //ValidateFeatureImpl
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.VALIDATE_FEATURE;
+    }
+
+} // ValidateFeatureImpl

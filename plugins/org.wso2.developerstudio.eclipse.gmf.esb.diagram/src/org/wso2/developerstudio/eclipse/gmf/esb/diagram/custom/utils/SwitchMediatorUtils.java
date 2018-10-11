@@ -25,82 +25,82 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediato
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.SwitchDefaultBranchOutputConnectorImpl;
 
 public class SwitchMediatorUtils {
-	
-	public static void reorderWhenRevered(EditPart editpart){			
-		reorder(editpart,PositionConstants.EAST);
-	}
-	
-	public static void reorderWhenForward(EditPart editpart){
-		reorder(editpart,PositionConstants.WEST);
-	}
-	
-	private static void reorder(EditPart editpart,int position) {
-		ArrayList<SwitchCaseContainerEditPart> caseContainers = new ArrayList<SwitchCaseContainerEditPart>();
-		List<IFigure> outputConnectors = new ArrayList<IFigure>();
-		ArrayList<SwitchCaseBranchOutputConnectorEditPart> caseOutputConnectorsList = new ArrayList<SwitchCaseBranchOutputConnectorEditPart>();
-		List<BorderItemLocator> outputLocators = new ArrayList<BorderItemLocator>();
 
-		for (int i = 0; i < ((EditPart)((EditPart) editpart.getChildren().get(4)).getChildren().get(0)).getChildren().size(); ++i) {
-			if (((EditPart)((EditPart) editpart.getChildren().get(4)).getChildren().get(0)).getChildren().get(i) instanceof SwitchCaseContainerEditPart) {
-				SwitchCaseContainerEditPart caseContainerEditPart = (SwitchCaseContainerEditPart) ((EditPart) ((EditPart) editpart
-						.getChildren().get(4)).getChildren().get(0)).getChildren().get(i);
-				caseContainers.add(caseContainerEditPart);
-			}
-		}
+    public static void reorderWhenRevered(EditPart editpart) {
+        reorder(editpart, PositionConstants.EAST);
+    }
 
-		for (int i = 0; i < editpart.getChildren().size(); ++i) {
-			if ((EditPart) editpart.getChildren().get(i) instanceof SwitchCaseBranchOutputConnectorEditPart) {
-				SwitchCaseBranchOutputConnectorEditPart caseOutputConnectorEditPart = (SwitchCaseBranchOutputConnectorEditPart) editpart
-						.getChildren().get(i);
-				caseOutputConnectorsList.add(caseOutputConnectorEditPart);
-			}
-		}
+    public static void reorderWhenForward(EditPart editpart) {
+        reorder(editpart, PositionConstants.WEST);
+    }
 
-		for (int i = 0; i < caseContainers.size(); ++i) {
-			IFigure borderItemFigure = caseOutputConnectorsList.get(i).getFigure();
-			outputConnectors.add(borderItemFigure);
-			BorderItemLocator locator = new FixedBorderItemLocator(caseContainers.get(i)
-					.getFigure(), borderItemFigure, position, 0.5);
-			outputLocators.add(locator);
-		}
+    private static void reorder(EditPart editpart, int position) {
+        ArrayList<SwitchCaseContainerEditPart> caseContainers = new ArrayList<SwitchCaseContainerEditPart>();
+        List<IFigure> outputConnectors = new ArrayList<IFigure>();
+        ArrayList<SwitchCaseBranchOutputConnectorEditPart> caseOutputConnectorsList = new ArrayList<SwitchCaseBranchOutputConnectorEditPart>();
+        List<BorderItemLocator> outputLocators = new ArrayList<BorderItemLocator>();
 
-		for (int i = 0; i < outputConnectors.size(); ++i) {
-			// ((SwitchMediatorEditPart)editpart).getBorderedFigure()
-			// .getBorderItemContainer().remove(outputConnectors.get(i));
-			((SwitchMediatorEditPart) editpart).getBorderedFigure().getBorderItemContainer()
-					.add(outputConnectors.get(i), outputLocators.get(i));
-		}
-		caseOutputConnectorsList.clear();
-		outputLocators.clear();
-		if(((SwitchMediatorEditPart)editpart).reversed){
-			MediatorFigureReverser.reverse(editpart,true);
-		}		
-	}
+        for (int i = 0; i < ((EditPart) ((EditPart) editpart.getChildren().get(4)).getChildren().get(0)).getChildren()
+                .size(); ++i) {
+            if (((EditPart) ((EditPart) editpart.getChildren().get(4)).getChildren().get(0)).getChildren()
+                    .get(i) instanceof SwitchCaseContainerEditPart) {
+                SwitchCaseContainerEditPart caseContainerEditPart = (SwitchCaseContainerEditPart) ((EditPart) ((EditPart) editpart
+                        .getChildren().get(4)).getChildren().get(0)).getChildren().get(i);
+                caseContainers.add(caseContainerEditPart);
+            }
+        }
 
-	public static void addCaseBranchInitially(EditPart child,
-			TransactionalEditingDomain domain) {
-		SwitchMediatorEditPart switchMediatorEditPart = (SwitchMediatorEditPart) child;
-		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (switchMediatorEditPart)
-				.getModel()).getElement();
- 		
-		if (((SwitchMediator) parentContainer).getCaseBranches().size() == 0) {
-			SwitchCaseBranchOutputConnector caseOutputConnector = EsbFactory.eINSTANCE
-					.createSwitchCaseBranchOutputConnector();
-			AddCommand addCaseConnectorCmd = new AddCommand(domain, parentContainer,
-					EsbPackage.Literals.SWITCH_MEDIATOR__CASE_BRANCHES, caseOutputConnector);
-			if (addCaseConnectorCmd.canExecute()) {
-				domain.getCommandStack().execute(addCaseConnectorCmd);
-			}
+        for (int i = 0; i < editpart.getChildren().size(); ++i) {
+            if ((EditPart) editpart.getChildren().get(i) instanceof SwitchCaseBranchOutputConnectorEditPart) {
+                SwitchCaseBranchOutputConnectorEditPart caseOutputConnectorEditPart = (SwitchCaseBranchOutputConnectorEditPart) editpart
+                        .getChildren().get(i);
+                caseOutputConnectorsList.add(caseOutputConnectorEditPart);
+            }
+        }
 
-			SwitchCaseContainer caseContainer = EsbFactory.eINSTANCE.createSwitchCaseContainer();
-			AddCommand addCmd = new AddCommand(domain,
-					((SwitchMediator) parentContainer).getSwitchContainer().getSwitchCaseParentContainer(),
-					EsbPackage.Literals.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER,
-					caseContainer);
-			if (addCmd.canExecute()) {
-				domain.getCommandStack().execute(addCmd);
-			}
-		}
-	}
+        for (int i = 0; i < caseContainers.size(); ++i) {
+            IFigure borderItemFigure = caseOutputConnectorsList.get(i).getFigure();
+            outputConnectors.add(borderItemFigure);
+            BorderItemLocator locator = new FixedBorderItemLocator(caseContainers.get(i).getFigure(), borderItemFigure,
+                    position, 0.5);
+            outputLocators.add(locator);
+        }
+
+        for (int i = 0; i < outputConnectors.size(); ++i) {
+            // ((SwitchMediatorEditPart)editpart).getBorderedFigure()
+            // .getBorderItemContainer().remove(outputConnectors.get(i));
+            ((SwitchMediatorEditPart) editpart).getBorderedFigure().getBorderItemContainer()
+                    .add(outputConnectors.get(i), outputLocators.get(i));
+        }
+        caseOutputConnectorsList.clear();
+        outputLocators.clear();
+        if (((SwitchMediatorEditPart) editpart).reversed) {
+            MediatorFigureReverser.reverse(editpart, true);
+        }
+    }
+
+    public static void addCaseBranchInitially(EditPart child, TransactionalEditingDomain domain) {
+        SwitchMediatorEditPart switchMediatorEditPart = (SwitchMediatorEditPart) child;
+        EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (switchMediatorEditPart).getModel())
+                .getElement();
+
+        if (((SwitchMediator) parentContainer).getCaseBranches().size() == 0) {
+            SwitchCaseBranchOutputConnector caseOutputConnector = EsbFactory.eINSTANCE
+                    .createSwitchCaseBranchOutputConnector();
+            AddCommand addCaseConnectorCmd = new AddCommand(domain, parentContainer,
+                    EsbPackage.Literals.SWITCH_MEDIATOR__CASE_BRANCHES, caseOutputConnector);
+            if (addCaseConnectorCmd.canExecute()) {
+                domain.getCommandStack().execute(addCaseConnectorCmd);
+            }
+
+            SwitchCaseContainer caseContainer = EsbFactory.eINSTANCE.createSwitchCaseContainer();
+            AddCommand addCmd = new AddCommand(domain,
+                    ((SwitchMediator) parentContainer).getSwitchContainer().getSwitchCaseParentContainer(),
+                    EsbPackage.Literals.SWITCH_CASE_PARENT_CONTAINER__SWITCH_CASE_CONTAINER, caseContainer);
+            if (addCmd.canExecute()) {
+                domain.getCommandStack().execute(addCmd);
+            }
+        }
+    }
 
 }

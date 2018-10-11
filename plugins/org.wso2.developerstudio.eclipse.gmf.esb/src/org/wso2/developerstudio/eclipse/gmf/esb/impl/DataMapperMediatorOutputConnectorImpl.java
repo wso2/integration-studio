@@ -27,24 +27,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class DataMapperMediatorOutputConnectorImpl extends OutputConnectorImpl implements DataMapperMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DataMapperMediatorOutputConnectorImpl() {
-		super();
-	}
+public class DataMapperMediatorOutputConnectorImpl extends OutputConnectorImpl
+        implements DataMapperMediatorOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected DataMapperMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.DATA_MAPPER_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.DATA_MAPPER_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //DataMapperMediatorOutputConnectorImpl
+} // DataMapperMediatorOutputConnectorImpl

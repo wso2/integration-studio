@@ -30,103 +30,95 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditP
 
 public abstract class AbstractMediatorInputConnectorEditPart extends AbstractInputConnectorEditPart {
 
-	
-	public final boolean isInput=true;
-	
-	protected IFigure primaryShapeForward;
+    public final boolean isInput = true;
 
-	protected IFigure primaryShapeReverse;
-	
-	public NodeFigure figure_;
-	
-	
-	//abstract public IFigure getPrimaryShapeForward(); 
-	//abstract public IFigure getPrimaryShapeReverse();
-	
-	
-	public AbstractMediatorInputConnectorEditPart(View view) {
-		super(view);
-		// TODO Auto-generated constructor stub
-	}
+    protected IFigure primaryShapeForward;
 
-	protected NodeFigure createNodeFigure() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+    protected IFigure primaryShapeReverse;
 
+    public NodeFigure figure_;
 
-	public NodeFigure getNodeFigureInput() {
+    // abstract public IFigure getPrimaryShapeForward();
+    // abstract public IFigure getPrimaryShapeReverse();
 
-		return figure_;
-	}
-	
+    public AbstractMediatorInputConnectorEditPart(View view) {
+        super(view);
+        // TODO Auto-generated constructor stub
+    }
 
-	protected IFigure createNodeShapeForward() {
-		return primaryShapeForward = new EastPointerFigure();
-	}
+    protected NodeFigure createNodeFigure() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	protected IFigure createNodeShapeReverse() {
-		return primaryShapeReverse = new WestPointerFigure();
-	}
+    public NodeFigure getNodeFigureInput() {
 
+        return figure_;
+    }
 
-	public EastPointerFigure getPrimaryShapeForward() {
-		return (EastPointerFigure) primaryShapeForward;
-	}
+    protected IFigure createNodeShapeForward() {
+        return primaryShapeForward = new EastPointerFigure();
+    }
 
-	public WestPointerFigure getPrimaryShapeReverse() {
-		return (WestPointerFigure) primaryShapeReverse;
+    protected IFigure createNodeShapeReverse() {
+        return primaryShapeReverse = new WestPointerFigure();
+    }
 
-	}
-	
-	public void notifyChanged(Notification notification) {
-		int direction = -1;
-		super.notifyChanged(notification);
-		if (notification.getEventType() == Notification.ADD) {			
-			/*
-			 * You can directly call Reverse(EditPart) method here. But it will
-			 * lead to reduce the performance since it will call
-			 * Reverse(EditPart) for each and every notifyChange event. So we
-			 * will filter the request to some extend.
-			 */
-			if (this.getTargetConnections().size() != 0) {
-				EditPart link = ((EsbLinkEditPart) this.getTargetConnections()
-						.get(0)).getSource();
-				if (((link instanceof AbstractMediatorOutputConnectorEditPart)
-						&& (((AbstractMediatorOutputConnectorEditPart) link).getParent() instanceof AbstractMediator)
-						&& (((AbstractMediator) ((AbstractMediatorOutputConnectorEditPart) link)
-								.getParent()).reversed)) || (link instanceof AbstractEndpointOutputConnectorEditPart)||(link instanceof ProxyOutSequenceOutputConnectorEditPart)
-								||(link instanceof APIResourceOutSequenceOutputConnectorEditPart)) {
-					if(this.getParent() instanceof AbstractMediator){
-					((AbstractMediator) this.getParent()).reverse(this
-							.getParent());	
-					}
-				}
-				
-				if(this.getParent() instanceof SequenceEditPart){
-					if(link instanceof AbstractEndpointOutputConnectorEditPart){
-					//((SequenceEditPart)this.getParent()).moveConnectorsRightSide();
-					}
-				}
-			}
-		}
-	}
-	
-	@Override
-	public boolean isSelectable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public EastPointerFigure getPrimaryShapeForward() {
+        return (EastPointerFigure) primaryShapeForward;
+    }
 
-	public class EastPointerFigure extends Figure {
-		
-	}
-	
-	public class WestPointerFigure extends Figure {
-		
-	}
-	
-	static final Color THIS_BACK = new Color(null, 50, 50, 50);
+    public WestPointerFigure getPrimaryShapeReverse() {
+        return (WestPointerFigure) primaryShapeReverse;
+
+    }
+
+    public void notifyChanged(Notification notification) {
+        int direction = -1;
+        super.notifyChanged(notification);
+        if (notification.getEventType() == Notification.ADD) {
+            /*
+             * You can directly call Reverse(EditPart) method here. But it will
+             * lead to reduce the performance since it will call
+             * Reverse(EditPart) for each and every notifyChange event. So we
+             * will filter the request to some extend.
+             */
+            if (this.getTargetConnections().size() != 0) {
+                EditPart link = ((EsbLinkEditPart) this.getTargetConnections().get(0)).getSource();
+                if (((link instanceof AbstractMediatorOutputConnectorEditPart)
+                        && (((AbstractMediatorOutputConnectorEditPart) link).getParent() instanceof AbstractMediator)
+                        && (((AbstractMediator) ((AbstractMediatorOutputConnectorEditPart) link).getParent()).reversed))
+                        || (link instanceof AbstractEndpointOutputConnectorEditPart)
+                        || (link instanceof ProxyOutSequenceOutputConnectorEditPart)
+                        || (link instanceof APIResourceOutSequenceOutputConnectorEditPart)) {
+                    if (this.getParent() instanceof AbstractMediator) {
+                        ((AbstractMediator) this.getParent()).reverse(this.getParent());
+                    }
+                }
+
+                if (this.getParent() instanceof SequenceEditPart) {
+                    if (link instanceof AbstractEndpointOutputConnectorEditPart) {
+                        // ((SequenceEditPart)this.getParent()).moveConnectorsRightSide();
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean isSelectable() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    public class EastPointerFigure extends Figure {
+
+    }
+
+    public class WestPointerFigure extends Figure {
+
+    }
+
+    static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

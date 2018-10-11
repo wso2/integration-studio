@@ -20,24 +20,24 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.bean.BeanMediator;
 
 public class BeanMediatorExt extends BeanMediator {
-	
-	private String className;
-	private Value targetValue;
 
-	public void setClassName(String className) {
-		this.className = className;
-	}
+    private String className;
+    private Value targetValue;
 
-	public String getClassName() {
-		return className;
-	}
+    public void setClassName(String className) {
+        this.className = className;
+    }
 
-	public void setTargetValue(Value targetValue) {
-		this.targetValue = targetValue;
-	}
+    public String getClassName() {
+        return className;
+    }
 
-	public Value getTargetValue() {
-		return targetValue;
-	}
+    public void setTargetValue(Value targetValue) {
+        this.targetValue = targetValue;
+    }
+
+    public Value getTargetValue() {
+        return targetValue;
+    }
 
 }

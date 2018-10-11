@@ -66,221 +66,222 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 
-		Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject.");
-		LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
-		Endpoint synapseEP = create(information, visualEndPoint, visualEndPoint.getName(), null);
-		setEndpointToSendCallOrProxy(information, visualEndPoint, synapseEP);
+        Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject.");
+        LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
+        Endpoint synapseEP = create(information, visualEndPoint, visualEndPoint.getName(), null);
+        setEndpointToSendCallOrProxy(information, visualEndPoint, synapseEP);
 
-		if (!information.isEndPointFound) {
-			information.isEndPointFound = true;
-			information.firstEndPoint = visualEndPoint;
-		}
+        if (!information.isEndPointFound) {
+            information.isEndPointFound = true;
+            information.firstEndPoint = visualEndPoint;
+        }
 
-		if (visualEndPoint.getWestOutputConnector() != null) {
-			if (visualEndPoint.getWestOutputConnector().getOutgoingLink() != null) {
-				InputConnector nextInputConnector = visualEndPoint.getWestOutputConnector().getOutgoingLink()
-						.getTarget();
-				if ((!(nextInputConnector instanceof SequenceInputConnector))
-						|| ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0).getOutgoingLink() != null) && (!(((Sequence) nextInputConnector
-								.eContainer()).getOutputConnector().get(0).getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
-					information.setParentSequence(information.getOriginOutSequence());
-					information.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
-				} else if (visualEndPoint.getInputConnector().getIncomingLinks().get(0).getSource().eContainer() instanceof Sequence) {
-					information.setParentSequence(information.getCurrentReferredSequence());
-				}
-			}
-		}
+        if (visualEndPoint.getWestOutputConnector() != null) {
+            if (visualEndPoint.getWestOutputConnector().getOutgoingLink() != null) {
+                InputConnector nextInputConnector = visualEndPoint.getWestOutputConnector().getOutgoingLink()
+                        .getTarget();
+                if ((!(nextInputConnector instanceof SequenceInputConnector))
+                        || ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                .getOutgoingLink() != null)
+                                && (!(((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                        .getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
+                    information.setParentSequence(information.getOriginOutSequence());
+                    information.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+                } else if (visualEndPoint.getInputConnector().getIncomingLinks().get(0).getSource()
+                        .eContainer() instanceof Sequence) {
+                    information.setParentSequence(information.getCurrentReferredSequence());
+                }
+            }
+        }
 
-		List<EsbNode> transformedMediators = information.getTransformedMediators();
-		if (visualEndPoint.getOutputConnector() != null && visualEndPoint.getWestOutputConnector() != null
-				&& visualEndPoint.getWestOutputConnector().getOutgoingLink() != null) {
-			EsbNode nextElement = (EsbNode) visualEndPoint.getWestOutputConnector().getOutgoingLink().getTarget()
-					.eContainer();
-			if (transformedMediators.contains(nextElement)) {
-				return;
-			}
-			doTransform(information, visualEndPoint.getWestOutputConnector());
-			transformedMediators.add(nextElement);
-		}
+        List<EsbNode> transformedMediators = information.getTransformedMediators();
+        if (visualEndPoint.getOutputConnector() != null && visualEndPoint.getWestOutputConnector() != null
+                && visualEndPoint.getWestOutputConnector().getOutgoingLink() != null) {
+            EsbNode nextElement = (EsbNode) visualEndPoint.getWestOutputConnector().getOutgoingLink().getTarget()
+                    .eContainer();
+            if (transformedMediators.contains(nextElement)) {
+                return;
+            }
+            doTransform(information, visualEndPoint.getWestOutputConnector());
+            transformedMediators.add(nextElement);
+        }
 
-	}
+    }
 
-	@Override
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) throws TransformerException {
+    @Override
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
+            throws TransformerException {
 
-		Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject.");
-		LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
-		endPoints.add(create(info, visualEndPoint, visualEndPoint.getEndPointName(), endPoints));
+        Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject.");
+        LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
+        endPoints.add(create(info, visualEndPoint, visualEndPoint.getEndPointName(), endPoints));
 
-	}
+    }
 
-	@Override
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject");
-		LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
-		Endpoint synapseEP = create(information, visualEndPoint, visualEndPoint.getEndPointName(), null);
-		setEndpointToSendOrCallMediator(sequence, synapseEP);
-	}
+    @Override
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject");
+        LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
+        Endpoint synapseEP = create(information, visualEndPoint, visualEndPoint.getEndPointName(), null);
+        setEndpointToSendOrCallMediator(sequence, synapseEP);
+    }
 
-	public LoadbalanceEndpoint create(TransformationInfo info,
-			LoadBalanceEndPoint visualEndPoint, String name,
-			List<Endpoint> endPoints) throws TransformerException {
+    public LoadbalanceEndpoint create(TransformationInfo info, LoadBalanceEndPoint visualEndPoint, String name,
+            List<Endpoint> endPoints) throws TransformerException {
 
-		if (StringUtils.isEmpty(visualEndPoint.getName())) {
-			throw new TransformerException(
-					"Load-BalanceEndPoint should be configured. Double click on endpoint to configure.");
-		}
-		IEditorPart editorPart = null;
-		IProject activeProject = null;
-		List<Endpoint> endPointsList = new ArrayList<Endpoint>();
-		EndpointDefinition synapseEPDef = new EndpointDefinition();
+        if (StringUtils.isEmpty(visualEndPoint.getName())) {
+            throw new TransformerException(
+                    "Load-BalanceEndPoint should be configured. Double click on endpoint to configure.");
+        }
+        IEditorPart editorPart = null;
+        IProject activeProject = null;
+        List<Endpoint> endPointsList = new ArrayList<Endpoint>();
+        EndpointDefinition synapseEPDef = new EndpointDefinition();
 
-		LoadbalanceEndpoint synapseLBEP;
+        LoadbalanceEndpoint synapseLBEP;
 
-		if (visualEndPoint.getSessionType().equals(LoadBalanceSessionType.NONE)) {
-			synapseLBEP = new LoadbalanceEndpoint();
-		} else {
-			synapseLBEP = new SALoadbalanceEndpoint();
+        if (visualEndPoint.getSessionType().equals(LoadBalanceSessionType.NONE)) {
+            synapseLBEP = new LoadbalanceEndpoint();
+        } else {
+            synapseLBEP = new SALoadbalanceEndpoint();
 
-			Long sessionTimeout = visualEndPoint.getSessionTimeout();
-			if (sessionTimeout != null) {
-				((SALoadbalanceEndpoint) synapseLBEP).setSessionTimeout(sessionTimeout);
-			}
-		}
-		synapseLBEP.setBuildMessageAtt(visualEndPoint.isBuildMessage());
-		if (StringUtils.isNotBlank(name)) {
-			synapseLBEP.setName(name);
-		}
+            Long sessionTimeout = visualEndPoint.getSessionTimeout();
+            if (sessionTimeout != null) {
+                ((SALoadbalanceEndpoint) synapseLBEP).setSessionTimeout(sessionTimeout);
+            }
+        }
+        synapseLBEP.setBuildMessageAtt(visualEndPoint.isBuildMessage());
+        if (StringUtils.isNotBlank(name)) {
+            synapseLBEP.setName(name);
+        }
 
-		/*
-		 * We should give this LoadbalanceAlgorithm class at runtime.User should
-		 * be requested to give a class.
-		 */
-		try {
-			Class<?> algorithmClass = Class.forName(visualEndPoint.getAlgorithm().trim());
-			Object algorithm = algorithmClass.newInstance();
-			if (algorithm instanceof LoadbalanceAlgorithm) {
-				synapseLBEP.setAlgorithm((LoadbalanceAlgorithm) algorithm);
-			}
-		} catch (ClassNotFoundException e1) {
-			MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
-					visualEndPoint.getAlgorithm().trim() + " algorithm class not found.");
-			e1.printStackTrace();
-		} catch (InstantiationException e) {
-			MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
-					visualEndPoint.getAlgorithm().trim() + " algorithm class cannot be instantiated.");
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
-					"Illegal access to " + visualEndPoint.getAlgorithm().trim() + " algorithm class.");
-			e.printStackTrace();
-		}
+        /*
+         * We should give this LoadbalanceAlgorithm class at runtime.User should
+         * be requested to give a class.
+         */
+        try {
+            Class<?> algorithmClass = Class.forName(visualEndPoint.getAlgorithm().trim());
+            Object algorithm = algorithmClass.newInstance();
+            if (algorithm instanceof LoadbalanceAlgorithm) {
+                synapseLBEP.setAlgorithm((LoadbalanceAlgorithm) algorithm);
+            }
+        } catch (ClassNotFoundException e1) {
+            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
+                    visualEndPoint.getAlgorithm().trim() + " algorithm class not found.");
+            e1.printStackTrace();
+        } catch (InstantiationException e) {
+            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
+                    visualEndPoint.getAlgorithm().trim() + " algorithm class cannot be instantiated.");
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error in Loadbalance Endpoint ! ",
+                    "Illegal access to " + visualEndPoint.getAlgorithm().trim() + " algorithm class.");
+            e.printStackTrace();
+        }
 
-		switch (visualEndPoint.getSessionType()) {
-		case SOAP:
-			Dispatcher soapDispatcher = new SoapSessionDispatcher();
-			((SALoadbalanceEndpoint) synapseLBEP).setDispatcher(soapDispatcher);
-			break;
-		case TRANSPORT:
-			Dispatcher httpDispatcher = new HttpSessionDispatcher();
-			((SALoadbalanceEndpoint) synapseLBEP).setDispatcher(httpDispatcher);
-			break;
-		case CLIENT_ID:
-			Dispatcher csDispatcher = new SimpleClientSessionDispatcher();
-			((SALoadbalanceEndpoint) synapseLBEP).setDispatcher(csDispatcher);
-			break;
-		case NONE:
-			break;
-		}
+        switch (visualEndPoint.getSessionType()) {
+        case SOAP:
+            Dispatcher soapDispatcher = new SoapSessionDispatcher();
+            ((SALoadbalanceEndpoint) synapseLBEP).setDispatcher(soapDispatcher);
+            break;
+        case TRANSPORT:
+            Dispatcher httpDispatcher = new HttpSessionDispatcher();
+            ((SALoadbalanceEndpoint) synapseLBEP).setDispatcher(httpDispatcher);
+            break;
+        case CLIENT_ID:
+            Dispatcher csDispatcher = new SimpleClientSessionDispatcher();
+            ((SALoadbalanceEndpoint) synapseLBEP).setDispatcher(csDispatcher);
+            break;
+        case NONE:
+            break;
+        }
 
-		synapseLBEP.setDefinition(synapseEPDef);
-		saveProperties(visualEndPoint, synapseLBEP);
+        synapseLBEP.setDefinition(synapseEPDef);
+        saveProperties(visualEndPoint, synapseLBEP);
 
-		if (!info.isEndPointFound) {
-			info.isEndPointFound = true;
-			info.firstEndPoint = visualEndPoint;
-		}
+        if (!info.isEndPointFound) {
+            info.isEndPointFound = true;
+            info.firstEndPoint = visualEndPoint;
+        }
 
-		try {
-			if (visualEndPoint.eContainer() instanceof EndpointDiagram) {
-				ArrayList<LoadBalanceEndPointOutputConnector> connectors = new ArrayList<LoadBalanceEndPointOutputConnector>();
-				connectors.addAll(visualEndPoint.getOutputConnector());
+        try {
+            if (visualEndPoint.eContainer() instanceof EndpointDiagram) {
+                ArrayList<LoadBalanceEndPointOutputConnector> connectors = new ArrayList<LoadBalanceEndPointOutputConnector>();
+                connectors.addAll(visualEndPoint.getOutputConnector());
 
-				for (LoadBalanceEndPointOutputConnector outputConnector : connectors) {
-					if (outputConnector.getOutgoingLink() != null) {
-						if (outputConnector.getOutgoingLink().getTarget() != null) {
-							EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink().getTarget().eContainer();
-							EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance().getTransformer(
-									esbNode);
-							transformer.createSynapseObject(info, esbNode, endPointsList);
-						}
-					}
-				}
-			} else {
+                for (LoadBalanceEndPointOutputConnector outputConnector : connectors) {
+                    if (outputConnector.getOutgoingLink() != null) {
+                        if (outputConnector.getOutgoingLink().getTarget() != null) {
+                            EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink().getTarget().eContainer();
+                            EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance()
+                                    .getTransformer(esbNode);
+                            transformer.createSynapseObject(info, esbNode, endPointsList);
+                        }
+                    }
+                }
+            } else {
 
-				IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-						.getActivePage().getEditorReferences();
-				for (int i = 0; i < editorReferences.length; i++) {
-					IEditorPart editor = editorReferences[i].getEditor(false);
+                IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                        .getActivePage().getEditorReferences();
+                for (int i = 0; i < editorReferences.length; i++) {
+                    IEditorPart editor = editorReferences[i].getEditor(false);
 
-					if (editor != null) {
-						editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
-					}
+                    if (editor != null) {
+                        editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+                    }
 
-					if (editorPart != null) {
-						IEsbEditorInput input = (IEsbEditorInput) editorPart.getEditorInput();
-						IFile file = input.getXmlResource();
-						activeProject = file.getProject();
-					}
-				}
+                    if (editorPart != null) {
+                        IEsbEditorInput input = (IEsbEditorInput) editorPart.getEditorInput();
+                        IFile file = input.getXmlResource();
+                        activeProject = file.getProject();
+                    }
+                }
 
-				String endpointName = (String) visualEndPoint.getName();
-				IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
-				IFile file = activeProject.getFile(location);
+                String endpointName = (String) visualEndPoint.getName();
+                IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+                IFile file = activeProject.getFile(location);
 
-				final String source = FileUtils.getContentAsString(file.getContents());
+                final String source = FileUtils.getContentAsString(file.getContents());
 
-				OMElement element = AXIOMUtil.stringToOM(source);
-				Properties properties = new Properties();
-				properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
-				synapseLBEP = (LoadbalanceEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
+                OMElement element = AXIOMUtil.stringToOM(source);
+                Properties properties = new Properties();
+                properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
+                synapseLBEP = (LoadbalanceEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
 
-			}
+            }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		if (synapseLBEP instanceof SALoadbalanceEndpoint) {
-			synapseLBEP.setChildren(endPointsList);
-		} else {
-			if (endPointsList.size() > 0) {
-				synapseLBEP.setChildren(endPointsList);
-			} else {
-				// Load Balance endpoint members.
-				List<org.apache.axis2.clustering.Member> members = new ArrayList<org.apache.axis2.clustering.Member>();
-				if (visualEndPoint.getMember() != null && visualEndPoint.getMember().size() > 0) {
-					EList<Member> visualMembers = visualEndPoint.getMember();
+        if (synapseLBEP instanceof SALoadbalanceEndpoint) {
+            synapseLBEP.setChildren(endPointsList);
+        } else {
+            if (endPointsList.size() > 0) {
+                synapseLBEP.setChildren(endPointsList);
+            } else {
+                // Load Balance endpoint members.
+                List<org.apache.axis2.clustering.Member> members = new ArrayList<org.apache.axis2.clustering.Member>();
+                if (visualEndPoint.getMember() != null && visualEndPoint.getMember().size() > 0) {
+                    EList<Member> visualMembers = visualEndPoint.getMember();
 
-					for (Member visualMember : visualMembers) {
-						org.apache.axis2.clustering.Member member = new org.apache.axis2.clustering.Member(
-								visualMember.getHostName(), -1);
-						member.setHttpPort(Integer.parseInt(visualMember.getHttpPort()));
-						member.setHttpsPort(Integer.parseInt(visualMember.getHttpsPort()));
-						members.add(member);
-					}
-				}
+                    for (Member visualMember : visualMembers) {
+                        org.apache.axis2.clustering.Member member = new org.apache.axis2.clustering.Member(
+                                visualMember.getHostName(), -1);
+                        member.setHttpPort(Integer.parseInt(visualMember.getHttpPort()));
+                        member.setHttpsPort(Integer.parseInt(visualMember.getHttpsPort()));
+                        members.add(member);
+                    }
+                }
 
-				synapseLBEP.setMembers(members);
-			}
-		}
+                synapseLBEP.setMembers(members);
+            }
+        }
 
-		return synapseLBEP;
-	}
+        return synapseLBEP;
+    }
 
 }

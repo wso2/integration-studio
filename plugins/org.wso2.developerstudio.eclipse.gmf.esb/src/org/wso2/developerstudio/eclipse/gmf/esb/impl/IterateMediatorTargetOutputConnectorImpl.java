@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediatorTargetOutputConne
  *
  * @generated
  */
-public class IterateMediatorTargetOutputConnectorImpl extends OutputConnectorImpl implements IterateMediatorTargetOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IterateMediatorTargetOutputConnectorImpl() {
-		super();
-	}
+public class IterateMediatorTargetOutputConnectorImpl extends OutputConnectorImpl
+        implements IterateMediatorTargetOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected IterateMediatorTargetOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.ITERATE_MEDIATOR_TARGET_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.ITERATE_MEDIATOR_TARGET_OUTPUT_CONNECTOR;
+    }
 
-} //IterateMediatorTargetOutputConnectorImpl
+} // IterateMediatorTargetOutputConnectorImpl

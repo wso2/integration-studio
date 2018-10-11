@@ -53,376 +53,388 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
  */
 public class ProxyInSequenceInputConnectorEditPart extends AbstractBaseFigureInputConnectorEditPart {
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 3731;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 3731;
 
-	/**
-	 * @generated
-	 */
-	protected IFigure contentPane;
+    /**
+     * @generated
+     */
+    protected IFigure contentPane;
 
-	/**
-	 * @generated
-	 */
-	protected IFigure primaryShape;
+    /**
+     * @generated
+     */
+    protected IFigure primaryShape;
 
-	public NodeFigure figure_;
+    public NodeFigure figure_;
 
-	private ProxyInSequenceInputConnectorEditPart instance;
+    private ProxyInSequenceInputConnectorEditPart instance;
 
-	public NodeFigure getNodeFigureInput() {
+    public NodeFigure getNodeFigureInput() {
 
-		return figure_;
-	}
+        return figure_;
+    }
 
-	public void notifyChanged(Notification notification) {
-		super.notifyChanged(notification);
-		if (((ENotificationImpl) notification).getOldValue() != null) {
-			/*
-			 * Removing ProxyInSequenceInputConnector when the link which connected to the inputConnector get deleted.
-			 */
-			if ((((ENotificationImpl) notification).getOldValue() instanceof org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbLinkImpl)
-					&& (((ENotificationImpl) notification).getNewValue() == null)) {
-				RemoveCommand removeCmd = new RemoveCommand(getEditingDomain(), ((Node) EditorUtils
-						.getAbstractBaseFigureEditPart(this).getModel()).getElement(),
-						EsbPackage.Literals.PROXY_SERVICE__IN_SEQUENCE_INPUT_CONNECTORS,
-						((Node) this.getModel()).getElement());
-				if (removeCmd.canExecute()) {
-					getEditingDomain().getCommandStack().execute(removeCmd);
-				}
-			}
-		}
-	}
+    public void notifyChanged(Notification notification) {
+        super.notifyChanged(notification);
+        if (((ENotificationImpl) notification).getOldValue() != null) {
+            /*
+             * Removing ProxyInSequenceInputConnector when the link which connected to the inputConnector get deleted.
+             */
+            if ((((ENotificationImpl) notification)
+                    .getOldValue() instanceof org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbLinkImpl)
+                    && (((ENotificationImpl) notification).getNewValue() == null)) {
+                RemoveCommand removeCmd = new RemoveCommand(getEditingDomain(),
+                        ((Node) EditorUtils.getAbstractBaseFigureEditPart(this).getModel()).getElement(),
+                        EsbPackage.Literals.PROXY_SERVICE__IN_SEQUENCE_INPUT_CONNECTORS,
+                        ((Node) this.getModel()).getElement());
+                if (removeCmd.canExecute()) {
+                    getEditingDomain().getCommandStack().execute(removeCmd);
+                }
+            }
+        }
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public ProxyInSequenceInputConnectorEditPart(View view) {
-		super(view);
-		instance = this;
-	}
+    /**
+     * @generated NOT
+     */
+    public ProxyInSequenceInputConnectorEditPart(View view) {
+        super(view);
+        instance = this;
+    }
 
-	private void connectToSendMediator(SendMediatorEditPart sendMediatorEditPart) {
-		if (sendMediatorEditPart != null) {
-			ConnectionUtils.createConnection((AbstractConnectorEditPart) this,
-					EditorUtils.getMediatorOutputConnector(sendMediatorEditPart));
-		}
-	}
+    private void connectToSendMediator(SendMediatorEditPart sendMediatorEditPart) {
+        if (sendMediatorEditPart != null) {
+            ConnectionUtils.createConnection((AbstractConnectorEditPart) this,
+                    EditorUtils.getMediatorOutputConnector(sendMediatorEditPart));
+        }
+    }
 
-	/*	public void reallocateInputConnectors(SendMediatorEditPart sendMediatorEditPart){		
-	 int proxyOutSequenceOutputConnectorLocation = EditorUtils.getProxyOutSequenceOutputConnector(EditorUtils.getProxy(sendMediatorEditPart)).getFigure().getBounds().getLocation().y;
-	 int proxyLocation=EditorUtils.getProxy(sendMediatorEditPart).getFigure().getBounds().getLocation().y;		
-	 int relativeProxyOutSequenceOutputConnectorLocation=proxyOutSequenceOutputConnectorLocation-proxyLocation;
-	
-	 int totalHeight=(int) (((float)relativeProxyOutSequenceOutputConnectorLocation)/0.75);
-	
-	 int relativeSendMediatorOutputConnectorLocation=EditorUtils.getOutputConnector(sendMediatorEditPart, SendMediatorOutputConnectorEditPart.class).getFigure().getBounds().getLocation().y;
+    /*
+     * public void reallocateInputConnectors(SendMediatorEditPart sendMediatorEditPart){
+     * int proxyOutSequenceOutputConnectorLocation =
+     * EditorUtils.getProxyOutSequenceOutputConnector(EditorUtils.getProxy(sendMediatorEditPart)).getFigure().getBounds(
+     * ).getLocation().y;
+     * int proxyLocation=EditorUtils.getProxy(sendMediatorEditPart).getFigure().getBounds().getLocation().y;
+     * int relativeProxyOutSequenceOutputConnectorLocation=proxyOutSequenceOutputConnectorLocation-proxyLocation;
+     * 
+     * int totalHeight=(int) (((float)relativeProxyOutSequenceOutputConnectorLocation)/0.75);
+     * 
+     * int relativeSendMediatorOutputConnectorLocation=EditorUtils.getOutputConnector(sendMediatorEditPart,
+     * SendMediatorOutputConnectorEditPart.class).getFigure().getBounds().getLocation().y;
+     * 
+     * GraphicalEditPart parent=(GraphicalEditPart) sendMediatorEditPart.getParent();
+     * relativeSendMediatorOutputConnectorLocation=relativeSendMediatorOutputConnectorLocation+5;
+     * while(!(parent instanceof AbstractBaseFigureEditPart)){
+     * if((parent instanceof AbstractMediatorFlowCompartmentEditPart)){
+     * relativeSendMediatorOutputConnectorLocation=relativeSendMediatorOutputConnectorLocation+((GraphicalEditPart)
+     * parent.getParent()).getFigure().getBounds().getLocation().y;
+     * }
+     * parent=(GraphicalEditPart) parent.getParent();
+     * }
+     * 
+     * float ratio = (float)(relativeSendMediatorOutputConnectorLocation-100)/totalHeight;
+     * ratio=(float) 0.25;
+     * 
+     * AbstractBaseFigureEditPart baseFigureEditPart = (AbstractBaseFigureEditPart)
+     * EditorUtils.getAbstractBaseFigureEditPart(this);
+     * GraphicalEditPart ob=(GraphicalEditPart)
+     * ((EditPart)((EditPart)this.getParent().getChildren().get(5)).getChildren().get(0)).getChildren().get(0);
+     * BorderItemLocator inputLocator = new FixedBorderItemLocator(ob.getFigure(),
+     * baseFigureEditPart.inSequenceInputConnectorFigure, PositionConstants.EAST, ratio);
+     * baseFigureEditPart.getBorderedFigure().getBorderItemContainer()
+     * .add(baseFigureEditPart.inSequenceInputConnectorFigure, inputLocator);
+     * }
+     */
 
-	 GraphicalEditPart parent=(GraphicalEditPart) sendMediatorEditPart.getParent();
-	 relativeSendMediatorOutputConnectorLocation=relativeSendMediatorOutputConnectorLocation+5;
-	 while(!(parent instanceof AbstractBaseFigureEditPart)){			
-	 if((parent instanceof AbstractMediatorFlowCompartmentEditPart)){
-	 relativeSendMediatorOutputConnectorLocation=relativeSendMediatorOutputConnectorLocation+((GraphicalEditPart)parent.getParent()).getFigure().getBounds().getLocation().y;
-	 }
-	 parent=(GraphicalEditPart) parent.getParent();			
-	 }
+    /**
+     * @generated NOT
+     */
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ProxyInSequenceInputConnectorItemSemanticEditPolicy());
+        installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+        // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
+        // editpolicies
+        removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+    }
 
-	 float ratio = (float)(relativeSendMediatorOutputConnectorLocation-100)/totalHeight;
-	 ratio=(float) 0.25;
-	
-	 AbstractBaseFigureEditPart baseFigureEditPart = (AbstractBaseFigureEditPart) EditorUtils.getAbstractBaseFigureEditPart(this);		
-	 GraphicalEditPart ob=(GraphicalEditPart) ((EditPart)((EditPart)this.getParent().getChildren().get(5)).getChildren().get(0)).getChildren().get(0); 		
-	 BorderItemLocator inputLocator = new FixedBorderItemLocator(ob.getFigure(),
-	 baseFigureEditPart.inSequenceInputConnectorFigure, PositionConstants.EAST, ratio);
-	 baseFigureEditPart.getBorderedFigure().getBorderItemContainer()
-	 .add(baseFigureEditPart.inSequenceInputConnectorFigure, inputLocator);
-	 }*/
+    /**
+     * @generated
+     */
+    protected LayoutEditPolicy createLayoutEditPolicy() {
+        org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
-	/**
-	 * @generated NOT
-	 */
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ProxyInSequenceInputConnectorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-	}
+            protected EditPolicy createChildEditPolicy(EditPart child) {
+                EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+                if (result == null) {
+                    result = new NonResizableEditPolicy();
+                }
+                return result;
+            }
 
-	/**
-	 * @generated
-	 */
-	protected LayoutEditPolicy createLayoutEditPolicy() {
-		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
+            protected Command getMoveChildrenCommand(Request request) {
+                return null;
+            }
 
-			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
-				if (result == null) {
-					result = new NonResizableEditPolicy();
-				}
-				return result;
-			}
+            protected Command getCreateCommand(CreateRequest request) {
+                return null;
+            }
+        };
+        return lep;
+    }
 
-			protected Command getMoveChildrenCommand(Request request) {
-				return null;
-			}
+    /**
+     * @generated NOT
+     */
+    protected IFigure createNodeShape() {
+        return primaryShape = new EastPointerFigure() {
+            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+                super.setBounds(rect);
+                if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+                    if (EditorUtils.getAbstractBaseFigureEditPart(instance) != null) {
+                        Map<InputConnector, SendMediatorEditPart> map = EditorUtils
+                                .getAbstractBaseFigureEditPart(instance)
+                                .getSendMediatorAndInSequenceInputConnectorMap();
+                        SendMediatorEditPart sendMediatorEditPart = (SendMediatorEditPart) (map
+                                .get(((Node) instance.getModel()).getElement()));
+                        connectToSendMediator(sendMediatorEditPart);
+                    }
+                }
+            };
+        };
+    }
 
-			protected Command getCreateCommand(CreateRequest request) {
-				return null;
-			}
-		};
-		return lep;
-	}
+    /**
+     * @generated
+     */
+    public EastPointerFigure getPrimaryShape() {
+        return (EastPointerFigure) primaryShape;
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected IFigure createNodeShape() {
-		return primaryShape = new EastPointerFigure() {
-			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
-				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
-					if (EditorUtils.getAbstractBaseFigureEditPart(instance) != null) {
-						Map<InputConnector, SendMediatorEditPart> map = EditorUtils.getAbstractBaseFigureEditPart(
-								instance).getSendMediatorAndInSequenceInputConnectorMap();
-						SendMediatorEditPart sendMediatorEditPart = (SendMediatorEditPart) (map.get(((Node) instance
-								.getModel()).getElement()));
-						connectToSendMediator(sendMediatorEditPart);
-					}
-				}
-			};
-		};
-	}
+    /**
+     * @generated
+     */
+    protected NodeFigure createNodePlate() {
+        DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(12, 10);
 
-	/**
-	 * @generated
-	 */
-	public EastPointerFigure getPrimaryShape() {
-		return (EastPointerFigure) primaryShape;
-	}
+        // FIXME: workaround for #154536
+        result.getBounds().setSize(result.getPreferredSize());
+        return result;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(12, 10);
+    /**
+     * Creates figure for this edit part.
+     * 
+     * Body of this method does not depend on settings in generation model
+     * so you may safely remove <i>generated</i> tag and modify it.
+     * 
+     * @generated NOT
+     */
+    protected NodeFigure createNodeFigure() {
+        NodeFigure figure = createNodePlate();
+        figure.setLayoutManager(new StackLayout());
+        IFigure shape = createNodeShape();
+        figure.add(shape);
+        contentPane = setupContentPane(shape);
+        figure_ = figure;
 
-		//FIXME: workaround for #154536
-		result.getBounds().setSize(result.getPreferredSize());
-		return result;
-	}
+        return figure;
+    }
 
-	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated NOT
-	 */
-	protected NodeFigure createNodeFigure() {
-		NodeFigure figure = createNodePlate();
-		figure.setLayoutManager(new StackLayout());
-		IFigure shape = createNodeShape();
-		figure.add(shape);
-		contentPane = setupContentPane(shape);
-		figure_ = figure;
+    /**
+     * Default implementation treats passed figure as content pane.
+     * Respects layout one may have set for generated figure.
+     * 
+     * @param nodeShape instance of generated figure class
+     * @generated
+     */
+    protected IFigure setupContentPane(IFigure nodeShape) {
+        return nodeShape; // use nodeShape itself as contentPane
+    }
 
-		return figure;
-	}
+    /**
+     * @generated
+     */
+    public IFigure getContentPane() {
+        if (contentPane != null) {
+            return contentPane;
+        }
+        return super.getContentPane();
+    }
 
-	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
-	 * @generated
-	 */
-	protected IFigure setupContentPane(IFigure nodeShape) {
-		return nodeShape; // use nodeShape itself as contentPane
-	}
+    /**
+     * @generated
+     */
+    protected void setForegroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setForegroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	public IFigure getContentPane() {
-		if (contentPane != null) {
-			return contentPane;
-		}
-		return super.getContentPane();
-	}
+    /**
+     * @generated
+     */
+    protected void setBackgroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setBackgroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setForegroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setForegroundColor(color);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setLineWidth(int width) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineWidth(width);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setBackgroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setBackgroundColor(color);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setLineType(int style) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineStyle(style);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineWidth(int width) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineWidth(width);
-		}
-	}
+    /**
+     * @generated
+     */
+    public List<IElementType> getMARelTypesOnTarget() {
+        ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+        types.add(EsbElementTypes.EsbLink_4001);
+        return types;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineType(int style) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineStyle(style);
-		}
-	}
+    /**
+     * @generated
+     */
+    public List<IElementType> getMATypesForSource(IElementType relationshipType) {
+        LinkedList<IElementType> types = new LinkedList<IElementType>();
+        if (relationshipType == EsbElementTypes.EsbLink_4001) {
+            types.add(EsbElementTypes.ProxyOutputConnector_3002);
+            types.add(EsbElementTypes.ProxyOutSequenceOutputConnector_3729);
+            types.add(EsbElementTypes.PropertyMediatorOutputConnector_3034);
+            types.add(EsbElementTypes.ThrottleMediatorOutputConnector_3122);
+            types.add(EsbElementTypes.ThrottleMediatorOnAcceptOutputConnector_3581);
+            types.add(EsbElementTypes.ThrottleMediatorOnRejectOutputConnector_3582);
+            types.add(EsbElementTypes.FilterMediatorOutputConnector_3534);
+            types.add(EsbElementTypes.FilterMediatorPassOutputConnector_3011);
+            types.add(EsbElementTypes.FilterMediatorFailOutputConnector_3012);
+            types.add(EsbElementTypes.LogMediatorOutputConnector_3019);
+            types.add(EsbElementTypes.EnrichMediatorOutputConnector_3037);
+            types.add(EsbElementTypes.XSLTMediatorOutputConnector_3040);
+            types.add(EsbElementTypes.SwitchCaseBranchOutputConnector_3043);
+            types.add(EsbElementTypes.SwitchMediatorOutputConnector_3499);
+            types.add(EsbElementTypes.SwitchDefaultBranchOutputConnector_3044);
+            types.add(EsbElementTypes.SequenceOutputConnector_3050);
+            types.add(EsbElementTypes.EventMediatorOutputConnector_3053);
+            types.add(EsbElementTypes.EntitlementMediatorOutputConnector_3056);
+            types.add(EsbElementTypes.ClassMediatorOutputConnector_3059);
+            types.add(EsbElementTypes.SpringMediatorOutputConnector_3062);
+            types.add(EsbElementTypes.ScriptMediatorOutputConnector_3065);
+            types.add(EsbElementTypes.FaultMediatorOutputConnector_3068);
+            types.add(EsbElementTypes.XQueryMediatorOutputConnector_3071);
+            types.add(EsbElementTypes.CommandMediatorOutputConnector_3074);
+            types.add(EsbElementTypes.DBLookupMediatorOutputConnector_3077);
+            types.add(EsbElementTypes.DBReportMediatorOutputConnector_3080);
+            types.add(EsbElementTypes.SmooksMediatorOutputConnector_3083);
+            types.add(EsbElementTypes.SendMediatorOutputConnector_3086);
+            types.add(EsbElementTypes.SendMediatorEndpointOutputConnector_3539);
+            types.add(EsbElementTypes.HeaderMediatorOutputConnector_3101);
+            types.add(EsbElementTypes.CloneMediatorOutputConnector_3104);
+            types.add(EsbElementTypes.CloneMediatorTargetOutputConnector_3133);
+            types.add(EsbElementTypes.CacheMediatorOutputConnector_3107);
+            types.add(EsbElementTypes.CacheMediatorOnHitOutputConnector_3618);
+            types.add(EsbElementTypes.IterateMediatorOutputConnector_3110);
+            types.add(EsbElementTypes.IterateMediatorTargetOutputConnector_3606);
+            types.add(EsbElementTypes.CalloutMediatorOutputConnector_3116);
+            types.add(EsbElementTypes.TransactionMediatorOutputConnector_3119);
+            types.add(EsbElementTypes.RMSequenceMediatorOutputConnector_3125);
+            types.add(EsbElementTypes.RuleMediatorOutputConnector_3128);
+            types.add(EsbElementTypes.RuleMediatorChildMediatorsOutputConnector_3640);
+            types.add(EsbElementTypes.OAuthMediatorOutputConnector_3131);
+            types.add(EsbElementTypes.AggregateMediatorOutputConnector_3113);
+            types.add(EsbElementTypes.AggregateMediatorOnCompleteOutputConnector_3132);
+            types.add(EsbElementTypes.StoreMediatorOutputConnector_3590);
+            types.add(EsbElementTypes.BuilderMediatorOutputConector_3593);
+            types.add(EsbElementTypes.CallTemplateMediatorOutputConnector_3596);
+            types.add(EsbElementTypes.PayloadFactoryMediatorOutputConnector_3599);
+            types.add(EsbElementTypes.EnqueueMediatorOutputConnector_3602);
+            types.add(EsbElementTypes.URLRewriteMediatorOutputConnector_3622);
+            types.add(EsbElementTypes.ValidateMediatorOutputConnector_3625);
+            types.add(EsbElementTypes.ValidateMediatorOnFailOutputConnector_3626);
+            types.add(EsbElementTypes.RouterMediatorOutputConnector_3630);
+            types.add(EsbElementTypes.RouterMediatorTargetOutputConnector_3631);
+            types.add(EsbElementTypes.ConditionalRouterMediatorOutputConnector_3637);
+            types.add(EsbElementTypes.ConditionalRouterMediatorAdditionalOutputConnector_3638);
+            types.add(EsbElementTypes.BAMMediatorOutputConnector_3682);
+            types.add(EsbElementTypes.BeanMediatorOutputConnector_3685);
+            types.add(EsbElementTypes.EJBMediatorOutputConnector_3688);
+            types.add(EsbElementTypes.DefaultEndPointOutputConnector_3022);
+            types.add(EsbElementTypes.AddressEndPointOutputConnector_3031);
+            types.add(EsbElementTypes.FailoverEndPointOutputConnector_3090);
+            types.add(EsbElementTypes.FailoverEndPointWestOutputConnector_3097);
+            types.add(EsbElementTypes.RecipientListEndPointOutputConnector_3694);
+            types.add(EsbElementTypes.RecipientListEndPointWestOutputConnector_3695);
+            types.add(EsbElementTypes.WSDLEndPointOutputConnector_3093);
+            types.add(EsbElementTypes.NamedEndpointOutputConnector_3662);
+            types.add(EsbElementTypes.LoadBalanceEndPointOutputConnector_3096);
+            types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3098);
+            types.add(EsbElementTypes.APIResourceEndpointOutputConnector_3676);
+            types.add(EsbElementTypes.AddressingEndpointOutputConnector_3691);
+            types.add(EsbElementTypes.HTTPEndPointOutputConnector_3711);
+            types.add(EsbElementTypes.TemplateEndpointOutputConnector_3718);
+            types.add(EsbElementTypes.CloudConnectorOutputConnector_3721);
+            types.add(EsbElementTypes.CloudConnectorOperationOutputConnector_3724);
+            types.add(EsbElementTypes.MessageOutputConnector_3047);
+            types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
+            types.add(EsbElementTypes.SequencesOutputConnector_3617);
+            types.add(EsbElementTypes.DefaultEndPointOutputConnector_3645);
+            types.add(EsbElementTypes.AddressEndPointOutputConnector_3648);
+            types.add(EsbElementTypes.FailoverEndPointOutputConnector_3651);
+            types.add(EsbElementTypes.FailoverEndPointWestOutputConnector_3652);
+            types.add(EsbElementTypes.RecipientListEndPointOutputConnector_3698);
+            types.add(EsbElementTypes.RecipientListEndPointWestOutputConnector_3699);
+            types.add(EsbElementTypes.WSDLEndPointOutputConnector_3655);
+            types.add(EsbElementTypes.LoadBalanceEndPointOutputConnector_3658);
+            types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659);
+            types.add(EsbElementTypes.HTTPEndPointOutputConnector_3714);
+            types.add(EsbElementTypes.TemplateEndpointOutputConnector_3727);
+            types.add(EsbElementTypes.APIResourceOutputConnector_3671);
+            types.add(EsbElementTypes.APIResourceOutSequenceOutputConnector_3730);
+            types.add(EsbElementTypes.ComplexEndpointsOutputConnector_3679);
+        }
+        return types;
+    }
 
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnTarget() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(EsbElementTypes.EsbLink_4001);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    public class EastPointerFigure extends EastPointerShape {
 
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == EsbElementTypes.EsbLink_4001) {
-			types.add(EsbElementTypes.ProxyOutputConnector_3002);
-			types.add(EsbElementTypes.ProxyOutSequenceOutputConnector_3729);
-			types.add(EsbElementTypes.PropertyMediatorOutputConnector_3034);
-			types.add(EsbElementTypes.ThrottleMediatorOutputConnector_3122);
-			types.add(EsbElementTypes.ThrottleMediatorOnAcceptOutputConnector_3581);
-			types.add(EsbElementTypes.ThrottleMediatorOnRejectOutputConnector_3582);
-			types.add(EsbElementTypes.FilterMediatorOutputConnector_3534);
-			types.add(EsbElementTypes.FilterMediatorPassOutputConnector_3011);
-			types.add(EsbElementTypes.FilterMediatorFailOutputConnector_3012);
-			types.add(EsbElementTypes.LogMediatorOutputConnector_3019);
-			types.add(EsbElementTypes.EnrichMediatorOutputConnector_3037);
-			types.add(EsbElementTypes.XSLTMediatorOutputConnector_3040);
-			types.add(EsbElementTypes.SwitchCaseBranchOutputConnector_3043);
-			types.add(EsbElementTypes.SwitchMediatorOutputConnector_3499);
-			types.add(EsbElementTypes.SwitchDefaultBranchOutputConnector_3044);
-			types.add(EsbElementTypes.SequenceOutputConnector_3050);
-			types.add(EsbElementTypes.EventMediatorOutputConnector_3053);
-			types.add(EsbElementTypes.EntitlementMediatorOutputConnector_3056);
-			types.add(EsbElementTypes.ClassMediatorOutputConnector_3059);
-			types.add(EsbElementTypes.SpringMediatorOutputConnector_3062);
-			types.add(EsbElementTypes.ScriptMediatorOutputConnector_3065);
-			types.add(EsbElementTypes.FaultMediatorOutputConnector_3068);
-			types.add(EsbElementTypes.XQueryMediatorOutputConnector_3071);
-			types.add(EsbElementTypes.CommandMediatorOutputConnector_3074);
-			types.add(EsbElementTypes.DBLookupMediatorOutputConnector_3077);
-			types.add(EsbElementTypes.DBReportMediatorOutputConnector_3080);
-			types.add(EsbElementTypes.SmooksMediatorOutputConnector_3083);
-			types.add(EsbElementTypes.SendMediatorOutputConnector_3086);
-			types.add(EsbElementTypes.SendMediatorEndpointOutputConnector_3539);
-			types.add(EsbElementTypes.HeaderMediatorOutputConnector_3101);
-			types.add(EsbElementTypes.CloneMediatorOutputConnector_3104);
-			types.add(EsbElementTypes.CloneMediatorTargetOutputConnector_3133);
-			types.add(EsbElementTypes.CacheMediatorOutputConnector_3107);
-			types.add(EsbElementTypes.CacheMediatorOnHitOutputConnector_3618);
-			types.add(EsbElementTypes.IterateMediatorOutputConnector_3110);
-			types.add(EsbElementTypes.IterateMediatorTargetOutputConnector_3606);
-			types.add(EsbElementTypes.CalloutMediatorOutputConnector_3116);
-			types.add(EsbElementTypes.TransactionMediatorOutputConnector_3119);
-			types.add(EsbElementTypes.RMSequenceMediatorOutputConnector_3125);
-			types.add(EsbElementTypes.RuleMediatorOutputConnector_3128);
-			types.add(EsbElementTypes.RuleMediatorChildMediatorsOutputConnector_3640);
-			types.add(EsbElementTypes.OAuthMediatorOutputConnector_3131);
-			types.add(EsbElementTypes.AggregateMediatorOutputConnector_3113);
-			types.add(EsbElementTypes.AggregateMediatorOnCompleteOutputConnector_3132);
-			types.add(EsbElementTypes.StoreMediatorOutputConnector_3590);
-			types.add(EsbElementTypes.BuilderMediatorOutputConector_3593);
-			types.add(EsbElementTypes.CallTemplateMediatorOutputConnector_3596);
-			types.add(EsbElementTypes.PayloadFactoryMediatorOutputConnector_3599);
-			types.add(EsbElementTypes.EnqueueMediatorOutputConnector_3602);
-			types.add(EsbElementTypes.URLRewriteMediatorOutputConnector_3622);
-			types.add(EsbElementTypes.ValidateMediatorOutputConnector_3625);
-			types.add(EsbElementTypes.ValidateMediatorOnFailOutputConnector_3626);
-			types.add(EsbElementTypes.RouterMediatorOutputConnector_3630);
-			types.add(EsbElementTypes.RouterMediatorTargetOutputConnector_3631);
-			types.add(EsbElementTypes.ConditionalRouterMediatorOutputConnector_3637);
-			types.add(EsbElementTypes.ConditionalRouterMediatorAdditionalOutputConnector_3638);
-			types.add(EsbElementTypes.BAMMediatorOutputConnector_3682);
-			types.add(EsbElementTypes.BeanMediatorOutputConnector_3685);
-			types.add(EsbElementTypes.EJBMediatorOutputConnector_3688);
-			types.add(EsbElementTypes.DefaultEndPointOutputConnector_3022);
-			types.add(EsbElementTypes.AddressEndPointOutputConnector_3031);
-			types.add(EsbElementTypes.FailoverEndPointOutputConnector_3090);
-			types.add(EsbElementTypes.FailoverEndPointWestOutputConnector_3097);
-			types.add(EsbElementTypes.RecipientListEndPointOutputConnector_3694);
-			types.add(EsbElementTypes.RecipientListEndPointWestOutputConnector_3695);
-			types.add(EsbElementTypes.WSDLEndPointOutputConnector_3093);
-			types.add(EsbElementTypes.NamedEndpointOutputConnector_3662);
-			types.add(EsbElementTypes.LoadBalanceEndPointOutputConnector_3096);
-			types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3098);
-			types.add(EsbElementTypes.APIResourceEndpointOutputConnector_3676);
-			types.add(EsbElementTypes.AddressingEndpointOutputConnector_3691);
-			types.add(EsbElementTypes.HTTPEndPointOutputConnector_3711);
-			types.add(EsbElementTypes.TemplateEndpointOutputConnector_3718);
-			types.add(EsbElementTypes.CloudConnectorOutputConnector_3721);
-			types.add(EsbElementTypes.CloudConnectorOperationOutputConnector_3724);
-			types.add(EsbElementTypes.MessageOutputConnector_3047);
-			types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
-			types.add(EsbElementTypes.SequencesOutputConnector_3617);
-			types.add(EsbElementTypes.DefaultEndPointOutputConnector_3645);
-			types.add(EsbElementTypes.AddressEndPointOutputConnector_3648);
-			types.add(EsbElementTypes.FailoverEndPointOutputConnector_3651);
-			types.add(EsbElementTypes.FailoverEndPointWestOutputConnector_3652);
-			types.add(EsbElementTypes.RecipientListEndPointOutputConnector_3698);
-			types.add(EsbElementTypes.RecipientListEndPointWestOutputConnector_3699);
-			types.add(EsbElementTypes.WSDLEndPointOutputConnector_3655);
-			types.add(EsbElementTypes.LoadBalanceEndPointOutputConnector_3658);
-			types.add(EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659);
-			types.add(EsbElementTypes.HTTPEndPointOutputConnector_3714);
-			types.add(EsbElementTypes.TemplateEndpointOutputConnector_3727);
-			types.add(EsbElementTypes.APIResourceOutputConnector_3671);
-			types.add(EsbElementTypes.APIResourceOutSequenceOutputConnector_3730);
-			types.add(EsbElementTypes.ComplexEndpointsOutputConnector_3679);
-		}
-		return types;
-	}
+        /**
+         * @generated
+         */
+        public EastPointerFigure() {
+            this.setBackgroundColor(THIS_BACK);
+            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+        }
 
-	/**
-	 * @generated
-	 */
-	public class EastPointerFigure extends EastPointerShape {
+    }
 
-		/**
-		 * @generated
-		 */
-		public EastPointerFigure() {
-			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
-		}
+    public boolean isSelectable() {
+        return false;
+    }
 
-	}
-
-	public boolean isSelectable() {
-		return false;
-	}
-
-	/**
-	 * @generated
-	 */
-	static final Color THIS_BACK = new Color(null, 50, 50, 50);
+    /**
+     * @generated
+     */
+    static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

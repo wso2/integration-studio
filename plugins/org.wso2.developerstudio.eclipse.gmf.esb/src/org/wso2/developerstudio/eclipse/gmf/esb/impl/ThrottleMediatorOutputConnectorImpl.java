@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediatorOutputConnector;
  *
  * @generated
  */
-public class ThrottleMediatorOutputConnectorImpl extends OutputConnectorImpl implements ThrottleMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ThrottleMediatorOutputConnectorImpl() {
-		super();
-	}
+public class ThrottleMediatorOutputConnectorImpl extends OutputConnectorImpl
+        implements ThrottleMediatorOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ThrottleMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.THROTTLE_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.THROTTLE_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //ThrottleMediatorOutputConnectorImpl
+} // ThrottleMediatorOutputConnectorImpl

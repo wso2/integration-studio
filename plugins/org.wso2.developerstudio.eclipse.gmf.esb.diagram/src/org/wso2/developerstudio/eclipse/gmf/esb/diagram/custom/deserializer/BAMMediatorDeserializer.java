@@ -27,30 +27,26 @@ import org.wso2.carbon.mediator.bam.Stream;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
-public class BAMMediatorDeserializer extends
-		AbstractEsbNodeDeserializer<AbstractMediator, BAMMediator> {
+public class BAMMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, BAMMediator> {
 
-	@Override
-	public BAMMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
-		Assert.isTrue(object instanceof BamMediator,
-				"Unsupported mediator passed in for deserialization");
-		BamMediator mediator = (BamMediator) object;
+    @Override
+    public BAMMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
+        Assert.isTrue(object instanceof BamMediator, "Unsupported mediator passed in for deserialization");
+        BamMediator mediator = (BamMediator) object;
 
-		BAMMediator mediatorModel = (BAMMediator) DeserializerUtils.createNode(part,
-				EsbElementTypes.BAMMediator_3680);
-		setElementToEdit(mediatorModel);
-		setCommonProperties(mediator, mediatorModel);
+        BAMMediator mediatorModel = (BAMMediator) DeserializerUtils.createNode(part, EsbElementTypes.BAMMediator_3680);
+        setElementToEdit(mediatorModel);
+        setCommonProperties(mediator, mediatorModel);
 
-		executeSetValueCommand(BAM_MEDIATOR__SERVER_PROFILE, mediator.getServerProfile());
+        executeSetValueCommand(BAM_MEDIATOR__SERVER_PROFILE, mediator.getServerProfile());
 
-		Stream stream = mediator.getStream();
-		if (stream != null) {
-			executeSetValueCommand(BAM_MEDIATOR__STREAM_NAME, stream.getStreamConfiguration().getName());
-			executeSetValueCommand(BAM_MEDIATOR__STREAM_VERSION, stream.getStreamConfiguration().getVersion());
-		}
+        Stream stream = mediator.getStream();
+        if (stream != null) {
+            executeSetValueCommand(BAM_MEDIATOR__STREAM_NAME, stream.getStreamConfiguration().getName());
+            executeSetValueCommand(BAM_MEDIATOR__STREAM_VERSION, stream.getStreamConfiguration().getVersion());
+        }
 
-		return mediatorModel;
-	}
-
+        return mediatorModel;
+    }
 
 }

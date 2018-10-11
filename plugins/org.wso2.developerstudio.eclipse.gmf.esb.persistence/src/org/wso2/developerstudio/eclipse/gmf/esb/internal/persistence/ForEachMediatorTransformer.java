@@ -33,78 +33,78 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class ForEachMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		try {
-			information.getParentSequence().addChild(createForEachMediator(information, subject));
-			// Transform mediator output data flow path.
-			doTransform(information, ((ForEachMediator) subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createForEachMediator(information, subject));
+            // Transform mediator output data flow path.
+            doTransform(information, ((ForEachMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		try {
-			sequence.addChild(createForEachMediator(information, subject));
-			doTransformWithinSequence(information, ((ForEachMediator) subject).getOutputConnector().getOutgoingLink(),
-					sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createForEachMediator(information, subject));
+            doTransformWithinSequence(information, ((ForEachMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	private org.apache.synapse.mediators.builtin.ForEachMediator createForEachMediator(TransformationInfo information,
-			EsbNode subject) throws JaxenException, TransformerException{
-		// Check subject.
-		Assert.isTrue(subject instanceof ForEachMediator, "Invalid subject.");
-		ForEachMediator visualForEach = (ForEachMediator) subject;
+    private org.apache.synapse.mediators.builtin.ForEachMediator createForEachMediator(TransformationInfo information,
+            EsbNode subject) throws JaxenException, TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof ForEachMediator, "Invalid subject.");
+        ForEachMediator visualForEach = (ForEachMediator) subject;
 
-		// Configure ForEach mediator.
-		org.apache.synapse.mediators.builtin.ForEachMediator forEachMediator = new org.apache.synapse.mediators.builtin.ForEachMediator();
-		setCommonProperties(forEachMediator, visualForEach);
+        // Configure ForEach mediator.
+        org.apache.synapse.mediators.builtin.ForEachMediator forEachMediator = new org.apache.synapse.mediators.builtin.ForEachMediator();
+        setCommonProperties(forEachMediator, visualForEach);
 
-		NamespacedProperty ForEachExp = visualForEach.getForEachExpression();
-		if (ForEachExp != null && !ForEachExp.getPropertyValue().equals("")) {
-			SynapseXPath xpath = new SynapseXPath(ForEachExp.getPropertyValue());
-			Map<String, String> nameSpaceMap = ForEachExp.getNamespaces();
+        NamespacedProperty ForEachExp = visualForEach.getForEachExpression();
+        if (ForEachExp != null && !ForEachExp.getPropertyValue().equals("")) {
+            SynapseXPath xpath = new SynapseXPath(ForEachExp.getPropertyValue());
+            Map<String, String> nameSpaceMap = ForEachExp.getNamespaces();
 
-			for (String key : nameSpaceMap.keySet()) {
-				xpath.addNamespace(key, nameSpaceMap.get(key));
-			}
-			forEachMediator.setExpression(xpath);
-		}
+            for (String key : nameSpaceMap.keySet()) {
+                xpath.addNamespace(key, nameSpaceMap.get(key));
+            }
+            forEachMediator.setExpression(xpath);
+        }
 
-		forEachMediator.setId(visualForEach.getForEachID());
+        forEachMediator.setId(visualForEach.getForEachID());
 
-		switch (visualForEach.getSequenceType()) {
-		case ANONYMOUS:
-			SequenceMediator targetSequence = new SequenceMediator();
+        switch (visualForEach.getSequenceType()) {
+        case ANONYMOUS:
+            SequenceMediator targetSequence = new SequenceMediator();
 
-			TransformationInfo newInfo = new TransformationInfo();
-			newInfo.setTraversalDirection(information.getTraversalDirection());
-			newInfo.setSynapseConfiguration(information.getSynapseConfiguration());
-			newInfo.setOriginInSequence(information.getOriginInSequence());
-			newInfo.setOriginOutSequence(information.getOriginOutSequence());
-			newInfo.setCurrentProxy(information.getCurrentProxy());
-			newInfo.setParentSequence(targetSequence);
-			doTransform(newInfo, visualForEach.getTargetOutputConnector());
-			forEachMediator.setSequence(targetSequence);
-			break;
+            TransformationInfo newInfo = new TransformationInfo();
+            newInfo.setTraversalDirection(information.getTraversalDirection());
+            newInfo.setSynapseConfiguration(information.getSynapseConfiguration());
+            newInfo.setOriginInSequence(information.getOriginInSequence());
+            newInfo.setOriginOutSequence(information.getOriginOutSequence());
+            newInfo.setCurrentProxy(information.getCurrentProxy());
+            newInfo.setParentSequence(targetSequence);
+            doTransform(newInfo, visualForEach.getTargetOutputConnector());
+            forEachMediator.setSequence(targetSequence);
+            break;
 
-		case REGISTRY_REFERENCE:
-			forEachMediator.setSequenceRef(visualForEach.getSequenceKey().getKeyValue());
-			break;
+        case REGISTRY_REFERENCE:
+            forEachMediator.setSequenceRef(visualForEach.getSequenceKey().getKeyValue());
+            break;
 
-		case NAMED_REFERENCE:
-			forEachMediator.setSequenceRef(visualForEach.getSequenceName());
-			break;
-		}
-		return forEachMediator;
-	}
+        case NAMED_REFERENCE:
+            forEachMediator.setSequenceRef(visualForEach.getSequenceName());
+            break;
+        }
+        return forEachMediator;
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
-			throws TransformerException {
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
+            throws TransformerException {
+    }
 
 }

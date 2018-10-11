@@ -8,10 +8,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlu
  */
 public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
 
-	/**
-	 * @generated
-	 */
-	public DiagramAppearancePreferencePage() {
-		setPreferenceStore(EsbDiagramEditorPlugin.getInstance().getPreferenceStore());
-	}
+    /**
+     * @generated
+     */
+    public DiagramAppearancePreferencePage() {
+        setPreferenceStore(EsbDiagramEditorPlugin.getInstance().getPreferenceStore());
+    }
 }

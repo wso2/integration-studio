@@ -13,24 +13,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class RuleMediatorRuleSetPropertyDescriptor extends PropertyDescriptor {
 
-	public RuleMediatorRuleSetPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				RuleMediator ruleMediator = (RuleMediator)object;
-				ConfigureRuleMediatorSetPropertyDialog propDialog = 
-					new ConfigureRuleMediatorSetPropertyDialog(shell,ruleMediator);
-				propDialog.setBlockOnOpen(true);
-				propDialog.open();
-				return null;
-			}
-		};
-	}
+    public RuleMediatorRuleSetPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                RuleMediator ruleMediator = (RuleMediator) object;
+                ConfigureRuleMediatorSetPropertyDialog propDialog = new ConfigureRuleMediatorSetPropertyDialog(shell,
+                        ruleMediator);
+                propDialog.setBlockOnOpen(true);
+                propDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

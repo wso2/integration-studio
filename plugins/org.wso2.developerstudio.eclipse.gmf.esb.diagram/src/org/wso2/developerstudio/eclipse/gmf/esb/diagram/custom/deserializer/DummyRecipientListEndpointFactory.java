@@ -46,80 +46,80 @@ public class DummyRecipientListEndpointFactory extends DummyEndpointFactory {
     }
 
     public static DummyRecipientListEndpointFactory getInstance() {
-	return instance;
+        return instance;
     }
 
     @Override
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	OMElement recipientListElement = epConfig
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "recipientlist"));
+        OMElement recipientListElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "recipientlist"));
 
-	if (recipientListElement != null) {
+        if (recipientListElement != null) {
 
-	    RecipientListEndpoint recipientListEndpoint = new RecipientListEndpoint();
+            RecipientListEndpoint recipientListEndpoint = new RecipientListEndpoint();
 
-	    OMAttribute name = epConfig
-		    .getAttribute(new QName(org.apache.synapse.config.xml.XMLConfigConstants.NULL_NAMESPACE, "name"));
+            OMAttribute name = epConfig
+                    .getAttribute(new QName(org.apache.synapse.config.xml.XMLConfigConstants.NULL_NAMESPACE, "name"));
 
-	    if (name != null) {
-		recipientListEndpoint.setName(name.getAttributeValue());
-	    }
+            if (name != null) {
+                recipientListEndpoint.setName(name.getAttributeValue());
+            }
 
-	    if (recipientListElement.getFirstChildWithName(XMLConfigConstants.ENDPOINT_ELT) != null) {
+            if (recipientListElement.getFirstChildWithName(XMLConfigConstants.ENDPOINT_ELT) != null) {
 
-		List<Endpoint> endpoints = getEndpoints(recipientListElement, recipientListEndpoint, properties);
-		recipientListEndpoint.setChildren(endpoints);
+                List<Endpoint> endpoints = getEndpoints(recipientListElement, recipientListEndpoint, properties);
+                recipientListEndpoint.setChildren(endpoints);
 
-	    } else if (recipientListElement.getFirstChildWithName(MEMBER) != null) {
+            } else if (recipientListElement.getFirstChildWithName(MEMBER) != null) {
 
-		List<Member> members = getMembers(recipientListElement);
-		recipientListEndpoint.setMembers(members);
-		OMElement dynamicSetElement = recipientListElement.getFirstChildWithName(DYNAMIC_SET);
-		Value dynamicEndpointSet = new ValueFactory().createValue("value", dynamicSetElement);
-		String maxStr = dynamicSetElement.getAttributeValue(new QName("max-cache"));
+                List<Member> members = getMembers(recipientListElement);
+                recipientListEndpoint.setMembers(members);
+                OMElement dynamicSetElement = recipientListElement.getFirstChildWithName(DYNAMIC_SET);
+                Value dynamicEndpointSet = new ValueFactory().createValue("value", dynamicSetElement);
+                String maxStr = dynamicSetElement.getAttributeValue(new QName("max-cache"));
 
-		int maxCache = -1;
-		try {
-		    maxCache = Integer.parseInt(maxStr);
-		} catch (NumberFormatException e) {
+                int maxCache = -1;
+                try {
+                    maxCache = Integer.parseInt(maxStr);
+                } catch (NumberFormatException e) {
 
-		}
-		recipientListEndpoint = new RecipientListEndpoint(
-			maxCache < 0 ? RecipientListEndpoint.DEFAULT_MAX_POOL : maxCache);
-		if (name != null) {
-		    recipientListEndpoint.setName(name.getAttributeValue());
-		}
-		recipientListEndpoint.setDynamicEnpointSet(dynamicEndpointSet);
-	    }
+                }
+                recipientListEndpoint = new RecipientListEndpoint(
+                        maxCache < 0 ? RecipientListEndpoint.DEFAULT_MAX_POOL : maxCache);
+                if (name != null) {
+                    recipientListEndpoint.setName(name.getAttributeValue());
+                }
+                recipientListEndpoint.setDynamicEnpointSet(dynamicEndpointSet);
+            }
 
-	    processProperties(recipientListEndpoint, epConfig);
+            processProperties(recipientListEndpoint, epConfig);
 
-	    return recipientListEndpoint;
-	}
+            return recipientListEndpoint;
+        }
 
-	return null;
+        return null;
     }
 
     @SuppressWarnings("rawtypes")
     private List<Member> getMembers(OMElement loadbalanceElement) {
-	List<Member> members = new ArrayList<Member>();
+        List<Member> members = new ArrayList<Member>();
 
-	for (Iterator memberIter = loadbalanceElement.getChildrenWithName(MEMBER); memberIter.hasNext();) {
+        for (Iterator memberIter = loadbalanceElement.getChildrenWithName(MEMBER); memberIter.hasNext();) {
 
-	    OMElement memberEle = (OMElement) memberIter.next();
-	    Member member = new Member(memberEle.getAttributeValue(new QName("hostName")), -1);
-	    String http = memberEle.getAttributeValue(new QName("httpPort"));
-	    if (http != null) {
-		member.setHttpPort(Integer.parseInt(http));
-	    }
-	    String https = memberEle.getAttributeValue(new QName("httpsPort"));
-	    if (https != null && https.trim().length() != 0) {
-		member.setHttpsPort(Integer.parseInt(https.trim()));
-	    }
-	    members.add(member);
-	}
-	return members;
+            OMElement memberEle = (OMElement) memberIter.next();
+            Member member = new Member(memberEle.getAttributeValue(new QName("hostName")), -1);
+            String http = memberEle.getAttributeValue(new QName("httpPort"));
+            if (http != null) {
+                member.setHttpPort(Integer.parseInt(http));
+            }
+            String https = memberEle.getAttributeValue(new QName("httpsPort"));
+            if (https != null && https.trim().length() != 0) {
+                member.setHttpsPort(Integer.parseInt(https.trim()));
+            }
+            members.add(member);
+        }
+        return members;
     }
 
 }

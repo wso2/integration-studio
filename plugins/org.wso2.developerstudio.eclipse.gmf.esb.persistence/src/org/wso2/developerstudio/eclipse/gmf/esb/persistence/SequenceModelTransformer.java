@@ -26,21 +26,21 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.SequenceMod
  * models / languages.
  */
 public interface SequenceModelTransformer {
-	/**
-	 * TODO: Use a factory instead.
-	 */
-	SequenceModelTransformer instance = new SequenceModelTranformerImpl();
-	
-	/**
-	 * Exports the given ESB visual model into specified destination file.
-	 * 
-	 * @param resource ESB visual model container.
-	 * @param destination destination file.
-	 * @throws Exception if an error occurs while performing the export operation.
-	 */
-	void export(Resource resource, File destination) throws Exception;
-	
-	String designToSource(EsbSequence sequenceModel) throws Exception;
-	
-	EsbSequence sourceToDesign(String source,EsbSequence esbServer) throws Exception;
+    /**
+     * TODO: Use a factory instead.
+     */
+    SequenceModelTransformer instance = new SequenceModelTranformerImpl();
+
+    /**
+     * Exports the given ESB visual model into specified destination file.
+     * 
+     * @param resource ESB visual model container.
+     * @param destination destination file.
+     * @throws Exception if an error occurs while performing the export operation.
+     */
+    void export(Resource resource, File destination) throws Exception;
+
+    String designToSource(EsbSequence sequenceModel) throws Exception;
+
+    EsbSequence sourceToDesign(String source, EsbSequence esbServer) throws Exception;
 }

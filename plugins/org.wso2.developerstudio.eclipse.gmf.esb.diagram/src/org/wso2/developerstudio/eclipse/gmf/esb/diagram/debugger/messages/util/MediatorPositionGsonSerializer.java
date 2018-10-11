@@ -26,7 +26,8 @@ import com.google.gson.JsonSerializer;
  * This class implements the Gson Json serializer for {@link ESBMediatorPosition}
  * 
  * @see <a
- *      href="https://sites.google.com/site/gson/gson-user-guide#TOC-Serializing-and-Deserializing-Collection-with-Objects-of-Arbitrary-Types">GOSN
+ *      href=
+ *      "https://sites.google.com/site/gson/gson-user-guide#TOC-Serializing-and-Deserializing-Collection-with-Objects-of-Arbitrary-Types">GOSN
  *      Serializing</a>
  *
  */

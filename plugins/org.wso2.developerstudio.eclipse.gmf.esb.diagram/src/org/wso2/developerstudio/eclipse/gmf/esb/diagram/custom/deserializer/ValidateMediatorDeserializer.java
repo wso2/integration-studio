@@ -46,145 +46,144 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateSchema;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
-public class ValidateMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, ValidateMediator>{
+public class ValidateMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, ValidateMediator> {
 
+    public ValidateMediator createNode(IGraphicalEditPart part, AbstractMediator mediator)
+            throws DeserializerException {
 
-	public ValidateMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) throws DeserializerException {
-		
-		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.ValidateMediator,"Unsupported mediator passed in for deserialization at "+ this.getClass());
-		
-		org.apache.synapse.mediators.builtin.ValidateMediator validateMediator = (org.apache.synapse.mediators.builtin.ValidateMediator)mediator;
-		
-		org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator VisualValidateMediator = (org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator) DeserializerUtils.createNode(part, EsbElementTypes.ValidateMediator_3623);
-		setElementToEdit(VisualValidateMediator);
-		setCommonProperties(validateMediator, VisualValidateMediator);
-		//ValidateMediator vishualValidator = EsbFactory.eINSTANCE.createValidateMediator();
-		
-		refreshEditPartMap();
-		EditPart mediatorFlow=getEditpart(VisualValidateMediator.getMediatorFlow());
-		
-		executeSetValueCommand(VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA, validateMediator.isCacheSchema());
-		
-		if(validateMediator.getSource() != null){
-			
-			SynapsePath xpath  = validateMediator.getSource();
-			
-			NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
-			
-			nsp.setPropertyValue(xpath.toString());
-			
-			if (xpath.getNamespaces() != null) {
+        Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.ValidateMediator,
+                "Unsupported mediator passed in for deserialization at " + this.getClass());
 
-				@SuppressWarnings("unchecked")
-				Map<String, String> map = xpath.getNamespaces();
+        org.apache.synapse.mediators.builtin.ValidateMediator validateMediator = (org.apache.synapse.mediators.builtin.ValidateMediator) mediator;
 
-				nsp.setNamespaces(map);
-			}
-			
-			//vishualValidator.setSourceXpath(nsp);
-			executeSetValueCommand(VALIDATE_MEDIATOR__SOURCE_XPATH, nsp);
-		}
-		
-		if(validateMediator.getSchemaKeys() != null && !validateMediator.getSchemaKeys().isEmpty()){
-			
-			EList<ValidateSchema> validateSchemaList = new BasicEList<ValidateSchema>();
-			
-			for(Value schema : validateMediator.getSchemaKeys()){
-				
-				ValidateSchema validateSchema = EsbFactory.eINSTANCE.createValidateSchema();
-				
-				if(schema.getKeyValue() != null){
-					
-					validateSchema.setValidateSchemaKeyType(KeyType.STATIC);
-					
-					RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-					regkey.setKeyValue(schema.getKeyValue());
-					
-					validateSchema.setValidateStaticSchemaKey(regkey);
-				}
-				else if(schema.getExpression() != null){
-					
-					NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
-					
-					validateSchema.setValidateSchemaKeyType(KeyType.DYNAMIC);
-					
-					SynapsePath xpath = schema.getExpression();
-					
-					nsp.setPropertyValue(xpath.toString());
-					
-					if (xpath.getNamespaces() != null) {
+        org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator VisualValidateMediator = (org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator) DeserializerUtils
+                .createNode(part, EsbElementTypes.ValidateMediator_3623);
+        setElementToEdit(VisualValidateMediator);
+        setCommonProperties(validateMediator, VisualValidateMediator);
+        // ValidateMediator vishualValidator = EsbFactory.eINSTANCE.createValidateMediator();
 
-						@SuppressWarnings("unchecked")
-						Map<String, String> map = xpath.getNamespaces();
+        refreshEditPartMap();
+        EditPart mediatorFlow = getEditpart(VisualValidateMediator.getMediatorFlow());
 
-						nsp.setNamespaces(map);
-					}
-					
-					validateSchema.setValidateDynamicSchemaKey(nsp);
-					
-				}
-				
-				validateSchemaList.add(validateSchema);
-			}
-			
-			//vishualValidator.getSchemas().addAll(validateSchemaList);
-			executeSetValueCommand(VALIDATE_MEDIATOR__SCHEMAS, validateSchemaList);
-		}
-		
-		EList<ValidateFeature> validateFeatureList = new BasicEList<ValidateFeature>();
-		
-		for (MediatorProperty featureProperty : validateMediator.getFeatures()){
-			
-			ValidateFeature feature =  EsbFactory.eINSTANCE.createValidateFeature();
-			
-			if(featureProperty.getName() != null && !featureProperty.getName().equals("")){
-				
-				feature.setFeatureName(featureProperty.getName());
-			}
-			
-			//if(Boolean.parseBoolean(featureProperty.getValue())){
-				
-				feature.setFeatureEnabled(Boolean.parseBoolean(featureProperty.getValue()));
-			//}
-			
-			validateFeatureList.add(feature);
-		}
-		
-		executeSetValueCommand(VALIDATE_MEDIATOR__FEATURES, validateFeatureList);
-		
-		EList<ValidateResource> validateResourceList = new BasicEList<ValidateResource>();
+        executeSetValueCommand(VALIDATE_MEDIATOR__ENABLE_CACHE_SCHEMA, validateMediator.isCacheSchema());
 
-		if (validateMediator.getResourceMap() != null) {
+        if (validateMediator.getSource() != null) {
 
-			ResourceMap rMap = validateMediator.getResourceMap();
+            SynapsePath xpath = validateMediator.getSource();
 
-			for (Entry<String, String> entry : rMap.getResources().entrySet()) {
+            NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 
-				ValidateResource resource = EsbFactory.eINSTANCE
-						.createValidateResource();
+            nsp.setPropertyValue(xpath.toString());
 
-				resource.setLocation(entry.getKey());
+            if (xpath.getNamespaces() != null) {
 
-				RegistryKeyProperty regkey = EsbFactory.eINSTANCE
-						.createRegistryKeyProperty();
-				regkey.setKeyValue(entry.getValue());
+                @SuppressWarnings("unchecked")
+                Map<String, String> map = xpath.getNamespaces();
 
-				resource.setKey(regkey);
+                nsp.setNamespaces(map);
+            }
 
-				validateResourceList.add(resource);
-			}
-		}
+            // vishualValidator.setSourceXpath(nsp);
+            executeSetValueCommand(VALIDATE_MEDIATOR__SOURCE_XPATH, nsp);
+        }
 
-		executeSetValueCommand(VALIDATE_MEDIATOR__RESOURCES,validateResourceList);
+        if (validateMediator.getSchemaKeys() != null && !validateMediator.getSchemaKeys().isEmpty()) {
 
-		if(validateMediator.getList().size()>0){
-			SequenceMediator sequence = new SequenceMediator();
-			sequence.addAll(validateMediator.getList());
-			deserializeSequence((IGraphicalEditPart) mediatorFlow.getChildren().get(0), sequence, VisualValidateMediator.getOnFailOutputConnector());
-		}
-		
-		return VisualValidateMediator;
-	}
+            EList<ValidateSchema> validateSchemaList = new BasicEList<ValidateSchema>();
 
+            for (Value schema : validateMediator.getSchemaKeys()) {
+
+                ValidateSchema validateSchema = EsbFactory.eINSTANCE.createValidateSchema();
+
+                if (schema.getKeyValue() != null) {
+
+                    validateSchema.setValidateSchemaKeyType(KeyType.STATIC);
+
+                    RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                    regkey.setKeyValue(schema.getKeyValue());
+
+                    validateSchema.setValidateStaticSchemaKey(regkey);
+                } else if (schema.getExpression() != null) {
+
+                    NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+
+                    validateSchema.setValidateSchemaKeyType(KeyType.DYNAMIC);
+
+                    SynapsePath xpath = schema.getExpression();
+
+                    nsp.setPropertyValue(xpath.toString());
+
+                    if (xpath.getNamespaces() != null) {
+
+                        @SuppressWarnings("unchecked")
+                        Map<String, String> map = xpath.getNamespaces();
+
+                        nsp.setNamespaces(map);
+                    }
+
+                    validateSchema.setValidateDynamicSchemaKey(nsp);
+
+                }
+
+                validateSchemaList.add(validateSchema);
+            }
+
+            // vishualValidator.getSchemas().addAll(validateSchemaList);
+            executeSetValueCommand(VALIDATE_MEDIATOR__SCHEMAS, validateSchemaList);
+        }
+
+        EList<ValidateFeature> validateFeatureList = new BasicEList<ValidateFeature>();
+
+        for (MediatorProperty featureProperty : validateMediator.getFeatures()) {
+
+            ValidateFeature feature = EsbFactory.eINSTANCE.createValidateFeature();
+
+            if (featureProperty.getName() != null && !featureProperty.getName().equals("")) {
+
+                feature.setFeatureName(featureProperty.getName());
+            }
+
+            // if(Boolean.parseBoolean(featureProperty.getValue())){
+
+            feature.setFeatureEnabled(Boolean.parseBoolean(featureProperty.getValue()));
+            // }
+
+            validateFeatureList.add(feature);
+        }
+
+        executeSetValueCommand(VALIDATE_MEDIATOR__FEATURES, validateFeatureList);
+
+        EList<ValidateResource> validateResourceList = new BasicEList<ValidateResource>();
+
+        if (validateMediator.getResourceMap() != null) {
+
+            ResourceMap rMap = validateMediator.getResourceMap();
+
+            for (Entry<String, String> entry : rMap.getResources().entrySet()) {
+
+                ValidateResource resource = EsbFactory.eINSTANCE.createValidateResource();
+
+                resource.setLocation(entry.getKey());
+
+                RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                regkey.setKeyValue(entry.getValue());
+
+                resource.setKey(regkey);
+
+                validateResourceList.add(resource);
+            }
+        }
+
+        executeSetValueCommand(VALIDATE_MEDIATOR__RESOURCES, validateResourceList);
+
+        if (validateMediator.getList().size() > 0) {
+            SequenceMediator sequence = new SequenceMediator();
+            sequence.addAll(validateMediator.getList());
+            deserializeSequence((IGraphicalEditPart) mediatorFlow.getChildren().get(0), sequence,
+                    VisualValidateMediator.getOnFailOutputConnector());
+        }
+
+        return VisualValidateMediator;
+    }
 
 }

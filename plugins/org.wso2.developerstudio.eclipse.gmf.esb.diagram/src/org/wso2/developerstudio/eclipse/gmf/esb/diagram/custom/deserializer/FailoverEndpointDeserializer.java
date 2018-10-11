@@ -38,39 +38,39 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagr
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
-public class FailoverEndpointDeserializer extends AbstractComplexEndPointDeserializer{
-	
-	public FailoverEndPoint createNode(IGraphicalEditPart part,AbstractEndpoint object) throws DeserializerException {
-		Assert.isTrue(object instanceof org.apache.synapse.endpoints.FailoverEndpoint, "Unsupported endpoint passed in for deserialization at "+ this.getClass());
-		
-		org.apache.synapse.endpoints.FailoverEndpoint failoverEndpoint = (org.apache.synapse.endpoints.FailoverEndpoint)object;
-		IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart ||
-				part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.FailoverEndPoint_3649
-				: EsbElementTypes.FailoverEndPoint_3611;
-		FailoverEndPoint endPoint = (FailoverEndPoint) DeserializerUtils.createNode(part,endpointType);
-		setElementToEdit(endPoint);
-		
-		for (Iterator<MediatorProperty> i = failoverEndpoint.getProperties().iterator(); i.hasNext();) {
-			MediatorProperty next = i.next();
-			EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
-			property.setName(next.getName());
-			property.setValue(next.getValue());
-			if(next.getScope()!=null){
-				property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
-			} else{
-				property.setScope(EndPointPropertyScope.SYNAPSE);
-			}
-			executeAddValueCommand(endPoint.getProperties(), property, false);
-		}
-		
-		deserializeComplexEndpoint(failoverEndpoint,part);
-			
-		if (StringUtils.isNotBlank(failoverEndpoint.getName())) {
-                   executeSetValueCommand(END_POINT__END_POINT_NAME, failoverEndpoint.getName());
-		}
-		executeSetValueCommand(FAILOVER_END_POINT__BUILD_MESSAGE, failoverEndpoint.isBuildMessageAtt());
-		return endPoint;
-	}
+public class FailoverEndpointDeserializer extends AbstractComplexEndPointDeserializer {
 
+    public FailoverEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object) throws DeserializerException {
+        Assert.isTrue(object instanceof org.apache.synapse.endpoints.FailoverEndpoint,
+                "Unsupported endpoint passed in for deserialization at " + this.getClass());
+
+        org.apache.synapse.endpoints.FailoverEndpoint failoverEndpoint = (org.apache.synapse.endpoints.FailoverEndpoint) object;
+        IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
+                || part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.FailoverEndPoint_3649
+                        : EsbElementTypes.FailoverEndPoint_3611;
+        FailoverEndPoint endPoint = (FailoverEndPoint) DeserializerUtils.createNode(part, endpointType);
+        setElementToEdit(endPoint);
+
+        for (Iterator<MediatorProperty> i = failoverEndpoint.getProperties().iterator(); i.hasNext();) {
+            MediatorProperty next = i.next();
+            EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
+            property.setName(next.getName());
+            property.setValue(next.getValue());
+            if (next.getScope() != null) {
+                property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
+            } else {
+                property.setScope(EndPointPropertyScope.SYNAPSE);
+            }
+            executeAddValueCommand(endPoint.getProperties(), property, false);
+        }
+
+        deserializeComplexEndpoint(failoverEndpoint, part);
+
+        if (StringUtils.isNotBlank(failoverEndpoint.getName())) {
+            executeSetValueCommand(END_POINT__END_POINT_NAME, failoverEndpoint.getName());
+        }
+        executeSetValueCommand(FAILOVER_END_POINT__BUILD_MESSAGE, failoverEndpoint.isBuildMessageAtt());
+        return endPoint;
+    }
 
 }

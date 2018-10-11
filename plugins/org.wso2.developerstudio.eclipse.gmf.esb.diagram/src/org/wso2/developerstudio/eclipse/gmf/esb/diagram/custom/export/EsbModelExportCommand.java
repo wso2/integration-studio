@@ -29,54 +29,54 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
  * Command responsible for exporting ESB visual model.
  */
 public class EsbModelExportCommand extends Command {
-	/**
-	 * Current resource being edited.
-	 */
-	private Resource resource;	
-	
-	/**
-	 * Constructs a new {@link EsbModelExportCommand}.
-	 * 
-	 * @param resource current {@link Resource} being edited.
-	 */
-	public EsbModelExportCommand(Resource resource) {
-		super("export-esb-visual-model");
-		this.resource = resource;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean canExecute() {
-		return true;
-	}
+    /**
+     * Current resource being edited.
+     */
+    private Resource resource;
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean canUndo() {
-		return false;
-	}
+    /**
+     * Constructs a new {@link EsbModelExportCommand}.
+     * 
+     * @param resource current {@link Resource} being edited.
+     */
+    public EsbModelExportCommand(Resource resource) {
+        super("export-esb-visual-model");
+        this.resource = resource;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void execute() {
-		// TODO: Open file browser.
-		Shell shell = Display.getDefault().getActiveShell();
-		FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
-		fileDialog.setFilterExtensions(new String [] {"*.xml"});
-		String filePath = fileDialog.open();
-		
-		// TODO: Use StringUtils.isBlank() instead.
-		if (null != filePath) {			
-			try {
-				File exportFile = new File(filePath);
-				EsbModelTransformer.instance.export(resource, exportFile);
-			} catch (Exception ex) {
-				// TODO: Log.
-				ex.printStackTrace();
-			}
-		}		
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public boolean canExecute() {
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean canUndo() {
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void execute() {
+        // TODO: Open file browser.
+        Shell shell = Display.getDefault().getActiveShell();
+        FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
+        fileDialog.setFilterExtensions(new String[] { "*.xml" });
+        String filePath = fileDialog.open();
+
+        // TODO: Use StringUtils.isBlank() instead.
+        if (null != filePath) {
+            try {
+                File exportFile = new File(filePath);
+                EsbModelTransformer.instance.export(resource, exportFile);
+            } catch (Exception ex) {
+                // TODO: Log.
+                ex.printStackTrace();
+            }
+        }
+    }
 }

@@ -43,8 +43,8 @@ public class ESBProxyBean {
         if (proxyBean instanceof ESBProxyBean) {
             ESBProxyBean proxyBeanTemp = (ESBProxyBean) proxyBean;
             if (!(getProxyKey().equals((proxyBeanTemp).getProxyKey())
-                    && getSequenceType().equals((proxyBeanTemp).getSequenceType()) && getMediatorPosition().equals(
-                    proxyBeanTemp.getMediatorPosition()))) {
+                    && getSequenceType().equals((proxyBeanTemp).getSequenceType())
+                    && getMediatorPosition().equals(proxyBeanTemp.getMediatorPosition()))) {
                 return false;
             }
             return true;

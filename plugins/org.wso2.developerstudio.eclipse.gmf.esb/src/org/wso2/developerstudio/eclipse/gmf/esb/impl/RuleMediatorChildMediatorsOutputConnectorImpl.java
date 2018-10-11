@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleMediatorChildMediatorsOutput
  *
  * @generated
  */
-public class RuleMediatorChildMediatorsOutputConnectorImpl extends OutputConnectorImpl implements RuleMediatorChildMediatorsOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RuleMediatorChildMediatorsOutputConnectorImpl() {
-		super();
-	}
+public class RuleMediatorChildMediatorsOutputConnectorImpl extends OutputConnectorImpl
+        implements RuleMediatorChildMediatorsOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected RuleMediatorChildMediatorsOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.RULE_MEDIATOR_CHILD_MEDIATORS_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.RULE_MEDIATOR_CHILD_MEDIATORS_OUTPUT_CONNECTOR;
+    }
 
-} //RuleMediatorChildMediatorsOutputConnectorImpl
+} // RuleMediatorChildMediatorsOutputConnectorImpl

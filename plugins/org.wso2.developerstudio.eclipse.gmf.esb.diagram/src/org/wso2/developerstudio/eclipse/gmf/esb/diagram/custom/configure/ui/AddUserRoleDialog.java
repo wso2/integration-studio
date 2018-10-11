@@ -29,53 +29,51 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
 
 public class AddUserRoleDialog extends UserRolesDialog {
 
-	private List<String> selectedRoles;
-	private String roleSet;
-	private TransactionalEditingDomain editingDomain;
-	private CompoundCommand resultCommand;
-	private static final String ALLOW_ROLES = "allowRoles";
-	private ProxyService proxyService;
+    private List<String> selectedRoles;
+    private String roleSet;
+    private TransactionalEditingDomain editingDomain;
+    private CompoundCommand resultCommand;
+    private static final String ALLOW_ROLES = "allowRoles";
+    private ProxyService proxyService;
 
-	public AddUserRoleDialog(Shell parentShell, ProxyService selectedObj) {
-		super(parentShell, selectedObj);
-		this.proxyService= selectedObj;
-		this.editingDomain = TransactionUtil.getEditingDomain(proxyService);
-	}
+    public AddUserRoleDialog(Shell parentShell, ProxyService selectedObj) {
+        super(parentShell, selectedObj);
+        this.proxyService = selectedObj;
+        this.editingDomain = TransactionUtil.getEditingDomain(proxyService);
+    }
 
-	@Override
-	public void updateModel() {
-		selectedRoles = UserRolesDialog.getSelectedUserRoles();
+    @Override
+    public void updateModel() {
+        selectedRoles = UserRolesDialog.getSelectedUserRoles();
 
-		StringBuilder commaSepValueBuilder = new StringBuilder();
-		for (int i = 0; i < selectedRoles.size(); i++) {
-			commaSepValueBuilder.append(selectedRoles.get(i));
-			if (i != selectedRoles.size() - 1) {
-				commaSepValueBuilder.append(",");
-			}
-			roleSet = commaSepValueBuilder.toString();
-		}
-		
-		ProxyServiceParameter parameter = EsbFactory.eINSTANCE
-				.createProxyServiceParameter();
-		parameter.setName(ALLOW_ROLES);
-		parameter.setValue(roleSet);
+        StringBuilder commaSepValueBuilder = new StringBuilder();
+        for (int i = 0; i < selectedRoles.size(); i++) {
+            commaSepValueBuilder.append(selectedRoles.get(i));
+            if (i != selectedRoles.size() - 1) {
+                commaSepValueBuilder.append(",");
+            }
+            roleSet = commaSepValueBuilder.toString();
+        }
 
-		AddCommand addCmd = new AddCommand(editingDomain, proxyService,
-				EsbPackage.Literals.PROXY_SERVICE__SERVICE_PARAMETERS,
-				parameter);
-		getResultCommand().append(addCmd);
+        ProxyServiceParameter parameter = EsbFactory.eINSTANCE.createProxyServiceParameter();
+        parameter.setName(ALLOW_ROLES);
+        parameter.setValue(roleSet);
 
-		// Apply changes.
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		}
-	}
+        AddCommand addCmd = new AddCommand(editingDomain, proxyService,
+                EsbPackage.Literals.PROXY_SERVICE__SERVICE_PARAMETERS, parameter);
+        getResultCommand().append(addCmd);
 
-	private CompoundCommand getResultCommand() {
-		if (null == resultCommand) {
-			resultCommand = new CompoundCommand();
-		}
-		return resultCommand;
-	}
+        // Apply changes.
+        if (getResultCommand().canExecute()) {
+            editingDomain.getCommandStack().execute(getResultCommand());
+        }
+    }
+
+    private CompoundCommand getResultCommand() {
+        if (null == resultCommand) {
+            resultCommand = new CompoundCommand();
+        }
+        return resultCommand;
+    }
 
 }

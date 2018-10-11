@@ -14,50 +14,45 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class BuilderMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {
-		information.getParentSequence().addChild(
-				createBuilderMediator(subject, information));
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        information.getParentSequence().addChild(createBuilderMediator(subject, information));
 
-		doTransform(information,
-				((BuilderMediator) subject).getOutputConnector());
+        doTransform(information, ((BuilderMediator) subject).getOutputConnector());
 
-	}
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		sequence.addChild(createBuilderMediator(subject, information));
-		doTransformWithinSequence(information, ((BuilderMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        sequence.addChild(createBuilderMediator(subject, information));
+        doTransformWithinSequence(information, ((BuilderMediator) subject).getOutputConnector().getOutgoingLink(),
+                sequence);
 
-	}
+    }
 
-	private org.wso2.carbon.relay.mediators.builder.BuilderMediator createBuilderMediator(
-			EsbNode subject, TransformationInfo information) throws TransformerException {
+    private org.wso2.carbon.relay.mediators.builder.BuilderMediator createBuilderMediator(EsbNode subject,
+            TransformationInfo information) throws TransformerException {
 
-		/*
-		 * Check subject.
-		 */
-		Assert.isTrue(subject instanceof BuilderMediator, "Invalid subject.");
-		BuilderMediator vishualBuilderMediator = (BuilderMediator) subject;
+        /*
+         * Check subject.
+         */
+        Assert.isTrue(subject instanceof BuilderMediator, "Invalid subject.");
+        BuilderMediator vishualBuilderMediator = (BuilderMediator) subject;
 
-		BuilderMediatorExt builderExt = new BuilderMediatorExt();
-		setCommonProperties(builderExt, vishualBuilderMediator);
+        BuilderMediatorExt builderExt = new BuilderMediatorExt();
+        setCommonProperties(builderExt, vishualBuilderMediator);
 
-		if (vishualBuilderMediator.getMessageBuilders() != null
-				&& !vishualBuilderMediator.getMessageBuilders().isEmpty()) {
+        if (vishualBuilderMediator.getMessageBuilders() != null
+                && !vishualBuilderMediator.getMessageBuilders().isEmpty()) {
 
-			builderExt.setMessageBuilderList(vishualBuilderMediator
-					.getMessageBuilders());
+            builderExt.setMessageBuilderList(vishualBuilderMediator.getMessageBuilders());
 
-		}
-		return builderExt;
+        }
+        return builderExt;
 
-	}
+    }
 
 }

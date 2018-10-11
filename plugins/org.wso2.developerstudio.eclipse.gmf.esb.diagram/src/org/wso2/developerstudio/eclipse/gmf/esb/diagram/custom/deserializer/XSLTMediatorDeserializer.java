@@ -30,169 +30,165 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
-public class XSLTMediatorDeserializer extends
-                                     AbstractEsbNodeDeserializer<AbstractMediator, XSLTMediator> {
+public class XSLTMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, XSLTMediator> {
 
-	@Override
-	public XSLTMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
+    @Override
+    public XSLTMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) {
 
-		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.transform.XSLTMediator,
-		              "Unsupported mediator passed in for deserialization at " + this.getClass());
+        Assert.isTrue(mediator instanceof org.apache.synapse.mediators.transform.XSLTMediator,
+                "Unsupported mediator passed in for deserialization at " + this.getClass());
 
-		org.apache.synapse.mediators.transform.XSLTMediator xsltMediator =
-		                                                                   (org.apache.synapse.mediators.transform.XSLTMediator) mediator;
-		
-		org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator VisualXsltMediator = (org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator) DeserializerUtils.createNode(part, EsbElementTypes.XSLTMediator_3497);
+        org.apache.synapse.mediators.transform.XSLTMediator xsltMediator = (org.apache.synapse.mediators.transform.XSLTMediator) mediator;
 
-		setElementToEdit(VisualXsltMediator);
-		setCommonProperties(xsltMediator, VisualXsltMediator);
-		
-		//XSLTMediator vishualXslt = EsbFactory.eINSTANCE.createXSLTMediator();
+        org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator VisualXsltMediator = (org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator) DeserializerUtils
+                .createNode(part, EsbElementTypes.XSLTMediator_3497);
 
-		if (xsltMediator.getXsltKey() != null) {
+        setElementToEdit(VisualXsltMediator);
+        setCommonProperties(xsltMediator, VisualXsltMediator);
 
-			Value keyValue = xsltMediator.getXsltKey();
+        // XSLTMediator vishualXslt = EsbFactory.eINSTANCE.createXSLTMediator();
 
-			if (keyValue.getKeyValue() != null && !keyValue.getKeyValue().equals("")) {
+        if (xsltMediator.getXsltKey() != null) {
 
-				//vishualXslt.setXsltSchemaKeyType(KeyType.STATIC);
-				executeSetValueCommand(XSLT_MEDIATOR__XSLT_SCHEMA_KEY_TYPE,KeyType.STATIC);
+            Value keyValue = xsltMediator.getXsltKey();
 
-				RegistryKeyProperty regKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+            if (keyValue.getKeyValue() != null && !keyValue.getKeyValue().equals("")) {
 
-				regKey.setKeyValue(keyValue.getKeyValue());
+                // vishualXslt.setXsltSchemaKeyType(KeyType.STATIC);
+                executeSetValueCommand(XSLT_MEDIATOR__XSLT_SCHEMA_KEY_TYPE, KeyType.STATIC);
 
-				//vishualXslt.setXsltStaticSchemaKey(regKey);
-				executeSetValueCommand(XSLT_MEDIATOR__XSLT_STATIC_SCHEMA_KEY,regKey);
-				
-			} else if (keyValue.getExpression() != null) {
+                RegistryKeyProperty regKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 
-				//vishualXslt.setXsltSchemaKeyType(KeyType.DYNAMIC);
-				executeSetValueCommand(XSLT_MEDIATOR__XSLT_SCHEMA_KEY_TYPE,KeyType.DYNAMIC);
+                regKey.setKeyValue(keyValue.getKeyValue());
 
-				SynapsePath xpath = keyValue.getExpression();
+                // vishualXslt.setXsltStaticSchemaKey(regKey);
+                executeSetValueCommand(XSLT_MEDIATOR__XSLT_STATIC_SCHEMA_KEY, regKey);
 
-				NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+            } else if (keyValue.getExpression() != null) {
 
-				nsp.setPropertyValue(xpath.toString());
+                // vishualXslt.setXsltSchemaKeyType(KeyType.DYNAMIC);
+                executeSetValueCommand(XSLT_MEDIATOR__XSLT_SCHEMA_KEY_TYPE, KeyType.DYNAMIC);
 
-				if (xpath.getNamespaces() != null) {
+                SynapsePath xpath = keyValue.getExpression();
 
-					@SuppressWarnings("unchecked")
-					Map<String, String> map = xpath.getNamespaces();
+                NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 
-					nsp.setNamespaces(map);
-				}
+                nsp.setPropertyValue(xpath.toString());
 
-				//vishualXslt.setXsltDynamicSchemaKey(nsp);
-				executeSetValueCommand(XSLT_MEDIATOR__XSLT_DYNAMIC_SCHEMA_KEY,nsp);
-			}
-		}
+                if (xpath.getNamespaces() != null) {
 
-		if (xsltMediator.getSource() != null) {
+                    @SuppressWarnings("unchecked")
+                    Map<String, String> map = xpath.getNamespaces();
 
-			SynapseXPath SourceXpath = xsltMediator.getSource();
+                    nsp.setNamespaces(map);
+                }
 
-			NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
+                // vishualXslt.setXsltDynamicSchemaKey(nsp);
+                executeSetValueCommand(XSLT_MEDIATOR__XSLT_DYNAMIC_SCHEMA_KEY, nsp);
+            }
+        }
 
-			nsp.setPropertyValue(SourceXpath.toString());
+        if (xsltMediator.getSource() != null) {
 
-			if (SourceXpath.getNamespaces() != null) {
+            SynapseXPath SourceXpath = xsltMediator.getSource();
 
-				@SuppressWarnings("unchecked")
-				Map<String, String> map = SourceXpath.getNamespaces();
+            NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 
-				nsp.setNamespaces(map);
-			}
+            nsp.setPropertyValue(SourceXpath.toString());
 
-			//vishualXslt.setSourceXPath(nsp);
-			executeSetValueCommand(XSLT_MEDIATOR__SOURCE_XPATH,nsp);
-		}
+            if (SourceXpath.getNamespaces() != null) {
 
-		if (xsltMediator.getFeatures() != null && !xsltMediator.getFeatures().isEmpty()) {
+                @SuppressWarnings("unchecked")
+                Map<String, String> map = SourceXpath.getNamespaces();
 
-			List<XSLTFeature> vishualFeatureList = new ArrayList<XSLTFeature>();
+                nsp.setNamespaces(map);
+            }
 
-			for (MediatorProperty featureMediatorProperty : xsltMediator.getFeatures()) {
+            // vishualXslt.setSourceXPath(nsp);
+            executeSetValueCommand(XSLT_MEDIATOR__SOURCE_XPATH, nsp);
+        }
 
-				XSLTFeature visualFeature = EsbFactory.eINSTANCE.createXSLTFeature();
+        if (xsltMediator.getFeatures() != null && !xsltMediator.getFeatures().isEmpty()) {
 
-				if (featureMediatorProperty.getName() != null &&
-				    !featureMediatorProperty.getName().equals("")) {
+            List<XSLTFeature> vishualFeatureList = new ArrayList<XSLTFeature>();
 
-					visualFeature.setFeatureName(featureMediatorProperty.getName());
-				}
+            for (MediatorProperty featureMediatorProperty : xsltMediator.getFeatures()) {
 
-				//if (Boolean.parseBoolean(featureMediatorProperty.getValue())) {
+                XSLTFeature visualFeature = EsbFactory.eINSTANCE.createXSLTFeature();
 
-					visualFeature.setFeatureEnabled(Boolean.parseBoolean(featureMediatorProperty.getValue()));
-				//}
+                if (featureMediatorProperty.getName() != null && !featureMediatorProperty.getName().equals("")) {
 
-				vishualFeatureList.add(visualFeature);
+                    visualFeature.setFeatureName(featureMediatorProperty.getName());
+                }
 
-			}
+                // if (Boolean.parseBoolean(featureMediatorProperty.getValue())) {
 
-			//vishualXslt.getFeatures().addAll(vishualFeatureList);
-			executeSetValueCommand(XSLT_MEDIATOR__FEATURES, vishualFeatureList);
-		}
+                visualFeature.setFeatureEnabled(Boolean.parseBoolean(featureMediatorProperty.getValue()));
+                // }
 
-		if (xsltMediator.getProperties() != null && !xsltMediator.getProperties().isEmpty()) {
+                vishualFeatureList.add(visualFeature);
 
-			EList<XSLTProperty> visualPropertyList = new BasicEList<XSLTProperty>();
+            }
 
-			for (MediatorProperty propertyMediatorProperty : xsltMediator.getProperties()) {
+            // vishualXslt.getFeatures().addAll(vishualFeatureList);
+            executeSetValueCommand(XSLT_MEDIATOR__FEATURES, vishualFeatureList);
+        }
 
-				XSLTProperty visualProperty = EsbFactory.eINSTANCE.createXSLTProperty();
+        if (xsltMediator.getProperties() != null && !xsltMediator.getProperties().isEmpty()) {
 
-				if (StringUtils.isNotBlank(propertyMediatorProperty.getName())) {
-					visualProperty.setPropertyName(propertyMediatorProperty.getName());
-				}
+            EList<XSLTProperty> visualPropertyList = new BasicEList<XSLTProperty>();
 
-				if (StringUtils.isNotBlank(propertyMediatorProperty.getValue())) {
-					visualProperty.setPropertyValue(propertyMediatorProperty.getValue());
-					visualProperty.setPropertyValueType(PropertyValueType.LITERAL);
-				} else if (propertyMediatorProperty != null) {
-					visualProperty.setPropertyExpression(createNamespacedProperty(propertyMediatorProperty
-									.getExpression()));
-					visualProperty.setPropertyValueType(PropertyValueType.EXPRESSION);
-				}
+            for (MediatorProperty propertyMediatorProperty : xsltMediator.getProperties()) {
 
-				visualPropertyList.add(visualProperty);
-			}
+                XSLTProperty visualProperty = EsbFactory.eINSTANCE.createXSLTProperty();
 
-			//vishualXslt.getProperties().addAll(visualPropertyList);
-			executeSetValueCommand(XSLT_MEDIATOR__PROPERTIES, visualPropertyList);
-		}
+                if (StringUtils.isNotBlank(propertyMediatorProperty.getName())) {
+                    visualProperty.setPropertyName(propertyMediatorProperty.getName());
+                }
 
-		if (xsltMediator.getResourceMap() != null &&
-		    xsltMediator.getResourceMap().getResources() != null) {
+                if (StringUtils.isNotBlank(propertyMediatorProperty.getValue())) {
+                    visualProperty.setPropertyValue(propertyMediatorProperty.getValue());
+                    visualProperty.setPropertyValueType(PropertyValueType.LITERAL);
+                } else if (propertyMediatorProperty != null) {
+                    visualProperty
+                            .setPropertyExpression(createNamespacedProperty(propertyMediatorProperty.getExpression()));
+                    visualProperty.setPropertyValueType(PropertyValueType.EXPRESSION);
+                }
 
-			Map<String, String> resourceMap = xsltMediator.getResourceMap().getResources();
+                visualPropertyList.add(visualProperty);
+            }
 
-			EList<XSLTResource> visualResourceList = new BasicEList<XSLTResource>();
+            // vishualXslt.getProperties().addAll(visualPropertyList);
+            executeSetValueCommand(XSLT_MEDIATOR__PROPERTIES, visualPropertyList);
+        }
 
-			for (Entry<String, String> entry : resourceMap.entrySet()) {
+        if (xsltMediator.getResourceMap() != null && xsltMediator.getResourceMap().getResources() != null) {
 
-				XSLTResource resource = EsbFactory.eINSTANCE.createXSLTResource();
+            Map<String, String> resourceMap = xsltMediator.getResourceMap().getResources();
 
-				resource.setLocation(entry.getKey());
+            EList<XSLTResource> visualResourceList = new BasicEList<XSLTResource>();
 
-				RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+            for (Entry<String, String> entry : resourceMap.entrySet()) {
 
-				regkey.setKeyValue(entry.getValue());
+                XSLTResource resource = EsbFactory.eINSTANCE.createXSLTResource();
 
-				resource.setKey(regkey);
+                resource.setLocation(entry.getKey());
 
-				visualResourceList.add(resource);
-			}
+                RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 
-			//vishualXslt.getResources().addAll(visualResourceList);
-			executeSetValueCommand(XSLT_MEDIATOR__RESOURCES, visualResourceList);
+                regkey.setKeyValue(entry.getValue());
 
-		}
+                resource.setKey(regkey);
 
-		return VisualXsltMediator;
-	}
+                visualResourceList.add(resource);
+            }
 
+            // vishualXslt.getResources().addAll(visualResourceList);
+            executeSetValueCommand(XSLT_MEDIATOR__RESOURCES, visualResourceList);
+
+        }
+
+        return VisualXsltMediator;
+    }
 
 }

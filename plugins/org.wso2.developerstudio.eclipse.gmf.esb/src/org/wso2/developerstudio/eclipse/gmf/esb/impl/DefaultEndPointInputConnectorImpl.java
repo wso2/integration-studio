@@ -20,30 +20,33 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
  * @generated
  */
 public class DefaultEndPointInputConnectorImpl extends InputConnectorImpl implements DefaultEndPointInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DefaultEndPointInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected DefaultEndPointInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.DEFAULT_END_POINT_INPUT_CONNECTOR;
-	}
-	
-	
-/*	public boolean shouldConnect(OutputConnector sourceEnd) {
-		// making endpoint usable by more than one sequence
-		return true;
-	}*/
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //DefaultEndPointInputConnectorImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.DEFAULT_END_POINT_INPUT_CONNECTOR;
+    }
+
+    /*
+     * public boolean shouldConnect(OutputConnector sourceEnd) {
+     * // making endpoint usable by more than one sequence
+     * return true;
+     * }
+     */
+
+} // DefaultEndPointInputConnectorImpl

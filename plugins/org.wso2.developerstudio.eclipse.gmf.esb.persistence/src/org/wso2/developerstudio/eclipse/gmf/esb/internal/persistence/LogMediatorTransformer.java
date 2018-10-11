@@ -42,124 +42,122 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  * corresponding synapse artifact(s).
  */
 public class LogMediatorTransformer extends AbstractEsbNodeTransformer {
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
-		// Check subject.
-		Assert.isTrue(subject instanceof LogMediator, "Invalid subject.");
-		LogMediator visualLog = (LogMediator) subject;
-		
-		try {
-			info.getParentSequence().addChild(createLogMediator(visualLog));			
-			// Transform the log mediator output data flow path.
-			doTransform(info, visualLog.getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof LogMediator, "Invalid subject.");
+        LogMediator visualLog = (LogMediator) subject;
 
-	/**
-	 * @param visualLog
-	 * @return org.apache.synapse.mediators.builtin.LogMediator
-	 * @throws JaxenException
-	 */
-	private org.apache.synapse.mediators.builtin.LogMediator createLogMediator(LogMediator visualLog)
-			throws JaxenException {
-		org.apache.synapse.mediators.builtin.LogMediator logMediator = new org.apache.synapse.mediators.builtin.LogMediator();
-		setCommonProperties(logMediator, visualLog);
-		{
-			// Log category.
-			switch (visualLog.getLogCategory()) {
-				case DEBUG:
-					logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_DEBUG);
-					break;
-				case ERROR:
-					logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_ERROR);
-					break;
-				case FATAL:
-					logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_FATAL);
-					break;
-				case INFO:
-					logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_INFO);
-					break;
-				case TRACE:
-					logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_TRACE);
-					break;
-				case WARN:
-					logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_WARN);
-					break;
-			}
-			
-			// Log level.
-			switch (visualLog.getLogLevel()) {
-				case CUSTOM:
-					logMediator.setLogLevel(org.apache.synapse.mediators.builtin.LogMediator.CUSTOM);
-					break;
-				case FULL:
-					logMediator.setLogLevel(org.apache.synapse.mediators.builtin.LogMediator.FULL);
-					break;
-				case HEADERS:
-					logMediator.setLogLevel(org.apache.synapse.mediators.builtin.LogMediator.HEADERS);
-					break;
-				case SIMPLE:
-					logMediator.setLogLevel(org.apache.synapse.mediators.builtin.LogMediator.SIMPLE);
-					break;
-			}
-			
-			// Log separator.
-			if (!StringUtils.isBlank(visualLog.getLogSeparator())) {
-				logMediator.setSeparator(visualLog.getLogSeparator());
-			}
-			
-			// Log properties.
-			for (LogProperty visualProperty : visualLog.getProperties()) {
-				MediatorProperty mediatorProperty = new MediatorProperty();
-				mediatorProperty.setName(visualProperty.getPropertyName());
-				
-				if(visualProperty.getPropertyValueType().getLiteral().equals("LITERAL")){
-					mediatorProperty.setValue(visualProperty.getPropertyValue());
-				}
-				if (visualProperty.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
-					NamespacedProperty namespacedExpression = visualProperty
-							.getPropertyExpression();
-					if (namespacedExpression != null) {
-						SynapsePath propertyExpression = CustomSynapsePathFactory
-								.getSynapsePath(namespacedExpression.getPropertyValue());
-						if (namespacedExpression.getNamespaces() != null
-								&& !(propertyExpression instanceof SynapseJsonPath)) {
-							for (Entry<String, String> entry : namespacedExpression.getNamespaces()
-									.entrySet()) {
-								propertyExpression.addNamespace(entry.getKey(), entry.getValue());
-							}
-						}
+        try {
+            info.getParentSequence().addChild(createLogMediator(visualLog));
+            // Transform the log mediator output data flow path.
+            doTransform(info, visualLog.getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-						mediatorProperty.setExpression(propertyExpression);
-					}
-				}			
-				logMediator.addProperty(mediatorProperty);
-			}
-		}
-		return logMediator;
-	}
+    /**
+     * @param visualLog
+     * @return org.apache.synapse.mediators.builtin.LogMediator
+     * @throws JaxenException
+     */
+    private org.apache.synapse.mediators.builtin.LogMediator createLogMediator(LogMediator visualLog)
+            throws JaxenException {
+        org.apache.synapse.mediators.builtin.LogMediator logMediator = new org.apache.synapse.mediators.builtin.LogMediator();
+        setCommonProperties(logMediator, visualLog);
+        {
+            // Log category.
+            switch (visualLog.getLogCategory()) {
+            case DEBUG:
+                logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_DEBUG);
+                break;
+            case ERROR:
+                logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_ERROR);
+                break;
+            case FATAL:
+                logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_FATAL);
+                break;
+            case INFO:
+                logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_INFO);
+                break;
+            case TRACE:
+                logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_TRACE);
+                break;
+            case WARN:
+                logMediator.setCategory(org.apache.synapse.mediators.builtin.LogMediator.CATEGORY_WARN);
+                break;
+            }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void transformWithinSequence(TransformationInfo info, EsbNode subject,SequenceMediator sequence) throws TransformerException{
-		
-		// Check subject.
-		Assert.isTrue(subject instanceof LogMediator, "Invalid subject.");
-		LogMediator visualLog = (LogMediator) subject;
-		
-		try {
-			sequence.addChild(createLogMediator(visualLog));
-			doTransformWithinSequence(info,visualLog.getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
+            // Log level.
+            switch (visualLog.getLogLevel()) {
+            case CUSTOM:
+                logMediator.setLogLevel(org.apache.synapse.mediators.builtin.LogMediator.CUSTOM);
+                break;
+            case FULL:
+                logMediator.setLogLevel(org.apache.synapse.mediators.builtin.LogMediator.FULL);
+                break;
+            case HEADERS:
+                logMediator.setLogLevel(org.apache.synapse.mediators.builtin.LogMediator.HEADERS);
+                break;
+            case SIMPLE:
+                logMediator.setLogLevel(org.apache.synapse.mediators.builtin.LogMediator.SIMPLE);
+                break;
+            }
+
+            // Log separator.
+            if (!StringUtils.isBlank(visualLog.getLogSeparator())) {
+                logMediator.setSeparator(visualLog.getLogSeparator());
+            }
+
+            // Log properties.
+            for (LogProperty visualProperty : visualLog.getProperties()) {
+                MediatorProperty mediatorProperty = new MediatorProperty();
+                mediatorProperty.setName(visualProperty.getPropertyName());
+
+                if (visualProperty.getPropertyValueType().getLiteral().equals("LITERAL")) {
+                    mediatorProperty.setValue(visualProperty.getPropertyValue());
+                }
+                if (visualProperty.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
+                    NamespacedProperty namespacedExpression = visualProperty.getPropertyExpression();
+                    if (namespacedExpression != null) {
+                        SynapsePath propertyExpression = CustomSynapsePathFactory
+                                .getSynapsePath(namespacedExpression.getPropertyValue());
+                        if (namespacedExpression.getNamespaces() != null
+                                && !(propertyExpression instanceof SynapseJsonPath)) {
+                            for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+                                propertyExpression.addNamespace(entry.getKey(), entry.getValue());
+                            }
+                        }
+
+                        mediatorProperty.setExpression(propertyExpression);
+                    }
+                }
+                logMediator.addProperty(mediatorProperty);
+            }
+        }
+        return logMediator;
+    }
+
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void transformWithinSequence(TransformationInfo info, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+
+        // Check subject.
+        Assert.isTrue(subject instanceof LogMediator, "Invalid subject.");
+        LogMediator visualLog = (LogMediator) subject;
+
+        try {
+            sequence.addChild(createLogMediator(visualLog));
+            doTransformWithinSequence(info, visualLog.getOutputConnector().getOutgoingLink(), sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 }

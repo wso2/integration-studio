@@ -46,81 +46,85 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagr
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EndpointDiagramEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
-public class LoadBalanceEndpointDeserializer extends AbstractComplexEndPointDeserializer{//AbstractEsbNodeDeserializer<AbstractEndpoint, LoadBalanceEndPoint>{
-	
-	@Override
-	public LoadBalanceEndPoint createNode(IGraphicalEditPart part,AbstractEndpoint object) throws DeserializerException {
-		
-		Assert.isTrue(object instanceof org.apache.synapse.endpoints.LoadbalanceEndpoint, "Unsupported endpoint passed in for deserialization at "+ this.getClass());
-		
-		org.apache.synapse.endpoints.LoadbalanceEndpoint loadbalanceEndpoint = (org.apache.synapse.endpoints.LoadbalanceEndpoint)object;
-		
-		IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart ||
-				part instanceof EndpointDiagramEndpointCompartmentEditPart) ? EsbElementTypes.LoadBalanceEndPoint_3656
-				: EsbElementTypes.LoadBalanceEndPoint_3613;
-		
-		LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) DeserializerUtils.createNode(part,endpointType);
-		setElementToEdit(visualEndPoint);
-		
-		if(object instanceof org.apache.synapse.endpoints.SALoadbalanceEndpoint){
-			org.apache.synapse.endpoints.SALoadbalanceEndpoint saloadbalanceEndpoint = (org.apache.synapse.endpoints.SALoadbalanceEndpoint)object;
-			Long sessionTimeout = saloadbalanceEndpoint.getSessionTimeout();
-			executeSetValueCommand(LOAD_BALANCE_END_POINT__SESSION_TIMEOUT, sessionTimeout);
-			Dispatcher dispatcher = saloadbalanceEndpoint.getDispatcher();
-			if(dispatcher instanceof SoapSessionDispatcher){
-				executeSetValueCommand(LOAD_BALANCE_END_POINT__SESSION_TYPE, LoadBalanceSessionType.SOAP);
-			}else if(dispatcher instanceof HttpSessionDispatcher){
-				executeSetValueCommand(LOAD_BALANCE_END_POINT__SESSION_TYPE, LoadBalanceSessionType.TRANSPORT);
-			}else if(dispatcher instanceof SimpleClientSessionDispatcher){
-				executeSetValueCommand(LOAD_BALANCE_END_POINT__SESSION_TYPE, LoadBalanceSessionType.CLIENT_ID);
-			}
-		}
-		
-		for (Iterator<MediatorProperty> i = loadbalanceEndpoint.getProperties().iterator(); i.hasNext();) {
-			MediatorProperty next = i.next();
-			EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
-			property.setName(next.getName());
-			property.setValue(next.getValue());
-			if(next.getScope()!=null){
-				property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
-			} else{
-				property.setScope(EndPointPropertyScope.SYNAPSE);
-			}
-			executeAddValueCommand(visualEndPoint.getProperties(), property, false);
-		}
+public class LoadBalanceEndpointDeserializer extends AbstractComplexEndPointDeserializer {// AbstractEsbNodeDeserializer<AbstractEndpoint,
+                                                                                          // LoadBalanceEndPoint>{
 
-		executeSetValueCommand(LOAD_BALANCE_END_POINT__BUILD_MESSAGE, loadbalanceEndpoint.isBuildMessageAtt());
-		executeSetValueCommand(LOAD_BALANCE_END_POINT__ALGORITHM, loadbalanceEndpoint.getAlgorithm().getClass().getName());
-		if (loadbalanceEndpoint.getChildren() != null && !loadbalanceEndpoint.getChildren().isEmpty()) {
-			deserializeComplexEndpoint(loadbalanceEndpoint,part);
-			
-		} else if (loadbalanceEndpoint.getMembers() != null && !loadbalanceEndpoint.getMembers().isEmpty()) {
+    @Override
+    public LoadBalanceEndPoint createNode(IGraphicalEditPart part, AbstractEndpoint object)
+            throws DeserializerException {
 
-			for (org.apache.axis2.clustering.Member member : loadbalanceEndpoint.getMembers()) {
+        Assert.isTrue(object instanceof org.apache.synapse.endpoints.LoadbalanceEndpoint,
+                "Unsupported endpoint passed in for deserialization at " + this.getClass());
 
-				Member vishualMember = EsbFactory.eINSTANCE.createMember();
-				
-				if (member.getHostName() != null && !member.getHostName().equals("")) {
+        org.apache.synapse.endpoints.LoadbalanceEndpoint loadbalanceEndpoint = (org.apache.synapse.endpoints.LoadbalanceEndpoint) object;
 
-					vishualMember.setHostName(member.getHostName());
-				}
+        IElementType endpointType = (part instanceof EndpointDiagramEndpointCompartment2EditPart
+                || part instanceof EndpointDiagramEndpointCompartmentEditPart)
+                        ? EsbElementTypes.LoadBalanceEndPoint_3656
+                        : EsbElementTypes.LoadBalanceEndPoint_3613;
 
-				vishualMember.setHttpPort(Integer.toString(member.getHttpPort()));
+        LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) DeserializerUtils.createNode(part, endpointType);
+        setElementToEdit(visualEndPoint);
 
-				vishualMember.setHttpsPort(Integer.toString(member.getHttpsPort()));
+        if (object instanceof org.apache.synapse.endpoints.SALoadbalanceEndpoint) {
+            org.apache.synapse.endpoints.SALoadbalanceEndpoint saloadbalanceEndpoint = (org.apache.synapse.endpoints.SALoadbalanceEndpoint) object;
+            Long sessionTimeout = saloadbalanceEndpoint.getSessionTimeout();
+            executeSetValueCommand(LOAD_BALANCE_END_POINT__SESSION_TIMEOUT, sessionTimeout);
+            Dispatcher dispatcher = saloadbalanceEndpoint.getDispatcher();
+            if (dispatcher instanceof SoapSessionDispatcher) {
+                executeSetValueCommand(LOAD_BALANCE_END_POINT__SESSION_TYPE, LoadBalanceSessionType.SOAP);
+            } else if (dispatcher instanceof HttpSessionDispatcher) {
+                executeSetValueCommand(LOAD_BALANCE_END_POINT__SESSION_TYPE, LoadBalanceSessionType.TRANSPORT);
+            } else if (dispatcher instanceof SimpleClientSessionDispatcher) {
+                executeSetValueCommand(LOAD_BALANCE_END_POINT__SESSION_TYPE, LoadBalanceSessionType.CLIENT_ID);
+            }
+        }
 
-				executeAddValueCommand(visualEndPoint.getMember(),vishualMember, false);
+        for (Iterator<MediatorProperty> i = loadbalanceEndpoint.getProperties().iterator(); i.hasNext();) {
+            MediatorProperty next = i.next();
+            EndPointProperty property = EsbFactory.eINSTANCE.createEndPointProperty();
+            property.setName(next.getName());
+            property.setValue(next.getValue());
+            if (next.getScope() != null) {
+                property.setScope(EndPointPropertyScope.get(next.getScope().toLowerCase()));
+            } else {
+                property.setScope(EndPointPropertyScope.SYNAPSE);
+            }
+            executeAddValueCommand(visualEndPoint.getProperties(), property, false);
+        }
 
-			}
+        executeSetValueCommand(LOAD_BALANCE_END_POINT__BUILD_MESSAGE, loadbalanceEndpoint.isBuildMessageAtt());
+        executeSetValueCommand(LOAD_BALANCE_END_POINT__ALGORITHM,
+                loadbalanceEndpoint.getAlgorithm().getClass().getName());
+        if (loadbalanceEndpoint.getChildren() != null && !loadbalanceEndpoint.getChildren().isEmpty()) {
+            deserializeComplexEndpoint(loadbalanceEndpoint, part);
 
-		}
-		
-		if(StringUtils.isNotBlank(loadbalanceEndpoint.getName())){
+        } else if (loadbalanceEndpoint.getMembers() != null && !loadbalanceEndpoint.getMembers().isEmpty()) {
+
+            for (org.apache.axis2.clustering.Member member : loadbalanceEndpoint.getMembers()) {
+
+                Member vishualMember = EsbFactory.eINSTANCE.createMember();
+
+                if (member.getHostName() != null && !member.getHostName().equals("")) {
+
+                    vishualMember.setHostName(member.getHostName());
+                }
+
+                vishualMember.setHttpPort(Integer.toString(member.getHttpPort()));
+
+                vishualMember.setHttpsPort(Integer.toString(member.getHttpsPort()));
+
+                executeAddValueCommand(visualEndPoint.getMember(), vishualMember, false);
+
+            }
+
+        }
+
+        if (StringUtils.isNotBlank(loadbalanceEndpoint.getName())) {
             executeSetValueCommand(END_POINT__END_POINT_NAME, loadbalanceEndpoint.getName());
-		}
+        }
 
-		return visualEndPoint;
-	}
-
+        return visualEndPoint;
+    }
 
 }

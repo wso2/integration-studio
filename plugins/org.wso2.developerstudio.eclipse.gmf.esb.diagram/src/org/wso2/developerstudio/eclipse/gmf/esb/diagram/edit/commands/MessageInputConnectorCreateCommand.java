@@ -20,65 +20,66 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator;
  */
 public class MessageInputConnectorCreateCommand extends EditElementCommand {
 
-	/**
-	 * @generated
-	 */
-	public MessageInputConnectorCreateCommand(CreateElementRequest req) {
-		super(req.getLabel(), null, req);
-	}
+    /**
+     * @generated
+     */
+    public MessageInputConnectorCreateCommand(CreateElementRequest req) {
+        super(req.getLabel(), null, req);
+    }
 
-	/**
-	 * FIXME: replace with setElementToEdit()
-	 * @generated
-	 */
-	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
-		if (container instanceof View) {
-			container = ((View) container).getElement();
-		}
-		return container;
-	}
+    /**
+     * FIXME: replace with setElementToEdit()
+     * 
+     * @generated
+     */
+    protected EObject getElementToEdit() {
+        EObject container = ((CreateElementRequest) getRequest()).getContainer();
+        if (container instanceof View) {
+            container = ((View) container).getElement();
+        }
+        return container;
+    }
 
-	/**
-	 * @generated
-	 */
-	public boolean canExecute() {
-		MessageMediator container = (MessageMediator) getElementToEdit();
-		if (container.getInputConnector() != null) {
-			return false;
-		}
-		return true;
+    /**
+     * @generated
+     */
+    public boolean canExecute() {
+        MessageMediator container = (MessageMediator) getElementToEdit();
+        if (container.getInputConnector() != null) {
+            return false;
+        }
+        return true;
 
-	}
+    }
 
-	/**
-	 * @generated
-	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		MessageInputConnector newElement = EsbFactory.eINSTANCE.createMessageInputConnector();
+    /**
+     * @generated
+     */
+    protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+        MessageInputConnector newElement = EsbFactory.eINSTANCE.createMessageInputConnector();
 
-		MessageMediator owner = (MessageMediator) getElementToEdit();
-		owner.setInputConnector(newElement);
+        MessageMediator owner = (MessageMediator) getElementToEdit();
+        owner.setInputConnector(newElement);
 
-		doConfigure(newElement, monitor, info);
+        doConfigure(newElement, monitor, info);
 
-		((CreateElementRequest) getRequest()).setNewElement(newElement);
-		return CommandResult.newOKCommandResult(newElement);
-	}
+        ((CreateElementRequest) getRequest()).setNewElement(newElement);
+        return CommandResult.newOKCommandResult(newElement);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void doConfigure(MessageInputConnector newElement, IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
-		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
-		if (configureCommand != null && configureCommand.canExecute()) {
-			configureCommand.execute(monitor, info);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void doConfigure(MessageInputConnector newElement, IProgressMonitor monitor, IAdaptable info)
+            throws ExecutionException {
+        IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+        ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+        configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+        configureRequest.addParameters(getRequest().getParameters());
+        ICommand configureCommand = elementType.getEditCommand(configureRequest);
+        if (configureCommand != null && configureCommand.canExecute()) {
+            configureCommand.execute(monitor, info);
+        }
+    }
 
 }

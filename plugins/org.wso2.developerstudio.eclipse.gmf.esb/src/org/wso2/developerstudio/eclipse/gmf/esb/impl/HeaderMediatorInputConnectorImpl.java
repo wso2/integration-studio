@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediatorInputConnector;
  * @generated
  */
 public class HeaderMediatorInputConnectorImpl extends InputConnectorImpl implements HeaderMediatorInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected HeaderMediatorInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected HeaderMediatorInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.HEADER_MEDIATOR_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.HEADER_MEDIATOR_INPUT_CONNECTOR;
+    }
 
-} //HeaderMediatorInputConnectorImpl
+} // HeaderMediatorInputConnectorImpl

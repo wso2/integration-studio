@@ -22,8 +22,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.views;
 public enum DefaultPropertyValues {
 
     TO("To"), FROM("From"), CONTENT_LENGTH("Content-Length"), ACCEPT_ENCODING("Accept-Encoding"), CONNECTION(
-            "Connection"), CONTENT_TYPE("Content-Type"), HOST("Host"), SOAP_ACTION("SOAPAction"), USER_AGENT(
-            "User-Agent");
+            "Connection"), CONTENT_TYPE(
+                    "Content-Type"), HOST("Host"), SOAP_ACTION("SOAPAction"), USER_AGENT("User-Agent");
     private String propertyName;
 
     DefaultPropertyValues(String name) {

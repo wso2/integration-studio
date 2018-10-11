@@ -100,8 +100,8 @@ public class InjectPropertyDialog extends TitleAreaDialog {
             public void handleEvent(Event event) {
                 try {
                     propertyContext = new String(propertyContextValueDropDown.getText());
-                    if (!(StringUtils.isEmpty(propertyContext) || StringUtils.isEmpty(propertyKey) || StringUtils
-                            .isEmpty(propertyValue))) {
+                    if (!(StringUtils.isEmpty(propertyContext) || StringUtils.isEmpty(propertyKey)
+                            || StringUtils.isEmpty(propertyValue))) {
                         getButton(IDialogConstants.OK_ID).setEnabled(true);
                     } else {
                         getButton(IDialogConstants.OK_ID).setEnabled(false);
@@ -115,8 +115,8 @@ public class InjectPropertyDialog extends TitleAreaDialog {
             public void handleEvent(Event event) {
                 try {
                     propertyKey = new String(propertyKeyValue.getText());
-                    if (!(StringUtils.isEmpty(propertyContext) || StringUtils.isEmpty(propertyKey) || StringUtils
-                            .isEmpty(propertyValue))) {
+                    if (!(StringUtils.isEmpty(propertyContext) || StringUtils.isEmpty(propertyKey)
+                            || StringUtils.isEmpty(propertyValue))) {
                         getButton(IDialogConstants.OK_ID).setEnabled(true);
                     } else {
                         getButton(IDialogConstants.OK_ID).setEnabled(false);
@@ -130,8 +130,8 @@ public class InjectPropertyDialog extends TitleAreaDialog {
             public void handleEvent(Event event) {
                 try {
                     propertyValue = new String(propertyValueText.getText());
-                    if (!(StringUtils.isEmpty(propertyContext) || StringUtils.isEmpty(propertyKey) || StringUtils
-                            .isEmpty(propertyValue))) {
+                    if (!(StringUtils.isEmpty(propertyContext) || StringUtils.isEmpty(propertyKey)
+                            || StringUtils.isEmpty(propertyValue))) {
                         getButton(IDialogConstants.OK_ID).setEnabled(true);
                     } else {
                         getButton(IDialogConstants.OK_ID).setEnabled(false);

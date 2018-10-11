@@ -28,23 +28,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointInputConnector;
  * @generated
  */
 public class TemplateEndpointInputConnectorImpl extends InputConnectorImpl implements TemplateEndpointInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TemplateEndpointInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected TemplateEndpointInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.TEMPLATE_ENDPOINT_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.TEMPLATE_ENDPOINT_INPUT_CONNECTOR;
+    }
 
-} //TemplateEndpointInputConnectorImpl
+} // TemplateEndpointInputConnectorImpl

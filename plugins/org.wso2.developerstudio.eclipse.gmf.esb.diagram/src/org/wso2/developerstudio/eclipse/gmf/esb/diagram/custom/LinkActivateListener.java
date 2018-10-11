@@ -25,23 +25,23 @@ import org.eclipse.gef.palette.ToolEntry;
 
 public class LinkActivateListener extends MouseMotionListener.Stub {
 
-	private PaletteViewer paletteViewer;
-	private static final int LINKS_GROUP_INDEX=4; /* index of links group */
-	private static final int LINKS_ESBLINK_INDEX = 0; /* index of ESB link */
+    private PaletteViewer paletteViewer;
+    private static final int LINKS_GROUP_INDEX = 4; /* index of links group */
+    private static final int LINKS_ESBLINK_INDEX = 0; /* index of ESB link */
 
-	public LinkActivateListener(EditDomain editDomain) {
-		this.paletteViewer = editDomain.getPaletteViewer();
-	}
+    public LinkActivateListener(EditDomain editDomain) {
+        this.paletteViewer = editDomain.getPaletteViewer();
+    }
 
-	@Override
-	public void mouseEntered(MouseEvent event) {
-		try {
-			ToolEntry esbLink = (ToolEntry) (((PaletteContainer) paletteViewer.getPaletteRoot()
-					.getChildren().get(LINKS_GROUP_INDEX)).getChildren().get(LINKS_ESBLINK_INDEX));
-			paletteViewer.setActiveTool(esbLink);
-		} catch (Exception e) {
-			// cannot set active tool to ESB link
-		}
-	}
+    @Override
+    public void mouseEntered(MouseEvent event) {
+        try {
+            ToolEntry esbLink = (ToolEntry) (((PaletteContainer) paletteViewer.getPaletteRoot().getChildren()
+                    .get(LINKS_GROUP_INDEX)).getChildren().get(LINKS_ESBLINK_INDEX));
+            paletteViewer.setActiveTool(esbLink);
+        } catch (Exception e) {
+            // cannot set active tool to ESB link
+        }
+    }
 
 }

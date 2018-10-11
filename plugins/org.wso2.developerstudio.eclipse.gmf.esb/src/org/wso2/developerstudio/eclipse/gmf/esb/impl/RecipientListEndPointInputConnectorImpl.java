@@ -27,24 +27,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointInputConnec
  *
  * @generated
  */
-public class RecipientListEndPointInputConnectorImpl extends InputConnectorImpl implements RecipientListEndPointInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RecipientListEndPointInputConnectorImpl() {
-		super();
-	}
+public class RecipientListEndPointInputConnectorImpl extends InputConnectorImpl
+        implements RecipientListEndPointInputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected RecipientListEndPointInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.RECIPIENT_LIST_END_POINT_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.RECIPIENT_LIST_END_POINT_INPUT_CONNECTOR;
+    }
 
-} //RecipientListEndPointInputConnectorImpl
+} // RecipientListEndPointInputConnectorImpl

@@ -46,709 +46,649 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.Registry
 
 public class ConfigureCloneMediatorDialog extends Dialog {
 
-	private Shell parentShell;
-	private Table targetTable;
-	private Label seqTypeLable;
-	private Label endPtypeLable;
-	private Combo seqTypeCombo;
-	private Combo endPtypeCombo;
-	private Group sequenceGrp;
-	private Group endPGrp;
-	private Label registryKeyLable;
-	private Text seqRegistryKeyText;
-	private Button sequenceBrowseBtn;
-	private Text endPregistryKeyText;
-	private Button endPbrowseBtn;
-
-	private CloneMediator cloneMediator;
-	private TransactionalEditingDomain domain;
-	private CompoundCommand resultCommand;
-	private int targetCounter;
-	private TableItem currentSelectedItem;
-
-	public ConfigureCloneMediatorDialog(Shell parent,
-			CloneMediator cloneMediator) {
-		super(parent);
-		this.cloneMediator = cloneMediator;
-		this.domain = TransactionUtil.getEditingDomain(cloneMediator);
-	}
-
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
-		parentShell = newShell;
-		// Set title.
-		parentShell.setText("Clone Mediator Target Configuration");
-	}
-
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		container.setSize(SWT.DEFAULT, 1000);
-
-		// Set layout for the main container
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
-
-		// setting up the target table
-		targetTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION
-				| SWT.HIDE_SELECTION);
-
-		TableColumn targetNumColumn = new TableColumn(targetTable, SWT.LEFT);
-
-		TableColumn soapActionColumn = new TableColumn(targetTable, SWT.LEFT);
-
-		TableColumn toAddressColumn = new TableColumn(targetTable, SWT.LEFT);
-
-		targetNumColumn.setText("Target Number");
-		targetNumColumn.setWidth(150);
-
-		soapActionColumn.setText("SOAP Action");
-		soapActionColumn.setWidth(150);
-
-		toAddressColumn.setText("To Address");
-		toAddressColumn.setWidth(150);
-
-		targetTable.setHeaderVisible(true);
-		targetTable.setLinesVisible(true);
-
-		// Creating sequence group widget
-		sequenceGrp = new Group(container, SWT.NONE);
-		sequenceGrp.setText("Sequence");
-		GridLayout gl = new GridLayout(3, false);
-		sequenceGrp.setLayout(gl);
-
-		GridData gd = new GridData();
-		gd.horizontalAlignment = GridData.HORIZONTAL_ALIGN_BEGINNING;
-		gd.horizontalSpan = 1;
-
-		seqTypeLable = new Label(sequenceGrp, SWT.NONE);
-		seqTypeLable.setText("Type");
-		seqTypeLable.setLayoutData(gd);
+    private Shell parentShell;
+    private Table targetTable;
+    private Label seqTypeLable;
+    private Label endPtypeLable;
+    private Combo seqTypeCombo;
+    private Combo endPtypeCombo;
+    private Group sequenceGrp;
+    private Group endPGrp;
+    private Label registryKeyLable;
+    private Text seqRegistryKeyText;
+    private Button sequenceBrowseBtn;
+    private Text endPregistryKeyText;
+    private Button endPbrowseBtn;
+
+    private CloneMediator cloneMediator;
+    private TransactionalEditingDomain domain;
+    private CompoundCommand resultCommand;
+    private int targetCounter;
+    private TableItem currentSelectedItem;
 
-		seqTypeCombo = new Combo(sequenceGrp, SWT.READ_ONLY);
-		seqTypeCombo.setItems(new String[] { "None", "Anonymous",
-				"Pick From Registry" });
-		gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = 2;
-		seqTypeCombo.setLayoutData(gd);
+    public ConfigureCloneMediatorDialog(Shell parent, CloneMediator cloneMediator) {
+        super(parent);
+        this.cloneMediator = cloneMediator;
+        this.domain = TransactionUtil.getEditingDomain(cloneMediator);
+    }
 
-		registryKeyLable = new Label(sequenceGrp, SWT.NONE);
-		registryKeyLable.setText("Pick from registry:");
-		gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-		gd.horizontalSpan = 1;
-		gd.widthHint = 130;
-		registryKeyLable.setLayoutData(gd);
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
+        parentShell = newShell;
+        // Set title.
+        parentShell.setText("Clone Mediator Target Configuration");
+    }
 
-		seqRegistryKeyText = new Text(sequenceGrp, SWT.SINGLE | SWT.BORDER);
-		seqRegistryKeyText.setEnabled(false);
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        container.setSize(SWT.DEFAULT, 1000);
 
-		seqRegistryKeyText.addModifyListener(new ModifyListener() {
+        // Set layout for the main container
+        FormLayout mainLayout = new FormLayout();
+        mainLayout.marginHeight = 5;
+        mainLayout.marginWidth = 5;
+        container.setLayout(mainLayout);
 
-			public void modifyText(ModifyEvent e) {
+        // setting up the target table
+        targetTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
 
-				CloneTarget target = getCurrentTarget();
+        TableColumn targetNumColumn = new TableColumn(targetTable, SWT.LEFT);
 
-				if (target != null) {
+        TableColumn soapActionColumn = new TableColumn(targetTable, SWT.LEFT);
 
-					if (target.getSequenceKey() == null) {
+        TableColumn toAddressColumn = new TableColumn(targetTable, SWT.LEFT);
 
-						RegistryKeyProperty regKeyProp = EsbFactory.eINSTANCE
-								.createRegistryKeyProperty();
-						regKeyProp.setKeyValue(seqRegistryKeyText.getText());
+        targetNumColumn.setText("Target Number");
+        targetNumColumn.setWidth(150);
 
-						SetCommand setCmd = new SetCommand(
-								domain,
-								target,
-								EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY,
-								regKeyProp);
+        soapActionColumn.setText("SOAP Action");
+        soapActionColumn.setWidth(150);
 
-						if (setCmd.canExecute()) {
+        toAddressColumn.setText("To Address");
+        toAddressColumn.setWidth(150);
 
-							domain.getCommandStack().execute(setCmd);
-						}
+        targetTable.setHeaderVisible(true);
+        targetTable.setLinesVisible(true);
 
-					} else if (!target.getSequenceKey().getKeyValue()
-							.equals(seqRegistryKeyText.getText())) {
+        // Creating sequence group widget
+        sequenceGrp = new Group(container, SWT.NONE);
+        sequenceGrp.setText("Sequence");
+        GridLayout gl = new GridLayout(3, false);
+        sequenceGrp.setLayout(gl);
 
-						RegistryKeyProperty registryPropertyKey = EsbFactory.eINSTANCE
-								.createRegistryKeyProperty();
-						registryPropertyKey.setKeyValue(seqRegistryKeyText
-								.getText());
+        GridData gd = new GridData();
+        gd.horizontalAlignment = GridData.HORIZONTAL_ALIGN_BEGINNING;
+        gd.horizontalSpan = 1;
 
-						SetCommand setCmd = new SetCommand(
-								domain,
-								target,
-								EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY,
-								registryPropertyKey);
+        seqTypeLable = new Label(sequenceGrp, SWT.NONE);
+        seqTypeLable.setText("Type");
+        seqTypeLable.setLayoutData(gd);
 
-						if (setCmd.canExecute()) {
+        seqTypeCombo = new Combo(sequenceGrp, SWT.READ_ONLY);
+        seqTypeCombo.setItems(new String[] { "None", "Anonymous", "Pick From Registry" });
+        gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd.horizontalSpan = 2;
+        seqTypeCombo.setLayoutData(gd);
 
-							domain.getCommandStack().execute(setCmd);
-						}
+        registryKeyLable = new Label(sequenceGrp, SWT.NONE);
+        registryKeyLable.setText("Pick from registry:");
+        gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
+        gd.horizontalSpan = 1;
+        gd.widthHint = 130;
+        registryKeyLable.setLayoutData(gd);
 
-					}
+        seqRegistryKeyText = new Text(sequenceGrp, SWT.SINGLE | SWT.BORDER);
+        seqRegistryKeyText.setEnabled(false);
 
-				}
-			}
-		});
+        seqRegistryKeyText.addModifyListener(new ModifyListener() {
 
-		gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-		gd.horizontalSpan = 1;
-		gd.widthHint = 240;
-		seqRegistryKeyText.setLayoutData(gd);
+            public void modifyText(ModifyEvent e) {
 
-		sequenceBrowseBtn = new Button(sequenceGrp, SWT.PUSH);
-		sequenceBrowseBtn.setText("Browse...");
-		sequenceBrowseBtn.setEnabled(false);
-		gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-		gd.horizontalSpan = 1;
-		gd.widthHint = 70;
-		sequenceBrowseBtn.setLayoutData(gd);
+                CloneTarget target = getCurrentTarget();
 
-		sequenceBrowseBtn.addSelectionListener(new SelectionAdapter() {
+                if (target != null) {
 
-			public void widgetSelected(SelectionEvent e) {
+                    if (target.getSequenceKey() == null) {
 
-				RegistryKeyProperty registryPropertyKey = EsbFactory.eINSTANCE
-						.createRegistryKeyProperty();
+                        RegistryKeyProperty regKeyProp = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                        regKeyProp.setKeyValue(seqRegistryKeyText.getText());
 
-				RegistryKeyPropertyEditorDialog rkpe = new RegistryKeyPropertyEditorDialog(
-						parentShell, SWT.NULL, registryPropertyKey,
-						new ArrayList<NamedEntityDescriptor>());
-				rkpe.open();
+                        SetCommand setCmd = new SetCommand(domain, target,
+                                EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY, regKeyProp);
 
-				seqRegistryKeyText.setText(registryPropertyKey.getKeyValue());
+                        if (setCmd.canExecute()) {
 
-			}
-		});
+                            domain.getCommandStack().execute(setCmd);
+                        }
 
-		seqTypeCombo.addListener(SWT.Selection, new Listener() {
+                    } else if (!target.getSequenceKey().getKeyValue().equals(seqRegistryKeyText.getText())) {
 
-			public void handleEvent(Event event) {
+                        RegistryKeyProperty registryPropertyKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                        registryPropertyKey.setKeyValue(seqRegistryKeyText.getText());
 
-				CloneTarget target = getCurrentTarget();
+                        SetCommand setCmd = new SetCommand(domain, target,
+                                EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY, registryPropertyKey);
 
-				if (seqTypeCombo.getSelectionIndex() == 2) {
+                        if (setCmd.canExecute()) {
 
-					SetCommand setTypeCmd = new SetCommand(
-							domain,
-							target,
-							EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE,
-							TargetSequenceType.REGISTRY_REFERENCE);
+                            domain.getCommandStack().execute(setCmd);
+                        }
 
-					if (setTypeCmd.canExecute()) {
+                    }
 
-						domain.getCommandStack().execute(setTypeCmd);
-					}
+                }
+            }
+        });
 
-					seqRegistryKeyText.setEnabled(true);
-					sequenceBrowseBtn.setEnabled(true);
+        gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
+        gd.horizontalSpan = 1;
+        gd.widthHint = 240;
+        seqRegistryKeyText.setLayoutData(gd);
 
-				} else if (seqTypeCombo.getSelectionIndex() == 0) {
+        sequenceBrowseBtn = new Button(sequenceGrp, SWT.PUSH);
+        sequenceBrowseBtn.setText("Browse...");
+        sequenceBrowseBtn.setEnabled(false);
+        gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
+        gd.horizontalSpan = 1;
+        gd.widthHint = 70;
+        sequenceBrowseBtn.setLayoutData(gd);
 
-					SetCommand setTypeCmd = new SetCommand(
-							domain,
-							target,
-							EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE,
-							TargetSequenceType.NONE);
+        sequenceBrowseBtn.addSelectionListener(new SelectionAdapter() {
 
-					if (setTypeCmd.canExecute()) {
+            public void widgetSelected(SelectionEvent e) {
 
-						domain.getCommandStack().execute(setTypeCmd);
-					}
+                RegistryKeyProperty registryPropertyKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 
-					seqRegistryKeyText.setEnabled(false);
-					seqRegistryKeyText.setText("");
-					sequenceBrowseBtn.setEnabled(false);
+                RegistryKeyPropertyEditorDialog rkpe = new RegistryKeyPropertyEditorDialog(parentShell, SWT.NULL,
+                        registryPropertyKey, new ArrayList<NamedEntityDescriptor>());
+                rkpe.open();
 
-				} else if (seqTypeCombo.getSelectionIndex() == 1) {
+                seqRegistryKeyText.setText(registryPropertyKey.getKeyValue());
 
-					SetCommand setTypeCmd = new SetCommand(
-							domain,
-							target,
-							EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE,
-							TargetSequenceType.ANONYMOUS);
+            }
+        });
 
-					if (setTypeCmd.canExecute()) {
+        seqTypeCombo.addListener(SWT.Selection, new Listener() {
 
-						domain.getCommandStack().execute(setTypeCmd);
-					}
+            public void handleEvent(Event event) {
 
-					seqRegistryKeyText.setEnabled(false);
-					seqRegistryKeyText.setText("");
-					sequenceBrowseBtn.setEnabled(false);
-				}
-			}
-		});
+                CloneTarget target = getCurrentTarget();
 
-		// setting up the layout data for the table
-		FormData targetTableLayoutData = new FormData(SWT.DEFAULT, 150);
-		targetTableLayoutData.top = new FormAttachment(0, 0);
-		targetTableLayoutData.left = new FormAttachment(0, 0);
-		targetTableLayoutData.bottom = new FormAttachment(sequenceGrp, -5);
-		targetTable.setLayoutData(targetTableLayoutData);
+                if (seqTypeCombo.getSelectionIndex() == 2) {
 
-		FormData data = new FormData();
-		data.top = new FormAttachment(targetTable, -5);
-		data.left = new FormAttachment(0, 0);
-		data.right = new FormAttachment(100, 0);
-		sequenceGrp.setLayoutData(data);
+                    SetCommand setTypeCmd = new SetCommand(domain, target,
+                            EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE,
+                            TargetSequenceType.REGISTRY_REFERENCE);
 
-		endPGrp = new Group(container, SWT.NONE);
-		endPGrp.setText("Endpoint");
+                    if (setTypeCmd.canExecute()) {
 
-		data = new FormData();
-		data.top = new FormAttachment(sequenceGrp, 5);
-		data.left = new FormAttachment(0, 0);
-		data.right = new FormAttachment(100, 0);
-		endPGrp.setLayoutData(data);
+                        domain.getCommandStack().execute(setTypeCmd);
+                    }
 
-		endPGrp.setLayout(gl);
+                    seqRegistryKeyText.setEnabled(true);
+                    sequenceBrowseBtn.setEnabled(true);
 
-		endPtypeLable = new Label(endPGrp, SWT.NONE);
-		endPtypeLable.setText("Type");
-		gd = new GridData();
-		gd.horizontalAlignment = GridData.HORIZONTAL_ALIGN_BEGINNING;
-		gd.horizontalSpan = 1;
-		endPtypeLable.setLayoutData(gd);
+                } else if (seqTypeCombo.getSelectionIndex() == 0) {
 
-		endPtypeCombo = new Combo(endPGrp, SWT.READ_ONLY);
-		endPtypeCombo.setItems(new String[] { "None", "Anonymous",
-				"Pick From Registry" });
-		gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = 2;
-		endPtypeCombo.setLayoutData(gd);
+                    SetCommand setTypeCmd = new SetCommand(domain, target,
+                            EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE, TargetSequenceType.NONE);
 
-		registryKeyLable = new Label(endPGrp, SWT.NONE);
-		registryKeyLable.setText("Pick from registry:");
-		gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-		gd.horizontalSpan = 1;
-		gd.widthHint = 130;
-		registryKeyLable.setLayoutData(gd);
+                    if (setTypeCmd.canExecute()) {
 
-		endPregistryKeyText = new Text(endPGrp, SWT.SINGLE | SWT.BORDER);
-		endPregistryKeyText.setEnabled(false);
+                        domain.getCommandStack().execute(setTypeCmd);
+                    }
 
-		endPregistryKeyText.addModifyListener(new ModifyListener() {
+                    seqRegistryKeyText.setEnabled(false);
+                    seqRegistryKeyText.setText("");
+                    sequenceBrowseBtn.setEnabled(false);
 
-			public void modifyText(ModifyEvent e) {
+                } else if (seqTypeCombo.getSelectionIndex() == 1) {
 
-				CloneTarget target = getCurrentTarget();
+                    SetCommand setTypeCmd = new SetCommand(domain, target,
+                            EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE, TargetSequenceType.ANONYMOUS);
 
-				if (target != null) {
+                    if (setTypeCmd.canExecute()) {
 
-					if (target.getEndpointKey() == null) {
+                        domain.getCommandStack().execute(setTypeCmd);
+                    }
 
-						RegistryKeyProperty regKeyProp = EsbFactory.eINSTANCE
-								.createRegistryKeyProperty();
-						regKeyProp.setKeyValue(endPregistryKeyText.getText());
+                    seqRegistryKeyText.setEnabled(false);
+                    seqRegistryKeyText.setText("");
+                    sequenceBrowseBtn.setEnabled(false);
+                }
+            }
+        });
 
-						SetCommand setCmd = new SetCommand(
-								domain,
-								target,
-								EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY,
-								regKeyProp);
+        // setting up the layout data for the table
+        FormData targetTableLayoutData = new FormData(SWT.DEFAULT, 150);
+        targetTableLayoutData.top = new FormAttachment(0, 0);
+        targetTableLayoutData.left = new FormAttachment(0, 0);
+        targetTableLayoutData.bottom = new FormAttachment(sequenceGrp, -5);
+        targetTable.setLayoutData(targetTableLayoutData);
 
-						if (setCmd.canExecute()) {
+        FormData data = new FormData();
+        data.top = new FormAttachment(targetTable, -5);
+        data.left = new FormAttachment(0, 0);
+        data.right = new FormAttachment(100, 0);
+        sequenceGrp.setLayoutData(data);
 
-							domain.getCommandStack().execute(setCmd);
-						}
+        endPGrp = new Group(container, SWT.NONE);
+        endPGrp.setText("Endpoint");
 
-					}
-					// Set the modified endpoint key
-					else if (!target.getEndpointKey().getKeyValue()
-							.equals(endPregistryKeyText.getText())) {
+        data = new FormData();
+        data.top = new FormAttachment(sequenceGrp, 5);
+        data.left = new FormAttachment(0, 0);
+        data.right = new FormAttachment(100, 0);
+        endPGrp.setLayoutData(data);
 
-						RegistryKeyProperty regKeyProp = EsbFactory.eINSTANCE
-								.createRegistryKeyProperty();
-						regKeyProp.setKeyValue(endPregistryKeyText.getText());
+        endPGrp.setLayout(gl);
 
-						SetCommand setCmd = new SetCommand(
-								domain,
-								target,
-								EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY,
-								regKeyProp);
+        endPtypeLable = new Label(endPGrp, SWT.NONE);
+        endPtypeLable.setText("Type");
+        gd = new GridData();
+        gd.horizontalAlignment = GridData.HORIZONTAL_ALIGN_BEGINNING;
+        gd.horizontalSpan = 1;
+        endPtypeLable.setLayoutData(gd);
 
-						if (setCmd.canExecute()) {
+        endPtypeCombo = new Combo(endPGrp, SWT.READ_ONLY);
+        endPtypeCombo.setItems(new String[] { "None", "Anonymous", "Pick From Registry" });
+        gd = new GridData(GridData.FILL_HORIZONTAL);
+        gd.horizontalSpan = 2;
+        endPtypeCombo.setLayoutData(gd);
 
-							domain.getCommandStack().execute(setCmd);
-						}
-					}
-				}
+        registryKeyLable = new Label(endPGrp, SWT.NONE);
+        registryKeyLable.setText("Pick from registry:");
+        gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
+        gd.horizontalSpan = 1;
+        gd.widthHint = 130;
+        registryKeyLable.setLayoutData(gd);
 
-			}
-		});
+        endPregistryKeyText = new Text(endPGrp, SWT.SINGLE | SWT.BORDER);
+        endPregistryKeyText.setEnabled(false);
 
-		gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-		gd.horizontalSpan = 1;
-		gd.widthHint = 240;
-		endPregistryKeyText.setLayoutData(gd);
+        endPregistryKeyText.addModifyListener(new ModifyListener() {
 
-		endPbrowseBtn = new Button(endPGrp, SWT.PUSH);
-		endPbrowseBtn.setText("Browse...");
-		endPbrowseBtn.setEnabled(false);
-		gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-		gd.horizontalSpan = 1;
-		gd.widthHint = 70;
-		endPbrowseBtn.setLayoutData(gd);
+            public void modifyText(ModifyEvent e) {
 
-		endPbrowseBtn.addSelectionListener(new SelectionAdapter() {
+                CloneTarget target = getCurrentTarget();
 
-			public void widgetSelected(SelectionEvent e) {
+                if (target != null) {
 
-				RegistryKeyProperty registryPropertyKey = EsbFactory.eINSTANCE
-						.createRegistryKeyProperty();
+                    if (target.getEndpointKey() == null) {
 
-				RegistryKeyPropertyEditorDialog rkpe = new RegistryKeyPropertyEditorDialog(
-						parentShell, SWT.NULL, registryPropertyKey,
-						new ArrayList<NamedEntityDescriptor>());
-				rkpe.open();
+                        RegistryKeyProperty regKeyProp = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                        regKeyProp.setKeyValue(endPregistryKeyText.getText());
 
-				endPregistryKeyText.setText(registryPropertyKey.getKeyValue());
+                        SetCommand setCmd = new SetCommand(domain, target,
+                                EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY, regKeyProp);
 
-			}
+                        if (setCmd.canExecute()) {
 
-		});
+                            domain.getCommandStack().execute(setCmd);
+                        }
 
-		endPtypeCombo.addListener(SWT.Selection, new Listener() {
+                    }
+                    // Set the modified endpoint key
+                    else if (!target.getEndpointKey().getKeyValue().equals(endPregistryKeyText.getText())) {
 
-			public void handleEvent(Event event) {
+                        RegistryKeyProperty regKeyProp = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+                        regKeyProp.setKeyValue(endPregistryKeyText.getText());
 
-				CloneTarget target = getCurrentTarget();
+                        SetCommand setCmd = new SetCommand(domain, target,
+                                EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY, regKeyProp);
 
-				if (endPtypeCombo.getSelectionIndex() == 2) {
+                        if (setCmd.canExecute()) {
 
-					SetCommand setTypeCmd = new SetCommand(
-							domain,
-							target,
-							EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE,
-							TargetEndpointType.REGISTRY_REFERENCE);
+                            domain.getCommandStack().execute(setCmd);
+                        }
+                    }
+                }
 
-					if (setTypeCmd.canExecute()) {
+            }
+        });
 
-						domain.getCommandStack().execute(setTypeCmd);
-					}
+        gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
+        gd.horizontalSpan = 1;
+        gd.widthHint = 240;
+        endPregistryKeyText.setLayoutData(gd);
 
-					endPregistryKeyText.setEnabled(true);
-					endPbrowseBtn.setEnabled(true);
+        endPbrowseBtn = new Button(endPGrp, SWT.PUSH);
+        endPbrowseBtn.setText("Browse...");
+        endPbrowseBtn.setEnabled(false);
+        gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
+        gd.horizontalSpan = 1;
+        gd.widthHint = 70;
+        endPbrowseBtn.setLayoutData(gd);
 
-				} else if (endPtypeCombo.getSelectionIndex() == 0) {
+        endPbrowseBtn.addSelectionListener(new SelectionAdapter() {
 
-					SetCommand setTypeCmd = new SetCommand(
-							domain,
-							target,
-							EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE,
-							TargetEndpointType.NONE);
+            public void widgetSelected(SelectionEvent e) {
 
-					if (setTypeCmd.canExecute()) {
+                RegistryKeyProperty registryPropertyKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 
-						domain.getCommandStack().execute(setTypeCmd);
-					}
+                RegistryKeyPropertyEditorDialog rkpe = new RegistryKeyPropertyEditorDialog(parentShell, SWT.NULL,
+                        registryPropertyKey, new ArrayList<NamedEntityDescriptor>());
+                rkpe.open();
 
-					endPregistryKeyText.setEnabled(false);
-					endPregistryKeyText.setText("");
-					endPbrowseBtn.setEnabled(false);
+                endPregistryKeyText.setText(registryPropertyKey.getKeyValue());
 
-				} else if (endPtypeCombo.getSelectionIndex() == 1) {
+            }
 
-					SetCommand setTypeCmd = new SetCommand(
-							domain,
-							target,
-							EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE,
-							TargetEndpointType.ANONYMOUS);
+        });
 
-					if (setTypeCmd.canExecute()) {
+        endPtypeCombo.addListener(SWT.Selection, new Listener() {
 
-						domain.getCommandStack().execute(setTypeCmd);
-					}
+            public void handleEvent(Event event) {
 
-					endPregistryKeyText.setEnabled(false);
-					endPregistryKeyText.setText("");
-					endPbrowseBtn.setEnabled(false);
-				}
-			}
+                CloneTarget target = getCurrentTarget();
 
-		});
+                if (endPtypeCombo.getSelectionIndex() == 2) {
 
-		Listener targetTableListner = new Listener() {
+                    SetCommand setTypeCmd = new SetCommand(domain, target,
+                            EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE,
+                            TargetEndpointType.REGISTRY_REFERENCE);
 
-			public void handleEvent(Event evt) {
-				if (null != evt.item) {
-					if (evt.item instanceof TableItem) {
-						TableItem item = (TableItem) evt.item;
-						//Set the Current selection to class level
-						setCurrentSelectedItem(item);
-						
-						handleItemSelectionEvent(item);
+                    if (setTypeCmd.canExecute()) {
 
-					}
-				}
-			}
-		};
+                        domain.getCommandStack().execute(setTypeCmd);
+                    }
 
-		// adding selection listener to target table.
-		targetTable.addListener(SWT.Selection, targetTableListner);
+                    endPregistryKeyText.setEnabled(true);
+                    endPbrowseBtn.setEnabled(true);
 
-		for (CloneTarget target : cloneMediator.getTargets()) {
-			targetCounter++;
-			bindCloneTarget(target);
+                } else if (endPtypeCombo.getSelectionIndex() == 0) {
 
-		}
+                    SetCommand setTypeCmd = new SetCommand(domain, target,
+                            EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, TargetEndpointType.NONE);
 
-		targetTable.select(0);
-		TableItem item = targetTable.getItem(targetTable.getSelectionIndex());
-		setCurrentSelectedItem(item);
+                    if (setTypeCmd.canExecute()) {
 
-		initFields();
+                        domain.getCommandStack().execute(setTypeCmd);
+                    }
 
-		setupTableEditor(targetTable);
+                    endPregistryKeyText.setEnabled(false);
+                    endPregistryKeyText.setText("");
+                    endPbrowseBtn.setEnabled(false);
 
-		return parent;
-	}
+                } else if (endPtypeCombo.getSelectionIndex() == 1) {
 
-	private void initFields() {
+                    SetCommand setTypeCmd = new SetCommand(domain, target,
+                            EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, TargetEndpointType.ANONYMOUS);
 
-		if (cloneMediator.getTargets() != null
-				&& cloneMediator.getTargets().get(0) != null) {
+                    if (setTypeCmd.canExecute()) {
 
-			CloneTarget firstTarget = cloneMediator.getTargets().get(0);
+                        domain.getCommandStack().execute(setTypeCmd);
+                    }
 
-			if (firstTarget.getSequenceType().equals(TargetSequenceType.NONE)) {
+                    endPregistryKeyText.setEnabled(false);
+                    endPregistryKeyText.setText("");
+                    endPbrowseBtn.setEnabled(false);
+                }
+            }
 
-				seqTypeCombo.select(0);
-			} else if (firstTarget.getSequenceType().equals(
-					TargetSequenceType.ANONYMOUS)) {
+        });
 
-				seqTypeCombo.select(1);
-			} else if (firstTarget.getSequenceType().equals(
-					TargetSequenceType.REGISTRY_REFERENCE)) {
+        Listener targetTableListner = new Listener() {
 
-				seqTypeCombo.select(2);
-				if (firstTarget.getSequenceKey() != null) {
-					seqRegistryKeyText.setText(firstTarget.getSequenceKey()
-							.getKeyValue());
-					seqRegistryKeyText.setEnabled(true);
-					sequenceBrowseBtn.setEnabled(true);
-				}
-			}
+            public void handleEvent(Event evt) {
+                if (null != evt.item) {
+                    if (evt.item instanceof TableItem) {
+                        TableItem item = (TableItem) evt.item;
+                        // Set the Current selection to class level
+                        setCurrentSelectedItem(item);
 
-			if (firstTarget.getEndpointType().equals(TargetEndpointType.NONE)) {
+                        handleItemSelectionEvent(item);
 
-				endPtypeCombo.select(0);
+                    }
+                }
+            }
+        };
 
-			} else if (firstTarget.getEndpointType().equals(
-					TargetEndpointType.ANONYMOUS)) {
+        // adding selection listener to target table.
+        targetTable.addListener(SWT.Selection, targetTableListner);
 
-				endPtypeCombo.select(1);
+        for (CloneTarget target : cloneMediator.getTargets()) {
+            targetCounter++;
+            bindCloneTarget(target);
 
-			} else if (firstTarget.getEndpointType().equals(
-					TargetEndpointType.REGISTRY_REFERENCE)) {
+        }
 
-				endPtypeCombo.select(2);
-				if (firstTarget.getEndpointKey() != null) {
-					endPregistryKeyText.setText(firstTarget.getEndpointKey()
-							.getKeyValue());
-					endPregistryKeyText.setEnabled(true);
-					endPbrowseBtn.setEnabled(true);
-				}
-			}
-		}
-	}
+        targetTable.select(0);
+        TableItem item = targetTable.getItem(targetTable.getSelectionIndex());
+        setCurrentSelectedItem(item);
 
-	private void handleItemSelectionEvent(final TableItem item) {
+        initFields();
 
-		CloneTarget target = getCurrentTarget();
+        setupTableEditor(targetTable);
 
-		if (target.getSequenceKey() != null
-				&& target.getSequenceType().equals(
-						TargetSequenceType.REGISTRY_REFERENCE)) {
+        return parent;
+    }
 
-			seqTypeCombo.select(2);
-			seqRegistryKeyText.setText(target.getSequenceKey().getKeyValue());
+    private void initFields() {
 
-			seqRegistryKeyText.setEnabled(true);
-			sequenceBrowseBtn.setEnabled(true);
+        if (cloneMediator.getTargets() != null && cloneMediator.getTargets().get(0) != null) {
 
-		} else if (target.getSequenceType().equals(TargetSequenceType.NONE)) {
+            CloneTarget firstTarget = cloneMediator.getTargets().get(0);
 
-			seqTypeCombo.select(0);
-			seqRegistryKeyText.setText("");
-			seqRegistryKeyText.setEnabled(false);
-			sequenceBrowseBtn.setEnabled(false);
+            if (firstTarget.getSequenceType().equals(TargetSequenceType.NONE)) {
 
-		} else if (target.getSequenceType()
-				.equals(TargetSequenceType.ANONYMOUS)) {
+                seqTypeCombo.select(0);
+            } else if (firstTarget.getSequenceType().equals(TargetSequenceType.ANONYMOUS)) {
 
-			seqTypeCombo.select(1);
-			seqRegistryKeyText.setText("");
-			seqRegistryKeyText.setEnabled(false);
-			sequenceBrowseBtn.setEnabled(false);
-		}
+                seqTypeCombo.select(1);
+            } else if (firstTarget.getSequenceType().equals(TargetSequenceType.REGISTRY_REFERENCE)) {
 
-		if (target.getEndpointKey() != null
-				&& target.getEndpointType().equals(
-						TargetEndpointType.REGISTRY_REFERENCE)) {
+                seqTypeCombo.select(2);
+                if (firstTarget.getSequenceKey() != null) {
+                    seqRegistryKeyText.setText(firstTarget.getSequenceKey().getKeyValue());
+                    seqRegistryKeyText.setEnabled(true);
+                    sequenceBrowseBtn.setEnabled(true);
+                }
+            }
 
-			endPtypeCombo.select(2);
-			endPregistryKeyText.setText(target.getEndpointKey().getKeyValue());
+            if (firstTarget.getEndpointType().equals(TargetEndpointType.NONE)) {
 
-			endPregistryKeyText.setEnabled(true);
-			endPbrowseBtn.setEnabled(true);
+                endPtypeCombo.select(0);
 
-		} else if (target.getEndpointType().equals(TargetEndpointType.NONE)) {
+            } else if (firstTarget.getEndpointType().equals(TargetEndpointType.ANONYMOUS)) {
 
-			endPtypeCombo.select(0);
-			endPregistryKeyText.setText("");
-			endPregistryKeyText.setEnabled(false);
-			endPbrowseBtn.setEnabled(false);
+                endPtypeCombo.select(1);
 
-		} else if (target.getEndpointType()
-				.equals(TargetEndpointType.ANONYMOUS)) {
+            } else if (firstTarget.getEndpointType().equals(TargetEndpointType.REGISTRY_REFERENCE)) {
 
-			endPtypeCombo.select(1);
-			endPregistryKeyText.setText("");
-			endPregistryKeyText.setEnabled(false);
-			endPbrowseBtn.setEnabled(false);
-		}
+                endPtypeCombo.select(2);
+                if (firstTarget.getEndpointKey() != null) {
+                    endPregistryKeyText.setText(firstTarget.getEndpointKey().getKeyValue());
+                    endPregistryKeyText.setEnabled(true);
+                    endPbrowseBtn.setEnabled(true);
+                }
+            }
+        }
+    }
 
-	}
+    private void handleItemSelectionEvent(final TableItem item) {
 
-	private TableItem bindCloneTarget(CloneTarget target) {
+        CloneTarget target = getCurrentTarget();
 
-		TableItem item = new TableItem(targetTable, SWT.NONE);
+        if (target.getSequenceKey() != null && target.getSequenceType().equals(TargetSequenceType.REGISTRY_REFERENCE)) {
 
-		item.setText(new String[] { Integer.toString(targetCounter),
-				target.getSoapAction(), target.getToAddress() });
+            seqTypeCombo.select(2);
+            seqRegistryKeyText.setText(target.getSequenceKey().getKeyValue());
 
-		item.setData(target);
+            seqRegistryKeyText.setEnabled(true);
+            sequenceBrowseBtn.setEnabled(true);
 
-		// handleItemSelectionEvent(item);
+        } else if (target.getSequenceType().equals(TargetSequenceType.NONE)) {
 
-		return item;
-	}
+            seqTypeCombo.select(0);
+            seqRegistryKeyText.setText("");
+            seqRegistryKeyText.setEnabled(false);
+            sequenceBrowseBtn.setEnabled(false);
 
-	private void setupTableEditor(final Table table) {
-		final TableEditor cellEditor = new TableEditor(table);
-		cellEditor.grabHorizontal = true;
-		cellEditor.minimumWidth = 50;
-		table.addMouseListener(new MouseAdapter() {
-			/**
-			 * Setup a new cell editor control at double click event.
-			 */
-			public void mouseDoubleClick(MouseEvent e) {
-				// Dispose the old editor control (if one is setup).
-				Control oldEditorControl = cellEditor.getEditor();
-				if (null != oldEditorControl)
-					oldEditorControl.dispose();
+        } else if (target.getSequenceType().equals(TargetSequenceType.ANONYMOUS)) {
 
-				// Mouse location.
-				Point mouseLocation = new Point(e.x, e.y);
+            seqTypeCombo.select(1);
+            seqRegistryKeyText.setText("");
+            seqRegistryKeyText.setEnabled(false);
+            sequenceBrowseBtn.setEnabled(false);
+        }
 
-				// Grab the selected row.
-				TableItem item = (TableItem) table.getItem(mouseLocation);
-				if (null == item)
-					return;
+        if (target.getEndpointKey() != null && target.getEndpointType().equals(TargetEndpointType.REGISTRY_REFERENCE)) {
 
-				// Determine which column was selected.
-				int selectedColumn = -1;
-				for (int i = 0, n = table.getColumnCount(); i < n; i++) {
-					if (item.getBounds(i).contains(mouseLocation)) {
-						selectedColumn = i;
-						break;
-					}
-				}
+            endPtypeCombo.select(2);
+            endPregistryKeyText.setText(target.getEndpointKey().getKeyValue());
 
-				// Setup a new editor control.
-				if (-1 != selectedColumn && selectedColumn != 0) {
-					Text editorControl = new Text(table, SWT.NONE);
-					final int editorControlColumn = selectedColumn;
-					editorControl.setText(item.getText(selectedColumn));
-					editorControl.addModifyListener(new ModifyListener() {
-						public void modifyText(ModifyEvent e) {
-							Text text = (Text) cellEditor.getEditor();
-							cellEditor.getItem().setText(editorControlColumn,
-									text.getText());
-						}
-					});
-					editorControl.selectAll();
-					editorControl.setFocus();
-					cellEditor.setEditor(editorControl, item, selectedColumn);
-				}
-			}
+            endPregistryKeyText.setEnabled(true);
+            endPbrowseBtn.setEnabled(true);
 
-			/**
-			 * Dispose cell editor control at mouse down (otherwise the control
-			 * keep showing).
-			 */
-			public void mouseDown(MouseEvent e) {
-				Control oldEditorControl = cellEditor.getEditor();
-				if (null != oldEditorControl)
-					oldEditorControl.dispose();
-			}
-		});
-	}
+        } else if (target.getEndpointType().equals(TargetEndpointType.NONE)) {
 
-	protected void okPressed() {
+            endPtypeCombo.select(0);
+            endPregistryKeyText.setText("");
+            endPregistryKeyText.setEnabled(false);
+            endPbrowseBtn.setEnabled(false);
 
-		for (TableItem item : targetTable.getItems()) {
+        } else if (target.getEndpointType().equals(TargetEndpointType.ANONYMOUS)) {
 
-			CloneTarget target = (CloneTarget) item.getData();
+            endPtypeCombo.select(1);
+            endPregistryKeyText.setText("");
+            endPregistryKeyText.setEnabled(false);
+            endPbrowseBtn.setEnabled(false);
+        }
 
-			// Set the modified soapaction.
-			if (!target.getSoapAction().equals(item.getText(1))) {
+    }
 
-				SetCommand setCmd = new SetCommand(domain, target,
-						EsbPackage.Literals.CLONE_TARGET__SOAP_ACTION,
-						item.getText(1));
-				getResultCommand().append(setCmd);
-			}
+    private TableItem bindCloneTarget(CloneTarget target) {
 
-			// Set the modified toaddress.
-			if (!target.getToAddress().equals(item.getText(2))) {
+        TableItem item = new TableItem(targetTable, SWT.NONE);
 
-				SetCommand setCmd = new SetCommand(domain, target,
-						EsbPackage.Literals.CLONE_TARGET__TO_ADDRESS,
-						item.getText(2));
-				getResultCommand().append(setCmd);
-			}
+        item.setText(new String[] { Integer.toString(targetCounter), target.getSoapAction(), target.getToAddress() });
 
-		}
+        item.setData(target);
 
-		// Apply changes.
-		if (getResultCommand().canExecute()) {
-			domain.getCommandStack().execute(getResultCommand());
-		}
+        // handleItemSelectionEvent(item);
 
-		super.okPressed();
-	}
+        return item;
+    }
 
-	private CompoundCommand getResultCommand() {
-		if (null == resultCommand) {
-			resultCommand = new CompoundCommand();
-		}
-		return resultCommand;
-	}
+    private void setupTableEditor(final Table table) {
+        final TableEditor cellEditor = new TableEditor(table);
+        cellEditor.grabHorizontal = true;
+        cellEditor.minimumWidth = 50;
+        table.addMouseListener(new MouseAdapter() {
+            /**
+             * Setup a new cell editor control at double click event.
+             */
+            public void mouseDoubleClick(MouseEvent e) {
+                // Dispose the old editor control (if one is setup).
+                Control oldEditorControl = cellEditor.getEditor();
+                if (null != oldEditorControl)
+                    oldEditorControl.dispose();
 
-	private CloneTarget getCurrentTarget() {
+                // Mouse location.
+                Point mouseLocation = new Point(e.x, e.y);
 
-		TableItem curentItem = getCurrentSelectedItem();
+                // Grab the selected row.
+                TableItem item = (TableItem) table.getItem(mouseLocation);
+                if (null == item)
+                    return;
 
-		if (curentItem != null) {
+                // Determine which column was selected.
+                int selectedColumn = -1;
+                for (int i = 0, n = table.getColumnCount(); i < n; i++) {
+                    if (item.getBounds(i).contains(mouseLocation)) {
+                        selectedColumn = i;
+                        break;
+                    }
+                }
 
-			CloneTarget target = (CloneTarget) curentItem.getData();
-			return target;
-		}
+                // Setup a new editor control.
+                if (-1 != selectedColumn && selectedColumn != 0) {
+                    Text editorControl = new Text(table, SWT.NONE);
+                    final int editorControlColumn = selectedColumn;
+                    editorControl.setText(item.getText(selectedColumn));
+                    editorControl.addModifyListener(new ModifyListener() {
+                        public void modifyText(ModifyEvent e) {
+                            Text text = (Text) cellEditor.getEditor();
+                            cellEditor.getItem().setText(editorControlColumn, text.getText());
+                        }
+                    });
+                    editorControl.selectAll();
+                    editorControl.setFocus();
+                    cellEditor.setEditor(editorControl, item, selectedColumn);
+                }
+            }
 
-		return null;
-	}
+            /**
+             * Dispose cell editor control at mouse down (otherwise the control
+             * keep showing).
+             */
+            public void mouseDown(MouseEvent e) {
+                Control oldEditorControl = cellEditor.getEditor();
+                if (null != oldEditorControl)
+                    oldEditorControl.dispose();
+            }
+        });
+    }
 
-	public TableItem getCurrentSelectedItem() {
-		return currentSelectedItem;
-	}
+    protected void okPressed() {
 
-	public void setCurrentSelectedItem(TableItem currentSelectedItem) {
-		this.currentSelectedItem = currentSelectedItem;
-	}
+        for (TableItem item : targetTable.getItems()) {
+
+            CloneTarget target = (CloneTarget) item.getData();
+
+            // Set the modified soapaction.
+            if (!target.getSoapAction().equals(item.getText(1))) {
+
+                SetCommand setCmd = new SetCommand(domain, target, EsbPackage.Literals.CLONE_TARGET__SOAP_ACTION,
+                        item.getText(1));
+                getResultCommand().append(setCmd);
+            }
+
+            // Set the modified toaddress.
+            if (!target.getToAddress().equals(item.getText(2))) {
+
+                SetCommand setCmd = new SetCommand(domain, target, EsbPackage.Literals.CLONE_TARGET__TO_ADDRESS,
+                        item.getText(2));
+                getResultCommand().append(setCmd);
+            }
+
+        }
+
+        // Apply changes.
+        if (getResultCommand().canExecute()) {
+            domain.getCommandStack().execute(getResultCommand());
+        }
+
+        super.okPressed();
+    }
+
+    private CompoundCommand getResultCommand() {
+        if (null == resultCommand) {
+            resultCommand = new CompoundCommand();
+        }
+        return resultCommand;
+    }
+
+    private CloneTarget getCurrentTarget() {
+
+        TableItem curentItem = getCurrentSelectedItem();
+
+        if (curentItem != null) {
+
+            CloneTarget target = (CloneTarget) curentItem.getData();
+            return target;
+        }
+
+        return null;
+    }
+
+    public TableItem getCurrentSelectedItem() {
+        return currentSelectedItem;
+    }
+
+    public void setCurrentSelectedItem(TableItem currentSelectedItem) {
+        this.currentSelectedItem = currentSelectedItem;
+    }
 
 }

@@ -45,139 +45,142 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.DefaultEn
  * corresponding synapse artifact(s).
  */
 public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
-		// Check subject.
-		Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
-		DefaultEndPoint visualEP = (DefaultEndPoint) subject;
-		DefaultEndpoint synapseEP = create(visualEP, visualEP.getEndPointName());
-		setEndpointToSendCallOrProxy(info, visualEP, synapseEP);
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
+        DefaultEndPoint visualEP = (DefaultEndPoint) subject;
+        DefaultEndpoint synapseEP = create(visualEP, visualEP.getEndPointName());
+        setEndpointToSendCallOrProxy(info, visualEP, synapseEP);
 
-		if (!info.isEndPointFound) {
-			info.isEndPointFound = true;
-			info.firstEndPoint = visualEP;
-		}
+        if (!info.isEndPointFound) {
+            info.isEndPointFound = true;
+            info.firstEndPoint = visualEP;
+        }
 
-		if (visualEP.getOutputConnector() != null) {
-			if (visualEP.getOutputConnector().getOutgoingLink() != null) {
-				InputConnector nextInputConnector = visualEP.getOutputConnector().getOutgoingLink().getTarget();
-				if ((!(nextInputConnector instanceof SequenceInputConnector))
-						|| ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
-								.getOutgoingLink() != null)
-								&& (!(((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
-										.getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
-					info.setParentSequence(info.getOriginOutSequence());
-					info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
-				} else if (visualEP.getInputConnector().getIncomingLinks().get(0).getSource()
-						.eContainer() instanceof Sequence) {
-					info.setParentSequence(info.getCurrentReferredSequence());
-				}
-			}
-		}
+        if (visualEP.getOutputConnector() != null) {
+            if (visualEP.getOutputConnector().getOutgoingLink() != null) {
+                InputConnector nextInputConnector = visualEP.getOutputConnector().getOutgoingLink().getTarget();
+                if ((!(nextInputConnector instanceof SequenceInputConnector))
+                        || ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                .getOutgoingLink() != null)
+                                && (!(((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                        .getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
+                    info.setParentSequence(info.getOriginOutSequence());
+                    info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+                } else if (visualEP.getInputConnector().getIncomingLinks().get(0).getSource()
+                        .eContainer() instanceof Sequence) {
+                    info.setParentSequence(info.getCurrentReferredSequence());
+                }
+            }
+        }
 
-		List<EsbNode> transformedMediators = info.getTransformedMediators();
-		if (visualEP.getOutputConnector() != null && visualEP.getOutputConnector().getOutgoingLink() != null) {
-			EsbNode nextElement = (EsbNode) visualEP.getOutputConnector().getOutgoingLink().getTarget().eContainer();
-			if (transformedMediators.contains(nextElement)) {
-				return;
-			}
-			transformedMediators.add(nextElement);
-		}
+        List<EsbNode> transformedMediators = info.getTransformedMediators();
+        if (visualEP.getOutputConnector() != null && visualEP.getOutputConnector().getOutgoingLink() != null) {
+            EsbNode nextElement = (EsbNode) visualEP.getOutputConnector().getOutgoingLink().getTarget().eContainer();
+            if (transformedMediators.contains(nextElement)) {
+                return;
+            }
+            transformedMediators.add(nextElement);
+        }
 
-		// Transform endpoint output data flow.
-		// TODO: find out why this was commented out.
-		// might want to check if the flow is connected back to initial proxy
-		// service
-		doTransform(info, visualEP.getOutputConnector());
-	}
+        // Transform endpoint output data flow.
+        // TODO: find out why this was commented out.
+        // might want to check if the flow is connected back to initial proxy
+        // service
+        doTransform(info, visualEP.getOutputConnector());
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) throws TransformerException {
-		Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
-		DefaultEndPoint visualEP = (DefaultEndPoint) subject;
-		Endpoint endPoint;
-		try {
-			endPoint = (Endpoint) create(visualEP, visualEP.getEndPointName());
-		} catch (TransformerException e) {
-			throw new TransformerException(e);
-		}
-		endPoints.add(endPoint);
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
+            throws TransformerException {
+        Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
+        DefaultEndPoint visualEP = (DefaultEndPoint) subject;
+        Endpoint endPoint;
+        try {
+            endPoint = (Endpoint) create(visualEP, visualEP.getEndPointName());
+        } catch (TransformerException e) {
+            throw new TransformerException(e);
+        }
+        endPoints.add(endPoint);
 
-		// Transform endpoint output data flow.
-		transformEndpointOutflow(info);
-	}
+        // Transform endpoint output data flow.
+        transformEndpointOutflow(info);
+    }
 
-	public DefaultEndpoint create(DefaultEndPoint visualEndPoint, String name) throws TransformerException {
-		DefaultEndpoint synapseEP = new DefaultEndpoint();
-		if (StringUtils.isNotBlank(name)) {
-			synapseEP.setName(name);
-		}
-		try {
-			createAdvanceOptions(visualEndPoint, synapseEP);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-		return synapseEP;
-	}
+    public DefaultEndpoint create(DefaultEndPoint visualEndPoint, String name) throws TransformerException {
+        DefaultEndpoint synapseEP = new DefaultEndpoint();
+        if (StringUtils.isNotBlank(name)) {
+            synapseEP.setName(name);
+        }
+        try {
+            createAdvanceOptions(visualEndPoint, synapseEP);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+        return synapseEP;
+    }
 
-	public SynapseArtifact create(DefaultEndpointFormPage defaultEndpointFormPage) throws NumberFormatException, JaxenException {
-		DefaultEndpoint synapseEP = new DefaultEndpoint();
-		if (StringUtils.isNotBlank(defaultEndpointFormPage.getEndpointName().getText())) {
-			synapseEP.setName(defaultEndpointFormPage.getEndpointName().getText());
-		}
-		createAdvanceOptions(defaultEndpointFormPage, synapseEP);
-		if(defaultEndpointFormPage.endpointPropertyList != null && defaultEndpointFormPage.endpointPropertyList.size()>0){
-			saveProperties(defaultEndpointFormPage,synapseEP);
-		}
+    public SynapseArtifact create(DefaultEndpointFormPage defaultEndpointFormPage)
+            throws NumberFormatException, JaxenException {
+        DefaultEndpoint synapseEP = new DefaultEndpoint();
+        if (StringUtils.isNotBlank(defaultEndpointFormPage.getEndpointName().getText())) {
+            synapseEP.setName(defaultEndpointFormPage.getEndpointName().getText());
+        }
+        createAdvanceOptions(defaultEndpointFormPage, synapseEP);
+        if (defaultEndpointFormPage.endpointPropertyList != null
+                && defaultEndpointFormPage.endpointPropertyList.size() > 0) {
+            saveProperties(defaultEndpointFormPage, synapseEP);
+        }
 
-		if (defaultEndpointFormPage.isTemplate()) {
-			return createTemplate(defaultEndpointFormPage, synapseEP);
-		} else {
-			return synapseEP;
-		}
-	}
+        if (defaultEndpointFormPage.isTemplate()) {
+            return createTemplate(defaultEndpointFormPage, synapseEP);
+        } else {
+            return synapseEP;
+        }
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		Assert.isTrue(subject instanceof DefaultEndPoint, "Invalid subject");
-		DefaultEndPoint visualEndPoint = (DefaultEndPoint) subject;
-		Endpoint synapseEP = create(visualEndPoint, visualEndPoint.getEndPointName());
-		setEndpointToSendOrCallMediator(sequence, synapseEP);
-	}
-	
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        Assert.isTrue(subject instanceof DefaultEndPoint, "Invalid subject");
+        DefaultEndPoint visualEndPoint = (DefaultEndPoint) subject;
+        Endpoint synapseEP = create(visualEndPoint, visualEndPoint.getEndPointName());
+        setEndpointToSendOrCallMediator(sequence, synapseEP);
+    }
 
-	/**
-	 * Save endpoint properties
-	 * 
-	 * @param model
-	 * @param endpoint
-	 */
-	protected void saveProperties(DefaultEndpointFormPage endpointFormPage, org.apache.synapse.endpoints.DefaultEndpoint synapseHttpEP) {
-		
-		for(EndPointProperty property : endpointFormPage.endpointPropertyList){
-			MediatorProperty mediatorProperty = new MediatorProperty();
-			mediatorProperty.setName(property.getName());
+    /**
+     * Save endpoint properties
+     * 
+     * @param model
+     * @param endpoint
+     */
+    protected void saveProperties(DefaultEndpointFormPage endpointFormPage,
+            org.apache.synapse.endpoints.DefaultEndpoint synapseHttpEP) {
 
-			if (property.getValueType().toString().equals("EXPRESSION")) {
-				SynapseXPath XPath = null;
-				try {
-					XPath = new SynapseXPath(property.getValueExpression().getPropertyValue());
-					for (int i = 0; i < property.getValueExpression().getNamespaces().keySet().size(); ++i) {
-						String prefix = (String) property.getValueExpression().getNamespaces().keySet().toArray()[i];
-						String namespaceUri = property.getValueExpression().getNamespaces().get(prefix);
-						XPath.addNamespace(prefix, namespaceUri);
-					}
-					mediatorProperty.setExpression(XPath);
-				} catch (JaxenException e) {
-					log.error("Error while persisting Endpoint properties", e);
-				}
-			} else if (property.getValueType().toString().equals("LITERAL")) {
-				mediatorProperty.setValue(property.getValue());
-			}
+        for (EndPointProperty property : endpointFormPage.endpointPropertyList) {
+            MediatorProperty mediatorProperty = new MediatorProperty();
+            mediatorProperty.setName(property.getName());
 
-			mediatorProperty.setScope(property.getScope().toString().toLowerCase());
-			synapseHttpEP.addProperty(mediatorProperty);
-		}
-	}
+            if (property.getValueType().toString().equals("EXPRESSION")) {
+                SynapseXPath XPath = null;
+                try {
+                    XPath = new SynapseXPath(property.getValueExpression().getPropertyValue());
+                    for (int i = 0; i < property.getValueExpression().getNamespaces().keySet().size(); ++i) {
+                        String prefix = (String) property.getValueExpression().getNamespaces().keySet().toArray()[i];
+                        String namespaceUri = property.getValueExpression().getNamespaces().get(prefix);
+                        XPath.addNamespace(prefix, namespaceUri);
+                    }
+                    mediatorProperty.setExpression(XPath);
+                } catch (JaxenException e) {
+                    log.error("Error while persisting Endpoint properties", e);
+                }
+            } else if (property.getValueType().toString().equals("LITERAL")) {
+                mediatorProperty.setValue(property.getValue());
+            }
+
+            mediatorProperty.setScope(property.getScope().toString().toLowerCase());
+            synapseHttpEP.addProperty(mediatorProperty);
+        }
+    }
 }

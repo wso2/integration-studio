@@ -36,60 +36,54 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  */
 public class MessageMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	/** The name of the main sequence for message mediation */
-	public static final String MAIN_SEQUENCE_KEY = "main";
-	/** The name of the fault sequence to execute on failures during mediation */
-	public static final String FAULT_SEQUENCE_KEY = "fault";
+    /** The name of the main sequence for message mediation */
+    public static final String MAIN_SEQUENCE_KEY = "main";
+    /** The name of the fault sequence to execute on failures during mediation */
+    public static final String FAULT_SEQUENCE_KEY = "fault";
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo info, EsbNode subject)
-			throws TransformerException {
-		// Check subject.
-		Assert.isTrue(
-				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator,
-				"Invalid subject.");
-		org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator visualMessage = (org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator) subject;
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator, "Invalid subject.");
+        org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator visualMessage = (org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator) subject;
 
-		// Check start.
-		if (info.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {
-			// Let's use a dummy service name for now.
-			SequenceMediator mainMediator = new SequenceMediator();
-			mainMediator.setName(MAIN_SEQUENCE_KEY);
-			InMediator inMed = new InMediator();
-			mainMediator.addChild(inMed);
-			OutMediator outMed = new OutMediator();
-			mainMediator.addChild(outMed);			
-			info.getSynapseConfiguration().addSequence(MAIN_SEQUENCE_KEY, mainMediator);			
-			info.setOriginInSequence(inMed);
-			info.setOriginOutSequence(outMed);
-			info.setParentSequence(inMed);
+        // Check start.
+        if (info.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {
+            // Let's use a dummy service name for now.
+            SequenceMediator mainMediator = new SequenceMediator();
+            mainMediator.setName(MAIN_SEQUENCE_KEY);
+            InMediator inMed = new InMediator();
+            mainMediator.addChild(inMed);
+            OutMediator outMed = new OutMediator();
+            mainMediator.addChild(outMed);
+            info.getSynapseConfiguration().addSequence(MAIN_SEQUENCE_KEY, mainMediator);
+            info.setOriginInSequence(inMed);
+            info.setOriginOutSequence(outMed);
+            info.setParentSequence(inMed);
 
-			// Transform output data flow.
-			doTransform(info, visualMessage.getOutputConnector());
-		} else {
-			// Round-trip comlplete, send the message back to client.
-			// TODO: Need to verify (either here or in the visual model) that
-			// this is not a short-cricuit or an illegal message routing
-			// operation (attempting to route one proxy service's messages to
-			// another).
-			info.getOriginOutSequence().addChild(new SendMediator());
-		}
-	}
+            // Transform output data flow.
+            doTransform(info, visualMessage.getOutputConnector());
+        } else {
+            // Round-trip comlplete, send the message back to client.
+            // TODO: Need to verify (either here or in the visual model) that
+            // this is not a short-cricuit or an illegal message routing
+            // operation (attempting to route one proxy service's messages to
+            // another).
+            info.getOriginOutSequence().addChild(new SendMediator());
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
+    }
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		// TODO Auto-generated method stub
-		
-	}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // TODO Auto-generated method stub
 
+    }
 
 }

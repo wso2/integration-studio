@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediatorOutputConnector;
  * @generated
  */
 public class StoreMediatorOutputConnectorImpl extends OutputConnectorImpl implements StoreMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected StoreMediatorOutputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected StoreMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.STORE_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.STORE_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //StoreMediatorOutputConnectorImpl
+} // StoreMediatorOutputConnectorImpl

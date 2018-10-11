@@ -19,27 +19,29 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleSetCreationProperty;
  * @generated
  */
 public class RuleSetCreationPropertyImpl extends AbstractNameValuePropertyImpl implements RuleSetCreationProperty {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected RuleSetCreationPropertyImpl() {
-		super();
-		
-		setPropertyName("property_name");
-		setPropertyValue("property_value");
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    protected RuleSetCreationPropertyImpl() {
+        super();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.RULE_SET_CREATION_PROPERTY;
-	}
+        setPropertyName("property_name");
+        setPropertyValue("property_value");
+    }
 
-} //RuleSetCreationPropertyImpl
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.RULE_SET_CREATION_PROPERTY;
+    }
+
+} // RuleSetCreationPropertyImpl

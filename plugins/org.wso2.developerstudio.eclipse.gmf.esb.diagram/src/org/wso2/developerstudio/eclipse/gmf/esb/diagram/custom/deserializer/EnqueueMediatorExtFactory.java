@@ -30,30 +30,30 @@ public class EnqueueMediatorExtFactory extends EnqueueMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	Mediator mediator = new EnqueueMediator();
+        Mediator mediator = new EnqueueMediator();
 
-	QName SEQUENCE_ATT = new QName("sequence");
-	QName PRIORITY_ATT = new QName("priority");
-	QName QUEUE_ATT = new QName("executor");
+        QName SEQUENCE_ATT = new QName("sequence");
+        QName PRIORITY_ATT = new QName("priority");
+        QName QUEUE_ATT = new QName("executor");
 
-	processAuditStatus(mediator, omElement);
+        processAuditStatus(mediator, omElement);
 
-	OMAttribute seqAtt = omElement.getAttribute(SEQUENCE_ATT);
-	if (seqAtt != null && !"".equals(seqAtt.getAttributeValue())) {
-	    ((EnqueueMediator) mediator).setSequenceName(seqAtt.getAttributeValue());
-	}
+        OMAttribute seqAtt = omElement.getAttribute(SEQUENCE_ATT);
+        if (seqAtt != null && !"".equals(seqAtt.getAttributeValue())) {
+            ((EnqueueMediator) mediator).setSequenceName(seqAtt.getAttributeValue());
+        }
 
-	OMAttribute priorityAtt = omElement.getAttribute(PRIORITY_ATT);
-	if (priorityAtt != null && !"".equals(priorityAtt.getAttributeValue())) {
-	    ((EnqueueMediator) mediator).setPriority(Integer.parseInt(priorityAtt.getAttributeValue()));
-	}
+        OMAttribute priorityAtt = omElement.getAttribute(PRIORITY_ATT);
+        if (priorityAtt != null && !"".equals(priorityAtt.getAttributeValue())) {
+            ((EnqueueMediator) mediator).setPriority(Integer.parseInt(priorityAtt.getAttributeValue()));
+        }
 
-	OMAttribute queueAtt = omElement.getAttribute(QUEUE_ATT);
-	if (queueAtt != null && !"".equals(queueAtt.getAttributeValue())) {
-	    ((EnqueueMediator) mediator).setExecutorName(queueAtt.getAttributeValue());
-	}
+        OMAttribute queueAtt = omElement.getAttribute(QUEUE_ATT);
+        if (queueAtt != null && !"".equals(queueAtt.getAttributeValue())) {
+            ((EnqueueMediator) mediator).setExecutorName(queueAtt.getAttributeValue());
+        }
 
-	return mediator;
+        return mediator;
 
     }
 

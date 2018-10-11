@@ -25,17 +25,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 
 public class CommentMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CommentMediator> {
 
-	@Override
-	public CommentMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) {
-		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.CommentMediator,
-				"Unsupported mediator passed in for deserialization at " + this.getClass());
+    @Override
+    public CommentMediator createNode(IGraphicalEditPart part, AbstractMediator mediator) {
+        Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.CommentMediator,
+                "Unsupported mediator passed in for deserialization at " + this.getClass());
 
-		org.apache.synapse.mediators.builtin.CommentMediator commentMediator = (org.apache.synapse.mediators.builtin.CommentMediator) mediator;
-		CommentMediator visualCommentMediator = EsbFactory.eINSTANCE.createCommentMediator();
-		visualCommentMediator.setCommentText(commentMediator.getCommentText());
+        org.apache.synapse.mediators.builtin.CommentMediator commentMediator = (org.apache.synapse.mediators.builtin.CommentMediator) mediator;
+        CommentMediator visualCommentMediator = EsbFactory.eINSTANCE.createCommentMediator();
+        visualCommentMediator.setCommentText(commentMediator.getCommentText());
 
-		return visualCommentMediator;
-	}
-
+        return visualCommentMediator;
+    }
 
 }

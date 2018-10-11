@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class CallTemplateMediatorOutputConnectorImpl extends OutputConnectorImpl implements CallTemplateMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CallTemplateMediatorOutputConnectorImpl() {
-		super();
-	}
+public class CallTemplateMediatorOutputConnectorImpl extends OutputConnectorImpl
+        implements CallTemplateMediatorOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected CallTemplateMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.CALL_TEMPLATE_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.CALL_TEMPLATE_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //CallTemplateMediatorOutputConnectorImpl
+} // CallTemplateMediatorOutputConnectorImpl

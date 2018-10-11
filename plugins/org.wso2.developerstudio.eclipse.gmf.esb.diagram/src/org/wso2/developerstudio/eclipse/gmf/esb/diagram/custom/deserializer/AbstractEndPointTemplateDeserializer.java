@@ -30,36 +30,36 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.ESBFormEditor;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointFormPage;
 
 public abstract class AbstractEndPointTemplateDeserializer
-		extends AbstractEsbNodeDeserializer<org.apache.synapse.endpoints.Template, Template> {
+        extends AbstractEsbNodeDeserializer<org.apache.synapse.endpoints.Template, Template> {
 
-	public void createNode(FormEditor formEditor, org.apache.synapse.endpoints.Template template) {
-		ESBFormEditor addressTemplateEPFormEditor = (ESBFormEditor) formEditor;
-		EndpointFormPage endpointPage = (EndpointFormPage) addressTemplateEPFormEditor
-				.getFormPageForArtifact(ArtifactType.ENDPOINT);
+    public void createNode(FormEditor formEditor, org.apache.synapse.endpoints.Template template) {
+        ESBFormEditor addressTemplateEPFormEditor = (ESBFormEditor) formEditor;
+        EndpointFormPage endpointPage = (EndpointFormPage) addressTemplateEPFormEditor
+                .getFormPageForArtifact(ArtifactType.ENDPOINT);
 
-		if (endpointPage.getTemplateParameterList() == null) {
-			List<TemplateParameter> parameterList = new ArrayList<TemplateParameter>();
-			endpointPage.setTemplateParameterList(parameterList);
-		}
-		endpointPage.getTemplateParameterList().clear();
-		for (String parameter : template.getParameters()) {
-			if (parameter != null && !(parameter.equals("name") || parameter.equals("uri"))) {
-				TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
-				templateParameter.setName(parameter);
-				endpointPage.getTemplateParameterList().add(templateParameter);
-			}
-		}
-		setTextValue(endpointPage.getTemplateName(), template.getName());
+        if (endpointPage.getTemplateParameterList() == null) {
+            List<TemplateParameter> parameterList = new ArrayList<TemplateParameter>();
+            endpointPage.setTemplateParameterList(parameterList);
+        }
+        endpointPage.getTemplateParameterList().clear();
+        for (String parameter : template.getParameters()) {
+            if (parameter != null && !(parameter.equals("name") || parameter.equals("uri"))) {
+                TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
+                templateParameter.setName(parameter);
+                endpointPage.getTemplateParameterList().add(templateParameter);
+            }
+        }
+        setTextValue(endpointPage.getTemplateName(), template.getName());
 
-		Endpoint endpoint = DummyTemplateEndpointFactory.getEndpointFromElement(template.getElement(), false,
-				new Properties());
-		IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
-		deserializer.createNode(formEditor, endpoint);
-	}
+        Endpoint endpoint = DummyTemplateEndpointFactory.getEndpointFromElement(template.getElement(), false,
+                new Properties());
+        IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
+        deserializer.createNode(formEditor, endpoint);
+    }
 
-	protected void setTextValue(Text textField, Object value) {
-		if (value != null && textField != null) {
-			textField.setText(value.toString());
-		}
-	}
+    protected void setTextValue(Text textField, Object value) {
+        if (value != null && textField != null) {
+            textField.setText(value.toString());
+        }
+    }
 }

@@ -33,35 +33,35 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class ForEachMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, ForEachMediator> {
 
-	@Override
-	public ForEachMediator createNode(IGraphicalEditPart part, AbstractMediator object) throws DeserializerException {
-		Assert.isTrue(object instanceof org.apache.synapse.mediators.builtin.ForEachMediator,
-				"Unsupported mediator passed in for deserialization");
+    @Override
+    public ForEachMediator createNode(IGraphicalEditPart part, AbstractMediator object) throws DeserializerException {
+        Assert.isTrue(object instanceof org.apache.synapse.mediators.builtin.ForEachMediator,
+                "Unsupported mediator passed in for deserialization");
 
-		org.apache.synapse.mediators.builtin.ForEachMediator mediator = (org.apache.synapse.mediators.builtin.ForEachMediator) object;
-		ForEachMediator mediatorModel = (ForEachMediator) DeserializerUtils.createNode(part,
-				EsbElementTypes.ForEachMediator_3780);
-		setElementToEdit(mediatorModel);
-		setCommonProperties(mediator, mediatorModel);
+        org.apache.synapse.mediators.builtin.ForEachMediator mediator = (org.apache.synapse.mediators.builtin.ForEachMediator) object;
+        ForEachMediator mediatorModel = (ForEachMediator) DeserializerUtils.createNode(part,
+                EsbElementTypes.ForEachMediator_3780);
+        setElementToEdit(mediatorModel);
+        setCommonProperties(mediator, mediatorModel);
 
-		executeSetValueCommand(FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION, createNamespacedProperty(mediator.getExpression()));
-		executeSetValueCommand(FOR_EACH_MEDIATOR__FOR_EACH_ID, mediator.getId());
+        executeSetValueCommand(FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION,
+                createNamespacedProperty(mediator.getExpression()));
+        executeSetValueCommand(FOR_EACH_MEDIATOR__FOR_EACH_ID, mediator.getId());
 
-		if (mediator.getSequence() != null) {
-			executeSetValueCommand(FOR_EACH_MEDIATOR__SEQUENCE_TYPE, SequenceType.ANONYMOUS);
-			refreshEditPartMap();
-			IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(mediatorModel.getMediatorFlow())
-					.getChildren().get(0);
-			deserializeSequence(compartment, mediator.getSequence(), mediatorModel.getTargetOutputConnector());
-		} else if (mediator.getSequenceRef() != null && !mediator.getSequenceRef().equals("")) {
-			executeSetValueCommand(FOR_EACH_MEDIATOR__SEQUENCE_TYPE, SequenceType.REGISTRY_REFERENCE);
-			RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-			regkey.setKeyValue(mediator.getSequenceRef());
-			executeSetValueCommand(FOR_EACH_MEDIATOR__SEQUENCE_KEY, regkey);
-		}
+        if (mediator.getSequence() != null) {
+            executeSetValueCommand(FOR_EACH_MEDIATOR__SEQUENCE_TYPE, SequenceType.ANONYMOUS);
+            refreshEditPartMap();
+            IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(mediatorModel.getMediatorFlow())
+                    .getChildren().get(0);
+            deserializeSequence(compartment, mediator.getSequence(), mediatorModel.getTargetOutputConnector());
+        } else if (mediator.getSequenceRef() != null && !mediator.getSequenceRef().equals("")) {
+            executeSetValueCommand(FOR_EACH_MEDIATOR__SEQUENCE_TYPE, SequenceType.REGISTRY_REFERENCE);
+            RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+            regkey.setKeyValue(mediator.getSequenceRef());
+            executeSetValueCommand(FOR_EACH_MEDIATOR__SEQUENCE_KEY, regkey);
+        }
 
-		return mediatorModel;
-	}
-
+        return mediatorModel;
+    }
 
 }

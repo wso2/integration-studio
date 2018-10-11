@@ -32,7 +32,6 @@ public class ProxyOutSequenceOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ProxyOutSequenceOutputConnectorImpl() {
@@ -42,7 +41,6 @@ public class ProxyOutSequenceOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

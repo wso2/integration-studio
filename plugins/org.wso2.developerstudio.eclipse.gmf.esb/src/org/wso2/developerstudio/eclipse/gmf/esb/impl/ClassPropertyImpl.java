@@ -22,7 +22,6 @@ public class ClassPropertyImpl extends AbstractNameValueExpressionPropertyImpl i
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ClassPropertyImpl() {
@@ -32,7 +31,6 @@ public class ClassPropertyImpl extends AbstractNameValueExpressionPropertyImpl i
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

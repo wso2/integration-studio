@@ -24,8 +24,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute#getDefaultValue <em>Default
- * Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute#getDefaultValue <em>Default Value</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediatorAttribute()
@@ -43,7 +42,6 @@ public interface PublishEventMediatorAttribute extends AbstractNameValueExpressi
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Default Value</em>' attribute.
      * @see #setDefaultValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPublishEventMediatorAttribute_DefaultValue()
@@ -53,12 +51,9 @@ public interface PublishEventMediatorAttribute extends AbstractNameValueExpressi
     String getDefaultValue();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute#getDefaultValue <em>Default
-     * Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute#getDefaultValue <em>Default Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Default Value</em>' attribute.
      * @see #getDefaultValue()
      * @generated

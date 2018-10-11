@@ -43,24 +43,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getBeanstalk <em>Beanstalk</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getClass_ <em>Class</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getMethod <em>Method</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getSessionIdType <em>Session Id
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getSessionIdLiteral <em>Session Id
- * Literal</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getSessionIdExpression <em>Session Id
- * Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#isRemove <em>Remove</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getTarget <em>Target</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getJNDIName <em>JNDI Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getMethodArguments <em>Method
- * Arguments</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getBeanstalk <em>Beanstalk</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getMethod <em>Method</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getSessionIdType <em>Session Id Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getSessionIdLiteral <em>Session Id Literal</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getSessionIdExpression <em>Session Id Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#isRemove <em>Remove</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getJNDIName <em>JNDI Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EJBMediatorImpl#getMethodArguments <em>Method Arguments</em>}</li>
  * </ul>
  *
  * @generated
@@ -70,7 +64,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -81,7 +74,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -92,7 +84,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The default value of the '{@link #getBeanstalk() <em>Beanstalk</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getBeanstalk()
      * @generated
      * @ordered
@@ -103,7 +94,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getBeanstalk() <em>Beanstalk</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getBeanstalk()
      * @generated
      * @ordered
@@ -114,7 +104,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The default value of the '{@link #getClass_() <em>Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getClass_()
      * @generated
      * @ordered
@@ -125,7 +114,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getClass_() <em>Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getClass_()
      * @generated
      * @ordered
@@ -136,7 +124,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The default value of the '{@link #getMethod() <em>Method</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMethod()
      * @generated
      * @ordered
@@ -147,7 +134,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getMethod() <em>Method</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMethod()
      * @generated
      * @ordered
@@ -158,7 +144,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The default value of the '{@link #getSessionIdType() <em>Session Id Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSessionIdType()
      * @generated
      * @ordered
@@ -169,7 +154,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getSessionIdType() <em>Session Id Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSessionIdType()
      * @generated
      * @ordered
@@ -180,7 +164,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The default value of the '{@link #getSessionIdLiteral() <em>Session Id Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSessionIdLiteral()
      * @generated
      * @ordered
@@ -191,7 +174,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getSessionIdLiteral() <em>Session Id Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSessionIdLiteral()
      * @generated
      * @ordered
@@ -202,7 +184,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getSessionIdExpression() <em>Session Id Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSessionIdExpression()
      * @generated
      * @ordered
@@ -213,7 +194,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The default value of the '{@link #isRemove() <em>Remove</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isRemove()
      * @generated
      * @ordered
@@ -224,7 +204,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #isRemove() <em>Remove</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isRemove()
      * @generated
      * @ordered
@@ -235,7 +214,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The default value of the '{@link #getTarget() <em>Target</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTarget()
      * @generated
      * @ordered
@@ -246,7 +224,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getTarget() <em>Target</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTarget()
      * @generated
      * @ordered
@@ -257,7 +234,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The default value of the '{@link #getJNDIName() <em>JNDI Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getJNDIName()
      * @generated
      * @ordered
@@ -268,7 +244,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getJNDIName() <em>JNDI Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getJNDIName()
      * @generated
      * @ordered
@@ -279,7 +254,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
      * The cached value of the '{@link #getMethodArguments() <em>Method Arguments</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getMethodArguments()
      * @generated
      * @ordered
@@ -304,7 +278,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -315,7 +288,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EJBMediatorInputConnector getInputConnector() {
@@ -325,7 +297,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(EJBMediatorInputConnector newInputConnector,
@@ -333,12 +304,8 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
         EJBMediatorInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -346,30 +313,25 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(EJBMediatorInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EJBMediatorOutputConnector getOutputConnector() {
@@ -379,7 +341,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(EJBMediatorOutputConnector newOutputConnector,
@@ -387,12 +348,8 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
         EJBMediatorOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -400,30 +357,25 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(EJBMediatorOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getBeanstalk() {
@@ -433,21 +385,18 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setBeanstalk(String newBeanstalk) {
         String oldBeanstalk = beanstalk;
         beanstalk = newBeanstalk;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__BEANSTALK, oldBeanstalk,
-                    beanstalk));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__BEANSTALK, oldBeanstalk, beanstalk));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getClass_() {
@@ -457,7 +406,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setClass(String newClass) {
@@ -470,7 +418,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getMethod() {
@@ -480,7 +427,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setMethod(String newMethod) {
@@ -493,7 +439,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PropertyValueType getSessionIdType() {
@@ -503,21 +448,18 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSessionIdType(PropertyValueType newSessionIdType) {
         PropertyValueType oldSessionIdType = sessionIdType;
         sessionIdType = newSessionIdType == null ? SESSION_ID_TYPE_EDEFAULT : newSessionIdType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE,
-                    oldSessionIdType, sessionIdType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE, oldSessionIdType, sessionIdType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSessionIdLiteral() {
@@ -527,21 +469,18 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSessionIdLiteral(String newSessionIdLiteral) {
         String oldSessionIdLiteral = sessionIdLiteral;
         sessionIdLiteral = newSessionIdLiteral;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL,
-                    oldSessionIdLiteral, sessionIdLiteral));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL, oldSessionIdLiteral, sessionIdLiteral));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getSessionIdExpression() {
@@ -551,7 +490,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetSessionIdExpression(NamespacedProperty newSessionIdExpression,
@@ -559,12 +497,8 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
         NamespacedProperty oldSessionIdExpression = sessionIdExpression;
         sessionIdExpression = newSessionIdExpression;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION, oldSessionIdExpression, newSessionIdExpression);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION, oldSessionIdExpression, newSessionIdExpression);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -572,30 +506,25 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSessionIdExpression(NamespacedProperty newSessionIdExpression) {
         if (newSessionIdExpression != sessionIdExpression) {
             NotificationChain msgs = null;
             if (sessionIdExpression != null)
-                msgs = ((InternalEObject) sessionIdExpression).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)sessionIdExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION, null, msgs);
             if (newSessionIdExpression != null)
-                msgs = ((InternalEObject) newSessionIdExpression).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)newSessionIdExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION, null, msgs);
             msgs = basicSetSessionIdExpression(newSessionIdExpression, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION,
-                    newSessionIdExpression, newSessionIdExpression));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION, newSessionIdExpression, newSessionIdExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isRemove() {
@@ -605,7 +534,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setRemove(boolean newRemove) {
@@ -618,7 +546,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTarget() {
@@ -628,7 +555,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTarget(String newTarget) {
@@ -641,7 +567,6 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getJNDIName() {
@@ -651,27 +576,23 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setJNDIName(String newJNDIName) {
         String oldJNDIName = jndiName;
         jndiName = newJNDIName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__JNDI_NAME, oldJNDIName,
-                    jndiName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.EJB_MEDIATOR__JNDI_NAME, oldJNDIName, jndiName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<MethodArgument> getMethodArguments() {
         if (methodArguments == null) {
-            methodArguments = new EObjectContainmentEList<MethodArgument>(MethodArgument.class, this,
-                    EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS);
+            methodArguments = new EObjectContainmentEList<MethodArgument>(MethodArgument.class, this, EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS);
         }
         return methodArguments;
     }
@@ -679,20 +600,19 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
-            return basicSetSessionIdExpression(null, msgs);
-        case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
-            return ((InternalEList<?>) getMethodArguments()).basicRemove(otherEnd, msgs);
+            case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
+                return basicSetSessionIdExpression(null, msgs);
+            case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
+                return ((InternalEList<?>)getMethodArguments()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -700,36 +620,35 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
-            return getOutputConnector();
-        case EsbPackage.EJB_MEDIATOR__BEANSTALK:
-            return getBeanstalk();
-        case EsbPackage.EJB_MEDIATOR__CLASS:
-            return getClass_();
-        case EsbPackage.EJB_MEDIATOR__METHOD:
-            return getMethod();
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
-            return getSessionIdType();
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
-            return getSessionIdLiteral();
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
-            return getSessionIdExpression();
-        case EsbPackage.EJB_MEDIATOR__REMOVE:
-            return isRemove();
-        case EsbPackage.EJB_MEDIATOR__TARGET:
-            return getTarget();
-        case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
-            return getJNDIName();
-        case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
-            return getMethodArguments();
+            case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
+                return getOutputConnector();
+            case EsbPackage.EJB_MEDIATOR__BEANSTALK:
+                return getBeanstalk();
+            case EsbPackage.EJB_MEDIATOR__CLASS:
+                return getClass_();
+            case EsbPackage.EJB_MEDIATOR__METHOD:
+                return getMethod();
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
+                return getSessionIdType();
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
+                return getSessionIdLiteral();
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
+                return getSessionIdExpression();
+            case EsbPackage.EJB_MEDIATOR__REMOVE:
+                return isRemove();
+            case EsbPackage.EJB_MEDIATOR__TARGET:
+                return getTarget();
+            case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
+                return getJNDIName();
+            case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
+                return getMethodArguments();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -737,50 +656,49 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((EJBMediatorInputConnector) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((EJBMediatorOutputConnector) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__BEANSTALK:
-            setBeanstalk((String) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__CLASS:
-            setClass((String) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__METHOD:
-            setMethod((String) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
-            setSessionIdType((PropertyValueType) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
-            setSessionIdLiteral((String) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
-            setSessionIdExpression((NamespacedProperty) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__REMOVE:
-            setRemove((Boolean) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__TARGET:
-            setTarget((String) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
-            setJNDIName((String) newValue);
-            return;
-        case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
-            getMethodArguments().clear();
-            getMethodArguments().addAll((Collection<? extends MethodArgument>) newValue);
-            return;
+            case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((EJBMediatorInputConnector)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((EJBMediatorOutputConnector)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__BEANSTALK:
+                setBeanstalk((String)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__CLASS:
+                setClass((String)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__METHOD:
+                setMethod((String)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
+                setSessionIdType((PropertyValueType)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
+                setSessionIdLiteral((String)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
+                setSessionIdExpression((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__REMOVE:
+                setRemove((Boolean)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__TARGET:
+                setTarget((String)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
+                setJNDIName((String)newValue);
+                return;
+            case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
+                getMethodArguments().clear();
+                getMethodArguments().addAll((Collection<? extends MethodArgument>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -788,48 +706,47 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((EJBMediatorInputConnector) null);
-            return;
-        case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((EJBMediatorOutputConnector) null);
-            return;
-        case EsbPackage.EJB_MEDIATOR__BEANSTALK:
-            setBeanstalk(BEANSTALK_EDEFAULT);
-            return;
-        case EsbPackage.EJB_MEDIATOR__CLASS:
-            setClass(CLASS_EDEFAULT);
-            return;
-        case EsbPackage.EJB_MEDIATOR__METHOD:
-            setMethod(METHOD_EDEFAULT);
-            return;
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
-            setSessionIdType(SESSION_ID_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
-            setSessionIdLiteral(SESSION_ID_LITERAL_EDEFAULT);
-            return;
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
-            setSessionIdExpression((NamespacedProperty) null);
-            return;
-        case EsbPackage.EJB_MEDIATOR__REMOVE:
-            setRemove(REMOVE_EDEFAULT);
-            return;
-        case EsbPackage.EJB_MEDIATOR__TARGET:
-            setTarget(TARGET_EDEFAULT);
-            return;
-        case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
-            setJNDIName(JNDI_NAME_EDEFAULT);
-            return;
-        case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
-            getMethodArguments().clear();
-            return;
+            case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((EJBMediatorInputConnector)null);
+                return;
+            case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((EJBMediatorOutputConnector)null);
+                return;
+            case EsbPackage.EJB_MEDIATOR__BEANSTALK:
+                setBeanstalk(BEANSTALK_EDEFAULT);
+                return;
+            case EsbPackage.EJB_MEDIATOR__CLASS:
+                setClass(CLASS_EDEFAULT);
+                return;
+            case EsbPackage.EJB_MEDIATOR__METHOD:
+                setMethod(METHOD_EDEFAULT);
+                return;
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
+                setSessionIdType(SESSION_ID_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
+                setSessionIdLiteral(SESSION_ID_LITERAL_EDEFAULT);
+                return;
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
+                setSessionIdExpression((NamespacedProperty)null);
+                return;
+            case EsbPackage.EJB_MEDIATOR__REMOVE:
+                setRemove(REMOVE_EDEFAULT);
+                return;
+            case EsbPackage.EJB_MEDIATOR__TARGET:
+                setTarget(TARGET_EDEFAULT);
+                return;
+            case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
+                setJNDIName(JNDI_NAME_EDEFAULT);
+                return;
+            case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
+                getMethodArguments().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -837,37 +754,35 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
-            return outputConnector != null;
-        case EsbPackage.EJB_MEDIATOR__BEANSTALK:
-            return BEANSTALK_EDEFAULT == null ? beanstalk != null : !BEANSTALK_EDEFAULT.equals(beanstalk);
-        case EsbPackage.EJB_MEDIATOR__CLASS:
-            return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
-        case EsbPackage.EJB_MEDIATOR__METHOD:
-            return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
-            return sessionIdType != SESSION_ID_TYPE_EDEFAULT;
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
-            return SESSION_ID_LITERAL_EDEFAULT == null ? sessionIdLiteral != null
-                    : !SESSION_ID_LITERAL_EDEFAULT.equals(sessionIdLiteral);
-        case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
-            return sessionIdExpression != null;
-        case EsbPackage.EJB_MEDIATOR__REMOVE:
-            return remove != REMOVE_EDEFAULT;
-        case EsbPackage.EJB_MEDIATOR__TARGET:
-            return TARGET_EDEFAULT == null ? target != null : !TARGET_EDEFAULT.equals(target);
-        case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
-            return JNDI_NAME_EDEFAULT == null ? jndiName != null : !JNDI_NAME_EDEFAULT.equals(jndiName);
-        case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
-            return methodArguments != null && !methodArguments.isEmpty();
+            case EsbPackage.EJB_MEDIATOR__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.EJB_MEDIATOR__OUTPUT_CONNECTOR:
+                return outputConnector != null;
+            case EsbPackage.EJB_MEDIATOR__BEANSTALK:
+                return BEANSTALK_EDEFAULT == null ? beanstalk != null : !BEANSTALK_EDEFAULT.equals(beanstalk);
+            case EsbPackage.EJB_MEDIATOR__CLASS:
+                return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
+            case EsbPackage.EJB_MEDIATOR__METHOD:
+                return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_TYPE:
+                return sessionIdType != SESSION_ID_TYPE_EDEFAULT;
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_LITERAL:
+                return SESSION_ID_LITERAL_EDEFAULT == null ? sessionIdLiteral != null : !SESSION_ID_LITERAL_EDEFAULT.equals(sessionIdLiteral);
+            case EsbPackage.EJB_MEDIATOR__SESSION_ID_EXPRESSION:
+                return sessionIdExpression != null;
+            case EsbPackage.EJB_MEDIATOR__REMOVE:
+                return remove != REMOVE_EDEFAULT;
+            case EsbPackage.EJB_MEDIATOR__TARGET:
+                return TARGET_EDEFAULT == null ? target != null : !TARGET_EDEFAULT.equals(target);
+            case EsbPackage.EJB_MEDIATOR__JNDI_NAME:
+                return JNDI_NAME_EDEFAULT == null ? jndiName != null : !JNDI_NAME_EDEFAULT.equals(jndiName);
+            case EsbPackage.EJB_MEDIATOR__METHOD_ARGUMENTS:
+                return methodArguments != null && !methodArguments.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -875,13 +790,11 @@ public class EJBMediatorImpl extends MediatorImpl implements EJBMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (beanstalk: ");

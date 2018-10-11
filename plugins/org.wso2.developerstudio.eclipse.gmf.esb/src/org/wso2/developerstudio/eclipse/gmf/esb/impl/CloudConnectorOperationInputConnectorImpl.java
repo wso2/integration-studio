@@ -32,7 +32,6 @@ public class CloudConnectorOperationInputConnectorImpl extends InputConnectorImp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CloudConnectorOperationInputConnectorImpl() {
@@ -42,7 +41,6 @@ public class CloudConnectorOperationInputConnectorImpl extends InputConnectorImp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

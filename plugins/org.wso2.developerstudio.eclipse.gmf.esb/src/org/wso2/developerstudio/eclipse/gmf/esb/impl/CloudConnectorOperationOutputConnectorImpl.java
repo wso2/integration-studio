@@ -32,7 +32,6 @@ public class CloudConnectorOperationOutputConnectorImpl extends OutputConnectorI
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CloudConnectorOperationOutputConnectorImpl() {
@@ -42,7 +41,6 @@ public class CloudConnectorOperationOutputConnectorImpl extends OutputConnectorI
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

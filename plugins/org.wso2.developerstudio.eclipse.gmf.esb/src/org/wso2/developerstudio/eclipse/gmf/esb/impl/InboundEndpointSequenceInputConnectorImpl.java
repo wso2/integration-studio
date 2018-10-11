@@ -32,7 +32,6 @@ public class InboundEndpointSequenceInputConnectorImpl extends InputConnectorImp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected InboundEndpointSequenceInputConnectorImpl() {
@@ -42,7 +41,6 @@ public class InboundEndpointSequenceInputConnectorImpl extends InputConnectorImp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

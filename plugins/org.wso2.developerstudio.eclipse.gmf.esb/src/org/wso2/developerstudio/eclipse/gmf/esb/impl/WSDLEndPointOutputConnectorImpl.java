@@ -22,7 +22,6 @@ public class WSDLEndPointOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected WSDLEndPointOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class WSDLEndPointOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

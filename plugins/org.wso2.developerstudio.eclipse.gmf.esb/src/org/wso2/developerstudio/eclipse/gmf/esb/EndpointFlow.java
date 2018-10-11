@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndpointFlow#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndpointFlow#getChildren <em>Children</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndpointFlow()
@@ -34,7 +34,6 @@ public interface EndpointFlow extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Children</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndpointFlow_Children()
      * @model containment="true"

@@ -23,7 +23,6 @@ public class DBLookupMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected DBLookupMediatorOutputConnectorImpl() {
@@ -33,7 +32,6 @@ public class DBLookupMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

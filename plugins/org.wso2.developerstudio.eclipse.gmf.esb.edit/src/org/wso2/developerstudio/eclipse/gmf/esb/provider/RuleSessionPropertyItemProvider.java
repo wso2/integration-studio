@@ -25,7 +25,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleSessionProperty;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleSessionProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RuleSessionPropertyItemProvider extends AbstractNameValuePropertyItemProvider {
@@ -33,7 +32,6 @@ public class RuleSessionPropertyItemProvider extends AbstractNameValuePropertyIt
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RuleSessionPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -44,7 +42,6 @@ public class RuleSessionPropertyItemProvider extends AbstractNameValuePropertyIt
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -61,7 +58,6 @@ public class RuleSessionPropertyItemProvider extends AbstractNameValuePropertyIt
      * This returns RuleSessionProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -74,15 +70,15 @@ public class RuleSessionPropertyItemProvider extends AbstractNameValuePropertyIt
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((RuleSessionProperty) object).getPropertyName();
-        return label == null || label.length() == 0 ? getString("_UI_RuleSessionProperty_type")
-                : getString("_UI_RuleSessionProperty_type") + " " + label;
+        String label = ((RuleSessionProperty)object).getPropertyName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_RuleSessionProperty_type") :
+            getString("_UI_RuleSessionProperty_type") + " " + label;
     }
 
     /**
@@ -90,7 +86,6 @@ public class RuleSessionPropertyItemProvider extends AbstractNameValuePropertyIt
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -105,7 +100,6 @@ public class RuleSessionPropertyItemProvider extends AbstractNameValuePropertyIt
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

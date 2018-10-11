@@ -33,7 +33,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Type;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.Session} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SessionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -42,7 +41,6 @@ public class SessionItemProvider extends ItemProviderAdapter implements IEditing
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SessionItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +51,6 @@ public class SessionItemProvider extends ItemProviderAdapter implements IEditing
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -70,23 +67,28 @@ public class SessionItemProvider extends ItemProviderAdapter implements IEditing
      * This adds a property descriptor for the Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_Session_type_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_Session_type_feature", "_UI_Session_type"),
-                        EsbPackage.Literals.SESSION__TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Session_type_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Session_type_feature", "_UI_Session_type"),
+                 EsbPackage.Literals.SESSION__TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns Session.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -98,15 +100,15 @@ public class SessionItemProvider extends ItemProviderAdapter implements IEditing
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        Type labelValue = ((Session) object).getType();
+        Type labelValue = ((Session)object).getType();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_Session_type")
-                : getString("_UI_Session_type") + " " + label;
+        return label == null || label.length() == 0 ?
+            getString("_UI_Session_type") :
+            getString("_UI_Session_type") + " " + label;
     }
 
     /**
@@ -114,7 +116,6 @@ public class SessionItemProvider extends ItemProviderAdapter implements IEditing
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -122,9 +123,9 @@ public class SessionItemProvider extends ItemProviderAdapter implements IEditing
         updateChildren(notification);
 
         switch (notification.getFeatureID(Session.class)) {
-        case EsbPackage.SESSION__TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.SESSION__TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -134,7 +135,6 @@ public class SessionItemProvider extends ItemProviderAdapter implements IEditing
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -146,7 +146,6 @@ public class SessionItemProvider extends ItemProviderAdapter implements IEditing
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

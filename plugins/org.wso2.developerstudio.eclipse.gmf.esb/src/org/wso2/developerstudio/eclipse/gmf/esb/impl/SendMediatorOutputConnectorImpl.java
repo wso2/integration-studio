@@ -22,7 +22,6 @@ public class SendMediatorOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected SendMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class SendMediatorOutputConnectorImpl extends OutputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

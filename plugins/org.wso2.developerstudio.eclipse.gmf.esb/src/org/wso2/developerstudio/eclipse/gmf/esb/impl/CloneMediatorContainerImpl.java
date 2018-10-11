@@ -30,19 +30,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorContainerImpl#getCloneTargetContainer <em>Clone
- * Target Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CloneMediatorContainerImpl#getCloneTargetContainer <em>Clone Target Container</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CloneMediatorContainerImpl extends EsbNodeImpl implements CloneMediatorContainer {
     /**
-     * The cached value of the '{@link #getCloneTargetContainer() <em>Clone Target Container</em>}' containment
-     * reference list.
+     * The cached value of the '{@link #getCloneTargetContainer() <em>Clone Target Container</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getCloneTargetContainer()
      * @generated
      * @ordered
@@ -52,7 +49,6 @@ public class CloneMediatorContainerImpl extends EsbNodeImpl implements CloneMedi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CloneMediatorContainerImpl() {
@@ -62,7 +58,6 @@ public class CloneMediatorContainerImpl extends EsbNodeImpl implements CloneMedi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -73,13 +68,11 @@ public class CloneMediatorContainerImpl extends EsbNodeImpl implements CloneMedi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<CloneTargetContainer> getCloneTargetContainer() {
         if (cloneTargetContainer == null) {
-            cloneTargetContainer = new EObjectContainmentEList<CloneTargetContainer>(CloneTargetContainer.class, this,
-                    EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER);
+            cloneTargetContainer = new EObjectContainmentEList<CloneTargetContainer>(CloneTargetContainer.class, this, EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER);
         }
         return cloneTargetContainer;
     }
@@ -87,14 +80,13 @@ public class CloneMediatorContainerImpl extends EsbNodeImpl implements CloneMedi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
-            return ((InternalEList<?>) getCloneTargetContainer()).basicRemove(otherEnd, msgs);
+            case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
+                return ((InternalEList<?>)getCloneTargetContainer()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -102,14 +94,13 @@ public class CloneMediatorContainerImpl extends EsbNodeImpl implements CloneMedi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
-            return getCloneTargetContainer();
+            case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
+                return getCloneTargetContainer();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -117,17 +108,16 @@ public class CloneMediatorContainerImpl extends EsbNodeImpl implements CloneMedi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
-            getCloneTargetContainer().clear();
-            getCloneTargetContainer().addAll((Collection<? extends CloneTargetContainer>) newValue);
-            return;
+            case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
+                getCloneTargetContainer().clear();
+                getCloneTargetContainer().addAll((Collection<? extends CloneTargetContainer>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -135,15 +125,14 @@ public class CloneMediatorContainerImpl extends EsbNodeImpl implements CloneMedi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
-            getCloneTargetContainer().clear();
-            return;
+            case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
+                getCloneTargetContainer().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -151,14 +140,13 @@ public class CloneMediatorContainerImpl extends EsbNodeImpl implements CloneMedi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
-            return cloneTargetContainer != null && !cloneTargetContainer.isEmpty();
+            case EsbPackage.CLONE_MEDIATOR_CONTAINER__CLONE_TARGET_CONTAINER:
+                return cloneTargetContainer != null && !cloneTargetContainer.isEmpty();
         }
         return super.eIsSet(featureID);
     }

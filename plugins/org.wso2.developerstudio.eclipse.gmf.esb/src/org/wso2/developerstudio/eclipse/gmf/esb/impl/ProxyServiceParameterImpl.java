@@ -24,8 +24,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceParameterImpl#getName <em>Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceParameterImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceParameterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceParameterImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,7 +35,6 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -46,7 +45,6 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -57,7 +55,6 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
      * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -68,7 +65,6 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValue()
      * @generated
      * @ordered
@@ -78,7 +74,6 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ProxyServiceParameterImpl() {
@@ -88,7 +83,6 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -99,7 +93,6 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
@@ -109,21 +102,18 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setName(String newName) {
         String oldName = name;
         name = newName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_PARAMETER__NAME, oldName,
-                    name));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_PARAMETER__NAME, oldName, name));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getValue() {
@@ -133,30 +123,27 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setValue(String newValue) {
         String oldValue = value;
         value = newValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_PARAMETER__VALUE, oldValue,
-                    value));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE_PARAMETER__VALUE, oldValue, value));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
-            return getName();
-        case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
-            return getValue();
+            case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
+                return getName();
+            case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
+                return getValue();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -164,18 +151,17 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
-            setName((String) newValue);
-            return;
-        case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
-            setValue((String) newValue);
-            return;
+            case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
+                setName((String)newValue);
+                return;
+            case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
+                setValue((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -183,18 +169,17 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
-            setName(NAME_EDEFAULT);
-            return;
-        case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
-            setValue(VALUE_EDEFAULT);
-            return;
+            case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
+                setValue(VALUE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -202,16 +187,15 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-        case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
-            return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+            case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
+                return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
         }
         return super.eIsSet(featureID);
     }
@@ -219,13 +203,11 @@ public class ProxyServiceParameterImpl extends EObjectImpl implements ProxyServi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");

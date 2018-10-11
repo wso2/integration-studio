@@ -22,7 +22,6 @@ public class BuilderMediatorOutputConectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected BuilderMediatorOutputConectorImpl() {
@@ -32,7 +31,6 @@ public class BuilderMediatorOutputConectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

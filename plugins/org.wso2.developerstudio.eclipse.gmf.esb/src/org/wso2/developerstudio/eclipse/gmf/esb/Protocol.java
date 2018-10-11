@@ -26,7 +26,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Protocol</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getProtocol()
  * @model
  * @generated
@@ -36,7 +35,6 @@ public enum Protocol implements Enumerator {
      * The '<em><b>Http https</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #HTTP_HTTPS_VALUE
      * @generated
      * @ordered
@@ -46,7 +44,6 @@ public enum Protocol implements Enumerator {
      * The '<em><b>Https</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #HTTPS_VALUE
      * @generated
      * @ordered
@@ -56,7 +53,6 @@ public enum Protocol implements Enumerator {
      * The '<em><b>Http</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #HTTP_VALUE
      * @generated
      * @ordered
@@ -71,7 +67,6 @@ public enum Protocol implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #HTTP_HTTPS
      * @model name="http_https"
      * @generated
@@ -87,7 +82,6 @@ public enum Protocol implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #HTTPS
      * @model name="https"
      * @generated
@@ -103,7 +97,6 @@ public enum Protocol implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #HTTP
      * @model name="http"
      * @generated
@@ -115,16 +108,18 @@ public enum Protocol implements Enumerator {
      * An array of all the '<em><b>Protocol</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final Protocol[] VALUES_ARRAY = new Protocol[] { HTTP_HTTPS, HTTPS, HTTP, };
+    private static final Protocol[] VALUES_ARRAY = new Protocol[] {
+            HTTP_HTTPS,
+            HTTPS,
+            HTTP,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Protocol</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<Protocol> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -133,7 +128,6 @@ public enum Protocol implements Enumerator {
      * Returns the '<em><b>Protocol</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -152,7 +146,6 @@ public enum Protocol implements Enumerator {
      * Returns the '<em><b>Protocol</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -171,19 +164,15 @@ public enum Protocol implements Enumerator {
      * Returns the '<em><b>Protocol</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static Protocol get(int value) {
         switch (value) {
-        case HTTP_HTTPS_VALUE:
-            return HTTP_HTTPS;
-        case HTTPS_VALUE:
-            return HTTPS;
-        case HTTP_VALUE:
-            return HTTP;
+            case HTTP_HTTPS_VALUE: return HTTP_HTTPS;
+            case HTTPS_VALUE: return HTTPS;
+            case HTTP_VALUE: return HTTP;
         }
         return null;
     }
@@ -191,7 +180,6 @@ public enum Protocol implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -199,7 +187,6 @@ public enum Protocol implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -207,7 +194,6 @@ public enum Protocol implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -216,7 +202,6 @@ public enum Protocol implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private Protocol(int value, String name, String literal) {
@@ -228,38 +213,34 @@ public enum Protocol implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

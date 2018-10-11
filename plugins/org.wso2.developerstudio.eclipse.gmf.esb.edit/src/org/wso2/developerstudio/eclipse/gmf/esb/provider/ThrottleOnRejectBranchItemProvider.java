@@ -33,11 +33,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnRejectBranch;
 import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnRejectBranch}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleOnRejectBranch} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -46,7 +44,6 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ThrottleOnRejectBranchItemProvider(AdapterFactory adapterFactory) {
@@ -57,7 +54,6 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -75,17 +71,22 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
      * This adds a property descriptor for the Sequence Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSequenceTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ThrottleOnRejectBranch_sequenceType_feature"),
-                        getString("_UI_PropertyDescriptor_description",
-                                "_UI_ThrottleOnRejectBranch_sequenceType_feature", "_UI_ThrottleOnRejectBranch_type"),
-                        EsbPackage.Literals.THROTTLE_ON_REJECT_BRANCH__SEQUENCE_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ThrottleOnRejectBranch_sequenceType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ThrottleOnRejectBranch_sequenceType_feature", "_UI_ThrottleOnRejectBranch_type"),
+                 EsbPackage.Literals.THROTTLE_ON_REJECT_BRANCH__SEQUENCE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -94,7 +95,6 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -110,7 +110,6 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -126,7 +125,6 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
      * This returns ThrottleOnRejectBranch.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -139,16 +137,16 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        ThrottleSequenceType labelValue = ((ThrottleOnRejectBranch) object).getSequenceType();
+        ThrottleSequenceType labelValue = ((ThrottleOnRejectBranch)object).getSequenceType();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_ThrottleOnRejectBranch_type")
-                : getString("_UI_ThrottleOnRejectBranch_type") + " " + label;
+        return label == null || label.length() == 0 ?
+            getString("_UI_ThrottleOnRejectBranch_type") :
+            getString("_UI_ThrottleOnRejectBranch_type") + " " + label;
     }
 
     /**
@@ -156,7 +154,6 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -165,12 +162,12 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
         updateChildren(notification);
 
         switch (notification.getFeatureID(ThrottleOnRejectBranch.class)) {
-        case EsbPackage.THROTTLE_ON_REJECT_BRANCH__SEQUENCE_TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.THROTTLE_ON_REJECT_BRANCH__SEQUENCE_KEY:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.THROTTLE_ON_REJECT_BRANCH__SEQUENCE_TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.THROTTLE_ON_REJECT_BRANCH__SEQUENCE_KEY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -180,7 +177,6 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -188,15 +184,16 @@ public class ThrottleOnRejectBranchItemProvider extends ItemProviderAdapter impl
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.THROTTLE_ON_REJECT_BRANCH__SEQUENCE_KEY,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.THROTTLE_ON_REJECT_BRANCH__SEQUENCE_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

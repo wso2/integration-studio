@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#isBreakAfterRoute <em>Break After Route</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRouteExpression <em>Route Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRoutePattern <em>Route Pattern</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#isBreakAfterRoute <em>Break After Route</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRouteExpression <em>Route Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRoutePattern <em>Route Pattern</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterRoute()
@@ -35,7 +35,6 @@ public interface RouterRoute extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Break After Route</em>' attribute.
      * @see #setBreakAfterRoute(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterRoute_BreakAfterRoute()
@@ -45,11 +44,9 @@ public interface RouterRoute extends EsbNode {
     boolean isBreakAfterRoute();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#isBreakAfterRoute <em>Break
-     * After Route</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#isBreakAfterRoute <em>Break After Route</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Break After Route</em>' attribute.
      * @see #isBreakAfterRoute()
      * @generated
@@ -64,7 +61,6 @@ public interface RouterRoute extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Route Expression</em>' reference.
      * @see #setRouteExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterRoute_RouteExpression()
@@ -74,11 +70,9 @@ public interface RouterRoute extends EsbNode {
     NamespacedProperty getRouteExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRouteExpression <em>Route
-     * Expression</em>}' reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRouteExpression <em>Route Expression</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Route Expression</em>' reference.
      * @see #getRouteExpression()
      * @generated
@@ -93,7 +87,6 @@ public interface RouterRoute extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Route Pattern</em>' attribute.
      * @see #setRoutePattern(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterRoute_RoutePattern()
@@ -103,11 +96,9 @@ public interface RouterRoute extends EsbNode {
     String getRoutePattern();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRoutePattern <em>Route
-     * Pattern</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute#getRoutePattern <em>Route Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Route Pattern</em>' attribute.
      * @see #getRoutePattern()
      * @generated

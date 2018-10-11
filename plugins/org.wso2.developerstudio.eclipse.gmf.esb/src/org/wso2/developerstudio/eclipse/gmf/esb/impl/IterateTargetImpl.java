@@ -31,8 +31,8 @@ import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateTargetImpl#getSoapAction <em>Soap Action</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateTargetImpl#getToAddress <em>To Address</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateTargetImpl#getSoapAction <em>Soap Action</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateTargetImpl#getToAddress <em>To Address</em>}</li>
  * </ul>
  *
  * @generated
@@ -42,7 +42,6 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
      * The default value of the '{@link #getSoapAction() <em>Soap Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSoapAction()
      * @generated
      * @ordered
@@ -53,7 +52,6 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
      * The cached value of the '{@link #getSoapAction() <em>Soap Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSoapAction()
      * @generated
      * @ordered
@@ -64,7 +62,6 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
      * The default value of the '{@link #getToAddress() <em>To Address</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getToAddress()
      * @generated
      * @ordered
@@ -75,7 +72,6 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
      * The cached value of the '{@link #getToAddress() <em>To Address</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getToAddress()
      * @generated
      * @ordered
@@ -117,7 +113,6 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -129,7 +124,6 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSoapAction() {
@@ -139,21 +133,18 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSoapAction(String newSoapAction) {
         String oldSoapAction = soapAction;
         soapAction = newSoapAction;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ITERATE_TARGET__SOAP_ACTION, oldSoapAction,
-                    soapAction));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ITERATE_TARGET__SOAP_ACTION, oldSoapAction, soapAction));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getToAddress() {
@@ -163,31 +154,28 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setToAddress(String newToAddress) {
         String oldToAddress = toAddress;
         toAddress = newToAddress;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ITERATE_TARGET__TO_ADDRESS, oldToAddress,
-                    toAddress));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ITERATE_TARGET__TO_ADDRESS, oldToAddress, toAddress));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.ITERATE_TARGET__SOAP_ACTION:
-            return getSoapAction();
-        case EsbPackage.ITERATE_TARGET__TO_ADDRESS:
-            return getToAddress();
+            case EsbPackage.ITERATE_TARGET__SOAP_ACTION:
+                return getSoapAction();
+            case EsbPackage.ITERATE_TARGET__TO_ADDRESS:
+                return getToAddress();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -195,19 +183,18 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.ITERATE_TARGET__SOAP_ACTION:
-            setSoapAction((String) newValue);
-            return;
-        case EsbPackage.ITERATE_TARGET__TO_ADDRESS:
-            setToAddress((String) newValue);
-            return;
+            case EsbPackage.ITERATE_TARGET__SOAP_ACTION:
+                setSoapAction((String)newValue);
+                return;
+            case EsbPackage.ITERATE_TARGET__TO_ADDRESS:
+                setToAddress((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -215,19 +202,18 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.ITERATE_TARGET__SOAP_ACTION:
-            setSoapAction(SOAP_ACTION_EDEFAULT);
-            return;
-        case EsbPackage.ITERATE_TARGET__TO_ADDRESS:
-            setToAddress(TO_ADDRESS_EDEFAULT);
-            return;
+            case EsbPackage.ITERATE_TARGET__SOAP_ACTION:
+                setSoapAction(SOAP_ACTION_EDEFAULT);
+                return;
+            case EsbPackage.ITERATE_TARGET__TO_ADDRESS:
+                setToAddress(TO_ADDRESS_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -235,17 +221,16 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.ITERATE_TARGET__SOAP_ACTION:
-            return SOAP_ACTION_EDEFAULT == null ? soapAction != null : !SOAP_ACTION_EDEFAULT.equals(soapAction);
-        case EsbPackage.ITERATE_TARGET__TO_ADDRESS:
-            return TO_ADDRESS_EDEFAULT == null ? toAddress != null : !TO_ADDRESS_EDEFAULT.equals(toAddress);
+            case EsbPackage.ITERATE_TARGET__SOAP_ACTION:
+                return SOAP_ACTION_EDEFAULT == null ? soapAction != null : !SOAP_ACTION_EDEFAULT.equals(soapAction);
+            case EsbPackage.ITERATE_TARGET__TO_ADDRESS:
+                return TO_ADDRESS_EDEFAULT == null ? toAddress != null : !TO_ADDRESS_EDEFAULT.equals(toAddress);
         }
         return super.eIsSet(featureID);
     }
@@ -253,14 +238,12 @@ public class IterateTargetImpl extends AbstractCommonTargetImpl implements Itera
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (soapAction: ");

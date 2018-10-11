@@ -44,11 +44,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
@@ -56,7 +54,6 @@ public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CloudConnectorOperationItemProvider(AdapterFactory adapterFactory) {
@@ -124,135 +121,176 @@ public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Connector Parameters feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addConnectorParametersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CloudConnectorOperation_connectorParameters_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_CloudConnectorOperation_connectorParameters_feature", "_UI_CloudConnectorOperation_type"),
-                EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CONNECTOR_PARAMETERS, true, false, false, null, null,
-                null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloudConnectorOperation_connectorParameters_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_connectorParameters_feature", "_UI_CloudConnectorOperation_type"),
+                 EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CONNECTOR_PARAMETERS,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Config Ref feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addConfigRefPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CloudConnectorOperation_configRef_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_configRef_feature",
-                        "_UI_CloudConnectorOperation_type"),
-                EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CONFIG_REF, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloudConnectorOperation_configRef_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_configRef_feature", "_UI_CloudConnectorOperation_type"),
+                 EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CONFIG_REF,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Connector Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addConnectorNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CloudConnectorOperation_connectorName_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_connectorName_feature",
-                        "_UI_CloudConnectorOperation_type"),
-                EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CONNECTOR_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloudConnectorOperation_connectorName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_connectorName_feature", "_UI_CloudConnectorOperation_type"),
+                 EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CONNECTOR_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Operation Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addOperationNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CloudConnectorOperation_operationName_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_operationName_feature",
-                        "_UI_CloudConnectorOperation_type"),
-                EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__OPERATION_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloudConnectorOperation_operationName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_operationName_feature", "_UI_CloudConnectorOperation_type"),
+                 EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__OPERATION_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Cloud Connector Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addCloudConnectorNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CloudConnectorOperation_cloudConnectorName_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_CloudConnectorOperation_cloudConnectorName_feature", "_UI_CloudConnectorOperation_type"),
-                EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CLOUD_CONNECTOR_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloudConnectorOperation_cloudConnectorName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_cloudConnectorName_feature", "_UI_CloudConnectorOperation_type"),
+                 EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CLOUD_CONNECTOR_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the New Config feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addNewConfigPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CloudConnectorOperation_newConfig_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_newConfig_feature",
-                        "_UI_CloudConnectorOperation_type"),
-                EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__NEW_CONFIG, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloudConnectorOperation_newConfig_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_newConfig_feature", "_UI_CloudConnectorOperation_type"),
+                 EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__NEW_CONFIG,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Available Configs feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAvailableConfigsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CloudConnectorOperation_availableConfigs_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_availableConfigs_feature",
-                        "_UI_CloudConnectorOperation_type"),
-                EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__AVAILABLE_CONFIGS, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloudConnectorOperation_availableConfigs_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_availableConfigs_feature", "_UI_CloudConnectorOperation_type"),
+                 EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__AVAILABLE_CONFIGS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Parameter Editor Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addParameterEditorTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CloudConnectorOperation_parameterEditorType_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_CloudConnectorOperation_parameterEditorType_feature", "_UI_CloudConnectorOperation_type"),
-                EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloudConnectorOperation_parameterEditorType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloudConnectorOperation_parameterEditorType_feature", "_UI_CloudConnectorOperation_type"),
+                 EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -261,7 +299,6 @@ public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -278,7 +315,6 @@ public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -293,7 +329,6 @@ public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
      * This returns CloudConnectorOperation.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -305,14 +340,14 @@ public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((CloudConnectorOperation) object).getConnectorName();
-        return label == null || label.length() == 0 ? getString("_UI_CloudConnectorOperation_type")
-                : getString("_UI_CloudConnectorOperation_type") + " " + label;
+        String label = ((CloudConnectorOperation)object).getConnectorName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_CloudConnectorOperation_type") :
+            getString("_UI_CloudConnectorOperation_type") + " " + label;
     }
 
     /**
@@ -320,7 +355,6 @@ public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -328,20 +362,20 @@ public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(CloudConnectorOperation.class)) {
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__CONFIG_REF:
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__CONNECTOR_NAME:
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__OPERATION_NAME:
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__CLOUD_CONNECTOR_NAME:
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__NEW_CONFIG:
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__AVAILABLE_CONFIGS:
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__INPUT_CONNECTOR:
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__OUTPUT_CONNECTOR:
-        case EsbPackage.CLOUD_CONNECTOR_OPERATION__CONNECTOR_PARAMETERS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__CONFIG_REF:
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__CONNECTOR_NAME:
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__OPERATION_NAME:
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__CLOUD_CONNECTOR_NAME:
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__NEW_CONFIG:
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__AVAILABLE_CONFIGS:
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__INPUT_CONNECTOR:
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__OUTPUT_CONNECTOR:
+            case EsbPackage.CLOUD_CONNECTOR_OPERATION__CONNECTOR_PARAMETERS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -351,22 +385,26 @@ public class CloudConnectorOperationItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCloudConnectorOperationInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCloudConnectorOperationInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCloudConnectorOperationOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCloudConnectorOperationOutputConnector()));
 
-        newChildDescriptors
-                .add(createChildParameter(EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CONNECTOR_PARAMETERS,
-                        EsbFactory.eINSTANCE.createCallTemplateParameter()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__CONNECTOR_PARAMETERS,
+                 EsbFactory.eINSTANCE.createCallTemplateParameter()));
     }
 
 }

@@ -28,11 +28,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterRoute;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterRouteImpl#isBreakAfterRoute <em>Break After
- * Route</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterRouteImpl#getRouteExpression <em>Route
- * Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterRouteImpl#getRoutePattern <em>Route Pattern</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterRouteImpl#isBreakAfterRoute <em>Break After Route</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterRouteImpl#getRouteExpression <em>Route Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RouterRouteImpl#getRoutePattern <em>Route Pattern</em>}</li>
  * </ul>
  *
  * @generated
@@ -42,7 +40,6 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
      * The default value of the '{@link #isBreakAfterRoute() <em>Break After Route</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isBreakAfterRoute()
      * @generated
      * @ordered
@@ -53,7 +50,6 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
      * The cached value of the '{@link #isBreakAfterRoute() <em>Break After Route</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isBreakAfterRoute()
      * @generated
      * @ordered
@@ -64,7 +60,6 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
      * The cached value of the '{@link #getRouteExpression() <em>Route Expression</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getRouteExpression()
      * @generated
      * @ordered
@@ -75,7 +70,6 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
      * The default value of the '{@link #getRoutePattern() <em>Route Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getRoutePattern()
      * @generated
      * @ordered
@@ -86,7 +80,6 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
      * The cached value of the '{@link #getRoutePattern() <em>Route Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getRoutePattern()
      * @generated
      * @ordered
@@ -96,7 +89,6 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected RouterRouteImpl() {
@@ -106,7 +98,6 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -118,7 +109,6 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isBreakAfterRoute() {
@@ -128,31 +118,27 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setBreakAfterRoute(boolean newBreakAfterRoute) {
         boolean oldBreakAfterRoute = breakAfterRoute;
         breakAfterRoute = newBreakAfterRoute;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE,
-                    oldBreakAfterRoute, breakAfterRoute));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE, oldBreakAfterRoute, breakAfterRoute));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getRouteExpression() {
         if (routeExpression != null && routeExpression.eIsProxy()) {
-            InternalEObject oldRouteExpression = (InternalEObject) routeExpression;
-            routeExpression = (NamespacedProperty) eResolveProxy(oldRouteExpression);
+            InternalEObject oldRouteExpression = (InternalEObject)routeExpression;
+            routeExpression = (NamespacedProperty)eResolveProxy(oldRouteExpression);
             if (routeExpression != oldRouteExpression) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION,
-                            oldRouteExpression, routeExpression));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION, oldRouteExpression, routeExpression));
             }
         }
         return routeExpression;
@@ -161,7 +147,6 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty basicGetRouteExpression() {
@@ -171,21 +156,18 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setRouteExpression(NamespacedProperty newRouteExpression) {
         NamespacedProperty oldRouteExpression = routeExpression;
         routeExpression = newRouteExpression;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION,
-                    oldRouteExpression, routeExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION, oldRouteExpression, routeExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getRoutePattern() {
@@ -195,35 +177,31 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setRoutePattern(String newRoutePattern) {
         String oldRoutePattern = routePattern;
         routePattern = newRoutePattern;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN,
-                    oldRoutePattern, routePattern));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN, oldRoutePattern, routePattern));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE:
-            return isBreakAfterRoute();
-        case EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION:
-            if (resolve)
-                return getRouteExpression();
-            return basicGetRouteExpression();
-        case EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN:
-            return getRoutePattern();
+            case EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE:
+                return isBreakAfterRoute();
+            case EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION:
+                if (resolve) return getRouteExpression();
+                return basicGetRouteExpression();
+            case EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN:
+                return getRoutePattern();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -231,22 +209,21 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE:
-            setBreakAfterRoute((Boolean) newValue);
-            return;
-        case EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION:
-            setRouteExpression((NamespacedProperty) newValue);
-            return;
-        case EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN:
-            setRoutePattern((String) newValue);
-            return;
+            case EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE:
+                setBreakAfterRoute((Boolean)newValue);
+                return;
+            case EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION:
+                setRouteExpression((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN:
+                setRoutePattern((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -254,22 +231,21 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE:
-            setBreakAfterRoute(BREAK_AFTER_ROUTE_EDEFAULT);
-            return;
-        case EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION:
-            setRouteExpression((NamespacedProperty) null);
-            return;
-        case EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN:
-            setRoutePattern(ROUTE_PATTERN_EDEFAULT);
-            return;
+            case EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE:
+                setBreakAfterRoute(BREAK_AFTER_ROUTE_EDEFAULT);
+                return;
+            case EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION:
+                setRouteExpression((NamespacedProperty)null);
+                return;
+            case EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN:
+                setRoutePattern(ROUTE_PATTERN_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -277,19 +253,18 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE:
-            return breakAfterRoute != BREAK_AFTER_ROUTE_EDEFAULT;
-        case EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION:
-            return routeExpression != null;
-        case EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN:
-            return ROUTE_PATTERN_EDEFAULT == null ? routePattern != null : !ROUTE_PATTERN_EDEFAULT.equals(routePattern);
+            case EsbPackage.ROUTER_ROUTE__BREAK_AFTER_ROUTE:
+                return breakAfterRoute != BREAK_AFTER_ROUTE_EDEFAULT;
+            case EsbPackage.ROUTER_ROUTE__ROUTE_EXPRESSION:
+                return routeExpression != null;
+            case EsbPackage.ROUTER_ROUTE__ROUTE_PATTERN:
+                return ROUTE_PATTERN_EDEFAULT == null ? routePattern != null : !ROUTE_PATTERN_EDEFAULT.equals(routePattern);
         }
         return super.eIsSet(featureID);
     }
@@ -297,14 +272,12 @@ public class RouterRouteImpl extends EsbNodeImpl implements RouterRoute {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (breakAfterRoute: ");

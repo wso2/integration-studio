@@ -17,48 +17,27 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionType <em>Connection
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsType <em>Connection Ds
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDbDriver <em>Connection
- * Db Driver</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsInitialContext
- * <em>Connection Ds Initial Context</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsName <em>Connection Ds
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionURL <em>Connection
- * URL</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionUsername <em>Connection
- * Username</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionPassword <em>Connection
- * Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyAutocommit <em>Property
- * Autocommit</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyIsolation <em>Property
- * Isolation</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxactive <em>Property
- * Maxactive</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxidle <em>Property
- * Maxidle</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxopenstatements
- * <em>Property Maxopenstatements</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxwait <em>Property
- * Maxwait</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMinidle <em>Property
- * Minidle</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyPoolstatements
- * <em>Property Poolstatements</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyTestonborrow <em>Property
- * Testonborrow</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyTestwhileidle <em>Property
- * Testwhileidle</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyValidationquery
- * <em>Property Validationquery</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyInitialsize <em>Property
- * Initialsize</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getSqlStatements <em>Sql
- * Statements</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionType <em>Connection Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsType <em>Connection Ds Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDbDriver <em>Connection Db Driver</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsInitialContext <em>Connection Ds Initial Context</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsName <em>Connection Ds Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionURL <em>Connection URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionUsername <em>Connection Username</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionPassword <em>Connection Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyAutocommit <em>Property Autocommit</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyIsolation <em>Property Isolation</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxactive <em>Property Maxactive</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxidle <em>Property Maxidle</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxopenstatements <em>Property Maxopenstatements</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxwait <em>Property Maxwait</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMinidle <em>Property Minidle</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyPoolstatements <em>Property Poolstatements</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyTestonborrow <em>Property Testonborrow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyTestwhileidle <em>Property Testwhileidle</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyValidationquery <em>Property Validationquery</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyInitialsize <em>Property Initialsize</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getSqlStatements <em>Sql Statements</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator()
@@ -76,7 +55,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Connection Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType
      * @see #setConnectionType(SqlExecutorConnectionType)
@@ -87,12 +65,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     SqlExecutorConnectionType getConnectionType();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionType <em>Connection
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionType <em>Connection Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Connection Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType
      * @see #getConnectionType()
@@ -110,7 +85,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Connection Ds Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType
      * @see #setConnectionDsType(SqlExecutorDatasourceType)
@@ -121,12 +95,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     SqlExecutorDatasourceType getConnectionDsType();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsType <em>Connection
-     * Ds Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsType <em>Connection Ds Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Connection Ds Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType
      * @see #getConnectionDsType()
@@ -143,7 +114,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Connection Db Driver</em>' attribute.
      * @see #setConnectionDbDriver(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionDbDriver()
@@ -153,12 +123,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     String getConnectionDbDriver();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDbDriver <em>Connection
-     * Db Driver</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDbDriver <em>Connection Db Driver</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Connection Db Driver</em>' attribute.
      * @see #getConnectionDbDriver()
      * @generated
@@ -174,7 +141,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Connection Ds Initial Context</em>' attribute.
      * @see #setConnectionDsInitialContext(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionDsInitialContext()
@@ -184,12 +150,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     String getConnectionDsInitialContext();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsInitialContext
-     * <em>Connection Ds Initial Context</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsInitialContext <em>Connection Ds Initial Context</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Connection Ds Initial Context</em>' attribute.
      * @see #getConnectionDsInitialContext()
      * @generated
@@ -205,7 +168,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Connection Ds Name</em>' attribute.
      * @see #setConnectionDsName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionDsName()
@@ -215,12 +177,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     String getConnectionDsName();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsName <em>Connection
-     * Ds Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsName <em>Connection Ds Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Connection Ds Name</em>' attribute.
      * @see #getConnectionDsName()
      * @generated
@@ -236,7 +195,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Connection URL</em>' attribute.
      * @see #setConnectionURL(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionURL()
@@ -246,12 +204,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     String getConnectionURL();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionURL <em>Connection
-     * URL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionURL <em>Connection URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Connection URL</em>' attribute.
      * @see #getConnectionURL()
      * @generated
@@ -267,7 +222,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Connection Username</em>' attribute.
      * @see #setConnectionUsername(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionUsername()
@@ -277,12 +231,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     String getConnectionUsername();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionUsername <em>Connection
-     * Username</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionUsername <em>Connection Username</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Connection Username</em>' attribute.
      * @see #getConnectionUsername()
      * @generated
@@ -298,7 +249,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Connection Password</em>' attribute.
      * @see #setConnectionPassword(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionPassword()
@@ -308,12 +258,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     String getConnectionPassword();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionPassword <em>Connection
-     * Password</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionPassword <em>Connection Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Connection Password</em>' attribute.
      * @see #getConnectionPassword()
      * @generated
@@ -330,7 +277,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Autocommit</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue
      * @see #setPropertyAutocommit(SqlExecutorBooleanValue)
@@ -341,12 +287,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     SqlExecutorBooleanValue getPropertyAutocommit();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyAutocommit <em>Property
-     * Autocommit</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyAutocommit <em>Property Autocommit</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Autocommit</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue
      * @see #getPropertyAutocommit()
@@ -364,7 +307,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Isolation</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorIsolationLevel
      * @see #setPropertyIsolation(SqlExecutorIsolationLevel)
@@ -375,12 +317,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     SqlExecutorIsolationLevel getPropertyIsolation();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyIsolation <em>Property
-     * Isolation</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyIsolation <em>Property Isolation</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Isolation</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorIsolationLevel
      * @see #getPropertyIsolation()
@@ -397,7 +336,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Maxactive</em>' attribute.
      * @see #setPropertyMaxactive(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_PropertyMaxactive()
@@ -407,12 +345,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     int getPropertyMaxactive();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxactive <em>Property
-     * Maxactive</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxactive <em>Property Maxactive</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Maxactive</em>' attribute.
      * @see #getPropertyMaxactive()
      * @generated
@@ -428,7 +363,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Maxidle</em>' attribute.
      * @see #setPropertyMaxidle(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_PropertyMaxidle()
@@ -438,12 +372,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     int getPropertyMaxidle();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxidle <em>Property
-     * Maxidle</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxidle <em>Property Maxidle</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Maxidle</em>' attribute.
      * @see #getPropertyMaxidle()
      * @generated
@@ -459,7 +390,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Maxopenstatements</em>' attribute.
      * @see #setPropertyMaxopenstatements(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_PropertyMaxopenstatements()
@@ -469,12 +399,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     int getPropertyMaxopenstatements();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxopenstatements
-     * <em>Property Maxopenstatements</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxopenstatements <em>Property Maxopenstatements</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Maxopenstatements</em>' attribute.
      * @see #getPropertyMaxopenstatements()
      * @generated
@@ -490,7 +417,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Maxwait</em>' attribute.
      * @see #setPropertyMaxwait(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_PropertyMaxwait()
@@ -500,12 +426,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     int getPropertyMaxwait();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxwait <em>Property
-     * Maxwait</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMaxwait <em>Property Maxwait</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Maxwait</em>' attribute.
      * @see #getPropertyMaxwait()
      * @generated
@@ -521,7 +444,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Minidle</em>' attribute.
      * @see #setPropertyMinidle(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_PropertyMinidle()
@@ -531,12 +453,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     int getPropertyMinidle();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMinidle <em>Property
-     * Minidle</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyMinidle <em>Property Minidle</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Minidle</em>' attribute.
      * @see #getPropertyMinidle()
      * @generated
@@ -553,7 +472,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Poolstatements</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue
      * @see #setPropertyPoolstatements(SqlExecutorBooleanValue)
@@ -564,12 +482,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     SqlExecutorBooleanValue getPropertyPoolstatements();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyPoolstatements
-     * <em>Property Poolstatements</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyPoolstatements <em>Property Poolstatements</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Poolstatements</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue
      * @see #getPropertyPoolstatements()
@@ -587,7 +502,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Testonborrow</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue
      * @see #setPropertyTestonborrow(SqlExecutorBooleanValue)
@@ -598,12 +512,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     SqlExecutorBooleanValue getPropertyTestonborrow();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyTestonborrow <em>Property
-     * Testonborrow</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyTestonborrow <em>Property Testonborrow</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Testonborrow</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue
      * @see #getPropertyTestonborrow()
@@ -621,7 +532,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Testwhileidle</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue
      * @see #setPropertyTestwhileidle(SqlExecutorBooleanValue)
@@ -632,12 +542,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     SqlExecutorBooleanValue getPropertyTestwhileidle();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyTestwhileidle
-     * <em>Property Testwhileidle</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyTestwhileidle <em>Property Testwhileidle</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Testwhileidle</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue
      * @see #getPropertyTestwhileidle()
@@ -653,7 +560,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Validationquery</em>' attribute.
      * @see #setPropertyValidationquery(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_PropertyValidationquery()
@@ -663,12 +569,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     String getPropertyValidationquery();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyValidationquery
-     * <em>Property Validationquery</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyValidationquery <em>Property Validationquery</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Validationquery</em>' attribute.
      * @see #getPropertyValidationquery()
      * @generated
@@ -684,7 +587,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Initialsize</em>' attribute.
      * @see #setPropertyInitialsize(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_PropertyInitialsize()
@@ -694,12 +596,9 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     int getPropertyInitialsize();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyInitialsize <em>Property
-     * Initialsize</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getPropertyInitialsize <em>Property Initialsize</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Initialsize</em>' attribute.
      * @see #getPropertyInitialsize()
      * @generated
@@ -715,7 +614,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Sql Statements</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_SqlStatements()
      * @model containment="true"

@@ -17,19 +17,16 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getInputConnector <em>Input Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getOutputConnector <em>Output Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltSchemaKeyType <em>Xslt Schema Key
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltStaticSchemaKey <em>Xslt Static Schema
- * Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltDynamicSchemaKey <em>Xslt Dynamic Schema
- * Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltKey <em>Xslt Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getSourceXPath <em>Source XPath</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getProperties <em>Properties</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getFeatures <em>Features</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltSchemaKeyType <em>Xslt Schema Key Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltStaticSchemaKey <em>Xslt Static Schema Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltDynamicSchemaKey <em>Xslt Dynamic Schema Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltKey <em>Xslt Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getSourceXPath <em>Source XPath</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getResources <em>Resources</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator()
@@ -45,7 +42,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(XSLTMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator_InputConnector()
@@ -55,11 +51,9 @@ public interface XSLTMediator extends Mediator {
     XSLTMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getInputConnector <em>Input
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -74,7 +68,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(XSLTMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator_OutputConnector()
@@ -84,11 +77,9 @@ public interface XSLTMediator extends Mediator {
     XSLTMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getOutputConnector <em>Output
-     * Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated
@@ -104,7 +95,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Xslt Schema Key Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.KeyType
      * @see #setXsltSchemaKeyType(KeyType)
@@ -115,11 +105,9 @@ public interface XSLTMediator extends Mediator {
     KeyType getXsltSchemaKeyType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltSchemaKeyType <em>Xslt
-     * Schema Key Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltSchemaKeyType <em>Xslt Schema Key Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Xslt Schema Key Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.KeyType
      * @see #getXsltSchemaKeyType()
@@ -135,7 +123,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Xslt Static Schema Key</em>' containment reference.
      * @see #setXsltStaticSchemaKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator_XsltStaticSchemaKey()
@@ -145,11 +132,9 @@ public interface XSLTMediator extends Mediator {
     RegistryKeyProperty getXsltStaticSchemaKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltStaticSchemaKey
-     * <em>Xslt Static Schema Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltStaticSchemaKey <em>Xslt Static Schema Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Xslt Static Schema Key</em>' containment reference.
      * @see #getXsltStaticSchemaKey()
      * @generated
@@ -164,7 +149,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Xslt Dynamic Schema Key</em>' containment reference.
      * @see #setXsltDynamicSchemaKey(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator_XsltDynamicSchemaKey()
@@ -174,11 +158,9 @@ public interface XSLTMediator extends Mediator {
     NamespacedProperty getXsltDynamicSchemaKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltDynamicSchemaKey
-     * <em>Xslt Dynamic Schema Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltDynamicSchemaKey <em>Xslt Dynamic Schema Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Xslt Dynamic Schema Key</em>' containment reference.
      * @see #getXsltDynamicSchemaKey()
      * @generated
@@ -193,7 +175,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Xslt Key</em>' containment reference.
      * @see #setXsltKey(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator_XsltKey()
@@ -203,11 +184,9 @@ public interface XSLTMediator extends Mediator {
     RegistryKeyProperty getXsltKey();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltKey <em>Xslt
-     * Key</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getXsltKey <em>Xslt Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Xslt Key</em>' containment reference.
      * @see #getXsltKey()
      * @generated
@@ -222,7 +201,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Source XPath</em>' containment reference.
      * @see #setSourceXPath(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator_SourceXPath()
@@ -232,11 +210,9 @@ public interface XSLTMediator extends Mediator {
     NamespacedProperty getSourceXPath();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getSourceXPath <em>Source
-     * XPath</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator#getSourceXPath <em>Source XPath</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Source XPath</em>' containment reference.
      * @see #getSourceXPath()
      * @generated
@@ -252,7 +228,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Properties</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator_Properties()
      * @model containment="true"
@@ -269,7 +244,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Features</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator_Features()
      * @model containment="true"
@@ -286,7 +260,6 @@ public interface XSLTMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resources</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getXSLTMediator_Resources()
      * @model containment="true"

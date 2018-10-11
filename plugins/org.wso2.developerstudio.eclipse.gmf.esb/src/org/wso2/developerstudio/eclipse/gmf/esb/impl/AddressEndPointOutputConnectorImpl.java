@@ -22,7 +22,6 @@ public class AddressEndPointOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected AddressEndPointOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class AddressEndPointOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

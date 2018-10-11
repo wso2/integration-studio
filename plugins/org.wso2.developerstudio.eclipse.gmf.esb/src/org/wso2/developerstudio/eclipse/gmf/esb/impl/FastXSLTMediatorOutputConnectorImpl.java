@@ -32,7 +32,6 @@ public class FastXSLTMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected FastXSLTMediatorOutputConnectorImpl() {
@@ -42,7 +41,6 @@ public class FastXSLTMediatorOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

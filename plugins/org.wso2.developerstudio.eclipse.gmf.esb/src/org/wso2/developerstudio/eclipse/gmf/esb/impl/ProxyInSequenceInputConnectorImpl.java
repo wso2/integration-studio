@@ -31,7 +31,6 @@ public class ProxyInSequenceInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ProxyInSequenceInputConnectorImpl() {
@@ -41,7 +40,6 @@ public class ProxyInSequenceInputConnectorImpl extends InputConnectorImpl implem
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

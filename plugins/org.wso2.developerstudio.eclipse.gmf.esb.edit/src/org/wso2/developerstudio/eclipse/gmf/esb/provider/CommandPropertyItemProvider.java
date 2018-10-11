@@ -35,7 +35,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CommandPropertyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -44,7 +43,6 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CommandPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +53,6 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -78,102 +75,132 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
      * This adds a property descriptor for the Property Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPropertyNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CommandProperty_propertyName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_propertyName_feature",
-                                "_UI_CommandProperty_type"),
-                        EsbPackage.Literals.COMMAND_PROPERTY__PROPERTY_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CommandProperty_propertyName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_propertyName_feature", "_UI_CommandProperty_type"),
+                 EsbPackage.Literals.COMMAND_PROPERTY__PROPERTY_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CommandProperty_valueType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_valueType_feature",
-                                "_UI_CommandProperty_type"),
-                        EsbPackage.Literals.COMMAND_PROPERTY__VALUE_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CommandProperty_valueType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_valueType_feature", "_UI_CommandProperty_type"),
+                 EsbPackage.Literals.COMMAND_PROPERTY__VALUE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Literal feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueLiteralPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CommandProperty_valueLiteral_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_valueLiteral_feature",
-                                "_UI_CommandProperty_type"),
-                        EsbPackage.Literals.COMMAND_PROPERTY__VALUE_LITERAL, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CommandProperty_valueLiteral_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_valueLiteral_feature", "_UI_CommandProperty_type"),
+                 EsbPackage.Literals.COMMAND_PROPERTY__VALUE_LITERAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value Context Property Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValueContextPropertyNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CommandProperty_valueContextPropertyName_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_valueContextPropertyName_feature",
-                        "_UI_CommandProperty_type"),
-                EsbPackage.Literals.COMMAND_PROPERTY__VALUE_CONTEXT_PROPERTY_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CommandProperty_valueContextPropertyName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_valueContextPropertyName_feature", "_UI_CommandProperty_type"),
+                 EsbPackage.Literals.COMMAND_PROPERTY__VALUE_CONTEXT_PROPERTY_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Context Action feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addContextActionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CommandProperty_contextAction_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_contextAction_feature",
-                                "_UI_CommandProperty_type"),
-                        EsbPackage.Literals.COMMAND_PROPERTY__CONTEXT_ACTION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CommandProperty_contextAction_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_contextAction_feature", "_UI_CommandProperty_type"),
+                 EsbPackage.Literals.COMMAND_PROPERTY__CONTEXT_ACTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Message Action feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMessageActionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CommandProperty_messageAction_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_messageAction_feature",
-                                "_UI_CommandProperty_type"),
-                        EsbPackage.Literals.COMMAND_PROPERTY__MESSAGE_ACTION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CommandProperty_messageAction_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CommandProperty_messageAction_feature", "_UI_CommandProperty_type"),
+                 EsbPackage.Literals.COMMAND_PROPERTY__MESSAGE_ACTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -182,7 +209,6 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -198,7 +224,6 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -214,7 +239,6 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
      * This returns CommandProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -227,15 +251,15 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((CommandProperty) object).getPropertyName();
-        return label == null || label.length() == 0 ? getString("_UI_CommandProperty_type")
-                : getString("_UI_CommandProperty_type") + " " + label;
+        String label = ((CommandProperty)object).getPropertyName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_CommandProperty_type") :
+            getString("_UI_CommandProperty_type") + " " + label;
     }
 
     /**
@@ -243,7 +267,6 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -252,17 +275,17 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
         updateChildren(notification);
 
         switch (notification.getFeatureID(CommandProperty.class)) {
-        case EsbPackage.COMMAND_PROPERTY__PROPERTY_NAME:
-        case EsbPackage.COMMAND_PROPERTY__VALUE_TYPE:
-        case EsbPackage.COMMAND_PROPERTY__VALUE_LITERAL:
-        case EsbPackage.COMMAND_PROPERTY__VALUE_CONTEXT_PROPERTY_NAME:
-        case EsbPackage.COMMAND_PROPERTY__CONTEXT_ACTION:
-        case EsbPackage.COMMAND_PROPERTY__MESSAGE_ACTION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.COMMAND_PROPERTY__VALUE_MESSAGE_ELEMENT_XPATH:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.COMMAND_PROPERTY__PROPERTY_NAME:
+            case EsbPackage.COMMAND_PROPERTY__VALUE_TYPE:
+            case EsbPackage.COMMAND_PROPERTY__VALUE_LITERAL:
+            case EsbPackage.COMMAND_PROPERTY__VALUE_CONTEXT_PROPERTY_NAME:
+            case EsbPackage.COMMAND_PROPERTY__CONTEXT_ACTION:
+            case EsbPackage.COMMAND_PROPERTY__MESSAGE_ACTION:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.COMMAND_PROPERTY__VALUE_MESSAGE_ELEMENT_XPATH:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -272,7 +295,6 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -280,15 +302,16 @@ public class CommandPropertyItemProvider extends ItemProviderAdapter implements 
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.COMMAND_PROPERTY__VALUE_MESSAGE_ELEMENT_XPATH,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.COMMAND_PROPERTY__VALUE_MESSAGE_ELEMENT_XPATH,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

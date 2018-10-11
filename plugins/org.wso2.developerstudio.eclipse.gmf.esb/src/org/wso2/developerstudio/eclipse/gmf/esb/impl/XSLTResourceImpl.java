@@ -22,7 +22,6 @@ public class XSLTResourceImpl extends AbstractLocationKeyResourceImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected XSLTResourceImpl() {
@@ -32,7 +31,6 @@ public class XSLTResourceImpl extends AbstractLocationKeyResourceImpl implements
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

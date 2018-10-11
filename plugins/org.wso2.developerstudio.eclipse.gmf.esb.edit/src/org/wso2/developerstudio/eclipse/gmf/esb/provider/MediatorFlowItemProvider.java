@@ -30,7 +30,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class MediatorFlowItemProvider extends EsbNodeItemProvider {
@@ -38,7 +37,6 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public MediatorFlowItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +47,6 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -67,7 +64,6 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -82,7 +78,6 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -97,7 +92,6 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
      * This returns MediatorFlow.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -109,7 +103,6 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -122,7 +115,6 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -130,9 +122,9 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(MediatorFlow.class)) {
-        case EsbPackage.MEDIATOR_FLOW__CHILDREN:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.MEDIATOR_FLOW__CHILDREN:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -142,255 +134,416 @@ public class MediatorFlowItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createCallMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createProxyService()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createMessageMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createDefaultEndPoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createAddressEndPoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createTemplateEndpoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createHTTPEndpoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createDropMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createFilterMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createMergeNode()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createLogMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createPublishEventMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createBAMMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createBeanMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createEJBMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createPropertyMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createEnrichMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createXSLTMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createSwitchMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createSequence()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createEventMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createEntitlementMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createEnqueueMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createClassMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createSpringMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createScriptMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createFaultMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createAggregateMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createRouterMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createCloneMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createForEachMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createIterateMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createCacheMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createXQueryMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createCalloutMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createRMSequenceMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createTransactionMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createOAuthMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createAutoscaleInMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createAutoscaleOutMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createHeaderMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createThrottleMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createCommandMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createDBLookupMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createDBReportMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createRuleMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createCallTemplateMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createLoopBackMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createRespondMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createSmooksMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createStoreMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createBuilderMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createPayloadFactoryMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createConditionalRouterMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createSendMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createParentEndPoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createFailoverEndPoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createWSDLEndPoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createLoadBalanceEndPoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createLocalEntry()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createSequences()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createURLRewriteMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createValidateMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createEndpointDiagram()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createNamedEndpoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createTemplate()));
-
-        newChildDescriptors.add(
-                createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN, EsbFactory.eINSTANCE.createTask()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createSynapseAPI()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createAPIResourceEndpoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createComplexEndpoints()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createAddressingEndpoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createRecipientListEndPoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createMessageStore()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createMessageProcessor()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createCloudConnector()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createCloudConnectorOperation()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createDataMapperMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createFastXSLTMediator()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createInboundEndpoint()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createInboundEndpointContainer()));
-
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-                EsbFactory.eINSTANCE.createCommentMediator()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createCallMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createProxyService()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createMessageMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createDefaultEndPoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createAddressEndPoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createTemplateEndpoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createHTTPEndpoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createDropMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createFilterMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createMergeNode()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createLogMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createPublishEventMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createBAMMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createBeanMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createEJBMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createPropertyMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createEnrichMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createXSLTMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createSwitchMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createSequence()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createEventMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createEntitlementMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createEnqueueMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createClassMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createSpringMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createScriptMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createFaultMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createAggregateMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createRouterMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createCloneMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createForEachMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createIterateMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createCacheMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createXQueryMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createCalloutMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createRMSequenceMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createTransactionMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createOAuthMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createAutoscaleInMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createAutoscaleOutMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createHeaderMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createThrottleMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createCommandMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createDBLookupMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createDBReportMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createRuleMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createCallTemplateMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createLoopBackMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createRespondMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createSmooksMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createStoreMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createBuilderMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createPayloadFactoryMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createConditionalRouterMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createSendMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createParentEndPoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createFailoverEndPoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createWSDLEndPoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createLoadBalanceEndPoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createLocalEntry()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createSequences()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createURLRewriteMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createValidateMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createEndpointDiagram()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createNamedEndpoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createTemplate()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createTask()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createSynapseAPI()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createAPIResourceEndpoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createComplexEndpoints()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createAddressingEndpoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createRecipientListEndPoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createMessageStore()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createMessageProcessor()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createCloudConnector()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createCloudConnectorOperation()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createDataMapperMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createFastXSLTMediator()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createInboundEndpoint()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createInboundEndpointContainer()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+                 EsbFactory.eINSTANCE.createCommentMediator()));
     }
 
 }

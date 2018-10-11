@@ -30,11 +30,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgumentType;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryArgument} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
@@ -42,7 +40,6 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PayloadFactoryArgumentItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +50,6 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -74,85 +70,110 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Argument Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addArgumentTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PayloadFactoryArgument_argumentType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryArgument_argumentType_feature",
-                        "_UI_PayloadFactoryArgument_type"),
-                EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PayloadFactoryArgument_argumentType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryArgument_argumentType_feature", "_UI_PayloadFactoryArgument_type"),
+                 EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Argument Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addArgumentValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_PayloadFactoryArgument_argumentValue_feature"),
-                        getString("_UI_PropertyDescriptor_description",
-                                "_UI_PayloadFactoryArgument_argumentValue_feature", "_UI_PayloadFactoryArgument_type"),
-                        EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PayloadFactoryArgument_argumentValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryArgument_argumentValue_feature", "_UI_PayloadFactoryArgument_type"),
+                 EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Argument Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addArgumentExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PayloadFactoryArgument_argumentExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryArgument_argumentExpression_feature",
-                        "_UI_PayloadFactoryArgument_type"),
-                EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION, true, false, false, null, null,
-                null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PayloadFactoryArgument_argumentExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryArgument_argumentExpression_feature", "_UI_PayloadFactoryArgument_type"),
+                 EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Evaluator feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEvaluatorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PayloadFactoryArgument_evaluator_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryArgument_evaluator_feature",
-                        "_UI_PayloadFactoryArgument_type"),
-                EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PayloadFactoryArgument_evaluator_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryArgument_evaluator_feature", "_UI_PayloadFactoryArgument_type"),
+                 EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Literal feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addLiteralPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PayloadFactoryArgument_literal_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryArgument_literal_feature",
-                        "_UI_PayloadFactoryArgument_type"),
-                EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__LITERAL, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PayloadFactoryArgument_literal_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryArgument_literal_feature", "_UI_PayloadFactoryArgument_type"),
+                 EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__LITERAL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -161,7 +182,6 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -176,7 +196,6 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -191,7 +210,6 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      * This returns PayloadFactoryArgument.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -203,15 +221,15 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        PayloadFactoryArgumentType labelValue = ((PayloadFactoryArgument) object).getArgumentType();
+        PayloadFactoryArgumentType labelValue = ((PayloadFactoryArgument)object).getArgumentType();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_PayloadFactoryArgument_type")
-                : getString("_UI_PayloadFactoryArgument_type") + " " + label;
+        return label == null || label.length() == 0 ?
+            getString("_UI_PayloadFactoryArgument_type") :
+            getString("_UI_PayloadFactoryArgument_type") + " " + label;
     }
 
     /**
@@ -219,7 +237,6 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -227,15 +244,15 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(PayloadFactoryArgument.class)) {
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_TYPE:
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_VALUE:
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__EVALUATOR:
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__LITERAL:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -245,15 +262,16 @@ public class PayloadFactoryArgumentItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.PAYLOAD_FACTORY_ARGUMENT__ARGUMENT_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
     }
 
 }

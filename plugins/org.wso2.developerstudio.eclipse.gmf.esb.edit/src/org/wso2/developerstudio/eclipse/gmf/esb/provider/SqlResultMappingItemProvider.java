@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SqlResultMappingItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -41,7 +40,6 @@ public class SqlResultMappingItemProvider extends ItemProviderAdapter implements
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SqlResultMappingItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +50,6 @@ public class SqlResultMappingItemProvider extends ItemProviderAdapter implements
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -71,41 +68,50 @@ public class SqlResultMappingItemProvider extends ItemProviderAdapter implements
      * This adds a property descriptor for the Property Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPropertyNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SqlResultMapping_propertyName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SqlResultMapping_propertyName_feature",
-                                "_UI_SqlResultMapping_type"),
-                        EsbPackage.Literals.SQL_RESULT_MAPPING__PROPERTY_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SqlResultMapping_propertyName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SqlResultMapping_propertyName_feature", "_UI_SqlResultMapping_type"),
+                 EsbPackage.Literals.SQL_RESULT_MAPPING__PROPERTY_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Column Id feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addColumnIdPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SqlResultMapping_columnId_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SqlResultMapping_columnId_feature",
-                                "_UI_SqlResultMapping_type"),
-                        EsbPackage.Literals.SQL_RESULT_MAPPING__COLUMN_ID, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SqlResultMapping_columnId_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SqlResultMapping_columnId_feature", "_UI_SqlResultMapping_type"),
+                 EsbPackage.Literals.SQL_RESULT_MAPPING__COLUMN_ID,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns SqlResultMapping.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -118,15 +124,15 @@ public class SqlResultMappingItemProvider extends ItemProviderAdapter implements
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((SqlResultMapping) object).getPropertyName();
-        return label == null || label.length() == 0 ? getString("_UI_SqlResultMapping_type")
-                : getString("_UI_SqlResultMapping_type") + " " + label;
+        String label = ((SqlResultMapping)object).getPropertyName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_SqlResultMapping_type") :
+            getString("_UI_SqlResultMapping_type") + " " + label;
     }
 
     /**
@@ -134,7 +140,6 @@ public class SqlResultMappingItemProvider extends ItemProviderAdapter implements
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -143,10 +148,10 @@ public class SqlResultMappingItemProvider extends ItemProviderAdapter implements
         updateChildren(notification);
 
         switch (notification.getFeatureID(SqlResultMapping.class)) {
-        case EsbPackage.SQL_RESULT_MAPPING__PROPERTY_NAME:
-        case EsbPackage.SQL_RESULT_MAPPING__COLUMN_ID:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.SQL_RESULT_MAPPING__PROPERTY_NAME:
+            case EsbPackage.SQL_RESULT_MAPPING__COLUMN_ID:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -156,7 +161,6 @@ public class SqlResultMappingItemProvider extends ItemProviderAdapter implements
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -169,7 +173,6 @@ public class SqlResultMappingItemProvider extends ItemProviderAdapter implements
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

@@ -15,8 +15,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector#getCaseRegex <em>Case
- * Regex</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector#getCaseRegex <em>Case Regex</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchCaseBranchOutputConnector()
@@ -33,7 +32,6 @@ public interface SwitchCaseBranchOutputConnector extends OutputConnector {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Case Regex</em>' attribute.
      * @see #setCaseRegex(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSwitchCaseBranchOutputConnector_CaseRegex()
@@ -43,12 +41,9 @@ public interface SwitchCaseBranchOutputConnector extends OutputConnector {
     String getCaseRegex();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector#getCaseRegex <em>Case
-     * Regex</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector#getCaseRegex <em>Case Regex</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Case Regex</em>' attribute.
      * @see #getCaseRegex()
      * @generated

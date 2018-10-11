@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class FailoverEndPointItemProvider extends ParentEndPointItemProvider {
@@ -40,7 +39,6 @@ public class FailoverEndPointItemProvider extends ParentEndPointItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public FailoverEndPointItemProvider(AdapterFactory adapterFactory) {
@@ -89,7 +87,6 @@ public class FailoverEndPointItemProvider extends ParentEndPointItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -107,7 +104,6 @@ public class FailoverEndPointItemProvider extends ParentEndPointItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -122,7 +118,6 @@ public class FailoverEndPointItemProvider extends ParentEndPointItemProvider {
      * This returns FailoverEndPoint.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -134,14 +129,14 @@ public class FailoverEndPointItemProvider extends ParentEndPointItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((FailoverEndPoint) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_FailoverEndPoint_type")
-                : getString("_UI_FailoverEndPoint_type") + " " + label;
+        String label = ((FailoverEndPoint)object).getName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_FailoverEndPoint_type") :
+            getString("_UI_FailoverEndPoint_type") + " " + label;
     }
 
     /**
@@ -149,7 +144,6 @@ public class FailoverEndPointItemProvider extends ParentEndPointItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -157,15 +151,15 @@ public class FailoverEndPointItemProvider extends ParentEndPointItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(FailoverEndPoint.class)) {
-        case EsbPackage.FAILOVER_END_POINT__BUILD_MESSAGE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.FAILOVER_END_POINT__INPUT_CONNECTOR:
-        case EsbPackage.FAILOVER_END_POINT__OUTPUT_CONNECTOR:
-        case EsbPackage.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR:
-        case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.FAILOVER_END_POINT__BUILD_MESSAGE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.FAILOVER_END_POINT__INPUT_CONNECTOR:
+            case EsbPackage.FAILOVER_END_POINT__OUTPUT_CONNECTOR:
+            case EsbPackage.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR:
+            case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -175,24 +169,31 @@ public class FailoverEndPointItemProvider extends ParentEndPointItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAILOVER_END_POINT__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createFailoverEndPointInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAILOVER_END_POINT__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createFailoverEndPointInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAILOVER_END_POINT__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createFailoverEndPointOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAILOVER_END_POINT__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createFailoverEndPointOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createFailoverEndPointWestOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createFailoverEndPointWestOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAILOVER_END_POINT__MEDIATOR_FLOW,
-                EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAILOVER_END_POINT__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
     }
 
 }

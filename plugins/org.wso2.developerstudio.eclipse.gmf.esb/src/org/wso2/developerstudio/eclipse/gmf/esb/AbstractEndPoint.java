@@ -17,43 +17,29 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isReliableMessagingEnabled <em>Reliable
- * Messaging Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isSecurityEnabled <em>Security
- * Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isAddressingEnabled <em>Addressing
- * Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getAddressingVersion <em>Addressing
- * Version</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isAddressingSeparateListener <em>Addressing
- * Separate Listener</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTimeOutDuration <em>Time Out
- * Duration</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTimeOutAction <em>Time Out Action</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryErrorCodes <em>Retry Error
- * Codes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryCount <em>Retry Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryDelay <em>Retry Delay</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendErrorCodes <em>Suspend Error
- * Codes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendInitialDuration <em>Suspend Initial
- * Duration</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendMaximumDuration <em>Suspend Maximum
- * Duration</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendProgressionFactor <em>Suspend
- * Progression Factor</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getReliableMessagingPolicy <em>Reliable
- * Messaging Policy</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSecurityPolicy <em>Security Policy</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFormat <em>Format</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOptimize <em>Optimize</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTemplateParameters <em>Template
- * Parameters</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isStatisticsEnabled <em>Statistics
- * Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled <em>Trace Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getInboundPolicy <em>Inbound Policy</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOutboundPolicy <em>Outbound Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isSecurityEnabled <em>Security Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isAddressingEnabled <em>Addressing Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getAddressingVersion <em>Addressing Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isAddressingSeparateListener <em>Addressing Separate Listener</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTimeOutDuration <em>Time Out Duration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTimeOutAction <em>Time Out Action</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryErrorCodes <em>Retry Error Codes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryCount <em>Retry Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryDelay <em>Retry Delay</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendErrorCodes <em>Suspend Error Codes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendInitialDuration <em>Suspend Initial Duration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendMaximumDuration <em>Suspend Maximum Duration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendProgressionFactor <em>Suspend Progression Factor</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getReliableMessagingPolicy <em>Reliable Messaging Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSecurityPolicy <em>Security Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOptimize <em>Optimize</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTemplateParameters <em>Template Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getInboundPolicy <em>Inbound Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOutboundPolicy <em>Outbound Policy</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint()
@@ -70,7 +56,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Reliable Messaging Enabled</em>' attribute.
      * @see #setReliableMessagingEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_ReliableMessagingEnabled()
@@ -80,12 +65,9 @@ public interface AbstractEndPoint extends EndPoint {
     boolean isReliableMessagingEnabled();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isReliableMessagingEnabled <em>Reliable
-     * Messaging Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isReliableMessagingEnabled <em>Reliable Messaging Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Reliable Messaging Enabled</em>' attribute.
      * @see #isReliableMessagingEnabled()
      * @generated
@@ -101,7 +83,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Security Enabled</em>' attribute.
      * @see #setSecurityEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_SecurityEnabled()
@@ -111,11 +92,9 @@ public interface AbstractEndPoint extends EndPoint {
     boolean isSecurityEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isSecurityEnabled
-     * <em>Security Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isSecurityEnabled <em>Security Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Security Enabled</em>' attribute.
      * @see #isSecurityEnabled()
      * @generated
@@ -131,7 +110,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Addressing Enabled</em>' attribute.
      * @see #setAddressingEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_AddressingEnabled()
@@ -141,11 +119,9 @@ public interface AbstractEndPoint extends EndPoint {
     boolean isAddressingEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isAddressingEnabled
-     * <em>Addressing Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isAddressingEnabled <em>Addressing Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Addressing Enabled</em>' attribute.
      * @see #isAddressingEnabled()
      * @generated
@@ -162,7 +138,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Addressing Version</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion
      * @see #setAddressingVersion(EndPointAddressingVersion)
@@ -173,11 +148,9 @@ public interface AbstractEndPoint extends EndPoint {
     EndPointAddressingVersion getAddressingVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getAddressingVersion
-     * <em>Addressing Version</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getAddressingVersion <em>Addressing Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Addressing Version</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion
      * @see #getAddressingVersion()
@@ -194,7 +167,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Addressing Separate Listener</em>' attribute.
      * @see #setAddressingSeparateListener(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_AddressingSeparateListener()
@@ -204,12 +176,9 @@ public interface AbstractEndPoint extends EndPoint {
     boolean isAddressingSeparateListener();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isAddressingSeparateListener <em>Addressing
-     * Separate Listener</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isAddressingSeparateListener <em>Addressing Separate Listener</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Addressing Separate Listener</em>' attribute.
      * @see #isAddressingSeparateListener()
      * @generated
@@ -225,7 +194,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Time Out Duration</em>' attribute.
      * @see #setTimeOutDuration(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_TimeOutDuration()
@@ -235,11 +203,9 @@ public interface AbstractEndPoint extends EndPoint {
     String getTimeOutDuration();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTimeOutDuration
-     * <em>Time Out Duration</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTimeOutDuration <em>Time Out Duration</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Time Out Duration</em>' attribute.
      * @see #getTimeOutDuration()
      * @generated
@@ -256,7 +222,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Time Out Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointTimeOutAction
      * @see #setTimeOutAction(EndPointTimeOutAction)
@@ -267,11 +232,9 @@ public interface AbstractEndPoint extends EndPoint {
     EndPointTimeOutAction getTimeOutAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTimeOutAction <em>Time
-     * Out Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTimeOutAction <em>Time Out Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Time Out Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointTimeOutAction
      * @see #getTimeOutAction()
@@ -287,7 +250,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Retry Error Codes</em>' attribute.
      * @see #setRetryErrorCodes(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_RetryErrorCodes()
@@ -297,11 +259,9 @@ public interface AbstractEndPoint extends EndPoint {
     String getRetryErrorCodes();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryErrorCodes
-     * <em>Retry Error Codes</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryErrorCodes <em>Retry Error Codes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Retry Error Codes</em>' attribute.
      * @see #getRetryErrorCodes()
      * @generated
@@ -317,7 +277,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Retry Count</em>' attribute.
      * @see #setRetryCount(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_RetryCount()
@@ -327,11 +286,9 @@ public interface AbstractEndPoint extends EndPoint {
     int getRetryCount();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryCount <em>Retry
-     * Count</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryCount <em>Retry Count</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Retry Count</em>' attribute.
      * @see #getRetryCount()
      * @generated
@@ -347,7 +304,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Retry Delay</em>' attribute.
      * @see #setRetryDelay(long)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_RetryDelay()
@@ -357,11 +313,9 @@ public interface AbstractEndPoint extends EndPoint {
     long getRetryDelay();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryDelay <em>Retry
-     * Delay</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getRetryDelay <em>Retry Delay</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Retry Delay</em>' attribute.
      * @see #getRetryDelay()
      * @generated
@@ -376,7 +330,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Suspend Error Codes</em>' attribute.
      * @see #setSuspendErrorCodes(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_SuspendErrorCodes()
@@ -386,11 +339,9 @@ public interface AbstractEndPoint extends EndPoint {
     String getSuspendErrorCodes();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendErrorCodes
-     * <em>Suspend Error Codes</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendErrorCodes <em>Suspend Error Codes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Suspend Error Codes</em>' attribute.
      * @see #getSuspendErrorCodes()
      * @generated
@@ -406,7 +357,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Suspend Initial Duration</em>' attribute.
      * @see #setSuspendInitialDuration(long)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_SuspendInitialDuration()
@@ -416,11 +366,9 @@ public interface AbstractEndPoint extends EndPoint {
     long getSuspendInitialDuration();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendInitialDuration
-     * <em>Suspend Initial Duration</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendInitialDuration <em>Suspend Initial Duration</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Suspend Initial Duration</em>' attribute.
      * @see #getSuspendInitialDuration()
      * @generated
@@ -436,7 +384,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Suspend Maximum Duration</em>' attribute.
      * @see #setSuspendMaximumDuration(long)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_SuspendMaximumDuration()
@@ -446,11 +393,9 @@ public interface AbstractEndPoint extends EndPoint {
     long getSuspendMaximumDuration();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendMaximumDuration
-     * <em>Suspend Maximum Duration</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendMaximumDuration <em>Suspend Maximum Duration</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Suspend Maximum Duration</em>' attribute.
      * @see #getSuspendMaximumDuration()
      * @generated
@@ -466,7 +411,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Suspend Progression Factor</em>' attribute.
      * @see #setSuspendProgressionFactor(float)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_SuspendProgressionFactor()
@@ -476,12 +420,9 @@ public interface AbstractEndPoint extends EndPoint {
     float getSuspendProgressionFactor();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendProgressionFactor <em>Suspend
-     * Progression Factor</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSuspendProgressionFactor <em>Suspend Progression Factor</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Suspend Progression Factor</em>' attribute.
      * @see #getSuspendProgressionFactor()
      * @generated
@@ -496,7 +437,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Reliable Messaging Policy</em>' containment reference.
      * @see #setReliableMessagingPolicy(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_ReliableMessagingPolicy()
@@ -506,12 +446,9 @@ public interface AbstractEndPoint extends EndPoint {
     RegistryKeyProperty getReliableMessagingPolicy();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getReliableMessagingPolicy <em>Reliable
-     * Messaging Policy</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getReliableMessagingPolicy <em>Reliable Messaging Policy</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Reliable Messaging Policy</em>' containment reference.
      * @see #getReliableMessagingPolicy()
      * @generated
@@ -526,7 +463,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Security Policy</em>' containment reference.
      * @see #setSecurityPolicy(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_SecurityPolicy()
@@ -536,11 +472,9 @@ public interface AbstractEndPoint extends EndPoint {
     RegistryKeyProperty getSecurityPolicy();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSecurityPolicy
-     * <em>Security Policy</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getSecurityPolicy <em>Security Policy</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Security Policy</em>' containment reference.
      * @see #getSecurityPolicy()
      * @generated
@@ -556,7 +490,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Format</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointMessageFormat
      * @see #setFormat(EndPointMessageFormat)
@@ -567,11 +500,9 @@ public interface AbstractEndPoint extends EndPoint {
     EndPointMessageFormat getFormat();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFormat
-     * <em>Format</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFormat <em>Format</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Format</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointMessageFormat
      * @see #getFormat()
@@ -581,15 +512,13 @@ public interface AbstractEndPoint extends EndPoint {
 
     /**
      * Returns the value of the '<em><b>Optimize</b></em>' attribute.
-     * The literals are from the enumeration
-     * {@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization}.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Optimize</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Optimize</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization
      * @see #setOptimize(EndPointAttachmentOptimization)
@@ -600,11 +529,9 @@ public interface AbstractEndPoint extends EndPoint {
     EndPointAttachmentOptimization getOptimize();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOptimize
-     * <em>Optimize</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOptimize <em>Optimize</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Optimize</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization
      * @see #getOptimize()
@@ -621,7 +548,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Template Parameters</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_TemplateParameters()
      * @model containment="true"
@@ -637,7 +563,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Statistics Enabled</em>' attribute.
      * @see #setStatisticsEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_StatisticsEnabled()
@@ -647,11 +572,9 @@ public interface AbstractEndPoint extends EndPoint {
     boolean isStatisticsEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isStatisticsEnabled
-     * <em>Statistics Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Statistics Enabled</em>' attribute.
      * @see #isStatisticsEnabled()
      * @generated
@@ -666,7 +589,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Trace Enabled</em>' attribute.
      * @see #setTraceEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_TraceEnabled()
@@ -676,11 +598,9 @@ public interface AbstractEndPoint extends EndPoint {
     boolean isTraceEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled <em>Trace
-     * Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled <em>Trace Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Trace Enabled</em>' attribute.
      * @see #isTraceEnabled()
      * @generated
@@ -695,7 +615,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Inbound Policy</em>' containment reference.
      * @see #setInboundPolicy(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_InboundPolicy()
@@ -705,11 +624,9 @@ public interface AbstractEndPoint extends EndPoint {
     RegistryKeyProperty getInboundPolicy();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getInboundPolicy
-     * <em>Inbound Policy</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getInboundPolicy <em>Inbound Policy</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Inbound Policy</em>' containment reference.
      * @see #getInboundPolicy()
      * @generated
@@ -724,7 +641,6 @@ public interface AbstractEndPoint extends EndPoint {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Outbound Policy</em>' containment reference.
      * @see #setOutboundPolicy(RegistryKeyProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_OutboundPolicy()
@@ -734,11 +650,9 @@ public interface AbstractEndPoint extends EndPoint {
     RegistryKeyProperty getOutboundPolicy();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOutboundPolicy
-     * <em>Outbound Policy</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOutboundPolicy <em>Outbound Policy</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Outbound Policy</em>' containment reference.
      * @see #getOutboundPolicy()
      * @generated

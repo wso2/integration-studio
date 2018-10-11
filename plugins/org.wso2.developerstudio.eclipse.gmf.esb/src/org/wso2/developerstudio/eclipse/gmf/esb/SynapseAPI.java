@@ -17,16 +17,16 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getApiName <em>Api Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getContext <em>Context</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getHostName <em>Host Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getPort <em>Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getResources <em>Resources</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getHandlers <em>Handlers</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isTraceEnabled <em>Trace Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersion <em>Version</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersionType <em>Version Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getApiName <em>Api Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getContext <em>Context</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getHostName <em>Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getPort <em>Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getHandlers <em>Handlers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersionType <em>Version Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI()
@@ -43,7 +43,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Api Name</em>' attribute.
      * @see #setApiName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_ApiName()
@@ -53,11 +52,9 @@ public interface SynapseAPI extends EsbElement {
     String getApiName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getApiName <em>Api Name</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getApiName <em>Api Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Api Name</em>' attribute.
      * @see #getApiName()
      * @generated
@@ -73,7 +70,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Context</em>' attribute.
      * @see #setContext(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_Context()
@@ -83,11 +79,9 @@ public interface SynapseAPI extends EsbElement {
     String getContext();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getContext <em>Context</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getContext <em>Context</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Context</em>' attribute.
      * @see #getContext()
      * @generated
@@ -102,7 +96,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Host Name</em>' attribute.
      * @see #setHostName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_HostName()
@@ -112,11 +105,9 @@ public interface SynapseAPI extends EsbElement {
     String getHostName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getHostName <em>Host
-     * Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getHostName <em>Host Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Host Name</em>' attribute.
      * @see #getHostName()
      * @generated
@@ -131,7 +122,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Port</em>' attribute.
      * @see #setPort(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_Port()
@@ -141,11 +131,9 @@ public interface SynapseAPI extends EsbElement {
     int getPort();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getPort <em>Port</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getPort <em>Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Port</em>' attribute.
      * @see #getPort()
      * @generated
@@ -161,7 +149,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Resources</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_Resources()
      * @model containment="true"
@@ -178,7 +165,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Handlers</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_Handlers()
      * @model containment="true"
@@ -194,7 +180,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Trace Enabled</em>' attribute.
      * @see #setTraceEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_TraceEnabled()
@@ -204,11 +189,9 @@ public interface SynapseAPI extends EsbElement {
     boolean isTraceEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isTraceEnabled <em>Trace
-     * Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isTraceEnabled <em>Trace Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Trace Enabled</em>' attribute.
      * @see #isTraceEnabled()
      * @generated
@@ -223,7 +206,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Statistics Enabled</em>' attribute.
      * @see #setStatisticsEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_StatisticsEnabled()
@@ -233,11 +215,9 @@ public interface SynapseAPI extends EsbElement {
     boolean isStatisticsEnabled();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isStatisticsEnabled
-     * <em>Statistics Enabled</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Statistics Enabled</em>' attribute.
      * @see #isStatisticsEnabled()
      * @generated
@@ -253,7 +233,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Version</em>' attribute.
      * @see #setVersion(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSynapseAPI_Version()
@@ -263,11 +242,9 @@ public interface SynapseAPI extends EsbElement {
     String getVersion();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersion <em>Version</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersion <em>Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Version</em>' attribute.
      * @see #getVersion()
      * @generated
@@ -284,7 +261,6 @@ public interface SynapseAPI extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Version Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType
      * @see #setVersionType(APIVersionType)
@@ -295,11 +271,9 @@ public interface SynapseAPI extends EsbElement {
     APIVersionType getVersionType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersionType <em>Version
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI#getVersionType <em>Version Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Version Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.APIVersionType
      * @see #getVersionType()

@@ -39,7 +39,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CloudConnectorItemProvider extends EsbElementItemProvider {
@@ -47,7 +46,6 @@ public class CloudConnectorItemProvider extends EsbElementItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CloudConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +56,6 @@ public class CloudConnectorItemProvider extends EsbElementItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -76,7 +73,6 @@ public class CloudConnectorItemProvider extends EsbElementItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -93,7 +89,6 @@ public class CloudConnectorItemProvider extends EsbElementItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -108,7 +103,6 @@ public class CloudConnectorItemProvider extends EsbElementItemProvider {
      * This returns CloudConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -120,14 +114,14 @@ public class CloudConnectorItemProvider extends EsbElementItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((CloudConnector) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_CloudConnector_type")
-                : getString("_UI_CloudConnector_type") + " " + label;
+        String label = ((CloudConnector)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_CloudConnector_type") :
+            getString("_UI_CloudConnector_type") + " " + label;
     }
 
     /**
@@ -135,7 +129,6 @@ public class CloudConnectorItemProvider extends EsbElementItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -143,11 +136,11 @@ public class CloudConnectorItemProvider extends EsbElementItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(CloudConnector.class)) {
-        case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
-        case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
-        case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.CLOUD_CONNECTOR__INPUT_CONNECTOR:
+            case EsbPackage.CLOUD_CONNECTOR__OUTPUT_CONNECTOR:
+            case EsbPackage.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -157,21 +150,26 @@ public class CloudConnectorItemProvider extends EsbElementItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLOUD_CONNECTOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCloudConnectorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLOUD_CONNECTOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCloudConnectorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLOUD_CONNECTOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCloudConnectorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLOUD_CONNECTOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCloudConnectorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS,
-                EsbFactory.eINSTANCE.createCallTemplateParameter()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLOUD_CONNECTOR__CONNECTOR_PARAMETERS,
+                 EsbFactory.eINSTANCE.createCallTemplateParameter()));
     }
 
 }

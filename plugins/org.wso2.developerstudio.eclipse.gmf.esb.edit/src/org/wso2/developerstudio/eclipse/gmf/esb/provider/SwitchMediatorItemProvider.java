@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SwitchMediatorItemProvider extends MediatorItemProvider {
@@ -40,7 +39,6 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SwitchMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -74,51 +72,66 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Source feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSourcePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SwitchMediator_source_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SwitchMediator_source_feature",
-                                "_UI_SwitchMediator_type"),
-                        EsbPackage.Literals.SWITCH_MEDIATOR__SOURCE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SwitchMediator_source_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SwitchMediator_source_feature", "_UI_SwitchMediator_type"),
+                 EsbPackage.Literals.SWITCH_MEDIATOR__SOURCE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Namespace feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addNamespacePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SwitchMediator_namespace_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SwitchMediator_namespace_feature",
-                                "_UI_SwitchMediator_type"),
-                        EsbPackage.Literals.SWITCH_MEDIATOR__NAMESPACE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SwitchMediator_namespace_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SwitchMediator_namespace_feature", "_UI_SwitchMediator_type"),
+                 EsbPackage.Literals.SWITCH_MEDIATOR__NAMESPACE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Namespace Prefix feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addNamespacePrefixPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SwitchMediator_namespacePrefix_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SwitchMediator_namespacePrefix_feature",
-                                "_UI_SwitchMediator_type"),
-                        EsbPackage.Literals.SWITCH_MEDIATOR__NAMESPACE_PREFIX, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SwitchMediator_namespacePrefix_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SwitchMediator_namespacePrefix_feature", "_UI_SwitchMediator_type"),
+                 EsbPackage.Literals.SWITCH_MEDIATOR__NAMESPACE_PREFIX,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -159,7 +172,6 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -180,7 +192,6 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -196,7 +207,6 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
      * This returns SwitchMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -209,15 +219,15 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((SwitchMediator) object).getNamespace();
-        return label == null || label.length() == 0 ? getString("_UI_SwitchMediator_type")
-                : getString("_UI_SwitchMediator_type") + " " + label;
+        String label = ((SwitchMediator)object).getNamespace();
+        return label == null || label.length() == 0 ?
+            getString("_UI_SwitchMediator_type") :
+            getString("_UI_SwitchMediator_type") + " " + label;
     }
 
     /**
@@ -225,7 +235,6 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -234,19 +243,19 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(SwitchMediator.class)) {
-        case EsbPackage.SWITCH_MEDIATOR__SOURCE:
-        case EsbPackage.SWITCH_MEDIATOR__NAMESPACE:
-        case EsbPackage.SWITCH_MEDIATOR__NAMESPACE_PREFIX:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.SWITCH_MEDIATOR__SOURCE_XPATH:
-        case EsbPackage.SWITCH_MEDIATOR__CASE_BRANCHES:
-        case EsbPackage.SWITCH_MEDIATOR__DEFAULT_BRANCH:
-        case EsbPackage.SWITCH_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.SWITCH_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.SWITCH_MEDIATOR__SWITCH_CONTAINER:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.SWITCH_MEDIATOR__SOURCE:
+            case EsbPackage.SWITCH_MEDIATOR__NAMESPACE:
+            case EsbPackage.SWITCH_MEDIATOR__NAMESPACE_PREFIX:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.SWITCH_MEDIATOR__SOURCE_XPATH:
+            case EsbPackage.SWITCH_MEDIATOR__CASE_BRANCHES:
+            case EsbPackage.SWITCH_MEDIATOR__DEFAULT_BRANCH:
+            case EsbPackage.SWITCH_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.SWITCH_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.SWITCH_MEDIATOR__SWITCH_CONTAINER:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -256,7 +265,6 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -264,23 +272,35 @@ public class SwitchMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SWITCH_MEDIATOR__SOURCE_XPATH,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SWITCH_MEDIATOR__SOURCE_XPATH,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SWITCH_MEDIATOR__CASE_BRANCHES,
-                EsbFactory.eINSTANCE.createSwitchCaseBranchOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SWITCH_MEDIATOR__CASE_BRANCHES,
+                 EsbFactory.eINSTANCE.createSwitchCaseBranchOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SWITCH_MEDIATOR__DEFAULT_BRANCH,
-                EsbFactory.eINSTANCE.createSwitchDefaultBranchOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SWITCH_MEDIATOR__DEFAULT_BRANCH,
+                 EsbFactory.eINSTANCE.createSwitchDefaultBranchOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SWITCH_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createSwitchMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SWITCH_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createSwitchMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SWITCH_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createSwitchMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SWITCH_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createSwitchMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SWITCH_MEDIATOR__SWITCH_CONTAINER,
-                EsbFactory.eINSTANCE.createSwitchMediatorContainer()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SWITCH_MEDIATOR__SWITCH_CONTAINER,
+                 EsbFactory.eINSTANCE.createSwitchMediatorContainer()));
     }
 
 }

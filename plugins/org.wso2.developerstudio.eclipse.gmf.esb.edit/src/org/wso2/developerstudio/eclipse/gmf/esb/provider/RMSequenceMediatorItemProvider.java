@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RMSpecVersion;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
@@ -40,7 +39,6 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RMSequenceMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -80,66 +78,88 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Rm Spec Version feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addRmSpecVersionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RMSequenceMediator_rmSpecVersion_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RMSequenceMediator_rmSpecVersion_feature",
-                        "_UI_RMSequenceMediator_type"),
-                EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__RM_SPEC_VERSION, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RMSequenceMediator_rmSpecVersion_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RMSequenceMediator_rmSpecVersion_feature", "_UI_RMSequenceMediator_type"),
+                 EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__RM_SPEC_VERSION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Sequence Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSequenceTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RMSequenceMediator_sequenceType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RMSequenceMediator_sequenceType_feature",
-                                "_UI_RMSequenceMediator_type"),
-                        EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RMSequenceMediator_sequenceType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RMSequenceMediator_sequenceType_feature", "_UI_RMSequenceMediator_type"),
+                 EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Correlation Xpath feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addCorrelationXpathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RMSequenceMediator_correlationXpath_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RMSequenceMediator_correlationXpath_feature",
-                        "_UI_RMSequenceMediator_type"),
-                EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__CORRELATION_XPATH, true, false, true, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RMSequenceMediator_correlationXpath_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RMSequenceMediator_correlationXpath_feature", "_UI_RMSequenceMediator_type"),
+                 EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__CORRELATION_XPATH,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Last Message Xpath feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addLastMessageXpathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RMSequenceMediator_lastMessageXpath_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RMSequenceMediator_lastMessageXpath_feature",
-                        "_UI_RMSequenceMediator_type"),
-                EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__LAST_MESSAGE_XPATH, true, false, true, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RMSequenceMediator_lastMessageXpath_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RMSequenceMediator_lastMessageXpath_feature", "_UI_RMSequenceMediator_type"),
+                 EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__LAST_MESSAGE_XPATH,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -148,7 +168,6 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -164,7 +183,6 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -179,7 +197,6 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
      * This returns RMSequenceMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -192,15 +209,15 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((RMSequenceMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_RMSequenceMediator_type")
-                : getString("_UI_RMSequenceMediator_type") + " " + label;
+        String label = ((RMSequenceMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_RMSequenceMediator_type") :
+            getString("_UI_RMSequenceMediator_type") + " " + label;
     }
 
     /**
@@ -208,7 +225,6 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -217,14 +233,14 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(RMSequenceMediator.class)) {
-        case EsbPackage.RM_SEQUENCE_MEDIATOR__RM_SPEC_VERSION:
-        case EsbPackage.RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.RM_SEQUENCE_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.RM_SEQUENCE_MEDIATOR__OUTPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.RM_SEQUENCE_MEDIATOR__RM_SPEC_VERSION:
+            case EsbPackage.RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.RM_SEQUENCE_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.RM_SEQUENCE_MEDIATOR__OUTPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -234,7 +250,6 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -242,11 +257,15 @@ public class RMSequenceMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createRMSequenceMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createRMSequenceMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createRMSequenceMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.RM_SEQUENCE_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createRMSequenceMediatorOutputConnector()));
     }
 
 }

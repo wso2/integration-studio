@@ -36,7 +36,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class PublishEventMediatorItemProvider extends MediatorItemProvider {
@@ -44,7 +43,6 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PublishEventMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -83,151 +81,198 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Stream Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addStreamNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PublishEventMediator_streamName_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_streamName_feature",
-                        "_UI_PublishEventMediator_type"),
-                EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PublishEventMediator_streamName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_streamName_feature", "_UI_PublishEventMediator_type"),
+                 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Stream Version feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addStreamVersionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PublishEventMediator_streamVersion_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_streamVersion_feature",
-                        "_UI_PublishEventMediator_type"),
-                EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PublishEventMediator_streamVersion_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_streamVersion_feature", "_UI_PublishEventMediator_type"),
+                 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Event Sink feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEventSinkPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PublishEventMediator_eventSink_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_eventSink_feature",
-                        "_UI_PublishEventMediator_type"),
-                EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__EVENT_SINK, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PublishEventMediator_eventSink_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_eventSink_feature", "_UI_PublishEventMediator_type"),
+                 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__EVENT_SINK,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Meta Attributes feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMetaAttributesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PublishEventMediator_metaAttributes_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_metaAttributes_feature",
-                        "_UI_PublishEventMediator_type"),
-                EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PublishEventMediator_metaAttributes_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_metaAttributes_feature", "_UI_PublishEventMediator_type"),
+                 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Correlation Attributes feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addCorrelationAttributesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PublishEventMediator_correlationAttributes_feature"),
-                getString("_UI_PropertyDescriptor_description",
-                        "_UI_PublishEventMediator_correlationAttributes_feature", "_UI_PublishEventMediator_type"),
-                EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES, true, false, false, null, null,
-                null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PublishEventMediator_correlationAttributes_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_correlationAttributes_feature", "_UI_PublishEventMediator_type"),
+                 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Payload Attributes feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPayloadAttributesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PublishEventMediator_payloadAttributes_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_payloadAttributes_feature",
-                        "_UI_PublishEventMediator_type"),
-                EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PublishEventMediator_payloadAttributes_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_payloadAttributes_feature", "_UI_PublishEventMediator_type"),
+                 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Arbitrary Attributes feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addArbitraryAttributesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PublishEventMediator_arbitraryAttributes_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_arbitraryAttributes_feature",
-                        "_UI_PublishEventMediator_type"),
-                EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES, true, false, false, null, null,
-                null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PublishEventMediator_arbitraryAttributes_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_arbitraryAttributes_feature", "_UI_PublishEventMediator_type"),
+                 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Async feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAsyncPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_PublishEventMediator_Async_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_Async_feature",
-                                "_UI_PublishEventMediator_type"),
-                        EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PublishEventMediator_Async_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_Async_feature", "_UI_PublishEventMediator_type"),
+                 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Async Timeout feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAsyncTimeoutPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PublishEventMediator_AsyncTimeout_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_AsyncTimeout_feature",
-                        "_UI_PublishEventMediator_type"),
-                EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_PublishEventMediator_AsyncTimeout_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_PublishEventMediator_AsyncTimeout_feature", "_UI_PublishEventMediator_type"),
+                 EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -236,7 +281,6 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -252,7 +296,6 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -267,7 +310,6 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
      * This returns PublishEventMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -279,14 +321,14 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((PublishEventMediator) object).getStreamName();
-        return label == null || label.length() == 0 ? getString("_UI_PublishEventMediator_type")
-                : getString("_UI_PublishEventMediator_type") + " " + label;
+        String label = ((PublishEventMediator)object).getStreamName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_PublishEventMediator_type") :
+            getString("_UI_PublishEventMediator_type") + " " + label;
     }
 
     /**
@@ -294,7 +336,6 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -302,21 +343,21 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(PublishEventMediator.class)) {
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_NAME:
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__STREAM_VERSION:
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__EVENT_SINK:
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES:
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES:
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES:
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES:
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC:
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__ASYNC_TIMEOUT:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -326,18 +367,21 @@ public class PublishEventMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createPublishEventMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createPublishEventMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR,
-                EsbFactory.eINSTANCE.createPublishEventMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR,
+                 EsbFactory.eINSTANCE.createPublishEventMediatorOutputConnector()));
     }
 
 }

@@ -41,16 +41,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getAddress <em>Address</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getTargetTemplate <em>Target
- * Template</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getParameters <em>Parameters</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getAvailableTemplates <em>Available
- * Templates</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getAddress <em>Address</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getTargetTemplate <em>Target Template</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl#getAvailableTemplates <em>Available Templates</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,7 +56,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -71,7 +66,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -82,7 +76,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
      * The default value of the '{@link #getAddress() <em>Address</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAddress()
      * @generated
      * @ordered
@@ -93,7 +86,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
      * The cached value of the '{@link #getAddress() <em>Address</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAddress()
      * @generated
      * @ordered
@@ -104,7 +96,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
      * The default value of the '{@link #getTargetTemplate() <em>Target Template</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTargetTemplate()
      * @generated
      * @ordered
@@ -115,7 +106,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
      * The cached value of the '{@link #getTargetTemplate() <em>Target Template</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTargetTemplate()
      * @generated
      * @ordered
@@ -126,7 +116,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getParameters()
      * @generated
      * @ordered
@@ -137,7 +126,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
      * The default value of the '{@link #getAvailableTemplates() <em>Available Templates</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAvailableTemplates()
      * @generated
      * @ordered
@@ -148,7 +136,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
      * The cached value of the '{@link #getAvailableTemplates() <em>Available Templates</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAvailableTemplates()
      * @generated
      * @ordered
@@ -158,7 +145,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected TemplateEndpointImpl() {
@@ -168,7 +154,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -179,7 +164,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public TemplateEndpointInputConnector getInputConnector() {
@@ -189,7 +173,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(TemplateEndpointInputConnector newInputConnector,
@@ -197,12 +180,8 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
         TemplateEndpointInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -210,30 +189,25 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(TemplateEndpointInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public TemplateEndpointOutputConnector getOutputConnector() {
@@ -243,7 +217,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(TemplateEndpointOutputConnector newOutputConnector,
@@ -251,12 +224,8 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
         TemplateEndpointOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -264,30 +233,25 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(TemplateEndpointOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getAddress() {
@@ -297,21 +261,18 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAddress(String newAddress) {
         String oldAddress = address;
         address = newAddress;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__ADDRESS, oldAddress,
-                    address));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__ADDRESS, oldAddress, address));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTargetTemplate() {
@@ -321,27 +282,23 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTargetTemplate(String newTargetTemplate) {
         String oldTargetTemplate = targetTemplate;
         targetTemplate = newTargetTemplate;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE,
-                    oldTargetTemplate, targetTemplate));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE, oldTargetTemplate, targetTemplate));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<TemplateEndpointParameter> getParameters() {
         if (parameters == null) {
-            parameters = new EObjectContainmentEList<TemplateEndpointParameter>(TemplateEndpointParameter.class, this,
-                    EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS);
+            parameters = new EObjectContainmentEList<TemplateEndpointParameter>(TemplateEndpointParameter.class, this, EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS);
         }
         return parameters;
     }
@@ -349,7 +306,6 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getAvailableTemplates() {
@@ -359,32 +315,29 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAvailableTemplates(String newAvailableTemplates) {
         String oldAvailableTemplates = availableTemplates;
         availableTemplates = newAvailableTemplates;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES,
-                    oldAvailableTemplates, availableTemplates));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES, oldAvailableTemplates, availableTemplates));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
-        case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
-            return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
+            case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
+            case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
+                return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -392,24 +345,23 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
-            return getOutputConnector();
-        case EsbPackage.TEMPLATE_ENDPOINT__ADDRESS:
-            return getAddress();
-        case EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE:
-            return getTargetTemplate();
-        case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
-            return getParameters();
-        case EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES:
-            return getAvailableTemplates();
+            case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
+                return getOutputConnector();
+            case EsbPackage.TEMPLATE_ENDPOINT__ADDRESS:
+                return getAddress();
+            case EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE:
+                return getTargetTemplate();
+            case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
+                return getParameters();
+            case EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES:
+                return getAvailableTemplates();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -417,32 +369,31 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
-            setInputConnector((TemplateEndpointInputConnector) newValue);
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
-            setOutputConnector((TemplateEndpointOutputConnector) newValue);
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__ADDRESS:
-            setAddress((String) newValue);
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE:
-            setTargetTemplate((String) newValue);
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
-            getParameters().clear();
-            getParameters().addAll((Collection<? extends TemplateEndpointParameter>) newValue);
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES:
-            setAvailableTemplates((String) newValue);
-            return;
+            case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
+                setInputConnector((TemplateEndpointInputConnector)newValue);
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
+                setOutputConnector((TemplateEndpointOutputConnector)newValue);
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__ADDRESS:
+                setAddress((String)newValue);
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE:
+                setTargetTemplate((String)newValue);
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
+                getParameters().clear();
+                getParameters().addAll((Collection<? extends TemplateEndpointParameter>)newValue);
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES:
+                setAvailableTemplates((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -450,30 +401,29 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
-            setInputConnector((TemplateEndpointInputConnector) null);
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
-            setOutputConnector((TemplateEndpointOutputConnector) null);
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__ADDRESS:
-            setAddress(ADDRESS_EDEFAULT);
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE:
-            setTargetTemplate(TARGET_TEMPLATE_EDEFAULT);
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
-            getParameters().clear();
-            return;
-        case EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES:
-            setAvailableTemplates(AVAILABLE_TEMPLATES_EDEFAULT);
-            return;
+            case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
+                setInputConnector((TemplateEndpointInputConnector)null);
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
+                setOutputConnector((TemplateEndpointOutputConnector)null);
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__ADDRESS:
+                setAddress(ADDRESS_EDEFAULT);
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE:
+                setTargetTemplate(TARGET_TEMPLATE_EDEFAULT);
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
+                getParameters().clear();
+                return;
+            case EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES:
+                setAvailableTemplates(AVAILABLE_TEMPLATES_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -481,26 +431,23 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
-            return outputConnector != null;
-        case EsbPackage.TEMPLATE_ENDPOINT__ADDRESS:
-            return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
-        case EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE:
-            return TARGET_TEMPLATE_EDEFAULT == null ? targetTemplate != null
-                    : !TARGET_TEMPLATE_EDEFAULT.equals(targetTemplate);
-        case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
-            return parameters != null && !parameters.isEmpty();
-        case EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES:
-            return AVAILABLE_TEMPLATES_EDEFAULT == null ? availableTemplates != null
-                    : !AVAILABLE_TEMPLATES_EDEFAULT.equals(availableTemplates);
+            case EsbPackage.TEMPLATE_ENDPOINT__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.TEMPLATE_ENDPOINT__OUTPUT_CONNECTOR:
+                return outputConnector != null;
+            case EsbPackage.TEMPLATE_ENDPOINT__ADDRESS:
+                return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
+            case EsbPackage.TEMPLATE_ENDPOINT__TARGET_TEMPLATE:
+                return TARGET_TEMPLATE_EDEFAULT == null ? targetTemplate != null : !TARGET_TEMPLATE_EDEFAULT.equals(targetTemplate);
+            case EsbPackage.TEMPLATE_ENDPOINT__PARAMETERS:
+                return parameters != null && !parameters.isEmpty();
+            case EsbPackage.TEMPLATE_ENDPOINT__AVAILABLE_TEMPLATES:
+                return AVAILABLE_TEMPLATES_EDEFAULT == null ? availableTemplates != null : !AVAILABLE_TEMPLATES_EDEFAULT.equals(availableTemplates);
         }
         return super.eIsSet(featureID);
     }
@@ -508,13 +455,11 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (address: ");

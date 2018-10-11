@@ -15,30 +15,23 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getInputConnector <em>Input Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyName <em>Property Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyDataType <em>Property Data
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyAction <em>Property Action</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyScope <em>Property Scope</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueType <em>Value Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue <em>Value</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getExpression <em>Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespacePrefix <em>Namespace
- * Prefix</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespace <em>Namespace</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueExpression <em>Value
- * Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean <em>Boolean</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM <em>OM</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringPattern <em>Value String
- * Pattern</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringCapturingGroup <em>Value String
- * Capturing Group</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNewPropertyName <em>New Property
- * Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyName <em>Property Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyDataType <em>Property Data Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyAction <em>Property Action</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyScope <em>Property Scope</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespacePrefix <em>Namespace Prefix</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean <em>Boolean</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM <em>OM</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringPattern <em>Value String Pattern</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringCapturingGroup <em>Value String Capturing Group</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNewPropertyName <em>New Property Name</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator()
@@ -56,7 +49,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Name</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyName
      * @see #setPropertyName(PropertyName)
@@ -67,11 +59,9 @@ public interface PropertyMediator extends Mediator {
     PropertyName getPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyName
-     * <em>Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyName <em>Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Name</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyName
      * @see #getPropertyName()
@@ -89,7 +79,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Data Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyDataType
      * @see #setPropertyDataType(PropertyDataType)
@@ -100,11 +89,9 @@ public interface PropertyMediator extends Mediator {
     PropertyDataType getPropertyDataType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyDataType
-     * <em>Property Data Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyDataType <em>Property Data Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Data Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyDataType
      * @see #getPropertyDataType()
@@ -121,7 +108,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction
      * @see #setPropertyAction(PropertyAction)
@@ -132,11 +118,9 @@ public interface PropertyMediator extends Mediator {
     PropertyAction getPropertyAction();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyAction
-     * <em>Property Action</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyAction <em>Property Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Action</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction
      * @see #getPropertyAction()
@@ -153,7 +137,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Property Scope</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope
      * @see #setPropertyScope(PropertyScope)
@@ -164,11 +147,9 @@ public interface PropertyMediator extends Mediator {
     PropertyScope getPropertyScope();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyScope
-     * <em>Property Scope</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyScope <em>Property Scope</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Property Scope</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope
      * @see #getPropertyScope()
@@ -186,7 +167,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #setValueType(PropertyValueType)
@@ -197,11 +177,9 @@ public interface PropertyMediator extends Mediator {
     PropertyValueType getValueType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueType <em>Value
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueType <em>Value Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
      * @see #getValueType()
@@ -218,7 +196,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_Value()
@@ -228,11 +205,9 @@ public interface PropertyMediator extends Mediator {
     String getValue();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue <em>Value</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue <em>Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value</em>' attribute.
      * @see #getValue()
      * @generated
@@ -247,7 +222,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Expression</em>' attribute.
      * @see #setExpression(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_Expression()
@@ -257,11 +231,9 @@ public interface PropertyMediator extends Mediator {
     String getExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getExpression
-     * <em>Expression</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getExpression <em>Expression</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Expression</em>' attribute.
      * @see #getExpression()
      * @generated
@@ -276,7 +248,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Namespace Prefix</em>' attribute.
      * @see #setNamespacePrefix(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_NamespacePrefix()
@@ -286,11 +257,9 @@ public interface PropertyMediator extends Mediator {
     String getNamespacePrefix();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespacePrefix
-     * <em>Namespace Prefix</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespacePrefix <em>Namespace Prefix</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Namespace Prefix</em>' attribute.
      * @see #getNamespacePrefix()
      * @generated
@@ -305,7 +274,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Namespace</em>' attribute.
      * @see #setNamespace(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_Namespace()
@@ -315,11 +283,9 @@ public interface PropertyMediator extends Mediator {
     String getNamespace();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespace
-     * <em>Namespace</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespace <em>Namespace</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Namespace</em>' attribute.
      * @see #getNamespace()
      * @generated
@@ -334,7 +300,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Expression</em>' containment reference.
      * @see #setValueExpression(NamespacedProperty)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_ValueExpression()
@@ -344,11 +309,9 @@ public interface PropertyMediator extends Mediator {
     NamespacedProperty getValueExpression();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueExpression
-     * <em>Value Expression</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueExpression <em>Value Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Expression</em>' containment reference.
      * @see #getValueExpression()
      * @generated
@@ -363,7 +326,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Boolean</em>' attribute.
      * @see #setBoolean(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_Boolean()
@@ -373,11 +335,9 @@ public interface PropertyMediator extends Mediator {
     boolean isBoolean();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean
-     * <em>Boolean</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean <em>Boolean</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Boolean</em>' attribute.
      * @see #isBoolean()
      * @generated
@@ -393,21 +353,18 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>OM</em>' attribute.
      * @see #setOM(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_OM()
-     * @model default="<value/>"
+     * @model default="&lt;value/&gt;"
      * @generated
      */
     String getOM();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM <em>OM</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM <em>OM</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>OM</em>' attribute.
      * @see #getOM()
      * @generated
@@ -422,7 +379,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value String Pattern</em>' attribute.
      * @see #setValueStringPattern(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_ValueStringPattern()
@@ -432,11 +388,9 @@ public interface PropertyMediator extends Mediator {
     String getValueStringPattern();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringPattern
-     * <em>Value String Pattern</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringPattern <em>Value String Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value String Pattern</em>' attribute.
      * @see #getValueStringPattern()
      * @generated
@@ -452,7 +406,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value String Capturing Group</em>' attribute.
      * @see #setValueStringCapturingGroup(int)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_ValueStringCapturingGroup()
@@ -462,12 +415,9 @@ public interface PropertyMediator extends Mediator {
     int getValueStringCapturingGroup();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringCapturingGroup <em>Value String
-     * Capturing Group</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringCapturingGroup <em>Value String Capturing Group</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value String Capturing Group</em>' attribute.
      * @see #getValueStringCapturingGroup()
      * @generated
@@ -483,7 +433,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>New Property Name</em>' attribute.
      * @see #setNewPropertyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_NewPropertyName()
@@ -493,11 +442,9 @@ public interface PropertyMediator extends Mediator {
     String getNewPropertyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNewPropertyName
-     * <em>New Property Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNewPropertyName <em>New Property Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>New Property Name</em>' attribute.
      * @see #getNewPropertyName()
      * @generated
@@ -512,7 +459,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Input Connector</em>' containment reference.
      * @see #setInputConnector(PropertyMediatorInputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_InputConnector()
@@ -522,11 +468,9 @@ public interface PropertyMediator extends Mediator {
     PropertyMediatorInputConnector getInputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getInputConnector
-     * <em>Input Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getInputConnector <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Input Connector</em>' containment reference.
      * @see #getInputConnector()
      * @generated
@@ -541,7 +485,6 @@ public interface PropertyMediator extends Mediator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Output Connector</em>' containment reference.
      * @see #setOutputConnector(PropertyMediatorOutputConnector)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_OutputConnector()
@@ -551,11 +494,9 @@ public interface PropertyMediator extends Mediator {
     PropertyMediatorOutputConnector getOutputConnector();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOutputConnector
-     * <em>Output Connector</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOutputConnector <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Output Connector</em>' containment reference.
      * @see #getOutputConnector()
      * @generated

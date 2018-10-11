@@ -2932,6 +2932,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSLocking" eType="#//Enable"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSMaxRetryCount"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSMoveAfterFailedMove"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSReconnectTimeout"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSSharedSubscription"
@@ -2948,10 +2950,22 @@
         eType="#//VFSAction"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSMoveAfterErrors"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFailedRecordsFileName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="vfs-move-failed-records.properties"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFailedRecordsFileDestination"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="repository/conf/"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSMoveFailedRecordTimestampFormat"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="dd-MM-yyyy HH:mm:ss"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFailedRecordNextRetryDuration"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="3000"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSActionAfterFailure"
         eType="#//VFSAction"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSMoveAfterFailure"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSReplyFileURI"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSReplyFileName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="response.xml"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSAutoLockRelease"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSAutoLockReleaseInterval"

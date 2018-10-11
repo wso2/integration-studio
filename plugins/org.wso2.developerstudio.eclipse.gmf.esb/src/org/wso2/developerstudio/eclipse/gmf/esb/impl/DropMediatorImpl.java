@@ -26,8 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DropMediatorImpl#getInputConnector <em>Input
- * Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DropMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,7 +36,6 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected DropMediatorImpl() {
@@ -57,7 +54,6 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -69,7 +65,6 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public DropMediatorInputConnector getInputConnector() {
@@ -79,7 +74,6 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(DropMediatorInputConnector newInputConnector,
@@ -87,12 +81,8 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
         DropMediatorInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -100,38 +90,33 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(DropMediatorInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
+            case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -139,15 +124,14 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
-            return getInputConnector();
+            case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
+                return getInputConnector();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -155,16 +139,15 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((DropMediatorInputConnector) newValue);
-            return;
+            case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((DropMediatorInputConnector)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -172,16 +155,15 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((DropMediatorInputConnector) null);
-            return;
+            case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((DropMediatorInputConnector)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -189,15 +171,14 @@ public class DropMediatorImpl extends MediatorImpl implements DropMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
-            return inputConnector != null;
+            case EsbPackage.DROP_MEDIATOR__INPUT_CONNECTOR:
+                return inputConnector != null;
         }
         return super.eIsSet(featureID);
     }

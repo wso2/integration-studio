@@ -23,7 +23,6 @@ public class SwitchDefaultBranchOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected SwitchDefaultBranchOutputConnectorImpl() {
@@ -33,7 +32,6 @@ public class SwitchDefaultBranchOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

@@ -23,7 +23,6 @@ public class ValidateMediatorOnFailOutputConnectorImpl extends OutputConnectorIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ValidateMediatorOnFailOutputConnectorImpl() {
@@ -33,7 +32,6 @@ public class ValidateMediatorOnFailOutputConnectorImpl extends OutputConnectorIm
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

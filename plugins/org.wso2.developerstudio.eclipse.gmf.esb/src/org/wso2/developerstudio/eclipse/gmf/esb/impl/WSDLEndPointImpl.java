@@ -33,13 +33,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPointOutputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getWsdlUri <em>Wsdl Uri</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getService <em>Service</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getPort <em>Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getWsdlUri <em>Wsdl Uri</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getService <em>Service</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getPort <em>Port</em>}</li>
  * </ul>
  *
  * @generated
@@ -49,7 +47,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -60,7 +57,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -71,7 +67,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
      * The default value of the '{@link #getWsdlUri() <em>Wsdl Uri</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsdlUri()
      * @generated
      * @ordered
@@ -82,7 +77,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
      * The cached value of the '{@link #getWsdlUri() <em>Wsdl Uri</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsdlUri()
      * @generated
      * @ordered
@@ -93,7 +87,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
      * The default value of the '{@link #getService() <em>Service</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getService()
      * @generated
      * @ordered
@@ -104,7 +97,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
      * The cached value of the '{@link #getService() <em>Service</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getService()
      * @generated
      * @ordered
@@ -115,7 +107,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
      * The default value of the '{@link #getPort() <em>Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getPort()
      * @generated
      * @ordered
@@ -126,7 +117,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
      * The cached value of the '{@link #getPort() <em>Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getPort()
      * @generated
      * @ordered
@@ -136,7 +126,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected WSDLEndPointImpl() {
@@ -146,7 +135,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -157,7 +145,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public WSDLEndPointInputConnector getInputConnector() {
@@ -167,7 +154,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(WSDLEndPointInputConnector newInputConnector,
@@ -175,12 +161,8 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
         WSDLEndPointInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -188,30 +170,25 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(WSDLEndPointInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public WSDLEndPointOutputConnector getOutputConnector() {
@@ -221,7 +198,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(WSDLEndPointOutputConnector newOutputConnector,
@@ -229,12 +205,8 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
         WSDLEndPointOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -242,30 +214,25 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(WSDLEndPointOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsdlUri() {
@@ -275,21 +242,18 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsdlUri(String newWsdlUri) {
         String oldWsdlUri = wsdlUri;
         wsdlUri = newWsdlUri;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__WSDL_URI, oldWsdlUri,
-                    wsdlUri));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__WSDL_URI, oldWsdlUri, wsdlUri));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getService() {
@@ -299,21 +263,18 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setService(String newService) {
         String oldService = service;
         service = newService;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__SERVICE, oldService,
-                    service));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.WSDL_END_POINT__SERVICE, oldService, service));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getPort() {
@@ -323,7 +284,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setPort(String newPort) {
@@ -336,16 +296,15 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
+            case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -353,22 +312,21 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
-            return getOutputConnector();
-        case EsbPackage.WSDL_END_POINT__WSDL_URI:
-            return getWsdlUri();
-        case EsbPackage.WSDL_END_POINT__SERVICE:
-            return getService();
-        case EsbPackage.WSDL_END_POINT__PORT:
-            return getPort();
+            case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
+                return getOutputConnector();
+            case EsbPackage.WSDL_END_POINT__WSDL_URI:
+                return getWsdlUri();
+            case EsbPackage.WSDL_END_POINT__SERVICE:
+                return getService();
+            case EsbPackage.WSDL_END_POINT__PORT:
+                return getPort();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -376,28 +334,27 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
-            setInputConnector((WSDLEndPointInputConnector) newValue);
-            return;
-        case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
-            setOutputConnector((WSDLEndPointOutputConnector) newValue);
-            return;
-        case EsbPackage.WSDL_END_POINT__WSDL_URI:
-            setWsdlUri((String) newValue);
-            return;
-        case EsbPackage.WSDL_END_POINT__SERVICE:
-            setService((String) newValue);
-            return;
-        case EsbPackage.WSDL_END_POINT__PORT:
-            setPort((String) newValue);
-            return;
+            case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
+                setInputConnector((WSDLEndPointInputConnector)newValue);
+                return;
+            case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
+                setOutputConnector((WSDLEndPointOutputConnector)newValue);
+                return;
+            case EsbPackage.WSDL_END_POINT__WSDL_URI:
+                setWsdlUri((String)newValue);
+                return;
+            case EsbPackage.WSDL_END_POINT__SERVICE:
+                setService((String)newValue);
+                return;
+            case EsbPackage.WSDL_END_POINT__PORT:
+                setPort((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -405,27 +362,26 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
-            setInputConnector((WSDLEndPointInputConnector) null);
-            return;
-        case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
-            setOutputConnector((WSDLEndPointOutputConnector) null);
-            return;
-        case EsbPackage.WSDL_END_POINT__WSDL_URI:
-            setWsdlUri(WSDL_URI_EDEFAULT);
-            return;
-        case EsbPackage.WSDL_END_POINT__SERVICE:
-            setService(SERVICE_EDEFAULT);
-            return;
-        case EsbPackage.WSDL_END_POINT__PORT:
-            setPort(PORT_EDEFAULT);
-            return;
+            case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
+                setInputConnector((WSDLEndPointInputConnector)null);
+                return;
+            case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
+                setOutputConnector((WSDLEndPointOutputConnector)null);
+                return;
+            case EsbPackage.WSDL_END_POINT__WSDL_URI:
+                setWsdlUri(WSDL_URI_EDEFAULT);
+                return;
+            case EsbPackage.WSDL_END_POINT__SERVICE:
+                setService(SERVICE_EDEFAULT);
+                return;
+            case EsbPackage.WSDL_END_POINT__PORT:
+                setPort(PORT_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -433,22 +389,21 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
-            return outputConnector != null;
-        case EsbPackage.WSDL_END_POINT__WSDL_URI:
-            return WSDL_URI_EDEFAULT == null ? wsdlUri != null : !WSDL_URI_EDEFAULT.equals(wsdlUri);
-        case EsbPackage.WSDL_END_POINT__SERVICE:
-            return SERVICE_EDEFAULT == null ? service != null : !SERVICE_EDEFAULT.equals(service);
-        case EsbPackage.WSDL_END_POINT__PORT:
-            return PORT_EDEFAULT == null ? port != null : !PORT_EDEFAULT.equals(port);
+            case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
+                return outputConnector != null;
+            case EsbPackage.WSDL_END_POINT__WSDL_URI:
+                return WSDL_URI_EDEFAULT == null ? wsdlUri != null : !WSDL_URI_EDEFAULT.equals(wsdlUri);
+            case EsbPackage.WSDL_END_POINT__SERVICE:
+                return SERVICE_EDEFAULT == null ? service != null : !SERVICE_EDEFAULT.equals(service);
+            case EsbPackage.WSDL_END_POINT__PORT:
+                return PORT_EDEFAULT == null ? port != null : !PORT_EDEFAULT.equals(port);
         }
         return super.eIsSet(featureID);
     }
@@ -456,13 +411,11 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (wsdlUri: ");

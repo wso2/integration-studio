@@ -26,7 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbSequenceInputConnector;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceInputImpl#getConnector <em>Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbSequenceInputImpl#getConnector <em>Connector</em>}</li>
  * </ul>
  *
  * @generated
@@ -36,7 +36,6 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
      * The cached value of the '{@link #getConnector() <em>Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getConnector()
      * @generated
      * @ordered
@@ -46,7 +45,6 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EsbSequenceInputImpl() {
@@ -56,7 +54,6 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -68,7 +65,6 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EsbSequenceInputConnector getConnector() {
@@ -78,19 +74,14 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetConnector(EsbSequenceInputConnector newConnector, NotificationChain msgs) {
         EsbSequenceInputConnector oldConnector = connector;
         connector = newConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR, oldConnector, newConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR, oldConnector, newConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -98,38 +89,33 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setConnector(EsbSequenceInputConnector newConnector) {
         if (newConnector != connector) {
             NotificationChain msgs = null;
             if (connector != null)
-                msgs = ((InternalEObject) connector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)connector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR, null, msgs);
             if (newConnector != null)
-                msgs = ((InternalEObject) newConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR, null, msgs);
             msgs = basicSetConnector(newConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR,
-                    newConnector, newConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR, newConnector, newConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
-            return basicSetConnector(null, msgs);
+            case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
+                return basicSetConnector(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -137,15 +123,14 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
-            return getConnector();
+            case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
+                return getConnector();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -153,16 +138,15 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
-            setConnector((EsbSequenceInputConnector) newValue);
-            return;
+            case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
+                setConnector((EsbSequenceInputConnector)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -170,16 +154,15 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
-            setConnector((EsbSequenceInputConnector) null);
-            return;
+            case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
+                setConnector((EsbSequenceInputConnector)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -187,15 +170,14 @@ public class EsbSequenceInputImpl extends EsbNodeImpl implements EsbSequenceInpu
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
-            return connector != null;
+            case EsbPackage.ESB_SEQUENCE_INPUT__CONNECTOR:
+                return connector != null;
         }
         return super.eIsSet(featureID);
     }

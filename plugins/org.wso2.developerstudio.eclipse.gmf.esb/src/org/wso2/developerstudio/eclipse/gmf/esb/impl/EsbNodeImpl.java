@@ -24,7 +24,6 @@ public abstract class EsbNodeImpl extends EObjectImpl implements EsbNode {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EsbNodeImpl() {
@@ -34,7 +33,6 @@ public abstract class EsbNodeImpl extends EObjectImpl implements EsbNode {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

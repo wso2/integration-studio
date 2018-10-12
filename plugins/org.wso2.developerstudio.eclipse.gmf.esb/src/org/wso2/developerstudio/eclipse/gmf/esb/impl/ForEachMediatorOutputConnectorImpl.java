@@ -28,23 +28,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector;
  * @generated
  */
 public class ForEachMediatorOutputConnectorImpl extends OutputConnectorImpl implements ForEachMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ForEachMediatorOutputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ForEachMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.FOR_EACH_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.FOR_EACH_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //ForEachMediatorOutputConnectorImpl
+} // ForEachMediatorOutputConnectorImpl

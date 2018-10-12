@@ -31,39 +31,39 @@ import java.util.Properties;
 public class DummyTemplateFactory {
 
     public Template createEndpointTemplate(OMElement element, Properties properties) {
-	Template template = new Template();
+        Template template = new Template();
 
-	OMAttribute nameAttribute = element.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
+        OMAttribute nameAttribute = element.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
 
-	if (nameAttribute != null) {
-	    template.setName(nameAttribute.getAttributeValue());
-	}
+        if (nameAttribute != null) {
+            template.setName(nameAttribute.getAttributeValue());
+        }
 
-	Iterator paramItr = element.getChildrenWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "parameter"));
-	while (paramItr.hasNext()) {
-	    OMElement paramElement = (OMElement) paramItr.next();
+        Iterator paramItr = element.getChildrenWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "parameter"));
+        while (paramItr.hasNext()) {
+            OMElement paramElement = (OMElement) paramItr.next();
 
-	    OMAttribute paramName = paramElement.getAttribute(new QName("name"));
+            OMAttribute paramName = paramElement.getAttribute(new QName("name"));
 
-	    if (paramName != null) {
-		template.addParameter(paramName.getAttributeValue().trim());
-	    }
-	}
+            if (paramName != null) {
+                template.addParameter(paramName.getAttributeValue().trim());
+            }
+        }
 
-	if (!template.getParameters().contains("name")) {
-	    template.addParameter("name");
-	}
-	if (!template.getParameters().contains("uri")) {
-	    template.addParameter("uri");
-	}
+        if (!template.getParameters().contains("name")) {
+            template.addParameter("name");
+        }
+        if (!template.getParameters().contains("uri")) {
+            template.addParameter("uri");
+        }
 
-	OMElement endpointElement = element
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "endpoint"));
-	if (endpointElement != null) {
-	    template.setElement(endpointElement);
-	}
+        OMElement endpointElement = element
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "endpoint"));
+        if (endpointElement != null) {
+            template.setElement(endpointElement);
+        }
 
-	return template;
+        return template;
     }
 
 }

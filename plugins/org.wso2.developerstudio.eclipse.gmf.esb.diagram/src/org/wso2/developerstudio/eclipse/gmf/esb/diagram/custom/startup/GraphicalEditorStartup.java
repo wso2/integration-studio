@@ -21,10 +21,9 @@ import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 
 public class GraphicalEditorStartup implements IStartup {
 
-	
-	public void earlyStartup() {
-		GraphicalEditorStartupUtils editorStartupUtils = new GraphicalEditorStartupUtils();
-		ESBGraphicalEditor.setOpenable(editorStartupUtils);
-	}
+    public void earlyStartup() {
+        GraphicalEditorStartupUtils editorStartupUtils = new GraphicalEditorStartupUtils();
+        ESBGraphicalEditor.setOpenable(editorStartupUtils);
+    }
 
 }

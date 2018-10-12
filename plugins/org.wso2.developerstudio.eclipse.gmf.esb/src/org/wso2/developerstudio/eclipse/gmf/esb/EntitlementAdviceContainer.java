@@ -15,7 +15,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Entitlement Advice Container</b></em>'.
@@ -25,7 +24,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementAdviceContainer#getMediatorFlow <em>Mediator Flow</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementAdviceContainer#getMediatorFlow <em>Mediator
+ * Flow</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementAdviceContainer()
@@ -33,30 +33,33 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * @generated
  */
 public interface EntitlementAdviceContainer extends EsbNode {
-	/**
-	 * Returns the value of the '<em><b>Mediator Flow</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mediator Flow</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mediator Flow</em>' containment reference.
-	 * @see #setMediatorFlow(MediatorFlow)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementAdviceContainer_MediatorFlow()
-	 * @model containment="true"
-	 * @generated
-	 */
-	MediatorFlow getMediatorFlow();
+    /**
+     * Returns the value of the '<em><b>Mediator Flow</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Mediator Flow</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Mediator Flow</em>' containment reference.
+     * @see #setMediatorFlow(MediatorFlow)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementAdviceContainer_MediatorFlow()
+     * @model containment="true"
+     * @generated
+     */
+    MediatorFlow getMediatorFlow();
 
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementAdviceContainer#getMediatorFlow <em>Mediator Flow</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
-	 * @see #getMediatorFlow()
-	 * @generated
-	 */
-	void setMediatorFlow(MediatorFlow value);
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementAdviceContainer#getMediatorFlow
+     * <em>Mediator Flow</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @param value the new value of the '<em>Mediator Flow</em>' containment reference.
+     * @see #getMediatorFlow()
+     * @generated
+     */
+    void setMediatorFlow(MediatorFlow value);
 
 } // EntitlementAdviceContainer

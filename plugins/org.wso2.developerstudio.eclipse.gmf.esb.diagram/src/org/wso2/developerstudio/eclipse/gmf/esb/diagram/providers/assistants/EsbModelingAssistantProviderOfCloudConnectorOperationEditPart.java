@@ -13,15 +13,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfCloudConnectorOperationEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(EsbElementTypes.CloudConnectorOperationInputConnector_3723);
-		types.add(EsbElementTypes.CloudConnectorOperationOutputConnector_3724);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(2);
+        types.add(EsbElementTypes.CloudConnectorOperationInputConnector_3723);
+        types.add(EsbElementTypes.CloudConnectorOperationOutputConnector_3724);
+        return types;
+    }
 
 }

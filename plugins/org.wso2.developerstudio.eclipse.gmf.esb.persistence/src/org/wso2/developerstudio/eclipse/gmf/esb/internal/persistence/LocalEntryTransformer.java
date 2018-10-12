@@ -36,83 +36,83 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.LocalEntryFormPage;
  */
 public class LocalEntryTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		// nothing to do
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        // nothing to do
 
-	}
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
-		// nothing to do
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // nothing to do
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		// nothing to do
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // nothing to do
 
-	}
+    }
 
-	public Entry createEntry(LocalEntry visualLocalEntry) throws Exception {
-		Entry localEntry = new Entry(visualLocalEntry.getEntryName());
-		switch (visualLocalEntry.getLocalEntryType()) {
-		case LITERAL: {
-			localEntry.setValue(visualLocalEntry.getValueLiteral());
-			localEntry.setType(Entry.INLINE_TEXT);
-			break;
-		}
-		case XML: {
-			localEntry.setValue(AXIOMUtil.stringToOM(visualLocalEntry.getValueXML()));
-			localEntry.setType(Entry.INLINE_XML);
-			break;
-		}
-		case URL: {
-			localEntry.setType(Entry.URL_SRC);
-			localEntry.setSrc(new URL(visualLocalEntry.getValueURL()));
-			break;
-		}
-		}
-		return localEntry;
-	}
+    public Entry createEntry(LocalEntry visualLocalEntry) throws Exception {
+        Entry localEntry = new Entry(visualLocalEntry.getEntryName());
+        switch (visualLocalEntry.getLocalEntryType()) {
+        case LITERAL: {
+            localEntry.setValue(visualLocalEntry.getValueLiteral());
+            localEntry.setType(Entry.INLINE_TEXT);
+            break;
+        }
+        case XML: {
+            localEntry.setValue(AXIOMUtil.stringToOM(visualLocalEntry.getValueXML()));
+            localEntry.setType(Entry.INLINE_XML);
+            break;
+        }
+        case URL: {
+            localEntry.setType(Entry.URL_SRC);
+            localEntry.setSrc(new URL(visualLocalEntry.getValueURL()));
+            break;
+        }
+        }
+        return localEntry;
+    }
 
-	public Entry createEntry(FormPage visualLocalEntry) throws Exception {
-		Entry localEntry = null;
-		if (visualLocalEntry instanceof LocalEntryFormPage) {
+    public Entry createEntry(FormPage visualLocalEntry) throws Exception {
+        Entry localEntry = null;
+        if (visualLocalEntry instanceof LocalEntryFormPage) {
 
-			LocalEntryFormPage localEntryFormPage = (LocalEntryFormPage) visualLocalEntry;
-			if (localEntryFormPage.getLocalEntryNameTxt() != null) {
-				String localEntryName = localEntryFormPage.getLocalEntryNameTxt().getText();
-				int localEntryType = localEntryFormPage.getLocalEntryTypeCombo().getSelectionIndex();
-				String localEntryValue = getTrimmedValue(localEntryFormPage);
+            LocalEntryFormPage localEntryFormPage = (LocalEntryFormPage) visualLocalEntry;
+            if (localEntryFormPage.getLocalEntryNameTxt() != null) {
+                String localEntryName = localEntryFormPage.getLocalEntryNameTxt().getText();
+                int localEntryType = localEntryFormPage.getLocalEntryTypeCombo().getSelectionIndex();
+                String localEntryValue = getTrimmedValue(localEntryFormPage);
 
-				localEntry = new Entry(localEntryName);
-				if (localEntryType == 0) {
-					localEntry.setType(Entry.INLINE_TEXT);
-					localEntry.setValue(localEntryValue);
-				} else if (localEntryType == 1) {
-					localEntry.setType(Entry.INLINE_XML);
-					localEntry.setValue(AXIOMUtil.stringToOM(localEntryValue));
-				} else if (localEntryType == 2) {
-					localEntry.setType(Entry.URL_SRC);
-					localEntry.setSrc(new URL(localEntryValue));
-				}
-			}
-		}
+                localEntry = new Entry(localEntryName);
+                if (localEntryType == 0) {
+                    localEntry.setType(Entry.INLINE_TEXT);
+                    localEntry.setValue(localEntryValue);
+                } else if (localEntryType == 1) {
+                    localEntry.setType(Entry.INLINE_XML);
+                    localEntry.setValue(AXIOMUtil.stringToOM(localEntryValue));
+                } else if (localEntryType == 2) {
+                    localEntry.setType(Entry.URL_SRC);
+                    localEntry.setSrc(new URL(localEntryValue));
+                }
+            }
+        }
 
-		return localEntry;
-	}
+        return localEntry;
+    }
 
-	/**
-	 * returns the trimmed value
-	 * 
-	 * @param localEntryFormPage
-	 *            form page instance
-	 * @return trimmed value
-	 */
-	private String getTrimmedValue(LocalEntryFormPage localEntryFormPage) {
-		if (localEntryFormPage.getLocalEntryTextValue() != null) {
-			return localEntryFormPage.getLocalEntryTextValue().getText().replaceAll("[\\t\\n]", "");
-		}
-		return "";
-	}
+    /**
+     * returns the trimmed value
+     * 
+     * @param localEntryFormPage
+     *            form page instance
+     * @return trimmed value
+     */
+    private String getTrimmedValue(LocalEntryFormPage localEntryFormPage) {
+        if (localEntryFormPage.getLocalEntryTextValue() != null) {
+            return localEntryFormPage.getLocalEntryTextValue().getText().replaceAll("[\\t\\n]", "");
+        }
+        return "";
+    }
 
 }

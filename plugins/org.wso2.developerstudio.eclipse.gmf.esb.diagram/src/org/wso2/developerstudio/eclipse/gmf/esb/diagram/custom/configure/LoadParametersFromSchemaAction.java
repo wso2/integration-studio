@@ -68,44 +68,38 @@ public class LoadParametersFromSchemaAction extends ConfigureEsbNodeAction {
 
         IProject activeProject = EditorUtils.getActiveProject();
 
-        String connectorPath =
-                             CloudConnectorDirectoryTraverser.getInstance()
-                                                             .getConnectorDirectoryPathFromConnectorName(activeProject.getWorkspace()
-                                                                                                                      .getRoot()
-                                                                                                                      .getLocation()
-                                                                                                                      .toOSString(),
-                                                                                                         cloudConnector.getCloudConnectorName());
-        CloudConnectorDirectoryTraverser cloudConnectorDirectoryTraverser =
-                                                                          CloudConnectorDirectoryTraverser.getInstance(connectorPath);
+        String connectorPath = CloudConnectorDirectoryTraverser.getInstance()
+                .getConnectorDirectoryPathFromConnectorName(
+                        activeProject.getWorkspace().getRoot().getLocation().toOSString(),
+                        cloudConnector.getCloudConnectorName());
+        CloudConnectorDirectoryTraverser cloudConnectorDirectoryTraverser = CloudConnectorDirectoryTraverser
+                .getInstance(connectorPath);
 
-        Map<String, String> parameterDefaultValuesMap =
-                                                      cloudConnectorDirectoryTraverser.getInputDefaultParameterValuesMap(cloudConnector.getOperationName());
+        Map<String, String> parameterDefaultValuesMap = cloudConnectorDirectoryTraverser
+                .getInputDefaultParameterValuesMap(cloudConnector.getOperationName());
         if (parameterDefaultValuesMap == null) {
             log.warn("Default values for connector operation not found");
             MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-                                      "Connector default values loading error",
-                                      "Default values for connector operation parameters could not be found");
+                    "Connector default values loading error",
+                    "Default values for connector operation parameters could not be found");
             return;
         }
 
-        EList<CallTemplateParameter> cloudConnectorParameters =
-                                                              cloudConnector.getConnectorParameters();
+        EList<CallTemplateParameter> cloudConnectorParameters = cloudConnector.getConnectorParameters();
 
         CompoundCommand resultCommand = new CompoundCommand();
         TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(cloudConnector);
 
         // set editing type to name-space editor
-        SetCommand setEditingTypeCmd =
-                                     new SetCommand(editingDomain, cloudConnector,
-                                                    EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE,
-                                                    CloudConnectorOperationParamEditorType.NAMESPACED_PROPERTY_EDITOR);
+        SetCommand setEditingTypeCmd = new SetCommand(editingDomain, cloudConnector,
+                EsbPackage.Literals.CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE,
+                CloudConnectorOperationParamEditorType.NAMESPACED_PROPERTY_EDITOR);
         resultCommand.append(setEditingTypeCmd);
 
         for (CallTemplateParameter parameter : cloudConnectorParameters) {
             String paramValue = parameterDefaultValuesMap.get(parameter.getParameterName());
             if (!StringUtils.isEmpty(paramValue)) {
-                NamespacedProperty namespaceProperty =
-                                                     EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+                NamespacedProperty namespaceProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
                 namespaceProperty.setSupportsDynamicXPaths(true);
 
                 if (paramValue.startsWith("\"") && paramValue.endsWith("\"")) {
@@ -116,8 +110,7 @@ public class LoadParametersFromSchemaAction extends ConfigureEsbNodeAction {
                 namespaceProperty.setPropertyValue(paramValue);
                 namespaceProperty.setDynamic(true);
                 SetCommand setParamValueCmd = new SetCommand(editingDomain, parameter,
-                                                             EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION,
-                                                             namespaceProperty);
+                        EsbPackage.Literals.CALL_TEMPLATE_PARAMETER__PARAMETER_EXPRESSION, namespaceProperty);
                 resultCommand.append(setParamValueCmd);
             }
         }

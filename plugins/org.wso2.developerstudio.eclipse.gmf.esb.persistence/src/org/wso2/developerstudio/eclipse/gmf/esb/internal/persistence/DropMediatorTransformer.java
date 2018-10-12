@@ -32,31 +32,30 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  * corresponding synapse artifact(s).
  */
 public class DropMediatorTransformer extends AbstractEsbNodeTransformer {
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
-		// Drop the message.
-		info.getParentSequence().addChild(createDropMediator((org.wso2.developerstudio.eclipse.gmf.esb.DropMediator)subject));
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        // Drop the message.
+        info.getParentSequence()
+                .addChild(createDropMediator((org.wso2.developerstudio.eclipse.gmf.esb.DropMediator) subject));
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-	private DropMediator createDropMediator(org.wso2.developerstudio.eclipse.gmf.esb.DropMediator visualDrop){
-		DropMediator dropMediator=new DropMediator();
-		setCommonProperties(dropMediator, visualDrop);
-		return dropMediator;
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		sequence.addChild(createDropMediator((org.wso2.developerstudio.eclipse.gmf.esb.DropMediator)subject));
-		
-	}
+    private DropMediator createDropMediator(org.wso2.developerstudio.eclipse.gmf.esb.DropMediator visualDrop) {
+        DropMediator dropMediator = new DropMediator();
+        setCommonProperties(dropMediator, visualDrop);
+        return dropMediator;
+    }
 
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        sequence.addChild(createDropMediator((org.wso2.developerstudio.eclipse.gmf.esb.DropMediator) subject));
+
+    }
 
 }

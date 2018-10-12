@@ -31,98 +31,98 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Bean
 
 public class BeanMediatorExtFactory extends AbstractMediatorFactory {
 
-	private static final QName BEAN_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "bean");
+    private static final QName BEAN_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "bean");
 
-	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
+    public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
-		BeanMediatorExt mediator = new BeanMediatorExt();
+        BeanMediatorExt mediator = new BeanMediatorExt();
 
-		String attributeValue;
+        String attributeValue;
 
-		attributeValue = elem.getAttributeValue(new QName(BeanConstants.VAR));
-		if (attributeValue != null) {
-			mediator.setVarName(attributeValue);
-		}
+        attributeValue = elem.getAttributeValue(new QName(BeanConstants.VAR));
+        if (attributeValue != null) {
+            mediator.setVarName(attributeValue);
+        }
 
-		attributeValue = elem.getAttributeValue(new QName(BeanConstants.ACTION));
-		if (attributeValue != null) {
-			try {
-				switch (Action.valueOf(attributeValue.toUpperCase())) {
-				case CREATE:
-					populateCreateBeanCase(mediator, elem);
-					break;
-				case REMOVE:
-					mediator.setAction(Action.REMOVE);
-					break;
-				case SET_PROPERTY:
-					populateSetPropertyCase(mediator, elem);
-					break;
-				case GET_PROPERTY:
-					populateGetPropertyCase(mediator, elem);
-					break;
-				default:
-					assert false;
-				}
-			} catch (IllegalArgumentException e) {
-				// ignore
-			}
-		}
+        attributeValue = elem.getAttributeValue(new QName(BeanConstants.ACTION));
+        if (attributeValue != null) {
+            try {
+                switch (Action.valueOf(attributeValue.toUpperCase())) {
+                case CREATE:
+                    populateCreateBeanCase(mediator, elem);
+                    break;
+                case REMOVE:
+                    mediator.setAction(Action.REMOVE);
+                    break;
+                case SET_PROPERTY:
+                    populateSetPropertyCase(mediator, elem);
+                    break;
+                case GET_PROPERTY:
+                    populateGetPropertyCase(mediator, elem);
+                    break;
+                default:
+                    assert false;
+                }
+            } catch (IllegalArgumentException e) {
+                // ignore
+            }
+        }
 
-		return mediator;
-	}
+        return mediator;
+    }
 
-	private void populateCreateBeanCase(BeanMediatorExt mediator, OMElement elem) {
+    private void populateCreateBeanCase(BeanMediatorExt mediator, OMElement elem) {
 
-		mediator.setAction(Action.CREATE);
+        mediator.setAction(Action.CREATE);
 
-		String attributeValue;
+        String attributeValue;
 
-		attributeValue = elem.getAttributeValue(new QName(BeanConstants.CLASS));
-		if (attributeValue != null) {
-			mediator.setClassName(attributeValue.trim());
-		}
+        attributeValue = elem.getAttributeValue(new QName(BeanConstants.CLASS));
+        if (attributeValue != null) {
+            mediator.setClassName(attributeValue.trim());
+        }
 
-		attributeValue = elem.getAttributeValue(new QName(BeanConstants.REPLACE));
-		if (attributeValue != null) {
-			mediator.setReplace(Boolean.parseBoolean(attributeValue.trim()));
-		}
+        attributeValue = elem.getAttributeValue(new QName(BeanConstants.REPLACE));
+        if (attributeValue != null) {
+            mediator.setReplace(Boolean.parseBoolean(attributeValue.trim()));
+        }
 
-	}
+    }
 
-	private void populateSetPropertyCase(BeanMediatorExt mediator, OMElement elem) {
+    private void populateSetPropertyCase(BeanMediatorExt mediator, OMElement elem) {
 
-		mediator.setAction(Action.SET_PROPERTY);
+        mediator.setAction(Action.SET_PROPERTY);
 
-		populatePropertyName(mediator, elem);
+        populatePropertyName(mediator, elem);
 
-		if (elem.getAttributeValue(ATT_VALUE) != null) {
-			mediator.setValue(new ValueFactory().createValue(BeanConstants.VALUE, elem));
-		}
-	}
+        if (elem.getAttributeValue(ATT_VALUE) != null) {
+            mediator.setValue(new ValueFactory().createValue(BeanConstants.VALUE, elem));
+        }
+    }
 
-	private void populateGetPropertyCase(BeanMediatorExt mediator, OMElement elem) {
+    private void populateGetPropertyCase(BeanMediatorExt mediator, OMElement elem) {
 
-		mediator.setAction(Action.GET_PROPERTY);
+        mediator.setAction(Action.GET_PROPERTY);
 
-		populatePropertyName(mediator, elem);
+        populatePropertyName(mediator, elem);
 
-		if (elem.getAttributeValue(new QName(BeanConstants.TARGET)) != null) {
-			mediator.setTargetValue(new ValueFactory().createValue(BeanConstants.TARGET, elem));
-		}
-	}
+        if (elem.getAttributeValue(new QName(BeanConstants.TARGET)) != null) {
+            mediator.setTargetValue(new ValueFactory().createValue(BeanConstants.TARGET, elem));
+        }
+    }
 
-	private void populatePropertyName(BeanMediatorExt mediator, OMElement elem) {
+    private void populatePropertyName(BeanMediatorExt mediator, OMElement elem) {
 
-		String attributeValue;
+        String attributeValue;
 
-		attributeValue = elem.getAttributeValue(new QName(BeanConstants.PROPERTY));
-		if (attributeValue != null) {
-			mediator.setPropertyName(attributeValue);
-		}
-	}
+        attributeValue = elem.getAttributeValue(new QName(BeanConstants.PROPERTY));
+        if (attributeValue != null) {
+            mediator.setPropertyName(attributeValue);
+        }
+    }
 
-	public QName getTagQName() {
-		return BEAN_Q;
-	}
+    public QName getTagQName() {
+        return BEAN_Q;
+    }
 
 }

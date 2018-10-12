@@ -39,113 +39,104 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 
-	private static final String CUSTOM = "custom";
+    private static final String CUSTOM = "custom";
     private static final String POLLING_BEHAVIOUR = "polling";
     private static final String LISTENING_BEHAVIOUR = "listening";
     private static final String EVENT_BASED_BEHAVIOUR = "eventBased";
     private static final String REGISTRY_PREFIX = "$registry:";
-	private static final String WSO2MB="wso2_mb";
-    private static final String TOPIC ="topic";
+    private static final String WSO2MB = "wso2_mb";
+    private static final String TOPIC = "topic";
     private static final String QUEUE = "queue";
-	private static final String JMS ="jms";
+    private static final String JMS = "jms";
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {
-		Assert.isTrue(
-				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint,
-				"Invalid subject.");
-		org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint = (org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint) subject;
-		if (visualInboundEndpoint.getName() != null) {
-		    information.getSynapseConfiguration().addInboundEndpoint(
-				visualInboundEndpoint.getName(), create(visualInboundEndpoint));
-		}
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        Assert.isTrue(subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint, "Invalid subject.");
+        org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint = (org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint) subject;
+        if (visualInboundEndpoint.getName() != null) {
+            information.getSynapseConfiguration().addInboundEndpoint(visualInboundEndpoint.getName(),
+                    create(visualInboundEndpoint));
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) throws TransformerException {
-		// TODO Auto-generated method stub
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
+            throws TransformerException {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		// TODO Auto-generated method stub
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	/**
-	 * User can retrieve associated sequence providing the relevant output
-	 * connector.
-	 * 
-	 * @param outputConnector
-	 * @return
-	 */
-	private Sequence getSequence(OutputConnector outputConnector) {
-		EObject container;
-		if (outputConnector != null) {
-			EsbLink link = outputConnector.getOutgoingLink();
-			if (link != null) {
-				container = link.getTarget().eContainer();
-				if (container instanceof Sequence) {
-					return (Sequence) container;
-				}
-			}
-		}
-		return null;
-	}
+    /**
+     * User can retrieve associated sequence providing the relevant output
+     * connector.
+     * 
+     * @param outputConnector
+     * @return
+     */
+    private Sequence getSequence(OutputConnector outputConnector) {
+        EObject container;
+        if (outputConnector != null) {
+            EsbLink link = outputConnector.getOutgoingLink();
+            if (link != null) {
+                container = link.getTarget().eContainer();
+                if (container instanceof Sequence) {
+                    return (Sequence) container;
+                }
+            }
+        }
+        return null;
+    }
 
-	/**
-	 * Create an org.apache.synapse.inbound.InboundEndpoint object from an
-	 * org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint
-	 * 
-	 * @param visualInboundEndpoint
-	 * @return
-	 * @throws TransformerException
-	 * @throws Exception
-	 */
-	private InboundEndpoint create(
-			org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint)
-			throws TransformerException {
-		InboundEndpoint inboundEndpoint = new InboundEndpoint();
-		inboundEndpoint.setName(visualInboundEndpoint.getName());
+    /**
+     * Create an org.apache.synapse.inbound.InboundEndpoint object from an
+     * org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint
+     * 
+     * @param visualInboundEndpoint
+     * @return
+     * @throws TransformerException
+     * @throws Exception
+     */
+    private InboundEndpoint create(org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint)
+            throws TransformerException {
+        InboundEndpoint inboundEndpoint = new InboundEndpoint();
+        inboundEndpoint.setName(visualInboundEndpoint.getName());
 
-		Sequence sequence = getSequence(visualInboundEndpoint
-				.getSequenceOutputConnector());
-		Sequence onErrorSequence = getSequence(visualInboundEndpoint
-				.getOnErrorSequenceOutputConnector());
+        Sequence sequence = getSequence(visualInboundEndpoint.getSequenceOutputConnector());
+        Sequence onErrorSequence = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
 
-		inboundEndpoint.configure(new AspectConfiguration(visualInboundEndpoint.getName()));
-		if (visualInboundEndpoint.isStatisticsEnabled()) {
-			inboundEndpoint.getAspectConfiguration().enableStatistics();
-		} else {
-			inboundEndpoint.getAspectConfiguration().disableStatistics();
-		}
-		if (visualInboundEndpoint.isTraceEnabled()) {
-			inboundEndpoint.getAspectConfiguration().enableTracing();
-		} else {
-			inboundEndpoint.getAspectConfiguration().disableTracing();
-		}
-		if (sequence != null) {
-			inboundEndpoint.setInjectingSeq(sequence.getName());
-		}
+        inboundEndpoint.configure(new AspectConfiguration(visualInboundEndpoint.getName()));
+        if (visualInboundEndpoint.isStatisticsEnabled()) {
+            inboundEndpoint.getAspectConfiguration().enableStatistics();
+        } else {
+            inboundEndpoint.getAspectConfiguration().disableStatistics();
+        }
+        if (visualInboundEndpoint.isTraceEnabled()) {
+            inboundEndpoint.getAspectConfiguration().enableTracing();
+        } else {
+            inboundEndpoint.getAspectConfiguration().disableTracing();
+        }
+        if (sequence != null) {
+            inboundEndpoint.setInjectingSeq(sequence.getName());
+        }
 
-		if (onErrorSequence != null) {
-			inboundEndpoint.setOnErrorSeq(onErrorSequence.getName());
-		}
+        if (onErrorSequence != null) {
+            inboundEndpoint.setOnErrorSeq(onErrorSequence.getName());
+        }
 
-		if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
-				.isSuspend()))) {
-			inboundEndpoint.setSuspend(visualInboundEndpoint.isSuspend());
-		}
+        if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSuspend()))) {
+            inboundEndpoint.setSuspend(visualInboundEndpoint.isSuspend());
+        }
 
-		if (visualInboundEndpoint.getType().getName().equals(CUSTOM)) {
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getClass_())) {
-				inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());
-			} else {
-				throw new TransformerException(
-						"Class cannot be empty. Please specify a Class");
-			}
+        if (visualInboundEndpoint.getType().getName().equals(CUSTOM)) {
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getClass_())) {
+                inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());
+            } else {
+                throw new TransformerException("Class cannot be empty. Please specify a Class");
+            }
             EList<InboundEndpointParameter> serviceParameters = visualInboundEndpoint.getServiceParameters();
             for (InboundEndpointParameter inboundEndpointParameter : serviceParameters) {
                 String value = inboundEndpointParameter.getValue();
@@ -155,11 +146,11 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 
             }
         } else if (StringUtils.isNotBlank(visualInboundEndpoint.getType().getName())) {
-        	    if(visualInboundEndpoint.getType().getName().equals(WSO2MB)){
-        	    	inboundEndpoint.setProtocol(JMS);
-        	    }else{
-                    inboundEndpoint.setProtocol(visualInboundEndpoint.getType().getName());
-        	    }
+            if (visualInboundEndpoint.getType().getName().equals(WSO2MB)) {
+                inboundEndpoint.setProtocol(JMS);
+            } else {
+                inboundEndpoint.setProtocol(visualInboundEndpoint.getType().getName());
+            }
 
         }
 
@@ -169,8 +160,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_HTTP_PORT,
                         visualInboundEndpoint.getInboundHttpPort());
             } else {
-            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_HTTP_PORT,
-                        "8000");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_HTTP_PORT, "8000");
             }
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getInboundWorkerPoolSizeCore()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_WORKER_POOL_SIZE_CORE,
@@ -230,8 +220,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_AUTO_LOCK_RELEASE,
                         String.valueOf(visualInboundEndpoint.isTransportVFSAutoLockRelease()));
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportVFSActionAfterFailure()
-                    .getLiteral()))) {
+            if (StringUtils.isNotBlank(
+                    String.valueOf(visualInboundEndpoint.getTransportVFSActionAfterFailure().getLiteral()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_ACTION_AFTER_FAILURE,
                         visualInboundEndpoint.getTransportVFSActionAfterFailure().getLiteral());
             }
@@ -243,8 +233,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_RECONNECT_TIMEOUT,
                         visualInboundEndpoint.getTransportVFSReconnectTimeout());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportVFSActionAfterProcess()
-                    .getLiteral()))) {
+            if (StringUtils.isNotBlank(
+                    String.valueOf(visualInboundEndpoint.getTransportVFSActionAfterProcess().getLiteral()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_ACTION_AFTER_PROCESS,
                         visualInboundEndpoint.getTransportVFSActionAfterProcess().getLiteral());
             }
@@ -277,15 +267,15 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         visualInboundEndpoint.getTransportVFSMoveAfterProcess());
             }
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportVFSLocking().getLiteral()))) {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_LOCKING, visualInboundEndpoint
-                        .getTransportVFSLocking().getLiteral());
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_LOCKING,
+                        visualInboundEndpoint.getTransportVFSLocking().getLiteral());
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSDistributedTimeout())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_DISTRIBUTED_TIMEOUT,
                         visualInboundEndpoint.getTransportVFSDistributedTimeout());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportVFSFileSortAttribute()
-                    .getLiteral()))) {
+            if (StringUtils.isNotBlank(
+                    String.valueOf(visualInboundEndpoint.getTransportVFSFileSortAttribute().getLiteral()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_FILESORT_ATTRIBUTE,
                         visualInboundEndpoint.getTransportVFSFileSortAttribute().getLiteral());
             }
@@ -335,9 +325,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_DESTINATION,
                         visualInboundEndpoint.getTransportJMSDestination());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSCacheLevel().getLiteral()))) {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CACHE_LEVEL, visualInboundEndpoint
-                        .getTransportJMSCacheLevel().getLiteral());
+            if (StringUtils
+                    .isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSCacheLevel().getLiteral()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CACHE_LEVEL,
+                        visualInboundEndpoint.getTransportJMSCacheLevel().getLiteral());
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSConnectionFactoryJNDIName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONNECTION_FACTORY_JNDI_NAME,
@@ -355,8 +346,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_USERNAME,
                         visualInboundEndpoint.getTransportJMSUserName());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSSessionAcknowledgement()
-                    .getLiteral()))) {
+            if (StringUtils.isNotBlank(
+                    String.valueOf(visualInboundEndpoint.getTransportJMSSessionAcknowledgement().getLiteral()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SESSION_ACKNOWLEDGEMENT,
                         visualInboundEndpoint.getTransportJMSSessionAcknowledgement().getLiteral());
             }
@@ -372,8 +363,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SUBSCRIPTION_DURABLE,
                         visualInboundEndpoint.getTransportJMSSubscriptionDurable());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSConnectionFactoryType()
-                    .getLiteral()))) {
+            if (StringUtils.isNotBlank(
+                    String.valueOf(visualInboundEndpoint.getTransportJMSConnectionFactoryType().getLiteral()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONNECTION_FACTORY_TYPE,
                         visualInboundEndpoint.getTransportJMSConnectionFactoryType().getLiteral());
             }
@@ -409,38 +400,36 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONTENT_TYPE_PROPERTY,
                         visualInboundEndpoint.getTransportJMSContentTypeProperty());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
-    				.isTransportJMSSharedSubscription()))) {
-            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION,
-                          String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()));
-    		}
-            if (StringUtils.isNotBlank(visualInboundEndpoint
-    				.getTransportJMSPinnedServers())) {
-            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
-                         visualInboundEndpoint.getTransportJMSPinnedServers());
-    		}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSConcurrentConsumers())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS,
-						visualInboundEndpoint.getTransportJMSConcurrentConsumers());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSRetryDuration())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RETRY_DURATION,
-						visualInboundEndpoint.getTransportJMSRetryDuration());
-			}
-			if (StringUtils.isNotBlank(
-					String.valueOf(visualInboundEndpoint.isTransportJMSResetConnectionOnPollingSuspension()))) {
-				addParameterForConfig(inboundEndpoint,
-						InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
-						String.valueOf(visualInboundEndpoint.isTransportJMSResetConnectionOnPollingSuspension()));
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSRetriesBeforeSuspension())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RETRIES_BEFORE_SUSPENSION,
-						visualInboundEndpoint.getTransportJMSRetriesBeforeSuspension());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSPollingSuspensionPeriod())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_POLLING_SUSPENSION_PERIOD,
-						visualInboundEndpoint.getTransportJMSPollingSuspensionPeriod());
-			}
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION,
+                        String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()));
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSPinnedServers())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
+                        visualInboundEndpoint.getTransportJMSPinnedServers());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSConcurrentConsumers())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS,
+                        visualInboundEndpoint.getTransportJMSConcurrentConsumers());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSRetryDuration())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RETRY_DURATION,
+                        visualInboundEndpoint.getTransportJMSRetryDuration());
+            }
+            if (StringUtils.isNotBlank(
+                    String.valueOf(visualInboundEndpoint.isTransportJMSResetConnectionOnPollingSuspension()))) {
+                addParameterForConfig(inboundEndpoint,
+                        InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
+                        String.valueOf(visualInboundEndpoint.isTransportJMSResetConnectionOnPollingSuspension()));
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSRetriesBeforeSuspension())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RETRIES_BEFORE_SUSPENSION,
+                        visualInboundEndpoint.getTransportJMSRetriesBeforeSuspension());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSPollingSuspensionPeriod())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_POLLING_SUSPENSION_PERIOD,
+                        visualInboundEndpoint.getTransportJMSPollingSuspensionPeriod());
+            }
             break;
         case WSO2_MB:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
@@ -463,10 +452,11 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_DESTINATION,
                         visualInboundEndpoint.getTransportJMSDestination());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSCacheLevel().getLiteral()))) {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CACHE_LEVEL, visualInboundEndpoint
-                        .getTransportJMSCacheLevel().getLiteral());
-            }    
+            if (StringUtils
+                    .isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSCacheLevel().getLiteral()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CACHE_LEVEL,
+                        visualInboundEndpoint.getTransportJMSCacheLevel().getLiteral());
+            }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSConnectionFactoryJNDIName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONNECTION_FACTORY_JNDI_NAME,
                         visualInboundEndpoint.getTransportJMSConnectionFactoryJNDIName());
@@ -475,8 +465,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_JAVA_NAMING_FACTORY_INITIAL,
                         visualInboundEndpoint.getJavaNamingFactoryInitial());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSSessionAcknowledgement()
-                    .getLiteral()))) {
+            if (StringUtils.isNotBlank(
+                    String.valueOf(visualInboundEndpoint.getTransportJMSSessionAcknowledgement().getLiteral()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SESSION_ACKNOWLEDGEMENT,
                         visualInboundEndpoint.getTransportJMSSessionAcknowledgement().getLiteral());
             }
@@ -488,24 +478,21 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SUBSCRIPTION_DURABLE,
                         visualInboundEndpoint.getTransportJMSSubscriptionDurable());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportJMSConnectionFactoryType()
-                    .getLiteral()))) {
-            	
-            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONNECTION_FACTORY_TYPE,
+            if (StringUtils.isNotBlank(
+                    String.valueOf(visualInboundEndpoint.getTransportJMSConnectionFactoryType().getLiteral()))) {
+
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONNECTION_FACTORY_TYPE,
                         visualInboundEndpoint.getTransportJMSConnectionFactoryType().getLiteral());
-            	if(visualInboundEndpoint.getTransportJMSConnectionFactoryType()
-                    .getLiteral().equals(TOPIC)){
-            		//When the type is topic, add the topic connection url
-            		 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSO2_MB_TOPIC_CONNECTION_URL,
-                             visualInboundEndpoint.getWso2mbConnectionUrl());
-            	}else if(visualInboundEndpoint.getTransportJMSConnectionFactoryType()
-                    .getLiteral().equals(QUEUE)){
-            		 //When the type is queue, add the queue connection url
-            		 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,
-                             visualInboundEndpoint.getWso2mbConnectionUrl());
-            	}
-            	
-               
+                if (visualInboundEndpoint.getTransportJMSConnectionFactoryType().getLiteral().equals(TOPIC)) {
+                    // When the type is topic, add the topic connection url
+                    addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSO2_MB_TOPIC_CONNECTION_URL,
+                            visualInboundEndpoint.getWso2mbConnectionUrl());
+                } else if (visualInboundEndpoint.getTransportJMSConnectionFactoryType().getLiteral().equals(QUEUE)) {
+                    // When the type is queue, add the queue connection url
+                    addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WSO2_MB__QUEUE_CONNECTION_URL,
+                            visualInboundEndpoint.getWso2mbConnectionUrl());
+                }
+
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSJMSSpecVersion())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_JMS_SPEC_VERSION,
@@ -539,29 +526,26 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONTENT_TYPE_PROPERTY,
                         visualInboundEndpoint.getTransportJMSContentTypeProperty());
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint
-    				.isTransportJMSSharedSubscription()))) {
-            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION,
-                          String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()));
-    		}
-            if (StringUtils.isNotBlank(visualInboundEndpoint
-    				.getTransportJMSPinnedServers())) {
-            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
-                         visualInboundEndpoint.getTransportJMSPinnedServers());
-    		}
-            if (StringUtils.isNotBlank(visualInboundEndpoint
-    				.getTransportJMSSubscriptionName())) {
-            	  addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SUBSCRIPTION_NAME,
-                         visualInboundEndpoint.getTransportJMSSubscriptionName());
-    		}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSConcurrentConsumers())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS,
-						visualInboundEndpoint.getTransportJMSConcurrentConsumers());
-			}
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSRetryDuration())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RETRY_DURATION,
-						visualInboundEndpoint.getTransportJMSRetryDuration());
-			}
+            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SHARED_SUBSCRIPTION,
+                        String.valueOf(visualInboundEndpoint.isTransportJMSSharedSubscription()));
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSPinnedServers())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_ENDPOINT_PINNED_SERVERS,
+                        visualInboundEndpoint.getTransportJMSPinnedServers());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSSubscriptionName())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_SUBSCRIPTION_NAME,
+                        visualInboundEndpoint.getTransportJMSSubscriptionName());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSConcurrentConsumers())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_CONCURRENT_CONSUMERS,
+                        visualInboundEndpoint.getTransportJMSConcurrentConsumers());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSRetryDuration())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RETRY_DURATION,
+                        visualInboundEndpoint.getTransportJMSRetryDuration());
+            }
             break;
         case CUSTOM:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
@@ -573,9 +557,11 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 String behaviourUIValue = visualInboundEndpoint.getInboundEndpointBehaviour().getLiteral();
                 if (behaviourUIValue.equals(InboundEndpointBehaviourType.POLLING_INBOUND_ENDPOINT.getLiteral())) {
                     behaviourXMLValue = POLLING_BEHAVIOUR;
-                } else if (behaviourUIValue.equals(InboundEndpointBehaviourType.LISTENING_INBOUND_ENDPOINT.getLiteral())) {
+                } else if (behaviourUIValue
+                        .equals(InboundEndpointBehaviourType.LISTENING_INBOUND_ENDPOINT.getLiteral())) {
                     behaviourXMLValue = LISTENING_BEHAVIOUR;
-                } else if (behaviourUIValue.equals(InboundEndpointBehaviourType.EVENT_BASED_INBOUND_ENDPOINT.getLiteral())) {
+                } else if (behaviourUIValue
+                        .equals(InboundEndpointBehaviourType.EVENT_BASED_INBOUND_ENDPOINT.getLiteral())) {
                     behaviourXMLValue = EVENT_BASED_BEHAVIOUR;
                 }
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_BEHAVIOUR, behaviourXMLValue);
@@ -668,7 +654,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_HL7_BUILD_INVALID_MESSAGES,
                         String.valueOf(visualInboundEndpoint.isInboundHL7BuildInvalidMessages()));
             }
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isInboundHL7PassThroughInvalidMessages()))) {
+            if (StringUtils
+                    .isNotBlank(String.valueOf(visualInboundEndpoint.isInboundHL7PassThroughInvalidMessages()))) {
                 addParameterForConfig(inboundEndpoint,
                         InboundEndpointConstants.INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES,
                         String.valueOf(visualInboundEndpoint.isInboundHL7PassThroughInvalidMessages()));
@@ -679,7 +666,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INTERVAL,
                         visualInboundEndpoint.getInterval());
             } else {
-            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INTERVAL, "100");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INTERVAL, "100");
             }
             if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SEQUENTIAL,
@@ -693,15 +680,13 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.ZOOKEEPER_CONNECT,
                         visualInboundEndpoint.getZookeeperConnect());
             } else {
-            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.ZOOKEEPER_CONNECT,
-                        "localhost:2181");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.ZOOKEEPER_CONNECT, "localhost:2181");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getGroupId())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.GROUP_ID,
                         visualInboundEndpoint.getGroupId());
             } else {
-            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.GROUP_ID,
-                        "sample-group");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.GROUP_ID, "sample-group");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getContentType())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.CONTENT_TYPE,
@@ -719,8 +704,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPICS,
                                         visualInboundEndpoint.getTopicsName());
                             } else {
-                            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPICS,
-                                        "sample-topic");
+                                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPICS, "sample-topic");
                             }
                         } else { // Topic filter type selected
                             String topicFilterFromValue = visualInboundEndpoint.getTopicFilterFrom().getLiteral();
@@ -737,7 +721,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPIC_FILTER,
                                         visualInboundEndpoint.getTopicFilterName());
                             } else {
-                            	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPIC_FILTER,
+                                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.TOPIC_FILTER,
                                         "sample-topic-filter");
                             }
                         }
@@ -747,32 +731,33 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_TOPIC,
                                 visualInboundEndpoint.getSimpleConsumerTopic());
                     } else {
-                    	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_TOPIC, "sample-consumer-topc");
+                        addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_TOPIC,
+                                "sample-consumer-topc");
                     }
                     if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerBrokers())) {
                         addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_BROKERS,
                                 visualInboundEndpoint.getSimpleConsumerBrokers());
                     } else {
-                    	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_BROKERS,
-                                "localhost");
+                        addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_BROKERS, "localhost");
                     }
                     if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerPort())) {
                         addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PORT,
                                 visualInboundEndpoint.getSimpleConsumerPort());
                     } else {
-                    	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PORT, "9092");
+                        addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PORT, "9092");
                     }
                     if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerPartition())) {
                         addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PARTITION,
                                 visualInboundEndpoint.getSimpleConsumerPartition());
                     } else {
-                    	addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PARTITION, "1");
+                        addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_PARTITION, "1");
                     }
                     if (StringUtils.isNotBlank(visualInboundEndpoint.getSimpleConsumerMaxMessagesToRead())) {
-                         addParameterForConfig(inboundEndpoint,InboundEndpointConstants.SIMPLE_MAX_MESSAGES_TO_READ,
+                        addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_MAX_MESSAGES_TO_READ,
                                 visualInboundEndpoint.getSimpleConsumerMaxMessagesToRead());
                     } else {
-                    	addParameterForConfig(inboundEndpoint,InboundEndpointConstants.SIMPLE_MAX_MESSAGES_TO_READ, "5");
+                        addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SIMPLE_MAX_MESSAGES_TO_READ,
+                                "5");
                     }
                 }
             }
@@ -786,10 +771,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.CONSUMER_ID,
                         visualInboundEndpoint.getConsumerId());
             }
-			if (StringUtils.isNotBlank(visualInboundEndpoint.getSocketTimeoutMs())) {
-				addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SOCKET_TIMEOUT_MS,
-						visualInboundEndpoint.getSocketTimeoutMs());
-			}
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getSocketTimeoutMs())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SOCKET_TIMEOUT_MS,
+                        visualInboundEndpoint.getSocketTimeoutMs());
+            }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getSocketReceiveBufferBytes())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.SOCKET_RECEIVE_BUFFER_BYTES,
                         visualInboundEndpoint.getSocketReceiveBufferBytes());
@@ -837,8 +822,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.REFRESH_LEADER_BACKOFF_MS,
                         visualInboundEndpoint.getRefreshLeaderBackoffMs());
             }
-            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.AUTO_OFFSET_RESET, visualInboundEndpoint
-                    .getAutoOffsetReset().getLiteral());
+            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.AUTO_OFFSET_RESET,
+                    visualInboundEndpoint.getAutoOffsetReset().getLiteral());
             if (StringUtils.isNotBlank(visualInboundEndpoint.getConsumerTimeoutMs())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.CONSUMER_TIMEOUT_MS,
                         visualInboundEndpoint.getConsumerTimeoutMs());
@@ -868,8 +853,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.ZOOKEEPER_SYNC_TIME_MS,
                         visualInboundEndpoint.getZookeeperSyncTimeMs());
             }
-            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.OFFSETS_STORAGE, visualInboundEndpoint
-                    .getOffsetsStorage().getLiteral());
+            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.OFFSETS_STORAGE,
+                    visualInboundEndpoint.getOffsetsStorage().getLiteral());
             if (StringUtils.isNotBlank(visualInboundEndpoint.getOffsetsChannelBackoffMs())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.OFFSETS_CHANNEL_BACKOFF_MS,
                         visualInboundEndpoint.getOffsetsChannelBackoffMs());
@@ -936,8 +921,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         visualInboundEndpoint.getContentType());
             }
 
-            if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getTransportMQTTSubscriptionQOS()
-                    .getLiteral()))) {
+            if (StringUtils
+                    .isNotBlank(String.valueOf(visualInboundEndpoint.getTransportMQTTSubscriptionQOS().getLiteral()))) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SUBSCRIPTION_QOS,
                         visualInboundEndpoint.getTransportMQTTSubscriptionQOS().getLiteral());
             }
@@ -974,33 +959,33 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         visualInboundEndpoint.getInterval());
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslKeystoreLocation())) {
-	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_LOCATION,
-	                    visualInboundEndpoint.getTransportMQTTSslKeystoreLocation());
-	        }
-	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslKeystoreType())) {
-	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_TYPE,
-	                    visualInboundEndpoint.getTransportMQTTSslKeystoreType());
-	        }
-	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslKeystorePassword())) {
-	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_PASSWORD,
-	                    visualInboundEndpoint.getTransportMQTTSslKeystorePassword());
-	        }
-	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslTruststoreLocation())) {
-	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_LOCATION,
-	                    visualInboundEndpoint.getTransportMQTTSslTruststoreLocation());
-	        }
-	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslTruststoreType())) {
-	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_TYPE,
-	                    visualInboundEndpoint.getTransportMQTTSslTruststoreType());
-	        }
-	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslTruststorePassword())) {
-	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_PASSWORD,
-	                    visualInboundEndpoint.getTransportMQTTSslTruststorePassword());
-	        }
-	        if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslVersion())) {
-	            addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_VERSION,
-	                    visualInboundEndpoint.getTransportMQTTSslVersion());
-	        }
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_LOCATION,
+                        visualInboundEndpoint.getTransportMQTTSslKeystoreLocation());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslKeystoreType())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_TYPE,
+                        visualInboundEndpoint.getTransportMQTTSslKeystoreType());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslKeystorePassword())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_KEYSTORE_PASSWORD,
+                        visualInboundEndpoint.getTransportMQTTSslKeystorePassword());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslTruststoreLocation())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_LOCATION,
+                        visualInboundEndpoint.getTransportMQTTSslTruststoreLocation());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslTruststoreType())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_TYPE,
+                        visualInboundEndpoint.getTransportMQTTSslTruststoreType());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslTruststorePassword())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_TRUSTSTORE_PASSWORD,
+                        visualInboundEndpoint.getTransportMQTTSslTruststorePassword());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportMQTTSslVersion())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_MQTT_SSL_VERSION,
+                        visualInboundEndpoint.getTransportMQTTSslVersion());
+            }
 
             break;
         case RABBITMQ:
@@ -1022,43 +1007,37 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME,
                         visualInboundEndpoint.getTransportRabbitMqServerHostName());
             } else {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME,
-                        "localhost");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME, "localhost");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerPort())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PORT,
                         visualInboundEndpoint.getTransportRabbitMqServerPort());
             } else {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PORT,
-                        "5672");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PORT, "5672");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerUserName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_USER_NAME,
                         visualInboundEndpoint.getTransportRabbitMqServerUserName());
             } else {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_USER_NAME,
-                        "guest");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_USER_NAME, "guest");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerPassword())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PASSWORD,
                         visualInboundEndpoint.getTransportRabbitMqServerPassword());
             } else {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PASSWORD,
-                        "guest");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_PASSWORD, "guest");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_QUEUE_NAME,
                         visualInboundEndpoint.getTransportRabbitMqQueueName());
             } else {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_QUEUE_NAME,
-                        "queue");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_QUEUE_NAME, "queue");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqExchangeName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_EXCHANGE_NAME,
                         visualInboundEndpoint.getTransportRabbitMqExchangeName());
             } else {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_EXCHANGE_NAME,
-                        "exchange");
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_EXCHANGE_NAME, "exchange");
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqQueueDurable())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_QUEUE_DURABLE,
@@ -1128,8 +1107,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                         visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststoreLocation());
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststoreType())) {
-                addParameterForConfig(inboundEndpoint,
-                        InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE,
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE,
                         visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststoreType());
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionSslTruststorePassword())) {
@@ -1184,13 +1162,14 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             }
             break;
         case WS:
-        	if (StringUtils.isNotBlank(visualInboundEndpoint.getWsInboundPort())) {
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsInboundPort())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_WS_PORT,
                         visualInboundEndpoint.getWsInboundPort());
             }
-        	if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getWsClientSideBroadcastLevel().getLiteral()))) {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_CLIENT_SIDE_BROADCAST_LEVEL, visualInboundEndpoint
-                        .getWsClientSideBroadcastLevel().getLiteral());
+            if (StringUtils
+                    .isNotBlank(String.valueOf(visualInboundEndpoint.getWsClientSideBroadcastLevel().getLiteral()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_CLIENT_SIDE_BROADCAST_LEVEL,
+                        visualInboundEndpoint.getWsClientSideBroadcastLevel().getLiteral());
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getWsOutflowDispatchSequence())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_OUTFLOW_DISPATCH_SEQUENCE,
@@ -1234,13 +1213,14 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             }
             break;
         case WSS:
-        	if (StringUtils.isNotBlank(visualInboundEndpoint.getWsInboundPort())) {
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getWsInboundPort())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.INBOUND_WS_PORT,
                         visualInboundEndpoint.getWsInboundPort());
             }
-        	if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.getWsClientSideBroadcastLevel().getLiteral()))) {
-                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_CLIENT_SIDE_BROADCAST_LEVEL, visualInboundEndpoint
-                        .getWsClientSideBroadcastLevel().getLiteral());
+            if (StringUtils
+                    .isNotBlank(String.valueOf(visualInboundEndpoint.getWsClientSideBroadcastLevel().getLiteral()))) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_CLIENT_SIDE_BROADCAST_LEVEL,
+                        visualInboundEndpoint.getWsClientSideBroadcastLevel().getLiteral());
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getWsOutflowDispatchSequence())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.WS_OUTFLOW_DISPATCH_SEQUENCE,
@@ -1312,7 +1292,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
         return inboundEndpoint;
     }
 
-    private void addParameterForConfig(InboundEndpoint inboundEndpoint, String parameterName, String parameterKeyValue) {
+    private void addParameterForConfig(InboundEndpoint inboundEndpoint, String parameterName,
+            String parameterKeyValue) {
         if (parameterKeyValue.startsWith(REGISTRY_PREFIX)) {
             parameterKeyValue = parameterKeyValue.replace(REGISTRY_PREFIX, "");
             inboundEndpoint.addParameter(parameterName, "", parameterKeyValue);

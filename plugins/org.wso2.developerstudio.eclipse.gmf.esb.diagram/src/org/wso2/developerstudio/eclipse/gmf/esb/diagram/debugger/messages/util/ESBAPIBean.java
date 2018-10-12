@@ -47,8 +47,8 @@ public class ESBAPIBean {
         if (apiBean instanceof ESBAPIBean) {
             ESBAPIBean apiBeanTemp = (ESBAPIBean) apiBean;
             if (!(getApiKey().equals((apiBeanTemp).getApiKey()) && getResourse().equals((apiBeanTemp).getResourse())
-                    && getSequenceType().equals((apiBeanTemp).getSequenceType()) && getMediatorPosition().equals(
-                    apiBeanTemp.getMediatorPosition()))) {
+                    && getSequenceType().equals((apiBeanTemp).getSequenceType())
+                    && getMediatorPosition().equals(apiBeanTemp.getMediatorPosition()))) {
                 return false;
             }
             return true;

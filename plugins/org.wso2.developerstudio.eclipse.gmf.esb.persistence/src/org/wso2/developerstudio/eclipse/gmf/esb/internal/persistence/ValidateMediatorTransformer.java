@@ -43,176 +43,162 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class ValidateMediatorTransformer  extends AbstractEsbNodeTransformer {
-	
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String JSON_EVAL = "json-eval(";
-	
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {
-		try {
-			information.getParentSequence().addChild(createValidateMediator(subject, information));
-			doTransform(information, ((ValidateMediator)subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
+public class ValidateMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		
-	}
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static final String JSON_EVAL = "json-eval(";
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		
-		try {
-			sequence.addChild(createValidateMediator(subject,information));
-			doTransformWithinSequence(information,((ValidateMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
-	
-	
-	private org.apache.synapse.mediators.builtin.ValidateMediator createValidateMediator
-									(EsbNode subject,TransformationInfo information) throws TransformerException, JaxenException{
-		
-		/*
-		 * Check subject.
-		 */
-		Assert.isTrue(subject instanceof ValidateMediator, "Invalid subject.");
-		ValidateMediator visualValidateMediator = (ValidateMediator) subject;
-		/*
-		 * Configure Validate mediator.
-		 */
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createValidateMediator(subject, information));
+            doTransform(information, ((ValidateMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-		org.apache.synapse.mediators.builtin.ValidateMediator validateMediator = new org.apache.synapse.mediators.builtin.ValidateMediator();
-		setCommonProperties(validateMediator, visualValidateMediator);
-		
-		validateMediator.setCacheSchema(visualValidateMediator.isEnableCacheSchema());
-		
-		NamespacedProperty sourcePath = visualValidateMediator
-				.getSourceXpath();
-		String sourceValue = sourcePath.getPropertyValue();
-		
-		if (sourceValue != null
-				&& !sourceValue.equals("")) {
-			SynapsePath paramExpression = getParamExpression(sourcePath, sourceValue);
-			validateMediator.setSource(paramExpression);
-		}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
-		List<Value> valueList = new ArrayList<Value>();
-		EList<ValidateSchema> schemaList = visualValidateMediator.getSchemas();
-		
-		for (ValidateSchema schema : schemaList) {
+    }
 
-			if (schema.getValidateSchemaKeyType().getLiteral()
-					.equals(KeyType.STATIC.getLiteral())) {
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
 
-				if (schema.getValidateStaticSchemaKey() != null
-						&& schema.getValidateStaticSchemaKey().getKeyValue() != null) {
-					Value val = new Value(schema.getValidateStaticSchemaKey()
-							.getKeyValue());
-					valueList.add(val);
-				}
+        try {
+            sequence.addChild(createValidateMediator(subject, information));
+            doTransformWithinSequence(information, ((ValidateMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-			} else {
+    private org.apache.synapse.mediators.builtin.ValidateMediator createValidateMediator(EsbNode subject,
+            TransformationInfo information) throws TransformerException, JaxenException {
 
-				NamespacedProperty dynamicSchemaKey = schema
-						.getValidateDynamicSchemaKey();
-				if (dynamicSchemaKey != null
-						&& dynamicSchemaKey
-								.getPropertyValue() != null) {
-					SynapseXPath xpath = new SynapseXPath(dynamicSchemaKey.getPropertyValue());
-					for (Entry<String, String> entry : dynamicSchemaKey.getNamespaces().entrySet()) {
-						xpath.addNamespace(entry.getKey(), entry.getValue());
-					}
-					Value val = new Value(xpath);
-					valueList.add(val);
-				}
+        /*
+         * Check subject.
+         */
+        Assert.isTrue(subject instanceof ValidateMediator, "Invalid subject.");
+        ValidateMediator visualValidateMediator = (ValidateMediator) subject;
+        /*
+         * Configure Validate mediator.
+         */
 
-			}
-		}
-		validateMediator.setSchemaKeys(valueList);		
-		
-		//ListMediator onFailMediatorList = new AnonymousListMediator();
-		SequenceMediator onFailMediatorList=new SequenceMediator();
-		TransformationInfo newOnFailInfo = new TransformationInfo();
-		newOnFailInfo.setTraversalDirection(information.getTraversalDirection());
-		newOnFailInfo.setSynapseConfiguration(information.getSynapseConfiguration());
-		newOnFailInfo.setOriginInSequence(information.getOriginInSequence());
-		newOnFailInfo.setOriginOutSequence(information.getOriginOutSequence());
-		newOnFailInfo.setCurrentProxy(information.getCurrentProxy());
-		newOnFailInfo.setParentSequence(onFailMediatorList);
-		doTransform(newOnFailInfo, visualValidateMediator.getOnFailOutputConnector());
-		
-		validateMediator.addAll(onFailMediatorList.getList());
-	
-		
-		
-		for(ValidateFeature feature : visualValidateMediator.getFeatures()){
-			try{
-	        validateMediator.addFeature(feature.getFeatureName(), feature.isFeatureEnabled());
-			}
-			catch (Exception e) {
-			log.error(e);
-			}
-			
-		}
-		
-		if(!visualValidateMediator.getResources().isEmpty()){
-			
-			ResourceMap rMap = new ResourceMap();
-			
-			for(ValidateResource resource : visualValidateMediator.getResources()){
-				
-				if(resource.getLocation() != null && resource.getKey() != null){
-					
-				rMap.addResource(resource.getLocation(), resource.getKey().getKeyValue());
-				
-				}
-			}
-			
-			validateMediator.setResourceMap(rMap);
-		}
-		
-		
-		return validateMediator;
-	}
-	
-	/**
-	 * Gets the param expression based on json and xpath
-	 * 
-	 * @param namespacedExpression
-	 * @param xpathValue
-	 * @return
-	 * @throws JaxenException
-	 */
+        org.apache.synapse.mediators.builtin.ValidateMediator validateMediator = new org.apache.synapse.mediators.builtin.ValidateMediator();
+        setCommonProperties(validateMediator, visualValidateMediator);
 
-	private SynapsePath getParamExpression(NamespacedProperty sourcePath, String sourceValue)
-			throws JaxenException {
-		if (sourceValue.startsWith(JSON_EVAL)) {
-			SynapseJsonPath paramExpression = new SynapseJsonPath(sourceValue.substring(10, sourceValue.length() - 1));
-			return addNamespaceToParam(sourcePath, paramExpression);
-		} else {
-			SynapseXPath paramExpression = new SynapseXPath(sourceValue);
-			return addNamespaceToParam(sourcePath, paramExpression);
-		}
-	}
+        validateMediator.setCacheSchema(visualValidateMediator.isEnableCacheSchema());
 
-	/**
-	 * Adds the namespace to param
-	 * 
-	 * @param namespacedExpression
-	 * @param paramExpression
-	 * @throws JaxenException
-	 */
-	private SynapsePath addNamespaceToParam(NamespacedProperty sourcePath, SynapsePath paramExpression)
-			throws JaxenException {
-		for (Entry<String, String> entry : sourcePath.getNamespaces().entrySet()) {
-			paramExpression.addNamespace(entry.getKey(), entry.getValue());
-		}
-		return paramExpression;
-	}
+        NamespacedProperty sourcePath = visualValidateMediator.getSourceXpath();
+        String sourceValue = sourcePath.getPropertyValue();
+
+        if (sourceValue != null && !sourceValue.equals("")) {
+            SynapsePath paramExpression = getParamExpression(sourcePath, sourceValue);
+            validateMediator.setSource(paramExpression);
+        }
+
+        List<Value> valueList = new ArrayList<Value>();
+        EList<ValidateSchema> schemaList = visualValidateMediator.getSchemas();
+
+        for (ValidateSchema schema : schemaList) {
+
+            if (schema.getValidateSchemaKeyType().getLiteral().equals(KeyType.STATIC.getLiteral())) {
+
+                if (schema.getValidateStaticSchemaKey() != null
+                        && schema.getValidateStaticSchemaKey().getKeyValue() != null) {
+                    Value val = new Value(schema.getValidateStaticSchemaKey().getKeyValue());
+                    valueList.add(val);
+                }
+
+            } else {
+
+                NamespacedProperty dynamicSchemaKey = schema.getValidateDynamicSchemaKey();
+                if (dynamicSchemaKey != null && dynamicSchemaKey.getPropertyValue() != null) {
+                    SynapseXPath xpath = new SynapseXPath(dynamicSchemaKey.getPropertyValue());
+                    for (Entry<String, String> entry : dynamicSchemaKey.getNamespaces().entrySet()) {
+                        xpath.addNamespace(entry.getKey(), entry.getValue());
+                    }
+                    Value val = new Value(xpath);
+                    valueList.add(val);
+                }
+
+            }
+        }
+        validateMediator.setSchemaKeys(valueList);
+
+        // ListMediator onFailMediatorList = new AnonymousListMediator();
+        SequenceMediator onFailMediatorList = new SequenceMediator();
+        TransformationInfo newOnFailInfo = new TransformationInfo();
+        newOnFailInfo.setTraversalDirection(information.getTraversalDirection());
+        newOnFailInfo.setSynapseConfiguration(information.getSynapseConfiguration());
+        newOnFailInfo.setOriginInSequence(information.getOriginInSequence());
+        newOnFailInfo.setOriginOutSequence(information.getOriginOutSequence());
+        newOnFailInfo.setCurrentProxy(information.getCurrentProxy());
+        newOnFailInfo.setParentSequence(onFailMediatorList);
+        doTransform(newOnFailInfo, visualValidateMediator.getOnFailOutputConnector());
+
+        validateMediator.addAll(onFailMediatorList.getList());
+
+        for (ValidateFeature feature : visualValidateMediator.getFeatures()) {
+            try {
+                validateMediator.addFeature(feature.getFeatureName(), feature.isFeatureEnabled());
+            } catch (Exception e) {
+                log.error(e);
+            }
+
+        }
+
+        if (!visualValidateMediator.getResources().isEmpty()) {
+
+            ResourceMap rMap = new ResourceMap();
+
+            for (ValidateResource resource : visualValidateMediator.getResources()) {
+
+                if (resource.getLocation() != null && resource.getKey() != null) {
+
+                    rMap.addResource(resource.getLocation(), resource.getKey().getKeyValue());
+
+                }
+            }
+
+            validateMediator.setResourceMap(rMap);
+        }
+
+        return validateMediator;
+    }
+
+    /**
+     * Gets the param expression based on json and xpath
+     * 
+     * @param namespacedExpression
+     * @param xpathValue
+     * @return
+     * @throws JaxenException
+     */
+
+    private SynapsePath getParamExpression(NamespacedProperty sourcePath, String sourceValue) throws JaxenException {
+        if (sourceValue.startsWith(JSON_EVAL)) {
+            SynapseJsonPath paramExpression = new SynapseJsonPath(sourceValue.substring(10, sourceValue.length() - 1));
+            return addNamespaceToParam(sourcePath, paramExpression);
+        } else {
+            SynapseXPath paramExpression = new SynapseXPath(sourceValue);
+            return addNamespaceToParam(sourcePath, paramExpression);
+        }
+    }
+
+    /**
+     * Adds the namespace to param
+     * 
+     * @param namespacedExpression
+     * @param paramExpression
+     * @throws JaxenException
+     */
+    private SynapsePath addNamespaceToParam(NamespacedProperty sourcePath, SynapsePath paramExpression)
+            throws JaxenException {
+        for (Entry<String, String> entry : sourcePath.getNamespaces().entrySet()) {
+            paramExpression.addNamespace(entry.getKey(), entry.getValue());
+        }
+        return paramExpression;
+    }
 }

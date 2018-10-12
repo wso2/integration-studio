@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  *
  * @generated
  */
-public class ConditionalRouterMediatorInputConnectorImpl extends InputConnectorImpl implements ConditionalRouterMediatorInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ConditionalRouterMediatorInputConnectorImpl() {
-		super();
-	}
+public class ConditionalRouterMediatorInputConnectorImpl extends InputConnectorImpl
+        implements ConditionalRouterMediatorInputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ConditionalRouterMediatorInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.CONDITIONAL_ROUTER_MEDIATOR_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.CONDITIONAL_ROUTER_MEDIATOR_INPUT_CONNECTOR;
+    }
 
-} //ConditionalRouterMediatorInputConnectorImpl
+} // ConditionalRouterMediatorInputConnectorImpl

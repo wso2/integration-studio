@@ -32,90 +32,93 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 
-public abstract class AbstractInputConnectorEditPart extends AbstractConnectorEditPart{
+public abstract class AbstractInputConnectorEditPart extends AbstractConnectorEditPart {
 
-	abstract protected IFigure createNodeShape();
-	
-	public AbstractInputConnectorEditPart(View view) {
-		super(view);
-	}
-	
-	public void notifyChanged(Notification notification) {
-		super.notifyChanged(notification);
-		if (notification.getNotifier() instanceof Node) {
-			if (((Node) notification.getNotifier()).getElement() instanceof InputConnector) {
-				EditPart element = (EditPart) getViewer().getEditPartRegistry().get(
-						notification.getNotifier());
-				if (((AbstractInputConnectorEditPart) element).getTargetConnections().size() == 0) {
-					if (((InputConnector) ((Node) notification.getNotifier()).getElement())
-							.getIncomingLinks().size() != 0) {
-						Collection col = new ArrayList();
-						col.add(((InputConnector) ((Node) notification.getNotifier()).getElement())
-								.getIncomingLinks().get(0));
+    abstract protected IFigure createNodeShape();
 
-						org.eclipse.emf.edit.command.DeleteCommand del = new org.eclipse.emf.edit.command.DeleteCommand(
-								getEditingDomain(), col);
-						if (del.canExecute()) {
-							getEditingDomain().getCommandStack().execute(del);
-						}
-					}
-				}
-			}
-		}
-	}
-	
-	protected void toggleVisibility(InputConnector inputConnector){		
-		if (inputConnector.getIncomingLinks().size() != 0) {
-			/*
-			 * This will remove the arrow head of output connector if it is
-			 * connected to any other input connector.
-			 */
-			NodeFigure figureInput = this.getNodeFigure();
-			figureInput.removeAll();
-			Figure emptyFigure = new Figure();
-			figureInput.add(emptyFigure);
-		} else {
-			/*
-			 * This will add the arrow head of output connector if it is not
-			 * connected to any other input connector.
-			 */
-			NodeFigure figureInput = this.getNodeFigure();
-			figureInput.removeAll();
-			figureInput.add(createNodeShape());
-		}		
-	}
-	
-	@Override
-	public Command getCommand(Request request) {
-		if (request instanceof CreateConnectionViewAndElementRequest) {
-			CreateConnectionViewAndElementRequest req = (CreateConnectionViewAndElementRequest) request;
-			EditPart target = req.getTargetEditPart();
-			EditPart sourceConnection = req.getSourceEditPart();
-			if (sourceConnection instanceof AbstractOutputConnectorEditPart) {
-				EditPart source = sourceConnection.getParent();
-				if (target instanceof AbstractInputConnectorEditPart) {
-					EditPart parent = target.getParent();
-					if(parent!=null){
-/*						if (EditorUtils.hasCycle(source, parent)) {
-							return UnexecutableCommand.INSTANCE;
-						}*/
-						/* please improve EditorUtils.isConnectableTarget */
-						if(!EditorUtils.isConnectableTarget(source, parent)){
-							return UnexecutableCommand.INSTANCE;
-						}
-					}
-				} else if (target instanceof EditPart){
-/*					if (EditorUtils.hasCycle(source, target)) {
-						return UnexecutableCommand.INSTANCE;
-					}*/
-					/* please improve EditorUtils.isConnectableTarget */
-					if(!EditorUtils.isConnectableTarget(source, target)){
-						return UnexecutableCommand.INSTANCE;
-					}
-				}
-			}
-		}
-		return super.getCommand(request);
-	}
+    public AbstractInputConnectorEditPart(View view) {
+        super(view);
+    }
+
+    public void notifyChanged(Notification notification) {
+        super.notifyChanged(notification);
+        if (notification.getNotifier() instanceof Node) {
+            if (((Node) notification.getNotifier()).getElement() instanceof InputConnector) {
+                EditPart element = (EditPart) getViewer().getEditPartRegistry().get(notification.getNotifier());
+                if (((AbstractInputConnectorEditPart) element).getTargetConnections().size() == 0) {
+                    if (((InputConnector) ((Node) notification.getNotifier()).getElement()).getIncomingLinks()
+                            .size() != 0) {
+                        Collection col = new ArrayList();
+                        col.add(((InputConnector) ((Node) notification.getNotifier()).getElement()).getIncomingLinks()
+                                .get(0));
+
+                        org.eclipse.emf.edit.command.DeleteCommand del = new org.eclipse.emf.edit.command.DeleteCommand(
+                                getEditingDomain(), col);
+                        if (del.canExecute()) {
+                            getEditingDomain().getCommandStack().execute(del);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    protected void toggleVisibility(InputConnector inputConnector) {
+        if (inputConnector.getIncomingLinks().size() != 0) {
+            /*
+             * This will remove the arrow head of output connector if it is
+             * connected to any other input connector.
+             */
+            NodeFigure figureInput = this.getNodeFigure();
+            figureInput.removeAll();
+            Figure emptyFigure = new Figure();
+            figureInput.add(emptyFigure);
+        } else {
+            /*
+             * This will add the arrow head of output connector if it is not
+             * connected to any other input connector.
+             */
+            NodeFigure figureInput = this.getNodeFigure();
+            figureInput.removeAll();
+            figureInput.add(createNodeShape());
+        }
+    }
+
+    @Override
+    public Command getCommand(Request request) {
+        if (request instanceof CreateConnectionViewAndElementRequest) {
+            CreateConnectionViewAndElementRequest req = (CreateConnectionViewAndElementRequest) request;
+            EditPart target = req.getTargetEditPart();
+            EditPart sourceConnection = req.getSourceEditPart();
+            if (sourceConnection instanceof AbstractOutputConnectorEditPart) {
+                EditPart source = sourceConnection.getParent();
+                if (target instanceof AbstractInputConnectorEditPart) {
+                    EditPart parent = target.getParent();
+                    if (parent != null) {
+                        /*
+                         * if (EditorUtils.hasCycle(source, parent)) {
+                         * return UnexecutableCommand.INSTANCE;
+                         * }
+                         */
+                        /* please improve EditorUtils.isConnectableTarget */
+                        if (!EditorUtils.isConnectableTarget(source, parent)) {
+                            return UnexecutableCommand.INSTANCE;
+                        }
+                    }
+                } else if (target instanceof EditPart) {
+                    /*
+                     * if (EditorUtils.hasCycle(source, target)) {
+                     * return UnexecutableCommand.INSTANCE;
+                     * }
+                     */
+                    /* please improve EditorUtils.isConnectableTarget */
+                    if (!EditorUtils.isConnectableTarget(source, target)) {
+                        return UnexecutableCommand.INSTANCE;
+                    }
+                }
+            }
+        }
+        return super.getCommand(request);
+    }
 
 }

@@ -38,269 +38,272 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
  */
 public class CloneTargetContainerEditPart extends ShapeNodeEditPart {
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 3604;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 3604;
 
-	/**
-	 * @generated
-	 */
-	protected IFigure contentPane;
+    /**
+     * @generated
+     */
+    protected IFigure contentPane;
 
-	/**
-	 * @generated
-	 */
-	protected IFigure primaryShape;
+    /**
+     * @generated
+     */
+    protected IFigure primaryShape;
 
-	/**
-	 * @generated
-	 */
-	public CloneTargetContainerEditPart(View view) {
-		super(view);
-	}
+    /**
+     * @generated
+     */
+    public CloneTargetContainerEditPart(View view) {
+        super(view);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				EsbVisualIDRegistry.TYPED_INSTANCE));
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new CloneTargetContainerItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new CloneTargetContainerCanonicalEditPolicy());
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-	}
+    /**
+     * @generated
+     */
+    protected void createDefaultEditPolicies() {
+        installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+                new CreationEditPolicyWithCustomReparent(EsbVisualIDRegistry.TYPED_INSTANCE));
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new CloneTargetContainerItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new CloneTargetContainerCanonicalEditPolicy());
+        installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+        // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
+        // editpolicies
+        // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected LayoutEditPolicy createLayoutEditPolicy() {
-		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
+    /**
+     * @generated
+     */
+    protected LayoutEditPolicy createLayoutEditPolicy() {
+        org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
-			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
-				if (result == null) {
-					result = new NonResizableEditPolicy();
-				}
-				return result;
-			}
+            protected EditPolicy createChildEditPolicy(EditPart child) {
+                EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+                if (result == null) {
+                    result = new NonResizableEditPolicy();
+                }
+                return result;
+            }
 
-			protected Command getMoveChildrenCommand(Request request) {
-				return null;
-			}
+            protected Command getMoveChildrenCommand(Request request) {
+                return null;
+            }
 
-			protected Command getCreateCommand(CreateRequest request) {
-				return null;
-			}
-		};
-		return lep;
-	}
+            protected Command getCreateCommand(CreateRequest request) {
+                return null;
+            }
+        };
+        return lep;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected IFigure createNodeShape() {
-		return primaryShape = new CloneMediatorFigure();
-	}
+    /**
+     * @generated
+     */
+    protected IFigure createNodeShape() {
+        return primaryShape = new CloneMediatorFigure();
+    }
 
-	/**
-	 * @generated
-	 */
-	public CloneMediatorFigure getPrimaryShape() {
-		return (CloneMediatorFigure) primaryShape;
-	}
+    /**
+     * @generated
+     */
+    public CloneMediatorFigure getPrimaryShape() {
+        return (CloneMediatorFigure) primaryShape;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
-		return result;
-	}
+    /**
+     * @generated
+     */
+    protected NodeFigure createNodePlate() {
+        DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+        return result;
+    }
 
-	public void refreshOutputConnector(EditPart childEditPart) {
-		if (childEditPart instanceof CloneMediatorEditPart) {
-			CloneMediatorEditPart cloneMediatorEditPart = (CloneMediatorEditPart) childEditPart;
-			if (cloneMediatorEditPart.targetOutputConnectors.size() != 0) {
-				BorderItemLocator locator = new FixedBorderItemLocator(this.getFigure(),
-						cloneMediatorEditPart.targetOutputConnectors.get(0), PositionConstants.WEST, 0.5);
-				if (cloneMediatorEditPart.targetOutputConnectors.get(0) != null) {
-					cloneMediatorEditPart.getBorderedFigure().getBorderItemContainer()
-							.add(cloneMediatorEditPart.targetOutputConnectors.get(0), locator);
-				}
-			}
-		} else {
-			//Should handle properly.
-			throw new ClassCastException();
-		}
-	}
+    public void refreshOutputConnector(EditPart childEditPart) {
+        if (childEditPart instanceof CloneMediatorEditPart) {
+            CloneMediatorEditPart cloneMediatorEditPart = (CloneMediatorEditPart) childEditPart;
+            if (cloneMediatorEditPart.targetOutputConnectors.size() != 0) {
+                BorderItemLocator locator = new FixedBorderItemLocator(this.getFigure(),
+                        cloneMediatorEditPart.targetOutputConnectors.get(0), PositionConstants.WEST, 0.5);
+                if (cloneMediatorEditPart.targetOutputConnectors.get(0) != null) {
+                    cloneMediatorEditPart.getBorderedFigure().getBorderItemContainer()
+                            .add(cloneMediatorEditPart.targetOutputConnectors.get(0), locator);
+                }
+            }
+        } else {
+            // Should handle properly.
+            throw new ClassCastException();
+        }
+    }
 
-	protected void addChildVisual(EditPart childEditPart, int index) {
-		refreshOutputConnector(((CloneMediatorEditPart) childEditPart.getParent().getParent().getParent()));
-		super.addChildVisual(childEditPart, -1);
-	}
+    protected void addChildVisual(EditPart childEditPart, int index) {
+        refreshOutputConnector(((CloneMediatorEditPart) childEditPart.getParent().getParent().getParent()));
+        super.addChildVisual(childEditPart, -1);
+    }
 
-	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated
-	 */
-	protected NodeFigure createNodeFigure() {
-		NodeFigure figure = createNodePlate();
-		figure.setLayoutManager(new StackLayout());
-		IFigure shape = createNodeShape();
-		figure.add(shape);
-		contentPane = setupContentPane(shape);
-		return figure;
-	}
+    /**
+     * Creates figure for this edit part.
+     * 
+     * Body of this method does not depend on settings in generation model
+     * so you may safely remove <i>generated</i> tag and modify it.
+     * 
+     * @generated
+     */
+    protected NodeFigure createNodeFigure() {
+        NodeFigure figure = createNodePlate();
+        figure.setLayoutManager(new StackLayout());
+        IFigure shape = createNodeShape();
+        figure.add(shape);
+        contentPane = setupContentPane(shape);
+        return figure;
+    }
 
-	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
-	 * @generated
-	 */
-	protected IFigure setupContentPane(IFigure nodeShape) {
-		if (nodeShape.getLayoutManager() == null) {
-			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
-			layout.setSpacing(5);
-			nodeShape.setLayoutManager(layout);
-		}
-		return nodeShape; // use nodeShape itself as contentPane
-	}
+    /**
+     * Default implementation treats passed figure as content pane.
+     * Respects layout one may have set for generated figure.
+     * 
+     * @param nodeShape instance of generated figure class
+     * @generated
+     */
+    protected IFigure setupContentPane(IFigure nodeShape) {
+        if (nodeShape.getLayoutManager() == null) {
+            ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
+            layout.setSpacing(5);
+            nodeShape.setLayoutManager(layout);
+        }
+        return nodeShape; // use nodeShape itself as contentPane
+    }
 
-	/**
-	 * @generated
-	 */
-	public IFigure getContentPane() {
-		if (contentPane != null) {
-			return contentPane;
-		}
-		return super.getContentPane();
-	}
+    /**
+     * @generated
+     */
+    public IFigure getContentPane() {
+        if (contentPane != null) {
+            return contentPane;
+        }
+        return super.getContentPane();
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setForegroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setForegroundColor(color);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setForegroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setForegroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setBackgroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setBackgroundColor(color);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setBackgroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setBackgroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineWidth(int width) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineWidth(width);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setLineWidth(int width) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineWidth(width);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineType(int style) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineStyle(style);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setLineType(int style) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineStyle(style);
+        }
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public class CloneMediatorFigure extends RoundedRectangle {
+    /**
+     * @generated NOT
+     */
+    public class CloneMediatorFigure extends RoundedRectangle {
 
-		/**
-		 * @generated
-		 */
-		private WrappingLabel fFigureCloneMediatorPropertyValue;
+        /**
+         * @generated
+         */
+        private WrappingLabel fFigureCloneMediatorPropertyValue;
 
-		/**
-		 * @generated NOT
-		 */
-		public CloneMediatorFigure() {
+        /**
+         * @generated NOT
+         */
+        public CloneMediatorFigure() {
 
-			ToolbarLayout layoutThis = new ToolbarLayout();
-			layoutThis.setStretchMinorAxis(true);
-			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
-			layoutThis.setSpacing(0);
-			layoutThis.setVertical(true);
-			this.setLayoutManager(layoutThis);
-			this.setAlpha(0); //to make this transparent
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0), getMapMode().DPtoLP(0)));
-			//Fixing TOOLS-1972.
-			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(60), getMapMode().DPtoLP(100)));
-			this.setLineStyle(Graphics.LINE_DASH);
-			this.setBackgroundColor(THIS_BACK);
-		}
+            ToolbarLayout layoutThis = new ToolbarLayout();
+            layoutThis.setStretchMinorAxis(true);
+            layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+            layoutThis.setSpacing(0);
+            layoutThis.setVertical(true);
+            this.setLayoutManager(layoutThis);
+            this.setAlpha(0); // to make this transparent
+            this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0), getMapMode().DPtoLP(0)));
+            // Fixing TOOLS-1972.
+            this.setMinimumSize(new Dimension(getMapMode().DPtoLP(60), getMapMode().DPtoLP(100)));
+            this.setLineStyle(Graphics.LINE_DASH);
+            this.setBackgroundColor(THIS_BACK);
+        }
 
-		/**
-		 * @generated
-		 */
-		private void createContents() {
+        /**
+         * @generated
+         */
+        private void createContents() {
 
-			fFigureCloneMediatorPropertyValue = new WrappingLabel();
+            fFigureCloneMediatorPropertyValue = new WrappingLabel();
 
-			fFigureCloneMediatorPropertyValue.setText("<...>");
+            fFigureCloneMediatorPropertyValue.setText("<...>");
 
-			this.add(fFigureCloneMediatorPropertyValue);
+            this.add(fFigureCloneMediatorPropertyValue);
 
-		}
+        }
 
-		/**
-		 * @generated
-		 */
-		public WrappingLabel getFigureCloneMediatorPropertyValue() {
-			return fFigureCloneMediatorPropertyValue;
-		}
+        /**
+         * @generated
+         */
+        public WrappingLabel getFigureCloneMediatorPropertyValue() {
+            return fFigureCloneMediatorPropertyValue;
+        }
 
-		/*		*//**
-				 * @generated
-				 */
-		/*
-		private void createContents() {
+        /*		*//**
+                   * @generated
+                   */
+        /*
+         * private void createContents() {
+         * 
+         * fFigureCloneMediatorPropertyValue = new WrappingLabel();
+         * fFigureCloneMediatorPropertyValue.setText("<...>");
+         * 
+         * this.add(fFigureCloneMediatorPropertyValue);
+         * 
+         * }
+         * 
+         *//**
+            * @generated
+            */
+        /*
+         * public WrappingLabel getFigureCloneMediatorPropertyValue() {
+         * return fFigureCloneMediatorPropertyValue;
+         * }
+         */
+    }
 
-		fFigureCloneMediatorPropertyValue = new WrappingLabel();
-		fFigureCloneMediatorPropertyValue.setText("<...>");
+    public boolean isSelectable() {
+        // TODO This or using ResizableEditpolicy?
+        return false;
+    }
 
-		this.add(fFigureCloneMediatorPropertyValue);
-
-		}
-
-		 *//**
-			 * @generated
-			 */
-		/*
-		public WrappingLabel getFigureCloneMediatorPropertyValue() {
-		return fFigureCloneMediatorPropertyValue;
-		}*/
-	}
-
-	public boolean isSelectable() {
-		// TODO This or using ResizableEditpolicy?
-		return false;
-	}
-
-	/**
-	 * @generated
-	 */
-	static final Color THIS_BACK = new Color(null, 230, 230, 230);
+    /**
+     * @generated
+     */
+    static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

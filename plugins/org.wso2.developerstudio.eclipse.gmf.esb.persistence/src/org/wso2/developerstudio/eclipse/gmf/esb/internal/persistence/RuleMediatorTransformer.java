@@ -31,28 +31,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class RuleMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		information.getParentSequence().addChild(createRuleMediator(information, subject));
-		doTransform(information, ((RuleMediator) subject).getOutputConnector());
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        information.getParentSequence().addChild(createRuleMediator(information, subject));
+        doTransform(information, ((RuleMediator) subject).getOutputConnector());
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		sequence.addChild(createRuleMediator(information, subject));
-		doTransformWithinSequence(information, ((RuleMediator) subject).getOutputConnector().getOutgoingLink(),
-				sequence);
-	}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        sequence.addChild(createRuleMediator(information, subject));
+        doTransformWithinSequence(information, ((RuleMediator) subject).getOutputConnector().getOutgoingLink(),
+                sequence);
+    }
 
-	private RuleMediatorExt createRuleMediator(TransformationInfo information, EsbNode subject){
-		// Check subject.
-		Assert.isTrue(subject instanceof RuleMediator, "Unsupported mediator passed in for serialization.");
-		RuleMediatorExt ruleMediator = new RuleMediatorExt();
-		setCommonProperties(ruleMediator, (Mediator) subject);
-		ruleMediator.setSubject(subject);
-		return ruleMediator;
-	}
+    private RuleMediatorExt createRuleMediator(TransformationInfo information, EsbNode subject) {
+        // Check subject.
+        Assert.isTrue(subject instanceof RuleMediator, "Unsupported mediator passed in for serialization.");
+        RuleMediatorExt ruleMediator = new RuleMediatorExt();
+        setCommonProperties(ruleMediator, (Mediator) subject);
+        ruleMediator.setSubject(subject);
+        return ruleMediator;
+    }
 }

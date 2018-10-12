@@ -27,20 +27,20 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Clas
 
 public class ClassMediatorExtFactory extends ClassMediatorFactory {
 
-	public Mediator createSpecificMediator(OMElement elem, Properties properties) {
+    public Mediator createSpecificMediator(OMElement elem, Properties properties) {
 
-		OMAttribute name = elem.getAttribute(ATT_NAME);
+        OMAttribute name = elem.getAttribute(ATT_NAME);
 
-		ClassMediatorExt classMediator;
-		if (name != null) {
-			classMediator = new ClassMediatorExt(name.getAttributeValue());
-		} else {
-			classMediator = new ClassMediatorExt("sample-class-mediator");
-		}
+        ClassMediatorExt classMediator;
+        if (name != null) {
+            classMediator = new ClassMediatorExt(name.getAttributeValue());
+        } else {
+            classMediator = new ClassMediatorExt("sample-class-mediator");
+        }
 
-		classMediator.addAllProperties(MediatorPropertyFactory.getMediatorProperties(elem));
-		processAuditStatus(classMediator, elem);
+        classMediator.addAllProperties(MediatorPropertyFactory.getMediatorProperties(elem));
+        processAuditStatus(classMediator, elem);
 
-		return classMediator;
-	}
+        return classMediator;
+    }
 }

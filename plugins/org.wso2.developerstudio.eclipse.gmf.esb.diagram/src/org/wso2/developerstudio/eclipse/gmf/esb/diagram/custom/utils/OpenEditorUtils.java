@@ -34,33 +34,35 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class OpenEditorUtils {
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	/**
-	 * Open the ESB diagram editor for the given ESB configuration file  
-	 * @param fileTobeOpened
-	 */
-	public IEditorPart openSeparateEditor(IFile fileTobeOpened) {
-		try {
-			final String source = FileUtils.readFileToString(fileTobeOpened.getLocation().toFile());
-			final Deserializer deserializer = Deserializer.getInstance();
-			ArtifactType artifactType = null;
-			try {
-				artifactType = deserializer.getArtifactType(source);
-			} catch (Exception e1) {
-				log.error("Error occured while getting artifact type for the given ESB configuration ", e1);
-			}
-			IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-			IEditorPart openEditor = activePage.openEditor(
-					new EsbEditorInput(null, fileTobeOpened, artifactType.getLiteral()), EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
+    /**
+     * Open the ESB diagram editor for the given ESB configuration file
+     * 
+     * @param fileTobeOpened
+     */
+    public IEditorPart openSeparateEditor(IFile fileTobeOpened) {
+        try {
+            final String source = FileUtils.readFileToString(fileTobeOpened.getLocation().toFile());
+            final Deserializer deserializer = Deserializer.getInstance();
+            ArtifactType artifactType = null;
+            try {
+                artifactType = deserializer.getArtifactType(source);
+            } catch (Exception e1) {
+                log.error("Error occured while getting artifact type for the given ESB configuration ", e1);
+            }
+            IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+            IEditorPart openEditor = activePage.openEditor(
+                    new EsbEditorInput(null, fileTobeOpened, artifactType.getLiteral()), EsbDiagramEditor.ID, true,
+                    IWorkbenchPage.MATCH_INPUT);
 
-			return openEditor;
-		} catch (PartInitException e) {
-			log.error("Error occured while opening a separate editor", e);
-		} catch (IOException e) {
-			log.error("Error occured while opening a separate editor", e);
-		}
-		return null;
-	}
-	
+            return openEditor;
+        } catch (PartInitException e) {
+            log.error("Error occured while opening a separate editor", e);
+        } catch (IOException e) {
+            log.error("Error occured while opening a separate editor", e);
+        }
+        return null;
+    }
+
 }

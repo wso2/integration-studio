@@ -20,24 +20,24 @@ import org.apache.synapse.MessageContext;
 import org.apache.synapse.rest.AbstractHandler;
 
 public class DummyHandler extends AbstractHandler {
-	private String className;
+    private String className;
 
-	public String getClassName() {
-		return className;
-	}
+    public String getClassName() {
+        return className;
+    }
 
-	public void setClassName(String className) {
-		this.className = className;
-	}
+    public void setClassName(String className) {
+        this.className = className;
+    }
 
-	public boolean handleRequest(MessageContext arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean handleRequest(MessageContext arg0) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public boolean handleResponse(MessageContext arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean handleResponse(MessageContext arg0) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 }

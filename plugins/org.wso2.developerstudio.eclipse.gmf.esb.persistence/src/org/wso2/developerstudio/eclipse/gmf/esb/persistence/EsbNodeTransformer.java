@@ -29,23 +29,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
  * corresponding ESB server configuration element(s).
  */
 public interface EsbNodeTransformer {
-	
-	/**
-	 * Transforms the given subject node into corresponding ESB configuration
-	 * element (s).
-	 * 
-	 * @param synapseConfiguration
-	 *            {@link SynapseConfiguration} object which is being built.
-	 * @param rootService
-	 *            {@link ProxyService} to which this node corresponds to.
-	 * @param parentMediator
-	 *            parent mediator under which this node is to be adopted.
-	 * @param subject
-	 *            subject visual model node.
-	 * @throws Exception
-	 *             if an error occurs during the transformation.
-	 */
-	void transform(TransformationInfo information, EsbNode subject) throws TransformerException;
-	void createSynapseObject(TransformationInfo info,EObject subject,List<Endpoint> endPoints) throws TransformerException;
-	void transformWithinSequence(TransformationInfo information, EsbNode subject,SequenceMediator sequence) throws TransformerException;
+
+    /**
+     * Transforms the given subject node into corresponding ESB configuration
+     * element (s).
+     * 
+     * @param synapseConfiguration
+     *            {@link SynapseConfiguration} object which is being built.
+     * @param rootService
+     *            {@link ProxyService} to which this node corresponds to.
+     * @param parentMediator
+     *            parent mediator under which this node is to be adopted.
+     * @param subject
+     *            subject visual model node.
+     * @throws Exception
+     *             if an error occurs during the transformation.
+     */
+    void transform(TransformationInfo information, EsbNode subject) throws TransformerException;
+
+    void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
+            throws TransformerException;
+
+    void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException;
 }

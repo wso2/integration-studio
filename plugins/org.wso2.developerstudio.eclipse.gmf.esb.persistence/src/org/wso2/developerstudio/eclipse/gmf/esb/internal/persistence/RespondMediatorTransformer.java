@@ -35,48 +35,46 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  */
 public class RespondMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		RespondMediator visualMediator = (RespondMediator) subject;
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        RespondMediator visualMediator = (RespondMediator) subject;
 
-		information.getParentSequence().addChild(createRespondMediator(visualMediator));
+        information.getParentSequence().addChild(createRespondMediator(visualMediator));
 
-		// Transform the respond mediator output data flow path.
-		doTransform(information, visualMediator.getOutputConnector());
-	}
+        // Transform the respond mediator output data flow path.
+        doTransform(information, visualMediator.getOutputConnector());
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws TransformerException {
-		// Check subject.
-		Assert.isTrue(subject instanceof RespondMediator, "Invalid subject.");
-		RespondMediator visualMediator = (RespondMediator) subject;
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof RespondMediator, "Invalid subject.");
+        RespondMediator visualMediator = (RespondMediator) subject;
 
-		sequence.addChild(createRespondMediator(visualMediator));
-		doTransformWithinSequence(information, visualMediator.getOutputConnector()
-				.getOutgoingLink(), sequence);
-	}
+        sequence.addChild(createRespondMediator(visualMediator));
+        doTransformWithinSequence(information, visualMediator.getOutputConnector().getOutgoingLink(), sequence);
+    }
 
-	/**
-	 * Create Respond mediator from visual mediator.
-	 * 
-	 * @param visualMediator
-	 * @return
-	 */
-	private org.apache.synapse.mediators.builtin.RespondMediator createRespondMediator(RespondMediator visualMediator){
+    /**
+     * Create Respond mediator from visual mediator.
+     * 
+     * @param visualMediator
+     * @return
+     */
+    private org.apache.synapse.mediators.builtin.RespondMediator createRespondMediator(RespondMediator visualMediator) {
 
-		org.apache.synapse.mediators.builtin.RespondMediator respondMediator = new org.apache.synapse.mediators.builtin.RespondMediator();
-		setCommonProperties(respondMediator, visualMediator);
-		
-		return respondMediator;
+        org.apache.synapse.mediators.builtin.RespondMediator respondMediator = new org.apache.synapse.mediators.builtin.RespondMediator();
+        setCommonProperties(respondMediator, visualMediator);
 
-	}
+        return respondMediator;
+
+    }
 
 }

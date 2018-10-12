@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpointOutputConnector;
  * @generated
  */
 public class NamedEndpointOutputConnectorImpl extends OutputConnectorImpl implements NamedEndpointOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NamedEndpointOutputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected NamedEndpointOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.NAMED_ENDPOINT_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.NAMED_ENDPOINT_OUTPUT_CONNECTOR;
+    }
 
-} //NamedEndpointOutputConnectorImpl
+} // NamedEndpointOutputConnectorImpl

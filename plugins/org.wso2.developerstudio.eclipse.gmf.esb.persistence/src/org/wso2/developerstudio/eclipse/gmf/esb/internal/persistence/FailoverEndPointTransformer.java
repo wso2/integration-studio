@@ -56,140 +56,143 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 
-	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
 
-		Assert.isTrue(subject instanceof FailoverEndPoint, "Invalid subject.");
-		FailoverEndPoint visualEndPoint = (FailoverEndPoint) subject;
-		FailoverEndpoint synapseEP = create(info, visualEndPoint, visualEndPoint.getName(), null);
-		setEndpointToSendCallOrProxy(info, visualEndPoint, synapseEP);
+        Assert.isTrue(subject instanceof FailoverEndPoint, "Invalid subject.");
+        FailoverEndPoint visualEndPoint = (FailoverEndPoint) subject;
+        FailoverEndpoint synapseEP = create(info, visualEndPoint, visualEndPoint.getName(), null);
+        setEndpointToSendCallOrProxy(info, visualEndPoint, synapseEP);
 
-		if (!info.isEndPointFound) {
-			info.isEndPointFound = true;
-			info.firstEndPoint = visualEndPoint;
-		}
+        if (!info.isEndPointFound) {
+            info.isEndPointFound = true;
+            info.firstEndPoint = visualEndPoint;
+        }
 
-		if (visualEndPoint.getWestOutputConnector() != null) {
-			if (visualEndPoint.getWestOutputConnector().getOutgoingLink() != null) {
-				InputConnector nextInputConnector = visualEndPoint.getWestOutputConnector().getOutgoingLink()
-						.getTarget();
-				if ((!(nextInputConnector instanceof SequenceInputConnector))
-						|| ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0).getOutgoingLink() != null) && (!(((Sequence) nextInputConnector
-								.eContainer()).getOutputConnector().get(0).getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
-					info.setParentSequence(info.getOriginOutSequence());
-					info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
-				} else if (visualEndPoint.getInputConnector().getIncomingLinks().get(0).getSource().eContainer() instanceof Sequence) {
-					info.setParentSequence(info.getCurrentReferredSequence());
-				}
-			}
-		}
+        if (visualEndPoint.getWestOutputConnector() != null) {
+            if (visualEndPoint.getWestOutputConnector().getOutgoingLink() != null) {
+                InputConnector nextInputConnector = visualEndPoint.getWestOutputConnector().getOutgoingLink()
+                        .getTarget();
+                if ((!(nextInputConnector instanceof SequenceInputConnector))
+                        || ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                .getOutgoingLink() != null)
+                                && (!(((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                        .getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
+                    info.setParentSequence(info.getOriginOutSequence());
+                    info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+                } else if (visualEndPoint.getInputConnector().getIncomingLinks().get(0).getSource()
+                        .eContainer() instanceof Sequence) {
+                    info.setParentSequence(info.getCurrentReferredSequence());
+                }
+            }
+        }
 
-		List<EsbNode> transformedMediators = info.getTransformedMediators();
-		if (visualEndPoint.getOutputConnector() != null && visualEndPoint.getWestOutputConnector() != null
-				&& visualEndPoint.getWestOutputConnector().getOutgoingLink() != null) {
-			EsbNode nextElement = (EsbNode) visualEndPoint.getWestOutputConnector().getOutgoingLink().getTarget()
-					.eContainer();
-			if (transformedMediators.contains(nextElement)) {
-				return;
-			}
-			doTransform(info, visualEndPoint.getWestOutputConnector());
-			transformedMediators.add(nextElement);
-		}
+        List<EsbNode> transformedMediators = info.getTransformedMediators();
+        if (visualEndPoint.getOutputConnector() != null && visualEndPoint.getWestOutputConnector() != null
+                && visualEndPoint.getWestOutputConnector().getOutgoingLink() != null) {
+            EsbNode nextElement = (EsbNode) visualEndPoint.getWestOutputConnector().getOutgoingLink().getTarget()
+                    .eContainer();
+            if (transformedMediators.contains(nextElement)) {
+                return;
+            }
+            doTransform(info, visualEndPoint.getWestOutputConnector());
+            transformedMediators.add(nextElement);
+        }
 
-	}
+    }
 
-	@Override
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) throws TransformerException {
+    @Override
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
+            throws TransformerException {
 
-		Assert.isTrue(subject instanceof FailoverEndPoint, "Invalid subject.");
-		FailoverEndPoint visualEndPoint = (FailoverEndPoint) subject;
-		endPoints.add(create(info, visualEndPoint, visualEndPoint.getEndPointName(), endPoints));
+        Assert.isTrue(subject instanceof FailoverEndPoint, "Invalid subject.");
+        FailoverEndPoint visualEndPoint = (FailoverEndPoint) subject;
+        endPoints.add(create(info, visualEndPoint, visualEndPoint.getEndPointName(), endPoints));
 
-	}
+    }
 
-	@Override
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		Assert.isTrue(subject instanceof FailoverEndPoint, "Invalid subject");
-		FailoverEndPoint visualEndPoint = (FailoverEndPoint) subject;
-		Endpoint synapseEP = create(information, visualEndPoint, visualEndPoint.getEndPointName(), null);
-		setEndpointToSendOrCallMediator(sequence, synapseEP);
-	}
+    @Override
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        Assert.isTrue(subject instanceof FailoverEndPoint, "Invalid subject");
+        FailoverEndPoint visualEndPoint = (FailoverEndPoint) subject;
+        Endpoint synapseEP = create(information, visualEndPoint, visualEndPoint.getEndPointName(), null);
+        setEndpointToSendOrCallMediator(sequence, synapseEP);
+    }
 
-	public FailoverEndpoint create(TransformationInfo info, FailoverEndPoint visualEndPoint, String name,
-			List<Endpoint> endPoints) throws TransformerException {
-		
-		IEditorPart editorPart = null;
-		IProject activeProject = null;
-		FailoverEndpoint synapseFailEP = new FailoverEndpoint();
+    public FailoverEndpoint create(TransformationInfo info, FailoverEndPoint visualEndPoint, String name,
+            List<Endpoint> endPoints) throws TransformerException {
 
-		if (StringUtils.isNotBlank(name)) {
-			synapseFailEP.setName(name);
-		}
-		synapseFailEP.setBuildMessageAtt(visualEndPoint.isBuildMessage());
-		EndpointDefinition synapseEPDef = new EndpointDefinition();
-		List<Endpoint> endPointsList = new ArrayList<Endpoint>();
-		synapseFailEP.setChildren(endPointsList);
-		synapseFailEP.setDefinition(synapseEPDef);
-		saveProperties(visualEndPoint, synapseFailEP);
+        IEditorPart editorPart = null;
+        IProject activeProject = null;
+        FailoverEndpoint synapseFailEP = new FailoverEndpoint();
 
-		if (!info.isEndPointFound) {
-			info.isEndPointFound = true;
-			info.firstEndPoint = visualEndPoint;
-		}
-		try {
-			if (visualEndPoint.eContainer() instanceof EndpointDiagram) {
-				ArrayList<FailoverEndPointOutputConnector> connectors = new ArrayList<FailoverEndPointOutputConnector>();
-				connectors.addAll(visualEndPoint.getOutputConnector());
-				for (FailoverEndPointOutputConnector outputConnector : connectors) {
-					if (outputConnector.getOutgoingLink() != null) {
-						if (outputConnector.getOutgoingLink().getTarget() != null) {
-							EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink().getTarget().eContainer();
-							EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance().getTransformer(
-									esbNode);
-							transformer.createSynapseObject(info, esbNode, endPointsList);
+        if (StringUtils.isNotBlank(name)) {
+            synapseFailEP.setName(name);
+        }
+        synapseFailEP.setBuildMessageAtt(visualEndPoint.isBuildMessage());
+        EndpointDefinition synapseEPDef = new EndpointDefinition();
+        List<Endpoint> endPointsList = new ArrayList<Endpoint>();
+        synapseFailEP.setChildren(endPointsList);
+        synapseFailEP.setDefinition(synapseEPDef);
+        saveProperties(visualEndPoint, synapseFailEP);
 
-						}
-					}
-				}
+        if (!info.isEndPointFound) {
+            info.isEndPointFound = true;
+            info.firstEndPoint = visualEndPoint;
+        }
+        try {
+            if (visualEndPoint.eContainer() instanceof EndpointDiagram) {
+                ArrayList<FailoverEndPointOutputConnector> connectors = new ArrayList<FailoverEndPointOutputConnector>();
+                connectors.addAll(visualEndPoint.getOutputConnector());
+                for (FailoverEndPointOutputConnector outputConnector : connectors) {
+                    if (outputConnector.getOutgoingLink() != null) {
+                        if (outputConnector.getOutgoingLink().getTarget() != null) {
+                            EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink().getTarget().eContainer();
+                            EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance()
+                                    .getTransformer(esbNode);
+                            transformer.createSynapseObject(info, esbNode, endPointsList);
 
-			} else {
+                        }
+                    }
+                }
 
-				IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-						.getActivePage().getEditorReferences();
-				for (int i = 0; i < editorReferences.length; i++) {
-					IEditorPart editor = editorReferences[i].getEditor(false);
+            } else {
 
-					if (editor != null) {
-						editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
-					}
+                IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                        .getActivePage().getEditorReferences();
+                for (int i = 0; i < editorReferences.length; i++) {
+                    IEditorPart editor = editorReferences[i].getEditor(false);
 
-					if (editorPart != null) {
-						IEsbEditorInput input = (IEsbEditorInput) editorPart.getEditorInput();
-						IFile file = input.getXmlResource();
-						activeProject = file.getProject();
-					}
-				}
+                    if (editor != null) {
+                        editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+                    }
 
-				OMElement element = null;
-				String endpointName = (String) visualEndPoint.getName();
-				if (!StringUtils.isEmpty(endpointName)) {
-					IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
-					IFile file = activeProject.getFile(location);
-					final String source = FileUtils.getContentAsString(file.getContents());
-					element = AXIOMUtil.stringToOM(source);
-				}
-				
-				Properties properties = new Properties();
-				properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
-				synapseFailEP = (FailoverEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
+                    if (editorPart != null) {
+                        IEsbEditorInput input = (IEsbEditorInput) editorPart.getEditorInput();
+                        IFile file = input.getXmlResource();
+                        activeProject = file.getProject();
+                    }
+                }
 
-			}
+                OMElement element = null;
+                String endpointName = (String) visualEndPoint.getName();
+                if (!StringUtils.isEmpty(endpointName)) {
+                    IPath location = new Path(
+                            "src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+                    IFile file = activeProject.getFile(location);
+                    final String source = FileUtils.getContentAsString(file.getContents());
+                    element = AXIOMUtil.stringToOM(source);
+                }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return synapseFailEP;
-	}
+                Properties properties = new Properties();
+                properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
+                synapseFailEP = (FailoverEndpoint) EndpointFactory.getEndpointFromElement(element, false, properties);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return synapseFailEP;
+    }
 }

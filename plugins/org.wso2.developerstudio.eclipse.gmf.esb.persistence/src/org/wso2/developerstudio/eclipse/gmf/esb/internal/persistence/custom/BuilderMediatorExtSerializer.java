@@ -10,61 +10,56 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder;
 
 public class BuilderMediatorExtSerializer extends AbstractMediatorSerializer {
 
-	@Override
-	protected OMElement serializeSpecificMediator(Mediator mediator) {
+    @Override
+    protected OMElement serializeSpecificMediator(Mediator mediator) {
 
-		if (!(mediator instanceof BuilderMediatorExt)) {
-			handleException("Unsupported mediator passed in for serialization : "
-					+ mediator.getType());
-		}
+        if (!(mediator instanceof BuilderMediatorExt)) {
+            handleException("Unsupported mediator passed in for serialization : " + mediator.getType());
+        }
 
-		BuilderMediatorExt builderMediatorExt = (BuilderMediatorExt) mediator;
-		OMNamespace namespace = fac.createOMNamespace("http://ws.apache.org/ns/synapse", "syn");
-		OMElement builder = fac.createOMElement("builder", namespace);
-		saveTracingState(builder, mediator);
+        BuilderMediatorExt builderMediatorExt = (BuilderMediatorExt) mediator;
+        OMNamespace namespace = fac.createOMNamespace("http://ws.apache.org/ns/synapse", "syn");
+        OMElement builder = fac.createOMElement("builder", namespace);
+        saveTracingState(builder, mediator);
 
-		List<MessageBuilder> messageBuilderList = builderMediatorExt
-				.getMessageBuilderList();
+        List<MessageBuilder> messageBuilderList = builderMediatorExt.getMessageBuilderList();
 
-		if (messageBuilderList != null && messageBuilderList.size() != 0) {
+        if (messageBuilderList != null && messageBuilderList.size() != 0) {
 
-			for (MessageBuilder messageBuilder : messageBuilderList) {
+            for (MessageBuilder messageBuilder : messageBuilderList) {
 
-				OMElement omMessageBuilder = fac.createOMElement(
-						"messageBuilder", namespace);
+                OMElement omMessageBuilder = fac.createOMElement("messageBuilder", namespace);
 
-				if (messageBuilder.getContentType() != null) {
+                if (messageBuilder.getContentType() != null) {
 
-					omMessageBuilder.addAttribute(fac.createOMAttribute(
-							"contentType", nullNS,
-							messageBuilder.getContentType()));
+                    omMessageBuilder.addAttribute(
+                            fac.createOMAttribute("contentType", nullNS, messageBuilder.getContentType()));
 
-				}
+                }
 
-				if (messageBuilder.getBuilderClass() != null) {
+                if (messageBuilder.getBuilderClass() != null) {
 
-					omMessageBuilder.addAttribute(fac.createOMAttribute(
-							"class", nullNS, messageBuilder.getBuilderClass()));
+                    omMessageBuilder
+                            .addAttribute(fac.createOMAttribute("class", nullNS, messageBuilder.getBuilderClass()));
 
-				}
+                }
 
-				if (messageBuilder.getFormatterClass() != null) {
+                if (messageBuilder.getFormatterClass() != null) {
 
-					omMessageBuilder.addAttribute(fac.createOMAttribute(
-							"formatterClass", nullNS,
-							messageBuilder.getFormatterClass()));
-				}
+                    omMessageBuilder.addAttribute(
+                            fac.createOMAttribute("formatterClass", nullNS, messageBuilder.getFormatterClass()));
+                }
 
-				builder.addChild(omMessageBuilder);
-			}
-		}
+                builder.addChild(omMessageBuilder);
+            }
+        }
 
-		return builder;
-	}
+        return builder;
+    }
 
-	public String getMediatorClassName() {
+    public String getMediatorClassName() {
 
-		return BuilderMediatorExt.class.getName();
-	}
+        return BuilderMediatorExt.class.getName();
+    }
 
 }

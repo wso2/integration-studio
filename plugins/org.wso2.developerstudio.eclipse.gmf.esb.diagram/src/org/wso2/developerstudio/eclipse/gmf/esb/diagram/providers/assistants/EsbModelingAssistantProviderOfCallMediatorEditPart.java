@@ -13,17 +13,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfCallMediatorEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(4);
-		types.add(EsbElementTypes.CallMediatorInputConnector_3743);
-		types.add(EsbElementTypes.CallMediatorOutputConnector_3744);
-		types.add(EsbElementTypes.CallMediatorEndpointOutputConnector_3745);
-		types.add(EsbElementTypes.MediatorFlow_3746);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(4);
+        types.add(EsbElementTypes.CallMediatorInputConnector_3743);
+        types.add(EsbElementTypes.CallMediatorOutputConnector_3744);
+        types.add(EsbElementTypes.CallMediatorEndpointOutputConnector_3745);
+        types.add(EsbElementTypes.MediatorFlow_3746);
+        return types;
+    }
 
 }

@@ -13,27 +13,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class XSLTFeaturesPropertyDescriptor extends PropertyDescriptor {
 
-	public XSLTFeaturesPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public XSLTFeaturesPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				XSLTMediator xsltMediator = (XSLTMediator) object;
-				ConfigureXSLTMediatorDialog configDiag = new ConfigureXSLTMediatorDialog(
-						shell, xsltMediator,
-						ConfigureXSLTMediatorDialog.TAB_FEATURES);
-				// enrichMediatorConfigurationDialog.setBlockOnOpen(true);
-				configDiag.open();
-				// configDiag.setCurrentTab(ConfigureXSLTMediatorDialog.TAB_FEATURES);
-				return null;
-			}
-		};
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                XSLTMediator xsltMediator = (XSLTMediator) object;
+                ConfigureXSLTMediatorDialog configDiag = new ConfigureXSLTMediatorDialog(shell, xsltMediator,
+                        ConfigureXSLTMediatorDialog.TAB_FEATURES);
+                // enrichMediatorConfigurationDialog.setBlockOnOpen(true);
+                configDiag.open();
+                // configDiag.setCurrentTab(ConfigureXSLTMediatorDialog.TAB_FEATURES);
+                return null;
+            }
+        };
+    }
 
 }

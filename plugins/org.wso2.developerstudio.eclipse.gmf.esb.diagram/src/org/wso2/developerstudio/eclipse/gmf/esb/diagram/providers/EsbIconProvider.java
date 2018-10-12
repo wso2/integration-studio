@@ -13,10 +13,10 @@ import org.eclipse.swt.graphics.Image;
  */
 public class EsbIconProvider extends DefaultElementTypeIconProvider implements IIconProvider {
 
-	/**
-	 * @generated
-	 */
-	public EsbIconProvider() {
-		super(EsbElementTypes.TYPED_INSTANCE);
-	}
+    /**
+     * @generated
+     */
+    public EsbIconProvider() {
+        super(EsbElementTypes.TYPED_INSTANCE);
+    }
 }

@@ -26,29 +26,25 @@ import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.AddUserRoleDialog;
 
-
 public class AllowRolesParameterPropertyDescriptor extends PropertyDescriptor {
 
-	public AllowRolesParameterPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public AllowRolesParameterPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-				Shell shell = Display.getDefault().getActiveShell();
-				ProxyService proxy=(ProxyService) object;
-				
-				AddUserRoleDialog dialog = new AddUserRoleDialog(
-						shell, proxy);
-				dialog.setBlockOnOpen(true);
-				dialog.open();
-				return null;
-			}
-		};
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ProxyService proxy = (ProxyService) object;
+
+                AddUserRoleDialog dialog = new AddUserRoleDialog(shell, proxy);
+                dialog.setBlockOnOpen(true);
+                dialog.open();
+                return null;
+            }
+        };
+    }
 
 }
-

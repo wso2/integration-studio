@@ -33,24 +33,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
  */
 public class MessageStoreParamCustomPropertyDescriptor extends PropertyDescriptor {
 
-	public MessageStoreParamCustomPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-   
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				MessageStore store = (MessageStore)object;
-			
-				ConfigureMessageStoreParametersDialog paramDialog = new ConfigureMessageStoreParametersDialog(shell,
-						store);
-				paramDialog.setBlockOnOpen(true);
-				paramDialog.open();
-				return null;
-			}
-		};
-	}
+    public MessageStoreParamCustomPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                MessageStore store = (MessageStore) object;
+
+                ConfigureMessageStoreParametersDialog paramDialog = new ConfigureMessageStoreParametersDialog(shell,
+                        store);
+                paramDialog.setBlockOnOpen(true);
+                paramDialog.open();
+                return null;
+            }
+        };
+    }
 }

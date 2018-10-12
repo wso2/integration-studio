@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-
 import org.apache.synapse.endpoints.AddressEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.draw2d.geometry.Point;
@@ -44,61 +43,61 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
  */
 public class EndPointDeserializer extends AbstractEsbNodeDeserializer<EndpointWrapper, EndpointDiagram> {
 
-	@Deprecated
-	@SuppressWarnings("unchecked")
-	@Override
-	public EndpointDiagram createNode(IGraphicalEditPart part, EndpointWrapper endpointWrapper) throws DeserializerException {
-		EndpointDiagram endpointDiagram = (EndpointDiagram) DeserializerUtils.createNode((IGraphicalEditPart)part.getParent(), EsbElementTypes.EndpointDiagram_3642);
-		refreshEditPartMap();
-		IGraphicalEditPart graphicalNode = (IGraphicalEditPart) getEditpart(endpointDiagram);
-		if(graphicalNode!=null){
-			Rectangle rect = new Rectangle(new Point(), graphicalNode.getFigure().getPreferredSize()).getCopy();
-			rect.x = 0;
-			rect.y = 0;
-			SetBoundsCommand sbc = new SetBoundsCommand(graphicalNode.getEditingDomain(),
-					"change location", new EObjectAdapter((View) graphicalNode.getModel()), rect);
-			graphicalNode.getDiagramEditDomain().getDiagramCommandStack()
-					.execute(new ICommandProxy(sbc));
-			
-			if(endpointWrapper!=null){
-				Endpoint endpoint = endpointWrapper.getEndpoint();
-				if(endpoint!=null){
-					setElementToEdit(endpointDiagram);
-					executeSetValueCommand(ENDPOINT_DIAGRAM__NAME, endpoint.getName());
-					IGraphicalEditPart innerCompartment = (IGraphicalEditPart) graphicalNode.getChildren().get(0);
-					@SuppressWarnings("rawtypes")
-					IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
-					EsbNode node = deserializer.createNode(innerCompartment, endpoint);
-					
-					refreshEditPartMap();
-					IGraphicalEditPart nodeEditPart = (IGraphicalEditPart) getEditpart(node);
-					if(nodeEditPart!=null){
-						rect = new Rectangle(new Point(), nodeEditPart.getFigure().getPreferredSize()).getCopy();
-						rect.x = 0;
-						rect.y = 0;
-						sbc = new SetBoundsCommand(nodeEditPart.getEditingDomain(),
-								"change location", new EObjectAdapter((View) nodeEditPart.getModel()), rect);
-						nodeEditPart.getDiagramEditDomain().getDiagramCommandStack()
-								.execute(new ICommandProxy(sbc));
-					}
-				}
-			}
-			
-		}
-		
-		return endpointDiagram;
-	}
+    @Deprecated
+    @SuppressWarnings("unchecked")
+    @Override
+    public EndpointDiagram createNode(IGraphicalEditPart part, EndpointWrapper endpointWrapper)
+            throws DeserializerException {
+        EndpointDiagram endpointDiagram = (EndpointDiagram) DeserializerUtils
+                .createNode((IGraphicalEditPart) part.getParent(), EsbElementTypes.EndpointDiagram_3642);
+        refreshEditPartMap();
+        IGraphicalEditPart graphicalNode = (IGraphicalEditPart) getEditpart(endpointDiagram);
+        if (graphicalNode != null) {
+            Rectangle rect = new Rectangle(new Point(), graphicalNode.getFigure().getPreferredSize()).getCopy();
+            rect.x = 0;
+            rect.y = 0;
+            SetBoundsCommand sbc = new SetBoundsCommand(graphicalNode.getEditingDomain(), "change location",
+                    new EObjectAdapter((View) graphicalNode.getModel()), rect);
+            graphicalNode.getDiagramEditDomain().getDiagramCommandStack().execute(new ICommandProxy(sbc));
 
-	@Override
-	public void createNode(FormEditor formEditor, EndpointWrapper endpointWrapper) {
-		
-		Endpoint endpoint = endpointWrapper.getEndpoint();
-		
-		if (endpoint != null) {
-			IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
-			deserializer.createNode(formEditor, endpoint);
-		}
-		
-	}
+            if (endpointWrapper != null) {
+                Endpoint endpoint = endpointWrapper.getEndpoint();
+                if (endpoint != null) {
+                    setElementToEdit(endpointDiagram);
+                    executeSetValueCommand(ENDPOINT_DIAGRAM__NAME, endpoint.getName());
+                    IGraphicalEditPart innerCompartment = (IGraphicalEditPart) graphicalNode.getChildren().get(0);
+                    @SuppressWarnings("rawtypes")
+                    IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
+                    EsbNode node = deserializer.createNode(innerCompartment, endpoint);
+
+                    refreshEditPartMap();
+                    IGraphicalEditPart nodeEditPart = (IGraphicalEditPart) getEditpart(node);
+                    if (nodeEditPart != null) {
+                        rect = new Rectangle(new Point(), nodeEditPart.getFigure().getPreferredSize()).getCopy();
+                        rect.x = 0;
+                        rect.y = 0;
+                        sbc = new SetBoundsCommand(nodeEditPart.getEditingDomain(), "change location",
+                                new EObjectAdapter((View) nodeEditPart.getModel()), rect);
+                        nodeEditPart.getDiagramEditDomain().getDiagramCommandStack().execute(new ICommandProxy(sbc));
+                    }
+                }
+            }
+
+        }
+
+        return endpointDiagram;
+    }
+
+    @Override
+    public void createNode(FormEditor formEditor, EndpointWrapper endpointWrapper) {
+
+        Endpoint endpoint = endpointWrapper.getEndpoint();
+
+        if (endpoint != null) {
+            IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
+            deserializer.createNode(formEditor, endpoint);
+        }
+
+    }
 
 }

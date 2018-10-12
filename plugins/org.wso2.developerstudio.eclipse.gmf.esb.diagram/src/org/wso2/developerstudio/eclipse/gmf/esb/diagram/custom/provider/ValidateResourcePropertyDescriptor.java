@@ -13,23 +13,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class ValidateResourcePropertyDescriptor extends PropertyDescriptor {
 
-	public ValidateResourcePropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public ValidateResourcePropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				ValidateMediator  validateMediator = (ValidateMediator)object;
-				ConfigureValidateResourceDialog resourceDialog = new ConfigureValidateResourceDialog(shell,validateMediator);
-				resourceDialog.setBlockOnOpen(true);
-				resourceDialog.open();
-				return null;
-			}
-		};
-	}
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ValidateMediator validateMediator = (ValidateMediator) object;
+                ConfigureValidateResourceDialog resourceDialog = new ConfigureValidateResourceDialog(shell,
+                        validateMediator);
+                resourceDialog.setBlockOnOpen(true);
+                resourceDialog.open();
+                return null;
+            }
+        };
+    }
 }

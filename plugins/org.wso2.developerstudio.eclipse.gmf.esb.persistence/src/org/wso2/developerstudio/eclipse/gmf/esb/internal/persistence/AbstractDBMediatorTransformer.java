@@ -49,9 +49,9 @@ import org.apache.synapse.util.xpath.SynapseXPath;
  * DBReport mediators
  * 
  */
-public abstract class  AbstractDBMediatorTransformer extends AbstractEsbNodeTransformer {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-	
+public abstract class AbstractDBMediatorTransformer extends AbstractEsbNodeTransformer {
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
     public static final QName URL_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "url");
     static final QName DRIVER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "driver");
     static final QName USER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "user");
@@ -59,116 +59,117 @@ public abstract class  AbstractDBMediatorTransformer extends AbstractEsbNodeTran
 
     public static final QName DSNAME_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "dsName");
     static final QName ICCLASS_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "icClass");
-	
-	protected <T extends AbstractDBMediator> void transformDBMediator(T dbMediator,AbstractSqlExecutorMediator sqlExecutor){
-		setCommonProperties(dbMediator, sqlExecutor);
-		
-		dbMediator.setDataSourceName(sqlExecutor.getConnectionDsName());
-		DataSourceInformation dataSourceInfo=new DataSourceInformation();
-		if (sqlExecutor.getConnectionType().equals(SqlExecutorConnectionType.DATA_SOURCE)) {
-			dbMediator.setDataSourceName(sqlExecutor.getConnectionDsName());
-			dbMediator.addDataSourceProperty(DSNAME_Q, sqlExecutor.getConnectionDsName());
-			if (sqlExecutor.getConnectionDsType().equals(SqlExecutorDatasourceType.EXTERNAL)) {
-				dbMediator.addDataSourceProperty(ICCLASS_Q, sqlExecutor.getConnectionDsInitialContext());
-				dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
-				dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
-				dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
-				addDataSourceProperties(dbMediator,sqlExecutor);
-			}
-			
-		} else {
-			dbMediator.addDataSourceProperty(DRIVER_Q, sqlExecutor.getConnectionDbDriver());
-			dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
-			dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
-			dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
-			addDataSourceProperties(dbMediator,sqlExecutor);
-		}
-		
-		dbMediator.setDataSourceInformation(dataSourceInfo);
-		
-		for(SqlStatement sqlStatement : sqlExecutor.getSqlStatements()){
-			Statement statement = new Statement(sqlStatement.getQueryString());
-			for(SqlParameterDefinition param :sqlStatement.getParameters()){
-				if(param.getValueType()==SqlParameterValueType.EXPRESSION){
-					NamespacedProperty namespacedProperty = param.getValueExpression();
-					SynapseXPath expression = null;
-					try {
-						expression = new SynapseXPath(namespacedProperty.getPropertyValue());
-						for (Entry<String, String> entry : namespacedProperty.getNamespaces().entrySet()) {
-							expression.addNamespace(entry.getKey(), entry.getValue());
-						}
-						statement.addParameter(null, expression, param.getDataType().getLiteral());
-					} catch (JaxenException e) {
-						log.warn("An unexpected error has occurred while getting xpath expression.. ignoring... ", e);
-					}
-				} else{
-					statement.addParameter(param.getValueLiteral(), null, param.getDataType().getLiteral());
-				}
-			}
-			for(SqlResultMapping resultMapping : sqlStatement.getResults()){
-				statement.addResult(resultMapping.getPropertyName(), resultMapping.getColumnId());
-			}
-			dbMediator.addStatement(statement);
-		}
-		
-		
-	}
-	
-	private  <T extends AbstractDBMediator>  void addDataSourceProperties(T dbMediator,AbstractSqlExecutorMediator sqlExecutor){
-		/* there are several setter method in DataSourceInformation class, but not required for serialization */
-		
-			if (!sqlExecutor.getPropertyAutocommit().equals(SqlExecutorBooleanValue.DEFAULT)) {
-				dbMediator.addDataSourceProperty( "autocommit", sqlExecutor.getPropertyAutocommit().getLiteral());
-			}
-			
-			if (!sqlExecutor.getPropertyIsolation().equals(SqlExecutorIsolationLevel.DEFAULT)) {
-				dbMediator.addDataSourceProperty( "isolation", sqlExecutor.getPropertyIsolation().getLiteral());
-			}
-			
-			if (sqlExecutor.getPropertyMaxactive() > -1) {
-				dbMediator.addDataSourceProperty( "maxactive", Integer.toString(sqlExecutor.getPropertyMaxactive()));
-			}
-			
-			if (sqlExecutor.getPropertyMaxidle() > -1) {
-				dbMediator.addDataSourceProperty( "maxidle", Integer.toString(sqlExecutor.getPropertyMaxidle()));
-			}
-			
-			if (sqlExecutor.getPropertyMaxopenstatements() > -1) {
-				dbMediator.addDataSourceProperty( "maxopenstatements", Integer.toString(sqlExecutor.getPropertyMaxopenstatements()));
-			}
-			
-			if (sqlExecutor.getPropertyMaxwait() > -1) {
-				dbMediator.addDataSourceProperty( "maxwait", Integer.toString(sqlExecutor.getPropertyMaxwait()));
-			}
-			
-			if (sqlExecutor.getPropertyMinidle() > -1) {
-				dbMediator.addDataSourceProperty( "minidle", Integer.toString(sqlExecutor.getPropertyMinidle()));
-			}
-			
-			if (!sqlExecutor.getPropertyPoolstatements().equals(SqlExecutorBooleanValue.DEFAULT)) {
-				dbMediator.addDataSourceProperty( "poolstatements", sqlExecutor.getPropertyPoolstatements().getLiteral());
-			}
-			
-			if (!sqlExecutor.getPropertyTestonborrow().equals(SqlExecutorBooleanValue.DEFAULT)) {
-				dbMediator.addDataSourceProperty( "testonborrow", sqlExecutor.getPropertyTestonborrow().getLiteral());
-			}
-			
-			if (!sqlExecutor.getPropertyTestwhileidle().equals(SqlExecutorBooleanValue.DEFAULT)) {
-				dbMediator.addDataSourceProperty( "testwhileidle", sqlExecutor.getPropertyTestwhileidle().getLiteral());
-			}
-			
-			if (!StringUtils.isBlank(sqlExecutor.getPropertyValidationquery())) {
-				dbMediator.addDataSourceProperty( "validationquery", sqlExecutor.getPropertyValidationquery());
-			}
-			
-			if (sqlExecutor.getPropertyInitialsize() > -1) {
-				dbMediator.addDataSourceProperty( "initialsize", Integer.toString(sqlExecutor.getPropertyInitialsize()));
-			}		
-	}
-	
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
 
-	}
+    protected <T extends AbstractDBMediator> void transformDBMediator(T dbMediator,
+            AbstractSqlExecutorMediator sqlExecutor) {
+        setCommonProperties(dbMediator, sqlExecutor);
+
+        dbMediator.setDataSourceName(sqlExecutor.getConnectionDsName());
+        DataSourceInformation dataSourceInfo = new DataSourceInformation();
+        if (sqlExecutor.getConnectionType().equals(SqlExecutorConnectionType.DATA_SOURCE)) {
+            dbMediator.setDataSourceName(sqlExecutor.getConnectionDsName());
+            dbMediator.addDataSourceProperty(DSNAME_Q, sqlExecutor.getConnectionDsName());
+            if (sqlExecutor.getConnectionDsType().equals(SqlExecutorDatasourceType.EXTERNAL)) {
+                dbMediator.addDataSourceProperty(ICCLASS_Q, sqlExecutor.getConnectionDsInitialContext());
+                dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
+                dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
+                dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
+                addDataSourceProperties(dbMediator, sqlExecutor);
+            }
+
+        } else {
+            dbMediator.addDataSourceProperty(DRIVER_Q, sqlExecutor.getConnectionDbDriver());
+            dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
+            dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
+            dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
+            addDataSourceProperties(dbMediator, sqlExecutor);
+        }
+
+        dbMediator.setDataSourceInformation(dataSourceInfo);
+
+        for (SqlStatement sqlStatement : sqlExecutor.getSqlStatements()) {
+            Statement statement = new Statement(sqlStatement.getQueryString());
+            for (SqlParameterDefinition param : sqlStatement.getParameters()) {
+                if (param.getValueType() == SqlParameterValueType.EXPRESSION) {
+                    NamespacedProperty namespacedProperty = param.getValueExpression();
+                    SynapseXPath expression = null;
+                    try {
+                        expression = new SynapseXPath(namespacedProperty.getPropertyValue());
+                        for (Entry<String, String> entry : namespacedProperty.getNamespaces().entrySet()) {
+                            expression.addNamespace(entry.getKey(), entry.getValue());
+                        }
+                        statement.addParameter(null, expression, param.getDataType().getLiteral());
+                    } catch (JaxenException e) {
+                        log.warn("An unexpected error has occurred while getting xpath expression.. ignoring... ", e);
+                    }
+                } else {
+                    statement.addParameter(param.getValueLiteral(), null, param.getDataType().getLiteral());
+                }
+            }
+            for (SqlResultMapping resultMapping : sqlStatement.getResults()) {
+                statement.addResult(resultMapping.getPropertyName(), resultMapping.getColumnId());
+            }
+            dbMediator.addStatement(statement);
+        }
+
+    }
+
+    private <T extends AbstractDBMediator> void addDataSourceProperties(T dbMediator,
+            AbstractSqlExecutorMediator sqlExecutor) {
+        /* there are several setter method in DataSourceInformation class, but not required for serialization */
+
+        if (!sqlExecutor.getPropertyAutocommit().equals(SqlExecutorBooleanValue.DEFAULT)) {
+            dbMediator.addDataSourceProperty("autocommit", sqlExecutor.getPropertyAutocommit().getLiteral());
+        }
+
+        if (!sqlExecutor.getPropertyIsolation().equals(SqlExecutorIsolationLevel.DEFAULT)) {
+            dbMediator.addDataSourceProperty("isolation", sqlExecutor.getPropertyIsolation().getLiteral());
+        }
+
+        if (sqlExecutor.getPropertyMaxactive() > -1) {
+            dbMediator.addDataSourceProperty("maxactive", Integer.toString(sqlExecutor.getPropertyMaxactive()));
+        }
+
+        if (sqlExecutor.getPropertyMaxidle() > -1) {
+            dbMediator.addDataSourceProperty("maxidle", Integer.toString(sqlExecutor.getPropertyMaxidle()));
+        }
+
+        if (sqlExecutor.getPropertyMaxopenstatements() > -1) {
+            dbMediator.addDataSourceProperty("maxopenstatements",
+                    Integer.toString(sqlExecutor.getPropertyMaxopenstatements()));
+        }
+
+        if (sqlExecutor.getPropertyMaxwait() > -1) {
+            dbMediator.addDataSourceProperty("maxwait", Integer.toString(sqlExecutor.getPropertyMaxwait()));
+        }
+
+        if (sqlExecutor.getPropertyMinidle() > -1) {
+            dbMediator.addDataSourceProperty("minidle", Integer.toString(sqlExecutor.getPropertyMinidle()));
+        }
+
+        if (!sqlExecutor.getPropertyPoolstatements().equals(SqlExecutorBooleanValue.DEFAULT)) {
+            dbMediator.addDataSourceProperty("poolstatements", sqlExecutor.getPropertyPoolstatements().getLiteral());
+        }
+
+        if (!sqlExecutor.getPropertyTestonborrow().equals(SqlExecutorBooleanValue.DEFAULT)) {
+            dbMediator.addDataSourceProperty("testonborrow", sqlExecutor.getPropertyTestonborrow().getLiteral());
+        }
+
+        if (!sqlExecutor.getPropertyTestwhileidle().equals(SqlExecutorBooleanValue.DEFAULT)) {
+            dbMediator.addDataSourceProperty("testwhileidle", sqlExecutor.getPropertyTestwhileidle().getLiteral());
+        }
+
+        if (!StringUtils.isBlank(sqlExecutor.getPropertyValidationquery())) {
+            dbMediator.addDataSourceProperty("validationquery", sqlExecutor.getPropertyValidationquery());
+        }
+
+        if (sqlExecutor.getPropertyInitialsize() > -1) {
+            dbMediator.addDataSourceProperty("initialsize", Integer.toString(sqlExecutor.getPropertyInitialsize()));
+        }
+    }
+
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+
+    }
 
 }

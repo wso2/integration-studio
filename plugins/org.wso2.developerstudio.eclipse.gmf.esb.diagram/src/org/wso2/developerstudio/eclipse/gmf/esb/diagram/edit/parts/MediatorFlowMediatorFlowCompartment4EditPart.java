@@ -25,83 +25,84 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFl
  */
 public class MediatorFlowMediatorFlowCompartment4EditPart extends AbstractMediatorCompartmentEditPart {
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 7017;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 7017;
 
-	/**
-	 * @generated NOT
-	 */
-	public MediatorFlowMediatorFlowCompartment4EditPart(View view) {
-		super(view);
-		complexity = Complexity.MULTIPLE;
-	}
+    /**
+     * @generated NOT
+     */
+    public MediatorFlowMediatorFlowCompartment4EditPart(View view) {
+        super(view);
+        complexity = Complexity.MULTIPLE;
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public String getCompartmentName() {
-		//return Messages.MediatorFlowMediatorFlowCompartment4EditPart_title;
-		return null; //"Default";
-	}
+    /**
+     * @generated NOT
+     */
+    public String getCompartmentName() {
+        // return Messages.MediatorFlowMediatorFlowCompartment4EditPart_title;
+        return null; // "Default";
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public IFigure createFigure() {
-		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
-		result.setTitle("Default");
-		result.setTitleVisibility(true);
-		/*
-		 * Override default border.
-		 * Fixing TOOLS-1864.
-		 */
-		LineBorder border = new LineBorder(new Color(null, 183, 183, 183), 1, SWT.BORDER_DASH);
-		result.setBorder(border);
-		result.setToolTip("Default");
-		ConstrainedToolbarLayout layoutManager = new ConstrainedToolbarLayout(false);
-		layoutManager.setSpacing(-15);
-		result.setLayoutManager(layoutManager);
-		return result;
-	}
+    /**
+     * @generated NOT
+     */
+    public IFigure createFigure() {
+        ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
+        result.setTitle("Default");
+        result.setTitleVisibility(true);
+        /*
+         * Override default border.
+         * Fixing TOOLS-1864.
+         */
+        LineBorder border = new LineBorder(new Color(null, 183, 183, 183), 1, SWT.BORDER_DASH);
+        result.setBorder(border);
+        result.setToolTip("Default");
+        ConstrainedToolbarLayout layoutManager = new ConstrainedToolbarLayout(false);
+        layoutManager.setSpacing(-15);
+        result.setLayoutManager(layoutManager);
+        return result;
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new MediatorFlowMediatorFlowCompartment4ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new MediatorFlowMediatorFlowCompartment4CanonicalEditPolicy());
-	}
+    /**
+     * @generated NOT
+     */
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+                new MediatorFlowMediatorFlowCompartment4ItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+                new MediatorFlowMediatorFlowCompartment4CanonicalEditPolicy());
+    }
 
-	protected void addChild(EditPart child, int index) {
-		// TODO Auto-generated method stub
-		super.addChild(child, index);
+    protected void addChild(EditPart child, int index) {
+        // TODO Auto-generated method stub
+        super.addChild(child, index);
 
-		if (child instanceof SwitchMediatorEditPart) {
-			SwitchMediatorEditPart switchMediatorEditPart = (SwitchMediatorEditPart) child;
-			SwitchMediatorUtils.addCaseBranchInitially(switchMediatorEditPart, getEditingDomain());
-		}
+        if (child instanceof SwitchMediatorEditPart) {
+            SwitchMediatorEditPart switchMediatorEditPart = (SwitchMediatorEditPart) child;
+            SwitchMediatorUtils.addCaseBranchInitially(switchMediatorEditPart, getEditingDomain());
+        }
 
-	}
+    }
 
-	public boolean isSelectable() {
-		// TODO This or using ResizableEditpolicy?
-		return false;
-	}
+    public boolean isSelectable() {
+        // TODO This or using ResizableEditpolicy?
+        return false;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setRatio(Double ratio) {
-		if (getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
-			super.setRatio(ratio);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setRatio(Double ratio) {
+        if (getFigure().getParent().getLayoutManager() instanceof ConstrainedToolbarLayout) {
+            super.setRatio(ratio);
+        }
+    }
 
 }

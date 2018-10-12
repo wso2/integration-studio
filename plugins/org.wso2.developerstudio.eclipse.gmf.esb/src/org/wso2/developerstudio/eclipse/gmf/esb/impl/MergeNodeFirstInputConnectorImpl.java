@@ -19,24 +19,26 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MergeNodeFirstInputConnector;
  * @generated
  */
 public class MergeNodeFirstInputConnectorImpl extends InputConnectorImpl implements MergeNodeFirstInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MergeNodeFirstInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected MergeNodeFirstInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.MERGE_NODE_FIRST_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //MergeNodeFirstInputConnectorImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.MERGE_NODE_FIRST_INPUT_CONNECTOR;
+    }
+
+} // MergeNodeFirstInputConnectorImpl

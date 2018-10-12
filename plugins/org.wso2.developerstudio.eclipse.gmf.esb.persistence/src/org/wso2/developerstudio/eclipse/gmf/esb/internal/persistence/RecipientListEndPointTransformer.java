@@ -61,184 +61,186 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class RecipientListEndPointTransformer extends AbstractEndpointTransformer {
 
-	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
-		Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject.");
-		RecipientListEndPoint endPointModel = (RecipientListEndPoint) subject;
-		Endpoint synapseEP;
-		try {
-			synapseEP = create(info, endPointModel, endPointModel.getName(), null);
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject.");
+        RecipientListEndPoint endPointModel = (RecipientListEndPoint) subject;
+        Endpoint synapseEP;
+        try {
+            synapseEP = create(info, endPointModel, endPointModel.getName(), null);
 
-		setEndpointToSendCallOrProxy(info, endPointModel, synapseEP);
+            setEndpointToSendCallOrProxy(info, endPointModel, synapseEP);
 
-		if (!info.isEndPointFound) {
-			info.isEndPointFound = true;
-			info.firstEndPoint = endPointModel;
-		}
+            if (!info.isEndPointFound) {
+                info.isEndPointFound = true;
+                info.firstEndPoint = endPointModel;
+            }
 
-		if (endPointModel.getWestOutputConnector() != null) {
-			if (endPointModel.getWestOutputConnector().getOutgoingLink() != null) {
-				InputConnector nextInputConnector = endPointModel.getWestOutputConnector().getOutgoingLink()
-						.getTarget();
-				if ((!(nextInputConnector instanceof SequenceInputConnector))
-						|| ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0).getOutgoingLink() != null) && (!(((Sequence) nextInputConnector
-								.eContainer()).getOutputConnector().get(0).getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
-					info.setParentSequence(info.getOriginOutSequence());
-					info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
-				} else if (endPointModel.getInputConnector().getIncomingLinks().get(0).getSource().eContainer() instanceof Sequence) {
-					info.setParentSequence(info.getCurrentReferredSequence());
-				}
-			}
-		}
+            if (endPointModel.getWestOutputConnector() != null) {
+                if (endPointModel.getWestOutputConnector().getOutgoingLink() != null) {
+                    InputConnector nextInputConnector = endPointModel.getWestOutputConnector().getOutgoingLink()
+                            .getTarget();
+                    if ((!(nextInputConnector instanceof SequenceInputConnector))
+                            || ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                    .getOutgoingLink() != null)
+                                    && (!(((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                            .getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
+                        info.setParentSequence(info.getOriginOutSequence());
+                        info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+                    } else if (endPointModel.getInputConnector().getIncomingLinks().get(0).getSource()
+                            .eContainer() instanceof Sequence) {
+                        info.setParentSequence(info.getCurrentReferredSequence());
+                    }
+                }
+            }
 
-		List<EsbNode> transformedMediators = info.getTransformedMediators();
-		if (endPointModel.getOutputConnector() != null && endPointModel.getWestOutputConnector() != null
-				&& endPointModel.getWestOutputConnector().getOutgoingLink() != null) {
-			EsbNode nextElement = (EsbNode) endPointModel.getWestOutputConnector().getOutgoingLink().getTarget()
-					.eContainer();
-			if (transformedMediators.contains(nextElement)) {
-				return;
-			}
-			doTransform(info, endPointModel.getWestOutputConnector());
-			transformedMediators.add(nextElement);
-		}
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
+            List<EsbNode> transformedMediators = info.getTransformedMediators();
+            if (endPointModel.getOutputConnector() != null && endPointModel.getWestOutputConnector() != null
+                    && endPointModel.getWestOutputConnector().getOutgoingLink() != null) {
+                EsbNode nextElement = (EsbNode) endPointModel.getWestOutputConnector().getOutgoingLink().getTarget()
+                        .eContainer();
+                if (transformedMediators.contains(nextElement)) {
+                    return;
+                }
+                doTransform(info, endPointModel.getWestOutputConnector());
+                transformedMediators.add(nextElement);
+            }
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
 
-	}
+    }
 
-	@Override
-	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
-			throws TransformerException {
-		Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject.");
-		RecipientListEndPoint model = (RecipientListEndPoint) subject;
-		try {
-			endPoints.add(create(info, model, model.getEndPointName(), endPoints));
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    @Override
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
+            throws TransformerException {
+        Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject.");
+        RecipientListEndPoint model = (RecipientListEndPoint) subject;
+        try {
+            endPoints.add(create(info, model, model.getEndPointName(), endPoints));
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	@Override
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject");
-		RecipientListEndPoint endPointModel = (RecipientListEndPoint) subject;
-		Endpoint synapseEP;
-		try {
-			synapseEP = create(information, endPointModel, endPointModel.getEndPointName(), null);
-			setEndpointToSendOrCallMediator(sequence, synapseEP);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
+    @Override
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject");
+        RecipientListEndPoint endPointModel = (RecipientListEndPoint) subject;
+        Endpoint synapseEP;
+        try {
+            synapseEP = create(information, endPointModel, endPointModel.getEndPointName(), null);
+            setEndpointToSendOrCallMediator(sequence, synapseEP);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public RecipientListEndpoint create(TransformationInfo info,
-			RecipientListEndPoint model, String name, List<Endpoint> endPoints)
-			throws JaxenException, TransformerException {
-		
-		if (StringUtils.isEmpty(model.getName())) {
-			throw new TransformerException(
-					"RecipientListEndPoint should be configured. Double click on endpoint to configure.");
-		}
-		
-		RecipientListEndpoint recipientList;
-		IEditorPart editorPart = null;
-		IProject activeProject = null;
+    public RecipientListEndpoint create(TransformationInfo info, RecipientListEndPoint model, String name,
+            List<Endpoint> endPoints) throws JaxenException, TransformerException {
 
-		if (model.getEndpointType().getLiteral().equals(RecipientListEndpointType.VALUE.getLiteral())
-				|| model.getEndpointType().getLiteral().equals(RecipientListEndpointType.XPATH.getLiteral())) {
-			recipientList = new RecipientListEndpoint(model.getMaxCache());
-		} else {
-			recipientList = new RecipientListEndpoint();
-		}
+        if (StringUtils.isEmpty(model.getName())) {
+            throw new TransformerException(
+                    "RecipientListEndPoint should be configured. Double click on endpoint to configure.");
+        }
 
-		if (StringUtils.isNotBlank(name)) {
-			recipientList.setName(name);
-		}
+        RecipientListEndpoint recipientList;
+        IEditorPart editorPart = null;
+        IProject activeProject = null;
 
-		if (model.getEndpointType().getLiteral().equals(RecipientListEndpointType.VALUE.getLiteral())) {
-			Value dynamicEnpointSet = new Value(model.getEndpointsValue());
-			recipientList.setDynamicEnpointSet(dynamicEnpointSet);
-		} else if (model.getEndpointType().getLiteral().equals(RecipientListEndpointType.XPATH.getLiteral())) {
-			if (model.getEndpointsExpression() != null) {
-				NamespacedProperty endpointsExpression = model.getEndpointsExpression();
-				SynapseXPath xpath = new SynapseXPath(endpointsExpression.getPropertyValue());
+        if (model.getEndpointType().getLiteral().equals(RecipientListEndpointType.VALUE.getLiteral())
+                || model.getEndpointType().getLiteral().equals(RecipientListEndpointType.XPATH.getLiteral())) {
+            recipientList = new RecipientListEndpoint(model.getMaxCache());
+        } else {
+            recipientList = new RecipientListEndpoint();
+        }
 
-				for (Entry<String, String> entry : endpointsExpression.getNamespaces().entrySet()) {
-					xpath.addNamespace(entry.getKey(), entry.getValue());
-				}
-				Value dynamicEnpointSet = new Value(xpath);
+        if (StringUtils.isNotBlank(name)) {
+            recipientList.setName(name);
+        }
 
-				recipientList.setDynamicEnpointSet(dynamicEnpointSet);
-			}
+        if (model.getEndpointType().getLiteral().equals(RecipientListEndpointType.VALUE.getLiteral())) {
+            Value dynamicEnpointSet = new Value(model.getEndpointsValue());
+            recipientList.setDynamicEnpointSet(dynamicEnpointSet);
+        } else if (model.getEndpointType().getLiteral().equals(RecipientListEndpointType.XPATH.getLiteral())) {
+            if (model.getEndpointsExpression() != null) {
+                NamespacedProperty endpointsExpression = model.getEndpointsExpression();
+                SynapseXPath xpath = new SynapseXPath(endpointsExpression.getPropertyValue());
 
-		} else {
-			EndpointDefinition synapseEPDef = new EndpointDefinition();
-			List<Endpoint> endPointsList = new ArrayList<Endpoint>();
-			recipientList.setChildren(endPointsList);
-			recipientList.setDefinition(synapseEPDef);
+                for (Entry<String, String> entry : endpointsExpression.getNamespaces().entrySet()) {
+                    xpath.addNamespace(entry.getKey(), entry.getValue());
+                }
+                Value dynamicEnpointSet = new Value(xpath);
 
-			if (!info.isEndPointFound) {
-				info.isEndPointFound = true;
-				info.firstEndPoint = model;
-			}
-			try {
-				if (model.eContainer() instanceof EndpointDiagram) {
-					ArrayList<RecipientListEndPointOutputConnector> connectors = new ArrayList<RecipientListEndPointOutputConnector>();
-					connectors.addAll(model.getOutputConnector());
+                recipientList.setDynamicEnpointSet(dynamicEnpointSet);
+            }
 
-					for (RecipientListEndPointOutputConnector outputConnector : connectors) {
-						if (outputConnector.getOutgoingLink() != null) {
-							if (outputConnector.getOutgoingLink().getTarget() != null) {
-								EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink().getTarget().eContainer();
-								EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance().getTransformer(
-										esbNode);
-								transformer.createSynapseObject(info, esbNode, endPointsList);
+        } else {
+            EndpointDefinition synapseEPDef = new EndpointDefinition();
+            List<Endpoint> endPointsList = new ArrayList<Endpoint>();
+            recipientList.setChildren(endPointsList);
+            recipientList.setDefinition(synapseEPDef);
 
-							}
-						}
-					}
-				} else {
+            if (!info.isEndPointFound) {
+                info.isEndPointFound = true;
+                info.firstEndPoint = model;
+            }
+            try {
+                if (model.eContainer() instanceof EndpointDiagram) {
+                    ArrayList<RecipientListEndPointOutputConnector> connectors = new ArrayList<RecipientListEndPointOutputConnector>();
+                    connectors.addAll(model.getOutputConnector());
 
-					IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-							.getActivePage().getEditorReferences();
-					for (int i = 0; i < editorReferences.length; i++) {
-						IEditorPart editor = editorReferences[i].getEditor(false);
+                    for (RecipientListEndPointOutputConnector outputConnector : connectors) {
+                        if (outputConnector.getOutgoingLink() != null) {
+                            if (outputConnector.getOutgoingLink().getTarget() != null) {
+                                EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink().getTarget().eContainer();
+                                EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance()
+                                        .getTransformer(esbNode);
+                                transformer.createSynapseObject(info, esbNode, endPointsList);
 
-						if (editor != null) {
-							editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
-						}
+                            }
+                        }
+                    }
+                } else {
 
-						if (editorPart != null) {
-							IEsbEditorInput input = (IEsbEditorInput) editorPart.getEditorInput();
-							IFile file = input.getXmlResource();
-							activeProject = file.getProject();
-						}
-					}
+                    IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+                            .getActivePage().getEditorReferences();
+                    for (int i = 0; i < editorReferences.length; i++) {
+                        IEditorPart editor = editorReferences[i].getEditor(false);
 
-					String endpointName = (String) model.getName();
-					IPath location = new Path("src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
-					IFile file = activeProject.getFile(location);
+                        if (editor != null) {
+                            editorPart = editor.getSite().getWorkbenchWindow().getActivePage().getActiveEditor();
+                        }
 
-					final String source = FileUtils.getContentAsString(file.getContents());
+                        if (editorPart != null) {
+                            IEsbEditorInput input = (IEsbEditorInput) editorPart.getEditorInput();
+                            IFile file = input.getXmlResource();
+                            activeProject = file.getProject();
+                        }
+                    }
 
-					OMElement element = AXIOMUtil.stringToOM(source);
-					Properties properties = new Properties();
-					properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
-					recipientList = (RecipientListEndpoint) EndpointFactory.getEndpointFromElement(element, false,
-							properties);
+                    String endpointName = (String) model.getName();
+                    IPath location = new Path(
+                            "src/main/synapse-config/complex-endpoints" + "/" + endpointName + ".xml");
+                    IFile file = activeProject.getFile(location);
 
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+                    final String source = FileUtils.getContentAsString(file.getContents());
 
-		// Serialize the parameters
-		saveProperties(model, recipientList);
-		return recipientList;
-	}
+                    OMElement element = AXIOMUtil.stringToOM(source);
+                    Properties properties = new Properties();
+                    properties.put(WSDLEndpointFactory.SKIP_WSDL_PARSING, "true");
+                    recipientList = (RecipientListEndpoint) EndpointFactory.getEndpointFromElement(element, false,
+                            properties);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Serialize the parameters
+        saveProperties(model, recipientList);
+        return recipientList;
+    }
 
 }

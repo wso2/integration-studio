@@ -51,54 +51,54 @@ public class ScriptMediatorExtFactory extends ScriptMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	Mediator mediator;
+        Mediator mediator;
 
-	OMAttribute keyAtt = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
-	OMAttribute langAtt = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "language"));
-	OMAttribute functionAtt = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "function"));
+        OMAttribute keyAtt = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
+        OMAttribute langAtt = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "language"));
+        OMAttribute functionAtt = omElement.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "function"));
 
-	Map<Value, Object> includeKeysMap = getIncludeKeysMap(omElement);
+        Map<Value, Object> includeKeysMap = getIncludeKeysMap(omElement);
 
-	if (keyAtt != null && langAtt != null) {
+        if (keyAtt != null && langAtt != null) {
 
-	    ValueFactory keyFac = new ValueFactory();
-	    Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
+            ValueFactory keyFac = new ValueFactory();
+            Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, omElement);
 
-	    String functionName = (functionAtt == null ? null : functionAtt.getAttributeValue());
-	    mediator = new ScriptMediator(langAtt.getAttributeValue(), includeKeysMap, generatedKey, functionName,
-		    null);
-	} else if (langAtt != null) {
-	    mediator = new ScriptMediator(langAtt.getAttributeValue(), omElement.getText(), null);
-	} else {
-	    mediator = new ScriptMediator("javascript", omElement.getText(), null);
-	}
+            String functionName = (functionAtt == null ? null : functionAtt.getAttributeValue());
+            mediator = new ScriptMediator(langAtt.getAttributeValue(), includeKeysMap, generatedKey, functionName,
+                    null);
+        } else if (langAtt != null) {
+            mediator = new ScriptMediator(langAtt.getAttributeValue(), omElement.getText(), null);
+        } else {
+            mediator = new ScriptMediator("javascript", omElement.getText(), null);
+        }
 
-	processAuditStatus(mediator, omElement);
+        processAuditStatus(mediator, omElement);
 
-	return mediator;
+        return mediator;
     }
 
     private Map<Value, Object> getIncludeKeysMap(OMElement elem) {
 
-	Map<Value, Object> includeKeysMap = new LinkedHashMap<Value, Object>();
+        Map<Value, Object> includeKeysMap = new LinkedHashMap<Value, Object>();
 
-	Iterator itr = elem.getChildrenWithName(INCLUDE_Q);
+        Iterator itr = elem.getChildrenWithName(INCLUDE_Q);
 
-	while (itr.hasNext()) {
-	    OMElement includeElem = (OMElement) itr.next();
-	    OMAttribute key = includeElem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
+        while (itr.hasNext()) {
+            OMElement includeElem = (OMElement) itr.next();
+            OMAttribute key = includeElem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
 
-	    ValueFactory keyFac = new ValueFactory();
+            ValueFactory keyFac = new ValueFactory();
 
-	    Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, includeElem);
+            Value generatedKey = keyFac.createValue(XMLConfigConstants.KEY, includeElem);
 
-	    if (key != null) {
-		includeKeysMap.put(generatedKey, null);
-	    }
+            if (key != null) {
+                includeKeysMap.put(generatedKey, null);
+            }
 
-	}
+        }
 
-	return includeKeysMap;
+        return includeKeysMap;
     }
 
 }

@@ -52,349 +52,337 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource;
 
 public class ConfigureValidateResourceDialog extends Dialog {
 
-	private Table resourcesTable;
-	
-	private Button addBtn;
+    private Table resourcesTable;
 
-	private Button removeBtn;
-	
-	private TransactionalEditingDomain editingDomain;
+    private Button addBtn;
 
-	private ValidateMediator validateMediator;
-	
-	private CompoundCommand resultCommand;
-	
-	private TableEditor locationEditor;
-	
-	private TableEditor keyPropertyEditor;
-	
-	private Text txtLocation;
-	
-	private PropertyText keyPropertyText;
-	
-	public ConfigureValidateResourceDialog(Shell parentShell,
-			ValidateMediator validateMediator) {
-		super(parentShell);
-		this.validateMediator = validateMediator;
-		this.editingDomain = TransactionUtil.getEditingDomain(validateMediator);
-	}
-	
-	protected Control createDialogArea(Composite parent){
-		
-		Composite container = (Composite) super.createDialogArea(parent);
-		container.setSize(SWT.DEFAULT, 1000);
+    private Button removeBtn;
 
-		// Set layout for the main container
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
+    private TransactionalEditingDomain editingDomain;
 
-		// setting up the resource table
-		resourcesTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION
-				| SWT.HIDE_SELECTION);
+    private ValidateMediator validateMediator;
 
-		TableColumn location = new TableColumn(resourcesTable, SWT.LEFT);
-		TableColumn staticKey = new TableColumn(resourcesTable, SWT.LEFT);
-		
-		location.setText("Location");
-		location.setWidth(150);
-		
-		staticKey.setText("Key");
-		staticKey.setWidth(150);
+    private CompoundCommand resultCommand;
 
-		resourcesTable.setHeaderVisible(true);
-		resourcesTable.setLinesVisible(true);
+    private TableEditor locationEditor;
 
-		addBtn = new Button(container, SWT.NONE);
-		addBtn.setText("Add...");
-		addBtn.addListener(SWT.Selection, new Listener() {
+    private TableEditor keyPropertyEditor;
 
-			public void handleEvent(Event event) {
+    private Text txtLocation;
 
-				TableItem item = bindResource(EsbFactory.eINSTANCE.createValidateResource());
-				resourcesTable.select(resourcesTable.indexOf(item));
+    private PropertyText keyPropertyText;
 
-			}
-		});
+    public ConfigureValidateResourceDialog(Shell parentShell, ValidateMediator validateMediator) {
+        super(parentShell);
+        this.validateMediator = validateMediator;
+        this.editingDomain = TransactionUtil.getEditingDomain(validateMediator);
+    }
 
-		removeBtn = new Button(container, SWT.NONE);
-		removeBtn.setText("Remove");
-		removeBtn.addListener(SWT.Selection, new Listener() {
+    protected Control createDialogArea(Composite parent) {
 
-			public void handleEvent(Event event) {
-				int selectedIndex = resourcesTable.getSelectionIndex();
-				if (-1 != selectedIndex) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        container.setSize(SWT.DEFAULT, 1000);
 
-					initTableEditor(locationEditor, resourcesTable);
-					initTableEditor(keyPropertyEditor, resourcesTable);
-					
-					unbindResource(selectedIndex);
+        // Set layout for the main container
+        FormLayout mainLayout = new FormLayout();
+        mainLayout.marginHeight = 5;
+        mainLayout.marginWidth = 5;
+        container.setLayout(mainLayout);
 
-					// Select the next available candidate for deletion.
-					if (selectedIndex < resourcesTable.getItemCount()) {
-						resourcesTable.select(selectedIndex);
-					} else {
-						resourcesTable.select(selectedIndex - 1);
-					}
-				}
+        // setting up the resource table
+        resourcesTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
 
-			}
-		});
+        TableColumn location = new TableColumn(resourcesTable, SWT.LEFT);
+        TableColumn staticKey = new TableColumn(resourcesTable, SWT.LEFT);
 
-		Listener policyEntryTableListner = new Listener() {
+        location.setText("Location");
+        location.setWidth(150);
 
-			public void handleEvent(Event evt) {
-				if (null != evt.item) {
-					if (evt.item instanceof TableItem) {
+        staticKey.setText("Key");
+        staticKey.setWidth(150);
 
-						TableItem item = (TableItem) evt.item;
-						editItem(item);
+        resourcesTable.setHeaderVisible(true);
+        resourcesTable.setLinesVisible(true);
 
-					}
-				}
-			}
-		};
+        addBtn = new Button(container, SWT.NONE);
+        addBtn.setText("Add...");
+        addBtn.addListener(SWT.Selection, new Listener() {
 
-		resourcesTable.addListener(SWT.Selection, policyEntryTableListner);
+            public void handleEvent(Event event) {
 
-		for (ValidateResource resource : validateMediator.getResources()) {
+                TableItem item = bindResource(EsbFactory.eINSTANCE.createValidateResource());
+                resourcesTable.select(resourcesTable.indexOf(item));
 
-			bindResource(resource);
-		}
+            }
+        });
 
-		setupTableEditor(resourcesTable);
+        removeBtn = new Button(container, SWT.NONE);
+        removeBtn.setText("Remove");
+        removeBtn.addListener(SWT.Selection, new Listener() {
 
-		// Layout related configurations
-		FormData schemaTableLayoutData = new FormData(SWT.DEFAULT, 150);
-		schemaTableLayoutData.top = new FormAttachment(0, 0);
-		schemaTableLayoutData.left = new FormAttachment(0, 0);
-		resourcesTable.setLayoutData(schemaTableLayoutData);
+            public void handleEvent(Event event) {
+                int selectedIndex = resourcesTable.getSelectionIndex();
+                if (-1 != selectedIndex) {
 
-		FormData frmData = new FormData();
-		frmData.left = new FormAttachment(resourcesTable, 5);
-		frmData.right = new FormAttachment(100, 0);
-		addBtn.setLayoutData(frmData);
+                    initTableEditor(locationEditor, resourcesTable);
+                    initTableEditor(keyPropertyEditor, resourcesTable);
 
-		frmData = new FormData();
-		frmData.top = new FormAttachment(addBtn, 5);
-		frmData.left = new FormAttachment(resourcesTable, 5);
-		removeBtn.setLayoutData(frmData);
+                    unbindResource(selectedIndex);
 
-		return parent;
-		
-	}
-	
-	private TableItem bindResource(ValidateResource resource) {
+                    // Select the next available candidate for deletion.
+                    if (selectedIndex < resourcesTable.getItemCount()) {
+                        resourcesTable.select(selectedIndex);
+                    } else {
+                        resourcesTable.select(selectedIndex - 1);
+                    }
+                }
 
-		TableItem item = new TableItem(resourcesTable, SWT.NONE);
-		item.setText(new String[] {resource.getLocation(),resource.getKey().getKeyValue() });
-		item.setData(resource);
-		item.setData("staticKey",EsbFactory.eINSTANCE.copyRegistryKeyProperty(resource.getKey()));
-		return item;
-	}
-	
-	private void unbindResource(int selectedIndex) {
+            }
+        });
 
-		TableItem item = resourcesTable.getItem(selectedIndex);
+        Listener policyEntryTableListner = new Listener() {
 
-		ValidateResource resource = (ValidateResource) item.getData();
+            public void handleEvent(Event evt) {
+                if (null != evt.item) {
+                    if (evt.item instanceof TableItem) {
 
-		if (null != resource.eContainer()) {
+                        TableItem item = (TableItem) evt.item;
+                        editItem(item);
 
-			RemoveCommand reoveCmd = new RemoveCommand(editingDomain,
-					validateMediator,
-					EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES, resource);
-			getResultCommand().append(reoveCmd);
+                    }
+                }
+            }
+        };
 
-		}
+        resourcesTable.addListener(SWT.Selection, policyEntryTableListner);
 
-		resourcesTable.remove(resourcesTable.indexOf(item));
+        for (ValidateResource resource : validateMediator.getResources()) {
 
-	}
-	
-	private CompoundCommand getResultCommand() {
-		
-		if (null == resultCommand) {
-			resultCommand = new CompoundCommand();
-		}
-		return resultCommand;
-	}
-	
-	private void editItem(final TableItem item) {
-		
-		locationEditor = initTableEditor(locationEditor, item.getParent());
-		txtLocation = new Text(item.getParent(), SWT.NONE);
-		txtLocation.setText(item.getText(0));
-		locationEditor.setEditor(txtLocation, item, 0);
-		item.getParent().redraw();
-		item.getParent().layout();
-		txtLocation.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				item.setText(0,txtLocation.getText());
-			}
-		});
-		
-		RegistryKeyProperty staticKey = (RegistryKeyProperty)item.getData("staticKey"); 
-		keyPropertyEditor = initTableEditor(keyPropertyEditor, item.getParent());
-		
-		keyPropertyText = new PropertyText(item.getParent(), SWT.NONE);
-		
-		keyPropertyText.addProperties(staticKey);
-		keyPropertyEditor.setEditor(keyPropertyText, item, 1);
-		item.getParent().redraw();
-		item.getParent().layout();
-		
-		keyPropertyText.addModifyListener(new ModifyListener() {		
-			public void modifyText(ModifyEvent e) {
-				item.setText(1, keyPropertyText.getText());
-				Object property = keyPropertyText.getProperty();
-				if(property instanceof RegistryKeyProperty){
-					item.setData("staticKey",(RegistryKeyProperty)property);
-				} 
-			}
-		});
-		
-		/*item.setText(1,keyPropertyText.getText());
-		Object property = keyPropertyText.getProperty();
+            bindResource(resource);
+        }
 
-		if(property instanceof RegistryKeyProperty){
-			item.setData("staticKey",(RegistryKeyProperty)property);
-		}
-		
-		keyPropertyEditor.setEditor(keyPropertyText, item, 1);*/
-	}
-	
-	private TableEditor initTableEditor(TableEditor editor, Table table) {
-		if (null != editor) {
-			Control lastCtrl = editor.getEditor();
-			if (null != lastCtrl) {
-				lastCtrl.dispose();
-			}
-		}
-		editor = new TableEditor(table);
-		editor.horizontalAlignment = SWT.LEFT;
-		editor.grabHorizontal = true;
-		return editor;
-	}
-	
-	
-	private void setupTableEditor(final Table table) {
-		final TableEditor cellEditor = new TableEditor(table);
-		cellEditor.grabHorizontal = true;
-		cellEditor.minimumWidth = 50;
-		table.addMouseListener(new MouseAdapter() {
-			/**
-			 * Setup a new cell editor control at double click event.
-			 */
-			public void mouseDoubleClick(MouseEvent e) {
-				// Dispose the old editor control (if one is setup).
-				Control oldEditorControl = cellEditor.getEditor();
-				if (null != oldEditorControl)
-					oldEditorControl.dispose();
+        setupTableEditor(resourcesTable);
 
-				// Mouse location.
-				Point mouseLocation = new Point(e.x, e.y);
+        // Layout related configurations
+        FormData schemaTableLayoutData = new FormData(SWT.DEFAULT, 150);
+        schemaTableLayoutData.top = new FormAttachment(0, 0);
+        schemaTableLayoutData.left = new FormAttachment(0, 0);
+        resourcesTable.setLayoutData(schemaTableLayoutData);
 
-				// Grab the selected row.
-				TableItem item = (TableItem) table.getItem(mouseLocation);
-				if (null == item)
-					return;
+        FormData frmData = new FormData();
+        frmData.left = new FormAttachment(resourcesTable, 5);
+        frmData.right = new FormAttachment(100, 0);
+        addBtn.setLayoutData(frmData);
 
-				// Determine which column was selected.
-				int selectedColumn = -1;
-				for (int i = 0, n = table.getColumnCount(); i < n; i++) {
-					if (item.getBounds(i).contains(mouseLocation)) {
-						selectedColumn = i;
-						break;
-					}
-				}
+        frmData = new FormData();
+        frmData.top = new FormAttachment(addBtn, 5);
+        frmData.left = new FormAttachment(resourcesTable, 5);
+        removeBtn.setLayoutData(frmData);
 
-				// Setup a new editor control.
-				if (-1 != selectedColumn) {
-					Text editorControl = new Text(table, SWT.NONE);
-					final int editorControlColumn = selectedColumn;
-					editorControl.setText(item.getText(selectedColumn));
-					editorControl.addModifyListener(new ModifyListener() {
-						public void modifyText(ModifyEvent e) {
-							Text text = (Text) cellEditor.getEditor();
-							cellEditor.getItem().setText(editorControlColumn,
-									text.getText());
-						}
-					});
-					editorControl.selectAll();
-					editorControl.setFocus();
-					cellEditor.setEditor(editorControl, item, selectedColumn);
-				}
-			}
+        return parent;
 
-			/**
-			 * Dispose cell editor control at mouse down (otherwise the control
-			 * keep showing).
-			 */
-			public void mouseDown(MouseEvent e) {
-				Control oldEditorControl = cellEditor.getEditor();
-				if (null != oldEditorControl)
-					oldEditorControl.dispose();
-			}
-		});
-	}
-	
-	public void okPressed() {
-		
-		for(TableItem item : resourcesTable.getItems() ){
-			
-			ValidateResource resource = (ValidateResource)item.getData();
-			RegistryKeyProperty staticKey = (RegistryKeyProperty)item.getData("staticKey"); 
-			
-			if(resource.eContainer() == null){
-				
-				resource.setLocation(item.getText(0));
-				
-				resource.setKey(staticKey);
-				
-				AddCommand addCmd = new AddCommand(editingDomain,
-						validateMediator,
-						EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES,
-						resource);
-				getResultCommand().append(addCmd);
-				
-			}else{
-				
-				if(!item.getText(0).equals(resource.getLocation())){
-					SetCommand setTypeCmd = new SetCommand(
-							editingDomain,
-							resource,
-							EsbPackage.Literals.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION,
-							item.getText(0));
-					getResultCommand().append(setTypeCmd);
-					
-				}
-				
-				if(!item.getText(1).equals(resource.getKey().getKeyValue())){
-					
-					SetCommand setTypeCmd = new SetCommand(
-							editingDomain,
-							resource,
-							EsbPackage.Literals.ABSTRACT_LOCATION_KEY_RESOURCE__KEY,
-							staticKey);
-					getResultCommand().append(setTypeCmd);
-				}
-			}
-		}
-		
-		// Apply changes.
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		}
+    }
 
-		super.okPressed();
-	}
-	
-	
-	protected void configureShell(Shell shell) {
-		super.configureShell(shell);
-		shell.setText("Configure Resources.");
-	}
-	
+    private TableItem bindResource(ValidateResource resource) {
+
+        TableItem item = new TableItem(resourcesTable, SWT.NONE);
+        item.setText(new String[] { resource.getLocation(), resource.getKey().getKeyValue() });
+        item.setData(resource);
+        item.setData("staticKey", EsbFactory.eINSTANCE.copyRegistryKeyProperty(resource.getKey()));
+        return item;
+    }
+
+    private void unbindResource(int selectedIndex) {
+
+        TableItem item = resourcesTable.getItem(selectedIndex);
+
+        ValidateResource resource = (ValidateResource) item.getData();
+
+        if (null != resource.eContainer()) {
+
+            RemoveCommand reoveCmd = new RemoveCommand(editingDomain, validateMediator,
+                    EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES, resource);
+            getResultCommand().append(reoveCmd);
+
+        }
+
+        resourcesTable.remove(resourcesTable.indexOf(item));
+
+    }
+
+    private CompoundCommand getResultCommand() {
+
+        if (null == resultCommand) {
+            resultCommand = new CompoundCommand();
+        }
+        return resultCommand;
+    }
+
+    private void editItem(final TableItem item) {
+
+        locationEditor = initTableEditor(locationEditor, item.getParent());
+        txtLocation = new Text(item.getParent(), SWT.NONE);
+        txtLocation.setText(item.getText(0));
+        locationEditor.setEditor(txtLocation, item, 0);
+        item.getParent().redraw();
+        item.getParent().layout();
+        txtLocation.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent e) {
+                item.setText(0, txtLocation.getText());
+            }
+        });
+
+        RegistryKeyProperty staticKey = (RegistryKeyProperty) item.getData("staticKey");
+        keyPropertyEditor = initTableEditor(keyPropertyEditor, item.getParent());
+
+        keyPropertyText = new PropertyText(item.getParent(), SWT.NONE);
+
+        keyPropertyText.addProperties(staticKey);
+        keyPropertyEditor.setEditor(keyPropertyText, item, 1);
+        item.getParent().redraw();
+        item.getParent().layout();
+
+        keyPropertyText.addModifyListener(new ModifyListener() {
+            public void modifyText(ModifyEvent e) {
+                item.setText(1, keyPropertyText.getText());
+                Object property = keyPropertyText.getProperty();
+                if (property instanceof RegistryKeyProperty) {
+                    item.setData("staticKey", (RegistryKeyProperty) property);
+                }
+            }
+        });
+
+        /*
+         * item.setText(1,keyPropertyText.getText());
+         * Object property = keyPropertyText.getProperty();
+         * 
+         * if(property instanceof RegistryKeyProperty){
+         * item.setData("staticKey",(RegistryKeyProperty)property);
+         * }
+         * 
+         * keyPropertyEditor.setEditor(keyPropertyText, item, 1);
+         */
+    }
+
+    private TableEditor initTableEditor(TableEditor editor, Table table) {
+        if (null != editor) {
+            Control lastCtrl = editor.getEditor();
+            if (null != lastCtrl) {
+                lastCtrl.dispose();
+            }
+        }
+        editor = new TableEditor(table);
+        editor.horizontalAlignment = SWT.LEFT;
+        editor.grabHorizontal = true;
+        return editor;
+    }
+
+    private void setupTableEditor(final Table table) {
+        final TableEditor cellEditor = new TableEditor(table);
+        cellEditor.grabHorizontal = true;
+        cellEditor.minimumWidth = 50;
+        table.addMouseListener(new MouseAdapter() {
+            /**
+             * Setup a new cell editor control at double click event.
+             */
+            public void mouseDoubleClick(MouseEvent e) {
+                // Dispose the old editor control (if one is setup).
+                Control oldEditorControl = cellEditor.getEditor();
+                if (null != oldEditorControl)
+                    oldEditorControl.dispose();
+
+                // Mouse location.
+                Point mouseLocation = new Point(e.x, e.y);
+
+                // Grab the selected row.
+                TableItem item = (TableItem) table.getItem(mouseLocation);
+                if (null == item)
+                    return;
+
+                // Determine which column was selected.
+                int selectedColumn = -1;
+                for (int i = 0, n = table.getColumnCount(); i < n; i++) {
+                    if (item.getBounds(i).contains(mouseLocation)) {
+                        selectedColumn = i;
+                        break;
+                    }
+                }
+
+                // Setup a new editor control.
+                if (-1 != selectedColumn) {
+                    Text editorControl = new Text(table, SWT.NONE);
+                    final int editorControlColumn = selectedColumn;
+                    editorControl.setText(item.getText(selectedColumn));
+                    editorControl.addModifyListener(new ModifyListener() {
+                        public void modifyText(ModifyEvent e) {
+                            Text text = (Text) cellEditor.getEditor();
+                            cellEditor.getItem().setText(editorControlColumn, text.getText());
+                        }
+                    });
+                    editorControl.selectAll();
+                    editorControl.setFocus();
+                    cellEditor.setEditor(editorControl, item, selectedColumn);
+                }
+            }
+
+            /**
+             * Dispose cell editor control at mouse down (otherwise the control
+             * keep showing).
+             */
+            public void mouseDown(MouseEvent e) {
+                Control oldEditorControl = cellEditor.getEditor();
+                if (null != oldEditorControl)
+                    oldEditorControl.dispose();
+            }
+        });
+    }
+
+    public void okPressed() {
+
+        for (TableItem item : resourcesTable.getItems()) {
+
+            ValidateResource resource = (ValidateResource) item.getData();
+            RegistryKeyProperty staticKey = (RegistryKeyProperty) item.getData("staticKey");
+
+            if (resource.eContainer() == null) {
+
+                resource.setLocation(item.getText(0));
+
+                resource.setKey(staticKey);
+
+                AddCommand addCmd = new AddCommand(editingDomain, validateMediator,
+                        EsbPackage.Literals.VALIDATE_MEDIATOR__RESOURCES, resource);
+                getResultCommand().append(addCmd);
+
+            } else {
+
+                if (!item.getText(0).equals(resource.getLocation())) {
+                    SetCommand setTypeCmd = new SetCommand(editingDomain, resource,
+                            EsbPackage.Literals.ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION, item.getText(0));
+                    getResultCommand().append(setTypeCmd);
+
+                }
+
+                if (!item.getText(1).equals(resource.getKey().getKeyValue())) {
+
+                    SetCommand setTypeCmd = new SetCommand(editingDomain, resource,
+                            EsbPackage.Literals.ABSTRACT_LOCATION_KEY_RESOURCE__KEY, staticKey);
+                    getResultCommand().append(setTypeCmd);
+                }
+            }
+        }
+
+        // Apply changes.
+        if (getResultCommand().canExecute()) {
+            editingDomain.getCommandStack().execute(getResultCommand());
+        }
+
+        super.okPressed();
+    }
+
+    protected void configureShell(Shell shell) {
+        super.configureShell(shell);
+        shell.setText("Configure Resources.");
+    }
+
 }

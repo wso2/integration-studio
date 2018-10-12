@@ -19,76 +19,76 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom;
 import org.apache.synapse.message.processor.impl.AbstractMessageProcessor;
 
 public class DummyMessageProcessor extends AbstractMessageProcessor {
-	private String className;
+    private String className;
 
-	public String getClassName() {
-		return className;
-	}
+    public String getClassName() {
+        return className;
+    }
 
-	public void setClassName(String className) {
-		this.className = className;
-	}
+    public void setClassName(String className) {
+        this.className = className;
+    }
 
-	public boolean start() {
-		return false;
-		// TODO Auto-generated method stub
-		
-	}
+    public boolean start() {
+        return false;
+        // TODO Auto-generated method stub
 
-	public boolean stop() {
-		return false;
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	public void destroy() {
-		// TODO Auto-generated method stub
-		
-	}
+    public boolean stop() {
+        return false;
+        // TODO Auto-generated method stub
 
-	public boolean isDestroyed() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    }
 
-	public void setDestroyed() {
-		// TODO Auto-generated method stub
-		
-	}
+    public void destroy() {
+        // TODO Auto-generated method stub
 
-	public boolean activate() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    }
 
-	public boolean deactivate() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isDestroyed() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public boolean isDeactivated() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public void setDestroyed() {
+        // TODO Auto-generated method stub
 
-	public boolean isPaused() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    }
 
-	public void pauseService() {
-		// TODO Auto-generated method stub
-		
-	}
+    public boolean activate() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public void resumeService() {
-		// TODO Auto-generated method stub
-		
-	}
+    public boolean deactivate() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public void cleanupLocalResources() {
-		// TODO Auto-generated method stub
-		
-	}
+    public boolean isDeactivated() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    public boolean isPaused() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    public void pauseService() {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void resumeService() {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void cleanupLocalResources() {
+        // TODO Auto-generated method stub
+
+    }
 
 }

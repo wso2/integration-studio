@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediatorInputConnector;
  * @generated
  */
 public class SmooksMediatorInputConnectorImpl extends InputConnectorImpl implements SmooksMediatorInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SmooksMediatorInputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected SmooksMediatorInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.SMOOKS_MEDIATOR_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.SMOOKS_MEDIATOR_INPUT_CONNECTOR;
+    }
 
-} //SmooksMediatorInputConnectorImpl
+} // SmooksMediatorInputConnectorImpl

@@ -13,25 +13,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class XSLTResourcesPropertyDescriptor extends PropertyDescriptor {
 
-	public XSLTResourcesPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public XSLTResourcesPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				XSLTMediator xsltMediator = (XSLTMediator) object;
-				ConfigureXSLTMediatorDialog configDiag = new ConfigureXSLTMediatorDialog(
-						shell, xsltMediator,
-						ConfigureXSLTMediatorDialog.TAB_RESOURCES);
-				configDiag.open();
-				return null;
-			}
-		};
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                XSLTMediator xsltMediator = (XSLTMediator) object;
+                ConfigureXSLTMediatorDialog configDiag = new ConfigureXSLTMediatorDialog(shell, xsltMediator,
+                        ConfigureXSLTMediatorDialog.TAB_RESOURCES);
+                configDiag.open();
+                return null;
+            }
+        };
+    }
 
 }

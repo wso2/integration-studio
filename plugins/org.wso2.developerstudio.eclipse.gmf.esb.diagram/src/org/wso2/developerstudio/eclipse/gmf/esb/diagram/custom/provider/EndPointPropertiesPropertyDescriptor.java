@@ -33,24 +33,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
  */
 public class EndPointPropertiesPropertyDescriptor extends PropertyDescriptor {
 
-	public EndPointPropertiesPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public EndPointPropertiesPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				EndPoint endPoint = (EndPoint) object;
-				ConfigureEndPointPropertiesDialog propertyDialog = new ConfigureEndPointPropertiesDialog(
-						shell, endPoint, TransactionUtil.getEditingDomain(endPoint));
-				propertyDialog.setBlockOnOpen(true);
-				propertyDialog.open();
-				return null;
-			}
-		};
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                EndPoint endPoint = (EndPoint) object;
+                ConfigureEndPointPropertiesDialog propertyDialog = new ConfigureEndPointPropertiesDialog(shell,
+                        endPoint, TransactionUtil.getEditingDomain(endPoint));
+                propertyDialog.setBlockOnOpen(true);
+                propertyDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

@@ -33,8 +33,8 @@ import org.apache.synapse.inbound.InboundEndpointConstants;
  */
 public class InboundEndpointExtFactory {
 
-	private static final QName ATT_TRACE = new QName("trace");
-	private static final QName ATT_STAT = new QName("statistics");
+    private static final QName ATT_TRACE = new QName("trace");
+    private static final QName ATT_STAT = new QName("statistics");
     private static final QName ATT_NAME = new QName(InboundEndpointConstants.INBOUND_ENDPOINT_NAME);
     private static final QName ATT_PROTOCOL = new QName(InboundEndpointConstants.INBOUND_ENDPOINT_PROTOCOL);
     private static final QName ATT_ENDPOINT_CLASS = new QName(InboundEndpointConstants.INBOUND_ENDPOINT_CLASS);
@@ -44,7 +44,7 @@ public class InboundEndpointExtFactory {
     private static final String XML_EXTENTION = ".xml";
     private static final String INBOUND_ENDPOINT_NAME_ID = "inbound.endpoint.name";
     private static final String EMPTY_STRING = "";
-	private static final Object ENABLE_TAG = "enable";
+    private static final Object ENABLE_TAG = "enable";
 
     /**
      * This method create an {@link InboundEndpoint} instance from given {@link OMElement}
@@ -61,16 +61,16 @@ public class InboundEndpointExtFactory {
         } else {
             inboundEndpoint.setName("");
         }
-        
+
         inboundEndpoint.configure(new AspectConfiguration(inboundEndpointElem.getAttributeValue(ATT_NAME)));
-		if (inboundEndpointElem.getAttributeValue(ATT_TRACE) != null
-				&& ENABLE_TAG.equals(inboundEndpointElem.getAttributeValue(ATT_TRACE))) {
-			inboundEndpoint.getAspectConfiguration().enableStatistics();
-		}
-		if (inboundEndpointElem.getAttributeValue(ATT_STAT) != null
-				&& ENABLE_TAG.equals(inboundEndpointElem.getAttributeValue(ATT_STAT))) {
-			inboundEndpoint.getAspectConfiguration().enableTracing();
-		}
+        if (inboundEndpointElem.getAttributeValue(ATT_TRACE) != null
+                && ENABLE_TAG.equals(inboundEndpointElem.getAttributeValue(ATT_TRACE))) {
+            inboundEndpoint.getAspectConfiguration().enableStatistics();
+        }
+        if (inboundEndpointElem.getAttributeValue(ATT_STAT) != null
+                && ENABLE_TAG.equals(inboundEndpointElem.getAttributeValue(ATT_STAT))) {
+            inboundEndpoint.getAspectConfiguration().enableTracing();
+        }
         if (inboundEndpointElem.getAttributeValue(ATT_PROTOCOL) != null) {
             inboundEndpoint.setProtocol(inboundEndpointElem.getAttributeValue(ATT_PROTOCOL));
         }
@@ -95,8 +95,8 @@ public class InboundEndpointExtFactory {
         }
 
         // Set parameters
-        OMElement parametersElt = inboundEndpointElem.getFirstChildWithName(new QName(
-                XMLConfigConstants.SYNAPSE_NAMESPACE, InboundEndpointConstants.INBOUND_ENDPOINT_PARAMETERS));
+        OMElement parametersElt = inboundEndpointElem.getFirstChildWithName(
+                new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, InboundEndpointConstants.INBOUND_ENDPOINT_PARAMETERS));
 
         if (parametersElt != null) {
             Iterator<?> parameters = parametersElt.getChildrenWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE,
@@ -104,10 +104,10 @@ public class InboundEndpointExtFactory {
 
             while (parameters.hasNext()) {
                 OMElement parameter = (OMElement) parameters.next();
-                String paramName = parameter.getAttributeValue(new QName(
-                        InboundEndpointConstants.INBOUND_ENDPOINT_PARAMETER_NAME));
-                String paramKey = parameter.getAttributeValue(new QName(
-                        InboundEndpointConstants.INBOUND_ENDPOINT_PARAMETER_KEY));
+                String paramName = parameter
+                        .getAttributeValue(new QName(InboundEndpointConstants.INBOUND_ENDPOINT_PARAMETER_NAME));
+                String paramKey = parameter
+                        .getAttributeValue(new QName(InboundEndpointConstants.INBOUND_ENDPOINT_PARAMETER_KEY));
 
                 if (paramKey != null) {
                     inboundEndpoint.addParameter(paramName, EMPTY_STRING, paramKey);
@@ -118,8 +118,9 @@ public class InboundEndpointExtFactory {
                 }
             }
         }
-        inboundEndpoint.setFileName(inboundEndpointElem.getAttributeValue(new QName(
-                InboundEndpointConstants.INBOUND_ENDPOINT_NAME)) + XML_EXTENTION);
+        inboundEndpoint.setFileName(
+                inboundEndpointElem.getAttributeValue(new QName(InboundEndpointConstants.INBOUND_ENDPOINT_NAME))
+                        + XML_EXTENTION);
         return inboundEndpoint;
     }
 }

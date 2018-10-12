@@ -85,288 +85,288 @@ import org.wso2.developerstudio.eclipse.registry.core.interfaces.IRegistryFile;
  */
 public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
-	private static final String DATAMAPPER_FILTER_TYPE = "application/datamapper"; //$NON-NLS-1$
-	private static final String INPUT_AVROSCHEMA = "_inputSchema.json"; //$NON-NLS-1$
-	private static final String OUTPUT_AVROSCHEMA = "_outputSchema.json"; //$NON-NLS-1$
-	private static final String G_REG_PATH_PREFIX = "/_system/governance/"; //$NON-NLS-1$
-	private static final String C_REG_PATH_PREFIX = "/_system/config/"; //$NON-NLS-1$
-	private static final String G_REG_PREFIX = "gov:%s"; //$NON-NLS-1$
-	private static final String C_REG_PREFIX = "conf:%s"; //$NON-NLS-1$
-	private static final String DATAMAPPER_CONFIG_EXT = ".dmc"; //$NON-NLS-1$
-	private static final String WARNING_TITLE = "Information";
-	private static final String WARNING_MESSAGE_1 = "The resource ";
-	private static final String WARNING_MESSAGE_2 = " could not be found in the workspace. Do you like to create a new configuration?";
-	private Class<?>[] type;
-	private Map<String, IDeveloperStudioElement> importListMap;
-	
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 3761;
+    private static final String DATAMAPPER_FILTER_TYPE = "application/datamapper"; //$NON-NLS-1$
+    private static final String INPUT_AVROSCHEMA = "_inputSchema.json"; //$NON-NLS-1$
+    private static final String OUTPUT_AVROSCHEMA = "_outputSchema.json"; //$NON-NLS-1$
+    private static final String G_REG_PATH_PREFIX = "/_system/governance/"; //$NON-NLS-1$
+    private static final String C_REG_PATH_PREFIX = "/_system/config/"; //$NON-NLS-1$
+    private static final String G_REG_PREFIX = "gov:%s"; //$NON-NLS-1$
+    private static final String C_REG_PREFIX = "conf:%s"; //$NON-NLS-1$
+    private static final String DATAMAPPER_CONFIG_EXT = ".dmc"; //$NON-NLS-1$
+    private static final String WARNING_TITLE = "Information";
+    private static final String WARNING_MESSAGE_1 = "The resource ";
+    private static final String WARNING_MESSAGE_2 = " could not be found in the workspace. Do you like to create a new configuration?";
+    private Class<?>[] type;
+    private Map<String, IDeveloperStudioElement> importListMap;
 
-	/**
-	 * @generated
-	 */
-	protected IFigure contentPane;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 3761;
 
-	/**
-	 * @generated
-	 */
-	public DataMapperMediatorEditPart(View view) {
-		super(view);
-		
-	}
-	
-	
+    /**
+     * @generated
+     */
+    protected IFigure contentPane;
 
-	/**
-	 * @generated NOT
-	 */
-	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				EsbVisualIDRegistry.TYPED_INSTANCE));
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DataMapperMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new DataMapperMediatorCanonicalEditPolicy());
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+    /**
+     * @generated
+     */
+    public DataMapperMediatorEditPart(View view) {
+        super(view);
 
-		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenSeparatelyEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-	}
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected LayoutEditPolicy createLayoutEditPolicy() {
-		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
+    /**
+     * @generated NOT
+     */
+    protected void createDefaultEditPolicies() {
+        installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+                new CreationEditPolicyWithCustomReparent(EsbVisualIDRegistry.TYPED_INSTANCE));
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DataMapperMediatorItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+        installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new DataMapperMediatorCanonicalEditPolicy());
+        installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 
-			protected EditPolicy createChildEditPolicy(EditPart child) {
-				View childView = (View) child.getModel();
-				switch (EsbVisualIDRegistry.getVisualID(childView)) {
-				case DataMapperMediatorInputConnectorEditPart.VISUAL_ID:
-				case DataMapperMediatorOutputConnectorEditPart.VISUAL_ID:
-					return new BorderItemSelectionEditPolicy();
-				}
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
-				if (result == null) {
-					result = new NonResizableEditPolicy();
-				}
-				return result;
-			}
+        // For handle Double click Event.
+        installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenSeparatelyEditPolicy());
+        // XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable
+        // editpolicies
+        // removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+    }
 
-			protected Command getMoveChildrenCommand(Request request) {
-				return null;
-			}
+    /**
+     * @generated NOT
+     */
+    protected LayoutEditPolicy createLayoutEditPolicy() {
+        org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
-			protected Command getCreateCommand(CreateRequest request) {
-				return null;
-			}
-		};
-		return lep;
-	}
+            protected EditPolicy createChildEditPolicy(EditPart child) {
+                View childView = (View) child.getModel();
+                switch (EsbVisualIDRegistry.getVisualID(childView)) {
+                case DataMapperMediatorInputConnectorEditPart.VISUAL_ID:
+                case DataMapperMediatorOutputConnectorEditPart.VISUAL_ID:
+                    return new BorderItemSelectionEditPolicy();
+                }
+                EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+                if (result == null) {
+                    result = new NonResizableEditPolicy();
+                }
+                return result;
+            }
 
-	/**
-	 * @generated NOT
-	 */
-	protected IFigure createNodeShape() {
-		return primaryShape = new DataMapperMediatorFigure(new Color(null, 243, 149, 0)) {
-			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
-				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
-					connectToMostSuitableElement();
-					reAllocate(rect);
-				}
-			};
-		};
-	}
+            protected Command getMoveChildrenCommand(Request request) {
+                return null;
+            }
 
-	/**
-	 * @generated
-	 */
-	public DataMapperMediatorFigure getPrimaryShape() {
-		return (DataMapperMediatorFigure) primaryShape;
-	}
+            protected Command getCreateCommand(CreateRequest request) {
+                return null;
+            }
+        };
+        return lep;
+    }
 
-	protected boolean addFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof DataMapperMediatorDescriptionEditPart) {
-			((DataMapperMediatorDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getDataMapperDescriptionLabel());
-			return true;
-		}
-		if (childEditPart instanceof DataMapperMediatorInputConnectorEditPart) {
-			IFigure borderItemFigure = ((DataMapperMediatorInputConnectorEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-					PositionConstants.WEST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-			return true;
-		}
-		if (childEditPart instanceof DataMapperMediatorOutputConnectorEditPart) {
-			IFigure borderItemFigure = ((DataMapperMediatorOutputConnectorEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
-					PositionConstants.EAST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
-			return true;
-		}
-		return false;
-	}
+    /**
+     * @generated NOT
+     */
+    protected IFigure createNodeShape() {
+        return primaryShape = new DataMapperMediatorFigure(new Color(null, 243, 149, 0)) {
+            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+                super.setBounds(rect);
+                if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+                    connectToMostSuitableElement();
+                    reAllocate(rect);
+                }
+            };
+        };
+    }
 
-	protected boolean removeFixedChild(EditPart childEditPart) {
-		if (childEditPart instanceof LogMediatorDescriptionEditPart) {
-			return true;
-		}
-		if (childEditPart instanceof DataMapperMediatorInputConnectorEditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((DataMapperMediatorInputConnectorEditPart) childEditPart).getFigure());
-			return true;
-		}
-		if (childEditPart instanceof DataMapperMediatorOutputConnectorEditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((DataMapperMediatorOutputConnectorEditPart) childEditPart).getFigure());
-			return true;
-		}
-		return false;
-	}
+    /**
+     * @generated
+     */
+    public DataMapperMediatorFigure getPrimaryShape() {
+        return (DataMapperMediatorFigure) primaryShape;
+    }
 
-	protected void addChildVisual(EditPart childEditPart, int index) {
-		if (addFixedChild(childEditPart)) {
-			return;
-		}
-		super.addChildVisual(childEditPart, -1);
-	}
+    protected boolean addFixedChild(EditPart childEditPart) {
+        if (childEditPart instanceof DataMapperMediatorDescriptionEditPart) {
+            ((DataMapperMediatorDescriptionEditPart) childEditPart)
+                    .setLabel(getPrimaryShape().getDataMapperDescriptionLabel());
+            return true;
+        }
+        if (childEditPart instanceof DataMapperMediatorInputConnectorEditPart) {
+            IFigure borderItemFigure = ((DataMapperMediatorInputConnectorEditPart) childEditPart).getFigure();
+            BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+                    PositionConstants.WEST, 0.5);
+            getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+            return true;
+        }
+        if (childEditPart instanceof DataMapperMediatorOutputConnectorEditPart) {
+            IFigure borderItemFigure = ((DataMapperMediatorOutputConnectorEditPart) childEditPart).getFigure();
+            BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+                    PositionConstants.EAST, 0.5);
+            getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+            return true;
+        }
+        return false;
+    }
 
-	protected void removeChildVisual(EditPart childEditPart) {
-		if (removeFixedChild(childEditPart)) {
-			return;
-		}
-		super.removeChildVisual(childEditPart);
-	}
+    protected boolean removeFixedChild(EditPart childEditPart) {
+        if (childEditPart instanceof LogMediatorDescriptionEditPart) {
+            return true;
+        }
+        if (childEditPart instanceof DataMapperMediatorInputConnectorEditPart) {
+            getBorderedFigure().getBorderItemContainer()
+                    .remove(((DataMapperMediatorInputConnectorEditPart) childEditPart).getFigure());
+            return true;
+        }
+        if (childEditPart instanceof DataMapperMediatorOutputConnectorEditPart) {
+            getBorderedFigure().getBorderItemContainer()
+                    .remove(((DataMapperMediatorOutputConnectorEditPart) childEditPart).getFigure());
+            return true;
+        }
+        return false;
+    }
 
-	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
-		if (editPart instanceof IBorderItemEditPart) {
-			return getBorderedFigure().getBorderItemContainer();
-		}
-		return getContentPane();
-	}
+    protected void addChildVisual(EditPart childEditPart, int index) {
+        if (addFixedChild(childEditPart)) {
+            return;
+        }
+        super.addChildVisual(childEditPart, -1);
+    }
 
-	protected NodeFigure createMainFigure() {
-		NodeFigure figure = createNodePlate();
-		figure.setLayoutManager(new ToolbarLayout(true));
-		IFigure shape = createNodeShape();
-		figure.add(shape);
-		contentPane = setupContentPane(shape);
-		return figure;
-	}
+    protected void removeChildVisual(EditPart childEditPart) {
+        if (removeFixedChild(childEditPart)) {
+            return;
+        }
+        super.removeChildVisual(childEditPart);
+    }
 
-	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
-	 * @generated
-	 */
-	protected IFigure setupContentPane(IFigure nodeShape) {
-		if (nodeShape.getLayoutManager() == null) {
-			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
-			layout.setSpacing(5);
-			nodeShape.setLayoutManager(layout);
-		}
-		return nodeShape; // use nodeShape itself as contentPane
-	}
+    protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
+        if (editPart instanceof IBorderItemEditPart) {
+            return getBorderedFigure().getBorderItemContainer();
+        }
+        return getContentPane();
+    }
 
-	/**
-	 * @generated
-	 */
-	public IFigure getContentPane() {
-		if (contentPane != null) {
-			return contentPane;
-		}
-		return super.getContentPane();
-	}
+    protected NodeFigure createMainFigure() {
+        NodeFigure figure = createNodePlate();
+        figure.setLayoutManager(new ToolbarLayout(true));
+        IFigure shape = createNodeShape();
+        figure.add(shape);
+        contentPane = setupContentPane(shape);
+        return figure;
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setForegroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setForegroundColor(color);
-		}
-	}
+    /**
+     * Default implementation treats passed figure as content pane.
+     * Respects layout one may have set for generated figure.
+     * 
+     * @param nodeShape instance of generated figure class
+     * @generated
+     */
+    protected IFigure setupContentPane(IFigure nodeShape) {
+        if (nodeShape.getLayoutManager() == null) {
+            ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
+            layout.setSpacing(5);
+            nodeShape.setLayoutManager(layout);
+        }
+        return nodeShape; // use nodeShape itself as contentPane
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setBackgroundColor(Color color) {
-		if (primaryShape != null) {
-			primaryShape.setBackgroundColor(color);
-		}
-	}
+    /**
+     * @generated
+     */
+    public IFigure getContentPane() {
+        if (contentPane != null) {
+            return contentPane;
+        }
+        return super.getContentPane();
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineWidth(int width) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineWidth(width);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setForegroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setForegroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated
-	 */
-	protected void setLineType(int style) {
-		if (primaryShape instanceof Shape) {
-			((Shape) primaryShape).setLineStyle(style);
-		}
-	}
+    /**
+     * @generated
+     */
+    protected void setBackgroundColor(Color color) {
+        if (primaryShape != null) {
+            primaryShape.setBackgroundColor(color);
+        }
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	public class DataMapperMediatorFigure extends EsbGraphicalShapeWithLabel {
+    /**
+     * @generated
+     */
+    protected void setLineWidth(int width) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineWidth(width);
+        }
+    }
 
-		/**
-		 * @generated
-		 */
-		private WrappingLabel fFigureDataMapperMediatorDescriptionFigure;
+    /**
+     * @generated
+     */
+    protected void setLineType(int style) {
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineStyle(style);
+        }
+    }
 
-		private WrappingLabel fFigureDataMapperDescriptionLabel;
+    /**
+     * @generated NOT
+     */
+    public class DataMapperMediatorFigure extends EsbGraphicalShapeWithLabel {
 
-		/**
-		 * @generated
-		 */
-		public DataMapperMediatorFigure(Color borderColor) {
-			super(borderColor, false);
-			this.setBackgroundColor(THIS_BACK);
-			createContents();
-		}
+        /**
+         * @generated
+         */
+        private WrappingLabel fFigureDataMapperMediatorDescriptionFigure;
 
-		/**
-		 * @generated NOT
-		 */
-		private void createContents() {
-			fFigureDataMapperDescriptionLabel = getPropertyNameLabel();
-		}
+        private WrappingLabel fFigureDataMapperDescriptionLabel;
 
-		/**
-		 * @generated
-		 */
-		public WrappingLabel getFigureDataMapperMediatorDescriptionFigure() {
-			return fFigureDataMapperMediatorDescriptionFigure;
-		}
+        /**
+         * @generated
+         */
+        public DataMapperMediatorFigure(Color borderColor) {
+            super(borderColor, false);
+            this.setBackgroundColor(THIS_BACK);
+            createContents();
+        }
 
-		public WrappingLabel getDataMapperDescriptionLabel() {
-			return fFigureDataMapperDescriptionLabel;
-		}
+        /**
+         * @generated NOT
+         */
+        private void createContents() {
+            fFigureDataMapperDescriptionLabel = getPropertyNameLabel();
+        }
 
-		public String getIconPath() {
-			return DATAMAPPER_MEDIATOR_ICON_PATH;
-		}
+        /**
+         * @generated
+         */
+        public WrappingLabel getFigureDataMapperMediatorDescriptionFigure() {
+            return fFigureDataMapperMediatorDescriptionFigure;
+        }
 
-		public String getNodeName() {
-			return Messages.DataMapperMediatorEditPart_NodeName;
-		}
+        public WrappingLabel getDataMapperDescriptionLabel() {
+            return fFigureDataMapperDescriptionLabel;
+        }
+
+        public String getIconPath() {
+            return DATAMAPPER_MEDIATOR_ICON_PATH;
+        }
+
+        public String getNodeName() {
+            return Messages.DataMapperMediatorEditPart_NodeName;
+        }
 
         public IFigure getToolTip() {
             if (StringUtils.isEmpty(toolTipMessage)) {
@@ -375,227 +375,232 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
             return new CustomToolTip().getCustomToolTipShape(toolTipMessage);
         }
 
-	}
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	static final Color THIS_BACK = new Color(null, 230, 230, 230);
+    /**
+     * @generated NOT
+     */
+    static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
-	public void openDataMapperDiagram() {
-		//FIXME have to revisit this, think on seperation
-		
-		NodeImpl eobject = ((NodeImpl)this.getModel());
-		final DataMapperMediatorImpl datamapper = (DataMapperMediatorImpl)eobject.getElement();
+    public void openDataMapperDiagram() {
+        // FIXME have to revisit this, think on seperation
 
-		Map<String, List<String>> filters = new HashMap<String, List<String>>();
-		String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
-		List<String> types = new ArrayList<String>();
-		types.add(DATAMAPPER_FILTER_TYPE); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
-		filters.put(mediaTypeKey, types);
-	
+        NodeImpl eobject = ((NodeImpl) this.getModel());
+        final DataMapperMediatorImpl datamapper = (DataMapperMediatorImpl) eobject.getElement();
 
-		if (datamapper.getConfiguration().getKeyValue().isEmpty()) {
-			
-			getCreateConfigurationDialog(datamapper, filters, null);
+        Map<String, List<String>> filters = new HashMap<String, List<String>>();
+        String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
+        List<String> types = new ArrayList<String>();
+        types.add(DATAMAPPER_FILTER_TYPE); // FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
+        filters.put(mediaTypeKey, types);
 
-		} else {
-			//Open the DataMapper Editor while double clicking on the DataMapperMediator	
-			String configName = getconfigName(datamapper);
-			setType(new Class[]{IRegistryFile.class});
-			IDeveloperStudioProviderData[] providerProjectsList = RegistryResourcesUtils.loadProviderProjectsList(type);
-			String configLocalPath =  getConfigurationLocalPath(providerProjectsList,filters,configName);
-			if(StringUtils.isNotEmpty(configLocalPath)){
-				openDataMapperEditor(configLocalPath);
-			}else{
-				MessageDialog.openInformation(Display.getCurrent().getActiveShell(), WARNING_TITLE, WARNING_MESSAGE_1 + "\"" + configName + "\"" + WARNING_MESSAGE_2);
-				getCreateConfigurationDialog(datamapper, filters, configName);		
-			}
-			
-		}
-		
-	}
+        if (datamapper.getConfiguration().getKeyValue().isEmpty()) {
 
+            getCreateConfigurationDialog(datamapper, filters, null);
+
+        } else {
+            // Open the DataMapper Editor while double clicking on the DataMapperMediator
+            String configName = getconfigName(datamapper);
+            setType(new Class[] { IRegistryFile.class });
+            IDeveloperStudioProviderData[] providerProjectsList = RegistryResourcesUtils.loadProviderProjectsList(type);
+            String configLocalPath = getConfigurationLocalPath(providerProjectsList, filters, configName);
+            if (StringUtils.isNotEmpty(configLocalPath)) {
+                openDataMapperEditor(configLocalPath);
+            } else {
+                MessageDialog.openInformation(Display.getCurrent().getActiveShell(), WARNING_TITLE,
+                        WARNING_MESSAGE_1 + "\"" + configName + "\"" + WARNING_MESSAGE_2);
+                getCreateConfigurationDialog(datamapper, filters, configName);
+            }
+
+        }
+
+    }
 
     /**
      * Gets the create configuration dialog
+     * 
      * @param datamapper Datamapper Mediator
      * @param filters filter
-     * @param configName 
+     * @param configName
      */
-	private void getCreateConfigurationDialog(
-			final DataMapperMediatorImpl datamapper,
-			Map<String, List<String>> filters, String configName) {
-		// IRegistryFile class is only required for datamapper related filtering 
-		final ESBDataMapperConfigurationDialog dataMapperConfigurationDialog = new ESBDataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters, configName); 
-		dataMapperConfigurationDialog.create();
+    private void getCreateConfigurationDialog(final DataMapperMediatorImpl datamapper,
+            Map<String, List<String>> filters, String configName) {
+        // IRegistryFile class is only required for datamapper related filtering
+        final ESBDataMapperConfigurationDialog dataMapperConfigurationDialog = new ESBDataMapperConfigurationDialog(
+                Display.getCurrent().getActiveShell(), new Class[] { IRegistryFile.class }, filters, configName);
+        dataMapperConfigurationDialog.create();
 
-		DialogDisplayUtils.setPositionInCenter(dataMapperConfigurationDialog.getShell());
-		
-		if (dataMapperConfigurationDialog.open() == Dialog.OK) {
-			String configurationPath = formatRegistryPath(dataMapperConfigurationDialog.getSelectedPath());
-			String inputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
-			String outputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
-			
-			final RegistryKeyProperty configurationKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-			configurationKeyProperty.setKeyValue(configurationPath);
-			
-			final RegistryKeyProperty inputSchemaKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-			inputSchemaKeyProperty.setKeyValue(inputSchemaPath);
-			
-			final RegistryKeyProperty outputSchemaKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-			outputSchemaKeyProperty.setKeyValue(outputSchemaPath);
-			
-			Display.getDefault().asyncExec(new Runnable() {
+        DialogDisplayUtils.setPositionInCenter(dataMapperConfigurationDialog.getShell());
 
-			public void run() {
-					
-					TransactionalEditingDomain editingDomain = getEditingDomain();
-					String configLocalPath = dataMapperConfigurationDialog.getIPathOfSelection();
-					String inputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
-					String outputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
-					
-					setConfigurationKey(datamapper, configurationKeyProperty, configLocalPath, editingDomain);
-					setInputSchemaKey(datamapper, inputSchemaKeyProperty, inputSchemaLocalPath, editingDomain);
-					setOutputSchemaKey(datamapper, outputSchemaKeyProperty, outputSchemaLocalPath, editingDomain);
-					
-					if (StringUtils.isNotEmpty(datamapper.getConfigurationLocalPath())) {
-					openDataMapperEditor(datamapper.getConfigurationLocalPath());
-					}
+        if (dataMapperConfigurationDialog.open() == Dialog.OK) {
+            String configurationPath = formatRegistryPath(dataMapperConfigurationDialog.getSelectedPath());
+            String inputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
+            String outputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
 
-				}
+            final RegistryKeyProperty configurationKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+            configurationKeyProperty.setKeyValue(configurationPath);
 
-			private void setOutputSchemaKey(
-					DataMapperMediatorImpl datamapper,
-					RegistryKeyProperty registryKeyProperty,
-					String localPath,
-					TransactionalEditingDomain editingDomain) {
-				
-				SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA, registryKeyProperty);
-				if (setCmd.canExecute()) {
-					getEditingDomain().getCommandStack().execute(setCmd);
-				}
-				
-				SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH, localPath);
-				if (setCmd2.canExecute()) {
-					editingDomain.getCommandStack().execute(setCmd2);
-				}
-				
-			}
+            final RegistryKeyProperty inputSchemaKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+            inputSchemaKeyProperty.setKeyValue(inputSchemaPath);
 
-			private void setInputSchemaKey(
-					DataMapperMediatorImpl datamapper,
-					RegistryKeyProperty registryKeyProperty,
-					String localPath,
-					TransactionalEditingDomain editingDomain) {
-				
-				SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA, registryKeyProperty);
-				if (setCmd.canExecute()) {
-					getEditingDomain().getCommandStack().execute(setCmd);
-				}
-				
-				SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH, localPath);
-				if (setCmd2.canExecute()) {
-					editingDomain.getCommandStack().execute(setCmd2);
-				}
-				
-			}
+            final RegistryKeyProperty outputSchemaKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+            outputSchemaKeyProperty.setKeyValue(outputSchemaPath);
 
-			private void setConfigurationKey(
-					final DataMapperMediatorImpl datamapper,
-					final RegistryKeyProperty registryKeyProperty,
-					String localPath,
-					TransactionalEditingDomain editingDomain) {
-				
-				SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION, registryKeyProperty);
-				if (setCmd.canExecute()) {
-					getEditingDomain().getCommandStack().execute(setCmd);
-				}
-				
-				SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, localPath);
-				if (setCmd2.canExecute()) {
-					editingDomain.getCommandStack().execute(setCmd2);
-				}
-			}
-			});
-		}
-	}
-	
-	/**
-	 * Gets the configuration name of the datamapper config
-	 * @param datamapper DataMapper Mediator object
-	 * @return configuration name
-	 */
-	private String getconfigName(DataMapperMediatorImpl datamapper) {
-		String configName= null;
-		String regPath = datamapper.getConfiguration().getKeyValue();
-		if(StringUtils.isNotEmpty(regPath)){
-			configName = regPath.substring(regPath.lastIndexOf("/") + 1, regPath.length());
-		}
-		return configName;
-	}
+            Display.getDefault().asyncExec(new Runnable() {
 
-	/**
-	 * Gets the configuration local path
-	 * @param providerProjectsList Provider Project list
-	 * @param filters filters
-	 * @param configName configuration name
-	 * @return configuration local path
-	 */
-	private String getConfigurationLocalPath(IDeveloperStudioProviderData[] providerProjectsList, Map<String, List<String>> filters, String configName) {
-		
-		String configPath = null;
-		
-		for (IDeveloperStudioProviderData data : providerProjectsList) {
-			IDeveloperStudioProvider provider = data.getProvider();
+                public void run() {
 
-			List<IDeveloperStudioProvider> registryProjectsList = RegistryResourcesUtils.getRegistryProjectsList(provider, filters);
-			importListMap = new HashMap<String, IDeveloperStudioElement>();
+                    TransactionalEditingDomain editingDomain = getEditingDomain();
+                    String configLocalPath = dataMapperConfigurationDialog.getIPathOfSelection();
+                    String inputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
+                    String outputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
 
-			for (IDeveloperStudioProvider registryProject : registryProjectsList) {
-				List<IDeveloperStudioProvider> childrenList = RegistryResourcesUtils.getChildrenList(registryProject,filters);
+                    setConfigurationKey(datamapper, configurationKeyProperty, configLocalPath, editingDomain);
+                    setInputSchemaKey(datamapper, inputSchemaKeyProperty, inputSchemaLocalPath, editingDomain);
+                    setOutputSchemaKey(datamapper, outputSchemaKeyProperty, outputSchemaLocalPath, editingDomain);
 
-				for (IDeveloperStudioProvider child : childrenList) {
-					IDeveloperStudioElement childElement = child.getElements(filters)[0];
-					if(childElement.getName().equals(configName)){
-						IPath fullPath = ((File)childElement.getSource()).getFullPath();
-						configPath = fullPath.toString();
-					}
-				
-				}
-			}
-		}
-		return configPath;
+                    if (StringUtils.isNotEmpty(datamapper.getConfigurationLocalPath())) {
+                        openDataMapperEditor(datamapper.getConfigurationLocalPath());
+                    }
 
-	}
-	
-	public Class<?>[] getType() {
-		return type;
-	}
+                }
 
-	public void setType(Class<?>[] type) {
-		this.type = type;
-	}
-	
-	
-	private String formatRegistryPath(String selectedPath) {
-		String formattedPath = selectedPath;
-		if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
-			formattedPath = String.format(G_REG_PREFIX, selectedPath.substring(G_REG_PATH_PREFIX.length()));
-		} else if (selectedPath.startsWith(C_REG_PATH_PREFIX)) {
-			formattedPath = String.format(C_REG_PREFIX, selectedPath.substring(C_REG_PATH_PREFIX.length()));
-		}
-		return formattedPath;
-	}
+                private void setOutputSchemaKey(DataMapperMediatorImpl datamapper,
+                        RegistryKeyProperty registryKeyProperty, String localPath,
+                        TransactionalEditingDomain editingDomain) {
 
-	/**
-	 * Opens the data mapper editor
-	 * @param localPath local path of the configuration
-	 */
-	private void openDataMapperEditor(final String localPath) {
-				Path path = new Path(localPath);
-				IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
-				DataMapperEditor.open(file);
-	}
-	
+                    SetCommand setCmd = new SetCommand(editingDomain, datamapper,
+                            EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA, registryKeyProperty);
+                    if (setCmd.canExecute()) {
+                        getEditingDomain().getCommandStack().execute(setCmd);
+                    }
+
+                    SetCommand setCmd2 = new SetCommand(editingDomain, datamapper,
+                            EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH, localPath);
+                    if (setCmd2.canExecute()) {
+                        editingDomain.getCommandStack().execute(setCmd2);
+                    }
+
+                }
+
+                private void setInputSchemaKey(DataMapperMediatorImpl datamapper,
+                        RegistryKeyProperty registryKeyProperty, String localPath,
+                        TransactionalEditingDomain editingDomain) {
+
+                    SetCommand setCmd = new SetCommand(editingDomain, datamapper,
+                            EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA, registryKeyProperty);
+                    if (setCmd.canExecute()) {
+                        getEditingDomain().getCommandStack().execute(setCmd);
+                    }
+
+                    SetCommand setCmd2 = new SetCommand(editingDomain, datamapper,
+                            EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH, localPath);
+                    if (setCmd2.canExecute()) {
+                        editingDomain.getCommandStack().execute(setCmd2);
+                    }
+
+                }
+
+                private void setConfigurationKey(final DataMapperMediatorImpl datamapper,
+                        final RegistryKeyProperty registryKeyProperty, String localPath,
+                        TransactionalEditingDomain editingDomain) {
+
+                    SetCommand setCmd = new SetCommand(editingDomain, datamapper,
+                            EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION, registryKeyProperty);
+                    if (setCmd.canExecute()) {
+                        getEditingDomain().getCommandStack().execute(setCmd);
+                    }
+
+                    SetCommand setCmd2 = new SetCommand(editingDomain, datamapper,
+                            EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, localPath);
+                    if (setCmd2.canExecute()) {
+                        editingDomain.getCommandStack().execute(setCmd2);
+                    }
+                }
+            });
+        }
+    }
+
+    /**
+     * Gets the configuration name of the datamapper config
+     * 
+     * @param datamapper DataMapper Mediator object
+     * @return configuration name
+     */
+    private String getconfigName(DataMapperMediatorImpl datamapper) {
+        String configName = null;
+        String regPath = datamapper.getConfiguration().getKeyValue();
+        if (StringUtils.isNotEmpty(regPath)) {
+            configName = regPath.substring(regPath.lastIndexOf("/") + 1, regPath.length());
+        }
+        return configName;
+    }
+
+    /**
+     * Gets the configuration local path
+     * 
+     * @param providerProjectsList Provider Project list
+     * @param filters filters
+     * @param configName configuration name
+     * @return configuration local path
+     */
+    private String getConfigurationLocalPath(IDeveloperStudioProviderData[] providerProjectsList,
+            Map<String, List<String>> filters, String configName) {
+
+        String configPath = null;
+
+        for (IDeveloperStudioProviderData data : providerProjectsList) {
+            IDeveloperStudioProvider provider = data.getProvider();
+
+            List<IDeveloperStudioProvider> registryProjectsList = RegistryResourcesUtils
+                    .getRegistryProjectsList(provider, filters);
+            importListMap = new HashMap<String, IDeveloperStudioElement>();
+
+            for (IDeveloperStudioProvider registryProject : registryProjectsList) {
+                List<IDeveloperStudioProvider> childrenList = RegistryResourcesUtils.getChildrenList(registryProject,
+                        filters);
+
+                for (IDeveloperStudioProvider child : childrenList) {
+                    IDeveloperStudioElement childElement = child.getElements(filters)[0];
+                    if (childElement.getName().equals(configName)) {
+                        IPath fullPath = ((File) childElement.getSource()).getFullPath();
+                        configPath = fullPath.toString();
+                    }
+
+                }
+            }
+        }
+        return configPath;
+
+    }
+
+    public Class<?>[] getType() {
+        return type;
+    }
+
+    public void setType(Class<?>[] type) {
+        this.type = type;
+    }
+
+    private String formatRegistryPath(String selectedPath) {
+        String formattedPath = selectedPath;
+        if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
+            formattedPath = String.format(G_REG_PREFIX, selectedPath.substring(G_REG_PATH_PREFIX.length()));
+        } else if (selectedPath.startsWith(C_REG_PATH_PREFIX)) {
+            formattedPath = String.format(C_REG_PREFIX, selectedPath.substring(C_REG_PATH_PREFIX.length()));
+        }
+        return formattedPath;
+    }
+
+    /**
+     * Opens the data mapper editor
+     * 
+     * @param localPath local path of the configuration
+     */
+    private void openDataMapperEditor(final String localPath) {
+        Path path = new Path(localPath);
+        IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+        DataMapperEditor.open(file);
+    }
+
 }

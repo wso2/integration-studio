@@ -89,8 +89,8 @@ public class ClearPropertyDialog extends TitleAreaDialog {
 
         Label propertyContextLabel = new Label(container, SWT.NULL);
         propertyContextLabel.setText(Messages.ClearPropertyDialog_PropertContextLabel);
-		final Combo propertyContextValueDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
-		propertyContextValueDropDown.setLayoutData(dataPropertyConfigText);
+        final Combo propertyContextValueDropDown = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
+        propertyContextValueDropDown.setLayoutData(dataPropertyConfigText);
         propertyContextValueDropDown.add(AXIS2_CLIENT_PROPERTY_TAG);
         propertyContextValueDropDown.add(TRANSPORT_PROPERTY_TAG);
         propertyContextValueDropDown.add(AXIS2_PROPERTY_TAG);
@@ -99,10 +99,10 @@ public class ClearPropertyDialog extends TitleAreaDialog {
 
         Label propertyKeyLabel = new Label(container, SWT.NULL);
         propertyKeyLabel.setText(Messages.ClearPropertyDialog_PropertyNameLabel);
-		final Combo propertyKeyValueDropDown = new Combo(container,
-				SWT.DROP_DOWN | SWT.BORDER | SWT.H_SCROLL | SWT.READ_ONLY);
-		propertyKeyValueDropDown.setLayoutData(dataPropertyConfigText);
-		propertyContextValueDropDown.addListener(SWT.Modify, new Listener() {
+        final Combo propertyKeyValueDropDown = new Combo(container,
+                SWT.DROP_DOWN | SWT.BORDER | SWT.H_SCROLL | SWT.READ_ONLY);
+        propertyKeyValueDropDown.setLayoutData(dataPropertyConfigText);
+        propertyContextValueDropDown.addListener(SWT.Modify, new Listener() {
             public void handleEvent(Event event) {
                 try {
                     propertyContext = new String(propertyContextValueDropDown.getText());
@@ -149,8 +149,7 @@ public class ClearPropertyDialog extends TitleAreaDialog {
     protected void okPressed() {
         super.okPressed();
     }
-    
-    
+
     @Override
     protected void cancelPressed() {
         super.cancelPressed();

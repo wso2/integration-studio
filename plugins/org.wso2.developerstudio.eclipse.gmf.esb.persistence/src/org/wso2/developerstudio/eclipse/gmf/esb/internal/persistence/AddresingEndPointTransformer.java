@@ -31,65 +31,70 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
-public class AddresingEndPointTransformer extends AbstractEndpointTransformer{
+public class AddresingEndPointTransformer extends AbstractEndpointTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		// Check subject.
-		Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
-		AddressingEndpoint visualEP = (AddressingEndpoint) subject;
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
+        AddressingEndpoint visualEP = (AddressingEndpoint) subject;
 
-		// Send the message.
-		SendMediator sendMediator = getSendMediator(information); //FIXME: unused variable
-/*		if(visualEP.isInLine()){
-			information.getCurrentProxy().setTargetInLineEndpoint(create(visualEP,null));
-		}else{
-			if(sendMediator !=null){
-				sendMediator.setEndpoint(create(visualEP,null));
-			}
-		}*/
-		
-		if(!information.isEndPointFound){
-			information.isEndPointFound=true;
-			information.firstEndPoint=visualEP;
-		}
-		
-		if(visualEP.getOutputConnector()!=null){
-			if(visualEP.getOutputConnector().getOutgoingLink() !=null){
-				InputConnector nextInputConnector=visualEP.getOutputConnector().getOutgoingLink().getTarget();
-				if((!(nextInputConnector instanceof SequenceInputConnector))||
-						((((Sequence)nextInputConnector.eContainer()).getOutputConnector().get(0).getOutgoingLink()!=null)&&(!(((Sequence)nextInputConnector.eContainer()).getOutputConnector().get(0).getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))){
-					information.setParentSequence(information.getOriginOutSequence());
-					information.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
-				}else if(visualEP.getInputConnector().getIncomingLinks().get(0).getSource().eContainer() instanceof Sequence){
-					information.setParentSequence(information.getCurrentReferredSequence());
-				}
-			}
-		}
+        // Send the message.
+        SendMediator sendMediator = getSendMediator(information); // FIXME: unused variable
+        /*
+         * if(visualEP.isInLine()){
+         * information.getCurrentProxy().setTargetInLineEndpoint(create(visualEP,null));
+         * }else{
+         * if(sendMediator !=null){
+         * sendMediator.setEndpoint(create(visualEP,null));
+         * }
+         * }
+         */
 
-		List<EsbNode> transformedMediators = information.getTransformedMediators();
-		if (visualEP.getOutputConnector() != null && visualEP.getOutputConnector().getOutgoingLink()!=null) {
-			EsbNode nextElement = (EsbNode) visualEP.getOutputConnector().getOutgoingLink().getTarget().eContainer();
-			if (transformedMediators.contains(nextElement)) {
-				return;
-			}
-			transformedMediators.add(nextElement);
-		}
+        if (!information.isEndPointFound) {
+            information.isEndPointFound = true;
+            information.firstEndPoint = visualEP;
+        }
 
-		// Transform endpoint output data flow.
-		// TODO: find out why this was commented out.
-		// might want to check if the flow is connected back to initial proxy
-		// service
-		doTransform(information, visualEP.getOutputConnector());
-	}
+        if (visualEP.getOutputConnector() != null) {
+            if (visualEP.getOutputConnector().getOutgoingLink() != null) {
+                InputConnector nextInputConnector = visualEP.getOutputConnector().getOutgoingLink().getTarget();
+                if ((!(nextInputConnector instanceof SequenceInputConnector))
+                        || ((((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                .getOutgoingLink() != null)
+                                && (!(((Sequence) nextInputConnector.eContainer()).getOutputConnector().get(0)
+                                        .getOutgoingLink().getTarget().eContainer() instanceof EndPoint)))) {
+                    information.setParentSequence(information.getOriginOutSequence());
+                    information.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+                } else if (visualEP.getInputConnector().getIncomingLinks().get(0).getSource()
+                        .eContainer() instanceof Sequence) {
+                    information.setParentSequence(information.getCurrentReferredSequence());
+                }
+            }
+        }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		
-	}
+        List<EsbNode> transformedMediators = information.getTransformedMediators();
+        if (visualEP.getOutputConnector() != null && visualEP.getOutputConnector().getOutgoingLink() != null) {
+            EsbNode nextElement = (EsbNode) visualEP.getOutputConnector().getOutgoingLink().getTarget().eContainer();
+            if (transformedMediators.contains(nextElement)) {
+                return;
+            }
+            transformedMediators.add(nextElement);
+        }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws TransformerException {
-		
-	}
+        // Transform endpoint output data flow.
+        // TODO: find out why this was commented out.
+        // might want to check if the flow is connected back to initial proxy
+        // service
+        doTransform(information, visualEP.getOutputConnector());
+    }
+
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+
+    }
+
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+
+    }
 
 }

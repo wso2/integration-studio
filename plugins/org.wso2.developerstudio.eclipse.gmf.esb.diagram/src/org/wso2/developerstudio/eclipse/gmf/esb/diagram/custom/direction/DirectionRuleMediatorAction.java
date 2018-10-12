@@ -6,21 +6,21 @@ import org.eclipse.ui.IWorkbenchPart;
 
 public class DirectionRuleMediatorAction extends DirectionEsbNodeAction {
 
-	EditPart editorPart;
-	
-	public DirectionRuleMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setText("Reverse");
-		setToolTipText("Set Direction Rule mediator.");
-	}
-	
-	public void setEditorPart(EditPart editorPart_){
-		editorPart=editorPart_;		
-	}
+    EditPart editorPart;
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		
-		Reverse(editorPart);
-	}
+    public DirectionRuleMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setText("Reverse");
+        setToolTipText("Set Direction Rule mediator.");
+    }
+
+    public void setEditorPart(EditPart editorPart_) {
+        editorPart = editorPart_;
+    }
+
+    protected void doRun(IProgressMonitor progressMonitor) {
+
+        Reverse(editorPart);
+    }
 
 }

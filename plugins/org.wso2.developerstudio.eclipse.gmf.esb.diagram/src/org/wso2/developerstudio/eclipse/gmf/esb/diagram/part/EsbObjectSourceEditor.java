@@ -47,207 +47,207 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 @SuppressWarnings("restriction")
 public class EsbObjectSourceEditor {
 
-	/**
-	 * Default input.
-	 */
-	public static final String EDITOR_DEFAULT_INPUT = "<note>Source not available.</note>";
+    /**
+     * Default input.
+     */
+    public static final String EDITOR_DEFAULT_INPUT = "<note>Source not available.</note>";
 
-	/**
-	 * Used to execute commands.
-	 */
-	private AdapterFactoryEditingDomain editingDomain;
+    /**
+     * Used to execute commands.
+     */
+    private AdapterFactoryEditingDomain editingDomain;
 
-	/**
-	 * Internal {@link StructuredTextEditor} instance.
-	 */
-	private StructuredTextEditor editor;
+    /**
+     * Internal {@link StructuredTextEditor} instance.
+     */
+    private StructuredTextEditor editor;
 
-	/**
-	 * A custom {@link IEditorInput} used for editing in-memory resources.
-	 */
-	private IEditorInput input;
+    /**
+     * A custom {@link IEditorInput} used for editing in-memory resources.
+     */
+    private IEditorInput input;
 
-	/**
-	 * Used by the client to listen for editor changes.
-	 */
-	private IModelStateListener listener;
+    /**
+     * Used by the client to listen for editor changes.
+     */
+    private IModelStateListener listener;
 
-	/**
-	 * Currently edited object.
-	 */
-	// private ModelObject modelObject;
+    /**
+     * Currently edited object.
+     */
+    // private ModelObject modelObject;
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	/**
-	 * Creates a new {@link EsbObjectSourceEditor} using the specified
-	 * {@link IFile} as a dummy input.
-	 * 
-	 * @param dummyFile
-	 *            temporary {@link IFile} to be used as {@link IEditorInput}.
-	 * @param editingDomain
-	 *            used to execute commands.
-	 */
-	public EsbObjectSourceEditor(IFile dummyFile) {// ,
-													// AdapterFactoryEditingDomain
-													// editingDomain) {
-		// this.editingDomain = editingDomain;
-		this.editor = new StructuredTextEditor() {
+    /**
+     * Creates a new {@link EsbObjectSourceEditor} using the specified
+     * {@link IFile} as a dummy input.
+     * 
+     * @param dummyFile
+     *            temporary {@link IFile} to be used as {@link IEditorInput}.
+     * @param editingDomain
+     *            used to execute commands.
+     */
+    public EsbObjectSourceEditor(IFile dummyFile) {// ,
+                                                   // AdapterFactoryEditingDomain
+                                                   // editingDomain) {
+        // this.editingDomain = editingDomain;
+        this.editor = new StructuredTextEditor() {
 
-			public void doSave(IProgressMonitor progressMonitor) {
-				/* TODO: handle source to design */
-				super.doSave(progressMonitor);
-			}
+            public void doSave(IProgressMonitor progressMonitor) {
+                /* TODO: handle source to design */
+                super.doSave(progressMonitor);
+            }
 
-			public boolean isEditable() {
-				/* Source view is currently read-only */
-				return true;
-			}
-		};
-		this.input = new FileEditorInput(dummyFile);
-		// this.listener = new ModelStateListenerAdapter() {
-		// public void modelChanged(IStructuredModel model) {
-		// handleSourceEditedEvent();
-		// }
-		// };
-	}
+            public boolean isEditable() {
+                /* Source view is currently read-only */
+                return true;
+            }
+        };
+        this.input = new FileEditorInput(dummyFile);
+        // this.listener = new ModelStateListenerAdapter() {
+        // public void modelChanged(IStructuredModel model) {
+        // handleSourceEditedEvent();
+        // }
+        // };
+    }
 
-	// /**
-	// * Method invoked when the user edits the source.
-	// */
-	// private void handleSourceEditedEvent() {
-	// if (null != modelObject) {
-	// if (!modelObject.getObjectState().equals(ModelObjectState.WORKING)) {
-	// Command setObjectStateCommand = new SetCommand(editingDomain,
-	// modelObject, EsbPackage.eINSTANCE
-	// .getModelObject_ObjectState(), ModelObjectState.WORKING);
-	// editingDomain.getCommandStack().execute(setObjectStateCommand);
-	// }
-	// modelObject.setSourceText(getSource());
-	// }
-	// }
+    // /**
+    // * Method invoked when the user edits the source.
+    // */
+    // private void handleSourceEditedEvent() {
+    // if (null != modelObject) {
+    // if (!modelObject.getObjectState().equals(ModelObjectState.WORKING)) {
+    // Command setObjectStateCommand = new SetCommand(editingDomain,
+    // modelObject, EsbPackage.eINSTANCE
+    // .getModelObject_ObjectState(), ModelObjectState.WORKING);
+    // editingDomain.getCommandStack().execute(setObjectStateCommand);
+    // }
+    // modelObject.setSourceText(getSource());
+    // }
+    // }
 
-	/**
-	 * @return current source content of the editor.
-	 */
-	private String getSource() {
-		return editor.getDocumentProvider().getDocument(editor.getEditorInput()).get();
-	}
+    /**
+     * @return current source content of the editor.
+     */
+    private String getSource() {
+        return editor.getDocumentProvider().getDocument(editor.getEditorInput()).get();
+    }
 
-	/**
-	 * Updates this source editor to represent the specified {@link ModelObject}
-	 * .
-	 * 
-	 * @param object
-	 *            {@link ModelObject} to be edited.
-	 */
-	public void update(FormPage formPage, ArtifactType artifactType) throws Exception {
-		String newSource = EsbModelTransformer.instance.formToSource(formPage, artifactType);
-		getDocument().set(newSource);
-	}
+    /**
+     * Updates this source editor to represent the specified {@link ModelObject}
+     * .
+     * 
+     * @param object
+     *            {@link ModelObject} to be edited.
+     */
+    public void update(FormPage formPage, ArtifactType artifactType) throws Exception {
+        String newSource = EsbModelTransformer.instance.formToSource(formPage, artifactType);
+        getDocument().set(newSource);
+    }
 
-	/**
-	 * Updates this source editor to represent the specified {@link ModelObject}
-	 * .
-	 * 
-	 * @param object
-	 *            {@link ModelObject} to be edited.
-	 */
-	public void update(EsbServer server) throws Exception {// ModelObject
-															// object) {
-		String newSource = EsbModelTransformer.instance.designToSource(server);
-		// try {
-		// try {
-		// newSource=EsbModelTransformer.instance.designToSource(server);
-		// }catch (Exception e) {
-		// log.error("Cannot update source view", e);
-		// String simpleMessage =
-		// ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
-		// IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-		// simpleMessage);
-		// ErrorDialog.openError(getEditor().getSite().getShell(), "Error",
-		// "Cannot update source view. The following error(s) have been
-		// detected", editorStatus);
-		// }
+    /**
+     * Updates this source editor to represent the specified {@link ModelObject}
+     * .
+     * 
+     * @param object
+     *            {@link ModelObject} to be edited.
+     */
+    public void update(EsbServer server) throws Exception {// ModelObject
+                                                           // object) {
+        String newSource = EsbModelTransformer.instance.designToSource(server);
+        // try {
+        // try {
+        // newSource=EsbModelTransformer.instance.designToSource(server);
+        // }catch (Exception e) {
+        // log.error("Cannot update source view", e);
+        // String simpleMessage =
+        // ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+        // IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+        // simpleMessage);
+        // ErrorDialog.openError(getEditor().getSite().getShell(), "Error",
+        // "Cannot update source view. The following error(s) have been
+        // detected", editorStatus);
+        // }
 
-		// newSource = EsbFactory.eINSTANCE.serializeToString(object);
-		// } catch (Exception ex) {
-		// // TODO: Get rid of this.
-		// ex.printStackTrace();
-		// }
-		//
-		// IStructuredModel model = getStructuredModel();
-		//
-		// // Remove the listener so that no events are fired during update.
-		// if (null != model) {
-		// model.removeModelStateListener(listener);
-		// }
-		//
-		// // Save model object.
-		// //this.modelObject = object;
-		//
-		// if (null == newSource) {
-		// // Reset source editor input.
-		// getDocument().set(EDITOR_DEFAULT_INPUT);
-		// } else {
-		// // Avoid un-necessay refreshing.
-		// if (!getSource().equals(newSource)) {
-		// // Change source editor input.
-		// getDocument().setDocumentPartitioner(new
-		// StructuredTextPartitioner());
-		getDocument().set(newSource);
-		// }
-		//
-		// // Add back source listner.
-		// model = getStructuredModel();
-		// if (null != model) {
-		// model.addModelStateListener(listener);
-		// }
-		// }
-	}
+        // newSource = EsbFactory.eINSTANCE.serializeToString(object);
+        // } catch (Exception ex) {
+        // // TODO: Get rid of this.
+        // ex.printStackTrace();
+        // }
+        //
+        // IStructuredModel model = getStructuredModel();
+        //
+        // // Remove the listener so that no events are fired during update.
+        // if (null != model) {
+        // model.removeModelStateListener(listener);
+        // }
+        //
+        // // Save model object.
+        // //this.modelObject = object;
+        //
+        // if (null == newSource) {
+        // // Reset source editor input.
+        // getDocument().set(EDITOR_DEFAULT_INPUT);
+        // } else {
+        // // Avoid un-necessay refreshing.
+        // if (!getSource().equals(newSource)) {
+        // // Change source editor input.
+        // getDocument().setDocumentPartitioner(new
+        // StructuredTextPartitioner());
+        getDocument().set(newSource);
+        // }
+        //
+        // // Add back source listner.
+        // model = getStructuredModel();
+        // if (null != model) {
+        // model.addModelStateListener(listener);
+        // }
+        // }
+    }
 
-	/**
-	 * Utility method for obtaining the current {@link IDocument} instance.
-	 * 
-	 * @return {@link IDocument} corresponding to current {@link IEditorInput}.
-	 */
-	public IDocument getDocument() {
-		return editor.getDocumentProvider().getDocument(editor.getEditorInput());
-	}
+    /**
+     * Utility method for obtaining the current {@link IDocument} instance.
+     * 
+     * @return {@link IDocument} corresponding to current {@link IEditorInput}.
+     */
+    public IDocument getDocument() {
+        return editor.getDocumentProvider().getDocument(editor.getEditorInput());
+    }
 
-	/**
-	 * Attempts to retrieve the {@link IStructuredModel} used by the internal
-	 * {@link StructuredTextEditor}.
-	 * 
-	 * @return {@link IStructuredModel} used by the source editor or null.
-	 */
-	private IStructuredModel getStructuredModel() {
-		IDocument document = getDocument();
-		IStructuredModel model = StructuredModelManager.getModelManager().getExistingModelForEdit(document);
-		if (null == model && (document instanceof IStructuredDocument)) {
-			model = StructuredModelManager.getModelManager().getModelForEdit((IStructuredDocument) document);
-		}
-		return model;
-	}
+    /**
+     * Attempts to retrieve the {@link IStructuredModel} used by the internal
+     * {@link StructuredTextEditor}.
+     * 
+     * @return {@link IStructuredModel} used by the source editor or null.
+     */
+    private IStructuredModel getStructuredModel() {
+        IDocument document = getDocument();
+        IStructuredModel model = StructuredModelManager.getModelManager().getExistingModelForEdit(document);
+        if (null == model && (document instanceof IStructuredDocument)) {
+            model = StructuredModelManager.getModelManager().getModelForEdit((IStructuredDocument) document);
+        }
+        return model;
+    }
 
-	/**
-	 * @return internal {@link IEditorPart} instance.
-	 */
-	public IEditorPart getEditor() {
-		return editor;
-	}
+    /**
+     * @return internal {@link IEditorPart} instance.
+     */
+    public IEditorPart getEditor() {
+        return editor;
+    }
 
-	/**
-	 * @return internal {@link IEditorInput} instance.
-	 */
-	public IEditorInput getInput() {
-		return input;
-	}
+    /**
+     * @return internal {@link IEditorInput} instance.
+     */
+    public IEditorInput getInput() {
+        return input;
+    }
 
-	// /**
-	// * @return internal document being edited.
-	// */
-	// public ModelObject getObject() {
-	// return modelObject;
-	// }
+    // /**
+    // * @return internal document being edited.
+    // */
+    // public ModelObject getObject() {
+    // return modelObject;
+    // }
 }

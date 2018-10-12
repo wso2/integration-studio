@@ -49,74 +49,74 @@ public class HeaderMediatorExtFactory extends HeaderMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	QName ATT_ACTION = new QName("action");
-	QName ATT_SCOPE = new QName("scope");
+        QName ATT_ACTION = new QName("action");
+        QName ATT_SCOPE = new QName("scope");
 
-	Mediator mediator = new HeaderMediator();
+        Mediator mediator = new HeaderMediator();
 
-	OMAttribute name = omElement.getAttribute(ATT_NAME);
-	OMAttribute value = omElement.getAttribute(ATT_VALUE);
-	OMAttribute exprn = omElement.getAttribute(ATT_EXPRN);
-	OMAttribute action = omElement.getAttribute(ATT_ACTION);
-	OMAttribute scope = omElement.getAttribute(ATT_SCOPE);
+        OMAttribute name = omElement.getAttribute(ATT_NAME);
+        OMAttribute value = omElement.getAttribute(ATT_VALUE);
+        OMAttribute exprn = omElement.getAttribute(ATT_EXPRN);
+        OMAttribute action = omElement.getAttribute(ATT_ACTION);
+        OMAttribute scope = omElement.getAttribute(ATT_SCOPE);
 
-	if (name != null && name.getAttributeValue() != null) {
-	    if (scope == null || scope.getAttributeValue().equals(XMLConfigConstants.SCOPE_DEFAULT)) {
-		String nameAtt = name.getAttributeValue();
-		int colonPos = nameAtt.indexOf(":");
-		if (colonPos != -1) {
-		    String prefix = nameAtt.substring(0, colonPos);
-		    String namespaceURI = OMElementUtils.getNameSpaceWithPrefix(prefix, omElement);
-		    if (namespaceURI != null) {
-			((HeaderMediator) mediator)
-				.setQName(new QName(namespaceURI, nameAtt.substring(colonPos + 1), prefix));
-		    }
-		} else {
-		    if (SynapseConstants.HEADER_TO.equals(nameAtt) || SynapseConstants.HEADER_FROM.equals(nameAtt)
-			    || SynapseConstants.HEADER_ACTION.equals(nameAtt)
-			    || SynapseConstants.HEADER_FAULT.equals(nameAtt)
-			    || SynapseConstants.HEADER_REPLY_TO.equals(nameAtt)
-			    || SynapseConstants.HEADER_RELATES_TO.equals(nameAtt)) {
+        if (name != null && name.getAttributeValue() != null) {
+            if (scope == null || scope.getAttributeValue().equals(XMLConfigConstants.SCOPE_DEFAULT)) {
+                String nameAtt = name.getAttributeValue();
+                int colonPos = nameAtt.indexOf(":");
+                if (colonPos != -1) {
+                    String prefix = nameAtt.substring(0, colonPos);
+                    String namespaceURI = OMElementUtils.getNameSpaceWithPrefix(prefix, omElement);
+                    if (namespaceURI != null) {
+                        ((HeaderMediator) mediator)
+                                .setQName(new QName(namespaceURI, nameAtt.substring(colonPos + 1), prefix));
+                    }
+                } else {
+                    if (SynapseConstants.HEADER_TO.equals(nameAtt) || SynapseConstants.HEADER_FROM.equals(nameAtt)
+                            || SynapseConstants.HEADER_ACTION.equals(nameAtt)
+                            || SynapseConstants.HEADER_FAULT.equals(nameAtt)
+                            || SynapseConstants.HEADER_REPLY_TO.equals(nameAtt)
+                            || SynapseConstants.HEADER_RELATES_TO.equals(nameAtt)) {
 
-			((HeaderMediator) mediator).setQName(new QName(nameAtt));
-		    }
-		}
-	    } else {
-		((HeaderMediator) mediator).setQName(new QName(name.getAttributeValue()));
-	    }
-	}
+                        ((HeaderMediator) mediator).setQName(new QName(nameAtt));
+                    }
+                }
+            } else {
+                ((HeaderMediator) mediator).setQName(new QName(name.getAttributeValue()));
+            }
+        }
 
-	if (scope != null) {
-	    String valueStr = scope.getAttributeValue();
-	    ((HeaderMediator) mediator).setScope(valueStr);
-	}
+        if (scope != null) {
+            String valueStr = scope.getAttributeValue();
+            ((HeaderMediator) mediator).setScope(valueStr);
+        }
 
-	processAuditStatus(mediator, omElement);
+        processAuditStatus(mediator, omElement);
 
-	if (action != null && "remove".equals(action.getAttributeValue())) {
-	    ((HeaderMediator) mediator).setAction(HeaderMediator.ACTION_REMOVE);
-	}
+        if (action != null && "remove".equals(action.getAttributeValue())) {
+            ((HeaderMediator) mediator).setAction(HeaderMediator.ACTION_REMOVE);
+        }
 
-	if (value != null && value.getAttributeValue() != null) {
-	    ((HeaderMediator) mediator).setValue(value.getAttributeValue());
+        if (value != null && value.getAttributeValue() != null) {
+            ((HeaderMediator) mediator).setValue(value.getAttributeValue());
 
-	} else if (exprn != null && exprn.getAttributeValue() != null) {
-	    try {
-		((HeaderMediator) mediator).setExpression(SynapseXPathFactory.getSynapseXPath(omElement, ATT_EXPRN));
-	    } catch (JaxenException je) {
-		// ignore
-	    }
+        } else if (exprn != null && exprn.getAttributeValue() != null) {
+            try {
+                ((HeaderMediator) mediator).setExpression(SynapseXPathFactory.getSynapseXPath(omElement, ATT_EXPRN));
+            } catch (JaxenException je) {
+                // ignore
+            }
 
-	} else if (((HeaderMediator) mediator).isImplicit()) {
-	    Iterator i = omElement.getChildElements();
-	    if (i != null) {
-		for (; i.hasNext();) {
-		    ((HeaderMediator) mediator).addEmbeddedXml((OMElement) i.next());
-		}
-	    }
-	}
+        } else if (((HeaderMediator) mediator).isImplicit()) {
+            Iterator i = omElement.getChildElements();
+            if (i != null) {
+                for (; i.hasNext();) {
+                    ((HeaderMediator) mediator).addEmbeddedXml((OMElement) i.next());
+                }
+            }
+        }
 
-	return mediator;
+        return mediator;
     }
 
 }

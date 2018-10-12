@@ -54,7 +54,7 @@ public enum EventMessageType {
      */
     DEBUG_INFO_LOST(DEBUG_INFO_LOST_EVENT),
     /*
-     * This event type represent a wirelogs are ready to be retrieved 
+     * This event type represent a wirelogs are ready to be retrieved
      */
     WIRE_LOG(WIRE_LOG_EVENT);
 

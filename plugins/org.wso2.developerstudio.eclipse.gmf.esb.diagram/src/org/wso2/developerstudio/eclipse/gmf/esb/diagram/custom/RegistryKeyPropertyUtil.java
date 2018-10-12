@@ -37,81 +37,81 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEnt
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor.NamedEntityType;
 
 /**
- * Utility  class for RegistryKeyProperty
+ * Utility class for RegistryKeyProperty
  * 
  */
 public class RegistryKeyPropertyUtil {
 
-	/**
-	 * Utility method for querying current named local entities that can be the
-	 * target of registry key attributes.
-	 * 
-	 * @param obj {@link EObject} which is part of the current resource being edited.
-	 * @return a list of local named entities.
-	 */
-	
-	public static List<NamedEntityDescriptor> findLocalNamedEntities(Object obj) {
-		List<NamedEntityDescriptor> result = new ArrayList<NamedEntityDescriptor>();
-		if (obj instanceof EObject) {
-			EObject rootObj = EcoreUtil.getRootContainer((EObject) obj);
-			
-			// Condition for filtering sequences.
-			EObjectCondition isSequence = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getMediatorSequence(),
-					TypeRelation.SAMETYPE_LITERAL);
-			
-			// Condition for filtering endpoints.
-			EObjectCondition isEndpoint = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getEndPoint(),
-					TypeRelation.SUBTYPE_LITERAL);
-			
-			// Condition for filtering proxy services.
-			EObjectCondition isProxyService = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getProxyService(),
-					TypeRelation.SAMETYPE_LITERAL);
-			
-			// Condition for local entries.
-			EObjectCondition isLocalEntry = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getLocalEntry(),
-					TypeRelation.SAMETYPE_LITERAL);
-			
-			// Construct the final query.
-			SELECT stmt = new SELECT(new FROM(rootObj), new WHERE(isSequence.OR(isEndpoint).OR(isProxyService).OR(
-					isLocalEntry)));
-			
-			// Execute.
-			IQueryResult queryResult = stmt.execute();
-			
-			// Extract named entity descriptors.
-			for (EObject object : queryResult.getEObjects()) {
-				switch (object.eClass().getClassifierID()) {
-					case EsbPackage.MEDIATOR_SEQUENCE:
-						MediatorSequence sequence = (MediatorSequence) object;
-						if (!sequence.isAnonymous()) {
-							result.add(new NamedEntityDescriptor(sequence.getSequenceName(), NamedEntityType.SEQUENCE));
-						}
-						break;
-					case EsbPackage.DEFAULT_END_POINT:
-					case EsbPackage.ADDRESS_END_POINT:
-					case EsbPackage.WSDL_END_POINT:
-					case EsbPackage.LOAD_BALANCE_END_POINT:
-					case EsbPackage.FAILOVER_END_POINT:
-					//case EsbPackage.DYNAMIC_LOAD_BALANCE_END_POINT:
-						EndPoint endpoint = (EndPoint) object;
-						if (!endpoint.isAnonymous()) {
-							result.add(new NamedEntityDescriptor(endpoint.getEndPointName(), NamedEntityType.ENDPOINT));
-						}
-						break;
-					case EsbPackage.PROXY_SERVICE:
-						ProxyService proxyService = (ProxyService) object;
-						result.add(new NamedEntityDescriptor(proxyService.getName(), NamedEntityType.PROXY_SERVICE));
-						break;
-					case EsbPackage.LOCAL_ENTRY:
-						LocalEntry localEntry = (LocalEntry) object;
-						result.add(new NamedEntityDescriptor(localEntry.getEntryName(), NamedEntityType.LOCAL_ENTRY));
-						break;
-					default:
-						// TODO: Log the unexpected result.
-				}
-			}
-		}
-		
-		return result;
-	}
+    /**
+     * Utility method for querying current named local entities that can be the
+     * target of registry key attributes.
+     * 
+     * @param obj {@link EObject} which is part of the current resource being edited.
+     * @return a list of local named entities.
+     */
+
+    public static List<NamedEntityDescriptor> findLocalNamedEntities(Object obj) {
+        List<NamedEntityDescriptor> result = new ArrayList<NamedEntityDescriptor>();
+        if (obj instanceof EObject) {
+            EObject rootObj = EcoreUtil.getRootContainer((EObject) obj);
+
+            // Condition for filtering sequences.
+            EObjectCondition isSequence = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getMediatorSequence(),
+                    TypeRelation.SAMETYPE_LITERAL);
+
+            // Condition for filtering endpoints.
+            EObjectCondition isEndpoint = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getEndPoint(),
+                    TypeRelation.SUBTYPE_LITERAL);
+
+            // Condition for filtering proxy services.
+            EObjectCondition isProxyService = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getProxyService(),
+                    TypeRelation.SAMETYPE_LITERAL);
+
+            // Condition for local entries.
+            EObjectCondition isLocalEntry = new EObjectTypeRelationCondition(EsbPackage.eINSTANCE.getLocalEntry(),
+                    TypeRelation.SAMETYPE_LITERAL);
+
+            // Construct the final query.
+            SELECT stmt = new SELECT(new FROM(rootObj),
+                    new WHERE(isSequence.OR(isEndpoint).OR(isProxyService).OR(isLocalEntry)));
+
+            // Execute.
+            IQueryResult queryResult = stmt.execute();
+
+            // Extract named entity descriptors.
+            for (EObject object : queryResult.getEObjects()) {
+                switch (object.eClass().getClassifierID()) {
+                case EsbPackage.MEDIATOR_SEQUENCE:
+                    MediatorSequence sequence = (MediatorSequence) object;
+                    if (!sequence.isAnonymous()) {
+                        result.add(new NamedEntityDescriptor(sequence.getSequenceName(), NamedEntityType.SEQUENCE));
+                    }
+                    break;
+                case EsbPackage.DEFAULT_END_POINT:
+                case EsbPackage.ADDRESS_END_POINT:
+                case EsbPackage.WSDL_END_POINT:
+                case EsbPackage.LOAD_BALANCE_END_POINT:
+                case EsbPackage.FAILOVER_END_POINT:
+                    // case EsbPackage.DYNAMIC_LOAD_BALANCE_END_POINT:
+                    EndPoint endpoint = (EndPoint) object;
+                    if (!endpoint.isAnonymous()) {
+                        result.add(new NamedEntityDescriptor(endpoint.getEndPointName(), NamedEntityType.ENDPOINT));
+                    }
+                    break;
+                case EsbPackage.PROXY_SERVICE:
+                    ProxyService proxyService = (ProxyService) object;
+                    result.add(new NamedEntityDescriptor(proxyService.getName(), NamedEntityType.PROXY_SERVICE));
+                    break;
+                case EsbPackage.LOCAL_ENTRY:
+                    LocalEntry localEntry = (LocalEntry) object;
+                    result.add(new NamedEntityDescriptor(localEntry.getEntryName(), NamedEntityType.LOCAL_ENTRY));
+                    break;
+                default:
+                    // TODO: Log the unexpected result.
+                }
+            }
+        }
+
+        return result;
+    }
 }

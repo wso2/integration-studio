@@ -33,115 +33,106 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class SendMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		org.apache.synapse.mediators.builtin.SendMediator sendMediator;
-		try {
-			sendMediator = createSendMediator(subject);
-			if (sendMediator != null) {
-				information.getParentSequence().addChild(sendMediator);
-			}
-			TransformationInfo tmpInformation = new TransformationInfo();
-			tmpInformation.setParentSequence(information.getParentSequence());
-			tmpInformation.setTraversalDirection(information.getTraversalDirection());
-			tmpInformation.setOriginInSequence(information.getOriginInSequence());
-			tmpInformation.setOriginOutSequence(information.getOriginOutSequence());
-			tmpInformation.setPreviousNode(information.getPreviouNode());
-			tmpInformation.setSynapseConfiguration(information.getSynapseConfiguration());
-			tmpInformation.setCurrentAPI(information.getCurrentAPI());
-			tmpInformation.setCurrentProxy(information.getCurrentProxy());
-			tmpInformation.setCurrentReferredSequence(information.getCurrentReferredSequence());
-			tmpInformation.setMainSequence(information.getMainSequence());
-			doTransform(tmpInformation, ((SendMediator) subject).getEndpointOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        org.apache.synapse.mediators.builtin.SendMediator sendMediator;
+        try {
+            sendMediator = createSendMediator(subject);
+            if (sendMediator != null) {
+                information.getParentSequence().addChild(sendMediator);
+            }
+            TransformationInfo tmpInformation = new TransformationInfo();
+            tmpInformation.setParentSequence(information.getParentSequence());
+            tmpInformation.setTraversalDirection(information.getTraversalDirection());
+            tmpInformation.setOriginInSequence(information.getOriginInSequence());
+            tmpInformation.setOriginOutSequence(information.getOriginOutSequence());
+            tmpInformation.setPreviousNode(information.getPreviouNode());
+            tmpInformation.setSynapseConfiguration(information.getSynapseConfiguration());
+            tmpInformation.setCurrentAPI(information.getCurrentAPI());
+            tmpInformation.setCurrentProxy(information.getCurrentProxy());
+            tmpInformation.setCurrentReferredSequence(information.getCurrentReferredSequence());
+            tmpInformation.setMainSequence(information.getMainSequence());
+            doTransform(tmpInformation, ((SendMediator) subject).getEndpointOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		org.apache.synapse.mediators.builtin.SendMediator sendMediator;
-		try {
-			sendMediator = createSendMediator(subject);
-			if (sendMediator != null) {
-				sequence.addChild(sendMediator);
-			}
-			doTransformWithinSequence(information, ((SendMediator) subject).getEndpointOutputConnector()
-					.getOutgoingLink(), sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
-	
-	private org.apache.synapse.mediators.builtin.SendMediator createSendMediator(EsbNode subject) throws JaxenException{
-		// Check subject.
-		Assert.isTrue(subject instanceof SendMediator, "Invalid subject.");
-		SendMediator visualSend = (SendMediator) subject;
-		
-		if(visualSend.isSkipSerialization()){
-			return null;
-		}
+    }
 
-		// Configure send mediator.
-		org.apache.synapse.mediators.builtin.SendMediator sendMediator = new org.apache.synapse.mediators.builtin.SendMediator();
-		setCommonProperties(sendMediator, visualSend);
-		{
-			if (visualSend.getReceivingSequenceType().getLiteral()
-					.equals("Static")) {
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        org.apache.synapse.mediators.builtin.SendMediator sendMediator;
+        try {
+            sendMediator = createSendMediator(subject);
+            if (sendMediator != null) {
+                sequence.addChild(sendMediator);
+            }
+            doTransformWithinSequence(information,
+                    ((SendMediator) subject).getEndpointOutputConnector().getOutgoingLink(), sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-				if (visualSend.getStaticReceivingSequence() != null
-						&& visualSend.getStaticReceivingSequence()
-								.getKeyValue() != null) {
+    private org.apache.synapse.mediators.builtin.SendMediator createSendMediator(EsbNode subject)
+            throws JaxenException {
+        // Check subject.
+        Assert.isTrue(subject instanceof SendMediator, "Invalid subject.");
+        SendMediator visualSend = (SendMediator) subject;
 
-					Value receivingSequence = new Value(visualSend
-							.getStaticReceivingSequence().getKeyValue());
-					sendMediator.setReceivingSequence(receivingSequence);
-				}
+        if (visualSend.isSkipSerialization()) {
+            return null;
+        }
 
-			}
+        // Configure send mediator.
+        org.apache.synapse.mediators.builtin.SendMediator sendMediator = new org.apache.synapse.mediators.builtin.SendMediator();
+        setCommonProperties(sendMediator, visualSend);
+        {
+            if (visualSend.getReceivingSequenceType().getLiteral().equals("Static")) {
 
-			if (visualSend.getReceivingSequenceType().getLiteral()
-					.equals("Dynamic")) {
+                if (visualSend.getStaticReceivingSequence() != null
+                        && visualSend.getStaticReceivingSequence().getKeyValue() != null) {
 
-				if (visualSend.getDynamicReceivingSequence() != null
-						&& visualSend.getDynamicReceivingSequence()
-								.getPropertyValue() != null) {
+                    Value receivingSequence = new Value(visualSend.getStaticReceivingSequence().getKeyValue());
+                    sendMediator.setReceivingSequence(receivingSequence);
+                }
 
-					SynapseXPath expression = new SynapseXPath(visualSend
-							.getDynamicReceivingSequence().getPropertyValue());
+            }
 
-					if (visualSend.getDynamicReceivingSequence()
-							.getNamespaces() != null) {
+            if (visualSend.getReceivingSequenceType().getLiteral().equals("Dynamic")) {
 
-						Map<String, String> map = visualSend
-								.getDynamicReceivingSequence().getNamespaces();
-						Iterator<Map.Entry<String, String>> entries = map
-								.entrySet().iterator();
+                if (visualSend.getDynamicReceivingSequence() != null
+                        && visualSend.getDynamicReceivingSequence().getPropertyValue() != null) {
 
-						while (entries.hasNext()) {
-							Map.Entry<String, String> entry = entries.next();
-							expression.addNamespace(entry.getKey(),
-									entry.getValue());
-						}
+                    SynapseXPath expression = new SynapseXPath(
+                            visualSend.getDynamicReceivingSequence().getPropertyValue());
 
-						Value receivingSequence = new Value(expression);
-						sendMediator.setReceivingSequence(receivingSequence);
-					}
-				}
+                    if (visualSend.getDynamicReceivingSequence().getNamespaces() != null) {
 
-			}
-			
-			if (visualSend.isBuildMessageBeforeSending()) {
-				sendMediator.setBuildMessage(visualSend.isBuildMessageBeforeSending());
-			}
-			
-			return sendMediator;
-		}
-	}
+                        Map<String, String> map = visualSend.getDynamicReceivingSequence().getNamespaces();
+                        Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
+
+                        while (entries.hasNext()) {
+                            Map.Entry<String, String> entry = entries.next();
+                            expression.addNamespace(entry.getKey(), entry.getValue());
+                        }
+
+                        Value receivingSequence = new Value(expression);
+                        sendMediator.setReceivingSequence(receivingSequence);
+                    }
+                }
+
+            }
+
+            if (visualSend.isBuildMessageBeforeSending()) {
+                sendMediator.setBuildMessage(visualSend.isBuildMessageBeforeSending());
+            }
+
+            return sendMediator;
+        }
+    }
 
 }

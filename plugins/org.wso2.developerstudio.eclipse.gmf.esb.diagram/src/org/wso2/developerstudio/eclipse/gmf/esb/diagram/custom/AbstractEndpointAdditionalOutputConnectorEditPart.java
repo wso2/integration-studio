@@ -17,125 +17,113 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.WestPointerShape;
 
 public abstract class AbstractEndpointAdditionalOutputConnectorEditPart extends AbstractOutputConnectorEditPart {
 
-	public NodeFigure figure_;	
-	protected IFigure primaryShapeForward;
-	public IFigure primaryShapeReverse;
-	
-	public AbstractEndpointAdditionalOutputConnectorEditPart(View view) {
-		super(view);
-		// TODO Auto-generated constructor stub
-	}
-	
-	public IFigure createNodeShapeReverse() {
-		return primaryShapeReverse = new WestPointerFigure();
-	}
+    public NodeFigure figure_;
+    protected IFigure primaryShapeForward;
+    public IFigure primaryShapeReverse;
 
-	public IFigure createNodeShapeForward() {
-		return primaryShapeForward = new EastPointerFigure();
-	}
+    public AbstractEndpointAdditionalOutputConnectorEditPart(View view) {
+        super(view);
+        // TODO Auto-generated constructor stub
+    }
 
-	public EastPointerFigure getPrimaryShapeForward() {
-		return (EastPointerFigure) primaryShapeForward;
-	}
+    public IFigure createNodeShapeReverse() {
+        return primaryShapeReverse = new WestPointerFigure();
+    }
 
-	public WestPointerFigure getPrimaryShapeReverse() {
-		return (WestPointerFigure) primaryShapeReverse;
-	}
-	
-	public NodeFigure getNodeFigureOutput() {
-		return figure_;
-	}
-	
-	public class EastPointerFigure extends EastPointerShape {
+    public IFigure createNodeShapeForward() {
+        return primaryShapeForward = new EastPointerFigure();
+    }
 
-		
-		public EastPointerFigure() {
+    public EastPointerFigure getPrimaryShapeForward() {
+        return (EastPointerFigure) primaryShapeForward;
+    }
 
-			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
-					getMapMode().DPtoLP(10)));
-			this.addMouseMotionListener(new MouseMotionListener() {
+    public WestPointerFigure getPrimaryShapeReverse() {
+        return (WestPointerFigure) primaryShapeReverse;
+    }
 
-				public void mouseMoved(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+    public NodeFigure getNodeFigureOutput() {
+        return figure_;
+    }
 
-				}
+    public class EastPointerFigure extends EastPointerShape {
 
-				public void mouseHover(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+        public EastPointerFigure() {
 
-				}
+            this.setBackgroundColor(THIS_BACK);
+            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+            this.addMouseMotionListener(new MouseMotionListener() {
 
-				public void mouseExited(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+                public void mouseMoved(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-				}
+                }
 
-				public void mouseEntered(MouseEvent arg0) {
-					// TODO Auto-generated method stub					
-					getEditDomain()
-							.getPaletteViewer()
-							.setActiveTool(
-									(ToolEntry) (((PaletteContainer) getEditDomain()
-											.getPaletteViewer()
-											.getPaletteRoot().getChildren()
-											.get(4)).getChildren().get(0)));
+                public void mouseHover(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-				}
+                }
 
-				public void mouseDragged(MouseEvent arg0) {
-					// TODO Auto-generated method stub
+                public void mouseExited(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-				}
-			});
-		}
+                }
 
-	}
+                public void mouseEntered(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
+                    getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain()
+                            .getPaletteViewer().getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
 
-	public class WestPointerFigure extends WestPointerShape {
+                }
 
-		public WestPointerFigure() {
+                public void mouseDragged(MouseEvent arg0) {
+                    // TODO Auto-generated method stub
 
-			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
-					getMapMode().DPtoLP(10)));
-			this.addMouseMotionListener(new MouseMotionListener() {
+                }
+            });
+        }
 
-				public void mouseMoved(MouseEvent me) {
-					// TODO Auto-generated method stub
+    }
 
-				}
+    public class WestPointerFigure extends WestPointerShape {
 
-				public void mouseHover(MouseEvent me) {
-					// TODO Auto-generated method stub
+        public WestPointerFigure() {
 
-				}
+            this.setBackgroundColor(THIS_BACK);
+            this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+            this.addMouseMotionListener(new MouseMotionListener() {
 
-				public void mouseExited(MouseEvent me) {
-					// TODO Auto-generated method stub
+                public void mouseMoved(MouseEvent me) {
+                    // TODO Auto-generated method stub
 
-				}
+                }
 
-				public void mouseEntered(MouseEvent me) {
-					// TODO Auto-generated method stub
-					getEditDomain()
-							.getPaletteViewer()
-							.setActiveTool(
-									(ToolEntry) (((PaletteContainer) getEditDomain()
-											.getPaletteViewer()
-											.getPaletteRoot().getChildren()
-											.get(4)).getChildren().get(0)));
+                public void mouseHover(MouseEvent me) {
+                    // TODO Auto-generated method stub
 
-				}
+                }
 
-				public void mouseDragged(MouseEvent me) {
-					// TODO Auto-generated method stub
+                public void mouseExited(MouseEvent me) {
+                    // TODO Auto-generated method stub
 
-				}
-			});
-		}
+                }
 
-	}
-	static final Color THIS_BACK = new Color(null, 50, 50, 50);
-	
+                public void mouseEntered(MouseEvent me) {
+                    // TODO Auto-generated method stub
+                    getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain()
+                            .getPaletteViewer().getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
+
+                }
+
+                public void mouseDragged(MouseEvent me) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+        }
+
+    }
+
+    static final Color THIS_BACK = new Color(null, 50, 50, 50);
+
 }

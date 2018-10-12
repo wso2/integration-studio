@@ -19,26 +19,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleSessionProperty;
  * @generated
  */
 public class RuleSessionPropertyImpl extends AbstractNameValuePropertyImpl implements RuleSessionProperty {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected RuleSessionPropertyImpl() {
-		super();
-		setPropertyName("property_name");
-		setPropertyValue("property_value");
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    protected RuleSessionPropertyImpl() {
+        super();
+        setPropertyName("property_name");
+        setPropertyValue("property_value");
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.RULE_SESSION_PROPERTY;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-} //RuleSessionPropertyImpl
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.RULE_SESSION_PROPERTY;
+    }
+
+} // RuleSessionPropertyImpl

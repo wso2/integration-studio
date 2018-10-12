@@ -46,100 +46,96 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Clou
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
-public class CloudConnectorOperationExtFactory extends AbstractMediatorFactory{
+public class CloudConnectorOperationExtFactory extends AbstractMediatorFactory {
 
-	protected static final QName CONFIG_KEY  = new QName("configKey");
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String CONNECTOR_DIRECTORY = ".Connectors";
-	
-	@Override
-	protected Mediator createSpecificMediator(OMElement elem, Properties properties) {		
-		CloudConnectorOperationExt cloudConnectorOperationExt = new CloudConnectorOperationExt();			
-		OMAttribute configRef = elem.getAttribute(CONFIG_KEY);
-		if (configRef != null) {
-			cloudConnectorOperationExt.setConfigRef(configRef.getAttributeValue());
-		}
-		String [] splittedRootElement=elem.getQName().getLocalPart().split("\\.");
-		String cloudConnectorName="";
-		for(int i=0;i<splittedRootElement.length-1;++i){
-			if(i==(splittedRootElement.length-2)){
-				cloudConnectorName=cloudConnectorName.concat(splittedRootElement[i]);
-			}else {
-				cloudConnectorName=cloudConnectorName.concat(splittedRootElement[i]+".");
-			}
-		}
-		String operationName=splittedRootElement[splittedRootElement.length-1];		
-		cloudConnectorOperationExt.setConnectorComponentName(cloudConnectorName);
-		cloudConnectorOperationExt.setOperation(operationName);
-		
-		cloudConnectorOperationExt.setCloudConnectorName(cloudConnectorName);
-		
-		//TODO expression values for params yet to handle.
-		Iterator<OMElement> parameters=elem.getChildElements();
-		while(parameters.hasNext()) {
-			OMElement parameter=(OMElement)parameters.next();
-			String paramName=parameter.getQName().getLocalPart();			
-			String paramValue=parameter.getText();
-			if(paramValue.startsWith("{") && paramValue.endsWith("}")){
-				paramValue = paramValue.substring(1, paramValue.length() - 1);
-				SynapseXPath synapseXpath=null;
-				try {
-					synapseXpath=new SynapseXPath(parameter,paramValue);
-				} catch (JaxenException e) {
-					log.error("Error while deserializing connector operation", e);
-				}					
-				cloudConnectorOperationExt.getpName2ExpressionMap().put(paramName, new Value(synapseXpath));
-			}else{
-				cloudConnectorOperationExt.getpName2ExpressionMap().put(paramName, new Value(paramValue));
-			}
-		}
-		
-		return cloudConnectorOperationExt;
-	}
-	
-	public List<QName> getTagQNameList() throws Exception {
-		ArrayList<QName> tagQNameList = new ArrayList<QName>();
+    protected static final QName CONFIG_KEY = new QName("configKey");
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static final String CONNECTOR_DIRECTORY = ".Connectors";
 
-			IEditorInput iEditorInput = EsbMultiPageEditor.currentEditor.getEditorInput();
-			IFile file = null;
-			if(iEditorInput instanceof IFileEditorInput){
-				file = ((IFileEditorInput) EsbMultiPageEditor.currentEditor
-						.getEditorInput()).getFile();
-			}else if(iEditorInput instanceof EsbEditorInput){
-				file = ((EsbEditorInput) EsbMultiPageEditor.currentEditor
-						.getEditorInput()).getXmlResource();
-			}else {
-				throw new Exception("Unsupported IEditorInput type. Unable to retrieve file information for editor input");
-			}
-			
+    @Override
+    protected Mediator createSpecificMediator(OMElement elem, Properties properties) {
+        CloudConnectorOperationExt cloudConnectorOperationExt = new CloudConnectorOperationExt();
+        OMAttribute configRef = elem.getAttribute(CONFIG_KEY);
+        if (configRef != null) {
+            cloudConnectorOperationExt.setConfigRef(configRef.getAttributeValue());
+        }
+        String[] splittedRootElement = elem.getQName().getLocalPart().split("\\.");
+        String cloudConnectorName = "";
+        for (int i = 0; i < splittedRootElement.length - 1; ++i) {
+            if (i == (splittedRootElement.length - 2)) {
+                cloudConnectorName = cloudConnectorName.concat(splittedRootElement[i]);
+            } else {
+                cloudConnectorName = cloudConnectorName.concat(splittedRootElement[i] + ".");
+            }
+        }
+        String operationName = splittedRootElement[splittedRootElement.length - 1];
+        cloudConnectorOperationExt.setConnectorComponentName(cloudConnectorName);
+        cloudConnectorOperationExt.setOperation(operationName);
 
-			String connectorRootPath = file.getProject().getWorkspace().getRoot().getLocation()
-					.toString()
-					+ File.separator + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
-			File directory = new File(connectorRootPath);
+        cloudConnectorOperationExt.setCloudConnectorName(cloudConnectorName);
 
-			if (directory != null && directory.isDirectory()) {
-				File[] files=directory.listFiles();
-				for (int i = 0; i < files.length; ++i) {
-					if (files[i].isDirectory()) {
-						CloudConnectorDirectoryTraverser directoryTraverser = CloudConnectorDirectoryTraverser
-								.getInstance(connectorRootPath + File.separator + files[i].getName());
-						Map<String, String> map = directoryTraverser.getOperationsConnectorComponentNameMap();
-						Iterator<String> iterator = map.keySet().iterator();
-						while (iterator.hasNext()) {
-							String key = iterator.next();
-							tagQNameList.add(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, map.get(key) + "." + key));
-						}
-					}
-				}
-			}
-		
-		return tagQNameList;
-	}
+        // TODO expression values for params yet to handle.
+        Iterator<OMElement> parameters = elem.getChildElements();
+        while (parameters.hasNext()) {
+            OMElement parameter = (OMElement) parameters.next();
+            String paramName = parameter.getQName().getLocalPart();
+            String paramValue = parameter.getText();
+            if (paramValue.startsWith("{") && paramValue.endsWith("}")) {
+                paramValue = paramValue.substring(1, paramValue.length() - 1);
+                SynapseXPath synapseXpath = null;
+                try {
+                    synapseXpath = new SynapseXPath(parameter, paramValue);
+                } catch (JaxenException e) {
+                    log.error("Error while deserializing connector operation", e);
+                }
+                cloudConnectorOperationExt.getpName2ExpressionMap().put(paramName, new Value(synapseXpath));
+            } else {
+                cloudConnectorOperationExt.getpName2ExpressionMap().put(paramName, new Value(paramValue));
+            }
+        }
 
-	@Override
-	public QName getTagQName() {
-		return null;
-	}
+        return cloudConnectorOperationExt;
+    }
+
+    public List<QName> getTagQNameList() throws Exception {
+        ArrayList<QName> tagQNameList = new ArrayList<QName>();
+
+        IEditorInput iEditorInput = EsbMultiPageEditor.currentEditor.getEditorInput();
+        IFile file = null;
+        if (iEditorInput instanceof IFileEditorInput) {
+            file = ((IFileEditorInput) EsbMultiPageEditor.currentEditor.getEditorInput()).getFile();
+        } else if (iEditorInput instanceof EsbEditorInput) {
+            file = ((EsbEditorInput) EsbMultiPageEditor.currentEditor.getEditorInput()).getXmlResource();
+        } else {
+            throw new Exception("Unsupported IEditorInput type. Unable to retrieve file information for editor input");
+        }
+
+        String connectorRootPath = file.getProject().getWorkspace().getRoot().getLocation().toString() + File.separator
+                + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
+        File directory = new File(connectorRootPath);
+
+        if (directory != null && directory.isDirectory()) {
+            File[] files = directory.listFiles();
+            for (int i = 0; i < files.length; ++i) {
+                if (files[i].isDirectory()) {
+                    CloudConnectorDirectoryTraverser directoryTraverser = CloudConnectorDirectoryTraverser
+                            .getInstance(connectorRootPath + File.separator + files[i].getName());
+                    Map<String, String> map = directoryTraverser.getOperationsConnectorComponentNameMap();
+                    Iterator<String> iterator = map.keySet().iterator();
+                    while (iterator.hasNext()) {
+                        String key = iterator.next();
+                        tagQNameList.add(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, map.get(key) + "." + key));
+                    }
+                }
+            }
+        }
+
+        return tagQNameList;
+    }
+
+    @Override
+    public QName getTagQName() {
+        return null;
+    }
 
 }

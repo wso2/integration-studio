@@ -37,34 +37,34 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.ImageHolder
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EditPartConstants.FILTER_MEDIATOR_ICON_PATH;
 
 public class FilterMediatorGraphicalShape extends RoundedRectangle {
-	RectangleFigure propertyValueRectangle1;
-	RoundedRectangle leftRectangle;
-	RoundedRectangle containerInsideLeftRectangle;
-	private LayeredPane pane;
-	private Layer figureLayer;
-	private Layer breakpointLayer;
-	private Layer skipPointLayer;
-	protected String toolTipMessage;
-	private Color backgroundColor;
-	private Color borderColor;
-	
-	public FilterMediatorGraphicalShape(Color bgColor, Color borderColor) {
-		this.backgroundColor = bgColor;
-		this.borderColor = borderColor;
-		GridLayout layoutThis = new GridLayout();
-		layoutThis.numColumns = 2;
-		layoutThis.makeColumnsEqualWidth = true;
-		this.setLayoutManager(layoutThis);
-		this.setCornerDimensions(new Dimension(1, 1));
-		this.setOutline(false);
-		this.setBorder(new LineBorder(new Color(null, 224, 224, 224), 2, SWT.BORDER_DASH));
-		createContents();
-	}
+    RectangleFigure propertyValueRectangle1;
+    RoundedRectangle leftRectangle;
+    RoundedRectangle containerInsideLeftRectangle;
+    private LayeredPane pane;
+    private Layer figureLayer;
+    private Layer breakpointLayer;
+    private Layer skipPointLayer;
+    protected String toolTipMessage;
+    private Color backgroundColor;
+    private Color borderColor;
 
-	public void setToolTipMessage(String message){
-		toolTipMessage = message;
-	}
-	
+    public FilterMediatorGraphicalShape(Color bgColor, Color borderColor) {
+        this.backgroundColor = bgColor;
+        this.borderColor = borderColor;
+        GridLayout layoutThis = new GridLayout();
+        layoutThis.numColumns = 2;
+        layoutThis.makeColumnsEqualWidth = true;
+        this.setLayoutManager(layoutThis);
+        this.setCornerDimensions(new Dimension(1, 1));
+        this.setOutline(false);
+        this.setBorder(new LineBorder(new Color(null, 224, 224, 224), 2, SWT.BORDER_DASH));
+        createContents();
+    }
+
+    public void setToolTipMessage(String message) {
+        toolTipMessage = message;
+    }
+
     public void addBreakpointMark() {
         if (breakpointLayer == null) {
             breakpointLayer = new Layer();
@@ -73,8 +73,8 @@ public class FilterMediatorGraphicalShape extends RoundedRectangle {
             constraintBreakpointImageRectangle.verticalAlignment = GridData.BEGINNING;
             constraintBreakpointImageRectangle.horizontalAlignment = GridData.BEGINNING;
             constraintBreakpointImageRectangle.verticalSpan = 1;
-            ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(
-                    DiagramCustomConstants.BREAKPOINT_IMAGE_LOCATION, 16, 16);
+            ImageFigure iconImageFigure = EditPartDrawingHelper
+                    .getIconImageFigure(DiagramCustomConstants.BREAKPOINT_IMAGE_LOCATION, 16, 16);
 
             RoundedRectangle breakpointImageRectangle = new RoundedRectangle();
             breakpointImageRectangle.setCornerDimensions(new Dimension(2, 2));
@@ -103,8 +103,8 @@ public class FilterMediatorGraphicalShape extends RoundedRectangle {
             constraintSkipPointImageRectangle.verticalSpan = 2;
             constraintSkipPointImageRectangle.grabExcessHorizontalSpace = true;
             constraintSkipPointImageRectangle.grabExcessVerticalSpace = true;
-            ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(
-                    DiagramCustomConstants.SKIP_POINT_IMAGE_LOCATION, 56, 56);
+            ImageFigure iconImageFigure = EditPartDrawingHelper
+                    .getIconImageFigure(DiagramCustomConstants.SKIP_POINT_IMAGE_LOCATION, 56, 56);
 
             RoundedRectangle skipPointImageRectangle = new RoundedRectangle();
             skipPointImageRectangle.setCornerDimensions(new Dimension(2, 2));
@@ -122,169 +122,165 @@ public class FilterMediatorGraphicalShape extends RoundedRectangle {
         }
     }
 
-	public void removeBreakpointMark() {
-		if (breakpointLayer != null) {
-			pane.remove(breakpointLayer);
-			breakpointLayer = null;
-		}
-	}
+    public void removeBreakpointMark() {
+        if (breakpointLayer != null) {
+            pane.remove(breakpointLayer);
+            breakpointLayer = null;
+        }
+    }
 
-	public void removeSkipPointMark() {
-		if (skipPointLayer != null) {
-			pane.remove(skipPointLayer);
-			skipPointLayer = null;
-		}
-	}
+    public void removeSkipPointMark() {
+        if (skipPointLayer != null) {
+            pane.remove(skipPointLayer);
+            skipPointLayer = null;
+        }
+    }
 
-	private void createContents() {
+    private void createContents() {
 
-		pane = new LayeredPane();
-		pane.setLayoutManager(new StackLayout());
-		figureLayer = new Layer();
-		figureLayer.setLayoutManager(new GridLayout());
-		
-		leftRectangle = new RoundedRectangle();
-		leftRectangle.setCornerDimensions(new Dimension(1, 1));
-		leftRectangle.setOutline(false);
-		leftRectangle.setFill(false);
-		leftRectangle.setPreferredSize(new Dimension(110, 30));
-		leftRectangle.setMinimumSize(new Dimension(90, 95));
+        pane = new LayeredPane();
+        pane.setLayoutManager(new StackLayout());
+        figureLayer = new Layer();
+        figureLayer.setLayoutManager(new GridLayout());
 
-		GridData constraintGraphicalNodeContainer = new GridData();
-		constraintGraphicalNodeContainer.verticalAlignment = GridData.CENTER;
-		constraintGraphicalNodeContainer.horizontalAlignment = GridData.CENTER;
-		this.add(leftRectangle, constraintGraphicalNodeContainer);
+        leftRectangle = new RoundedRectangle();
+        leftRectangle.setCornerDimensions(new Dimension(1, 1));
+        leftRectangle.setOutline(false);
+        leftRectangle.setFill(false);
+        leftRectangle.setPreferredSize(new Dimension(110, 30));
+        leftRectangle.setMinimumSize(new Dimension(90, 95));
 
-		GridLayout layoutGraphicalNodeContainer = new GridLayout();
-		layoutGraphicalNodeContainer.numColumns = 1;
-		leftRectangle.setLayoutManager(layoutGraphicalNodeContainer);
+        GridData constraintGraphicalNodeContainer = new GridData();
+        constraintGraphicalNodeContainer.verticalAlignment = GridData.CENTER;
+        constraintGraphicalNodeContainer.horizontalAlignment = GridData.CENTER;
+        this.add(leftRectangle, constraintGraphicalNodeContainer);
 
-		// Create inner rectangle inside the left side rectangle.
-		containerInsideLeftRectangle = createInnerRectangle(leftRectangle);
+        GridLayout layoutGraphicalNodeContainer = new GridLayout();
+        layoutGraphicalNodeContainer.numColumns = 1;
+        leftRectangle.setLayoutManager(layoutGraphicalNodeContainer);
 
-		Image image = ImageHolder.getInstance().getMediatorImage(getIconPath());
-		Image scaled = new Image(Display.getDefault(), 23, 25);
-		GC gc = new GC(scaled);
-		gc.setAntialias(SWT.ON);
-		gc.setInterpolation(SWT.HIGH);
-		gc.drawImage(image, 0, 0, image.getBounds().width,
-				image.getBounds().height, 0, 0, 23, 25);
-		gc.dispose();
+        // Create inner rectangle inside the left side rectangle.
+        containerInsideLeftRectangle = createInnerRectangle(leftRectangle);
 
-		ImageFigure img = new ImageFigure(image);
-		img.setSize(new Dimension(23, 25));
+        Image image = ImageHolder.getInstance().getMediatorImage(getIconPath());
+        Image scaled = new Image(Display.getDefault(), 23, 25);
+        GC gc = new GC(scaled);
+        gc.setAntialias(SWT.ON);
+        gc.setInterpolation(SWT.HIGH);
+        gc.drawImage(image, 0, 0, image.getBounds().width, image.getBounds().height, 0, 0, 23, 25);
+        gc.dispose();
 
-		RectangleFigure imageRectangle = new RectangleFigure();
-		imageRectangle.setOutline(false);
-		imageRectangle.setBackgroundColor(new Color(null, 233, 245, 215));
-		imageRectangle.setPreferredSize(new Dimension(23, 25));
-		imageRectangle.add(img);
+        ImageFigure img = new ImageFigure(image);
+        img.setSize(new Dimension(23, 25));
 
-		GridData constraintImageRectangle = new GridData();
-		constraintImageRectangle.verticalAlignment = GridData.END;
-		constraintImageRectangle.horizontalAlignment = GridData.CENTER;
-		constraintImageRectangle.horizontalIndent = 0;
-		constraintImageRectangle.horizontalSpan = 1;
-		constraintImageRectangle.verticalSpan = 2;
-		constraintImageRectangle.grabExcessHorizontalSpace = true;
-		constraintImageRectangle.grabExcessVerticalSpace = true;
-		figureLayer.add(img, constraintImageRectangle);
+        RectangleFigure imageRectangle = new RectangleFigure();
+        imageRectangle.setOutline(false);
+        imageRectangle.setBackgroundColor(new Color(null, 233, 245, 215));
+        imageRectangle.setPreferredSize(new Dimension(23, 25));
+        imageRectangle.add(img);
 
-		imageRectangle.setLayoutManager(new StackLayout());
+        GridData constraintImageRectangle = new GridData();
+        constraintImageRectangle.verticalAlignment = GridData.END;
+        constraintImageRectangle.horizontalAlignment = GridData.CENTER;
+        constraintImageRectangle.horizontalIndent = 0;
+        constraintImageRectangle.horizontalSpan = 1;
+        constraintImageRectangle.verticalSpan = 2;
+        constraintImageRectangle.grabExcessHorizontalSpace = true;
+        constraintImageRectangle.grabExcessVerticalSpace = true;
+        figureLayer.add(img, constraintImageRectangle);
 
-		// Rectangle to contain the type name label.
-		RectangleFigure esbNodeTypeNameRectangle1 = new RectangleFigure();
-		esbNodeTypeNameRectangle1.setOutline(false);
-		esbNodeTypeNameRectangle1.setBackgroundColor(new Color(null, 233, 245, 215));
-		esbNodeTypeNameRectangle1.setPreferredSize(new Dimension(45, 20));
+        imageRectangle.setLayoutManager(new StackLayout());
 
-		GridData constraintEsbNodeTypeNameRectangle = new GridData();
-		constraintEsbNodeTypeNameRectangle.verticalAlignment = GridData.BEGINNING;
-		constraintEsbNodeTypeNameRectangle.horizontalAlignment = GridData.CENTER;
-		constraintEsbNodeTypeNameRectangle.horizontalIndent = 0;
-		constraintEsbNodeTypeNameRectangle.horizontalSpan = 1;
-		constraintEsbNodeTypeNameRectangle.verticalSpan = 1;
-		constraintEsbNodeTypeNameRectangle.grabExcessHorizontalSpace = true;
-		constraintEsbNodeTypeNameRectangle.grabExcessVerticalSpace = true;
+        // Rectangle to contain the type name label.
+        RectangleFigure esbNodeTypeNameRectangle1 = new RectangleFigure();
+        esbNodeTypeNameRectangle1.setOutline(false);
+        esbNodeTypeNameRectangle1.setBackgroundColor(new Color(null, 233, 245, 215));
+        esbNodeTypeNameRectangle1.setPreferredSize(new Dimension(45, 20));
 
-		esbNodeTypeNameRectangle1.setLayoutManager(new StackLayout());
+        GridData constraintEsbNodeTypeNameRectangle = new GridData();
+        constraintEsbNodeTypeNameRectangle.verticalAlignment = GridData.BEGINNING;
+        constraintEsbNodeTypeNameRectangle.horizontalAlignment = GridData.CENTER;
+        constraintEsbNodeTypeNameRectangle.horizontalIndent = 0;
+        constraintEsbNodeTypeNameRectangle.horizontalSpan = 1;
+        constraintEsbNodeTypeNameRectangle.verticalSpan = 1;
+        constraintEsbNodeTypeNameRectangle.grabExcessHorizontalSpace = true;
+        constraintEsbNodeTypeNameRectangle.grabExcessVerticalSpace = true;
 
-		// Actual label to display which type this is.
-		WrappingLabel esbNodeTypeNameLabel = new WrappingLabel();
-		esbNodeTypeNameLabel.setText(getNodeName());
-		esbNodeTypeNameLabel.setForegroundColor(this.borderColor);
-		esbNodeTypeNameLabel.setFont(new Font(null, "Arial", 10, SWT.BOLD));
-		esbNodeTypeNameLabel.setAlignment(SWT.CENTER);
-		esbNodeTypeNameLabel.setPreferredSize(new Dimension(45, 20));
+        esbNodeTypeNameRectangle1.setLayoutManager(new StackLayout());
 
-		figureLayer.add(esbNodeTypeNameLabel,
-				constraintEsbNodeTypeNameRectangle);
-		pane.add(figureLayer);
-		GridData constraintPaneRectangle = new GridData();
-		constraintPaneRectangle.verticalAlignment = GridData.FILL;
-		constraintPaneRectangle.horizontalAlignment = GridData.FILL;
-		constraintPaneRectangle.horizontalIndent = 0;
-		constraintPaneRectangle.horizontalSpan = 1;
-		constraintPaneRectangle.verticalSpan = 1;
-		constraintPaneRectangle.grabExcessHorizontalSpace = true;
-		constraintPaneRectangle.grabExcessVerticalSpace = true;
-		containerInsideLeftRectangle.add(pane, constraintPaneRectangle);
-	}
+        // Actual label to display which type this is.
+        WrappingLabel esbNodeTypeNameLabel = new WrappingLabel();
+        esbNodeTypeNameLabel.setText(getNodeName());
+        esbNodeTypeNameLabel.setForegroundColor(this.borderColor);
+        esbNodeTypeNameLabel.setFont(new Font(null, "Arial", 10, SWT.BOLD));
+        esbNodeTypeNameLabel.setAlignment(SWT.CENTER);
+        esbNodeTypeNameLabel.setPreferredSize(new Dimension(45, 20));
 
-	private RoundedRectangle createInnerRectangle(RoundedRectangle leftRectangle) {
-		RoundedRectangle innerRect = new RoundedRectangle();
-		innerRect.setCornerDimensions(new Dimension(1, 1));
-		innerRect.setOutline(false);
-		innerRect.setBackgroundColor(this.getBackgroundColor());
-		LineBorder innerRectBorder = new LineBorder(this.borderColor, 1, SWT.BORDER_SOLID);
-		innerRect.setBorder(innerRectBorder);
-		innerRect.setPreferredSize(new Dimension(95, 25));
-		innerRect.setMinimumSize(new Dimension(80, 100));
-		innerRect.setBackgroundColor(this.backgroundColor);
+        figureLayer.add(esbNodeTypeNameLabel, constraintEsbNodeTypeNameRectangle);
+        pane.add(figureLayer);
+        GridData constraintPaneRectangle = new GridData();
+        constraintPaneRectangle.verticalAlignment = GridData.FILL;
+        constraintPaneRectangle.horizontalAlignment = GridData.FILL;
+        constraintPaneRectangle.horizontalIndent = 0;
+        constraintPaneRectangle.horizontalSpan = 1;
+        constraintPaneRectangle.verticalSpan = 1;
+        constraintPaneRectangle.grabExcessHorizontalSpace = true;
+        constraintPaneRectangle.grabExcessVerticalSpace = true;
+        containerInsideLeftRectangle.add(pane, constraintPaneRectangle);
+    }
 
-		GridLayout innerRectLayout = new GridLayout();
-		innerRectLayout.numColumns = 1;
-		innerRectLayout.makeColumnsEqualWidth = true;
-		innerRect.setLayoutManager(innerRectLayout);
+    private RoundedRectangle createInnerRectangle(RoundedRectangle leftRectangle) {
+        RoundedRectangle innerRect = new RoundedRectangle();
+        innerRect.setCornerDimensions(new Dimension(1, 1));
+        innerRect.setOutline(false);
+        innerRect.setBackgroundColor(this.getBackgroundColor());
+        LineBorder innerRectBorder = new LineBorder(this.borderColor, 1, SWT.BORDER_SOLID);
+        innerRect.setBorder(innerRectBorder);
+        innerRect.setPreferredSize(new Dimension(95, 25));
+        innerRect.setMinimumSize(new Dimension(80, 100));
+        innerRect.setBackgroundColor(this.backgroundColor);
 
-		GridData innerRectGridData = new GridData();
-		innerRectGridData.verticalAlignment = GridData.FILL;
-		innerRectGridData.horizontalAlignment = GridData.FILL;
-		innerRectGridData.horizontalIndent = 5;
-		innerRectGridData.horizontalSpan = 5;
-		innerRectGridData.grabExcessHorizontalSpace = true;
-		innerRectGridData.grabExcessVerticalSpace = true;
-		leftRectangle.add(innerRect, innerRectGridData);
+        GridLayout innerRectLayout = new GridLayout();
+        innerRectLayout.numColumns = 1;
+        innerRectLayout.makeColumnsEqualWidth = true;
+        innerRect.setLayoutManager(innerRectLayout);
 
-		return innerRect;
-	}
-	
-	public RectangleFigure getPropertyValueRectangle1() {
-		return propertyValueRectangle1;
-	}
+        GridData innerRectGridData = new GridData();
+        innerRectGridData.verticalAlignment = GridData.FILL;
+        innerRectGridData.horizontalAlignment = GridData.FILL;
+        innerRectGridData.horizontalIndent = 5;
+        innerRectGridData.horizontalSpan = 5;
+        innerRectGridData.grabExcessHorizontalSpace = true;
+        innerRectGridData.grabExcessVerticalSpace = true;
+        leftRectangle.add(innerRect, innerRectGridData);
 
-	public String getNodeName() {
-		return "Filter";
-	}
+        return innerRect;
+    }
 
-	public Color getLabelBackColor() {
-		return this.getBackgroundColor();
-	}
+    public RectangleFigure getPropertyValueRectangle1() {
+        return propertyValueRectangle1;
+    }
 
-	public String getIconPath() {
-		return FILTER_MEDIATOR_ICON_PATH;
-	}
+    public String getNodeName() {
+        return "Filter";
+    }
 
-	/**
-	 * @generated
-	 */
-	static final Color LABEL2_FORE = new Color(null, 50, 50,
-			50);
+    public Color getLabelBackColor() {
+        return this.getBackgroundColor();
+    }
 
-	/**
-	 * @generated
-	 */
-	static final Color LOGMEDIATORPROPERTYVALUERECTANGLE1_BACK = new Color(
-			null, 255, 255, 255);
+    public String getIconPath() {
+        return FILTER_MEDIATOR_ICON_PATH;
+    }
+
+    /**
+     * @generated
+     */
+    static final Color LABEL2_FORE = new Color(null, 50, 50, 50);
+
+    /**
+     * @generated
+     */
+    static final Color LOGMEDIATORPROPERTYVALUERECTANGLE1_BACK = new Color(null, 255, 255, 255);
 
 }

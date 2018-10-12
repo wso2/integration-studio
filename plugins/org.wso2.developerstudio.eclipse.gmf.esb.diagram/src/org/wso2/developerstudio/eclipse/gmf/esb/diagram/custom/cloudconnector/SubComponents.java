@@ -17,28 +17,28 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector;
 
 public class SubComponents {
-	
-	private String name;
-	private String fileName;
 
-	public SubComponents(String name,String fileName) {
-		this.name=name;
-		this.fileName = fileName;
-	}
-	
-	public String getFileName() {
-		return fileName;
-	}
+    private String name;
+    private String fileName;
 
-	public void setFileName(String fileName) {
-		this.fileName=fileName;
-	}
+    public SubComponents(String name, String fileName) {
+        this.name = name;
+        this.fileName = fileName;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getFileName() {
+        return fileName;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

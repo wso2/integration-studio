@@ -35,58 +35,56 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class StoreMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		try {
-			information.getParentSequence().addChild(createStoreMediator(subject));
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-		doTransform(information,
-				((StoreMediator) subject).getOutputConnector());
-		
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createStoreMediator(subject));
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+        doTransform(information, ((StoreMediator) subject).getOutputConnector());
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws TransformerException {
-		try {
-			sequence.addChild(createStoreMediator(subject));
-			doTransformWithinSequence(information, ((StoreMediator) subject).getOutputConnector().getOutgoingLink(),
-					sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
-	
-	private org.apache.synapse.mediators.store.MessageStoreMediator createStoreMediator(EsbNode subject)
-			throws JaxenException {
-		Assert.isTrue(subject instanceof StoreMediator, "Invalid subject.");
-		StoreMediator visualStore = (StoreMediator)subject;
-		org.apache.synapse.mediators.store.MessageStoreMediator storeMediator=new org.apache.synapse.mediators.store.MessageStoreMediator();
-		setCommonProperties(storeMediator, visualStore);
-		if (null != visualStore.getOnStoreSequence()
-				&& StringUtils.isNotBlank(visualStore.getOnStoreSequence().getKeyValue())) {
-			storeMediator.setOnStoreSequence(visualStore.getOnStoreSequence().getKeyValue());
-		}
-		if (visualStore.getSpecifyAs() == StoreMediatorSpecifyType.VALUE) {
-			storeMediator.setMessageStoreName(visualStore.getMessageStore());
-		} else if (visualStore.getSpecifyAs() == StoreMediatorSpecifyType.EXPRESSION) {
- 			NamespacedProperty payLoadExp = visualStore.getExpression();
-			if (payLoadExp != null && !payLoadExp.getPropertyValue().equals("")) {
-				SynapseXPath xpath = null;
-				xpath = new SynapseXPath(payLoadExp.getPropertyValue());
-				Map<String, String> nameSpaceMap = payLoadExp.getNamespaces();
- 				for (String key : nameSpaceMap.keySet()) {
-					xpath.addNamespace(key, nameSpaceMap.get(key));
-				}
-				storeMediator.setMessageStoreExp(xpath);
-			}
-		}
-		return storeMediator;
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+
+    }
+
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createStoreMediator(subject));
+            doTransformWithinSequence(information, ((StoreMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
+
+    private org.apache.synapse.mediators.store.MessageStoreMediator createStoreMediator(EsbNode subject)
+            throws JaxenException {
+        Assert.isTrue(subject instanceof StoreMediator, "Invalid subject.");
+        StoreMediator visualStore = (StoreMediator) subject;
+        org.apache.synapse.mediators.store.MessageStoreMediator storeMediator = new org.apache.synapse.mediators.store.MessageStoreMediator();
+        setCommonProperties(storeMediator, visualStore);
+        if (null != visualStore.getOnStoreSequence()
+                && StringUtils.isNotBlank(visualStore.getOnStoreSequence().getKeyValue())) {
+            storeMediator.setOnStoreSequence(visualStore.getOnStoreSequence().getKeyValue());
+        }
+        if (visualStore.getSpecifyAs() == StoreMediatorSpecifyType.VALUE) {
+            storeMediator.setMessageStoreName(visualStore.getMessageStore());
+        } else if (visualStore.getSpecifyAs() == StoreMediatorSpecifyType.EXPRESSION) {
+            NamespacedProperty payLoadExp = visualStore.getExpression();
+            if (payLoadExp != null && !payLoadExp.getPropertyValue().equals("")) {
+                SynapseXPath xpath = null;
+                xpath = new SynapseXPath(payLoadExp.getPropertyValue());
+                Map<String, String> nameSpaceMap = payLoadExp.getNamespaces();
+                for (String key : nameSpaceMap.keySet()) {
+                    xpath.addNamespace(key, nameSpaceMap.get(key));
+                }
+                storeMediator.setMessageStoreExp(xpath);
+            }
+        }
+        return storeMediator;
+    }
 
 }

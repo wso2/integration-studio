@@ -35,15 +35,14 @@ import org.apache.synapse.config.xml.EntryFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 
 /**
- * Custom factory for {@link Entry} instances. 
+ * Custom factory for {@link Entry} instances.
  */
 public class EntryExtFactory extends EntryFactory {
-	
+
     private static Log log = LogFactory.getLog(EntryFactory.class);
 
-    private static final QName DESCRIPTION_Q
-            = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "description");
-    
+    private static final QName DESCRIPTION_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "description");
+
     public static Entry createEntry(OMElement elem, Properties properties) {
 
         OMAttribute key = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
@@ -62,8 +61,7 @@ public class EntryExtFactory extends EntryFactory {
                 descriptionElem.detach();
             }
 
-            String src  = elem.getAttributeValue(
-                    new QName(XMLConfigConstants.NULL_NAMESPACE, "src"));
+            String src = elem.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "src"));
 
             if (src != null) {
                 try {
@@ -74,7 +72,7 @@ public class EntryExtFactory extends EntryFactory {
                 }
 
             } else {
-                OMNode    nodeValue = elem.getFirstOMChild();
+                OMNode nodeValue = elem.getFirstOMChild();
                 OMElement elemValue = elem.getFirstElement();
 
                 if (elemValue != null) {
@@ -82,17 +80,17 @@ public class EntryExtFactory extends EntryFactory {
                     entry.setValue(elemValue);
                 } else if (nodeValue != null && nodeValue instanceof OMText) {
                     entry.setType(Entry.INLINE_TEXT);
-                	entry.setValue(elem.getText());
-				}
+                    entry.setValue(elem.getText());
+                }
             }
 
             return entry;
         }
     }
 
-	private static void handleException(String msg) {
-		log.error(msg);
-		throw new SynapseException(msg);
-	}
+    private static void handleException(String msg) {
+        log.error(msg);
+        throw new SynapseException(msg);
+    }
 
 }

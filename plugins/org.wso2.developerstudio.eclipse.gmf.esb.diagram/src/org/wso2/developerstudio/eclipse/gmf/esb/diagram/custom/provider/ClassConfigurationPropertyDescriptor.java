@@ -11,28 +11,27 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureClassMediatorDialog;
- 
+
 public class ClassConfigurationPropertyDescriptor extends PropertyDescriptor {
- 
-	public ClassConfigurationPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
- 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				ClassMediator classMediator = (ClassMediator) object;
-				 //.getEditingDomain()
-				ConfigureClassMediatorDialog classMediatorConfigurationDialog = new ConfigureClassMediatorDialog(shell, classMediator, TransactionUtil.getEditingDomain(classMediator));
-				classMediatorConfigurationDialog.setBlockOnOpen(true);
-				classMediatorConfigurationDialog.open();
-				return null;
-			}
-		};
-	}
- 
+
+    public ClassConfigurationPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ClassMediator classMediator = (ClassMediator) object;
+                // .getEditingDomain()
+                ConfigureClassMediatorDialog classMediatorConfigurationDialog = new ConfigureClassMediatorDialog(shell,
+                        classMediator, TransactionUtil.getEditingDomain(classMediator));
+                classMediatorConfigurationDialog.setBlockOnOpen(true);
+                classMediatorConfigurationDialog.open();
+                return null;
+            }
+        };
+    }
+
 }

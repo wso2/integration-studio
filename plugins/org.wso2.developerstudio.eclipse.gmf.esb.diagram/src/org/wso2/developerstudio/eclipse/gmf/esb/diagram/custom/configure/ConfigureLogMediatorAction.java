@@ -34,34 +34,34 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
  * custom UI.
  */
 public class ConfigureLogMediatorAction extends ConfigureEsbNodeAction {
-	/**
-	 * Creates a new {@link ConfigureLogMediatorAction} instance.
-	 * 
-	 * @param part a {@link IWorkbenchPart} instance.
-	 */
-	public ConfigureLogMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId("configure-log-mediator-action-id");
-		setText("Configure...");
-		setToolTipText("Configure log mediator.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
+    /**
+     * Creates a new {@link ConfigureLogMediatorAction} instance.
+     * 
+     * @param part a {@link IWorkbenchPart} instance.
+     */
+    public ConfigureLogMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId("configure-log-mediator-action-id");
+        setText("Configure...");
+        setToolTipText("Configure log mediator.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof LogMediator, "Invalid selection.");
+    /**
+     * {@inheritDoc}
+     */
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
 
-		Shell shell = Display.getDefault().getActiveShell();		
-		Dialog logMediatorConfigurationDialog = new ConfigureLogMediatorDialog(shell, (LogMediator) selectedObj,
-				getEditingDomain());
-		logMediatorConfigurationDialog.setBlockOnOpen(true);
-		logMediatorConfigurationDialog.open();
-	}
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof LogMediator, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+        Dialog logMediatorConfigurationDialog = new ConfigureLogMediatorDialog(shell, (LogMediator) selectedObj,
+                getEditingDomain());
+        logMediatorConfigurationDialog.setBlockOnOpen(true);
+        logMediatorConfigurationDialog.open();
+    }
 }

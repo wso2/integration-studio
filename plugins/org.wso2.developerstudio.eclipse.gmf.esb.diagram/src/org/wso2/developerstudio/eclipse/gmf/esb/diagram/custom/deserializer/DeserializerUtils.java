@@ -36,94 +36,88 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorF
 
 public class DeserializerUtils {
 
-	public static boolean isInteger(String numberString) {
+    public static boolean isInteger(String numberString) {
 
-		try {
-			Integer.parseInt(numberString);
-		} catch (NumberFormatException e) {
+        try {
+            Integer.parseInt(numberString);
+        } catch (NumberFormatException e) {
 
-			return false;
-		}
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	public static boolean isValidRegex(String regex) {
+    public static boolean isValidRegex(String regex) {
 
-		try {
-			Pattern.compile(regex);
-		} catch (PatternSyntaxException exception) {
+        try {
+            Pattern.compile(regex);
+        } catch (PatternSyntaxException exception) {
 
-			return false;
-		}
+            return false;
+        }
 
-		return true;
-	}
-	
-	protected static String join(Iterable<? extends CharSequence> s, String delimiter) {
-	    @SuppressWarnings("unchecked")
-		Iterator<String> iter = (Iterator<String>) s.iterator();
-	    StringBuffer buffer = new StringBuffer(iter.next());
-	    while (iter.hasNext()) buffer.append(delimiter).append(iter.next());
-	    return buffer.toString();
-	}
-	
-	public static EObject createNode(IGraphicalEditPart editPart , IElementType elementType) {
-		CreationTool tool = new CreationTool(elementType);
+        return true;
+    }
 
-		CreateViewAndElementRequest req = (CreateViewAndElementRequest) 
-		tool.createCreateRequest();	
-		
-		CreateViewAndOptionallyElementCommand createCmd = new 
-		CreateViewAndOptionallyElementCommand(	
-		req.getViewAndElementDescriptor().getElementAdapter(),
-		editPart,
-		null,
-		req.getViewAndElementDescriptor().getPreferencesHint());
-		
-		
-		org.eclipse.gef.commands.CompoundCommand cc = new org.eclipse.gef.commands.CompoundCommand("Create Node");
+    protected static String join(Iterable<? extends CharSequence> s, String delimiter) {
+        @SuppressWarnings("unchecked")
+        Iterator<String> iter = (Iterator<String>) s.iterator();
+        StringBuffer buffer = new StringBuffer(iter.next());
+        while (iter.hasNext())
+            buffer.append(delimiter).append(iter.next());
+        return buffer.toString();
+    }
 
-		
-		cc.add(new ICommandProxy(createCmd));
-		if(cc.canExecute()){
-			editPart.getDiagramEditDomain().getDiagramCommandStack()
-				.execute(cc);
-			if (((Node)((IAdaptable)createCmd.getResult()).getAdapter(EObject.class)) != null) {
-			    return ((Node)((IAdaptable)createCmd.getResult()).getAdapter(EObject.class)).getElement();
-			}
-		}
-		return null;
-	}
-	
-	public static Dimension getPreferredSize(IGraphicalEditPart editPart){
-		AbstractMediatorFlowCompartmentEditPart compartment = getMediatorFlowCompartment(editPart);
-		if(compartment!=null){
-			return compartment.getContentPane().getBounds().getSize().getCopy();
-		}
-		return editPart.getFigure().getPreferredSize();
-	}
+    public static EObject createNode(IGraphicalEditPart editPart, IElementType elementType) {
+        CreationTool tool = new CreationTool(elementType);
 
-	/**
-	 * @param editPart
-	 */
-	public static AbstractMediatorFlowCompartmentEditPart getMediatorFlowCompartment(
-			IGraphicalEditPart editPart) {
-		List<?> children = editPart.getChildren();
-		for (Iterator<?> i = children.iterator(); i.hasNext();) {
-			Object child = i.next();
-			if (!(child instanceof AbstractConnectorEditPart)) {
-				if (child instanceof AbstractMediatorFlowCompartmentEditPart) {
-					return (AbstractMediatorFlowCompartmentEditPart) child;
-				} else if (child instanceof IGraphicalEditPart) {
-					AbstractMediatorFlowCompartmentEditPart compartment = getMediatorFlowCompartment((IGraphicalEditPart) child);
-					if (compartment != null) {
-						return compartment;
-					}
-				}
-			}
-		}
-		return null;
-	}
+        CreateViewAndElementRequest req = (CreateViewAndElementRequest) tool.createCreateRequest();
+
+        CreateViewAndOptionallyElementCommand createCmd = new CreateViewAndOptionallyElementCommand(
+                req.getViewAndElementDescriptor().getElementAdapter(), editPart, null,
+                req.getViewAndElementDescriptor().getPreferencesHint());
+
+        org.eclipse.gef.commands.CompoundCommand cc = new org.eclipse.gef.commands.CompoundCommand("Create Node");
+
+        cc.add(new ICommandProxy(createCmd));
+        if (cc.canExecute()) {
+            editPart.getDiagramEditDomain().getDiagramCommandStack().execute(cc);
+            if (((Node) ((IAdaptable) createCmd.getResult()).getAdapter(EObject.class)) != null) {
+                return ((Node) ((IAdaptable) createCmd.getResult()).getAdapter(EObject.class)).getElement();
+            }
+        }
+        return null;
+    }
+
+    public static Dimension getPreferredSize(IGraphicalEditPart editPart) {
+        AbstractMediatorFlowCompartmentEditPart compartment = getMediatorFlowCompartment(editPart);
+        if (compartment != null) {
+            return compartment.getContentPane().getBounds().getSize().getCopy();
+        }
+        return editPart.getFigure().getPreferredSize();
+    }
+
+    /**
+     * @param editPart
+     */
+    public static AbstractMediatorFlowCompartmentEditPart getMediatorFlowCompartment(IGraphicalEditPart editPart) {
+        List<?> children = editPart.getChildren();
+        for (Iterator<?> i = children.iterator(); i.hasNext();) {
+            Object child = i.next();
+            if (!(child instanceof AbstractConnectorEditPart)) {
+                if (child instanceof AbstractMediatorFlowCompartmentEditPart) {
+                    return (AbstractMediatorFlowCompartmentEditPart) child;
+                } else if (child instanceof IGraphicalEditPart) {
+                    AbstractMediatorFlowCompartmentEditPart compartment = getMediatorFlowCompartment(
+                            (IGraphicalEditPart) child);
+                    if (compartment != null) {
+                        return compartment;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 
 }

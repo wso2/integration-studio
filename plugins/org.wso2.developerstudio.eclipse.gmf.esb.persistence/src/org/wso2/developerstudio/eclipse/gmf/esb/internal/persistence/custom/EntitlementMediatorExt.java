@@ -18,17 +18,16 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom;
 
 import org.wso2.carbon.identity.entitlement.mediator.EntitlementMediator;
 
-public class EntitlementMediatorExt extends EntitlementMediator{
+public class EntitlementMediatorExt extends EntitlementMediator {
 
-	private String remoteServicePassword;
+    private String remoteServicePassword;
 
-	public String getRemoteServicePassword() {
-		return remoteServicePassword;
-	}
+    public String getRemoteServicePassword() {
+        return remoteServicePassword;
+    }
 
-	public void setRemoteServicePassword(String remoteServicePassword) {
-		this.remoteServicePassword = remoteServicePassword;
-	}
-	
-	
+    public void setRemoteServicePassword(String remoteServicePassword) {
+        this.remoteServicePassword = remoteServicePassword;
+    }
+
 }

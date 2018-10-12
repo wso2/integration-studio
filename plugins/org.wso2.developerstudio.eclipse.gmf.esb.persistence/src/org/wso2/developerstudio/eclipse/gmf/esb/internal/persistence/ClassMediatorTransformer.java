@@ -45,77 +45,76 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  * corresponding synapse artifact(s).
  */
 public class ClassMediatorTransformer extends AbstractEsbNodeTransformer {
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {	
-		try {
-			info.getParentSequence().addChild(createClassMediator(subject));
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
 
-		// Transform the class mediator output data flow path.
-		doTransform(info, ((ClassMediator) subject).getOutputConnector());
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        try {
+            info.getParentSequence().addChild(createClassMediator(subject));
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
-	}
+        // Transform the class mediator output data flow path.
+        doTransform(info, ((ClassMediator) subject).getOutputConnector());
+    }
 
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		// TODO Auto-generated method stub
-		try {
-			sequence.addChild(createClassMediator(subject));
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-		doTransformWithinSequence(information, ((ClassMediator) subject).getOutputConnector().getOutgoingLink(),
-				sequence);
-	}
-	
-	private ClassMediatorExt createClassMediator(EsbNode subject) throws TransformerException, JaxenException {
-		Assert.isTrue(subject instanceof ClassMediator, "Invalid subject.");
-		ClassMediator visualClass = (ClassMediator) subject;
+    }
 
-		ClassMediatorExt classMediator = new ClassMediatorExt(visualClass.getClassName());
-		setCommonProperties(classMediator, visualClass);
-		Mediator m = new DummyClassMediator();
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // TODO Auto-generated method stub
+        try {
+            sequence.addChild(createClassMediator(subject));
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+        doTransformWithinSequence(information, ((ClassMediator) subject).getOutputConnector().getOutgoingLink(),
+                sequence);
+    }
 
-		classMediator.setMediator((Mediator) m);
+    private ClassMediatorExt createClassMediator(EsbNode subject) throws TransformerException, JaxenException {
+        Assert.isTrue(subject instanceof ClassMediator, "Invalid subject.");
+        ClassMediator visualClass = (ClassMediator) subject;
 
-		List<MediatorProperty> propertyList = new ArrayList<MediatorProperty>();
-		// Class properties.
-		for (ClassProperty visualProperty : visualClass.getProperties()) {
-			MediatorProperty mediatorProperty = new MediatorProperty();
-			mediatorProperty.setName(visualProperty.getPropertyName());
-			if (visualProperty.getPropertyValueType().getLiteral().equals("LITERAL")) {
-				mediatorProperty.setValue(visualProperty.getPropertyValue());
-				
-			} else if (visualProperty.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
-				NamespacedProperty namespacedExpression = visualProperty.getPropertyExpression();
-				if (null != namespacedExpression) {
-					SynapsePath propertyExpression = CustomSynapsePathFactory
-							.getSynapsePath(namespacedExpression.getPropertyValue());
-					if (null != namespacedExpression.getNamespaces() && !(propertyExpression instanceof SynapseJsonPath)) {
-						for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
-							propertyExpression.addNamespace(entry.getKey(), entry.getValue());
-						}
-					}
+        ClassMediatorExt classMediator = new ClassMediatorExt(visualClass.getClassName());
+        setCommonProperties(classMediator, visualClass);
+        Mediator m = new DummyClassMediator();
 
-					mediatorProperty.setExpression(propertyExpression);
-				}
-			}
-			propertyList.add(mediatorProperty);
-		}
-		classMediator.addAllProperties(propertyList);
-		return classMediator;
+        classMediator.setMediator((Mediator) m);
 
-	}
+        List<MediatorProperty> propertyList = new ArrayList<MediatorProperty>();
+        // Class properties.
+        for (ClassProperty visualProperty : visualClass.getProperties()) {
+            MediatorProperty mediatorProperty = new MediatorProperty();
+            mediatorProperty.setName(visualProperty.getPropertyName());
+            if (visualProperty.getPropertyValueType().getLiteral().equals("LITERAL")) {
+                mediatorProperty.setValue(visualProperty.getPropertyValue());
+
+            } else if (visualProperty.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
+                NamespacedProperty namespacedExpression = visualProperty.getPropertyExpression();
+                if (null != namespacedExpression) {
+                    SynapsePath propertyExpression = CustomSynapsePathFactory
+                            .getSynapsePath(namespacedExpression.getPropertyValue());
+                    if (null != namespacedExpression.getNamespaces()
+                            && !(propertyExpression instanceof SynapseJsonPath)) {
+                        for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+                            propertyExpression.addNamespace(entry.getKey(), entry.getValue());
+                        }
+                    }
+
+                    mediatorProperty.setExpression(propertyExpression);
+                }
+            }
+            propertyList.add(mediatorProperty);
+        }
+        classMediator.addAllProperties(propertyList);
+        return classMediator;
+
+    }
 
 }

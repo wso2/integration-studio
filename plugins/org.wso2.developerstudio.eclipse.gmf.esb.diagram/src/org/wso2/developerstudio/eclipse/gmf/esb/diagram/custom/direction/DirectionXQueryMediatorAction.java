@@ -4,27 +4,25 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.EditPart;
 import org.eclipse.ui.IWorkbenchPart;
 
-public class DirectionXQueryMediatorAction extends DirectionEsbNodeAction{
+public class DirectionXQueryMediatorAction extends DirectionEsbNodeAction {
 
+    EditPart editorPart;
 
-	EditPart editorPart;
-	
-	public DirectionXQueryMediatorAction(IWorkbenchPart part) {
-		super(part);
-		
-		setText("Reverse");
-		setToolTipText("Set Direction XQuery mediator.");
-		// TODO Auto-generated constructor stub
-	}
+    public DirectionXQueryMediatorAction(IWorkbenchPart part) {
+        super(part);
 
+        setText("Reverse");
+        setToolTipText("Set Direction XQuery mediator.");
+        // TODO Auto-generated constructor stub
+    }
 
-	public void setEditorPart(EditPart editorPart_){
-		editorPart=editorPart_;		
-	}
+    public void setEditorPart(EditPart editorPart_) {
+        editorPart = editorPart_;
+    }
 
-	protected void doRun(IProgressMonitor progressMonitor) {
-		
-		Reverse(editorPart);
-	}
+    protected void doRun(IProgressMonitor progressMonitor) {
+
+        Reverse(editorPart);
+    }
 
 }

@@ -88,8 +88,8 @@ public abstract class ESBDebugElement extends DebugElement implements ISuspendRe
 
     @Override
     public void suspend() throws DebugException {
-        throw new DebugException(new Status(IStatus.ERROR, ESBDebuggerConstants.ESB_MEDIATION_DEBUGGER_NAME,
-                "suspend() not supported"));
+        throw new DebugException(
+                new Status(IStatus.ERROR, ESBDebuggerConstants.ESB_MEDIATION_DEBUGGER_NAME, "suspend() not supported"));
     }
 
     @Override

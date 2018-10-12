@@ -27,9 +27,9 @@ import org.apache.synapse.endpoints.IndirectEndpoint;
 import javax.xml.namespace.QName;
 
 public class DummyIndirectEndpointFactory extends DummyEndpointFactory {
-    
+
     private static DummyIndirectEndpointFactory instance = new DummyIndirectEndpointFactory();
-    
+
     public static DummyIndirectEndpointFactory getInstance() {
         return instance;
     }
@@ -37,18 +37,18 @@ public class DummyIndirectEndpointFactory extends DummyEndpointFactory {
     @Override
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	IndirectEndpoint indirectEndpoint = new IndirectEndpoint();
-	String ref = epConfig.getAttributeValue(new QName("key"));
-	String name = epConfig.getAttributeValue(new QName("name"));
-	if (name != null) {
-	    indirectEndpoint.setName(name);
-	}
-	indirectEndpoint.setKey(ref);
+        IndirectEndpoint indirectEndpoint = new IndirectEndpoint();
+        String ref = epConfig.getAttributeValue(new QName("key"));
+        String name = epConfig.getAttributeValue(new QName("name"));
+        if (name != null) {
+            indirectEndpoint.setName(name);
+        }
+        indirectEndpoint.setKey(ref);
 
-	// process the parameters
-	processProperties(indirectEndpoint, epConfig);
+        // process the parameters
+        processProperties(indirectEndpoint, epConfig);
 
-	return indirectEndpoint;
+        return indirectEndpoint;
     }
 
 }

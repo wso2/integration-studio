@@ -29,25 +29,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class MessageProcessorParamCustomPropertyDescriptor extends PropertyDescriptor {
 
-	public MessageProcessorParamCustomPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public MessageProcessorParamCustomPropertyDescriptor(Object object,
+            IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				MessageProcessor messageProcessor = (MessageProcessor) object;
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                MessageProcessor messageProcessor = (MessageProcessor) object;
 
-				ConfigureMessageProcessorParametersDialog paramDialog = new ConfigureMessageProcessorParametersDialog(
-						shell, messageProcessor);
-				paramDialog.setBlockOnOpen(true);
-				paramDialog.open();
-				return null;
-			}
-		};
-	}
+                ConfigureMessageProcessorParametersDialog paramDialog = new ConfigureMessageProcessorParametersDialog(
+                        shell, messageProcessor);
+                paramDialog.setBlockOnOpen(true);
+                paramDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

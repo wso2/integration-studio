@@ -32,78 +32,77 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
  */
 public class CustomSynapsePathFactory {
 
-	private static final Log log = LogFactory.getLog(CustomSynapsePathFactory.class);
+    private static final Log log = LogFactory.getLog(CustomSynapsePathFactory.class);
 
-	/**
-	 * In Payload factory ESB supports JSON-PAth without the json-eval prefix in
-	 * the JSON path expression, the XPATH and the JSON path should be
-	 * differentiated by using the evaluator media type set in the payload
-	 * factory expression, to support this the getSynapsePath method is
-	 * overloaded to evaluate the media type in case of Payload Factory
-	 * Mediator.If the user has provided the expression with json-eval prefix we
-	 * ignore the evaluator and process it as a JSON path
-	 * 
-	 * @param expression
-	 *            JSON, XML expression
-	 * @param evaluator
-	 *            media type of the expression
-	 * @return the JSON path or the XPATH
-	 * @throws JaxenException
-	 *             Exception thrown
-	 */
-	public static SynapsePath getSynapsePath(String expression, MediaType evaluator)
-	                                                                                throws JaxenException {
-		SynapsePath path = null;
-		if (StringUtils.isNotBlank(expression)) {
-			if (expression.startsWith("json-eval(")) {
-				path = getSynapsePath(expression);
-			} else {
-				if (evaluator != null) {
-					if (evaluator == MediaType.JSON) {
-						path = new SynapseJsonPath(expression);
-					} else if (evaluator == MediaType.XML) {
-						path = new SynapseXPath(expression);
-					} else {
-						handleException("Invalid Evalautor Type, Evaluator Type should be XML or JSON");
-					}
-				}
-			}
-		} else {
-			handleException("Invalid path expression");
-		}
-		return path;
-	}
+    /**
+     * In Payload factory ESB supports JSON-PAth without the json-eval prefix in
+     * the JSON path expression, the XPATH and the JSON path should be
+     * differentiated by using the evaluator media type set in the payload
+     * factory expression, to support this the getSynapsePath method is
+     * overloaded to evaluate the media type in case of Payload Factory
+     * Mediator.If the user has provided the expression with json-eval prefix we
+     * ignore the evaluator and process it as a JSON path
+     * 
+     * @param expression
+     *            JSON, XML expression
+     * @param evaluator
+     *            media type of the expression
+     * @return the JSON path or the XPATH
+     * @throws JaxenException
+     *             Exception thrown
+     */
+    public static SynapsePath getSynapsePath(String expression, MediaType evaluator) throws JaxenException {
+        SynapsePath path = null;
+        if (StringUtils.isNotBlank(expression)) {
+            if (expression.startsWith("json-eval(")) {
+                path = getSynapsePath(expression);
+            } else {
+                if (evaluator != null) {
+                    if (evaluator == MediaType.JSON) {
+                        path = new SynapseJsonPath(expression);
+                    } else if (evaluator == MediaType.XML) {
+                        path = new SynapseXPath(expression);
+                    } else {
+                        handleException("Invalid Evalautor Type, Evaluator Type should be XML or JSON");
+                    }
+                }
+            }
+        } else {
+            handleException("Invalid path expression");
+        }
+        return path;
+    }
 
-	/**
-	 * This getSynapsePath supports log,switch, property and filter mediators
-	 * which supports JSON paths when the expression is pre-fixed with json-eval
-	 * string
-	 * 
-	 * @param expression
-	 *            JSON or XPATH expressions
-	 * @return the JSON path or the XPATH
-	 * @throws JaxenException
-	 *             Exceptions thrown
-	 */
-	public static SynapsePath getSynapsePath(String expression) throws JaxenException {
+    /**
+     * This getSynapsePath supports log,switch, property and filter mediators
+     * which supports JSON paths when the expression is pre-fixed with json-eval
+     * string
+     * 
+     * @param expression
+     *            JSON or XPATH expressions
+     * @return the JSON path or the XPATH
+     * @throws JaxenException
+     *             Exceptions thrown
+     */
+    public static SynapsePath getSynapsePath(String expression) throws JaxenException {
 
-		SynapsePath path = null;
-		if (StringUtils.isNotBlank(expression)) {
+        SynapsePath path = null;
+        if (StringUtils.isNotBlank(expression)) {
 
-			if (expression.startsWith("json-eval(")) {
-				path = new SynapseJsonPath(expression.substring(10, expression.length() - 1));
-			} else {
-				path = new SynapseXPath(expression);
-			}
+            if (expression.startsWith("json-eval(")) {
+                path = new SynapseJsonPath(expression.substring(10, expression.length() - 1));
+            } else {
+                path = new SynapseXPath(expression);
+            }
 
-		} else {
-			handleException("Invalid path expression");
-		}
+        } else {
+            handleException("Invalid path expression");
+        }
 
-		return path;
-	}
+        return path;
+    }
 
-	private static void handleException(String message) {
-		log.error(message);
-	}
+    private static void handleException(String message) {
+        log.error(message);
+    }
 }

@@ -47,7 +47,7 @@ public interface ICommunicationMessageFactory {
      * @return
      */
     String createBreakpointCommand(AbstractESBDebugPointMessage debugPoint);
-    
+
     /**
      * This method is to create mediator location json object
      * 
@@ -80,7 +80,7 @@ public interface ICommunicationMessageFactory {
      * @return
      */
     IEventMessage convertEventToIEventMessage(String buffer);
-    
+
     /**
      * This method will check whether received event is a wirelog response or a actual debug event
      * 

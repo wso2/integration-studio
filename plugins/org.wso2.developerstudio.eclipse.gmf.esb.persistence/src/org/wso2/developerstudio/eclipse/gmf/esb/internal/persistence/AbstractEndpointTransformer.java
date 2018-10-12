@@ -55,558 +55,570 @@ import org.wso2.developerstudio.esb.form.editors.article.rcp.endpoints.EndpointF
 
 public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransformer {
 
-	@SuppressWarnings("deprecation")
-	protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint) throws NumberFormatException, JaxenException {
+    @SuppressWarnings("deprecation")
+    protected void createAdvanceOptions(EndpointFormPage endpointFormPage, AbstractEndpoint endpoint)
+            throws NumberFormatException, JaxenException {
 
-		EndpointDefinition synapseEPDef = new EndpointDefinition();
-		EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
-		/**LEAVE_AS_IS,
-			SOAP_11,
-			SOAP_12,
-			POX,
-			GET,
-			REST,**/
-		if (endpointFormPage.getEP_Format() != null) {
-			if (endpointFormPage.getEP_Format().getSelectionIndex() == 1) {
-				synapseEPDef.setFormat("soap11");
-			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 2) {
-				synapseEPDef.setFormat("soap12");
-			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 3) {
-				synapseEPDef.setFormat("pox");
-			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 4) {
-				synapseEPDef.setFormat("get");
-			} else if (endpointFormPage.getEP_Format().getSelectionIndex() == 5) {
-				synapseEPDef.setFormat("rest");
-			} else {
-				synapseEPDef.setFormat("LEAVE_AS_IS");
-			}
-		}
-		
+        EndpointDefinition synapseEPDef = new EndpointDefinition();
+        EndpointCommons endpointCommons = endpointFormPage.getEndpointCommons();
+        /**
+         * LEAVE_AS_IS,
+         * SOAP_11,
+         * SOAP_12,
+         * POX,
+         * GET,
+         * REST,
+         **/
+        if (endpointFormPage.getEP_Format() != null) {
+            if (endpointFormPage.getEP_Format().getSelectionIndex() == 1) {
+                synapseEPDef.setFormat("soap11");
+            } else if (endpointFormPage.getEP_Format().getSelectionIndex() == 2) {
+                synapseEPDef.setFormat("soap12");
+            } else if (endpointFormPage.getEP_Format().getSelectionIndex() == 3) {
+                synapseEPDef.setFormat("pox");
+            } else if (endpointFormPage.getEP_Format().getSelectionIndex() == 4) {
+                synapseEPDef.setFormat("get");
+            } else if (endpointFormPage.getEP_Format().getSelectionIndex() == 5) {
+                synapseEPDef.setFormat("rest");
+            } else {
+                synapseEPDef.setFormat("LEAVE_AS_IS");
+            }
+        }
 
-		if (endpointFormPage.getEP_Optimize() != null) {
-			if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 1) {
-				synapseEPDef.setUseMTOM(true);
-			} else if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 2) {
-				synapseEPDef.setUseSwa(true);
-			}
-		}
+        if (endpointFormPage.getEP_Optimize() != null) {
+            if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 1) {
+                synapseEPDef.setUseMTOM(true);
+            } else if (endpointFormPage.getEP_Optimize().getSelectionIndex() == 2) {
+                synapseEPDef.setUseSwa(true);
+            }
+        }
 
-		if (endpointFormPage.getEndpointName() != null) {
-			AspectConfiguration aspectConfiguration = new AspectConfiguration(
-					endpointFormPage.getEndpointName().getText());
-			synapseEPDef.configure(aspectConfiguration);
-			if (endpointFormPage.getEndpointStatistics() != null) {
-				if (endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
-					aspectConfiguration.enableStatistics();
-				} else {
-					aspectConfiguration.disableStatistics();
-				}
-			}
-		}
+        if (endpointFormPage.getEndpointName() != null) {
+            AspectConfiguration aspectConfiguration = new AspectConfiguration(
+                    endpointFormPage.getEndpointName().getText());
+            synapseEPDef.configure(aspectConfiguration);
+            if (endpointFormPage.getEndpointStatistics() != null) {
+                if (endpointFormPage.getEndpointStatistics().getSelectionIndex() == 0) {
+                    aspectConfiguration.enableStatistics();
+                } else {
+                    aspectConfiguration.disableStatistics();
+                }
+            }
+        }
 
-		if (endpointFormPage.getEndpointTrace() != null) {
-			if (endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
-				synapseEPDef.getAspectConfiguration().enableTracing();
-			} else {
-				synapseEPDef.getAspectConfiguration().disableTracing();
-			}
-		}
+        if (endpointFormPage.getEndpointTrace() != null) {
+            if (endpointFormPage.getEndpointTrace().getSelectionIndex() == 0) {
+                synapseEPDef.getAspectConfiguration().enableTracing();
+            } else {
+                synapseEPDef.getAspectConfiguration().disableTracing();
+            }
+        }
 
-		if (endpointCommons.getEndpointSuspendErrorCodes() != null) {
-			String suspendErrorCodes = endpointCommons.getEndpointSuspendErrorCodes().getText();
-			if (StringUtils.isNotEmpty(suspendErrorCodes)) {
-				String[] suspendErrorCodesList = suspendErrorCodes.split("\\,");
-				List<String> suspendCodes = Arrays.asList(suspendErrorCodesList);
-				for (String code : suspendCodes) {
-					try {
-						synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
-					} catch (NumberFormatException ex) {
-						throw new NumberFormatException("Input for Suspend Error Codes is invalid,the value should be an interger");
-					}
-				}
-			}
-		}
-		
+        if (endpointCommons.getEndpointSuspendErrorCodes() != null) {
+            String suspendErrorCodes = endpointCommons.getEndpointSuspendErrorCodes().getText();
+            if (StringUtils.isNotEmpty(suspendErrorCodes)) {
+                String[] suspendErrorCodesList = suspendErrorCodes.split("\\,");
+                List<String> suspendCodes = Arrays.asList(suspendErrorCodesList);
+                for (String code : suspendCodes) {
+                    try {
+                        synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
+                    } catch (NumberFormatException ex) {
+                        throw new NumberFormatException(
+                                "Input for Suspend Error Codes is invalid,the value should be an interger");
+                    }
+                }
+            }
+        }
 
-		if (endpointCommons.getEndpointSuspendInitialDuration() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendInitialDuration().getText())){
-			try {
-				synapseEPDef.setInitialSuspendDuration(
-						Long.parseLong(endpointCommons.getEndpointSuspendInitialDuration().getText().trim()));
-			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input for Suspend Initial Duration is invalid,the value should be a long");
-			}
-		}
-	
-		if (endpointCommons.getEndpointSuspendMaxDuration() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendMaxDuration().getText())){
-			try {
-				synapseEPDef.setSuspendMaximumDuration(
-						Long.parseLong(endpointCommons.getEndpointSuspendMaxDuration().getText().trim()));
-			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input for Suspend Maximum Duration is invalid,the value should be a long");
-			}
-			
-		}
-		
-		if(endpointCommons.getEndpointSuspendProgressFactor() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendProgressFactor().getText())){
-			try {
-				synapseEPDef.setSuspendProgressionFactor(
-						Float.parseFloat((endpointCommons.getEndpointSuspendProgressFactor().getText().trim())));
-			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input for Suspend Progression Factor is invalid,the value should be a float");
-			}
-			
-		}
+        if (endpointCommons.getEndpointSuspendInitialDuration() != null
+                && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendInitialDuration().getText())) {
+            try {
+                synapseEPDef.setInitialSuspendDuration(
+                        Long.parseLong(endpointCommons.getEndpointSuspendInitialDuration().getText().trim()));
+            } catch (NumberFormatException ex) {
+                throw new NumberFormatException(
+                        "Input for Suspend Initial Duration is invalid,the value should be a long");
+            }
+        }
 
-		if (endpointCommons.getEndpointRetryErrorCodes() != null) {
-			String retryErrorCodes = endpointCommons.getEndpointRetryErrorCodes().getText();
-			if (retryErrorCodes != null && !"".equals(retryErrorCodes) && !retryErrorCodes.isEmpty()) {
-				String[] retryCodesList = retryErrorCodes.split("\\,");
-				List<String> retryCodes = Arrays.asList(retryCodesList);
-				for (String code : retryCodes) {
-					try {
-						synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
-					} catch (NumberFormatException ex) {
-						throw new NumberFormatException("Input for Entry Error Codes is invalid,the value should be a float");
-					}
-				
-				}
-			}
-		}
+        if (endpointCommons.getEndpointSuspendMaxDuration() != null
+                && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendMaxDuration().getText())) {
+            try {
+                synapseEPDef.setSuspendMaximumDuration(
+                        Long.parseLong(endpointCommons.getEndpointSuspendMaxDuration().getText().trim()));
+            } catch (NumberFormatException ex) {
+                throw new NumberFormatException(
+                        "Input for Suspend Maximum Duration is invalid,the value should be a long");
+            }
 
-		if (endpointCommons.getEndpointRetryCount() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointRetryCount().getText())) {
-			try {
-				synapseEPDef.setRetriesOnTimeoutBeforeSuspend(
-						Integer.parseInt(endpointCommons.getEndpointRetryCount().getText().trim()));
-			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input for Entry Count is invalid,the value should be a float");
-			}		
-		}
+        }
 
-		if (endpointCommons.getEndpointRetryDelay() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointRetryDelay().getText())) {
-			try {
-				synapseEPDef.setRetryDurationOnTimeout(
-						Integer.parseInt(endpointCommons.getEndpointRetryDelay().getText().trim()));
-			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input for Entry Delay is invalid,the value should be a float");
-			}
-		}
+        if (endpointCommons.getEndpointSuspendProgressFactor() != null
+                && StringUtils.isNotEmpty(endpointCommons.getEndpointSuspendProgressFactor().getText())) {
+            try {
+                synapseEPDef.setSuspendProgressionFactor(
+                        Float.parseFloat((endpointCommons.getEndpointSuspendProgressFactor().getText().trim())));
+            } catch (NumberFormatException ex) {
+                throw new NumberFormatException(
+                        "Input for Suspend Progression Factor is invalid,the value should be a float");
+            }
 
-		if (endpointCommons.getEndpointTimeoutAction() != null) {
-			if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() != 0) {
-				if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() == 1) {
-					synapseEPDef.setTimeoutAction(101);
-				} else {// endpointCommons.getEndpointTimeoutAction().getSelectionIndex()
-						// = 2
-					synapseEPDef.setTimeoutAction(102);
-				}
-			} else {
-				synapseEPDef.setTimeoutAction(100);
-			}
-		}
+        }
 
-		if (endpointCommons.getEndpointTimeoutDuration() != null && StringUtils.isNotEmpty(endpointCommons.getEndpointTimeoutDuration().getText())) {
-			try {
-				String duration = endpointCommons.getEndpointTimeoutDuration().getText();
-				Pattern pattern = Pattern.compile("\\{.*\\}");
-				if (pattern.matcher(duration).matches()) {
-					duration = duration.trim().substring(1, duration.length() - 1);
-					SynapseXPath xpath = new SynapseXPath(duration);
-					synapseEPDef.setDynamicTimeoutExpression(xpath);
-				} else {
-					long timeoutMilliSeconds = Long.parseLong(duration.trim());
-					synapseEPDef.setTimeoutDuration(timeoutMilliSeconds);
-				}
-			} catch (NumberFormatException ex) {
-				throw new NumberFormatException("Input for Timeout Duration is invalid,the value should be a number");
-			} catch (JaxenException e) {
-				throw e;
-			}
-		}
+        if (endpointCommons.getEndpointRetryErrorCodes() != null) {
+            String retryErrorCodes = endpointCommons.getEndpointRetryErrorCodes().getText();
+            if (retryErrorCodes != null && !"".equals(retryErrorCodes) && !retryErrorCodes.isEmpty()) {
+                String[] retryCodesList = retryErrorCodes.split("\\,");
+                List<String> retryCodes = Arrays.asList(retryCodesList);
+                for (String code : retryCodes) {
+                    try {
+                        synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
+                    } catch (NumberFormatException ex) {
+                        throw new NumberFormatException(
+                                "Input for Entry Error Codes is invalid,the value should be a float");
+                    }
 
-		if (endpointCommons.getEndpointAddressing() != null) {
-			if (endpointCommons.getEndpointAddressing().getSelectionIndex() == 0) {
-				synapseEPDef.setAddressingOn(true);
-				synapseEPDef.setUseSeparateListener(
-						Boolean.valueOf(endpointCommons.getEndpointSeparateListner().getText().toString()));
-				String version = endpointCommons.getEndpointVersion().getText();
-				if (StringUtils.isNotEmpty(version)) {
-					synapseEPDef.setAddressingVersion((version.equals("final")) ? "final" : "submission");
-				}
-			}
-		}
+                }
+            }
+        }
 
-		if (endpointCommons.getEndpointReliableMessaging() != null) {
-			if (endpointCommons.getEndpointReliableMessaging().getSelectionIndex() == 0) {
-				synapseEPDef.setReliableMessagingOn(true);
-				String keyValue = endpointCommons.getEndpointReliableMessagingPolicyKey().getText();
-				if (StringUtils.isNotEmpty(keyValue)) {
-					synapseEPDef.setWsRMPolicyKey(keyValue);
-				}
-			}
-		}
+        if (endpointCommons.getEndpointRetryCount() != null
+                && StringUtils.isNotEmpty(endpointCommons.getEndpointRetryCount().getText())) {
+            try {
+                synapseEPDef.setRetriesOnTimeoutBeforeSuspend(
+                        Integer.parseInt(endpointCommons.getEndpointRetryCount().getText().trim()));
+            } catch (NumberFormatException ex) {
+                throw new NumberFormatException("Input for Entry Count is invalid,the value should be a float");
+            }
+        }
 
-		if (endpointCommons.getEndpointSecurity() != null) {
-			if (endpointCommons.getEndpointSecurity().getSelectionIndex() == 0) {
-				synapseEPDef.setSecurityOn(true);
+        if (endpointCommons.getEndpointRetryDelay() != null
+                && StringUtils.isNotEmpty(endpointCommons.getEndpointRetryDelay().getText())) {
+            try {
+                synapseEPDef.setRetryDurationOnTimeout(
+                        Integer.parseInt(endpointCommons.getEndpointRetryDelay().getText().trim()));
+            } catch (NumberFormatException ex) {
+                throw new NumberFormatException("Input for Entry Delay is invalid,the value should be a float");
+            }
+        }
 
-				if (StringUtils.isNotEmpty(endpointCommons.getEndpointWSPolicyKey().getText())) {
-					String policyValue = endpointCommons.getEndpointWSPolicyKey().getText();
-					synapseEPDef.setWsSecPolicyKey(policyValue);
-				}
+        if (endpointCommons.getEndpointTimeoutAction() != null) {
+            if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() != 0) {
+                if (endpointCommons.getEndpointTimeoutAction().getSelectionIndex() == 1) {
+                    synapseEPDef.setTimeoutAction(101);
+                } else {// endpointCommons.getEndpointTimeoutAction().getSelectionIndex()
+                        // = 2
+                    synapseEPDef.setTimeoutAction(102);
+                }
+            } else {
+                synapseEPDef.setTimeoutAction(100);
+            }
+        }
 
-				if (StringUtils.isNotEmpty(endpointCommons.getEndpointSecurityInboundPolicyKey().getText())) {
-					String inboundPolicyValue = endpointCommons.getEndpointSecurityInboundPolicyKey().getText();
-					synapseEPDef.setInboundWsSecPolicyKey(inboundPolicyValue);
-				}
+        if (endpointCommons.getEndpointTimeoutDuration() != null
+                && StringUtils.isNotEmpty(endpointCommons.getEndpointTimeoutDuration().getText())) {
+            try {
+                String duration = endpointCommons.getEndpointTimeoutDuration().getText();
+                Pattern pattern = Pattern.compile("\\{.*\\}");
+                if (pattern.matcher(duration).matches()) {
+                    duration = duration.trim().substring(1, duration.length() - 1);
+                    SynapseXPath xpath = new SynapseXPath(duration);
+                    synapseEPDef.setDynamicTimeoutExpression(xpath);
+                } else {
+                    long timeoutMilliSeconds = Long.parseLong(duration.trim());
+                    synapseEPDef.setTimeoutDuration(timeoutMilliSeconds);
+                }
+            } catch (NumberFormatException ex) {
+                throw new NumberFormatException("Input for Timeout Duration is invalid,the value should be a number");
+            } catch (JaxenException e) {
+                throw e;
+            }
+        }
 
-				if (StringUtils.isNotEmpty(endpointCommons.getEndpointSecurityOutboundPolicyKey().getText())) {
-					String outboundPolicyValue = endpointCommons.getEndpointSecurityOutboundPolicyKey().getText();
-					synapseEPDef.setOutboundWsSecPolicyKey(outboundPolicyValue);
-				}
-			}
-		}
+        if (endpointCommons.getEndpointAddressing() != null) {
+            if (endpointCommons.getEndpointAddressing().getSelectionIndex() == 0) {
+                synapseEPDef.setAddressingOn(true);
+                synapseEPDef.setUseSeparateListener(
+                        Boolean.valueOf(endpointCommons.getEndpointSeparateListner().getText().toString()));
+                String version = endpointCommons.getEndpointVersion().getText();
+                if (StringUtils.isNotEmpty(version)) {
+                    synapseEPDef.setAddressingVersion((version.equals("final")) ? "final" : "submission");
+                }
+            }
+        }
 
-		if (endpointFormPage.getEP_Description() != null) {
-			if (StringUtils.isNotEmpty(endpointFormPage.getEP_Description().getText())) {
-				endpoint.setDescription(endpointFormPage.getEP_Description().getText());
-			}
-		}
-		endpoint.setDefinition(synapseEPDef);
+        if (endpointCommons.getEndpointReliableMessaging() != null) {
+            if (endpointCommons.getEndpointReliableMessaging().getSelectionIndex() == 0) {
+                synapseEPDef.setReliableMessagingOn(true);
+                String keyValue = endpointCommons.getEndpointReliableMessagingPolicyKey().getText();
+                if (StringUtils.isNotEmpty(keyValue)) {
+                    synapseEPDef.setWsRMPolicyKey(keyValue);
+                }
+            }
+        }
 
-	}
+        if (endpointCommons.getEndpointSecurity() != null) {
+            if (endpointCommons.getEndpointSecurity().getSelectionIndex() == 0) {
+                synapseEPDef.setSecurityOn(true);
 
-	@SuppressWarnings("deprecation")
-	protected void createAdvanceOptions(AbstractEndPoint visualEndPoint, AbstractEndpoint endpoint) throws JaxenException {
-		EndpointDefinition synapseEPDef = new EndpointDefinition();
+                if (StringUtils.isNotEmpty(endpointCommons.getEndpointWSPolicyKey().getText())) {
+                    String policyValue = endpointCommons.getEndpointWSPolicyKey().getText();
+                    synapseEPDef.setWsSecPolicyKey(policyValue);
+                }
 
-		synapseEPDef.setFormat(visualEndPoint.getFormat().getLiteral());
-		if (visualEndPoint.getOptimize().getValue() == 1) {
-			synapseEPDef.setUseMTOM(true);
-		} else if (visualEndPoint.getOptimize().getValue() == 2) {
-			synapseEPDef.setUseSwa(true);
-		}
+                if (StringUtils.isNotEmpty(endpointCommons.getEndpointSecurityInboundPolicyKey().getText())) {
+                    String inboundPolicyValue = endpointCommons.getEndpointSecurityInboundPolicyKey().getText();
+                    synapseEPDef.setInboundWsSecPolicyKey(inboundPolicyValue);
+                }
 
-		AspectConfiguration aspectConfiguration = new AspectConfiguration(visualEndPoint.getEndPointName());
-		synapseEPDef.configure(aspectConfiguration);
-		if (visualEndPoint.isStatisticsEnabled()) {
-			aspectConfiguration.enableStatistics();
-		} else {
-			aspectConfiguration.disableStatistics();
-		}
+                if (StringUtils.isNotEmpty(endpointCommons.getEndpointSecurityOutboundPolicyKey().getText())) {
+                    String outboundPolicyValue = endpointCommons.getEndpointSecurityOutboundPolicyKey().getText();
+                    synapseEPDef.setOutboundWsSecPolicyKey(outboundPolicyValue);
+                }
+            }
+        }
 
-		if (visualEndPoint.isTraceEnabled()) {
-			synapseEPDef.getAspectConfiguration().enableTracing();
-		} else {
-			synapseEPDef.getAspectConfiguration().disableTracing();
-		}
+        if (endpointFormPage.getEP_Description() != null) {
+            if (StringUtils.isNotEmpty(endpointFormPage.getEP_Description().getText())) {
+                endpoint.setDescription(endpointFormPage.getEP_Description().getText());
+            }
+        }
+        endpoint.setDefinition(synapseEPDef);
 
-		String suspendErrorCodes = visualEndPoint.getSuspendErrorCodes();
-		if (suspendErrorCodes != null && !"".equals(suspendErrorCodes)) {
-			String[] suspendErrorCodesList = suspendErrorCodes.split("\\,");
-			List<String> suspendCodes = Arrays.asList(suspendErrorCodesList);
-			for (String code : suspendCodes) {
-				synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
-			}
-		}
-		synapseEPDef.setInitialSuspendDuration(visualEndPoint.getSuspendInitialDuration());
-		synapseEPDef.setSuspendMaximumDuration(visualEndPoint.getSuspendMaximumDuration());
-		synapseEPDef.setSuspendProgressionFactor(visualEndPoint.getSuspendProgressionFactor());
+    }
 
-		String retryErrorCodes = visualEndPoint.getRetryErrorCodes();
-		if (retryErrorCodes != null && !"".equals(retryErrorCodes)) {
-			String[] retryCodesList = retryErrorCodes.split("\\,");
-			List<String> retryCodes = Arrays.asList(retryCodesList);
-			for (String code : retryCodes) {
-				synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
-			}
-		}
-		synapseEPDef.setRetriesOnTimeoutBeforeSuspend(visualEndPoint.getRetryCount());
-		synapseEPDef.setRetryDurationOnTimeout((int) visualEndPoint.getRetryDelay());
+    @SuppressWarnings("deprecation")
+    protected void createAdvanceOptions(AbstractEndPoint visualEndPoint, AbstractEndpoint endpoint)
+            throws JaxenException {
+        EndpointDefinition synapseEPDef = new EndpointDefinition();
 
-		synapseEPDef.setTimeoutAction(visualEndPoint.getTimeOutAction().getValue());
-		
-		String timeOutDuration = visualEndPoint.getTimeOutDuration();
-		Pattern pattern = Pattern.compile("\\{.*\\}");
-		if (pattern.matcher(timeOutDuration).matches()) {
-			timeOutDuration = timeOutDuration.trim().substring(1, timeOutDuration.length() - 1);
-			SynapseXPath xpath = new SynapseXPath(timeOutDuration);
-			synapseEPDef.setDynamicTimeoutExpression(xpath);
-		} else {
-			long timeoutMilliSeconds = Long.parseLong(timeOutDuration.trim());
-			synapseEPDef.setTimeoutDuration(timeoutMilliSeconds);
-		}
+        synapseEPDef.setFormat(visualEndPoint.getFormat().getLiteral());
+        if (visualEndPoint.getOptimize().getValue() == 1) {
+            synapseEPDef.setUseMTOM(true);
+        } else if (visualEndPoint.getOptimize().getValue() == 2) {
+            synapseEPDef.setUseSwa(true);
+        }
 
-		if (visualEndPoint.isAddressingEnabled()) {
-			synapseEPDef.setAddressingOn(true);
-			synapseEPDef.setUseSeparateListener(visualEndPoint.isAddressingSeparateListener());
-			synapseEPDef.setAddressingVersion((visualEndPoint.getAddressingVersion() == EndPointAddressingVersion.FINAL)
-					? "final" : "submission");
-		}
-		if (visualEndPoint.isReliableMessagingEnabled()) {
-			synapseEPDef.setReliableMessagingOn(visualEndPoint.isReliableMessagingEnabled());
-			String keyValue = visualEndPoint.getReliableMessagingPolicy().getKeyValue();
-			if (keyValue != null && !keyValue.isEmpty()) {
-				synapseEPDef.setWsRMPolicyKey(visualEndPoint.getReliableMessagingPolicy().getKeyValue());
-			}
-		}
+        AspectConfiguration aspectConfiguration = new AspectConfiguration(visualEndPoint.getEndPointName());
+        synapseEPDef.configure(aspectConfiguration);
+        if (visualEndPoint.isStatisticsEnabled()) {
+            aspectConfiguration.enableStatistics();
+        } else {
+            aspectConfiguration.disableStatistics();
+        }
 
-		if (visualEndPoint.isSecurityEnabled()) {
-			synapseEPDef.setSecurityOn(true);
-			if (visualEndPoint.getSecurityPolicy() != null) {
-				String policyValue = visualEndPoint.getSecurityPolicy().getKeyValue();
-				if (policyValue != null && !policyValue.isEmpty()) {
-					synapseEPDef.setWsSecPolicyKey(policyValue);
-				}
-			}
+        if (visualEndPoint.isTraceEnabled()) {
+            synapseEPDef.getAspectConfiguration().enableTracing();
+        } else {
+            synapseEPDef.getAspectConfiguration().disableTracing();
+        }
 
-			if (visualEndPoint.getInboundPolicy() != null) {
-				String inboundPolicyValue = visualEndPoint.getInboundPolicy().getKeyValue();
-				if (inboundPolicyValue != null && !inboundPolicyValue.isEmpty()) {
-					synapseEPDef.setInboundWsSecPolicyKey(inboundPolicyValue);
-				}
-			}
+        String suspendErrorCodes = visualEndPoint.getSuspendErrorCodes();
+        if (suspendErrorCodes != null && !"".equals(suspendErrorCodes)) {
+            String[] suspendErrorCodesList = suspendErrorCodes.split("\\,");
+            List<String> suspendCodes = Arrays.asList(suspendErrorCodesList);
+            for (String code : suspendCodes) {
+                synapseEPDef.addSuspendErrorCode(Integer.parseInt(code));
+            }
+        }
+        synapseEPDef.setInitialSuspendDuration(visualEndPoint.getSuspendInitialDuration());
+        synapseEPDef.setSuspendMaximumDuration(visualEndPoint.getSuspendMaximumDuration());
+        synapseEPDef.setSuspendProgressionFactor(visualEndPoint.getSuspendProgressionFactor());
 
-			if (visualEndPoint.getOutboundPolicy() != null) {
-				String outboundPolicyValue = visualEndPoint.getOutboundPolicy().getKeyValue();
-				if (outboundPolicyValue != null && !outboundPolicyValue.isEmpty()) {
-					synapseEPDef.setOutboundWsSecPolicyKey(outboundPolicyValue);
-				}
-			}
-		}
+        String retryErrorCodes = visualEndPoint.getRetryErrorCodes();
+        if (retryErrorCodes != null && !"".equals(retryErrorCodes)) {
+            String[] retryCodesList = retryErrorCodes.split("\\,");
+            List<String> retryCodes = Arrays.asList(retryCodesList);
+            for (String code : retryCodes) {
+                synapseEPDef.addTimeoutErrorCode(Integer.parseInt(code));
+            }
+        }
+        synapseEPDef.setRetriesOnTimeoutBeforeSuspend(visualEndPoint.getRetryCount());
+        synapseEPDef.setRetryDurationOnTimeout((int) visualEndPoint.getRetryDelay());
 
-		saveProperties(visualEndPoint, endpoint);
-		if (visualEndPoint.getDescription() != null) {
-			endpoint.setDescription(visualEndPoint.getDescription());
-		}
-		endpoint.setDefinition(synapseEPDef);
+        synapseEPDef.setTimeoutAction(visualEndPoint.getTimeOutAction().getValue());
 
-	}
+        String timeOutDuration = visualEndPoint.getTimeOutDuration();
+        Pattern pattern = Pattern.compile("\\{.*\\}");
+        if (pattern.matcher(timeOutDuration).matches()) {
+            timeOutDuration = timeOutDuration.trim().substring(1, timeOutDuration.length() - 1);
+            SynapseXPath xpath = new SynapseXPath(timeOutDuration);
+            synapseEPDef.setDynamicTimeoutExpression(xpath);
+        } else {
+            long timeoutMilliSeconds = Long.parseLong(timeOutDuration.trim());
+            synapseEPDef.setTimeoutDuration(timeoutMilliSeconds);
+        }
 
-	/**
-	 * Save endpoint properties
-	 * 
-	 * @param model
-	 * @param endpoint
-	 */
-	protected void saveProperties(EndPoint model, AbstractEndpoint endpoint) {
-		for (Iterator<EndPointProperty> iterator = model.getProperties().iterator(); iterator.hasNext();) {
-			EndPointProperty property = iterator.next();
-			MediatorProperty mediatorProperty = new MediatorProperty();
-			mediatorProperty.setName(property.getName());
+        if (visualEndPoint.isAddressingEnabled()) {
+            synapseEPDef.setAddressingOn(true);
+            synapseEPDef.setUseSeparateListener(visualEndPoint.isAddressingSeparateListener());
+            synapseEPDef.setAddressingVersion(
+                    (visualEndPoint.getAddressingVersion() == EndPointAddressingVersion.FINAL) ? "final"
+                            : "submission");
+        }
+        if (visualEndPoint.isReliableMessagingEnabled()) {
+            synapseEPDef.setReliableMessagingOn(visualEndPoint.isReliableMessagingEnabled());
+            String keyValue = visualEndPoint.getReliableMessagingPolicy().getKeyValue();
+            if (keyValue != null && !keyValue.isEmpty()) {
+                synapseEPDef.setWsRMPolicyKey(visualEndPoint.getReliableMessagingPolicy().getKeyValue());
+            }
+        }
 
-			if (property.getValueType().toString().equals("EXPRESSION")) {
-				SynapseXPath XPath = null;
-				try {
-					XPath = new SynapseXPath(property.getValueExpression().getPropertyValue());
-					for (int i = 0; i < property.getValueExpression().getNamespaces().keySet().size(); ++i) {
-						String prefix = (String) property.getValueExpression().getNamespaces().keySet().toArray()[i];
-						String namespaceUri = property.getValueExpression().getNamespaces().get(prefix);
-						XPath.addNamespace(prefix, namespaceUri);
-					}
-					mediatorProperty.setExpression(XPath);
-				} catch (JaxenException e) {
-					log.error("Error while persisting Endpoint properties", e);
-				}
-			} else if (property.getValueType().toString().equals("LITERAL")) {
-				mediatorProperty.setValue(property.getValue());
-			}
+        if (visualEndPoint.isSecurityEnabled()) {
+            synapseEPDef.setSecurityOn(true);
+            if (visualEndPoint.getSecurityPolicy() != null) {
+                String policyValue = visualEndPoint.getSecurityPolicy().getKeyValue();
+                if (policyValue != null && !policyValue.isEmpty()) {
+                    synapseEPDef.setWsSecPolicyKey(policyValue);
+                }
+            }
 
-			mediatorProperty.setScope(property.getScope().toString().toLowerCase());
-			endpoint.addProperty(mediatorProperty);
-		}
-	}
-	
-	/**
-	 * transform Endpoint Output flow
-	 * 
-	 * @param info
-	 */
-	protected void transformEndpointOutflow(TransformationInfo info) {
-		if (!info.isOutputPathSet) {
-			if (info.firstEndPoint instanceof FailoverEndPoint) {
-				try {
-					FailoverEndPointWestOutputConnector westOutputConnector = ((FailoverEndPoint) info.firstEndPoint)
-							.getWestOutputConnector();
+            if (visualEndPoint.getInboundPolicy() != null) {
+                String inboundPolicyValue = visualEndPoint.getInboundPolicy().getKeyValue();
+                if (inboundPolicyValue != null && !inboundPolicyValue.isEmpty()) {
+                    synapseEPDef.setInboundWsSecPolicyKey(inboundPolicyValue);
+                }
+            }
 
-					List<EsbNode> transformedMediators = info.getTransformedMediators();
-					if (westOutputConnector != null) {
-						EsbNode nextElement = getTargetContainer(westOutputConnector);
-						if (nextElement != null) {
-							if (!transformedMediators.contains(nextElement)) {
-								doTransform(info, westOutputConnector);
-								transformedMediators.add(nextElement);
-							}
-						}
+            if (visualEndPoint.getOutboundPolicy() != null) {
+                String outboundPolicyValue = visualEndPoint.getOutboundPolicy().getKeyValue();
+                if (outboundPolicyValue != null && !outboundPolicyValue.isEmpty()) {
+                    synapseEPDef.setOutboundWsSecPolicyKey(outboundPolicyValue);
+                }
+            }
+        }
 
-					}
+        saveProperties(visualEndPoint, endpoint);
+        if (visualEndPoint.getDescription() != null) {
+            endpoint.setDescription(visualEndPoint.getDescription());
+        }
+        endpoint.setDefinition(synapseEPDef);
 
-				} catch (Exception e) {
-					log.warn("Error while executing outflow  serialization", e);
-				}
-			} else if (info.firstEndPoint instanceof LoadBalanceEndPoint) {
-				try {
-					LoadBalanceEndPointWestOutputConnector westOutputConnector = ((LoadBalanceEndPoint) info.firstEndPoint)
-							.getWestOutputConnector();
-					List<EsbNode> transformedMediators = info.getTransformedMediators();
-					if (westOutputConnector != null) {
-						EsbNode nextElement = getTargetContainer(westOutputConnector);
-						if (nextElement != null) {
-							if (!transformedMediators.contains(nextElement)) {
-								doTransform(info, westOutputConnector);
-								transformedMediators.add(nextElement);
-							}
-						}
+    }
 
-					}
-				} catch (Exception e) {
-					log.warn("Error while executing outflow  serialization", e);
-				}
-			} else if (info.firstEndPoint instanceof RecipientListEndPoint) {
-				try {
-					RecipientListEndPointWestOutputConnector westOutputConnector = ((RecipientListEndPoint) info.firstEndPoint)
-							.getWestOutputConnector();
+    /**
+     * Save endpoint properties
+     * 
+     * @param model
+     * @param endpoint
+     */
+    protected void saveProperties(EndPoint model, AbstractEndpoint endpoint) {
+        for (Iterator<EndPointProperty> iterator = model.getProperties().iterator(); iterator.hasNext();) {
+            EndPointProperty property = iterator.next();
+            MediatorProperty mediatorProperty = new MediatorProperty();
+            mediatorProperty.setName(property.getName());
 
-					List<EsbNode> transformedMediators = info.getTransformedMediators();
-					if (westOutputConnector != null) {
-						EsbNode nextElement = getTargetContainer(westOutputConnector);
-						if (nextElement != null) {
-							if (!transformedMediators.contains(nextElement)) {
-								doTransform(info, westOutputConnector);
-								transformedMediators.add(nextElement);
-							}
-						}
+            if (property.getValueType().toString().equals("EXPRESSION")) {
+                SynapseXPath XPath = null;
+                try {
+                    XPath = new SynapseXPath(property.getValueExpression().getPropertyValue());
+                    for (int i = 0; i < property.getValueExpression().getNamespaces().keySet().size(); ++i) {
+                        String prefix = (String) property.getValueExpression().getNamespaces().keySet().toArray()[i];
+                        String namespaceUri = property.getValueExpression().getNamespaces().get(prefix);
+                        XPath.addNamespace(prefix, namespaceUri);
+                    }
+                    mediatorProperty.setExpression(XPath);
+                } catch (JaxenException e) {
+                    log.error("Error while persisting Endpoint properties", e);
+                }
+            } else if (property.getValueType().toString().equals("LITERAL")) {
+                mediatorProperty.setValue(property.getValue());
+            }
 
-					}
+            mediatorProperty.setScope(property.getScope().toString().toLowerCase());
+            endpoint.addProperty(mediatorProperty);
+        }
+    }
 
-				} catch (Exception e) {
-					log.warn("Error while executing outflow  serialization", e);
-				}
-			}
-			info.isOutputPathSet = true;
-		}
-	}
+    /**
+     * transform Endpoint Output flow
+     * 
+     * @param info
+     */
+    protected void transformEndpointOutflow(TransformationInfo info) {
+        if (!info.isOutputPathSet) {
+            if (info.firstEndPoint instanceof FailoverEndPoint) {
+                try {
+                    FailoverEndPointWestOutputConnector westOutputConnector = ((FailoverEndPoint) info.firstEndPoint)
+                            .getWestOutputConnector();
 
-	/**
-	 * Get target node
-	 * 
-	 * @param outputConnector
-	 * @return
-	 */
-	protected EsbNode getTargetContainer(OutputConnector outputConnector) {
-		EsbNode node = null;
-		EsbLink outgoingLink = outputConnector.getOutgoingLink();
-		if (outgoingLink != null) {
-			InputConnector target = outgoingLink.getTarget();
-			if (target != null) {
-				if (target.eContainer() instanceof EsbNode) {
-					node = (EsbNode) target.eContainer();
-				}
-			}
-		}
-		return node;
-	}
+                    List<EsbNode> transformedMediators = info.getTransformedMediators();
+                    if (westOutputConnector != null) {
+                        EsbNode nextElement = getTargetContainer(westOutputConnector);
+                        if (nextElement != null) {
+                            if (!transformedMediators.contains(nextElement)) {
+                                doTransform(info, westOutputConnector);
+                                transformedMediators.add(nextElement);
+                            }
+                        }
 
-	protected SendMediator getSendMediator(TransformationInfo info) {
-		SendMediator sendMediator = null;
-		if (info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.SendMediator) {
-			int size = info.getParentSequence().getList().size();
-			if (size > 0) {
-				Mediator lastObj = info.getParentSequence().getList().get(size - 1);
-				if (lastObj instanceof SendMediator) {
-					sendMediator = (SendMediator) lastObj;
-				}
-			}
-		} else if (info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequence) {
-			sendMediator = null;
-		} else {
-		}
-		return sendMediator;
-	}
+                    }
 
-	protected SendMediator getSendMediator(SequenceMediator sequence) {
-		SendMediator sendMediator = null;
-		int size = sequence.getList().size();
-		if (size > 0 && sequence.getList().get(size - 1) instanceof SendMediator) {
-			sendMediator = (SendMediator) sequence.getList().get(size - 1);
-		} else {
-			sendMediator = new SendMediator();
-			sequence.addChild(sendMediator);
-		}
-		return sendMediator;
-	}
+                } catch (Exception e) {
+                    log.warn("Error while executing outflow  serialization", e);
+                }
+            } else if (info.firstEndPoint instanceof LoadBalanceEndPoint) {
+                try {
+                    LoadBalanceEndPointWestOutputConnector westOutputConnector = ((LoadBalanceEndPoint) info.firstEndPoint)
+                            .getWestOutputConnector();
+                    List<EsbNode> transformedMediators = info.getTransformedMediators();
+                    if (westOutputConnector != null) {
+                        EsbNode nextElement = getTargetContainer(westOutputConnector);
+                        if (nextElement != null) {
+                            if (!transformedMediators.contains(nextElement)) {
+                                doTransform(info, westOutputConnector);
+                                transformedMediators.add(nextElement);
+                            }
+                        }
 
-	protected CallMediator getCallMediator(TransformationInfo info) {
-		CallMediator callMediator = null;
-		if (info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.CallMediator) {
-			int size = info.getParentSequence().getList().size();
-			if (size > 0) {
-				Mediator lastObj = info.getParentSequence().getList().get(size - 1);
-				if (lastObj instanceof CallMediator) {
-					callMediator = (CallMediator) lastObj;
-				}
-			}
-		} else if (info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequence) {
-			callMediator = null;
-		} else {
-		}
-		return callMediator;
-	}
+                    }
+                } catch (Exception e) {
+                    log.warn("Error while executing outflow  serialization", e);
+                }
+            } else if (info.firstEndPoint instanceof RecipientListEndPoint) {
+                try {
+                    RecipientListEndPointWestOutputConnector westOutputConnector = ((RecipientListEndPoint) info.firstEndPoint)
+                            .getWestOutputConnector();
 
-	protected CallMediator getCallMediator(SequenceMediator sequence) {
-		CallMediator callMediator = null;
-		int size = sequence.getList().size();
-		if (size > 0 && sequence.getList().get(size - 1) instanceof CallMediator) {
-			callMediator = (CallMediator) sequence.getList().get(size - 1);
-		} else {
-			callMediator = new CallMediator();
-			sequence.addChild(callMediator);
-		}
-		return callMediator;
-	}
+                    List<EsbNode> transformedMediators = info.getTransformedMediators();
+                    if (westOutputConnector != null) {
+                        EsbNode nextElement = getTargetContainer(westOutputConnector);
+                        if (nextElement != null) {
+                            if (!transformedMediators.contains(nextElement)) {
+                                doTransform(info, westOutputConnector);
+                                transformedMediators.add(nextElement);
+                            }
+                        }
 
-	protected void setEndpointToSendOrCallMediator(SequenceMediator sequence, Endpoint synapseEP) {
-		int size = sequence.getList().size();
-		Object mediator = null;
-		if (size > 0) {
-			mediator = sequence.getList().get(size - 1);
-		}
-		if (mediator instanceof SendMediator) {
-			SendMediator sendMediator = getSendMediator(sequence);
-			sendMediator.setEndpoint(synapseEP);
-		} else if (mediator instanceof CallMediator) {
-			CallMediator callMediator = getCallMediator(sequence);
-			callMediator.setEndpoint(synapseEP);
-		}
-	}
+                    }
 
-	protected void setEndpointToSendCallOrProxy(TransformationInfo info, EndPoint visualEndPoint, Endpoint synapseEP) {
-		SendMediator sendMediator = getSendMediator(info);
-		CallMediator callMediator = getCallMediator(info);
+                } catch (Exception e) {
+                    log.warn("Error while executing outflow  serialization", e);
+                }
+            }
+            info.isOutputPathSet = true;
+        }
+    }
 
-		if (visualEndPoint.isInLine()) {
-			if (info != null && info.getCurrentProxy() != null) {
-				info.getCurrentProxy().setTargetInLineEndpoint(synapseEP);
-			}
-		} else {
-			if (sendMediator != null) {
-				sendMediator.setEndpoint(synapseEP);
-			} else if (callMediator != null) {
-				callMediator.setEndpoint(synapseEP);
-			}
-		}
-	}
-	
-	protected org.apache.synapse.endpoints.Template createTemplate(EndpointFormPage formPage,
-			AbstractEndpoint synapseEP) {
-		org.apache.synapse.endpoints.Template endpointTemplate = new org.apache.synapse.endpoints.Template();
-		endpointTemplate.setName(formPage.getTemplateName().getText());
-		for (TemplateParameter parameter : formPage.getTemplateParameterList()) {
-			endpointTemplate.addParameter(parameter.getName());
-		}
-		endpointTemplate.setElement(EndpointSerializer.getElementFromEndpoint(synapseEP));
-		return endpointTemplate;
-	}
-	
-	
+    /**
+     * Get target node
+     * 
+     * @param outputConnector
+     * @return
+     */
+    protected EsbNode getTargetContainer(OutputConnector outputConnector) {
+        EsbNode node = null;
+        EsbLink outgoingLink = outputConnector.getOutgoingLink();
+        if (outgoingLink != null) {
+            InputConnector target = outgoingLink.getTarget();
+            if (target != null) {
+                if (target.eContainer() instanceof EsbNode) {
+                    node = (EsbNode) target.eContainer();
+                }
+            }
+        }
+        return node;
+    }
+
+    protected SendMediator getSendMediator(TransformationInfo info) {
+        SendMediator sendMediator = null;
+        if (info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.SendMediator) {
+            int size = info.getParentSequence().getList().size();
+            if (size > 0) {
+                Mediator lastObj = info.getParentSequence().getList().get(size - 1);
+                if (lastObj instanceof SendMediator) {
+                    sendMediator = (SendMediator) lastObj;
+                }
+            }
+        } else if (info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequence) {
+            sendMediator = null;
+        } else {
+        }
+        return sendMediator;
+    }
+
+    protected SendMediator getSendMediator(SequenceMediator sequence) {
+        SendMediator sendMediator = null;
+        int size = sequence.getList().size();
+        if (size > 0 && sequence.getList().get(size - 1) instanceof SendMediator) {
+            sendMediator = (SendMediator) sequence.getList().get(size - 1);
+        } else {
+            sendMediator = new SendMediator();
+            sequence.addChild(sendMediator);
+        }
+        return sendMediator;
+    }
+
+    protected CallMediator getCallMediator(TransformationInfo info) {
+        CallMediator callMediator = null;
+        if (info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.CallMediator) {
+            int size = info.getParentSequence().getList().size();
+            if (size > 0) {
+                Mediator lastObj = info.getParentSequence().getList().get(size - 1);
+                if (lastObj instanceof CallMediator) {
+                    callMediator = (CallMediator) lastObj;
+                }
+            }
+        } else if (info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequence) {
+            callMediator = null;
+        } else {
+        }
+        return callMediator;
+    }
+
+    protected CallMediator getCallMediator(SequenceMediator sequence) {
+        CallMediator callMediator = null;
+        int size = sequence.getList().size();
+        if (size > 0 && sequence.getList().get(size - 1) instanceof CallMediator) {
+            callMediator = (CallMediator) sequence.getList().get(size - 1);
+        } else {
+            callMediator = new CallMediator();
+            sequence.addChild(callMediator);
+        }
+        return callMediator;
+    }
+
+    protected void setEndpointToSendOrCallMediator(SequenceMediator sequence, Endpoint synapseEP) {
+        int size = sequence.getList().size();
+        Object mediator = null;
+        if (size > 0) {
+            mediator = sequence.getList().get(size - 1);
+        }
+        if (mediator instanceof SendMediator) {
+            SendMediator sendMediator = getSendMediator(sequence);
+            sendMediator.setEndpoint(synapseEP);
+        } else if (mediator instanceof CallMediator) {
+            CallMediator callMediator = getCallMediator(sequence);
+            callMediator.setEndpoint(synapseEP);
+        }
+    }
+
+    protected void setEndpointToSendCallOrProxy(TransformationInfo info, EndPoint visualEndPoint, Endpoint synapseEP) {
+        SendMediator sendMediator = getSendMediator(info);
+        CallMediator callMediator = getCallMediator(info);
+
+        if (visualEndPoint.isInLine()) {
+            if (info != null && info.getCurrentProxy() != null) {
+                info.getCurrentProxy().setTargetInLineEndpoint(synapseEP);
+            }
+        } else {
+            if (sendMediator != null) {
+                sendMediator.setEndpoint(synapseEP);
+            } else if (callMediator != null) {
+                callMediator.setEndpoint(synapseEP);
+            }
+        }
+    }
+
+    protected org.apache.synapse.endpoints.Template createTemplate(EndpointFormPage formPage,
+            AbstractEndpoint synapseEP) {
+        org.apache.synapse.endpoints.Template endpointTemplate = new org.apache.synapse.endpoints.Template();
+        endpointTemplate.setName(formPage.getTemplateName().getText());
+        for (TemplateParameter parameter : formPage.getTemplateParameterList()) {
+            endpointTemplate.addParameter(parameter.getName());
+        }
+        endpointTemplate.setElement(EndpointSerializer.getElementFromEndpoint(synapseEP));
+        return endpointTemplate;
+    }
 
 }

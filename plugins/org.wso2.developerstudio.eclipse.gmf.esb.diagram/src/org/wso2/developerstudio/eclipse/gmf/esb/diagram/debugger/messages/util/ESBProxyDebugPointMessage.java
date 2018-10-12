@@ -78,8 +78,8 @@ public class ESBProxyDebugPointMessage extends AbstractESBDebugPointMessage {
         if (debugPointMessage instanceof ESBProxyDebugPointMessage) {
             ESBProxyDebugPointMessage debugPointMessageTemp = (ESBProxyDebugPointMessage) debugPointMessage;
             if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent())
-                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument()) && getSequence()
-                    .equals(debugPointMessageTemp.getSequence()))) {
+                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument())
+                    && getSequence().equals(debugPointMessageTemp.getSequence()))) {
                 return false;
             }
             return true;
@@ -126,8 +126,8 @@ public class ESBProxyDebugPointMessage extends AbstractESBDebugPointMessage {
                 if (PROXY_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
                     proxyKey = convertJsonElementValueToString(entry.getValue());
                 } else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry.getKey())) {
-                    mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry
-                            .getValue()));
+                    mediatorPosition = convertMediatorPositionStringToList(
+                            convertJsonElementValueToString(entry.getValue()));
                 } else if (SEQUENCE_TYPE_LABEL.equalsIgnoreCase(entry.getKey())) {
                     sequenceType = convertJsonElementValueToString(entry.getValue());
                 }

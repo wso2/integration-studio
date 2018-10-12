@@ -32,24 +32,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
  */
 public class InboundEndpointParametersPropertyDescriptor extends PropertyDescriptor {
 
-	public InboundEndpointParametersPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
+    public InboundEndpointParametersPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				InboundEndpoint proxy = (InboundEndpoint) object;
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                InboundEndpoint proxy = (InboundEndpoint) object;
 
-				ConfigureInboundEndpointParameterDialog dialog = new ConfigureInboundEndpointParameterDialog(shell,
-						proxy);
-				dialog.setBlockOnOpen(true);
-				dialog.open();
-				return null;
-			}
-		};
-	}
+                ConfigureInboundEndpointParameterDialog dialog = new ConfigureInboundEndpointParameterDialog(shell,
+                        proxy);
+                dialog.setBlockOnOpen(true);
+                dialog.open();
+                return null;
+            }
+        };
+    }
 
 }

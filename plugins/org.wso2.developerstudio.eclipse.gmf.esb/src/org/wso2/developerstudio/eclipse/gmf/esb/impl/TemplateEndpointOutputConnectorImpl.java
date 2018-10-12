@@ -27,24 +27,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointOutputConnector;
  *
  * @generated
  */
-public class TemplateEndpointOutputConnectorImpl extends OutputConnectorImpl implements TemplateEndpointOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TemplateEndpointOutputConnectorImpl() {
-		super();
-	}
+public class TemplateEndpointOutputConnectorImpl extends OutputConnectorImpl
+        implements TemplateEndpointOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected TemplateEndpointOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.TEMPLATE_ENDPOINT_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.TEMPLATE_ENDPOINT_OUTPUT_CONNECTOR;
+    }
 
-} //TemplateEndpointOutputConnectorImpl
+} // TemplateEndpointOutputConnectorImpl

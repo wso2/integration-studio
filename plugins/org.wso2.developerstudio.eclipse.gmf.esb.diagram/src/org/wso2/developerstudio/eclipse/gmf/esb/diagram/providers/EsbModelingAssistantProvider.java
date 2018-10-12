@@ -29,69 +29,69 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.Messages;
  */
 public class EsbModelingAssistantProvider extends ModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	public EObject selectExistingElementForSource(IAdaptable target, IElementType relationshipType) {
-		return selectExistingElement(target, getTypesForSource(target, relationshipType));
-	}
+    /**
+     * @generated
+     */
+    public EObject selectExistingElementForSource(IAdaptable target, IElementType relationshipType) {
+        return selectExistingElement(target, getTypesForSource(target, relationshipType));
+    }
 
-	/**
-	 * @generated
-	 */
-	public EObject selectExistingElementForTarget(IAdaptable source, IElementType relationshipType) {
-		return selectExistingElement(source, getTypesForTarget(source, relationshipType));
-	}
+    /**
+     * @generated
+     */
+    public EObject selectExistingElementForTarget(IAdaptable source, IElementType relationshipType) {
+        return selectExistingElement(source, getTypesForTarget(source, relationshipType));
+    }
 
-	/**
-	 * @generated
-	 */
-	protected EObject selectExistingElement(IAdaptable host, Collection types) {
-		if (types.isEmpty()) {
-			return null;
-		}
-		IGraphicalEditPart editPart = (IGraphicalEditPart) host.getAdapter(IGraphicalEditPart.class);
-		if (editPart == null) {
-			return null;
-		}
-		Diagram diagram = (Diagram) editPart.getRoot().getContents().getModel();
-		HashSet<EObject> elements = new HashSet<EObject>();
-		for (Iterator<EObject> it = diagram.getElement().eAllContents(); it.hasNext();) {
-			EObject element = it.next();
-			if (isApplicableElement(element, types)) {
-				elements.add(element);
-			}
-		}
-		if (elements.isEmpty()) {
-			return null;
-		}
-		return selectElement((EObject[]) elements.toArray(new EObject[elements.size()]));
-	}
+    /**
+     * @generated
+     */
+    protected EObject selectExistingElement(IAdaptable host, Collection types) {
+        if (types.isEmpty()) {
+            return null;
+        }
+        IGraphicalEditPart editPart = (IGraphicalEditPart) host.getAdapter(IGraphicalEditPart.class);
+        if (editPart == null) {
+            return null;
+        }
+        Diagram diagram = (Diagram) editPart.getRoot().getContents().getModel();
+        HashSet<EObject> elements = new HashSet<EObject>();
+        for (Iterator<EObject> it = diagram.getElement().eAllContents(); it.hasNext();) {
+            EObject element = it.next();
+            if (isApplicableElement(element, types)) {
+                elements.add(element);
+            }
+        }
+        if (elements.isEmpty()) {
+            return null;
+        }
+        return selectElement((EObject[]) elements.toArray(new EObject[elements.size()]));
+    }
 
-	/**
-	 * @generated
-	 */
-	protected boolean isApplicableElement(EObject element, Collection types) {
-		IElementType type = ElementTypeRegistry.getInstance().getElementType(element);
-		return types.contains(type);
-	}
+    /**
+     * @generated
+     */
+    protected boolean isApplicableElement(EObject element, Collection types) {
+        IElementType type = ElementTypeRegistry.getInstance().getElementType(element);
+        return types.contains(type);
+    }
 
-	/**
-	 * @generated
-	 */
-	protected EObject selectElement(EObject[] elements) {
-		Shell shell = Display.getCurrent().getActiveShell();
-		ILabelProvider labelProvider = new AdapterFactoryLabelProvider(EsbDiagramEditorPlugin.getInstance()
-				.getItemProvidersAdapterFactory());
-		ElementListSelectionDialog dialog = new ElementListSelectionDialog(shell, labelProvider);
-		dialog.setMessage(Messages.EsbModelingAssistantProviderMessage);
-		dialog.setTitle(Messages.EsbModelingAssistantProviderTitle);
-		dialog.setMultipleSelection(false);
-		dialog.setElements(elements);
-		EObject selected = null;
-		if (dialog.open() == Window.OK) {
-			selected = (EObject) dialog.getFirstResult();
-		}
-		return selected;
-	}
+    /**
+     * @generated
+     */
+    protected EObject selectElement(EObject[] elements) {
+        Shell shell = Display.getCurrent().getActiveShell();
+        ILabelProvider labelProvider = new AdapterFactoryLabelProvider(
+                EsbDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
+        ElementListSelectionDialog dialog = new ElementListSelectionDialog(shell, labelProvider);
+        dialog.setMessage(Messages.EsbModelingAssistantProviderMessage);
+        dialog.setTitle(Messages.EsbModelingAssistantProviderTitle);
+        dialog.setMultipleSelection(false);
+        dialog.setElements(elements);
+        EObject selected = null;
+        if (dialog.open() == Window.OK) {
+            selected = (EObject) dialog.getFirstResult();
+        }
+        return selected;
+    }
 }

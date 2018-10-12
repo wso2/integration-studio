@@ -14,25 +14,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureProxyPolicyDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureScriptKeysDialog;
 
-public class ProxyServicePolicyPropertyDescriptor extends PropertyDescriptor{
+public class ProxyServicePolicyPropertyDescriptor extends PropertyDescriptor {
 
-	public ProxyServicePolicyPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public ProxyServicePolicyPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				ProxyService proxyService = (ProxyService) object;
-				ConfigureProxyPolicyDialog policyDialog=new ConfigureProxyPolicyDialog(shell, proxyService);
-				policyDialog.setBlockOnOpen(true);
-				policyDialog.open();
-				return null;
-			}
-		};
-	}
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ProxyService proxyService = (ProxyService) object;
+                ConfigureProxyPolicyDialog policyDialog = new ConfigureProxyPolicyDialog(shell, proxyService);
+                policyDialog.setBlockOnOpen(true);
+                policyDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

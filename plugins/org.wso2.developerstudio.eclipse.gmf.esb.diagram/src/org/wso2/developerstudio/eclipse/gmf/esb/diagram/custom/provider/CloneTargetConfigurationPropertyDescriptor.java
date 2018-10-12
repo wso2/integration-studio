@@ -29,24 +29,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class CloneTargetConfigurationPropertyDescriptor extends PropertyDescriptor {
 
-	public CloneTargetConfigurationPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				CloneMediator cloneMediator = (CloneMediator) object;
-				 //.getEditingDomain()
-				ConfigureCloneMediatorDialog cloneMediatorConfigurationDialog = new ConfigureCloneMediatorDialog(shell, cloneMediator);
-				cloneMediatorConfigurationDialog.setBlockOnOpen(true);
-				cloneMediatorConfigurationDialog.open();
-				return null;
-			}
-		};
-	}
+    public CloneTargetConfigurationPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                CloneMediator cloneMediator = (CloneMediator) object;
+                // .getEditingDomain()
+                ConfigureCloneMediatorDialog cloneMediatorConfigurationDialog = new ConfigureCloneMediatorDialog(shell,
+                        cloneMediator);
+                cloneMediatorConfigurationDialog.setBlockOnOpen(true);
+                cloneMediatorConfigurationDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

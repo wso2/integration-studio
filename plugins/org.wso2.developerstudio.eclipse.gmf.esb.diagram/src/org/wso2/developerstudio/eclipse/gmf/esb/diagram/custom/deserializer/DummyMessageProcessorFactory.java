@@ -40,104 +40,100 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Dumm
  * 
  */
 public class DummyMessageProcessorFactory {
-	private static final Log log = LogFactory.getLog(MessageProcessorFactory.class);
+    private static final Log log = LogFactory.getLog(MessageProcessorFactory.class);
 
-	public static final QName CLASS_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "class");
-	public static final QName NAME_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "name");
-	public static final QName PARAMETER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE,
-			"parameter");
-	public static final QName MESSAGE_STORE_Q = new QName(XMLConfigConstants.NULL_NAMESPACE,
-			"messageStore");
-	private static final QName DESCRIPTION_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE,
-			"description");
-	
-	// Fixing TOOLS-2026.
-	public static final String FORWARDING_PROCESSOR_OLD = "org.apache.synapse.message.processors.forward.ScheduledMessageForwardingProcessor";
-	public static final String FORWARDING_PROCESSOR = "org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor";
-	
-	public static final QName TARGET_ENDPOINT_Q = new QName(XMLConfigConstants.NULL_NAMESPACE,
-			"targetEndpoint");
+    public static final QName CLASS_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "class");
+    public static final QName NAME_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "name");
+    public static final QName PARAMETER_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "parameter");
+    public static final QName MESSAGE_STORE_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "messageStore");
+    private static final QName DESCRIPTION_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "description");
 
-	public static MessageProcessor createMessageProcessor(OMElement elem, Properties properties) {
+    // Fixing TOOLS-2026.
+    public static final String FORWARDING_PROCESSOR_OLD = "org.apache.synapse.message.processors.forward.ScheduledMessageForwardingProcessor";
+    public static final String FORWARDING_PROCESSOR = "org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor";
 
-		OMAttribute clssAtt = elem.getAttribute(CLASS_Q);
-		MessageProcessor messageProcessor = null;
+    public static final QName TARGET_ENDPOINT_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "targetEndpoint");
 
-		if (clssAtt != null) {
-			messageProcessor = new DummyMessageProcessor();
-			((DummyMessageProcessor) messageProcessor).setClassName(clssAtt.getAttributeValue());
-		} else {
-			handleException("Can't create Message processor without a provider class");
-		}
+    public static MessageProcessor createMessageProcessor(OMElement elem, Properties properties) {
 
-		OMAttribute nameAtt = elem.getAttribute(NAME_Q);
+        OMAttribute clssAtt = elem.getAttribute(CLASS_Q);
+        MessageProcessor messageProcessor = null;
 
-		if (nameAtt != null) {
-			assert messageProcessor != null;
-			messageProcessor.setName(nameAtt.getAttributeValue());
-		} else {
-			handleException("Message Processor name not specified");
-		}
+        if (clssAtt != null) {
+            messageProcessor = new DummyMessageProcessor();
+            ((DummyMessageProcessor) messageProcessor).setClassName(clssAtt.getAttributeValue());
+        } else {
+            handleException("Can't create Message processor without a provider class");
+        }
 
-		if (FORWARDING_PROCESSOR.equals(clssAtt.getAttributeValue())
-				|| FORWARDING_PROCESSOR_OLD.equals(clssAtt.getAttributeValue())) {
-			OMAttribute targetSequenceAtt = elem.getAttribute(TARGET_ENDPOINT_Q);
+        OMAttribute nameAtt = elem.getAttribute(NAME_Q);
 
-			if (targetSequenceAtt != null) {
-				assert messageProcessor != null;
-				messageProcessor.setTargetEndpoint(targetSequenceAtt.getAttributeValue());
-			} else {
-				// This validation is commented due to backward compatibility
-				// handleException("Can't create Message processor without a target endpoint ");
-			}
-		}
+        if (nameAtt != null) {
+            assert messageProcessor != null;
+            messageProcessor.setName(nameAtt.getAttributeValue());
+        } else {
+            handleException("Message Processor name not specified");
+        }
 
-		OMAttribute storeAtt = elem.getAttribute(MESSAGE_STORE_Q);
+        if (FORWARDING_PROCESSOR.equals(clssAtt.getAttributeValue())
+                || FORWARDING_PROCESSOR_OLD.equals(clssAtt.getAttributeValue())) {
+            OMAttribute targetSequenceAtt = elem.getAttribute(TARGET_ENDPOINT_Q);
 
-		if (storeAtt != null) {
-			assert messageProcessor != null;
-			messageProcessor.setMessageStoreName(storeAtt.getAttributeValue());
-		} else {
-			handleException("Can't create a message processor without a message Store");
-		}
+            if (targetSequenceAtt != null) {
+                assert messageProcessor != null;
+                messageProcessor.setTargetEndpoint(targetSequenceAtt.getAttributeValue());
+            } else {
+                // This validation is commented due to backward compatibility
+                // handleException("Can't create Message processor without a target endpoint ");
+            }
+        }
 
-		OMElement descriptionElem = elem.getFirstChildWithName(DESCRIPTION_Q);
-		if (descriptionElem != null) {
-			assert messageProcessor != null;
-			messageProcessor.setDescription(descriptionElem.getText());
-		}
+        OMAttribute storeAtt = elem.getAttribute(MESSAGE_STORE_Q);
 
-		assert messageProcessor != null;
-		messageProcessor.setParameters(getParameters(elem));
+        if (storeAtt != null) {
+            assert messageProcessor != null;
+            messageProcessor.setMessageStoreName(storeAtt.getAttributeValue());
+        } else {
+            handleException("Can't create a message processor without a message Store");
+        }
 
-		return messageProcessor;
-	}
+        OMElement descriptionElem = elem.getFirstChildWithName(DESCRIPTION_Q);
+        if (descriptionElem != null) {
+            assert messageProcessor != null;
+            messageProcessor.setDescription(descriptionElem.getText());
+        }
 
-	private static Map<String, Object> getParameters(OMElement elem) {
-		Iterator<?> params = elem.getChildrenWithName(PARAMETER_Q);
-		Map<String, Object> parameters = new HashMap<String, Object>();
+        assert messageProcessor != null;
+        messageProcessor.setParameters(getParameters(elem));
 
-		while (params.hasNext()) {
-			Object o = params.next();
-			if (o instanceof OMElement) {
-				OMElement prop = (OMElement) o;
-				OMAttribute paramName = prop.getAttribute(NAME_Q);
-				String paramValue = prop.getText();
-				if (paramName != null) {
-					if (paramValue != null) {
-						parameters.put(paramName.getAttributeValue(), paramValue);
-					}
-				} else {
-					handleException("Invalid MessageProcessor parameter - Parameter must have a name ");
-				}
-			}
-		}
-		return parameters;
-	}
+        return messageProcessor;
+    }
 
-	private static void handleException(String msg) {
-		log.error(msg);
-		throw new SynapseException(msg);
-	}
+    private static Map<String, Object> getParameters(OMElement elem) {
+        Iterator<?> params = elem.getChildrenWithName(PARAMETER_Q);
+        Map<String, Object> parameters = new HashMap<String, Object>();
+
+        while (params.hasNext()) {
+            Object o = params.next();
+            if (o instanceof OMElement) {
+                OMElement prop = (OMElement) o;
+                OMAttribute paramName = prop.getAttribute(NAME_Q);
+                String paramValue = prop.getText();
+                if (paramName != null) {
+                    if (paramValue != null) {
+                        parameters.put(paramName.getAttributeValue(), paramValue);
+                    }
+                } else {
+                    handleException("Invalid MessageProcessor parameter - Parameter must have a name ");
+                }
+            }
+        }
+        return parameters;
+    }
+
+    private static void handleException(String msg) {
+        log.error(msg);
+        throw new SynapseException(msg);
+    }
 
 }

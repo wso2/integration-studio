@@ -22,15 +22,15 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 
 /**
- * This Enum represent Custom inbound endpoint parameters with parameter name , related EAttribute and boolean value indicating
+ * This Enum represent Custom inbound endpoint parameters with parameter name , related EAttribute and boolean value
+ * indicating
  * whether it could hold key attribute
  *
  */
 public enum CustomInboundEndpointParameter {
     INBOUND_BEHAVIOUR_TYPE(InboundEndpointConstants.INBOUND_BEHAVIOUR, INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR,
-            false),
-    INTERVAL_TYPE(InboundEndpointConstants.INTERVAL, INBOUND_ENDPOINT__INTERVAL, true);
-    
+            false), INTERVAL_TYPE(InboundEndpointConstants.INTERVAL, INBOUND_ENDPOINT__INTERVAL, true);
+
     private final String name;
     private final EAttribute eAttributeValue;
     private final boolean holdsKeyValue;

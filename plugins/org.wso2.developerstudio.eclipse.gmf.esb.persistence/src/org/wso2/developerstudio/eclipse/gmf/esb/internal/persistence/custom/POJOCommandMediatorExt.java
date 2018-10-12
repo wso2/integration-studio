@@ -20,17 +20,17 @@ import org.apache.synapse.mediators.ext.POJOCommandMediator;
 
 public class POJOCommandMediatorExt extends POJOCommandMediator {
 
-	private String pojoClass;
+    private String pojoClass;
 
-	public POJOCommandMediatorExt(String pojoClass) {
-		this.setPojoClass(pojoClass);
-	}
+    public POJOCommandMediatorExt(String pojoClass) {
+        this.setPojoClass(pojoClass);
+    }
 
-	public void setPojoClass(String pojoClass) {
-		this.pojoClass = pojoClass;
-	}
+    public void setPojoClass(String pojoClass) {
+        this.pojoClass = pojoClass;
+    }
 
-	public String getPojoClass() {
-		return pojoClass;
-	}
+    public String getPojoClass() {
+        return pojoClass;
+    }
 }

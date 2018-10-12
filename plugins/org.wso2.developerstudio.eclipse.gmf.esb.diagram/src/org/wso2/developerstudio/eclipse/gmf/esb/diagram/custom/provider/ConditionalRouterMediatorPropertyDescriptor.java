@@ -32,26 +32,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
  * Custom property descriptor for conditional router mediator
  */
 public class ConditionalRouterMediatorPropertyDescriptor extends PropertyDescriptor {
- 
-	public ConditionalRouterMediatorPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
- 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				ConditionalRouterMediator mediator = (ConditionalRouterMediator) object;
-				ConfigureConditionalRouterMediatorDialog configurationDialog = new ConfigureConditionalRouterMediatorDialog(
-						shell, mediator, TransactionUtil.getEditingDomain(mediator));
-				configurationDialog.setBlockOnOpen(true);
-				configurationDialog.open();
-				return null;
-			}
-		};
-	}
- 
+
+    public ConditionalRouterMediatorPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                ConditionalRouterMediator mediator = (ConditionalRouterMediator) object;
+                ConfigureConditionalRouterMediatorDialog configurationDialog = new ConfigureConditionalRouterMediatorDialog(
+                        shell, mediator, TransactionUtil.getEditingDomain(mediator));
+                configurationDialog.setBlockOnOpen(true);
+                configurationDialog.open();
+                return null;
+            }
+        };
+    }
+
 }

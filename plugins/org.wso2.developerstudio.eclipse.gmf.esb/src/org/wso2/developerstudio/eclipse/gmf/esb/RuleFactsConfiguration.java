@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFactsConfiguration#getFacts <em>Facts</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFactsConfiguration#getFacts <em>Facts</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFactsConfiguration()
@@ -27,20 +27,21 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface RuleFactsConfiguration extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Facts</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Facts</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Facts</em>' containment reference list.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFactsConfiguration_Facts()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<RuleFact> getFacts();
+    /**
+     * Returns the value of the '<em><b>Facts</b></em>' containment reference list.
+     * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFact}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Facts</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Facts</em>' containment reference list.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFactsConfiguration_Facts()
+     * @model containment="true"
+     * @generated
+     */
+    EList<RuleFact> getFacts();
 
 } // RuleFactsConfiguration

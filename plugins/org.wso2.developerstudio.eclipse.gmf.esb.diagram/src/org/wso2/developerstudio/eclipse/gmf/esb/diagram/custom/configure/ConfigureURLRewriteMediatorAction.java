@@ -17,32 +17,34 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureCloneMediatorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.ConfigureURLrewriteruleDialog;
 
-public class ConfigureURLRewriteMediatorAction  extends ConfigureEsbNodeAction  {
-	public static final String URLREWRITE_MEDIATOR_ACTION_CONFIGURATOR_ID = "configure-urlRewrite-mediator-action-id";
-	public ConfigureURLRewriteMediatorAction(IWorkbenchPart part) {
-		super(part);
-		setId(URLREWRITE_MEDIATOR_ACTION_CONFIGURATOR_ID);
-		setText("Configure...");
-		setToolTipText("Configure  URLRewrite mediator.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
-	}
+public class ConfigureURLRewriteMediatorAction extends ConfigureEsbNodeAction {
+    public static final String URLREWRITE_MEDIATOR_ACTION_CONFIGURATOR_ID = "configure-urlRewrite-mediator-action-id";
 
-	@Override
-	protected void doRun(IProgressMonitor progressMonitor) {
-		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof URLRewriteMediator, "Invalid selection.");
+    public ConfigureURLRewriteMediatorAction(IWorkbenchPart part) {
+        super(part);
+        setId(URLREWRITE_MEDIATOR_ACTION_CONFIGURATOR_ID);
+        setText("Configure...");
+        setToolTipText("Configure  URLRewrite mediator.");
+        ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+        setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+    }
 
-		Shell shell = Display.getDefault().getActiveShell();	
-		
-		Dialog urlMediatorConfigurDialog = new ConfigureURLrewriteruleDialog(shell,(URLRewriteMediator)selectedObj,TransactionUtil.getEditingDomain(selectedObj));
-		
-		urlMediatorConfigurDialog.setBlockOnOpen(true);
-		urlMediatorConfigurDialog.open();
-		
-	}
+    @Override
+    protected void doRun(IProgressMonitor progressMonitor) {
+        EditPart selectedEP = getSelectedEditPart();
+        Assert.isNotNull(selectedEP, "Empty selection.");
+
+        EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+        Assert.isTrue(selectedObj instanceof URLRewriteMediator, "Invalid selection.");
+
+        Shell shell = Display.getDefault().getActiveShell();
+
+        Dialog urlMediatorConfigurDialog = new ConfigureURLrewriteruleDialog(shell, (URLRewriteMediator) selectedObj,
+                TransactionUtil.getEditingDomain(selectedObj));
+
+        urlMediatorConfigurDialog.setBlockOnOpen(true);
+        urlMediatorConfigurDialog.open();
+
+    }
 
 }

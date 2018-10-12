@@ -57,8 +57,8 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
         setValue(value);
     }
 
-    public ESBVariable(IDebugTarget target, String name, JsonElement value, String context, Set<String> tablePropertySet)
-            throws DebugException {
+    public ESBVariable(IDebugTarget target, String name, JsonElement value, String context,
+            Set<String> tablePropertySet) throws DebugException {
         super(target);
         variableName = name;
         variableContext = context;
@@ -96,8 +96,9 @@ public class ESBVariable extends ESBDebugElement implements IVariable {
         try {
             return !variableValue.hasVariables();
         } catch (DebugException e) {
-            log.error("Error while trying to check whether variable " + variableValue.toString()
-                    + " has child variables", e);
+            log.error(
+                    "Error while trying to check whether variable " + variableValue.toString() + " has child variables",
+                    e);
         }
         return false;
     }

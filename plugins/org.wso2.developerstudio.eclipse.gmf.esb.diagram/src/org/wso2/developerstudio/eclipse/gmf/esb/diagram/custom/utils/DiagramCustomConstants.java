@@ -17,9 +17,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils;
 
 public class DiagramCustomConstants {
 
-	public static final int DEBUGPOINT_IMAGE_OFFSET_VALUE = 40;
-	public static final String BREAKPOINT_IMAGE_LOCATION = "icons/ico20debug/toggle_breakpoint_red.gif";
-	public static final String SKIP_POINT_IMAGE_LOCATION = "icons/ico20debug/greyImagealphamask_reduced.gif";
-	public static final String PROPERTY_NAME_LABEL_FONT = "Courier";
-	public static final String DEFAULT_NODE_NAME_VALUE = "<default>";
+    public static final int DEBUGPOINT_IMAGE_OFFSET_VALUE = 40;
+    public static final String BREAKPOINT_IMAGE_LOCATION = "icons/ico20debug/toggle_breakpoint_red.gif";
+    public static final String SKIP_POINT_IMAGE_LOCATION = "icons/ico20debug/greyImagealphamask_reduced.gif";
+    public static final String PROPERTY_NAME_LABEL_FONT = "Courier";
+    public static final String DEFAULT_NODE_NAME_VALUE = "<default>";
 }

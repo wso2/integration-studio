@@ -40,72 +40,72 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class ScriptMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {
-		try {
-			information.getParentSequence().addChild(createScriptMediator(subject));
-			// Transform the Script mediator output data flow path.
-			doTransform(information, ((ScriptMediator)subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createScriptMediator(subject));
+            // Transform the Script mediator output data flow path.
+            doTransform(information, ((ScriptMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		// TODO Auto-generated method stub
-		try {
-			sequence.addChild(createScriptMediator(subject));
-			doTransformWithinSequence(information,((ScriptMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
-	
-	private org.apache.synapse.mediators.bsf.ScriptMediator createScriptMediator(EsbNode subject) throws JaxenException, TransformerException{
-		Assert.isTrue(subject instanceof ScriptMediator, "Invalid subject.");
-		ScriptMediator visualScript = (ScriptMediator)subject;
-		ScriptType scriptType = visualScript.getScriptType();
-		int scriptTypeValue = scriptType.getValue();
-		String language=visualScript.getScriptLanguage().getLiteral();
-		String function = visualScript.getMediateFunction();
-		
-		org.apache.synapse.mediators.bsf.ScriptMediator scriptMediator =null;
-		if(scriptTypeValue==0){
-		String scriptSourceCode=visualScript.getScriptBody();
-	    scriptMediator = new org.apache.synapse.mediators.bsf.ScriptMediator(language,scriptSourceCode,null);	    
-		}else{
-			Map<Value, Object> includeMap = new HashMap<Value, Object>();
-			EList<RegistryKeyProperty> scriptKeys = visualScript.getScriptKeys();
-			for (RegistryKeyProperty registryKeyProperty : scriptKeys) {
-				Value value = new Value(registryKeyProperty.getKeyValue());
-				includeMap.put(value, null);
-			}
-			scriptKeyTypeEnum keyType = visualScript.getKeyType();
-			Value value=null;
-		    if(keyType.getValue()==keyType.STATIC_KEY_VALUE){	
-		    	value = new Value(visualScript.getScriptStaticKey().getKeyValue());
-		    	 
-		    }else{
-		    	NamespacedProperty scriptDynamicKey = visualScript.getScriptDynamicKey();
-				SynapseXPath synapseXPath = new SynapseXPath(scriptDynamicKey.getPropertyValue());
-				for (Entry<String, String> entry : scriptDynamicKey
-						.getNamespaces().entrySet()) {
-					synapseXPath.addNamespace(entry.getKey(), entry.getValue());
-				}
-		        value = new Value(synapseXPath);
-		    }
-			scriptMediator = new org.apache.synapse.mediators.bsf.ScriptMediator(language,includeMap,value,function,null);
-		}
-		setCommonProperties(scriptMediator, visualScript);
- 
-		return scriptMediator;
-	}
+    }
+
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // TODO Auto-generated method stub
+        try {
+            sequence.addChild(createScriptMediator(subject));
+            doTransformWithinSequence(information, ((ScriptMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
+
+    private org.apache.synapse.mediators.bsf.ScriptMediator createScriptMediator(EsbNode subject)
+            throws JaxenException, TransformerException {
+        Assert.isTrue(subject instanceof ScriptMediator, "Invalid subject.");
+        ScriptMediator visualScript = (ScriptMediator) subject;
+        ScriptType scriptType = visualScript.getScriptType();
+        int scriptTypeValue = scriptType.getValue();
+        String language = visualScript.getScriptLanguage().getLiteral();
+        String function = visualScript.getMediateFunction();
+
+        org.apache.synapse.mediators.bsf.ScriptMediator scriptMediator = null;
+        if (scriptTypeValue == 0) {
+            String scriptSourceCode = visualScript.getScriptBody();
+            scriptMediator = new org.apache.synapse.mediators.bsf.ScriptMediator(language, scriptSourceCode, null);
+        } else {
+            Map<Value, Object> includeMap = new HashMap<Value, Object>();
+            EList<RegistryKeyProperty> scriptKeys = visualScript.getScriptKeys();
+            for (RegistryKeyProperty registryKeyProperty : scriptKeys) {
+                Value value = new Value(registryKeyProperty.getKeyValue());
+                includeMap.put(value, null);
+            }
+            scriptKeyTypeEnum keyType = visualScript.getKeyType();
+            Value value = null;
+            if (keyType.getValue() == keyType.STATIC_KEY_VALUE) {
+                value = new Value(visualScript.getScriptStaticKey().getKeyValue());
+
+            } else {
+                NamespacedProperty scriptDynamicKey = visualScript.getScriptDynamicKey();
+                SynapseXPath synapseXPath = new SynapseXPath(scriptDynamicKey.getPropertyValue());
+                for (Entry<String, String> entry : scriptDynamicKey.getNamespaces().entrySet()) {
+                    synapseXPath.addNamespace(entry.getKey(), entry.getValue());
+                }
+                value = new Value(synapseXPath);
+            }
+            scriptMediator = new org.apache.synapse.mediators.bsf.ScriptMediator(language, includeMap, value, function,
+                    null);
+        }
+        setCommonProperties(scriptMediator, visualScript);
+
+        return scriptMediator;
+    }
 
 }

@@ -80,8 +80,8 @@ public class ESBInboundEndpointDebugPointMessage extends AbstractESBDebugPointMe
         if (debugPointMessage instanceof ESBInboundEndpointDebugPointMessage) {
             ESBInboundEndpointDebugPointMessage debugPointMessageTemp = (ESBInboundEndpointDebugPointMessage) debugPointMessage;
             if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent())
-                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument()) && getSequence()
-                    .equals(debugPointMessageTemp.getSequence()))) {
+                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument())
+                    && getSequence().equals(debugPointMessageTemp.getSequence()))) {
                 return false;
             }
             return true;
@@ -128,8 +128,8 @@ public class ESBInboundEndpointDebugPointMessage extends AbstractESBDebugPointMe
                 if (INBOUND_ENDPOINT_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
                     inboundKey = convertJsonElementValueToString(entry.getValue());
                 } else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry.getKey())) {
-                    mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry
-                            .getValue()));
+                    mediatorPosition = convertMediatorPositionStringToList(
+                            convertJsonElementValueToString(entry.getValue()));
                 } else if (SEQUENCE_TYPE_LABEL.equalsIgnoreCase(entry.getKey())) {
                     sequenceType = convertJsonElementValueToString(entry.getValue());
                 }

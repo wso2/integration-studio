@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
@@ -29,69 +28,59 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
-public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
+public class BAMMediatorTransformer extends AbstractEsbNodeTransformer {
 
     @Override
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		information.getParentSequence().addChild(
-				createBAMMediator(subject, information));
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        information.getParentSequence().addChild(createBAMMediator(subject, information));
 
-		doTransform(information,
-				((BAMMediator) subject).getOutputConnector());	
-	}
+        doTransform(information, ((BAMMediator) subject).getOutputConnector());
+    }
 
-	@Override
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {	
-	}
+    @Override
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+    }
 
-	@Override
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws TransformerException {
-		sequence.addChild(createBAMMediator(subject, information));
-		doTransformWithinSequence(information, ((BAMMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
-		
-	}
-	
-	private org.wso2.carbon.mediator.bam.BamMediator createBAMMediator(
-			EsbNode subject, TransformationInfo information) throws TransformerException {
+    @Override
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        sequence.addChild(createBAMMediator(subject, information));
+        doTransformWithinSequence(information, ((BAMMediator) subject).getOutputConnector().getOutgoingLink(),
+                sequence);
 
-		if (subject instanceof BAMMediator) {
-			BAMMediator visualBAMMediator = (BAMMediator) subject;
+    }
 
-			org.wso2.carbon.mediator.bam.BamMediator bamMediator = new org.wso2.carbon.mediator.bam.BamMediator();
-			setCommonProperties(bamMediator, visualBAMMediator);
-			if (StringUtils.isNotEmpty(visualBAMMediator.getServerProfile())) {
-				bamMediator.setServerProfile(visualBAMMediator
-						.getServerProfile());
-			} else {
-				throw new IllegalArgumentException(
-						Messages.BAMMediatorTransformer_Server_Profile_Name_Required_Error_Message);
-			}
+    private org.wso2.carbon.mediator.bam.BamMediator createBAMMediator(EsbNode subject, TransformationInfo information)
+            throws TransformerException {
 
-			if (StringUtils.isNotEmpty(visualBAMMediator.getStreamName())) {
-				if (StringUtils
-						.isNotEmpty(visualBAMMediator.getStreamVersion())) {
-					StreamConfiguration streamConfiguration = new StreamConfiguration();
-					streamConfiguration.setName(visualBAMMediator
-							.getStreamName());
-					streamConfiguration.setVersion(visualBAMMediator
-							.getStreamVersion());
-					bamMediator.getStream().setStreamConfiguration(
-							streamConfiguration);
-				} else {
-					throw new IllegalArgumentException(
-							Messages.BAMMediatorTransformer_Stream_Version_Required_Error_Message);
-				}
-			} else {
-				throw new IllegalArgumentException(
-						Messages.BAMMediatorTransformer_Stream_Name_Required_Error_Message);
-			}
-			return bamMediator;
-		} else {
-			throw new IllegalArgumentException(
-					Messages.BAMMediatorTransformer_InvalidSubjectErrorMessage);
-		}
-	}
+        if (subject instanceof BAMMediator) {
+            BAMMediator visualBAMMediator = (BAMMediator) subject;
+
+            org.wso2.carbon.mediator.bam.BamMediator bamMediator = new org.wso2.carbon.mediator.bam.BamMediator();
+            setCommonProperties(bamMediator, visualBAMMediator);
+            if (StringUtils.isNotEmpty(visualBAMMediator.getServerProfile())) {
+                bamMediator.setServerProfile(visualBAMMediator.getServerProfile());
+            } else {
+                throw new IllegalArgumentException(
+                        Messages.BAMMediatorTransformer_Server_Profile_Name_Required_Error_Message);
+            }
+
+            if (StringUtils.isNotEmpty(visualBAMMediator.getStreamName())) {
+                if (StringUtils.isNotEmpty(visualBAMMediator.getStreamVersion())) {
+                    StreamConfiguration streamConfiguration = new StreamConfiguration();
+                    streamConfiguration.setName(visualBAMMediator.getStreamName());
+                    streamConfiguration.setVersion(visualBAMMediator.getStreamVersion());
+                    bamMediator.getStream().setStreamConfiguration(streamConfiguration);
+                } else {
+                    throw new IllegalArgumentException(
+                            Messages.BAMMediatorTransformer_Stream_Version_Required_Error_Message);
+                }
+            } else {
+                throw new IllegalArgumentException(Messages.BAMMediatorTransformer_Stream_Name_Required_Error_Message);
+            }
+            return bamMediator;
+        } else {
+            throw new IllegalArgumentException(Messages.BAMMediatorTransformer_InvalidSubjectErrorMessage);
+        }
+    }
 }

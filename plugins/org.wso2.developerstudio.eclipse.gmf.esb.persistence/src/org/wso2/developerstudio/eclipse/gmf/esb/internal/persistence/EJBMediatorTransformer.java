@@ -44,91 +44,85 @@ import org.apache.synapse.util.xpath.SynapseXPath;
  */
 public class EJBMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
-		try {
-			information.getParentSequence().addChild(createEJBMediator(subject));
-			// Transform the EJB mediator output data flow path.
-			doTransform(information, ((EJBMediator) subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createEJBMediator(subject));
+            // Transform the EJB mediator output data flow path.
+            doTransform(information, ((EJBMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// nothing do to
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // nothing do to
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws TransformerException {
-		try {
-			sequence.addChild(createEJBMediator(subject));
-			// Transform the EJB mediator output data flow path.
-			doTransformWithinSequence(information, ((EJBMediator) subject).getOutputConnector()
-					.getOutgoingLink(), sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}
-	}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createEJBMediator(subject));
+            // Transform the EJB mediator output data flow path.
+            doTransformWithinSequence(information, ((EJBMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	private Mediator createEJBMediator(EsbNode subject) throws JaxenException{
-		Assert.isTrue(subject instanceof EJBMediator,
-				"Unsupported mediator passed in for serialization");
-		EJBMediator mediatorModel = (EJBMediator) subject;
+    private Mediator createEJBMediator(EsbNode subject) throws JaxenException {
+        Assert.isTrue(subject instanceof EJBMediator, "Unsupported mediator passed in for serialization");
+        EJBMediator mediatorModel = (EJBMediator) subject;
 
-		EJBMediatorExt mediator = new EJBMediatorExt();
-		setCommonProperties(mediator, mediatorModel);
-		mediator.setBeanstalkName(mediatorModel.getBeanstalk());
-		mediator.setClassName(mediatorModel.getClass_());
-		mediator.setJndiName(mediatorModel.getJNDIName());
-		mediator.setMethodName(mediatorModel.getMethod());
-		mediator.setRemove(mediatorModel.isRemove());
-		mediator.setTargetValue(mediatorModel.getTarget());
-		
-		if(mediatorModel.getSessionIdType()==PropertyValueType.EXPRESSION){
-			NamespacedProperty sessionExpression = mediatorModel.getSessionIdExpression();
-			if (sessionExpression != null
-					&& sessionExpression.getPropertyValue() != null) {
-					SynapseXPath expression = new SynapseXPath(sessionExpression.getPropertyValue());
-					for (Entry<String, String> entry : sessionExpression.getNamespaces().entrySet()) {
-						expression.addNamespace(entry.getKey(), entry.getValue());
-					}
-					Value beanId = new Value(expression);
-					mediator.setBeanId(beanId);
-			}
-		} else{
-			if(mediatorModel.getSessionIdLiteral()!=null){
-				Value beanId = new Value(mediatorModel.getSessionIdLiteral());
-				mediator.setBeanId(beanId);
-			}
-		}
-		
-		// Method Arguments
-		for (MethodArgument visualMethodArgument : mediatorModel.getMethodArguments()) {
-			Value methodArgument = null;
+        EJBMediatorExt mediator = new EJBMediatorExt();
+        setCommonProperties(mediator, mediatorModel);
+        mediator.setBeanstalkName(mediatorModel.getBeanstalk());
+        mediator.setClassName(mediatorModel.getClass_());
+        mediator.setJndiName(mediatorModel.getJNDIName());
+        mediator.setMethodName(mediatorModel.getMethod());
+        mediator.setRemove(mediatorModel.isRemove());
+        mediator.setTargetValue(mediatorModel.getTarget());
 
-			if (visualMethodArgument.getPropertyValueType().getLiteral().equals("LITERAL")) {
-				methodArgument = new Value(visualMethodArgument.getPropertyValue());
-			} else {
-				NamespacedProperty namespacedExpression = visualMethodArgument
-						.getPropertyExpression();
-				if (namespacedExpression != null) {
-					SynapseXPath argumentExpression = new SynapseXPath(
-							namespacedExpression.getPropertyValue());
-					for (Entry<String, String> entry : namespacedExpression.getNamespaces()
-							.entrySet()) {
-						argumentExpression.addNamespace(entry.getKey(), entry.getValue());
-					}
+        if (mediatorModel.getSessionIdType() == PropertyValueType.EXPRESSION) {
+            NamespacedProperty sessionExpression = mediatorModel.getSessionIdExpression();
+            if (sessionExpression != null && sessionExpression.getPropertyValue() != null) {
+                SynapseXPath expression = new SynapseXPath(sessionExpression.getPropertyValue());
+                for (Entry<String, String> entry : sessionExpression.getNamespaces().entrySet()) {
+                    expression.addNamespace(entry.getKey(), entry.getValue());
+                }
+                Value beanId = new Value(expression);
+                mediator.setBeanId(beanId);
+            }
+        } else {
+            if (mediatorModel.getSessionIdLiteral() != null) {
+                Value beanId = new Value(mediatorModel.getSessionIdLiteral());
+                mediator.setBeanId(beanId);
+            }
+        }
 
-					methodArgument = new Value(argumentExpression);
-				}
-			}
+        // Method Arguments
+        for (MethodArgument visualMethodArgument : mediatorModel.getMethodArguments()) {
+            Value methodArgument = null;
 
-			mediator.addArgument(methodArgument);
-		}
-		
-		return mediator;
-	}
+            if (visualMethodArgument.getPropertyValueType().getLiteral().equals("LITERAL")) {
+                methodArgument = new Value(visualMethodArgument.getPropertyValue());
+            } else {
+                NamespacedProperty namespacedExpression = visualMethodArgument.getPropertyExpression();
+                if (namespacedExpression != null) {
+                    SynapseXPath argumentExpression = new SynapseXPath(namespacedExpression.getPropertyValue());
+                    for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+                        argumentExpression.addNamespace(entry.getKey(), entry.getValue());
+                    }
+
+                    methodArgument = new Value(argumentExpression);
+                }
+            }
+
+            mediator.addArgument(methodArgument);
+        }
+
+        return mediator;
+    }
 
 }

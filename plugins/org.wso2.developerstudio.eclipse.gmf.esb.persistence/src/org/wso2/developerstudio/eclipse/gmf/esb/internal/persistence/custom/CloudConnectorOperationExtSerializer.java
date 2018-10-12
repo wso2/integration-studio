@@ -28,45 +28,46 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.template.InvokeMediator;
 
 public class CloudConnectorOperationExtSerializer extends InvokeMediatorSerializer {
-	
-	@Override
-	protected OMElement serializeSpecificMediator(Mediator m) {
-		CloudConnectorOperationExt cloudConnectorOperation=(CloudConnectorOperationExt)m;
-		OMElement mediatorElem = fac.createOMElement(cloudConnectorOperation.getConnectorComponentName()+"."+cloudConnectorOperation.getOperation(), synNS);
-		saveTracingState(mediatorElem, cloudConnectorOperation);
-		String configRef = cloudConnectorOperation.getConfigRef();
-		if(configRef!=null && !configRef.equals("")){			
-			mediatorElem.addAttribute(fac.createOMAttribute("configKey", nullNS, configRef));
-		}
-		serializeParams(mediatorElem, cloudConnectorOperation);
-		return mediatorElem;
-	}
-	
+
+    @Override
+    protected OMElement serializeSpecificMediator(Mediator m) {
+        CloudConnectorOperationExt cloudConnectorOperation = (CloudConnectorOperationExt) m;
+        OMElement mediatorElem = fac.createOMElement(
+                cloudConnectorOperation.getConnectorComponentName() + "." + cloudConnectorOperation.getOperation(),
+                synNS);
+        saveTracingState(mediatorElem, cloudConnectorOperation);
+        String configRef = cloudConnectorOperation.getConfigRef();
+        if (configRef != null && !configRef.equals("")) {
+            mediatorElem.addAttribute(fac.createOMAttribute("configKey", nullNS, configRef));
+        }
+        serializeParams(mediatorElem, cloudConnectorOperation);
+        return mediatorElem;
+    }
+
     private void serializeParams(OMElement invokeElem, InvokeMediator mediator) {
         Map<String, Value> paramsMap = mediator.getpName2ExpressionMap();
         Iterator<String> paramIterator = paramsMap.keySet().iterator();
         while (paramIterator.hasNext()) {
             String paramName = paramIterator.next();
             if (!"".equals(paramName)) {
-                OMElement paramEl = fac.createOMElement(paramName,
-                		synNS);
-                
-                //serialize value attribute
+                OMElement paramEl = fac.createOMElement(paramName, synNS);
+
+                // serialize value attribute
                 Value value = paramsMap.get(paramName);
                 if (StringUtils.isNotBlank(value.getKeyValue()) || value.getExpression() != null) {
-                	// Fixing TOOLS-2222 (do not serialize empty attributes)
-                	new ValueSerializer().serializeTextValue(value, "value", paramEl);  
-                	invokeElem.addChild(paramEl);
+                    // Fixing TOOLS-2222 (do not serialize empty attributes)
+                    new ValueSerializer().serializeTextValue(value, "value", paramEl);
+                    invokeElem.addChild(paramEl);
                 }
-                            
-               // paramEl.setText(value.getKeyValue());
-               // new ValueSerializer().serializeValue(value, "value", paramEl);
-                
+
+                // paramEl.setText(value.getKeyValue());
+                // new ValueSerializer().serializeValue(value, "value", paramEl);
+
             }
         }
 
     }
-	
+
     public String getMediatorClassName() {
         return CloudConnectorOperationExt.class.getName();
     }

@@ -26,61 +26,59 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.BeanMediatorExt;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
-public class BeanMediatorDeserializer extends
-		AbstractEsbNodeDeserializer<BeanMediatorExt, BeanMediator> {
+public class BeanMediatorDeserializer extends AbstractEsbNodeDeserializer<BeanMediatorExt, BeanMediator> {
 
-	@Override
-	public BeanMediator createNode(IGraphicalEditPart part, BeanMediatorExt mediator) {
-		BeanMediator mediatorModel = (BeanMediator) DeserializerUtils.createNode(part,
-				EsbElementTypes.BeanMediator_3683);
-		setElementToEdit(mediatorModel);
-		setCommonProperties(mediator, mediatorModel);
+    @Override
+    public BeanMediator createNode(IGraphicalEditPart part, BeanMediatorExt mediator) {
+        BeanMediator mediatorModel = (BeanMediator) DeserializerUtils.createNode(part,
+                EsbElementTypes.BeanMediator_3683);
+        setElementToEdit(mediatorModel);
+        setCommonProperties(mediator, mediatorModel);
 
-		executeSetValueCommand(BEAN_MEDIATOR__VAR, mediator.getVarName());
+        executeSetValueCommand(BEAN_MEDIATOR__VAR, mediator.getVarName());
 
-		switch (mediator.getAction()) {
-		case CREATE:
-			executeSetValueCommand(BEAN_MEDIATOR__ACTION, BeanMediatorAction.CREATE);
-			executeSetValueCommand(BEAN_MEDIATOR__CLASS, mediator.getClassName());
-			break;
-		case GET_PROPERTY:
-			executeSetValueCommand(BEAN_MEDIATOR__ACTION, BeanMediatorAction.GET_PROPERTY);
-			executeSetValueCommand(BEAN_MEDIATOR__PROPERTY, mediator.getPropertyName());
+        switch (mediator.getAction()) {
+        case CREATE:
+            executeSetValueCommand(BEAN_MEDIATOR__ACTION, BeanMediatorAction.CREATE);
+            executeSetValueCommand(BEAN_MEDIATOR__CLASS, mediator.getClassName());
+            break;
+        case GET_PROPERTY:
+            executeSetValueCommand(BEAN_MEDIATOR__ACTION, BeanMediatorAction.GET_PROPERTY);
+            executeSetValueCommand(BEAN_MEDIATOR__PROPERTY, mediator.getPropertyName());
 
-			Value targetValue = mediator.getTargetValue();
-			if (targetValue != null) {
-				if (targetValue.getExpression() != null) {
-					executeSetValueCommand(BEAN_MEDIATOR__TARGET_TYPE, PropertyValueType.EXPRESSION);
-					executeSetValueCommand(BEAN_MEDIATOR__TARGET_EXPRESSION,
-							createNamespacedProperty(targetValue.getExpression()));
-				} else {
-					executeSetValueCommand(BEAN_MEDIATOR__TARGET_TYPE, PropertyValueType.LITERAL);
-					executeSetValueCommand(BEAN_MEDIATOR__TARGET_LITERAL, targetValue.getKeyValue());
-				}
-			}
-			break;
-		case REMOVE:
-			executeSetValueCommand(BEAN_MEDIATOR__ACTION, BeanMediatorAction.REMOVE);
-			break;
-		case SET_PROPERTY:
-			executeSetValueCommand(BEAN_MEDIATOR__ACTION, BeanMediatorAction.SET_PROPERTY);
-			executeSetValueCommand(BEAN_MEDIATOR__PROPERTY, mediator.getPropertyName());
-			
-			Value value = mediator.getValue();
-			if (value != null) {
-				if (value.getExpression() != null) {
-					executeSetValueCommand(BEAN_MEDIATOR__VALUE_TYPE, PropertyValueType.EXPRESSION);
-					executeSetValueCommand(BEAN_MEDIATOR__VALUE_EXPRESSION,
-							createNamespacedProperty(value.getExpression()));
-				} else {
-					executeSetValueCommand(BEAN_MEDIATOR__VALUE_TYPE, PropertyValueType.LITERAL);
-					executeSetValueCommand(BEAN_MEDIATOR__VALUE_LITERAL, value.getKeyValue());
-				}
-			}
-			break;
-		}
-		return mediatorModel;
-	}
+            Value targetValue = mediator.getTargetValue();
+            if (targetValue != null) {
+                if (targetValue.getExpression() != null) {
+                    executeSetValueCommand(BEAN_MEDIATOR__TARGET_TYPE, PropertyValueType.EXPRESSION);
+                    executeSetValueCommand(BEAN_MEDIATOR__TARGET_EXPRESSION,
+                            createNamespacedProperty(targetValue.getExpression()));
+                } else {
+                    executeSetValueCommand(BEAN_MEDIATOR__TARGET_TYPE, PropertyValueType.LITERAL);
+                    executeSetValueCommand(BEAN_MEDIATOR__TARGET_LITERAL, targetValue.getKeyValue());
+                }
+            }
+            break;
+        case REMOVE:
+            executeSetValueCommand(BEAN_MEDIATOR__ACTION, BeanMediatorAction.REMOVE);
+            break;
+        case SET_PROPERTY:
+            executeSetValueCommand(BEAN_MEDIATOR__ACTION, BeanMediatorAction.SET_PROPERTY);
+            executeSetValueCommand(BEAN_MEDIATOR__PROPERTY, mediator.getPropertyName());
 
+            Value value = mediator.getValue();
+            if (value != null) {
+                if (value.getExpression() != null) {
+                    executeSetValueCommand(BEAN_MEDIATOR__VALUE_TYPE, PropertyValueType.EXPRESSION);
+                    executeSetValueCommand(BEAN_MEDIATOR__VALUE_EXPRESSION,
+                            createNamespacedProperty(value.getExpression()));
+                } else {
+                    executeSetValueCommand(BEAN_MEDIATOR__VALUE_TYPE, PropertyValueType.LITERAL);
+                    executeSetValueCommand(BEAN_MEDIATOR__VALUE_LITERAL, value.getKeyValue());
+                }
+            }
+            break;
+        }
+        return mediatorModel;
+    }
 
 }

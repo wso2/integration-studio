@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediatorInputConnector
  *
  * @generated
  */
-public class URLRewriteMediatorInputConnectorImpl extends InputConnectorImpl implements URLRewriteMediatorInputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected URLRewriteMediatorInputConnectorImpl() {
-		super();
-	}
+public class URLRewriteMediatorInputConnectorImpl extends InputConnectorImpl
+        implements URLRewriteMediatorInputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected URLRewriteMediatorInputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.URL_REWRITE_MEDIATOR_INPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.URL_REWRITE_MEDIATOR_INPUT_CONNECTOR;
+    }
 
-} //URLRewriteMediatorInputConnectorImpl
+} // URLRewriteMediatorInputConnectorImpl

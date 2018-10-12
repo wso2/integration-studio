@@ -13,16 +13,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfFailoverEndPointEditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(3);
-		types.add(EsbElementTypes.FailoverEndPointInputConnector_3088);
-		types.add(EsbElementTypes.FailoverEndPointOutputConnector_3090);
-		types.add(EsbElementTypes.FailoverEndPointWestOutputConnector_3097);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(3);
+        types.add(EsbElementTypes.FailoverEndPointInputConnector_3088);
+        types.add(EsbElementTypes.FailoverEndPointOutputConnector_3090);
+        types.add(EsbElementTypes.FailoverEndPointWestOutputConnector_3097);
+        return types;
+    }
 
 }

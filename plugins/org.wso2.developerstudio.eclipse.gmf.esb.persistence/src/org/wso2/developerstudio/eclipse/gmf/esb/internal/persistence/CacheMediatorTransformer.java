@@ -35,51 +35,51 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
- * Cache mediator transformer 
+ * Cache mediator transformer
  */
 public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {
-		
-		//Fixing DEVTOOLEI-1120
-		information.getParentSequence().addChild(createNewCacheMediator(subject,information));
-		
-		/**
-		 *  Transform the Cache Mediator output data flow path.
-		 */
-		doTransform(information,
-				((CacheMediator) subject).getOutputConnector());		
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		
-	}
+        // Fixing DEVTOOLEI-1120
+        information.getParentSequence().addChild(createNewCacheMediator(subject, information));
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+        /**
+         * Transform the Cache Mediator output data flow path.
+         */
+        doTransform(information, ((CacheMediator) subject).getOutputConnector());
+    }
 
-		//Fixing DEVTOOLEI-1120
-		sequence.addChild(createNewCacheMediator(subject,information));
-		doTransformWithinSequence(information,((CacheMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		
-	}
-	
-	private org.wso2.carbon.mediator.cache.CacheMediator createNewCacheMediator(EsbNode subject,TransformationInfo info) throws TransformerException{
-		/*
-		 *  Check subject.
-		 */
-		Assert.isTrue(subject instanceof CacheMediator, "Invalid subject.");
-		CacheMediator visualCache = (CacheMediator) subject;
-		/*
-		 *  Configure Cache mediator.
-		 */
-		org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator(new CacheManager());
-		setCommonProperties(cacheMediator, visualCache);
-		{   
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+
+    }
+
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+
+        // Fixing DEVTOOLEI-1120
+        sequence.addChild(createNewCacheMediator(subject, information));
+        doTransformWithinSequence(information, ((CacheMediator) subject).getOutputConnector().getOutgoingLink(),
+                sequence);
+
+    }
+
+    private org.wso2.carbon.mediator.cache.CacheMediator createNewCacheMediator(EsbNode subject,
+            TransformationInfo info) throws TransformerException {
+        /*
+         * Check subject.
+         */
+        Assert.isTrue(subject instanceof CacheMediator, "Invalid subject.");
+        CacheMediator visualCache = (CacheMediator) subject;
+        /*
+         * Configure Cache mediator.
+         */
+        org.wso2.carbon.mediator.cache.CacheMediator cacheMediator = new org.wso2.carbon.mediator.cache.CacheMediator(
+                new CacheManager());
+        setCommonProperties(cacheMediator, visualCache);
+        {
             if (visualCache.getCacheType().equals(CacheType.FINDER)) {
-            	cacheMediator.setCollector(false);
+                cacheMediator.setCollector(false);
                 cacheMediator.setProtocolType(visualCache.getCacheProtocolType().getLiteral());
                 if (CachingConstants.HTTP_PROTOCOL_TYPE.equals(visualCache.getCacheProtocolType().getLiteral())) {
                     if (StringUtils.isNotBlank(visualCache.getCacheProtocolMethods())) {
@@ -111,10 +111,10 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                     throw new TransformerException("Digest generator not found");
                 }
                 cacheMediator.setDigestGenerator(httpRequestHashGenerator);
-			    cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
-		    }else{
-            	cacheMediator.setCollector(true);
-		    }
+                cacheMediator.setInMemoryCacheSize(visualCache.getMaxEntryCount());
+            } else {
+                cacheMediator.setCollector(true);
+            }
 
             if (visualCache.getSequenceType().equals(CacheSequenceType.REGISTRY_REFERENCE)) {
                 if (visualCache.getSequenceKey() != null) {

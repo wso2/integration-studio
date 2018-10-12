@@ -28,25 +28,33 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 
 /**
- * This Enum represent HL7 inbound endpoint parameters with parameter name , related EAttribute and boolean value indicating
+ * This Enum represent HL7 inbound endpoint parameters with parameter name , related EAttribute and boolean value
+ * indicating
  * whether it could hold key attribute
  *
  */
 public enum HL7InboundEndpointParameter {
-    INBOUND_HL7_PORT_TYPE(InboundEndpointConstants.INBOUND_HL7_PORT, INBOUND_ENDPOINT__INBOUND_HL7_PORT, true),
-    INBOUND_HL7_TIMEOUT_TYPE(InboundEndpointConstants.INBOUND_HL7_TIMEOUT, INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT, true),
-    INBOUND_HL7_MESSAGE_PRE_PROCESSOR_TYPE(InboundEndpointConstants.INBOUND_HL7_MESSAGE_PRE_PROCESSOR,
-            INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR, true),
-    INBOUND_HL7_CHARSET_TYPE(InboundEndpointConstants.INBOUND_HL7_CHARSET, INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET, true),
-    INBOUND_HL7_BUILD_INVALID_MESSAGES_TYPE(InboundEndpointConstants.INBOUND_HL7_BUILD_INVALID_MESSAGES,
-            INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES, true),
-    INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES_TYPE(InboundEndpointConstants.INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES,
-            INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES, true),
-    INBOUND_HL7_AUTOACK_TYPE(InboundEndpointConstants.INBOUND_HL7_AUTOACK, INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK,
-            false),
-    INBOUND_HL7_VALIDATE_MESSAGE_TYPE(InboundEndpointConstants.INBOUND_HL7_VALIDATE_MESSAGE, 
-            INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE,false);
-    
+    INBOUND_HL7_PORT_TYPE(InboundEndpointConstants.INBOUND_HL7_PORT, INBOUND_ENDPOINT__INBOUND_HL7_PORT,
+            true), INBOUND_HL7_TIMEOUT_TYPE(InboundEndpointConstants.INBOUND_HL7_TIMEOUT,
+                    INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT, true), INBOUND_HL7_MESSAGE_PRE_PROCESSOR_TYPE(
+                            InboundEndpointConstants.INBOUND_HL7_MESSAGE_PRE_PROCESSOR,
+                            INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR,
+                            true), INBOUND_HL7_CHARSET_TYPE(InboundEndpointConstants.INBOUND_HL7_CHARSET,
+                                    INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET,
+                                    true), INBOUND_HL7_BUILD_INVALID_MESSAGES_TYPE(
+                                            InboundEndpointConstants.INBOUND_HL7_BUILD_INVALID_MESSAGES,
+                                            INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES,
+                                            true), INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES_TYPE(
+                                                    InboundEndpointConstants.INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES,
+                                                    INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES,
+                                                    true), INBOUND_HL7_AUTOACK_TYPE(
+                                                            InboundEndpointConstants.INBOUND_HL7_AUTOACK,
+                                                            INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK,
+                                                            false), INBOUND_HL7_VALIDATE_MESSAGE_TYPE(
+                                                                    InboundEndpointConstants.INBOUND_HL7_VALIDATE_MESSAGE,
+                                                                    INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE,
+                                                                    false);
+
     private final String name;
     private final EAttribute eAttributeValue;
     private final boolean holdsKeyValue;

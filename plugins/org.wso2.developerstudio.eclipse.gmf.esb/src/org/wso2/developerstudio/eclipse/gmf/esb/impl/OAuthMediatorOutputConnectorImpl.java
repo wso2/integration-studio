@@ -19,23 +19,25 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediatorOutputConnector;
  * @generated
  */
 public class OAuthMediatorOutputConnectorImpl extends OutputConnectorImpl implements OAuthMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OAuthMediatorOutputConnectorImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected OAuthMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.OAUTH_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.OAUTH_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //OAuthMediatorOutputConnectorImpl
+} // OAuthMediatorOutputConnectorImpl

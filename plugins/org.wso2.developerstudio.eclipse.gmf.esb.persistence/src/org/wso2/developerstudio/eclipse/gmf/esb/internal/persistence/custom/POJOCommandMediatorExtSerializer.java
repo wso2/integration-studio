@@ -22,116 +22,115 @@ import org.apache.synapse.config.xml.AbstractMediatorSerializer;
 import org.apache.synapse.config.xml.SynapseXPathSerializer;
 
 public class POJOCommandMediatorExtSerializer extends AbstractMediatorSerializer {
-	 public OMElement serializeSpecificMediator(Mediator m) {
-	        
-	        if (!(m instanceof POJOCommandMediatorExt)) {
-	            handleException("Unsupported mediator passed in for serialization : " + m.getType());
-	        }
-	        
-	        POJOCommandMediatorExt mediator = (POJOCommandMediatorExt) m;
-	        
-	        OMElement pojoCommand = fac.createOMElement("pojoCommand", synNS);
-	        saveTracingState(pojoCommand, mediator);
+    public OMElement serializeSpecificMediator(Mediator m) {
 
-	        if (mediator.getCommand() != null && mediator.getCommand().getClass().getName() != null) {
-	            pojoCommand.addAttribute(fac.createOMAttribute(
-	                "name", nullNS, mediator.getPojoClass()));
-	        } else {
-	            handleException("Invalid POJO Command mediator. The command class name is required");
-	        }
+        if (!(m instanceof POJOCommandMediatorExt)) {
+            handleException("Unsupported mediator passed in for serialization : " + m.getType());
+        }
 
-	        for (String propName : mediator.getStaticSetterProperties().keySet()) {
-	            Object value = mediator.getStaticSetterProperties().get(propName);
-	            OMElement prop = fac.createOMElement("property", synNS);
-	            prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
+        POJOCommandMediatorExt mediator = (POJOCommandMediatorExt) m;
 
-	            if (value instanceof String) {
-	                prop.addAttribute(fac.createOMAttribute("value", nullNS, (String) value));
-	            } else if (value instanceof OMElement) {
-	                prop.addChild((OMElement) value);
-	            } else {
-	                handleException("Unable to serialize the command " +
-	                    "mediator property with the naem " + propName + " : Unknown type");
-	            }
+        OMElement pojoCommand = fac.createOMElement("pojoCommand", synNS);
+        saveTracingState(pojoCommand, mediator);
 
-	            if (mediator.getContextGetterProperties().containsKey(propName)) {
-	                prop.addAttribute(fac.createOMAttribute("context-name", nullNS,
-	                    mediator.getContextGetterProperties().get(propName)));
-	            } else if (mediator.getMessageGetterProperties().containsKey(propName)) {
-	                SynapseXPathSerializer.serializeXPath(
-	                    mediator.getMessageGetterProperties().get(propName), prop, "expression");
-	            }
-	            pojoCommand.addChild(prop);
-	        }
+        if (mediator.getCommand() != null && mediator.getCommand().getClass().getName() != null) {
+            pojoCommand.addAttribute(fac.createOMAttribute("name", nullNS, mediator.getPojoClass()));
+        } else {
+            handleException("Invalid POJO Command mediator. The command class name is required");
+        }
 
-	        for (String propName : mediator.getMessageSetterProperties().keySet()) {
-	            OMElement prop = fac.createOMElement("property", synNS);
-	            prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
-	            SynapseXPathSerializer.serializeXPath(
-	                mediator.getMessageSetterProperties().get(propName), prop, "expression");
+        for (String propName : mediator.getStaticSetterProperties().keySet()) {
+            Object value = mediator.getStaticSetterProperties().get(propName);
+            OMElement prop = fac.createOMElement("property", synNS);
+            prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
 
-	            if (mediator.getMessageGetterProperties().containsKey(propName)) {
-	                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadAndUpdateMessage"));
-	            } else if (mediator.getContextGetterProperties().containsKey(propName)) {
-	                prop.addAttribute(fac.createOMAttribute("context-name", nullNS,
-	                    mediator.getContextGetterProperties().get(propName)));
-	                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadMessage"));                
-	            } else {
-	                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadMessage"));                                
-	            }
-	            pojoCommand.addChild(prop);
-	        }
+            if (value instanceof String) {
+                prop.addAttribute(fac.createOMAttribute("value", nullNS, (String) value));
+            } else if (value instanceof OMElement) {
+                prop.addChild((OMElement) value);
+            } else {
+                handleException("Unable to serialize the command " + "mediator property with the naem " + propName
+                        + " : Unknown type");
+            }
 
-	        for (String propName : mediator.getContextSetterProperties().keySet()) {
-	            OMElement prop = fac.createOMElement("property", synNS);
-	            prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
-	            prop.addAttribute(fac.createOMAttribute("context-name", nullNS,
-	                mediator.getContextSetterProperties().get(propName)));
+            if (mediator.getContextGetterProperties().containsKey(propName)) {
+                prop.addAttribute(fac.createOMAttribute("context-name", nullNS,
+                        mediator.getContextGetterProperties().get(propName)));
+            } else if (mediator.getMessageGetterProperties().containsKey(propName)) {
+                SynapseXPathSerializer.serializeXPath(mediator.getMessageGetterProperties().get(propName), prop,
+                        "expression");
+            }
+            pojoCommand.addChild(prop);
+        }
 
-	            if (mediator.getContextGetterProperties().containsKey(propName)) {
-	                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadAndUpdateContext"));
-	            } else if (mediator.getMessageGetterProperties().containsKey(propName)) {
-	                SynapseXPathSerializer.serializeXPath(
-	                    mediator.getMessageGetterProperties().get(propName), prop, "expression");
-	                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadContext"));
-	            } else {
-	                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadContext"));                
-	            }
-	            pojoCommand.addChild(prop);
-	        }
+        for (String propName : mediator.getMessageSetterProperties().keySet()) {
+            OMElement prop = fac.createOMElement("property", synNS);
+            prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
+            SynapseXPathSerializer.serializeXPath(mediator.getMessageSetterProperties().get(propName), prop,
+                    "expression");
 
-	        for (String propName : mediator.getContextGetterProperties().keySet()) {
-	            if (!isSerialized(propName, mediator)) {
-	                String value = mediator.getContextGetterProperties().get(propName);
-	                OMElement prop = fac.createOMElement("property", synNS);
-	                prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
-	                prop.addAttribute(fac.createOMAttribute("context-name", nullNS, value));
-	                prop.addAttribute(fac.createOMAttribute("action", nullNS, "UpdateContext"));
-	                pojoCommand.addChild(prop);
-	            }
-	        }
+            if (mediator.getMessageGetterProperties().containsKey(propName)) {
+                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadAndUpdateMessage"));
+            } else if (mediator.getContextGetterProperties().containsKey(propName)) {
+                prop.addAttribute(fac.createOMAttribute("context-name", nullNS,
+                        mediator.getContextGetterProperties().get(propName)));
+                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadMessage"));
+            } else {
+                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadMessage"));
+            }
+            pojoCommand.addChild(prop);
+        }
 
-	        for (String propName : mediator.getMessageGetterProperties().keySet()) {
-	            if (!isSerialized(propName, mediator)) {
-	                OMElement prop = fac.createOMElement("property", synNS);
-	                prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
-	                SynapseXPathSerializer.serializeXPath(
-	                    mediator.getMessageGetterProperties().get(propName), prop, "expression");
-	                prop.addAttribute(fac.createOMAttribute("action", nullNS, "UpdateMessage"));
-	                pojoCommand.addChild(prop);
-	            }
-	        }
+        for (String propName : mediator.getContextSetterProperties().keySet()) {
+            OMElement prop = fac.createOMElement("property", synNS);
+            prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
+            prop.addAttribute(
+                    fac.createOMAttribute("context-name", nullNS, mediator.getContextSetterProperties().get(propName)));
 
-	        return pojoCommand;
-	    }
+            if (mediator.getContextGetterProperties().containsKey(propName)) {
+                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadAndUpdateContext"));
+            } else if (mediator.getMessageGetterProperties().containsKey(propName)) {
+                SynapseXPathSerializer.serializeXPath(mediator.getMessageGetterProperties().get(propName), prop,
+                        "expression");
+                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadContext"));
+            } else {
+                prop.addAttribute(fac.createOMAttribute("action", nullNS, "ReadContext"));
+            }
+            pojoCommand.addChild(prop);
+        }
 
-	    private boolean isSerialized(String propName, POJOCommandMediatorExt m) {
-	        return m.getContextSetterProperties().containsKey(propName) ||
-	            m.getStaticSetterProperties().containsKey(propName) ||
-	            m.getMessageSetterProperties().containsKey(propName);
-	    }
+        for (String propName : mediator.getContextGetterProperties().keySet()) {
+            if (!isSerialized(propName, mediator)) {
+                String value = mediator.getContextGetterProperties().get(propName);
+                OMElement prop = fac.createOMElement("property", synNS);
+                prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
+                prop.addAttribute(fac.createOMAttribute("context-name", nullNS, value));
+                prop.addAttribute(fac.createOMAttribute("action", nullNS, "UpdateContext"));
+                pojoCommand.addChild(prop);
+            }
+        }
 
-	    public String getMediatorClassName() {
-	        return POJOCommandMediatorExt.class.getName();
-	    }
+        for (String propName : mediator.getMessageGetterProperties().keySet()) {
+            if (!isSerialized(propName, mediator)) {
+                OMElement prop = fac.createOMElement("property", synNS);
+                prop.addAttribute(fac.createOMAttribute("name", nullNS, propName));
+                SynapseXPathSerializer.serializeXPath(mediator.getMessageGetterProperties().get(propName), prop,
+                        "expression");
+                prop.addAttribute(fac.createOMAttribute("action", nullNS, "UpdateMessage"));
+                pojoCommand.addChild(prop);
+            }
+        }
+
+        return pojoCommand;
+    }
+
+    private boolean isSerialized(String propName, POJOCommandMediatorExt m) {
+        return m.getContextSetterProperties().containsKey(propName)
+                || m.getStaticSetterProperties().containsKey(propName)
+                || m.getMessageSetterProperties().containsKey(propName);
+    }
+
+    public String getMediatorClassName() {
+        return POJOCommandMediatorExt.class.getName();
+    }
 }

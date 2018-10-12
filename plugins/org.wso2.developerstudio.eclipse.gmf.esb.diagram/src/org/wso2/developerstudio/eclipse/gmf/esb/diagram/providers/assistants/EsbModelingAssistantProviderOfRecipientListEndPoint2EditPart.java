@@ -13,17 +13,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
  */
 public class EsbModelingAssistantProviderOfRecipientListEndPoint2EditPart extends EsbModelingAssistantProvider {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(4);
-		types.add(EsbElementTypes.RecipientListEndPointInputConnector_3697);
-		types.add(EsbElementTypes.RecipientListEndPointOutputConnector_3698);
-		types.add(EsbElementTypes.RecipientListEndPointWestOutputConnector_3699);
-		types.add(EsbElementTypes.MediatorFlow_3778);
-		return types;
-	}
+    /**
+     * @generated
+     */
+    @Override
+    public List<IElementType> getTypesForPopupBar(IAdaptable host) {
+        List<IElementType> types = new ArrayList<IElementType>(4);
+        types.add(EsbElementTypes.RecipientListEndPointInputConnector_3697);
+        types.add(EsbElementTypes.RecipientListEndPointOutputConnector_3698);
+        types.add(EsbElementTypes.RecipientListEndPointWestOutputConnector_3699);
+        types.add(EsbElementTypes.MediatorFlow_3778);
+        return types;
+    }
 
 }

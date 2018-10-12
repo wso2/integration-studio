@@ -44,63 +44,63 @@ public class ThrottleMediatorExtFactory extends ThrottleMediatorFactory {
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
-	Mediator mediator = new ThrottleMediator();
-	OMElement policy = omElement.getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "policy"));
-	if (policy != null) {
-	    OMAttribute key = policy.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
-	    if (key != null) {
-		String keyValue = key.getAttributeValue();
-		if (keyValue != null && !"".equals(keyValue)) {
-		    ((ThrottleMediator) mediator).setPolicyKey(keyValue);
-		}
-	    } else {
-		OMElement inLine = policy.getFirstElement();
-		if (inLine != null) {
-		    ((ThrottleMediator) mediator).setInLinePolicy(inLine);
-		}
-	    }
-	}
+        Mediator mediator = new ThrottleMediator();
+        OMElement policy = omElement.getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "policy"));
+        if (policy != null) {
+            OMAttribute key = policy.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "key"));
+            if (key != null) {
+                String keyValue = key.getAttributeValue();
+                if (keyValue != null && !"".equals(keyValue)) {
+                    ((ThrottleMediator) mediator).setPolicyKey(keyValue);
+                }
+            } else {
+                OMElement inLine = policy.getFirstElement();
+                if (inLine != null) {
+                    ((ThrottleMediator) mediator).setInLinePolicy(inLine);
+                }
+            }
+        }
 
-	processAuditStatus(mediator, omElement);
+        processAuditStatus(mediator, omElement);
 
-	String id = omElement.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "id"));
-	if (id != null && !"".equals(id)) {
-	    ((ThrottleMediator) mediator).setId(id.trim());
-	}
+        String id = omElement.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "id"));
+        if (id != null && !"".equals(id)) {
+            ((ThrottleMediator) mediator).setId(id.trim());
+        }
 
-	SequenceMediatorFactory mediatorFactory = new SequenceMediatorFactory();
-	OMAttribute onReject = omElement
-		.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.ONREJECT));
-	if (onReject != null) {
-	    String onRejectValue = onReject.getAttributeValue();
-	    if (onRejectValue != null) {
-		((ThrottleMediator) mediator).setOnRejectSeqKey(onRejectValue.trim());
-	    }
-	} else {
-	    OMElement onRejectMediatorElement = omElement.getFirstChildWithName(
-		    new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, XMLConfigConstants.ONREJECT));
-	    if (onRejectMediatorElement != null) {
-		((ThrottleMediator) mediator)
-			.setOnRejectMediator(mediatorFactory.createAnonymousSequence(onRejectMediatorElement, null));
-	    }
-	}
-	OMAttribute onAccept = omElement
-		.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.ONACCEPT));
-	if (onAccept != null) {
-	    String onAcceptValue = onAccept.getAttributeValue();
-	    if (onAcceptValue != null) {
-		((ThrottleMediator) mediator).setOnAcceptSeqKey(onAcceptValue);
-	    }
-	} else {
-	    OMElement onAcceptMediatorElement = omElement.getFirstChildWithName(
-		    new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, XMLConfigConstants.ONACCEPT));
-	    if (onAcceptMediatorElement != null) {
-		((ThrottleMediator) mediator)
-			.setOnAcceptMediator(mediatorFactory.createAnonymousSequence(onAcceptMediatorElement, null));
-	    }
-	}
+        SequenceMediatorFactory mediatorFactory = new SequenceMediatorFactory();
+        OMAttribute onReject = omElement
+                .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.ONREJECT));
+        if (onReject != null) {
+            String onRejectValue = onReject.getAttributeValue();
+            if (onRejectValue != null) {
+                ((ThrottleMediator) mediator).setOnRejectSeqKey(onRejectValue.trim());
+            }
+        } else {
+            OMElement onRejectMediatorElement = omElement.getFirstChildWithName(
+                    new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, XMLConfigConstants.ONREJECT));
+            if (onRejectMediatorElement != null) {
+                ((ThrottleMediator) mediator)
+                        .setOnRejectMediator(mediatorFactory.createAnonymousSequence(onRejectMediatorElement, null));
+            }
+        }
+        OMAttribute onAccept = omElement
+                .getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, XMLConfigConstants.ONACCEPT));
+        if (onAccept != null) {
+            String onAcceptValue = onAccept.getAttributeValue();
+            if (onAcceptValue != null) {
+                ((ThrottleMediator) mediator).setOnAcceptSeqKey(onAcceptValue);
+            }
+        } else {
+            OMElement onAcceptMediatorElement = omElement.getFirstChildWithName(
+                    new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, XMLConfigConstants.ONACCEPT));
+            if (onAcceptMediatorElement != null) {
+                ((ThrottleMediator) mediator)
+                        .setOnAcceptMediator(mediatorFactory.createAnonymousSequence(onAcceptMediatorElement, null));
+            }
+        }
 
-	return mediator;
+        return mediator;
     }
 
 }

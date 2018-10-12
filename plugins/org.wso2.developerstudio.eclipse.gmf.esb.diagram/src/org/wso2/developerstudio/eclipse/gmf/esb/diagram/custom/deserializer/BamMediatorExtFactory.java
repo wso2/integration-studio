@@ -30,74 +30,74 @@ import org.wso2.carbon.mediator.bam.config.stream.StreamConfiguration;
 
 public class BamMediatorExtFactory extends AbstractMediatorFactory {
 
-	public static final QName BAM_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "bam");
+    public static final QName BAM_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "bam");
 
-	public Mediator createSpecificMediator(OMElement omElement, Properties properties) {
-		
-		BamMediator bam = new BamMediator();
-		
-		bam.setServerProfile(this.getServerProfileName(omElement));
-		bam.getStream().setStreamConfiguration(new StreamConfiguration());
-		bam.getStream().getStreamConfiguration().setName(this.getStreamName(omElement));
-		bam.getStream().getStreamConfiguration().setVersion(this.getStreamVersion(omElement));
-		
-		return bam;
-	}
+    public Mediator createSpecificMediator(OMElement omElement, Properties properties) {
 
-	public QName getTagQName() {
-		return BAM_Q;
-	}
+        BamMediator bam = new BamMediator();
 
-	private String getServerProfileName(OMElement omElement) {
-		OMElement serverProfileElement = omElement.getFirstChildWithName(new QName(
-				SynapseConstants.SYNAPSE_NAMESPACE, "serverProfile"));
+        bam.setServerProfile(this.getServerProfileName(omElement));
+        bam.getStream().setStreamConfiguration(new StreamConfiguration());
+        bam.getStream().getStreamConfiguration().setName(this.getStreamName(omElement));
+        bam.getStream().getStreamConfiguration().setVersion(this.getStreamVersion(omElement));
 
-		if (serverProfileElement != null) {
-			OMAttribute serverProfileAttr = serverProfileElement.getAttribute(new QName("name"));
-			if (serverProfileAttr != null) {
-				return serverProfileAttr.getAttributeValue();
-			}
-		}
-		return null;
-	}
+        return bam;
+    }
 
-	private String getStreamName(OMElement omElement) {
+    public QName getTagQName() {
+        return BAM_Q;
+    }
 
-		OMElement serverProfileElement = omElement.getFirstChildWithName(new QName(
-				SynapseConstants.SYNAPSE_NAMESPACE, "serverProfile"));
+    private String getServerProfileName(OMElement omElement) {
+        OMElement serverProfileElement = omElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serverProfile"));
 
-		if (serverProfileElement != null) {
-			OMElement streamConfigElement = serverProfileElement.getFirstChildWithName(new QName(
-					SynapseConstants.SYNAPSE_NAMESPACE, "streamConfig"));
+        if (serverProfileElement != null) {
+            OMAttribute serverProfileAttr = serverProfileElement.getAttribute(new QName("name"));
+            if (serverProfileAttr != null) {
+                return serverProfileAttr.getAttributeValue();
+            }
+        }
+        return null;
+    }
 
-			if (streamConfigElement != null) {
-				OMAttribute streamNameAttr = streamConfigElement.getAttribute(new QName("name"));
-				if (streamNameAttr != null) {
-					return streamNameAttr.getAttributeValue();
-				}
-			}
-		}
+    private String getStreamName(OMElement omElement) {
 
-		return null;
-	}
+        OMElement serverProfileElement = omElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serverProfile"));
 
-	private String getStreamVersion(OMElement omElement) {
+        if (serverProfileElement != null) {
+            OMElement streamConfigElement = serverProfileElement
+                    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "streamConfig"));
 
-		OMElement serverProfileElement = omElement.getFirstChildWithName(new QName(
-				SynapseConstants.SYNAPSE_NAMESPACE, "serverProfile"));
+            if (streamConfigElement != null) {
+                OMAttribute streamNameAttr = streamConfigElement.getAttribute(new QName("name"));
+                if (streamNameAttr != null) {
+                    return streamNameAttr.getAttributeValue();
+                }
+            }
+        }
 
-		if (serverProfileElement != null) {
-			OMElement streamConfigElement = serverProfileElement.getFirstChildWithName(new QName(
-					SynapseConstants.SYNAPSE_NAMESPACE, "streamConfig"));
+        return null;
+    }
 
-			if (streamConfigElement != null) {
-				OMAttribute streamVersionAttr = streamConfigElement.getAttribute(new QName("version"));
-				if (streamVersionAttr != null) {
-					return streamVersionAttr.getAttributeValue();
-				}
-			}
-		}
+    private String getStreamVersion(OMElement omElement) {
 
-		return null;
-	}
+        OMElement serverProfileElement = omElement
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "serverProfile"));
+
+        if (serverProfileElement != null) {
+            OMElement streamConfigElement = serverProfileElement
+                    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "streamConfig"));
+
+            if (streamConfigElement != null) {
+                OMAttribute streamVersionAttr = streamConfigElement.getAttribute(new QName("version"));
+                if (streamVersionAttr != null) {
+                    return streamVersionAttr.getAttributeValue();
+                }
+            }
+        }
+
+        return null;
+    }
 }

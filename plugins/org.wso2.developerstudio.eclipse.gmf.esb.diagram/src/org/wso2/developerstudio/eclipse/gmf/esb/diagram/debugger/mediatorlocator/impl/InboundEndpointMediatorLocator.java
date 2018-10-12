@@ -40,7 +40,8 @@ public class InboundEndpointMediatorLocator extends AbstractMediatorLocator {
     @Override
     public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint debugPoint) throws MediatorNotFoundException,
             MissingAttributeException, DebugPointMarkerNotFoundException, CoreException {
-        ESBInboundEndpointDebugPointMessage debugPointMessage = (ESBInboundEndpointDebugPointMessage) debugPoint.getLocation();
+        ESBInboundEndpointDebugPointMessage debugPointMessage = (ESBInboundEndpointDebugPointMessage) debugPoint
+                .getLocation();
         List<Integer> positionArray = debugPointMessage.getMediatorPosition().getPosition();
         InboundEndpointImpl InboundEndpoint = (InboundEndpointImpl) esbServer.eContents().get(INDEX_OF_FIRST_ELEMENT);
         String sequenceType = debugPointMessage.getSequenceType();

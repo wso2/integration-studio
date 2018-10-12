@@ -45,75 +45,74 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  */
 public class TemplateTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
-		Assert.isTrue(subject instanceof Template, "Unsupported object passed in for serialization");
-		Template template = (Template) subject;
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        Assert.isTrue(subject instanceof Template, "Unsupported object passed in for serialization");
+        Template template = (Template) subject;
 
-		if (template.getChild() instanceof Sequences) {
-			TemplateMediator templateMediator = new TemplateMediator();
-			templateMediator.setName(template.getName());
-			templateMediator.setParameters(new ArrayList<String>());
-			saveParameters(template,templateMediator.getParameters());
-			SequenceMediator sequence = new SequenceMediator();
-			Sequences visualSequence = (Sequences) template.getChild();
-			SequenceTransformer transformer = new SequenceTransformer();
-			transformer.transformWithinSequence(info, visualSequence, sequence);
-			templateMediator.addAll(sequence.getList());
-			if (template.getName() != null && !template.getName().equals("")) {
-			    info.getSynapseConfiguration().addSequenceTemplate(template.getName(), templateMediator);
-			} else {
-			    info.getSynapseConfiguration().addSequenceTemplate("TEMPLATE_NAME", templateMediator);
-			}
-			
-		} else if (template.getChild() instanceof EndpointDiagram) {
-			org.apache.synapse.endpoints.Template endpointTemplate = new org.apache.synapse.endpoints.Template();
-			endpointTemplate.setName(template.getName());
-			//endpointTemplate.setParameters(new ArrayList<String>());
-			saveParameters(template,endpointTemplate.getParameters());
-			org.apache.synapse.endpoints.Endpoint endpoint = null;
-			EndpointDiagram endpointDiagram = (EndpointDiagram) template.getChild();
-			EndPoint child = endpointDiagram.getChild();
+        if (template.getChild() instanceof Sequences) {
+            TemplateMediator templateMediator = new TemplateMediator();
+            templateMediator.setName(template.getName());
+            templateMediator.setParameters(new ArrayList<String>());
+            saveParameters(template, templateMediator.getParameters());
+            SequenceMediator sequence = new SequenceMediator();
+            Sequences visualSequence = (Sequences) template.getChild();
+            SequenceTransformer transformer = new SequenceTransformer();
+            transformer.transformWithinSequence(info, visualSequence, sequence);
+            templateMediator.addAll(sequence.getList());
+            if (template.getName() != null && !template.getName().equals("")) {
+                info.getSynapseConfiguration().addSequenceTemplate(template.getName(), templateMediator);
+            } else {
+                info.getSynapseConfiguration().addSequenceTemplate("TEMPLATE_NAME", templateMediator);
+            }
 
-			if (child instanceof WSDLEndPoint) {
-				WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
-				endpoint = transformer.create((WSDLEndPoint) child, child.getEndPointName());
-			} else if (child instanceof DefaultEndPoint) {
-				DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
-				endpoint = transformer.create((DefaultEndPoint) child, child.getEndPointName());
-			} else if (child instanceof AddressEndPoint) {
-				AddressEndPointTransformer transformer = new AddressEndPointTransformer();
-				endpoint = transformer.create((AddressEndPoint) child, child.getEndPointName());
-			} else if (child instanceof HTTPEndpoint) {
-				HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
-				endpoint = transformer.create((HTTPEndpoint) child, child.getEndPointName());
-			}
-			endpointTemplate.setElement(EndpointSerializer.getElementFromEndpoint(endpoint));
+        } else if (template.getChild() instanceof EndpointDiagram) {
+            org.apache.synapse.endpoints.Template endpointTemplate = new org.apache.synapse.endpoints.Template();
+            endpointTemplate.setName(template.getName());
+            // endpointTemplate.setParameters(new ArrayList<String>());
+            saveParameters(template, endpointTemplate.getParameters());
+            org.apache.synapse.endpoints.Endpoint endpoint = null;
+            EndpointDiagram endpointDiagram = (EndpointDiagram) template.getChild();
+            EndPoint child = endpointDiagram.getChild();
 
-			info.getSynapseConfiguration()
-					.addEndpointTemplate(template.getName(), endpointTemplate);
-		}
+            if (child instanceof WSDLEndPoint) {
+                WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
+                endpoint = transformer.create((WSDLEndPoint) child, child.getEndPointName());
+            } else if (child instanceof DefaultEndPoint) {
+                DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
+                endpoint = transformer.create((DefaultEndPoint) child, child.getEndPointName());
+            } else if (child instanceof AddressEndPoint) {
+                AddressEndPointTransformer transformer = new AddressEndPointTransformer();
+                endpoint = transformer.create((AddressEndPoint) child, child.getEndPointName());
+            } else if (child instanceof HTTPEndpoint) {
+                HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
+                endpoint = transformer.create((HTTPEndpoint) child, child.getEndPointName());
+            }
+            endpointTemplate.setElement(EndpointSerializer.getElementFromEndpoint(endpoint));
 
-	}
+            info.getSynapseConfiguration().addEndpointTemplate(template.getName(), endpointTemplate);
+        }
 
-	private void saveParameters(Template template, Collection<String> parameters) {
-		for (TemplateParameter templateParameter :  template.getParameters()) {
-			if (templateParameter != null && !(templateParameter.getName().equals("name") || templateParameter.getName().equals("uri"))) {
-				parameters.add(templateParameter.getName());
-			}
-		}
-		
-	}
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// nothing to do
+    private void saveParameters(Template template, Collection<String> parameters) {
+        for (TemplateParameter templateParameter : template.getParameters()) {
+            if (templateParameter != null
+                    && !(templateParameter.getName().equals("name") || templateParameter.getName().equals("uri"))) {
+                parameters.add(templateParameter.getName());
+            }
+        }
 
-	}
+    }
 
-	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws TransformerException {
-		// nothing to do
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // nothing to do
 
-	}
+    }
+
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // nothing to do
+
+    }
 
 }

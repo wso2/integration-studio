@@ -26,154 +26,173 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SendContainer;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SendContainerImpl#getEndpointFlow <em>Endpoint Flow</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SendContainerImpl#getEndpointFlow <em>Endpoint
+ * Flow</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SendContainerImpl extends EsbNodeImpl implements SendContainer {
     /**
-	 * The cached value of the '{@link #getEndpointFlow() <em>Endpoint Flow</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getEndpointFlow() <em>Endpoint Flow</em>}' containment reference.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see #getEndpointFlow()
-	 * @generated
-	 * @ordered
-	 */
+     * 
+     * @see #getEndpointFlow()
+     * @generated
+     * @ordered
+     */
     protected EndpointFlow endpointFlow;
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     protected SendContainerImpl() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return EsbPackage.Literals.SEND_CONTAINER;
-	}
+        return EsbPackage.Literals.SEND_CONTAINER;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     public EndpointFlow getEndpointFlow() {
-		return endpointFlow;
-	}
+        return endpointFlow;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     public NotificationChain basicSetEndpointFlow(EndpointFlow newEndpointFlow, NotificationChain msgs) {
-		EndpointFlow oldEndpointFlow = endpointFlow;
-		endpointFlow = newEndpointFlow;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW, oldEndpointFlow, newEndpointFlow);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+        EndpointFlow oldEndpointFlow = endpointFlow;
+        endpointFlow = newEndpointFlow;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+                    EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW, oldEndpointFlow, newEndpointFlow);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
+        }
+        return msgs;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     public void setEndpointFlow(EndpointFlow newEndpointFlow) {
-		if (newEndpointFlow != endpointFlow) {
-			NotificationChain msgs = null;
-			if (endpointFlow != null)
-				msgs = ((InternalEObject)endpointFlow).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW, null, msgs);
-			if (newEndpointFlow != null)
-				msgs = ((InternalEObject)newEndpointFlow).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW, null, msgs);
-			msgs = basicSetEndpointFlow(newEndpointFlow, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW, newEndpointFlow, newEndpointFlow));
-	}
+        if (newEndpointFlow != endpointFlow) {
+            NotificationChain msgs = null;
+            if (endpointFlow != null)
+                msgs = ((InternalEObject) endpointFlow).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW, null, msgs);
+            if (newEndpointFlow != null)
+                msgs = ((InternalEObject) newEndpointFlow).eInverseAdd(this,
+                        EOPPOSITE_FEATURE_BASE - EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW, null, msgs);
+            msgs = basicSetEndpointFlow(newEndpointFlow, msgs);
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW,
+                    newEndpointFlow, newEndpointFlow));
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
-				return basicSetEndpointFlow(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+        case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
+            return basicSetEndpointFlow(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
-				return getEndpointFlow();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+        case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
+            return getEndpointFlow();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
-				setEndpointFlow((EndpointFlow)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+        case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
+            setEndpointFlow((EndpointFlow) newValue);
+            return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     public void eUnset(int featureID) {
-		switch (featureID) {
-			case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
-				setEndpointFlow((EndpointFlow)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+        case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
+            setEndpointFlow((EndpointFlow) null);
+            return;
+        }
+        super.eUnset(featureID);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * 
+     * @generated
+     */
     @Override
     public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
-				return endpointFlow != null;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+        case EsbPackage.SEND_CONTAINER__ENDPOINT_FLOW:
+            return endpointFlow != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
-} //SendContainerImpl
+} // SendContainerImpl

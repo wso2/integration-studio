@@ -41,93 +41,89 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
- * PayloadFactory mediator transformer 
+ * PayloadFactory mediator transformer
  *
  */
-public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransformer{
+public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {
-		try {
-			information.getParentSequence().addChild(createPayloadFactoryMediator(subject));
-			// Transform the property mediator output data flow path.
-			doTransform(information,
-					((PayloadFactoryMediator) subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createPayloadFactoryMediator(subject));
+            // Transform the property mediator output data flow path.
+            doTransform(information, ((PayloadFactoryMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		try {
-			sequence.addChild(createPayloadFactoryMediator(subject));
-			doTransformWithinSequence(information,((PayloadFactoryMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
-	
-	private org.apache.synapse.mediators.transform.PayloadFactoryMediator createPayloadFactoryMediator(EsbNode subject) throws JaxenException{
-	
-		// Check subject.
-		Assert.isTrue(subject instanceof PayloadFactoryMediator, "Unsupported mediator passed in for serialization.");
-		PayloadFactoryMediator visualPayloadFactory = (PayloadFactoryMediator) subject;
+    }
 
-		org.apache.synapse.mediators.transform.PayloadFactoryMediator payloadFactoryMediator = new org.apache.synapse.mediators.transform.PayloadFactoryMediator();
-		setCommonProperties(payloadFactoryMediator, visualPayloadFactory);
-		
-		if (visualPayloadFactory.getPayloadFormat().equals(PayloadFormatType.REGISTRY_REFERENCE)) {
-			Value formatKey = new Value(visualPayloadFactory.getPayloadKey().getKeyValue());
-			payloadFactoryMediator.setFormatKey(formatKey);
-			payloadFactoryMediator.setFormatDynamic(true);
-		} else {
-			payloadFactoryMediator.setFormat(visualPayloadFactory.getPayload());
-			payloadFactoryMediator.setFormatDynamic(false);
-		}
-		
-		String mediaType = visualPayloadFactory.getMediaType().toString();
-		payloadFactoryMediator.setType(mediaType);
-		EList<PayloadFactoryArgument> args = visualPayloadFactory.getArgs();		
-		for(PayloadFactoryArgument arg : args){
-			Argument argument = new Argument();
-			if (arg.getArgumentType() == PayloadFactoryArgumentType.EXPRESSION
-					&& arg.getArgumentExpression() != null) {
-				NamespacedProperty namespacedProperty = arg.getArgumentExpression();
-				// SynapsePath expression = new SynapseXPath(namespacedProperty.getPropertyValue());
-				SynapsePath expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty
-						.getPropertyValue(), arg.getEvaluator());
-				// SynapseJsonPath doesn't support namespaces
-				if (namespacedProperty.getNamespaces() != null
-						&& !(expression instanceof SynapseJsonPath)) {
-					for (Entry<String, String> entry : namespacedProperty.getNamespaces()
-							.entrySet()) {
-						expression.addNamespace(entry.getKey(), entry.getValue());
-					}
-				}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createPayloadFactoryMediator(subject));
+            doTransformWithinSequence(information,
+                    ((PayloadFactoryMediator) subject).getOutputConnector().getOutgoingLink(), sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-				if (arg.getEvaluator() == MediaType.XML) {
-					expression.setPathType(SynapsePath.X_PATH);
-				} else if (arg.getEvaluator() == MediaType.JSON) {
-					expression.setPathType(SynapsePath.JSON_PATH);
-				}
-				argument.setExpression(expression);
-			} else {
-				argument.setValue(arg.getArgumentValue());
-			}
-			// adding serialization support for literal attribute
-			if (arg.isLiteral()) {
-				argument.setLiteral(true);
-			} else {
-				argument.setLiteral(false);
-			}
-			payloadFactoryMediator.addPathArgument(argument);
-		}
-		return payloadFactoryMediator;
-	}
+    private org.apache.synapse.mediators.transform.PayloadFactoryMediator createPayloadFactoryMediator(EsbNode subject)
+            throws JaxenException {
+
+        // Check subject.
+        Assert.isTrue(subject instanceof PayloadFactoryMediator, "Unsupported mediator passed in for serialization.");
+        PayloadFactoryMediator visualPayloadFactory = (PayloadFactoryMediator) subject;
+
+        org.apache.synapse.mediators.transform.PayloadFactoryMediator payloadFactoryMediator = new org.apache.synapse.mediators.transform.PayloadFactoryMediator();
+        setCommonProperties(payloadFactoryMediator, visualPayloadFactory);
+
+        if (visualPayloadFactory.getPayloadFormat().equals(PayloadFormatType.REGISTRY_REFERENCE)) {
+            Value formatKey = new Value(visualPayloadFactory.getPayloadKey().getKeyValue());
+            payloadFactoryMediator.setFormatKey(formatKey);
+            payloadFactoryMediator.setFormatDynamic(true);
+        } else {
+            payloadFactoryMediator.setFormat(visualPayloadFactory.getPayload());
+            payloadFactoryMediator.setFormatDynamic(false);
+        }
+
+        String mediaType = visualPayloadFactory.getMediaType().toString();
+        payloadFactoryMediator.setType(mediaType);
+        EList<PayloadFactoryArgument> args = visualPayloadFactory.getArgs();
+        for (PayloadFactoryArgument arg : args) {
+            Argument argument = new Argument();
+            if (arg.getArgumentType() == PayloadFactoryArgumentType.EXPRESSION && arg.getArgumentExpression() != null) {
+                NamespacedProperty namespacedProperty = arg.getArgumentExpression();
+                // SynapsePath expression = new SynapseXPath(namespacedProperty.getPropertyValue());
+                SynapsePath expression = CustomSynapsePathFactory.getSynapsePath(namespacedProperty.getPropertyValue(),
+                        arg.getEvaluator());
+                // SynapseJsonPath doesn't support namespaces
+                if (namespacedProperty.getNamespaces() != null && !(expression instanceof SynapseJsonPath)) {
+                    for (Entry<String, String> entry : namespacedProperty.getNamespaces().entrySet()) {
+                        expression.addNamespace(entry.getKey(), entry.getValue());
+                    }
+                }
+
+                if (arg.getEvaluator() == MediaType.XML) {
+                    expression.setPathType(SynapsePath.X_PATH);
+                } else if (arg.getEvaluator() == MediaType.JSON) {
+                    expression.setPathType(SynapsePath.JSON_PATH);
+                }
+                argument.setExpression(expression);
+            } else {
+                argument.setValue(arg.getArgumentValue());
+            }
+            // adding serialization support for literal attribute
+            if (arg.isLiteral()) {
+                argument.setLiteral(true);
+            } else {
+                argument.setLiteral(false);
+            }
+            payloadFactoryMediator.addPathArgument(argument);
+        }
+        return payloadFactoryMediator;
+    }
 }

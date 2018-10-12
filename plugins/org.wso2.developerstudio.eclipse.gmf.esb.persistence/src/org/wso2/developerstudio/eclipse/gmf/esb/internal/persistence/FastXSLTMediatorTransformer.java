@@ -35,81 +35,78 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 /**
  * 
  * @author WSO2
- * Transforms the Fast XSLT mediator - from diagram view to the source view
+ *         Transforms the Fast XSLT mediator - from diagram view to the source view
  */
 public class FastXSLTMediatorTransformer extends AbstractEsbNodeTransformer {
-	private static final String INVALID_SUBJECT = "Invalid subject. not a Fast XSLT mediator";
-	  
-	public void transform(TransformationInfo info, EsbNode subject)  {
-		try {
-	        info.getParentSequence().addChild(createFastXSLTMediator(subject));
+    private static final String INVALID_SUBJECT = "Invalid subject. not a Fast XSLT mediator";
+
+    public void transform(TransformationInfo info, EsbNode subject) {
+        try {
+            info.getParentSequence().addChild(createFastXSLTMediator(subject));
         } catch (Exception e1) {
-        	log.error("An exception occured in transforming the FastXSLT mediator" + e1);
+            log.error("An exception occured in transforming the FastXSLT mediator" + e1);
         }
-		try {
-	        doTransform(info, ((FastXSLTMediator) subject).getOutputConnector());
+        try {
+            doTransform(info, ((FastXSLTMediator) subject).getOutputConnector());
         } catch (Exception e) {
-	       log.error("An exception occured in transforming the FastXSLT mediator" + e);
+            log.error("An exception occured in transforming the FastXSLT mediator" + e);
         }
-	}
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {		
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+    }
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) {		
-		try {
-	        sequence.addChild(createFastXSLTMediator(subject));
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence) {
+        try {
+            sequence.addChild(createFastXSLTMediator(subject));
         } catch (Exception e) {
-        	log.error("An exception occured in transforming the FastXSLT mediator" + e);
+            log.error("An exception occured in transforming the FastXSLT mediator" + e);
         }
-		try {
-	        doTransformWithinSequence(information, ((FastXSLTMediator) subject)
-	        		.getOutputConnector().getOutgoingLink(), sequence);
+        try {
+            doTransformWithinSequence(information, ((FastXSLTMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
         } catch (Exception e) {
-        	log.error("An exception occured in transforming the FastXSLT mediator" + e);
+            log.error("An exception occured in transforming the FastXSLT mediator" + e);
         }
 
-	}
+    }
 
-	private org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator createFastXSLTMediator(
-			EsbNode subject) {
-		Assert.isTrue(subject instanceof FastXSLTMediator, INVALID_SUBJECT);
-		FastXSLTMediator visualFastXSLT = (FastXSLTMediator) subject;
-		org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator fastXsltMediator = new org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator();
-		setCommonProperties(fastXsltMediator, visualFastXSLT);
-		Value fastXsltKey = null;
+    private org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator createFastXSLTMediator(EsbNode subject) {
+        Assert.isTrue(subject instanceof FastXSLTMediator, INVALID_SUBJECT);
+        FastXSLTMediator visualFastXSLT = (FastXSLTMediator) subject;
+        org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator fastXsltMediator = new org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator();
+        setCommonProperties(fastXsltMediator, visualFastXSLT);
+        Value fastXsltKey = null;
 
-		if (visualFastXSLT.getFastXsltSchemaKeyType() == KeyType.STATIC) {
-			String key = visualFastXSLT.getFastXsltStaticSchemaKey().getKeyValue();
-			if (key != null && !key.equals("")) {
-				fastXsltKey = new Value(key);
-			}
-		} else { //if not static key type is dynamic (i.e xpathExpression) by default
-			NamespacedProperty key = visualFastXSLT.getFastXsltDynamicSchemaKey();
-			if (key.getPropertyValue() != null && !key.getPropertyValue().equals("")) {
-				SynapseXPath expression = null;
+        if (visualFastXSLT.getFastXsltSchemaKeyType() == KeyType.STATIC) {
+            String key = visualFastXSLT.getFastXsltStaticSchemaKey().getKeyValue();
+            if (key != null && !key.equals("")) {
+                fastXsltKey = new Value(key);
+            }
+        } else { // if not static key type is dynamic (i.e xpathExpression) by default
+            NamespacedProperty key = visualFastXSLT.getFastXsltDynamicSchemaKey();
+            if (key.getPropertyValue() != null && !key.getPropertyValue().equals("")) {
+                SynapseXPath expression = null;
                 try {
-	                expression = new SynapseXPath(key.getPropertyValue());
+                    expression = new SynapseXPath(key.getPropertyValue());
                 } catch (JaxenException e) {
-                	log.error("A Jaxen exception occured in transforming the FastXSLT mediator" + e);
+                    log.error("A Jaxen exception occured in transforming the FastXSLT mediator" + e);
                 }
-				for (Entry<String, String> entry : key.getNamespaces().entrySet()) {
-					try {
-	                    expression.addNamespace(entry.getKey(), entry.getValue());
+                for (Entry<String, String> entry : key.getNamespaces().entrySet()) {
+                    try {
+                        expression.addNamespace(entry.getKey(), entry.getValue());
                     } catch (JaxenException e) {
-                    	log.error("A Jaxen exception occured in transforming the FastXSLT mediator" + e);
+                        log.error("A Jaxen exception occured in transforming the FastXSLT mediator" + e);
                     }
-				}
-				fastXsltKey = new Value(expression);
-			}
-		}
-		if (fastXsltKey != null) {
-			fastXsltMediator.setXsltKey(fastXsltKey);
-		}
+                }
+                fastXsltKey = new Value(expression);
+            }
+        }
+        if (fastXsltKey != null) {
+            fastXsltMediator.setXsltKey(fastXsltKey);
+        }
 
-		return fastXsltMediator;
-	}
+        return fastXsltMediator;
+    }
 
 }

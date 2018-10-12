@@ -30,65 +30,60 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class LinkNodeListener implements MouseMotionListener {
-	private EditDomain domain;
-	private static ToolEntry esbLink;
+    private EditDomain domain;
+    private static ToolEntry esbLink;
 
-	static{
-	if(esbLink==null){
-	esbLink = getEsbLinkCreationTool(); 
-	}
-	}
-	
-	public LinkNodeListener(EditDomain domain){
-		this.domain = domain;
-		
-	}
-	
-	public void mouseDragged(MouseEvent evt) {
-	}
+    static {
+        if (esbLink == null) {
+            esbLink = getEsbLinkCreationTool();
+        }
+    }
 
-	public void mouseEntered(MouseEvent evt) {
-		domain.getPaletteViewer().setActiveTool(esbLink);
-	}
+    public LinkNodeListener(EditDomain domain) {
+        this.domain = domain;
 
-	public void mouseExited(MouseEvent evt) {
-	}
+    }
 
-	public void mouseHover(MouseEvent evt) {
-	}
+    public void mouseDragged(MouseEvent evt) {
+    }
 
+    public void mouseEntered(MouseEvent evt) {
+        domain.getPaletteViewer().setActiveTool(esbLink);
+    }
 
-	public void mouseMoved(MouseEvent evt) {
-	}
-	
-	private static ToolEntry getEsbLinkCreationTool() {
-		LinkToolEntry entry = new LinkToolEntry(
-				Messages.EsbLink1CreationTool_title,
-				Messages.EsbLink1CreationTool_desc,
-				Collections.singletonList(EsbElementTypes.EsbLink_4001));
-		entry.setId("createEsbLink1CreationTool");
-		entry.setSmallIcon(EsbElementTypes
-				.getImageDescriptor(EsbElementTypes.EsbLink_4001));
-		entry.setLargeIcon(entry.getSmallIcon());
-		entry.setLabel("ESBLink");
-		
-		return entry;
-	}
-	
-	private static class LinkToolEntry extends ToolEntry {
-		private final List<IElementType> relationshipTypes;
+    public void mouseExited(MouseEvent evt) {
+    }
 
-		private LinkToolEntry(String title, String description,
-				List<IElementType> relationshipTypes) {
-			super(title, description, null, null);
-			this.relationshipTypes = relationshipTypes;
-		}
+    public void mouseHover(MouseEvent evt) {
+    }
 
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);			
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
-	}
+    public void mouseMoved(MouseEvent evt) {
+    }
+
+    private static ToolEntry getEsbLinkCreationTool() {
+        LinkToolEntry entry = new LinkToolEntry(Messages.EsbLink1CreationTool_title, Messages.EsbLink1CreationTool_desc,
+                Collections.singletonList(EsbElementTypes.EsbLink_4001));
+        entry.setId("createEsbLink1CreationTool");
+        entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.EsbLink_4001));
+        entry.setLargeIcon(entry.getSmallIcon());
+        entry.setLabel("ESBLink");
+
+        return entry;
+    }
+
+    private static class LinkToolEntry extends ToolEntry {
+        private final List<IElementType> relationshipTypes;
+
+        private LinkToolEntry(String title, String description, List<IElementType> relationshipTypes) {
+            super(title, description, null, null);
+            this.relationshipTypes = relationshipTypes;
+        }
+
+        public Tool createTool() {
+            Tool tool = new UnspecifiedTypeConnectionTool(relationshipTypes);
+            tool.setProperties(getToolProperties());
+            return tool;
+        }
+    }
 
 }

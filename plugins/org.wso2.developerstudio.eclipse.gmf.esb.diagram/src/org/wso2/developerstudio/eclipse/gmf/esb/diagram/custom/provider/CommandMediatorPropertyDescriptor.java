@@ -32,25 +32,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
  * Custom property descriptor for command mediator
  */
 public class CommandMediatorPropertyDescriptor extends PropertyDescriptor {
- 
-	public CommandMediatorPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
- 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				CommandMediator commandMediator = (CommandMediator) object;
-				ConfigureCommandMediatorDialog configurationDialog = new ConfigureCommandMediatorDialog(shell, commandMediator, TransactionUtil.getEditingDomain(commandMediator));
-				configurationDialog.setBlockOnOpen(true);
-				configurationDialog.open();
-				return null;
-			}
-		};
-	}
- 
+
+    public CommandMediatorPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                CommandMediator commandMediator = (CommandMediator) object;
+                ConfigureCommandMediatorDialog configurationDialog = new ConfigureCommandMediatorDialog(shell,
+                        commandMediator, TransactionUtil.getEditingDomain(commandMediator));
+                configurationDialog.setBlockOnOpen(true);
+                configurationDialog.open();
+                return null;
+            }
+        };
+    }
+
 }

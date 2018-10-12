@@ -42,155 +42,158 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  * corresponding synapse artifact(s).
  */
 public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
-	private final String ENV = "envelope";
-	private final String BDY = "body";
-	private final String CUS = "custom";
-	private final String PROP = "property";
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {	
-		try {
-			info.getParentSequence().addChild(createEnrichMediator(subject));
-			// Transform the log mediator output data flow path.
-			doTransform(info, ((EnrichMediator) subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		} catch (XMLStreamException e) {
-			throw new TransformerException(e);
-		}	
-	}
+    private final String ENV = "envelope";
+    private final String BDY = "body";
+    private final String CUS = "custom";
+    private final String PROP = "property";
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        try {
+            info.getParentSequence().addChild(createEnrichMediator(subject));
+            // Transform the log mediator output data flow path.
+            doTransform(info, ((EnrichMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        } catch (XMLStreamException e) {
+            throw new TransformerException(e);
+        }
+    }
 
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		try {
-			sequence.addChild(createEnrichMediator(subject));
-			doTransformWithinSequence(information,((EnrichMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		} catch (XMLStreamException e) {
-			throw new TransformerException(e);
-		}		
-	}
-	
-	private org.apache.synapse.mediators.elementary.EnrichMediator createEnrichMediator(EsbNode subject) throws XMLStreamException, JaxenException{
-		// Check subject.
-		Assert.isTrue(subject instanceof EnrichMediator, "Invalid subject.");
-		EnrichMediator visualEnrich = (EnrichMediator) subject;
-		
-		// Configure Enrich mediator.
-		
-		org.apache.synapse.mediators.elementary.Source source = new org.apache.synapse.mediators.elementary.Source();
-		org.apache.synapse.mediators.elementary.Target target = new org.apache.synapse.mediators.elementary.Target();
-		org.apache.synapse.mediators.elementary.EnrichMediator enrichMediator= new org.apache.synapse.mediators.elementary.EnrichMediator();
-		setCommonProperties(enrichMediator, visualEnrich);
-		{
-			// validate source/target types
-			String sourceType = visualEnrich.getSourceType().getLiteral();
-			String targetType = visualEnrich.getTargetType().getLiteral();
-			if ((ENV.equals(sourceType) && !PROP.equals(targetType)) || (CUS.equals(sourceType) && ENV.equals(targetType)) 
-					|| (BDY.equals(sourceType) && (ENV.equals(targetType) || BDY.equals(targetType)))) {
-				throw new JaxenException("Target type \"" + targetType + "\" does not support source type \""
-						+ sourceType + "\". Please change source/target types");
-			}
-			
-			source.setClone(visualEnrich.isCloneSource());
-			//source.setSourceType(visualEnrich.)
-			// Log category.
-			switch (visualEnrich.getSourceType()) {
-				case BODY:
-					source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.BODY);
-					break;
-				case ENVELOPE:
-					source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.ENVELOPE);
-					break;
-				case PROPERTY:
-					source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.PROPERTY);
-					String prop = visualEnrich.getSourceProperty();
-					if (prop!=null) source.setProperty(prop);
-					break;
-				case INLINE:
-					source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.INLINE);
-					switch(visualEnrich.getInlineType()){
-					case CONTENT:
-						String str = visualEnrich.getSourceXML();
-						OMElement payload = AXIOMUtil.stringToOM(str); 
-						if (str!=null) source.setInlineOMNode(payload);
-						break;
-					case KEY:
-						source.setInlineKey(visualEnrich.getInlineRegistryKey().getKeyValue());
-						break;
-					}				
-					break;
-				case CUSTOM:
-					source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.CUSTOM);
-					NamespacedProperty visualSourceXPath =visualEnrich.getSourceXpath();
-					
-					SynapseXPath xPath = new SynapseXPath(visualSourceXPath.getPropertyValue());
-					Map<String, String> map = visualSourceXPath.getNamespaces();
-					Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
-					while (entries.hasNext()) {
-					    Map.Entry<String, String> entry = entries.next();
-					    xPath.addNamespace(entry.getKey(),entry.getValue());
-					}
-					source.setXpath(xPath);
-					break;
-			}
-			
-			// Target.
-			switch (visualEnrich.getTargetType()) {
-				case BODY:
-					target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.BODY);
-					break;
-				case ENVELOPE:
-					target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.ENVELOPE);
-					break;
-				case PROPERTY:
-					target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.PROPERTY);
-					String prop = visualEnrich.getTargetProperty();
-					if (prop!=null) target.setProperty(prop);
-					break;
-				case CUSTOM:
-					target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.CUSTOM);
-					NamespacedProperty visualTargetXPath =visualEnrich.getTargetXpath();
-					
-					SynapseXPath xPath = new SynapseXPath(visualTargetXPath.getPropertyValue());
-					Map<String, String> map = visualTargetXPath.getNamespaces();
-					Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
-					while (entries.hasNext()) {
-					    Map.Entry<String, String> entry = entries.next();
-					    xPath.addNamespace(entry.getKey(),entry.getValue());
-					}
-					target.setXpath(xPath);
-					break;
-			}
-			
-			switch (visualEnrich.getTargetAction()) {
-			case CHILD:
-				target.setAction(org.apache.synapse.mediators.elementary.Target.ACTION_ADD_CHILD);
-				break;
-			case SIBLING:
-				target.setAction(org.apache.synapse.mediators.elementary.Target.ACTION_ADD_SIBLING);
-				break;
-			case REPLACE:
-				target.setAction(org.apache.synapse.mediators.elementary.Target.ACTION_REPLACE);
-			default:
-				break;
-			}
-			
-			enrichMediator.setSource(source);
-			enrichMediator.setTarget(target);
-			
+    }
 
-		}
-		return enrichMediator;
-	}
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createEnrichMediator(subject));
+            doTransformWithinSequence(information, ((EnrichMediator) subject).getOutputConnector().getOutgoingLink(),
+                    sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        } catch (XMLStreamException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	
+    private org.apache.synapse.mediators.elementary.EnrichMediator createEnrichMediator(EsbNode subject)
+            throws XMLStreamException, JaxenException {
+        // Check subject.
+        Assert.isTrue(subject instanceof EnrichMediator, "Invalid subject.");
+        EnrichMediator visualEnrich = (EnrichMediator) subject;
+
+        // Configure Enrich mediator.
+
+        org.apache.synapse.mediators.elementary.Source source = new org.apache.synapse.mediators.elementary.Source();
+        org.apache.synapse.mediators.elementary.Target target = new org.apache.synapse.mediators.elementary.Target();
+        org.apache.synapse.mediators.elementary.EnrichMediator enrichMediator = new org.apache.synapse.mediators.elementary.EnrichMediator();
+        setCommonProperties(enrichMediator, visualEnrich);
+        {
+            // validate source/target types
+            String sourceType = visualEnrich.getSourceType().getLiteral();
+            String targetType = visualEnrich.getTargetType().getLiteral();
+            if ((ENV.equals(sourceType) && !PROP.equals(targetType))
+                    || (CUS.equals(sourceType) && ENV.equals(targetType))
+                    || (BDY.equals(sourceType) && (ENV.equals(targetType) || BDY.equals(targetType)))) {
+                throw new JaxenException("Target type \"" + targetType + "\" does not support source type \""
+                        + sourceType + "\". Please change source/target types");
+            }
+
+            source.setClone(visualEnrich.isCloneSource());
+            // source.setSourceType(visualEnrich.)
+            // Log category.
+            switch (visualEnrich.getSourceType()) {
+            case BODY:
+                source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.BODY);
+                break;
+            case ENVELOPE:
+                source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.ENVELOPE);
+                break;
+            case PROPERTY:
+                source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.PROPERTY);
+                String prop = visualEnrich.getSourceProperty();
+                if (prop != null)
+                    source.setProperty(prop);
+                break;
+            case INLINE:
+                source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.INLINE);
+                switch (visualEnrich.getInlineType()) {
+                case CONTENT:
+                    String str = visualEnrich.getSourceXML();
+                    OMElement payload = AXIOMUtil.stringToOM(str);
+                    if (str != null)
+                        source.setInlineOMNode(payload);
+                    break;
+                case KEY:
+                    source.setInlineKey(visualEnrich.getInlineRegistryKey().getKeyValue());
+                    break;
+                }
+                break;
+            case CUSTOM:
+                source.setSourceType(org.apache.synapse.mediators.elementary.EnrichMediator.CUSTOM);
+                NamespacedProperty visualSourceXPath = visualEnrich.getSourceXpath();
+
+                SynapseXPath xPath = new SynapseXPath(visualSourceXPath.getPropertyValue());
+                Map<String, String> map = visualSourceXPath.getNamespaces();
+                Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
+                while (entries.hasNext()) {
+                    Map.Entry<String, String> entry = entries.next();
+                    xPath.addNamespace(entry.getKey(), entry.getValue());
+                }
+                source.setXpath(xPath);
+                break;
+            }
+
+            // Target.
+            switch (visualEnrich.getTargetType()) {
+            case BODY:
+                target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.BODY);
+                break;
+            case ENVELOPE:
+                target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.ENVELOPE);
+                break;
+            case PROPERTY:
+                target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.PROPERTY);
+                String prop = visualEnrich.getTargetProperty();
+                if (prop != null)
+                    target.setProperty(prop);
+                break;
+            case CUSTOM:
+                target.setTargetType(org.apache.synapse.mediators.elementary.EnrichMediator.CUSTOM);
+                NamespacedProperty visualTargetXPath = visualEnrich.getTargetXpath();
+
+                SynapseXPath xPath = new SynapseXPath(visualTargetXPath.getPropertyValue());
+                Map<String, String> map = visualTargetXPath.getNamespaces();
+                Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
+                while (entries.hasNext()) {
+                    Map.Entry<String, String> entry = entries.next();
+                    xPath.addNamespace(entry.getKey(), entry.getValue());
+                }
+                target.setXpath(xPath);
+                break;
+            }
+
+            switch (visualEnrich.getTargetAction()) {
+            case CHILD:
+                target.setAction(org.apache.synapse.mediators.elementary.Target.ACTION_ADD_CHILD);
+                break;
+            case SIBLING:
+                target.setAction(org.apache.synapse.mediators.elementary.Target.ACTION_ADD_SIBLING);
+                break;
+            case REPLACE:
+                target.setAction(org.apache.synapse.mediators.elementary.Target.ACTION_REPLACE);
+            default:
+                break;
+            }
+
+            enrichMediator.setSource(source);
+            enrichMediator.setTarget(target);
+
+        }
+        return enrichMediator;
+    }
+
 }

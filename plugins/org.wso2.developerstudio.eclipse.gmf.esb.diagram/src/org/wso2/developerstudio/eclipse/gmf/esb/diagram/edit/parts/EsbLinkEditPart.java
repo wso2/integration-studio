@@ -65,86 +65,86 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlu
  */
 public class EsbLinkEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
-	/**
-	 * @generated
-	 */
-	public static final int VISUAL_ID = 4001;
+    /**
+     * @generated
+     */
+    public static final int VISUAL_ID = 4001;
 
-	/**
-	 * @generated
-	 */
-	public EsbLinkEditPart(View view) {
-		super(view);
-	}
+    /**
+     * @generated
+     */
+    public EsbLinkEditPart(View view) {
+        super(view);
+    }
 
-	/**
-	 * @generated NOT
-	 */
-	protected void createDefaultEditPolicies() {
-		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new EsbLinkItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenDiagramEditPolicy() {
-			@Override
-			public Command getCommand(Request request) {
-				return null;
-			}
-		});
-	}
+    /**
+     * @generated NOT
+     */
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+        installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new EsbLinkItemSemanticEditPolicy());
+        installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenDiagramEditPolicy() {
+            @Override
+            public Command getCommand(Request request) {
+                return null;
+            }
+        });
+    }
 
-	/**
-	 * Creates figure for this edit part.
-	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
-	 * 
-	 * @generated NOT
-	 */
-	protected Connection createConnectionFigure() {
-		PolylineConnectionEx figure = new PolylineConnectionEx();
-		PolygonDecoration decoration = new PolygonDecoration();
-		decoration.setScale(12, 4);
-		decoration.setAlpha(250);
-		decoration.setBackgroundColor(new Color(null, 50, 50, 50));
-		decoration.setOutline(false);
-		figure.setTargetDecoration(decoration);
-		figure.setAlpha(150);
-		figure.setLineWidthFloat(0.5f);
+    /**
+     * Creates figure for this edit part.
+     * 
+     * Body of this method does not depend on settings in generation model
+     * so you may safely remove <i>generated</i> tag and modify it.
+     * 
+     * @generated NOT
+     */
+    protected Connection createConnectionFigure() {
+        PolylineConnectionEx figure = new PolylineConnectionEx();
+        PolygonDecoration decoration = new PolygonDecoration();
+        decoration.setScale(12, 4);
+        decoration.setAlpha(250);
+        decoration.setBackgroundColor(new Color(null, 50, 50, 50));
+        decoration.setOutline(false);
+        figure.setTargetDecoration(decoration);
+        figure.setAlpha(150);
+        figure.setLineWidthFloat(0.5f);
 
-		// Need to execute this operation as a command.
-		AbstractEMFOperation command = new AbstractEMFOperation(getEditingDomain(), "change-esb-link-routing-style") {
-			protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-				RoutingStyle style = (RoutingStyle) ((View) getModel())
-						.getStyle(NotationPackage.Literals.ROUTING_STYLE);
-				style.setRouting(Routing.RECTILINEAR_LITERAL);
-				style.setRoundedBendpointsRadius(5);
-				return Status.OK_STATUS;
-			}
-		};
+        // Need to execute this operation as a command.
+        AbstractEMFOperation command = new AbstractEMFOperation(getEditingDomain(), "change-esb-link-routing-style") {
+            protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+                RoutingStyle style = (RoutingStyle) ((View) getModel())
+                        .getStyle(NotationPackage.Literals.ROUTING_STYLE);
+                style.setRouting(Routing.RECTILINEAR_LITERAL);
+                style.setRoundedBendpointsRadius(5);
+                return Status.OK_STATUS;
+            }
+        };
 
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command, null, null);
-		} catch (ExecutionException ex) {
-			// Ignore.
-		}
+        try {
+            OperationHistoryFactory.getOperationHistory().execute(command, null, null);
+        } catch (ExecutionException ex) {
+            // Ignore.
+        }
 
-		return figure;
-	}
+        return figure;
+    }
 
-	protected void setForegroundColor(Color color) {
-		super.setForegroundColor(new Color(null, 0, 0, 0));
-	}
+    protected void setForegroundColor(Color color) {
+        super.setForegroundColor(new Color(null, 0, 0, 0));
+    }
 
-	/**
-	 * @generated
-	 */
-	public PolylineConnectionEx getPrimaryShape() {
-		return (PolylineConnectionEx) getFigure();
-	}
+    /**
+     * @generated
+     */
+    public PolylineConnectionEx getPrimaryShape() {
+        return (PolylineConnectionEx) getFigure();
+    }
 
-	@Override
-	public boolean isSelectable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isSelectable() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 }

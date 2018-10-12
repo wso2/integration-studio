@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider;
 
 import org.eclipse.emf.common.ui.celleditor.ExtendedDialogCellEditor;
@@ -29,31 +28,30 @@ import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 
-
 public class PayloadFactoryMediatorFormatPropertyDescriptor extends PropertyDescriptor {
-		 
-		public PayloadFactoryMediatorFormatPropertyDescriptor(Object object,
-				IItemPropertyDescriptor itemPropertyDescriptor) {
-			super(object, itemPropertyDescriptor);
-		}
-	 
-		
-		public CellEditor createPropertyEditor(Composite parent) {
-			return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-				
-				protected Object openDialogBox(Control cellEditorWindow) {
-				    Shell shell = Display.getDefault().getActiveShell();
-					String title = EMFEditUIPlugin.INSTANCE.getString("_UI_FeatureEditorDialog_title", 
-											new Object [] { getDisplayName(), getEditLabelProvider().getText(object) });
-					PayloadFactoryMediator payloadFactoryMediator = (PayloadFactoryMediator) object;
-					PayloadFactoryMediatorFormatPropertyDialog nediatorConfigurationDialog = new PayloadFactoryMediatorFormatPropertyDialog(title, shell, 
-							payloadFactoryMediator, EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD, payloadFactoryMediator.getPayload());
-					nediatorConfigurationDialog.setBlockOnOpen(true);
-					nediatorConfigurationDialog.open();
-					
-					return null;
-				}
-			};
-		}
-	 
-	}
+
+    public PayloadFactoryMediatorFormatPropertyDescriptor(Object object,
+            IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                String title = EMFEditUIPlugin.INSTANCE.getString("_UI_FeatureEditorDialog_title",
+                        new Object[] { getDisplayName(), getEditLabelProvider().getText(object) });
+                PayloadFactoryMediator payloadFactoryMediator = (PayloadFactoryMediator) object;
+                PayloadFactoryMediatorFormatPropertyDialog nediatorConfigurationDialog = new PayloadFactoryMediatorFormatPropertyDialog(
+                        title, shell, payloadFactoryMediator, EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD,
+                        payloadFactoryMediator.getPayload());
+                nediatorConfigurationDialog.setBlockOnOpen(true);
+                nediatorConfigurationDialog.open();
+
+                return null;
+            }
+        };
+    }
+
+}

@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediatorOnFailOutputConn
  *
  * @generated
  */
-public class ValidateMediatorOnFailOutputConnectorImpl extends OutputConnectorImpl implements ValidateMediatorOnFailOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ValidateMediatorOnFailOutputConnectorImpl() {
-		super();
-	}
+public class ValidateMediatorOnFailOutputConnectorImpl extends OutputConnectorImpl
+        implements ValidateMediatorOnFailOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ValidateMediatorOnFailOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.VALIDATE_MEDIATOR_ON_FAIL_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.VALIDATE_MEDIATOR_ON_FAIL_OUTPUT_CONNECTOR;
+    }
 
-} //ValidateMediatorOnFailOutputConnectorImpl
+} // ValidateMediatorOnFailOutputConnectorImpl

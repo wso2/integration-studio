@@ -20,23 +20,23 @@ import org.apache.synapse.mediators.bean.enterprise.EJBMediator;
 
 public class EJBMediatorExt extends EJBMediator {
 
-	private String methodName;
-	private String targetValue;
+    private String methodName;
+    private String targetValue;
 
-	public void setMethodName(String methodName) {
-		this.methodName = methodName;
-	}
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
 
-	public String getMethodName() {
-		return methodName;
-	}
+    public String getMethodName() {
+        return methodName;
+    }
 
-	public void setTargetValue(String target) {
-		this.targetValue = target;
-	}
+    public void setTargetValue(String target) {
+        this.targetValue = target;
+    }
 
-	public String getTargetValue() {
-		return targetValue;
-	}
+    public String getTargetValue() {
+        return targetValue;
+    }
 
 }

@@ -101,523 +101,507 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
  * corresponding synapse artifact(s).
  */
 public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
-	/**
-	 * {@inheritDoc}
-	 */
-	public void transform(TransformationInfo info, EsbNode subject)
-			throws TransformerException {
-		if(((org.wso2.developerstudio.eclipse.gmf.esb.ProxyService) subject).isMainSequence()){
-			transformAsMainSequence(info,subject);
-		}else{
-			try {
-				transformAsProxy(info,subject);
-			} catch (URISyntaxException e) {
-				throw new TransformerException(e);
-			} catch (XMLStreamException e) {
-				throw new TransformerException(e);
-			}
-		}
-		
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
+        if (((org.wso2.developerstudio.eclipse.gmf.esb.ProxyService) subject).isMainSequence()) {
+            transformAsMainSequence(info, subject);
+        } else {
+            try {
+                transformAsProxy(info, subject);
+            } catch (URISyntaxException e) {
+                throw new TransformerException(e);
+            } catch (XMLStreamException e) {
+                throw new TransformerException(e);
+            }
+        }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	
-	/*
-	 * Should be Reviewed and should be altered.
-	 */	
-	private EsbNode getOriginNode(org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualService){
-		EList<EsbElement> children= visualService.getContainer().getFaultContainer().getMediatorFlow().getChildren();
-		for(int i=0; i<children.size();++i){
-			if(children.get(i) instanceof AggregateMediator){
-				if(((AggregateMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}					
-			}else if(children.get(i) instanceof CacheMediator){
-				if(((CacheMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof CalloutMediator){
-				if(((CalloutMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof CallTemplateMediator){
-				if(((CallTemplateMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof ClassMediator){
-				if(((ClassMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof CloneMediator){
-				if(((CloneMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof CommandMediator){
-				if(((CommandMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof DBLookupMediator){
-				if(((DBLookupMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof DBReportMediator){
-				if(((DBReportMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof DropMediator){
-				if(((DropMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
-					return children.get(i);
-			}else if(children.get(i) instanceof EnqueueMediator){
-				if(((EnqueueMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof EnrichMediator){
-				if(((EnrichMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof EntitlementMediator){
-				if(((EntitlementMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof EventMediator){
-				if(((EventMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof FaultMediator){
-				if(((FaultMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof FilterMediator){
-				if(((FilterMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof HeaderMediator){
-				if(((HeaderMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof IterateMediator){
-				if(((IterateMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof LogMediator){
-				if(((LogMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof OAuthMediator){
-				if(((OAuthMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof PayloadFactoryMediator){
-				if(((PayloadFactoryMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof PropertyMediator){
-				if(((PropertyMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof RMSequenceMediator){
-				if(((RMSequenceMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof RuleMediator){
-				if(((RuleMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof ScriptMediator){
-				if(((ScriptMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof SendMediator){
-				if(((SendMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof SmooksMediator){
-				if(((SmooksMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof SpringMediator){
-				if(((SpringMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof StoreMediator){
-				if(((StoreMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof SwitchMediator){
-				if(((SwitchMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof ThrottleMediator){
-				if(((ThrottleMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof XQueryMediator){
-				if(((XQueryMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof XSLTMediator){
-				if(((XSLTMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof FastXSLTMediator){
-				if(((FastXSLTMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof BAMMediator){
-				if(((BAMMediator)children.get(i)).getInputConnector().getIncomingLinks().size() == 0){
-					return children.get(i);
-				}
-			}else if(children.get(i) instanceof Sequence){
-				if(((Sequence)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof CallMediator) {
-				if (((CallMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof LoopBackMediator) {
-				if (((LoopBackMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof RespondMediator) {
-				if (((RespondMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof ConditionalRouterMediator) {
-				if (((ConditionalRouterMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof ValidateMediator) {
-				if (((ValidateMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof BeanMediator) {
-				if (((BeanMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof EJBMediator) {
-				if (((EJBMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof URLRewriteMediator) {
-				if (((URLRewriteMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof TransactionMediator) {
-				if (((TransactionMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof ForEachMediator) {
-				if (((ForEachMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof BuilderMediator) {
-				if (((BuilderMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}else if (children.get(i) instanceof PublishEventMediator) {
-				if (((PublishEventMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
-					return children.get(i);
-				}
-			}			
-		}
-		return null;
-	}
-	
-	private boolean validateXML(String xmlString) {
-		try {
-			OMElement element = AXIOMUtil.stringToOM(xmlString);
-			element.build();
-		} catch (Exception e) {
-			 //ignore. Then parameter value would be a string.
-			return false;
-		}
-		return true;
-	}
-	
-	private void transformAsProxy(TransformationInfo info, EsbNode subject) throws TransformerException, URISyntaxException, XMLStreamException{
-		ArrayList<String> transports = new ArrayList<String>();
-		List<String> pinnedServers = new ArrayList<String>();
-		// Check subject.
-		Assert.isTrue(
-				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.ProxyService,
-				"Invalid subject.");
-		org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualService = (org.wso2.developerstudio.eclipse.gmf.esb.ProxyService) subject;
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        // TODO Auto-generated method stub
 
-		// Check start.
-		if (info.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {
-			
-			String proxyName;
-			if (visualService.getName() != null) {
-			    proxyName = visualService.getName();
-			} else {
-			    proxyName = "";
-			}
+    }
 
-			ProxyService proxyService = new ProxyService(proxyName);
-			info.setCurrentProxy(proxyService);
+    /*
+     * Should be Reviewed and should be altered.
+     */
+    private EsbNode getOriginNode(org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualService) {
+        EList<EsbElement> children = visualService.getContainer().getFaultContainer().getMediatorFlow().getChildren();
+        for (int i = 0; i < children.size(); ++i) {
+            if (children.get(i) instanceof AggregateMediator) {
+                if (((AggregateMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof CacheMediator) {
+                if (((CacheMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof CalloutMediator) {
+                if (((CalloutMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof CallTemplateMediator) {
+                if (((CallTemplateMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof ClassMediator) {
+                if (((ClassMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof CloneMediator) {
+                if (((CloneMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof CommandMediator) {
+                if (((CommandMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof DBLookupMediator) {
+                if (((DBLookupMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof DBReportMediator) {
+                if (((DBReportMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof DropMediator) {
+                if (((DropMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0)
+                    return children.get(i);
+            } else if (children.get(i) instanceof EnqueueMediator) {
+                if (((EnqueueMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof EnrichMediator) {
+                if (((EnrichMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof EntitlementMediator) {
+                if (((EntitlementMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof EventMediator) {
+                if (((EventMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof FaultMediator) {
+                if (((FaultMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof FilterMediator) {
+                if (((FilterMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof HeaderMediator) {
+                if (((HeaderMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof IterateMediator) {
+                if (((IterateMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof LogMediator) {
+                if (((LogMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof OAuthMediator) {
+                if (((OAuthMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof PayloadFactoryMediator) {
+                if (((PayloadFactoryMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof PropertyMediator) {
+                if (((PropertyMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof RMSequenceMediator) {
+                if (((RMSequenceMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof RuleMediator) {
+                if (((RuleMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof ScriptMediator) {
+                if (((ScriptMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof SendMediator) {
+                if (((SendMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof SmooksMediator) {
+                if (((SmooksMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof SpringMediator) {
+                if (((SpringMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof StoreMediator) {
+                if (((StoreMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof SwitchMediator) {
+                if (((SwitchMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof ThrottleMediator) {
+                if (((ThrottleMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof XQueryMediator) {
+                if (((XQueryMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof XSLTMediator) {
+                if (((XSLTMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof FastXSLTMediator) {
+                if (((FastXSLTMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof BAMMediator) {
+                if (((BAMMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof Sequence) {
+                if (((Sequence) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof CallMediator) {
+                if (((CallMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof LoopBackMediator) {
+                if (((LoopBackMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof RespondMediator) {
+                if (((RespondMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof ConditionalRouterMediator) {
+                if (((ConditionalRouterMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof ValidateMediator) {
+                if (((ValidateMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof BeanMediator) {
+                if (((BeanMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof EJBMediator) {
+                if (((EJBMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof URLRewriteMediator) {
+                if (((URLRewriteMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof TransactionMediator) {
+                if (((TransactionMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof ForEachMediator) {
+                if (((ForEachMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof BuilderMediator) {
+                if (((BuilderMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            } else if (children.get(i) instanceof PublishEventMediator) {
+                if (((PublishEventMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+                    return children.get(i);
+                }
+            }
+        }
+        return null;
+    }
 
-			if (visualService.getServiceGroup() != null) {
-				proxyService.setServiceGroup(visualService.getServiceGroup());
-			}
-			AspectConfiguration aspectConfiguration = new AspectConfiguration(proxyName);
-			if (visualService.isStatisticsEnabled()) {
-				proxyService.getAspectConfiguration().enableStatistics();
-			} else {
-				proxyService.getAspectConfiguration().disableStatistics();
-			}
-			if (visualService.isTraceEnabled()) {
-				proxyService.getAspectConfiguration().enableTracing();
-			} else {
-				proxyService.getAspectConfiguration().disableTracing();
-			}
-			proxyService.setWsSecEnabled(visualService.isSecurityEnabled());
-			proxyService.setWsRMEnabled(visualService
-					.isReliableMessagingEnabled());
+    private boolean validateXML(String xmlString) {
+        try {
+            OMElement element = AXIOMUtil.stringToOM(xmlString);
+            element.build();
+        } catch (Exception e) {
+            // ignore. Then parameter value would be a string.
+            return false;
+        }
+        return true;
+    }
 
-			for (String a : visualService.getTransports().split(",")) {
-				transports.add(a);
-			}
+    private void transformAsProxy(TransformationInfo info, EsbNode subject)
+            throws TransformerException, URISyntaxException, XMLStreamException {
+        ArrayList<String> transports = new ArrayList<String>();
+        List<String> pinnedServers = new ArrayList<String>();
+        // Check subject.
+        Assert.isTrue(subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.ProxyService, "Invalid subject.");
+        org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualService = (org.wso2.developerstudio.eclipse.gmf.esb.ProxyService) subject;
 
-			proxyService.setTransports(transports);
-			switch (visualService.getWsdlType()) {
-			case INLINE:
-				OMNode node = SynapseConfigUtils.stringToOM(visualService.getWsdlXML());
-				proxyService.setInLineWSDL(node);
-				break;
-			case SOURCE_URL:
-				proxyService.setWsdlURI(new URI(visualService.getWsdlURL()));
-				break;
-			case REGISTRY_KEY:
-				proxyService.setWSDLKey(visualService.getWsdlKey().getKeyValue());
-				break;
-			case ENDPOINT:
-				 proxyService.setPublishWSDLEndpoint(visualService.getWsdlEndpoint().getKeyValue());
-			case NONE:
-				break;
-			}
-			
-			if (visualService.getWsdlType() != ProxyWsdlType.NONE) {
-				setPreservePolicyValue(visualService, proxyService);
-				if (visualService.getWsdlType() != ProxyWsdlType.ENDPOINT) {
-					proxyService.setResourceMap(new ResourceMap());
-					for (ProxyWSDLResource wsdlResource : visualService.getWsdlResources()) {
-						proxyService.getResourceMap().addResource(wsdlResource.getLocation(),
-								wsdlResource.getKey().getKeyValue());
-					}
-				}
-			}
-		
-			String pinnedServerInfo = visualService.getPinnedServers();
-			if (pinnedServerInfo != null && !pinnedServerInfo.equals("")) {
-				for (String a : pinnedServerInfo.split(",")) {
-					pinnedServers.add(a);
-				}
-			}
-			if (pinnedServers.size() > 0)
-				proxyService.setPinnedServers(pinnedServers);
-		   
-			info.getSynapseConfiguration().addProxyService(proxyName, proxyService);
-			
-			// startOnLoad attribute.
-			proxyService.setStartOnLoad(visualService.isStartOnLoad());
-			
-			//Proxy Service Parameters.
-			for(int i=0;i<visualService.getServiceParameters().size();++i){
-				String value = visualService.getServiceParameters().get(i).getValue();
-				if (validateXML(value)) {
-					OMElement payload = AXIOMUtil.stringToOM(value);
-					proxyService.addParameter(
-							visualService.getServiceParameters().get(i).getName(), payload);
-				} else {
-					proxyService.addParameter(
-							visualService.getServiceParameters().get(i).getName(), value);
-				}
-			}
-			
-			for(int i=0;i<visualService.getServicePolicies().size();++i){
-				PolicyInfo policyInfo = new PolicyInfo(visualService.getServicePolicies().get(i).getPolicyKey().getKeyValue());
-				proxyService.getPolicies().add(policyInfo);
-			}
-			
+        // Check start.
+        if (info.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {
 
-			// In sequence.
-			SequenceMediator inSequence = new SequenceMediator();			
-			switch (visualService.getInSequenceType()) {
-			case ANONYMOUS:
-				proxyService.setTargetInLineInSequence(inSequence);
-				if (visualService.getInSequenceOnError() != null
-						&& StringUtils.isNotBlank(visualService
-								.getInSequenceOnError().getKeyValue())) {
-					inSequence.setErrorHandler(visualService
-							.getInSequenceOnError().getKeyValue());
-				}
-				break;
-				
-			case NAMED_REFERENCE:
-				proxyService.setTargetInSequence(visualService.getInSequenceName());
-				break;
+            String proxyName;
+            if (visualService.getName() != null) {
+                proxyName = visualService.getName();
+            } else {
+                proxyName = "";
+            }
 
-			case REGISTRY_REFERENCE:
-				proxyService.setTargetInSequence(visualService.getInSequenceKey().getKeyValue());
-				break;
-			}
+            ProxyService proxyService = new ProxyService(proxyName);
+            info.setCurrentProxy(proxyService);
 
-			// Out sequence.
-			SequenceMediator outSequence = new SequenceMediator();			
-			switch (visualService.getOutSequenceType()) {
-			case ANONYMOUS:
-				proxyService.setTargetInLineOutSequence(outSequence);
-				if (visualService.getOutSequenceOnError() != null
-						&& StringUtils.isNotBlank(visualService
-								.getOutSequenceOnError().getKeyValue())) {
-					outSequence.setErrorHandler(visualService
-							.getOutSequenceOnError().getKeyValue());
-				}
-				break;
-			
-			case NAMED_REFERENCE:
-				proxyService.setTargetOutSequence(visualService.getOutSequenceName());
-				break;
+            if (visualService.getServiceGroup() != null) {
+                proxyService.setServiceGroup(visualService.getServiceGroup());
+            }
+            AspectConfiguration aspectConfiguration = new AspectConfiguration(proxyName);
+            if (visualService.isStatisticsEnabled()) {
+                proxyService.getAspectConfiguration().enableStatistics();
+            } else {
+                proxyService.getAspectConfiguration().disableStatistics();
+            }
+            if (visualService.isTraceEnabled()) {
+                proxyService.getAspectConfiguration().enableTracing();
+            } else {
+                proxyService.getAspectConfiguration().disableTracing();
+            }
+            proxyService.setWsSecEnabled(visualService.isSecurityEnabled());
+            proxyService.setWsRMEnabled(visualService.isReliableMessagingEnabled());
 
-			case REGISTRY_REFERENCE:
-				proxyService.setTargetOutSequence(visualService.getOutSequenceKey().getKeyValue());
-				break;
-			}
-			
-			//Endpoint						
-			switch (visualService.getEndpointType()) {
-			case ANONYMOUS:
-				break;
-			
-			case NAMED_REFERENCE:
-				proxyService.setTargetEndpoint(visualService.getEndpointName());
-				break;
+            for (String a : visualService.getTransports().split(",")) {
+                transports.add(a);
+            }
 
-			case REGISTRY_REFERENCE:
-				proxyService.setTargetEndpoint(visualService.getEndpointKey().getKeyValue());
-				break;
-			}
+            proxyService.setTransports(transports);
+            switch (visualService.getWsdlType()) {
+            case INLINE:
+                OMNode node = SynapseConfigUtils.stringToOM(visualService.getWsdlXML());
+                proxyService.setInLineWSDL(node);
+                break;
+            case SOURCE_URL:
+                proxyService.setWsdlURI(new URI(visualService.getWsdlURL()));
+                break;
+            case REGISTRY_KEY:
+                proxyService.setWSDLKey(visualService.getWsdlKey().getKeyValue());
+                break;
+            case ENDPOINT:
+                proxyService.setPublishWSDLEndpoint(visualService.getWsdlEndpoint().getKeyValue());
+            case NONE:
+                break;
+            }
 
-			info.setOriginInSequence(inSequence);
-			info.setOriginOutSequence(outSequence);
-			info.setParentSequence(inSequence);
+            if (visualService.getWsdlType() != ProxyWsdlType.NONE) {
+                setPreservePolicyValue(visualService, proxyService);
+                if (visualService.getWsdlType() != ProxyWsdlType.ENDPOINT) {
+                    proxyService.setResourceMap(new ResourceMap());
+                    for (ProxyWSDLResource wsdlResource : visualService.getWsdlResources()) {
+                        proxyService.getResourceMap().addResource(wsdlResource.getLocation(),
+                                wsdlResource.getKey().getKeyValue());
+                    }
+                }
+            }
 
-			// Transform output data flow.
-			doTransform(info, visualService.getOutputConnector());
-			
-			// Transform outSequence
-			
-			info.setParentSequence(info.getOriginOutSequence());
-			info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
-			doTransform(info, visualService.getOutSequenceOutputConnector());
-			
-			//Set Fault Sequence
-			SequenceMediator faultSequence = new SequenceMediator();			
-			switch (visualService.getFaultSequenceType()) {
-			case ANONYMOUS:
-				proxyService.setTargetInLineFaultSequence(faultSequence);
-				if (visualService.getFaultSequenceOnError() != null
-						&& StringUtils.isNotBlank(visualService
-								.getFaultSequenceOnError().getKeyValue())) {
-					faultSequence.setErrorHandler(visualService
-							.getFaultSequenceOnError().getKeyValue());
-				}
-				break;
-			
-			case NAMED_REFERENCE:
-				proxyService.setTargetFaultSequence(visualService.getFaultSequenceName());
-				break;
+            String pinnedServerInfo = visualService.getPinnedServers();
+            if (pinnedServerInfo != null && !pinnedServerInfo.equals("")) {
+                for (String a : pinnedServerInfo.split(",")) {
+                    pinnedServers.add(a);
+                }
+            }
+            if (pinnedServers.size() > 0)
+                proxyService.setPinnedServers(pinnedServers);
 
-			case REGISTRY_REFERENCE:
-				proxyService.setTargetFaultSequence(visualService.getFaultSequenceKey().getKeyValue());
-				break;
-			}			
-			
-			TransformationInfo faultInfo =new TransformationInfo(); 
-			faultInfo.setParentSequence(faultSequence);			
-			faultInfo.setSynapseConfiguration(info.getSynapseConfiguration());
-			doTransformFaultSequence(faultInfo,getOriginNode(visualService));
-			
-		} else {
-			// Round-trip comlplete, send the message back to client.
-			// TODO: Need to verify (either here or in the visual model) that
-			// this is not a short-cricuit or an illegal message routing
-			// operation (attempting to route one proxy service's messages to
-			// another).
-			// parentMediator.addChild(new SendMediator());
-		}
-	}
-	
-	/**
-	 * This sets the preserve policy value
-	 * 
-	 * @param visualService
-	 *            gmf model proxy service object
-	 * @param proxyService
-	 *            synapse proxy service object
-	 */
-	private void setPreservePolicyValue(org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualService,
-			ProxyService proxyService) {
-		if (visualService.isPreservePolicy()) {
-			proxyService.setPreservePolicy("true");
-		} else {
-			proxyService.setPreservePolicy("false");
-		}
-	}
-	
-	private void transformAsMainSequence(TransformationInfo info, EsbNode subject) throws TransformerException{
-		// Check subject.
-		Assert.isTrue(
-				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.ProxyService,
-				"Invalid subject.");
-		org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualService = (org.wso2.developerstudio.eclipse.gmf.esb.ProxyService) subject;
+            info.getSynapseConfiguration().addProxyService(proxyName, proxyService);
 
-		// Check start.
-		if (info.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {
+            // startOnLoad attribute.
+            proxyService.setStartOnLoad(visualService.isStartOnLoad());
 
-			org.apache.synapse.mediators.base.SequenceMediator sequence =new SequenceMediator();
-			sequence.setName("main");
-			
-			RegistryKeyProperty onErrorSeq = visualService.getOnError();
-			if(onErrorSeq!=null){
-				if(!StringUtils.isBlank(onErrorSeq.getKeyValue())){
-					sequence.setErrorHandler(onErrorSeq.getKeyValue());
-				}
-			}
-			
-			InMediator inMediator=new InMediator();
-			OutMediator outMediator=new OutMediator();
-			
-			sequence.addChild(inMediator);
-			sequence.addChild(outMediator);
-			
-			info.setMainSequence(sequence);
-			
-			info.setOriginInSequence(inMediator);
-			info.setOriginOutSequence(outMediator);
-			info.setParentSequence(inMediator);
-			
-			doTransform(info, visualService.getOutputConnector());		
-			
-			// Transform outSequence
-			
-			info.setParentSequence(outMediator);
-			info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
-			doTransform(info, visualService.getOutSequenceOutputConnector());
-		} 
-	}
+            // Proxy Service Parameters.
+            for (int i = 0; i < visualService.getServiceParameters().size(); ++i) {
+                String value = visualService.getServiceParameters().get(i).getValue();
+                if (validateXML(value)) {
+                    OMElement payload = AXIOMUtil.stringToOM(value);
+                    proxyService.addParameter(visualService.getServiceParameters().get(i).getName(), payload);
+                } else {
+                    proxyService.addParameter(visualService.getServiceParameters().get(i).getName(), value);
+                }
+            }
+
+            for (int i = 0; i < visualService.getServicePolicies().size(); ++i) {
+                PolicyInfo policyInfo = new PolicyInfo(
+                        visualService.getServicePolicies().get(i).getPolicyKey().getKeyValue());
+                proxyService.getPolicies().add(policyInfo);
+            }
+
+            // In sequence.
+            SequenceMediator inSequence = new SequenceMediator();
+            switch (visualService.getInSequenceType()) {
+            case ANONYMOUS:
+                proxyService.setTargetInLineInSequence(inSequence);
+                if (visualService.getInSequenceOnError() != null
+                        && StringUtils.isNotBlank(visualService.getInSequenceOnError().getKeyValue())) {
+                    inSequence.setErrorHandler(visualService.getInSequenceOnError().getKeyValue());
+                }
+                break;
+
+            case NAMED_REFERENCE:
+                proxyService.setTargetInSequence(visualService.getInSequenceName());
+                break;
+
+            case REGISTRY_REFERENCE:
+                proxyService.setTargetInSequence(visualService.getInSequenceKey().getKeyValue());
+                break;
+            }
+
+            // Out sequence.
+            SequenceMediator outSequence = new SequenceMediator();
+            switch (visualService.getOutSequenceType()) {
+            case ANONYMOUS:
+                proxyService.setTargetInLineOutSequence(outSequence);
+                if (visualService.getOutSequenceOnError() != null
+                        && StringUtils.isNotBlank(visualService.getOutSequenceOnError().getKeyValue())) {
+                    outSequence.setErrorHandler(visualService.getOutSequenceOnError().getKeyValue());
+                }
+                break;
+
+            case NAMED_REFERENCE:
+                proxyService.setTargetOutSequence(visualService.getOutSequenceName());
+                break;
+
+            case REGISTRY_REFERENCE:
+                proxyService.setTargetOutSequence(visualService.getOutSequenceKey().getKeyValue());
+                break;
+            }
+
+            // Endpoint
+            switch (visualService.getEndpointType()) {
+            case ANONYMOUS:
+                break;
+
+            case NAMED_REFERENCE:
+                proxyService.setTargetEndpoint(visualService.getEndpointName());
+                break;
+
+            case REGISTRY_REFERENCE:
+                proxyService.setTargetEndpoint(visualService.getEndpointKey().getKeyValue());
+                break;
+            }
+
+            info.setOriginInSequence(inSequence);
+            info.setOriginOutSequence(outSequence);
+            info.setParentSequence(inSequence);
+
+            // Transform output data flow.
+            doTransform(info, visualService.getOutputConnector());
+
+            // Transform outSequence
+
+            info.setParentSequence(info.getOriginOutSequence());
+            info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+            doTransform(info, visualService.getOutSequenceOutputConnector());
+
+            // Set Fault Sequence
+            SequenceMediator faultSequence = new SequenceMediator();
+            switch (visualService.getFaultSequenceType()) {
+            case ANONYMOUS:
+                proxyService.setTargetInLineFaultSequence(faultSequence);
+                if (visualService.getFaultSequenceOnError() != null
+                        && StringUtils.isNotBlank(visualService.getFaultSequenceOnError().getKeyValue())) {
+                    faultSequence.setErrorHandler(visualService.getFaultSequenceOnError().getKeyValue());
+                }
+                break;
+
+            case NAMED_REFERENCE:
+                proxyService.setTargetFaultSequence(visualService.getFaultSequenceName());
+                break;
+
+            case REGISTRY_REFERENCE:
+                proxyService.setTargetFaultSequence(visualService.getFaultSequenceKey().getKeyValue());
+                break;
+            }
+
+            TransformationInfo faultInfo = new TransformationInfo();
+            faultInfo.setParentSequence(faultSequence);
+            faultInfo.setSynapseConfiguration(info.getSynapseConfiguration());
+            doTransformFaultSequence(faultInfo, getOriginNode(visualService));
+
+        } else {
+            // Round-trip comlplete, send the message back to client.
+            // TODO: Need to verify (either here or in the visual model) that
+            // this is not a short-cricuit or an illegal message routing
+            // operation (attempting to route one proxy service's messages to
+            // another).
+            // parentMediator.addChild(new SendMediator());
+        }
+    }
+
+    /**
+     * This sets the preserve policy value
+     * 
+     * @param visualService
+     *            gmf model proxy service object
+     * @param proxyService
+     *            synapse proxy service object
+     */
+    private void setPreservePolicyValue(org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualService,
+            ProxyService proxyService) {
+        if (visualService.isPreservePolicy()) {
+            proxyService.setPreservePolicy("true");
+        } else {
+            proxyService.setPreservePolicy("false");
+        }
+    }
+
+    private void transformAsMainSequence(TransformationInfo info, EsbNode subject) throws TransformerException {
+        // Check subject.
+        Assert.isTrue(subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.ProxyService, "Invalid subject.");
+        org.wso2.developerstudio.eclipse.gmf.esb.ProxyService visualService = (org.wso2.developerstudio.eclipse.gmf.esb.ProxyService) subject;
+
+        // Check start.
+        if (info.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {
+
+            org.apache.synapse.mediators.base.SequenceMediator sequence = new SequenceMediator();
+            sequence.setName("main");
+
+            RegistryKeyProperty onErrorSeq = visualService.getOnError();
+            if (onErrorSeq != null) {
+                if (!StringUtils.isBlank(onErrorSeq.getKeyValue())) {
+                    sequence.setErrorHandler(onErrorSeq.getKeyValue());
+                }
+            }
+
+            InMediator inMediator = new InMediator();
+            OutMediator outMediator = new OutMediator();
+
+            sequence.addChild(inMediator);
+            sequence.addChild(outMediator);
+
+            info.setMainSequence(sequence);
+
+            info.setOriginInSequence(inMediator);
+            info.setOriginOutSequence(outMediator);
+            info.setParentSequence(inMediator);
+
+            doTransform(info, visualService.getOutputConnector());
+
+            // Transform outSequence
+
+            info.setParentSequence(outMediator);
+            info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+            doTransform(info, visualService.getOutSequenceOutputConnector());
+        }
+    }
 
 }

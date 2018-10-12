@@ -9,32 +9,32 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 
-public class ESBEditorCutCommand extends org.eclipse.gmf.runtime.common.core.command.AbstractCommand{
+public class ESBEditorCutCommand extends org.eclipse.gmf.runtime.common.core.command.AbstractCommand {
 
-	public static List<EObject> toCutElements ;
-	public static List<IGraphicalEditPart> toCutEditParts ;
-	
-	public ESBEditorCutCommand(String label, List<EObject> toCutElements,List<IGraphicalEditPart> toCutEditParts) {
-		super(label);
-		this.toCutElements = toCutElements;
-		this.toCutEditParts = toCutEditParts;		
-	}
+    public static List<EObject> toCutElements;
+    public static List<IGraphicalEditPart> toCutEditParts;
 
-	protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info)
-			throws ExecutionException {
-		ESBClipboard.setToCopyEditParts(toCutEditParts);
-		ESBClipboard.setCut(true);
-		return CommandResult.newOKCommandResult();
-	}
+    public ESBEditorCutCommand(String label, List<EObject> toCutElements, List<IGraphicalEditPart> toCutEditParts) {
+        super(label);
+        this.toCutElements = toCutElements;
+        this.toCutEditParts = toCutEditParts;
+    }
 
-	protected CommandResult doRedoWithResult(IProgressMonitor progressMonitor, IAdaptable info)
-			throws ExecutionException {
-		return null;
-	}
+    protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info)
+            throws ExecutionException {
+        ESBClipboard.setToCopyEditParts(toCutEditParts);
+        ESBClipboard.setCut(true);
+        return CommandResult.newOKCommandResult();
+    }
 
-	protected CommandResult doUndoWithResult(IProgressMonitor progressMonitor, IAdaptable info)
-			throws ExecutionException {
-		return null;
-	}
+    protected CommandResult doRedoWithResult(IProgressMonitor progressMonitor, IAdaptable info)
+            throws ExecutionException {
+        return null;
+    }
+
+    protected CommandResult doUndoWithResult(IProgressMonitor progressMonitor, IAdaptable info)
+            throws ExecutionException {
+        return null;
+    }
 
 }

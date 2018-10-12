@@ -32,25 +32,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
  * Custom property descriptor for router mediator
  */
 public class RouterMediatorPropertyDescriptor extends PropertyDescriptor {
- 
-	public RouterMediatorPropertyDescriptor(Object object,
-			IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
- 
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
-			
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				RouterMediator routerMediator = (RouterMediator) object;
-				ConfigureRouterMediatorDialog configurationDialog = new ConfigureRouterMediatorDialog(shell, routerMediator, TransactionUtil.getEditingDomain(routerMediator));
-				configurationDialog.setBlockOnOpen(true);
-				configurationDialog.open();
-				return null;
-			}
-		};
-	}
- 
+
+    public RouterMediatorPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
+
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                RouterMediator routerMediator = (RouterMediator) object;
+                ConfigureRouterMediatorDialog configurationDialog = new ConfigureRouterMediatorDialog(shell,
+                        routerMediator, TransactionUtil.getEditingDomain(routerMediator));
+                configurationDialog.setBlockOnOpen(true);
+                configurationDialog.open();
+                return null;
+            }
+        };
+    }
+
 }

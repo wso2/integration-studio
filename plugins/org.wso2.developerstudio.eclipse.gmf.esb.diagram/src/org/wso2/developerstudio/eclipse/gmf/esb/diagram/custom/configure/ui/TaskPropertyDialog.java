@@ -52,439 +52,419 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TaskPropertyType;
 import org.wso2.developerstudio.esb.form.editors.article.rcp.ScheduledTaskFormPage;
+
 //deprecated
-public class TaskPropertyDialog extends Dialog{
-	
-	private TransactionalEditingDomain editingDomain;
-	private Task task;
-	private boolean defaultESBtask;
-	private ScheduledTaskFormPage taskFormPage;
-	
-	/**
-	 * Table for add/edit/remove parameters.
-	 */
-	private Table propertyTable;
-	/**
-	 * Table Editor for inline property edit
-	 */
-	private TableEditor propertyTypeEditor;
-	/**
-	 * Combo box for select parameter type.
-	 */
-	private Combo cmbPropertyType;
-	/**
-	 * Button for add new parameter.
-	 */
-	private Button newPropertyButton;
-	/**
-	 * Button for remove parameter.
-	 */
-	private Button removePropertyButton;	
-	/**
-	 * Command for recording user operations.
-	 */
-	private CompoundCommand resultCommand;
-	
+public class TaskPropertyDialog extends Dialog {
 
-	public TaskPropertyDialog(Shell parentShell,
-			Task task,
-			TransactionalEditingDomain editingDomain) {
-		super(parentShell);
-		this.editingDomain = editingDomain;
-		this.task = task;
-		defaultESBtask = (task.getTaskImplementation().equals("org.apache.synapse.startup.tasks.MessageInjector"));
-		initializeDefaultMessageInjectorTask();
-	}
-	
-	public TaskPropertyDialog(Shell parentShell, ScheduledTaskFormPage scheduledTaskFormPage) {
-		super(parentShell);
-		this.taskFormPage = scheduledTaskFormPage;
-		defaultESBtask = (scheduledTaskFormPage.getTaskImpl().getText().equals("org.apache.synapse.startup.tasks.MessageInjector"));
-//		initializeDefaultMessageInjectorTask();
-		
-	}
+    private TransactionalEditingDomain editingDomain;
+    private Task task;
+    private boolean defaultESBtask;
+    private ScheduledTaskFormPage taskFormPage;
 
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
-		newShell.setText("Task Properties");
-	}
-	
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
+    /**
+     * Table for add/edit/remove parameters.
+     */
+    private Table propertyTable;
+    /**
+     * Table Editor for inline property edit
+     */
+    private TableEditor propertyTypeEditor;
+    /**
+     * Combo box for select parameter type.
+     */
+    private Combo cmbPropertyType;
+    /**
+     * Button for add new parameter.
+     */
+    private Button newPropertyButton;
+    /**
+     * Button for remove parameter.
+     */
+    private Button removePropertyButton;
+    /**
+     * Command for recording user operations.
+     */
+    private CompoundCommand resultCommand;
 
-		// Button for add new parameter.
-		newPropertyButton = new Button(container, SWT.NONE);
-		newPropertyButton.setText("New...");
-		FormData newTaskPropertyButtonLayoutData = new FormData(80, SWT.DEFAULT);
-		newTaskPropertyButtonLayoutData.right = new FormAttachment(100);
-		newPropertyButton.setLayoutData(newTaskPropertyButtonLayoutData);
+    public TaskPropertyDialog(Shell parentShell, Task task, TransactionalEditingDomain editingDomain) {
+        super(parentShell);
+        this.editingDomain = editingDomain;
+        this.task = task;
+        defaultESBtask = (task.getTaskImplementation().equals("org.apache.synapse.startup.tasks.MessageInjector"));
+        initializeDefaultMessageInjectorTask();
+    }
 
-		newPropertyButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				TableItem item = bindPram(EsbFactory.eINSTANCE
-						.createTaskProperty());
-				propertyTable.select(propertyTable.indexOf(item));
-			}
-		});
-		newPropertyButton.setEnabled(!defaultESBtask);
+    public TaskPropertyDialog(Shell parentShell, ScheduledTaskFormPage scheduledTaskFormPage) {
+        super(parentShell);
+        this.taskFormPage = scheduledTaskFormPage;
+        defaultESBtask = (scheduledTaskFormPage.getTaskImpl().getText()
+                .equals("org.apache.synapse.startup.tasks.MessageInjector"));
+        // initializeDefaultMessageInjectorTask();
 
-		// Button for remove Property.
-		removePropertyButton = new Button(container, SWT.NONE);
-		removePropertyButton.setText("Remove");
-		FormData removeTaskPropertyButtonLayoutData = new FormData();
-		removeTaskPropertyButtonLayoutData.top = new FormAttachment(
-				newPropertyButton, 5);
-		removeTaskPropertyButtonLayoutData.right = new FormAttachment(100);
-		removeTaskPropertyButtonLayoutData.left = new FormAttachment(
-				newPropertyButton, 0, SWT.LEFT);
-		removePropertyButton.setLayoutData(removeTaskPropertyButtonLayoutData);
+    }
 
-		removePropertyButton.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				int selectedIndex = propertyTable.getSelectionIndex();
-				if (-1 != selectedIndex) {
-					unbindParam(selectedIndex);
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
+        newShell.setText("Task Properties");
+    }
 
-					// Select the next available candidate for deletion.
-					if (selectedIndex < propertyTable.getItemCount()) {
-						propertyTable.select(selectedIndex);
-					} else {
-						propertyTable.select(selectedIndex - 1);
-					}
-				}
-			}
-		});
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        FormLayout mainLayout = new FormLayout();
+        mainLayout.marginHeight = 5;
+        mainLayout.marginWidth = 5;
+        container.setLayout(mainLayout);
 
-		// Table for show the parameters.
-		propertyTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION
-				| SWT.HIDE_SELECTION);
+        // Button for add new parameter.
+        newPropertyButton = new Button(container, SWT.NONE);
+        newPropertyButton.setText("New...");
+        FormData newTaskPropertyButtonLayoutData = new FormData(80, SWT.DEFAULT);
+        newTaskPropertyButtonLayoutData.right = new FormAttachment(100);
+        newPropertyButton.setLayoutData(newTaskPropertyButtonLayoutData);
 
-		TableColumn nameColumn = new TableColumn(propertyTable, SWT.LEFT);
-		TableColumn typeColumn = new TableColumn(propertyTable, SWT.LEFT);
-		TableColumn valueColumn = new TableColumn(propertyTable, SWT.LEFT);
-		
-		nameColumn.setText("Parameter Name");
-		nameColumn.setWidth(150);
-		valueColumn.setText("Value/Expression");
-		valueColumn.setWidth(200);
-		typeColumn.setText("Parameter Type");
-		typeColumn.setWidth(150);
+        newPropertyButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                TableItem item = bindPram(EsbFactory.eINSTANCE.createTaskProperty());
+                propertyTable.select(propertyTable.indexOf(item));
+            }
+        });
+        newPropertyButton.setEnabled(!defaultESBtask);
 
-		propertyTable.setHeaderVisible(true);
-		propertyTable.setLinesVisible(true);
+        // Button for remove Property.
+        removePropertyButton = new Button(container, SWT.NONE);
+        removePropertyButton.setText("Remove");
+        FormData removeTaskPropertyButtonLayoutData = new FormData();
+        removeTaskPropertyButtonLayoutData.top = new FormAttachment(newPropertyButton, 5);
+        removeTaskPropertyButtonLayoutData.right = new FormAttachment(100);
+        removeTaskPropertyButtonLayoutData.left = new FormAttachment(newPropertyButton, 0, SWT.LEFT);
+        removePropertyButton.setLayoutData(removeTaskPropertyButtonLayoutData);
 
-		Listener tblPropertiesListener = new Listener() {
+        removePropertyButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                int selectedIndex = propertyTable.getSelectionIndex();
+                if (-1 != selectedIndex) {
+                    unbindParam(selectedIndex);
 
-			public void handleEvent(Event evt) {
-				if (null != evt.item) {
-					if (evt.item instanceof TableItem) {
-						TableItem item = (TableItem) evt.item;
-						editItem(item);
-					}
-				}
-			}
-		};
+                    // Select the next available candidate for deletion.
+                    if (selectedIndex < propertyTable.getItemCount()) {
+                        propertyTable.select(selectedIndex);
+                    } else {
+                        propertyTable.select(selectedIndex - 1);
+                    }
+                }
+            }
+        });
 
-		propertyTable.addListener(SWT.Selection, tblPropertiesListener);
+        // Table for show the parameters.
+        propertyTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION | SWT.HIDE_SELECTION);
 
-		// Populate Properties.
-		for (TaskProperty property : task.getTaskProperties()) {
-			bindPram(property);
-		}
+        TableColumn nameColumn = new TableColumn(propertyTable, SWT.LEFT);
+        TableColumn typeColumn = new TableColumn(propertyTable, SWT.LEFT);
+        TableColumn valueColumn = new TableColumn(propertyTable, SWT.LEFT);
 
-		setupTableEditor(propertyTable);
+        nameColumn.setText("Parameter Name");
+        nameColumn.setWidth(150);
+        valueColumn.setText("Value/Expression");
+        valueColumn.setWidth(200);
+        typeColumn.setText("Parameter Type");
+        typeColumn.setWidth(150);
 
-		FormData taskPropertiesTableLayoutData = new FormData(SWT.DEFAULT, 150);
-		taskPropertiesTableLayoutData.top = new FormAttachment(newPropertyButton, 0, SWT.TOP);
-		taskPropertiesTableLayoutData.left = new FormAttachment(0);
-		taskPropertiesTableLayoutData.right = new FormAttachment(newPropertyButton, -5);
-		taskPropertiesTableLayoutData.bottom = new FormAttachment(100);
-		propertyTable.setLayoutData(taskPropertiesTableLayoutData);
+        propertyTable.setHeaderVisible(true);
+        propertyTable.setLinesVisible(true);
 
-		return parent;
+        Listener tblPropertiesListener = new Listener() {
 
-	}
+            public void handleEvent(Event evt) {
+                if (null != evt.item) {
+                    if (evt.item instanceof TableItem) {
+                        TableItem item = (TableItem) evt.item;
+                        editItem(item);
+                    }
+                }
+            }
+        };
 
-	private void addDefaultProperty(List<String> paramNames, String propertyName) {
-		
-		if (!paramNames.contains(propertyName)) {
-			TaskProperty p1 = EsbFactory.eINSTANCE.createTaskProperty();
-			p1.setPropertyName(propertyName);
-			AddCommand addCmd = new AddCommand(editingDomain, task, EsbPackage.Literals.TASK__TASK_PROPERTIES, p1);
-			getResultCommand().append(addCmd);
-		}
-	}
-	
-	protected void okPressed() {
-		
-		for (TableItem item : propertyTable.getItems()) {
-			
-			TaskProperty param = (TaskProperty) item.getData();
-			if (param.eContainer() == null) {
+        propertyTable.addListener(SWT.Selection, tblPropertiesListener);
 
-				param.setPropertyName(item.getText(0));
+        // Populate Properties.
+        for (TaskProperty property : task.getTaskProperties()) {
+            bindPram(property);
+        }
 
-				if (item.getText(1).equals(TaskPropertyType.LITERAL.toString())) {
-					param.setPropertyValue(item.getText(2));
-					param.setPropertyType(TaskPropertyType.LITERAL);
-				}
+        setupTableEditor(propertyTable);
 
-				if (item.getText(1).equals(TaskPropertyType.XML.toString())) {
-					param.setPropertyValue(item.getText(2));
-					param.setPropertyType(TaskPropertyType.XML);
-				}
+        FormData taskPropertiesTableLayoutData = new FormData(SWT.DEFAULT, 150);
+        taskPropertiesTableLayoutData.top = new FormAttachment(newPropertyButton, 0, SWT.TOP);
+        taskPropertiesTableLayoutData.left = new FormAttachment(0);
+        taskPropertiesTableLayoutData.right = new FormAttachment(newPropertyButton, -5);
+        taskPropertiesTableLayoutData.bottom = new FormAttachment(100);
+        propertyTable.setLayoutData(taskPropertiesTableLayoutData);
 
-				AddCommand addCmd = new AddCommand(
-						editingDomain,
-						task,
-						EsbPackage.Literals.TASK__TASK_PROPERTIES,
-						param);
-				getResultCommand().append(addCmd);
+        return parent;
 
-			} else {
+    }
 
-				if (!param.getPropertyName().equals(item.getText(0))) {
+    private void addDefaultProperty(List<String> paramNames, String propertyName) {
 
-					SetCommand setCmd = new SetCommand(
-							editingDomain,
-							param,
-							EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_NAME,
-							item.getText(0));
+        if (!paramNames.contains(propertyName)) {
+            TaskProperty p1 = EsbFactory.eINSTANCE.createTaskProperty();
+            p1.setPropertyName(propertyName);
+            AddCommand addCmd = new AddCommand(editingDomain, task, EsbPackage.Literals.TASK__TASK_PROPERTIES, p1);
+            getResultCommand().append(addCmd);
+        }
+    }
 
-					getResultCommand().append(setCmd);
-				}
-				
-				
-				if (!param.getPropertyType().toString().equals(item.getText(1))) {
-					
-					TaskPropertyType propertyType = item.getText(1).equals(TaskPropertyType.LITERAL.toString())?TaskPropertyType.LITERAL:TaskPropertyType.XML;
-					SetCommand setCmdValueType = new SetCommand(
-							editingDomain,
-							param,
-							EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_TYPE,
-							propertyType);
-					getResultCommand().append(setCmdValueType);
-				}
+    protected void okPressed() {
 
-				if (defaultESBtask) {
-					if (param.getPropertyValue() != null) {
-						if (!param.getPropertyValue().equals(item.getText(2))) {
-							appendPropertyValueCommand(item.getText(2), param);
-						}
-					} else {
-						if (!item.getText(2).isEmpty()) {
-							appendPropertyValueCommand(item.getText(2), param);
-						}
-					}
-				} else {
-					if (!param.getPropertyValue().equals(item.getText(2))) {
-						appendPropertyValueCommand(item.getText(2), param);
-					}
-				}
-			}
-		}
+        for (TableItem item : propertyTable.getItems()) {
 
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		}
-		finalizeDefaultMessageInjecttorTask();
+            TaskProperty param = (TaskProperty) item.getData();
+            if (param.eContainer() == null) {
 
-		super.okPressed();
+                param.setPropertyName(item.getText(0));
 
-	}
-	
-	protected void cancelPressed() {
-		finalizeDefaultMessageInjecttorTask();
+                if (item.getText(1).equals(TaskPropertyType.LITERAL.toString())) {
+                    param.setPropertyValue(item.getText(2));
+                    param.setPropertyType(TaskPropertyType.LITERAL);
+                }
 
-		super.cancelPressed();
-	}
+                if (item.getText(1).equals(TaskPropertyType.XML.toString())) {
+                    param.setPropertyValue(item.getText(2));
+                    param.setPropertyType(TaskPropertyType.XML);
+                }
 
-	private void appendPropertyValueCommand(String value, TaskProperty param) {
-		SetCommand setCmd = new SetCommand(
-				editingDomain,
-				param,
-				EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_VALUE,
-				value);
-		getResultCommand().append(setCmd);
-	}
+                AddCommand addCmd = new AddCommand(editingDomain, task, EsbPackage.Literals.TASK__TASK_PROPERTIES,
+                        param);
+                getResultCommand().append(addCmd);
 
-	private TableItem bindPram(TaskProperty param) {
-		TableItem item = new TableItem(propertyTable, SWT.NONE);
-	
-		item.setText(new String[] { param.getPropertyName(),
-									param.getPropertyType().getLiteral(),
-									param.getPropertyValue()
-								  });
-		
-		item.setData(param);
-		return item;
-	}
-	
-	private void unbindParam(int itemIndex) {
-		TableItem item = propertyTable.getItem(itemIndex);
-		TaskProperty param = (TaskProperty) item.getData();
-		removeTaskProperty(param);
-		propertyTable.remove(propertyTable.indexOf(item));
-	}
+            } else {
 
-	private void removeTaskProperty(TaskProperty param) {
-		if (param.eContainer() != null) {
-			RemoveCommand removeCmd = new RemoveCommand(
-					editingDomain,
-					task,
-					EsbPackage.Literals.TASK__TASK_PROPERTIES,
-					param);
-			getResultCommand().append(removeCmd);
-		}
-	}
-	
-	
-	private void setupTableEditor(final Table table) {
-		final TableEditor cellEditor = new TableEditor(table);
-		cellEditor.grabHorizontal = true;
-		cellEditor.minimumWidth = 50;
-		table.addMouseListener(new MouseAdapter() {
-			/**
-			 * Setup a new cell editor control at double click event.
-			 */
-			public void mouseDoubleClick(MouseEvent e) {
-				// Dispose the old editor control (if one is setup).
-				Control oldEditorControl = cellEditor.getEditor();
-				if (null != oldEditorControl)
-					oldEditorControl.dispose();
+                if (!param.getPropertyName().equals(item.getText(0))) {
 
-				// Mouse location.
-				Point mouseLocation = new Point(e.x, e.y);
+                    SetCommand setCmd = new SetCommand(editingDomain, param,
+                            EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_NAME, item.getText(0));
 
-				// Grab the selected row.
-				TableItem item = (TableItem) table.getItem(mouseLocation);
-				if (null == item)
-					return;
+                    getResultCommand().append(setCmd);
+                }
 
-				// Determine which column was selected.
-				int selectedColumn = -1;
-				for (int i = 0, n = table.getColumnCount(); i < n; i++) {
-					if (item.getBounds(i).contains(mouseLocation)) {
-						selectedColumn = i;
-						break;
-					}
-				}
+                if (!param.getPropertyType().toString().equals(item.getText(1))) {
 
-				// Setup a new editor control.
-				if (-1 != selectedColumn) {
-					if (selectedColumn == 0 && defaultESBtask){
-						return;  // for default message-injector-task don't allow to edit the property names
-					}
-					Text editorControl = new Text(table, SWT.NONE);
-					final int editorControlColumn = selectedColumn;
-					editorControl.setText(item.getText(selectedColumn));
-					editorControl.addModifyListener(new ModifyListener() {
-						public void modifyText(ModifyEvent e) {
-							Text text = (Text) cellEditor.getEditor();
-							cellEditor.getItem().setText(editorControlColumn, text.getText());
-						}
-					});
-					editorControl.selectAll();
-					editorControl.setFocus();
-					cellEditor.setEditor(editorControl, item, selectedColumn);
-				}
-			}
+                    TaskPropertyType propertyType = item.getText(1).equals(TaskPropertyType.LITERAL.toString())
+                            ? TaskPropertyType.LITERAL
+                            : TaskPropertyType.XML;
+                    SetCommand setCmdValueType = new SetCommand(editingDomain, param,
+                            EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_TYPE, propertyType);
+                    getResultCommand().append(setCmdValueType);
+                }
 
-			/**
-			 * Dispose cell editor control at mouse down (otherwise the control
-			 * keep showing).
-			 */
-			public void mouseDown(MouseEvent e) {
-				Control oldEditorControl = cellEditor.getEditor();
-				if (null != oldEditorControl)
-					oldEditorControl.dispose();
-			}
-		});
-	}
-	
-	private void editItem(final TableItem item) {
-		propertyTypeEditor = initTableEditor(propertyTypeEditor,
-				item.getParent());
-		cmbPropertyType = new Combo(item.getParent(), SWT.READ_ONLY);
-		cmbPropertyType.setItems(new String[] { TaskPropertyType.LITERAL.toString(), TaskPropertyType.XML.toString() });
-		cmbPropertyType.setText(item.getText(1));
-		propertyTypeEditor.setEditor(cmbPropertyType, item, 1);
-		item.getParent().redraw();
-		item.getParent().layout();
-		cmbPropertyType.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event evt) {
-				item.setText(1, cmbPropertyType.getText());
-			}
-		});
-	}
-	
-	private TableEditor initTableEditor(TableEditor editor, Table table) {
-		if (null != editor) {
-			Control lastCtrl = editor.getEditor();
-			if (null != lastCtrl) {
-				lastCtrl.dispose();
-			}
-		}
-		editor = new TableEditor(table);
-		editor.horizontalAlignment = SWT.LEFT;
-		editor.grabHorizontal = true;
-		return editor;
-	}
-	
-	private CompoundCommand getResultCommand() {
-		if (null == resultCommand) {
-			resultCommand = new CompoundCommand();
-		}
-		return resultCommand;
-	}
-	
-	private void initializeDefaultMessageInjectorTask() {
-		
-/*		if (defaultESBtask) {
-			List<String> defaultParams = new ArrayList<String>(Arrays.asList("format","message", "soapAction", "to", "proxyName", "sequenceName", "injectTo"));
-			
-			//remove additional parameters which are not default params
-			for (TaskProperty param : task.getTaskProperties()) {
-				if (!defaultParams.contains(param.getPropertyName())){
-					removeTaskProperty(param);
-				}
-			}
-			
-			//add default parameters
-			List<String> paramNames = new ArrayList<String>();
-			for (TaskProperty param : task.getTaskProperties()) {
-				paramNames.add(param.getPropertyName());
-			}
-			for (String paramName : defaultParams){
-				addDefaultProperty(paramNames, paramName);
-			}
-			
-			if (getResultCommand().canExecute()) {
-				editingDomain.getCommandStack().execute(getResultCommand());
-			}
-			resultCommand = null;
-		}*/
-	}
-	
-	private void finalizeDefaultMessageInjecttorTask() {
-		
-		resultCommand = null;
-		if (defaultESBtask){
-			//remove parameters which has empty property values
-			for (TaskProperty param : task.getTaskProperties()) {
-				if (param.getPropertyValue() == null){
-					removeTaskProperty(param);
-				}
-			}
-		}
-		
-		if (getResultCommand().canExecute()) {
-			editingDomain.getCommandStack().execute(getResultCommand());
-		}
-	}
-	
+                if (defaultESBtask) {
+                    if (param.getPropertyValue() != null) {
+                        if (!param.getPropertyValue().equals(item.getText(2))) {
+                            appendPropertyValueCommand(item.getText(2), param);
+                        }
+                    } else {
+                        if (!item.getText(2).isEmpty()) {
+                            appendPropertyValueCommand(item.getText(2), param);
+                        }
+                    }
+                } else {
+                    if (!param.getPropertyValue().equals(item.getText(2))) {
+                        appendPropertyValueCommand(item.getText(2), param);
+                    }
+                }
+            }
+        }
+
+        if (getResultCommand().canExecute()) {
+            editingDomain.getCommandStack().execute(getResultCommand());
+        }
+        finalizeDefaultMessageInjecttorTask();
+
+        super.okPressed();
+
+    }
+
+    protected void cancelPressed() {
+        finalizeDefaultMessageInjecttorTask();
+
+        super.cancelPressed();
+    }
+
+    private void appendPropertyValueCommand(String value, TaskProperty param) {
+        SetCommand setCmd = new SetCommand(editingDomain, param,
+                EsbPackage.Literals.NAME_VALUE_TYPE_PROPERTY__PROPERTY_VALUE, value);
+        getResultCommand().append(setCmd);
+    }
+
+    private TableItem bindPram(TaskProperty param) {
+        TableItem item = new TableItem(propertyTable, SWT.NONE);
+
+        item.setText(new String[] { param.getPropertyName(), param.getPropertyType().getLiteral(),
+                param.getPropertyValue() });
+
+        item.setData(param);
+        return item;
+    }
+
+    private void unbindParam(int itemIndex) {
+        TableItem item = propertyTable.getItem(itemIndex);
+        TaskProperty param = (TaskProperty) item.getData();
+        removeTaskProperty(param);
+        propertyTable.remove(propertyTable.indexOf(item));
+    }
+
+    private void removeTaskProperty(TaskProperty param) {
+        if (param.eContainer() != null) {
+            RemoveCommand removeCmd = new RemoveCommand(editingDomain, task, EsbPackage.Literals.TASK__TASK_PROPERTIES,
+                    param);
+            getResultCommand().append(removeCmd);
+        }
+    }
+
+    private void setupTableEditor(final Table table) {
+        final TableEditor cellEditor = new TableEditor(table);
+        cellEditor.grabHorizontal = true;
+        cellEditor.minimumWidth = 50;
+        table.addMouseListener(new MouseAdapter() {
+            /**
+             * Setup a new cell editor control at double click event.
+             */
+            public void mouseDoubleClick(MouseEvent e) {
+                // Dispose the old editor control (if one is setup).
+                Control oldEditorControl = cellEditor.getEditor();
+                if (null != oldEditorControl)
+                    oldEditorControl.dispose();
+
+                // Mouse location.
+                Point mouseLocation = new Point(e.x, e.y);
+
+                // Grab the selected row.
+                TableItem item = (TableItem) table.getItem(mouseLocation);
+                if (null == item)
+                    return;
+
+                // Determine which column was selected.
+                int selectedColumn = -1;
+                for (int i = 0, n = table.getColumnCount(); i < n; i++) {
+                    if (item.getBounds(i).contains(mouseLocation)) {
+                        selectedColumn = i;
+                        break;
+                    }
+                }
+
+                // Setup a new editor control.
+                if (-1 != selectedColumn) {
+                    if (selectedColumn == 0 && defaultESBtask) {
+                        return; // for default message-injector-task don't allow to edit the property names
+                    }
+                    Text editorControl = new Text(table, SWT.NONE);
+                    final int editorControlColumn = selectedColumn;
+                    editorControl.setText(item.getText(selectedColumn));
+                    editorControl.addModifyListener(new ModifyListener() {
+                        public void modifyText(ModifyEvent e) {
+                            Text text = (Text) cellEditor.getEditor();
+                            cellEditor.getItem().setText(editorControlColumn, text.getText());
+                        }
+                    });
+                    editorControl.selectAll();
+                    editorControl.setFocus();
+                    cellEditor.setEditor(editorControl, item, selectedColumn);
+                }
+            }
+
+            /**
+             * Dispose cell editor control at mouse down (otherwise the control
+             * keep showing).
+             */
+            public void mouseDown(MouseEvent e) {
+                Control oldEditorControl = cellEditor.getEditor();
+                if (null != oldEditorControl)
+                    oldEditorControl.dispose();
+            }
+        });
+    }
+
+    private void editItem(final TableItem item) {
+        propertyTypeEditor = initTableEditor(propertyTypeEditor, item.getParent());
+        cmbPropertyType = new Combo(item.getParent(), SWT.READ_ONLY);
+        cmbPropertyType.setItems(new String[] { TaskPropertyType.LITERAL.toString(), TaskPropertyType.XML.toString() });
+        cmbPropertyType.setText(item.getText(1));
+        propertyTypeEditor.setEditor(cmbPropertyType, item, 1);
+        item.getParent().redraw();
+        item.getParent().layout();
+        cmbPropertyType.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event evt) {
+                item.setText(1, cmbPropertyType.getText());
+            }
+        });
+    }
+
+    private TableEditor initTableEditor(TableEditor editor, Table table) {
+        if (null != editor) {
+            Control lastCtrl = editor.getEditor();
+            if (null != lastCtrl) {
+                lastCtrl.dispose();
+            }
+        }
+        editor = new TableEditor(table);
+        editor.horizontalAlignment = SWT.LEFT;
+        editor.grabHorizontal = true;
+        return editor;
+    }
+
+    private CompoundCommand getResultCommand() {
+        if (null == resultCommand) {
+            resultCommand = new CompoundCommand();
+        }
+        return resultCommand;
+    }
+
+    private void initializeDefaultMessageInjectorTask() {
+
+        /*
+         * if (defaultESBtask) {
+         * List<String> defaultParams = new ArrayList<String>(Arrays.asList("format","message", "soapAction", "to",
+         * "proxyName", "sequenceName", "injectTo"));
+         * 
+         * //remove additional parameters which are not default params
+         * for (TaskProperty param : task.getTaskProperties()) {
+         * if (!defaultParams.contains(param.getPropertyName())){
+         * removeTaskProperty(param);
+         * }
+         * }
+         * 
+         * //add default parameters
+         * List<String> paramNames = new ArrayList<String>();
+         * for (TaskProperty param : task.getTaskProperties()) {
+         * paramNames.add(param.getPropertyName());
+         * }
+         * for (String paramName : defaultParams){
+         * addDefaultProperty(paramNames, paramName);
+         * }
+         * 
+         * if (getResultCommand().canExecute()) {
+         * editingDomain.getCommandStack().execute(getResultCommand());
+         * }
+         * resultCommand = null;
+         * }
+         */
+    }
+
+    private void finalizeDefaultMessageInjecttorTask() {
+
+        resultCommand = null;
+        if (defaultESBtask) {
+            // remove parameters which has empty property values
+            for (TaskProperty param : task.getTaskProperties()) {
+                if (param.getPropertyValue() == null) {
+                    removeTaskProperty(param);
+                }
+            }
+        }
+
+        if (getResultCommand().canExecute()) {
+            editingDomain.getCommandStack().execute(getResultCommand());
+        }
+    }
+
 }

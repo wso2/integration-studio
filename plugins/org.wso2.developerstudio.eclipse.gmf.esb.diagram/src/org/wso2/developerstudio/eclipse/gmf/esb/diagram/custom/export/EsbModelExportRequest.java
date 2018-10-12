@@ -22,19 +22,19 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.AbstractEditCommandRequest
  * Request for exporting a ESB visual model.
  */
 public class EsbModelExportRequest extends AbstractEditCommandRequest {
-	/**
-	 * Creates a new {@link EsbModelExportRequest} instance.
-	 * 
-	 * @param editingDomain {@link TransactionalEditingDomain} instance.
-	 */
-	public EsbModelExportRequest(TransactionalEditingDomain editingDomain) {
-		super(editingDomain);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public Object getEditHelperContext() {
-		return null;
-	}
+    /**
+     * Creates a new {@link EsbModelExportRequest} instance.
+     * 
+     * @param editingDomain {@link TransactionalEditingDomain} instance.
+     */
+    public EsbModelExportRequest(TransactionalEditingDomain editingDomain) {
+        super(editingDomain);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Object getEditHelperContext() {
+        return null;
+    }
 }

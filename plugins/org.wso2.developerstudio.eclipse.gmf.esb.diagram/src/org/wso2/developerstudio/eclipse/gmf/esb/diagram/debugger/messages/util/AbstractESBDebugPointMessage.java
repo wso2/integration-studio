@@ -100,8 +100,8 @@ public abstract class AbstractESBDebugPointMessage {
     public boolean equals(Object debugPointMessage) {
         if (debugPointMessage instanceof AbstractESBDebugPointMessage) {
             AbstractESBDebugPointMessage debugPointMessageTemp = (AbstractESBDebugPointMessage) debugPointMessage;
-            if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent()) && getCommandArgument()
-                    .equals((debugPointMessageTemp).getCommandArgument()))) {
+            if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent())
+                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument()))) {
                 return false;
             }
             return true;

@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-
 import java.util.Map;
 
 import org.apache.synapse.mediators.AbstractMediator;
@@ -33,42 +32,42 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
-public class CallTemplateMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CallTemplateMediator>{
+public class CallTemplateMediatorDeserializer
+        extends AbstractEsbNodeDeserializer<AbstractMediator, CallTemplateMediator> {
 
-	@Override
-	public CallTemplateMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
-		Assert.isTrue(object instanceof InvokeMediator,
-		"Unsupported mediator passed in for deserialization");
-		
-		InvokeMediator  mediator = (InvokeMediator) object;
-		
-		CallTemplateMediator mediatorModel = (CallTemplateMediator) DeserializerUtils.createNode(part, EsbElementTypes.CallTemplateMediator_3594);
-		setElementToEdit(mediatorModel);
-		setCommonProperties(mediator, mediatorModel);
-		executeSetValueCommand(CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE, mediator.getTargetTemplate());
-		executeSetValueCommand(CALL_TEMPLATE_MEDIATOR__AVAILABLE_TEMPLATES, "Select From Templates");
+    @Override
+    public CallTemplateMediator createNode(IGraphicalEditPart part, AbstractMediator object) {
+        Assert.isTrue(object instanceof InvokeMediator, "Unsupported mediator passed in for deserialization");
 
-		Map<String, Value> parameters = mediator.getpName2ExpressionMap();
-		for(Map.Entry<String, Value> entry : parameters.entrySet()){
-			CallTemplateParameter parameter = EsbFactory.eINSTANCE.createCallTemplateParameter();
-			parameter.setParameterName(entry.getKey());
-			Value value = entry.getValue();
-			if(value.getExpression() != null){
-				boolean dynamic = value.hasExprTypeKey();
-				NamespacedProperty namespacedProperty = createNamespacedProperty(value.getExpression());
-				namespacedProperty.setDynamic(dynamic);
-				namespacedProperty.setSupportsDynamicXPaths(true);
-				parameter.setParameterExpression(namespacedProperty);
-				parameter.setTemplateParameterType(RuleOptionType.EXPRESSION);
-			} else{
-				parameter.setParameterValue(value.getKeyValue());
-				parameter.setTemplateParameterType(RuleOptionType.VALUE);
-			}
-			executeAddValueCommand(mediatorModel.getTemplateParameters(), parameter, false);
-		}
-		
-		return mediatorModel;
-	}
+        InvokeMediator mediator = (InvokeMediator) object;
 
+        CallTemplateMediator mediatorModel = (CallTemplateMediator) DeserializerUtils.createNode(part,
+                EsbElementTypes.CallTemplateMediator_3594);
+        setElementToEdit(mediatorModel);
+        setCommonProperties(mediator, mediatorModel);
+        executeSetValueCommand(CALL_TEMPLATE_MEDIATOR__TARGET_TEMPLATE, mediator.getTargetTemplate());
+        executeSetValueCommand(CALL_TEMPLATE_MEDIATOR__AVAILABLE_TEMPLATES, "Select From Templates");
+
+        Map<String, Value> parameters = mediator.getpName2ExpressionMap();
+        for (Map.Entry<String, Value> entry : parameters.entrySet()) {
+            CallTemplateParameter parameter = EsbFactory.eINSTANCE.createCallTemplateParameter();
+            parameter.setParameterName(entry.getKey());
+            Value value = entry.getValue();
+            if (value.getExpression() != null) {
+                boolean dynamic = value.hasExprTypeKey();
+                NamespacedProperty namespacedProperty = createNamespacedProperty(value.getExpression());
+                namespacedProperty.setDynamic(dynamic);
+                namespacedProperty.setSupportsDynamicXPaths(true);
+                parameter.setParameterExpression(namespacedProperty);
+                parameter.setTemplateParameterType(RuleOptionType.EXPRESSION);
+            } else {
+                parameter.setParameterValue(value.getKeyValue());
+                parameter.setTemplateParameterType(RuleOptionType.VALUE);
+            }
+            executeAddValueCommand(mediatorModel.getTemplateParameters(), parameter, false);
+        }
+
+        return mediatorModel;
+    }
 
 }

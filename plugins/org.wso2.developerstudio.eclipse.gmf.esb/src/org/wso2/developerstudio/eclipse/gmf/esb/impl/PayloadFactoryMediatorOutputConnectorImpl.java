@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediatorOutputConn
  *
  * @generated
  */
-public class PayloadFactoryMediatorOutputConnectorImpl extends OutputConnectorImpl implements PayloadFactoryMediatorOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PayloadFactoryMediatorOutputConnectorImpl() {
-		super();
-	}
+public class PayloadFactoryMediatorOutputConnectorImpl extends OutputConnectorImpl
+        implements PayloadFactoryMediatorOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected PayloadFactoryMediatorOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR_OUTPUT_CONNECTOR;
+    }
 
-} //PayloadFactoryMediatorOutputConnectorImpl
+} // PayloadFactoryMediatorOutputConnectorImpl

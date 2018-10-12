@@ -42,107 +42,104 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
-public class URLReWriterMediatorTransformer extends AbstractEsbNodeTransformer{
+public class URLReWriterMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {
-		try {
-			information.getParentSequence().addChild(createURLRewriteMediator(information,subject));
-			// Transform the property mediator output data flow path.
-			doTransform(information,((URLRewriteMediator) subject).getOutputConnector());
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
+    public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+        try {
+            information.getParentSequence().addChild(createURLRewriteMediator(information, subject));
+            // Transform the property mediator output data flow path.
+            doTransform(information, ((URLRewriteMediator) subject).getOutputConnector());
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+        // TODO Auto-generated method stub
 
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
-		try {
-			sequence.addChild(createURLRewriteMediator(information,subject));
-			doTransformWithinSequence(information,((URLRewriteMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException e) {
-			throw new TransformerException(e);
-		}		
-	}
+    }
 
-	private org.apache.synapse.mediators.transform.url.URLRewriteMediator createURLRewriteMediator(TransformationInfo information,EsbNode subject) throws JaxenException{
-		Assert.isTrue(subject instanceof URLRewriteMediator, "Invalid subject.");
-		URLRewriteMediator visualUrlRewriter = (URLRewriteMediator) subject;
-		org.apache.synapse.mediators.transform.url.URLRewriteMediator urlReWriterMediator =new org.apache.synapse.mediators.transform.url.URLRewriteMediator();
-		setCommonProperties(urlReWriterMediator, visualUrlRewriter);
-		{
-			urlReWriterMediator.setInputProperty(visualUrlRewriter.getInProperty());
-			urlReWriterMediator.setOutputProperty(visualUrlRewriter.getOutProperty());
-			EList<URLRewriteRule> urlRewriteRules = visualUrlRewriter.getUrlRewriteRules();
-			for (URLRewriteRule urlRewriteRule : urlRewriteRules) {
-				 RewriteRule rule = new RewriteRule();
-				 EvaluatorExpressionProperty ruleCondition = urlRewriteRule.getUrlRewriteRuleCondition();
-				if (ruleCondition != null) {
+    public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+            throws TransformerException {
+        try {
+            sequence.addChild(createURLRewriteMediator(information, subject));
+            doTransformWithinSequence(information,
+                    ((URLRewriteMediator) subject).getOutputConnector().getOutgoingLink(), sequence);
+        } catch (JaxenException e) {
+            throw new TransformerException(e);
+        }
+    }
 
-					if (!StringUtils.isBlank(ruleCondition.getEvaluatorValue())) {
-						try {
-							OMElement evaluatorExpressionOM = AXIOMUtil.stringToOM(ruleCondition
-									.getEvaluatorValue());
-							Evaluator evaluator = EvaluatorFactoryFinder.getInstance()
-									.getEvaluator(evaluatorExpressionOM);
-							rule.setCondition(evaluator);
-						} catch (Exception e) {
-							log.error("Ignoring invalid condition configuration", e);
-						}
-					} else {
-						log.warn("Ignoring blank condition configuration");
-					}
+    private org.apache.synapse.mediators.transform.url.URLRewriteMediator createURLRewriteMediator(
+            TransformationInfo information, EsbNode subject) throws JaxenException {
+        Assert.isTrue(subject instanceof URLRewriteMediator, "Invalid subject.");
+        URLRewriteMediator visualUrlRewriter = (URLRewriteMediator) subject;
+        org.apache.synapse.mediators.transform.url.URLRewriteMediator urlReWriterMediator = new org.apache.synapse.mediators.transform.url.URLRewriteMediator();
+        setCommonProperties(urlReWriterMediator, visualUrlRewriter);
+        {
+            urlReWriterMediator.setInputProperty(visualUrlRewriter.getInProperty());
+            urlReWriterMediator.setOutputProperty(visualUrlRewriter.getOutProperty());
+            EList<URLRewriteRule> urlRewriteRules = visualUrlRewriter.getUrlRewriteRules();
+            for (URLRewriteRule urlRewriteRule : urlRewriteRules) {
+                RewriteRule rule = new RewriteRule();
+                EvaluatorExpressionProperty ruleCondition = urlRewriteRule.getUrlRewriteRuleCondition();
+                if (ruleCondition != null) {
 
-				}
-				
-				EList<URLRewriteRuleAction> rewriteRuleAction = urlRewriteRule.getRewriteRuleAction();
-				for (URLRewriteRuleAction urlRewriteRuleAction : rewriteRuleAction) {
-					RewriteAction rewriteAction = new RewriteAction();
+                    if (!StringUtils.isBlank(ruleCondition.getEvaluatorValue())) {
+                        try {
+                            OMElement evaluatorExpressionOM = AXIOMUtil.stringToOM(ruleCondition.getEvaluatorValue());
+                            Evaluator evaluator = EvaluatorFactoryFinder.getInstance()
+                                    .getEvaluator(evaluatorExpressionOM);
+                            rule.setCondition(evaluator);
+                        } catch (Exception e) {
+                            log.error("Ignoring invalid condition configuration", e);
+                        }
+                    } else {
+                        log.warn("Ignoring blank condition configuration");
+                    }
 
-					if (StringUtils.isNotBlank(urlRewriteRuleAction.getActionValue())) {
-						rewriteAction.setValue(urlRewriteRuleAction.getActionValue());
-					} else if (urlRewriteRuleAction.getActionExpression() != null && StringUtils.isNotBlank(urlRewriteRuleAction
-								.getActionExpression().getPropertyValue())) {
-						SynapseXPath synapseXPath = new SynapseXPath(urlRewriteRuleAction
-								.getActionExpression().getPropertyValue());
-						Iterator iterator = urlRewriteRuleAction.getActionExpression()
-								.getNamespaces().entrySet().iterator();
-						while (iterator.hasNext()) {
-							Entry<String, String> entry = (Entry<String, String>) iterator.next();
-							synapseXPath.addNamespace(entry.getKey(), entry.getValue());
-						}
-						rewriteAction.setXpath(synapseXPath);
-					} else {
-						// Doesn't allow to action without any value or expression defined. 
-						continue;
-					}
+                }
 
-					// Only 'Replace' action allows regex.
-					if (urlRewriteRuleAction.getRuleAction().getValue() == 3) {
-						if (StringUtils.isNotBlank(urlRewriteRuleAction.getActionRegex())) {
-							rewriteAction.setRegex(urlRewriteRuleAction.getActionRegex());
-						} else {
-							// Doesn't allow to add 'Replace' action without a 'regex' value.
-							continue;
-						}
-					}
-					rewriteAction.setActionType(urlRewriteRuleAction.getRuleAction().getValue());
-					rewriteAction.setFragmentIndex(urlRewriteRuleAction.getRuleFragment()
-							.getValue());
-					
+                EList<URLRewriteRuleAction> rewriteRuleAction = urlRewriteRule.getRewriteRuleAction();
+                for (URLRewriteRuleAction urlRewriteRuleAction : rewriteRuleAction) {
+                    RewriteAction rewriteAction = new RewriteAction();
 
-					rule.getActions().add(rewriteAction);
-				}
-		        
-		         urlReWriterMediator.addRule(rule);
-			}
-		}
-		return urlReWriterMediator;
-	}
+                    if (StringUtils.isNotBlank(urlRewriteRuleAction.getActionValue())) {
+                        rewriteAction.setValue(urlRewriteRuleAction.getActionValue());
+                    } else if (urlRewriteRuleAction.getActionExpression() != null
+                            && StringUtils.isNotBlank(urlRewriteRuleAction.getActionExpression().getPropertyValue())) {
+                        SynapseXPath synapseXPath = new SynapseXPath(
+                                urlRewriteRuleAction.getActionExpression().getPropertyValue());
+                        Iterator iterator = urlRewriteRuleAction.getActionExpression().getNamespaces().entrySet()
+                                .iterator();
+                        while (iterator.hasNext()) {
+                            Entry<String, String> entry = (Entry<String, String>) iterator.next();
+                            synapseXPath.addNamespace(entry.getKey(), entry.getValue());
+                        }
+                        rewriteAction.setXpath(synapseXPath);
+                    } else {
+                        // Doesn't allow to action without any value or expression defined.
+                        continue;
+                    }
+
+                    // Only 'Replace' action allows regex.
+                    if (urlRewriteRuleAction.getRuleAction().getValue() == 3) {
+                        if (StringUtils.isNotBlank(urlRewriteRuleAction.getActionRegex())) {
+                            rewriteAction.setRegex(urlRewriteRuleAction.getActionRegex());
+                        } else {
+                            // Doesn't allow to add 'Replace' action without a 'regex' value.
+                            continue;
+                        }
+                    }
+                    rewriteAction.setActionType(urlRewriteRuleAction.getRuleAction().getValue());
+                    rewriteAction.setFragmentIndex(urlRewriteRuleAction.getRuleFragment().getValue());
+
+                    rule.getActions().add(rewriteAction);
+                }
+
+                urlReWriterMediator.addRule(rule);
+            }
+        }
+        return urlReWriterMediator;
+    }
 }

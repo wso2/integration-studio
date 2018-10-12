@@ -17,7 +17,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorContainer#getRouterTargetContainer <em>Router Target Container</em>}</li>
+ * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorContainer#getRouterTargetContainer <em>Router
+ * Target Container</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterMediatorContainer()
@@ -25,20 +26,21 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface RouterMediatorContainer extends EsbNode {
-	/**
-	 * Returns the value of the '<em><b>Router Target Container</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.RouterTargetContainer}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Router Target Container</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Router Target Container</em>' containment reference list.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterMediatorContainer_RouterTargetContainer()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<RouterTargetContainer> getRouterTargetContainer();
+    /**
+     * Returns the value of the '<em><b>Router Target Container</b></em>' containment reference list.
+     * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.RouterTargetContainer}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Router Target Container</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Router Target Container</em>' containment reference list.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterMediatorContainer_RouterTargetContainer()
+     * @model containment="true"
+     * @generated
+     */
+    EList<RouterTargetContainer> getRouterTargetContainer();
 
 } // RouterMediatorContainer

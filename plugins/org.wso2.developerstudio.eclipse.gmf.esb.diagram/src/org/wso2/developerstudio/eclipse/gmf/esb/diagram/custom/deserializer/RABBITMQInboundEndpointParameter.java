@@ -53,76 +53,106 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 
 /**
- * This Enum represent Rabbit MQ inbound endpoint parameters with parameter name , related EAttribute and boolean value indicating
+ * This Enum represent Rabbit MQ inbound endpoint parameters with parameter name , related EAttribute and boolean value
+ * indicating
  * whether it could hold key attribute
  *
  */
 public enum RABBITMQInboundEndpointParameter {
-    SEQUENTIAL_TYPE(InboundEndpointConstants.SEQUENTIAL, INBOUND_ENDPOINT__SEQUENTIAL, false),
-    COORDINATION_TYPE(InboundEndpointConstants.COORDINATION, INBOUND_ENDPOINT__COORDINATION, false),
-    RABBITMQ_CONNECTION_FACTORY_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_FACTORY,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY, true),
-    RABBITMQ_SERVER_HOST_NAME_TYPE(InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME,true),
-    RABBITMQ_SERVER_PORT_TYPE(InboundEndpointConstants.RABBITMQ_SERVER_PORT,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT, true),
-    RABBITMQ_SERVER_USER_NAME_TYPE(InboundEndpointConstants.RABBITMQ_SERVER_USER_NAME,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME,true),
-    RABBITMQ_SERVER_PASSWORD_TYPE(InboundEndpointConstants.RABBITMQ_SERVER_PASSWORD,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD, true),
-    RABBITMQ_QUEUE_NAME_TYPE(InboundEndpointConstants.RABBITMQ_QUEUE_NAME,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME, true),
-    RABBITMQ_EXCHANGE_NAME_TYPE(InboundEndpointConstants.RABBITMQ_EXCHANGE_NAME,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME, true),
-    RABBITMQ_QUEUE_DURABLE_TYPE(InboundEndpointConstants.RABBITMQ_QUEUE_DURABLE,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE, true),
-    RABBITMQ_QUEUE_EXCLUSIVE_TYPE(InboundEndpointConstants.RABBITMQ_QUEUE_EXCLUSIVE,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE,true),
-    RABBITMQ_QUEUE_AUTO_DELETE_TYPE(InboundEndpointConstants.RABBITMQ_QUEUE_AUTO_DELETE,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE, true),
-    RABBITMQ_QUEUE_AUTO_ACK_TYPE(InboundEndpointConstants.RABBITMQ_QUEUE_AUTO_ACK,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK,true),
-    RABBITMQ_QUEUE_ROUTING_KEY_TYPE(InboundEndpointConstants.RABBITMQ_QUEUE_ROUTING_KEY,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY, true),
-    RABBITMQ_QUEUE_DELIVERY_MODE_TYPE(InboundEndpointConstants.RABBITMQ_QUEUE_DELIVERY_MODE,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE, true),
-    RABBITMQ_EXCHANGE_TYPE_TYPE(InboundEndpointConstants.RABBITMQ_EXCHANGE_TYPE,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE, true),
-    RABBITMQ_EXCHANGE_DURABLE_TYPE(InboundEndpointConstants.RABBITMQ_EXCHANGE_DURABLE,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE,true),
-    RABBITMQ_EXCHANGE_AUTO_DELETE_TYPE(InboundEndpointConstants.RABBITMQ_EXCHANGE_AUTO_DELETE,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE, true),
-    RABBITMQ_SERVER_VIRTUAL_HOST_TYPE(InboundEndpointConstants.RABBITMQ_SERVER_VIRTUAL_HOST,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST, true),
-    RABBITMQ_FACTORY_HEARTBEAT_TYPE(InboundEndpointConstants.RABBITMQ_FACTORY_HEARTBEAT,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT, true),
-    RABBITMQ_CONNECTION_SSL_ENABLED_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_ENABLED,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED, true),
-    RABBITMQ_CONNECTION_SSL_KEYSTORE_LOCATION_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_LOCATION,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION, true),
-    RABBITMQ_CONNECTION_SSL_KEYSTORE_TYPE_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_TYPE,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE, true),
-    RABBITMQ_CONNECTION_SSL_KEYSTORE_PASSWORD_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_PASSWORD,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD, true),
-    RABBITMQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_LOCATION,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION, true),
-    RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE, true),
-    RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD, true),
-    RABBITMQ_CONNECTION_SSL_VERSION_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_VERSION,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION, true),
-    RABBITMQ_MESSAGE_CONTENT_TYPE(InboundEndpointConstants.RABBITMQ_MESSAGE_CONTENT_TYPE,
-    		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE, true),
-    RABBITMQ_CONNECTION_RETRY_COUNT(InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_COUNT,
-    		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT, true),
-    RABBITMQ_CONNECTION_RETRY_INTERVAL(InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_INTERVAL,
-    		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL, true),
-    RABBITMQ_SERVER_RETRY_INTERVAL(InboundEndpointConstants.RABBITMQ_SERVER_RETRY_INTERVAL,
-    		INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL, true),
-    RABBITMQ_CONSUMER_QOS( InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
-            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, true);
-    
+    SEQUENTIAL_TYPE(InboundEndpointConstants.SEQUENTIAL, INBOUND_ENDPOINT__SEQUENTIAL, false), COORDINATION_TYPE(
+            InboundEndpointConstants.COORDINATION, INBOUND_ENDPOINT__COORDINATION,
+            false), RABBITMQ_CONNECTION_FACTORY_TYPE(InboundEndpointConstants.RABBITMQ_CONNECTION_FACTORY,
+                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY,
+                    true), RABBITMQ_SERVER_HOST_NAME_TYPE(InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME,
+                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME,
+                            true), RABBITMQ_SERVER_PORT_TYPE(InboundEndpointConstants.RABBITMQ_SERVER_PORT,
+                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT,
+                                    true), RABBITMQ_SERVER_USER_NAME_TYPE(
+                                            InboundEndpointConstants.RABBITMQ_SERVER_USER_NAME,
+                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME,
+                                            true), RABBITMQ_SERVER_PASSWORD_TYPE(
+                                                    InboundEndpointConstants.RABBITMQ_SERVER_PASSWORD,
+                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD,
+                                                    true), RABBITMQ_QUEUE_NAME_TYPE(
+                                                            InboundEndpointConstants.RABBITMQ_QUEUE_NAME,
+                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME,
+                                                            true), RABBITMQ_EXCHANGE_NAME_TYPE(
+                                                                    InboundEndpointConstants.RABBITMQ_EXCHANGE_NAME,
+                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME,
+                                                                    true), RABBITMQ_QUEUE_DURABLE_TYPE(
+                                                                            InboundEndpointConstants.RABBITMQ_QUEUE_DURABLE,
+                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE,
+                                                                            true), RABBITMQ_QUEUE_EXCLUSIVE_TYPE(
+                                                                                    InboundEndpointConstants.RABBITMQ_QUEUE_EXCLUSIVE,
+                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE,
+                                                                                    true), RABBITMQ_QUEUE_AUTO_DELETE_TYPE(
+                                                                                            InboundEndpointConstants.RABBITMQ_QUEUE_AUTO_DELETE,
+                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE,
+                                                                                            true), RABBITMQ_QUEUE_AUTO_ACK_TYPE(
+                                                                                                    InboundEndpointConstants.RABBITMQ_QUEUE_AUTO_ACK,
+                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK,
+                                                                                                    true), RABBITMQ_QUEUE_ROUTING_KEY_TYPE(
+                                                                                                            InboundEndpointConstants.RABBITMQ_QUEUE_ROUTING_KEY,
+                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY,
+                                                                                                            true), RABBITMQ_QUEUE_DELIVERY_MODE_TYPE(
+                                                                                                                    InboundEndpointConstants.RABBITMQ_QUEUE_DELIVERY_MODE,
+                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE,
+                                                                                                                    true), RABBITMQ_EXCHANGE_TYPE_TYPE(
+                                                                                                                            InboundEndpointConstants.RABBITMQ_EXCHANGE_TYPE,
+                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE,
+                                                                                                                            true), RABBITMQ_EXCHANGE_DURABLE_TYPE(
+                                                                                                                                    InboundEndpointConstants.RABBITMQ_EXCHANGE_DURABLE,
+                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE,
+                                                                                                                                    true), RABBITMQ_EXCHANGE_AUTO_DELETE_TYPE(
+                                                                                                                                            InboundEndpointConstants.RABBITMQ_EXCHANGE_AUTO_DELETE,
+                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE,
+                                                                                                                                            true), RABBITMQ_SERVER_VIRTUAL_HOST_TYPE(
+                                                                                                                                                    InboundEndpointConstants.RABBITMQ_SERVER_VIRTUAL_HOST,
+                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST,
+                                                                                                                                                    true), RABBITMQ_FACTORY_HEARTBEAT_TYPE(
+                                                                                                                                                            InboundEndpointConstants.RABBITMQ_FACTORY_HEARTBEAT,
+                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT,
+                                                                                                                                                            true), RABBITMQ_CONNECTION_SSL_ENABLED_TYPE(
+                                                                                                                                                                    InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_ENABLED,
+                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED,
+                                                                                                                                                                    true), RABBITMQ_CONNECTION_SSL_KEYSTORE_LOCATION_TYPE(
+                                                                                                                                                                            InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_LOCATION,
+                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION,
+                                                                                                                                                                            true), RABBITMQ_CONNECTION_SSL_KEYSTORE_TYPE_TYPE(
+                                                                                                                                                                                    InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_TYPE,
+                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE,
+                                                                                                                                                                                    true), RABBITMQ_CONNECTION_SSL_KEYSTORE_PASSWORD_TYPE(
+                                                                                                                                                                                            InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_KEYSTORE_PASSWORD,
+                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD,
+                                                                                                                                                                                            true), RABBITMQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_TYPE(
+                                                                                                                                                                                                    InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_LOCATION,
+                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION,
+                                                                                                                                                                                                    true), RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE_TYPE(
+                                                                                                                                                                                                            InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_TYPE,
+                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE,
+                                                                                                                                                                                                            true), RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_TYPE(
+                                                                                                                                                                                                                    InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD,
+                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD,
+                                                                                                                                                                                                                    true), RABBITMQ_CONNECTION_SSL_VERSION_TYPE(
+                                                                                                                                                                                                                            InboundEndpointConstants.RABBITMQ_CONNECTION_SSL_VERSION,
+                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION,
+                                                                                                                                                                                                                            true), RABBITMQ_MESSAGE_CONTENT_TYPE(
+                                                                                                                                                                                                                                    InboundEndpointConstants.RABBITMQ_MESSAGE_CONTENT_TYPE,
+                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE,
+                                                                                                                                                                                                                                    true), RABBITMQ_CONNECTION_RETRY_COUNT(
+                                                                                                                                                                                                                                            InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_COUNT,
+                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT,
+                                                                                                                                                                                                                                            true), RABBITMQ_CONNECTION_RETRY_INTERVAL(
+                                                                                                                                                                                                                                                    InboundEndpointConstants.RABBITMQ_CONNECTION_RETRY_INTERVAL,
+                                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL,
+                                                                                                                                                                                                                                                    true), RABBITMQ_SERVER_RETRY_INTERVAL(
+                                                                                                                                                                                                                                                            InboundEndpointConstants.RABBITMQ_SERVER_RETRY_INTERVAL,
+                                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL,
+                                                                                                                                                                                                                                                            true), RABBITMQ_CONSUMER_QOS(
+                                                                                                                                                                                                                                                                    InboundEndpointConstants.RABBITMQ_CONSUMER_QOS,
+                                                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS,
+                                                                                                                                                                                                                                                                    true);
+
     private final String name;
     private final EAttribute eAttributeValue;
     private final boolean holdsKeyValue;

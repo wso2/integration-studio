@@ -58,10 +58,12 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  * {@code   <extension point="org.eclipse.ui.handlers">
  *     <handler
  *             commandId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.InjectNewProperty"
- *             class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
+ *             class=
+"org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
  *     <handler
  *             commandId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.commands.ClearProperty"
- *             class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
+ *             class=
+"org.wso2.developerstudio.eclipse.gmf.esb.diagram.debugger.ui.actions.PropertyChangeCommandHandler"/>
  *  </extension>}
  * </pre>
  *
@@ -131,14 +133,14 @@ public class PropertyChangeCommandHandler extends AbstractHandler implements Eve
                 if (propertyCommandMessage.getContext() != null) {
                     propertyChangeCommandEB.send(ESB_STACK_FRAME_PROPERTY_CHANGE_EVENT, propertyCommandMessage);
                     try {
-						IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-								.showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
-										IWorkbenchPage.VIEW_VISIBLE);
-						if (envelopeView instanceof ContentAcceptHandler) {
-							((ContentAcceptHandler) envelopeView).acceptContent(
-									new String[] { propertyCommandMessage.getProperty().getPropertyName(), "" },
-									AcceptedContentAction.ADD);
-						}
+                        IViewPart envelopeView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+                                .showView(MESSAGE_ENVELOPE_VIEW_PRIMARY_ID, MESSAGE_ENVELOPE_VIEW_SECONDARY_ID,
+                                        IWorkbenchPage.VIEW_VISIBLE);
+                        if (envelopeView instanceof ContentAcceptHandler) {
+                            ((ContentAcceptHandler) envelopeView).acceptContent(
+                                    new String[] { propertyCommandMessage.getProperty().getPropertyName(), "" },
+                                    AcceptedContentAction.ADD);
+                        }
                     } catch (PartInitException e) {
                         log.error("Error while removing a property from Envelope Property table", e);
                     }

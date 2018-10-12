@@ -45,9 +45,8 @@ public class TemplateMediatorLocator extends AbstractMediatorLocator {
      * @throws DebugPointMarkerNotFoundException
      */
     @Override
-    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint debugPoint)
-            throws MediatorNotFoundException, MissingAttributeException, DebugPointMarkerNotFoundException,
-            CoreException {
+    public EditPart getMediatorEditPart(EsbServer esbServer, ESBDebugPoint debugPoint) throws MediatorNotFoundException,
+            MissingAttributeException, DebugPointMarkerNotFoundException, CoreException {
         ESBTemplateDebugPointMessage debugPointMessage = (ESBTemplateDebugPointMessage) debugPoint.getLocation();
 
         List<Integer> positionArray = debugPointMessage.getTemplate().getMediatorPosition().getPosition();

@@ -40,103 +40,103 @@ public class DummyDefaultEndpointFactory extends DummyEndpointFactory {
     }
 
     public static DummyDefaultEndpointFactory getInstance() {
-	return instance;
+        return instance;
     }
 
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	DefaultEndpoint defaultEndpoint = new DefaultEndpoint();
-	OMAttribute name = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
+        DefaultEndpoint defaultEndpoint = new DefaultEndpoint();
+        OMAttribute name = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
 
-	if (name != null) {
-	    defaultEndpoint.setName(name.getAttributeValue());
-	}
+        if (name != null) {
+            defaultEndpoint.setName(name.getAttributeValue());
+        }
 
-	OMElement defaultElement = epConfig
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "default"));
-	if (defaultElement != null) {
-	    EndpointDefinition endpoint = createEndpointDefinition(defaultElement);
-	    defaultEndpoint.setDefinition(endpoint);
-	    processAuditStatus(endpoint, defaultEndpoint.getName(), defaultElement);
-	}
+        OMElement defaultElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "default"));
+        if (defaultElement != null) {
+            EndpointDefinition endpoint = createEndpointDefinition(defaultElement);
+            defaultEndpoint.setDefinition(endpoint);
+            processAuditStatus(endpoint, defaultEndpoint.getName(), defaultElement);
+        }
 
-	processProperties(defaultEndpoint, epConfig);
+        processProperties(defaultEndpoint, epConfig);
 
-	return defaultEndpoint;
+        return defaultEndpoint;
     }
 
     @Override
     protected void extractSpecificEndpointProperties(EndpointDefinition definition, OMElement elem) {
 
-	OMAttribute format = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "format"));
-	if (format != null) {
-	    String forceValue = format.getAttributeValue().trim().toLowerCase();
-	    if (SynapseConstants.FORMAT_POX.equals(forceValue)) {
-		definition.setForcePOX(true);
-		definition.setFormat(SynapseConstants.FORMAT_POX);
+        OMAttribute format = elem.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "format"));
+        if (format != null) {
+            String forceValue = format.getAttributeValue().trim().toLowerCase();
+            if (SynapseConstants.FORMAT_POX.equals(forceValue)) {
+                definition.setForcePOX(true);
+                definition.setFormat(SynapseConstants.FORMAT_POX);
 
-	    } else if (SynapseConstants.FORMAT_GET.equals(forceValue)) {
-		definition.setForceGET(true);
-		definition.setFormat(SynapseConstants.FORMAT_GET);
+            } else if (SynapseConstants.FORMAT_GET.equals(forceValue)) {
+                definition.setForceGET(true);
+                definition.setFormat(SynapseConstants.FORMAT_GET);
 
-	    } else if (SynapseConstants.FORMAT_SOAP11.equals(forceValue)) {
-		definition.setForceSOAP11(true);
-		definition.setFormat(SynapseConstants.FORMAT_SOAP11);
+            } else if (SynapseConstants.FORMAT_SOAP11.equals(forceValue)) {
+                definition.setForceSOAP11(true);
+                definition.setFormat(SynapseConstants.FORMAT_SOAP11);
 
-	    } else if (SynapseConstants.FORMAT_SOAP12.equals(forceValue)) {
-		definition.setForceSOAP12(true);
-		definition.setFormat(SynapseConstants.FORMAT_SOAP12);
+            } else if (SynapseConstants.FORMAT_SOAP12.equals(forceValue)) {
+                definition.setForceSOAP12(true);
+                definition.setFormat(SynapseConstants.FORMAT_SOAP12);
 
-	    } else if (SynapseConstants.FORMAT_REST.equals(forceValue)) {
-		definition.setForceREST(true);
-		definition.setFormat(SynapseConstants.FORMAT_REST);
+            } else if (SynapseConstants.FORMAT_REST.equals(forceValue)) {
+                definition.setForceREST(true);
+                definition.setFormat(SynapseConstants.FORMAT_REST);
 
-	    } else {
-		definition.setForcePOX(true);
-		definition.setFormat(SynapseConstants.FORMAT_POX);
+            } else {
+                definition.setForcePOX(true);
+                definition.setFormat(SynapseConstants.FORMAT_POX);
 
-	    }
-	}
+            }
+        }
 
     }
 
     public EndpointDefinition createEndpointDefinition(OMElement elem) {
-	DefinitionFactory fac = getEndpointDefinitionFactory();
-	EndpointDefinition endpointDefinition;
-	if (fac == null) {
-	    fac = new EndpointDefinitionFactory();
-	    endpointDefinition = fac.createDefinition(elem);
-	} else {
-	    endpointDefinition = fac.createDefinition(elem);
-	}
-	extractSpecificEndpointProperties(endpointDefinition, elem);
-	return endpointDefinition;
+        DefinitionFactory fac = getEndpointDefinitionFactory();
+        EndpointDefinition endpointDefinition;
+        if (fac == null) {
+            fac = new EndpointDefinitionFactory();
+            endpointDefinition = fac.createDefinition(elem);
+        } else {
+            endpointDefinition = fac.createDefinition(elem);
+        }
+        extractSpecificEndpointProperties(endpointDefinition, elem);
+        return endpointDefinition;
     }
 
     protected void processAuditStatus(EndpointDefinition definition, String name, OMElement epOmElement) {
 
-	if (name == null || "".equals(name)) {
-	    name = SynapseConstants.ANONYMOUS_ENDPOINT;
-	}
-	AspectConfiguration aspectConfiguration = new AspectConfiguration(name);
-	definition.configure(aspectConfiguration);
-	OMAttribute statistics = epOmElement.getAttribute(new QName(XMLConfigConstants.STATISTICS_ATTRIB_NAME));
-	if (statistics != null) {
-	    String statisticsValue = statistics.getAttributeValue();
-	    if (statisticsValue != null) {
-		if (XMLConfigConstants.STATISTICS_ENABLE.equals(statisticsValue)) {
-		    aspectConfiguration.enableStatistics();
-		}
-	    }
-	}
-	OMAttribute tracing = epOmElement.getAttribute(new QName(XMLConfigConstants.TRACE_ATTRIB_NAME));
-	if (tracing != null) {
-	    String tracingValue = tracing.getAttributeValue();
-	    if (tracingValue != null) {
-		if (XMLConfigConstants.TRACE_ENABLE.equals(tracingValue)) {
-		    aspectConfiguration.enableTracing();
-		}
-	    }
-	}
+        if (name == null || "".equals(name)) {
+            name = SynapseConstants.ANONYMOUS_ENDPOINT;
+        }
+        AspectConfiguration aspectConfiguration = new AspectConfiguration(name);
+        definition.configure(aspectConfiguration);
+        OMAttribute statistics = epOmElement.getAttribute(new QName(XMLConfigConstants.STATISTICS_ATTRIB_NAME));
+        if (statistics != null) {
+            String statisticsValue = statistics.getAttributeValue();
+            if (statisticsValue != null) {
+                if (XMLConfigConstants.STATISTICS_ENABLE.equals(statisticsValue)) {
+                    aspectConfiguration.enableStatistics();
+                }
+            }
+        }
+        OMAttribute tracing = epOmElement.getAttribute(new QName(XMLConfigConstants.TRACE_ATTRIB_NAME));
+        if (tracing != null) {
+            String tracingValue = tracing.getAttributeValue();
+            if (tracingValue != null) {
+                if (XMLConfigConstants.TRACE_ENABLE.equals(tracingValue)) {
+                    aspectConfiguration.enableTracing();
+                }
+            }
+        }
     }
 }

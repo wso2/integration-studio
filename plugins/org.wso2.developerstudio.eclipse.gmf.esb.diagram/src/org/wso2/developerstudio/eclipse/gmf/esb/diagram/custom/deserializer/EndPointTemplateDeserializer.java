@@ -44,62 +44,62 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
  */
 public class EndPointTemplateDeserializer extends AbstractEndPointTemplateDeserializer {
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public Template createNode(IGraphicalEditPart part, org.apache.synapse.endpoints.Template template) throws DeserializerException {
-		Template templateModel = (Template) DeserializerUtils.createNode(part, EsbElementTypes.Template_3664);
-		setElementToEdit(templateModel);
-		executeSetValueCommand(TEMPLATE__NAME, template.getName());
-		executeSetValueCommand(TEMPLATE__TEMPLATE_TYPE, TemplateType.ENDPOINT);
+    @SuppressWarnings("unchecked")
+    @Override
+    public Template createNode(IGraphicalEditPart part, org.apache.synapse.endpoints.Template template)
+            throws DeserializerException {
+        Template templateModel = (Template) DeserializerUtils.createNode(part, EsbElementTypes.Template_3664);
+        setElementToEdit(templateModel);
+        executeSetValueCommand(TEMPLATE__NAME, template.getName());
+        executeSetValueCommand(TEMPLATE__TEMPLATE_TYPE, TemplateType.ENDPOINT);
 
-		for (String parameter : template.getParameters()) {
-			if (parameter != null && !(parameter.equals("name") || parameter.equals("uri"))) {
-				TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
-				templateParameter.setName(parameter);
-				executeAddValueCommand(templateModel.getParameters(), templateParameter, false);
-			}
-		}
-		
-		refreshEditPartMap();
-		IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(templateModel).getChildren().get(0);
-		EndpointDiagram endpointDiagram = (EndpointDiagram) DeserializerUtils.createNode(compartment, EsbElementTypes.EndpointDiagram_3666);
-		refreshEditPartMap();
-		IGraphicalEditPart graphicalNode = (IGraphicalEditPart) getEditpart(endpointDiagram);
-		if(graphicalNode!=null){
-			Rectangle rect = new Rectangle(new Point(), graphicalNode.getFigure().getPreferredSize()).getCopy();
-			rect.x = 0;
-			rect.y = 0;
-			SetBoundsCommand sbc = new SetBoundsCommand(graphicalNode.getEditingDomain(),
-					"change location", new EObjectAdapter((View) graphicalNode.getModel()), rect);
-			graphicalNode.getDiagramEditDomain().getDiagramCommandStack()
-					.execute(new ICommandProxy(sbc));
-			
-			if(template.getElement()!=null){
-				Endpoint endpoint = TemplateEndpointFactory.getEndpointFromElement(template.getElement(), false, new Properties());;
-				if(endpoint!=null){
-					IGraphicalEditPart innerCompartment = (IGraphicalEditPart) graphicalNode.getChildren().get(0);
-					@SuppressWarnings("rawtypes")
-					IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
-					EsbNode node = deserializer.createNode(innerCompartment, endpoint);
-					
-					refreshEditPartMap();
-					IGraphicalEditPart nodeEditPart = (IGraphicalEditPart) getEditpart(node);
-					if(nodeEditPart!=null){
-						rect = new Rectangle(new Point(), nodeEditPart.getFigure().getPreferredSize()).getCopy();
-						rect.x = 0;
-						rect.y = 0;
-						sbc = new SetBoundsCommand(nodeEditPart.getEditingDomain(),
-								"change location", new EObjectAdapter((View) nodeEditPart.getModel()), rect);
-						nodeEditPart.getDiagramEditDomain().getDiagramCommandStack()
-								.execute(new ICommandProxy(sbc));
-					}
-				}
-			}
-			
-		}
-		
-		return templateModel;
-	}
+        for (String parameter : template.getParameters()) {
+            if (parameter != null && !(parameter.equals("name") || parameter.equals("uri"))) {
+                TemplateParameter templateParameter = EsbFactory.eINSTANCE.createTemplateParameter();
+                templateParameter.setName(parameter);
+                executeAddValueCommand(templateModel.getParameters(), templateParameter, false);
+            }
+        }
 
+        refreshEditPartMap();
+        IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(templateModel).getChildren().get(0);
+        EndpointDiagram endpointDiagram = (EndpointDiagram) DeserializerUtils.createNode(compartment,
+                EsbElementTypes.EndpointDiagram_3666);
+        refreshEditPartMap();
+        IGraphicalEditPart graphicalNode = (IGraphicalEditPart) getEditpart(endpointDiagram);
+        if (graphicalNode != null) {
+            Rectangle rect = new Rectangle(new Point(), graphicalNode.getFigure().getPreferredSize()).getCopy();
+            rect.x = 0;
+            rect.y = 0;
+            SetBoundsCommand sbc = new SetBoundsCommand(graphicalNode.getEditingDomain(), "change location",
+                    new EObjectAdapter((View) graphicalNode.getModel()), rect);
+            graphicalNode.getDiagramEditDomain().getDiagramCommandStack().execute(new ICommandProxy(sbc));
+
+            if (template.getElement() != null) {
+                Endpoint endpoint = TemplateEndpointFactory.getEndpointFromElement(template.getElement(), false,
+                        new Properties());;
+                if (endpoint != null) {
+                    IGraphicalEditPart innerCompartment = (IGraphicalEditPart) graphicalNode.getChildren().get(0);
+                    @SuppressWarnings("rawtypes")
+                    IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(endpoint);
+                    EsbNode node = deserializer.createNode(innerCompartment, endpoint);
+
+                    refreshEditPartMap();
+                    IGraphicalEditPart nodeEditPart = (IGraphicalEditPart) getEditpart(node);
+                    if (nodeEditPart != null) {
+                        rect = new Rectangle(new Point(), nodeEditPart.getFigure().getPreferredSize()).getCopy();
+                        rect.x = 0;
+                        rect.y = 0;
+                        sbc = new SetBoundsCommand(nodeEditPart.getEditingDomain(), "change location",
+                                new EObjectAdapter((View) nodeEditPart.getModel()), rect);
+                        nodeEditPart.getDiagramEditDomain().getDiagramCommandStack().execute(new ICommandProxy(sbc));
+                    }
+                }
+            }
+
+        }
+
+        return templateModel;
+    }
 
 }

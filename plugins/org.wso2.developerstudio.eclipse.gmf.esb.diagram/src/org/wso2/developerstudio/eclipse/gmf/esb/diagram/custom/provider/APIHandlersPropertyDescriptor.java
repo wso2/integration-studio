@@ -29,24 +29,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui.Conf
 
 public class APIHandlersPropertyDescriptor extends PropertyDescriptor {
 
-	public APIHandlersPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
-		super(object, itemPropertyDescriptor);
-	}
-	
-	public CellEditor createPropertyEditor(Composite parent) {
-		return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
+    public APIHandlersPropertyDescriptor(Object object, IItemPropertyDescriptor itemPropertyDescriptor) {
+        super(object, itemPropertyDescriptor);
+    }
 
-			protected Object openDialogBox(Control cellEditorWindow) {
-			    Shell shell = Display.getDefault().getActiveShell();
-				SynapseAPI api = (SynapseAPI) object;
+    public CellEditor createPropertyEditor(Composite parent) {
+        return new ExtendedDialogCellEditor(parent, getLabelProvider()) {
 
-				ConfigureAPIHandlersDialog paramDialog = new ConfigureAPIHandlersDialog(
-						shell, api);
-				paramDialog.setBlockOnOpen(true);
-				paramDialog.open();
-				return null;
-			}
-		};
-	}
+            protected Object openDialogBox(Control cellEditorWindow) {
+                Shell shell = Display.getDefault().getActiveShell();
+                SynapseAPI api = (SynapseAPI) object;
+
+                ConfigureAPIHandlersDialog paramDialog = new ConfigureAPIHandlersDialog(shell, api);
+                paramDialog.setBlockOnOpen(true);
+                paramDialog.open();
+                return null;
+            }
+        };
+    }
 
 }

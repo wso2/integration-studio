@@ -46,210 +46,208 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 import org.apache.commons.lang.StringUtils;
 
 /**
- *  Sequence mediator deserializer
+ * Sequence mediator deserializer
  */
 public class SequenceDeserializer extends AbstractEsbNodeDeserializer<SequenceMediator, EsbNode> {
 
-	@Override
-	public EsbNode createNode(IGraphicalEditPart part,SequenceMediator sequence) throws DeserializerException {
-		EsbNode node = null;
-		if(sequence.getKey()!=null){
-			Sequence sequenceModel = (Sequence) DeserializerUtils.createNode(part, EsbElementTypes.Sequence_3503);
-			setCommonProperties(sequence, sequenceModel);
-			executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getKeyValue());
-			if (sequence.getKey().getExpression() != null) {
-								executeSetValueCommand(sequenceModel, SEQUENCE__REFERRING_SEQUENCE_TYPE, KeyType.DYNAMIC);
-								NamespacedProperty namespacedProperty = createNamespacedProperty(sequence.getKey().getExpression());
-								executeSetValueCommand(sequenceModel, SEQUENCE__DYNAMIC_REFERENCE_KEY,namespacedProperty);
-								//executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getExpression());
-							} else{
-								executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getKeyValue());
-							}
-			
-			return sequenceModel;
-		} else if(sequence.getName() != null) {
-			if ("main".equals(sequence.getName())) {
-				node = deserializeMainSequence(part,sequence);
-			} else{
-				setReversed(false);
-				IElementType sequencesType = (part instanceof TemplateTemplateCompartmentEditPart) ? EsbElementTypes.Sequences_3665
-						: EsbElementTypes.Sequences_3614;
-				Sequences sequenceModel = (Sequences) DeserializerUtils.createNode(part,
-						sequencesType);
-				executeSetValueCommand(sequenceModel, SEQUENCES__NAME, sequence.getName());
-				if(StringUtils.isNotBlank(sequence.getErrorHandler())){
-					executeSetValueCommand(sequenceModel.getOnError(),
-							REGISTRY_KEY_PROPERTY__KEY_VALUE, sequence.getErrorHandler());
-				}
-								
-		        StatisticsConfigurable  statisticsConfigurable = sequence.getAspectConfiguration();
-				if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
-					executeSetValueCommand(sequenceModel,SEQUENCES__STATISTICS_ENABLED, new Boolean(true));
-				} else{
-					executeSetValueCommand(sequenceModel,SEQUENCES__STATISTICS_ENABLED, new Boolean(false));
-				}
-				//Fixing DEVTOOLESB-787
-				if (statisticsConfigurable != null && statisticsConfigurable.isTracingEnabled()){
-					executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(true));
-				} else {
-					executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(false));
-				}
-				
-				refreshEditPartMap();
-				addRootInputConnector(sequenceModel.getInputConnector());
-				IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(
-						sequenceModel.getMediatorFlow()).getChildren().get(0);
-				setRootCompartment((GraphicalEditPart)compartment);
-				deserializeSequence(compartment, sequence, sequenceModel.getOutputConnector());
-				deserializeSequence(compartment, new SequenceMediator(),
-						sequenceModel.getInputConnector());
-				addPairMediatorFlow(sequenceModel.getOutputConnector(),
-						sequenceModel.getInputConnector());
-				return sequenceModel;
-			}
-		} else{
-		    Sequence sequenceModel = (Sequence) DeserializerUtils.createNode(part, EsbElementTypes.Sequence_3503);
-		    executeSetValueCommand(sequenceModel, SEQUENCE__NAME, "SEQ_NAME");
-		    return sequenceModel;
-		    
-		}
-		
-		return node;
-		
-		
-	}
+    @Override
+    public EsbNode createNode(IGraphicalEditPart part, SequenceMediator sequence) throws DeserializerException {
+        EsbNode node = null;
+        if (sequence.getKey() != null) {
+            Sequence sequenceModel = (Sequence) DeserializerUtils.createNode(part, EsbElementTypes.Sequence_3503);
+            setCommonProperties(sequence, sequenceModel);
+            executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getKeyValue());
+            if (sequence.getKey().getExpression() != null) {
+                executeSetValueCommand(sequenceModel, SEQUENCE__REFERRING_SEQUENCE_TYPE, KeyType.DYNAMIC);
+                NamespacedProperty namespacedProperty = createNamespacedProperty(sequence.getKey().getExpression());
+                executeSetValueCommand(sequenceModel, SEQUENCE__DYNAMIC_REFERENCE_KEY, namespacedProperty);
+                // executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getExpression());
+            } else {
+                executeSetValueCommand(sequenceModel, SEQUENCE__NAME, sequence.getKey().getKeyValue());
+            }
 
-	private ProxyService deserializeMainSequence(IGraphicalEditPart part, SequenceMediator sequence) throws DeserializerException {
-		ProxyService sequenceModel = (ProxyService) DeserializerUtils.createNode(part,
-				EsbElementTypes.ProxyService_3001);
+            return sequenceModel;
+        } else if (sequence.getName() != null) {
+            if ("main".equals(sequence.getName())) {
+                node = deserializeMainSequence(part, sequence);
+            } else {
+                setReversed(false);
+                IElementType sequencesType = (part instanceof TemplateTemplateCompartmentEditPart)
+                        ? EsbElementTypes.Sequences_3665
+                        : EsbElementTypes.Sequences_3614;
+                Sequences sequenceModel = (Sequences) DeserializerUtils.createNode(part, sequencesType);
+                executeSetValueCommand(sequenceModel, SEQUENCES__NAME, sequence.getName());
+                if (StringUtils.isNotBlank(sequence.getErrorHandler())) {
+                    executeSetValueCommand(sequenceModel.getOnError(), REGISTRY_KEY_PROPERTY__KEY_VALUE,
+                            sequence.getErrorHandler());
+                }
 
-		setElementToEdit(sequenceModel);
-		refreshEditPartMap();
-		executeSetValueCommand(PROXY_SERVICE__NAME,"main");
-		executeSetValueCommand(PROXY_SERVICE__MAIN_SEQUENCE,true);
-		
-		addRootInputConnector(sequenceModel.getInputConnector());
-		MediatorFlow mediatorFlow = sequenceModel.getContainer().getSequenceAndEndpointContainer()
-				.getMediatorFlow();
-		GraphicalEditPart compartment = (GraphicalEditPart) ((getEditpart(mediatorFlow))
-				.getChildren().get(0));
-		
-		if(StringUtils.isNotBlank(sequence.getErrorHandler())){
-			RegistryKeyProperty onErrorSeq = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-			onErrorSeq.setKeyValue(sequence.getErrorHandler());
-			executeSetValueCommand(PROXY_SERVICE__ON_ERROR, onErrorSeq);
-		}
-		
-        StatisticsConfigurable  statisticsConfigurable = sequence.getAspectConfiguration();
-		if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
-			executeSetValueCommand(SEQUENCES__STATISTICS_ENABLED, new Boolean(true));
-		}else{
-			executeSetValueCommand(SEQUENCES__STATISTICS_ENABLED, new Boolean(false));
-		}
-		//Fixing DEVTOOLESB-787
-		if(statisticsConfigurable != null && statisticsConfigurable.isTracingEnabled()){
-			executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(true));
-		}else{
-			executeSetValueCommand(sequenceModel,SEQUENCES__TRACE_ENABLED, new Boolean(false));
-		}
-				
-		InMediator inMediator = getInMediator(sequence);
-		SequenceMediator inSequence = new SequenceMediator();
-		inSequence.addAll(inMediator.getList());
-		setRootCompartment(compartment);
-		deserializeSequence(compartment, inSequence, sequenceModel.getOutputConnector());
-		setRootCompartment(null);
+                StatisticsConfigurable statisticsConfigurable = sequence.getAspectConfiguration();
+                if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
+                    executeSetValueCommand(sequenceModel, SEQUENCES__STATISTICS_ENABLED, new Boolean(true));
+                } else {
+                    executeSetValueCommand(sequenceModel, SEQUENCES__STATISTICS_ENABLED, new Boolean(false));
+                }
+                // Fixing DEVTOOLESB-787
+                if (statisticsConfigurable != null && statisticsConfigurable.isTracingEnabled()) {
+                    executeSetValueCommand(sequenceModel, SEQUENCES__TRACE_ENABLED, new Boolean(true));
+                } else {
+                    executeSetValueCommand(sequenceModel, SEQUENCES__TRACE_ENABLED, new Boolean(false));
+                }
 
-		OutMediator outMediator = getOutMediator(sequence);
-		SequenceMediator outSequence = new SequenceMediator();
-		if (outMediator.getList().size() > 0) {
-			outSequence.addAll(outMediator.getList());
-		}
-		setRootCompartment(compartment);
-		deserializeSequence(compartment, outSequence, sequenceModel.getInputConnector());
-		setRootCompartment(null);
-		
-		addPairMediatorFlow(sequenceModel.getOutputConnector(),sequenceModel.getInputConnector());
-		
-		return sequenceModel;
-	}
-	
-	private InMediator getInMediator(SequenceMediator sequence) {
-		InMediator inMediator = null;
-		List<Mediator> mediatorList = sequence.getList();
-		for(Iterator<Mediator> i = mediatorList.iterator();i.hasNext();){
-			Mediator next = i.next();
-			if(next instanceof InMediator){
-				inMediator = (InMediator) next;
-				break;
-			}
-		}
-		if(inMediator == null){
-			inMediator = new InMediator();
-		} 
-		
-		for(Iterator<Mediator> i = mediatorList.iterator();i.hasNext();){
-			Mediator next = i.next();
-			if(!(next instanceof OutMediator || next instanceof InMediator)){
-				inMediator.addChild(next);
-			}
-		}
-		
-		/* TOOLS-1510
-		LinkedList<Mediator> inMediatorList = new LinkedList<Mediator>(); 
-		inMediatorList.addAll(inMediator.getList());
-		Mediator last = null;
-		if(inMediatorList.size()>0){
-			last = inMediatorList.getLast();
-		} 
-		if (last == null || !(last instanceof SendMediator)) {
-			inMediator.addChild(new SendMediator());
-		}*/
-		return inMediator;
-	}
-	
-	private OutMediator getOutMediator(SequenceMediator sequence) {
-		OutMediator outMediator = null;
-		List<Mediator> mediatorList = sequence.getList();
-		for(Iterator<Mediator> i = mediatorList.iterator();i.hasNext();){
-			Mediator next = i.next();
-			if(next instanceof OutMediator){
-				outMediator = (OutMediator) next;
-				break;
-			}
-		}
-		if(outMediator == null){
-			outMediator = new OutMediator();
-		} else {
-			for(Iterator<Mediator> i = mediatorList.iterator();i.hasNext();){
-				Mediator next = i.next();
-				if(!(next instanceof InMediator || next instanceof OutMediator)){
-					outMediator.addChild(next);
-				}
-			}
-		}
-		
-		/* TOOLS-1510 
-		LinkedList<Mediator> outMediatorList = new LinkedList<Mediator>(); 
-		outMediatorList.addAll(outMediator.getList());
+                refreshEditPartMap();
+                addRootInputConnector(sequenceModel.getInputConnector());
+                IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(sequenceModel.getMediatorFlow())
+                        .getChildren().get(0);
+                setRootCompartment((GraphicalEditPart) compartment);
+                deserializeSequence(compartment, sequence, sequenceModel.getOutputConnector());
+                deserializeSequence(compartment, new SequenceMediator(), sequenceModel.getInputConnector());
+                addPairMediatorFlow(sequenceModel.getOutputConnector(), sequenceModel.getInputConnector());
+                return sequenceModel;
+            }
+        } else {
+            Sequence sequenceModel = (Sequence) DeserializerUtils.createNode(part, EsbElementTypes.Sequence_3503);
+            executeSetValueCommand(sequenceModel, SEQUENCE__NAME, "SEQ_NAME");
+            return sequenceModel;
 
-		Mediator last = null;
-		if(outMediatorList.size()>0){
-			last = outMediatorList.getLast();
-		} 
-		if (last == null || !(last instanceof SendMediator)) {
-			outMediator.addChild(new SendMediator());
-		}*/
-		return outMediator;
-	}
-	
+        }
 
-	private void duplicatorEndPoints(GraphicalEditPart rootCompartment, String key) {
-		FileEditorInput input = (FileEditorInput) getDiagramEditor().getEditorInput();
-		ElementDuplicator duplicator = new ElementDuplicator(input.getFile().getProject());
-		//duplicator.duplicateEndPoints(rootCompartment, key);
-		
-	}
+        return node;
 
+    }
+
+    private ProxyService deserializeMainSequence(IGraphicalEditPart part, SequenceMediator sequence)
+            throws DeserializerException {
+        ProxyService sequenceModel = (ProxyService) DeserializerUtils.createNode(part,
+                EsbElementTypes.ProxyService_3001);
+
+        setElementToEdit(sequenceModel);
+        refreshEditPartMap();
+        executeSetValueCommand(PROXY_SERVICE__NAME, "main");
+        executeSetValueCommand(PROXY_SERVICE__MAIN_SEQUENCE, true);
+
+        addRootInputConnector(sequenceModel.getInputConnector());
+        MediatorFlow mediatorFlow = sequenceModel.getContainer().getSequenceAndEndpointContainer().getMediatorFlow();
+        GraphicalEditPart compartment = (GraphicalEditPart) ((getEditpart(mediatorFlow)).getChildren().get(0));
+
+        if (StringUtils.isNotBlank(sequence.getErrorHandler())) {
+            RegistryKeyProperty onErrorSeq = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+            onErrorSeq.setKeyValue(sequence.getErrorHandler());
+            executeSetValueCommand(PROXY_SERVICE__ON_ERROR, onErrorSeq);
+        }
+
+        StatisticsConfigurable statisticsConfigurable = sequence.getAspectConfiguration();
+        if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
+            executeSetValueCommand(SEQUENCES__STATISTICS_ENABLED, new Boolean(true));
+        } else {
+            executeSetValueCommand(SEQUENCES__STATISTICS_ENABLED, new Boolean(false));
+        }
+        // Fixing DEVTOOLESB-787
+        if (statisticsConfigurable != null && statisticsConfigurable.isTracingEnabled()) {
+            executeSetValueCommand(sequenceModel, SEQUENCES__TRACE_ENABLED, new Boolean(true));
+        } else {
+            executeSetValueCommand(sequenceModel, SEQUENCES__TRACE_ENABLED, new Boolean(false));
+        }
+
+        InMediator inMediator = getInMediator(sequence);
+        SequenceMediator inSequence = new SequenceMediator();
+        inSequence.addAll(inMediator.getList());
+        setRootCompartment(compartment);
+        deserializeSequence(compartment, inSequence, sequenceModel.getOutputConnector());
+        setRootCompartment(null);
+
+        OutMediator outMediator = getOutMediator(sequence);
+        SequenceMediator outSequence = new SequenceMediator();
+        if (outMediator.getList().size() > 0) {
+            outSequence.addAll(outMediator.getList());
+        }
+        setRootCompartment(compartment);
+        deserializeSequence(compartment, outSequence, sequenceModel.getInputConnector());
+        setRootCompartment(null);
+
+        addPairMediatorFlow(sequenceModel.getOutputConnector(), sequenceModel.getInputConnector());
+
+        return sequenceModel;
+    }
+
+    private InMediator getInMediator(SequenceMediator sequence) {
+        InMediator inMediator = null;
+        List<Mediator> mediatorList = sequence.getList();
+        for (Iterator<Mediator> i = mediatorList.iterator(); i.hasNext();) {
+            Mediator next = i.next();
+            if (next instanceof InMediator) {
+                inMediator = (InMediator) next;
+                break;
+            }
+        }
+        if (inMediator == null) {
+            inMediator = new InMediator();
+        }
+
+        for (Iterator<Mediator> i = mediatorList.iterator(); i.hasNext();) {
+            Mediator next = i.next();
+            if (!(next instanceof OutMediator || next instanceof InMediator)) {
+                inMediator.addChild(next);
+            }
+        }
+
+        /*
+         * TOOLS-1510
+         * LinkedList<Mediator> inMediatorList = new LinkedList<Mediator>();
+         * inMediatorList.addAll(inMediator.getList());
+         * Mediator last = null;
+         * if(inMediatorList.size()>0){
+         * last = inMediatorList.getLast();
+         * }
+         * if (last == null || !(last instanceof SendMediator)) {
+         * inMediator.addChild(new SendMediator());
+         * }
+         */
+        return inMediator;
+    }
+
+    private OutMediator getOutMediator(SequenceMediator sequence) {
+        OutMediator outMediator = null;
+        List<Mediator> mediatorList = sequence.getList();
+        for (Iterator<Mediator> i = mediatorList.iterator(); i.hasNext();) {
+            Mediator next = i.next();
+            if (next instanceof OutMediator) {
+                outMediator = (OutMediator) next;
+                break;
+            }
+        }
+        if (outMediator == null) {
+            outMediator = new OutMediator();
+        } else {
+            for (Iterator<Mediator> i = mediatorList.iterator(); i.hasNext();) {
+                Mediator next = i.next();
+                if (!(next instanceof InMediator || next instanceof OutMediator)) {
+                    outMediator.addChild(next);
+                }
+            }
+        }
+
+        /*
+         * TOOLS-1510
+         * LinkedList<Mediator> outMediatorList = new LinkedList<Mediator>();
+         * outMediatorList.addAll(outMediator.getList());
+         * 
+         * Mediator last = null;
+         * if(outMediatorList.size()>0){
+         * last = outMediatorList.getLast();
+         * }
+         * if (last == null || !(last instanceof SendMediator)) {
+         * outMediator.addChild(new SendMediator());
+         * }
+         */
+        return outMediator;
+    }
+
+    private void duplicatorEndPoints(GraphicalEditPart rootCompartment, String key) {
+        FileEditorInput input = (FileEditorInput) getDiagramEditor().getEditorInput();
+        ElementDuplicator duplicator = new ElementDuplicator(input.getFile().getProject());
+        // duplicator.duplicateEndPoints(rootCompartment, key);
+
+    }
 
 }

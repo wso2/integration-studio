@@ -43,94 +43,94 @@ public class DummyDynamicLoadbalanceEndpointFactory extends DummyEndpointFactory
     }
 
     public static DummyDynamicLoadbalanceEndpointFactory getInstance() {
-	return instance;
+        return instance;
     }
 
     protected Endpoint createEndpoint(OMElement epConfig, boolean anonymousEndpoint, Properties properties) {
 
-	OMElement loadbalanceElement = epConfig
-		.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "dynamicLoadbalance"));
+        OMElement loadbalanceElement = epConfig
+                .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "dynamicLoadbalance"));
 
-	if (loadbalanceElement != null) {
+        if (loadbalanceElement != null) {
 
-	    DynamicLoadbalanceEndpoint loadbalanceEndpoint = new DynamicLoadbalanceEndpoint();
+            DynamicLoadbalanceEndpoint loadbalanceEndpoint = new DynamicLoadbalanceEndpoint();
 
-	    OMAttribute name = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
+            OMAttribute name = epConfig.getAttribute(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"));
 
-	    if (name != null) {
-		loadbalanceEndpoint.setName(name.getAttributeValue());
-	    }
+            if (name != null) {
+                loadbalanceEndpoint.setName(name.getAttributeValue());
+            }
 
-	    OMElement sessionElement = epConfig
-		    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session"));
-	    if (sessionElement != null) {
+            OMElement sessionElement = epConfig
+                    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "session"));
+            if (sessionElement != null) {
 
-		OMElement sessionTimeout = sessionElement
-			.getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "sessionTimeout"));
+                OMElement sessionTimeout = sessionElement
+                        .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "sessionTimeout"));
 
-		if (sessionTimeout != null) {
-		    try {
-			loadbalanceEndpoint.setSessionTimeout(Long.parseLong(sessionTimeout.getText().trim()));
-		    } catch (NumberFormatException nfe) {
-			loadbalanceEndpoint.setSessionTimeout(1000);
-		    }
-		}
+                if (sessionTimeout != null) {
+                    try {
+                        loadbalanceEndpoint.setSessionTimeout(Long.parseLong(sessionTimeout.getText().trim()));
+                    } catch (NumberFormatException nfe) {
+                        loadbalanceEndpoint.setSessionTimeout(1000);
+                    }
+                }
 
-		String type = sessionElement.getAttributeValue(new QName("type"));
+                String type = sessionElement.getAttributeValue(new QName("type"));
 
-		if (type.equalsIgnoreCase("soap")) {
-		    Dispatcher soapDispatcher = new SoapSessionDispatcher();
-		    loadbalanceEndpoint.setDispatcher(soapDispatcher);
+                if (type.equalsIgnoreCase("soap")) {
+                    Dispatcher soapDispatcher = new SoapSessionDispatcher();
+                    loadbalanceEndpoint.setDispatcher(soapDispatcher);
 
-		} else if (type.equalsIgnoreCase("http")) {
-		    Dispatcher httpDispatcher = new HttpSessionDispatcher();
-		    loadbalanceEndpoint.setDispatcher(httpDispatcher);
+                } else if (type.equalsIgnoreCase("http")) {
+                    Dispatcher httpDispatcher = new HttpSessionDispatcher();
+                    loadbalanceEndpoint.setDispatcher(httpDispatcher);
 
-		}
+                }
 
-		loadbalanceEndpoint.setSessionAffinity(true);
-	    }
+                loadbalanceEndpoint.setSessionAffinity(true);
+            }
 
-	    String failover = loadbalanceElement.getAttributeValue(new QName("failover"));
-	    if (failover != null && failover.equalsIgnoreCase("false")) {
-		loadbalanceEndpoint.setFailover(false);
-	    } else {
-		loadbalanceEndpoint.setFailover(true);
-	    }
+            String failover = loadbalanceElement.getAttributeValue(new QName("failover"));
+            if (failover != null && failover.equalsIgnoreCase("false")) {
+                loadbalanceEndpoint.setFailover(false);
+            } else {
+                loadbalanceEndpoint.setFailover(true);
+            }
 
-	    OMElement eventHandler = loadbalanceElement
-		    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "membershipHandler"));
-	    if (eventHandler != null) {
-		String clazz = eventHandler.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "class"))
-			.trim();
-		try {
-		    LoadBalanceMembershipHandler lbMembershipHandler = (LoadBalanceMembershipHandler) Class
-			    .forName(clazz).newInstance();
-		    Properties lbProperties = new Properties();
-		    for (Iterator props = eventHandler.getChildrenWithName(
-			    new QName(SynapseConstants.SYNAPSE_NAMESPACE, "property")); props.hasNext();) {
-			OMElement prop = (OMElement) props.next();
-			String propName = prop.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"))
-				.trim();
-			String propValue = prop.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "value"))
-				.trim();
-			lbProperties.put(propName, propValue);
-		    }
+            OMElement eventHandler = loadbalanceElement
+                    .getFirstChildWithName(new QName(SynapseConstants.SYNAPSE_NAMESPACE, "membershipHandler"));
+            if (eventHandler != null) {
+                String clazz = eventHandler.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "class"))
+                        .trim();
+                try {
+                    LoadBalanceMembershipHandler lbMembershipHandler = (LoadBalanceMembershipHandler) Class
+                            .forName(clazz).newInstance();
+                    Properties lbProperties = new Properties();
+                    for (Iterator props = eventHandler.getChildrenWithName(
+                            new QName(SynapseConstants.SYNAPSE_NAMESPACE, "property")); props.hasNext();) {
+                        OMElement prop = (OMElement) props.next();
+                        String propName = prop.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "name"))
+                                .trim();
+                        String propValue = prop.getAttributeValue(new QName(XMLConfigConstants.NULL_NAMESPACE, "value"))
+                                .trim();
+                        lbProperties.put(propName, propValue);
+                    }
 
-		    LoadbalanceAlgorithm algorithm = LoadbalanceAlgorithmFactory
-			    .createLoadbalanceAlgorithm(loadbalanceElement, null);
-		    lbMembershipHandler.init(lbProperties, algorithm);
-		    loadbalanceEndpoint.setLoadBalanceMembershipHandler(lbMembershipHandler);
-		} catch (Exception e) {
-		    // ignore
-		}
-	    }
+                    LoadbalanceAlgorithm algorithm = LoadbalanceAlgorithmFactory
+                            .createLoadbalanceAlgorithm(loadbalanceElement, null);
+                    lbMembershipHandler.init(lbProperties, algorithm);
+                    loadbalanceEndpoint.setLoadBalanceMembershipHandler(lbMembershipHandler);
+                } catch (Exception e) {
+                    // ignore
+                }
+            }
 
-	    processProperties(loadbalanceEndpoint, epConfig);
+            processProperties(loadbalanceEndpoint, epConfig);
 
-	    return loadbalanceEndpoint;
-	}
-	return null;
+            return loadbalanceEndpoint;
+        }
+        return null;
     }
 
 }

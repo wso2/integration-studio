@@ -6,7 +6,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -32,270 +31,246 @@ import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
-public class StoreMediatorItemProvider
-	extends MediatorItemProvider {
-	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StoreMediatorItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+public class StoreMediatorItemProvider extends MediatorItemProvider {
+    /**
+     * This constructs an instance from a factory and a notifier.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public StoreMediatorItemProvider(AdapterFactory adapterFactory) {
+        super(adapterFactory);
+    }
 
-	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	
-	@Override 
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		StoreMediator storeMediator = (StoreMediator) object;
-		
-		if (itemPropertyDescriptors != null) {
-			itemPropertyDescriptors.clear();
-		}
-		super.getPropertyDescriptors(object);
+    /**
+     * This returns the property descriptors for the adapted class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
 
-		addAvailableMessageStoresPropertyDescriptor(object);
-		addOnStoreSequencePropertyDescriptor(object);
-		addDescriptionPropertyDescriptor(object);
-		addSpecifyAsPropertyDescriptor(object);
- 		switch (storeMediator.getSpecifyAs()) {
- 			case VALUE:
- 				addMessageStorePropertyDescriptor(object);
- 				break;
- 			case EXPRESSION:
- 				addExpressionPropertyDescriptor(object);
- 				break;
-		}
-		return itemPropertyDescriptors;
-	}
+    @Override
+    public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+        StoreMediator storeMediator = (StoreMediator) object;
 
-	/**
-	 * This adds a property descriptor for the Message Store feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMessageStorePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StoreMediator_messageStore_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_messageStore_feature", "_UI_StoreMediator_type"),
-				 EsbPackage.Literals.STORE_MEDIATOR__MESSAGE_STORE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        if (itemPropertyDescriptors != null) {
+            itemPropertyDescriptors.clear();
+        }
+        super.getPropertyDescriptors(object);
 
-	/**
-	 * This adds a property descriptor for the On Store Sequence feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOnStoreSequencePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StoreMediator_onStoreSequence_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_onStoreSequence_feature", "_UI_StoreMediator_type"),
-				 EsbPackage.Literals.STORE_MEDIATOR__ON_STORE_SEQUENCE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
+        addAvailableMessageStoresPropertyDescriptor(object);
+        addOnStoreSequencePropertyDescriptor(object);
+        addDescriptionPropertyDescriptor(object);
+        addSpecifyAsPropertyDescriptor(object);
+        switch (storeMediator.getSpecifyAs()) {
+        case VALUE:
+            addMessageStorePropertyDescriptor(object);
+            break;
+        case EXPRESSION:
+            addExpressionPropertyDescriptor(object);
+            break;
+        }
+        return itemPropertyDescriptors;
+    }
 
-	/**
-	 * This adds a property descriptor for the Available Message Stores feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAvailableMessageStoresPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StoreMediator_availableMessageStores_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_availableMessageStores_feature", "_UI_StoreMediator_type"),
-				 EsbPackage.Literals.STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+    /**
+     * This adds a property descriptor for the Message Store feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addMessageStorePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_StoreMediator_messageStore_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_messageStore_feature",
+                                "_UI_StoreMediator_type"),
+                        EsbPackage.Literals.STORE_MEDIATOR__MESSAGE_STORE, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
 
-	/**
-	 * This adds a property descriptor for the Specify As feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSpecifyAsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StoreMediator_SpecifyAs_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_SpecifyAs_feature", "_UI_StoreMediator_type"),
-				 EsbPackage.Literals.STORE_MEDIATOR__SPECIFY_AS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-	
-	/**
-	 * This will add the property descriptor for the Expression feature
-	 * @generated NOT
-	 */
-	protected void addExpressionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(), getString("_UI_StoreMediator_Expression_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_Expression_feature", "_UI_StoreMediator_type"),
-				 EsbPackage.Literals.STORE_MEDIATOR__EXPRESSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+    /**
+     * This adds a property descriptor for the On Store Sequence feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addOnStoreSequencePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_StoreMediator_onStoreSequence_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_onStoreSequence_feature",
+                                "_UI_StoreMediator_type"),
+                        EsbPackage.Literals.STORE_MEDIATOR__ON_STORE_SEQUENCE, true, false, true, null, null, null));
+    }
 
-	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(EsbPackage.Literals.STORE_MEDIATOR__INPUT_CONNECTOR);
-			childrenFeatures.add(EsbPackage.Literals.STORE_MEDIATOR__OUTPUT_CONNECTOR);
-			childrenFeatures.add(EsbPackage.Literals.STORE_MEDIATOR__EXPRESSION);
-		}
-		return childrenFeatures;
-	}
+    /**
+     * This adds a property descriptor for the Available Message Stores feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addAvailableMessageStoresPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_StoreMediator_availableMessageStores_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_availableMessageStores_feature",
+                        "_UI_StoreMediator_type"),
+                EsbPackage.Literals.STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES, true, false, false,
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+    /**
+     * This adds a property descriptor for the Specify As feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addSpecifyAsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_StoreMediator_SpecifyAs_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_SpecifyAs_feature",
+                                "_UI_StoreMediator_type"),
+                        EsbPackage.Literals.STORE_MEDIATOR__SPECIFY_AS, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
 
-		return super.getChildFeature(object, child);
-	}
+    /**
+     * This will add the property descriptor for the Expression feature
+     * 
+     * @generated NOT
+     */
+    protected void addExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_StoreMediator_Expression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_StoreMediator_Expression_feature",
+                                "_UI_StoreMediator_type"),
+                        EsbPackage.Literals.STORE_MEDIATOR__EXPRESSION, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
 
-	/**
-	 * This returns StoreMediator.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/StoreMediator"));
-	}
+    /**
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+        if (childrenFeatures == null) {
+            super.getChildrenFeatures(object);
+            childrenFeatures.add(EsbPackage.Literals.STORE_MEDIATOR__INPUT_CONNECTOR);
+            childrenFeatures.add(EsbPackage.Literals.STORE_MEDIATOR__OUTPUT_CONNECTOR);
+            childrenFeatures.add(EsbPackage.Literals.STORE_MEDIATOR__EXPRESSION);
+        }
+        return childrenFeatures;
+    }
 
-	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	public String getText(Object object) {
-		String label = ((StoreMediator)object).getMessageStore();
-		return label == null || label.length() == 0 ?
-			getString("_UI_StoreMediator_type") :
-			getString("_UI_StoreMediator_type") + " " + label;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EStructuralFeature getChildFeature(Object object, Object child) {
+        // Check the type of the specified child object and return the proper feature to use for
+        // adding (see {@link AddCommand}) it as a child.
 
-	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+        return super.getChildFeature(object, child);
+    }
 
-		switch (notification.getFeatureID(StoreMediator.class)) {
-			case EsbPackage.STORE_MEDIATOR__MESSAGE_STORE:
-			case EsbPackage.STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES:
-			case EsbPackage.STORE_MEDIATOR__SPECIFY_AS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case EsbPackage.STORE_MEDIATOR__INPUT_CONNECTOR:
-			case EsbPackage.STORE_MEDIATOR__OUTPUT_CONNECTOR:
-			case EsbPackage.STORE_MEDIATOR__EXPRESSION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+    /**
+     * This returns StoreMediator.gif.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	
-	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+    @Override
+    public Object getImage(Object object) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/StoreMediator"));
+    }
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsbPackage.Literals.STORE_MEDIATOR__INPUT_CONNECTOR,
-				 EsbFactory.eINSTANCE.createStoreMediatorInputConnector()));
+    /**
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsbPackage.Literals.STORE_MEDIATOR__OUTPUT_CONNECTOR,
-				 EsbFactory.eINSTANCE.createStoreMediatorOutputConnector()));
+    @Override
+    public String getText(Object object) {
+        String label = ((StoreMediator) object).getMessageStore();
+        return label == null || label.length() == 0 ? getString("_UI_StoreMediator_type")
+                : getString("_UI_StoreMediator_type") + " " + label;
+    }
 
-		newChildDescriptors.add
-			(createChildParameter
-				(EsbPackage.Literals.STORE_MEDIATOR__EXPRESSION,
-				 EsbFactory.eINSTANCE.createNamespacedProperty()));
-	}
+    /**
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+
+    @Override
+    public void notifyChanged(Notification notification) {
+        updateChildren(notification);
+
+        switch (notification.getFeatureID(StoreMediator.class)) {
+        case EsbPackage.STORE_MEDIATOR__MESSAGE_STORE:
+        case EsbPackage.STORE_MEDIATOR__AVAILABLE_MESSAGE_STORES:
+        case EsbPackage.STORE_MEDIATOR__SPECIFY_AS:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        case EsbPackage.STORE_MEDIATOR__INPUT_CONNECTOR:
+        case EsbPackage.STORE_MEDIATOR__OUTPUT_CONNECTOR:
+        case EsbPackage.STORE_MEDIATOR__EXPRESSION:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+            return;
+        }
+        super.notifyChanged(notification);
+    }
+
+    /**
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+     * that can be created under this object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+
+    @Override
+    protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.STORE_MEDIATOR__INPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createStoreMediatorInputConnector()));
+
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.STORE_MEDIATOR__OUTPUT_CONNECTOR,
+                EsbFactory.eINSTANCE.createStoreMediatorOutputConnector()));
+
+        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.STORE_MEDIATOR__EXPRESSION,
+                EsbFactory.eINSTANCE.createNamespacedProperty()));
+    }
 
 }

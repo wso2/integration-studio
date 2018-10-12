@@ -18,24 +18,27 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
  *
  * @generated
  */
-public class FailoverEndPointOutputConnectorImpl extends OutputConnectorImpl implements FailoverEndPointOutputConnector {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FailoverEndPointOutputConnectorImpl() {
-		super();
-	}
+public class FailoverEndPointOutputConnectorImpl extends OutputConnectorImpl
+        implements FailoverEndPointOutputConnector {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected FailoverEndPointOutputConnectorImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return EsbPackage.Literals.FAILOVER_END_POINT_OUTPUT_CONNECTOR;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return EsbPackage.Literals.FAILOVER_END_POINT_OUTPUT_CONNECTOR;
+    }
 
-} //FailoverEndPointOutputConnectorImpl
+} // FailoverEndPointOutputConnectorImpl

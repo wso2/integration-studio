@@ -83,8 +83,8 @@ public class ESBAPIDebugPointMessage extends AbstractESBDebugPointMessage {
         if (debugPointMessage instanceof ESBAPIDebugPointMessage) {
             ESBAPIDebugPointMessage debugPointMessageTemp = (ESBAPIDebugPointMessage) debugPointMessage;
             if (!(getMediationComponent().equals((debugPointMessageTemp).getMediationComponent())
-                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument()) && getSequence()
-                    .equals(debugPointMessageTemp.getSequence()))) {
+                    && getCommandArgument().equals((debugPointMessageTemp).getCommandArgument())
+                    && getSequence().equals(debugPointMessageTemp.getSequence()))) {
                 return false;
             }
             return true;
@@ -136,8 +136,8 @@ public class ESBAPIDebugPointMessage extends AbstractESBDebugPointMessage {
                 if (API_KEY_LABEL.equalsIgnoreCase(entry.getKey())) {
                     apiKey = convertJsonElementValueToString(entry.getValue());
                 } else if (MEDIATOR_POSITION_LABEL.equalsIgnoreCase(entry.getKey())) {
-                    mediatorPosition = convertMediatorPositionStringToList(convertJsonElementValueToString(entry
-                            .getValue()));
+                    mediatorPosition = convertMediatorPositionStringToList(
+                            convertJsonElementValueToString(entry.getValue()));
                 } else if (SEQUENCE_TYPE_LABEL.equalsIgnoreCase(entry.getKey())) {
                     sequenceType = convertJsonElementValueToString(entry.getValue());
                 } else if (API_RESOURCE_LABEL.equalsIgnoreCase(entry.getKey())) {

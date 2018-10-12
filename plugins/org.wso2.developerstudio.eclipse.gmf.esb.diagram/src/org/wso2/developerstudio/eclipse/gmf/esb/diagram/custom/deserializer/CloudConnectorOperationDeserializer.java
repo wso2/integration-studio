@@ -36,114 +36,117 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.Cl
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CloudConnectorOperationExt;
 
-public class CloudConnectorOperationDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CloudConnectorOperation>{
+public class CloudConnectorOperationDeserializer
+        extends AbstractEsbNodeDeserializer<AbstractMediator, CloudConnectorOperation> {
 
-	public static String cloudConnectorName;
-		
-	@Override
-	public CloudConnectorOperation createNode(IGraphicalEditPart part, AbstractMediator object) {
-		Assert.isTrue(object instanceof CloudConnectorOperationExt,"Unsupported mediator passed in for deserialization");
-		CloudConnectorOperationExt operation = (CloudConnectorOperationExt) object;
-		cloudConnectorName=operation.getCloudConnectorName();
-		
-	//	EditorUtils.getActiveEditor().getEditorSite().getPage().closeEditor(getDiagramEditor(), false);
-		
-		final CloudConnectorOperation operationModel = (CloudConnectorOperation) DeserializerUtils.createNode(part, EsbElementTypes.CloudConnectorOperation_3722);
-		setElementToEdit(operationModel);
-		executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__CONFIG_REF, operation.getConfigRef());
-		executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__OPERATION_NAME, operation.getOperation());
-		executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__CONNECTOR_NAME, operation.getConnectorComponentName());	
-		executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__CLOUD_CONNECTOR_NAME, operation.getCloudConnectorName());
-		executeSetValueCommand(ESB_ELEMENT__DESCRIPTION, operation.getOperation());
-		
-		String addedConnector = operation.getConnectorComponentName();
-		String addedOperation = operationModel.getOperationName();
-		
-		Map<String, Value> existingParameters = operation.getpName2ExpressionMap();
-		boolean namespacesExist=false;
+    public static String cloudConnectorName;
 
-		for (String parameter : CloudConnectorDirectoryTraverser.getInstance()
-				.getAllParametersOfConnectorOperation(addedConnector, addedOperation)) {
-			CallTemplateParameter visualParameter = EsbFactory.eINSTANCE
-					.createCallTemplateParameter();
-			visualParameter.setParameterName(parameter);
-			if (existingParameters != null && existingParameters.containsKey(parameter)) {
-				// parameter already exists in the config.
-				Value value = existingParameters.get(parameter);
+    @Override
+    public CloudConnectorOperation createNode(IGraphicalEditPart part, AbstractMediator object) {
+        Assert.isTrue(object instanceof CloudConnectorOperationExt,
+                "Unsupported mediator passed in for deserialization");
+        CloudConnectorOperationExt operation = (CloudConnectorOperationExt) object;
+        cloudConnectorName = operation.getCloudConnectorName();
 
-				boolean dynamic = value.hasExprTypeKey();
+        // EditorUtils.getActiveEditor().getEditorSite().getPage().closeEditor(getDiagramEditor(), false);
 
-				if (value.getExpression() == null && value.getKeyValue() != null) {
-					NamespacedProperty namespacedProperty = createNamespacedProperty(
-							value.getKeyValue(), null);
-					namespacedProperty.setDynamic(dynamic);
-					namespacedProperty.setSupportsDynamicXPaths(true);
-					visualParameter.setParameterExpression(namespacedProperty);
-					visualParameter.setParameterValue(value.getKeyValue());
-					visualParameter.setTemplateParameterType(RuleOptionType.VALUE);
-				}
+        final CloudConnectorOperation operationModel = (CloudConnectorOperation) DeserializerUtils.createNode(part,
+                EsbElementTypes.CloudConnectorOperation_3722);
+        setElementToEdit(operationModel);
+        executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__CONFIG_REF, operation.getConfigRef());
+        executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__OPERATION_NAME, operation.getOperation());
+        executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__CONNECTOR_NAME, operation.getConnectorComponentName());
+        executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__CLOUD_CONNECTOR_NAME, operation.getCloudConnectorName());
+        executeSetValueCommand(ESB_ELEMENT__DESCRIPTION, operation.getOperation());
 
-				if (value.getExpression() != null) {
-					NamespacedProperty namespacedProperty = createNamespacedProperty(value
-							.getExpression());
-					namespacedProperty.setPropertyValue("{" + value.getExpression().toString()
-							+ "}");
-					namespacedProperty.setDynamic(dynamic);
-					namespacedProperty.setSupportsDynamicXPaths(true);
-					visualParameter.setParameterExpression(namespacedProperty);
-					visualParameter.setParameterValue("{" + value.getExpression().toString() + "}");
-					visualParameter.setTemplateParameterType(RuleOptionType.EXPRESSION);
-					if (namespacedProperty.getNamespaces().size() > 0) {
-						namespacesExist = true;
-					}
-				}
-			} else {
-				// parameter does not exist in the config.
-			}
-			executeAddValueCommand(operationModel.getConnectorParameters(), visualParameter, false);
+        String addedConnector = operation.getConnectorComponentName();
+        String addedOperation = operationModel.getOperationName();
 
-		}
-		
-		/*Map<String, Value> parameters = operation.getpName2ExpressionMap();
-		boolean namespacesExist=false;
-		for(Map.Entry<String, Value> entry : parameters.entrySet()){
-			CallTemplateParameter parameter = EsbFactory.eINSTANCE.createCallTemplateParameter();
-			parameter.setParameterName(entry.getKey());
-			Value value = entry.getValue();
-			
-			boolean dynamic = value.hasExprTypeKey();
-			
-			if(value.getExpression()==null && value.getKeyValue()!=null){
-				NamespacedProperty namespacedProperty = createNamespacedProperty(value.getKeyValue(),null);
-				namespacedProperty.setDynamic(dynamic);
-				namespacedProperty.setSupportsDynamicXPaths(true);
-				parameter.setParameterExpression(namespacedProperty);
-				parameter.setParameterValue(value.getKeyValue());
-				parameter.setTemplateParameterType(RuleOptionType.VALUE);
-			}
-			
-			if(value.getExpression()!=null){
-				NamespacedProperty namespacedProperty = createNamespacedProperty(value.getExpression());
-				namespacedProperty.setPropertyValue("{"+value.getExpression().toString()+"}");
-				namespacedProperty.setDynamic(dynamic);
-				namespacedProperty.setSupportsDynamicXPaths(true);
-				parameter.setParameterExpression(namespacedProperty);
-				parameter.setParameterValue("{"+value.getExpression().toString()+"}");
-				parameter.setTemplateParameterType(RuleOptionType.EXPRESSION);
-				if(namespacedProperty.getNamespaces().size()>0){
-					namespacesExist=true;
-				}	
-			}
-			executeAddValueCommand(operationModel.getConnectorParameters(), parameter);
-		}*/
-		
-		if(namespacesExist){
-			executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE, CloudConnectorOperationParamEditorType.NAMESPACED_PROPERTY_EDITOR);
-		}else{
-			executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE, CloudConnectorOperationParamEditorType.INLINE);
-		}
-		
-		return operationModel;
-	}
+        Map<String, Value> existingParameters = operation.getpName2ExpressionMap();
+        boolean namespacesExist = false;
+
+        for (String parameter : CloudConnectorDirectoryTraverser.getInstance()
+                .getAllParametersOfConnectorOperation(addedConnector, addedOperation)) {
+            CallTemplateParameter visualParameter = EsbFactory.eINSTANCE.createCallTemplateParameter();
+            visualParameter.setParameterName(parameter);
+            if (existingParameters != null && existingParameters.containsKey(parameter)) {
+                // parameter already exists in the config.
+                Value value = existingParameters.get(parameter);
+
+                boolean dynamic = value.hasExprTypeKey();
+
+                if (value.getExpression() == null && value.getKeyValue() != null) {
+                    NamespacedProperty namespacedProperty = createNamespacedProperty(value.getKeyValue(), null);
+                    namespacedProperty.setDynamic(dynamic);
+                    namespacedProperty.setSupportsDynamicXPaths(true);
+                    visualParameter.setParameterExpression(namespacedProperty);
+                    visualParameter.setParameterValue(value.getKeyValue());
+                    visualParameter.setTemplateParameterType(RuleOptionType.VALUE);
+                }
+
+                if (value.getExpression() != null) {
+                    NamespacedProperty namespacedProperty = createNamespacedProperty(value.getExpression());
+                    namespacedProperty.setPropertyValue("{" + value.getExpression().toString() + "}");
+                    namespacedProperty.setDynamic(dynamic);
+                    namespacedProperty.setSupportsDynamicXPaths(true);
+                    visualParameter.setParameterExpression(namespacedProperty);
+                    visualParameter.setParameterValue("{" + value.getExpression().toString() + "}");
+                    visualParameter.setTemplateParameterType(RuleOptionType.EXPRESSION);
+                    if (namespacedProperty.getNamespaces().size() > 0) {
+                        namespacesExist = true;
+                    }
+                }
+            } else {
+                // parameter does not exist in the config.
+            }
+            executeAddValueCommand(operationModel.getConnectorParameters(), visualParameter, false);
+
+        }
+
+        /*
+         * Map<String, Value> parameters = operation.getpName2ExpressionMap();
+         * boolean namespacesExist=false;
+         * for(Map.Entry<String, Value> entry : parameters.entrySet()){
+         * CallTemplateParameter parameter = EsbFactory.eINSTANCE.createCallTemplateParameter();
+         * parameter.setParameterName(entry.getKey());
+         * Value value = entry.getValue();
+         * 
+         * boolean dynamic = value.hasExprTypeKey();
+         * 
+         * if(value.getExpression()==null && value.getKeyValue()!=null){
+         * NamespacedProperty namespacedProperty = createNamespacedProperty(value.getKeyValue(),null);
+         * namespacedProperty.setDynamic(dynamic);
+         * namespacedProperty.setSupportsDynamicXPaths(true);
+         * parameter.setParameterExpression(namespacedProperty);
+         * parameter.setParameterValue(value.getKeyValue());
+         * parameter.setTemplateParameterType(RuleOptionType.VALUE);
+         * }
+         * 
+         * if(value.getExpression()!=null){
+         * NamespacedProperty namespacedProperty = createNamespacedProperty(value.getExpression());
+         * namespacedProperty.setPropertyValue("{"+value.getExpression().toString()+"}");
+         * namespacedProperty.setDynamic(dynamic);
+         * namespacedProperty.setSupportsDynamicXPaths(true);
+         * parameter.setParameterExpression(namespacedProperty);
+         * parameter.setParameterValue("{"+value.getExpression().toString()+"}");
+         * parameter.setTemplateParameterType(RuleOptionType.EXPRESSION);
+         * if(namespacedProperty.getNamespaces().size()>0){
+         * namespacesExist=true;
+         * }
+         * }
+         * executeAddValueCommand(operationModel.getConnectorParameters(), parameter);
+         * }
+         */
+
+        if (namespacesExist) {
+            executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE,
+                    CloudConnectorOperationParamEditorType.NAMESPACED_PROPERTY_EDITOR);
+        } else {
+            executeSetValueCommand(CLOUD_CONNECTOR_OPERATION__PARAMETER_EDITOR_TYPE,
+                    CloudConnectorOperationParamEditorType.INLINE);
+        }
+
+        return operationModel;
+    }
 
 }

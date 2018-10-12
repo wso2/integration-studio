@@ -654,7 +654,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Zookeeper Connect</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"localhost:2181"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Zookeeper Connect</em>' attribute isn't clear,
@@ -664,7 +664,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Zookeeper Connect</em>' attribute.
      * @see #setZookeeperConnect(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperConnect()
-     * @model default=""
+     * @model default="localhost:2181"
      * @generated
      */
     String getZookeeperConnect();
@@ -1003,7 +1003,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Thread Count</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"1"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Thread Count</em>' attribute isn't clear,
@@ -1013,7 +1013,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Thread Count</em>' attribute.
      * @see #setThreadCount(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ThreadCount()
-     * @model default=""
+     * @model default="1"
      * @generated
      */
     String getThreadCount();
@@ -1056,7 +1056,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Socket Timeout Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"30000"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Socket Timeout Ms</em>' attribute isn't clear,
@@ -1066,7 +1066,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Socket Timeout Ms</em>' attribute.
      * @see #setSocketTimeoutMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SocketTimeoutMs()
-     * @model default=""
+     * @model default="30000"
      * @generated
      */
     String getSocketTimeoutMs();
@@ -1083,6 +1083,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Socket Receive Buffer Bytes</b></em>' attribute.
+     * The default value is <code>"65536"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Socket Receive Buffer Bytes</em>' attribute isn't clear,
@@ -1092,7 +1093,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Socket Receive Buffer Bytes</em>' attribute.
      * @see #setSocketReceiveBufferBytes(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SocketReceiveBufferBytes()
-     * @model
+     * @model default="65536"
      * @generated
      */
     String getSocketReceiveBufferBytes();
@@ -1109,6 +1110,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Fetch Message Max Bytes</b></em>' attribute.
+     * The default value is <code>"1048576"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Fetch Message Max Bytes</em>' attribute isn't clear,
@@ -1118,7 +1120,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Fetch Message Max Bytes</em>' attribute.
      * @see #setFetchMessageMaxBytes(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_FetchMessageMaxBytes()
-     * @model
+     * @model default="1048576"
      * @generated
      */
     String getFetchMessageMaxBytes();
@@ -1135,6 +1137,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Num Consumer Fetches</b></em>' attribute.
+     * The default value is <code>"1"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Num Consumer Fetches</em>' attribute isn't clear,
@@ -1144,7 +1147,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Num Consumer Fetches</em>' attribute.
      * @see #setNumConsumerFetches(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_NumConsumerFetches()
-     * @model
+     * @model default="1"
      * @generated
      */
     String getNumConsumerFetches();
@@ -1187,7 +1190,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Zookeeper Session Timeout Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"6000"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Zookeeper Session Timeout Ms</em>' attribute isn't clear,
@@ -1197,7 +1200,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Zookeeper Session Timeout Ms</em>' attribute.
      * @see #setZookeeperSessionTimeoutMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSessionTimeoutMs()
-     * @model default=""
+     * @model default="6000"
      * @generated
      */
     String getZookeeperSessionTimeoutMs();
@@ -1214,7 +1217,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Zookeeper Connection Timeout Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"6000"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Zookeeper Connection Timeout Ms</em>' attribute isn't clear,
@@ -1224,7 +1227,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Zookeeper Connection Timeout Ms</em>' attribute.
      * @see #setZookeeperConnectionTimeoutMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperConnectionTimeoutMs()
-     * @model default=""
+     * @model default="6000"
      * @generated
      */
     String getZookeeperConnectionTimeoutMs();
@@ -1241,7 +1244,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Zookeeper Sync Time Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"2000"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Zookeeper Sync Time Ms</em>' attribute isn't clear,
@@ -1251,7 +1254,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Zookeeper Sync Time Ms</em>' attribute.
      * @see #setZookeeperSyncTimeMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSyncTimeMs()
-     * @model default=""
+     * @model default="2000"
      * @generated
      */
     String getZookeeperSyncTimeMs();
@@ -1268,6 +1271,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Offsets Storage</b></em>' attribute.
+     * The default value is <code>"zookeeper"</code>.
      * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType}.
      * <!-- begin-user-doc -->
      * <p>
@@ -1279,7 +1283,7 @@ public interface InboundEndpoint extends EsbElement {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.OffsetsStorageType
      * @see #setOffsetsStorage(OffsetsStorageType)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsStorage()
-     * @model
+     * @model default="zookeeper"
      * @generated
      */
     OffsetsStorageType getOffsetsStorage();
@@ -1297,7 +1301,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Offsets Channel Backoff Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"1000"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Offsets Channel Backoff Ms</em>' attribute isn't clear,
@@ -1307,7 +1311,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Offsets Channel Backoff Ms</em>' attribute.
      * @see #setOffsetsChannelBackoffMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsChannelBackoffMs()
-     * @model default=""
+     * @model default="1000"
      * @generated
      */
     String getOffsetsChannelBackoffMs();
@@ -1324,7 +1328,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Offsets Channel Socket Timeout Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"10000"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Offsets Channel Socket Timeout Ms</em>' attribute isn't clear,
@@ -1334,7 +1338,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Offsets Channel Socket Timeout Ms</em>' attribute.
      * @see #setOffsetsChannelSocketTimeoutMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsChannelSocketTimeoutMs()
-     * @model default=""
+     * @model default="10000"
      * @generated
      */
     String getOffsetsChannelSocketTimeoutMs();
@@ -1351,7 +1355,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Offsets Commit Max Retries</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"5"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Offsets Commit Max Retries</em>' attribute isn't clear,
@@ -1361,7 +1365,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Offsets Commit Max Retries</em>' attribute.
      * @see #setOffsetsCommitMaxRetries(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OffsetsCommitMaxRetries()
-     * @model default=""
+     * @model default="5"
      * @generated
      */
     String getOffsetsCommitMaxRetries();
@@ -1378,6 +1382,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Dual Commit Enabled</b></em>' attribute.
+     * The default value is <code>"true"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Dual Commit Enabled</em>' attribute isn't clear,
@@ -1387,7 +1392,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Dual Commit Enabled</em>' attribute.
      * @see #setDualCommitEnabled(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_DualCommitEnabled()
-     * @model
+     * @model default="true"
      * @generated
      */
     boolean isDualCommitEnabled();
@@ -1404,7 +1409,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Auto Commit Interval Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"60000"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Auto Commit Interval Ms</em>' attribute isn't clear,
@@ -1414,7 +1419,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Auto Commit Interval Ms</em>' attribute.
      * @see #setAutoCommitIntervalMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoCommitIntervalMs()
-     * @model default=""
+     * @model default="60000"
      * @generated
      */
     String getAutoCommitIntervalMs();
@@ -1431,6 +1436,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Queued Max Message Chunks</b></em>' attribute.
+     * The default value is <code>"2"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Queued Max Message Chunks</em>' attribute isn't clear,
@@ -1440,7 +1446,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Queued Max Message Chunks</em>' attribute.
      * @see #setQueuedMaxMessageChunks(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_QueuedMaxMessageChunks()
-     * @model
+     * @model default="2"
      * @generated
      */
     String getQueuedMaxMessageChunks();
@@ -1457,7 +1463,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Rebalance Max Retries</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"4"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Rebalance Max Retries</em>' attribute isn't clear,
@@ -1467,7 +1473,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Rebalance Max Retries</em>' attribute.
      * @see #setRebalanceMaxRetries(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_RebalanceMaxRetries()
-     * @model default=""
+     * @model default="4"
      * @generated
      */
     String getRebalanceMaxRetries();
@@ -1484,7 +1490,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Fetch Min Bytes</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"1"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Fetch Min Bytes</em>' attribute isn't clear,
@@ -1494,7 +1500,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Fetch Min Bytes</em>' attribute.
      * @see #setFetchMinBytes(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_FetchMinBytes()
-     * @model default=""
+     * @model default="1"
      * @generated
      */
     String getFetchMinBytes();
@@ -1511,7 +1517,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Fetch Wait Max Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"100"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Fetch Wait Max Ms</em>' attribute isn't clear,
@@ -1521,7 +1527,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Fetch Wait Max Ms</em>' attribute.
      * @see #setFetchWaitMaxMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_FetchWaitMaxMs()
-     * @model default=""
+     * @model default="100"
      * @generated
      */
     String getFetchWaitMaxMs();
@@ -1538,7 +1544,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Rebalance Backoff Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"2000"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Rebalance Backoff Ms</em>' attribute isn't clear,
@@ -1548,7 +1554,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Rebalance Backoff Ms</em>' attribute.
      * @see #setRebalanceBackoffMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_RebalanceBackoffMs()
-     * @model default=""
+     * @model default="2000"
      * @generated
      */
     String getRebalanceBackoffMs();
@@ -1565,7 +1571,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Refresh Leader Backoff Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"200"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Refresh Leader Backoff Ms</em>' attribute isn't clear,
@@ -1575,7 +1581,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Refresh Leader Backoff Ms</em>' attribute.
      * @see #setRefreshLeaderBackoffMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_RefreshLeaderBackoffMs()
-     * @model default=""
+     * @model default="200"
      * @generated
      */
     String getRefreshLeaderBackoffMs();
@@ -1592,6 +1598,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Auto Offset Reset</b></em>' attribute.
+     * The default value is <code>"largest"</code>.
      * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.AutoOffsetResetType}.
      * <!-- begin-user-doc -->
      * <p>
@@ -1603,7 +1610,7 @@ public interface InboundEndpoint extends EsbElement {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.AutoOffsetResetType
      * @see #setAutoOffsetReset(AutoOffsetResetType)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoOffsetReset()
-     * @model
+     * @model default="largest"
      * @generated
      */
     AutoOffsetResetType getAutoOffsetReset();
@@ -1621,7 +1628,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Consumer Timeout Ms</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"3000"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Consumer Timeout Ms</em>' attribute isn't clear,
@@ -1631,7 +1638,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Consumer Timeout Ms</em>' attribute.
      * @see #setConsumerTimeoutMs(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerTimeoutMs()
-     * @model default=""
+     * @model default="3000"
      * @generated
      */
     String getConsumerTimeoutMs();
@@ -1648,6 +1655,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Exclude Internal Topics</b></em>' attribute.
+     * The default value is <code>"false"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Exclude Internal Topics</em>' attribute isn't clear,
@@ -1657,7 +1665,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Exclude Internal Topics</em>' attribute.
      * @see #setExcludeInternalTopics(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ExcludeInternalTopics()
-     * @model
+     * @model default="false"
      * @generated
      */
     boolean isExcludeInternalTopics();
@@ -1674,6 +1682,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Partition Assignment Strategy</b></em>' attribute.
+     * The default value is <code>"roundrobin"</code>.
      * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType}.
      * <!-- begin-user-doc -->
      * <p>
@@ -1685,7 +1694,7 @@ public interface InboundEndpoint extends EsbElement {
      * @see org.wso2.developerstudio.eclipse.gmf.esb.PartitionAssignmentStrategyType
      * @see #setPartitionAssignmentStrategy(PartitionAssignmentStrategyType)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_PartitionAssignmentStrategy()
-     * @model
+     * @model default="roundrobin"
      * @generated
      */
     PartitionAssignmentStrategyType getPartitionAssignmentStrategy();

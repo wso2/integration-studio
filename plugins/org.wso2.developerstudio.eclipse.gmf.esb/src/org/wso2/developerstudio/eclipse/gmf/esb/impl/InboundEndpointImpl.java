@@ -461,7 +461,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT = "";
+    protected static final String INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT = "400";
 
     /**
      * The cached value of the '{@link #getInboundWorkerPoolSizeCore() <em>Inbound Worker Pool Size Core</em>}' attribute.
@@ -481,7 +481,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT = "";
+    protected static final String INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT = "500";
 
     /**
      * The cached value of the '{@link #getInboundWorkerPoolSizeMax() <em>Inbound Worker Pool Size Max</em>}' attribute.
@@ -502,7 +502,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT = "";
+    protected static final String INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT = "60";
 
     /**
      * The cached value of the '{@link #getInboundWorkerThreadKeepAliveSec()
@@ -524,7 +524,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT = "";
+    protected static final String INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT = "-1";
 
     /**
      * The cached value of the '{@link #getInboundWorkerPoolQueueLength()
@@ -565,7 +565,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_THREAD_ID_EDEFAULT = "";
+    protected static final String INBOUND_THREAD_ID_EDEFAULT = "PassThroughInboundWorkerPool";
 
     /**
      * The cached value of the '{@link #getInboundThreadId() <em>Inbound Thread Id</em>}' attribute.

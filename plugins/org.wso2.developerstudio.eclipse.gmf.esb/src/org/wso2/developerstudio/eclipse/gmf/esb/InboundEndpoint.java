@@ -3719,7 +3719,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Inbound Worker Pool Size Core</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"400"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Inbound Worker Pool Size Core</em>' attribute isn't clear,
@@ -3729,7 +3729,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Inbound Worker Pool Size Core</em>' attribute.
      * @see #setInboundWorkerPoolSizeCore(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeCore()
-     * @model default=""
+     * @model default="400"
      * @generated
      */
     String getInboundWorkerPoolSizeCore();
@@ -3746,7 +3746,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Inbound Worker Pool Size Max</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"500"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Inbound Worker Pool Size Max</em>' attribute isn't clear,
@@ -3756,7 +3756,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Inbound Worker Pool Size Max</em>' attribute.
      * @see #setInboundWorkerPoolSizeMax(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolSizeMax()
-     * @model default=""
+     * @model default="500"
      * @generated
      */
     String getInboundWorkerPoolSizeMax();
@@ -3773,7 +3773,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Inbound Worker Thread Keep Alive Sec</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"60"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Inbound Worker Thread Keep Alive Sec</em>' attribute isn't clear,
@@ -3783,7 +3783,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Inbound Worker Thread Keep Alive Sec</em>' attribute.
      * @see #setInboundWorkerThreadKeepAliveSec(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerThreadKeepAliveSec()
-     * @model default=""
+     * @model default="60"
      * @generated
      */
     String getInboundWorkerThreadKeepAliveSec();
@@ -3800,7 +3800,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Inbound Worker Pool Queue Length</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"-1"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Inbound Worker Pool Queue Length</em>' attribute isn't clear,
@@ -3810,7 +3810,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Inbound Worker Pool Queue Length</em>' attribute.
      * @see #setInboundWorkerPoolQueueLength(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundWorkerPoolQueueLength()
-     * @model default=""
+     * @model default="-1"
      * @generated
      */
     String getInboundWorkerPoolQueueLength();
@@ -3854,7 +3854,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Inbound Thread Id</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"PassThroughInboundWorkerPool"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Inbound Thread Id</em>' attribute isn't clear,
@@ -3864,7 +3864,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Inbound Thread Id</em>' attribute.
      * @see #setInboundThreadId(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundThreadId()
-     * @model default=""
+     * @model default="PassThroughInboundWorkerPool"
      * @generated
      */
     String getInboundThreadId();

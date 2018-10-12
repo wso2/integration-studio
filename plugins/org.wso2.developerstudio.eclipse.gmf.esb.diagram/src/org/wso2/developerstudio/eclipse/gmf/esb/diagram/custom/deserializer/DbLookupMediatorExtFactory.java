@@ -24,6 +24,18 @@ import org.apache.synapse.config.xml.DBLookupMediatorFactory;
 import org.apache.synapse.mediators.db.DBLookupMediator;
 
 public class DbLookupMediatorExtFactory extends DBLookupMediatorFactory {
+    
+    private static DbLookupMediatorExtFactory instance;
+    
+    private DbLookupMediatorExtFactory() {
+    }
+    
+    public static synchronized DbLookupMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new DbLookupMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

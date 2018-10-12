@@ -31,6 +31,18 @@ import org.apache.synapse.mediators.builtin.PropertyMediator;
 import org.jaxen.JaxenException;
 
 public class PropertyMediatorExtFactory extends PropertyMediatorFactory {
+    
+    private static PropertyMediatorExtFactory instance;
+    
+    private PropertyMediatorExtFactory() {
+    }
+    
+    public static synchronized PropertyMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new PropertyMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

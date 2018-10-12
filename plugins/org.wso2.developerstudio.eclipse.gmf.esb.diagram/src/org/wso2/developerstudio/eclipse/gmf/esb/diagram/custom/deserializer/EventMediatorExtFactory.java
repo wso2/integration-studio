@@ -31,6 +31,18 @@ import org.wso2.carbon.mediator.event.EventMediator;
 import org.wso2.carbon.mediator.event.xml.EventMediatorFactory;
 
 public class EventMediatorExtFactory extends EventMediatorFactory {
+    
+    private static EventMediatorExtFactory instance;
+    
+    private EventMediatorExtFactory() {
+    }
+    
+    public static synchronized EventMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new EventMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

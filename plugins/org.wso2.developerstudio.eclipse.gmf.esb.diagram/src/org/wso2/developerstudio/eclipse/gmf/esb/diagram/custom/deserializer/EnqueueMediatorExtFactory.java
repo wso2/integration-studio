@@ -27,6 +27,18 @@ import org.apache.synapse.config.xml.EnqueueMediatorFactory;
 import org.apache.synapse.mediators.builtin.EnqueueMediator;
 
 public class EnqueueMediatorExtFactory extends EnqueueMediatorFactory {
+    
+    private static EnqueueMediatorExtFactory instance;
+    
+    private EnqueueMediatorExtFactory() {
+    }
+    
+    public static synchronized EnqueueMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new EnqueueMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

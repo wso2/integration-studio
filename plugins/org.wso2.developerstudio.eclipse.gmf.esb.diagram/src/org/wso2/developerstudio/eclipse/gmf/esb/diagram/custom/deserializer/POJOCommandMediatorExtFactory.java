@@ -22,7 +22,6 @@ import java.util.Properties;
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
-import org.apache.synapse.SynapseException;
 import org.apache.synapse.config.xml.POJOCommandMediatorFactory;
 import org.apache.synapse.config.xml.SynapseXPathFactory;
 import org.apache.synapse.util.xpath.SynapseXPath;

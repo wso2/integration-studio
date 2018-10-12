@@ -77,7 +77,6 @@ import org.apache.synapse.mediators.bsf.ScriptMediatorFactory;
 import org.apache.synapse.mediators.spring.SpringMediatorFactory;
 import org.apache.synapse.mediators.throttle.ThrottleMediatorFactory;
 import org.apache.synapse.mediators.xquery.XQueryMediatorFactory;
-import org.apache.synapse.startup.quartz.SimpleQuartzFactory;
 import org.apache.synapse.task.SynapseTaskException;
 import org.wso2.carbon.identity.entitlement.mediator.config.xml.EntitlementMediatorFactory;
 import org.wso2.carbon.identity.oauth.mediator.config.xml.OAuthMediatorFactory;
@@ -143,6 +142,56 @@ public class ProcessSourceView {
             "result", "messageCount", "correlateOn", "completeCondition", "onComplete", "configuration", "source",
             "messageBuilder", "target", "ruleSet", "properties", "input", "output", "attribute", "arg", "fact",
             "trigger", "in", "out"));
+    
+    private static SequenceMediatorFactory sequenceMediatorFactory;
+    private static TemplateMediatorFactory templateMediatorFactory;
+    private static LogMediatorFactory logMediatorFactory;
+    private static EnqueueMediatorFactory enqueueMediatorFactory;
+    private static SendMediatorFactory sendMediatorFactory;
+    private static LoopBackMediatorFactory loopBackMediatorFactory;
+    private static CallMediatorFactory callMediatorFactory;
+    private static RespondMediatorFactory respondMediatorFactory;
+    private static EventMediatorFactory eventMediatorFactory;
+    private static DropMediatorFactory dropMediatorFactory;
+    private static EnrichMediatorFactory enrichMediatorFactory;
+    private static PropertyMediatorFactory propertyMediatorFactory;
+    private static FilterMediatorFactory filterMediatorFactory;
+    private static InvokeMediatorFactory invokeMediatorFactory;
+    private static MessageStoreMediatorFactory messageStoreMediatorFactory;
+    private static SwitchMediatorFactory switchMediatorFactory;
+    private static ValidateMediatorFactory validateMediatorFactory;
+    private static ConditionalRouterMediatorFactory conditionalRouterMediatorFactory;
+    private static ScriptMediatorFactory scriptMediatorFactory;
+    private static SpringMediatorFactory springMediatorFactory;
+    private static FaultMediatorFactory faultMediatorFactory;
+    private static HeaderMediatorFactory headerMediatorFactory;
+    private static PayloadFactoryMediatorFactory payloadFactoryMediatorFactory;
+    private static SmooksMediatorFactory smooksMediatorFactory;
+    private static URLRewriteMediatorFactory urlRewriteMediatorFactory;
+    private static XQueryMediatorFactory xQueryMediatorFactory;
+    private static XSLTMediatorFactory xsltMediatorFactory;
+    private static DataMapperMediatorFactory dataMapperMediatorFactory;
+    private static FastXSLTMediatorFactory fastXSLTMediatorFactory;
+    private static CacheMediatorFactory cacheMediatorFactory;
+    private static DBReportMediatorFactory dbReportMediatorFactory;
+    private static DBLookupMediatorFactory dbLookupMediatorFactory;
+    private static ThrottleMediatorFactory throttleMediatorFactory;
+    private static TransactionMediatorFactory transactionMediatorFactory;
+    private static AggregateMediatorFactory aggregateMediatorFactory;
+    private static CalloutMediatorFactory calloutMediatorFactory;
+    private static CloneMediatorFactory cloneMediatorFactory;
+    private static IterateMediatorFactory iterateMediatorFactory;
+    private static ForEachMediatorFactory forEachMediatorFactory;
+    private static EntitlementMediatorFactory entitlementMediatorFactory;
+    private static OAuthMediatorFactory oAuthMediatorFactory;
+    private static RuleMediatorFactory ruleMediatorFactory;
+    private static PublishEventMediatorFactory publishEventMediatorFactory;
+    private static ClassMediatorExtFactory classMediatorExtFactory;
+    private static BeanMediatorExtFactory beanMediatorExtFactory;
+    private static POJOCommandMediatorExtFactory pojoCommandMediatorExtFactory;
+    private static EJBMediatorExtFactory ejbMediatorExtFactory;
+    private static BuilderMediatorExtFactory builderMediatorExtFactory;
+    private static BamMediatorExtFactory bamMediatorExtFactory;
 
     public ProcessSourceView() {
 
@@ -542,6 +591,9 @@ public class ProcessSourceView {
                                     if (sourceError != null) {
                                         return sourceError;
                                     }
+                                    if (currentMediator != null && !currentMediator.getqName().equals(tempTag.getqName())) {
+                                    	intermediaryStack.push(currentMediator);
+                                    }
                                 }
                             } else if (currentMediator != null) {
                                 intermediaryStack.push(currentMediator);
@@ -725,12 +777,10 @@ public class ProcessSourceView {
             OMElement omElement = AXIOMUtil.stringToOM(mediator);
 
             if (qTag.equals("api")) {
-                APIFactory factory = new APIFactory();
-                factory.createAPI(omElement);
+                APIFactory.createAPI(omElement);
 
             } else if (qTag.equals("proxy")) {
-                ProxyServiceFactory factory = new ProxyServiceFactory();
-                factory.createProxy(omElement, null);
+                ProxyServiceFactory.createProxy(omElement, null);
 
             } else if (qTag.equals("endpoint")) {
                 if (omElement.getFirstElement() != null) {
@@ -742,33 +792,32 @@ public class ProcessSourceView {
                 EndpointFactory.getEndpointFromElement(omElement, false, null);
 
             } else if (qTag.equals("inboundEndpoint")) {
-                DummyInboundEndpointFactory factory = new DummyInboundEndpointFactory();
-                factory.createInboundEndpointDev(omElement);
+                DummyInboundEndpointFactory.createInboundEndpointDev(omElement);
 
             } else if (qTag.equals("localEntry")) {
-                EntryExtFactory factory = new EntryExtFactory();
-                factory.createEntry(omElement, null);
+                 EntryExtFactory.createEntry(omElement, null);
 
             } else if (qTag.equals("messageProcessor")) {
-                DummyMessageProcessorFactory factory = new DummyMessageProcessorFactory();
-                factory.createMessageProcessor(omElement, null);
+                DummyMessageProcessorFactory.createMessageProcessor(omElement, null);
 
             } else if (qTag.equals("messageStore")) {
-                DummyMessageStoreFactory factory = new DummyMessageStoreFactory();
-                factory.createMessageStore(omElement, null);
+                 DummyMessageStoreFactory.createMessageStore(omElement, null);
 
             } else if (qTag.equals("sequence")) {
-                SequenceMediatorFactory factory = new SequenceMediatorFactory();
-                factory.createSpecificMediator(omElement, null);
+                if (sequenceMediatorFactory == null) {
+                    sequenceMediatorFactory = new SequenceMediatorFactory();
+                }
+                sequenceMediatorFactory.createSpecificMediator(omElement, null);
 
             } else if (qTag.equals("task")) {
-                DummyTaskDescriptionFactory factory = new DummyTaskDescriptionFactory();
-                factory.createTaskDescription(omElement,
+                DummyTaskDescriptionFactory.createTaskDescription(omElement,
                         OMAbstractFactory.getOMFactory().createOMNamespace("http://ws.apache.org/ns/synapse", ""));
 
             } else if (qTag.equals("template")) {
-                TemplateMediatorFactory factory = new TemplateMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (templateMediatorFactory == null) {
+                    templateMediatorFactory = new TemplateMediatorFactory();
+                }
+                templateMediatorFactory.createMediator(omElement, null);
 
             }
 
@@ -799,39 +848,57 @@ public class ProcessSourceView {
             OMElement omElement = AXIOMUtil.stringToOM(mediator);
 
             if (qTag.equals("log")) {
-                LogMediatorFactory factory = new LogMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (logMediatorFactory == null) {
+                    logMediatorFactory = new LogMediatorFactory();
+                }
+                logMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("enqueue")) {
-                EnqueueMediatorFactory factory = new EnqueueMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (enqueueMediatorFactory == null) {
+                    enqueueMediatorFactory = new EnqueueMediatorFactory();
+                }
+                enqueueMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("send")) {
-                SendMediatorFactory factory = new SendMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (sendMediatorFactory == null) {
+                    sendMediatorFactory = new SendMediatorFactory();
+                }
+                sendMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("loopback")) {
-                LoopBackMediatorFactory factory = new LoopBackMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (loopBackMediatorFactory == null) {
+                    loopBackMediatorFactory = new LoopBackMediatorFactory();
+                }
+                loopBackMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("call")) {
-                CallMediatorFactory factory = new CallMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (callMediatorFactory == null) {
+                    callMediatorFactory = new CallMediatorFactory();
+                }
+                callMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("respond")) {
-                RespondMediatorFactory factory = new RespondMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (respondMediatorFactory == null) {
+                    respondMediatorFactory = new RespondMediatorFactory();
+                }
+                respondMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("event")) {
-                EventMediatorFactory factory = new EventMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (eventMediatorFactory == null) {
+                    eventMediatorFactory = new EventMediatorFactory();
+                }
+                eventMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("drop")) {
-                DropMediatorFactory factory = new DropMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (dropMediatorFactory == null) {
+                    dropMediatorFactory = new DropMediatorFactory();
+                }
+                dropMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("enrich")) {
-                EnrichMediatorFactory factory = new EnrichMediatorFactory();
+                if (enrichMediatorFactory == null) {
+                    enrichMediatorFactory = new EnrichMediatorFactory();
+                }
                 omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
 
                 Iterator iterator = omElement.getChildrenWithLocalName("source");
@@ -845,78 +912,104 @@ public class ProcessSourceView {
                     OMElement target = (OMElement) iterator.next();
                     target.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
                 }
-                factory.createMediator(omElement, null);
+                enrichMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("property")) {
-                PropertyMediatorFactory factory = new PropertyMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (propertyMediatorFactory == null) {
+                    propertyMediatorFactory = new PropertyMediatorFactory();
+                }
+                propertyMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("filter")) {
-                FilterMediatorFactory factory = new FilterMediatorFactory();
+                if (filterMediatorFactory == null) {
+                    filterMediatorFactory = new FilterMediatorFactory();
+                }
                 setNamespaceForChildren(omElement);
-                factory.createMediator(omElement, null);
+                filterMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("call-template")) {
-                InvokeMediatorFactory factory = new InvokeMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (invokeMediatorFactory == null) {
+                    invokeMediatorFactory = new InvokeMediatorFactory();
+                }
+                invokeMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("sequence")) {
-                SequenceMediatorFactory factory = new SequenceMediatorFactory();
-                factory.createAnonymousSequence(omElement, null);
+                if (sequenceMediatorFactory == null) {
+                    sequenceMediatorFactory = new SequenceMediatorFactory();
+                }
+                sequenceMediatorFactory.createAnonymousSequence(omElement, null);
 
             } else if (qTag.equals("store")) {
-                MessageStoreMediatorFactory factory = new MessageStoreMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (messageStoreMediatorFactory == null) {
+                    messageStoreMediatorFactory = new MessageStoreMediatorFactory();
+                }
+                messageStoreMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("switch")) {
-                SwitchMediatorFactory factory = new SwitchMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (switchMediatorFactory == null) {
+                    switchMediatorFactory = new SwitchMediatorFactory();
+                }
+                switchMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("validate")) {
-                ValidateMediatorFactory factory = new ValidateMediatorFactory();
+                if (validateMediatorFactory == null) {
+                    validateMediatorFactory = new ValidateMediatorFactory();
+                }
                 setNamespaceForChildren(omElement);
-                factory.createMediator(omElement, null);
+                validateMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("conditionalRouter")) {
-                ConditionalRouterMediatorFactory factory = new ConditionalRouterMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (conditionalRouterMediatorFactory == null) {
+                    conditionalRouterMediatorFactory = new ConditionalRouterMediatorFactory();
+                }
+                conditionalRouterMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("bean")) {
-                BeanMediatorExtFactory factory = new BeanMediatorExtFactory();
-                factory.createMediator(omElement, null);
+                if (beanMediatorExtFactory == null) {
+                    beanMediatorExtFactory = new BeanMediatorExtFactory();
+                }
+                beanMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("class")) {
-                ClassMediatorExtFactory factory = new ClassMediatorExtFactory();
-                factory.createMediator(omElement, null);
+                if (classMediatorExtFactory == null) {
+                    classMediatorExtFactory = new ClassMediatorExtFactory();
+                }
+                classMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("pojoCommand")) {
-                POJOCommandMediatorExtFactory factory = new POJOCommandMediatorExtFactory();
-                factory.createMediator(omElement, null);
+                if (pojoCommandMediatorExtFactory == null) {
+                    pojoCommandMediatorExtFactory = new POJOCommandMediatorExtFactory();
+                }
+                pojoCommandMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("ejb")) {
-                EJBMediatorExtFactory factory = new EJBMediatorExtFactory();
-                factory.createMediator(omElement, null);
+                if (ejbMediatorExtFactory == null) {
+                    ejbMediatorExtFactory = new EJBMediatorExtFactory();
+                }
+                ejbMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("script")) {
                 Properties properties = new Properties();
-                ScriptMediatorFactory factory = new ScriptMediatorFactory();
-                factory.createMediator(omElement, properties);
+                if (scriptMediatorFactory == null) {
+                    scriptMediatorFactory = new ScriptMediatorFactory();
+                }
+                scriptMediatorFactory.createMediator(omElement, properties);
 
             } else if (qTag.equals("spring")) {
-                SpringMediatorFactory factory = new SpringMediatorFactory();
+                if (springMediatorFactory == null) {
+                    springMediatorFactory = new SpringMediatorFactory();
+                }
                 Iterator children = omElement.getChildrenWithLocalName("spring");
                 if (children.hasNext()) {
                     OMElement codeElement = (OMElement) children.next();
                     codeElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", "spring"));
                 }
-                factory.createMediator(omElement, null);
-
-            } else if (qTag.equals("enrich")) {
-                EnrichMediatorFactory factory = new EnrichMediatorFactory();
-                factory.createMediator(omElement, null);
+                springMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("makefault")) {
-                FaultMediatorFactory factory = new FaultMediatorFactory();
+                if (faultMediatorFactory == null) {
+                    faultMediatorFactory = new FaultMediatorFactory();
+                }
                 Iterator children = omElement.getChildrenWithLocalName("code");
                 if (children.hasNext()) {
                     OMElement codeElement = (OMElement) children.next();
@@ -929,14 +1022,18 @@ public class ProcessSourceView {
                     reasonElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
                 }
 
-                factory.createMediator(omElement, null);
+                faultMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("header")) {
-                HeaderMediatorFactory factory = new HeaderMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (headerMediatorFactory == null) {
+                    headerMediatorFactory = new HeaderMediatorFactory();
+                }
+                headerMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("payloadFactory")) {
-                PayloadFactoryMediatorFactory factory = new PayloadFactoryMediatorFactory();
+                if (payloadFactoryMediatorFactory == null) {
+                    payloadFactoryMediatorFactory = new PayloadFactoryMediatorFactory();
+                }
                 omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
                 Iterator children = omElement.getChildrenWithLocalName("format");
                 if (children.hasNext()) {
@@ -944,110 +1041,150 @@ public class ProcessSourceView {
                     formatElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
                 }
 
-                factory.createMediator(omElement, null);
+                payloadFactoryMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("smooks")) {
-                SmooksMediatorFactory factory = new SmooksMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (smooksMediatorFactory == null) {
+                    smooksMediatorFactory = new SmooksMediatorFactory();
+                }
+                smooksMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("rewrite")) {
-                URLRewriteMediatorFactory factory = new URLRewriteMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (urlRewriteMediatorFactory == null) {
+                    urlRewriteMediatorFactory = new URLRewriteMediatorFactory();
+                }
+                urlRewriteMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("xquery")) {
-                XQueryMediatorFactory factory = new XQueryMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (xQueryMediatorFactory == null) {
+                    xQueryMediatorFactory = new XQueryMediatorFactory();
+                }
+                xQueryMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("xslt")) {
-                XSLTMediatorFactory factory = new XSLTMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (xsltMediatorFactory == null) {
+                    xsltMediatorFactory = new XSLTMediatorFactory();
+                }
+                xsltMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("datamapper")) {
-                DataMapperMediatorFactory factory = new DataMapperMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (dataMapperMediatorFactory == null) {
+                    dataMapperMediatorFactory = new DataMapperMediatorFactory();
+                }
+                dataMapperMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("fastXSLT")) {
-                FastXSLTMediatorFactory factory = new FastXSLTMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (fastXSLTMediatorFactory == null) {
+                    fastXSLTMediatorFactory = new FastXSLTMediatorFactory();
+                }
+                fastXSLTMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("cache")) {
-                CacheMediatorFactory factory = new CacheMediatorFactory();
+                if (cacheMediatorFactory == null) {
+                    cacheMediatorFactory = new CacheMediatorFactory();
+                }
                 omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
-                factory.createMediator(omElement, null);
+                cacheMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("dbreport")) {
-                DBReportMediatorFactory factory = new DBReportMediatorFactory();
+                if (dbReportMediatorFactory == null) {
+                    dbReportMediatorFactory = new DBReportMediatorFactory();
+                }
                 setNamespaceForChildren(omElement);
-                factory.createMediator(omElement, null);
+                dbReportMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("dblookup")) {
-                DBLookupMediatorFactory factory = new DBLookupMediatorFactory();
+                if (dbLookupMediatorFactory == null) {
+                    dbLookupMediatorFactory = new DBLookupMediatorFactory();
+                }
                 setNamespaceForChildren(omElement);
-                factory.createMediator(omElement, null);
-
-            } else if (qTag.equals("event")) {
-                EventMediatorFactory factory = new EventMediatorFactory();
-                factory.createMediator(omElement, null);
+                dbLookupMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("throttle")) {
-                ThrottleMediatorFactory factory = new ThrottleMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (throttleMediatorFactory == null) {
+                    throttleMediatorFactory = new ThrottleMediatorFactory();
+                }
+                throttleMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("transaction")) {
-                TransactionMediatorFactory factory = new TransactionMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (transactionMediatorFactory == null) {
+                    transactionMediatorFactory = new TransactionMediatorFactory();
+                }
+                transactionMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("aggregate")) {
-                AggregateMediatorFactory factory = new AggregateMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (aggregateMediatorFactory == null) {
+                    aggregateMediatorFactory = new AggregateMediatorFactory();
+                }
+                aggregateMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("callout")) {
-                CalloutMediatorFactory factory = new CalloutMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (calloutMediatorFactory == null) {
+                    calloutMediatorFactory = new CalloutMediatorFactory();
+                }
+                calloutMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("clone")) {
-                CloneMediatorFactory factory = new CloneMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (cloneMediatorFactory == null) {
+                    cloneMediatorFactory = new CloneMediatorFactory();
+                }
+                cloneMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("iterate")) {
-                IterateMediatorFactory factory = new IterateMediatorFactory();
+                if (iterateMediatorFactory == null) {
+                    iterateMediatorFactory = new IterateMediatorFactory();
+                }
                 Iterator iterator = omElement.getChildrenWithLocalName("target");
                 if (iterator.hasNext()) {
                     OMElement source = (OMElement) iterator.next();
                     source.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
                 }
-                factory.createMediator(omElement, null);
+                iterateMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("foreach")) {
-                ForEachMediatorFactory factory = new ForEachMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (forEachMediatorFactory == null) {
+                    forEachMediatorFactory = new ForEachMediatorFactory();
+                }
+                forEachMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("entitlementService")) {
-                EntitlementMediatorFactory factory = new EntitlementMediatorFactory();
+                if (entitlementMediatorFactory == null) {
+                    entitlementMediatorFactory = new EntitlementMediatorFactory();
+                }
                 omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
-                factory.createMediator(omElement, null);
+                entitlementMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("oauthService")) {
-                OAuthMediatorFactory factory = new OAuthMediatorFactory();
+                if (oAuthMediatorFactory == null) {
+                    oAuthMediatorFactory = new OAuthMediatorFactory();
+                }
                 omElement.setNamespace(new OMNamespaceImpl("http://ws.apache.org/ns/synapse", ""));
-                factory.createMediator(omElement, null);
+                oAuthMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("builder")) {
-                BuilderMediatorExtFactory factory = new BuilderMediatorExtFactory();
-                factory.createMediator(omElement, null);
+                if (builderMediatorExtFactory == null) {
+                    builderMediatorExtFactory = new BuilderMediatorExtFactory();
+                }
+                builderMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("rule")) {
-                RuleMediatorFactory factory = new RuleMediatorFactory();
-                factory.createMediator(omElement, null);
+                if (ruleMediatorFactory == null) {
+                    ruleMediatorFactory = new RuleMediatorFactory();
+                }
+                ruleMediatorFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("bam")) {
-                BamMediatorExtFactory factory = new BamMediatorExtFactory();
-                factory.createMediator(omElement, null);
+                if (bamMediatorExtFactory == null) {
+                    bamMediatorExtFactory = new BamMediatorExtFactory();
+                }
+                bamMediatorExtFactory.createMediator(omElement, null);
 
             } else if (qTag.equals("publishEvent")) {
-                PublishEventMediatorFactory factory = new PublishEventMediatorFactory();
+                if (publishEventMediatorFactory == null) {
+                    publishEventMediatorFactory = new PublishEventMediatorFactory();
+                }
                 setNamespaceForChildren(omElement);
-                factory.createMediator(omElement, null);
+                publishEventMediatorFactory.createMediator(omElement, null);
 
             }
 

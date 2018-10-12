@@ -27,6 +27,18 @@ import org.apache.synapse.config.xml.DBReportMediatorFactory;
 import org.apache.synapse.mediators.db.DBReportMediator;
 
 public class DbReportMediatorExtFactory extends DBReportMediatorFactory {
+    
+    private static DbReportMediatorExtFactory instance;
+    
+    private DbReportMediatorExtFactory() {
+    }
+    
+    public static synchronized DbReportMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new DbReportMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

@@ -29,6 +29,18 @@ import org.apache.synapse.mediators.store.MessageStoreMediator;
 import org.jaxen.JaxenException;
 
 public class StoreMediatorExtFactory extends MessageStoreMediatorFactory {
+    
+    private static StoreMediatorExtFactory instance;
+    
+    private StoreMediatorExtFactory() {
+    }
+    
+    public static synchronized StoreMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new StoreMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

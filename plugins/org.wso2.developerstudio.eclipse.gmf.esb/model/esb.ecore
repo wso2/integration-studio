@@ -2922,9 +2922,9 @@
         defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wso2mbConnectionUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSContentType"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="text/plain"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFileNamePattern"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=".*.txt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFileProcessInterval"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFileProcessCount"

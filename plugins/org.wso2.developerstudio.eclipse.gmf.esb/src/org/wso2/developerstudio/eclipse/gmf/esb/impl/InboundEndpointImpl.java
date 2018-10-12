@@ -699,7 +699,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT = "";
+    protected static final String TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT = "text/plain";
 
     /**
      * The cached value of the '{@link #getTransportVFSContentType() <em>Transport VFS Content Type</em>}' attribute.
@@ -719,7 +719,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT = "";
+    protected static final String TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT = ".*.txt";
 
     /**
      * The cached value of the '{@link #getTransportVFSFileNamePattern() <em>Transport VFS File Name Pattern</em>}' attribute.

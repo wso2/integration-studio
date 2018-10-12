@@ -4042,7 +4042,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport VFS Content Type</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"text/plain"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport VFS Content Type</em>' attribute isn't clear,
@@ -4052,7 +4052,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Transport VFS Content Type</em>' attribute.
      * @see #setTransportVFSContentType(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSContentType()
-     * @model default=""
+     * @model default="text/plain"
      * @generated
      */
     String getTransportVFSContentType();
@@ -4069,7 +4069,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport VFS File Name Pattern</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>".*.txt"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport VFS File Name Pattern</em>' attribute isn't clear,
@@ -4079,7 +4079,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Transport VFS File Name Pattern</em>' attribute.
      * @see #setTransportVFSFileNamePattern(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileNamePattern()
-     * @model default=""
+     * @model default=".*.txt"
      * @generated
      */
     String getTransportVFSFileNamePattern();

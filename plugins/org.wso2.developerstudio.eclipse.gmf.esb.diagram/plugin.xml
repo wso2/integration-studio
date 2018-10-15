@@ -5968,7 +5968,7 @@
 			id="org.wso2.carbonstudio.eclipse.esb.presentation.EsbDiagramEditor"> 
   		<public 
  	 		publicId="http://ws.apache.org/ns/synapse" 
- 	 		uri="http://synapse.apache.org/ns/2010/04/configuration/synapse_config.xsd"> 
+ 	 		uri="http://product-dist.wso2.com/p2/synapse-schema/synapse_config.xsd"> 
   		</public> 
  	 	</catalogContribution> 
  	</extension>

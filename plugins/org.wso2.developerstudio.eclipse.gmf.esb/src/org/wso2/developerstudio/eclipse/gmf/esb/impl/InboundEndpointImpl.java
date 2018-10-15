@@ -1915,7 +1915,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT = "";
+    protected static final String TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT = "AMQPConnectionFactory";
 
     /**
      * The cached value of the '{@link #getTransportMQTTConnectionFactory()
@@ -3324,7 +3324,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT = null;
+    protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT = "AMQPConnectionFactory";
 
     /**
      * The cached value of the '{@link #getTransportRabbitMqConnectionFactory()

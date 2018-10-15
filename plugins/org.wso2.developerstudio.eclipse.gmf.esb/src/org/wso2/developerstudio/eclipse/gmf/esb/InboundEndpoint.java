@@ -1889,6 +1889,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport Rabbit Mq Connection Factory</b></em>' attribute.
+     * The default value is <code>"AMQPConnectionFactory"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport Rabbit Mq Connection Factory</em>' attribute isn't clear,
@@ -1898,7 +1899,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Transport Rabbit Mq Connection Factory</em>' attribute.
      * @see #setTransportRabbitMqConnectionFactory(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportRabbitMqConnectionFactory()
-     * @model
+     * @model default="AMQPConnectionFactory"
      * @generated
      */
     String getTransportRabbitMqConnectionFactory();
@@ -5630,7 +5631,7 @@ public interface InboundEndpoint extends EsbElement {
 
     /**
      * Returns the value of the '<em><b>Transport MQTT Connection Factory</b></em>' attribute.
-     * The default value is <code>""</code>.
+     * The default value is <code>"AMQPConnectionFactory"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Transport MQTT Connection Factory</em>' attribute isn't clear,
@@ -5640,7 +5641,7 @@ public interface InboundEndpoint extends EsbElement {
      * @return the value of the '<em>Transport MQTT Connection Factory</em>' attribute.
      * @see #setTransportMQTTConnectionFactory(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportMQTTConnectionFactory()
-     * @model default=""
+     * @model default="AMQPConnectionFactory"
      * @generated
      */
     String getTransportMQTTConnectionFactory();

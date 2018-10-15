@@ -3037,7 +3037,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSBrokerType"
         eType="#//JMSBrokerType" defaultValueLiteral="OTHER"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTConnectionFactory"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="AMQPConnectionFactory"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTServerHostName"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportMQTTServerPort"
@@ -3168,7 +3168,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="suspend" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqConnectionFactory"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="AMQPConnectionFactory"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqServerHostName"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportRabbitMqServerPort"

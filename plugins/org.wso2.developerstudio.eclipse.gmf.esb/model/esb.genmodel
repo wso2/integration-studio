@@ -2345,9 +2345,11 @@
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/configuration"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/InputSchema"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/outputSchema"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/xsltStyleSheet"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/configurationLocalPath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/inputSchemaLocalPath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/outputSchemaLocalPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/xsltStyleSheetLocalPath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/outputType"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//DataMapperMediatorInputConnector"/>

@@ -36,6 +36,18 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.jaxen.JaxenException;
 
 public class IterateMediatorExtFactory extends IterateMediatorFactory {
+    
+    private static IterateMediatorExtFactory instance;
+    
+    private IterateMediatorExtFactory() {
+    }
+    
+    public static synchronized IterateMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new IterateMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

@@ -45,6 +45,18 @@ import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.XdmNodeKind;
 
 public class XQueryMediatorExtFactory extends XQueryMediatorFactory {
+    
+    private static XQueryMediatorExtFactory instance;
+    
+    private XQueryMediatorExtFactory() {
+    }
+    
+    public static synchronized XQueryMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new XQueryMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

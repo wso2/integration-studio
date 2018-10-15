@@ -32,6 +32,18 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.template.InvokeMediator;
 
 public class CallTemplateMediatorExtFactory extends InvokeMediatorFactory {
+    
+    private static CallTemplateMediatorExtFactory instance;
+    
+    private CallTemplateMediatorExtFactory() {
+    }
+    
+    public static synchronized CallTemplateMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new CallTemplateMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

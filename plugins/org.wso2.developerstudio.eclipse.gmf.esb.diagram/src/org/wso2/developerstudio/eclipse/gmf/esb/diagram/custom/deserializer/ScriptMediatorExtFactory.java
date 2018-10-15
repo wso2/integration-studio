@@ -36,6 +36,18 @@ import org.apache.synapse.mediators.bsf.ScriptMediatorFactory;
 public class ScriptMediatorExtFactory extends ScriptMediatorFactory {
 
     private static final QName INCLUDE_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "include");
+    
+    private static ScriptMediatorExtFactory instance;
+    
+    private ScriptMediatorExtFactory() {
+    }
+    
+    public static synchronized ScriptMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new ScriptMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

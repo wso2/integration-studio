@@ -38,6 +38,18 @@ import org.jaxen.JaxenException;
 public class ForEachMediatorExtFactory extends ForEachMediatorFactory {
 
     private static final QName ID_Q = new QName(XMLConfigConstants.NULL_NAMESPACE, "id");
+    
+    private static ForEachMediatorExtFactory instance;
+    
+    private ForEachMediatorExtFactory() {
+    }
+    
+    public static synchronized ForEachMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new ForEachMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 
@@ -66,7 +78,7 @@ public class ForEachMediatorExtFactory extends ForEachMediatorFactory {
 
         } else if ((sequence = omElement
                 .getFirstChildWithName(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "sequence"))) != null) {
-            SequenceMediatorExtFactory fac = new SequenceMediatorExtFactory();
+            SequenceMediatorExtFactory fac = SequenceMediatorExtFactory.getInstance();
             SequenceMediator sequenceMediator = fac.createAnonymousSequence(sequence, null);
 
             if (validateSequence(sequenceMediator)) {

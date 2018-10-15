@@ -88,6 +88,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
     private static final String DATAMAPPER_FILTER_TYPE = "application/datamapper"; //$NON-NLS-1$
     private static final String INPUT_AVROSCHEMA = "_inputSchema.json"; //$NON-NLS-1$
     private static final String OUTPUT_AVROSCHEMA = "_outputSchema.json"; //$NON-NLS-1$
+    private static final String XSLT_AVROSTYLESHEET = "_xsltStyleSheet.xml";
     private static final String G_REG_PATH_PREFIX = "/_system/governance/"; //$NON-NLS-1$
     private static final String C_REG_PATH_PREFIX = "/_system/config/"; //$NON-NLS-1$
     private static final String G_REG_PREFIX = "gov:%s"; //$NON-NLS-1$
@@ -436,6 +437,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
             String configurationPath = formatRegistryPath(dataMapperConfigurationDialog.getSelectedPath());
             String inputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
             String outputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
+            String xsltStyleSheetPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, XSLT_AVROSTYLESHEET);
 
             final RegistryKeyProperty configurationKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
             configurationKeyProperty.setKeyValue(configurationPath);
@@ -445,6 +447,9 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
             final RegistryKeyProperty outputSchemaKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
             outputSchemaKeyProperty.setKeyValue(outputSchemaPath);
+            
+            final RegistryKeyProperty xsltStyleSheetKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+            xsltStyleSheetKeyProperty.setKeyValue(xsltStyleSheetPath);
 
             Display.getDefault().asyncExec(new Runnable() {
 
@@ -454,10 +459,13 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
                     String configLocalPath = dataMapperConfigurationDialog.getIPathOfSelection();
                     String inputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
                     String outputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
+                    String xsltStyleSheetLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT,
+                            XSLT_AVROSTYLESHEET);
 
                     setConfigurationKey(datamapper, configurationKeyProperty, configLocalPath, editingDomain);
                     setInputSchemaKey(datamapper, inputSchemaKeyProperty, inputSchemaLocalPath, editingDomain);
                     setOutputSchemaKey(datamapper, outputSchemaKeyProperty, outputSchemaLocalPath, editingDomain);
+                    setXSLTStyleSheetKey(datamapper, xsltStyleSheetKeyProperty, xsltStyleSheetLocalPath, editingDomain);
 
                     if (StringUtils.isNotEmpty(datamapper.getConfigurationLocalPath())) {
                         openDataMapperEditor(datamapper.getConfigurationLocalPath());
@@ -517,6 +525,23 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
                         editingDomain.getCommandStack().execute(setCmd2);
                     }
                 }
+                
+    			private void setXSLTStyleSheetKey(
+    					final DataMapperMediatorImpl datamapper,
+    					final RegistryKeyProperty registryKeyProperty,
+    					String localPath,
+    					TransactionalEditingDomain editingDomain) {
+    				
+    				SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET, registryKeyProperty);
+    				if (setCmd.canExecute()) {
+    					getEditingDomain().getCommandStack().execute(setCmd);
+    				}
+    				
+    				SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__XSLT_STYLE_SHEET_LOCAL_PATH, localPath);
+    				if (setCmd2.canExecute()) {
+    					editingDomain.getCommandStack().execute(setCmd2);
+    				}
+    			}
             });
         }
     }

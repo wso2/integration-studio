@@ -2844,10 +2844,14 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputSchema" eType="#//RegistryKeyProperty"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xsltStyleSheet" eType="#//RegistryKeyProperty"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="configurationLocalPath"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputSchemaLocalPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputSchemaLocalPath"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="xsltStyleSheetLocalPath"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputType" eType="#//DataMapperMediatorDataTypes"/>
   </eClassifiers>

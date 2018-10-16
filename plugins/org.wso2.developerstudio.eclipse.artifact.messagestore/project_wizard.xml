@@ -33,6 +33,9 @@
 				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList">Message Store type*</data>
 					
 			<!-- JMS : begin-->
+			<data modelProperty="jms.profile-type" type="list"
+                fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+                controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreJMSProfileType">Pre-configured Profile</data>
 			<data modelProperty="jms.context-factory" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Initial Context Factory*</data>
 			<data modelProperty="jms.provider-url" type="string"

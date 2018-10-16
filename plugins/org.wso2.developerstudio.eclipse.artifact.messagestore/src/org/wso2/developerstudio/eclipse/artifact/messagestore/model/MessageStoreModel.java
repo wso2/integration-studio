@@ -39,6 +39,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Constants;
+import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreJMSProfileType.JMSProfileType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -74,6 +75,7 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String jmsUsername;	
 	private String jmsEnableProducerGuaranteedDelivery;
 	private String jmsFailoverMessageStore;
+	private JMSProfileType jmsProfileType;
 	
 	private String storeName;
 	private IContainer saveLocation;
@@ -632,7 +634,9 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getJmsApiVersion();
 		}else if (key.equals(Constants.FIELD_MB_API_VERSION)) {
 			value = getMbApiVersion();
-		} else if (key.equals(Constants.FIELD_JMS_CONNECTION_FACTORY)) {
+		} else if (key.equals(Constants.FIELD_JMS_PROFILE_TYPE)) {
+            value = getJmsProfileType();
+        } else if (key.equals(Constants.FIELD_JMS_CONNECTION_FACTORY)) {
 			value = getJmsConnectionFactory();
 		} else if (key.equals(Constants.FIELD_MB_CONNECTION_FACTORY)) {
 			value = getMbConnectionFactory();
@@ -768,7 +772,9 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setMessageStoreType((MessageStoreType) data);
 		} else if (key.equals(Constants.FIELD_CUSTOM_PROVIDER_CLASS)) {
 			setCustomProviderClass(data.toString());
-		} else if (key.equals(Constants.FIELD_JMS_CONNECTION_FACTORY)) {
+		} else if (key.equals(Constants.FIELD_JMS_PROFILE_TYPE)) {
+            setJmsProfileType((JMSProfileType) data);
+        } else if (key.equals(Constants.FIELD_JMS_CONNECTION_FACTORY)) {
 			setJmsConnectionFactory(data.toString());
 		} else if (key.equals(Constants.FIELD_JMS_API_VERSION)) {
 			setJmsApiVersion(data.toString());
@@ -1035,5 +1041,13 @@ public class MessageStoreModel extends ProjectDataModel  {
 	public void setResequenceXpathNamespaces(Map<String,String> resequenceXpathNamespaces) {
 		this.resequenceXpathNamespaces = resequenceXpathNamespaces;
 	}
+
+    public JMSProfileType getJmsProfileType() {
+        return jmsProfileType;
+    }
+
+    public void setJmsProfileType(JMSProfileType jmsProfileType) {
+        this.jmsProfileType = jmsProfileType;
+    }
 
 }

@@ -28,6 +28,7 @@ public class Constants extends NLS {
 	public static String FIELD_CUSTOM_PROVIDER_CLASS;
 	public static String FIELD_IMPORT_FILE;
 	public static String FIELD_IMPORT_STORE;
+	public static String FIELD_JMS_PROFILE_TYPE;
 	public static String FIELD_JMS_API_VERSION;
 	public static String FIELD_JMS_CONNECTION_FACTORY;
 	public static String FIELD_JMS_CONTEXT_FACTORY;
@@ -107,6 +108,9 @@ public class Constants extends NLS {
 	public static String TXT_JDBC_POOL_TYPE;
 	public static String TXT_JDBC_CARBON_DATASOURCE_TYPE;
 	public static String TXT_RABBITMQ_SSL_FIELD_PREFIX;
+    public static String TXT_JMS_PROFILE_OTHER;
+    public static String TXT_JMS_PROFILE_WSO2_MB;
+    public static String TXT_JMS_PROFILE_ACTIVEMQ;
 
 	static {
 		// initialize resource bundle

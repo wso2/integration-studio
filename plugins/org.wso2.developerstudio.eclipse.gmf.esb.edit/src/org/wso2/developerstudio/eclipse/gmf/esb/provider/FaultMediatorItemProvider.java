@@ -171,30 +171,41 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * @generated
      */
     protected void addSoapVersionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_FaultMediator_soapVersion_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_soapVersion_feature",
-                                "_UI_FaultMediator_type"),
-                        EsbPackage.Literals.FAULT_MEDIATOR__SOAP_VERSION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FaultMediator_soapVersion_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_soapVersion_feature", "_UI_FaultMediator_type"),
+                 EsbPackage.Literals.FAULT_MEDIATOR__SOAP_VERSION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Serialize Response feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSerializeResponsePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_FaultMediator_serializeResponse_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_serializeResponse_feature",
-                                "_UI_FaultMediator_type"),
-                        EsbPackage.Literals.FAULT_MEDIATOR__SERIALIZE_RESPONSE, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FaultMediator_serializeResponse_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_serializeResponse_feature", "_UI_FaultMediator_type"),
+                 EsbPackage.Literals.FAULT_MEDIATOR__SERIALIZE_RESPONSE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -204,13 +215,19 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * @generated
      */
     protected void addMarkAsResponsePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_FaultMediator_markAsResponse_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_markAsResponse_feature",
-                                "_UI_FaultMediator_type"),
-                        EsbPackage.Literals.FAULT_MEDIATOR__MARK_AS_RESPONSE, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FaultMediator_markAsResponse_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_markAsResponse_feature", "_UI_FaultMediator_type"),
+                 EsbPackage.Literals.FAULT_MEDIATOR__MARK_AS_RESPONSE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -233,34 +250,44 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Fault Code Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addFaultCodeTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_FaultMediator_faultCodeType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_faultCodeType_feature",
-                                "_UI_FaultMediator_type"),
-                        EsbPackage.Literals.FAULT_MEDIATOR__FAULT_CODE_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FaultMediator_faultCodeType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_faultCodeType_feature", "_UI_FaultMediator_type"),
+                 EsbPackage.Literals.FAULT_MEDIATOR__FAULT_CODE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Fault Code Expression feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addFaultCodeExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_FaultMediator_faultCodeExpression_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_faultCodeExpression_feature",
-                                "_UI_FaultMediator_type"),
-                        EsbPackage.Literals.FAULT_MEDIATOR__FAULT_CODE_EXPRESSION, true, false, false, null, null,
-                        null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FaultMediator_faultCodeExpression_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_faultCodeExpression_feature", "_UI_FaultMediator_type"),
+                 EsbPackage.Literals.FAULT_MEDIATOR__FAULT_CODE_EXPRESSION,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -302,13 +329,19 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * @generated
      */
     protected void addFaultActorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_FaultMediator_faultActor_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_faultActor_feature",
-                                "_UI_FaultMediator_type"),
-                        EsbPackage.Literals.FAULT_MEDIATOR__FAULT_ACTOR, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FaultMediator_faultActor_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_faultActor_feature", "_UI_FaultMediator_type"),
+                 EsbPackage.Literals.FAULT_MEDIATOR__FAULT_ACTOR,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -366,13 +399,19 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * @generated
      */
     protected void addRoleNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_FaultMediator_roleName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_roleName_feature",
-                                "_UI_FaultMediator_type"),
-                        EsbPackage.Literals.FAULT_MEDIATOR__ROLE_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FaultMediator_roleName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_roleName_feature", "_UI_FaultMediator_type"),
+                 EsbPackage.Literals.FAULT_MEDIATOR__ROLE_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -382,13 +421,19 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * @generated
      */
     protected void addNodeNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_FaultMediator_nodeName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_nodeName_feature",
-                                "_UI_FaultMediator_type"),
-                        EsbPackage.Literals.FAULT_MEDIATOR__NODE_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FaultMediator_nodeName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_FaultMediator_nodeName_feature", "_UI_FaultMediator_type"),
+                 EsbPackage.Literals.FAULT_MEDIATOR__NODE_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -428,7 +473,6 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -448,7 +492,6 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -476,15 +519,15 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((FaultMediator) object).getRoleName();
-        return label == null || label.length() == 0 ? getString("_UI_FaultMediator_type")
-                : getString("_UI_FaultMediator_type") + " " + label;
+        String label = ((FaultMediator)object).getRoleName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_FaultMediator_type") :
+            getString("_UI_FaultMediator_type") + " " + label;
     }
 
     /**
@@ -492,7 +535,6 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
 
@@ -501,31 +543,31 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(FaultMediator.class)) {
-        case EsbPackage.FAULT_MEDIATOR__SOAP_VERSION:
-        case EsbPackage.FAULT_MEDIATOR__SERIALIZE_RESPONSE:
-        case EsbPackage.FAULT_MEDIATOR__MARK_AS_RESPONSE:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_CODE_SOAP11:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_CODE_TYPE:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_STRING_TYPE:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_STRING_VALUE:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_ACTOR:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_CODE_SOAP12:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_REASON_TYPE:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_REASON_VALUE:
-        case EsbPackage.FAULT_MEDIATOR__ROLE_NAME:
-        case EsbPackage.FAULT_MEDIATOR__NODE_NAME:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_DETAIL_TYPE:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_DETAIL_VALUE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.FAULT_MEDIATOR__FAULT_CODE_EXPRESSION:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_STRING_EXPRESSION:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_REASON_EXPRESSION:
-        case EsbPackage.FAULT_MEDIATOR__FAULT_DETAIL_EXPRESSION:
-        case EsbPackage.FAULT_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.FAULT_MEDIATOR__OUTPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.FAULT_MEDIATOR__SOAP_VERSION:
+            case EsbPackage.FAULT_MEDIATOR__SERIALIZE_RESPONSE:
+            case EsbPackage.FAULT_MEDIATOR__MARK_AS_RESPONSE:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_CODE_SOAP11:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_CODE_TYPE:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_STRING_TYPE:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_STRING_VALUE:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_ACTOR:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_CODE_SOAP12:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_REASON_TYPE:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_REASON_VALUE:
+            case EsbPackage.FAULT_MEDIATOR__ROLE_NAME:
+            case EsbPackage.FAULT_MEDIATOR__NODE_NAME:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_DETAIL_TYPE:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_DETAIL_VALUE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.FAULT_MEDIATOR__FAULT_CODE_EXPRESSION:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_STRING_EXPRESSION:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_REASON_EXPRESSION:
+            case EsbPackage.FAULT_MEDIATOR__FAULT_DETAIL_EXPRESSION:
+            case EsbPackage.FAULT_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.FAULT_MEDIATOR__OUTPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -542,23 +584,35 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAULT_MEDIATOR__FAULT_CODE_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAULT_MEDIATOR__FAULT_CODE_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAULT_MEDIATOR__FAULT_STRING_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAULT_MEDIATOR__FAULT_STRING_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAULT_MEDIATOR__FAULT_REASON_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAULT_MEDIATOR__FAULT_REASON_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAULT_MEDIATOR__FAULT_DETAIL_EXPRESSION,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAULT_MEDIATOR__FAULT_DETAIL_EXPRESSION,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAULT_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createFaultMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAULT_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createFaultMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FAULT_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createFaultMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FAULT_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createFaultMediatorOutputConnector()));
     }
 
     /**
@@ -574,14 +628,16 @@ public class FaultMediatorItemProvider extends MediatorItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.FAULT_MEDIATOR__FAULT_CODE_EXPRESSION
-                || childFeature == EsbPackage.Literals.FAULT_MEDIATOR__FAULT_STRING_EXPRESSION
-                || childFeature == EsbPackage.Literals.FAULT_MEDIATOR__FAULT_REASON_EXPRESSION
-                || childFeature == EsbPackage.Literals.FAULT_MEDIATOR__FAULT_DETAIL_EXPRESSION;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.FAULT_MEDIATOR__FAULT_CODE_EXPRESSION ||
+            childFeature == EsbPackage.Literals.FAULT_MEDIATOR__FAULT_STRING_EXPRESSION ||
+            childFeature == EsbPackage.Literals.FAULT_MEDIATOR__FAULT_REASON_EXPRESSION ||
+            childFeature == EsbPackage.Literals.FAULT_MEDIATOR__FAULT_DETAIL_EXPRESSION;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

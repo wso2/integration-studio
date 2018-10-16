@@ -36,7 +36,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CalloutMediatorItemProvider extends MediatorItemProvider {
@@ -44,7 +43,6 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CalloutMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -271,153 +269,198 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Pass Headers feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPassHeadersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CalloutMediator_passHeaders_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_passHeaders_feature",
-                                "_UI_CalloutMediator_type"),
-                        EsbPackage.Literals.CALLOUT_MEDIATOR__PASS_HEADERS, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CalloutMediator_passHeaders_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_passHeaders_feature", "_UI_CalloutMediator_type"),
+                 EsbPackage.Literals.CALLOUT_MEDIATOR__PASS_HEADERS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Address Endpoint feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addAddressEndpointPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CalloutMediator_AddressEndpoint_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_AddressEndpoint_feature",
-                                "_UI_CalloutMediator_type"),
-                        EsbPackage.Literals.CALLOUT_MEDIATOR__ADDRESS_ENDPOINT, true, false, false, null,
-                        getString("_UI_ServicePropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CalloutMediator_AddressEndpoint_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_AddressEndpoint_feature", "_UI_CalloutMediator_type"),
+                 EsbPackage.Literals.CALLOUT_MEDIATOR__ADDRESS_ENDPOINT,
+                 true,
+                 false,
+                 false,
+                 null,
+                 getString("_UI_ServicePropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Endpoint Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEndpointTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CalloutMediator_EndpointType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_EndpointType_feature",
-                        "_UI_CalloutMediator_type"),
-                EsbPackage.Literals.CALLOUT_MEDIATOR__ENDPOINT_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_ServicePropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CalloutMediator_EndpointType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_EndpointType_feature", "_UI_CalloutMediator_type"),
+                 EsbPackage.Literals.CALLOUT_MEDIATOR__ENDPOINT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_ServicePropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Payload Property feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPayloadPropertyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CalloutMediator_payloadProperty_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_payloadProperty_feature",
-                                "_UI_CalloutMediator_type"),
-                        EsbPackage.Literals.CALLOUT_MEDIATOR__PAYLOAD_PROPERTY, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_SourcePropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CalloutMediator_payloadProperty_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_payloadProperty_feature", "_UI_CalloutMediator_type"),
+                 EsbPackage.Literals.CALLOUT_MEDIATOR__PAYLOAD_PROPERTY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_SourcePropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Security Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSecurityTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CalloutMediator_securityType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_securityType_feature",
-                        "_UI_CalloutMediator_type"),
-                EsbPackage.Literals.CALLOUT_MEDIATOR__SECURITY_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_WSPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CalloutMediator_securityType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_securityType_feature", "_UI_CalloutMediator_type"),
+                 EsbPackage.Literals.CALLOUT_MEDIATOR__SECURITY_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_WSPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Outbound Policy Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addOutboundPolicyKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CalloutMediator_outboundPolicyKey_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_outboundPolicyKey_feature",
-                                "_UI_CalloutMediator_type"),
-                        EsbPackage.Literals.CALLOUT_MEDIATOR__OUTBOUND_POLICY_KEY, true, false, true, null,
-                        getString("_UI_WSPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CalloutMediator_outboundPolicyKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_outboundPolicyKey_feature", "_UI_CalloutMediator_type"),
+                 EsbPackage.Literals.CALLOUT_MEDIATOR__OUTBOUND_POLICY_KEY,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_WSPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Inbound Policy Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addInboundPolicyKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CalloutMediator_inboundPolicyKey_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_inboundPolicyKey_feature",
-                                "_UI_CalloutMediator_type"),
-                        EsbPackage.Literals.CALLOUT_MEDIATOR__INBOUND_POLICY_KEY, true, false, true, null,
-                        getString("_UI_WSPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CalloutMediator_inboundPolicyKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_inboundPolicyKey_feature", "_UI_CalloutMediator_type"),
+                 EsbPackage.Literals.CALLOUT_MEDIATOR__INBOUND_POLICY_KEY,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_WSPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Policies feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPoliciesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CalloutMediator_policies_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_policies_feature",
-                        "_UI_CalloutMediator_type"),
-                EsbPackage.Literals.CALLOUT_MEDIATOR__POLICIES, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_WSPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CalloutMediator_policies_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_policies_feature", "_UI_CalloutMediator_type"),
+                 EsbPackage.Literals.CALLOUT_MEDIATOR__POLICIES,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_WSPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Policy Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPolicyKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CalloutMediator_policyKey_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_policyKey_feature",
-                                "_UI_CalloutMediator_type"),
-                        EsbPackage.Literals.CALLOUT_MEDIATOR__POLICY_KEY, true, false, true, null,
-                        getString("_UI_WSPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CalloutMediator_policyKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_policyKey_feature", "_UI_CalloutMediator_type"),
+                 EsbPackage.Literals.CALLOUT_MEDIATOR__POLICY_KEY,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_WSPropertyCategory"),
+                 null));
     }
 
     /**
@@ -443,7 +486,6 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -463,7 +505,6 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -479,7 +520,6 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
      * This returns CalloutMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -492,15 +532,15 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((CalloutMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_CalloutMediator_type")
-                : getString("_UI_CalloutMediator_type") + " " + label;
+        String label = ((CalloutMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_CalloutMediator_type") :
+            getString("_UI_CalloutMediator_type") + " " + label;
     }
 
     /**
@@ -508,7 +548,6 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -517,28 +556,28 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(CalloutMediator.class)) {
-        case EsbPackage.CALLOUT_MEDIATOR__SERVICE_URL:
-        case EsbPackage.CALLOUT_MEDIATOR__SOAP_ACTION:
-        case EsbPackage.CALLOUT_MEDIATOR__PATH_TO_AXIS2XML:
-        case EsbPackage.CALLOUT_MEDIATOR__PATH_TO_AXIS2_REPOSITORY:
-        case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_TYPE:
-        case EsbPackage.CALLOUT_MEDIATOR__RESULT_TYPE:
-        case EsbPackage.CALLOUT_MEDIATOR__RESULT_CONTEXT_PROPERTY:
-        case EsbPackage.CALLOUT_MEDIATOR__PASS_HEADERS:
-        case EsbPackage.CALLOUT_MEDIATOR__ENDPOINT_TYPE:
-        case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_PROPERTY:
-        case EsbPackage.CALLOUT_MEDIATOR__SECURITY_TYPE:
-        case EsbPackage.CALLOUT_MEDIATOR__POLICIES:
-        case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_MESSAGE_XPATH:
-        case EsbPackage.CALLOUT_MEDIATOR__RESULT_MESSAGE_XPATH:
-        case EsbPackage.CALLOUT_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.CALLOUT_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.CALLOUT_MEDIATOR__ADDRESS_ENDPOINT:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.CALLOUT_MEDIATOR__SERVICE_URL:
+            case EsbPackage.CALLOUT_MEDIATOR__SOAP_ACTION:
+            case EsbPackage.CALLOUT_MEDIATOR__PATH_TO_AXIS2XML:
+            case EsbPackage.CALLOUT_MEDIATOR__PATH_TO_AXIS2_REPOSITORY:
+            case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_TYPE:
+            case EsbPackage.CALLOUT_MEDIATOR__RESULT_TYPE:
+            case EsbPackage.CALLOUT_MEDIATOR__RESULT_CONTEXT_PROPERTY:
+            case EsbPackage.CALLOUT_MEDIATOR__PASS_HEADERS:
+            case EsbPackage.CALLOUT_MEDIATOR__ENDPOINT_TYPE:
+            case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_PROPERTY:
+            case EsbPackage.CALLOUT_MEDIATOR__SECURITY_TYPE:
+            case EsbPackage.CALLOUT_MEDIATOR__POLICIES:
+            case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_MESSAGE_XPATH:
+            case EsbPackage.CALLOUT_MEDIATOR__RESULT_MESSAGE_XPATH:
+            case EsbPackage.CALLOUT_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.CALLOUT_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.CALLOUT_MEDIATOR__ADDRESS_ENDPOINT:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -548,7 +587,6 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -556,27 +594,36 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CALLOUT_MEDIATOR__PAYLOAD_MESSAGE_XPATH,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CALLOUT_MEDIATOR__PAYLOAD_MESSAGE_XPATH,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CALLOUT_MEDIATOR__RESULT_MESSAGE_XPATH,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CALLOUT_MEDIATOR__RESULT_MESSAGE_XPATH,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CALLOUT_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCalloutMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CALLOUT_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCalloutMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CALLOUT_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCalloutMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CALLOUT_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCalloutMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CALLOUT_MEDIATOR__ADDRESS_ENDPOINT,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CALLOUT_MEDIATOR__ADDRESS_ENDPOINT,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -585,12 +632,14 @@ public class CalloutMediatorItemProvider extends MediatorItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.CALLOUT_MEDIATOR__PAYLOAD_MESSAGE_XPATH
-                || childFeature == EsbPackage.Literals.CALLOUT_MEDIATOR__RESULT_MESSAGE_XPATH;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.CALLOUT_MEDIATOR__PAYLOAD_MESSAGE_XPATH ||
+            childFeature == EsbPackage.Literals.CALLOUT_MEDIATOR__RESULT_MESSAGE_XPATH;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

@@ -65,413 +65,224 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequenceInputConnector <em>Sequence
- * Input Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequenceOutputConnector <em>Sequence
- * Output Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequenceInputConnector <em>On
- * Error Sequence Input Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequenceOutputConnector <em>On
- * Error Sequence Output Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContainer <em>Container</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getName <em>Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getType <em>Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClass_ <em>Class</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getProtocol <em>Protocol</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundEndpointBehaviour <em>Inbound
- * Endpoint Behaviour</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHttpPort <em>Inbound Http
- * Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeCore <em>Inbound
- * Worker Pool Size Core</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeMax <em>Inbound
- * Worker Pool Size Max</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerThreadKeepAliveSec
- * <em>Inbound Worker Thread Keep Alive Sec</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolQueueLength
- * <em>Inbound Worker Pool Queue Length</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundThreadGroupId <em>Inbound
- * Thread Group Id</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundThreadId <em>Inbound Thread
- * Id</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getDispatchFilterPattern <em>Dispatch
- * Filter Pattern</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInterval <em>Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSequential <em>Sequential</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isCoordination
- * <em>Coordination</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileURI <em>Transport VFS
- * File URI</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWso2mbConnectionUrl <em>Wso2mb
- * Connection Url</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSContentType <em>Transport
- * VFS Content Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileNamePattern
- * <em>Transport VFS File Name Pattern</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessInterval
- * <em>Transport VFS File Process Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessCount
- * <em>Transport VFS File Process Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSLocking <em>Transport VFS
- * Locking</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMaxRetryCount
- * <em>Transport VFS Max Retry Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReconnectTimeout
- * <em>Transport VFS Reconnect Timeout</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSharedSubscription
- * <em>Transport JMS Shared Subscription</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionName
- * <em>Transport JMS Subscription Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPinnedServers
- * <em>Transport JMS Pinned Servers</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterProcess
- * <em>Transport VFS Action After Process</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterProcess
- * <em>Transport VFS Move After Process</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterErrors
- * <em>Transport VFS Action After Errors</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterErrors
- * <em>Transport VFS Move After Errors</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterFailure
- * <em>Transport VFS Action After Failure</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterFailure
- * <em>Transport VFS Move After Failure</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSAutoLockRelease
- * <em>Transport VFS Auto Lock Release</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSAutoLockReleaseInterval
- * <em>Transport VFS Auto Lock Release Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSLockReleaseSameNode
- * <em>Transport VFS Lock Release Same Node</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSDistributedLock
- * <em>Transport VFS Distributed Lock</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSStreaming <em>Transport
- * VFS Streaming</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSBuild <em>Transport VFS
- * Build</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSDistributedTimeout
- * <em>Transport VFS Distributed Timeout</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingFactoryInitial <em>Java
- * Naming Factory Initial</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingProviderUrl <em>Java Naming
- * Provider Url</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryJNDIName
- * <em>Transport JMS Connection Factory JNDI Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryType
- * <em>Transport JMS Connection Factory Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConcurrentConsumers
- * <em>Transport JMS Concurrent Consumers</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDestination <em>Transport
- * JMS Destination</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSessionTransacted
- * <em>Transport JMS Session Transacted</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSessionAcknowledgement
- * <em>Transport JMS Session Acknowledgement</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSCacheLevel <em>Transport
- * JMS Cache Level</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSUserName <em>Transport
- * JMS User Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPassword <em>Transport
- * JMS Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSJMSSpecVersion
- * <em>Transport JMSJMS Spec Version</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionDurable
- * <em>Transport JMS Subscription Durable</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberClientID
- * <em>Transport JMS Durable Subscriber Client ID</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSMessageSelector
- * <em>Transport JMS Message Selector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetryDuration
- * <em>Transport JMS Retry Duration</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveTimestampFormat
- * <em>Transport VFS Move Timestamp Format</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileSortAttribute
- * <em>Transport VFS File Sort Attribute</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSFileSortAscending
- * <em>Transport VFS File Sort Ascending</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSubFolderTimestampFormat
- * <em>Transport VFS Sub Folder Timestamp Format</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSCreateFolder <em>Transport
- * VFS Create Folder</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReceiveTimeout
- * <em>Transport JMS Receive Timeout</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentType <em>Transport
- * JMS Content Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentTypeProperty
- * <em>Transport JMS Content Type Property</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReplyDestination
- * <em>Transport JMS Reply Destination</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPubSubNoLocal
- * <em>Transport JMS Pub Sub No Local</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberName
- * <em>Transport JMS Durable Subscriber Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSBrokerType <em>Transport
- * JMS Broker Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTConnectionFactory
- * <em>Transport MQTT Connection Factory</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerHostName
- * <em>Transport MQTT Server Host Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerPort <em>Transport
- * MQTT Server Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTopicName <em>Transport
- * MQTT Topic Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionQOS
- * <em>Transport MQTT Subscription QOS</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportMQTTSessionClean
- * <em>Transport MQTT Session Clean</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslEnable <em>Transport
- * MQTT Ssl Enable</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTemporaryStoreDirectory
- * <em>Transport MQTT Temporary Store Directory</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionUsername
- * <em>Transport MQTT Subscription Username</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionPassword
- * <em>Transport MQTT Subscription Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTClientId <em>Transport
- * MQTT Client Id</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTruststore <em>Truststore</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getKeystore <em>Keystore</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslVerifyClient <em>Ssl Verify
- * Client</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslProtocol <em>Ssl
- * Protocol</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getHttpsProtocols <em>Https
- * Protocols</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getCertificateRevocationVerifier
- * <em>Certificate Revocation Verifier</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7Port <em>Inbound HL7
- * Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7AutoAck <em>Inbound HL7 Auto
- * Ack</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7MessagePreProcessor
- * <em>Inbound HL7 Message Pre Processor</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7CharSet <em>Inbound HL7
- * Char Set</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7TimeOut <em>Inbound HL7
- * Time Out</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7ValidateMessage <em>Inbound
- * HL7 Validate Message</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7BuildInvalidMessages
- * <em>Inbound HL7 Build Invalid Messages</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7PassThroughInvalidMessages
- * <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnect <em>Zookeeper
- * Connect</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getGroupId <em>Group Id</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContentType <em>Content
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerType <em>Consumer
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicsOrTopicFilter <em>Topics Or
- * Topic Filter</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicsName <em>Topics Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicFilterFrom <em>Topic Filter
- * From</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicFilterName <em>Topic Filter
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerTopic <em>Simple
- * Consumer Topic</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerBrokers <em>Simple
- * Consumer Brokers</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPort <em>Simple
- * Consumer Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPartition <em>Simple
- * Consumer Partition</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerMaxMessagesToRead
- * <em>Simple Consumer Max Messages To Read</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getThreadCount <em>Thread
- * Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerId <em>Consumer Id</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSocketTimeoutMs <em>Socket Timeout
- * Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSocketReceiveBufferBytes <em>Socket
- * Receive Buffer Bytes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchMessageMaxBytes <em>Fetch
- * Message Max Bytes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getNumConsumerFetches <em>Num Consumer
- * Fetches</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isAutoCommitEnable <em>Auto Commit
- * Enable</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoCommitIntervalMs <em>Auto Commit
- * Interval Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getQueuedMaxMessageChunks <em>Queued Max
- * Message Chunks</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRebalanceMaxRetries <em>Rebalance Max
- * Retries</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchMinBytes <em>Fetch Min
- * Bytes</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchWaitMaxMs <em>Fetch Wait Max
- * Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRebalanceBackoffMs <em>Rebalance
- * Backoff Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRefreshLeaderBackoffMs <em>Refresh
- * Leader Backoff Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoOffsetReset <em>Auto Offset
- * Reset</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerTimeoutMs <em>Consumer
- * Timeout Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isExcludeInternalTopics <em>Exclude
- * Internal Topics</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getPartitionAssignmentStrategy
- * <em>Partition Assignment Strategy</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClientId <em>Client Id</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSessionTimeoutMs
- * <em>Zookeeper Session Timeout Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnectionTimeoutMs
- * <em>Zookeeper Connection Timeout Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSyncTimeMs <em>Zookeeper
- * Sync Time Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsStorage <em>Offsets
- * Storage</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelBackoffMs <em>Offsets
- * Channel Backoff Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelSocketTimeoutMs
- * <em>Offsets Channel Socket Timeout Ms</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsCommitMaxRetries <em>Offsets
- * Commit Max Retries</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isDualCommitEnabled <em>Dual Commit
- * Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmHost <em>Inbound Cxf Rm
- * Host</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmPort <em>Inbound Cxf Rm
- * Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmConfigFile <em>Inbound
- * Cxf Rm Config File</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isEnableSSL <em>Enable SSL</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getServiceParameters <em>Service
- * Parameters</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSuspend <em>Suspend</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionFactory
- * <em>Transport Rabbit Mq Connection Factory</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerHostName
- * <em>Transport Rabbit Mq Server Host Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPort
- * <em>Transport Rabbit Mq Server Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerUserName
- * <em>Transport Rabbit Mq Server User Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPassword
- * <em>Transport Rabbit Mq Server Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueName
- * <em>Transport Rabbit Mq Queue Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeName
- * <em>Transport Rabbit Mq Exchange Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDurable
- * <em>Transport Rabbit Mq Queue Durable</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueExclusive
- * <em>Transport Rabbit Mq Queue Exclusive</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoDelete
- * <em>Transport Rabbit Mq Queue Auto Delete</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoAck
- * <em>Transport Rabbit Mq Queue Auto Ack</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueRoutingKey
- * <em>Transport Rabbit Mq Queue Routing Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDeliveryMode
- * <em>Transport Rabbit Mq Queue Delivery Mode</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeType
- * <em>Transport Rabbit Mq Exchange Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeDurable
- * <em>Transport Rabbit Mq Exchange Durable</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeAutoDelete
- * <em>Transport Rabbit Mq Exchange Auto Delete</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerVirtualHost
- * <em>Transport Rabbit Mq Server Virtual Host</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryHeartbeat
- * <em>Transport Rabbit Mq Factory Heartbeat</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslEnabled
- * <em>Transport Rabbit Mq Connection Ssl Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreLocation
- * <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreType
- * <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystorePassword
- * <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreLocation
- * <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreType
- * <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststorePassword
- * <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslVersion
- * <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMessageContentType
- * <em>Transport Rabbit Mq Message Content Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryCount
- * <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryInterval
- * <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerRetryInterval
- * <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosKey
- * <em>Transport Rabbit Mq Consumer Qos Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsInboundPort <em>Ws Inbound
- * Port</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsClientSideBroadcastLevel <em>Ws
- * Client Side Broadcast Level</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchSequence <em>Ws
- * Outflow Dispatch Sequence</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchFaultSequence <em>Ws
- * Outflow Dispatch Fault Sequence</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsBossThreadPoolSize <em>Ws Boss
- * Thread Pool Size</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsWorkerThreadPoolSize <em>Ws Worker
- * Thread Pool Size</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsSubprotocolHandlerClass <em>Ws
- * Subprotocol Handler Class</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsPipelineHandlerClass <em>Ws
- * Pipeline Handler Class</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedURL <em>Transport Feed
- * URL</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace
- * Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isStatisticsEnabled <em>Statistics
- * Enabled</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetriesBeforeSuspension
- * <em>Transport JMS Retries Before Suspension</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSResetConnectionOnPollingSuspension
- * <em>Transport JMS Reset Connection On Polling Suspension</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPollingSuspensionPeriod
- * <em>Transport JMS Polling Suspension Period</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreLocation
- * <em>Transport MQTT Ssl Keystore Location</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreType
- * <em>Transport MQTT Ssl Keystore Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystorePassword
- * <em>Transport MQTT Ssl Keystore Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreLocation
- * <em>Transport MQTT Ssl Truststore Location</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreType
- * <em>Transport MQTT Ssl Truststore Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststorePassword
- * <em>Transport MQTT Ssl Truststore Password</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslVersion <em>Transport
- * MQTT Ssl Version</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStoreFile <em>Wss Ssl Key
- * Store File</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStorePass <em>Wss Ssl Key
- * Store Pass</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStoreFile <em>Wss Ssl
- * Trust Store File</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStorePass <em>Wss Ssl
- * Trust Store Pass</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCertPass <em>Wss Ssl Cert
- * Pass</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsDefaultContentType <em>Ws Default
- * Content Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusCode <em>Ws Shutdown
- * Status Code</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusMessage <em>Ws
- * Shutdown Status Message</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isWsUsePortOffset <em>Ws Use Port
- * Offset</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslProtocols <em>Wss Ssl
- * Protocols</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCipherSuites <em>Wss Ssl Cipher
- * Suites</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQos
- * <em>Transport Rabbit Mq Consumer Qos</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosType
- * <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequenceInputConnector <em>Sequence Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequenceOutputConnector <em>Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequenceInputConnector <em>On Error Sequence Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequenceOutputConnector <em>On Error Sequence Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundEndpointBehaviour <em>Inbound Endpoint Behaviour</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHttpPort <em>Inbound Http Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeCore <em>Inbound Worker Pool Size Core</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolSizeMax <em>Inbound Worker Pool Size Max</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerThreadKeepAliveSec <em>Inbound Worker Thread Keep Alive Sec</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundWorkerPoolQueueLength <em>Inbound Worker Pool Queue Length</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundThreadGroupId <em>Inbound Thread Group Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundThreadId <em>Inbound Thread Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getDispatchFilterPattern <em>Dispatch Filter Pattern</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInterval <em>Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSequential <em>Sequential</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isCoordination <em>Coordination</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileURI <em>Transport VFS File URI</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWso2mbConnectionUrl <em>Wso2mb Connection Url</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSContentType <em>Transport VFS Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessCount <em>Transport VFS File Process Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSLocking <em>Transport VFS Locking</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterFailedMove <em>Transport VFS Move After Failed Move</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSharedSubscription <em>Transport JMS Shared Subscription</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionName <em>Transport JMS Subscription Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPinnedServers <em>Transport JMS Pinned Servers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterErrors <em>Transport VFS Move After Errors</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFailedRecordsFileName <em>Transport VFS Failed Records File Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFailedRecordsFileDestination <em>Transport VFS Failed Records File Destination</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveFailedRecordTimestampFormat <em>Transport VFS Move Failed Record Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFailedRecordNextRetryDuration <em>Transport VFS Failed Record Next Retry Duration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterFailure <em>Transport VFS Action After Failure</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterFailure <em>Transport VFS Move After Failure</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReplyFileURI <em>Transport VFS Reply File URI</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReplyFileName <em>Transport VFS Reply File Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSAutoLockRelease <em>Transport VFS Auto Lock Release</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSStreaming <em>Transport VFS Streaming</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSBuild <em>Transport VFS Build</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConcurrentConsumers <em>Transport JMS Concurrent Consumers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDestination <em>Transport JMS Destination</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSCacheLevel <em>Transport JMS Cache Level</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSUserName <em>Transport JMS User Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPassword <em>Transport JMS Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSJMSSpecVersion <em>Transport JMSJMS Spec Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetryDuration <em>Transport JMS Retry Duration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentType <em>Transport JMS Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentTypeProperty <em>Transport JMS Content Type Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReplyDestination <em>Transport JMS Reply Destination</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPubSubNoLocal <em>Transport JMS Pub Sub No Local</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberName <em>Transport JMS Durable Subscriber Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSBrokerType <em>Transport JMS Broker Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTConnectionFactory <em>Transport MQTT Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerHostName <em>Transport MQTT Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTServerPort <em>Transport MQTT Server Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTopicName <em>Transport MQTT Topic Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionQOS <em>Transport MQTT Subscription QOS</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportMQTTSessionClean <em>Transport MQTT Session Clean</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslEnable <em>Transport MQTT Ssl Enable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTTemporaryStoreDirectory <em>Transport MQTT Temporary Store Directory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionUsername <em>Transport MQTT Subscription Username</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSubscriptionPassword <em>Transport MQTT Subscription Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTClientId <em>Transport MQTT Client Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTruststore <em>Truststore</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getKeystore <em>Keystore</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslProtocol <em>Ssl Protocol</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getHttpsProtocols <em>Https Protocols</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7Port <em>Inbound HL7 Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getGroupId <em>Group Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerType <em>Consumer Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicsOrTopicFilter <em>Topics Or Topic Filter</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicsName <em>Topics Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicFilterFrom <em>Topic Filter From</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopicFilterName <em>Topic Filter Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerTopic <em>Simple Consumer Topic</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerBrokers <em>Simple Consumer Brokers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPort <em>Simple Consumer Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerPartition <em>Simple Consumer Partition</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleConsumerMaxMessagesToRead <em>Simple Consumer Max Messages To Read</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getThreadCount <em>Thread Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerId <em>Consumer Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSocketTimeoutMs <em>Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSocketReceiveBufferBytes <em>Socket Receive Buffer Bytes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchMessageMaxBytes <em>Fetch Message Max Bytes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getNumConsumerFetches <em>Num Consumer Fetches</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isAutoCommitEnable <em>Auto Commit Enable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getQueuedMaxMessageChunks <em>Queued Max Message Chunks</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRebalanceMaxRetries <em>Rebalance Max Retries</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchMinBytes <em>Fetch Min Bytes</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getFetchWaitMaxMs <em>Fetch Wait Max Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRebalanceBackoffMs <em>Rebalance Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getRefreshLeaderBackoffMs <em>Refresh Leader Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerTimeoutMs <em>Consumer Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isExcludeInternalTopics <em>Exclude Internal Topics</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getPartitionAssignmentStrategy <em>Partition Assignment Strategy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClientId <em>Client Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnectionTimeoutMs <em>Zookeeper Connection Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsStorage <em>Offsets Storage</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelBackoffMs <em>Offsets Channel Backoff Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsChannelSocketTimeoutMs <em>Offsets Channel Socket Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOffsetsCommitMaxRetries <em>Offsets Commit Max Retries</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isDualCommitEnabled <em>Dual Commit Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isEnableSSL <em>Enable SSL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getServiceParameters <em>Service Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSuspend <em>Suspend</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionFactory <em>Transport Rabbit Mq Connection Factory</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerHostName <em>Transport Rabbit Mq Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPort <em>Transport Rabbit Mq Server Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerUserName <em>Transport Rabbit Mq Server User Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerPassword <em>Transport Rabbit Mq Server Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueName <em>Transport Rabbit Mq Queue Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeName <em>Transport Rabbit Mq Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDurable <em>Transport Rabbit Mq Queue Durable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueExclusive <em>Transport Rabbit Mq Queue Exclusive</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoDelete <em>Transport Rabbit Mq Queue Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueAutoAck <em>Transport Rabbit Mq Queue Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueRoutingKey <em>Transport Rabbit Mq Queue Routing Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqQueueDeliveryMode <em>Transport Rabbit Mq Queue Delivery Mode</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeType <em>Transport Rabbit Mq Exchange Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeDurable <em>Transport Rabbit Mq Exchange Durable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqExchangeAutoDelete <em>Transport Rabbit Mq Exchange Auto Delete</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerVirtualHost <em>Transport Rabbit Mq Server Virtual Host</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqFactoryHeartbeat <em>Transport Rabbit Mq Factory Heartbeat</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslEnabled <em>Transport Rabbit Mq Connection Ssl Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreLocation <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystoreType <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslKeystorePassword <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreLocation <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststoreType <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslTruststorePassword <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionSslVersion <em>Transport Rabbit Mq Connection Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqMessageContentType <em>Transport Rabbit Mq Message Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryCount <em>Transport Rabbit Mq Connection Retry Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConnectionRetryInterval <em>Transport Rabbit Mq Connection Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqServerRetryInterval <em>Transport Rabbit Mq Server Retry Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosKey <em>Transport Rabbit Mq Consumer Qos Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsInboundPort <em>Ws Inbound Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsClientSideBroadcastLevel <em>Ws Client Side Broadcast Level</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchSequence <em>Ws Outflow Dispatch Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsOutflowDispatchFaultSequence <em>Ws Outflow Dispatch Fault Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsBossThreadPoolSize <em>Ws Boss Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsWorkerThreadPoolSize <em>Ws Worker Thread Pool Size</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsSubprotocolHandlerClass <em>Ws Subprotocol Handler Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsPipelineHandlerClass <em>Ws Pipeline Handler Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedURL <em>Transport Feed URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportFeedType <em>Transport Feed Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSRetriesBeforeSuspension <em>Transport JMS Retries Before Suspension</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSResetConnectionOnPollingSuspension <em>Transport JMS Reset Connection On Polling Suspension</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPollingSuspensionPeriod <em>Transport JMS Polling Suspension Period</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreLocation <em>Transport MQTT Ssl Keystore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystoreType <em>Transport MQTT Ssl Keystore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslKeystorePassword <em>Transport MQTT Ssl Keystore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreLocation <em>Transport MQTT Ssl Truststore Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststoreType <em>Transport MQTT Ssl Truststore Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslTruststorePassword <em>Transport MQTT Ssl Truststore Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportMQTTSslVersion <em>Transport MQTT Ssl Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStoreFile <em>Wss Ssl Key Store File</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslKeyStorePass <em>Wss Ssl Key Store Pass</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStoreFile <em>Wss Ssl Trust Store File</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslTrustStorePass <em>Wss Ssl Trust Store Pass</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCertPass <em>Wss Ssl Cert Pass</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsDefaultContentType <em>Ws Default Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusCode <em>Ws Shutdown Status Code</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWsShutdownStatusMessage <em>Ws Shutdown Status Message</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isWsUsePortOffset <em>Ws Use Port Offset</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslProtocols <em>Wss Ssl Protocols</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -524,7 +335,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getContainer() <em>Container</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getContainer()
      * @generated
      * @ordered
@@ -534,7 +344,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -544,7 +353,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getName()
      * @generated
      * @ordered
@@ -554,7 +362,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getType() <em>Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getType()
      * @generated
      * @ordered
@@ -564,7 +371,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getType()
      * @generated
      * @ordered
@@ -574,7 +380,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getClass_() <em>Class</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getClass_()
      * @generated
      * @ordered
@@ -584,7 +389,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getClass_() <em>Class</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getClass_()
      * @generated
      * @ordered
@@ -594,7 +398,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getProtocol() <em>Protocol</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getProtocol()
      * @generated
      * @ordered
@@ -604,7 +407,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getProtocol()
      * @generated
      * @ordered
@@ -615,7 +417,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundEndpointBehaviour() <em>Inbound Endpoint Behaviour</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInboundEndpointBehaviour()
      * @generated
      * @ordered
@@ -626,7 +427,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundEndpointBehaviour() <em>Inbound Endpoint Behaviour</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInboundEndpointBehaviour()
      * @generated
      * @ordered
@@ -637,7 +437,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundHttpPort() <em>Inbound Http Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundHttpPort()
      * @generated
      * @ordered
@@ -648,7 +447,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundHttpPort() <em>Inbound Http Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundHttpPort()
      * @generated
      * @ordered
@@ -656,11 +454,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String inboundHttpPort = INBOUND_HTTP_PORT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getInboundWorkerPoolSizeCore() <em>Inbound Worker Pool Size Core</em>}'
-     * attribute.
+     * The default value of the '{@link #getInboundWorkerPoolSizeCore() <em>Inbound Worker Pool Size Core</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getInboundWorkerPoolSizeCore()
      * @generated
      * @ordered
@@ -668,11 +464,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getInboundWorkerPoolSizeCore() <em>Inbound Worker Pool Size Core</em>}'
-     * attribute.
+     * The cached value of the '{@link #getInboundWorkerPoolSizeCore() <em>Inbound Worker Pool Size Core</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getInboundWorkerPoolSizeCore()
      * @generated
      * @ordered
@@ -680,11 +474,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String inboundWorkerPoolSizeCore = INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getInboundWorkerPoolSizeMax() <em>Inbound Worker Pool Size Max</em>}'
-     * attribute.
+     * The default value of the '{@link #getInboundWorkerPoolSizeMax() <em>Inbound Worker Pool Size Max</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getInboundWorkerPoolSizeMax()
      * @generated
      * @ordered
@@ -695,7 +487,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundWorkerPoolSizeMax() <em>Inbound Worker Pool Size Max</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getInboundWorkerPoolSizeMax()
      * @generated
      * @ordered
@@ -750,7 +541,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundThreadGroupId() <em>Inbound Thread Group Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInboundThreadGroupId()
      * @generated
      * @ordered
@@ -761,7 +551,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundThreadGroupId() <em>Inbound Thread Group Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInboundThreadGroupId()
      * @generated
      * @ordered
@@ -772,7 +561,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundThreadId() <em>Inbound Thread Id</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundThreadId()
      * @generated
      * @ordered
@@ -783,7 +571,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundThreadId() <em>Inbound Thread Id</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundThreadId()
      * @generated
      * @ordered
@@ -794,7 +581,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getDispatchFilterPattern() <em>Dispatch Filter Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getDispatchFilterPattern()
      * @generated
      * @ordered
@@ -805,7 +591,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getDispatchFilterPattern() <em>Dispatch Filter Pattern</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getDispatchFilterPattern()
      * @generated
      * @ordered
@@ -815,7 +600,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getInterval() <em>Interval</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getInterval()
      * @generated
      * @ordered
@@ -825,7 +609,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getInterval() <em>Interval</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getInterval()
      * @generated
      * @ordered
@@ -835,7 +618,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #isSequential() <em>Sequential</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isSequential()
      * @generated
      * @ordered
@@ -845,7 +627,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #isSequential() <em>Sequential</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isSequential()
      * @generated
      * @ordered
@@ -855,7 +636,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #isCoordination() <em>Coordination</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isCoordination()
      * @generated
      * @ordered
@@ -865,7 +645,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #isCoordination() <em>Coordination</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isCoordination()
      * @generated
      * @ordered
@@ -876,7 +655,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportVFSFileURI() <em>Transport VFS File URI</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportVFSFileURI()
      * @generated
      * @ordered
@@ -887,7 +665,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportVFSFileURI() <em>Transport VFS File URI</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportVFSFileURI()
      * @generated
      * @ordered
@@ -898,7 +675,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWso2mbConnectionUrl() <em>Wso2mb Connection Url</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getWso2mbConnectionUrl()
      * @generated
      * @ordered
@@ -909,7 +685,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWso2mbConnectionUrl() <em>Wso2mb Connection Url</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getWso2mbConnectionUrl()
      * @generated
      * @ordered
@@ -920,7 +695,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportVFSContentType() <em>Transport VFS Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSContentType()
      * @generated
      * @ordered
@@ -931,7 +705,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportVFSContentType() <em>Transport VFS Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSContentType()
      * @generated
      * @ordered
@@ -939,11 +712,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportVFSContentType = TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportVFSFileNamePattern() <em>Transport VFS File Name Pattern</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportVFSFileNamePattern() <em>Transport VFS File Name Pattern</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSFileNamePattern()
      * @generated
      * @ordered
@@ -951,11 +722,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportVFSFileNamePattern() <em>Transport VFS File Name Pattern</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportVFSFileNamePattern() <em>Transport VFS File Name Pattern</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSFileNamePattern()
      * @generated
      * @ordered
@@ -1010,7 +779,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportVFSLocking() <em>Transport VFS Locking</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportVFSLocking()
      * @generated
      * @ordered
@@ -1021,7 +789,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportVFSLocking() <em>Transport VFS Locking</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportVFSLocking()
      * @generated
      * @ordered
@@ -1029,11 +796,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected Enable transportVFSLocking = TRANSPORT_VFS_LOCKING_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportVFSMaxRetryCount() <em>Transport VFS Max Retry Count</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportVFSMaxRetryCount() <em>Transport VFS Max Retry Count</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSMaxRetryCount()
      * @generated
      * @ordered
@@ -1041,11 +806,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportVFSMaxRetryCount() <em>Transport VFS Max Retry Count</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportVFSMaxRetryCount() <em>Transport VFS Max Retry Count</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSMaxRetryCount()
      * @generated
      * @ordered
@@ -1053,11 +816,29 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportVFSMaxRetryCount = TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportVFSReconnectTimeout() <em>Transport VFS Reconnect Timeout</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportVFSMoveAfterFailedMove() <em>Transport VFS Move After Failed Move</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSMoveAfterFailedMove()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportVFSMoveAfterFailedMove() <em>Transport VFS Move After Failed Move</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSMoveAfterFailedMove()
+     * @generated
+     * @ordered
+     */
+    protected String transportVFSMoveAfterFailedMove = TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportVFSReconnectTimeout() <em>Transport VFS Reconnect Timeout</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSReconnectTimeout()
      * @generated
      * @ordered
@@ -1065,11 +846,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportVFSReconnectTimeout() <em>Transport VFS Reconnect Timeout</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportVFSReconnectTimeout() <em>Transport VFS Reconnect Timeout</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSReconnectTimeout()
      * @generated
      * @ordered
@@ -1099,11 +878,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected boolean transportJMSSharedSubscription = TRANSPORT_JMS_SHARED_SUBSCRIPTION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSSubscriptionName() <em>Transport JMS Subscription Name</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportJMSSubscriptionName() <em>Transport JMS Subscription Name</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSSubscriptionName()
      * @generated
      * @ordered
@@ -1111,11 +888,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportJMSSubscriptionName() <em>Transport JMS Subscription Name</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportJMSSubscriptionName() <em>Transport JMS Subscription Name</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSSubscriptionName()
      * @generated
      * @ordered
@@ -1123,11 +898,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportJMSSubscriptionName = TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSPinnedServers() <em>Transport JMS Pinned Servers</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportJMSPinnedServers() <em>Transport JMS Pinned Servers</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSPinnedServers()
      * @generated
      * @ordered
@@ -1135,11 +908,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportJMSPinnedServers() <em>Transport JMS Pinned Servers</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportJMSPinnedServers() <em>Transport JMS Pinned Servers</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSPinnedServers()
      * @generated
      * @ordered
@@ -1213,11 +984,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected VFSAction transportVFSActionAfterErrors = TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportVFSMoveAfterErrors() <em>Transport VFS Move After Errors</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportVFSMoveAfterErrors() <em>Transport VFS Move After Errors</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSMoveAfterErrors()
      * @generated
      * @ordered
@@ -1225,16 +994,94 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportVFSMoveAfterErrors() <em>Transport VFS Move After Errors</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportVFSMoveAfterErrors() <em>Transport VFS Move After Errors</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportVFSMoveAfterErrors()
      * @generated
      * @ordered
      */
     protected String transportVFSMoveAfterErrors = TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportVFSFailedRecordsFileName() <em>Transport VFS Failed Records File Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSFailedRecordsFileName()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME_EDEFAULT = "vfs-move-failed-records.properties";
+
+    /**
+     * The cached value of the '{@link #getTransportVFSFailedRecordsFileName() <em>Transport VFS Failed Records File Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSFailedRecordsFileName()
+     * @generated
+     * @ordered
+     */
+    protected String transportVFSFailedRecordsFileName = TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportVFSFailedRecordsFileDestination() <em>Transport VFS Failed Records File Destination</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSFailedRecordsFileDestination()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION_EDEFAULT = "repository/conf/";
+
+    /**
+     * The cached value of the '{@link #getTransportVFSFailedRecordsFileDestination() <em>Transport VFS Failed Records File Destination</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSFailedRecordsFileDestination()
+     * @generated
+     * @ordered
+     */
+    protected String transportVFSFailedRecordsFileDestination = TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportVFSMoveFailedRecordTimestampFormat() <em>Transport VFS Move Failed Record Timestamp Format</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSMoveFailedRecordTimestampFormat()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT_EDEFAULT = "dd-MM-yyyy HH:mm:ss";
+
+    /**
+     * The cached value of the '{@link #getTransportVFSMoveFailedRecordTimestampFormat() <em>Transport VFS Move Failed Record Timestamp Format</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSMoveFailedRecordTimestampFormat()
+     * @generated
+     * @ordered
+     */
+    protected String transportVFSMoveFailedRecordTimestampFormat = TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportVFSFailedRecordNextRetryDuration() <em>Transport VFS Failed Record Next Retry Duration</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSFailedRecordNextRetryDuration()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION_EDEFAULT = "3000";
+
+    /**
+     * The cached value of the '{@link #getTransportVFSFailedRecordNextRetryDuration() <em>Transport VFS Failed Record Next Retry Duration</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSFailedRecordNextRetryDuration()
+     * @generated
+     * @ordered
+     */
+    protected String transportVFSFailedRecordNextRetryDuration = TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTransportVFSActionAfterFailure()
@@ -1281,11 +1128,49 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportVFSMoveAfterFailure = TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isTransportVFSAutoLockRelease() <em>Transport VFS Auto Lock Release</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportVFSReplyFileURI() <em>Transport VFS Reply File URI</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSReplyFileURI()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_VFS_REPLY_FILE_URI_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTransportVFSReplyFileURI() <em>Transport VFS Reply File URI</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSReplyFileURI()
+     * @generated
+     * @ordered
+     */
+    protected String transportVFSReplyFileURI = TRANSPORT_VFS_REPLY_FILE_URI_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTransportVFSReplyFileName() <em>Transport VFS Reply File Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSReplyFileName()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_VFS_REPLY_FILE_NAME_EDEFAULT = "response.xml";
+
+    /**
+     * The cached value of the '{@link #getTransportVFSReplyFileName() <em>Transport VFS Reply File Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportVFSReplyFileName()
+     * @generated
+     * @ordered
+     */
+    protected String transportVFSReplyFileName = TRANSPORT_VFS_REPLY_FILE_NAME_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isTransportVFSAutoLockRelease() <em>Transport VFS Auto Lock Release</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #isTransportVFSAutoLockRelease()
      * @generated
      * @ordered
@@ -1293,11 +1178,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final boolean TRANSPORT_VFS_AUTO_LOCK_RELEASE_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isTransportVFSAutoLockRelease() <em>Transport VFS Auto Lock Release</em>}'
-     * attribute.
+     * The cached value of the '{@link #isTransportVFSAutoLockRelease() <em>Transport VFS Auto Lock Release</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #isTransportVFSAutoLockRelease()
      * @generated
      * @ordered
@@ -1350,11 +1233,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected boolean transportVFSLockReleaseSameNode = TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isTransportVFSDistributedLock() <em>Transport VFS Distributed Lock</em>}'
-     * attribute.
+     * The default value of the '{@link #isTransportVFSDistributedLock() <em>Transport VFS Distributed Lock</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #isTransportVFSDistributedLock()
      * @generated
      * @ordered
@@ -1362,11 +1243,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final boolean TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isTransportVFSDistributedLock() <em>Transport VFS Distributed Lock</em>}'
-     * attribute.
+     * The cached value of the '{@link #isTransportVFSDistributedLock() <em>Transport VFS Distributed Lock</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #isTransportVFSDistributedLock()
      * @generated
      * @ordered
@@ -1377,7 +1256,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #isTransportVFSStreaming() <em>Transport VFS Streaming</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isTransportVFSStreaming()
      * @generated
      * @ordered
@@ -1388,7 +1266,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isTransportVFSStreaming() <em>Transport VFS Streaming</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isTransportVFSStreaming()
      * @generated
      * @ordered
@@ -1399,7 +1276,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #isTransportVFSBuild() <em>Transport VFS Build</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isTransportVFSBuild()
      * @generated
      * @ordered
@@ -1410,7 +1286,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isTransportVFSBuild() <em>Transport VFS Build</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isTransportVFSBuild()
      * @generated
      * @ordered
@@ -1443,7 +1318,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getJavaNamingFactoryInitial() <em>Java Naming Factory Initial</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getJavaNamingFactoryInitial()
      * @generated
      * @ordered
@@ -1454,7 +1328,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getJavaNamingFactoryInitial() <em>Java Naming Factory Initial</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getJavaNamingFactoryInitial()
      * @generated
      * @ordered
@@ -1465,7 +1338,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getJavaNamingProviderUrl() <em>Java Naming Provider Url</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getJavaNamingProviderUrl()
      * @generated
      * @ordered
@@ -1476,7 +1348,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getJavaNamingProviderUrl() <em>Java Naming Provider Url</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getJavaNamingProviderUrl()
      * @generated
      * @ordered
@@ -1555,7 +1426,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportJMSDestination() <em>Transport JMS Destination</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSDestination()
      * @generated
      * @ordered
@@ -1566,7 +1436,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportJMSDestination() <em>Transport JMS Destination</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSDestination()
      * @generated
      * @ordered
@@ -1621,7 +1490,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportJMSCacheLevel() <em>Transport JMS Cache Level</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSCacheLevel()
      * @generated
      * @ordered
@@ -1632,7 +1500,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportJMSCacheLevel() <em>Transport JMS Cache Level</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSCacheLevel()
      * @generated
      * @ordered
@@ -1643,7 +1510,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportJMSUserName() <em>Transport JMS User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSUserName()
      * @generated
      * @ordered
@@ -1654,7 +1520,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportJMSUserName() <em>Transport JMS User Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSUserName()
      * @generated
      * @ordered
@@ -1665,7 +1530,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportJMSPassword() <em>Transport JMS Password</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportJMSPassword()
      * @generated
      * @ordered
@@ -1676,7 +1540,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportJMSPassword() <em>Transport JMS Password</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportJMSPassword()
      * @generated
      * @ordered
@@ -1684,11 +1547,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportJMSPassword = TRANSPORT_JMS_PASSWORD_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSJMSSpecVersion() <em>Transport JMSJMS Spec Version</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportJMSJMSSpecVersion() <em>Transport JMSJMS Spec Version</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSJMSSpecVersion()
      * @generated
      * @ordered
@@ -1696,11 +1557,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportJMSJMSSpecVersion() <em>Transport JMSJMS Spec Version</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportJMSJMSSpecVersion() <em>Transport JMSJMS Spec Version</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSJMSSpecVersion()
      * @generated
      * @ordered
@@ -1754,11 +1613,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportJMSDurableSubscriberClientID = TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSMessageSelector() <em>Transport JMS Message Selector</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportJMSMessageSelector() <em>Transport JMS Message Selector</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSMessageSelector()
      * @generated
      * @ordered
@@ -1766,11 +1623,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportJMSMessageSelector() <em>Transport JMS Message Selector</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportJMSMessageSelector() <em>Transport JMS Message Selector</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSMessageSelector()
      * @generated
      * @ordered
@@ -1778,11 +1633,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportJMSMessageSelector = TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSRetryDuration() <em>Transport JMS Retry Duration</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportJMSRetryDuration() <em>Transport JMS Retry Duration</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSRetryDuration()
      * @generated
      * @ordered
@@ -1790,11 +1643,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMS_RETRY_DURATION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportJMSRetryDuration() <em>Transport JMS Retry Duration</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportJMSRetryDuration() <em>Transport JMS Retry Duration</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSRetryDuration()
      * @generated
      * @ordered
@@ -1895,7 +1746,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #isTransportVFSCreateFolder() <em>Transport VFS Create Folder</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isTransportVFSCreateFolder()
      * @generated
      * @ordered
@@ -1906,7 +1756,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isTransportVFSCreateFolder() <em>Transport VFS Create Folder</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isTransportVFSCreateFolder()
      * @generated
      * @ordered
@@ -1914,11 +1763,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected boolean transportVFSCreateFolder = TRANSPORT_VFS_CREATE_FOLDER_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSReceiveTimeout() <em>Transport JMS Receive Timeout</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportJMSReceiveTimeout() <em>Transport JMS Receive Timeout</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSReceiveTimeout()
      * @generated
      * @ordered
@@ -1926,11 +1773,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportJMSReceiveTimeout() <em>Transport JMS Receive Timeout</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportJMSReceiveTimeout() <em>Transport JMS Receive Timeout</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSReceiveTimeout()
      * @generated
      * @ordered
@@ -1941,7 +1786,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportJMSContentType() <em>Transport JMS Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSContentType()
      * @generated
      * @ordered
@@ -1952,7 +1796,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportJMSContentType() <em>Transport JMS Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSContentType()
      * @generated
      * @ordered
@@ -1982,11 +1825,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportJMSContentTypeProperty = TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSReplyDestination() <em>Transport JMS Reply Destination</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportJMSReplyDestination() <em>Transport JMS Reply Destination</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSReplyDestination()
      * @generated
      * @ordered
@@ -1994,11 +1835,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportJMSReplyDestination() <em>Transport JMS Reply Destination</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportJMSReplyDestination() <em>Transport JMS Reply Destination</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSReplyDestination()
      * @generated
      * @ordered
@@ -2006,11 +1845,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportJMSReplyDestination = TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSPubSubNoLocal() <em>Transport JMS Pub Sub No Local</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportJMSPubSubNoLocal() <em>Transport JMS Pub Sub No Local</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSPubSubNoLocal()
      * @generated
      * @ordered
@@ -2018,11 +1855,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportJMSPubSubNoLocal() <em>Transport JMS Pub Sub No Local</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportJMSPubSubNoLocal() <em>Transport JMS Pub Sub No Local</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSPubSubNoLocal()
      * @generated
      * @ordered
@@ -2055,7 +1890,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportJMSBrokerType() <em>Transport JMS Broker Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSBrokerType()
      * @generated
      * @ordered
@@ -2066,7 +1900,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportJMSBrokerType() <em>Transport JMS Broker Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSBrokerType()
      * @generated
      * @ordered
@@ -2096,11 +1929,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportMQTTConnectionFactory = TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportMQTTServerHostName() <em>Transport MQTT Server Host Name</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportMQTTServerHostName() <em>Transport MQTT Server Host Name</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTServerHostName()
      * @generated
      * @ordered
@@ -2108,11 +1939,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getTransportMQTTServerHostName() <em>Transport MQTT Server Host Name</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportMQTTServerHostName() <em>Transport MQTT Server Host Name</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTServerHostName()
      * @generated
      * @ordered
@@ -2123,7 +1952,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportMQTTServerPort() <em>Transport MQTT Server Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTServerPort()
      * @generated
      * @ordered
@@ -2134,7 +1962,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportMQTTServerPort() <em>Transport MQTT Server Port</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTServerPort()
      * @generated
      * @ordered
@@ -2145,7 +1972,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportMQTTTopicName() <em>Transport MQTT Topic Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTTopicName()
      * @generated
      * @ordered
@@ -2156,7 +1982,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportMQTTTopicName() <em>Transport MQTT Topic Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTTopicName()
      * @generated
      * @ordered
@@ -2164,11 +1989,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportMQTTTopicName = TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportMQTTSubscriptionQOS() <em>Transport MQTT Subscription QOS</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportMQTTSubscriptionQOS() <em>Transport MQTT Subscription QOS</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSubscriptionQOS()
      * @generated
      * @ordered
@@ -2176,11 +1999,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final MQTTSubscriptionQOS TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT = MQTTSubscriptionQOS.ZERO;
 
     /**
-     * The cached value of the '{@link #getTransportMQTTSubscriptionQOS() <em>Transport MQTT Subscription QOS</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportMQTTSubscriptionQOS() <em>Transport MQTT Subscription QOS</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSubscriptionQOS()
      * @generated
      * @ordered
@@ -2188,11 +2009,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected MQTTSubscriptionQOS transportMQTTSubscriptionQOS = TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isTransportMQTTSessionClean() <em>Transport MQTT Session Clean</em>}'
-     * attribute.
+     * The default value of the '{@link #isTransportMQTTSessionClean() <em>Transport MQTT Session Clean</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #isTransportMQTTSessionClean()
      * @generated
      * @ordered
@@ -2203,7 +2022,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isTransportMQTTSessionClean() <em>Transport MQTT Session Clean</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #isTransportMQTTSessionClean()
      * @generated
      * @ordered
@@ -2214,7 +2032,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportMQTTSslEnable() <em>Transport MQTT Ssl Enable</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslEnable()
      * @generated
      * @ordered
@@ -2225,7 +2042,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportMQTTSslEnable() <em>Transport MQTT Ssl Enable</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslEnable()
      * @generated
      * @ordered
@@ -2304,7 +2120,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportMQTTClientId() <em>Transport MQTT Client Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTClientId()
      * @generated
      * @ordered
@@ -2315,7 +2130,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportMQTTClientId() <em>Transport MQTT Client Id</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTClientId()
      * @generated
      * @ordered
@@ -2325,7 +2139,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getTruststore() <em>Truststore</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTruststore()
      * @generated
      * @ordered
@@ -2335,7 +2148,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getTruststore() <em>Truststore</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTruststore()
      * @generated
      * @ordered
@@ -2345,7 +2157,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getKeystore() <em>Keystore</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getKeystore()
      * @generated
      * @ordered
@@ -2355,7 +2166,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getKeystore() <em>Keystore</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getKeystore()
      * @generated
      * @ordered
@@ -2366,7 +2176,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getSslVerifyClient() <em>Ssl Verify Client</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getSslVerifyClient()
      * @generated
      * @ordered
@@ -2377,7 +2186,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getSslVerifyClient() <em>Ssl Verify Client</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getSslVerifyClient()
      * @generated
      * @ordered
@@ -2387,7 +2195,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getSslProtocol() <em>Ssl Protocol</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getSslProtocol()
      * @generated
      * @ordered
@@ -2397,7 +2204,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getSslProtocol() <em>Ssl Protocol</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getSslProtocol()
      * @generated
      * @ordered
@@ -2408,7 +2214,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getHttpsProtocols() <em>Https Protocols</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getHttpsProtocols()
      * @generated
      * @ordered
@@ -2419,7 +2224,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getHttpsProtocols() <em>Https Protocols</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getHttpsProtocols()
      * @generated
      * @ordered
@@ -2427,11 +2231,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String httpsProtocols = HTTPS_PROTOCOLS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getCertificateRevocationVerifier() <em>Certificate Revocation Verifier</em>}'
-     * attribute.
+     * The default value of the '{@link #getCertificateRevocationVerifier() <em>Certificate Revocation Verifier</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getCertificateRevocationVerifier()
      * @generated
      * @ordered
@@ -2439,11 +2241,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getCertificateRevocationVerifier() <em>Certificate Revocation Verifier</em>}'
-     * attribute.
+     * The cached value of the '{@link #getCertificateRevocationVerifier() <em>Certificate Revocation Verifier</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getCertificateRevocationVerifier()
      * @generated
      * @ordered
@@ -2454,7 +2254,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundHL7Port() <em>Inbound HL7 Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundHL7Port()
      * @generated
      * @ordered
@@ -2465,7 +2264,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundHL7Port() <em>Inbound HL7 Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundHL7Port()
      * @generated
      * @ordered
@@ -2476,7 +2274,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #isInboundHL7AutoAck() <em>Inbound HL7 Auto Ack</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isInboundHL7AutoAck()
      * @generated
      * @ordered
@@ -2487,7 +2284,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isInboundHL7AutoAck() <em>Inbound HL7 Auto Ack</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isInboundHL7AutoAck()
      * @generated
      * @ordered
@@ -2520,7 +2316,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundHL7CharSet() <em>Inbound HL7 Char Set</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundHL7CharSet()
      * @generated
      * @ordered
@@ -2531,7 +2326,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundHL7CharSet() <em>Inbound HL7 Char Set</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundHL7CharSet()
      * @generated
      * @ordered
@@ -2542,7 +2336,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundHL7TimeOut() <em>Inbound HL7 Time Out</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundHL7TimeOut()
      * @generated
      * @ordered
@@ -2553,7 +2346,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundHL7TimeOut() <em>Inbound HL7 Time Out</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundHL7TimeOut()
      * @generated
      * @ordered
@@ -2561,11 +2353,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String inboundHL7TimeOut = INBOUND_HL7_TIME_OUT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isInboundHL7ValidateMessage() <em>Inbound HL7 Validate Message</em>}'
-     * attribute.
+     * The default value of the '{@link #isInboundHL7ValidateMessage() <em>Inbound HL7 Validate Message</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #isInboundHL7ValidateMessage()
      * @generated
      * @ordered
@@ -2576,7 +2366,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isInboundHL7ValidateMessage() <em>Inbound HL7 Validate Message</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #isInboundHL7ValidateMessage()
      * @generated
      * @ordered
@@ -2632,7 +2421,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getZookeeperConnect() <em>Zookeeper Connect</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getZookeeperConnect()
      * @generated
      * @ordered
@@ -2643,7 +2431,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getZookeeperConnect() <em>Zookeeper Connect</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getZookeeperConnect()
      * @generated
      * @ordered
@@ -2653,7 +2440,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getGroupId()
      * @generated
      * @ordered
@@ -2663,7 +2449,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getGroupId()
      * @generated
      * @ordered
@@ -2673,7 +2458,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getContentType()
      * @generated
      * @ordered
@@ -2683,7 +2467,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getContentType()
      * @generated
      * @ordered
@@ -2694,7 +2477,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getConsumerType() <em>Consumer Type</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getConsumerType()
      * @generated
      * @ordered
@@ -2704,7 +2486,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getConsumerType() <em>Consumer Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getConsumerType()
      * @generated
      * @ordered
@@ -2715,7 +2496,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTopicsOrTopicFilter() <em>Topics Or Topic Filter</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTopicsOrTopicFilter()
      * @generated
      * @ordered
@@ -2726,7 +2506,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTopicsOrTopicFilter() <em>Topics Or Topic Filter</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTopicsOrTopicFilter()
      * @generated
      * @ordered
@@ -2736,7 +2515,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getTopicsName() <em>Topics Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTopicsName()
      * @generated
      * @ordered
@@ -2746,7 +2524,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getTopicsName() <em>Topics Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTopicsName()
      * @generated
      * @ordered
@@ -2757,7 +2534,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTopicFilterFrom() <em>Topic Filter From</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTopicFilterFrom()
      * @generated
      * @ordered
@@ -2768,7 +2544,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTopicFilterFrom() <em>Topic Filter From</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTopicFilterFrom()
      * @generated
      * @ordered
@@ -2779,7 +2554,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTopicFilterName() <em>Topic Filter Name</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTopicFilterName()
      * @generated
      * @ordered
@@ -2790,7 +2564,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTopicFilterName() <em>Topic Filter Name</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTopicFilterName()
      * @generated
      * @ordered
@@ -2801,7 +2574,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getSimpleConsumerTopic() <em>Simple Consumer Topic</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getSimpleConsumerTopic()
      * @generated
      * @ordered
@@ -2812,7 +2584,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getSimpleConsumerTopic() <em>Simple Consumer Topic</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getSimpleConsumerTopic()
      * @generated
      * @ordered
@@ -2823,7 +2594,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getSimpleConsumerBrokers() <em>Simple Consumer Brokers</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSimpleConsumerBrokers()
      * @generated
      * @ordered
@@ -2834,7 +2604,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getSimpleConsumerBrokers() <em>Simple Consumer Brokers</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSimpleConsumerBrokers()
      * @generated
      * @ordered
@@ -2845,7 +2614,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getSimpleConsumerPort() <em>Simple Consumer Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getSimpleConsumerPort()
      * @generated
      * @ordered
@@ -2856,7 +2624,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getSimpleConsumerPort() <em>Simple Consumer Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getSimpleConsumerPort()
      * @generated
      * @ordered
@@ -2867,7 +2634,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getSimpleConsumerPartition() <em>Simple Consumer Partition</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSimpleConsumerPartition()
      * @generated
      * @ordered
@@ -2878,7 +2644,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getSimpleConsumerPartition() <em>Simple Consumer Partition</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSimpleConsumerPartition()
      * @generated
      * @ordered
@@ -2910,7 +2675,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getThreadCount() <em>Thread Count</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getThreadCount()
      * @generated
      * @ordered
@@ -2920,7 +2684,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getThreadCount() <em>Thread Count</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getThreadCount()
      * @generated
      * @ordered
@@ -2930,7 +2693,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getConsumerId() <em>Consumer Id</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getConsumerId()
      * @generated
      * @ordered
@@ -2940,7 +2702,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getConsumerId() <em>Consumer Id</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getConsumerId()
      * @generated
      * @ordered
@@ -2951,7 +2712,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getSocketTimeoutMs() <em>Socket Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getSocketTimeoutMs()
      * @generated
      * @ordered
@@ -2962,7 +2722,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getSocketTimeoutMs() <em>Socket Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getSocketTimeoutMs()
      * @generated
      * @ordered
@@ -2973,7 +2732,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getSocketReceiveBufferBytes() <em>Socket Receive Buffer Bytes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSocketReceiveBufferBytes()
      * @generated
      * @ordered
@@ -2984,7 +2742,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getSocketReceiveBufferBytes() <em>Socket Receive Buffer Bytes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getSocketReceiveBufferBytes()
      * @generated
      * @ordered
@@ -2995,7 +2752,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getFetchMessageMaxBytes() <em>Fetch Message Max Bytes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFetchMessageMaxBytes()
      * @generated
      * @ordered
@@ -3006,7 +2762,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getFetchMessageMaxBytes() <em>Fetch Message Max Bytes</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getFetchMessageMaxBytes()
      * @generated
      * @ordered
@@ -3017,7 +2772,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getNumConsumerFetches() <em>Num Consumer Fetches</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getNumConsumerFetches()
      * @generated
      * @ordered
@@ -3028,7 +2782,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getNumConsumerFetches() <em>Num Consumer Fetches</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getNumConsumerFetches()
      * @generated
      * @ordered
@@ -3039,7 +2792,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #isAutoCommitEnable() <em>Auto Commit Enable</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isAutoCommitEnable()
      * @generated
      * @ordered
@@ -3050,7 +2802,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isAutoCommitEnable() <em>Auto Commit Enable</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isAutoCommitEnable()
      * @generated
      * @ordered
@@ -3061,7 +2812,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getAutoCommitIntervalMs() <em>Auto Commit Interval Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAutoCommitIntervalMs()
      * @generated
      * @ordered
@@ -3072,7 +2822,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getAutoCommitIntervalMs() <em>Auto Commit Interval Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAutoCommitIntervalMs()
      * @generated
      * @ordered
@@ -3083,7 +2832,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getQueuedMaxMessageChunks() <em>Queued Max Message Chunks</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getQueuedMaxMessageChunks()
      * @generated
      * @ordered
@@ -3094,7 +2842,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getQueuedMaxMessageChunks() <em>Queued Max Message Chunks</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getQueuedMaxMessageChunks()
      * @generated
      * @ordered
@@ -3105,7 +2852,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getRebalanceMaxRetries() <em>Rebalance Max Retries</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getRebalanceMaxRetries()
      * @generated
      * @ordered
@@ -3116,7 +2862,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getRebalanceMaxRetries() <em>Rebalance Max Retries</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getRebalanceMaxRetries()
      * @generated
      * @ordered
@@ -3127,7 +2872,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getFetchMinBytes() <em>Fetch Min Bytes</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getFetchMinBytes()
      * @generated
      * @ordered
@@ -3138,7 +2882,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getFetchMinBytes() <em>Fetch Min Bytes</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getFetchMinBytes()
      * @generated
      * @ordered
@@ -3149,7 +2892,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getFetchWaitMaxMs() <em>Fetch Wait Max Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getFetchWaitMaxMs()
      * @generated
      * @ordered
@@ -3160,7 +2902,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getFetchWaitMaxMs() <em>Fetch Wait Max Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getFetchWaitMaxMs()
      * @generated
      * @ordered
@@ -3171,7 +2912,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getRebalanceBackoffMs() <em>Rebalance Backoff Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getRebalanceBackoffMs()
      * @generated
      * @ordered
@@ -3182,7 +2922,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getRebalanceBackoffMs() <em>Rebalance Backoff Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getRebalanceBackoffMs()
      * @generated
      * @ordered
@@ -3193,7 +2932,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getRefreshLeaderBackoffMs() <em>Refresh Leader Backoff Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getRefreshLeaderBackoffMs()
      * @generated
      * @ordered
@@ -3204,7 +2942,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getRefreshLeaderBackoffMs() <em>Refresh Leader Backoff Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getRefreshLeaderBackoffMs()
      * @generated
      * @ordered
@@ -3215,7 +2952,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getAutoOffsetReset() <em>Auto Offset Reset</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getAutoOffsetReset()
      * @generated
      * @ordered
@@ -3226,7 +2962,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getAutoOffsetReset() <em>Auto Offset Reset</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getAutoOffsetReset()
      * @generated
      * @ordered
@@ -3237,7 +2972,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getConsumerTimeoutMs() <em>Consumer Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getConsumerTimeoutMs()
      * @generated
      * @ordered
@@ -3248,7 +2982,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getConsumerTimeoutMs() <em>Consumer Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getConsumerTimeoutMs()
      * @generated
      * @ordered
@@ -3259,7 +2992,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #isExcludeInternalTopics() <em>Exclude Internal Topics</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isExcludeInternalTopics()
      * @generated
      * @ordered
@@ -3270,7 +3002,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isExcludeInternalTopics() <em>Exclude Internal Topics</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isExcludeInternalTopics()
      * @generated
      * @ordered
@@ -3278,11 +3009,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected boolean excludeInternalTopics = EXCLUDE_INTERNAL_TOPICS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getPartitionAssignmentStrategy() <em>Partition Assignment Strategy</em>}'
-     * attribute.
+     * The default value of the '{@link #getPartitionAssignmentStrategy() <em>Partition Assignment Strategy</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getPartitionAssignmentStrategy()
      * @generated
      * @ordered
@@ -3290,11 +3019,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final PartitionAssignmentStrategyType PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT = PartitionAssignmentStrategyType.ROUNDROBIN;
 
     /**
-     * The cached value of the '{@link #getPartitionAssignmentStrategy() <em>Partition Assignment Strategy</em>}'
-     * attribute.
+     * The cached value of the '{@link #getPartitionAssignmentStrategy() <em>Partition Assignment Strategy</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getPartitionAssignmentStrategy()
      * @generated
      * @ordered
@@ -3304,7 +3031,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #getClientId() <em>Client Id</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getClientId()
      * @generated
      * @ordered
@@ -3314,7 +3040,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #getClientId() <em>Client Id</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getClientId()
      * @generated
      * @ordered
@@ -3322,11 +3047,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String clientId = CLIENT_ID_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}'
-     * attribute.
+     * The default value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getZookeeperSessionTimeoutMs()
      * @generated
      * @ordered
@@ -3334,11 +3057,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}'
-     * attribute.
+     * The cached value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getZookeeperSessionTimeoutMs()
      * @generated
      * @ordered
@@ -3346,11 +3067,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String zookeeperSessionTimeoutMs = ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getZookeeperConnectionTimeoutMs() <em>Zookeeper Connection Timeout Ms</em>}'
-     * attribute.
+     * The default value of the '{@link #getZookeeperConnectionTimeoutMs() <em>Zookeeper Connection Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getZookeeperConnectionTimeoutMs()
      * @generated
      * @ordered
@@ -3358,11 +3077,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT = "";
 
     /**
-     * The cached value of the '{@link #getZookeeperConnectionTimeoutMs() <em>Zookeeper Connection Timeout Ms</em>}'
-     * attribute.
+     * The cached value of the '{@link #getZookeeperConnectionTimeoutMs() <em>Zookeeper Connection Timeout Ms</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getZookeeperConnectionTimeoutMs()
      * @generated
      * @ordered
@@ -3373,7 +3090,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getZookeeperSyncTimeMs()
      * @generated
      * @ordered
@@ -3384,7 +3100,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getZookeeperSyncTimeMs()
      * @generated
      * @ordered
@@ -3395,7 +3110,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getOffsetsStorage() <em>Offsets Storage</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getOffsetsStorage()
      * @generated
      * @ordered
@@ -3406,7 +3120,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getOffsetsStorage() <em>Offsets Storage</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getOffsetsStorage()
      * @generated
      * @ordered
@@ -3417,7 +3130,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getOffsetsChannelBackoffMs() <em>Offsets Channel Backoff Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOffsetsChannelBackoffMs()
      * @generated
      * @ordered
@@ -3428,7 +3140,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getOffsetsChannelBackoffMs() <em>Offsets Channel Backoff Ms</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOffsetsChannelBackoffMs()
      * @generated
      * @ordered
@@ -3461,7 +3172,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getOffsetsCommitMaxRetries() <em>Offsets Commit Max Retries</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOffsetsCommitMaxRetries()
      * @generated
      * @ordered
@@ -3472,7 +3182,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getOffsetsCommitMaxRetries() <em>Offsets Commit Max Retries</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOffsetsCommitMaxRetries()
      * @generated
      * @ordered
@@ -3483,7 +3192,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #isDualCommitEnabled() <em>Dual Commit Enabled</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isDualCommitEnabled()
      * @generated
      * @ordered
@@ -3494,7 +3202,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isDualCommitEnabled() <em>Dual Commit Enabled</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isDualCommitEnabled()
      * @generated
      * @ordered
@@ -3505,7 +3212,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundCxfRmHost() <em>Inbound Cxf Rm Host</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundCxfRmHost()
      * @generated
      * @ordered
@@ -3516,7 +3222,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundCxfRmHost() <em>Inbound Cxf Rm Host</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundCxfRmHost()
      * @generated
      * @ordered
@@ -3527,7 +3232,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundCxfRmPort() <em>Inbound Cxf Rm Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundCxfRmPort()
      * @generated
      * @ordered
@@ -3538,7 +3242,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundCxfRmPort() <em>Inbound Cxf Rm Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getInboundCxfRmPort()
      * @generated
      * @ordered
@@ -3549,7 +3252,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getInboundCxfRmConfigFile() <em>Inbound Cxf Rm Config File</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInboundCxfRmConfigFile()
      * @generated
      * @ordered
@@ -3560,7 +3262,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getInboundCxfRmConfigFile() <em>Inbound Cxf Rm Config File</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInboundCxfRmConfigFile()
      * @generated
      * @ordered
@@ -3570,7 +3271,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #isEnableSSL() <em>Enable SSL</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isEnableSSL()
      * @generated
      * @ordered
@@ -3580,7 +3280,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #isEnableSSL() <em>Enable SSL</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isEnableSSL()
      * @generated
      * @ordered
@@ -3601,7 +3300,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #isSuspend() <em>Suspend</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isSuspend()
      * @generated
      * @ordered
@@ -3611,7 +3309,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #isSuspend() <em>Suspend</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isSuspend()
      * @generated
      * @ordered
@@ -3663,11 +3360,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqServerHostName = TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportRabbitMqServerPort() <em>Transport Rabbit Mq Server Port</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportRabbitMqServerPort() <em>Transport Rabbit Mq Server Port</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqServerPort()
      * @generated
      * @ordered
@@ -3675,11 +3370,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqServerPort() <em>Transport Rabbit Mq Server Port</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportRabbitMqServerPort() <em>Transport Rabbit Mq Server Port</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqServerPort()
      * @generated
      * @ordered
@@ -3731,11 +3424,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqServerPassword = TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportRabbitMqQueueName() <em>Transport Rabbit Mq Queue Name</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportRabbitMqQueueName() <em>Transport Rabbit Mq Queue Name</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqQueueName()
      * @generated
      * @ordered
@@ -3743,11 +3434,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqQueueName() <em>Transport Rabbit Mq Queue Name</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportRabbitMqQueueName() <em>Transport Rabbit Mq Queue Name</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqQueueName()
      * @generated
      * @ordered
@@ -4044,10 +3733,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqConnectionSslEnabled = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportRabbitMqConnectionSslKeystoreLocation() <em>Transport Rabbit Mq
-     * Connection Ssl Keystore Location</em>}' attribute.
+     * The default value of the '{@link #getTransportRabbitMqConnectionSslKeystoreLocation() <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslKeystoreLocation()
      * @generated
      * @ordered
@@ -4055,10 +3742,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqConnectionSslKeystoreLocation() <em>Transport Rabbit Mq
-     * Connection Ssl Keystore Location</em>}' attribute.
+     * The cached value of the '{@link #getTransportRabbitMqConnectionSslKeystoreLocation() <em>Transport Rabbit Mq Connection Ssl Keystore Location</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslKeystoreLocation()
      * @generated
      * @ordered
@@ -4066,10 +3751,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqConnectionSslKeystoreLocation = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportRabbitMqConnectionSslKeystoreType() <em>Transport Rabbit Mq
-     * Connection Ssl Keystore Type</em>}' attribute.
+     * The default value of the '{@link #getTransportRabbitMqConnectionSslKeystoreType() <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslKeystoreType()
      * @generated
      * @ordered
@@ -4077,10 +3760,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqConnectionSslKeystoreType() <em>Transport Rabbit Mq
-     * Connection Ssl Keystore Type</em>}' attribute.
+     * The cached value of the '{@link #getTransportRabbitMqConnectionSslKeystoreType() <em>Transport Rabbit Mq Connection Ssl Keystore Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslKeystoreType()
      * @generated
      * @ordered
@@ -4088,10 +3769,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqConnectionSslKeystoreType = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportRabbitMqConnectionSslKeystorePassword() <em>Transport Rabbit Mq
-     * Connection Ssl Keystore Password</em>}' attribute.
+     * The default value of the '{@link #getTransportRabbitMqConnectionSslKeystorePassword() <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslKeystorePassword()
      * @generated
      * @ordered
@@ -4099,10 +3778,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqConnectionSslKeystorePassword() <em>Transport Rabbit Mq
-     * Connection Ssl Keystore Password</em>}' attribute.
+     * The cached value of the '{@link #getTransportRabbitMqConnectionSslKeystorePassword() <em>Transport Rabbit Mq Connection Ssl Keystore Password</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslKeystorePassword()
      * @generated
      * @ordered
@@ -4110,10 +3787,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqConnectionSslKeystorePassword = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportRabbitMqConnectionSslTruststoreLocation() <em>Transport Rabbit Mq
-     * Connection Ssl Truststore Location</em>}' attribute.
+     * The default value of the '{@link #getTransportRabbitMqConnectionSslTruststoreLocation() <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslTruststoreLocation()
      * @generated
      * @ordered
@@ -4121,10 +3796,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqConnectionSslTruststoreLocation() <em>Transport Rabbit Mq
-     * Connection Ssl Truststore Location</em>}' attribute.
+     * The cached value of the '{@link #getTransportRabbitMqConnectionSslTruststoreLocation() <em>Transport Rabbit Mq Connection Ssl Truststore Location</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslTruststoreLocation()
      * @generated
      * @ordered
@@ -4132,10 +3805,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqConnectionSslTruststoreLocation = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportRabbitMqConnectionSslTruststoreType() <em>Transport Rabbit Mq
-     * Connection Ssl Truststore Type</em>}' attribute.
+     * The default value of the '{@link #getTransportRabbitMqConnectionSslTruststoreType() <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslTruststoreType()
      * @generated
      * @ordered
@@ -4143,10 +3814,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqConnectionSslTruststoreType() <em>Transport Rabbit Mq
-     * Connection Ssl Truststore Type</em>}' attribute.
+     * The cached value of the '{@link #getTransportRabbitMqConnectionSslTruststoreType() <em>Transport Rabbit Mq Connection Ssl Truststore Type</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslTruststoreType()
      * @generated
      * @ordered
@@ -4154,10 +3823,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqConnectionSslTruststoreType = TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportRabbitMqConnectionSslTruststorePassword() <em>Transport Rabbit Mq
-     * Connection Ssl Truststore Password</em>}' attribute.
+     * The default value of the '{@link #getTransportRabbitMqConnectionSslTruststorePassword() <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslTruststorePassword()
      * @generated
      * @ordered
@@ -4165,10 +3832,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqConnectionSslTruststorePassword() <em>Transport Rabbit Mq
-     * Connection Ssl Truststore Password</em>}' attribute.
+     * The cached value of the '{@link #getTransportRabbitMqConnectionSslTruststorePassword() <em>Transport Rabbit Mq Connection Ssl Truststore Password</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConnectionSslTruststorePassword()
      * @generated
      * @ordered
@@ -4295,11 +3960,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqServerRetryInterval = TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqConsumerQosKey() <em>Transport Rabbit Mq Consumer Qos
-     * Key</em>}' containment reference.
+     * The cached value of the '{@link #getTransportRabbitMqConsumerQosKey() <em>Transport Rabbit Mq Consumer Qos Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConsumerQosKey()
      * @generated
      * @ordered
@@ -4310,7 +3973,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWsInboundPort() <em>Ws Inbound Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getWsInboundPort()
      * @generated
      * @ordered
@@ -4321,7 +3983,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWsInboundPort() <em>Ws Inbound Port</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getWsInboundPort()
      * @generated
      * @ordered
@@ -4329,11 +3990,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String wsInboundPort = WS_INBOUND_PORT_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getWsClientSideBroadcastLevel() <em>Ws Client Side Broadcast Level</em>}'
-     * attribute.
+     * The default value of the '{@link #getWsClientSideBroadcastLevel() <em>Ws Client Side Broadcast Level</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getWsClientSideBroadcastLevel()
      * @generated
      * @ordered
@@ -4341,11 +4000,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final WSClientSideBroadcastLevel WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT = WSClientSideBroadcastLevel.ZERO;
 
     /**
-     * The cached value of the '{@link #getWsClientSideBroadcastLevel() <em>Ws Client Side Broadcast Level</em>}'
-     * attribute.
+     * The cached value of the '{@link #getWsClientSideBroadcastLevel() <em>Ws Client Side Broadcast Level</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getWsClientSideBroadcastLevel()
      * @generated
      * @ordered
@@ -4353,11 +4010,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected WSClientSideBroadcastLevel wsClientSideBroadcastLevel = WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getWsOutflowDispatchSequence() <em>Ws Outflow Dispatch Sequence</em>}'
-     * attribute.
+     * The default value of the '{@link #getWsOutflowDispatchSequence() <em>Ws Outflow Dispatch Sequence</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getWsOutflowDispatchSequence()
      * @generated
      * @ordered
@@ -4365,11 +4020,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getWsOutflowDispatchSequence() <em>Ws Outflow Dispatch Sequence</em>}'
-     * attribute.
+     * The cached value of the '{@link #getWsOutflowDispatchSequence() <em>Ws Outflow Dispatch Sequence</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getWsOutflowDispatchSequence()
      * @generated
      * @ordered
@@ -4402,7 +4055,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWsBossThreadPoolSize() <em>Ws Boss Thread Pool Size</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsBossThreadPoolSize()
      * @generated
      * @ordered
@@ -4413,7 +4065,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWsBossThreadPoolSize() <em>Ws Boss Thread Pool Size</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsBossThreadPoolSize()
      * @generated
      * @ordered
@@ -4424,7 +4075,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWsWorkerThreadPoolSize() <em>Ws Worker Thread Pool Size</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsWorkerThreadPoolSize()
      * @generated
      * @ordered
@@ -4435,7 +4085,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWsWorkerThreadPoolSize() <em>Ws Worker Thread Pool Size</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsWorkerThreadPoolSize()
      * @generated
      * @ordered
@@ -4443,11 +4092,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String wsWorkerThreadPoolSize = WS_WORKER_THREAD_POOL_SIZE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getWsSubprotocolHandlerClass() <em>Ws Subprotocol Handler Class</em>}'
-     * attribute.
+     * The default value of the '{@link #getWsSubprotocolHandlerClass() <em>Ws Subprotocol Handler Class</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getWsSubprotocolHandlerClass()
      * @generated
      * @ordered
@@ -4455,11 +4102,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getWsSubprotocolHandlerClass() <em>Ws Subprotocol Handler Class</em>}'
-     * attribute.
+     * The cached value of the '{@link #getWsSubprotocolHandlerClass() <em>Ws Subprotocol Handler Class</em>}' attribute.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getWsSubprotocolHandlerClass()
      * @generated
      * @ordered
@@ -4470,7 +4115,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWsPipelineHandlerClass() <em>Ws Pipeline Handler Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsPipelineHandlerClass()
      * @generated
      * @ordered
@@ -4481,7 +4125,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWsPipelineHandlerClass() <em>Ws Pipeline Handler Class</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsPipelineHandlerClass()
      * @generated
      * @ordered
@@ -4492,7 +4135,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportFeedURL() <em>Transport Feed URL</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportFeedURL()
      * @generated
      * @ordered
@@ -4503,7 +4145,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportFeedURL() <em>Transport Feed URL</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportFeedURL()
      * @generated
      * @ordered
@@ -4514,7 +4155,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportFeedType() <em>Transport Feed Type</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportFeedType()
      * @generated
      * @ordered
@@ -4525,7 +4165,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportFeedType() <em>Transport Feed Type</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getTransportFeedType()
      * @generated
      * @ordered
@@ -4535,7 +4174,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The default value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isTraceEnabled()
      * @generated
      * @ordered
@@ -4545,7 +4183,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * The cached value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #isTraceEnabled()
      * @generated
      * @ordered
@@ -4556,7 +4193,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isStatisticsEnabled()
      * @generated
      * @ordered
@@ -4567,7 +4203,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #isStatisticsEnabled()
      * @generated
      * @ordered
@@ -4575,11 +4210,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected boolean statisticsEnabled = STATISTICS_ENABLED_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSRetriesBeforeSuspension() <em>Transport JMS Retries Before
-     * Suspension</em>}' attribute.
+     * The default value of the '{@link #getTransportJMSRetriesBeforeSuspension() <em>Transport JMS Retries Before Suspension</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSRetriesBeforeSuspension()
      * @generated
      * @ordered
@@ -4587,11 +4220,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportJMSRetriesBeforeSuspension() <em>Transport JMS Retries Before
-     * Suspension</em>}' attribute.
+     * The cached value of the '{@link #getTransportJMSRetriesBeforeSuspension() <em>Transport JMS Retries Before Suspension</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSRetriesBeforeSuspension()
      * @generated
      * @ordered
@@ -4599,11 +4230,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportJMSRetriesBeforeSuspension = TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #isTransportJMSResetConnectionOnPollingSuspension() <em>Transport JMS Reset
-     * Connection On Polling Suspension</em>}' attribute.
+     * The default value of the '{@link #isTransportJMSResetConnectionOnPollingSuspension() <em>Transport JMS Reset Connection On Polling Suspension</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isTransportJMSResetConnectionOnPollingSuspension()
      * @generated
      * @ordered
@@ -4611,11 +4240,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final boolean TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT = false;
 
     /**
-     * The cached value of the '{@link #isTransportJMSResetConnectionOnPollingSuspension() <em>Transport JMS Reset
-     * Connection On Polling Suspension</em>}' attribute.
+     * The cached value of the '{@link #isTransportJMSResetConnectionOnPollingSuspension() <em>Transport JMS Reset Connection On Polling Suspension</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isTransportJMSResetConnectionOnPollingSuspension()
      * @generated
      * @ordered
@@ -4623,11 +4250,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected boolean transportJMSResetConnectionOnPollingSuspension = TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportJMSPollingSuspensionPeriod() <em>Transport JMS Polling Suspension
-     * Period</em>}' attribute.
+     * The default value of the '{@link #getTransportJMSPollingSuspensionPeriod() <em>Transport JMS Polling Suspension Period</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSPollingSuspensionPeriod()
      * @generated
      * @ordered
@@ -4635,11 +4260,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportJMSPollingSuspensionPeriod() <em>Transport JMS Polling Suspension
-     * Period</em>}' attribute.
+     * The cached value of the '{@link #getTransportJMSPollingSuspensionPeriod() <em>Transport JMS Polling Suspension Period</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportJMSPollingSuspensionPeriod()
      * @generated
      * @ordered
@@ -4647,11 +4270,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportJMSPollingSuspensionPeriod = TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportMQTTSslKeystoreLocation() <em>Transport MQTT Ssl Keystore
-     * Location</em>}' attribute.
+     * The default value of the '{@link #getTransportMQTTSslKeystoreLocation() <em>Transport MQTT Ssl Keystore Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslKeystoreLocation()
      * @generated
      * @ordered
@@ -4659,11 +4280,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportMQTTSslKeystoreLocation() <em>Transport MQTT Ssl Keystore
-     * Location</em>}' attribute.
+     * The cached value of the '{@link #getTransportMQTTSslKeystoreLocation() <em>Transport MQTT Ssl Keystore Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslKeystoreLocation()
      * @generated
      * @ordered
@@ -4671,11 +4290,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportMQTTSslKeystoreLocation = TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportMQTTSslKeystoreType() <em>Transport MQTT Ssl Keystore Type</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportMQTTSslKeystoreType() <em>Transport MQTT Ssl Keystore Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslKeystoreType()
      * @generated
      * @ordered
@@ -4683,11 +4300,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_MQTT_SSL_KEYSTORE_TYPE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportMQTTSslKeystoreType() <em>Transport MQTT Ssl Keystore Type</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportMQTTSslKeystoreType() <em>Transport MQTT Ssl Keystore Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslKeystoreType()
      * @generated
      * @ordered
@@ -4695,11 +4310,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportMQTTSslKeystoreType = TRANSPORT_MQTT_SSL_KEYSTORE_TYPE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportMQTTSslKeystorePassword() <em>Transport MQTT Ssl Keystore
-     * Password</em>}' attribute.
+     * The default value of the '{@link #getTransportMQTTSslKeystorePassword() <em>Transport MQTT Ssl Keystore Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslKeystorePassword()
      * @generated
      * @ordered
@@ -4707,11 +4320,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportMQTTSslKeystorePassword() <em>Transport MQTT Ssl Keystore
-     * Password</em>}' attribute.
+     * The cached value of the '{@link #getTransportMQTTSslKeystorePassword() <em>Transport MQTT Ssl Keystore Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslKeystorePassword()
      * @generated
      * @ordered
@@ -4719,11 +4330,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportMQTTSslKeystorePassword = TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportMQTTSslTruststoreLocation() <em>Transport MQTT Ssl Truststore
-     * Location</em>}' attribute.
+     * The default value of the '{@link #getTransportMQTTSslTruststoreLocation() <em>Transport MQTT Ssl Truststore Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslTruststoreLocation()
      * @generated
      * @ordered
@@ -4731,11 +4340,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportMQTTSslTruststoreLocation() <em>Transport MQTT Ssl Truststore
-     * Location</em>}' attribute.
+     * The cached value of the '{@link #getTransportMQTTSslTruststoreLocation() <em>Transport MQTT Ssl Truststore Location</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslTruststoreLocation()
      * @generated
      * @ordered
@@ -4743,11 +4350,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportMQTTSslTruststoreLocation = TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportMQTTSslTruststoreType() <em>Transport MQTT Ssl Truststore
-     * Type</em>}' attribute.
+     * The default value of the '{@link #getTransportMQTTSslTruststoreType() <em>Transport MQTT Ssl Truststore Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslTruststoreType()
      * @generated
      * @ordered
@@ -4755,11 +4360,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportMQTTSslTruststoreType() <em>Transport MQTT Ssl Truststore
-     * Type</em>}' attribute.
+     * The cached value of the '{@link #getTransportMQTTSslTruststoreType() <em>Transport MQTT Ssl Truststore Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslTruststoreType()
      * @generated
      * @ordered
@@ -4767,11 +4370,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportMQTTSslTruststoreType = TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportMQTTSslTruststorePassword() <em>Transport MQTT Ssl Truststore
-     * Password</em>}' attribute.
+     * The default value of the '{@link #getTransportMQTTSslTruststorePassword() <em>Transport MQTT Ssl Truststore Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslTruststorePassword()
      * @generated
      * @ordered
@@ -4779,11 +4380,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportMQTTSslTruststorePassword() <em>Transport MQTT Ssl Truststore
-     * Password</em>}' attribute.
+     * The cached value of the '{@link #getTransportMQTTSslTruststorePassword() <em>Transport MQTT Ssl Truststore Password</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslTruststorePassword()
      * @generated
      * @ordered
@@ -4794,7 +4393,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getTransportMQTTSslVersion() <em>Transport MQTT Ssl Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslVersion()
      * @generated
      * @ordered
@@ -4805,7 +4403,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getTransportMQTTSslVersion() <em>Transport MQTT Ssl Version</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportMQTTSslVersion()
      * @generated
      * @ordered
@@ -4815,7 +4412,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWssSslKeyStoreFile() <em>Wss Ssl Key Store File</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslKeyStoreFile()
      * @generated
      * @ordered
@@ -4826,7 +4422,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWssSslKeyStoreFile() <em>Wss Ssl Key Store File</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslKeyStoreFile()
      * @generated
      * @ordered
@@ -4837,7 +4432,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWssSslKeyStorePass() <em>Wss Ssl Key Store Pass</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslKeyStorePass()
      * @generated
      * @ordered
@@ -4848,7 +4442,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWssSslKeyStorePass() <em>Wss Ssl Key Store Pass</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslKeyStorePass()
      * @generated
      * @ordered
@@ -4859,7 +4452,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWssSslTrustStoreFile() <em>Wss Ssl Trust Store File</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslTrustStoreFile()
      * @generated
      * @ordered
@@ -4870,7 +4462,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWssSslTrustStoreFile() <em>Wss Ssl Trust Store File</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslTrustStoreFile()
      * @generated
      * @ordered
@@ -4881,7 +4472,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWssSslTrustStorePass() <em>Wss Ssl Trust Store Pass</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslTrustStorePass()
      * @generated
      * @ordered
@@ -4892,7 +4482,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWssSslTrustStorePass() <em>Wss Ssl Trust Store Pass</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslTrustStorePass()
      * @generated
      * @ordered
@@ -4903,7 +4492,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWssSslCertPass() <em>Wss Ssl Cert Pass</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslCertPass()
      * @generated
      * @ordered
@@ -4914,7 +4502,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWssSslCertPass() <em>Wss Ssl Cert Pass</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslCertPass()
      * @generated
      * @ordered
@@ -4925,7 +4512,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWsDefaultContentType() <em>Ws Default Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsDefaultContentType()
      * @generated
      * @ordered
@@ -4936,7 +4522,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWsDefaultContentType() <em>Ws Default Content Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsDefaultContentType()
      * @generated
      * @ordered
@@ -4947,7 +4532,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWsShutdownStatusCode() <em>Ws Shutdown Status Code</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsShutdownStatusCode()
      * @generated
      * @ordered
@@ -4958,7 +4542,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWsShutdownStatusCode() <em>Ws Shutdown Status Code</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsShutdownStatusCode()
      * @generated
      * @ordered
@@ -4969,7 +4552,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWsShutdownStatusMessage() <em>Ws Shutdown Status Message</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsShutdownStatusMessage()
      * @generated
      * @ordered
@@ -4980,7 +4562,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWsShutdownStatusMessage() <em>Ws Shutdown Status Message</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWsShutdownStatusMessage()
      * @generated
      * @ordered
@@ -4991,7 +4572,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #isWsUsePortOffset() <em>Ws Use Port Offset</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isWsUsePortOffset()
      * @generated
      * @ordered
@@ -5002,7 +4582,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #isWsUsePortOffset() <em>Ws Use Port Offset</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isWsUsePortOffset()
      * @generated
      * @ordered
@@ -5013,7 +4592,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWssSslProtocols() <em>Wss Ssl Protocols</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslProtocols()
      * @generated
      * @ordered
@@ -5024,7 +4602,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWssSslProtocols() <em>Wss Ssl Protocols</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslProtocols()
      * @generated
      * @ordered
@@ -5035,7 +4612,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The default value of the '{@link #getWssSslCipherSuites() <em>Wss Ssl Cipher Suites</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslCipherSuites()
      * @generated
      * @ordered
@@ -5046,18 +4622,15 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * The cached value of the '{@link #getWssSslCipherSuites() <em>Wss Ssl Cipher Suites</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getWssSslCipherSuites()
      * @generated
      * @ordered
      */
     protected String wssSslCipherSuites = WSS_SSL_CIPHER_SUITES_EDEFAULT;
     /**
-     * The default value of the '{@link #getTransportRabbitMqConsumerQos() <em>Transport Rabbit Mq Consumer Qos</em>}'
-     * attribute.
+     * The default value of the '{@link #getTransportRabbitMqConsumerQos() <em>Transport Rabbit Mq Consumer Qos</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConsumerQos()
      * @generated
      * @ordered
@@ -5065,11 +4638,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final String TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqConsumerQos() <em>Transport Rabbit Mq Consumer Qos</em>}'
-     * attribute.
+     * The cached value of the '{@link #getTransportRabbitMqConsumerQos() <em>Transport Rabbit Mq Consumer Qos</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConsumerQos()
      * @generated
      * @ordered
@@ -5077,11 +4648,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected String transportRabbitMqConsumerQos = TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTransportRabbitMqConsumerQosType() <em>Transport Rabbit Mq Consumer Qos
-     * Type</em>}' attribute.
+     * The default value of the '{@link #getTransportRabbitMqConsumerQosType() <em>Transport Rabbit Mq Consumer Qos Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConsumerQosType()
      * @generated
      * @ordered
@@ -5089,11 +4658,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected static final PayloadFormatType TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT = PayloadFormatType.REGISTRY_REFERENCE;
 
     /**
-     * The cached value of the '{@link #getTransportRabbitMqConsumerQosType() <em>Transport Rabbit Mq Consumer Qos
-     * Type</em>}' attribute.
+     * The cached value of the '{@link #getTransportRabbitMqConsumerQosType() <em>Transport Rabbit Mq Consumer Qos Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getTransportRabbitMqConsumerQosType()
      * @generated
      * @ordered
@@ -5117,7 +4684,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -5127,7 +4693,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public InboundEndpointSequenceInputConnector getSequenceInputConnector() {
@@ -5136,7 +4701,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetSequenceInputConnector(
@@ -5144,42 +4708,32 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         InboundEndpointSequenceInputConnector oldSequenceInputConnector = sequenceInputConnector;
         sequenceInputConnector = newSequenceInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR, oldSequenceInputConnector,
-                    newSequenceInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR, oldSequenceInputConnector, newSequenceInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSequenceInputConnector(InboundEndpointSequenceInputConnector newSequenceInputConnector) {
         if (newSequenceInputConnector != sequenceInputConnector) {
             NotificationChain msgs = null;
             if (sequenceInputConnector != null)
-                msgs = ((InternalEObject) sequenceInputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)sequenceInputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR, null, msgs);
             if (newSequenceInputConnector != null)
-                msgs = ((InternalEObject) newSequenceInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newSequenceInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR, null, msgs);
             msgs = basicSetSequenceInputConnector(newSequenceInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR,
-                    newSequenceInputConnector, newSequenceInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR, newSequenceInputConnector, newSequenceInputConnector));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public InboundEndpointSequenceOutputConnector getSequenceOutputConnector() {
@@ -5188,7 +4742,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetSequenceOutputConnector(
@@ -5196,43 +4749,32 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         InboundEndpointSequenceOutputConnector oldSequenceOutputConnector = sequenceOutputConnector;
         sequenceOutputConnector = newSequenceOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR, oldSequenceOutputConnector,
-                    newSequenceOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR, oldSequenceOutputConnector, newSequenceOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSequenceOutputConnector(InboundEndpointSequenceOutputConnector newSequenceOutputConnector) {
         if (newSequenceOutputConnector != sequenceOutputConnector) {
             NotificationChain msgs = null;
             if (sequenceOutputConnector != null)
-                msgs = ((InternalEObject) sequenceOutputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)sequenceOutputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR, null, msgs);
             if (newSequenceOutputConnector != null)
-                msgs = ((InternalEObject) newSequenceOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newSequenceOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetSequenceOutputConnector(newSequenceOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR, newSequenceOutputConnector,
-                    newSequenceOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR, newSequenceOutputConnector, newSequenceOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public InboundEndpointOnErrorSequenceInputConnector getOnErrorSequenceInputConnector() {
@@ -5241,7 +4783,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOnErrorSequenceInputConnector(
@@ -5249,20 +4790,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         InboundEndpointOnErrorSequenceInputConnector oldOnErrorSequenceInputConnector = onErrorSequenceInputConnector;
         onErrorSequenceInputConnector = newOnErrorSequenceInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR, oldOnErrorSequenceInputConnector,
-                    newOnErrorSequenceInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR, oldOnErrorSequenceInputConnector, newOnErrorSequenceInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOnErrorSequenceInputConnector(
@@ -5270,25 +4805,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         if (newOnErrorSequenceInputConnector != onErrorSequenceInputConnector) {
             NotificationChain msgs = null;
             if (onErrorSequenceInputConnector != null)
-                msgs = ((InternalEObject) onErrorSequenceInputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR, null,
-                        msgs);
+                msgs = ((InternalEObject)onErrorSequenceInputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR, null, msgs);
             if (newOnErrorSequenceInputConnector != null)
-                msgs = ((InternalEObject) newOnErrorSequenceInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR, null,
-                        msgs);
+                msgs = ((InternalEObject)newOnErrorSequenceInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR, null, msgs);
             msgs = basicSetOnErrorSequenceInputConnector(newOnErrorSequenceInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR, newOnErrorSequenceInputConnector,
-                    newOnErrorSequenceInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR, newOnErrorSequenceInputConnector, newOnErrorSequenceInputConnector));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public InboundEndpointOnErrorSequenceOutputConnector getOnErrorSequenceOutputConnector() {
@@ -5297,7 +4825,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOnErrorSequenceOutputConnector(
@@ -5305,20 +4832,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         InboundEndpointOnErrorSequenceOutputConnector oldOnErrorSequenceOutputConnector = onErrorSequenceOutputConnector;
         onErrorSequenceOutputConnector = newOnErrorSequenceOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR, oldOnErrorSequenceOutputConnector,
-                    newOnErrorSequenceOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR, oldOnErrorSequenceOutputConnector, newOnErrorSequenceOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOnErrorSequenceOutputConnector(
@@ -5326,25 +4847,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         if (newOnErrorSequenceOutputConnector != onErrorSequenceOutputConnector) {
             NotificationChain msgs = null;
             if (onErrorSequenceOutputConnector != null)
-                msgs = ((InternalEObject) onErrorSequenceOutputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR, null,
-                        msgs);
+                msgs = ((InternalEObject)onErrorSequenceOutputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR, null, msgs);
             if (newOnErrorSequenceOutputConnector != null)
-                msgs = ((InternalEObject) newOnErrorSequenceOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR, null,
-                        msgs);
+                msgs = ((InternalEObject)newOnErrorSequenceOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOnErrorSequenceOutputConnector(newOnErrorSequenceOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR, newOnErrorSequenceOutputConnector,
-                    newOnErrorSequenceOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR, newOnErrorSequenceOutputConnector, newOnErrorSequenceOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public InboundEndpointContainer getContainer() {
@@ -5353,48 +4867,38 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetContainer(InboundEndpointContainer newContainer, NotificationChain msgs) {
         InboundEndpointContainer oldContainer = container;
         container = newContainer;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__CONTAINER, oldContainer, newContainer);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONTAINER, oldContainer, newContainer);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setContainer(InboundEndpointContainer newContainer) {
         if (newContainer != container) {
             NotificationChain msgs = null;
             if (container != null)
-                msgs = ((InternalEObject) container).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__CONTAINER, null, msgs);
+                msgs = ((InternalEObject)container).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__CONTAINER, null, msgs);
             if (newContainer != null)
-                msgs = ((InternalEObject) newContainer).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__CONTAINER, null, msgs);
+                msgs = ((InternalEObject)newContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__CONTAINER, null, msgs);
             msgs = basicSetContainer(newContainer, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONTAINER, newContainer,
-                    newContainer));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONTAINER, newContainer, newContainer));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
@@ -5403,7 +4907,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setName(String newName) {
@@ -5415,7 +4918,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public InboundEndpointType getType() {
@@ -5424,7 +4926,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setType(InboundEndpointType newType) {
@@ -5436,7 +4937,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundHL7Port() {
@@ -5445,20 +4945,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundHL7Port(String newInboundHL7Port) {
         String oldInboundHL7Port = inboundHL7Port;
         inboundHL7Port = newInboundHL7Port;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT,
-                    oldInboundHL7Port, inboundHL7Port));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT, oldInboundHL7Port, inboundHL7Port));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isInboundHL7AutoAck() {
@@ -5467,20 +4964,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundHL7AutoAck(boolean newInboundHL7AutoAck) {
         boolean oldInboundHL7AutoAck = inboundHL7AutoAck;
         inboundHL7AutoAck = newInboundHL7AutoAck;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK,
-                    oldInboundHL7AutoAck, inboundHL7AutoAck));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK, oldInboundHL7AutoAck, inboundHL7AutoAck));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundHL7MessagePreProcessor() {
@@ -5489,21 +4983,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundHL7MessagePreProcessor(String newInboundHL7MessagePreProcessor) {
         String oldInboundHL7MessagePreProcessor = inboundHL7MessagePreProcessor;
         inboundHL7MessagePreProcessor = newInboundHL7MessagePreProcessor;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR, oldInboundHL7MessagePreProcessor,
-                    inboundHL7MessagePreProcessor));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR, oldInboundHL7MessagePreProcessor, inboundHL7MessagePreProcessor));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundHL7CharSet() {
@@ -5512,20 +5002,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundHL7CharSet(String newInboundHL7CharSet) {
         String oldInboundHL7CharSet = inboundHL7CharSet;
         inboundHL7CharSet = newInboundHL7CharSet;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET,
-                    oldInboundHL7CharSet, inboundHL7CharSet));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET, oldInboundHL7CharSet, inboundHL7CharSet));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundHL7TimeOut() {
@@ -5534,20 +5021,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundHL7TimeOut(String newInboundHL7TimeOut) {
         String oldInboundHL7TimeOut = inboundHL7TimeOut;
         inboundHL7TimeOut = newInboundHL7TimeOut;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT,
-                    oldInboundHL7TimeOut, inboundHL7TimeOut));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT, oldInboundHL7TimeOut, inboundHL7TimeOut));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isInboundHL7ValidateMessage() {
@@ -5556,21 +5040,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundHL7ValidateMessage(boolean newInboundHL7ValidateMessage) {
         boolean oldInboundHL7ValidateMessage = inboundHL7ValidateMessage;
         inboundHL7ValidateMessage = newInboundHL7ValidateMessage;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE, oldInboundHL7ValidateMessage,
-                    inboundHL7ValidateMessage));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE, oldInboundHL7ValidateMessage, inboundHL7ValidateMessage));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isInboundHL7BuildInvalidMessages() {
@@ -5579,21 +5059,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundHL7BuildInvalidMessages(boolean newInboundHL7BuildInvalidMessages) {
         boolean oldInboundHL7BuildInvalidMessages = inboundHL7BuildInvalidMessages;
         inboundHL7BuildInvalidMessages = newInboundHL7BuildInvalidMessages;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES, oldInboundHL7BuildInvalidMessages,
-                    inboundHL7BuildInvalidMessages));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES, oldInboundHL7BuildInvalidMessages, inboundHL7BuildInvalidMessages));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isInboundHL7PassThroughInvalidMessages() {
@@ -5602,21 +5078,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundHL7PassThroughInvalidMessages(boolean newInboundHL7PassThroughInvalidMessages) {
         boolean oldInboundHL7PassThroughInvalidMessages = inboundHL7PassThroughInvalidMessages;
         inboundHL7PassThroughInvalidMessages = newInboundHL7PassThroughInvalidMessages;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES,
-                    oldInboundHL7PassThroughInvalidMessages, inboundHL7PassThroughInvalidMessages));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES, oldInboundHL7PassThroughInvalidMessages, inboundHL7PassThroughInvalidMessages));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getZookeeperConnect() {
@@ -5625,20 +5097,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setZookeeperConnect(String newZookeeperConnect) {
         String oldZookeeperConnect = zookeeperConnect;
         zookeeperConnect = newZookeeperConnect;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT,
-                    oldZookeeperConnect, zookeeperConnect));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT, oldZookeeperConnect, zookeeperConnect));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getGroupId() {
@@ -5647,20 +5116,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setGroupId(String newGroupId) {
         String oldGroupId = groupId;
         groupId = newGroupId;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__GROUP_ID, oldGroupId,
-                    groupId));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__GROUP_ID, oldGroupId, groupId));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ConsumerType getConsumerType() {
@@ -5669,20 +5135,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setConsumerType(ConsumerType newConsumerType) {
         ConsumerType oldConsumerType = consumerType;
         consumerType = newConsumerType == null ? CONSUMER_TYPE_EDEFAULT : newConsumerType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE,
-                    oldConsumerType, consumerType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE, oldConsumerType, consumerType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public TopicsType getTopicsOrTopicFilter() {
@@ -5691,20 +5154,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTopicsOrTopicFilter(TopicsType newTopicsOrTopicFilter) {
         TopicsType oldTopicsOrTopicFilter = topicsOrTopicFilter;
         topicsOrTopicFilter = newTopicsOrTopicFilter == null ? TOPICS_OR_TOPIC_FILTER_EDEFAULT : newTopicsOrTopicFilter;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER,
-                    oldTopicsOrTopicFilter, topicsOrTopicFilter));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER, oldTopicsOrTopicFilter, topicsOrTopicFilter));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTopicsName() {
@@ -5713,20 +5173,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTopicsName(String newTopicsName) {
         String oldTopicsName = topicsName;
         topicsName = newTopicsName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME,
-                    oldTopicsName, topicsName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME, oldTopicsName, topicsName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public TopicFilterFromType getTopicFilterFrom() {
@@ -5735,20 +5192,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTopicFilterFrom(TopicFilterFromType newTopicFilterFrom) {
         TopicFilterFromType oldTopicFilterFrom = topicFilterFrom;
         topicFilterFrom = newTopicFilterFrom == null ? TOPIC_FILTER_FROM_EDEFAULT : newTopicFilterFrom;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM,
-                    oldTopicFilterFrom, topicFilterFrom));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM, oldTopicFilterFrom, topicFilterFrom));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTopicFilterName() {
@@ -5757,20 +5211,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTopicFilterName(String newTopicFilterName) {
         String oldTopicFilterName = topicFilterName;
         topicFilterName = newTopicFilterName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME,
-                    oldTopicFilterName, topicFilterName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME, oldTopicFilterName, topicFilterName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSimpleConsumerTopic() {
@@ -5779,20 +5230,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSimpleConsumerTopic(String newSimpleConsumerTopic) {
         String oldSimpleConsumerTopic = simpleConsumerTopic;
         simpleConsumerTopic = newSimpleConsumerTopic;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC,
-                    oldSimpleConsumerTopic, simpleConsumerTopic));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC, oldSimpleConsumerTopic, simpleConsumerTopic));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSimpleConsumerBrokers() {
@@ -5801,20 +5249,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSimpleConsumerBrokers(String newSimpleConsumerBrokers) {
         String oldSimpleConsumerBrokers = simpleConsumerBrokers;
         simpleConsumerBrokers = newSimpleConsumerBrokers;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS,
-                    oldSimpleConsumerBrokers, simpleConsumerBrokers));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS, oldSimpleConsumerBrokers, simpleConsumerBrokers));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSimpleConsumerPort() {
@@ -5823,20 +5268,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSimpleConsumerPort(String newSimpleConsumerPort) {
         String oldSimpleConsumerPort = simpleConsumerPort;
         simpleConsumerPort = newSimpleConsumerPort;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT,
-                    oldSimpleConsumerPort, simpleConsumerPort));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT, oldSimpleConsumerPort, simpleConsumerPort));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSimpleConsumerPartition() {
@@ -5845,21 +5287,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSimpleConsumerPartition(String newSimpleConsumerPartition) {
         String oldSimpleConsumerPartition = simpleConsumerPartition;
         simpleConsumerPartition = newSimpleConsumerPartition;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION, oldSimpleConsumerPartition,
-                    simpleConsumerPartition));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION, oldSimpleConsumerPartition, simpleConsumerPartition));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSimpleConsumerMaxMessagesToRead() {
@@ -5868,21 +5306,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSimpleConsumerMaxMessagesToRead(String newSimpleConsumerMaxMessagesToRead) {
         String oldSimpleConsumerMaxMessagesToRead = simpleConsumerMaxMessagesToRead;
         simpleConsumerMaxMessagesToRead = newSimpleConsumerMaxMessagesToRead;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ,
-                    oldSimpleConsumerMaxMessagesToRead, simpleConsumerMaxMessagesToRead));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ, oldSimpleConsumerMaxMessagesToRead, simpleConsumerMaxMessagesToRead));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getContentType() {
@@ -5892,20 +5326,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setContentType(String newContentType) {
         String oldContentType = contentType;
         contentType = newContentType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE,
-                    oldContentType, contentType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE, oldContentType, contentType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getThreadCount() {
@@ -5914,20 +5345,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setThreadCount(String newThreadCount) {
         String oldThreadCount = threadCount;
         threadCount = newThreadCount;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT,
-                    oldThreadCount, threadCount));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT, oldThreadCount, threadCount));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getConsumerId() {
@@ -5936,20 +5364,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setConsumerId(String newConsumerId) {
         String oldConsumerId = consumerId;
         consumerId = newConsumerId;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID,
-                    oldConsumerId, consumerId));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID, oldConsumerId, consumerId));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSocketTimeoutMs() {
@@ -5958,20 +5383,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSocketTimeoutMs(String newSocketTimeoutMs) {
         String oldSocketTimeoutMs = socketTimeoutMs;
         socketTimeoutMs = newSocketTimeoutMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS,
-                    oldSocketTimeoutMs, socketTimeoutMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS, oldSocketTimeoutMs, socketTimeoutMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSocketReceiveBufferBytes() {
@@ -5980,21 +5402,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSocketReceiveBufferBytes(String newSocketReceiveBufferBytes) {
         String oldSocketReceiveBufferBytes = socketReceiveBufferBytes;
         socketReceiveBufferBytes = newSocketReceiveBufferBytes;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES, oldSocketReceiveBufferBytes,
-                    socketReceiveBufferBytes));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES, oldSocketReceiveBufferBytes, socketReceiveBufferBytes));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getFetchMessageMaxBytes() {
@@ -6003,20 +5421,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setFetchMessageMaxBytes(String newFetchMessageMaxBytes) {
         String oldFetchMessageMaxBytes = fetchMessageMaxBytes;
         fetchMessageMaxBytes = newFetchMessageMaxBytes;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES,
-                    oldFetchMessageMaxBytes, fetchMessageMaxBytes));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES, oldFetchMessageMaxBytes, fetchMessageMaxBytes));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getNumConsumerFetches() {
@@ -6025,20 +5440,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setNumConsumerFetches(String newNumConsumerFetches) {
         String oldNumConsumerFetches = numConsumerFetches;
         numConsumerFetches = newNumConsumerFetches;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES,
-                    oldNumConsumerFetches, numConsumerFetches));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES, oldNumConsumerFetches, numConsumerFetches));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isAutoCommitEnable() {
@@ -6047,20 +5459,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAutoCommitEnable(boolean newAutoCommitEnable) {
         boolean oldAutoCommitEnable = autoCommitEnable;
         autoCommitEnable = newAutoCommitEnable;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE,
-                    oldAutoCommitEnable, autoCommitEnable));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE, oldAutoCommitEnable, autoCommitEnable));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getZookeeperSessionTimeoutMs() {
@@ -6069,21 +5478,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setZookeeperSessionTimeoutMs(String newZookeeperSessionTimeoutMs) {
         String oldZookeeperSessionTimeoutMs = zookeeperSessionTimeoutMs;
         zookeeperSessionTimeoutMs = newZookeeperSessionTimeoutMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS, oldZookeeperSessionTimeoutMs,
-                    zookeeperSessionTimeoutMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS, oldZookeeperSessionTimeoutMs, zookeeperSessionTimeoutMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getZookeeperConnectionTimeoutMs() {
@@ -6092,21 +5497,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setZookeeperConnectionTimeoutMs(String newZookeeperConnectionTimeoutMs) {
         String oldZookeeperConnectionTimeoutMs = zookeeperConnectionTimeoutMs;
         zookeeperConnectionTimeoutMs = newZookeeperConnectionTimeoutMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS, oldZookeeperConnectionTimeoutMs,
-                    zookeeperConnectionTimeoutMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS, oldZookeeperConnectionTimeoutMs, zookeeperConnectionTimeoutMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getZookeeperSyncTimeMs() {
@@ -6115,20 +5516,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setZookeeperSyncTimeMs(String newZookeeperSyncTimeMs) {
         String oldZookeeperSyncTimeMs = zookeeperSyncTimeMs;
         zookeeperSyncTimeMs = newZookeeperSyncTimeMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS,
-                    oldZookeeperSyncTimeMs, zookeeperSyncTimeMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS, oldZookeeperSyncTimeMs, zookeeperSyncTimeMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public OffsetsStorageType getOffsetsStorage() {
@@ -6137,20 +5535,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOffsetsStorage(OffsetsStorageType newOffsetsStorage) {
         OffsetsStorageType oldOffsetsStorage = offsetsStorage;
         offsetsStorage = newOffsetsStorage == null ? OFFSETS_STORAGE_EDEFAULT : newOffsetsStorage;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE,
-                    oldOffsetsStorage, offsetsStorage));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE, oldOffsetsStorage, offsetsStorage));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getOffsetsChannelBackoffMs() {
@@ -6159,21 +5554,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOffsetsChannelBackoffMs(String newOffsetsChannelBackoffMs) {
         String oldOffsetsChannelBackoffMs = offsetsChannelBackoffMs;
         offsetsChannelBackoffMs = newOffsetsChannelBackoffMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS, oldOffsetsChannelBackoffMs,
-                    offsetsChannelBackoffMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS, oldOffsetsChannelBackoffMs, offsetsChannelBackoffMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getOffsetsChannelSocketTimeoutMs() {
@@ -6182,21 +5573,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOffsetsChannelSocketTimeoutMs(String newOffsetsChannelSocketTimeoutMs) {
         String oldOffsetsChannelSocketTimeoutMs = offsetsChannelSocketTimeoutMs;
         offsetsChannelSocketTimeoutMs = newOffsetsChannelSocketTimeoutMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS, oldOffsetsChannelSocketTimeoutMs,
-                    offsetsChannelSocketTimeoutMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS, oldOffsetsChannelSocketTimeoutMs, offsetsChannelSocketTimeoutMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getOffsetsCommitMaxRetries() {
@@ -6205,21 +5592,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOffsetsCommitMaxRetries(String newOffsetsCommitMaxRetries) {
         String oldOffsetsCommitMaxRetries = offsetsCommitMaxRetries;
         offsetsCommitMaxRetries = newOffsetsCommitMaxRetries;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES, oldOffsetsCommitMaxRetries,
-                    offsetsCommitMaxRetries));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES, oldOffsetsCommitMaxRetries, offsetsCommitMaxRetries));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isDualCommitEnabled() {
@@ -6228,20 +5611,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setDualCommitEnabled(boolean newDualCommitEnabled) {
         boolean oldDualCommitEnabled = dualCommitEnabled;
         dualCommitEnabled = newDualCommitEnabled;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED,
-                    oldDualCommitEnabled, dualCommitEnabled));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED, oldDualCommitEnabled, dualCommitEnabled));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getAutoCommitIntervalMs() {
@@ -6250,20 +5630,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAutoCommitIntervalMs(String newAutoCommitIntervalMs) {
         String oldAutoCommitIntervalMs = autoCommitIntervalMs;
         autoCommitIntervalMs = newAutoCommitIntervalMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS,
-                    oldAutoCommitIntervalMs, autoCommitIntervalMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS, oldAutoCommitIntervalMs, autoCommitIntervalMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getQueuedMaxMessageChunks() {
@@ -6272,21 +5649,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setQueuedMaxMessageChunks(String newQueuedMaxMessageChunks) {
         String oldQueuedMaxMessageChunks = queuedMaxMessageChunks;
         queuedMaxMessageChunks = newQueuedMaxMessageChunks;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS, oldQueuedMaxMessageChunks,
-                    queuedMaxMessageChunks));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS, oldQueuedMaxMessageChunks, queuedMaxMessageChunks));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getRebalanceMaxRetries() {
@@ -6295,20 +5668,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setRebalanceMaxRetries(String newRebalanceMaxRetries) {
         String oldRebalanceMaxRetries = rebalanceMaxRetries;
         rebalanceMaxRetries = newRebalanceMaxRetries;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES,
-                    oldRebalanceMaxRetries, rebalanceMaxRetries));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES, oldRebalanceMaxRetries, rebalanceMaxRetries));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getFetchMinBytes() {
@@ -6317,20 +5687,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setFetchMinBytes(String newFetchMinBytes) {
         String oldFetchMinBytes = fetchMinBytes;
         fetchMinBytes = newFetchMinBytes;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES,
-                    oldFetchMinBytes, fetchMinBytes));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES, oldFetchMinBytes, fetchMinBytes));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getFetchWaitMaxMs() {
@@ -6339,20 +5706,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setFetchWaitMaxMs(String newFetchWaitMaxMs) {
         String oldFetchWaitMaxMs = fetchWaitMaxMs;
         fetchWaitMaxMs = newFetchWaitMaxMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS,
-                    oldFetchWaitMaxMs, fetchWaitMaxMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS, oldFetchWaitMaxMs, fetchWaitMaxMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getRebalanceBackoffMs() {
@@ -6361,20 +5725,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setRebalanceBackoffMs(String newRebalanceBackoffMs) {
         String oldRebalanceBackoffMs = rebalanceBackoffMs;
         rebalanceBackoffMs = newRebalanceBackoffMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS,
-                    oldRebalanceBackoffMs, rebalanceBackoffMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS, oldRebalanceBackoffMs, rebalanceBackoffMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getRefreshLeaderBackoffMs() {
@@ -6383,21 +5744,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setRefreshLeaderBackoffMs(String newRefreshLeaderBackoffMs) {
         String oldRefreshLeaderBackoffMs = refreshLeaderBackoffMs;
         refreshLeaderBackoffMs = newRefreshLeaderBackoffMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS, oldRefreshLeaderBackoffMs,
-                    refreshLeaderBackoffMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS, oldRefreshLeaderBackoffMs, refreshLeaderBackoffMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AutoOffsetResetType getAutoOffsetReset() {
@@ -6406,20 +5763,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAutoOffsetReset(AutoOffsetResetType newAutoOffsetReset) {
         AutoOffsetResetType oldAutoOffsetReset = autoOffsetReset;
         autoOffsetReset = newAutoOffsetReset == null ? AUTO_OFFSET_RESET_EDEFAULT : newAutoOffsetReset;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET,
-                    oldAutoOffsetReset, autoOffsetReset));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET, oldAutoOffsetReset, autoOffsetReset));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getConsumerTimeoutMs() {
@@ -6428,20 +5782,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setConsumerTimeoutMs(String newConsumerTimeoutMs) {
         String oldConsumerTimeoutMs = consumerTimeoutMs;
         consumerTimeoutMs = newConsumerTimeoutMs;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS,
-                    oldConsumerTimeoutMs, consumerTimeoutMs));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS, oldConsumerTimeoutMs, consumerTimeoutMs));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isExcludeInternalTopics() {
@@ -6450,20 +5801,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setExcludeInternalTopics(boolean newExcludeInternalTopics) {
         boolean oldExcludeInternalTopics = excludeInternalTopics;
         excludeInternalTopics = newExcludeInternalTopics;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS,
-                    oldExcludeInternalTopics, excludeInternalTopics));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS, oldExcludeInternalTopics, excludeInternalTopics));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PartitionAssignmentStrategyType getPartitionAssignmentStrategy() {
@@ -6472,22 +5820,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setPartitionAssignmentStrategy(PartitionAssignmentStrategyType newPartitionAssignmentStrategy) {
         PartitionAssignmentStrategyType oldPartitionAssignmentStrategy = partitionAssignmentStrategy;
-        partitionAssignmentStrategy = newPartitionAssignmentStrategy == null ? PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT
-                : newPartitionAssignmentStrategy;
+        partitionAssignmentStrategy = newPartitionAssignmentStrategy == null ? PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT : newPartitionAssignmentStrategy;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY, oldPartitionAssignmentStrategy,
-                    partitionAssignmentStrategy));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY, oldPartitionAssignmentStrategy, partitionAssignmentStrategy));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getClientId() {
@@ -6496,20 +5839,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setClientId(String newClientId) {
         String oldClientId = clientId;
         clientId = newClientId;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CLIENT_ID, oldClientId,
-                    clientId));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CLIENT_ID, oldClientId, clientId));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundCxfRmHost() {
@@ -6518,20 +5858,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundCxfRmHost(String newInboundCxfRmHost) {
         String oldInboundCxfRmHost = inboundCxfRmHost;
         inboundCxfRmHost = newInboundCxfRmHost;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST,
-                    oldInboundCxfRmHost, inboundCxfRmHost));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST, oldInboundCxfRmHost, inboundCxfRmHost));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundCxfRmPort() {
@@ -6540,20 +5877,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundCxfRmPort(String newInboundCxfRmPort) {
         String oldInboundCxfRmPort = inboundCxfRmPort;
         inboundCxfRmPort = newInboundCxfRmPort;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT,
-                    oldInboundCxfRmPort, inboundCxfRmPort));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT, oldInboundCxfRmPort, inboundCxfRmPort));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundCxfRmConfigFile() {
@@ -6562,21 +5896,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundCxfRmConfigFile(String newInboundCxfRmConfigFile) {
         String oldInboundCxfRmConfigFile = inboundCxfRmConfigFile;
         inboundCxfRmConfigFile = newInboundCxfRmConfigFile;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE, oldInboundCxfRmConfigFile,
-                    inboundCxfRmConfigFile));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE, oldInboundCxfRmConfigFile, inboundCxfRmConfigFile));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isEnableSSL() {
@@ -6585,33 +5915,28 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setEnableSSL(boolean newEnableSSL) {
         boolean oldEnableSSL = enableSSL;
         enableSSL = newEnableSSL;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL, oldEnableSSL,
-                    enableSSL));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL, oldEnableSSL, enableSSL));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<InboundEndpointParameter> getServiceParameters() {
         if (serviceParameters == null) {
-            serviceParameters = new EObjectContainmentEList<InboundEndpointParameter>(InboundEndpointParameter.class,
-                    this, EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS);
+            serviceParameters = new EObjectContainmentEList<InboundEndpointParameter>(InboundEndpointParameter.class, this, EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS);
         }
         return serviceParameters;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isSuspend() {
@@ -6620,20 +5945,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSuspend(boolean newSuspend) {
         boolean oldSuspend = suspend;
         suspend = newSuspend;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SUSPEND, oldSuspend,
-                    suspend));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SUSPEND, oldSuspend, suspend));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionFactory() {
@@ -6642,21 +5964,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionFactory(String newTransportRabbitMqConnectionFactory) {
         String oldTransportRabbitMqConnectionFactory = transportRabbitMqConnectionFactory;
         transportRabbitMqConnectionFactory = newTransportRabbitMqConnectionFactory;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY,
-                    oldTransportRabbitMqConnectionFactory, transportRabbitMqConnectionFactory));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY, oldTransportRabbitMqConnectionFactory, transportRabbitMqConnectionFactory));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqServerHostName() {
@@ -6665,21 +5983,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqServerHostName(String newTransportRabbitMqServerHostName) {
         String oldTransportRabbitMqServerHostName = transportRabbitMqServerHostName;
         transportRabbitMqServerHostName = newTransportRabbitMqServerHostName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME,
-                    oldTransportRabbitMqServerHostName, transportRabbitMqServerHostName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME, oldTransportRabbitMqServerHostName, transportRabbitMqServerHostName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqServerPort() {
@@ -6688,21 +6002,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqServerPort(String newTransportRabbitMqServerPort) {
         String oldTransportRabbitMqServerPort = transportRabbitMqServerPort;
         transportRabbitMqServerPort = newTransportRabbitMqServerPort;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT, oldTransportRabbitMqServerPort,
-                    transportRabbitMqServerPort));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT, oldTransportRabbitMqServerPort, transportRabbitMqServerPort));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqServerUserName() {
@@ -6711,21 +6021,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqServerUserName(String newTransportRabbitMqServerUserName) {
         String oldTransportRabbitMqServerUserName = transportRabbitMqServerUserName;
         transportRabbitMqServerUserName = newTransportRabbitMqServerUserName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME,
-                    oldTransportRabbitMqServerUserName, transportRabbitMqServerUserName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME, oldTransportRabbitMqServerUserName, transportRabbitMqServerUserName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqServerPassword() {
@@ -6734,21 +6040,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqServerPassword(String newTransportRabbitMqServerPassword) {
         String oldTransportRabbitMqServerPassword = transportRabbitMqServerPassword;
         transportRabbitMqServerPassword = newTransportRabbitMqServerPassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD,
-                    oldTransportRabbitMqServerPassword, transportRabbitMqServerPassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD, oldTransportRabbitMqServerPassword, transportRabbitMqServerPassword));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqQueueName() {
@@ -6757,21 +6059,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqQueueName(String newTransportRabbitMqQueueName) {
         String oldTransportRabbitMqQueueName = transportRabbitMqQueueName;
         transportRabbitMqQueueName = newTransportRabbitMqQueueName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME, oldTransportRabbitMqQueueName,
-                    transportRabbitMqQueueName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME, oldTransportRabbitMqQueueName, transportRabbitMqQueueName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqExchangeName() {
@@ -6780,21 +6078,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqExchangeName(String newTransportRabbitMqExchangeName) {
         String oldTransportRabbitMqExchangeName = transportRabbitMqExchangeName;
         transportRabbitMqExchangeName = newTransportRabbitMqExchangeName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME, oldTransportRabbitMqExchangeName,
-                    transportRabbitMqExchangeName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME, oldTransportRabbitMqExchangeName, transportRabbitMqExchangeName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqQueueDurable() {
@@ -6803,21 +6097,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqQueueDurable(String newTransportRabbitMqQueueDurable) {
         String oldTransportRabbitMqQueueDurable = transportRabbitMqQueueDurable;
         transportRabbitMqQueueDurable = newTransportRabbitMqQueueDurable;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE, oldTransportRabbitMqQueueDurable,
-                    transportRabbitMqQueueDurable));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE, oldTransportRabbitMqQueueDurable, transportRabbitMqQueueDurable));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqQueueExclusive() {
@@ -6826,21 +6116,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqQueueExclusive(String newTransportRabbitMqQueueExclusive) {
         String oldTransportRabbitMqQueueExclusive = transportRabbitMqQueueExclusive;
         transportRabbitMqQueueExclusive = newTransportRabbitMqQueueExclusive;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE,
-                    oldTransportRabbitMqQueueExclusive, transportRabbitMqQueueExclusive));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE, oldTransportRabbitMqQueueExclusive, transportRabbitMqQueueExclusive));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqQueueAutoDelete() {
@@ -6849,21 +6135,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqQueueAutoDelete(String newTransportRabbitMqQueueAutoDelete) {
         String oldTransportRabbitMqQueueAutoDelete = transportRabbitMqQueueAutoDelete;
         transportRabbitMqQueueAutoDelete = newTransportRabbitMqQueueAutoDelete;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE,
-                    oldTransportRabbitMqQueueAutoDelete, transportRabbitMqQueueAutoDelete));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE, oldTransportRabbitMqQueueAutoDelete, transportRabbitMqQueueAutoDelete));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqQueueAutoAck() {
@@ -6872,21 +6154,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqQueueAutoAck(String newTransportRabbitMqQueueAutoAck) {
         String oldTransportRabbitMqQueueAutoAck = transportRabbitMqQueueAutoAck;
         transportRabbitMqQueueAutoAck = newTransportRabbitMqQueueAutoAck;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK, oldTransportRabbitMqQueueAutoAck,
-                    transportRabbitMqQueueAutoAck));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK, oldTransportRabbitMqQueueAutoAck, transportRabbitMqQueueAutoAck));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqQueueRoutingKey() {
@@ -6895,21 +6173,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqQueueRoutingKey(String newTransportRabbitMqQueueRoutingKey) {
         String oldTransportRabbitMqQueueRoutingKey = transportRabbitMqQueueRoutingKey;
         transportRabbitMqQueueRoutingKey = newTransportRabbitMqQueueRoutingKey;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY,
-                    oldTransportRabbitMqQueueRoutingKey, transportRabbitMqQueueRoutingKey));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY, oldTransportRabbitMqQueueRoutingKey, transportRabbitMqQueueRoutingKey));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqQueueDeliveryMode() {
@@ -6918,21 +6192,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqQueueDeliveryMode(String newTransportRabbitMqQueueDeliveryMode) {
         String oldTransportRabbitMqQueueDeliveryMode = transportRabbitMqQueueDeliveryMode;
         transportRabbitMqQueueDeliveryMode = newTransportRabbitMqQueueDeliveryMode;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE,
-                    oldTransportRabbitMqQueueDeliveryMode, transportRabbitMqQueueDeliveryMode));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE, oldTransportRabbitMqQueueDeliveryMode, transportRabbitMqQueueDeliveryMode));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqExchangeType() {
@@ -6941,21 +6211,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqExchangeType(String newTransportRabbitMqExchangeType) {
         String oldTransportRabbitMqExchangeType = transportRabbitMqExchangeType;
         transportRabbitMqExchangeType = newTransportRabbitMqExchangeType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE, oldTransportRabbitMqExchangeType,
-                    transportRabbitMqExchangeType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE, oldTransportRabbitMqExchangeType, transportRabbitMqExchangeType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqExchangeDurable() {
@@ -6964,21 +6230,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqExchangeDurable(String newTransportRabbitMqExchangeDurable) {
         String oldTransportRabbitMqExchangeDurable = transportRabbitMqExchangeDurable;
         transportRabbitMqExchangeDurable = newTransportRabbitMqExchangeDurable;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE,
-                    oldTransportRabbitMqExchangeDurable, transportRabbitMqExchangeDurable));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE, oldTransportRabbitMqExchangeDurable, transportRabbitMqExchangeDurable));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqExchangeAutoDelete() {
@@ -6987,21 +6249,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqExchangeAutoDelete(String newTransportRabbitMqExchangeAutoDelete) {
         String oldTransportRabbitMqExchangeAutoDelete = transportRabbitMqExchangeAutoDelete;
         transportRabbitMqExchangeAutoDelete = newTransportRabbitMqExchangeAutoDelete;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE,
-                    oldTransportRabbitMqExchangeAutoDelete, transportRabbitMqExchangeAutoDelete));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE, oldTransportRabbitMqExchangeAutoDelete, transportRabbitMqExchangeAutoDelete));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqServerVirtualHost() {
@@ -7010,21 +6268,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqServerVirtualHost(String newTransportRabbitMqServerVirtualHost) {
         String oldTransportRabbitMqServerVirtualHost = transportRabbitMqServerVirtualHost;
         transportRabbitMqServerVirtualHost = newTransportRabbitMqServerVirtualHost;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST,
-                    oldTransportRabbitMqServerVirtualHost, transportRabbitMqServerVirtualHost));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST, oldTransportRabbitMqServerVirtualHost, transportRabbitMqServerVirtualHost));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqFactoryHeartbeat() {
@@ -7033,21 +6287,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqFactoryHeartbeat(String newTransportRabbitMqFactoryHeartbeat) {
         String oldTransportRabbitMqFactoryHeartbeat = transportRabbitMqFactoryHeartbeat;
         transportRabbitMqFactoryHeartbeat = newTransportRabbitMqFactoryHeartbeat;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT,
-                    oldTransportRabbitMqFactoryHeartbeat, transportRabbitMqFactoryHeartbeat));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT, oldTransportRabbitMqFactoryHeartbeat, transportRabbitMqFactoryHeartbeat));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionSslEnabled() {
@@ -7056,21 +6306,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionSslEnabled(String newTransportRabbitMqConnectionSslEnabled) {
         String oldTransportRabbitMqConnectionSslEnabled = transportRabbitMqConnectionSslEnabled;
         transportRabbitMqConnectionSslEnabled = newTransportRabbitMqConnectionSslEnabled;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED,
-                    oldTransportRabbitMqConnectionSslEnabled, transportRabbitMqConnectionSslEnabled));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED, oldTransportRabbitMqConnectionSslEnabled, transportRabbitMqConnectionSslEnabled));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionSslKeystoreLocation() {
@@ -7079,7 +6325,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionSslKeystoreLocation(
@@ -7087,14 +6332,11 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         String oldTransportRabbitMqConnectionSslKeystoreLocation = transportRabbitMqConnectionSslKeystoreLocation;
         transportRabbitMqConnectionSslKeystoreLocation = newTransportRabbitMqConnectionSslKeystoreLocation;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION,
-                    oldTransportRabbitMqConnectionSslKeystoreLocation, transportRabbitMqConnectionSslKeystoreLocation));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION, oldTransportRabbitMqConnectionSslKeystoreLocation, transportRabbitMqConnectionSslKeystoreLocation));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionSslKeystoreType() {
@@ -7103,21 +6345,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionSslKeystoreType(String newTransportRabbitMqConnectionSslKeystoreType) {
         String oldTransportRabbitMqConnectionSslKeystoreType = transportRabbitMqConnectionSslKeystoreType;
         transportRabbitMqConnectionSslKeystoreType = newTransportRabbitMqConnectionSslKeystoreType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE,
-                    oldTransportRabbitMqConnectionSslKeystoreType, transportRabbitMqConnectionSslKeystoreType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE, oldTransportRabbitMqConnectionSslKeystoreType, transportRabbitMqConnectionSslKeystoreType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionSslKeystorePassword() {
@@ -7126,7 +6364,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionSslKeystorePassword(
@@ -7134,14 +6371,11 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         String oldTransportRabbitMqConnectionSslKeystorePassword = transportRabbitMqConnectionSslKeystorePassword;
         transportRabbitMqConnectionSslKeystorePassword = newTransportRabbitMqConnectionSslKeystorePassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD,
-                    oldTransportRabbitMqConnectionSslKeystorePassword, transportRabbitMqConnectionSslKeystorePassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD, oldTransportRabbitMqConnectionSslKeystorePassword, transportRabbitMqConnectionSslKeystorePassword));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionSslTruststoreLocation() {
@@ -7150,7 +6384,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionSslTruststoreLocation(
@@ -7158,15 +6391,11 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         String oldTransportRabbitMqConnectionSslTruststoreLocation = transportRabbitMqConnectionSslTruststoreLocation;
         transportRabbitMqConnectionSslTruststoreLocation = newTransportRabbitMqConnectionSslTruststoreLocation;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION,
-                    oldTransportRabbitMqConnectionSslTruststoreLocation,
-                    transportRabbitMqConnectionSslTruststoreLocation));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION, oldTransportRabbitMqConnectionSslTruststoreLocation, transportRabbitMqConnectionSslTruststoreLocation));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionSslTruststoreType() {
@@ -7175,7 +6404,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionSslTruststoreType(
@@ -7183,14 +6411,11 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         String oldTransportRabbitMqConnectionSslTruststoreType = transportRabbitMqConnectionSslTruststoreType;
         transportRabbitMqConnectionSslTruststoreType = newTransportRabbitMqConnectionSslTruststoreType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE,
-                    oldTransportRabbitMqConnectionSslTruststoreType, transportRabbitMqConnectionSslTruststoreType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE, oldTransportRabbitMqConnectionSslTruststoreType, transportRabbitMqConnectionSslTruststoreType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionSslTruststorePassword() {
@@ -7199,7 +6424,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionSslTruststorePassword(
@@ -7207,15 +6431,11 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         String oldTransportRabbitMqConnectionSslTruststorePassword = transportRabbitMqConnectionSslTruststorePassword;
         transportRabbitMqConnectionSslTruststorePassword = newTransportRabbitMqConnectionSslTruststorePassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD,
-                    oldTransportRabbitMqConnectionSslTruststorePassword,
-                    transportRabbitMqConnectionSslTruststorePassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD, oldTransportRabbitMqConnectionSslTruststorePassword, transportRabbitMqConnectionSslTruststorePassword));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionSslVersion() {
@@ -7224,21 +6444,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionSslVersion(String newTransportRabbitMqConnectionSslVersion) {
         String oldTransportRabbitMqConnectionSslVersion = transportRabbitMqConnectionSslVersion;
         transportRabbitMqConnectionSslVersion = newTransportRabbitMqConnectionSslVersion;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION,
-                    oldTransportRabbitMqConnectionSslVersion, transportRabbitMqConnectionSslVersion));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION, oldTransportRabbitMqConnectionSslVersion, transportRabbitMqConnectionSslVersion));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqMessageContentType() {
@@ -7247,21 +6463,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqMessageContentType(String newTransportRabbitMqMessageContentType) {
         String oldTransportRabbitMqMessageContentType = transportRabbitMqMessageContentType;
         transportRabbitMqMessageContentType = newTransportRabbitMqMessageContentType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE,
-                    oldTransportRabbitMqMessageContentType, transportRabbitMqMessageContentType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE, oldTransportRabbitMqMessageContentType, transportRabbitMqMessageContentType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionRetryCount() {
@@ -7270,21 +6482,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionRetryCount(String newTransportRabbitMqConnectionRetryCount) {
         String oldTransportRabbitMqConnectionRetryCount = transportRabbitMqConnectionRetryCount;
         transportRabbitMqConnectionRetryCount = newTransportRabbitMqConnectionRetryCount;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT,
-                    oldTransportRabbitMqConnectionRetryCount, transportRabbitMqConnectionRetryCount));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT, oldTransportRabbitMqConnectionRetryCount, transportRabbitMqConnectionRetryCount));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConnectionRetryInterval() {
@@ -7293,21 +6501,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConnectionRetryInterval(String newTransportRabbitMqConnectionRetryInterval) {
         String oldTransportRabbitMqConnectionRetryInterval = transportRabbitMqConnectionRetryInterval;
         transportRabbitMqConnectionRetryInterval = newTransportRabbitMqConnectionRetryInterval;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL,
-                    oldTransportRabbitMqConnectionRetryInterval, transportRabbitMqConnectionRetryInterval));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL, oldTransportRabbitMqConnectionRetryInterval, transportRabbitMqConnectionRetryInterval));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqServerRetryInterval() {
@@ -7316,22 +6520,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqServerRetryInterval(String newTransportRabbitMqServerRetryInterval) {
         String oldTransportRabbitMqServerRetryInterval = transportRabbitMqServerRetryInterval;
         transportRabbitMqServerRetryInterval = newTransportRabbitMqServerRetryInterval;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL,
-                    oldTransportRabbitMqServerRetryInterval, transportRabbitMqServerRetryInterval));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL, oldTransportRabbitMqServerRetryInterval, transportRabbitMqServerRetryInterval));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getTransportRabbitMqConsumerQosKey() {
@@ -7341,7 +6541,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetTransportRabbitMqConsumerQosKey(
@@ -7349,13 +6548,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         RegistryKeyProperty oldTransportRabbitMqConsumerQosKey = transportRabbitMqConsumerQosKey;
         transportRabbitMqConsumerQosKey = newTransportRabbitMqConsumerQosKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY,
-                    oldTransportRabbitMqConsumerQosKey, newTransportRabbitMqConsumerQosKey);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, oldTransportRabbitMqConsumerQosKey, newTransportRabbitMqConsumerQosKey);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -7363,32 +6557,24 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConsumerQosKey(RegistryKeyProperty newTransportRabbitMqConsumerQosKey) {
         if (newTransportRabbitMqConsumerQosKey != transportRabbitMqConsumerQosKey) {
             NotificationChain msgs = null;
             if (transportRabbitMqConsumerQosKey != null)
-                msgs = ((InternalEObject) transportRabbitMqConsumerQosKey).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY,
-                        null, msgs);
+                msgs = ((InternalEObject)transportRabbitMqConsumerQosKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, null, msgs);
             if (newTransportRabbitMqConsumerQosKey != null)
-                msgs = ((InternalEObject) newTransportRabbitMqConsumerQosKey).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY,
-                        null, msgs);
+                msgs = ((InternalEObject)newTransportRabbitMqConsumerQosKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, null, msgs);
             msgs = basicSetTransportRabbitMqConsumerQosKey(newTransportRabbitMqConsumerQosKey, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY,
-                    newTransportRabbitMqConsumerQosKey, newTransportRabbitMqConsumerQosKey));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY, newTransportRabbitMqConsumerQosKey, newTransportRabbitMqConsumerQosKey));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsInboundPort() {
@@ -7397,20 +6583,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsInboundPort(String newWsInboundPort) {
         String oldWsInboundPort = wsInboundPort;
         wsInboundPort = newWsInboundPort;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT,
-                    oldWsInboundPort, wsInboundPort));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT, oldWsInboundPort, wsInboundPort));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public WSClientSideBroadcastLevel getWsClientSideBroadcastLevel() {
@@ -7419,22 +6602,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsClientSideBroadcastLevel(WSClientSideBroadcastLevel newWsClientSideBroadcastLevel) {
         WSClientSideBroadcastLevel oldWsClientSideBroadcastLevel = wsClientSideBroadcastLevel;
-        wsClientSideBroadcastLevel = newWsClientSideBroadcastLevel == null ? WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT
-                : newWsClientSideBroadcastLevel;
+        wsClientSideBroadcastLevel = newWsClientSideBroadcastLevel == null ? WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT : newWsClientSideBroadcastLevel;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL, oldWsClientSideBroadcastLevel,
-                    wsClientSideBroadcastLevel));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL, oldWsClientSideBroadcastLevel, wsClientSideBroadcastLevel));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsOutflowDispatchSequence() {
@@ -7443,21 +6621,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsOutflowDispatchSequence(String newWsOutflowDispatchSequence) {
         String oldWsOutflowDispatchSequence = wsOutflowDispatchSequence;
         wsOutflowDispatchSequence = newWsOutflowDispatchSequence;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE, oldWsOutflowDispatchSequence,
-                    wsOutflowDispatchSequence));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE, oldWsOutflowDispatchSequence, wsOutflowDispatchSequence));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsOutflowDispatchFaultSequence() {
@@ -7466,21 +6640,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsOutflowDispatchFaultSequence(String newWsOutflowDispatchFaultSequence) {
         String oldWsOutflowDispatchFaultSequence = wsOutflowDispatchFaultSequence;
         wsOutflowDispatchFaultSequence = newWsOutflowDispatchFaultSequence;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE, oldWsOutflowDispatchFaultSequence,
-                    wsOutflowDispatchFaultSequence));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE, oldWsOutflowDispatchFaultSequence, wsOutflowDispatchFaultSequence));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsBossThreadPoolSize() {
@@ -7489,20 +6659,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsBossThreadPoolSize(String newWsBossThreadPoolSize) {
         String oldWsBossThreadPoolSize = wsBossThreadPoolSize;
         wsBossThreadPoolSize = newWsBossThreadPoolSize;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE,
-                    oldWsBossThreadPoolSize, wsBossThreadPoolSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE, oldWsBossThreadPoolSize, wsBossThreadPoolSize));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsWorkerThreadPoolSize() {
@@ -7511,21 +6678,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsWorkerThreadPoolSize(String newWsWorkerThreadPoolSize) {
         String oldWsWorkerThreadPoolSize = wsWorkerThreadPoolSize;
         wsWorkerThreadPoolSize = newWsWorkerThreadPoolSize;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE, oldWsWorkerThreadPoolSize,
-                    wsWorkerThreadPoolSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE, oldWsWorkerThreadPoolSize, wsWorkerThreadPoolSize));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsSubprotocolHandlerClass() {
@@ -7534,21 +6697,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsSubprotocolHandlerClass(String newWsSubprotocolHandlerClass) {
         String oldWsSubprotocolHandlerClass = wsSubprotocolHandlerClass;
         wsSubprotocolHandlerClass = newWsSubprotocolHandlerClass;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS, oldWsSubprotocolHandlerClass,
-                    wsSubprotocolHandlerClass));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS, oldWsSubprotocolHandlerClass, wsSubprotocolHandlerClass));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsPipelineHandlerClass() {
@@ -7557,21 +6716,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsPipelineHandlerClass(String newWsPipelineHandlerClass) {
         String oldWsPipelineHandlerClass = wsPipelineHandlerClass;
         wsPipelineHandlerClass = newWsPipelineHandlerClass;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS, oldWsPipelineHandlerClass,
-                    wsPipelineHandlerClass));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS, oldWsPipelineHandlerClass, wsPipelineHandlerClass));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportFeedURL() {
@@ -7580,20 +6735,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportFeedURL(String newTransportFeedURL) {
         String oldTransportFeedURL = transportFeedURL;
         transportFeedURL = newTransportFeedURL;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL,
-                    oldTransportFeedURL, transportFeedURL));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL, oldTransportFeedURL, transportFeedURL));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public FeedType getTransportFeedType() {
@@ -7602,20 +6754,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportFeedType(FeedType newTransportFeedType) {
         FeedType oldTransportFeedType = transportFeedType;
         transportFeedType = newTransportFeedType == null ? TRANSPORT_FEED_TYPE_EDEFAULT : newTransportFeedType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE,
-                    oldTransportFeedType, transportFeedType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE, oldTransportFeedType, transportFeedType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTraceEnabled() {
@@ -7641,7 +6790,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isStatisticsEnabled() {
@@ -7650,21 +6798,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setStatisticsEnabled(boolean newStatisticsEnabled) {
         boolean oldStatisticsEnabled = statisticsEnabled;
         statisticsEnabled = newStatisticsEnabled;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED,
-                    oldStatisticsEnabled, statisticsEnabled));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED, oldStatisticsEnabled, statisticsEnabled));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSRetriesBeforeSuspension() {
@@ -7674,22 +6819,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSRetriesBeforeSuspension(String newTransportJMSRetriesBeforeSuspension) {
         String oldTransportJMSRetriesBeforeSuspension = transportJMSRetriesBeforeSuspension;
         transportJMSRetriesBeforeSuspension = newTransportJMSRetriesBeforeSuspension;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION,
-                    oldTransportJMSRetriesBeforeSuspension, transportJMSRetriesBeforeSuspension));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION, oldTransportJMSRetriesBeforeSuspension, transportJMSRetriesBeforeSuspension));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportJMSResetConnectionOnPollingSuspension() {
@@ -7699,7 +6840,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSResetConnectionOnPollingSuspension(
@@ -7707,15 +6847,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         boolean oldTransportJMSResetConnectionOnPollingSuspension = transportJMSResetConnectionOnPollingSuspension;
         transportJMSResetConnectionOnPollingSuspension = newTransportJMSResetConnectionOnPollingSuspension;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
-                    oldTransportJMSResetConnectionOnPollingSuspension, transportJMSResetConnectionOnPollingSuspension));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION, oldTransportJMSResetConnectionOnPollingSuspension, transportJMSResetConnectionOnPollingSuspension));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSPollingSuspensionPeriod() {
@@ -7725,22 +6862,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSPollingSuspensionPeriod(String newTransportJMSPollingSuspensionPeriod) {
         String oldTransportJMSPollingSuspensionPeriod = transportJMSPollingSuspensionPeriod;
         transportJMSPollingSuspensionPeriod = newTransportJMSPollingSuspensionPeriod;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD,
-                    oldTransportJMSPollingSuspensionPeriod, transportJMSPollingSuspensionPeriod));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD, oldTransportJMSPollingSuspensionPeriod, transportJMSPollingSuspensionPeriod));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSslKeystoreLocation() {
@@ -7750,22 +6883,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSslKeystoreLocation(String newTransportMQTTSslKeystoreLocation) {
         String oldTransportMQTTSslKeystoreLocation = transportMQTTSslKeystoreLocation;
         transportMQTTSslKeystoreLocation = newTransportMQTTSslKeystoreLocation;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION,
-                    oldTransportMQTTSslKeystoreLocation, transportMQTTSslKeystoreLocation));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION, oldTransportMQTTSslKeystoreLocation, transportMQTTSslKeystoreLocation));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSslKeystoreType() {
@@ -7775,22 +6904,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSslKeystoreType(String newTransportMQTTSslKeystoreType) {
         String oldTransportMQTTSslKeystoreType = transportMQTTSslKeystoreType;
         transportMQTTSslKeystoreType = newTransportMQTTSslKeystoreType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE, oldTransportMQTTSslKeystoreType,
-                    transportMQTTSslKeystoreType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE, oldTransportMQTTSslKeystoreType, transportMQTTSslKeystoreType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSslKeystorePassword() {
@@ -7800,22 +6925,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSslKeystorePassword(String newTransportMQTTSslKeystorePassword) {
         String oldTransportMQTTSslKeystorePassword = transportMQTTSslKeystorePassword;
         transportMQTTSslKeystorePassword = newTransportMQTTSslKeystorePassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD,
-                    oldTransportMQTTSslKeystorePassword, transportMQTTSslKeystorePassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD, oldTransportMQTTSslKeystorePassword, transportMQTTSslKeystorePassword));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSslTruststoreLocation() {
@@ -7825,22 +6946,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSslTruststoreLocation(String newTransportMQTTSslTruststoreLocation) {
         String oldTransportMQTTSslTruststoreLocation = transportMQTTSslTruststoreLocation;
         transportMQTTSslTruststoreLocation = newTransportMQTTSslTruststoreLocation;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION,
-                    oldTransportMQTTSslTruststoreLocation, transportMQTTSslTruststoreLocation));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION, oldTransportMQTTSslTruststoreLocation, transportMQTTSslTruststoreLocation));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSslTruststoreType() {
@@ -7850,22 +6967,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSslTruststoreType(String newTransportMQTTSslTruststoreType) {
         String oldTransportMQTTSslTruststoreType = transportMQTTSslTruststoreType;
         transportMQTTSslTruststoreType = newTransportMQTTSslTruststoreType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE, oldTransportMQTTSslTruststoreType,
-                    transportMQTTSslTruststoreType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE, oldTransportMQTTSslTruststoreType, transportMQTTSslTruststoreType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSslTruststorePassword() {
@@ -7875,22 +6988,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSslTruststorePassword(String newTransportMQTTSslTruststorePassword) {
         String oldTransportMQTTSslTruststorePassword = transportMQTTSslTruststorePassword;
         transportMQTTSslTruststorePassword = newTransportMQTTSslTruststorePassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD,
-                    oldTransportMQTTSslTruststorePassword, transportMQTTSslTruststorePassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD, oldTransportMQTTSslTruststorePassword, transportMQTTSslTruststorePassword));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSslVersion() {
@@ -7900,22 +7009,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSslVersion(String newTransportMQTTSslVersion) {
         String oldTransportMQTTSslVersion = transportMQTTSslVersion;
         transportMQTTSslVersion = newTransportMQTTSslVersion;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION, oldTransportMQTTSslVersion,
-                    transportMQTTSslVersion));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION, oldTransportMQTTSslVersion, transportMQTTSslVersion));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWssSslKeyStoreFile() {
@@ -7925,21 +7030,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWssSslKeyStoreFile(String newWssSslKeyStoreFile) {
         String oldWssSslKeyStoreFile = wssSslKeyStoreFile;
         wssSslKeyStoreFile = newWssSslKeyStoreFile;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE,
-                    oldWssSslKeyStoreFile, wssSslKeyStoreFile));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE, oldWssSslKeyStoreFile, wssSslKeyStoreFile));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWssSslKeyStorePass() {
@@ -7949,21 +7051,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWssSslKeyStorePass(String newWssSslKeyStorePass) {
         String oldWssSslKeyStorePass = wssSslKeyStorePass;
         wssSslKeyStorePass = newWssSslKeyStorePass;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS,
-                    oldWssSslKeyStorePass, wssSslKeyStorePass));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS, oldWssSslKeyStorePass, wssSslKeyStorePass));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWssSslTrustStoreFile() {
@@ -7973,21 +7072,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWssSslTrustStoreFile(String newWssSslTrustStoreFile) {
         String oldWssSslTrustStoreFile = wssSslTrustStoreFile;
         wssSslTrustStoreFile = newWssSslTrustStoreFile;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE,
-                    oldWssSslTrustStoreFile, wssSslTrustStoreFile));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE, oldWssSslTrustStoreFile, wssSslTrustStoreFile));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWssSslTrustStorePass() {
@@ -7997,21 +7093,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWssSslTrustStorePass(String newWssSslTrustStorePass) {
         String oldWssSslTrustStorePass = wssSslTrustStorePass;
         wssSslTrustStorePass = newWssSslTrustStorePass;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS,
-                    oldWssSslTrustStorePass, wssSslTrustStorePass));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS, oldWssSslTrustStorePass, wssSslTrustStorePass));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWssSslCertPass() {
@@ -8021,21 +7114,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWssSslCertPass(String newWssSslCertPass) {
         String oldWssSslCertPass = wssSslCertPass;
         wssSslCertPass = newWssSslCertPass;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS,
-                    oldWssSslCertPass, wssSslCertPass));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS, oldWssSslCertPass, wssSslCertPass));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsDefaultContentType() {
@@ -8045,21 +7135,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsDefaultContentType(String newWsDefaultContentType) {
         String oldWsDefaultContentType = wsDefaultContentType;
         wsDefaultContentType = newWsDefaultContentType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE,
-                    oldWsDefaultContentType, wsDefaultContentType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE, oldWsDefaultContentType, wsDefaultContentType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsShutdownStatusCode() {
@@ -8069,21 +7156,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsShutdownStatusCode(String newWsShutdownStatusCode) {
         String oldWsShutdownStatusCode = wsShutdownStatusCode;
         wsShutdownStatusCode = newWsShutdownStatusCode;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE,
-                    oldWsShutdownStatusCode, wsShutdownStatusCode));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE, oldWsShutdownStatusCode, wsShutdownStatusCode));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWsShutdownStatusMessage() {
@@ -8093,22 +7177,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsShutdownStatusMessage(String newWsShutdownStatusMessage) {
         String oldWsShutdownStatusMessage = wsShutdownStatusMessage;
         wsShutdownStatusMessage = newWsShutdownStatusMessage;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE, oldWsShutdownStatusMessage,
-                    wsShutdownStatusMessage));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE, oldWsShutdownStatusMessage, wsShutdownStatusMessage));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isWsUsePortOffset() {
@@ -8118,21 +7198,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWsUsePortOffset(boolean newWsUsePortOffset) {
         boolean oldWsUsePortOffset = wsUsePortOffset;
         wsUsePortOffset = newWsUsePortOffset;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET,
-                    oldWsUsePortOffset, wsUsePortOffset));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET, oldWsUsePortOffset, wsUsePortOffset));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWssSslProtocols() {
@@ -8142,21 +7219,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWssSslProtocols(String newWssSslProtocols) {
         String oldWssSslProtocols = wssSslProtocols;
         wssSslProtocols = newWssSslProtocols;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS,
-                    oldWssSslProtocols, wssSslProtocols));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS, oldWssSslProtocols, wssSslProtocols));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWssSslCipherSuites() {
@@ -8166,21 +7240,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWssSslCipherSuites(String newWssSslCipherSuites) {
         String oldWssSslCipherSuites = wssSslCipherSuites;
         wssSslCipherSuites = newWssSslCipherSuites;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES,
-                    oldWssSslCipherSuites, wssSslCipherSuites));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES, oldWssSslCipherSuites, wssSslCipherSuites));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportRabbitMqConsumerQos() {
@@ -8190,22 +7261,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConsumerQos(String newTransportRabbitMqConsumerQos) {
         String oldTransportRabbitMqConsumerQos = transportRabbitMqConsumerQos;
         transportRabbitMqConsumerQos = newTransportRabbitMqConsumerQos;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, oldTransportRabbitMqConsumerQos,
-                    transportRabbitMqConsumerQos));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS, oldTransportRabbitMqConsumerQos, transportRabbitMqConsumerQos));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PayloadFormatType getTransportRabbitMqConsumerQosType() {
@@ -8215,23 +7282,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportRabbitMqConsumerQosType(PayloadFormatType newTransportRabbitMqConsumerQosType) {
         PayloadFormatType oldTransportRabbitMqConsumerQosType = transportRabbitMqConsumerQosType;
-        transportRabbitMqConsumerQosType = newTransportRabbitMqConsumerQosType == null
-                ? TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT
-                : newTransportRabbitMqConsumerQosType;
+        transportRabbitMqConsumerQosType = newTransportRabbitMqConsumerQosType == null ? TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT : newTransportRabbitMqConsumerQosType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE,
-                    oldTransportRabbitMqConsumerQosType, transportRabbitMqConsumerQosType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE, oldTransportRabbitMqConsumerQosType, transportRabbitMqConsumerQosType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getClass_() {
@@ -8240,20 +7301,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setClass(String newClass) {
         String oldClass = class_;
         class_ = newClass;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CLASS, oldClass,
-                    class_));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CLASS, oldClass, class_));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getProtocol() {
@@ -8262,20 +7320,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setProtocol(String newProtocol) {
         String oldProtocol = protocol;
         protocol = newProtocol;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__PROTOCOL, oldProtocol,
-                    protocol));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__PROTOCOL, oldProtocol, protocol));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public InboundEndpointBehaviourType getInboundEndpointBehaviour() {
@@ -8284,22 +7339,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundEndpointBehaviour(InboundEndpointBehaviourType newInboundEndpointBehaviour) {
         InboundEndpointBehaviourType oldInboundEndpointBehaviour = inboundEndpointBehaviour;
-        inboundEndpointBehaviour = newInboundEndpointBehaviour == null ? INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT
-                : newInboundEndpointBehaviour;
+        inboundEndpointBehaviour = newInboundEndpointBehaviour == null ? INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT : newInboundEndpointBehaviour;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR, oldInboundEndpointBehaviour,
-                    inboundEndpointBehaviour));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR, oldInboundEndpointBehaviour, inboundEndpointBehaviour));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundHttpPort() {
@@ -8308,20 +7358,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundHttpPort(String newInboundHttpPort) {
         String oldInboundHttpPort = inboundHttpPort;
         inboundHttpPort = newInboundHttpPort;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT,
-                    oldInboundHttpPort, inboundHttpPort));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT, oldInboundHttpPort, inboundHttpPort));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundWorkerPoolSizeCore() {
@@ -8330,21 +7377,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundWorkerPoolSizeCore(String newInboundWorkerPoolSizeCore) {
         String oldInboundWorkerPoolSizeCore = inboundWorkerPoolSizeCore;
         inboundWorkerPoolSizeCore = newInboundWorkerPoolSizeCore;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE, oldInboundWorkerPoolSizeCore,
-                    inboundWorkerPoolSizeCore));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE, oldInboundWorkerPoolSizeCore, inboundWorkerPoolSizeCore));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundWorkerPoolSizeMax() {
@@ -8353,21 +7396,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundWorkerPoolSizeMax(String newInboundWorkerPoolSizeMax) {
         String oldInboundWorkerPoolSizeMax = inboundWorkerPoolSizeMax;
         inboundWorkerPoolSizeMax = newInboundWorkerPoolSizeMax;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX, oldInboundWorkerPoolSizeMax,
-                    inboundWorkerPoolSizeMax));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX, oldInboundWorkerPoolSizeMax, inboundWorkerPoolSizeMax));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundWorkerThreadKeepAliveSec() {
@@ -8376,21 +7415,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundWorkerThreadKeepAliveSec(String newInboundWorkerThreadKeepAliveSec) {
         String oldInboundWorkerThreadKeepAliveSec = inboundWorkerThreadKeepAliveSec;
         inboundWorkerThreadKeepAliveSec = newInboundWorkerThreadKeepAliveSec;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC,
-                    oldInboundWorkerThreadKeepAliveSec, inboundWorkerThreadKeepAliveSec));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC, oldInboundWorkerThreadKeepAliveSec, inboundWorkerThreadKeepAliveSec));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundWorkerPoolQueueLength() {
@@ -8399,21 +7434,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundWorkerPoolQueueLength(String newInboundWorkerPoolQueueLength) {
         String oldInboundWorkerPoolQueueLength = inboundWorkerPoolQueueLength;
         inboundWorkerPoolQueueLength = newInboundWorkerPoolQueueLength;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH, oldInboundWorkerPoolQueueLength,
-                    inboundWorkerPoolQueueLength));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH, oldInboundWorkerPoolQueueLength, inboundWorkerPoolQueueLength));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundThreadGroupId() {
@@ -8422,20 +7453,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundThreadGroupId(String newInboundThreadGroupId) {
         String oldInboundThreadGroupId = inboundThreadGroupId;
         inboundThreadGroupId = newInboundThreadGroupId;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID,
-                    oldInboundThreadGroupId, inboundThreadGroupId));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID, oldInboundThreadGroupId, inboundThreadGroupId));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInboundThreadId() {
@@ -8444,20 +7472,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInboundThreadId(String newInboundThreadId) {
         String oldInboundThreadId = inboundThreadId;
         inboundThreadId = newInboundThreadId;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID,
-                    oldInboundThreadId, inboundThreadId));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID, oldInboundThreadId, inboundThreadId));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getDispatchFilterPattern() {
@@ -8466,20 +7491,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setDispatchFilterPattern(String newDispatchFilterPattern) {
         String oldDispatchFilterPattern = dispatchFilterPattern;
         dispatchFilterPattern = newDispatchFilterPattern;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN,
-                    oldDispatchFilterPattern, dispatchFilterPattern));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN, oldDispatchFilterPattern, dispatchFilterPattern));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInterval() {
@@ -8488,20 +7510,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInterval(String newInterval) {
         String oldInterval = interval;
         interval = newInterval;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INTERVAL, oldInterval,
-                    interval));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INTERVAL, oldInterval, interval));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isSequential() {
@@ -8510,20 +7529,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSequential(boolean newSequential) {
         boolean oldSequential = sequential;
         sequential = newSequential;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL,
-                    oldSequential, sequential));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL, oldSequential, sequential));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isCoordination() {
@@ -8532,20 +7548,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setCoordination(boolean newCoordination) {
         boolean oldCoordination = coordination;
         coordination = newCoordination;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__COORDINATION,
-                    oldCoordination, coordination));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__COORDINATION, oldCoordination, coordination));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSFileURI() {
@@ -8554,20 +7567,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSFileURI(String newTransportVFSFileURI) {
         String oldTransportVFSFileURI = transportVFSFileURI;
         transportVFSFileURI = newTransportVFSFileURI;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI,
-                    oldTransportVFSFileURI, transportVFSFileURI));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI, oldTransportVFSFileURI, transportVFSFileURI));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getWso2mbConnectionUrl() {
@@ -8576,20 +7586,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setWso2mbConnectionUrl(String newWso2mbConnectionUrl) {
         String oldWso2mbConnectionUrl = wso2mbConnectionUrl;
         wso2mbConnectionUrl = newWso2mbConnectionUrl;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL,
-                    oldWso2mbConnectionUrl, wso2mbConnectionUrl));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL, oldWso2mbConnectionUrl, wso2mbConnectionUrl));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSContentType() {
@@ -8598,21 +7605,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSContentType(String newTransportVFSContentType) {
         String oldTransportVFSContentType = transportVFSContentType;
         transportVFSContentType = newTransportVFSContentType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE, oldTransportVFSContentType,
-                    transportVFSContentType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE, oldTransportVFSContentType, transportVFSContentType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSFileNamePattern() {
@@ -8621,21 +7624,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSFileNamePattern(String newTransportVFSFileNamePattern) {
         String oldTransportVFSFileNamePattern = transportVFSFileNamePattern;
         transportVFSFileNamePattern = newTransportVFSFileNamePattern;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN, oldTransportVFSFileNamePattern,
-                    transportVFSFileNamePattern));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN, oldTransportVFSFileNamePattern, transportVFSFileNamePattern));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSFileProcessInterval() {
@@ -8644,21 +7643,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSFileProcessInterval(String newTransportVFSFileProcessInterval) {
         String oldTransportVFSFileProcessInterval = transportVFSFileProcessInterval;
         transportVFSFileProcessInterval = newTransportVFSFileProcessInterval;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL,
-                    oldTransportVFSFileProcessInterval, transportVFSFileProcessInterval));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL, oldTransportVFSFileProcessInterval, transportVFSFileProcessInterval));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSFileProcessCount() {
@@ -8667,21 +7662,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSFileProcessCount(String newTransportVFSFileProcessCount) {
         String oldTransportVFSFileProcessCount = transportVFSFileProcessCount;
         transportVFSFileProcessCount = newTransportVFSFileProcessCount;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT, oldTransportVFSFileProcessCount,
-                    transportVFSFileProcessCount));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT, oldTransportVFSFileProcessCount, transportVFSFileProcessCount));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public Enable getTransportVFSLocking() {
@@ -8690,20 +7681,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSLocking(Enable newTransportVFSLocking) {
         Enable oldTransportVFSLocking = transportVFSLocking;
         transportVFSLocking = newTransportVFSLocking == null ? TRANSPORT_VFS_LOCKING_EDEFAULT : newTransportVFSLocking;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING,
-                    oldTransportVFSLocking, transportVFSLocking));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING, oldTransportVFSLocking, transportVFSLocking));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSMaxRetryCount() {
@@ -8712,21 +7700,38 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSMaxRetryCount(String newTransportVFSMaxRetryCount) {
         String oldTransportVFSMaxRetryCount = transportVFSMaxRetryCount;
         transportVFSMaxRetryCount = newTransportVFSMaxRetryCount;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT, oldTransportVFSMaxRetryCount,
-                    transportVFSMaxRetryCount));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT, oldTransportVFSMaxRetryCount, transportVFSMaxRetryCount));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportVFSMoveAfterFailedMove() {
+        return transportVFSMoveAfterFailedMove;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSMoveAfterFailedMove(String newTransportVFSMoveAfterFailedMove) {
+        String oldTransportVFSMoveAfterFailedMove = transportVFSMoveAfterFailedMove;
+        transportVFSMoveAfterFailedMove = newTransportVFSMoveAfterFailedMove;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE, oldTransportVFSMoveAfterFailedMove, transportVFSMoveAfterFailedMove));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSReconnectTimeout() {
@@ -8735,21 +7740,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSReconnectTimeout(String newTransportVFSReconnectTimeout) {
         String oldTransportVFSReconnectTimeout = transportVFSReconnectTimeout;
         transportVFSReconnectTimeout = newTransportVFSReconnectTimeout;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT, oldTransportVFSReconnectTimeout,
-                    transportVFSReconnectTimeout));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT, oldTransportVFSReconnectTimeout, transportVFSReconnectTimeout));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportJMSSharedSubscription() {
@@ -8758,21 +7759,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSSharedSubscription(boolean newTransportJMSSharedSubscription) {
         boolean oldTransportJMSSharedSubscription = transportJMSSharedSubscription;
         transportJMSSharedSubscription = newTransportJMSSharedSubscription;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION, oldTransportJMSSharedSubscription,
-                    transportJMSSharedSubscription));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION, oldTransportJMSSharedSubscription, transportJMSSharedSubscription));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSSubscriptionName() {
@@ -8781,21 +7778,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSSubscriptionName(String newTransportJMSSubscriptionName) {
         String oldTransportJMSSubscriptionName = transportJMSSubscriptionName;
         transportJMSSubscriptionName = newTransportJMSSubscriptionName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME, oldTransportJMSSubscriptionName,
-                    transportJMSSubscriptionName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME, oldTransportJMSSubscriptionName, transportJMSSubscriptionName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSPinnedServers() {
@@ -8804,21 +7797,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSPinnedServers(String newTransportJMSPinnedServers) {
         String oldTransportJMSPinnedServers = transportJMSPinnedServers;
         transportJMSPinnedServers = newTransportJMSPinnedServers;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS, oldTransportJMSPinnedServers,
-                    transportJMSPinnedServers));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS, oldTransportJMSPinnedServers, transportJMSPinnedServers));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public VFSAction getTransportVFSActionAfterProcess() {
@@ -8827,23 +7816,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSActionAfterProcess(VFSAction newTransportVFSActionAfterProcess) {
         VFSAction oldTransportVFSActionAfterProcess = transportVFSActionAfterProcess;
-        transportVFSActionAfterProcess = newTransportVFSActionAfterProcess == null
-                ? TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT
-                : newTransportVFSActionAfterProcess;
+        transportVFSActionAfterProcess = newTransportVFSActionAfterProcess == null ? TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT : newTransportVFSActionAfterProcess;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS, oldTransportVFSActionAfterProcess,
-                    transportVFSActionAfterProcess));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS, oldTransportVFSActionAfterProcess, transportVFSActionAfterProcess));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSMoveAfterProcess() {
@@ -8852,21 +7835,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSMoveAfterProcess(String newTransportVFSMoveAfterProcess) {
         String oldTransportVFSMoveAfterProcess = transportVFSMoveAfterProcess;
         transportVFSMoveAfterProcess = newTransportVFSMoveAfterProcess;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS, oldTransportVFSMoveAfterProcess,
-                    transportVFSMoveAfterProcess));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS, oldTransportVFSMoveAfterProcess, transportVFSMoveAfterProcess));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public VFSAction getTransportVFSActionAfterErrors() {
@@ -8875,23 +7854,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSActionAfterErrors(VFSAction newTransportVFSActionAfterErrors) {
         VFSAction oldTransportVFSActionAfterErrors = transportVFSActionAfterErrors;
-        transportVFSActionAfterErrors = newTransportVFSActionAfterErrors == null
-                ? TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT
-                : newTransportVFSActionAfterErrors;
+        transportVFSActionAfterErrors = newTransportVFSActionAfterErrors == null ? TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT : newTransportVFSActionAfterErrors;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, oldTransportVFSActionAfterErrors,
-                    transportVFSActionAfterErrors));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, oldTransportVFSActionAfterErrors, transportVFSActionAfterErrors));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSMoveAfterErrors() {
@@ -8900,21 +7873,101 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSMoveAfterErrors(String newTransportVFSMoveAfterErrors) {
         String oldTransportVFSMoveAfterErrors = transportVFSMoveAfterErrors;
         transportVFSMoveAfterErrors = newTransportVFSMoveAfterErrors;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS, oldTransportVFSMoveAfterErrors,
-                    transportVFSMoveAfterErrors));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS, oldTransportVFSMoveAfterErrors, transportVFSMoveAfterErrors));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportVFSFailedRecordsFileName() {
+        return transportVFSFailedRecordsFileName;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSFailedRecordsFileName(String newTransportVFSFailedRecordsFileName) {
+        String oldTransportVFSFailedRecordsFileName = transportVFSFailedRecordsFileName;
+        transportVFSFailedRecordsFileName = newTransportVFSFailedRecordsFileName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME, oldTransportVFSFailedRecordsFileName, transportVFSFailedRecordsFileName));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportVFSFailedRecordsFileDestination() {
+        return transportVFSFailedRecordsFileDestination;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSFailedRecordsFileDestination(String newTransportVFSFailedRecordsFileDestination) {
+        String oldTransportVFSFailedRecordsFileDestination = transportVFSFailedRecordsFileDestination;
+        transportVFSFailedRecordsFileDestination = newTransportVFSFailedRecordsFileDestination;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION, oldTransportVFSFailedRecordsFileDestination, transportVFSFailedRecordsFileDestination));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportVFSMoveFailedRecordTimestampFormat() {
+        return transportVFSMoveFailedRecordTimestampFormat;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSMoveFailedRecordTimestampFormat(String newTransportVFSMoveFailedRecordTimestampFormat) {
+        String oldTransportVFSMoveFailedRecordTimestampFormat = transportVFSMoveFailedRecordTimestampFormat;
+        transportVFSMoveFailedRecordTimestampFormat = newTransportVFSMoveFailedRecordTimestampFormat;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT, oldTransportVFSMoveFailedRecordTimestampFormat, transportVFSMoveFailedRecordTimestampFormat));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportVFSFailedRecordNextRetryDuration() {
+        return transportVFSFailedRecordNextRetryDuration;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSFailedRecordNextRetryDuration(String newTransportVFSFailedRecordNextRetryDuration) {
+        String oldTransportVFSFailedRecordNextRetryDuration = transportVFSFailedRecordNextRetryDuration;
+        transportVFSFailedRecordNextRetryDuration = newTransportVFSFailedRecordNextRetryDuration;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION, oldTransportVFSFailedRecordNextRetryDuration, transportVFSFailedRecordNextRetryDuration));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public VFSAction getTransportVFSActionAfterFailure() {
@@ -8923,23 +7976,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSActionAfterFailure(VFSAction newTransportVFSActionAfterFailure) {
         VFSAction oldTransportVFSActionAfterFailure = transportVFSActionAfterFailure;
-        transportVFSActionAfterFailure = newTransportVFSActionAfterFailure == null
-                ? TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT
-                : newTransportVFSActionAfterFailure;
+        transportVFSActionAfterFailure = newTransportVFSActionAfterFailure == null ? TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT : newTransportVFSActionAfterFailure;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE, oldTransportVFSActionAfterFailure,
-                    transportVFSActionAfterFailure));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE, oldTransportVFSActionAfterFailure, transportVFSActionAfterFailure));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSMoveAfterFailure() {
@@ -8948,21 +7995,59 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSMoveAfterFailure(String newTransportVFSMoveAfterFailure) {
         String oldTransportVFSMoveAfterFailure = transportVFSMoveAfterFailure;
         transportVFSMoveAfterFailure = newTransportVFSMoveAfterFailure;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE, oldTransportVFSMoveAfterFailure,
-                    transportVFSMoveAfterFailure));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE, oldTransportVFSMoveAfterFailure, transportVFSMoveAfterFailure));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportVFSReplyFileURI() {
+        return transportVFSReplyFileURI;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSReplyFileURI(String newTransportVFSReplyFileURI) {
+        String oldTransportVFSReplyFileURI = transportVFSReplyFileURI;
+        transportVFSReplyFileURI = newTransportVFSReplyFileURI;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_URI, oldTransportVFSReplyFileURI, transportVFSReplyFileURI));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportVFSReplyFileName() {
+        return transportVFSReplyFileName;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportVFSReplyFileName(String newTransportVFSReplyFileName) {
+        String oldTransportVFSReplyFileName = transportVFSReplyFileName;
+        transportVFSReplyFileName = newTransportVFSReplyFileName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_NAME, oldTransportVFSReplyFileName, transportVFSReplyFileName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportVFSAutoLockRelease() {
@@ -8971,21 +8056,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSAutoLockRelease(boolean newTransportVFSAutoLockRelease) {
         boolean oldTransportVFSAutoLockRelease = transportVFSAutoLockRelease;
         transportVFSAutoLockRelease = newTransportVFSAutoLockRelease;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE, oldTransportVFSAutoLockRelease,
-                    transportVFSAutoLockRelease));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE, oldTransportVFSAutoLockRelease, transportVFSAutoLockRelease));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSAutoLockReleaseInterval() {
@@ -8994,21 +8075,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSAutoLockReleaseInterval(String newTransportVFSAutoLockReleaseInterval) {
         String oldTransportVFSAutoLockReleaseInterval = transportVFSAutoLockReleaseInterval;
         transportVFSAutoLockReleaseInterval = newTransportVFSAutoLockReleaseInterval;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL,
-                    oldTransportVFSAutoLockReleaseInterval, transportVFSAutoLockReleaseInterval));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL, oldTransportVFSAutoLockReleaseInterval, transportVFSAutoLockReleaseInterval));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportVFSLockReleaseSameNode() {
@@ -9017,21 +8094,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSLockReleaseSameNode(boolean newTransportVFSLockReleaseSameNode) {
         boolean oldTransportVFSLockReleaseSameNode = transportVFSLockReleaseSameNode;
         transportVFSLockReleaseSameNode = newTransportVFSLockReleaseSameNode;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE,
-                    oldTransportVFSLockReleaseSameNode, transportVFSLockReleaseSameNode));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE, oldTransportVFSLockReleaseSameNode, transportVFSLockReleaseSameNode));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportVFSDistributedLock() {
@@ -9040,21 +8113,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSDistributedLock(boolean newTransportVFSDistributedLock) {
         boolean oldTransportVFSDistributedLock = transportVFSDistributedLock;
         transportVFSDistributedLock = newTransportVFSDistributedLock;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK, oldTransportVFSDistributedLock,
-                    transportVFSDistributedLock));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK, oldTransportVFSDistributedLock, transportVFSDistributedLock));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportVFSStreaming() {
@@ -9063,20 +8132,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSStreaming(boolean newTransportVFSStreaming) {
         boolean oldTransportVFSStreaming = transportVFSStreaming;
         transportVFSStreaming = newTransportVFSStreaming;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING,
-                    oldTransportVFSStreaming, transportVFSStreaming));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING, oldTransportVFSStreaming, transportVFSStreaming));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportVFSBuild() {
@@ -9085,20 +8151,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSBuild(boolean newTransportVFSBuild) {
         boolean oldTransportVFSBuild = transportVFSBuild;
         transportVFSBuild = newTransportVFSBuild;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD,
-                    oldTransportVFSBuild, transportVFSBuild));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD, oldTransportVFSBuild, transportVFSBuild));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSDistributedTimeout() {
@@ -9107,21 +8170,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSDistributedTimeout(String newTransportVFSDistributedTimeout) {
         String oldTransportVFSDistributedTimeout = transportVFSDistributedTimeout;
         transportVFSDistributedTimeout = newTransportVFSDistributedTimeout;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT, oldTransportVFSDistributedTimeout,
-                    transportVFSDistributedTimeout));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT, oldTransportVFSDistributedTimeout, transportVFSDistributedTimeout));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getJavaNamingFactoryInitial() {
@@ -9130,21 +8189,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setJavaNamingFactoryInitial(String newJavaNamingFactoryInitial) {
         String oldJavaNamingFactoryInitial = javaNamingFactoryInitial;
         javaNamingFactoryInitial = newJavaNamingFactoryInitial;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL, oldJavaNamingFactoryInitial,
-                    javaNamingFactoryInitial));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL, oldJavaNamingFactoryInitial, javaNamingFactoryInitial));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getJavaNamingProviderUrl() {
@@ -9153,20 +8208,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setJavaNamingProviderUrl(String newJavaNamingProviderUrl) {
         String oldJavaNamingProviderUrl = javaNamingProviderUrl;
         javaNamingProviderUrl = newJavaNamingProviderUrl;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL,
-                    oldJavaNamingProviderUrl, javaNamingProviderUrl));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL, oldJavaNamingProviderUrl, javaNamingProviderUrl));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSConnectionFactoryJNDIName() {
@@ -9175,21 +8227,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSConnectionFactoryJNDIName(String newTransportJMSConnectionFactoryJNDIName) {
         String oldTransportJMSConnectionFactoryJNDIName = transportJMSConnectionFactoryJNDIName;
         transportJMSConnectionFactoryJNDIName = newTransportJMSConnectionFactoryJNDIName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME,
-                    oldTransportJMSConnectionFactoryJNDIName, transportJMSConnectionFactoryJNDIName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME, oldTransportJMSConnectionFactoryJNDIName, transportJMSConnectionFactoryJNDIName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public JMSConnectionFactoryType getTransportJMSConnectionFactoryType() {
@@ -9198,23 +8246,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSConnectionFactoryType(JMSConnectionFactoryType newTransportJMSConnectionFactoryType) {
         JMSConnectionFactoryType oldTransportJMSConnectionFactoryType = transportJMSConnectionFactoryType;
-        transportJMSConnectionFactoryType = newTransportJMSConnectionFactoryType == null
-                ? TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT
-                : newTransportJMSConnectionFactoryType;
+        transportJMSConnectionFactoryType = newTransportJMSConnectionFactoryType == null ? TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT : newTransportJMSConnectionFactoryType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE,
-                    oldTransportJMSConnectionFactoryType, transportJMSConnectionFactoryType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE, oldTransportJMSConnectionFactoryType, transportJMSConnectionFactoryType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSConcurrentConsumers() {
@@ -9223,21 +8265,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSConcurrentConsumers(String newTransportJMSConcurrentConsumers) {
         String oldTransportJMSConcurrentConsumers = transportJMSConcurrentConsumers;
         transportJMSConcurrentConsumers = newTransportJMSConcurrentConsumers;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS, oldTransportJMSConcurrentConsumers,
-                    transportJMSConcurrentConsumers));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS, oldTransportJMSConcurrentConsumers, transportJMSConcurrentConsumers));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSDestination() {
@@ -9246,21 +8284,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSDestination(String newTransportJMSDestination) {
         String oldTransportJMSDestination = transportJMSDestination;
         transportJMSDestination = newTransportJMSDestination;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION, oldTransportJMSDestination,
-                    transportJMSDestination));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION, oldTransportJMSDestination, transportJMSDestination));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportJMSSessionTransacted() {
@@ -9269,21 +8303,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSSessionTransacted(boolean newTransportJMSSessionTransacted) {
         boolean oldTransportJMSSessionTransacted = transportJMSSessionTransacted;
         transportJMSSessionTransacted = newTransportJMSSessionTransacted;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED, oldTransportJMSSessionTransacted,
-                    transportJMSSessionTransacted));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED, oldTransportJMSSessionTransacted, transportJMSSessionTransacted));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public JMSSessionAcknowledgement getTransportJMSSessionAcknowledgement() {
@@ -9292,23 +8322,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSSessionAcknowledgement(JMSSessionAcknowledgement newTransportJMSSessionAcknowledgement) {
         JMSSessionAcknowledgement oldTransportJMSSessionAcknowledgement = transportJMSSessionAcknowledgement;
-        transportJMSSessionAcknowledgement = newTransportJMSSessionAcknowledgement == null
-                ? TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT
-                : newTransportJMSSessionAcknowledgement;
+        transportJMSSessionAcknowledgement = newTransportJMSSessionAcknowledgement == null ? TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT : newTransportJMSSessionAcknowledgement;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT,
-                    oldTransportJMSSessionAcknowledgement, transportJMSSessionAcknowledgement));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT, oldTransportJMSSessionAcknowledgement, transportJMSSessionAcknowledgement));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public JMSCacheLevel getTransportJMSCacheLevel() {
@@ -9317,22 +8341,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSCacheLevel(JMSCacheLevel newTransportJMSCacheLevel) {
         JMSCacheLevel oldTransportJMSCacheLevel = transportJMSCacheLevel;
-        transportJMSCacheLevel = newTransportJMSCacheLevel == null ? TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT
-                : newTransportJMSCacheLevel;
+        transportJMSCacheLevel = newTransportJMSCacheLevel == null ? TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT : newTransportJMSCacheLevel;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, oldTransportJMSCacheLevel,
-                    transportJMSCacheLevel));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, oldTransportJMSCacheLevel, transportJMSCacheLevel));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSUserName() {
@@ -9341,20 +8360,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSUserName(String newTransportJMSUserName) {
         String oldTransportJMSUserName = transportJMSUserName;
         transportJMSUserName = newTransportJMSUserName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME,
-                    oldTransportJMSUserName, transportJMSUserName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME, oldTransportJMSUserName, transportJMSUserName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSPassword() {
@@ -9363,20 +8379,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSPassword(String newTransportJMSPassword) {
         String oldTransportJMSPassword = transportJMSPassword;
         transportJMSPassword = newTransportJMSPassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD,
-                    oldTransportJMSPassword, transportJMSPassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD, oldTransportJMSPassword, transportJMSPassword));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSJMSSpecVersion() {
@@ -9385,21 +8398,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSJMSSpecVersion(String newTransportJMSJMSSpecVersion) {
         String oldTransportJMSJMSSpecVersion = transportJMSJMSSpecVersion;
         transportJMSJMSSpecVersion = newTransportJMSJMSSpecVersion;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION, oldTransportJMSJMSSpecVersion,
-                    transportJMSJMSSpecVersion));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION, oldTransportJMSJMSSpecVersion, transportJMSJMSSpecVersion));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSSubscriptionDurable() {
@@ -9408,21 +8417,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSSubscriptionDurable(String newTransportJMSSubscriptionDurable) {
         String oldTransportJMSSubscriptionDurable = transportJMSSubscriptionDurable;
         transportJMSSubscriptionDurable = newTransportJMSSubscriptionDurable;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE, oldTransportJMSSubscriptionDurable,
-                    transportJMSSubscriptionDurable));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE, oldTransportJMSSubscriptionDurable, transportJMSSubscriptionDurable));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSDurableSubscriberClientID() {
@@ -9431,21 +8436,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSDurableSubscriberClientID(String newTransportJMSDurableSubscriberClientID) {
         String oldTransportJMSDurableSubscriberClientID = transportJMSDurableSubscriberClientID;
         transportJMSDurableSubscriberClientID = newTransportJMSDurableSubscriberClientID;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID,
-                    oldTransportJMSDurableSubscriberClientID, transportJMSDurableSubscriberClientID));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID, oldTransportJMSDurableSubscriberClientID, transportJMSDurableSubscriberClientID));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSMessageSelector() {
@@ -9454,21 +8455,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSMessageSelector(String newTransportJMSMessageSelector) {
         String oldTransportJMSMessageSelector = transportJMSMessageSelector;
         transportJMSMessageSelector = newTransportJMSMessageSelector;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR, oldTransportJMSMessageSelector,
-                    transportJMSMessageSelector));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR, oldTransportJMSMessageSelector, transportJMSMessageSelector));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSRetryDuration() {
@@ -9477,21 +8474,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSRetryDuration(String newTransportJMSRetryDuration) {
         String oldTransportJMSRetryDuration = transportJMSRetryDuration;
         transportJMSRetryDuration = newTransportJMSRetryDuration;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION, oldTransportJMSRetryDuration,
-                    transportJMSRetryDuration));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION, oldTransportJMSRetryDuration, transportJMSRetryDuration));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSMoveTimestampFormat() {
@@ -9500,21 +8493,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSMoveTimestampFormat(String newTransportVFSMoveTimestampFormat) {
         String oldTransportVFSMoveTimestampFormat = transportVFSMoveTimestampFormat;
         transportVFSMoveTimestampFormat = newTransportVFSMoveTimestampFormat;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT,
-                    oldTransportVFSMoveTimestampFormat, transportVFSMoveTimestampFormat));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT, oldTransportVFSMoveTimestampFormat, transportVFSMoveTimestampFormat));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public VFSFileSort getTransportVFSFileSortAttribute() {
@@ -9523,23 +8512,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSFileSortAttribute(VFSFileSort newTransportVFSFileSortAttribute) {
         VFSFileSort oldTransportVFSFileSortAttribute = transportVFSFileSortAttribute;
-        transportVFSFileSortAttribute = newTransportVFSFileSortAttribute == null
-                ? TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT
-                : newTransportVFSFileSortAttribute;
+        transportVFSFileSortAttribute = newTransportVFSFileSortAttribute == null ? TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT : newTransportVFSFileSortAttribute;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE, oldTransportVFSFileSortAttribute,
-                    transportVFSFileSortAttribute));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE, oldTransportVFSFileSortAttribute, transportVFSFileSortAttribute));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportVFSFileSortAscending() {
@@ -9548,21 +8531,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSFileSortAscending(boolean newTransportVFSFileSortAscending) {
         boolean oldTransportVFSFileSortAscending = transportVFSFileSortAscending;
         transportVFSFileSortAscending = newTransportVFSFileSortAscending;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING, oldTransportVFSFileSortAscending,
-                    transportVFSFileSortAscending));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING, oldTransportVFSFileSortAscending, transportVFSFileSortAscending));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportVFSSubFolderTimestampFormat() {
@@ -9571,21 +8550,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSSubFolderTimestampFormat(String newTransportVFSSubFolderTimestampFormat) {
         String oldTransportVFSSubFolderTimestampFormat = transportVFSSubFolderTimestampFormat;
         transportVFSSubFolderTimestampFormat = newTransportVFSSubFolderTimestampFormat;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT,
-                    oldTransportVFSSubFolderTimestampFormat, transportVFSSubFolderTimestampFormat));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT, oldTransportVFSSubFolderTimestampFormat, transportVFSSubFolderTimestampFormat));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportVFSCreateFolder() {
@@ -9594,21 +8569,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportVFSCreateFolder(boolean newTransportVFSCreateFolder) {
         boolean oldTransportVFSCreateFolder = transportVFSCreateFolder;
         transportVFSCreateFolder = newTransportVFSCreateFolder;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER, oldTransportVFSCreateFolder,
-                    transportVFSCreateFolder));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER, oldTransportVFSCreateFolder, transportVFSCreateFolder));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSReceiveTimeout() {
@@ -9617,21 +8588,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSReceiveTimeout(String newTransportJMSReceiveTimeout) {
         String oldTransportJMSReceiveTimeout = transportJMSReceiveTimeout;
         transportJMSReceiveTimeout = newTransportJMSReceiveTimeout;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT, oldTransportJMSReceiveTimeout,
-                    transportJMSReceiveTimeout));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT, oldTransportJMSReceiveTimeout, transportJMSReceiveTimeout));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSContentType() {
@@ -9640,21 +8607,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSContentType(String newTransportJMSContentType) {
         String oldTransportJMSContentType = transportJMSContentType;
         transportJMSContentType = newTransportJMSContentType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE, oldTransportJMSContentType,
-                    transportJMSContentType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE, oldTransportJMSContentType, transportJMSContentType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSContentTypeProperty() {
@@ -9663,21 +8626,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSContentTypeProperty(String newTransportJMSContentTypeProperty) {
         String oldTransportJMSContentTypeProperty = transportJMSContentTypeProperty;
         transportJMSContentTypeProperty = newTransportJMSContentTypeProperty;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY,
-                    oldTransportJMSContentTypeProperty, transportJMSContentTypeProperty));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY, oldTransportJMSContentTypeProperty, transportJMSContentTypeProperty));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSReplyDestination() {
@@ -9686,21 +8645,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSReplyDestination(String newTransportJMSReplyDestination) {
         String oldTransportJMSReplyDestination = transportJMSReplyDestination;
         transportJMSReplyDestination = newTransportJMSReplyDestination;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION, oldTransportJMSReplyDestination,
-                    transportJMSReplyDestination));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION, oldTransportJMSReplyDestination, transportJMSReplyDestination));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSPubSubNoLocal() {
@@ -9709,21 +8664,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSPubSubNoLocal(String newTransportJMSPubSubNoLocal) {
         String oldTransportJMSPubSubNoLocal = transportJMSPubSubNoLocal;
         transportJMSPubSubNoLocal = newTransportJMSPubSubNoLocal;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL, oldTransportJMSPubSubNoLocal,
-                    transportJMSPubSubNoLocal));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL, oldTransportJMSPubSubNoLocal, transportJMSPubSubNoLocal));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportJMSDurableSubscriberName() {
@@ -9732,22 +8683,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSDurableSubscriberName(String newTransportJMSDurableSubscriberName) {
         String oldTransportJMSDurableSubscriberName = transportJMSDurableSubscriberName;
         transportJMSDurableSubscriberName = newTransportJMSDurableSubscriberName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME,
-                    oldTransportJMSDurableSubscriberName, transportJMSDurableSubscriberName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME, oldTransportJMSDurableSubscriberName, transportJMSDurableSubscriberName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public JMSBrokerType getTransportJMSBrokerType() {
@@ -9757,22 +8704,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportJMSBrokerType(JMSBrokerType newTransportJMSBrokerType) {
         JMSBrokerType oldTransportJMSBrokerType = transportJMSBrokerType;
-        transportJMSBrokerType = newTransportJMSBrokerType == null ? TRANSPORT_JMS_BROKER_TYPE_EDEFAULT
-                : newTransportJMSBrokerType;
+        transportJMSBrokerType = newTransportJMSBrokerType == null ? TRANSPORT_JMS_BROKER_TYPE_EDEFAULT : newTransportJMSBrokerType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE, oldTransportJMSBrokerType,
-                    transportJMSBrokerType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE, oldTransportJMSBrokerType, transportJMSBrokerType));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTConnectionFactory() {
@@ -9781,21 +8723,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTConnectionFactory(String newTransportMQTTConnectionFactory) {
         String oldTransportMQTTConnectionFactory = transportMQTTConnectionFactory;
         transportMQTTConnectionFactory = newTransportMQTTConnectionFactory;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY, oldTransportMQTTConnectionFactory,
-                    transportMQTTConnectionFactory));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY, oldTransportMQTTConnectionFactory, transportMQTTConnectionFactory));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTServerHostName() {
@@ -9804,21 +8742,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTServerHostName(String newTransportMQTTServerHostName) {
         String oldTransportMQTTServerHostName = transportMQTTServerHostName;
         transportMQTTServerHostName = newTransportMQTTServerHostName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME, oldTransportMQTTServerHostName,
-                    transportMQTTServerHostName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME, oldTransportMQTTServerHostName, transportMQTTServerHostName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTServerPort() {
@@ -9827,21 +8761,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTServerPort(String newTransportMQTTServerPort) {
         String oldTransportMQTTServerPort = transportMQTTServerPort;
         transportMQTTServerPort = newTransportMQTTServerPort;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT, oldTransportMQTTServerPort,
-                    transportMQTTServerPort));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT, oldTransportMQTTServerPort, transportMQTTServerPort));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTTopicName() {
@@ -9850,21 +8780,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTTopicName(String newTransportMQTTTopicName) {
         String oldTransportMQTTTopicName = transportMQTTTopicName;
         transportMQTTTopicName = newTransportMQTTTopicName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME, oldTransportMQTTTopicName,
-                    transportMQTTTopicName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME, oldTransportMQTTTopicName, transportMQTTTopicName));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public MQTTSubscriptionQOS getTransportMQTTSubscriptionQOS() {
@@ -9873,23 +8799,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSubscriptionQOS(MQTTSubscriptionQOS newTransportMQTTSubscriptionQOS) {
         MQTTSubscriptionQOS oldTransportMQTTSubscriptionQOS = transportMQTTSubscriptionQOS;
-        transportMQTTSubscriptionQOS = newTransportMQTTSubscriptionQOS == null
-                ? TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT
-                : newTransportMQTTSubscriptionQOS;
+        transportMQTTSubscriptionQOS = newTransportMQTTSubscriptionQOS == null ? TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT : newTransportMQTTSubscriptionQOS;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS, oldTransportMQTTSubscriptionQOS,
-                    transportMQTTSubscriptionQOS));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS, oldTransportMQTTSubscriptionQOS, transportMQTTSubscriptionQOS));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public boolean isTransportMQTTSessionClean() {
@@ -9898,21 +8818,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSessionClean(boolean newTransportMQTTSessionClean) {
         boolean oldTransportMQTTSessionClean = transportMQTTSessionClean;
         transportMQTTSessionClean = newTransportMQTTSessionClean;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN, oldTransportMQTTSessionClean,
-                    transportMQTTSessionClean));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN, oldTransportMQTTSessionClean, transportMQTTSessionClean));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSslEnable() {
@@ -9921,21 +8837,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSslEnable(String newTransportMQTTSslEnable) {
         String oldTransportMQTTSslEnable = transportMQTTSslEnable;
         transportMQTTSslEnable = newTransportMQTTSslEnable;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE, oldTransportMQTTSslEnable,
-                    transportMQTTSslEnable));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE, oldTransportMQTTSslEnable, transportMQTTSslEnable));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTTemporaryStoreDirectory() {
@@ -9944,21 +8856,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTTemporaryStoreDirectory(String newTransportMQTTTemporaryStoreDirectory) {
         String oldTransportMQTTTemporaryStoreDirectory = transportMQTTTemporaryStoreDirectory;
         transportMQTTTemporaryStoreDirectory = newTransportMQTTTemporaryStoreDirectory;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY,
-                    oldTransportMQTTTemporaryStoreDirectory, transportMQTTTemporaryStoreDirectory));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY, oldTransportMQTTTemporaryStoreDirectory, transportMQTTTemporaryStoreDirectory));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSubscriptionUsername() {
@@ -9967,21 +8875,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSubscriptionUsername(String newTransportMQTTSubscriptionUsername) {
         String oldTransportMQTTSubscriptionUsername = transportMQTTSubscriptionUsername;
         transportMQTTSubscriptionUsername = newTransportMQTTSubscriptionUsername;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME,
-                    oldTransportMQTTSubscriptionUsername, transportMQTTSubscriptionUsername));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME, oldTransportMQTTSubscriptionUsername, transportMQTTSubscriptionUsername));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTSubscriptionPassword() {
@@ -9990,21 +8894,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTSubscriptionPassword(String newTransportMQTTSubscriptionPassword) {
         String oldTransportMQTTSubscriptionPassword = transportMQTTSubscriptionPassword;
         transportMQTTSubscriptionPassword = newTransportMQTTSubscriptionPassword;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD,
-                    oldTransportMQTTSubscriptionPassword, transportMQTTSubscriptionPassword));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD, oldTransportMQTTSubscriptionPassword, transportMQTTSubscriptionPassword));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTransportMQTTClientId() {
@@ -10013,20 +8913,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTransportMQTTClientId(String newTransportMQTTClientId) {
         String oldTransportMQTTClientId = transportMQTTClientId;
         transportMQTTClientId = newTransportMQTTClientId;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID,
-                    oldTransportMQTTClientId, transportMQTTClientId));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID, oldTransportMQTTClientId, transportMQTTClientId));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getTruststore() {
@@ -10035,20 +8932,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setTruststore(String newTruststore) {
         String oldTruststore = truststore;
         truststore = newTruststore;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE,
-                    oldTruststore, truststore));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE, oldTruststore, truststore));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getKeystore() {
@@ -10057,20 +8951,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setKeystore(String newKeystore) {
         String oldKeystore = keystore;
         keystore = newKeystore;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__KEYSTORE, oldKeystore,
-                    keystore));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__KEYSTORE, oldKeystore, keystore));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSslVerifyClient() {
@@ -10079,20 +8970,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSslVerifyClient(String newSslVerifyClient) {
         String oldSslVerifyClient = sslVerifyClient;
         sslVerifyClient = newSslVerifyClient;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT,
-                    oldSslVerifyClient, sslVerifyClient));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT, oldSslVerifyClient, sslVerifyClient));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getSslProtocol() {
@@ -10101,20 +8989,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setSslProtocol(String newSslProtocol) {
         String oldSslProtocol = sslProtocol;
         sslProtocol = newSslProtocol;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL,
-                    oldSslProtocol, sslProtocol));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL, oldSslProtocol, sslProtocol));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getHttpsProtocols() {
@@ -10123,20 +9008,17 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setHttpsProtocols(String newHttpsProtocols) {
         String oldHttpsProtocols = httpsProtocols;
         httpsProtocols = newHttpsProtocols;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS,
-                    oldHttpsProtocols, httpsProtocols));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS, oldHttpsProtocols, httpsProtocols));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getCertificateRevocationVerifier() {
@@ -10145,2396 +9027,2273 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setCertificateRevocationVerifier(String newCertificateRevocationVerifier) {
         String oldCertificateRevocationVerifier = certificateRevocationVerifier;
         certificateRevocationVerifier = newCertificateRevocationVerifier;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER, oldCertificateRevocationVerifier,
-                    certificateRevocationVerifier));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER, oldCertificateRevocationVerifier, certificateRevocationVerifier));
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
-            return basicSetSequenceInputConnector(null, msgs);
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
-            return basicSetSequenceOutputConnector(null, msgs);
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
-            return basicSetOnErrorSequenceInputConnector(null, msgs);
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
-            return basicSetOnErrorSequenceOutputConnector(null, msgs);
-        case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
-            return basicSetContainer(null, msgs);
-        case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-            return ((InternalEList<?>) getServiceParameters()).basicRemove(otherEnd, msgs);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
-            return basicSetTransportRabbitMqConsumerQosKey(null, msgs);
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
+                return basicSetSequenceInputConnector(null, msgs);
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
+                return basicSetSequenceOutputConnector(null, msgs);
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
+                return basicSetOnErrorSequenceInputConnector(null, msgs);
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
+                return basicSetOnErrorSequenceOutputConnector(null, msgs);
+            case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
+                return basicSetContainer(null, msgs);
+            case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
+                return ((InternalEList<?>)getServiceParameters()).basicRemove(otherEnd, msgs);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+                return basicSetTransportRabbitMqConsumerQosKey(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
-            return getSequenceInputConnector();
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
-            return getSequenceOutputConnector();
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
-            return getOnErrorSequenceInputConnector();
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
-            return getOnErrorSequenceOutputConnector();
-        case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
-            return getContainer();
-        case EsbPackage.INBOUND_ENDPOINT__NAME:
-            return getName();
-        case EsbPackage.INBOUND_ENDPOINT__TYPE:
-            return getType();
-        case EsbPackage.INBOUND_ENDPOINT__CLASS:
-            return getClass_();
-        case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
-            return getProtocol();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
-            return getInboundEndpointBehaviour();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
-            return getInboundHttpPort();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
-            return getInboundWorkerPoolSizeCore();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
-            return getInboundWorkerPoolSizeMax();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
-            return getInboundWorkerThreadKeepAliveSec();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
-            return getInboundWorkerPoolQueueLength();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
-            return getInboundThreadGroupId();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
-            return getInboundThreadId();
-        case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
-            return getDispatchFilterPattern();
-        case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
-            return getInterval();
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
-            return isSequential();
-        case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
-            return isCoordination();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
-            return getTransportVFSFileURI();
-        case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
-            return getWso2mbConnectionUrl();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
-            return getTransportVFSContentType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
-            return getTransportVFSFileNamePattern();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
-            return getTransportVFSFileProcessInterval();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
-            return getTransportVFSFileProcessCount();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
-            return getTransportVFSLocking();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
-            return getTransportVFSMaxRetryCount();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
-            return getTransportVFSReconnectTimeout();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
-            return isTransportJMSSharedSubscription();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
-            return getTransportJMSSubscriptionName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
-            return getTransportJMSPinnedServers();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
-            return getTransportVFSActionAfterProcess();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
-            return getTransportVFSMoveAfterProcess();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
-            return getTransportVFSActionAfterErrors();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
-            return getTransportVFSMoveAfterErrors();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
-            return getTransportVFSActionAfterFailure();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
-            return getTransportVFSMoveAfterFailure();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
-            return isTransportVFSAutoLockRelease();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
-            return getTransportVFSAutoLockReleaseInterval();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
-            return isTransportVFSLockReleaseSameNode();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
-            return isTransportVFSDistributedLock();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
-            return isTransportVFSStreaming();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
-            return isTransportVFSBuild();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
-            return getTransportVFSDistributedTimeout();
-        case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
-            return getJavaNamingFactoryInitial();
-        case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
-            return getJavaNamingProviderUrl();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
-            return getTransportJMSConnectionFactoryJNDIName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
-            return getTransportJMSConnectionFactoryType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
-            return getTransportJMSConcurrentConsumers();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
-            return getTransportJMSDestination();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
-            return isTransportJMSSessionTransacted();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
-            return getTransportJMSSessionAcknowledgement();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
-            return getTransportJMSCacheLevel();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
-            return getTransportJMSUserName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
-            return getTransportJMSPassword();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
-            return getTransportJMSJMSSpecVersion();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
-            return getTransportJMSSubscriptionDurable();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
-            return getTransportJMSDurableSubscriberClientID();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
-            return getTransportJMSMessageSelector();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
-            return getTransportJMSRetryDuration();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
-            return getTransportVFSMoveTimestampFormat();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
-            return getTransportVFSFileSortAttribute();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
-            return isTransportVFSFileSortAscending();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
-            return getTransportVFSSubFolderTimestampFormat();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
-            return isTransportVFSCreateFolder();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
-            return getTransportJMSReceiveTimeout();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
-            return getTransportJMSContentType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
-            return getTransportJMSContentTypeProperty();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
-            return getTransportJMSReplyDestination();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
-            return getTransportJMSPubSubNoLocal();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
-            return getTransportJMSDurableSubscriberName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
-            return getTransportJMSBrokerType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
-            return getTransportMQTTConnectionFactory();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
-            return getTransportMQTTServerHostName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
-            return getTransportMQTTServerPort();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
-            return getTransportMQTTTopicName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
-            return getTransportMQTTSubscriptionQOS();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
-            return isTransportMQTTSessionClean();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
-            return getTransportMQTTSslEnable();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
-            return getTransportMQTTTemporaryStoreDirectory();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
-            return getTransportMQTTSubscriptionUsername();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
-            return getTransportMQTTSubscriptionPassword();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
-            return getTransportMQTTClientId();
-        case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
-            return getTruststore();
-        case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
-            return getKeystore();
-        case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
-            return getSslVerifyClient();
-        case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
-            return getSslProtocol();
-        case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
-            return getHttpsProtocols();
-        case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
-            return getCertificateRevocationVerifier();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
-            return getInboundHL7Port();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
-            return isInboundHL7AutoAck();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
-            return getInboundHL7MessagePreProcessor();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
-            return getInboundHL7CharSet();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
-            return getInboundHL7TimeOut();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
-            return isInboundHL7ValidateMessage();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
-            return isInboundHL7BuildInvalidMessages();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
-            return isInboundHL7PassThroughInvalidMessages();
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
-            return getZookeeperConnect();
-        case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
-            return getGroupId();
-        case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
-            return getContentType();
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
-            return getConsumerType();
-        case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
-            return getTopicsOrTopicFilter();
-        case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
-            return getTopicsName();
-        case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
-            return getTopicFilterFrom();
-        case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
-            return getTopicFilterName();
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
-            return getSimpleConsumerTopic();
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
-            return getSimpleConsumerBrokers();
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
-            return getSimpleConsumerPort();
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
-            return getSimpleConsumerPartition();
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
-            return getSimpleConsumerMaxMessagesToRead();
-        case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
-            return getThreadCount();
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
-            return getConsumerId();
-        case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
-            return getSocketTimeoutMs();
-        case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
-            return getSocketReceiveBufferBytes();
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
-            return getFetchMessageMaxBytes();
-        case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
-            return getNumConsumerFetches();
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
-            return isAutoCommitEnable();
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
-            return getAutoCommitIntervalMs();
-        case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
-            return getQueuedMaxMessageChunks();
-        case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
-            return getRebalanceMaxRetries();
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
-            return getFetchMinBytes();
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
-            return getFetchWaitMaxMs();
-        case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
-            return getRebalanceBackoffMs();
-        case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
-            return getRefreshLeaderBackoffMs();
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
-            return getAutoOffsetReset();
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
-            return getConsumerTimeoutMs();
-        case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
-            return isExcludeInternalTopics();
-        case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
-            return getPartitionAssignmentStrategy();
-        case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
-            return getClientId();
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
-            return getZookeeperSessionTimeoutMs();
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
-            return getZookeeperConnectionTimeoutMs();
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
-            return getZookeeperSyncTimeMs();
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
-            return getOffsetsStorage();
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
-            return getOffsetsChannelBackoffMs();
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
-            return getOffsetsChannelSocketTimeoutMs();
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
-            return getOffsetsCommitMaxRetries();
-        case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
-            return isDualCommitEnabled();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
-            return getInboundCxfRmHost();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
-            return getInboundCxfRmPort();
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
-            return getInboundCxfRmConfigFile();
-        case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
-            return isEnableSSL();
-        case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-            return getServiceParameters();
-        case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
-            return isSuspend();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
-            return getTransportRabbitMqConnectionFactory();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
-            return getTransportRabbitMqServerHostName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
-            return getTransportRabbitMqServerPort();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
-            return getTransportRabbitMqServerUserName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
-            return getTransportRabbitMqServerPassword();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
-            return getTransportRabbitMqQueueName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
-            return getTransportRabbitMqExchangeName();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
-            return getTransportRabbitMqQueueDurable();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
-            return getTransportRabbitMqQueueExclusive();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
-            return getTransportRabbitMqQueueAutoDelete();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
-            return getTransportRabbitMqQueueAutoAck();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
-            return getTransportRabbitMqQueueRoutingKey();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
-            return getTransportRabbitMqQueueDeliveryMode();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
-            return getTransportRabbitMqExchangeType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
-            return getTransportRabbitMqExchangeDurable();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
-            return getTransportRabbitMqExchangeAutoDelete();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
-            return getTransportRabbitMqServerVirtualHost();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
-            return getTransportRabbitMqFactoryHeartbeat();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
-            return getTransportRabbitMqConnectionSslEnabled();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
-            return getTransportRabbitMqConnectionSslKeystoreLocation();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
-            return getTransportRabbitMqConnectionSslKeystoreType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
-            return getTransportRabbitMqConnectionSslKeystorePassword();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
-            return getTransportRabbitMqConnectionSslTruststoreLocation();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
-            return getTransportRabbitMqConnectionSslTruststoreType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
-            return getTransportRabbitMqConnectionSslTruststorePassword();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
-            return getTransportRabbitMqConnectionSslVersion();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
-            return getTransportRabbitMqMessageContentType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
-            return getTransportRabbitMqConnectionRetryCount();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
-            return getTransportRabbitMqConnectionRetryInterval();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
-            return getTransportRabbitMqServerRetryInterval();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
-            return getTransportRabbitMqConsumerQosKey();
-        case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
-            return getWsInboundPort();
-        case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
-            return getWsClientSideBroadcastLevel();
-        case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
-            return getWsOutflowDispatchSequence();
-        case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
-            return getWsOutflowDispatchFaultSequence();
-        case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
-            return getWsBossThreadPoolSize();
-        case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
-            return getWsWorkerThreadPoolSize();
-        case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
-            return getWsSubprotocolHandlerClass();
-        case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
-            return getWsPipelineHandlerClass();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
-            return getTransportFeedURL();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
-            return getTransportFeedType();
-        case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
-            return isTraceEnabled();
-        case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
-            return isStatisticsEnabled();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
-            return getTransportJMSRetriesBeforeSuspension();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
-            return isTransportJMSResetConnectionOnPollingSuspension();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
-            return getTransportJMSPollingSuspensionPeriod();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
-            return getTransportMQTTSslKeystoreLocation();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
-            return getTransportMQTTSslKeystoreType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD:
-            return getTransportMQTTSslKeystorePassword();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION:
-            return getTransportMQTTSslTruststoreLocation();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE:
-            return getTransportMQTTSslTruststoreType();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD:
-            return getTransportMQTTSslTruststorePassword();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
-            return getTransportMQTTSslVersion();
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
-            return getWssSslKeyStoreFile();
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
-            return getWssSslKeyStorePass();
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
-            return getWssSslTrustStoreFile();
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
-            return getWssSslTrustStorePass();
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
-            return getWssSslCertPass();
-        case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
-            return getWsDefaultContentType();
-        case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
-            return getWsShutdownStatusCode();
-        case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
-            return getWsShutdownStatusMessage();
-        case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
-            return isWsUsePortOffset();
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
-            return getWssSslProtocols();
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
-            return getWssSslCipherSuites();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
-            return getTransportRabbitMqConsumerQos();
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
-            return getTransportRabbitMqConsumerQosType();
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
+                return getSequenceInputConnector();
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
+                return getSequenceOutputConnector();
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
+                return getOnErrorSequenceInputConnector();
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
+                return getOnErrorSequenceOutputConnector();
+            case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
+                return getContainer();
+            case EsbPackage.INBOUND_ENDPOINT__NAME:
+                return getName();
+            case EsbPackage.INBOUND_ENDPOINT__TYPE:
+                return getType();
+            case EsbPackage.INBOUND_ENDPOINT__CLASS:
+                return getClass_();
+            case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
+                return getProtocol();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
+                return getInboundEndpointBehaviour();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
+                return getInboundHttpPort();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
+                return getInboundWorkerPoolSizeCore();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
+                return getInboundWorkerPoolSizeMax();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
+                return getInboundWorkerThreadKeepAliveSec();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
+                return getInboundWorkerPoolQueueLength();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
+                return getInboundThreadGroupId();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
+                return getInboundThreadId();
+            case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
+                return getDispatchFilterPattern();
+            case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
+                return getInterval();
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
+                return isSequential();
+            case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
+                return isCoordination();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
+                return getTransportVFSFileURI();
+            case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
+                return getWso2mbConnectionUrl();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
+                return getTransportVFSContentType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
+                return getTransportVFSFileNamePattern();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
+                return getTransportVFSFileProcessInterval();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
+                return getTransportVFSFileProcessCount();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
+                return getTransportVFSLocking();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
+                return getTransportVFSMaxRetryCount();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE:
+                return getTransportVFSMoveAfterFailedMove();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
+                return getTransportVFSReconnectTimeout();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
+                return isTransportJMSSharedSubscription();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
+                return getTransportJMSSubscriptionName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
+                return getTransportJMSPinnedServers();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
+                return getTransportVFSActionAfterProcess();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
+                return getTransportVFSMoveAfterProcess();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
+                return getTransportVFSActionAfterErrors();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
+                return getTransportVFSMoveAfterErrors();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME:
+                return getTransportVFSFailedRecordsFileName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION:
+                return getTransportVFSFailedRecordsFileDestination();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT:
+                return getTransportVFSMoveFailedRecordTimestampFormat();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION:
+                return getTransportVFSFailedRecordNextRetryDuration();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
+                return getTransportVFSActionAfterFailure();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
+                return getTransportVFSMoveAfterFailure();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_URI:
+                return getTransportVFSReplyFileURI();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_NAME:
+                return getTransportVFSReplyFileName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
+                return isTransportVFSAutoLockRelease();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
+                return getTransportVFSAutoLockReleaseInterval();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
+                return isTransportVFSLockReleaseSameNode();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
+                return isTransportVFSDistributedLock();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
+                return isTransportVFSStreaming();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
+                return isTransportVFSBuild();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
+                return getTransportVFSDistributedTimeout();
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
+                return getJavaNamingFactoryInitial();
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
+                return getJavaNamingProviderUrl();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
+                return getTransportJMSConnectionFactoryJNDIName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
+                return getTransportJMSConnectionFactoryType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
+                return getTransportJMSConcurrentConsumers();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
+                return getTransportJMSDestination();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
+                return isTransportJMSSessionTransacted();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
+                return getTransportJMSSessionAcknowledgement();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
+                return getTransportJMSCacheLevel();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
+                return getTransportJMSUserName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
+                return getTransportJMSPassword();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
+                return getTransportJMSJMSSpecVersion();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
+                return getTransportJMSSubscriptionDurable();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
+                return getTransportJMSDurableSubscriberClientID();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
+                return getTransportJMSMessageSelector();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
+                return getTransportJMSRetryDuration();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
+                return getTransportVFSMoveTimestampFormat();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
+                return getTransportVFSFileSortAttribute();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
+                return isTransportVFSFileSortAscending();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
+                return getTransportVFSSubFolderTimestampFormat();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
+                return isTransportVFSCreateFolder();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
+                return getTransportJMSReceiveTimeout();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
+                return getTransportJMSContentType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
+                return getTransportJMSContentTypeProperty();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
+                return getTransportJMSReplyDestination();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
+                return getTransportJMSPubSubNoLocal();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
+                return getTransportJMSDurableSubscriberName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
+                return getTransportJMSBrokerType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
+                return getTransportMQTTConnectionFactory();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
+                return getTransportMQTTServerHostName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
+                return getTransportMQTTServerPort();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
+                return getTransportMQTTTopicName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
+                return getTransportMQTTSubscriptionQOS();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
+                return isTransportMQTTSessionClean();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
+                return getTransportMQTTSslEnable();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
+                return getTransportMQTTTemporaryStoreDirectory();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
+                return getTransportMQTTSubscriptionUsername();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+                return getTransportMQTTSubscriptionPassword();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
+                return getTransportMQTTClientId();
+            case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
+                return getTruststore();
+            case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
+                return getKeystore();
+            case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
+                return getSslVerifyClient();
+            case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
+                return getSslProtocol();
+            case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
+                return getHttpsProtocols();
+            case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
+                return getCertificateRevocationVerifier();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
+                return getInboundHL7Port();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
+                return isInboundHL7AutoAck();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
+                return getInboundHL7MessagePreProcessor();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
+                return getInboundHL7CharSet();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
+                return getInboundHL7TimeOut();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
+                return isInboundHL7ValidateMessage();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
+                return isInboundHL7BuildInvalidMessages();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
+                return isInboundHL7PassThroughInvalidMessages();
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
+                return getZookeeperConnect();
+            case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
+                return getGroupId();
+            case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
+                return getContentType();
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+                return getConsumerType();
+            case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
+                return getTopicsOrTopicFilter();
+            case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
+                return getTopicsName();
+            case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
+                return getTopicFilterFrom();
+            case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
+                return getTopicFilterName();
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
+                return getSimpleConsumerTopic();
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
+                return getSimpleConsumerBrokers();
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
+                return getSimpleConsumerPort();
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
+                return getSimpleConsumerPartition();
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
+                return getSimpleConsumerMaxMessagesToRead();
+            case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
+                return getThreadCount();
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
+                return getConsumerId();
+            case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
+                return getSocketTimeoutMs();
+            case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
+                return getSocketReceiveBufferBytes();
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
+                return getFetchMessageMaxBytes();
+            case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
+                return getNumConsumerFetches();
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
+                return isAutoCommitEnable();
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
+                return getAutoCommitIntervalMs();
+            case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
+                return getQueuedMaxMessageChunks();
+            case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
+                return getRebalanceMaxRetries();
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
+                return getFetchMinBytes();
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
+                return getFetchWaitMaxMs();
+            case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
+                return getRebalanceBackoffMs();
+            case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
+                return getRefreshLeaderBackoffMs();
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
+                return getAutoOffsetReset();
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
+                return getConsumerTimeoutMs();
+            case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
+                return isExcludeInternalTopics();
+            case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
+                return getPartitionAssignmentStrategy();
+            case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
+                return getClientId();
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+                return getZookeeperSessionTimeoutMs();
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
+                return getZookeeperConnectionTimeoutMs();
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+                return getZookeeperSyncTimeMs();
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
+                return getOffsetsStorage();
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
+                return getOffsetsChannelBackoffMs();
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
+                return getOffsetsChannelSocketTimeoutMs();
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
+                return getOffsetsCommitMaxRetries();
+            case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
+                return isDualCommitEnabled();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
+                return getInboundCxfRmHost();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
+                return getInboundCxfRmPort();
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
+                return getInboundCxfRmConfigFile();
+            case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
+                return isEnableSSL();
+            case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
+                return getServiceParameters();
+            case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
+                return isSuspend();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
+                return getTransportRabbitMqConnectionFactory();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
+                return getTransportRabbitMqServerHostName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
+                return getTransportRabbitMqServerPort();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
+                return getTransportRabbitMqServerUserName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
+                return getTransportRabbitMqServerPassword();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
+                return getTransportRabbitMqQueueName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
+                return getTransportRabbitMqExchangeName();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
+                return getTransportRabbitMqQueueDurable();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
+                return getTransportRabbitMqQueueExclusive();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
+                return getTransportRabbitMqQueueAutoDelete();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
+                return getTransportRabbitMqQueueAutoAck();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
+                return getTransportRabbitMqQueueRoutingKey();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
+                return getTransportRabbitMqQueueDeliveryMode();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
+                return getTransportRabbitMqExchangeType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
+                return getTransportRabbitMqExchangeDurable();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
+                return getTransportRabbitMqExchangeAutoDelete();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
+                return getTransportRabbitMqServerVirtualHost();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
+                return getTransportRabbitMqFactoryHeartbeat();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
+                return getTransportRabbitMqConnectionSslEnabled();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
+                return getTransportRabbitMqConnectionSslKeystoreLocation();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
+                return getTransportRabbitMqConnectionSslKeystoreType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
+                return getTransportRabbitMqConnectionSslKeystorePassword();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
+                return getTransportRabbitMqConnectionSslTruststoreLocation();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
+                return getTransportRabbitMqConnectionSslTruststoreType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
+                return getTransportRabbitMqConnectionSslTruststorePassword();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+                return getTransportRabbitMqConnectionSslVersion();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
+                return getTransportRabbitMqMessageContentType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
+                return getTransportRabbitMqConnectionRetryCount();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
+                return getTransportRabbitMqConnectionRetryInterval();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
+                return getTransportRabbitMqServerRetryInterval();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+                return getTransportRabbitMqConsumerQosKey();
+            case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
+                return getWsInboundPort();
+            case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
+                return getWsClientSideBroadcastLevel();
+            case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
+                return getWsOutflowDispatchSequence();
+            case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
+                return getWsOutflowDispatchFaultSequence();
+            case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
+                return getWsBossThreadPoolSize();
+            case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
+                return getWsWorkerThreadPoolSize();
+            case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
+                return getWsSubprotocolHandlerClass();
+            case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
+                return getWsPipelineHandlerClass();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
+                return getTransportFeedURL();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
+                return getTransportFeedType();
+            case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
+                return isTraceEnabled();
+            case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
+                return isStatisticsEnabled();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
+                return getTransportJMSRetriesBeforeSuspension();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
+                return isTransportJMSResetConnectionOnPollingSuspension();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
+                return getTransportJMSPollingSuspensionPeriod();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
+                return getTransportMQTTSslKeystoreLocation();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
+                return getTransportMQTTSslKeystoreType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD:
+                return getTransportMQTTSslKeystorePassword();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION:
+                return getTransportMQTTSslTruststoreLocation();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE:
+                return getTransportMQTTSslTruststoreType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD:
+                return getTransportMQTTSslTruststorePassword();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
+                return getTransportMQTTSslVersion();
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
+                return getWssSslKeyStoreFile();
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
+                return getWssSslKeyStorePass();
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
+                return getWssSslTrustStoreFile();
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
+                return getWssSslTrustStorePass();
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
+                return getWssSslCertPass();
+            case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
+                return getWsDefaultContentType();
+            case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
+                return getWsShutdownStatusCode();
+            case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
+                return getWsShutdownStatusMessage();
+            case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
+                return isWsUsePortOffset();
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
+                return getWssSslProtocols();
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
+                return getWssSslCipherSuites();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
+                return getTransportRabbitMqConsumerQos();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
+                return getTransportRabbitMqConsumerQosType();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
-            setSequenceInputConnector((InboundEndpointSequenceInputConnector) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
-            setSequenceOutputConnector((InboundEndpointSequenceOutputConnector) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
-            setOnErrorSequenceInputConnector((InboundEndpointOnErrorSequenceInputConnector) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
-            setOnErrorSequenceOutputConnector((InboundEndpointOnErrorSequenceOutputConnector) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
-            setContainer((InboundEndpointContainer) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__NAME:
-            setName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TYPE:
-            setType((InboundEndpointType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CLASS:
-            setClass((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
-            setProtocol((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
-            setInboundEndpointBehaviour((InboundEndpointBehaviourType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
-            setInboundHttpPort((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
-            setInboundWorkerPoolSizeCore((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
-            setInboundWorkerPoolSizeMax((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
-            setInboundWorkerThreadKeepAliveSec((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
-            setInboundWorkerPoolQueueLength((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
-            setInboundThreadGroupId((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
-            setInboundThreadId((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
-            setDispatchFilterPattern((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
-            setInterval((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
-            setSequential((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
-            setCoordination((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
-            setTransportVFSFileURI((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
-            setWso2mbConnectionUrl((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
-            setTransportVFSContentType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
-            setTransportVFSFileNamePattern((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
-            setTransportVFSFileProcessInterval((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
-            setTransportVFSFileProcessCount((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
-            setTransportVFSLocking((Enable) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
-            setTransportVFSMaxRetryCount((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
-            setTransportVFSReconnectTimeout((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
-            setTransportJMSSharedSubscription((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
-            setTransportJMSSubscriptionName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
-            setTransportJMSPinnedServers((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
-            setTransportVFSActionAfterProcess((VFSAction) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
-            setTransportVFSMoveAfterProcess((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
-            setTransportVFSActionAfterErrors((VFSAction) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
-            setTransportVFSMoveAfterErrors((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
-            setTransportVFSActionAfterFailure((VFSAction) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
-            setTransportVFSMoveAfterFailure((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
-            setTransportVFSAutoLockRelease((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
-            setTransportVFSAutoLockReleaseInterval((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
-            setTransportVFSLockReleaseSameNode((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
-            setTransportVFSDistributedLock((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
-            setTransportVFSStreaming((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
-            setTransportVFSBuild((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
-            setTransportVFSDistributedTimeout((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
-            setJavaNamingFactoryInitial((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
-            setJavaNamingProviderUrl((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
-            setTransportJMSConnectionFactoryJNDIName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
-            setTransportJMSConnectionFactoryType((JMSConnectionFactoryType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
-            setTransportJMSConcurrentConsumers((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
-            setTransportJMSDestination((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
-            setTransportJMSSessionTransacted((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
-            setTransportJMSSessionAcknowledgement((JMSSessionAcknowledgement) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
-            setTransportJMSCacheLevel((JMSCacheLevel) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
-            setTransportJMSUserName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
-            setTransportJMSPassword((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
-            setTransportJMSJMSSpecVersion((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
-            setTransportJMSSubscriptionDurable((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
-            setTransportJMSDurableSubscriberClientID((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
-            setTransportJMSMessageSelector((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
-            setTransportJMSRetryDuration((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
-            setTransportVFSMoveTimestampFormat((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
-            setTransportVFSFileSortAttribute((VFSFileSort) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
-            setTransportVFSFileSortAscending((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
-            setTransportVFSSubFolderTimestampFormat((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
-            setTransportVFSCreateFolder((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
-            setTransportJMSReceiveTimeout((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
-            setTransportJMSContentType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
-            setTransportJMSContentTypeProperty((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
-            setTransportJMSReplyDestination((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
-            setTransportJMSPubSubNoLocal((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
-            setTransportJMSDurableSubscriberName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
-            setTransportJMSBrokerType((JMSBrokerType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
-            setTransportMQTTConnectionFactory((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
-            setTransportMQTTServerHostName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
-            setTransportMQTTServerPort((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
-            setTransportMQTTTopicName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
-            setTransportMQTTSubscriptionQOS((MQTTSubscriptionQOS) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
-            setTransportMQTTSessionClean((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
-            setTransportMQTTSslEnable((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
-            setTransportMQTTTemporaryStoreDirectory((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
-            setTransportMQTTSubscriptionUsername((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
-            setTransportMQTTSubscriptionPassword((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
-            setTransportMQTTClientId((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
-            setTruststore((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
-            setKeystore((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
-            setSslVerifyClient((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
-            setSslProtocol((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
-            setHttpsProtocols((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
-            setCertificateRevocationVerifier((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
-            setInboundHL7Port((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
-            setInboundHL7AutoAck((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
-            setInboundHL7MessagePreProcessor((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
-            setInboundHL7CharSet((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
-            setInboundHL7TimeOut((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
-            setInboundHL7ValidateMessage((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
-            setInboundHL7BuildInvalidMessages((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
-            setInboundHL7PassThroughInvalidMessages((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
-            setZookeeperConnect((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
-            setGroupId((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
-            setContentType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
-            setConsumerType((ConsumerType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
-            setTopicsOrTopicFilter((TopicsType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
-            setTopicsName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
-            setTopicFilterFrom((TopicFilterFromType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
-            setTopicFilterName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
-            setSimpleConsumerTopic((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
-            setSimpleConsumerBrokers((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
-            setSimpleConsumerPort((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
-            setSimpleConsumerPartition((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
-            setSimpleConsumerMaxMessagesToRead((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
-            setThreadCount((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
-            setConsumerId((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
-            setSocketTimeoutMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
-            setSocketReceiveBufferBytes((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
-            setFetchMessageMaxBytes((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
-            setNumConsumerFetches((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
-            setAutoCommitEnable((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
-            setAutoCommitIntervalMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
-            setQueuedMaxMessageChunks((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
-            setRebalanceMaxRetries((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
-            setFetchMinBytes((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
-            setFetchWaitMaxMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
-            setRebalanceBackoffMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
-            setRefreshLeaderBackoffMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
-            setAutoOffsetReset((AutoOffsetResetType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
-            setConsumerTimeoutMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
-            setExcludeInternalTopics((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
-            setPartitionAssignmentStrategy((PartitionAssignmentStrategyType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
-            setClientId((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
-            setZookeeperSessionTimeoutMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
-            setZookeeperConnectionTimeoutMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
-            setZookeeperSyncTimeMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
-            setOffsetsStorage((OffsetsStorageType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
-            setOffsetsChannelBackoffMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
-            setOffsetsChannelSocketTimeoutMs((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
-            setOffsetsCommitMaxRetries((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
-            setDualCommitEnabled((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
-            setInboundCxfRmHost((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
-            setInboundCxfRmPort((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
-            setInboundCxfRmConfigFile((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
-            setEnableSSL((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-            getServiceParameters().clear();
-            getServiceParameters().addAll((Collection<? extends InboundEndpointParameter>) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
-            setSuspend((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
-            setTransportRabbitMqConnectionFactory((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
-            setTransportRabbitMqServerHostName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
-            setTransportRabbitMqServerPort((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
-            setTransportRabbitMqServerUserName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
-            setTransportRabbitMqServerPassword((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
-            setTransportRabbitMqQueueName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
-            setTransportRabbitMqExchangeName((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
-            setTransportRabbitMqQueueDurable((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
-            setTransportRabbitMqQueueExclusive((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
-            setTransportRabbitMqQueueAutoDelete((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
-            setTransportRabbitMqQueueAutoAck((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
-            setTransportRabbitMqQueueRoutingKey((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
-            setTransportRabbitMqQueueDeliveryMode((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
-            setTransportRabbitMqExchangeType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
-            setTransportRabbitMqExchangeDurable((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
-            setTransportRabbitMqExchangeAutoDelete((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
-            setTransportRabbitMqServerVirtualHost((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
-            setTransportRabbitMqFactoryHeartbeat((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
-            setTransportRabbitMqConnectionSslEnabled((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
-            setTransportRabbitMqConnectionSslKeystoreLocation((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
-            setTransportRabbitMqConnectionSslKeystoreType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
-            setTransportRabbitMqConnectionSslKeystorePassword((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
-            setTransportRabbitMqConnectionSslTruststoreLocation((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
-            setTransportRabbitMqConnectionSslTruststoreType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
-            setTransportRabbitMqConnectionSslTruststorePassword((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
-            setTransportRabbitMqConnectionSslVersion((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
-            setTransportRabbitMqMessageContentType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
-            setTransportRabbitMqConnectionRetryCount((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
-            setTransportRabbitMqConnectionRetryInterval((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
-            setTransportRabbitMqServerRetryInterval((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
-            setTransportRabbitMqConsumerQosKey((RegistryKeyProperty) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
-            setWsInboundPort((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
-            setWsClientSideBroadcastLevel((WSClientSideBroadcastLevel) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
-            setWsOutflowDispatchSequence((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
-            setWsOutflowDispatchFaultSequence((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
-            setWsBossThreadPoolSize((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
-            setWsWorkerThreadPoolSize((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
-            setWsSubprotocolHandlerClass((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
-            setWsPipelineHandlerClass((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
-            setTransportFeedURL((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
-            setTransportFeedType((FeedType) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
-            setTraceEnabled((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
-            setStatisticsEnabled((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
-            setTransportJMSRetriesBeforeSuspension((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
-            setTransportJMSResetConnectionOnPollingSuspension((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
-            setTransportJMSPollingSuspensionPeriod((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
-            setTransportMQTTSslKeystoreLocation((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
-            setTransportMQTTSslKeystoreType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD:
-            setTransportMQTTSslKeystorePassword((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION:
-            setTransportMQTTSslTruststoreLocation((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE:
-            setTransportMQTTSslTruststoreType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD:
-            setTransportMQTTSslTruststorePassword((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
-            setTransportMQTTSslVersion((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
-            setWssSslKeyStoreFile((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
-            setWssSslKeyStorePass((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
-            setWssSslTrustStoreFile((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
-            setWssSslTrustStorePass((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
-            setWssSslCertPass((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
-            setWsDefaultContentType((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
-            setWsShutdownStatusCode((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
-            setWsShutdownStatusMessage((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
-            setWsUsePortOffset((Boolean) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
-            setWssSslProtocols((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
-            setWssSslCipherSuites((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
-            setTransportRabbitMqConsumerQos((String) newValue);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
-            setTransportRabbitMqConsumerQosType((PayloadFormatType) newValue);
-            return;
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
+                setSequenceInputConnector((InboundEndpointSequenceInputConnector)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
+                setSequenceOutputConnector((InboundEndpointSequenceOutputConnector)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
+                setOnErrorSequenceInputConnector((InboundEndpointOnErrorSequenceInputConnector)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
+                setOnErrorSequenceOutputConnector((InboundEndpointOnErrorSequenceOutputConnector)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
+                setContainer((InboundEndpointContainer)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__NAME:
+                setName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TYPE:
+                setType((InboundEndpointType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CLASS:
+                setClass((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
+                setProtocol((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
+                setInboundEndpointBehaviour((InboundEndpointBehaviourType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
+                setInboundHttpPort((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
+                setInboundWorkerPoolSizeCore((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
+                setInboundWorkerPoolSizeMax((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
+                setInboundWorkerThreadKeepAliveSec((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
+                setInboundWorkerPoolQueueLength((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
+                setInboundThreadGroupId((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
+                setInboundThreadId((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
+                setDispatchFilterPattern((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
+                setInterval((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
+                setSequential((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
+                setCoordination((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
+                setTransportVFSFileURI((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
+                setWso2mbConnectionUrl((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
+                setTransportVFSContentType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
+                setTransportVFSFileNamePattern((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
+                setTransportVFSFileProcessInterval((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
+                setTransportVFSFileProcessCount((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
+                setTransportVFSLocking((Enable)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
+                setTransportVFSMaxRetryCount((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE:
+                setTransportVFSMoveAfterFailedMove((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
+                setTransportVFSReconnectTimeout((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
+                setTransportJMSSharedSubscription((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
+                setTransportJMSSubscriptionName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
+                setTransportJMSPinnedServers((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
+                setTransportVFSActionAfterProcess((VFSAction)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
+                setTransportVFSMoveAfterProcess((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
+                setTransportVFSActionAfterErrors((VFSAction)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
+                setTransportVFSMoveAfterErrors((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME:
+                setTransportVFSFailedRecordsFileName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION:
+                setTransportVFSFailedRecordsFileDestination((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT:
+                setTransportVFSMoveFailedRecordTimestampFormat((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION:
+                setTransportVFSFailedRecordNextRetryDuration((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
+                setTransportVFSActionAfterFailure((VFSAction)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
+                setTransportVFSMoveAfterFailure((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_URI:
+                setTransportVFSReplyFileURI((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_NAME:
+                setTransportVFSReplyFileName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
+                setTransportVFSAutoLockRelease((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
+                setTransportVFSAutoLockReleaseInterval((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
+                setTransportVFSLockReleaseSameNode((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
+                setTransportVFSDistributedLock((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
+                setTransportVFSStreaming((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
+                setTransportVFSBuild((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
+                setTransportVFSDistributedTimeout((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
+                setJavaNamingFactoryInitial((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
+                setJavaNamingProviderUrl((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
+                setTransportJMSConnectionFactoryJNDIName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
+                setTransportJMSConnectionFactoryType((JMSConnectionFactoryType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
+                setTransportJMSConcurrentConsumers((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
+                setTransportJMSDestination((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
+                setTransportJMSSessionTransacted((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
+                setTransportJMSSessionAcknowledgement((JMSSessionAcknowledgement)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
+                setTransportJMSCacheLevel((JMSCacheLevel)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
+                setTransportJMSUserName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
+                setTransportJMSPassword((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
+                setTransportJMSJMSSpecVersion((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
+                setTransportJMSSubscriptionDurable((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
+                setTransportJMSDurableSubscriberClientID((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
+                setTransportJMSMessageSelector((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
+                setTransportJMSRetryDuration((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
+                setTransportVFSMoveTimestampFormat((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
+                setTransportVFSFileSortAttribute((VFSFileSort)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
+                setTransportVFSFileSortAscending((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
+                setTransportVFSSubFolderTimestampFormat((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
+                setTransportVFSCreateFolder((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
+                setTransportJMSReceiveTimeout((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
+                setTransportJMSContentType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
+                setTransportJMSContentTypeProperty((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
+                setTransportJMSReplyDestination((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
+                setTransportJMSPubSubNoLocal((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
+                setTransportJMSDurableSubscriberName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
+                setTransportJMSBrokerType((JMSBrokerType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
+                setTransportMQTTConnectionFactory((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
+                setTransportMQTTServerHostName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
+                setTransportMQTTServerPort((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
+                setTransportMQTTTopicName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
+                setTransportMQTTSubscriptionQOS((MQTTSubscriptionQOS)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
+                setTransportMQTTSessionClean((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
+                setTransportMQTTSslEnable((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
+                setTransportMQTTTemporaryStoreDirectory((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
+                setTransportMQTTSubscriptionUsername((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+                setTransportMQTTSubscriptionPassword((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
+                setTransportMQTTClientId((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
+                setTruststore((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
+                setKeystore((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
+                setSslVerifyClient((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
+                setSslProtocol((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
+                setHttpsProtocols((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
+                setCertificateRevocationVerifier((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
+                setInboundHL7Port((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
+                setInboundHL7AutoAck((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
+                setInboundHL7MessagePreProcessor((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
+                setInboundHL7CharSet((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
+                setInboundHL7TimeOut((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
+                setInboundHL7ValidateMessage((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
+                setInboundHL7BuildInvalidMessages((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
+                setInboundHL7PassThroughInvalidMessages((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
+                setZookeeperConnect((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
+                setGroupId((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
+                setContentType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+                setConsumerType((ConsumerType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
+                setTopicsOrTopicFilter((TopicsType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
+                setTopicsName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
+                setTopicFilterFrom((TopicFilterFromType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
+                setTopicFilterName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
+                setSimpleConsumerTopic((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
+                setSimpleConsumerBrokers((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
+                setSimpleConsumerPort((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
+                setSimpleConsumerPartition((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
+                setSimpleConsumerMaxMessagesToRead((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
+                setThreadCount((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
+                setConsumerId((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
+                setSocketTimeoutMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
+                setSocketReceiveBufferBytes((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
+                setFetchMessageMaxBytes((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
+                setNumConsumerFetches((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
+                setAutoCommitEnable((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
+                setAutoCommitIntervalMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
+                setQueuedMaxMessageChunks((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
+                setRebalanceMaxRetries((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
+                setFetchMinBytes((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
+                setFetchWaitMaxMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
+                setRebalanceBackoffMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
+                setRefreshLeaderBackoffMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
+                setAutoOffsetReset((AutoOffsetResetType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
+                setConsumerTimeoutMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
+                setExcludeInternalTopics((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
+                setPartitionAssignmentStrategy((PartitionAssignmentStrategyType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
+                setClientId((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+                setZookeeperSessionTimeoutMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
+                setZookeeperConnectionTimeoutMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+                setZookeeperSyncTimeMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
+                setOffsetsStorage((OffsetsStorageType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
+                setOffsetsChannelBackoffMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
+                setOffsetsChannelSocketTimeoutMs((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
+                setOffsetsCommitMaxRetries((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
+                setDualCommitEnabled((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
+                setInboundCxfRmHost((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
+                setInboundCxfRmPort((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
+                setInboundCxfRmConfigFile((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
+                setEnableSSL((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
+                getServiceParameters().clear();
+                getServiceParameters().addAll((Collection<? extends InboundEndpointParameter>)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
+                setSuspend((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
+                setTransportRabbitMqConnectionFactory((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
+                setTransportRabbitMqServerHostName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
+                setTransportRabbitMqServerPort((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
+                setTransportRabbitMqServerUserName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
+                setTransportRabbitMqServerPassword((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
+                setTransportRabbitMqQueueName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
+                setTransportRabbitMqExchangeName((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
+                setTransportRabbitMqQueueDurable((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
+                setTransportRabbitMqQueueExclusive((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
+                setTransportRabbitMqQueueAutoDelete((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
+                setTransportRabbitMqQueueAutoAck((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
+                setTransportRabbitMqQueueRoutingKey((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
+                setTransportRabbitMqQueueDeliveryMode((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
+                setTransportRabbitMqExchangeType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
+                setTransportRabbitMqExchangeDurable((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
+                setTransportRabbitMqExchangeAutoDelete((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
+                setTransportRabbitMqServerVirtualHost((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
+                setTransportRabbitMqFactoryHeartbeat((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
+                setTransportRabbitMqConnectionSslEnabled((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
+                setTransportRabbitMqConnectionSslKeystoreLocation((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
+                setTransportRabbitMqConnectionSslKeystoreType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
+                setTransportRabbitMqConnectionSslKeystorePassword((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
+                setTransportRabbitMqConnectionSslTruststoreLocation((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
+                setTransportRabbitMqConnectionSslTruststoreType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
+                setTransportRabbitMqConnectionSslTruststorePassword((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+                setTransportRabbitMqConnectionSslVersion((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
+                setTransportRabbitMqMessageContentType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
+                setTransportRabbitMqConnectionRetryCount((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
+                setTransportRabbitMqConnectionRetryInterval((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
+                setTransportRabbitMqServerRetryInterval((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+                setTransportRabbitMqConsumerQosKey((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
+                setWsInboundPort((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
+                setWsClientSideBroadcastLevel((WSClientSideBroadcastLevel)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
+                setWsOutflowDispatchSequence((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
+                setWsOutflowDispatchFaultSequence((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
+                setWsBossThreadPoolSize((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
+                setWsWorkerThreadPoolSize((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
+                setWsSubprotocolHandlerClass((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
+                setWsPipelineHandlerClass((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
+                setTransportFeedURL((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
+                setTransportFeedType((FeedType)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
+                setTraceEnabled((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
+                setStatisticsEnabled((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
+                setTransportJMSRetriesBeforeSuspension((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
+                setTransportJMSResetConnectionOnPollingSuspension((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
+                setTransportJMSPollingSuspensionPeriod((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
+                setTransportMQTTSslKeystoreLocation((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
+                setTransportMQTTSslKeystoreType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD:
+                setTransportMQTTSslKeystorePassword((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION:
+                setTransportMQTTSslTruststoreLocation((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE:
+                setTransportMQTTSslTruststoreType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD:
+                setTransportMQTTSslTruststorePassword((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
+                setTransportMQTTSslVersion((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
+                setWssSslKeyStoreFile((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
+                setWssSslKeyStorePass((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
+                setWssSslTrustStoreFile((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
+                setWssSslTrustStorePass((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
+                setWssSslCertPass((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
+                setWsDefaultContentType((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
+                setWsShutdownStatusCode((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
+                setWsShutdownStatusMessage((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
+                setWsUsePortOffset((Boolean)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
+                setWssSslProtocols((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
+                setWssSslCipherSuites((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
+                setTransportRabbitMqConsumerQos((String)newValue);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
+                setTransportRabbitMqConsumerQosType((PayloadFormatType)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
-            setSequenceInputConnector((InboundEndpointSequenceInputConnector) null);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
-            setSequenceOutputConnector((InboundEndpointSequenceOutputConnector) null);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
-            setOnErrorSequenceInputConnector((InboundEndpointOnErrorSequenceInputConnector) null);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
-            setOnErrorSequenceOutputConnector((InboundEndpointOnErrorSequenceOutputConnector) null);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
-            setContainer((InboundEndpointContainer) null);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__NAME:
-            setName(NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TYPE:
-            setType(TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CLASS:
-            setClass(CLASS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
-            setProtocol(PROTOCOL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
-            setInboundEndpointBehaviour(INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
-            setInboundHttpPort(INBOUND_HTTP_PORT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
-            setInboundWorkerPoolSizeCore(INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
-            setInboundWorkerPoolSizeMax(INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
-            setInboundWorkerThreadKeepAliveSec(INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
-            setInboundWorkerPoolQueueLength(INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
-            setInboundThreadGroupId(INBOUND_THREAD_GROUP_ID_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
-            setInboundThreadId(INBOUND_THREAD_ID_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
-            setDispatchFilterPattern(DISPATCH_FILTER_PATTERN_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
-            setInterval(INTERVAL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
-            setSequential(SEQUENTIAL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
-            setCoordination(COORDINATION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
-            setTransportVFSFileURI(TRANSPORT_VFS_FILE_URI_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
-            setWso2mbConnectionUrl(WSO2MB_CONNECTION_URL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
-            setTransportVFSContentType(TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
-            setTransportVFSFileNamePattern(TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
-            setTransportVFSFileProcessInterval(TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
-            setTransportVFSFileProcessCount(TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
-            setTransportVFSLocking(TRANSPORT_VFS_LOCKING_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
-            setTransportVFSMaxRetryCount(TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
-            setTransportVFSReconnectTimeout(TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
-            setTransportJMSSharedSubscription(TRANSPORT_JMS_SHARED_SUBSCRIPTION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
-            setTransportJMSSubscriptionName(TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
-            setTransportJMSPinnedServers(TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
-            setTransportVFSActionAfterProcess(TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
-            setTransportVFSMoveAfterProcess(TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
-            setTransportVFSActionAfterErrors(TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
-            setTransportVFSMoveAfterErrors(TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
-            setTransportVFSActionAfterFailure(TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
-            setTransportVFSMoveAfterFailure(TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
-            setTransportVFSAutoLockRelease(TRANSPORT_VFS_AUTO_LOCK_RELEASE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
-            setTransportVFSAutoLockReleaseInterval(TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
-            setTransportVFSLockReleaseSameNode(TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
-            setTransportVFSDistributedLock(TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
-            setTransportVFSStreaming(TRANSPORT_VFS_STREAMING_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
-            setTransportVFSBuild(TRANSPORT_VFS_BUILD_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
-            setTransportVFSDistributedTimeout(TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
-            setJavaNamingFactoryInitial(JAVA_NAMING_FACTORY_INITIAL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
-            setJavaNamingProviderUrl(JAVA_NAMING_PROVIDER_URL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
-            setTransportJMSConnectionFactoryJNDIName(TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
-            setTransportJMSConnectionFactoryType(TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
-            setTransportJMSConcurrentConsumers(TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
-            setTransportJMSDestination(TRANSPORT_JMS_DESTINATION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
-            setTransportJMSSessionTransacted(TRANSPORT_JMS_SESSION_TRANSACTED_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
-            setTransportJMSSessionAcknowledgement(TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
-            setTransportJMSCacheLevel(TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
-            setTransportJMSUserName(TRANSPORT_JMS_USER_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
-            setTransportJMSPassword(TRANSPORT_JMS_PASSWORD_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
-            setTransportJMSJMSSpecVersion(TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
-            setTransportJMSSubscriptionDurable(TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
-            setTransportJMSDurableSubscriberClientID(TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
-            setTransportJMSMessageSelector(TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
-            setTransportJMSRetryDuration(TRANSPORT_JMS_RETRY_DURATION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
-            setTransportVFSMoveTimestampFormat(TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
-            setTransportVFSFileSortAttribute(TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
-            setTransportVFSFileSortAscending(TRANSPORT_VFS_FILE_SORT_ASCENDING_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
-            setTransportVFSSubFolderTimestampFormat(TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
-            setTransportVFSCreateFolder(TRANSPORT_VFS_CREATE_FOLDER_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
-            setTransportJMSReceiveTimeout(TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
-            setTransportJMSContentType(TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
-            setTransportJMSContentTypeProperty(TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
-            setTransportJMSReplyDestination(TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
-            setTransportJMSPubSubNoLocal(TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
-            setTransportJMSDurableSubscriberName(TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
-            setTransportJMSBrokerType(TRANSPORT_JMS_BROKER_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
-            setTransportMQTTConnectionFactory(TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
-            setTransportMQTTServerHostName(TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
-            setTransportMQTTServerPort(TRANSPORT_MQTT_SERVER_PORT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
-            setTransportMQTTTopicName(TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
-            setTransportMQTTSubscriptionQOS(TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
-            setTransportMQTTSessionClean(TRANSPORT_MQTT_SESSION_CLEAN_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
-            setTransportMQTTSslEnable(TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
-            setTransportMQTTTemporaryStoreDirectory(TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
-            setTransportMQTTSubscriptionUsername(TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
-            setTransportMQTTSubscriptionPassword(TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
-            setTransportMQTTClientId(TRANSPORT_MQTT_CLIENT_ID_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
-            setTruststore(TRUSTSTORE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
-            setKeystore(KEYSTORE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
-            setSslVerifyClient(SSL_VERIFY_CLIENT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
-            setSslProtocol(SSL_PROTOCOL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
-            setHttpsProtocols(HTTPS_PROTOCOLS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
-            setCertificateRevocationVerifier(CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
-            setInboundHL7Port(INBOUND_HL7_PORT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
-            setInboundHL7AutoAck(INBOUND_HL7_AUTO_ACK_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
-            setInboundHL7MessagePreProcessor(INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
-            setInboundHL7CharSet(INBOUND_HL7_CHAR_SET_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
-            setInboundHL7TimeOut(INBOUND_HL7_TIME_OUT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
-            setInboundHL7ValidateMessage(INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
-            setInboundHL7BuildInvalidMessages(INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
-            setInboundHL7PassThroughInvalidMessages(INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
-            setZookeeperConnect(ZOOKEEPER_CONNECT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
-            setGroupId(GROUP_ID_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
-            setContentType(CONTENT_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
-            setConsumerType(CONSUMER_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
-            setTopicsOrTopicFilter(TOPICS_OR_TOPIC_FILTER_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
-            setTopicsName(TOPICS_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
-            setTopicFilterFrom(TOPIC_FILTER_FROM_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
-            setTopicFilterName(TOPIC_FILTER_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
-            setSimpleConsumerTopic(SIMPLE_CONSUMER_TOPIC_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
-            setSimpleConsumerBrokers(SIMPLE_CONSUMER_BROKERS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
-            setSimpleConsumerPort(SIMPLE_CONSUMER_PORT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
-            setSimpleConsumerPartition(SIMPLE_CONSUMER_PARTITION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
-            setSimpleConsumerMaxMessagesToRead(SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
-            setThreadCount(THREAD_COUNT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
-            setConsumerId(CONSUMER_ID_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
-            setSocketTimeoutMs(SOCKET_TIMEOUT_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
-            setSocketReceiveBufferBytes(SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
-            setFetchMessageMaxBytes(FETCH_MESSAGE_MAX_BYTES_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
-            setNumConsumerFetches(NUM_CONSUMER_FETCHES_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
-            setAutoCommitEnable(AUTO_COMMIT_ENABLE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
-            setAutoCommitIntervalMs(AUTO_COMMIT_INTERVAL_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
-            setQueuedMaxMessageChunks(QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
-            setRebalanceMaxRetries(REBALANCE_MAX_RETRIES_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
-            setFetchMinBytes(FETCH_MIN_BYTES_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
-            setFetchWaitMaxMs(FETCH_WAIT_MAX_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
-            setRebalanceBackoffMs(REBALANCE_BACKOFF_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
-            setRefreshLeaderBackoffMs(REFRESH_LEADER_BACKOFF_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
-            setAutoOffsetReset(AUTO_OFFSET_RESET_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
-            setConsumerTimeoutMs(CONSUMER_TIMEOUT_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
-            setExcludeInternalTopics(EXCLUDE_INTERNAL_TOPICS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
-            setPartitionAssignmentStrategy(PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
-            setClientId(CLIENT_ID_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
-            setZookeeperSessionTimeoutMs(ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
-            setZookeeperConnectionTimeoutMs(ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
-            setZookeeperSyncTimeMs(ZOOKEEPER_SYNC_TIME_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
-            setOffsetsStorage(OFFSETS_STORAGE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
-            setOffsetsChannelBackoffMs(OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
-            setOffsetsChannelSocketTimeoutMs(OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
-            setOffsetsCommitMaxRetries(OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
-            setDualCommitEnabled(DUAL_COMMIT_ENABLED_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
-            setInboundCxfRmHost(INBOUND_CXF_RM_HOST_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
-            setInboundCxfRmPort(INBOUND_CXF_RM_PORT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
-            setInboundCxfRmConfigFile(INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
-            setEnableSSL(ENABLE_SSL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-            getServiceParameters().clear();
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
-            setSuspend(SUSPEND_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
-            setTransportRabbitMqConnectionFactory(TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
-            setTransportRabbitMqServerHostName(TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
-            setTransportRabbitMqServerPort(TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
-            setTransportRabbitMqServerUserName(TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
-            setTransportRabbitMqServerPassword(TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
-            setTransportRabbitMqQueueName(TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
-            setTransportRabbitMqExchangeName(TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
-            setTransportRabbitMqQueueDurable(TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
-            setTransportRabbitMqQueueExclusive(TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
-            setTransportRabbitMqQueueAutoDelete(TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
-            setTransportRabbitMqQueueAutoAck(TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
-            setTransportRabbitMqQueueRoutingKey(TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
-            setTransportRabbitMqQueueDeliveryMode(TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
-            setTransportRabbitMqExchangeType(TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
-            setTransportRabbitMqExchangeDurable(TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
-            setTransportRabbitMqExchangeAutoDelete(TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
-            setTransportRabbitMqServerVirtualHost(TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
-            setTransportRabbitMqFactoryHeartbeat(TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
-            setTransportRabbitMqConnectionSslEnabled(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
-            setTransportRabbitMqConnectionSslKeystoreLocation(
-                    TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
-            setTransportRabbitMqConnectionSslKeystoreType(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
-            setTransportRabbitMqConnectionSslKeystorePassword(
-                    TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
-            setTransportRabbitMqConnectionSslTruststoreLocation(
-                    TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
-            setTransportRabbitMqConnectionSslTruststoreType(
-                    TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
-            setTransportRabbitMqConnectionSslTruststorePassword(
-                    TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
-            setTransportRabbitMqConnectionSslVersion(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
-            setTransportRabbitMqMessageContentType(TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
-            setTransportRabbitMqConnectionRetryCount(TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
-            setTransportRabbitMqConnectionRetryInterval(TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
-            setTransportRabbitMqServerRetryInterval(TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
-            setTransportRabbitMqConsumerQosKey((RegistryKeyProperty) null);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
-            setWsInboundPort(WS_INBOUND_PORT_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
-            setWsClientSideBroadcastLevel(WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
-            setWsOutflowDispatchSequence(WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
-            setWsOutflowDispatchFaultSequence(WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
-            setWsBossThreadPoolSize(WS_BOSS_THREAD_POOL_SIZE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
-            setWsWorkerThreadPoolSize(WS_WORKER_THREAD_POOL_SIZE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
-            setWsSubprotocolHandlerClass(WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
-            setWsPipelineHandlerClass(WS_PIPELINE_HANDLER_CLASS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
-            setTransportFeedURL(TRANSPORT_FEED_URL_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
-            setTransportFeedType(TRANSPORT_FEED_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
-            setTraceEnabled(TRACE_ENABLED_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
-            setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
-            setTransportJMSRetriesBeforeSuspension(TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
-            setTransportJMSResetConnectionOnPollingSuspension(
-                    TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
-            setTransportJMSPollingSuspensionPeriod(TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
-            setTransportMQTTSslKeystoreLocation(TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
-            setTransportMQTTSslKeystoreType(TRANSPORT_MQTT_SSL_KEYSTORE_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD:
-            setTransportMQTTSslKeystorePassword(TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION:
-            setTransportMQTTSslTruststoreLocation(TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE:
-            setTransportMQTTSslTruststoreType(TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD:
-            setTransportMQTTSslTruststorePassword(TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
-            setTransportMQTTSslVersion(TRANSPORT_MQTT_SSL_VERSION_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
-            setWssSslKeyStoreFile(WSS_SSL_KEY_STORE_FILE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
-            setWssSslKeyStorePass(WSS_SSL_KEY_STORE_PASS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
-            setWssSslTrustStoreFile(WSS_SSL_TRUST_STORE_FILE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
-            setWssSslTrustStorePass(WSS_SSL_TRUST_STORE_PASS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
-            setWssSslCertPass(WSS_SSL_CERT_PASS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
-            setWsDefaultContentType(WS_DEFAULT_CONTENT_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
-            setWsShutdownStatusCode(WS_SHUTDOWN_STATUS_CODE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
-            setWsShutdownStatusMessage(WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
-            setWsUsePortOffset(WS_USE_PORT_OFFSET_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
-            setWssSslProtocols(WSS_SSL_PROTOCOLS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
-            setWssSslCipherSuites(WSS_SSL_CIPHER_SUITES_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
-            setTransportRabbitMqConsumerQos(TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT);
-            return;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
-            setTransportRabbitMqConsumerQosType(TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT);
-            return;
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
+                setSequenceInputConnector((InboundEndpointSequenceInputConnector)null);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
+                setSequenceOutputConnector((InboundEndpointSequenceOutputConnector)null);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
+                setOnErrorSequenceInputConnector((InboundEndpointOnErrorSequenceInputConnector)null);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
+                setOnErrorSequenceOutputConnector((InboundEndpointOnErrorSequenceOutputConnector)null);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
+                setContainer((InboundEndpointContainer)null);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TYPE:
+                setType(TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CLASS:
+                setClass(CLASS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
+                setProtocol(PROTOCOL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
+                setInboundEndpointBehaviour(INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
+                setInboundHttpPort(INBOUND_HTTP_PORT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
+                setInboundWorkerPoolSizeCore(INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
+                setInboundWorkerPoolSizeMax(INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
+                setInboundWorkerThreadKeepAliveSec(INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
+                setInboundWorkerPoolQueueLength(INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
+                setInboundThreadGroupId(INBOUND_THREAD_GROUP_ID_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
+                setInboundThreadId(INBOUND_THREAD_ID_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
+                setDispatchFilterPattern(DISPATCH_FILTER_PATTERN_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
+                setInterval(INTERVAL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
+                setSequential(SEQUENTIAL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
+                setCoordination(COORDINATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
+                setTransportVFSFileURI(TRANSPORT_VFS_FILE_URI_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
+                setWso2mbConnectionUrl(WSO2MB_CONNECTION_URL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
+                setTransportVFSContentType(TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
+                setTransportVFSFileNamePattern(TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
+                setTransportVFSFileProcessInterval(TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
+                setTransportVFSFileProcessCount(TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
+                setTransportVFSLocking(TRANSPORT_VFS_LOCKING_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
+                setTransportVFSMaxRetryCount(TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE:
+                setTransportVFSMoveAfterFailedMove(TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
+                setTransportVFSReconnectTimeout(TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
+                setTransportJMSSharedSubscription(TRANSPORT_JMS_SHARED_SUBSCRIPTION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
+                setTransportJMSSubscriptionName(TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
+                setTransportJMSPinnedServers(TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
+                setTransportVFSActionAfterProcess(TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
+                setTransportVFSMoveAfterProcess(TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
+                setTransportVFSActionAfterErrors(TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
+                setTransportVFSMoveAfterErrors(TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME:
+                setTransportVFSFailedRecordsFileName(TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION:
+                setTransportVFSFailedRecordsFileDestination(TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT:
+                setTransportVFSMoveFailedRecordTimestampFormat(TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION:
+                setTransportVFSFailedRecordNextRetryDuration(TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
+                setTransportVFSActionAfterFailure(TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
+                setTransportVFSMoveAfterFailure(TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_URI:
+                setTransportVFSReplyFileURI(TRANSPORT_VFS_REPLY_FILE_URI_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_NAME:
+                setTransportVFSReplyFileName(TRANSPORT_VFS_REPLY_FILE_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
+                setTransportVFSAutoLockRelease(TRANSPORT_VFS_AUTO_LOCK_RELEASE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
+                setTransportVFSAutoLockReleaseInterval(TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
+                setTransportVFSLockReleaseSameNode(TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
+                setTransportVFSDistributedLock(TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
+                setTransportVFSStreaming(TRANSPORT_VFS_STREAMING_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
+                setTransportVFSBuild(TRANSPORT_VFS_BUILD_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
+                setTransportVFSDistributedTimeout(TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
+                setJavaNamingFactoryInitial(JAVA_NAMING_FACTORY_INITIAL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
+                setJavaNamingProviderUrl(JAVA_NAMING_PROVIDER_URL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
+                setTransportJMSConnectionFactoryJNDIName(TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
+                setTransportJMSConnectionFactoryType(TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
+                setTransportJMSConcurrentConsumers(TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
+                setTransportJMSDestination(TRANSPORT_JMS_DESTINATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
+                setTransportJMSSessionTransacted(TRANSPORT_JMS_SESSION_TRANSACTED_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
+                setTransportJMSSessionAcknowledgement(TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
+                setTransportJMSCacheLevel(TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
+                setTransportJMSUserName(TRANSPORT_JMS_USER_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
+                setTransportJMSPassword(TRANSPORT_JMS_PASSWORD_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
+                setTransportJMSJMSSpecVersion(TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
+                setTransportJMSSubscriptionDurable(TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
+                setTransportJMSDurableSubscriberClientID(TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
+                setTransportJMSMessageSelector(TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
+                setTransportJMSRetryDuration(TRANSPORT_JMS_RETRY_DURATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
+                setTransportVFSMoveTimestampFormat(TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
+                setTransportVFSFileSortAttribute(TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
+                setTransportVFSFileSortAscending(TRANSPORT_VFS_FILE_SORT_ASCENDING_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
+                setTransportVFSSubFolderTimestampFormat(TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
+                setTransportVFSCreateFolder(TRANSPORT_VFS_CREATE_FOLDER_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
+                setTransportJMSReceiveTimeout(TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
+                setTransportJMSContentType(TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
+                setTransportJMSContentTypeProperty(TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
+                setTransportJMSReplyDestination(TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
+                setTransportJMSPubSubNoLocal(TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
+                setTransportJMSDurableSubscriberName(TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
+                setTransportJMSBrokerType(TRANSPORT_JMS_BROKER_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
+                setTransportMQTTConnectionFactory(TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
+                setTransportMQTTServerHostName(TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
+                setTransportMQTTServerPort(TRANSPORT_MQTT_SERVER_PORT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
+                setTransportMQTTTopicName(TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
+                setTransportMQTTSubscriptionQOS(TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
+                setTransportMQTTSessionClean(TRANSPORT_MQTT_SESSION_CLEAN_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
+                setTransportMQTTSslEnable(TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
+                setTransportMQTTTemporaryStoreDirectory(TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
+                setTransportMQTTSubscriptionUsername(TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+                setTransportMQTTSubscriptionPassword(TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
+                setTransportMQTTClientId(TRANSPORT_MQTT_CLIENT_ID_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
+                setTruststore(TRUSTSTORE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
+                setKeystore(KEYSTORE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
+                setSslVerifyClient(SSL_VERIFY_CLIENT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
+                setSslProtocol(SSL_PROTOCOL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
+                setHttpsProtocols(HTTPS_PROTOCOLS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
+                setCertificateRevocationVerifier(CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
+                setInboundHL7Port(INBOUND_HL7_PORT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
+                setInboundHL7AutoAck(INBOUND_HL7_AUTO_ACK_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
+                setInboundHL7MessagePreProcessor(INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
+                setInboundHL7CharSet(INBOUND_HL7_CHAR_SET_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
+                setInboundHL7TimeOut(INBOUND_HL7_TIME_OUT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
+                setInboundHL7ValidateMessage(INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
+                setInboundHL7BuildInvalidMessages(INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
+                setInboundHL7PassThroughInvalidMessages(INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
+                setZookeeperConnect(ZOOKEEPER_CONNECT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
+                setGroupId(GROUP_ID_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
+                setContentType(CONTENT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+                setConsumerType(CONSUMER_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
+                setTopicsOrTopicFilter(TOPICS_OR_TOPIC_FILTER_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
+                setTopicsName(TOPICS_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
+                setTopicFilterFrom(TOPIC_FILTER_FROM_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
+                setTopicFilterName(TOPIC_FILTER_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
+                setSimpleConsumerTopic(SIMPLE_CONSUMER_TOPIC_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
+                setSimpleConsumerBrokers(SIMPLE_CONSUMER_BROKERS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
+                setSimpleConsumerPort(SIMPLE_CONSUMER_PORT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
+                setSimpleConsumerPartition(SIMPLE_CONSUMER_PARTITION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
+                setSimpleConsumerMaxMessagesToRead(SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
+                setThreadCount(THREAD_COUNT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
+                setConsumerId(CONSUMER_ID_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
+                setSocketTimeoutMs(SOCKET_TIMEOUT_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
+                setSocketReceiveBufferBytes(SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
+                setFetchMessageMaxBytes(FETCH_MESSAGE_MAX_BYTES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
+                setNumConsumerFetches(NUM_CONSUMER_FETCHES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
+                setAutoCommitEnable(AUTO_COMMIT_ENABLE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
+                setAutoCommitIntervalMs(AUTO_COMMIT_INTERVAL_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
+                setQueuedMaxMessageChunks(QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
+                setRebalanceMaxRetries(REBALANCE_MAX_RETRIES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
+                setFetchMinBytes(FETCH_MIN_BYTES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
+                setFetchWaitMaxMs(FETCH_WAIT_MAX_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
+                setRebalanceBackoffMs(REBALANCE_BACKOFF_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
+                setRefreshLeaderBackoffMs(REFRESH_LEADER_BACKOFF_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
+                setAutoOffsetReset(AUTO_OFFSET_RESET_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
+                setConsumerTimeoutMs(CONSUMER_TIMEOUT_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
+                setExcludeInternalTopics(EXCLUDE_INTERNAL_TOPICS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
+                setPartitionAssignmentStrategy(PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
+                setClientId(CLIENT_ID_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+                setZookeeperSessionTimeoutMs(ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
+                setZookeeperConnectionTimeoutMs(ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+                setZookeeperSyncTimeMs(ZOOKEEPER_SYNC_TIME_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
+                setOffsetsStorage(OFFSETS_STORAGE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
+                setOffsetsChannelBackoffMs(OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
+                setOffsetsChannelSocketTimeoutMs(OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
+                setOffsetsCommitMaxRetries(OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
+                setDualCommitEnabled(DUAL_COMMIT_ENABLED_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
+                setInboundCxfRmHost(INBOUND_CXF_RM_HOST_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
+                setInboundCxfRmPort(INBOUND_CXF_RM_PORT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
+                setInboundCxfRmConfigFile(INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
+                setEnableSSL(ENABLE_SSL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
+                getServiceParameters().clear();
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
+                setSuspend(SUSPEND_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
+                setTransportRabbitMqConnectionFactory(TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
+                setTransportRabbitMqServerHostName(TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
+                setTransportRabbitMqServerPort(TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
+                setTransportRabbitMqServerUserName(TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
+                setTransportRabbitMqServerPassword(TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
+                setTransportRabbitMqQueueName(TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
+                setTransportRabbitMqExchangeName(TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
+                setTransportRabbitMqQueueDurable(TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
+                setTransportRabbitMqQueueExclusive(TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
+                setTransportRabbitMqQueueAutoDelete(TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
+                setTransportRabbitMqQueueAutoAck(TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
+                setTransportRabbitMqQueueRoutingKey(TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
+                setTransportRabbitMqQueueDeliveryMode(TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
+                setTransportRabbitMqExchangeType(TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
+                setTransportRabbitMqExchangeDurable(TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
+                setTransportRabbitMqExchangeAutoDelete(TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
+                setTransportRabbitMqServerVirtualHost(TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
+                setTransportRabbitMqFactoryHeartbeat(TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
+                setTransportRabbitMqConnectionSslEnabled(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
+                setTransportRabbitMqConnectionSslKeystoreLocation(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
+                setTransportRabbitMqConnectionSslKeystoreType(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
+                setTransportRabbitMqConnectionSslKeystorePassword(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
+                setTransportRabbitMqConnectionSslTruststoreLocation(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
+                setTransportRabbitMqConnectionSslTruststoreType(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
+                setTransportRabbitMqConnectionSslTruststorePassword(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+                setTransportRabbitMqConnectionSslVersion(TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
+                setTransportRabbitMqMessageContentType(TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
+                setTransportRabbitMqConnectionRetryCount(TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
+                setTransportRabbitMqConnectionRetryInterval(TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
+                setTransportRabbitMqServerRetryInterval(TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+                setTransportRabbitMqConsumerQosKey((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
+                setWsInboundPort(WS_INBOUND_PORT_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
+                setWsClientSideBroadcastLevel(WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
+                setWsOutflowDispatchSequence(WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
+                setWsOutflowDispatchFaultSequence(WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
+                setWsBossThreadPoolSize(WS_BOSS_THREAD_POOL_SIZE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
+                setWsWorkerThreadPoolSize(WS_WORKER_THREAD_POOL_SIZE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
+                setWsSubprotocolHandlerClass(WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
+                setWsPipelineHandlerClass(WS_PIPELINE_HANDLER_CLASS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
+                setTransportFeedURL(TRANSPORT_FEED_URL_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
+                setTransportFeedType(TRANSPORT_FEED_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
+                setTraceEnabled(TRACE_ENABLED_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
+                setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
+                setTransportJMSRetriesBeforeSuspension(TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
+                setTransportJMSResetConnectionOnPollingSuspension(TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
+                setTransportJMSPollingSuspensionPeriod(TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
+                setTransportMQTTSslKeystoreLocation(TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
+                setTransportMQTTSslKeystoreType(TRANSPORT_MQTT_SSL_KEYSTORE_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD:
+                setTransportMQTTSslKeystorePassword(TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION:
+                setTransportMQTTSslTruststoreLocation(TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE:
+                setTransportMQTTSslTruststoreType(TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD:
+                setTransportMQTTSslTruststorePassword(TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
+                setTransportMQTTSslVersion(TRANSPORT_MQTT_SSL_VERSION_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
+                setWssSslKeyStoreFile(WSS_SSL_KEY_STORE_FILE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
+                setWssSslKeyStorePass(WSS_SSL_KEY_STORE_PASS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
+                setWssSslTrustStoreFile(WSS_SSL_TRUST_STORE_FILE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
+                setWssSslTrustStorePass(WSS_SSL_TRUST_STORE_PASS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
+                setWssSslCertPass(WSS_SSL_CERT_PASS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
+                setWsDefaultContentType(WS_DEFAULT_CONTENT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
+                setWsShutdownStatusCode(WS_SHUTDOWN_STATUS_CODE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
+                setWsShutdownStatusMessage(WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
+                setWsUsePortOffset(WS_USE_PORT_OFFSET_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
+                setWssSslProtocols(WSS_SSL_PROTOCOLS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
+                setWssSslCipherSuites(WSS_SSL_CIPHER_SUITES_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
+                setTransportRabbitMqConsumerQos(TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT);
+                return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
+                setTransportRabbitMqConsumerQosType(TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
-            return sequenceInputConnector != null;
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
-            return sequenceOutputConnector != null;
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
-            return onErrorSequenceInputConnector != null;
-        case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
-            return onErrorSequenceOutputConnector != null;
-        case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
-            return container != null;
-        case EsbPackage.INBOUND_ENDPOINT__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-        case EsbPackage.INBOUND_ENDPOINT__TYPE:
-            return type != TYPE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__CLASS:
-            return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
-        case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
-            return PROTOCOL_EDEFAULT == null ? protocol != null : !PROTOCOL_EDEFAULT.equals(protocol);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
-            return inboundEndpointBehaviour != INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
-            return INBOUND_HTTP_PORT_EDEFAULT == null ? inboundHttpPort != null
-                    : !INBOUND_HTTP_PORT_EDEFAULT.equals(inboundHttpPort);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
-            return INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT == null ? inboundWorkerPoolSizeCore != null
-                    : !INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT.equals(inboundWorkerPoolSizeCore);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
-            return INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT == null ? inboundWorkerPoolSizeMax != null
-                    : !INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT.equals(inboundWorkerPoolSizeMax);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
-            return INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT == null ? inboundWorkerThreadKeepAliveSec != null
-                    : !INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT.equals(inboundWorkerThreadKeepAliveSec);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
-            return INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT == null ? inboundWorkerPoolQueueLength != null
-                    : !INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT.equals(inboundWorkerPoolQueueLength);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
-            return INBOUND_THREAD_GROUP_ID_EDEFAULT == null ? inboundThreadGroupId != null
-                    : !INBOUND_THREAD_GROUP_ID_EDEFAULT.equals(inboundThreadGroupId);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
-            return INBOUND_THREAD_ID_EDEFAULT == null ? inboundThreadId != null
-                    : !INBOUND_THREAD_ID_EDEFAULT.equals(inboundThreadId);
-        case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
-            return DISPATCH_FILTER_PATTERN_EDEFAULT == null ? dispatchFilterPattern != null
-                    : !DISPATCH_FILTER_PATTERN_EDEFAULT.equals(dispatchFilterPattern);
-        case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
-            return INTERVAL_EDEFAULT == null ? interval != null : !INTERVAL_EDEFAULT.equals(interval);
-        case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
-            return sequential != SEQUENTIAL_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
-            return coordination != COORDINATION_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
-            return TRANSPORT_VFS_FILE_URI_EDEFAULT == null ? transportVFSFileURI != null
-                    : !TRANSPORT_VFS_FILE_URI_EDEFAULT.equals(transportVFSFileURI);
-        case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
-            return WSO2MB_CONNECTION_URL_EDEFAULT == null ? wso2mbConnectionUrl != null
-                    : !WSO2MB_CONNECTION_URL_EDEFAULT.equals(wso2mbConnectionUrl);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
-            return TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT == null ? transportVFSContentType != null
-                    : !TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT.equals(transportVFSContentType);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
-            return TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT == null ? transportVFSFileNamePattern != null
-                    : !TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT.equals(transportVFSFileNamePattern);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
-            return TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT == null ? transportVFSFileProcessInterval != null
-                    : !TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT.equals(transportVFSFileProcessInterval);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
-            return TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT == null ? transportVFSFileProcessCount != null
-                    : !TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT.equals(transportVFSFileProcessCount);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
-            return transportVFSLocking != TRANSPORT_VFS_LOCKING_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
-            return TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT == null ? transportVFSMaxRetryCount != null
-                    : !TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT.equals(transportVFSMaxRetryCount);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
-            return TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT == null ? transportVFSReconnectTimeout != null
-                    : !TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT.equals(transportVFSReconnectTimeout);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
-            return transportJMSSharedSubscription != TRANSPORT_JMS_SHARED_SUBSCRIPTION_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
-            return TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT == null ? transportJMSSubscriptionName != null
-                    : !TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT.equals(transportJMSSubscriptionName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
-            return TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT == null ? transportJMSPinnedServers != null
-                    : !TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT.equals(transportJMSPinnedServers);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
-            return transportVFSActionAfterProcess != TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
-            return TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT == null ? transportVFSMoveAfterProcess != null
-                    : !TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT.equals(transportVFSMoveAfterProcess);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
-            return transportVFSActionAfterErrors != TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
-            return TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT == null ? transportVFSMoveAfterErrors != null
-                    : !TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT.equals(transportVFSMoveAfterErrors);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
-            return transportVFSActionAfterFailure != TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
-            return TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT == null ? transportVFSMoveAfterFailure != null
-                    : !TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT.equals(transportVFSMoveAfterFailure);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
-            return transportVFSAutoLockRelease != TRANSPORT_VFS_AUTO_LOCK_RELEASE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
-            return TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT == null
-                    ? transportVFSAutoLockReleaseInterval != null
-                    : !TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT.equals(transportVFSAutoLockReleaseInterval);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
-            return transportVFSLockReleaseSameNode != TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
-            return transportVFSDistributedLock != TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
-            return transportVFSStreaming != TRANSPORT_VFS_STREAMING_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
-            return transportVFSBuild != TRANSPORT_VFS_BUILD_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
-            return TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT == null ? transportVFSDistributedTimeout != null
-                    : !TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT.equals(transportVFSDistributedTimeout);
-        case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
-            return JAVA_NAMING_FACTORY_INITIAL_EDEFAULT == null ? javaNamingFactoryInitial != null
-                    : !JAVA_NAMING_FACTORY_INITIAL_EDEFAULT.equals(javaNamingFactoryInitial);
-        case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
-            return JAVA_NAMING_PROVIDER_URL_EDEFAULT == null ? javaNamingProviderUrl != null
-                    : !JAVA_NAMING_PROVIDER_URL_EDEFAULT.equals(javaNamingProviderUrl);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
-            return TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT == null
-                    ? transportJMSConnectionFactoryJNDIName != null
-                    : !TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT
-                            .equals(transportJMSConnectionFactoryJNDIName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
-            return transportJMSConnectionFactoryType != TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
-            return TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT == null ? transportJMSConcurrentConsumers != null
-                    : !TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT.equals(transportJMSConcurrentConsumers);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
-            return TRANSPORT_JMS_DESTINATION_EDEFAULT == null ? transportJMSDestination != null
-                    : !TRANSPORT_JMS_DESTINATION_EDEFAULT.equals(transportJMSDestination);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
-            return transportJMSSessionTransacted != TRANSPORT_JMS_SESSION_TRANSACTED_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
-            return transportJMSSessionAcknowledgement != TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
-            return transportJMSCacheLevel != TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
-            return TRANSPORT_JMS_USER_NAME_EDEFAULT == null ? transportJMSUserName != null
-                    : !TRANSPORT_JMS_USER_NAME_EDEFAULT.equals(transportJMSUserName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
-            return TRANSPORT_JMS_PASSWORD_EDEFAULT == null ? transportJMSPassword != null
-                    : !TRANSPORT_JMS_PASSWORD_EDEFAULT.equals(transportJMSPassword);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
-            return TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT == null ? transportJMSJMSSpecVersion != null
-                    : !TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT.equals(transportJMSJMSSpecVersion);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
-            return TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT == null ? transportJMSSubscriptionDurable != null
-                    : !TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT.equals(transportJMSSubscriptionDurable);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
-            return TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT == null
-                    ? transportJMSDurableSubscriberClientID != null
-                    : !TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT
-                            .equals(transportJMSDurableSubscriberClientID);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
-            return TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT == null ? transportJMSMessageSelector != null
-                    : !TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT.equals(transportJMSMessageSelector);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
-            return TRANSPORT_JMS_RETRY_DURATION_EDEFAULT == null ? transportJMSRetryDuration != null
-                    : !TRANSPORT_JMS_RETRY_DURATION_EDEFAULT.equals(transportJMSRetryDuration);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
-            return TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT == null ? transportVFSMoveTimestampFormat != null
-                    : !TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT.equals(transportVFSMoveTimestampFormat);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
-            return transportVFSFileSortAttribute != TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
-            return transportVFSFileSortAscending != TRANSPORT_VFS_FILE_SORT_ASCENDING_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
-            return TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT == null
-                    ? transportVFSSubFolderTimestampFormat != null
-                    : !TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT.equals(transportVFSSubFolderTimestampFormat);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
-            return transportVFSCreateFolder != TRANSPORT_VFS_CREATE_FOLDER_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
-            return TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT == null ? transportJMSReceiveTimeout != null
-                    : !TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT.equals(transportJMSReceiveTimeout);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
-            return TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT == null ? transportJMSContentType != null
-                    : !TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT.equals(transportJMSContentType);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
-            return TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT == null ? transportJMSContentTypeProperty != null
-                    : !TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT.equals(transportJMSContentTypeProperty);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
-            return TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT == null ? transportJMSReplyDestination != null
-                    : !TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT.equals(transportJMSReplyDestination);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
-            return TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT == null ? transportJMSPubSubNoLocal != null
-                    : !TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT.equals(transportJMSPubSubNoLocal);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
-            return TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT == null ? transportJMSDurableSubscriberName != null
-                    : !TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT.equals(transportJMSDurableSubscriberName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
-            return transportJMSBrokerType != TRANSPORT_JMS_BROKER_TYPE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
-            return TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT == null ? transportMQTTConnectionFactory != null
-                    : !TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT.equals(transportMQTTConnectionFactory);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
-            return TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT == null ? transportMQTTServerHostName != null
-                    : !TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT.equals(transportMQTTServerHostName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
-            return TRANSPORT_MQTT_SERVER_PORT_EDEFAULT == null ? transportMQTTServerPort != null
-                    : !TRANSPORT_MQTT_SERVER_PORT_EDEFAULT.equals(transportMQTTServerPort);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
-            return TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT == null ? transportMQTTTopicName != null
-                    : !TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT.equals(transportMQTTTopicName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
-            return transportMQTTSubscriptionQOS != TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
-            return transportMQTTSessionClean != TRANSPORT_MQTT_SESSION_CLEAN_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
-            return TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT == null ? transportMQTTSslEnable != null
-                    : !TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT.equals(transportMQTTSslEnable);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
-            return TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT == null
-                    ? transportMQTTTemporaryStoreDirectory != null
-                    : !TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT.equals(transportMQTTTemporaryStoreDirectory);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
-            return TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT == null ? transportMQTTSubscriptionUsername != null
-                    : !TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT.equals(transportMQTTSubscriptionUsername);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
-            return TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT == null ? transportMQTTSubscriptionPassword != null
-                    : !TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT.equals(transportMQTTSubscriptionPassword);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
-            return TRANSPORT_MQTT_CLIENT_ID_EDEFAULT == null ? transportMQTTClientId != null
-                    : !TRANSPORT_MQTT_CLIENT_ID_EDEFAULT.equals(transportMQTTClientId);
-        case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
-            return TRUSTSTORE_EDEFAULT == null ? truststore != null : !TRUSTSTORE_EDEFAULT.equals(truststore);
-        case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
-            return KEYSTORE_EDEFAULT == null ? keystore != null : !KEYSTORE_EDEFAULT.equals(keystore);
-        case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
-            return SSL_VERIFY_CLIENT_EDEFAULT == null ? sslVerifyClient != null
-                    : !SSL_VERIFY_CLIENT_EDEFAULT.equals(sslVerifyClient);
-        case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
-            return SSL_PROTOCOL_EDEFAULT == null ? sslProtocol != null : !SSL_PROTOCOL_EDEFAULT.equals(sslProtocol);
-        case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
-            return HTTPS_PROTOCOLS_EDEFAULT == null ? httpsProtocols != null
-                    : !HTTPS_PROTOCOLS_EDEFAULT.equals(httpsProtocols);
-        case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
-            return CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT == null ? certificateRevocationVerifier != null
-                    : !CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT.equals(certificateRevocationVerifier);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
-            return INBOUND_HL7_PORT_EDEFAULT == null ? inboundHL7Port != null
-                    : !INBOUND_HL7_PORT_EDEFAULT.equals(inboundHL7Port);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
-            return inboundHL7AutoAck != INBOUND_HL7_AUTO_ACK_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
-            return INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT == null ? inboundHL7MessagePreProcessor != null
-                    : !INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT.equals(inboundHL7MessagePreProcessor);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
-            return INBOUND_HL7_CHAR_SET_EDEFAULT == null ? inboundHL7CharSet != null
-                    : !INBOUND_HL7_CHAR_SET_EDEFAULT.equals(inboundHL7CharSet);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
-            return INBOUND_HL7_TIME_OUT_EDEFAULT == null ? inboundHL7TimeOut != null
-                    : !INBOUND_HL7_TIME_OUT_EDEFAULT.equals(inboundHL7TimeOut);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
-            return inboundHL7ValidateMessage != INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
-            return inboundHL7BuildInvalidMessages != INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
-            return inboundHL7PassThroughInvalidMessages != INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
-            return ZOOKEEPER_CONNECT_EDEFAULT == null ? zookeeperConnect != null
-                    : !ZOOKEEPER_CONNECT_EDEFAULT.equals(zookeeperConnect);
-        case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
-            return GROUP_ID_EDEFAULT == null ? groupId != null : !GROUP_ID_EDEFAULT.equals(groupId);
-        case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
-            return CONTENT_TYPE_EDEFAULT == null ? contentType != null : !CONTENT_TYPE_EDEFAULT.equals(contentType);
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
-            return consumerType != CONSUMER_TYPE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
-            return topicsOrTopicFilter != TOPICS_OR_TOPIC_FILTER_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
-            return TOPICS_NAME_EDEFAULT == null ? topicsName != null : !TOPICS_NAME_EDEFAULT.equals(topicsName);
-        case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
-            return topicFilterFrom != TOPIC_FILTER_FROM_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
-            return TOPIC_FILTER_NAME_EDEFAULT == null ? topicFilterName != null
-                    : !TOPIC_FILTER_NAME_EDEFAULT.equals(topicFilterName);
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
-            return SIMPLE_CONSUMER_TOPIC_EDEFAULT == null ? simpleConsumerTopic != null
-                    : !SIMPLE_CONSUMER_TOPIC_EDEFAULT.equals(simpleConsumerTopic);
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
-            return SIMPLE_CONSUMER_BROKERS_EDEFAULT == null ? simpleConsumerBrokers != null
-                    : !SIMPLE_CONSUMER_BROKERS_EDEFAULT.equals(simpleConsumerBrokers);
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
-            return SIMPLE_CONSUMER_PORT_EDEFAULT == null ? simpleConsumerPort != null
-                    : !SIMPLE_CONSUMER_PORT_EDEFAULT.equals(simpleConsumerPort);
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
-            return SIMPLE_CONSUMER_PARTITION_EDEFAULT == null ? simpleConsumerPartition != null
-                    : !SIMPLE_CONSUMER_PARTITION_EDEFAULT.equals(simpleConsumerPartition);
-        case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
-            return SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT == null ? simpleConsumerMaxMessagesToRead != null
-                    : !SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT.equals(simpleConsumerMaxMessagesToRead);
-        case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
-            return THREAD_COUNT_EDEFAULT == null ? threadCount != null : !THREAD_COUNT_EDEFAULT.equals(threadCount);
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
-            return CONSUMER_ID_EDEFAULT == null ? consumerId != null : !CONSUMER_ID_EDEFAULT.equals(consumerId);
-        case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
-            return SOCKET_TIMEOUT_MS_EDEFAULT == null ? socketTimeoutMs != null
-                    : !SOCKET_TIMEOUT_MS_EDEFAULT.equals(socketTimeoutMs);
-        case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
-            return SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT == null ? socketReceiveBufferBytes != null
-                    : !SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT.equals(socketReceiveBufferBytes);
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
-            return FETCH_MESSAGE_MAX_BYTES_EDEFAULT == null ? fetchMessageMaxBytes != null
-                    : !FETCH_MESSAGE_MAX_BYTES_EDEFAULT.equals(fetchMessageMaxBytes);
-        case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
-            return NUM_CONSUMER_FETCHES_EDEFAULT == null ? numConsumerFetches != null
-                    : !NUM_CONSUMER_FETCHES_EDEFAULT.equals(numConsumerFetches);
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
-            return autoCommitEnable != AUTO_COMMIT_ENABLE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
-            return AUTO_COMMIT_INTERVAL_MS_EDEFAULT == null ? autoCommitIntervalMs != null
-                    : !AUTO_COMMIT_INTERVAL_MS_EDEFAULT.equals(autoCommitIntervalMs);
-        case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
-            return QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT == null ? queuedMaxMessageChunks != null
-                    : !QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT.equals(queuedMaxMessageChunks);
-        case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
-            return REBALANCE_MAX_RETRIES_EDEFAULT == null ? rebalanceMaxRetries != null
-                    : !REBALANCE_MAX_RETRIES_EDEFAULT.equals(rebalanceMaxRetries);
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
-            return FETCH_MIN_BYTES_EDEFAULT == null ? fetchMinBytes != null
-                    : !FETCH_MIN_BYTES_EDEFAULT.equals(fetchMinBytes);
-        case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
-            return FETCH_WAIT_MAX_MS_EDEFAULT == null ? fetchWaitMaxMs != null
-                    : !FETCH_WAIT_MAX_MS_EDEFAULT.equals(fetchWaitMaxMs);
-        case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
-            return REBALANCE_BACKOFF_MS_EDEFAULT == null ? rebalanceBackoffMs != null
-                    : !REBALANCE_BACKOFF_MS_EDEFAULT.equals(rebalanceBackoffMs);
-        case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
-            return REFRESH_LEADER_BACKOFF_MS_EDEFAULT == null ? refreshLeaderBackoffMs != null
-                    : !REFRESH_LEADER_BACKOFF_MS_EDEFAULT.equals(refreshLeaderBackoffMs);
-        case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
-            return autoOffsetReset != AUTO_OFFSET_RESET_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
-            return CONSUMER_TIMEOUT_MS_EDEFAULT == null ? consumerTimeoutMs != null
-                    : !CONSUMER_TIMEOUT_MS_EDEFAULT.equals(consumerTimeoutMs);
-        case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
-            return excludeInternalTopics != EXCLUDE_INTERNAL_TOPICS_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
-            return partitionAssignmentStrategy != PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
-            return CLIENT_ID_EDEFAULT == null ? clientId != null : !CLIENT_ID_EDEFAULT.equals(clientId);
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
-            return ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT == null ? zookeeperSessionTimeoutMs != null
-                    : !ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT.equals(zookeeperSessionTimeoutMs);
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
-            return ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT == null ? zookeeperConnectionTimeoutMs != null
-                    : !ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT.equals(zookeeperConnectionTimeoutMs);
-        case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
-            return ZOOKEEPER_SYNC_TIME_MS_EDEFAULT == null ? zookeeperSyncTimeMs != null
-                    : !ZOOKEEPER_SYNC_TIME_MS_EDEFAULT.equals(zookeeperSyncTimeMs);
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
-            return offsetsStorage != OFFSETS_STORAGE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
-            return OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT == null ? offsetsChannelBackoffMs != null
-                    : !OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT.equals(offsetsChannelBackoffMs);
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
-            return OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT == null ? offsetsChannelSocketTimeoutMs != null
-                    : !OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT.equals(offsetsChannelSocketTimeoutMs);
-        case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
-            return OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT == null ? offsetsCommitMaxRetries != null
-                    : !OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT.equals(offsetsCommitMaxRetries);
-        case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
-            return dualCommitEnabled != DUAL_COMMIT_ENABLED_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
-            return INBOUND_CXF_RM_HOST_EDEFAULT == null ? inboundCxfRmHost != null
-                    : !INBOUND_CXF_RM_HOST_EDEFAULT.equals(inboundCxfRmHost);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
-            return INBOUND_CXF_RM_PORT_EDEFAULT == null ? inboundCxfRmPort != null
-                    : !INBOUND_CXF_RM_PORT_EDEFAULT.equals(inboundCxfRmPort);
-        case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
-            return INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT == null ? inboundCxfRmConfigFile != null
-                    : !INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT.equals(inboundCxfRmConfigFile);
-        case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
-            return enableSSL != ENABLE_SSL_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-            return serviceParameters != null && !serviceParameters.isEmpty();
-        case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
-            return suspend != SUSPEND_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT == null ? transportRabbitMqConnectionFactory != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT.equals(transportRabbitMqConnectionFactory);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
-            return TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT == null ? transportRabbitMqServerHostName != null
-                    : !TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT.equals(transportRabbitMqServerHostName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
-            return TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT == null ? transportRabbitMqServerPort != null
-                    : !TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT.equals(transportRabbitMqServerPort);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
-            return TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT == null ? transportRabbitMqServerUserName != null
-                    : !TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT.equals(transportRabbitMqServerUserName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
-            return TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT == null ? transportRabbitMqServerPassword != null
-                    : !TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT.equals(transportRabbitMqServerPassword);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
-            return TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT == null ? transportRabbitMqQueueName != null
-                    : !TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT.equals(transportRabbitMqQueueName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
-            return TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT == null ? transportRabbitMqExchangeName != null
-                    : !TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT.equals(transportRabbitMqExchangeName);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
-            return TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT == null ? transportRabbitMqQueueDurable != null
-                    : !TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT.equals(transportRabbitMqQueueDurable);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
-            return TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT == null ? transportRabbitMqQueueExclusive != null
-                    : !TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT.equals(transportRabbitMqQueueExclusive);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
-            return TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT == null ? transportRabbitMqQueueAutoDelete != null
-                    : !TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT.equals(transportRabbitMqQueueAutoDelete);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
-            return TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT == null ? transportRabbitMqQueueAutoAck != null
-                    : !TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT.equals(transportRabbitMqQueueAutoAck);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
-            return TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT == null ? transportRabbitMqQueueRoutingKey != null
-                    : !TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT.equals(transportRabbitMqQueueRoutingKey);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
-            return TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT == null ? transportRabbitMqQueueDeliveryMode != null
-                    : !TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT.equals(transportRabbitMqQueueDeliveryMode);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
-            return TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT == null ? transportRabbitMqExchangeType != null
-                    : !TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT.equals(transportRabbitMqExchangeType);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
-            return TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT == null ? transportRabbitMqExchangeDurable != null
-                    : !TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT.equals(transportRabbitMqExchangeDurable);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
-            return TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT == null
-                    ? transportRabbitMqExchangeAutoDelete != null
-                    : !TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT.equals(transportRabbitMqExchangeAutoDelete);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
-            return TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT == null ? transportRabbitMqServerVirtualHost != null
-                    : !TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT.equals(transportRabbitMqServerVirtualHost);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
-            return TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT == null ? transportRabbitMqFactoryHeartbeat != null
-                    : !TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT.equals(transportRabbitMqFactoryHeartbeat);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT == null
-                    ? transportRabbitMqConnectionSslEnabled != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT
-                            .equals(transportRabbitMqConnectionSslEnabled);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT == null
-                    ? transportRabbitMqConnectionSslKeystoreLocation != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT
-                            .equals(transportRabbitMqConnectionSslKeystoreLocation);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT == null
-                    ? transportRabbitMqConnectionSslKeystoreType != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT
-                            .equals(transportRabbitMqConnectionSslKeystoreType);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT == null
-                    ? transportRabbitMqConnectionSslKeystorePassword != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT
-                            .equals(transportRabbitMqConnectionSslKeystorePassword);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT == null
-                    ? transportRabbitMqConnectionSslTruststoreLocation != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT
-                            .equals(transportRabbitMqConnectionSslTruststoreLocation);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT == null
-                    ? transportRabbitMqConnectionSslTruststoreType != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT
-                            .equals(transportRabbitMqConnectionSslTruststoreType);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT == null
-                    ? transportRabbitMqConnectionSslTruststorePassword != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT
-                            .equals(transportRabbitMqConnectionSslTruststorePassword);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT == null
-                    ? transportRabbitMqConnectionSslVersion != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT
-                            .equals(transportRabbitMqConnectionSslVersion);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
-            return TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT == null
-                    ? transportRabbitMqMessageContentType != null
-                    : !TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT.equals(transportRabbitMqMessageContentType);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT == null
-                    ? transportRabbitMqConnectionRetryCount != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT
-                            .equals(transportRabbitMqConnectionRetryCount);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
-            return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT == null
-                    ? transportRabbitMqConnectionRetryInterval != null
-                    : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT
-                            .equals(transportRabbitMqConnectionRetryInterval);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
-            return TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT == null
-                    ? transportRabbitMqServerRetryInterval != null
-                    : !TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqServerRetryInterval);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
-            return transportRabbitMqConsumerQosKey != null;
-        case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
-            return WS_INBOUND_PORT_EDEFAULT == null ? wsInboundPort != null
-                    : !WS_INBOUND_PORT_EDEFAULT.equals(wsInboundPort);
-        case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
-            return wsClientSideBroadcastLevel != WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
-            return WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT == null ? wsOutflowDispatchSequence != null
-                    : !WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT.equals(wsOutflowDispatchSequence);
-        case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
-            return WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT == null ? wsOutflowDispatchFaultSequence != null
-                    : !WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT.equals(wsOutflowDispatchFaultSequence);
-        case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
-            return WS_BOSS_THREAD_POOL_SIZE_EDEFAULT == null ? wsBossThreadPoolSize != null
-                    : !WS_BOSS_THREAD_POOL_SIZE_EDEFAULT.equals(wsBossThreadPoolSize);
-        case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
-            return WS_WORKER_THREAD_POOL_SIZE_EDEFAULT == null ? wsWorkerThreadPoolSize != null
-                    : !WS_WORKER_THREAD_POOL_SIZE_EDEFAULT.equals(wsWorkerThreadPoolSize);
-        case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
-            return WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT == null ? wsSubprotocolHandlerClass != null
-                    : !WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT.equals(wsSubprotocolHandlerClass);
-        case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
-            return WS_PIPELINE_HANDLER_CLASS_EDEFAULT == null ? wsPipelineHandlerClass != null
-                    : !WS_PIPELINE_HANDLER_CLASS_EDEFAULT.equals(wsPipelineHandlerClass);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
-            return TRANSPORT_FEED_URL_EDEFAULT == null ? transportFeedURL != null
-                    : !TRANSPORT_FEED_URL_EDEFAULT.equals(transportFeedURL);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
-            return transportFeedType != TRANSPORT_FEED_TYPE_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
-            return traceEnabled != TRACE_ENABLED_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
-            return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
-            return TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT == null
-                    ? transportJMSRetriesBeforeSuspension != null
-                    : !TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT.equals(transportJMSRetriesBeforeSuspension);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
-            return transportJMSResetConnectionOnPollingSuspension != TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
-            return TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT == null
-                    ? transportJMSPollingSuspensionPeriod != null
-                    : !TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT.equals(transportJMSPollingSuspensionPeriod);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
-            return TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT == null ? transportMQTTSslKeystoreLocation != null
-                    : !TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT.equals(transportMQTTSslKeystoreLocation);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
-            return TRANSPORT_MQTT_SSL_KEYSTORE_TYPE_EDEFAULT == null ? transportMQTTSslKeystoreType != null
-                    : !TRANSPORT_MQTT_SSL_KEYSTORE_TYPE_EDEFAULT.equals(transportMQTTSslKeystoreType);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD:
-            return TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD_EDEFAULT == null ? transportMQTTSslKeystorePassword != null
-                    : !TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD_EDEFAULT.equals(transportMQTTSslKeystorePassword);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION:
-            return TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION_EDEFAULT == null ? transportMQTTSslTruststoreLocation != null
-                    : !TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION_EDEFAULT.equals(transportMQTTSslTruststoreLocation);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE:
-            return TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE_EDEFAULT == null ? transportMQTTSslTruststoreType != null
-                    : !TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE_EDEFAULT.equals(transportMQTTSslTruststoreType);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD:
-            return TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT == null ? transportMQTTSslTruststorePassword != null
-                    : !TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT.equals(transportMQTTSslTruststorePassword);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
-            return TRANSPORT_MQTT_SSL_VERSION_EDEFAULT == null ? transportMQTTSslVersion != null
-                    : !TRANSPORT_MQTT_SSL_VERSION_EDEFAULT.equals(transportMQTTSslVersion);
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
-            return WSS_SSL_KEY_STORE_FILE_EDEFAULT == null ? wssSslKeyStoreFile != null
-                    : !WSS_SSL_KEY_STORE_FILE_EDEFAULT.equals(wssSslKeyStoreFile);
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
-            return WSS_SSL_KEY_STORE_PASS_EDEFAULT == null ? wssSslKeyStorePass != null
-                    : !WSS_SSL_KEY_STORE_PASS_EDEFAULT.equals(wssSslKeyStorePass);
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
-            return WSS_SSL_TRUST_STORE_FILE_EDEFAULT == null ? wssSslTrustStoreFile != null
-                    : !WSS_SSL_TRUST_STORE_FILE_EDEFAULT.equals(wssSslTrustStoreFile);
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
-            return WSS_SSL_TRUST_STORE_PASS_EDEFAULT == null ? wssSslTrustStorePass != null
-                    : !WSS_SSL_TRUST_STORE_PASS_EDEFAULT.equals(wssSslTrustStorePass);
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
-            return WSS_SSL_CERT_PASS_EDEFAULT == null ? wssSslCertPass != null
-                    : !WSS_SSL_CERT_PASS_EDEFAULT.equals(wssSslCertPass);
-        case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
-            return WS_DEFAULT_CONTENT_TYPE_EDEFAULT == null ? wsDefaultContentType != null
-                    : !WS_DEFAULT_CONTENT_TYPE_EDEFAULT.equals(wsDefaultContentType);
-        case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
-            return WS_SHUTDOWN_STATUS_CODE_EDEFAULT == null ? wsShutdownStatusCode != null
-                    : !WS_SHUTDOWN_STATUS_CODE_EDEFAULT.equals(wsShutdownStatusCode);
-        case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
-            return WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT == null ? wsShutdownStatusMessage != null
-                    : !WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT.equals(wsShutdownStatusMessage);
-        case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
-            return wsUsePortOffset != WS_USE_PORT_OFFSET_EDEFAULT;
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
-            return WSS_SSL_PROTOCOLS_EDEFAULT == null ? wssSslProtocols != null
-                    : !WSS_SSL_PROTOCOLS_EDEFAULT.equals(wssSslProtocols);
-        case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
-            return WSS_SSL_CIPHER_SUITES_EDEFAULT == null ? wssSslCipherSuites != null
-                    : !WSS_SSL_CIPHER_SUITES_EDEFAULT.equals(wssSslCipherSuites);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
-            return TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT == null ? transportRabbitMqConsumerQos != null
-                    : !TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT.equals(transportRabbitMqConsumerQos);
-        case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
-            return transportRabbitMqConsumerQosType != TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
+                return sequenceInputConnector != null;
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR:
+                return sequenceOutputConnector != null;
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
+                return onErrorSequenceInputConnector != null;
+            case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
+                return onErrorSequenceOutputConnector != null;
+            case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
+                return container != null;
+            case EsbPackage.INBOUND_ENDPOINT__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case EsbPackage.INBOUND_ENDPOINT__TYPE:
+                return type != TYPE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__CLASS:
+                return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
+            case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
+                return PROTOCOL_EDEFAULT == null ? protocol != null : !PROTOCOL_EDEFAULT.equals(protocol);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_ENDPOINT_BEHAVIOUR:
+                return inboundEndpointBehaviour != INBOUND_ENDPOINT_BEHAVIOUR_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
+                return INBOUND_HTTP_PORT_EDEFAULT == null ? inboundHttpPort != null : !INBOUND_HTTP_PORT_EDEFAULT.equals(inboundHttpPort);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_CORE:
+                return INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT == null ? inboundWorkerPoolSizeCore != null : !INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT.equals(inboundWorkerPoolSizeCore);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_SIZE_MAX:
+                return INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT == null ? inboundWorkerPoolSizeMax != null : !INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT.equals(inboundWorkerPoolSizeMax);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC:
+                return INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT == null ? inboundWorkerThreadKeepAliveSec != null : !INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT.equals(inboundWorkerThreadKeepAliveSec);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_WORKER_POOL_QUEUE_LENGTH:
+                return INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT == null ? inboundWorkerPoolQueueLength != null : !INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT.equals(inboundWorkerPoolQueueLength);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_GROUP_ID:
+                return INBOUND_THREAD_GROUP_ID_EDEFAULT == null ? inboundThreadGroupId != null : !INBOUND_THREAD_GROUP_ID_EDEFAULT.equals(inboundThreadGroupId);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_THREAD_ID:
+                return INBOUND_THREAD_ID_EDEFAULT == null ? inboundThreadId != null : !INBOUND_THREAD_ID_EDEFAULT.equals(inboundThreadId);
+            case EsbPackage.INBOUND_ENDPOINT__DISPATCH_FILTER_PATTERN:
+                return DISPATCH_FILTER_PATTERN_EDEFAULT == null ? dispatchFilterPattern != null : !DISPATCH_FILTER_PATTERN_EDEFAULT.equals(dispatchFilterPattern);
+            case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
+                return INTERVAL_EDEFAULT == null ? interval != null : !INTERVAL_EDEFAULT.equals(interval);
+            case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
+                return sequential != SEQUENTIAL_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
+                return coordination != COORDINATION_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
+                return TRANSPORT_VFS_FILE_URI_EDEFAULT == null ? transportVFSFileURI != null : !TRANSPORT_VFS_FILE_URI_EDEFAULT.equals(transportVFSFileURI);
+            case EsbPackage.INBOUND_ENDPOINT__WSO2MB_CONNECTION_URL:
+                return WSO2MB_CONNECTION_URL_EDEFAULT == null ? wso2mbConnectionUrl != null : !WSO2MB_CONNECTION_URL_EDEFAULT.equals(wso2mbConnectionUrl);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
+                return TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT == null ? transportVFSContentType != null : !TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT.equals(transportVFSContentType);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
+                return TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT == null ? transportVFSFileNamePattern != null : !TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT.equals(transportVFSFileNamePattern);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
+                return TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT == null ? transportVFSFileProcessInterval != null : !TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT.equals(transportVFSFileProcessInterval);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
+                return TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT == null ? transportVFSFileProcessCount != null : !TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT.equals(transportVFSFileProcessCount);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
+                return transportVFSLocking != TRANSPORT_VFS_LOCKING_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
+                return TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT == null ? transportVFSMaxRetryCount != null : !TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT.equals(transportVFSMaxRetryCount);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE:
+                return TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE_EDEFAULT == null ? transportVFSMoveAfterFailedMove != null : !TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE_EDEFAULT.equals(transportVFSMoveAfterFailedMove);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
+                return TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT == null ? transportVFSReconnectTimeout != null : !TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT.equals(transportVFSReconnectTimeout);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SHARED_SUBSCRIPTION:
+                return transportJMSSharedSubscription != TRANSPORT_JMS_SHARED_SUBSCRIPTION_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_NAME:
+                return TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT == null ? transportJMSSubscriptionName != null : !TRANSPORT_JMS_SUBSCRIPTION_NAME_EDEFAULT.equals(transportJMSSubscriptionName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PINNED_SERVERS:
+                return TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT == null ? transportJMSPinnedServers != null : !TRANSPORT_JMS_PINNED_SERVERS_EDEFAULT.equals(transportJMSPinnedServers);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
+                return transportVFSActionAfterProcess != TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
+                return TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT == null ? transportVFSMoveAfterProcess != null : !TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT.equals(transportVFSMoveAfterProcess);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
+                return transportVFSActionAfterErrors != TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
+                return TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT == null ? transportVFSMoveAfterErrors != null : !TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT.equals(transportVFSMoveAfterErrors);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME:
+                return TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME_EDEFAULT == null ? transportVFSFailedRecordsFileName != null : !TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME_EDEFAULT.equals(transportVFSFailedRecordsFileName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION:
+                return TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION_EDEFAULT == null ? transportVFSFailedRecordsFileDestination != null : !TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION_EDEFAULT.equals(transportVFSFailedRecordsFileDestination);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT:
+                return TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT_EDEFAULT == null ? transportVFSMoveFailedRecordTimestampFormat != null : !TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT_EDEFAULT.equals(transportVFSMoveFailedRecordTimestampFormat);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION:
+                return TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION_EDEFAULT == null ? transportVFSFailedRecordNextRetryDuration != null : !TRANSPORT_VFS_FAILED_RECORD_NEXT_RETRY_DURATION_EDEFAULT.equals(transportVFSFailedRecordNextRetryDuration);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
+                return transportVFSActionAfterFailure != TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
+                return TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT == null ? transportVFSMoveAfterFailure != null : !TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT.equals(transportVFSMoveAfterFailure);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_URI:
+                return TRANSPORT_VFS_REPLY_FILE_URI_EDEFAULT == null ? transportVFSReplyFileURI != null : !TRANSPORT_VFS_REPLY_FILE_URI_EDEFAULT.equals(transportVFSReplyFileURI);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_NAME:
+                return TRANSPORT_VFS_REPLY_FILE_NAME_EDEFAULT == null ? transportVFSReplyFileName != null : !TRANSPORT_VFS_REPLY_FILE_NAME_EDEFAULT.equals(transportVFSReplyFileName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
+                return transportVFSAutoLockRelease != TRANSPORT_VFS_AUTO_LOCK_RELEASE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
+                return TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT == null ? transportVFSAutoLockReleaseInterval != null : !TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT.equals(transportVFSAutoLockReleaseInterval);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
+                return transportVFSLockReleaseSameNode != TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
+                return transportVFSDistributedLock != TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_STREAMING:
+                return transportVFSStreaming != TRANSPORT_VFS_STREAMING_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_BUILD:
+                return transportVFSBuild != TRANSPORT_VFS_BUILD_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
+                return TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT == null ? transportVFSDistributedTimeout != null : !TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT.equals(transportVFSDistributedTimeout);
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
+                return JAVA_NAMING_FACTORY_INITIAL_EDEFAULT == null ? javaNamingFactoryInitial != null : !JAVA_NAMING_FACTORY_INITIAL_EDEFAULT.equals(javaNamingFactoryInitial);
+            case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
+                return JAVA_NAMING_PROVIDER_URL_EDEFAULT == null ? javaNamingProviderUrl != null : !JAVA_NAMING_PROVIDER_URL_EDEFAULT.equals(javaNamingProviderUrl);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
+                return TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT == null ? transportJMSConnectionFactoryJNDIName != null : !TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT.equals(transportJMSConnectionFactoryJNDIName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
+                return transportJMSConnectionFactoryType != TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONCURRENT_CONSUMERS:
+                return TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT == null ? transportJMSConcurrentConsumers != null : !TRANSPORT_JMS_CONCURRENT_CONSUMERS_EDEFAULT.equals(transportJMSConcurrentConsumers);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
+                return TRANSPORT_JMS_DESTINATION_EDEFAULT == null ? transportJMSDestination != null : !TRANSPORT_JMS_DESTINATION_EDEFAULT.equals(transportJMSDestination);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
+                return transportJMSSessionTransacted != TRANSPORT_JMS_SESSION_TRANSACTED_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
+                return transportJMSSessionAcknowledgement != TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
+                return transportJMSCacheLevel != TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
+                return TRANSPORT_JMS_USER_NAME_EDEFAULT == null ? transportJMSUserName != null : !TRANSPORT_JMS_USER_NAME_EDEFAULT.equals(transportJMSUserName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
+                return TRANSPORT_JMS_PASSWORD_EDEFAULT == null ? transportJMSPassword != null : !TRANSPORT_JMS_PASSWORD_EDEFAULT.equals(transportJMSPassword);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
+                return TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT == null ? transportJMSJMSSpecVersion != null : !TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT.equals(transportJMSJMSSpecVersion);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
+                return TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT == null ? transportJMSSubscriptionDurable != null : !TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT.equals(transportJMSSubscriptionDurable);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
+                return TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT == null ? transportJMSDurableSubscriberClientID != null : !TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT.equals(transportJMSDurableSubscriberClientID);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
+                return TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT == null ? transportJMSMessageSelector != null : !TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT.equals(transportJMSMessageSelector);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRY_DURATION:
+                return TRANSPORT_JMS_RETRY_DURATION_EDEFAULT == null ? transportJMSRetryDuration != null : !TRANSPORT_JMS_RETRY_DURATION_EDEFAULT.equals(transportJMSRetryDuration);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
+                return TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT == null ? transportVFSMoveTimestampFormat != null : !TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT.equals(transportVFSMoveTimestampFormat);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
+                return transportVFSFileSortAttribute != TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
+                return transportVFSFileSortAscending != TRANSPORT_VFS_FILE_SORT_ASCENDING_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
+                return TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT == null ? transportVFSSubFolderTimestampFormat != null : !TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT.equals(transportVFSSubFolderTimestampFormat);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
+                return transportVFSCreateFolder != TRANSPORT_VFS_CREATE_FOLDER_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
+                return TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT == null ? transportJMSReceiveTimeout != null : !TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT.equals(transportJMSReceiveTimeout);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
+                return TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT == null ? transportJMSContentType != null : !TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT.equals(transportJMSContentType);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE_PROPERTY:
+                return TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT == null ? transportJMSContentTypeProperty != null : !TRANSPORT_JMS_CONTENT_TYPE_PROPERTY_EDEFAULT.equals(transportJMSContentTypeProperty);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_REPLY_DESTINATION:
+                return TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT == null ? transportJMSReplyDestination != null : !TRANSPORT_JMS_REPLY_DESTINATION_EDEFAULT.equals(transportJMSReplyDestination);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PUB_SUB_NO_LOCAL:
+                return TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT == null ? transportJMSPubSubNoLocal != null : !TRANSPORT_JMS_PUB_SUB_NO_LOCAL_EDEFAULT.equals(transportJMSPubSubNoLocal);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME:
+                return TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT == null ? transportJMSDurableSubscriberName != null : !TRANSPORT_JMS_DURABLE_SUBSCRIBER_NAME_EDEFAULT.equals(transportJMSDurableSubscriberName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_BROKER_TYPE:
+                return transportJMSBrokerType != TRANSPORT_JMS_BROKER_TYPE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CONNECTION_FACTORY:
+                return TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT == null ? transportMQTTConnectionFactory != null : !TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT.equals(transportMQTTConnectionFactory);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_HOST_NAME:
+                return TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT == null ? transportMQTTServerHostName != null : !TRANSPORT_MQTT_SERVER_HOST_NAME_EDEFAULT.equals(transportMQTTServerHostName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SERVER_PORT:
+                return TRANSPORT_MQTT_SERVER_PORT_EDEFAULT == null ? transportMQTTServerPort != null : !TRANSPORT_MQTT_SERVER_PORT_EDEFAULT.equals(transportMQTTServerPort);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TOPIC_NAME:
+                return TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT == null ? transportMQTTTopicName != null : !TRANSPORT_MQTT_TOPIC_NAME_EDEFAULT.equals(transportMQTTTopicName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_QOS:
+                return transportMQTTSubscriptionQOS != TRANSPORT_MQTT_SUBSCRIPTION_QOS_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SESSION_CLEAN:
+                return transportMQTTSessionClean != TRANSPORT_MQTT_SESSION_CLEAN_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_ENABLE:
+                return TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT == null ? transportMQTTSslEnable != null : !TRANSPORT_MQTT_SSL_ENABLE_EDEFAULT.equals(transportMQTTSslEnable);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY:
+                return TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT == null ? transportMQTTTemporaryStoreDirectory != null : !TRANSPORT_MQTT_TEMPORARY_STORE_DIRECTORY_EDEFAULT.equals(transportMQTTTemporaryStoreDirectory);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_USERNAME:
+                return TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT == null ? transportMQTTSubscriptionUsername != null : !TRANSPORT_MQTT_SUBSCRIPTION_USERNAME_EDEFAULT.equals(transportMQTTSubscriptionUsername);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD:
+                return TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT == null ? transportMQTTSubscriptionPassword != null : !TRANSPORT_MQTT_SUBSCRIPTION_PASSWORD_EDEFAULT.equals(transportMQTTSubscriptionPassword);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_CLIENT_ID:
+                return TRANSPORT_MQTT_CLIENT_ID_EDEFAULT == null ? transportMQTTClientId != null : !TRANSPORT_MQTT_CLIENT_ID_EDEFAULT.equals(transportMQTTClientId);
+            case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
+                return TRUSTSTORE_EDEFAULT == null ? truststore != null : !TRUSTSTORE_EDEFAULT.equals(truststore);
+            case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
+                return KEYSTORE_EDEFAULT == null ? keystore != null : !KEYSTORE_EDEFAULT.equals(keystore);
+            case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
+                return SSL_VERIFY_CLIENT_EDEFAULT == null ? sslVerifyClient != null : !SSL_VERIFY_CLIENT_EDEFAULT.equals(sslVerifyClient);
+            case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
+                return SSL_PROTOCOL_EDEFAULT == null ? sslProtocol != null : !SSL_PROTOCOL_EDEFAULT.equals(sslProtocol);
+            case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
+                return HTTPS_PROTOCOLS_EDEFAULT == null ? httpsProtocols != null : !HTTPS_PROTOCOLS_EDEFAULT.equals(httpsProtocols);
+            case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
+                return CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT == null ? certificateRevocationVerifier != null : !CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT.equals(certificateRevocationVerifier);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
+                return INBOUND_HL7_PORT_EDEFAULT == null ? inboundHL7Port != null : !INBOUND_HL7_PORT_EDEFAULT.equals(inboundHL7Port);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
+                return inboundHL7AutoAck != INBOUND_HL7_AUTO_ACK_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
+                return INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT == null ? inboundHL7MessagePreProcessor != null : !INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT.equals(inboundHL7MessagePreProcessor);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
+                return INBOUND_HL7_CHAR_SET_EDEFAULT == null ? inboundHL7CharSet != null : !INBOUND_HL7_CHAR_SET_EDEFAULT.equals(inboundHL7CharSet);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
+                return INBOUND_HL7_TIME_OUT_EDEFAULT == null ? inboundHL7TimeOut != null : !INBOUND_HL7_TIME_OUT_EDEFAULT.equals(inboundHL7TimeOut);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
+                return inboundHL7ValidateMessage != INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
+                return inboundHL7BuildInvalidMessages != INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
+                return inboundHL7PassThroughInvalidMessages != INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
+                return ZOOKEEPER_CONNECT_EDEFAULT == null ? zookeeperConnect != null : !ZOOKEEPER_CONNECT_EDEFAULT.equals(zookeeperConnect);
+            case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
+                return GROUP_ID_EDEFAULT == null ? groupId != null : !GROUP_ID_EDEFAULT.equals(groupId);
+            case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
+                return CONTENT_TYPE_EDEFAULT == null ? contentType != null : !CONTENT_TYPE_EDEFAULT.equals(contentType);
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+                return consumerType != CONSUMER_TYPE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TOPICS_OR_TOPIC_FILTER:
+                return topicsOrTopicFilter != TOPICS_OR_TOPIC_FILTER_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TOPICS_NAME:
+                return TOPICS_NAME_EDEFAULT == null ? topicsName != null : !TOPICS_NAME_EDEFAULT.equals(topicsName);
+            case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_FROM:
+                return topicFilterFrom != TOPIC_FILTER_FROM_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TOPIC_FILTER_NAME:
+                return TOPIC_FILTER_NAME_EDEFAULT == null ? topicFilterName != null : !TOPIC_FILTER_NAME_EDEFAULT.equals(topicFilterName);
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_TOPIC:
+                return SIMPLE_CONSUMER_TOPIC_EDEFAULT == null ? simpleConsumerTopic != null : !SIMPLE_CONSUMER_TOPIC_EDEFAULT.equals(simpleConsumerTopic);
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_BROKERS:
+                return SIMPLE_CONSUMER_BROKERS_EDEFAULT == null ? simpleConsumerBrokers != null : !SIMPLE_CONSUMER_BROKERS_EDEFAULT.equals(simpleConsumerBrokers);
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PORT:
+                return SIMPLE_CONSUMER_PORT_EDEFAULT == null ? simpleConsumerPort != null : !SIMPLE_CONSUMER_PORT_EDEFAULT.equals(simpleConsumerPort);
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_PARTITION:
+                return SIMPLE_CONSUMER_PARTITION_EDEFAULT == null ? simpleConsumerPartition != null : !SIMPLE_CONSUMER_PARTITION_EDEFAULT.equals(simpleConsumerPartition);
+            case EsbPackage.INBOUND_ENDPOINT__SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ:
+                return SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT == null ? simpleConsumerMaxMessagesToRead != null : !SIMPLE_CONSUMER_MAX_MESSAGES_TO_READ_EDEFAULT.equals(simpleConsumerMaxMessagesToRead);
+            case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
+                return THREAD_COUNT_EDEFAULT == null ? threadCount != null : !THREAD_COUNT_EDEFAULT.equals(threadCount);
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_ID:
+                return CONSUMER_ID_EDEFAULT == null ? consumerId != null : !CONSUMER_ID_EDEFAULT.equals(consumerId);
+            case EsbPackage.INBOUND_ENDPOINT__SOCKET_TIMEOUT_MS:
+                return SOCKET_TIMEOUT_MS_EDEFAULT == null ? socketTimeoutMs != null : !SOCKET_TIMEOUT_MS_EDEFAULT.equals(socketTimeoutMs);
+            case EsbPackage.INBOUND_ENDPOINT__SOCKET_RECEIVE_BUFFER_BYTES:
+                return SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT == null ? socketReceiveBufferBytes != null : !SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT.equals(socketReceiveBufferBytes);
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_MESSAGE_MAX_BYTES:
+                return FETCH_MESSAGE_MAX_BYTES_EDEFAULT == null ? fetchMessageMaxBytes != null : !FETCH_MESSAGE_MAX_BYTES_EDEFAULT.equals(fetchMessageMaxBytes);
+            case EsbPackage.INBOUND_ENDPOINT__NUM_CONSUMER_FETCHES:
+                return NUM_CONSUMER_FETCHES_EDEFAULT == null ? numConsumerFetches != null : !NUM_CONSUMER_FETCHES_EDEFAULT.equals(numConsumerFetches);
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_ENABLE:
+                return autoCommitEnable != AUTO_COMMIT_ENABLE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
+                return AUTO_COMMIT_INTERVAL_MS_EDEFAULT == null ? autoCommitIntervalMs != null : !AUTO_COMMIT_INTERVAL_MS_EDEFAULT.equals(autoCommitIntervalMs);
+            case EsbPackage.INBOUND_ENDPOINT__QUEUED_MAX_MESSAGE_CHUNKS:
+                return QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT == null ? queuedMaxMessageChunks != null : !QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT.equals(queuedMaxMessageChunks);
+            case EsbPackage.INBOUND_ENDPOINT__REBALANCE_MAX_RETRIES:
+                return REBALANCE_MAX_RETRIES_EDEFAULT == null ? rebalanceMaxRetries != null : !REBALANCE_MAX_RETRIES_EDEFAULT.equals(rebalanceMaxRetries);
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_MIN_BYTES:
+                return FETCH_MIN_BYTES_EDEFAULT == null ? fetchMinBytes != null : !FETCH_MIN_BYTES_EDEFAULT.equals(fetchMinBytes);
+            case EsbPackage.INBOUND_ENDPOINT__FETCH_WAIT_MAX_MS:
+                return FETCH_WAIT_MAX_MS_EDEFAULT == null ? fetchWaitMaxMs != null : !FETCH_WAIT_MAX_MS_EDEFAULT.equals(fetchWaitMaxMs);
+            case EsbPackage.INBOUND_ENDPOINT__REBALANCE_BACKOFF_MS:
+                return REBALANCE_BACKOFF_MS_EDEFAULT == null ? rebalanceBackoffMs != null : !REBALANCE_BACKOFF_MS_EDEFAULT.equals(rebalanceBackoffMs);
+            case EsbPackage.INBOUND_ENDPOINT__REFRESH_LEADER_BACKOFF_MS:
+                return REFRESH_LEADER_BACKOFF_MS_EDEFAULT == null ? refreshLeaderBackoffMs != null : !REFRESH_LEADER_BACKOFF_MS_EDEFAULT.equals(refreshLeaderBackoffMs);
+            case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
+                return autoOffsetReset != AUTO_OFFSET_RESET_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TIMEOUT_MS:
+                return CONSUMER_TIMEOUT_MS_EDEFAULT == null ? consumerTimeoutMs != null : !CONSUMER_TIMEOUT_MS_EDEFAULT.equals(consumerTimeoutMs);
+            case EsbPackage.INBOUND_ENDPOINT__EXCLUDE_INTERNAL_TOPICS:
+                return excludeInternalTopics != EXCLUDE_INTERNAL_TOPICS_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__PARTITION_ASSIGNMENT_STRATEGY:
+                return partitionAssignmentStrategy != PARTITION_ASSIGNMENT_STRATEGY_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__CLIENT_ID:
+                return CLIENT_ID_EDEFAULT == null ? clientId != null : !CLIENT_ID_EDEFAULT.equals(clientId);
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+                return ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT == null ? zookeeperSessionTimeoutMs != null : !ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT.equals(zookeeperSessionTimeoutMs);
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECTION_TIMEOUT_MS:
+                return ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT == null ? zookeeperConnectionTimeoutMs != null : !ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT.equals(zookeeperConnectionTimeoutMs);
+            case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+                return ZOOKEEPER_SYNC_TIME_MS_EDEFAULT == null ? zookeeperSyncTimeMs != null : !ZOOKEEPER_SYNC_TIME_MS_EDEFAULT.equals(zookeeperSyncTimeMs);
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_STORAGE:
+                return offsetsStorage != OFFSETS_STORAGE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_BACKOFF_MS:
+                return OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT == null ? offsetsChannelBackoffMs != null : !OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT.equals(offsetsChannelBackoffMs);
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS:
+                return OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT == null ? offsetsChannelSocketTimeoutMs != null : !OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT.equals(offsetsChannelSocketTimeoutMs);
+            case EsbPackage.INBOUND_ENDPOINT__OFFSETS_COMMIT_MAX_RETRIES:
+                return OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT == null ? offsetsCommitMaxRetries != null : !OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT.equals(offsetsCommitMaxRetries);
+            case EsbPackage.INBOUND_ENDPOINT__DUAL_COMMIT_ENABLED:
+                return dualCommitEnabled != DUAL_COMMIT_ENABLED_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
+                return INBOUND_CXF_RM_HOST_EDEFAULT == null ? inboundCxfRmHost != null : !INBOUND_CXF_RM_HOST_EDEFAULT.equals(inboundCxfRmHost);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
+                return INBOUND_CXF_RM_PORT_EDEFAULT == null ? inboundCxfRmPort != null : !INBOUND_CXF_RM_PORT_EDEFAULT.equals(inboundCxfRmPort);
+            case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
+                return INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT == null ? inboundCxfRmConfigFile != null : !INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT.equals(inboundCxfRmConfigFile);
+            case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
+                return enableSSL != ENABLE_SSL_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
+                return serviceParameters != null && !serviceParameters.isEmpty();
+            case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
+                return suspend != SUSPEND_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT == null ? transportRabbitMqConnectionFactory != null : !TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT.equals(transportRabbitMqConnectionFactory);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME:
+                return TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT == null ? transportRabbitMqServerHostName != null : !TRANSPORT_RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT.equals(transportRabbitMqServerHostName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PORT:
+                return TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT == null ? transportRabbitMqServerPort != null : !TRANSPORT_RABBIT_MQ_SERVER_PORT_EDEFAULT.equals(transportRabbitMqServerPort);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_USER_NAME:
+                return TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT == null ? transportRabbitMqServerUserName != null : !TRANSPORT_RABBIT_MQ_SERVER_USER_NAME_EDEFAULT.equals(transportRabbitMqServerUserName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_PASSWORD:
+                return TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT == null ? transportRabbitMqServerPassword != null : !TRANSPORT_RABBIT_MQ_SERVER_PASSWORD_EDEFAULT.equals(transportRabbitMqServerPassword);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_NAME:
+                return TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT == null ? transportRabbitMqQueueName != null : !TRANSPORT_RABBIT_MQ_QUEUE_NAME_EDEFAULT.equals(transportRabbitMqQueueName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_NAME:
+                return TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT == null ? transportRabbitMqExchangeName != null : !TRANSPORT_RABBIT_MQ_EXCHANGE_NAME_EDEFAULT.equals(transportRabbitMqExchangeName);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DURABLE:
+                return TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT == null ? transportRabbitMqQueueDurable != null : !TRANSPORT_RABBIT_MQ_QUEUE_DURABLE_EDEFAULT.equals(transportRabbitMqQueueDurable);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE:
+                return TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT == null ? transportRabbitMqQueueExclusive != null : !TRANSPORT_RABBIT_MQ_QUEUE_EXCLUSIVE_EDEFAULT.equals(transportRabbitMqQueueExclusive);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE:
+                return TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT == null ? transportRabbitMqQueueAutoDelete != null : !TRANSPORT_RABBIT_MQ_QUEUE_AUTO_DELETE_EDEFAULT.equals(transportRabbitMqQueueAutoDelete);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK:
+                return TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT == null ? transportRabbitMqQueueAutoAck != null : !TRANSPORT_RABBIT_MQ_QUEUE_AUTO_ACK_EDEFAULT.equals(transportRabbitMqQueueAutoAck);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY:
+                return TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT == null ? transportRabbitMqQueueRoutingKey != null : !TRANSPORT_RABBIT_MQ_QUEUE_ROUTING_KEY_EDEFAULT.equals(transportRabbitMqQueueRoutingKey);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE:
+                return TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT == null ? transportRabbitMqQueueDeliveryMode != null : !TRANSPORT_RABBIT_MQ_QUEUE_DELIVERY_MODE_EDEFAULT.equals(transportRabbitMqQueueDeliveryMode);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE:
+                return TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT == null ? transportRabbitMqExchangeType != null : !TRANSPORT_RABBIT_MQ_EXCHANGE_TYPE_EDEFAULT.equals(transportRabbitMqExchangeType);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE:
+                return TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT == null ? transportRabbitMqExchangeDurable != null : !TRANSPORT_RABBIT_MQ_EXCHANGE_DURABLE_EDEFAULT.equals(transportRabbitMqExchangeDurable);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE:
+                return TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT == null ? transportRabbitMqExchangeAutoDelete != null : !TRANSPORT_RABBIT_MQ_EXCHANGE_AUTO_DELETE_EDEFAULT.equals(transportRabbitMqExchangeAutoDelete);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST:
+                return TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT == null ? transportRabbitMqServerVirtualHost != null : !TRANSPORT_RABBIT_MQ_SERVER_VIRTUAL_HOST_EDEFAULT.equals(transportRabbitMqServerVirtualHost);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT:
+                return TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT == null ? transportRabbitMqFactoryHeartbeat != null : !TRANSPORT_RABBIT_MQ_FACTORY_HEARTBEAT_EDEFAULT.equals(transportRabbitMqFactoryHeartbeat);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT == null ? transportRabbitMqConnectionSslEnabled != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_ENABLED_EDEFAULT.equals(transportRabbitMqConnectionSslEnabled);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT == null ? transportRabbitMqConnectionSslKeystoreLocation != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_LOCATION_EDEFAULT.equals(transportRabbitMqConnectionSslKeystoreLocation);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT == null ? transportRabbitMqConnectionSslKeystoreType != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_TYPE_EDEFAULT.equals(transportRabbitMqConnectionSslKeystoreType);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT == null ? transportRabbitMqConnectionSslKeystorePassword != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_KEYSTORE_PASSWORD_EDEFAULT.equals(transportRabbitMqConnectionSslKeystorePassword);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT == null ? transportRabbitMqConnectionSslTruststoreLocation != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_LOCATION_EDEFAULT.equals(transportRabbitMqConnectionSslTruststoreLocation);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT == null ? transportRabbitMqConnectionSslTruststoreType != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_TYPE_EDEFAULT.equals(transportRabbitMqConnectionSslTruststoreType);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT == null ? transportRabbitMqConnectionSslTruststorePassword != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_TRUSTSTORE_PASSWORD_EDEFAULT.equals(transportRabbitMqConnectionSslTruststorePassword);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT == null ? transportRabbitMqConnectionSslVersion != null : !TRANSPORT_RABBIT_MQ_CONNECTION_SSL_VERSION_EDEFAULT.equals(transportRabbitMqConnectionSslVersion);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE:
+                return TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT == null ? transportRabbitMqMessageContentType != null : !TRANSPORT_RABBIT_MQ_MESSAGE_CONTENT_TYPE_EDEFAULT.equals(transportRabbitMqMessageContentType);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT == null ? transportRabbitMqConnectionRetryCount != null : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_COUNT_EDEFAULT.equals(transportRabbitMqConnectionRetryCount);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL:
+                return TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT == null ? transportRabbitMqConnectionRetryInterval != null : !TRANSPORT_RABBIT_MQ_CONNECTION_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqConnectionRetryInterval);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL:
+                return TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT == null ? transportRabbitMqServerRetryInterval != null : !TRANSPORT_RABBIT_MQ_SERVER_RETRY_INTERVAL_EDEFAULT.equals(transportRabbitMqServerRetryInterval);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_KEY:
+                return transportRabbitMqConsumerQosKey != null;
+            case EsbPackage.INBOUND_ENDPOINT__WS_INBOUND_PORT:
+                return WS_INBOUND_PORT_EDEFAULT == null ? wsInboundPort != null : !WS_INBOUND_PORT_EDEFAULT.equals(wsInboundPort);
+            case EsbPackage.INBOUND_ENDPOINT__WS_CLIENT_SIDE_BROADCAST_LEVEL:
+                return wsClientSideBroadcastLevel != WS_CLIENT_SIDE_BROADCAST_LEVEL_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_SEQUENCE:
+                return WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT == null ? wsOutflowDispatchSequence != null : !WS_OUTFLOW_DISPATCH_SEQUENCE_EDEFAULT.equals(wsOutflowDispatchSequence);
+            case EsbPackage.INBOUND_ENDPOINT__WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE:
+                return WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT == null ? wsOutflowDispatchFaultSequence != null : !WS_OUTFLOW_DISPATCH_FAULT_SEQUENCE_EDEFAULT.equals(wsOutflowDispatchFaultSequence);
+            case EsbPackage.INBOUND_ENDPOINT__WS_BOSS_THREAD_POOL_SIZE:
+                return WS_BOSS_THREAD_POOL_SIZE_EDEFAULT == null ? wsBossThreadPoolSize != null : !WS_BOSS_THREAD_POOL_SIZE_EDEFAULT.equals(wsBossThreadPoolSize);
+            case EsbPackage.INBOUND_ENDPOINT__WS_WORKER_THREAD_POOL_SIZE:
+                return WS_WORKER_THREAD_POOL_SIZE_EDEFAULT == null ? wsWorkerThreadPoolSize != null : !WS_WORKER_THREAD_POOL_SIZE_EDEFAULT.equals(wsWorkerThreadPoolSize);
+            case EsbPackage.INBOUND_ENDPOINT__WS_SUBPROTOCOL_HANDLER_CLASS:
+                return WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT == null ? wsSubprotocolHandlerClass != null : !WS_SUBPROTOCOL_HANDLER_CLASS_EDEFAULT.equals(wsSubprotocolHandlerClass);
+            case EsbPackage.INBOUND_ENDPOINT__WS_PIPELINE_HANDLER_CLASS:
+                return WS_PIPELINE_HANDLER_CLASS_EDEFAULT == null ? wsPipelineHandlerClass != null : !WS_PIPELINE_HANDLER_CLASS_EDEFAULT.equals(wsPipelineHandlerClass);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_URL:
+                return TRANSPORT_FEED_URL_EDEFAULT == null ? transportFeedURL != null : !TRANSPORT_FEED_URL_EDEFAULT.equals(transportFeedURL);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_FEED_TYPE:
+                return transportFeedType != TRANSPORT_FEED_TYPE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRACE_ENABLED:
+                return traceEnabled != TRACE_ENABLED_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__STATISTICS_ENABLED:
+                return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION:
+                return TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT == null ? transportJMSRetriesBeforeSuspension != null : !TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION_EDEFAULT.equals(transportJMSRetriesBeforeSuspension);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION:
+                return transportJMSResetConnectionOnPollingSuspension != TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD:
+                return TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT == null ? transportJMSPollingSuspensionPeriod != null : !TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD_EDEFAULT.equals(transportJMSPollingSuspensionPeriod);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION:
+                return TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT == null ? transportMQTTSslKeystoreLocation != null : !TRANSPORT_MQTT_SSL_KEYSTORE_LOCATION_EDEFAULT.equals(transportMQTTSslKeystoreLocation);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_TYPE:
+                return TRANSPORT_MQTT_SSL_KEYSTORE_TYPE_EDEFAULT == null ? transportMQTTSslKeystoreType != null : !TRANSPORT_MQTT_SSL_KEYSTORE_TYPE_EDEFAULT.equals(transportMQTTSslKeystoreType);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD:
+                return TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD_EDEFAULT == null ? transportMQTTSslKeystorePassword != null : !TRANSPORT_MQTT_SSL_KEYSTORE_PASSWORD_EDEFAULT.equals(transportMQTTSslKeystorePassword);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION:
+                return TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION_EDEFAULT == null ? transportMQTTSslTruststoreLocation != null : !TRANSPORT_MQTT_SSL_TRUSTSTORE_LOCATION_EDEFAULT.equals(transportMQTTSslTruststoreLocation);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE:
+                return TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE_EDEFAULT == null ? transportMQTTSslTruststoreType != null : !TRANSPORT_MQTT_SSL_TRUSTSTORE_TYPE_EDEFAULT.equals(transportMQTTSslTruststoreType);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD:
+                return TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT == null ? transportMQTTSslTruststorePassword != null : !TRANSPORT_MQTT_SSL_TRUSTSTORE_PASSWORD_EDEFAULT.equals(transportMQTTSslTruststorePassword);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_MQTT_SSL_VERSION:
+                return TRANSPORT_MQTT_SSL_VERSION_EDEFAULT == null ? transportMQTTSslVersion != null : !TRANSPORT_MQTT_SSL_VERSION_EDEFAULT.equals(transportMQTTSslVersion);
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_FILE:
+                return WSS_SSL_KEY_STORE_FILE_EDEFAULT == null ? wssSslKeyStoreFile != null : !WSS_SSL_KEY_STORE_FILE_EDEFAULT.equals(wssSslKeyStoreFile);
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_KEY_STORE_PASS:
+                return WSS_SSL_KEY_STORE_PASS_EDEFAULT == null ? wssSslKeyStorePass != null : !WSS_SSL_KEY_STORE_PASS_EDEFAULT.equals(wssSslKeyStorePass);
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_FILE:
+                return WSS_SSL_TRUST_STORE_FILE_EDEFAULT == null ? wssSslTrustStoreFile != null : !WSS_SSL_TRUST_STORE_FILE_EDEFAULT.equals(wssSslTrustStoreFile);
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_TRUST_STORE_PASS:
+                return WSS_SSL_TRUST_STORE_PASS_EDEFAULT == null ? wssSslTrustStorePass != null : !WSS_SSL_TRUST_STORE_PASS_EDEFAULT.equals(wssSslTrustStorePass);
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CERT_PASS:
+                return WSS_SSL_CERT_PASS_EDEFAULT == null ? wssSslCertPass != null : !WSS_SSL_CERT_PASS_EDEFAULT.equals(wssSslCertPass);
+            case EsbPackage.INBOUND_ENDPOINT__WS_DEFAULT_CONTENT_TYPE:
+                return WS_DEFAULT_CONTENT_TYPE_EDEFAULT == null ? wsDefaultContentType != null : !WS_DEFAULT_CONTENT_TYPE_EDEFAULT.equals(wsDefaultContentType);
+            case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_CODE:
+                return WS_SHUTDOWN_STATUS_CODE_EDEFAULT == null ? wsShutdownStatusCode != null : !WS_SHUTDOWN_STATUS_CODE_EDEFAULT.equals(wsShutdownStatusCode);
+            case EsbPackage.INBOUND_ENDPOINT__WS_SHUTDOWN_STATUS_MESSAGE:
+                return WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT == null ? wsShutdownStatusMessage != null : !WS_SHUTDOWN_STATUS_MESSAGE_EDEFAULT.equals(wsShutdownStatusMessage);
+            case EsbPackage.INBOUND_ENDPOINT__WS_USE_PORT_OFFSET:
+                return wsUsePortOffset != WS_USE_PORT_OFFSET_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_PROTOCOLS:
+                return WSS_SSL_PROTOCOLS_EDEFAULT == null ? wssSslProtocols != null : !WSS_SSL_PROTOCOLS_EDEFAULT.equals(wssSslProtocols);
+            case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
+                return WSS_SSL_CIPHER_SUITES_EDEFAULT == null ? wssSslCipherSuites != null : !WSS_SSL_CIPHER_SUITES_EDEFAULT.equals(wssSslCipherSuites);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
+                return TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT == null ? transportRabbitMqConsumerQos != null : !TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT.equals(transportRabbitMqConsumerQos);
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
+                return transportRabbitMqConsumerQosType != TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (name: ");
@@ -12585,6 +11344,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         result.append(transportVFSLocking);
         result.append(", transportVFSMaxRetryCount: ");
         result.append(transportVFSMaxRetryCount);
+        result.append(", transportVFSMoveAfterFailedMove: ");
+        result.append(transportVFSMoveAfterFailedMove);
         result.append(", transportVFSReconnectTimeout: ");
         result.append(transportVFSReconnectTimeout);
         result.append(", transportJMSSharedSubscription: ");
@@ -12601,10 +11362,22 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         result.append(transportVFSActionAfterErrors);
         result.append(", transportVFSMoveAfterErrors: ");
         result.append(transportVFSMoveAfterErrors);
+        result.append(", transportVFSFailedRecordsFileName: ");
+        result.append(transportVFSFailedRecordsFileName);
+        result.append(", transportVFSFailedRecordsFileDestination: ");
+        result.append(transportVFSFailedRecordsFileDestination);
+        result.append(", transportVFSMoveFailedRecordTimestampFormat: ");
+        result.append(transportVFSMoveFailedRecordTimestampFormat);
+        result.append(", transportVFSFailedRecordNextRetryDuration: ");
+        result.append(transportVFSFailedRecordNextRetryDuration);
         result.append(", transportVFSActionAfterFailure: ");
         result.append(transportVFSActionAfterFailure);
         result.append(", transportVFSMoveAfterFailure: ");
         result.append(transportVFSMoveAfterFailure);
+        result.append(", transportVFSReplyFileURI: ");
+        result.append(transportVFSReplyFileURI);
+        result.append(", transportVFSReplyFileName: ");
+        result.append(transportVFSReplyFileName);
         result.append(", transportVFSAutoLockRelease: ");
         result.append(transportVFSAutoLockRelease);
         result.append(", transportVFSAutoLockReleaseInterval: ");

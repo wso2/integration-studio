@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RouterMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RouterMediatorItemProvider extends MediatorItemProvider {
@@ -40,7 +39,6 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RouterMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -70,32 +68,44 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Continue After Routing feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addContinueAfterRoutingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RouterMediator_continueAfterRouting_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RouterMediator_continueAfterRouting_feature",
-                        "_UI_RouterMediator_type"),
-                EsbPackage.Literals.ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTING, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RouterMediator_continueAfterRouting_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RouterMediator_continueAfterRouting_feature", "_UI_RouterMediator_type"),
+                 EsbPackage.Literals.ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTING,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Router Container feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addRouterContainerPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RouterMediator_routerContainer_feature"),
-                        getString("_UI_RouterMediator_routerContainer_description"),
-                        EsbPackage.Literals.ROUTER_MEDIATOR__ROUTER_CONTAINER, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RouterMediator_routerContainer_feature"),
+                 getString("_UI_RouterMediator_routerContainer_description"),
+                 EsbPackage.Literals.ROUTER_MEDIATOR__ROUTER_CONTAINER,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -104,7 +114,6 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -123,7 +132,6 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -139,7 +147,6 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
      * This returns RouterMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -152,15 +159,15 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((RouterMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_RouterMediator_type")
-                : getString("_UI_RouterMediator_type") + " " + label;
+        String label = ((RouterMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_RouterMediator_type") :
+            getString("_UI_RouterMediator_type") + " " + label;
     }
 
     /**
@@ -168,7 +175,6 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -177,15 +183,15 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(RouterMediator.class)) {
-        case EsbPackage.ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTING:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.ROUTER_MEDIATOR__TARGET_OUTPUT_CONNECTOR:
-        case EsbPackage.ROUTER_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.ROUTER_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.ROUTER_MEDIATOR__ROUTER_CONTAINER:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTING:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.ROUTER_MEDIATOR__TARGET_OUTPUT_CONNECTOR:
+            case EsbPackage.ROUTER_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.ROUTER_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.ROUTER_MEDIATOR__ROUTER_CONTAINER:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -195,7 +201,6 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -203,17 +208,25 @@ public class RouterMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ROUTER_MEDIATOR__TARGET_OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createRouterMediatorTargetOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ROUTER_MEDIATOR__TARGET_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createRouterMediatorTargetOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ROUTER_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createRouterMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ROUTER_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createRouterMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ROUTER_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createRouterMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ROUTER_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createRouterMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.ROUTER_MEDIATOR__ROUTER_CONTAINER,
-                EsbFactory.eINSTANCE.createRouterMediatorContainer()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.ROUTER_MEDIATOR__ROUTER_CONTAINER,
+                 EsbFactory.eINSTANCE.createRouterMediatorContainer()));
     }
 
 }

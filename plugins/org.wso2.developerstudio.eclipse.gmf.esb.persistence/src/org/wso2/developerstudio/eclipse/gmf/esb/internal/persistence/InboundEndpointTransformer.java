@@ -229,6 +229,26 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_MAX_RETRY_COUNT,
                         visualInboundEndpoint.getTransportVFSMaxRetryCount());
             }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMoveAfterFailedMove())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_MOVE_AFTER_FAILED_MOVE,
+                        visualInboundEndpoint.getTransportVFSMoveAfterFailedMove());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSFailedRecordsFileName())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_FAILED_RECORDS_FILE_NAME,
+                        visualInboundEndpoint.getTransportVFSFailedRecordsFileName());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSFailedRecordsFileDestination())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_FAILED_RECORDS_FILE_DESTINATION,
+                        visualInboundEndpoint.getTransportVFSFailedRecordsFileDestination());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMoveFailedRecordTimestampFormat())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT,
+                        visualInboundEndpoint.getTransportVFSMoveFailedRecordTimestampFormat());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSFailedRecordNextRetryDuration())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_FAILED_RECORD_NEXT_RETRY_DURATION,
+                        visualInboundEndpoint.getTransportVFSFailedRecordNextRetryDuration());
+            }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSReconnectTimeout())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_RECONNECT_TIMEOUT,
                         visualInboundEndpoint.getTransportVFSReconnectTimeout());
@@ -245,6 +265,14 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMoveAfterFailure())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_MOVE_AFTER_FAILURE,
                         visualInboundEndpoint.getTransportVFSMoveAfterFailure());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSReplyFileURI())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_REPLY_FILE_URI,
+                        visualInboundEndpoint.getTransportVFSReplyFileURI());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSReplyFileName())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_REPLY_FILE_NAME,
+                        visualInboundEndpoint.getTransportVFSReplyFileName());
             }
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMoveTimestampFormat())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.VFS_MOVE_TIMESTAMP_FORMAT,

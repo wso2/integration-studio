@@ -31,7 +31,6 @@ public class EJBMediatorOutputConnectorImpl extends OutputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EJBMediatorOutputConnectorImpl() {
@@ -41,7 +40,6 @@ public class EJBMediatorOutputConnectorImpl extends OutputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

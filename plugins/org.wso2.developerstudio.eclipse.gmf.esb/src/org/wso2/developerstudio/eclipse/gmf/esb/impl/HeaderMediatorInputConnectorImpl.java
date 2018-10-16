@@ -22,7 +22,6 @@ public class HeaderMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected HeaderMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class HeaderMediatorInputConnectorImpl extends InputConnectorImpl impleme
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

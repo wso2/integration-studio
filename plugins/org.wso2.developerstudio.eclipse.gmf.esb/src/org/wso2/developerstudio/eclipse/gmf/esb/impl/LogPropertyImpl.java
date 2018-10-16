@@ -27,7 +27,6 @@ public class LogPropertyImpl extends AbstractNameValueExpressionPropertyImpl imp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected LogPropertyImpl() {
@@ -37,7 +36,6 @@ public class LogPropertyImpl extends AbstractNameValueExpressionPropertyImpl imp
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

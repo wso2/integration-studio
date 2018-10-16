@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Enrich Target Action</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichTargetAction()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum EnrichTargetAction implements Enumerator {
      * The '<em><b>REPLACE</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #REPLACE_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum EnrichTargetAction implements Enumerator {
      * The '<em><b>CHILD</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #CHILD_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum EnrichTargetAction implements Enumerator {
      * The '<em><b>SIBLING</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SIBLING_VALUE
      * @generated
      * @ordered
@@ -64,7 +60,6 @@ public enum EnrichTargetAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #REPLACE
      * @model literal="replace"
      * @generated
@@ -80,7 +75,6 @@ public enum EnrichTargetAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #CHILD
      * @model literal="child"
      * @generated
@@ -96,7 +90,6 @@ public enum EnrichTargetAction implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SIBLING
      * @model literal="sibling"
      * @generated
@@ -108,16 +101,18 @@ public enum EnrichTargetAction implements Enumerator {
      * An array of all the '<em><b>Enrich Target Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final EnrichTargetAction[] VALUES_ARRAY = new EnrichTargetAction[] { REPLACE, CHILD, SIBLING, };
+    private static final EnrichTargetAction[] VALUES_ARRAY = new EnrichTargetAction[] {
+            REPLACE,
+            CHILD,
+            SIBLING,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Enrich Target Action</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<EnrichTargetAction> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -126,7 +121,6 @@ public enum EnrichTargetAction implements Enumerator {
      * Returns the '<em><b>Enrich Target Action</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -145,7 +139,6 @@ public enum EnrichTargetAction implements Enumerator {
      * Returns the '<em><b>Enrich Target Action</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -164,19 +157,15 @@ public enum EnrichTargetAction implements Enumerator {
      * Returns the '<em><b>Enrich Target Action</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static EnrichTargetAction get(int value) {
         switch (value) {
-        case REPLACE_VALUE:
-            return REPLACE;
-        case CHILD_VALUE:
-            return CHILD;
-        case SIBLING_VALUE:
-            return SIBLING;
+            case REPLACE_VALUE: return REPLACE;
+            case CHILD_VALUE: return CHILD;
+            case SIBLING_VALUE: return SIBLING;
         }
         return null;
     }
@@ -184,7 +173,6 @@ public enum EnrichTargetAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -192,7 +180,6 @@ public enum EnrichTargetAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -200,7 +187,6 @@ public enum EnrichTargetAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -209,7 +195,6 @@ public enum EnrichTargetAction implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private EnrichTargetAction(int value, String name, String literal) {
@@ -221,38 +206,34 @@ public enum EnrichTargetAction implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

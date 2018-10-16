@@ -22,7 +22,6 @@ public class SequenceOutputConnectorImpl extends OutputConnectorImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected SequenceOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class SequenceOutputConnectorImpl extends OutputConnectorImpl implements 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

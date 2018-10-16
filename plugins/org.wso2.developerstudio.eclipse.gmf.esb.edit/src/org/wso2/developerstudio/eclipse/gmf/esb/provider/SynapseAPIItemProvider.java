@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SynapseAPIItemProvider extends EsbElementItemProvider {
@@ -40,7 +39,6 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SynapseAPIItemProvider(AdapterFactory adapterFactory) {
@@ -51,7 +49,6 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -76,153 +73,198 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
      * This adds a property descriptor for the Api Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addApiNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SynapseAPI_apiName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_apiName_feature",
-                                "_UI_SynapseAPI_type"),
-                        EsbPackage.Literals.SYNAPSE_API__API_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SynapseAPI_apiName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_apiName_feature", "_UI_SynapseAPI_type"),
+                 EsbPackage.Literals.SYNAPSE_API__API_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Context feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addContextPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SynapseAPI_context_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_context_feature",
-                                "_UI_SynapseAPI_type"),
-                        EsbPackage.Literals.SYNAPSE_API__CONTEXT, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SynapseAPI_context_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_context_feature", "_UI_SynapseAPI_type"),
+                 EsbPackage.Literals.SYNAPSE_API__CONTEXT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Host Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addHostNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SynapseAPI_hostName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_hostName_feature",
-                                "_UI_SynapseAPI_type"),
-                        EsbPackage.Literals.SYNAPSE_API__HOST_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SynapseAPI_hostName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_hostName_feature", "_UI_SynapseAPI_type"),
+                 EsbPackage.Literals.SYNAPSE_API__HOST_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Port feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPortPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SynapseAPI_port_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_port_feature",
-                                "_UI_SynapseAPI_type"),
-                        EsbPackage.Literals.SYNAPSE_API__PORT, true, false, false,
-                        ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SynapseAPI_port_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_port_feature", "_UI_SynapseAPI_type"),
+                 EsbPackage.Literals.SYNAPSE_API__PORT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Handlers feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addHandlersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SynapseAPI_handlers_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_handlers_feature",
-                                "_UI_SynapseAPI_type"),
-                        EsbPackage.Literals.SYNAPSE_API__HANDLERS, true, false, true, null,
-                        getString("_UI_HandlersPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SynapseAPI_handlers_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_handlers_feature", "_UI_SynapseAPI_type"),
+                 EsbPackage.Literals.SYNAPSE_API__HANDLERS,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_HandlersPropertyCategory"),
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Trace Enabled feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTraceEnabledPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SynapseAPI_traceEnabled_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_traceEnabled_feature",
-                                "_UI_SynapseAPI_type"),
-                        EsbPackage.Literals.SYNAPSE_API__TRACE_ENABLED, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SynapseAPI_traceEnabled_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_traceEnabled_feature", "_UI_SynapseAPI_type"),
+                 EsbPackage.Literals.SYNAPSE_API__TRACE_ENABLED,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Statistics Enabled feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addStatisticsEnabledPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SynapseAPI_statisticsEnabled_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_statisticsEnabled_feature",
-                                "_UI_SynapseAPI_type"),
-                        EsbPackage.Literals.SYNAPSE_API__STATISTICS_ENABLED, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SynapseAPI_statisticsEnabled_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_statisticsEnabled_feature", "_UI_SynapseAPI_type"),
+                 EsbPackage.Literals.SYNAPSE_API__STATISTICS_ENABLED,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Version feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addVersionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SynapseAPI_version_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_version_feature",
-                                "_UI_SynapseAPI_type"),
-                        EsbPackage.Literals.SYNAPSE_API__VERSION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SynapseAPI_version_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_version_feature", "_UI_SynapseAPI_type"),
+                 EsbPackage.Literals.SYNAPSE_API__VERSION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Version Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addVersionTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SynapseAPI_versionType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_versionType_feature",
-                                "_UI_SynapseAPI_type"),
-                        EsbPackage.Literals.SYNAPSE_API__VERSION_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SynapseAPI_versionType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SynapseAPI_versionType_feature", "_UI_SynapseAPI_type"),
+                 EsbPackage.Literals.SYNAPSE_API__VERSION_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -231,7 +273,6 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -246,7 +287,6 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -261,7 +301,6 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
      * This returns SynapseAPI.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -273,14 +312,14 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((SynapseAPI) object).getApiName();
-        return label == null || label.length() == 0 ? getString("_UI_SynapseAPI_type")
-                : getString("_UI_SynapseAPI_type") + " " + label;
+        String label = ((SynapseAPI)object).getApiName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_SynapseAPI_type") :
+            getString("_UI_SynapseAPI_type") + " " + label;
     }
 
     /**
@@ -288,7 +327,6 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -296,19 +334,19 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(SynapseAPI.class)) {
-        case EsbPackage.SYNAPSE_API__API_NAME:
-        case EsbPackage.SYNAPSE_API__CONTEXT:
-        case EsbPackage.SYNAPSE_API__HOST_NAME:
-        case EsbPackage.SYNAPSE_API__PORT:
-        case EsbPackage.SYNAPSE_API__TRACE_ENABLED:
-        case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
-        case EsbPackage.SYNAPSE_API__VERSION:
-        case EsbPackage.SYNAPSE_API__VERSION_TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.SYNAPSE_API__RESOURCES:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.SYNAPSE_API__API_NAME:
+            case EsbPackage.SYNAPSE_API__CONTEXT:
+            case EsbPackage.SYNAPSE_API__HOST_NAME:
+            case EsbPackage.SYNAPSE_API__PORT:
+            case EsbPackage.SYNAPSE_API__TRACE_ENABLED:
+            case EsbPackage.SYNAPSE_API__STATISTICS_ENABLED:
+            case EsbPackage.SYNAPSE_API__VERSION:
+            case EsbPackage.SYNAPSE_API__VERSION_TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.SYNAPSE_API__RESOURCES:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -318,15 +356,16 @@ public class SynapseAPIItemProvider extends EsbElementItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SYNAPSE_API__RESOURCES,
-                EsbFactory.eINSTANCE.createAPIResource()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SYNAPSE_API__RESOURCES,
+                 EsbFactory.eINSTANCE.createAPIResource()));
     }
 
 }

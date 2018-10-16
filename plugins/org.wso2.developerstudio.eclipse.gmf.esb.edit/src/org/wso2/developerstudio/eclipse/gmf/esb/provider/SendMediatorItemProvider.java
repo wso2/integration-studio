@@ -31,7 +31,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.SendMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SendMediatorItemProvider extends MediatorItemProvider {
@@ -39,7 +38,6 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SendMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -86,67 +84,88 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the End Point feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addEndPointPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SendMediator_EndPoint_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SendMediator_EndPoint_feature",
-                                "_UI_SendMediator_type"),
-                        EsbPackage.Literals.SEND_MEDIATOR__END_POINT, true, false, true, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SendMediator_EndPoint_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SendMediator_EndPoint_feature", "_UI_SendMediator_type"),
+                 EsbPackage.Literals.SEND_MEDIATOR__END_POINT,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Receiving Sequence Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addReceivingSequenceTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SendMediator_receivingSequenceType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SendMediator_receivingSequenceType_feature",
-                        "_UI_SendMediator_type"),
-                EsbPackage.Literals.SEND_MEDIATOR__RECEIVING_SEQUENCE_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SendMediator_receivingSequenceType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SendMediator_receivingSequenceType_feature", "_UI_SendMediator_type"),
+                 EsbPackage.Literals.SEND_MEDIATOR__RECEIVING_SEQUENCE_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Skip Serialization feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSkipSerializationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_SendMediator_skipSerialization_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_SendMediator_skipSerialization_feature",
-                                "_UI_SendMediator_type"),
-                        EsbPackage.Literals.SEND_MEDIATOR__SKIP_SERIALIZATION, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SendMediator_skipSerialization_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SendMediator_skipSerialization_feature", "_UI_SendMediator_type"),
+                 EsbPackage.Literals.SEND_MEDIATOR__SKIP_SERIALIZATION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Build Message Before Sending feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addBuildMessageBeforeSendingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SendMediator_buildMessageBeforeSending_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SendMediator_buildMessageBeforeSending_feature",
-                        "_UI_SendMediator_type"),
-                EsbPackage.Literals.SEND_MEDIATOR__BUILD_MESSAGE_BEFORE_SENDING, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_SendMediator_buildMessageBeforeSending_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SendMediator_buildMessageBeforeSending_feature", "_UI_SendMediator_type"),
+                 EsbPackage.Literals.SEND_MEDIATOR__BUILD_MESSAGE_BEFORE_SENDING,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     protected void addStaticReceivingSequencePropertyDescriptor(Object object) {
@@ -173,7 +192,6 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -194,7 +212,6 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -210,7 +227,6 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
      * This returns SendMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -223,15 +239,15 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((SendMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_SendMediator_type")
-                : getString("_UI_SendMediator_type") + " " + label;
+        String label = ((SendMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_SendMediator_type") :
+            getString("_UI_SendMediator_type") + " " + label;
     }
 
     /**
@@ -239,7 +255,6 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -248,19 +263,19 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(SendMediator.class)) {
-        case EsbPackage.SEND_MEDIATOR__RECEIVING_SEQUENCE_TYPE:
-        case EsbPackage.SEND_MEDIATOR__SKIP_SERIALIZATION:
-        case EsbPackage.SEND_MEDIATOR__BUILD_MESSAGE_BEFORE_SENDING:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.SEND_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.SEND_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.SEND_MEDIATOR__STATIC_RECEIVING_SEQUENCE:
-        case EsbPackage.SEND_MEDIATOR__DYNAMIC_RECEIVING_SEQUENCE:
-        case EsbPackage.SEND_MEDIATOR__ENDPOINT_OUTPUT_CONNECTOR:
-        case EsbPackage.SEND_MEDIATOR__MEDIATOR_FLOW:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.SEND_MEDIATOR__RECEIVING_SEQUENCE_TYPE:
+            case EsbPackage.SEND_MEDIATOR__SKIP_SERIALIZATION:
+            case EsbPackage.SEND_MEDIATOR__BUILD_MESSAGE_BEFORE_SENDING:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.SEND_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.SEND_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.SEND_MEDIATOR__STATIC_RECEIVING_SEQUENCE:
+            case EsbPackage.SEND_MEDIATOR__DYNAMIC_RECEIVING_SEQUENCE:
+            case EsbPackage.SEND_MEDIATOR__ENDPOINT_OUTPUT_CONNECTOR:
+            case EsbPackage.SEND_MEDIATOR__MEDIATOR_FLOW:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -270,7 +285,6 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -278,23 +292,35 @@ public class SendMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEND_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createSendMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEND_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createSendMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEND_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createSendMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEND_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createSendMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEND_MEDIATOR__STATIC_RECEIVING_SEQUENCE,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEND_MEDIATOR__STATIC_RECEIVING_SEQUENCE,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEND_MEDIATOR__DYNAMIC_RECEIVING_SEQUENCE,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEND_MEDIATOR__DYNAMIC_RECEIVING_SEQUENCE,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEND_MEDIATOR__ENDPOINT_OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createSendMediatorEndpointOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEND_MEDIATOR__ENDPOINT_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createSendMediatorEndpointOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.SEND_MEDIATOR__MEDIATOR_FLOW,
-                EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.SEND_MEDIATOR__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
     }
 
 }

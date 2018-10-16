@@ -22,7 +22,6 @@ public class ScriptMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ScriptMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class ScriptMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

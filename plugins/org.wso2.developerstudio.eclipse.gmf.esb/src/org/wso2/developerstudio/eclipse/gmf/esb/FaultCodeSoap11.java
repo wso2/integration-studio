@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Fault Code Soap11</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultCodeSoap11()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * The '<em><b>VERSION MISSMATCH</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #VERSION_MISSMATCH_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * The '<em><b>MUST UNDERSTAND</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #MUST_UNDERSTAND_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * The '<em><b>CLIENT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #CLIENT_VALUE
      * @generated
      * @ordered
@@ -60,7 +56,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * The '<em><b>SERVER</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #SERVER_VALUE
      * @generated
      * @ordered
@@ -75,7 +70,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #VERSION_MISSMATCH
      * @model literal="VersionMismatch"
      * @generated
@@ -91,7 +85,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #MUST_UNDERSTAND
      * @model literal="MustUnderstand"
      * @generated
@@ -107,7 +100,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #CLIENT
      * @model literal="Client"
      * @generated
@@ -123,7 +115,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #SERVER
      * @model literal="Server"
      * @generated
@@ -135,17 +126,19 @@ public enum FaultCodeSoap11 implements Enumerator {
      * An array of all the '<em><b>Fault Code Soap11</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final FaultCodeSoap11[] VALUES_ARRAY = new FaultCodeSoap11[] { VERSION_MISSMATCH, MUST_UNDERSTAND,
-            CLIENT, SERVER, };
+    private static final FaultCodeSoap11[] VALUES_ARRAY = new FaultCodeSoap11[] {
+            VERSION_MISSMATCH,
+            MUST_UNDERSTAND,
+            CLIENT,
+            SERVER,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Fault Code Soap11</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<FaultCodeSoap11> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -154,7 +147,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * Returns the '<em><b>Fault Code Soap11</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -173,7 +165,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * Returns the '<em><b>Fault Code Soap11</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -192,21 +183,16 @@ public enum FaultCodeSoap11 implements Enumerator {
      * Returns the '<em><b>Fault Code Soap11</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static FaultCodeSoap11 get(int value) {
         switch (value) {
-        case VERSION_MISSMATCH_VALUE:
-            return VERSION_MISSMATCH;
-        case MUST_UNDERSTAND_VALUE:
-            return MUST_UNDERSTAND;
-        case CLIENT_VALUE:
-            return CLIENT;
-        case SERVER_VALUE:
-            return SERVER;
+            case VERSION_MISSMATCH_VALUE: return VERSION_MISSMATCH;
+            case MUST_UNDERSTAND_VALUE: return MUST_UNDERSTAND;
+            case CLIENT_VALUE: return CLIENT;
+            case SERVER_VALUE: return SERVER;
         }
         return null;
     }
@@ -214,7 +200,6 @@ public enum FaultCodeSoap11 implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -222,7 +207,6 @@ public enum FaultCodeSoap11 implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -230,7 +214,6 @@ public enum FaultCodeSoap11 implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -239,7 +222,6 @@ public enum FaultCodeSoap11 implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private FaultCodeSoap11(int value, String name, String literal) {
@@ -251,38 +233,34 @@ public enum FaultCodeSoap11 implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

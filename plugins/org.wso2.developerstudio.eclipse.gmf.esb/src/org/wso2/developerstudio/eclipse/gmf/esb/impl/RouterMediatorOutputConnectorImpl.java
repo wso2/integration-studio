@@ -22,7 +22,6 @@ public class RouterMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected RouterMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class RouterMediatorOutputConnectorImpl extends OutputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

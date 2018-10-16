@@ -31,7 +31,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class OAuthMediatorItemProvider extends MediatorItemProvider {
@@ -39,7 +38,6 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public OAuthMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -72,51 +70,66 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Remote Service Url feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addRemoteServiceUrlPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_OAuthMediator_remoteServiceUrl_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_OAuthMediator_remoteServiceUrl_feature",
-                                "_UI_OAuthMediator_type"),
-                        EsbPackage.Literals.OAUTH_MEDIATOR__REMOTE_SERVICE_URL, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_OAuthMediator_remoteServiceUrl_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_OAuthMediator_remoteServiceUrl_feature", "_UI_OAuthMediator_type"),
+                 EsbPackage.Literals.OAUTH_MEDIATOR__REMOTE_SERVICE_URL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Username feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addUsernamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_OAuthMediator_username_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_OAuthMediator_username_feature",
-                                "_UI_OAuthMediator_type"),
-                        EsbPackage.Literals.OAUTH_MEDIATOR__USERNAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_OAuthMediator_username_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_OAuthMediator_username_feature", "_UI_OAuthMediator_type"),
+                 EsbPackage.Literals.OAUTH_MEDIATOR__USERNAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Password feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPasswordPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_OAuthMediator_password_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_OAuthMediator_password_feature",
-                                "_UI_OAuthMediator_type"),
-                        EsbPackage.Literals.OAUTH_MEDIATOR__PASSWORD, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_OAuthMediator_password_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_OAuthMediator_password_feature", "_UI_OAuthMediator_type"),
+                 EsbPackage.Literals.OAUTH_MEDIATOR__PASSWORD,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -125,7 +138,6 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -141,7 +153,6 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -156,7 +167,6 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
      * This returns OAuthMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -169,15 +179,15 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((OAuthMediator) object).getUsername();
-        return label == null || label.length() == 0 ? getString("_UI_OAuthMediator_type")
-                : getString("_UI_OAuthMediator_type") + " " + label;
+        String label = ((OAuthMediator)object).getUsername();
+        return label == null || label.length() == 0 ?
+            getString("_UI_OAuthMediator_type") :
+            getString("_UI_OAuthMediator_type") + " " + label;
     }
 
     /**
@@ -185,7 +195,6 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -194,15 +203,15 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(OAuthMediator.class)) {
-        case EsbPackage.OAUTH_MEDIATOR__REMOTE_SERVICE_URL:
-        case EsbPackage.OAUTH_MEDIATOR__USERNAME:
-        case EsbPackage.OAUTH_MEDIATOR__PASSWORD:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.OAUTH_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.OAUTH_MEDIATOR__OUTPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.OAUTH_MEDIATOR__REMOTE_SERVICE_URL:
+            case EsbPackage.OAUTH_MEDIATOR__USERNAME:
+            case EsbPackage.OAUTH_MEDIATOR__PASSWORD:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.OAUTH_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.OAUTH_MEDIATOR__OUTPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -212,7 +221,6 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -220,11 +228,15 @@ public class OAuthMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.OAUTH_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createOAuthMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.OAUTH_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createOAuthMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.OAUTH_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createOAuthMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.OAUTH_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createOAuthMediatorOutputConnector()));
     }
 
 }

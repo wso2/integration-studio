@@ -29,7 +29,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.MessageBuilder} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class MessageBuilderItemProvider extends EsbNodeItemProvider {
@@ -37,7 +36,6 @@ public class MessageBuilderItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public MessageBuilderItemProvider(AdapterFactory adapterFactory) {
@@ -48,7 +46,6 @@ public class MessageBuilderItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -67,58 +64,72 @@ public class MessageBuilderItemProvider extends EsbNodeItemProvider {
      * This adds a property descriptor for the Content Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addContentTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageBuilder_contentType_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_MessageBuilder_contentType_feature",
-                                "_UI_MessageBuilder_type"),
-                        EsbPackage.Literals.MESSAGE_BUILDER__CONTENT_TYPE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageBuilder_contentType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageBuilder_contentType_feature", "_UI_MessageBuilder_type"),
+                 EsbPackage.Literals.MESSAGE_BUILDER__CONTENT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Builder Class feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addBuilderClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageBuilder_builderClass_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_MessageBuilder_builderClass_feature",
-                                "_UI_MessageBuilder_type"),
-                        EsbPackage.Literals.MESSAGE_BUILDER__BUILDER_CLASS, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageBuilder_builderClass_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageBuilder_builderClass_feature", "_UI_MessageBuilder_type"),
+                 EsbPackage.Literals.MESSAGE_BUILDER__BUILDER_CLASS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Formatter Class feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addFormatterClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_MessageBuilder_formatterClass_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_MessageBuilder_formatterClass_feature",
-                                "_UI_MessageBuilder_type"),
-                        EsbPackage.Literals.MESSAGE_BUILDER__FORMATTER_CLASS, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_MessageBuilder_formatterClass_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_MessageBuilder_formatterClass_feature", "_UI_MessageBuilder_type"),
+                 EsbPackage.Literals.MESSAGE_BUILDER__FORMATTER_CLASS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns MessageBuilder.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -130,14 +141,14 @@ public class MessageBuilderItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((MessageBuilder) object).getContentType();
-        return label == null || label.length() == 0 ? getString("_UI_MessageBuilder_type")
-                : getString("_UI_MessageBuilder_type") + " " + label;
+        String label = ((MessageBuilder)object).getContentType();
+        return label == null || label.length() == 0 ?
+            getString("_UI_MessageBuilder_type") :
+            getString("_UI_MessageBuilder_type") + " " + label;
     }
 
     /**
@@ -145,7 +156,6 @@ public class MessageBuilderItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -153,11 +163,11 @@ public class MessageBuilderItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(MessageBuilder.class)) {
-        case EsbPackage.MESSAGE_BUILDER__CONTENT_TYPE:
-        case EsbPackage.MESSAGE_BUILDER__BUILDER_CLASS:
-        case EsbPackage.MESSAGE_BUILDER__FORMATTER_CLASS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.MESSAGE_BUILDER__CONTENT_TYPE:
+            case EsbPackage.MESSAGE_BUILDER__BUILDER_CLASS:
+            case EsbPackage.MESSAGE_BUILDER__FORMATTER_CLASS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -167,7 +177,6 @@ public class MessageBuilderItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

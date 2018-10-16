@@ -22,7 +22,6 @@ public class APIResourceFaultInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected APIResourceFaultInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class APIResourceFaultInputConnectorImpl extends InputConnectorImpl imple
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

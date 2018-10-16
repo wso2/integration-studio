@@ -29,11 +29,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter}
- * object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ProxyServiceParameterItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -42,7 +40,6 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ProxyServiceParameterItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +50,6 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -71,41 +67,50 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
      * This adds a property descriptor for the Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ProxyServiceParameter_name_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ProxyServiceParameter_name_feature",
-                                "_UI_ProxyServiceParameter_type"),
-                        EsbPackage.Literals.PROXY_SERVICE_PARAMETER__NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ProxyServiceParameter_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ProxyServiceParameter_name_feature", "_UI_ProxyServiceParameter_type"),
+                 EsbPackage.Literals.PROXY_SERVICE_PARAMETER__NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_ProxyServiceParameter_value_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ProxyServiceParameter_value_feature",
-                                "_UI_ProxyServiceParameter_type"),
-                        EsbPackage.Literals.PROXY_SERVICE_PARAMETER__VALUE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ProxyServiceParameter_value_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ProxyServiceParameter_value_feature", "_UI_ProxyServiceParameter_type"),
+                 EsbPackage.Literals.PROXY_SERVICE_PARAMETER__VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns ProxyServiceParameter.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -117,14 +122,14 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ProxyServiceParameter) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ProxyServiceParameter_type")
-                : getString("_UI_ProxyServiceParameter_type") + " " + label;
+        String label = ((ProxyServiceParameter)object).getName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ProxyServiceParameter_type") :
+            getString("_UI_ProxyServiceParameter_type") + " " + label;
     }
 
     /**
@@ -132,7 +137,6 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -140,10 +144,10 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
         updateChildren(notification);
 
         switch (notification.getFeatureID(ProxyServiceParameter.class)) {
-        case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
-        case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.PROXY_SERVICE_PARAMETER__NAME:
+            case EsbPackage.PROXY_SERVICE_PARAMETER__VALUE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -153,7 +157,6 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -165,7 +168,6 @@ public class ProxyServiceParameterItemProvider extends ItemProviderAdapter imple
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

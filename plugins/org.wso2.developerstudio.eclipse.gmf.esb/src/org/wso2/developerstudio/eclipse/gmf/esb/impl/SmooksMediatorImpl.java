@@ -38,24 +38,16 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getConfigurationKey <em>Configuration
- * Key</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputType <em>Input Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputExpression <em>Input
- * Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputType <em>Output Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputExpression <em>Output
- * Expression</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputProperty <em>Output
- * Property</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputAction <em>Output
- * Action</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputMethod <em>Output
- * Method</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputConnector <em>Input
- * Connector</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputConnector <em>Output
- * Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getConfigurationKey <em>Configuration Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputType <em>Input Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputExpression <em>Input Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputType <em>Output Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputExpression <em>Output Expression</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputProperty <em>Output Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputAction <em>Output Action</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputMethod <em>Output Method</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SmooksMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,7 +57,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getConfigurationKey() <em>Configuration Key</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getConfigurationKey()
      * @generated
      * @ordered
@@ -76,7 +67,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The default value of the '{@link #getInputType() <em>Input Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputType()
      * @generated
      * @ordered
@@ -87,7 +77,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getInputType() <em>Input Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputType()
      * @generated
      * @ordered
@@ -98,7 +87,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getInputExpression() <em>Input Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputExpression()
      * @generated
      * @ordered
@@ -109,7 +97,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The default value of the '{@link #getOutputType() <em>Output Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputType()
      * @generated
      * @ordered
@@ -120,7 +107,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getOutputType() <em>Output Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputType()
      * @generated
      * @ordered
@@ -131,7 +117,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getOutputExpression() <em>Output Expression</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputExpression()
      * @generated
      * @ordered
@@ -153,7 +138,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getOutputProperty() <em>Output Property</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputProperty()
      * @generated
      * @ordered
@@ -164,7 +148,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The default value of the '{@link #getOutputAction() <em>Output Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputAction()
      * @generated
      * @ordered
@@ -175,7 +158,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getOutputAction() <em>Output Action</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputAction()
      * @generated
      * @ordered
@@ -186,7 +168,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The default value of the '{@link #getOutputMethod() <em>Output Method</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputMethod()
      * @generated
      * @ordered
@@ -197,7 +178,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getOutputMethod() <em>Output Method</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputMethod()
      * @generated
      * @ordered
@@ -208,7 +188,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getInputConnector()
      * @generated
      * @ordered
@@ -219,7 +198,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
      * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOutputConnector()
      * @generated
      * @ordered
@@ -258,7 +236,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -269,7 +246,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyProperty getConfigurationKey() {
@@ -279,19 +255,14 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetConfigurationKey(RegistryKeyProperty newConfigurationKey, NotificationChain msgs) {
         RegistryKeyProperty oldConfigurationKey = configurationKey;
         configurationKey = newConfigurationKey;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY, oldConfigurationKey, newConfigurationKey);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY, oldConfigurationKey, newConfigurationKey);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -299,30 +270,25 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setConfigurationKey(RegistryKeyProperty newConfigurationKey) {
         if (newConfigurationKey != configurationKey) {
             NotificationChain msgs = null;
             if (configurationKey != null)
-                msgs = ((InternalEObject) configurationKey).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY, null, msgs);
+                msgs = ((InternalEObject)configurationKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY, null, msgs);
             if (newConfigurationKey != null)
-                msgs = ((InternalEObject) newConfigurationKey).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY, null, msgs);
+                msgs = ((InternalEObject)newConfigurationKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY, null, msgs);
             msgs = basicSetConfigurationKey(newConfigurationKey, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY,
-                    newConfigurationKey, newConfigurationKey));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY, newConfigurationKey, newConfigurationKey));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SmooksIODataType getInputType() {
@@ -332,21 +298,18 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputType(SmooksIODataType newInputType) {
         SmooksIODataType oldInputType = inputType;
         inputType = newInputType == null ? INPUT_TYPE_EDEFAULT : newInputType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE, oldInputType,
-                    inputType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE, oldInputType, inputType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getInputExpression() {
@@ -356,19 +319,14 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputExpression(NamespacedProperty newInputExpression, NotificationChain msgs) {
         NamespacedProperty oldInputExpression = inputExpression;
         inputExpression = newInputExpression;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION, oldInputExpression, newInputExpression);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION, oldInputExpression, newInputExpression);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -376,30 +334,25 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputExpression(NamespacedProperty newInputExpression) {
         if (newInputExpression != inputExpression) {
             NotificationChain msgs = null;
             if (inputExpression != null)
-                msgs = ((InternalEObject) inputExpression).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)inputExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION, null, msgs);
             if (newInputExpression != null)
-                msgs = ((InternalEObject) newInputExpression).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)newInputExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION, null, msgs);
             msgs = basicSetInputExpression(newInputExpression, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION,
-                    newInputExpression, newInputExpression));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION, newInputExpression, newInputExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SmooksOutputDataType getOutputType() {
@@ -409,21 +362,18 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputType(SmooksOutputDataType newOutputType) {
         SmooksOutputDataType oldOutputType = outputType;
         outputType = newOutputType == null ? OUTPUT_TYPE_EDEFAULT : newOutputType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE,
-                    oldOutputType, outputType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE, oldOutputType, outputType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamespacedProperty getOutputExpression() {
@@ -433,19 +383,14 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputExpression(NamespacedProperty newOutputExpression, NotificationChain msgs) {
         NamespacedProperty oldOutputExpression = outputExpression;
         outputExpression = newOutputExpression;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION, oldOutputExpression, newOutputExpression);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION, oldOutputExpression, newOutputExpression);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -453,30 +398,25 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputExpression(NamespacedProperty newOutputExpression) {
         if (newOutputExpression != outputExpression) {
             NotificationChain msgs = null;
             if (outputExpression != null)
-                msgs = ((InternalEObject) outputExpression).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)outputExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION, null, msgs);
             if (newOutputExpression != null)
-                msgs = ((InternalEObject) newOutputExpression).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION, null, msgs);
+                msgs = ((InternalEObject)newOutputExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION, null, msgs);
             msgs = basicSetOutputExpression(newOutputExpression, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION,
-                    newOutputExpression, newOutputExpression));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION, newOutputExpression, newOutputExpression));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getOutputProperty() {
@@ -486,21 +426,18 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputProperty(String newOutputProperty) {
         String oldOutputProperty = outputProperty;
         outputProperty = newOutputProperty;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY,
-                    oldOutputProperty, outputProperty));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY, oldOutputProperty, outputProperty));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ExpressionAction getOutputAction() {
@@ -510,21 +447,18 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputAction(ExpressionAction newOutputAction) {
         ExpressionAction oldOutputAction = outputAction;
         outputAction = newOutputAction == null ? OUTPUT_ACTION_EDEFAULT : newOutputAction;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION,
-                    oldOutputAction, outputAction));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION, oldOutputAction, outputAction));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public OutputMethod getOutputMethod() {
@@ -534,21 +468,18 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputMethod(OutputMethod newOutputMethod) {
         OutputMethod oldOutputMethod = outputMethod;
         outputMethod = newOutputMethod == null ? OUTPUT_METHOD_EDEFAULT : newOutputMethod;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD,
-                    oldOutputMethod, outputMethod));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD, oldOutputMethod, outputMethod));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SmooksMediatorInputConnector getInputConnector() {
@@ -558,7 +489,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetInputConnector(SmooksMediatorInputConnector newInputConnector,
@@ -566,12 +496,8 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
         SmooksMediatorInputConnector oldInputConnector = inputConnector;
         inputConnector = newInputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR, oldInputConnector, newInputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -579,30 +505,25 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setInputConnector(SmooksMediatorInputConnector newInputConnector) {
         if (newInputConnector != inputConnector) {
             NotificationChain msgs = null;
             if (inputConnector != null)
-                msgs = ((InternalEObject) inputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)inputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             if (newInputConnector != null)
-                msgs = ((InternalEObject) newInputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newInputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR, null, msgs);
             msgs = basicSetInputConnector(newInputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR,
-                    newInputConnector, newInputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public SmooksMediatorOutputConnector getOutputConnector() {
@@ -612,7 +533,6 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOutputConnector(SmooksMediatorOutputConnector newOutputConnector,
@@ -620,12 +540,8 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
         SmooksMediatorOutputConnector oldOutputConnector = outputConnector;
         outputConnector = newOutputConnector;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR, oldOutputConnector, newOutputConnector);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -633,45 +549,40 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOutputConnector(SmooksMediatorOutputConnector newOutputConnector) {
         if (newOutputConnector != outputConnector) {
             NotificationChain msgs = null;
             if (outputConnector != null)
-                msgs = ((InternalEObject) outputConnector).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)outputConnector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             if (newOutputConnector != null)
-                msgs = ((InternalEObject) newOutputConnector).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
+                msgs = ((InternalEObject)newOutputConnector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR, null, msgs);
             msgs = basicSetOutputConnector(newOutputConnector, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR,
-                    newOutputConnector, newOutputConnector));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR, newOutputConnector, newOutputConnector));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
-            return basicSetConfigurationKey(null, msgs);
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
-            return basicSetInputExpression(null, msgs);
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
-            return basicSetOutputExpression(null, msgs);
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
-            return basicSetInputConnector(null, msgs);
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
-            return basicSetOutputConnector(null, msgs);
+            case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
+                return basicSetConfigurationKey(null, msgs);
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
+                return basicSetInputExpression(null, msgs);
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
+                return basicSetOutputExpression(null, msgs);
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
+                return basicSetInputConnector(null, msgs);
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
+                return basicSetOutputConnector(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -679,32 +590,31 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
-            return getConfigurationKey();
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE:
-            return getInputType();
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
-            return getInputExpression();
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE:
-            return getOutputType();
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
-            return getOutputExpression();
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY:
-            return getOutputProperty();
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION:
-            return getOutputAction();
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD:
-            return getOutputMethod();
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
-            return getInputConnector();
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
-            return getOutputConnector();
+            case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
+                return getConfigurationKey();
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE:
+                return getInputType();
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
+                return getInputExpression();
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE:
+                return getOutputType();
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
+                return getOutputExpression();
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY:
+                return getOutputProperty();
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION:
+                return getOutputAction();
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD:
+                return getOutputMethod();
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
+                return getInputConnector();
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
+                return getOutputConnector();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -712,42 +622,41 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
-            setConfigurationKey((RegistryKeyProperty) newValue);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE:
-            setInputType((SmooksIODataType) newValue);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
-            setInputExpression((NamespacedProperty) newValue);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE:
-            setOutputType((SmooksOutputDataType) newValue);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
-            setOutputExpression((NamespacedProperty) newValue);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY:
-            setOutputProperty((String) newValue);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION:
-            setOutputAction((ExpressionAction) newValue);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD:
-            setOutputMethod((OutputMethod) newValue);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((SmooksMediatorInputConnector) newValue);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((SmooksMediatorOutputConnector) newValue);
-            return;
+            case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
+                setConfigurationKey((RegistryKeyProperty)newValue);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE:
+                setInputType((SmooksIODataType)newValue);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
+                setInputExpression((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE:
+                setOutputType((SmooksOutputDataType)newValue);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
+                setOutputExpression((NamespacedProperty)newValue);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY:
+                setOutputProperty((String)newValue);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION:
+                setOutputAction((ExpressionAction)newValue);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD:
+                setOutputMethod((OutputMethod)newValue);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((SmooksMediatorInputConnector)newValue);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((SmooksMediatorOutputConnector)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -755,42 +664,41 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
-            setConfigurationKey((RegistryKeyProperty) null);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE:
-            setInputType(INPUT_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
-            setInputExpression((NamespacedProperty) null);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE:
-            setOutputType(OUTPUT_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
-            setOutputExpression((NamespacedProperty) null);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY:
-            setOutputProperty(OUTPUT_PROPERTY_EDEFAULT);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION:
-            setOutputAction(OUTPUT_ACTION_EDEFAULT);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD:
-            setOutputMethod(OUTPUT_METHOD_EDEFAULT);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
-            setInputConnector((SmooksMediatorInputConnector) null);
-            return;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
-            setOutputConnector((SmooksMediatorOutputConnector) null);
-            return;
+            case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
+                setConfigurationKey((RegistryKeyProperty)null);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE:
+                setInputType(INPUT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
+                setInputExpression((NamespacedProperty)null);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE:
+                setOutputType(OUTPUT_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
+                setOutputExpression((NamespacedProperty)null);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY:
+                setOutputProperty(OUTPUT_PROPERTY_EDEFAULT);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION:
+                setOutputAction(OUTPUT_ACTION_EDEFAULT);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD:
+                setOutputMethod(OUTPUT_METHOD_EDEFAULT);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
+                setInputConnector((SmooksMediatorInputConnector)null);
+                return;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
+                setOutputConnector((SmooksMediatorOutputConnector)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -798,33 +706,31 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
-            return configurationKey != null;
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE:
-            return inputType != INPUT_TYPE_EDEFAULT;
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
-            return inputExpression != null;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE:
-            return outputType != OUTPUT_TYPE_EDEFAULT;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
-            return outputExpression != null;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY:
-            return OUTPUT_PROPERTY_EDEFAULT == null ? outputProperty != null
-                    : !OUTPUT_PROPERTY_EDEFAULT.equals(outputProperty);
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION:
-            return outputAction != OUTPUT_ACTION_EDEFAULT;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD:
-            return outputMethod != OUTPUT_METHOD_EDEFAULT;
-        case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
-            return inputConnector != null;
-        case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
-            return outputConnector != null;
+            case EsbPackage.SMOOKS_MEDIATOR__CONFIGURATION_KEY:
+                return configurationKey != null;
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_TYPE:
+                return inputType != INPUT_TYPE_EDEFAULT;
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_EXPRESSION:
+                return inputExpression != null;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_TYPE:
+                return outputType != OUTPUT_TYPE_EDEFAULT;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_EXPRESSION:
+                return outputExpression != null;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_PROPERTY:
+                return OUTPUT_PROPERTY_EDEFAULT == null ? outputProperty != null : !OUTPUT_PROPERTY_EDEFAULT.equals(outputProperty);
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_ACTION:
+                return outputAction != OUTPUT_ACTION_EDEFAULT;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_METHOD:
+                return outputMethod != OUTPUT_METHOD_EDEFAULT;
+            case EsbPackage.SMOOKS_MEDIATOR__INPUT_CONNECTOR:
+                return inputConnector != null;
+            case EsbPackage.SMOOKS_MEDIATOR__OUTPUT_CONNECTOR:
+                return outputConnector != null;
         }
         return super.eIsSet(featureID);
     }
@@ -832,13 +738,11 @@ public class SmooksMediatorImpl extends MediatorImpl implements SmooksMediator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (inputType: ");

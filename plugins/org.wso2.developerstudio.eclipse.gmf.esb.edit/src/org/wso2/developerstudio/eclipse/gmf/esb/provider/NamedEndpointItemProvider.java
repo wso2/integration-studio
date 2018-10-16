@@ -35,7 +35,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
@@ -43,7 +42,6 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NamedEndpointItemProvider(AdapterFactory adapterFactory) {
@@ -79,68 +77,88 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
      * This adds a property descriptor for the Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_NamedEndpoint_name_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_NamedEndpoint_name_feature",
-                                "_UI_NamedEndpoint_type"),
-                        EsbPackage.Literals.NAMED_ENDPOINT__NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NamedEndpoint_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedEndpoint_name_feature", "_UI_NamedEndpoint_type"),
+                 EsbPackage.Literals.NAMED_ENDPOINT__NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Referring Endpoint Type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addReferringEndpointTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NamedEndpoint_referringEndpointType_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_NamedEndpoint_referringEndpointType_feature",
-                        "_UI_NamedEndpoint_type"),
-                EsbPackage.Literals.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NamedEndpoint_referringEndpointType_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedEndpoint_referringEndpointType_feature", "_UI_NamedEndpoint_type"),
+                 EsbPackage.Literals.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Dynamic Reference Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addDynamicReferenceKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_NamedEndpoint_dynamicReferenceKey_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_NamedEndpoint_dynamicReferenceKey_feature",
-                                "_UI_NamedEndpoint_type"),
-                        EsbPackage.Literals.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY, true, false, false, null, null,
-                        null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NamedEndpoint_dynamicReferenceKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedEndpoint_dynamicReferenceKey_feature", "_UI_NamedEndpoint_type"),
+                 EsbPackage.Literals.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Static Reference Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addStaticReferenceKeyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_NamedEndpoint_staticReferenceKey_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_NamedEndpoint_staticReferenceKey_feature",
-                                "_UI_NamedEndpoint_type"),
-                        EsbPackage.Literals.NAMED_ENDPOINT__STATIC_REFERENCE_KEY, true, false, false, null, null,
-                        null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NamedEndpoint_staticReferenceKey_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedEndpoint_staticReferenceKey_feature", "_UI_NamedEndpoint_type"),
+                 EsbPackage.Literals.NAMED_ENDPOINT__STATIC_REFERENCE_KEY,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -149,7 +167,6 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -167,7 +184,6 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -182,7 +198,6 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
      * This returns NamedEndpoint.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -194,14 +209,14 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((NamedEndpoint) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_NamedEndpoint_type")
-                : getString("_UI_NamedEndpoint_type") + " " + label;
+        String label = ((NamedEndpoint)object).getName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_NamedEndpoint_type") :
+            getString("_UI_NamedEndpoint_type") + " " + label;
     }
 
     /**
@@ -209,7 +224,6 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -217,16 +231,16 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(NamedEndpoint.class)) {
-        case EsbPackage.NAMED_ENDPOINT__NAME:
-        case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
-        case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
-        case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
-        case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.NAMED_ENDPOINT__NAME:
+            case EsbPackage.NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.NAMED_ENDPOINT__INPUT_CONNECTOR:
+            case EsbPackage.NAMED_ENDPOINT__OUTPUT_CONNECTOR:
+            case EsbPackage.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY:
+            case EsbPackage.NAMED_ENDPOINT__STATIC_REFERENCE_KEY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -236,31 +250,37 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.NAMED_ENDPOINT__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createNamedEndpointInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.NAMED_ENDPOINT__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createNamedEndpointInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.NAMED_ENDPOINT__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createNamedEndpointOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.NAMED_ENDPOINT__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createNamedEndpointOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY,
-                EsbFactory.eINSTANCE.createNamespacedProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.NAMED_ENDPOINT__DYNAMIC_REFERENCE_KEY,
+                 EsbFactory.eINSTANCE.createNamespacedProperty()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.NAMED_ENDPOINT__STATIC_REFERENCE_KEY,
-                EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.NAMED_ENDPOINT__STATIC_REFERENCE_KEY,
+                 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
     }
 
     /**
      * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -268,13 +288,15 @@ public class NamedEndpointItemProvider extends AbstractEndPointItemProvider {
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY
-                || childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY
-                || childFeature == EsbPackage.Literals.NAMED_ENDPOINT__STATIC_REFERENCE_KEY;
+        boolean qualify =
+            childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__INBOUND_POLICY ||
+            childFeature == EsbPackage.Literals.ABSTRACT_END_POINT__OUTBOUND_POLICY ||
+            childFeature == EsbPackage.Literals.NAMED_ENDPOINT__STATIC_REFERENCE_KEY;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2",
-                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString
+                ("_UI_CreateChild_text2",
+                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

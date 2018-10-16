@@ -33,7 +33,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceSessionType;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider {
@@ -41,7 +40,6 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public LoadBalanceEndPointItemProvider(AdapterFactory adapterFactory) {
@@ -80,50 +78,66 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
      * This adds a property descriptor for the Failover feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addFailoverPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_LoadBalanceEndPoint_failover_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_LoadBalanceEndPoint_failover_feature",
-                                "_UI_LoadBalanceEndPoint_type"),
-                        EsbPackage.Literals.LOAD_BALANCE_END_POINT__FAILOVER, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_LoadBalanceEndPoint_failover_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_LoadBalanceEndPoint_failover_feature", "_UI_LoadBalanceEndPoint_type"),
+                 EsbPackage.Literals.LOAD_BALANCE_END_POINT__FAILOVER,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Policy feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPolicyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_LoadBalanceEndPoint_policy_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_LoadBalanceEndPoint_policy_feature",
-                                "_UI_LoadBalanceEndPoint_type"),
-                        EsbPackage.Literals.LOAD_BALANCE_END_POINT__POLICY, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_LoadBalanceEndPoint_policy_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_LoadBalanceEndPoint_policy_feature", "_UI_LoadBalanceEndPoint_type"),
+                 EsbPackage.Literals.LOAD_BALANCE_END_POINT__POLICY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Member feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addMemberPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_LoadBalanceEndPoint_member_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_LoadBalanceEndPoint_member_feature",
-                                "_UI_LoadBalanceEndPoint_type"),
-                        EsbPackage.Literals.LOAD_BALANCE_END_POINT__MEMBER, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_LoadBalanceEndPoint_member_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_LoadBalanceEndPoint_member_feature", "_UI_LoadBalanceEndPoint_type"),
+                 EsbPackage.Literals.LOAD_BALANCE_END_POINT__MEMBER,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -199,7 +213,6 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -218,7 +231,6 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -233,7 +245,6 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
      * This returns LoadBalanceEndPoint.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -245,14 +256,14 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((LoadBalanceEndPoint) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_LoadBalanceEndPoint_type")
-                : getString("_UI_LoadBalanceEndPoint_type") + " " + label;
+        String label = ((LoadBalanceEndPoint)object).getName();
+        return label == null || label.length() == 0 ?
+            getString("_UI_LoadBalanceEndPoint_type") :
+            getString("_UI_LoadBalanceEndPoint_type") + " " + label;
     }
 
     /**
@@ -260,7 +271,6 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -268,21 +278,21 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
         updateChildren(notification);
 
         switch (notification.getFeatureID(LoadBalanceEndPoint.class)) {
-        case EsbPackage.LOAD_BALANCE_END_POINT__FAILOVER:
-        case EsbPackage.LOAD_BALANCE_END_POINT__POLICY:
-        case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TYPE:
-        case EsbPackage.LOAD_BALANCE_END_POINT__ALGORITHM:
-        case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT:
-        case EsbPackage.LOAD_BALANCE_END_POINT__BUILD_MESSAGE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.LOAD_BALANCE_END_POINT__INPUT_CONNECTOR:
-        case EsbPackage.LOAD_BALANCE_END_POINT__OUTPUT_CONNECTOR:
-        case EsbPackage.LOAD_BALANCE_END_POINT__WEST_OUTPUT_CONNECTOR:
-        case EsbPackage.LOAD_BALANCE_END_POINT__MEMBER:
-        case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.LOAD_BALANCE_END_POINT__FAILOVER:
+            case EsbPackage.LOAD_BALANCE_END_POINT__POLICY:
+            case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TYPE:
+            case EsbPackage.LOAD_BALANCE_END_POINT__ALGORITHM:
+            case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT:
+            case EsbPackage.LOAD_BALANCE_END_POINT__BUILD_MESSAGE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.LOAD_BALANCE_END_POINT__INPUT_CONNECTOR:
+            case EsbPackage.LOAD_BALANCE_END_POINT__OUTPUT_CONNECTOR:
+            case EsbPackage.LOAD_BALANCE_END_POINT__WEST_OUTPUT_CONNECTOR:
+            case EsbPackage.LOAD_BALANCE_END_POINT__MEMBER:
+            case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -292,27 +302,36 @@ public class LoadBalanceEndPointItemProvider extends ParentEndPointItemProvider 
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.LOAD_BALANCE_END_POINT__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createLoadBalanceEndPointInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.LOAD_BALANCE_END_POINT__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createLoadBalanceEndPointInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.LOAD_BALANCE_END_POINT__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createLoadBalanceEndPointOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.LOAD_BALANCE_END_POINT__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createLoadBalanceEndPointOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.LOAD_BALANCE_END_POINT__WEST_OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createLoadBalanceEndPointWestOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.LOAD_BALANCE_END_POINT__WEST_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createLoadBalanceEndPointWestOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.LOAD_BALANCE_END_POINT__MEMBER,
-                EsbFactory.eINSTANCE.createMember()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.LOAD_BALANCE_END_POINT__MEMBER,
+                 EsbFactory.eINSTANCE.createMember()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW,
-                EsbFactory.eINSTANCE.createMediatorFlow()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW,
+                 EsbFactory.eINSTANCE.createMediatorFlow()));
     }
 
 }

@@ -29,11 +29,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointOutputConnector} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CallMediatorEndpointOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -41,7 +39,6 @@ public class CallMediatorEndpointOutputConnectorItemProvider extends OutputConne
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CallMediatorEndpointOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +49,6 @@ public class CallMediatorEndpointOutputConnectorItemProvider extends OutputConne
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -68,7 +64,6 @@ public class CallMediatorEndpointOutputConnectorItemProvider extends OutputConne
      * This returns CallMediatorEndpointOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -80,7 +75,6 @@ public class CallMediatorEndpointOutputConnectorItemProvider extends OutputConne
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -93,7 +87,6 @@ public class CallMediatorEndpointOutputConnectorItemProvider extends OutputConne
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -107,7 +100,6 @@ public class CallMediatorEndpointOutputConnectorItemProvider extends OutputConne
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

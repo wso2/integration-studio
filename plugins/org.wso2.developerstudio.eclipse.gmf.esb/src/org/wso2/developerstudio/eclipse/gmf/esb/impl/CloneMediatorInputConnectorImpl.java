@@ -22,7 +22,6 @@ public class CloneMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CloneMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class CloneMediatorInputConnectorImpl extends InputConnectorImpl implemen
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

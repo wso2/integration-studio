@@ -17,12 +17,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#getEndPointName <em>End Point Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isAnonymous <em>Anonymous</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isInLine <em>In Line</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isDuplicate <em>Duplicate</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#getProperties <em>Properties</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isReversed <em>Reversed</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#getEndPointName <em>End Point Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isAnonymous <em>Anonymous</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isInLine <em>In Line</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isDuplicate <em>Duplicate</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#getProperties <em>Properties</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isReversed <em>Reversed</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPoint()
@@ -38,7 +38,6 @@ public interface EndPoint extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>End Point Name</em>' attribute.
      * @see #setEndPointName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPoint_EndPointName()
@@ -48,11 +47,9 @@ public interface EndPoint extends EsbElement {
     String getEndPointName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#getEndPointName <em>End Point
-     * Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#getEndPointName <em>End Point Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>End Point Name</em>' attribute.
      * @see #getEndPointName()
      * @generated
@@ -68,7 +65,6 @@ public interface EndPoint extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Anonymous</em>' attribute.
      * @see #setAnonymous(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPoint_Anonymous()
@@ -78,11 +74,9 @@ public interface EndPoint extends EsbElement {
     boolean isAnonymous();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isAnonymous <em>Anonymous</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isAnonymous <em>Anonymous</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Anonymous</em>' attribute.
      * @see #isAnonymous()
      * @generated
@@ -98,7 +92,6 @@ public interface EndPoint extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>In Line</em>' attribute.
      * @see #setInLine(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPoint_InLine()
@@ -108,11 +101,9 @@ public interface EndPoint extends EsbElement {
     boolean isInLine();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isInLine <em>In Line</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isInLine <em>In Line</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>In Line</em>' attribute.
      * @see #isInLine()
      * @generated
@@ -127,7 +118,6 @@ public interface EndPoint extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Duplicate</em>' attribute.
      * @see #setDuplicate(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPoint_Duplicate()
@@ -137,11 +127,9 @@ public interface EndPoint extends EsbElement {
     boolean isDuplicate();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isDuplicate <em>Duplicate</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isDuplicate <em>Duplicate</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Duplicate</em>' attribute.
      * @see #isDuplicate()
      * @generated
@@ -157,7 +145,6 @@ public interface EndPoint extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Properties</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPoint_Properties()
      * @model containment="true"
@@ -174,7 +161,6 @@ public interface EndPoint extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Reversed</em>' attribute.
      * @see #setReversed(boolean)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPoint_Reversed()
@@ -184,11 +170,9 @@ public interface EndPoint extends EsbElement {
     boolean isReversed();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isReversed <em>Reversed</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPoint#isReversed <em>Reversed</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Reversed</em>' attribute.
      * @see #isReversed()
      * @generated

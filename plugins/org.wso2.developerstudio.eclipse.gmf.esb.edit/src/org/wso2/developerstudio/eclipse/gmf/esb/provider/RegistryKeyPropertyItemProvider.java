@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -41,7 +40,6 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public RegistryKeyPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +50,6 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -73,75 +70,94 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
      * This adds a property descriptor for the Pretty Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addPrettyNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RegistryKeyProperty_prettyName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RegistryKeyProperty_prettyName_feature",
-                                "_UI_RegistryKeyProperty_type"),
-                        EsbPackage.Literals.REGISTRY_KEY_PROPERTY__PRETTY_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RegistryKeyProperty_prettyName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RegistryKeyProperty_prettyName_feature", "_UI_RegistryKeyProperty_type"),
+                 EsbPackage.Literals.REGISTRY_KEY_PROPERTY__PRETTY_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Key Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addKeyNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RegistryKeyProperty_keyName_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RegistryKeyProperty_keyName_feature",
-                                "_UI_RegistryKeyProperty_type"),
-                        EsbPackage.Literals.REGISTRY_KEY_PROPERTY__KEY_NAME, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RegistryKeyProperty_keyName_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RegistryKeyProperty_keyName_feature", "_UI_RegistryKeyProperty_type"),
+                 EsbPackage.Literals.REGISTRY_KEY_PROPERTY__KEY_NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Key Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addKeyValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RegistryKeyProperty_keyValue_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RegistryKeyProperty_keyValue_feature",
-                                "_UI_RegistryKeyProperty_type"),
-                        EsbPackage.Literals.REGISTRY_KEY_PROPERTY__KEY_VALUE, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RegistryKeyProperty_keyValue_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RegistryKeyProperty_keyValue_feature", "_UI_RegistryKeyProperty_type"),
+                 EsbPackage.Literals.REGISTRY_KEY_PROPERTY__KEY_VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Filters feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addFiltersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_RegistryKeyProperty_filters_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_RegistryKeyProperty_filters_feature",
-                                "_UI_RegistryKeyProperty_type"),
-                        EsbPackage.Literals.REGISTRY_KEY_PROPERTY__FILTERS, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_RegistryKeyProperty_filters_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RegistryKeyProperty_filters_feature", "_UI_RegistryKeyProperty_type"),
+                 EsbPackage.Literals.REGISTRY_KEY_PROPERTY__FILTERS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This returns RegistryKeyProperty.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -173,7 +189,6 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -182,12 +197,12 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
         updateChildren(notification);
 
         switch (notification.getFeatureID(RegistryKeyProperty.class)) {
-        case EsbPackage.REGISTRY_KEY_PROPERTY__PRETTY_NAME:
-        case EsbPackage.REGISTRY_KEY_PROPERTY__KEY_NAME:
-        case EsbPackage.REGISTRY_KEY_PROPERTY__KEY_VALUE:
-        case EsbPackage.REGISTRY_KEY_PROPERTY__FILTERS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case EsbPackage.REGISTRY_KEY_PROPERTY__PRETTY_NAME:
+            case EsbPackage.REGISTRY_KEY_PROPERTY__KEY_NAME:
+            case EsbPackage.REGISTRY_KEY_PROPERTY__KEY_VALUE:
+            case EsbPackage.REGISTRY_KEY_PROPERTY__FILTERS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -197,7 +212,6 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -210,7 +224,6 @@ public class RegistryKeyPropertyItemProvider extends ItemProviderAdapter impleme
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

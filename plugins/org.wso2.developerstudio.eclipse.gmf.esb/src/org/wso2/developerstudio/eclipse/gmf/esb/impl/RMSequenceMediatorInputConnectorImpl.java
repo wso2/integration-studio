@@ -23,7 +23,6 @@ public class RMSequenceMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected RMSequenceMediatorInputConnectorImpl() {
@@ -33,7 +32,6 @@ public class RMSequenceMediatorInputConnectorImpl extends InputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

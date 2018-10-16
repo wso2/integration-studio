@@ -30,7 +30,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FilterContainer;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.FilterContainer} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class FilterContainerItemProvider extends EsbNodeItemProvider {
@@ -38,7 +37,6 @@ public class FilterContainerItemProvider extends EsbNodeItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public FilterContainerItemProvider(AdapterFactory adapterFactory) {
@@ -49,7 +47,6 @@ public class FilterContainerItemProvider extends EsbNodeItemProvider {
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -67,7 +64,6 @@ public class FilterContainerItemProvider extends EsbNodeItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -83,7 +79,6 @@ public class FilterContainerItemProvider extends EsbNodeItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -98,7 +93,6 @@ public class FilterContainerItemProvider extends EsbNodeItemProvider {
      * This returns FilterContainer.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -110,7 +104,6 @@ public class FilterContainerItemProvider extends EsbNodeItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -123,7 +116,6 @@ public class FilterContainerItemProvider extends EsbNodeItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -131,10 +123,10 @@ public class FilterContainerItemProvider extends EsbNodeItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(FilterContainer.class)) {
-        case EsbPackage.FILTER_CONTAINER__PASS_CONTAINER:
-        case EsbPackage.FILTER_CONTAINER__FAIL_CONTAINER:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.FILTER_CONTAINER__PASS_CONTAINER:
+            case EsbPackage.FILTER_CONTAINER__FAIL_CONTAINER:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -144,18 +136,21 @@ public class FilterContainerItemProvider extends EsbNodeItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FILTER_CONTAINER__PASS_CONTAINER,
-                EsbFactory.eINSTANCE.createFilterPassContainer()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FILTER_CONTAINER__PASS_CONTAINER,
+                 EsbFactory.eINSTANCE.createFilterPassContainer()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.FILTER_CONTAINER__FAIL_CONTAINER,
-                EsbFactory.eINSTANCE.createFilterFailContainer()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.FILTER_CONTAINER__FAIL_CONTAINER,
+                 EsbFactory.eINSTANCE.createFilterFailContainer()));
     }
 
 }

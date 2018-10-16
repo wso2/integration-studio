@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Rule Source Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleSourceType()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum RuleSourceType implements Enumerator {
      * The '<em><b>Inline</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #INLINE_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum RuleSourceType implements Enumerator {
      * The '<em><b>Registry</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #REGISTRY_VALUE
      * @generated
      * @ordered
@@ -48,7 +45,6 @@ public enum RuleSourceType implements Enumerator {
      * The '<em><b>Url</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #URL_VALUE
      * @generated
      * @ordered
@@ -63,7 +59,6 @@ public enum RuleSourceType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #INLINE
      * @model name="inline" literal="INLINE"
      * @generated
@@ -79,7 +74,6 @@ public enum RuleSourceType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #REGISTRY
      * @model name="registry" literal="REGISTRY_REFERENCE"
      * @generated
@@ -95,7 +89,6 @@ public enum RuleSourceType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #URL
      * @model name="url" literal="URL"
      * @generated
@@ -107,16 +100,18 @@ public enum RuleSourceType implements Enumerator {
      * An array of all the '<em><b>Rule Source Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final RuleSourceType[] VALUES_ARRAY = new RuleSourceType[] { INLINE, REGISTRY, URL, };
+    private static final RuleSourceType[] VALUES_ARRAY = new RuleSourceType[] {
+            INLINE,
+            REGISTRY,
+            URL,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Rule Source Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<RuleSourceType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -125,7 +120,6 @@ public enum RuleSourceType implements Enumerator {
      * Returns the '<em><b>Rule Source Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -144,7 +138,6 @@ public enum RuleSourceType implements Enumerator {
      * Returns the '<em><b>Rule Source Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -163,19 +156,15 @@ public enum RuleSourceType implements Enumerator {
      * Returns the '<em><b>Rule Source Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static RuleSourceType get(int value) {
         switch (value) {
-        case INLINE_VALUE:
-            return INLINE;
-        case REGISTRY_VALUE:
-            return REGISTRY;
-        case URL_VALUE:
-            return URL;
+            case INLINE_VALUE: return INLINE;
+            case REGISTRY_VALUE: return REGISTRY;
+            case URL_VALUE: return URL;
         }
         return null;
     }
@@ -183,7 +172,6 @@ public enum RuleSourceType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -191,7 +179,6 @@ public enum RuleSourceType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -199,7 +186,6 @@ public enum RuleSourceType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -208,7 +194,6 @@ public enum RuleSourceType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private RuleSourceType(int value, String name, String literal) {
@@ -220,38 +205,34 @@ public enum RuleSourceType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

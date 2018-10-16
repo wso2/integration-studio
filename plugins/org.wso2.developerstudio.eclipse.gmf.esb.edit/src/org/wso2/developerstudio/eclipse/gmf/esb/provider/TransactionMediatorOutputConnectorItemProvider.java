@@ -20,11 +20,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediatorOutputConnector} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediatorOutputConnector} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class TransactionMediatorOutputConnectorItemProvider extends OutputConnectorItemProvider {
@@ -32,7 +30,6 @@ public class TransactionMediatorOutputConnectorItemProvider extends OutputConnec
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public TransactionMediatorOutputConnectorItemProvider(AdapterFactory adapterFactory) {
@@ -43,7 +40,6 @@ public class TransactionMediatorOutputConnectorItemProvider extends OutputConnec
      * This returns the property descriptors for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -59,7 +55,6 @@ public class TransactionMediatorOutputConnectorItemProvider extends OutputConnec
      * This returns TransactionMediatorOutputConnector.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -71,7 +66,6 @@ public class TransactionMediatorOutputConnectorItemProvider extends OutputConnec
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -84,7 +78,6 @@ public class TransactionMediatorOutputConnectorItemProvider extends OutputConnec
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -98,7 +91,6 @@ public class TransactionMediatorOutputConnectorItemProvider extends OutputConnec
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

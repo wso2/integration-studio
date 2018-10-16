@@ -84,7 +84,28 @@ public enum InboundEndpointParameterType {
                                                                                                     true), VFS_SUBFOLDER_TIMESTAMP_FORMAT_TYPE(
                                                                                                             InboundEndpointConstants.VFS_SUBFOLDER_TIMESTAMP_FORMAT,
                                                                                                             INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT,
-                                                                                                            true),
+                                                                                                            true), VFS_REPLY_FILE_URI(
+                                                                                                                    InboundEndpointConstants.VFS_REPLY_FILE_URI,
+                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_URI,
+                                                                                                                    true), VFS_REPLY_FILE_NAME(
+                                                                                                                            InboundEndpointConstants.VFS_REPLY_FILE_NAME,
+                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_REPLY_FILE_NAME,
+                                                                                                                            true), VFS_FAILED_RECORDS_FILE_NAME(
+                                                                                                                                    InboundEndpointConstants.VFS_FAILED_RECORDS_FILE_NAME,
+                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_NAME,
+                                                                                                                                    true), VFS_FAILED_RECORDS_FILE_DESTINATION(
+                                                                                                                                            InboundEndpointConstants.VFS_FAILED_RECORDS_FILE_DESTINATION,
+                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_FAILED_RECORDS_FILE_DESTINATION,
+                                                                                                                                            true), VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT(
+                                                                                                                                                    InboundEndpointConstants.VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT,
+                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT,
+                                                                                                                                                    true), VFS_FAILED_RECORD_NEXT_RETRY_DURATION(
+                                                                                                                                                            InboundEndpointConstants.VFS_FAILED_RECORD_NEXT_RETRY_DURATION,
+                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT,
+                                                                                                                                                            true), VFS_MOVE_AFTER_FAILED_MOVE(
+                                                                                                                                                                    InboundEndpointConstants.VFS_MOVE_AFTER_FAILED_MOVE,
+                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILED_MOVE,
+                                                                                                                                                                    true),
 
     JMS_JAVA_NAMING_FACTORY_INITIAL_TYPE(InboundEndpointConstants.JMS_JAVA_NAMING_FACTORY_INITIAL,
             INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL,

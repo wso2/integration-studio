@@ -22,7 +22,6 @@ public class CommandMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CommandMediatorOutputConnectorImpl() {
@@ -32,7 +31,6 @@ public class CommandMediatorOutputConnectorImpl extends OutputConnectorImpl impl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

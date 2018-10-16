@@ -38,14 +38,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getOnRejectContainer <em>On Reject
- * Container</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getOnAcceptContainer <em>On Accept
- * Container</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getAdviceContainer <em>Advice
- * Container</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getObligationsContainer
- * <em>Obligations Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getOnRejectContainer <em>On Reject Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getOnAcceptContainer <em>On Accept Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getAdviceContainer <em>Advice Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementContainerImpl#getObligationsContainer <em>Obligations Container</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,7 +51,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
      * The cached value of the '{@link #getOnRejectContainer() <em>On Reject Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOnRejectContainer()
      * @generated
      * @ordered
@@ -66,7 +61,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
      * The cached value of the '{@link #getOnAcceptContainer() <em>On Accept Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getOnAcceptContainer()
      * @generated
      * @ordered
@@ -77,7 +71,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
      * The cached value of the '{@link #getAdviceContainer() <em>Advice Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getAdviceContainer()
      * @generated
      * @ordered
@@ -85,11 +78,9 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     protected EntitlementAdviceContainer adviceContainer;
 
     /**
-     * The cached value of the '{@link #getObligationsContainer() <em>Obligations Container</em>}' containment
-     * reference.
+     * The cached value of the '{@link #getObligationsContainer() <em>Obligations Container</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getObligationsContainer()
      * @generated
      * @ordered
@@ -99,7 +90,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EntitlementContainerImpl() {
@@ -109,7 +99,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -120,7 +109,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EntitlementOnRejectContainer getOnRejectContainer() {
@@ -130,7 +118,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOnRejectContainer(EntitlementOnRejectContainer newOnRejectContainer,
@@ -138,12 +125,8 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
         EntitlementOnRejectContainer oldOnRejectContainer = onRejectContainer;
         onRejectContainer = newOnRejectContainer;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER, oldOnRejectContainer, newOnRejectContainer);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER, oldOnRejectContainer, newOnRejectContainer);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -151,30 +134,25 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOnRejectContainer(EntitlementOnRejectContainer newOnRejectContainer) {
         if (newOnRejectContainer != onRejectContainer) {
             NotificationChain msgs = null;
             if (onRejectContainer != null)
-                msgs = ((InternalEObject) onRejectContainer).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER, null, msgs);
+                msgs = ((InternalEObject)onRejectContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER, null, msgs);
             if (newOnRejectContainer != null)
-                msgs = ((InternalEObject) newOnRejectContainer).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER, null, msgs);
+                msgs = ((InternalEObject)newOnRejectContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER, null, msgs);
             msgs = basicSetOnRejectContainer(newOnRejectContainer, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER,
-                    newOnRejectContainer, newOnRejectContainer));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER, newOnRejectContainer, newOnRejectContainer));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EntitlementOnAcceptContainer getOnAcceptContainer() {
@@ -184,7 +162,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetOnAcceptContainer(EntitlementOnAcceptContainer newOnAcceptContainer,
@@ -192,12 +169,8 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
         EntitlementOnAcceptContainer oldOnAcceptContainer = onAcceptContainer;
         onAcceptContainer = newOnAcceptContainer;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER, oldOnAcceptContainer, newOnAcceptContainer);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER, oldOnAcceptContainer, newOnAcceptContainer);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -205,30 +178,25 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setOnAcceptContainer(EntitlementOnAcceptContainer newOnAcceptContainer) {
         if (newOnAcceptContainer != onAcceptContainer) {
             NotificationChain msgs = null;
             if (onAcceptContainer != null)
-                msgs = ((InternalEObject) onAcceptContainer).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER, null, msgs);
+                msgs = ((InternalEObject)onAcceptContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER, null, msgs);
             if (newOnAcceptContainer != null)
-                msgs = ((InternalEObject) newOnAcceptContainer).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER, null, msgs);
+                msgs = ((InternalEObject)newOnAcceptContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER, null, msgs);
             msgs = basicSetOnAcceptContainer(newOnAcceptContainer, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER,
-                    newOnAcceptContainer, newOnAcceptContainer));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER, newOnAcceptContainer, newOnAcceptContainer));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EntitlementAdviceContainer getAdviceContainer() {
@@ -238,7 +206,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetAdviceContainer(EntitlementAdviceContainer newAdviceContainer,
@@ -246,12 +213,8 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
         EntitlementAdviceContainer oldAdviceContainer = adviceContainer;
         adviceContainer = newAdviceContainer;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER, oldAdviceContainer, newAdviceContainer);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER, oldAdviceContainer, newAdviceContainer);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -259,30 +222,25 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setAdviceContainer(EntitlementAdviceContainer newAdviceContainer) {
         if (newAdviceContainer != adviceContainer) {
             NotificationChain msgs = null;
             if (adviceContainer != null)
-                msgs = ((InternalEObject) adviceContainer).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER, null, msgs);
+                msgs = ((InternalEObject)adviceContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER, null, msgs);
             if (newAdviceContainer != null)
-                msgs = ((InternalEObject) newAdviceContainer).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER, null, msgs);
+                msgs = ((InternalEObject)newAdviceContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER, null, msgs);
             msgs = basicSetAdviceContainer(newAdviceContainer, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER,
-                    newAdviceContainer, newAdviceContainer));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER, newAdviceContainer, newAdviceContainer));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EntitlementObligationsContainer getObligationsContainer() {
@@ -292,7 +250,6 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public NotificationChain basicSetObligationsContainer(EntitlementObligationsContainer newObligationsContainer,
@@ -300,13 +257,8 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
         EntitlementObligationsContainer oldObligationsContainer = obligationsContainer;
         obligationsContainer = newObligationsContainer;
         if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER, oldObligationsContainer,
-                    newObligationsContainer);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER, oldObligationsContainer, newObligationsContainer);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
         }
         return msgs;
     }
@@ -314,44 +266,38 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setObligationsContainer(EntitlementObligationsContainer newObligationsContainer) {
         if (newObligationsContainer != obligationsContainer) {
             NotificationChain msgs = null;
             if (obligationsContainer != null)
-                msgs = ((InternalEObject) obligationsContainer).eInverseRemove(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER, null, msgs);
+                msgs = ((InternalEObject)obligationsContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER, null, msgs);
             if (newObligationsContainer != null)
-                msgs = ((InternalEObject) newObligationsContainer).eInverseAdd(this,
-                        EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER, null, msgs);
+                msgs = ((InternalEObject)newObligationsContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER, null, msgs);
             msgs = basicSetObligationsContainer(newObligationsContainer, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET,
-                    EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER, newObligationsContainer,
-                    newObligationsContainer));
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER, newObligationsContainer, newObligationsContainer));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
-            return basicSetOnRejectContainer(null, msgs);
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
-            return basicSetOnAcceptContainer(null, msgs);
-        case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
-            return basicSetAdviceContainer(null, msgs);
-        case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
-            return basicSetObligationsContainer(null, msgs);
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
+                return basicSetOnRejectContainer(null, msgs);
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
+                return basicSetOnAcceptContainer(null, msgs);
+            case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
+                return basicSetAdviceContainer(null, msgs);
+            case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
+                return basicSetObligationsContainer(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -359,20 +305,19 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
-            return getOnRejectContainer();
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
-            return getOnAcceptContainer();
-        case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
-            return getAdviceContainer();
-        case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
-            return getObligationsContainer();
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
+                return getOnRejectContainer();
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
+                return getOnAcceptContainer();
+            case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
+                return getAdviceContainer();
+            case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
+                return getObligationsContainer();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -380,24 +325,23 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
-            setOnRejectContainer((EntitlementOnRejectContainer) newValue);
-            return;
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
-            setOnAcceptContainer((EntitlementOnAcceptContainer) newValue);
-            return;
-        case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
-            setAdviceContainer((EntitlementAdviceContainer) newValue);
-            return;
-        case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
-            setObligationsContainer((EntitlementObligationsContainer) newValue);
-            return;
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
+                setOnRejectContainer((EntitlementOnRejectContainer)newValue);
+                return;
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
+                setOnAcceptContainer((EntitlementOnAcceptContainer)newValue);
+                return;
+            case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
+                setAdviceContainer((EntitlementAdviceContainer)newValue);
+                return;
+            case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
+                setObligationsContainer((EntitlementObligationsContainer)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -405,24 +349,23 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
-            setOnRejectContainer((EntitlementOnRejectContainer) null);
-            return;
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
-            setOnAcceptContainer((EntitlementOnAcceptContainer) null);
-            return;
-        case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
-            setAdviceContainer((EntitlementAdviceContainer) null);
-            return;
-        case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
-            setObligationsContainer((EntitlementObligationsContainer) null);
-            return;
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
+                setOnRejectContainer((EntitlementOnRejectContainer)null);
+                return;
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
+                setOnAcceptContainer((EntitlementOnAcceptContainer)null);
+                return;
+            case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
+                setAdviceContainer((EntitlementAdviceContainer)null);
+                return;
+            case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
+                setObligationsContainer((EntitlementObligationsContainer)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -430,20 +373,19 @@ public class EntitlementContainerImpl extends EsbNodeImpl implements Entitlement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
-            return onRejectContainer != null;
-        case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
-            return onAcceptContainer != null;
-        case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
-            return adviceContainer != null;
-        case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
-            return obligationsContainer != null;
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_REJECT_CONTAINER:
+                return onRejectContainer != null;
+            case EsbPackage.ENTITLEMENT_CONTAINER__ON_ACCEPT_CONTAINER:
+                return onAcceptContainer != null;
+            case EsbPackage.ENTITLEMENT_CONTAINER__ADVICE_CONTAINER:
+                return adviceContainer != null;
+            case EsbPackage.ENTITLEMENT_CONTAINER__OBLIGATIONS_CONTAINER:
+                return obligationsContainer != null;
         }
         return super.eIsSet(featureID);
     }

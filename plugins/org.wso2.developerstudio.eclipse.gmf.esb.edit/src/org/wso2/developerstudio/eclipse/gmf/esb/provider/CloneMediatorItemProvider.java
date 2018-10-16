@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CloneMediatorItemProvider extends MediatorItemProvider {
@@ -40,7 +39,6 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public CloneMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -75,67 +73,88 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Clone ID feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addCloneIDPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CloneMediator_cloneID_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CloneMediator_cloneID_feature",
-                                "_UI_CloneMediator_type"),
-                        EsbPackage.Literals.CLONE_MEDIATOR__CLONE_ID, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloneMediator_cloneID_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloneMediator_cloneID_feature", "_UI_CloneMediator_type"),
+                 EsbPackage.Literals.CLONE_MEDIATOR__CLONE_ID,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Sequential Mediation feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addSequentialMediationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CloneMediator_sequentialMediation_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CloneMediator_sequentialMediation_feature",
-                                "_UI_CloneMediator_type"),
-                        EsbPackage.Literals.CLONE_MEDIATOR__SEQUENTIAL_MEDIATION, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloneMediator_sequentialMediation_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloneMediator_sequentialMediation_feature", "_UI_CloneMediator_type"),
+                 EsbPackage.Literals.CLONE_MEDIATOR__SEQUENTIAL_MEDIATION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Continue Parent feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addContinueParentPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CloneMediator_continueParent_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CloneMediator_continueParent_feature",
-                                "_UI_CloneMediator_type"),
-                        EsbPackage.Literals.CLONE_MEDIATOR__CONTINUE_PARENT, true, false, false,
-                        ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloneMediator_continueParent_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloneMediator_continueParent_feature", "_UI_CloneMediator_type"),
+                 EsbPackage.Literals.CLONE_MEDIATOR__CONTINUE_PARENT,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Targets feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addTargetsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_CloneMediator_targets_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_CloneMediator_targets_feature",
-                                "_UI_CloneMediator_type"),
-                        EsbPackage.Literals.CLONE_MEDIATOR__TARGETS, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CloneMediator_targets_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CloneMediator_targets_feature", "_UI_CloneMediator_type"),
+                 EsbPackage.Literals.CLONE_MEDIATOR__TARGETS,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -144,7 +163,6 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -164,7 +182,6 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -180,7 +197,6 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
      * This returns CloneMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -193,15 +209,15 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
     @Override
     public String getText(Object object) {
-        String label = ((CloneMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_CloneMediator_type")
-                : getString("_UI_CloneMediator_type") + " " + label;
+        String label = ((CloneMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_CloneMediator_type") :
+            getString("_UI_CloneMediator_type") + " " + label;
     }
 
     /**
@@ -209,7 +225,6 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -218,18 +233,18 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(CloneMediator.class)) {
-        case EsbPackage.CLONE_MEDIATOR__CLONE_ID:
-        case EsbPackage.CLONE_MEDIATOR__SEQUENTIAL_MEDIATION:
-        case EsbPackage.CLONE_MEDIATOR__CONTINUE_PARENT:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.CLONE_MEDIATOR__TARGETS:
-        case EsbPackage.CLONE_MEDIATOR__TARGETS_OUTPUT_CONNECTOR:
-        case EsbPackage.CLONE_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.CLONE_MEDIATOR__OUTPUT_CONNECTOR:
-        case EsbPackage.CLONE_MEDIATOR__CLONE_CONTAINER:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.CLONE_MEDIATOR__CLONE_ID:
+            case EsbPackage.CLONE_MEDIATOR__SEQUENTIAL_MEDIATION:
+            case EsbPackage.CLONE_MEDIATOR__CONTINUE_PARENT:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.CLONE_MEDIATOR__TARGETS:
+            case EsbPackage.CLONE_MEDIATOR__TARGETS_OUTPUT_CONNECTOR:
+            case EsbPackage.CLONE_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.CLONE_MEDIATOR__OUTPUT_CONNECTOR:
+            case EsbPackage.CLONE_MEDIATOR__CLONE_CONTAINER:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -239,7 +254,6 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 
@@ -247,20 +261,30 @@ public class CloneMediatorItemProvider extends MediatorItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLONE_MEDIATOR__TARGETS,
-                EsbFactory.eINSTANCE.createCloneTarget()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLONE_MEDIATOR__TARGETS,
+                 EsbFactory.eINSTANCE.createCloneTarget()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLONE_MEDIATOR__TARGETS_OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCloneMediatorTargetOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLONE_MEDIATOR__TARGETS_OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCloneMediatorTargetOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLONE_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCloneMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLONE_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCloneMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLONE_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createCloneMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLONE_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createCloneMediatorOutputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.CLONE_MEDIATOR__CLONE_CONTAINER,
-                EsbFactory.eINSTANCE.createCloneMediatorContainer()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.CLONE_MEDIATOR__CLONE_CONTAINER,
+                 EsbFactory.eINSTANCE.createCloneMediatorContainer()));
     }
 
 }

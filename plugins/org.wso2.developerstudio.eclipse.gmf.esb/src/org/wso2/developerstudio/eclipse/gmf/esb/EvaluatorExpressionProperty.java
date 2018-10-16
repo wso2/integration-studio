@@ -15,12 +15,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getPrettyName <em>Pretty
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getEvaluatorName <em>Evaluator
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getEvaluatorValue <em>Evaluator
- * Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getPrettyName <em>Pretty Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getEvaluatorName <em>Evaluator Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getEvaluatorValue <em>Evaluator Value</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEvaluatorExpressionProperty()
@@ -36,7 +33,6 @@ public interface EvaluatorExpressionProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Pretty Name</em>' attribute.
      * @see #setPrettyName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEvaluatorExpressionProperty_PrettyName()
@@ -46,11 +42,9 @@ public interface EvaluatorExpressionProperty extends EsbNode {
     String getPrettyName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getPrettyName
-     * <em>Pretty Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getPrettyName <em>Pretty Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Pretty Name</em>' attribute.
      * @see #getPrettyName()
      * @generated
@@ -65,7 +59,6 @@ public interface EvaluatorExpressionProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Evaluator Name</em>' attribute.
      * @see #setEvaluatorName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEvaluatorExpressionProperty_EvaluatorName()
@@ -75,12 +68,9 @@ public interface EvaluatorExpressionProperty extends EsbNode {
     String getEvaluatorName();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getEvaluatorName <em>Evaluator
-     * Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getEvaluatorName <em>Evaluator Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Evaluator Name</em>' attribute.
      * @see #getEvaluatorName()
      * @generated
@@ -95,7 +85,6 @@ public interface EvaluatorExpressionProperty extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Evaluator Value</em>' attribute.
      * @see #setEvaluatorValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEvaluatorExpressionProperty_EvaluatorValue()
@@ -105,12 +94,9 @@ public interface EvaluatorExpressionProperty extends EsbNode {
     String getEvaluatorValue();
 
     /**
-     * Sets the value of the
-     * '{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getEvaluatorValue <em>Evaluator
-     * Value</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty#getEvaluatorValue <em>Evaluator Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Evaluator Value</em>' attribute.
      * @see #getEvaluatorValue()
      * @generated

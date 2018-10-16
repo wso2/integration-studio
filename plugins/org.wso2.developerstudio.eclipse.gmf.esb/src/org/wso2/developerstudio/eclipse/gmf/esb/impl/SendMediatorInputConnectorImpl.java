@@ -22,7 +22,6 @@ public class SendMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected SendMediatorInputConnectorImpl() {
@@ -32,7 +31,6 @@ public class SendMediatorInputConnectorImpl extends InputConnectorImpl implement
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
 

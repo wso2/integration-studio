@@ -15,11 +15,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getEntryName <em>Entry Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType <em>Local Entry Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueLiteral <em>Value Literal</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueXML <em>Value XML</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueURL <em>Value URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getEntryName <em>Entry Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType <em>Local Entry Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueXML <em>Value XML</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueURL <em>Value URL</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLocalEntry()
@@ -37,7 +37,6 @@ public interface LocalEntry extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Entry Name</em>' attribute.
      * @see #setEntryName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLocalEntry_EntryName()
@@ -47,11 +46,9 @@ public interface LocalEntry extends EsbElement {
     String getEntryName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getEntryName <em>Entry
-     * Name</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getEntryName <em>Entry Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Entry Name</em>' attribute.
      * @see #getEntryName()
      * @generated
@@ -68,7 +65,6 @@ public interface LocalEntry extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Local Entry Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType
      * @see #setLocalEntryType(LocalEntryValueType)
@@ -79,11 +75,9 @@ public interface LocalEntry extends EsbElement {
     LocalEntryValueType getLocalEntryType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType <em>Local
-     * Entry Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType <em>Local Entry Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Local Entry Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType
      * @see #getLocalEntryType()
@@ -100,7 +94,6 @@ public interface LocalEntry extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLocalEntry_ValueLiteral()
@@ -110,11 +103,9 @@ public interface LocalEntry extends EsbElement {
     String getValueLiteral();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueLiteral <em>Value
-     * Literal</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueLiteral <em>Value Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value Literal</em>' attribute.
      * @see #getValueLiteral()
      * @generated
@@ -130,21 +121,18 @@ public interface LocalEntry extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value XML</em>' attribute.
      * @see #setValueXML(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLocalEntry_ValueXML()
-     * @model default="<value/>"
+     * @model default="&lt;value/&gt;"
      * @generated
      */
     String getValueXML();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueXML <em>Value
-     * XML</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueXML <em>Value XML</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value XML</em>' attribute.
      * @see #getValueXML()
      * @generated
@@ -160,7 +148,6 @@ public interface LocalEntry extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value URL</em>' attribute.
      * @see #setValueURL(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLocalEntry_ValueURL()
@@ -170,11 +157,9 @@ public interface LocalEntry extends EsbElement {
     String getValueURL();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueURL <em>Value
-     * URL</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueURL <em>Value URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Value URL</em>' attribute.
      * @see #getValueURL()
      * @generated

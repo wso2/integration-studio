@@ -17,10 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getName <em>Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getTemplateType <em>Template Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getChild <em>Child</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getTemplateType <em>Template Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getChild <em>Child</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getParameters <em>Parameters</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTemplate()
@@ -36,7 +36,6 @@ public interface Template extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTemplate_Name()
@@ -46,11 +45,9 @@ public interface Template extends EsbElement {
     String getName();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getName <em>Name</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getName <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Name</em>' attribute.
      * @see #getName()
      * @generated
@@ -66,7 +63,6 @@ public interface Template extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Template Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.TemplateType
      * @see #setTemplateType(TemplateType)
@@ -77,11 +73,9 @@ public interface Template extends EsbElement {
     TemplateType getTemplateType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getTemplateType <em>Template
-     * Type</em>}' attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getTemplateType <em>Template Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Template Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.TemplateType
      * @see #getTemplateType()
@@ -97,7 +91,6 @@ public interface Template extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Child</em>' containment reference.
      * @see #setChild(EsbElement)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTemplate_Child()
@@ -107,11 +100,9 @@ public interface Template extends EsbElement {
     EsbElement getChild();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getChild <em>Child</em>}'
-     * containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Template#getChild <em>Child</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Child</em>' containment reference.
      * @see #getChild()
      * @generated
@@ -127,7 +118,6 @@ public interface Template extends EsbElement {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Parameters</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTemplate_Parameters()
      * @model containment="true"

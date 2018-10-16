@@ -23,7 +23,6 @@ public class CacheMediatorOnHitOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CacheMediatorOnHitOutputConnectorImpl() {
@@ -33,7 +32,6 @@ public class CacheMediatorOnHitOutputConnectorImpl extends OutputConnectorImpl
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

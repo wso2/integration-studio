@@ -73,6 +73,11 @@ public class InboundEndpointConstants {
     public static final String VFS_FILE_PROCESS_COUNT = "transport.vfs.FileProcessCount";
     public static final String VFS_LOCKING = "transport.vfs.Locking";
     public static final String VFS_MAX_RETRY_COUNT = "transport.vfs.MaxRetryCount";
+    public static final String VFS_MOVE_AFTER_FAILED_MOVE = "transport.vfs.MoveAfterFailedMove";
+    public static final String VFS_FAILED_RECORDS_FILE_NAME = "transport.vfs.FailedRecordsFileName";
+    public static final String VFS_FAILED_RECORDS_FILE_DESTINATION = "transport.vfs.FailedRecordsFileDestination";
+    public static final String VFS_MOVE_FAILED_RECORD_TIMESTAMP_FORMAT = "transport.vfs.MoveFailedRecordTimestampFormat";
+    public static final String VFS_FAILED_RECORD_NEXT_RETRY_DURATION = "transport.vfs.FailedRecordNextRetryDuration";
     public static final String VFS_RECONNECT_TIMEOUT = "transport.vfs.ReconnectTimeout";
     public static final String VFS_ACTION_AFTER_PROCESS = "transport.vfs.ActionAfterProcess";
     public static final String VFS_MOVE_AFTER_PROCESS = "transport.vfs.MoveAfterProcess";
@@ -80,6 +85,8 @@ public class InboundEndpointConstants {
     public static final String VFS_MOVE_AFTER_ERRORS = "transport.vfs.MoveAfterErrors";
     public static final String VFS_ACTION_AFTER_FAILURE = "transport.vfs.ActionAfterFailure";
     public static final String VFS_MOVE_AFTER_FAILURE = "transport.vfs.MoveAfterFailure";
+    public static final String VFS_REPLY_FILE_URI = "transport.vfs.ReplyFileURI";
+    public static final String VFS_REPLY_FILE_NAME = "transport.vfs.ReplyFileName";
     public static final String VFS_MOVE_TIMESTAMP_FORMAT = "transport.vfs.MoveTimestampFormat";
     public static final String VFS_AUTO_LOCK_RELEASE = "transport.vfs.AutoLockRelease";
     public static final String VFS_AUTO_LOCK_RELEASE_INTERVAL = "transport.vfs.AutoLockReleaseInterval";

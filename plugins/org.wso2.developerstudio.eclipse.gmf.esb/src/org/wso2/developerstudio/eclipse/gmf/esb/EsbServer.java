@@ -17,9 +17,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getChildren <em>Children</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getMessageMediator <em>Message Mediator</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getType <em>Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getMessageMediator <em>Message Mediator</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbServer()
@@ -36,7 +36,6 @@ public interface EsbServer extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Children</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbServer_Children()
      * @model containment="true"
@@ -52,7 +51,6 @@ public interface EsbServer extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Message Mediator</em>' containment reference.
      * @see #setMessageMediator(MessageMediator)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbServer_MessageMediator()
@@ -62,11 +60,9 @@ public interface EsbServer extends EsbNode {
     MessageMediator getMessageMediator();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getMessageMediator <em>Message
-     * Mediator</em>}' containment reference.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getMessageMediator <em>Message Mediator</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Message Mediator</em>' containment reference.
      * @see #getMessageMediator()
      * @generated
@@ -82,7 +78,6 @@ public interface EsbServer extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType
      * @see #setType(ArtifactType)
@@ -93,11 +88,9 @@ public interface EsbServer extends EsbNode {
     ArtifactType getType();
 
     /**
-     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getType <em>Type</em>}'
-     * attribute.
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer#getType <em>Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Type</em>' attribute.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType
      * @see #getType()

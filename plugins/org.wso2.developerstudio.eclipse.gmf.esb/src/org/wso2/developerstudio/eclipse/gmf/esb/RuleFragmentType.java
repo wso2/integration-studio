@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Rule Fragment Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleFragmentType()
  * @model
  * @generated
@@ -27,7 +26,6 @@ public enum RuleFragmentType implements Enumerator {
      * The '<em><b>PROTOCOL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #PROTOCOL_VALUE
      * @generated
      * @ordered
@@ -38,7 +36,6 @@ public enum RuleFragmentType implements Enumerator {
      * The '<em><b>HOST</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #HOST_VALUE
      * @generated
      * @ordered
@@ -49,7 +46,6 @@ public enum RuleFragmentType implements Enumerator {
      * The '<em><b>PORT</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #PORT_VALUE
      * @generated
      * @ordered
@@ -60,7 +56,6 @@ public enum RuleFragmentType implements Enumerator {
      * The '<em><b>PATH</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #PATH_VALUE
      * @generated
      * @ordered
@@ -71,7 +66,6 @@ public enum RuleFragmentType implements Enumerator {
      * The '<em><b>QUERY</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #QUERY_VALUE
      * @generated
      * @ordered
@@ -82,7 +76,6 @@ public enum RuleFragmentType implements Enumerator {
      * The '<em><b>REF</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #REF_VALUE
      * @generated
      * @ordered
@@ -93,7 +86,6 @@ public enum RuleFragmentType implements Enumerator {
      * The '<em><b>USER</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #USER_VALUE
      * @generated
      * @ordered
@@ -104,7 +96,6 @@ public enum RuleFragmentType implements Enumerator {
      * The '<em><b>FULL</b></em>' literal object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #FULL_VALUE
      * @generated
      * @ordered
@@ -119,7 +110,6 @@ public enum RuleFragmentType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #PROTOCOL
      * @model literal="protocol"
      * @generated
@@ -135,7 +125,6 @@ public enum RuleFragmentType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #HOST
      * @model literal="host"
      * @generated
@@ -151,7 +140,6 @@ public enum RuleFragmentType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #PORT
      * @model literal="port"
      * @generated
@@ -167,7 +155,6 @@ public enum RuleFragmentType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #PATH
      * @model literal="path"
      * @generated
@@ -183,7 +170,6 @@ public enum RuleFragmentType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #QUERY
      * @model literal="query"
      * @generated
@@ -199,7 +185,6 @@ public enum RuleFragmentType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #REF
      * @model literal="ref"
      * @generated
@@ -215,7 +200,6 @@ public enum RuleFragmentType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #USER
      * @model literal="user"
      * @generated
@@ -231,7 +215,6 @@ public enum RuleFragmentType implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @see #FULL
      * @model literal="full"
      * @generated
@@ -243,17 +226,23 @@ public enum RuleFragmentType implements Enumerator {
      * An array of all the '<em><b>Rule Fragment Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
-    private static final RuleFragmentType[] VALUES_ARRAY = new RuleFragmentType[] { PROTOCOL, HOST, PORT, PATH, QUERY,
-            REF, USER, FULL, };
+    private static final RuleFragmentType[] VALUES_ARRAY = new RuleFragmentType[] {
+            PROTOCOL,
+            HOST,
+            PORT,
+            PATH,
+            QUERY,
+            REF,
+            USER,
+            FULL,
+        };
 
     /**
      * A public read-only list of all the '<em><b>Rule Fragment Type</b></em>' enumerators.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public static final List<RuleFragmentType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -262,7 +251,6 @@ public enum RuleFragmentType implements Enumerator {
      * Returns the '<em><b>Rule Fragment Type</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param literal the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -281,7 +269,6 @@ public enum RuleFragmentType implements Enumerator {
      * Returns the '<em><b>Rule Fragment Type</b></em>' literal with the specified name.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param name the name.
      * @return the matching enumerator or <code>null</code>.
      * @generated
@@ -300,29 +287,20 @@ public enum RuleFragmentType implements Enumerator {
      * Returns the '<em><b>Rule Fragment Type</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
     public static RuleFragmentType get(int value) {
         switch (value) {
-        case PROTOCOL_VALUE:
-            return PROTOCOL;
-        case HOST_VALUE:
-            return HOST;
-        case PORT_VALUE:
-            return PORT;
-        case PATH_VALUE:
-            return PATH;
-        case QUERY_VALUE:
-            return QUERY;
-        case REF_VALUE:
-            return REF;
-        case USER_VALUE:
-            return USER;
-        case FULL_VALUE:
-            return FULL;
+            case PROTOCOL_VALUE: return PROTOCOL;
+            case HOST_VALUE: return HOST;
+            case PORT_VALUE: return PORT;
+            case PATH_VALUE: return PATH;
+            case QUERY_VALUE: return QUERY;
+            case REF_VALUE: return REF;
+            case USER_VALUE: return USER;
+            case FULL_VALUE: return FULL;
         }
         return null;
     }
@@ -330,7 +308,6 @@ public enum RuleFragmentType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final int value;
@@ -338,7 +315,6 @@ public enum RuleFragmentType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String name;
@@ -346,7 +322,6 @@ public enum RuleFragmentType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private final String literal;
@@ -355,7 +330,6 @@ public enum RuleFragmentType implements Enumerator {
      * Only this class can construct instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     private RuleFragmentType(int value, String name, String literal) {
@@ -367,38 +341,34 @@ public enum RuleFragmentType implements Enumerator {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public int getValue() {
-        return value;
+      return value;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getName() {
-        return name;
+      return name;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLiteral() {
-        return literal;
+      return literal;
     }
 
     /**
      * Returns the literal value of the enumerator, which is its string representation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

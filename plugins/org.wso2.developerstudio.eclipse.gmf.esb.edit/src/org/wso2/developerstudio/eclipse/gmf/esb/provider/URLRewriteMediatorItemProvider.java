@@ -32,7 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediator;
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
@@ -40,7 +39,6 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public URLRewriteMediatorItemProvider(AdapterFactory adapterFactory) {
@@ -72,50 +70,66 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
      * This adds a property descriptor for the Url Rewrite Rules feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addUrlRewriteRulesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_URLRewriteMediator_urlRewriteRules_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteMediator_urlRewriteRules_feature",
-                        "_UI_URLRewriteMediator_type"),
-                EsbPackage.Literals.URL_REWRITE_MEDIATOR__URL_REWRITE_RULES, true, false, false, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_URLRewriteMediator_urlRewriteRules_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteMediator_urlRewriteRules_feature", "_UI_URLRewriteMediator_type"),
+                 EsbPackage.Literals.URL_REWRITE_MEDIATOR__URL_REWRITE_RULES,
+                 true,
+                 false,
+                 false,
+                 null,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the In Property feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addInPropertyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_URLRewriteMediator_InProperty_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteMediator_InProperty_feature",
-                                "_UI_URLRewriteMediator_type"),
-                        EsbPackage.Literals.URL_REWRITE_MEDIATOR__IN_PROPERTY, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_URLRewriteMediator_InProperty_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteMediator_InProperty_feature", "_UI_URLRewriteMediator_type"),
+                 EsbPackage.Literals.URL_REWRITE_MEDIATOR__IN_PROPERTY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
      * This adds a property descriptor for the Out Property feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void addOutPropertyPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                        getResourceLocator(), getString("_UI_URLRewriteMediator_outProperty_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteMediator_outProperty_feature",
-                                "_UI_URLRewriteMediator_type"),
-                        EsbPackage.Literals.URL_REWRITE_MEDIATOR__OUT_PROPERTY, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_URLRewriteMediator_outProperty_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_URLRewriteMediator_outProperty_feature", "_UI_URLRewriteMediator_type"),
+                 EsbPackage.Literals.URL_REWRITE_MEDIATOR__OUT_PROPERTY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -124,7 +138,6 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -141,7 +154,6 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -156,7 +168,6 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
      * This returns URLRewriteMediator.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -168,14 +179,14 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((URLRewriteMediator) object).getDescription();
-        return label == null || label.length() == 0 ? getString("_UI_URLRewriteMediator_type")
-                : getString("_UI_URLRewriteMediator_type") + " " + label;
+        String label = ((URLRewriteMediator)object).getDescription();
+        return label == null || label.length() == 0 ?
+            getString("_UI_URLRewriteMediator_type") :
+            getString("_UI_URLRewriteMediator_type") + " " + label;
     }
 
     /**
@@ -183,7 +194,6 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -191,15 +201,15 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(URLRewriteMediator.class)) {
-        case EsbPackage.URL_REWRITE_MEDIATOR__IN_PROPERTY:
-        case EsbPackage.URL_REWRITE_MEDIATOR__OUT_PROPERTY:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
-        case EsbPackage.URL_REWRITE_MEDIATOR__URL_REWRITE_RULES:
-        case EsbPackage.URL_REWRITE_MEDIATOR__INPUT_CONNECTOR:
-        case EsbPackage.URL_REWRITE_MEDIATOR__OUTPUT_CONNECTOR:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case EsbPackage.URL_REWRITE_MEDIATOR__IN_PROPERTY:
+            case EsbPackage.URL_REWRITE_MEDIATOR__OUT_PROPERTY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case EsbPackage.URL_REWRITE_MEDIATOR__URL_REWRITE_RULES:
+            case EsbPackage.URL_REWRITE_MEDIATOR__INPUT_CONNECTOR:
+            case EsbPackage.URL_REWRITE_MEDIATOR__OUTPUT_CONNECTOR:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -209,21 +219,26 @@ public class URLRewriteMediatorItemProvider extends MediatorItemProvider {
      * that can be created under this object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.URL_REWRITE_MEDIATOR__URL_REWRITE_RULES,
-                EsbFactory.eINSTANCE.createURLRewriteRule()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.URL_REWRITE_MEDIATOR__URL_REWRITE_RULES,
+                 EsbFactory.eINSTANCE.createURLRewriteRule()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.URL_REWRITE_MEDIATOR__INPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createURLRewriteMediatorInputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.URL_REWRITE_MEDIATOR__INPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createURLRewriteMediatorInputConnector()));
 
-        newChildDescriptors.add(createChildParameter(EsbPackage.Literals.URL_REWRITE_MEDIATOR__OUTPUT_CONNECTOR,
-                EsbFactory.eINSTANCE.createURLRewriteMediatorOutputConnector()));
+        newChildDescriptors.add
+            (createChildParameter
+                (EsbPackage.Literals.URL_REWRITE_MEDIATOR__OUTPUT_CONNECTOR,
+                 EsbFactory.eINSTANCE.createURLRewriteMediatorOutputConnector()));
     }
 
 }

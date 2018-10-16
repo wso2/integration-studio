@@ -32,10 +32,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreParameterImpl#getParameterName <em>Parameter
- * Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreParameterImpl#getParameterValue <em>Parameter
- * Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreParameterImpl#getParameterName <em>Parameter Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreParameterImpl#getParameterValue <em>Parameter Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -45,7 +43,6 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
      * The default value of the '{@link #getParameterName() <em>Parameter Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getParameterName()
      * @generated
      * @ordered
@@ -56,7 +53,6 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
      * The cached value of the '{@link #getParameterName() <em>Parameter Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getParameterName()
      * @generated
      * @ordered
@@ -67,7 +63,6 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
      * The default value of the '{@link #getParameterValue() <em>Parameter Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getParameterValue()
      * @generated
      * @ordered
@@ -78,7 +73,6 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
      * The cached value of the '{@link #getParameterValue() <em>Parameter Value</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getParameterValue()
      * @generated
      * @ordered
@@ -88,7 +82,6 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected MessageStoreParameterImpl() {
@@ -98,7 +91,6 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -109,7 +101,6 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getParameterName() {
@@ -119,21 +110,18 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setParameterName(String newParameterName) {
         String oldParameterName = parameterName;
         parameterName = newParameterName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME,
-                    oldParameterName, parameterName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME, oldParameterName, parameterName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getParameterValue() {
@@ -143,30 +131,27 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setParameterValue(String newParameterValue) {
         String oldParameterValue = parameterValue;
         parameterValue = newParameterValue;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE,
-                    oldParameterValue, parameterValue));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE, oldParameterValue, parameterValue));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME:
-            return getParameterName();
-        case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE:
-            return getParameterValue();
+            case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME:
+                return getParameterName();
+            case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE:
+                return getParameterValue();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -174,18 +159,17 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME:
-            setParameterName((String) newValue);
-            return;
-        case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE:
-            setParameterValue((String) newValue);
-            return;
+            case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME:
+                setParameterName((String)newValue);
+                return;
+            case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE:
+                setParameterValue((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -193,18 +177,17 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME:
-            setParameterName(PARAMETER_NAME_EDEFAULT);
-            return;
-        case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE:
-            setParameterValue(PARAMETER_VALUE_EDEFAULT);
-            return;
+            case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME:
+                setParameterName(PARAMETER_NAME_EDEFAULT);
+                return;
+            case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE:
+                setParameterValue(PARAMETER_VALUE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -212,18 +195,15 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME:
-            return PARAMETER_NAME_EDEFAULT == null ? parameterName != null
-                    : !PARAMETER_NAME_EDEFAULT.equals(parameterName);
-        case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE:
-            return PARAMETER_VALUE_EDEFAULT == null ? parameterValue != null
-                    : !PARAMETER_VALUE_EDEFAULT.equals(parameterValue);
+            case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_NAME:
+                return PARAMETER_NAME_EDEFAULT == null ? parameterName != null : !PARAMETER_NAME_EDEFAULT.equals(parameterName);
+            case EsbPackage.MESSAGE_STORE_PARAMETER__PARAMETER_VALUE:
+                return PARAMETER_VALUE_EDEFAULT == null ? parameterValue != null : !PARAMETER_VALUE_EDEFAULT.equals(parameterValue);
         }
         return super.eIsSet(featureID);
     }
@@ -231,13 +211,11 @@ public class MessageStoreParameterImpl extends EsbNodeImpl implements MessageSto
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (parameterName: ");

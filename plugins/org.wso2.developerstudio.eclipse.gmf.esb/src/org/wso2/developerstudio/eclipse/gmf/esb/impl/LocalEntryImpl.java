@@ -22,12 +22,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType;
  * The following features are implemented:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getEntryName <em>Entry Name</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getLocalEntryType <em>Local Entry
- * Type</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueLiteral <em>Value Literal</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueXML <em>Value XML</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueURL <em>Value URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getEntryName <em>Entry Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getLocalEntryType <em>Local Entry Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueXML <em>Value XML</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueURL <em>Value URL</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,7 +36,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The default value of the '{@link #getEntryName() <em>Entry Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEntryName()
      * @generated
      * @ordered
@@ -47,7 +45,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The cached value of the '{@link #getEntryName() <em>Entry Name</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getEntryName()
      * @generated
      * @ordered
@@ -57,7 +54,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The default value of the '{@link #getLocalEntryType() <em>Local Entry Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getLocalEntryType()
      * @generated
      * @ordered
@@ -67,7 +63,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The cached value of the '{@link #getLocalEntryType() <em>Local Entry Type</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getLocalEntryType()
      * @generated
      * @ordered
@@ -77,7 +72,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The default value of the '{@link #getValueLiteral() <em>Value Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValueLiteral()
      * @generated
      * @ordered
@@ -87,7 +81,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The cached value of the '{@link #getValueLiteral() <em>Value Literal</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValueLiteral()
      * @generated
      * @ordered
@@ -97,7 +90,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The default value of the '{@link #getValueXML() <em>Value XML</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValueXML()
      * @generated
      * @ordered
@@ -107,7 +99,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The cached value of the '{@link #getValueXML() <em>Value XML</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValueXML()
      * @generated
      * @ordered
@@ -117,7 +108,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The default value of the '{@link #getValueURL() <em>Value URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValueURL()
      * @generated
      * @ordered
@@ -127,7 +117,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
      * The cached value of the '{@link #getValueURL() <em>Value URL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getValueURL()
      * @generated
      * @ordered
@@ -137,7 +126,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected LocalEntryImpl() {
@@ -147,7 +135,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -158,7 +145,6 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getEntryName() {
@@ -168,21 +154,18 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setEntryName(String newEntryName) {
         String oldEntryName = entryName;
         entryName = newEntryName;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__ENTRY_NAME, oldEntryName,
-                    entryName));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__ENTRY_NAME, oldEntryName, entryName));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public LocalEntryValueType getLocalEntryType() {
@@ -192,21 +175,18 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setLocalEntryType(LocalEntryValueType newLocalEntryType) {
         LocalEntryValueType oldLocalEntryType = localEntryType;
         localEntryType = newLocalEntryType == null ? LOCAL_ENTRY_TYPE_EDEFAULT : newLocalEntryType;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE,
-                    oldLocalEntryType, localEntryType));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE, oldLocalEntryType, localEntryType));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getValueLiteral() {
@@ -216,21 +196,18 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setValueLiteral(String newValueLiteral) {
         String oldValueLiteral = valueLiteral;
         valueLiteral = newValueLiteral;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__VALUE_LITERAL,
-                    oldValueLiteral, valueLiteral));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__VALUE_LITERAL, oldValueLiteral, valueLiteral));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getValueXML() {
@@ -240,21 +217,18 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setValueXML(String newValueXML) {
         String oldValueXML = valueXML;
         valueXML = newValueXML;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__VALUE_XML, oldValueXML,
-                    valueXML));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__VALUE_XML, oldValueXML, valueXML));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getValueURL() {
@@ -264,36 +238,33 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setValueURL(String newValueURL) {
         String oldValueURL = valueURL;
         valueURL = newValueURL;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__VALUE_URL, oldValueURL,
-                    valueURL));
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__VALUE_URL, oldValueURL, valueURL));
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
-            return getEntryName();
-        case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
-            return getLocalEntryType();
-        case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
-            return getValueLiteral();
-        case EsbPackage.LOCAL_ENTRY__VALUE_XML:
-            return getValueXML();
-        case EsbPackage.LOCAL_ENTRY__VALUE_URL:
-            return getValueURL();
+            case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
+                return getEntryName();
+            case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
+                return getLocalEntryType();
+            case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
+                return getValueLiteral();
+            case EsbPackage.LOCAL_ENTRY__VALUE_XML:
+                return getValueXML();
+            case EsbPackage.LOCAL_ENTRY__VALUE_URL:
+                return getValueURL();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -301,27 +272,26 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
-            setEntryName((String) newValue);
-            return;
-        case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
-            setLocalEntryType((LocalEntryValueType) newValue);
-            return;
-        case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
-            setValueLiteral((String) newValue);
-            return;
-        case EsbPackage.LOCAL_ENTRY__VALUE_XML:
-            setValueXML((String) newValue);
-            return;
-        case EsbPackage.LOCAL_ENTRY__VALUE_URL:
-            setValueURL((String) newValue);
-            return;
+            case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
+                setEntryName((String)newValue);
+                return;
+            case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
+                setLocalEntryType((LocalEntryValueType)newValue);
+                return;
+            case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
+                setValueLiteral((String)newValue);
+                return;
+            case EsbPackage.LOCAL_ENTRY__VALUE_XML:
+                setValueXML((String)newValue);
+                return;
+            case EsbPackage.LOCAL_ENTRY__VALUE_URL:
+                setValueURL((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -329,27 +299,26 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
-            setEntryName(ENTRY_NAME_EDEFAULT);
-            return;
-        case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
-            setLocalEntryType(LOCAL_ENTRY_TYPE_EDEFAULT);
-            return;
-        case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
-            setValueLiteral(VALUE_LITERAL_EDEFAULT);
-            return;
-        case EsbPackage.LOCAL_ENTRY__VALUE_XML:
-            setValueXML(VALUE_XML_EDEFAULT);
-            return;
-        case EsbPackage.LOCAL_ENTRY__VALUE_URL:
-            setValueURL(VALUE_URL_EDEFAULT);
-            return;
+            case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
+                setEntryName(ENTRY_NAME_EDEFAULT);
+                return;
+            case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
+                setLocalEntryType(LOCAL_ENTRY_TYPE_EDEFAULT);
+                return;
+            case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
+                setValueLiteral(VALUE_LITERAL_EDEFAULT);
+                return;
+            case EsbPackage.LOCAL_ENTRY__VALUE_XML:
+                setValueXML(VALUE_XML_EDEFAULT);
+                return;
+            case EsbPackage.LOCAL_ENTRY__VALUE_URL:
+                setValueURL(VALUE_URL_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -357,22 +326,21 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
-            return ENTRY_NAME_EDEFAULT == null ? entryName != null : !ENTRY_NAME_EDEFAULT.equals(entryName);
-        case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
-            return localEntryType != LOCAL_ENTRY_TYPE_EDEFAULT;
-        case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
-            return VALUE_LITERAL_EDEFAULT == null ? valueLiteral != null : !VALUE_LITERAL_EDEFAULT.equals(valueLiteral);
-        case EsbPackage.LOCAL_ENTRY__VALUE_XML:
-            return VALUE_XML_EDEFAULT == null ? valueXML != null : !VALUE_XML_EDEFAULT.equals(valueXML);
-        case EsbPackage.LOCAL_ENTRY__VALUE_URL:
-            return VALUE_URL_EDEFAULT == null ? valueURL != null : !VALUE_URL_EDEFAULT.equals(valueURL);
+            case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
+                return ENTRY_NAME_EDEFAULT == null ? entryName != null : !ENTRY_NAME_EDEFAULT.equals(entryName);
+            case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
+                return localEntryType != LOCAL_ENTRY_TYPE_EDEFAULT;
+            case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
+                return VALUE_LITERAL_EDEFAULT == null ? valueLiteral != null : !VALUE_LITERAL_EDEFAULT.equals(valueLiteral);
+            case EsbPackage.LOCAL_ENTRY__VALUE_XML:
+                return VALUE_XML_EDEFAULT == null ? valueXML != null : !VALUE_XML_EDEFAULT.equals(valueXML);
+            case EsbPackage.LOCAL_ENTRY__VALUE_URL:
+                return VALUE_URL_EDEFAULT == null ? valueURL != null : !VALUE_URL_EDEFAULT.equals(valueURL);
         }
         return super.eIsSet(featureID);
     }
@@ -380,13 +348,11 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (entryName: ");

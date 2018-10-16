@@ -17,8 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorContainer#getRouterTargetContainer <em>Router
- * Target Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorContainer#getRouterTargetContainer <em>Router Target Container</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterMediatorContainer()
@@ -35,7 +34,6 @@ public interface RouterMediatorContainer extends EsbNode {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Router Target Container</em>' containment reference list.
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRouterMediatorContainer_RouterTargetContainer()
      * @model containment="true"

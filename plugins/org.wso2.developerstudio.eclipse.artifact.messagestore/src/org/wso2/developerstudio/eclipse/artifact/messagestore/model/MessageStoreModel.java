@@ -39,7 +39,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Constants;
-import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreJMSProfileType.JMSProfileType;
+import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCDatabaseTypeList.JDBCDatabaseType;
+import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JMSProfileTypeList.JMSProfileType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -111,6 +112,7 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String jdbcDatasourceName;
 	private String jdbcEnableProducerGuaranteedDelivery;
 	private String jdbcFailoverMessageStore;
+	private JDBCDatabaseType jdbcDatabaseType;
 
 	public String mbApiVersion;
 	public String mbConnectionFactory;
@@ -710,7 +712,9 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getJdbcDatabaseTable();
 		} else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
 			value = getJdbcConnectionInformation();
-		} else if (key.equals(Constants.FIELD_JDBC_DRIVER)) {
+		} else if (key.equals(Constants.FIELD_JDBC_DATABASE_TYPE)) {
+            value = getJdbcDatabaseType();
+        } else if (key.equals(Constants.FIELD_JDBC_DRIVER)) {
 			value = getJdbcDriver();
 		} else if (key.equals(Constants.FIELD_JDBC_URL)) {
 			value = getJdbcURL();
@@ -863,7 +867,9 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setRabbitMQSSLVersion(data.toString());
 		} else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
 			setJdbcDatabaseTable(data.toString());
-		} else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
+		} else if (key.equals(Constants.FIELD_JDBC_DATABASE_TYPE)) {
+            setJdbcDatabaseType((JDBCDatabaseType) data);
+        } else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
 			setJdbcConnectionInformation(data.toString());
 		} else if (key.equals(Constants.FIELD_JDBC_DRIVER)) {
 			setJdbcDriver(data.toString());
@@ -1048,6 +1054,14 @@ public class MessageStoreModel extends ProjectDataModel  {
 
     public void setJmsProfileType(JMSProfileType jmsProfileType) {
         this.jmsProfileType = jmsProfileType;
+    }
+
+    public JDBCDatabaseType getJdbcDatabaseType() {
+        return jdbcDatabaseType;
+    }
+
+    public void setJdbcDatabaseType(JDBCDatabaseType jdbcDatabaseType) {
+        this.jdbcDatabaseType = jdbcDatabaseType;
     }
 
 }

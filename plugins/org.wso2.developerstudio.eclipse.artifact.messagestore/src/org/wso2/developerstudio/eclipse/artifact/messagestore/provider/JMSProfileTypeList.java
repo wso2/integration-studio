@@ -26,7 +26,7 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataM
 /**
  * Message-store JMS pre-configured profile type data provider class
  */
-public class MessageStoreJMSProfileType extends AbstractListDataProvider {
+public class JMSProfileTypeList extends AbstractListDataProvider {
 
     @Override
     public List<ListData> getListData(String modelProperty, ProjectDataModel model) {

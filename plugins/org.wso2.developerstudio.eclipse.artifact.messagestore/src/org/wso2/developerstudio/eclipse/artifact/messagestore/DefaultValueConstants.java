@@ -24,22 +24,36 @@ import org.eclipse.osgi.util.NLS;
 public class DefaultValueConstants {
     
     private static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.artifact.messagestore.defaultvalues"; //$NON-NLS-1$
-    
+
     public static String EMPTY_STRING;
+
+    // JMS related default values
     public static String JMS_CONTEXT_FACTORY_WSO2_BROKER;
     public static String JMS_PROVIDER_URL_WSO2_BROKER;
     public static String JMS_CONNECTION_FACTORY_WSO2_BROKER;
     public static String JMS_CONTEXT_FACTORY_ACTIVEMQ;
     public static String JMS_PROVIDER_URL_ACTIVEMQ;
     public static String JMS_CONNECTION_FACTORY_ACTIVEMQ;
-    
+
+    // JDBC related default values
+    public static String JDBC_DRIVER_MYSQL;
+    public static String JDBC_DRIVER_ORACLE;
+    public static String JDBC_DRIVER_MSSQL;
+    public static String JDBC_DRIVER_POSTGRESQL;
+    public static String JDBC_URL_MYSQL;
+    public static String JDBC_URL_ORACLE;
+    public static String JDBC_URL_MSSQL;
+    public static String JDBC_URL_POSTGRESQL;
+    public static String JDBC_USER_MYSQL;
+    public static String JDBC_USER_ORACLE;
+    public static String JDBC_USER_MSSQL;
+    public static String JDBC_USER_POSTGRESQL;
+
     static {
         // initializing resource bundle
         NLS.initializeMessages(BUNDLE_NAME, DefaultValueConstants.class);
     }
 
-    private DefaultValueConstants() {
-        
-    }
+    private DefaultValueConstants() {}
 
 }

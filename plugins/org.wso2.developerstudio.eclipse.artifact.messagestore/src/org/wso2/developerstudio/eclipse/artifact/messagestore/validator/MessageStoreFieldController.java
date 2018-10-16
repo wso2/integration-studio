@@ -23,7 +23,8 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IResource;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.model.MessageStoreModel;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList.JDBCConnectionInformationType;
-import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreJMSProfileType.JMSProfileType;
+import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCDatabaseTypeList.JDBCDatabaseType;
+import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JMSProfileTypeList.JMSProfileType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractFieldController;
@@ -162,8 +163,7 @@ public class MessageStoreFieldController extends AbstractFieldController {
         if (modelProperty.equals(FIELD_STORE_TYPE) || modelProperty.equals(FIELD_JDBC_CONNECTION_INFORMATION)
                 || modelProperty.equals(FIELD_RABBITMQ_SSL_ENABLED)
                 || modelProperty.equals(FIELD_RESEQUENCER_CONNECTION_INFORMATION)
-                || modelProperty.equals(FIELD_JMS_PROFILE_TYPE)) {
-            // ((MessageStoreModel) model).setJmsContextFactory("test text");
+                || modelProperty.equals(FIELD_JMS_PROFILE_TYPE) || modelProperty.equals(FIELD_JDBC_DATABASE_TYPE)) {
             updateJMSDefaults(model, ((MessageStoreModel) model).getJmsProfileType());
             updateFields.add(FIELD_JMS_CONTEXT_FACTORY);
             updateFields.add(FIELD_JMS_PROVIDER_URL);
@@ -207,8 +207,10 @@ public class MessageStoreFieldController extends AbstractFieldController {
             updateFields.add(FIELD_RABBITMQ_SSL_TRUSTSTORE_PASSWORD);
             updateFields.add(FIELD_RABBITMQ_SSL_VERSION);
 
+            updateJDBCDefaults(model, ((MessageStoreModel) model).getJdbcDatabaseType());
             updateFields.add(FIELD_JDBC_DATABASE_TABLE);
             updateFields.add(FIELD_JDBC_CONNECTION_INFORMATION);
+            updateFields.add(FIELD_JDBC_DATABASE_TYPE);
             updateFields.add(FIELD_JDBC_DRIVER);
             updateFields.add(FIELD_JDBC_URL);
             updateFields.add(FIELD_JDBC_USER);
@@ -345,6 +347,37 @@ public class MessageStoreFieldController extends AbstractFieldController {
             storeModel.setJmsContextFactory(EMPTY_STRING);
             storeModel.setJmsProviderUrl(EMPTY_STRING);
             storeModel.setJmsConnectionFactory(EMPTY_STRING);
+        }
+    }
+
+    /**
+     * Updates JDBC defaults based on the selected database type
+     * 
+     * @param model Project Data Model
+     * @param jdbcDatabaseType JDBC Database Type
+     */
+    private void updateJDBCDefaults(ProjectDataModel model, JDBCDatabaseType jdbcDatabaseType) {
+        MessageStoreModel storeModel = (MessageStoreModel) model;
+        if (jdbcDatabaseType == JDBCDatabaseType.MYSQL) {
+            storeModel.setJdbcDriver(JDBC_DRIVER_MYSQL);
+            storeModel.setJdbcURL(JDBC_URL_MYSQL);
+            storeModel.setJdbcUser(JDBC_USER_MYSQL);
+        } else if (jdbcDatabaseType == JDBCDatabaseType.ORACLE) {
+            storeModel.setJdbcDriver(JDBC_DRIVER_ORACLE);
+            storeModel.setJdbcURL(JDBC_URL_ORACLE);
+            storeModel.setJdbcUser(JDBC_USER_ORACLE);
+        } else if (jdbcDatabaseType == JDBCDatabaseType.MSSQL) {
+            storeModel.setJdbcDriver(JDBC_DRIVER_MSSQL);
+            storeModel.setJdbcURL(JDBC_URL_MSSQL);
+            storeModel.setJdbcUser(JDBC_USER_MSSQL);
+        } else if (jdbcDatabaseType == JDBCDatabaseType.POSTGRESQL) {
+            storeModel.setJdbcDriver(JDBC_DRIVER_POSTGRESQL);
+            storeModel.setJdbcURL(JDBC_URL_POSTGRESQL);
+            storeModel.setJdbcUser(JDBC_USER_POSTGRESQL);
+        } else if (jdbcDatabaseType == JDBCDatabaseType.OTHER) {
+            storeModel.setJdbcDriver(EMPTY_STRING);
+            storeModel.setJdbcURL(EMPTY_STRING);
+            storeModel.setJdbcUser(EMPTY_STRING);
         }
     }
 

@@ -62,6 +62,7 @@ public class Constants extends NLS {
 	public static String FIELD_RABBITMQ_SSL_VERSION;
 	public static String FIELD_JDBC_DATABASE_TABLE;
 	public static String FIELD_JDBC_CONNECTION_INFORMATION;
+	public static String FIELD_JDBC_DATABASE_TYPE;
 	public static String FIELD_JDBC_DRIVER;
 	public static String FIELD_JDBC_URL;
 	public static String FIELD_JDBC_USER;
@@ -111,6 +112,11 @@ public class Constants extends NLS {
     public static String TXT_JMS_PROFILE_OTHER;
     public static String TXT_JMS_PROFILE_WSO2_MB;
     public static String TXT_JMS_PROFILE_ACTIVEMQ;
+    public static String TXT_JDBC_DATABASE_TYPE_OTHER;
+    public static String TXT_JDBC_DATABASE_TYPE_MYSQL;
+    public static String TXT_JDBC_DATABASE_TYPE_ORACLE;
+    public static String TXT_JDBC_DATABASE_TYPE_MSSQL;
+    public static String TXT_JDBC_DATABASE_TYPE_POSTGRESQL;
 
 	static {
 		// initialize resource bundle

@@ -36,6 +36,18 @@ import org.apache.synapse.mediators.filters.router.ConditionalRoute;
 import org.apache.synapse.mediators.filters.router.ConditionalRouterMediator;
 
 public class ConditionalRouterMediatorExtFactory extends ConditionalRouterMediatorFactory {
+    
+    private static ConditionalRouterMediatorExtFactory instance;
+    
+    private ConditionalRouterMediatorExtFactory() {
+    }
+    
+    public static synchronized ConditionalRouterMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new ConditionalRouterMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

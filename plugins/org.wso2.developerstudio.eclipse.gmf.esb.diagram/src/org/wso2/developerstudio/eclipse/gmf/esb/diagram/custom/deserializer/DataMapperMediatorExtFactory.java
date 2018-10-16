@@ -30,6 +30,18 @@ import org.wso2.carbon.mediator.datamapper.config.xml.DataMapperMediatorConstant
 import org.wso2.carbon.mediator.datamapper.config.xml.DataMapperMediatorFactory;
 
 public class DataMapperMediatorExtFactory extends DataMapperMediatorFactory {
+    
+    private static DataMapperMediatorExtFactory instance;
+    
+    private DataMapperMediatorExtFactory() {
+    }
+    
+    public static synchronized DataMapperMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new DataMapperMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

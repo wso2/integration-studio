@@ -42,6 +42,18 @@ public class RewriteMediatorExtFactory extends URLRewriteMediatorFactory {
     private static final QName CONDITION_Q = new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, "condition");
     private static final QName ATT_TYPE = new QName("type");
     private static final QName ATT_FRAGMENT = new QName("fragment");
+    
+    private static RewriteMediatorExtFactory instance;
+    
+    private RewriteMediatorExtFactory() {
+    }
+    
+    public static synchronized RewriteMediatorExtFactory getInstance() {
+        if (instance == null) {
+            instance = new RewriteMediatorExtFactory();
+        }
+        return instance;
+    }
 
     protected Mediator createSpecificMediator(OMElement omElement) {
 

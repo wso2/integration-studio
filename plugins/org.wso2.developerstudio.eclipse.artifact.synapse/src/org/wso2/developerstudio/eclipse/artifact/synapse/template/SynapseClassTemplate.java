@@ -42,7 +42,7 @@ public class SynapseClassTemplate {
 			buffer.append("\" ");
 			buffer.append("xsi:schemaLocation=");
 			buffer.append("\"");
-			buffer.append("http://ws.apache.org/ns/synapse http://synapse.apache.org/ns/2010/04/configuration/synapse_config.xsd");
+			buffer.append("http://ws.apache.org/ns/synapse http://ws.apache.org/ns/synapse-schema/synapse_config.xsd");
 			buffer.append("\"");
 			buffer.append(" />");
 

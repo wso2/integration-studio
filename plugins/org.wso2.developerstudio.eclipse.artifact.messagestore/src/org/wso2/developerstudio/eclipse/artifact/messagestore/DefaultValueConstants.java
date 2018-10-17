@@ -35,19 +35,19 @@ public class DefaultValueConstants {
     public static String JMS_PROVIDER_URL_ACTIVEMQ;
     public static String JMS_CONNECTION_FACTORY_ACTIVEMQ;
 
-    // JDBC related default values
-    public static String JDBC_DRIVER_MYSQL;
-    public static String JDBC_DRIVER_ORACLE;
-    public static String JDBC_DRIVER_MSSQL;
-    public static String JDBC_DRIVER_POSTGRESQL;
-    public static String JDBC_URL_MYSQL;
-    public static String JDBC_URL_ORACLE;
-    public static String JDBC_URL_MSSQL;
-    public static String JDBC_URL_POSTGRESQL;
-    public static String JDBC_USER_MYSQL;
-    public static String JDBC_USER_ORACLE;
-    public static String JDBC_USER_MSSQL;
-    public static String JDBC_USER_POSTGRESQL;
+    // Database related default values
+    public static String DATABASE_DRIVER_MYSQL;
+    public static String DATABASE_DRIVER_ORACLE;
+    public static String DATABASE_DRIVER_MSSQL;
+    public static String DATABASE_DRIVER_POSTGRESQL;
+    public static String DATABASE_URL_MYSQL;
+    public static String DATABASE_URL_ORACLE;
+    public static String DATABASE_URL_MSSQL;
+    public static String DATABASE_URL_POSTGRESQL;
+    public static String DATABASE_USER_MYSQL;
+    public static String DATABASE_USER_ORACLE;
+    public static String DATABASE_USER_MSSQL;
+    public static String DATABASE_USER_POSTGRESQL;
     
     // RabbitMQ related default values
     public static String RABBITMQ_SERVER_HOST_NAME;

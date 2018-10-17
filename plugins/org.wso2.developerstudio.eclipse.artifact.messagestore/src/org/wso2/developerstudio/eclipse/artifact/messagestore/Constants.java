@@ -70,6 +70,7 @@ public class Constants extends NLS {
     public static String FIELD_JDBC_DATASOURCE_NAME;
     public static String FIELD_JDBC_ENABLE_PRODUCER_GUARANTEED_DELIVERY;
     public static String FIELD_JDBC_FAILOVER_MESSAGE_STORE;
+    public static String FIELD_RESEQUENCER_DATABASE_TYPE;
     public static String FIELD_RESEQUENCER_DATABASE_TABLE;
     public static String FIELD_RESEQUENCER_CONNECTION_INFORMATION;
     public static String FIELD_RESEQUENCER_DRIVER;
@@ -112,11 +113,11 @@ public class Constants extends NLS {
     public static String TXT_JMS_PROFILE_OTHER;
     public static String TXT_JMS_PROFILE_WSO2_MB;
     public static String TXT_JMS_PROFILE_ACTIVEMQ;
-    public static String TXT_JDBC_DATABASE_TYPE_OTHER;
-    public static String TXT_JDBC_DATABASE_TYPE_MYSQL;
-    public static String TXT_JDBC_DATABASE_TYPE_ORACLE;
-    public static String TXT_JDBC_DATABASE_TYPE_MSSQL;
-    public static String TXT_JDBC_DATABASE_TYPE_POSTGRESQL;
+    public static String TXT_DATABASE_TYPE_OTHER;
+    public static String TXT_DATABASE_TYPE_MYSQL;
+    public static String TXT_DATABASE_TYPE_ORACLE;
+    public static String TXT_DATABASE_TYPE_MSSQL;
+    public static String TXT_DATABASE_TYPE_POSTGRESQL;
 
     static {
         // initialize resource bundle

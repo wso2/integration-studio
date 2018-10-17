@@ -34,12 +34,13 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.SegmentSequence;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Constants;
-import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.DatabaseTypeList.JDBCDatabaseType;
+import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.DatabaseTypeList.DatabaseType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JMSProfileTypeList.JMSProfileType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
@@ -112,7 +113,7 @@ public class MessageStoreModel extends ProjectDataModel {
     private String jdbcDatasourceName;
     private String jdbcEnableProducerGuaranteedDelivery;
     private String jdbcFailoverMessageStore;
-    private JDBCDatabaseType jdbcDatabaseType;
+    private DatabaseType jdbcDatabaseType;
 
     public String mbApiVersion;
     public String mbConnectionFactory;
@@ -134,6 +135,7 @@ public class MessageStoreModel extends ProjectDataModel {
     private String resequencePollingCount;
     private String resequenceXpath;
     private Map<String, String> resequenceXpathNamespaces = new HashMap<String, String>();
+    private DatabaseType resequenceDatabaseType;
 
     public MessageStoreModel() {
         availableStoreslist = new ArrayList<OMElement>();
@@ -733,6 +735,8 @@ public class MessageStoreModel extends ProjectDataModel {
             value = getResequenceDatabaseTable();
         } else if (key.equals(Constants.FIELD_RESEQUENCER_CONNECTION_INFORMATION)) {
             value = getResequenceConnectionInformation();
+        } else if (key.equals(Constants.FIELD_RESEQUENCER_DATABASE_TYPE)) {
+            value = getResequenceDatabaseType();
         } else if (key.equals(Constants.FIELD_RESEQUENCER_DRIVER)) {
             value = getResequenceDriver();
         } else if (key.equals(Constants.FIELD_RESEQUENCER_URL)) {
@@ -868,7 +872,7 @@ public class MessageStoreModel extends ProjectDataModel {
         } else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
             setJdbcDatabaseTable(data.toString());
         } else if (key.equals(Constants.FIELD_JDBC_DATABASE_TYPE)) {
-            setJdbcDatabaseType((JDBCDatabaseType) data);
+            setJdbcDatabaseType((DatabaseType) data);
         } else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
             setJdbcConnectionInformation(data.toString());
         } else if (key.equals(Constants.FIELD_JDBC_DRIVER)) {
@@ -889,6 +893,8 @@ public class MessageStoreModel extends ProjectDataModel {
             setResequenceDatabaseTable(data.toString());
         } else if (key.equals(Constants.FIELD_RESEQUENCER_CONNECTION_INFORMATION)) {
             setResequenceConnectionInformation(data.toString());
+        } else if (key.equals(Constants.FIELD_RESEQUENCER_DATABASE_TYPE)) {
+            setResequenceDatabaseType((DatabaseType) data);
         } else if (key.equals(Constants.FIELD_RESEQUENCER_DRIVER)) {
             setResequenceDriver(data.toString());
         } else if (key.equals(Constants.FIELD_RESEQUENCER_URL)) {
@@ -1053,12 +1059,20 @@ public class MessageStoreModel extends ProjectDataModel {
         this.jmsProfileType = jmsProfileType;
     }
 
-    public JDBCDatabaseType getJdbcDatabaseType() {
+    public DatabaseType getJdbcDatabaseType() {
         return jdbcDatabaseType;
     }
 
-    public void setJdbcDatabaseType(JDBCDatabaseType jdbcDatabaseType) {
+    public void setJdbcDatabaseType(DatabaseType jdbcDatabaseType) {
         this.jdbcDatabaseType = jdbcDatabaseType;
+    }
+
+    public DatabaseType getResequenceDatabaseType() {
+        return resequenceDatabaseType;
+    }
+
+    public void setResequenceDatabaseType(DatabaseType resequencerDatabaseType) {
+        this.resequenceDatabaseType = resequencerDatabaseType;
     }
 
 }

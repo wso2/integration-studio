@@ -23,7 +23,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IResource;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.model.MessageStoreModel;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList.JDBCConnectionInformationType;
-import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCDatabaseTypeList.JDBCDatabaseType;
+import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.DatabaseTypeList.JDBCDatabaseType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JMSProfileTypeList.JMSProfileType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
@@ -188,6 +188,7 @@ public class MessageStoreFieldController extends AbstractFieldController {
             updateFields.add(FIELD_MB_FAILOVER_MESSAGE_STORE);
             updateFields.add(FIELD_MB_CACHE_CONNECTION);
 
+            updateRabbitMQDefaults(model);
             updateFields.add(FIELD_RABBITMQ_SERVER_HOST_NAME);
             updateFields.add(FIELD_RABBITMQ_SERVER_HOST_PORT);
             updateFields.add(FIELD_RABBITMQ_QUEUE_NAME);
@@ -379,6 +380,20 @@ public class MessageStoreFieldController extends AbstractFieldController {
             storeModel.setJdbcURL(EMPTY_STRING);
             storeModel.setJdbcUser(EMPTY_STRING);
         }
+    }
+
+    /**
+     * Updates RabbitMQ defaults
+     * 
+     * @param model Project Data Model
+     */
+    private void updateRabbitMQDefaults(ProjectDataModel model) {
+        MessageStoreModel storeModel = (MessageStoreModel) model;
+        storeModel.setRabbitMQServerHostName(RABBITMQ_SERVER_HOST_NAME);
+        storeModel.setRabbitMQServerHostPort(RABBITMQ_SERVER_HOST_PORT);
+        storeModel.setRabbitMQSSLTrustStoreType(RABBITMQ_SSL_TRUST_STORE_TYPE);
+        storeModel.setRabbitMQSSLKeyStoreType(RABBITMQ_SSL_KEY_STORE_TYPE);
+        storeModel.setRabbitMQSSLVersion(RABBITMQ_SSL_VERSION);
     }
 
 }

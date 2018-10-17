@@ -10,7 +10,7 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataM
 /**
  * Message-store JDBC pre-configured database type data provider class
  */
-public class JDBCDatabaseTypeList extends AbstractListDataProvider {
+public class DatabaseTypeList extends AbstractListDataProvider {
     
     @Override
     public List<ListData> getListData(String modelProperty, ProjectDataModel model) {

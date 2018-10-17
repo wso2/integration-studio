@@ -39,7 +39,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Constants;
-import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCDatabaseTypeList.JDBCDatabaseType;
+import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.DatabaseTypeList.JDBCDatabaseType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JMSProfileTypeList.JMSProfileType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;

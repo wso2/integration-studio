@@ -48,6 +48,13 @@ public class DefaultValueConstants {
     public static String JDBC_USER_ORACLE;
     public static String JDBC_USER_MSSQL;
     public static String JDBC_USER_POSTGRESQL;
+    
+    // RabbitMQ related default values
+    public static String RABBITMQ_SERVER_HOST_NAME;
+    public static String RABBITMQ_SERVER_HOST_PORT;    
+    public static String RABBITMQ_SSL_TRUST_STORE_TYPE;    
+    public static String RABBITMQ_SSL_KEY_STORE_TYPE;    
+    public static String RABBITMQ_SSL_VERSION;    
 
     static {
         // initializing resource bundle

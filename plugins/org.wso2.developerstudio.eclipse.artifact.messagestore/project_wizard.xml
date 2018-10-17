@@ -141,7 +141,7 @@
 				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList">Connection Information*</data>
 			<data modelProperty="jdbc.rdbms-type" type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
-				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCDatabaseTypeList">RDBMS Type</data>
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.DatabaseTypeList">RDBMS Type</data>
 			<data modelProperty="jdbc.driver" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Driver*</data>
 			<data modelProperty="jdbc.url" type="string"

@@ -461,7 +461,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT = "";
+    protected static final String INBOUND_WORKER_POOL_SIZE_CORE_EDEFAULT = "400";
 
     /**
      * The cached value of the '{@link #getInboundWorkerPoolSizeCore() <em>Inbound Worker Pool Size Core</em>}' attribute.
@@ -481,7 +481,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT = "";
+    protected static final String INBOUND_WORKER_POOL_SIZE_MAX_EDEFAULT = "500";
 
     /**
      * The cached value of the '{@link #getInboundWorkerPoolSizeMax() <em>Inbound Worker Pool Size Max</em>}' attribute.
@@ -502,7 +502,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT = "";
+    protected static final String INBOUND_WORKER_THREAD_KEEP_ALIVE_SEC_EDEFAULT = "60";
 
     /**
      * The cached value of the '{@link #getInboundWorkerThreadKeepAliveSec()
@@ -524,7 +524,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT = "";
+    protected static final String INBOUND_WORKER_POOL_QUEUE_LENGTH_EDEFAULT = "-1";
 
     /**
      * The cached value of the '{@link #getInboundWorkerPoolQueueLength()
@@ -565,7 +565,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String INBOUND_THREAD_ID_EDEFAULT = "";
+    protected static final String INBOUND_THREAD_ID_EDEFAULT = "PassThroughInboundWorkerPool";
 
     /**
      * The cached value of the '{@link #getInboundThreadId() <em>Inbound Thread Id</em>}' attribute.
@@ -699,7 +699,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT = "";
+    protected static final String TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT = "text/plain";
 
     /**
      * The cached value of the '{@link #getTransportVFSContentType() <em>Transport VFS Content Type</em>}' attribute.
@@ -719,7 +719,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT = "";
+    protected static final String TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT = ".*.txt";
 
     /**
      * The cached value of the '{@link #getTransportVFSFileNamePattern() <em>Transport VFS File Name Pattern</em>}' attribute.
@@ -1915,7 +1915,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT = "";
+    protected static final String TRANSPORT_MQTT_CONNECTION_FACTORY_EDEFAULT = "AMQPConnectionFactory";
 
     /**
      * The cached value of the '{@link #getTransportMQTTConnectionFactory()
@@ -2425,7 +2425,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String ZOOKEEPER_CONNECT_EDEFAULT = "";
+    protected static final String ZOOKEEPER_CONNECT_EDEFAULT = "localhost:2181";
 
     /**
      * The cached value of the '{@link #getZookeeperConnect() <em>Zookeeper Connect</em>}' attribute.
@@ -2679,7 +2679,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String THREAD_COUNT_EDEFAULT = "";
+    protected static final String THREAD_COUNT_EDEFAULT = "1";
 
     /**
      * The cached value of the '{@link #getThreadCount() <em>Thread Count</em>}' attribute.
@@ -2716,7 +2716,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String SOCKET_TIMEOUT_MS_EDEFAULT = "";
+    protected static final String SOCKET_TIMEOUT_MS_EDEFAULT = "30000";
 
     /**
      * The cached value of the '{@link #getSocketTimeoutMs() <em>Socket Timeout Ms</em>}' attribute.
@@ -2736,7 +2736,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT = null;
+    protected static final String SOCKET_RECEIVE_BUFFER_BYTES_EDEFAULT = "65536";
 
     /**
      * The cached value of the '{@link #getSocketReceiveBufferBytes() <em>Socket Receive Buffer Bytes</em>}' attribute.
@@ -2756,7 +2756,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String FETCH_MESSAGE_MAX_BYTES_EDEFAULT = null;
+    protected static final String FETCH_MESSAGE_MAX_BYTES_EDEFAULT = "1048576";
 
     /**
      * The cached value of the '{@link #getFetchMessageMaxBytes() <em>Fetch Message Max Bytes</em>}' attribute.
@@ -2776,7 +2776,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String NUM_CONSUMER_FETCHES_EDEFAULT = null;
+    protected static final String NUM_CONSUMER_FETCHES_EDEFAULT = "1";
 
     /**
      * The cached value of the '{@link #getNumConsumerFetches() <em>Num Consumer Fetches</em>}' attribute.
@@ -2816,7 +2816,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String AUTO_COMMIT_INTERVAL_MS_EDEFAULT = "";
+    protected static final String AUTO_COMMIT_INTERVAL_MS_EDEFAULT = "60000";
 
     /**
      * The cached value of the '{@link #getAutoCommitIntervalMs() <em>Auto Commit Interval Ms</em>}' attribute.
@@ -2836,7 +2836,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT = null;
+    protected static final String QUEUED_MAX_MESSAGE_CHUNKS_EDEFAULT = "2";
 
     /**
      * The cached value of the '{@link #getQueuedMaxMessageChunks() <em>Queued Max Message Chunks</em>}' attribute.
@@ -2856,7 +2856,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String REBALANCE_MAX_RETRIES_EDEFAULT = "";
+    protected static final String REBALANCE_MAX_RETRIES_EDEFAULT = "4";
 
     /**
      * The cached value of the '{@link #getRebalanceMaxRetries() <em>Rebalance Max Retries</em>}' attribute.
@@ -2876,7 +2876,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String FETCH_MIN_BYTES_EDEFAULT = "";
+    protected static final String FETCH_MIN_BYTES_EDEFAULT = "1";
 
     /**
      * The cached value of the '{@link #getFetchMinBytes() <em>Fetch Min Bytes</em>}' attribute.
@@ -2896,7 +2896,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String FETCH_WAIT_MAX_MS_EDEFAULT = "";
+    protected static final String FETCH_WAIT_MAX_MS_EDEFAULT = "100";
 
     /**
      * The cached value of the '{@link #getFetchWaitMaxMs() <em>Fetch Wait Max Ms</em>}' attribute.
@@ -2916,7 +2916,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String REBALANCE_BACKOFF_MS_EDEFAULT = "";
+    protected static final String REBALANCE_BACKOFF_MS_EDEFAULT = "2000";
 
     /**
      * The cached value of the '{@link #getRebalanceBackoffMs() <em>Rebalance Backoff Ms</em>}' attribute.
@@ -2936,7 +2936,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String REFRESH_LEADER_BACKOFF_MS_EDEFAULT = "";
+    protected static final String REFRESH_LEADER_BACKOFF_MS_EDEFAULT = "200";
 
     /**
      * The cached value of the '{@link #getRefreshLeaderBackoffMs() <em>Refresh Leader Backoff Ms</em>}' attribute.
@@ -2956,7 +2956,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final AutoOffsetResetType AUTO_OFFSET_RESET_EDEFAULT = AutoOffsetResetType.SMALLEST;
+    protected static final AutoOffsetResetType AUTO_OFFSET_RESET_EDEFAULT = AutoOffsetResetType.LARGEST;
 
     /**
      * The cached value of the '{@link #getAutoOffsetReset() <em>Auto Offset Reset</em>}' attribute.
@@ -2976,7 +2976,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String CONSUMER_TIMEOUT_MS_EDEFAULT = "";
+    protected static final String CONSUMER_TIMEOUT_MS_EDEFAULT = "3000";
 
     /**
      * The cached value of the '{@link #getConsumerTimeoutMs() <em>Consumer Timeout Ms</em>}' attribute.
@@ -3054,7 +3054,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT = "";
+    protected static final String ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT = "6000";
 
     /**
      * The cached value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
@@ -3074,7 +3074,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT = "";
+    protected static final String ZOOKEEPER_CONNECTION_TIMEOUT_MS_EDEFAULT = "6000";
 
     /**
      * The cached value of the '{@link #getZookeeperConnectionTimeoutMs() <em>Zookeeper Connection Timeout Ms</em>}' attribute.
@@ -3094,7 +3094,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String ZOOKEEPER_SYNC_TIME_MS_EDEFAULT = "";
+    protected static final String ZOOKEEPER_SYNC_TIME_MS_EDEFAULT = "2000";
 
     /**
      * The cached value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
@@ -3134,7 +3134,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT = "";
+    protected static final String OFFSETS_CHANNEL_BACKOFF_MS_EDEFAULT = "1000";
 
     /**
      * The cached value of the '{@link #getOffsetsChannelBackoffMs() <em>Offsets Channel Backoff Ms</em>}' attribute.
@@ -3155,7 +3155,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT = "";
+    protected static final String OFFSETS_CHANNEL_SOCKET_TIMEOUT_MS_EDEFAULT = "10000";
 
     /**
      * The cached value of the '{@link #getOffsetsChannelSocketTimeoutMs()
@@ -3176,7 +3176,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT = "";
+    protected static final String OFFSETS_COMMIT_MAX_RETRIES_EDEFAULT = "5";
 
     /**
      * The cached value of the '{@link #getOffsetsCommitMaxRetries() <em>Offsets Commit Max Retries</em>}' attribute.
@@ -3196,7 +3196,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final boolean DUAL_COMMIT_ENABLED_EDEFAULT = false;
+    protected static final boolean DUAL_COMMIT_ENABLED_EDEFAULT = true;
 
     /**
      * The cached value of the '{@link #isDualCommitEnabled() <em>Dual Commit Enabled</em>}' attribute.
@@ -3324,7 +3324,7 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
      * @generated
      * @ordered
      */
-    protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT = null;
+    protected static final String TRANSPORT_RABBIT_MQ_CONNECTION_FACTORY_EDEFAULT = "AMQPConnectionFactory";
 
     /**
      * The cached value of the '{@link #getTransportRabbitMqConnectionFactory()

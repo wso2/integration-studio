@@ -1028,9 +1028,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqConnectionFactory())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_CONNECTION_FACTORY,
                         visualInboundEndpoint.getTransportRabbitMqConnectionFactory());
-            } else {
-                throw new TransformerException("AMQPConnectionFactory");
-            }
+            } 
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportRabbitMqServerHostName())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.RABBITMQ_SERVER_HOST_NAME,
                         visualInboundEndpoint.getTransportRabbitMqServerHostName());

@@ -72,6 +72,7 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
             }
             addConnectionDsNamePropertyDescriptor(object);
         } else {
+            addConnectionDbTypePropertyDescriptor(object);
             addConnectionDbDriverPropertyDescriptor(object);
             addSqlConnectionPropertyDescriptors(object);
         }
@@ -138,6 +139,23 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
                                 "_UI_AbstractSqlExecutorMediator_connectionDsType_feature",
                                 "_UI_AbstractSqlExecutorMediator_type"),
                         EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE, true, false, false,
+                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Connection", null));
+    }
+
+    /**
+     * This adds a property descriptor for the Connection Db Type feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addConnectionDbTypePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(), getString("_UI_AbstractSqlExecutorMediator_connectionDbType_feature"),
+                        getString("_UI_PropertyDescriptor_description",
+                                "_UI_AbstractSqlExecutorMediator_connectionDbType_feature",
+                                "_UI_AbstractSqlExecutorMediator_type"),
+                        EsbPackage.Literals.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, true, false, false,
                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, "Connection", null));
     }
 
@@ -542,6 +560,7 @@ public class AbstractSqlExecutorMediatorItemProvider extends MediatorItemProvide
         switch (notification.getFeatureID(AbstractSqlExecutorMediator.class)) {
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_TYPE:
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE:
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE:
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER:
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT:
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_NAME:

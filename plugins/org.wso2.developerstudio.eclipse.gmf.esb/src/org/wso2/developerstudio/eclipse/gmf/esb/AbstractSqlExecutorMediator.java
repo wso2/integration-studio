@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionType <em>Connection Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsType <em>Connection Ds Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDbType <em>Connection Db Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDbDriver <em>Connection Db Driver</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsInitialContext <em>Connection Ds Initial Context</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDsName <em>Connection Ds Name</em>}</li>
@@ -106,8 +107,38 @@ public interface AbstractSqlExecutorMediator extends Mediator {
     void setConnectionDsType(SqlExecutorDatasourceType value);
 
     /**
+     * Returns the value of the '<em><b>Connection Db Type</b></em>' attribute.
+     * The default value is <code>"OTHER"</code>.
+     * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Connection Db Type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Connection Db Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType
+     * @see #setConnectionDbType(SqlDatabaseType)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionDbType()
+     * @model default="OTHER"
+     * @generated
+     */
+    SqlDatabaseType getConnectionDbType();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator#getConnectionDbType <em>Connection Db Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Connection Db Type</em>' attribute.
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType
+     * @see #getConnectionDbType()
+     * @generated
+     */
+    void setConnectionDbType(SqlDatabaseType value);
+
+    /**
      * Returns the value of the '<em><b>Connection Db Driver</b></em>' attribute.
-     * The default value is <code>"driver_class"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Connection Db Driver</em>' attribute isn't clear,
@@ -117,7 +148,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * @return the value of the '<em>Connection Db Driver</em>' attribute.
      * @see #setConnectionDbDriver(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionDbDriver()
-     * @model default="driver_class"
+     * @model default=""
      * @generated
      */
     String getConnectionDbDriver();
@@ -188,7 +219,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Connection URL</b></em>' attribute.
-     * The default value is <code>"connection_url"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Connection URL</em>' attribute isn't clear,
@@ -198,7 +229,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * @return the value of the '<em>Connection URL</em>' attribute.
      * @see #setConnectionURL(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionURL()
-     * @model default="connection_url"
+     * @model default=""
      * @generated
      */
     String getConnectionURL();
@@ -215,7 +246,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Connection Username</b></em>' attribute.
-     * The default value is <code>"username"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Connection Username</em>' attribute isn't clear,
@@ -225,7 +256,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * @return the value of the '<em>Connection Username</em>' attribute.
      * @see #setConnectionUsername(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionUsername()
-     * @model default="username"
+     * @model default=""
      * @generated
      */
     String getConnectionUsername();
@@ -242,7 +273,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Connection Password</b></em>' attribute.
-     * The default value is <code>"password"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Connection Password</em>' attribute isn't clear,
@@ -252,7 +283,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * @return the value of the '<em>Connection Password</em>' attribute.
      * @see #setConnectionPassword(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionPassword()
-     * @model default="password"
+     * @model default=""
      * @generated
      */
     String getConnectionPassword();

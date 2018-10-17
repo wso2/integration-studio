@@ -438,6 +438,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SomeXML;
 import org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SpringMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SpringMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
@@ -3574,6 +3575,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * @generated
      */
     private EEnum sqlExecutorIsolationLevelEEnum = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EEnum sqlDatabaseTypeEEnum = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -15635,7 +15643,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_ConnectionDbDriver() {
+    public EAttribute getAbstractSqlExecutorMediator_ConnectionDbType() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(2);
     }
 
@@ -15644,7 +15652,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_ConnectionDsInitialContext() {
+    public EAttribute getAbstractSqlExecutorMediator_ConnectionDbDriver() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(3);
     }
 
@@ -15653,7 +15661,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_ConnectionDsName() {
+    public EAttribute getAbstractSqlExecutorMediator_ConnectionDsInitialContext() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(4);
     }
 
@@ -15662,7 +15670,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_ConnectionURL() {
+    public EAttribute getAbstractSqlExecutorMediator_ConnectionDsName() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(5);
     }
 
@@ -15671,7 +15679,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_ConnectionUsername() {
+    public EAttribute getAbstractSqlExecutorMediator_ConnectionURL() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(6);
     }
 
@@ -15680,7 +15688,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_ConnectionPassword() {
+    public EAttribute getAbstractSqlExecutorMediator_ConnectionUsername() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(7);
     }
 
@@ -15689,7 +15697,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyAutocommit() {
+    public EAttribute getAbstractSqlExecutorMediator_ConnectionPassword() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(8);
     }
 
@@ -15698,7 +15706,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyIsolation() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyAutocommit() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(9);
     }
 
@@ -15707,7 +15715,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyMaxactive() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyIsolation() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(10);
     }
 
@@ -15716,7 +15724,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyMaxidle() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyMaxactive() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(11);
     }
 
@@ -15725,7 +15733,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyMaxopenstatements() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyMaxidle() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(12);
     }
 
@@ -15734,7 +15742,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyMaxwait() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyMaxopenstatements() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(13);
     }
 
@@ -15743,7 +15751,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyMinidle() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyMaxwait() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(14);
     }
 
@@ -15752,7 +15760,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyPoolstatements() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyMinidle() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(15);
     }
 
@@ -15761,7 +15769,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyTestonborrow() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyPoolstatements() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(16);
     }
 
@@ -15770,7 +15778,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyTestwhileidle() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyTestonborrow() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(17);
     }
 
@@ -15779,7 +15787,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyValidationquery() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyTestwhileidle() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(18);
     }
 
@@ -15788,7 +15796,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getAbstractSqlExecutorMediator_PropertyInitialsize() {
+    public EAttribute getAbstractSqlExecutorMediator_PropertyValidationquery() {
         return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(19);
     }
 
@@ -15797,8 +15805,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getAbstractSqlExecutorMediator_PropertyInitialsize() {
+        return (EAttribute)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(20);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EReference getAbstractSqlExecutorMediator_SqlStatements() {
-        return (EReference)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(20);
+        return (EReference)abstractSqlExecutorMediatorEClass.getEStructuralFeatures().get(21);
     }
 
     /**
@@ -18731,6 +18748,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EEnum getSqlDatabaseType() {
+        return sqlDatabaseTypeEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EEnum getSqlParameterValueType() {
         return sqlParameterValueTypeEEnum;
     }
@@ -20316,6 +20342,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         abstractSqlExecutorMediatorEClass = createEClass(ABSTRACT_SQL_EXECUTOR_MEDIATOR);
         createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_TYPE);
         createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE);
+        createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE);
         createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER);
         createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT);
         createEAttribute(abstractSqlExecutorMediatorEClass, ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_NAME);
@@ -21288,6 +21315,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         sqlExecutorDatasourceTypeEEnum = createEEnum(SQL_EXECUTOR_DATASOURCE_TYPE);
         sqlExecutorBooleanValueEEnum = createEEnum(SQL_EXECUTOR_BOOLEAN_VALUE);
         sqlExecutorIsolationLevelEEnum = createEEnum(SQL_EXECUTOR_ISOLATION_LEVEL);
+        sqlDatabaseTypeEEnum = createEEnum(SQL_DATABASE_TYPE);
         sqlParameterValueTypeEEnum = createEEnum(SQL_PARAMETER_VALUE_TYPE);
         sqlParameterDataTypeEEnum = createEEnum(SQL_PARAMETER_DATA_TYPE);
         ruleActionsEEnum = createEEnum(RULE_ACTIONS);
@@ -22759,12 +22787,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEClass(abstractSqlExecutorMediatorEClass, AbstractSqlExecutorMediator.class, "AbstractSqlExecutorMediator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getAbstractSqlExecutorMediator_ConnectionType(), this.getSqlExecutorConnectionType(), "connectionType", "DB_CONNECTION", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAbstractSqlExecutorMediator_ConnectionDsType(), this.getSqlExecutorDatasourceType(), "connectionDsType", "EXTERNAL", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getAbstractSqlExecutorMediator_ConnectionDbDriver(), ecorePackage.getEString(), "connectionDbDriver", "driver_class", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractSqlExecutorMediator_ConnectionDbType(), this.getSqlDatabaseType(), "connectionDbType", "OTHER", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractSqlExecutorMediator_ConnectionDbDriver(), ecorePackage.getEString(), "connectionDbDriver", "", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAbstractSqlExecutorMediator_ConnectionDsInitialContext(), ecorePackage.getEString(), "connectionDsInitialContext", "initial_context", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAbstractSqlExecutorMediator_ConnectionDsName(), ecorePackage.getEString(), "connectionDsName", "datasource_name", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getAbstractSqlExecutorMediator_ConnectionURL(), ecorePackage.getEString(), "connectionURL", "connection_url", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getAbstractSqlExecutorMediator_ConnectionUsername(), ecorePackage.getEString(), "connectionUsername", "username", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getAbstractSqlExecutorMediator_ConnectionPassword(), ecorePackage.getEString(), "connectionPassword", "password", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractSqlExecutorMediator_ConnectionURL(), ecorePackage.getEString(), "connectionURL", "", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractSqlExecutorMediator_ConnectionUsername(), ecorePackage.getEString(), "connectionUsername", "", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractSqlExecutorMediator_ConnectionPassword(), ecorePackage.getEString(), "connectionPassword", "", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAbstractSqlExecutorMediator_PropertyAutocommit(), this.getSqlExecutorBooleanValue(), "propertyAutocommit", "DEFAULT", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAbstractSqlExecutorMediator_PropertyIsolation(), this.getSqlExecutorIsolationLevel(), "propertyIsolation", "DEFAULT", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAbstractSqlExecutorMediator_PropertyMaxactive(), ecorePackage.getEInt(), "propertyMaxactive", "-1", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -24115,6 +24144,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         addEEnumLiteral(sqlExecutorIsolationLevelEEnum, SqlExecutorIsolationLevel.TRANSACTION_REPEATABLE_READ);
         addEEnumLiteral(sqlExecutorIsolationLevelEEnum, SqlExecutorIsolationLevel.TRANSACTION_SERIALIZABLE);
         addEEnumLiteral(sqlExecutorIsolationLevelEEnum, SqlExecutorIsolationLevel.DEFAULT);
+
+        initEEnum(sqlDatabaseTypeEEnum, SqlDatabaseType.class, "SqlDatabaseType");
+        addEEnumLiteral(sqlDatabaseTypeEEnum, SqlDatabaseType.OTHER);
+        addEEnumLiteral(sqlDatabaseTypeEEnum, SqlDatabaseType.MYSQL);
+        addEEnumLiteral(sqlDatabaseTypeEEnum, SqlDatabaseType.ORACLE);
+        addEEnumLiteral(sqlDatabaseTypeEEnum, SqlDatabaseType.MSSQL);
+        addEEnumLiteral(sqlDatabaseTypeEEnum, SqlDatabaseType.POSTGRESQL);
 
         initEEnum(sqlParameterValueTypeEEnum, SqlParameterValueType.class, "SqlParameterValueType");
         addEEnumLiteral(sqlParameterValueTypeEEnum, SqlParameterValueType.LITERAL);

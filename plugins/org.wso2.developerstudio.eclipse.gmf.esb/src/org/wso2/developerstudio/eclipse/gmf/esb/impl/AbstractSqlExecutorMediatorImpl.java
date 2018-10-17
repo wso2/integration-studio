@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
@@ -39,6 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionType <em>Connection Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsType <em>Connection Ds Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDbType <em>Connection Db Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDbDriver <em>Connection Db Driver</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsInitialContext <em>Connection Ds Initial Context</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractSqlExecutorMediatorImpl#getConnectionDsName <em>Connection Ds Name</em>}</li>
@@ -104,6 +106,26 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
     protected SqlExecutorDatasourceType connectionDsType = CONNECTION_DS_TYPE_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getConnectionDbType() <em>Connection Db Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getConnectionDbType()
+     * @generated
+     * @ordered
+     */
+    protected static final SqlDatabaseType CONNECTION_DB_TYPE_EDEFAULT = SqlDatabaseType.OTHER;
+
+    /**
+     * The cached value of the '{@link #getConnectionDbType() <em>Connection Db Type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getConnectionDbType()
+     * @generated
+     * @ordered
+     */
+    protected SqlDatabaseType connectionDbType = CONNECTION_DB_TYPE_EDEFAULT;
+
+    /**
      * The default value of the '{@link #getConnectionDbDriver() <em>Connection Db Driver</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -111,7 +133,7 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
      * @generated
      * @ordered
      */
-    protected static final String CONNECTION_DB_DRIVER_EDEFAULT = "driver_class";
+    protected static final String CONNECTION_DB_DRIVER_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getConnectionDbDriver() <em>Connection Db Driver</em>}' attribute.
@@ -171,7 +193,7 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
      * @generated
      * @ordered
      */
-    protected static final String CONNECTION_URL_EDEFAULT = "connection_url";
+    protected static final String CONNECTION_URL_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getConnectionURL() <em>Connection URL</em>}' attribute.
@@ -191,7 +213,7 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
      * @generated
      * @ordered
      */
-    protected static final String CONNECTION_USERNAME_EDEFAULT = "username";
+    protected static final String CONNECTION_USERNAME_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getConnectionUsername() <em>Connection Username</em>}' attribute.
@@ -211,7 +233,7 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
      * @generated
      * @ordered
      */
-    protected static final String CONNECTION_PASSWORD_EDEFAULT = "password";
+    protected static final String CONNECTION_PASSWORD_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getConnectionPassword() <em>Connection Password</em>}' attribute.
@@ -533,6 +555,27 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
         connectionDsType = newConnectionDsType == null ? CONNECTION_DS_TYPE_EDEFAULT : newConnectionDsType;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE, oldConnectionDsType, connectionDsType));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public SqlDatabaseType getConnectionDbType() {
+        return connectionDbType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setConnectionDbType(SqlDatabaseType newConnectionDbType) {
+        SqlDatabaseType oldConnectionDbType = connectionDbType;
+        connectionDbType = newConnectionDbType == null ? CONNECTION_DB_TYPE_EDEFAULT : newConnectionDbType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, oldConnectionDbType, connectionDbType));
     }
 
     /**
@@ -953,6 +996,8 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
                 return getConnectionType();
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE:
                 return getConnectionDsType();
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE:
+                return getConnectionDbType();
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER:
                 return getConnectionDbDriver();
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT:
@@ -1010,6 +1055,9 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
                 return;
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE:
                 setConnectionDsType((SqlExecutorDatasourceType)newValue);
+                return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE:
+                setConnectionDbType((SqlDatabaseType)newValue);
                 return;
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER:
                 setConnectionDbDriver((String)newValue);
@@ -1088,6 +1136,9 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE:
                 setConnectionDsType(CONNECTION_DS_TYPE_EDEFAULT);
                 return;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE:
+                setConnectionDbType(CONNECTION_DB_TYPE_EDEFAULT);
+                return;
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER:
                 setConnectionDbDriver(CONNECTION_DB_DRIVER_EDEFAULT);
                 return;
@@ -1162,6 +1213,8 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
                 return connectionType != CONNECTION_TYPE_EDEFAULT;
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_TYPE:
                 return connectionDsType != CONNECTION_DS_TYPE_EDEFAULT;
+            case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE:
+                return connectionDbType != CONNECTION_DB_TYPE_EDEFAULT;
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_DRIVER:
                 return CONNECTION_DB_DRIVER_EDEFAULT == null ? connectionDbDriver != null : !CONNECTION_DB_DRIVER_EDEFAULT.equals(connectionDbDriver);
             case EsbPackage.ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT:
@@ -1219,6 +1272,8 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
         result.append(connectionType);
         result.append(", connectionDsType: ");
         result.append(connectionDsType);
+        result.append(", connectionDbType: ");
+        result.append(connectionDbType);
         result.append(", connectionDbDriver: ");
         result.append(connectionDbDriver);
         result.append(", connectionDsInitialContext: ");

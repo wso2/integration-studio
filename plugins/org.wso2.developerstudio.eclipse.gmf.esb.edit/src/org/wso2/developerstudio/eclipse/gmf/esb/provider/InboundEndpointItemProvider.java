@@ -29,6 +29,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -50,6 +52,9 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
     private static final String TRANSPORT_JMS_DESTINATION_ACTIVEMQ = "ordersQueue";
     private static final String JAVA_NAMING_PROVIDER_URL_WSO2_BROKER = "conf/jndi.properties";
     private static final String JAVA_NAMING_PROVIDER_URL_ACTIVEMQ = "tcp://localhost:61616";
+    
+    private static final String PLUGIN_ID = "org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint";
+    private static IDeveloperStudioLog log = Logger.getLog(PLUGIN_ID);
 
     /**
      * This constructs an instance from a factory and a notifier. <!--
@@ -4506,15 +4511,19 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
      */
     private void updateJavaNamingFactoryInitialProperty(final InboundEndpoint inboundEndpoint, final String newValue) {
 
-        TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(inboundEndpoint);
-        domain1.getCommandStack().execute(new RecordingCommand(domain1) {
-            @Override
-            protected void doExecute() {
-                if (!inboundEndpoint.getJavaNamingFactoryInitial().equals(newValue)) {
-                    inboundEndpoint.setJavaNamingFactoryInitial(newValue);
+        TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(inboundEndpoint);
+        try {
+            editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+                @Override
+                protected void doExecute() {
+                    if (!inboundEndpoint.getJavaNamingFactoryInitial().equals(newValue)) {
+                        inboundEndpoint.setJavaNamingFactoryInitial(newValue);
+                    }
                 }
-            }
-        });
+            });
+        } catch (IllegalStateException e) {
+            log.error("Cannot modify property " + EsbPackage.Literals.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL);
+        }
     }
 
     /**
@@ -4522,15 +4531,19 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
      */
     private void updateJavaNamingProviderUrlProperty(final InboundEndpoint inboundEndpoint, final String newValue) {
 
-        TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(inboundEndpoint);
-        domain1.getCommandStack().execute(new RecordingCommand(domain1) {
-            @Override
-            protected void doExecute() {
-                if (!inboundEndpoint.getJavaNamingProviderUrl().equals(newValue)) {
-                    inboundEndpoint.setJavaNamingProviderUrl(newValue);
+        TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(inboundEndpoint);
+        try {
+            editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+                @Override
+                protected void doExecute() {
+                    if (!inboundEndpoint.getJavaNamingProviderUrl().equals(newValue)) {
+                        inboundEndpoint.setJavaNamingProviderUrl(newValue);
+                    }
                 }
-            }
-        });
+            });
+        } catch (IllegalStateException e) {
+            log.error("Cannot modify property " + EsbPackage.Literals.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL);
+        }
     }
 
     /**
@@ -4538,15 +4551,19 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
      */
     private void updateTransportJMSDestinationProperty(final InboundEndpoint inboundEndpoint, final String newValue) {
 
-        TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(inboundEndpoint);
-        domain1.getCommandStack().execute(new RecordingCommand(domain1) {
-            @Override
-            protected void doExecute() {
-                if (!inboundEndpoint.getTransportJMSDestination().equals(newValue)) {
-                    inboundEndpoint.setTransportJMSDestination(newValue);
+        TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(inboundEndpoint);
+        try {
+            editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+                @Override
+                protected void doExecute() {
+                    if (!inboundEndpoint.getTransportJMSDestination().equals(newValue)) {
+                        inboundEndpoint.setTransportJMSDestination(newValue);
+                    }
                 }
-            }
-        });
+            });
+        } catch (IllegalStateException e) {
+            log.error("Cannot modify property " + EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION);
+        }
     }
 
     /**
@@ -4555,14 +4572,19 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
     private void updateTransportJMSConnectionFactoryJNDINameProperty(final InboundEndpoint inboundEndpoint,
             final String newValue) {
 
-        TransactionalEditingDomain domain1 = TransactionUtil.getEditingDomain(inboundEndpoint);
-        domain1.getCommandStack().execute(new RecordingCommand(domain1) {
-            @Override
-            protected void doExecute() {
-                if (!inboundEndpoint.getTransportJMSConnectionFactoryJNDIName().equals(newValue)) {
-                    inboundEndpoint.setTransportJMSConnectionFactoryJNDIName(newValue);
+        TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(inboundEndpoint);
+        try {
+            editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+                @Override
+                protected void doExecute() {
+                    if (!inboundEndpoint.getTransportJMSConnectionFactoryJNDIName().equals(newValue)) {
+                        inboundEndpoint.setTransportJMSConnectionFactoryJNDIName(newValue);
+                    }
                 }
-            }
-        });
+            });
+        } catch (IllegalStateException e) {
+            log.error("Cannot modify property "
+                    + EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME);
+        }
     }
 }

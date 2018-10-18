@@ -33,7 +33,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class CarbonPingThread extends PingThread {
-	private static final int PING_DELAY = 10000;
+	private static final int PING_DELAY = 1000;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	// delay between pings
 	private static final int PING_INTERVAL = 250;

@@ -28,6 +28,39 @@
             runtimeTypeIds="org.wso2.developerstudio.eclipse.carbon.*">
       </runtimeClasspathProvider>
    </extension>
+   <extension point="org.eclipse.ui.exportWizards">
+		<wizard id="org.wso2.developerstudio.eclipse.carbonserver44microei.exportAsArtifactAndRun" name="Deployable WSO2 Micro EI Archive"
+			class="org.wso2.developerstudio.eclipse.carbonserver44microei.wizard.DistributionProjectExportAndRunWizard" icon="icons/car.png"
+			category="org.wso2.developerstudio.eclipse.distribution.export">
+			<description>
+				Create a deployable archive from an artifact project and Run
+			</description>
+			<selection class="org.eclipse.core.resources.IProject" />
+		</wizard>
+	</extension>
+	
+	
+	
+   <extension point="org.eclipse.ui.popupMenus">
+            <objectContribution
+          objectClass="org.eclipse.core.resources.IProject"
+                id="org.wso2.developerstudio.eclipse.carbonserver44microei.exportandrun">
+           <action
+                    label="Export Project Artifacts and Run"
+                    icon="icons/car.png"
+               class="org.wso2.developerstudio.eclipse.carbonserver44microei.wizard.ExportDistributionAndRunAction"
+                    id="org.wso2.developerstudio.eclipse.carbonserver44microei.exportandrun">
+           </action>
+           <enablement>
+					<adapt type="org.eclipse.core.resources.IProject">
+						<test property="org.eclipse.core.resources.projectNature"
+							value="org.wso2.developerstudio.eclipse.distribution.project.nature" />
+					</adapt>
+			</enablement>
+           </objectContribution>
+    </extension>
+        
+        
    <extension
          point="org.eclipse.wst.common.project.facet.core.runtimes">
       <runtime-component-type

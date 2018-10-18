@@ -35,13 +35,17 @@ import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.IServerType;
 import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.core.ServerCore;
+import org.wso2.developerstudio.eclipse.carbonserver44microei.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.ServerProperties;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.internal.CarbonServerBehavior44microei;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class MicroIntegratorInstance {
 
 	private static MicroIntegratorInstance instance;
 	private IServer microIntegratorServer;
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private MicroIntegratorInstance() {
 		setupServer();
@@ -58,8 +62,7 @@ public class MicroIntegratorInstance {
 
 		IRuntimeType runtimeType = ServerCore
 				.findRuntimeType("org.wso2.developerstudio.eclipse.carbon.runtime44microei");
-		IServerType serverType = ServerCore
-				.findServerType("org.wso2.developerstudio.eclipse.carbon.server44microei");
+		IServerType serverType = ServerCore.findServerType("org.wso2.developerstudio.eclipse.carbon.server44microei");
 
 		try {
 
@@ -99,12 +102,37 @@ public class MicroIntegratorInstance {
 		dl.saveConfiguration(new NullProgressMonitor());
 	}
 
+	public String getServerHome() {
+		return microIntegratorServer.getRuntime().getLocation().toOSString();
+	}
+
 	public void start() throws CoreException {
-		microIntegratorServer.start(ILaunchManager.RUN_MODE, new NullProgressMonitor());
+		if (microIntegratorServer.getServerState() == IServer.STATE_STOPPED) {
+			microIntegratorServer.start(ILaunchManager.RUN_MODE, new NullProgressMonitor());
+		} else {
+			log.warn("Micro Integrator server is not in stopped mode to start back. Trying force stop.");
+			microIntegratorServer.stop(true);
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				// ignore
+			}
+			microIntegratorServer.start(ILaunchManager.RUN_MODE, new NullProgressMonitor());
+		}
 	}
 
 	public void stop() {
 		microIntegratorServer.stop(true);
+		try {
+			Thread.sleep(60000);
+		} catch (InterruptedException e) {
+			// ignore
+		}
+	}
+
+	public void restart() throws CoreException {
+		stop();
+		start();
 	}
 
 	public int getOffset() {

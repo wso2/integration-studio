@@ -127,7 +127,7 @@ public class CarbonServerBehavior44microei extends CarbonServerBehaviour {
 
 	protected void doServerStartedTasks() {
 		super.doServerStartedTasks();
-		doBrowserPopup();
+		//doBrowserPopup();
 	}
 
 	protected void doServerStoppedTasks() {

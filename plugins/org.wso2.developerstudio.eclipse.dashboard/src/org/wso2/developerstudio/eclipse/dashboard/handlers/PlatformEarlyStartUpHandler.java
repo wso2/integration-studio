@@ -27,6 +27,8 @@ import org.wso2.developerstudio.eclipse.carbonserver40.register.product.servers.
 import org.wso2.developerstudio.eclipse.carbonserver42.register.product.servers.DynamicServer42ExtensionGenerator;
 import org.wso2.developerstudio.eclipse.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
 import org.wso2.developerstudio.eclipse.carbonserver44ei.register.product.servers.DynamicServer44eiExtensionGenerator;
+import org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers.DynamicServer44MicroeiExtensionGenerator;
+import org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers.MicroIntegratorInstance;
 
 /**
  * This is the early startup handler of the developer studio platform, all
@@ -48,6 +50,9 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 		DynamicServer44eiExtensionGenerator dynamicEIServerExtensionGenerator = new DynamicServer44eiExtensionGenerator();
 		dynamicEIServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
 		
+		DynamicServer44MicroeiExtensionGenerator dynamicMicroEIServerExtensionGenerator = new DynamicServer44MicroeiExtensionGenerator();
+		dynamicMicroEIServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
+		
 		DynamicServer44ExtensionGenerator dynamicServerExtensionGenerator = new DynamicServer44ExtensionGenerator();
 		dynamicServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
 		DynamicServer42ExtensionGenerator dynamicServer42ExtensionGenerator = new DynamicServer42ExtensionGenerator();
@@ -55,10 +60,12 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 		DynamicServer40ExtensionGenerator dynamicServer40ExtensionGenerator = new DynamicServer40ExtensionGenerator();
 		dynamicServer40ExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);
 	}
+	
 
 	@Override
 	public void earlyStartup() {
 		registerProductServers();
+		MicroIntegratorInstance.getInstance();
 	}
 
 }

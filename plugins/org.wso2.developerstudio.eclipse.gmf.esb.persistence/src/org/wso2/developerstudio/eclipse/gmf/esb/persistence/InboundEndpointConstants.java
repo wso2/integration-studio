@@ -124,6 +124,8 @@ public class InboundEndpointConstants {
     public static final String JMS_RETRIES_BEFORE_SUSPENSION = "transport.jms.RetriesBeforeSuspension";
     public static final String JMS_POLLING_SUSPENSION_PERIOD = "transport.jms.PollingSuspensionPeriod";
     public static final String JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION = "transport.jms.ResetConnectionOnPollingSuspension";
+    public static final String JMS_BROKER_TYPE_IDENTIFIER_WSO2MB = "andes";
+    public static final String JMS_BROKER_TYPE_IDENTIFIER_ACTIVEMQ = "activemq";
 
     public static final String WSO2_MB_CONNECTION_URL = "wso2mb.connection.url";
     public static final String WSO2_MB__QUEUE_CONNECTION_URL = "connectionfactory.QueueConnectionFactory";

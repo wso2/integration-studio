@@ -153,7 +153,7 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
      * @generated
      * @ordered
      */
-    protected static final String CONNECTION_DS_INITIAL_CONTEXT_EDEFAULT = "initial_context";
+    protected static final String CONNECTION_DS_INITIAL_CONTEXT_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getConnectionDsInitialContext() <em>Connection Ds Initial Context</em>}' attribute.
@@ -173,7 +173,7 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
      * @generated
      * @ordered
      */
-    protected static final String CONNECTION_DS_NAME_EDEFAULT = "datasource_name";
+    protected static final String CONNECTION_DS_NAME_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getConnectionDsName() <em>Connection Ds Name</em>}' attribute.

@@ -12,6 +12,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.SqlDatabaseType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorBooleanValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorConnectionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
@@ -22,6 +23,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlParameterValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlResultMapping;
 import org.wso2.developerstudio.eclipse.gmf.esb.SqlStatement;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import static org.wso2.developerstudio.eclipse.gmf.esb.Constants.*;
 
 public abstract class AbstractDBMediatorDeserializer
         extends AbstractEsbNodeDeserializer<AbstractMediator, AbstractSqlExecutorMediator> {
@@ -49,6 +51,19 @@ public abstract class AbstractDBMediatorDeserializer
                 dbMediator.getDataSourceProps().get(DRIVER_Q));
         executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DS_INITIAL_CONTEXT,
                 dbMediator.getDataSourceProps().get(ICCLASS_Q));
+        
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_MYSQL)) {
+            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.MYSQL);
+        }
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_ORACLE)) {
+            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.ORACLE);
+        }
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_MSSQL)) {
+            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.MSSQL);
+        }
+        if (dbMediator.getDataSourceProps().get(DRIVER_Q).toLowerCase().contains(TXT_DATABASE_TYPE_POSTGRESQL)) {
+            executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_DB_TYPE, SqlDatabaseType.POSTGRESQL);
+        }
 
         if (dbMediator.getDataSourceProps().get(DRIVER_Q) != null) {
             executeSetValueCommand(ABSTRACT_SQL_EXECUTOR_MEDIATOR__CONNECTION_TYPE,

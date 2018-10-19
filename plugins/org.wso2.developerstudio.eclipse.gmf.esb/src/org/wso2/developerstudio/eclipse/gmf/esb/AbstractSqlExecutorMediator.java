@@ -165,7 +165,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Connection Ds Initial Context</b></em>' attribute.
-     * The default value is <code>"initial_context"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Connection Ds Initial Context</em>' attribute isn't clear,
@@ -175,7 +175,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * @return the value of the '<em>Connection Ds Initial Context</em>' attribute.
      * @see #setConnectionDsInitialContext(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionDsInitialContext()
-     * @model default="initial_context"
+     * @model default=""
      * @generated
      */
     String getConnectionDsInitialContext();
@@ -192,7 +192,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Connection Ds Name</b></em>' attribute.
-     * The default value is <code>"datasource_name"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Connection Ds Name</em>' attribute isn't clear,
@@ -202,7 +202,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
      * @return the value of the '<em>Connection Ds Name</em>' attribute.
      * @see #setConnectionDsName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_ConnectionDsName()
-     * @model default="datasource_name"
+     * @model default=""
      * @generated
      */
     String getConnectionDsName();

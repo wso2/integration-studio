@@ -105,7 +105,27 @@
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
-                    </execution>
+                    </execution> 
+                    <!--Unpack micro integrator extracted profile. This is installed by installer-script-oxygen.sh-->
+                    <execution>
+                        <id>unpack-micro integrator</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.wso2</groupId>
+                                    <artifactId>micro-integrator</artifactId>
+                                    <version>6.4.0</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>target/Eclipse.app/Contents/Eclipse/runtime</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>   
                 </executions>
             </plugin>
 			<plugin>

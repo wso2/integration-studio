@@ -37,6 +37,9 @@
  <feature id="org.wso2.developerstudio.carbon.server-44ei.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
    </feature>
+ <feature id="org.wso2.developerstudio.carbon.server-44microei.feature" version="0.0.0">
+      <category name="org.wso2.developerstudio.kernel.platform.bundles"/>
+   </feature>
  <feature id="org.wso2.developerstudio.dashboard.feature" version="0.0.0">
       <category name="org.wso2.developerstudio.eclipse.ei.feature.category"/>
    </feature>

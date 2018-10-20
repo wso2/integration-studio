@@ -77,7 +77,7 @@ public class FilterMediatorImpl extends MediatorImpl implements FilterMediator {
      * @generated
      * @ordered
      */
-    protected static final String REGEX_EDEFAULT = "default_regex";
+    protected static final String REGEX_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getRegex() <em>Regex</em>}' attribute.

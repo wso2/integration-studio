@@ -28,7 +28,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface SpringMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Bean Name</b></em>' attribute.
-     * The default value is <code>"bean_name"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Bean Name</em>' attribute isn't clear,
@@ -38,7 +38,7 @@ public interface SpringMediator extends Mediator {
      * @return the value of the '<em>Bean Name</em>' attribute.
      * @see #setBeanName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSpringMediator_BeanName()
-     * @model default="bean_name"
+     * @model default=""
      * @generated
      */
     String getBeanName();

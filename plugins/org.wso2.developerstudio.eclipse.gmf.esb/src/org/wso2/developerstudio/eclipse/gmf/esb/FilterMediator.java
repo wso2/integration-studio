@@ -114,7 +114,7 @@ public interface FilterMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Regex</b></em>' attribute.
-     * The default value is <code>"default_regex"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Regex</em>' attribute isn't clear,
@@ -124,7 +124,7 @@ public interface FilterMediator extends Mediator {
      * @return the value of the '<em>Regex</em>' attribute.
      * @see #setRegex(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_Regex()
-     * @model default="default_regex"
+     * @model default=""
      * @generated
      */
     String getRegex();

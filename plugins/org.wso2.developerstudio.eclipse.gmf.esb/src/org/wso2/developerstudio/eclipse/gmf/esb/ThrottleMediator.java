@@ -43,7 +43,7 @@ import org.eclipse.emf.common.util.EList;
 public interface ThrottleMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Group Id</b></em>' attribute.
-     * The default value is <code>"group_id"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Group Id</em>' attribute isn't clear,
@@ -53,7 +53,7 @@ public interface ThrottleMediator extends Mediator {
      * @return the value of the '<em>Group Id</em>' attribute.
      * @see #setGroupId(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottleMediator_GroupId()
-     * @model default="group_id"
+     * @model default=""
      * @generated
      */
     String getGroupId();

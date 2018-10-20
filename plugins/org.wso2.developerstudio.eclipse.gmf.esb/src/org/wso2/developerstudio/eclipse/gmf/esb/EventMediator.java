@@ -59,7 +59,7 @@ public interface EventMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Static Topic</b></em>' attribute.
-     * The default value is <code>"source_property"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Static Topic</em>' attribute isn't clear,
@@ -69,7 +69,7 @@ public interface EventMediator extends Mediator {
      * @return the value of the '<em>Static Topic</em>' attribute.
      * @see #setStaticTopic(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEventMediator_StaticTopic()
-     * @model default="source_property"
+     * @model default=""
      * @generated
      */
     String getStaticTopic();

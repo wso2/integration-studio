@@ -50,7 +50,7 @@ public class ClassMediatorImpl extends MediatorImpl implements ClassMediator {
      * @generated
      * @ordered
      */
-    protected static final String CLASS_NAME_EDEFAULT = "class_name";
+    protected static final String CLASS_NAME_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getClassName() <em>Class Name</em>}' attribute.

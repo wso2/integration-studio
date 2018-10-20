@@ -239,7 +239,7 @@ public interface FaultMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Fault String Value</b></em>' attribute.
-     * The default value is <code>"fault_string"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Fault String Value</em>' attribute isn't clear,
@@ -249,7 +249,7 @@ public interface FaultMediator extends Mediator {
      * @return the value of the '<em>Fault String Value</em>' attribute.
      * @see #setFaultStringValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultStringValue()
-     * @model default="fault_string"
+     * @model default=""
      * @generated
      */
     String getFaultStringValue();
@@ -376,7 +376,7 @@ public interface FaultMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Fault Reason Value</b></em>' attribute.
-     * The default value is <code>"fault_reason"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Fault Reason Value</em>' attribute isn't clear,
@@ -386,7 +386,7 @@ public interface FaultMediator extends Mediator {
      * @return the value of the '<em>Fault Reason Value</em>' attribute.
      * @see #setFaultReasonValue(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultReasonValue()
-     * @model default="fault_reason"
+     * @model default=""
      * @generated
      */
     String getFaultReasonValue();

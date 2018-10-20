@@ -78,7 +78,7 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
      * @generated
      * @ordered
      */
-    protected static final String ENTITLEMENT_SERVER_URL_EDEFAULT = "server_url";
+    protected static final String ENTITLEMENT_SERVER_URL_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getEntitlementServerURL() <em>Entitlement Server URL</em>}' attribute.
@@ -98,7 +98,7 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
      * @generated
      * @ordered
      */
-    protected static final String USERNAME_EDEFAULT = "username";
+    protected static final String USERNAME_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getUsername() <em>Username</em>}' attribute.
@@ -118,7 +118,7 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
      * @generated
      * @ordered
      */
-    protected static final String PASSWORD_EDEFAULT = "password";
+    protected static final String PASSWORD_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.

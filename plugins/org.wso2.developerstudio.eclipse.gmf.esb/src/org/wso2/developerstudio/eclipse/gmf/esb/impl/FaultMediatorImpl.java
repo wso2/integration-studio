@@ -199,7 +199,7 @@ public class FaultMediatorImpl extends MediatorImpl implements FaultMediator {
      * @generated
      * @ordered
      */
-    protected static final String FAULT_STRING_VALUE_EDEFAULT = "fault_string";
+    protected static final String FAULT_STRING_VALUE_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getFaultStringValue() <em>Fault String Value</em>}' attribute.
@@ -289,7 +289,7 @@ public class FaultMediatorImpl extends MediatorImpl implements FaultMediator {
      * @generated
      * @ordered
      */
-    protected static final String FAULT_REASON_VALUE_EDEFAULT = "fault_reason";
+    protected static final String FAULT_REASON_VALUE_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getFaultReasonValue() <em>Fault Reason Value</em>}' attribute.

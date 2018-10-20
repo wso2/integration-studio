@@ -47,7 +47,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface EntitlementMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Entitlement Server URL</b></em>' attribute.
-     * The default value is <code>"server_url"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Entitlement Server URL</em>' attribute isn't clear,
@@ -57,7 +57,7 @@ public interface EntitlementMediator extends Mediator {
      * @return the value of the '<em>Entitlement Server URL</em>' attribute.
      * @see #setEntitlementServerURL(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_EntitlementServerURL()
-     * @model default="server_url"
+     * @model default=""
      * @generated
      */
     String getEntitlementServerURL();
@@ -74,7 +74,7 @@ public interface EntitlementMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Username</b></em>' attribute.
-     * The default value is <code>"username"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Username</em>' attribute isn't clear,
@@ -84,7 +84,7 @@ public interface EntitlementMediator extends Mediator {
      * @return the value of the '<em>Username</em>' attribute.
      * @see #setUsername(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_Username()
-     * @model default="username"
+     * @model default=""
      * @generated
      */
     String getUsername();
@@ -101,7 +101,7 @@ public interface EntitlementMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Password</b></em>' attribute.
-     * The default value is <code>"password"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Password</em>' attribute isn't clear,
@@ -111,7 +111,7 @@ public interface EntitlementMediator extends Mediator {
      * @return the value of the '<em>Password</em>' attribute.
      * @see #setPassword(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_Password()
-     * @model default="password"
+     * @model default=""
      * @generated
      */
     String getPassword();

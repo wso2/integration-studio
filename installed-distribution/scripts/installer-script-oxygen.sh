@@ -63,7 +63,6 @@ mvn install:install-file \
   -Dfile=wso2ei-${PRODUCT_VERSION}_micro-integrator.zip \
   -DgeneratePom=true\
   -DlocalRepositoryPath=$1
-  
+
 rm -rf wso2ei-$PRODUCT_VERSION
 rm -rf wso2ei-${PRODUCT_VERSION}_micro-integrator.zip
-  

@@ -66,3 +66,4 @@ mvn install:install-file \
 
 rm -rf wso2ei-$PRODUCT_VERSION
 rm -rf wso2ei-${PRODUCT_VERSION}_micro-integrator.zip
+

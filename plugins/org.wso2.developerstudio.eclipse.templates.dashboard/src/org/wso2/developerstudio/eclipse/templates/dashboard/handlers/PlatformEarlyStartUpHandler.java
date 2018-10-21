@@ -16,23 +16,8 @@
 
 package org.wso2.developerstudio.eclipse.templates.dashboard.handlers;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
-import org.eclipse.jetty.server.Handler;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.ContextHandlerCollection;
-import org.eclipse.jetty.servlet.DefaultServlet;
-import org.eclipse.jetty.servlet.FilterHolder;
-import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.ui.IStartup;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.templates.dashboard.Activator;
 import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.FunctionServerConstants;
-import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.GetWizardsFunctionServlet;
-import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.JSEmbeddedFunctions;
-import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.OpenIDEFunctionServlet;
 
 /**
  * This is the early startup handler of the developer studio platform, all
@@ -42,88 +27,12 @@ import org.wso2.developerstudio.eclipse.templates.dashboard.web.function.server.
  */
 public class PlatformEarlyStartUpHandler implements IStartup {
     
-    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-    /**
-     * This method starts embedded jetty server at eclipse startup. This embedded jetty server is used to fulfill the 
-     * dashboard page requests.
-     * @param port port which the jetty server is started
-     */
-    private void startEmbeddedJetty(int port) {
-        Server server = new Server(port);
-        configServer(server);
-        JSEmbeddedFunctions jsf = new JSEmbeddedFunctions();
-        jsf.setPortGlobalVariable(port);
-        try {
-            server.start();
-            server.join();
-        } catch (java.net.BindException e) {
-            //The given port is already in use so retrying with next port
-            log.info("Address already in use, trying on next available port");
-            try {
-                server.stop();
-                port++; //increment port value
-                //jsf.writePortValue(port);
-                startEmbeddedJetty(port);
-            } catch (Exception e1) {
-                log.error("Error in server port failover", e1);
-            }
-
-        } catch (Exception e2) {
-            log.error("Error starting dashboard server ", e2);
-        }
-    }
-
-    private void configServer(Server server) {
-      //uncomment to use servletHandler instead of ServletContext handler
-      //ServletHandler servletHandler = new ServletHandler();
-      //triggered with ajax calls from js
-      //servletHandler.addServletWithMapping(OpenIDEFunctionServlet.class, "/openide");
-      //servletHandler.addServletWithMapping(GetWizardsFunctionServlet.class, "/getwizards");
-      //servletHandler.addServletWithMapping(OpenIDEFunctionServlet.class, "/getwizarddetails");
-
-      // Add Cors support for the server
-      FilterHolder holder = new FilterHolder(CORSFilter.class);
-      holder.setInitParameter("Access-Control-Allow-Origin", "*");
-      holder.setInitParameter("Access-Control-Allow-Methods", "GET,POST,HEAD");
-      holder.setInitParameter("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Accept,Origin");
-      holder.setName("cross-origin");
-
-      JSEmbeddedFunctions jsf = new JSEmbeddedFunctions();
-      ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-      context.addFilter(holder, "*", null);
-      //Context path where static webpages are hosted
-      context.setContextPath("/welcome");
-      String webAppPath = "TemplateDash";
-      try {
-          //Get web app path from current bundle
-          webAppPath = jsf.getWebAppPath();
-      } catch (URISyntaxException uriException) {
-          log.error("Error resolving web app path", uriException);
-      } catch (IOException ioException) {
-          log.error("Error resolving web app path", ioException);
-      }
-      context.setResourceBase(webAppPath);
-
-      //Context path where servlets are hosted
-      ServletContextHandler wsContext = new ServletContextHandler();
-      wsContext.setContextPath("/servlet");
-
-      ContextHandlerCollection contexts=new ContextHandlerCollection();
-      contexts.setHandlers(new Handler[]{context, wsContext });
-
-      server.setHandler(contexts);
-      //All the static web page requests are handled through DefaultServlet
-      context.addServlet(DefaultServlet.class, "/");
-
-      //Bind the servlet classes which serves the js functions to server context paths. So these functionalities can be
-      wsContext.addServlet(OpenIDEFunctionServlet.class, "/openide");
-      wsContext.addServlet(GetWizardsFunctionServlet.class, "/getwizards");
-    }
-
     @Override
     public void earlyStartup() {
-        //This method fires before startup and we use this to register carbon servers and start embedded jetty
-        startEmbeddedJetty(FunctionServerConstants.EMBEDDED_SERVER_PORT);
+        //This method fires before startup and we use this to start embedded jetty
+        if(!JettyServerHandler.serverStarted) {
+            JettyServerHandler.getInstance().startEmbeddedJetty(FunctionServerConstants.EMBEDDED_SERVER_PORT);
+        }
     }
 
 }

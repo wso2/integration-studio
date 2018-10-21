@@ -25,7 +25,8 @@
         <module>plugins</module>
         <module>features</module>
         <module>repository</module>
-        <module>installed-distribution</module>
+        <!--module>installed-distribution</module-->
+        <module>rcp-product</module>
     </modules>
     <scm>
         <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>
@@ -64,7 +65,7 @@
         <plugin.samples.version>4.0.0-SNAPSHOT</plugin.samples.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.scm.id>my-scm-server</project.scm.id>
-        <tycho-version>0.23.0</tycho-version>
+        <tycho-version>1.1.0</tycho-version>
         <version.mvn-resource-plugin>2.7</version.mvn-resource-plugin>
         <version.sortpom.plugin>2.3.0</version.sortpom.plugin>
         <webeditor.version>4.0.0-SNAPSHOT</webeditor.version>
@@ -339,11 +340,11 @@
                             <ws>win32</ws>
                             <arch>x86_64</arch>
                         </environment>
-                        <environment>
+                        <!--environment>
                             <os>macosx</os>
                             <ws>cocoa</ws>
                             <arch>x86</arch>
-                        </environment>
+                        </environment-->
                         <environment>
                             <os>macosx</os>
                             <ws>cocoa</ws>

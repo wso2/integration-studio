@@ -23,11 +23,15 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.wso2.developerstudio.eclipse.esb.dashboard.templates.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -53,11 +57,14 @@ import javax.xml.transform.stream.StreamResult;
 
 public class TemplateWizardUtil {
 
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static final String ESB_GRAPHICAL_PERSPECTIVE = "org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective";
+
     /**
      * Will initialize file contents with a sample text.
      *
      * @param taskName This gives the taskName of the changed task
-     * @param tnsName  This gives the target namespace of the changed element
+     * @param tnsName This gives the target namespace of the changed element
      * @return InputStream
      * @throws IOException
      * @throws CoreException
@@ -241,9 +248,9 @@ public class TemplateWizardUtil {
     /**
      * This method changes the relevant XML Namespaces and tags accordingly
      *
-     * @param content  content of the xml file
+     * @param content content of the xml file
      * @param taskName currently Processing Task Name
-     * @param tnsName  Target Namespace
+     * @param tnsName Target Namespace
      * @return String which contains the modified XML file content
      * @throws CoreException
      */
@@ -294,7 +301,7 @@ public class TemplateWizardUtil {
      * This method changes namespaces and relevant tags of the pom file accrodingly
      *
      * @param containerName Project name
-     * @param content       Content of the pom file
+     * @param content Content of the pom file
      * @return String of modified pom file content
      * @throws CoreException
      */
@@ -360,12 +367,34 @@ public class TemplateWizardUtil {
     /**
      * This method creates a new coreexception and throws it
      *
-     * @param message   The exception message that should be printed
+     * @param message The exception message that should be printed
      * @param exception The nested exception that should be included in the throwable
      * @throws CoreException
      */
     public void throwCoreException(String message, Throwable exception) throws CoreException {
         IStatus status = new Status(IStatus.ERROR, TemplateProjectConstants.PLUGIN_ID, IStatus.OK, message, exception);
         throw new CoreException(status);
+    }
+
+    /**
+     * This method sets the perspective to ESB
+     *
+     * @param shell shell object that should be switched to ESB perspective
+     */
+    public void setPerspective(Shell shell) {
+        shell.getDisplay().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+                if (!ESB_GRAPHICAL_PERSPECTIVE.equals(window.getActivePage().getPerspective().getId())) {
+                    try {
+                        PlatformUI.getWorkbench().showPerspective(ESB_GRAPHICAL_PERSPECTIVE, window);
+                    } catch (Exception e) {
+                        log.error("Cannot switch to ESB Graphical Perspective", e);
+                    }
+                }
+            }
+        });
+
     }
 }

@@ -10,6 +10,7 @@ import org.eclipse.ui.IPlaceholderFolderLayout;
  */
 public class EsbGraphicalEditorPerspective implements IPerspectiveFactory {
 
+    private static final String TEMPLATE_GUIDE_VIEW = "org.wso2.developerstudio.eclipse.esb.templates.view";
     // private static final String PROPERTIES_VIEW_ID =
     // "org.eclipse.ui.views.PropertySheet";
 
@@ -37,6 +38,9 @@ public class EsbGraphicalEditorPerspective implements IPerspectiveFactory {
         IFolderLayout bottomLeft = layout.createFolder("bottomLeft", IPageLayout.BOTTOM, 0.65f, "topLeft");
         bottomLeft.addView(IPageLayout.ID_OUTLINE);
         // bottomLeft.addView(IPageLayout.ID_PROP_SHEET);
+
+        IFolderLayout rightPane = layout.createFolder("right", IPageLayout.RIGHT, 0.75f, editorArea);
+        rightPane.addView(TEMPLATE_GUIDE_VIEW);
 
         IFolderLayout rightArea = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.65f, editorArea);
         rightArea.addView(IPageLayout.ID_PROP_SHEET);

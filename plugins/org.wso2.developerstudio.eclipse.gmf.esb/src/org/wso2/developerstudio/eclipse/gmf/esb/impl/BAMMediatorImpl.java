@@ -74,7 +74,7 @@ public class BAMMediatorImpl extends MediatorImpl implements BAMMediator {
      * @generated
      * @ordered
      */
-    protected static final String SERVER_PROFILE_EDEFAULT = null;
+    protected static final String SERVER_PROFILE_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getServerProfile() <em>Server Profile</em>}' attribute.

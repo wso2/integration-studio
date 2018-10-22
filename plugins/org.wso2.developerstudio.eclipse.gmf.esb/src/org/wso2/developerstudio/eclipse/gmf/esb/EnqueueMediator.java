@@ -29,7 +29,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface EnqueueMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Executor</b></em>' attribute.
-     * The default value is <code>"executor_name"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Executor</em>' attribute isn't clear,
@@ -39,7 +39,7 @@ public interface EnqueueMediator extends Mediator {
      * @return the value of the '<em>Executor</em>' attribute.
      * @see #setExecutor(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnqueueMediator_Executor()
-     * @model default="executor_name"
+     * @model default=""
      * @generated
      */
     String getExecutor();

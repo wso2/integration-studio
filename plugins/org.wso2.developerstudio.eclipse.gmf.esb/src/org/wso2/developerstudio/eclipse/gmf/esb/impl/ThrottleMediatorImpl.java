@@ -71,7 +71,7 @@ public class ThrottleMediatorImpl extends MediatorImpl implements ThrottleMediat
      * @generated
      * @ordered
      */
-    protected static final String GROUP_ID_EDEFAULT = "group_id";
+    protected static final String GROUP_ID_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.

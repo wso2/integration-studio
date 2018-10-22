@@ -30,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
 public interface ClassMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Class Name</b></em>' attribute.
-     * The default value is <code>"class_name"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Class Name</em>' attribute isn't clear,
@@ -40,7 +40,7 @@ public interface ClassMediator extends Mediator {
      * @return the value of the '<em>Class Name</em>' attribute.
      * @see #setClassName(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getClassMediator_ClassName()
-     * @model default="class_name"
+     * @model default=""
      * @generated
      */
     String getClassName();

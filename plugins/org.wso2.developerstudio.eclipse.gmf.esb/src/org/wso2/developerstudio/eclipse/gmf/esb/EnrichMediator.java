@@ -120,7 +120,7 @@ public interface EnrichMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Source Property</b></em>' attribute.
-     * The default value is <code>"source_property"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Source Property</em>' attribute isn't clear,
@@ -130,7 +130,7 @@ public interface EnrichMediator extends Mediator {
      * @return the value of the '<em>Source Property</em>' attribute.
      * @see #setSourceProperty(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_SourceProperty()
-     * @model default="source_property"
+     * @model default=""
      * @generated
      */
     String getSourceProperty();

@@ -45,7 +45,7 @@ public class SpringMediatorImpl extends MediatorImpl implements SpringMediator {
      * @generated
      * @ordered
      */
-    protected static final String BEAN_NAME_EDEFAULT = "bean_name";
+    protected static final String BEAN_NAME_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getBeanName() <em>Bean Name</em>}' attribute.

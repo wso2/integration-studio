@@ -186,7 +186,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
      * @generated
      * @ordered
      */
-    protected static final String VALUE_EDEFAULT = "value";
+    protected static final String VALUE_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

@@ -1808,18 +1808,20 @@
         defaultValueLiteral="DB_CONNECTION"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionDsType" eType="#//SqlExecutorDatasourceType"
         defaultValueLiteral="EXTERNAL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionDbType" eType="#//SqlDatabaseType"
+        defaultValueLiteral="OTHER"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionDbDriver" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="driver_class"/>
+        defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionDsInitialContext"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="initial_context"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionDsName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="datasource_name"/>
+        defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="connection_url"/>
+        defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionUsername" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="username"/>
+        defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="password"/>
+        defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyAutocommit" eType="#//SqlExecutorBooleanValue"
         defaultValueLiteral="DEFAULT"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyIsolation" eType="#//SqlExecutorIsolationLevel"
@@ -1867,6 +1869,13 @@
     <eLiterals name="TRANSACTION_REPEATABLE_READ" value="3" literal="Connection.TRANSACTION_REPEATABLE_READ"/>
     <eLiterals name="TRANSACTION_SERIALIZABLE" value="4" literal="Connection.TRANSACTION_SERIALIZABLE"/>
     <eLiterals name="DEFAULT" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SqlDatabaseType">
+    <eLiterals name="OTHER"/>
+    <eLiterals name="MYSQL" value="1"/>
+    <eLiterals name="ORACLE" value="2"/>
+    <eLiterals name="MSSQL" value="3"/>
+    <eLiterals name="POSTGRESQL" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SqlStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="queryString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

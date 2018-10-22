@@ -173,7 +173,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 
             switch (inboundEndpoint.getTransportJMSBrokerType()) {
             case WSO2_BROKER_PROFILE:
-                if (currentJMSProfileType != JMSBrokerType.WSO2_BROKER_PROFILE || currentJMSProfileType == null) {
+                if (currentJMSProfileType != JMSBrokerType.WSO2_BROKER_PROFILE) {
                     updateJavaNamingFactoryInitialProperty(inboundEndpoint, JAVA_NAMING_FACTORY_INITIAL_WSO2_BROKER);
                     updateJavaNamingProviderUrlProperty(inboundEndpoint, JAVA_NAMING_PROVIDER_URL_WSO2_BROKER);
                     updateTransportJMSDestinationProperty(inboundEndpoint, TRANSPORT_JMS_DESTINATION_WSO2_BROKER);
@@ -183,7 +183,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
                 }
                 break;
             case ACTIVE_MQ:
-                if (currentJMSProfileType != JMSBrokerType.ACTIVE_MQ || currentJMSProfileType == null) {
+                if (currentJMSProfileType != JMSBrokerType.ACTIVE_MQ) {
                     updateJavaNamingFactoryInitialProperty(inboundEndpoint, JAVA_NAMING_FACTORY_INITIAL_ACTIVEMQ);
                     updateJavaNamingProviderUrlProperty(inboundEndpoint, JAVA_NAMING_PROVIDER_URL_ACTIVEMQ);
                     updateTransportJMSDestinationProperty(inboundEndpoint, TRANSPORT_JMS_DESTINATION_ACTIVEMQ);
@@ -193,7 +193,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
                 }
                 break;
             case OTHER:
-                if (currentJMSProfileType != JMSBrokerType.OTHER || currentJMSProfileType == null) {
+                if (currentJMSProfileType != JMSBrokerType.OTHER) {
                     updateJavaNamingFactoryInitialProperty(inboundEndpoint, "");
                     updateJavaNamingProviderUrlProperty(inboundEndpoint, "");
                     updateTransportJMSDestinationProperty(inboundEndpoint, "");

@@ -566,6 +566,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return createSqlExecutorBooleanValueFromString(eDataType, initialValue);
             case EsbPackage.SQL_EXECUTOR_ISOLATION_LEVEL:
                 return createSqlExecutorIsolationLevelFromString(eDataType, initialValue);
+            case EsbPackage.SQL_DATABASE_TYPE:
+                return createSqlDatabaseTypeFromString(eDataType, initialValue);
             case EsbPackage.SQL_PARAMETER_VALUE_TYPE:
                 return createSqlParameterValueTypeFromString(eDataType, initialValue);
             case EsbPackage.SQL_PARAMETER_DATA_TYPE:
@@ -840,6 +842,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
                 return convertSqlExecutorBooleanValueToString(eDataType, instanceValue);
             case EsbPackage.SQL_EXECUTOR_ISOLATION_LEVEL:
                 return convertSqlExecutorIsolationLevelToString(eDataType, instanceValue);
+            case EsbPackage.SQL_DATABASE_TYPE:
+                return convertSqlDatabaseTypeToString(eDataType, instanceValue);
             case EsbPackage.SQL_PARAMETER_VALUE_TYPE:
                 return convertSqlParameterValueTypeToString(eDataType, instanceValue);
             case EsbPackage.SQL_PARAMETER_DATA_TYPE:
@@ -6233,6 +6237,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
      * @generated
      */
     public String convertSqlExecutorIsolationLevelToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public SqlDatabaseType createSqlDatabaseTypeFromString(EDataType eDataType, String initialValue) {
+        SqlDatabaseType result = SqlDatabaseType.get(initialValue);
+        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertSqlDatabaseTypeToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

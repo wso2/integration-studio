@@ -123,7 +123,7 @@ public class HeaderMediatorImpl extends MediatorImpl implements HeaderMediator {
      * @generated
      * @ordered
      */
-    protected static final String VALUE_LITERAL_EDEFAULT = "header_value";
+    protected static final String VALUE_LITERAL_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getValueLiteral() <em>Value Literal</em>}' attribute.

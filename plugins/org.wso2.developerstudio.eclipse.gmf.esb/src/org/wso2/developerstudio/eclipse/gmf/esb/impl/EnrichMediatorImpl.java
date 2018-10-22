@@ -116,7 +116,7 @@ public class EnrichMediatorImpl extends MediatorImpl implements EnrichMediator {
      * @generated
      * @ordered
      */
-    protected static final String SOURCE_PROPERTY_EDEFAULT = "source_property";
+    protected static final String SOURCE_PROPERTY_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getSourceProperty() <em>Source Property</em>}' attribute.

@@ -90,6 +90,7 @@ public interface BAMMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Server Profile</b></em>' attribute.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Server Profile</em>' attribute isn't clear,
@@ -99,7 +100,7 @@ public interface BAMMediator extends Mediator {
      * @return the value of the '<em>Server Profile</em>' attribute.
      * @see #setServerProfile(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getBAMMediator_ServerProfile()
-     * @model
+     * @model default=""
      * @generated
      */
     String getServerProfile();

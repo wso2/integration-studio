@@ -146,7 +146,7 @@ public interface HeaderMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Value Literal</b></em>' attribute.
-     * The default value is <code>"header_value"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Value Literal</em>' attribute isn't clear,
@@ -156,7 +156,7 @@ public interface HeaderMediator extends Mediator {
      * @return the value of the '<em>Value Literal</em>' attribute.
      * @see #setValueLiteral(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_ValueLiteral()
-     * @model default="header_value"
+     * @model default=""
      * @generated
      */
     String getValueLiteral();

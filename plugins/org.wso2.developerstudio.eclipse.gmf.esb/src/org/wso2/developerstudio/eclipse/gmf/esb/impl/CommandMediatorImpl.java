@@ -52,7 +52,7 @@ public class CommandMediatorImpl extends MediatorImpl implements CommandMediator
      * @generated
      * @ordered
      */
-    protected static final String CLASS_NAME_EDEFAULT = "class_name";
+    protected static final String CLASS_NAME_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getClassName() <em>Class Name</em>}' attribute.

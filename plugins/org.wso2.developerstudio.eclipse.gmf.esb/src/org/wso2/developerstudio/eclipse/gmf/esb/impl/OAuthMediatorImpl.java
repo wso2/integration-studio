@@ -45,7 +45,7 @@ public class OAuthMediatorImpl extends MediatorImpl implements OAuthMediator {
      * @generated
      * @ordered
      */
-    protected static final String REMOTE_SERVICE_URL_EDEFAULT = "service_url";
+    protected static final String REMOTE_SERVICE_URL_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getRemoteServiceUrl() <em>Remote Service Url</em>}' attribute.

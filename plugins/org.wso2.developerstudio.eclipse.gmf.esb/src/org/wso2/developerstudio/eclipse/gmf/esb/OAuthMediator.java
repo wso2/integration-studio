@@ -29,7 +29,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface OAuthMediator extends Mediator {
     /**
      * Returns the value of the '<em><b>Remote Service Url</b></em>' attribute.
-     * The default value is <code>"service_url"</code>.
+     * The default value is <code>""</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Remote Service Url</em>' attribute isn't clear,
@@ -39,7 +39,7 @@ public interface OAuthMediator extends Mediator {
      * @return the value of the '<em>Remote Service Url</em>' attribute.
      * @see #setRemoteServiceUrl(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getOAuthMediator_RemoteServiceUrl()
-     * @model default="service_url"
+     * @model default=""
      * @generated
      */
     String getRemoteServiceUrl();

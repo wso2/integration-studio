@@ -46,7 +46,7 @@ public class EnqueueMediatorImpl extends MediatorImpl implements EnqueueMediator
      * @generated
      * @ordered
      */
-    protected static final String EXECUTOR_EDEFAULT = "executor_name";
+    protected static final String EXECUTOR_EDEFAULT = "";
 
     /**
      * The cached value of the '{@link #getExecutor() <em>Executor</em>}' attribute.

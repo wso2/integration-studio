@@ -20,6 +20,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -196,9 +198,9 @@ public abstract class CarbonServerBehaviour extends GenericServerBehaviour imple
 		workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_INSTALL_TYPE, runtime.getVMInstallTypeId());
 		workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_INSTALL_NAME, vmInstall.getName());
 
-		setupLaunchClasspath(workingCopy, vmInstall, getStartClasspath());
-
 		workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_WORKING_DIRECTORY, getWorkingDirectory());
+		
+		setupLaunchClasspath(workingCopy, vmInstall, getStartClasspath());
 
 		Map environVars = getEnvironmentVariables(getServerDefinition().getStart());
 		environVars.put("JAVA_HOME", "/home/saminda/software/jdk1.6.0_20");

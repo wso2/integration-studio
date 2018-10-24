@@ -454,15 +454,7 @@ public class CarbonOperationsManager44ei implements ICarbonOperationManager {
 	}
 	
 	private static Boolean isServerHotUpdate(IServer server) {
-		String value = CarbonServerCommonUtils.getServerConfigMapValue(server, "carbon.hotupdate");
-		if (value == null) {
-			return null;
-		}
-		boolean enabled = value.toString().equalsIgnoreCase("true");
-		if (enabled != isHotUpdateEnabled(server)) {
-			setHotUpdateEnabled(server, enabled);
-		}
-		return enabled;
+		return false;
 	}
 
 	private static boolean setHotUpdateEnabled(IServer server, boolean enabled) {
@@ -508,34 +500,6 @@ public class CarbonOperationsManager44ei implements ICarbonOperationManager {
 	}
 	
 	private static boolean isHotUpdateEnabled(IServer server) {
-		String axis2Xml = getAxis2FilePath(server);
-		XPathFactory factory = XPathFactory.newInstance();
-		try {
-			File xmlDocument = new File(axis2Xml);
-			if (xmlDocument.exists()) {
-				DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-				Document document = builder.parse(xmlDocument);
-				XPath xPath = factory.newXPath();
-				Node httpNode =
-				                (Node) xPath.evaluate("/axisconfig/parameter[@name='hotupdate']", document,
-				                                      XPathConstants.NODE);
-				return httpNode.getTextContent().toString().equalsIgnoreCase("true");
-			} else {
-				return false;
-			}
-		} catch (FileNotFoundException e) {
-			log.error(e);
-		} catch (XPathExpressionException e) {
-			log.error(e);
-		} catch (ParserConfigurationException e) {
-			log.error(e);
-		} catch (SAXException e) {
-			log.error(e);
-		} catch (IOException e) {
-			log.error(e);
-		} catch (TransformerFactoryConfigurationError e) {
-			log.error(e);
-		}
 		return false;
 	}
 	

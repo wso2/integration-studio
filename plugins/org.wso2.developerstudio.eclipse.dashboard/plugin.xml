@@ -67,7 +67,7 @@
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.project.types"/>
         <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.features"/>
     </extension>
-      <extension point="org.eclipse.ui.startup">
+    <extension point="org.eclipse.ui.startup">
      <startup class="org.wso2.developerstudio.eclipse.dashboard.handlers.PlatformEarlyStartUpHandler"/>
-   </extension>
+   </extension> 
 </plugin>

@@ -84,6 +84,8 @@ public class ServerProperties implements IProperties {
 			serverInstanceProperties.put("carbon.http", http);
 			serverInstanceProperties.put("synapse.transport.http", trnhttp);
 			serverInstanceProperties.put("synapse.transport.https", trnhttps);
+			//set default location
+			serverInstanceProperties.put("carbon.home", serverPath);
 		} catch (Exception e) {
 			log.error(e);
 		}

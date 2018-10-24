@@ -16,7 +16,7 @@
             label="CARBON_HOME"
             type="directory"
             context="runtime"
-            default="/temp/runtime/profile/wso2ei-6.4.0/wso2/micro-integrator" />
+            default="runtime/wso2ei-6.4.0/wso2/micro-integrator" />
 
     <property
             id="carbon.http"
@@ -131,11 +131,10 @@
         <classpathReference>carbon.libs</classpathReference>
         <debugPort>${carbon.debug}</debugPort>
     </start>
-
     <classpath id="carbon.libs">
         <archive path="${carbon.home}/bin/org.wso2.carbon.bootstrap-4.4.36.jar"/>
         <archive path="${carbon.home}/bin/tcpmon-1.0.jar"/>
         <archive path="${carbon.home}/bin/tomcat-juli-7.0.85.jar"/>
-        <archive path="${carbon.home}/../lib/commons-lang-2.6.0.wso2v1.jar" />
-    </classpath>
+        <archive path="${carbon.home}/../lib/commons-lang-2.6.0.wso2v1.jar" /> 
+    </classpath> 
 </tns:ServerRuntime>

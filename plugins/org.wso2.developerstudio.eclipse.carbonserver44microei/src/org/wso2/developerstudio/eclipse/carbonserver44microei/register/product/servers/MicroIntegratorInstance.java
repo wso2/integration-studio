@@ -18,16 +18,15 @@
 
 package org.wso2.developerstudio.eclipse.carbonserver44microei.register.product.servers;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.ILaunchManager;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.jst.server.generic.core.internal.GenericServer;
-import org.eclipse.jst.server.generic.servertype.definition.Property;
-import org.eclipse.jst.server.generic.servertype.definition.ServerRuntime;
 import org.eclipse.wst.server.core.IRuntime;
 import org.eclipse.wst.server.core.IRuntimeType;
 import org.eclipse.wst.server.core.IRuntimeWorkingCopy;
@@ -37,20 +36,34 @@ import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.core.ServerCore;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44microei.ServerProperties;
-import org.wso2.developerstudio.eclipse.carbonserver44microei.internal.CarbonServerBehavior44microei;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
+/**
+ * This class contains and manages the micro-integrator 
+ * instance and registering as a eclipse server
+ */
+@SuppressWarnings("restriction")
 public class MicroIntegratorInstance {
 
 	private static MicroIntegratorInstance instance;
 	private IServer microIntegratorServer;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	//static relative path to where micro-ESB is packaged
+	private static final String microesbPath = "runtime" + File.separator + "microesb"
+			+ File.separator + "wso2" + File.separator + "micro-integrator";
 
+	/**
+	 * Private constructor for singleton class
+	 */
 	private MicroIntegratorInstance() {
 		setupServer();
 	}
 
+	/**
+	 * Get micro integrator instance
+	 * @return MicroIntegratorInstance (IServer is wrapped internally)
+	 */
 	public static MicroIntegratorInstance getInstance() {
 		if (instance == null) {
 			instance = new MicroIntegratorInstance();
@@ -58,6 +71,9 @@ public class MicroIntegratorInstance {
 		return instance;
 	}
 
+	/**
+	 * Setup micro-integrator server as a eclipse server runtime
+	 */
 	private void setupServer() {
 
 		IRuntimeType runtimeType = ServerCore
@@ -71,7 +87,9 @@ public class MicroIntegratorInstance {
 			IRuntimeWorkingCopy runtime = runtimeType.createRuntime("org.wso2.micro.integrator.runtime",
 					progressMonitor);
 			runtime.setName("Micro Integrator Runtime");
-			runtime.setLocation(new Path("/temp/runTime/profile/wso2ei-6.4.0/wso2/micro-integrator"));
+			
+			// on mac MacOS folder is considered as eclipse_home
+			runtime.setLocation(new Path(getServerHome()));
 
 			IRuntime microIntegratorRuntime = runtime.save(true, progressMonitor);
 
@@ -88,54 +106,110 @@ public class MicroIntegratorInstance {
 		}
 	}
 
+	/**
+	 * Set serverInstanceProperties 
+	 * @param server server to set properties 
+	 * @throws CoreException on an exception duting setting up
+	 */
+	@SuppressWarnings("restriction")
 	private void readConfigs(IServerWorkingCopy server) throws CoreException {
 		GenericServer dl = (GenericServer) server.loadAdapter(GenericServer.class, null);
-		Map temserverInstanceProperties = dl.getServerInstanceProperties();
+		Map<String, String> temserverInstanceProperties = dl.getServerInstanceProperties();
 		IRuntime runtime = server.getRuntime();
 		String location = runtime.getLocation().toOSString();
 		Map<String, String> serverInstanceProperties = new ServerProperties().getServerInstanceProperties(location);
-
 		for (Map.Entry<String, String> entry : serverInstanceProperties.entrySet()) {
 			temserverInstanceProperties.put(entry.getKey(), entry.getValue());
 		}
+		//Once set server instance properties they will be used to override properties defined at server definition xml file
 		dl.setServerInstanceProperties(temserverInstanceProperties);
 		dl.saveConfiguration(new NullProgressMonitor());
 	}
 
+	/**
+	 * Get absolute path to server home folder
+	 * @return return path as a string
+	 */
 	public String getServerHome() {
-		return microIntegratorServer.getRuntime().getLocation().toOSString();
+		java.nio.file.Path path = Paths.get("");
+		String microInteratorPath = (path).toAbsolutePath().toString() + File.separator + microesbPath;
+		return microInteratorPath;
 	}
 
+	/**
+	 * Start the server asynchronously 
+	 * @throws CoreException on an error during startup
+	 */
 	public void start() throws CoreException {
 		if (microIntegratorServer.getServerState() == IServer.STATE_STOPPED) {
 			microIntegratorServer.start(ILaunchManager.RUN_MODE, new NullProgressMonitor());
 		} else {
 			log.warn("Micro Integrator server is not in stopped mode to start back. Trying force stop.");
 			microIntegratorServer.stop(true);
-			try {
-				Thread.sleep(10000);
-			} catch (InterruptedException e) {
-				// ignore
+			boolean serverStopped = waitUntilStop();
+			if(serverStopped) {
+				microIntegratorServer.start(ILaunchManager.RUN_MODE, new NullProgressMonitor());
+			} else {
+				log.error("Embedded Micro Integrator refused to stop within 20 seconds. "
+						+ "Please kill the process");
 			}
-			microIntegratorServer.start(ILaunchManager.RUN_MODE, new NullProgressMonitor());
 		}
 	}
 
-	public void stop() {
+	/**
+	 * Stop the server and wait until stop is complete (max 20 seconds)
+	 * @return true if the server stopped fine
+	 */
+	public boolean stop() {
 		microIntegratorServer.stop(true);
-		try {
-			Thread.sleep(60000);
-		} catch (InterruptedException e) {
-			// ignore
+		return waitUntilStop();
+	}
+
+	/**
+	 * Stop the server, what until it get stops and start back. If server failed to stop start
+	 * will not happen
+	 * @throws CoreException
+	 */
+	public void restart() throws CoreException {
+		boolean serverStopped = stop();
+		if(serverStopped) {
+			start();
+		} else {
+			log.error("Embedded Micro Integrator refused to stop within 20 seconds. "
+					+ "Please kill the process");
 		}
 	}
-
-	public void restart() throws CoreException {
-		stop();
-		start();
+	
+	/**
+	 * Wait until server stop is complete. Max time is 40 seconds
+	 * @return true if server stopped
+	 */
+	private boolean waitUntilStop() {
+		int maxIterations = 20;
+		int currentTry = 0;
+		boolean serverStopped = false;
+		while(currentTry < maxIterations) {
+			if (microIntegratorServer.getServerState() != IServer.STATE_STOPPED) {
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					//ignore
+				}
+				currentTry = currentTry + 1;
+			} else {
+				serverStopped = true;
+				break;	
+			}
+		}
+		return serverStopped;
 	}
 
+	/**
+	 * Get offset of the embedded micro integrator Carbon server (defined at carbon.xml)
+	 * @return offset as an integer
+	 */
 	public int getOffset() {
+		@SuppressWarnings("restriction")
 		GenericServer dl = (GenericServer) microIntegratorServer.loadAdapter(GenericServer.class, null);
 		Map<String, String> serverInstanceProperties = dl.getServerInstanceProperties();
 		int offset = Integer.parseInt(serverInstanceProperties.get("carbon.offset"));

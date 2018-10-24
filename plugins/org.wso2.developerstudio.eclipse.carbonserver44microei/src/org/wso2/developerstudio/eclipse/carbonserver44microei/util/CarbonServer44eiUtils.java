@@ -29,6 +29,8 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -57,6 +59,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jst.server.generic.core.internal.GenericServer;
+import org.eclipse.jst.server.generic.internal.servertype.definition.ServerTypePackage;
 import org.eclipse.jst.server.generic.servertype.definition.ServerRuntime;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
@@ -75,6 +78,12 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import org.eclipse.jst.server.generic.servertype.definition.Property;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.util.BasicFeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 
 @SuppressWarnings("restriction")
 public class CarbonServer44eiUtils implements CarbonServerXUtils {
@@ -331,6 +340,17 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 	@Override
 	public String resolveProperties(IServer server, String property) {
 		String propertyValue;
+		//TODO: Find a way to override default value set in server-definition.xml
+		if(property.equals("carbon.home")) {
+			//Path path = Paths.get("");
+			//TODO: parameterize server version
+			//String microInteratorPath = path.toAbsolutePath().toString() + File.separator + "runtime" + File.separator + "wso2ei-6.4.0"
+			//		+ File.separator + "wso2" + File.separator + "micro-integrator";
+			//System.out.println(microInteratorPath);
+			//addCarbonHome(server, microInteratorPath);
+			//return microInteratorPath;
+		}
+		
 		if (CarbonServerCommonUtils.getServerConfigMapValue(server, property) != null) {
 			return CarbonServerCommonUtils.getServerConfigMapValue(server, property).toString();
 		}
@@ -343,6 +363,39 @@ public class CarbonServer44eiUtils implements CarbonServerXUtils {
 		ServerRuntime serverDefinition = gserver.getServerDefinition();
 		propertyValue = serverDefinition.getResolver().resolveProperties(property);
 		return propertyValue;
+	}
+	
+	/**
+	 * Set Carbon Home programmatically
+	 * @param server server to set home
+	 * @param microInteratorPath path to set (absolute path)
+	 */
+	private void addCarbonHome(IServer server, String microInteratorPath) {
+		GenericServer gserver = (GenericServer) server.loadAdapter(ServerDelegate.class, null);
+		ServerRuntime serverDefinition = gserver.getServerDefinition();
+		Map<String,String> properties = new HashMap<>();
+		properties.put("carbon.home", microInteratorPath);
+		serverDefinition.getResolver().setPropertyValues(properties);
+		
+		FeatureMap  serverFeatures = serverDefinition.getGroup();
+		EList<Object> runtimeProperies = serverFeatures.list(ServerTypePackage.Literals.SERVER_RUNTIME__PROPERTY);
+		for(Object p : runtimeProperies) {
+			Property property = (Property) p;
+			System.out.println(property);
+			if(property.getId().equals("carbon.home")) {
+				property.setDefault(microInteratorPath);
+			}
+		}
+		GenericServer gserver1 = (GenericServer) server.loadAdapter(ServerDelegate.class, null);
+		ServerRuntime serverDefinition1 = gserver1.getServerDefinition();
+		FeatureMap  serverFeatures1 = serverDefinition1.getGroup();
+		EList<Object> newruntimeProperies = serverFeatures1.list(ServerTypePackage.Literals.SERVER_RUNTIME__PROPERTY);
+		for(Object p : newruntimeProperies) {
+			Property property = (Property) p;
+			System.out.println(property);
+		}
+		String propertyValue = serverDefinition.getResolver().resolveProperties("${carbon.home}");
+		System.out.println(propertyValue);
 	}
 
 	@Override

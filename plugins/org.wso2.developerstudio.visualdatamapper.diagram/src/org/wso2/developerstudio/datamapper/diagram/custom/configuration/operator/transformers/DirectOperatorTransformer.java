@@ -19,20 +19,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import org.apache.commons.logging.Log;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
+import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
+import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * This class extended from the {@link AbstractDMOperatorTransformer} abstract
  * class and generate script for direct operation
  */
 public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	@Override
 	public String generateScriptForOperation(Class<?> generatorClass, List<DMVariable> inputVariables,
@@ -42,6 +49,7 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 		StringBuilder operationBuilder = new StringBuilder();
 		operationBuilder.append(appendOutputVariable(operator, outputVariables, variableTypeMap, parentForLoopBeanStack,
 				forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop));
+		SchemaDataType outputDataType = getOutputVariableType(outputVariables);
 		if (SameLevelRecordMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() >= 1) {
 				operationBuilder.append(inputVariables.get(0).getName() + ";");
@@ -50,9 +58,11 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 			}
 		} else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() >= 1) {
-				operationBuilder.append(
+				/*operationBuilder.append(
 						ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0), variableTypeMap,
-								parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ";");
+								parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ";");*/
+				operationBuilder.append(this.appendTypeCorrectedInputVariable(operationBuilder, inputVariables, variableTypeMap, parentForLoopBeanStack,
+						forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop, outputDataType) + ";");
 			} else {
 				operationBuilder.append("'';");
 			}
@@ -60,5 +70,40 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found : " + generatorClass);
 		}
 		return operationBuilder.toString();
+	}
+	
+	private String appendTypeCorrectedInputVariable(StringBuilder operationBuilder, List<DMVariable> inputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
+			Stack<ForLoopBean> parentForLoopBeanStack, List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop,
+			Map<String, Integer> outputArrayRootVariableForLoop, SchemaDataType outputDataType) {
+		
+		try {
+			String prettyVariable = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0), variableTypeMap,
+				parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop);
+			
+			//SchemaDataType inputDataType = ScriptGenerationUtil.getLastVariableTypeInForOperation(inputVariables.get(0), variableTypeMap);
+			SchemaDataType inputDataType = inputVariables.get(0).getSchemaVariableType();
+			String typeConvertedPrettyVariable = "";
+			if(!outputDataType.equals(inputDataType)) {
+				if(SchemaDataType.STRING.equals(inputDataType) && SchemaDataType.NUMBER.equals(outputDataType)) {
+					typeConvertedPrettyVariable = "Number('" + prettyVariable + "')";
+				} else if(SchemaDataType.STRING.equals(inputDataType) && SchemaDataType.BOOLEAN.equals(outputDataType)) {
+					typeConvertedPrettyVariable = "(" + prettyVariable + " == 'true')";
+				} else if((SchemaDataType.NUMBER.equals(inputDataType) || SchemaDataType.BOOLEAN.equals(inputDataType))
+						&& SchemaDataType.STRING.equals(outputDataType)) {
+					typeConvertedPrettyVariable = "(" + prettyVariable + ").toString()";
+				} else{
+					typeConvertedPrettyVariable = prettyVariable;
+					log.warn("Unidentified type conversion was detected from " + outputDataType.toString() + " to "
+							+ inputDataType.toString() + ".");
+				}
+			} else {
+				typeConvertedPrettyVariable = prettyVariable;
+			}
+			return typeConvertedPrettyVariable;
+			/*operationBuilder.append(typeConvertedPrettyVariable);
+			return operationBuilder.toString();*/
+		} catch (DataMapperException e) {
+			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found.");
+		}
 	}
 }

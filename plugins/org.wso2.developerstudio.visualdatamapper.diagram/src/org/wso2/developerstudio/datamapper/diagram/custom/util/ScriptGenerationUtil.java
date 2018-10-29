@@ -255,6 +255,24 @@ public class ScriptGenerationUtil {
 		}
 		return prettyVariableName;
 	}
+	
+	public static SchemaDataType getLastVariableTypeInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map)
+			throws DataMapperException {
+		
+		SchemaDataType inputVariableType = null;
+		String variableName = "";
+		
+		if (DMVariableType.INPUT.equals(variable.getType())) {
+			String[] variableNameArray = variable.getName().split("\\.");
+			for (String nextName : variableNameArray) {
+				variableName += nextName;
+				if (map.containsKey(variableName)) {
+					inputVariableType = map.get(variableName).get(VARIABLE_TYPE_INDEX);
+				}
+			}
+		}
+		return inputVariableType;
+	}
 
 	public static ForLoopBean getForLoopFromMappedVariableArrayName(String mappedInputVariableArrayElement,
 			List<ForLoopBean> forLoopBeanList) {

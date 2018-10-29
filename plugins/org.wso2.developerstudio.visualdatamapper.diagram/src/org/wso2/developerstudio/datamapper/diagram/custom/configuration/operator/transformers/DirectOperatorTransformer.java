@@ -58,9 +58,6 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 			}
 		} else if (DifferentLevelArrayMappingConfigGenerator.class.equals(generatorClass)) {
 			if (inputVariables.size() >= 1) {
-				/*operationBuilder.append(
-						ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0), variableTypeMap,
-								parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop) + ";");*/
 				operationBuilder.append(this.appendTypeCorrectedInputVariable(operationBuilder, inputVariables, variableTypeMap, parentForLoopBeanStack,
 						forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop, outputDataType) + ";");
 			} else {
@@ -79,8 +76,6 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 		try {
 			String prettyVariable = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0), variableTypeMap,
 				parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop);
-			
-			//SchemaDataType inputDataType = ScriptGenerationUtil.getLastVariableTypeInForOperation(inputVariables.get(0), variableTypeMap);
 			SchemaDataType inputDataType = inputVariables.get(0).getSchemaVariableType();
 			String typeConvertedPrettyVariable = "";
 			if(!outputDataType.equals(inputDataType)) {
@@ -100,8 +95,6 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 				typeConvertedPrettyVariable = prettyVariable;
 			}
 			return typeConvertedPrettyVariable;
-			/*operationBuilder.append(typeConvertedPrettyVariable);
-			return operationBuilder.toString();*/
 		} catch (DataMapperException e) {
 			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found.");
 		}

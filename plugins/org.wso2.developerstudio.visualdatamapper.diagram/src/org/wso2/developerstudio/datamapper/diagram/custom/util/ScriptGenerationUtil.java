@@ -258,10 +258,8 @@ public class ScriptGenerationUtil {
 	
 	public static SchemaDataType getLastVariableTypeInForOperation(DMVariable variable, Map<String, List<SchemaDataType>> map)
 			throws DataMapperException {
-		
 		SchemaDataType inputVariableType = null;
 		String variableName = "";
-		
 		if (DMVariableType.INPUT.equals(variable.getType())) {
 			String[] variableNameArray = variable.getName().split("\\.");
 			for (String nextName : variableNameArray) {

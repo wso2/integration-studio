@@ -80,7 +80,7 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 			String typeConvertedPrettyVariable = "";
 			if(!outputDataType.equals(inputDataType)) {
 				if(SchemaDataType.STRING.equals(inputDataType) && SchemaDataType.NUMBER.equals(outputDataType)) {
-					typeConvertedPrettyVariable = "Number('" + prettyVariable + "')";
+					typeConvertedPrettyVariable = "Number(" + prettyVariable + ")";
 				} else if(SchemaDataType.STRING.equals(inputDataType) && SchemaDataType.BOOLEAN.equals(outputDataType)) {
 					typeConvertedPrettyVariable = "(" + prettyVariable + " == 'true')";
 				} else if((SchemaDataType.NUMBER.equals(inputDataType) || SchemaDataType.BOOLEAN.equals(inputDataType))

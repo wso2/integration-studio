@@ -19,16 +19,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-import org.apache.commons.logging.Log;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
-import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
+import org.wso2.developerstudio.datamapper.diagram.custom.generator.ForLoopBean;
 import org.wso2.developerstudio.datamapper.diagram.custom.exception.DataMapperException;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.DifferentLevelArrayMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.generator.SameLevelRecordMappingConfigGenerator;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMOperation;
 import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariable;
-import org.wso2.developerstudio.datamapper.diagram.custom.model.DMVariableType;
 import org.wso2.developerstudio.datamapper.diagram.custom.util.ScriptGenerationUtil;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -96,7 +94,7 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 			}
 			return typeConvertedPrettyVariable;
 		} catch (DataMapperException e) {
-			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found.");
+			throw new IllegalArgumentException("Unknown MappingConfigGenerator type found. " + e);
 		}
 	}
 }

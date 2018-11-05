@@ -67,24 +67,27 @@ public class DirectOperatorTransformer extends AbstractDMOperatorTransformer {
 		return operationBuilder.toString();
 	}
 	
-	private String appendTypeCorrectedInputVariable(StringBuilder operationBuilder, List<DMVariable> inputVariables, Map<String, List<SchemaDataType>> variableTypeMap,
-			Stack<ForLoopBean> parentForLoopBeanStack, List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop,
+	private String appendTypeCorrectedInputVariable(StringBuilder operationBuilder, List<DMVariable> inputVariables,
+			Map<String, List<SchemaDataType>> variableTypeMap, Stack<ForLoopBean> parentForLoopBeanStack,
+			List<ForLoopBean> forLoopBeanList, Map<String, Integer> outputArrayVariableForLoop,
 			Map<String, Integer> outputArrayRootVariableForLoop, SchemaDataType outputDataType) {
-		
+
 		try {
-			String prettyVariable = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0), variableTypeMap,
-				parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop, outputArrayRootVariableForLoop);
+			String prettyVariable = ScriptGenerationUtil.getPrettyVariableNameInForOperation(inputVariables.get(0),
+					variableTypeMap, parentForLoopBeanStack, true, forLoopBeanList, outputArrayVariableForLoop,
+					outputArrayRootVariableForLoop);
 			SchemaDataType inputDataType = inputVariables.get(0).getSchemaVariableType();
 			String typeConvertedPrettyVariable = "";
-			if(!outputDataType.equals(inputDataType)) {
-				if(SchemaDataType.STRING.equals(inputDataType) && SchemaDataType.NUMBER.equals(outputDataType)) {
+			if (!outputDataType.equals(inputDataType)) {
+				if (SchemaDataType.STRING.equals(inputDataType) && SchemaDataType.NUMBER.equals(outputDataType)) {
 					typeConvertedPrettyVariable = "Number(" + prettyVariable + ")";
-				} else if(SchemaDataType.STRING.equals(inputDataType) && SchemaDataType.BOOLEAN.equals(outputDataType)) {
+				} else if (SchemaDataType.STRING.equals(inputDataType)
+						&& SchemaDataType.BOOLEAN.equals(outputDataType)) {
 					typeConvertedPrettyVariable = "(" + prettyVariable + " == 'true')";
-				} else if((SchemaDataType.NUMBER.equals(inputDataType) || SchemaDataType.BOOLEAN.equals(inputDataType))
+				} else if ((SchemaDataType.NUMBER.equals(inputDataType) || SchemaDataType.BOOLEAN.equals(inputDataType))
 						&& SchemaDataType.STRING.equals(outputDataType)) {
 					typeConvertedPrettyVariable = "(" + prettyVariable + ").toString()";
-				} else{
+				} else {
 					typeConvertedPrettyVariable = prettyVariable;
 					log.warn("Unidentified type conversion was detected from " + outputDataType.toString() + " to "
 							+ inputDataType.toString() + ".");

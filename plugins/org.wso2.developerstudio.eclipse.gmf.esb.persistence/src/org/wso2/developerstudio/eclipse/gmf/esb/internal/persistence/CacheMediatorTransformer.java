@@ -101,7 +101,7 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
                 cacheMediator.setMaxMessageSize(visualCache.getMaxMessageSize());
                 cacheMediator.setTimeout(visualCache.getCacheTimeout());
                 DigestGenerator httpRequestHashGenerator = null;
-                if (visualCache.getHashGenerator().equals("HTTP_REQUEST_HASH_GENERATOR")) {
+                if (visualCache.getHashGenerator().equals("org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator")) {
                     httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator();
                 } else if (visualCache.getHashGenerator().toLowerCase().contains("requesthashgenerator")) {
                     httpRequestHashGenerator = new org.wso2.carbon.mediator.cache.digest.REQUESTHASHGenerator();

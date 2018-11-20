@@ -1416,7 +1416,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheType" eType="#//CacheType"
         defaultValueLiteral="FINDER"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashGenerator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="HTTP_REQUEST_HASH_GENERATOR"/>
+        defaultValueLiteral="org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheTimeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="120"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxMessageSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"

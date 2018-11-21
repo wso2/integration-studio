@@ -170,6 +170,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             addTransportJMSRetriesBeforeSuspensionPropertyDescriptor(object);
             addTransportJMSPollingSuspensionPeriodPropertyDescriptor(object);
             addTransportJMSBrokerTypePropertyDescriptor(object);
+            addTransportJMSDBUrlPropertyDescriptor(object);
 
             switch (inboundEndpoint.getTransportJMSBrokerType()) {
             case WSO2_BROKER_PROFILE:
@@ -2652,6 +2653,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
     }
 
     /**
+     * This adds a property descriptor for the Transport JMSDB Url feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    protected void addTransportJMSDBUrlPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_InboundEndpoint_transportJMSDBUrl_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_transportJMSDBUrl_feature", "_UI_InboundEndpoint_type"),
+                 EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 "Parameters(Advanced)",
+                 null));
+    }
+
+    /**
      * This adds a property descriptor for the Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4456,6 +4479,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
             case EsbPackage.INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS:
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:

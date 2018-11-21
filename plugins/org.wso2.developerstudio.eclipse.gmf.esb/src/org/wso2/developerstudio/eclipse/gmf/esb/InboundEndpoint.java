@@ -244,6 +244,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}</li>
  * </ul>
  *
  * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint()
@@ -3616,6 +3617,33 @@ public interface InboundEndpoint extends EsbElement {
      * @generated
      */
     void setTransportRabbitMqConsumerQosType(PayloadFormatType value);
+
+    /**
+     * Returns the value of the '<em><b>Transport JMSDB Url</b></em>' attribute.
+     * The default value is <code>""</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Transport JMSDB Url</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Transport JMSDB Url</em>' attribute.
+     * @see #setTransportJMSDBUrl(String)
+     * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSDBUrl()
+     * @model default=""
+     * @generated
+     */
+    String getTransportJMSDBUrl();
+
+    /**
+     * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Transport JMSDB Url</em>' attribute.
+     * @see #getTransportJMSDBUrl()
+     * @generated
+     */
+    void setTransportJMSDBUrl(String value);
 
     /**
      * Returns the value of the '<em><b>Class</b></em>' attribute.

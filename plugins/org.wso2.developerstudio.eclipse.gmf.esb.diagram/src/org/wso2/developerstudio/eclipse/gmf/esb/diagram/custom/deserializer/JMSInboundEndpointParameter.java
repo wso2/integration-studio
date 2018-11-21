@@ -45,6 +45,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOU
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RETRIES_BEFORE_SUSPENSION;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
@@ -134,10 +135,13 @@ public enum JMSInboundEndpointParameter {
                                                                                                                                                                                                                             true), JMS_POLLING_SUSPENSION_PERIOD_TYPE(
                                                                                                                                                                                                                                     InboundEndpointConstants.JMS_POLLING_SUSPENSION_PERIOD,
                                                                                                                                                                                                                                     INBOUND_ENDPOINT__TRANSPORT_JMS_POLLING_SUSPENSION_PERIOD,
-                                                                                                                                                                                                                                    true), JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_TYPE(
-                                                                                                                                                                                                                                            InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
-                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
-                                                                                                                                                                                                                                            false);
+                                                                                                                                                                                                                                    true), JMS_DB_URL(
+                                                                                                                                                                                                                                            InboundEndpointConstants.JMS_DB_URL,
+                                                                                                                                                                                                                                            INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL,
+                                                                                                                                                                                                                                            true), JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION_TYPE(
+                                                                                                                                                                                                                                                    InboundEndpointConstants.JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
+                                                                                                                                                                                                                                                    INBOUND_ENDPOINT__TRANSPORT_JMS_RESET_CONNECTION_ON_POLLING_SUSPENSION,
+                                                                                                                                                                                                                                                    false);
 
     private final String name;
     private final EAttribute eAttributeValue;

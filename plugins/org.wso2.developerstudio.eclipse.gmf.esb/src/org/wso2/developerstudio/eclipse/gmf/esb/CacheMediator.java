@@ -100,7 +100,7 @@ public interface CacheMediator extends Mediator {
 
     /**
      * Returns the value of the '<em><b>Hash Generator</b></em>' attribute.
-     * The default value is <code>"HTTP_REQUEST_HASH_GENERATOR"</code>.
+     * The default value is <code>"org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Hash Generator</em>' attribute isn't clear,
@@ -110,7 +110,7 @@ public interface CacheMediator extends Mediator {
      * @return the value of the '<em>Hash Generator</em>' attribute.
      * @see #setHashGenerator(String)
      * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_HashGenerator()
-     * @model default="HTTP_REQUEST_HASH_GENERATOR"
+     * @model default="org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator"
      * @generated
      */
     String getHashGenerator();

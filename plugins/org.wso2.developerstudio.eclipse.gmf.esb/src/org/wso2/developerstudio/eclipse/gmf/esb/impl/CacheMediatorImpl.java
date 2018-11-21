@@ -114,7 +114,7 @@ public class CacheMediatorImpl extends MediatorImpl implements CacheMediator {
      * @generated
      * @ordered
      */
-    protected static final String HASH_GENERATOR_EDEFAULT = "HTTP_REQUEST_HASH_GENERATOR";
+    protected static final String HASH_GENERATOR_EDEFAULT = "org.wso2.carbon.mediator.cache.digest.HttpRequestHashGenerator";
 
     /**
      * The cached value of the '{@link #getHashGenerator() <em>Hash Generator</em>}' attribute.

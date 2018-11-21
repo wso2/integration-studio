@@ -458,6 +458,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_POLLING_SUSPENSION_PERIOD,
                         visualInboundEndpoint.getTransportJMSPollingSuspensionPeriod());
             }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSDBUrl())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_DB_URL,
+                        visualInboundEndpoint.getTransportJMSDBUrl());
+            }
             break;
         case WSO2_MB:
             if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
@@ -573,6 +577,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
             if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSRetryDuration())) {
                 addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_RETRY_DURATION,
                         visualInboundEndpoint.getTransportJMSRetryDuration());
+            }
+            if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSDBUrl())) {
+                addParameterForConfig(inboundEndpoint, InboundEndpointConstants.JMS_DB_URL,
+                        visualInboundEndpoint.getTransportJMSDBUrl());
             }
             break;
         case CUSTOM:

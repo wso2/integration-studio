@@ -11755,6 +11755,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getInboundEndpoint_TransportJMSDBUrl() {
+        return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(218);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getInboundEndpointParameter() {
         return inboundEndpointParameterEClass;
     }
@@ -21218,6 +21227,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__WSS_SSL_CIPHER_SUITES);
         createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS);
         createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE);
+        createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL);
 
         inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
         createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
@@ -23663,6 +23673,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
         initEAttribute(getInboundEndpoint_WssSslCipherSuites(), ecorePackage.getEString(), "wssSslCipherSuites", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getInboundEndpoint_TransportRabbitMqConsumerQos(), ecorePackage.getEString(), "transportRabbitMqConsumerQos", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getInboundEndpoint_TransportRabbitMqConsumerQosType(), this.getPayloadFormatType(), "transportRabbitMqConsumerQosType", "Registry Reference", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getInboundEndpoint_TransportJMSDBUrl(), ecorePackage.getEString(), "transportJMSDBUrl", "", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

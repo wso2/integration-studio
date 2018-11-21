@@ -283,6 +283,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSClientSideBroadcastLevel;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getWssSslCipherSuites <em>Wss Ssl Cipher Suites</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQos <em>Transport Rabbit Mq Consumer Qos</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportRabbitMqConsumerQosType <em>Transport Rabbit Mq Consumer Qos Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDBUrl <em>Transport JMSDB Url</em>}</li>
  * </ul>
  *
  * @generated
@@ -4668,6 +4669,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     protected PayloadFormatType transportRabbitMqConsumerQosType = TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getTransportJMSDBUrl() <em>Transport JMSDB Url</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportJMSDBUrl()
+     * @generated
+     * @ordered
+     */
+    protected static final String TRANSPORT_JMSDB_URL_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getTransportJMSDBUrl() <em>Transport JMSDB Url</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTransportJMSDBUrl()
+     * @generated
+     * @ordered
+     */
+    protected String transportJMSDBUrl = TRANSPORT_JMSDB_URL_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated NOT
@@ -7292,6 +7313,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getTransportJMSDBUrl() {
+        return transportJMSDBUrl;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTransportJMSDBUrl(String newTransportJMSDBUrl) {
+        String oldTransportJMSDBUrl = transportJMSDBUrl;
+        transportJMSDBUrl = newTransportJMSDBUrl;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL, oldTransportJMSDBUrl, transportJMSDBUrl));
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
@@ -9504,6 +9546,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return getTransportRabbitMqConsumerQos();
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
                 return getTransportRabbitMqConsumerQosType();
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL:
+                return getTransportJMSDBUrl();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -10171,6 +10215,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
                 setTransportRabbitMqConsumerQosType((PayloadFormatType)newValue);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL:
+                setTransportJMSDBUrl((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -10836,6 +10883,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
                 setTransportRabbitMqConsumerQosType(TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT);
                 return;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL:
+                setTransportJMSDBUrl(TRANSPORT_JMSDB_URL_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -11283,6 +11333,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
                 return TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT == null ? transportRabbitMqConsumerQos != null : !TRANSPORT_RABBIT_MQ_CONSUMER_QOS_EDEFAULT.equals(transportRabbitMqConsumerQos);
             case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE:
                 return transportRabbitMqConsumerQosType != TRANSPORT_RABBIT_MQ_CONSUMER_QOS_TYPE_EDEFAULT;
+            case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSDB_URL:
+                return TRANSPORT_JMSDB_URL_EDEFAULT == null ? transportJMSDBUrl != null : !TRANSPORT_JMSDB_URL_EDEFAULT.equals(transportJMSDBUrl);
         }
         return super.eIsSet(featureID);
     }
@@ -11718,6 +11770,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
         result.append(transportRabbitMqConsumerQos);
         result.append(", transportRabbitMqConsumerQosType: ");
         result.append(transportRabbitMqConsumerQosType);
+        result.append(", transportJMSDBUrl: ");
+        result.append(transportJMSDBUrl);
         result.append(')');
         return result.toString();
     }

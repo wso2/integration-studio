@@ -199,7 +199,7 @@ public class DSSProjectCreationUtil {
         ESBArtifact artifact = new ESBArtifact();
         artifact.setName(name);
         artifact.setVersion(version);
-        artifact.setType("synapse/" + type);
+        artifact.setType("service/" + type);
         artifact.setServerRole("DataServicesServer");
         artifact.setGroupId(groupId);
         artifact.setFile(path);

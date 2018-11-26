@@ -23,7 +23,8 @@ Require-Bundle: org.wso2.developerstudio.eclipse.gmf.esb,
  org.eclipse.gmf.runtime.notation;bundle-version="1.8.0",
  org.wso2.developerstudio.eclipse.esb.libraries;bundle-version="[6.0.0,7.0.0)",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)"
-Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom,
+Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence,
+ org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom,
  org.wso2.developerstudio.eclipse.gmf.esb.persistence
 Import-Package: com.damnhandy.uri.template;version="2.1.6.wso2v2",
  net.sf.saxon.s9api,

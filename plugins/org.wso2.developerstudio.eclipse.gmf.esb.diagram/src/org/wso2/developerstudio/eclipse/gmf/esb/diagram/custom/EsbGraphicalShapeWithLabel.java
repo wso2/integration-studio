@@ -50,6 +50,7 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
     protected Layer figureLayer;
     private Layer breakpointLayer;
     private Layer skipPointLayer;
+    private Layer validationMarkLayer;
     protected String toolTipMessage;
     private Color borderColor;
     private boolean isEndpoint;
@@ -124,6 +125,42 @@ public class EsbGraphicalShapeWithLabel extends RoundedRectangle {
         if (breakpointLayer != null) {
             pane.remove(breakpointLayer);
             breakpointLayer = null;
+        }
+    }
+
+    /**
+     * This method adds layer with validation mark to the figure pane to show
+     * the incomplete mediator configurations
+     */
+    public void addValidationMark() {
+        if (validationMarkLayer == null) {
+            validationMarkLayer = new Layer();
+            validationMarkLayer.setLayoutManager(new StackLayout());
+            GridData constraintImageRectangle = new GridData();
+            constraintImageRectangle.verticalAlignment = GridData.BEGINNING;
+            constraintImageRectangle.horizontalAlignment = GridData.BEGINNING;
+            constraintImageRectangle.verticalSpan = 1;
+            ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(VALIDATION_MARK_IMAGE_LOCATION, 16,
+                    16);
+            RoundedRectangle validationMarkImageRectangle = new RoundedRectangle();
+            validationMarkImageRectangle.setCornerDimensions(new Dimension(2, 2));
+            validationMarkImageRectangle.setOutline(false);
+            validationMarkImageRectangle.setPreferredSize(new Dimension(15, 15));
+            validationMarkImageRectangle.setAlpha(0);
+            validationMarkImageRectangle.add(iconImageFigure);
+            iconImageFigure.translate((this.getSize().width - 20), 2);
+            validationMarkLayer.add(validationMarkImageRectangle, constraintImageRectangle);
+            pane.add(validationMarkLayer);
+        }
+    }
+
+    /**
+     * This method remove validation point layer
+     */
+    public void removeValidationMark() {
+        if (validationMarkLayer != null) {
+            pane.remove(validationMarkLayer);
+            validationMarkLayer = null;
         }
     }
 

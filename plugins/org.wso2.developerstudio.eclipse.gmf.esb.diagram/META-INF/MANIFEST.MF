@@ -58,7 +58,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.platform.core;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.platform.ui;bundle-version="[4.1.0,7.0.0)",
  org.wso2.developerstudio.eclipse.kernel.libraries;bundle-version="[4.1.0,7.0.0)",
- org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.5.0,7.0.0)"
+ org.wso2.developerstudio.eclipse.project.extensions;bundle-version="[6.5.0,7.0.0)",
+ org.eclipse.papyrus.infra.gmfdiag.css
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-LazyStart: true

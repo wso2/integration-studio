@@ -539,6 +539,7 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 
         // sourceXML = baos.toString("UTF-8");
         sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
+        sourceXML = sourceXML.replaceAll("FACTORY/DEFAULT/VALUE", "");
         return sourceXML;
     }
 
